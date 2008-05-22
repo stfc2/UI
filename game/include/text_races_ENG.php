@@ -25,69 +25,69 @@
 
 $BUILDING_NAME = array(
 
-    // Föderation
+    // Federation
 
     0 => array(
 
-        0 => 'Hauptquartier',
+        0 => 'Headquarters',
 
-        1 => 'Metallminen',
+        1 => 'Metal mines',
 
-        2 => 'Mineralienminen',
+        2 => 'Minerals mines',
 
-        3 => 'Latinumraffinerie',
+        3 => 'Dilithium refinery',
 
-        4 => 'Kraftwerk',
+        4 => 'Power plant',
 
-        5 => 'Akademie',
+        5 => 'Academy',
 
-        6 => 'Raumhafen',
+        6 => 'Space port',
 
-        7 => 'Schiffswerft',
+        7 => 'Shipyard',
 
-        8 => 'Forschungszentrum',
+        8 => 'Research Center',
 
-        9 => 'Orbitalgeschütz',
+        9 => 'Orbital Gun',
 
-        10 => 'Handelszentrum',
+        10 => 'Trade Center',
 
         11 => 'Silos',
 
-        12 => 'Kl. Orbitalgeschütz',
+        12 => 'Light Obital Gun',
 
     ),
 
 
 
-    // Romulaner
+    // Romulan
 
 	1 => array(
 
 		0 => 'Senat',
 
-		1 => 'Metallminen',
+		1 => 'Metal mines',
 
-		2 => 'Mineralienminen',
+		2 => 'Minerals mines',
 
-		3 => 'Latinumraffinerie',
+		3 => 'Dilithium refinery',
 
-		4 => 'Kraftwerk',
+		4 => 'Powerplant',
 
-		5 => 'Kaserne',
+		5 => 'Barracks',
 
-		6 => 'Raumhafen',
+		6 => 'Space port',
 
-		7 => 'Schiffswerft',
+		7 => 'Shipyard',
 
-		8 => 'Forschungszentrum',
+		8 => 'Research Center',
 
-		9 => 'Orbitalgeschütz',
+		9 => 'Obital Gun',
 
         10 => 'Handelsstation',
 
         11 => 'Silos',
 
-        12 => 'Kl. Orbitalgeschütz',
+        12 => 'Light Obital Gun',
 
 ),
 
@@ -95,79 +95,79 @@ $BUILDING_NAME = array(
 
 
 
-	// Klingone
+	// Klingon
 
 	2 => array(
 
-		0 => 'Großer Saal',
+		0 => 'GroÃŸer Saal',
 
- 		1 => 'Metallminen',
+ 		1 => 'Metal mines',
 
- 		2 => 'Mineralienminen',
+ 		2 => 'Minerals mines',
 
-		3 => 'Latinumraffinerie',
+		3 => 'Dilithium refinery',
 
-		4 => 'Kraftwerk',
+		4 => 'Power plant',
 
  		5 => 'Kriegerhalle',
 
-		6 => 'Raumhafen',
+		6 => 'Space port',
 
 		7 => 'Reichswerft',
 
 		8 => 'Forschungseinrichtung',
 
-		9 => 'Orbitalgeschütz',
+		9 => 'Obital Gun',
 
-		10 => 'Handelszentrum',
+		10 => 'Trace Center',
 
 		11 => 'Bunker',
 
-        	12 => 'Kl. Orbitalgeschütz',
+      	12 => 'Light Obital Gun',
 
     ),
 
 
 
-    // Cardassianer
+    // Cardassian
 
 	3 => array(
 
 		0 => 'Propag. Zentr.',
 
-		1 => 'Metallminen',
+		1 => 'Metal mines',
 
-		2 => 'Mineralienminen',
+		2 => 'Minerals mines',
 
-		3 => 'Latinumraffinerie',
+		3 => 'Dilithium refinery',
 
-		4 => 'Kraftwerk',
+		4 => 'Power plant',
 
-		5 => 'Kaserne',
+		5 => 'Barracks',
 
-		6 => 'Raumhafen',
+		6 => 'Space port',
 
 		7 => 'Flottenwerft',
 
-		8 => 'Forschungszentrum',
+		8 => 'Research Center',
 
-		9 => 'Orbitalgeschütz',
+		9 => 'Obital Gun',
 
-        	10 => 'Handelsposten',
+       	10 => 'Handelsposten',
 
-        	11 => 'Silos',
+       	11 => 'Silos',
 
-	        12 => 'Kl. Orbitalgeschütz',
+        12 => 'Light Obital Gun',
 
 
 
 	),
 
-    // Dominion
+    // Dominio
 
 	4 => array(
 
-		0 => 'Gründertempel',
+		0 => 'GrÃ¼ndertempel',
 
 		1 => 'Metallabbaulager',
 
@@ -179,7 +179,7 @@ $BUILDING_NAME = array(
 
 		5 => 'Klonfabrik',
 
-		6 => 'Flottenstützpunkt',
+		6 => 'FlottenstÃ¼tzpunkt',
 
 		7 => 'Raumdock',
 
@@ -187,11 +187,11 @@ $BUILDING_NAME = array(
 
 		9 => 'Orbitalplattform',
 
-		10 => 'Handelszentrum',
+		10 => 'Trace Center',
 
 		11 => 'Rohstofflager',
 
-	        12 => 'Kl. Orbitalplattform',
+        12 => 'Kl. Orbitalplattform',
 
 
 
@@ -205,21 +205,21 @@ $BUILDING_NAME = array(
 
 		0 => 'Hauptzentrum',
 
-		1 => 'Metallminen',
+		1 => 'Metal mines',
 
-		2 => 'Mineralienminen',
+		2 => 'Minerals mines',
 
-		3 => 'Latinumraffinerie',
+		3 => 'Dilithium refinery',
 
-		4 => 'Kraftwerk',
+		4 => 'Power plant',
 
 		5 => 'Akademie',
 
-		6 => 'Raumhafen',
+		6 => 'Space port',
 
-		7 => 'Schiffswerft',
+		7 => 'Shipyard',
 
-		8 => 'Forschungszentrum',
+		8 => 'Research Center',
 
 		9 => 'Orbitalverteid.',
 
@@ -227,7 +227,7 @@ $BUILDING_NAME = array(
 
 		11 => 'Silos',
 
-	        12 => 'Kl. Orbitalverteid.',
+        12 => 'Kl. Orbitalverteid.',
 
 
 
@@ -249,7 +249,7 @@ $BUILDING_NAME = array(
 
     8 => array(
 
-		0 => 'Kältekammer',
+		0 => 'KÃ¤ltekammer',
 
 		1 => 'Metallextraktor',
 
@@ -259,21 +259,21 @@ $BUILDING_NAME = array(
 
 		4 => 'Kraftquelle',
 
-		5 => 'Breen Kaserne',
+		5 => 'Breen Barracks',
 
-		6 => 'Raumhafen',
+		6 => 'Space port',
 
 		7 => 'Breenwerft',
 
-		8 => 'Forschungszentrum',
+		8 => 'Research Center',
 
-		9 => 'Orbitalgeschütz',
+		9 => 'Obital Gun',
 
-		10 => 'Handelszentrum',
+		10 => 'Trace Center',
 
 		11 => 'Silo',
 
-	        12 => 'Kl. Orbitalgeschütz',
+        12 => 'Light Obital Gun',
 
     ),
 
@@ -281,31 +281,31 @@ $BUILDING_NAME = array(
 
     9 => array(
 
-		0 => 'Halle der Jäger',
+		0 => 'Halle der JÃ¤ger',
 
-		1 => 'Metallminen',
+		1 => 'Metal mines',
 
-		2 => 'Mineralienminen',
+		2 => 'Minerals mines',
 
-		3 => 'Latinumraffinerie',
+		3 => 'Dilithium refinery',
 
-		4 => 'Kraftwerk',
+		4 => 'Power plant',
 
 		5 => 'Trainingscenter',
 
-		6 => 'Raumhafen',
+		6 => 'Space port',
 
-		7 => 'Schiffswerft',
+		7 => 'Shipyard',
 
-		8 => 'Forschungszentrum',
+		8 => 'Research Center',
 
 		9 => 'Orbitalplattform',
 
-		10 => 'Handelszentrum',
+		10 => 'Trace Center',
 
 		11 => 'Rohstofflager',
 
-	        12 => 'Kl. Orbitalplattform',
+        12 => 'Kl. Orbitalplattform',
 
     ),
 
@@ -331,13 +331,13 @@ $BUILDING_NAME = array(
 
         8 => 'Laboratorium',
 
-        9 => 'Große Geschützplattform ',
+        9 => 'GroÃŸe GeschÃ¼tzplattform ',
 
-        10 => 'Handelsbörse',
+        10 => 'HandelsbÃ¶rse',
 
         11 => 'Lagerkern',
 
-        12 => 'Geschützplattform', 
+        12 => 'GeschÃ¼tzplattform', 
 
 	),
 
@@ -353,92 +353,92 @@ $BUILDING_NAME = array(
 
 		2 => 'Mineralienextraktoren',
 
-		3 => 'Latinumraffinerie',
+		3 => 'Dilithium refinery',
 
-		4 => 'Fusionskraftwerk',
+		4 => 'FusionsPower plant',
 
 		5 => 'Shrine of War',
 
-		6 => 'Raumhafen',
+		6 => 'Space port',
 
-		7 => 'Schiffswerft',
+		7 => 'Shipyard',
 
 		8 => 'Shrine of Doctrine',
 
-		9 => 'Orbitalgeschütz',
+		9 => 'Obital Gun',
 
-		10 => 'Handelszentrum',
+		10 => 'Trace Center',
 
 		11 => 'Ressourcenlager',
 
-	        12 => 'Kl. Orbitalgeschütz',
+        12 => 'Light Obital Gun',
 
 	),
 
 
 
-    // Mensch 29th
+    // Men 29th
 
     12 => array(
 
-        0 => 'Hauptquartier',
+        0 => 'Headquarters',
 
-        1 => 'Metallminen',
+        1 => 'Metal mines',
 
-        2 => 'Mineralienminen',
+        2 => 'Mineral mines',
 
-        3 => 'Latinumraffinerie',
+        3 => 'Dilithium refinery',
 
-        4 => 'Kraftwerk',
+        4 => 'Power plant',
 
-        5 => 'Akademie',
+        5 => 'Academy',
 
-        6 => 'Raumhafen',
+        6 => 'Space port',
 
-        7 => 'Schiffswerft',
+        7 => 'Shipyard',
 
-        8 => 'Forschungszentrum',
+        8 => 'Research center',
 
-        9 => 'Orbitalgeschütz',
+        9 => 'Orbit general contactor',
 
-        10 => 'Handelszentrum',
+        10 => 'Trade center',
 
         11 => 'Silos',
 
-        12 => 'Kl. Orbitalgeschütz',
+        12 => 'Light Obital Gun',
 
     ),
 
 
-    // Siedler
+    // Settler
 
     13 => array(
 
-        0 => 'Hauptquartier',
+        0 => 'Headquarters',
 
-        1 => 'Metallminen',
+        1 => 'Metal mines',
 
-        2 => 'Mineralienminen',
+        2 => 'Minerals mines',
 
-        3 => 'Latinumraffinerie',
+        3 => 'Dilithium refinery',
 
-        4 => 'Kraftwerk',
+        4 => 'Power plant',
 
         5 => 'Akademie',
 
-        6 => 'Raumhafen',
+        6 => 'Space port',
 
-        7 => 'Schiffswerft',
+        7 => 'Shipyard',
 
-        8 => 'Forschungszentrum',
+        8 => 'Research Center',
 
-        9 => 'Orbitalgeschütz',
+        9 => 'Obital Gun',
 
-        10 => 'Handelszentrum',
+        10 => 'Trace Center',
 
         11 => 'Silos',
 
-        12 => 'Kl. Orbitalgeschütz',
+        12 => 'Light Obital Gun',
 
     ),
 
@@ -448,11 +448,11 @@ $BUILDING_NAME = array(
 
 $UNIT_NAME = array(
 
-	// Föderation
+	// Federation
 
     0 => array(
 
-        0 => 'L. Infanterie',
+        0 => 'L. Infantry',
 
         1 => 'Sturmtruppe',
 
@@ -460,9 +460,9 @@ $UNIT_NAME = array(
 
         3 => 'Commander',
 
-        4 => 'Techniker',
+        4 => 'Technician',
 
-        5 => 'Mediziner',
+        5 => 'Physicians',
 
     ),
 
@@ -480,9 +480,9 @@ $UNIT_NAME = array(
 
 		3 => 'Commander',
 
-        4 => 'Techniker',
+        4 => 'Technician',
 
-        5 => 'Mediziner',
+        5 => 'Physicians',
 
 	),
 
@@ -496,11 +496,11 @@ $UNIT_NAME = array(
 
 		1 => 'Erfahrener Krieger',
 
-		2 => 'Krieger d. Bat´leth',
+		2 => 'Krieger d. BatÂ´leth',
 
 		3 => 'General',
 
-        4 => 'Techniker',
+        4 => 'Technician',
 
         5 => 'Heiler',
 
@@ -520,9 +520,9 @@ $UNIT_NAME = array(
 
 		3 => 'Gul',
 
-        4 => 'Techniker',
+        4 => 'Technician',
 
-        5 => 'Mediziner',
+        5 => 'Physicians',
 
 	),
 
@@ -532,7 +532,7 @@ $UNIT_NAME = array(
 
 	4 => array(
 
-		0 => 'Jem´Hadar',
+		0 => 'JemÂ´Hadar',
 
 		1 => '.E.d. Jem Hadar',
 
@@ -540,9 +540,9 @@ $UNIT_NAME = array(
 
 		3 => 'Vorta',
 
-        4 => 'Techniker',
+        4 => 'Technician',
 
-        5 => 'Mediziner',
+        5 => 'Physicians',
 
 	),
 
@@ -556,13 +556,13 @@ $UNIT_NAME = array(
 
 		1 => 'Sturmtruppe',
 
-		2 => 'Schwere Söldner',
+		2 => 'Schwere SÃ¶ldner',
 
 		3 => 'Taar',
 
-        4 => 'Techniker',
+        4 => 'Technician',
 
-        5 => 'Mediziner',
+        5 => 'Physicians',
 
 	),
 
@@ -596,9 +596,9 @@ $UNIT_NAME = array(
 
 		3 => 'OmakBreen',
 
-        4 => 'Techniker',
+        4 => 'Technician',
 
-        5 => 'Mediziner',
+        5 => 'Physicians',
 
 	),
 
@@ -608,17 +608,17 @@ $UNIT_NAME = array(
 
     9 => array(
 
-		0 => 'Jäger',
+		0 => 'JÃ¤ger',
 
 		1 => 'Betha',
 
 		2 => 'Alpha',
 
-		3 => 'Führer',
+		3 => 'FÃ¼hrer',
 
-        4 => 'Techniker',
+        4 => 'Technician',
 
-        5 => 'Mediziner',
+        5 => 'Physicians',
 
     ),
 
@@ -658,15 +658,15 @@ $UNIT_NAME = array(
 
 		3 => 'Hohe Kazon',
 
-        4 => 'Techniker',
+        4 => 'Technician',
 
-        5 => 'Mediziner',
+        5 => 'Physicians',
 
 	),
 
 	
 
-	// Menschen 29th
+	// Men 29th
 
     12 => array(
 
@@ -678,14 +678,14 @@ $UNIT_NAME = array(
 
         3 => 'Commander',
 
-        4 => 'Techniker',
+        4 => 'Technician',
 
-        5 => 'Mediziner',
+        5 => 'Physicians',
 
     ),	
 
 
-	// Siedler
+	// Settler
     13 => array(
 
         0 => 'Siedler',
@@ -694,7 +694,7 @@ $UNIT_NAME = array(
 
         2 => 'Soldat',
 
-        3 => 'Anführer',
+        3 => 'AnfÃ¼hrer',
 
         4 => 'Ingenieur',
 
@@ -710,19 +710,19 @@ $TECH_NAME = array(
 
 
 
-	// Föderation
+	// Federation
 
     0 => array(
 
         0 => 'Terraforming',	// pro level +1 zu arbeitern/tick; +500 zu max. Bev.
 
-        1 => 'Medizin. Forschung', // pro level +2 zu arbeitern
+        1 => 'Medicine research', // pro level +2 zu arbeitern
 
-        2 => 'Orbitalabwehr',
+        2 => 'Orbital defense',
 
-        3 => 'Automatisierung',
+        3 => 'Automation',
 
-        4 => 'Rohstoffverarbeitung',
+        4 => 'Raw materials processing',
 
     ),
 
@@ -738,9 +738,9 @@ $TECH_NAME = array(
 
 		1 => 'verb. Sklavenhaltung',
 
-		2 => 'Orbitalabwehr',
+		2 => 'Orbital defense',
 
-		3 => 'Automatisierung',
+		3 => 'Automation',
 
 		4 => 'Sklavenmotivation',
 
@@ -754,13 +754,13 @@ $TECH_NAME = array(
 
  		0 => 'Terraforming',
 
- 		1 => 'Medizin. Forschung',
+ 		1 => 'Medicine research',
 
- 		2 => 'Orbitalabwehr',
+ 		2 => 'Orbital defense',
 
-		3 => 'Automatisierung',
+		3 => 'Automation',
 
- 		4 => 'Rohstoffverarbeitung',
+ 		4 => 'Raw materials processing',
 
     ),
 
@@ -772,13 +772,13 @@ $TECH_NAME = array(
 
 		0 => 'Terraforming',
 
-        1 => 'Medizin. Forschung',
+        1 => 'Medicine research',
 
-		2 => 'Orbitalabwehr',
+		2 => 'Orbital defense',
 
-		3 => 'Automatisierung',
+		3 => 'Automation',
 
-		4 => 'Rohstoffverarbeitung',
+		4 => 'Raw materials processing',
 
 	),
 
@@ -792,11 +792,11 @@ $TECH_NAME = array(
 
         1 => 'Klonforschung',
 
-		2 => 'Orbitalabwehr',
+		2 => 'Orbital defense',
 
-		3 => 'Automatisierung',
+		3 => 'Automation',
 
-		4 => 'Rohstoffverarbeitung',
+		4 => 'Raw materials processing',
 
 	),
 
@@ -808,13 +808,13 @@ $TECH_NAME = array(
 
 		0 => 'Terraforming',
 
-		1 => 'Medizin. Forschung',
+		1 => 'Medicine research',
 
-		2=> 'Orbitalabwehr',
+		2=> 'Orbital defense',
 
-		3 => 'Automatisierung',
+		3 => 'Automation',
 
-		4 => 'Rohstoffverarbeitung',
+		4 => 'Raw materials processing',
 
 	),
 
@@ -844,11 +844,11 @@ $TECH_NAME = array(
 
 		1 => 'Biogene Forschung',
 
-		2=> 'Orbitalabwehr',
+		2=> 'Orbital defense',
 
-		3 => 'Automatisierung',
+		3 => 'Automation',
 
-		4 => 'Rohstoffverarbeitung',
+		4 => 'Raw materials processing',
 
 	),
 
@@ -860,13 +860,13 @@ $TECH_NAME = array(
 
 		0 => 'Terraforming',
 
-		1 => 'Medizin. Forschung',
+		1 => 'Medicine research',
 
-		2=> 'Orbitalabwehr',
+		2=> 'Orbital defense',
 
-		3 => 'Automatisierung',
+		3 => 'Automation',
 
-		4 => 'Rohstoffverarbeitung',
+		4 => 'Raw materials processing',
 
     ),
 
@@ -876,11 +876,11 @@ $TECH_NAME = array(
 
 	10 => array(
 
-      0 => 'Ökologische Anpassung',
+      0 => 'Ã–kologische Anpassung',
 
       1 => 'Biochemische Forschung',
 
-      2 => 'Orbitale Defensivmaßnahmen',
+      2 => 'Orbitale DefensivmaÃŸnahmen',
 
       3 => 'Mechanisierung',
 
@@ -896,13 +896,13 @@ $TECH_NAME = array(
 
 		0 => 'Terraforming',
 
-		1 => 'Medizin. Forschung',
+		1 => 'Medicine research',
 
-		2=> 'Orbitalabwehr',
+		2=> 'Orbital defense',
 
-		3 => 'Automatisierung',
+		3 => 'Automation',
 
-		4 => 'Rohstoffverarbeitung',
+		4 => 'Raw materials processing',
 
 	),
 
@@ -914,32 +914,32 @@ $TECH_NAME = array(
 
         0 => 'Terraforming',
 
-        1 => 'Medizin. Forschung',
+        1 => 'Medicine research',
 
-        2 => 'Orbitalabwehr',
+        2 => 'Orbital defense',
 
-        3 => 'Automatisierung',
+        3 => 'Automation',
 
-        4 => 'Rohstoffverarbeitung',
+        4 => 'Raw materials processing',
 
     ),
 
 
 
 
-	// Siedler
+	// Settler
 
     13 => array(
 
         0 => 'Terraforming',	// pro level +1 zu arbeitern/tick; +500 zu max. Bev.
 
-        1 => 'Medizin. Forschung', // pro level +2 zu arbeitern
+        1 => 'Medicine research', // pro level +2 zu arbeitern
 
-        2 => 'Orbitalabwehr',
+        2 => 'Orbital defense',
 
-        3 => 'Automatisierung',
+        3 => 'Automation',
 
-        4 => 'Rohstoffverarbeitung',
+        4 => 'Raw materials processing',
 
     ),
 );
@@ -950,81 +950,81 @@ $UNIT_DESCRIPTION = array (
 
 
 
-	// Föderation
+	// Federation
 
     0 => array(
 
-        0 => 'Die leichte Infanterie ist relativ kostengünstig und kann daher<br>schon früh im Spiel gut als Verteidiung für Ihren Planeten eingesetzt werden.<br>Im späteren Spielverlauf ist sie als Besatzung für die meisten Schiffe aber nicht mehr geeignet.',
+        0 => 'The Light Infantry is relatively inexpensive and can therefore<br>early in the game as well Verteidiung for your planet can be used.<br>Later game is as crew for most vessels but no longer suitable.',
 
-        1 => 'Die Sturmtruppen sind vor allem im Nahkampf effektiv und haben eine verstärkte Verteidigung<br>Sie können fast überall effizient eingesetzt werden obwohl ihre Ausbildung im Vergleich zu der Leichten Infanterie ein ganzes Stück teurer ist.',
+        1 => 'The storm troops are particularly effective in close combat and have a stronger defence.<br>You can almost use them anywhere efficiently despite their training compared to the Light Infantry is a lot more expensive.',
 
-        2 => 'Das Hazard Team besteht aus Kampfexperten, die alle Situationen bestehen werden. Sie wurden ausschließlich zum Kämpfen ausgebildet und kennen keine Furcht. Auch wenn ihre Verteidigung relativ schwach ist, sollten sich feindliche Kämpfer lieber außerhalb ihres Fadenkreuzes aufhalten.',
+        2 => 'The Hazard team consists of experts struggle, all situations. They were fighting only for trained and know no fear. Even if their defense is relatively weak, should be enemy combatants rather outside their crosshair stop.',
 
-        3 => 'Der Commander wird nicht für Kampfeinsätze sondern zur Führung von Schiffen ausgebildet.<br>Commander sind teuer in ihrer Ausbildung, sind aber auf jedem Schiff erforderlich. Ihre Kampfstärke ist der der leichten Infanterie ähnlich.',
+        3 => 'The Commander is not for combat operations but for the leadership of ships trained. <br> Commander are expensive in their training, but necessary on each ship. Their battle is with the strength of the Light Infantry equate.',
 
-		4 => 'Der Techniker wird nicht für Kampfeinsätze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Techniker sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
+	4 => 'The technician is not for combat operations but for the maintenance of ships trained.<br>Technicians are expensive in their training, but required on almost any vessel.',
 
-        5 => 'Der Mediziner kämpft nicht und kann bei Kampfhandlungen auch nicht getötet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu verarzten.',
+        5 => 'The physician is not made for fighting, he can only used on ships to be verarzten injured.',
 
     ),
 
 
 
-	// Romulaner
+	// Romulan
 
     1 => array(
 
-        0 => 'Die Centurion sind relativ kostengünstig und können daher<br>schon früh im Spiel gut als Verteidiung für Ihren Planeten eingesetzt werden.<br>Im späteren Spielverlauf ist sie als Besatzung für die meisten Schiffe aber nicht mehr geeignet.',
+        0 => 'Die Centurion sind relativ kostengÃ¼nstig und kÃ¶nnen daher<br>schon frÃ¼h im Spiel gut als Verteidiung fÃ¼r Ihren Planeten eingesetzt werden.<br>Im spÃ¤teren Spielverlauf ist sie als Besatzung fÃ¼r die meisten Schiffe aber nicht mehr geeignet.',
 
-        1 => 'Die Rem. Truppen sind vor allem im Nahkampf effektiv und haben eine verstärkte Verteidigung<br>Sie können fast überall effizient eingesetzt werden obwohl ihre Ausbildung im Vergleich zu den Centurion ein ganzes Stück teurer ist.',
+        1 => 'Die Rem. Truppen sind vor allem im Nahkampf effektiv und haben eine verstÃ¤rkte Verteidigung<br>Sie kÃ¶nnen fast Ã¼berall effizient eingesetzt werden obwohl ihre Ausbildung im Vergleich zu den Centurion ein ganzes StÃ¼ck teurer ist.',
 
-        2 => 'Die Tal Shiar bestehen aus Geheimagenten, die zum wirkungsvollen und ausauffälligen Töten ausgebildet wurden. Auch wenn ihre Verteidigung relativ schwach ist, sollten sich feindliche Kämpfer lieber außerhalb ihres Operationsgebietes aufhalten.',
+        2 => 'Die Tal Shiar bestehen aus Geheimagenten, die zum wirkungsvollen und ausauffÃ¤lligen TÃ¶ten ausgebildet wurden. Auch wenn ihre Verteidigung relativ schwach ist, sollten sich feindliche KÃ¤mpfer lieber auÃŸerhalb ihres Operationsgebietes aufhalten.',
 
-        3 => 'Der Commander wird nicht für Kampfeinsätze sondern zur Führung von Schiffen ausgebildet.<br>Commander sind teuer in ihrer Ausbildung, sind aber auf jedem Schiff erforderlich. Ihre Kampfstärke ist mit der der Centurion gleichzusetzen.',
+        3 => 'Der Commander wird nicht fÃ¼r KampfeinsÃ¤tze sondern zur FÃ¼hrung von Schiffen ausgebildet.<br>Commander sind teuer in ihrer Ausbildung, sind aber auf jedem Schiff erforderlich. Ihre KampfstÃ¤rke ist mit der der Centurion gleichzusetzen.',
 
-		4 => 'Der Techniker wird nicht für Kampfeinsätze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Techniker sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
+		4 => 'Der Technician wird nicht fÃ¼r KampfeinsÃ¤tze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Technician sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
 
-        5 => 'Der Mediziner kämpft nicht und kann bei Kampfhandlungen auch nicht getötet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu verarzten.',
+        5 => 'Der Physicians kÃ¤mpft nicht und kann bei Kampfhandlungen auch nicht getÃ¶tet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu verarzten.',
 
     ),
 
 
 
-	// Klingonen
+	// Klingon
 
     2 => array(
 
-        0 => 'Die Einfachen Krieger sind relativ kostengünstig und kann daher<br>schon früh im Spiel gut als Verteidiung für Ihren Planeten eingesetzt werden.<br>Im späteren Spielverlauf ist sie als Besatzung für die meisten Schiffe aber nicht mehr geeignet.',
+        0 => 'Die Einfachen Krieger sind relativ kostengÃ¼nstig und kann daher<br>schon frÃ¼h im Spiel gut als Verteidiung fÃ¼r Ihren Planeten eingesetzt werden.<br>Im spÃ¤teren Spielverlauf ist sie als Besatzung fÃ¼r die meisten Schiffe aber nicht mehr geeignet.',
 
-        1 => 'Die Erfahrenen Krieger sind vor allem im Nahkampf effektiv und haben eine verstärkte Verteidigung<br>Sie können fast überall effizient eingesetzt werden obwohl ihre Ausbildung im Vergleich zu den einfachen Kriegern ein ganzes Stück teurer ist.',
+        1 => 'Die Erfahrenen Krieger sind vor allem im Nahkampf effektiv und haben eine verstÃ¤rkte Verteidigung<br>Sie kÃ¶nnen fast Ã¼berall effizient eingesetzt werden obwohl ihre Ausbildung im Vergleich zu den einfachen Kriegern ein ganzes StÃ¼ck teurer ist.',
 
-        2 => 'Die Krieger des Bat´leth leben nur, um einen ehrenvollen Tod im Kampf finden zu können. Sie haben sich schon vorher in Schlachten glorreich geschlagen und kennen keine größere Ehre, als für euer Reich fallen zu dürfen.',
+        2 => 'Die Krieger des BatÂ´leth leben nur, um einen ehrenvollen Tod im Kampf finden zu kÃ¶nnen. Sie haben sich schon vorher in Schlachten glorreich geschlagen und kennen keine grÃ¶ÃŸere Ehre, als fÃ¼r euer Reich fallen zu dÃ¼rfen.',
 
-        3 => 'Der General wird nicht für Kampfeinsätze sondern zur Führung von Schiffen ausgebildet.<br>Generäle sind teuer in ihrer Ausbildung, sind aber auf jedem Schiff erforderlich. Ihre Kampfstärke ist mit der der einfachen Krieger gleichzusetzen.',
+        3 => 'Der General wird nicht fÃ¼r KampfeinsÃ¤tze sondern zur FÃ¼hrung von Schiffen ausgebildet.<br>GenerÃ¤le sind teuer in ihrer Ausbildung, sind aber auf jedem Schiff erforderlich. Ihre KampfstÃ¤rke ist mit der der einfachen Krieger gleichzusetzen.',
 
-		4 => 'Der Techniker wird nicht für Kampfeinsätze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Techniker sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
+		4 => 'Der Technician wird nicht fÃ¼r KampfeinsÃ¤tze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Technician sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
 
-        5 => 'Der Heiler kämpft nicht und kann bei Kampfhandlungen auch nicht getötet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu verarzten.',
+        5 => 'Der Heiler kÃ¤mpft nicht und kann bei Kampfhandlungen auch nicht getÃ¶tet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu verarzten.',
 
     ),
 
 
 
-	// Cardassianer
+	// Cardassian
 
     3 => array(
 
-        0 => 'Die Leichte Infanterie ist relativ kostengünstig und kann daher<br>schon früh im Spiel gut als Verteidiung für Ihren Planeten eingesetzt werden.<br>Im späteren Spielverlauf ist sie als Besatzung für die meisten Schiffe aber nicht mehr geeignet.',
+        0 => 'Die Leichte Infanterie ist relativ kostengÃ¼nstig und kann daher<br>schon frÃ¼h im Spiel gut als Verteidiung fÃ¼r Ihren Planeten eingesetzt werden.<br>Im spÃ¤teren Spielverlauf ist sie als Besatzung fÃ¼r die meisten Schiffe aber nicht mehr geeignet.',
 
-        1 => 'Die Sturmtruppen sind vor allem im Nahkampf effektiv und haben eine verstärkte Verteidigung<br>Sie können fast überall effizient eingesetzt werden obwohl ihre Ausbildung im Vergleich zu der Leichten Infanterie ein ganzes Stück teurer ist.',
+        1 => 'Die Sturmtruppen sind vor allem im Nahkampf effektiv und haben eine verstÃ¤rkte Verteidigung<br>Sie kÃ¶nnen fast Ã¼berall effizient eingesetzt werden obwohl ihre Ausbildung im Vergleich zu der Leichten Infanterie ein ganzes StÃ¼ck teurer ist.',
 
-        2 => 'Das Obsidianische Eisatzkomando besteht aus Kampfexperten, die alle Situationen bestehen werden. Sie wurden ausschließlich zum Kämpfen ausgebildet und kennen keine Furcht. Auch wenn ihre Verteidigung relativ schwach ist, sollten sich feindliche Kämpfer lieber außerhalb ihres Fadenkreuzes aufhalten.',
+        2 => 'Das Obsidianische Eisatzkomando besteht aus Kampfexperten, die alle Situationen bestehen werden. Sie wurden ausschlieÃŸlich zum KÃ¤mpfen ausgebildet und kennen keine Furcht. Auch wenn ihre Verteidigung relativ schwach ist, sollten sich feindliche KÃ¤mpfer lieber auÃŸerhalb ihres Fadenkreuzes aufhalten.',
 
-        3 => 'Der Gul wird nicht für Kampfeinsätze sondern zur Führung von Schiffen ausgebildet.<br>Guls sind teuer in ihrer Ausbildung, sind aber auf jedem Schiff erforderlich. Ihre Kampfstärke ist mit der der Leichten Infanterie gleichzusetzen.',
+        3 => 'Der Gul wird nicht fÃ¼r KampfeinsÃ¤tze sondern zur FÃ¼hrung von Schiffen ausgebildet.<br>Guls sind teuer in ihrer Ausbildung, sind aber auf jedem Schiff erforderlich. Ihre KampfstÃ¤rke ist mit der der Leichten Infanterie gleichzusetzen.',
 
-		4 => 'Der Techniker wird nicht für Kampfeinsätze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Techniker sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
+		4 => 'Der Technician wird nicht fÃ¼r KampfeinsÃ¤tze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Technician sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
 
-        5 => 'Der Mediziner kämpft nicht und kann bei Kampfhandlungen auch nicht getötet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu verarzten.',
+        5 => 'Der Physicians kÃ¤mpft nicht und kann bei Kampfhandlungen auch nicht getÃ¶tet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu verarzten.',
 
     ),
 
@@ -1034,17 +1034,17 @@ $UNIT_DESCRIPTION = array (
 
     4 => array(
 
-		0 => 'Die Jem´Hadar sind relativ leicht und billig zu klonen und sind am Anfang die idealen Truppen für die Planetenverteidigung. Für größere Schiffe sind sie jedoch kaum geeignet.',
+		0 => 'Die JemÂ´Hadar sind relativ leicht und billig zu klonen und sind am Anfang die idealen Truppen fÃ¼r die Planetenverteidigung. FÃ¼r grÃ¶ÃŸere Schiffe sind sie jedoch kaum geeignet.',
 
-		1 => 'Die Sona Kampftruppe ist eine Allzweckeinheit und vor allem im Nahkampf effektiver als die Jem´Hadar, kostet dem entsprechend aber auch mehr.',
+		1 => 'Die Sona Kampftruppe ist eine Allzweckeinheit und vor allem im Nahkampf effektiver als die JemÂ´Hadar, kostet dem entsprechend aber auch mehr.',
 
-		2 => 'Die Honered Elders sind die Erfahrensten der Jem´Hadar. Sie besitzen durch ihre jahrlange Kampferfahrung das größte Angriffspotential und sind daher die beste Möglichkeit zum Angriff oder zur Verteidigung.',
+		2 => 'Die Honered Elders sind die Erfahrensten der JemÂ´Hadar. Sie besitzen durch ihre jahrlange Kampferfahrung das grÃ¶ÃŸte Angriffspotential und sind daher die beste MÃ¶glichkeit zum Angriff oder zur Verteidigung.',
 
-		3 => 'Durch ihre Führungsqualitäten sind die Vorta die geborenen(geklonten) Anführer und bestens als Commander geeignet, jedoch für den Kampf ungeeignet.',
+		3 => 'Durch ihre FÃ¼hrungsqualitÃ¤ten sind die Vorta die geborenen(geklonten) AnfÃ¼hrer und bestens als Commander geeignet, jedoch fÃ¼r den Kampf ungeeignet.',
 
-		4 => 'Der Techniker wird nicht für Kampfeinsätze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Techniker sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
+		4 => 'Der Technician wird nicht fÃ¼r KampfeinsÃ¤tze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Technician sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
 
-        5 => 'Der Mediziner kämpft nicht und kann bei Kampfhandlungen auch nicht getötet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu verarzten.',
+        5 => 'Der Physicians kÃ¤mpft nicht und kann bei Kampfhandlungen auch nicht getÃ¶tet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu verarzten.',
 
 	),
 
@@ -1054,17 +1054,17 @@ $UNIT_DESCRIPTION = array (
 
 	5 => array(
 
-		0 => 'Die Leichte Infanterie ist relativ kostengünstig und kann daher schon früh im Spiel gut als Verteidigung für Ihren Planeten eingesetzt werden. Im späteren Spielverlauf ist sie als Besatzung für die meisten Schiffe aber nicht mehr geeignet.',
+		0 => 'Die Leichte Infanterie ist relativ kostengÃ¼nstig und kann daher schon frÃ¼h im Spiel gut als Verteidigung fÃ¼r Ihren Planeten eingesetzt werden. Im spÃ¤teren Spielverlauf ist sie als Besatzung fÃ¼r die meisten Schiffe aber nicht mehr geeignet.',
 
-		1 => 'Die Sturmtruppen sind vor allem im Nahkampf effektiv und haben eine verstärkte Verteidigung. Sie können fast überall effizient eingesetzt werden obwohl ihre Ausbildung im Vergleich zu der Leichten Infanterie ein ganzes Stück teurer ist.',
+		1 => 'Die Sturmtruppen sind vor allem im Nahkampf effektiv und haben eine verstÃ¤rkte Verteidigung. Sie kÃ¶nnen fast Ã¼berall effizient eingesetzt werden obwohl ihre Ausbildung im Vergleich zu der Leichten Infanterie ein ganzes StÃ¼ck teurer ist.',
 
-		2 => 'Da sich die Ferengi nicht um den Krieg sondern nur um Geschäfte kümmern stellen die schweren Söldner ihre stärkste militärische Einheit dar.',
+		2 => 'Da sich die Ferengi nicht um den Krieg sondern nur um GeschÃ¤fte kÃ¼mmern stellen die schweren SÃ¶ldner ihre stÃ¤rkste militÃ¤rische Einheit dar.',
 
-		3 => 'Der Taar wird nicht für Kampfeinsätze sondern zur Führung von Schiffen ausgebildet. Taar sind teuer in ihrer Ausbildung, sind aber auf jedem Schiff erforderlich. Ihre Kampfstärke ist mit der der Leichten Infanterie gleichzusetzen.',
+		3 => 'Der Taar wird nicht fÃ¼r KampfeinsÃ¤tze sondern zur FÃ¼hrung von Schiffen ausgebildet. Taar sind teuer in ihrer Ausbildung, sind aber auf jedem Schiff erforderlich. Ihre KampfstÃ¤rke ist mit der der Leichten Infanterie gleichzusetzen.',
 
-		4 => 'Der Techniker wird nicht für Kampfeinsätze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Techniker sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
+		4 => 'Der Technician wird nicht fÃ¼r KampfeinsÃ¤tze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Technician sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
 
-        5 => 'Der Mediziner kämpft nicht und kann bei Kampfhandlungen auch nicht getötet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu verarzten.',
+        5 => 'Der Physicians kÃ¤mpft nicht und kann bei Kampfhandlungen auch nicht getÃ¶tet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu verarzten.',
 
 	),
 
@@ -1090,17 +1090,17 @@ $UNIT_DESCRIPTION = array (
 
 	8 => array(
 
-		0 => 'Der Soldat ist relativ kostengünstig und kann daher<br>schon früh im Spiel gut als Verteidigung für Ihren Planeten eingesetzt werden.<br>Im späteren Spielverlauf ist er als Besatzung für die meisten Schiffe aber nicht mehr geeignet.',
+		0 => 'Der Soldat ist relativ kostengÃ¼nstig und kann daher<br>schon frÃ¼h im Spiel gut als Verteidigung fÃ¼r Ihren Planeten eingesetzt werden.<br>Im spÃ¤teren Spielverlauf ist er als Besatzung fÃ¼r die meisten Schiffe aber nicht mehr geeignet.',
 
-		1 => 'Die Breemok sind vor allem im Nahkampf effektiv und haben eine verstärkte Verteidigung<br>Sie können fast überall effizient eingesetzt werden obwohl ihre Ausbildung im Vergleich zum Kämpfer ein ganzes Stück teurer ist.',
+		1 => 'Die Breemok sind vor allem im Nahkampf effektiv und haben eine verstÃ¤rkte Verteidigung<br>Sie kÃ¶nnen fast Ã¼berall effizient eingesetzt werden obwohl ihre Ausbildung im Vergleich zum KÃ¤mpfer ein ganzes StÃ¼ck teurer ist.',
 
-		2 => 'Der Been ist für Feinde ein äußerst gefährlicher Gegner, da er seine Körperform für einige Minuten beliebig anpassen kann.',
+		2 => 'Der Been ist fÃ¼r Feinde ein Ã¤uÃŸerst gefÃ¤hrlicher Gegner, da er seine KÃ¶rperform fÃ¼r einige Minuten beliebig anpassen kann.',
 
-		3 => 'Der OmakBreen hat eine angeborene Stärke für das führen eines Schiffes und erhält die Kampfausbildung eines Kämpfers. Er wird hauptsächlich zum effektiven Führen unserer Bioschiffe eingesetzt.',
+		3 => 'Der OmakBreen hat eine angeborene StÃ¤rke fÃ¼r das fÃ¼hren eines Schiffes und erhÃ¤lt die Kampfausbildung eines KÃ¤mpfers. Er wird hauptsÃ¤chlich zum effektiven FÃ¼hren unserer Bioschiffe eingesetzt.',
 
-		4 => 'Der Techniker wird nicht für Kampfeinsätze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Ausbesserer sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
+		4 => 'Der Technician wird nicht fÃ¼r KampfeinsÃ¤tze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Ausbesserer sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
 
-        5 => 'Der Mediziener kämpft nicht und kann bei Kampfhandlungen auch nicht getötet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu heilen.',
+        5 => 'Der Mediziener kÃ¤mpft nicht und kann bei Kampfhandlungen auch nicht getÃ¶tet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu heilen.',
 
 	),
 
@@ -1110,17 +1110,17 @@ $UNIT_DESCRIPTION = array (
 
     9 => array(
 
-		0 => 'Der Jäger ist relativ kostengünstig und kann daher<br>schon früh im Spiel gut als Verteidigung für Ihren Planeten eingesetzt werden.<br>Im späteren Spielverlauf ist er als Besatzung für die meisten Kriegsschiffe nur noch begrenzt geeignet.',
+		0 => 'Der JÃ¤ger ist relativ kostengÃ¼nstig und kann daher<br>schon frÃ¼h im Spiel gut als Verteidigung fÃ¼r Ihren Planeten eingesetzt werden.<br>Im spÃ¤teren Spielverlauf ist er als Besatzung fÃ¼r die meisten Kriegsschiffe nur noch begrenzt geeignet.',
 
-		1 => 'Die Betha sind vor allem auf die Distanz effektiv und haben eine verstärkte Verteidigung<br>Sie können fast überall effizient eingesetzt werden auch wenn ihre Ausbildung im vergleich recht teuer ist.',
+		1 => 'Die Betha sind vor allem auf die Distanz effektiv und haben eine verstÃ¤rkte Verteidigung<br>Sie kÃ¶nnen fast Ã¼berall effizient eingesetzt werden auch wenn ihre Ausbildung im vergleich recht teuer ist.',
 
-		2 => 'Die Alpha sind Kampfexperten und Führungspersonen, die alle Situationen bestehen werden. Sie sind erfahrene und gut ausgebildete Jäger und kennen keine Furcht. Eine Beute die von ihnen verfolgt wird ist dem Tod geweiht.',
+		2 => 'Die Alpha sind Kampfexperten und FÃ¼hrungspersonen, die alle Situationen bestehen werden. Sie sind erfahrene und gut ausgebildete JÃ¤ger und kennen keine Furcht. Eine Beute die von ihnen verfolgt wird ist dem Tod geweiht.',
 
-		3 => 'Der Führer wird nicht für Kampfeinsätze sondern zum Führen von Schiffen ausgebildet.<br>Führer sind teuer in ihrer Ausbildung, sind aber auf jedem Schiff erforderlich. Ihre Kampfstärke ist mit der der Jäger gleichzusetzen.',
+		3 => 'Der FÃ¼hrer wird nicht fÃ¼r KampfeinsÃ¤tze sondern zum FÃ¼hren von Schiffen ausgebildet.<br>FÃ¼hrer sind teuer in ihrer Ausbildung, sind aber auf jedem Schiff erforderlich. Ihre KampfstÃ¤rke ist mit der der JÃ¤ger gleichzusetzen.',
 
-		4 => 'Der Techniker wird nicht für Kampfeinsätze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Techniker sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
+		4 => 'Der Technician wird nicht fÃ¼r KampfeinsÃ¤tze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Technician sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
 
-        5 => 'Der Mediziner kämpft nicht und kann bei Kampfhandlungen auch nicht getötet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu verarzten.',
+        5 => 'Der Physicians kÃ¤mpft nicht und kann bei Kampfhandlungen auch nicht getÃ¶tet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu verarzten.',
 
     ),
 
@@ -1130,17 +1130,17 @@ $UNIT_DESCRIPTION = array (
 
 	10 => array(
 
- 0 => 'Der Soldat ist eine kostengünstige Einheit, die schon sehr früh zur Verteidigung eingesetzt werden kann. Im späteren Verlauf aber ist er nicht mehr sehr gut geeignet.',
+ 0 => 'Der Soldat ist eine kostengÃ¼nstige Einheit, die schon sehr frÃ¼h zur Verteidigung eingesetzt werden kann. Im spÃ¤teren Verlauf aber ist er nicht mehr sehr gut geeignet.',
 
-      1 => 'Die Imperialen Gardisten werden lange und sorgfältig für ihre Aufgaben trainiert und verfügt über ausgezeichnete Bewaffnung und Ausbildung. Allerdings ist ihre Ausbildung ein gutes Stück teurer als die von einfachen Kämpfern.',
+      1 => 'Die Imperialen Gardisten werden lange und sorgfÃ¤ltig fÃ¼r ihre Aufgaben trainiert und verfÃ¼gt Ã¼ber ausgezeichnete Bewaffnung und Ausbildung. Allerdings ist ihre Ausbildung ein gutes StÃ¼ck teurer als die von einfachen KÃ¤mpfern.',
 
-      2 => 'Die Eliteinfanteristen sind besonders hart trainierte Kämpfer des Imperiums, die sich voll und ganz ihrem Dienst widmen. Sie sind teuer in der Ausbildung, aber auch entsprechend stark.',
+      2 => 'Die Eliteinfanteristen sind besonders hart trainierte KÃ¤mpfer des Imperiums, die sich voll und ganz ihrem Dienst widmen. Sie sind teuer in der Ausbildung, aber auch entsprechend stark.',
 
-      3 => 'Offiziere dienen als Kommandeure von Kampftrupps und Kriegsschiffen des Krenim-Imperiums. Ihre Kampfausbildung ist nicht so intensiv wie die anderer Kämpfer, dafür werden sie aber in Strategie und Taktik geschult.',
+      3 => 'Offiziere dienen als Kommandeure von Kampftrupps und Kriegsschiffen des Krenim-Imperiums. Ihre Kampfausbildung ist nicht so intensiv wie die anderer KÃ¤mpfer, dafÃ¼r werden sie aber in Strategie und Taktik geschult.',
 
-      4 => 'Ingenieure werden benötigt, um Schiffe instand zu halten und die komplexe Technik der Krenimschiffe zu bedienen. Sie werden speziell für ihre Aufgabe ausgebildet und nehmen nicht direkt an Kampfhandlungen teil.',
+      4 => 'Ingenieure werden benÃ¶tigt, um Schiffe instand zu halten und die komplexe Technik der Krenimschiffe zu bedienen. Sie werden speziell fÃ¼r ihre Aufgabe ausgebildet und nehmen nicht direkt an Kampfhandlungen teil.',
 
-        5 => 'Ärzte sind für das Wohlergehen und die Einsatzbereitschaft der Schiffsbesatzung zuständig. Ebenso wenig wie Ingenieure beteiligen sich Ärzte an Kampfhandlungen, sie kümmern sich lediglich um die Verwundeten.', 
+        5 => 'Ã„rzte sind fÃ¼r das Wohlergehen und die Einsatzbereitschaft der Schiffsbesatzung zustÃ¤ndig. Ebenso wenig wie Ingenieure beteiligen sich Ã„rzte an Kampfhandlungen, sie kÃ¼mmern sich lediglich um die Verwundeten.', 
 
 	),
 
@@ -1150,23 +1150,23 @@ $UNIT_DESCRIPTION = array (
 
 	11 => array(
 
-		0 => 'Die Exekutor ist relativ kostengünstig und kann daher<br>schon früh im Spiel gut als Verteidigung für Ihren Planeten eingesetzt werden.<br>Im späteren Spielverlauf ist sie als Besatzung für die meisten Schiffe aber nicht mehr geeignet.',
+		0 => 'Die Exekutor ist relativ kostengÃ¼nstig und kann daher<br>schon frÃ¼h im Spiel gut als Verteidigung fÃ¼r Ihren Planeten eingesetzt werden.<br>Im spÃ¤teren Spielverlauf ist sie als Besatzung fÃ¼r die meisten Schiffe aber nicht mehr geeignet.',
 
-		1 => 'Die Assasine sind vor allem im Nahkampf effektiv und haben eine verstärkte Verteidigung<br>Sie können fast überall effizient eingesetzt werden obwohl ihre Ausbildung im Vergleich zu der Exekutor ein ganzes Stück teurer ist.',
+		1 => 'Die Assasine sind vor allem im Nahkampf effektiv und haben eine verstÃ¤rkte Verteidigung<br>Sie kÃ¶nnen fast Ã¼berall effizient eingesetzt werden obwohl ihre Ausbildung im Vergleich zu der Exekutor ein ganzes StÃ¼ck teurer ist.',
 
-		2 => 'Der Templar ist ein Kampfexperte, die alle Situationen bestehen werden. Sie wurden ausschließlich zum Kämpfen ausgebildet und kennen keine Furcht. Auch wenn ihre Verteidigung relativ schwach ist, sollten sich feindliche Kämpfer lieber außerhalb ihres Einflussgebietes aufhalten.',
+		2 => 'Der Templar ist ein Kampfexperte, die alle Situationen bestehen werden. Sie wurden ausschlieÃŸlich zum KÃ¤mpfen ausgebildet und kennen keine Furcht. Auch wenn ihre Verteidigung relativ schwach ist, sollten sich feindliche KÃ¤mpfer lieber auÃŸerhalb ihres Einflussgebietes aufhalten.',
 
-		3 => 'Der Hohe Kazon wird nicht für Kampfeinsätze sondern zur Führung von Schiffen ausgebildet.<br>High Kazon sind teuer in ihrer Ausbildung, sind aber auf jedem Schiff erforderlich. Ihre Kampfstärke ist mit der Exekutoren gleichzusetzen.',
+		3 => 'Der Hohe Kazon wird nicht fÃ¼r KampfeinsÃ¤tze sondern zur FÃ¼hrung von Schiffen ausgebildet.<br>High Kazon sind teuer in ihrer Ausbildung, sind aber auf jedem Schiff erforderlich. Ihre KampfstÃ¤rke ist mit der Exekutoren gleichzusetzen.',
 
-		4 => 'Der Techniker wird nicht für Kampfeinsätze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Techniker sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
+		4 => 'Der Technician wird nicht fÃ¼r KampfeinsÃ¤tze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Technician sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
 
-        5 => 'Der Mediziner kämpft nicht und kann bei Kampfhandlungen auch nicht getötet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu verarzten.',
+        5 => 'Der Physicians kÃ¤mpft nicht und kann bei Kampfhandlungen auch nicht getÃ¶tet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu verarzten.',
 
 	),
 
 	
 
-	// Menschen 29th
+	// Men 29th
 
     12 => array(
 
@@ -1178,13 +1178,13 @@ $UNIT_DESCRIPTION = array (
 
         3 => 'Commander',
 
-		4 => 'Techniker',
+		4 => 'Technician',
 
-        5 => 'Mediziner',
+        5 => 'Physicians',
 
     ),	
 
-	// Siedler
+	// Settler
 
 	13 => array(
 
@@ -1197,136 +1197,136 @@ $UNIT_DESCRIPTION = array (
 
 $BUILDING_DESCRIPTION = array (
 
-	// Menschen
+	// Men
     0 => array(
 
-        0 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr neue Gebäude können gebaut werden.',
+        0 => 'The higher the building is expanded,<br>the more new buildings can be built.',
 
-        1 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Metall wird pro Tick abgebaut.',
+        1 => 'The higher the building is expanded,<br>the more metal per tick is removed.',
 
-        2 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Mineralien werden pro Tick abgebaut.',
+        2 => 'The higher the building is expanded,<br>the more minerals per tick be dismantled.',
 
-        3 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Latinum kann pro Tick produziert werden.',
+        3 => 'The higher the building is expanded,<br>the more dilithium per tick is produced.',
 
-        4 => 'Man muss ein Kraftwerk pro 10 Gebäude bauen,<br>damit diese noch mit ausreichend Energie versorgt werden.',
+        4 => 'You have a power plant per 10 buildings,<br>so that even with sufficient energy supply.',
 
-        5 => 'Je nach Stufe der Akademie können Arbeiter zu veschiedenen Einheiten-<br>typen ausgebildet werden.',
+        5 => 'Je nach Stufe der Akademie kÃ¶nnen Arbeiter zu veschiedenen Einheiten-<br>typen ausgebildet werden.',
 
-        6 => 'Der Raumhafen dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet die Sensorenstärke.',
+        6 => 'Der Space port dient der Reperatur beschÃ¤digter Schiffe. Durch jede Ausbaustufe erhÃ¤lt der Planet die SensorenstÃ¤rke.',
 
-        7 => 'Je höher das Gebäude ausgebaut ist,<br>desto schneller können Schiffe gebaut werden.',
+        7 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto schneller kÃ¶nnen Schiffe gebaut werden.',
 
-        8 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr neue Technologien können erforscht werden.<br>Bestimmte Forschungen sind auch für Schiffe und Truppentypen notwendig.',
+        8 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto mehr neue Technologien kÃ¶nnen erforscht werden.<br>Bestimmte Forschungen sind auch fÃ¼r Schiffe und Truppentypen notwendig.',
 
-        9 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        9 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
-        10 => 'Diese Einrichtung ermöglicht es, mit anderen Spielern Geschäftsbeziehungen zu schließen, die automatisiert abgewickelt werden.',
+        10 => 'Diese Einrichtung ermÃ¶glicht es, mit anderen Spielern GeschÃ¤ftsbeziehungen zu schlieÃŸen, die automatisiert abgewickelt werden.',
 
-        11 => 'Die Silos dienen dazu, die maximal lagerbaren Ressourcen zu erhöhen.<br>Zusätzlich lagerbare Ressourcen pro Stufe pro Typ: 55.000',
+        11 => 'Die Silos dienen dazu, die maximal lagerbaren Ressourcen zu erhÃ¶hen.<br>ZusÃ¤tzlich lagerbare Ressourcen pro Stufe pro Typ: 55.000',
 
-        12 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        12 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
     ),
 
 
 
-	// Romulaner
+	// Romulan
 
     1 => array(
 
-        0 => 'Dieses Gebäude ist die Grundlage eines jeden Reiches, je höher dieses Gebäude ausgebaut ist, desto mehr Möglichkeiten stehen euch zur Verfügung.',
+        0 => 'Dieses GebÃ¤ude ist die Grundlage eines jeden Reiches, je hÃ¶her dieses GebÃ¤ude ausgebaut ist, desto mehr MÃ¶glichkeiten stehen euch zur VerfÃ¼gung.',
 
-        1 => 'In dieser Mine arbeiten romulanische Arbeiter, sie produzieren Metall, je höher das Gebäude ausgebaut ist, desto mehr Metall wird pro Tick abgebaut.',
+        1 => 'In dieser Mine arbeiten romulanische Arbeiter, sie produzieren Metall, je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr Metall wird pro Tick abgebaut.',
 
-        2 => 'In dieser Mine arbeiten romulanische Arbeiter, sie produzieren Mineralien, je höher das Gebäude ausgebaut ist, desto mehr Mineralien werden pro Tick abgebaut.',
+        2 => 'In dieser Mine arbeiten romulanische Arbeiter, sie produzieren Mineralien, je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr Mineralien werden pro Tick abgebaut.',
 
-        3 => 'In dieser Mine arbeiten romulanische Arbeiter, sie produzieren Latinum, je höher das Gebäude ausgebaut ist, desto mehr Latinum wird pro Tick abgebaut.',
+        3 => 'In dieser Mine arbeiten romulanische Arbeiter, sie produzieren Latinum, je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr Latinum wird pro Tick abgebaut.',
 
-        4 => 'Das romulanische Kraftwerk produziert für 10 Gebäude genügend Energie, sorgt immer für genügend Energie ansonsten kann euer Imperium nicht wachsen.',
+        4 => 'Das romulanische Power plant produziert fÃ¼r 10 GebÃ¤ude genÃ¼gend Energie, sorgt immer fÃ¼r genÃ¼gend Energie ansonsten kann euer Imperium nicht wachsen.',
 
-        5 => 'In der Kaserne werden eure Arbeiter zu Zenturion, Rem. Truppen, Tal Shiar Einsatztruppen und Commandern ausgebildet.',
+        5 => 'In der Barracks werden eure Arbeiter zu Zenturion, Rem. Truppen, Tal Shiar Einsatztruppen und Commandern ausgebildet.',
 
-        6 => 'Der Raumhafen dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet eine Verbesserung der Sensorenstärke.',
+        6 => 'Der Space port dient der Reperatur beschÃ¤digter Schiffe. Durch jede Ausbaustufe erhÃ¤lt der Planet eine Verbesserung der SensorenstÃ¤rke.',
 
-        7 => 'Ein Meilenstein in eurer Geschichte, mit diesen Gebäude könnt ihr nun Raumschiffe produzieren, je höher das Gebäude ausgebaut ist,<br>desto schneller können Schiffe gebaut werden.',
+        7 => 'Ein Meilenstein in eurer Geschichte, mit diesen GebÃ¤ude kÃ¶nnt ihr nun Raumschiffe produzieren, je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto schneller kÃ¶nnen Schiffe gebaut werden.',
 
-        8 => 'Je höher das Gebäude ausgebaut ist, desto mehr neue Technologien können erforscht werden. Bestimmte Forschungen sind auch für Schiffe und Truppentypen notwendig.',
+        8 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr neue Technologien kÃ¶nnen erforscht werden. Bestimmte Forschungen sind auch fÃ¼r Schiffe und Truppentypen notwendig.',
 
-        9 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        9 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
-        10 => 'Diese Einrichtung ermöglicht es, mit anderen Spielern Geschäftsbeziehungen zu schließen, die automatisiert abgewickelt werden.',
+        10 => 'Diese Einrichtung ermÃ¶glicht es, mit anderen Spielern GeschÃ¤ftsbeziehungen zu schlieÃŸen, die automatisiert abgewickelt werden.',
 
-        11 => 'Die Silos dienen dazu, die maximal lagerbaren Ressourcen zu erhöhen.<br>Zusätzlich lagerbare Ressourcen pro Stufe pro Typ: 50.000',
+        11 => 'Die Silos dienen dazu, die maximal lagerbaren Ressourcen zu erhÃ¶hen.<br>ZusÃ¤tzlich lagerbare Ressourcen pro Stufe pro Typ: 50.000',
 
-        12 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        12 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
     ),
 
 
 
-	// Klingonen
+	// Klingon
 
     2 => array(
 
-		0 => 'Je höher das Gebäude ausgebaut ist, desto mehr neue Gebäude können gebaut werden.',
+		0 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr neue GebÃ¤ude kÃ¶nnen gebaut werden.',
 
-		1 => 'Je höher das Gebäude ausgebaut ist, desto mehr Metall wird pro Tick abgebaut.',
+		1 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr Metall wird pro Tick abgebaut.',
 
-		2 => 'Je höher das Gebäude ausgebaut ist, desto mehr Mineralien werden pro Tick abgebaut.',
+		2 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr Mineralien werden pro Tick abgebaut.',
 
-		3 => 'Je höher das Gebäude ausgebaut ist, desto mehr Latinum kann pro Tick produziert werden.',
+		3 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr Latinum kann pro Tick produziert werden.',
 
-		4 => 'Man muss ein Kraftwerk pro 10 Gebäude bauen,damit diese noch mit ausreichend Energie versorgt werden können.',
+		4 => 'Man muss ein Power plant pro 10 GebÃ¤ude bauen,damit diese noch mit ausreichend Energie versorgt werden kÃ¶nnen.',
 
-		5 => 'Je nach Ausbaustufe der Kriegerhalle können Arbeiter zu verschiedenen Einheiten-Typen ausgebildet werden.',
+		5 => 'Je nach Ausbaustufe der Kriegerhalle kÃ¶nnen Arbeiter zu verschiedenen Einheiten-Typen ausgebildet werden.',
 
-        6 => 'Der Raumhafen dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet eine Verbesserung der Sensorenstärke.',
+        6 => 'Der Space port dient der Reperatur beschÃ¤digter Schiffe. Durch jede Ausbaustufe erhÃ¤lt der Planet eine Verbesserung der SensorenstÃ¤rke.',
 
-		7 => 'Je höher die Reichswerft ausgebaut ist,<br>desto schneller können Schiffe gebaut werden.',
+		7 => 'Je hÃ¶her die Reichswerft ausgebaut ist,<br>desto schneller kÃ¶nnen Schiffe gebaut werden.',
 
-		8 => 'Je höher die Forschungseinrichtung ausgebaut ist, desto mehr Technologien können erforscht werden. Diese sind teilweise Voraussetzung für den Bau bestimmter Einheiten-, Gebäude- und Schiffstypen.',
+		8 => 'Je hÃ¶her die Forschungseinrichtung ausgebaut ist, desto mehr Technologien kÃ¶nnen erforscht werden. Diese sind teilweise Voraussetzung fÃ¼r den Bau bestimmter Einheiten-, GebÃ¤ude- und Schiffstypen.',
 
-        9 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        9 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
-		10 => 'Dieses Gebäude dient dem wirtschaftlichen Handel zwischen den Planeten. Je nach Ausbaustufe kann man mit weiter entfernten Planeten den Handel aufnehmen.',
+		10 => 'Dieses GebÃ¤ude dient dem wirtschaftlichen Handel zwischen den Planeten. Je nach Ausbaustufe kann man mit weiter entfernten Planeten den Handel aufnehmen.',
 
-		11 => 'Die Bunker dienen dazu, die maximal lagerbaren Ressourcen auf dem Planeten zu erhöhen. Zusätzlich lagerbare Ressourcen pro Stufe pro Typ: 45.000',
+		11 => 'Die Bunker dienen dazu, die maximal lagerbaren Ressourcen auf dem Planeten zu erhÃ¶hen. ZusÃ¤tzlich lagerbare Ressourcen pro Stufe pro Typ: 45.000',
 
-        12 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        12 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
     ),
 
 
 
-	// Cardassianer
+	// Cardassian
 
     3 => array(
 
-        0 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr neue Gebäude können gebaut werden.',
+        0 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto mehr neue GebÃ¤ude kÃ¶nnen gebaut werden.',
 
-        1 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Metall wird pro Tick abgebaut.',
+        1 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto mehr Metall wird pro Tick abgebaut.',
 
-        2 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Mineralien werden pro Tick abgebaut.',
+        2 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto mehr Mineralien werden pro Tick abgebaut.',
 
-        3 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Latinum kann pro Tick produziert werden.',
+        3 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto mehr Latinum kann pro Tick produziert werden.',
 
-        4 => 'Man muss ein Kraftwerk pro 10 Gebäude bauen,<br>damit diese noch mit ausreichend Energie versorgt werden.',
+        4 => 'Man muss ein Power plant pro 10 GebÃ¤ude bauen,<br>damit diese noch mit ausreichend Energie versorgt werden.',
 
-        5 => 'Je nach Stufe der Akademie können Arbeiter zu veschiedenen Einheiten-<br>typen ausgebildet werden.',
+        5 => 'Je nach Stufe der Akademie kÃ¶nnen Arbeiter zu veschiedenen Einheiten-<br>typen ausgebildet werden.',
 
-        6 => 'Der Raumhafen dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet eine Verbesserung der Sensorenstärke.',
+        6 => 'Der Space port dient der Reperatur beschÃ¤digter Schiffe. Durch jede Ausbaustufe erhÃ¤lt der Planet eine Verbesserung der SensorenstÃ¤rke.',
 
-        7 => 'Je höher das Gebäude ausgebaut ist,<br>desto schneller können Schiffe gebaut werden.',
+        7 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto schneller kÃ¶nnen Schiffe gebaut werden.',
 
-        8 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr neue Technologien können erforscht werden.<br>Bestimmte Forschungen sind auch für Schiffe und Truppentypen notwendig.',
+        8 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto mehr neue Technologien kÃ¶nnen erforscht werden.<br>Bestimmte Forschungen sind auch fÃ¼r Schiffe und Truppentypen notwendig.',
 
-        9 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        9 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
-        10 => 'Diese Einrichtung ermöglicht es, mit anderen Spielern Geschäftsbeziehungen zu schließen, die automatisiert abgewickelt werden.',
+        10 => 'Diese Einrichtung ermÃ¶glicht es, mit anderen Spielern GeschÃ¤ftsbeziehungen zu schlieÃŸen, die automatisiert abgewickelt werden.',
 
-        11 => 'Die Silos dienen dazu, die maximal lagerbaren Ressourcen zu erhöhen.<br>Zusätzlich lagerbare Ressourcen pro Stufe pro Typ: 50.000',
+        11 => 'Die Silos dienen dazu, die maximal lagerbaren Ressourcen zu erhÃ¶hen.<br>ZusÃ¤tzlich lagerbare Ressourcen pro Stufe pro Typ: 50.000',
 
-        12 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        12 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
     ),
 
@@ -1336,31 +1336,31 @@ $BUILDING_DESCRIPTION = array (
 
     4 => array(
 
-		0 => 'Je weiter der Gründertempel ausgebaut ist, umso mehr Gebäudepläne geben die Gründer frei.',
+		0 => 'Je weiter der GrÃ¼ndertempel ausgebaut ist, umso mehr GebÃ¤udeplÃ¤ne geben die GrÃ¼nder frei.',
 
-		1 => 'Je größer das Metallabbaulager ist, um so mehr Sklaven können darin arbeiten und mehr Metall steht pro Tick zur Verfügung.',
+		1 => 'Je grÃ¶ÃŸer das Metallabbaulager ist, um so mehr Sklaven kÃ¶nnen darin arbeiten und mehr Metall steht pro Tick zur VerfÃ¼gung.',
 
-		2 => 'Je größer das Mineralienabbaulager ist, umso mehr Sklaven können darin arbeiten und mehr Mineralien steht pro Tick zur Verfügung.',
+		2 => 'Je grÃ¶ÃŸer das Mineralienabbaulager ist, umso mehr Sklaven kÃ¶nnen darin arbeiten und mehr Mineralien steht pro Tick zur VerfÃ¼gung.',
 
-		3 => 'Je größer das Latinumwerk ist, umso mehr Barren Latinum werden Sklaven pro Tick gießen.',
+		3 => 'Je grÃ¶ÃŸer das Latinumwerk ist, umso mehr Barren Latinum werden Sklaven pro Tick gieÃŸen.',
 
-		4 => 'Pro Energiekollektor können 10 Gebäude mit Energie versorgt werden.',
+		4 => 'Pro Energiekollektor kÃ¶nnen 10 GebÃ¤ude mit Energie versorgt werden.',
 
-		5 => 'Je höher die Klonfabrik ausgebaut ist, umso komplexere Genome können reproduziert werden.',
+		5 => 'Je hÃ¶her die Klonfabrik ausgebaut ist, umso komplexere Genome kÃ¶nnen reproduziert werden.',
 
-        6 => 'Das Raumdock dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet eine Verbesserung der Sensorenstärke.',
+        6 => 'Das Raumdock dient der Reperatur beschÃ¤digter Schiffe. Durch jede Ausbaustufe erhÃ¤lt der Planet eine Verbesserung der SensorenstÃ¤rke.',
 
-		7 => 'Je höher das Gebäude ausgebaut ist,<br>desto schneller können Schiffe gebaut werden.',
+		7 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto schneller kÃ¶nnen Schiffe gebaut werden.',
 
 		8 => 'Je effektiver die Erkenntnisvereinigung ist, umso mehr Technologien werden erkannt.',
 
-        9 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        9 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
-		10 => 'Dieses Gebäude dient zur automatischen Handelsabwicklung mit anderen Spielern.',
+		10 => 'Dieses GebÃ¤ude dient zur automatischen Handelsabwicklung mit anderen Spielern.',
 
-		11 => 'Je größer die Rohstofflager sind, umso mehr Platz ist für Rohstoffe (pro Stufe 42.500 Einheiten mehr).',
+		11 => 'Je grÃ¶ÃŸer die Rohstofflager sind, umso mehr Platz ist fÃ¼r Rohstoffe (pro Stufe 42.500 Einheiten mehr).',
 
-        12 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        12 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
     ),
 
@@ -1370,31 +1370,31 @@ $BUILDING_DESCRIPTION = array (
 
 	5 => array(
 
-		0 => 'Je höher das Gebäude ausgebaut ist, desto mehr neue Gebäude können gebaut werden.',
+		0 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr neue GebÃ¤ude kÃ¶nnen gebaut werden.',
 
-		1 => 'Je höher das Gebäude ausgebaut ist, desto mehr Metall wird pro Tick abgebaut.',
+		1 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr Metall wird pro Tick abgebaut.',
 
-		2 => 'Je höher das Gebäude ausgebaut ist, desto mehr Mineralien werden pro Tick abgebaut.',
+		2 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr Mineralien werden pro Tick abgebaut.',
 
-		3 => 'Je höher das Gebäude ausgebaut ist, desto mehr Latinum kann pro Tick produziert werden.',
+		3 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr Latinum kann pro Tick produziert werden.',
 
-		4 => 'Man muss ein Kraftwerk pro 10 Gebäude bauen, damit diese noch mit ausreichend Energie versorgt werden.',
+		4 => 'Man muss ein Power plant pro 10 GebÃ¤ude bauen, damit diese noch mit ausreichend Energie versorgt werden.',
 
-		5 => 'Je nach Stufe der Akademie können Arbeiter zu verschiedenen Einheiten-typen ausgebildet werden.',
+		5 => 'Je nach Stufe der Akademie kÃ¶nnen Arbeiter zu verschiedenen Einheiten-typen ausgebildet werden.',
 
-        6 => 'Der Raumhafen dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet eine Verbesserung der Sensorenstärke.',
+        6 => 'Der Space port dient der Reperatur beschÃ¤digter Schiffe. Durch jede Ausbaustufe erhÃ¤lt der Planet eine Verbesserung der SensorenstÃ¤rke.',
 
-		7 => 'Je höher das Gebäude ausgebaut ist,<br>desto schneller können Schiffe gebaut werden.',
+		7 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto schneller kÃ¶nnen Schiffe gebaut werden.',
 
-		8 => 'Je höher das Gebäude ausgebaut ist, desto mehr neue Technologien können erforscht werden. Bestimmte Forschungen sind auch für Schiffe und Truppentypen notwendig.',
+		8 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr neue Technologien kÃ¶nnen erforscht werden. Bestimmte Forschungen sind auch fÃ¼r Schiffe und Truppentypen notwendig.',
 
-        9 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        9 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
-		10 => 'Diese Einrichtung ermöglicht es, mit anderen Spielern Geschäftsbeziehungen zu schließen, die automatisiert abgewickelt werden.',
+		10 => 'Diese Einrichtung ermÃ¶glicht es, mit anderen Spielern GeschÃ¤ftsbeziehungen zu schlieÃŸen, die automatisiert abgewickelt werden.',
 
-		11 => 'Die Silos dienen dazu, die maximal lagerbaren Ressourcen zu erhöhen. Zusätzlich lagerbare Ressourcen pro Stufe pro Typ: 35.000',
+		11 => 'Die Silos dienen dazu, die maximal lagerbaren Ressourcen zu erhÃ¶hen. ZusÃ¤tzlich lagerbare Ressourcen pro Stufe pro Typ: 35.000',
 
-        12 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        12 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
 	),
 
@@ -1420,31 +1420,31 @@ $BUILDING_DESCRIPTION = array (
 
 	8 => array(
 
-		0 => 'Je höher die Kältekammer entwickelt ist, desto höher entwickelte Gebäude können erzeugt werden.',
+		0 => 'Je hÃ¶her die KÃ¤ltekammer entwickelt ist, desto hÃ¶her entwickelte GebÃ¤ude kÃ¶nnen erzeugt werden.',
 
-		1 => 'Je höher der Metallextraktor entwickelt ist, desto mehr Metall wird pro Tick abgebaut.',
+		1 => 'Je hÃ¶her der Metallextraktor entwickelt ist, desto mehr Metall wird pro Tick abgebaut.',
 
-		2 => 'Je höher der Mineralienextraktor entwickelt ist,desto mehr Mineralien werden pro Tick abgebaut.',
+		2 => 'Je hÃ¶her der Mineralienextraktor entwickelt ist,desto mehr Mineralien werden pro Tick abgebaut.',
 
-		3 => 'Je höher der Latinumextraktor entwickelt ist, desto mehr Latinum kann pro Tick produziert werden.',
+		3 => 'Je hÃ¶her der Latinumextraktor entwickelt ist, desto mehr Latinum kann pro Tick produziert werden.',
 
 		4 => 'Alle 10 Einrichtungsorganismen muss eine neue Kraftquelle erzeugt werden, um diese mit Energie zu versorgen.',
 
-		5 => 'Je besser die Breen Kaserne entwickelt ist, desto bessere Kämpfer können Ausgebildet werden.',
+		5 => 'Je besser die Breen Barracks entwickelt ist, desto bessere KÃ¤mpfer kÃ¶nnen Ausgebildet werden.',
 
-        6 => 'Der Raumhafen dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet eine Verbesserung der Sensorenstärke.',
+        6 => 'Der Space port dient der Reperatur beschÃ¤digter Schiffe. Durch jede Ausbaustufe erhÃ¤lt der Planet eine Verbesserung der SensorenstÃ¤rke.',
 
-		7 => 'Je höher die Breenwerft entwickelt ist,<br>desto schneller können Schiffe gebaut werden.',
+		7 => 'Je hÃ¶her die Breenwerft entwickelt ist,<br>desto schneller kÃ¶nnen Schiffe gebaut werden.',
 
-		8 => 'Je höher das Forschungszentrum entwickelt ist, desto mehr neue Technologien können wir entwickeln. Das ist nötig, damit wir stärkere Kämpfer und Schiffe erzeugen können.',
+		8 => 'Je hÃ¶her das Research Center entwickelt ist, desto mehr neue Technologien kÃ¶nnen wir entwickeln. Das ist nÃ¶tig, damit wir stÃ¤rkere KÃ¤mpfer und Schiffe erzeugen kÃ¶nnen.',
 
-        9 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        9 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
-		10 => 'Diese Einrichtung ermöglicht es, mit anderen Spielern Geschäftsbeziehungen zu schließen, die automatisiert abgewickelt werden.',
+		10 => 'Diese Einrichtung ermÃ¶glicht es, mit anderen Spielern GeschÃ¤ftsbeziehungen zu schlieÃŸen, die automatisiert abgewickelt werden.',
 
-		11 => 'Der Bio-Lagerkern dient dazu, je nach entwicklungsstufe, die Anzahl der maximal lagerbaren Ressourcen zu erhöhen. Zusätzlich Lagerbar pro Tick und Entwicklungsstufe: 50.000',
+		11 => 'Der Bio-Lagerkern dient dazu, je nach entwicklungsstufe, die Anzahl der maximal lagerbaren Ressourcen zu erhÃ¶hen. ZusÃ¤tzlich Lagerbar pro Tick und Entwicklungsstufe: 50.000',
 
-        12 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        12 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
 	),
 
@@ -1454,31 +1454,31 @@ $BUILDING_DESCRIPTION = array (
 
     9 => array(
 
-		0 => 'Je höher das Gebäude ausgebaut ist, desto mehr neue Gebäude können gebaut werden.',
+		0 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr neue GebÃ¤ude kÃ¶nnen gebaut werden.',
 
-		1 => 'Je höher das Gebäude ausgebaut ist, desto mehr Metall wird pro Tick abgebaut.',
+		1 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr Metall wird pro Tick abgebaut.',
 
-		2 => 'Je höher das Gebäude ausgebaut ist, desto mehr Mineralien werden pro Tick abgebaut.',
+		2 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr Mineralien werden pro Tick abgebaut.',
 
-		3 => 'Je höher das Gebäude ausgebaut ist, desto mehr Latinum kann pro Tick produziert werden.',
+		3 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr Latinum kann pro Tick produziert werden.',
 
-		4 => 'Man muss ein Kraftwerk pro 10 Gebäude bauen, damit diese noch mit ausreichend Energie versorgt werden.',
+		4 => 'Man muss ein Power plant pro 10 GebÃ¤ude bauen, damit diese noch mit ausreichend Energie versorgt werden.',
 
-		5 => 'Je nach Stufe des Trainingscenter können Arbeiter zu verschiedenen Einheiten-typen ausgebildet werden.',
+		5 => 'Je nach Stufe des Trainingscenter kÃ¶nnen Arbeiter zu verschiedenen Einheiten-typen ausgebildet werden.',
 
-        6 => 'Der Raumhafen dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet eine Verbesserung der Sensorenstärke.',
+        6 => 'Der Space port dient der Reperatur beschÃ¤digter Schiffe. Durch jede Ausbaustufe erhÃ¤lt der Planet eine Verbesserung der SensorenstÃ¤rke.',
 
-		7 => 'Je höher das Gebäude ausgebaut ist,<br>desto schneller können Schiffe gebaut werden.',
+		7 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto schneller kÃ¶nnen Schiffe gebaut werden.',
 
-		8 => 'Je höher das Gebäude ausgebaut ist, desto mehr neue Technologien können erforscht werden. Bestimmte Forschungen sind auch für Schiffe und Truppentypen notwendig.',
+		8 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr neue Technologien kÃ¶nnen erforscht werden. Bestimmte Forschungen sind auch fÃ¼r Schiffe und Truppentypen notwendig.',
 
-        9 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        9 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
-		10 => 'Diese Einrichtung ermöglicht es, mit anderen Spielern Geschäftsbeziehungen zu schließen, die automatisiert abgewickelt werden.',
+		10 => 'Diese Einrichtung ermÃ¶glicht es, mit anderen Spielern GeschÃ¤ftsbeziehungen zu schlieÃŸen, die automatisiert abgewickelt werden.',
 
-		11 => 'Das Rohstofflager dient dazu, die maximal lagerbaren Ressourcen zu erhöhen. Zusätzlich lagerbare Ressourcen pro Stufe pro Typ: 50.000',
+		11 => 'Das Rohstofflager dient dazu, die maximal lagerbaren Ressourcen zu erhÃ¶hen. ZusÃ¤tzlich lagerbare Ressourcen pro Stufe pro Typ: 50.000',
 
-        12 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        12 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
     ),
 
@@ -1488,31 +1488,31 @@ $BUILDING_DESCRIPTION = array (
 
 	10 => array(
 
-		 0 => 'Je weiter das Imperiale Hauptquartier der Kolonie ausgebaut ist, desto mehr und unterschiedliche Gebäude können gebaut werden.',
+		 0 => 'Je weiter das Imperiale Hauptquartier der Kolonie ausgebaut ist, desto mehr und unterschiedliche GebÃ¤ude kÃ¶nnen gebaut werden.',
 
-      1 => 'Je höher die Metallgewinnung ausgebaut ist, desto mehr Metall wird pro Tick gefördert.',
+      1 => 'Je hÃ¶her die Metallgewinnung ausgebaut ist, desto mehr Metall wird pro Tick gefÃ¶rdert.',
 
-      2 => 'Je höher die Mineralienextraktion ausgebaut ist, desto mehr Mineral wird pro Tick gefördert.',
+      2 => 'Je hÃ¶her die Mineralienextraktion ausgebaut ist, desto mehr Mineral wird pro Tick gefÃ¶rdert.',
 
-      3 => 'Je höher die Latinumraffination ausgebaut ist, desto mehr Latinum wird pro Tick gefördert.',
+      3 => 'Je hÃ¶her die Latinumraffination ausgebaut ist, desto mehr Latinum wird pro Tick gefÃ¶rdert.',
 
-      4 => 'Um eine wachsende Kolonie zu versorgen, müssen Energiekerne gebaut werden. Jeder Energiekern kann zehn zusätzliche Gebäude versorgen.',
+      4 => 'Um eine wachsende Kolonie zu versorgen, mÃ¼ssen Energiekerne gebaut werden. Jeder Energiekern kann zehn zusÃ¤tzliche GebÃ¤ude versorgen.',
 
-      5 => 'Die Kriegsakademie dient der Ausbildung von Kämpfern und Spezialisten. Je höher die Kriegsakademie ausgebaut ist, desto bessere Einheiten können ausgebildet werden.',
+      5 => 'Die Kriegsakademie dient der Ausbildung von KÃ¤mpfern und Spezialisten. Je hÃ¶her die Kriegsakademie ausgebaut ist, desto bessere Einheiten kÃ¶nnen ausgebildet werden.',
 
-        6 => 'Der Orbitalhafen dient der Beherbergung und Reparatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet eine Verbesserung der Sensorenstärke.',
+        6 => 'Der Orbitalhafen dient der Beherbergung und Reparatur beschÃ¤digter Schiffe. Durch jede Ausbaustufe erhÃ¤lt der Planet eine Verbesserung der SensorenstÃ¤rke.',
 
-      7 => 'Die Kriegswerft dient dem Bau neuer Schiffe. Je höher die Werft ausgebaut ist, desto schneller können Schiffe fertiggestellt werden.',
+      7 => 'Die Kriegswerft dient dem Bau neuer Schiffe. Je hÃ¶her die Werft ausgebaut ist, desto schneller kÃ¶nnen Schiffe fertiggestellt werden.',
 
-      8 => 'Das Laboratorium dient der Erforschung neuer Technologien. Je höher das Laboratorium ausgebaut ist, desto mehr neue Technologien können entwickelt werden.',
+      8 => 'Das Laboratorium dient der Erforschung neuer Technologien. Je hÃ¶her das Laboratorium ausgebaut ist, desto mehr neue Technologien kÃ¶nnen entwickelt werden.',
 
-        9 => 'Die Geschützplattform dient der Verteidigung des Planeten gegen feindliche Invasoren. Die Gebäudestufe gibt die Anzahl an stationierten Plattformen im Orbit an. Durch Erforschung von orbitalen Defensivmaßnahmen kann die maximale Anzahl an Plattformen gesteigert werden.',
+        9 => 'Die GeschÃ¼tzplattform dient der Verteidigung des Planeten gegen feindliche Invasoren. Die GebÃ¤udestufe gibt die Anzahl an stationierten Plattformen im Orbit an. Durch Erforschung von orbitalen DefensivmaÃŸnahmen kann die maximale Anzahl an Plattformen gesteigert werden.',
 
-      10 => 'Die Handelsbörse ermöglicht die Teilnahme am galaktischen Handel mit anderen Spielern und Allianzen.',
+      10 => 'Die HandelsbÃ¶rse ermÃ¶glicht die Teilnahme am galaktischen Handel mit anderen Spielern und Allianzen.',
 
-      11 => 'Der Lagerkern dient der Vorratsspeicherung von Ressourcen. Mit jeder Ausbaustufe können zusätzliche 57.500 Ressourcen jeder Art eingelagert werden.',
+      11 => 'Der Lagerkern dient der Vorratsspeicherung von Ressourcen. Mit jeder Ausbaustufe kÃ¶nnen zusÃ¤tzliche 57.500 Ressourcen jeder Art eingelagert werden.',
 
-        12 => 'Die Geschützplattform dient der Verteidigung des Planeten gegen feindliche Invasoren. Die Gebäudestufe gibt die Anzahl an stationierten Plattformen im Orbit an. Durch Erforschung von orbitalen Defensivmaßnahmen kann die maximale Anzahl an Plattformen gesteigert werden.', 
+        12 => 'Die GeschÃ¼tzplattform dient der Verteidigung des Planeten gegen feindliche Invasoren. Die GebÃ¤udestufe gibt die Anzahl an stationierten Plattformen im Orbit an. Durch Erforschung von orbitalen DefensivmaÃŸnahmen kann die maximale Anzahl an Plattformen gesteigert werden.', 
 
 	),
 
@@ -1522,98 +1522,98 @@ $BUILDING_DESCRIPTION = array (
 
 	11 => array(
 
-		0 => 'Je höher das Gebäude ausgebaut ist,desto mehr neue Gebäude können gebaut werden.',
+		0 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,desto mehr neue GebÃ¤ude kÃ¶nnen gebaut werden.',
 
-		1 => 'Je höher das Gebäude ausgebaut ist,desto mehr Metall wird pro Tick abgebaut.',
+		1 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,desto mehr Metall wird pro Tick abgebaut.',
 
-		2 => 'Je höher das Gebäude ausgebaut ist,desto mehr Mineralien werden pro Tick abgebaut.',
+		2 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,desto mehr Mineralien werden pro Tick abgebaut.',
 
-		3 => 'Je höher das Gebäude ausgebaut ist,desto mehr Latinum kann pro Tick produziert werden.',
+		3 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,desto mehr Latinum kann pro Tick produziert werden.',
 
-		4 => 'Man muss ein Fusionskraftwerk pro 10 Gebäude bauen,damit diese noch mit ausreichend Energie versorgt werden.',
+		4 => 'Man muss ein FusionsPower plant pro 10 GebÃ¤ude bauen,damit diese noch mit ausreichend Energie versorgt werden.',
 
-		5 => 'Je nach Stufe des Shrine of War können Arbeiter zu verschiedenen Einheiten-typen ausgebildet werden.',
+		5 => 'Je nach Stufe des Shrine of War kÃ¶nnen Arbeiter zu verschiedenen Einheiten-typen ausgebildet werden.',
 
-        6 => 'Der Raumhafen dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet eine Verbesserung der Sensorenstärke.',
+        6 => 'Der Space port dient der Reperatur beschÃ¤digter Schiffe. Durch jede Ausbaustufe erhÃ¤lt der Planet eine Verbesserung der SensorenstÃ¤rke.',
 
-		7 => 'Je höher das Gebäude ausgebaut ist,<br>desto schneller können Schiffe gebaut werden.',
+		7 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto schneller kÃ¶nnen Schiffe gebaut werden.',
 
-		8 => 'Je höher das Gebäude ausgebaut ist, desto mehr neue Technologien können erforscht werden. Bestimmte Forschungen sind auch für Schiffe und Truppentypen notwendig.',
+		8 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist, desto mehr neue Technologien kÃ¶nnen erforscht werden. Bestimmte Forschungen sind auch fÃ¼r Schiffe und Truppentypen notwendig.',
 
-        9 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        9 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
-		10 => 'Diese Einrichtung ermöglicht es, mit anderen Spielern Geschäftsbeziehungen zu schließen, die automatisiert abgewickelt werden.',
+		10 => 'Diese Einrichtung ermÃ¶glicht es, mit anderen Spielern GeschÃ¤ftsbeziehungen zu schlieÃŸen, die automatisiert abgewickelt werden.',
 
-		11 => 'Die Lager dienen dazu, die maximal lagerbaren Ressourcen zu erhöhen. Zusätzlich lagerbare Ressourcen pro Stufe pro Typ: 45.000',
+		11 => 'Die Lager dienen dazu, die maximal lagerbaren Ressourcen zu erhÃ¶hen. ZusÃ¤tzlich lagerbare Ressourcen pro Stufe pro Typ: 45.000',
 
-        12 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        12 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
 	),
 
 
 
-	// Menschen 29th
+	// Men 29th
 
     12 => array(
 
-        0 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr neue Gebäude können gebaut werden.',
+        0 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto mehr neue GebÃ¤ude kÃ¶nnen gebaut werden.',
 
-        1 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Metall wird pro Tick abgebaut.',
+        1 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto mehr Metall wird pro Tick abgebaut.',
 
-        2 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Mineralien werden pro Tick abgebaut.',
+        2 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto mehr Mineralien werden pro Tick abgebaut.',
 
-        3 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Latinum kann pro Tick produziert werden.',
+        3 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto mehr Latinum kann pro Tick produziert werden.',
 
-        4 => 'Man muss ein Kraftwerk pro 10 Gebäude bauen,<br>damit diese noch mit ausreichend Energie versorgt werden.',
+        4 => 'Man muss ein Power plant pro 10 GebÃ¤ude bauen,<br>damit diese noch mit ausreichend Energie versorgt werden.',
 
-        5 => 'Je nach Stufe der Akademie können Arbeiter zu veschiedenen Einheiten-<br>typen ausgebildet werden.',
+        5 => 'Je nach Stufe der Akademie kÃ¶nnen Arbeiter zu veschiedenen Einheiten-<br>typen ausgebildet werden.',
 
-        6 => 'Der Raumhafen dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet +200 Sensorenstärke.',
+        6 => 'Der Space port dient der Reperatur beschÃ¤digter Schiffe. Durch jede Ausbaustufe erhÃ¤lt der Planet +200 SensorenstÃ¤rke.',
 
-        7 => 'Je höher das Gebäude ausgebaut ist,<br>desto schneller können Schiffe gebaut werden.<br>Pro 50 Punkte des Planeten kann der jeweils nächsthöhere Rumpftyp gebaut werden.',
+        7 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto schneller kÃ¶nnen Schiffe gebaut werden.<br>Pro 50 Punkte des Planeten kann der jeweils nÃ¤chsthÃ¶here Rumpftyp gebaut werden.',
 
-        8 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr neue Technologien können erforscht werden.<br>Bestimmte Forschungen sind auch für Schiffe und Truppentypen notwendig.',
+        8 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto mehr neue Technologien kÃ¶nnen erforscht werden.<br>Bestimmte Forschungen sind auch fÃ¼r Schiffe und Truppentypen notwendig.',
 
-        9 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        9 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
-        10 => 'Diese Einrichtung ermöglicht es, mit anderen Spielern Geschäftsbeziehungen zu schließen, die automatisiert abgewickelt werden.',
+        10 => 'Diese Einrichtung ermÃ¶glicht es, mit anderen Spielern GeschÃ¤ftsbeziehungen zu schlieÃŸen, die automatisiert abgewickelt werden.',
 
-        11 => 'Die Silos dienen dazu, die maximal lagerbaren Ressourcen zu erhöhen.<br>Zusätzlich lagerbare Ressourcen pro Stufe pro Typ: 10.000',
+        11 => 'Die Silos dienen dazu, die maximal lagerbaren Ressourcen zu erhÃ¶hen.<br>ZusÃ¤tzlich lagerbare Ressourcen pro Stufe pro Typ: 10.000',
 
-        12 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        12 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
     ),
 
 
 
-	// Siedler
+	// Settler
     13 => array(
 
-        0 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr neue Gebäude können gebaut werden.',
+        0 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto mehr neue GebÃ¤ude kÃ¶nnen gebaut werden.',
 
-        1 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Metall wird pro Tick abgebaut.',
+        1 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto mehr Metall wird pro Tick abgebaut.',
 
-        2 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Mineralien werden pro Tick abgebaut.',
+        2 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto mehr Mineralien werden pro Tick abgebaut.',
 
-        3 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Latinum kann pro Tick produziert werden.',
+        3 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto mehr Latinum kann pro Tick produziert werden.',
 
-        4 => 'Man muss ein Kraftwerk pro 10 Gebäude bauen,<br>damit diese noch mit ausreichend Energie versorgt werden.',
+        4 => 'Man muss ein Power plant pro 10 GebÃ¤ude bauen,<br>damit diese noch mit ausreichend Energie versorgt werden.',
 
-        5 => 'Je nach Stufe der Akademie können Arbeiter zu veschiedenen Einheiten-<br>typen ausgebildet werden.',
+        5 => 'Je nach Stufe der Akademie kÃ¶nnen Arbeiter zu veschiedenen Einheiten-<br>typen ausgebildet werden.',
 
-        6 => 'Der Raumhafen dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet +200 Sensorenstärke.',
+        6 => 'Der Space port dient der Reperatur beschÃ¤digter Schiffe. Durch jede Ausbaustufe erhÃ¤lt der Planet +200 SensorenstÃ¤rke.',
 
-        7 => 'Je höher das Gebäude ausgebaut ist,<br>desto schneller können Schiffe gebaut werden.<br>Pro 50 Punkte des Planeten kann der jeweils nächsthöhere Rumpftyp gebaut werden.',
+        7 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto schneller kÃ¶nnen Schiffe gebaut werden.<br>Pro 50 Punkte des Planeten kann der jeweils nÃ¤chsthÃ¶here Rumpftyp gebaut werden.',
 
-        8 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr neue Technologien können erforscht werden.<br>Bestimmte Forschungen sind auch für Schiffe und Truppentypen notwendig.',
+        8 => 'Je hÃ¶her das GebÃ¤ude ausgebaut ist,<br>desto mehr neue Technologien kÃ¶nnen erforscht werden.<br>Bestimmte Forschungen sind auch fÃ¼r Schiffe und Truppentypen notwendig.',
 
-        9 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        9 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
-        10 => 'Diese Einrichtung ermöglicht es, mit anderen Spielern Geschäftsbeziehungen zu schließen, die automatisiert abgewickelt werden.',
+        10 => 'Diese Einrichtung ermÃ¶glicht es, mit anderen Spielern GeschÃ¤ftsbeziehungen zu schlieÃŸen, die automatisiert abgewickelt werden.',
 
-        11 => 'Die Silos dienen dazu, die maximal lagerbaren Ressourcen zu erhöhen.<br>Zusätzlich lagerbare Ressourcen pro Stufe pro Typ: 10.000',
+        11 => 'Die Silos dienen dazu, die maximal lagerbaren Ressourcen zu erhÃ¶hen.<br>ZusÃ¤tzlich lagerbare Ressourcen pro Stufe pro Typ: 10.000',
 
-        12 => 'Die Gebäudestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl können durch das Erforschen von Orbitalabwehr modifiziert werden.',
+        12 => 'Die GebÃ¤udestufe gibt die Anzahl der orbitalen Verteidiungsperimeter um den Planeten an.<br>Die Baukosten und die max. Anzahl kÃ¶nnen durch das Erforschen von Orbital defense modifiziert werden.',
 
     ),
 
@@ -1626,71 +1626,71 @@ $BUILDING_DESCRIPTION = array (
 
 $TECH_DESCRIPTION = array (
 
-	// Menschen
+	// Men
 
     0 => array(
 
-        0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Stufe einen zusätzlichen Arbeiter.<br>Außerdem erhöht sich das max. Bevölkerungslimit auf dem Planeten pro Stufe um 550.',
+        0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Stufe einen zusÃ¤tzlichen Arbeiter.<br>AuÃŸerdem erhÃ¶ht sich das max. BevÃ¶lkerungslimit auf dem Planeten pro Stufe um 550.',
 
-        1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Stufe einen zusätzlichen Arbeiter.',
+        1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Stufe einen zusÃ¤tzlichen Arbeiter.',
 
-        2 => 'Durch das Erforschen der Orbitalabwehr verändern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
+        2 => 'Durch das Erforschen der Orbital defense verÃ¤ndern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
 
-        3 => 'Durch Automatisierung laufen <b>sämtliche</b> Bau- Ausbildungsvorgänge auf Ihrem Planeten 2% pro Stufe schneller ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
+        3 => 'Durch Automation laufen <b>sÃ¤mtliche</b> Bau- AusbildungsvorgÃ¤nge auf Ihrem Planeten 2% pro Stufe schneller ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
 
-        4 => 'Rohstoffverarbeitung erhöht den Ressourcenoutput sämtlicher Minen/Raffinerien:<br>Stufe 1: +4,5%<br>Stufe 2: +8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
+        4 => 'Raw materials processing erhÃ¶ht den Ressourcenoutput sÃ¤mtlicher Minen/Raffinerien:<br>Stufe 1: +4,5%<br>Stufe 2: +8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
 
     ),
 
 
 
-	// Romulaner
+	// Romulan
 
     1 => array(
 
-        0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Stufe einen zusätzlichen Arbeiter.<br>Außerdem erhöht sich das max. Bevölkerungslimit auf dem Planeten pro Stufe um 500.',
+        0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Stufe einen zusÃ¤tzlichen Arbeiter.<br>AuÃŸerdem erhÃ¶ht sich das max. BevÃ¶lkerungslimit auf dem Planeten pro Stufe um 500.',
 
-        1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Stufe einen zusätzlichen Arbeiter.',
+        1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Stufe einen zusÃ¤tzlichen Arbeiter.',
 
-        2 => 'Durch das Erforschen der Orbitalabwehr verändern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
+        2 => 'Durch das Erforschen der Orbital defense verÃ¤ndern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
 
-        3 => 'Durch Automatisierung laufen <b>sämtliche</b> Bau- Ausbildungsvorgänge auf Ihrem Planeten 2% pro Stufe schneller ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
+        3 => 'Durch Automation laufen <b>sÃ¤mtliche</b> Bau- AusbildungsvorgÃ¤nge auf Ihrem Planeten 2% pro Stufe schneller ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
 
-        4 => 'Rohstoffverarbeitung erhöht den Ressourcenoutput sämtlicher Minen/Raffinerien:<br>Stufe 1: +4,5%<br>Stufe 2: +8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
+        4 => 'Raw materials processing erhÃ¶ht den Ressourcenoutput sÃ¤mtlicher Minen/Raffinerien:<br>Stufe 1: +4,5%<br>Stufe 2: +8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
 
     ),
 
 
 
-	// Klingonen
+	// Klingon
 
     2 => array(
 
-        0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Stufe einen zusätzlichen Arbeiter.<br>Außerdem erhöht sich das max. Bevölkerungslimit auf dem Planeten pro Stufe um 450.',
+        0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Stufe einen zusÃ¤tzlichen Arbeiter.<br>AuÃŸerdem erhÃ¶ht sich das max. BevÃ¶lkerungslimit auf dem Planeten pro Stufe um 450.',
 
-        1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Stufe einen zusätzlichen Arbeiter.',
+        1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Stufe einen zusÃ¤tzlichen Arbeiter.',
 
-        2 => 'Durch das Erforschen der Orbitalabwehr verändern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
+        2 => 'Durch das Erforschen der Orbital defense verÃ¤ndern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
 
-        3 => 'Durch Automatisierung laufen <b>sämtliche</b> Bau- Ausbildungsvorgänge auf Ihrem Planeten 2% pro Stufe schneller ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
+        3 => 'Durch Automation laufen <b>sÃ¤mtliche</b> Bau- AusbildungsvorgÃ¤nge auf Ihrem Planeten 2% pro Stufe schneller ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
 
-        4 => 'Rohstoffverarbeitung erhöht den Ressourcenoutput sämtlicher Minen/Raffinerien:<br>Stufe 1: +4,5%<br>Stufe 2: +8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
+        4 => 'Raw materials processing erhÃ¶ht den Ressourcenoutput sÃ¤mtlicher Minen/Raffinerien:<br>Stufe 1: +4,5%<br>Stufe 2: +8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
 
     ),
 
 
 
-	// Cardassianer
+	// Cardassian
 
     3 => array(
 
-		0 => 'Durch Klimaneuordnung bekommen Sie pro 10 Ticks und Stufe einen zusätzlichen Sklaven <br> Außerdem erhöht sich das Skilavenlimit pro Stufe um 500',
+		0 => 'Durch Klimaneuordnung bekommen Sie pro 10 Ticks und Stufe einen zusÃ¤tzlichen Sklaven <br> AuÃŸerdem erhÃ¶ht sich das Skilavenlimit pro Stufe um 500',
 
 		1 => 'Durch verbesserte Sklavenhaltung sterben weniger Sklaven und Sie bekommen pro 5 Ticks und Stufe einen Sklaven mehr.',
 
-        2 => 'Durch das Erforschen der Orbitalabwehr verändern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
+        2 => 'Durch das Erforschen der Orbital defense verÃ¤ndern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
 
-		3 => 'Durch Automatisierung verkürzen sich die Bauzeiten für Schiffe, Einheiten und Gebäude.',
+		3 => 'Durch Automation verkÃ¼rzen sich die Bauzeiten fÃ¼r Schiffe, Einheiten und GebÃ¤ude.',
 
 		4 => 'Durch Sklavenmotivation arbeiten die Sklaven effizienter.',
 
@@ -1700,15 +1700,15 @@ $TECH_DESCRIPTION = array (
 
     4 => array(
 
-        0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Stufe einen zusätzlichen Sklaven. Außerdem erhöht sich das max. Bevölkerungslimit auf dem Planeten pro Stufe um 425.',
+        0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Stufe einen zusÃ¤tzlichen Sklaven. AuÃŸerdem erhÃ¶ht sich das max. BevÃ¶lkerungslimit auf dem Planeten pro Stufe um 425.',
 
-        1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Stufe einen zusätzlichen Arbeiter.',
+        1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Stufe einen zusÃ¤tzlichen Arbeiter.',
 
-        2 => 'Durch das Erforschen der Orbitalabwehr verändern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
+        2 => 'Durch das Erforschen der Orbital defense verÃ¤ndern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
 
-        3 => 'Durch Automatisierung laufen <b>sämtliche</b> Bau- Ausbildungsvorgänge auf Ihrem Planeten 2% pro Stufe schneller ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
+        3 => 'Durch Automation laufen <b>sÃ¤mtliche</b> Bau- AusbildungsvorgÃ¤nge auf Ihrem Planeten 2% pro Stufe schneller ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
 
-        4 => 'Rohstoffverarbeitung erhöht den Ressourcenoutput sämtlicher Minen/Raffinerien:<br>Stufe 1: +4,5%<br>Stufe 2: +8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
+        4 => 'Raw materials processing erhÃ¶ht den Ressourcenoutput sÃ¤mtlicher Minen/Raffinerien:<br>Stufe 1: +4,5%<br>Stufe 2: +8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
 
     ),
 
@@ -1718,15 +1718,15 @@ $TECH_DESCRIPTION = array (
 
 	5 => array(
 
-        0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Stufe einen zusätzlichen Arbeiter.<br>Außerdem erhöht sich das max. Bevölkerungslimit auf dem Planeten pro Stufe um 350.',
+        0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Stufe einen zusÃ¤tzlichen Arbeiter.<br>AuÃŸerdem erhÃ¶ht sich das max. BevÃ¶lkerungslimit auf dem Planeten pro Stufe um 350.',
 
-        1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Stufe einen zusätzlichen Arbeiter.',
+        1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Stufe einen zusÃ¤tzlichen Arbeiter.',
 
-        2 => 'Durch das Erforschen der Orbitalabwehr verändern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
+        2 => 'Durch das Erforschen der Orbital defense verÃ¤ndern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
 
-        3 => 'Durch Automatisierung laufen <b>sämtliche</b> Bau- Ausbildungsvorgänge auf Ihrem Planeten 2% pro Stufe schneller ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
+        3 => 'Durch Automation laufen <b>sÃ¤mtliche</b> Bau- AusbildungsvorgÃ¤nge auf Ihrem Planeten 2% pro Stufe schneller ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
 
-        4 => 'Rohstoffverarbeitung erhöht den Ressourcenoutput sämtlicher Minen/Raffinerien:<br>Stufe 1: +4,5%<br>Stufe 2: +8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
+        4 => 'Raw materials processing erhÃ¶ht den Ressourcenoutput sÃ¤mtlicher Minen/Raffinerien:<br>Stufe 1: +4,5%<br>Stufe 2: +8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
 
 	),
 
@@ -1752,15 +1752,15 @@ $TECH_DESCRIPTION = array (
 
 	8 => array(
 
-		0 => 'Durch planetarische Anpassungen bekommen Sie pro 10 Ticks und Stufe einen zusätzlichen Arbeiter.<br>Außerdem erhöht sich das max. Bevölkerungslimit auf dem Planeten pro Stufe um 500.',
+		0 => 'Durch planetarische Anpassungen bekommen Sie pro 10 Ticks und Stufe einen zusÃ¤tzlichen Arbeiter.<br>AuÃŸerdem erhÃ¶ht sich das max. BevÃ¶lkerungslimit auf dem Planeten pro Stufe um 500.',
 
-        1 => 'Durch biogene Forschung bekommen Sie pro 5 Ticks und Stufe einen zusätzlichen Arbeiter.',
+        1 => 'Durch biogene Forschung bekommen Sie pro 5 Ticks und Stufe einen zusÃ¤tzlichen Arbeiter.',
 
-        2 => 'Durch das Erforschen der Orbitalabwehr verändern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
+        2 => 'Durch das Erforschen der Orbital defense verÃ¤ndern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
 
-		3 => 'Durch Automatisierung laufen <b>sämtliche</b> Erzeugungs- und Entwicklungsvorgänge auf Ihrem Planeten 2% pro Stufe schneller ab.<br>Eine Einsparung von fast 1/5 der Erzeugungs- und Entwicklungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
+		3 => 'Durch Automation laufen <b>sÃ¤mtliche</b> Erzeugungs- und EntwicklungsvorgÃ¤nge auf Ihrem Planeten 2% pro Stufe schneller ab.<br>Eine Einsparung von fast 1/5 der Erzeugungs- und Entwicklungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
 
-		4 => 'Rohstoffverarbeitung erhöht den Ressourcenoutput sämtlicher Extraktoren:<br>Stufe 1: +4,5%<br>Stufe 2: 8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
+		4 => 'Raw materials processing erhÃ¶ht den Ressourcenoutput sÃ¤mtlicher Extraktoren:<br>Stufe 1: +4,5%<br>Stufe 2: 8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
 
 	),
 
@@ -1770,15 +1770,15 @@ $TECH_DESCRIPTION = array (
 
     9 => array(
 
-		0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Stufe einen zusätzlichen Arbeiter.<br>Außerdem erhöht sich das max. Bevölkerungslimit auf dem Planeten pro Stufe um 500.',
+		0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Stufe einen zusÃ¤tzlichen Arbeiter.<br>AuÃŸerdem erhÃ¶ht sich das max. BevÃ¶lkerungslimit auf dem Planeten pro Stufe um 500.',
 
-        1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Stufe einen zusätzlichen Arbeiter.',
+        1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Stufe einen zusÃ¤tzlichen Arbeiter.',
 
-        2 => 'Durch das Erforschen der Orbitalabwehr verändern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
+        2 => 'Durch das Erforschen der Orbital defense verÃ¤ndern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
 
-		3 => 'Durch Automatisierung laufen <b>sämtliche</b> Bau- Ausbildungsvorgänge auf Ihrem Planeten 2% pro Stufe schneller  ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
+		3 => 'Durch Automation laufen <b>sÃ¤mtliche</b> Bau- AusbildungsvorgÃ¤nge auf Ihrem Planeten 2% pro Stufe schneller  ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
 
-		4 => 'Rohstoffverarbeitung erhöht den Ressourcenoutput sämtlicher Minen/Raffinerien:<br>Stufe 1: +4,5%<br>Stufe 2: 8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
+		4 => 'Raw materials processing erhÃ¶ht den Ressourcenoutput sÃ¤mtlicher Minen/Raffinerien:<br>Stufe 1: +4,5%<br>Stufe 2: 8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
 
     ),
 
@@ -1788,15 +1788,15 @@ $TECH_DESCRIPTION = array (
 
 	10 => array(
 
-		 0 => 'Durch ökologische Anpassung eines Planeten bekommt man pro 10 Ticks einen zusätzlichen Arbeiter, außerdem vergrößert es den Wohnraum der Bevölkerung um 575.',
+		 0 => 'Durch Ã¶kologische Anpassung eines Planeten bekommt man pro 10 Ticks einen zusÃ¤tzlichen Arbeiter, auÃŸerdem vergrÃ¶ÃŸert es den Wohnraum der BevÃ¶lkerung um 575.',
 
-        1 => 'Die biochemische Forschung verbessert die Gesundheit der Bevölkerung und führt zu einem höheren Bevölkerungswachstum: In jedem 5. Tick gibt es einen zusätzlichen Arbeiter.',
+        1 => 'Die biochemische Forschung verbessert die Gesundheit der BevÃ¶lkerung und fÃ¼hrt zu einem hÃ¶heren BevÃ¶lkerungswachstum: In jedem 5. Tick gibt es einen zusÃ¤tzlichen Arbeiter.',
 
-        2 => 'Durch das Erforschen von orbitalen Defensivmaßnahmen verändern sich die Kosten und die maximale Anzahl an orbitalen Geschützplattformen wie folgt: Kosten -3,5% / Stufe, Anzahl +2 / Stufe',
+        2 => 'Durch das Erforschen von orbitalen DefensivmaÃŸnahmen verÃ¤ndern sich die Kosten und die maximale Anzahl an orbitalen GeschÃ¼tzplattformen wie folgt: Kosten -3,5% / Stufe, Anzahl +2 / Stufe',
 
-      3 => 'Durch Mechanisierung laufen sämtliche Entwicklungs- und Produktionsvorgänge um 2% pro Stufe schneller ab. Eine Einsparung von fast 1/5 der Entwicklungszeiten auf dem Planeten rechtfertigt den hohen Forschungspreis.',
+      3 => 'Durch Mechanisierung laufen sÃ¤mtliche Entwicklungs- und ProduktionsvorgÃ¤nge um 2% pro Stufe schneller ab. Eine Einsparung von fast 1/5 der Entwicklungszeiten auf dem Planeten rechtfertigt den hohen Forschungspreis.',
 
-      4 => 'Bergbaurobotik erhöht den Rohstoffoutput aller Minen auf dem Planeten wie folgt:<br>Stufe 1: +4,5%<br>Stufe 2: 8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%', 
+      4 => 'Bergbaurobotik erhÃ¶ht den Rohstoffoutput aller Minen auf dem Planeten wie folgt:<br>Stufe 1: +4,5%<br>Stufe 2: 8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%', 
 
 	),
 
@@ -1806,15 +1806,15 @@ $TECH_DESCRIPTION = array (
 
 	11 => array(
 
-        0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Stufe einen zusätzlichen Arbeiter.<br>Außerdem erhöht sich das max. Bevölkerungslimit auf dem Planeten pro Stufe um 450.',
+        0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Stufe einen zusÃ¤tzlichen Arbeiter.<br>AuÃŸerdem erhÃ¶ht sich das max. BevÃ¶lkerungslimit auf dem Planeten pro Stufe um 450.',
 
-        1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Stufe einen zusätzlichen Arbeiter.',
+        1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Stufe einen zusÃ¤tzlichen Arbeiter.',
 
-        2 => 'Durch das Erforschen der Orbitalabwehr verändern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
+        2 => 'Durch das Erforschen der Orbital defense verÃ¤ndern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
 
-        3 => 'Durch Automatisierung laufen <b>sämtliche</b> Bau- Ausbildungsvorgänge auf Ihrem Planeten 2% pro Stufe schneller ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
+        3 => 'Durch Automation laufen <b>sÃ¤mtliche</b> Bau- AusbildungsvorgÃ¤nge auf Ihrem Planeten 2% pro Stufe schneller ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
 
-        4 => 'Rohstoffverarbeitung erhöht den Ressourcenoutput sämtlicher Minen/Raffinerien:<br>Stufe 1: +4,5%<br>Stufe 2: +8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
+        4 => 'Raw materials processing erhÃ¶ht den Ressourcenoutput sÃ¤mtlicher Minen/Raffinerien:<br>Stufe 1: +4,5%<br>Stufe 2: +8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
 
 	),
 
@@ -1822,7 +1822,7 @@ $TECH_DESCRIPTION = array (
 
 	
 
-	// Menschen 29th
+	// Men 29th
 
 	12 => array(
 
@@ -1830,28 +1830,28 @@ $TECH_DESCRIPTION = array (
 
 	    1 => 'Medizinische Forschung',
 
-	    2 => 'Orbitalabwehr',
+	    2 => 'Orbital defense',
 
-	    3 => 'Automatisierung',
+	    3 => 'Automation',
 
-	    4 => 'Rohstoffverarbeitung'
+	    4 => 'Raw materials processing'
 
     ),
 
 
-	// Siedler
+	// Settler
 
     13 => array(
 
-        0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Stufe einen zusätzlichen Arbeiter.<br>Außerdem erhöht sich das max. Bevölkerungslimit auf dem Planeten pro Stufe um 500.',
+        0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Stufe einen zusÃ¤tzlichen Arbeiter.<br>AuÃŸerdem erhÃ¶ht sich das max. BevÃ¶lkerungslimit auf dem Planeten pro Stufe um 500.',
 
-        1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Stufe einen zusätzlichen Arbeiter.',
+        1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Stufe einen zusÃ¤tzlichen Arbeiter.',
 
-        2 => 'Durch das Erforschen der Orbitalabwehr verändern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
+        2 => 'Durch das Erforschen der Orbital defense verÃ¤ndern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Stufe wie folgt:<br>Kosten -3.5% / Stufe<br>Anzahl: +2 / Stufe',
 
-        3 => 'Durch Automatisierung laufen <b>sämtliche</b> Bau- Ausbildungsvorgänge auf Ihrem Planeten 2% pro Stufe schneller ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
+        3 => 'Durch Automation laufen <b>sÃ¤mtliche</b> Bau- AusbildungsvorgÃ¤nge auf Ihrem Planeten 2% pro Stufe schneller ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
 
-        4 => 'Rohstoffverarbeitung erhöht den Ressourcenoutput sämtlicher Minen/Raffinerien:<br>Stufe 1: +4,5%<br>Stufe 2: +8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
+        4 => 'Raw materials processing erhÃ¶ht den Ressourcenoutput sÃ¤mtlicher Minen/Raffinerien:<br>Stufe 1: +4,5%<br>Stufe 2: +8,75%<br>Stufe 3: +12,75%<br>Stufe 4: +16,5%<br>Stufe 5: +20%<br>Stufe 6: +23,25%<br>Stufe 7: +26,25%<br>Stufe 8: +29%<br>Stufe 9: +31,5%',
 
     ),
 

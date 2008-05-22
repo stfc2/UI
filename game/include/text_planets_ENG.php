@@ -22,132 +22,132 @@
 
 
 /*
- * 0 => Bezeichnung des Planeten
- * 1 => menschliches Leben
- * 2 => Rohstoffvorkommen
- * 3 => Beschreibung
- * 4 => Beispiele
+ * 0 => Heading the planet
+ * 1 => Human life
+ * 2 => Raw materials
+ * 3 => Description
+ * 4 => Examples
  */
  
 $PLANETS_TEXT = array(
     'a' => array(
-        0 => 'Gas-Supergigant',
-        1 => 'unmöglich',
-        2 => 'hohe Vorkommen metallischer Elemente, kaum Mineralien',
-        3 => 'Planeten dieser Klasse sind sehr groß, meistens eine 300 bis 1000fache Masse der Erde, und liegen in der kalten Zone ihrer Sonne (hohe Entfernung). Durch die geringe Sonneneinstrahlung und hohe Gravitation bilden sie dichte Atmosphären aus Wasserstoff. Die hohen Kerntemperaturen verursachen eine Wärmeabstrahlung und eine hohe Oberflächentemperatur. Leben ist nur auf orbitalen Stationen möglich.',
+        0 => 'Gas-Supergiant',
+        1 => 'Impossible',
+        2 => 'High occurrences of metallic elements, hardly Minerals',
+        3 => 'Planets in this class are very large, usually a 300 to 1000 times the mass of the Earth, and are in the cold zone of its Sun (high range). Due to the low sunlight and high gravity, they form dense atmospheres of hydrogen. The high temperatures cause a nuclear heat dissipation and high surface temperature. Life is only possible orbital stations.',
         4 => 'Jupiter'
     ),
     
     'b' => array(
-        0 => 'Gas-Giganten',
-        1 => 'unmöglich',
-        2 => 'hohe Vorkommen metallischer Elemente, kaum Mineralien',
-        3 => 'Planeten dieser Klasse sind sehr groß, meistens eine 10 bis 100fache Masse der Erde, und liegen in der kalten Zone ihrer Sonne (hohe Entfernung). Durch die geringe Sonneneinstrahlung und hohe Gravitation bilden sie dichte Atmosphären aus Wasserstoff. Die hohen Kerntemperaturen verursachen eine Wärmeabstrahlung und eine hohe Oberflächentemperatur. Leben ist nur auf orbitalen Stationen möglich.',
+        0 => 'Gas-Giant',
+        1 => 'Impossible',
+        2 => 'High occurrences of metallic elements, hardly Minerals',
+        3 => 'Planets in this class are very large, usually a 10 to 100x mass of the Earth, and are in the cold zone of its Sun (high range). Due to the low sunlight and high gravity, they form dense atmospheres of hydrogen. The high temperatures cause a nuclear heat dissipation and high surface temperature. Life is only possible orbital stations.',
         4 => 'Saturn, Neptun'
     ),
     
     'c' => array(
-        0 => 'Klasse-C-Welt',
-        1 => 'aufwändig, aber möglich',
-        2 => 'mittlere Vorkommen aller wichtigen Rohstoffen',
-        3 => 'Planeten dieser Klasse ähneln in Masse und Entfernung zur Sonne der Erde, ihre Atmosphäre und Oberfläche ist jedoch durch starke Treibhauseffekte aufgeheizt, so dass Wasser z.B. nur im gasförmigen Zustand vorhanden ist. Mit technischer Unterstützung und Versorgung von außen ist Leben möglich',
+        0 => 'Class-C-World',
+        1 => 'Expensive, but possible',
+        2 => 'Medium occurrences of all major commodities',
+        3 => 'Planets in this class are similar mass and distance to the sun, the earth, its atmosphere and surface, however, by strong greenhouse heated up, so that water eg Only in the gaseous state exists. With technical support and supplies from the outside is life possible.',
         4 => 'Venus'
     ),
     
     'd' => array(
-        0 => 'Klasse-D-Welt',
-        1 => 'aufwändig, aber möglich',
-        2 => 'mittlere Vorkommen aller wichtigen Rohstoffe',
-        3 => 'Planeten dieser Klasse gelten meist nur als Planetoiden, da sie je nach Größe keine regelmäßige Form besitzen, weil ihre Gravitation nicht ausreicht, um eine Kugel zu bilden. Ihre Atmosphäre ist, wenn vorhanden, sehr dünn. Die Oberfläche besteht aus Silikaten und verschiedenen Metallverbindungen. Mit technischer Unterstützung und Versorgung von außen ist Leben möglich.',
+        0 => 'Class-D-World',
+        1 => 'Expensive, but possible',
+        2 => 'Medium occurrences of all major commodities',
+        3 => 'This planetary class usually is applied only on planetoid, as they no depending on the size of a regular shape, because their gravity is not sufficient to form a ball. Their atmosphere is, if available, very thin. The surface is composed of silicates and various metal compounds. With technical support and supplies from the outside is life.',
         4 => 'Ceres (Asteroid im Sol-System)'
     ),
     
     'e' => array(
-        0 => 'Klasse-E-Welt',
-        1 => 'mit technischer Hilfe möglich',
-        2 => 'mittlere Vorkommen aller wichtigen Rohstoffe',
-        3 => 'Planeten dieser Klasse ähneln in Masse und Entfernung zur Sonne der Erde und werden als Vorläufer der verschiedenen Klassen nach F gesehen. Ihr Kern ist noch geschmolzen, sie besitzen jedoch bereits eine dünne Atmosphäre mit Sauerstoff-Bestandteilen. Mit technischer Unterstützung und Versorgung von außen ist Leben möglich.',
+        0 => 'Class-E-World',
+        1 => 'Possible with technical assistance',
+        2 => 'Medium occurrences of all major commodities',
+        3 => 'Planets in this class are similar mass and distance to the sun and the Earth are considered precursors of the various Class F seen. The heart is melted, but they already have a thin atmosphere with oxygen components. With technical support and supplies from the outside is life.',
         4 => '-'
     ),
     
     'f' => array(
-        0 => 'Klasse-F-Welt',
-        1 => 'mit technischer Hilfe möglich',
-        2 => 'mittlere Vorkommen aller wichtigen Rohstoffe',
-        3 => 'Planeten dieser Klasse ähneln in Masse und Entfernung zur Sonne der Erde. Ihre Atmosphäre ist bereits sehr sauerstoffreich, doch durch ihr geringes Alter (ca. 1 Mrd. Jahre) ist ihre Oberfläche oft noch nicht vollkommen erstarrt. Mit geringer technischer Unterstützung ist Leben möglich.',
+        0 => 'Class-F-World',
+        1 => 'Possible with technical assistance',
+        2 => 'Medium occurrences of all major commodities',
+        3 => 'Planeten dieser Class ähneln in Masse und Entfernung zur Sonne der Erde. Ihre Atmosphäre ist bereits sehr sauerstoffreich, doch durch ihr geringes Alter (ca. 1 Mrd. Jahre) ist ihre Oberfläche oft noch nicht vollkommen erstarrt. Mit geringer technischer Unterstützung ist Leben möglich.',
         4 => '-'
     ),
     
     'g' => array(
-        0 => 'Klasse-G-Welt',
-        1 => 'mit technischer Hilfe möglich',
-        2 => 'hohe Vorkommen metallischer Elemente',
-        3 => 'Planeten dieser Klasse haben ungefähr die Masse der Erde, befinden sich aber in der heißesten Zone der Sonne (geringe Entfernung). Ihre Atmosphäre besteht aus schweren Gasen und gasförmigen Metallen, meistens existieren aber auch noch Sauerstoff-Verbindungen. Die starke Sonneneinstrahlung führt zu einer hohen Oberflächentemperatur. Mit technischer Hilfe ist Leben möglich',
+        0 => 'Class-G-World',
+        1 => 'Possible with technical assistance',
+        2 => 'High occurrences of metallic elements',
+        3 => 'Planeten dieser Class haben ungefähr die Masse der Erde, befinden sich aber in der heißesten Zone der Sonne (geringe Entfernung). Ihre Atmosphäre besteht aus schweren Gasen und gasförmigen Metallen, meistens existieren aber auch noch Sauerstoff-Verbindungen. Die starke Sonneneinstrahlung führt zu einer hohen Oberflächentemperatur. Mit technischer Hilfe ist Leben möglich',
         4 => 'Ceti Alpha V'
     ),
     
     'h' => array(
-        0 => 'Klasse-H-Welt',
-        1 => 'aufwändig, aber möglich',
-        2 => 'mittlere Vorkommen aller wichtigen Rohstoffe',
-        3 => 'Planten dieser Klasse kommen auf ungefähr 10% der Erdmasse und liegen in einer großen Entfernung zur Sonne (kalte Zone). Durch ihr geringes Alter ist die Oberfläche noch geschmolzen oder ist immer noch geologisch sehr aktiv. Die Atmosphäre besteht vornehmlich aus Wasserstoff. Mit technischer Hilfe und Versorgung von außen ist Leben möglich.',
+        0 => 'Class-H-World',
+        1 => 'Expensive, but possible',
+        2 => 'Medium occurrences of all major commodities',
+        3 => 'Planten dieser Class kommen auf ungefähr 10% der Erdmasse und liegen in einer großen Entfernung zur Sonne (kalte Zone). Durch ihr geringes Alter ist die Oberfläche noch geschmolzen oder ist immer noch geologisch sehr aktiv. Die Atmosphäre besteht vornehmlich aus Wasserstoff. Mit technischer Hilfe und Versorgung von außen ist Leben möglich.',
         4 => 'Gothos'
     ),
     
     'i' => array(
-        0 => 'Klasse-I-Welt',
-        1 => 'aufwändig, aber möglich',
-        2 => 'hohe Vorkommen mineralischer Elemente und Latinum, kaum Metalle',
-        3 => 'Planeten dieser Klasse ähneln in Masse und Entfernung zur Sonne der Erde. Sie haben eine sehr aktive Oberfläche voller Vulkane und ihre Atmosphäre ist stark toxisch. Mit technischer Hilfe und Versorgung von außen ist Leben möglich.',
+        0 => 'Class-I-World',
+        1 => 'Expensive, but possible',
+        2 => 'High occurrences of mineral elements and deutherium, hardly metals',
+        3 => 'Planeten dieser Class ähneln in Masse und Entfernung zur Sonne der Erde. Sie haben eine sehr aktive Oberfläche voller Vulkane und ihre Atmosphäre ist stark toxisch. Mit technischer Hilfe und Versorgung von außen ist Leben möglich.',
         4 => '-'
     ),
     
     'j' => array(
-        0 => 'Klasse-J-Welt',
-        1 => 'aufwändig, aber möglich',
-        2 => 'enorme Vorkommen mineralischer Elemente, kaum Latinum und Metalle',
-        3 => 'Planeten dieser Klasse kommen auf ungefähr 10%-100% der Erdmasse. Ihre aus Edelgasen bestehende Atmosphäre ist dünn und das gesamte Erscheinungsbild ist eher mondartig. Mit technischer Hilfe und Versorgung von außen ist Leben möglich.',
+        0 => 'Class-J-World',
+        1 => 'Expensive, but possible',
+        2 => 'Huge deposits of mineral elements, metals and hardly dilithium',
+        3 => 'Planeten dieser Class kommen auf ungefähr 10%-100% der Erdmasse. Ihre aus Edelgasen bestehende Atmosphäre ist dünn und das gesamte Erscheinungsbild ist eher mondartig. Mit technischer Hilfe und Versorgung von außen ist Leben möglich.',
         4 => 'Luna (Erdmond)'
     ),
     
     'k' => array(
-        0 => 'Klasse-K-Welt',
-        1 => 'aufwändig, aber möglich',
-        2 => 'mittlere Vorkommen aller wichtigen Rohstoffe',
-        3 => 'Planeten dieser Klasse kommen auf ungefähr 10% der Erdmasse und liegen in derselben Zone wie die Erde. Sie haben eine feste Oberfläche, doch durch ihre geringe Größe reicht die Gravitation nicht aus, um eine dichte Atmosphäre zu bilden und Wasser im flüssigen Zustand zu halten. Mit technischer Unterstützung und Versorgung von außen ist Leben möglich.',
+        0 => 'Class-K-World',
+        1 => 'Expensive, but possible',
+        2 => 'Medium occurrences of all major commodities',
+        3 => 'Planeten dieser Class kommen auf ungefähr 10% der Erdmasse und liegen in derselben Zone wie die Erde. Sie haben eine feste Oberfläche, doch durch ihre geringe Größe reicht die Gravitation nicht aus, um eine dichte Atmosphäre zu bilden und Wasser im flüssigen Zustand zu halten. Mit technischer Unterstützung und Versorgung von außen ist Leben möglich.',
         4 => 'Mars'
     ),
     
     'l' => array(
         0 => 'Eis-Planet',
-        1 => 'mit technischer Hilfe möglch',
-        2 => 'enorme Vorkommen mineralischer Rohstoffe, kaum Metalle und Latinum',
-        3 => 'Planeten dieser Klasse kommen auf ungefähr 10% der Erdmasse und liegen in der kalten Zone. Durch die geringe Sonneneintrahlung und den festen, kalten Kern ist ihre Oberfläche und die gesamte Atmosphäre permanent gefroren. Mit technischer Unterstützung und Versorgung von außen ist Leben möglich.',
+        1 => 'Possible with technical assistance',
+        2 => 'Huge deposits of mineral raw materials, metals and hardly dilithium',
+        3 => 'Planeten dieser Class kommen auf ungefähr 10% der Erdmasse und liegen in der kalten Zone. Durch die geringe Sonneneintrahlung und den festen, kalten Kern ist ihre Oberfläche und die gesamte Atmosphäre permanent gefroren. Mit technischer Unterstützung und Versorgung von außen ist Leben möglich.',
         4 => '-'
     ),
         
     
     'm' => array(
-        0 => 'Terranische Welt',
-        1 => 'möglich',
-        2 => 'mittlere Vorkommen aller wichtigen Rohstoffe',
-        3 => 'Planeten dieser Klasse ähneln in Masse und Entfernung zur Sonne der Erde. Ihre Atmosphäre ist reich an Sauerstoff-Molekühlen (O2, O3) und die Oberfläche ist reichhaltig mit Wasser bedeckt. Ideale Lebensbedigungen.',
-        4 => 'Terra, Vulkan, Quo´nos, Romulus, Bajor, Cardassia, ...'
+        0 => 'Terrestrial World',
+        1 => 'Possible',
+        2 => 'Medium occurrences of all major commodities',
+        3 => 'Planets in this class are similar mass and distance from the sun of the Earth. Their atmosphere is rich in oxygen-Mole Cooling (O2, O3) and the surface is rich with water. Lebensbedigungen ideals.',
+        4 => 'Terra, Vulcan, Quo´nos, Romulus, Bajor, Cardassia, ...'
     ),
     
     'n' => array(
         0 => 'Wasser-Planet',
-        1 => 'möglich',
-        2 => 'mäßige Vorkommen aller wichtigen Rohstoffe',
-        3 => 'Planeten dieser Klasse ähneln in Masse und Entfernung zur Sonne der Erde. Ihre Atmosphäre ist gleich der eines Klasse-M-Planeten beschaffen, die Oberfläche ist zu weit mehr als 90% mit Wasser bedeckt. Ideale Lebensbedingungen.',
+        1 => 'Possible',
+        2 => 'Moderate incidence of all major commodities',
+        3 => 'Planets in this class are similar mass and distance from the sun of the Earth. Their atmosphere is equal to that of a Class M planet procure, the surface is about far more than 90% with water. An ideal living conditions.',
         4 => '-',
     ),
     
     'y' => array(
         0 => 'Dämon-Planet',
-        1 => 'sehr aufwändig, aber möglich',
-        2 => 'unermeßliche Vorkommen aller Rohstoffe',
-        3 => 'Planeten dieser Klasse sind Planeten bzw. Planetoiden haben eine extrem toxische Atmosphäre und ihre sehr aktive Oberfläche kühlt selten unter 500 Kelvin ab. Die Oberflächenwinde erreichen mehrfache Schallgeschwindigkeit und den aggresiven Atmosphären-Gasen können nur wenige Stoffe widerstehen. Mit massiver technischer Unterstützung und Versorgung von außen ist Leben möglich',
+        1 => 'Very expensive, but possible',
+        2 => 'Immense resources of all commodities',
+        3 => 'Class of this planet are planets or planetoids have an extremely toxic atmosphere and its surface cools very active rarely below 500 Kelvin. The surface winds reach multiple sonic speed and aggressive atmospheric gases can only resist a few substances. With solid technical support and supplies from the outside is life possible.',
         4 => '-'
     ),
 );
