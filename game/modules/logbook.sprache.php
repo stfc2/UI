@@ -22,15 +22,887 @@
 */
 
 //Deutsch
-define ("GER_Text1", '[<a href="'.parse_link('a=logbook').'">Erste Seite</a>]&nbsp;');
+define ("GER_TEXT0", 'Erste Seite');
 
-define ("GER_Text2", '</b><br>Verbleibende Zeit bis zur Fertigstellung:<br>');
+define ("GER_TEXT1", 'Vorherige Seite');
 
+define ("GER_TEXT2", 'N&auml;chste Seite');
+
+define ("GER_TEXT3", 'Letzte Seite');
+
+define ("GER_TEXT4", 'Logbuch:');
+
+define ("GER_TEXT5", 'Der gew&auml;hlte Logeintrag existiert nicht');
+
+define ("GER_TEXT6", 'Fehler bei der Seitenberechnung des Logbuchs');
+
+define ("GER_TEXT7", 'Unexspected: could not determine $on_i');
+
+define ("GER_TEXT8", '[vorheriger Eintrag]');
+
+define ("GER_TEXT9", '[n&auml;chster Eintrag]');
+
+define ("GER_TEXT10", 'Eintrag l&ouml;schen');
+
+define ("GER_TEXT11", 'Es wurde kein Logbuch-Eintrag ausgew&auml;hlt');
+
+define ("GER_TEXT12", 'Kein Eintrag ausgew&auml;hlt');
+
+define ("GER_TEXT13", 'Keine Logbucheintr&auml;ge vorhanden');
+
+define ("GER_TEXT14", 'Takt.');
+
+define ("GER_TEXT15", 'Dipl.');
+
+define ("GER_TEXT16", 'Ally.');
+
+define ("GER_TEXT17", 'Reg.');
+
+define ("GER_TEXT18", 'Auk.');
+
+define ("GER_TEXT19", 'Steuer');
+
+define ("GER_TEXT20", 'Eintrag');
+
+define ("GER_TEXT21", 'Typ');
+
+define ("GER_TEXT22", 'Zeit');
+
+define ("GER_TEXT23", 'Check All');
+
+define ("GER_TEXT24", 'gew&auml;hlte Eintr&auml;ge');
+
+define ("GER_TEXT25", 'als gelesen markieren');
+
+define ("GER_TEXT26", 'L&ouml;schen');
+
+define ("GER_TEXT27", 'Alle Eintr&auml;ge l&ouml;schen');
+
+define ("GER_TEXT28", 'Alle Eintr&auml;ge als gelesen markieren');
+
+/* <-- Define for logbook Tactical entries --> */
+define ("GER_TEXT29", '<i>(unbewohnt)</i>');
+
+define ("GER_TEXT30", 'von');
+
+define ("GER_TEXT31", 'Standort:');
+
+define ("GER_TEXT32", 'Start:');
+
+define ("GER_TEXT33", 'Ziel:');
+
+define ("GER_TEXT34", 'Mitteilung:');
+
+define ("GER_TEXT35", 'Dein Flottenverband hat die Mission abgeschlossen und ist zur&uuml;ckgekehrt.');
+
+define ("GER_TEXT36", 'Name der Flotte');
+
+define ("GER_TEXT37", 'Schiffe');
+
+define ("GER_TEXT38", 'Dein Flottenverband hat die urspr&uuml;ngliche Mission aufgegeben und ist zur&uuml;ckgekehrt.');
+
+define ("GER_TEXT39", 'Die Spionageflotte wurde w&auml;hrend des Scannens des Planeten entdeckt und alle Schiffe wurden zerst&ouml;rt.');
+
+define ("GER_TEXT40", 'Die Spionageflotte hat den Planeten unentdeckt scannen k&ouml;nnen und ist wieder auf dem R&uuml;ckflug.');
+
+define ("GER_TEXT41", 'Es wurde eine Spionageflotte aus Aufkl&auml;rungsschiffen in der N&auml;he des Planeten entdeckt, die die Oberfl&auml;che deines Planeten scannten. Sie wurde komplett zerst&ouml;rt, jedoch ist unbekannt, welche Daten sie bereits &uuml;bermitteln konnte.');
+
+define ("GER_TEXT42", 'Anzahl der Schiffe');
+
+define ("GER_TEXT43", '<b>Die Flotte hat keine genauen Daten &uuml;ber den Planeten &uuml;bermittelt.</b>');
+
+define ("GER_TEXT44", 'Rohstoff');
+
+define ("GER_TEXT45", 'Menge');
+
+define ("GER_TEXT46", 'Einheitentyp');
+
+define ("GER_TEXT47", 'Geb&auml;ude');
+
+define ("GER_TEXT48", 'Ausbaustufe');
+
+define ("GER_TEXT49", 'Lokale Forschung');
+
+define ("GER_TEXT50", 'Schiffskomponenten-Forschung');
+
+define ("GER_TEXT51", 'Ein Flottenverband von');
+
+define ("GER_TEXT52", 'hat sich deinen Streitkr&auml;ften ergeben.');
+
+define ("GER_TEXT53", 'Dein Flottenverband hat den Zielplaneten erreicht und die Kontrolle &uuml;ber die Schiffe der dortigen Regierung &uuml;bergeben.');
+
+define ("GER_TEXT54", 'Schiffstyp');
+
+define ("GER_TEXT55", 'Anzahl');
+
+define ("GER_TEXT56", 'Der Planet konnte nicht kolonisiert, da er nicht unbewohnt war.');
+
+define ("GER_TEXT57", 'Der Planet konnte nicht kolonisiert werden, da das beim Start gew&auml;hlte Kolonisationsschiff nicht mehr verf&uuml;gbar war.');
+
+define ("GER_TEXT58", 'Der Planet wurde erfolgreich kolonisiert.');
+
+define ("GER_TEXT59", 'Dein Flottenverband hat den Zielplaneten erreicht, die Ladung auf den Planeten gebeamt und befindet sich wieder auf dem R&uuml;ckflug.');
+
+define ("GER_TEXT60", 'Alle Waren/Einheiten konnten nicht transferiert werden, da das Maximum des Planeten erreicht wurden.');
+
+define ("GER_TEXT61", 'hat auf die Oberfl&auml;che der Kolonie Waren/Einheiten gebeamt und befindet sich wieder auf dem R&uuml;ckflug.');
+
+define ("GER_TEXT62", 'Dabei konnte nicht alles transferiert werden, da das Maximum des Planeten erreicht wurde');
+
+define ("GER_TEXT63", 'Ware/Einheit');
+
+define ("GER_TEXT64", '&uuml;bergeben');
+
+define ("GER_TEXT65", 'Dein Flottenverband hat den Zielplaneten erreicht, konnte die Ladung aber nicht auf dem Planeten abladen, da der Absender nicht der Besitzer des Planeten ist.');
+
+define ("GER_TEXT66", 'hat versucht Waren auf den Planeten zu beamen. Da der der Besitzer der Ladung jedoch nicht dem Auftraggeber entsprechen, weigerte sich die Crew dies zu tun.');
+
+define ("GER_TEXT67", 'Das ersteigerte Schiff ist im Trockendock deines Planeten angekommen.');
+
+define ("GER_TEXT68", 'Deine Flotte hat deinem Verb&uuml;ndeten');
+
+define ("GER_TEXT69", 'bei einem Angriff auf');
+
+define ("GER_TEXT70", 'geholfen und hat dabei die feindlichen Flotten zerst&ouml;rt.');
+
+define ("GER_TEXT71", 'geholfen, wurde dabei jedoch mit zerst&ouml;rt.');
+
+define ("GER_TEXT72", 'Deine Flotte hat einen Verb&uuml;ndeten gegen den Angriff von');
+
+define ("GER_TEXT73", 'verteidigt und hat dabei die Angreifer mit zerst&ouml;rt.');
+
+define ("GER_TEXT74", 'verteidigt, wurde dabei jedoch mit zerst&ouml;rt.');
+
+define ("GER_TEXT75", 'Deine auf Alarmstufe Rot operierende Flotte hat eine einfliegende Flotte von');
+
+define ("GER_TEXT76", 'angegriffen und zerst&ouml;rt.');
+
+define ("GER_TEXT77", 'angegriffen , wurde von dieser jedoch zerst&ouml;rt.');
+
+define ("GER_TEXT78", 'Deine Flotte wurde beim Einflug in den Orbit von Schiffen von');
+
+define ("GER_TEXT79", 'angriffen, konnte diese aber zerst&ouml;ren.');
+
+define ("GER_TEXT80", 'angriffen und wurde zerst&ouml;rt.');
+
+define ("GER_TEXT81", 'Dein Flottenverband hat den Zielplaneten erreicht und alle gegnerische Schiffe sowie orbitale Verteidigungseinrichtungen zerst&ouml;rt. Alle &uuml;berlebenden Schiffe sind in der Umlaufbahn des Planeten.');
+
+define ("GER_TEXT82", 'Dein Flottenverband hat den Zielplaneten erreicht und wurde durch die gegnerischen Streitkr&auml;fte komplett zerst&ouml;rt.');
+
+define ("GER_TEXT83", 'der deine Streitkr&auml;fte im Orbit angegriffen hat, wurde komplett zerst&ouml;rt.');
+
+define ("GER_TEXT84", 'hat deine Streitkr&auml;fte im Orbit komplett zerst&ouml;rt und ist nun im Orbit des Planeten.');
+
+define ("GER_TEXT85", 'Dein Flottenverband hat den Zielplaneten erreicht und alle gegnerische Schiffe sowie orbitale Verteidigungseinrichtungen zerst&ouml;rt. Alle &uuml;berlebenden Schiffe sind wieder auf dem R&uuml;ckflug.');
+
+define ("GER_TEXT86", 'hat deine Streitkr&auml;fte im Orbit komplett zerst&ouml;rt und ist wieder auf dem R&uuml;ckflug.');
+
+define ("GER_TEXT87", 'Ein Flottenverband der Borg hat, der deine Streitkr&auml;fte im Orbit angegriffen hat, wurde komplett zerst&ouml;rt.');
+
+define ("GER_TEXT88", 'Ein Flottenverband der Borg hat deine Streitkr&auml;fte im Orbit komplett zerst&ouml;rt.');
+
+define ("GER_TEXT89", 'Ein Flottenverband der Borg hat deine Streitkr&auml;fte im Orbit komplett zerst&ouml;rt. In dem darauffolgenden Bodenkampf konnten jedoch alle Bodentruppen vernichtet und die Assimilierung verhindert werden.');
+
+define ("GER_TEXT90", 'Ein Flottenverband der Borg hat deine Streitkr&auml;fte im Orbit komplett zerst&ouml;rt und den Planeten assimiliert');
+
+define ("GER_TEXT91", 'Dein Flottenverband hat die gegnerischen Streitkr&auml;fte angegriffen und komplett zerst&ouml;rt.');
+
+define ("GER_TEXT92", 'Dein Flottenverband wurde bei dem Angriff komplett zerst&ouml;rt.');
+
+define ("GER_TEXT93", 'hat deine Streitkr&auml;fte im Orbit komplett zerst&ouml;rt.');
+
+define ("GER_TEXT94", 'Dein Flottenverband hat die gegnerischen Streitkr&auml;fte angegriffen und komplett zerst&ouml;rt. Der Planet konnte jedoch nicht bombardiert werden, da kein Schiff &uuml;ber planetare Waffen verf&uuml;gte.');
+
+define ("GER_TEXT95", 'Dein Flottenverband hat die Bombardierung der Planetenoberfl&auml;che beendet.');
+
+define ("GER_TEXT96", 'hat die Bombardierung der Planetenoberfl&auml;che beendet.');
+
+define ("GER_TEXT97", 'Dein Flottenverband hat die gegnerischen Streitkr&auml;fte angegriffen und komplett zerst&ouml;rt. Der Planet konnte jedoch nicht bombardiert werden, da kein Geb&auml;ude auf der Oberfl&auml;che zu finden war.');
+
+define ("GER_TEXT98", 'Dein Flottenverband hat die gegnerischen Streitkr&auml;fte angegriffen und komplett zerst&ouml;rt. Danach begann er mit der Bombardierung der Planetenoberfl&auml;che.');
+
+define ("GER_TEXT99", 'hat deine Streitkr&auml;fte im Orbit komplett zerst&ouml;rt. Danach begann er mit der Bombardierung der Planetenoberfl&auml;che.');
+
+define ("GER_TEXT100", 'Dein Flottenverband hat die Bombardierung der Planetenoberfl&auml;che fortgesetzt.');
+
+define ("GER_TEXT101", 'hat die Bombardierung der Planetenoberfl&auml;che fortgesetzt.');
+
+define ("GER_TEXT102", 'Dein Flottenverband hat die gegnerischen Streitkr&auml;fte angegriffen und komplett zerst&ouml;rt. Das Kolonieschiff, das f&uuml;r die Invasion vorgesehen war, konnte jedoch nicht mehr gefunden werden - eventuell wurde es bei dem Kampf zerst&ouml;rt.');
+
+define ("GER_TEXT103", 'Dein Flottenverband hat die gegnerischen Streitkr&auml;fte angegriffen und komplett zerst&ouml;rt. In dem darauffolgenden Bodenkampf konnten die gegnerischen Streitkr&auml;fte jedoch nicht &uuml;berw&auml;ltigt werden.');
+
+define ("GER_TEXT104", 'hat deine Streitkr&auml;fte im Orbit komplett zerst&ouml;rt. In dem darauffolgenden Bodenkampf konnten deine Einheiten eine &Uuml;bernahme durch feindliche Truppen verhindern.');
+
+define ("GER_TEXT105", 'Dein Flottenverband hat die gegnerischen Streitkr&auml;fte angegriffen und komplett zerst&ouml;rt. In dem darauffolgenden Bodenkampf haben deine Streitkr&auml;fte die Kontrolle &uuml;ber alle planetaren Einrichtungen gewinnen k&ouml;nnen, so dass der Planet nun unter deiner Kontrolle steht.');
+
+define ("GER_TEXT106", 'hat deine Streitkr&auml;fte im Orbit komplett zerst&ouml;rt. In dem darauffolgenden Bodenkampf wurden deine Einheiten von den feindlichen Truppen vernichtet, so dass diese nun die Kontrolle &uuml;ber den Planeten haben.');
+
+define ("GER_TEXT107", '<b>Angreifende Flotten</b><br><i>Keine angreifenden Flotten -- Bug, bitte melden</i><br><br>');
+
+define ("GER_TEXT108", 'Angreifende Flotten');
+
+define ("GER_TEXT109", 'Name');
+
+define ("GER_TEXT110", 'Spieler');
+
+define ("GER_TEXT111", '<b>Verteidigende Flotten</b><br><i>Keine verteidigenden Flotten</i><br><br>');
+
+define ("GER_TEXT112", 'Verteidigende Flotten');
+
+define ("GER_TEXT113", '<b>Es wurden keine Geb&auml;ude besch&auml;digt.</b><br><br>');
+
+define ("GER_TEXT114", 'Opfer');
+
+define ("GER_TEXT115", 'Arbeiter');
+
+define ("GER_TEXT116", 'Geb&auml;udetyp');
+
+define ("GER_TEXT117", 'Borgdrohne');
+
+define ("GER_TEXT118", '<b>Es gab keine Verluste an Bodentruppen auf deiner Seite.</b><br><br>');
+
+define ("GER_TEXT119", '# Verluste');
+
+/* <-- Define for auction logbook entries --> */
+define ("GER_TEXT120", 'Herzlichen Gl&uuml;ckwunsch');
+
+define ("GER_TEXT121", 'Du hast die Auktion');
+
+define ("GER_TEXT122", 'gewonnen.<br>Dein Endgebot lag bei:');
+
+define ("GER_TEXT123", 'Zum Steuern des weiteren Ablaufs geh in das Handelszentrum und klick auf "Schulden bezahlen und Schiff abhohlen".<br><br>Du musst innerhalb einer Woche bezahlen. Wenn Du bis dahin nicht bezahlt hast, wirst Du eine Strafe erhalten.');
+
+define ("GER_TEXT124", 'Deine Auktion');
+
+define ("GER_TEXT125", 'wurde  beendet.<br>Das Endgebot lag bei:');
+
+define ("GER_TEXT126", 'K&auml;ufer ist:');
+
+define ("GER_TEXT127", 'Zum Steuern des weiteren Ablaufs geh in das Handelszentrum und klick auf "Treuhandkonto".<br><br>Sollte der K&auml;ufer nach einer Woche immer noch nicht gezahlt haben, bekommst du dein Schiff zur&uuml;ck.');
+
+/* <-- Define for Ferengi Tax logbook entries --> */
+define ("GER_TEXT128", 'Gr&uuml;&beta;e vom gro&beta;en Nagus');
+
+define ("GER_TEXT129", 'Du wirst in K&uuml;rze eine Lieferung von Ressourcen erhalten, die von unserem Handelsimperium abfallen.<br>Die Zahlung bel&auml;uft sich auf:');
+
+/* <-- Define for Government logbook entries --> */
+define ("GER_TEXT130", 'Bei Aufst&auml;nden auf dem Planeten');
+
+define ("GER_TEXT131", 'wurde das Geb&auml;ude');
+
+define ("GER_TEXT132", 'besch&auml;digt und von Stufe');
+
+define ("GER_TEXT133", 'auf Stufe');
+
+define ("GER_TEXT134", 'gesetzt.<br>Es fehlen');
+
+define ("GER_TEXT135", 'der ben&ouml;tigten Truppen, um die Unruhen aufhalten zu k&ouml;nnen.');
+
+/* <-- Define for Revolution logbook entries --> */
+define ("GER_TEXT136", 'Auf deinem Planeten');
+
+define ("GER_TEXT137", 'kam es zu blutigen Auseinandersetzungen mit den Besatzungstruppen, die in einer Revolution endeten.<br>Der Planet steht nicht mehr weiter unter deiner Kontrolle und eine B&uuml;rgermiliz zur Verteidigung der Unabh&auml;ngigkeit wurde aufgestellt.');
+
+/* <-- Define for User diplomacy logbook entries --> */
+define ("GER_TEXT138", '<b>B&uuml;ndnis gebrochen</b><br><br>Das private B&uuml;ndnis mit');
+
+define ("GER_TEXT139", 'wurde dir gek&uuml;ndigt.');
+
+/* <-- Define for User tactical2  logbook entries --> */
+define ("GER_TEXT140", 'Verteidiger:');
+
+define ("GER_TEXT141", 'Angreifer:');
+
+define ("GER_TEXT142", '* Achtung, das neue Kampfsystem ist experimentell installiert, bei groben Abweichungen bitte &uuml;ber das Forum melden!');
 
 
 //English
+define ("ENG_TEXT0", 'First page');
 
-define ("ENG_Text1", '[<a href="'.parse_link('a=logbook').'">Erste Seite</a>]&nbsp;');
+define ("ENG_TEXT1", 'Backward page');
 
-define ("ENG_Text2", '</b><br>Remaining time until the completion:<br>');
+define ("ENG_TEXT2", 'Forward page');
+
+define ("ENG_TEXT3", 'Last page');
+
+define ("ENG_TEXT4", 'Logbook:');
+
+define ("ENG_TEXT5", 'The selected log entry does not exist');
+
+define ("ENG_TEXT6", 'Errors in the calculation of the logbook&#146;s pages');
+
+define ("ENG_TEXT7", 'Unexspected: could not determine $on_i');
+
+define ("ENG_TEXT8", '[previous entry]');
+
+define ("ENG_TEXT9", '[next entry]');
+
+define ("ENG_TEXT10", 'Delete entry');
+
+define ("ENG_TEXT11", 'There was no log entry selected');
+
+define ("ENG_TEXT12", 'No entry selected');
+
+define ("ENG_TEXT13", 'No logbook entries');
+
+define ("ENG_TEXT14", 'Tact.');
+
+define ("ENG_TEXT15", 'Dipl.');
+
+define ("ENG_TEXT16", 'Ally.');
+
+define ("ENG_TEXT17", 'Reg.');
+
+define ("ENG_TEXT18", 'Auk.');
+
+define ("ENG_TEXT19", 'Tax');
+
+define ("ENG_TEXT20", 'Entry');
+
+define ("ENG_TEXT21", 'Type');
+
+define ("ENG_TEXT22", 'Time');
+
+define ("ENG_TEXT23", 'Check All');
+
+define ("ENG_TEXT24", 'selected entries');
+
+define ("ENG_TEXT25", 'mark as read');
+
+define ("ENG_TEXT26", 'Delete');
+
+define ("ENG_TEXT27", 'Delete all entries');
+
+define ("ENG_TEXT28", 'All entries marked as read');
+
+/* <-- Define for tactical logbook entries --> */
+define ("ENG_TEXT29", '<i>(uninhabited)</i>');
+
+define ("ENG_TEXT30", 'of');
+
+define ("ENG_TEXT31", 'Location:');
+
+define ("ENG_TEXT32", 'Start:');
+
+define ("ENG_TEXT33", 'Target:');
+
+define ("ENG_TEXT34", 'Communication:');
+
+define ("ENG_TEXT35", 'Your naval force has completed the mission and is returned.');
+
+define ("ENG_TEXT36", 'Name of the fleet');
+
+define ("ENG_TEXT37", 'Ships');
+
+define ("ENG_TEXT38", 'Your naval force has abandoned its original mission and is returned.');
+
+define ("ENG_TEXT39", 'The espionage fleet was discovered during the scanning of the planets and all vessels were destroyed.');
+
+define ("ENG_TEXT40", 'The espionage fleet has scanned the planet undiscovered, and is back on the return flight.');
+
+define ("ENG_TEXT41", 'An espionage fleet was discovered in the proximity of the planet, which was scanning the surface of your planet. It was completely destroyed, however is unknown, which data it already transmitted.');
+
+define ("ENG_TEXT42", 'Number of ships');
+
+define ("ENG_TEXT43", '<b>The fleet has no accurate data on the planet.</b>');
+
+define ("ENG_TEXT44", 'Raw materials');
+
+define ("ENG_TEXT45", 'Quantity');
+
+define ("ENG_TEXT46", 'Type of unit');
+
+define ("ENG_TEXT47", 'Buildings');
+
+define ("ENG_TEXT48", 'Stage of development');
+
+define ("ENG_TEXT49", 'Local research');
+
+define ("ENG_TEXT50", 'Ship components research');
+
+define ("ENG_TEXT51", 'A naval force of');
+
+define ("ENG_TEXT52", 'has arisen to your armed forces.');
+
+define ("ENG_TEXT53", 'Your naval force has reached the target planet and has handed over the control on the ships of the local government.');
+
+define ("ENG_TEXT54", 'Ship type');
+
+define ("ENG_TEXT55", 'Number');
+
+define ("ENG_TEXT56", 'The planet could not be colonized, because it was not uninhabited.');
+
+define ("ENG_TEXT57", 'The planet could not be colonized, because the Colonization ship selected when starting was no longer available.');
+
+define ("ENG_TEXT58", 'The planet has been successfully colonized.');
+
+define ("ENG_TEXT59", 'Your naval force has reached the target planet, the load was transferred on the planet and is back on the return flight.');
+
+define ("ENG_TEXT60", 'All goods / units could not be transferred because the maximum reaches of the planet.');
+
+define ("ENG_TEXT61", 'has transferred the goods / units on the surface of the colony and is back on the return flight.');
+
+define ("ENG_TEXT62", 'Besides, everything could not be transferred, because the maximum of the planet was reached');
+
+define ("ENG_TEXT63", 'Good/Unit');
+
+define ("ENG_TEXT64", 'hand over');
+
+define ("ENG_TEXT65", 'Your naval force has reached the target planet, however, the load could not be transferred on the planet, because you aren&#146:t the owner of the planet.');
+
+define ("ENG_TEXT66", 'has tried to beam the goods on the planet. However, because the owner of the load do not correspond to the client, the crew refused to do this.');
+
+define ("ENG_TEXT67", 'The ship bought at an auction has arrived in the dry dock of your planet.');
+
+define ("ENG_TEXT68", 'Your fleet has joined your allies');
+
+define ("ENG_TEXT69", 'during an attack on');
+
+define ("ENG_TEXT70", 'and has helped the enemy fleets to be destroyed.');
+
+define ("ENG_TEXT71", 'and helped, however it was destroyed.');
+
+define ("ENG_TEXT72", 'Your fleet has joined an ally against the attack of');
+
+define ("ENG_TEXT73", 'verteidigt und hat dabei die Angreifer mit zerst&ouml;rt.');
+
+define ("ENG_TEXT74", 'verteidigt, wurde dabei jedoch mit zerst&ouml;rt.');
+
+define ("ENG_TEXT75", 'Deine auf Alarmstufe Rot operierende Flotte hat eine einfliegende Flotte von');
+
+define ("ENG_TEXT76", 'angegriffen und zerst&ouml;rt.');
+
+define ("ENG_TEXT77", 'angegriffen , wurde von dieser jedoch zerst&ouml;rt.');
+
+define ("ENG_TEXT78", 'Deine Flotte wurde beim Einflug in den Orbit von Schiffen von');
+
+define ("ENG_TEXT79", 'angriffen, konnte diese aber zerst&ouml;ren.');
+
+define ("ENG_TEXT80", 'attacked and was destroyed.');
+
+define ("ENG_TEXT81", 'Your naval force has reached the target planet and all enemy ships and orbital defence establishments destroyed. All surviving ships are in the orbit of the planet.');
+
+define ("ENG_TEXT82", 'Your naval force has reached the target planet and was completely destroyed by the opposing forces.');
+
+define ("ENG_TEXT83", 'that has attacked your armed forces in the orbit, was completely destroyed.');
+
+define ("ENG_TEXT84", 'has destroyed completely your armed forces in the orbit and now is in the orbit of the planet.');
+
+define ("ENG_TEXT85", 'Your naval force has reached the target planet and all enemy ships and orbital defence establishments destroyed. All surviving ships are back on the return flight.');
+
+define ("ENG_TEXT86", 'has destroyed completely your armed forces in the orbit and is back on the return flight.');
+
+define ("ENG_TEXT87", 'A Borg naval force which has attacked your armed forces in the orbit was completely destroyed.');
+
+define ("ENG_TEXT88", 'A Borg naval force has completely destroyed your forces in orbit.');
+
+define ("ENG_TEXT89", 'A Borg naval force has completely destroyed your forces in orbit. However, in the following ground battle all troops was be destroyed and the assimilation prevented.');
+
+define ("ENG_TEXT90", 'A Borg naval force has completely destroyed your forces in orbit and assimilated the planet.');
+
+define ("ENG_TEXT91", 'Your naval force has attacked and completely destroyed the opposing armed forces.');
+
+define ("ENG_TEXT92", 'Your naval force was completely destroyed with the attack.');
+
+define ("ENG_TEXT93", 'has destroyed completely your armed forces in the orbit.');
+
+define ("ENG_TEXT94", 'Your naval force has attacked and completely destroyed the opposing armed forces. However, the planet could not be bombed, because no ship disposed of planetary weapons.');
+
+define ("ENG_TEXT95", 'Your naval force has finished the bombardment of the planet surface.');
+
+define ("ENG_TEXT96", 'has finished the bombardment of the planet surface.');
+
+define ("ENG_TEXT97", 'Your naval force has attacked and completely destroyed the opposing armed forces. However, the planet could not be bombed, because no building was found on the surface.');
+
+define ("ENG_TEXT98", 'Your naval force has attacked and completely destroyed the opposing armed forces. Then it began with the bombardment of the planet surface.');
+
+define ("ENG_TEXT99", 'hat deine Streitkr&auml;fte im Orbit komplett zerst&ouml;rt. Danach begann er mit der Bombardierung der Planetenoberfl&auml;che.');
+
+define ("ENG_TEXT100", 'Your naval force has continued the bombardment of the planet surface.');
+
+define ("ENG_TEXT101", 'has continued the bombardment of the planet surface.');
+
+define ("ENG_TEXT102", 'Your naval force has attacked and completely destroyed the opposing armed forces. However, the colony ship, which was intended for the invasion, could not be found anymore - probably it was destroyed with the battle.');
+
+define ("ENG_TEXT103", 'Your naval force has attacked and completely destroyed the opposing armed forces. However, in the following ground battle the opposing armed forces could not become overpowers.');
+
+define ("ENG_TEXT104", 'has destroyed completely your armed forces in the orbit. However in the following ground battle your units prevented an assumption by the hostile troops.');
+
+define ("ENG_TEXT105", 'Your naval force attacked and completely destroyed the opposing armed forces. In the following ground battle your armed forces taken the control about all planetary equipments, so that the planet stands now under your control.');
+
+define ("ENG_TEXT106", 'has destroyed completely your armed forces in the orbit. In the following ground battle your units were destroyed by the hostile troops, so that these have now the control of the planet.');
+
+define ("ENG_TEXT107", '<b>Attacking fleets</b><br><i>No attacking fleets -- Bug, please report!</i><br><br>');
+
+define ("ENG_TEXT108", 'Attacking fleets');
+
+define ("ENG_TEXT109", 'Name');
+
+define ("ENG_TEXT110", 'Player');
+
+define ("ENG_TEXT111", '<b>Defending fleets</b><br><i>No defending fleets</i><br><br>');
+
+define ("ENG_TEXT112", 'Defending fleets');
+
+define ("ENG_TEXT113", '<b>There were no buildings damaged.</b><br><br>');
+
+define ("ENG_TEXT114", 'Victims');
+
+define ("ENG_TEXT115", 'Worker');
+
+define ("ENG_TEXT116", 'Building type');
+
+define ("ENG_TEXT117", 'Borg drone');
+
+define ("ENG_TEXT118", '<b>There were no losses of ground troops on your side.</b><br><br>');
+
+define ("ENG_TEXT119", '# losses');
+
+/* <-- Define for auction logbook entries --> */
+define ("ENG_TEXT120", 'Congratulations');
+
+define ("ENG_TEXT121", 'You have won the auction');
+
+define ("ENG_TEXT122", '. <br>Your final offer was the following:');
+
+define ("ENG_TEXT123", 'To procede further in the operational sequence go into the Commercial Centre and click on "Pay debts" and then on "Ship abhohlen". You must pay within one week. If you didn&#146;t paid up to then, you will receive a punishment.');
+
+define ("ENG_TEXT124", 'Your auction');
+
+define ("ENG_TEXT125", 'has ended.<br>The final offer was:');
+
+define ("ENG_TEXT126", 'Buyer is:');
+
+define ("ENG_TEXT127", 'To procede further in the operational sequence go into the Commercial Centre and click "Trust Account".<br><br>If the buyer after a week still have not paid, you will get your ship back.');
+
+/* <-- Define for Ferengi Tax logbook entries --> */
+define ("ENG_TEXT128", 'Greetings from the Big Nagus');
+
+define ("ENG_TEXT129", 'You will soon receive a supply of resources provided by our trading empire.<br>The payment amounts to:');
+
+/* <-- Define for Government logbook entries --> */
+define ("ENG_TEXT130", 'With revolts on the planet');
+
+define ("ENG_TEXT131", 'the building');
+
+define ("ENG_TEXT132", 'was damaged and set from stage');
+
+define ("ENG_TEXT133", 'to stage');
+
+define ("ENG_TEXT134", '.<br>Are missing');
+
+define ("ENG_TEXT135", 'the necessary troops, in order to be able to stop unrests.');
+
+/* <-- Define for Revolution logbook entries --> */
+define ("ENG_TEXT136", 'On your planet');
+
+define ("ENG_TEXT137", 'there was a bloody discussions with the occupation forces which ended in a revolution.<br>The planet is no longer under your control and a citizens&#146;militia to defend the independence has been set up.');
+
+/* <-- Define for User diplomacy logbook entries --> */
+define ("ENG_TEXT138", '<b>Alliance broke</b><br><br>The private alliance with');
+
+define ("ENG_TEXT139", 'was terminated.');
+
+/* <-- Define for User tactical2  logbook entries --> */
+define ("ENG_TEXT140", 'Defender:');
+
+define ("ENG_TEXT141", 'Attacker:');
+
+define ("ENG_TEXT142", '* Attention, the new combat system is installed experimentally, for gross deviations please log on the Forum!');
+
+
+//Italian
+define ("ITA_TEXT0", 'Prima pagina');
+
+define ("ITA_TEXT1", 'Pagina precedente');
+
+define ("ITA_TEXT2", 'Pagina successiva');
+
+define ("ITA_TEXT3", 'Ultima pagina');
+
+define ("ITA_TEXT4", 'Diario di bordo:');
+
+define ("ITA_TEXT5", 'La voce di registro selezionata non esiste');
+
+define ("ITA_TEXT6", 'Errore nel calcolo del numero di pagine del diario di bordo');
+
+define ("ITA_TEXT7", 'Inaspettato: impossibile determinare $on_i');
+
+define ("ITA_TEXT8", '[voce precedente]');
+
+define ("ITA_TEXT9", '[voce successiva]');
+
+define ("ITA_TEXT10", 'Cancella voce');
+
+define ("ITA_TEXT11", 'Non ci sono voci di registro selezionate');
+
+define ("ITA_TEXT12", 'Nessuna voce selezionata');
+
+define ("ITA_TEXT13", 'Nessuna voce nel Diario di bordo');
+
+define ("ITA_TEXT14", 'Tat.');
+
+define ("ITA_TEXT15", 'Dipl.');
+
+define ("ITA_TEXT16", 'Ally.');
+
+define ("ITA_TEXT17", 'Reg.');
+
+define ("ITA_TEXT18", 'Aste');
+
+define ("ITA_TEXT19", 'Tax');
+
+define ("ITA_TEXT20", 'Voce');
+
+define ("ITA_TEXT21", 'Tipo');
+
+define ("ITA_TEXT22", 'Data');
+
+define ("ITA_TEXT23", 'Selezionata tutto');
+
+define ("ITA_TEXT24", 'Voci selezionate');
+
+define ("ITA_TEXT25", 'Segna come letto');
+
+define ("ITA_TEXT26", 'Cancella');
+
+define ("ITA_TEXT27", 'Cancella tutte le voci');
+
+define ("ITA_TEXT28", 'Segna tutte le voci come lette');
+
+/* <-- Define for tactical logbook entries --> */
+define ("ITA_TEXT29", '<i>(disabitato)</i>');
+
+define ("ITA_TEXT30", 'di');
+
+define ("ITA_TEXT31", 'Posizione:');
+
+define ("ITA_TEXT32", 'Partenza:');
+
+define ("ITA_TEXT33", 'Obiettivo:');
+
+define ("ITA_TEXT34", 'Comunicazione:');
+
+define ("ITA_TEXT35", 'La tua flotta ha completato la missione ed &egrave; ritornata.');
+
+define ("ITA_TEXT36", 'Nome della flotta');
+
+define ("ITA_TEXT37", 'Navi');
+
+define ("ITA_TEXT38", 'La tua flotta ha abbandonato la sua missione originale ed &egrave; ritornata.');
+
+define ("ITA_TEXT39", 'La flotta di spionaggio &egrave; stata scoperta durante la scansione del pianeta e tutte le navi sono state distrutte.');
+
+define ("ITA_TEXT40", 'La flotta di spionaggio ha scansionato il pianeta senza essere scoperta e sta rientrando.');
+
+define ("ITA_TEXT41", 'Una flotta di spionaggio &egrave; stata scoperta in prossimit&agrave; del pianeta mentre stava scansionando la superficie del tuo pianeta. &Egrave; stata distrutta completamente, comunque rimane sconosciuta la quantit&agrave di dati gi&agrave; trasmessi.');
+
+define ("ITA_TEXT42", 'Numero di navi');
+
+define ("ITA_TEXT43", '<b>La flotta non ha acquisito dati accurati sul pianeta.</b>');
+
+define ("ITA_TEXT44", 'Materie prime');
+
+define ("ITA_TEXT45", 'Quantit&agrave;');
+
+define ("ITA_TEXT46", 'Tipo di unit&agrave;');
+
+define ("ITA_TEXT47", 'Costruzioni');
+
+define ("ITA_TEXT48", 'Livello di sviluppo');
+
+define ("ITA_TEXT49", 'Ricerche planetaria');
+
+define ("ITA_TEXT50", 'Ricerche componenti navi');
+
+define ("ITA_TEXT51", 'Una forza navale di');
+
+define ("ITA_TEXT52", 'si &egrave; avvicinata alle tue forze armate.');
+
+define ("ITA_TEXT53", 'Le tue forze navali hanno raggiunto il pianeta e ceduto il controllo dei vascelli al governo locale.');
+
+define ("ITA_TEXT54", 'Tipo nave');
+
+define ("ITA_TEXT55", 'Numero');
+
+define ("ITA_TEXT56", 'Il pianeta non &egrave; stato colonizzato perch&eacute; non era disabitato.');
+
+define ("ITA_TEXT57", 'Il pianeta non &egrave; stato colonizzato perch&eacute; la nave colonizzatrice selezionata all&#146;avvio non &egrave; pi&ugrave; disponibile.');
+
+define ("ITA_TEXT58", 'Il pianeta &egrave; stato colonizzato con successo.');
+
+define ("ITA_TEXT59", 'Le tue forze navali hanno raggiunto il pianeta, il carico e&acute; stato trasferito sul pianeta ed ora stanno facendo ritorno.');
+
+define ("ITA_TEXT60", 'Il carico non &egrave; stato trasferito sul pianeta per mancanza di spazio utile.');
+
+define ("ITA_TEXT61", 'ha scaricato il carico sulla superficie e sta facendo ritorno.');
+
+define ("ITA_TEXT62", 'Tuttavia, non tutto &egrave; stato trasferito per mancanza di spazio utile sul pianeta.');
+
+define ("ITA_TEXT63", 'Merci/Unit&agrave;');
+
+define ("ITA_TEXT64", 'ceduto');
+
+define ("ITA_TEXT65", 'Le tue forze navali hanno raggiunto il pianeta bersaglio, tuttavia il carico non &egrave; stato trasferito perch&eacute; non sei il padrone del pianeta.');
+
+define ("ITA_TEXT66", 'ha tentato di teletrasportare il carico sul pianeta. Tuttavia, dato che il proprietario del carico non corrisponde al cliente, l&#146;equipaggio si &egrave; rifiutato di procedere.');
+
+define ("ITA_TEXT67", 'La nave comprata all&#146;asta &egrave; arrivata nello spazioporto del tuo pianeta.');
+
+define ("ITA_TEXT68", 'La tua flotta si &egrave; unita agli alleati.');
+
+define ("ITA_TEXT69", 'durante un attacco presso');
+
+define ("ITA_TEXT70", 'ed ha aiutato a distruggere la flotta nemica.');
+
+define ("ITA_TEXT71", 'ed ha dato supporto nella battaglia, tuttavia &egrave; andata distrutta.');
+
+define ("ITA_TEXT72", 'La tua flotta si &egrave; unita agli alleati contro l&#146;attacco di');
+
+define ("ITA_TEXT73", 'difese distruggendo l&#146;aggressore.');
+
+define ("ITA_TEXT74", 'difese senza superstiti');
+
+define ("ITA_TEXT75", 'Le tue forze in allarme rosso hanno incontrato');
+
+define ("ITA_TEXT76", 'attaccate e distrutte.');
+
+define ("ITA_TEXT77", 'sono state attaccate ma hanno distrutto l&#146;aggressore');
+
+define ("ITA_TEXT78", 'La tua flotta &egrave; entrata in orbita intorno a');
+
+define ("ITA_TEXT79", 'attaccate ma non distrutte.');
+
+define ("ITA_TEXT80", 'attaccate e distrutte.');
+
+define ("ITA_TEXT81", 'Le tue forze navali hanno raggiunto il pianeta bersaglio e distrutto le navi nemiche e le difese orbitali. Le navi superstiti sono in orbita intorno al pianeta.');
+
+define ("ITA_TEXT82", 'Le tue forze navali hanno raggiunto il pianeta bersaglio e sono state distrutte completamente dalle forze avversarie.');
+
+define ("ITA_TEXT83", 'che ha attaccato le tue forze in orbita &egrave; stata completamente distrutta.');
+
+define ("ITA_TEXT84", 'ha completamente distrutto le tue forze in orbita ed ora stazionano intorno al pianeta.');
+
+define ("ITA_TEXT85", 'Le tue forze navali hanno raggiunto il pianeta bersaglio e distrutto le navi nemiche e le difese orbitali. Tutte le navi superstiti stanno facendo ritorno.');
+
+define ("ITA_TEXT86", 'ha distrutto completamente le tue forze in orbita e sta allontanandosi dal pianeta.');
+
+define ("ITA_TEXT87", 'Una flotta Borg che ha attaccato le tue forze in orbita &egrave; stata completamente distrutta.');
+
+define ("ITA_TEXT88", 'Una flotta Borg ha distrutto completamente le tue forze in orbita.');
+
+define ("ITA_TEXT89", 'Una flotta Borg ha distrutto le tue forze in orbita. Tuttavia, nella conseguente battaglia a terra, tutti i droni sono stati abbattuti, prevenendo l&#146;assimilazione del pianeta.');
+
+define ("ITA_TEXT90", 'Una flotta Borg ha distrutto le tue forze in orbita ed ha assimilato il pianeta.');
+
+define ("ITA_TEXT91", 'Le tue forze navali hanno attaccato e distrutto completamente le forze avversarie.');
+
+define ("ITA_TEXT92", 'Le tue forze navali sono state distrutte nell&#146;attacco.');
+
+define ("ITA_TEXT93", 'ha completamente distrutto le tue forze in orbita.');
+
+define ("ITA_TEXT94", 'Le tue forze navali hanno attaccato e distrutto completamente le forze avversarie. Tuttavia, il pianeta non &egrave; stato bombardato perch&eacute; nessuna nave della flotta dispone di armi planetarie.');
+
+define ("ITA_TEXT95", 'Le tue forze navali hanno terminato il bombardamento della superficie del pianeta.');
+
+define ("ITA_TEXT96", 'ha terminato il bombardamento della superficie del pianeta.');
+
+define ("ITA_TEXT97", 'Le tue forze navali hanno attaccato e distrutto le forze avversarie. Tuttavia, il pianeta non &egrave; stato bombardato perch&eacute; nessuna struttura &egrave; stata trovata sulla superficie.');
+
+define ("ITA_TEXT98", 'Le tue forze navali hanno attaccato e distrutto le forze avversarie. In seguito, hanno iniziato il bombardamento della superficie.');
+
+define ("ITA_TEXT99", 'hanno completamente distrutto le tue forze navali in orbita. In seguito, hanno iniziato il bombardamento della superficie.');
+
+define ("ITA_TEXT100", 'Le tue forze navali hanno continuato il bombardamento della superficie.');
+
+define ("ITA_TEXT101", 'ha continuato il bombardamento della superficie.');
+
+define ("ITA_TEXT102", 'Le tue forze navali hanno attaccato e distrutto completamente le forze avversarie. Tuttavia, la nave colonizzatrice da impiegare per l&#146;invasione non era pi&ugrave; presente - probabilmente persa durante lo scontro.');
+
+define ("ITA_TEXT103", 'Le tue forze navali hanno attaccato e distrutto completamente le forze opposte. Tuttavia, nella conseguente battaglia a terra, le forze avversarie non sono state battute.');
+
+define ("ITA_TEXT104", 'ha distrutto completamente le tue forze in orbita. Tuttavia, nella conseguente battaglia a terra, le tue unit&agrave; hanno impedito l&#146;invasione del pianeta da parte delle truppe ostili.');
+
+define ("ITA_TEXT105", 'Le tue forze navali hanno attaccato e distrutto completamente le forze opposte. Nella conseguente battaglia a terra hanno preso il controllo di tutte le strutture presenti, prendendo possesso del pianeta.');
+
+define ("ITA_TEXT106", 'ha completamente distrutto le tue forze in orbita. Nella conseguente battaglia a terra le tue unit&agrave; sono state battute dalle truppe ostili ed ora queste hanno assunto il controllo del pianeta.');
+
+define ("ITA_TEXT107", '<b>Flotte in attacco</b><br><i>Nessuna flotta in attacco -- Bug, per favore segnalare!</i><br><br>');
+
+define ("ITA_TEXT108", 'Flotte in attacco');
+
+define ("ITA_TEXT109", 'Nome');
+
+define ("ITA_TEXT110", 'Giocatore');
+
+define ("ITA_TEXT111", '<b>Flotte in difesa</b><br><i>Nessuna flotta in difesa</i><br><br>');
+
+define ("ITA_TEXT112", 'Flotte in difesa');
+
+define ("ITA_TEXT113", '<b>Nessuna costruzione ha subito danni.</b><br><br>');
+
+define ("ITA_TEXT114", 'Vittime');
+
+define ("ITA_TEXT115", 'Lavoratori');
+
+define ("ITA_TEXT116", 'Tipo costruzione');
+
+define ("ITA_TEXT117", 'Drone Borg');
+
+define ("ITA_TEXT118", '<b>Non hai subito perdite tra le tue truppe a terra.</b><br><br>');
+
+define ("ITA_TEXT119", '# perdite');
+
+/* <-- Define for auction logbook entries --> */
+define ("ITA_TEXT120", 'Congratulazioni');
+
+define ("ITA_TEXT121", 'Hai vinto l&#146;asta');
+
+define ("ITA_TEXT122", '. <br>La tua offerta finale era la seguente:');
+
+define ("ITA_TEXT123", 'Per procedere ulteriormente nella sequenza operativa andare nel Centro Commerciale e fare clic su "Pagamento debiti" e poi su "Ritiro navi". Devi pagare entro una settimana. Se non avrai pagato fino ad allora, riceverai una punizione.');
+
+define ("ITA_TEXT124", 'La tua asta');
+
+define ("ITA_TEXT125", '&egrave; finita.<br>L&#146;ultima offerta &egrave; stata:');
+
+define ("ITA_TEXT126", 'L&#146;acquirente &egrave;:');
+
+define ("ITA_TEXT127", 'Per procedere ulteriormente nella sequenza operativa andare nel Centro Commerciale e fare clic su "Conto fiduciario".<br><br>Se l&#146;acquirente, dopo una settimana non ha ancora pagato, otterrai indietro la tua nave.');
+
+/* <-- Define for Ferengi Tax logbook entries --> */
+define ("ITA_TEXT128", 'Saluti dal Grande Nagus');
+
+define ("ITA_TEXT129", 'Presto potrai ricevere una cessione di risorse fornite dal nostro Impero Commerciale.<br>L&#146;importo del pagamento &egrave;');
+
+/* <-- Define for Government logbook entries --> */
+define ("ITA_TEXT130", 'Con le rivolte sul pianeta');
+
+define ("ITA_TEXT131", 'la costruzione');
+
+define ("ITA_TEXT132", '&egrave; stata danneggiata e porta dal livello');
+
+define ("ITA_TEXT133", 'al livello');
+
+define ("ITA_TEXT134", '.<br>Mancano');
+
+define ("ITA_TEXT135", 'le truppe necessarie, per poter essere in grado di fermare gli insorti.');
+
+/* <-- Define for Revolution logbook entries --> */
+define ("ITA_TEXT136", 'Sul tuo pianeta');
+
+define ("ITA_TEXT137", 'ci sono state sanguinose discussioni con le forze di occupazione che sono sfociate in una rivoluzione.<br>Il pianeta non &egrave; pi&ugrave; sotto il tuo controllo ed &egrave; stata istituita una milizia cittadina per difendere l&#146;indipendenza.');
+
+/* <-- Define for User diplomacy logbook entries --> */
+define ("ITA_TEXT138", '<b>Alleanza spezzata</b><br><br>L&#146;alleanza privata con');
+
+define ("ITA_TEXT139", '&egrave; cessata.');
+
+/* <-- Define for User tactical2  logbook entries --> */
+define ("ITA_TEXT140", 'Difensore:');
+
+define ("ITA_TEXT141", 'Attaccante:');
+
+define ("ITA_TEXT142", '* Attenzione, il nuovo sistema di combattimento &egrave; installato a livello sperimentale, se riscontrate problemi scrivete sul Forum!');
+
 ?>

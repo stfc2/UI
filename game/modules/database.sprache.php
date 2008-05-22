@@ -50,4 +50,20 @@ define ("ENG_TEXT5", 'Specification:');
 
 define ("ENG_TEXT6", 'Examples:');
 
+
+
+//Italian
+
+define ("ITA_TEXT1", 'Classe:');
+
+define ("ITA_TEXT2", 'Definizione:');
+
+define ("ITA_TEXT3", 'Vita:');
+
+define ("ITA_TEXT4", 'Risorse:');
+
+define ("ITA_TEXT5", 'Descrizione:');
+
+define ("ITA_TEXT6", 'Esempi:');
+
 ?>
