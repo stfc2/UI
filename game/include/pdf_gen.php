@@ -72,11 +72,11 @@ if(($sendername = $db->queryrow($sql)) === false) {
 $pdf=new FPDF();
 $pdf->Open();
 $pdf->SetAuthor(''.$game->player['user_name'].'');
-$pdf->SetTitle("|game_url|");
+$pdf->SetTitle("http://stfc.nonsolotaku.it");
 $pdf->SetAutoPageBreak(on, 15.0);
 $pdf->AddPage();
 $pdf->SetFont('Arial','I',8);
-$pdf->MultiCell(0,7,'Erstellt am '.date('d.m.y H:i', time()+7200).'', 0, R);
+$pdf->MultiCell(0,7,'Erstellt am '.date('d.m.y H:i', time()).'', 0, R);
 $pdf->SetFont('Arial','B',16);
 $pdf->MultiCell(0,7,''.$pdf->MultiCell(0,7,'Absender:					'.$sendername['user_name'].''),$pdf->MultiCell(0,7,'Empfänger:			'.$game->player['user_name'].''),$pdf->MultiCell(0,7,'Datum:										'.$time.''),$pdf->MultiCell(0,7,'Titel:														'.$subject.'').'');
 $pdf->Ln();

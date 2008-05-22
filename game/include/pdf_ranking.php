@@ -90,7 +90,7 @@ if(isset($_GET['action'])) {
 
     $pdf->SetAuthor(''.$game->player['user_name'].'');
 
-    $pdf->SetTitle('|game_url|');
+    $pdf->SetTitle('http://stfc.nonsolotaku.it');
 
     $pdf->AddPage(); 
 
@@ -106,7 +106,7 @@ if(isset($_GET['action'])) {
 
     $pdf->SetTextColor(0,0,0); 
 
-    $pdf->MultiCell(0,7,'Erstellt am '.date('d.m.y H:i', time()+7200).'', 0, 'R');
+    $pdf->MultiCell(0,7,'Erstellt am '.date('d.m.y H:i', time()).'', 0, 'R');
 
     $pdf->SetAutoPageBreak(on, 15.0);
 
@@ -150,7 +150,7 @@ if(isset($_GET['action'])) {
 
     $pdf->SetAuthor(''.$game->player['user_name'].'');
 
-    $pdf->SetTitle('|game_url|');
+    $pdf->SetTitle('http://stfc.nonsolotaku.it');
 
     $pdf->AddPage(L); 
 
@@ -166,7 +166,7 @@ if(isset($_GET['action'])) {
 
     $pdf->SetTextColor(0,0,0); 
 
-    $pdf->MultiCell(0,7,'Erstellt am '.date('d.m.y H:i', time()+7200).'', 0, 'R');
+    $pdf->MultiCell(0,7,'Erstellt am '.date('d.m.y H:i', time()).'', 0, 'R');
 
     $pdf->SetAutoPageBreak(on, 15.0);
 
