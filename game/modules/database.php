@@ -23,11 +23,10 @@
 
 
 $game->init_player();
-include('database.sprache.php');
 
-//$inc='include/text_planets_ENG.php';
 
-if(1 || isset($_GET['planet_type'])) {include('.$inc.');
+if(1 || isset($_GET['planet_type']))
+{
 
     foreach($PLANETS_TEXT as $type => $data) {
         $type = strtoupper($type);
@@ -67,7 +66,7 @@ if(1 || isset($_GET['planet_type'])) {include('.$inc.');
     <td>'.$data[4].'</td>
   </tr>
   <tr>
-  <td colspan="2" valign="top"><img src="'.FIXED_GFX_PATH.'/planet_type_'.strtolower($type).'.gif" border="0"></td>
+  <td colspan="2" valign="top"><img src="'.FIXED_GFX_PATH.'planet_type_'.strtolower($type).'.png" border="0"></td>
   </tr>
   
 </table>
