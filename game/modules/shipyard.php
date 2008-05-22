@@ -24,9 +24,11 @@
 
 $game->init_player();
 
-include('include/static/static_components_'.$game->player['user_race'].'.php');
+$filename = 'include/static/static_components_'.$game->player['user_race'].'_'.$game->player['language'].'.php';
+if (!file_exists($filename)) $filename = 'include/static/static_components_'.$game->player['user_race'].'.php';
+include($filename);
 
-$game->out('<center><span class="caption">'.$BUILDING_NAME[$game->player['user_race']][7].':</span></center><br><br>');
+$game->out('<span class="caption">'.$BUILDING_NAME[$game->player['user_race']][7].':</span><br><br>');
 
 
 
@@ -72,6 +74,31 @@ return 1;
 
 }
 
+function ColoMetRestriction($template) // Verifica di unicitÃ  delle colonizzatrici
+{
+	global $game,$db;
+
+	if(!($template['ship_torso'] == 2 && $template['ship_class'] == 0))
+		return 1;
+
+	$sql = 'SELECT COUNT(*) AS conteggio FROM ship_templates, ships WHERE ship_templates.id = ships.template_id
+				AND ship_templates.ship_torso = 2 AND ship_templates.ship_class = 0
+				AND ships.user_id = '.$game->player['user_id'];
+
+	$risultato = $db->queryrow($sql);
+	if($risultato['conteggio']  > 0)	return 0;
+
+	$sql = 'SELECT COUNT(*) AS conteggio FROM scheduler_shipbuild, ship_templates, planets WHERE scheduler_shipbuild.ship_type = ship_templates.id
+				AND scheduler_shipbuild.planet_id = planets.planet_id
+				AND ship_templates.ship_torso = 2
+				AND ship_class = 0
+				AND planets.planet_owner = '.$game->player['user_id'];
+
+	$risultato = $db->queryrow($sql);
+	if($risultato['conteggio']  > 0) 	return 0;
+
+	return 1;
+}
 
 
 function TemplateMetRequirements($template)
@@ -85,6 +112,8 @@ global $ship_components;
 if ($game->player['user_points']<GlobalTorsoReq($template['ship_torso'])) { return 0; }
 
 if ($game->planet['planet_points']<LocalTorsoReq($template['ship_torso'])) { return 0; }
+
+if(!ColoMetRestriction($template)) return 0;
 
 if (!ComponentMetRequirements(0,$template['component_1'],$ship_components[$game->player['user_race']][0][$template['component_1']],$template['ship_torso'])) return 0;
 
@@ -124,9 +153,9 @@ global $game;
 
 global $ship_components;
 
-if ($game->player['user_points']<GlobalTorsoReq($template['ship_torso'])) { $game->out('<tr><td>Du benötigst '.GlobalTorsoReq($template['ship_torso']).' Gesamtpunkte.</td></tr>'); }
+if ($game->player['user_points']<GlobalTorsoReq($template['ship_torso'])) { $game->out('<tr><td>'.constant($game->sprache("TEXT0")).' '.GlobalTorsoReq($template['ship_torso']).' '.constant($game->sprache("TEXT1")).'</td></tr>'); }
 
-if ($game->planet['planet_points']<LocalTorsoReq($template['ship_torso'])) { $game->out('<tr><td>Du benötigst '.LocalTorsoReq($template['ship_torso']).' Planetenpunkte.</td></tr>'); }
+if ($game->planet['planet_points']<LocalTorsoReq($template['ship_torso'])) { $game->out('<tr><td>'.constant($game->sprache("TEXT0")).' '.LocalTorsoReq($template['ship_torso']).' '.constant($game->sprache("TEXT2")).'</td></tr>'); }
 
 if (!ComponentMetRequirements(0,$template['component_1'],$ship_components[$game->player['user_race']][0][$template['component_1']],$template['ship_torso'])) { }
 
@@ -228,10 +257,63 @@ if ($template['min_unit_3']!=0) $num[8]=floor($planet['unit_3']/$template['min_u
 
 if ($template['min_unit_4']!=0) $num[9]=floor($planet['unit_4']/$template['min_unit_4']); else $num[9]=9999;
 
+// Non si possono costruire piÃ¹ di 1 colonizzatrice alla volta
+if ($template['ship_torso'] == 2 && $template['ship_class'] == 0 && min($num) > 0)
+	return 1;
+
 return min($num);
 
 }
 
+function CreateResourceRequestedText($template,$player,$planet)
+{
+	global $game,$UNIT_NAME;
+
+	$text = '';
+	// Create popup text with needed resources:
+
+	$req = floor($planet['resource_1']-$template['resource_1']);
+	if ($req < 0)
+		$text .= '<img src='.$game->GFX_PATH.'menu_metal_small.gif>&nbsp;'.abs($req).'&nbsp;&nbsp;'.constant($game->sprache("TEXT63")).'<br>';
+
+	$req = floor($planet['resource_2']-$template['resource_2']);
+	if ($req < 0)
+		$text .= '<img src='.$game->GFX_PATH.'menu_mineral_small.gif>&nbsp;'.abs($req).'&nbsp;&nbsp;'.constant($game->sprache("TEXT64")).'<br>';
+
+	$req = floor($planet['resource_3']-$template['resource_3']);
+	if ($req < 0)
+		$text .= '<img src='.$game->GFX_PATH.'menu_latinum_small.gif>&nbsp;'.abs($req).'&nbsp;&nbsp;'.constant($game->sprache("TEXT65")).'<br>';
+
+	$req = floor($planet['resource_4']-$template['resource_4']);
+	if ($req < 0)
+		$text .= '<img src='.$game->GFX_PATH.'menu_worker_small.gif>&nbsp;'.abs($req).'&nbsp;&nbsp;'.constant($game->sprache("TEXT66")).'<br>';
+
+	$req = $planet['unit_5']-$template['unit_5'];
+	if ($req < 0)
+		$text .= '<img src='.$game->GFX_PATH.'menu_unit5_small.gif>&nbsp;'.abs($req).'&nbsp;&nbsp;'.addslashes($UNIT_NAME[$player['user_race']][4]).'<br>';
+
+	$req = $planet['unit_6']-$template['unit_6'];
+	if ($req < 0)
+		$text .= '<img src='.$game->GFX_PATH.'menu_unit6_small.gif>&nbsp;'.abs($req).'&nbsp;&nbsp;'.addslashes($UNIT_NAME[$player['user_race']][5]).'<br>';
+
+	$req = $planet['unit_1']-$template['min_unit_1'];
+	if ($req < 0)
+		$text .= '<img src='.$game->GFX_PATH.'menu_unit1_small.gif>&nbsp;'.abs($req).'&nbsp;&nbsp;'.addslashes($UNIT_NAME[$player['user_race']][0]).'<br>';
+
+	$req = $planet['unit_2']-$template['min_unit_2'];
+	if ($req < 0)
+		$text .= '<img src='.$game->GFX_PATH.'menu_unit2_small.gif>&nbsp;'.abs($req).'&nbsp;&nbsp;'.addslashes($UNIT_NAME[$player['user_race']][1]).'<br>';
+
+	$req = $planet['unit_3']-$template['min_unit_3'];
+	if ($req < 0)
+		$text .= '<img src='.$game->GFX_PATH.'menu_unit3_small.gif>&nbsp;'.abs($req).'&nbsp;&nbsp;'.addslashes($UNIT_NAME[$player['user_race']][2]).'<br>';
+
+	$req = $planet['unit_4']-$template['min_unit_4'];
+	if ($req < 0)
+		$text .= '<img src='.$game->GFX_PATH.'menu_unit4_small.gif>&nbsp;'.abs($req).'&nbsp;&nbsp;'.addslashes($UNIT_NAME[$player['user_race']][3]).'<br>';
+
+	return $text;
+}
 
 
 function CreateInfoText($template)
@@ -244,7 +326,7 @@ global $game;
 
 global $ship_components;
 
-$text='<font color=#000000><table width=500 border=0 cellpadding=0 cellspacing=0><tr><td width=250><table width=* border=0 cellpadding=0 cellspacing=0><tr><td valign=top><u>Name:</u><br><b>'.$template['name'].'</b><br><br></td></tr><tr><td valign=top><u>Beschreibung:</u><br>'.str_replace("\r\n", '<br>',wordwrap($template['description'], 40,"<br>",1 )).'<br><br></td></tr><tr><td valign=top><u>Bild:</u><br><img src='.FIXED_GFX_PATH.'ship'.$game->player['user_race'].'_'.$template['ship_torso'].'.jpg></td></tr><tr><td valign=top><u>Komponenten:</u><br>';
+$text='<font color=#000000><table width=500 border=0 cellpadding=0 cellspacing=0><tr><td width=250><table width=* border=0 cellpadding=0 cellspacing=0><tr><td valign=top><u>'.constant($game->sprache("TEXT3")).'</u><br><b>'.$template['name'].'</b><br><br></td></tr><tr><td valign=top><u>'.constant($game->sprache("TEXT4")).'</u><br>'.str_replace("\r\n", '<br>',wordwrap($template['description'], 40,"<br>",1 )).'<br><br></td></tr><tr><td valign=top><u>'.constant($game->sprache("TEXT5")).'</u><br><img src='.FIXED_GFX_PATH.'ship'.$game->player['user_race'].'_'.$template['ship_torso'].'.jpg></td></tr><tr><td valign=top><u>'.constant($game->sprache("TEXT6")).'</u><br>';
 
 
 
@@ -258,57 +340,54 @@ if ($template['component_'.($t+1)]>=0)
 
 $text.='-&nbsp;'.( ($game->planet['catresearch_'.($t+1).'']<=$template['component_'.($t+1).'']) ? '<b><font color=red>'.$ship_components[$game->player['user_race']][$t][$template['component_'.($t+1)]]['name'].'</font></b>' : '<b><font color=green>'.$ship_components[$game->player['user_race']][$t][$template['component_'.($t+1)]]['name'].'</font></b>' ).'<br>';
 
-} else $text.='- Nicht belegt<br>';
+} else $text.=constant($game->sprache("TEXT7"));
 
 }
 
-$text.='<br></td></tr></table></td><td width=250><table width=* border=0 cellpadding=0 cellspacing=0><tr><td valign=top><u>Schiffsdaten:</u><br>';
+$text.='<br></td></tr></table></td><td width=250><table width=* border=0 cellpadding=0 cellspacing=0><tr><td valign=top><u>'.constant($game->sprache("TEXT8")).'</u><br>';
 
 
 
-$text.='<u>L. Waffen:</u> <b>'.$template['value_1'].'</b><br>';
+$text.='<u>'.constant($game->sprache("TEXT9")).'</u> <b>'.$template['value_1'].'</b><br>';
 
-$text.='<u>Schw. Waffen:</u> <b>'.$template['value_2'].'</b><br>';
+$text.='<u>'.constant($game->sprache("TEXT10")).'</u> <b>'.$template['value_2'].'</b><br>';
 
-$text.='<u>Pl. Waffen:</u> <b>'.$template['value_3'].'</b><br>';
+$text.='<u>'.constant($game->sprache("TEXT11")).'</u> <b>'.$template['value_3'].'</b><br>';
 
-$text.='<u>Schildstärke:</u> <b>'.$template['value_4'].'</b><br>';
+$text.='<u>'.constant($game->sprache("TEXT12")).'</u> <b>'.$template['value_4'].'</b><br>';
 
-$text.='<u>Hülle (HP):</u> <b>'.$template['value_5'].'</b><br>';
+$text.='<u>'.constant($game->sprache("TEXT13")).'</u> <b>'.$template['value_5'].'</b><br>';
 
-$text.='<u>Reaktion:</u> <b>'.$template['value_6'].'</b><br>';
+$text.='<u>'.constant($game->sprache("TEXT14")).'</u> <b>'.$template['value_6'].'</b><br>';
 
-$text.='<u>Bereitschaft:</u> <b>'.$template['value_7'].'</b><br>';
+$text.='<u>'.constant($game->sprache("TEXT15")).'</u> <b>'.$template['value_7'].'</b><br>';
 
-$text.='<u>Wendigkeit:</u> <b>'.$template['value_8'].'</b><br>';
+$text.='<u>'.constant($game->sprache("TEXT16")).'</u> <b>'.$template['value_8'].'</b><br>';
 
-$text.='<u>Erfahrung:</u> <b>'.$template['value_9'].'</b><br>';
+$text.='<u>'.constant($game->sprache("TEXT17")).'</u> <b>'.$template['value_9'].'</b><br>';
 
-$text.='<u>Warp:</u> <b>'.$template['value_10'].'</b><br>';
+$text.='<u>'.constant($game->sprache("TEXT18")).'</u> <b>'.$template['value_10'].'</b><br>';
 
-$text.='<u>Sensoren:</u> <b>'.$template['value_11'].'</b><br>';
+$text.='<u>'.constant($game->sprache("TEXT19")).'</u> <b>'.$template['value_11'].'</b><br>';
 
-$text.='<u>Tarnung:</u> <b>'.$template['value_12'].'</b><br>';
+$text.='<u>'.constant($game->sprache("TEXT20")).'</u> <b>'.$template['value_12'].'</b><br>';
 
-$text.='<u>Energieverbrauch:</u> <b>'.$template['value_14'].'/'.$template['value_13'].'</b><br>';
+$text.='<u>'.constant($game->sprache("TEXT21")).'</u> <b>'.$template['value_14'].'/'.$template['value_13'].'</b><br>';
 
 
 
-$text.='<br></td></tr><tr><td valign=top><u>Ressourcen + Standardcrew</u>:<br><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$template['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$template['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$template['resource_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_worker_small.gif>'.$template['resource_4'].'<br>&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif>'.$template['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif>'.$template['unit_6'].'<br><br><u>Bauzeit</u>:<br>'.(Zeit($template['buildtime']*TICK_DURATION)).'<br><br><u>Minimale Besatzung</u>:<br><img src='.$game->GFX_PATH.'menu_unit1_small.gif>'.$template['min_unit_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif>'.$template['min_unit_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif>'.$template['min_unit_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif>'.$template['min_unit_4'].'</td></tr></table></td></tr></table>';
+$text.='<br></td></tr><tr><td valign=top><u>'.constant($game->sprache("TEXT22")).'</u><br><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$template['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$template['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$template['resource_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_worker_small.gif>'.$template['resource_4'].'<br>&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif>'.$template['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif>'.$template['unit_6'].'<br><br><u>'.constant($game->sprache("TEXT23")).'</u><br>'.(Zeit($template['buildtime']*TICK_DURATION)).'<br><br><u>'.constant($game->sprache("TEXT24")).'</u><br><img src='.$game->GFX_PATH.'menu_unit1_small.gif>'.$template['min_unit_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif>'.$template['min_unit_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif>'.$template['min_unit_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif>'.$template['min_unit_4'].'</td></tr></table></td></tr></table>';
 $text.='</td></tr></table></td></tr></table><br></font>';
 
 
 
-$text=str_replace("'",'´',$text);
+$text=str_replace("'",'Â´',$text);
 
-$text=str_replace('"','´',$text);
+$text=str_replace('"','Â´',$text);
 
 return $text;
 
 }
-
-
-
 
 
 
@@ -393,7 +472,7 @@ while (($scheduler = $db->fetchrow($schedulerquery))==true)
 
         {
 
-        $game->out('<center><span style="font-family:Arial,serif;font-size:11pt"><b>Fehler: Datenbankfehler in Modul shipyard ( function: Abort_Build() ); bitte Admin melden!</b></span></center><br>');
+        $game->out('<center><span style="font-family:Arial,serif;font-size:11pt"><b>'.constant($game->sprache("TEXT25")).'</b></span></center><br>');
 
         }
 
@@ -470,8 +549,9 @@ $db->lock('scheduler_shipbuild', 'ship_templates', 'ship_ccategory', 'ship_compo
 $game->init_player();
 
 
-
-
+// Non si possono avere piÃ¹ di 1 colonizzatrice alla volta
+if ($template['ship_torso'] == 2 && $template['ship_class'] == 0 && $_REQUEST['count'] >1)
+	$_REQUEST['count'] = 1;
 
 if (CanAffordTemplate($template,$game->player,$game->planet)>=$_REQUEST['count'] && CanAffordTemplateUnits($_REQUEST['count1'],$_REQUEST['count2'],$_REQUEST['count3'],$_REQUEST['count4'],$_REQUEST['count'],$template,$game->planet) && TemplateMetRequirements($template))
 
@@ -523,15 +603,13 @@ else  // Not enough resources
 
 $text='';
 
-if (CanAffordTemplate($template,$game->player,$game->planet)<$_REQUEST['count']) $text.='-&nbsp;Zu wenige Standardressourcen<br>';
+if (CanAffordTemplate($template,$game->player,$game->planet)<$_REQUEST['count']) $text.=constant($game->sprache("TEXT26"));
 
-if (!CanAffordTemplateUnits($_REQUEST['count1'],$_REQUEST['count2'],$_REQUEST['count3'],$_REQUEST['count4'],$_REQUEST['count'],$template,$game->planet)) $text.='-&nbsp;Zu wenige Einheiten<br>';
+if (!CanAffordTemplateUnits($_REQUEST['count1'],$_REQUEST['count2'],$_REQUEST['count3'],$_REQUEST['count4'],$_REQUEST['count'],$template,$game->planet)) $text.=constant($game->sprache("TEXT27"));
 
-if (!TemplateMetRequirements($template)) $text.='-&nbsp;Baubedingungen nicht erfüllt<br>';
+if (!TemplateMetRequirements($template)) $text.=constant($game->sprache("TEXT28"));
 
-
-
-$game->out('<center><span style="font-family:Arial,serif;font-size:11pt"><b>Fehler: Bau konnte nicht gestartet werden<br>'.$text.'</b></span></center><br>');
+$game->out('<center><span style="font-family:Arial,serif;font-size:11pt"><b>'.constant($game->sprache("TEXT29")).'<br>'.$text.'</b></span></center><br>');
 
 }
 
@@ -585,7 +663,7 @@ if ($db->num_rows()>0)
 
 {
 
-$game->out('<center><span class="sub_caption">Baustatus '.HelpPopup('shipyard_3').':</span></center><br>');
+$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT30")).' '.HelpPopup('shipyard_3').':</span></center><br>');
 
 $scheduler = $db->fetchrow($schedulerquery);
 
@@ -595,9 +673,9 @@ $game->out('
 
 <center><table border=0 cellpadding=0 cellspacing=0 width=300 class="style_inner"><tr><td>
 
-<span class="sub_caption2">Gebaut wird: <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.$template['name'].'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span class="sub_caption2">'.$template['name'].'</span></a></span><br>
+<span class="sub_caption2">'.constant($game->sprache("TEXT31")).' <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.$template['name'].'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span class="sub_caption2">'.$template['name'].'</span></a></span><br>
 
-Verbleibende Zeit bis zur Fertigstellung:<br>
+'.constant($game->sprache("TEXT32")).'<br>
 
 <b id="timer2" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['finish_build']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b>
 
@@ -607,7 +685,7 @@ Verbleibende Zeit bis zur Fertigstellung:<br>
 
 <input type="hidden" name="correct_abort" value="1">
 
-<input type="submit" name="submita" class="button" style="width: 200px;" value ="Alle Bauaufträge abbrechen">
+<input type="submit" name="submita" class="button" style="width: 200px;" value ="'.constant($game->sprache("TEXT33")).'">
 
 </form>
 
@@ -629,7 +707,7 @@ if ($db->num_rows()>0)
 
 {
 
-$game->out('<br><span class="sub_caption2">Warteschlange:</span><br>(<a href="'.parse_link('a=shipyard').'">Standardansicht</a>)<br>');
+$game->out('<br><span class="sub_caption2">'.constant($game->sprache("TEXT34")).'</span><br>(<a href="'.parse_link('a=shipyard').'">'.constant($game->sprache("TEXT35")).'</a>)<br>');
 
 
 
@@ -640,7 +718,7 @@ while(($scheduler = $db->fetchrow($schedulerquery))==true)
 $template=$db->queryrow('SELECT * FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (id="'.$scheduler['ship_type'].'")');
 
 $game->out('-&nbsp; <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.$template['name'].'\', WIDTH, 
-500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a> (Fertig: '.date("d.M H:i",time()+7200+$NEXT_TICK+(($scheduler['finish_build']-$ACTUAL_TICK)*TICK_DURATION*60)).' Uhr)<br>');}
+500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a> ('.constant($game->sprache("TEXT36")).' '.date("d.M H:i",time()+$NEXT_TICK+(($scheduler['finish_build']-$ACTUAL_TICK)*TICK_DURATION*60)).' '.constant($game->sprache("TEXT37")).')<br>');}
 
 } // End of: "if ($db->num_rows()>0)"
 
@@ -656,7 +734,7 @@ if ($schedulerquery['num']>0)
 
 {
 
-$game->out('<br><span class="sub_caption2">Warteschlange: '.$schedulerquery['num'].' Schiffe</span><br>(<a href="'.parse_link('a=shipyard&show_queue=1').'">Detailansicht</a>)<br>');
+$game->out('<br><span class="sub_caption2">'.constant($game->sprache("TEXT34")).' '.$schedulerquery['num'].' '.constant($game->sprache("TEXT38")).'</span><br>(<a href="'.parse_link('a=shipyard&show_queue=1').'">'.constant($game->sprache("TEXT39")).'</a>)<br>');
 
 }
 
@@ -672,11 +750,11 @@ if ($display) $game->out('</td></tr></table></center><br>');
 
 
 
-///////////////////////// 2nd Einheitenmenü
+///////////////////////// 2nd EinheitenmenÃ¼
 
 
 
-$game->out('<center>Aufgrund der Tickzeiten dauert der erste Bauvorgang u.U. bis zu 3 Minuten länger.</center><br>');
+$game->out('<center>'.constant($game->sprache("TEXT40")).'</center><br>');
 
 
 
@@ -688,7 +766,7 @@ $game->out('
 
 <tr><td width=200>
 
-<center><span class="sub_caption2">Verfügbare Truppen:</span></center><br>
+<center><span class="sub_caption2">'.constant($game->sprache("TEXT41")).'</span></center><br>
 
 <table border=0 cellpadding=0 cellspacing=0 width=200 class="style_inner">
 
@@ -698,17 +776,17 @@ $game->out('
 
 
 
-$t=0; $game->out('<img src="'.$game->GFX_PATH.'menu_unit'.($t+1).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][$t].'<br><u>Angriff:</u> '.GetAttackUnit($t).' (Standard: '.$UNIT_DATA[$t][5].')<br><u>Verteidigung:</u> '.GetDefenseUnit($t).' (Standard: '.$UNIT_DATA[$t][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][0].' (1)</b></a>: '.$game->planet['unit_1'].'<br>');
+$t=0; $game->out('<img src="'.$game->GFX_PATH.'menu_unit'.($t+1).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][$t].'<br><u>'.constant($game->sprache("TEXT42")).'</u> '.GetAttackUnit($t).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[$t][5].')<br><u>'.constant($game->sprache("TEXT44")).'</u> '.GetDefenseUnit($t).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[$t][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][0].' (1)</b></a>: '.$game->planet['unit_1'].'<br>');
 
-$t=1; $game->out('<img src="'.$game->GFX_PATH.'menu_unit'.($t+1).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][$t].'<br><u>Angriff:</u> '.GetAttackUnit($t).' (Standard: '.$UNIT_DATA[$t][5].')<br><u>Verteidigung:</u> '.GetDefenseUnit($t).' (Standard: '.$UNIT_DATA[$t][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][1].' (2)</b></a>: '.$game->planet['unit_2'].'<br>');
+$t=1; $game->out('<img src="'.$game->GFX_PATH.'menu_unit'.($t+1).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][$t].'<br><u>'.constant($game->sprache("TEXT42")).'</u> '.GetAttackUnit($t).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[$t][5].')<br><u>'.constant($game->sprache("TEXT44")).'</u> '.GetDefenseUnit($t).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[$t][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][1].' (2)</b></a>: '.$game->planet['unit_2'].'<br>');
 
-$t=2; $game->out('<img src="'.$game->GFX_PATH.'menu_unit'.($t+1).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][$t].'<br><u>Angriff:</u> '.GetAttackUnit($t).' (Standard: '.$UNIT_DATA[$t][5].')<br><u>Verteidigung:</u> '.GetDefenseUnit($t).' (Standard: '.$UNIT_DATA[$t][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][2].' (3)</b></a>: '.$game->planet['unit_3'].'<br>');
+$t=2; $game->out('<img src="'.$game->GFX_PATH.'menu_unit'.($t+1).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][$t].'<br><u>'.constant($game->sprache("TEXT42")).'</u> '.GetAttackUnit($t).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[$t][5].')<br><u>'.constant($game->sprache("TEXT44")).'</u> '.GetDefenseUnit($t).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[$t][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][2].' (3)</b></a>: '.$game->planet['unit_3'].'<br>');
 
-$t=3; $game->out('<img src="'.$game->GFX_PATH.'menu_unit'.($t+1).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][$t].'<br><u>Angriff:</u> '.GetAttackUnit($t).' (Standard: '.$UNIT_DATA[$t][5].')<br><u>Verteidigung:</u> '.GetDefenseUnit($t).' (Standard: '.$UNIT_DATA[$t][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][3].' (4)</b></a>: '.$game->planet['unit_4'].'<br>');
+$t=3; $game->out('<img src="'.$game->GFX_PATH.'menu_unit'.($t+1).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][$t].'<br><u>'.constant($game->sprache("TEXT42")).'</u> '.GetAttackUnit($t).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[$t][5].')<br><u>'.constant($game->sprache("TEXT44")).'</u> '.GetDefenseUnit($t).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[$t][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][3].' (4)</b></a>: '.$game->planet['unit_4'].'<br>');
 
-$t=4; $game->out('<img src="'.$game->GFX_PATH.'menu_unit'.($t+1).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][$t].'<br><u>Angriff:</u> '.GetAttackUnit($t).' (Standard: '.$UNIT_DATA[$t][5].')<br><u>Verteidigung:</u> '.GetDefenseUnit($t).' (Standard: '.$UNIT_DATA[$t][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][4].' (5)</b></a>: '.$game->planet['unit_5'].'<br>');
+$t=4; $game->out('<img src="'.$game->GFX_PATH.'menu_unit'.($t+1).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][$t].'<br><u>'.constant($game->sprache("TEXT42")).'</u> '.GetAttackUnit($t).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[$t][5].')<br><u>'.constant($game->sprache("TEXT44")).'</u> '.GetDefenseUnit($t).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[$t][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][4].' (5)</b></a>: '.$game->planet['unit_5'].'<br>');
 
-$t=5; $game->out('<img src="'.$game->GFX_PATH.'menu_unit'.($t+1).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][$t].'<br><u>Angriff:</u> '.GetAttackUnit($t).' (Standard: '.$UNIT_DATA[$t][5].')<br><u>Verteidigung:</u> '.GetDefenseUnit($t).' (Standard: '.$UNIT_DATA[$t][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][5].' (6)</b></a>: '.$game->planet['unit_6'].'<br>');
+$t=5; $game->out('<img src="'.$game->GFX_PATH.'menu_unit'.($t+1).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][$t].'<br><u>'.constant($game->sprache("TEXT42")).'</u> '.GetAttackUnit($t).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[$t][5].')<br><u>'.constant($game->sprache("TEXT44")).'</u> '.GetDefenseUnit($t).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[$t][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][5].' (6)</b></a>: '.$game->planet['unit_6'].'<br>');
 
 $game->out('</td></tr></table></td></tr></table><br>
 
@@ -748,7 +826,7 @@ Show_Common_Menues();
 
 ///////////////////////// 3rd Schiffstemplate Menu
 
-$game->out('<center><span class="sub_caption">Schiffe in Auftrag geben '.HelpPopup('shipyard_2').':</span></center><br>');
+$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT45")).' '.HelpPopup('shipyard_2').':</span></center><br>');
 
 $game->out('<center><table border=0 cellpadding=2 cellspacing=2 width=400 class="style_outer"><tr><td width=25>&nbsp;</td><td>');
 
@@ -786,7 +864,7 @@ if ($maxunit[3]>$template['max_unit_4']) $maxunit[3]=$template['max_unit_4'];
 
 
 
-$game->out('<center><span class="sub_caption2">Besatzung für Schiff(e) "'.$_REQUEST['count'].'x <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.$template['name'].'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span class="sub_caption2">'.$template['name'].'</span></a>" wählen:</span></center><br>
+$game->out('<center><span class="sub_caption2">'.constant($game->sprache("TEXT46")).' "'.$_REQUEST['count'].'x <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.$template['name'].'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span class="sub_caption2">'.$template['name'].'</span></a>" '.constant($game->sprache("TEXT47")).'</span></center><br>
 
 <form name="send" method="post" action="index.php?a=shipyard&a2=start_build&id='.$template['id'].'" onSubmit="return document.send.submit.disabled = true;">
 <script type="text/javascript" language="JavaScript">
@@ -803,7 +881,7 @@ document.getElementsByName("count4")[0].value='.$maxunit[3].';
 
 <tr>
 
-<td width=200><img src="'.$game->GFX_PATH.'menu_unit'.(1).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][0].'<br><u>Angriff:</u> '.GetAttackUnit(0).' (Standard: '.$UNIT_DATA[0][5].')<br><u>Verteidigung:</u> '.GetDefenseUnit(0).' (Standard: '.$UNIT_DATA[0][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][0].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][0].' </b></a>
+<td width=200><img src="'.$game->GFX_PATH.'menu_unit'.(1).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][0].'<br><u>'.constant($game->sprache("TEXT42")).'</u> '.GetAttackUnit(0).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[0][5].')<br><u>'.constant($game->sprache("TEXT44")).'</u> '.GetDefenseUnit(0).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[0][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][0].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][0].' </b></a>
 
 &nbsp;('.$template['min_unit_1'].'-'.$template['max_unit_1'].')
 
@@ -817,7 +895,7 @@ document.getElementsByName("count4")[0].value='.$maxunit[3].';
 
 <tr>
 
-<td><img src="'.$game->GFX_PATH.'menu_unit'.(2).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][1].'<br><u>Angriff:</u> '.GetAttackUnit(1).' (Standard: '.$UNIT_DATA[1][5].')<br><u>Verteidigung:</u> '.GetDefenseUnit(1).' (Standard: '.$UNIT_DATA[1][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][1].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][1].' </b></a>
+<td><img src="'.$game->GFX_PATH.'menu_unit'.(2).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][1].'<br><u>'.constant($game->sprache("TEXT42")).'</u> '.GetAttackUnit(1).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[1][5].')<br><u>'.constant($game->sprache("TEXT44")).'</u> '.GetDefenseUnit(1).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[1][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][1].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][1].' </b></a>
 
 &nbsp;('.$template['min_unit_2'].'-'.$template['max_unit_2'].')
 
@@ -831,7 +909,7 @@ document.getElementsByName("count4")[0].value='.$maxunit[3].';
 
 <tr>
 
-<td><img src="'.$game->GFX_PATH.'menu_unit'.(3).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][2].'<br><u>Angriff:</u> '.GetAttackUnit(2).' (Standard: '.$UNIT_DATA[2][5].')<br><u>Verteidigung:</u> '.GetDefenseUnit(2).' (Standard: '.$UNIT_DATA[2][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][2].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][2].' </b></a>
+<td><img src="'.$game->GFX_PATH.'menu_unit'.(3).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][2].'<br><u>'.constant($game->sprache("TEXT42")).'</u> '.GetAttackUnit(2).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[2][5].')<br><u>'.constant($game->sprache("TEXT44")).'</u> '.GetDefenseUnit(2).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[2][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][2].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][2].' </b></a>
 
 &nbsp;('.$template['min_unit_3'].'-'.$template['max_unit_3'].')
 
@@ -845,7 +923,7 @@ document.getElementsByName("count4")[0].value='.$maxunit[3].';
 
 <tr>
 
-<td><img src="'.$game->GFX_PATH.'menu_unit'.(4).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][3].'<br><u>Angriff:</u> '.GetAttackUnit(3).' (Standard: '.$UNIT_DATA[3][5].')<br><u>Verteidigung:</u> '.GetDefenseUnit(3).' (Standard: '.$UNIT_DATA[3][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][3].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][3].' </b></a>
+<td><img src="'.$game->GFX_PATH.'menu_unit'.(4).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][3].'<br><u>'.constant($game->sprache("TEXT42")).'</u> '.GetAttackUnit(3).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[3][5].')<br><u>'.constant($game->sprache("TEXT44")).'</u> '.GetDefenseUnit(3).' ('.constant($game->sprache("TEXT43")).' '.$UNIT_DATA[3][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][3].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.$UNIT_NAME[$game->player['user_race']][3].' </b></a>
 
 &nbsp;('.$template['min_unit_4'].'-'.$template['max_unit_4'].')
 
@@ -857,9 +935,9 @@ document.getElementsByName("count4")[0].value='.$maxunit[3].';
 
 <td colspan=2>
 
-</b><i>* Info: Die Zahl in den Eingabefeldern repräsentiert die max. verfügbare Anzahl der Einheiten pro Schiff</i>
+</b><i>'.constant($game->sprache("TEXT48")).'</i>
 <br>
-<br><a href="javascript:maximum();"><u>Maximal verfügbare Einheiten wählen</u></a>
+<br><a href="javascript:maximum();"><u>'.constant($game->sprache("TEXT49")).'</u></a>
 <br>
 
 
@@ -870,7 +948,7 @@ document.getElementsByName("count4")[0].value='.$maxunit[3].';
 
 <input type="hidden" name="id" value="'.$_REQUEST['id'].'"><br>
 
-<center><input type="submit" name="submit" class="button" value ="Bau starten"></center>
+<center><input type="submit" name="submit" class="button" value ="'.constant($game->sprache("TEXT50")).'"></center>
 
 
 
@@ -914,15 +992,15 @@ Show_Common_Menues();
 
 ///////////////////////// 3rd Schiffstemplate Menu
 
-$game->out('<center><span class="sub_caption">Schiffe in Auftrag geben '.HelpPopup('shipyard_1').' :</span></center><br>');
+$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT45")).' '.HelpPopup('shipyard_1').' :</span></center><br>');
 
-$game->out('<center><table border=0 cellpadding=2 cellspacing=2 width=500 class="style_outer"><tr><td width=25>&nbsp;</td><td>');
-
-
+$game->out('<center><table border=0 cellpadding=2 cellspacing=2 width=500 class="style_outer"><tr><td width=500>');
 
 
 
-$game->out('<table border=0 cellpadding=0 cellspacing=0 class="style_inner"><tr><td width=200><span class="sub_caption2">Schiffstemplate:</b></td><td width=175><span class="sub_caption2">Dauer pro Schiff:</span></td><td><span class="sub_caption2">Anzahl:</span></td></tr>');
+
+
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width=500 class="style_inner"><tr><td width=200><span class="sub_caption2">'.constant($game->sprache("TEXT51")).'</b></td><td width=175><span class="sub_caption2">'.constant($game->sprache("TEXT52")).'</span></td><td width=120><span class="sub_caption2">'.constant($game->sprache("TEXT53")).'</span></td></tr>');
 
 $templatequery=$db->query('SELECT * FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (removed=0)  ORDER BY ship_torso ASC, name ASC');
 
@@ -964,7 +1042,7 @@ if (!TemplateMetRequirements($template))
 
 {
 
-$build_text='&nbsp;&nbsp;<span style="color: red">Start</span>';
+$build_text='&nbsp;&nbsp;<span style="color: red">'.constant($game->sprache("TEXT54")).'</span>';
 
 }
 
@@ -972,7 +1050,7 @@ else if (($maxnum=CanAffordTemplate($template,$game->player,$game->planet)))
 
 {
 
-$build_text='<input type="hidden" name="correct" value="1"><input type="submit" name="submit" class="button" style="width: 60px;" value ="Start">';
+$build_text='<input type="hidden" name="correct" value="1"><input type="submit" name="submit" class="button" style="width: 60px;" value ="'.constant($game->sprache("TEXT54")).'">';
 
 }
 
@@ -980,19 +1058,20 @@ else
 
 {
 
-$build_text='&nbsp;&nbsp;&nbsp;<span style="color: yellow">Start</span>';
+
+$build_text='&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateResourceRequestedText($template,$game->player,$game->planet).'\', CAPTION, \''.constant($game->sprache("TEXT67")).'\', WIDTH, 170, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: yellow">'.constant($game->sprache("TEXT54")).'</span></a>';
 
 }
 
 
-$game->out('<tr height=15><td width=200><b><a href="'.parse_link('a=ship_template&view=compare&ship0='.$template['id']).'" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.str_replace("'",'´',$template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a></b></td><td>'.(Zeit($template['buildtime']*TICK_DURATION)).'</td><td>');
+$game->out('<tr height=15><td width=200><b><a href="'.parse_link('a=ship_template&view=compare&ship0='.$template['id']).'" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.str_replace("'",'Â´',$template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a></b></td><td>'.(Zeit($template['buildtime']*TICK_DURATION)).'</td><td>');
 
 
 $game->out('<form name="send'.$template['id'].'" method="post" action="index.php?a=shipyard&a2=start_build&id='.$template['id'].'" onSubmit="return document.send'.$template['id'].'.submit.disabled = true;"><input type="text" name="count" size="4" class="field_nosize" value="'.$maxnum.'">&nbsp;&nbsp;&nbsp;'.$build_text.'</td></tr></form>');
 
 }
 
-$game->out('<tr><td colspan=4><br><i>* Info: Die Zahl in den Eingabefeldern repräsentiert die max. verfügbare Anzahl von Schiffen die gebaut werden können<br><br>Wenn du mit dem Mauszeiger über ein Schiff fährst kannst du sehen, ob alle Komponenten auf dem Planeten zum Bau erforscht sind.<br><b><font color=red>Rot => nicht erforscht</font><br><font color=green>Grün => erforscht</font></b></i></td></tr></table>');
+$game->out('<tr><td colspan=4><br><i>'.constant($game->sprache("TEXT55")).'<br><b><font color=red>'.constant($game->sprache("TEXT56")).'</font><br><font color=green>'.constant($game->sprache("TEXT57")).'</font></b></i></td></tr></table>');
 
 }
 
@@ -1000,13 +1079,13 @@ else
 
 {
 
-$game->out('</table><center><br><br><b>Du musst erst Schiffe unter "Schiffstemplates" zusammenstellen, bevor du Schiffe in Auftrag geben kannst.</b></u></center><br><br>');
+$game->out('</table><center><br><br><b>'.constant($game->sprache("TEXT58")).'</b></u></center><br><br>');
 
 
 
 }
 
-$game->out('</td><td width=25>&nbsp;</td></tr></table>');
+$game->out('</td></tr></table>');
 
 }
 
@@ -1024,7 +1103,8 @@ if ($game->planet['building_8']<1)
 
 {
 
-$game->out('<center><b>Du musst ein(e) '.$BUILDING_NAME[$game->player['user_race']]['7'].' bauen, bevor Schiffe gebaut werden können.</b></u></center><br><br>');
+message(NOTICE, constant($game->sprache("TEXT59")).' '.$BUILDING_NAME[$game->player['user_race']][7].' '.constant($game->sprache("TEXT60")));
+//$game->out('<center><span class="text_large">'.constant($game->sprache("TEXT59")).' '.$BUILDING_NAME[$game->player['user_race']]['7'].' '.constant($game->sprache("TEXT60")).'</span></center><br><br>');
 
 }
 
@@ -1076,7 +1156,7 @@ $game->out('<table width="450" border="0" align="center">
 
   <tr>
 
-    <td>Du kannst auf diesen Bereich nicht zugreifen, weil du nur <b>'.round(100*round($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4, 0)/$game->planet['min_troops_required'],0).'%</b> der nötigen Sicherheitstruppen auf diesem Planeten hast.<br>Ein Zugriff ist ab <b>70%</b> wieder möglich.<br><br><i><u>Hinweis:</u> Aktive Bauvorgänge laufen noch weiter und können z.B. im Hauptquartier eingesehen werden.</i>
+    <td>'.constant($game->sprache("TEXT61")).' <b>'.round(100*round($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4, 0)/$game->planet['min_troops_required'],0).'%</b> '.constant($game->sprache("TEXT62")).'
 
     </td>
 
