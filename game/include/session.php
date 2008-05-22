@@ -1,11 +1,11 @@
 <?php
 /*    
-	This file is part of STFC.
-	Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
-		
-	STFC is based on STGC,
-	Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
-	
+    This file is part of STFC.
+    Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
+
+    STFC is based on STGC,
+    Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
+
     STFC is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 3 of the License, or
@@ -23,7 +23,7 @@
 
 if(isset($_POST['stgc_login'])) {
     if(empty($_POST['user_name']) || empty($_POST['user_password'])) {
-        $game->print_login_error('Bitte alle Felder ausfüllen');
+        $game->print_login_error('Please fill out all fields');
     }
 
     $pass = md5($_POST['user_password']);
@@ -37,7 +37,7 @@ if(isset($_POST['stgc_login'])) {
     }
 
     if(empty($login_user['user_id'])) {
-        $game->print_login_error('Benutzer existiert nicht oder das Passwort ist falsch');
+        $game->print_login_error('User does not exist or password is incorrect');
     }
 
     if($login_user['user_auth_level'] == STGC_BOT) {
@@ -49,12 +49,12 @@ if(isset($_POST['stgc_login'])) {
     $cookie_data['user_password'] = $pass;
 
     if(!setcookie('stgc5_session', base64_encode(serialize($cookie_data)), (time() + (60 * 60 * 24 * 30)) )) {
-        message(GENERAL, '<br>Es konnte kein Session-Cookie gesetzt werden, bitte überprüfen sie ihre Browser-Einstellungen bezüglich Cookie-Sicherheit<br>');
+        message(GENERAL, '<br>There was no session cookie set, please check your browser settings for cookie-security<br>');
     }
     
     if(!empty($_POST['proxy_mode'])) {
         if(!setcookie('stgc5_proxy_mode', '1', (time() + (60 * 60 * 24 * 30)) )) {
-            message(GENERAL, '<br>Der Proxy-Modus konnte nicht aktiviert werden, bitte überprüfen sie ihre Browser-Einstellungen bezüglich Cookie-Sicherheit<br>');
+            message(GENERAL, '<br>The Proxy Mode could not be activated, please check your browser settings for cookie-security<br>');
         }
     }
     else {
@@ -66,16 +66,16 @@ if(isset($_POST['stgc_login'])) {
 }
 elseif(isset($_REQUEST['stgc_logout'])) {
     if(!setcookie('stgc5_session')) {
-        message(GENERAL, '<br>Der Session-Cookie konnte nicht gelöscht werden, bitte überprüfen sie ihre Browser-Einstellungen bezüglich Cookie-Sicherheit<br>');
+        message(GENERAL, '<br>The session cookie could not be deleted, please check your browser settings for cookie-security<br>');
     }
     
     if(!setcookie('stgc5_session_ext')) {
-        message(GENERAL, '<br>Ein Teil des Session-Cookie konnte nicht gelöscht werden, bitte überprüfen sie ihre Browser-Einstellungen bezüglich Cookie-Sicherheit<br>');
+        message(GENERAL, '<br>A part of the session cookie could not be deleted, please check your browser settings for cookie-security<br>');
     }
 
     if(!empty($_COOKIE['stgc5_proxy_mode'])) {
         if(!setcookie('stgc5_proxy_mode')) {
-            message(GENERAL, '<br>Der Proxy-Modus konnte nicht deaktiviert werden, bitte überprüfen sie ihre Browser-Einstellungen bezüglich Cookie-Sicherheit<br>');
+            message(GENERAL, '<br>The Proxy Mode could not be turned off, please check your browser settings for cookie-security<br>');
         }
     }
 
@@ -89,17 +89,17 @@ else {
     $cookie_data = unserialize(base64_decode($_COOKIE['stgc5_session']));
 
     if(!is_array($cookie_data)) {
-        $game->print_login_error('Autologin-Cookie ist ungültig (Cookies löschen und neu einloggen)');
+        $game->print_login_error('Auto login cookie is invalid (delete cookies and repeat login)');
     }
 
     if(empty($cookie_data['user_id'])) {
-        $game->print_login_error('Ungültiges Cookie-Format (Cookies löschen und neu einloggen)');
+        $game->print_login_error('Invalid cookie format (delete cookies and repeat login)');
     }
 
     $user_id = (int)$cookie_data['user_id'];
 
     if(empty($cookie_data['user_password'])) {
-        $game->print_login_error('Ungületiges Cookie-Format (Cookies löschen und neu einloggen)');
+        $game->print_login_error('Invalid cookie format (delete cookies and repeat login)');
     }
 
     $user_password = stripslashes($cookie_data['user_password']);
@@ -113,7 +113,7 @@ else {
     }
 
     if(empty($player_data['user_id'])) {
-        $game->print_login_error('Autologin-Benutzer existiert nicht (Cookies löschen und neu einloggen)');
+        $game->print_login_error('Auto login user does not exist (delete cookies and repeat login)');
     }
 
     if($player_data['user_auth_level'] == STGC_BOT) {
@@ -121,7 +121,7 @@ else {
     }
 
     if($user_password != $player_data['user_password']) {
-        $game->print_login_error('Autologin-Passwort ist ungültig (Cookies löschen und neu einloggen)');
+        $game->print_login_error('Auto login password is invalid (delete cookies and repeat login)');
     }
 
     $sitting_mode = 0;
@@ -141,68 +141,68 @@ else {
         if( ($st_player_data['user_sitting_id1'] == $user_id) || ($st_player_data['user_sitting_id2'] == $user_id) || ($st_player_data['user_sitting_id3'] == $user_id) || ($st_player_data['user_sitting_id4'] == $user_id) || ($st_player_data['user_sitting_id5'] == $user_id) ) {
 
             if ($st_player_data['user_active']==0) 
-			{
-			$sitting_mode = 0;
-            echo 'Der Spieler '.$st_player_data['user_name'].' ist gebannt<br>Bitte log dich neu ein.';
+            {
+                $sitting_mode = 0;
+                echo 'The player '.$st_player_data['user_name'].' is banned.<br>Please log in again.';
             }
             else
             if ($st_player_data['user_active']==2) 
-			{
-			$sitting_mode = 0;
-            echo 'Der Spieler '.$st_player_data['user_name'].' ist nicht aktiviert<br>Bitte log dich neu ein.';
+            {
+                $sitting_mode = 0;
+                echo 'The player '.$st_player_data['user_name'].' is not activated.<br>Please log in again.';
             }
             else
             if ($st_player_data['user_active']==3) 
-			{
-			$sitting_mode = 0;
-            echo 'Der Spieler '.$st_player_data['user_name'].' wird gelöscht<br>Bitte log dich neu ein.';
+            {
+                $sitting_mode = 0;
+                echo 'The player '.$st_player_data['user_name'].' was deleted.<br>Please log in again.';
             }
             else
             if ($st_player_data['user_active']==4) 
-			{
-			$sitting_mode = 0;
-            echo 'Der Spieler '.$st_player_data['user_name'].' wird gelöscht<br>Bitte log dich neu ein.';
+            {
+                $sitting_mode = 0;
+                echo 'The player '.$st_player_data['user_name'].' was deleted.<br>Please log in again.';
             }
             else
-			{            
-            $sitting_mode = $user_id;
+            {
+                $sitting_mode = $user_id;
 
-            unset($st_player_data['user_skinpath']);
-            unset($st_player_data['user_gfxpath']);
-            unset($st_player_data['user_jspath']);
-			$player_data['sitting_user_id'] = $player_data['user_id'];
-			$player_data['sitting_user_password'] = $player_data['user_password'];
-            $player_data = array_merge($player_data, $st_player_data);
-			}
+                unset($st_player_data['user_skinpath']);
+                unset($st_player_data['user_gfxpath']);
+                unset($st_player_data['user_jspath']);
+                $player_data['sitting_user_id'] = $player_data['user_id'];
+                $player_data['sitting_user_password'] = $player_data['user_password'];
+                $player_data = array_merge($player_data, $st_player_data);
+            }
         }
         else {
             $sitting_mode = 0;
-            echo 'Der Spieler '.$st_player_data['user_name'].' hat dir nicht die Berechtigung gegeben, seinen Account zu sitten.<br>Bitte log dich neu ein, um diese Meldung nicht mehr zu sehen.';
+            echo 'THe player '.$st_player_data['user_name'].' has not given to you the permissions to sit his account.<br>Please login again to no longer see this message.';
         }
     }
 
     if($player_data['user_active'] != 1) {
         switch($player_data['user_active']) {
               case 0:
-                $game->print_login_error('Benutzer ist gebannt<br><br>'.$player_data['message_basement'].'');
+                $game->print_login_error('User is banned <br><br>'.$player_data['message_basement'].'');
             break;
 
             case 2:
-                $game->print_login_error('Benutzer ist noch nicht aktiviert');
+                $game->print_login_error('User is not yet activated');
             break;
 
             case 3:
-                $game->print_login_error('Benutzer hat Löschung beantragt');
+                $game->print_login_error('User has requested cancellation');
             break;
 
             case 4:
-                $game->print_login_error('Benutzer hat Löschung beantragt');
+                $game->print_login_error('User has requested cancellation');
             break;
         }
     }
 
     if( ($player_data['user_vacation_start'] < $ACTUAL_TICK) && ($player_data['user_vacation_end'] > $ACTUAL_TICK) ) {
-        $game->print_login_error('Urlaubsmodus läuft noch '.format_time( 3 * ($player_data['user_vacation_end'] - $ACTUAL_TICK)));
+        $game->print_login_error('Holiday mode is running '.format_time( 3 * ($player_data['user_vacation_end'] - $ACTUAL_TICK)));
     }
 
     if($player_data['user_override_uid'] != 0) {
@@ -217,7 +217,7 @@ else {
                 message(DATABASE_ERROR, 'Could not update user ban data');
             }
 
-            message(GENERAL, 'Schutzverletzung aufgetreten');
+            message(GENERAL, 'Protection violation occurred');
         }
 
         $sql = 'SELECT *
@@ -241,7 +241,7 @@ else {
     if( ($sitting_mode == 0) && (!defined('OVERRIDE_UID_MODE'))) {
         if(empty($_COOKIE['stgc5_session_ext'])) {
             if(!setcookie('stgc5_session_ext', (string)$user_id, (time() + (60 * 60 * 24)) )) {
-                message(GENERAL, '<br>Es konnte ein Teil des Session-Cookie nicht gesetzt werden, bitte überprüfen sie ihre Browser-Einstellungen bezüglich Cookie-Sicherheit<br>');
+                message(GENERAL, '<br>A part of the session cookie was not set, please check your browser settings for cookie-security<br>');
             }
         }
         else {
@@ -269,7 +269,7 @@ else {
             $player_data['alliance_tag'] = $alliance_data['alliance_tag'];
         }
     }
-    
+
     $sql = 'SELECT user_template
             FROM user_templates
             WHERE user_id = '.$template_user_id;
@@ -277,7 +277,7 @@ else {
     if(($template_data = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query user template user data');
     }
-    
+
     $game->template_html = stripslashes($template_data['user_template']);
 
 
@@ -289,9 +289,9 @@ else {
     else {
         define('FIXED_GFX_PATH', DEFAULT_GFX_PATH);
     }
-    
+
     $game->prepare_player($player_data, $sitting_mode);
-    
+
     unset($player_data);
 
 }
