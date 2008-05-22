@@ -26,7 +26,7 @@ $THREADS_PER_PAGE = 10;
 $POSTS_PER_PAGE = 15;
 
 $game->init_player();
-$game->out('<center><span class="caption">Allianz:</span><br><br>');
+$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).':</span><br><br>');
 
 
 // Dieser Override ist nicht 100% stabil
@@ -45,19 +45,19 @@ else {
 }
 
 if(empty($game->player['alliance_name'])) {
-    message(NOTICE, 'Du bist nicht Mitglied einer Allianz');
+    message(NOTICE, constant($game->sprache("TEXT1")));
 }
 
 
 if(!empty($_POST['new_thread_submit'])) {
     if(empty($_POST['post_title'])) {
-        message(NOTICE, 'Es wurde kein Thread-Titel angegeben');
+        message(NOTICE, constant($game->sprache("TEXT2")));
     }
     
     $post_title = addslashes($_POST['post_title']);
     
     if(empty($_POST['post_text'])) {
-        message(NOTICE, 'Der Post-Text ist leer');
+        message(NOTICE, constant($game->sprache("TEXT3")));
     }
     
     $post_text = str_replace("\n", '<br>', htmlspecialchars($_POST['post_text']));
@@ -102,7 +102,7 @@ elseif(isset($_GET['new_thread'])) {
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
       <table width="480" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="480" align="left"><a href="'.parse_link('a=alliance_board'.$override_str).'"><i>Board-Index</i></a> » <i>Neues Thema eröffnen</i></td></tr>
+        <tr><td width="480" align="left"><a href="'.parse_link('a=alliance_board'.$override_str).'"><i>'.constant($game->sprache("TEXT4")).'</i></a> » <i>'.constant($game->sprache("TEXT5")).'</i></td></tr>
       </table>
 
       <table class="style_inner" width="480" align="center" border="0" cellpadding="2" cellspacing="2">
@@ -110,17 +110,17 @@ elseif(isset($_GET['new_thread'])) {
         <tr height="5"><td></td></tr>
         <tr>
           <td rowspan="8" width="40">&nbsp;</td>
-          <td width="100">Titel:</td>
-          <td width="340"><input class="field" type="text" name="post_title" size="30" maxlength="30"></td>
+          <td width="100">'.constant($game->sprache("TEXT6")).'</td>
+          <td width="340"><input class="field" type="text" name="post_title" size="30" maxlength="30" style="width: 320px;"></td>
         </tr>
         <tr height="5"><td></td></tr>
         <tr>
-          <td width="100">Text:</td>
-          <td width="340"><textarea name="post_text" cols="50" rows="10"></textarea></td>
+          <td width="100" valign="top">'.constant($game->sprache("TEXT7")).'</td>
+          <td width="340"><textarea name="post_text" cols="50" rows="10" style="width: 320px;"></textarea></td>
         </tr>
         <tr height="5"><td></td></tr>
         <tr>
-          <td colspan="2" width="400" align="center"><input class="button" type="submit" name="new_thread_submit" value="Übernehmen"></td>
+          <td colspan="2" width="400" align="center"><input class="button" type="submit" name="new_thread_submit" value="'.constant($game->sprache("TEXT8")).'"></td>
         </tr>
         <tr height="5"><td></td></tr>
         </form>
@@ -136,7 +136,7 @@ elseif(!empty($_POST['new_post_submit'])) {
     $post_title = addslashes($_POST['post_title']);
 
     if(empty($_POST['post_text'])) {
-        message(NOTICE, 'Der Post-Text ist leer');
+        message(NOTICE, constant($game->sprache("TEXT3")));
     }
     
     $post_text = str_replace("\n", '<br>', htmlspecialchars($_POST['post_text']));
@@ -174,11 +174,11 @@ elseif(!empty($_GET['new_post'])) {
     }
     
     if(empty($thread['thread_id'])) {
-        messagE(NOTICE, 'Der Thread konnte nicht gefunden werden');
+        message(NOTICE, constant($game->sprache("TEXT9")));
     }
     
     if($thread['alliance_id'] != $game->player['user_alliance']) {
-        message(NOTICE, 'Der Thread konnte nicht gefunden werden');
+        message(NOTICE, constant($game->sprache("TEXT9")));
     }
 
     $game->out('
@@ -187,7 +187,7 @@ elseif(!empty($_GET['new_post'])) {
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
       <table width="480" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="480" align="left"><a href="'.parse_link('a=alliance_board'.$override_str).'"><i>Board-Index</i></a> » <a href="'.parse_link('a=alliance_board&show_thread='.$thread_id.$override_str).'"><i>'.htmlspecialchars(stripslashes($thread['thread_title'])).'</i></a> » <i>Antwort posten</i></td></tr>
+        <tr><td width="480" align="left"><a href="'.parse_link('a=alliance_board'.$override_str).'"><i>'.constant($game->sprache("TEXT8")).'</i></a> » <a href="'.parse_link('a=alliance_board&show_thread='.$thread_id.$override_str).'"><i>'.htmlspecialchars(stripslashes($thread['thread_title'])).'</i></a> » <i>'.constant($game->sprache("TEXT10")).'</i></td></tr>
       </table>
 
       <table class="style_inner" width="480" align="center" border="0" cellpadding="2" cellspacing="2">
@@ -195,17 +195,17 @@ elseif(!empty($_GET['new_post'])) {
         <tr height="5"><td></td></tr>
         <tr>
           <td rowspan="8" width="40">&nbsp;</td>
-          <td width="100">Titel:</td>
-          <td width="340"><input class="field" type="text" name="post_title" size="30" maxlength="30"></td>
+          <td width="100">'.constant($game->sprache("TEXT6")).'</td>
+          <td width="340"><input class="field" type="text" name="post_title" size="30" maxlength="30" style="width: 320px;"></td>
         </tr>
         <tr height="5"><td></td></tr>
         <tr>
-          <td width="100">Text:</td>
-          <td width="340"><textarea name="post_text" cols="50" rows="10"></textarea></td>
+          <td width="100" valign="top">'.constant($game->sprache("TEXT7")).'</td>
+          <td width="340"><textarea name="post_text" cols="50" rows="10" style="width: 320px;"></textarea></td>
         </tr>
         <tr height="5"><td></td></tr>
         <tr>
-          <td colspan="2" width="400" align="center"><input class="button" type="submit" name="new_post_submit" value="Übernehmen"></td>
+          <td colspan="2" width="400" align="center"><input class="button" type="submit" name="new_post_submit" value="'.constant($game->sprache("TEXT8")).'"></td>
         </tr>
         <tr height="5"><td></td></tr>
         <input type="hidden" name="thread_id" value="'.$thread_id.'">
@@ -218,7 +218,7 @@ elseif(!empty($_GET['new_post'])) {
 }
 elseif(!empty($_POST['edit_post_submit'])) {
     if(empty($_POST['post_id'])) {
-        message(NOTICE, 'Kein Post angegeben');
+        message(NOTICE, constant($game->sprache("TEXT19")));
     }
 
     $post_id = (int)$_POST['post_id'];
@@ -226,7 +226,7 @@ elseif(!empty($_POST['edit_post_submit'])) {
     $post_title = addslashes($_POST['post_title']);
 
     if(empty($_POST['post_text'])) {
-        message(NOTICE, 'Der Post-Text ist leer');
+        message(NOTICE, constant($game->sprache("TEXT3")));
     }
 
     $post_text = str_replace("\n", '<br>', htmlspecialchars($_POST['post_text']));
@@ -242,19 +242,19 @@ elseif(!empty($_POST['edit_post_submit'])) {
     }
 
     if(empty($post['post_id'])) {
-        message(NOTICE, 'Der Post/Thread konnte nicht gefunden werden');
+        message(NOTICE, constant($game->sprache("TEXT11")));
     }
 
     if($post['alliance_id'] != $game->player['user_alliance']) {
-        message(NOTICE, 'Der Post konnte nicht gefunden werden');
+        message(NOTICE, constant($game->sprache("TEXT9")));
     }
     
     if($post['post_deleted'] != 0) {
-        message(NOTICE, 'Der Post konnte nicht gefunden werden');
+        message(NOTICE, constant($game->sprache("TEXT9")));
     }
 
     if( ($game->player['user_alliance_status'] < ALLIANCE_STATUS_ADMIN) && ($post['user_id'] != $game->player['user_id']) ) {
-        message(NOTICE, 'Du hast keine Berechtigung, dieses Post zu editieren');
+        message(NOTICE, constant($game->sprache("TEXT12")));
     }
     
     $sql = 'UPDATE alliance_bposts
@@ -294,11 +294,11 @@ elseif(!empty($_GET['edit_post'])) {
     }
 
     if(empty($post['post_id'])) {
-        messagE(NOTICE, 'Der Post/Thread konnte nicht gefunden werden');
+        message(NOTICE, constant($game->sprache("TEXT11")));
     }
 
     if($post['alliance_id'] != $game->player['user_alliance']) {
-        message(NOTICE, 'Der Post konnte nicht gefunden werden');
+        message(NOTICE, constant($game->sprache("TEXT9")));
     }
 
     $game->out('
@@ -307,7 +307,7 @@ elseif(!empty($_GET['edit_post'])) {
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
       <table width="480" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="480" align="left"><a href="'.parse_link('a=alliance_board'.$override_str).'"><i>Board-Index</i></a> » <a href="'.parse_link('a=alliance_board&show_thread='.$post['thread_id'].$override_str).'"><i>'.htmlspecialchars(stripslashes($post['thread_title'])).'</i></a> » <i>Post editieren</i></td></tr>
+        <tr><td width="480" align="left"><a href="'.parse_link('a=alliance_board'.$override_str).'"><i>'.constant($game->sprache("TEXT4")).'</i></a> » <a href="'.parse_link('a=alliance_board&show_thread='.$post['thread_id'].$override_str).'"><i>'.htmlspecialchars(stripslashes($post['thread_title'])).'</i></a> » <i>'.constant($game->sprache("TEXT13")).'</i></td></tr>
       </table>
 
       <table class="style_inner" width="480" align="center" border="0" cellpadding="2" cellspacing="2">
@@ -315,22 +315,22 @@ elseif(!empty($_GET['edit_post'])) {
         <tr height="5"><td></td></tr>
         <tr>
           <td rowspan="8" width="40">&nbsp;</td>
-          <td width="100">Spieler:</td>
+          <td width="100">'.constant($game->sprache("TEXT14")).'</td>
           <td width="340"><a href="'.parse_link('a=stats&a2=viewplayer&id='.$post['user_id']).'"><b>'.$post['user_name'].'</b></a></td>
         </tr>
         <tr height="5"><td></td></tr>
         <tr>
-          <td width="100">Titel:</td>
-          <td width="340"><input class="field" type="text" name="post_title" size="30" maxlength="30" value="'.$post['post_title'].'"></td>
+          <td width="100">'.constant($game->sprache("TEXT6")).'</td>
+          <td width="340"><input class="field" type="text" name="post_title" size="30" maxlength="30" value="'.$post['post_title'].'" style="width: 320px;"></td>
         </tr>
         <tr height="5"><td></td></tr>
         <tr>
-          <td width="100">Text:</td>
-          <td width="340"><textarea name="post_text" cols="50" rows="10">'.str_replace('<br>', "\n", $post['post_text']).'</textarea></td>
+          <td width="100" valign="top">'.constant($game->sprache("TEXT7")).'</td>
+          <td width="340"><textarea name="post_text" cols="50" rows="10" style="width: 320px;">'.str_replace('<br>', "\n", $post['post_text']).'</textarea></td>
         </tr>
         <tr height="5"><td></td></tr>
         <tr>
-          <td colspan="2" width="400" align="center"><input class="button" type="submit" name="edit_post_submit" value="Übernehmen"></td>
+          <td colspan="2" width="400" align="center"><input class="button" type="submit" name="edit_post_submit" value="'.constant($game->sprache("TEXT10")).'"></td>
         </tr>
         <tr height="5"><td></td></tr>
         <input type="hidden" name="post_id" value="'.$post_id.'">
@@ -343,7 +343,7 @@ elseif(!empty($_GET['edit_post'])) {
 }
 elseif(!empty($_POST['delete_post_confirm'])) {
     if(empty($_POST['post_id'])) {
-        message(NOTICE, 'Kein Post angegeben');
+        message(NOTICE, constant($game->sprache("TEXT19")));
     }
     
     $post_id = (int)$_POST['post_id'];
@@ -359,15 +359,15 @@ elseif(!empty($_POST['delete_post_confirm'])) {
     }
     
     if(empty($post['post_id'])) {
-        message(NOTICE, 'Der Post/Thread konnte nicht gefunden werden');
+        message(NOTICE, constant($game->sprache("TEXT11")));
     }
     
     if($post['alliance_id'] != $game->player['user_alliance']) {
-        message(NOTICE, 'Der Post konnte nicht gefunden werden');
+        message(NOTICE, constant($game->sprache("TEXT9")));
     }
     
     if($post['post_deleted'] != 0) {
-        message(NOTICE, 'Der Post konnte nicht gefunden werden');
+        message(NOTICE, constant($game->sprache("TEXT9")));
     }
     
     $first_post = ($post['thread_first_post_id'] == $post_id) ? true : false;
@@ -385,7 +385,7 @@ elseif(!empty($_POST['delete_post_confirm'])) {
     }
     
     if(!$allowed) {
-        message(NOTICE, 'Du hast keine Berechtigung diesen Post zu löschen.');
+        message(NOTICE, constant($game->sprache("TEXT12")));
     }
     
     if($first_post) {
@@ -461,9 +461,9 @@ elseif(!empty($_GET['delete_post'])) {
   <tr height="5"><td></td></tr>
   <tr>
     <td align="center">
-      Willst du diesen Post wirklich löschen?<br><br>(<i>Das Löschen des ersten Posts löscht den ganzen Thread</i>)<br><br>
-      <input class="button" type="button" value="<< Zurück" onClick="return window.history.back();">&nbsp;&nbsp;
-      <input class="button" type="submit" name="delete_post_confirm" value="Bestätigen">
+      '.constant($game->sprache("TEXT15")).'<br><br>(<i>'.constant($game->sprache("TEXT16")).'</i>)<br><br>
+      <input class="button" type="button" value="'.constant($game->sprache("TEXT17")).'" onClick="return window.history.back();">&nbsp;&nbsp;
+      <input class="button" type="submit" name="delete_post_confirm" value="'.constant($game->sprache("TEXT18")).'">
     </td>
   </tr>
   <tr height="5"><td></td></tr>
@@ -486,11 +486,11 @@ elseif(!empty($_GET['show_thread'])) {
     }
     
     if(empty($thread['thread_id'])) {
-        message(NOTICE, 'Der Thread konnte nicht gefunden werden');
+        message(NOTICE, constant($game->sprache("TEXT9")));
     }
     
     if($thread['alliance_id'] != $game->player['user_alliance']) {
-        message(NOTICE, 'Der Thread konnte nicht gefunden werden');
+        message(NOTICE, constant($game->sprache("TEXT9")));
     }
     
     $n_posts = $thread['thread_replies'] + 1;
@@ -517,7 +517,7 @@ elseif(!empty($_GET['show_thread'])) {
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
       <table width="480" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="480" align="left"><a href="'.parse_link('a=alliance_board'.$override_str).'"><i>Board-Index</i></a> » <i>'.htmlspecialchars(stripslashes($thread['thread_title'])).'</i></td></tr>
+        <tr><td width="480" align="left"><a href="'.parse_link('a=alliance_board'.$override_str).'"><i>'.constant($game->sprache("TEXT4")).'</i></a> » <i>'.htmlspecialchars(stripslashes($thread['thread_title'])).'</i></td></tr>
       </table>
     ');
     
@@ -533,7 +533,7 @@ elseif(!empty($_GET['show_thread'])) {
 
         if(empty($post['user_id'])) {
             $post['user_id'] = 0;
-            $post['user_name'] = '<i>gelöscht</i>';
+            $post['user_name'] = constant($game->sprache("TEXT20"));
             $post['user_avatar'] = '';
         }
         else {
@@ -606,8 +606,8 @@ elseif(!empty($_GET['show_thread'])) {
     $game->out('
       <table width="480" align="center" border="0" cellpadding="2" cellspacing="2">
         <tr><td width="480" align="right">
-          [<a href="'.parse_link('a=alliance_board&new_thread'.$override_str).'">Neuen Thread eröffnen</a>]&nbsp;
-          [<a href="'.parse_link('a=alliance_board&new_post='.$thread_id.$override_str).'">Antwort posten</a>]
+          [<a href="'.parse_link('a=alliance_board&new_thread'.$override_str).'">'.constant($game->sprache("TEXT21")).'</a>]&nbsp;
+          [<a href="'.parse_link('a=alliance_board&new_post='.$thread_id.$override_str).'">'.constant($game->sprache("TEXT10")).'</a>]
         </td></tr>
       </table>
       <table width="380" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -630,17 +630,17 @@ elseif(!empty($_GET['show_thread'])) {
 }
 else {
     $start = (!empty($_GET['start'])) ? $_GET['start'] : 0;
-    
+
     $sql = 'SELECT COUNT(thread_id) AS num
             FROM alliance_bthreads
             WHERE alliance_id = '.$game->player['user_alliance'];
-            
+
     if(($tcount = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query thread count data');
     }
-    
+
     $n_threads = $tcount['num'];
-    
+
     if($n_threads == 0) {
         $n_pages = $current_page = 1;
         $next_start = 0;
@@ -651,32 +651,32 @@ else {
                 FROM (alliance_bthreads t)
                 LEFT JOIN (user u) ON u.user_id = t.user_id
                 WHERE t.alliance_id = '.$game->player['user_alliance'].'
-                ORDER BY thread_last_post_date DESC
+                ORDER BY thread_priority DESC, thread_last_post_date DESC
                 LIMIT '.$start.', '.$THREADS_PER_PAGE;
-                
+
         if(!$q_threads = $db->query($sql)) {
             message(DATABASE_ERROR, 'Could not query thread data');
         }
-        
+
         $n_pages = ceil($n_threads / $THREADS_PER_PAGE);
-        $current_page = ($start > 0) ? ( ($start / $THREAD_PER_PAGE) + 1) : 1;
+        $current_page = ($start > 0) ? ( ($start / $THREADS_PER_PAGE) + 1) : 1;
         $next_start = 0;
     }
-    
+
     $game->out('
 <table class="style_outer" width="500" align="center" border="0" cellpadding="2" cellspacing="4">
   <tr>
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
       <table width="480" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="480" align="left"><i>Board-Index</i></td></tr>
+        <tr><td width="480" align="left"><i>'.constant($game->sprache("TEXT4")).'</i></td></tr>
       </table>
       <table class="style_inner" width="480" align="center" border="0" cellpadding="2" cellspacing="2">
         <tr>
-          <td width="235"><b>Thread-Titel</b></td>
-          <td width="100"><b>Autor</b></td>
+          <td width="235">'.constant($game->sprache("TEXT22")).'</td>
+          <td width="100">'.constant($game->sprache("TEXT23")).'</td>
           <td width="25" align="center"><b>#</b></td>
-          <td width="120" align="center"><b>Letzter Post</b></td>
+          <td width="120" align="center">'.constant($game->sprache("TEXT24")).'</td>
         </tr>
     ');
     
@@ -684,17 +684,25 @@ else {
         while($thread = $db->fetchrow($q_threads)) {
             if(empty($thread['user_id'])) {
                 $thread['user_id'] = 0;
-                $thread['user_name'] = '<i>gelöscht</i>';
+                $thread['user_name'] = constant($game->sprache("TEXT20"));
             }
             
-            $n_pages = ceil($thread['thread_replies'] / $POSTS_PER_PAGE);
+            $thr_n_pages = ceil($thread['thread_replies'] / $POSTS_PER_PAGE);
             
-            if($n_pages == 0) $start_str = '';
-            else $start_str = '&start='.( ($n_pages - 1) * $POSTS_PER_PAGE);
+            if($thr_n_pages == 0) $start_str = '';
+            else $start_str = '&start='.( ($thr_n_pages - 1) * $POSTS_PER_PAGE);
+
+            if($thread['thread_priority'] == 1) {
+                $threadtitle = '<b><font color = "yellow">'.htmlspecialchars(stripslashes($thread['thread_title'])).'</font></b>';
+            }
+            else
+            {
+                $threadtitle = htmlspecialchars(stripslashes($thread['thread_title']));
+            }
 
             $game->out('
         <tr>
-          <td width="235"><a href="'.parse_link('a=alliance_board&show_thread='.$thread['thread_id'].$override_str).'">'.htmlspecialchars(stripslashes($thread['thread_title'])).'</a></td>
+          <td width="235"><a href="'.parse_link('a=alliance_board&show_thread='.$thread['thread_id'].$override_str).'">'.$threadtitle.'</a></td>
           <td width="100"><a href="'.( ($thread['user_id'] != 0) ? parse_link('a=stats&a2=viewplayer&id='.$thread['user_id']) : 'javascript:void(0)' ).'">'.$thread['user_name'].'</a></td>
           <td width="25" align="center">'.$thread['thread_replies'].'</td>
           <td width="120" align="center">'.date('d.m.y H:i', $thread['thread_last_post_date']).'&nbsp;<a href="'.parse_link('a=alliance_board&show_thread='.$thread['thread_id'].$start_str.$override_str.'#'.$thread['thread_last_post_id']).'">&gt;</a></td>
@@ -706,7 +714,7 @@ else {
     $game->out('
       </table>
       <table width="480" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="480" align="right">[<a href="'.parse_link('a=alliance_board&new_thread'.$override_str).'">Neuen Thread eröffnen</a>]</td></tr>
+        <tr><td width="480" align="right">[<a href="'.parse_link('a=alliance_board&new_thread'.$override_str).'">'.constant($game->sprache("TEXT21")).'</a>]</td></tr>
       </table>
 
     ');
