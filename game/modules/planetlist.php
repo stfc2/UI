@@ -19,10 +19,14 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+include_once('include/libs/moves.php');
+
 
 //Day ne globale Klasse ist nett, aber nicht immer passt ihr inhalt
 $game->init_player();
-include('include/static/static_components_'.$game->player['user_race'].'.php');
+$filename = 'include/static/static_components_'.$game->player['user_race'].'_'.$game->player['language'].'.php';
+if (!file_exists($filename)) $filename = 'include/static/static_components_'.$game->player['user_race'].'.php';
+include($filename);
 
 error_reporting(E_ERROR);
 function GetBuildingTimeTicks($building,$stufe=0,$planet_t,$player_race,$planet_prob,$plani_forsch=1)
@@ -135,12 +139,12 @@ if (isset($_REQUEST['a2']) && $_REQUEST['a2']>=0)
 $game->out('<center><span class="caption">'.constant($game->sprache("TEXT1")).'</span></center><br><br>');
 $game->out('<center>'.constant($game->sprache("TEXT2")).'<br>'.constant($game->sprache("TEXT3")).'<br>
 '.constant($game->sprache("TEXT4")).'<font color=#80ff80>'.constant($game->sprache("TEXT5")).'</font>'.constant($game->sprache("TEXT6")).'<br>
-'.constant($game->sprache("TEXT7")).'<font color=#ffff80>'.constant($game->sprache("TEXT8")).'</font> '.constant($game->sprache("TEXT9")).' <font color=#ff8080>'.constant($game->sprache("TEXT10")).'</font> '.constant($game->sprache("TEXT10")).'</center><br><br>');
+'.constant($game->sprache("TEXT7")).'<font color=#ffff80>'.constant($game->sprache("TEXT8")).'</font> '.constant($game->sprache("TEXT9")).' <font color=#ff8080>'.constant($game->sprache("TEXT10")).'</font>.</center><br><br>');
 
 $game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT12")).' '.HelpPopup('planetlist').' :</span></center><br>');
 $game->out('
 <center><table border=0 cellpadding=1 cellspacing=1 class="style_inner">
-<tr><td width=90><span class="sub_caption2">'.constant($game->sprache("TEXT13")).'</span></td><td width=20></td><td width=70><span class="sub_caption2">'.constant($game->sprache("TEXT14")).'</span></td><td width=290><span class="sub_caption2">'.constant($game->sprache("TEXT15")).'</span></td><td width=100><span class="sub_caption2">'.constant($game->sprache("TEXT16")).'</span></td><td width=60><span class="sub_caption2">'.constant($game->sprache("TEXT17")).'</span></td><td width=60><span class="sub_caption2">'.constant($game->sprache("TEXT18")).'</span></td></tr>
+<tr><td width=90 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT13")).'</span></td><td width=20 valign="top"></td><td width=80 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT14")).'</span></td><td width=130 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT57")).'</span><br>@ Warp 6</td><td width=310 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT15")).'</span></td><td width=100 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT16")).'</span></td><td width=60 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT17")).'</span></td><td width=60 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT18")).'</span></td></tr>
 ');
 
 $order[0]=' pl.planet_name ASC';
@@ -230,6 +234,18 @@ while(($spacedock = $db->fetchrow($planetquery)))
 	$spacedock_planets[$spacedock['tmp4']]['spacedock_full']=$spacedock['spacedock_full'];
 }*/
 
+// 21/03/08 - AC: Read planet positions from DB
+// 4.2 Add distance from currently selected planet.
+$planetquery = $db->query('SELECT p.planet_id AS tmp4, p.system_id,s.system_global_x, s.system_global_y
+        FROM (planets p, starsystems s)
+        WHERE p.planet_id IN ('.implode(', ',$planet_ids).') AND
+              s.system_id = p.system_id');
+while(($coordinates = $db->fetchrow($planetquery)))
+{
+	$planets[$coordinates['tmp4']]['system_global_x']=$coordinates['system_global_x'];
+	$planets[$coordinates['tmp4']]['system_global_y']=$coordinates['system_global_y'];
+}
+
 // 5. Das Array sortieren:
 foreach ($planets as $key => $row) {
    $sort[$key]  = $row['numerate'];
@@ -240,27 +256,69 @@ unset($sort);
 
 // 6. Daten ausgeben:
 foreach ($planets as $key => $planet) {
+
+	/* 21/03/08 - AC: Add distance from currently selected planet */
+	if($planet['planet_id'] != $game->planet['planet_id'])
+	{
+		$distance = get_distance(array($game->planet['system_global_x'], $game->planet['system_global_y']),
+			array($planet['system_global_x'], $planet['system_global_y']));
+		$min_time = ceil( ( ($distance / warpf(6)) / TICK_DURATION) );
+		$min_stardate = sprintf('%.1f', ($game->config['stardate'] + ($min_time / 10)));
+		$min_stardate_int = str_replace('.', '', $min_stardate);
+
+		if($distance > 0)
+		{
+			$arrival_minutes = ($min_stardate_int - (int)str_replace('.', '', $game->config['stardate'])) * TICK_DURATION;
+			$arrival_hours = 0;
+			$arrival_days = floor($arrival_minutes / 1440);
+
+			$arrival_minutes -= $arrival_days * 1440;
+			while($arrival_minutes > 59) {
+				$arrival_hours++;
+				$arrival_minutes -= 60;
+			}
+		}
+		else
+		{
+			$arrival_minutes = 20;
+			$arrival_hours = 0;
+			$arrival_days = 0;
+		}
+
+		//echo('Distance from '.$planet['planet_name'].': '.($distance/600).' Giorni: '.$arrival_days.' Ore: '.$arrival_hours.' Minuti: '.$arrival_minutes.'<br>');
+
+		if($arrival_days > 0)
+			$distance_str = $arrival_days.' gg ';
+		else
+			$distance_str = '';
+		if($arrival_hours > 0)
+			$distance_str .= $arrival_hours.' hh ';
+		if($arrival_minutes > 0)
+			$distance_str .= $arrival_minutes.' mm ';
+	}
+	/* */
+
 	if ($planet['building_queue']==0) unset($planet['building_queue']);
-	
+
 	// Gebäude-Anzeige:
-	$building='nichts';
+	$building=constant($game->sprache("TEXT18a"));
 	$stufendreck=0;
 	if (isset($planet['build_active'])) 
 	{
 		if($planet['build_active']==$planet['building_queue']-1) $stufendreck=1;
 		$planet['building_'.($planet['build_active']+1)]++;
-		$building=$BUILDING_NAME[$game->player['user_race']][$planet['build_active']].' (Stufe '.($planet['building_'.($planet['build_active']+1)]).') <b>'.Zeit($NEXT_TICK+TICK_DURATION*60*($planet['building_finish']-$ACTUAL_TICK)).'</b><br>';
+		$building=$BUILDING_NAME[$game->player['user_race']][$planet['build_active']].' ('.constant($game->sprache("TEXT18b")).' '.($planet['building_'.($planet['build_active']+1)]).') <b>'.Zeit($NEXT_TICK+TICK_DURATION*60*($planet['building_finish']-$ACTUAL_TICK)).'</b><br>';
 	if(isset($planet['building_queue']))
 	{
 			$planet_notactive=$db->query('SELECT building_1,building_2,building_3,building_4,building_5,building_queue,building_6,building_7,building_8,building_10,building_11,building_13 FROM planets WHERE planet_id='.$planet['planet_id']);
 			$planet_notactive=$db->fetchrow($planet_notactive);
-		$building.=$BUILDING_NAME[$game->player['user_race']][$planet['building_queue']-1].' (Stufe '.($planet['building_'.($planet['building_queue'])]+1).') <b>'.Zeit($NEXT_TICK+TICK_DURATION*60*($planet['building_finish']-$ACTUAL_TICK+GetBuildingTimeTicks($planet['building_queue']-1,$stufendreck,$planet['planet_type'],$game->player['user_race'],$planet_notactive,$planet['research_4'])));
+		$building.=$BUILDING_NAME[$game->player['user_race']][$planet['building_queue']-1].' ('.constant($game->sprache("TEXT18b")).' '.($planet['building_'.($planet['building_queue'])]+1).') <b>'.Zeit($NEXT_TICK+TICK_DURATION*60*($planet['building_finish']-$ACTUAL_TICK+GetBuildingTimeTicks($planet['building_queue']-1,$stufendreck,$planet['planet_type'],$game->player['user_race'],$planet_notactive,$planet['research_4'])));
 	}
 	}
 	//GetBuildingTimeTicks($planet['building_queue']-1,$planet['planet_type'],$game->player['user_race'])
-	
+
 	// Forschungs-Anzeige:
-	$research='nichts';
+	$research=constant($game->sprache("TEXT18a"));
 	if (isset($planet['research_id']))
 	{
 		if ($planet['research_id']>=5)
@@ -270,31 +328,31 @@ foreach ($planets as $key => $planet) {
 			$research=$TECH_NAME[$game->player['user_race']][$planet['research_id']].' <b>'.Zeit($NEXT_TICK+TICK_DURATION*60*($planet['research_finish']-$ACTUAL_TICK)).'</b>';
 		}
 	}
-	
-	
+
+
 	$outofresources=0;
-       $outofspace=0;
-	$academy='inaktiv';
+	$outofspace=0;
+	$academy=constant($game->sprache("TEXT18c"));
 	if ($planet['unittrainid_nexttime']>0) 
 	{
 		if ($planet['unittrainid_'.($planet['unittrain_actual'])]<=6)
 		{
-			$academy='aktiv ('.$UNIT_NAME[$game->player['user_race']][$planet['unittrainid_'.($planet['unittrain_actual'])]-1].' ';
+			$academy=constant($game->sprache("TEXT22")).' ('.$UNIT_NAME[$game->player['user_race']][$planet['unittrainid_'.($planet['unittrain_actual'])]-1].' ';
 			if ($planet['unittrain_error']==0)
 			$academy.='<b>'.( ($NEXT_TICK+TICK_DURATION*60*($planet['unittrainid_nexttime']-$ACTUAL_TICK)>$NEXT_TICK+TICK_DURATION*60-ACTUAL_TICK) ? ''.Zeit($NEXT_TICK+TICK_DURATION*60*($planet['unittrainid_nexttime']-$ACTUAL_TICK)).'' : constant($game->sprache("TEXT20")) ).'</b>)';
 			else
 			{
-                       if($planet['unittrain_error']==2){
-                         $academy.='<br><b>'.constant($game->sprache("TEXT23")).'</b>';
-                         $outofspace=1;                                              
-                       }
-                       else {
-                         $academy.='<b>'.constant($game->sprache("TEXT19")).'</b>)';
-                         $outofresources=1;
-                       }
-                       
+				if($planet['unittrain_error']==2){
+					$academy.='<br><b>'.constant($game->sprache("TEXT23")).'</b>';
+					$outofspace=1;
+				}
+				else {
+					$academy.='<b>'.constant($game->sprache("TEXT19")).'</b>)';
+					$outofresources=1;
+				}
+				
 			}
-	
+
 		}
 		else
 		{
@@ -303,16 +361,16 @@ foreach ($planets as $key => $planet) {
 			if ($planet['unittrainid_'.($planet['unittrain_actual'])]==12) $text=(TICK_DURATION).constant($game->sprache("TEXT21"));
 			$academy= constant($game->sprache("TEXT22")).' ('.$text.' <b>'.Zeit($NEXT_TICK+TICK_DURATION*60*($planet['unittrainid_nexttime']-$ACTUAL_TICK)).'</b>)';
 		}
-	
-              // ALT, habs mal geändert, sollte nun besser passen. Gruß Mojo ;)
+
+		// ALT, habs mal geändert, sollte nun besser passen. Gruß Mojo ;)
 		/*$unitcount=($planet['unit_1']*2+$planet['unit_2']*3+$planet['unit_3']*4+$planet['unit_4']*4+$planet['unit_5']*4+$planet['unit_6']*4);
 		if ($unitcount>$planet['max_units']-4)
 		{
 			
 		}*/
-	
+
 	}
-	
+
 	if (isset($planet['shipyard_active']))
 	{
 		$shipbuild=constant($game->sprache("TEXT24")).'<br><b>'.Zeit($NEXT_TICK+TICK_DURATION*60*($planet['shipyard_active']-$ACTUAL_TICK).'</b>');
@@ -325,17 +383,17 @@ foreach ($planets as $key => $planet) {
 	if ($building_color>8) $building_color=8;
 	if ($building_color<0) $building_color=0;
 	$building_color='#80'.dechex(128+16*$building_color-1).'80';
-	
+
 	$research_color=($planet['research_finish']-$ACTUAL_TICK)/12;
 	if ($research_color>8) $research_color=8;
 	if ($research_color<0) $research_color=0;
 	$research_color='#80'.dechex(128+16*$research_color-1).'80';
-	
+
 	$shipyard_color=($planet['shipyard_active']-$ACTUAL_TICK)/12;
 	if ($shipyard_color>8) $shipyard_color=8;
 	if ($shipyard_color<0) $shipyard_color=0;
 	$shipyard_color='#80'.dechex(128+16*$shipyard_color-1).'80';
-	
+
 
 	// Ausgabe von Baustatus, etc:
 	$status='<table border=0 cellpadding=0 cellspacing=0><tr>';
@@ -356,16 +414,16 @@ foreach ($planets as $key => $planet) {
 	}
 	$status.='</tr></table>';
 
-       $tax=$db->queryrow('SELECT taxes FROM alliance WHERE alliance_id = '.$game->player['user_alliance'].'');
-   
- 
+	$tax=$db->queryrow('SELECT taxes FROM alliance WHERE alliance_id = '.$game->player['user_alliance'].'');
+
+
 	// Anzeige der Ressourcen
 	if ($game->option_retr('planetlist_show')==0){ 
 		$stat_out='<img src="'.$game->GFX_PATH.'menu_metal_small.gif">'.(($planet['resource_1']>=100000) ? round($planet['resource_1']/1000).'k' : round($planet['resource_1'],0)).'&nbsp;
 		<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">'.(($planet['resource_2']>=100000) ? round($planet['resource_2']/1000).'k' : round($planet['resource_2'],0)).'&nbsp;
 		<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">'.(($planet['resource_3']>=100000) ? round($planet['resource_3']/1000).'k' : round($planet['resource_3'],0)).'
 		<img src="'.$game->GFX_PATH.'menu_worker_small.gif">'.round($planet['resource_4'],0).'';
-       }
+	}
 	// Anzeige des Truppenstatus
 	elseif($game->option_retr('planetlist_show')==1){
 		$stat_out='<img src="'.$game->GFX_PATH.'menu_unit1_small.gif">'.round($planet['unit_1'],0).'&nbsp;
@@ -374,15 +432,13 @@ foreach ($planets as $key => $planet) {
 		<img src="'.$game->GFX_PATH.'menu_unit4_small.gif">'.round($planet['unit_4'],0).'&nbsp;&nbsp;
 		<img src="'.$game->GFX_PATH.'menu_unit5_small.gif">'.round($planet['unit_5'],0).'&nbsp;
 		<img src="'.$game->GFX_PATH.'menu_unit6_small.gif">'.round($planet['unit_6'],0);
-       
-
-       }
-       elseif($game->option_retr('planetlist_show')==2){
-         $stat_out='<b>'.$planet['planet_altname'].'</b>&nbsp';
-       }
-       else {
-         $stat_out='<b><img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;'.$planet['add_1']*((100-$tax['taxes'])/100).'&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;'.$planet['add_2']*((100-$tax['taxes'])/100).'&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;'.$planet['add_3']*((100-$tax['taxes'])/100).'&nbsp;<img src="'.$game->GFX_PATH.'menu_worker_small.gif">&nbsp;'.$planet['add_4'].'</b>&nbsp';
-       }
+	}
+	elseif($game->option_retr('planetlist_show')==2){
+		$stat_out='<b>'.$planet['planet_altname'].'</b>&nbsp';
+	}
+	else {
+		$stat_out='<b><img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;'.$planet['add_1']*((100-$tax['taxes'])/100).'&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;'.$planet['add_2']*((100-$tax['taxes'])/100).'&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;'.$planet['add_3']*((100-$tax['taxes'])/100).'&nbsp;<img src="'.$game->GFX_PATH.'menu_worker_small.gif">&nbsp;'.$planet['add_4'].'</b>&nbsp';
+	}
 
 	$metallo  = $metallo + $planet['resource_1'];
 	$minerali = $minerali  + $planet['resource_2'];
@@ -402,6 +458,7 @@ foreach ($planets as $key => $planet) {
 		$game->out('
 			<tr><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'"><b>'.$planet['planet_name'].'</b></a></td><td></td>
 			<td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td>
+			<td></td>
 			<td>'.$stat_out.'&nbsp;&nbsp;');
 	}
 	else
@@ -409,6 +466,7 @@ foreach ($planets as $key => $planet) {
 		$game->out('
 			<tr height=20><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">'.$planet['planet_name'].'</a></td><td>[<a href="'.parse_link('a=headquarter&switch_active_planet='.$planet['planet_id']).'" title="'.constant($game->sprache("TEXT37")).'">'.constant($game->sprache("TEXT38")).'</a>]</td>
 			<td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td>
+			<td>'.$distance_str.'</td>
 			<td>'.$stat_out.'&nbsp;&nbsp;');
 	}
 
@@ -432,10 +490,10 @@ $metallo = conversione($metallo);
 $minerali = conversione($minerali);
 $dilitio = conversione($dilitio);
 
-$game->out('<tr><td colspan=7><hr color=#FFFFFF size=1>
+$game->out('<tr><td colspan=8><hr color=#FFFFFF size=1>
 
 <tr>
-<td colspan=7><fieldset><legend>'.constant($game->sprache("TEXT40")).'</legend><center>
+<td colspan=8><fieldset><legend>'.constant($game->sprache("TEXT40")).'</legend><center>
 <table border=0 cellpadding=0 cellspacing=0 widtH=500>
 <tr>
 <td align=center><img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;<b>'.$metallo.'</td>
