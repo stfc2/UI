@@ -385,7 +385,7 @@ function Footer()
     //Select Arial italic 8
     $this->SetFont('Arial','I',8);
     $this->SetX(86.5);
-    $this->Write(5, '[ powered by |game_url| ]','|game_url|');
+    $this->Write(5, '[ powered by http://stfc.nonsolotaku.it ]','http://stfc.nonsolotaku.it');
     //Print centered page number
     $this->Cell(0,10,'Seite '.$this->PageNo(),0,0);
 }

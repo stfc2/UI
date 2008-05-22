@@ -325,7 +325,7 @@ function Footer()
     $this->SetFont('Arial','I',9);
     //Page number
     $this->SetX(79.5);
-    $this->Write(5, '[ powered by |game_url| ]','|game_url|');
+    $this->Write(5, '[ powered by http://stfc.nonsolotaku.it ]','http://stfc.nonsolotaku.it');
     $this->Ln(3.0);
     $this->SetX(0.0);
     $this->Cell(0,10,$this->PageNo().'/{nb}',0,0,'C');
