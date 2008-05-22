@@ -1,0 +1,115 @@
+<html>
+<head>
+  <title>Star Trek: Frontline Combat 2 - Aiuto Costruzioni</title>
+</head>
+
+<style type="text/css">
+<!-- A:link {FONT-SIZE: 11px; COLOR: #c0c0c0; FONT-FAMILY: Arial, Luxi Sans; TEXT-DECORATION: none}
+A:visited {FONT-SIZE: 11px; COLOR: #c0c0c0; FONT-FAMILY: Arial, Luxi Sans; TEXT-DECORATION: none}
+A:hover {FONT-SIZE: 11px; COLOR: #ffd700; FONT-FAMILY: Arial, Luxi Sans; TEXT-DECORATION: none}
+A:active {FONT-SIZE: 11px; COLOR: #ffd700; FONT-FAMILY: Arial, Luxi Sans; TEXT-DECORATION: none}
+A.nav:link {FONT-WEIGHT: bold; FONT-SIZE: 10px}
+A.nav:visited {FONT-WEIGHT: bold; FONT-SIZE: 10px}
+A.nav:hover {FONT-WEIGHT: bold; FONT-SIZE: 10px}
+A.nav:active {FONT-WEIGHT: bold; FONT-SIZE: 10px}
+TD {FONT-SIZE: 11px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
+input[type=checkbox] { border-style: none;}
+INPUT[type=submit], INPUT[type=text], INPUT[type=password] {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
+TEXTAREA {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
+SELECT {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
+SPAN.caption {FONT-WEIGHT: bold; FONT-SIZE: 19pt; COLOR: #e0e0e0; FONT-FAMILY: Arial, Luxi Sans; }
+SPAN.sub_caption {FONT-WEIGHT: bold; FONT-SIZE: 15pt; COLOR: #c0c0c0; FONT-FAMILY: Arial, Luxi Sans}
+SPAN.sub_caption2 {FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #c0c0c0; FONT-FAMILY: Arial, Luxi Sans}
+SPAN.text_large {FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #c0c0c0; FONT-FAMILY: Arial, Luxi Sans}
+SPAN.text_medium {FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #c0c0c0; FONT-FAMILY: Arial, Luxi Sans}
+BODY {MARGIN: 0px; SCROLLBAR-ARROW-COLOR: #ccccff; SCROLLBAR-BASE-COLOR: #131c46; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; }
+TEXTAREA {PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; SCROLLBAR-ARROW-COLOR: #ccccff; PADDING-TOP: 0px; SCROLLBAR-BASE-COLOR: #131c46;}
+
+input.button, input.button_nosize, input.field, input.field_nosize, textarea, select
+                          { color: #959595; font-family: Arial, Luxi Sans, Helvetica, sans-serif; font-size: 11px; background-color: #000000; border: 1px solid #959595; }
+body, textarea {
+      scrollbar-base-color:#000000;
+      scrollbar-3dlight-color:#000000;
+      scrollbar-arrow-color:#D8D8D8;
+      scrollbar-darkshadow-color:#000000;
+      scrollbar-face-color:#000000;
+      scrollbar-highlight-color:#000000;
+      scrollbar-shadow-color:#000000;
+      scrollbar-track-color:#2C2C2C;
+  }
+
+table.border_grey         { border: 1px solid #000000; }
+table.border_grey2        { border-top: 1px solid 000000; border-right: 1px solid 000000; border-bottom: 1px solid #000000; }
+table.border_blue         { border: 1px solid #000000; }
+table.style_inner         { border: 1px solid #000000; background-color:#131c47;}
+table.style_outer         { border: 1px solid #000000; background-color:#283359;}
+
+table.style_msgunread         { border: 1px solid #000000; background-color:#ff3359;}
+table.style_msgread            { border: 1px solid #000000; background-color:#2833ff;}
+
+
+-->
+
+</style>
+
+<body bgcolor="#000000" text="#DDDDDD"  background="/gfx/bg_stars1.gif">
+<div align="center"><span class="caption">Faq</span></div>
+<table width="95%" cellpadding="2" cellspacing="5" align="center">
+<tr>
+	<td align="justify">
+		Di seguito sono riportate le risposte, con le relative domande, ai questiti posti pi&ugrave; di frequente.<br>
+		La sezione ovviamente &egrave; sempre pronta ad essere aggiornata; se volete segnalare ulteriori domande/risposte o comunicare eventuali inesattezze, siete invitati ad usare il <a href="http://forum.nonsolotaku.it/index.php?showforum=847" target="blank"><b><u>forum</u></b></a>,  grazie.
+	</td>
+</tr>
+</table>
+<table border=0 cellpadding=2 cellspacing=2 width="95%" class="style_outer" align="center">
+<tr><td>
+	<table class="style_inner" width="100%" align="center" border="0" cellpadding="5" cellspacing="5">
+	<tr>
+	<td width="50%"><font size="3"><b>Domanda</b></font></td>
+	<td width="50%"><font size="3"><b>Risposta</b></font></td>
+	</tr>
+	<tr>
+		<td valign="top" align="justify"><b> Come funzionano le difese? Solo con i cannoni orbitali?<br>Servono a qualcosa pure le truppe o devono essere a bordo di navi per essere utili?<br>
+Sono inutili come in OGame e simili, tanto da costringere quasi sempre a lasciare risorse e navi in volo, oppure no?</b></td>
+		<td valign="top" align="justify">Servono sia le truppe che i cannoni orbitali. I cannoni servono a decimare le navi che tentano un'attacco, le truppe servono a contrastare lo sbarco sul pianeta.</td>
+	</tr>
+	<tr>
+		<td valign="top" align="justify"><b>Come vengono saccheggiati i pianeti in seguito a un attacco (c&#146;&egrave; un limite al numero di risorse che si possono depredare?)?<br>
+Che cosa pu&ograve; essere perso in seguito a un attacco? (strutture, difese, truppe... ?)</b></td>
+		<td valign="top" align="justify">Non si depredano risorse come in Ogame, si prende proprio il possesso del pianeta se si vince lo scontro. Durante tale scontro viene distrutto tutto, se vince l'attaccante.</td>
+	</tr>
+	<tr>
+		<td valign="top" align="justify"><b>Come si colonizzano pianeti?</b></td>
+		<td valign="top" align="justify">Si arriva a 250 punti, si crea un progetto per la nave colonizzatrice e la si invia sul pianeta da colonizzare</td>
+	</tr>
+	<tr>
+		<td valign="top" align="justify"><b>L'equipaggio a bordo serve a qualcosa, o tanto vale lasciarlo al minimo?</b></td>
+		<td valign="top" align="justify">L'equipaggio serve a contrastare le difese a terra (nel caso in cui il pianeta fosse gi&agrave; occupato) e serve anche a tenere il pianeta. Servono degli uomini per evitare le ribellioni. Il numero di truppe che servono si incrementa ogni volta che si colonizza un nuovo pianeta.</td>
+	</tr>
+	<tr>
+		<td valign="top" align="justify"><b>Ammesso ci sia, qual &egrave; il numero massimo di pianeti colonizzabili?<br>Quali &egrave; meglio colonizzare tra le varie classi di pianeti?</b></td>
+		<td valign="top" align="justify">Per il momento non c'&egrave; limite, gli amministratori stanno valutando se inserire un limite, o se i borg gestiti dal sistema, basteranno per stabilire una sorta di limite naturale. Le due classi migliori da colonizzare sono i pianeti di classe M e N.</td>
+	</tr>
+	<tr>
+		<td valign="top" align="justify"><b>Volendo si possono conquistare tutti i pianeti di un giocatore?</b></td>
+		<td valign="top" align="justify">Volendo si. Il sistema, automaticamente, assegner&agrave; un nuovo pianeta al giocatore che &egrave; rimasto senza, al momento della login. Sul nuovo pianeta bisogner&agrave; ricominciare da 0, ma eventuali flotte si potranno recuperare.</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Si pu&ograve; aumentare l'energia disponibile all'interno di una nave?</b></td>
+		<td valign="top" align="justify">Si, il motore di curvatura (M/ARA per la federazione) permette di incrementare l'energia a disposizione di un vascello, oltre che ad aumentare il fattore di curvatura.
+</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Come funzionano le varie condizioni di allarme per le flotte (Verde, Giallo, Rosso)?</b></td>
+		<td valign="top" align="justify"><ul><li>Allarme Verde: le navi non oppongono resistenza se attaccate, quindi si lasciano distruggere.</li>
+<li>Allarme Giallo: le navi reagiscono prontamente a qualsiasi attacco subiscano.</li>
+<li>Allarme Rosso: le navi attaccano a vista qualsiasi vascello o altro che non venga riconosciuto/a come amico/a o alleato/a.</li></ul></td>
+	</tr>
+	</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+
