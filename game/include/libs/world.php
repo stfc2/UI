@@ -24,9 +24,9 @@
 
 function create_system($id_type, $id_value) {
     global $db, $game;
-    
+
     $sector_id = $system_x = $system_y = 0;
-    
+
     switch($id_type) {
         case 'quadrant':
             $quadrant_id = $id_value;
@@ -42,7 +42,7 @@ function create_system($id_type, $id_value) {
 
             if(!empty($free_slot['sector_id'])) extract($free_slot);
         break;
-        
+
         case 'sector':
             $sql = 'SELECT *
                     FROM starsystems_slots
@@ -52,20 +52,20 @@ function create_system($id_type, $id_value) {
             if(($free_slot = $db->queryrow($sql)) === false) {
                 message(DATABASE_ERROR, 'world::create_system(): Could not query starsystem slots');
             }
-            
+
             if(!empty($free_slot['sector_id'])) extract($free_slot);
         break;
-        
+
         case 'slot':
             $params = explode(':', $id_value);
-            
+
             $sql = 'SELECT *
                     FROM starsystems_slots
                     WHERE sector_id = '.(int)$params[0].' AND
                           system_x = '.(int)$params[1].' AND
                           system_y = '.(int)$params[2].'
                     LIMIT 1';
-                    
+
             if(($free_slot = $db->queryrow($sql)) === false) {
                 message(DATABASE_ERROR, 'world::create_system(): Could not query starsystem slots');
             }
@@ -73,11 +73,11 @@ function create_system($id_type, $id_value) {
             if(!empty($free_slot['sector_id'])) extract($free_slot);
         break;
     }
-    
+
     if(empty($sector_id)) {
-        message(GENERAL, 'System konnte nicht erstellt werden', 'world::create_system(): $sector_id = empty');
+        message(GENERAL, 'System could not be created', 'world::create_system(): $sector_id = empty');
     }
-    
+
     $star_size = mt_rand($game->starsize_range[0], $game->starsize_range[1]);
 
     $required_borders = ($game->sector_map_split - 1);
@@ -85,7 +85,7 @@ function create_system($id_type, $id_value) {
 
     $root_x = ($px_per_field * ($system_x - 1) ) + ($system_x - 1);
     $root_y = ($px_per_field * ($system_y - 1) ) + ($system_y - 1);
-    
+
     $border_distance = $px_per_field / 4;
     $border_distance = max($border_distance, ( ($star_size * 0.45) + 3 ) );
 
@@ -97,27 +97,27 @@ function create_system($id_type, $id_value) {
     $star_base_color = mt_rand(0, 3);
 
     switch($star_base_color) {
-        // Blauer (junger) Stern
+        // Blue (young) star
         case 0:
             $star_color = array(mt_rand(0, 25), mt_rand(0, 25), mt_rand(150, 255));
         break;
 
-        // Weißer Stern
+        // White Star
         case 1:
             $star_color = array(mt_rand(220, 255), mt_rand(220, 255), mt_rand(220, 255));
         break;
 
-        // Gelber Stern
+        // Yellow Star
         case 2:
             $star_color = array(mt_rand(200, 255), mt_rand(50, 150), mt_rand(0, 25));
         break;
 
-        // Roter Stern
+        // Red Star
         case 3:
             $star_color = array(mt_rand(150, 255), mt_rand(0, 25), mt_rand(0, 25));
         break;
 
-        // Brauner (alter) Stern
+        // Brown (old) Star
         case 4:
             $star_color = array(mt_rand(100, 150), mt_rand(40, 80), mt_rand(0, 15));
         break;
@@ -130,12 +130,12 @@ function create_system($id_type, $id_value) {
         message(DATABASE_ERROR, 'world::create_system(): Could not insert new system data');
     }
 
-    $new_system_id = $db->insert_id();    
+    $new_system_id = $db->insert_id();
     $sql = 'DELETE FROM starsystems_slots
             WHERE sector_id = '.$sector_id.' AND
                   system_x = '.$system_x.' AND
                   system_y = '.$system_y;
-                  
+
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'world::create_system(): Could not delete starsystems slot data');
     }
@@ -152,9 +152,9 @@ function create_planet($user_id, $id_type, $id_value) {
         case 'quadrant':
             $quadrant_id = $id_value;
             
-            // Überprüfen, ob ein passendes System bereits existiert
+            // Verify that a suitable system already exists
             
-            // In einem von 5 Fällen erstellt er auf jeden Fall ein neues System
+            // In one of 5 cases it creates in any case a new system
             if(mt_rand(1, 5) != 3) {
                 $sector_id_min = ( ($quadrant_id - 1) * $game->sectors_per_quadrant) + 1; // (id - 1) * 81
                 $sector_id_max = $quadrant_id * $game->sectors_per_quadrant; // id * 81
@@ -174,23 +174,23 @@ function create_planet($user_id, $id_type, $id_value) {
                 $n_available = 0;
 
                 while($system = $db->fetchrow($q_systems)) {
-                	$available_systems[] = array($system['sector_id'], $system['system_id']);
-                	
-                	//if( ++$n_available > 30) break;
+                    $available_systems[] = array($system['sector_id'], $system['system_id']);
+
+                    //if( ++$n_available > 30) break;
                 }
-                
+
                 $chosen_system = $available_systems[array_rand($available_systems)];
-                
+
                 $sector_id = $chosen_system[0];
                 $system_id = $chosen_system[1];
             }
-            
-            // Wenn ein neues System erstellt werden muss ($system_id = 0), dann sind alle Orbitale frei
-            // (in der Alpha-2 hat er dann trotzdem eins gesucht *roll*)
-            // Ansonsten ein freies suchen
-            
+
+            // If a new system must be created ($system_id = 0), then it's orbitals are all free
+            // (in the Alpha-2 it has nevertheless searched * roll *) )
+            // Otherwise, a free search
+
             $free_distances = $game->planet_distances;
-            
+
             if(!$system_id) {
                 $_temp = create_system('quadrant', $quadrant_id);
                 
@@ -211,7 +211,7 @@ function create_planet($user_id, $id_type, $id_value) {
                 }
 
                 if(empty($free_distances)) {
-                    message(GENERAL, 'Planet konnte nicht erstellt werden', 'world::create_planet(): $free_distances[] = empty');
+                    message(GENERAL, 'Planet could not be created', 'world::create_planet(): $free_distances[] = empty');
                 }
             }
         break;
@@ -219,9 +219,9 @@ function create_planet($user_id, $id_type, $id_value) {
         case 'sector':
             $sector_id = $id_value;
 
-            // Überprüfen, ob ein passendes System bereits existiert
+            // Verify that a suitable system already exists
 
-            // In einem von 3 Fällen erstellt er auf jeden Fall ein neues System
+            // In one of 3 cases it creates in any case a new system
             if(mt_rand(1, 3) != 2) {
                 $sql = 'SELECT system_id, sector_id, system_n_planets
                         FROM starsystems
@@ -244,9 +244,9 @@ function create_planet($user_id, $id_type, $id_value) {
                 }
             }
 
-            // Wenn ein neues System erstellt werden muss ($system_id = 0), dann sind alle Orbitale frei
-            // (in der Alpha-2 hat er dann trotzdem eins gesucht *roll*)
-            // Ansonsten ein freies suchen
+            // If a new system must be created ($system_id = 0), then it's orbitals are all free
+            // (in the Alpha-2 it has nevertheless searched * roll *) )
+            // Otherwise, a free search
 
             $free_distances = $game->planet_distances;
 
@@ -270,7 +270,7 @@ function create_planet($user_id, $id_type, $id_value) {
                 }
 
                 if(empty($free_distances)) {
-                    message(GENERAL, 'Planet konnte nicht erstellt werden', 'world::create_planet(): $free_distances[] = empty');
+                    message(GENERAL, 'Planet could not be created', 'world::create_planet(): $free_distances[] = empty');
                 }
             }
         break;
@@ -279,7 +279,7 @@ function create_planet($user_id, $id_type, $id_value) {
             $free_distances = $game->planet_distances;
             $system_id = $id_value;
             
-            // HINWEIS: Das gewählte System MUSS existieren
+            // NOTE: The system chosen must exist
             
             $sql = 'SELECT sector_id, planet_distance_id
                     FROM planets
@@ -300,15 +300,15 @@ function create_planet($user_id, $id_type, $id_value) {
     $planet_distance_id = array_rand($free_distances);
     $planet_distance_px = mt_rand($game->planet_distances[$planet_distance_id][0], $game->planet_distances[$planet_distance_id][1]);
 
-    // Erstellen!
+    // Create!
 
     if(!$user_id) {
         $type_probabilities = array(
-            // viel Metall, wenig Mineralien, wenig Latinum (15%)
+            // a lot of metal, little minerals, little dilithium (15%)
             'a' => 7,  // 3.0  0.1  0.8  0.1
             'b' => 8,  // 3.0  0.1  0.8  0.1
             
-            // mittel Metall, Mineralien, Latinum (60%)
+            // medium metals, minerals, dilithium (60%)
             'c' => 10,  // 1.0  1.0  1.0  0.6
             'd' => 12,  // 1.0  1.0  1.0  0.5
             'e' => 8,   // 1.0  1.0  1.0  0.7
@@ -316,13 +316,13 @@ function create_planet($user_id, $id_type, $id_value) {
             'h' => 13,  // 1.0  1.0  1.0  0.5
             'k' => 11,  // 1.0  1.0  1.0  0.4
             
-            // viel Metall, mittel Mineralien, mittel Latinum (10%)
+            // a lot of metal, medium minerals, medium dilithium (10%)
             'g' => 10, // 1.5  1.0  1.0  0.8
             
-            // wenig Metall, viel Mineralien, viel Latinum (5%)
+            // little metal, lots of minerals, much dilithium (5%)
             'i' => 5,  // 0.3  1.6  1.6  0.5
             
-            // wenig Metall, sehr viel Mineralien, wenig Latinum (5%)
+            // little metal, a lot of minerals, little dilithium (5%)
             'j' => 2,  // 0.3  2.0  0.4  0.6
             'l' => 3,  // 0.4  1.9  0.5  0.7
             

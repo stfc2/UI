@@ -44,8 +44,8 @@ function display_logbook($log) {
   <tr><td>
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="330"><b>'.$log['log_title'].'</b></td>
-        <td width="120"><b><b>'.date('d.m.y H:i:s', $log['log_date']+7200).'</b></td>
+        <td width="330"><b><u>'.$log['log_title'].'</u></b></td>
+        <td width="120"><b><b>'.date('d.m.y H:i:s', $log['log_date']).'</b></td>
       </tr>
     </table>
     <br>
@@ -54,53 +54,53 @@ function display_logbook($log) {
     $inter_planet = false;
 
     if($ldata['dest'] == 0) {
-		if(empty($ldata['start_owner_id'])) $start_owner_str = ' <i>(unbewohnt)</i>';
+		if(empty($ldata['start_owner_id'])) $start_owner_str = ' '.constant($game->sprache("TEXT29"));
 		elseif($ldata['start_owner_id'] != $game->player['user_id']) {
             $start_owner = $game->uc_get($ldata['start_owner_id']);
             
             if(!$start_owner) {
-                $start_owner_str = ' <i>(unbewohnt)</i>';
+                $start_owner_str = ' '.constant($game->sprache("TEXT29"));
             }
             else {
-                $start_owner_str = ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['start_owner_id']).'"><b>'.$start_owner.'</b></a>';
+                $start_owner_str = ' '.constant($game->sprache("TEXT30")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['start_owner_id']).'"><b>'.$start_owner.'</b></a>';
             }
         }
 		else $start_owner_str = '';
 		
-		$game->out('Standort: <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($ldata['start'])).'"><b>'.$ldata['start_planet_name'].'</b></a>'.$start_owner_str.'<br><br>');
+		$game->out(constant($game->sprache("TEXT31")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($ldata['start'])).'"><b>'.$ldata['start_planet_name'].'</b></a>'.$start_owner_str.'<br><br>');
 		
 		$inter_planet = true;
 	}
 	else {
-		if(empty($ldata['start_owner_id'])) $start_owner_str = ' <i>(unbewohnt)</i>';
+	     if(empty($ldata['start_owner_id'])) $start_owner_str = ' '.constant($game->sprache("TEXT29"));
 		elseif($ldata['start_owner_id'] != $game->player['user_id']) {
             $start_owner = $game->uc_get($ldata['start_owner_id']);
 
             if(!$start_owner) {
-                $start_owner_str = ' <i>(unbewohnt)</i>';
+                $start_owner_str = ' '.constant($game->sprache("TEXT29"));
             }
             else {
-                $start_owner_str = ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['start_owner_id']).'"><b>'.$start_owner.'</b></a>';
+                $start_owner_str = ' '.constant($game->sprache("TEXT30")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['start_owner_id']).'"><b>'.$start_owner.'</b></a>';
             }
         }		
 		else $start_owner_str = '';
 		
-	    if(empty($ldata['dest_owner_id'])) $dest_owner_str = ' <i>(unbewohnt)</i>';
+	    if(empty($ldata['dest_owner_id'])) $dest_owner_str = ' '.constant($game->sprache("TEXT29"));
 		elseif($ldata['dest_owner_id'] != $game->player['user_id']) {
 		    $dest_owner = $game->uc_get($ldata['dest_owner_id']);
 
             if(!$dest_owner) {
-                $dest_owner_str = ' <i>(unbewohnt)</i>';
+                $dest_owner_str = ' '.constant($game->sprache("TEXT29"));
             }
             else {
-                $dest_owner_str = ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['dest_owner_id']).'"><b>'.$dest_owner.'</b></a>';
+                $dest_owner_str = ' '.constant($game->sprache("TEXT30")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['dest_owner_id']).'"><b>'.$dest_owner.'</b></a>';
             }
         }		
 		else $dest_owner_str = '';
 		
 		$game->out('
-	Start: <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($ldata['start'])).'"><b>'.$ldata['start_planet_name'].'</b></a>'.$start_owner_str.'<br>
-	Ziel: <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($ldata['dest'])).'"><b>'.$ldata['dest_planet_name'].'</b></a>'.$dest_owner_str.'<br>
+	'.constant($game->sprache("TEXT32")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($ldata['start'])).'"><b>'.$ldata['start_planet_name'].'</b></a>'.$start_owner_str.'<br>
+	'.constant($game->sprache("TEXT33")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($ldata['dest'])).'"><b>'.$ldata['dest_planet_name'].'</b></a>'.$dest_owner_str.'<br>
 	<br>
 		');
 	}
@@ -118,27 +118,27 @@ function display_logbook($log) {
             $game->out('
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="65" valign="top"><b>Mitteilung:</b></td>
-        <td width="385">Dein Flottenverband hat die Mission abgeschlossen und ist zurückgekehrt.</td>
+        <td width="65" valign="top"><b>'.constant($game->sprache("TEXT34")).'&nbsp;</b></td>
+        <td width="385">'.constant($game->sprache("TEXT35")).'</td>
       </tr>
     </table>
     <br> $game->out('
     <table border="0" cellpadding="2" cellspacing="2">
        <tr>
-        <td width="200"><b>Einheitentyp</b></td>
-        <td width="150"><b>Opfer</b></td>
+        <td width="200"><b>'.constant($game->sprache("TEXT46")).'</b></td>
+        <td width="150"><b>'.constant($game->sprache("TEXT114")).'</b></td>
       </tr>
       ');
       global $UNIT_NAME;
                         $game->out('
        <tr>
-        <td width="200">Worker</td>
+        <td width="200">'.constant($game->sprache("TEXT115")).'</td>
         <td width="150">'.$log['log_data'][18][0].'</td>
       </tr>'
       );
       $truppen_bomben=0;
       for($i = 13; $i < 19; ++$i) {
-                             if($log['log_data'][18][$i] > 0) {                                 
+                             if($log['log_data'][18][$i] > 0) {
                                  $game->out('
                                         <tr>
         <td width="200">'.$UNIT_NAME[$game->player['user_race']][$truppen_bomben].'</td>
@@ -150,8 +150,8 @@ function display_logbook($log) {
       }
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="350"><b>Name der Flotte</b></td>
-        <td width="100"><b>Schiffe</b></td>
+        <td width="350"><b>'.constant($game->sprache("TEXT36")).'</b></td>
+        <td width="100"><b>'.constant($game->sprache("TEXT37")).'</b></td>
       </tr>
             ');
 
@@ -173,15 +173,15 @@ function display_logbook($log) {
             $game->out('
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="65" valign="top"><b>Mitteilung:</b></td>
-        <td width="385">Dein Flottenverband hat die ursprüngliche Mission aufgegeben und ist zurückgekehrt.</td>
+        <td width="65" valign="top"><b>'.constant($game->sprache("TEXT34")).'&nbsp;</b></td>
+        <td width="385">'.constant($game->sprache("TEXT38")).'</td>
       </tr>
     </table>
     <br>
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="350"><b>Name der Flotte</b></td>
-        <td width="100"><b>Schiffe</b></td>
+        <td width="350"><b>'.constant($game->sprache("TEXT36")).'</b></td>
+        <td width="100"><b>'.constant($game->sprache("TEXT37")).'</b></td>
       </tr>
             ');
 
@@ -211,16 +211,16 @@ function display_logbook($log) {
             $game->out('
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="65" valign="top"><b>Mitteilung:</b></td>
+        <td width="65" valign="top"><b>'.constant($game->sprache("TEXT34")).'&nbsp;</b></td>
         <td width="385">
             ');
             
             if($ldata['user_id'] == $game->player['user_id']) {
-                if($spy_report[0]) $game->out('Die Spionageflotte wurde wï¿½hrend des Scannens des Planeten entdeckt und alle Schiffe wurden zerstï¿½rt.');
-                else $game->out('Die Spionageflotte hat den Planeten unentdeckt scannen können und ist wieder auf dem Rückflug.');
+                if($spy_report[0]) $game->out(constant($game->sprache("TEXT39")));
+                else $game->out(constant($game->sprache("TEXT40")));
             }
             else {
-                $game->out('Es wurde eine Spionageflotte aus Aufklärungsschiffen in der Nähe des Planeten entdeckt, die die Oberfläche deines Planeten scannten. Sie wurde komplett zerstört, jedoch ist unbekannt, welche Daten sie bereits übermitteln konnte.');
+                $game->out(constant($game->sprache("TEXT41")));
             }
             
             $game->out('
@@ -230,7 +230,7 @@ function display_logbook($log) {
     <br>
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="250">Anzahl der Schiffe</td>
+        <td width="250">'.constant($game->sprache("TEXT42")).'</td>
         <td width="200">'.$log['log_data'][8].'</td>
       </tr>
     </table>
@@ -238,7 +238,7 @@ function display_logbook($log) {
             ');
             
             if($n_spyed == 0) {
-                $game->out('<b>Die Flotte hat keine genauen Daten über den Planeten übermittelt.</b>');
+                $game->out(constant($game->sprache("TEXT43")));
                 break;
             }
             
@@ -248,8 +248,8 @@ function display_logbook($log) {
                 $game->out('
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="250"><b>Rohstoff</b></td>
-        <td width="200"><b>Menge</b></td>
+        <td width="250"><b>'.constant($game->sprache("TEXT44")).'</b></td>
+        <td width="200"><b>'.constant($game->sprache("TEXT45")).'</b></td>
       </tr>
                 ');
 
@@ -269,8 +269,8 @@ function display_logbook($log) {
                 $game->out('
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="250"><b>Einheitentyp</b></td>
-        <td width="200"><b>Menge</b></td>
+        <td width="250"><b>'.constant($game->sprache("TEXT46")).'</b></td>
+        <td width="200"><b>'.constant($game->sprache("TEXT45")).'</b></td>
       </tr>
                 ');
 
@@ -290,8 +290,8 @@ function display_logbook($log) {
                 $game->out('
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="250"><b>Gebï¿½ude</b></td>
-        <td width="200"><b>Ausbaustufe</b></td>
+        <td width="250"><b>'.constant($game->sprache("TEXT47")).'</b></td>
+        <td width="200"><b>'.constant($game->sprache("TEXT48")).'</b></td>
       </tr>
                 ');
                 
@@ -313,8 +313,8 @@ function display_logbook($log) {
                 $game->out('
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="250"><b>Lokale Forschung</b></td>
-        <td width="200"><b>Ausbaustufe</b></td>
+        <td width="250"><b>'.constant($game->sprache("TEXT49")).'</b></td>
+        <td width="200"><b>'.constant($game->sprache("TEXT48")).'</b></td>
       </tr>
                 ');
 
@@ -346,8 +346,8 @@ function display_logbook($log) {
                 $game->out('
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="250"><b>Schiffskomponenten-Forschung</b></td>
-        <td width="200"><b>Ausbaustufe</b></td>
+        <td width="250"><b>'.constant($game->sprache("TEXT50")).'</b></td>
+        <td width="200"><b>'.constant($game->sprache("TEXT48")).'</b></td>
       </tr>
                 ');
 
@@ -370,19 +370,19 @@ function display_logbook($log) {
             $game->out('
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="65" valign="top"><b>Mitteilung:</b></td>
+        <td width="65" valign="top"><b>'.constant($game->sprache("TEXT34")).'&nbsp;</b></td>
         <td width="385">
             ');
             
             if($inter_planet) {
-                $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> hat sich deinen Streitkräften ergeben.');
+                $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT52")));
             }
             else {
                 if($ldata['user_id'] == $game->player['user_id']) {
-                    $game->out('Dein Flottenverband hat den Zielplaneten erreicht und die Kontrolle über die Schiffe der dortigen Regierung übergeben.');
+                    $game->out(constant($game->sprache("TEXT53")));
                 }
                 else {
-                    $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> hat sich deinen Streitkräften ergeben.');
+                    $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT52")));
                 }
             }
             
@@ -393,8 +393,8 @@ function display_logbook($log) {
     <br>
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="350"><b>Schiffstyp</b></td>
-        <td width="100"><b>Anzahl</b></td>
+        <td width="350"><b>'.constant($game->sprache("TEXT54")).'</b></td>
+        <td width="100"><b>'.constant($game->sprache("TEXT55")).'</b></td>
       </tr>
             ');
             
@@ -415,14 +415,14 @@ function display_logbook($log) {
             $game->out('
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="65" valign="top"><b>Mitteilung:</b></td>
+        <td width="65" valign="top"><b>'.constant($game->sprache("TEXT34")).'&nbsp;</b></td>
         <td width="385">
             ');
             
             switch($log['log_data'][8]) {
-                case -1: $game->out('Der Planet konnte nicht kolonisiert, da er nicht unbewohnt war.'); break;
-                case -2: $game->out('Der Planet konnte nicht kolonisiert werden, da das beim Start gewählte Kolonisationsschiff nicht mehr verfügbar war.'); break;
-                case 1: $game->out('Der Planet wurde erfolgreich kolonisiert.'); break;
+                case -1: $game->out(constant($game->sprache("TEXT56"))); break;
+                case -2: $game->out(constant($game->sprache("TEXT57"))); break;
+                case 1: $game->out(constant($game->sprache("TEXT58"))); break;
                 default: $game->out('Illegal status code - report this as a bug'); break;
             }
 
@@ -435,7 +435,7 @@ function display_logbook($log) {
             if($log['log_data'][8] == 1) {
                 $game->out('
     <br>
-    <b>Schiffstyp:</b><br>
+    <b>'.constant($game->sprache("TEXT54")).':</b><br>
     '.$log['log_data'][9].'</a> (<i>'.$SHIP_TORSO[$log['log_data'][10]][SHIP_TYPE_COLO][29].'</i>, <i>'.$RACE_DATA[$log['log_data'][10]][0].'</i>)
     <br>
                 ');
@@ -450,15 +450,15 @@ function display_logbook($log) {
             $game->out('
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="65" valign="top"><b>Mitteilung:</b></td>
+        <td width="65" valign="top"><b>'.constant($game->sprache("TEXT34")).'&nbsp;</b></td>
         <td width="385">
             ');
 
             if($ldata['user_id'] == $game->player['user_id']) {
-                $game->out('Dein Flottenverband hat den Zielplaneten erreicht, die Ladung auf den Planeten gebeamt und befindet sich wieder auf dem Rückflug.'.( ($planet_overloaded) ? ' Alle Waren/Einheiten konnten nicht transferiert werden, da das Maximum des Planeten erreicht wurden.' : '' ) );
+                $game->out(constant($game->sprache("TEXT59")).( ($planet_overloaded) ? ' '.constant($game->sprache("TEXT60")) : '' ) );
             }
             else {
-                $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> hat auf die Oberfläche der Kolonie Waren/Einheiten gebeamt und befindet sich wieder auf dem Rückflug.'.( ($planet_overloaded) ? ' Dabei konnte nicht alles transferiert werden, da das Maximum des Planeten erreicht wurde' : '' ));
+                $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> hat auf die OberflÃ¤che der Kolonie Waren/Einheiten gebeamt und befindet sich wieder auf dem RÃ¼ckflug.'.( ($planet_overloaded) ? ' '.constant($game->sprache("TEXT61")) : '' ));
             }
 
             $game->out('
@@ -468,8 +468,8 @@ function display_logbook($log) {
     <br>
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="350"><b>Schiffstyp</b></td>
-        <td width="100"><b>Anzahl</b></td>
+        <td width="350"><b>'.constant($game->sprache("TEXT54")).'</b></td>
+        <td width="100"><b>'.constant($game->sprache("TEXT55")).'</b></td>
       </tr>
             ');
 
@@ -487,8 +487,8 @@ function display_logbook($log) {
 	<br>
 	<table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="350"><b>Ware/Einheit</b></td>
-        <td width="100"><b>Übergeben</b></td>
+        <td width="350"><b>'.constant($game->sprache("TEXT63")).'</b></td>
+        <td width="100"><b>'.constant($game->sprache("TEXT64")).'</b></td>
       </tr>
 		   ');
 
@@ -516,12 +516,12 @@ function display_logbook($log) {
             $game->out('
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="65" valign="top"><b>Mitteilung:</b></td>
-        <td width="385">Das ersteigerte Schiff ist im Trockendock deines Planeten angekommen.</td>
+        <td width="65" valign="top"><b>'.constant($game->sprache("TEXT34")).'&nbsp;</b></td>
+        <td width="385">'.constant($game->sprache("TEXT67")).'</td>
       </tr>
     </table>
     <br>
-    <b>Schiffstyp:</b><br>
+    <b>'.constant($game->sprache("TEXT54")).':</b><br>
     <a href="'.parse_link('a=ship_fleets_ops&ship_details='.$log['log_data'][8]).'">'.$log['log_data'][9].'</a> (<i>'.$SHIP_TORSO[$log['log_data'][11]][$log['log_data'][10]][29].'</i>, <i>'.$RACE_DATA[$log['log_data'][11]][0].'</i>)
     <br>
             ');
@@ -540,122 +540,122 @@ function display_logbook($log) {
             $game->out('
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td width="65" valign="top"><b>Mitteilung:</b></td>
+        <td width="65" valign="top"><b>'.constant($game->sprache("TEXT34")).'&nbsp;</b></td>
         <td width="385">
             ');
             
             if(isset($log['log_data'][16])) {
-                if($log['log_data'][9]) $game->out('Deine Flotte hat einen Verbündeten gegen den Angriff von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> verteidigt und hat dabei die Angreifer mit zerstört.');
-                else $game->out('Deine Flotte hat einen Verbündeten gegen den Angriff von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> verteidigt, wurde dabei jedoch mit zerstört.');
+                if($log['log_data'][9]) $game->out(constant($game->sprache("TEXT72")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT73")));
+                else $game->out(constant($game->sprache("TEXT72")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT74")));
             }
             else {
                 switch($ldata['action_code']) {
                     case 40:
                         if($log['log_data'][8] == CWIN_ATTACKER) {
-                            if($log['log_data'][9]) $game->out('Deine auf Alarmstufe Rot operierende Flotte hat eine einfliegende Flotte von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> angegriffen und zerstört.');
-                            else $game->out('Deine auf Alarmstufe Rot operierende Flotte hat eine einfliegende Flotte von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> angegriffen , wurde von dieser jedoch zerstört.');
+                            if($log['log_data'][9]) $game->out(constant($game->sprache("TEXT75")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT76")));
+                            else $game->out(constant($game->sprache("TEXT75")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT77")));
                         }
                         else {
-                            if($log['log_data'][9]) $game->out('Deine Flotte wurde beim Einflug in den Orbit von Schiffen von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$log['log_data'][15]).'"><b>'.$game->uc_get($log['log_data'][15]).'</b></a> angriffen, konnte diese aber zerstï¿½ren.');
-                            else $game->out('Deine Flotte wurde beim Einflug in den Orbit von Schiffen von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$log['log_data'][15]).'"><b>'.$game->uc_get($log['log_data'][15]).'</b></a> angriffen und wurde zerstört.');
+                            if($log['log_data'][9]) $game->out(constant($game->sprache("TEXT78")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$log['log_data'][15]).'"><b>'.$game->uc_get($log['log_data'][15]).'</b></a> '.constant($game->sprache("TEXT79")));
+                            else $game->out(constant($game->sprache("TEXT78")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$log['log_data'][15]).'"><b>'.$game->uc_get($log['log_data'][15]).'</b></a> '.constant($game->sprache("TEXT80")));
                         }
                     break;
                     
                     case 41:
                         if($log['log_data'][8] == CWIN_ATTACKER) {
-                            if($log['log_data'][9]) $game->out('Dein Flottenverband hat den Zielplaneten erreicht und alle gegnerische Schiffe sowie orbitale Verteidigungseinrichtungen zerstï¿½rt. Alle ï¿½berlebenden Schiffe sind in der Umlaufbahn des Planeten.');
-                            else $game->out('Dein Flottenverband hat den Zielplaneten erreicht und wurde durch die gegnerischen Streitkräfte komplett zerstört.');
+                            if($log['log_data'][9]) $game->out(constant($game->sprache("TEXT81")));
+                            else $game->out(constant($game->sprache("TEXT82")));
                         }
                         else {
-                            if($log['log_data'][9]) $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a>, der deine Streitkräfte im Orbit angegriffen hat, wurde komplett zerstört.');
-                            else $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> hat deine Streitkräfte im Orbit komplett zerstört und ist nun im Orbit des Planeten.');
+                            if($log['log_data'][9]) $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a>, '.constant($game->sprache("TEXT83")));
+                            else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT84")));
                         }
                     break;
                     
                     case 42:
                         if($log['log_data'][8] == CWIN_ATTACKER) {
-                            if($log['log_data'][9]) $game->out('Dein Flottenverband hat den Zielplaneten erreicht und alle gegnerische Schiffe sowie orbitale Verteidigungseinrichtungen zerstört. Alle überlebenden Schiffe sind wieder auf dem Rï¿½ckflug.');
-                            else $game->out('Dein Flottenverband hat den Zielplaneten erreicht und wurde durch die gegnerischen Streitkräfte komplett zerstört.');
+                            if($log['log_data'][9]) $game->out(constant($game->sprache("TEXT85")));
+                            else $game->out(constant($game->sprache("TEXT82")));
                         }
                         else {
-                            if($log['log_data'][9]) $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a>, der deine Streitkräfte im Orbit angegriffen hat, wurde komplett zerstört.');
-                            else $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> hat deine Streitkräfte im Orbit komplett zerstört und ist wieder auf dem Rückflug.');
+                            if($log['log_data'][9]) $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a>, '.constant($game->sprache("TEXT83")));
+                            else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT86")));
                         }
                     break;
                     
                     case 51:
                         if($log['log_data'][8] == CWIN_ATTACKER) {
-                            if($log['log_data'][9]) $game->out('Dein Flottenverband hat die gegnerischen Streitkräfte angegriffen und komplett zerstört.');
-                            else $game->out('Dein Flottenverband wurde bei dem Angriff komplett zerstört.');
+                            if($log['log_data'][9]) $game->out(constant($game->sprache("TEXT91")));
+                            else $game->out(constant($game->sprache("TEXT92")));
                         }
                         else {
-                            if($log['log_data'][9]) $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a>, der deine Streitkräfte im Orbit angegriffen hat, wurde komplett zerstört.');
-                            else $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> hat deine Streitkräfte im Orbit komplett zerstört.');
+                            if($log['log_data'][9]) $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a>, '.constant($game->sprache("TEXT83")));
+                            else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT93")));
                         }
                     break;
                     
                     case 54:
                         if( ($log['log_data'][8] == CWIN_ATTACKER) && (!$log['log_data'][9]) ) {
-                            $game->out('Dein Flottenverband wurde bei dem Angriff komplett zerstört.');
+                            $game->out(constant($game->sprache("TEXT92")));
                         }
                         elseif( ($log['log_data'][8] == CWIN_DEFENDER) && ($log['log_data'][9]) ) {
-                            $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a>, der deine Streitkräfte im Orbit angegriffen hat, wurde komplett zerstört.');
+                            $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a>, '.constant($game->sprache("TEXT83")));
                         }
                         
                         switch($log['log_data'][17]) {
                             // Keine planetaren Waffen waren verfï¿½gbar
                             case -3:
-                                if($log['log_data'][8] == CWIN_ATTACKER) $game->out('Dein Flottenverband hat die gegnerischen Streitkräfte angegriffen und komplett zerstört. Der Planet konnte jedoch nicht bombardiert werden, da kein Schiff über planetare Waffen verfügte.');
-                                else $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> hat deine Streitkräfte im Orbit komplett zerstört.');
+                                if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT94")));
+                                else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT93")));
                             break;
                             
                             case -2:
-                                if($log['log_data'][8] == CWIN_ATTACKER) $game->out('Dein Flottenverband hat die Bombardierung der Planetenoberfläche beendet.');
-                                else $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> hat die Bombardierung der Planetenoberfläche beendet.');
+                                if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT95")));
+                                else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT96")));
                             break;
                             
                             case -1:
-                                if($log['log_data'][8] == CWIN_ATTACKER) $game->out('Dein Flottenverband hat die gegnerischen Streitkräfte angegriffen und komplett zerstï¿½rt. Der Planet konnte jedoch nicht bombardiert werden, da kein Gebäude auf der Oberfläche zu finden war.');
-                                else $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> hat deine Streitkräfte im Orbit komplett zerstört.');
+                                if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT97")));
+                                else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT93")));
                             break;
                             
                             case 1:
-                                if($log['log_data'][8] == CWIN_ATTACKER) $game->out('Dein Flottenverband hat die gegnerischen Streitkräfte angegriffen und komplett zerstört. Danach begann er mit der Bombardierung der Planetenoberfläche.');
-                                else $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> hat deine Streitkräfte im Orbit komplett zerstört. Danach begann er mit der Bombardierung der Planetenoberfläche.');
+                                if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT98")));
+                                else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT99")));
                             break;
                             
                             case 2:
-                                if($log['log_data'][8] == CWIN_ATTACKER) $game->out('Dein Flottenverband hat die Bombardierung der Planetenoberfläche fortgesetzt.');
-                                else $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> hat die Bombardierung der Planetenoberfläche fortgesetzt.');
+                                if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT100")));
+                                else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT101")));
                             break;
                         }
                     break;
                     
                     case 55:
                         if( ($log['log_data'][8] == CWIN_ATTACKER) && (!$log['log_data'][9]) ) {
-                            $game->out('Dein Flottenverband wurde bei dem Angriff komplett zerstört.');
+                            $game->out(constant($game->sprache("TEXT92")));
                         }
                         elseif( ($log['log_data'][8] == CWIN_DEFENDER) && ($log['log_data'][9]) ) {
-                            $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a>, der deine Streitkräfte im Orbit angegriffen hat, wurde komplett zerstört.');
+                            $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a>, '.constant($game->sprache("TEXT83")));
                         }
                         
                         switch($log['log_data'][17]) {
                             // Kolonieschiff nicht gefunden
                             case -2:
-                                if($log['log_data'][8] == CWIN_ATTACKER) $game->out('Dein Flottenverband hat die gegnerischen Streitkräfte angegriffen und komplett zerstört. Das Kolonieschiff, das für die Invasion vorgesehen war, konnte jedoch nicht mehr gefunden werden - eventuell wurde es bei dem Kampf zerstört.');
-                                else $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> hat deine Streitkräfte im Orbit komplett zerstört.');
+                                if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT102")));
+                                else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT93")));
                             break;
                             
                             // Angreifer hat Bodenkampf verloren
                             case -1:
-                                if($log['log_data'][8] == CWIN_ATTACKER) $game->out('Dein Flottenverband hat die gegnerischen Streitkräfte angegriffen und komplett zerstört. In dem darauffolgenden Bodenkampf konnten die gegnerischen Streitkräfte jedoch nicht überwältigt werden.');
-                                else $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> hat deine Streitkräfte im Orbit komplett zerstört. In dem darauffolgenden Bodenkampf konnten deine Einheiten eine Übernahme durch feindliche Truppen verhindern.');
+                                if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT103")));
+                                else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT104")));
                             break;
                             
                             // Kolonisation war erfolgreich
                             case 1:
-                                if($log['log_data'][8] == CWIN_ATTACKER) $game->out('Dein Flottenverband hat die gegnerischen Streitkräfte angegriffen und komplett zerstört. In dem darauffolgenden Bodenkampf haben deine Streitkröfte die Kontrolle über alle planetaren Einrichtungen gewinnen können, so dass der Planet nun unter deiner Kontrolle steht.');
-                                else $game->out('Ein Flottenverband von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> hat deine Streitkräfte im Orbit komplett zerstört. In dem darauffolgenden Bodenkampf wurden deine Einheiten von den feindlichen Truppen vernichtet, so dass diese nun die Kontrolle über den Planeten haben.');
+                                if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT105")));
+                                else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT106")));
                             break;
                         }
                     break;
@@ -670,15 +670,15 @@ function display_logbook($log) {
 
 
 if(count($a_fleets) <= 0) {
-                $game->out('<b>Angreifende Flotten</b><br><i>Keine angreifenden Flotten -- Bug, bitte melden</i><br><br>');}
+                $game->out(constant($game->sprache("TEXT107")));}
             else {
                 $game->out('
-    <b>Angreifende Flotten</b><br>
+    <b>'.constant($game->sprache("TEXT108")).'</b><br>
     <table border="0" cellpadding="1" cellspacing="1">
       <tr>
-        <td width="100"><b>Name</b></td>
-        <td width="100"><b>Spieler</b></td>
-        <td width="50"><b>Schiffe</b></td>
+        <td width="100"><b>'.constant($game->sprache("TEXT109")).'</b></td>
+        <td width="100"><b>'.constant($game->sprache("TEXT110")).'</b></td>
+        <td width="50"><b>'.constant($game->sprache("TEXT37")).'</b></td>
       </tr>
                 ');
 
@@ -696,16 +696,16 @@ if(count($a_fleets) <= 0) {
             }
 
             if(count($d_fleets) <= 0) {
-                $game->out('<b>Verteidigende Flotten</b><br><i>Keine verteidigenden Flotten</i><br><br>');
+                $game->out(constant($game->sprache("TEXT111")));
             }
             else {
                 $game->out('
-    <b>Verteidigende Flotten</b><br>
+    <b>'.constant($game->sprache("TEXT112")).'</b><br>
     <table border="0" cellpadding="1" cellspacing="1">
       <tr>
-        <td width="100"><b>Name</b></td>
-        <td width="100"><b>Spieler</b></td>
-        <td width="50"><b>Schiffe</b></td>
+        <td width="100"><b>'.constant($game->sprache("TEXT109")).'</b></td>
+        <td width="100"><b>'.constant($game->sprache("TEXT110")).'</b></td>
+        <td width="50"><b>'.constant($game->sprache("TEXT37")).'</b></td>
       </tr>
                 ');
 
@@ -730,30 +730,30 @@ if(count($a_fleets) <= 0) {
                 case 44:
                 case 54:
                     if(!isset($log['log_data'][18])) {
-                        $game->out('<b>Es wurden keine Gebäude beschädigt.</b><br><br>');
+                        $game->out(constant($game->sprache("TEXT113")));
                     }
                     elseif(array_sum($log['log_data'][18]) == 0) {
-                        $game->out('<b>Es wurden keine Gebäude beschädigt.</b><br><br>');
+                        $game->out(constant($game->sprache("TEXT113")));
                     }
                     else {
 //Start Truppenbomben
  $game->out('
     <table border="0" cellpadding="2" cellspacing="2">
        <tr>
-        <td width="200"><b>Einheitentyp</b></td>
-        <td width="150"><b>Opfer</b></td>
+        <td width="200"><b>'.constant($game->sprache("TEXT46")).'</b></td>
+        <td width="150"><b>'.constant($game->sprache("TEXT114")).'</b></td>
       </tr>
       ');
       global $UNIT_NAME;
                         $game->out('
        <tr>
-        <td width="200">Worker</td>
+        <td width="200">'.constant($game->sprache("TEXT115")).'</td>
         <td width="150">'.$log['log_data'][18][0].'</td>
       </tr>'
       );
       $truppen_bomben=0;
       for($i = 13; $i < 19; ++$i) {
-                             if($log['log_data'][18][$i] >= 0) {                                 
+                             if($log['log_data'][18][$i] >= 0) {
                                  $game->out('
                                         <tr>
         <td width="200">'.$UNIT_NAME[$game->player['user_race']][$truppen_bomben].'</td>
@@ -766,8 +766,8 @@ if(count($a_fleets) <= 0) {
                         $game->out('<br>
     <table border="0" cellpadding="2" cellspacing="2">
       <tr>
-        <td width="200"><b>Gebäudetyp</b></td>
-        <td width="150"><b>Ausbaustufe</b></td>
+        <td width="200"><b>'.constant($game->sprache("TEXT116")).'</b></td>
+        <td width="150"><b>'.constant($game->sprache("TEXT48")).'</b></td>
       </tr>
                          ');
                          
@@ -793,20 +793,20 @@ if(count($a_fleets) <= 0) {
                 case 55:
                     if(isset($log['log_data'][18])) {
                         if(array_sum($log['log_data'][18]) == 0) {
-                            $game->out('<b>Es gab keine Verluste an Bodentruppen auf deiner Seite.</b><br><br>');
+                            $game->out(constant($game->sprache("TEXT118")));
                         }
                         else {
                             $game->out('
     <table border="0" cellpadding="2" cellspacing="2">
       <tr>
-        <td width="215"><b>Verteidiger: <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a></b></td>
+        <td width="215"><b>'.constant($game->sprache("TEXT140")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a></b></td>
       </tr>
       <tr>
         <td width="215"><b>&nbsp;</b></td>>
       </tr>
       <tr>
-        <td width="215"><b>Einheitentyp</b></td>
-        <td width="150"><b># Verluste</b></td>
+        <td width="215"><b>'.constant($game->sprache("TEXT46")).'</b></td>
+        <td width="150"><b>'.constant($game->sprache("TEXT119")).'</b></td>
       </tr>
                             ');
 
@@ -824,7 +824,7 @@ if(count($a_fleets) <= 0) {
                             if(isset($log['log_data'][18][4])) {
                                 $game->out('
       <tr>
-        <td><i>Arbeiter</i></td>
+        <td><i>'.constant($game->sprache("TEXT115")).'</i></td>
         <td>'.$log['log_data'][18][4].'</td>
       </tr>
                                 ');
@@ -836,17 +836,17 @@ if(count($a_fleets) <= 0) {
 
                     if(isset($log['log_data'][19])) {
                         if(array_sum($log['log_data'][19]) == 0) {
-                            $game->out('<b>Es gab keine Verluste an Bodentruppen auf der gegnerischen Seite.</b><br><br>');
+                            $game->out(constant($game->sprache("TEXT118")));
                         }
                         else {
                             $game->out('
     <table border="0" cellpadding="2" cellspacing="2">
       <tr>
-        <td width="215"><b>Angreifer: <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a></b></td>
+        <td width="215"><b>'.constant($game->sprache("TEXT141")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a></b></td>
       </tr>
       <tr>
-        <td width="215"><b>Einheitentyp</b></td>
-        <td width="150"><b># Verluste</b></td>
+        <td width="215"><b>'.constant($game->sprache("TEXT46")).'</b></td>
+        <td width="150"><b>'.constant($game->sprache("TEXT119")).'</b></td>
       </tr>
                             ');
 
@@ -864,7 +864,7 @@ if(count($a_fleets) <= 0) {
                             if(isset($log['log_data'][19][4])) {
                                 $game->out('
       <tr>
-        <td><i>Arbeiter</i></td>
+        <td><i>'.constant($game->sprache("TEXT115")).'</i></td>
         <td>'.$log['log_data'][19][4].'</td>
       </tr>
                                 ');
@@ -882,7 +882,7 @@ if(count($a_fleets) <= 0) {
         break;
     }
 
-    $game->out('* Achtung, das neue Kampfsystem ist experimentell installiert, bei groben Abweichungen bitte über das Forum melden!
+    $game->out(constant($game->sprache("TEXT142")).'
   </td></tr>
 </table>
 <br>

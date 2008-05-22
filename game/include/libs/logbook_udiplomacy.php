@@ -34,7 +34,7 @@ function display_logbook($log) {
     
     switch($log['log_data']['what']) {
         case 'break':
-            $game->out('<b>Bündnis gebrochen</b><br><br>Das private Bündnis mit <a href="'.parse_link('a=stats&a2=viewplayer&id='.$log['log_data']['who_id']).'">'.$log['log_data']['who_name'].'</a> wurde dir gekündigt.');
+            $game->out(constant($game->sprache("TEXT138")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$log['log_data']['who_id']).'">'.$log['log_data']['who_name'].'</a> '.constant($game->sprache("TEXT139")));
         break;
     }
 

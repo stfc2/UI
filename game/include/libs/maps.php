@@ -53,6 +53,44 @@ class maps {
         $this->sectors_per_quadrant = $game->sectors_per_quadrant;
         $this->max_sectors = $game->max_sectors;
         $this->max_systems_per_sector = $game->max_systems_per_sector;
+
+		/* 29/02/08 - AC: Localize this strings */
+		switch($game->player['language'])
+		{
+			case 'GER':
+				$this->str_sector = 'Sektor';
+				$this->str_details = 'Details';
+				$this->str_planets = 'Planeten:';
+				$this->str_owner = 'Herrscher:';
+				$this->str_alliance = 'Allianz:';
+				$this->str_points = 'Punkte:';
+				$this->str_name = 'Name:';
+				$this->str_class = 'Klasse:';
+			    $this->str_uninhabited = 'unbewohnt';
+			break;
+			case 'ENG':
+				$this->str_sector = 'Sector';
+				$this->str_details = 'Details';
+				$this->str_planets = 'Planets:';
+				$this->str_owner = 'Owner:';
+				$this->str_alliance = 'Alliance:';
+				$this->str_points = 'Points:';
+				$this->str_name = 'Name:';
+				$this->str_class = 'Class:';
+			    $this->str_uninhabited = 'uninhabited';
+			break;
+			case 'ITA':
+				$this->str_sector = 'Settore';
+				$this->str_details = 'Dettagli';
+				$this->str_planets = 'Pianeti:';
+				$this->str_owner = 'Proprietario:';
+				$this->str_alliance = 'Alleanza:';
+				$this->str_points = 'Punti:';
+				$this->str_name = 'Nome:';
+				$this->str_class = 'Classe:';
+			    $this->str_uninhabited = 'disabitato';
+			break;
+		}
     }
 
     function draw_horizontal_dotline($im, $x1, $x2, $y, $color, $dot_distance = 2) {
@@ -248,7 +286,7 @@ class maps {
             for($j = 1; $j <= $this->quadrant_map_split; ++$j) {
                 $sector_id = ( $previous_sectors + ( $j + ( ($i - 1) * $this->quadrant_map_split) ) );
                 $map_html .= '<area href="'.parse_link('a=tactical_cartography&sector_id='.$sector_id).'" shape="rect" coords="'.$current_x.', '.$current_y.', '.($current_x + $px_per_sector).', '.($current_y + $px_per_sector).'"';
-                $map_html .= ' onmouseover="return overlib(\'Sektor '.$current_letter.$numbers[($j - 1)].'<br>ID: '.$sector_id.'\', CAPTION, \'Details:\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">';
+                $map_html .= ' onmouseover="return overlib(\''.$this->str_sector.' '.$current_letter.$numbers[($j - 1)].'<br>ID: '.$sector_id.'\', CAPTION, \''.$this->str_details.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">';
 
 
 
@@ -324,7 +362,7 @@ class maps {
 
             imagefilledellipse($im, $system['system_map_x'], $system['system_map_y'], $star_size, $star_size, $star_color);
 
-            $map_html .= '<area href="'.parse_link('a=tactical_cartography&system_id='.encode_system_id($system['system_id'])).'" shape="circle" coords="'.$system['system_map_x'].', '.$system['system_map_y'].', '.$star_size.'" onmouseover="return overlib(\''.$system['system_name'].'<br>Planeten: '.$system['system_n_planets'].'\', CAPTION, \'Details:\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">';
+            $map_html .= '<area href="'.parse_link('a=tactical_cartography&system_id='.encode_system_id($system['system_id'])).'" shape="circle" coords="'.$system['system_map_x'].', '.$system['system_map_y'].', '.$star_size.'" onmouseover="return overlib(\''.$system['system_name'].'<br>'.$this->str_planets.' '.$system['system_n_planets'].'\', CAPTION, \''.$this->str_details.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">';
 
             $used_fields[$coord_id] = $system['system_id'];
         }
@@ -438,15 +476,15 @@ class maps {
             imagefilledellipse($im, $planet_x, $planet_y, $PLANETS_DATA[$current_type][8], $PLANETS_DATA[$current_type][8], $planet_colors[$current_type]);
 
             $map_html .= '<area href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'" shape="circle" coords="'.(int)$planet_x.', '.(int)$planet_y.', '.$PLANETS_DATA[$current_type][8].'"';
-            $map_html .= ' onmouseover="return overlib(\'<font color=gray><b>Name:</b> '.str_replace("'","\'",$planet['planet_name']).'</font><br><font color=gray><b>Klasse:</b> '.strtoupper($planet['planet_type']).'</font>';
+            $map_html .= ' onmouseover="return overlib(\'<font color=gray><b>'.$this->str_name.'</b> '.str_replace("'","\'",$planet['planet_name']).'</font><br><font color=gray><b>'.$this->str_class.'</b> '.strtoupper($planet['planet_type']).'</font>';
             if(empty($planet['user_id'])) {
-			    $map_html .= '<br><i>unbewohnt</i>';
+			    $map_html .= '<br><i>'.$this->str_uninhabited.'</i>';
             }
             else {
-                $map_html .= '<br><b>Herrscher:</b> '.$planet['user_name'];
-                $map_html .= ((!empty($planet['alliance_name'])) ? '<br><font color=gray><b>Allianz:</b> '.str_replace("'","\'",$planet['alliance_name']).' ['.$planet['alliance_tag'].']</font>' : '' ).'<br><b>Punkte:</b> '.$planet['planet_points'].' ('.$planet['user_points'].' ges.)';
+                $map_html .= '<br><b>'.$this->str_owner.'</b> '.$planet['user_name'];
+                $map_html .= ((!empty($planet['alliance_name'])) ? '<br><font color=gray><b>'.$this->str_alliance.'</b> '.str_replace("'","\'",$planet['alliance_name']).' ['.$planet['alliance_tag'].']</font>' : '' ).'<br><b>'.$this->str_points.'</b> '.$planet['planet_points'].' ('.$planet['user_points'].' ges.)';
             }
-            $map_html .= '\', CAPTION, \'Details:\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">';
+            $map_html .= '\', CAPTION, \''.$this->str_details.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">';
 
             $rect_colors = array();
 
@@ -583,7 +621,7 @@ class maps {
             imagefilledellipse($im, ($start_x + 2), ($start_y + 2), 3, 3, $cl);
         }
 
-        imagepng($im, '|script_dir|/game/maps/images/galaxy_detail.png');
+        imagepng($im, '/home/taku/public_html/stfc/game/maps/images/galaxy_detail.png');
         imagedestroy($im);
     }
 }

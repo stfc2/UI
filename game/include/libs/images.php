@@ -39,9 +39,9 @@ function getimagesize_remote($image_url) {
 
             $contents .= $data;
 
-            // Workaround für mehr Speed:
-            //  Für die Größe reichen meist die ersten Bytes, er liest
-            //  daher nur max. die ersten ~40 Bytes
+            // Workaround for more speed:
+            //  For the size range usually the first bytes, it reads:
+            //  therefore only max. the first ~ 40 bytes
             //
             // } while(true);
         } while($count <= 5);

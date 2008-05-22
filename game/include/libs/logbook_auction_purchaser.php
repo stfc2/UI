@@ -36,17 +36,16 @@ function display_logbook($log) {
             <table border=0 cellpadding=0 cellspacing=0>
               <tr>
                 <td width="330" align="left"><b><u>'.$log['log_title'].'</u></b></td>
-                <td width="120" align="right"><b>'.date('d.m.y H:i:s', $log['log_date']+7200).'</b></td>
+                <td width="120" align="right"><b>'.date('d.m.y H:i:s', $log['log_date']).'</b></td>
               </tr>
             </table>
             <br>
-			Herzlichen Glückwunsch, '.$game->player['user_name'].'!<br>
-			Du hast die Auktion "<a href="'.parse_link('&a=trade&view=view_bidding_detail&id='.$log['log_data']['auction_id']).'">'.$log['log_data']['auction_name'].'</a>" gewonnen.<br>Dein Endgebot lag bei
-	        <img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;'.$log['log_data']['resource_1'].'
-			&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;'.$log['log_data']['resource_2'].'
-	        &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;'.$log['log_data']['resource_3'].'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit1_small.gif">&nbsp;'.$log['log_data']['unit_1'].'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit2_small.gif">&nbsp;'.$log['log_data']['unit_2'].'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit3_small.gif">&nbsp;'.$log['log_data']['unit_3'].'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit4_small.gif">&nbsp;'.$log['log_data']['unit_4'].'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit5_small.gif">&nbsp;'.$log['log_data']['unit_5'].'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit6_small.gif">&nbsp;'.$log['log_data']['unit_6'].'<br><br>
-			Zum Steuern des weiteren Ablaufs geh in das Handelszentrum und klick auf "Schulden bezahlen und Schiff abhohlen".<br><br>
-Du musst innerhalb einer Woche bezahlen. Wenn Du bis dahin nicht bezahlt hast, wirst Du eine Strafe erhalten.
+            '.constant($game->sprache("TEXT120")).', '.$game->player['user_name'].'!<br>
+            '.constant($game->sprache("TEXT121")).' "<a href="'.parse_link('&a=trade&view=view_bidding_detail&id='.$log['log_data']['auction_id']).'">'.$log['log_data']['auction_name'].'</a>" '.constant($game->sprache("TEXT122")).'
+            <img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;'.$log['log_data']['resource_1'].'
+            &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;'.$log['log_data']['resource_2'].'
+            &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;'.$log['log_data']['resource_3'].'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit1_small.gif">&nbsp;'.$log['log_data']['unit_1'].'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit2_small.gif">&nbsp;'.$log['log_data']['unit_2'].'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit3_small.gif">&nbsp;'.$log['log_data']['unit_3'].'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit4_small.gif">&nbsp;'.$log['log_data']['unit_4'].'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit5_small.gif">&nbsp;'.$log['log_data']['unit_5'].'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit6_small.gif">&nbsp;'.$log['log_data']['unit_6'].'<br><br>
+            '.constant($game->sprache("TEXT123")).'
           </td>
         </tr>
       </table>

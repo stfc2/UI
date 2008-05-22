@@ -52,7 +52,7 @@ function display_logbook($log) {
 
                 <td width="330" align="left"><b><u>'.$log['log_title'].'</u></b></td>
 
-                <td width="120" align="right"><b>'.date('d.m.y H:i:s', $log['log_date']+7200).'</b></td>
+                <td width="120" align="right"><b>'.date('d.m.y H:i:s', $log['log_date']).'</b></td>
 
               </tr>
 
@@ -60,7 +60,7 @@ function display_logbook($log) {
 
             <br>
 
-			Bei Aufständen auf dem Planeten <b>'.$log['log_data']['planet_name'].'</b> wurde das Gebäude "<b>'.$BUILDING_NAME[$game->player['user_race']][$log['log_data']['building_id']-1].'</b>" beschädigt und von Stufe <b>'.$log['log_data']['prev_level'].'</b> auf Stufe <b>'.($log['log_data']['prev_level']-1).'</b> gesetzt.<br>Es fehlen <b>'.(100-round($log['log_data']['troops_percent'])).'%</b> der benötigten Truppen, um die Unruhen aufhalten zu können.
+			'.constant($game->sprache("TEXT130")).' <b>'.$log['log_data']['planet_name'].'</b> '.constant($game->sprache("TEXT131")).' "<b>'.$BUILDING_NAME[$game->player['user_race']][$log['log_data']['building_id']-1].'</b>" '.constant($game->sprache("TEXT132")).' <b>'.$log['log_data']['prev_level'].'</b> '.constant($game->sprache("TEXT133")).' <b>'.($log['log_data']['prev_level']-1).'</b> '.constant($game->sprache("TEXT134")).' <b>'.(100-round($log['log_data']['troops_percent'])).'%</b> '.constant($game->sprache("TEXT135")).'
 
           </td>
 

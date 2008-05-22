@@ -52,7 +52,7 @@ function display_logbook($log) {
 
                 <td width="330" align="left"><b><u>'.$log['log_title'].'</u></b></td>
 
-                <td width="120" align="right"><b>'.date('d.m.y H:i:s', $log['log_date']+7200).'</b></td>
+                <td width="120" align="right"><b>'.date('d.m.y H:i:s', $log['log_date']).'</b></td>
 
               </tr>
 
@@ -60,8 +60,7 @@ function display_logbook($log) {
 
             <br>
 
-			Auf deinem Planeten <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($log['log_data']['planet_id'])).'"><b>'.$log['log_data']['planet_name'].'</a></b> kam es zu blutigen Auseinandersetzungen mit den Besatzungstruppen, die in einer Revolution endeten.<br>
-			Der Planet steht nicht mehr weiter unter deiner Kontrolle und eine Bürgermiliz zur Verteidigung der Unabhängigkeit wurde aufgestellt.
+			'.constant($game->sprache("TEXT136")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($log['log_data']['planet_id'])).'"><b>'.$log['log_data']['planet_name'].'</a></b> '.constant($game->sprache("TEXT137")).'
 
           </td>
 
