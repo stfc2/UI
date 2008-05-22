@@ -55,6 +55,7 @@ function flevToggleCheckboxes() { // v1.1
 
 ');
 function logbook_pagination($start, $n_count, $n_per_page) {
+    global $game;
     $page_html = '';
 
     $n_pages = ceil($n_count / $n_per_page);
@@ -62,8 +63,8 @@ function logbook_pagination($start, $n_count, $n_per_page) {
     $next_start = 0;
 
     if($current_page > 1) {
-        $page_html .= '[<a href="'.parse_link('a=logbook').'">Erste Seite</a>]&nbsp;';
-        $page_html .= '[<a href="'.parse_link('a=logbook&start='.($start - $n_per_page) ).'">Vorherige Seite</a>]&nbsp;';
+        $page_html .= '[<a href="'.parse_link('a=logbook').'">'.constant($game->sprache("TEXT0")).'</a>]&nbsp;';
+        $page_html .= '[<a href="'.parse_link('a=logbook&start='.($start - $n_per_page) ).'">'.constant($game->sprache("TEXT1")).'</a>]&nbsp;';
     }
 
     for($i = 1; $i <= $n_pages; ++$i) {
@@ -84,8 +85,8 @@ function logbook_pagination($start, $n_count, $n_per_page) {
     }
 
     if($current_page < $n_pages) {
-        $page_html .= '[<a href="'.parse_link('a=logbook&start='.($start + $n_per_page) ).'">Nächste Seite</a>]&nbsp;';
-        $page_html .= '[<a href="'.parse_link('a=logbook&start='.(($n_pages - 1) * $n_per_page) ).'">Letzte Seite</a>]';
+        $page_html .= '[<a href="'.parse_link('a=logbook&start='.($start + $n_per_page) ).'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;';
+        $page_html .= '[<a href="'.parse_link('a=logbook&start='.(($n_pages - 1) * $n_per_page) ).'">'.constant($game->sprache("TEXT3")).'</a>]';
     }
 
     return $page_html;
@@ -122,7 +123,7 @@ function update_unread_count() {
 
 $LOGS_PER_PAGE = 15;
 
-$game->out('<center><span class="caption">Logbuch:</span><br>');
+$game->out('<center><span class="caption">'.constant($game->sprache("TEXT4")).'</span><br>');
 
 if(isset($_GET['show_log'])) {
     $log_id = (int)$_GET['show_log'];
@@ -136,11 +137,11 @@ if(isset($_GET['show_log'])) {
     }
 
     if(empty($log['log_id'])) {
-        message(NOTICE, 'Der gewählte Logeintrag existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT5")));
     }
 
     if($log['user_id'] != $game->player['user_id']) {
-        message(NOTICE, 'Der gewählte Logeintrag existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT5")));
     }
 
     if($log['log_read'] == 0) {
@@ -181,7 +182,7 @@ if(isset($_GET['show_log'])) {
     }
 
     if(!isset($on_i)) {
-        message(GENERAL, 'Fehler bei der Seitenberechnung des Logbuchs', 'Unexspected: could not determine $on_i');
+        message(GENERAL, constant($game->sprache("TEXT6")), constant($game->sprache("TEXT7")));
     }
 
     $on_page = ceil( ( ($on_i + 1) / $LOGS_PER_PAGE) );
@@ -209,26 +210,26 @@ if(isset($_GET['show_log'])) {
     display_logbook($log);
 
     if(!empty($previous_log)) {
-        $game->out('<a href="'.parse_link('a=logbook&show_log='.$previous_log).'">[vorheriger Eintrag]</a>');
+        $game->out('<a href="'.parse_link('a=logbook&show_log='.$previous_log).'">'.constant($game->sprache("TEXT8")).'</a>');
     }
 
     $game->out('<a href="'.parse_link('a=logbook&start='.$on_page_start).'">['.$on_page.']</a>');
 
     if(!empty($next_log)) {
-        $game->out('<a href="'.parse_link('a=logbook&show_log='.$next_log).'">[nächster Eintrag]</a>');
+        $game->out('<a href="'.parse_link('a=logbook&show_log='.$next_log).'">'.constant($game->sprache("TEXT9")).'</a>');
     }
 
-    $game->out('<br><br><center><a href="'.parse_link('a=logbook&delete_log='.$log_id).'">Eintrag löschen</a></center>');
+    $game->out('<br><br><center><a href="'.parse_link('a=logbook&delete_log='.$log_id).'">'.constant($game->sprache("TEXT10")).'</a></center>');
 }
 elseif(!empty($_POST['read_submit'])) {
     if(empty($_POST['log_id'])) {
-        message(NOTICE, 'Es wurde kein Logbuch-Eintrag ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT11")));
     }
 
     $n_logs = count($_POST['log_id']);
 
     if($n_logs == 0) {
-        message(NOTICE, 'Kein Eintrag ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT12")));
     }
     elseif($n_logs == 1) {
         $id_where_string = '= '.(int)$_POST['log_id'][0];
@@ -256,13 +257,13 @@ elseif(!empty($_POST['read_submit'])) {
 }
 elseif(!empty($_POST['delete_submit'])) {
     if(empty($_POST['log_id'])) {
-        message(NOTICE, 'Es wurde kein Logbuch-Eintrag ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT11")));
     }
 
     $n_logs = count($_POST['log_id']);
 
     if($n_logs == 0) {
-        message(NOTICE, 'Kein Eintrag ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT12")));
     }
     elseif($n_logs == 1) {
         $id_where_string = '= '.(int)$_POST['log_id'][0];
@@ -308,11 +309,11 @@ elseif(isset($_GET['delete_log'])) {
         }
         
         if(empty($log_entry['log_id'])) {
-            message(NOTICE, 'Der gewählte Logeintrag existiert nicht');
+            message(NOTICE, constant($game->sprache("TEXT5")));
         }
 
         if($log_entry['user_id'] != $game->player['user_id']) {
-            message(NOTICE, 'Der gewählte Logeintrag existiert nicht');
+            message(NOTICE, constant($game->sprache("TEXT5")));
         }
 
         $sql = 'DELETE FROM logbook
@@ -373,7 +374,7 @@ else {
     $n_logs = $_n_logs['log_id_count'];
 
     if($n_logs == 0) {
-        message(NOTICE, 'Keine Logbucheinträge vorhanden');
+        message(NOTICE, constant($game->sprache("TEXT13")));
     }
 
     $sql = 'SELECT log_id, log_type, log_date, log_read, log_title
@@ -391,15 +392,15 @@ else {
     }
     
     $log_types = array(
-        LOGBOOK_TACTICAL => 'Takt.',
-        LOGBOOK_TACTICAL_SHIPFIGHT => 'Takt.',
-        LOGBOOK_UDIPLOMACY => 'Dipl.',
-        LOGBOOK_ALLIANCE => 'Ally.',
-        LOGBOOK_GOVERNMENT => 'Reg.',
-        LOGBOOK_AUCTION_VENDOR => 'Auk.',
-        LOGBOOK_AUCTION_PURCHASER => 'Auk.',
-        LOGBOOK_FERENGITAX => 'Steuer',
-		  LOGBOOK_TACTICAL_2 => 'Takt',
+        LOGBOOK_TACTICAL => constant($game->sprache("TEXT14")),
+        LOGBOOK_TACTICAL_SHIPFIGHT => constant($game->sprache("TEXT14")),
+        LOGBOOK_UDIPLOMACY => constant($game->sprache("TEXT15")),
+        LOGBOOK_ALLIANCE => constant($game->sprache("TEXT16")),
+        LOGBOOK_GOVERNMENT => constant($game->sprache("TEXT17")),
+        LOGBOOK_AUCTION_VENDOR => constant($game->sprache("TEXT18")),
+        LOGBOOK_AUCTION_PURCHASER => constant($game->sprache("TEXT18")),
+        LOGBOOK_FERENGITAX => constant($game->sprache("TEXT19")),
+        LOGBOOK_TACTICAL_2 => constant($game->sprache("TEXT14")),
     );
 
     $game->out('
@@ -407,10 +408,10 @@ else {
 <table width="450" align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
   <form method="post" action="'.parse_link('a=logbook').'" name="logbook">
   <tr>
-    <td width="280"><b>Eintrag</b></td>
-    <td width="40"><b>Typ</b></td>
-    <td width="115"><b>Zeit</b></td>
-    <td width="15"><input name="check1" type="checkbox" onClick="flevToggleCheckboxes(\'logbook\',true,false)" value="Check All"></td>
+    <td width="280"><b>'.constant($game->sprache("TEXT20")).'</b></td>
+    <td width="40"><b>'.constant($game->sprache("TEXT21")).'</b></td>
+    <td width="115"><b>'.constant($game->sprache("TEXT22")).'</b></td>
+    <td width="15"><input name="check1" type="checkbox" onClick="flevToggleCheckboxes(\'logbook\',true,false)" value="'.constant($game->sprache("TEXT23")).'"></td>
   </tr>
   <tr height="2"><td></td></tr>
     ');
@@ -428,7 +429,7 @@ else {
   <tr>
     <td><a href="'.parse_link('a=logbook&show_log='.$log_entry['log_id']).'">'.$read_start.$log_entry['log_title'].$read_end.'</a></td>
     <td>'.$log_types[$log_entry['log_type']].'</td>
-    <td>'.date('d.m.y H:i:s', $log_entry['log_date']+TIME_OFFSET).'</td>
+    <td>'.date('d.m.y H:i:s', $log_entry['log_date']).'</td>
     <td align="center"><input type="checkbox" name="log_id[]" value="'.$log_entry['log_id'].'"></td>
   </tr>
         ');
@@ -439,18 +440,18 @@ else {
 <br>
 <table align="center" width="450" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
   <tr>
-    <td width="120" align="left"><b>gewählte Einträge</b></td>
-    <td width="330" align="right"><input class="button" type="submit" name="read_submit" value="als gelesen markieren">&nbsp;&nbsp;<input class="button" type="submit" name="delete_submit" value="Löschen"></td>
+    <td width="120" align="left"><b>'.constant($game->sprache("TEXT24")).'</b></td>
+    <td width="330" align="right"><input class="button" type="submit" name="read_submit" value="'.constant($game->sprache("TEXT25")).'">&nbsp;&nbsp;<input class="button" type="submit" name="delete_submit" value="'.constant($game->sprache("TEXT26")).'"></td>
   </tr>
   </form>
 </table>
 <br>
     '.logbook_pagination($start, $n_logs, $LOGS_PER_PAGE)).'</form>';
 
-    $game->out('<br><br><a href="'.parse_link('a=logbook&delete_log=all').'">Alle Einträge löschen</a>');
+    $game->out('<br><br><a href="'.parse_link('a=logbook&delete_log=all').'">'.constant($game->sprache("TEXT27")).'</a>');
 
     if($game->player['unread_log_entries'] > 0) {
-        $game->out('<br><a href="'.parse_link('a=logbook&read_all_logs=1').'">Alle Einträge als gelesen markieren</a>');
+        $game->out('<br><a href="'.parse_link('a=logbook&read_all_logs=1').'">'.constant($game->sprache("TEXT28")).'</a>');
     }
 }
 

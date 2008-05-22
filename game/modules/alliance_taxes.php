@@ -25,6 +25,7 @@ include('include/libs/moves.php');
 $game->init_player();
 
 function taxes_pagination($start, $n_count, $n_per_page) {
+    global $game;
     $page_html = '';
 
     $n_pages = ceil($n_count / $n_per_page);
@@ -32,8 +33,8 @@ function taxes_pagination($start, $n_count, $n_per_page) {
     $next_start = 0;
 
     if($current_page > 1) {
-        $page_html .= '[<a href="'.parse_link('a=alliance_taxes').'">Erste Seite</a>]&nbsp;';
-        $page_html .= '[<a href="'.parse_link('a=alliance_taxes&start='.($start - $n_per_page) ).'">Vorherige Seite</a>]<br>&nbsp;';
+        $page_html .= '[<a href="'.parse_link('a=alliance_taxes').'">'.constant($game->sprache("TEXT0")).'</a>]&nbsp;';
+        $page_html .= '[<a href="'.parse_link('a=alliance_taxes&start='.($start - $n_per_page) ).'">'.constant($game->sprache("TEXT1")).'</a>]<br>&nbsp;';
     }
 
     if($current_page > 5) {
@@ -65,8 +66,8 @@ function taxes_pagination($start, $n_count, $n_per_page) {
     }
 
     if($current_page < $n_pages) {
-        $page_html .= '<br>[<a href="'.parse_link('a=alliance_taxes&start='.($start + $n_per_page) ).'">Nächste Seite</a>]&nbsp;';
-        $page_html .= '[<a href="'.parse_link('a=alliance_taxes&start='.(($n_pages - 1) * $n_per_page) ).'">Letzte Seite</a>]';
+        $page_html .= '<br>[<a href="'.parse_link('a=alliance_taxes&start='.($start + $n_per_page) ).'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;';
+        $page_html .= '[<a href="'.parse_link('a=alliance_taxes&start='.(($n_pages - 1) * $n_per_page) ).'">'.constant($game->sprache("TEXT3")).'</a>]';
     }
 
     return $page_html;
@@ -82,7 +83,7 @@ function taxes_pagination($start, $n_count, $n_per_page) {
         message(DATABASE_ERROR, 'Could not query alliance data');
     }
 
-  $game->out('<center><span class="caption">Allianz:</span><br><br>');
+  $game->out('<center><span class="caption">'.constant($game->sprache("TEXT4")).':</span><br><br>');
 
 function GetOwnRess($type,$percent) {
  
@@ -134,14 +135,14 @@ return $res;
 
 
 if(empty($game->player['alliance_name'])) {
-    message(NOTICE, 'Du bist nicht Mitglied einer Allianz');
+    message(NOTICE, constant($game->sprache("TEXT5")));
 }
 
 if(isset($_POST['taxes']))
 {
 
 if($game->player['user_alliance_rights2'] != 1) {
-    message(NOTICE, 'Du hast nicht die erforderlichen Rechte zum Betrachten/Bearbeiten der Seite');
+    message(NOTICE, constant($game->sprache("TEXT6")));
 }
 
 $_POST['tax_set']=(int)$_POST['tax_set'];
@@ -198,7 +199,7 @@ $owntaxDay=GetOwnRess(1,$adata['taxes']);
 
     $game->out('
       
-<table width="430" align="center" border="0" cellpadding="2" cellspacing="4" background="|game_url|/stgc5_gfx/skin1/template_bg3.jpg" class="border_grey">
+<table width="430" align="center" border="0" cellpadding="2" cellspacing="4" background="http://stfc.nonsolotaku.it/stgc5_gfx/skin1/template_bg3.jpg" class="border_grey">
   <tr>
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$adata['alliance_name'].' ['.$adata['alliance_tag'].']</span><br><br><br>
@@ -206,26 +207,26 @@ $owntaxDay=GetOwnRess(1,$adata['taxes']);
 
       <table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
 		<tr>
-			<td width=400>
-			<b>Allianzkasse</b><br>
-<br><br><b><u>Übersicht:</u></b><br>
-		      <table width="400" cellpadding="5">
-				<tr><td width=150>Gelagerte Ressourcen:</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$adata['taxes_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$adata['taxes_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$adata['taxes_3'].'&nbsp;&nbsp;</td></tr>
-				<tr><td>Steuersatz:</td><td>'.$adata['taxes'].'%</td></tr>
-				<tr><td>Einnahmen pro Tick:</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$tax[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$tax[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$tax[2].'&nbsp;&nbsp;</td></tr>
-				<tr><td>Einnahmen pro 24 Std.:</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$taxDay[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$taxDay[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$taxDay[2].'&nbsp;&nbsp;</td></tr>
+			<td width=500>
+			<b>'.constant($game->sprache("TEXT7")).'</b><br>
+<br><br><b><u>'.constant($game->sprache("TEXT8")).':</u></b><br>
+				<table width="500" cellpadding="5">
+				<tr><td width=150>'.constant($game->sprache("TEXT9")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$adata['taxes_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$adata['taxes_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$adata['taxes_3'].'&nbsp;&nbsp;</td></tr>
+				<tr><td>'.constant($game->sprache("TEXT10")).':</td><td>'.$adata['taxes'].'%</td></tr>
+				<tr><td>'.constant($game->sprache("TEXT11")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$tax[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$tax[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$tax[2].'&nbsp;&nbsp;</td></tr>
+				<tr><td>'.constant($game->sprache("TEXT12")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$taxDay[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$taxDay[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$taxDay[2].'&nbsp;&nbsp;</td></tr>
 				<tr><td>&nbsp;</td></tr>
-				<tr><td>Eigener Beitrag pro Tick:</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$owntax[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$owntax[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$owntax[2].'&nbsp;&nbsp;</td></tr>
-				<tr><td>Eigener Beitrag pro 24 Std.:</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$owntaxDay[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$owntaxDay[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$owntaxDay[2].'&nbsp;&nbsp;</td></tr>
+				<tr><td>'.constant($game->sprache("TEXT13")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$owntax[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$owntax[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$owntax[2].'&nbsp;&nbsp;</td></tr>
+				<tr><td>'.constant($game->sprache("TEXT14")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$owntaxDay[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$owntaxDay[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$owntaxDay[2].'&nbsp;&nbsp;</td></tr>
 				</table>
-<br><br><b><u>Letzten 10 Auszahlungen:</u></b><br>
-		      <table width="400">
+<br><br><b><u>'.constant($game->sprache("TEXT15")).':</u></b><br>
+				<table width="500" cellpadding="2" border="0">
 				<tr>
-					<td width=75><b>an:</b></td>
-					<td width=150><b>Ressourcen:</b></td>
-					<td width=75><b>von:</b></td>
-					<td width=50><b>Grund:</b></td>
-					<td width=50><b>Datum:</b></td>
+					<td width=75><b>'.constant($game->sprache("TEXT16")).':</b></td>
+					<td width=125><b>'.constant($game->sprache("TEXT17")).':</b></td>
+					<td width=75><b>'.constant($game->sprache("TEXT18")).':</b></td>
+					<td width=50><b>'.constant($game->sprache("TEXT19")).':</b></td>
+					<td width=50><b>'.constant($game->sprache("TEXT20")).':</b></td>
 				</tr>');
 
 $start = (isset($_GET['start'])) ? $_GET['start'] : 0;
@@ -258,8 +259,8 @@ while($payment = $db->fetchrow($payments)) {
 					<td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$payment['receiver']).'">'.$game->uc_get($payment['receiver']).'</a></td>
 					<td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$payment['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$payment['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$payment['resource_3'].'</td>
 					<td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$payment['sender']).'">'.$game->uc_get($payment['sender']).'</a></td>
-					<td><a href="javascript:void(0);" onmouseover="return overlib(\''.htmlspecialchars(stripslashes($payment['reason'])).'\', CAPTION, \'Begründung\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">Details</a></td>
-					<td>'.date("j.n.y H:i",$payment['timestamp']+7200).'</td>
+					<td><a href="javascript:void(0);" onmouseover="return overlib(\''.htmlspecialchars(stripslashes($payment['reason'])).'\', CAPTION, \''.constant($game->sprache("TEXT21")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.constant($game->sprache("TEXT22")).'</a></td>
+					<td>'.date("j.n.y H:i",$payment['timestamp']).'</td>
 				</tr>');
 
 }
@@ -335,40 +336,40 @@ for ($t=0; $t<21; $t++) $tax_list.='<option value="'.$t.'" '.( ($t==$adata['taxe
 	{
 		var newOpt;
 		document.resform.receiver.options.length = 0;
-		'.$planet_list.'		
+		'.$planet_list.'
 	}
 	</script>
 
-<br><br><b><u>Auszahlung tätigen:</u></b>
+<br><br><b><u>'.constant($game->sprache("TEXT23")).':</u></b>
   <form method="post" action="'.parse_link('a=alliance_taxes').'" name="resform">
   <table width="300" border="0" cellpadding="2" cellspacing="2">
-  <tr><td width=75>Spieler:</td><td><select name="userlist" class="Select" size="1" onChange="UpdatePlanetsList();">'.$rcv_list.'</select></td></tr>
-  <tr><td width=75>Planet:</td><td><select name="receiver" class="Select" size="1">'.$start_planet_list.'</select></td></tr>
-  <tr><td><img src='.$game->GFX_PATH.'menu_metal_small.gif></td><td><input class="field"  style="width: 60px;" type="text" name="res_1" value="0" onFocus="UpdateValues();">&nbsp&nbsp (+<b id="tax_1">0</b> Steuern)</td></tr>
-  <tr><td><img src='.$game->GFX_PATH.'menu_mineral_small.gif></td><td><input class="field"  style="width: 60px;" type="text" name="res_2" value="0" onFocus="UpdateValues();">&nbsp&nbsp (+<b id="tax_2">0</b> Steuern)</td></tr>
-  <tr><td><img src='.$game->GFX_PATH.'menu_latinum_small.gif></td><td><input class="field"  style="width: 60px;" type="text" name="res_3" value="0" onFocus="UpdateValues();">&nbsp&nbsp (+<b id="tax_3">0</b> Steuern)</td></tr>
-  <tr><td width=75>Dauer:</td><td><select name="mode" class="Select" size="1">
-	<option value="3">30min - 15% Steuern</option>
-	<option value="2">12 Std. - 8% Steuern</option>
-       <option value="1">24 Std. - 4% Steuern</option>
-	<option value="0">36 Std. - 0% Steuern</option>
+  <tr><td width=75>'.constant($game->sprache("TEXT24")).':</td><td><select name="userlist" class="Select" size="1" onChange="UpdatePlanetsList();">'.$rcv_list.'</select></td></tr>
+  <tr><td width=75>'.constant($game->sprache("TEXT25")).':</td><td><select name="receiver" class="Select" size="1">'.$start_planet_list.'</select></td></tr>
+  <tr><td><img src='.$game->GFX_PATH.'menu_metal_small.gif></td><td><input class="field"  style="width: 60px;" type="text" name="res_1" value="0" onFocus="UpdateValues();">&nbsp&nbsp (+<b id="tax_1">0</b> '.constant($game->sprache("TEXT26")).')</td></tr>
+  <tr><td><img src='.$game->GFX_PATH.'menu_mineral_small.gif></td><td><input class="field"  style="width: 60px;" type="text" name="res_2" value="0" onFocus="UpdateValues();">&nbsp&nbsp (+<b id="tax_2">0</b> '.constant($game->sprache("TEXT26")).')</td></tr>
+  <tr><td><img src='.$game->GFX_PATH.'menu_latinum_small.gif></td><td><input class="field"  style="width: 60px;" type="text" name="res_3" value="0" onFocus="UpdateValues();">&nbsp&nbsp (+<b id="tax_3">0</b> '.constant($game->sprache("TEXT26")).')</td></tr>
+  <tr><td width=75>'.constant($game->sprache("TEXT27")).':</td><td><select name="mode" class="Select" size="1">
+	<option value="3">'.constant($game->sprache("TEXT26a")).' - 15% '.constant($game->sprache("TEXT26")).'</option>
+	<option value="2">'.constant($game->sprache("TEXT26b")).' - 8% '.constant($game->sprache("TEXT26")).'</option>
+	<option value="1">'.constant($game->sprache("TEXT26c")).' - 4% '.constant($game->sprache("TEXT26")).'</option>
+	<option value="0">'.constant($game->sprache("TEXT26d")).' - 0% '.constant($game->sprache("TEXT26")).'</option>
 	</select></td>
-  <tr><td width=75>Begründung:</td><td><input class="field" style="width: 200px;" type="text" name="reason" value="-"></td></tr>
+  <tr><td width=75>'.constant($game->sprache("TEXT21")).':</td><td><input class="field" style="width: 200px;" type="text" name="reason" value="-"></td></tr>
 
   </table><br>
-  <input class="button" type="submit" name="payout" value="Auszahlen">
+  <input class="button" type="submit" name="payout" value="'.constant($game->sprache("TEXT33")).'">
   </form>');
 
   $game->out('
-  <br><br><b><u>Steuersatz ändern:</u></b>
+  <br><br><b><u>'.constant($game->sprache("TEXT28")).':</u></b>
   <form method="post" action="'.parse_link('a=alliance_taxes').'">
   <table width="300" border="0" cellpadding="2" cellspacing="2">
-  <tr><td width=75>Steuersatz:</td><td><select name="tax_set" class="Select" size="1">'.$tax_list.'</select></td></tr>
+  <tr><td width=75>'.constant($game->sprache("TEXT10")).':</td><td><select name="tax_set" class="Select" size="1">'.$tax_list.'</select></td></tr>
   </td>
   </tr>
   </table>
   <br>
-  <input class="button" type="submit" name="taxes" value="Ändern">
+  <input class="button" type="submit" name="taxes" value="'.constant($game->sprache("TEXT34")).'">
   </form>');
 
 
@@ -389,13 +390,13 @@ for ($t=0; $t<21; $t++) $tax_list.='<option value="'.$t.'" '.( ($t==$adata['taxe
    }
 
 
-   $game->out('<br><br><b><u>Gesamtsumme eines Spielers:</u></b>
+   $game->out('<br><br><b><u>'.constant($game->sprache("TEXT29")).':</u></b>
    <form method="post" action="'.parse_link('a=alliance_taxes').'">
    <table width="300" border="0" cellpadding="2" cellspacing="2">
-   <tr><td>Spieler:</td><td><select name="userlist">'.$user_list.'</select></td></tr>
+   <tr><td>'.constant($game->sprache("TEXT24")).':</td><td><select name="userlist">'.$user_list.'</select></td></tr>
    </table><br>
-   <input class="button" type="submit" name="details_ress" value="Anzeigen">&nbsp;<input class="button" type="submit" name="all_ress" value="Gesamtübersicht anzeigen">
-   </form><br><br><table width=400><tr><td><b>Spieler:</b></td><td><b>Metall</b></td><td><b>Mineral</b></td><td><b>Latinum</b></td></tr>');
+   <input class="button" type="submit" name="details_ress" value="'.constant($game->sprache("TEXT35")).'">&nbsp;<input class="button" type="submit" name="all_ress" value="'.constant($game->sprache("TEXT36")).'">
+   </form><br><br><table width=400><tr><td><b>'.constant($game->sprache("TEXT24")).':</b></td><td><b>'.constant($game->sprache("TEXT30")).'</b></td><td><b>'.constant($game->sprache("TEXT31")).'</b></td><td><b>'.constant($game->sprache("TEXT32")).'</b></td></tr>');
   
 
    $sql = 'SELECT SUM(t.resource_1) AS Met, SUM(t.resource_2) AS Min, SUM(t.resource_3) AS Lat, t.receiver, t.alliance_id, u.user_id, u.user_name
@@ -414,7 +415,7 @@ for ($t=0; $t<21; $t++) $tax_list.='<option value="'.$t.'" '.( ($t==$adata['taxe
    }
    $game->out('</table>');
 $game->out('</td></tr>
-</table>
+</table></td></tr></table>
 
     ');
 
@@ -425,10 +426,10 @@ else if(isset($_POST['all_ress'])) {
 $game->out('
 <table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
-    <td>Hier wird die Menge aller Auszahlungen angezeigt die ein User jemals getätigt hat.</td><tr><td>
+    <td>'.constant($game->sprache("TEXT37")).'</td><tr><td>
       <table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
         <tr>
-          <td><b>Spieler:</b></td><td><b>Metall</b></td><td><b>Mineral</b></td><td><b>Latinum</b></td></tr>
+          <td><b>'.constant($game->sprache("TEXT24")).':</b></td><td><b>'.constant($game->sprache("TEXT30")).'</b></td><td><b>'.constant($game->sprache("TEXT31")).'</b></td><td><b>'.constant($game->sprache("TEXT32")).'</b></td></tr>
 ');
 
 $sql = 'SELECT user_id FROM user WHERE user_alliance = '.$game->player['user_alliance'].'';
@@ -465,7 +466,7 @@ else if(isset($_POST['payout']))
 {
 
 if($game->player['user_alliance_rights2'] != 1) {
-    message(NOTICE, 'Du hast nicht die erforderlichen Rechte zum Betrachten/Bearbeiten der Seite');
+    message(NOTICE, constant($game->sprache("TEXT6")));
 }
 
 $_POST['res_1']=(int)$_POST['res_1'];
@@ -588,7 +589,7 @@ $owntaxDay=GetOwnRess(1,$adata['taxes']);
 
     $game->out('
       
-<table width="430" align="center" border="0" cellpadding="2" cellspacing="4" background="|game_url|/stgc5_gfx/skin1/template_bg3.jpg" class="border_grey">
+<table width="430" align="center" border="0" cellpadding="2" cellspacing="4" background="http://stfc.nonsolotaku.it/stgc5_gfx/skin1/template_bg3.jpg" class="border_grey">
   <tr>
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$adata['alliance_name'].' ['.$adata['alliance_tag'].']</span><br><br><br>
@@ -597,26 +598,26 @@ $owntaxDay=GetOwnRess(1,$adata['taxes']);
       <table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
 		<tr>
 			<td width=500>
-			<b>Allianzkasse</b><br>
-<br><br><b><u>Übersicht:</u></b><br>
-		      <table width="500" cellpadding="5">
-				<tr><td width=150>Gelagerte Ressourcen:</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$adata['taxes_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$adata['taxes_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$adata['taxes_3'].'&nbsp;&nbsp;</td></tr>
-				<tr><td>Steuersatz:</td><td>'.$adata['taxes'].'%</td></tr>
-				<tr><td>Einnahmen pro Tick:</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$tax[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$tax[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$tax[2].'&nbsp;&nbsp;</td></tr>
-				<tr><td>Einnahmen pro 24 Std.:</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$taxDay[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$taxDay[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$taxDay[2].'&nbsp;&nbsp;</td></tr>
+			<b>'.constant($game->sprache("TEXT7")).'</b><br>
+<br><br><b><u>'.constant($game->sprache("TEXT8")).':</u></b><br>
+				<table width="500" cellpadding="5">
+				<tr><td width=150>'.constant($game->sprache("TEXT9")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$adata['taxes_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$adata['taxes_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$adata['taxes_3'].'&nbsp;&nbsp;</td></tr>
+				<tr><td>'.constant($game->sprache("TEXT10")).':</td><td>'.$adata['taxes'].'%</td></tr>
+				<tr><td>'.constant($game->sprache("TEXT11")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$tax[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$tax[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$tax[2].'&nbsp;&nbsp;</td></tr>
+				<tr><td>'.constant($game->sprache("TEXT12")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$taxDay[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$taxDay[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$taxDay[2].'&nbsp;&nbsp;</td></tr>
 				<tr><td>&nbsp;</td></tr>
-				<tr><td>Eigener Beitrag pro Tick:</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$owntax[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$owntax[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$owntax[2].'&nbsp;&nbsp;</td></tr>
-				<tr><td>Eigener Beitrag pro 24 Std.:</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$owntaxDay[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$owntaxDay[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$owntaxDay[2].'&nbsp;&nbsp;</td></tr>
+				<tr><td>'.constant($game->sprache("TEXT13")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$owntax[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$owntax[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$owntax[2].'&nbsp;&nbsp;</td></tr>
+				<tr><td>'.constant($game->sprache("TEXT14")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$owntaxDay[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$owntaxDay[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$owntaxDay[2].'&nbsp;&nbsp;</td></tr>
 				</table>
-<br><br><b><u>Letzten 10 Auszahlungen:</u></b><br><br>
-		      <table width="500" cellpadding="2" border="0">
+<br><br><b><u>'.constant($game->sprache("TEXT15")).':</u></b><br><br>
+				<table width="500" cellpadding="2" border="0">
 				<tr>
-					<td width=75><b>an:</b></td>
-					<td width=125><b>Ressourcen:</b></td>
-					<td width=75><b>von:</b></td>
-					<td width=50><b>Grund:</b></td>
-                                  <td width=50><b>Dauer:</b></td>
-					<td width=50><b>Datum:</b></td>
+					<td width=75><b>'.constant($game->sprache("TEXT16")).':</b></td>
+					<td width=125><b>'.constant($game->sprache("TEXT17")).':</b></td>
+					<td width=75><b>'.constant($game->sprache("TEXT18")).':</b></td>
+					<td width=50><b>'.constant($game->sprache("TEXT19")).':</b></td>
+					<td width=50><b>'.constant($game->sprache("TEXT27")).':</b></td>
+					<td width=50><b>'.constant($game->sprache("TEXT20")).':</b></td>
 				</tr>');
 
 $start = (isset($_GET['start'])) ? $_GET['start'] : 0;
@@ -648,34 +649,34 @@ while($payment = $db->fetchrow($payments)) {
     switch($payment['mode']) {
 
     case 0:
-    $mode = '36 Std.';
+    $mode = constant($game->sprache("TEXT26d"));
     break;
 
     case 1:
-    $mode = '24 Std.';   
+    $mode = constant($game->sprache("TEXT26c"));
     break;
  
     case 2:
-    $mode = '12 Std.';   
+    $mode = constant($game->sprache("TEXT26b"));
     break;
 
     case 3:
-    $mode = '30 min';
+    $mode = constant($game->sprache("TEXT26a"));
     break;
 
     default:
-    $mode = '30 min';
+    $mode = constant($game->sprache("TEXT26a"));
 
     }
 
-    $game->out('           
+    $game->out('
 				<tr>
 					<td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$payment['receiver']).'">'.$game->uc_get($payment['receiver']).'</a></td>
 					<td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$payment['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$payment['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$payment['resource_3'].'</td>
 					<td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$payment['sender']).'">'.$game->uc_get($payment['sender']).'</a></td>
-					<td><a href="javascript:void(0);" onmouseover="return overlib(\''.htmlspecialchars(stripslashes($payment['reason'])).'\', CAPTION, \'Begründung\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">Details</a></td>
+					<td><a href="javascript:void(0);" onmouseover="return overlib(\''.htmlspecialchars(stripslashes($payment['reason'])).'\', CAPTION, \''.constant($game->sprache("TEXT21")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.constant($game->sprache("TEXT22")).'</a></td>
 					<td>'.$mode.'</td>
-                                  <td>'.date("j.n.y H:i",$payment['timestamp']+7200).'</td>
+					<td>'.date("j.n.y H:i",$payment['timestamp']).'</td>
 				</tr>');
 
 }
@@ -751,41 +752,41 @@ for ($t=0; $t<21; $t++) $tax_list.='<option value="'.$t.'" '.( ($t==$adata['taxe
 	{
 		var newOpt;
 		document.resform.receiver.options.length = 0;
-		'.$planet_list.'		
+		'.$planet_list.'
 	}
 	</script>
 
-<br><br><b><u>Auszahlung tätigen:</u></b>
+<br><br><b><u>'.constant($game->sprache("TEXT23")).':</u></b>
   <form method="post" action="'.parse_link('a=alliance_taxes').'" name="resform">
   <table width="300" border="0" cellpadding="2" cellspacing="2">
-  <tr><td width=75>Spieler:</td><td><select name="userlist" class="Select" size="1" onChange="UpdatePlanetsList();">'.$rcv_list.'</select></td></tr>
-  <tr><td width=75>Planet:</td><td><select name="receiver" class="Select" size="1">'.$start_planet_list.'</select></td></tr>
-  <tr><td><img src='.$game->GFX_PATH.'menu_metal_small.gif></td><td><input class="field"  style="width: 60px;" type="text" maxlength="6" name="res_1" value="0" onFocus="UpdateValues();">&nbsp&nbsp (+<b id="tax_1">0</b> Steuern)</td></tr>
-  <tr><td><img src='.$game->GFX_PATH.'menu_mineral_small.gif></td><td><input class="field"  style="width: 60px;" type="text" maxlength="6"  name="res_2" value="0" onFocus="UpdateValues();">&nbsp&nbsp (+<b id="tax_2">0</b> Steuern)</td></tr>
-  <tr><td><img src='.$game->GFX_PATH.'menu_latinum_small.gif></td><td><input class="field"  style="width: 60px;" type="text" maxlength="6"  name="res_3" value="0" onFocus="UpdateValues();">&nbsp&nbsp (+<b id="tax_3">0</b> Steuern)</td></tr>
-  <tr><td width=75>Dauer:</td><td><select name="mode" class="Select" size="1">
-	<option value="3">30min - 15% Steuern</option>
-	<option value="2">12 Std. - 8% Steuern</option>
-       <option value="1">24 Std. - 4% Steuern</option>
-	<option value="0">36 Std. - 0% Steuern</option>
+  <tr><td width=75>'.constant($game->sprache("TEXT24")).':</td><td><select name="userlist" class="Select" size="1" onChange="UpdatePlanetsList();">'.$rcv_list.'</select></td></tr>
+  <tr><td width=75>'.constant($game->sprache("TEXT25")).':</td><td><select name="receiver" class="Select" size="1">'.$start_planet_list.'</select></td></tr>
+  <tr><td><img src='.$game->GFX_PATH.'menu_metal_small.gif></td><td><input class="field"  style="width: 60px;" type="text" maxlength="6" name="res_1" value="0" onFocus="UpdateValues();">&nbsp&nbsp (+<b id="tax_1">0</b> '.constant($game->sprache("TEXT26")).')</td></tr>
+  <tr><td><img src='.$game->GFX_PATH.'menu_mineral_small.gif></td><td><input class="field"  style="width: 60px;" type="text" maxlength="6"  name="res_2" value="0" onFocus="UpdateValues();">&nbsp&nbsp (+<b id="tax_2">0</b> '.constant($game->sprache("TEXT26")).')</td></tr>
+  <tr><td><img src='.$game->GFX_PATH.'menu_latinum_small.gif></td><td><input class="field"  style="width: 60px;" type="text" maxlength="6"  name="res_3" value="0" onFocus="UpdateValues();">&nbsp&nbsp (+<b id="tax_3">0</b> '.constant($game->sprache("TEXT26")).')</td></tr>
+  <tr><td width=75>'.constant($game->sprache("TEXT27")).':</td><td><select name="mode" class="Select" size="1">
+	<option value="3">'.constant($game->sprache("TEXT26a")).' - 15% '.constant($game->sprache("TEXT26")).'</option>
+	<option value="2">'.constant($game->sprache("TEXT26b")).' - 8% '.constant($game->sprache("TEXT26")).'</option>
+	<option value="1">'.constant($game->sprache("TEXT26c")).' - 4% '.constant($game->sprache("TEXT26")).'</option>
+	<option value="0">'.constant($game->sprache("TEXT26d")).' - 0% '.constant($game->sprache("TEXT26")).'</option>
 	</select></td>
-  <tr><td width=75>Begründung:</td><td><input class="field" style="width: 200px;" type="text" name="reason" value="-"></td></tr>
+  <tr><td width=75>'.constant($game->sprache("TEXT21")).':</td><td><input class="field" style="width: 200px;" type="text" name="reason" value="-"></td></tr>
 
   </table><br>
-  <input class="button" type="submit" name="payout" value="Auszahlen">
+  <input class="button" type="submit" name="payout" value="'.constant($game->sprache("TEXT33")).'">
   </form>');
 
 
   $game->out('
-  <br><br><b><u>Steuersatz ändern:</u></b>
+  <br><br><b><u>'.constant($game->sprache("TEXT28")).':</u></b>
   <form method="post" action="'.parse_link('a=alliance_taxes').'">
   <table width="300" border="0" cellpadding="2" cellspacing="2">
-  <tr><td width=75>Steuersatz:</td><td><select name="tax_set" class="Select" size="1">'.$tax_list.'</select></td></tr>
+  <tr><td width=75>'.constant($game->sprache("TEXT10")).':</td><td><select name="tax_set" class="Select" size="1">'.$tax_list.'</select></td></tr>
   </td>
   </tr>
   </table>
   <br>
-  <input class="button" type="submit" name="taxes" value="Ändern">
+  <input class="button" type="submit" name="taxes" value="'.constant($game->sprache("TEXT34")).'">
   </form>');
 
 
@@ -806,12 +807,12 @@ for ($t=0; $t<21; $t++) $tax_list.='<option value="'.$t.'" '.( ($t==$adata['taxe
    }
 
 
-   $game->out('<br><br><b><u>Gesamtsumme eines Spielers:</u></b>
+   $game->out('<br><br><b><u>'.constant($game->sprache("TEXT29")).':</u></b>
    <form method="post" action="'.parse_link('a=alliance_taxes').'">
    <table width="300" border="0" cellpadding="2" cellspacing="2">
-   <tr><td>Spieler:</td><td><select name="userlist">'.$user_list.'</select></td></tr>
+   <tr><td>'.constant($game->sprache("TEXT24")).':</td><td><select name="userlist">'.$user_list.'</select></td></tr>
    </table><br>
-   <input class="button" type="submit" name="details_ress" value="Anzeigen">&nbsp;<input class="button" type="submit" name="all_ress" value="Gesamtübersicht anzeigen">
+   <input class="button" type="submit" name="details_ress" value="'.constant($game->sprache("TEXT35")).'">&nbsp;<input class="button" type="submit" name="all_ress" value="'.constant($game->sprache("TEXT36")).'">
    </form><br><br>
   
 

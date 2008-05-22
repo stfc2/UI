@@ -89,9 +89,9 @@ if($subAction == 'inbox')
 	// do 'rremoveall'
 	else if(isset($_GET['rremoveall']))
 
-       {
+	{
 
-       	$mes_qry=$db->query('SELECT * FROM message WHERE (rread = "1") AND (receiver = "'.$game->player['user_id'].'") AND sender!=0');
+		$mes_qry=$db->query('SELECT * FROM message WHERE (rread = "1") AND (receiver = "'.$game->player['user_id'].'") AND sender!=0');
 		while ($mes=$db->fetchrow($mes_qry))
 		{
 				if ($db->query('INSERT INTO message_removed (sender, receiver, subject, text, time)
@@ -99,22 +99,22 @@ if($subAction == 'inbox')
 													$db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
 		}
 
-       }
+	}
 
-      // do 'rremoverequest'
+	// do 'rremoverequest'
 
-      else if(isset($_GET['srremoverequest'])) {
+	else if(isset($_GET['srremoverequest'])) {
 
-        $game->out('<div align="center"><b>Sicher das sie alle Nachrichten löschen wollen?</b><br><br>[<a href="'.parse_link('a=messages&srremoveall=1').'"><b>Ja</b></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=messages').'"><b>Nein</b></a>]</div><br><br>');
-      
-      } 
+		$game->out('<div align="center"><b>'.constant($game->sprache("TEXT0")).'</b><br><br>[<a href="'.parse_link('a=messages&srremoveall=1').'"><b>'.constant($game->sprache("TEXT1")).'</b></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=messages').'"><b>'.constant($game->sprache("TEXT2")).'</b></a>]</div><br><br>');
+
+	} 
  
 	// do 'srremoveall'
 	else if(isset($_GET['srremoveall']))
 
-       {
+{
 
-       	$mes_qry=$db->query('SELECT * FROM message WHERE (rread = "1") AND (receiver = "'.$game->player['user_id'].'") AND sender=0');
+		$mes_qry=$db->query('SELECT * FROM message WHERE (rread = "1") AND (receiver = "'.$game->player['user_id'].'") AND sender=0');
 		while ($mes=$db->fetchrow($mes_qry))
 		{
 				if ($db->query('INSERT INTO message_removed (sender, receiver, subject, text, time)
@@ -122,22 +122,22 @@ if($subAction == 'inbox')
 													$db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
 		}
 
-       }
+	}
 
-      // do 'srremoverequest'
+	// do 'srremoverequest'
 
-      else if(isset($_GET['rremoverequest'])) {
+	else if(isset($_GET['rremoverequest'])) {
 
-        $game->out('<div align="center"><b>Sicher das sie alle System-Nachrichten löschen wollen?</b><br><br>[<a href="'.parse_link('a=messages&rremoveall=1').'"><b>Ja</b></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=messages').'"><b>Nein</b></a>]</div><br><br>');
-      
-      } 
+		$game->out('<div align="center"><b>'.constant($game->sprache("TEXT3")).'</b><br><br>[<a href="'.parse_link('a=messages&rremoveall=1').'"><b>'.constant($game->sprache("TEXT1")).'</b></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=messages').'"><b>'.constant($game->sprache("TEXT2")).'</b></a>]</div><br><br>');
+
+	} 
 
 
 	// do 'rmarkall'
 	else if(isset($_GET['rmarkall']))
 	{
 		$db->query('UPDATE message SET rread = "1" WHERE receiver = "'.$game->player['user_id'].'"');
-        UpdateUnreadMessages($game->player['user_id']);
+		UpdateUnreadMessages($game->player['user_id']);
 	}
 }
 
@@ -204,7 +204,7 @@ else if($subAction == 'archiv')
 		if ($db->query('INSERT INTO message_archiv (sender, receiver, subject, text, time)
 											VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.$mes['text'].'", '.$mes['time'].')'))
 											$db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
-    UpdateUnreadMessages($game->player['user_id']);
+		UpdateUnreadMessages($game->player['user_id']);
 	}
 }
 
@@ -241,23 +241,23 @@ $outStat		= $db->fetchrow($outStatList);
 
 /** main **/
 
-$game->out('<center><span class="caption">Nachrichten:</span></center><br><br>');
+$game->out('<center><span class="caption">'.constant($game->sprache("TEXT4")).'</span></center><br><br>');
 
 $game->out('
 	<center>
 	  <table width="90%" border=0 cellpadding=2 cellspacing=2 class="style_inner">
 	   <tr>
 		 <td width="20%"><span style="font-family:Arial,serif;font-size:9pt;"><center><a 
-href="'.parse_link('a=messages&a2=inbox').'"><b>Posteingang'.( ($inStat['unreadMessages']>0) ? '<span style="color: #FF0000; font-weight: bold;"> ('.$inStat['unreadMessages'].'/'.$inStat['messages'].')</span>' : ' ('.$inStat['unreadMessages'].'/'.$inStat['messages'].')' ).'</a></span></td>
+href="'.parse_link('a=messages&a2=inbox').'"><b>'.constant($game->sprache("TEXT5")).( ($inStat['unreadMessages']>0) ? '<span style="color: #FF0000; font-weight: bold;"> ('.$inStat['unreadMessages'].'/'.$inStat['messages'].')</span>' : ' ('.$inStat['unreadMessages'].'/'.$inStat['messages'].')' ).'</a></span></td>
 		 <td width="20%"><span style="font-family:Arial,serif;font-size:9pt;"><center><a 
-href="'.parse_link('a=messages&a2=systembox').'"><b>System'.( ($sysStatunr['messages']>0) ? '<span style="color: #FF0000; font-weight: bold;"> ('.$sysStatunr['messages'].'/'.$sysStat['messages'].')</span>' : ' ('.$sysStatunr['messages'].'/'.$sysStat['messages'].')' ).'</b></a></span></td>
+href="'.parse_link('a=messages&a2=systembox').'"><b>'.constant($game->sprache("TEXT6")).( ($sysStatunr['messages']>0) ? '<span style="color: #FF0000; font-weight: bold;"> ('.$sysStatunr['messages'].'/'.$sysStat['messages'].')</span>' : ' ('.$sysStatunr['messages'].'/'.$sysStat['messages'].')' ).'</b></a></span></td>
 <td width="20%"><span 
 style="font-family:Arial,serif;font-size:9pt;"><center><a 
-href="'.parse_link('a=messages&a2=outbox').'"><b>Postausgang</a></span></td>
+href="'.parse_link('a=messages&a2=outbox').'"><b>'.constant($game->sprache("TEXT7")).'</a></span></td>
 		 <td width="20%"><span style="font-family:Arial,serif;font-size:9pt;"><center><a 
-href="'.parse_link('a=messages&a2=archiv').'"><b>Archiv('.$archStat['messages'].')</a></span></td>
+href="'.parse_link('a=messages&a2=archiv').'"><b>'.constant($game->sprache("TEXT8")).'('.$archStat['messages'].')</a></span></td>
 		 <td width="20%"><span style="font-family:Arial,serif;font-size:9pt;"><center><a 
-href="'.parse_link('a=messages&a2=newpost').'"><b>Nachricht senden</a></span></td>
+href="'.parse_link('a=messages&a2=newpost').'"><b>'.constant($game->sprache("TEXT9")).'</a></span></td>
 		</tr>
 	  </table>
 	 <br>');
@@ -297,24 +297,24 @@ u) on u.user_id=m.sender WHERE (m.receiver = "'.$game->player['user_id'].'") AND
 	if($inStat['messages'] == 0)
 		$game->out('<tr>
 						 <td width="2%"></td>
-					    <td colspan="4"><i>keine Nachrichten</i></td>
+					    <td colspan="4"><i>'.constant($game->sprache("TEXT10")).'</i></td>
 						 <td width="2%"></td>
 					   </tr>');
 	else
 		for($i = 0; ($message = $db->fetchrow($messageList)) == true; $i++)
 		{
 			if ($message['sender'] == 0)
-				$userName = '<b><font color="yellow">System</font></b>';
+				$userName = '<b><font color="yellow">'.constant($game->sprache("TEXT11")).'</font></b>';
 			else
 			if($message['sender'] == SUPPORTUSER)
-				$userName = '<b><font color="yellow">STGC-Support</font></b>';
+				$userName = '<b><font color="yellow">'.constant($game->sprache("TEXT12")).'</font></b>';
 			else if(!isset($message['user_name']))
-				$userName = '<i>gelöscht</i>';
+				$userName = '<i>'.constant($game->sprache("TEXT18")).'</i>';
 			else
 				$userName = '<a href="'.parse_link('a=stats&a2=viewplayer&id='.$message['sender']).'">'.$message['user_name'].'</a>';
 
 			$bg 		 =	($message['rread'] == 0) ? '#aa1c47' : '#131c47';
-			$datum 	 = gmdate('d.m.y H:i', ($message['time'] +TIME_OFFSET));
+			$datum 	 = date('d.m.y H:i', ($message['time']));
 
 			$game->out('<tr>
 							<td width="2%"></td>
@@ -330,8 +330,8 @@ u) on u.user_id=m.sender WHERE (m.receiver = "'.$game->player['user_id'].'") AND
 		}
 
 	$links 	= navigation_show_pagelinks($page, $perpage, $inStat['messages'], 'a=messages&a2=inbox');
-	$mark		= '<a href="'.parse_link('a=messages&rmarkall=1').'">Alle als gelesen markieren</a>';
-	$delete	= '<a href="'.parse_link('a=messages&rremoverequest=1').'">Alle gelesenen Nachrichten löschen</a>';
+	$mark		= '<a href="'.parse_link('a=messages&rmarkall=1').'">'.constant($game->sprache("TEXT13")).'</a>';
+	$delete	= '<a href="'.parse_link('a=messages&rremoverequest=1').'">'.constant($game->sprache("TEXT14")).'</a>';
 
 	if($inStat['unreadMessages'] != 0)
 	{
@@ -357,8 +357,8 @@ u) on u.user_id=m.sender WHERE (m.receiver = "'.$game->player['user_id'].'") AND
 					   <td width="96%" colspan="4">
 						 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="style_inner">
                     <tr>
-                     <td width="50%" align="left">gewählte Einträge</td>
-                     <td width="50%" align="right"><input style="width: 120px;" type="submit" name="rremove" class="button" value="Löschen"><br><input style="width: 120px;" type="submit" class="button" name="rarchiv" value="Archivieren"></td>
+                     <td width="50%" align="left">'.constant($game->sprache("TEXT15")).'</td>
+                     <td width="50%" align="right"><input style="width: 120px;" type="submit" name="rremove" class="button" value="'.constant($game->sprache("TEXT16")).'"><br><input style="width: 120px;" type="submit" class="button" name="rarchiv" value="'.constant($game->sprache("TEXT17")).'"></td>
                     </tr>
 					    </table>
 						<td width="2%">&nbsp;</td>
@@ -404,25 +404,25 @@ u) on u.user_id=m.sender WHERE (m.receiver = "'.$game->player['user_id'].'") AND
 	if($sysStat['messages'] == 0)
 		$game->out('<tr>
 						 <td width="2%"></td>
-					    <td colspan="4"><i>keine Nachrichten</i></td>
+					    <td colspan="4"><i>'.constant($game->sprache("TEXT10")).'</i></td>
 						 <td width="2%"></td>
 					   </tr>');
 	else
 		for($i = 0; ($message = $db->fetchrow($messageList)) == true; $i++)
 		{
 			if ($message['sender'] == 0)
-				$userName = '<b><font color="yellow">System</font></b>';
+				$userName = '<b><font color="yellow">'.constant($game->sprache("TEXT11")).'</font></b>';
 			else
 			if($message['sender'] == SUPPORTUSER)
-				$userName = '<b><font color="yellow">STGC-Support</font></b>';
+				$userName = '<b><font color="yellow">'.constant($game->sprache("TEXT12")).'</font></b>';
 			else if(!isset($message['user_name']))
-				$userName = '<i>gelöscht</i>';
+				$userName = '<i>'.constant($game->sprache("TEXT18")).'</i>';
 			else
 				$userName = '<a 
 href="'.parse_link('a=stats&a2=viewplayer&id='.$message['sender']).'">'.$message['user_name'].'</a>';
 
 			$bg 		 =	($message['rread'] == 0) ? '#aa1c47' : '#131c47';
-			$datum 	 = gmdate('d.m.y H:i', ($message['time'] +TIME_OFFSET));
+			$datum 	 = date('d.m.y H:i', ($message['time']));
 
 			$game->out('<tr>
 							<td width="2%"></td>
@@ -440,8 +440,8 @@ value="'.$message['id'].'"></td>
 		}
 
 	$links 	= navigation_show_pagelinks($page, $perpage, $inStat['messages'], 'a=messages&a2=inbox');
-	$mark		= '<a href="'.parse_link('a=messages&rmarkall=1').'">Alle als gelesen markieren</a>';
-	$delete	= '<a href="'.parse_link('a=messages&srremoverequest=1').'">Alle gelesenen Systemnachrichten löschen</a>';
+	$mark		= '<a href="'.parse_link('a=messages&rmarkall=1').'">'.constant($game->sprache("TEXT13")).'</a>';
+	$delete	= '<a href="'.parse_link('a=messages&srremoverequest=1').'">'.constant($game->sprache("TEXT19")).'</a>';
 
 	if($sysStatunr['unreadMessages'] != 0)
 	{
@@ -467,9 +467,9 @@ value="'.$message['id'].'"></td>
 					   <td width="96%" colspan="4">
 						 <table width="100%" border="0" cellpadding="0" cellspacing="0" class="style_inner">
                     <tr>
-                     <td width="50%" align="left">gewählte Einträge</td>
+                     <td width="50%" align="left">'.constant($game->sprache("TEXT15")).'</td>
                      <td width="50%" align="right"><input style="width: 120px;" type="submit" name="rremove" class="button" 
-value="Löschen"><br><input style="width: 120px;" type="submit" class="button" name="rarchiv" value="Archivieren"></td>
+value="'.constant($game->sprache("TEXT16")).'"><br><input style="width: 120px;" type="submit" class="button" name="rarchiv" value="'.constant($game->sprache("TEXT17")).'"></td>
                     </tr>
 					    </table>
 						<td width="2%">&nbsp;</td>
@@ -513,20 +513,20 @@ function outbox()
 	if($outStat['messages'] == 0)
 		$game->out('<tr>
 						 <td width="2%"></td>
-					    <td colspan="4"><i>keine Nachrichten</i></td>
+					    <td colspan="4"><i>'.constant($game->sprache("TEXT10")).'</i></td>
 						 <td width="2%"></td>
 					   </tr>');
 	else
 		for($i = 0; ($message = $db->fetchrow($messageList)) == true; $i++)
 		{
 			if ($message['receiver'] == SUPPORTUSER)
-				$userName = '<b><font color=yellow>STGC-Support</font></b>';
+				$userName = '<b><font color=yellow>'.constant($game->sprache("TEXT12")).'</font></b>';
 			else if(!isset($message['user_name']))
 				$userName = '<i>gelöscht<i>';
 			else
 				$userName = '<a href="'.parse_link('a=stats&a2=viewplayer&id='.$message['receiver']).'">'.$message['user_name'].'</a>';
 
-			$datum 	 = gmdate("d.m.y H:i", $message['time']+TIME_OFFSET);
+			$datum 	 = date("d.m.y H:i", $message['time']);
 			$bg 		 =	($message['rread'] == 0) ? '#aa1c47' : '#131c47';
 
 			$game->out('<tr>
@@ -585,7 +585,7 @@ function archiv()
 	if($archStat['messages'] == 0)
 		$game->out('<tr>
 						 <td width="2%"></td>
-					    <td colspan="4"><i>keine Nachrichten</i></td>
+					    <td colspan="4"><i>'.constant($game->sprache("TEXT10")).'</i></td>
 						 <td width="2%"></td>
 					   </tr>');
 	else
@@ -593,15 +593,15 @@ function archiv()
 		{
 
 			if ($message['sender'] == 0)
-				$userName = '<b>System</b>';
+				$userName = '<b>'.constant($game->sprache("TEXT11")).'</b>';
 			else if ($message['sender'] == SUPPORTUSER)
-				$userName = '<b><font color=yellow>STGC-Support</font></b>';
+				$userName = '<b><font color=yellow>'.constant($game->sprache("TEXT12")).'</font></b>';
 			else if(!isset($message['user_name']))
-				$userName = '<i>gelöscht</i>';
+				$userName = '<i>'.constant($game->sprache("TEXT18")).'</i>';
 			else
 				$userName = '<a href="'.parse_link('a=stats&a2=viewplayer&id='.$message['sender']).'">'.$message['user_name'].'</a>';
 
-			$datum 	 = gmdate("d.m.y H:i", $message['time']+TIME_OFFSET);
+			$datum 	 = date("d.m.y H:i", $message['time']);
 
 			$game->out('<tr>
 							<td width="2%"></td>
@@ -617,7 +617,7 @@ function archiv()
 		}
 
 	$links 	= navigation_show_pagelinks($page, $perpage, $archStat['messages'], 'a=messages&a2=archiv');
-	$delete	= '<a href="'.parse_link('a=messages&a2=archiv&aremoveall=1').'">Alle Nachrichten löschen</a>';
+	$delete	= '<a href="'.parse_link('a=messages&a2=archiv&aremoveall=1').'">'.constant($game->sprache("TEXT20")).'</a>';
 
 	if($archStat['messages'] != 0)
 		$links2 = $delete;
@@ -637,8 +637,8 @@ function archiv()
 					   <td width="96%" colspan="4">
 						 <table width="100%" border="0" cellpadding="0" cellspacing="0">
                     <tr>
-                     <td width="50%" align="left">gewählte Einträge</td>
-                     <td width="50%" align="right"><input style="width: 120px;" type="submit" class="button" value="Löschen"></td>
+                     <td width="50%" align="left">'.constant($game->sprache("TEXT15")).'</td>
+                     <td width="50%" align="right"><input style="width: 120px;" type="submit" class="button" value="'.constant($game->sprache("TEXT16")).'"></td>
                     </tr>
 					    </table>
 						<td width="2%">&nbsp;</td>
@@ -679,8 +679,8 @@ function remove_message(){
        else {
        $remove_id = $_POST['id'];
 
-       $game->out('Sicher das du die Nachricht löschen möchtest?<br><br><form action="'.parse_link('a=messages&a2=remove_message').'" method="post"><input type="hidden" name="id" value="'.$remove_id.'">&nbsp;
-                                                  <input class="button" name="cancel" value="&lt;&lt; Zurück" onclick="return window.history.back();" type="button">&nbsp;<input type="hidden" name="check" value="1"><input type="submit" class="button" value="Ja"></form>');    
+       $game->out(constant($game->sprache("TEXT21")).'<br><br><form action="'.parse_link('a=messages&a2=remove_message').'" method="post"><input type="hidden" name="id" value="'.$remove_id.'">&nbsp;
+                                                  <input class="button" name="cancel" value="&lt;&lt; '.constant($game->sprache("TEXT22")).'" onclick="return window.history.back();" type="button">&nbsp;<input type="hidden" name="check" value="1"><input type="submit" class="button" value="'.constant($game->sprache("TEXT1")).'"></form>');
 
        }
 }
@@ -718,19 +718,19 @@ function view()
 
 		if($message['sender'] == 0)
 		{
-			$sender = '<b><font color="yellow">System</font></b>';
+			$sender = '<b><font color="yellow">'.constant($game->sprache("TEXT11")).'</font></b>';
 			$noReply = true;
 		}
 		else
 		if($message['sender'] == SUPPORTUSER)
 		{
-			$sender = '<b><font color="yellow">STGC-Support</font></b>';
+			$sender = '<b><font color="yellow">'.constant($game->sprache("TEXT12")).'</font></b>';
 		}
 		else
 		{
 			if(!isset($message['user_name']))
 			{
-				$sender = '<i>gelöscht<i>';
+				$sender = '<i>'.constant($game->sprache("TEXT18")).'<i>';
 				$noReply = true;
 			}
 			else
@@ -741,29 +741,29 @@ function view()
 		}
 
 		if(!isset($message['user_name2']))
-			$receiver = '<i>gelöscht<i>';
+			$receiver = '<i>'.constant($game->sprache("TEXT18")).'<i>';
 		else
 			$receiver = '<a href="'.parse_link('a=stats&a2=viewplayer&id='.$message['receiver']).'">'.$message['user_name2'].'</a>';
 
-		$datum 	= gmdate("d.m.y H:i", $message['time']+TIME_OFFSET);
+		$datum 	= date("d.m.y H:i", $message['time']);
 		$text		= nl2br($message['text']);
 
-		$game->out('<center><p><span class="sub_caption2"><b>Nachricht lesen [<a href="|game_url|/game/include/pdf_gen.php?id='.(int)$_REQUEST['id'].'" target="_blank"> PDF </a>]:</b></p>
+		$game->out('<center><p><span class="sub_caption2"><b>'.constant($game->sprache("TEXT23")).' [<a href="http://stfc.nonsolotaku.it/game/include/pdf_gen.php?id='.(int)$_REQUEST['id'].'" target="_blank"> PDF </a>]:</b></p>
 						 <table width="50%" border="0" cellpadding="0" cellspacing="0"   class="style_inner">
 						  <tr>
-						   <td width="25%">Absender:</td>
+						   <td width="25%">'.constant($game->sprache("TEXT24")).'</td>
 							<td width="75%">&nbsp;&nbsp;'.$sender.'</td>
 						  </tr>
-					     <tr>
-						   <td width="25%">Empfänger:</td>
+						  <tr>
+						   <td width="25%">'.constant($game->sprache("TEXT25")).'</td>
 							<td width="75%">&nbsp;&nbsp;'.$receiver.'</td>
 						  </tr>
 						  <tr>
-						   <td width="25%">Datum:</td>
+						   <td width="25%">'.constant($game->sprache("TEXT26")).'</td>
 							<td width="75%">&nbsp;&nbsp;'.$datum.'</td>
 						  </tr>
 						  <tr>
-						   <td width="25%">Titel:</td>
+						   <td width="25%">'.constant($game->sprache("TEXT27")).'</td>
 							<td width="75%">&nbsp;&nbsp;'.$message['subject'].'</td>
 						  </tr>
 						 </table>
@@ -785,26 +785,26 @@ function view()
 							  <td width="33%" align="left">
 							   <form method="post" action="'.parse_link('a=messages&a2=newpost').'">
 							    <input type="hidden" name="id" value="'.$message['id'].'">
-							    <input type="submit" style="width: 120px;" class="button" value="Antworten">&nbsp;
+							    <input type="submit" style="width: 120px;" class="button" value="'.constant($game->sprache("TEXT28")).'">&nbsp;
 							   </form>
 							  </td>
 							  <td width="33%" align="center">
 						      <form method="post" action="'.parse_link('a=messages&a2=archiv').'">
 							    <input type="hidden" name="archiv" value="'.$message['id'].'">&nbsp;
-							    <input type="submit" style="width: 120px;" class="button" value="Archivieren">
+							    <input type="submit" style="width: 120px;" class="button" value="'.constant($game->sprache("TEXT17")).'">
 							   </form>
                                                    <td width="33%" align="right">
-                                                   <form method="post" action="|game_url|/game/include/pdf_down.php">
+                                                   <form method="post" action="http://stfc.nonsolotaku.it/game/include/pdf_down.php">
                                                    <input type="hidden" name="id" value="'.$message['id'].'">&nbsp;
                                                    <input type="hidden" name="check" value="0">&nbsp;
-                                                   <input type="submit" style="width: 120px;" class="button" value="Als PDF downloaden">
+                                                   <input type="submit" style="width: 120px;" class="button" value="'.constant($game->sprache("TEXT29")).'">
                                                    </form>
 							  </td>
 							 </tr>
                                                  <tr><td>&nbsp;</td><td width="33%" align="center">
                                                    <form method="post" action="'.parse_link('a=messages&a2=remove_message').'">
                                                    <input type="hidden" name="id" value="'.$message['id'].'">&nbsp;
-                                                   <input type="submit" style="width: 120px;" class="button" value="Nachricht löschen">
+                                                   <input type="submit" style="width: 120px;" class="button" value="'.constant($game->sprache("TEXT30")).'">
                                                    </form>
 							  </td></tr>
 							</table>');
@@ -839,7 +839,7 @@ function newMessage()
 		if($message != false && $message['receiver'] == $game->player['user_id'])
 		{
 			if ($message['sender']==SUPPORTUSER)
-				$receiver['user_name']='STGC-Support';
+				$receiver['user_name']='STFC-Support';
 			else
 				$receiver = $db->queryrow('SELECT user_name FROM user WHERE user_id = "'.$message['sender'].'"');
 			
@@ -867,35 +867,35 @@ function newMessage()
 	             <table width="90%" border="0" cellpadding="1" cellspacing="1"  class="style_outer">
 					  <tr>
 					   <td width="100%">
-						<center><p><span class="sub_caption"><b>Nachricht schreiben:</b></p>
+						<center><p><span class="sub_caption"><b>'.constant($game->sprache("TEXT31")).'</b></p>
 						 <table width="65%" border="0" cellpadding="0" cellspacing="0"  class="style_inner">
 					     <tr>
-						   <td width="25%">Empfänger *:</td>
+						   <td width="25%">'.constant($game->sprache("TEXT32")).'</td>
 							<td width="75%"><input type="text" name="receiver" size="30" class="Field" value="'.$receiver.'" maxlength="900"></td>
 						  </tr>
 						  <tr>
-						   <td width="25%">Titel:</td>
+						   <td width="25%">'.constant($game->sprache("TEXT27")).'</td>
 							<td width="75%"><input type="text" name="subject" size="30" class="Field" value="'.$subject.'" maxlength="30"></td>
 						  </tr>
 						  <tr>
 						   <td width="25%"></td>
-							<td width="75%">* mehrere Empfänger durch ; trennen</td>
+							<td width="75%">'.constant($game->sprache("TEXT33")).'</td>
 						  </tr>
 						 </table>
 						 <br>
 						 <table width="75%" border="0" cellpadding="2" cellspacing="2" class="style_inner">
 						  <tr>
-						   <td width="100%">Nachricht:<br><textarea name="text" class="MessageReadField" cols="75" rows="15">'.$text.'</textarea>
+						   <td width="100%">'.constant($game->sprache("TEXT34")).'<br><textarea name="text" class="MessageReadField" cols="75" rows="15">'.$text.'</textarea>
 
 						 <br>
-						   Signatur:<br><textarea name="message_sig" class="MessageReadField" cols="75" rows="3">'.$game->player['user_message_sig'].'</textarea></td>
+						   '.constant($game->sprache("TEXT35")).'<br><textarea name="message_sig" class="MessageReadField" cols="75" rows="3">'.$game->player['user_signature'].'</textarea></td>
 						  </tr>
 						 </table>
 						 <br>
 						 <table width="75%" border="0" cellpadding="2" cellspacing="2" class="style_inner">
 						  <tr>
 						   <td width="100%" align="center">
-							 <input type="submit" style="width: 120px;" class="button" value="senden">
+							 <input type="submit" style="width: 120px;" class="button" value="'.constant($game->sprache("TEXT36")).'">
 							</td>
 						  </tr>
 						 </table>
@@ -911,7 +911,7 @@ function submitMessage()
 
 	if(empty($_POST['text']) || empty($_POST['receiver']))
 	{
-		$game->out('<center><p><span class="sub_caption">Bitte <u>alle</u> Felder ausfüllen!</span></p></center>');
+		$game->out('<center><p><span class="sub_caption">'.constant($game->sprache("TEXT37")).'</span></p></center>');
 		newMessage();
 	}
 	else
@@ -938,7 +938,7 @@ function submitMessage()
 			$num=0;
 			for ($i=0; $i<count($recv_list); $i++)
 			{
-			if (strtolower($recv_list[$i])==strtolower('STGC-Support'))
+			if (strtolower($recv_list[$i])==strtolower('STFC-Support'))
 				$receiver['user_id']=SUPPORTUSER;
 			else
 				$receiver = $db->queryrow('SELECT user_id FROM user WHERE user_name="'.$recv_list[$i].'"');
@@ -957,7 +957,7 @@ function submitMessage()
 			}
 			$num++;
 			}
- 			$game->out('<center><p><span class="sub_caption">Deine Nachrichten wurden an '.$num.' von '.count($recv_list).' Spieler verschickt</span></p></center>');
+ 			$game->out('<center><p><span class="sub_caption">'.constant($game->sprache("TEXT38")).' '.$num.' '.constant($game->sprache("TEXT39")).' '.count($recv_list).' '.constant($game->sprache("TEXT40")).'</span></p></center>');
 			
 			
 		} // End multiple Receiver
@@ -971,13 +971,13 @@ function submitMessage()
 				message(DATABASE_ERROR, 'message_query: Could not call INSERT INTO in message');
 				exit();
 			}
-  		if (strtolower($_POST['receiver'])==strtolower('STGC-Support'))
+  		if (strtolower($_POST['receiver'])==strtolower('STFC-Support'))
 			$receiver['user_id']=SUPPORTUSER;
 		else
 			$receiver = $db->queryrow('SELECT user_id FROM user WHERE user_name="'.htmlspecialchars($_POST['receiver']).'"');
 		if(($receiver) == false)
 		{
-			$game->out('<center><p><span class="sub_caption">Der Empfänger existiert nicht!</span></p></center>');
+			$game->out('<center><p><span class="sub_caption">'.constant($game->sprache("TEXT41")).'</span></p></center>');
 			newMessage();
 		}
 		else
@@ -990,7 +990,7 @@ function submitMessage()
 			}
 			UpdateUnreadMessages($receiver['user_id']);
 
-  			$game->out('<center><p><span class="sub_caption">Ihre Nachricht wurde verschickt</span></p></center>');
+  			$game->out('<center><p><span class="sub_caption">'.constant($game->sprache("TEXT42")).'</span></p></center>');
 		}
 		
 	} // End single receiver

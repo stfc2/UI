@@ -84,7 +84,7 @@ function display_shoutbox() {
 
 for($i = $count; $i >= 0; --$i) {
 
-        $game->out('<i>'.$sb_posts[$i]['player_name'].' ('.gmdate('H:i', $sb_posts[$i]['timestamp']+TIME_OFFSET).')</i>:<br>'.wordwrap($sb_posts[$i]['message'], 25, '<br>', 1).'<br>');
+        $game->out('<i>'.$sb_posts[$i]['player_name'].' ('.date('H:i', $sb_posts[$i]['timestamp']).')</i>:<br>'.wordwrap($sb_posts[$i]['message'], 25, '<br>', 1).'<br>');
 
     }
 
@@ -110,7 +110,7 @@ for($i = $count; $i >= 0; --$i) {
 
             <input type="text" name="shoutbox_msg" size="16" class="field_nosize" maxlength="100" style="background-image:url('.$game->GFX_PATH.'template_bg4.jpg);">&nbsp;
 
-            <input type="submit" name="submit_post" class="button_nosize" width="45" value="Senden" style="background-image:url('.$game->GFX_PATH.'template_bg4.jpg);">
+            <input type="submit" name="submit_post" class="button_nosize" width="45" value="'.constant($game->sprache("TEXT0")).'" style="background-image:url('.$game->GFX_PATH.'template_bg4.jpg);">
 
           </td>
 
@@ -122,7 +122,7 @@ for($i = $count; $i >= 0; --$i) {
 
           <td>
 
-            '.( ($portal_action == 'full_shoutbox') ? '<a href="'.parse_link('a=portal').'">Weniger Posts zeigen</a>' : '<a href="'.parse_link('a=portal&do=full_shoutbox').'">Mehr Posts zeigen</a>' ).'
+            '.( ($portal_action == 'full_shoutbox') ? '<a href="'.parse_link('a=portal').'">'.constant($game->sprache("TEXT1")).'</a>' : '<a href="'.parse_link('a=portal&do=full_shoutbox').'">'.constant($game->sprache("TEXT2")).'</a>' ).'
 
           </td>
 
@@ -254,7 +254,7 @@ function display_poll() {
 
         $game->out('
 
-      <center><input type="submit" name="submit_vote" class="button_nosize" value="Vote"></center>
+      <center><input type="submit" name="submit_vote" class="button_nosize" value="'.constant($game->sprache("TEXT3")).'"></center>
 
       <input type="hidden" name="poll_id" value="'.$poll_data['id'].'">
 
@@ -352,7 +352,7 @@ function display_poll() {
 
         $game->out('
 
-      <br><b>Stimmen gesamt: '.$total_votes.' Spieler
+      <br><b>'.constant($game->sprache("TEXT4")).' '.$total_votes.' '.constant($game->sprache("TEXT5")).'
 
     </td>
 
@@ -418,9 +418,9 @@ function display_news() {
 
   <tr>
 
-    <td>
+    <td align="center">
 
-      <center><span class="sub_caption">News:</span></center><br>
+      <span class="sub_caption">'.constant($game->sprache("TEXT6")).'</span><br><br>
 
     ');
 
@@ -438,11 +438,11 @@ function display_news() {
 
           <td valign="top" width="190">
 
-            <table border="0" cellpadding="0" cellspacing="0">
+            <table border="0" cellpadding="3" cellspacing="0">
 
               <tr>
 
-                <td valign="top"><span class="sub_caption2" style="color: '.$news_types[$news['type']][1].'">'.$news['header'].'</span><span class="text_large" style="color:'.$news_types[$news['type']][0].'"><br>('.gmdate('d.m.y H:i', $news['date']+TIME_OFFSET).')</span></td>
+                <td valign="top"><span class="sub_caption2" style="color: '.$news_types[$news['type']][1].'">'.$news['header'].'</span><span class="text_large" style="color:'.$news_types[$news['type']][0].'"><br>('.date('d.m.y H:i', $news['date']).')</span></td>
 
               </tr>
 
@@ -497,8 +497,8 @@ function display_galaxymap() {
 
   <table class="style_outer" border="0" cellpadding="2" cellspacing="2" width="250">
   <tr>
-    <td><center><span class="sub_caption">Galaxiekarte:</span></center><br>
-    <center><a href="maps/images/galaxy_detail.png" target=_blank><img src="maps/images/galaxy_detail_small.png" border=0></a></center>
+    <td align="center"><span class="sub_caption">'.constant($game->sprache("TEXT7")).'</span><br><br>
+    <a href="maps/images/galaxy_detail.png" target=_blank><img src="maps/images/galaxy_detail_small.png" border=0></a>
     </td>
   </tr>
   </table>
@@ -514,8 +514,8 @@ function display_usermap() {
 
   <table class="style_outer" border="0" cellpadding="2" cellspacing="2" width="250">
   <tr>
-    <td><center><span class="sub_caption">Userkarte:</span></center><br>
-    <center><a href="|game_url|/index.php?a=bb_karte" target=_blank><img src="|game_url|/bbkarte_thumb.png" border=0></a></center>
+    <td align="center"><span class="sub_caption">'.constant($game->sprache("TEXT8")).'</span><br><br>
+    <a href="http://stfc.nonsolotaku.it/index.php?a=bb_karte" target=_blank><img src="http://stfc.nonsolotaku.it/bbkarte_thumb.png" border=0></a>
     </td>
   </tr>
   </table>
@@ -553,7 +553,7 @@ function display_skins() {
 
   <tr>
 
-    <td><center><span class="sub_caption">Neuste Skins:</span></center><br>
+    <td align="center"><span class="sub_caption">'.constant($game->sprache("TEXT9")).'</span><br><br>
 
     ');
 
@@ -581,7 +581,7 @@ function display_skins() {
 
             <tr>
 
-              <td valign="top">'.$skin['skin_portal_desc'].'<br><a href="template_manager.php?change_skin='.$skin['skin_id'].'" target="_blank"><img src="'.$skin['skinpreview_link'].'" border="0"></a><br><a href="'.$skin['gfxpack_link'].'">GFX-Pack</a></span></td>
+              <td valign="top">'.$skin['skin_portal_desc'].'<br><a href="template_manager.php?change_skin='.$skin['skin_id'].'" target="_blank"><img src="'.$skin['skinpreview_link'].'" border="0"></a><br><a href="'.$skin['gfxpack_link'].'">'.constant($game->sprache("TEXT10")).'</a></td>
 
             </tr>
 
@@ -601,7 +601,7 @@ function display_skins() {
 
     $game->out('
 
-    <center><a href="template_manager.php?skin_summary=1" target="_blank">Übersicht aller Skins</a></center>
+    <center><a href="template_manager.php?skin_summary=1" target="_blank">'.constant($game->sprache("TEXT11")).'</a></center>
 
     </td>
 
@@ -653,7 +653,7 @@ switch($portal_action) {
 
             
 
-            message(NOTICE, 'Du darfst nur alle 15 Sekunden in der Shoutbox etwas posten. In 15 Sekunden <b>ab jetzt</b> wird diese Sperre aufgehoben sein.');
+            message(NOTICE, constant($game->sprache("TEXT12")));
 
         }
 
@@ -733,7 +733,7 @@ switch($portal_action) {
 
         if(empty($poll_data['id'])) {
 
-            message(NOTICE, 'Die Umfrage, zu der abgestimmt wurde, existiert nicht');
+            message(NOTICE, constant($game->sprache("TEXT13")));
 
         }
 
@@ -741,7 +741,7 @@ switch($portal_action) {
 
         if(empty($poll_data['chosen_choice'])) {
 
-            message(NOTICE, 'Die gewählte Antwortmöglichkeit existiert nicht');
+            message(NOTICE, constant($game->sprache("TEXT14")));
 
         }
 
@@ -767,7 +767,7 @@ switch($portal_action) {
 
         if(!empty($voted_check['poll_id'])) {
 
-            message(NOTICE, 'Du hast bei dieser Umfrage bereits deine Stimme abgegegen');
+            message(NOTICE, constant($game->sprache("TEXT15")));
 
         }
 
@@ -817,7 +817,7 @@ switch($portal_action) {
 
 <center>
 
-<span class="caption">Portal:</span><br><br>
+<span class="caption">'.constant($game->sprache("TEXT16")).'</span><br><br>
 
 
 
@@ -835,10 +835,10 @@ switch($portal_action) {
 
         
 
-        //display_poll();
+       display_poll();
 //	display_spenden();
 
-	$game->out("<a href='http://www.galaxy-news.de/?page=charts&op=vote&game_id=1666' target='_blank'><img src='http://www.galaxy-news.de/images/vote.gif' border=0 alt='Die besten Browsergames in den Galaxy-News MMOG-Charts!'></a><br>Bitte votet f&uuml;r STFC<br><br><b>IRC-Chat: #stfc2 @ Quakenet</b><br><br>");
+	$game->out("<a href='http://www.galaxy-news.de/?page=charts&op=vote&game_id=1666' target='_blank'><img src='http://www.galaxy-news.de/images/vote.gif' border=0 alt='Die besten Browsergames in den Galaxy-News MMOG-Charts!'></a><br>".constant($game->sprache("TEXT17"))."<br><br><b>IRC-Chat: #stfc2 @ Quakenet</b><br><br>");
 
        display_news();
 
@@ -869,7 +869,7 @@ switch($portal_action) {
 
         display_galaxymap();
                 $game->out('<br>');
-        display_usermap();
+//        display_usermap();
                 $game->out('<br>');
         display_skins();
 
