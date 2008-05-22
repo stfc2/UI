@@ -1,0 +1,717 @@
+<?php
+/*    
+	This file is part of STFC.
+	Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
+		
+	STFC is based on STGC,
+	Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
+	
+    STFC is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 3 of the License, or
+    (at your option) any later version.
+
+    STFC is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+$game->init_player();
+
+$filename = 'include/static/static_components_'.$game->player['language'].'.php';
+if (!file_exists($filename)) $filename = 'include/static/static_components.php';
+include($filename);
+
+
+$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span></center><br>');
+
+function TimeDetailShort($seconds)
+{
+	$minutes=0;
+	while($seconds >= 60) {
+		$minutes++;
+		$seconds -= 60;
+	}
+	return round($minutes, 0).'m '.round($seconds, 0).'s';
+}
+
+
+function Ships_List($focus=0,$search_name="")
+{
+	global $db,$game,$UNIT_NAME,$NEXT_TICK,$ACTUAL_TICK,$SHIP_TORSO;
+
+	/* Check user permissions */
+	if($game->player['user_alliance_rights3'] != 1) {
+		message(NOTICE, constant($game->sprache("TEXT67")));
+	}
+
+	/* AC: Get serach name */
+	$search_name=htmlspecialchars($_REQUEST['search']);
+
+	/* AC: Check query focus */
+	if (isset($_REQUEST['start'])) {$focus=$_REQUEST['start'];}
+
+	/* AC: Check chosen ordering method */
+	if (!isset($_REQUEST['order']) || empty($_REQUEST['order'])) $_REQUEST['order']=1;
+
+	/* Filter ship's type */ 
+	if (isset($_GET['filter']) && $_GET['filter']==1)
+		$game->option_store('astype_0',(int)(1-$game->option_retr('astype_0',1)));
+	if (isset($_GET['filter']) && $_GET['filter']==2)
+		$game->option_store('astype_1',(int)(1-$game->option_retr('astype_1',1)));
+	if (isset($_GET['filter']) && $_GET['filter']==3)
+		$game->option_store('astype_2',(int)(1-$game->option_retr('astype_2',1)));
+	if (isset($_GET['filter']) && $_GET['filter']==4)
+		$game->option_store('astype_3',(int)(1-$game->option_retr('astype_3',1)));
+
+	$_POST['astype_0']=$game->option_retr('astype_0',1);
+	$_POST['astype_1']=$game->option_retr('astype_1',1);
+	$_POST['astype_2']=$game->option_retr('astype_2',1);
+	$_POST['astype_3']=$game->option_retr('astype_3',1);
+
+	if ($_POST['astype_0']) $sels[]=0;
+	if ($_POST['astype_1']) $sels[]=1;
+	if ($_POST['astype_2']) $sels[]=2;
+	if ($_POST['astype_3']) $sels[]=3;
+	if (empty($sels)) $sels[]=4;
+	/* */
+
+	$queryfocus=$focus;
+
+	// Select alliance TAG for fleets's map
+	$sql = 'SELECT alliance_tag
+			FROM alliance
+			WHERE alliance_id = '.$game->player['user_alliance'];
+	if(($alliance = $db->queryrow($sql)) === false) {
+		message(DATABASE_ERROR, 'Could not query alliance data');
+	}
+
+	// Select all members of the alliance
+	$q_members = $db->query('SELECT user_id,user_name FROM user WHERE user_alliance='.$game->player['user_alliance']);
+	$i = 0;
+	while($member = $db->fetchrow($q_members)) {
+		$members[$i]=$member['user_id'];
+		$names[$members[$i]] = $member['user_name'];
+		$i++;
+	}
+
+	/* AC: Query user ships ordered by user */
+	$ordermethod = 'u.user_name ASC, st.ship_torso DESC, s.ship_scrap,s.ship_repair,st.name ASC';
+
+	/* AC: Query user ships ordered by shiptorso */
+	if ($_REQUEST['order']==2)
+	{
+		$ordermethod = 'st.ship_torso DESC, u.user_name, s.ship_scrap,s.ship_repair,st.name ASC';
+	}
+	/* AC: Query user ships ordered by name */
+	else if ($_REQUEST['order']==3)
+	{
+		$ordermethod = 's.ship_name ASC, u.user_name, s.ship_scrap,s.ship_repair,st.name ASC';
+	}
+	/* AC: Query user ships ordered by position */
+	else if ($_REQUEST['order']==4)
+	{
+		$ordermethod = 'pl.planet_name, fl.fleet_name ASC,s.ship_scrap,s.ship_repair,st.name ASC';
+	}
+	/* AC: Query user ships ordered by hitpoints */
+	else if ($_REQUEST['order']==5)
+	{
+		$ordermethod = 's.hitpoints DESC,s.ship_scrap,s.ship_repair,st.name ASC';
+	}
+
+	$sql = 'SELECT s.ship_id, s.hitpoints, s.ship_repair, s.ship_scrap, s.ship_untouchable,
+			s.unit_1,s.unit_2,s.unit_3,s.unit_4, s.ship_name, s.ship_ncc, s.fleet_id,
+			s.construction_time, st.max_unit_1,st.max_unit_2,st.max_unit_3,st.max_unit_4,
+			st.name AS template_name, st.value_5 AS max_hitpoints, st.race, st.ship_torso,
+			fl.fleet_name, fl.planet_id AS fleet_target, pl.planet_name, u.user_name
+			FROM (ships s)
+			LEFT JOIN (ship_templates st) ON st.id = s.template_id
+			LEFT JOIN (ship_fleets fl) ON fl.fleet_id = s.fleet_id
+			LEFT JOIN (planets pl) ON pl.planet_id = ABS(s.fleet_id)
+			LEFT JOIN (user u) ON u.user_id = s.user_id
+			WHERE s.user_id IN ('.implode(',',$members).')
+			AND st.ship_class IN ('.implode(',', $sels).') 
+			ORDER BY '.$ordermethod.' LIMIT '.$queryfocus.',20';
+
+	$shipquery = $db->query($sql);
+
+	$game->out('<center>'.constant($game->sprache("TEXT1")).'</center><br>');
+
+	$game->out('<span class="sub_caption"><a href="alliancefleets.php?alliance='.$alliance['alliance_tag'].'&size=6&map" target=_blank><u>'.constant($game->sprache("TEXT68")).'</u></a></span><br>');
+
+
+	/* AC: Searching ship */
+	$game->out('<br><br><center><table border=0 cellpadding=2 cellspacing=2  class="style_inner" width=300>
+		<tr>
+			<td align="center" valign="middle">
+				<form method="post" action="'.parse_link('a=alliance_ships&order='.$_REQUEST['order']).'">
+				<input type="text" name="search" size="16" class="field" value="'.htmlspecialchars($_REQUEST['search']).'">
+			</td>
+			<td align="center" valign="middle">
+				<input type="submit" name="exec_search" class="button" width=100 value="'.constant($game->sprache("TEXT2")).'">
+				</form>
+			</td>
+		</tr>
+		</table></center>');
+
+	/* AC: If we have to search ships */
+	if($search_name!="" && $focus==0)
+	{
+		$game->out('<br><center><table border=0 cellpadding=2 cellspacing=2 class="style_inner" width=300>
+			<tr>
+				<td width=150>
+					<b>'.constant($game->sprache("TEXT3")).'</b>
+				</td>
+				<td>
+					<b>'.constant($game->sprache("TEXT5")).'</b>
+				</td>
+			</tr>');
+
+		$search_ships=$db->query('SELECT ship_name, ship_id, st.name AS template_name
+					FROM (ships s) INNER JOIN (ship_templates st) ON st.id = s.template_id
+					WHERE ship_name LIKE "%'.$_REQUEST['search'].'%" ORDER by ship_name ASC');
+		while (($ship = $db->fetchrow($search_ships)) != false)
+		{
+			$game->out('
+				<tr>
+					<td width=150>
+						<a href="'.parse_link('a=ships&view=ship_details&id='.$ship['ship_id']).'">'.$ship['ship_name'].'</a>
+					</td>
+					<td>
+						'.$ship['template_name'].'
+					</td>
+				</tr>
+			');
+		}
+
+		$game->out('</table></center>');
+	}
+
+	$game->out('<br><br><center><span class="sub_caption">'.constant($game->sprache("TEXT4")).' '.HelpPopup('alliance_ships').' :</span></center>');
+
+	/**
+	 * AC: Create main table
+	 */
+	$game->out('<br><center><table border=0 cellpadding=1 cellspacing=1 class="style_inner">
+		<tr>
+		<td><b>#</b></td>
+		<td width=160><a href="'.parse_link('a=alliance_ships&alliance=&view=ships_list&order=1&search='.$search_name).'"><b>');
+
+	// Player
+	if ($_REQUEST['order']==1)
+		$game->out('<u>'.constant($game->sprache("TEXT70")).'</u>');
+	else
+		$game->out(constant($game->sprache("TEXT70")));
+
+	$game->out('
+		</b></a></td>
+		<td width=160><a href="'.parse_link('a=alliance_ships&alliance=&view=ships_list&order=2&search='.$search_name).'"><b>');
+
+	// Class
+	if ($_REQUEST['order']==2)
+		$game->out('<u>'.constant($game->sprache("TEXT60")).'</u>');
+	else
+		$game->out(constant($game->sprache("TEXT60")));
+
+	$game->out('
+		</b></a></td>
+		<td width=160><a href="'.parse_link('a=alliance_ships&alliance=&view=ships_list&order=3&search='.$search_name).'"><b>');
+
+	// Name
+	if ($_REQUEST['order']==3)
+		$game->out('<u>'.constant($game->sprache("TEXT6")).'</u>');
+	else
+		$game->out(constant($game->sprache("TEXT6")));
+
+	$game->out('</b></a>
+		</td>
+		<td width=160><a href="'.parse_link('a=alliance_ships&alliance=&view=ships_list&order=4&search='.$search_name).'"><b>');
+
+	// Position
+	if ($_REQUEST['order']==4)
+		$game->out('<u>'.constant($game->sprache("TEXT7")).'</u>');
+	else
+		$game->out(constant($game->sprache("TEXT7")));
+
+	$game->out('</b></a></td>
+		<td width=160 align="center"><a href="'.parse_link('a=alliance_ships&view=ships_list&order=5&search='.$search_name).'"><b>');
+
+	// Condition
+	if ($_REQUEST['order']==5)
+		$game->out('<u>'.constant($game->sprache("TEXT8")).'</u>');
+	else
+		$game->out(constant($game->sprache("TEXT8")));
+
+	$game->out('</b></a>
+		</td>
+		<td width=75 align="center">
+		<b>'.constant($game->sprache("TEXT9")).'</b>
+		</td>
+		<td width=75 align="center">
+		<b>'.constant($game->sprache("TEXT10")).'</b>
+		</td>
+		</tr>');
+
+	$class_title = constant($game->sprache("TEXT12"));
+	$name_title = constant($game->sprache("TEXT13"));
+	$position_title = constant($game->sprache("TEXT14"));
+	$condition_title = constant($game->sprache("TEXT15"));
+	$status_title = constant($game->sprache("TEXT16"));
+	$crew_title = constant($game->sprache("TEXT17"));
+
+	$n = $queryfocus + 1;
+	while (($ship = $db->fetchrow($shipquery)) != false)
+	{
+		/* Ship class */
+		$class_desc = constant($game->sprache("TEXT59")).' '.$ship['template_name'];
+
+		/* Check ship Naval Construction Code */
+		$name_desc = constant($game->sprache("TEXT19")).' '.(($ship['ship_ncc'] != '') ? $ship['ship_ncc'] : '<i>'.constant($game->sprache("TEXT20")).'</i>');
+
+		/* Add construction date */
+		$name_desc .= '<br>'.constant($game->sprache("TEXT11")).' '.date('d.m.y H:i', $ship['construction_time']);
+		
+		/* Check ship current position */
+		$position = '';
+		$position_desc = '';
+		if($ship['fleet_id'] > 0) // Ship is in a fleet
+		{
+			$position = $ship['fleet_name'];
+
+			/* Check il fleet is moving */ 
+			if($ship['fleet_target'] != 0)
+			{
+				$planet = $db->queryrow('SELECT planet_name FROM planets WHERE planet_id = '.$ship['fleet_target']);
+				$position_desc = constant($game->sprache("TEXT21")).' '.$planet['planet_name'];
+				$pos_link = parse_link('a=ship_fleets_display&pfleet_details='.$ship['fleet_id']);
+			}
+			else
+			{
+				$position_desc = constant($game->sprache("TEXT22"));
+				$pos_link = parse_link('a=ship_fleets_display&mfleet_details='.$ship['fleet_id']);
+			}
+
+			/* Check ship current status */
+			$status='<font color=#80ff80>O</font>';
+			$status_desc = constant($game->sprache("TEXT23"));
+		}
+		else // Ship is a spacedock
+		{
+			$position = $ship['planet_name'];
+			$position_desc = constant($game->sprache("TEXT24"));
+			/* Check ship current status */
+
+			$status='<font color=#ffff80>S</font>';
+			$status_desc = constant($game->sprache("TEXT25"));
+
+			$pos_link = 'javascript:void(0);';
+		}
+
+		/* Check ship conditions */
+		$per_damage = round(($ship['hitpoints']/$ship['max_hitpoints'])*100,0);
+		if($per_damage > 75)
+			$condition=$ship['hitpoints'].' / '.$ship['max_hitpoints'];
+		else if($per_damage > 50)
+		{
+			$condition='<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT26")).'\', CAPTION, \''.$condition_title.'\', WIDTH, 250, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color=#ffff80>'.$ship['hitpoints'].'</font></a> / '.$ship['max_hitpoints'];
+		}
+		else
+			$condition='<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT27")).'\', CAPTION, \''.$condition_title.'\', WIDTH, 250, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color=#ff8080>'.$ship['hitpoints'].'</font></a> / '.$ship['max_hitpoints'];
+
+		/* Check ship status */
+		if ($ship['ship_repair']>0) {
+			$status='<font color=#ff8080>R</font>';
+			$status_desc = constant($game->sprache("TEXT28")).'<br>'.TimeDetailShort($NEXT_TICK+3*60*($ship['ship_repair']-$ACTUAL_TICK)).'.';
+		}
+
+		if ($ship['ship_scrap']>0) {
+			$status='<font color=#ff8080>D</font>';
+			$status_desc = constant($game->sprache("TEXT29")).'<br>'.TimeDetailShort($NEXT_TICK+3*60*($ship['ship_scrap']-$ACTUAL_TICK)).'.';
+		}
+
+		if ($ship['ship_untouchable']>0 && $ship['ship_repair']<=0 && $ship['ship_scrap']<=0) {
+			$status='U';
+			$status_desc = constant($game->sprache("TEXT30"));
+		}
+
+		/* Check ship crew aboard */
+		$crew = '';
+		$crew_desc = constant($game->sprache("TEXT31"));
+
+		if (($ship['unit_1']+$ship['unit_2']+$ship['unit_3']+$ship['unit_4'])>0)
+		{
+			$ncrew=100/($ship['max_unit_1']+$ship['max_unit_2']+$ship['max_unit_3']+$ship['max_unit_4'])*($ship['unit_1']+$ship['unit_2']+$ship['unit_3']+$ship['unit_4']);
+			$ncrew = round($ncrew,0);
+
+			// Critical condition
+			if($ncrew > 0 && $ncrew <= 25)
+				$crew = '<font color=#ff8080>'.$ncrew.'%';
+			// Warning condition
+			else if($ncrew > 25 && $ncrew <= 75)
+				$crew = '<font color=#ffff80>'.$ncrew.'%';
+			// Normal condition
+			else if($ncrew >= 75)
+				$crew = $ncrew.'%';
+
+			$crew_desc = '<img src='.$game->GFX_PATH.'menu_unit1_small.gif>&nbsp;'.$ship['unit_1'].'&nbsp;&nbsp;'.addslashes($UNIT_NAME[$game->player['user_race']][0]).'<br>';
+			$crew_desc .='<img src='.$game->GFX_PATH.'menu_unit2_small.gif>&nbsp;'.$ship['unit_2'].'&nbsp;&nbsp;'.addslashes($UNIT_NAME[$game->player['user_race']][1]).'<br>';
+			$crew_desc .='<img src='.$game->GFX_PATH.'menu_unit3_small.gif>&nbsp;'.$ship['unit_3'].'&nbsp;&nbsp;'.addslashes($UNIT_NAME[$game->player['user_race']][2]).'<br>';
+			$crew_desc .='<img src='.$game->GFX_PATH.'menu_unit4_small.gif>&nbsp;'.$ship['unit_4'].'&nbsp;&nbsp;'.addslashes($UNIT_NAME[$game->player['user_race']][3]);
+		}
+
+		$game->out('
+			<tr>
+			<td>'.$n.'</td>
+			<td>'.$ship['user_name'].'</td>
+			<td>
+				<a href="javascript:void(0);" onmouseover="return overlib(\''.$class_desc.'\', CAPTION, \''.$class_title.'\', WIDTH, 200, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$SHIP_TORSO[$ship['race']][$ship['ship_torso']][29].'</a>
+			</td>
+			<td>
+				<a href="'.parse_link('a=alliance_ships&view=ship_details&id='.$ship['ship_id'].'').'" onmouseover="return overlib(\''.$name_desc.'\', CAPTION, \''.$name_title.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.(($ship['ship_name'] != '') ? $ship['ship_name'] : '<i>'.constant($game->sprache("TEXT71")).'</i>').'</a>
+			</td>
+			<td>
+				<a href="'.$pos_link.'" onmouseover="return overlib(\''.$position_desc.'\', CAPTION, \''.$position_title.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$position.'</a>
+			</td>
+			<td align="center">'.$condition.'</td>
+			<td align="center">
+				<a href="javascript:void(0);" onmouseover="return overlib(\''.$status_desc.'\', CAPTION, \''.$status_title.'\', WIDTH, 200, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$status.'</a>
+			</td>
+			<td align="center">
+				<a href="javascript:void(0);" onmouseover="return overlib(\''.$crew_desc.'\', CAPTION, \''.$crew_title.'\', WIDTH, 200, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$crew.'</a>
+			</td>
+			</tr>');
+
+		$n++;
+	}
+
+	$game->out('</table>');
+
+	/* AC: Pages browsing */
+	$sql = 'SELECT COUNT(ship_id) AS n_ships
+			FROM (ships s)
+			INNER JOIN (ship_templates st) ON st.id = s.template_id
+			WHERE user_id IN ('.implode(',',$members).') AND st.ship_class IN ('.implode(',', $sels).')';
+	$n_ships = $db->queryrow($sql);
+	$max_pages = ceil($n_ships['n_ships'] / 20);
+	$game->out('<br><center><table border=0 cellpadding=2 cellspacing=2 class="style_inner" width=400><tr>
+		<td width=50 align=middle>
+			'.(($queryfocus>0) ? '<a href="'.parse_link('a=alliance_ships&alliance&order='.$_REQUEST['order'].'&start=0').'"><span class="text_large">[1]</a>' : '[1]').'
+		</td>
+		<td width=150 align=middle>
+			'.(($queryfocus>0) ? '<a href="'.parse_link('a=alliance_ships&alliance&order='.$_REQUEST['order'].'&start='.($queryfocus-20)).'"><span class="text_large">'.constant($game->sprache("TEXT32")).'</a>' : '').'
+		</td>
+		<td width=150 align=middle>
+			'.(($queryfocus < $n_ships['n_ships']-20) ? '<a href="'.parse_link('a=alliance_ships&order='.$_REQUEST['order'].'&start='.($queryfocus+20)).'"><span class="text_large">'.constant($game->sprache("TEXT33")).'</a>' : '').'
+		</td>
+		<td width=50 align=middle>
+			'.(($queryfocus < $n_ships['n_ships']-20) ? '<a href="'.parse_link('a=alliance_ships&order='.$_REQUEST['order'].'&start='.($n_ships['n_ships']-20)).'"><span class="text_large">['.$max_pages.']</a>' : '['.$max_pages.']').'
+		</td>
+		</tr></table>');
+
+	/* Show up ship's filter */
+	$game->out('<br><center>
+		<table border=0 class="style_inner" width=300>
+		<tr>
+		<td>
+			<fieldset><legend>'.constant($game->sprache("TEXT72")).'</legend>
+			<table><tr>
+			<td>
+			<form name="astype0form" method="post" action="'.parse_link('a=alliance_ships&order='.$_REQUEST['order'].'&start='.$queryfocus.'&filter=1').'">
+			<input type="checkbox" name="astype_0" value="1"'.(($_POST['astype_0']==1) ? ' checked="checked"' : '' ).'  onChange="document.astype0form.submit()">'.constant($game->sprache("TEXT73")).'
+			</form>
+			</td>
+			<td>
+			<form name="astype1form" method="post" action="'.parse_link('a=alliance_ships&order='.$_REQUEST['order'].'&start='.$queryfocus.'&filter=2').'">
+			<input type="checkbox" name="astype_1" value="1"'.(($_POST['astype_1']==1) ? ' checked="checked"' : '' ).'  onChange="document.astype1form.submit()">'.constant($game->sprache("TEXT74")).'
+			</form>
+			</td>
+			<td>
+			<form name="astype2form" method="post" action="'.parse_link('a=alliance_ships&order='.$_REQUEST['order'].'&start='.$queryfocus.'&filter=3').'">
+			<input type="checkbox" name="astype_2" value="1"'.(($_POST['astype_2']==1) ? ' checked="checked"' : '' ).'  onChange="document.astype2form.submit()">'.constant($game->sprache("TEXT75")).'
+			</form>
+			</td>
+			<td>
+			<form name="astype3form" method="post" action="'.parse_link('a=alliance_ships&order='.$_REQUEST['order'].'&start='.$queryfocus.'&filter=4').'">
+			<input type="checkbox" name="astype_3" value="1"'.(($_POST['astype_3']==1) ? ' checked="checked"' : '' ).'  onChange="document.astype3form.submit()">'.constant($game->sprache("TEXT76")).'
+			</form>
+			</td></tr></table>
+			</fieldset>
+		</td>
+		</tr></table></center>');
+}
+
+function CreateShipInfoText($ship)
+{
+	global $game;
+
+	$text='<b>'.$ship[31].'</b><br><br><u>'.constant($game->sprache("TEXT40")).'</u><br>';
+
+	$text.=constant($game->sprache("TEXT41")).' '.$ship[14].'<br>';
+	$text.=constant($game->sprache("TEXT42")).' '.$ship[15].'<br>';
+	$text.=constant($game->sprache("TEXT43")).' '.$ship[16].'<br>';
+	$text.=constant($game->sprache("TEXT44")).' '.$ship[17].'<br>';
+	$text.=constant($game->sprache("TEXT45")).' '.$ship[18].'<br>';
+	$text.=constant($game->sprache("TEXT46")).' '.$ship[19].'<br>';
+	$text.=constant($game->sprache("TEXT47")).' '.$ship[20].'<br>';
+	$text.=constant($game->sprache("TEXT48")).' '.$ship[21].'<br>';
+	$text.=constant($game->sprache("TEXT49")).' '.$ship[22].'<br>';
+	$text.=constant($game->sprache("TEXT50")).' '.$ship[23].'<br>';
+	$text.=constant($game->sprache("TEXT51")).' '.$ship[24].'<br>';
+	$text.=constant($game->sprache("TEXT52")).' '.$ship[25].'<br>';
+	$text.=constant($game->sprache("TEXT53")).' '.$ship[27].'<br>';
+	$text.=constant($game->sprache("TEXT54")).' '.$ship[26].'<br>';
+	return $text;
+}
+
+function CreateCompInfoText($comp)
+{
+	global $game;
+
+	$text=''.$comp['description'].'<br><br>'.constant($game->sprache("TEXT40")).'</u><br>';
+
+	if ($comp['value_1']!=0) $text.=constant($game->sprache("TEXT41")).' '.$comp['value_1'].'<br>';
+	if ($comp['value_2']!=0) $text.=constant($game->sprache("TEXT42")).' '.$comp['value_2'].'<br>';
+	if ($comp['value_3']!=0) $text.=constant($game->sprache("TEXT43")).' '.$comp['value_3'].'<br>';
+	if ($comp['value_4']!=0) $text.=constant($game->sprache("TEXT44")).' '.$comp['value_4'].'<br>';
+	if ($comp['value_5']!=0) $text.=constant($game->sprache("TEXT45")).' '.$comp['value_5'].'<br>';
+	if ($comp['value_6']!=0) $text.=constant($game->sprache("TEXT46")).' '.$comp['value_6'].'<br>';
+	if ($comp['value_7']!=0) $text.=constant($game->sprache("TEXT47")).' '.$comp['value_7'].'<br>';
+	if ($comp['value_8']!=0) $text.=constant($game->sprache("TEXT48")).' '.$comp['value_8'].'<br>';
+	if ($comp['value_9']!=0) $text.=constant($game->sprache("TEXT49")).' '.$comp['value_9'].'<br>';
+	if ($comp['value_10']!=0) $text.=constant($game->sprache("TEXT50")).' '.$comp['value_10'].'<br>';
+	if ($comp['value_11']!=0) $text.=constant($game->sprache("TEXT51")).' '.$comp['value_11'].'<br>';
+	if ($comp['value_12']!=0) $text.=constant($game->sprache("TEXT52")).' '.$comp['value_12'].'<br>';
+	if ($comp['value_14']!=0) $text.=constant($game->sprache("TEXT53")).' '.$comp['value_14'].'<br>';
+	if ($comp['value_13']!=0) $text.=constant($game->sprache("TEXT54")).' '.$comp['value_13'].'<br>';
+
+	return $text;
+}
+
+function Ship_Details()
+{
+	global $db,$game,$SHIP_TORSO,$RACE_DATA,$ship_rank_bonus,$ship_ranks,$ship_components;
+
+	$sql = 'SELECT s.*, st.*,
+	               f.fleet_name, f.planet_id, f.move_id,
+	               p.planet_name
+	        FROM (ships s)
+	        INNER JOIN (ship_templates st) ON st.id = s.template_id
+	        LEFT JOIN (ship_fleets f) ON f.fleet_id = s.fleet_id
+	        LEFT JOIN (planets p) ON p.planet_id = -s.fleet_id
+	        WHERE s.ship_id = '.$_REQUEST['id'];
+
+	if(($ship = $db->queryrow($sql)) === false) {
+		message(DATABASE_ERROR, 'Could not query ship data');
+	}
+
+	if(empty($ship['ship_id'])) {
+		message(NOTICE, constant($game->sprache("TEXT55")));
+	}
+
+	// Read user's alliance ID of the selected ships
+	$sql = 'SELECT user_alliance FROM user WHERE user_id = '.$ship['user_id'];
+
+	if(($alliance = $db->queryrow($sql)) === false) {
+		message(DATABASE_ERROR, 'Could not query alliance data');
+	}
+
+	/* Check user permissions and user alliance */
+	if(($game->player['user_alliance'] != $alliance['user_alliance']) || ($game->player['user_alliance_rights3'] != 1)) {
+		message(NOTICE, constant($game->sprache("TEXT67")));
+	}
+
+	// Schiffsdaten ausgeben:
+	$rank_nr=1;
+	if ($ship['experience']>=$ship_ranks[0]) $rank_nr=1;
+	if ($ship['experience']>=$ship_ranks[1]) $rank_nr=2;
+	if ($ship['experience']>=$ship_ranks[2]) $rank_nr=3;
+	if ($ship['experience']>=$ship_ranks[3]) $rank_nr=4;
+	if ($ship['experience']>=$ship_ranks[4]) $rank_nr=5;
+	if ($ship['experience']>=$ship_ranks[5]) $rank_nr=6;
+	if ($ship['experience']>=$ship_ranks[6]) $rank_nr=7;
+	if ($ship['experience']>=$ship_ranks[7]) $rank_nr=8;
+	if ($ship['experience']>=$ship_ranks[8]) $rank_nr=9;
+	if ($ship['experience']>=$ship_ranks[9]) $rank_nr=10;
+	
+
+    $game->out('
+
+<table width="450" align="center" border="0" cellpadding="4" cellspacing="2" class="style_outer">
+
+  <tr>
+
+    <td><span class="sub_caption2">'.constant($game->sprache("TEXT56")).' ('.$ship['name'].')</span><br><br>
+
+      <table width="450" align="center" cellpadding="0" cellspacing="0" border="0" class="style_inner">
+
+        <tr>
+
+          <td align="left" valign="top" width="120">
+
+            '.( ($ship['fleet_id'] > 0) ? constant($game->sprache("TEXT57")) : constant($game->sprache("TEXT58")) ).'<br><br>
+
+            '.constant($game->sprache("TEXT59")).'<br>
+
+            '.constant($game->sprache("TEXT60")).'<br>
+
+            '.constant($game->sprache("TEXT61")).'<br><br>
+
+            '.constant($game->sprache("TEXT6")).'<br>
+
+            '.constant($game->sprache("TEXT62")).'<br>
+
+            '.constant($game->sprache("TEXT63")).'<br><br>
+
+            '.constant($game->sprache("TEXT64")).'<br>
+
+            '.constant($game->sprache("TEXT44")).'<br><br>
+
+            '.constant($game->sprache("TEXT49")).'<br><br>
+
+            '.constant($game->sprache("TEXT41")).'<br>
+
+            '.constant($game->sprache("TEXT42")).'<br>
+
+            '.constant($game->sprache("TEXT43")).'<br><br>
+
+            '.constant($game->sprache("TEXT46")).'<br>
+
+            '.constant($game->sprache("TEXT47")).'<br>
+
+            '.constant($game->sprache("TEXT48")).'<br><br>
+
+            '.constant($game->sprache("TEXT50")).'<br>
+
+            '.constant($game->sprache("TEXT51")).'<br>
+
+            '.constant($game->sprache("TEXT52")).'<br><br>
+
+            '.constant($game->sprache("TEXT65")).'<br><br>
+
+            '.constant($game->sprache("TEXT10")).'
+
+          </td>
+
+          <td align="left" valign="top" width="150">
+
+            ['.( ($ship['fleet_id'] > 0) ? '<a href="'.parse_link('a=ship_fleets_display&'.( (!empty($ship['planet_id'])) ? 'p' : 'm' ).'fleet_details='.$ship['fleet_id']).'">'.$ship['fleet_name'].'</a>' : '<a href="'.parse_link('a=spacedock').'">'.$ship['planet_name'].'</a>' ).']<br><br>
+
+            <b>'.$ship['name'].'</b><br>
+
+            <b><a href="javascript:void(0);" onmouseover="return overlib(\''.CreateShipInfoText($SHIP_TORSO[$ship['race']][$ship['ship_torso']]).'\', CAPTION, \''.$SHIP_TORSO[$ship['race']][$ship['ship_torso']][29].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$SHIP_TORSO[$ship['race']][$ship['ship_torso']][29].'</a></b><br>
+
+            <b>'.$RACE_DATA[$ship['race']][0].'</b><br><br>
+
+            <b>'.$ship['ship_name'].'</b><br>
+
+            <b>'.$ship['ship_ncc'].'</b><br>
+
+            <b>'.date('d.m.y H:i:s', $ship['construction_time']).'</b><br><br>
+
+            <b>'.$ship['hitpoints'].'</b> / <b>'.$ship['value_5'].'</b><br>
+
+            <b>'.$ship['value_4'].'</b><br><br>
+
+            <b><span style="color: yellow">'.$ship['experience'].'</span></b> <img src="'.$game->GFX_PATH.'rank_'.$rank_nr.'.jpg" width="47" height="12"><br><br>
+
+            <b>'.$ship['value_1'].' + <span style="color: yellow">'.round($ship['value_1']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
+
+            <b>'.$ship['value_2'].' + <span style="color: yellow">'.round($ship['value_2']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
+
+            <b>'.$ship['value_3'].' + <span style="color: yellow">'.round($ship['value_3']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br><br>
+
+            <b>'.$ship['value_6'].' + <span style="color: yellow">'.round($ship['value_6']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
+
+            <b>'.$ship['value_7'].' + <span style="color: yellow">'.round($ship['value_7']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
+
+            <b>'.$ship['value_8'].' + <span style="color: yellow">'.round($ship['value_8']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br><br>
+
+            <b>'.$ship['value_10'].'</b><br>
+
+            <b>'.$ship['value_11'].'</b><br>
+
+            <b>'.$ship['value_12'].'</b><br><br>
+
+            <b>'.$ship['value_14'].'</b> / <b>'.$ship['value_13'].'</b><br><br>
+
+            <img src='.$game->GFX_PATH.'menu_unit1_small.gif>'.$ship['unit_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif>'.$ship['unit_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif>'.$ship['unit_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif>'.$ship['unit_4'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif>'.$ship['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif>'.$ship['unit_6'].'
+
+          </td>
+
+          <td align="center>" valign="top" width="180"><img src="'.FIXED_GFX_PATH.'ship'.$ship['race'].'_'.$ship['ship_torso'].'.jpg"><br><br>
+
+    ');
+
+    for ($t=0; $t<10; $t++)
+
+	{
+
+	if ($ship['component_'.($t+1)]>=0)
+
+	{
+
+	$game->out('-&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateCompInfoText($ship_components[$ship['race']][$t][$ship['component_'.($t+1)]]).'\', CAPTION, \''.$ship_components[$ship['race']][$t][$ship['component_'.($t+1)]]['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$ship_components[$ship['race']][$t][$ship['component_'.($t+1)]]['name'].'</a><br>');
+
+	} else $game->out(constant($game->sprache("TEXT66")));
+
+    }
+
+
+
+    $game->out('
+
+          </td>
+
+        </tr>
+
+      </table>
+
+    </td>
+
+  </tr>
+
+</table>
+
+    ');
+
+
+}
+
+
+
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+$sub_action = (!empty($_GET['view'])) ? $_GET['view'] : 'ships_list';
+
+if (isset($_REQUEST['search']) && !empty($_REQUEST['search'])) $_REQUEST['search']=htmlspecialchars(mysql_real_escape_string($_REQUEST['search']));
+if (isset($_REQUEST['start'])) $_REQUEST['start']=(int)$_REQUEST['start'];
+if (isset($_REQUEST['id'])) $_REQUEST['id']=(int)$_REQUEST['id'];
+
+if (!isset($_REQUEST['order']) || empty($_REQUEST['order'])) $_REQUEST['order']=1;
+
+
+if ($sub_action == 'ships_list')
+{
+	if (!isset($_REQUEST['search'])) {$_REQUEST['search']='';}
+/*	if ($_REQUEST['order']!=2 && $_REQUEST['order']!=3) {$nr=$db->queryrow('SELECT user_rank_points AS focus FROM user WHERE user_name LIKE "'.$_REQUEST['search'].'" LIMIT 1');}
+	if ($_REQUEST['order']==2) $nr=$db->queryrow('SELECT user_rank_planets AS focus FROM user WHERE user_name LIKE "'.$_REQUEST['search'].'" LIMIT 1');
+	if ($_REQUEST['order']==3) $nr=$db->queryrow('SELECT user_rank_honor AS focus FROM user WHERE user_name LIKE "'.$_REQUEST['search'].'" LIMIT 1');
+	$focus=$nr['focus'];*/
+	$focus = 0;
+
+	Ships_List($focus,$_REQUEST['search']);
+}
+else if ($sub_action == 'ship_details')
+{
+	Ship_Details();
+}
+
+?>
