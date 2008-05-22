@@ -23,6 +23,9 @@
 
 $game->init_player();
 
+$game->out('<span class="caption">Override User ID</span><br><br>');
+
+
 if( ($game->player['user_auth_level'] != STGC_DEVELOPER) && (!defined('OVERRIDE_UID_MODE')) ) {
     exit;
 }
@@ -60,12 +63,22 @@ if(!empty($_POST['submit'])) {
 $overridden_id = (defined('OVERRIDE_UID_MODE')) ? $game->player['user_id'] : $game->player['user_override_uid'];
 
 $game->out('
-<br><center>
-<form method="post" action="'.parse_link('a=tools/override_uid').'">
-Einloggen als:&nbsp;&nbsp;<input class="field" type="text" name="override_uid" size="5" value="'.$overridden_id.'"><br><br>
-<input class="button" type="submit" name="submit" value="Übernehmen">
-</form>
-</center>
-');
+        <form method="post" action="'.parse_link('a=tools/override_uid').'">
+        <table border="0" cellpadding="2" cellspacing="2" class="style_outer">
+        <tr>
+            <td>
+            <table border="0" cellpadding="2" cellspacing="2" class="style_inner">
+            <tr>
+                <td>Login as:</td>
+                <td><input class="field" type="text" name="override_uid" size="5" value="'.$overridden_id.'"></td>
+            </tr>
+            <tr>
+                <td colspan=2" align="center"><input class="button" type="submit" name="submit" value="Apply"><td>
+            </tr>
+            </table>
+            </td>
+        </tr>
+        </table>
+        </form>');
 
 ?>

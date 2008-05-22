@@ -23,29 +23,21 @@ $game->init_player();
 
 check_auth(STGC_DEVELOPER);
 
+$game->out('<span class="caption">Create Code Summary</span><br><br>');
 
 $code_dirs = array(
     '.',
     './include',
     './include/libs',
+    './include/static',
+    './help',
     './modules',
     './modules/tools',
     './modules/tools/players',
     './modules/tools/ships',
-    './modules/tools/test',
     './modules/tools/world',
-    './scheduler',
+    '/home/taku/stfc/stfc-scheduler/',
 );
-
- /*
-$code_dirs = array(
-    '../../alpha-2/game',
-    '../../alpha-2/game/include',
-    '../../alpha-2/game/modules',
-    '../../alpha-2/game/modules/tools',
-    '../../alpha-2/game/scheduler',
-    '../../alpha-2/game/scheduler/actions',
-);*/
 
 
 $n_bytes = $n_lines = 0;
@@ -67,8 +59,10 @@ for($i = 0; $i < count($code_dirs); ++$i) {
     $dp->close();
 }
 
-$fp = fopen('./docs/code_summary.txt', 'w');
+$game->out('Calculated dimensions of source code are:<br><br>Lines: <b>'.$n_lines.'</b> Bytes: <b>'.$n_bytes.'</b><br>');
+
+/*$fp = fopen('./docs/code_summary.txt', 'w');
 fputs($fp, 'Lines:'.$n_lines."\r\n".'Bytes:'.$n_bytes);
-fclose($fp);
+fclose($fp);*/
 
 ?>

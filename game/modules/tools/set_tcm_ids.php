@@ -32,7 +32,7 @@ if(!$db->query('SET @i=0')) {
 
 $sql = 'UPDATE tc_coords_memo
         SET tcm_id = (@i := (@i + 1))';
-        
+
 if(!$db->query($sql)) {
     message(DATABASE_ERROR, 'Could not update tcm_id data');
 }

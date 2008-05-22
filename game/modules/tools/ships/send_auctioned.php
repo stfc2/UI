@@ -25,11 +25,44 @@ $game->init_player();
 
 check_auth(STGC_DEVELOPER);
 
-if(empty($_GET['ship_id'])) message(NOTICE, '?ship_id=[int]&dest=[int]');
-if(empty($_GET['dest'])) message(NOTICE, '?ship_id=[int]&dest=[int]');
+$game->out('<span class="caption">Send auctioned</span><br><br>');
 
-include_once('include/libs/moves.php');
+if(isset($_POST['submit'])) {
 
-send_auctioned_ship((int)$_GET['ship_id'], (int)$_GET['dest']);
+	if(empty($_POST['ship_id'])) message(NOTICE, 'Ship ID is missing');
+	if(empty($_POST['dest'])) message(NOTICE, 'Destination is missing');
+
+	include_once('include/libs/moves.php');
+
+	send_auctioned_ship((int)$_POST['ship_id'], (int)$_POST['dest']);
+
+	$game->out('Sent ship ID: '.$_POST['ship_id'].' to: '.$_POST['dest']);
+
+	$game->out('<br><br><a href="'.parse_link('a=tools/ships/send_auctioned').'">Back</a>');
+}
+else {
+	$game->out('
+		<form method="post" action="'.parse_link('a=tools/ships/send_auctioned').'">
+		<table border="0" cellpadding="2" cellspacing="2" class="style_outer">
+		<tr>
+			<td>
+			<table border="0" cellpadding="2" cellspacing="2" class="style_inner">
+			<tr>
+				<td>Ship ID:</td>
+				<td><input class="field" type="text" name="ship_id" value="'.$_POST['ship_id'].'"></td>
+			</tr>
+			<tr>
+				<td>Dest:</td>
+				<td><input class="field" type="text" name="dest" value="'.$_POST['dest'].'"></td>
+			</tr>
+			<tr>
+				<td colspan=2" align="center"><input class="button" type="submit" name="submit" value="Submit"><td>
+			</tr>
+			</table>
+			</td>
+		</tr>
+		</table>
+		</form>');
+}
 
 ?>

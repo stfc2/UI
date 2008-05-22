@@ -28,10 +28,17 @@ $game->init_player();
 
 
 check_auth(STGC_DEVELOPER);
-echo 'char sectornames[324][3]={';
+
+$game->out('<span class="caption">Create Sector Array</span><br><br>');
+
+$game->out('char sectornames[324][3]={');
 for ($t=1;$t<500;$t++)
-if ($game->get_sector_name($t)!='') {$num++; echo '"'.$game->get_sector_name($t).'\0", ';}
-echo '};<br>'.$num.' total';
+	if ($game->get_sector_name($t)!='')
+	{
+		$num++;
+		$game->out('"'.$game->get_sector_name($t).'\0", ');
+	}
+$game->out('};<br>'.$num.' total');
 
 
 

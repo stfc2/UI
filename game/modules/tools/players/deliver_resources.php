@@ -25,40 +25,74 @@ $game->init_player();
 
 check_auth(STGC_DEVELOPER);
 
-if(empty($_GET['ticks'])) {
-    die('Usage: t=[ticks]');
+$game->out('<span class="caption">Deliver resources</span><br><br>');
+
+if(isset($_POST['submit'])) {
+
+    if(empty($_POST['ticks'])) {
+        message(NOTICE, 'Resources per ticks is invalid!');
+    }
+
+    $sql = ' UPDATE planets
+             SET resource_1 = resource_1 + (add_1 * '.$_POST['ticks'].'),
+                 resource_2 = resource_2 + (add_2 * '.$_POST['ticks'].'),
+                 resource_3 = resource_3 + (add_3 * '.$_POST['ticks'].'),
+                 resource_4 = resource_4 + (add_4 * '.$_POST['ticks'].')';
+
+    $db->query($sql);
+
+    $sql = 'UPDATE planets
+            SET resource_1 = max_resources
+            WHERE resource_1 > max_resources';
+
+    $db->query($sql);
+
+    $sql = 'UPDATE planets
+            SET resource_2 = max_resources
+            WHERE resource_2 > max_resources';
+
+    $db->query($sql);
+
+    $sql = 'UPDATE planets
+            SET resource_3 = max_resources
+            WHERE resource_3 > max_resources';
+
+    $db->query($sql);
+
+    $sql = 'UPDATE planets
+            SET resource_4 = max_worker
+            WHERE resource_4 > max_worker';
+
+    $db->query($sql);
+
+    $game->out('<span class="sub_caption2">Successfully delivered #'.$_POST['ticks'].' resources of each type for all players</span><br><br>');
+
+    $fp = fopen(ADMIN_LOG_FILE, 'a');
+    fwrite($fp, '<hr><br><i>'.date('d.m.y H:i:s', time()).'</i>&nbsp;&nbsp;&nbsp;<b>Action:</b> The User <b>'.$game->player['user_name'].'</b> has delivered <b>'.$_POST['ticks'].'</b> resources of <b>all types</b> for <b>all players</b><br>');
+    fclose($fp);
+
+    $game->out('<br><br><a href="'.parse_link('a=tools/players/deliver_resources').'">Back</a>');
+}
+else {
+    $game->out('
+        <form method="post" action="'.parse_link('a=tools/players/deliver_resources').'">
+        <table border="0" cellpadding="2" cellspacing="2" class="style_outer">
+        <tr>
+            <td>
+            <table border="0" cellpadding="2" cellspacing="2" class="style_inner">
+            <tr>
+                <td>Ticks:</td>
+                <td><input class="field" type="text" name="ticks" value="'.$_POST['ticks'].'"></td>
+            </tr>
+            <tr>
+                <td colspan=2" align="center"><input class="button" type="submit" name="submit" value="Submit"><td>
+            </tr>
+            </table>
+            </td>
+        </tr>
+        </table>
+        </form>');
 }
 
-$sql = ' UPDATE planets
-         SET resource_1 = resource_1 + (add_1 * '.$_GET['ticks'].'),
-             resource_2 = resource_2 + (add_2 * '.$_GET['ticks'].'),
-             resource_3 = resource_3 + (add_3 * '.$_GET['ticks'].'),
-             resource_4 = resource_4 + (add_4 * '.$_GET['ticks'].')';
-             
-$db->query($sql);
-
-$sql = 'UPDATE planets
-        SET resource_1 = max_resources
-        WHERE resource_1 > max_resources';
-
-$db->query($sql);
-
-$sql = 'UPDATE planets
-        SET resource_2 = max_resources
-        WHERE resource_2 > max_resources';
-
-$db->query($sql);
-
-$sql = 'UPDATE planets
-        SET resource_3 = max_resources
-        WHERE resource_3 > max_resources';
-
-$db->query($sql);
-
-$sql = 'UPDATE planets
-        SET resource_4 = max_worker
-        WHERE resource_4 > max_worker';
-
-$db->query($sql);
 
 ?>

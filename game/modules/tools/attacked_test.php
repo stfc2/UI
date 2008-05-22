@@ -25,9 +25,14 @@ check_auth(STGC_DEVELOPER);
 
 class sdl {
     function log($text) {
-        echo $text.'<br>'.NL;
+        global $game;
+ 
+        $game->out($text.'<br>'.NL);
     }
 }
+
+
+$sdl = new sdl();
 
 $sql = 'UPDATE planets
         SET planet_next_attack = 0';
@@ -60,7 +65,7 @@ else {
 
         $already_processed[$move['dest']] = true;
 
-        // entnommen aus get_move_ship_details() und angepasst
+        // taken from get_move_ship_details() and adapted
 
         $sql = 'SELECT SUM(st.value_11) AS sum_sensors, SUM(st.value_12) AS sum_cloak
                 FROM scheduler_shipmovement ss
@@ -79,7 +84,7 @@ else {
         $move_sum_sensors = (!empty($move_ships['sum_sensors'])) ? (int)$move_ships['sum_sensors'] : 0;
         $move_sum_cloak = (!empty($move_ships['sum_cloak'])) ? (int)$move_ships['sum_cloak'] : 0;
 
-        // entnommen aus get_friendly_orbit_fleets()
+        // taken from get_friendly_orbit_fleets()
 
         $sql = 'SELECT DISTINCT f.user_id,
                        u.user_alliance,

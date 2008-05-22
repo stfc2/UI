@@ -29,15 +29,17 @@ function stgc_nf($int) {
     return number_format($int, 0, '.', '.');
 }
 
+$game->out('<span class="caption">Unit Stats</span><br><br>');
+
 $game->out('
-<table align="center" width=450 border=0 cellpadding=0 cellspacing=0>
+<table align="center" width=450 border=0 cellpadding=2 cellspacing=2 class="style_outer"><tr><td>
+<table align="center" width=450 border=0 cellpadding=2 cellspacing=2 class="style_inner">
   <tr>
-    <td width=150><b>Einheitenklasse</b></td>
-    <td width=100><b>stationiert</b></td>
-    <td width=100><b>auf Reise</b></td>
-    <td width=100><b>gesamt</b></td>
+    <td width=150><b>Unit class</b></td>
+    <td width=100><b>Stationed</b></td>
+    <td width=100><b>On journey</b></td>
+    <td width=100><b>Total</b></td>
   </tr>
-  <br>
 ');
 
 $n_on_planets = $n_on_travel = 0;
@@ -70,12 +72,13 @@ for($i = 1; $i <= 6; ++$i) {
 $game->out('
   <tr height=15><td></td></tr>
   <tr>
-    <td><i><u>gesamt</u></i></td>
+    <td><i><u>Total</u></i></td>
     <td>'.stgc_nf($n_on_planets).'</td>
     <td>'.stgc_nf($n_on_travel).'</td>
     <td>'.stgc_nf(($n_on_planets + $n_on_travel)).'</td>
   <tr>
 </table>
+</td></tr></table>
 ');
 
 ?>

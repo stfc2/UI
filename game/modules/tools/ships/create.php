@@ -25,6 +25,8 @@ $game->init_player();
 
 check_auth(STGC_DEVELOPER);
 
+$game->out('<span class="caption">Create Ships</span><br><br>');
+
 if(isset($_POST['submit'])) {
     $template_id = (int)$_POST['template_id'];
     $n_ships = (int)$_POST['n_ships'];
@@ -39,11 +41,11 @@ if(isset($_POST['submit'])) {
     $sql = 'SELECT *
             FROM ship_templates
             WHERE id = '.$template_id;
-            
+
     if(($stpl = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query ship template data');
     }
-    
+
     switch($add_type) {
         case 1:
             $sql = 'INSERT INTO ship_fleets (fleet_name, user_id, planet_id, move_id, n_ships)
@@ -52,9 +54,9 @@ if(isset($_POST['submit'])) {
             if(!$db->query($sql)) {
                 message(DATABASE_ERROR, 'Could not insert new fleets data');
             }
-            
+
             $fleet_id = $db->insert_id();
-            
+
             if(!$fleet_id) {
                 message(GENERAL, 'Error', '$fleet_id = empty');
             }
@@ -68,23 +70,23 @@ if(isset($_POST['submit'])) {
             if(!$db->query($sql)) {
                 message(DATABASE_ERROR, 'Could not update fleets n_ships data');
             }
-        
+
             $fleet_id = $add_fleet_id;
         break;
-        
+
         case 3:
             $fleet_id = (-1)*$offduty_planet;
         break;
     }
-    
+
     if($units == 1) {
         $units_str = $stpl['min_unit_1'].', '.$stpl['min_unit_2'].', '.$stpl['min_unit_3'].', '.$stpl['min_unit_4'];
     }
     else {
         $units_str = $stpl['max_unit_1'].', '.$stpl['max_unit_2'].', '.$stpl['max_unit_3'].', '.$stpl['max_unit_4'];
     }
-        
-    
+
+
     $sql = 'INSERT INTO ships (fleet_id, user_id, template_id, experience, hitpoints, construction_time, unit_1, unit_2, unit_3, unit_4)
             VALUES ('.$fleet_id.', '.$user_id.', '.$template_id.', '.$stpl['value_9'].', '.$stpl['value_5'].', '.$game->TIME.', '.$units_str.')';
             
@@ -107,7 +109,7 @@ if(isset($_POST['submit'])) {
     }
 
     $fp = fopen(ADMIN_LOG_FILE, 'a');
-      fwrite($fp, '<hr><br><i>'.date('d.m.y H:i:s', time()).'</i>&nbsp;&nbsp;&nbsp;<b>Aktion:</b> Der User <b>'.$game->player['user_name'].'</b> hat für Spieler <b>'.$user['user_name'].' (#'.$user_id.')</b> Schiffe generiert - <b>'.$n_ships.'</b> vom Template <b>'.$template['name'].' (#'.$template_id.')</b> an Planet <b>#'.$new_fleet_planet.'</b><br>');
+      fwrite($fp, '<hr><br><i>'.date('d.m.y H:i:s', time()).'</i>&nbsp;&nbsp;&nbsp;<b>Action:</b> The User <b>'.$game->player['user_name'].'</b> has generated <b>'.$n_ships.'</b> ships for Player <b>'.$user['user_name'].' (#'.$user_id.')</b> -  from Template <b>'.$template['name'].' (#'.$template_id.')</b> on Planet <b>#'.$new_fleet_planet.'</b><br>');
       fclose($fp);
 
     redirect('a=tools/ships/create');
@@ -118,7 +120,7 @@ elseif(!empty($_GET['filter_type'])) {
     switch($filter_type) {
         case 'ship_torso':
             $filter_id = (int)$_GET['filter_id'];
-            
+
             $sql = 'SELECT st.id, st.ship_torso, st.race, st.name,
                            u.user_name
                     FROM ship_templates st
@@ -126,7 +128,7 @@ elseif(!empty($_GET['filter_type'])) {
                     WHERE st.ship_torso = '.$filter_id.'
                     ORDER BY st.name ASC';
         break;
-        
+
         case 'race':
             $filter_id = (int)$_GET['filter_id'];
             
@@ -137,7 +139,7 @@ elseif(!empty($_GET['filter_type'])) {
                     WHERE st.race = '.$filter_id.'
                     ORDER BY st.name ASC';
         break;
-        
+
         case 'none':
             $sql = 'SELECT st.id, st.ship_torso, st.race, st.name,
                            u.user_name
@@ -146,7 +148,7 @@ elseif(!empty($_GET['filter_type'])) {
                     ORDER BY st.name ASC';
         break;
     }
-            
+
     if(!$q_stpls = $db->query($sql)) {
         message(DATABASE_ERROR, 'Could not query ship template data');
     }
@@ -156,19 +158,19 @@ elseif(!empty($_GET['filter_type'])) {
 <form method="post" action="'.parse_link('a=tools/ships/create').'">
 Template:&nbsp;&nbsp;<select name="template_id">
     ');
-    
+
     while($stpl = $db->fetchrow($q_stpls)) {
-        $game->out('<option value="'.$stpl['id'].'">'.$stpl['name'].' ('.$stpl['id'].', '.$SHIP_TORSO[$stpl['race']][$stpl['ship_torso']][29].', '.$RACE_DATA[$stpl['race']][0].') von '.$stpl['user_name'].'</option>');
+        $game->out('<option value="'.$stpl['id'].'">'.$stpl['name'].' ('.$stpl['id'].', '.$SHIP_TORSO[$stpl['race']][$stpl['ship_torso']][29].', '.$RACE_DATA[$stpl['race']][0].') of '.$stpl['user_name'].'</option>');
     }
-    
+
     $game->out('
 </select><br><br>
-Anzahl:&nbsp;&nbsp;<input class="field" type="text" name="n_ships">&nbsp;&nbsp;<select name="units"><option value="1">minimale Truppenstärke</option><option value="2">maximale Truppenstärke</option></select><br><br>
-Spieler:&nbsp;&nbsp;<input class="field" type="text" name="user_id"><br><br>
-<input type="radio" name="add_type" value="1" checked="checked">&nbsp;&nbsp;Neue Flotte:&nbsp;&nbsp;<input class="field" type="text" name="new_fleet_name">&nbsp;bei Planet&nbsp;<input class="field" type="text" name="new_fleet_planet"><br><br>
-<input type="radio" name="add_type" value="2">&nbsp;&nbsp;Flotte hinzufügen:&nbsp;&nbsp;<input class="field" type="text" name="add_fleet_id"><br><br>
-<input type="radio" name="add_type" value="3">&nbsp;&nbsp;Trockendock:&nbsp;&nbsp;<input class="field" type="text" name="offduty_planet"><br><br><br>
-<input class="button" type="submit" name="submit" value="Erstellen">
+Number:&nbsp;&nbsp;<input class="field" type="text" name="n_ships">&nbsp;&nbsp;<select name="units"><option value="1">minimal troop strength</option><option value="2">maximum troop strength</option></select><br><br>
+Player (ID):&nbsp;&nbsp;<input class="field" type="text" name="user_id"><br><br>
+<input type="radio" name="add_type" value="1" checked="checked">&nbsp;&nbsp;New fleet:&nbsp;&nbsp;<input class="field" type="text" name="new_fleet_name">&nbsp;At planet (ID)&nbsp;<input class="field" type="text" name="new_fleet_planet"><br><br>
+<input type="radio" name="add_type" value="2">&nbsp;&nbsp;Add to fleet (ID):&nbsp;&nbsp;<input class="field" type="text" name="add_fleet_id"><br><br>
+<input type="radio" name="add_type" value="3">&nbsp;&nbsp;Spacedock:&nbsp;&nbsp;<input class="field" type="text" name="offduty_planet"><br><br><br>
+<input class="button" type="submit" name="submit" value="Apply">
 </form>
     ');
 }
@@ -176,24 +178,24 @@ else {
     $game->out('
 <br><br>
 <center>
-Nach Torso:
+Show Torso:
     ');
-    
-    for($i = 0; $i < 10; ++$i) {
-        $game->out('[<a href="'.parse_link('a=tools/ships/create&filter_type=ship_torso&filter_id='.$i).'">'.$i.'</a>]');
+
+    for($i = 0; $i < 13; ++$i) {
+        $game->out('[<a href="'.parse_link('a=tools/ships/create&filter_type=ship_torso&filter_id='.$i).'">'.($i+1).'</a>]');
     }
     
     $game->out('
 <br><br>
     ');
-    
+
     for($i = 0; $i < count($RACE_DATA); ++$i) {
         $game->out('[<a href="'.parse_link('a=tools/ships/create&filter_type=race&filter_id='.$i).'">'.$RACE_DATA[$i][0].'</a>]');
     }
-    
+
     $game->out('
 <br><br>
-<a href="'.parse_link('a=tools/ships/create&filter_type=none').'">Alle Templates anzeigen</a> (<b>SEHR GROSSES DOKUMENT!!!!</b>)</center>
+<a href="'.parse_link('a=tools/ships/create&filter_type=none').'">Show all templates</a> (<b>VERY BIG DOCUMENT!!!!</b>)</center>
     ');
 }
 

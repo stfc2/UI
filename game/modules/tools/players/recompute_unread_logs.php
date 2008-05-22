@@ -26,10 +26,12 @@ $game->init_player();
 
 check_auth(STGC_DEVELOPER);
 
+$game->out('<span class="caption">Recompute unread logs</span><br><br>');
+
 $sql = 'SELECT user_id
 		FROM logbook
 		WHERE log_read = 0';
-		
+
 if(!$q_logs = $db->query($sql)) {
 	message(DATABASE_ERROR, 'Could not query logbook read data');
 }
@@ -38,21 +40,23 @@ $logs_by_user = array();
 
 while($log = $db->fetchrow($q_logs)) {
 	if(!isset($logs_by_user[$log['user_id']])) $logs_by_user[$log['user_id']] = 0;
-	
+
 	$logs_by_user[$log['user_id']]++;
 }
 
 $sql = 'SELECT user_id, unread_log_entries
 		FROM user';
-		
+
 if(!$q_user = $db->query($sql)) {
 	message(DATABASE_ERROR, 'Could not query user data');
 }
 
+$updated = false;
+
 while($user = $db->fetchrow($q_user)) {
 	$update_to = -1;
 	$old_count = (int)$user['unread_log_entries'];
-	
+
 	if(!isset($logs_by_user[$user['user_id']])) {
 		if($old_count != 0) {
 			$update_to = 0;
@@ -63,18 +67,23 @@ while($user = $db->fetchrow($q_user)) {
 			$update_to = $logs_by_user[$user['user_id']];
 		}
 	}
-	
+
 	if($update_to != -1) {
 		$sql = 'UPDATE user
 		        SET unread_log_entries = '.$update_to.'
-				WHERE user_id = '.$user['user_id'];
-				
+		        WHERE user_id = '.$user['user_id'];
+
 		if(!$db->query($sql)) {
 			message(DATABASE_ERROR, 'Could not update user #'.$user['user_id']);
 		}
-		
+
 		$game->out('Updating user #'.$user['user_id'].' from '.$old_count.' to '.$update_to.'<br>');
+
+		$updated = true;
 	}
 }
+
+if(!$updated)
+	$game->out('Nothing to update<br>');
 
 ?>
