@@ -22,26 +22,26 @@
 
 
 
-include_once('|script_dir|/config.inc.php');
+include_once('/home/taku/public_html/stfc/config.inc.php');
 
-// Zeilenumbruch
+// Line break
 
 define('NL', "\n");
 
 
 
-// Dauer eines Ticks in Minuten
+// Duration of ticks in minutes
 
 define('TICK_DURATION', 3);
 
 
 // Time offset
 
-define('TIME_OFFSET', 7200); // 3600 = Winterzeit, 7200 = Sommerzeit
+define('TIME_OFFSET', 3600); // 3600 = Winter time, 7200 = Summer time - AC: DO NOT USE ANYMORE!
 
 
 
-// Kapazitäten eines Transporters
+// Capacity of a transporter
 
 define('MAX_TRANSPORT_RESOURCES', 4000);
 
@@ -49,13 +49,13 @@ define('MAX_TRANSPORT_UNITS', 400);
 
 
 
-// Min. Truppen pro Planet
+// Min. Troops per Planet
 
 define('MIN_TROOPS_PLANET', 50);
 
 
 
-// user_auth_level-Konstantwerte
+// user_auth_level - Constant values
 
 define('STGC_PLAYER', 1);
 
@@ -77,7 +77,7 @@ define('DATA_UID', 2);
 
 
 
-// Logbuch-Konstantwerte
+// Logbuch - Constant values
 
 define('LOGBOOK_TACTICAL', 1);
 
@@ -99,14 +99,14 @@ define('LOGBOOK_REVOLUTION', 9);
 
 define('LOGBOOK_TACTICAL_2', 10);
 
-// Ferengi NPC-Händler:
+// Ferengi NPC-Dealers:
 
 define('FERENGI_TRADESHIP_ID', 2); // <-- Template, not ship!
 
 define('FERENGI_USERID', 3);
 
 
-// Unabhängigen-NPC:
+// Independent-NPC:
 
 define('INDEPENDENT_USERID', 4);
 
@@ -115,24 +115,28 @@ define('INDEPENDENT_USERID', 4);
 
 define('SUPPORTUSER', 5);
 
+// Borg NPC:
 
-// Schiffstypen-Konstantwerte
+define('BORG_USERID', 6);
 
-define('SHIP_TYPE_SCOUT', 0); // Wenn dies geändert wird, UNBEDINGT action_22.php updaten!
 
-                              // Ich hab dort eine Optimierung, die erfordert, dass Scouts
+// Ship types - Constant values
 
-                              // die niedrigste aller torso-IDs haben
+define('SHIP_TYPE_SCOUT', 0); // If this is changed, STRICTLY update action_22.php!
+
+                              // I have an optimization that requires scouts
+
+                              // has the lowest of all torso IDs
 
 define('SHIP_TYPE_TRANSPORTER', 1);
 
 define('SHIP_TYPE_COLO', 2);
 
-define('SHIP_TYPE_ORB', 12); // Mobile Orbitalgeschütze
+define('SHIP_TYPE_ORB', 12); // Mobile Orbital gun
 
 
 
-// Alarmstufe-Konstantwerte
+// Alarm status - Constant values
 
 define('ALERT_PHASE_GREEN', 0);
 
@@ -142,7 +146,7 @@ define('ALERT_PHASE_RED', 2);
 
 
 
-// Allianzstatus-Konstantwerte
+// Alliance status - Constant values
 
 define('ALLIANCE_STATUS_MEMBER', 1);
 
@@ -153,7 +157,7 @@ define('ALLIANCE_STATUS_OWNER', 3);
 define('ALLIANCE_STATUS_DIPLO', 4);
 
 
-// Allianzdiplomatie-Konstantwerte
+// Alliance diplomacy - Constant values
 
 define('ALLIANCE_DIPLOMACY_WAR', 1);
 
@@ -163,19 +167,19 @@ define('ALLIANCE_DIPLOMACY_PACT', 3);
 
 
 
-define('PLANETARY_DEFENSE_ATTACK',50);
+define('PLANETARY_DEFENSE_ATTACK',100);
 
-define('PLANETARY_DEFENSE_ATTACK2',175);
+define('PLANETARY_DEFENSE_ATTACK2',350);
 
-define('PLANETARY_DEFENSE_DEFENSE',250);
+define('PLANETARY_DEFENSE_DEFENSE',500);
 
 
 
-define('SPLANETARY_DEFENSE_ATTACK',150);
+define('SPLANETARY_DEFENSE_ATTACK',300);
 
 define('SPLANETARY_DEFENSE_ATTACK2',0);
 
-define('SPLANETARY_DEFENSE_DEFENSE',200);
+define('SPLANETARY_DEFENSE_DEFENSE',400);
 
 
 
@@ -185,7 +189,7 @@ define('USER_MIN_CANCEL_ATKPTC', 1000);
 
 
 
-// Für parse_link_ex()
+// For parse_link_ex()
 
 define('LINK_CLICKID', 1);
 
@@ -197,6 +201,23 @@ define('DATABASE_ERROR', 2);
 
 define('NOTICE', 3);
 
+
+
+// Constants for ships's refit
+define('REFIT_TICK', 5);
+
+define('NEXT_REFIT_TICK', 2400);
+
+// Possible values of ship_untouchable
+define('SHIP_IS_READY', 0);
+
+define('SHIP_IN_REPAIR', 1);
+
+define('SHIP_IN_REFIT', 2);
+
+// Valore indicativo di controllo decadenza scafo
+
+define('SHIP_RUST_CHECK', 700);
 
 
 
@@ -417,56 +438,52 @@ $MAX_POINTS = array(
 
 
 
-$NUM_BUILDING = 12; // 0-x von daher bei 12 Gebäuden == 11
+$NUM_BUILDING = 12; // 0-x therefore 12 Buildings == 11
 
 
-/* Raumhafen Ausbaustufe => nummber of ships
+/* Space port expansion stage => number of ships */
 
-Original version: 
 $MAX_SPACEDOCK_SHIPS = array(
-    0 => 0,
-    1 => 5,
-	2 => 10,
-	3 => 20,
-	4 => 35,
-	5 => 55,
-	6 => 100,
-	7 => 300,
-	8 => 600,
-	9 => 1000,
+	0 => 0,
+	1 => 10,
+	2 => 20,
+	3 => 30,
+	4 => 40,
+	5 => 50,
+	6 => 60,
+	7 => 70,
+	8 => 80,
+	9 => 90,
+	10 => 100,
+	11 => 110,
+	12 => 120,
+	13 => 130,
+	14 => 140,
+	15 => 150,
+);
+
+/* Non sense version: 
+$MAX_SPACEDOCK_SHIPS = array(
+
+	0 => 0,
+	1 => 1000000,
+	2 => 1000000,
+	3 => 1000000,
+	4 => 1000000,
+	5 => 1000000,
+	6 => 1000000,
+	7 => 1000000,
+	8 => 1000000,
+	9 => 1000000,
+	10 => 1000000,
+	11 => 1000000,
+	12 => 1000000,
+	13 => 1000000,
+	14 => 1000000,
+	15 => 1000000,
+
 );
 */
-
-$MAX_SPACEDOCK_SHIPS = array(
-
-    0 => 0,
-
-    1 => 1000000,
-	
-	2 => 1000000,
-	
-	3 => 1000000,
-	
-	4 => 1000000,
-	
-	5 => 1000000,
-	
-	6 => 1000000,
-	
-	7 => 1000000,
-	
-	8 => 1000000,
-	
-	9 => 1000000,
-        10 => 1000000,
-        11 => 1000000,
-        12 => 1000000,
-        13 => 1000000,
-        14 => 1000000,
-        15 => 1000000,
-     
-);
-
 
 $QUADRANT_NAME = array(
 
@@ -490,17 +507,17 @@ $QUADRANT_NAME = array(
 
  * 0 => Metall
 
- * 1 => Mineralien
+ * 1 => Minerals
 
- * 2 => Latinum
+ * 2 => Dilithium
 
- * 3 => Arbeiter
+ * 3 => Workers
 
- * 4 => Bauzeit
+ * 4 => Construction period
 
- * 5 => Angriff
+ * 5 => Attack
 
- * 6 => Verteidigung
+ * 6 => Defence
 
  */
 
@@ -633,15 +650,15 @@ $UNIT_DATA = array(
 
 /*
 
- * 0 => Metall
+ * 0 => Metal
 
- * 1 => Mineralien
+ * 1 => Minerals
 
- * 2 => Latinum
+ * 2 => Dilithium
 
- * 3 => Bauzeit
+ * 3 => Construction period
 
- * 4 => Bauzeitanstieg pro Lv
+ * 4 => Construction period increase per Lev
 
  */
 
@@ -649,7 +666,7 @@ $UNIT_DATA = array(
 
 $BUILDING_DATA = array(
 
-    // Hauptquartier
+    // Headquarter
 
     0 => array(
 
@@ -667,7 +684,7 @@ $BUILDING_DATA = array(
 
 
 
-    // Metallminen
+    // Metal mines
 
     1 => array(
 
@@ -685,7 +702,7 @@ $BUILDING_DATA = array(
 
 
 
-    // Mineralienminen
+    // Minerals mines
 
     2 => array(
 
@@ -703,7 +720,7 @@ $BUILDING_DATA = array(
 
 
 
-    // Latinumraffinerie
+    // Dilithium refinery
 
     3 => array(
 
@@ -721,7 +738,7 @@ $BUILDING_DATA = array(
 
 
 
-    // Kraftwerk
+    // Power plant
 
     4 => array(
 
@@ -739,7 +756,7 @@ $BUILDING_DATA = array(
 
 
 
-    // Akademie
+    // Academy
 
     5 => array(
 
@@ -757,7 +774,7 @@ $BUILDING_DATA = array(
 
 
 
-    // Raumhafen
+    // Space port
 
     6 => array(
 
@@ -775,7 +792,7 @@ $BUILDING_DATA = array(
 
 
 
-    // Schiffswerft
+    // Shipyard
 
     7 => array(
 
@@ -793,7 +810,7 @@ $BUILDING_DATA = array(
 
 
 
-    // Forschungszentrum
+    // Research Center
 
     8 => array(
 
@@ -811,7 +828,7 @@ $BUILDING_DATA = array(
 
 
 
-    // Planetare Verteidigung
+    // Planetary Defense
 
     9 => array(
 
@@ -829,7 +846,7 @@ $BUILDING_DATA = array(
 
 
 
-    // Handelszentrum
+    // Trade Centre
 
     10 => array(
 
@@ -845,7 +862,7 @@ $BUILDING_DATA = array(
 
     ),
 
-    // Lagerhallen
+    // Warehouses
 
     11 => array(
 
@@ -865,7 +882,7 @@ $BUILDING_DATA = array(
 
 
 
-    // Planetare Verteidigung
+    // Planetary Defense
 
     12 => array(
 
@@ -893,15 +910,15 @@ $BUILDING_DATA = array(
 
 /**
 
- * 0 => Metall
+ * 0 => Metal
 
- * 1 => Mineralien
+ * 1 => Minerals
 
- * 2 => Latinum
+ * 2 => Dilithium
 
- * 3 => Forschzeit
+ * 3 => Forschzeit / Vigorous time?
 
- * 4 => Forschzeitanstieg pro Lv
+ * 4 => Forschzeitanstieg pro Lv / Vigorous time rise per Lv?
 
  */
 
@@ -909,7 +926,7 @@ $BUILDING_DATA = array(
 
 $TECH_DATA = array(
 
-    // Schiffswaffen
+    // Ship weapons
 
     0 => array(
 
@@ -927,7 +944,7 @@ $TECH_DATA = array(
 
 
 
-    // Warpfeld
+    // Warp Field
 
     1 => array(
 
@@ -945,7 +962,7 @@ $TECH_DATA = array(
 
 
 
-    // Schildforschung
+    // Shield research
 
     2 => array(
 
@@ -963,7 +980,7 @@ $TECH_DATA = array(
 
 
 
-    // Infaterietaktik
+    // Infaterie tactic
 
     3 => array(
 
@@ -981,7 +998,7 @@ $TECH_DATA = array(
 
 
 
-    // Sensoren
+    // Sensors
 
     4 => array(
 
@@ -1017,7 +1034,7 @@ $TECH_DATA = array(
 
 
 
-    // Medizinische Forschung
+    // Medical Research
 
     6 => array(
 
@@ -1035,7 +1052,7 @@ $TECH_DATA = array(
 
 
 
-    // Planetare Verteidigung
+    // Planetary Defense
 
     7 => array(
 
@@ -1053,7 +1070,7 @@ $TECH_DATA = array(
 
 
 
-    // Automatisierung
+    // Automation
 
     8 => array(
 
@@ -1071,7 +1088,7 @@ $TECH_DATA = array(
 
 
 
-    // Rohstoffverarbeitung
+    // Raw materials processing
 
     9 => array(
 
@@ -1095,7 +1112,7 @@ $TECH_DATA = array(
 
 $WARP_FACTOR_BASE = 4;
 
-$SYSTEM_WIDTH = 504; // Lichtminuten
+$SYSTEM_WIDTH = 504; // Light minutes
 
 
 
@@ -1133,33 +1150,33 @@ $ENGINE_RESEARCH_LEVEL = array(
 
 /*
 
- * 0 => Metall pro Tick
+ * 0 => Metal per Tick
 
- * 1 => Mineralien pro Tick
+ * 1 => Minerals per Tick
 
- * 2 => Latinum pro Tick
+ * 2 => Dilithium per Tick
 
- * 3 => Arbeiter pro Tick
+ * 3 => Workers per Tick
 
- * 4 => Baukosten
+ * 4 => Cost
 
- * 5 => Bauzeit
+ * 5 => Construction period
 
- * 6 => maximale Ressourcen
+ * 6 => Maximum resources
 
- * 7 => maximale Einheiten
+ * 7 => Maximum units
 
- * 8 => Größe
+ * 8 => Size
 
- * 9 => Farbe
+ * 9 => Color
 
- * 10 => Einheitenkosten
+ * 10 => Unit costs
 
- * 11 => Einheitenbauzeit
+ * 11 => Unit construction period
 
- * 12 => Forschungskosten
+ * 12 => Research and development expenses
 
- * 13 => Forschungsdauer
+ * 13 => Research duration
 
  */
 
