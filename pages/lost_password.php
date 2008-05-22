@@ -51,17 +51,17 @@ function generate_random_string($n_chars) {
 
 
 $main_html .= '
-<center><span class="caption">Passwort vergessen</span></center><br>';
+<center><span class="caption">Forgotten password</span></center><br>';
 
-if ($_POST['galaxy']==0)
+if (isset($_POST['galaxy']) && $_POST['galaxy']==0)
 {
 $error = false;
-$message='Folgende Probleme traten auf:';
+$message='The following problems occurred:';
 if(($player = $db->queryrow('SELECT user_id, user_email, user_name FROM user WHERE user_name="'.htmlspecialchars($_POST['user_name']).'" AND user_loginname="'.htmlspecialchars($_POST['user_loginname']).'"')) === false) {message(DATABASE_ERROR, 'user_query: Could not query user data'); exit();}
 
-if (!isset($player['user_id'])) {$message.='<br>Benutzername oder Loginname ist falsch'; $error=1;}
+if (!isset($player['user_id'])) {$message.='<br>User name or login name is misspelled'; $error=1;}
 else
-if (strcmp(strtolower($_POST['user_email']),strtolower($player['user_email']))!=0) {$message.='<br>Emailadresse ist falsch'; $error=1;}
+if (strcmp(strtolower($_POST['user_email']),strtolower($player['user_email']))!=0) {$message.='<br>Email adress is misspelled'; $error=1;}
 if (!$error)
 {
 $newpassword = generate_random_string(10);
@@ -70,21 +70,21 @@ if(($db->query($query)) === false) {message(DATABASE_ERROR, 'lostpassword_query:
 
 
     $mail_message =$_POST['user_name'].',
-du hast scheinbar ein neues Passwort beantragt.
-Um dich nun einzuloggen, benutze bitte dieses Passwort:
+You have apparently requested a new password.
+To try to login now, please use this password:
 '.$newpassword.'
 
-Wir raten dir, das Passwort nach dem 1. Login unter Einstellungen zu ändern.
+We advise you to change the password after logged in below settings page.
 
 Lebe lang und erfolgreich,
 Dein STGC Team.
 
 
-Impressum: |game_url|/index.php?a=imprint';
+Impression: http://stfc.nonsolotaku.it/index.php?a=imprint';
 
-send_mail("STFC Mailer","foobar@stgc.de",$_POST['user_name'],$player['user_email'],"STFC2 Passwort Erinnerung",$mail_message);
+send_mail("STFC Mailer","foobar@stgc.de",$_POST['user_name'],$player['user_email'],"STFC2 Password Reminder",$mail_message);
 
-$message='Du wirst in Kürze dein neues Passwort per Email erhalten.';
+$message='You will soon receive your new password via e-mail.';
 }
 }
 
@@ -99,12 +99,12 @@ $main_html .= '
 <table align="center" border="0" cellpadding="2" cellspacing="2" width="380" class="border_grey" style="background-image:url(\'gfx/template_bg.jpg\'); background-position:left; background-repeat:yes;">
   <tr>
     <td width="100%">
-    <center><b>Achtung: Du wirst ein neues, zufällig erstelltes Passwort erhalten.</b></center><br>
+    <center><b>Caution: You will get a new, randomly generated password.</b></center><br>
     <center>'.(@$message).'</center><br>
     
       <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td width="30%"><b>Spieler</b>name:</td>
+          <td width="30%"><b>User</b>name:</td>
           <td width="70%"><input type="text" name="user_name" size="30" class="field" value="'.$user_name.'"></td>
         </tr>
 
@@ -114,12 +114,12 @@ $main_html .= '
         </tr>
 
         <tr>
-          <td>Emailadresse:</td>
+          <td>Email adress:</td>
           <td><input type="text" name="user_email" size="30" class="field" value="'.$user_email.'"></td>
         </tr>
 	
 	<tr>
-          <td>Galaxie:</td>
+          <td>Galaxy:</td>
           <td>
             <select name="galaxy">
               <option value="0">Brown Bobby ['.$player_online['num'].' online]</option>
@@ -132,8 +132,8 @@ $main_html .= '
 </table>
 <br>
 <center>
-[<a href="index.php?a=login">Zurück zum Login</a>]<br><br>
-<input class="button" type="submit" name="stgc_password" value="Passwort anfordern">
+[<a href="index.php?a=login">Back to Login</a>]<br><br>
+<input class="button" type="submit" name="stgc_password" value="Request password">
 </center>
 </form>
 ';

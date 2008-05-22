@@ -21,7 +21,7 @@
 */
 
 
-$main_html='<center><span class="caption">Impressum</span></center>
+$main_html='<center><span class="caption">Credits</span></center>
 <br>
 <center>
 <table border=0 cellpadding=0 cellspacing=0>
@@ -30,15 +30,15 @@ $main_html='<center><span class="caption">Impressum</span></center>
 
 
 <table border=0 cellpadding=0 cellspacing=0>
-<tr><td width=150 valign=top><span class="sub_caption"><b>Betreiber:</td><td width=50>&nbsp;</span></b></td></tr>
+<tr><td width=150 valign=top><span class="sub_caption"><b>Operators:</td><td width=50>&nbsp;</span></b></td></tr>
 </table>
 
 <table border=0 cellpadding=0 cellspacing=0>
-<tr><td width=50 valign=top>&nbsp;</td><td width=120>Vorname Nachname</td><td width=30 valign=top>&nbsp;</td><td width=120><font></font></td></tr>
-<tr><td width=50 valign=top>&nbsp;</td><td width=120>Nickname</td><td width=30 valign=top>&nbsp;</td><td width=120><fon></font></td></tr>
-<tr><td width=50 valign=top>&nbsp;</td><td width=120>Straﬂe</td><td width=30 valign=top>&nbsp;</td><td width=120><font></font></td></tr>
-<tr><td width=50 valign=top>&nbsp;</td><td width=120>PLZ Stadt</td><td width=30 valign=top>&nbsp;</td><td width=120><font></font></td></tr>
-<tr><td width=50 valign=top>&nbsp;</td><td width=120><a href="mailto:foobar@stgc.de"><u>Kontakt</u></a></td><td width=30 valign=top>&nbsp;</td><td width=120></td></tr>
+<tr><td width=50 valign=top>&nbsp;</td><td width=120>Firstnames</td><td width=30 valign=top>&nbsp;</td><td width=200><font>Aldo, Andrea, Bruno, Cristiano</font></td></tr>
+<tr><td width=50 valign=top>&nbsp;</td><td width=120>Nicknames</td><td width=30 valign=top>&nbsp;</td><td width=200><font>Picard, Archer, Lares, Kail</font></td></tr>
+<tr><td width=50 valign=top>&nbsp;</td><td width=120>Town</td><td width=30 valign=top>&nbsp;</td><td width=200><font>Genoa</font></td></tr>
+<tr><td width=50 valign=top>&nbsp;</td><td width=120>ZIP</td><td width=30 valign=top>&nbsp;</td><td width=180><font>16100</font></td></tr>
+<tr><td width=50 valign=top>&nbsp;</td><td width=120><a href="mailto:admin@nonsolotaku.it"><u>Contact</u></a></td><td width=30 valign=top>&nbsp;</td><td width=120></td></tr>
 </table>
 
 <br>
@@ -48,7 +48,7 @@ $main_html='<center><span class="caption">Impressum</span></center>
 <br>
 <span style="font-size:10pt">Star Trekô is a registered trademark of Paramount Pictures.<br>
 This site is strictly non-profit.<br>No copyright infringement is intended.<br>
-All other Content is copyrighted by the siteowner,<br>unless otherwise noted.<br>©2003-2006</span>
+All other Content is copyrighted by the siteowner,<br>unless otherwise noted.<br>©2006-2008</span>
 
 
 

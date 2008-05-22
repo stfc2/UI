@@ -22,7 +22,7 @@
 
 
 if( (empty($_GET['user_id'])) || (empty($_GET['key'])) ) {
-    $main_html = '<br><br><br><br><center><span class="caption">Ungültiger Aufruf</span></center>';
+    $main_html = '<br><br><br><br><center><span class="caption">Bad call</span></center>';
     return 1;
 }
 
@@ -33,7 +33,7 @@ $sql = 'SELECT user_id, user_registration_ip, last_ip
         WHERE user_id = '.$user_id;
         
 if(($user = $db->queryrow($sql)) === false) {
-    $main_html = '<br><br><br><br><center><span class="caption">Ungültiger Aufruf</span></center>';
+    $main_html = '<br><br><br><br><center><span class="caption">Bad call</span></center>';
     return 1;
 }
 
@@ -42,7 +42,7 @@ $last_ip_split = explode('.', $user['last_ip']);
 $confirm_key = md5( ((int)$reg_ip_split[0] + (int)$reg_ip_split[1] + (int)$reg_ip_split[2] + (int)$reg_ip_split[3]) * ((int)$last_ip_split[0] + (int)$last_ip_split[1] + (int)$last_ip_split[2] + (int)$last_ip_split[3]) - (int)$user_id );
 
 if($_GET['key'] != $confirm_key) {
-    $main_html = '<br><br><br><br><center><span class="caption">Der Bestätigungscode ist ungültig</span></center>';
+    $main_html = '<br><br><br><br><center><span class="caption">The confirmation code is invalid</span></center>';
     return 1;
 }
 
@@ -51,12 +51,12 @@ $sql = 'UPDATE user
         WHERE user_id = '.$user_id;
         
 if(!$db->query($sql)) {
-    die('Datenbankfehler aufgetreten - Konnte Benutzer nicht zum Löschen eintragen');
+    die('Database error - Could not delete registered user');
 }
 
 
-$main_html = '<center><span class="caption">Accountlöschung:</span></center><br>
-</center><br>Das Löschen deines Accounts wurde bestätigt.</b><br><br>Er wird bei der Berechnung des nächsten Ticks (max. in 3 min) endgültig gelöscht.<br><br><br>';
+$main_html = '<center><span class="caption">Account deletion:</span></center><br>
+</center><br>The deletion of your account was confirmed.</b><br><br>It will be finally deleted with the computation of the next Ticks (max. in 3 min).<br><br><br>';
 
 
 ?>

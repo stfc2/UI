@@ -21,30 +21,30 @@
 */
 
 $proverbs = array(
-    'Unter den Waffen schweigen die Gesetze.',
-    'Die Wahrheit ist üblicherweise nur eine Entschuldigung für mangelnde Phantasie.',
-    'Verrat liegt wie die Schönheit im Auge des Betrachters.',
-    'Aus Feinden können sehr gefährliche Freunde werden.',
-    'Ein wahrer Sieg besteht darin,<br>dass dem Feind klar wird,<br>wie falsch es war,<br>überhaupt Widerstand zu leisten.',
-    'Das Glück begünstigt den Mutigen.',
-    'Wenn wir die Starken sind,<br>ist das nicht das Signal zum Krieg?',
-    'Diejenigen, die nichts aus der Geschichte lernen,<br>sind dazu verdammt, sie zu wiederholen.<br><br>Diejenigen, die nicht richtig aus der Geschichte lernen,<br>sind einfach nur verdammt.',
-    'Das ist alles, was ich über den Krieg weiß:<br>Einer gewinnt, einer verliert<br>und nichts ist nachher so,<br>wie es vorher war.',
-    'Reichtum ist zu wertvoll,<br>um ihn den Reichen zu überlassen.',
-    'Leben?<br>Das Leben ist wie eine Messerstecherei in einer völlig verdreckten Bar:<br>Wenn man auf dem Boden gezwungen wird,<br>steht am besten schnell wieder auf.',
-    'Absolute Macht korrumpiert absolut.<br>Was ein Problem ist.<br>Wenn man keine Macht hat.',
-    'Man kann dem Tod nicht für immer entrinnen.<br>Aber man kann es dem Schweinehund sehr schwer machen.',
-    'Vor dem Wissen kommen das Verstehen.<br>Vor dem Verstehen kommt das Sehen.<br>Vor dem Sehen kommt das Erkennen.<br>Vor dem Erkennen kommt das Wissen.',
-    'Erfolg ist die Summe richtiger Entscheidungen.',
-    'Der ungerechteste Frieden ist immer noch besser als der gerechteste Krieg.',
-    'Was für niemanden einen Nutzen zu haben scheint,<br>das wird auch nicht zum Ziel für Wünsche anderer.',
-    'Freiheit ist nicht das Abwerfen von Ketten - dies ist lediglich ihre Voraussetzung.<br>Freiheit ist das Vermögen, sich für einen Weg zu entscheiden und diesen zu gehen.<br><br>Doch sollte sich dieser Weg als falsch erweisen, so ist erneut eine Wahl zu treffen.<br>Wer ihn dennoch weitergeht, legt sich selbst in neue Ketten.',
-    'Der Anfänger einer Kampfkunst kann nicht kämpfen,<br>tut es aber oft.<br><br>Der Meister kann kämpfen,<br>tut es aber nur selten.',
-    'Es ist besser, unvollkommene Entscheidungen durchzuführen,<br>als immerzu nach vollkommenen Entscheidungen zu suchen,<br>die es niemals geben wird.',
-    'Wenn ein Löwe von rechts kommt,<br>sollte man nach links laufen.<br><br>In dieser Situation hilft es nicht kreativ zu sein,<br>es wird dich umbringen.',
-    'Der Sieger in einem Kampf Mann gegen Mann ist der derjeninge,<br>der eine Kugel mehr im Magazin hat.',
-    'Man verliert die meiste Zeit damit, dass man Zeit gewinnen will...',
-    'Wer Krieg führt, will nur Frieden nach seinen Bedingungen'
+    'Among the weapons mention the laws.',
+    'The truth is usually only an excuse for lack of imagination.',
+    'Betrayal is like the beauty in the eye of the beholder.',
+    'From enemies can be very dangerous friends.',
+    'A true victory consists of that the enemy becomes clear, how wrong it was, offering at all resistance.',
+    'The luck favours the brave.',
+    'If we are strong,<br>this is not the signal for war?',
+    'Those who do not learn from history,<br>are condemned to repeat it.<br><br>Those that do not learn from history,<br>are simply doomed.',
+    'That is all I know about the war:<br>One wins, one loses<br>and nothing is so afterwards,<br>as it was before.',
+    'Wealth is too valuable to him<br>the rich alone.',
+    'Life?<br>DThe life is like a knifing in a completely misprinted Bar:<br>If one is forced on the soil,<br>is best that rises fast again.',
+    'Absolute power corrupts absolutely.<br>What is a problem.<br>If you do not have power.',
+    'One can not always escape from death. But one can make it very difficult for the pig dog.',
+    'Before the knowledge come understanding. Before understanding seeing comes. Before seeing recognizing comes. Before recognizing the knowledge comes.',
+    'Success is the sum of correct decisions.',
+    'The most unfair peace is still better than the fairest war.',
+    'Which seems to have a use for nobody, does not become also the goal for desires other one.',
+    'Liberty is not throwing chains off - this is only their condition.<br>Liberty is the fortune to decide and to these go for a way.<br><br>But this way should prove as wrong, then again a choice is to be made.<br>Who continues nevertheless it, puts into new chains.',
+    'The beginner of a combat art cannot fight, however often does it.<br><br>The master can fight, does it however only rarely.',
+    'It is better to accomplish imperfect decisions,<br>to look all the time for perfect decisions which it will never come.',
+    'If a lion comes from right, one should run to the left.<br><br>In this situation it does not help to be creative, it you will kill.',
+    'The winner in a fight man against man is the derjeninge, who has a ball more in the magazine.',
+    'One loses most of the time so that you will gain time...',
+    'Who want war, only wants peace in accordance with its terms.'
 );
 
 $n_proverbs = count($proverbs);
@@ -72,11 +72,11 @@ function display_message($header,$message,$bg) {
 
 
 
-$main_html = '<center><span class="caption">Accountaktivierung</span></center><br>';
+$main_html = '<center><span class="caption">Account Activation</span></center><br>';
 
 
 if( (empty($_GET['user_id'])) || (empty($_GET['key'])) ) {
-display_message('Fehler bei der Accountaktivierung (Ungültiger Aufruf)','','ngc7742bg');
+display_message('Error in the account activation (Invalid call)','','ngc7742bg');
     return 1;
 }
 
@@ -87,7 +87,7 @@ $key = md5( pow( $user_id ,2) );
 $bg='ngc7742bg';
 
 if($gkey != $key) {
-display_message('Fehler bei der Accountaktivierung (Ungültiger Aktivierungscode #1)','',$bg);
+display_message('Error in the account activation (Invalid activation code #1)','',$bg);
 return 1;
 }
 
@@ -97,16 +97,16 @@ $sql = 'SELECT user_active
 
 	 
 if(($user_data = $db->queryrow($sql)) === false) {
-    die('Datenbankfehler - Konnte Benutzer nicht überprüfen');
+    die('Database error - Could not verify user');
 }
 
 if(empty($user_data['user_active'])) {
-	display_message('Fehler bei der Accountaktivierung (Ungültiger Aktivierungscode #2)','',$bg);
+	display_message('Error in the account activation (Invalid activation code #2)','',$bg);
     return 1;
 }
 
 if($user_data['user_active'] != 2) {
-	display_message('Fehler bei der Accountaktivierung (Spieler bereits aktiviert)','',$bg);
+	display_message('Error in the account activation (player already activated)','',$bg);
     return 1;
 }
 
@@ -120,6 +120,6 @@ mt_srand((double)microtime()*1000000);
 
 $current_proverb = $proverbs[mt_rand(0, ($n_proverbs - 1))];
 
-display_message('Dein Account wurde erfolgreich aktiviert!','Du kannst dich nun mit deinem Loginnamen und Passwort einloggen.<br><br>Bevor du dich nun in die Welt von STGC stürzt, noch eine Weisheit für ein erfolgreiches Spiel:<br><br><table width="100%" border="0" align="center"><tr><td width="10%">&nbsp;</td><td width="90%"><i>'.$current_proverb.'</i></td></tr></table>',$bg);
+display_message('Your account has been successfully activated!','You can now use your login name and password.<br><br>Before you go into the world of STFC, another wisdom for a successful game:<br><br><table width="100%" border="0" align="center"><tr><td width="10%">&nbsp;</td><td width="90%"><i>'.$current_proverb.'</i></td></tr></table>',$bg);
 
 ?>

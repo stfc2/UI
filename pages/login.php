@@ -33,17 +33,17 @@ $main_html .= '
     <td width="100%">
       <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background-image:url(\'gfx/template_bg.jpg\'); background-position:left; background-repeat:yes;">
         <tr>
-          <td width="30%">Loginname:</td>
+          <td width="30%">Login:</td>
           <td width="70%"><input type="text" name="user_name" size="30" class="field"></td>
         </tr>
 
         <tr>
-          <td>Passwort:</td>
+          <td>Password:</td>
           <td><input type="password" name="user_password" size="30" class="field"></td>
         </tr>
         
         <tr>
-          <td>Galaxie:</td>
+          <td>Galaxy:</td>
           <td>
             <select name="galaxy">
               <option value="./game/index.php" selected="selected">Brown Bobby ['.$player_online['num'].' online]</option> !-->
@@ -55,22 +55,22 @@ $main_html .= '
 	  
 	  <tr>
 	    <td>&nbsp;</td>
-        <td><input type="checkbox" name="proxy_mode" value="1">&nbsp;Ich verwende einen <a href=http://de.wikipedia.org/wiki/Proxy target=_blank><u>Proxyserver</u></a> *</td>
+        <td><input type="checkbox" name="proxy_mode" value="1">&nbsp;I use a <a href=http://en.wikipedia.org/wiki/Proxy target=_blank><u>Proxyserver</u></a> *</td>
 	  </tr>
       </table>
     </td>
   </tr>
   <tr>
     <td colspan=2>
-      * <i>Nur benutzen, wenn die Bilder nicht geladen werden.</i>
+      * <i>Only use it if the images are not loaded.</i>
     </td>
   </tr>
 </table>
 
 <br>
 <center>
-[<a href="index.php?a=lost_password">Passwort vergessen</a>]<br><br>
-<input class="button" type="submit" name="stgc_login" value="Bestätigen">
+[<a href="index.php?a=lost_password">Forgotten password</a>]<br><br>
+<input class="button" type="submit" name="stgc_login" value="Confirm">
 </center>
 </form>
 ';

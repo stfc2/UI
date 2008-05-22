@@ -22,14 +22,14 @@
 
 error_reporting(E_ERROR);
 
-$mimetype='Datei';
-if(strpos($_SERVER['REQUEST_URI'], ".mp3")) $mimetype='Musikdatei';
-if(strpos($_SERVER['REQUEST_URI'], ".txt")) $mimetype='Textdatei';
-if(strpos($_SERVER['REQUEST_URI'], ".php")) $mimetype='Seite';
-if(strpos($_SERVER['REQUEST_URI'], ".htm")) $mimetype='Seite';
-if(strpos($_SERVER['REQUEST_URI'], ".js")) $mimetype='Javascript-Datei';
-if(strpos($_SERVER['REQUEST_URI'], ".swf")) $mimetype='Flashsdatei';
-if(strpos($_SERVER['REQUEST_URI'], ".pdf")) $mimetype='PDF-Datei';
+$mimetype='Data';
+if(strpos($_SERVER['REQUEST_URI'], ".mp3")) $mimetype='Music data';
+if(strpos($_SERVER['REQUEST_URI'], ".txt")) $mimetype='Text data';
+if(strpos($_SERVER['REQUEST_URI'], ".php")) $mimetype='Site';
+if(strpos($_SERVER['REQUEST_URI'], ".htm")) $mimetype='Site';
+if(strpos($_SERVER['REQUEST_URI'], ".js")) $mimetype='Javascript-Data';
+if(strpos($_SERVER['REQUEST_URI'], ".swf")) $mimetype='Flash data';
+if(strpos($_SERVER['REQUEST_URI'], ".pdf")) $mimetype='PDF-Data';
 
 $main_html .= '
 <style type="text/css">
@@ -38,12 +38,12 @@ td.desc_row {  }
 td.value_row { color: #BOBOBO; font-weight: bold;}
 //-->
 </style>
-<center><span class="caption">Fehler 404</span></center><br>
+<center><span class="caption">404 Error</span></center><br>
 
 <table border="0" cellpadding="0" cellspacing="0" width="600" align="center">
   <tr>
     <td valign="top" align="center" width="600" valign=top>
-      <span class="sub_caption">Die angeforderte '.$mimetype.'<br>"'.$_SERVER['REQUEST_URI'].'"<br>existiert leider nicht.</span><br><br>
+      <span class="sub_caption">The requested '.$mimetype.'<br>"'.$_SERVER['REQUEST_URI'].'"<br>doesn&#146;t exist.</span><br><br>
     </td>
   </tr>
 </table>
