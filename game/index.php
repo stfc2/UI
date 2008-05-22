@@ -45,6 +45,7 @@ define('IN_SCHEDULER', false);
 // #############################################################################
 
 // Game-Objekt
+include('include/functions.sprache.php'); // include translations
 include('include/functions.php');
 $game = new game();
 
@@ -59,8 +60,8 @@ if(isset($_GET['sql_debug'])) $db->debug = true;
 // #############################################################################
 // Includes
 //include('include/text_planets.php');
-include('include/ship_data.php');
-include('include/race_data.php');
+//include('include/ship_data.php');
+//include('include/race_data.php');
 
 
 // #############################################################################
@@ -81,13 +82,13 @@ if($game->config['game_stopped'] == 1 && $game->player['user_auth_level'] != STG
 
 
 // Define the Overlib Stylesets:
-define('OVERLIB_STANDARD', "FGCOLOR, '#ffffff', TEXTCOLOR, '#ffffff', FGBACKGROUND,'".FIXED_GFX_PATH."skin1/bg_stars1.gif', BGCOLOR, '#335E35', BORDER, 2, CAPTIONFONT, 'Arial', CAPTIONSIZE, 2, TEXTFONT, 'Arial', TEXTSIZE, 2");
+define('OVERLIB_STANDARD', "FGCOLOR, '#000000', TEXTCOLOR, '#ffffff', FGBACKGROUND,'".FIXED_GFX_PATH."skin1/bg_stars1.gif', BGCOLOR, '#335E35', BORDER, 2, CAPTIONFONT, 'Arial', CAPTIONSIZE, 2, TEXTFONT, 'Arial', TEXTSIZE, 2");
 
 
 // #############################################################################
 // Nach PHP/Perl-UserAgent suchen
 if( (stristr($_SERVER['HTTP_USER_AGENT'], 'php')) || (stristr($_SERVER['HTTP_USER_AGENT'], 'perl')) ) {
-    stgc_log('illegal_user_agent', 'I don�t like the user agent '.$_SERVER['HTTP_USER_AGENT'].' of '.$game->player['user_name']);
+    stgc_log('illegal_user_agent', 'I don\'t like the user agent '.$_SERVER['HTTP_USER_AGENT'].' of '.$game->player['user_name']);
 }
 
 
@@ -149,7 +150,16 @@ if (file_exists('include/text_planets_'.$game->player['language'].'.php')) {
 }else{
 	include('include/text_planets.php');
 }
-
+if (file_exists('include/ship_data_'.$game->player['language'].'.php')) {
+	include('include/ship_data_'.$game->player['language'].'.php');
+}else{
+	include('include/ship_data.php');
+}
+if (file_exists('include/race_data_'.$game->player['language'].'.php')) {
+	include('include/race_data_'.$game->player['language'].'.php');
+}else{
+	include('include/race_data.php');
+}
 // #############################################################################
 
 

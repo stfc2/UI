@@ -80,6 +80,21 @@ if(!$db->query($sql)) {
     message(DATABASE_ERROR, 'Could not update notepad data');
 }
 
+switch($game->player['language'])
+{
+	case 'GER':
+		$title = 'Submitted new notepad data:';
+		$button ='Fenster schlie&beta;ßen';
+	break;
+	case 'ENG':
+		$title = 'Submitted new notepad data:';
+		$button ='Close window';
+	break;
+	case 'ITA':
+		$title = 'Nuovi dati inviati al blocco appunti:';
+		$button ='Chiudi finestra';
+	break;
+}
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -87,13 +102,13 @@ if(!$db->query($sql)) {
 <html>
 
 <head>
-  <title>Star Trek: Galaxy Conquest</title>
+  <title>Star Trek: Frontline Combat</title>
 
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
-  <meta name="description" content="ST: Galaxy Conquest ist ein kostenloses Browser basiertes Multiplayerspiel, indem Sie in der Rolle verschiedener Rassen und Völker das Universum übernehmen und die Geschichte neu schreiben können.">
+  <meta name="description" content="ST: Frontline Combat Conquest ist ein kostenloses Browser basiertes Multiplayerspiel, indem Sie in der Rolle verschiedener Rassen und Völker das Universum übernehmen und die Geschichte neu schreiben können.">
   <meta name="keywords" content="star trek, startrek, galaxy, conquest, universe, game, gratis, kostenlos, spiel, multiplayer, strategie, onlinegame, bbg, free, browser, based, galaxie, universum, klingon, klingonen, federation, föderation">
   <meta name="author" content="Florian Brede & Philipp Schmidt">
   <meta name="publisher" content="Florian Brede & Philipp Schmidt">
@@ -145,9 +160,9 @@ if(!$db->query($sql)) {
 
 <body bgcolor="#000000" text="#CCCCCC" background="<?php echo $game->PLAIN_GFX_PATH ?>general_bg.jpg">
 
-<span style="font-family: Arial,serif; font-size: 14pt; text-decoration: underline;">Submitted new notepad data:</span><br><br><span style="font-family: Arial,serif; font-size: 10pt; font-weight: bold;"><?php echo str_replace("\n", '<br>', $_POST['user_notepad']) ?></span><br><br><br>
+<span style="font-family: Arial,serif; font-size: 14pt; text-decoration: underline;"><?php echo $title ?></span><br><br><span style="font-family: Arial,serif; font-size: 10pt; font-weight: bold;"><?php echo str_replace("\n", '<br>', $_POST['user_notepad']) ?></span><br><br><br>
 
-<input type="button" class="button" onClick="JavaScript:self.close()" value="Fenster schließen">
+<input type="button" class="button" onClick="JavaScript:self.close()" value="<?php echo $button ?>">
 
 </body>
 

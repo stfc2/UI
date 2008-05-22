@@ -46,12 +46,12 @@ include('include/ship_data.php');
 include('include/race_data.php');
 include('include/sql.php');
 include('include/functions.php');
-
+include('template_manager.sprache.php');
 
 
 
 // #############################################################################
-// SQL-Objekt für Datenbankzugriff
+// SQL-Objekt fÃ¼r Datenbankzugriff
 $db = new sql($config['server'].":".$config['port'], $config['game_database'], $config['user'], $config['password']); // create sql-object for db-connection
 if(isset($_GET['sql_debug'])) $db->debug = true;
 
@@ -110,7 +110,7 @@ if( (!empty($_POST['change_skin'])) || (!empty($_GET['change_skin'])) ) {
 
     if(empty($skin_data['skin_id'])) {
 
-        message(GENERAL, 'Der gewählte Skin existiert nicht');
+        message(GENERAL, constant($game->sprache("TEXT0")));
 
     }
 
@@ -132,18 +132,18 @@ if( (!empty($_POST['change_skin'])) || (!empty($_GET['change_skin'])) ) {
 
     
 
-    /*$sql = 'UPDATE user
+    $sql = 'UPDATE user
 
             SET user_skinpath = "skin'.$skin_id.'/",
 
                 user_skin = '.$skin_id.'
 
-            WHERE user_id = '.$game->player['user_id'];*/
-$sql = 'UPDATE user
+            WHERE user_id = '.$game->player['user_id'];
+/*$sql = 'UPDATE user
 
             SET    user_skin = '.$skin_id.'
 
-            WHERE user_id = '.$game->player['user_id'];
+            WHERE user_id = '.$game->player['user_id'];*/
 
             
 
@@ -157,15 +157,15 @@ $sql = 'UPDATE user
 
     $main_html .= '
 
-Der Skin wurde erfolgreich auf <b>'.$skin_data['skin_name'].'</b> geändert.<br><br><br>
+'.constant($game->sprache("TEXT1")).' <b>'.$skin_data['skin_name'].'</b> '.constant($game->sprache("TEXT2")).'<br><br><br>
 
-Wenn sie einen eigenen GFX-Pfad verwenden, müssen sie sich noch <a href="'.$skin_data['gfxpack_link'].'"><b>hier</b></a> die<br>entsprechende GFX-Erweitertung herunterladen und installieren
+'.constant($game->sprache("TEXT3")).' <a href="'.$skin_data['gfxpack_link'].'">'.constant($game->sprache("TEXT4")).'
 
 <br><br><br>
 
 <form method="post" action="'.TPL_MGR_EXE.'">
 
-<input type="submit" class="button" name="back_to_index" value="<< Zurück">
+<input type="submit" class="button" name="back_to_index" value="'.constant($game->sprache("TEXT5")).'">
 
 </form>
 
@@ -181,7 +181,7 @@ elseif(!empty($_POST['edit_template'])) {
 
 <textarea class="textfield" cols="120" rows="30" wrap="off" name="template_html">'.$game->template_html.'</textarea><br><br>
 
-<input class="button" type="submit" name="back_to_index" value="<< Zurück">&nbsp;<input class="button" type="reset" value="Rückgängig">&nbsp;<input class="button" type="submit" name="submit_template" value="Übernehmen">
+<input class="button" type="submit" name="back_to_index" value="'.constant($game->sprache("TEXT5")).'">&nbsp;<input class="button" type="reset" value="'.constant($game->sprache("TEXT6")).'">&nbsp;<input class="button" type="submit" name="submit_template" value="'.constant($game->sprache("TEXT7")).'">
 
 </form>
 
@@ -249,7 +249,7 @@ elseif(!empty($_GET['skin_summary'])) {
 
     $main_html .= '
 
-<span style="font-size: 14px;">Übersicht der verfügbaren Skins:</span><br><br><br>
+<span style="font-size: 14px;">'.constant($game->sprache("TEXT8")).'</span><br><br><br>
 
 
 
@@ -267,7 +267,7 @@ elseif(!empty($_GET['skin_summary'])) {
 
               <td valign="top">
 
-                <b>'.$cur_skin['skin_name'].'</b> von <i>'.$cur_skin['skin_author'].'</i><br><br>'.$cur_skin['skin_desc'].'<br><br><a href="'.TPL_MGR_EXE.'?change_skin='.$cur_skin['skin_id'].'">zu diesem Skin wechseln</a><br><a href="'.$cur_skin['gfxpack_link'].'">GFX-Pack</a>
+                <b>'.$cur_skin['skin_name'].'</b> '.constant($game->sprache("TEXT9")).' <i>'.$cur_skin['skin_author'].'</i><br><br>'.$cur_skin['skin_desc'].'<br><br><a href="'.TPL_MGR_EXE.'?change_skin='.$cur_skin['skin_id'].'">'.constant($game->sprache("TEXT10")).'</a><br><a href="'.$cur_skin['gfxpack_link'].'">'.constant($game->sprache("TEXT11")).'</a>
 
               </td>
 
@@ -297,7 +297,7 @@ elseif(!empty($_GET['skin_summary'])) {
 
 <form method="post" action="'.TPL_MGR_EXE.'">
 
-<input type="submit" class="button" name="back_to_index" value="<< Zurück">
+<input type="submit" class="button" name="back_to_index" value="'.constant($game->sprache("TEXT5")).'">
 
 </form>
 
@@ -335,11 +335,11 @@ else {
 
 
 
-<i>Hinweis:</i> Der Template Editor ist auch dann noch vefügbar, wenn das Spiel durch einen Fehler im Template nicht richtig angezeigt wird.<br><br><br>
+'.constant($game->sprache("TEXT12")).'
 
 
 
-Aktueller Skin: '.( ($game->player['user_skin'] == 0) ? '<i>Benutzerdefiniert</i>' : '<b>'.$skins[$game->player['user_skin']].'</b>' ).'
+'.constant($game->sprache("TEXT13")).' '.( ($game->player['user_skin'] == 0) ? constant($game->sprache("TEXT14")) : '<b>'.$skins[$game->player['user_skin']].'</b>' ).'
 
 
 
@@ -353,7 +353,7 @@ Aktueller Skin: '.( ($game->player['user_skin'] == 0) ? '<i>Benutzerdefiniert</i
 
     <td width="50%">
 
-      Durch das Wählen eines vordefinierten Skins wird das Template und der Skin-Pfad automatisch gesetzt.<br><a href="'.TPL_MGR_EXE.'?skin_summary=1">Übersicht der verfügbaren Skins</a>
+      '.constant($game->sprache("TEXT15")).'<br><a href="'.TPL_MGR_EXE.'?skin_summary=1">'.constant($game->sprache("TEXT16")).'</a>
 
     </td>
 
@@ -393,13 +393,13 @@ Aktueller Skin: '.( ($game->player['user_skin'] == 0) ? '<i>Benutzerdefiniert</i
 
     <td width="50%">
 
-      Der HTML-Code des Skins kann auch noch manuell verändert und angepasst werden.
+      '.constant($game->sprache("TEXT17")).'
 
     </td>
 
     <td width="50%" align="center">
 
-      <input type="submit" class="button" name="edit_template" value="Template editieren">
+      <input type="submit" class="button" name="edit_template" value="'.constant($game->sprache("TEXT18")).'">
 
     </td>
 
@@ -439,9 +439,9 @@ echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
 
 
-  <meta name="description" content="ST: Galaxy Conquest ist ein kostenloses Browser basiertes Multiplayerspiel, indem Sie in der Rolle verschiedener Rassen und Völker das Universum übernehmen und die Geschichte neu schreiben können.">
+  <meta name="description" content="ST: Galaxy Conquest ist ein kostenloses Browser basiertes Multiplayerspiel, indem Sie in der Rolle verschiedener Rassen und VÃ¶lker das Universum Ã¼bernehmen und die Geschichte neu schreiben kÃ¶nnen.">
 
-  <meta name="keywords" content="star trek, startrek, galaxy, conquest, universe, game, gratis, kostenlos, spiel, multiplayer, strategie, onlinegame, bbg, free, browser, based, galaxie, universum, klingon, klingonen, federation, föderation">
+  <meta name="keywords" content="star trek, startrek, galaxy, conquest, universe, game, gratis, kostenlos, spiel, multiplayer, strategie, onlinegame, bbg, free, browser, based, galaxie, universum, klingon, klingonen, federation, fÃ¶deration">
 
   <meta name="author" content="Florian Brede & Philipp Schmidt">
 

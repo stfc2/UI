@@ -43,6 +43,7 @@ include('include/ship_data.php');
 include('include/race_data.php');
 include('include/sql.php');
 include('include/functions.php');
+include('modules/security.sprache.php'); // Translation module
 
 
 // create sql-object for db-connection
@@ -80,7 +81,7 @@ echo'
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-  <title>Star Trek: Galaxy Conquest</title>
+  <title>Star Trek: Frontline Combat</title>
 
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="pragma" content="no-cache">
@@ -131,7 +132,7 @@ echo'
 
 </head>
 <body bgcolor="#727272" text="#FFFFFF" background="'.$GFX_PATH.'template_bg.jpg">
-<center><span style="font-family: Verdana; font-size: 18px;">STGC Sicherheitscode:<br></span>
+<center><span style="font-family: Verdana; font-size: 18px;">'.constant($game->sprache("TEXT0")).'<br></span>
 <span style="font-family: Verdana; font-size: 12px;">
 ';
 
@@ -144,18 +145,18 @@ if (isset($_POST['click_x']))
 
 	if (sqrt(pow($_POST['click_x']-$arr[0],2)+pow($_POST['click_x']-$arr[0],2))<25)
 	{
-		echo 'Der angegebene Sicherheitscode war korrekt.<br><form><input type=button value="Schließen" class="button_nosize" onClick="JavaScript:self.close()"></form><script>self.close();</script>';
+		echo constant($game->sprache("TEXT1")).'<form><input type=button value="'.constant($game->sprache("TEXT6")).'" class="button_nosize" onClick="JavaScript:self.close()"></form><script>self.close();</script>';
 		$db->query('UPDATE user SET content_secimage="" WHERE user_id="'.$game->player['user_id'].'" LIMIT 1');
 	}
 	else
 	{
-		echo 'Du hast den falschen Kreis angeklickt, es erfolgt nun eine erzwungene Eingabe.<br><form><input type=button value="Schließen" class="button_nosize" onClick="JavaScript:self.close()"> </form>';
+		echo constant($game->sprache("TEXT7")).'<form><input type=button value="'.constant($game->sprache("TEXT6")).'" class="button_nosize" onClick="JavaScript:self.close()"> </form>';
 		$db->query('UPDATE user SET timeout_secimage="'.(time()-1).'" WHERE user_id="'.$game->player['user_id'].'" LIMIT 1');
 	}
 	
 }
 else
-echo 'Bitte klicke den Kreis an, der nicht vollständig geschlossen ist:<br>
+echo constant($game->sprache("TEXT8")).'<br>
 <form name="secimage" method="post" action="secimage_popup.php">
 <input type="image" name="click" src="'.$game->player['link_secimage'].'">
 </form>
@@ -163,7 +164,7 @@ echo 'Bitte klicke den Kreis an, der nicht vollständig geschlossen ist:<br>
 }
 else
 {
-echo 'Ungültiger Aufruf!';
+echo constant($game->sprache("TEXT5"));
 }
 
 echo '</body></html>';
