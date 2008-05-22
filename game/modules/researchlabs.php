@@ -21,38 +21,40 @@
 */
 
 
-// Kurze Erklärung zum Forschungssystem:
+// Kurze ErklÃ¤rung zum Forschungssystem:
 // a.) Lokale Forschung, in der Datenbank Forschungsid 0-4
 // b.) Komponentenforschung, in der Datenbank cat_id+5, also 5-xx.
 
 
 $game->init_player();
-include('include/static/static_components_'.$game->player['user_race'].'.php');
+$filename = 'include/static/static_components_'.$game->player['user_race'].'_'.$game->player['language'].'.php';
+if (!file_exists($filename)) $filename = 'include/static/static_components_'.$game->player['user_race'].'.php';
+include($filename);
 
 
-$game->out('<center><span class="caption">'.$BUILDING_NAME[$game->player['user_race']][8].':</span></center><br><br>');
+$game->out('<span class="caption">'.$BUILDING_NAME[$game->player['user_race']][8].':</span><br><br>');
 
 
 function CreateInfoText($comp)
 {
 global $db;
 global $game, $SHIP_TORSO;
-$text=$comp['description'].'<br><br><u>Kosten:<br></u><img src='.$game->GFX_PATH.'menu_metal_small.gif> '.$comp['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif> '.$comp['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif> '.$comp['resource_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_worker_small.gif> '.$comp['resource_4'].'<br><img src='.$game->GFX_PATH.'menu_unit1_small.gif> '.$comp['unit_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif> '.$comp['unit_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif> '.$comp['unit_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif> '.$comp['unit_4'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif> '.$comp['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif> '.$comp['unit_6'].'<br><u>Bauzeit</u>:  +'.($comp['buildtime']*TICK_DURATION).' Minuten<br><br><u>Auswirkungen:</u><br>';
-if ($comp['value_1']!=0) $text.='L. Waffen: '.$comp['value_1'].'<br>';
-if ($comp['value_2']!=0) $text.='Schw. Waffen: '.$comp['value_2'].'<br>';
-if ($comp['value_3']!=0) $text.='Pl. Waffen: '.$comp['value_3'].'<br>';
-if ($comp['value_4']!=0) $text.='Schildstärke: '.$comp['value_4'].'<br>';
-if ($comp['value_5']!=0) $text.='Hülle (HP): '.$comp['value_5'].'<br>';
-if ($comp['value_6']!=0) $text.='Reaktion: '.$comp['value_6'].'<br>';
-if ($comp['value_7']!=0) $text.='Bereitschaft: '.$comp['value_7'].'<br>';
-if ($comp['value_8']!=0) $text.='Wendigkeit: '.$comp['value_8'].'<br>';
-if ($comp['value_9']!=0) $text.='Erfahrung: '.$comp['value_9'].'<br>';
-if ($comp['value_10']!=0) $text.='Warp: '.$comp['value_10'].'<br>';
-if ($comp['value_11']!=0) $text.='Sensoren: '.$comp['value_11'].'<br>';
-if ($comp['value_12']!=0) $text.='Tarnung: '.$comp['value_12'].'<br>';
-if ($comp['value_14']!=0) $text.='Verbraucht Energie: '.$comp['value_14'].'<br>';
-if ($comp['value_13']!=0) $text.='Liefert Energie: '.$comp['value_13'].'<br>';
-$text.='<br><u>Kombinierbar mit folgenden Schiffsklassen:<br></u>';
+$text=$comp['description'].'<br><br><u>'.constant($game->sprache("TEXT0")).'<br></u><img src='.$game->GFX_PATH.'menu_metal_small.gif> '.$comp['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif> '.$comp['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif> '.$comp['resource_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_worker_small.gif> '.$comp['resource_4'].'<br><img src='.$game->GFX_PATH.'menu_unit1_small.gif> '.$comp['unit_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif> '.$comp['unit_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif> '.$comp['unit_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif> '.$comp['unit_4'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif> '.$comp['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif> '.$comp['unit_6'].'<br><u>'.constant($game->sprache("TEXT1")).'</u>  +'.($comp['buildtime']*TICK_DURATION).' '.constant($game->sprache("TEXT2")).'<br><br><u>'.constant($game->sprache("TEXT3")).'</u><br>';
+if ($comp['value_1']!=0) $text.=constant($game->sprache("TEXT4")).' '.$comp['value_1'].'<br>';
+if ($comp['value_2']!=0) $text.=constant($game->sprache("TEXT5")).' '.$comp['value_2'].'<br>';
+if ($comp['value_3']!=0) $text.=constant($game->sprache("TEXT6")).' '.$comp['value_3'].'<br>';
+if ($comp['value_4']!=0) $text.=constant($game->sprache("TEXT7")).' '.$comp['value_4'].'<br>';
+if ($comp['value_5']!=0) $text.=constant($game->sprache("TEXT8")).' '.$comp['value_5'].'<br>';
+if ($comp['value_6']!=0) $text.=constant($game->sprache("TEXT9")).' '.$comp['value_6'].'<br>';
+if ($comp['value_7']!=0) $text.=constant($game->sprache("TEXT10")).' '.$comp['value_7'].'<br>';
+if ($comp['value_8']!=0) $text.=constant($game->sprache("TEXT11")).' '.$comp['value_8'].'<br>';
+if ($comp['value_9']!=0) $text.=constant($game->sprache("TEXT12")).' '.$comp['value_9'].'<br>';
+if ($comp['value_10']!=0) $text.=constant($game->sprache("TEXT13")).' '.$comp['value_10'].'<br>';
+if ($comp['value_11']!=0) $text.=constant($game->sprache("TEXT14")).' '.$comp['value_11'].'<br>';
+if ($comp['value_12']!=0) $text.=constant($game->sprache("TEXT15")).' '.$comp['value_12'].'<br>';
+if ($comp['value_14']!=0) $text.=constant($game->sprache("TEXT16")).' '.$comp['value_14'].'<br>';
+if ($comp['value_13']!=0) $text.=constant($game->sprache("TEXT17")).' '.$comp['value_13'].'<br>';
+$text.='<br><u>'.constant($game->sprache("TEXT18")).'<br></u>';
 $first=1;
 $num=0;
 
@@ -280,7 +282,7 @@ $game->init_player(12);
 $done=0;
 
 $userquery=$db->query('SELECT * FROM scheduler_research WHERE (planet_id="'.$game->planet['planet_id'].'")');
-if ($db->num_rows()!=0) {$game->out('<center><span class="sub_caption">Fehler: Es wird bereits geforscht</span></center><br>');}
+if ($db->num_rows()!=0) {$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT19")).'</span></center><br>');}
 else
 {
 // Start Local Research:
@@ -324,7 +326,7 @@ $game->init_player(12);
 $done=0;
 
 $userquery=$db->query('SELECT * FROM scheduler_research WHERE (planet_id="'.$game->planet['planet_id'].'")');
-if ($db->num_rows()!=0) {$game->out('<center><span class="sub_caption">Fehler: Es wird bereits geforscht</span></center><br>');}
+if ($db->num_rows()!=0) {$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT19")).'</span></center><br>');}
 else
 {
 // Start Cat-Research:
@@ -377,20 +379,20 @@ $scheduler = $db->fetchrow($schedulerquery);
 if ($scheduler['research_id']<5)
 $game->out('
 <center><table border=0 cellpadding=2 cellspacing=2 width=300 class="style_inner"><tr><td>
-Geforscht wird: <b>'.$TECH_NAME[$game->player['user_race']][$scheduler['research_id']].'</b><br>
-Verbleibende Zeit bis zur Fertigstellung:<br>
+'.constant($game->sprache("TEXT20")).' <b>'.$TECH_NAME[$game->player['user_race']][$scheduler['research_id']].'</b><br>
+'.constant($game->sprache("TEXT21")).'<br>
 <b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b><br>
-<a href="'.parse_link_ex('a=researchlabs&a2=abort_research',LINK_CLICKID).'"><b>Abbrechen</b></a>
+<a href="'.parse_link_ex('a=researchlabs&a2=abort_research',LINK_CLICKID).'"><b>'.constant($game->sprache("TEXT22")).'</b></a>
 </td></tr></table></center><br>
 ');
 else
 {
 $game->out('
-<center><center><table border=0 cellpadding=2 cellspacing=2 width=300 class="style_inner"><tr><td>
-<tr><td>Geforscht wird: <b>'.$ship_components[$game->player['user_race']][($scheduler['research_id']-5)][$game->planet['catresearch_'.(($scheduler['research_id']-4))]]['name'].'</b><br>
-Verbleibende Zeit bis zur Fertigstellung:<br>
+<center><table border=0 cellpadding=2 cellspacing=2 width=300 class="style_inner"><tr><td>
+'.constant($game->sprache("TEXT20")).' <b>'.$ship_components[$game->player['user_race']][($scheduler['research_id']-5)][$game->planet['catresearch_'.(($scheduler['research_id']-4))]]['name'].'</b><br>
+'.constant($game->sprache("TEXT21")).'<br>
 <b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b><br>
-<a href="'.parse_link_ex('a=researchlabs&a2=abort_research',LINK_CLICKID).'"><b>Abbrechen</b></a>
+<a href="'.parse_link_ex('a=researchlabs&a2=abort_research',LINK_CLICKID).'"><b>'.constant($game->sprache("TEXT22")).'</b></a>
 </td></tr></table></center><br>
 ');
 }
@@ -398,46 +400,61 @@ Verbleibende Zeit bis zur Fertigstellung:<br>
 $game->set_autorefresh($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish']-$ACTUAL_TICK));
 }
 
-$game->out('<center>Aufgrund der Tickzeiten müssen noch <b id="timer2" title="time1_'.$NEXT_TICK.'_type1_3">&nbsp;</b> beim Forschungsstart addiert werden.</center><br><br>');
+$game->out('<center>'.constant($game->sprache("TEXT23")).' <b id="timer2" title="time1_'.$NEXT_TICK.'_type1_3">&nbsp;</b> '.constant($game->sprache("TEXT24")).'</center><br><br>');
 
 
 
 // Schiffskomponenten-Forschung:
-$game->out('<center><span class="sub_caption">Schiffskomponentenabteilung '.HelpPopup('research_catresearch').' :</span></center><br>');
+$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT25")).' '.HelpPopup('research_catresearch').' :</span></center><br>');
 $game->out('<center><table border=0 cellpadding=2 cellspacing=2 width=498 class="style_outer">');
 $game->out('
 <tr><td width=550>
 <table border=0 cellpadding=2 cellspacing=2 width=550 class="style_inner">
 <tr>
-<td width=100><b>Kategorie:</b></td><td width=130><b>Komponente:</b></td><td width=170><b>Kosten:</b></td><td width=75><b>Dauer:</b></td><td width=75>&nbsp;
+<td width=100><b>'.constant($game->sprache("TEXT26")).'</b></td><td width=130><b>'.constant($game->sprache("TEXT27")).'</b></td><td width=170><b>'.constant($game->sprache("TEXT0")).'</b></td><td width=75><b>'.constant($game->sprache("TEXT28")).'</b></td><td width=75>&nbsp;
 </td></tr>
 ');
 
 
 foreach ($ship_components[$game->player['user_race']] as $key => $components)
 {
-if ($game->planet['catresearch_'.($key+1)]>=$components['num']) continue;
+//if ($game->planet['catresearch_'.($key+1)]>=$components['num']) continue;
 if ($game->planet['catresearch_'.($key+1)]>=$game->planet['building_9']  && $game->planet['building_9']<9) // Wenn man nicht erst Forschungszentrum hochbauen muss
-{$comp['name']='Noch unbekannt *';$build_text='<span style="color: red">Forschen</span>';}
+{$comp['name']=constant($game->sprache("TEXT29"));$build_text='<span style="color: red">'.constant($game->sprache("TEXT30")).'</span>';}
 elseif ($game->planet['resource_1']>=GetCatResearchPrice($game->planet['catresearch_'.($key+1)],0) && $game->planet['resource_2']>=GetCatResearchPrice($game->planet['catresearch_'.($key+1)],1) && $game->planet['resource_3']>=GetCatResearchPrice($game->planet['catresearch_'.($key+1)],2))
-{$build_text='<a href="'.parse_link_ex('a=researchlabs&a2=start_catresearch&id='.$key,LINK_CLICKID).'"><span style="color: green">Forschen</span></a>';}
-else {$build_text='<span style="color: red">Forschen</span>';}
+{$build_text='<a href="'.parse_link_ex('a=researchlabs&a2=start_catresearch&id='.$key,LINK_CLICKID).'"><span style="color: green">'.constant($game->sprache("TEXT30")).'</span></a>';}
+else {$build_text='<span style="color: red">'.constant($game->sprache("TEXT30")).'</span>';}
+// 03/04/08 - AC: Show "Completed" instead of remove completely the line
+if ($game->planet['catresearch_'.($key+1)]>=$components['num']) $build_text=constant($game->sprache("TEXT39"));
 
-if (strlen($components[$game->planet['catresearch_'.($key+1)]]['name'])>18)
+/* 22/04/08 - AC: Translate HTML code into plain char */
+$trans = array("&#146;" => "'");
+$tmp = strtr(html_entity_decode($components[$game->planet['catresearch_'.($key+1)]]['name']), $trans);
+/* */
+if (strlen($tmp)>18)
 {
-$compname=substr($components[$game->planet['catresearch_'.($key+1)]]['name'], 0,16);
+//$compname=substr($components[$game->planet['catresearch_'.($key+1)]]['name'], 0,16);
+$compname=substr($tmp,0,16);
 $compname=$compname.'...';
 }
 else {$compname=$components[$game->planet['catresearch_'.($key+1)]]['name'];}
 
-if (strlen($components['name'])>13)
+/* 22/04/08 - AC: Translate HTML code into plain char */
+$trans = array("&#146;" => "'");
+$tmp = strtr(html_entity_decode($components['name']), $trans);
+/* */
+if (strlen($tmp)>13)
 {
+
 if($components['text_category'] !=null)
 {
-$catname='<a href="javascript:void(0);" onmouseover="return overlib(\''.$components['text_category'].'\',CAPTION,\''.$components['name'].'\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color="#FFFFFF">'.substr($components['name'], 0,11);
+
+//$catname='<a href="javascript:void(0);" onmouseover="return overlib(\''.$components['text_category'].'\',CAPTION,\''.$components['name'].'\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color="#FFFFFF">'.substr($components['name'], 0,11);
+$catname='<a href="javascript:void(0);" onmouseover="return overlib(\''.$components['text_category'].'\',CAPTION,\''.$components['name'].'\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color="#FFFFFF">'.substr($tmp, 0,11);
 $catname=$catname.'...</font></a>';
 }else{
-$catname='<a href="javascript:void(0);" onmouseover="return overlib(\'\',CAPTION,\''.$components['name'].'\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color="#FFFFFF">'.substr($components['name'], 0,11);
+//$catname='<a href="javascript:void(0);" onmouseover="return overlib(\'\',CAPTION,\''.$components['name'].'\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color="#FFFFFF">'.substr($components['name'], 0,11);
+$catname='<a href="javascript:void(0);" onmouseover="return overlib(\'\',CAPTION,\''.$components['name'].'\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color="#FFFFFF">'.substr($tmp, 0,11);
 $catname=$catname.'...</font></a>';
 }
 }
@@ -452,7 +469,7 @@ $catname=$components['name'];
 }
 
 if ($game->planet['catresearch_'.($key+1)]>=$game->planet['building_9'] && $game->planet['building_9']<9) // Wenn man nicht erst Forschungszentrum hochbauen muss
-$game->out('<tr><td><b>'.$catname.'</b></td><td><b><a href="javascript:void(0);" onmouseover="return overlib(\'Du musst zunächst dein(e) '.$BUILDING_NAME[$game->player['user_race']]['8'].' weiter ausbauen, bevor du in dieser Kategorie weiterforschen darfst.\', CAPTION, \''.$components[$game->planet['catresearch_'.($key+1)]]['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$compname.'</a></b></td><td>');
+$game->out('<tr><td><b>'.$catname.'</b></td><td><b><a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT31")).' '.$BUILDING_NAME[$game->player['user_race']]['8'].' '.constant($game->sprache("TEXT32")).'\', CAPTION, \''.$components[$game->planet['catresearch_'.($key+1)]]['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$compname.'</a></b></td><td>');
 else
 $game->out('<tr><td><b>'.$catname.'</b></td><td><b><a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($components[$game->planet['catresearch_'.($key+1)]]).'\', CAPTION, \''.$components[$game->planet['catresearch_'.($key+1)]]['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$compname.'</a></b></td><td>');
 
@@ -463,12 +480,12 @@ $game->out('<img src="'.$game->GFX_PATH.'menu_metal_small.gif"> '.  GetCatResear
 
 $game->out('</table></td></tr></table></center>');
 $game->out('<br><br>');
-$game->out('<center><span class="sub_caption">Planetare Forschungsabteilung '.HelpPopup('research_localresearch').' :</span></center><br>');
+$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT33")).' '.HelpPopup('research_localresearch').' :</span></center><br>');
 $game->out('<center><table border=0 cellpadding=2 cellspacing=2 width=550 class="style_outer">');
 $game->out('
 <tr>
 <td width=550>
-<table border=0 cellpadding=2 cellspacing=2 width=600 class="style_inner"><tr><td width=150><b>Technologie:</b></td><td width=175><b>Forschungskosten:</b></td><td width=100><b>Forschungszeit:</b></td><td width=*>&nbsp;</td></tr>');
+<table border=0 cellpadding=2 cellspacing=2 width=600 class="style_inner"><tr><td width=150><b>'.constant($game->sprache("TEXT34")).'</b></td><td width=175><b>'.constant($game->sprache("TEXT35")).'</b></td><td width=100><b>'.constant($game->sprache("TEXT36")).'</b></td><td width=*>&nbsp;</td></tr>');
 
 
 // Lokale Forschung:
@@ -480,18 +497,18 @@ else
 {
 if ($game->planet['resource_1']>=GetResearchPrice($t,0) && $game->planet['resource_2']>=GetResearchPrice($t,1) && $game->planet['resource_3']>=GetResearchPrice($t,2))
 {
-$build_text='<a href="'.parse_link_ex('a=researchlabs&a2=start_research&id='.$t,LINK_CLICKID).'"><span style="color: green">Forschen (~'.round(pow($game->planet['research_'.($t+1)]+1,1.5)-pow($game->planet['research_'.($t+1)],1.5)).' Pkt)</span></a>';
-if ($game->planet['research_'.($t+1)]>0) $build_text='<a href="'.parse_link_ex('a=researchlabs&a2=start_research&id='.$t,LINK_CLICKID).'"><span style="color: green">Upgrade auf '.($game->planet['research_'.($t+1)]+1).' (~'.round(pow($game->planet['research_'.($t+1)]+1,1.5)-pow($game->planet['research_'.($t+1)],1.5)).' Pkt)</span></a>';
-if ($game->planet['research_'.($t+1)]>=$MAX_RESEARCH_LVL[$capital][$t]) $build_text='Erforscht';
+$build_text='<a href="'.parse_link_ex('a=researchlabs&a2=start_research&id='.$t,LINK_CLICKID).'"><span style="color: green">'.constant($game->sprache("TEXT30")).' (~'.round(pow($game->planet['research_'.($t+1)]+1,1.5)-pow($game->planet['research_'.($t+1)],1.5)).' '.constant($game->sprache("TEXT37")).')</span></a>';
+if ($game->planet['research_'.($t+1)]>0) $build_text='<a href="'.parse_link_ex('a=researchlabs&a2=start_research&id='.$t,LINK_CLICKID).'"><span style="color: green">'.constant($game->sprache("TEXT38")).' '.($game->planet['research_'.($t+1)]+1).' (~'.round(pow($game->planet['research_'.($t+1)]+1,1.5)-pow($game->planet['research_'.($t+1)],1.5)).' '.constant($game->sprache("TEXT37")).')</span></a>';
+if ($game->planet['research_'.($t+1)]>=$MAX_RESEARCH_LVL[$capital][$t]) $build_text=constant($game->sprache("TEXT39"));
 }
 else
 {
-$build_text='<span style="color: red">Forschen (~'.round(pow($game->planet['research_'.($t+1)]+1,1.5)-pow($game->planet['research_'.($t+1)],1.5)).' Pkt)</span>';
+$build_text='<span style="color: red">'.constant($game->sprache("TEXT30")).' (~'.round(pow($game->planet['research_'.($t+1)]+1,1.5)-pow($game->planet['research_'.($t+1)],1.5)).' '.constant($game->sprache("TEXT30")).')</span>';
 if ($game->planet['research_'.($t+1)]>0)
 {
-$build_text='<span style="color: red">Upgrade auf '.($game->planet['research_'.($t+1)]+1).' (~'.round(pow($game->planet['research_'.($t+1)]+1,1.5)-pow($game->planet['research_'.($t+1)],1.5)).' Pkt)</span>';
+$build_text='<span style="color: red">'.constant($game->sprache("TEXT38")).' '.($game->planet['research_'.($t+1)]+1).' (~'.round(pow($game->planet['research_'.($t+1)]+1,1.5)-pow($game->planet['research_'.($t+1)],1.5)).' '.constant($game->sprache("TEXT37")).')</span>';
 }
-if ($game->planet['research_'.($t+1)]>=$MAX_RESEARCH_LVL[$capital][$t]) $build_text='Erforscht';
+if ($game->planet['research_'.($t+1)]>=$MAX_RESEARCH_LVL[$capital][$t]) $build_text=constant($game->sprache("TEXT39"));
 }
 
 $game->out('<tr><td><b><a href="javascript:void(0);" onmouseover="return overlib(\''.$TECH_DESCRIPTION[$game->player['user_race']][$t].'\', CAPTION, \''.$TECH_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$TECH_NAME[$game->player['user_race']][$t].'</b></td><td><img src="'.$game->GFX_PATH.'menu_metal_small.gif">'.GetResearchPrice($t,0).'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">'.GetResearchPrice($t,1).'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">'.GetResearchPrice($t,2).'</td><td>&nbsp;'.GetResearchTime($t).'</td><td>'.$build_text.'</td></tr>');
@@ -504,7 +521,8 @@ $game->out('</td></tr></table></td></tr></table></center>');
 
 if ($game->planet['building_9']<1)
 {
-$game->out('<center><center><span class="text_large">Du musst ein(e) '.$BUILDING_NAME[$game->player['user_race']]['8'].' bauen, bevor Technologien erforscht werden können.</span></center><br><br><center>');
+message(NOTICE, constant($game->sprache("TEXT40")).' '.$BUILDING_NAME[$game->player['user_race']][8].' '.constant($game->sprache("TEXT41")));
+//$game->out('<center><span class="text_large">'.constant($game->sprache("TEXT40")).' '.$BUILDING_NAME[$game->player['user_race']]['8'].' '.constant($game->sprache("TEXT41")).'</span></center><br><br>');
 
 
 }
