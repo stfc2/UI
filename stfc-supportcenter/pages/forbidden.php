@@ -23,11 +23,11 @@
 
 $main_html .= '
 
-<table border=0 cellpadding=0 cellspacing=0><tr><td></td><td><span class="header1">&nbsp;Zugriff verweigert</span></td></tr></table><br><br>
+<table border=0 cellpadding=0 cellspacing=0><tr><td></td><td><span class="header1">&nbsp;Accesso negato</span></td></tr></table><br><br>
 
 
 
-Dir wurde leider der Zugriff auf diese Seite verwehrt.
+Spiacenti, l&#146;accesso al sito &egrave; stato negato.
 <br><br>
 </td>
 

@@ -69,7 +69,7 @@
 
             FROM user
 
-            WHERE id = '.$user_id;
+            WHERE user_id = '.$user_id;
 
 
 
@@ -81,7 +81,7 @@
 
 
 
-    if(empty($player_data['id'])) {
+    if(empty($player_data['user_id'])) {
 
        return;
 
@@ -89,13 +89,13 @@
 
 
 
-    if($user_password != $player_data['passwd']) {
+    if($user_password != $player_data['user_password']) {
 
        return;
 
     }
 
-    
+
 
     $user=$player_data;
 

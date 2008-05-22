@@ -29,7 +29,7 @@ global $main_html;
 
 
 
-if (!empty($message)) $message='<font color=red><b>Folgende Probleme sind aufgetreten:<br>'.$message.'</b></font><br>';
+if (!empty($message)) $message='<font color=red><b>Rilevato il seguente problema:<br>'.$message.'</b></font><br>';
 
 
 
@@ -37,7 +37,7 @@ $main_html .= '
 
 <table border=0 cellpadding=0 cellspacing=0><tr><td><span class="header1">&nbsp;Login</span></td></tr></table><br><br>
 
-Du bist momentan nicht eingeloggt.<br>Um auf diesen Bereich zugreifen zu können musst du in deinen Account eingeloggt sein.<br>
+Al momento non sei autenticato.<br>Per accedere a questa sezione, &egrave; necessario avere accesso al tuo account.<br>
 
 <form name="login" method="post" action="index.php?p=account" onSubmit="return this.submit_b.disabled = true;">
 
@@ -46,9 +46,9 @@ Du bist momentan nicht eingeloggt.<br>Um auf diesen Bereich zugreifen zu können 
 
   <tr><td colspan=2>'.$message.'</td></tr>
 
-  <tr><td width="25%">Benutzername:</td><td width="45%"><input style="width: 125px;" type="text" name="name" value="'.$_POST['name'].'"></td><td></td></tr>
+  <tr><td width="25%">Nome utente:</td><td width="45%"><input style="width: 125px;" type="text" name="name" value="'.$_POST['name'].'"></td><td></td></tr>
 
-  <tr><td width="25%">Passwort:</td><td width="45%"><input style="width: 125px;" type="password" name="password" value=""></td><td></td></tr>
+  <tr><td width="25%">Password:</td><td width="45%"><input style="width: 125px;" type="password" name="password" value=""></td><td></td></tr>
 
 
   <tr>
@@ -57,7 +57,7 @@ Du bist momentan nicht eingeloggt.<br>Um auf diesen Bereich zugreifen zu können 
 
 	<input type=hidden name="submit" value="1">
 
-	<input type="submit" name="submit_b" value="Einloggen">
+	<input type="submit" name="submit_b" value="Login">
 
 	</td>
 
@@ -101,7 +101,7 @@ global $db;
 
     if(empty($_POST['name']) || empty($_POST['password'])) {
 
-        display_login('Bitte alle Felder ausfüllen'); return 1;
+        display_login('Per favore compila tutti i campi'); return 1;
 
     }
 
@@ -115,31 +115,31 @@ global $db;
 
             FROM user
 
-            WHERE name = "'.addslashes($_POST['name']).'"';
+            WHERE user_loginname = "'.addslashes($_POST['name']).'"';
 
 
 
     if(($login_user = $db->queryrow($sql)) === false) {
 
-        display_login('Konnte keine Verbindung zur Datenbank herstellen');
+        display_login('Impossibile connettersi al database');
 
     }
 
 
 
-    if(empty($login_user['id'])) {
+    if(empty($login_user['user_id'])) {
 
-        display_login('Benutzer existiert nicht'); return 1;
+        display_login('Utente non esistente'); return 1;
 
     }
 
 
 
-    $cookie_data = array('id' => $login_user['id']);
+    $cookie_data = array('id' => $login_user['user_id']);
 
 
 
-    if($login_user['passwd'] == $pass) {
+    if($login_user['user_password'] == $pass) {
 
         $cookie_data['passwd'] = $pass;
 
@@ -147,15 +147,26 @@ global $db;
 
     else {
 
-        display_login('Falscher Name/Passwort'); return 1;
+        display_login('Nome/Password errati'); return 1;
+
+    }
+
+    if($login_user['user_auth_level'] == 3) {
+
+        $cookie_data['auth_level'] = $login_user['user_auth_level'];
+
+    }
+
+    else {
+
+        display_login('Utente non abilitato'); return 1;
 
     }
 
 
-
     if(!setcookie('stgcsupport_session', base64_encode(serialize($cookie_data)), (time() + (60 * 60 * 24 * 30)) )) {
 
-       display_login('Es konnte kein Session-Cookie gesetzt werden, bitte überprüf deine Browser-Einstellungen bezüglich Cookie-Sicherheit'); return 1;
+       display_login('Non &egrave; stato possibile impostare alcuna sessione cookie, per favore controlla le impostazioni di sicurezza cookie del browser'); return 1;
 
     }
 

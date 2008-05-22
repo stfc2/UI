@@ -28,40 +28,40 @@ $player_1=$db->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE user_activ
 $player_2=$db->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE user_active=0');
 $player_3=$db->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE user_active=2');
 
-$main_html .= '<span class=header>Spieler bearbeiten</span><br><br>
-<span class=header3><a href="index.php?p=user_stats&active">'.$player_1['num'].' Spieler aktiv</a></span><br>
-<span class=header3><a href="index.php?p=user_stats&banned">'.$player_2['num'].' Spieler gebannt</a></span><br>
-<span class=header3><a href="index.php?p=user_stats&notactive">'.$player_3['num'].' Spieler haben ihren Account noch nicht aktiviert</a></span><br>
+$main_html .= '<span class=header>Modifica giocatori</span><br><br>
+<span class=header3><a href="index.php?p=user_stats&active">'.$player_1['num'].' Giocatori attivi</a></span><br>
+<span class=header3><a href="index.php?p=user_stats&banned">'.$player_2['num'].' Giocatori bannati</a></span><br>
+<span class=header3><a href="index.php?p=user_stats&notactive">'.$player_3['num'].' Giocatori che non hanno ancora attivato il proprio account</a></span><br>
 ';
 
 
 if (isset($_GET['active']) || isset($_GET['banned']) || isset($_GET['notactive']))
 {
-$main_html .= '<br>Achtung: <font color=green>GRÜN</font> markierte Spieler stehen unter Angriffsschutz!<br><center><table boder=0 cellpadding=1 cellspacing=1 width=800 class="style_inner">
+$main_html .= '<br>Attenzione: I giocatori in <font color=green>VERDE</font> sono sotto la protezione dagli attacchi!<br><center><table boder=0 cellpadding=1 cellspacing=1 width=800 class="style_inner">
 <tr>
 <td width=75>
-<b>Platz:</b>
+<b>Posizione:</b>
 </td>
 <td width=200>
-<b>Name:</b>
+<b>Nome:</b>
 </td>
 <td width=100>
-<b>Allianz:</b>
+<b>Alleanza:</b>
 </td>
 <td width=100>
-<b>Planeten:</b>
+<b>Pianeti:</b>
 </td>
 <td width=100>
-<b>Punkte:</b>
+<b>Punti:</b>
 </td>
 <td width=100>
-<b>Verdienst:</b>
+<b>Onore:</b>
 </td>
 <td width=100>
-<b>Aktiv:</b>
+<b>Attivo:</b>
 </td>
 <td width=100>
-<b>Options:</b>
+<b>Opzioni:</b>
 </td>
 
 </tr>
@@ -97,10 +97,10 @@ $main_html .= '
 '.$player['user_honor'].'
 </td>
 <td>
-'.($player['user_vacation_start']<=$config['tick_id'] && $player['user_vacation_end']>=$config['tick_id'] ?  'Urlaubsmodus' : gmdate('d.m.y H:i',$player['last_active'])).'
+'.($player['user_vacation_start']<=$config['tick_id'] && $player['user_vacation_end']>=$config['tick_id'] ?  'Modalit&agrave; vacanza' : date('d.m.y H:i',$player['last_active'])).'
 </td>
 <td>
-<a href="index.php?p=user&name='.$player['user_name'].'">Profil editieren</a>
+<a href="index.php?p=user&name='.$player['user_name'].'">Modifica profilo</a>
 </td>
 </tr>';
 

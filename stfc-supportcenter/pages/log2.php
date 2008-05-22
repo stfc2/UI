@@ -23,7 +23,7 @@
 
 $main_html .= '
 
-<table border=0 cellpadding=0 cellspacing=0><tr><td><img src="home.jpg"></td><td><span class="header1">&nbsp;Multi-Bann-Log einsehen:</span></td></tr></table><br><br><br>
+<table border=0 cellpadding=0 cellspacing=0><tr><td><img src="home.jpg"></td><td><span class="header1">&nbsp;Visualizza log Multi-Ban:</span></td></tr></table><br><br><br>
 '.implode('<br>', file('multilog')).'
 </td>
 

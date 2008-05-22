@@ -376,8 +376,6 @@ class sql {
     
 
 
-$db = new sql($config['server'].":".$config['port'], $config['supportcenter_database'], $config['user'], $config['password']); // create sql-object for db-connection
-
 
 
 $action = htmlspecialchars((!empty($_GET['p'])) ? $_GET['p'] : 'home');
@@ -385,6 +383,9 @@ if (empty($_GET['p']) && !empty($_GET['a'])) $action =htmlspecialchars($_GET['a'
 $main_html = '';
 
 include('../game/include/global.php');
+
+$db = new sql($config['server'].":".$config['port'], $config['game_database'], $config['user'], $config['password']); // create sql-object for db-connection
+
 
 include('session.php');
 
@@ -398,14 +399,14 @@ include('account.php');
 function log_multiban($message) {
 global $user;
         $fp = fopen('multilog', 'a');
-        fwrite($fp, '<b>['.date('d.m.y H:i:s', time()).'] '.$user['name'].':</b> '.$message."\n");
+        fwrite($fp, '<b>['.date('d.m.y H:i:s', time()).'] '.$user['user_name'].':</b> '.$message."\n");
         fclose($fp);
 }
 
 function log_action($message) {
 global $user;
         $fp = fopen('actionlog', 'a');
-        fwrite($fp, '<b>['.date('d.m.y H:i:s', time()).'] '.$user['name'].':</b> '.$message."\n");
+        fwrite($fp, '<b>['.date('d.m.y H:i:s', time()).'] '.$user['user_name'].':</b> '.$message."\n");
         fclose($fp);
 }
 
@@ -447,7 +448,7 @@ if(!include('pages/'.$action.'.php')) {
 
 <HEAD>
 
-	<TITLE>STGC Supportcenter</TITLE>
+	<TITLE>STFC Supportcenter</TITLE>
 
 	<META NAME="publisher" CONTENT="Florian Brede">
 
@@ -539,52 +540,53 @@ text-align:left;
 
 <table border=0 cellpadding=0 cellspacing=0 width=900 bgcolor=#bbbbbbb>
 
-<tr><td><span class="header0">STGC-Speed Supportcenter</span></td></tr></table>
+<tr><td><span class="header0">STFC-Speed Supportcenter</span></td></tr></table>
 <table border=0 cellpadding=0 cellspacing=0 width=900 bgcolor=#cccccc>
 
 <tr valign=top>
 
 
 <td width=150 valign=top bgcolor=#bbbbbbb>
-<span class="header3">Allgemein:</span><br>
+<span class="header3">Generale:</span><br>
 <a href="index.php?p=home">Home</a><br>
-<a href="index.php?p=stats">Statistiken</a><br>
-<a href="index.php?p=log">Team Log</a><br>
-<a href="index.php?p=log2">Multibann Log</a><br>
+<a href="index.php?p=stats">Statistiche</a><br>
+<a href="index.php?p=log">Log squadre</a><br>
+<a href="index.php?p=log2">Log multiban</a><br>
 </td>
 
 
 <td width=25 bgcolor=#bbbbbbb></td>
 
 <td width=150 valign=top bgcolor=#cccccc>
-<span class="header3">Tools:</span><br>
-<a href="index.php?p=news">News schreiben</a><br><br>
-<a href="index.php?p=messages">Nachrichtensystem</a><br>
+<span class="header3">Strumenti:</span><br>
+<a href="index.php?p=news">Scrivi novit&agrave;</a><br>
+<a href="index.php?p=polls">Scrivi sondaggi</a><br><br>
+<a href="index.php?p=messages">Sistema messaggi</a><br>
 </td>
 
 <td width=25 bgcolor=#cccccc></td>
 
 <td width=150 valign=top bgcolor=#bbbbbbb>
-<span class="header3">Spieler:</span><br>
-<a href="index.php?p=user_stats">Übersicht</a><br>
-<a href="index.php?p=user">Suchen</a><br>
-z.B.<br>Daten ändern<br>Sperren<br>Löschen
+<span class="header3">Giocatori:</span><br>
+<a href="index.php?p=user_stats">Sommario</a><br>
+<a href="index.php?p=user">Cerca</a><br>
+Es.<br>Cambia dati<br>Blocca<br>Cancella
 <br>
 </td>
 <td width=25 bgcolor=#bbbbbbb></td>
 <td width=150 valign=top bgcolor=#cccccc>
-<span class="header3">Planeten:</span><br>
-<!-- <a href="index.php?p=planet_overview"><i>Übersicht</i></a><br>
-<a href="index.php?p=planet_resources"><i>Ressourcen</i></a><br>
-<a href="index.php?p=planet_units"><i>Einheiten</i></a><br>
-<a href="index.php?p=planet_ships"><i>Schiffsbau</i></a><br> !-->
+<span class="header3">Pianeti:</span><br>
+<!-- <a href="index.php?p=planet_overview"><i>Sommario</i></a><br>
+<a href="index.php?p=planet_resources"><i>Risorse</i></a><br>
+<a href="index.php?p=planet_units"><i>Unit&agrave;</i></a><br>
+<a href="index.php?p=planet_ships"><i>Navi</i></a><br> !-->
 <br>
 </td>
 
 <td width=25 bgcolor=#cccccc></td>
 <td width=150 valign=top bgcolor=#bbbbbbb>
-<span class="header3">Multis:</span><br>
-<a href="index.php?p=multihunt">Multihunting</a><br>
+<span class="header3">Multi:</span><br>
+<a href="index.php?p=multihunt">Multi hunting</a><br>
 <br>
 </td>
 <td width=25 bgcolor=#bbbbbbb></td>
