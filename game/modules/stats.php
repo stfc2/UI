@@ -20,8 +20,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-include('stats.sprache.php');
-    
     $STEMPLATE_MODULES = array(
         'overview' => constant($game->sprache("TEXT1")),
         'member' => constant($game->sprache("TEXT2")),
@@ -164,7 +162,15 @@ $homepage_name=substr($alliance['alliance_homepage'], 0,27);
 $homepage_name=$homepage_name.'...';
 }
 
-if (!empty($alliance['alliance_homepage'])) { $game->out('<tr><td>'.constant($game->sprache("TEXT12")).'</td><td><a href="'.$alliance['alliance_homepage'].'" target=_blank><b>'.$homepage_name.'</b></a></td></tr>'); }
+/* 21/05/08 - AC: Check alliance homepage URL */
+$http_ok = stripos($alliance['alliance_homepage'], "http://");
+if($http_ok === true)
+	$homepage_url = $alliance['alliance_homepage'];
+else
+	$homepage_url = 'http://'.$alliance['alliance_homepage'];
+/* */
+
+if (!empty($alliance['alliance_homepage'])) { $game->out('<tr><td>'.constant($game->sprache("TEXT12")).'</td><td><a href="'.$homepage_url.'" target=_blank><b>'.$homepage_name.'</b></a></td></tr>'); }
 if (!empty($alliance['alliance_irc'])) { $game->out('<tr><td>'.constant($game->sprache("TEXT13")).'</td><td><b>'.$alliance['alliance_irc'].'</b></a></td></tr>'); }
 $game->out('</table><br>');
 
@@ -451,7 +457,7 @@ $game->out('
 $game->out('</center></span></td>
 </tr>
 
-<tr><td align="center"><b><a onclick="Popup(this.href);return false" href="modules/auctions.popup.php?user='.$user['user_id'].'">Aktuelle Auktionen anzeigen</a></b></td></tr><tr><td>&nbsp;</td></tr>
+<tr><td align="center"><b><a onclick="Popup(this.href);return false" href="modules/auctions.popup.php?user='.$user['user_id'].'">'.constant($game->sprache("TEXT89")).'</a></b></td></tr><tr><td>&nbsp;</td></tr>
 
 </table><br>
 <table border=0 cellpadding=2 cellspacing=2 width=450 class="style_outer">
@@ -475,7 +481,7 @@ $historyqry=$db->query('SELECT * FROM userally_history WHERE user_id = "'.$user[
 
 while(($history = $db->fetchrow($historyqry))==true)
 {
-  $game->out('<tr><td align="center">'.get_alliance_name($history['alliance_id']).'</td><td align="center">'.date('d.m.y H:i', $history['join_date']+7200).'</td><td align="center">'.( ($history['leave_date']==0) ? '-' : ''.date('d.m.y H:i', $history['leave_date']+7200).'' ).'</td></tr>');
+  $game->out('<tr><td align="center">'.get_alliance_name($history['alliance_id']).'</td><td align="center">'.date('d.m.y H:i', $history['join_date']).'</td><td align="center">'.( ($history['leave_date']==0) ? '-' : ''.date('d.m.y H:i', $history['leave_date']).'' ).'</td></tr>');
 }
 
 $historyqry2=$db->query('SELECT * FROM userally_history WHERE user_id = "'.$user['user_id'].'"');
