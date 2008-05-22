@@ -104,14 +104,14 @@ table.border_blue         { border: 1px solid #000000; }
   <script language="JavaScript" src="overlib.js"></script>
 </head>
 
-<body text="#c0c0c0" background="|game_url|/gfx/bg_stars1.gif" >
+<body text="#c0c0c0" background="http://stfc.nonsolotaku.it/gfx/bg_stars1.gif" >
 <div id="overDiv" style="Z-INDEX: 1000; VISIBILITY: hidden; POSITION: absolute"></div>
 <table cellspacing="0" cellpadding="0" width="750" align="center" valign="top" border="0" bgcolor="#283359">
 <tbody>
 <tr>
 <td width="750"  bgcolor="black">
 <center><A href="http://www.go2gameserver.net/" 
-      target=_blank><img src="|game_url|/gfx/stgcbanner.jpg" border="0" valign="top"></A></center>
+      target=_blank><img src="http://stfc.nonsolotaku.it/gfx/stgcbanner.jpg" border="0" valign="top"></A></center>
 
         </td>
     </tr>
@@ -128,7 +128,7 @@ table.border_blue         { border: 1px solid #000000; }
 
 <tr>
 <td width="750"><!-- Banner -->
-<img alt="Star Trek: Galaxy Conquest" src="|game_url|/gfx/template_banner.jpg" border="0">
+<img alt="Star Trek: Galaxy Conquest" src="http://stfc.nonsolotaku.it/gfx/template_banner.jpg" border="0">
 </td></tr>
 
 
@@ -144,16 +144,16 @@ table.border_blue         { border: 1px solid #000000; }
     </tr>
 <tr>
 <td height="20" bgcolor="#131C46">&nbsp;&nbsp;
-<a class="nav" href="<?php echo parse_link() ?>"><img src="|game_url|/gfx/home.jpg" alt="home" border=0 onMouseOver="this.src='|game_url|/gfx/homeh.jpg';" onMouseOut="this.src='|game_url|/gfx/home.jpg';"></a> &nbsp;&nbsp;
-<a class="nav" href="<?php echo parse_link('a=login') ?>"><img src="|game_url|/gfx/login.jpg" alt="login" border=0 onMouseOver="this.src='|game_url|/gfx/loginh.jpg';" onMouseOut="this.src='|game_url|/gfx/login.jpg';"></a> &nbsp;&nbsp;
-<a class="nav" href="<?php echo parse_link('a=register') ?>"><img src="|game_url|/gfx/register.jpg" alt="register" border=0 onMouseOver="this.src='|game_url|/gfx/registerh.jpg';" onMouseOut="this.src='|game_url|/gfx/register.jpg';"></a> &nbsp;&nbsp;
-<a class="nav" href="<?php echo parse_link('a=stats') ?>"><img src="|game_url|/gfx/stats.jpg" alt="stats" border=0 onMouseOver="this.src='|game_url|/gfx/statsh.jpg';" onMouseOut="this.src='|game_url|/gfx/stats.jpg';"></a> &nbsp;&nbsp;
-<a class="nav" href="http://wiki.stgc.de" target=_blank><img src="|game_url|/gfx/faq.jpg" alt="faq" border=0 onMouseOver="this.src='|game_url|/gfx/faqh.jpg';" onMouseOut="this.src='|game_url|/gfx/faq.jpg';"></a> &nbsp;&nbsp;
-<a class="nav" href="http://stgcforum.de/" target=_blank><img src="|game_url|/gfx/forum.jpg" alt="forum" border=0 onMouseOver="this.src='|game_url|/gfx/forumh.jpg';" onMouseOut="this.src='|game_url|/gfx/forum.jpg';"></a> &nbsp;
-<a class="nav" href="<?php echo parse_link('a=spende') ?>"><img src="|game_url|/gfx/spenden.jpg" alt="spenden" border=0 onMouseOver="this.src='|game_url|/gfx/spendenh.jpg';" onMouseOut="this.src='|game_url|/gfx/spenden.jpg';"></a> &nbsp;
-<a class="nav" href="<?php echo parse_link('a=imprint') ?>"><img src="|game_url|/gfx/impressum.jpg" alt="impressum" border=0 onMouseOver="this.src='|game_url|/gfx/impressumh.jpg';" onMouseOut="this.src='|game_url|/gfx/impressum.jpg';"></a> &nbsp;&nbsp;
-<!--<a class="nav" href="<?php echo parse_link('a=spende') ?>"><img src="|game_url|/gfx/spenden.jpg" alt="spenden" border=0 onMouseOver="this.src='|game_url|/gfx/spendenh.jpg';" onMouseOut="this.src='|game_url|/gfx/spenden.jpg';"></a></td>!-->
-<a class="nav" href="http://stgcsource.net/" target=_blank><img src="|game_url|/gfx/developer.jpg" alt="Development" border=0 onMouseOver="this.src='|game_url|/gfx/developerh.jpg';" onMouseOut="this.src='|game_url|/gfx/developer.jpg';"></a></td>
+<a class="nav" href="<?php echo parse_link() ?>"><img src="http://stfc.nonsolotaku.it/gfx/home.jpg" alt="home" border=0 onMouseOver="this.src='http://stfc.nonsolotaku.it/gfx/homeh.jpg';" onMouseOut="this.src='http://stfc.nonsolotaku.it/gfx/home.jpg';"></a> &nbsp;&nbsp;
+<a class="nav" href="<?php echo parse_link('a=login') ?>"><img src="http://stfc.nonsolotaku.it/gfx/login.jpg" alt="login" border=0 onMouseOver="this.src='http://stfc.nonsolotaku.it/gfx/loginh.jpg';" onMouseOut="this.src='http://stfc.nonsolotaku.it/gfx/login.jpg';"></a> &nbsp;&nbsp;
+<a class="nav" href="<?php echo parse_link('a=register') ?>"><img src="http://stfc.nonsolotaku.it/gfx/register.jpg" alt="register" border=0 onMouseOver="this.src='http://stfc.nonsolotaku.it/gfx/registerh.jpg';" onMouseOut="this.src='http://stfc.nonsolotaku.it/gfx/register.jpg';"></a> &nbsp;&nbsp;
+<a class="nav" href="<?php echo parse_link('a=stats') ?>"><img src="http://stfc.nonsolotaku.it/gfx/stats.jpg" alt="stats" border=0 onMouseOver="this.src='http://stfc.nonsolotaku.it/gfx/statsh.jpg';" onMouseOut="this.src='http://stfc.nonsolotaku.it/gfx/stats.jpg';"></a> &nbsp;&nbsp;
+<a class="nav" href="http://wiki.stgc.de" target=_blank><img src="http://stfc.nonsolotaku.it/gfx/faq.jpg" alt="faq" border=0 onMouseOver="this.src='http://stfc.nonsolotaku.it/gfx/faqh.jpg';" onMouseOut="this.src='http://stfc.nonsolotaku.it/gfx/faq.jpg';"></a> &nbsp;&nbsp;
+<a class="nav" href="http://stgcforum.de/" target=_blank><img src="http://stfc.nonsolotaku.it/gfx/forum.jpg" alt="forum" border=0 onMouseOver="this.src='http://stfc.nonsolotaku.it/gfx/forumh.jpg';" onMouseOut="this.src='http://stfc.nonsolotaku.it/gfx/forum.jpg';"></a> &nbsp;
+<a class="nav" href="<?php echo parse_link('a=spende') ?>"><img src="http://stfc.nonsolotaku.it/gfx/spenden.jpg" alt="spenden" border=0 onMouseOver="this.src='http://stfc.nonsolotaku.it/gfx/spendenh.jpg';" onMouseOut="this.src='http://stfc.nonsolotaku.it/gfx/spenden.jpg';"></a> &nbsp;
+<a class="nav" href="<?php echo parse_link('a=imprint') ?>"><img src="http://stfc.nonsolotaku.it/gfx/impressum.jpg" alt="impressum" border=0 onMouseOver="this.src='http://stfc.nonsolotaku.it/gfx/impressumh.jpg';" onMouseOut="this.src='http://stfc.nonsolotaku.it/gfx/impressum.jpg';"></a> &nbsp;&nbsp;
+<!--<a class="nav" href="<?php echo parse_link('a=spende') ?>"><img src="http://stfc.nonsolotaku.it/gfx/spenden.jpg" alt="spenden" border=0 onMouseOver="this.src='http://stfc.nonsolotaku.it/gfx/spendenh.jpg';" onMouseOut="this.src='http://stfc.nonsolotaku.it/gfx/spenden.jpg';"></a></td>!-->
+<a class="nav" href="http://stgcsource.net/" target=_blank><img src="http://stfc.nonsolotaku.it/gfx/developer.jpg" alt="Development" border=0 onMouseOver="this.src='http://stfc.nonsolotaku.it/gfx/developerh.jpg';" onMouseOut="this.src='http://stfc.nonsolotaku.it/gfx/developer.jpg';"></a></td>
  </td>
     </tr>
  
@@ -200,7 +200,7 @@ table.border_blue         { border: 1px solid #000000; }
 <tr>
 <td align="center" width="750">
 <!--  This copyright notice must never be changed or modified in any way and always be visible!  --!>
-<img src="|game_url|/gfx/copyright.png" alt="copyright" border=0>
+<img src="http://stfc.nonsolotaku.it/gfx/copyright.png" alt="copyright" border=0>
 <!--  End of copyright notice  --!>
 
 <br />

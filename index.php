@@ -386,11 +386,11 @@ $action = htmlspecialchars((!empty($_GET['a'])) ? $_GET['a'] : 'home');
 $main_html = '';
 
 if(strstr($action, '.')) {
-    $main_html = '<br><br><br><br><center><span style="font-size: 20px;">Die gewählte Seite "'.$action.'" existiert nicht</span></center>';
+    $main_html = '<br><br><br><br><center><span style="font-size: 20px;">The selected site "'.$action.'" doesn&#146;t exist</span></center>';
 }
 
 if(!include('pages/'.$action.'.php')) {
-    $main_html = '<br><br><br><br><center><span style="font-size: 20px;">Die gewählte Seite "'.$action.'" existiert nicht</span></center>';
+    $main_html = '<br><br><br><br><center><span style="font-size: 20px;">The selected site "'.$action.'" doesn&#146;t exist</span></center>';
 }
 
 ?>
@@ -399,21 +399,21 @@ if(!include('pages/'.$action.'.php')) {
 <html>
 
 <head>
-  <title>Star Trek: Galaxy Conquest</title>
+  <title>Star Trek: Frontline Combat</title>
 
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
-  <meta name="description" content="ST: Galaxy Conquest ist ein kostenloses Browser basiertes Multiplayerspiel, indem Sie in der Rolle verschiedener Rassen und Völker das Universum übernehmen und die Geschichte neu schreiben können.">
-  <meta name="keywords" content="star trek, startrek, galaxy, conquest, universe, game, gratis, kostenlos, spiel, multiplayer, strategie, onlinegame, bbg, free, browser, based, galaxie, universum, klingon, klingonen, federation, föderation">
+  <meta name="description" content="ST: Frontline Combat is a free browser based multi-player game by playing the role of different races and peoples of the universe and rewrite history.">
+  <meta name="keywords" content="star trek, startrek, galaxy, conquest, universe, game, gratis, free, multiplayer, strategy, onlinegame, bbg, free, browser, based, galaxy, universe, klingon, romulan, federation, federazione">
   <meta name="author" content="Florian Brede & Philipp Schmidt">
   <meta name="publisher" content="Florian Brede & Philipp Schmidt">
   <meta name="copyright" content="Paramount Pic., Brede, Schmidt">
-  <meta name="page-topic" content="Star Trek Online Spiel">
+  <meta name="page-topic" content="Star Trek Online Game">
   <meta name="date" content="2003-06-22">
-  <meta name="content-language" content="de">
-  <meta name="page-type" content="spiel">
+  <meta name="content-language" content="en">
+  <meta name="page-type" content="game">
   <meta name="robots" content="index,nofollow">
   <meta name="revisit-after" content="10">
 <style type="text/css">
@@ -522,14 +522,14 @@ window.attachEvent("onload", expandone)
 <table width="750" height="150" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td colspan="2">
-			<img src="/gfx/head_01.gif" width="750" height="132" alt=""></td>
+			<img src="gfx/head_01.gif" width="750" height="132" alt=""></td>
 	</tr>
 
 	<tr>
 		<td>
-			<img src="/gfx/head_02.gif" width="658" height="18" alt=""></td>
+			<img src="gfx/head_02.gif" width="658" height="18" alt=""></td>
 		
-			<td><a href="http://fragzshox.fr.funpic.de/" target="_blank"><img src="/gfx/head_03.gif" alt="" width="92" height="18" border="0"></a></td>
+			<td><a href="http://fragzshox.fr.funpic.de/" target="_blank"><img src="gfx/head_03.gif" alt="" width="92" height="18" border="0"></a></td>
 	</tr>
 </table>
 </td></tr>
@@ -552,7 +552,7 @@ window.attachEvent("onload", expandone)
 <a class="nav" href="<?php echo parse_link('a=register') ?>"><img src="gfx/register.jpg" alt="register" border=0 onMouseOver="this.src='gfx/registerh.jpg';" onMouseOut="this.src='gfx/register.jpg';"></a> &nbsp;&nbsp;
 <a class="nav" href="<?php echo parse_link('a=stats') ?>"><img src="gfx/stats.jpg" alt="stats" border=0 onMouseOver="this.src='gfx/statsh.jpg';" onMouseOut="this.src='gfx/stats.jpg';"></a> &nbsp;&nbsp;
 <a class="nav" href="http://wiki.stgc.de" target=_blank><img src="gfx/faq.jpg" alt="faq" border=0 onMouseOver="this.src='gfx/faqh.jpg';" onMouseOut="this.src='gfx/faq.jpg';"></a>
-<a class="nav" href="http://stgcforum.de" target=_blank><img src="gfx/forum.jpg" alt="forum" border=0 onMouseOver="this.src='gfx/forumh.jpg';" onMouseOut="this.src='gfx/forum.jpg';"></a>
+<a class="nav" href="http://forum.nonsolotaku.it" target=_blank><img src="gfx/forum.jpg" alt="forum" border=0 onMouseOver="this.src='gfx/forumh.jpg';" onMouseOut="this.src='gfx/forum.jpg';"></a>
 <a class="nav" href="<?php echo parse_link('a=imprint') ?>"><img src="gfx/impressum.jpg" alt="impressum" border=0 onMouseOver="this.src='gfx/impressumh.jpg';" onMouseOut="this.src='gfx/impressum.jpg';"></a> &nbsp;&nbsp;
 <a class="nav" href="http://stgcsource.de/" target=_blank><img src="gfx/developer.jpg" alt="Development" border=0 onMouseOver="this.src='gfx/developerh.jpg';" onMouseOut="this.src='gfx/developer.jpg';"></a></td>
 </tr>
@@ -600,7 +600,7 @@ window.attachEvent("onload", expandone)
 <tr>
 <td align="center" width="750">
 <!--  This copyright notice must never be changed or modified in any way and always be visible!  --!>
-<img src="|game_url|/gfx/copyright.png" alt="copyright" border=0>
+<img src="gfx/copyright.png" alt="copyright" border=0>
 <!--  End of copyright notice  --!>
 
 <br />
