@@ -26,7 +26,9 @@ $game->init_player();
 $capital=(($game->player['user_capital']==$game->planet['planet_id']) ? 1 : 0);
 if ($game->player['pending_capital_choice']) $capital=0;
 
-include('include/static/static_components_'.$game->player['user_race'].'.php');
+$filename = 'include/static/static_components_'.$game->player['user_race'].'_'.$game->player['language'].'.php';
+if (!file_exists($filename)) $filename = 'include/static/static_components_'.$game->player['user_race'].'.php';
+include($filename);
 
 
 
@@ -50,14 +52,14 @@ if (isset($_REQUEST['exec_namechange']) && isset($_REQUEST['planet_name']) && !e
        $val=ord( (substr($_REQUEST['planet_name'], $count, 1)) );
        if (($val>21 && $val<28) || ($val>93 && $val<97) || $val>122 || $val==92)
        {
-        $change_error='<br><font color=red>* Planetenname enthält unzulässige Zeichen</font>';
+        $change_error='<br><font color=red>'.constant($game->sprache("TEXT1")).'</font>';
 	}
     }
     for ($count=0; $count < strlen($_REQUEST['planet_altname']); $count++) {
        $val=ord( (substr($_REQUEST['planet_altname'], $count, 1)) );
        if (($val>21 && $val<28) || ($val>93 && $val<97) || $val>122 || $val==92)
         {
-        $change_error='<br><font color=red>* Planetebezeichnung enthält unzulässige Zeichen</font>';
+        $change_error='<br><font color=red>'.constant($game->sprache("TEXT2")).'</font>';
 	}
     }
 	if (empty($change_error))
@@ -72,9 +74,9 @@ $game->out('<center><span class="caption">'.$BUILDING_NAME[$game->player['user_r
 
 
 
-$game->out('<center><span class="sub_caption">Statistiken für <u>'.$game->planet['planet_name'].'</u><br></span>');
-$game->out('<center>Bezeichnung <u>'.$game->planet['planet_altname'].'</u><br>');
-if ($capital) $game->out('<span class="sub_caption">(Heimatplanet)');
+$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT3")).' <u>'.$game->planet['planet_name'].'</u><br></span>');
+$game->out('<center>'.constant($game->sprache("TEXT4")).' <u>'.$game->planet['planet_altname'].'</u><br>');
+if ($capital) $game->out('<span class="sub_caption">('.constant($game->sprache("TEXT5")).')');
 $game->out('</span></center><br><br>');
 
 
@@ -86,35 +88,35 @@ if ($game->player['user_capital']==$game->planet['planet_id']) $m_points=$MAX_PO
 
 
 // "Wird gebaut" Anzeige:
-$building='nichts';
+$building=constant($game->sprache("TEXT6"));
 $build=$db->queryrow('SELECT installation_type, build_finish FROM scheduler_instbuild WHERE planet_id="'.$game->planet['planet_id'].'"');
-if ($db->num_rows()>0) $building=$BUILDING_NAME[$game->player['user_race']][$build['installation_type']].' (Stufe '.($game->planet['building_'.($build['installation_type']+1).'']+1).') <b id="timer2" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($build['build_finish']-$ACTUAL_TICK)).'_type1_2">&nbsp;</b>';
+if ($db->num_rows()>0) $building=$BUILDING_NAME[$game->player['user_race']][$build['installation_type']].' ('.constant($game->sprache("TEXT6a")).' '.($game->planet['building_'.($build['installation_type']+1).'']+1).')</td><td><b id="timer2" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($build['build_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b>';
 
 
 
-$research='nichts';
+$research=constant($game->sprache("TEXT6"));
 $scheduler=$db->queryrow('SELECT * FROM scheduler_research WHERE planet_id="'.$game->planet['planet_id'].'"');
 if ($db->num_rows()>0)
 if ($scheduler['research_id']>=5) 
-$research=$ship_components[$game->player['user_race']][($scheduler['research_id']-5)][$game->planet['catresearch_'.(($scheduler['research_id']-4))]]['name'].' <b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish']-$ACTUAL_TICK)).'_type1_2">&nbsp;</b>';
-else $research=$TECH_NAME[$game->player['user_race']][$scheduler['research_id']].' <b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish']-$ACTUAL_TICK)).'_type1_2">&nbsp;</b>';
+$research=$ship_components[$game->player['user_race']][($scheduler['research_id']-5)][$game->planet['catresearch_'.(($scheduler['research_id']-4))]]['name'].'</td><td><b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b>';
+else $research=$TECH_NAME[$game->player['user_race']][$scheduler['research_id']].'</td><td><b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b>';
 
 
 
-$academy='inaktiv';
+$academy=constant($game->sprache("TEXT7"));
 if ($game->planet['unittrainid_nexttime']>0) {
 if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]<=6)
 {
-$academy='aktiv ('.$UNIT_NAME[$game->player['user_race']][$game->planet['unittrainid_'.($game->planet['unittrain_actual'])]-1].') ';
+$academy=constant($game->sprache("TEXT8")).' ('.$UNIT_NAME[$game->player['user_race']][$game->planet['unittrainid_'.($game->planet['unittrain_actual'])]-1].') ';
 if ($game->planet['unittrain_error']==0)
-$academy.='<b id="timer5" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($game->planet['unittrainid_nexttime']-$ACTUAL_TICK)).'_type1_2">&nbsp;</b>';
+$academy.='</td><td><b id="timer5" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($game->planet['unittrainid_nexttime']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b>';
 else {
 
 if($game->planet['unittrain_error']==1) {
-  $academy.='<b>Ressourcenmangel</b>';
+  $academy.='<b>'.constant($game->sprache("TEXT9")).'</b>';
 }
 else {
-  $academy.='<br><b>Fertiggestellt - Planetenlimit erreicht</b>';
+  $academy.='<br><b>'.constant($game->sprache("TEXT10")).'</b>';
 }
 }
 }
@@ -123,37 +125,21 @@ else
 $text='3 Min. Pause';
 if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==11) $text='27 Min. Pause';
 if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==12) $text='54 Min. Pause';
-$academy='aktiv ('.$text.') <b id="timer5" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($game->planet['unittrainid_nexttime']-$ACTUAL_TICK)).'_type1_2">&nbsp;</b>';
+$academy=constant($game->sprache("TEXT8")).' ('.$text.')</td><td><b id="timer5" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($game->planet['unittrainid_nexttime']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b>';
 }
 }
 
 
 
-$shipbuild='nichts';
+$shipbuild=constant($game->sprache("TEXT7"));
 $schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build<='.$ACTUAL_TICK.') ORDER BY start_build ASC LIMIT 1');
 if ($db->num_rows()>0)
 {
 $scheduler = $db->fetchrow($schedulerquery);
 $template=$db->queryrow('SELECT * FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (id="'.$scheduler['ship_type'].'")');
-$shipbuild=$template['name'].' <b id="timer4" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['finish_build']-$ACTUAL_TICK)).'_type1_2">&nbsp;</b>';
+$shipbuild=$template['name'].'</td><td><b id="timer4" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['finish_build']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b>';
 }
 
-
-
-$game->out('
-<center>
-<table border=0 cellpadding=1 cellspacing=1 class="style_inner">
-<tr>
-<td width=300>
-<u>Gebäude:</u>&nbsp;'.$building.'<br>
-<u>Forschung:</u>&nbsp;'.$research.'<br>
-<u>'.$BUILDING_NAME[$game->player['user_race']][5].':</u>&nbsp;'.$academy.'<br>
-<u>'.$BUILDING_NAME[$game->player['user_race']][7].':</u>&nbsp;'.$shipbuild.'<br>
-
-</td>
-</tr>
-</table><br>
-');
 
 
 
@@ -170,36 +156,37 @@ $game->out('
 <td width=250 align=left valign=top>
 
 <table border=0><tr><td width=125>
-<span class="sub_caption2">Allgemein:</span><br>
-<a href="'.$game->GFX_PATH.'planet_type_'.$game->planet['planet_type'].'.gif" target=_blank ><img src="'.$game->GFX_PATH.'planet_type_'.$game->planet['planet_type'].'.gif" width="80" height="80" border="0"></a><br>
+<span class="sub_caption2">'.constant($game->sprache("TEXT12")).':</span><br>
+<a href="'.$game->PLAIN_GFX_PATH.'planet_type_'.$game->planet['planet_type'].'.png" target=_blank ><img src="'.$game->PLAIN_GFX_PATH.'planet_type_'.$game->planet['planet_type'].'.png" width="80" height="80" border="0"></a><br>
 </td>
 <td width=125 valign=top>
 <form method="post" action="'.parse_link('a=headquarter').'">
-<b><u>Namen ändern:</u></b><input type="text" name="planet_name" size="18" class="field_nosize" value="'.$game->planet['planet_name'].'"><br><b><u>Bezeichnung ändern:</u></b><br><input type="text" name="planet_altname" size="18" class="field_nosize" value="'.$game->planet['planet_altname'].'"><br>
-<input type="submit" name="exec_namechange" class="button_nosize" width=45 value="Save">'.$change_error.'</form>
+<b><u>'.constant($game->sprache("TEXT13")).':</u></b><input type="text" name="planet_name" size="18" class="field_nosize" value="'.$game->planet['planet_name'].'"><br><b><u>'.constant($game->sprache("TEXT14")).':</u></b><br><input type="text" name="planet_altname" size="18" class="field_nosize" value="'.$game->planet['planet_altname'].'"><br>
+<input type="submit" name="exec_namechange" class="button_nosize" width=45 value="'.constant($game->sprache("TEXT15")).'">'.$change_error.'</form>
 </td>
 </tr>
 </table>
-<a href="javascript:void(0);" onmouseover="return overlib(\'Dies gibt die Position in der Galaxie an<br>Sektor-Position : System-Position : Position im Sonnensystem\', CAPTION, \'Position/Koordinaten:\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>Koordinaten:</b></a> <u>'.$position.'</u><br>
-<a href="javascript:void(0);" onmouseover="return overlib(\'Dieser Wert gibt an, wieviele Rohstoffe von jedem Typ maximal auf dem Planeten gelagert werden können.<br>Dieser Wert ist festgesetzt und lässt sich nur durch Ausbau der '.$BUILDING_NAME[$game->player['user_race']][11].' verändern.\', CAPTION, \'Maximale Ressourcen\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>Max. Ressourcen:</b></a> <u>'.$game->planet['max_resources'].'</u><br>
-<a href="javascript:void(0);" onmouseover="return overlib(\'Dieser Wert gibt an, wieviele der maximalen Kampfeinheiten auf dem Planeten noch unbesetzt sind.<br>Diese Zahl variiert von Planet zu Planet und kann durch Terraforming um bis zu 5000 erhöht werden.<br>Je nach Einheitentyp werden unterschiedlich viele Plätze besetzt:<br>'.$UNIT_NAME[''.$game->player['user_race'].''][0].' benötigt 2 Plätze<br>'.$UNIT_NAME[''.$game->player['user_race'].''][1].' benötigt 3 Plätze<br>'.$UNIT_NAME[''.$game->player['user_race'].''][2].' benötigt 4 Plätze<br>'.$UNIT_NAME[''.$game->player['user_race'].''][3].' benötigt 4 Plätze<br>'.$UNIT_NAME[''.$game->player['user_race'].''][4].' benötigt 4 Plätze<br>'.$UNIT_NAME[''.$game->player['user_race'].''][5].' benötigt 4 Plätze<br>\', CAPTION, \'Freie Einheiten\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>Freie Einheiten:</b></a> <u>'.CalculateFreeUnits().'/'.$game->planet['max_units'].'</u><br>
-<a href="javascript:void(0);" onmouseover="return overlib(\'Dieser Wert gibt an, wieviele der maximalen Arbeiter auf dem Planeten noch unbesetzt sind.<br>Diese Zahl variiert von Planet zu Planet und kann durch Terraforming um bis zu 5000 erhöht werden.\', CAPTION, \'Freie Arbeiter\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>Freie Arbeiter:</b></a> <u>'.round(($PLANETS_DATA[$game->planet['planet_type']][7]+($game->planet['research_1']*$RACE_DATA[$game->player['user_race']][20])*500)-$game->planet['resource_4'],0).'/'.$game->planet['max_worker'].'</u><br>
-<a href="javascript:void(0);" onmouseover="return overlib(\'Dieser Wert gibt an, wie stark Angriffs- und Verteidigungswerte der orbitalen Geschütze sind:<br><br><u><b>'.$game->planet['building_13'].'</b> von <b>'.$MAX_BUILDING_LVL[$capital][12].'</b> Plattformen mit:<br></u>'.SPLANETARY_DEFENSE_ATTACK.' Leichte Waffen<br>'.SPLANETARY_DEFENSE_DEFENSE.' Regenerative Hülle<br><i>* 100% Erstschlagschance</i>\', CAPTION, \'Kl. Orbitale Geschütze\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>Kl. Orbit. Geschütze:</b></a> <u>'.$game->planet['building_13'].'x '.SPLANETARY_DEFENSE_ATTACK.' - '.SPLANETARY_DEFENSE_DEFENSE.'</u><br>
-<a href="javascript:void(0);" onmouseover="return overlib(\'Dieser Wert gibt an, wie stark Angriffs- und Verteidigungswerte der orbitalen Geschütze sind:<br><br><u><b>'.$game->planet['building_10'].'</b> von <b>'.$MAX_BUILDING_LVL[$capital][9].'</b> Plattformen mit:<br></u>'.PLANETARY_DEFENSE_ATTACK.' Leichte Waffen<br>'.PLANETARY_DEFENSE_ATTACK2.' Schwere Waffen<br>'.PLANETARY_DEFENSE_DEFENSE.' Regenerative Hülle<br><i>* 100% Erstschlagschance</i>\', CAPTION, \'Orbitale Geschütze\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>Orbit. Geschütze:</b></a> <u>'.$game->planet['building_10'].'x '.PLANETARY_DEFENSE_ATTACK.' - '.PLANETARY_DEFENSE_DEFENSE.'</u><br>
-<a href="javascript:void(0);" onmouseover="return overlib(\'Dies sind die aktuellen Punkte des Planeten. Die Zahlen werden alle 3 Minuten aktualisiert.\', CAPTION, \'Punkte\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>Punkte:</b></a> <u>'.$game->planet['planet_points'].'/'.$m_points.'</u>
+<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT23")).'\', CAPTION, \''.constant($game->sprache("TEXT24")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.constant($game->sprache("TEXT16")).':</b></a> <u>'.$position.'</u><br>
+<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT25")).' '.$BUILDING_NAME[$game->player['user_race']][11].'.\', CAPTION, \''.constant($game->sprache("TEXT26")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.constant($game->sprache("TEXT17")).':</b></a> <u>'.$game->planet['max_resources'].'</u><br>
+<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT27")).'<br>'.$UNIT_NAME[''.$game->player['user_race'].''][0].' '.constant($game->sprache("TEXT28")).'<br>'.$UNIT_NAME[''.$game->player['user_race'].''][1].' '.constant($game->sprache("TEXT29")).'<br>'.$UNIT_NAME[''.$game->player['user_race'].''][2].' '.constant($game->sprache("TEXT30")).'<br>'.$UNIT_NAME[''.$game->player['user_race'].''][3].' '.constant($game->sprache("TEXT30")).'<br>'.$UNIT_NAME[''.$game->player['user_race'].''][4].' '.constant($game->sprache("TEXT30")).'<br>'.$UNIT_NAME[''.$game->player['user_race'].''][5].' '.constant($game->sprache("TEXT30")).'<br>\', CAPTION, \''.constant($game->sprache("TEXT31")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.constant($game->sprache("TEXT18")).':</b></a> <u>'.CalculateFreeUnits().'/'.$game->planet['max_units'].'</u><br>
+<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT32")).'\', CAPTION, \''.constant($game->sprache("TEXT33")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.constant($game->sprache("TEXT19")).':</b></a> <u>'.round(($PLANETS_DATA[$game->planet['planet_type']][7]+($game->planet['research_1']*$RACE_DATA[$game->player['user_race']][20])*500)-$game->planet['resource_4'],0).'/'.$game->planet['max_worker'].'</u><br>
+<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT34")).'<br><br><u><b>'.$game->planet['building_13'].'</b> '.constant($game->sprache("TEXT35")).' <b>'.$MAX_BUILDING_LVL[$capital][12].'</b> '.constant($game->sprache("TEXT36")).'<br></u>'.SPLANETARY_DEFENSE_ATTACK.' '.constant($game->sprache("TEXT37")).'<br>'.SPLANETARY_DEFENSE_DEFENSE.' '.constant($game->sprache("TEXT38")).'<br><i>'.constant($game->sprache("TEXT39")).'</i>\', CAPTION, \''.constant($game->sprache("TEXT40")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.constant($game->sprache("TEXT20")).':</b></a> <u>'.$game->planet['building_13'].'x '.SPLANETARY_DEFENSE_ATTACK.' - '.SPLANETARY_DEFENSE_DEFENSE.'</u><br>
+<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT34")).'<br><br><u><b>'.$game->planet['building_10'].'</b> '.constant($game->sprache("TEXT35")).' <b>'.$MAX_BUILDING_LVL[$capital][9].'</b> '.constant($game->sprache("TEXT36")).'<br></u>'.PLANETARY_DEFENSE_ATTACK.' '.constant($game->sprache("TEXT37")).'<br>'.PLANETARY_DEFENSE_ATTACK2.' '.constant($game->sprache("TEXT41")).'<br>'.PLANETARY_DEFENSE_DEFENSE.' '.constant($game->sprache("TEXT38")).'<br><i>'.constant($game->sprache("TEXT39")).'</i>\', CAPTION, \''.constant($game->sprache("TEXT42")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.constant($game->sprache("TEXT21")).':</b></a> <u>'.$game->planet['building_10'].'x '.PLANETARY_DEFENSE_ATTACK.' - '.PLANETARY_DEFENSE_DEFENSE.'</u><br>
+<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT43")).'\', CAPTION, \''.constant($game->sprache("TEXT44")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.constant($game->sprache("TEXT22")).':</b></a> <u>'.$game->planet['planet_points'].'/'.$m_points.'</u>
 
 
 </td>
 <td width=200>
 
+<fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT54")).':</span></legend>
 <table border=0 cellspacing=0 cellpadding=0>
-<tr><td valign=top><b><u>Klasse:</b></u><br>'.strtoupper($game->planet['planet_type']).' ('.$PLANETS_TEXT[$game->planet['planet_type']][0].')</td></tr>
-<tr><td valign=top><b><u>Leben:</b></u><br>'.$PLANETS_TEXT[$game->planet['planet_type']][1].'</td></tr>
-<tr><td valign=top><b><u>Rohstoffe:</b></u><br>'.$PLANETS_TEXT[$game->planet['planet_type']][2].'</td></tr>
-<tr><td valign=top><b><u>Beschreibung:</b></u><br><a href="javascript:void(0);" onmouseover="return overlib(\''.$PLANETS_TEXT[$game->planet['planet_type']][3].'\',CAPTION,\'Beschreibung\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.substr($PLANETS_TEXT[$game->planet['planet_type']][3],0,40).'...</a></td></tr>
-<tr><td valign=top><b><u>Beispiele:</b></u><br>'.$PLANETS_TEXT[$game->planet['planet_type']][4].'</td></tr>
+<tr><td valign=top><b><u>'.constant($game->sprache("TEXT45")).':</b></u><br>'.strtoupper($game->planet['planet_type']).' ('.$PLANETS_TEXT[$game->planet['planet_type']][0].')</td></tr>
+<tr><td valign=top><b><u>'.constant($game->sprache("TEXT46")).':</b></u><br>'.$PLANETS_TEXT[$game->planet['planet_type']][1].'</td></tr>
+<tr><td valign=top><b><u>'.constant($game->sprache("TEXT47")).':</b></u><br>'.$PLANETS_TEXT[$game->planet['planet_type']][2].'</td></tr>
+<tr><td valign=top><b><u>'.constant($game->sprache("TEXT48")).':</b></u><br><a href="javascript:void(0);" onmouseover="return overlib(\''.$PLANETS_TEXT[$game->planet['planet_type']][3].'\',CAPTION,\''.constant($game->sprache("TEXT48")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.substr($PLANETS_TEXT[$game->planet['planet_type']][3],0,40).'...</a></td></tr>
+<tr><td valign=top><b><u>'.constant($game->sprache("TEXT49")).':</b></u><br>'.$PLANETS_TEXT[$game->planet['planet_type']][4].'</td></tr>
 </table>
-
+</fieldset>
 
 
 
@@ -213,60 +200,139 @@ $game->out('
 </td>
 </tr>
 
+
+<tr>
+<td colspan=2>
+<fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT55")).':</span></legend>
+<table border=0 cellpadding=1 cellspacing=1>
+<tr><td align=right><u>'.constant($game->sprache("TEXT11")).':</u><td><td width=160>'.$building.'</td></tr>
+<tr><td align=right><u>'.$BUILDING_NAME[$game->player['user_race']][8].':</u><td><td>'.$research.'</td></tr>
+<tr><td align=right><u>'.$BUILDING_NAME[$game->player['user_race']][5].':</u><td><td>'.$academy.'</td></tr>
+<tr><td align=right><u>'.$BUILDING_NAME[$game->player['user_race']][7].':</u><td><td>'.$shipbuild.'</td></tr>
+</table></fieldset>
+</td>
+</tr>
+
+
 <tr>
 <td valign=top>
-<span class="sub_caption2">Gebäude:</span><br>
-'.overlib($BUILDING_NAME[$game->player['user_race']][0],$BUILDING_DESCRIPTION[$game->player['user_race']][0]).' <b>('.$game->planet['building_1'].')</b><br>
-'.overlib($BUILDING_NAME[$game->player['user_race']][1],$BUILDING_DESCRIPTION[$game->player['user_race']][1]).' <b>('.$game->planet['building_2'].')</b><br>
-'.overlib($BUILDING_NAME[$game->player['user_race']][2],$BUILDING_DESCRIPTION[$game->player['user_race']][2]).' <b>('.$game->planet['building_3'].')</b><br>
-'.overlib($BUILDING_NAME[$game->player['user_race']][3],$BUILDING_DESCRIPTION[$game->player['user_race']][3]).' <b>('.$game->planet['building_4'].')</b><br>
-'.overlib($BUILDING_NAME[$game->player['user_race']][4],$BUILDING_DESCRIPTION[$game->player['user_race']][4]).' <b>('.$game->planet['building_5'].')</b><br>
-'.overlib($BUILDING_NAME[$game->player['user_race']][5],$BUILDING_DESCRIPTION[$game->player['user_race']][5]).' <b>('.$game->planet['building_6'].')</b><br>
-'.overlib($BUILDING_NAME[$game->player['user_race']][6],$BUILDING_DESCRIPTION[$game->player['user_race']][6]).' <b>('.$game->planet['building_7'].')</b><br>
-'.overlib($BUILDING_NAME[$game->player['user_race']][7],$BUILDING_DESCRIPTION[$game->player['user_race']][7]).' <b>('.$game->planet['building_8'].')</b><br>
-'.overlib($BUILDING_NAME[$game->player['user_race']][8],$BUILDING_DESCRIPTION[$game->player['user_race']][8]).' <b>('.$game->planet['building_9'].')</b><br>
-'.overlib($BUILDING_NAME[$game->player['user_race']][12],$BUILDING_DESCRIPTION[$game->player['user_race']][12]).' <b>('.$game->planet['building_13'].')</b><br>
-'.overlib($BUILDING_NAME[$game->player['user_race']][9],$BUILDING_DESCRIPTION[$game->player['user_race']][9]).' 
-<b>('.$game->planet['building_10'].')</b><br>
-'.overlib($BUILDING_NAME[$game->player['user_race']][10],$BUILDING_DESCRIPTION[$game->player['user_race']][10]).' <b>('.$game->planet['building_11'].')</b><br>
-'.overlib($BUILDING_NAME[$game->player['user_race']][11],$BUILDING_DESCRIPTION[$game->player['user_race']][11]).' <b>('.$game->planet['building_12'].')</b><br>');
+<fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT50")).':</span></legend>
+<table border=0 width=210>');
+for($blt = 0;$blt < 13;$blt++)
+{
+	$style = ($blt < 12) ? 'style="border-bottom-color:A0A0A0; border-bottom-style:dotted; border-bottom-width:1px"' : '';
 
-$game->out('<br><span class="sub_caption2">Truppen:</span><br>');
+	if($blt < 9)
+	{
+		$game->out('
+			<tr>
+				<td '.$style.'>
+					'.overlib($BUILDING_NAME[$game->player['user_race']][$blt],$BUILDING_DESCRIPTION[$game->player['user_race']][$blt]).'
+				</td>
+				<td align=center '.$style.'>
+					<b>('.$game->planet['building_'.($blt+1).''].')</b>
+				</td>
+			</tr>');
+	}
+	else if ($blt == 9)
+	{
+		$game->out('
+			<tr>
+				<td '.$style.'>
+					'.overlib($BUILDING_NAME[$game->player['user_race']][12],$BUILDING_DESCRIPTION[$game->player['user_race']][12]).'
+				</td>
+				<td align=center '.$style.'>
+					<b>('.$game->planet['building_13'].')</b>
+				</td>
+			</tr>');
+	}
+	else
+	{
+		$game->out('
+			<tr>
+				<td '.$style.'>
+					'.overlib($BUILDING_NAME[$game->player['user_race']][$blt-1],$BUILDING_DESCRIPTION[$game->player['user_race']][$blt-1]).'
+				</td>
+				<td align=center '.$style.'>
+					<b>('.$game->planet['building_'.($blt).''].')</b>
+				</td>
+			</tr>');
+	}
+}
+
+$game->out('</table></fieldset>');
+
+$game->out('<fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT51")).':</span></legend>
+<table border=0 width=210>');
 
 for ($t=0; $t<6; $t++)
-$game->out('<img src="'.$game->GFX_PATH.'menu_unit'.($t+1).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][$t].'<br><u>Angriff:</u> '.GetAttackUnit($t).' (Standard: '.$UNIT_DATA[$t][5].')<br><u>Verteidigung:</u> '.GetDefenseUnit($t).' (Standard: '.$UNIT_DATA[$t][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$UNIT_NAME[$game->player['user_race']][$t].' <b>('.$game->planet['unit_'.($t+1).''].')</a></b><br>');
+{
+	$style = ($t < 5) ? 'style="border-bottom-color:A0A0A0; border-bottom-style:dotted; border-bottom-width:1px"' : '';
+
+	$game->out('
+		<tr>
+			<td '.$style.'>
+				<img src="'.$game->GFX_PATH.'menu_unit'.($t+1).'_small.gif">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$UNIT_DESCRIPTION[$game->player['user_race']][$t].'<br><u>'.constant($game->sprache("TEXT56")).'</u> '.GetAttackUnit($t).' (Standard: '.$UNIT_DATA[$t][5].')<br><u>'.constant($game->sprache("TEXT57")).'</u> '.GetDefenseUnit($t).' (Standard: '.$UNIT_DATA[$t][6].')\', CAPTION, \''.$UNIT_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$UNIT_NAME[$game->player['user_race']][$t].'</a>
+			</td>
+			<td align=center '.$style.'>
+				<b>('.$game->planet['unit_'.($t+1).''].')</b>
+			</td>
+		</tr>');
+}
+
+$game->out('</table></fieldset>');
 
 $game->out('</td>
 <td valign=top>
-<span class="sub_caption2">Technologien:</span><br>
-<a href="javascript:void(0);" onmouseover="return overlib(\''.$TECH_DESCRIPTION[$game->player['user_race']][0].'\', CAPTION, \''.$TECH_NAME[$game->player['user_race']][0].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$TECH_NAME[$game->player['user_race']][0].' <b>('.$game->planet['research_1'].')</b></a><br>
-<a href="javascript:void(0);" onmouseover="return overlib(\''.$TECH_DESCRIPTION[$game->player['user_race']][1].'\', CAPTION, \''.$TECH_NAME[$game->player['user_race']][1].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$TECH_NAME[$game->player['user_race']][1].' <b>('.$game->planet['research_2'].')</b></a><br>
-<a href="javascript:void(0);" onmouseover="return overlib(\''.$TECH_DESCRIPTION[$game->player['user_race']][2].'\', CAPTION, \''.$TECH_NAME[$game->player['user_race']][2].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$TECH_NAME[$game->player['user_race']][2].' <b>('.$game->planet['research_3'].')</b></a><br>
-<a href="javascript:void(0);" onmouseover="return overlib(\''.$TECH_DESCRIPTION[$game->player['user_race']][3].'\', CAPTION, \''.$TECH_NAME[$game->player['user_race']][3].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$TECH_NAME[$game->player['user_race']][3].' <b>('.$game->planet['research_4'].')</b></a><br>
-<a href="javascript:void(0);" onmouseover="return overlib(\''.$TECH_DESCRIPTION[$game->player['user_race']][4].'\', CAPTION, \''.$TECH_NAME[$game->player['user_race']][4].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$TECH_NAME[$game->player['user_race']][4].' <b>('.$game->planet['research_5'].')</b></a><br>
-<br><span class="sub_caption2">Komponenten:</span><br>
-');
+<fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT52")).':</span></legend>
+<table border=0 width=210>');
 
+for ($tech=0; $tech<5; $tech++)
+{
+	$style = ($tech < 4) ? 'style="border-bottom-color:A0A0A0; border-bottom-style:dotted; border-bottom-width:1px"' : '';
 
+	$game->out('
+		<tr>
+			<td '.$style.'>
+			<a href="javascript:void(0);" onmouseover="return overlib(\''.$TECH_DESCRIPTION[$game->player['user_race']][$tech].'\', CAPTION, \''.$TECH_NAME[$game->player['user_race']][$tech].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$TECH_NAME[$game->player['user_race']][$tech].'</a>
+			</td>
+			<td align=center '.$style.'>
+			<b>('.$game->planet['research_'.($tech+1).''].')</b>
+			</td>
+		</tr>');
+}
+$game->out('</table></fieldset>');
 
+$game->out('<fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT53")).':</span></legend>
+<table border=0 width=210>');
 
+$n = count($ship_components[$game->player['user_race']]);
 foreach ($ship_components[$game->player['user_race']] as $key => $components)
 {
-$cname=$components['name'];
-if (strlen($cname)>13)
-{
-$cname=substr($cname, 0,11);
-$cname.='..';
+	$style = ($key < $n-1) ? 'style="border-bottom-color:A0A0A0; border-bottom-style:dotted; border-bottom-width:1px"' : '';
+	$cname=$components['name'];
+	/*if (strlen($cname)>13)
+	{
+		$cname=substr($cname, 0,11);
+		$cname.='..';
+	}*/
+	$text='';
+	for ($t=0; $t<$game->planet['catresearch_'.($key+1)]; $t++)
+	{
+		$text.='- '.$components[$t]['name'].'<br>';
+	}
+	$catname='<a href="javascript:void(0);" onmouseover="return overlib(\''.$text.'\',CAPTION,\''.$components['name'].'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$cname;
+	$game->out('
+		<tr>
+			<td '.$style.'>
+				'.$catname.'</a>
+			</td>
+			<td align=center '.$style.'>
+				<b>('.round(100/$components['num']*$game->planet['catresearch_'.($key+1)],0).'%)</b>
+			</td>
+		</tr>');
 }
-$text='';
-for ($t=0; $t<$game->planet['catresearch_'.($key+1)]; $t++)
-{
-$text.='- '.$components[$t]['name'].'<br>';
-}
-$catname='<a href="javascript:void(0);" onmouseover="return overlib(\''.$text.'\',CAPTION,\''.$cat['name'].'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$cname;
-$game->out($catname.'&nbsp <b>('.round(100/$components['num']*$game->planet['catresearch_'.($key+1)],0).'%)</a></b><br>');
-}
-
+$game->out('</table></fieldset>');
 
 
 
