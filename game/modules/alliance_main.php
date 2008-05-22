@@ -30,20 +30,20 @@ return ($days.'d '.$hours.'h');
 }
 
 
-// Überprüft, ob der Spieler Mitglied/kein Mitglied einer Allianz ist
-//   $requirement == true -> der Spieler muss in einer Allianz sein
-//   $requirement == false -> der Spieler darf NICHT in einer Allianz sein
+// Checks whether the player is member or not of an alliance
+//   $requirement == true -> the player must be in an alliance
+//   $requirement == false -> the player must NOT be in an alliance
 function check_membership($requirement) {
     global $game;
     
     $in_alliance = (!empty($game->player['alliance_name'])) ? true : false;
     
     if($in_alliance && !$requirement) {
-        message(NOTICE, 'Du bist bereits Mitglied in einer Allianz');
+        message(NOTICE, constant($game->sprache("TEXT0")));
     }
     
     if(!$in_alliance && $requirement) {
-        message(NOTICE, 'Du bist nicht Mitglied einer Allianz');
+        message(NOTICE, constant($game->sprache("TEXT1")));
     }
     
     return true;
@@ -51,7 +51,7 @@ function check_membership($requirement) {
 
 
 $game->init_player();
-$game->out('<center><span class="caption">Allianz:</span><br><br>');
+$game->out('<center><span class="caption">'.constant($game->sprache("TEXT2")).'</span><br><br>');
    
  $sql = 'SELECT *
             FROM alliance
@@ -82,7 +82,7 @@ if(isset($_GET['member_list'])) {
     }
     
     if($db->num_rows() == 0) {
-        message(NOTICE, 'Es konnten keine Allianz-Mitglieder gefunden werden (das sollte eigentlich NICHT passieren!)');
+        message(NOTICE, constant($game->sprache("TEXT3")));
     }
 
     $member_status = array(
@@ -94,7 +94,7 @@ if(isset($_GET['member_list'])) {
 
     if($_GET['member_list']>0 && $_GET['member_list']<3) $game->option_store('alliance_status_member',(int)$_GET['member_list']);
 
-    // Rassenverteilung
+    // Racial distribution
 
     for ($t=0; $t<12; $t++)
     {
@@ -109,7 +109,7 @@ if(isset($_GET['member_list'])) {
     {
     $race['racepercent_'.$t]=round(100/($t_percent['num'])*$race['racecount_'.$t],0);
     }
-    // Rassenverteilung Ende
+    // Racial distribution end
 
 
     $game->out('
@@ -119,7 +119,7 @@ if(isset($_GET['member_list'])) {
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$alliance['alliance_name'].' ['.$alliance['alliance_tag'].']</span><br><br><br>
       <table width="350" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="175" align="left"><i>Mitgliederliste</i></td><td width="175" align="right">'.( ($game->player['user_alliance_rights8'] == 1) ? '[<a href="'.( ($game->option_retr('alliance_status_member')==1) ? ''.parse_link('a=alliance_main&member_list=2').'' : ''.parse_link('a=alliance_main&member_list=1').'' ).'">Statusanzeige switchen</a>]</td></tr>' : '' ).'
+        <tr><td width="175" align="left"><i>'.constant($game->sprache("TEXT4")).'</i></td><td width="175" align="right">'.( ($game->player['user_alliance_rights8'] == 1) ? '[<a href="'.( ($game->option_retr('alliance_status_member')==1) ? ''.parse_link('a=alliance_main&member_list=2').'' : ''.parse_link('a=alliance_main&member_list=1').'' ).'">'.constant($game->sprache("TEXT5")).'</a>]</td></tr>' : '' ).'
       </table>
    ');
 
@@ -130,11 +130,11 @@ if(isset($_GET['member_list'])) {
         <tr>
           
           <td width="30">&nbsp;</td>
-          <td width="140"><b>Name</b></td>
-          <td width="70"><b>Rasse</b></td>
-          <td width="70"><b>Planeten</b></td>
-          <td width="60"><b>Punkte</b></td>
-          '.( ($game->option_retr('alliance_status_member')==1) ? '<td width="50"><b>Inaktiv</b></td>' : '<td width="50"><b>Status</b></td>' ).'
+          <td width="140"><b>'.constant($game->sprache("TEXT6")).'</b></td>
+          <td width="70"><b>'.constant($game->sprache("TEXT7")).'</b></td>
+          <td width="70"><b>'.constant($game->sprache("TEXT8")).'</b></td>
+          <td width="60"><b>'.constant($game->sprache("TEXT9")).'</b></td>
+          '.( ($game->option_retr('alliance_status_member')==1) ? '<td width="50"><b>'.constant($game->sprache("TEXT10")).'</b></td>' : '<td width="50"><b>'.constant($game->sprache("TEXT11")).'</b></td>' ).'
         </tr>
         ');
          
@@ -143,60 +143,60 @@ if(isset($_GET['member_list'])) {
         switch($user['user_race']) {
  
         case 0:
-        $user_race = 'Föd';
-        break;       
+        $user_race = constant($game->sprache("TEXT12"));
+        break;
  
         case 1:
-        $user_race = 'Rom';
-        break;  
+        $user_race = constant($game->sprache("TEXT13"));
+        break;
 
         case '2':
-        $user_race = 'Kli';
-        break;  
+        $user_race = constant($game->sprache("TEXT14"));
+        break;
 
         case '3':
-        $user_race = 'Car';
-        break;  
+        $user_race = constant($game->sprache("TEXT15"));
+        break;
 
         case '4':
-        $user_race = 'Dom';
-        break;  
+        $user_race = constant($game->sprache("TEXT16"));
+        break;
 
         case '5':
-        $user_race = 'Fer';
-        break;  
+        $user_race = constant($game->sprache("TEXT17"));
+        break;
 
         case '8':
-        $user_race = 'Bre';
-        break;  
+        $user_race = constant($game->sprache("TEXT18"));
+        break;
 
         case '9':
-        $user_race = 'Hir';
-        break;  
+        $user_race = constant($game->sprache("TEXT19"));
+        break;
 
         case '10':
-        $user_race = 'Kre';
-        break; 
+        $user_race = constant($game->sprache("TEXT20"));
+        break;
 
         case '11':
-        $user_race = 'Kaz';
-        break;  
+        $user_race = constant($game->sprache("TEXT21"));
+        break;
 
         default:
-        $user_race = 'Unknown';
-        break;  
+        $user_race = constant($game->sprache("TEXT22"));
+        break;
 
         }
 
-        if ($user['last_active']>(time()-60*3)) $stats_str='<span style="color: green">online</span>';
-	    else if ($user['last_active']>(time()-60*9)) $stats_str='<span style="color: orange">abwesend</span>';
-            else $stats_str='<span style="color: red">offline</span>';
+        if ($user['last_active']>(time()-60*3)) $stats_str='<span style="color: green">'.constant($game->sprache("TEXT23")).'</span>';
+	    else if ($user['last_active']>(time()-60*9)) $stats_str='<span style="color: orange">'.constant($game->sprache("TEXT24")).'</span>';
+            else $stats_str='<span style="color: red">'.constant($game->sprache("TEXT25")).'</span>';
 
             $game->out('
         <tr>
           <td width="30"><input type="radio" name="user_id" value="'.$user['user_id'].'"'.( ($user['user_id'] == $alliance['alliance_owner']) ? ' disabled="disabled"' : '' ).'></td>
           <td width="190"><a href="'.parse_link('a=stats&a2=viewplayer&id='.$user['user_id']).'">'.sprintf($member_status[$user['user_alliance_status']], $user['user_name']).'</a></td>
-          <td width="70">'.$user_race.'</td>         
+          <td width="70">'.$user_race.'</td>
           <td width="70">'.$user['user_planets'].'</td>
           <td width="80">'.$user['user_points'].'</td>
           '.( ($game->option_retr('alliance_status_member')==1) ? '<td width="80">'.(($user['user_vacation_end']<$ACTUAL_TICK) ? timeformat(time()-$user['last_active']) : 'urlaub').'</td>' : '<td width="80"><b>'.$stats_str.'<b></td>' ).'
@@ -209,17 +209,17 @@ if(isset($_GET['member_list'])) {
       <table width="350" align="center" border="0" cellpadding="0" cellspacing="0">
         <tr height="5"><td></td></tr>
         <tr><!--<td align="left">
-          <input class="button" type="submit" name="status_change_fin" value="Markierung Kasse/Standart"></td>!-->
-	   <td><input class="button" type="submit" name="status_change_diplo" value="Markierung Diplomat/Standart"></td>
+          <input class="button" type="submit" name="status_change_fin" value="'.constant($game->sprache("TEXT26")).'"></td>!-->
+	   <td><input class="button" type="submit" name="status_change_diplo" value="'.constant($game->sprache("TEXT27")).'"></td>
           <td align="left">
-          <input class="button" type="submit" name="status_change" value="Markierung Admin/Standart">
+          <input class="button" type="submit" name="status_change" value="'.constant($game->sprache("TEXT28")).'">
 
         </td>
        </tr>
         
         <!--<tr height="5"><td></td></tr>
 	 <tr><td align="left">
-          <input class="button" type="submit" name="status_change" value="Markierung Admin/Standart">
+          <input class="button" type="submit" name="status_change" value="'.constant($game->sprache("TEXT28")).'">
 
         </td></tr>!-->
         ');
@@ -228,7 +228,7 @@ if(isset($_GET['member_list'])) {
             $game->out('
          <tr height="5"><td></td></tr>
          <tr><td align="left">
-           <input class="button" type="submit" name="owner_change" value="Präsidentenamt übergeben">
+           <input class="button" type="submit" name="owner_change" value="'.constant($game->sprache("TEXT29")).'">
          </td></tr>
             '); 
         }
@@ -239,11 +239,11 @@ if(isset($_GET['member_list'])) {
         $game->out('
       <table class="style_inner" width="350" align="center" border="0" cellpadding="2" cellspacing="2">
         <tr>
-          <td width="210"><b>Name</b></td>
-          <td width="70"><b>Rasse</b></td> 
-          <td width="70"><b>Planeten</b></td>
-          <td width="60"><b>Punkte</b></td>
-          <td width="50"><b>Status</b></td>
+          <td width="210"><b>'.constant($game->sprache("TEXT6")).'</b></td>
+          <td width="70"><b>'.constant($game->sprache("TEXT7")).'</b></td> 
+          <td width="70"><b>'.constant($game->sprache("TEXT8")).'</b></td>
+          <td width="60"><b>'.constant($game->sprache("TEXT9")).'</b></td>
+          <td width="50"><b>'.constant($game->sprache("TEXT11")).'</b></td>
         </tr>
         ');
 
@@ -252,59 +252,59 @@ if(isset($_GET['member_list'])) {
         switch($user['user_race']) {
  
         case 0:
-        $user_race = 'Föd';
-        break;       
+        $user_race = constant($game->sprache("TEXT12"));
+        break;
  
         case 1:
-        $user_race = 'Rom';
-        break;  
+        $user_race = constant($game->sprache("TEXT13"));
+        break;
 
         case '2':
-        $user_race = 'Kli';
-        break;  
+        $user_race = constant($game->sprache("TEXT14"));
+        break;
 
         case '3':
-        $user_race = 'Car';
-        break;  
+        $user_race = constant($game->sprache("TEXT15"));
+        break;
 
         case '4':
-        $user_race = 'Dom';
-        break;  
+        $user_race = constant($game->sprache("TEXT16"));
+        break;
 
         case '5':
-        $user_race = 'Fer';
-        break;  
+        $user_race = constant($game->sprache("TEXT17"));
+        break;
 
         case '8':
-        $user_race = 'Bre';
-        break;  
+        $user_race = constant($game->sprache("TEXT18"));
+        break;
 
         case '9':
-        $user_race = 'Hir';
-        break;  
+        $user_race = constant($game->sprache("TEXT19"));
+        break;
 
         case '10':
-        $user_race = 'Kre';
-        break;  
+        $user_race = constant($game->sprache("TEXT20"));
+        break;
 
         case '11':
-        $user_race = 'Kaz';
-        break;  
+        $user_race = constant($game->sprache("TEXT21"));
+        break;
 
         default:
-        $user_race = 'Unknown';
-        break;  
+        $user_race = constant($game->sprache("TEXT22"));
+        break;
 
         }
 
-        if ($user['last_active']>(time()-60*3)) $stats_str='<span style="color: green">online</span>';
-	    else if ($user['last_active']>(time()-60*9)) $stats_str='<span style="color: orange">abwesend</span>';
-            else $stats_str='<span style="color: red">offline</span>';
+        if ($user['last_active']>(time()-60*3)) $stats_str='<span style="color: green">'.constant($game->sprache("TEXT23")).'</span>';
+	    else if ($user['last_active']>(time()-60*9)) $stats_str='<span style="color: orange">'.constant($game->sprache("TEXT24")).'</span>';
+            else $stats_str='<span style="color: red">'.constant($game->sprache("TEXT25")).'</span>';
 
             $game->out('
         <tr>
           <td width="210"><a href="'.parse_link('a=stats&a2=viewplayer&id='.$user['user_id']).'">'.sprintf($member_status[$user['user_alliance_status']], $user['user_name']).'</a></td>
-          <td width="70">'.$user_race.'</td>           
+          <td width="70">'.$user_race.'</td>
           <td width="70">'.$user['user_planets'].'</td>
           <td width="80">'.$user['user_points'].'</td>
           <td width="50">'.$stats_str.'</td>
@@ -316,48 +316,48 @@ if(isset($_GET['member_list'])) {
     }
 
     $game->out('<table width="350" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>&nbsp;</td></tr>
-        <tr><td width="350" align="left"><i>Rassenverteilung innerhalb der Allianz</i></td><td width="175" align="right">&nbsp;</td></tr>
+        <tr><td width="350" align="left"><i>'.constant($game->sprache("TEXT30")).'</i></td><td width="175" align="right">&nbsp;</td></tr>
         </table>
         <table class="style_inner" width="350" align="center" border="0" cellpadding="2" cellspacing="2">
 
-                <td width="130" class="desc_row">Föderation (Föd):</td>
+                <td width="130" class="desc_row">'.constant($game->sprache("TEXT31")).'</td>
                 <td width="140" class="value_row">'.$race['racecount_0'].' ('.$race['racepercent_0'].'%)</td>
               </tr>
               <tr>
-                <td class="desc_row">Romulaner (Rom):</td>
+                <td class="desc_row">'.constant($game->sprache("TEXT32")).'</td>
                 <td class="value_row">'.$race['racecount_1'].' ('.$race['racepercent_1'].'%)</b></td>
               </tr>
               <tr>
-                <td class="desc_row">Klingonen (Kli):</td>
+                <td class="desc_row">'.constant($game->sprache("TEXT33")).'</td>
                 <td class="value_row">'.$race['racecount_2'].' ('.$race['racepercent_2'].'%)</b></td>
               </tr>
               <tr>
-                <td class="desc_row">Cardassianer (Car):</td>
+                <td class="desc_row">'.constant($game->sprache("TEXT34")).'</td>
                 <td class="value_row">'.$race['racecount_3'].' ('.$race['racepercent_3'].'%)</b></td>
               </tr>
               <tr>
-                <td class="desc_row">Dominion (Dom):</td>
+                <td class="desc_row">'.constant($game->sprache("TEXT35")).'</td>
                 <td class="value_row">'.$race['racecount_4'].' ('.$race['racepercent_4'].'%)</b></td>
               </tr>
               <tr>
-                <td class="desc_row">Ferengi (Fer):</td>
+                <td class="desc_row">'.constant($game->sprache("TEXT36")).'</td>
                 <td class="value_row">'.$race['racecount_5'].' ('.$race['racepercent_5'].'%)</b></td>
               </tr>
               <tr>
-                <td class="desc_row">Breen (Bre):</td>
+                <td class="desc_row">'.constant($game->sprache("TEXT37")).'</td>
                 <td class="value_row">'.$race['racecount_8'].' ('.$race['racepercent_8'].'%)</b></td>
               </tr>
               <tr>
-                <td class="desc_row">Hirogen (Hir):</td>
+                <td class="desc_row">'.constant($game->sprache("TEXT38")).'</td>
                 <td class="value_row">'.$race['racecount_9'].' ('.$race['racepercent_9'].'%)</b></td>
               </tr>
               <tr>
-                <td class="desc_row">Krenim (Kre):</td>
+                <td class="desc_row">'.constant($game->sprache("TEXT39")).'</td>
                 <td class="value_row">'.$race['racecount_10'].' ('.$race['racepercent_10'].'%)</b></td>
               </tr>
               <tr>
               <tr>
-                <td class="desc_row">Kazon (Kaz):</td>
+                <td class="desc_row">'.constant($game->sprache("TEXT40")).'</td>
                 <td class="value_row">'.$race['racecount_11'].' ('.$race['racepercent_11'].'%)</b></td>
               </tr>
         </table>
@@ -366,7 +366,7 @@ if(isset($_GET['member_list'])) {
 </table>
 <br>
 <center>
-<i>Legende:</i>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);">Mitglied</a>&nbsp;&nbsp;&nbsp;'.sprintf($member_status[ALLIANCE_STATUS_FINANZ], 'Kassenzugriff').'&nbsp;&nbsp;&nbsp;'.sprintf($member_status[ALLIANCE_STATUS_DIPLO], 'Diplomat').'&nbsp;&nbsp;&nbsp;'.sprintf($member_status[ALLIANCE_STATUS_ADMIN], 'Admin').'&nbsp;&nbsp;&nbsp;'.sprintf($member_status[ALLIANCE_STATUS_OWNER], 'Präsident').'
+<i>'.constant($game->sprache("TEXT41")).'</i>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);">'.constant($game->sprache("TEXT42")).'</a>&nbsp;&nbsp;&nbsp;'.sprintf($member_status[ALLIANCE_STATUS_FINANZ], constant($game->sprache("TEXT43"))).'&nbsp;&nbsp;&nbsp;'.sprintf($member_status[ALLIANCE_STATUS_DIPLO], constant($game->sprache("TEXT44"))).'&nbsp;&nbsp;&nbsp;'.sprintf($member_status[ALLIANCE_STATUS_ADMIN], constant($game->sprache("TEXT45"))).'&nbsp;&nbsp;&nbsp;'.sprintf($member_status[ALLIANCE_STATUS_OWNER], constant($game->sprache("TEXT46"))).'
 </center>
     ');
 }
@@ -375,7 +375,7 @@ elseif(!empty($_POST['leave_confirm'])) {
     check_membership(true);
     
     if($game->player['user_id'] == $alliance_rights['alliance_owner']) {
-        message(NOTICE, 'Der Präsident kann seine Allianz nicht verlassen');
+        message(NOTICE, constant($game->sprache("TEXT47")));
     }
     
     $sql = 'UPDATE user
@@ -394,7 +394,7 @@ elseif(!empty($_POST['leave_confirm'])) {
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not update user alliance data');
     }
-    alliance_log('<font color=green>'.$game->player['user_name'].'</font> hat die Allianz <b>verlassen</b>');
+    alliance_log('<font color=green>'.$game->player['user_name'].'</font> '.constant($game->sprache("TEXT48")));
     
     $sql = 'UPDATE alliance
             SET alliance_points = alliance_points - '.$game->player['user_points'].',
@@ -413,7 +413,7 @@ elseif(isset($_GET['leave'])) {
     check_membership(true);
     
     if($game->player['user_id'] == $alliance_rights['alliance_owner']) {
-        message(NOTICE, 'Der Präsident kann seine Allianz nicht verlassen');
+        message(NOTICE, constant($game->sprache("TEXT47")));
     }
 
     $game->out('
@@ -422,9 +422,9 @@ elseif(isset($_GET['leave'])) {
   <tr height="5"><td></td></tr>
   <tr>
     <td align="center">
-      Willst du wirklich deine Allianz verlassen?<br><br>
-      <input class="button" type="button" value="<< Zurück" onClick="return window.history.back();">&nbsp;&nbsp;
-      <input class="button" type="submit" name="leave_confirm" value="Bestätigen">
+      '.constant($game->sprache("TEXT49")).'<br><br>
+      <input class="button" type="button" value="'.constant($game->sprache("TEXT50")).'" onClick="return window.history.back();">&nbsp;&nbsp;
+      <input class="button" type="submit" name="leave_confirm" value="'.constant($game->sprache("TEXT51")).'">
     </td>
   </tr>
   <tr height="5"><td></td></tr>
@@ -438,13 +438,13 @@ elseif(isset($_GET['new'])) {
 	$alliance_name = addslashes($_POST['alliance_name']);
 	
 	if(empty($alliance_name)) {
-		message(NOTICE, 'Kein Allianz-Name angegeben');
+		message(NOTICE, constant($game->sprache("TEXT52")));
 	}
 	
 	$alliance_tag = addslashes($_POST['alliance_tag']);
 	
 	if(empty($alliance_tag)) {
-		message(NOTICE, 'Kein Allianz-Tag angegeben');
+		message(NOTICE, constant($game->sprache("TEXT53")));
 	}
 	
 	$sql = 'SELECT alliance_id
@@ -457,10 +457,10 @@ elseif(isset($_GET['new'])) {
     }
     
     if(!empty($ally_exists['alliance_id'])) {
-        message(NOTICE, 'Es gibt schon eine Allianz mit diesem Namen/Tag');
+        message(NOTICE, constant($game->sprache("TEXT54")));
     }
 	
-    // Passwort Eintrag entfernt	
+    // Password entry removed
 
 	$sql = 'INSERT INTO alliance (alliance_name, alliance_tag, alliance_owner, alliance_text, alliance_logo, alliance_homepage, alliance_points, alliance_planets, alliance_honor)
 			VALUES ("'.$alliance_name.'", "'.$alliance_tag.'", "'.$game->player['user_id'].'", "", "", "", '.$game->player['user_points'].', '.$game->player['user_planets'].', '.$game->player['user_honor'].')';
@@ -471,7 +471,7 @@ elseif(isset($_GET['new'])) {
     	
     
 	$new_alliance_id = $db->insert_id();
-    	alliance_log('<font color=green>'.$game->player['user_name'].'</font> hat die Allianz <font color=red>'.$alliance_name.' ['.$alliance_tag.']</font> gegründet',0,$new_alliance_id);
+    	alliance_log('<font color=green>'.$game->player['user_name'].'</font> '.constant($game->sprache("TEXT55")).' <font color=red>'.$alliance_name.' ['.$alliance_tag.']</font> '.constant($game->sprache("TEXT56")),0,$new_alliance_id);
     
     $sql = 'UPDATE user
 			SET user_alliance = '.$new_alliance_id.',
@@ -493,7 +493,7 @@ elseif(isset($_GET['new'])) {
     redirect('a=alliance_main');
 }
 
-// Keine Aktion gegegeben, also prüfen, ob der Spieler in einer Allianz ist oder nicht
+// No action, also examine whether the player is in an alliance or not
 elseif(!empty($game->player['alliance_name'])) {
     $sql = 'SELECT a.*,
                    COUNT(u.user_id) AS member_count
@@ -507,11 +507,19 @@ elseif(!empty($game->player['alliance_name'])) {
     }
 
     $member_status = array(
-        ALLIANCE_STATUS_MEMBER => '<span style="color: #00FF00;">Mitglied</span>',
-        ALLIANCE_STATUS_ADMIN => '<span style="color: #FFFF00;">Admin</span>',
-        ALLIANCE_STATUS_OWNER => '<span style="color: #FF0000;">Präsident</span>',
-        ALLIANCE_STATUS_DIPLO => '<span style="color: #FFA500;">Diplomat</span>'
+        ALLIANCE_STATUS_MEMBER => '<span style="color: #00FF00;">'.constant($game->sprache("TEXT42")).'</span>',
+        ALLIANCE_STATUS_ADMIN => '<span style="color: #FFFF00;">'.constant($game->sprache("TEXT45")).'</span>',
+        ALLIANCE_STATUS_OWNER => '<span style="color: #FF0000;">'.constant($game->sprache("TEXT46")).'</span>',
+        ALLIANCE_STATUS_DIPLO => '<span style="color: #FFA500;">'.constant($game->sprache("TEXT44")).'</span>'
     );
+
+	/* 21/05/08 - AC: Check alliance homepage URL */
+	$http_ok = stripos($alliance['alliance_homepage'], "http://");
+	if($http_ok === true)
+		$alliance_url = $alliance['alliance_homepage'];
+	else
+		$alliance_url = 'http://'.$alliance['alliance_homepage'];
+	/* */
 
     $game->out('
 <table class="style_outer" width="380" align="center" border="0" cellpadding="2" cellspacing="4">
@@ -522,26 +530,26 @@ elseif(!empty($game->player['alliance_name'])) {
       
       <table class="style_inner" width="200" align="center" border="0" cellpadding="2" cellspacing="2">
         <tr>
-          <td width="100">Status:</td>
+          <td width="100">'.constant($game->sprache("TEXT11")).'</td>
           <td width="100">'.$member_status[$game->player['user_alliance_status']].'</td>
         </tr>
       </table>
       <br>
       <table class="style_inner" width="200" align="center" border="0" cellpadding="2" cellspacing="2">
         <tr>
-          <td width="100">Mitglieder:</td>
+          <td width="100">'.constant($game->sprache("TEXT57")).'</td>
           <td width="100"><b>'.$alliance['member_count'].'</b></td>
         </tr>
         <tr>
-          <td width="100">Punkte:</td>
+          <td width="100">'.constant($game->sprache("TEXT9")).':</td>
           <td width="100"><b>'.$alliance['alliance_points'].'</b></td>
         </tr>
         <tr>
-          <td width="100">Planeten:</td>
+          <td width="100">'.constant($game->sprache("TEXT8")).':</td>
           <td width="100"><b>'.$alliance['alliance_planets'].'</b></td>
         </tr>
         <tr>
-          <td width="100">Verdienst:</td>
+          <td width="100">'.constant($game->sprache("TEXT58")).'</td>
           <td width="100"><b>'.$alliance['alliance_honor'].'</b></td>
         </tr>
         <tr>
@@ -549,11 +557,11 @@ elseif(!empty($game->player['alliance_name'])) {
           <td width="100">&nbsp;</td>
         </tr>
         <tr>
-          <td width="100">Rang:</td>
+          <td width="100">'.constant($game->sprache("TEXT59")).'</td>
           <td width="100"><b>'.$alliance['alliance_rank_points'].'</b></td>
         </tr>
         <tr>
-          <td width="100">Rang &empty;:</td>
+          <td width="100">'.constant($game->sprache("TEXT60")).'</td>
           <td width="100"><b>'.$alliance['alliance_rank_points_avg'].'</b></td>
         </tr>
         <tr>
@@ -562,7 +570,7 @@ elseif(!empty($game->player['alliance_name'])) {
         </tr>
         <tr>
           <td width="100">Homepage:</td>
-          <td width="100"><a href="'.$alliance['alliance_homepage'].'">'.$alliance['alliance_homepage'].'</a></td>
+          <td width="100"><a href="'.$alliance_url.'">'.$alliance['alliance_homepage'].'</a></td>
         </tr>
         <tr>
           <td width="100">IRC:</td>
@@ -573,20 +581,27 @@ elseif(!empty($game->player['alliance_name'])) {
       <table class="style_inner" width="200" align="center" border="0" cellpadding="2" cellspacing="2">
         <tr>
           <td width="200">
-            <a href="'.parse_link('a=alliance_main&member_list').'">Mitgliederliste</a><br>
-            <a href="'.parse_link('a=alliance_attack').'">Taktische Übersicht</a><br>
-            <a href="alliancemap.php?alliance='.$alliance['alliance_tag'].'&size=6&map" target=_blank>Allianzkarte</a><br>
-            <a href="'.parse_link('a=alliance_diplomacy').'">Diplomatie</a><br>
-            <a href="'.parse_link('a=alliance_taxes').'">Allianzkasse</a><br><br>
-            <a href="'.parse_link('a=alliance_board').'">Allianzforum</a><br><br>
+            <a href="'.parse_link('a=alliance_main&member_list').'">'.constant($game->sprache("TEXT4")).'</a><br>
+            <a href="'.parse_link('a=alliance_attack').'">'.constant($game->sprache("TEXT61")).'</a><br>
+            <a href="alliancemap.php?alliance='.$alliance['alliance_tag'].'&size=6&map" target=_blank>'.constant($game->sprache("TEXT62")).'</a><br>
+            <a href="'.parse_link('a=alliance_ships').'">'.constant($game->sprache("TEXT83")).'</a><br>
+            <a href="'.parse_link('a=alliance_diplomacy').'">'.constant($game->sprache("TEXT63")).'</a><br>
+            <a href="'.parse_link('a=alliance_taxes').'">'.constant($game->sprache("TEXT64")).'</a><br><br>
+            <a href="'.parse_link('a=alliance_board').'">'.constant($game->sprache("TEXT65")).'</a><br>
     ');
-    
+	
+    if($game->player['user_alliance_rights7']==1) { 
+        $game->out(' 
+
+            <a href="'.parse_link('a=alliance_chat').'">'.constant($game->sprache("TEXT84")).'</a><br><br> '); 
+	}
+	else { $game->out('<br>'); }
 
     if($game->player['user_alliance_rights1']==1) { 
     
     $game->out('
-            
-            <a href="'.parse_link('a=alliance_admin&settings').'">Allianz-Einstellungen</a><br> '); 
+
+            <a href="'.parse_link('a=alliance_admin&settings').'">'.constant($game->sprache("TEXT66")).'</a><br> '); 
     } 
     //else { $game->out('<br>'); }
 
@@ -601,11 +616,11 @@ elseif(!empty($game->player['alliance_name'])) {
     if($game->player['user_alliance_rights6']==1) { 
 
       if(!empty($new_app['application_id'])) {
-            $game->out('<a href="'.parse_link('a=alliance_application&application=admin').'"><span style="color: #FFFF00;"><b>Allianz-Bewerbungen</b></span></a><br>');
+            $game->out('<a href="'.parse_link('a=alliance_application&application=admin').'"><span style="color: #FFFF00;"><b>'.constant($game->sprache("TEXT67")).'</b></span></a><br>');
 
       }
       else { $game->out('
-            <a href="'.parse_link('a=alliance_application&application=admin').'">Allianz-Bewerbungen</a><br>
+            <a href="'.parse_link('a=alliance_application&application=admin').'">'.constant($game->sprache("TEXT67")).'</a><br>
 	    
          '); }
     } 
@@ -613,20 +628,20 @@ elseif(!empty($game->player['alliance_name'])) {
     
     if($game->player['user_alliance_rights8']==1) {
      
-    $game->out('<a href="'.parse_link('a=alliance_rights').'">Allianz-Rechteverwaltung</a></br>');
+    $game->out('<a href="'.parse_link('a=alliance_rights').'">'.constant($game->sprache("TEXT68")).'</a></br>');
     } 
     //else { $game->out('<br>'); 
 
     if($game->player['user_alliance_rights4']==1) {   
-    $game->out('<a href="'.parse_link('a=alliance_massmail').'">Massenmail verfassen</a>');
+    $game->out('<a href="'.parse_link('a=alliance_massmail').'">'.constant($game->sprache("TEXT69")).'</a>');
     }
    // else { $game->out('<br>'); }
     
     if($game->player['user_id'] == $alliance_rights['alliance_owner']) {
-        $game->out('<br><br><a href="'.parse_link('a=alliance_admin&delete').'">Allianz auflösen</a>');
+        $game->out('<br><br><a href="'.parse_link('a=alliance_admin&delete').'">'.constant($game->sprache("TEXT70")).'</a>');
     }
     else {
-        $game->out('<br><br><a href="'.parse_link('a=alliance_main&leave').'">Allianz verlassen</a>');
+        $game->out('<br><br><a href="'.parse_link('a=alliance_main&leave').'">'.constant($game->sprache("TEXT71")).'</a>');
     }
     
     $game->out('
@@ -637,13 +652,13 @@ elseif(!empty($game->player['alliance_name'])) {
       
       $game->out('<br><table class="style_inner" width="330" align="center" border="0" cellpadding="2" cellspacing="2">
         <tr>
-          <td width="330"><b>Allianzmeldungen '.(!isset($_GET['all_logs']) ? '[<a href="'.parse_link('a=alliance_main&all_logs').'">Alle zeigen</a>]' : '').':</b><br><br>');
+          <td width="330"><b>'.constant($game->sprache("TEXT72")).' '.(!isset($_GET['all_logs']) ? '[<a href="'.parse_link('a=alliance_main&all_logs').'">'.constant($game->sprache("TEXT73")).'</a>]' : '').':</b><br><br>');
 	  
 	  
     $log_qry=$db->query('SELECT * FROM alliance_logs WHERE alliance='.$game->player['user_alliance'].' AND permission<='.$game->player['user_alliance_status'].' ORDER BY id DESC '.(!isset($_GET['all_logs']) ? 'LIMIT 5' : ''));  
     while (($log=$db->fetchrow($log_qry))==true)
     {
-    $game->out('<table border=0 cellpadding=0 cellspacing=0><tr><td width=80>'.date('d.m.y H:i',$log['timestamp']+7200).'</td><td width=250>'.stripslashes($log['message']).'</td></tr></table>');   
+    $game->out('<table border=0 cellpadding=0 cellspacing=0><tr><td width=80>'.date('d.m.y H:i',$log['timestamp']).'</td><td width=250>'.stripslashes($log['message']).'</td></tr></table>');
     };
 	
 	  
@@ -658,7 +673,7 @@ $game->out('
       <br>
       <table class="style_inner" width="330" align="center" border="0" cellpadding="2" cellspacing="2">
         <tr>
-          <td width="330"><b>Allianztext:</b><br><br>'.stripslashes($alliance['alliance_text']).'</td>
+          <td width="330"><b>'.constant($game->sprache("TEXT74")).'</b><br><br>'.stripslashes($alliance['alliance_text']).'</td>
         </tr>
       </table>
 
@@ -667,7 +682,7 @@ $game->out('
 </table>
     ');
 }
-// Scheint als wär der Spieler in keiner Allianz
+// Seems as if the player does not belong to any alliance
 else {
 	$game->out('
 <table width="520" align="center" border="0" cellpadding="0" cellspacing="0">
@@ -676,18 +691,18 @@ else {
 	  <table class="style_inner" width="250" align="center" border="0" cellpadding="2" cellspacing="4">
 	    <form method="post" action="'.parse_link('a=alliance_main&new').'">
 		<tr>
-		  <td colspan="2"><b>Neue Allianz gründen</b><br></td>
+		  <td colspan="2"><b>'.constant($game->sprache("TEXT75")).'</b><br></td>
 		</tr>
 		<tr>
-		  <td width="120">Allianz-Name:</td>
+		  <td width="120">'.constant($game->sprache("TEXT76")).'</td>
 		  <td width="130"><input class="field" type="text" name="alliance_name"></td>
 		</tr>
 		<tr>
-		  <td width="120">Allianz-Tag:</td>
+		  <td width="120">'.constant($game->sprache("TEXT77")).'</td>
 		  <td width="130"><input class="field" type="text" name="alliance_tag" maxlength="6" size="10"></td>
 		</tr>
 		<tr>
-		  <td colspan="2" align="center"><input class="button" type="submit" name="new_submit" value="Bestätigen"></td>
+		  <td colspan="2" align="center"><input class="button" type="submit" name="new_submit" value="'.constant($game->sprache("TEXT51")).'"></td>
 		</tr>
 		</form>
 	  </table>
@@ -698,7 +713,7 @@ else {
           <td>&nbsp;</td>
         </tr>
 	<tr>
-          <td align="center"><b>oder</b></td>
+          <td align="center"><b>'.constant($game->sprache("TEXT82")).'</b></td>
         </tr>
 	<tr>
           <td>&nbsp;</td>
@@ -724,14 +739,14 @@ else {
 	<td width="252" align="center" valign="top">
 	  <table class="style_inner" width="250" align="center" border="0" cellpadding="2" cellspacing="4">
          <tr>
-		  <td colspan="2"><b>Bei einer Allianz bewerben</b><br></td>
+		  <td colspan="2"><b>'.constant($game->sprache("TEXT78")).'</b><br></td>
 
 	<tr>
 	</tr>
 
 
 	<tr>
-	  <td colspan="2" align="center">[<a href="'.parse_link('a=alliance_application&list').'">Bewerbung schreiben</a>]</td>
+	  <td colspan="2" align="center">[<a href="'.parse_link('a=alliance_application&list').'">'.constant($game->sprache("TEXT79")).'</a>]</td>
 	</tr>
 
        ');
@@ -744,13 +759,13 @@ else {
 	<td width="252" align="center" valign="top">
 	  <table class="style_inner" width="250" align="center" border="0" cellpadding="2" cellspacing="4">
          <tr>
-		  <td colspan="2"><b>Bei einer Allianz bewerben</b><br></td>
+		  <td colspan="2"><b>'.constant($game->sprache("TEXT78")).'</b><br></td>
 
 	<tr>
 	</tr>
 
        <tr>
-         <td align="center">Aktuell beworben bei:<br> <span style="color: green; font-weight: bold;">'.get_alliance_name($application_check['application_alliance']).'</span></td>
+         <td align="center">'.constant($game->sprache("TEXT80")).'<br> <span style="color: green; font-weight: bold;">'.get_alliance_name($application_check['application_alliance']).'</span></td>
        </tr>  
 
        <tr>
@@ -758,7 +773,7 @@ else {
        </tr>  
 
        <tr>
-	  <td colspan="2" align="center">[<a href="'.parse_link('a=alliance_application&surdelete=1').'">Bewerbung zurückziehen</a>]</td>
+	  <td colspan="2" align="center">[<a href="'.parse_link('a=alliance_application&surdelete=1').'">'.constant($game->sprache("TEXT81")).'</a>]</td>
 	</tr> 
 
        ');
