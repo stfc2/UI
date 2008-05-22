@@ -48,7 +48,7 @@ if ($_GET['size']>8) $_GET['size']=8;
 
 $size=$_GET['size'];
 
-//Herausnehmen der Abfrage des Users, da wir soweiso die Planeten des Users 0 (unbewohnt) haben wollen.
+//Remove the query of the user, because we do not want the planets of the user 0 (uninhabited).
 
 /*$sql = 'SELECT user_id FROM user WHERE user_name LIKE "'.addslashes($_GET['user']).'"';
 $user = $db->queryrow($sql);
@@ -61,26 +61,29 @@ $user = $db->queryrow($sql);
        }
        */
        
-//Den Pfad auf 0_0 stellen da der User immer der selbe ist.
+//The path to provide is always 0_0 because the user is the same.
        
-//Namen zuweisen:
+//Assign names:
 $image_url='maps/tmp/u_0_'.$size.'.png';
 $map_url='maps/tmp/u_0_'.$size.'.html';
        
 
 
 
-//Altes Bild löschen
-if (filemtime($image_url)<time()-3600*6)
+//Delete old picture
+if (file_exists($image_url))
 {
-@unlink($image_url);
-@unlink($map_url);
+	if (filemtime($image_url)<time()-3600*6)
+	{
+		@unlink($image_url);
+		@unlink($map_url);
+	}
 }
 
 
 
 
-// Neues Bild generieren?: 
+// Generate new picture?: 
 if (($handle = @fopen ($image_url, "rb"))!=true)
 {
 	
@@ -128,7 +131,7 @@ $q_planets = $db->query('SELECT system_id FROM planets WHERE planet_owner=0 GROU
 
 while($planet = $db->fetchrow($q_planets)) {
 $system=$glob_systems[$planet['system_id']];
-// Quadrantenkoordinaten
+// Quadrant coordinates
 $system['sector_id']--;
 
 $px_x=82*$size;
@@ -158,7 +161,7 @@ $tmp=$system['sector_id']-0;
 }
 
 
-// Sektorkoordinaten
+// Sector coordinates
 $pos_x=0;
 $pos_y=0;
 
@@ -174,7 +177,7 @@ $px_x+=$pos_x*$size*9;
 $px_y+=$pos_y*$size*9;
 
 
-// Systemkoordinaten
+// System coordinates
 $px_x+=($system['system_x'] - 1)*$size+1;
 $px_y+=($system['system_y'] - 1)*$size+1;
 
@@ -200,12 +203,12 @@ else $size2=$size-2;
 
 if ($size>1)
 {
-imagestring ($im, $size2,15,162*$size-12-$size,'Erstellt am '.gmdate('d.m.y H:i', (time() +TIME_OFFSET)), $color[4]);
+imagestring ($im, $size2,15,162*$size-12-$size,'Created at '.date('d.m.y H:i', (time())), $color[4]);
 }
 else
 {
-imagestring ($im, $size2,5,162*$size-15,'Erstellt am', $color[4]);
-imagestring ($im, $size2,5,162*$size-8,gmdate('d.m.y H:i', (time() +TIME_OFFSET)), $color[4]);
+imagestring ($im, $size2,5,162*$size-15,'Created at', $color[4]);
+imagestring ($im, $size2,5,162*$size-8,date('d.m.y H:i', (time())), $color[4]);
 }
 
 
@@ -255,8 +258,8 @@ fclose($handle);
 
 }
 	
-echo'<html><body bgcolor="#000000" text="#DDDDDD"  background="|game_url|/gfx/bg_stars1.gif"><center>
-<span style="font-family: Verdana; font-size: 15px;"><b>Galaxiekarte des Spielers :</b></span><br>
+echo'<html><body bgcolor="#000000" text="#DDDDDD"  background="http://stfc.nonsolotaku.it/gfx/bg_stars1.gif"><center>
+<span style="font-family: Verdana; font-size: 15px;"><b>Galaxy map of the player:</b></span><br>
 <img border=0 usemap="#detail_map" src="'.$image_url.'" >
 
 '.$map_data.'

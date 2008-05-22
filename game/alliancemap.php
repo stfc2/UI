@@ -66,24 +66,27 @@ $alliance = $db->queryrow($sql);
        
        
        
-//Namen zuweisen:
+//Assign names:
 $image_url='maps/tmp/'.$alliance['alliance_id'].'_'.$size.'.png';
 $map_url='maps/tmp/'.$alliance['alliance_id'].'_'.$size.'.html';
        
 
 
 
-//Altes Bild löschen
-if (filemtime($image_url)<time()-3600*6)
+//Delete old picture
+if (file_exists($image_url))
 {
-@unlink($image_url);
-@unlink($map_url);
+	if (filemtime($image_url)<time()-3600*6)
+	{
+		@unlink($image_url);
+		@unlink($map_url);
+	}
 }
 
 
 
 
-// Neues Bild generieren?: 
+// Generates new pictures?: 
 if (($handle = @fopen ($image_url, "rb"))!=true)
 {
 	
@@ -131,7 +134,7 @@ $q_planets = $db->query('SELECT system_id FROM planets WHERE planet_owner IN (SE
 
 while($planet = $db->fetchrow($q_planets)) {
 $system=$glob_systems[$planet['system_id']];
-// Quadrantenkoordinaten
+// Quadrant coordinates
 $system['sector_id']--;
 
 $px_x=82*$size;
@@ -161,7 +164,7 @@ $tmp=$system['sector_id']-0;
 }
 
 
-// Sektorkoordinaten
+// Sector coordinates
 $pos_x=0;
 $pos_y=0;
 
@@ -177,7 +180,7 @@ $px_x+=$pos_x*$size*9;
 $px_y+=$pos_y*$size*9;
 
 
-// Systemkoordinaten
+// System coordinates
 $px_x+=($system['system_x'] - 1)*$size+1;
 $px_y+=($system['system_y'] - 1)*$size+1;
 
@@ -258,7 +261,7 @@ fclose($handle);
 
 }
 	
-echo'<html><body bgcolor="#000000" text="#DDDDDD"  background="|game_url|/gfx/bg_stars1.gif"><center>
+echo'<html><body bgcolor="#000000" text="#DDDDDD"  background="/gfx/bg_stars1.gif"><center>
 <span style="font-family: Verdana; font-size: 15px;"><b>Allianzkarte der Allianz ['.$_GET['alliance'].']:</b></span><br>
 <img border=0 usemap="#detail_map" src="'.$image_url.'" >
 
