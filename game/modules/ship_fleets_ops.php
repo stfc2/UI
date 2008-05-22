@@ -23,7 +23,9 @@
 
 $game->init_player();
 
-include('include/static/static_components.php');
+$filename = 'include/static/static_components_'.$game->player['language'].'.php';
+if (!file_exists($filename)) $filename = 'include/static/static_components.php';
+include($filename);
 
 
 
@@ -39,37 +41,37 @@ global $db;
 
 global $game;
 
-$text='<b>'.$ship[31].'</b><br><br><u>Fähigkeiten:</u><br>';
+$text='<b>'.$ship[31].'</b><br><br><u>'.constant($game->sprache("TEXT0")).'</u><br>';
 
 
 
-$text.='L. Waffen: '.$ship[14].'<br>';
+$text.=constant($game->sprache("TEXT1")).' '.$ship[14].'<br>';
 
-$text.='Schw. Waffen: '.$ship[15].'<br>';
+$text.=constant($game->sprache("TEXT2")).' '.$ship[15].'<br>';
 
-$text.='Pl. Waffen: '.$ship[16].'<br>';
+$text.=constant($game->sprache("TEXT3")).' '.$ship[16].'<br>';
 
-$text.='Schildstärke: '.$ship[17].'<br>';
+$text.=constant($game->sprache("TEXT4")).' '.$ship[17].'<br>';
 
-$text.='Hlle (HP): '.$ship[18].'<br>';
+$text.=constant($game->sprache("TEXT5")).' '.$ship[18].'<br>';
 
-$text.='Reaktion: '.$ship[19].'<br>';
+$text.=constant($game->sprache("TEXT6")).' '.$ship[19].'<br>';
 
-$text.='Bereitschaft: '.$ship[20].'<br>';
+$text.=constant($game->sprache("TEXT7")).' '.$ship[20].'<br>';
 
-$text.='Wendigkeit: '.$ship[21].'<br>';
+$text.=constant($game->sprache("TEXT8")).' '.$ship[21].'<br>';
 
-$text.='Erfahrung: '.$ship[22].'<br>';
+$text.=constant($game->sprache("TEXT9")).' '.$ship[22].'<br>';
 
-$text.='Warp: '.$ship[23].'<br>';
+$text.=constant($game->sprache("TEXT10")).' '.$ship[23].'<br>';
 
-$text.='Sensoren: '.$ship[24].'<br>';
+$text.=constant($game->sprache("TEXT11")).' '.$ship[24].'<br>';
 
-$text.='Tarnung: '.$ship[25].'<br>';
+$text.=constant($game->sprache("TEXT12")).' '.$ship[25].'<br>';
 
-$text.='Verbraucht Energie: '.$ship[27].'<br>';
+$text.=constant($game->sprache("TEXT13")).' '.$ship[27].'<br>';
 
-$text.='Liefert Energie: '.$ship[26].'<br>';
+$text.=constant($game->sprache("TEXT14")).' '.$ship[26].'<br>';
 
 
 
@@ -89,37 +91,37 @@ global $db;
 
 global $game;
 
-$text=''.$comp['description'].'<br><br>Fähigkeiten:</u><br>';
+$text=''.$comp['description'].'<br><br>'.constant($game->sprache("TEXT0")).'</u><br>';
 
 
 
-if ($comp['value_1']!=0) $text.='L. Waffen: '.$comp['value_1'].'<br>';
+if ($comp['value_1']!=0) $text.=constant($game->sprache("TEXT1")).' '.$comp['value_1'].'<br>';
 
-if ($comp['value_2']!=0) $text.='Schw. Waffen: '.$comp['value_2'].'<br>';
+if ($comp['value_2']!=0) $text.=constant($game->sprache("TEXT2")).' '.$comp['value_2'].'<br>';
 
-if ($comp['value_3']!=0) $text.='Pl. Waffen: '.$comp['value_3'].'<br>';
+if ($comp['value_3']!=0) $text.=constant($game->sprache("TEXT3")).' '.$comp['value_3'].'<br>';
 
-if ($comp['value_4']!=0) $text.='Schildstärke: '.$comp['value_4'].'<br>';
+if ($comp['value_4']!=0) $text.=constant($game->sprache("TEXT4")).' '.$comp['value_4'].'<br>';
 
-if ($comp['value_5']!=0) $text.='Hlle (HP): '.$comp['value_5'].'<br>';
+if ($comp['value_5']!=0) $text.=constant($game->sprache("TEXT5")).' '.$comp['value_5'].'<br>';
 
-if ($comp['value_6']!=0) $text.='Reaktion: '.$comp['value_6'].'<br>';
+if ($comp['value_6']!=0) $text.=constant($game->sprache("TEXT6")).' '.$comp['value_6'].'<br>';
 
-if ($comp['value_7']!=0) $text.='Bereitschaft: '.$comp['value_7'].'<br>';
+if ($comp['value_7']!=0) $text.=constant($game->sprache("TEXT7")).' '.$comp['value_7'].'<br>';
 
-if ($comp['value_8']!=0) $text.='Wendigkeit: '.$comp['value_8'].'<br>';
+if ($comp['value_8']!=0) $text.=constant($game->sprache("TEXT8")).' '.$comp['value_8'].'<br>';
 
-if ($comp['value_9']!=0) $text.='Erfahrung: '.$comp['value_9'].'<br>';
+if ($comp['value_9']!=0) $text.=constant($game->sprache("TEXT9")).' '.$comp['value_9'].'<br>';
 
-if ($comp['value_10']!=0) $text.='Warp: '.$comp['value_10'].'<br>';
+if ($comp['value_10']!=0) $text.=constant($game->sprache("TEXT10")).' '.$comp['value_10'].'<br>';
 
-if ($comp['value_11']!=0) $text.='Sensoren: '.$comp['value_11'].'<br>';
+if ($comp['value_11']!=0) $text.=constant($game->sprache("TEXT11")).' '.$comp['value_11'].'<br>';
 
-if ($comp['value_12']!=0) $text.='Tarnung: '.$comp['value_12'].'<br>';
+if ($comp['value_12']!=0) $text.=constant($game->sprache("TEXT12")).' '.$comp['value_12'].'<br>';
 
-if ($comp['value_14']!=0) $text.='Verbraucht Energie: '.$comp['value_14'].'<br>';
+if ($comp['value_14']!=0) $text.=constant($game->sprache("TEXT13")).' '.$comp['value_14'].'<br>';
 
-if ($comp['value_13']!=0) $text.='Liefert Energie: '.$comp['value_13'].'<br>';
+if ($comp['value_13']!=0) $text.=constant($game->sprache("TEXT14")).' '.$comp['value_13'].'<br>';
 
 return $text;
 
@@ -131,7 +133,7 @@ if(!empty($_GET['rename_fleet'])) {
 
     if(empty($_POST['fleet_name'])) {
 
-        message(NOTICE, 'Es wurde kein neuer Name angegeben');
+        message(NOTICE, constant($game->sprache("TEXT15")));
 
     }
 
@@ -161,7 +163,7 @@ if(!empty($_GET['rename_fleet'])) {
 
     if(empty($fleet['fleet_id'])) {
 
-        message(NOTICE, 'Gewählte Flotte existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT16")));
 
     }
 
@@ -169,7 +171,7 @@ if(!empty($_GET['rename_fleet'])) {
 
     if($fleet['user_id'] != $game->player['user_id']) {
 
-        message(NOTICE, 'Gewählte Flotte existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT16")));
 
     }
 
@@ -199,7 +201,7 @@ elseif(isset($_GET['join_fleets'])) {
 
     if(empty($_POST['fleets'])) {
 
-        message(NOTICE, 'Keine Flotten ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT17")));
 
     }
 
@@ -211,7 +213,7 @@ elseif(isset($_GET['join_fleets'])) {
 
     if($n_fleets == 1) {
 
-        message(NOTICE, 'Es muss mehr als eine Flotte ausgewählt werden');
+        message(NOTICE, constant($game->sprache("TEXT18")));
 
     }
 
@@ -239,7 +241,7 @@ elseif(isset($_GET['join_fleets'])) {
 
     if(empty($fleet_ids)) {
 
-        message(NOTICE, 'Keine Flotten ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT17")));
 
     }
 
@@ -287,7 +289,7 @@ elseif(isset($_GET['join_fleets'])) {
 
             if($first_fleet['planet_id'] != $fleet['planet_id']) {
 
-                message(NOTICE, 'Mindestens eine der ausgewählten Flotten befindet sich nicht auf dem selben Planeten wie die anderen');
+                message(NOTICE, constant($game->sprache("TEXT19")));
 
             }
 
@@ -327,7 +329,7 @@ elseif(isset($_GET['join_fleets'])) {
 
             if($first_fleet['move_id'] != $fleet['move_id']) {
 
-                message(NOTICE, 'Mindestens eine der ausgewählten Flotten ist nicht gemeinsam mit den anderen unterwegs');
+                message(NOTICE, constant($game->sprache("TEXT20")));
 
             }
 
@@ -363,7 +365,7 @@ elseif(isset($_GET['join_fleets'])) {
 
     else {
 
-        message(GENERAL, 'Eine der ausgewählten Flotte befindet sich weder im Orbit um einen Planeten noch auf Reise', '$first_fleet[\'planet_id\'] = empty AND $first_fleet[\'move_id\'] = empty');
+        message(GENERAL, constant($game->sprache("TEXT21")), '$first_fleet[\'planet_id\'] = empty AND $first_fleet[\'move_id\'] = empty');
 
     }
 
@@ -371,7 +373,7 @@ elseif(isset($_GET['join_fleets'])) {
 
     if($n_fleets <= 1) {
 
-        message(NOTICE, 'Von den ausgewählten Flotten wurden nur '.$n_fleets.' in der Datenbank gefunden');
+        message(NOTICE, constant($game->sprache("TEXT22")).' '.$n_fleets.' '.constant($game->sprache("TEXT23")));
 
     }
 
@@ -379,7 +381,7 @@ elseif(isset($_GET['join_fleets'])) {
 
     if(empty($_POST['join_fleet_name'])) {
 
-        message(NOTICE, 'Es wurde kein Name fr die zusammengesetzte Flotte angegeben');
+        message(NOTICE, constant($game->sprache("TEXT24")));
 
     }
 
@@ -413,7 +415,7 @@ elseif(isset($_GET['join_fleets'])) {
 
     if($n_ships == 0) {
 
-        message(NOTICE, 'Keine der ausgewählten Flotte enthielt Schiffe');
+        message(NOTICE, constant($game->sprache("TEXT25")));
 
     }
 
@@ -503,7 +505,7 @@ elseif(!empty($_GET['set_alert_phase'])) {
 
     if(!isset($_GET['to'])) {
 
-        message(GENERAL, 'Ungültige Parameter-Übergabe', '$_GET[\'to\'] = empty');
+        message(GENERAL, constant($game->sprache("TEXT26")), '$_GET[\'to\'] = empty');
 
     }
 
@@ -515,7 +517,7 @@ elseif(!empty($_GET['set_alert_phase'])) {
 
     if( ($to != ALERT_PHASE_GREEN) && ($to != ALERT_PHASE_YELLOW) && ($to != ALERT_PHASE_RED) ) {
 
-        message(NOTICE, 'Ungltige Alarmstufe angegeben');
+        message(NOTICE, constant($game->sprache("TEXT27")));
 
     }
 
@@ -546,7 +548,7 @@ elseif(!empty($_GET['set_alert_phase'])) {
 elseif(isset($_GET['offduty_ships'])) {
 
     if(empty($_POST['ships'])) {
-       message(NOTICE, 'Keine Schiffe ausgewählt');
+       message(NOTICE, constant($game->sprache("TEXT28")));
     }
 
     $_temp = (int)$_POST['ships'][0];
@@ -567,42 +569,42 @@ elseif(isset($_GET['offduty_ships'])) {
        }
 	   
     } else {
-	   message(NOTICE, 'Die ausgewählten Schiffe existieren nicht');
+	   message(NOTICE, constant($game->sprache("TEXT29")));
 	}
 
     //Check to see if query returned any results. Needs a better explanation in NOTICE message I think.
     if ($db->num_rows($q_fleetinfo) == 0) {
-	   message(NOTICE, 'Die ausgewählten Schiffe existieren nicht oder die Schiffe sind keiner gltigen Flotte zugewiesen oder die Flotte befindet sich nicht auf einem Planeten');
+	   message(NOTICE, constant($game->sprache("TEXT30")));
 	}
 
     $fleetinfo = $db->fetchrow($q_fleetinfo);
 	
     //Lots of checking to see if everything is ok
     if($fleetinfo['user_id'] != $game->player['user_id']) {
-        message(NOTICE, 'Die Schiffe sind keiner gltigen Flotte zugewiesen');
+        message(NOTICE, constant($game->sprache("TEXT31")));
     }
 	
     if($fleetinfo['planet_owner'] != $game->player['user_id']) {
-        message(NOTICE, 'Du kannst nur Schiffe in das Trockendock eines deiner Planeten setzen');
+        message(NOTICE, constant($game->sprache("TEXT32")));
     }
 
     if($fleetinfo['building_7'] < 1) {
-        message(NOTICE, 'Du besitzt noch keine(n) '.$BUILDING_NAME[$game->player['user_race']][6].' auf dem Stationierungsplaneten der Flotte');
+        message(NOTICE, constant($game->sprache("TEXT33")).' '.$BUILDING_NAME[$game->player['user_race']][6].' '.constant($game->sprache("TEXT34")));
     }
-	
+
     $ship_ids = array();
 
     $sql = 'SELECT COUNT(s.ship_id) AS n_spacedockships
             FROM (ships s)
             WHERE s.fleet_id = -'.$fleetinfo['planet_id'].'
             GROUP BY s.fleet_id';
-			
+
     if(!$q_spacedockships = $db->query($sql)) {
        message(DATABASE_ERROR, 'Could not query spacedockships data');
     }
 
     $spacedockships = $db->fetchrow($q_spacedockships);
-	
+
     if (count($_POST['ships']) + $spacedockships['n_spacedockships'] > $MAX_SPACEDOCK_SHIPS[$fleetinfo['building_7']]) {
        $no_ships = $MAX_SPACEDOCK_SHIPS[$fleetinfo['building_7']] - $spacedockships['n_spacedockships'];
        if ($no_ships < 0) {
@@ -611,7 +613,7 @@ elseif(isset($_GET['offduty_ships'])) {
     } else {
        $no_ships = count($_POST['ships']);
     }
-	
+
     for($i = 0; $i < $no_ships; ++$i) {
         $_temp = (int)$_POST['ships'][$i];
         if(!empty($_temp)) {
@@ -622,7 +624,7 @@ elseif(isset($_GET['offduty_ships'])) {
     if(empty($ship_ids)) {
         //print_r($fleetinfo);
 	//message(NOTICE, 'Keine Schiffe ausgewählt oder Raumhafen ist voll '.count($_POST['ships']).' gewaehlt, '.$no_ships.' zugelassen ('.$MAX_SPACEDOCK_SHIPS[$fleetinfo['building_7']].' max.; '.$spacedockships['n_spacedockships'].' schon vebraucht -> Raumhafenlvl: '.$fleetinfo['building_7'].')');
-	message(NOTICE, 'Keine Schiffe ausgewaehlt oder Raumhafen ist voll');
+	message(NOTICE, constant($game->sprache("TEXT35")));
     }
 
     $ship_ids_str = implode(',', $ship_ids);
@@ -642,7 +644,7 @@ elseif(isset($_GET['offduty_ships'])) {
 	}
 	
     if($no_ships > $fleetinfo['n_ships']) {
-        message(NOTICE, 'Es wurden mehr Schiffe außer Dienst gestellt, als die Flotte besaß');
+        message(NOTICE, constant($game->sprache("TEXT36")));
     }
 
     $sql = 'SELECT COUNT(s.ship_id) AS n_transporter
@@ -660,7 +662,7 @@ elseif(isset($_GET['offduty_ships'])) {
     while($ship = $db->fetchrow($q_ships)) {
 	
         if($ship['fleet_id'] != $fleetinfo['fleet_id']) {
-            message(NOTICE, 'Eines der Schiffe befindet sich nicht in derselben Flotte wie die anderen');
+            message(NOTICE, constant($game->sprache("TEXT37")));
         }
 
         if($ship['ship_torso'] == SHIP_TYPE_TRANSPORTER) $n_transporter--;
@@ -671,13 +673,13 @@ elseif(isset($_GET['offduty_ships'])) {
     $n_units = $fleetinfo['resource_4'] + $fleetinfo['unit_1'] + $fleetinfo['unit_2'] + $fleetinfo['unit_3'] + $fleetinfo['unit_4'] + $fleetinfo['unit_5'] + $fleetinfo['unit_6'];
 
     if( ($n_resources > ($n_transporter * MAX_TRANSPORT_RESOURCES) ) || ($n_units > ($n_transporter * MAX_TRANSPORT_UNITS) ) ) {
-        message(NOTICE, 'Die Schiffe konnten nicht außer Dienst gestellt werden, da dadurch die Ladung der Flotte die maximale Transporterkapazität überschritten hätte');
+        message(NOTICE, constant($game->sprache("TEXT38")));
     }
 
     //Everything checks out ok, update database fields
 	
     $sql = 'UPDATE ships
-            SET fleet_id = -'.$fleetinfo['planet_id'].'
+            SET fleet_id = -'.$fleetinfo['planet_id'].', ship_untouchable = '.SHIP_IN_REFIT.', ship_repair='.($ACTUAL_TICK+REFIT_TICK).'
             WHERE ship_id IN ('.$ship_ids_str.')';
 
     if(!$db->query($sql)) {
@@ -735,7 +737,7 @@ elseif(isset($_GET['ship_details'])) {
 
     if(empty($ship_id)) {
 
-        message(NOTICE, 'Kein Schiff ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT28")));
 
     }
 
@@ -769,7 +771,7 @@ elseif(isset($_GET['ship_details'])) {
 
     if(empty($ship['ship_id'])) {
 
-        message(NOTICE, 'Das gewählte Schiff existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT39")));
 
     }
 
@@ -777,7 +779,7 @@ elseif(isset($_GET['ship_details'])) {
 
     if($ship['user_id'] != $game->player['user_id']) {
 
-        message(NOTICE, 'Das gewählte Schiff existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT39")));
 
     }
 
@@ -799,7 +801,7 @@ elseif(isset($_GET['ship_details'])) {
 
     $game->out('
 
-<center><span class="caption">Flottenbersicht:</span></center><br>
+<center><span class="caption">'.constant($game->sprache("TEXT40")).'</span></center><br>
 
 
 
@@ -807,7 +809,7 @@ elseif(isset($_GET['ship_details'])) {
 
   <tr>
 
-    <td><span class="sub_caption2">Detailansicht des gewählten Schiffs ('.$ship['name'].')</span><br><br>
+    <td><span class="sub_caption2">'.constant($game->sprache("TEXT41")).' ('.$ship['name'].')</span><br><br>
 
       <table width="450" align="center" cellpadding="0" cellspacing="0" border="0" class="style_inner">
 
@@ -815,53 +817,69 @@ elseif(isset($_GET['ship_details'])) {
 
           <td align="left" valign="top" width="120">
 
-            '.( ($ship['fleet_id'] > 0) ? 'Flotte:' : 'Trockendock:' ).'<br><br>
+            '.( ($ship['fleet_id'] > 0) ? constant($game->sprache("TEXT42")) : constant($game->sprache("TEXT43")) ).'<br><br>
 
-            Schiffsklasse:<br>
+            '.constant($game->sprache("TEXT44")).'<br>
 
-            Rumpftyp:<br>
+            '.constant($game->sprache("TEXT45")).'<br>
 
-            Rasse:<br><br>
+            '.constant($game->sprache("TEXT46")).'<br><br>
 
-            Hüllenzustand:<br>
+            '.constant($game->sprache("TEXT54")).'<br>
 
-            Schildstärke:<br><br>
+            '.constant($game->sprache("TEXT55")).'<br>
 
-            Erfahrung:<br><br>
+            '.constant($game->sprache("TEXT56")).'<br><br>
 
-            Leichte Waffen:<br>
+            '.constant($game->sprache("TEXT57")).'<br>
 
-            Schwere Waffen:<br>
+            '.constant($game->sprache("TEXT47")).'<br>
 
-            Planetare Waffen:<br><br>
+            '.constant($game->sprache("TEXT4")).'<br><br>
 
-            Reaktion:<br>
+            '.constant($game->sprache("TEXT9")).'<br><br>
 
-            Bereitschaft:<br>
+            '.constant($game->sprache("TEXT48")).'<br>
 
-            Wendigkeit:<br><br>
+            '.constant($game->sprache("TEXT49")).'<br>
 
-            Warp:<br>
+            '.constant($game->sprache("TEXT50")).'<br><br>
 
-            Sensoren:<br>
+            '.constant($game->sprache("TEXT6")).'<br>
 
-            Tarnung:<br><br>
+            '.constant($game->sprache("TEXT7")).'<br>
 
-            Energieverbrauch:<br><br>
+            '.constant($game->sprache("TEXT8")).'<br><br>
 
-            Crew:
+            '.constant($game->sprache("TEXT10")).'<br>
+
+            '.constant($game->sprache("TEXT11")).'<br>
+
+            '.constant($game->sprache("TEXT12")).'<br><br>
+
+            '.constant($game->sprache("TEXT51")).'<br><br>
+
+            '.constant($game->sprache("TEXT52")).'
 
           </td>
 
-          <td align="left" valign="top" width="130">
+          <td align="left" valign="top" width="150">
 
-            '.( ($ship['fleet_id'] > 0) ? '<a href="'.parse_link('a=ship_fleets_display&'.( (!empty($ship['planet_id'])) ? 'p' : 'm' ).'fleet_details='.$ship['fleet_id']).'">'.$ship['fleet_name'].'</a>' : '<a href="'.parse_link('a=spacedock').'">'.$ship['planet_name'].'</a>' ).'<br><br>
+            ['.( ($ship['fleet_id'] > 0) ? '<a href="'.parse_link('a=ship_fleets_display&'.( (!empty($ship['planet_id'])) ? 'p' : 'm' ).'fleet_details='.$ship['fleet_id']).'">'.$ship['fleet_name'].'</a>' : '<a href="'.parse_link('a=spacedock').'">'.$ship['planet_name'].'</a>' ).']<br><br>
 
             <b>'.$ship['name'].'</b><br>
 
             <b><a href="javascript:void(0);" onmouseover="return overlib(\''.CreateShipInfoText($SHIP_TORSO[$ship['race']][$ship['ship_torso']]).'\', CAPTION, \''.$SHIP_TORSO[$ship['race']][$ship['ship_torso']][29].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$SHIP_TORSO[$ship['race']][$ship['ship_torso']][29].'</a></b><br>
 
             <b>'.$RACE_DATA[$ship['race']][0].'</b><br><br>
+
+            <b>'.$ship['ship_name'].'</b><br>
+
+            <b>'.$ship['ship_ncc'].'</b><br>
+
+            <b>'.date('d.m.y H:i:s', $ship['construction_time']).'</b><br><br>
+
+            <b>'.date('d.m.y H:i:s', $ship['last_refit_time']).'</b><br>
 
             <b>'.$ship['hitpoints'].'</b> / <b>'.$ship['value_5'].'</b><br>
 
@@ -893,7 +911,7 @@ elseif(isset($_GET['ship_details'])) {
 
           </td>
 
-          <td align="center>" valign="top" width="200"><img src="'.FIXED_GFX_PATH.'ship'.$ship['race'].'_'.$ship['ship_torso'].'.jpg"><br><br>
+          <td align="center>" valign="top" width="180"><img src="'.FIXED_GFX_PATH.'ship'.$ship['race'].'_'.$ship['ship_torso'].'.jpg"><br><br>
 
     ');
 
@@ -907,7 +925,7 @@ elseif(isset($_GET['ship_details'])) {
 
 	$game->out('-&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateCompInfoText($ship_components[$ship['race']][$t][$ship['component_'.($t+1)]]).'\', CAPTION, \''.$ship_components[$ship['race']][$t][$ship['component_'.($t+1)]]['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$ship_components[$ship['race']][$t][$ship['component_'.($t+1)]]['name'].'</a><br>');
 
-	} else $game->out('- Nicht belegt<br>');
+	} else $game->out(constant($game->sprache("TEXT53")));
 
     }
 

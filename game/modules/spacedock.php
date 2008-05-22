@@ -23,278 +23,14 @@
 
 
 function ZeitDetailShort($seconds) {
+	$minutes=0;
 
-    $minutes=0;
+	while($seconds >= 60) {
+		$minutes++;
+		$seconds -= 60;
+	}
 
-
-
-    while($seconds >= 60) {
-
-        $minutes++;
-
-        $seconds -= 60;
-
-    }
-
-
-
-    return round($minutes, 0).'m '.round($seconds, 0).'s';
-
-}
-
-
-
-
-
-
-
-function CreateShipInfoText($ship)
-
-{
-
-global $db;
-
-global $game;
-
-$text='<b>'.$ship[31].'</b><br><br><u>Fähigkeiten:</u><br>';
-
-
-
-$text.='L. Waffen: '.$ship[14].'<br>';
-
-$text.='Schw. Waffen: '.$ship[15].'<br>';
-
-$text.='Pl. Waffen: '.$ship[16].'<br>';
-
-$text.='Schildstärke: '.$ship[17].'<br>';
-
-$text.='Hülle (HP): '.$ship[18].'<br>';
-
-$text.='Reaktion: '.$ship[19].'<br>';
-
-$text.='Bereitschaft: '.$ship[20].'<br>';
-
-$text.='Wendigkeit: '.$ship[21].'<br>';
-
-$text.='Erfahrung: '.$ship[22].'<br>';
-
-$text.='Warp: '.$ship[23].'<br>';
-
-$text.='Sensoren: '.$ship[24].'<br>';
-
-$text.='Tarnung: '.$ship[25].'<br>';
-
-$text.='Verbraucht Energie: '.$ship[27].'<br>';
-
-$text.='Liefert Energie: '.$ship[26].'<br>';
-
-
-
-
-
-return $text;
-
-}
-
-
-
-function CreateCompInfoText($comp)
-
-{
-
-global $db;
-
-global $game;
-
-$text=''.$comp['description'].'<br><br>Fähigkeiten:</u><br>';
-
-
-
-if ($comp['value_1']!=0) $text.='L. Waffen: '.$comp['value_1'].'<br>';
-
-if ($comp['value_2']!=0) $text.='Schw. Waffen: '.$comp['value_2'].'<br>';
-
-if ($comp['value_3']!=0) $text.='Pl. Waffen: '.$comp['value_3'].'<br>';
-
-if ($comp['value_4']!=0) $text.='Schildstärke: '.$comp['value_4'].'<br>';
-
-if ($comp['value_5']!=0) $text.='Hülle (HP): '.$comp['value_5'].'<br>';
-
-if ($comp['value_6']!=0) $text.='Reaktion: '.$comp['value_6'].'<br>';
-
-if ($comp['value_7']!=0) $text.='Bereitschaft: '.$comp['value_7'].'<br>';
-
-if ($comp['value_8']!=0) $text.='Wendigkeit: '.$comp['value_8'].'<br>';
-
-if ($comp['value_9']!=0) $text.='Erfahrung: '.$comp['value_9'].'<br>';
-
-if ($comp['value_10']!=0) $text.='Warp: '.$comp['value_10'].'<br>';
-
-if ($comp['value_11']!=0) $text.='Sensoren: '.$comp['value_11'].'<br>';
-
-if ($comp['value_12']!=0) $text.='Tarnung: '.$comp['value_12'].'<br>';
-
-if ($comp['value_14']!=0) $text.='Verbraucht Energie: '.$comp['value_14'].'<br>';
-
-if ($comp['value_13']!=0) $text.='Liefert Energie: '.$comp['value_13'].'<br>';
-
-return $text;
-
-}
-
-
-
-function CreateRealShipInfoText($ship)
-
-{
-
-global $db;
-
-global $game,$SHIP_TORSO,$RACE_DATA,$ship_rank_bonus,$ship_ranks;
-
-	// Schiffsdaten ausgeben:
-	$rank_nr=1;
-	if ($ship['experience']>=$ship_ranks[0]) $rank_nr=1;
-	if ($ship['experience']>=$ship_ranks[1]) $rank_nr=2;
-	if ($ship['experience']>=$ship_ranks[2]) $rank_nr=3;
-	if ($ship['experience']>=$ship_ranks[3]) $rank_nr=4;
-	if ($ship['experience']>=$ship_ranks[4]) $rank_nr=5;
-	if ($ship['experience']>=$ship_ranks[5]) $rank_nr=6;
-	if ($ship['experience']>=$ship_ranks[6]) $rank_nr=7;
-	if ($ship['experience']>=$ship_ranks[7]) $rank_nr=8;
-	if ($ship['experience']>=$ship_ranks[8]) $rank_nr=9;
-	if ($ship['experience']>=$ship_ranks[9]) $rank_nr=10;
-
-    $game->out('
-
-
-
-<table width="450" align="center" border="0" cellpadding="4" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
-
-  <tr>
-
-    <td>
-
-      <table width="450" align="center" cellpadding="0" cellspacing="0" border="0">
-
-        <tr>
-
-          <td align="left" valign="top" width="120">
-
-            '.( ($ship['fleet_id'] > 0) ? 'Flotte:' : 'Trockendock:' ).'<br><br>
-
-            Schiffsklasse:<br>
-
-            Rumpftyp:<br>
-
-            Rasse:<br><br>
-
-            Hüllenzustand:<br>
-
-            Schildstärke:<br><br>
-
-            Erfahrung:<br><br>
-
-            Leichte Waffen:<br>
-
-            Schwere Waffen:<br>
-
-            Planetare Waffen:<br><br>
-
-            Reaktion:<br>
-
-            Bereitschaft:<br>
-
-            Wendigkeit:<br><br>
-
-            Warp:<br>
-
-            Sensoren:<br>
-
-            Tarnung:<br><br>
-
-            Energieverbrauch:<br><br>
-
-            Crew:
-
-          </td>
-
-          <td align="left" valign="top" width="130">
-
-            '.( ($ship['fleet_id'] > 0) ? '<a href="'.parse_link('a=ship_fleets_display&'.( (!empty($ship['planet_id'])) ? 'p' : 'm' ).'fleet_details='.$ship['fleet_id']).'">'.$ship['fleet_name'].'</a>' : '<a href="'.parse_link('a=spacedock').'">'.$ship['planet_name'].'</a>' ).'<br><br>
-
-            <b>'.$ship['name'].'</b><br>
-
-            <b><a href="javascript:void(0);" onmouseover="return overlib(\''.CreateShipInfoText($SHIP_TORSO[$ship['race']][$ship['ship_torso']]).'\', CAPTION, \''.$SHIP_TORSO[$ship['race']][$ship['ship_torso']][29].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$SHIP_TORSO[$ship['race']][$ship['ship_torso']][29].'</a></b><br>
-
-            <b>'.$RACE_DATA[$ship['race']][0].'</b><br><br>
-
-            <b>'.$ship['hitpoints'].'</b> / <b>'.$ship['value_5'].'</b><br>
-
-            <b>'.$ship['value_4'].'</b><br><br>
-
-            <b><span style="color: yellow">'.$ship['experience'].'</span></b> <img src="'.$game->GFX_PATH.'rank_'.$rank_nr.'.jpg" width="47" height="12"><br><br>
-
-            <b>'.$ship['value_1'].' + <span style="color: yellow">'.round($ship['value_1']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
-
-            <b>'.$ship['value_2'].' + <span style="color: yellow">'.round($ship['value_2']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
-
-            <b>'.$ship['value_3'].' + <span style="color: yellow">'.round($ship['value_3']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br><br>
-
-            <b>'.$ship['value_6'].' + <span style="color: yellow">'.round($ship['value_6']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
-
-            <b>'.$ship['value_7'].' + <span style="color: yellow">'.round($ship['value_7']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
-
-            <b>'.$ship['value_8'].' + <span style="color: yellow">'.round($ship['value_8']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br><br>
-
-            <b>'.$ship['value_10'].'</b><br>
-
-            <b>'.$ship['value_11'].'</b><br>
-
-            <b>'.$ship['value_12'].'</b><br><br>
-
-            <b>'.$ship['value_14'].'</b> / <b>'.$ship['value_13'].'</b><br><br>
-
-            <img src='.$game->GFX_PATH.'menu_unit1_small.gif>'.$ship['unit_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif>'.$ship['unit_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif>'.$ship['unit_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif>'.$ship['unit_4'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif>'.$ship['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif>'.$ship['unit_6'].'
-
-          </td>
-
-          <td align="center>" valign="top" width="200"><img src="'.$game->PLAIN_GFX_PATH.'ship'.$ship['race'].'_'.$ship['ship_torso'].'.jpg"><br><br>
-
-    ');
-
-    for ($t=1; $t<=10; $t++)
-
-	{
-
-	if ($ship['component_'.$t]>0)
-
-	{
-
-	$game->out('-&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateCompInfoText($ship_components[$ship['race']][$t][$ship['component_'.($t+1)]]).'\', CAPTION, \''.$ship_components[$ship['race']][$t][$ship['component_'.($t+1)]]['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$ship_components[$ship['race']][$t][$ship['component_'.($t+1)]]['name'].'</a><br>');
-
-	} else $game->out('- Nicht belegt<br>');
-
-    }
-
-
-
-    $game->out('
-
-          </td>
-
-        </tr>
-
-      </table>
-
-    </td>
-
-  </tr>
-
-</table>
-
-    ');
-
+	return round($minutes, 0).'m '.round($seconds, 0).'s';
 }
 
 
@@ -303,15 +39,13 @@ global $game,$SHIP_TORSO,$RACE_DATA,$ship_rank_bonus,$ship_ranks;
 
 $game->init_player();
 
-include('include/static/static_components.php');
-
 $game->out('<center><span class="caption">'.$BUILDING_NAME[$game->player['user_race']][6].':</span><br><br>');
 
 
 
 if($game->planet['building_7'] < 1) {
 
-    message(NOTICE, 'Du besitzt noch keine(n) '.$BUILDING_NAME[$game->player['user_race']][6].' auf dem aktiven Planeten');
+	message(NOTICE, constant($game->sprache("TEXT27")).' '.$BUILDING_NAME[$game->player['user_race']][6].' '.constant($game->sprache("TEXT28")));
 
 }
 
@@ -321,129 +55,70 @@ if($game->planet['building_7'] < 1) {
 
 if(!empty($_POST['repair_ships_start'])) {
 
+	$ship_ids = array();
+
+	for($i = 0; $i < count($_POST['ships']); ++$i) {
+		$_temp = (int)$_POST['ships'][$i];
+
+		if(!empty($_temp)) {
+			$ship_ids[] = $_temp;
+		}
+	}
+
+	if(empty($ship_ids)) {
+		message(NOTICE, constant($game->sprache("TEXT29")));
+	}
+
+	$changed_ships = count($ship_ids);
 
 
-   $ship_ids = array();
+	// #############################################################################
+	// Ship list creation:
 
-
-
-    for($i = 0; $i < count($_POST['ships']); ++$i) {
-
-        $_temp = (int)$_POST['ships'][$i];
-
-
-
-        if(!empty($_temp)) {
-
-            $ship_ids[] = $_temp;
-
-        }
-
-    }
-
-
-
-    if(empty($ship_ids)) {
-
-        message(NOTICE, 'Es wurde kein Schiff ausgewählt');
-
-    }
-
-
-
-    $changed_ships = count($ship_ids);
-
-
-
-    // #############################################################################
-
-    // Schiffsliste erstellen:
-
-
-
-
-
-    $sql = 'SELECT s.*,t.value_5,t.name,t.buildtime,t.resource_1,t.resource_2,t.resource_3 FROM (ships s) LEFT JOIN (ship_templates t) ON s.template_id=t.id
-
+	$sql = 'SELECT s.*,t.value_5,t.name,t.buildtime,t.resource_1,t.resource_2,t.resource_3 FROM (ships s) LEFT JOIN (ship_templates t) ON s.template_id=t.id
 			WHERE s.ship_id IN ('.implode(',', $ship_ids).') AND s.ship_untouchable=0 AND s.hitpoints<t.value_5';
 
-
-
 	if(($repairable_ships = $db->queryrowset($sql)) === false || count($repairable_ships)<1) {
-
-        message(NOTICE, 'Es wurde kein zulässiges Schiff ausgewählt');
-
-    }
+		message(NOTICE, constant($game->sprache("TEXT30")));
+	}
 
 
-
-    // New: Table locking
-
+	// New: Table locking
 	$db->lock('ships');
-
 	$game->init_player();
 
 
+	foreach($repairable_ships as $id => $ship) {
+		$costs[0]=round(0.6*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0);
+		$costs[1]=round($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0);
+		$costs[2]=round($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0);
 
-    foreach($repairable_ships as $id => $ship) {
-
-
-
-	$costs[0]=round(0.6*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0);
-
-	$costs[1]=round($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0);
-
-	$costs[2]=round($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0);
-
-
-
-	if ($game->planet['resource_1']>=$costs[0] && $game->planet['resource_2']>=$costs[1] && $game->planet['resource_3']>=$costs[2])
-
+		if ($game->planet['resource_1']>=$costs[0] && $game->planet['resource_2']>=$costs[1] && $game->planet['resource_3']>=$costs[2])
 		{
-
 			$game->planet['resource_1']-=$costs[0];
-
 			$game->planet['resource_2']-=$costs[1];
-
 			$game->planet['resource_3']-=$costs[2];
 
-  			$sql = 'UPDATE ships SET ship_untouchable=1, ship_repair='.($ACTUAL_TICK+ceil($ship['buildtime']*0.6/$ship['value_5']*($ship['value_5']-$ship['hitpoints']))).' WHERE ship_id='.$ship['ship_id'];
-
-    		if(!$db->query($sql)) {
-
-    			message(DATABASE_ERROR, 'Could not update ship data');
-
-    		}
-
-
-
+			$sql = 'UPDATE ships SET ship_untouchable=1, ship_repair='.($ACTUAL_TICK+ceil($ship['buildtime']*0.6/$ship['value_5']*($ship['value_5']-$ship['hitpoints']))).' WHERE ship_id='.$ship['ship_id'];
+			if(!$db->query($sql)) {
+				message(DATABASE_ERROR, 'Could not update ship data');
+			}
 		}
-
 	}
 
 
 
- 	$sql = 'UPDATE planets SET resource_1='.$game->planet['resource_1'].', resource_2='.$game->planet['resource_2'].', resource_3='.$game->planet['resource_3'].' WHERE planet_id='.$game->planet['planet_id'];
-
-    if(!$db->query($sql)) {
-
-    	message(DATABASE_ERROR, 'Critical: Could not update planets data');
-
-    }
-
-
+	$sql = 'UPDATE planets SET resource_1='.$game->planet['resource_1'].', resource_2='.$game->planet['resource_2'].', resource_3='.$game->planet['resource_3'].' WHERE planet_id='.$game->planet['planet_id'];
+	if(!$db->query($sql)) {
+		message(DATABASE_ERROR, 'Critical: Could not update planets data');
+	}
 
 	$db->unlock();
 
 	redirect('a=spacedock');
-
-
-
 }
-
 elseif(!empty($_POST['repair_ships'])) {
-
-$game->out('<script language="JavaScript">
+	$game->out('<script language="JavaScript">
 
 var costs = new Array(0,0,0,0,0,0,0,0,0);
 
@@ -563,299 +238,128 @@ document.getElementById( "costs8" ).firstChild.nodeValue = costs[8];
 
 
 
-   $ship_ids = array();
+	$ship_ids = array();
+
+	for($i = 0; $i < count($_POST['ships']); ++$i) {
+		$_temp = (int)$_POST['ships'][$i];
+
+		if(!empty($_temp)) {
+			$ship_ids[] = $_temp;
+		}
+	}
+
+	if(empty($ship_ids)) {
+		message(NOTICE, constant($game->sprache("TEXT30")));
+	}
+
+
+	$changed_ships = count($ship_ids);
 
 
 
-    for($i = 0; $i < count($_POST['ships']); ++$i) {
+	// #############################################################################
+	// Ship list creation:
 
-        $_temp = (int)$_POST['ships'][$i];
-
-
-
-        if(!empty($_temp)) {
-
-            $ship_ids[] = $_temp;
-
-        }
-
-    }
-
-
-
-    if(empty($ship_ids)) {
-
-        message(NOTICE, 'Es wurde kein Schiff ausgewählt');
-
-    }
-
-
-
-    $changed_ships = count($ship_ids);
-
-
-
-    // #############################################################################
-
-    // Schiffsliste erstellen:
-
-
-
-
-
-    $sql = 'SELECT s.*,t.value_5,t.name,t.buildtime,t.resource_1,t.resource_2,t.resource_3 FROM (ships s) LEFT JOIN (ship_templates t) ON s.template_id=t.id
-
+	$sql = 'SELECT s.*,t.value_5,t.name,t.buildtime,t.resource_1,t.resource_2,t.resource_3 FROM (ships s) LEFT JOIN (ship_templates t) ON s.template_id=t.id
 			WHERE s.ship_id IN ('.implode(',', $ship_ids).') AND s.ship_untouchable=0 AND s.hitpoints<t.value_5';
 
-
-
 	if(($repairable_ships = $db->queryrowset($sql)) === false || count($repairable_ships)<1) {
-
-        message(NOTICE, 'Es wurde kein zulässiges Schiff ausgewählt');
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
+		message(NOTICE, constant($game->sprache("TEXT30")));
+	}
 
 
 	$game->out('
-
-<table width="500" align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
-
-  <form name="mfleet_repair_form" method="post" action="'.parse_link('a=spacedock').'">
-
-  <tr>
-
-    <td width="500"><b>Zu reparierende Schiffe wählen</b><br>In diesem Fenster siehst du eine Auflistung aller Schiffe, die repariert werden können.<br>Schiffe können parallel repariert werden.</td>
-
-  </tr>
-
-  <tr>
-
-    <td width="500">
-
-    <table width="490" align="center" border="0" cellpadding="1" cellspacing="1" background="'.$game->GFX_PATH.'template_bg3.jpg">
-
-	<tr>
-
-		<td width=130><b>Name:</b></td>
-
-		<td width=100><b>Zustand:</b></td>
-
-		<td width=190><b>Kosten:</b></td>
-
-		<td width=100><b>Dauer:</b></td>
-
-	</tr>
-
-    ');
-
-
-
-
-
-    foreach($repairable_ships as $id => $ship) {
-
-	$costs='';
-
-	$costs.='<img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;'.round(0.6*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).'&nbsp;&nbsp;';
-
-	$costs.='<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;'.round($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0).'&nbsp;&nbsp;';
-
-	$costs.='<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;'.round($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0).'';
-
-
-
-	$tcost[0]+=round(0.6*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0);
-
-	$tcost[1]+=round($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0);
-
-	$tcost[2]+=round($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0);
-
-
-
-
-
-    $game->out('
-
-	<tr>
-
-		<td width=130><b><input type="checkbox" name="ships[]" value="'.$ship['ship_id'].'" checked="checked" onClick ="return Change('.round(0.6*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).','.round($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0).','.round($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0).',0,0,0,0,0,0,this.checked);">&nbsp;'.$ship['name'].'</b></td>
-
-		<td width=100><b>'.round(100/$ship['value_5']*$ship['hitpoints'],0).'% ('.$ship['hitpoints'].'/'.$ship['value_5'].')</b></td>
-
-		<td width=190><b>'.$costs.'</b></td>
-
-		<td width=70><b>'.ceil($ship['buildtime']*0.6/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])*5).' Minuten</b></td>
-
-	</tr>
-
-
-
-
-
-');
-
-}
-
-
-
-
-
-    $game->out('
-
-
-
-      </table>
-
-
-
-<br>
-
-
-
-<table width="490" align="center" border="0" cellpadding="1" cellspacing="1" background="'.$game->GFX_PATH.'template_bg3.jpg">
-
-	<tr>
-
-		<td width=130><u><b>Gesamtkosten:</b></u></td>
-
-
-
-		<td width=360>
-
-				<img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;<b id="costs0">'.$tcost[0].'</b>&nbsp;&nbsp;
-
-				<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;<b id="costs1">'.$tcost[1].'</b>&nbsp;&nbsp;
-
-				<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;<b id="costs2">'.$tcost[2].'</b>&nbsp;&nbsp;
-
-
-
-				<script language="JavaScript">
-
-				costs[0]='.$tcost[0].';
-
-				costs[1]='.$tcost[1].';
-
-				costs[2]='.$tcost[2].';
-
-				</script>
-
-		</td>
-
+		<table width="500" align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+		<form name="mfleet_repair_form" method="post" action="'.parse_link('a=spacedock').'">
+		<tr>
+			<td width="500">'.constant($game->sprache("TEXT31")).'</td>
 		</tr>
-
-	</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	  <br>
-
-    <input class="button" type="submit" name="repair_ships_start" value="Reparieren">
-
-    </td>
-
-  </tr>
-
-
-
-  </form>
-
-</table>
-
+		<tr>
+			<td width="500">
+			<table width="490" align="center" border="0" cellpadding="1" cellspacing="1" background="'.$game->GFX_PATH.'template_bg3.jpg">
+			<tr>
+				<td width=130><b>'.constant($game->sprache("TEXT32")).'</b></td>
+				<td width=100><b>'.constant($game->sprache("TEXT33")).'</b></td>
+				<td width=190><b>'.constant($game->sprache("TEXT34")).'</b></td>
+				<td width=100><b>'.constant($game->sprache("TEXT35")).'</b></td>
+			</tr>
 	');
 
 
+	foreach($repairable_ships as $id => $ship) {
+		$costs='';
+		$costs.='<img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;'.round(0.6*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).'&nbsp;&nbsp;';
+		$costs.='<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;'.round($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0).'&nbsp;&nbsp;';
+		$costs.='<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;'.round($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0).'';
 
+		$tcost[0]+=round(0.6*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0);
+		$tcost[1]+=round($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0);
+		$tcost[2]+=round($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0);
 
+		$game->out('
+			<tr>
+				<td width=130><b><input type="checkbox" name="ships[]" value="'.$ship['ship_id'].'" checked="checked" onClick ="return Change('.round(0.6*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).','.round($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0).','.round($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0).',0,0,0,0,0,0,this.checked);">&nbsp;'.$ship['name'].'</b></td>
+				<td width=100><b>'.round(100/$ship['value_5']*$ship['hitpoints'],0).'% ('.$ship['hitpoints'].'/'.$ship['value_5'].')</b></td>
+				<td width=190><b>'.$costs.'</b></td>
+				<td width=70><b>'.ceil($ship['buildtime']*0.6/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])*5).' '.constant($game->sprache("TEXT36")).'</b></td>
+			</tr>
+		');
+	}
 
-
-
-
-
-
-
+	$game->out('
+			</table>
+			<br>
+			<table width="490" align="center" border="0" cellpadding="1" cellspacing="1" background="'.$game->GFX_PATH.'template_bg3.jpg">
+			<tr>
+				<td width=130><u><b>'.constant($game->sprache("TEXT37")).'</b></u></td>
+				<td width=360>
+				<img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;<b id="costs0">'.$tcost[0].'</b>&nbsp;&nbsp;
+				<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;<b id="costs1">'.$tcost[1].'</b>&nbsp;&nbsp;
+				<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;<b id="costs2">'.$tcost[2].'</b>&nbsp;&nbsp;
+				<script language="JavaScript">
+				costs[0]='.$tcost[0].';
+				costs[1]='.$tcost[1].';
+				costs[2]='.$tcost[2].';
+				</script>
+				</td>
+			</tr>
+			</table>
+			<br>
+			<input class="button" type="submit" name="repair_ships_start" value="'.constant($game->sprache("TEXT38")).'">
+		</td>
+		</tr>
+		</form>
+		</table>
+	');
 }
-
 elseif(!empty($_POST['man_ships_start'])) {
+	$ship_ids = array();
+
+	for($i = 0; $i < count($_POST['ships']); ++$i) {
+		$_temp = (int)$_POST['ships'][$i];
+
+		if(!empty($_temp)) {
+			$ship_ids[] = $_temp;
+		}
+	}
+
+	if(empty($ship_ids)) {
+		message(NOTICE, constant($game->sprache("TEXT39")));
+	}
 
 
-
-   $ship_ids = array();
-
+	$changed_ships = count($ship_ids);
 
 
-    for($i = 0; $i < count($_POST['ships']); ++$i) {
+	// #############################################################################
+	// Ship list creation:
 
-        $_temp = (int)$_POST['ships'][$i];
-
-
-
-        if(!empty($_temp)) {
-
-            $ship_ids[] = $_temp;
-
-        }
-
-    }
-
-
-
-    if(empty($ship_ids)) {
-
-        message(NOTICE, 'Es wurde kein Schiff ausgewählt');
-
-    }
-
-
-
-    $changed_ships = count($ship_ids);
-
-
-
-    // #############################################################################
-
-     // Schiffsliste erstellen:
-
-
-
-
-
-    $sql = 'SELECT s.*,t.value_5,t.name,t.max_unit_1,t.max_unit_2,t.max_unit_3,t.max_unit_4,t.min_unit_1,t.min_unit_2,t.min_unit_3,t.min_unit_4 FROM (ships s) LEFT JOIN (ship_templates t) ON s.template_id=t.id
-
+	$sql = 'SELECT s.*,t.value_5,t.name,t.max_unit_1,t.max_unit_2,t.max_unit_3,t.max_unit_4,t.min_unit_1,t.min_unit_2,t.min_unit_3,t.min_unit_4 FROM (ships s) LEFT JOIN (ship_templates t) ON s.template_id=t.id
 			WHERE s.ship_id IN ('.implode(',', $ship_ids).') AND s.ship_untouchable=0';
 
-
-
 	if(($man_ships = $db->queryrowset($sql)) === false || count($man_ships)<1) {
-
-        message(NOTICE, 'Es wurde kein zulässiges Schiff ausgewählt');
-
-    }
+		message(NOTICE, constant($game->sprache("TEXT30")));
+	}
 
 
 
@@ -975,7 +479,7 @@ elseif(!empty($_POST['man_ships'])) {
 
     if(empty($ship_ids)) {
 
-        message(NOTICE, 'Es wurde kein Schiff ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT39")));
 
     }
 
@@ -987,7 +491,7 @@ elseif(!empty($_POST['man_ships'])) {
 
     // #############################################################################
 
-    // Schiffsliste erstellen:
+    // Ship list creation:
 
 
 
@@ -1001,7 +505,7 @@ elseif(!empty($_POST['man_ships'])) {
 
 	if(($man_ships = $db->queryrowset($sql)) === false || count($man_ships)<1) {
 
-        message(NOTICE, 'Es wurde kein zulässiges Schiff ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT30")));
 
     }
 
@@ -1027,7 +531,7 @@ elseif(!empty($_POST['man_ships'])) {
 
   <tr>
 
-    <td width="500"><b>Zu bemannende Schiffe wählen</b><br>In diesem Fenster siehst du eine Auflistung aller Schiffe, die bemannt werden können.<br>Die automatische Verteilung der Einheiten ist auf das Maximum ausgelegt.</td>
+    <td width="500">'.constant($game->sprache("TEXT40")).'</td>
 
   </tr>
 
@@ -1039,11 +543,11 @@ elseif(!empty($_POST['man_ships'])) {
 
 	<tr>
 
-		<td width=130><b>Name:</b></td>
+		<td width=130><b>'.constant($game->sprache("TEXT32")).'</b></td>
 
-		<td width=180><b>Einheiten:</b></td>
+		<td width=180><b>'.constant($game->sprache("TEXT41")).'</b></td>
 
-		<td width=180><b>Bemannen:</b></td>
+		<td width=180><b>'.constant($game->sprache("TEXT42")).'</b></td>
 
 	</tr>
 
@@ -1135,7 +639,7 @@ elseif(!empty($_POST['man_ships'])) {
 
 	  <br>
 
-    <input class="button" type="submit" name="man_ships_start" value="Bemannen">
+    <input class="button" type="submit" name="man_ships_start" value="'.constant($game->sprache("TEXT43")).'">
 
     </td>
 
@@ -1150,16 +654,6 @@ elseif(!empty($_POST['man_ships'])) {
 	');
 
 }
-
-
-
-
-
-
-
-
-
-
 
 elseif(!empty($_POST['scrap_ships_start'])) {
 
@@ -1189,7 +683,7 @@ elseif(!empty($_POST['scrap_ships_start'])) {
 
     if(empty($ship_ids)) {
 
-        message(NOTICE, 'Es wurde kein Schiff ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT39")));
 
     }
 
@@ -1215,7 +709,7 @@ elseif(!empty($_POST['scrap_ships_start'])) {
 
 	if(($scrapable_ships = $db->queryrowset($sql)) === false || count($scrapable_ships)<1) {
 
-        message(NOTICE, 'Es wurde kein zulässiges Schiff ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT30")));
 
     }
 
@@ -1403,7 +897,7 @@ document.getElementById( "costs8" ).firstChild.nodeValue = costs[8];
 
     if(empty($ship_ids)) {
 
-        message(NOTICE, 'Es wurde kein Schiff ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT39")));
 
     }
 
@@ -1415,7 +909,7 @@ document.getElementById( "costs8" ).firstChild.nodeValue = costs[8];
 
     // #############################################################################
 
-    // Schiffsliste erstellen:
+    // Ship list creation:
 
 
 
@@ -1429,7 +923,7 @@ document.getElementById( "costs8" ).firstChild.nodeValue = costs[8];
 
 	if(($scrapable_ships = $db->queryrowset($sql)) === false || count($scrapable_ships)<1) {
 
-        message(NOTICE, 'Es wurde kein zulässiges Schiff ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT30")));
 
     }
 
@@ -1455,7 +949,7 @@ document.getElementById( "costs8" ).firstChild.nodeValue = costs[8];
 
   <tr>
 
-    <td width="500"><b>Zu verschrottende Schiffe wählen</b><br>In diesem Fenster siehst du eine Auflistung aller Schiffe, die verschrottet werden können.<br>Schiffe können parallel verschrottet werden.</td>
+    <td width="500">'.constant($game->sprache("TEXT44")).'</td>
 
   </tr>
 
@@ -1467,13 +961,13 @@ document.getElementById( "costs8" ).firstChild.nodeValue = costs[8];
 
 	<tr>
 
-		<td width=120><b>Name:</b></td>
+		<td width=120><b>'.constant($game->sprache("TEXT32")).'</b></td>
 
-		<td width=140><b>Ressourcen:</b></td>
+		<td width=140><b>'.constant($game->sprache("TEXT45")).'</b></td>
 
-		<td width=170><b>Einheiten:</b></td>
+		<td width=170><b>'.constant($game->sprache("TEXT41")).'</b></td>
 
-		<td width=60><b>Dauer:</b></td>
+		<td width=60><b>'.constant($game->sprache("TEXT35")).'</b></td>
 
 	</tr>
 
@@ -1539,7 +1033,7 @@ document.getElementById( "costs8" ).firstChild.nodeValue = costs[8];
 
 		<td><b>'.$units.'</b></td>
 
-		<td><b>'.(ceil($ship['buildtime']*0.2)*5).' Minuten</b></td>
+		<td><b>'.(ceil($ship['buildtime']*0.2)*5).' '.constant($game->sprache("TEXT36")).'</b></td>
 
 	</tr>
 
@@ -1563,7 +1057,7 @@ document.getElementById( "costs8" ).firstChild.nodeValue = costs[8];
 
 	<tr>
 
-		<td width=130><u><b>Gesamtgewinn:</b></u></td>
+		<td width=130><u><b>'.constant($game->sprache("TEXT46")).'</b></u></td>
 
 
 
@@ -1623,7 +1117,7 @@ document.getElementById( "costs8" ).firstChild.nodeValue = costs[8];
 
 	  <br>
 
-    <input class="button" type="submit" name="scrap_ships_start" value="Verschrotten">
+    <input class="button" type="submit" name="scrap_ships_start" value="'.constant($game->sprache("TEXT47")).'">
 
     </td>
 
@@ -1675,7 +1169,7 @@ elseif(!empty($_POST['repair_ships'])) {
 
     if(empty($ship_ids)) {
 
-        message(NOTICE, 'Es wurde kein Schiff ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT39")));
 
     }
 
@@ -1687,7 +1181,7 @@ elseif(!empty($_POST['repair_ships'])) {
 
     // #############################################################################
 
-    // Schiffsliste erstellen:
+    // Ship list creation:
 
 
 
@@ -1701,7 +1195,7 @@ elseif(!empty($_POST['repair_ships'])) {
 
 	if(($repairable_ships = $db->queryrowset($sql)) === false || count($repairable_ships)<1) {
 
-        message(NOTICE, 'Es wurde kein zulässiges Schiff ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT30")));
 
     }
 
@@ -1727,7 +1221,7 @@ elseif(!empty($_POST['repair_ships'])) {
 
   <tr>
 
-    <td width="500"><b>Zu reparierende Schiffe wählen</b><br>In diesem Fenster siehst du eine Auflistung aller Schiffe, die repariert werden können.<br>Schiffe können parallel repariert werden.</td>
+    <td width="500">'.constant($game->sprache("TEXT31")).'</td>
 
   </tr>
 
@@ -1739,13 +1233,13 @@ elseif(!empty($_POST['repair_ships'])) {
 
 	<tr>
 
-		<td width=130><b>Name:</b></td>
+		<td width=130><b>'.constant($game->sprache("TEXT32")).'</b></td>
 
-		<td width=100><b>Zustand:</b></td>
+		<td width=100><b>'.constant($game->sprache("TEXT33")).'</b></td>
 
-		<td width=190><b>Kosten:</b></td>
+		<td width=190><b>'.constant($game->sprache("TEXT34")).'</b></td>
 
-		<td width=100><b>Dauer:</b></td>
+		<td width=100><b>'.constant($game->sprache("TEXT35")).'</b></td>
 
 	</tr>
 
@@ -1779,7 +1273,7 @@ elseif(!empty($_POST['repair_ships'])) {
 
 		<td width=190><b>'.$costs.'</b></td>
 
-		<td width=70><b>'.ceil($ship['buildtime']*0.6/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])*5).' Minuten</b></td>
+		<td width=70><b>'.ceil($ship['buildtime']*0.6/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])*5).' '.constant($game->sprache("TEXT36")).'</b></td>
 
 	</tr>
 
@@ -1799,7 +1293,7 @@ elseif(!empty($_POST['repair_ships'])) {
 
 	  <br>
 
-    <input class="button" type="submit" name="repair_ships_start" value="Reparieren">
+    <input class="button" type="submit" name="repair_ships_start" value="'.constant($game->sprache("TEXT38")).'">
 
     </td>
 
@@ -1819,7 +1313,7 @@ elseif(!empty($_POST['new_fleet'])) {
 
 	if(empty($_POST['ships'])) {
 
-        message(NOTICE, 'Es wurde kein Schiff ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT39")));
 
     }
 
@@ -1827,13 +1321,13 @@ elseif(!empty($_POST['new_fleet'])) {
 
     if(empty($_POST['new_fleet_name'])) {
 
-        message(NOTICE, 'Es wurde kein Name für die neue Flotte angegeben');
+        message(NOTICE, constant($game->sprache("TEXT48")));
 
     }
 
 
 
-    $new_fleet_name = addslashes(htmlspecialchars($_POST['new_fleet_name']));
+    $new_fleet_name = htmlspecialchars($_POST['new_fleet_name']);
 
 
 
@@ -1864,12 +1358,12 @@ elseif(!empty($_POST['new_fleet'])) {
 
 
     if(empty($ship_ids)) {
-        message(NOTICE, 'Es wurde kein Schiff ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT39")));
     }
     
     // #############################################################################
 
-    // Schiffe checken
+    // Ship check
 
     $sql = 'SELECT fleet_id
             FROM ships
@@ -1890,18 +1384,18 @@ elseif(!empty($_POST['new_fleet'])) {
 
        while($cur_ship = $db->fetchrow($q_ships)) {
           if($cur_ship['fleet_id'] != $planet_id) {
-             message(NOTICE, 'Mindestens ein Schiff ist nicht auf demselben Planeten im Trockendock wie die anderen');
+             message(NOTICE, constant($game->sprache("TEXT49")));
           }
           $n_ships++;
        }
     
     } else { 
-       message(NOTICE, 'Es wurde kein Schiff ausgewählt');
+       message(NOTICE, constant($game->sprache("TEXT39")));
     }
 	
     // #############################################################################
 
-    // Neue Flotte gründen	
+    // New grounds fleet	
 
     $sql = 'INSERT INTO ship_fleets (fleet_name, user_id, planet_id, move_id, n_ships, resource_1, resource_2, resource_3, resource_4, unit_1, unit_2, unit_3, unit_4, unit_5, unit_6)
             VALUES ("'.$new_fleet_name.'", '.$game->player['user_id'].', '.( (-1) * $planet_id ).', 0, '.$n_ships.', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)';
@@ -1913,21 +1407,22 @@ elseif(!empty($_POST['new_fleet'])) {
 	$new_fleet_id = $db->insert_id();
 
 	if(empty($new_fleet_id)) {
-        message(GENERAL, 'Neue Flotte konnte nicht richtig erstellt werden', '$new_fleet_id = empty');
+        message(GENERAL, constant($game->sprache("TEXT50")), '$new_fleet_id = empty');
     }
 
 
 
     // #############################################################################
 
-    // Daten der Schiffe updaten
+    // Updating the ships's data
 
 
 
     $sql = 'UPDATE ships
 
-			SET fleet_id = '.$new_fleet_id.'
+			SET fleet_id = '.$new_fleet_id.',
 
+			    next_refit = '.($ACTUAL_TICK+REFIT_TICK+NEXT_REFIT_TICK).'
 			WHERE ship_id IN ('.implode(',', $ship_ids).') AND ship_untouchable=0 AND fleet_id<0';
 
 
@@ -1950,7 +1445,7 @@ elseif(!empty($_POST['change_fleet'])) {
 
     if(empty($_POST['ships'])) {
 
-        message(NOTICE, 'Es wurde kein Schiff ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT39")));
 
     }
 
@@ -1962,7 +1457,7 @@ elseif(!empty($_POST['change_fleet'])) {
 
     // #############################################################################
 
-    // Flotten-Daten abfragen
+    // Query fleet data
 
 
 
@@ -1984,7 +1479,7 @@ elseif(!empty($_POST['change_fleet'])) {
 
     if(empty($new_fleet['fleet_id'])) {
 
-        message(NOTICE, 'Flotte existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT51")));
 
     }
 
@@ -1992,17 +1487,17 @@ elseif(!empty($_POST['change_fleet'])) {
 
     if($new_fleet['user_id'] != $game->player['user_id']) {
 
-        message(NOTICE, 'Flotte existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT51")));
 
     }
 
 
 
-	if($new_fleet['planet_id'] != $game->planet['planet_id']) {
+    if($new_fleet['planet_id'] != $game->planet['planet_id']) {
 
-		message(NOTICE, 'Flotte befindet sich nicht im Orbit des aktiven Planeten');
+        message(NOTICE, constant($game->sprache("TEXT52")));
 
-	}
+    }
 
 
 
@@ -2034,7 +1529,7 @@ elseif(!empty($_POST['change_fleet'])) {
 
     if(empty($ship_ids)) {
 
-        message(NOTICE, 'Es wurde kein Schiff ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT39")));
 
     }
 
@@ -2042,7 +1537,7 @@ elseif(!empty($_POST['change_fleet'])) {
 
     // #############################################################################
 
-    // Schiffe checken
+    // Ship check
 
 
 
@@ -2076,7 +1571,7 @@ elseif(!empty($_POST['change_fleet'])) {
 
 	    if($cur_ship['fleet_id'] != $planet_id) {
 
-	        message(NOTICE, 'Mindestens ein Schiff ist nicht auf demselben Planeten im Trockendock als die anderen');
+	        message(NOTICE, constant($game->sprache("TEXT49")));
 
         }
 
@@ -2090,7 +1585,7 @@ elseif(!empty($_POST['change_fleet'])) {
 
     if($n_ships == 0) {
 
-        message(NOTICE, 'Keins der ausgewählten Schiffe darf in eine Flotte verlegt werden');
+        message(NOTICE, constant($game->sprache("TEXT53")));
 
     }
 
@@ -2098,14 +1593,15 @@ elseif(!empty($_POST['change_fleet'])) {
 
     // #############################################################################
 
-    // Daten der Schiffe updaten
+    // Updating the ships's data
 
 
 
     $sql = 'UPDATE ships
 
-            SET fleet_id = '.$new_fleet_id.'
+            SET fleet_id = '.$new_fleet_id.',
 
+			    next_refit = '.($ACTUAL_TICK+REFIT_TICK+NEXT_REFIT_TICK).'
             WHERE ship_id IN ('.implode(',', $ship_ids).') AND ship_untouchable=0';
 
 
@@ -2120,7 +1616,7 @@ elseif(!empty($_POST['change_fleet'])) {
 
     // #############################################################################
 
-    // Daten neuen Flotte updaten
+    // Updating the ships's data
 
 
 
@@ -2144,213 +1640,80 @@ elseif(!empty($_POST['change_fleet'])) {
 
 }
 
+elseif(!empty($_POST['rename_ship'])) {
 
+	if(empty($_POST['ships'])) {
+		message(NOTICE, constant($game->sprache("TEXT39")));
 
-elseif(!empty($_POST['view_detail'])) {
+	}
 
-  $ship_id = (int)$_POST['ships'][0];
+	if(empty($_POST['new_ship_name'])) {
+		message(NOTICE, constant($game->sprache("TEXT63")));
+	}
 
-  if(empty($ship_id)) {
+	$new_ship_name = htmlspecialchars($_POST['new_ship_name']);
 
-        message(NOTICE, 'Es wurde kein Schiff ausgewählt');
+	$ship_id = (int)$_POST['ships'][0];
 
-    }
+	$sql = 'UPDATE ships
 
+	        SET ship_name = "'.$new_ship_name.'"
 
+	        WHERE ship_id = '.$ship_id;
 
-    $sql = 'SELECT s.*, st.*,
+	if(!$db->query($sql)) {
+		message(DATABASE_ERROR, 'Could not update ship data');
+	}
 
-                   f.fleet_name,
+	redirect('a=spacedock');
+}
 
-                   p.planet_name
+elseif(!empty($_POST['change_ship_ncc'])) {
 
-            FROM (ships s)
+	if(empty($_POST['ships'])) {
+		message(NOTICE, constant($game->sprache("TEXT39")));
 
-            INNER JOIN (ship_templates st) ON st.id = s.template_id
+	}
 
-            LEFT JOIN (ship_fleets f) ON f.fleet_id = s.fleet_id
+	if(empty($_POST['new_ship_ncc'])) {
+		message(NOTICE, constant($game->sprache("TEXT64")));
+	}
 
-            LEFT JOIN (planets p) ON p.planet_id = -s.fleet_id
+	$new_ship_ncc = htmlspecialchars($_POST['new_ship_ncc']);
 
-            WHERE s.ship_id = '.$ship_id;
+	$ship_id = (int)$_POST['ships'][0];
 
+	$sql = 'UPDATE ships
 
+	        SET ship_ncc = "'.$new_ship_ncc.'"
 
-    if(($ship = $db->queryrow($sql)) === false) {
+	        WHERE ship_id = '.$ship_id;
 
-        message(DATABASE_ERROR, 'Could not query ship data');
+	if(!$db->query($sql)) {
+		message(DATABASE_ERROR, 'Could not update ship data');
+	}
 
-    }
-
-
-
-    if(empty($ship['ship_id'])) {
-
-        message(NOTICE, 'Das gewählte Schiff existiert nicht');
-
-    }
-
-
-
-    if($ship['user_id'] != $game->player['user_id']) {
-
-        message(NOTICE, 'Das gewählte Schiff existiert nicht');
-
-    }
-
-
-	// Schiffsdaten ausgeben:
-	$rank_nr=1;
-	if ($ship['experience']>=$ship_ranks[0]) $rank_nr=1;
-	if ($ship['experience']>=$ship_ranks[1]) $rank_nr=2;
-	if ($ship['experience']>=$ship_ranks[2]) $rank_nr=3;
-	if ($ship['experience']>=$ship_ranks[3]) $rank_nr=4;
-	if ($ship['experience']>=$ship_ranks[4]) $rank_nr=5;
-	if ($ship['experience']>=$ship_ranks[5]) $rank_nr=6;
-	if ($ship['experience']>=$ship_ranks[6]) $rank_nr=7;
-	if ($ship['experience']>=$ship_ranks[7]) $rank_nr=8;
-	if ($ship['experience']>=$ship_ranks[8]) $rank_nr=9;
-	if ($ship['experience']>=$ship_ranks[9]) $rank_nr=10;
-
-$game->out('
-
-<table width="450" align="center" border="0" cellpadding="4" cellspacing="2" class="style_outer">
-
-  <tr>
-
-    <td><span class="sub_caption2">Detailansicht des gewählten Schiffs ('.$ship['name'].')</span><br><br>
-
-      <table width="450" align="center" cellpadding="0" cellspacing="0" border="0" class="style_inner">
-
-        <tr>
-
-          <td align="left" valign="top" width="120">
-
-            '.( ($ship['fleet_id'] > 0) ? 'Flotte:' : 'Trockendock:' ).'<br><br>
-
-            Schiffsklasse:<br>
-
-            Rumpftyp:<br>
-
-            Rasse:<br><br>
-
-            Hüllenzustand:<br>
-
-            Schildstärke:<br><br>
-
-            Erfahrung:<br><br>
-
-            Leichte Waffen:<br>
-
-            Schwere Waffen:<br>
-
-            Planetare Waffen:<br><br>
-
-            Reaktion:<br>
-
-            Bereitschaft:<br>
-
-            Wendigkeit:<br><br>
-
-            Warp:<br>
-
-            Sensoren:<br>
-
-            Tarnung:<br><br>
-
-            Energieverbrauch:<br><br>
-
-            Crew:
-
-          </td>
-
-          <td align="left" valign="top" width="130">
-
-            '.( ($ship['fleet_id'] > 0) ? '<a href="'.parse_link('a=ship_fleets_display&'.( (!empty($ship['planet_id'])) ? 'p' : 'm' ).'fleet_details='.$ship['fleet_id']).'">'.$ship['fleet_name'].'</a>' : '<a href="'.parse_link('a=spacedock').'">'.$ship['planet_name'].'</a>' ).'<br><br>
-
-            <b>'.$ship['name'].'</b><br>
-
-            <b><a href="javascript:void(0);" onmouseover="return overlib(\''.CreateShipInfoText($SHIP_TORSO[$ship['race']][$ship['ship_torso']]).'\', CAPTION, \''.$SHIP_TORSO[$ship['race']][$ship['ship_torso']][29].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$SHIP_TORSO[$ship['race']][$ship['ship_torso']][29].'</a></b><br>
-
-            <b>'.$RACE_DATA[$ship['race']][0].'</b><br><br>
-
-            <b>'.$ship['hitpoints'].'</b> / <b>'.$ship['value_5'].'</b><br>
-
-            <b>'.$ship['value_4'].'</b><br><br>
-
-            <b><span style="color: yellow">'.$ship['experience'].'</span></b> <img src="'.$game->GFX_PATH.'rank_'.$rank_nr.'.jpg" width="47" height="12"><br><br>
-
-            <b>'.$ship['value_1'].' + <span style="color: yellow">'.round($ship['value_1']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
-
-            <b>'.$ship['value_2'].' + <span style="color: yellow">'.round($ship['value_2']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
-
-            <b>'.$ship['value_3'].' + <span style="color: yellow">'.round($ship['value_3']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br><br>
-
-            <b>'.$ship['value_6'].' + <span style="color: yellow">'.round($ship['value_6']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
-
-            <b>'.$ship['value_7'].' + <span style="color: yellow">'.round($ship['value_7']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
-
-            <b>'.$ship['value_8'].' + <span style="color: yellow">'.round($ship['value_8']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br><br>
-
-            <b>'.$ship['value_10'].'</b><br>
-
-            <b>'.$ship['value_11'].'</b><br>
-
-            <b>'.$ship['value_12'].'</b><br><br>
-
-            <b>'.$ship['value_14'].'</b> / <b>'.$ship['value_13'].'</b><br><br>
-
-            <img src='.$game->GFX_PATH.'menu_unit1_small.gif>'.$ship['unit_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif>'.$ship['unit_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif>'.$ship['unit_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif>'.$ship['unit_4'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif>'.$ship['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif>'.$ship['unit_6'].'
-
-          </td>
-
-          <td align="center>" valign="top" width="200"><img src="'.FIXED_GFX_PATH.'ship'.$ship['race'].'_'.$ship['ship_torso'].'.jpg"><br><br>
-
-    ');
-
-    for ($t=0; $t<10; $t++)
-
-	{
-
-	if ($ship['component_'.($t+1)]>=0)
-
-	{
-
-	$game->out('-&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateCompInfoText($ship_components[$ship['race']][$t][$ship['component_'.($t+1)]]).'\', CAPTION, \''.$ship_components[$ship['race']][$t][$ship['component_'.($t+1)]]['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$ship_components[$ship['race']][$t][$ship['component_'.($t+1)]]['name'].'</a><br>');
-
-	} else $game->out('- Nicht belegt<br>');
-
-    }
-
-
-
-    $game->out('
-
-          </td>
-
-        </tr>
-
-      </table>
-
-    </td>
-
-  </tr>
-
-</table>
-
-');
-
+	redirect('a=spacedock');
 }
 
 else {
 
+	$game->out('<script language="JavaScript">
+		function UpdateShipData()
+		{
+			var ships = document.getElementById( "ships" );
+			document.getElementById( "ship_name" ).value = ships.options[ships.selectedIndex].title;
+			document.getElementById( "ship_ncc" ).value = ships.options[ships.selectedIndex].id;
+		}
+		</script>');
+
 	$sql = 'SELECT s.ship_id, s.hitpoints, s.ship_repair, s.ship_scrap, s.ship_untouchable,
 
-			s.unit_1,s.unit_2,s.unit_3,s.unit_4,
+			s.unit_1,s.unit_2,s.unit_3,s.unit_4, s.ship_name, s.ship_ncc,
 
 			st.max_unit_1,st.max_unit_2,st.max_unit_3,st.max_unit_4,
 
-	               st.name AS template_name, st.value_5 AS max_hitpoints
+			st.name AS template_name, st.value_5 AS max_hitpoints
 
 			FROM (ships s)
 
@@ -2383,19 +1746,21 @@ else {
 
 	$game->out('
 
-<table width="400" align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+<table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer"><tr><td width=400>
+
+<table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
 
   <form name="mfleet_form" method="post" action="'.parse_link('a=spacedock').'">
 
   <tr>
 
-    <td width="400"><b>Schiffe im Trockendock</b><br>Hier sind alle Schiffe, die zurzeit außer Dienst gestellt wurden, um repariert/aufgerüstet/bemannt zu werden, und die gerade erst produzierten Schiffe.<br><b>U</b>= Kann keine Aktion durchführen (Auktion, Reperatur, Verschrotten)<br><b>R</b>= Wird momentan repariert (inkl. der Restzeit)<br><b>S</b>= Wird momentan verschrottet (inkl. der Restzeit)<br><b>B=xx%</b>= Gibt die % der Besatzungsstärke an, FALLS unter 100%</td>
+    <td width="400">'.constant($game->sprache("TEXT56")).'</td>
 
   </tr>
 
   <tr>
 
-    <td width="400"><select name="ships[]" style="width: 380px;" multiple="multiple" size="'.$select_size.'">'.( ($null==0) ? '<option></option>' : '' 
+    <td width="400"><select name="ships[]" id="ships" style="width: 380px;" multiple="multiple" size="'.$select_size.'" onclick="UpdateShipData()" onkeyup="UpdateShipData()">'.( ($null==0) ? '<option></option>' : '' 
 ).'
 
     ');
@@ -2424,8 +1789,8 @@ else {
 
         }
 
-		$game->out('<option value="'.$ship['ship_id'].'">'.$ship['template_name'].' ('.$ship['hitpoints'].'/'.$ship['max_hitpoints'].')'.( ($ship['ship_untouchable']) ? ' U' : '' ).''.$repair.''.$scrap.''.$b_title.'</option>');
-
+		/* 07/04/08 - AC: If present, show also ship's name */
+		$game->out('<option value="'.$ship['ship_id'].'" title="'.addslashes($ship['ship_name']).'" id="'.addslashes($ship['ship_ncc']).'">'.(($ship['ship_name'] != '')? $ship['ship_name'].' - '.$ship['template_name'] : $ship['template_name']).' ('.$ship['hitpoints'].'/'.$ship['max_hitpoints'].')'.( ($ship['ship_untouchable']) ? ' U' : '' ).''.$repair.''.$scrap.''.$b_title.'</option>');
     }
 
 
@@ -2458,23 +1823,23 @@ else {
 
 	  <br><br>
 
-      <input class="button" type="submit" name="repair_ships" value="Reparieren">&nbsp;
+      <input class="button" type="submit" name="repair_ships" value="'.constant($game->sprache("TEXT38")).'">&nbsp;
 
-      <input class="button" type="submit" name="man_ships" value="Bemannen">&nbsp;
+      <input class="button" type="submit" name="man_ships" value="'.constant($game->sprache("TEXT43")).'">&nbsp;
 
-      <input class="button" type="submit" name="scrap_ships" value="Verschrotten">&nbsp;
+      <input class="button" type="submit" name="scrap_ships" value="'.constant($game->sprache("TEXT47")).'">&nbsp;
 
-      <input class="button" type="submit" name="view_detail" value="Details"><br><br>
+      <input class="button" type="submit" name="view_detail" value="'.constant($game->sprache("TEXT57")).'" onClick="return document.mfleet_form.action = \''.parse_link('a=ship_fleets_ops&ship_details').'\'"><br><br>
 
       <table width="400" border="0" cellpadding="2" cellspacing="0">
 
         <tr>
 
-          <td width="130" rowspan="2" valign="middle">in Dienst stellen:<br></td>
+          <td width="130" rowspan="2" valign="middle">'.constant($game->sprache("TEXT58")).'<br></td>
 
           <td width="130"><input class="field"  style="width: 120px;" type="text" name="new_fleet_name"></td>
 
-          <td width="140"><input class="button" style="width: 130px;" type="submit" name="new_fleet" value="Neue Flotte gründen"></td>
+          <td width="140"><input class="button" style="width: 130px;" type="submit" name="new_fleet" value="'.constant($game->sprache("TEXT59")).'"></td>
 
         </tr>
 
@@ -2504,7 +1869,7 @@ else {
 
           </td>
 
-          <td><input class="button" style="width: 130px;" type="submit" name="change_fleet" value="Flotte anschließen"></td>
+          <td><input class="button" style="width: 130px;" type="submit" name="change_fleet" value="'.constant($game->sprache("TEXT60")).'"></td>
 
         ');
 
@@ -2516,7 +1881,7 @@ else {
 
           <td><select style="width: 120px;" disabled="disabled"><option value="0">-</option></select></td>
 
-          <td><input class="button" style="width: 130px;" type="submit" name="change_fleet" value="Flotte anschließen" disabled="disabled"></td>
+          <td><input class="button" style="width: 130px;" type="submit" name="change_fleet" value="'.constant($game->sprache("TEXT60")).'" disabled="disabled"></td>
 
         ');
 
@@ -2527,6 +1892,23 @@ else {
     $game->out('
 
         </tr>
+
+        <tr>
+
+          <td>'.constant($game->sprache("TEXT32")).'</td>
+          <td width="130"><input class="field" type="text" name="new_ship_name" id="ship_name" value="" maxlength="25" size="25"></td>
+          <td><input class="button" style="width: 130px;" type="submit" name="rename_ship" value="'.constant($game->sprache("TEXT65")).'"></td>
+
+        </tr>
+
+        <tr>
+
+          <td>'.constant($game->sprache("TEXT61")).'</td>
+          <td width="130"><input class="field" type="text" name="new_ship_ncc" id="ship_ncc" value="" maxlength="12" size="25"></td>
+          <td><input class="button" style="width: 130px;" type="submit" name="change_ship_ncc" value="'.constant($game->sprache("TEXT66")).'"></td>
+
+        </tr>
+
 
       </table>
 
@@ -2539,6 +1921,8 @@ else {
   </form>
 
 </table>
+
+</td></tr></table>
 
 	');
 
