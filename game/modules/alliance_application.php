@@ -43,7 +43,7 @@ function get_owner_name($owner_id) {
   
 
 
-// Überprüft, ob der Spieler Mitglied/kein Mitglied einer Allianz ist
+// ÃœberprÃ¼ft, ob der Spieler Mitglied/kein Mitglied einer Allianz ist
 //   $requirement == true -> der Spieler muss in einer Allianz sein
 //   $requirement == false -> der Spieler darf NICHT in einer Allianz sein
 function check_membership($requirement) {
@@ -52,11 +52,11 @@ function check_membership($requirement) {
     $in_alliance = (!empty($game->player['alliance_name'])) ? true : false;
     
     if($in_alliance && !$requirement) {
-        message(NOTICE, 'Du bist bereits Mitglied in einer Allianz');
+        message(NOTICE, constant($game->sprache('TEXT0')));
     }
     
     if(!$in_alliance && $requirement) {
-        message(NOTICE, 'Du bist nicht Mitglied einer Allianz');
+        message(NOTICE, constant($game->sprache('TEXT1')));
     }
     
     return true;
@@ -64,7 +64,7 @@ function check_membership($requirement) {
 
 
 $game->init_player();
-$game->out('<center><span class="caption">Allianz-Bewerbungen:</span><br><br>');
+$game->out('<center><span class="caption">'.constant($game->sprache("TEXT44")).':</span><br><br>');
 
  $sql = 'SELECT *
             FROM alliance
@@ -88,7 +88,7 @@ if(isset($_GET['application'])) {
       }
 
       if(!empty($app_data['application_user'])){
-         message(NOTICE, 'Du hast dich bereits bei einer Allianz beworben.');
+         message(NOTICE, constant($game->sprache("TEXT82")));
       }
 
       $sql = 'SELECT * FROM alliance WHERE alliance_id = '.$_GET['alliance'];
@@ -98,10 +98,10 @@ if(isset($_GET['application'])) {
       }
 
       if($alliance_name['alliance_application']!=1) {
-         message(NOTICE, 'Die Allianz hat das Bewerben nicht erlaubt');
+         message(NOTICE, constant($game->sprache("TEXT3")));
       }
       if((($game->player['last_alliance_kick']+480)>=$ACTUAL_TICK) && $game->player['last_alliance_kick']!=0){
-         message(NOTICE, 'Du darfst erst 24 Stunden nach Kick aus deiner letzten Allianz wieder einer neuen Beitreten.');
+         message(NOTICE, constant($game->sprache("TEXT4")));
       }
 
 	          $game->out('
@@ -124,7 +124,7 @@ if(isset($_GET['vorlage']) && $_GET['vorlage']==1) {$text=$alliance_name['allian
           <form name="load_form" action="'.parse_link('a=alliance_application').'" method="post">
           <input type="hidden" name="alliance_id" value="'.$_GET['alliance'].'">
             <tr>
-              <td colspan="2" align="center">Bewerben bei <b>'.$alliance_name['alliance_name'].'</b></td>
+              <td colspan="2" align="center">'.constant($game->sprache("TEXT5")).'<b>'.$alliance_name['alliance_name'].'</b></td>
             </tr>
              <tr>
               <td colspan="2" align="center">&nbsp;</td>
@@ -132,9 +132,9 @@ if(isset($_GET['vorlage']) && $_GET['vorlage']==1) {$text=$alliance_name['allian
              <tr>
               ');
 //old von mojo<td colspan="2" align="center">[<a href="javascript:void(0);" onClick="return text();">Allianz Vorlage</a>]</td>
-            $game->out('<td colspan="2" align="center">[<a href="'.parse_link('a=alliance_application&application=new&alliance='.$_GET['alliance'].'&vorlage=1').'">Allianz Vorlage</a>]</td></tr>
+            $game->out('<td colspan="2" align="center">[<a href="'.parse_link('a=alliance_application&application=new&alliance='.$_GET['alliance'].'&vorlage=1').'">'.constant($game->sprache("TEXT6")).'</a>]</td></tr>
 	     <tr>
-              <td colspan="2" align="center">Bewerbungstext:</td>
+              <td colspan="2" align="center">'.constant($game->sprache("TEXT7")).'</td>
             </tr>
              <tr>
               <td colspan="2" align="center"><textarea name="application_text" cols="45" rows="8" value="">'.$text.'</textarea></td>
@@ -145,7 +145,7 @@ if(isset($_GET['vorlage']) && $_GET['vorlage']==1) {$text=$alliance_name['allian
              <tr>
              </tr>
             <tr>
-              <td colspan="2" align="center"><input class="button" type="button" value="<< Zurück" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="application_submit" value="Bestätigen"></td>
+              <td colspan="2" align="center"><input class="button" type="button" value="<< '.constant($game->sprache("TEXT8")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="application_submit" value="'.constant($game->sprache("TEXT9")).'"></td>
             </tr>
 
             </form>
@@ -170,7 +170,7 @@ if(($alliance = $db->queryrow($sql)) === false) {
 }
 
 if($game->player['user_alliance_rights6'] != 1) {
-    message(NOTICE, 'Du bestitzt nicht die erforderlichen Berechtigungen um diesen Vorgang auszuführen.');
+    message(NOTICE, constant($game->sprache("TEXT10")));
 }
 
 // Check Ende
@@ -181,7 +181,7 @@ if($game->player['user_alliance_rights6'] != 1) {
   <table class="style_inner" width="450" align="center" border="0" cellpadding="2" cellspacing="4">
 
   <tr>
-    <td width="10">&nbsp;</td><td>Name</td><td>Punkte</td><td>Beworben am:</td><td>Aktionen</td>
+    <td width="10">&nbsp;</td><td>'.constant($game->sprache("TEXT17")).'</td><td>'.constant($game->sprache("TEXT18")).'</td><td>'.constant($game->sprache("TEXT11")).'</td><td>'.constant($game->sprache("TEXT20")).'</td>
   <tr>
   	
   
@@ -197,11 +197,11 @@ if($game->player['user_alliance_rights6'] != 1) {
 
       $game->out(' 
    
-   <tr><td><img src="http://88.84.142.96/stgc5_gfx/new.png" alt="New"></img></td>
+   <tr><td><img src="http://stfc.nonsolotaku.it/stgc5_gfx/new.png" alt="New"></img></td>
    <td>'.$application['application_username'].'</td>
    <td>'.$application['user_points'].'</td>
    <td>'.date('d.m.y H:i', $application['application_timestamp']).'</td>
-   <td>[<a href="'.parse_link('a=alliance_application&application=accept&app_id='.$application['application_id'].'').'"><span style="color: #00FF00;">Annehmen</span></a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=deny&app_id='.$application['application_id'].'').'"><span style="color: #FF0000;">Ablehnen</span></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=alliance_application&application=details&app_id='.$application['application_id'].'').'">Details</a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=wing&app_id='.$application['application_id'].'').'">Wing</a>]</td></tr>      
+   <td>[<a href="'.parse_link('a=alliance_application&application=accept&app_id='.$application['application_id'].'').'"><span style="color: #00FF00;">'.constant($game->sprache("TEXT12")).'</span></a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=deny&app_id='.$application['application_id'].'').'"><span style="color: #FF0000;">'.constant($game->sprache("TEXT13")).'</span></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=alliance_application&application=details&app_id='.$application['application_id'].'').'">'.constant($game->sprache("TEXT14")).'</a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=wing&app_id='.$application['application_id'].'').'">'.constant($game->sprache("TEXT15")).'</a>]</td></tr>      
 
   ');
 
@@ -214,7 +214,7 @@ if($game->player['user_alliance_rights6'] != 1) {
    <td>'.$application['application_username'].'</td>
    <td>'.$application['user_points'].'</td>
    <td>'.date('d.m.y H:i', $application['application_timestamp']).'</td>
-   <td>[<a href="'.parse_link('a=alliance_application&application=accept&app_id='.$application['application_id'].'').'"><span style="color: #00FF00;">Annehmen</span></a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=deny&app_id='.$application['application_id'].'').'"><span style="color: #FF0000;">Ablehnen</span></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=alliance_application&application=details&app_id='.$application['application_id'].'').'">Details</a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=wing&app_id='.$application['application_id'].'').'">Wing</a>]</td></tr>      
+   <td>[<a href="'.parse_link('a=alliance_application&application=accept&app_id='.$application['application_id'].'').'"><span style="color: #00FF00;">'.constant($game->sprache("TEXT12")).'</span></a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=deny&app_id='.$application['application_id'].'').'"><span style="color: #FF0000;">'.constant($game->sprache("TEXT13")).'</span></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=alliance_application&application=details&app_id='.$application['application_id'].'').'">'.constant($game->sprache("TEXT14")).'</a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=wing&app_id='.$application['application_id'].'').'">'.constant($game->sprache("TEXT15")).'</a>]</td></tr>      
 
   ');
    }
@@ -232,11 +232,11 @@ if($game->player['user_alliance_rights6'] != 1) {
   check_membership(true);
 
 if($game->player['user_alliance_rights6'] != 1) {
-    message(NOTICE, 'Du bestitzt nicht die erforderlichen Berechtigungen um diesen Vorgang auszuführen.');
+    message(NOTICE, constant($game->sprache("TEXT10")));
 }  
 
 
-  // Wird nur gesetzt wen nicht schon gelesen, da sonst Minuswerte entstehen können.
+  // Wird nur gesetzt wen nicht schon gelesen, da sonst Minuswerte entstehen kÃ¶nnen.
 
   $sql = 'UPDATE alliance_application SET application_read = 1 WHERE application_id = '.$_GET['app_id'];
 
@@ -262,7 +262,7 @@ if($game->player['user_alliance_rights6'] != 1) {
   } */
 
     if($application_data['application_alliance'] != $game->player['user_alliance']) {
-      message(NOTICE, 'Du bist nicht in dieser Allianz');
+      message(NOTICE, constant($game->sprache("TEXT16")));
     }
 
   
@@ -272,7 +272,7 @@ if($game->player['user_alliance_rights6'] != 1) {
   <table class="style_inner" width="450" align="center" border="0" cellpadding="2" cellspacing="4">
 
     <tr>
-      <td align="center" width="67">&nbsp;</td><td align="center" width="200"><font size="4"><b>Details</b></font></td><td align="center" width="67">&nbsp;</td>
+      <td align="center" width="67">&nbsp;</td><td align="center" width="200"><font size="4"><b>'.constant($game->sprache("TEXT14")).'</b></font></td><td align="center" width="67">&nbsp;</td>
     </tr>
 
     <tr><td>&nbsp;</td><td>
@@ -280,15 +280,15 @@ if($game->player['user_alliance_rights6'] != 1) {
 
 
   <tr>
-    <td align="left">Name:&nbsp;</td><td align="left">'.$application_data['application_username'].'</td>
+    <td align="left">'.constant($game->sprache("TEXT17")).':&nbsp;</td><td align="left">'.$application_data['application_username'].'</td>
   </tr>
 
   <tr>
-    <td align="left">Punkte:</td><td align="left">'.$application_data['user_points'].'</td>
+    <td align="left">'.constant($game->sprache("TEXT18")).':</td><td align="left">'.$application_data['user_points'].'</td>
   </tr>
     
   <tr>
-    <td align="left">Planeten:</td><td align="left">'.$application_data['user_planets'].'</td>
+    <td align="left">'.constant($game->sprache("TEXT19")).'</td><td align="left">'.$application_data['user_planets'].'</td>
   </tr>
 
   </table></td></tr>
@@ -299,7 +299,7 @@ if($game->player['user_alliance_rights6'] != 1) {
 
 
   <tr>
-    <td align="center" width="67">&nbsp;</td><td align="center" width="200">Bewerbungstext:<br></td>
+    <td align="center" width="67">&nbsp;</td><td align="center" width="200">'.constant($game->sprache("TEXT7")).'<br></td>
   </tr>
 
   <tr>
@@ -311,11 +311,11 @@ if($game->player['user_alliance_rights6'] != 1) {
   </tr>
 
   <tr>
-    <td align="left" width="67"></td>&nbsp;<td align="left" width="200">Aktionen:</td><td align="left">&nbsp;</td>
+    <td align="left" width="67"></td>&nbsp;<td align="left" width="200">'.constant($game->sprache("TEXT20")).'</td><td align="left">&nbsp;</td>
   </tr>
 
   <tr>
-    <td align="left" width="67"></td>&nbsp;<td align="left" width="200">[<a href="'.parse_link('a=alliance_application&application=accept&app_id='.$application_data['application_id'].'').'"><span style="color: #00FF00;">Annehmen</span></a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=deny&app_id='.$application_data['application_id'].'').'"><span style="color: #FF0000;">Ablehnen</span></a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=wing&app_id='.$application_data['application_id'].'').'">Wing</a>]&nbsp;<br>[<a href="'.parse_link('a=alliance_application&application=admin').'">Zurück zur Übersicht</a>]</td><td align="left">&nbsp;</td>
+    <td align="left" width="67"></td>&nbsp;<td align="left" width="200">[<a href="'.parse_link('a=alliance_application&application=accept&app_id='.$application_data['application_id'].'').'"><span style="color: #00FF00;">'.constant($game->sprache("TEXT12")).'</span></a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=deny&app_id='.$application_data['application_id'].'').'"><span style="color: #FF0000;">'.constant($game->sprache("TEXT13")).'</span></a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=wing&app_id='.$application_data['application_id'].'').'">'.constant($game->sprache("TEXT15")).'</a>]&nbsp;<br>[<a href="'.parse_link('a=alliance_application&application=admin').'">'.constant($game->sprache("TEXT21")).'</a>]</td><td align="left">&nbsp;</td>
   </tr>
 
 
@@ -330,7 +330,7 @@ if($game->player['user_alliance_rights6'] != 1) {
   check_membership(true);
 
 if($game->player['user_alliance_rights6'] != 1) {
-    message(NOTICE, 'Du bestitzt nicht die erforderlichen Berechtigungen um diesen Vorgang auszuführen.');
+    message(NOTICE, constant($game->sprache("TEXT10")));
 }
 
  
@@ -341,14 +341,14 @@ if($game->player['user_alliance_rights6'] != 1) {
   }
 
   if($application_data['application_alliance'] != $game->player['user_alliance']) {
-    message(NOTICE, 'Du bist nicht in der Allianz an die dieses Angebot ging!');
+    message(NOTICE, constant($game->sprache("TEXT22")));
   }
 
-  SystemMessage($application_data['application_user'], 'Bewerbung angenommen', 'Deine Bewerbung bei '.$application_data['alliance_name'].' wurde angenommen.<br>Du bist der Allianz beigetreten.');
+  SystemMessage($application_data['application_user'], constant($game->sprache("TEXT35")), constant($game->sprache("TEXT23")).$application_data['alliance_name'].constant($game->sprache("TEXT24")).'<br>'.constant($game->sprache("TEXT25")));
 
   $sql = 'UPDATE user SET user_alliance = '.$application_data['application_alliance'].', user_alliance_status = '.ALLIANCE_STATUS_MEMBER.' WHERE user_id = '.$application_data['application_user'];
 
-  alliance_log('<font color=green>'.$application_data['application_username'].'</font> hat die Allianz <b>betreten</b> ('.$game->player['user_name'].')',0,$application_data['application_alliance']);
+  alliance_log('<font color=green>'.$application_data['application_username'].'</font> '.constant($game->sprache("TEXT26")).' ('.$game->player['user_name'].')',0,$application_data['application_alliance']);
 
   if(!$db->query($sql)) {
     message(DATABASE_ERROR, 'Could not add user to alliance');
@@ -380,7 +380,7 @@ if($game->player['user_alliance_rights6'] != 1) {
   check_membership(true);
 
 if($game->player['user_alliance_rights6'] != 1) {
-    message(NOTICE, 'Du bestitzt nicht die erforderlichen Berechtigungen um diesen Vorgang auszuführen.');
+    message(NOTICE, constant($game->sprache("TEXT10")));
 }
  
   $sql = 'SELECT * FROM alliance_application, user, alliance WHERE application_id = '.$_GET['app_id'].' AND user_id = application_user AND alliance_id = application_alliance';
@@ -390,12 +390,12 @@ if($game->player['user_alliance_rights6'] != 1) {
   }
 
   if($application_data['application_alliance'] != $game->player['user_alliance']) {
-    message(NOTICE, 'Du bist nicht in der Allianz an die dieses Angebot ging!');
+    message(NOTICE, constant($game->sprache("TEXT22")));
   }
 
-  SystemMessage($application_data['application_user'], 'Bewerbung abgelehnt', 'Deine Bewerbung bei '.$application_data['alliance_name'].' wurde abgelehnt.');
+  SystemMessage($application_data['application_user'], constant($game->sprache("TEXT34")), constant($game->sprache("TEXT23")).$application_data['alliance_name'].constant($game->sprache("TEXT27")));
 
- /* // Wird nur gesetzt wen nicht schon gelesen, da sonst Minuswerte entstehen können.
+ /* // Wird nur gesetzt wen nicht schon gelesen, da sonst Minuswerte entstehen kÃ¶nnen.
 
     if($application_data['application_read']!=1) {
   
@@ -445,7 +445,7 @@ $listquery=$db->query('SELECT * FROM alliance ORDER BY '.$order_str.'');
 $game->out(' <table class="style_inner" width="650" align="center" border="0" cellpadding="2" cellspacing="4"> 
 
 	<tr>
-	  <td ><a href="'.parse_link('a=alliance_application&list=0').'"><span class="sub_caption2">Name</span></a></td><td ><a href="'.parse_link('a=alliance_application&list=1').'"><span class="sub_caption2">Tag</span></a></td><td><span class="sub_caption2">Präsident</span></td><td ><a href="'.parse_link('a=alliance_application&list=3').'"><span class="sub_caption2">Member</span></a></td ><td><a href="'.parse_link('a=alliance_application&list=4').'"><span class="sub_caption2">Punkte</span></a></td><td ><a href="'.parse_link('a=alliance_application&list=5').'"><span class="sub_caption2">Rang</span></td><td ><span class="sub_caption2">Status</span></a></td>
+	  <td ><a href="'.parse_link('a=alliance_application&list=0').'"><span class="sub_caption2">'.constant($game->sprache("TEXT17")).'</span></a></td><td ><a href="'.parse_link('a=alliance_application&list=1').'"><span class="sub_caption2">'.constant($game->sprache("TEXT32")).'</span></a></td><td><span class="sub_caption2">'.constant($game->sprache("TEXT28")).'</span></td><td ><a href="'.parse_link('a=alliance_application&list=3').'"><span class="sub_caption2">'.constant($game->sprache("TEXT29")).'</span></a></td ><td><a href="'.parse_link('a=alliance_application&list=4').'"><span class="sub_caption2">'.constant($game->sprache("TEXT18")).'</span></a></td><td ><a href="'.parse_link('a=alliance_application&list=5').'"><span class="sub_caption2">'.constant($game->sprache("TEXT30")).'</span></td><td ><span class="sub_caption2">'.constant($game->sprache("TEXT31")).'</span></a></td>
 	</tr>
 	
 ');
@@ -470,10 +470,10 @@ while (($alliance = $db->fetchrow($listquery)) != false)
 
 if($alliance['alliance_application']==1) {
 
-   $game->out('<td >[<a href="'.parse_link('a=alliance_application&application=new&alliance='.$alliance['alliance_id'].'').'"><span style="color: #00FF00;">Bewerben</span></a>]</td></tr>');
+   $game->out('<td >[<a href="'.parse_link('a=alliance_application&application=new&alliance='.$alliance['alliance_id'].'').'"><span style="color: #00FF00;">'.constant($game->sprache("TEXT33")).'</span></a>]</td></tr>');
 
 }
-else { $game->out(' <td ><span style="color: #FF0000;">Bewerben nicht möglich</span></td></tr>'); }
+else { $game->out(' <td ><span style="color: #FF0000;">'.constant($game->sprache("TEXT36")).'</span></td></tr>'); }
 
 }
 
@@ -492,7 +492,7 @@ check_membership(false);
   }
 
       if($alliance_check['alliance_application']!=1) {
-         message(NOTICE, 'Die Allianz hat das Bewerben nicht erlaubt');
+         message(NOTICE, constant($game->sprache("TEXT37")));
       }
 
       $sql = 'SELECT * FROM alliance_application WHERE application_user = '.$game->player['user_id'];
@@ -502,12 +502,12 @@ check_membership(false);
       }
 
       if(!empty($app_data['application_user'])){
-         message(NOTICE, 'Du hast dich bereits bei einer Allianz beworben.');
+         message(NOTICE, constant($game->sprache("TEXT38")));
       }
 
 
       if((($game->player['last_alliance_kick']+480)>=$ACTUAL_TICK) && $game->player['last_alliance_kick']!=0){
-         message(NOTICE, 'Du darfst erst 24 Stunden nach Kick aus deiner letzten Allianz wieder einer neuen Beitreten.');
+         message(NOTICE, constant($game->sprache("TEXT4")));
       }
 
 $sql = 'INSERT INTO alliance_application (application_user, application_username, application_alliance, application_text, application_read, application_timestamp)
@@ -525,7 +525,7 @@ $sql = 'INSERT INTO alliance_application (application_user, application_username
 
 // Messageing einbauen!!!
 
-$game->out('Sie haben sich erfolgreich beworben.');
+$game->out(constant($game->sprache("TEXT43")));
 
 
 }
@@ -541,7 +541,7 @@ else {
 
 $game->out('<table class="style_inner" width="250" align="center" border="0" cellpadding="2" cellspacing="4">
 <tr>
-<td align="center">Sicher das du deine Bewerbung zurückziehen möchtest?<br><br>[<a href="'.parse_link('a=alliance_application&delete=1').'">Ja</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=alliance_main').'">Nein</a>]</td>
+<td align="center">'.constant($game->sprache("TEXT39")).'<br><br>[<a href="'.parse_link('a=alliance_application&delete=1').'">'.constant($game->sprache("TEXT40")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=alliance_main').'">'.constant($game->sprache("TEXT41")).'</a>]</td>
 </tr>
 
 </table>
@@ -566,7 +566,7 @@ $sql = 'SELECT * FROM alliance_application WHERE application_user = '.$game->pla
     message(DATABASE_ERROR, 'Could not query empty check data');
   }
 
-if(empty($empty_check['application_id'])) message(NOTICE, 'Du kannst nur Bewerbungen löschen, wenn du auch welche gestellt hast.');
+if(empty($empty_check['application_id'])) message(NOTICE, constant($game->sprache("TEXT42")));
 
 $sql = 'DELETE FROM alliance_application WHERE application_user = '.$game->player['user_id'];
 

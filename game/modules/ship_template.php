@@ -26,17 +26,19 @@
 
 $game->init_player();
 
-include('include/static/static_components_'.$game->player['user_race'].'.php');
+$filename = 'include/static/static_components_'.$game->player['user_race'].'_'.$game->player['language'].'.php';
+if (!file_exists($filename)) $filename = 'include/static/static_components_'.$game->player['user_race'].'.php';
+include($filename);
 
 
 error_reporting(E_ERROR);
     $STEMPLATE_MODULES = array(
-        'view' => 'Übersicht',
-        'create' => 'Template Erstellen',
-		'compare' => 'Templates vergleichen',
+        'view' => constant($game->sprache("TEXT0")),
+        'create' => constant($game->sprache("TEXT1")),
+		'compare' => constant($game->sprache("TEXT2")),
     );
 
-$game->out('<center><span class="caption">Schiffstemplate Editor:</span><br><br>'.display_view_navigation('ship_template', $module, $STEMPLATE_MODULES).'</center><br>');
+$game->out('<span class="caption">'.constant($game->sprache("TEXT3")).'</span><br><br>'.display_view_navigation('ship_template', $module, $STEMPLATE_MODULES).'<br><br>');
 
 
 function Zeit($minutes)
@@ -53,22 +55,22 @@ function CreateShipInfoText($ship)
 {
 global $db;
 global $game;
-$text='<b>'.$ship[31].'</b><br><br><u>Kosten:<br></u><img src='.$game->GFX_PATH.'menu_metal_small.gif> '.$ship[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif> '.$ship[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif> '.$ship[2].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_worker_small.gif> '.$ship[30].'<br><img src='.$game->GFX_PATH.'menu_unit1_small.gif> '.$ship['3'].'-'.$ship['7'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif> '.$ship['4'].'-'.$ship['8'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif> '.$ship['5'].'-'.$ship['9'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif> '.$ship['6'].'-'.$ship['10'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif> '.$ship[11].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif> '.$ship[12].'<br><u>Bauzeit</u>:  '.($ship[13]*TICK_DURATION).' Minuten<br><br><u>Fähigkeiten:</u><br>';
+$text='<b>'.$ship[31].'</b><br><br><u>'.constant($game->sprache("TEXT4")).'<br></u><img src='.$game->GFX_PATH.'menu_metal_small.gif> '.$ship[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif> '.$ship[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif> '.$ship[2].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_worker_small.gif> '.$ship[30].'<br><img src='.$game->GFX_PATH.'menu_unit1_small.gif> '.$ship['3'].'-'.$ship['7'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif> '.$ship['4'].'-'.$ship['8'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif> '.$ship['5'].'-'.$ship['9'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif> '.$ship['6'].'-'.$ship['10'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif> '.$ship[11].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif> '.$ship[12].'<br><u>'.constant($game->sprache("TEXT5")).'</u>  '.($ship[13]*TICK_DURATION).' '.constant($game->sprache("TEXT6")).'<br><br><u>'.constant($game->sprache("TEXT7")).'</u><br>';
 
-$text.='L. Waffen: '.$ship[14].'<br>';
-$text.='Schw. Waffen: '.$ship[15].'<br>';
-$text.='Pl. Waffen: '.$ship[16].'<br>';
-$text.='Schildstärke: '.$ship[17].'<br>';
-$text.='Hülle (HP): '.$ship[18].'<br>';
-$text.='Reaktion: '.$ship[19].'<br>';
-$text.='Bereitschaft: '.$ship[20].'<br>';
-$text.='Wendigkeit: '.$ship[21].'<br>';
-$text.='Erfahrung: '.$ship[22].'<br>';
-$text.='Warp: '.$ship[23].'<br>';
-$text.='Sensoren: '.$ship[24].'<br>';
-$text.='Tarnung: '.$ship[25].'<br>';
-$text.='Verbraucht Energie: '.$ship[27].'<br>';
-$text.='Liefert Energie: '.$ship[26].'<br>';
+$text.=constant($game->sprache("TEXT8")).' '.$ship[14].'<br>';
+$text.=constant($game->sprache("TEXT9")).' '.$ship[15].'<br>';
+$text.=constant($game->sprache("TEXT10")).' '.$ship[16].'<br>';
+$text.=constant($game->sprache("TEXT11")).' '.$ship[17].'<br>';
+$text.=constant($game->sprache("TEXT12")).' '.$ship[18].'<br>';
+$text.=constant($game->sprache("TEXT13")).' '.$ship[19].'<br>';
+$text.=constant($game->sprache("TEXT14")).' '.$ship[20].'<br>';
+$text.=constant($game->sprache("TEXT15")).' '.$ship[21].'<br>';
+$text.=constant($game->sprache("TEXT16")).' '.$ship[22].'<br>';
+$text.=constant($game->sprache("TEXT17")).' '.$ship[23].'<br>';
+$text.=constant($game->sprache("TEXT18")).' '.$ship[24].'<br>';
+$text.=constant($game->sprache("TEXT19")).' '.$ship[25].'<br>';
+$text.=constant($game->sprache("TEXT20")).' '.$ship[27].'<br>';
+$text.=constant($game->sprache("TEXT21")).' '.$ship[26].'<br>';
 
 
 return $text;
@@ -78,22 +80,22 @@ function CreateInfoText($comp)
 {
 global $db;
 global $game;
-$text=''.$comp['description'].'<br><br><u>Kosten:<br></u><img src='.$game->GFX_PATH.'menu_metal_small.gif> '.$comp['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif> '.$comp['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif> '.$comp['resource_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_worker_small.gif> '.$comp['resource_4'].'<br><img src='.$game->GFX_PATH.'menu_unit1_small.gif> '.$comp['unit_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif> '.$comp['unit_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif> '.$comp['unit_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif> '.$comp['unit_4'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif> '.$comp['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif> '.$comp['unit_6'].'<br><u>Bauzeit</u>:  +'.($comp['buildtime']*TICK_DURATION).' Minuten<br><br><u>Auswirkungen:</u><br>';
+$text=''.$comp['description'].'<br><br><u>'.constant($game->sprache("TEXT4")).'<br></u><img src='.$game->GFX_PATH.'menu_metal_small.gif> '.$comp['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif> '.$comp['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif> '.$comp['resource_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_worker_small.gif> '.$comp['resource_4'].'<br><img src='.$game->GFX_PATH.'menu_unit1_small.gif> '.$comp['unit_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif> '.$comp['unit_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif> '.$comp['unit_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif> '.$comp['unit_4'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif> '.$comp['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif> '.$comp['unit_6'].'<br><u>'.constant($game->sprache("TEXT5")).'</u>  +'.($comp['buildtime']*TICK_DURATION).' '.constant($game->sprache("TEXT6")).'<br><br><u>'.constant($game->sprache("TEXT22")).'</u><br>';
 
-if ($comp['value_1']!=0) $text.='L. Waffen: '.$comp['value_1'].'<br>';
-if ($comp['value_2']!=0) $text.='Schw. Waffen: '.$comp['value_2'].'<br>';
-if ($comp['value_3']!=0) $text.='Pl. Waffen: '.$comp['value_3'].'<br>';
-if ($comp['value_4']!=0) $text.='Schildstärke: '.$comp['value_4'].'<br>';
-if ($comp['value_5']!=0) $text.='Hülle (HP): '.$comp['value_5'].'<br>';
-if ($comp['value_6']!=0) $text.='Reaktion: '.$comp['value_6'].'<br>';
-if ($comp['value_7']!=0) $text.='Bereitschaft: '.$comp['value_7'].'<br>';
-if ($comp['value_8']!=0) $text.='Wendigkeit: '.$comp['value_8'].'<br>';
-if ($comp['value_9']!=0) $text.='Erfahrung: '.$comp['value_9'].'<br>';
-if ($comp['value_10']!=0) $text.='Warp: '.$comp['value_10'].'<br>';
-if ($comp['value_11']!=0) $text.='Sensoren: '.$comp['value_11'].'<br>';
-if ($comp['value_12']!=0) $text.='Tarnung: '.$comp['value_12'].'<br>';
-if ($comp['value_14']!=0) $text.='Verbraucht Energie: '.$comp['value_14'].'<br>';
-if ($comp['value_13']!=0) $text.='Liefert Energie: '.$comp['value_13'].'<br>';
+if ($comp['value_1']!=0) $text.=constant($game->sprache("TEXT8")).' '.$comp['value_1'].'<br>';
+if ($comp['value_2']!=0) $text.=constant($game->sprache("TEXT9")).' '.$comp['value_2'].'<br>';
+if ($comp['value_3']!=0) $text.=constant($game->sprache("TEXT10")).' '.$comp['value_3'].'<br>';
+if ($comp['value_4']!=0) $text.=constant($game->sprache("TEXT11")).' '.$comp['value_4'].'<br>';
+if ($comp['value_5']!=0) $text.=constant($game->sprache("TEXT12")).' '.$comp['value_5'].'<br>';
+if ($comp['value_6']!=0) $text.=constant($game->sprache("TEXT13")).' '.$comp['value_6'].'<br>';
+if ($comp['value_7']!=0) $text.=constant($game->sprache("TEXT14")).' '.$comp['value_7'].'<br>';
+if ($comp['value_8']!=0) $text.=constant($game->sprache("TEXT15")).' '.$comp['value_8'].'<br>';
+if ($comp['value_9']!=0) $text.=constant($game->sprache("TEXT16")).' '.$comp['value_9'].'<br>';
+if ($comp['value_10']!=0) $text.=constant($game->sprache("TEXT17")).' '.$comp['value_10'].'<br>';
+if ($comp['value_11']!=0) $text.=constant($game->sprache("TEXT18")).' '.$comp['value_11'].'<br>';
+if ($comp['value_12']!=0) $text.=constant($game->sprache("TEXT19")).' '.$comp['value_12'].'<br>';
+if ($comp['value_14']!=0) $text.=constant($game->sprache("TEXT20")).' '.$comp['value_14'].'<br>';
+if ($comp['value_13']!=0) $text.=constant($game->sprache("TEXT21")).' '.$comp['value_13'].'<br>';
 
 
 return $text;
@@ -171,9 +173,9 @@ global $SHIP_TORSO,$SHIP_TORSO_DATA, $UNIT_DESCRIPTION, $UNIT_DATA, $UNIT_NAME,$
 
 
 
-$shiplist[0]='<option value="0" selected="selected">Kein Schiff</option>';
-$shiplist[1]='<option value="0" selected="selected">Kein Schiff</option>';
-$shiplist[2]='<option value="0" selected="selected">Kein Schiff</option>';
+$shiplist[0]='<option value="0" selected="selected">'.constant($game->sprache("TEXT24")).'</option>';
+$shiplist[1]='<option value="0" selected="selected">'.constant($game->sprache("TEXT24")).'</option>';
+$shiplist[2]='<option value="0" selected="selected">'.constant($game->sprache("TEXT24")).'</option>';
 $templatequery=$db->query('SELECT * FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (removed=0) ORDER BY ship_torso ASC, name ASC');
 while (($template=$db->fetchrow($templatequery))==true)
 {
@@ -184,9 +186,9 @@ while (($template=$db->fetchrow($templatequery))==true)
 
 $game->out('
 <center><center><table border=0 cellpadding=1 cellspacing=1 width=600 background="'.$game->GFX_PATH.'template_bg3.jpg"  class="border_grey"><tr><td>
-<b><u><center>Templates vergleichen:</u></center></b><br>
+<b><u><center>'.constant($game->sprache("TEXT2")).':</u></center></b><br>
 <form method="post" action="'.parse_link('a=ship_template&view=compare').'">
-<center><input class="button_nosize" type="submit" name="none" value="Aktualisieren"></center>
+<center><input class="button_nosize" type="submit" name="none" value="'.constant($game->sprache("TEXT23")).'"></center>
 <center>
 <table border=0 cellpadding=1 cellspacing=1>
 <tr valign=top>
@@ -202,7 +204,7 @@ for ($t=0; $t<3; $t++)
 for ($t=0; $t<3; $t++)
 {
 	
-	if (!isset($_REQUEST['ship'.$t])) $game->out('<td width=200><center><span class="sub_caption">Kein Schiff</span><br><select name="ship'.$t.'">'.$shiplist[$t].'</select></center></td>');
+	if (!isset($_REQUEST['ship'.$t])) $game->out('<td width=200><center><span class="sub_caption">'.constant($game->sprache("TEXT24")).'</span><br><select name="ship'.$t.'">'.$shiplist[$t].'</select></center></td>');
 	else
 	{
 		$templatequery=$db->query('SELECT * FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (removed=0) AND (id='.(int)$_POST['ship'.$t].')ORDER BY ship_torso ASC, name ASC');
@@ -212,9 +214,9 @@ for ($t=0; $t<3; $t++)
 			<table border=0 cellpadding=0 cellspacing=0 class="border_grey"><tr><td width=200>
 			<center>
 			<span class="sub_caption2">'.$template['name'].'</span><br><select name="ship'.$t.'">'.$shiplist[$t].'</select></center><br>
-			<u>Schiffsklasse:</u><br>
+			<u>'.constant($game->sprache("TEXT25")).'</u><br>
 			<i>'.$SHIP_TORSO[$game->player['user_race']][$template['ship_torso']][29].'</i>
-			<br><br><u>Komponenten:</u><br>');
+			<br><br><u>'.constant($game->sprache("TEXT26")).'</u><br>');
 		
 		
 			
@@ -223,7 +225,7 @@ for ($t=0; $t<3; $t++)
 if ($template['component_'.($tt+1)]>=0)
 	{
 		$game->out('-&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($ship_components[$game->player['user_race']][$tt][$template['component_'.($tt+1)]]).'\', CAPTION, \''.$ship_components[$game->player['user_race']][$tt][$template['component_'.($tt+1)]]['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$ship_components[$game->player['user_race']][$tt][$template['component_'.($tt+1)]]['name'].'</a><br>');
-	} else $game->out('- Nicht belegt<br>');
+	} else $game->out(constant($game->sprache("TEXT27")));
 			}
 			/* Alt das Problem war das nur > gemacht wurde aber man >= machen muss
 			for ($tt=0; $tt<10; $tt++)
@@ -235,44 +237,44 @@ if ($template['component_'.($tt+1)]>=0)
 			} */
 			
 			
-			$game->out('<br><u>Schiffsdaten:</u><br>');
+			$game->out('<br><u>'.constant($game->sprache("TEXT28")).'</u><br>');
 
-			$game->out('<u>L. Waffen:</u> <b>'.PutValue($template_array,'value_1',$t).'</b><br>');
-			$game->out('<u>Schw. Waffen:</u> <b>'.PutValue($template_array,'value_2',$t).'</b><br>');
-				$game->out('<u>Pl. Waffen:</u> <b>'.PutValue($template_array,'value_3',$t).'</b><br>');
-			$game->out('<u>Schildstärke:</u> <b>'.PutValue($template_array,'value_4',$t).'</b><br>');
-			$game->out('<u>Hülle (HP):</u> <b>'.PutValue($template_array,'value_5',$t).'</b><br>');
-			$game->out('<u>Reaktion:</u> <b>'.PutValue($template_array,'value_6',$t).'</b><br>');
-			$game->out('<u>Bereitschaft:</u> <b>'.PutValue($template_array,'value_7',$t).'</b><br>');
-			$game->out('<u>Wendigkeit:</u> <b>'.PutValue($template_array,'value_8',$t).'</b><br>');
-			$game->out('<u>Erfahrung:</u> <b>'.PutValue($template_array,'value_9',$t).'</b><br>');
-			$game->out('<u>Warp:</u> <b>'.PutValue($template_array,'value_10',$t).'</b><br>');
-			$game->out('<u>Sensoren:</u> <b>'.PutValue($template_array,'value_11',$t).'</b><br>');
-			$game->out('<u>Tarnung:</u> <b>'.PutValue($template_array,'value_12',$t).'</b><br>');
-			$game->out('<u>Energieverbrauch:</u> <b>'.PutValue($template_array,'value_14',$t).'/'.PutValue($template_array,'value_13',$t).'</b><br>');
+			$game->out('<u>'.constant($game->sprache("TEXT8")).'</u> <b>'.PutValue($template_array,'value_1',$t).'</b><br>');
+			$game->out('<u>'.constant($game->sprache("TEXT9")).'</u> <b>'.PutValue($template_array,'value_2',$t).'</b><br>');
+			$game->out('<u>'.constant($game->sprache("TEXT10")).'</u> <b>'.PutValue($template_array,'value_3',$t).'</b><br>');
+			$game->out('<u>'.constant($game->sprache("TEXT11")).'</u> <b>'.PutValue($template_array,'value_4',$t).'</b><br>');
+			$game->out('<u>'.constant($game->sprache("TEXT12")).'</u> <b>'.PutValue($template_array,'value_5',$t).'</b><br>');
+			$game->out('<u>'.constant($game->sprache("TEXT13")).'</u> <b>'.PutValue($template_array,'value_6',$t).'</b><br>');
+			$game->out('<u>'.constant($game->sprache("TEXT14")).'</u> <b>'.PutValue($template_array,'value_7',$t).'</b><br>');
+			$game->out('<u>'.constant($game->sprache("TEXT15")).'</u> <b>'.PutValue($template_array,'value_8',$t).'</b><br>');
+			$game->out('<u>'.constant($game->sprache("TEXT16")).'</u> <b>'.PutValue($template_array,'value_9',$t).'</b><br>');
+			$game->out('<u>'.constant($game->sprache("TEXT17")).'</u> <b>'.PutValue($template_array,'value_10',$t).'</b><br>');
+			$game->out('<u>'.constant($game->sprache("TEXT18")).'</u> <b>'.PutValue($template_array,'value_11',$t).'</b><br>');
+			$game->out('<u>'.constant($game->sprache("TEXT19")).'</u> <b>'.PutValue($template_array,'value_12',$t).'</b><br>');
+			$game->out('<u>'.constant($game->sprache("TEXT29")).'</u> <b>'.PutValue($template_array,'value_14',$t).'/'.PutValue($template_array,'value_13',$t).'</b><br>');
 		
 			$game->out('<br><br>
-			<u>Ressourcen + Standardcrew</u>:<br>
+			<u>'.constant($game->sprache("TEXT30")).'</u><br>
 			<img src="'.$game->GFX_PATH.'menu_metal_small.gif"><b id="price1">'.$template['resource_1'].'</b>
 			&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif"><b id="price2">'.$template['resource_2'].'</b>
 			&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif"><b id="price3">'.$template['resource_3'].'</b><br>
 			<img src="'.$game->GFX_PATH.'menu_worker_small.gif"><b id="price4">'.$template['resource_4'].'</b>
 			&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit5_small.gif"><b id="price10">'.$template['unit_5'].'</b>
 			&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit6_small.gif"><b id="price11">'.$template['unit_6'].'</b><br><br>
-			<u>Bauzeit</u>:<br><b id="price5">'.($template['buildtime']*TICK_DURATION).'</b> Minuten<br><br>
-			<u>Minimale Besatzung</u>:<br>
+			<u>'.constant($game->sprache("TEXT5")).'</u><br><b id="price5">'.($template['buildtime']*TICK_DURATION).'</b> '.constant($game->sprache("TEXT6")).'<br><br>
+			<u>'.constant($game->sprache("TEXT31")).'</u><br>
 			<img src="'.$game->GFX_PATH.'menu_unit1_small.gif"><b id="price6">'.$template['min_unit_1'].'</b>
 			&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit2_small.gif"><b id="price7">'.$template['min_unit_2'].'</b>
 			&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit3_small.gif"><b id="price8">'.$template['min_unit_3'].'</b>
 			&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit4_small.gif"><b id="price9">'.$template['min_unit_4'].'</b>
-			<br><u>Beschreibung:</u><br>
+			<br><u>'.constant($game->sprache("TEXT32")).'</u><br>
 			'.wordwrap($template['description'], 40,"<br>",1 ).'<br>
 
 			</td></tr></table>
 			</td>
 			');
 		}
-		else $game->out('<td width=200><center><span class="sub_caption">Kein Schiff</span><br><select name="ship'.$t.'">'.$shiplist[$t].'</select></center></td>');
+		else $game->out('<td width=200><center><span class="sub_caption">'.constant($game->sprache("TEXT24")).'</span><br><select name="ship'.$t.'">'.$shiplist[$t].'</select></center></td>');
 	}
 
 }
@@ -292,17 +294,17 @@ global $db;
 global $game;
 global $SHIP_TORSO,$SHIP_TORSO_DATA, $UNIT_DESCRIPTION, $UNIT_DATA, $UNIT_NAME,$NEXT_TICK,$ACTUAL_TICK;
 
-$ship_class = array('Scout', 'Transporter', 'Koloschiff', 'Fregatte', 'Fregatte', 'L. Kreuzer', 'L. Kreuzer', 'Kreuzer', 'Kreuzer', 'S. Kreuzer', 'S. Kreuzer', 'Schlachtschiff', 'Orb.'); 
+$ship_class = array(constant($game->sprache("TEXT33")), constant($game->sprache("TEXT34")), constant($game->sprache("TEXT35")), constant($game->sprache("TEXT36")), constant($game->sprache("TEXT36")), constant($game->sprache("TEXT37")), constant($game->sprache("TEXT37")), constant($game->sprache("TEXT38")), constant($game->sprache("TEXT38")), constant($game->sprache("TEXT39")), constant($game->sprache("TEXT39")), constant($game->sprache("TEXT40")), constant($game->sprache("TEXT41"))); 
 
 $game->out('
 <center><table border=0 cellpadding=2 cellspacing=2 width=475 class="style_outer"><tr><td>
 <center>
-<span class="sub_caption">Template erstellen:</span>
-<br><span class="sub_caption2">(1/3) Schiffsrumpf wählen</span>
+<span class="sub_caption">'.constant($game->sprache("TEXT1")).':</span>
+<br><span class="sub_caption2">(1/3) '.constant($game->sprache("TEXT42")).'</span>
 </center><br><table border=0 cellpadding=2 cellspacing=2 width=475 class="style_inner"><tr><td>
 <form method="post" action="'.parse_link('a=ship_template&view=create').'">');
 
-$game->out('<table border=0 cellpadding=2 cellspacing=2><tr><td>&nbsp;</td><td align="left" width=150><b>Schiff</b></td><td width=100><b>Klasse</b></td><td width=50 align="center"><b>Rumpf</b></td><td width=75 align="center"><b>Glob. Pkt.</b></td><td width=75 align="center"><b>Lok. Pkt.</b></td><td width=50 align="center"><b>Baubar?</b></td></tr>');
+$game->out('<table border=0 cellpadding=2 cellspacing=2><tr><td>&nbsp;</td><td align="left" width=150><b>'.constant($game->sprache("TEXT43")).'</b></td><td width=100><b>'.constant($game->sprache("TEXT44")).'</b></td><td width=50 align="center"><b>'.constant($game->sprache("TEXT45")).'</b></td><td width=75 align="center"><b>'.constant($game->sprache("TEXT46")).'</b></td><td width=75 align="center"><b>'.constant($game->sprache("TEXT47")).'</b></td><td width=50 align="center"><b>'.constant($game->sprache("TEXT48")).'</b></td></tr>');
 
 for ($t=0; $t<count($SHIP_TORSO[$game->player['user_race']]); $t++)
 {
@@ -482,7 +484,7 @@ $te=$t+1; //Ausgabe Variable für den Rumpf
 
 $game->out('
 <tr><td>'.( (GlobalTorsoReq($t)<=$game->player['user_points']) ? '<input type="radio" name="ship_torso" value="'.$t.'">' : '<input type="radio" name="ship_torso" value="-1" disabled="disabled">' ).'</td><td><a href="javascript:void(0);" onmouseover="return overlib(\''.CreateShipInfoText($SHIP_TORSO[$game->player['user_race']][$t]).'\', CAPTION, \''.$SHIP_TORSO[$game->player['user_race']][$t][29].'\', 
-WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$SHIP_TORSO[$game->player['user_race']][$t][29].'</a>&nbsp;</td><td>'.$ship_class[$t].'</td><td align="center">'.$te.'</td><td align="center">'.( (GlobalTorsoReq($t)<=$game->player['user_points']) ? '<span style="color: #00FF00;"><b>'.GlobalTorsoReq($t).'</b></span>' : '<span style="color: #FF0000;"><b>'.GlobalTorsoReq($t).'</b></span>' ).'</td><td align="center">'.( ($game->planet['planet_points']<LocalTorsoReq($t)) ? '<span style="color: #FF0000;"><b>'.LocalTorsoReq($t).'</b></span>' : '<span style="color: #00FF00;"><b>'.LocalTorsoReq($t).'</b></span>' ).'</td><td align="center">'.( (GlobalTorsoReq($t)<=$game->player['user_points'] && $game->planet['planet_points']>=LocalTorsoReq($t)) ? '<span style="color: #00FF00;"><b>Ja</b></span>' : '<span style="color: #FF0000;"><b>Nein</b></span>' ).'</td></tr>
+WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$SHIP_TORSO[$game->player['user_race']][$t][29].'</a>&nbsp;</td><td>'.$ship_class[$t].'</td><td align="center">'.$te.'</td><td align="center">'.( (GlobalTorsoReq($t)<=$game->player['user_points']) ? '<span style="color: #00FF00;"><b>'.GlobalTorsoReq($t).'</b></span>' : '<span style="color: #FF0000;"><b>'.GlobalTorsoReq($t).'</b></span>' ).'</td><td align="center">'.( ($game->planet['planet_points']<LocalTorsoReq($t)) ? '<span style="color: #FF0000;"><b>'.LocalTorsoReq($t).'</b></span>' : '<span style="color: #00FF00;"><b>'.LocalTorsoReq($t).'</b></span>' ).'</td><td align="center">'.( (GlobalTorsoReq($t)<=$game->player['user_points'] && $game->planet['planet_points']>=LocalTorsoReq($t)) ? '<span style="color: #00FF00;"><b>'.constant($game->sprache("TEXT49")).'</b></span>' : '<span style="color: #FF0000;"><b>'.constant($game->sprache("TEXT50")).'</b></span>' ).'</td></tr>
 
 ');
 
@@ -491,8 +493,8 @@ WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$SHIP_TORSO[$gam
 
 $game->out('</table></select>
 <center><br>
-<input class="button_nosize" type="submit" name="step1" value="(1/3) Zurück..." disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-<input class="button_nosize" type="submit" name="step2" value="(2/3) Weiter...">
+<input class="button_nosize" type="submit" name="step1" value="(1/3) '.constant($game->sprache("TEXT51")).'" disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<input class="button_nosize" type="submit" name="step2" value="(2/3) '.constant($game->sprache("TEXT52")).'">
 </form></td></tr></table></td></tr></table>');
 
 }
@@ -508,7 +510,7 @@ global $ship_components;
 //$game->out('<br><b>Debuggen: Diese Meldung müsst ihr nicht melden - Secius // Torso:'.$_POST['ship_torso']);
 if((!isset($_POST['ship_torso'])) || (empty($_POST['ship_torso'])  && $game->player['user_race']==8))
 {
-$game->out('<br><b>Fehler: Du hast keinen Schiffstyp ausgwählt - du musst schon wo drauf klicken</b><br>'.Show_Torso());
+$game->out('<br><b>'.constant($game->sprache("TEXT53")).'</b><br>'.Show_Torso());
 return;
 }
 $game->out('
@@ -857,7 +859,7 @@ skill[13]+='.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][27].'
 skill[12]+='.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][26].';
 if (skill[13]>skill[12])
 {
-alert("Der Energiebedarf des Schiffes ist höher als dessen Leistungsfähigkeit ("+skill[13]+"/"+skill[12]+")!");
+alert("'.constant($game->sprache("TEXT54")).' ("+skill[13]+"/"+skill[12]+")!");
 return false;
 }
 
@@ -865,7 +867,7 @@ return false;
 if (getRadioByValue(document.build_2.c1,91).checked)
 if (!getRadioByValue(document.build_2.c6,98).checked)
 {
-alert("Um \"Genänderungsimpuls\" einsetzen zu kï¿½nen, müssen \"Atomare Sensoren\" installiert sein.");
+alert("'.constant($game->sprache("TEXT55")).'");
 return false;
 }
 
@@ -878,8 +880,8 @@ return true;
 <center><table border=0 cellpadding=2 cellspacing=2 width=500 class="style_outer">
 <tr><td>
 <center>
-<span class="sub_caption">Template erstellen:</span>
-<br><span class="sub_caption2">(2/3) Komponenten wählen</span><br>
+<span class="sub_caption">'.constant($game->sprache("TEXT1")).':</span>
+<br><span class="sub_caption2">(2/3) '.constant($game->sprache("TEXT56")).'</span><br>
 </center>
 ');
 
@@ -901,8 +903,8 @@ $game->out('
 <span class="text_large">'.$components['name'].'</span><br>
 ');
 $part1='<input type="radio" name="c'.($key+1).'" value="-1" checked="checked"';
-$part2='onClick ="return UpdateCompleteCategory'.($key+1).'(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,\'-\');">Keine Komponente';
-$game->out($part1.' '.$part2.' [<a href="javascript:void(0);" onclick="return overlib(\'\', CAPTION, \'Keine Komponente\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">Info</a>]<br>');
+$part2='onClick ="return UpdateCompleteCategory'.($key+1).'(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,\'-\');">'.constant($game->sprache("TEXT57"));
+$game->out($part1.' '.$part2.' [<a href="javascript:void(0);" onclick="return overlib(\'\', CAPTION, \''.constant($game->sprache("TEXT57")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.constant($game->sprache("TEXT58")).'</a>]<br>');
 
 for ($t=0; $t<count($components)-1; $t++)
 {
@@ -912,7 +914,7 @@ if (ComponentMetRequirements($key,$t,$components[$t],$_POST['ship_torso']))
 $comp=$components[$t];
 $part1='<input type="radio" name="c'.($key+1).'" value="'.$t.'"';
 $part2='onClick ="return UpdateCompleteCategory'.($key+1).'('.$comp['resource_1'].','.$comp['resource_2'].','.$comp['resource_3'].','.$comp['resource_4'].','.($comp['buildtime']*TICK_DURATION).','.$comp['unit_1'].','.$comp['unit_2'].','.$comp['unit_3'].','.$comp['unit_4'].','.$comp['unit_5'].','.$comp['unit_6'].','.$comp['value_1'].','.$comp['value_2'].','.$comp['value_3'].','.$comp['value_4'].','.$comp['value_5'].','.$comp['value_6'].','.$comp['value_7'].','.$comp['value_8'].','.$comp['value_9'].','.$comp['value_10'].','.$comp['value_11'].','.$comp['value_12'].','.$comp['value_13'].','.$comp['value_14'].','.$comp['value_15'].',\''.$comp['name'].'\');">'.$comp['name'].'';
-$game->out($part1.' '.$part2.' [<a href="javascript:void(0);" onclick="return overlib(\''.CreateInfoText($comp).'\', CAPTION, \''.$comp['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">Info</a>]<br>');
+$game->out($part1.' '.$part2.' [<a href="javascript:void(0);" onclick="return overlib(\''.CreateInfoText($comp).'\', CAPTION, \''.$comp['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.constant($game->sprache("TEXT58")).'</a>]<br>');
 }
 
 }
@@ -927,9 +929,9 @@ $game->out('
 <table border=0 cellpadding=0 cellspacing=0 class="style_inner">
 <tr valign=top>
 <td width=240>
-<u><span class="sub_caption2">Schiffsklasse:</u>&nbsp;'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][29].'</span><br>
+<u><span class="sub_caption2">'.constant($game->sprache("TEXT25")).'</u>&nbsp;'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][29].'</span><br>
 <img src="'.FIXED_GFX_PATH.'ship'.$game->player['user_race'].'_'.$_POST['ship_torso'].'.jpg"><br><br>
-<span class="text_large">Komponenten:</span><br>
+<span class="text_large">'.constant($game->sprache("TEXT26")).'</span><br>
 <i id="comp1">-</i><br>
 <i id="comp2">-</i><br>
 <i id="comp3">-</i><br>
@@ -942,44 +944,44 @@ $game->out('
 <i id="comp10">-</i>
 
 <br><br>
-<span class="text_large">Kosten:</span><br>
-<u>Ressourcen + Standardcrew</u>:<br><img src="'.$game->GFX_PATH.'menu_metal_small.gif"><b id="price1">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][0].'</b>
+<span class="text_large">'.constant($game->sprache("TEXT4")).'</span><br>
+<u>'.constant($game->sprache("TEXT30")).'</u><br><img src="'.$game->GFX_PATH.'menu_metal_small.gif"><b id="price1">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][0].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif"><b id="price2">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][1].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif"><b id="price3">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][2].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_worker_small.gif"><b id="price4">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][30].'</b><br>
 <img src="'.$game->GFX_PATH.'menu_unit5_small.gif"><b id="price10">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][11].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit6_small.gif"><b id="price11">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][12].'</b><br>
-<u>Bauzeit</u>:<b id="price5">'.($SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][13]*TICK_DURATION).'</b> Minuten<br>
-<u>Minimale Besatzung</u>:<br>
+<u>'.constant($game->sprache("TEXT5")).'</u><b id="price5">'.($SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][13]*TICK_DURATION).'</b> '.constant($game->sprache("TEXT6")).'<br>
+<u>'.constant($game->sprache("TEXT31")).'</u><br>
 <img src="'.$game->GFX_PATH.'menu_unit1_small.gif"><b id="price6">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][3].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit2_small.gif"><b id="price7">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][4].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit3_small.gif"><b id="price8">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][5].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit4_small.gif"><b id="price9">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][6].'</b><br><br>
-<u>Maximale Besatzung</u>:<br>
+<u>'.constant($game->sprache("TEXT59")).'</u><br>
 <img src="'.$game->GFX_PATH.'menu_unit1_small.gif"><b id="price6a">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][7].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit2_small.gif"><b id="price7a">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][8].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit3_small.gif"><b id="price8a">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][9].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit4_small.gif"><b id="price9a">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][10].'</b>
 <br><br>
-<span class="text_large">Daten:</span><br>
+<span class="text_large">'.constant($game->sprache("TEXT60")).'</span><br>
 <table border=0 cellpadding=0 cellspacing=0><tr valign=top><td width=125>
-<u>L. Waffen</u>: <b id="skill1">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][14].'</b><br>
-<u>Schw. Waffen</u>: <b id="skill2">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][15].'</b><br>
-<u>Pl. Waffen</u>: <b id="skill3">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][16].'</b><br>
-<u>Schildstärke</u>: <b id="skill4">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][17].'</b><br>
-<u>Hülle</u>: <b id="skill5">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][18].'</b><br>
+<u>'.constant($game->sprache("TEXT8")).'</u> <b id="skill1">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][14].'</b><br>
+<u>'.constant($game->sprache("TEXT9")).'</u> <b id="skill2">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][15].'</b><br>
+<u>'.constant($game->sprache("TEXT10")).'</u> <b id="skill3">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][16].'</b><br>
+<u>'.constant($game->sprache("TEXT11")).'</u> <b id="skill4">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][17].'</b><br>
+<u>'.constant($game->sprache("TEXT12")).'</u> <b id="skill5">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][18].'</b><br>
 </td><td width=125>
-<u>Reaktion</u>: <b id="skill6">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][19].'</b><br>
-<u>Bereitschaft</u>: <b id="skill7">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][20].'</b><br>
-<u>Wendigkeit</u>: <b id="skill8">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][21].'</b><br>
-<u>Erfahrung</u>: <b id="skill9">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][22].'</b><br>
+<u>'.constant($game->sprache("TEXT13")).'</u> <b id="skill6">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][19].'</b><br>
+<u>'.constant($game->sprache("TEXT14")).'</u> <b id="skill7">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][20].'</b><br>
+<u>'.constant($game->sprache("TEXT15")).'</u> <b id="skill8">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][21].'</b><br>
+<u>'.constant($game->sprache("TEXT16")).'</u> <b id="skill9">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][22].'</b><br>
 </td></tr>
 <tr valign=top><td width=100>
-<u>Warp</u>: <b id="skill10">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][23].'</b><br>
-<u>Sensoren</u>: <b id="skilla1">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][24].'</b><br>
-<u>Tarnung</u>: <b id="skilla2">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][25].'</b><br>
+<u>'.constant($game->sprache("TEXT17")).'</u> <b id="skill10">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][23].'</b><br>
+<u>'.constant($game->sprache("TEXT18")).'</u> <b id="skilla1">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][24].'</b><br>
+<u>'.constant($game->sprache("TEXT19")).'</u> <b id="skilla2">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][25].'</b><br>
 </td><td width=100>
-<u>Energiestatus</u>:<br><b id="skilla4">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][27].'</b>/<b id="skilla3">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][26].'</b></td></tr></table>
+<u>'.constant($game->sprache("TEXT61")).'</u><br><b id="skilla4">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][27].'</b>/<b id="skilla3">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][26].'</b></td></tr></table>
 </center></td>
 </tr></table></center>
 
@@ -987,8 +989,8 @@ $game->out('
 <input type=hidden name="ship_torso" value="'.$_POST['ship_torso'].'">
 <br>
 <br><center>
-<input class="button_nosize" type="submit" name="step1" value="(1/3) Zurück...">&nbsp;&nbsp;&nbsp;
-<input class="button_nosize" onClick="return CheckEnergy()" type="submit" name="step3" value="(3/3) Weiter...">
+<input class="button_nosize" type="submit" name="step1" value="(1/3) '.constant($game->sprache("TEXT51")).'">&nbsp;&nbsp;&nbsp;
+<input class="button_nosize" onClick="return CheckEnergy()" type="submit" name="step3" value="(3/3) '.constant($game->sprache("TEXT52")).'">
 </form></td></tr></table>');
 
 
@@ -1013,8 +1015,8 @@ $_POST[($t)]=-1;
 $game->out('
 <center><table border=0 cellpadding=2 cellspacing=2 width=450 class="style_outer"><tr><td>
 <center>
-<span class="sub_caption">Template erstellen:</span>
-<br><span class="sub_caption2">(3/3) Abschließen</span>
+<span class="sub_caption">'.constant($game->sprache("TEXT1")).':</span>
+<br><span class="sub_caption2">(3/3) '.constant($game->sprache("TEXT62")).'</span>
 </center><br><table border=0 cellpadding=2 cellspacing=2 width=450 class="style_inner"><tr><td>
 <form method="post" action="'.parse_link('a=ship_template&view=create').'">');
 
@@ -1023,7 +1025,7 @@ if ($game->player['user_race']==9) // Test for the decoy ship:
 {
 if (($_POST[3])>=0 && ($_POST[8])>=0)
 {
-	$game->out('<center><span class="sub_caption2">Achtung:<br>Die Komponente '.$ship_components[$game->player['user_race']][3][$_POST[3]]['name'].' wurde entfernt, weil nur eine Decoy Maske installiert werden kann.<br><br></span></center>');
+	$game->out('<center><span class="sub_caption2">'.constant($game->sprache("TEXT63")).' '.$ship_components[$game->player['user_race']][3][$_POST[3]]['name'].' '.constant($game->sprache("TEXT64")).'<br><br></span></center>');
     	$_POST[3]=0;
 }
 }
@@ -1031,20 +1033,20 @@ if (($_POST[3])>=0 && ($_POST[8])>=0)
 $game->out('
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr>
-<td width=25%><span class="text_large">Templatename:</span></td>
-<td width=75%><input style="width: 200px;" class="field" type="text" name="ship_name" value="Unbekannt" maxlength="16"></td>
+<td width=25%><span class="text_large">'.constant($game->sprache("TEXT65")).'</span></td>
+<td width=75%><input style="width: 200px;" class="field" type="text" name="ship_name" value="'.constant($game->sprache("TEXT66")).'" maxlength="16"></td>
 </tr>
 <tr>
-<td width=25% valign=top><span class="text_large">Schiffsbeschreibung:</td>
+<td width=25% valign=top><span class="text_large">'.constant($game->sprache("TEXT67")).'</td>
 <td><textarea name="ship_description" class="textfield" rows="5" cols="40 style="width: 300px;""></textarea></td>
 </tr>
 <tr>
-<td width=25% valign=top><span class="text_large">Bild:</td>
+<td width=25% valign=top><span class="text_large">'.constant($game->sprache("TEXT68")).'</td>
 <td width=75%><img src='.FIXED_GFX_PATH.'ship'.$game->player['user_race'].'_'.$_POST['ship_torso'].'.jpg><br></td>
 </tr>
 
 <tr>
-<td width=25% valign=top><span class="text_large">Komponenten:</td>
+<td width=25% valign=top><span class="text_large">'.constant($game->sprache("TEXT26")).'</td>
 <td width=75%>');
 
 for ($x=0; $x<15; $x++)
@@ -1112,49 +1114,49 @@ $price[14]+=$comp['unit_4'];
 $price[9]+=$comp['unit_5'];
 $price[10]+=$comp['unit_6'];
 
-} else $game->out('- Nicht belegt<br>');
+} else $game->out(constant($game->sprache("TEXT27")));
 }
 
 if ($value[9]>9.99) $value[9]=9.99;
 
 $game->out('<br></td></tr>
 <tr>
-<td width=25% valign=top><span class="text_large">Schiffsdaten:</td>
+<td width=25% valign=top><span class="text_large">'.constant($game->sprache("TEXT28")).'</td>
 <td width=75%>');
 
 
-$game->out('<u>L. Waffen:</u> <b>'.$value[0].'</b><br>');
-$game->out('<u>Schw. Waffen:</u> <b>'.$value[1].'</b><br>');
-$game->out('<u>Pl. Waffen:</u> <b>'.$value[2].'</b><br>');
-$game->out('<u>Schildstärke:</u> <b>'.$value[3].'</b><br>');
-$game->out('<u>Hülle (HP):</u> <b>'.$value[4].'</b><br>');
-$game->out('<u>Reaktion:</u> <b>'.$value[5].'</b><br>');
-$game->out('<u>Bereitschaft:</u> <b>'.$value[6].'</b><br>');
-$game->out('<u>Wendigkeit:</u> <b>'.$value[7].'</b><br>');
-$game->out('<u>Erfahrung:</u> <b>'.$value[8].'</b><br>');
-$game->out('<u>Warp:</u> <b>'.$value[9].'</b><br>');
-$game->out('<u>Sensoren:</u> <b>'.$value[10].'</b><br>');
-$game->out('<u>Tarnung:</u> <b>'.$value[11].'</b><br>');
-$game->out('<u>Energieverbrauch:</u> <b>'.$value[13].'/'.$value[12].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT8")).'</u> <b>'.$value[0].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT9")).'</u> <b>'.$value[1].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT10")).'</u> <b>'.$value[2].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT11")).'</u> <b>'.$value[3].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT12")).'</u> <b>'.$value[4].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT13")).'</u> <b>'.$value[5].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT14")).'</u> <b>'.$value[6].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT15")).'</u> <b>'.$value[7].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT16")).'</u> <b>'.$value[8].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT17")).'</u> <b>'.$value[9].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT18")).'</u> <b>'.$value[10].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT19")).'</u> <b>'.$value[11].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT29")).'</u> <b>'.$value[13].'/'.$value[12].'</b><br>');
 
 $game->out('<br></td></tr>
 <tr>
-<td width=25% valign=top><span class="text_large">Baukosten:</td>
+<td width=25% valign=top><span class="text_large">'.constant($game->sprache("TEXT69")).'</td>
 <td width=75%>
-<u>Ressourcen + Standardcrew</u>:<br><img src="'.$game->GFX_PATH.'menu_metal_small.gif"><b id="price1">'.$price[0].'</b>
+<u>'.constant($game->sprache("TEXT30")).'</u><br><img src="'.$game->GFX_PATH.'menu_metal_small.gif"><b id="price1">'.$price[0].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif"><b id="price2">'.$price[1].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif"><b id="price3">'.$price[2].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_worker_small.gif"><b id="price4">'.$price[3].'</b><br>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit5_small.gif"><b id="price10">'.$price[9].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit6_small.gif"><b id="price11">'.$price[10].'</b><br><br>
-<u>Bauzeit</u>:<br><b id="price5">'.($price[4]*TICK_DURATION).'</b> Minuten<br><br>
-<u>Minimale Besatzung</u>:<br>
+<u>'.constant($game->sprache("TEXT5")).'</u><br><b id="price5">'.($price[4]*TICK_DURATION).'</b> '.constant($game->sprache("TEXT6")).'<br><br>
+<u>'.constant($game->sprache("TEXT31")).'</u><br>
 <img src="'.$game->GFX_PATH.'menu_unit1_small.gif"><b id="price6">'.$price[5].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit2_small.gif"><b id="price7">'.$price[6].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit3_small.gif"><b id="price8">'.$price[7].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit4_small.gif"><b id="price9">'.$price[8].'</b>
 <br><br>
-<u>Maximale Besatzung</u>:<br>
+<u>'.constant($game->sprache("TEXT59")).'</u><br>
 <img src="'.$game->GFX_PATH.'menu_unit1_small.gif"><b id="price6a">'.$price[11].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit2_small.gif"><b id="price7a">'.$price[12].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit3_small.gif"><b id="price8a">'.$price[13].'</b>
@@ -1167,8 +1169,8 @@ $game->out('<br></td></tr>
 <input type=hidden name="ship_torso" value="'.$_POST['ship_torso'].'">
 
 <br><center>
-<input class="button_nosize" type="submit" name="step2" value="(2/3) Zurück...">&nbsp;&nbsp;&nbsp;
-<input class="button_nosize" type="submit" name="step4" value="Abschließen">
+<input class="button_nosize" type="submit" name="step2" value="(2/3) '.constant($game->sprache("TEXT51")).'">&nbsp;&nbsp;&nbsp;
+<input class="button_nosize" type="submit" name="step4" value="'.constant($game->sprache("TEXT62")).'">
 </form></td></tr></table></center><br>');
 $game->out('</td></tr></table>');
 }
@@ -1209,15 +1211,15 @@ $_POST['ship_description']=addslashes(htmlspecialchars($_POST['ship_description'
 
 $_POST['ship_torso']=(int)$_POST['ship_torso'];
 if (GlobalTorsoReq($_POST['ship_torso'])>$game->player['user_points']) exit(0);
-if (SpecialRequirements()!=1) {echo 'Abbruch: "Genänderungsimpuls" kann nur in Verbindung mit den "Atomaren Sensoren" in ein Template gebaut werden.';exit(0);}
+if (SpecialRequirements()!=1) {echo constant($game->sprache("TEXT70"));exit(0);}
 
 
 
 $game->out('
 <center><table border=0 cellpadding=2 cellspacing=2 width=450 class="style_outer"><tr><td>
 <center>
-<span class="sub_caption">Template erstellen:</span>
-<br><span class="sub_caption2">Template sichern</span>
+<span class="sub_caption">'.constant($game->sprache("TEXT1")).':</span>
+<br><span class="sub_caption2">'.constant($game->sprache("TEXT71")).'</span>
 </center><br><table border=0 cellpadding=2 cellspacing=2 width=450 class="style_inner"><tr><td>
 ');
 
@@ -1225,15 +1227,15 @@ $game->out('
 $game->out('
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr>
-<td width=25% valign=top><span class="text_large">Name:</td>
+<td width=25% valign=top><span class="text_large">'.constant($game->sprache("TEXT72")).'</td>
 <td width=75%><b>'.$_POST['ship_name'].'</b><br><br></td>
 </tr>
 <tr>
-<td width=25% valign=top><span class="text_large">Beschreibung:</td>
+<td width=25% valign=top><span class="text_large">'.constant($game->sprache("TEXT32")).'</td>
 <td>'.wordwrap(nl2br(stripslashes($_POST['ship_description'])), 40,"<br>",1 ).'<br><br></td>
 </tr>
 <tr>
-<td width=25% valign=top><span class="text_large">Bild:</td>
+<td width=25% valign=top><span class="text_large">'.constant($game->sprache("TEXT68")).'</td>
 <td width=75%><img src='.FIXED_GFX_PATH.'ship'.$game->player['user_race'].'_'.$_POST['ship_torso'].'.jpg></td>
 </tr>
 ');
@@ -1305,7 +1307,7 @@ $price[10]+=$comp['unit_6'];
 }
 }
 
-if ($value[4]==0 || $price[4]==0) {echo 'Cheatversuch - Aufgezeichnet und Administration informiert!';exit(0);}
+if ($value[4]==0 || $price[4]==0) {echo constant($game->sprache("TEXT73"));exit(0);}
 
 // Energieverbrauch checken:
 if ($value[13]>$value[12]) exit(0);
@@ -1316,7 +1318,7 @@ if ($value[9]>9.99) $value[9]=9.99;
 $game->out('
 </table>
 <br>
-<center><span class="sub_caption2">Das Template wurde deiner Liste hinzugefgt</span></center>
+<center><span class="sub_caption2">'.constant($game->sprache("TEXT74")).'</span></center>
 </td></tr></table></center><br>');
 
 $game->out('</td></tr></table>');
@@ -1360,7 +1362,7 @@ $number=$db->num_rows();
 
 $game->out('
 <center><table border=0 cellpadding=2 cellspacing=2 width=600 class="style_outer"><tr><td>
-<span class="sub_caption2">'.((isset($template['name'])) ? $template['name'].':' : 'Übersicht:').'</span><br>');
+<span class="sub_caption2">'.((isset($template['name'])) ? $template['name'].':' : constant($game->sprache("TEXT0")).':').'</span><br>');
 
 $game->out('<table border=0 cellpadding=0 cellspacing=0 width="600" class="style_inner">
 <tr><td valign=top width="500">');
@@ -1371,18 +1373,18 @@ if (isset($template['id']))
 $game->out('
 <table width="175" border="0" cellpadding="0" cellspacing="0">
 <tr>
-<td valign=top ><u>Name:</u><br>
+<td valign=top ><u>'.constant($game->sprache("TEXT72")).'</u><br>
 <b>'.$template['name'].'</b><br><br></td>
 </tr>
 <tr>
-<td valign=top><u>Beschreibung:</u><br>
+<td valign=top><u>'.constant($game->sprache("TEXT32")).'</u><br>
 '.wordwrap(stripslashes(nl2br($template['description'])), 40,"<br>",1 ).'<br><br></td>
 </tr>
 <tr>
-<td valign=top><u>Bild:</u><br><img src='.FIXED_GFX_PATH.'ship'.$game->player['user_race'].'_'.$template['ship_torso'].'.jpg></td>
+<td valign=top><u>'.constant($game->sprache("TEXT68")).'</u><br><img src='.FIXED_GFX_PATH.'ship'.$game->player['user_race'].'_'.$template['ship_torso'].'.jpg></td>
 </tr>
 <tr>
-<td valign=top><u>Komponenten:</u><br>');
+<td valign=top><u>'.constant($game->sprache("TEXT26")).'</u><br>');
 
     
 for ($t=0; $t<10; $t++)
@@ -1390,46 +1392,46 @@ for ($t=0; $t<10; $t++)
 	if ($template['component_'.($t+1)]>=0)
 	{
 		$game->out('-&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($ship_components[$game->player['user_race']][$t][$template['component_'.($t+1)]]).'\', CAPTION, \''.$ship_components[$game->player['user_race']][$t][$template['component_'.($t+1)]]['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.( ($game->planet['catresearch_'.($t+1).'']<=$template['component_'.($t+1).'']) ? '<b><span style="color: red;">'.$ship_components[$game->player['user_race']][$t][$template['component_'.($t+1).'']]['name'].'</span>' : '<b><span style="color: green;">'.$ship_components[$game->player['user_race']][$t][$template['component_'.($t+1).'']]['name'].'</span>' ).'</b></a><br>');
-	} else $game->out('- Nicht belegt<br>');
+	} else $game->out(constant($game->sprache("TEXT27")));
 }
 
 $game->out('<br></td></tr></table></td><td width="50%">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr>
-<td valign=top><u>Schiffsdaten:</u><br>');
+<td valign=top><u>'.constant($game->sprache("TEXT28")).'</u><br>');
 
 
-$game->out('<u>L. Waffen:</u> <b>'.$template['value_1'].'</b><br>');
-$game->out('<u>Schw. Waffen:</u> <b>'.$template['value_2'].'</b><br>');
-$game->out('<u>Pl. Waffen:</u> <b>'.$template['value_3'].'</b><br>');
-$game->out('<u>Schildstärke:</u> <b>'.$template['value_4'].'</b><br>');
-$game->out('<u>Hülle (HP):</u> <b>'.$template['value_5'].'</b><br>');
-$game->out('<u>Reaktion:</u> <b>'.$template['value_6'].'</b><br>');
-$game->out('<u>Bereitschaft:</u> <b>'.$template['value_7'].'</b><br>');
-$game->out('<u>Wendigkeit:</u> <b>'.$template['value_8'].'</b><br>');
-$game->out('<u>Erfahrung:</u> <b>'.$template['value_9'].'</b><br>');
-$game->out('<u>Warp:</u> <b>'.$template['value_10'].'</b><br>');
-$game->out('<u>Sensoren:</u> <b>'.$template['value_11'].'</b><br>');
-$game->out('<u>Tarnung:</u> <b>'.$template['value_12'].'</b><br>');
-$game->out('<u>Energieverbrauch:</u> <b>'.$template['value_14'].'/'.$template['value_13'].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT8")).'</u> <b>'.$template['value_1'].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT9")).'</u> <b>'.$template['value_2'].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT10")).'</u> <b>'.$template['value_3'].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT11")).'</u> <b>'.$template['value_4'].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT12")).'</u> <b>'.$template['value_5'].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT13")).'</u> <b>'.$template['value_6'].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT14")).'</u> <b>'.$template['value_7'].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT15")).'</u> <b>'.$template['value_8'].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT16")).'</u> <b>'.$template['value_9'].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT17")).'</u> <b>'.$template['value_10'].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT18")).'</u> <b>'.$template['value_11'].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT19")).'</u> <b>'.$template['value_12'].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT29")).'</u> <b>'.$template['value_14'].'/'.$template['value_13'].'</b><br>');
 
 $game->out('<br></td></tr>
 <tr>
-<td valign=top><u>Ressourcen + Standardcrew</u>:<br>
+<td valign=top><u>'.constant($game->sprache("TEXT30")).'</u><br>
 			<img src="'.$game->GFX_PATH.'menu_metal_small.gif"><b id="price1">'.$template['resource_1'].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif"><b id="price2">'.$template['resource_2'].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif"><b id="price3">'.$template['resource_3'].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_worker_small.gif"><b id="price4">'.$template['resource_4'].'</b><br>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit5_small.gif"><b id="price10">'.$template['unit_5'].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit6_small.gif"><b id="price11">'.$template['unit_6'].'</b><br><br>
-<u>Bauzeit</u>:<br><b id="price5">'.($template['buildtime']*TICK_DURATION).'</b> Minuten<br><br>
-<u>Minimale Besatzung</u>:<br>
+<u>'.constant($game->sprache("TEXT5")).'</u><br><b id="price5">'.($template['buildtime']*TICK_DURATION).'</b> '.constant($game->sprache("TEXT6")).'<br><br>
+<u>'.constant($game->sprache("TEXT31")).'</u><br>
 <img src="'.$game->GFX_PATH.'menu_unit1_small.gif"><b id="price6">'.$template['min_unit_1'].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit2_small.gif"><b id="price7">'.$template['min_unit_2'].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit3_small.gif"><b id="price8">'.$template['min_unit_3'].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit4_small.gif"><b id="price9">'.$template['min_unit_4'].'</b><br><br>
 
-<u>Maximale Besatzung</u>:<br>
+<u>'.constant($game->sprache("TEXT59")).'</u><br>
 <img src="'.$game->GFX_PATH.'menu_unit1_small.gif"><b id="price6a">'.$template['max_unit_1'].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit2_small.gif"><b id="price7a">'.$template['max_unit_2'].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit3_small.gif"><b id="price8a">'.$template['max_unit_3'].'</b>
@@ -1444,7 +1446,7 @@ $game->out('</td>
 
 
 <td width="230" valign="top">
-<span class="sub_caption2"><center>Templateliste ('.$number.' Schiffe)</center></span>
+<span class="sub_caption2"><center>'.constant($game->sprache("TEXT75")).' ('.$number.' '.(($number > 1) ? constant($game->sprache("TEXT83")) : constant($game->sprache("TEXT43"))).')</center></span>
 <form action="'.parse_link('a=ship_template').'" name="shipselect">
 <input type="hidden" name="a" value="ship_template">
 
@@ -1456,13 +1458,13 @@ $game->out('<option value="'.$tmplate['id'].'" '.(($tmplate['id']==$_GET['templa
 $game->out('
 </select><br><br>
 <center>
-'.(isset($template['name']) ? '<input class="button_nosize" type="submit" name="delete" value="'.$template['name'].' Löschen" onClick="return confirm(\'Template wirklich löschen?\')">' : '').'
+'.(isset($template['name']) ? '<input class="button_nosize" type="submit" name="delete" value="'.constant($game->sprache("TEXT76")).' '.$template['name'].'" onClick="return confirm(\''.constant($game->sprache("TEXT77")).'\')">' : '').'
 </form>
 </td>
 </tr></table>');
 
 
-$game->out('</td></tr><tr><td align="left">Die Farben der Komponenten haben folgende Bedeutung:<br><b><font color=red>Rot => auf diesem Planet nicht erforscht</font><br><font color=green>Grün => auf diesem Planet erforscht</font></b></td></tr></table><br><br>');
+$game->out('</td></tr><tr><td align="left">'.constant($game->sprache("TEXT78")).'<br><b><font color=red>'.constant($game->sprache("TEXT79")).'</font><br><font color=green>'.constant($game->sprache("TEXT80")).'</font></b></td></tr></table><br><br>');
 }
 
 
@@ -1486,7 +1488,8 @@ $game->out('<center><span class="caption">Momentan deaktiviert.<br><br>');
 
 if ($game->planet['building_8']<1)
 {
-$game->out('<center><span class="text_large">Du musst ein(e) '.$BUILDING_NAME[$game->player['user_race']]['7'].' bauen, bevor Schiffstemplates erstellt werden können.</span></center><br><br>');
+message(NOTICE, constant($game->sprache("TEXT81")).' '.$BUILDING_NAME[$game->player['user_race']]['7'].' '.constant($game->sprache("TEXT82")));
+//$game->out('<center><span class="text_large">'.constant($game->sprache("TEXT81")).' '.$BUILDING_NAME[$game->player['user_race']]['7'].' '.constant($game->sprache("TEXT82")).'</span></center><br><br>');
 
 
 }

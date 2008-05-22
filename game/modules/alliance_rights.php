@@ -21,7 +21,7 @@
 */
 
 $game->init_player();
-$game->out('<center><span class="caption">Allianz-Rechteverwaltung:</span><br><br>');
+$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>');
 
 
 
@@ -44,11 +44,11 @@ function check_membership($requirement) {
     $in_alliance = (!empty($game->player['alliance_name'])) ? true : false;
     
     if($in_alliance && !$requirement) {
-        message(NOTICE, 'Du bist bereits Mitglied in einer Allianz');
+        message(NOTICE, constant($game->sprache("TEXT1")));
     }
     
     if(!$in_alliance && $requirement) {
-        message(NOTICE, 'Du bist nicht Mitglied einer Allianz');
+        message(NOTICE, constant($game->sprache("TEXT2")));
     }
     
     return true;
@@ -65,7 +65,7 @@ check_membership(true);
     }
 
 if($game->player['user_alliance_rights8'] != 1 && $game->player['user_id'] != $alliance['alliance_owner']) {
-    message(NOTICE, 'Du bestitzt nicht die erforderlichen Berechtigungen um diesen Vorgang auszuführen.');
+    message(NOTICE, constant($game->sprache("TEXT3")));
 }
 
 if(isset($_POST['save'])) {
@@ -79,15 +79,15 @@ if(isset($_POST['save'])) {
   }
 
   if($user_data['user_alliance'] != $game->player['user_alliance']) {
-    message(NOTICE, 'Der Spieler ist nicht in deiner Allianz');
+    message(NOTICE, constant($game->sprache("TEXT4")));
   }
 
   if($user_id == $alliance['alliance_owner']) {
-    message(NOTICE, 'Die Rechte des Präsidenten können nicht geändert werden!');
+    message(NOTICE, constant($game->sprache("TEXT5")));
   }
 
   if($user_id == $game->player['user_id']) {
-    message(NOTICE, 'Du kannst deine eigenen Rechte nicht ändern!');
+    message(NOTICE, constant($game->sprache("TEXT6")));
   }
 
   if(empty($_POST['rights1'])) $_POST['rights1'] = 0;
@@ -114,7 +114,7 @@ if(!empty($_POST['kick_confirm'])) {
     if(empty($_POST['user_id'])) {
         message(GENERAL, 'Invalid request', '$_POST[\'user_id\'] was empty');
     }
-    
+
     $user_id = (int)$_POST['user_id'];
 
     $sql = 'SELECT user_id, user_alliance, user_alliance_status, user_points, user_planets, user_honor, user_name
@@ -124,21 +124,21 @@ if(!empty($_POST['kick_confirm'])) {
     if(($user_data = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query user alliance data');
     }
-    
+
     if(empty($user_data['user_id'])) {
-        message(NOTICE, 'Der gewählte Spieler existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT7")));
     }
 
     if($user_data['user_alliance'] != $game->player['user_alliance']) {
-        message(NOTICE, 'Der gewählte Spieler ist nicht in deiner Allianz');
+        message(NOTICE, constant($game->sprache("TEXT8")));
     }
 
     if($user_data['user_id'] == $alliance['alliance_owner']) {
-        message(NOTICE, 'Der Präsident kann nicht gekickt werden!');
+        message(NOTICE, constant($game->sprache("TEXT9")));
     }
 
     if($user_data['user_id'] == $game->player['user_id']) {
-        message(NOTICE, 'Du kannst dich nicht selbst kicken!');
+        message(NOTICE, constant($game->sprache("TEXT10")));
     }
     
     $sql = 'UPDATE user
@@ -158,7 +158,7 @@ if(!empty($_POST['kick_confirm'])) {
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not update user alliance data');
     }
-    alliance_log('<font color=green>'.$user_data['user_name'].'</font> wurde von <font color=green>'.$game->player['user_name'].'</font> <b>gekickt</b>');
+    alliance_log('<font color=green>'.$user_data['user_name'].'</font> '.constant($game->sprache("TEXT11")).' <font color=green>'.$game->player['user_name'].'</font>'.constant($game->sprache("TEXT12")));
 
     
     $sql = 'UPDATE alliance
@@ -170,9 +170,9 @@ if(!empty($_POST['kick_confirm'])) {
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not update alliance data');
     }
-    
-    SystemMessage($user_id, 'Aus Allianz gekickt', 'Du wurdest aus deiner Allianz <b>'.$game->player['alliance_name'].'</b> gekickt.');
-    
+
+    SystemMessage($user_id, constant($game->sprache("TEXT13")), constant($game->sprache("TEXT14")).' <b>'.$game->player['alliance_name'].'</b>'.constant($game->sprache("TEXT15")));
+
     redirect('a=alliance_rights');
 }
 
@@ -192,7 +192,7 @@ elseif(!empty($_POST['kick'])) {
     }
 
     if(empty($user_data['user_id'])) {
-        message(NOTICE, 'Der gewählte Spieler existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT7")));
     }
     $game->out('
 <table class="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="2">
@@ -200,9 +200,9 @@ elseif(!empty($_POST['kick'])) {
   <tr height="5"><td></td></tr>
   <tr>
     <td align="center">
-      Willst du <a href="'.parse_link('a=stats&a2=viewplayer&id='.$user_id).'">'.$user_data['user_name'].'</a> wirklich KICKEN?<br><br>
-      <input class="button" type="button" value="<< Zurück" onClick="return window.history.back();">&nbsp;&nbsp;
-      <input class="button" type="submit" name="kick_confirm" value="Bestätigen">
+      '.constant($game->sprache("TEXT16")).'<a href="'.parse_link('a=stats&a2=viewplayer&id='.$user_id).'">'.$user_data['user_name'].'</a>'.constant($game->sprache("TEXT17")).'<br><br>
+      <input class="button" type="button" value="'.constant($game->sprache("TEXT18")).'" onClick="return window.history.back();">&nbsp;&nbsp;
+      <input class="button" type="submit" name="kick_confirm" value="'.constant($game->sprache("TEXT19")).'">
     </td>
   </tr>
   <tr height="5"><td></td></tr>
@@ -219,7 +219,7 @@ $game->out('
 
 <table class="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="4">
   <tr>
-    <td><b>Name</b></td><td align="center"><b>AE</b></td><td align="center"><b>AK</b></td><td align="center"><b>TÜ</b></td><td align="center"><b>M</b></td><td align="center"><b>D</b></td><td align="center"><b>B</b></td><td align="center"><b>C</b></td><td align="center"><b>R</b></td><td><b>Aktionen</b></td>
+    <td><b>'.constant($game->sprache("TEXT20")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT21")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT22")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT23")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT24")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT25")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT26")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT27")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT28")).'</b></td><td><b>'.constant($game->sprache("TEXT29")).'</b></td>
   </tr>
 
 ');
@@ -230,7 +230,7 @@ if($user_rights['user_id']==$alliance['alliance_owner']) {
 
 $game->out('
 
-<td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$user_rights['user_id'].'').'">'.$user_rights['user_name'].'</a></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td>Präsident</td>
+<td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$user_rights['user_id'].'').'">'.$user_rights['user_name'].'</a></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td align="center"></td><td>'.constant($game->sprache("TEXT30")).'</td>
 
 ');
 
@@ -295,8 +295,8 @@ $game->out(' <form action="'.parse_link('a=alliance_rights').'" method="post"><i
   }
   else { $game->out('<td><input type="checkbox" name="rights8" size="1" value="1"></td>'); }
 
-  $game->out('<td><input type="submit" name="save" value="Speichern"></td>');
-  $game->out('<td><input type="submit" name="kick" value="Member kicken"></td></tr></form>');
+  $game->out('<td><input type="submit" name="save" value="'.constant($game->sprache("TEXT31")).'"></td>');
+  $game->out('<td><input type="submit" name="kick" value="'.constant($game->sprache("TEXT32")).'"></td></tr></form>');
   }
 }
 
@@ -306,16 +306,16 @@ $game->out('
 <table>
 
 <tr>
-  <td>AE = Allgemeine Einstellungen</td><td>AK = Allianzkasse</td>
+  <td>'.constant($game->sprache("TEXT33")).'</td><td>'.constant($game->sprache("TEXT34")).'</td>
 </tr>
 <tr>
-  <td>TÜ = Takt. Übersicht</td><td>M = Massmail</td>
+  <td>'.constant($game->sprache("TEXT35")).'</td><td>'.constant($game->sprache("TEXT36")).'</td>
 </tr>
 <tr>
-  <td>D = Diplomatie</td><td>B = Bewerbungssystem</td>
+  <td>'.constant($game->sprache("TEXT37")).'</td><td>'.constant($game->sprache("TEXT38")).'</td>
 </tr>
 <tr>
-  <td>C = Allianz Chat</td><td>R = Membermanagement</td>
+  <td>'.constant($game->sprache("TEXT39")).'</td><td>'.constant($game->sprache("TEXT40")).'</td>
 </tr>
 
 </table>

@@ -24,9 +24,24 @@
 
 $game->init_player();
 
+switch($game->player['language'])
+{
+    case 'GER':
+        $title1 = 'Zugriff verweigert';
+        $title2 = 'Du hast keinen Zugriff auf die gewählte Sektion,<br>weil der Sitter dir hierfür keine Genehmigung erteilt hat.';
+    break;
+    case 'ITA':
+        $title1 = 'Accesso negato';
+        $title2 = 'Non hai accesso alla sezione selezionata,<br>perch&eacute; il sitter non ti ha concesso l&#146;autorizzazione.';
+    break;
+    default:
+        $title1 = 'Access Denied';
+        $title2 = 'You do not have access to the selected section,<br>because the sitter has not granted the approval to you.';
+    break;
+}
+
 $game->out('
-<center><span class="caption">Zugriff verweigert</span></center><br><br>
-<center><span class="sub_caption2">Du hast keinen Zugriff auf die gewählte Sektion,<br>weil der Sitter dir hierfür keine Genehmigung erteilt hat.</b></u></span></center><br><br>
+<center><span class="caption">'.$title1.'</span><br><br><span class="sub_caption2">'.$title2.'</span></center><br><br>
 ');
 
 ?>

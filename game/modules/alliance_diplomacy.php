@@ -34,12 +34,12 @@ function get_opid($alliance1_id) {
 }
 
 $game->init_player();
-$game->out('<center><span class="caption">Allianz:</span><br><br>');
+$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).':</span><br><br>');
 
 
 
 if(empty($game->player['alliance_name'])) {
-    message(NOTICE, 'Du bist nicht Mitglied einer Allianz');
+    message(NOTICE, constant($game->sprache("TEXT1")));
 }
 
     $sql = 'SELECT *
@@ -53,11 +53,11 @@ if(empty($game->player['alliance_name'])) {
 
 if(!empty($_GET['do'])) {
     if($game->player['user_alliance_rights5'] != 1) {
-        message(NOTICE, 'Du besitzt nicht die erforderlichen Rechte für diese Aktion.');
+        message(NOTICE, constant($game->sprache("TEXT2")));
     }
     
     if(empty($_GET['ad_id'])) {
-        message(GENERAL ,'Ungültiger Aufruf', '$_GET[\'ad_id\'] == empty');
+        message(GENERAL ,'Invalid call', '$_GET[\'ad_id\'] == empty');
     }
     
     $ad_id = (int)$_GET['ad_id'];
@@ -71,11 +71,11 @@ if(!empty($_GET['do'])) {
     }
 
     if(empty($diplomacy['ad_id'])) {
-        message(NOTICE, 'Deine Allianz ist nicht Teil dieses Vertrages');
+        message(NOTICE, constant($game->sprache("TEXT3")));
     }
 
     if( ($diplomacy['alliance1_id'] != $game->player['user_alliance']) && ($diplomacy['alliance2_id'] != $game->player['user_alliance']) ) {
-        message(NOTICE, 'Deine Allianz hat mit der Allianz keine diplomatische Beziehung');
+        message(NOTICE, constant($game->sprache("TEXT4")));
     }
     
     $mpid = get_mpid($diplomacy['alliance1_id']);
@@ -87,11 +87,11 @@ if(!empty($_GET['do'])) {
                 case ALLIANCE_DIPLOMACY_WAR:
                     switch($diplomacy['status']) {
                         case 0:
-                            message(NOTICE, 'Ein Krieg kann nicht "akzeptiert" werden');
+                            message(NOTICE, constant($game->sprache("TEXT5")));
                         break;
 
                         case $mpid:
-                            message(NOTICE, 'Deine Allianz kann nicht akzeptieren, da sie das Friedensangebot gestellt hat');
+                            message(NOTICE, constant($game->sprache("TEXT6")));
                         break;
                         
                         case $opid:
@@ -104,16 +104,16 @@ if(!empty($_GET['do'])) {
 	$sql3 = "SELECT alliance_name FROM alliance WHERE alliance_id = $selected_alliance";
 	$sql6 = "SELECT alliance_id,alliance_name FROM alliance WHERE alliance_id =$ally_one or alliance_id=$ally_two";
 	if(($alliances = $db->queryrow($sql3))=== false) {
-        message(DATABASE_ERROR, 'Alliance Name konnte nicht gelesen werden - Bündnis/NAP Text');
+        message(DATABASE_ERROR, 'Alliance name could not be read - Alliance / NAP text');
     	}
 
-	$betreff = 'Friedensvertrag unterzeichnet';
+	$betreff = costant($game->sprache("TEXT7"));
 	$sql6=mysql_query($sql6);
 	while ($werte=mysql_fetch_assoc($sql6)) {
 	if($ally_one==$werte['alliance_id'])$ally_one=$werte['alliance_name'];
 	if($ally_two==$werte['alliance_id'])$ally_two=$werte['alliance_name'];
 	}
-		$text = 'Die Allianz <b>'.$ally_one.'</b> hat soeben mit der Allianz <b>'.$ally_two.'</b> <b><font color="white">Frieden</font></b> geschlossen. Näheres bei der Führung deiner Allianz.'; 
+		$text = constant($game->sprache("TEXT8")).' <b>'.$ally_one.'</b>'.constant($game->sprache("TEXT9")).'<b>'.$ally_two.'</b> <b>'.constant($game->sprache("TEXT10")); 
 	$act_time = time();
 	while ($row = mysql_fetch_assoc($result2)) {
     	  foreach ($row as $key => $reciever) {  
@@ -143,7 +143,7 @@ if(!empty($_GET['do'])) {
                     switch($diplomacy['status']) {
                         case -1:
                             if($mpid == 1) {
-                                message(NOTICE, 'Deine Allianz kann nicht akzeptieren, da sie den Nichtangriffspakt angeboten hat');
+                                message(NOTICE, constant($game->sprache("TEXT11")));
                             }
                             
  $ally_one=$diplomacy['alliance2_id'];
@@ -155,16 +155,16 @@ if(!empty($_GET['do'])) {
 	$sql3 = "SELECT alliance_name FROM alliance WHERE alliance_id = $selected_alliance";
 	$sql6 = "SELECT alliance_id,alliance_name FROM alliance WHERE alliance_id =$ally_one or alliance_id=$ally_two";
 	if(($alliances = $db->queryrow($sql3))=== false) {
-        message(DATABASE_ERROR, 'Alliance Name konnte nicht gelesen werden - Bündnis/NAP Text');
+        message(DATABASE_ERROR, 'Alliance name could not be read - Alliance / NAP text');
     	}
 
-	$betreff = 'Nichtangriffspakt unterzeichnet';
+	$betreff = constant($game->sprache("TEXT12"));
 	$sql6=mysql_query($sql6);
 	while ($werte=mysql_fetch_assoc($sql6)) {
 	if($ally_one==$werte['alliance_id'])$ally_one=$werte['alliance_name'];
 	if($ally_two==$werte['alliance_id'])$ally_two=$werte['alliance_name'];
 	}
-	$text = 'Es wurde zwischen der Allianz <b>'.$ally_one.'</b> und der Allianz <b>'.$ally_two.'</b> ein <b><font color="yellow">Nichtsangriffpakt</font></b> geschlossen. Näheres bei der Führung deiner Allianz.'; 
+	$text = constant($game->sprache("TEXT13")).'<b>'.$ally_one.'</b>'.constant($game->sprache("TEXT14")).'<b>'.$ally_two.'</b>'.constant($game->sprache("TEXT15")); 
 	$act_time = time();
 	while ($row = mysql_fetch_assoc($result2)) {
     	  foreach ($row as $key => $reciever) {  
@@ -187,11 +187,11 @@ if(!empty($_GET['do'])) {
                         break;
                         
                         case 0:
-                            message(NOTICE, 'Der Nichtangriffspakt wurde schon unterzeichnet');
+                            message(NOTICE, constant($game->sprache("TEXT16")));
                         break;
                         
                         case $mpid:
-                            message(NOTICE, 'Deine Allianz kann nicht akzeptieren, da sie das Bündnis vorgeschlagen hat');
+                            message(NOTICE, constant($game->sprache("TEXT17")));
                         break;
                         
                         case $opid:
@@ -220,11 +220,11 @@ if(!empty($_GET['do'])) {
                 
                 case ALLIANCE_DIPLOMACY_PACT:
                     if($diplomacy['status'] =! -1) {
-                        message(NOTICE, 'Das Bündnis wurde schon unterzeichnet');
+                        message(NOTICE, constant($game->sprache("TEXT18")));
                     }
                     
                     if($mpid == 1) {
-                        message(NOTICE, 'Deine Allianz kann nicht akzeptieren, da sie das Bündnis vorgeschlagen hat');
+                        message(NOTICE, constant($game->sprache("TEXT17")));
                     }
  $ally_one=$diplomacy['alliance2_id'];
   $ally_two=$diplomacy['alliance1_id'];
@@ -235,16 +235,16 @@ if(!empty($_GET['do'])) {
 	$sql3 = "SELECT alliance_name FROM alliance WHERE alliance_id = $selected_alliance";
 	$sql6 = "SELECT alliance_id,alliance_name FROM alliance WHERE alliance_id =$ally_one or alliance_id=$ally_two";
 	if(($alliances = $db->queryrow($sql3))=== false) {
-        message(DATABASE_ERROR, 'Alliance Name konnte nicht gelesen werden - Bündnis/NAP Text');
+        message(DATABASE_ERROR, 'Alliance name could not be read - Alliance / NAP text');
     	}
 
-	$betreff = 'Bündnisvertrag unterzeichnet';
+	$betreff = constant($game->sprache("TEXT19"));
 	$sql6=mysql_query($sql6);
 	while ($werte=mysql_fetch_assoc($sql6)) {
 	if($ally_one==$werte['alliance_id'])$ally_one=$werte['alliance_name'];
 	if($ally_two==$werte['alliance_id'])$ally_two=$werte['alliance_name'];
 	}
-	$text = 'Es wurde zwischen der Allianz <b>'.$ally_one.'</b> und der Allianz <b>'.$ally_two.'</b> ein <b><font color="green">Bündnis</font></b> geschlossen. Näheres bei der Führung deiner Allianz.'; 
+	$text = constant($game->sprache("TEXT20")).$ally_one.constant($game->sprache("TEXT21")).$ally_two.constant($game->sprache("TEXT22")); 
 	$act_time = time();
 	while ($row = mysql_fetch_assoc($result2)) {
     	  foreach ($row as $key => $reciever) {  
@@ -277,11 +277,11 @@ if(!empty($_GET['do'])) {
                 case ALLIANCE_DIPLOMACY_WAR:
                     switch($diplomacy['status']) {
                         case 0:
-                            message(NOTICE, 'Ein Krieg kann nicht "abgelehnt" werden');
+                            message(NOTICE, constant($game->sprache("TEXT23")));
                         break;
 
                         case $mpid:
-                            message(NOTICE, 'Deine Allianz kann nicht ablehnen, da sie das Friedensangebot gestellt hat');
+                            message(NOTICE, constant($game->sprache("TEXT24")));
                         break;
 
                         case $opid:
@@ -306,7 +306,7 @@ if(!empty($_GET['do'])) {
                     switch($diplomacy['status']) {
                         case -1:
                             if($mpid == 1) {
-                                message(NOTICE, 'Deine Allianz kann nicht ablehnen, da sie den Nichtangriffspakt angeboten hat');
+                                message(NOTICE, constant($game->sprache("TEXT25")));
                             }
 
                             $sql = 'DELETE FROM alliance_diplomacy
@@ -321,11 +321,11 @@ if(!empty($_GET['do'])) {
                         break;
 
                         case 0:
-                            message(NOTICE, 'Der Nichtangriffspakt wurde schon unterzeichnet');
+                            message(NOTICE, constant($game->sprache("TEXT16")));
                         break;
 
                         case $mpid:
-                            message(NOTICE, 'Deine Allianz kann nicht ablehnen, da sie das Bündnis vorgeschlagen hat');
+                            message(NOTICE, constant($game->sprache("TEXT17")));
                         break;
 
                         case $opid:
@@ -348,11 +348,11 @@ if(!empty($_GET['do'])) {
 
                 case ALLIANCE_DIPLOMACY_PACT:
                     if($diplomacy['status'] =! -1) {
-                        message(NOTICE, 'Das Bündnis wurde schon unterzeichnet');
+                        message(NOTICE, constant($game->sprache("TEXT27")));
                     }
 
                     if($mpid == 1) {
-                        message(NOTICE, 'Deine Allianz kann nicht ablehnen, da sie das Bündnis vorgeschlagen hat');
+                        message(NOTICE, constant($game->sprache("TEXT28")));
                     }
 
                     $sql = 'DELETE FROM alliance_diplomacy
@@ -376,7 +376,7 @@ if(!empty($_GET['do'])) {
                 case ALLIANCE_DIPLOMACY_WAR:
                     switch($diplomacy['status']) {
                         case 0:
-                            message(NOTICE, 'Es existiert kein Friedensagebot');
+                            message(NOTICE, constant($game->sprache("TEXT29")));
                         break;
 
                         case $mpid:
@@ -392,7 +392,7 @@ if(!empty($_GET['do'])) {
                         break;
 
                         case $opid:
-                            message(NOTICE, 'Deine Allianz kann nicht zurückziehen, da ihr das Angebot gestellt wurde');
+                            message(NOTICE, constant($game->sprache("TEXT30")));
                         break;
 
                         default:
@@ -405,7 +405,7 @@ if(!empty($_GET['do'])) {
                     switch($diplomacy['status']) {
                         case -1:
                             if($mpid == 0) {
-                                message(NOTICE, 'Deine Allianz kann nicht zurückziehen, da ihr der Nichtangriffspakt angeboten wurde');
+                                message(NOTICE, constant($game->sprache("TEXT73")));
                             }
 
                             $sql = 'DELETE FROM alliance_diplomacy
@@ -419,7 +419,7 @@ if(!empty($_GET['do'])) {
                         break;
 
                         case 0:
-                            message(NOTICE, 'Der Nichtangriffspakt wurde schon unterzeichnet');
+                            message(NOTICE, constant($game->sprache("TEXT16")));
                         break;
 
                         case $mpid:
@@ -435,7 +435,7 @@ if(!empty($_GET['do'])) {
                         break;
 
                         case $opid:
-                            message(NOTICE, 'Deine Allianz kann nicht zurückziehen, da ihr das Bündnis vorgeschlagen wurde');
+                            message(NOTICE, constant($game->sprache("TEXT74")));
                         break;
 
                         default:
@@ -446,11 +446,11 @@ if(!empty($_GET['do'])) {
 
                 case ALLIANCE_DIPLOMACY_PACT:
                     if($diplomacy['status'] =! -1) {
-                        message(NOTICE, 'Das Bündnis wurde schon unterzeichnet');
+                        message(NOTICE, constant($game->sprache("TEXT18")));
                     }
 
                     if($mpid == 0) {
-                        message(NOTICE, 'Deine Allianz kann nicht zurückziehen, da ihr das Bündnis vorgeschlagen wurde');
+                        message(NOTICE, constant($game->sprache("TEXT74")));
                     }
 
                     $sql = 'DELETE FROM alliance_diplomacy
@@ -471,11 +471,11 @@ if(!empty($_GET['do'])) {
         
         case 'break':
             if($diplomacy['type'] == ALLIANCE_DIPLOMACY_WAR) {
-                message(NOTICE, 'Ein Krieg kann nicht "gebrochen" werden');
+                message(NOTICE, constant($game->sprache("TEXT75")));
             }
 
             if($diplomacy['status'] == -1) {
-                message(NOTICE, 'Der Vertrag wurde noch nicht unterzeichnet');
+                message(NOTICE, constant($game->sprache("TEXT76")));
             }
 
             $sql = 'DELETE FROM alliance_diplomacy
@@ -490,11 +490,11 @@ if(!empty($_GET['do'])) {
         
         case 'suggest_peace':
             if($diplomacy['type'] != ALLIANCE_DIPLOMACY_WAR) {
-                message(NOTICE, 'Deine Allianz befindet sich nicht im Krieg mit der Allianz');
+                message(NOTICE, constant($game->sprache("TEXT77")));
             }
             
             if($diplomacy['status'] != 0) {
-                message(NOTICE, 'Es existiert bereits ein Friedensangebot');
+                message(NOTICE, constant($game->sprache("TEXT78")));
             }
             
             $sql = 'UPDATE alliance_diplomacy
@@ -510,14 +510,14 @@ if(!empty($_GET['do'])) {
 
         case 'suggest_pact':
             if($diplomacy['type'] != ALLIANCE_DIPLOMACY_NAP) {
-                message(NOTICE, 'Deine Allianz hat keinen Nichtangriffspakt mit der anderen Allianz geschlossen');
+                message(NOTICE, constant($game->sprache("TEXT79")));
             }
             
             if($diplomacy['status'] == -1) {
-                message(NOTICE, 'Der Nichtangriffspakt wurde noch nicht unterzeichnet');
+                message(NOTICE, constant($game->sprache("TEXT80")));
             }
             elseif($diplomacy['status'] != 0) {
-                message(NOTICE, 'Es existiert bereits ein Bündnisangebot');
+                message(NOTICE, constant($game->sprache("TEXT81")));
             }
 
             $sql = 'UPDATE alliance_diplomacy
@@ -534,11 +534,11 @@ if(!empty($_GET['do'])) {
 }
 elseif(!empty($_POST['new_submit'])) {
     if($game->player['user_alliance_rights5'] != 1 && $game->player['user_id'] != $alliance['alliance_owner']) {
-        message(NOTICE, 'Du besitzt nicht die erforderlichen Rechte für diese Aktion.');
+        message(NOTICE, constant($game->sprache("TEXT2")));
     }
 
     if(empty($_POST['alliance2_tag'])) {
-        message(NOTICE, 'Keine Allianz angegeben');
+        message(NOTICE, constant($game->sprache("TEXT31")));
     }
     
     $alliance2_tag = addslashes($_POST['alliance2_tag']);
@@ -548,17 +548,17 @@ elseif(!empty($_POST['new_submit'])) {
             WHERE alliance_tag = "'.$alliance2_tag.'"';
             
     if(($alliance2 = $db->queryrow($sql)) === false) {
-        message(DATABASE_ERROR, 'Could not query other party´s alliance data');
+        message(DATABASE_ERROR, 'Could not query other partyÂ´s alliance data');
     }
     
     if(empty($alliance2['alliance_id'])) {
-        message(NOTICE, 'Die andere Allianz konnte nicht gefunden werden');
+        message(NOTICE, constant($game->sprache("TEXT32")));
     }
     
     $opid = $alliance2['alliance_id'];
 
     if($alliance2['alliance_id']==$game->player['user_alliance']) {
-        message(NOTICE, 'Du kannst keine Verträge mit deiner eigenen Ally schließen.');
+        message(NOTICE, constant($game->sprache("TEXT33")));
     }
 
     $sql = 'SELECT ad_id
@@ -571,20 +571,20 @@ elseif(!empty($_POST['new_submit'])) {
     }
     
     if(!empty($diplomacy['ad_id'])) {
-        message(NOTICE, 'Deine Allianz steht bereits in Kontakt mit dieser Allianz');
+        message(NOTICE, constant($game->sprache("TEXT34")));
     }
     
     $type = (int)$_POST['type'];
     
     if(!in_array($type, array(1, 2, 3))) {
-        message(GENERAL, 'Ungültiger Typ-Code', '$type = '.$type);
+        message(GENERAL, 'Invalid Code-Type', '$type = '.$type);
     }
     
     switch($type) {
         case ALLIANCE_DIPLOMACY_WAR:
 
        if($alliance['alliance_points']<=500 || $alliance['alliance_member']<=5) {
-           message(NOTICE, '1. Mann Allianzen die Kriegserklärungen spamen sind doof!');
+           message(NOTICE, constant($game->sprache("TEXT82")));
        }
 
             $sql = 'INSERT INTO alliance_diplomacy (alliance1_id, alliance2_id, type, date, status)
@@ -594,17 +594,17 @@ elseif(!empty($_POST['new_submit'])) {
 	$result2 = mysql_query($sql2) OR die(mysql_error());
 	
 	$sender = 0;
-	$betreff = 'Kriegserklärung';
+	$betreff = constant($game->sprache("TEXT35"));
 	
 	$selected_alliance = $game->player['user_alliance']; 
 
 	$sql3 = "SELECT alliance_name FROM alliance WHERE alliance_id = $selected_alliance";
 	
 	if(($alliances = $db->queryrow($sql3)) === false) {
-        message(DATABASE_ERROR, 'Alliance Name konnte nicht gelesen werden - Kriegserklärung Text');
+        message(DATABASE_ERROR, 'Alliance name could not be read - War Declaration text');
     	}	
 
-	$text = 'Die Allianz <b>'.$alliances['alliance_name'].'</b> hat ihnen soeben den <b><font color="red">Krieg</font></b> erklärt.'; 
+	$text = constant($game->sprache("TEXT36")).$alliances['alliance_name'].constant($game->sprache("TEXT37")); 
 
 	$act_time = time();
 
@@ -638,22 +638,22 @@ elseif(!empty($_POST['new_submit'])) {
 	$sql3 = "SELECT alliance_name FROM alliance WHERE alliance_id = $selected_alliance";
 	
 	if(($alliances = $db->queryrow($sql3)) === false) {
-        message(DATABASE_ERROR, 'Alliance Name konnte nicht gelesen werden - Bündnis/NAP Text');
+        message(DATABASE_ERROR, 'Alliance name could not be read - Alliance / NAP text');
     	}
 
 	if($type==ALLIANCE_DIPLOMACY_NAP) {
 
-	$betreff = 'Nichtangriffspakt';
+	$betreff = constant($game->sprache("TEXT38"));
 
-	$text = 'Die Allianz <b>'.$alliances['alliance_name'].'</b> hat ihnen soeben ein Angebot über einen <b><font color="yellow">Nichtangriffspakt</font></b> vorgelegt.<br>Näheres Erfahren sie in ihrer Diplomatie oder bei der Führung der <b>'.$alliances['alliance_name'].'</b> selbst.'; 
+	$text = constant($game->sprache("TEXT36")).$alliances['alliance_name'].constant($game->sprache("TEXT83")).$alliances['alliance_name'].constant($game->sprache("TEXT84")); 
 
 	}
 
 	else {
 
-	$betreff = 'Bündnisvorschlag';
+	$betreff = constant($game->sprache("TEXT85"));
 
-	$text = 'Die Allianz <b>'.$alliances['alliance_name'].'</b> hat ihnen soeben ein Angebot über ein <b><font color="green">Bündnis</font></b> vorgelegt.<br>Näheres Erfahren sie in ihrer Diplomatie oder bei der Führung der <b>'.$alliances['alliance_name'].'</b> selbst.'; 
+	$text = constant($game->sprache("TEXT36")).$alliances['alliance_name'].constant($game->sprache("TEXT86")).$alliances['alliance_name'].constant($game->sprache("TEXT84")); 
 
 	}
 
@@ -688,28 +688,28 @@ elseif(isset($_GET['new'])) {
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
       <table width="430" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="430" align="left"><a href="'.parse_link('a=alliance_diplomacy').'"><i>Diplomatie</i></a> » <i>In Kontakt treten</i></td></tr>
+        <tr><td width="430" align="left"><a href="'.parse_link('a=alliance_diplomacy').'">'.constant($game->sprache("TEXT39")).'</a> &raquo; '.constant($game->sprache("TEXT40")).'</td></tr>
       </table>
       <table width="430" align="center" border="0" cellpadding="2" cellspacing="2" class="border_grey">
         <form method="post" action="'.parse_link('a=alliance_diplomacy').'">
         <tr>
-          <td align="center">Allianz-Tag:  <input class="field" type="text" name="alliance2_tag" maxlength="6" size="10"></td>
+          <td align="center">'.constant($game->sprache("TEXT41")).'<input class="field" type="text" name="alliance2_tag" maxlength="6" size="10"></td>
         </tr>
         <tr height="5"><td></td></tr>
         <tr>
           <td align="center">
             <select name="type">
-              <option value="2">Nichtangriffspakt vorschlagen</option>
-              <option value="3">Bündnis vorschlagen</option>
-              <option value="1">Krieg erklären</option>
+              <option value="2">'.constant($game->sprache("TEXT42")).'</option>
+              <option value="3">'.constant($game->sprache("TEXT43")).'</option>
+              <option value="1">'.constant($game->sprache("TEXT44")).'</option>
             </select>
           </td>
         </tr>
         <tr height="5"><td></td></tr>
         <tr>
           <td align="center">
-            <input class="button" type="button" value="<< Zurück" onClick="return window.history.back();">  
-            <input class="button" type="submit" name="new_submit" value="Bestätigen">
+            <input class="button" type="button" value="'.constant($game->sprache("TEXT45")).'" onClick="return window.history.back();">  
+            <input class="button" type="submit" name="new_submit" value="'.constant($game->sprache("TEXT46")).'">
           </td>
         </tr>
       </table>
@@ -720,7 +720,7 @@ elseif(isset($_GET['new'])) {
 }
 elseif(!empty($_GET['details'])) {
     if($game->player['user_alliance_rights5'] != 1 && $game->player['user_id'] != $alliance['alliance_owner']) {
-        message(NOTICE, 'Du besitzt nicht die erforderlichen Rechte für diese Aktion.');
+        message(NOTICE, constant($game->sprache("TEXT2")));
     }
 
     $ad_id = (int)$_GET['details'];
@@ -738,7 +738,7 @@ elseif(!empty($_GET['details'])) {
     }
     
     if(empty($diplomacy['ad_id'])) {
-        message(NOTICE, 'Deine Allianz hat mit der gewählten Allianz keine diplomatische Beziehung');
+        message(NOTICE, constant($game->sprache("TEXT47")));
     }
 
     $mpid = get_mpid($diplomacy['alliance1_id']);
@@ -750,22 +750,22 @@ elseif(!empty($_GET['details'])) {
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
       <table width="430" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="430" align="left"><a href="'.parse_link('a=alliance_diplomacy').'"><i>Diplomatie</i></a> »  <i>'.$diplomacy['alliance'.$opid.'_name'].'</i></td></tr>
+        <tr><td width="430" align="left"><a href="'.parse_link('a=alliance_diplomacy').'">'.constant($game->sprache("TEXT39")).'</a> &raquo; <i>'.$diplomacy['alliance'.$opid.'_name'].'</i></td></tr>
       </table>
       <table width="430" align="center" border="0" cellpadding="2" cellspacing="2" class="border_grey"><tr><td>
         <table width="300" align="center" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="150" >aktueller Status:</td>
+            <td width="150">'.constant($game->sprache("TEXT48")).'</td>
     ');
     
     switch($diplomacy['type']) {
         case ALLIANCE_DIPLOMACY_WAR:
             $game->out('
-            <td width="150"><span style="color: #FF0000;">Krieg</span></td>
+            <td width="150"><span style="color: #FF0000;">'.constant($game->sprache("TEXT49")).'</span></td>
           </tr>
           <tr height="5"><td colspan="2"></td></tr>
           <tr>
-            <td width="150">angefangen von:</td>
+            <td width="150">'.constant($game->sprache("TEXT50")).'</td>
             <td width="150"><a href="'.parse_link('a=stats&a2=viewalliance&id='.$diplomacy['alliance1_id']).'">'.$diplomacy['alliance1_name'].'</a></td>
           </tr>
         </table>
@@ -775,27 +775,27 @@ elseif(!empty($_GET['details'])) {
             
             switch($diplomacy['status']) {
                 case 0:
-                    $game->out('<tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=suggest_peace&ad_id='.$ad_id).'">Frieden anbieten</a>]</td></tr>');
+                    $game->out('<tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=suggest_peace&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT51")).'</a>]</td></tr>');
                 break;
                 
                 case $mpid:
                     $game->out('
-        <tr><td>Friedensangebot von deiner Allianz</td></tr>
+        <tr><td>'.constant($game->sprache("TEXT52")).'</td></tr>
         <tr height="5"><td></td></tr>
-        <tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=cancel&ad_id='.$ad_id).'">Zurückziehen</a>]</td></tr>
+        <tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=cancel&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT53")).'</a>]</td></tr>
                     ');
                 break;
 
                 case $opid:
                     $game->out('
-        <tr><td>Friedensangebot von <a href="javascript:void(0)">'.$diplomacy['alliance'.$opid.'_name'].'</a></td></tr>
+        <tr><td>'.constant($game->sprache("TEXT54")).'<a href="javascript:void(0)">'.$diplomacy['alliance'.$opid.'_name'].'</a></td></tr>
         <tr height="5"><td></td></tr>
-        <tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=accept&ad_id='.$ad_id).'">Annehmen</a>]  [<a href="'.parse_link('a=alliance_diplomacy&do=deny&ad_id='.$ad_id).'">Ablehnen</a>]</td></tr>
+        <tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=accept&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT55")).'</a>]  [<a href="'.parse_link('a=alliance_diplomacy&do=deny&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT56")).'</a>]</td></tr>
                     ');
                 break;
                 
                 default:
-                    message(GENERAL, 'Ungültiger Status-Code', '$diplomacy[\'status\'] = '.$diplomacy['status']);
+                    message(GENERAL, 'Invalid Status-Code', '$diplomacy[\'status\'] = '.$diplomacy['status']);
                 break;
             }
             
@@ -804,11 +804,11 @@ elseif(!empty($_GET['details'])) {
         
         case ALLIANCE_DIPLOMACY_NAP:
             $game->out('
-            <td width="150"><span style="color: #FFFF00;">Nichtangriffspakt</span></td>
+            <td width="150"><span style="color: #FFFF00;">'.constant($game->sprache("TEXT38")).'</span></td>
           </tr>
           <tr height="5"><td colspan="2"></td></tr>
           <tr>
-            <td width="150">vorgeschlagen von:</td>
+            <td width="150">'.constant($game->sprache("TEXT57")).'</td>
             <td width="150"><a href="'.parse_link('a=stats&a2=viewalliance&id='.$diplomacy['alliance1_id']).'">'.$diplomacy['alliance1_name'].'</a></td>
           </tr>
         </table>
@@ -820,37 +820,37 @@ elseif(!empty($_GET['details'])) {
                 case -1:
                     if($mpid == 1) {
                         $game->out('
-          <tr><td>Angebot von deiner Allianz</td></tr>
+          <tr><td>'.constant($game->sprache("TEXT58")).'</td></tr>
           <tr height="5"><td></td></tr>
-          <tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=cancel&ad_id='.$ad_id).'">Zurückziehen</a>]</td></tr>
+          <tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=cancel&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT53")).'</a>]</td></tr>
                         ');
                     }
                     else {
                         $game->out('
-          <tr><td>Angebot der anderen Allianz</td></tr>
+          <tr><td>'.constant($game->sprache("TEXT59")).'</td></tr>
           <tr height="5"><td></td></tr>
-          <tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=accept&ad_id='.$ad_id).'">Annehmen</a>]  [<a href="'.parse_link('a=alliance_diplomacy&do=deny&ad_id='.$ad_id).'">Ablehnen</a>]</td></tr>
+          <tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=accept&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT55")).'</a>]  [<a href="'.parse_link('a=alliance_diplomacy&do=deny&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT56")).'</a>]</td></tr>
                         ');
                     }
                 break;
 
                 case 0:
-                    $game->out('<tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=break&ad_id='.$ad_id).'">Vertrag brechen</a>]  [<a href="'.parse_link('a=alliance_diplomacy&do=suggest_pact&ad_id='.$ad_id).'">Bündnis anbieten</a>]</td></tr>');
+                    $game->out('<tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=break&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT60")).'</a>]  [<a href="'.parse_link('a=alliance_diplomacy&do=suggest_pact&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT61")).'</a>]</td></tr>');
                 break;
                 
                 case $mpid:
                     $game->out('
-        <tr><td>Bündnisangebot von deiner Allianz</td></tr>
+        <tr><td>'.constant($game->sprache("TEXT62")).'</td></tr>
         <tr height="5"><td></td></tr>
-        <tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=cancel&ad_id='.$ad_id).'">Zurückziehen</a>]</td></tr>
+        <tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=cancel&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT53")).'</a>]</td></tr>
                     ');
                 break;
                 
                 case $opid:
                     $game->out('
-        <tr><td>Bündnisangebot von <a href="javascript:void(0)">'.$diplomacy['alliance'.$opid.'_name'].'</a></td></tr>
+        <tr><td>'.constant($game->sprache("TEXT63")).'<a href="javascript:void(0)">'.$diplomacy['alliance'.$opid.'_name'].'</a></td></tr>
         <tr height="5"><td></td></tr>
-        <tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=accept&ad_id='.$ad_id).'">Annehmen</a>]  [<a href="'.parse_link('a=alliance_diplomacy&do=deny&ad_id='.$ad_id).'">Ablehnen</a>]</td></tr>
+        <tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=accept&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT55")).'</a>]  [<a href="'.parse_link('a=alliance_diplomacy&do=deny&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT56")).'</a>]</td></tr>
                     ');
                 break;
             }
@@ -860,11 +860,11 @@ elseif(!empty($_GET['details'])) {
         
         case ALLIANCE_DIPLOMACY_PACT:
             $game->out('
-            <td width="150"><span style="color: #00FF00;">Bündnis</span></td>
+            <td width="150"><span style="color: #00FF00;">'.constant($game->sprache("TEXT64")).'</span></td>
           </tr>
           <tr height="5"><td colspan="2"></td></tr>
           <tr>
-            <td width="150">vorgeschlagen von:</td>
+            <td width="150">'.constant($game->sprache("TEXT65")).'</td>
             <td width="150"><a href="'.parse_link('a=stats&a2=viewalliance&id='.$diplomacy['alliance1_id']).'">'.$diplomacy['alliance1_name'].'</a></td>
           </tr>
         </table>
@@ -875,21 +875,21 @@ elseif(!empty($_GET['details'])) {
             if($diplomacy['status'] == -1) {
                 if($mpid == 1) {
                     $game->out('
-          <tr><td>Angebot von deiner Allianz</td></tr>
+          <tr><td>'.constant($game->sprache("TEXT58")).'</td></tr>
           <tr height="5"><td></td></tr>
-          <tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=cancel&ad_id='.$ad_id).'">Zurückziehen</a>]</td></tr>
+          <tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=cancel&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT53")).'</a>]</td></tr>
                     ');
                 }
                 else {
                     $game->out('
-          <tr><td>Angebot der anderen Allianz</td></tr>
+          <tr><td>'.constant($game->sprache("TEXT59")).'</td></tr>
           <tr height="5"><td></td></tr>
-          <tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=accept&ad_id='.$ad_id).'">Annehmen</a>]  [<a href="'.parse_link('a=alliance_diplomacy&do=deny&ad_id='.$ad_id).'">Ablehnen</a>]</td></tr>
+          <tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=accept&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT55")).'</a>]  [<a href="'.parse_link('a=alliance_diplomacy&do=deny&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT56")).'</a>]</td></tr>
                     ');
                 }
             }
             else {
-                $game->out('<tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=break&ad_id='.$ad_id).'">Vertrag brechen</a>]</td></tr>');
+                $game->out('<tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=break&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT60")).'</a>]</td></tr>');
             }
             
             $game->out('</table>');
@@ -924,7 +924,7 @@ else {
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
       <table width="430" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="430" align="left"><i>Diplomatie</i></td></tr>
+        <tr><td width="430" align="left">'.constant($game->sprache("TEXT39")).'</td></tr>
       </table>
       <table width="430" align="center" border="0" cellpadding="2" cellspacing="2" class="border_grey">
         <tr>
@@ -934,16 +934,16 @@ else {
     if($game->player['user_alliance_rights5'] == 1 || $game->player['user_id'] == $alliance['alliance_owner']) {
         $game->out('
           <td width="20"> </td>
-          <td width="210"><b>andere Partei</b></td>
+          <td width="210">'.constant($game->sprache("TEXT66")).'</td>
         ');
     }
     else {
-        $game->out('<td width="230"><b>andere Partei</b></td>');
+        $game->out('<td width="230">'.constant($game->sprache("TEXT66")).'</td>');
     }
 
     $game->out('
-          <td width="90" align="center"><b>Vertrag</b></td>
-          <td width="110" align="center"><b>besteht seit</b></td>
+          <td width="90" align="center">'.constant($game->sprache("TEXT67")).'</td>
+          <td width="110" align="center">'.constant($game->sprache("TEXT68")).'</td>
         </tr>
     ');
     
@@ -952,15 +952,15 @@ else {
         
         switch($diplomacy['type']) {
             case ALLIANCE_DIPLOMACY_WAR:
-                $type_str = '<span style="color: #FF0000;">Krieg</span>';
+                $type_str = '<span style="color: #FF0000;">'.constant($game->sprache("TEXT49")).'</span>';
             break;
 
             case ALLIANCE_DIPLOMACY_NAP:
-                $type_str = '<span style="color: #FFFF00;">NAP</span>';
+                $type_str = '<span style="color: #FFFF00;">'.constant($game->sprache("TEXT69")).'</span>';
             break;
 
             case ALLIANCE_DIPLOMACY_PACT:
-                $type_str = '<span style="color: #00FF00;">Bündnis</span>';
+                $type_str = '<span style="color: #00FF00;">'.constant($game->sprache("TEXT64")).'</span>';
             break;
         }
         
@@ -970,7 +970,7 @@ else {
          <td width="20">[<a href="'.parse_link('a=alliance_diplomacy&details='.$diplomacy['ad_id']).'">D</a>]</td>
          <td width="210"><a href="'.parse_link('a=stats&a2=viewalliance&id='.$diplomacy['alliance'.$ap.'_id']).'">'.$diplomacy['alliance'.$ap.'_name'].'</a></td>
          <td width="90" align="center">'.$type_str.'</td>
-         <td width="110" align="center">'.( ($diplomacy['status'] != -1) ? date('d.m.y', $diplomacy['date']) : '<i>nicht unterzeichnet</i>' ).'</td>
+         <td width="110" align="center">'.( ($diplomacy['status'] != -1) ? date('d.m.y', $diplomacy['date']) : constant($game->sprache("TEXT70")) ).'</td>
        </tr>
             ');
        }
@@ -979,7 +979,7 @@ else {
        <tr>
          <td width="230"><a href="'.parse_link('a=stats&a2=viewalliance&id='.$diplomacy['alliance'.$ap.'_id']).'">'.$diplomacy['alliance'.$ap.'_name'].'</a></td>
          <td width="90" align="center">'.$type_str.'</td>
-         <td width="110" align="center">'.( ($diplomacy['status'] != -1) ? date('d.m.y', $diplomacy['date']) : '<i>nicht unterzeichnet</i>' ).'</td>
+         <td width="110" align="center">'.( ($diplomacy['status'] != -1) ? date('d.m.y', $diplomacy['date']) : constant($game->sprache("TEXT70")) ).'</td>
        </tr>
             ');
        }
@@ -992,14 +992,14 @@ else {
         $game->out('
       </table>
       <table width="430" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="430" align="right">[<a href="'.parse_link('a=alliance_diplomacy&new').'">Kontakt mit Allianz aufnehmen</a>]</td></tr>
+        <tr><td width="430" align="right">[<a href="'.parse_link('a=alliance_diplomacy&new').'">'.constant($game->sprache("TEXT71")).'</a>]</td></tr>
       </table>
     </td>
   </tr>
 </table>
 <br>
 <center>
-<i>Legende:</i>   D = Details
+'.constant($game->sprache("TEXT72")).'
 </center>
         ');
     }

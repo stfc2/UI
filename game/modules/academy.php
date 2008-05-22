@@ -23,8 +23,8 @@
 
 $game->init_player();
 //include('academy.sprache.php'); wird nun in der index.php geregelt
-$game->out('<center><span class="caption">'.$BUILDING_NAME[$game->player['user_race']][5].':</span></center><br>');
-$game->out('<center>[<b>'.$BUILDING_NAME[$game->player['user_race']][5].'</b>]</center><br><br>');
+$game->out('<span class="caption">'.$BUILDING_NAME[$game->player['user_race']][5].':</span><br><br>');
+$game->out('[<b>'.$BUILDING_NAME[$game->player['user_race']][5].'</b>]<br><br>');
 
 function Zeit($minutes)
 {
@@ -124,8 +124,7 @@ if ($game->planet['unittrainid_nexttime']>0) return 0;
 				else // If Break
 				{
 					if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==10) {$db->query('UPDATE planets SET unittrain_actual="'.($game->planet['unittrain_actual']).'",unittrainid_nexttime="'.($ACTUAL_TICK+1).'" WHERE planet_id="'.$game->planet['planet_id'].'" LIMIT 1');}
-					if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==11) {$db->query('UPDATE planets SET 
-unittrain_actual="'.($game->planet['unittrain_actual']).'",unittrainid_nexttime="'.($ACTUAL_TICK+1).'" WHERE planet_id="'.$game->planet['planet_id'].'" LIMIT 1');}
+					if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==11) {$db->query('UPDATE planets SET unittrain_actual="'.($game->planet['unittrain_actual']).'",unittrainid_nexttime="'.($ACTUAL_TICK+1).'" WHERE planet_id="'.$game->planet['planet_id'].'" LIMIT 1');}
 					if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==12) {$db->query('UPDATE planets SET unittrain_actual="'.($game->planet['unittrain_actual']).'",unittrainid_nexttime="'.($ACTUAL_TICK+1).'" WHERE planet_id="'.$game->planet['planet_id'].'" LIMIT 1');}
 				}
 				$started=1;
@@ -193,9 +192,9 @@ $game->out(constant($game->sprache("Text3")));
 }
 else
 {
-$text='3 Minuten Pause';
-if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==11) $text='27 Minuten Pause';
-if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==12) $text='54 Minuten Pause';
+$text=constant($game->sprache("Text26"));
+if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==11) $text=constant($game->sprache("Text27"));
+if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==12) $text=constant($game->sprache("Text28"));
 $game->out('
 <center><table border="0" cellpadding="1" cellspacing="1" width="300" class="style_outer"><tr><td><center><table border=0 cellpadding=1 cellspacing=1 width=300 class="style_inner"><tr><td>
 <tr><td>'.
@@ -236,7 +235,7 @@ if ($game->planet['unittrainid_nexttime']>0) $game->out(constant($game->sprache(
 else $game->out(constant($game->sprache("Text13")));
 $game->out('<table border=0 cellpadding=2 cellspacing=2 width=398 class="style_inner">
 <tr><td><center>
-<form name="academy" method="post" action="'.GAME_EXE.'?a=academy"><input type="submit" name="start_list" class="button_nosize" value="Starten">&nbsp;&nbsp;&nbsp;<input type="submit" name="stop_list" class="button_nosize" value="Anhalten"></form>
+<form name="academy" method="post" action="'.GAME_EXE.'?a=academy"><input type="submit" name="start_list" class="button_nosize" value="'.constant($game->sprache("Text23")).'">&nbsp;&nbsp;&nbsp;<input type="submit" name="stop_list" class="button_nosize" value="'.constant($game->sprache("Text24")).'"></form>
 </center>
 </td></tr></table></td></tr></table>');
 
@@ -293,7 +292,8 @@ $game->out(constant($game->sprache("Text19")).'<br><input type="submit" name="ex
 if ($game->planet['building_6']<1)
 {
 //$game->out('.$game->sprache('Text20').$BUILDING_NAME[$game->player['user_race']]['5'].$game->sprache('Text21'));
-$game->out(constant($game->sprache("Text20")).$BUILDING_NAME[$game->player['user_race']]['5'].constant($game->sprache("Text21")));
+message(NOTICE, constant($game->sprache("Text20")).' '.$BUILDING_NAME[$game->player['user_race']][5].' '.constant($game->sprache("Text21")));
+//$game->out(constant($game->sprache("Text20")).$BUILDING_NAME[$game->player['user_race']]['5'].constant($game->sprache("Text21")));
 }
 else
 {
@@ -302,110 +302,110 @@ if (isset($_POST['exec_list']))
 
 if($_POST['listid_0'] == 2 && $game->planet['building_6'] < 5){
 
-echo 'Nee, TAP wir wollen doch nich BUGs nutzen"';
+echo constant($game->sprache("Text29"));
 
 }
 
 elseif($_POST['listid_1'] == 2 && $game->planet['building_6'] < 5){
 
-echo 'Nee, TAP wir wollen doch nich BUGs nutzen"';
+echo constant($game->sprache("Text29"));
 
 }
 
 elseif($_POST['listid_2'] == 2 && $game->planet['building_6'] < 5){
 
-echo 'Nee, TAP wir wollen doch nich BUGs nutzen"';
+echo constant($game->sprache("Text29"));
 
 }
 elseif($_POST['listid_3'] == 2 && $game->planet['building_6'] < 5){
 
-echo 'Nee, TAP wir wollen doch nich BUGs nutzen"';
+echo constant($game->sprache("Text29"));
 
 }
 
 elseif($_POST['listid_4'] == 2 && $game->planet['building_6'] < 5){
 
-echo 'Nee, TAP wir wollen doch nich BUGs nutzen"';
+echo constant($game->sprache("Text29"));
 
 }
 
 elseif($_POST['listid_5'] == 2 && $game->planet['building_6'] < 5){
 
-echo 'Nee, TAP wir wollen doch nich BUGs nutzen"';
+echo constant($game->sprache("Text29"));
 
 }
 elseif($_POST['listid_6'] == 2 && $game->planet['building_6'] < 5){
 
-echo 'Nee, TAP wir wollen doch nich BUGs nutzen"';
+echo constant($game->sprache("Text29"));
 
 }
 elseif($_POST['listid_7'] == 2 && $game->planet['building_6'] < 5){
 
-echo 'Nee, TAP wir wollen doch nich BUGs nutzen"';
+echo constant($game->sprache("Text29"));
 
 }
 elseif($_POST['listid_8'] == 2 && $game->planet['building_6'] < 5){
 
-echo 'Nee, TAP wir wollen doch nich BUGs nutzen"';
+echo constant($game->sprache("Text29"));
 
 }
 elseif($_POST['listid_9'] == 2 && $game->planet['building_6'] < 5){
 
-echo 'Nee, TAP wir wollen doch nich BUGs nutzen"';
+echo constant($game->sprache("Text29"));
 
 }
 elseif($_POST['listid_0'] == 3 && $game->planet['building_6'] < 9){
 
-echo 'Netter Versuch';
+echo constant($game->sprache("Text30"));
 
 }
 
 elseif($_POST['listid_1'] == 3 && $game->planet['building_6'] < 9){
 
-echo 'Netter Versuch';
+echo constant($game->sprache("Text30"));
 
 }
 
 elseif($_POST['listid_2'] == 3 && $game->planet['building_6'] < 9){
 
-echo 'Netter Versuch';
+echo constant($game->sprache("Text30"));
 
 }
 elseif($_POST['listid_3'] == 3 && $game->planet['building_6'] < 9){
 
-echo 'Netter Versuch';
+echo constant($game->sprache("Text30"));
 
 }
 
 elseif($_POST['listid_4'] == 3 && $game->planet['building_6'] < 9){
 
-echo 'Netter Versuch';
+echo constant($game->sprache("Text30"));
 
 }
 
 elseif($_POST['listid_5'] == 3 && $game->planet['building_6'] < 9){
 
-echo 'Netter Versuch';
+echo constant($game->sprache("Text30"));
 
 }
 elseif($_POST['listid_6'] == 3 && $game->planet['building_6'] < 9){
 
-echo 'Netter Versuch';
+echo constant($game->sprache("Text30"));
 
 }
 elseif($_POST['listid_7'] == 3 && $game->planet['building_6'] < 9){
 
-echo 'Netter Versuch';
+echo constant($game->sprache("Text30"));
 
 }
 elseif($_POST['listid_8'] == 3 && $game->planet['building_6'] < 9){
 
-echo 'Netter Versuch';
+echo constant($game->sprache("Text30"));
 
 }
 elseif($_POST['listid_9'] == 3 && $game->planet['building_6'] < 9){
 
-echo 'Netter Versuch';
+echo constant($game->sprache("Text30"));
 
 }
 

@@ -48,7 +48,7 @@ if(isset($_GET['enter_crazy_encode_mode'])) {
 		redirect('a=tactical_cartography&planet_id='.encode_planet_id((int)$_GET['planet_id']));
 	}
 	else {
-		die('Was willst du eigentlich?');
+		die(constant($game->sprache("TEXT6")));
 	}		
 }
 
@@ -115,7 +115,7 @@ function display_cartography_jump() {
   <form name="jump_form" method="post" action="'.parse_link('a=tactical_cartography').'">
   <tr>
     <td><input type="radio" name="jump_type" value="1" checked="checked"></td>
-    <td>Memo-Speicherplatz&nbsp;[<a href="'.parse_link('a=tactical_cartography&memo_setup').'">Setup</a>]</td>
+    <td>'.constant($game->sprache("TEXT7")).'&nbsp;[<a href="'.parse_link('a=tactical_cartography&memo_setup').'">'.constant($game->sprache("TEXT8")).'</a>]</td>
     <td><select name="memo_jump"'.( ($n_cmemo == 0) ? ' disabled="disabled"' : ' onClick="return document.jump_form.jump_type[0].checked = true;"' ).'>
     ');
 
@@ -125,7 +125,7 @@ function display_cartography_jump() {
         }
     }
     else {
-        $game->out('<option value="-">- leer -</option>');
+        $game->out('<option value="-">'.constant($game->sprache("TEXT9")).'</option>');
     }
 
     $game->out('
@@ -134,7 +134,7 @@ function display_cartography_jump() {
     
   <tr>
     <td width="20"><input type="radio" name="jump_type" value="2"></td>
-    <td width="230">Koordinaten auflösen</td>
+    <td width="230">'.constant($game->sprache("TEXT10")).'</td>
     <td width="150"><input class="field" type="text" name="jump_coords" onClick="return document.jump_form.jump_type[1].checked = true;"></td>
   </tr>
   
@@ -142,16 +142,16 @@ function display_cartography_jump() {
     <td><input type="radio" name="jump_type" value="3"></td>
     <td>
       <select class="select" name="jump_target" onClick="return document.jump_form.jump_type[2].checked = true;">
-        <option value="1">Sektor (Name oder ID 1-196)</option>
-        <option value="2">System (Name)</option>
-        <option value="3">Planet (Name)</option>
+        <option value="1">'.constant($game->sprache("TEXT11")).'</option>
+        <option value="2">'.constant($game->sprache("TEXT12")).'</option>
+        <option value="3">'.constant($game->sprache("TEXT13")).'</option>
       </select>
     </td>
     <td><input type="text" class="field" name="jump_id" onClick="return document.jump_form.jump_type[2].checked = true;"></td>
   </tr>
     
   <tr><td height="5"></td></tr>
-  <tr><td align="center" colspan="3"><input class="button" type="submit" name="jump" value="Direkt springen zu"></td></tr>
+  <tr><td align="center" colspan="3"><input class="button" type="submit" name="jump" value="'.constant($game->sprache("TEXT14")).'"></td></tr>
   <tr><td height="2"></td></tr>
   </form>
 </table>
@@ -173,14 +173,14 @@ function display_ferengi_transfer($planet_id,$planet_system,$system_x,$system_y,
 <br><br>
 <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="400">
   <tr>
-    <td><b>Ferengi Handelsgilde / Transporte  <b>[<a href="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id'].'&strade=1').'"><i>Wieder anzeigen</i></a>]</b><br></td></tr></table>');
+    <td><b>'.constant($game->sprache("TEXT15")).'  <b>[<a href="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id'].'&strade=1').'"><i>'.constant($game->sprache("TEXT16")).'</i></a>]</b><br></td></tr></table>');
     elseif ($build_11<1)
     {
     $game->out('
 <br><br>
 <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="400">
   <tr>
-    <td><b>Ferengi Handelsgilde / Transporte  <b>[<a href="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id'].'"&strade=0').'"><i>Ausblenden</i></a>]</b><br><b><br>Zielplanet verfgt ber kein Handelszentrum!</b><br></td></tr></table>');
+    <td><b>'.constant($game->sprache("TEXT15")).'  <b>[<a href="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id'].'"&strade=0').'"><i>'.constant($game->sprache("TEXT17")).'</i></a>]</b><br><b><br>'.constant($game->sprache("TEXT18")).'</b><br></td></tr></table>');
     }
     else
     {
@@ -231,8 +231,8 @@ function display_ferengi_transfer($planet_id,$planet_system,$system_x,$system_y,
 <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="400">
   <form name="tradeform" method="post" action="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id']).'">
   <tr>
-    <td colspan=3><b>Ferengi Handelsgilde mit Transport beauftragen ('.Zeit($distance*TICK_DURATION).')</b><br><br>
-    <b>Steuern:</b><br>
+    <td colspan=3><b>'.constant($game->sprache("TEXT19")).' ('.Zeit($distance*TICK_DURATION).')</b><br><br>
+    <b>'.constant($game->sprache("TEXT20")).'</b><br>
     <img src='.$game->GFX_PATH.'menu_metal_small.gif>&nbsp;&nbsp;&nbsp;<b id="res1">0</b>
     <img src='.$game->GFX_PATH.'menu_mineral_small.gif>&nbsp;&nbsp;&nbsp;<b id="res2">0</b>
     <img src='.$game->GFX_PATH.'menu_latinum_small.gif>&nbsp;&nbsp;&nbsp;<b id="res3">0</b>
@@ -258,8 +258,8 @@ function display_ferengi_transfer($planet_id,$planet_system,$system_x,$system_y,
   </tr>
   <tr>
     <td colspan=3>
-	<center><input class="button" type="submit" name="trade" value="Lieferung starten"><br><br><b>
-	[<a href="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id'].'&strade=0').'"><i>Händler ausblenden</i></a>]</b>
+	<center><input class="button" type="submit" name="trade" value="'.constant($game->sprache("TEXT21")).'"><br><br><b>
+	[<a href="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id'].'&strade=0').'"><i>'.constant($game->sprache("TEXT22")).'</i></a>]</b>
 	</center>
     </td>
   </tr>
@@ -330,25 +330,25 @@ if ($game->planet['planet_id']==$_GET['planet_id']) redirect('a=tactical_cartogr
         }
 
         if($dest['user_vacation_start']<=$config_data['tick_id'] && $dest['user_vacation_end']>=$config_data['tick_id']) {
-           message(NOTICE, 'Du kannst keinem im Urlaubsmodus befindlichen Spieler einen Ferengitransport schicken.');
+           message(NOTICE, constant($game->sprache("TEXT23")));
         }
         if(empty($dest['planet_id'])) {
-            message(NOTICE, 'Der Planet oder das System existieren nicht!');
+            message(NOTICE, constant($game->sprache("TEXT24")));
         }
         
 	 if($dest['planet_owner']==0) {
-            message(NOTICE, 'Der Planet ist unbewohnt!');
+            message(NOTICE, constant($game->sprache("TEXT25")));
         }
 
         //Aktiviert by Mojo1987, juhu das HZ lebt
              if($dest['planet_owner']!=$game->player['user_id']) {
-               message(NOTICE, 'Es ist nur der Transport zwischen eigenen Planeten erlaubt.');
+               message(NOTICE, constant($game->sprache("TEXT26")));
              } 
 	
         if($game->SITTING_MODE){ 
 
           if($dest['planet_owner']!=$game->player['user_id']) {
-            message(NOTICE, 'Im Sitting-Modus ist nur der Transport zwischen eigenen Planeten erlaubt.');
+            message(NOTICE, constant($game->sprache("TEXT27")));
           }
         }
 
@@ -414,20 +414,20 @@ elseif(!empty($_POST['jump'])) {
     switch($type) {
         case 1:
             if(empty($_POST['memo_jump'])) {
-                message(NOTICE, 'Du hast noch nichts im Memo gespeichert');
+                message(NOTICE, constant($game->sprache("TEXT28")));
             }
         
             $memo_pieces = explode('-', $_POST['memo_jump']);
             
             if(count($memo_pieces) != 2) {
-                message(GENERAL, 'Ungltige Memo-Koordinaten', 'count($memo_pieces) = '.count($memo_pieces));
+                message(GENERAL, constant($game->sprache("TEXT29")), 'count($memo_pieces) = '.count($memo_pieces));
             }
             
             $view = (int)$memo_pieces[0];
             $id = (int)$memo_pieces[1];
             
             if(empty($tc_views_map[$view])) {
-                message(GENERAL, 'Ungltige Memo-Ansicht', '$tc_views_map[$view] = empty');
+                message(GENERAL, constant($game->sprache("TEXT30")), '$tc_views_map[$view] = empty');
             }
             
             // Workaround fr neues encode_planet_id        
@@ -439,7 +439,7 @@ elseif(!empty($_POST['jump'])) {
         
         case 2:
             if(empty($_POST['jump_coords'])) {
-                message(NOTICE, 'Keine Koordinaten angegeben');
+                message(NOTICE, constant($game->sprache("TEXT31")));
             }
             
             $coord_pieces = explode(':', $_POST['jump_coords']);
@@ -455,13 +455,13 @@ elseif(!empty($_POST['jump'])) {
             $numbers = array('1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9);
 
             if(!isset($letters[$coord_pieces[1][0]])) {
-                message(NOTICE, 'Ungltige Y-Koordinate fr System angegeben', $coord_pieces[1][0].' no part of $letters');
+                message(NOTICE, constant($game->sprache("TEXT32")), $coord_pieces[1][0].' '.constant($game->sprache("TEXT33")));
             }
 
             $system_y = $letters[$coord_pieces[1][0]];
 
             if(!isset($numbers[$coord_pieces[1][1]])) {
-                message(NOTICE, 'Ungltige X-Koordinate fr System angegeben', $coord_pieces[1][1].' no part of $numbers');
+                message(NOTICE, constant($game->sprache("TEXT34")), $coord_pieces[1][1].' '.constant($game->sprache("TEXT35")));
             }
 
             $system_x = $numbers[$coord_pieces[1][1]];
@@ -478,7 +478,7 @@ elseif(!empty($_POST['jump'])) {
                 }
 
                 if(empty($system['system_id'])) {
-                    message(NOTICE, 'Es existiert kein System mit den Koordinaten <b>'.$_POST['jump_coords'].'</b> (<a href="'.parse_link('a=tactical_cartography&sector_id='.$sector_id).'">Sektor-Ansicht</a>)');
+                    message(NOTICE, constant($game->sprache("TEXT36")).' <b>'.$_POST['jump_coords'].'</b> (<a href="'.parse_link('a=tactical_cartography&sector_id='.$sector_id).'">'.constant($game->sprache("TEXT37")).'</a>)');
                 }
 
                 redirect('a=tactical_cartography&system_id='.encode_system_id($system['system_id']));
@@ -499,13 +499,13 @@ elseif(!empty($_POST['jump'])) {
                 }
 
                 if(empty($planet['planet_id'])) {
-                    message(NOTICE, 'Ex existiert kein Planet mit den Koordinaten <b>'.$_POST['jump_coords'].'</b> (<a href="'.parse_link('a=tactical_cartography&sector_id='.$sector_id).'">Sektor-Ansicht</a>)');
+                    message(NOTICE, constant($game->sprache("TEXT38")).' <b>'.$_POST['jump_coords'].'</b> (<a href="'.parse_link('a=tactical_cartography&sector_id='.$sector_id).'">'.constant($game->sprache("TEXT37")).'</a>)');
                 }
 
                 redirect('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id']));
             }
             else {
-                message(NOTICE, 'Ungültiges Koordinatenformat');
+                message(NOTICE, constant($game->sprache("TEXT39")));
             }
         break;
         
@@ -513,7 +513,7 @@ elseif(!empty($_POST['jump'])) {
             $target = (int)$_POST['jump_target'];
             
             if(empty($_POST['jump_id'])) {
-                message(NOTICE, 'Kein Ziel angegeben');
+                message(NOTICE, constant($game->sprache("TEXT40")));
             }
         
             switch($target) {
@@ -544,7 +544,7 @@ elseif(!empty($_POST['jump'])) {
                         $n_systems = count($systems);
 
                         if($n_systems == 0) {
-                            message(NOTICE, 'Das System <b>'.$system_name.'</b> existiert nicht!');
+                            message(NOTICE, constant($game->sprache("TEXT41")).$system_name.constant($game->sprache("TEXT42")));
                         }
                         elseif($n_systems == 1) {
                             redirect('a=tactical_cartography&system_id='.decode_system_id($systems[0]['system_id']));
@@ -553,7 +553,7 @@ elseif(!empty($_POST['jump'])) {
                             $game->out('
 <table class="style_inner" width="400" align="center" cellspacing="2" cellpadding="2">
   <tr>
-    <td>Es wurden <b>'.$n_systems.'</b> Systeme mit dem Namen <b>'.$system_name.'</b> gefunden:<br><br>
+    <td>'.constant($game->sprache("TEXT43")).' <b>'.$n_systems.'</b> '.constant($game->sprache("TEXT44")).' <b>'.$system_name.'</b> '.constant($game->sprache("TEXT45")).'<br><br>
                             ');
 
                             for($i = 0; $i < $n_systems; ++$i) {
@@ -570,7 +570,7 @@ elseif(!empty($_POST['jump'])) {
 //                        redirect('a=tactical_cartography&planet_id='.$_POST['jump_id']);
 //                    }
 //                    else {
-                        $planet_name = addslashes($_POST['jump_id']);                      
+                        $planet_name = addslashes($_POST['jump_id']);
 
                         $sql = 'SELECT p.planet_id, p.planet_name,p.sector_id, p.system_id, p.planet_distance_id,
                                        s.system_x, s.system_y
@@ -590,7 +590,7 @@ elseif(!empty($_POST['jump'])) {
                         elseif($lower_planet_name == 'unbek. planet') $n_planets = 0;
 
                         if($n_planets == 0) {
-                            message(NOTICE, 'Der Planet <b>'.$planet_name.'</b> existiert nicht!');
+                            message(NOTICE, constant($game->sprache("TEXT46")).$planet_name.constant($game->sprache("TEXT42")));
                         }
 			
                         elseif($n_planets == 1) {
@@ -600,7 +600,7 @@ elseif(!empty($_POST['jump'])) {
                             $game->out('
 <table class="style_inner" width="80%" align="center" cellspacing="2" cellpadding="2">
   <tr>
-    <td>Es wurden <b>'.$n_planets.'</b> Planeten mit dem Namen <b>'.$planet_name.'</b> gefunden:<br><br>
+    <td>'.constant($game->sprache("TEXT43")).' <b>'.$n_planets.'</b> '.constant($game->sprache("TEXT47")).' <b>'.$planet_name.'</b> '.constant($game->sprache("TEXT45")).'<br><br>
                             ');
 
                             for($i = 0; $i < $n_planets; ++$i) {
@@ -616,19 +616,19 @@ elseif(!empty($_POST['jump'])) {
                 break;
                 
                 default:
-                    message(GENERAL, 'Ungültiger Target-Typ', '$target = '.$target);
+                    message(GENERAL, constant($game->sprache("TEXT48")), '$target = '.$target);
                 break;
             }
         break;
         
         default:
-            message(GENERAL, 'Ungültiger Jump-Typ', '$type = '.$type);
+            message(GENERAL, constant($game->sprache("TEXT49")), '$type = '.$type);
         break;
     }
 }
 elseif(!empty($_POST['memo_add'])) {
     if(empty($_POST['memo_name'])) {
-        message(NOTICE, 'Kein Name fr Memo-Eintrag angegeben');
+        message(NOTICE, constant($game->sprache("TEXT50")));
     }
     
     $memo_name = addslashes($_POST['memo_name']);
@@ -643,7 +643,7 @@ elseif(!empty($_POST['memo_add'])) {
         }
         
         if($cmemo_count['n'] >= 15) {
-            message(NOTICE, 'Du hast schon 15 Einträge im Memo gespeichert');
+            message(NOTICE, constant($game->sprache("TEXT51")));
         }
         
         $sql = 'INSERT INTO tc_coords_memo (user_id, memo_name, memo_view, memo_id)
@@ -665,11 +665,11 @@ elseif(!empty($_POST['memo_add'])) {
         }
 
         if(empty($cmemo['tcm_id'])) {
-            message(NOTICE, 'Der Memo-Eintrag existiert nicht');
+            message(NOTICE, constant($game->sprache("TEXT52")));
         }
 
         if($cmemo['user_id'] != $game->uid) {
-            message(NOTICE, 'Der Memo-Eintrag existiert nicht');
+            message(NOTICE, constant($game->sprache("TEXT52")));
         }
         
         $sql = 'UPDATE tc_coords_memo
@@ -697,11 +697,11 @@ elseif(!empty($_GET['memo_delete'])) {
     }
     
     if(empty($cmemo['tcm_id'])) {
-        message(NOTICE, 'Der Memo-Eintrag existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT52")));
     }
     
     if($cmemo['user_id'] != $game->uid) {
-        message(NOTICE, 'Der Memo-Eintrag existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT52")));
     }
     
     $sql = 'DELETE FROM tc_coords_memo
@@ -725,28 +725,28 @@ elseif(isset($_GET['memo_setup'])) {
     $n_cmemo = $db->num_rows($q_cmemo);
 
     $game->out('
-<center><span class="caption">Taktische Zentrale:</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">Stellare Kartographie</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">Schiffsbewegungen</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">Spieler Info</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">Kolonisierung</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">Sensoren</a>]</center><br><br>
+<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">'.constant($game->sprache("TEXT1")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]</center><br><br>
     
 <table width="400" border="0"><form method="post" action="'.parse_link('a=tactical_cartography').'"><tr><td>
-  Hier kannst du die aktuelle Position in der stellaren Kartographie im Memo abspeichern, um schnell wieder zu ihr zu kommen.
+  '.constant($game->sprache("TEXT53")).'
   <br><br>
-  noch freie Speicherplatze: <b>'.(15 - $n_cmemo).'</b> / <b>15</b><br><br>
-  Name des Eintrags:&nbsp;&nbsp;<input class="field" type="text" name="memo_name" value=""><br><br>
+  '.constant($game->sprache("TEXT54")).' <b>'.(15 - $n_cmemo).'</b> / <b>15</b><br><br>
+  '.constant($game->sprache("TEXT55")).'&nbsp;&nbsp;<input class="field" type="text" name="memo_name" value=""><br><br>
     ');
     
     while($cmemo = $db->fetchrow($q_cmemo)) {
-        $game->out('<input type="radio" name="memo_entry" value="'.$cmemo['tcm_id'].'">&nbsp;'.$cmemo['memo_name'].'&nbsp;[<a href="'.parse_link('a=tactical_cartography&memo_delete='.$cmemo['tcm_id']).'">Löschen</a>]<br><br>');
+        $game->out('<input type="radio" name="memo_entry" value="'.$cmemo['tcm_id'].'">&nbsp;'.$cmemo['memo_name'].'&nbsp;[<a href="'.parse_link('a=tactical_cartography&memo_delete='.$cmemo['tcm_id']).'">'.constant($game->sprache("TEXT56")).'</a>]<br><br>');
     }
     
     if($n_cmemo < 15) {
-        $game->out('<input type="radio" name="memo_entry" value="-1" checked="checked">&nbsp;<i>freier Slot<i><br><br>');
+        $game->out('<input type="radio" name="memo_entry" value="-1" checked="checked">&nbsp;<i>'.constant($game->sprache("TEXT57")).'<i><br><br>');
     }
     
-    $game->out('<br><input class="button" type="submit" name="memo_add" value="Speichern"></td></tr></form></table>');
+    $game->out('<br><input class="button" type="submit" name="memo_add" value="'.constant($game->sprache("TEXT58")).'"></td></tr></form></table>');
 }
 elseif(!empty($_GET['planet_id'])) {
     if(is_numeric($_GET['planet_id'])) {
-    	die('Bitte melde dies im <a href="http://forum.stgcsource.net/board.php?boardid=108">Bugforum von BB</a> unter Angabe der Seite, von der du gekommen bist bzw. was du tun wolltest.<br><br>Achte jedoch bitte darauf, dass zu genau derselben Aktion nicht schon ein Thread existiert!');
+    	die(constant($game->sprache("TEXT59")));
     }
     else {
     	$planet_id = (int)decode_planet_id($_GET['planet_id']);
@@ -766,7 +766,7 @@ elseif(!empty($_GET['planet_id'])) {
         }
         
         if(empty($_system['system_id'])) {
-            message(NOTICE, 'Das System <b>'.$planet['system_id'].'</b> existiert nicht');
+            message(NOTICE, constant($game->sprache("TEXT41")).$planet['system_id'].constant($game->sprache("TEXT42")));
         }
         
         $planet += $_system;
@@ -783,7 +783,7 @@ elseif(!empty($_GET['planet_id'])) {
         }
 
         if(empty($planet['planet_id'])) {
-            message(NOTICE, 'Der Planet oder das System existieren nicht!');
+            message(NOTICE, constant($game->sprache("TEXT24")));
         }
     }
     
@@ -817,7 +817,7 @@ elseif(!empty($_GET['planet_id'])) {
     
     $quadrant_id = $game->get_quadrant($planet['sector_id']);
 
-    $planet_thumb = (!empty($planet['planet_thumb'])) ? $planet['planet_thumb'] : $game->PLAIN_GFX_PATH.'planet_type_'.$planet['planet_type'].'.gif';
+    $planet_thumb = (!empty($planet['planet_thumb'])) ? $planet['planet_thumb'] : $game->PLAIN_GFX_PATH.'planet_type_'.$planet['planet_type'].'.png';
     $planet_type = strtoupper($planet['planet_type']);
 
     $game->out('
@@ -832,15 +832,15 @@ form {
 //-->
 </style>
 
-<center><span class="caption">Taktische Zentrale:</span><br><br>[<b>Stellare Kartographie</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">Schiffsbewegungen</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">Spieler Info</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">Kolonisierung</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">Sensoren</a>]</center><br><br>
+<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<b>'.constant($game->sprache("TEXT1")).'</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]</center><br><br>
 
 <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td width="20">&nbsp;</td>
     <td width="380">
-        <a href="'.parse_link('a=tactical_cartography&galaxy').'">Galaxie</a> ->
+        <a href="'.parse_link('a=tactical_cartography&galaxy').'">'.constant($game->sprache("TEXT60")).'</a> ->
         <a href="'.parse_link('a=tactical_cartography&quadrant_id='.$quadrant_id).'">'.$QUADRANT_NAME[$quadrant_id].'</a> ->
-        <a href="'.parse_link('a=tactical_cartography&sector_id='.$planet['sector_id']).'">Sektor '.$game->get_sector_name($planet['sector_id']).'</a> ->
+        <a href="'.parse_link('a=tactical_cartography&sector_id='.$planet['sector_id']).'">'.constant($game->sprache("TEXT61")).' '.$game->get_sector_name($planet['sector_id']).'</a> ->
         <a href="'.parse_link('a=tactical_cartography&system_id='.encode_system_id($planet['system_id'])).'">'.$planet['system_name'].'</a>
     </td>
   </tr>
@@ -859,11 +859,11 @@ form {
     <td width="280" valign="top">
       <table width="280" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td valign="top">Name:</td>
+          <td valign="top">'.constant($game->sprache("TEXT62")).'</td>
           <td>&nbsp;<b>'.$planet['planet_name'].'</b>&nbsp;('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')</td>
         </tr>
         <tr>
-          <td valign="top">Klasse:</td>
+          <td valign="top">'.constant($game->sprache("TEXT63")).'</td>
           <td>&nbsp;<a href="'.parse_link('a=database&planet_type='.$planet_type.'#'.$planet_type).'">'.$planet_type.'</a></td>
         </tr>
         <tr height="15"><td></td></tr>
@@ -872,20 +872,20 @@ form {
     if($free_planet) {
         $game->out('
         <tr>
-          <td colspan="2" valign="top"><i>unbewohnt</i></td>
+          <td colspan="2" valign="top"><i>'.constant($game->sprache("TEXT64")).'</i></td>
         </tr>
         ');
     }
     elseif($own_planet) {
         $game->out('
         <tr>
-          <td valign="top" colspan="2">'.( ($planet_id == $game->player['user_capital']) ? '<i>Heimatplanet</i>' : '<i>eigene Kolonie</i>' ).'</td>
+          <td valign="top" colspan="2">'.( ($planet_id == $game->player['user_capital']) ? constant($game->sprache("TEXT65")) : constant($game->sprache("TEXT66")) ).'</td>
         </tr>
         <tr>
-          <td valign="top" colspan="2">'.( ($planet_id != $game->planet['planet_id']) ? '<a href="'.parse_link('a=headquarter&switch_active_planet='.$planet_id).'"><i>zu diesem Planeten wechseln</i></a>' : '&nbsp;' ).'</td>
+          <td valign="top" colspan="2">'.( ($planet_id != $game->planet['planet_id']) ? '<a href="'.parse_link('a=headquarter&switch_active_planet='.$planet_id).'"><i>'.constant($game->sprache("TEXT67")).'</i></a>' : '&nbsp;' ).'</td>
         </tr>
         <tr>
-          <td valign="top">Punkte:</td>
+          <td valign="top">'.constant($game->sprache("TEXT68")).'</td>
           <td>&nbsp;<u>'.$planet['planet_points'].'</u>&nbsp;/&nbsp;<u>'.( ($planet_id == $game->player['user_capital']) ? $MAX_POINTS[1] : $MAX_POINTS[0] ).'</u></td>
         </tr>
         ');
@@ -893,14 +893,14 @@ form {
     else {
         $game->out('
         <tr>
-          <td valign="top">Herrscher:</td>
+          <td valign="top">'.constant($game->sprache("TEXT69")).'</td>
           <td>&nbsp;<a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['planet_owner']).'">'.$planet_owner['user_name'].'</a> ('.$planet_owner['user_points'].')</td>
         </tr>
         <tr>
-          <td valign="top">Allianz</td>
-          <td>&nbsp;'.( (!empty($planet_owner['alliance_id'])) ? '<a href="'.parse_link('a=stats&a2=viewalliance&id='.$planet_owner['alliance_id']).'">'.$planet_owner['alliance_name'].'</a>&nbsp;[<a href="'.parse_link('a=stats&a2=viewalliance&id='.$planet_owner['alliance_id']).'">'.$planet_owner['alliance_tag'].'</a>]<br>' : 'keine' ).'</td>
+          <td valign="top">'.constant($game->sprache("TEXT70")).'</td>
+          <td>&nbsp;'.( (!empty($planet_owner['alliance_id'])) ? '<a href="'.parse_link('a=stats&a2=viewalliance&id='.$planet_owner['alliance_id']).'">'.$planet_owner['alliance_name'].'</a>&nbsp;[<a href="'.parse_link('a=stats&a2=viewalliance&id='.$planet_owner['alliance_id']).'">'.$planet_owner['alliance_tag'].'</a>]<br>' : constant($game->sprache("TEXT71")) ).'</td>
         <tr>
-          <td valign="top">Punkte:</td>
+          <td valign="top">'.constant($game->sprache("TEXT68")).'</td>
           <td>&nbsp;<u>'.$planet['planet_points'].'</u>&nbsp;/&nbsp;<u>'.( ($planet_id == $planet_owner['user_capital']) ? $MAX_POINTS[1] : $MAX_POINTS[0] ).'</u></td>
         </tr>
         ');
@@ -933,8 +933,8 @@ form {
 <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
 	<td width="50">&nbsp;</td>
-	<td width="150"><b>Objekt</b></td>
-	<td width="110"><b>von</b></td>
+	<td width="150"><b>'.constant($game->sprache("TEXT72")).'</b></td>
+	<td width="110"><b>'.constant($game->sprache("TEXT73")).'</b></td>
 	<td width="90">&nbsp;</td>
   </tr>
   <form name="srs_form" method="post" action="">
@@ -945,8 +945,8 @@ form {
   <tr>
     <td align="center"><img src="'.$planet_thumb.'" width="20" height="20" border="0"></td>
     <td>'.$planet['planet_name'].'</td>
-    <td><i>unbewohnt</i></td>
-    '.( ($game->SITTING_MODE) ? '' : '<td><input type="image" src="'.$game->GFX_PATH.'tc_colo.gif" name="colo_submit" title="Kolonisieren" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=colo_setup\'"' ).'></td>' ).'
+    <td><i>'.constant($game->sprache("TEXT73a")).'</i></td>
+    '.( ($game->SITTING_MODE) ? '' : '<td><input type="image" src="'.$game->GFX_PATH.'tc_colo.gif" name="colo_submit" title="'.constant($game->sprache("TEXT74")).'" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=colo_setup\'"' ).'></td>' ).'
   </tr>
             ');
         }
@@ -957,12 +957,12 @@ form {
     <td>'.$planet['planet_name'].'</td>
     <td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet_owner['user_id'].'">'.$planet_owner['user_name']).'</a></td>
     <td>
-      <input type="image" src="'.$game->GFX_PATH.'tc_transport.gif" name="ptransport_submit" title="Transportieren" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_fleets_loadingp&to&return_to='.urlencode('a=tactical_cartography&planet_id='.encode_planet_id($planet_id))).'\';">&nbsp;
+      <input type="image" src="'.$game->GFX_PATH.'tc_transport.gif" name="ptransport_submit" title="'.constant($game->sprache("TEXT75")).'" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_fleets_loadingp&to&return_to='.urlencode('a=tactical_cartography&planet_id='.encode_planet_id($planet_id))).'\';">&nbsp;
             ');
             
             if(!$own_planet) {
                 $game->out('
-      '.( ($game->SITTING_MODE) ? '' : '<input type="image" src="'.$game->GFX_PATH.'tc_attack.gif" title="Angreifen" name="attack_submit" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=attack_setup&user_id='.$planet['planet_owner']).'\';">' ).'
+      '.( ($game->SITTING_MODE) ? '' : '<input type="image" src="'.$game->GFX_PATH.'tc_attack.gif" title="'.constant($game->sprache("TEXT76")).'" name="attack_submit" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=attack_setup&user_id='.$planet['planet_owner']).'\';">' ).'
                 ');
             }
             
@@ -1008,17 +1008,17 @@ form {
             $game->out('
   <tr>
     <td align="center"><img src="'.$game->PLAIN_GFX_PATH.'fleet_'.$fleet['user_race'].'.gif" border="0"></td>
-    <td><i>'.( ($fleet['n_ships'] == 1) ? '1 Schiff' : $fleet['n_ships'].' Schiffe' ).'</i> [<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id).$detail_link).'">'.$detail_symbol.'</a>]</td>
+    <td><i>'.( ($fleet['n_ships'] == 1) ? constant($game->sprache("TEXT77")) : $fleet['n_ships'].' '.constant($game->sprache("TEXT78")) ).'</i> [<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id).$detail_link).'">'.$detail_symbol.'</a>]</td>
     <td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$fleet['user_id']).'">'.$fleet['user_name'].'</a></td>
     <td>
             ');
             
             if($fleet['user_id'] != $game->player['user_id']) {
-                $game->out('<input type="image" src="'.$game->GFX_PATH.'tc_transport.gif" title="Transportieren" name="beam_submit" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_fleets_loadingf&to_unit='.$fleet['user_id'].'&return_to='.urlencode('a=tactical_cartography&planet_id='.encode_planet_id($planet_id))).'\';">&nbsp;');
+                $game->out('<input type="image" src="'.$game->GFX_PATH.'tc_transport.gif" title="'.constant($game->sprache("TEXT75")).'" name="beam_submit" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_fleets_loadingf&to_unit='.$fleet['user_id'].'&return_to='.urlencode('a=tactical_cartography&planet_id='.encode_planet_id($planet_id))).'\';">&nbsp;');
                 
                 if($planet['planet_owner'] != $fleet['user_id']) {
                     $game->out('
-      '.( ($game->SITTING_MODE) ? '' : '<input type="image" src="'.$game->GFX_PATH.'tc_attack.gif" title="Angreifen" name="attack_submit" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=attack_setup&user_id='.$fleet['user_id']).'\';">' ).'
+      '.( ($game->SITTING_MODE) ? '' : '<input type="image" src="'.$game->GFX_PATH.'tc_attack.gif" title="'.constant($game->sprache("TEXT76")).'" name="attack_submit" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=attack_setup&user_id='.$fleet['user_id']).'\';">' ).'
                     ');
                 }
             }
@@ -1095,8 +1095,8 @@ form {
 <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td>
-      <b>1</b> Flottenverband von dir fliegt diesen Planeten an.&nbsp;[<a href="'.parse_link('a=tactical_moves&dest='.encode_planet_id($planet_id)).'">Details</a>]<br><br>
-      Ankunft: <b id="timer2" title="time1_'.( ( $ticks_left * TICK_DURATION * 60) + $NEXT_TICK).'_type2_2">&nbsp;</b>
+      <b>1</b> '.constant($game->sprache("TEXT79")).'.&nbsp;[<a href="'.parse_link('a=tactical_moves&dest='.encode_planet_id($planet_id)).'">'.constant($game->sprache("TEXT80")).'</a>]<br><br>
+      '.constant($game->sprache("TEXT81")).' <b id="timer2" title="time1_'.( ( $ticks_left * TICK_DURATION * 60) + $NEXT_TICK).'_type2_2">&nbsp;</b>
     </td>
   </tr>
 </table>
@@ -1113,8 +1113,8 @@ form {
 <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td>
-      <b>'.$n_moves.'</b> Flottenverbände von dir fliegen diesen Planeten an.&nbsp;[<a href="'.parse_link('a=tactical_moves&dest='.encode_planet_id($planet_id)).'">Details</a>]<br><br>
-      Ankunft des 1. Verbandes: <b id="timer2" title="time1_'.( $ticks_left * TICK_DURATION * 60).'_type2_2">&nbsp;</b>
+      <b>'.$n_moves.'</b> '.constant($game->sprache("TEXT79")).'.&nbsp;[<a href="'.parse_link('a=tactical_moves&dest='.encode_planet_id($planet_id)).'">'.constant($game->sprache("TEXT80")).'</a>]<br><br>
+      '.constant($game->sprache("TEXT82")).' <b id="timer2" title="time1_'.( $ticks_left * TICK_DURATION * 60).'_type2_2">&nbsp;</b>
     </td>
   </tr>
 </table>
@@ -1141,7 +1141,7 @@ form {
 <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <form name="send_form" method="post" action="'.parse_link('a=ship_send').'" onSubmit="return document.send_form.submit.disabled = true;">
   <tr>
-    <td colspan="2" align="center"><b>Flotten zu diesem Planeten schicken</b><br><br>
+    <td colspan="2" align="center"><b>'.constant($game->sprache("TEXT83")).'</b><br><br>
   </tr>
   <tr>
     <td width="250" align="center">
@@ -1149,14 +1149,14 @@ form {
             ');
             
             while($fleet = $db->fetchrow($q_fleets)) {
-                $game->out('<option value="'.$fleet['fleet_id'].'">'.$fleet['fleet_name'].' ('.$fleet['n_ships'].' Schiffe)</option>');
+                $game->out('<option value="'.$fleet['fleet_id'].'">'.$fleet['fleet_name'].' ('.$fleet['n_ships'].' '.constant($game->sprache("TEXT78")).')</option>');
             }
             
             $game->out('
       </select>
     </td>
     <td width="150" align="left" valign="middle">
-      <input type="submit" class="button" name="submit" value="Weiter >>">
+      <input type="submit" class="button" name="submit" value="'.constant($game->sprache("TEXT84")).'">
     </td>
   </tr>
   <input type="hidden" name="dest" value="'.encode_planet_id($planet_id).'">
@@ -1185,7 +1185,7 @@ elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty(
 
     if(!empty($_GET['system_id'])) {
     	if(is_numeric($_GET['system_id'])) {
-    		die('Bitte melde dies im <a href="http://forum.stgcsource.net/board.php?boardid=108">Bugforum von Fried-Egg</a> unter Angabe der Seite, von der du gekommen bist bzw. was du tun wolltest.<br><br>Achte jedoch bitte darauf, dass zu genau derselben Aktion nicht schon ein Thread existiert!');
+    		die(constant($game->sprache("TEXT59")));
     	}
     	else {
     		$system_id = (int)decode_system_id($_GET['system_id']);
@@ -1200,25 +1200,25 @@ elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty(
         }
 
         if(empty($system['sector_id'])) {
-            message(NOTICE, 'Das System <b>'.$system_id.'</b> existiert nicht');
+            message(NOTICE, constant($game->sprache("TEXT41")).$system_id.constant($game->sprache("TEXT42")));
         }
 
         $quadrant_id = $game->get_quadrant($system['sector_id']);
 
-        $nav_html = '<a href="'.parse_link('a=tactical_cartography&galaxy').'">Galaxie</a> -> '.
+        $nav_html = '<a href="'.parse_link('a=tactical_cartography&galaxy').'">'.constant($game->sprache("TEXT60")).'</a> -> '.
                     '<a href="'.parse_link('a=tactical_cartography&quadrant_id='.$quadrant_id).'">'.$QUADRANT_NAME[$quadrant_id].'</a> -> '.
-                    '<a href="'.parse_link('a=tactical_cartography&sector_id='.$system['sector_id']).'">Sektor '.$game->get_sector_name($system['sector_id']).'</a> -> '.$system['system_name'];
+                    '<a href="'.parse_link('a=tactical_cartography&sector_id='.$system['sector_id']).'">'.constant($game->sprache("TEXT61")).' '.$game->get_sector_name($system['sector_id']).'</a> -> '.$system['system_name'];
 
         $map_html = $maps->create_system_map($system_id);
 
         $img_html = '<img border="0" src="./maps/images/cache/'.md5($game->player['user_id']).'.png" usemap="#system_map">';
 
-        $legend_html = '<span style="color: #00FF00;">grün</span> - Eigener Planet<br>'.
-                       '<span style="color: #FFFF00;">gelb</span> - Aktiver Planet<br>'.
-                       '<span style="color: #0000FF;">blau</span> - Planet eines Allianzmitgliedes<br>'.
-                       '<span style="color: #B4B4B4;">grau</span> - Planet unter Angriffsschutz<br>'.
-                       '<span style="color: #FF0000;">rot</span> - Planet eines Kriegsgegners<br>'.
-                       '<span style="color: #89CAEF;">hellblau</span> - Planet eines Bündnispartners<br>';
+        $legend_html = constant($game->sprache("TEXT85")).
+                       constant($game->sprache("TEXT86")).
+                       constant($game->sprache("TEXT87")).
+                       constant($game->sprache("TEXT88")).
+                       constant($game->sprache("TEXT89")).
+                       constant($game->sprache("TEXT90"));
 
 ;
                        
@@ -1232,8 +1232,8 @@ elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty(
         $numbers = array('1', '2', '3', '4', '5', '6', '7', '8', '9');
         $letters = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I');
 
-        $nav_html = '<a href="'.parse_link('a=tactical_cartography&galaxy').'">Galaxie</a> -> '.
-                    '<a href="'.parse_link('a=tactical_cartography&quadrant_id='.$quadrant_id).'">'.$QUADRANT_NAME[$quadrant_id].'</a> -> Sektor '.$game->get_sector_name($sector_id);
+        $nav_html = '<a href="'.parse_link('a=tactical_cartography&galaxy').'">'.constant($game->sprache("TEXT60")).'</a> -> '.
+                    '<a href="'.parse_link('a=tactical_cartography&quadrant_id='.$quadrant_id).'">'.$QUADRANT_NAME[$quadrant_id].'</a> -> '.constant($game->sprache("TEXT61")).' '.$game->get_sector_name($sector_id);
 
         $map_html = $maps->create_sector_map($sector_id);
 
@@ -1248,16 +1248,19 @@ elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty(
 
         extract($game->get_quadrant_range($quadrant_id));
 
-        $nav_html = '<a href="'.parse_link('a=tactical_cartography&galaxy').'">Galaxie</a> -> '.$QUADRANT_NAME[$quadrant_id];
+        $nav_html = '<a href="'.parse_link('a=tactical_cartography&galaxy').'">'.constant($game->sprache("TEXT60")).'</a> -> '.$QUADRANT_NAME[$quadrant_id];
 
         $img_html = '<img border="0" src="maps/images/quadrant_'.$quadrant_id.'.jpg" usemap="#quadrant_map">';
 
-        $map_html = implode('', file('maps/area/quadrant_'.$quadrant_id.'.html'));
-        
+        /* 21/04/08 - AC: Load localized area maps */
+        $mapname = 'maps/area/quadrant_'.$quadrant_id.'_'.$game->player['language'].'.html';
+        if (!file_exists($mapname)) $mapname = 'maps/area/quadrant_'.$quadrant_id.'.html';
+        $map_html = implode('', file($mapname));
+
         set_tcartography_remind(1, $quadrant_id);
     }
     elseif(isset($_GET['galaxy'])) {
-        $nav_html = 'Galaxie';
+        $nav_html = constant($game->sprache("TEXT60"));
 
         $img_html = '<img border="0" src="maps/images/galaxy.jpg" usemap="#galaxy_map">';
         
@@ -1269,13 +1272,16 @@ elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty(
         $letters[0] = 'A';
         $letters[8] = 'R';
 
+        /* 21/04/08 - AC: Load localized galaxy map */
+        //$mapname = 'maps/area/galaxy_'.$game->player['language'].'.html';
+        //if (!file_exists($mapname)) $mapname = 'maps/area/galaxy.html';
         $map_html = implode('', file('maps/area/galaxy.html'));
-        
+
         set_tcartography_remind(0, 0);
     }
 
     $game->out('
-<center><span class="caption">Taktische Zentrale:</span><br><br>[<b>Stellare Kartographie</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">Schiffsbewegungen</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">Spieler Info</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">Kolonisierung</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">Sensoren</a>]</center><br><br>
+<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<b>'.constant($game->sprache("TEXT1")).'</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]</center><br><br>
 
 <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
@@ -1314,7 +1320,7 @@ elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty(
 <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td width="20">&nbsp;</td>
-    <td width="380">'.$legend_html.$map_html.'<br>Wenn das Bild nicht richtig aktualisiert wird,<br>stellt in den Optionen eures Browsers<br>"Bei jedem Zugriff auf die Seite nach neuer Version suchen" ein</font></td>
+    <td width="380">'.$legend_html.$map_html.'<br>'.constant($game->sprache("TEXT91")).'</font></td>
   </tr>
 </table>
 <br>

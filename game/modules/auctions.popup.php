@@ -23,10 +23,26 @@
 include_once('../include/global.php');
 include_once('../include/sql.php');
 include_once('../include/functions.php');
+include_once('auctions.popup.sprache.php');
 error_reporting(E_ALL);
 
 // create sql-object for db-connection
 $db = new sql($config['server'].":".$config['port'], $config['game_database'], $config['user'], $config['password']); // create sql-object for db-connection
+
+$game = new game();
+
+$game->load_config();
+$ACTUAL_TICK = $NEXT_TICK = 0;
+
+$ACTUAL_TICK = $game->config['tick_id'];
+$NEXT_TICK = $game->config['tick_time'] - time();//$game->TIME;
+$LAST_TICK_TIME = $game->config['tick_time'] - TICK_DURATION * 60;
+
+
+include('../include/session.php');
+
+//$game->init_player();
+
 
 function Zeit($minutes)
 {
@@ -42,7 +58,7 @@ echo '
 
 <html>
 <head>
-  <title>Star Trek: Frontline Combat 2 - Auktionen des Users</title>
+  <title>Star Trek: Frontline Combat 2 - '.constant($game->sprache("TEXT0")).'</title>
 </head>
 
 <style type="text/css">
@@ -94,7 +110,7 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 
 </style>
 
-<body bgcolor="#000000" text="#DDDDDD"  background="|game_url|/gfx/bg_stars1.gif">
+<body bgcolor="#000000" text="#DDDDDD"  background="http://stfc.nonsolotaku.it/gfx/bg_stars1.gif">
 
   <table class="style_inner" width="550" align="center" border="0" cellpadding="2" cellspacing="0">
     
@@ -104,7 +120,7 @@ if(isset($_GET['user'])) {
 
   $user_id = (int)$_GET['user'];
 
-  echo '<td>&nbsp;</td><td><font size="3"><b>Aktuelle Auktionen von:</b></font></td><td><font size="3"><b>'.get_username_by_id($user_id).'</b></font></td></tr><tr><td>&nbsp;</td></tr><tr><td></td><td width="235"><b>Artikel</b></td><td width="200"><b>Preis</b></td><td width="70"><b>Restzeit</b></td></tr>';
+  echo '<td>&nbsp;</td><td><font size="3"><b>'.constant($game->sprache("TEXT1")).'</b></font></td><td><font size="3"><b>'.get_username_by_id($user_id).'</b></font></td></tr><tr><td>&nbsp;</td></tr><tr><td></td><td width="235"><b>'.constant($game->sprache("TEXT2")).'</b></td><td width="200"><b>'.constant($game->sprache("TEXT3")).'</b></td><td width="70"><b>'.constant($game->sprache("TEXT4")).'</b></td></tr>';
 
   $config=$db->queryrow('SELECT * FROM config');
 
@@ -116,13 +132,13 @@ if(isset($_GET['user'])) {
 
   while($tradedata = $db->fetchrow($q_tradedata)) {
   
-    echo '<tr><td width="55" align="center">[<a onclick="opener.window.location=this.href;self.close();return false" href="/game/index.php?a=trade&view=view_bidding_detail&id='.$tradedata['id'].'">Details</a>]</td><td>'.$tradedata['header'].'</td><td><img src="'.PROXY_GFX_PATH.'/skin1/menu_metal_small.gif">&nbsp;'.$tradedata['resource_1'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_mineral_small.gif">&nbsp;'.$tradedata['resource_2'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_latinum_small.gif">&nbsp;'.$tradedata['resource_3'].'&nbsp;<br><img src="'.PROXY_GFX_PATH.'/skin1/menu_unit1_small.gif">&nbsp;'.$tradedata['unit_1'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit2_small.gif">&nbsp;'.$tradedata['unit_2'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit3_small.gif">&nbsp;'.$tradedata['unit_3'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit4_small.gif">&nbsp;'.$tradedata['unit_4'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit5_small.gif">&nbsp;'.$tradedata['unit_5'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit6_small.gif">&nbsp;'.$tradedata['unit_6'].'</td><td>'.Zeit(TICK_DURATION*($tradedata['end_time']-$config['tick_id'])).'</td></tr>';
+    echo '<tr><td width="55" align="center">[<a onclick="opener.window.location=this.href;self.close();return false" href="/game/index.php?a=trade&view=view_bidding_detail&id='.$tradedata['id'].'">'.constant($game->sprache("TEXT5")).'</a>]</td><td>'.$tradedata['header'].'</td><td><img src="'.PROXY_GFX_PATH.'/skin1/menu_metal_small.gif">&nbsp;'.$tradedata['resource_1'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_mineral_small.gif">&nbsp;'.$tradedata['resource_2'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_latinum_small.gif">&nbsp;'.$tradedata['resource_3'].'&nbsp;<br><img src="'.PROXY_GFX_PATH.'/skin1/menu_unit1_small.gif">&nbsp;'.$tradedata['unit_1'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit2_small.gif">&nbsp;'.$tradedata['unit_2'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit3_small.gif">&nbsp;'.$tradedata['unit_3'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit4_small.gif">&nbsp;'.$tradedata['unit_4'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit5_small.gif">&nbsp;'.$tradedata['unit_5'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit6_small.gif">&nbsp;'.$tradedata['unit_6'].'</td><td>'.Zeit(TICK_DURATION*($tradedata['end_time']-$config['tick_id'])).'</td></tr>';
 
   }
 
 }
 
-else { echo 'Diesen User gibt es nicht'; }
+else { echo constant($game->sprache("TEXT6")); }
 
 
 

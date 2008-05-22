@@ -23,20 +23,20 @@
 
 
 $game->init_player();
-//$game->out('<center><span class="caption">Schiffsbewegungen</span></center><br>');
+//$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span></center><br>');
 
 if(isset($_POST['send_homebase'])) {
 
 // #############################################################################
-// Es m¸ssen Flotten f¸r ship_send ¸bergeben werden
+// Es m√ºssen Flotten f√ºr ship_send √ºbergeben werden
 
 if(empty($_POST['fleets'])) {
-    message(NOTICE, 'Keine Flotten ausgew‰hlt');
+    message(NOTICE, constant($game->sprache("TEXT1")));
 }
 
 
 // #############################################################################
-// Die Flotten-IDs "s‰ubern" (zu integer casten gegen SQL-Exploits)
+// Die Flotten-IDs "s√§ubern" (zu integer casten gegen SQL-Exploits)
 
 $fleet_ids = array();
 
@@ -49,14 +49,14 @@ for($i = 0; $i < count($_POST['fleets']); ++$i) {
 }
 
 if($fleet_ids[1]!=0){
-  message(NOTICE, 'Du kannst nur eine Flotte zum Heimathafen schicken');
+  message(NOTICE, constant($game->sprache("TEXT2")));
 }
 
 // #############################################################################
-// War eine g¸ltige Flotten-ID dabei?
+// War eine g√ºltige Flotten-ID dabei?
 
 if(empty($fleet_ids)) {
-    message(NOTICE, 'Keine g¸ltige Flotte wurden ¸bergeben');
+    message(NOTICE, constant($game->sprache("TEXT3")));
 }
 
 $sql = 'SELECT *
@@ -71,13 +71,13 @@ $fleets = array($db->fetchrow($q_fleets));
 $fleet_ids = array($fleets[0]['fleet_id']);
 
 if(empty($fleets[0])) {
-    message(NOTICE, 'Keine der Flotten konnte gefunden werden');
+    message(NOTICE, constant($game->sprache("TEXT4")));
 }
 
 $start = (int)$fleets[0]['planet_id'];
 
 if($start == 0) {
-    message(NOTICE, 'Mindestens eine der ausgew‰hlten Flotten ist nicht auf einem Planeten stationiert');
+    message(NOTICE, constant($game->sprache("TEXT5")));
 }
 
 while($_temp = $db->fetchrow($q_fleets)) {
@@ -90,7 +90,7 @@ while($_temp = $db->fetchrow($q_fleets)) {
 $n_fleets = count($fleets);
 
 if($n_fleets == 0) {
-    message(NOTICE, 'Keine der Flotten konnte auf dem Planeten gefunden werden');
+    message(NOTICE, constant($game->sprache("TEXT6")));
 }
 
 // #############################################################################
@@ -107,7 +107,7 @@ $sql = 'SELECT homebase FROM ship_fleets WHERE fleet_id = '.$fleetid.' AND user_
 $dest = (int)$homebase['homebase'];
 
 if($dest==0) {
-  message(NOTICE, 'Es wurde kein Heimathafen festgelegt - '.$dest.'');
+  message(NOTICE, constant($game->sprache("TEXT7")).' - '.$dest.'');
 }
 
 // #############################################################################
@@ -122,7 +122,7 @@ if($start == $game->planet['planet_id']) {
     $start_planet['user_vacation_start'] = $game->player['user_vacation_start'];
     $start_planet['user_vacation_end'] = $game->player['user_vacation_end'];
 
-    // Spielerdaten m¸ssen nicht ¸bernommen werden, da sie nicht angezeigt/benutzt werden
+    // Spielerdaten m√ºssen nicht √ºbernommen werden, da sie nicht angezeigt/benutzt werden
 }
 else {
     $sql = 'SELECT p.planet_id, p.planet_name, p.system_id, p.sector_id, p.planet_distance_id,
@@ -138,7 +138,7 @@ else {
     }
 
     if(empty($start_planet['planet_id'])) {
-        message(NOTICE, 'Der Startplanet existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT8")));
     }
     
     if(empty($start_planet['user_id'])) {
@@ -164,7 +164,7 @@ if($dest == $game->planet['planet_id']) {
     $dest_planet['user_vacation_start'] = $game->player['user_vacation_start'];
     $dest_planet['user_vacation_end'] = $game->player['user_vacation_end'];
         
-    // Alle Spielerdaten m¸ssen nicht ¸bernommen werden, da sie nicht angezeigt/benutzt werden
+    // Alle Spielerdaten m√ºssen nicht √ºbernommen werden, da sie nicht angezeigt/benutzt werden
 }
 else {
     $sql = 'SELECT p.planet_id, p.planet_name, p.system_id, p.sector_id, p.planet_distance_id,
@@ -180,7 +180,7 @@ else {
     }
 
     if(empty($dest_planet['planet_id'])) {
-        message(NOTICE, 'Der Zielplanet existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT9")));
     }
     
     if(empty($dest_planet['user_id'])) {
@@ -194,11 +194,11 @@ else {
 
 
 // #############################################################################
-// Inter-Orbitaler Flug ist NICHT mˆglich, wie urspr¸nglich vorgesehen,
-// das wird seperat gelˆst
+// Inter-Orbitaler Flug ist NICHT m√∂glich, wie urspr√ºnglich vorgesehen,
+// das wird seperat gel√∂st
 
 if($start == $dest) {
-    message(NOTICE, 'Die Flotte ist bereits auf dem Startplaneten stationiert');
+    message(NOTICE, constant($game->sprache("TEXT10")));
 }
 
 
@@ -206,19 +206,19 @@ if($start == $dest) {
 // Wenn Urlaubsmodus aktiviert ist, gleich abbrechen
 
 if( ($dest_planet['user_vacation_start'] <= $ACTUAL_TICK) && ($dest_planet['user_vacation_end'] > $ACTUAL_TICK) ) {
-    message(NOTICE, 'Der Herrscher des Zielplaneten befindet sich im Urlaubsmodus');
+    message(NOTICE, constant($game->sprache("TEXT11")));
 }
 
 // #############################################################################
 // Wenn Noobschutz aktiviert ist, gleich abbrechen
 
 if($dest_planet['user_attack_protection']>= $ACTUAL_TICK){
-    message(NOTICE, 'Der Herrscher des Zielplaneten befindet sich im Angriffsschutz.');
+    message(NOTICE, constant($game->sprache("TEXT12")));
 }
 
 // #############################################################################
 // Welche Schiffsklassen fliegen mit?
-// (f¸r Warp-Geschwindigkeiten + Befehlsmˆglichkeiten)
+// (f√ºr Warp-Geschwindigkeiten + Befehlsm√∂glichkeiten)
 
 $sql = 'SELECT st.ship_torso, st.value_10 AS warp_speed
         FROM (ships s, ship_templates st)
@@ -275,11 +275,11 @@ if($start_planet['system_id'] == $dest_planet['system_id']) $inter_planet = true
 else $inter_system = true;
 
 if($in_orb){
-  message(NOTICE, 'Orbs d¸rfen nicht bewegt werden.');
+  message(NOTICE, constant($game->sprache("TEXT13")));
 }
 
 if($starter_atkptc && $free_planet) {
-    message(NOTICE, 'Mit aktiviertem Angriffsschutz d¸rfen keine unbewohnten Planeten angeflogen werden');
+    message(NOTICE, constant($game->sprache("TEXT14")));
 }
 
 //$step = (!empty($_POST['step'])) ? $_POST['step'] : 'basic_setup';
@@ -301,7 +301,7 @@ if($starter_atkptc && $free_planet) {
         $des_istardate = $min_istardate;
         
         if($des_istardate < $min_istardate) {
-            message(NOTICE, 'Die fr¸hstmˆgliche Ankunft ist Sternzeit '.($game->config['stardate'] + ($min_time / 10)));
+            message(NOTICE, constant($game->sprache("TEXT15")).' '.($game->config['stardate'] + ($min_time / 10)));
         }
         
         $move_time = $des_istardate - $cur_istardate;
@@ -317,7 +317,7 @@ if($starter_atkptc && $free_planet) {
         $n_ships = $_nships['n_ships'];
         
         if($n_ships == 0) {
-            message(GENERAL, 'Es fliegen keine Schiffe in den Flotten mit', 'Unexspected: $n_ships = 0');
+            message(GENERAL, constant($game->sprache("TEXT16")), 'Unexspected: $n_ships = 0');
         }
         
         $action = (!empty($_POST['action'])) ? $_POST['action'] : 'stationate';

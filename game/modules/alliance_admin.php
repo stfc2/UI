@@ -23,7 +23,7 @@
 
 
 $game->init_player();
-$game->out('<center><span class="caption">Allianz:</span><br><br>');
+$game->out('<center><span class="caption">'.constant($game->sprache("TEXT28")).':</span><br><br>');
 
     $sql = 'SELECT *
             FROM alliance
@@ -34,11 +34,11 @@ $game->out('<center><span class="caption">Allianz:</span><br><br>');
     }
 
 if(empty($game->player['alliance_name'])) {
-    message(NOTICE, 'Du bist nicht Mitglied einer Allianz');
+    message(NOTICE, constant($game->sprache("TEXT1")));
 }
 
 if($game->player['user_alliance_rights1'] != 1) {
-    message(NOTICE, 'Du hast nicht die erforderlichen Rechte zum Betrachten/Bearbeiten der Seite');
+    message(NOTICE, constant($game->sprache("TEXT10")));
 }
 
 if(isset($_GET['application'])) {
@@ -66,7 +66,7 @@ elseif(!empty($_POST['status_change_fin'])) {
         message(GENERAL, 'Invalid request', '$_POST[\'user_id\'] was empty');
     }
     if($game->player['user_alliance_rights8'] != 1) {
-        message(NOTICE, 'Du hast nicht die erforderlichen Rechte!');
+        message(NOTICE, constant($game->sprache("TEXT0")));
     }
     $user_id = (int)$_POST['user_id'];
 
@@ -79,15 +79,15 @@ elseif(!empty($_POST['status_change_fin'])) {
     }
 
     if(empty($user_data['user_id'])) {
-        message(NOTICE, 'Der gewählte Spieler existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT2")));
     }
 
     if($user_data['user_alliance'] != $game->player['user_alliance']) {
-        message(NOTICE, 'Der gewählte Spieler ist nicht in deiner Allianz');
+        message(NOTICE, constant($game->sprache("TEXT3")));
     }
 
     if($user_data['user_id'] == $alliance['alliance_owner']) {
-       message(NOTICE, 'Du kannst den Status des Präsidenten nicht ändern');
+       message(NOTICE, constant($game->sprache("TEXT4")));
     }
         
     $sql = 'UPDATE user
@@ -105,7 +105,7 @@ elseif(!empty($_POST['status_change'])) {
         message(GENERAL, 'Invalid request', '$_POST[\'user_id\'] was empty');
     }
     if($game->player['user_alliance_rights8'] != 1) {
-        message(NOTICE, 'Du hast nicht die erforderlichen Rechte!');
+        message(NOTICE, constant($game->sprache("TEXT5")));
     }
     $user_id = (int)$_POST['user_id'];
 
@@ -118,15 +118,15 @@ elseif(!empty($_POST['status_change'])) {
     }
 
     if(empty($user_data['user_id'])) {
-        message(NOTICE, 'Der gewählte Spieler existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT6")));
     }
 
     if($user_data['user_alliance'] != $game->player['user_alliance']) {
-        message(NOTICE, 'Der gewählte Spieler ist nicht in deiner Allianz');
+        message(NOTICE, constant($game->sprache("TEXT3")));
     }
 
     if($user_data['user_id'] == $alliance['alliance_owner']) {
-        message(NOTICE, 'Der Status des Präsidenten kann nicht von einem Admin geändert werden');
+        message(NOTICE, constant($game->sprache("TEXT7")));
     }
     
     $sql = 'UPDATE user
@@ -141,7 +141,7 @@ elseif(!empty($_POST['status_change'])) {
 }
 elseif(!empty($_POST['status_change_diplo'])) {
     if($game->player['user_alliance_rights8'] != 1) {
-        message(NOTICE, 'Du hast nicht die erforderlichen Rechte!');
+        message(NOTICE, constant($game->sprache("TEXT5")));
     }
 
     if(empty($_POST['user_id'])) {
@@ -159,15 +159,15 @@ elseif(!empty($_POST['status_change_diplo'])) {
     }
 
     if(empty($user_data['user_id'])) {
-        message(NOTICE, 'Der gewählte Spieler existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT2")));
     }
 
     if($user_data['user_alliance'] != $game->player['user_alliance']) {
-        message(NOTICE, 'Der gewählte Spieler ist nicht in deiner Allianz');
+        message(NOTICE, constant($game->sprache("TEXT3")));
     }
 
     if($user_data['user_id'] == $alliance['alliance_owner']) {
-        message(NOTICE, 'Der Status des Präsidenten kann nicht von einem Admin geändert werden');
+        message(NOTICE, constant($game->sprache("TEXT7")));
     }
     
     $sql = 'UPDATE user
@@ -182,7 +182,7 @@ elseif(!empty($_POST['status_change_diplo'])) {
 }
 elseif(!empty($_POST['owner_change_confirm'])) {
     if($game->player['user_id'] != $alliance['alliance_owner']) {
-        message(NOTICE, 'Nur der Präsident selber kann das Amt übergeben!');
+        message(NOTICE, constant($game->sprache("TEXT8")));
     }
     
     if(empty($_POST['user_id'])) {
@@ -204,11 +204,11 @@ elseif(!empty($_POST['owner_change_confirm'])) {
     }
 
     if(empty($user_data['user_id'])) {
-        message(NOTICE, 'Der gewählte Spieler existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT2")));
     }
 
     if($user_data['user_alliance'] != $game->player['user_alliance']) {
-        message(NOTICE, 'Der gewählte Spieler ist nicht in deiner Allianz');
+        message(NOTICE, constant($game->sprache("TEXT3")));
     }
     
 
@@ -264,7 +264,7 @@ elseif(!empty($_POST['owner_change'])) {
     }
 
     if(empty($user_data['user_id'])) {
-        message(NOTICE, 'Der gewählte Spieler existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT2")));
     }
 
     $game->out('
@@ -273,9 +273,9 @@ elseif(!empty($_POST['owner_change'])) {
   <tr height="5"><td></td></tr>
   <tr>
     <td align="center">
-      Willst du <a href="'.parse_link('a=stats&a2=viewplayer&id='.$user_id).'">'.$user_data['user_name'].'</a> wirklich das Präsidentenamt übergeben?<br><br>
-      <input class="button" type="button" value="<< Zurück" onClick="return window.history.back();">&nbsp;&nbsp;
-      <input class="button" type="submit" name="owner_change_confirm" value="Bestätigen">
+      '.constant($game->sprache("TEXT9")).'<a href="'.parse_link('a=stats&a2=viewplayer&id='.$user_id).'">'.$user_data['user_name'].'</a>'.constant($game->sprache("TEXT11")).'<br><br>
+      <input class="button" type="button" value="'.constant($game->sprache("TEXT12")).'" onClick="return window.history.back();">&nbsp;&nbsp;
+      <input class="button" type="submit" name="owner_change_confirm" value="'.constant($game->sprache("TEXT13")).'">
     </td>
   </tr>
   <tr height="5"><td></td></tr>
@@ -287,7 +287,7 @@ elseif(!empty($_POST['owner_change'])) {
 elseif(!empty($_POST['settings_submit'])) {
 
     if($game->player['user_alliance_rights1'] != 1) {
-        message(NOTICE, 'Du hast nicht die erforderlichen Rechte zum Betrachten/Bearbeiten der Seite');
+        message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
     $sql = 'SELECT alliance_tag FROM alliance WHERE alliance_id = '.$game->player['user_alliance'];
@@ -297,7 +297,7 @@ elseif(!empty($_POST['settings_submit'])) {
     }
 
     if(empty($_POST['alliance_name'])) {
-        message(NOTICE, 'Es wurde kein Allianz-Name angegeben');
+        message(NOTICE, constant($game->sprache("TEXT14")));
     }
 
     if($game->player['user_alliance_status'] < ALLIANCE_STATUS_OWNER) {
@@ -318,7 +318,7 @@ elseif(!empty($_POST['settings_submit'])) {
       }
     
       if(!empty($ally_exists['alliance_id'])) {
-          message(NOTICE, 'Es gibt schon eine Allianz mit diesem Tag');
+          message(NOTICE, costant($game->sprache("TEXT15")));
       }
 
     }
@@ -334,7 +334,7 @@ elseif(!empty($_POST['settings_submit'])) {
                 alliance_logo = "'.addslashes($_POST['alliance_logo']).'",
                 alliance_homepage = "'.addslashes($_POST['alliance_homepage']).'",
                 alliance_irc = "'.addslashes($_POST['alliance_irc']).'",
-		  alliance_application_text = "'.str_replace("\n", '<br>', htmlspecialchars($_POST['alliance_application_text'])).'"
+	        alliance_application_text = "'.str_replace("\n", '<br>', htmlspecialchars($_POST['alliance_application_text'])).'"
             WHERE alliance_id = '.$game->player['user_alliance'];
             
     if(!$db->query($sql)) {
@@ -361,53 +361,50 @@ elseif(isset($_GET['settings'])) {
       <table class="style_inner" width="350" align="center" border="0" cellpadding="2" cellspacing="2">
         <form method="post" action="'.parse_link('a=alliance_admin').'">
         <tr>
-          <td colspan="2" width="350"><b>Allianz-Einstellungen</b></td>
+          <td colspan="2" width="350"><b>'.constant($game->sprache("TEXT16")).'</b></td>
         </tr>
         <tr><td height="10"></td></tr>
         <tr>
-          <td width="50">Name:</td>
-          <td width="300"><input class="field" type="text" name="alliance_name" value="'.$adata['alliance_name'].'"></td>
+          <td width="50">'.constant($game->sprache("TEXT17")).':</td>
+          <td width="300"><input class="field" type="text" name="alliance_name" style="width: 290px;" value="'.$adata['alliance_name'].'"></td>
         </tr>
         <tr>
           <td>Tag:</td>
-          <td><input class="field" type="text" name="alliance_tag" maxlength="6" size="30" value="'.$adata['alliance_tag'].'"'.( ($game->player['user_alliance_status'] < ALLIANCE_STATUS_OWNER) ? ' disabled="disabled"' : '' ).'></td>
+          <td><input class="field" type="text" name="alliance_tag" maxlength="6" size="30" style="width: 290px;" value="'.$adata['alliance_tag'].'"'.( ($game->player['user_alliance_status'] < ALLIANCE_STATUS_OWNER) ? ' disabled="disabled"' : '' ).'></td>
         </tr>
         <tr>
-          <td>Text:</td>
-          <td><textarea name="alliance_text" cols="45" rows="8">'.stripslashes(str_replace('<br>', "\n", $adata['alliance_text'])).'</textarea></td>
+          <td>'.constant($game->sprache("TEXT18")).':</td>
+          <td><textarea name="alliance_text" cols="45" rows="8" style="width: 290px;">'.stripslashes(str_replace('<br>', "\n", $adata['alliance_text'])).'</textarea></td>
         </tr>
         <tr>
-          <td>Allianz-Bewerbungsvorlage:</td>
-          <td><textarea name="alliance_application_text" cols="45" rows="8">'.stripslashes(str_replace('<br>', "\n", $adata['alliance_application_text'])).'</textarea></td>
+          <td>'.constant($game->sprache("TEXT19")).':</td>
+          <td><textarea name="alliance_application_text" cols="45" rows="8" style="width: 290px;">'.stripslashes(str_replace('<br>', "\n", $adata['alliance_application_text'])).'</textarea></td>
         </tr>
         <tr><td height="5"></td></tr>
         <tr>
           <td>Logo:</td>
-          <td><input style="width: 200px;" class="field" type="text" name="alliance_logo" 
-value="'.$adata['alliance_logo'].'"><br><b>Achte beim Linken von externen Seiten darauf, ob sie das Anzeigen eines Bildes von außen 
-erlauben!<br><font color="yellow">Sollte euer Allianzlogo aus der Rangliste raus nicht anzeigt werden, so macht es kleiner (max. 
-Breite 350px, max. Höhe 280px)</font></b></td>
+          <td><input style="width: 290px;" class="field" type="text" name="alliance_logo" value="'.$adata['alliance_logo'].'"><br><b>'.constant($game->sprache("TEXT20")).'<br><font color="yellow">'.constant($game->sprache("TEXT21")).'</font></b></td>
         </tr>
         <tr>
           <td>Homepage:</td>
-          <td><input style="width: 200px;" class="field" type="text" name="alliance_homepage" value="'.$adata['alliance_homepage'].'"></td>
+          <td><input style="width: 290px;" class="field" type="text" name="alliance_homepage" value="'.$adata['alliance_homepage'].'"></td>
         </tr>
         <tr>
           <td>IRC:</td>
-          <td><input style="width: 200px;" class="field" type="text" name="alliance_irc" value="'.$adata['alliance_irc'].'"></td>
+          <td><input style="width: 290px;" class="field" type="text" name="alliance_irc" value="'.$adata['alliance_irc'].'"></td>
         </tr>
          <tr>
-          <td>Bewerbungen erlauben?:</td>
+          <td>'.constant($game->sprache("TEXT22")).':</td>
 ');
-if($adata['alliance_application']==1) { $game->out('<td>[<span style="color: #00FF00;">Ja</span>]&nbsp;&nbsp;[<a href="'.parse_link('a=alliance_admin&application=1').'">Nein</a>]</td>'); }
-else { $game->out('<td>[<a href="'.parse_link('a=alliance_admin&application=0').'">Ja</a>]&nbsp;&nbsp;[<span style="color: #FF0000;">Nein</span>]</td>'); }
+if($adata['alliance_application']==1) { $game->out('<td>[<span style="color: #00FF00;">'.constant($game->sprache("TEXT23")).'</span>]&nbsp;&nbsp;[<a href="'.parse_link('a=alliance_admin&application=1').'">'.constant($game->sprache("TEXT24")).'</a>]</td>'); }
+else { $game->out('<td>[<a href="'.parse_link('a=alliance_admin&application=0').'">'.constant($game->sprache("TEXT23")).'</a>]&nbsp;&nbsp;[<span style="color: #FF0000;">'.constant($game->sprache("TEXT24")).'</span>]</td>'); }
 
 $game->out('
 
         </tr>
         <tr><td height="5"></td></tr>
         <tr>
-          <td colspan="2" width="350" align="center"><input class="button" type="submit" name="settings_submit" value="Übernehmen"></td>
+          <td colspan="2" width="350" align="center"><input class="button" type="submit" name="settings_submit" value="'.constant($game->sprache("TEXT25")).'"></td>
         </tr>
         <tr><td height="5"></td></tr>
         </form>
@@ -419,7 +416,7 @@ $game->out('
 }
 elseif(!empty($_POST['delete_confirm'])) {
     if($game->player['user_id'] != $alliance['alliance_owner']) {
-        message(NOTICE, 'Nur der Präsident kann die Allianz auflösen');
+        message(NOTICE, constant($game->sprache("TEXT26")));
     }
     
     $sql = 'UPDATE user
@@ -478,9 +475,9 @@ elseif(isset($_GET['delete'])) {
   <tr height="5"><td></td></tr>
   <tr>
     <td align="center">
-      Willst du die Allianz wirklich endgültig AUFLÖSEN?<br><br>
-      <input class="button" type="button" value="<< Zurück" onClick="return window.history.back();">&nbsp;&nbsp;
-      <input class="button" type="submit" name="delete_confirm" value="Bestätigen">
+      '.constant($game->sprache("TEXT27")).'<br><br>
+      <input class="button" type="button" value="'.constant($game->sprache("TEXT12")).'" onClick="return window.history.back();">&nbsp;&nbsp;
+      <input class="button" type="submit" name="delete_confirm" value="'.constant($game->sprache("TEXT13")).'">
     </td>
   </tr>
   <tr height="5"><td></td></tr>

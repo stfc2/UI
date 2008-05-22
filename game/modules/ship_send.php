@@ -23,14 +23,14 @@
 
 
 $game->init_player();
-$game->out('<center><span class="caption">Schiffsbewegungen</span></center><br>');
+$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span></center><br>');
 
 
 // #############################################################################
 // Es mssen Flotten fr ship_send bergeben werden
 
 if(empty($_POST['fleets'])) {
-    message(NOTICE, 'Keine Flotten ausgewählt');
+    message(NOTICE, constant($game->sprache("TEXT1")));
 }
 
 
@@ -52,7 +52,7 @@ for($i = 0; $i < count($_POST['fleets']); ++$i) {
 // War eine gltige Flotten-ID dabei?
 
 if(empty($fleet_ids)) {
-    message(NOTICE, 'Keine gltige Flotte wurden bergeben');
+    message(NOTICE, constant($game->sprache("TEXT2")));
 }
 
 $sql = 'SELECT *
@@ -67,13 +67,13 @@ $fleets = array($db->fetchrow($q_fleets));
 $fleet_ids = array($fleets[0]['fleet_id']);
 
 if(empty($fleets[0])) {
-    message(NOTICE, 'Keine der Flotten konnte gefunden werden');
+    message(NOTICE, constant($game->sprache("TEXT3")));
 }
 
 $start = (int)$fleets[0]['planet_id'];
 
 if($start == 0) {
-    message(NOTICE, 'Mindestens eine der ausgewählten Flotten ist nicht auf einem Planeten stationiert');
+    message(NOTICE, constant($game->sprache("TEXT4")));
 }
 
 while($_temp = $db->fetchrow($q_fleets)) {
@@ -86,7 +86,7 @@ while($_temp = $db->fetchrow($q_fleets)) {
 $n_fleets = count($fleets);
 
 if($n_fleets == 0) {
-    message(NOTICE, 'Keine der Flotten konnte auf dem Planeten gefunden werden');
+    message(NOTICE, constant($game->sprache("TEXT5")));
 }
 
 // #############################################################################
@@ -97,7 +97,7 @@ if(!empty($_POST['dest_coord'])) {
     $n_pieces = count($coord_pieces);
     
     if($n_pieces != 3) {
-        message(NOTICE, 'Ungültiges Koordinatenformat');
+        message(NOTICE, constant($game->sprache("TEXT6")));
     }
 
     $sector_id = $game->get_sector_id($coord_pieces[0]);
@@ -106,13 +106,13 @@ if(!empty($_POST['dest_coord'])) {
     $numbers = array('1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9, '10' => 10, '11' => 11, '12' => 12, '13' => 13, '14' => 14, '15' => 15, '16' => 16, '17' => 17, '18' => 18);
 
     if(!isset($letters[$coord_pieces[1][0]])) {
-        message(NOTICE, 'Ungltige Y-Koordinate für System angegeben', $coord_pieces[1][0].' no part of $letters');
+        message(NOTICE, constant($game->sprache("TEXT7")), $coord_pieces[1][0].' '.constant($game->sprache("TEXT8")));
     }
 
     $system_y = $letters[$coord_pieces[1][0]];
 
     if(!isset($numbers[$coord_pieces[1][1]])) {
-        message(NOTICE, 'Ungltige X-Koordinate für System angegeben', $coord_pieces[1][1].' no part of $numbers');
+        message(NOTICE, constant($game->sprache("TEXT9")), $coord_pieces[1][1].' '.constant($game->sprache("TEXT10")));
     }
 
     $system_x = $numbers[$coord_pieces[1][1]];
@@ -132,7 +132,7 @@ if(!empty($_POST['dest_coord'])) {
     }
 
     if(empty($planet['planet_id'])) {
-        message(NOTICE, 'Ex existiert kein Planet mit den Koordinaten <b>'.$_POST['dest_coord'].'</b>');
+        message(NOTICE, constant($game->sprache("TEXT11")).' <b>'.$_POST['dest_coord'].'</b>');
     }
     
     $dest = (int)$planet['planet_id'];
@@ -144,7 +144,7 @@ else {
 }
 
 if(empty($dest)) {
-    message(NOTICE, 'Es wurde kein Ziel angegeben');
+    message(NOTICE, constant($game->sprache("TEXT12")));
 }
 
 
@@ -176,7 +176,7 @@ else {
     }
 
     if(empty($start_planet['planet_id'])) {
-        message(NOTICE, 'Der Startplanet existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT13")));
     }
     
     if(empty($start_planet['user_id'])) {
@@ -218,7 +218,7 @@ else {
     }
 
     if(empty($dest_planet['planet_id'])) {
-        message(NOTICE, 'Der Zielplanet existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT14")));
     }
     
     if(empty($dest_planet['user_id'])) {
@@ -236,7 +236,7 @@ else {
 // das wird seperat gelï¿½t
 
 if($start == $dest) {
-    message(NOTICE, 'Die Flotte ist bereits auf dem Startplaneten stationiert');
+    message(NOTICE, constant($game->sprache("TEXT15")));
 }
 
 
@@ -244,7 +244,7 @@ if($start == $dest) {
 // Wenn Urlaubsmodus aktiviert ist, gleich abbrechen
 
 if( ($dest_planet['user_vacation_start'] <= $ACTUAL_TICK) && ($dest_planet['user_vacation_end'] > $ACTUAL_TICK) ) {
-    message(NOTICE, 'Der Herrscher des Zielplaneten befindet sich im Urlaubsmodus');
+    message(NOTICE, constant($game->sprache("TEXT16")));
 }
 
 
@@ -307,11 +307,11 @@ if($start_planet['system_id'] == $dest_planet['system_id']) $inter_planet = true
 else $inter_system = true;
 
 if($in_orb){
-  message(NOTICE, 'Orbs dürfen nicht bewegt werden.');
+  message(NOTICE, constant($game->sprache("TEXT17")));
 }
 
 if($starter_atkptc && $free_planet) {
-    message(NOTICE, 'Mit aktiviertem Angriffsschutz drfen keine unbewohnten Planeten angeflogen werden');
+    message(NOTICE, constant($game->sprache("TEXT18")));
 }
 
 $step = (!empty($_POST['step'])) ? $_POST['step'] : 'basic_setup';
@@ -342,7 +342,7 @@ switch($step) {
         $des_istardate = (int)$_POST['arrival'];
         
         if($des_istardate < $min_istardate) {
-            message(NOTICE, 'Die frühstmöliche Ankunft ist Sternzeit '.($game->config['stardate'] + ($min_time / 10)));
+            message(NOTICE, constant($game->sprache("TEXT19")).' '.($game->config['stardate'] + ($min_time / 10)));
         }
         
         $move_time = $des_istardate - $cur_istardate;
@@ -358,7 +358,7 @@ switch($step) {
         $n_ships = $_nships['n_ships'];
         
         if($n_ships == 0) {
-            message(GENERAL, 'Es fliegen keine Schiffe in den Flotten mit', 'Unexspected: $n_ships = 0');
+            message(GENERAL, constant($game->sprache("TEXT20")), 'Unexspected: $n_ships = 0');
         }
         
         $action = (!empty($_POST['action'])) ? $_POST['action'] : 'stationate';
@@ -369,7 +369,7 @@ switch($step) {
         switch($step) {
             case 'stationate_exec':
                 if($atkptc_present && !$own_planet) {
-                    message(NOTICE, 'Das Ziel ist ungültig');
+                    message(NOTICE, constant($game->sprache("TEXT21")));
                 }
 
                 $action_code = ($dest_planet['user_id'] != $game->player['user_id']) ? 21: 11;;
@@ -377,7 +377,7 @@ switch($step) {
             
             case 'comeback_exec':
                 if(!$own_planet) {
-                    message(NOTICE, 'Das Ziel ist ungültig');
+                    message(NOTICE, constant($game->sprache("TEXT21")));
                 }
                 
                 $action_code = 14;
@@ -385,10 +385,10 @@ switch($step) {
             
             case 'attack_normal_exec':
                 if($own_planet || $free_planet || $atkptc_present) {
-                    message(NOTICE, 'Das Ziel ist ungültig');
+                    message(NOTICE, constant($game->sprache("TEXT21")));
                 }
                 if($game->SITTING_MODE) {
-                    message(NOTICE, 'Du darfst im Sittingmodus keinen Angriff befehlen.');
+                    message(NOTICE, constant($game->sprache("TEXT22")));
                 }
 
                 $action_code = 41;
@@ -396,7 +396,7 @@ switch($step) {
             
             case 'attack_comeback_exec':
                 if($own_planet || $free_planet || $atkptc_present) {
-                    message(NOTICE, 'Das Ziel ist unülgtig');
+                    message(NOTICE, constant($game->sprache("TEXT21")));
                 }
 
                 $action_code = 42;
@@ -404,10 +404,10 @@ switch($step) {
             
             case 'surrender_exec':
                 if($game->player['user_id']>10){
-                  message(NOTICE, 'Cheatversuch - Flottenübergabe!');
+                  message(NOTICE, constant($game->sprache("TEXT23")));
                 }
                 if($own_planet || $free_planet || $atkptc_present) {
-                    message(NOTICE, 'Das Ziel ist unülgtig');
+                    message(NOTICE, constant($game->sprache("TEXT21")));
                 }
 
                 $action_code = 23;
@@ -415,11 +415,11 @@ switch($step) {
             
             case 'transport_exec':
                 if($own_planet || $free_planet || !$in_transporter) {
-                    message(NOTICE, 'Das Ziel ist unülgtig');
+                    message(NOTICE, constant($game->sprache("TEXT21")));
                 }
 
                 if($game->player['user_id'] != $dest_planet['user_id']) {
-                   message(NOTICE, 'Du darfst nur zu deinen eigenen Planeten Waren transportieren.');
+                   message(NOTICE, constant($game->sprache("TEXT24")));
                 }
 
                 $action_code = 31;
@@ -427,7 +427,7 @@ switch($step) {
             
             case 'spy_exec':
                 if(!$in_scout || $in_other_torso || $in_transporter || $in_colo) {
-                    message(NOTICE, 'Nur Aufklärungsschiffe (1. Rumpfklasse) können Spionageeinsätze fliegen');
+                    message(NOTICE, constant($game->sprache("TEXT25")));
                 }
                 
                 $action_code = 22;
@@ -435,15 +435,15 @@ switch($step) {
             
             case 'colo_exec':
                 if(!$in_colo || !$free_planet) {
-                    message(NOTICE, 'Das Ziel ist unülgtig');
+                    message(NOTICE, constant($game->sprache("TEXT21")));
                 }
 
                 if($game->SITTING_MODE) {
-                    message(NOTICE, 'Du darfst im Sittingmodus keinen Angriff befehlen.');
+                    message(NOTICE, constant($game->sprache("TEXT22")));
                 }
 
                 if(empty($_POST['ship_id'])) {
-                    message(GENERAL, 'Ungltige Paramterbergabe', '$_POST[\'ship_id\'] = empty');
+                    message(GENERAL, constant($game->sprache("TEXT27")), '$_POST[\'ship_id\'] = empty');
                 }
 
                 $action_code = 24;
@@ -496,47 +496,46 @@ switch($step) {
         $game->out('
   <tr>
     <td>
-      Start: <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($start)).'"><b>'.$start_planet['planet_name'].'</b></a> ('.$game->get_sector_name($start_planet['sector_id']).':'.$game->get_system_cname($start_planet['system_x'], $start_planet['system_y']).':'.($start_planet['planet_distance_id'] + 1).')'.( ($start_planet['user_id'] != $game->player['user_id']) ? ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$start_planet['user_id']).'"><b>'.$start_planet['user_name'].'</b></a>' : '' ).'<br>
-      Ziel: <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($dest)).'"><b>'.$dest_planet['planet_name'].'</b></a> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')'.( ($dest_planet['user_id'] != $game->player['user_id']) ? ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$dest_planet['user_id']).'"><b>'.$dest_planet['user_name'].'</b></a>' : '' ).'<br><br>
-      Flotten: <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
-      Ankunft bei Sternzeit: <b>'.($_POST['higher_arrival_stardate'].'.'.$_POST['lower_arrival_stardate']).'</b><br><br>
+      '.constant($game->sprache("TEXT28")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($start)).'"><b>'.$start_planet['planet_name'].'</b></a> ('.$game->get_sector_name($start_planet['sector_id']).':'.$game->get_system_cname($start_planet['system_x'], $start_planet['system_y']).':'.($start_planet['planet_distance_id'] + 1).')'.( ($start_planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT26")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$start_planet['user_id']).'"><b>'.$start_planet['user_name'].'</b></a>' : '' ).'<br>
+      '.constant($game->sprache("TEXT29")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($dest)).'"><b>'.$dest_planet['planet_name'].'</b></a> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')'.( ($dest_planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT26")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$dest_planet['user_id']).'"><b>'.$dest_planet['user_name'].'</b></a>' : '' ).'<br><br>
+      '.constant($game->sprache("TEXT30")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
+      '.constant($game->sprache("TEXT31")).' <b>'.($_POST['higher_arrival_stardate'].'.'.$_POST['lower_arrival_stardate']).'</b><br><br>
         ');
         
         switch($step) {
             case 'stationate_setup':
-                $game->out('<b>Stationieren:</b><br>Die Schiffe fliegen den Planeten an und schwenken danach in den Orbit ein.<br><input type="hidden" name="step" value="stationate_exec">');
+                $game->out(constant($game->sprache("TEXT32")).'<br><input type="hidden" name="step" value="stationate_exec">');
             break;
             
             case 'comeback_setup':
-                $game->out('<b>Anfliegen und Zurckkehren:</b><br>Die Transporter der Flotte werden bei der Ankunft ihre Ladung zum Zielplaneten herunterbeamen und danach wieder zum Start zurckfliegen.<br><input type="hidden" name="step" value="comeback_exec">');
+                $game->out(constant($game->sprache("TEXT33")).'<br><input type="hidden" name="step" value="comeback_exec">');
             break;
             
             case 'attack_setup':
                 if($game->SITTING_MODE) {
-                    message(NOTICE, 'Du darfst im Sittingmodus keinen Angriff befehlen.');
+                    message(NOTICE, constant($game->sprache("TEXT22")));
                 }
-                $game->out('
-      <b>Angreifen:</b><br>Die Schiffe werden die planetare Verteidigung angreifen und...<br><br>
-      <input type="radio" name="step" value="attack_normal_exec" checked="checked" onClick="return document.send_form.submit.value = \'Losschicken\';">&nbsp;<b>im Orbit bleiben</b><br>
-      <input type="radio" name="step" value="attack_comeback_exec" onClick="return document.send_form.submit.value = \'Losschicken\';">&nbsp;<b>Zurckfliegen</b><br><br>
+                $game->out(constant($game->sprache("TEXT34")).'<br><br>
+      <input type="radio" name="step" value="attack_normal_exec" checked="checked" onClick="return document.send_form.submit.value = \''.constant($game->sprache("TEXT35")).'\';">&nbsp;<b>'.constant($game->sprache("TEXT36")).'</b><br>
+      <input type="radio" name="step" value="attack_comeback_exec" onClick="return document.send_form.submit.value = \''.constant($game->sprache("TEXT35")).'\';">&nbsp;<b>'.constant($game->sprache("TEXT37")).'</b><br><br>
                 ');
             break;
             
             case 'transport_setup':
-                $game->out('<b>Transportieren:</b><br>Die Transporter der Flotte werden bei der Ankunft ihre Ladung zum Zielplaneten herunterbeamen und danach wieder zum Start zurckfliegen.<br><input type="hidden" name="step" value="transport_exec">');
+                $game->out(constant($game->sprache("TEXT38")).'<br><input type="hidden" name="step" value="transport_exec">');
             break;
             
             case 'spy_setup':
                 if(!$in_scout || $in_other_torso || $in_transporter || $in_colo) {
-                    message(NOTICE, 'Nur Aufklärungsschiffe (1. Rumpfklasse) können Spionageeinsätze fliegen');
+                    message(NOTICE, constant($game->sprache("TEXT25")));
                 }
                 
-                $game->out('<b>Ausspionieren:</b><br>Die Aufklärungsschiffe fliegen den Planeten an und versuchen ihn unauffällig zu scannen, um Informationen ber Gebäude, Ressourcen, Einheiten und Technologien der Kolonie herauszufinden. Werden die Schiffe dabei entdeckt, sind sie meistens verloren, da nicht schnell genug vom passiven Modus in den aktiven gewechselt werden kann.<br><input type="hidden" name="step" value="spy_exec">');
+                $game->out(constant($game->sprache("TEXT39")).'<br><input type="hidden" name="step" value="spy_exec">');
             break;
             
             case 'colo_setup':
                 if($game->SITTING_MODE) {
-                    message(NOTICE, 'Du darfst im Sittingmodus keinen Angriff befehlen.');
+                    message(NOTICE, constant($game->sprache("TEXT22")));
                 }
                 $sql = 'SELECT s.ship_id, s.hitpoints, s.experience, s.unit_1, s.unit_2, s.unit_3, s.unit_4,
                                st.name, st.value_5 AS max_hitpoints
@@ -555,14 +554,12 @@ switch($step) {
                     message(GENERAL, 'Unexspected: Second try to find colo ship failed', '$first_cship[\'ship_id\'] = empty');
                 }
                 
-                $game->out('
-      <b>Kolonisieren:</b><br>Der Zielplanet wird, wenn er unbewohnt ist, von einem Kolonisationsschiff der Flotte kolonisiert. Dabei wird dieses Schiff demontiert und daraus das erste Gebï¿½de gebaut. Seine berschssige Besatzung wird auf dem Planeten stationiert. Die anderen Schiffe bleiben im Orbit des Planeten.<br>
-      Folgendes Kolonieschiff wird bei der Kolonisation benutzt:<br><br>
+                $game->out(constant($game->sprache("TEXT40")).'<br><br>
 
       <table border="0" cellpadding="2" cellspacing="2">
         <tr>
           <td width="20" align="right"><input type="radio" name="ship_id" value="'.$first_cship['ship_id'].'" checked="checked"></td>
-          <td width="350" align="left"><b>'.$first_cship['name'].'</b> ('.$first_cship['hitpoints'].'/'.$first_cship['max_hitpoints'].', Exp: '.$first_cship['experience'].')<br>Besatzung: '.$first_cship['unit_1'].'/'.$first_cship['unit_2'].'/'.$first_cship['unit_3'].'/'.$first_cship['unit_4'].'</td>
+          <td width="350" align="left"><b>'.$first_cship['name'].'</b> ('.$first_cship['hitpoints'].'/'.$first_cship['max_hitpoints'].', Exp: '.$first_cship['experience'].')<br>'.constant($game->sprache("TEXT41")).' '.$first_cship['unit_1'].'/'.$first_cship['unit_2'].'/'.$first_cship['unit_3'].'/'.$first_cship['unit_4'].'</td>
         </tr>
                 ');
 
@@ -570,7 +567,7 @@ switch($step) {
                     $game->out('
         <tr>
           <td align="right"><input type="radio" name="ship_id" value="'.$cship['ship_id'].'"></td>
-          <td align="left"><b>'.$cship['name'].'</b> ('.$cship['hitpoints'].'/'.$cship['max_hitpoints'].', Exp: '.$cship['experience'].')<br>Besatzung: '.$cship['unit_1'].'/'.$cship['unit_2'].'/'.$cship['unit_3'].'/'.$cship['unit_4'].'</td>
+          <td align="left"><b>'.$cship['name'].'</b> ('.$cship['hitpoints'].'/'.$cship['max_hitpoints'].', Exp: '.$cship['experience'].')<br>'.constant($game->sprache("TEXT41")).' '.$cship['unit_1'].'/'.$cship['unit_2'].'/'.$cship['unit_3'].'/'.$cship['unit_4'].'</td>
         </tr>
                     ');
                 }
@@ -600,10 +597,10 @@ switch($step) {
             $n_units = $unit_1 + $unit_2 + $unit_3 + $unit_4 + $unit_5 + $unit_6;
 
             if($n_resources > 0) {
-                if($resource_1 > 0) $game->out('<br>Metall: <b>'.$resource_1.'</b>');
-                if($resource_2 > 0) $game->out('<br>Mineralien: <b>'.$resource_2.'</b>');
-                if($resource_3 > 0) $game->out('<br>Latinum: <b>'.$resource_3.'</b>');
-                if($resource_4 > 0) $game->out('<br>Arbeiter: <b>'.$resource_4.'</b>');
+                if($resource_1 > 0) $game->out('<br>'.constant($game->sprache("TEXT42")).' <b>'.$resource_1.'</b>');
+                if($resource_2 > 0) $game->out('<br>'.constant($game->sprache("TEXT43")).' <b>'.$resource_2.'</b>');
+                if($resource_3 > 0) $game->out('<br>'.constant($game->sprache("TEXT44")).' <b>'.$resource_3.'</b>');
+                if($resource_4 > 0) $game->out('<br>'.constant($game->sprache("TEXT45")).' <b>'.$resource_4.'</b>');
                 $game->out('<br>');
             }
 
@@ -620,7 +617,7 @@ switch($step) {
 
         $game->out('
       <br>
-      <center><input class="button" type="button" name="cancel" value="<< Zurck" value="<< Zurck" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="Losschicken"></center>
+      <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT46")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT35")).'"></center>
     </td>
   </tr>
   </form>
@@ -632,11 +629,11 @@ switch($step) {
     default:
         if($game->player['user_auth_level'] == STGC_DEVELOPER) {
             $min_time = 1;
-            $max_speed_str = 'Warp 10/Transwarp';
+            $max_speed_str = constant($game->sprache("TEXT47"));
         }
         elseif($inter_planet) {
             $min_time = 6;
-            $max_speed_str = 'Impuls';
+            $max_speed_str = constant($game->sprache("TEXT48"));
         }
         else {
             include_once('include/libs/moves.php');
@@ -645,7 +642,7 @@ switch($step) {
             $velocity = warpf($max_warp_speed);
             $min_time = ceil( ( ($distance / $velocity) / TICK_DURATION) );
 
-            $max_speed_str = 'Warp '.round($max_warp_speed, 2);
+            $max_speed_str = constant($game->sprache("TEXT49")).' '.round($max_warp_speed, 2);
         }
 
         $min_stardate = sprintf('%.1f', ($game->config['stardate'] + ($min_time / 10)));
@@ -681,7 +678,7 @@ function decrement_arrival() {
 
 function update_times() {
     if(isNaN(document.send_form.higher_arrival_stardate.value)) {
-        alert(\'Ungltige Sternzeit-Angabe\');
+        alert(\''.constant($game->sprache("TEXT50")).'\');
 
         document.send_form.higher_arrival_stardate.value = \''.$min_stardate_split[0].'\';
         document.send_form.lower_arrival_stardate.value = \''.$min_stardate_split[1].'\';
@@ -690,7 +687,7 @@ function update_times() {
     var int_stardate = parseInt(document.send_form.higher_arrival_stardate.value + document.send_form.lower_arrival_stardate.value);
     
     if(int_stardate < '.$min_stardate_int.') {
-        alert(\'Die frühstmögliche Ankunft ist Sternzeit '.$min_stardate.'\');
+        alert(\''.constant($game->sprache("TEXT19")).' '.$min_stardate.'\');
         
         document.send_form.higher_arrival_stardate.value = \''.$min_stardate_split[0].'\';
         document.send_form.lower_arrival_stardate.value = \''.$min_stardate_split[1].'\';
@@ -733,22 +730,22 @@ function update_times() {
         $game->out('
   <tr>
     <td>
-      Start: <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($start)).'"><b>'.$start_planet['planet_name'].'</b></a> ('.$game->get_sector_name($start_planet['sector_id']).':'.$game->get_system_cname($start_planet['system_x'], $start_planet['system_y']).':'.($start_planet['planet_distance_id'] + 1).')'.( ($start_planet['user_id'] != $game->player['user_id']) ? ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$start_planet['user_id']).'"><b>'.$start_planet['user_name'].'</b></a>' : '' ).'<br>
+      '.constant($game->sprache("TEXT28")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($start)).'"><b>'.$start_planet['planet_name'].'</b></a> ('.$game->get_sector_name($start_planet['sector_id']).':'.$game->get_system_cname($start_planet['system_x'], $start_planet['system_y']).':'.($start_planet['planet_distance_id'] + 1).')'.( ($start_planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT26")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$start_planet['user_id']).'"><b>'.$start_planet['user_name'].'</b></a>' : '' ).'<br>
         ');
 
         if($free_planet) {
-            $game->out('Ziel: <i>unbewohnt</i> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')<br><br>');
+            $game->out(constant($game->sprache("TEXT29")).' <i>'.constant($game->sprache("TEXT51")).'</i> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')<br><br>');
         }
         else {
-            $game->out('Ziel: <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($dest)).'"><b>'.$dest_planet['planet_name'].'</b></a> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')'.( ($dest_planet['user_id'] != $game->player['user_id']) ? ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$dest_planet['user_id']).'"><b>'.$dest_planet['user_name'].'</b></a>' : '' ).'<br><br>');
+            $game->out(constant($game->sprache("TEXT29")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($dest)).'"><b>'.$dest_planet['planet_name'].'</b></a> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')'.( ($dest_planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT26")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$dest_planet['user_id']).'"><b>'.$dest_planet['user_name'].'</b></a>' : '' ).'<br><br>');
         }
         
         $game->out('
-      Flotten: <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
-      Max. Geschwindigkeit: <b>'.$max_speed_str.'</b><br>
-      frühstmögliche Ankunft: <b>Sternzeit '.$min_stardate.'</b><br><br>
-      Ankunft bei Sternzeit: <input class="field" style="width: 45px;" type="text" name="higher_arrival_stardate" value="'.$min_stardate_split[0].'" maxlength="5" onBlur="return update_times();">&nbsp;.&nbsp;<input class="field" style="width: 15px;" type="text" name="lower_arrival_stardate" value="'.$min_stardate_split[1].'" maxlength="1" onBlur="return update_times();">&nbsp;&nbsp;<input class="button" style="width: 20px;" type="button" value="+" onClick="return increment_arrival();"">&nbsp;<input class="button" style="width: 20px;" type="button" value="-" onClick="return decrement_arrival();"><br><br>
-      Flugdauer: <input class="field" style="width: 25px;" type="text" name="arrival_days" value="" disabled="disabled">&nbsp;<i>Tage</i>&nbsp;&nbsp;<input class="field" style="width: 25px;" name="arrival_hours" value="" disabled="disabled">&nbsp;<i>Stunden</i>&nbsp;&nbsp;<input class="field" style="width: 25px;" name="arrival_minutes" value="" disabled="disabled">&nbsp;<i>Minuten +</i>&nbsp;<i id="timer2" title="time1_'.$NEXT_TICK.'_type1_4">&nbsp;</i><br><br>
+      '.constant($game->sprache("TEXT30")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
+      '.constant($game->sprache("TEXT52")).' <b>'.$max_speed_str.'</b><br>
+      '.constant($game->sprache("TEXT53")).' '.$min_stardate.'</b><br><br>
+      '.constant($game->sprache("TEXT31")).' <input class="field" style="width: 45px;" type="text" name="higher_arrival_stardate" value="'.$min_stardate_split[0].'" maxlength="5" onBlur="return update_times();">&nbsp;.&nbsp;<input class="field" style="width: 15px;" type="text" name="lower_arrival_stardate" value="'.$min_stardate_split[1].'" maxlength="1" onBlur="return update_times();">&nbsp;&nbsp;<input class="button" style="width: 20px;" type="button" value="+" onClick="return increment_arrival();"">&nbsp;<input class="button" style="width: 20px;" type="button" value="-" onClick="return decrement_arrival();"><br><br>
+      '.constant($game->sprache("TEXT54")).' <input class="field" style="width: 25px;" type="text" name="arrival_days" value="" disabled="disabled">&nbsp;<i>'.constant($game->sprache("TEXT55")).'</i>&nbsp;&nbsp;<input class="field" style="width: 25px;" name="arrival_hours" value="" disabled="disabled">&nbsp;<i>'.constant($game->sprache("TEXT56")).'</i>&nbsp;&nbsp;<input class="field" style="width: 25px;" name="arrival_minutes" value="" disabled="disabled">&nbsp;<i>'.constant($game->sprache("TEXT57")).' +</i>&nbsp;<i id="timer2" title="time1_'.$NEXT_TICK.'_type1_4">&nbsp;</i><br><br>
       
       <table width="440" align="center" border="0" cellpadding="0" cellspacing="0"><tr><td width="220">
         ');
@@ -758,30 +755,30 @@ function update_times() {
             // Angriffsschutz garnicht angeflogen werden kï¿½nen
             
             $game->out('
-        <input type="radio" name="step" value="stationate_setup">&nbsp;<b>Stationieren</b><br>
-        <input type="radio" name="step" value="colo_setup"'.( (!$in_colo) ? ' disabled="disabled">&nbsp;Kolonisieren<br>' : '>&nbsp;<b>Kolonisieren</b><br>' )
+        <input type="radio" name="step" value="stationate_setup">&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>
+        <input type="radio" name="step" value="colo_setup"'.( (!$in_colo) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT59")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT59")).'</b><br>' )
             );
         }
         elseif($own_planet) {
             $game->out('
-        <input type="radio" name="step" value="stationate_setup" checked="checked">&nbsp;<b>Stationieren</b><br>
-        <input type="radio" name="step" value="comeback_setup">&nbsp;<b>Anfliegen und Zurückkehren</b><br>
+        <input type="radio" name="step" value="stationate_setup" checked="checked">&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>
+        <input type="radio" name="step" value="comeback_setup">&nbsp;<b>'.constant($game->sprache("TEXT60")).'</b><br>
             ');
         }
         else {
             $game->out('
-        <input type="radio" name="step" value="stationate_setup"'.( ($atkptc_present) ? ' disabled="disabled">&nbsp;Stationieren<br>' : '>&nbsp;<b>Stationieren</b><br>' ).'
-        <input type="radio" name="step" value="attack_setup"'.( ($own_planet || $free_planet || $atkptc_present) ? ' disabled="disabled">&nbsp;Angreifen<br>' : '>&nbsp;<b>Angreifen</b><br>' ).'
-        <input type="radio" name="step" value="transport_setup"'.( ($own_planet || $free_planet || !$in_transporter) ? ' disabled="disabled">&nbsp;Transportieren<br>' : '>&nbsp;<b>Transportieren</b><br>' ).'
-        <input type="radio" name="step" value="spy_setup"'.( (!$in_scout || $atkptc_present) ? ' disabled="disabled">&nbsp;Ausspionieren<br>' : '>&nbsp;<b>Ausspionieren</b><br>' ).'
+        <input type="radio" name="step" value="stationate_setup"'.( ($atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT58")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>' ).'
+        <input type="radio" name="step" value="attack_setup"'.( ($own_planet || $free_planet || $atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT61")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT61")).'</b><br>' ).'
+        <input type="radio" name="step" value="transport_setup"'.( ($own_planet || $free_planet || !$in_transporter) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT62")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT62")).'</b><br>' ).'
+        <input type="radio" name="step" value="spy_setup"'.( (!$in_scout || $atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT63")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT63")).'</b><br>' ).'
             ');
         }
         
         $game->out('
       </td>
       <td width="220" valign="middle">
-        <input class="button" type="button" value="<< Zurück" onClick="return window.history.back();">&nbsp;&nbsp;
-        <input class="button" type="submit" name="submit" value="Weiter >>">
+        <input class="button" type="button" value="'.constant($game->sprache("TEXT46")).'" onClick="return window.history.back();">&nbsp;&nbsp;
+        <input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT64")).'">
       </td></tr></table>
     </td>
   </tr>

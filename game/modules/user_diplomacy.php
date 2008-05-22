@@ -382,36 +382,36 @@ if(empty($_REQUEST['sort']) && $_REQUEST['member_list']!=1) {$art_c=1;}else{$art
 
     while($diplomacy = $db->fetchrow($q_diplomacy)) {
 
-	$opid = ($diplomacy['user1_id'] == $game->player['user_id']) ? 2 : 1;
+        $opid = ($diplomacy['user1_id'] == $game->player['user_id']) ? 2 : 1;
 
-	$order_by_user = 'ORDER BY last_active ASC';
+        $order_by_user = 'ORDER BY last_active ASC';
 
         $userquery=$db->query('SELECT * FROM user WHERE user_id = "'.$diplomacy['user'.$opid.'_id'].'" AND user_active=1');
 
         if (($user = $db->fetchrow($userquery))==false) {$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT31")).' (id='.$_REQUEST['id'].'<br>'.constant($game->sprache("TEXT32")).'</span></center>');}
         else {
-  
-        if($diplomacy['accepted']) {
-            $cmd_str = '&nbsp;&nbsp;[<a href="'.parse_link('a=user_diplomacy&break='.$diplomacy['ud_id']).'">'.constant($game->sprache("TEXT33")).'</a>]';
-            $date_str = gmdate('d.m.Y', $diplomacy['date']);
-	    
-	    if ($user['last_active']>(time()-60*3)) $stats_str='<span style="color: green">'.constant($game->sprache("TEXT34")).'</span>';
-	    else if ($user['last_active']>(time()-60*9)) $stats_str='<span style="color: orange">'.constant($game->sprache("TEXT35")).'</span>';
-            else $stats_str='<span style="color: red">'.constant($game->sprache("TEXT36")).'</span>';
-        }
-        else {
-            if($opid == 1) {
-                $cmd_str = '&nbsp;&nbsp;[<a href="'.parse_link('a=user_diplomacy&accept='.$diplomacy['ud_id']).'">'.constant($game->sprache("TEXT37")).'</a>]&nbsp;[<a href="'.parse_link('a=user_diplomacy&deny='.$diplomacy['ud_id']).'">'.constant($game->sprache("TEXT38")).'</a>]';
-                $date_str = '<span style="color: #FFFF00;">'.constant($game->sprache("TEXT39")).'</span>';
-		$stats_str = 'Unknown';
+
+            if($diplomacy['accepted']) {
+                $cmd_str = '&nbsp;&nbsp;[<a href="'.parse_link('a=user_diplomacy&break='.$diplomacy['ud_id']).'">'.constant($game->sprache("TEXT33")).'</a>]';
+                $date_str = gmdate('d.m.Y', $diplomacy['date']);
+
+                if ($user['last_active']>(time()-60*3)) $stats_str='<span style="color: green">'.constant($game->sprache("TEXT34")).'</span>';
+                else if ($user['last_active']>(time()-60*9)) $stats_str='<span style="color: orange">'.constant($game->sprache("TEXT35")).'</span>';
+                else $stats_str='<span style="color: red">'.constant($game->sprache("TEXT36")).'</span>';
             }
             else {
-                $cmd_str = '&nbsp;&nbsp;[<a href="'.parse_link('a=user_diplomacy&cancel='.$diplomacy['ud_id']).'">'.constant($game->sprache("TEXT40")).'</a>]';
-                $date_str = '<span style="color: #FF0000;">Wartet</span>';
-		$stats_str = 'Unknown';
+                if($opid == 1) {
+                    $cmd_str = '&nbsp;&nbsp;[<a href="'.parse_link('a=user_diplomacy&accept='.$diplomacy['ud_id']).'">'.constant($game->sprache("TEXT37")).'</a>]&nbsp;[<a href="'.parse_link('a=user_diplomacy&deny='.$diplomacy['ud_id']).'">'.constant($game->sprache("TEXT38")).'</a>]';
+                    $date_str = '<span style="color: #FFFF00;">'.constant($game->sprache("TEXT39")).'</span>';
+                    $stats_str = constant($game->sprache("TEXT42"));
+                }
+                else {
+                    $cmd_str = '&nbsp;&nbsp;[<a href="'.parse_link('a=user_diplomacy&cancel='.$diplomacy['ud_id']).'">'.constant($game->sprache("TEXT40")).'</a>]';
+                    $date_str = '<span style="color: #FF0000;">'.constant($game->sprache("TEXT41")).'</span>';
+                    $stats_str = constant($game->sprache("TEXT42"));
+                }
             }
         }
-}
         $game->out('
   <tr>
     <td width="180"><a href="'.parse_link('a=stats&a2=viewplayer&id='.$diplomacy['user'.$opid.'_id']).'">'.$diplomacy['user'.$opid.'_name'].'</a>'.( ($diplomacy['user'.$opid.'_aid']) ? ' [<a href="'.parse_link('a=stats&a2=viewalliance&id='.$diplomacy['user'.$opid.'_aid']).'">'.$diplomacy['user'.$opid.'_atag'].'</a>]' : '' ).'</td>
@@ -421,7 +421,7 @@ if(empty($_REQUEST['sort']) && $_REQUEST['member_list']!=1) {$art_c=1;}else{$art
   </tr>
         ');
     }
-    
+
     $game->out('
 </table>
 <table width="500" align="center" border="0" cellpadding="2" cellspacing="2">

@@ -25,13 +25,13 @@ if(isset($_POST['exec_surrender_planet'])){
 
 $game->out('
 
-<span class="caption">Kolonie aufgeben:</span>
+<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>
 
 <form action="'.parse_link('a=surrender_planet').'" method="post">
 
 <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
 <tr>
-  <td>Standort: <b><a href="'.parse_link('a=tactical_cartography&planet_id='.$game->planet['planet_id']).'">'.$game->planet['planet_name'].'</a></b> von <b>'.$game->player['user_name'].'
+  <td>'.constant($game->sprache("TEXT1")).' <b><a href="'.parse_link('a=tactical_cartography&planet_id='.$game->planet['planet_id']).'">'.$game->planet['planet_name'].'</a></b> '.constant($game->sprache("TEXT2")).' <b>'.$game->player['user_name'].'
 </tr>
 
 <tr>
@@ -39,7 +39,7 @@ $game->out('
 </tr>
 
 <tr>
-  <td>Sind sie sicher das sie die Planeten <b><a href="'.parse_link('a=tactical_cartography&planet_id='.$game->planet['planet_id']).'">'.$game->planet['planet_name'].'</a></b> aufgeben und somit an den Siedler übergeben wollen?<br>Dieser Schritt lässt sicht nicht Rückgänig machen und wird sofort Wirksam.</td>
+  <td>'.constant($game->sprache("TEXT3")).' <b><a href="'.parse_link('a=tactical_cartography&planet_id='.$game->planet['planet_id']).'">'.$game->planet['planet_name'].'</a></b> '.constant($game->sprache("TEXT4")).'</td>
 </tr>
 
 <tr>
@@ -47,7 +47,7 @@ $game->out('
 </tr>
 
 <tr>
-  <td align="center"><input class="button" name="cancel" value="&lt;&lt; Zurück" onclick="return window.history.back();" type="button">&nbsp;&nbsp;<input class="button" name="do_surrender_planet" value="Durchführen" type="submit"><td>
+  <td align="center"><input class="button" name="cancel" value="'.constant($game->sprache("TEXT5")).'" onclick="return window.history.back();" type="button">&nbsp;&nbsp;<input class="button" name="do_surrender_planet" value="'.constant($game->sprache("TEXT6")).'" type="submit"><td>
 </tr>
 <table>
 
@@ -57,38 +57,38 @@ $game->out('
 
 }
 
-if(isset($_POST['do_surrender_planet'])){
+if(isset($_POST['do_surrender_planet'])) {
 
-      // message(NOTICE, ''.$game->config['tick_id'].'');
+        // message(NOTICE, ''.$game->config['tick_id'].'');
 
        if($game->planet['planet_surrender']!=0){
 
-         message(NOTICE, 'Einmal aufgeben sollte reichen oder?');
+           message(NOTICE, constant($game->sprache("TEXT7")));
 
        }
-       
-	if($game->SITTING_MODE) {
-          
-	  message(NOTICE, 'Netter Versuch, Aufgabe eines Planeten ist über Sitting nicht gestattet!');
 
-	}
+        if($game->SITTING_MODE) {
 
-	if($game->player['user_capital']==$game->planet['planet_id']) {
+            message(NOTICE, constant($game->sprache("TEXT8")));
 
-	  message(NOTICE, 'Du darfst deinen Hauptplaneten nicht aufgeben!');
+        }
 
-	}
-       
-      $sql = 'UPDATE planets
-      	       SET planet_surrender = ('.$game->config['tick_id'].' + 120)
-		WHERE planet_id = '.$game->planet['planet_id'];
+        if($game->player['user_capital']==$game->planet['planet_id']) {
 
-      if(!$db->query($sql)) {
-         $sdl->log('<b>Error:</b> Could not perform surrender planet <b>'.$game->planet['planet_id'].'</b>! CONTINUED');
-      }
+            message(NOTICE, constant($game->sprache("TEXT9")));
+
+        }
+
+        $sql = 'UPDATE planets
+                SET planet_surrender = ('.$game->config['tick_id'].' + 120)
+                WHERE planet_id = '.$game->planet['planet_id'];
+
+        if(!$db->query($sql)) {
+            $sdl->log('<b>Error:</b> Could not perform surrender planet <b>'.$game->planet['planet_id'].'</b>! CONTINUED');
+        }
 
 
-redirect('a=headquarter');
+    redirect('a=headquarter');
 
 }
 

@@ -25,7 +25,7 @@
 include('include/libs/moves.php');
 
 $game->init_player();
-$game->out('<center><span class="caption">Allianz:</span><br><br>');
+$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).':</span><br><br>');
 
  $sql = 'SELECT *
             FROM alliance
@@ -37,11 +37,11 @@ $game->out('<center><span class="caption">Allianz:</span><br><br>');
 
 
 if(empty($game->player['alliance_name'])) {
-    message(NOTICE, 'Du bist nicht Mitglied einer Allianz');
+    message(NOTICE, constant($game->sprache("TEXT1")));
 }
 
 if($game->player['user_alliance_rights3']!=1) {
-    message(NOTICE, 'Du besitzt nicht die erforderlichen Rechte zum Betrachten der Seite');
+    message(NOTICE, constant($game->sprache("TEXT2")));
 }
 
 $game->out('
@@ -50,10 +50,10 @@ $game->out('
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br><br>
       <table width="520" align="center" border="0" cellpadding="0" cellspacing="2">
-        <tr><td width="520" align="left"><i>Taktische Übersicht - Feindliche Angriffe</i></td></tr>
+        <tr><td width="520" align="left"><i>'.constant($game->sprache("TEXT3")).'</i></td></tr>
       </table>
       <table width="520" align="center" border="0" cellpadding="0" cellspacing="8">
-        <tr><td width="520" align="left">Hier werden alle Angriffe auf deine Allianz aufgelistet, die auf den Planeten eines Mitgliedes durchgeführt werden.</td></tr>
+        <tr><td width="520" align="left">'.constant($game->sprache("TEXT4")).'</td></tr>
       </table>
 
       <table class="style_inner" width="520" align="center" border="0" cellpadding="2" cellspacing="2">
@@ -62,12 +62,12 @@ $game->out('
 			
 		<table width="520" align="center" border="0" cellpadding="1" cellspacing="1">
 		<tr>
-			<td width="90">Spieler:</td>
-			<td width="95">Planet:</td>
-			<td width="140">Angreifer:</td>
-			<td width="60">Schiffe:</td>
-			<td width="60">Befehl:</td>
-			<td width="75">Ankunft:</td>
+			<td width="90">'.constant($game->sprache("TEXT5")).':</td>
+			<td width="95">'.constant($game->sprache("TEXT6")).':</td>
+			<td width="140">'.constant($game->sprache("TEXT7")).':</td>
+			<td width="60">'.constant($game->sprache("TEXT8")).':</td>
+			<td width="60">'.constant($game->sprache("TEXT9")).':</td>
+			<td width="75">'.constant($game->sprache("TEXT10")).':</td>
 		</tr>
 ');
 
@@ -148,11 +148,11 @@ $game->out('
 <br><br><br><br>
 
 <table width="520" align="center" border="0" cellpadding="0" cellspacing="2">
-  <tr><td width="520" align="left"><i>Taktische Übersicht - Eigene Angriffe</i></td></tr>
+  <tr><td width="520" align="left"><i>'.constant($game->sprache("TEXT11")).'</i></td></tr>
 </table>
 
 <table width="520" align="center" border="0" cellpadding="0" cellspacing="8">
-  <tr><td width="520" align="left">Hier werden alle Angriffe deiner Allianz gegen andere Spieler aufgelistet. Hier werden ALLE Angriffe (sowohl auf Planeten wie auf Schiffe) aufgelistet.</td></tr>
+  <tr><td width="520" align="left">'.constant($game->sprache("TEXT12")).'</td></tr>
 </table>
 
 <table class="style_inner" width="520" align="center" border="0" cellpadding="2" cellspacing="2">
@@ -160,12 +160,12 @@ $game->out('
 
   <table width="520" align="center" border="0" cellpadding="1" cellspacing="1">
     <tr>
-      <td width="90">Angreifer:</td>
-      <td width="140">Opfer:</td>
-      <td width="95">Planet:</td>
-      <td width="60">Schiffe:</td>
-      <td width="60">Befehl:</td>
-      <td width="75">Ankunft:</td>
+      <td width="90">'.constant($game->sprache("TEXT7")).':</td>
+      <td width="140">'.constant($game->sprache("TEXT13")).':</td>
+      <td width="95">'.constant($game->sprache("TEXT6")).':</td>
+      <td width="60">'.constant($game->sprache("TEXT8")).':</td>
+      <td width="60">'.constant($game->sprache("TEXT9")).':</td>
+      <td width="75">'.constant($game->sprache("TEXT10")).':</td>
     </tr>
 ');
 
@@ -193,17 +193,17 @@ if(($q_moves = $db->query($sql)) === false){
     message(DATABASE_ERROR, 'Could not query moves data');
 }
 
-	$commands=array(11=>'Stationieren',12=>'Zurückfliegen',13=>'Zurückfliegen',14=>'Transportieren',
+	$commands=array(11=>constant($game->sprache("TEXT15")),12=>constant($game->sprache("TEXT17")),13=>constant($game->sprache("TEXT17")),14=>constant($game->sprache("TEXT18")),
 
-	21=>'Stationieren',22=>'Spionieren',23=>'Übergeben',24=>'Kolonisieren',25=>'Kolonisieren',
+	21=>constant($game->sprache("TEXT15")),22=>constant($game->sprache("TEXT19")),23=>constant($game->sprache("TEXT20")),24=>constant($game->sprache("TEXT21")),25=>constant($game->sprache("TEXT21")),
 
-	31=>'Transportieren',32=>'Ferengitransport',33=>'Auktionsflotte',
+	31=>constant($game->sprache("TEXT18")),32=>constant($game->sprache("TEXT23")),33=>constant($game->sprache("TEXT24")),
 
-	34=>'Handelsroute',35=>'Handelsroute',36=>'Handelsroute',37=>'Handelsroute',38=>'Handelsroute',39=>'Handelsroute',
+	34=>constant($game->sprache("TEXT22")),35=>constant($game->sprache("TEXT22")),36=>constant($game->sprache("TEXT22")),37=>constant($game->sprache("TEXT22")),38=>constant($game->sprache("TEXT22")),39=>constant($game->sprache("TEXT22")),
 
-	40=>'Angreifen',41=>'Angreifen',42=>'Angreifen',43=>'Plündern',44=>'Bombardieren',45=>'Kolonisieren',
+	40=>constant($game->sprache("TEXT16")),41=>constant($game->sprache("TEXT16")),42=>constant($game->sprache("TEXT16")),43=>constant($game->sprache("TEXT25")),44=>constant($game->sprache("TEXT26")),45=>constant($game->sprache("TEXT21")),
 
-	51=>'Angreifen',53=>'Plündern',54=>'Bombardieren',55=>'Kolonisieren',
+	51=>constant($game->sprache("TEXT16")),53=>constant($game->sprache("TEXT25")),54=>constant($game->sprache("TEXT26")),55=>constant($game->sprache("TEXT21")),
 
 	);
 	

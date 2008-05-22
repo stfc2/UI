@@ -23,7 +23,7 @@
 
 $game->init_player();
 
-$game->out('<center><span class="caption">Taktische Zentrale:</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">Stellare Kartographie</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">Schiffsbewegungen</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">Spieler Info</a>]&nbsp;&nbsp;[<b>Kolonisierung</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">Sensoren</a>]</center><br>
+$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">'.constant($game->sprache("TEXT1")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<b>'.constant($game->sprache("TEXT4")).'</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]</center><br>
 
 <table border=0 cellpadding=2 cellspacing=2 class="style_outer"><tr>
 <td width=450>

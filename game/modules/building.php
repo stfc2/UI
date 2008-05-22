@@ -20,10 +20,10 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-//include('building.sprache.php');
+
 $game->init_player();
 
-$game->out('<center><span class="caption">'.constant($game->sprache("Text01")).'</span></center><br><br>');
+$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span></center><br><br>');
 
 
 if ($game->planet['building_queue']==0) unset($game->planet['building_queue']);
@@ -45,8 +45,6 @@ global $db;
 global $game;
 global $RACE_DATA, $BUILDING_NAME, $BUILDING_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK,$PLANETS_DATA;
 $pow_factor=2;
-
-//$game->player['user_race']
 
 $price=round(pow($BUILDING_DATA[$building][$resource]*($game->planet['building_'.($building+1)]+1),$pow_factor),0);
 
@@ -142,10 +140,10 @@ if ($game->planet['resource_1']>=GetBuildingPrice($_REQUEST['id'],0) && $game->p
 {
 $buildings=$game->planet['building_1']+$game->planet['building_2']+$game->planet['building_3']+$game->planet['building_4']+$game->planet['building_10']+$game->planet['building_6']+$game->planet['building_7']+$game->planet['building_8']+$game->planet['building_9']+$game->planet['building_11']+$game->planet['building_12'];
 $t=$_REQUEST['id'];
-if (($t==11 && $game->planet['building_1']<4) || ($t==10 && $game->planet['building_1']<3) | ($t==6 && $game->planet['building_1']<5) || ($t==8 && $game->planet['building_1']<9) || ($t==7 && $game->planet['building_7']<1) || ($t==9 && ($game->planet['building_6']<5 || $game->planet['building_7']<1))  || ($t==12 && ($game->planet['building_6']<1 || $game->planet['building_7']<1))) {}
+if (($t==11 && $game->planet['building_1']<4) || ($t==10 && $game->planet['building_1']<3) || ($t==6 && $game->planet['building_1']<5) || ($t==8 && $game->planet['building_1']<9) || ($t==7 && $game->planet['building_7']<1) || ($t==9 && ($game->planet['building_6']<5 || $game->planet['building_7']<1))  || ($t==12 && ($game->planet['building_6']<1 || $game->planet['building_7']<1))) {}
 else
 {
-if ($_REQUEST['id']!=4 && $buildings>=($capital==true ? $game->planet['building_5']*11+14 : $game->planet['building_5']*15+3)) {$game->out('<center><span class="text_large">'.constant($game->sprache("TEXT1")).'<br>'.constant($game->sprache("TEXT2")).'</span></center><br><center><span class="text_large">'.constant($game->sprache("Text02")).'</span></center><br>');}
+if ($_REQUEST['id']!=4 && $buildings>=($capital==true ? $game->planet['building_5']*11+14 : $game->planet['building_5']*15+3)) {$game->out('<center><span class="text_large">'.constant($game->sprache("TEXT1")).'<br>'.constant($game->sprache("TEXT2")).'</span></center><br><center><span class="text_large">'.constant($game->sprache("TEXT6")).'</span></center><br>');}
 else
 if ($db->query('UPDATE planets SET resource_1=resource_1-'.(GetBuildingPrice($_REQUEST['id'],0)).',resource_2=resource_2-'.(GetBuildingPrice($_REQUEST['id'],1)).',resource_3=resource_3-'.(GetBuildingPrice($_REQUEST['id'],2)).'  WHERE planet_id= "'.$game->planet['planet_id'].'"')==true)
 {
@@ -187,7 +185,7 @@ else if ($game->planet['resource_1']>=GetBuildingPrice($_REQUEST['id'],0) && $ga
 {
 $buildings=$game->planet['building_1']+$game->planet['building_2']+$game->planet['building_3']+$game->planet['building_4']+$game->planet['building_10']+$game->planet['building_6']+$game->planet['building_7']+$game->planet['building_8']+$game->planet['building_9']+$game->planet['building_11']+$game->planet['building_12']+$game->planet['building_13'];
 $t=$_REQUEST['id'];
-if (($t==11 && $game->planet['building_1']<4) || ($t==10 && $game->planet['building_1']<3) | ($t==6 && $game->planet['building_1']<5) || ($t==8 && $game->planet['building_1']<9) || ($t==7 && $game->planet['building_7']<1) || ($t==9 && ($game->planet['building_6']<5 || $game->planet['building_7']<1)) || ($t==12 && ($game->planet['building_6']<1 || $game->planet['building_7']<1)) ) {}
+if (($t==11 && $game->planet['building_1']<4) || ($t==10 && $game->planet['building_1']<3) || ($t==6 && $game->planet['building_1']<5) || ($t==8 && $game->planet['building_1']<9) || ($t==7 && $game->planet['building_7']<1) || ($t==9 && ($game->planet['building_6']<5 || $game->planet['building_7']<1)) || ($t==12 && ($game->planet['building_6']<1 || $game->planet['building_7']<1)) ) {}
 else
 {
 if ($_REQUEST['id']!=4 && $buildings>=($capital==true ? $game->planet['building_5']*11+14 : $game->planet['building_5']*15+3)) {$game->out('<center><span class="text_large">'.constant($game->sprache("TEXT1")).'<br>'.constant($game->sprache("TEXT2")).'</span></center><br>');}
@@ -353,7 +351,7 @@ $game->set_autorefresh(($NEXT_TICK+TICK_DURATION*60*($scheduler['build_finish']-
 else // Test for malfunction of building_queue:
 {
 if (isset($game->planet['building_queue']))
-if ($db->query('UPDATE planets SET building_queue=0  WHERE planet_id= "'.$game->planet['planet_id'].'"')==false)  {$game->out('<center><span class="text_large"><b>Fehler in "Queue Malfunction Detected": Der Bauauftrag in der Warteschlange konnte nicht entfernt werden!<br>Bitte melde dies zusammen mit (ID='.$game->planet['planet_id'].') einem Admin</b></span></center><br>');}
+if ($db->query('UPDATE planets SET building_queue=0  WHERE planet_id= "'.$game->planet['planet_id'].'"')==false)  {$game->out('<center><span class="text_large"><b>Error in "Queue Malfunction Detected": The Works in the queue could not be removed!<br>'.constant($game->sprache("TEXT8")).' (ID='.$game->planet['planet_id'].') '.constant($game->sprache("TEXT9")).'</b></span></center><br>');}
 }
 
 $avai=($game->planet['building_5'])*11+14;
@@ -428,7 +426,7 @@ else
 {
 $game->out('<table width="450" border="0" align="center">
   <tr>
-    <td><span class="text_large">Du kannst auf diesen Bereich nicht zugreifen, weil du nur <b>'.round(100*round($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4, 0)/$game->planet['min_troops_required'],0).'%</b> der nötigen Sicherheitstruppen auf diesem Planeten hast.<br>Ein Zugriff ist ab <b>70%</b> wieder möglich.<br><br><i><u>Hinweis:</u> Aktive Bauvorgänge laufen noch weiter und können z.B. im Hauptquartier eingesehen werden.</i></span>
+    <td><span class="text_large">'.constant($game->sprache("TEXT30")).' <b>'.round(100*round($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4, 0)/$game->planet['min_troops_required'],0).'%</b> '.constant($game->sprache("TEXT31")).'</i></span>
     </td>
   </tr>
 </table>

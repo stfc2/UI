@@ -33,7 +33,7 @@ if(($alliance = $db->queryrow($sql)) === false) {
 }
 
 if($game->player['user_alliance_rights4'] != 1 && $game->player['user_id'] != $alliance['alliance_owner']) {
-    message(NOTICE, 'Du bestitzt nicht die erforderlichen Berechtigungen um diesen Vorgang auszuführen.');
+    message(NOTICE, constant($game->sprache("TEXT0")));
 }
 
 // Check Ende
@@ -42,15 +42,15 @@ else {
 if(!empty($_POST['mass_mail_submit'])) {
     
     if($alliance['alliance_member']<=1) {
-        message(NOTICE, 'Du willst dir selbst ne Massmail schicken? Spock würde sagen: "Das klingt nicht logisch!"');
+        message(NOTICE, constant($game->sprache("TEXT1")));
     }
 
     if(empty($_POST['mail_subject'])) {
-        message(NOTICE, 'Kein Nachricht-Titel angegeben');
+        message(NOTICE, constant($game->sprache("TEXT2")));
     }
     
     if(empty($_POST['mail_text'])) {
-        message(NOTICE, 'Kein Nachricht-Text angegeben');
+        message(NOTICE, constant($game->sprache("TEXT3")));
     }
     
     $sql = 'SELECT user_id
@@ -108,26 +108,26 @@ if(!empty($_POST['mass_mail_submit'])) {
       <table class="style_inner" width="350" align="center" border="0" cellpadding="2" cellspacing="2">
         <form method="post" action="'.parse_link('a=alliance_massmail').'">
         <tr>
-          <td colspan="2" width="350"><b>Massenmail verschicken</b><br>Hier kannst du an <i>alle Mitglieder</i> gleichzeitig eine Ingame-Nachricht schreiben.</td>
+          <td colspan="2" width="350">'.constant($game->sprache("TEXT4")).'</td>
         </tr>
         <tr height="10"><td></td></tr>
         <tr>
-          <td width="50">Titel:</td>
-          <td width="300"><input class="field" type="text" name="mail_subject" maxlength="32"></td>
+          <td width="50">'.constant($game->sprache("TEXT5")).'</td>
+          <td width="300"><input class="field" type="text" name="mail_subject" maxlength="32" style="width: 280px;"></td>
         </tr>
         <tr height="5"><td></td></tr>
         <tr>
-          <td width="50">Text:</td>
-          <td width="300"><textarea name="mail_text" cols="45" rows="8"></textarea>
+          <td width="50">'.constant($game->sprache("TEXT6")).'</td>
+          <td width="300"><textarea name="mail_text" cols="45" rows="8" style="width: 280px;"></textarea>
         </tr>
         <tr>
-          <td width="50">Signatur:</td>
-          <td width="300"><textarea name="message_sig" cols="45" rows="3">'.$game->player['user_message_sig'].'</textarea>
+          <td width="50">'.constant($game->sprache("TEXT7")).'</td>
+          <td width="300"><textarea name="message_sig" cols="45" rows="3" style="width: 280px;">'.$game->player['user_message_sig'].'</textarea>
         </tr>
 
         <tr height="5"><td></td></tr>
         <tr>
-          <td colspan="2" width="350" align="center"><input class="button" type="submit" name="mass_mail_submit" value="Übernehmen"></td>
+          <td colspan="2" width="350" align="center"><input class="button" type="submit" name="mass_mail_submit" value="'.constant($game->sprache("TEXT8")).'"></td>
         </tr>
         <tr height="5"><td></td></tr>
         </form>

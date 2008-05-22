@@ -25,8 +25,9 @@
 $game->init_player();
 
 include('include/libs/secimage.php');
+include('modules/security.sprache.php');
 
-$game->out('<center><span class="caption">STGC Sicherheitscode:<br><br></span>
+$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'<br><br></span>
 <span class="sub_caption2">');
 
 if ($game->player['content_secimage']!="" && time()>=$game->player['timeout_secimage'])
@@ -37,7 +38,7 @@ if ($game->player['content_secimage']!="" && time()>=$game->player['timeout_seci
 
 	if (sqrt(pow($_POST['click_x']-$arr[0],2)+pow($_POST['click_x']-$arr[0],2))<25)
 	{
-		$game->out('Der angegebene Sicherheitscode war korrekt.<br>');
+		$game->out(constant($game->sprache("TEXT1")));
 		$db->query('UPDATE user SET content_secimage="" WHERE user_id="'.$game->player['user_id'].'" LIMIT 1');
 		$db->query('UPDATE user SET timeout_secimage="'.(time()-1).'" WHERE user_id="'.$game->player['user_id'].'" LIMIT 1');
 		if (!isset($_REQUEST['a']) || $_REQUEST['a']=="security") $_REQUEST['a']=$_POST['command'];
@@ -46,7 +47,7 @@ if ($game->player['content_secimage']!="" && time()>=$game->player['timeout_seci
 	else if (!isset($_REQUEST['a']) || $_REQUEST['a']=="security")
 	{
 		$db->query('UPDATE user SET error_secimage=error_secimage+1 WHERE user_id="'.$game->player['user_id'].'" LIMIT 1');
-		$game->out('Das ist deine '.($game->player['error_secimage']+1).'. falsche Eingabe.<br>');
+		$game->out(constant($game->sprache("TEXT2")).' '.($game->player['error_secimage']+1).'. '.constant($game->sprache("TEXT3")));
 	}
 
 
@@ -57,11 +58,9 @@ if ($game->player['content_secimage']!="" && time()>=$game->player['timeout_seci
 	$game->out('<form name="secimage" method="post" action="'.parse_link('a=security').'">
 		<input type="image" name="click" src="'.$data['filename'].'">
 		<input type="hidden" name="command" value="'.$_REQUEST['a'].'">
-		</form>Bitte klicke den Kreis an, der nicht vollständig geschlossen ist.<br><br>
-		Tipp: Wenn du Popups aktivierst, erscheinen die Abfragen in einem seperaten Fenster
-	');
+		</form>'.constant($game->sprache("TEXT4")));
 
 }
-else $game->out('Ungültiger Aufruf.<br>');
+else $game->out(constant($game->sprache("TEXT5")));
 
 ?>

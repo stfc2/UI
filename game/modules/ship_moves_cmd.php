@@ -35,19 +35,19 @@ if(!empty($_GET['call_back'])) {
     }
     
     if(empty($move['move_id'])) {
-        message(NOTICE, 'Flottenverband existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
     if($move['user_id'] != $game->player['user_id']) {
-        message(NOTICE, 'Flottenverband existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT0")));
     }
     
     if($move['move_status'] != 0) {
-        message(NOTICE, 'Flottenverband existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
     if(in_array($move['action_code'], array(12, 13, 32, 33))) {
-        message(NOTICE, 'Flottenverband kann nicht zurückgerufen werden');
+        message(NOTICE, constant($game->sprache("TEXT1")));
     }
 
     if( ($move['move_begin'] == $ACTUAL_TICK) || ($move['start'] == $move['dest']) ) {
@@ -68,7 +68,7 @@ if(!empty($_GET['call_back'])) {
             message(DATABASE_ERROR, 'Could not update fleets location data');
         }
         
-        message(NOTICE, 'Der Abflugbefehl des Flottenverbandes wurde aufgehoben');
+        message(NOTICE, constant($game->sprache("TEXT2")));
     }
     else {
         $sql = 'UPDATE scheduler_shipmovement
@@ -100,29 +100,29 @@ elseif(!empty($_GET['restore_orders'])) {
     }
 
     if(empty($move['move_id'])) {
-        message(NOTICE, 'Flottenverband existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
     if($move['user_id'] != $game->player['user_id']) {
-        message(NOTICE, 'Flottenverband existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
     if($move['move_status'] != 0) {
-        message(NOTICE, 'Flottenverband existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
     if($move['action_code'] != 13) {
-        message(NOTICE, 'Die Befehle des Flottenverbandes können nicht wiederhergestellt werden');
+        message(NOTICE, constant($game->sprache("TEXT3")));
     }
     
     $action_data = unserialize($move['action_data']);
     
     if(!is_array($action_data)) {
-        message(NOTICE, 'Die Befehle des Flottenverbandes konnten nicht wiederhergestellt werden,<br>weil er zurückberufen wurde,<br>bevor dieses Feature eingebaut wurde.');
+        message(NOTICE, constant($game->sprache("TEXT4")));
     }
     
     if($action_data[0] != 'callback_15') {
-        message(NOTICE, 'Die Befehle des Flottenverbandes konnten nicht wiederhergestellt werden,<br>weil er zurückberufen wurde,<br>bevor dieses Feature eingebaut wurde.');
+        message(NOTICE, constant($game->sprache("TEXT4")));
     }
     
     $travel_time = $action_data[3] - $action_data[2];

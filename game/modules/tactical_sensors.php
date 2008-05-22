@@ -25,16 +25,18 @@
 
 $game->init_player();
 
-include ('/include/static/static_components_9.php');
+$filename = 'include/static/static_components_9_'.$game->player['language'].'.php';
+if (!file_exists($filename)) $filename = 'include/static/static_components_9.php';
+include($filename);
 
 
-$game->out('<center><span class="caption">Taktische Zentrale:</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">Stellare Kartographie</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">Schiffsbewegungen</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">Spieler Info</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">Kolonisierung</a>]&nbsp;&nbsp;[<b>Sensoren</b>]</center><br>[<a href="'.parse_link('a=tactical_sensors&view_attack').'">Nur Angriffe anzeigen</a>]&nbsp;[<a href="'.parse_link('a=tactical_sensors&delete_ferengi').'">Ferengitransporte ausblenden</a>]&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">Alles anzeigen</a>]<br><br>');
+$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">'.constant($game->sprache("TEXT1")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<b>'.constant($game->sprache("TEXT5")).'</b>]</center><br>[<a href="'.parse_link('a=tactical_sensors&view_attack').'">'.constant($game->sprache("TEXT32")).'</a>]&nbsp;[<a href="'.parse_link('a=tactical_sensors&delete_ferengi').'">'.constant($game->sprache("TEXT33")).'</a>]&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT34")).'</a>]<br><br>');
 
 $filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 51, 54, 55)';
 
 if (isset($_GET['delete_ferengi']))
 {
-    $filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 51, 54, 55)';
+	$filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 51, 54, 55)';
 }
 elseif (isset($_GET['view_attack'])) 
 {
@@ -42,7 +44,7 @@ elseif (isset($_GET['view_attack']))
 }
 else
 {
-    $filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 51, 54, 55)';
+	$filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 51, 54, 55)';
 }
 
 
@@ -108,14 +110,14 @@ if ($n_moves == 0)
     if ($start && $dest)
     {
 
-        message(NOTICE, 'Keine Schiffe in Bewegung auf den Sensoren entdeckt');
+        message(NOTICE, constant($game->sprache("TEXT6")));
 
     }
 
     else
     {
 
-        message(NOTICE, 'Keine Schiffe in Bewegung auf den Sensoren entdeckt');
+        message(NOTICE, constant($game->sprache("TEXT6")));
 
     }
 
@@ -123,7 +125,7 @@ if ($n_moves == 0)
 
 
 
-// Für die Ankunftstimer
+// FÃ¼r die Ankunftstimer
 
 $i = 2;
 
@@ -215,7 +217,7 @@ while ($move = $db->fetchrow($q_moves))
         if ($move['start'] == $move['dest'])
         {
 
-            $game->out('Standort: <a href="' . parse_link('a=tactical_cartography&planet_id=' .
+            $game->out(constant($game->sprache("TEXT7")).' <a href="' . parse_link('a=tactical_cartography&planet_id=' .
                 encode_planet_id($move['start'])) . '"><b>' . $move['start_planet_name'] .
                 '</b></a><br>');
 
@@ -227,18 +229,18 @@ while ($move = $db->fetchrow($q_moves))
 
 
             if ($game->player['user_id'] == 11)
-                $game->out('Flotte von: ' . (isset($move['user_name']) ? '<a href="' .
+                $game->out(constant($game->sprache("TEXT8")).' ' . (isset($move['user_name']) ? '<a href="' .
                     parse_link('a=stats&a2=viewplayer&id=' . $move['user_id']) . '"><b>' . $move['owner_name'] .
-                    '</b></a>':'<b>Ferengi (NPC)</b>') . '<br>');
+                    '</b></a>':'<b>'.constant($game->sprache("TEXT9")).'</b>') . '<br>');
 
             if (!empty($move['start']))
             {
 
                 if (empty($move['start_owner_id']))
-                    $start_owner_str = ' <i>(unbewohnt)</i>';
+                    $start_owner_str = ' <i>'.constant($game->sprache("TEXT10")).'</i>';
 
                 elseif ($move['start_owner_id'] != $game->player['user_id'])
-                    $start_owner_str = ' von <a href="' . parse_link('a=stats&a2=viewplayer&id=' . $move['start_owner_id']) .
+                    $start_owner_str = ' '.constant($game->sprache("TEXT11")).' <a href="' . parse_link('a=stats&a2=viewplayer&id=' . $move['start_owner_id']) .
                         '"><b>' . $move['start_owner_name'] . '</b></a>';
 
                 else
@@ -246,7 +248,7 @@ while ($move = $db->fetchrow($q_moves))
 
 
 
-                $game->out('Start: <a href="' . parse_link('a=tactical_cartography&planet_id=' .
+                $game->out(constant($game->sprache("TEXT12")).' <a href="' . parse_link('a=tactical_cartography&planet_id=' .
                     encode_planet_id($move['start'])) . '"><b>' . $move['start_planet_name'] .
                     '</b></a>' . $start_owner_str . '<br>');
 
@@ -255,13 +257,13 @@ while ($move = $db->fetchrow($q_moves))
             else
             {
 
-                $game->out('Start: <i>unbekannt</i><br>');
+                $game->out(constant($game->sprache("TEXT12")).' <i>'.constant($game->sprache("TEXT13")).'</i><br>');
 
             }
 
 
 
-            $game->out('Ziel: <a href="' . parse_link('a=tactical_cartography&planet_id=' .
+            $game->out(constant($game->sprache("TEXT14")).' <a href="' . parse_link('a=tactical_cartography&planet_id=' .
                 encode_planet_id($move['dest'])) . '"><b>' . $move['dest_planet_name'] .
                 '</b></a><br>');
 
@@ -269,14 +271,20 @@ while ($move = $db->fetchrow($q_moves))
 
 
 
-        $commands = array(11 => 'Stationieren', 12 => 'Zurückfliegen', 13 =>
-            'Zurückfliegen', 14 => 'Transportieren', 21 => 'Stationieren', 22 =>
-            'Spionieren', 23 => 'Übergeben', 24 => 'Kolonisieren', 25 => 'Kolonisieren', 31 =>
-            'Transportieren', 32 => 'Ferengitransport', 33 => 'Auktionsflotte', 34 =>
-            'Handelsroute', 35 => 'Handelsroute', 36 => 'Handelsroute', 37 => 'Handelsroute',
-            38 => 'Handelsroute', 39 => 'Handelsroute', 40 => 'Angreifen', 41 => 'Angreifen',
-            42 => 'Angreifen', 43 => 'Pluendern', 44 => 'Bombardieren', 45 => 'Kolonisieren',
-            51 => 'Angreifen', 53 => 'Pluendern', 54 => 'Bombardieren', 55 => 'Kolonisieren', );
+        $commands = array(11 => constant($game->sprache("TEXT15")), 12 => constant($game->sprache("TEXT16")),
+            13 => constant($game->sprache("TEXT16")), 14 => constant($game->sprache("TEXT17")),
+            21 => constant($game->sprache("TEXT15")), 22 => constant($game->sprache("TEXT18")),
+            23 => constant($game->sprache("TEXT19")), 24 => constant($game->sprache("TEXT20")),
+            25 => constant($game->sprache("TEXT20")), 31 => constant($game->sprache("TEXT17")),
+            32 => constant($game->sprache("TEXT21")), 33 => constant($game->sprache("TEXT22")),
+            34 => constant($game->sprache("TEXT23")), 35 => constant($game->sprache("TEXT23")),
+            36 => constant($game->sprache("TEXT23")), 37 => constant($game->sprache("TEXT23")),
+            38 => constant($game->sprache("TEXT23")), 39 => constant($game->sprache("TEXT23")),
+            40 => constant($game->sprache("TEXT24")), 41 => constant($game->sprache("TEXT24")),
+            42 => constant($game->sprache("TEXT24")), 43 => constant($game->sprache("TEXT25")),
+            44 => constant($game->sprache("TEXT26")), 45 => constant($game->sprache("TEXT20")),
+            51 => constant($game->sprache("TEXT24")), 53 => constant($game->sprache("TEXT25")),
+            54 => constant($game->sprache("TEXT26")), 55 => constant($game->sprache("TEXT20")), );
 
 
 
@@ -285,20 +293,20 @@ while ($move = $db->fetchrow($q_moves))
         if (in_array($move['action_code'], $visible_actions) || $travelled >= $visibility +
             ((100 - $visibility) / 4))
         {
-            $game->out('<br>Schiffe: <b>' . $sensor1['n_ships'] . '</b>');
+            $game->out('<br>'.constant($game->sprache("TEXT27")).' <b>' . $sensor1['n_ships'] . '</b>');
         }
 
         if (in_array($move['action_code'], $visible_actions) || $travelled >= $visibility +
             2 * ((100 - $visibility) / 4))
         {
-            $game->out('<br>Befehl: <b>' . $commands[$move['action_code']] . '</b>');
+            $game->out('<br>'.constant($game->sprache("TEXT28")).' <b>' . $commands[$move['action_code']] . '</b>');
         }
 
         if (in_array($move['action_code'], $visible_actions) || $travelled >= $visibility +
             3 * ((100 - $visibility) / 4))
         {
 
-            $game->out('<br>Rumpftypen:');
+            $game->out('<br>'.constant($game->sprache("TEXT29")));
 
             for ($t = 0; $t < 14; $t++)
             {
@@ -308,7 +316,7 @@ while ($move = $db->fetchrow($q_moves))
                         if ($SHIP_TORSO[9][6][0])
                         {
 
-                            $game->out('<br><b>' . $sensor1['torso'][$t] . 'x</b> Decoy Testship (Rumpf: ' .
+                            $game->out('<br><b>' . $sensor1['torso'][$t] . 'x</b> '.constant($game->sprache("TEXT30")).' ' .
                                 (7) . ')');
 
                         }
@@ -342,7 +350,7 @@ while ($move = $db->fetchrow($q_moves))
 
 	  <br><br>
 
-	  Ankunft: ' . (($i < 10) ? '<b id="timer' . $i . '" title="time1_' . (($ticks_left *
+	  '.constant($game->sprache("TEXT31")).' ' . (($i < 10) ? '<b id="timer' . $i . '" title="time1_' . (($ticks_left *
             TICK_DURATION * 60) + $NEXT_TICK) . '_type2_2">&nbsp;</b>':format_time($ticks_left *
             TICK_DURATION)) . '
 
