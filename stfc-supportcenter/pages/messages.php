@@ -66,8 +66,8 @@ if($subAction == 'inbox')
 			{
 				$mes=$db->queryrow('SELECT * FROM message WHERE (id = "'.(int)$_POST['message'.$i.''].'") AND (receiver = "'.SUPPORTUSER.'") LIMIT 1');
 				if ($db->query('INSERT INTO message_removed (sender, receiver, subject, text, time)
-													VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
-													$db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.SUPPORTUSER.'") LIMIT 1');
+								VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
+					$db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.SUPPORTUSER.'") LIMIT 1');
 
 			}
 			
@@ -83,8 +83,8 @@ if($subAction == 'inbox')
 			{
 				$mes=$db->queryrow('SELECT * FROM message WHERE (id = "'.(int)$_POST['message'.$i.''].'") AND (receiver = "'.SUPPORTUSER.'") LIMIT 1');
 				if ($db->query('INSERT INTO message_archiv (sender, receiver, subject, text, time)
-													VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
-													$db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.SUPPORTUSER.'") LIMIT 1');
+								VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
+					$db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.SUPPORTUSER.'") LIMIT 1');
 			}
 		}
 			UpdateUnreadMessages(SUPPORTUSER);
@@ -97,8 +97,8 @@ if($subAction == 'inbox')
 		while ($mes=$db->fetchrow($mes_qry))
 		{
 				if ($db->query('INSERT INTO message_removed (sender, receiver, subject, text, time)
-													VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
-													$db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.SUPPORTUSER.'") LIMIT 1');
+								VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
+					$db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.SUPPORTUSER.'") LIMIT 1');
 		}
 
 	}
@@ -107,7 +107,7 @@ if($subAction == 'inbox')
 	else if(isset($_GET['rmarkall']))
 	{
 		$db->query('UPDATE message SET rread = "1" WHERE receiver = "'.SUPPORTUSER.'"');
-        UpdateUnreadMessages(SUPPORTUSER);
+		UpdateUnreadMessages(SUPPORTUSER);
 	}
 }
 
@@ -125,8 +125,8 @@ else if($subAction == 'archiv')
 			{
 				$mes=$db->queryrow('SELECT * FROM message_archiv WHERE (id = "'.(int)$_POST['message'.$i.''].'") AND (receiver = "'.SUPPORTUSER.'") LIMIT 1');
 				if ($db->query('INSERT INTO message_removed ( sender, receiver, subject, text, time)
-													VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
-													$db->queryrow('DELETE FROM message_archiv WHERE (id = "'.$mes['id'].'") AND (receiver = "'.SUPPORTUSER.'") LIMIT 1');
+								VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
+					$db->queryrow('DELETE FROM message_archiv WHERE (id = "'.$mes['id'].'") AND (receiver = "'.SUPPORTUSER.'") LIMIT 1');
 			}
 		}
 	}
@@ -138,8 +138,8 @@ else if($subAction == 'archiv')
 		while ($mes=$db->fetchrow($mes_qry))
 		{
 			if ($db->query('INSERT INTO message_removed (sender, receiver, subject, text, time)
-													VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.$mes['text'].'", '.$mes['time'].')')!=false)
-													$db->query('DELETE FROM message_archiv WHERE (id = "'.$mes['id'].'") AND (receiver = "'.SUPPORTUSER.'") LIMIT 1');
+							VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.$mes['text'].'", '.$mes['time'].')')!=false)
+				$db->query('DELETE FROM message_archiv WHERE (id = "'.$mes['id'].'") AND (receiver = "'.SUPPORTUSER.'") LIMIT 1');
 
 		}
 
@@ -150,9 +150,9 @@ else if($subAction == 'archiv')
 	{
 		$mes=$db->queryrow('SELECT * FROM message WHERE (id = "'.(int)$_POST['archiv'].'") AND (receiver = "'.SUPPORTUSER.'") LIMIT 1');
 		if ($db->query('INSERT INTO message_archiv (sender, receiver, subject, text, time)
-											VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.$mes['text'].'", '.$mes['time'].')'))
-											$db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.SUPPORTUSER.'") LIMIT 1');
-    UpdateUnreadMessages(SUPPORTUSER);
+						VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.$mes['text'].'", '.$mes['time'].')'))
+			$db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.SUPPORTUSER.'") LIMIT 1');
+		UpdateUnreadMessages(SUPPORTUSER);
 	}
 }
 
@@ -681,7 +681,7 @@ function submitMessage()
 							message(DATABASE_ERROR, 'message_query: Could not call INSERT INTO in message');
 							exit();
 					}
-					log_action('Messaggio con il titolo "'.$_POST['subject'].'" an '.$recv_list[$i].' inviato');
+					log_action('Messaggio con il titolo "'.$_POST['subject'].'" inviato a '.$recv_list[$i]);
 					UpdateUnreadMessages($receiver['user_id']);
 				}
 				$num++;
@@ -701,7 +701,7 @@ function submitMessage()
 						message(DATABASE_ERROR, 'message_query: Could not call INSERT INTO in message');
 						exit();
 				}
-				log_action('Messaggio con il titolo "'.$_POST['subject'].'" an '.$recv_list[$i].' inviato');
+				log_action('Messaggio con il titolo "'.$_POST['subject'].'" inviato a '.$recv_list[$i]);
 				UpdateUnreadMessages($receiver['user_id']);
 			}
 		}
@@ -723,12 +723,12 @@ function submitMessage()
 				message(DATABASE_ERROR, 'message_query: Could not call INSERT INTO in message');
 				exit();
 			}
-			log_action('Nachricht mit dem Titel "'.$_POST['subject'].'" an '.$_POST['receiver'].' geschickt');
+			log_action('Messaggio con il titolo "'.$_POST['subject'].'" inviato a '.$_POST['receiver']);
 			UpdateUnreadMessages($receiver['user_id']);
 
-  			output('<center><p><span class="sub_caption">Messaggio inviato</span></p></center>');
+			output('<center><p><span class="sub_caption">Messaggio inviato</span></p></center>');
 		}
-		
+
 	} // End single receiver
 
 	}
@@ -741,7 +741,7 @@ function navigation_show_pagelinks($page, $perpage, $entries, $link)
 	$last		= $pages - 1;
 
 	if($pages == 1)
-	     return '';
+		return '';
 
 	$prev = $page - 1;
 	$next = $page + 1;
