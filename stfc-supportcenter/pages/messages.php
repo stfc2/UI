@@ -232,7 +232,7 @@ function inbox()
 				$userName = '<a href="../game/index.php?a=stats&a2=viewplayer&id='.$message['sender'].'" target=_blank>'.$message['user_name'].'</a>';
 
 			$bg 		 =	($message['rread'] == 0) ? '#e98b8b' : '#d2d9ff';
-			$datum 	 = gmdate('d.m.y H:i', ($message['time'] +TIME_OFFSET));
+			$datum 	 = date('d.m.y H:i', ($message['time']));
 
 			output('<tr>
 							<td width="2%"></td>
@@ -330,7 +330,7 @@ function outbox()
 			else
 				$userName = '<a href="../game/index.php?a=stats&a2=viewplayer&id='.$message['receiver'].'" target=_blank>'.$message['user_name'].'</a>';
 
-			$datum 	 = gmdate("d.m.y H:i", $message['time']+TIME_OFFSET);
+			$datum 	 = date("d.m.y H:i", $message['time']);
 			$bg 		 =	($message['rread'] == 0) ? '#e98b8b' : '#d2d9ff';
 
 			output('<tr>
@@ -393,7 +393,7 @@ function archiv()
 			else
 				$userName = '<a href="../game/index.php?a=stats&a2=viewplayer&id='.$message['sender'].'" target=_blank>'.$message['user_name'].'</a>';
 
-			$datum 	 = gmdate("d.m.y H:i", $message['time']+TIME_OFFSET);
+			$datum 	 = date("d.m.y H:i", $message['time']);
 
 			output('<tr>
 							<td width="2%"></td>
@@ -509,7 +509,7 @@ function view()
 		else
 			$receiver = '<a href="../game/index.php?a=stats&a2=viewplayer&id='.$message['receiver'].'" target=_blank>'.$message['user_name2'].'</a>';
 
-		$datum 	= gmdate("d.m.y H:i", $message['time']+TIME_OFFSET);
+		$datum 	= date("d.m.y H:i", $message['time']);
 		$text		= nl2br($message['text']);
 
 		output('<center><p><span class="sub_caption2"><b>Leggi messaggio:</b></p>
