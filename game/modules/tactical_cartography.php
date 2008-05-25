@@ -166,17 +166,17 @@ function display_cartography_jump() {
 
 function display_ferengi_transfer($planet_id,$planet_system,$system_x,$system_y,$build_11) {
     global $game, $db;
-    
-    
+
     if ($game->option_retr('show_trade')==0)
-    	    $game->out('
+        $game->out('
 <br><br>
 <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="400">
   <tr>
     <td><b>'.constant($game->sprache("TEXT15")).'  <b>[<a href="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id'].'&strade=1').'"><i>'.constant($game->sprache("TEXT16")).'</i></a>]</b><br></td></tr></table>');
-    elseif ($build_11<1)
+	/* 25/05/08 - AC: We need to check commercial centre presence also on the active planet */
+    elseif ($build_11<1 || $game->planet['building_11']<1)
     {
-    $game->out('
+        $game->out('
 <br><br>
 <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="400">
   <tr>
@@ -231,11 +231,7 @@ function display_ferengi_transfer($planet_id,$planet_system,$system_x,$system_y,
 <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="400">
   <form name="tradeform" method="post" action="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id']).'">
   <tr>
-    <td colspan=3><b>'.constant($game->sprache("TEXT19")).' ('.Zeit($distance*TICK_DURATION).')</b><br><br>
-    <b>'.constant($game->sprache("TEXT20")).'</b><br>
-    <img src='.$game->GFX_PATH.'menu_metal_small.gif>&nbsp;&nbsp;&nbsp;<b id="res1">0</b>
-    <img src='.$game->GFX_PATH.'menu_mineral_small.gif>&nbsp;&nbsp;&nbsp;<b id="res2">0</b>
-    <img src='.$game->GFX_PATH.'menu_latinum_small.gif>&nbsp;&nbsp;&nbsp;<b id="res3">0</b>
+    <td colspan=3 align="center"><b>'.constant($game->sprache("TEXT19")).'<br>('.constant($game->sprache("TEXT22")).' '.Zeit($distance*TICK_DURATION).')</b><br><br>
     </td>
    </tr>
   <tr>
@@ -254,12 +250,19 @@ function display_ferengi_transfer($planet_id,$planet_system,$system_x,$system_y,
   <td><img src='.$game->GFX_PATH.'menu_latinum_small.gif>&nbsp;&nbsp;&nbsp;<input class="field"  style="width: 60px;" type="text" name="res_3" value="0" onFocus="UpdateValues();">&nbsp&nbsp</td>
   <td><img src='.$game->GFX_PATH.'menu_unit3_small.gif>&nbsp;&nbsp;&nbsp;<input class="field"  style="width: 60px;" type="text" name="unit_3" value="0" onFocus="UpdateValues();">&nbsp&nbsp</td>
   <td><img src='.$game->GFX_PATH.'menu_unit6_small.gif>&nbsp;&nbsp;&nbsp;<input class="field"  style="width: 60px;" type="text" name="unit_6" value="0" onFocus="UpdateValues();">&nbsp&nbsp</td>
-  <td></td>
+  </tr>
+  <tr>
+  <td colspan=3 align="center">
+    <b>'.constant($game->sprache("TEXT20")).'</b>
+    <img src='.$game->GFX_PATH.'menu_metal_small.gif>&nbsp;&nbsp;&nbsp;<b id="res1">0</b>
+    <img src='.$game->GFX_PATH.'menu_mineral_small.gif>&nbsp;&nbsp;&nbsp;<b id="res2">0</b>
+    <img src='.$game->GFX_PATH.'menu_latinum_small.gif>&nbsp;&nbsp;&nbsp;<b id="res3">0</b>
+  </td>
   </tr>
   <tr>
     <td colspan=3>
 	<center><input class="button" type="submit" name="trade" value="'.constant($game->sprache("TEXT21")).'"><br><br><b>
-	[<a href="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id'].'&strade=0').'"><i>'.constant($game->sprache("TEXT22")).'</i></a>]</b>
+	[<a href="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id'].'&strade=0').'"><i>'.constant($game->sprache("TEXT17")).'</i></a>]</b>
 	</center>
     </td>
   </tr>
@@ -1170,7 +1173,8 @@ form {
     
     if($game->planet['planet_id'] != $planet_id)
     if($planet['planet_owner'] != 0)
-    if ($game->planet['building_11']>0)
+	/* 25/05/08 - AC: Added this check directly into display_ferengi_transfer()
+    if ($game->planet['building_11']>0)*/
     /*if ($game->player['user_id']==11)*/ display_ferengi_transfer($planet['planet_id'],$planet['system_id'],$planet['system_global_x'],$planet['system_global_y'],$planet['building_11']);
     
 }

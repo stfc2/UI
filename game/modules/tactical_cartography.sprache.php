@@ -124,7 +124,7 @@ define ("GER_TEXT49", 'Ung&uuml;ltiger Jump-Typ');
 
 define ("GER_TEXT50", 'Kein Name f&uuml;r Memo-Eintrag angegeben');
 
-define ("GER_TEXT51", 'Du hast schon 15 Einträge im Memo gespeichert');
+define ("GER_TEXT51", 'Du hast schon 15 Eintr&auml;ge im Memo gespeichert');
 
 define ("GER_TEXT52", 'Der Memo-Eintrag existiert nicht');
 
@@ -134,7 +134,7 @@ define ("GER_TEXT54", 'noch freie Speicherplatze:');
 
 define ("GER_TEXT55", 'Name des Eintrags:');
 
-define ("GER_TEXT56", 'Löschen');
+define ("GER_TEXT56", 'L&ouml;schen');
 
 define ("GER_TEXT57", 'freier Slot');
 
@@ -253,7 +253,7 @@ define ("ENG_TEXT20", 'Taxes:');
 
 define ("ENG_TEXT21", 'Start delivery');
 
-define ("ENG_TEXT22", 'Hide dealers');
+define ("ENG_TEXT22", 'extimated time of arrival:');
 
 define ("ENG_TEXT23", 'You can never leave the mode is a player send Ferengi transport.');
 
@@ -427,23 +427,23 @@ define ("ITA_TEXT13", 'Pianeta (Nome)');
 
 define ("ITA_TEXT14", 'Vai direttamente a');
 
-define ("ITA_TEXT15", 'Gilda Ferengi Commercio / Trasporto');
+define ("ITA_TEXT15", 'Invia Risorse / Unit&agrave; tramite la Gilda del Commercio Ferengi');
 
-define ("ITA_TEXT16", 'Indicare ancora');
+define ("ITA_TEXT16", 'Visualizza');
 
 define ("ITA_TEXT17", 'Nascondi');
 
 define ("ITA_TEXT18", 'Il pianeta non ha un Centro Commerciale!');
 
-define ("ITA_TEXT19", 'Gilda di commercio Ferengi con mandato di trasporto');
+define ("ITA_TEXT19", 'Invia Risorse / Unit&agrave; tramite la Gilda del Commercio Ferengi');
 
-define ("ITA_TEXT20", 'Tasse:');
+define ("ITA_TEXT20", 'Tasse sul trasporto:');
 
 define ("ITA_TEXT21", 'Inizio consegna');
 
-define ("ITA_TEXT22", 'Nascondi Venditori');
+define ("ITA_TEXT22", 'tempo stimato per la consegna:');
 
-define ("ITA_TEXT23", 'Non puoi modficare la modalit&agrave che sia un giocatore ad inviare un trasporto Ferengi.');
+define ("ITA_TEXT23", 'Non puoi modficare la modalit&agrave; che sia un giocatore ad inviare un trasporto Ferengi.');
 
 define ("ITA_TEXT24", 'Il pianeta, o il sistema non esiste!');
 
