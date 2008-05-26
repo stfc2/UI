@@ -186,7 +186,7 @@ define ("ITA_TEXT13", 'Sconosciuto');
 
 define ("ITA_TEXT14", 'Obiettivo:');
 
-define ("ITA_TEXT15", 'Stazione');
+define ("ITA_TEXT15", 'Stazionare');
 
 define ("ITA_TEXT16", 'Tornare indietro');
 
@@ -204,11 +204,11 @@ define ("ITA_TEXT22", 'Flotta all&#146;asta');
 
 define ("ITA_TEXT23", 'Rotta Commerciale');
 
-define ("ITA_TEXT24", 'Attaccando');
+define ("ITA_TEXT24", 'Attaccare');
 
-define ("ITA_TEXT25", 'Razziando');
+define ("ITA_TEXT25", 'Razziare');
 
-define ("ITA_TEXT26", 'Bombardando');
+define ("ITA_TEXT26", 'Bombardare');
 
 define ("ITA_TEXT27", 'Nave:');
 
