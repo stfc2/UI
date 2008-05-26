@@ -314,7 +314,7 @@ define ("ITA_TEXT21", ' Min. Pausa');
 
 define ("ITA_TEXT22", 'attiva');
 
-define ("ITA_TEXT23", 'Troop limit reached!');
+define ("ITA_TEXT23", 'Limite truppe raggiunto!');
 
 define ("ITA_TEXT24", 'Completamento di tutte le navi:');
 
@@ -346,7 +346,7 @@ define ("ITA_TEXT37", 'Vai al pianeta');
 
 define ("ITA_TEXT38", 'w');
 
-define ("ITA_TEXT39", 'Attack on');
+define ("ITA_TEXT39", 'Attacco');
 
 define ("ITA_TEXT40", 'Totale risorse ed unit&agrave; a disposizione su tutti i pianeti');
 

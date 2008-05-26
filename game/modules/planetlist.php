@@ -474,7 +474,7 @@ foreach ($planets as $key => $planet) {
 	$attack=$planet['planet_next_attack'];
 	if ($game->option_retr('redalert_options')==2) $attack=0;
 	if ($game->option_retr('redalert_options')==1 && $attack-date()>3600*24*7) $attack=0;
-	$game->out('</td><td>'.( $attack>0 ? '<font color=red><b>'.constant($game->sprache("TEXT39")).' </b>'.gmdate('d.m.y H:i', ($attack+TIME_OFFSET)).'</font></b><br>' : '').$status.'</td><td>'.$planet['planet_points'].'</td><td>'.strtoupper($planet['planet_type']).'</td></tr>');
+	$game->out('</td><td>'.( $attack>0 ? '<font color=red><b>'.constant($game->sprache("TEXT39")).' </b>'.date('d.m.y H:i', ($attack)).'</font></b><br>' : '').$status.'</td><td>'.$planet['planet_points'].'</td><td>'.strtoupper($planet['planet_type']).'</td></tr>');
 
 } // Ende der Planetentabelle
 
