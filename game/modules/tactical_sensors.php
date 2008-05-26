@@ -130,67 +130,35 @@ if ($n_moves == 0)
 $i = 2;
 
 
-
-$visible_actions = array(11, 12, 13, 14, 21, 23, 24, 25, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 51, 54, 55);
-
-
-
-
+// DC Lasciamo i codici dei trasporti Ferengi come "visibili"
+$visible_actions = array(32, 33);
 
 while ($move = $db->fetchrow($q_moves))
 {
-
     $move_id = $move['move_id'];
-
-
-
-
-
-
-
-
-
-
-
     $visibility = 0;
 
     if (!in_array($move['action_code'], $visible_actions))
     {
-
         // Todo: Flotten querien, Werte berechnen:
-
         //array('n_ships', 'sum_sensors', 'sum_cloak')
-
         $sensor2 = get_friendly_orbit_fleets($game->planet['planet_id']);
-
         //array('n_ships', 'sum_sensors', 'sum_cloak', 'status', 'torso' => array(0...9) )
-
         $sensor1 = get_move_ship_details($move['move_id']);
-
-
-
         $visibility = GetVisibility($sensor1['sum_sensors'] + ($game->planet['building_7'] +
             1) * 200, $sensor1['sum_cloak'], $sensor1['n_ships'], $sensor2['sum_sensors'], $sensor2['sum_cloak']);
-
-
-
         $travelled = 100 / ($move['move_finish'] - $move['move_begin']) * ($ACTUAL_TICK -
             $move['move_begin']);
-
     }
-
     else
+	{
         $sensor1 = get_move_ship_details($move['move_id']);
-
-
+	}
 
     if ($move['action_code'] == 32 || $move['action_code'] == 33)
     {
-
         $sensor1['n_ships'] = $move['n_ships'];
-
         $sensor1['torso'][1] = $move['n_ships'];
-
     }
 
 
