@@ -135,7 +135,9 @@ define ("GER_TEXT55", 'Contract Code:');
 
 define ("GER_TEXT56", 'Geba&uuml;de datum:');
 
-define ("GER_TEXT57", 'Last refit:');
+define ("GER_TEXT57", 'On mission:');
+
+define ("GER_TEXT58", 'Docked'); 
 
 
 //English
@@ -253,7 +255,9 @@ define ("ENG_TEXT55", 'Contract Code:');
 
 define ("ENG_TEXT56", 'Construction date:');
 
-define ("ENG_TEXT57", 'Last refit:');
+define ("ENG_TEXT57", 'On mission:');
+
+define ("ENG_TEXT58", 'Docked');
 
 
 //Italiano
@@ -321,7 +325,9 @@ define ("ITA_TEXT55", 'Codice contratto:');
 
 define ("ITA_TEXT56", 'Data costruzione:');
 
-define ("ITA_TEXT57", 'Ultima revisione:');
+define ("ITA_TEXT57", 'In missione dal:');
+
+define ("ITA_TEXT58", 'In porto');
 
 
 ?>
