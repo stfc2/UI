@@ -325,7 +325,7 @@ define ("ITA_TEXT55", 'Codice contratto:');
 
 define ("ITA_TEXT56", 'Data costruzione:');
 
-define ("ITA_TEXT57", 'In missione dal:');
+define ("ITA_TEXT57", 'Inizio missione:');
 
 define ("ITA_TEXT58", 'In porto');
 
