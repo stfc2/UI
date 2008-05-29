@@ -154,7 +154,9 @@ define ("GER_TEXT71", 'Mittlere Schiffe');
 
 define ("GER_TEXT72", 'Schwere Schiffe');
 
-define ("GER_TEXT73", 'Last refit:');
+define ("GER_TEXT73", 'On mission:');
+
+define ("GER_TEXT74", 'Docked');
 
 
 //English
@@ -290,7 +292,9 @@ define ("ENG_TEXT71", 'Middle ships');
 
 define ("ENG_TEXT72", 'Heavy ships');
 
-define ("ENG_TEXT73", 'Last refit:');
+define ("ENG_TEXT73", 'On mission:');
+
+define ("ENG_TEXT74", 'Docked');
 
 
 //Italian
@@ -428,6 +432,8 @@ define ("ITA_TEXT71", 'Medie');
 
 define ("ITA_TEXT72", 'Pesanti');
 
-define ("ITA_TEXT73", 'Ultima revisione:');
+define ("ITA_TEXT73", 'Inizio missione:');
+
+define ("ITA_TEXT74", 'In porto');
 
 ?>

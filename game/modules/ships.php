@@ -567,7 +567,7 @@ function Ship_Details()
 
             <b>'.date('d.m.y H:i:s', $ship['construction_time']).'</b><br><br>
 
-            <b>'.date('d.m.y H:i:s', $ship['last_refit_time']).'</b><br>
+            <b>'.( (!empty($ship['last_refit_time'])) ? date('d.m.y H:i:s', $ship['last_refit_time']) : constant($game->sprache("TEXT74"))).'</b><br>
 
             <b>'.$ship['hitpoints'].'</b> / <b>'.$ship['value_5'].'</b><br>
 
