@@ -678,11 +678,9 @@ elseif(isset($_GET['offduty_ships'])) {
 
     //Everything checks out ok, update database fields
 	
-	
     $sql = 'UPDATE ships
-            SET fleet_id = -'.$fleetinfo['planet_id'].', ship_untouchable = '.SHIP_IN_REFIT.', ship_repair='.($ACTUAL_TICK+REFIT_TICK).'
-            WHERE ship_id IN ('.$ship_ids_str.')';
-
+            SET fleet_id = -'.$fleetinfo['planet_id'].', ship_untouchable = '.SHIP_IN_REFIT.', ship_repair='.($ACTUAL_TICK+REFIT_TICK).', last_refit_time = 0
+            WHERE ship_id IN ('.$ship_ids_str.') ';
 
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not update ships location data');
@@ -881,7 +879,7 @@ elseif(isset($_GET['ship_details'])) {
 
             <b>'.date('d.m.y H:i:s', $ship['construction_time']).'</b><br><br>
 
-            <b>'.date('d.m.y H:i:s', $ship['last_refit_time']).'</b><br>
+            <b>'.( (!empty($ship['last_refit_time'])) ? date('d.m.y H:i:s', $ship['last_refit_time']) : constant($game->sprache("TEXT58"))).'</b><br>
 
             <b>'.$ship['hitpoints'].'</b> / <b>'.$ship['value_5'].'</b><br>
 
