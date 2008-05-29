@@ -110,7 +110,7 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 
 </style>
 
-<body bgcolor="#000000" text="#DDDDDD"  background="http://stfc.nonsolotaku.it/gfx/bg_stars1.gif">
+<body bgcolor="#000000" text="#DDDDDD"  background="'.$config['game_url'].'/gfx/bg_stars1.gif">
 
   <table class="style_inner" width="550" align="center" border="0" cellpadding="2" cellspacing="0">
     

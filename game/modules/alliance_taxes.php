@@ -199,7 +199,7 @@ $owntaxDay=GetOwnRess(1,$adata['taxes']);
 
     $game->out('
       
-<table width="430" align="center" border="0" cellpadding="2" cellspacing="4" background="http://stfc.nonsolotaku.it/stgc5_gfx/skin1/template_bg3.jpg" class="border_grey">
+<table width="430" align="center" border="0" cellpadding="2" cellspacing="4" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
   <tr>
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$adata['alliance_name'].' ['.$adata['alliance_tag'].']</span><br><br><br>
@@ -589,7 +589,7 @@ $owntaxDay=GetOwnRess(1,$adata['taxes']);
 
     $game->out('
       
-<table width="430" align="center" border="0" cellpadding="2" cellspacing="4" background="http://stfc.nonsolotaku.it/stgc5_gfx/skin1/template_bg3.jpg" class="border_grey">
+<table width="430" align="center" border="0" cellpadding="2" cellspacing="4" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
   <tr>
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$adata['alliance_name'].' ['.$adata['alliance_tag'].']</span><br><br><br>

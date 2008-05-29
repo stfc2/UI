@@ -187,14 +187,14 @@ $px_y+=($system['system_y'] - 1)*$size+1;
 if ($size>2)	
 {	
 imagefilledrectangle ($im, $px_x,$px_y, $px_x+$size-2, $px_y+$size-2, $color[5]);
-$map_data.='<area href="/game/index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.$px_x.','.$px_y.', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$system['system_name'].'">
+$map_data.='<area href="'.$config['game_url'].'/game/index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.$px_x.','.$px_y.', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$system['system_name'].'">
 ';
 
 }
 else
 {
 imagefilledrectangle ($im, $px_x-1,$px_y-1, $px_x+$size-2, $px_y+$size-2, $color[5]);
-$map_data.='<area href="/game/index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.($px_x-1).','.($px_y-1).', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$system['system_name'].'">
+$map_data.='<area href="'.$config['game_url'].'/game/index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.($px_x-1).','.($px_y-1).', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$system['system_name'].'">
 ';
 }
 };
@@ -206,12 +206,12 @@ else $size2=$size-2;
 
 if ($size>1)
 {
-imagestring ($im, $size2,15,162*$size-12-$size,'Erstellt am '.gmdate('d.m.y H:i', (time() +TIME_OFFSET)), $color[4]);
+imagestring ($im, $size2,15,162*$size-12-$size,'Created at '.date('d.m.y H:i', time()), $color[4]);
 }
 else
 {
-imagestring ($im, $size2,5,162*$size-15,'Erstellt am', $color[4]);
-imagestring ($im, $size2,5,162*$size-8,gmdate('d.m.y H:i', (time() +TIME_OFFSET)), $color[4]);
+imagestring ($im, $size2,5,162*$size-15,'Created at', $color[4]);
+imagestring ($im, $size2,5,162*$size-8,date('d.m.y H:i', time()), $color[4]);
 }
 
 
@@ -221,7 +221,7 @@ imagepng($im,$image_url);
 
 if (($handle = @fopen ($map_url, "wt")))
 {
-	fwrite($handle,$map_data);	
+	fwrite($handle,$map_data);
 }
 fclose($handle);
 
@@ -261,8 +261,8 @@ fclose($handle);
 
 }
 	
-echo'<html><body bgcolor="#000000" text="#DDDDDD"  background="/gfx/bg_stars1.gif"><center>
-<span style="font-family: Verdana; font-size: 15px;"><b>Allianzkarte der Allianz ['.$_GET['alliance'].']:</b></span><br>
+echo'<html><body bgcolor="#000000" text="#DDDDDD"  background="'.$config['game_url'].'/gfx/bg_stars1.gif"><center>
+<span style="font-family: Verdana; font-size: 15px;"><b>Alliance map of Alliance ['.$_GET['alliance'].']:</b></span><br>
 <img border=0 usemap="#detail_map" src="'.$image_url.'" >
 
 '.$map_data.'

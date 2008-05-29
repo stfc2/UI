@@ -197,7 +197,7 @@ if($game->player['user_alliance_rights6'] != 1) {
 
       $game->out(' 
    
-   <tr><td><img src="http://stfc.nonsolotaku.it/stgc5_gfx/new.png" alt="New"></img></td>
+   <tr><td><img src="'.$game->PLAIN_GFX_PATH.'new.png" alt="New"></img></td>
    <td>'.$application['application_username'].'</td>
    <td>'.$application['user_points'].'</td>
    <td>'.date('d.m.y H:i', $application['application_timestamp']).'</td>

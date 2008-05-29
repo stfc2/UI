@@ -266,12 +266,12 @@ if (($handle = @fopen ($image_url, "rb"))!=true)
 		if ($size>2)
 		{
 			imagefilledrectangle ($im, $px_x,$px_y, $px_x+$size-2, $px_y+$size-2, $useColor);
-			$map_data.='<area href="/game/index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.$px_x.','.$px_y.', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$useTitle.'">';
+			$map_data.='<area href="'.$config['game_url'].'/game/index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.$px_x.','.$px_y.', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$useTitle.'">';
 		}
 		else
 		{
 			imagefilledrectangle ($im, $px_x-1,$px_y-1, $px_x+$size-2, $px_y+$size-2, $useColor);
-			$map_data.='<area href="/game/index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.$px_x.','.$px_y.', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$useTitle.'">';
+			$map_data.='<area href="'.$config['game_url'].'/game/index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.$px_x.','.$px_y.', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$useTitle.'">';
 		}
 	};
 
@@ -297,7 +297,7 @@ if (($handle = @fopen ($image_url, "rb"))!=true)
 
 	if (($handle = @fopen ($map_url, "wt")))
 	{
-		fwrite($handle,$map_data);	
+		fwrite($handle,$map_data);
 	}
 	fclose($handle);
 }
@@ -382,7 +382,7 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 
 </style>
 
-		<body bgcolor="#000000" text="#DDDDDD"  background="/gfx/bg_stars1.gif"><center>
+		<body bgcolor="#000000" text="#DDDDDD"  background="'.$config['game_url'].'/gfx/bg_stars1.gif"><center>
 		<span style="font-family: Verdana; font-size: 15px;"><b>Fleets of Alliance ['.$_GET['alliance'].']:</b></span><br>
 		<img border=0 usemap="#detail_map" src="'.$image_url.'" >
 
