@@ -1421,7 +1421,7 @@ elseif(!empty($_POST['new_fleet'])) {
     $sql = 'UPDATE ships
 
 			SET fleet_id = '.$new_fleet_id.',
-                last_refit_time = '.$game->TIME.',
+			    last_refit_time = '.$game->TIME.',
 			    next_refit = '.($ACTUAL_TICK+NEXT_REFIT_TICK).'
 			WHERE ship_id IN ('.implode(',', $ship_ids).') AND ship_untouchable=0 AND fleet_id<0';
 
@@ -1600,8 +1600,8 @@ elseif(!empty($_POST['change_fleet'])) {
     $sql = 'UPDATE ships
 
             SET fleet_id = '.$new_fleet_id.',
-
-			    next_refit = '.($ACTUAL_TICK+REFIT_TICK+NEXT_REFIT_TICK).'
+			    last_refit_time = '.$game->TIME.',
+			    next_refit = '.($ACTUAL_TICK+NEXT_REFIT_TICK).'
             WHERE ship_id IN ('.implode(',', $ship_ids).') AND ship_untouchable=0';
 
 
