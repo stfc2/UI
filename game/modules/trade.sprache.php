@@ -574,6 +574,8 @@ define ("GER_TEXT272", 'average');
 
 define ("GER_TEXT273", 'good');
 
+define ("GER_TEXT274", 'Auktionsflotte');
+
 
 // English
 define ("ENG_TEXT0", 'Overview');
@@ -1129,6 +1131,8 @@ define ("ENG_TEXT271", 'weak');
 define ("ENG_TEXT272", 'average');
 
 define ("ENG_TEXT273", 'good');
+
+define ("ENG_TEXT274", 'Auction fleet');
 
 
 // Italian
@@ -1687,6 +1691,8 @@ define ("ITA_TEXT271", 'sfavorevole');
 define ("ITA_TEXT272", 'neutro');
 
 define ("ITA_TEXT273", 'favorevole');
+
+define ("ITA_TEXT274", 'Flotta asta');
 
 
 ?>

@@ -308,7 +308,7 @@ if ($_REQUEST['id']<0) return 0;
 		message(DATABASE_ERROR, 'Internal database error');
 	}
 
-	// Will der Verkäufer cheaten?
+	// Will der VerkÃ¤ufer cheaten?
 	if ($tradedata['user']==$game->player['user_id']) {$game->out('<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center><span class="sub_caption">'.constant($game->sprache("TEXT46")).'<br><a href="'.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata['id']).'">'.constant($game->sprache("TEXT47")).'</a></span></center></td></tr></table></center><br>'); return 0;}
 	// Auktion abgelaufen?:
 	if ($tradedata['end_time']<$ACTUAL_TICK) {$game->out('<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center><span class="sub_caption">'.constant($game->sprache("TEXT48")).'<br><a href="'.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata['id']).'">'.constant($game->sprache("TEXT47")).'</a></span></center></td></tr></table></center><br>'); return 0;}
@@ -351,7 +351,7 @@ if ($_REQUEST['id']<0) return 0;
 		$last_bid=$db->queryrow('SELECT * FROM bidding WHERE trade_id = "'.$tradedata['id'].'" ORDER BY max_bid DESC LIMIT 1');
 		if ($last_bid['max_bid']!=$prelast_bid['max_bid'])
 		{
-			$min_bieten=$prelast_bid['max_bid']+1+1; // +1 für aktuelles gebot, nochmal +1 für das nächste
+			$min_bieten=$prelast_bid['max_bid']+1+1; // +1 fÃ¼r aktuelles gebot, nochmal +1 fÃ¼r das nÃ¤chste
 
 			$min_resources[0]=($tradedata['resource_1']+($prelast_bid['max_bid']+2)*$tradedata['add_resource_1']);
 			$min_resources[1]=($tradedata['resource_2']+($prelast_bid['max_bid']+2)*$tradedata['add_resource_2']);
@@ -366,7 +366,7 @@ if ($_REQUEST['id']<0) return 0;
 		}
 		else
 		{
-			$min_bieten=$prelast_bid['max_bid']+1; // +1 für das nächste gebot, weil ja gleichstand war
+			$min_bieten=$prelast_bid['max_bid']+1; // +1 fÃ¼r das nÃ¤chste gebot, weil ja gleichstand war
 
 			$min_resources[0]=($tradedata['resource_1']+($prelast_bid['max_bid']+1)*$tradedata['add_resource_1']);
 			$min_resources[1]=($tradedata['resource_2']+($prelast_bid['max_bid']+1)*$tradedata['add_resource_2']);
@@ -413,7 +413,7 @@ echo('Prev BID: '.$prev_bid['trade_id']);
 		if ($prev_bid['trade_id']!=0) // Der Spieler hat schonmal mitgeboten:
 		{
 			// Wenn man sein Gebot akutalisieren will, darf folgendes NICHT auftreten:
-			// Man hat das Einstiegsgebot abgegeben und will erhöhen, ohne dass jemand anderes geboten hat
+			// Man hat das Einstiegsgebot abgegeben und will erhÃ¶hen, ohne dass jemand anderes geboten hat
 			if ($tradedata['num_bids']==1) {$game->out('<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center><span class="sub_caption">'.constant($game->sprache("TEXT52")).'<br><a href="'.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata['id']).'">'.constant($game->sprache("TEXT47")).'</a></span></center></td></tr></table></center><br>'); return 0;}
 
 			if ($_REQUEST['max_bid']<=$prev_bid['max_bid']) {$game->out('<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center><span class="sub_caption">'.constant($game->sprache("TEXT53")).' '.$prev_bid['max_bid'].' '.constant($game->sprache("TEXT54")).'<br><a href="'.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata['id']).'">'.constant($game->sprache("TEXT47")).'</a></span></center></td></tr></table></center><br>'); return 0;}
@@ -664,7 +664,7 @@ function Show_Bidding_Detail()
 		</td></tr></table>');
 	}
 
-	// Die Preis + Bieten Übersicht:
+	// Die Preis + Bieten Ãœbersicht:
 	$min_bieten=-1;     // -1 means that there was NO bid yet
 	if ($tradedata['num_bids']==1) $min_bieten=1;
 
@@ -719,7 +719,7 @@ function Show_Bidding_Detail()
 		if ($last_bid['max_bid']!=$prelast_bid['max_bid'])
 		{
 
-			$min_bieten=$prelast_bid['max_bid']+1+1; // +1 fr aktuelles gebot, nochmal +1 für das nächste
+			$min_bieten=$prelast_bid['max_bid']+1+1; // +1 fr aktuelles gebot, nochmal +1 fÃ¼r das nÃ¤chste
 
 			$min_resources[0]=($tradedata['resource_1']+($prelast_bid['max_bid']+2)*$tradedata['add_resource_1']);
 			$min_resources[1]=($tradedata['resource_2']+($prelast_bid['max_bid']+2)*$tradedata['add_resource_2']);
@@ -752,7 +752,7 @@ function Show_Bidding_Detail()
 		}
 		else
 		{
-			$min_bieten=$prelast_bid['max_bid']+1; // +1 fr das nächste gebot, weil ja "gleichstand" war
+			$min_bieten=$prelast_bid['max_bid']+1; // +1 fr das nÃ¤chste gebot, weil ja "gleichstand" war
 
 			$min_resources[0]=($tradedata['resource_1']+($prelast_bid['max_bid']+1)*$tradedata['add_resource_1']);
 			$min_resources[1]=($tradedata['resource_2']+($prelast_bid['max_bid']+1)*$tradedata['add_resource_2']);
@@ -791,7 +791,7 @@ function Show_Bidding_Detail()
 
 
 
-	// Wenn die Auktion noch läuft:
+	// Wenn die Auktion noch lÃ¤uft:
 	if ((60*TICK_DURATION*($tradedata['end_time']-$ACTUAL_TICK))+$NEXT_TICK>0)
 	{
 		$game->set_autorefresh((60*TICK_DURATION*($tradedata['end_time']-$ACTUAL_TICK))+$NEXT_TICK);
@@ -821,7 +821,7 @@ function Show_Bidding_Detail()
 		'.constant($game->sprache("TEXT71d")).$tradedata['num_bids'].'<br>');
 		if ($min_bieten==-1)
 		{
-			// Verkäufer??
+			// VerkÃ¤ufer??
 			if ($tradedata['user']==$game->player['user_id'])
 				$game->out(constant($game->sprache("TEXT72")).' ('.$min_price.')<br>
 					<form method="post" action="'.parse_link('a=trade&view=cancel_bid&id='.$_REQUEST['id']).'">
@@ -881,10 +881,10 @@ function Show_Bidding_Detail()
 					window.setTimeout( \'UpdateValues()\', 500 );
 				}
 				</script>');
-			// Verkäufer??
+			// VerkÃ¤ufer??
 			if ($tradedata['user']==$game->player['user_id'])
 			{
-				// Wenn Verkäufer, dann eine Gebotsliste zeigen:
+				// Wenn VerkÃ¤ufer, dann eine Gebotsliste zeigen:
 				$liste=$db->query('SELECT b.*,u.user_id,u.user_name FROM (bidding b) LEFT JOIN (user u) ON u.user_id=b.user WHERE b.trade_id = "'.$tradedata['id'].'" ORDER BY b.max_bid DESC');
 				$game->out(constant($game->sprache("TEXT87")).'
 				<table border=0 cellpadding=1 cellspacing=1><tr><td width=100></td><td width=150></td></tr>');
@@ -1450,9 +1450,9 @@ function Show_CreateBidding()
 	$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT5")).' '.HelpPopup('trade_createauction').' :</span></center><br>');
 	//TAP|BNC> tobi
 	//<TAP|BNC> du hattest das gleiche problem
-	//<TAP|BNC> er speichert den erhöhungsschritt bei lv1,2,3 nich
+	//<TAP|BNC> er speichert den erhÃ¶hungsschritt bei lv1,2,3 nich
 	//<TAP|BNC> [22:10] <Secius> Startpreis:  2    2    2    2    2    2    22    2    2
-	//<TAP|BNC> [22:10] <Secius> Erhöhungsschritt:  50055    5    5    0    0    0    5    55    5
+	//<TAP|BNC> [22:10] <Secius> ErhÃ¶hungsschritt:  50055    5    5    0    0    0    5    55    5
 	//<Secius> yep hab den formular felden die namen 4-6 gegeben und net 1-3
 	function tap_beides(){
 		global $game;
@@ -3602,7 +3602,7 @@ function Show_schulden($zustand=0)
 		if($k_1['ress_2']>$s_1['ress_2']) $k_1['ress_2']=$s_1['ress_2'];
 		if($k_1['ress_3']>$s_1['ress_3']) $k_1['ress_3']=$s_1['ress_3'];
 
-		//Wenn zu groß dann
+		//Wenn zu groÃŸ dann
 		if(($k_1['unit_1']+$_POST['unit1'])>$s_1['unit_1']) $_POST['unit1']=$s_1['unit_1']-$k_1['unit_1'];
 		if(($k_1['unit_2']+$_POST['unit2'])>$s_1['unit_2']) $_POST['unit2']=$s_1['unit_2']-$k_1['unit_2'];
 		if(($k_1['unit_3']+$_POST['unit3'])>$s_1['unit_3']) $_POST['unit3']=$s_1['unit_3']-$k_1['unit_3'];
@@ -3706,8 +3706,8 @@ function Show_schulden($zustand=0)
 
 function ship_pick()
 {
-	//[02:05] <Karnickl> [02:04:12] <Exekutor4> hm kein wunder das er unübersichtlich ist^^ <-- 5k zeilen code. 4500 sind müll *duck*
-	//[02:14] <Exekutor4> naja wenn ihr die stgc'ler mal bestrafen wollt dann könnt ihr tap den source geben^^
+	//[02:05] <Karnickl> [02:04:12] <Exekutor4> hm kein wunder das er unÃ¼bersichtlich ist^^ <-- 5k zeilen code. 4500 sind mÃ¼ll *duck*
+	//[02:14] <Exekutor4> naja wenn ihr die stgc'ler mal bestrafen wollt dann kÃ¶nnt ihr tap den source geben^^
 	//[02:17] <Karnickl> @sci. kein wunder, dass nix fertig wird *g* zu tap+source=w.bush+macht
 	global $db;
 	global $game,$ACTUAL_TICK;
@@ -3749,7 +3749,7 @@ function ship_pick()
 			if(($npc_ships_wait=$db->query('SELECT w.* FROM (FHB_warteschlange w) LEFT JOIN schulden_table s on s.ship_id=w.ship_id WHERE (s.status=1 OR s.status IS NULL) AND user_id='.$game->player['user_id'].' AND '.$where_frage.')'))==true)
 			{
 				if($db->query('INSERT INTO ship_fleets (fleet_name, user_id, planet_id, move_id, n_ships)
-					VALUES ("Auktionsflotte '.((int)($ACTUAL_TICK/2)).'", '.$game->player['user_id'].', '.$Bot['planet_id'].', 0, '.$zaehler.')'))
+					VALUES ("'.constant($game->sprache("TEXT274")).' '.((int)($ACTUAL_TICK/2)).'", '.$game->player['user_id'].', '.$Bot['planet_id'].', 0, '.$zaehler.')'))
 				{
 
 					$fleet_id=$db->insert_id();
