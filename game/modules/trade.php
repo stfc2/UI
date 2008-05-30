@@ -287,6 +287,7 @@ $game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT43"
 
 
 function Submit_Bid()
+// 220408 DC ---- Mettiamo un pò di ordine in questo casino maledetto!!!!
 {
 global $db;
 global $game,$ACTUAL_TICK;
@@ -297,7 +298,7 @@ if(isset($_REQUEST['max_bid'])) { $_REQUEST['max_bid']=(int)$_REQUEST['max_bid']
 
 if ($_REQUEST['id']<0) return 0;
 
-
+	//DC ---- Cerchiamo le informazioni in merito all'asta
 	$sql = 'SELECT s.*,u.user_name,COUNT(b.id) AS num_bids FROM (ship_trade s)
 				LEFT JOIN (user u) ON u.user_id=s.user
 				LEFT JOIN (bidding b) ON b.trade_id=s.id
@@ -308,16 +309,18 @@ if ($_REQUEST['id']<0) return 0;
 		message(DATABASE_ERROR, 'Internal database error');
 	}
 
-	// Will der VerkÃ¤ufer cheaten?
+	// DC ---- Controllino veloce per vedere se il venditore sta facendo offerte alla propria asta
 	if ($tradedata['user']==$game->player['user_id']) {$game->out('<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center><span class="sub_caption">'.constant($game->sprache("TEXT46")).'<br><a href="'.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata['id']).'">'.constant($game->sprache("TEXT47")).'</a></span></center></td></tr></table></center><br>'); return 0;}
-	// Auktion abgelaufen?:
+	// DC ---- Se l'asta è chiusa, ci sono buone probabilità che non si possano fare ulteriori offerte
 	if ($tradedata['end_time']<$ACTUAL_TICK) {$game->out('<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center><span class="sub_caption">'.constant($game->sprache("TEXT48")).'<br><a href="'.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata['id']).'">'.constant($game->sprache("TEXT47")).'</a></span></center></td></tr></table></center><br>'); return 0;}
 
-	$min_bieten=-1;     // -1 means that there was NO bid yet
+	$min_bieten=-1;     // -1 significa che NON CI SONO OFFERTE (quindi la tabella biddings è VUOTA, quindi $tradedata['num_bids'] è ZERO
 	if ($tradedata['num_bids']==1) $min_bieten=1;
 
+	//DC ---- Inizia il mal di testa; questa IF servirebbe a capire se stiamo facendo la prima offerta
 	if ($tradedata['num_bids']<2)
 	{
+		//DC ---- La prima offerta è pari al prezzo base stabilito dal venditore
 		$min_resources[0]=$tradedata['resource_1'];
 		$min_resources[1]=$tradedata['resource_2'];
 		$min_resources[2]=$tradedata['resource_3'];
@@ -330,6 +333,7 @@ if ($_REQUEST['id']<0) return 0;
 		$min_resources[8]=$tradedata['unit_6'];
 		//ende
 		if ($tradedata['num_bids']!=0)
+		//DC ---- La droga inizia a scorrere: qui siamo nel caso ci sia un solo offerente, ossia il primo (che lo ricordo può solo offrire il prezzo base stabilito dal venditore)
 		{
 			$min_resources[0]=$tradedata['resource_1']+$tradedata['add_resource_1'];
 			$min_resources[1]=$tradedata['resource_2']+$tradedata['add_resource_2'];
@@ -345,13 +349,20 @@ if ($_REQUEST['id']<0) return 0;
 		else $min_price=$actual_price;*/
 	}
 	else
+	/*DC ---- Per come è scritta questa IF, qui siamo nel caso in cui $tradedata['num_bids'] sia maggiore di uno, ossia è stata fatta un'offerta successiva a quella iniziale, quindi gli offerenti sono
+	ALMENO DUE */
 	{
-		$prelast_bid=$db->queryrow('SELECT * FROM bidding WHERE trade_id = "'.$tradedata['id'].'" ORDER BY max_bid LIMIT '.($tradedata['num_bids']-2).',1');
+		//DC ---- Una simpatica query ci valorizza $prelast_bid con i dati presi dalla tabella bidding (la tabella degli utenti che partecipano all'asta); in particolare, questa query ritorna
+		// il penultimo offerente in ordine di offerta più alta
+		$prelast_bid=$db->queryrow('SELECT * FROM bidding WHERE trade_id = "'.$tradedata['id'].'" ORDER BY max_bid DESC LIMIT 1,1');
 		// Um zu testen, ob ein Gleichstand besteht, dann wird ja nicht max_bid +1
+		//DC ----  il commento in crucco è particolarmente delirante, google non è di aiuto in questo caso
+		//DC ---- Questa simpatica query ci ritorna chi effettivamente sta facendo l'offerta più alta
 		$last_bid=$db->queryrow('SELECT * FROM bidding WHERE trade_id = "'.$tradedata['id'].'" ORDER BY max_bid DESC LIMIT 1');
+		//DC ---- Questa IF si pone l'annoso problema dei due ultimi offerenti aventi la stessa offerta
 		if ($last_bid['max_bid']!=$prelast_bid['max_bid'])
 		{
-			$min_bieten=$prelast_bid['max_bid']+1+1; // +1 fÃ¼r aktuelles gebot, nochmal +1 fÃ¼r das nÃ¤chste
+			$min_bieten=$prelast_bid['max_bid']+1+1; // +1 für aktuelles gebot, nochmal +1 für das nächste
 
 			$min_resources[0]=($tradedata['resource_1']+($prelast_bid['max_bid']+2)*$tradedata['add_resource_1']);
 			$min_resources[1]=($tradedata['resource_2']+($prelast_bid['max_bid']+2)*$tradedata['add_resource_2']);
@@ -366,7 +377,7 @@ if ($_REQUEST['id']<0) return 0;
 		}
 		else
 		{
-			$min_bieten=$prelast_bid['max_bid']+1; // +1 fÃ¼r das nÃ¤chste gebot, weil ja gleichstand war
+			$min_bieten=$prelast_bid['max_bid']+1; // +1 für das nächste gebot, weil ja gleichstand war
 
 			$min_resources[0]=($tradedata['resource_1']+($prelast_bid['max_bid']+1)*$tradedata['add_resource_1']);
 			$min_resources[1]=($tradedata['resource_2']+($prelast_bid['max_bid']+1)*$tradedata['add_resource_2']);
@@ -399,26 +410,28 @@ if ($_REQUEST['id']<0) return 0;
 
 	if ($min_bieten>0)
 	{
+		//DC ---- Mettiamo dei limiti a quanto possiamo offrire...
 		if ($_REQUEST['max_bid']<0 || $_REQUEST['max_bid']>1000000) {$game->out('<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center><span class="sub_caption">'.constant($game->sprache("TEXT50")).'<br><a href="'.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata['id']).'">'.constant($game->sprache("TEXT47")).'</a></span></center></td></tr></table></center><br>'); return 0;}
+		//DC ---- Dobbiamo offrire abbastanza per superare l'offerta migliore, no?
 		if ($_REQUEST['max_bid']<$min_bieten) {$game->out('<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center><span class="sub_caption">'.constant($game->sprache("TEXT51")).' '.$min_bieten.'<br><a href="'.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata['id']).'">'.constant($game->sprache("TEXT47")).'</a></span></center></td></tr></table></center><br>'); return 0;}
-echo('Trade data: '.$tradedata['id']);
-echo('User ID: '.$game->player['user_id']);
+		//DC ---- carichiamo le info relative alla nostra migliore offerta
 		$prev_bid=$db->queryrow('SELECT * FROM bidding WHERE trade_id = "'.$tradedata['id'].'" AND user="'.$game->player['user_id'].'"');
 
 		/* 06/03/08 - AC: Check DB query */
 		if($prev_bid == null)
 			$prev_bid['trade_id'] = 0;
-
-echo('Prev BID: '.$prev_bid['trade_id']);
-		if ($prev_bid['trade_id']!=0) // Der Spieler hat schonmal mitgeboten:
+			
+		if ($prev_bid['trade_id']!=0) //DC ---- Come faceva notare il crucco, qui ci chiediamo se abbiamo già fatto o meno delle offerte.
 		{
-			// Wenn man sein Gebot akutalisieren will, darf folgendes NICHT auftreten:
-			// Man hat das Einstiegsgebot abgegeben und will erhÃ¶hen, ohne dass jemand anderes geboten hat
+			// DC ---- Qui ci chiediamo se per caso abbiamo fatto l'offerta iniziale; per verificarsi questa eventualità $prev_bid deve essere valorizzato con qualcosa e $tradedata['num_bids'] deve essere a 1
+			//ossia  esiste un solo offerente e nella tabella biddings c'è traccia della nostra offerta;
 			if ($tradedata['num_bids']==1) {$game->out('<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center><span class="sub_caption">'.constant($game->sprache("TEXT52")).'<br><a href="'.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata['id']).'">'.constant($game->sprache("TEXT47")).'</a></span></center></td></tr></table></center><br>'); return 0;}
-
+			//DC ----  Nel caso stia rilanciando di meno rispetto alla volta precedente, mi viene segnalato!
 			if ($_REQUEST['max_bid']<=$prev_bid['max_bid']) {$game->out('<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center><span class="sub_caption">'.constant($game->sprache("TEXT53")).' '.$prev_bid['max_bid'].' '.constant($game->sprache("TEXT54")).'<br><a href="'.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata['id']).'">'.constant($game->sprache("TEXT47")).'</a></span></center></td></tr></table></center><br>'); return 0;}
+			//DC ---- Ok ho rilanciato correttamente, scriviamo ste dannate tabelle!!! La tabella bidding va aggiornata con la mia nuova offerta mentre
+			//la  tabella FHB_bid_meldung serve a segnare in che minuto è stata superata l'offerta più alta dalla mia offerta, per poterlo segnalare all'offerente superato.
 			$db->lock('bidding','FHB_bid_meldung');
-			$db->query('INSERT INTO FHB_bid_meldung (user_id , bieter , time , tick , trade_id ) VALUES ('.$prelast_bid['user'].','.$game->player['user_id'].',1,'.$ACTUAL_TICK.','.$tradedata['id'].')');	
+			$db->query('INSERT INTO FHB_bid_meldung (user_id , bieter , time , tick , trade_id ) VALUES ('.$last_bid['user'].','.$game->player['user_id'].',1,'.$ACTUAL_TICK.','.$tradedata['id'].')');	
 			$db->query('UPDATE bidding SET max_bid="'.$_REQUEST['max_bid'].'" WHERE trade_id = "'.$tradedata['id'].'" AND user="'.$game->player['user_id'].'"');
 			$db->unlock('bidding','FHB_bid_meldung');
 			$game->out('<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center><span class="sub_caption">'.constant($game->sprache("TEXT55")).' '.$_REQUEST['max_bid'].' '.constant($game->sprache("TEXT56")).'<br><a href="'.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata['id']).'">'.constant($game->sprache("TEXT47")).'</a></span></center></td></tr></table></center><br>');
@@ -426,9 +439,9 @@ echo('Prev BID: '.$prev_bid['trade_id']);
 		}
 		else
 		{
-
+			//DC ---- Il caso più semplice: non ho ancora fatto un'offerta, quindi la butto nella tabella bidding e segno nella FHB_bid_meldung il momento della mia temporanea vittoria
 			$db->lock('bidding','FHB_bid_meldung');
-			$db->query('INSERT INTO FHB_bid_meldung (user_id , bieter , time , tick , trade_id ) VALUES ('.$prelast_bid['user'].','.$game->player['user_id'].',1,'.$ACTUAL_TICK.','.$tradedata['id'].')');
+			$db->query('INSERT INTO FHB_bid_meldung (user_id , bieter , time , tick , trade_id ) VALUES ('.$last_bid['user'].','.$game->player['user_id'].',1,'.$ACTUAL_TICK.','.$tradedata['id'].')');
 			$db->query('INSERT INTO bidding (trade_id,user,max_bid) VALUES ('.$tradedata['id'].','.$game->player['user_id'].','.$_REQUEST['max_bid'].')');
 			$db->unlock('bidding','FHB_bid_meldung');
 			$game->out('<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center><span class="sub_caption">'.constant($game->sprache("TEXT57")).' '.$_REQUEST['max_bid'].' '.constant($game->sprache("TEXT58")).'<br><a href="'.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata['id']).'">'.constant($game->sprache("TEXT47")).'</a></span></center></td></tr></table></center><br>');
@@ -664,7 +677,7 @@ function Show_Bidding_Detail()
 		</td></tr></table>');
 	}
 
-	// Die Preis + Bieten Ãœbersicht:
+	// Die Preis + Bieten Übersicht:
 	$min_bieten=-1;     // -1 means that there was NO bid yet
 	if ($tradedata['num_bids']==1) $min_bieten=1;
 
@@ -719,7 +732,7 @@ function Show_Bidding_Detail()
 		if ($last_bid['max_bid']!=$prelast_bid['max_bid'])
 		{
 
-			$min_bieten=$prelast_bid['max_bid']+1+1; // +1 fr aktuelles gebot, nochmal +1 fÃ¼r das nÃ¤chste
+			$min_bieten=$prelast_bid['max_bid']+1+1; // +1 fr aktuelles gebot, nochmal +1 für das nächste
 
 			$min_resources[0]=($tradedata['resource_1']+($prelast_bid['max_bid']+2)*$tradedata['add_resource_1']);
 			$min_resources[1]=($tradedata['resource_2']+($prelast_bid['max_bid']+2)*$tradedata['add_resource_2']);
@@ -752,7 +765,7 @@ function Show_Bidding_Detail()
 		}
 		else
 		{
-			$min_bieten=$prelast_bid['max_bid']+1; // +1 fr das nÃ¤chste gebot, weil ja "gleichstand" war
+			$min_bieten=$prelast_bid['max_bid']+1; // +1 fr das nächste gebot, weil ja "gleichstand" war
 
 			$min_resources[0]=($tradedata['resource_1']+($prelast_bid['max_bid']+1)*$tradedata['add_resource_1']);
 			$min_resources[1]=($tradedata['resource_2']+($prelast_bid['max_bid']+1)*$tradedata['add_resource_2']);
@@ -791,7 +804,7 @@ function Show_Bidding_Detail()
 
 
 
-	// Wenn die Auktion noch lÃ¤uft:
+	// Wenn die Auktion noch läuft:
 	if ((60*TICK_DURATION*($tradedata['end_time']-$ACTUAL_TICK))+$NEXT_TICK>0)
 	{
 		$game->set_autorefresh((60*TICK_DURATION*($tradedata['end_time']-$ACTUAL_TICK))+$NEXT_TICK);
@@ -819,9 +832,10 @@ function Show_Bidding_Detail()
 		&nbsp;<img src="'.$game->GFX_PATH.'menu_unit6_small.gif">&nbsp;'.number_format($tradedata['add_unit_6'], 0, '.', '.').'&nbsp;
 		<br><br>
 		'.constant($game->sprache("TEXT71d")).$tradedata['num_bids'].'<br>');
+		
 		if ($min_bieten==-1)
 		{
-			// VerkÃ¤ufer??
+			// Verkäufer??
 			if ($tradedata['user']==$game->player['user_id'])
 				$game->out(constant($game->sprache("TEXT72")).' ('.$min_price.')<br>
 					<form method="post" action="'.parse_link('a=trade&view=cancel_bid&id='.$_REQUEST['id']).'">
@@ -860,7 +874,7 @@ function Show_Bidding_Detail()
 			else
 				$own_bid = '- no bid -';
 
-			$hbieter=$db->queryrow('SELECT b.*,u.user_id,u.user_name FROM (bidding b) LEFT JOIN (user u) ON u.user_id=b.user WHERE b.trade_id = "'.$tradedata['id'].'" ORDER BY b.max_bid DESC LIMIT 1');
+			$hbieter=$db->queryrow('SELECT b.*,u.user_id,u.user_name FROM (bidding b) LEFT JOIN (user u) ON u.user_id=b.user WHERE b.trade_id = "'.$tradedata['id'].'" ORDER BY b.max_bid DESC, b.id ASC LIMIT 1');
 			$game->out($own_bid.constant($game->sprache("TEXT83")).(($min_bieten-1)==0 ? constant($game->sprache("TEXT84")) : ($min_bieten-1)).' ('.$actual_price.')<br>
 				'.constant($game->sprache("TEXT85")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$hbieter['user_id']).'">'.$hbieter['user_name'].'</a><br>
 				'.constant($game->sprache("TEXT86")).$min_bieten.' ('.$min_price.')<br>
@@ -881,11 +895,11 @@ function Show_Bidding_Detail()
 					window.setTimeout( \'UpdateValues()\', 500 );
 				}
 				</script>');
-			// VerkÃ¤ufer??
+			// Verkäufer??
 			if ($tradedata['user']==$game->player['user_id'])
 			{
-				// Wenn VerkÃ¤ufer, dann eine Gebotsliste zeigen:
-				$liste=$db->query('SELECT b.*,u.user_id,u.user_name FROM (bidding b) LEFT JOIN (user u) ON u.user_id=b.user WHERE b.trade_id = "'.$tradedata['id'].'" ORDER BY b.max_bid DESC');
+				// Wenn Verkäufer, dann eine Gebotsliste zeigen:
+				$liste=$db->query('SELECT b.*,u.user_id,u.user_name FROM (bidding b) LEFT JOIN (user u) ON u.user_id=b.user WHERE b.trade_id = "'.$tradedata['id'].'" ORDER BY b.max_bid DESC, b.id ASC');
 				$game->out(constant($game->sprache("TEXT87")).'
 				<table border=0 cellpadding=1 cellspacing=1><tr><td width=100></td><td width=150></td></tr>');
 
@@ -957,7 +971,7 @@ if(!isset($prelast_bid))
 		if ($tradedata['num_bids']<1) {$game->out(constant($game->sprache("TEXT94")));}
 		else
 		{
-			$hbieter=$db->queryrow('SELECT b.*,u.user_id,u.user_name FROM (bidding b) LEFT JOIN (user u) ON u.user_id=b.user WHERE b.trade_id = "'.$tradedata['id'].'" ORDER BY b.max_bid DESC LIMIT 1');
+			$hbieter=$db->queryrow('SELECT b.*,u.user_id,u.user_name FROM (bidding b) LEFT JOIN (user u) ON u.user_id=b.user WHERE b.trade_id = "'.$tradedata['id'].'" ORDER BY b.max_bid DESC, b.id ASC LIMIT 1');
 			$game->out('<u>'.constant($game->sprache("TEXT95")).'</u></span> <a href="'.parse_link('a=stats&a2=viewplayer&id='.$hbieter['user_id']).'"><b>'.$hbieter['user_name'].'</a><br>');
 
 			if ($tradedata['num_bids']<2)
@@ -1450,9 +1464,9 @@ function Show_CreateBidding()
 	$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT5")).' '.HelpPopup('trade_createauction').' :</span></center><br>');
 	//TAP|BNC> tobi
 	//<TAP|BNC> du hattest das gleiche problem
-	//<TAP|BNC> er speichert den erhÃ¶hungsschritt bei lv1,2,3 nich
+	//<TAP|BNC> er speichert den erhöhungsschritt bei lv1,2,3 nich
 	//<TAP|BNC> [22:10] <Secius> Startpreis:  2    2    2    2    2    2    22    2    2
-	//<TAP|BNC> [22:10] <Secius> ErhÃ¶hungsschritt:  50055    5    5    0    0    0    5    55    5
+	//<TAP|BNC> [22:10] <Secius> Erhöhungsschritt:  50055    5    5    0    0    0    5    55    5
 	//<Secius> yep hab den formular felden die namen 4-6 gegeben und net 1-3
 	function tap_beides(){
 		global $game;
@@ -1640,10 +1654,10 @@ $svon = $RACE_DATA[$game->player['user_race']][$von];
 
 //echo ('Snach: '.$snach.' Svon: '.$svon);
 
-if($art==0)$ergebniss=($snach/$svon)+(($snach/$svon)*20/100);
-if($art==1)$ergebniss =($snach/$svon) + (($snach/ $svon)*10/100);
+if($art==0)$ergebniss=($snach/$svon)- (($snach/$svon)*30/100);
+if($art==1)$ergebniss =($snach/$svon) - (($snach/ $svon)*15/100);
 if($art==2)$ergebniss = ($snach/$svon);
-if($art==3)$ergebniss = ($snach/$svon) -  (($snach/$svon)*20/100);
+if($art==3)$ergebniss = ($snach/$svon) + (($snach/$svon)*25/100);
 
 /* 05/03/08 - AC: I don't know why, but this code rise a PHP error of Index 9 undefined...
 if($art==0)$ergebniss=($RACE_DATA[$game->player['user_race']][$nach]/$RACE_DATA[$game->player['user_race']][$von])+(($RACE_DATA[$game->player['user_race']][$nach]/$RACE_DATA[$game->player['user_race']][$von])*20/100);
@@ -1724,45 +1738,45 @@ if(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && isset($_PO
 
 		if($_POST['bezahlungsart']==1 && $_POST['Art']=="Metall") // metall zu mineral
 		{
-			if($daten['ress_2']<10000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,9,0));}
-			if($daten['ress_2']>=10000 && $daten['ress_2']<=100000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,9,1));}
-			if($daten['ress_2']>=100001 && $daten['ress_2']<=1000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,9,2));}
-			if($daten['ress_2']>1000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,9,3));}
+			if($daten['ress_2']<350000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,9,0));}
+			if($daten['ress_2']>=350000 && $daten['ress_2']<=1000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,9,1));}
+			if($daten['ress_2']>=1000001 && $daten['ress_2']<=5000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,9,2));}
+			if($daten['ress_2']>5000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,9,3));}
 		}
 		else if($_POST['bezahlungsart']==2 && $_POST['Art']=="Metall") // metall zu latinum
 		{
-			if($daten['ress_3']<10000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,9,0));}
-			if($daten['ress_3']>=10000 && $daten['ress_3']<=100000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,9,1));}
-			if($daten['ress_3']>=100001 && $daten['ress_3']<=1000000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,9,2));}
-			if($daten['ress_3']>1000000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,9,3));}
+			if($daten['ress_3']<350000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,9,0));}
+			if($daten['ress_3']>=350000 && $daten['ress_3']<=1000000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,9,1));}
+			if($daten['ress_3']>=1000001 && $daten['ress_3']<=5000000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,9,2));}
+			if($daten['ress_3']>5000000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,9,3));}
 		}
 		else if($_POST['bezahlungsart']==3 && $_POST['Art']=="Mineral") // mineral zu metall
 		{
-			if($daten['ress_1']<10000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,0));}
-			if($daten['ress_1']>=10000 && $daten['ress_1']<=100000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,1));}
-			if($daten['ress_1']>=100001 && $daten['ress_1']<=1000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,2));}
-			if($daten['ress_1']>1000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,3));}
+			if($daten['ress_1']<350000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,0));}
+			if($daten['ress_1']>=350000 && $daten['ress_1']<=1000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,1));}
+			if($daten['ress_1']>=1000001 && $daten['ress_1']<=5000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,2));}
+			if($daten['ress_1']>5000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,3));}
 		}
 		else if($_POST['bezahlungsart']==4 && $_POST['Art']=="Mineral") // mineral zu latinum
 		{
-			if($daten['ress_3']<10000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,10,0));}
-			if($daten['ress_3']>=10000 && $daten['ress_3']<=100000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,10,1));}
-			if($daten['ress_3']>=100001 && $daten['ress_3']<=1000000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,10,2));}
-			if($daten['ress_3']>1000000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,10,3));}
+			if($daten['ress_3']<350000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,10,0));}
+			if($daten['ress_3']>=350000 && $daten['ress_3']<=1000000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,10,1));}
+			if($daten['ress_3']>=1000001 && $daten['ress_3']<=5000000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,10,2));}
+			if($daten['ress_3']>5000000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,10,3));}
 		}
 		else if($_POST['bezahlungsart']==5 && $_POST['Art']=="Latinum") // latinum zu metall
 		{
-			if($daten['ress_1']<10000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,0));}
-			if($daten['ress_1']>=10000 && $daten['ress_1']<=100000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,1));}
-			if($daten['ress_1']>=100001 && $daten['ress_1']<=1000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,2));}
-			if($daten['ress_1']>1000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,3));}
+			if($daten['ress_1']<350000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,0));}
+			if($daten['ress_1']>=350000 && $daten['ress_1']<=1000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,1));}
+			if($daten['ress_1']>=1000001 && $daten['ress_1']<=5000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,2));}
+			if($daten['ress_1']>5000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,3));}
 		}
 		else if($_POST['bezahlungsart']==6 && $_POST['Art']=="Latinum") // latinum zu mineral
 		{
-			if($daten['ress_2']<10000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,11,0));}
-			if($daten['ress_2']>=10000 && $daten['ress_2']<=100000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,11,1));}
-			if($daten['ress_2']>=100001 && $daten['ress_2']<=1000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,11,2));}
-			if($daten['ress_2']>1000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,11,3));}
+			if($daten['ress_2']<350000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,11,0));}
+			if($daten['ress_2']>=350000 && $daten['ress_2']<=1000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,11,1));}
+			if($daten['ress_2']>=1000001 && $daten['ress_2']<=5000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,11,2));}
+			if($daten['ress_2']>5000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,11,3));}
 		}
 
 		$db->lock('FHB_Handels_Lager','scheduler_resourcetrade');
@@ -2061,48 +2075,150 @@ elseif(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && $_REQU
 	//K = (n*p) - ((n-1)*0,1) 
 	if($_POST['Art']=="Metall") // metall zu mineral
 	{
-		if($daten['ress_2']<10000){$kosten['Mineral'][1]=(int)($_POST['menge']*Ress_price(10,9,0));}
-		if($daten['ress_2']>=10000 && $daten['ress_2']<=100000){$kosten['Mineral'][1]=(int)($_POST['menge']*Ress_price(10,9,1));}
-		if($daten['ress_2']>=100001 && $daten['ress_2']<=1000000){$kosten['Mineral'][1]=(int)($_POST['menge']*Ress_price(10,9,2));}
-		if($daten['ress_2']>1000000){$kosten['Mineral'][1]=(int)($_POST['menge']*Ress_price(10,9,3));}
+		if($daten['ress_2']<350000){
+			$flag_rateo['Mineral'][1] = 1;
+			$rate['Mineral'][1] = Ress_price(10,9,0);
+			$kosten['Mineral'][1]=(int)($_POST['menge']*$rate['Mineral'][1]);
+			}
+		if($daten['ress_2']>=350000 && $daten['ress_2']<=1000000){
+			$flag_rateo['Mineral'][1] = 2;
+			$rate['Mineral'][1] = Ress_price(10,9,1);
+			$kosten['Mineral'][1]=(int)($_POST['menge']*$rate['Mineral'][1]);
+			}
+		if($daten['ress_2']>=1000001 && $daten['ress_2']<=5000000){
+			$flag_rateo['Mineral'][1] = 3;
+			$rate['Mineral'][1] = Ress_price(10,9,2);
+			$kosten['Mineral'][1]=(int)($_POST['menge']*$rate['Mineral'][1]);
+			}
+		if($daten['ress_2']>5000000){
+			$flag_rateo['Mineral'][1] = 4;
+			$rate['Mineral'][1] = Ress_price(10,9,3);
+			$kosten['Mineral'][1]=(int)($_POST['menge']*$rate['Mineral'][1]);
+			}
 	}
 	if($_POST['Art']=="Metall") // metall zu latinum
 	{
-		if($daten['ress_3']<10000){$kosten['Latinum'][1]=(int)($_POST['menge']*Ress_price(11,9,0));}
-		if($daten['ress_3']>=10000 && $daten['ress_3']<=100000){$kosten['Latinum'][1]=(int)($_POST['menge']*Ress_price(11,9,1));}
-		if($daten['ress_3']>=100001 && $daten['ress_3']<=1000000){$kosten['Latinum'][1]=(int)($_POST['menge']*Ress_price(11,9,2));}
-		if($daten['ress_3']>1000000){$kosten['Latinum'][1]=(int)($_POST['menge']*Ress_price(11,9,3));}
+		if($daten['ress_3']<350000){
+			$flag_rateo['Latinum'][1] = 1;
+			$rate['Latinum'][1] = Ress_price(11,9,0);
+			$kosten['Latinum'][1]=(int)($_POST['menge']*$rate['Latinum'][1]);
+			}
+		if($daten['ress_3']>=350000 && $daten['ress_3']<=1000000){
+			$flag_rateo['Latinum'][1] = 2;
+			$rate['Latinum'][1] = Ress_price(11,9,1);
+			$kosten['Latinum'][1]=(int)($_POST['menge']*$rate['Latinum'][1]);
+			}
+		if($daten['ress_3']>=1000001 && $daten['ress_3']<=5000000){
+			$flag_rateo['Latinum'][1] = 3;
+			$rate['Latinum'][1] = Ress_price(11,9,2);
+			$kosten['Latinum'][1]=(int)($_POST['menge']*$rate['Latinum'][1]);
+			}
+		if($daten['ress_3']>5000000){
+			$flag_rateo['Latinum'][1] = 4;
+			$rate['Latinum'][1] = Ress_price(11,9,3);
+			$kosten['Latinum'][1]=(int)($_POST['menge']*$rate['Latinum'][1]);
+			}
 	}
 	if($_POST['Art']=="Mineral") // mineral zu metall
 	{
-		if($daten['ress_1']<10000){$kosten['Metall'][1]=(int)($_POST['menge']*Ress_price(9,10,0));}
-		if($daten['ress_1']>=10000 && $daten['ress_1']<=100000){$kosten['Metall'][1]=(int)($_POST['menge']*Ress_price(9,10,1));}
-		if($daten['ress_1']>=100001 && $daten['ress_1']<=1000000){$kosten['Metall'][1]=(int)($_POST['menge']*Ress_price(9,10,2));}
-		if($daten['ress_1']>1000000){$kosten['Metall'][1]=(int)($_POST['menge']*Ress_price(9,10,3));}
+		if($daten['ress_1']<350000){
+			$flag_rateo['Metall'][1] = 1;
+			$rate['Metall'][1] = Ress_price(9,10,0);
+			$kosten['Metall'][1]=(int)($_POST['menge']*$rate['Metall'][1]);
+			}
+		if($daten['ress_1']>=350000 && $daten['ress_1']<=1000000){
+			$flag_rateo['Metall'][1] = 2;
+			$rate['Metall'][1] = Ress_price(9,10,1);
+			$kosten['Metall'][1]=(int)($_POST['menge']*$rate['Metall'][1]);
+			}
+		if($daten['ress_1']>=1000001 && $daten['ress_1']<=5000000){
+			$flag_rateo['Metall'][1] = 3;
+			$rate['Metall'][1] = Ress_price(9,10,2);
+			$kosten['Metall'][1]=(int)($_POST['menge']*$rate['Metall'][1]);
+			}
+		if($daten['ress_1']>5000000){
+			$flag_rateo['Metall'][1] = 4;
+			$rate['Metall'][1] = Ress_price(9,10,3);
+			$kosten['Metall'][1]=(int)($_POST['menge']*$rate['Metall'][1]);
+			}
 	
 	}
 	if($_POST['Art']=="Mineral") // mineral zu latinum
 	{
-		if($daten['ress_3']<10000){$kosten['Latinum'][2]=(int)($_POST['menge']*Ress_price(11,10,0));}
-		if($daten['ress_3']>=10000 && $daten['ress_3']<=100000){$kosten['Latinum'][2]=(int)($_POST['menge']*Ress_price(11,10,1));}
-		if($daten['ress_3']>=100001 && $daten['ress_3']<=1000000){$kosten['Latinum'][2]=(int)($_POST['menge']*Ress_price(11,10,2));}
-		if($daten['ress_3']>1000000){$kosten['Latinum'][2]=(int)($_POST['menge']*Ress_price(11,10,3));}
+		if($daten['ress_3']<350000){
+			$flag_rateo['Latinum'][2] = 1;
+			$rate['Latinum'][2] = Ress_price(11,10,0);
+			$kosten['Latinum'][2]=(int)($_POST['menge']*$rate['Latinum'][2]);
+			}
+		if($daten['ress_3']>=350000 && $daten['ress_3']<=1000000){
+			$flag_rateo['Latinum'][2] = 2;
+			$rate['Latinum'][2] = Ress_price(11,10,1);
+			$kosten['Latinum'][2]=(int)($_POST['menge']*$rate['Latinum'][2]);
+			}
+		if($daten['ress_3']>=1000001 && $daten['ress_3']<=5000000){
+			$flag_rateo['Latinum'][2] = 3;
+			$rate['Latinum'][2] = Ress_price(11,10,2);
+			$kosten['Latinum'][2]=(int)($_POST['menge']*$rate['Latinum'][2]);
+			}
+		if($daten['ress_3']>5000000){
+			$flag_rateo['Latinum'][2] = 4;
+			$rate['Latinum'][2] = Ress_price(11,10,3);
+			$kosten['Latinum'][2]=(int)($_POST['menge']*$rate['Latinum'][2]);
+			}
 	}
 	if($_POST['Art']=="Latinum") // latinum zu metall
 	{
-		if($daten['ress_1']<10000){$kosten['Metall'][2]=(int)($_POST['menge']*Ress_price(9,11,0));}
-		if($daten['ress_1']>=10000 && $daten['ress_1']<=100000){$kosten['Metall'][2]=(int)($_POST['menge']*Ress_price(9,11,1));}
-		if($daten['ress_1']>=100001 && $daten['ress_1']<=1000000){$kosten['Metall'][2]=(int)($_POST['menge']*Ress_price(9,11,2));}
-		if($daten['ress_1']>1000000){$kosten['Metall'][2]=(int)($_POST['menge']*Ress_price(9,11,3));}
+		if($daten['ress_1']<350000){
+			$flag_rateo['Metall'][2] = 1;
+			$rate['Metall'][2] = Ress_price(9,11,0);
+			$kosten['Metall'][2]=(int)($_POST['menge']*$rate['Metall'][2]);
+			}
+		if($daten['ress_1']>=350000 && $daten['ress_1']<=1000000){
+			$flag_rateo['Metall'][2] = 2;
+			$rate['Metall'][2] = Ress_price(9,11,1);
+			$kosten['Metall'][2]=(int)($_POST['menge']*$rate['Metall'][2]);
+			}
+		if($daten['ress_1']>=1000001 && $daten['ress_1']<=5000000){
+			$flag_rateo['Metall'][2] = 3;
+			$rate['Metall'][2] = Ress_price(9,11,2);
+			$kosten['Metall'][2]=(int)($_POST['menge']*$rate['Metall'][2]);
+			}
+		if($daten['ress_1']>5000000){
+			$flag_rateo['Metall'][2] = 4;
+			$rate['Metall'][2] = Ress_price(9,11,3);
+			$kosten['Metall'][2]=(int)($_POST['menge']*$rate['Metall'][2]);
+			}
 	
 	}
 	if($_POST['Art']=="Latinum") // latinum zu mineral
 	{
-		if($daten['ress_2']<10000){$kosten['Mineral'][2]=(int)($_POST['menge']*Ress_price(10,11,0));}
-		if($daten['ress_2']>=10000 && $daten['ress_2']<=100000){$kosten['Mineral'][2]=(int)($_POST['menge']*Ress_price(10,11,1));}
-		if($daten['ress_2']>=100001 && $daten['ress_2']<=1000000){$kosten['Mineral'][2]=(int)($_POST['menge']*Ress_price(10,11,2));}
-		if($daten['ress_2']>1000000){$kosten['Mineral'][2]=(int)($_POST['menge']*Ress_price(10,11,3));}
+		if($daten['ress_2']<350000){
+			$flag_rateo['Mineral'][2] = 1;
+			$rate['Mineral'][2] = Ress_price(10,11,0);
+			$kosten['Mineral'][2]=(int)($_POST['menge']*$rate['Mineral'][2]);
+			}
+		if($daten['ress_2']>=350000 && $daten['ress_2']<=1000000){
+			$flag_rateo['Mineral'][2] = 2;
+			$rate['Mineral'][2] = Ress_price(10,11,1);
+			$kosten['Mineral'][2]=(int)($_POST['menge']*$rate['Mineral'][2]);
+			}
+		if($daten['ress_2']>=1000001 && $daten['ress_2']<=5000000){
+			$flag_rateo['Mineral'][2] = 3;
+			$rate['Mineral'][2] = Ress_price(10,11,2);
+			$kosten['Mineral'][2]=(int)($_POST['menge']*$rate['Mineral'][2]);
+			}
+		if($daten['ress_2']>5000000){
+			$flag_rateo['Mineral'][2] = 4;
+			$rate['Mineral'][2] = Ress_price(10,11,3);
+			$kosten['Mineral'][2]=(int)($_POST['menge']*$rate['Mineral'][2]);
+			}
 	}
+	
+	$rateo_color[1] = 'red';
+	$rateo_color[2] = 'yellow';
+	$rateo_color[3] = 'gray';
+	$rateo_color[4] = 'green';
+	
 	$steuern[1]=(int)($kosten['Metall'][1]*0.50);
 	$steuern[2]=(int)($kosten['Mineral'][1]*0.50);
 	$steuern[3]=(int)($kosten['Latinum'][1]*0.50);
@@ -2134,30 +2250,37 @@ elseif(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && $_REQU
 	$game->out('<table>');
 	if($_POST['Art']=="Metall")
 	{
-		$game->out('<tr><td colspan=2><table><tr><td>'.constant($game->sprache("TEXT159")).' '.$_POST['menge'].' '.constant($game->sprache("TEXT123")).'</td><td>'.constant($game->sprache("TEXT160")).'</td><td>'.constant($game->sprache("TEXT161")).'</td></tr>');
-		$game->out('<tr><td></td><td>'.$kosten['Mineral'][1].'('.$daten['ress_2'].')</td><td>'.$kosten['Latinum'][1].'('.$daten['ress_3'].')</td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT162")).'</td><td>'.($kosten['Mineral'][1]-$steuern[2]).'</td><td> '.($kosten['Latinum'][1]-$steuern[3]).'</td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT163")).'</td><td>'.($kosten['Mineral'][1]-$steuern[8]).'</td><td> '.($kosten['Latinum'][1]-$steuern[9]).'</td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT164")).'</td><td>'.($kosten['Mineral'][1]-$steuern[14]).'</td><td> '.($kosten['Latinum'][1]-$steuern[15]).'</td></tr>');
+		$indice1 = $flag_rateo['Mineral'][1];
+		$indice2 = $flag_rateo['Latinum'][1];
+		$game->out('<tr><td colspan=2><table><tr><td>'.constant($game->sprache("TEXT159")).' '.$_POST['menge'].' '.constant($game->sprache("TEXT123")).'</td><td>&nbsp;</td><td>'.constant($game->sprache("TEXT160")).'</td><td>Rateo</td><td>&nbsp;</td><td>'.constant($game->sprache("TEXT161")).'</td><td>Rateo</td></tr>');
+		$game->out('<tr><td></td><td>&nbsp;</td><td>'.$kosten['Mineral'][1].'('.$daten['ress_2'].')</td><td><font color="'.$rateo_color[$indice1].'">'.round($rate['Mineral'][1], 3).'</font></td><td>&nbsp;</td><td>'.$kosten['Latinum'][1].'('.$daten['ress_3'].')</td><td><font color="'.$rateo_color[$indice2].'">'.round($rate['Latinum'][1], 3).'</font></td></tr>');
+		$game->out('<tr><td>'.constant($game->sprache("TEXT162")).'</td><td>&nbsp;</td><td>'.($kosten['Mineral'][1]-$steuern[2]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Latinum'][1]-$steuern[3]).'</td></tr>');
+		$game->out('<tr><td>'.constant($game->sprache("TEXT163")).'</td><td>&nbsp;</td><td>'.($kosten['Mineral'][1]-$steuern[8]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Latinum'][1]-$steuern[9]).'</td></tr>');
+		$game->out('<tr><td>'.constant($game->sprache("TEXT164")).'</td><td>&nbsp;</td><td>'.($kosten['Mineral'][1]-$steuern[14]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Latinum'][1]-$steuern[15]).'</td></tr>');
 	}
 	if($_POST['Art']=="Mineral")
 	{
-		$game->out('<tr><td colspan=2><table><tr><td>'.constant($game->sprache("TEXT159")).' '.$_POST['menge'].' '.constant($game->sprache("TEXT165")).'</td><td>'.constant($game->sprache("TEXT166")).'</td><td>'.constant($game->sprache("TEXT161")).'</td></tr>');
-		$game->out('<tr><td></td><td>'.$kosten['Metall'][1].'('.$daten['ress_1'].')</td><td>'.$kosten['Latinum'][2].'('.$daten['ress_3'].')</td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT162")).'</td><td>'.($kosten['Metall'][1]-$steuern[1]).'</td><td> '.($kosten['Latinum'][2]-$steuern[6]).'</td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT163")).'</td><td>'.($kosten['Metall'][1]-$steuern[7]).'</td><td> '.($kosten['Latinum'][2]-$steuern[12]).'</td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT164")).'</td><td>'.($kosten['Metall'][1]-$steuern[13]).'</td><td> '.($kosten['Latinum'][2]-$steuern[18]).'</td></tr>');
+		$indice1 = $flag_rateo['Metall'][1];
+		$indice2 = $flag_rateo['Latinum'][2];
+		$game->out('<tr><td colspan=2><table><tr><td>'.constant($game->sprache("TEXT159")).' '.$_POST['menge'].' '.constant($game->sprache("TEXT165")).'</td><td>&nbsp;</td><td>'.constant($game->sprache("TEXT166")).'</td><td>Rateo</td><td>&nbsp;</td><td>'.constant($game->sprache("TEXT161")).'</td><td>Rateo</td></tr>');
+		$game->out('<tr><td></td><td>&nbsp;</td><td>'.$kosten['Metall'][1].'('.$daten['ress_1'].')</td><td><font color="'.$rateo_color[$indice1].'">'.round($rate['Metall'][1], 3).'</font></td><td>&nbsp;</td><td>'.$kosten['Latinum'][2].'('.$daten['ress_3'].')</td><td><font color="'.$rateo_color[$indice2].'">'.round($rate['Latinum'][2], 3).'</font></td></tr>');
+		$game->out('<tr><td>'.constant($game->sprache("TEXT162")).'</td><td>&nbsp;</td><td>'.($kosten['Metall'][1]-$steuern[1]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Latinum'][2]-$steuern[6]).'</td></tr>');
+		$game->out('<tr><td>'.constant($game->sprache("TEXT163")).'</td><td>&nbsp;</td><td>'.($kosten['Metall'][1]-$steuern[7]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Latinum'][2]-$steuern[12]).'</td></tr>');
+		$game->out('<tr><td>'.constant($game->sprache("TEXT164")).'</td><td>&nbsp;</td><td>'.($kosten['Metall'][1]-$steuern[13]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Latinum'][2]-$steuern[18]).'</td></tr>');
 	}
 	if($_POST['Art']=="Latinum")
 	{
-		$game->out('<tr><td colspan=2><table><tr><td>'.constant($game->sprache("TEXT159")).' '.$_POST['menge'].' '.constant($game->sprache("TEXT167")).'</td><td>'.constant($game->sprache("TEXT166")).'</td><td>'.constant($game->sprache("TEXT160")).'</td></tr>');
-		$game->out('<tr><td></td><td>'.$kosten['Metall'][2].'('.$daten['ress_1'].')</td><td>'.$kosten['Mineral'][2].'('.$daten['ress_2'].')</td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT162")).'</td><td>'.($kosten['Metall'][2]-$steuern[4]).'</td><td> '.($kosten['Mineral'][2]-$steuern[5]).'</td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT163")).'</td><td>'.($kosten['Metall'][2]-$steuern[10]).'</td><td> '.($kosten['Mineral'][2]-$steuern[11]).'</td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT164")).'</td><td>'.($kosten['Metall'][2]-$steuern[16]).'</td><td> '.($kosten['Mineral'][2]-$steuern[17]).'</td></tr>');
+		$indice1 = $flag_rateo['Metall'][2];
+		$indice2 = $flag_rateo['Mineral'][2];
+		$game->out('<tr><td colspan=2><table><tr><td>'.constant($game->sprache("TEXT159")).' '.$_POST['menge'].' '.constant($game->sprache("TEXT167")).'</td><td>&nbsp;</td><td>'.constant($game->sprache("TEXT166")).'</td><td>Rateo</td><td>&nbsp;</td><td>'.constant($game->sprache("TEXT160")).'</td><td>Rateo</td></tr>');
+		$game->out('<tr><td></td><td>&nbsp;</td><td>'.$kosten['Metall'][2].'('.$daten['ress_1'].')</td><td><font color="'.$rateo_color[$indice1].'">'.round($rate['Metall'][2], 3).'</font></td><td>&nbsp;</td><td>'.$kosten['Mineral'][2].'('.$daten['ress_2'].')</td><td><font color="'.$rateo_color[$indice2].'">'.round($rate['Mineral'][2], 3).'</font></td></tr>');
+		$game->out('<tr><td>'.constant($game->sprache("TEXT162")).'</td><td>&nbsp;</td><td>'.($kosten['Metall'][2]-$steuern[4]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Mineral'][2]-$steuern[5]).'</td></tr>');
+		$game->out('<tr><td>'.constant($game->sprache("TEXT163")).'</td><td>&nbsp;</td><td>'.($kosten['Metall'][2]-$steuern[10]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Mineral'][2]-$steuern[11]).'</td></tr>');
+		$game->out('<tr><td>'.constant($game->sprache("TEXT164")).'</td><td>&nbsp;</td><td>'.($kosten['Metall'][2]-$steuern[16]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Mineral'][2]-$steuern[17]).'</td></tr>');
 	}
 
-	$game->out('</table><br>'.constant($game->sprache("TEXT168")).'</td></tr>');
+	$game->out('</table><br>'.constant($game->sprache("TEXT269")).' <font color="red">'.constant($game->sprache("TEXT270")).'</font> <font color="yellow">'.constant($game->sprache("TEXT271")).'</font>  <font color="gray">'.constant($game->sprache("TEXT272")).'</font>  <font color="green">'.constant($game->sprache("TEXT273")).'</font></td></tr>');
+	$game->out('<td>'.constant($game->sprache("TEXT168")).'</td></tr>');
 	$game->out('<form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress&step=3').'" method="post"><tr><td>'.constant($game->sprache("TEXT169")).'</td><td><select size="1" name="bezahlungsart">');
 	if($_POST['Art']=="Metall")$game->out('<option value="1">'.constant($game->sprache("TEXT170")).'</option>');
 	if($_POST['Art']=="Metall")$game->out('<option value="2">'.constant($game->sprache("TEXT171")).'</option>');
@@ -3504,8 +3627,9 @@ function Show_Main_a()
 		while($n_news=$db->fetchrow($news))
 		{
 			$game->out('<tr><td>'.constant($game->sprache("TEXT228")).' '.(($ACTUAL_TICK-$n_news['ticker'])*3).constant($game->sprache("TEXT229")).' <a href='.parse_link('a=trade&view=view_bidding_detail&id='.$n_news['id']).'>'.$n_news['header'].'</a> '.constant($game->sprache("TEXT230")).'<br></td></tr>');
-			$zaheler_cc++;
+			$zaehler_cc++;
 		}
+		//$game->out('<tr><td>'.constant($game->sprache("TEXT274")).'</td></tr></table><br>');
 		$game->out('</table><br>');
 
 
@@ -3602,7 +3726,7 @@ function Show_schulden($zustand=0)
 		if($k_1['ress_2']>$s_1['ress_2']) $k_1['ress_2']=$s_1['ress_2'];
 		if($k_1['ress_3']>$s_1['ress_3']) $k_1['ress_3']=$s_1['ress_3'];
 
-		//Wenn zu groÃŸ dann
+		//Wenn zu groß dann
 		if(($k_1['unit_1']+$_POST['unit1'])>$s_1['unit_1']) $_POST['unit1']=$s_1['unit_1']-$k_1['unit_1'];
 		if(($k_1['unit_2']+$_POST['unit2'])>$s_1['unit_2']) $_POST['unit2']=$s_1['unit_2']-$k_1['unit_2'];
 		if(($k_1['unit_3']+$_POST['unit3'])>$s_1['unit_3']) $_POST['unit3']=$s_1['unit_3']-$k_1['unit_3'];
@@ -3706,8 +3830,8 @@ function Show_schulden($zustand=0)
 
 function ship_pick()
 {
-	//[02:05] <Karnickl> [02:04:12] <Exekutor4> hm kein wunder das er unÃ¼bersichtlich ist^^ <-- 5k zeilen code. 4500 sind mÃ¼ll *duck*
-	//[02:14] <Exekutor4> naja wenn ihr die stgc'ler mal bestrafen wollt dann kÃ¶nnt ihr tap den source geben^^
+	//[02:05] <Karnickl> [02:04:12] <Exekutor4> hm kein wunder das er unübersichtlich ist^^ <-- 5k zeilen code. 4500 sind müll *duck*
+	//[02:14] <Exekutor4> naja wenn ihr die stgc'ler mal bestrafen wollt dann könnt ihr tap den source geben^^
 	//[02:17] <Karnickl> @sci. kein wunder, dass nix fertig wird *g* zu tap+source=w.bush+macht
 	global $db;
 	global $game,$ACTUAL_TICK;
@@ -4142,7 +4266,7 @@ function own_bids()
 		</script>');
 
 	/* 27/02/08 - AC: I'm not pretty sure but, if the function's name is own_bids, probabily variable $own_only is true... */
-	$own_only = 1;
+	$own_only = 0;
 
 	if ($own_only==0) $str_compare='<>';
 	else {$str_compare='=';}
@@ -4156,6 +4280,7 @@ function own_bids()
 			LEFT JOIN (ship_templates t) ON t.id=sh.template_id
 			WHERE s.user '.$str_compare.' '.$game->player['user_id'].' AND b.user='.$game->player['user_id'].' AND s.end_time>='.$ACTUAL_TICK.' AND t.ship_class IN ('.implode(',', $sels).') GROUP BY s.id ORDER BY s.end_time ASC
 			';
+			
 
 	if(($tradedata = $db->queryrowset($sql)) === false) {
 		message(DATABASE_ERROR, 'Internal database error');
@@ -4222,7 +4347,10 @@ function own_bids()
 	{
 		if (isset($tradedata[$t]))
 		{
-			if ($tradedata[$t]['num_bids']<1)
+			$sql='SELECT COUNT(*) AS num_bids FROM bidding WHERE trade_id = '.$tradedata[$t]['id'];
+			$count_bid = $db->queryrow($sql);
+			$tradedata[$t]['num_bids'] = $count_bid['num_bids'];
+			if ($tradedata[$t]['num_bids']<2)
 			{
 				$actual_price= '<img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;'.$tradedata[$t]['resource_1'];
 				$actual_price.='&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;'.$tradedata[$t]['resource_2'];
