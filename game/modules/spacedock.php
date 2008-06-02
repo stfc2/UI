@@ -1397,8 +1397,8 @@ elseif(!empty($_POST['new_fleet'])) {
 
     // New grounds fleet	
 
-    $sql = 'INSERT INTO ship_fleets (fleet_name, user_id, planet_id, move_id, n_ships, resource_1, resource_2, resource_3, resource_4, unit_1, unit_2, unit_3, unit_4, unit_5, unit_6)
-            VALUES ("'.$new_fleet_name.'", '.$game->player['user_id'].', '.( (-1) * $planet_id ).', 0, '.$n_ships.', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)';
+    $sql = 'INSERT INTO ship_fleets (fleet_name, user_id, planet_id, move_id, n_ships, homebase, resource_1, resource_2, resource_3, resource_4, unit_1, unit_2, unit_3, unit_4, unit_5, unit_6)
+            VALUES ("'.$new_fleet_name.'", '.$game->player['user_id'].', '.( (-1) * $planet_id ).', 0, '.$n_ships.', '.( (-1) * $planet_id ).', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)';
 
     if(!$db->query($sql)) {
     	message(DATABASE_ERROR, 'Could not insert new fleets data');
