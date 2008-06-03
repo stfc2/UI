@@ -215,6 +215,19 @@ Domanda: <input type="text" name="question" value="'.$question.'" class="field">
 
     while($poll = $db->fetchrow($q_polls)) {
 
+        $total_votes = ($poll['count_1'] +
+                        $poll['count_2'] +
+                        $poll['count_3'] +
+                        $poll['count_4'] +
+                        $poll['count_5'] +
+                        $poll['count_6'] +
+                        $poll['count_7'] +
+                        $poll['count_8'] +
+                        $poll['count_9'] +
+                        $poll['count_10']);
+
+        if($total_votes == 0) $total_votes = 1;
+
         $main_html .= '
 
       <table border="0" cellpadding="0" cellspacing="0" width="100%" class="style_inner">
@@ -229,20 +242,23 @@ Domanda: <input type="text" name="question" value="'.$question.'" class="field">
 		  
 		  </td>
 
-          <td valign="top" width="300">
+          <td valign="top" width="400">
 
             <table border="0" cellpadding="0" cellspacing="3" width="100%">
 
               <tr>
 
-                <td valign="top" bgcolor=#333333 colspan=2><span class="sub_caption2" style="color: #23F025">'.$poll['question'].'</span>
-                <span class="text_large" style="color: #23F025"><br>('.date('d.m.y H:i', $poll['date']).')</span></td>
+                <td valign="top" bgcolor=#333333 colspan=3><span class="sub_caption2" style="color: #23F025">'.$poll['question'].'
+                <br>('.date('d.m.y H:i', $poll['date']).')</span></td>
 
               </tr>';
 
               for($i = 1;$i < 11;$i++)
                 if(!empty($poll['choice_'.$i]))
-                   $main_html .= '<tr><td width="70">'.$i.'a opzione:</td><td valign="top">'.stripslashes($poll['choice_'.$i]).'</td></tr>';
+                {
+                   $percent = 100 / $total_votes * $poll['count_'.$i];
+                   $main_html .= '<tr><td>'.$i.':</td><td valign="top" width="350">'.stripslashes($poll['choice_'.$i]).'</td><td align="right">'.round($percent, 0).'%</td></tr>';
+                }
 
               $main_html .= '
 
