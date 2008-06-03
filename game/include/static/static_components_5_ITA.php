@@ -211,7 +211,7 @@ $ship_components=array(
                     'dev_info'=>'',
             ), // Endof Component Warp MKIV
 
-      'name'=>'Sala Macchine',
+      'name'=>'Sala macchine',
       'num'=>'4',
       ), // Endof Category Maschinenraum
 
@@ -355,7 +355,7 @@ $ship_components=array(
 
              // Component Plasma-Injektion
              3=>array(
-                    'name'=>'Iniezione di Plasma',
+                    'name'=>'Iniezione di plasma',
                     'resource_1'=>'4500',
                     'resource_2'=>'1200',
                     'resource_3'=>'600',
@@ -491,7 +491,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'I Pacchetti di materia sono scagliati dalle bocche di fuoco manualmente ed esplodono al contatto. Causano un danno maggiore rispetto ai lanciaraggi, ma non sono utilizzabili su Trasporti e Colonizzatrici.',
+                    'description'=>'I pacchetti di materia sono scagliati dalle bocche di fuoco manualmente ed esplodono al contatto. Causano un danno maggiore rispetto ai lanciaraggi, ma non sono utilizzabili su Trasporti e Colonizzatrici.',
                     'dev_info'=>'',
             ), // Endof Component Materiepakete
 
@@ -774,7 +774,7 @@ $ship_components=array(
 
              // Component Torpedo-HÃ¤rtung
              1=>array(
-                    'name'=>'Siluri Rinforzati',
+                    'name'=>'Siluri rinforzati',
                     'resource_1'=>'1500',
                     'resource_2'=>'75',
                     'resource_3'=>'0',
@@ -1049,7 +1049,7 @@ $ship_components=array(
                     'dev_info'=>'',
             ), // Endof Component Duranidpanzerung
 
-             // Component IntegritÃ¤tsfeld
+             // Component Integritätsfeld
              2=>array(
                     'name'=>'Campo di contenimento',
                     'resource_1'=>'0',
@@ -1092,7 +1092,7 @@ $ship_components=array(
                     'torso_12'=>'0',
                     'description'=>'Un campo di contenimento non &egrave; nient&#146;altro che il campo utilizzato all&#146;interno delle navi della Federazione. I Ferengi lo usano al posto degli schermi deflettori.',
                     'dev_info'=>'',
-            ), // Endof Component IntegritÃ¤tsfeld
+            ), // Endof Component Integritätsfeld
 
              // Component Schildgenerator
              3=>array(
@@ -1135,13 +1135,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'I Generatori di scudo sono un po&#146; una variante degli scudi deflettori standard della Federazione.<br>I  Ferengi sono riusciti a procurarsi i piani di costruzione dai mercandi del Quadrante Alfa.',
+                    'description'=>'I generatori di scudo sono un po&#146; una variante degli scudi deflettori standard della Federazione.<br>I Ferengi sono riusciti a procurarsi i piani di costruzione dai mercandi del Quadrante Alfa.',
                     'dev_info'=>'',
             ), // Endof Component Schildgenerator
 
              // Component Phasen-Schilde
              4=>array(
-                    'name'=>'Scudi a Fase',
+                    'name'=>'Scudi a fase',
                     'resource_1'=>'675',
                     'resource_2'=>'37.5',
                     'resource_3'=>'0',
@@ -1180,7 +1180,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Gli Scudi a Fase sono una tecnologia trafugata dalle navi della Federazione di classe Intrepid.',
+                    'description'=>'Gli scudi a fase sono una tecnologia trafugata dalle navi della Federazione di classe Intrepid.',
                     'dev_info'=>'',
             ), // Endof Component Phasen-Schilde
 
@@ -1277,7 +1277,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'La Linguistica migliora le funzionalit&agrave; del nucleo del computer.',
+                    'description'=>'La linguistica migliora le funzionalit&agrave; del nucleo del computer.',
                     'dev_info'=>'',
             ), // Endof Component Linguistik
 
@@ -1322,7 +1322,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'La Duotronica migliora le funzionalit&agrave; del nucleo del computer.',
+                    'description'=>'La duotronica migliora le funzionalit&agrave; del nucleo del computer.',
                     'dev_info'=>'',
             ), // Endof Component Duotronik
 
@@ -1464,7 +1464,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'La Metagenica migliora la situazione igienica a bordo delle navi Ferengi.',
+                    'description'=>'La metagenica migliora la situazione igienica a bordo delle navi Ferengi.',
                     'dev_info'=>'',
             ), // Endof Component Metagenik
 
@@ -1513,9 +1513,9 @@ $ship_components=array(
                     'dev_info'=>'',
             ), // Endof Component Klimakontrolle
 
-             // Component CoÂ² Konverter
+             // Component Co² Konverter
              2=>array(
-                    'name'=>'Convertitore CO2',
+                    'name'=>'Convertitore CO&#178;',
                     'resource_1'=>'3000',
                     'resource_2'=>'375',
                     'resource_3'=>'0',
@@ -1554,9 +1554,9 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Il convertitore di CO2 fa s&igrave; che non ci sia mai carenza di ossigeno.',
+                    'description'=>'Il convertitore di CO&#178; fa s&igrave; che non ci sia mai carenza di ossigeno.',
                     'dev_info'=>'',
-            ), // Endof Component CoÂ² Konverter
+            ), // Endof Component Co² Konverter
 
              // Component Biofiltration
              3=>array(
@@ -1790,7 +1790,7 @@ $ship_components=array(
                     'dev_info'=>'',
             ), // Endof Component Festivalraum
 
-             // Component GroÃŸe Halle
+             // Component Große Halle
              4=>array(
                     'name'=>'Grande sala',
                     'resource_1'=>'525',
@@ -1833,9 +1833,9 @@ $ship_components=array(
                     'torso_12'=>'0',
                     'description'=>'Le varie stanze per le feste permettono di alloggiare pi&ugrave; Ferengi.',
                     'dev_info'=>'',
-            ), // Endof Component GroÃŸe Halle
+            ), // Endof Component Große Halle
 
-             // Component SpielhÃ¶lle
+             // Component Spielhölle
              5=>array(
                     'name'=>'Sala Giochi',
                     'resource_1'=>'675',
@@ -1878,7 +1878,7 @@ $ship_components=array(
                     'torso_12'=>'0',
                     'description'=>'Le varie stanze per le feste permettono di alloggiare pi&ugrave; Ferengi.',
                     'dev_info'=>'',
-            ), // Endof Component SpielhÃ¶lle
+            ), // Endof Component Spielhölle
 
              // Component Kasino
              6=>array(
@@ -1927,7 +1927,7 @@ $ship_components=array(
 
       'name'=>'Stanze per le feste',
       'num'=>'7',
-      ), // Endof Category Festival-RÃ¤ume
+      ), // Endof Category Festival-Räume
 
 
         // Category Forschungseinrichtungen
@@ -2295,7 +2295,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Il Separatore subspaziale supporta in piccola parte le capacit&agrave; offensive della nave.',
+                    'description'=>'Il separatore subspaziale supporta in piccola parte le capacit&agrave; offensive della nave.',
                     'dev_info'=>'',
             ), // Endof Component Subraumspalter
 
@@ -2340,7 +2340,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'I Proiettili biochinetici sono armi biologiche rubate dai Ferengi ai Cardassiani.',
+                    'description'=>'I proiettili biochinetici sono armi biologiche rubate dai Ferengi ai Cardassiani.',
                     'dev_info'=>'',
             ), // Endof Component Biokinetische Ladungen
 
