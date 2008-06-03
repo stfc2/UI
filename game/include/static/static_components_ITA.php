@@ -13142,7 +13142,7 @@ $ship_components=array(
         0=>array(
              // Component Warpantrieb
              0=>array(
-                    'name'=>'Warpantrieb',
+                    'name'=>'Motori a curvatura',
                     'resource_1'=>'450',
                     'resource_2'=>'225',
                     'resource_3'=>'0',
@@ -13181,7 +13181,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der einfache Warpkern liefert genug Energie für Scouts und Transporter. Seine Leistung ist größeren Schiffen wie dem Marauder aber nicht angemessen.',
+                    'description'=>'Il nucleo a curvatura semplice genera energia a sufficienza per Scout e Trasporti. Le prestazioni fornite non sono adatte per navi superiori come il Marauder.',
                     'dev_info'=>'',
             ), // Endof Component Warpantrieb
 
@@ -13226,7 +13226,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Warpkern MK II liefert genug Energie für Scouts und Transporter. Trotzdem ist seine Leistung größeren Schiffen wie dem Marauder aber nicht angemessen.',
+                    'description'=>'Il nucleo a curvatura MK II genera energia a sufficienza per Scout e Trasporti. Le prestazioni fornite non sono adatte per navi superiori come il Marauder.',
                     'dev_info'=>'',
             ), // Endof Component Warp MKII
 
@@ -13271,7 +13271,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Warpkern MK III liefert bereits genug Energie, die auch größeren Schiffen wie dem Marauder angemessen ist.',
+                    'description'=>'Il nucleo a curvatura MK III fornisce gi&agrave; energia a sufficienza per navi superiori come il Marauder.',
                     'dev_info'=>'',
             ), // Endof Component Warp MKIII
 
@@ -13316,7 +13316,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Warpkern MK IV ist die ultimative Energiequelle der Ferengi, er liefert 37 Energie.',
+                    'description'=>'Il nucleo a curvatura MK IV &egrave; la fonte di energia definitiva per i Ferengi, fornendo 37 punti di energia.',
                     'dev_info'=>'',
             ), // Endof Component Warp MKIV
 
@@ -13329,7 +13329,7 @@ $ship_components=array(
         1=>array(
              // Component Fusionsantrieb
              0=>array(
-                    'name'=>'Fusionsantrieb',
+                    'name'=>'Motore a fusione',
                     'resource_1'=>'0',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -13368,13 +13368,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Fusionsantrieb erlaubt es den Ferengi, Überlichtgeschwindigkeit zu erreichen.',
+                    'description'=>'Il motore a fusione permette ai Ferengi di raggiungere velocit&agrave; superiore a quella della luce.',
                     'dev_info'=>'',
             ), // Endof Component Fusionsantrieb
 
              // Component Feldgeometrie
              1=>array(
-                    'name'=>'Feldgeometrie',
+                    'name'=>'Geometria di campo',
                     'resource_1'=>'750',
                     'resource_2'=>'112.5',
                     'resource_3'=>'0',
@@ -13413,13 +13413,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Fusionsantrieb wird durch Feldgeometrie so weit aufgerüstet, dass er den Warpfaktor um 2 erhöht.',
+                    'description'=>'Grazie alla geometria di campo il motore a fusione pu&ograve; raggiungere la velocit&agrave; di curvatura 2.',
                     'dev_info'=>'',
             ), // Endof Component Feldgeometrie
 
              // Component Feldkompression
              2=>array(
-                    'name'=>'Feldkompression',
+                    'name'=>'Compressione di campo',
                     'resource_1'=>'1125',
                     'resource_2'=>'300',
                     'resource_3'=>'75',
@@ -13458,13 +13458,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Fusionsantrieb wird durch Feldkompression so weit aufgerüstet, dass er den Warpfaktor um 3 erhöht.',
+                    'description'=>'Grazie alla compressione di campo il motore a fusione pu&ograve; raggiungere la velocit&agrave; di curvatura 3.',
                     'dev_info'=>'',
             ), // Endof Component Feldkompression
 
              // Component Plasma-Injektion
              3=>array(
-                    'name'=>'Plasma-Injektion',
+                    'name'=>'Iniezione di plasma',
                     'resource_1'=>'4500',
                     'resource_2'=>'1200',
                     'resource_3'=>'600',
@@ -13503,11 +13503,11 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Fusionsantrieb wird durch morderne Plasma-Injektoren verbessert, so dass er den Warpfaktor um 4 erhöht.',
+                    'description'=>'Il motore a fusione viene migliorato grazie ai moderni iniettori di plasma, permettendogli di raggiungere curvatura 4.',
                     'dev_info'=>'',
             ), // Endof Component Plasma-Injektion
 
-      'name'=>'Antriebssection',
+      'name'=>'Sezione motori',
       'num'=>'4',
       ), // Endof Category Antriebssection
 
@@ -13516,7 +13516,7 @@ $ship_components=array(
         2=>array(
              // Component Strahlenemitter
              0=>array(
-                    'name'=>'Strahlenemitter',
+                    'name'=>'Lanciaraggi',
                     'resource_1'=>'0',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -13555,13 +13555,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Strahlenemitter sind eine Art primitve Phaser, die versuchen, feste Materie durch fokussierte Energiesalven zu beschädigen. Sie sind unzuverlässig und schwach, verglichen mit den Technologien anderer Rassen.',
+                    'description'=>'Il lanciaraggi &egrave; una forma primitiva di phaser che cerca di danneggiare la materia con salve di energia concentrata. Sono inaffidabili e deboli se confrontati con la tecnologia delle altre specie.',
                     'dev_info'=>'',
             ), // Endof Component Strahlenemitter
 
              // Component Materiepakete
              1=>array(
-                    'name'=>'Materiepakete',
+                    'name'=>'Pacchetti di materia',
                     'resource_1'=>'600',
                     'resource_2'=>'225',
                     'resource_3'=>'0',
@@ -13600,13 +13600,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Materiepakete werden durch Luftschleusen manuell abgeworfen und detonieren beim Aufprall auf feste Materie. Sie richten etwas mehr Schaden als Strahlenemitter an, sind auf Transportschiffen und Kolonisationsschiffen aber nicht mehr verfügbar.',
+                    'description'=>'I pacchetti di materia sono scagliati dalle bocche di fuoco manualmente ed esplodono al contatto. Causano un danno maggiore rispetto ai lanciaraggi, ma non sono utilizzabili su Trasporti e Colonizzatrici.',
                     'dev_info'=>'',
             ), // Endof Component Materiepakete
 
              // Component Multifrequenz Strahlen
              2=>array(
-                    'name'=>'Multifrequenz Strahlen',
+                    'name'=>'Raggi multifrequenza',
                     'resource_1'=>'1500',
                     'resource_2'=>'375',
                     'resource_3'=>'75',
@@ -13645,13 +13645,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Multifrequenz Strahlen sind Disruptoren, die auf mehreren Wellenlängen parallel abgefeuert werden, wodurch sich ihre Schadenswirkung verbessert.',
+                    'description'=>'I raggi multifrequenza sono disgregatori sparati contemporaneamente su diverse frequenze migliorandone efficienza e danno inflitto.',
                     'dev_info'=>'',
             ), // Endof Component Multifrequenz Strahlen
 
              // Component Subraumleitsystem
              3=>array(
-                    'name'=>'Subraumleitsystem',
+                    'name'=>'Condottura subspaziale',
                     'resource_1'=>'5250',
                     'resource_2'=>'750',
                     'resource_3'=>'150',
@@ -13690,13 +13690,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Das Subraumleitsystem ist eine Art gesteuerter Disruptor, er richtet moderaten Schaden an und trifft zielgenau.',
+                    'description'=>'La condottura subspaziale &egrave; una forma di disgregatore. Colpisce con precisione e infligge danni moderati.',
                     'dev_info'=>'',
             ), // Endof Component Subraumleitsystem
 
              // Component Micropuls-Strahlen
              4=>array(
-                    'name'=>'Micropuls-Strahlen',
+                    'name'=>'Raggi a micropulsazione',
                     'resource_1'=>'6750',
                     'resource_2'=>'3375',
                     'resource_3'=>'1200',
@@ -13735,13 +13735,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Micropuls Strahlen bündeln die einzelnen Lichtimpulse nicht, sondern schießen sie mit einer enorm hohen Frequenz ab, so dass ihre Trefferquote extrem gut ist.',
+                    'description'=>'I raggi a micropulsazione non riuniscono i singoli impulsi, ma li sparano con un&#146;enorme frequenza in modo da ottenere un ottimo rapporto di precisione sul bersaglio.',
                     'dev_info'=>'',
             ), // Endof Component Micropuls-Strahlen
 
              // Component Verdichtung
              5=>array(
-                    'name'=>'Verdichtung',
+                    'name'=>'Compressione',
                     'resource_1'=>'12000',
                     'resource_2'=>'6000',
                     'resource_3'=>'3000',
@@ -13780,13 +13780,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Bei der Verdichtung wereden die Ionen komprimiert und damit der Wirkungsgrad im Vergleich zu den normalen Disruptoren erhöht.',
+                    'description'=>'Con questa tecnologia gli ioni sono compressi e pertanto si migliora il grado di efficienza rispetto ai normali disgregatori.',
                     'dev_info'=>'',
             ), // Endof Component Verdichtung
 
              // Component Ultraemitter
              6=>array(
-                    'name'=>'Ultraemitter',
+                    'name'=>'Ultraemettitore',
                     'resource_1'=>'0',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -13825,11 +13825,11 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Ultraemitter sind die stärkste Waffe, die die Ferengi von anderen Kulturen ergaunern konnten.',
+                    'description'=>'L&#146;Ultraemettitore &egrave; l&#146;arma pi&ugrave; potente che i Ferengi siano mai riusciti in qualche modo a procurarsi dalle altre culture.',
                     'dev_info'=>'',
             ), // Endof Component Ultraemitter
 
-      'name'=>'Strahlenwaffen',
+      'name'=>'Armi leggere',
       'num'=>'7',
       ), // Endof Category Strahlenwaffen
 
@@ -13838,7 +13838,7 @@ $ship_components=array(
         3=>array(
              // Component Torpedos
              0=>array(
-                    'name'=>'Torpedos',
+                    'name'=>'Siluri',
                     'resource_1'=>'750',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -13877,13 +13877,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Torpedos sind einfache, selbstgesteuerte Geschosse.',
+                    'description'=>'I siluri sono semplici armi autopropulse.',
                     'dev_info'=>'',
             ), // Endof Component Torpedos
 
              // Component Torpedo-Härtung
              1=>array(
-                    'name'=>'Torpedo-Härtung',
+                    'name'=>'TSiluri rinforzati',
                     'resource_1'=>'1500',
                     'resource_2'=>'75',
                     'resource_3'=>'0',
@@ -13922,13 +13922,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Torpedo-Härtung verbessert die Leistung der Torpedos und als Konsequenz werden sie langsamer und sind eher gegen schwere Schiffsklassen effektiv.',
+                    'description'=>'I siluri rinforzati migliorano le prestazioni dei siluri; di conseguenza sono pi&ugrave; lenti e hanno effetto contro le navi pesanti.',
                     'dev_info'=>'',
             ), // Endof Component Torpedo-Härtung
 
              // Component Plasmatorpedos
              2=>array(
-                    'name'=>'Plasmatorpedos',
+                    'name'=>'Siluri al plasma',
                     'resource_1'=>'4500',
                     'resource_2'=>'1125',
                     'resource_3'=>'375',
@@ -13967,13 +13967,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Plasmatorpedos sind eine von anderen Rassen gestohlene Technologie, die für Ferengiverhältnisse schon ziemlich effektiv ist.',
+                    'description'=>'I siluri al plasma sono una tecnologia rubata ad altre specie; per le prestazioni dei Ferengi sono armi gi&agrave; piuttosto buone.',
                     'dev_info'=>'',
             ), // Endof Component Plasmatorpedos
 
              // Component Plasmatorpedos MKII
              3=>array(
-                    'name'=>'Plasmatorpedos MKII',
+                    'name'=>'Siluri al plasma MKII',
                     'resource_1'=>'6750',
                     'resource_2'=>'750',
                     'resource_3'=>'450',
@@ -14012,13 +14012,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Plasmatorpedos MK II sind eine von anderen Rassen gestohlene Technologie, die für Ferengiverhältnisse schon ziemlich effektiv ist. Die 2. Revision ist deutlich stärker und technisch noch nicht veraltet.',
+                    'description'=>'I siluri al plasma sono una tecnologia rubata ad altre specie; per le prestazioni dei Ferengi sono armi gi&agrave; piuttosto buone. La seconda versione &egrave; significativamente pi&ugrave; forte e non ancora obsoleta.',
                     'dev_info'=>'',
             ), // Endof Component Plasmatorpedos MKII
 
              // Component Plasmatorpedos MKIII
              4=>array(
-                    'name'=>'Plasmatorpedos MKIII',
+                    'name'=>'Siluri al plasma MKIII',
                     'resource_1'=>'18000',
                     'resource_2'=>'7500',
                     'resource_3'=>'750',
@@ -14057,11 +14057,11 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Plasmatorpedos MK III sind eine von anderen Rassen gestohlene Technologie, die für Ferengiverhältnisse schon ziemlich effektiv ist.<br>Die letzte Revision verfügt außerdem über die Möglichkeit, Einrichtungen auf Planeten anzugreifen.',
+                    'description'=>'I siluri al plasma sono una tecnologia rubata ad altre specie; per le prestazioni dei Ferengi sono armi gi&agrave; piuttosto buone.<br>La terza versione permette, tra le altre cose, di bombardare le installazioni sui pianeti.',
                     'dev_info'=>'',
             ), // Endof Component Plasmatorpedos MKIII
 
-      'name'=>'Schwere Waffen',
+      'name'=>'Armi pesanti',
       'num'=>'5',
       ), // Endof Category Schwere Waffen
 
@@ -14070,7 +14070,7 @@ $ship_components=array(
         4=>array(
              // Component Schildemitter
              0=>array(
-                    'name'=>'Schildemitter',
+                    'name'=>'Emettitori di scudi',
                     'resource_1'=>'225',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -14109,13 +14109,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Schildemitter sind der Primitive Vorfahre der heute bekannten Schilde, sie sind nicht besonders zuverlässig und halten nur wenigen Treffern stand.',
+                    'description'=>'Gli emettitori di scudi sono i precursori dei pi&ugrave; noti schermi deflettori; non sono particolarmente affidabili e resistono solo ad alcuni colpi.',
                     'dev_info'=>'',
             ), // Endof Component Schildemitter
 
              // Component Duranidpanzerung
              1=>array(
-                    'name'=>'Duranidpanzerung',
+                    'name'=>'Corazzatura in duranio',
                     'resource_1'=>'375',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -14154,13 +14154,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Duranidpanzerung verstärkt die Hüllenintegrität der Ferengischiffe, so dass sie im Kampf länger standhalten.',
+                    'description'=>'Corazzatura in duranio rinforza l&#146;integrit&agrave; delle navi Ferengi, in modo da poter resistere pi&ugrave; a lungo in battaglia.',
                     'dev_info'=>'',
             ), // Endof Component Duranidpanzerung
 
              // Component Integritätsfeld
              2=>array(
-                    'name'=>'Integritätsfeld',
+                    'name'=>'Campo di contenimento',
                     'resource_1'=>'0',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -14199,13 +14199,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Ein Integritätsfeld ist nicht anderes als das Eindämmungsfeld, welches schiffsintern bei der Föderation zum Einsatz kommt. Die Ferengi setzen es als Schutzschildersatz ein.',
+                    'description'=>'Un campo di contenimento non &egrave; nient&#146;altro che il campo utilizzato all&#146;interno delle navi della Federazione. I Ferengi lo usano al posto degli schermi deflettori.',
                     'dev_info'=>'',
             ), // Endof Component Integritätsfeld
 
              // Component Schildgenerator
              3=>array(
-                    'name'=>'Schildgenerator',
+                    'name'=>'Generatore di scudo',
                     'resource_1'=>'0',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -14244,13 +14244,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Schildgeneratoren sind eine etwas veraltete Variante der Standardschilde auf Föderationsschiffen.<br>Die Ferengi haben sich die Baupläne bei Handelsreisen im Alphaquadranten aneignen können.',
+                    'description'=>'I generatori di scudo sono un po&#146; una variante degli scudi deflettori standard della Federazione.<br>I Ferengi sono riusciti a procurarsi i piani di costruzione dai mercandi del Quadrante Alfa.',
                     'dev_info'=>'',
             ), // Endof Component Schildgenerator
 
              // Component Phasen-Schilde
              4=>array(
-                    'name'=>'Phasen-Schilde',
+                    'name'=>'Scudi a fase',
                     'resource_1'=>'675',
                     'resource_2'=>'37.5',
                     'resource_3'=>'0',
@@ -14289,11 +14289,11 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Phasen-Schilde sind eine Technologie, die von der Föderation vom einem Raumschiff des Intrepid Typs entwendet wurde.',
+                    'description'=>'Gli scudi a fase sono una tecnologia trafugata dalle navi della Federazione di classe Intrepid.',
                     'dev_info'=>'',
             ), // Endof Component Phasen-Schilde
 
-      'name'=>'Verteidigungssysteme',
+      'name'=>'Sistemi di difesa',
       'num'=>'5',
       ), // Endof Category Verteidigungssysteme
 
@@ -14302,7 +14302,7 @@ $ship_components=array(
         5=>array(
              // Component Zentralrechensystem
              0=>array(
-                    'name'=>'Zentralrechensystem',
+                    'name'=>'Computer Centrale',
                     'resource_1'=>'1050',
                     'resource_2'=>'150',
                     'resource_3'=>'0',
@@ -14341,13 +14341,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Das Zentralrechensystem verbessert die Funktionsweise des Computerkerns.',
+                    'description'=>'Il computer centrale migliora le funzionalit&agrave; del nucleo del computer.',
                     'dev_info'=>'',
             ), // Endof Component Zentralrechensystem
 
              // Component Linguistik
              1=>array(
-                    'name'=>'Linguistik',
+                    'name'=>'Linguistica',
                     'resource_1'=>'1725',
                     'resource_2'=>'300',
                     'resource_3'=>'0',
@@ -14386,13 +14386,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Linguistik verbessert die Funktionsweise des Computerkerns.',
+                    'description'=>'La linguistica migliora le funzionalit&agrave; del nucleo del computer.',
                     'dev_info'=>'',
             ), // Endof Component Linguistik
 
              // Component Duotronik
              2=>array(
-                    'name'=>'Duotronik',
+                    'name'=>'Duotronica',
                     'resource_1'=>'0',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -14431,13 +14431,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Duotronik verbessert die Funktionsweise des Computerkerns.',
+                    'description'=>'La duotronica migliora le funzionalit&agrave; del nucleo del computer.',
                     'dev_info'=>'',
             ), // Endof Component Duotronik
 
              // Component Isolineare Optik
              3=>array(
-                    'name'=>'Isolineare Optik',
+                    'name'=>'Ottica Isolineare',
                     'resource_1'=>'300',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -14476,13 +14476,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Isolineare, optische Chips verbessern die Funktionsweise des Computerkerns.',
+                    'description'=>'I chip ottici isolineari migliorano le funzionalit&agrave; del nucleo del computer.',
                     'dev_info'=>'',
             ), // Endof Component Isolineare Optik
 
              // Component Positronik
              4=>array(
-                    'name'=>'Positronik',
+                    'name'=>'Positronica',
                     'resource_1'=>'450',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -14521,7 +14521,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Positronik verbessert die Funktionsweise des Computerkerns.',
+                    'description'=>'La positronica  migliora le funzionalit&agrave; del nucleo del computer.',
                     'dev_info'=>'',
             ), // Endof Component Positronik
 
@@ -14534,7 +14534,7 @@ $ship_components=array(
         6=>array(
              // Component Metagenik
              0=>array(
-                    'name'=>'Metagenik',
+                    'name'=>'Metagenica',
                     'resource_1'=>'1500',
                     'resource_2'=>'150',
                     'resource_3'=>'0',
@@ -14573,13 +14573,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch Metagenik bessert sich die hygienische Situation auf Ferengischiffen.',
+                    'description'=>'La metagenica migliora la situazione igienica a bordo delle navi Ferengi.',
                     'dev_info'=>'',
             ), // Endof Component Metagenik
 
              // Component Klimakontrolle
              1=>array(
-                    'name'=>'Klimakontrolle',
+                    'name'=>'Controllo ambientale',
                     'resource_1'=>'2250',
                     'resource_2'=>'300',
                     'resource_3'=>'0',
@@ -14618,13 +14618,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch Klimakontrolle bessert sich das Klima auf Ferengischiffen.',
+                    'description'=>'Il controllo ambientale controlla la temperatura a bordo delle navi Ferengi.',
                     'dev_info'=>'',
             ), // Endof Component Klimakontrolle
 
              // Component Co² Konverter
              2=>array(
-                    'name'=>'Co² Konverter',
+                    'name'=>'Convertitore CO&#178;',
                     'resource_1'=>'3000',
                     'resource_2'=>'375',
                     'resource_3'=>'0',
@@ -14663,13 +14663,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Co² Konverter sorgen dafür, dass es zu keinen Umständen zu einem O² Mangel in den Schiffen kommt.',
+                    'description'=>'Il convertitore di CO&#178; fa s&igrave; che non ci sia mai carenza di ossigeno.',
                     'dev_info'=>'',
             ), // Endof Component Co² Konverter
 
              // Component Biofiltration
              3=>array(
-                    'name'=>'Biofiltration',
+                    'name'=>'Biofiltri',
                     'resource_1'=>'5500',
                     'resource_2'=>'2750',
                     'resource_3'=>'2200',
@@ -14708,11 +14708,11 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch Biofiltration werden gefährliche Viren und Krankheitserreger vorzeitig aus der Umgebungsluft ausfiltriert.',
+                    'description'=>'Grazie ai biofiltri si eliminano i virus e i batteri pericolosi.',
                     'dev_info'=>'',
             ), // Endof Component Biofiltration
 
-      'name'=>'Med-Systeme',
+      'name'=>'Sistemi medici',
       'num'=>'4',
       ), // Endof Category Med-Systeme
 
@@ -14721,7 +14721,7 @@ $ship_components=array(
         7=>array(
              // Component Kleiner Raum
              0=>array(
-                    'name'=>'Kleiner Raum',
+                    'name'=>'Stanza piccola',
                     'resource_1'=>'75',
                     'resource_2'=>'75',
                     'resource_3'=>'300',
@@ -14760,13 +14760,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Festival Räume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
+                    'description'=>'Le varie stanze per le feste permettono di alloggiare pi&ugrave; Ferengi.',
                     'dev_info'=>'',
             ), // Endof Component Kleiner Raum
 
              // Component Clubhalle
              1=>array(
-                    'name'=>'Clubhalle',
+                    'name'=>'Club',
                     'resource_1'=>'150',
                     'resource_2'=>'150',
                     'resource_3'=>'450',
@@ -14805,13 +14805,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Festival Räume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
+                    'description'=>'Le varie stanze per le feste permettono di alloggiare pi&ugrave; Ferengi.',
                     'dev_info'=>'',
             ), // Endof Component Clubhalle
 
              // Component Partyraum
              2=>array(
-                    'name'=>'Partyraum',
+                    'name'=>'Sala per feste',
                     'resource_1'=>'225',
                     'resource_2'=>'225',
                     'resource_3'=>'750',
@@ -14850,13 +14850,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Festival Räume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
+                    'description'=>'Le varie stanze per le feste permettono di alloggiare pi&ugrave; Ferengi.',
                     'dev_info'=>'',
             ), // Endof Component Partyraum
 
              // Component Festivalraum
              3=>array(
-                    'name'=>'Festivalraum',
+                    'name'=>'Stanza Conferenze',
                     'resource_1'=>'375',
                     'resource_2'=>'375',
                     'resource_3'=>'1875',
@@ -14895,13 +14895,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Festival Räume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
+                    'description'=>'Le varie stanze per le feste permettono di alloggiare pi&ugrave; Ferengi.',
                     'dev_info'=>'',
             ), // Endof Component Festivalraum
 
              // Component Große Halle
              4=>array(
-                    'name'=>'Große Halle',
+                    'name'=>'Grande sala',
                     'resource_1'=>'525',
                     'resource_2'=>'525',
                     'resource_3'=>'11250',
@@ -14940,13 +14940,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Festival Räume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
+                    'description'=>'Le varie stanze per le feste permettono di alloggiare pi&ugrave; Ferengi.',
                     'dev_info'=>'',
             ), // Endof Component Große Halle
 
              // Component Spielhölle
              5=>array(
-                    'name'=>'Spielhölle',
+                    'name'=>'Sala Giochi',
                     'resource_1'=>'675',
                     'resource_2'=>'675',
                     'resource_3'=>'3750',
@@ -14985,13 +14985,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Festival Räume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
+                    'description'=>'Le varie stanze per le feste permettono di alloggiare pi&ugrave; Ferengi.',
                     'dev_info'=>'',
             ), // Endof Component Spielhölle
 
              // Component Kasino
              6=>array(
-                    'name'=>'Kasino',
+                    'name'=>'Casin&oacute;',
                     'resource_1'=>'975',
                     'resource_2'=>'975',
                     'resource_3'=>'4500',
@@ -15030,11 +15030,11 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Festival Räume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
+                    'description'=>'Le varie stanze per le feste permettono di alloggiare pi&ugrave; Ferengi.',
                     'dev_info'=>'',
             ), // Endof Component Kasino
 
-      'name'=>'Festival-Räume',
+      'name'=>'Stanze per le feste',
       'num'=>'7',
       ), // Endof Category Festival-Räume
 
@@ -15082,13 +15082,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Einfache Scanner verbessern die Sensorleistungen geringfügig.',
+                    'description'=>'Semplici scanner che migliorano, di poco, le prestazioni dei sensori.',
                     'dev_info'=>'',
             ), // Endof Component Scanner
 
              // Component Sensoren
              1=>array(
-                    'name'=>'Sensoren',
+                    'name'=>'Sensori',
                     'resource_1'=>'375',
                     'resource_2'=>'112.5',
                     'resource_3'=>'0',
@@ -15127,13 +15127,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Sensoren verbessern die Sensorleistungen geringfügig und verbessern die Reaktion der Crew.',
+                    'description'=>'I sensori migliorano la reazione dell&#146;equipaggio.',
                     'dev_info'=>'',
             ), // Endof Component Sensoren
 
              // Component Suchphalanx
              2=>array(
-                    'name'=>'Suchphalanx',
+                    'name'=>'Falange sensoriale',
                     'resource_1'=>'975',
                     'resource_2'=>'225',
                     'resource_3'=>'0',
@@ -15172,13 +15172,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Eine Suchphalanx verbessert die Sensorleistungen geringfügig und verbessert allgemein die Bereitschaft des Schiffs.',
+                    'description'=>'Una falange sensoriale migliora le prestazioni dei sensori e lo stato di allerta della nave.',
                     'dev_info'=>'',
             ), // Endof Component Suchphalanx
 
              // Component Optronisches Relais
              3=>array(
-                    'name'=>'Optronisches Relais',
+                    'name'=>'Rel&eacute; optronici',
                     'resource_1'=>'1275',
                     'resource_2'=>'300',
                     'resource_3'=>'37.5',
@@ -15217,13 +15217,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Ein optronisches Relais verbessert die Sensorleistungen und verbessert allgemein die Bereitschaft des Schiffs.',
+                    'description'=>'Un rel&eacute; optronico migliora le prestazioni dei sensori e lo stato di allerta della nave.',
                     'dev_info'=>'',
             ), // Endof Component Optronisches Relais
 
              // Component Tachionabtastung
              4=>array(
-                    'name'=>'Tachionabtastung',
+                    'name'=>'Campionatore tachionico',
                     'resource_1'=>'1500',
                     'resource_2'=>'300',
                     'resource_3'=>'75',
@@ -15262,13 +15262,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Tachionabtastung wurde von den Ferengi gestohlen und verbessert die Schiffssysteme in vielfältiger Art und Weise.',
+                    'description'=>'Il campionatore tachionico &egrave; una tecnoologia rubata dai Ferengi; migliora i sistemi della navi a vari livelli.',
                     'dev_info'=>'',
             ), // Endof Component Tachionabtastung
 
              // Component Frühwarnphalanx
              5=>array(
-                    'name'=>'Frühwarnphalanx',
+                    'name'=>'Falange di preavvertimento',
                     'resource_1'=>'1800',
                     'resource_2'=>'300',
                     'resource_3'=>'75',
@@ -15307,11 +15307,11 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Frühwarnphalanx wurde von den Ferengi gestohlen und verbessert die Schiffssysteme in vielfältiger Art und Weise.',
+                    'description'=>'La falange di preavvertimento &egrave; una tecnologia rubata dai Ferengi; migliora i sistemi della navi a vari livelli.',
                     'dev_info'=>'',
             ), // Endof Component Frühwarnphalanx
 
-      'name'=>'Forschungseinrichtungen',
+      'name'=>'Laboratori di ricerca',
       'num'=>'6',
       ), // Endof Category Forschungseinrichtungen
 
@@ -15320,7 +15320,7 @@ $ship_components=array(
         9=>array(
              // Component Prototypen
              0=>array(
-                    'name'=>'Prototypen',
+                    'name'=>'Prototipi',
                     'resource_1'=>'2625',
                     'resource_2'=>'300',
                     'resource_3'=>'150',
@@ -15359,13 +15359,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Prototypen ist ein Komplettpaket, welches das Ferengischiff mit neuen, unerforschten Prototypen aufrüstet, welche sowohl den Warpfaktor erhöhen, als auch die Reaktion und Bereitschaft verbessern.',
+                    'description'=>'I prototipi sono un pacchetto completo di prototipi non testati che forniscono non solo una maggiore velocit&agrave; a curvatura ma anche una migliore capacit&agrave; di reazione.',
                     'dev_info'=>'',
             ), // Endof Component Prototypen
 
              // Component Subraumspalter
              1=>array(
-                    'name'=>'Subraumspalter',
+                    'name'=>'Separatore subspaziale',
                     'resource_1'=>'340',
                     'resource_2'=>'170',
                     'resource_3'=>'136',
@@ -15404,13 +15404,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Subraumspalter unterstützt Schiffe geringfügig in ihren Offensivfertigkeiten.',
+                    'description'=>'Il separatore subspaziale supporta in piccola parte le capacit&agrave; offensive della nave.',
                     'dev_info'=>'',
             ), // Endof Component Subraumspalter
 
              // Component Biokinetische Ladungen
              2=>array(
-                    'name'=>'Biokinetische Ladungen',
+                    'name'=>'Proiettili biochinetici',
                     'resource_1'=>'375',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -15449,13 +15449,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Biokinetische Ladungen sind Biowaffen, die die Ferengi den Cardassianern abjagen konnten.',
+                    'description'=>'I proiettili biochinetici sono armi biologiche rubate dai Ferengi ai Cardassiani.',
                     'dev_info'=>'',
             ), // Endof Component Biokinetische Ladungen
 
              // Component Erwerbsregel 34
              3=>array(
-                    'name'=>'Erwerbsregel 34',
+                    'name'=>'Regola di acquisizione 34',
                     'resource_1'=>'19500',
                     'resource_2'=>'11250',
                     'resource_3'=>'6000',
@@ -15494,13 +15494,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Erwerbsregel 34 lautet: Krieg ist gut fürs Geschäft.',
+                    'description'=>'La regola di acquisizione 34 dice: la guerra fa bene agli affari.',
                     'dev_info'=>'',
             ), // Endof Component Erwerbsregel 34
 
              // Component Schildgitter
              4=>array(
-                    'name'=>'Schildgitter',
+                    'name'=>'Emettitori di schermi',
                     'resource_1'=>'7500',
                     'resource_2'=>'3000',
                     'resource_3'=>'750',
@@ -15539,13 +15539,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Schildgitter werden auch in Flagschiffen anderer Rassen verbaut, in den Ferengischiffen sind sie leider nicht ganz so effektiv, weil die Wissenschaftler hier nicht über das technische Wissen verfügen, um sie effizient zu nutzen.',
+                    'description'=>'Gli emettitori di schermi costruiti sulle navi ferengi non sono efficienti come quelli delle altre specie, perch&ecute; agli scienziati mancano le conoscenze per ottimizzarli.',
                     'dev_info'=>'',
             ), // Endof Component Schildgitter
 
              // Component Schnell wie der Wind
              5=>array(
-                    'name'=>'Schnell wie der Wind',
+                    'name'=>'Veloce come il vento',
                     'resource_1'=>'21000',
                     'resource_2'=>'3000',
                     'resource_3'=>'750',
@@ -15584,11 +15584,11 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'´Schnell wie der Wind´ ist eine recht freie Übersetzung für den Namen dieser Komponente. Die Fertigkeiten sind vielseitig, am Interessantesten dürfte aber die Erhöhung des Warpfaktors um 2 sein.',
+                    'description'=>'´&quot;Veloce come il vento&quot; &egrave; una libera traduzione di questo componente. Gli effetti sono diversi, ma il pi&ugrave; interessante &egrave; il miglioramento del fattore curvatura di 2.',
                     'dev_info'=>'',
             ), // Endof Component Schnell wie der Wind
 
-      'name'=>'Verhandlungstisch',
+      'name'=>'Tavolo dei negoziati',
       'num'=>'6',
       ), // Endof Category Verhandlungstisch
 
@@ -15614,7 +15614,7 @@ $ship_components=array(
         0=>array(
              // Component Bio-Konverter MK I
              0=>array(
-                    'name'=>'Bio-Konverter MK I',
+                    'name'=>'Bioconvertitore MK I',
                     'resource_1'=>'1050',
                     'resource_2'=>'525',
                     'resource_3'=>'300',
@@ -15651,13 +15651,13 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Das Fluidgeschütz ist die leichteste Waffe, die erzeugt werden kann. Es ist billig, jedoch nicht sehr effektiv und kann nur auf kleinen Schiffen (+ Transportschiffen und Kolonisierern) eingesetzt werden.',
+                    'description'=>'Il bioconvertitore di base consente di produrre energia a costi contenuti, grazie all&#146;insostitubile contributo volontario del nostro popolo.',
                     'dev_info'=>'',
             ), // Endof Component Bio-Konverter MK I
 
              // Component Bio-Konverter MK II
              1=>array(
-                    'name'=>'Bio-Konverter MK II',
+                    'name'=>'Bioconvertitore MK II',
                     'resource_1'=>'1800',
                     'resource_2'=>'825',
                     'resource_3'=>'225',
@@ -15694,13 +15694,13 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Das erweiterte Fluidgeschütz ist eine Verbesserung des Fluidgeschützes. Es hat eine etwas höhere Durchschlagskraft, ist aber trotzdem nicht sehr stark. Es wird dennoch auf mehreren Schiffen angewandt, da ihr Bauaufwand eher gering ist.',
+                    'description'=>'Progettata per le navi da guerra, la versione potenziata del bioconvertitore permette di far fronte a fabbisogni energetici pi&ugrave; consistenti, sebbene richieda costi di produzione e impegni volontari leggermente maggiori.',
                     'dev_info'=>'',
             ), // Endof Component Bio-Konverter MK II
 
              // Component Bio-Konverter MK III
              2=>array(
-                    'name'=>'Bio-Konverter MK III',
+                    'name'=>'Bioconvertitore MK III',
                     'resource_1'=>'3750',
                     'resource_2'=>'2250',
                     'resource_3'=>'900',
@@ -15737,13 +15737,13 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Der Biopulskanal ist speziell für den schweren Verteidiger und den Kreuzer entwickelt worden. Er hat einen eher geringen Baupreis, verbraucht jedoch eine Menge Energie.',
+                    'description'=>'La versione definitiva del bioconvertitore &egrave; un componente insostituibile della Gor&acute;Taan, l&#146;orgoglio delle nostre navi, poich&eacute; fornisce un discreto contributo al nucleo di curvatura, oltre a sopperire al suo elevato fabbisogno energetico. Non vi &egrave; alcun dubbio che ci&ograve; ne giustifichi sia gli alti costi di produzione che uno spirito di abnegazione ampiamente diffuso.',
                     'dev_info'=>'',
             ), // Endof Component Bio-Konverter MK III
 
              // Component Parasiten
            /**  3=>array(
-                    'name'=>'Parasiten',
+                    'name'=>'Parassiti',
                     'resource_1'=>'1470',
                     'resource_2'=>'1845',
                     'resource_3'=>'1350',
@@ -15780,7 +15780,7 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Die Parasiten sind eine Waffe der Mittelklasse. Die Parasiten sind zunächst in einem kleinen Behälter eingesperrt, der auf das Zielschiff abgeschossen wird. Beim Aufschlag werden die kleinen Parasiten freigesetzt und beginnen die Schilde bzw. die Hülle des Gegners zu zerfressen.',
+                    'description'=>'I parassiti sono un&#146;arma di medio livello. In primo luogo i parassiti vengono raccolti in un piccolo contenitore, il quale viene scagliato sulla nave bersaglio. Di conseguenza i piccoli parassiti vengono liberati e iniziano a divorare lo scudo e/o lo scafo dell&#146;avversario.',
                     'dev_info'=>'Evtl. ein KLEINER permanenter Schaden, so 1 Punkt alle 5 Minuten oder so...
 
 Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners 
@@ -15790,7 +15790,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
 
              // Component Genänderungsimpuls
              4=>array(
-                    'name'=>'Genänderungsimpuls',
+                    'name'=>'Impulso a mutazione genetica',
                     'resource_1'=>'3975',
                     'resource_2'=>'2805',
                     'resource_3'=>'1047',
@@ -15827,13 +15827,13 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'1',
                     'torso_10'=>'1',
-                    'description'=>'Der Genänderungsimpuls ist recht teuer, da er neben Schiffen auch gegen Planeten eingesetzt werden kann. Er verändert die Genstrukturierung der DNA oder einfach die atomare Zusammensetzung des Zieles, um es in ein beliebiges Endprodukt zu verwandeln (von Glibberschleim bis komplettes Auflösen alles möglich).<br><tt>Benötigt Atomare Sensoren</tt>',
+                    'description'=>'L&#146;impulso a mutazione genetica &egrave; abbastanza costoso, sebbene possa essere utilizzato a fianco delle navi contro i pianeti. Esso modifica la struttura genetica del DNA o semplicemente la composizione atomica dell&#146;obiettivo, al fine di trasformarlo in qualsiasi prodotto finale (tutto &egrave; possibile, dall&#146;ectoplasma alla dissoluzione completa).',
                     'dev_info'=>'Atomare Sensoren müssen installiert sein',
             ), // Endof Component Genänderungsimpuls
 
              // Component Fluidgeschützphalanx
              5=>array(
-                    'name'=>'Fluidgeschützphalanx',
+                    'name'=>'Cannone liquido a falange',
                     'resource_1'=>'1500',
                     'resource_2'=>'4500',
                     'resource_3'=>'750',
@@ -15870,11 +15870,11 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Eine Kombination verschiedener Geschütze auf einer Phalanx erhöht die Effektivität der Fluidgeschütze deutlich.',
+                    'description'=>'Una combinazione di vari cannoni a falange migliora chiaramente l'efficacia del cannone liquido.',
                     'dev_info'=>'',
             ), // Endof Component Fluidgeschützphalanx
 */
-      'name'=>'Bio-Konverter',
+      'name'=>'Bioconvertitore',
       'num'=>'3',
       ), // Endof Category Waffen
 
@@ -15883,7 +15883,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
         1=>array(
              // Component Nucleo Curvatura MK I
              0=>array(
-                    'name'=>'Nucleo Curvatura MK I',
+                    'name'=>'Bionucleo di curvatura MK I',
                     'resource_1'=>'750',
                     'resource_2'=>'112.5',
                     'resource_3'=>'0',
@@ -15920,13 +15920,13 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Der Genetische Sequenzer ist speziell auf den Verteidiger abgestimmt. Er bringt einen starken Verteidigungsbonus wodurch aber die Wendigkeit leidet.',
+                    'description'=>'Il bionucleo di curvatura di base consente a tutte le nostre navi di rendere nota a tutta la galassia la nostra potenza con maggiore alacrit&agrave; e costi irrisori.',
                     'dev_info'=>'',
             ), // Endof Component Nucleo Curvatura MK I
 
              // Component Nucleo Curvatura MK II
              1=>array(
-                    'name'=>'Nucleo Curvatura MK II',
+                    'name'=>'Bionucleo di curvatura MK II',
                     'resource_1'=>'750',
                     'resource_2'=>'112.5',
                     'resource_3'=>'0',
@@ -15963,13 +15963,13 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Das Hüllenschutzfeld ist eine recht neue, effektive Verbesserung der Widerstandskraft der Bioschiffe.<br>Es regt die Haut zur Bildung eines elektromagnetischen Feldes an, welches Energieladungen und Detonationen ein wenig abhält.',
+                    'description'=>'La versione superiore del bionucleo di curvatura viene utilizzata dalle nostre navi da guerra allo scopo di diffondere la presenza della Confederazione tra le razze imbelli pi&ugrave; velocemente, anche se la sua composizione a base prevalentemente organica prevede l&#146;utilizzo di entusiasti volontari.',
                     'dev_info'=>'',
             ), // Endof Component Nucleo Curvatura MK II
 
              // Component Nucleo Curvatura MK III
              2=>array(
-                    'name'=>'Nucleo Curvatura MK III',
+                    'name'=>'Bionucleo di curvatura MK III',
                     'resource_1'=>'1125',
                     'resource_2'=>'300',
                     'resource_3'=>'75',
@@ -16006,97 +16006,11 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Der Restrukturierer wurde für kleinere Schiffstypen entwickelt. Er überwacht die Hülle und repariert diese bei Bedarf sofort durch eine Umschichtung der Hüllenbausteine. Das bringt der Hülle eine längere Lebensdauer.',
+                    'description'=>'Questa versione del bionucleo di curvatura viene utilizzata esclusivamente dalle possenti Gor&acute;Taan, allo scopo di compensarne l&#146;eccessiva lentezza. I costi di produzione sono elevati, ma la Confederazione richiede doverosi sacrifici al nostro popolo.',
                     'dev_info'=>'',
             ), // Endof Component Nucleo Curvatura MK III
 
-          /**   // Component Restrukturierer 2
-             3=>array(
-                    'name'=>'Restrukturierer 2',
-                    'resource_1'=>'1800',
-                    'resource_2'=>'5400',
-                    'resource_3'=>'1200',
-                    'resource_4'=>'6',
-                    'buildtime'=>'10',
-                    'unit_1'=>'0',
-                    'unit_2'=>'0',
-                    'unit_3'=>'0',
-                    'unit_4'=>'0',
-                    'unit_5'=>'0',
-                    'unit_6'=>'0',
-                    'value_1'=>'0',
-                    'value_2'=>'0',
-                    'value_3'=>'0',
-                    'value_4'=>'0',
-                    'value_5'=>'70',
-                    'value_6'=>'0',
-                    'value_7'=>'0',
-                    'value_8'=>'0',
-                    'value_9'=>'0',
-                    'value_10'=>'1',
-                    'value_11'=>'0',
-                    'value_12'=>'0',
-                    'value_13'=>'0',
-                    'value_14'=>'3',
-                    'value_15'=>'0',
-                    'torso_1'=>'0',
-                    'torso_2'=>'0',
-                    'torso_3'=>'0',
-                    'torso_4'=>'0',
-                    'torso_5'=>'0',
-                    'torso_6'=>'1',
-                    'torso_7'=>'1',
-                    'torso_8'=>'1',
-                    'torso_9'=>'1',
-                    'torso_10'=>'0',
-                    'description'=>'Der Restrukturierer 2 ist die schwere Variante für große Schiffe. Vom Prinzip her ist es jedoch das selbe System wie das des Restrukturierers.',
-                    'dev_info'=>'',
-            ), // Endof Component Restrukturierer 2
-
-             // Component B-Restrukturierer
-             4=>array(
-                    'name'=>'B-Restrukturierer',
-                    'resource_1'=>'1500',
-                    'resource_2'=>'12000',
-                    'resource_3'=>'4500',
-                    'resource_4'=>'20',
-                    'buildtime'=>'16',
-                    'unit_1'=>'0',
-                    'unit_2'=>'0',
-                    'unit_3'=>'0',
-                    'unit_4'=>'0',
-                    'unit_5'=>'0',
-                    'unit_6'=>'0',
-                    'value_1'=>'0',
-                    'value_2'=>'0',
-                    'value_3'=>'0',
-                    'value_4'=>'0',
-                    'value_5'=>'140',
-                    'value_6'=>'0',
-                    'value_7'=>'0',
-                    'value_8'=>'0',
-                    'value_9'=>'0',
-                    'value_10'=>'0',
-                    'value_11'=>'0',
-                    'value_12'=>'0',
-                    'value_13'=>'0',
-                    'value_14'=>'5',
-                    'value_15'=>'0',
-                    'torso_1'=>'0',
-                    'torso_2'=>'0',
-                    'torso_3'=>'0',
-                    'torso_4'=>'0',
-                    'torso_5'=>'0',
-                    'torso_6'=>'0',
-                    'torso_7'=>'0',
-                    'torso_8'=>'0',
-                    'torso_9'=>'0',
-                    'torso_10'=>'1',
-                    'description'=>'Dieser Restrukturierer wurde nur für den Behemoth entwickelt, da dieser eine spezielle Außenhaut besitzt.',
-                    'dev_info'=>'',
-            ), // Endof Component B-Restrukturierer
-*/
-      'name'=>'Antrieb',
+      'name'=>'Bionucleo di curvatura',
       'num'=>'3',
       ), // Endof Category Außenhaut
 
@@ -16105,7 +16019,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
         2=>array(
              // Component Energiedissipator
              0=>array(
-                    'name'=>'Energiedissipator',
+                    'name'=>'Dissipatore di energia',
                     'resource_1'=>'0',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -16142,140 +16056,11 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Die regenerativen Schilde sind eine neue Entwicklung, die die Schildemitter automatisch bei Beschädigung regeneriert. Darum wird die Widerstandskraft der Schilde vergrößert.',
+                    'description'=>'Il dissipatore di energia &eacute; un componente standard della Gor&acute;Taan, il quale ha sempre avuto un ruolo determinante per l&#146;egemonia della Confederazione sulle razze vili e codarde. Esso sottrae direttamente energia al nucleo di curvatura delle navi nemiche al fine di potenziare gli armamenti della nave sulla quale viene installato.',
                     'dev_info'=>'',
             ), // Endof Component Energiedissipator
 
-          /**   // Component Biologische Schildkuppel
-             1=>array(
-                    'name'=>'Biologische Schildkuppel',
-                    'resource_1'=>'3750',
-                    'resource_2'=>'4500',
-                    'resource_3'=>'1500',
-                    'resource_4'=>'7',
-                    'buildtime'=>'24',
-                    'unit_1'=>'0',
-                    'unit_2'=>'0',
-                    'unit_3'=>'0',
-                    'unit_4'=>'0',
-                    'unit_5'=>'0',
-                    'unit_6'=>'0',
-                    'value_1'=>'0',
-                    'value_2'=>'0',
-                    'value_3'=>'0',
-                    'value_4'=>'40',
-                    'value_5'=>'0',
-                    'value_6'=>'0',
-                    'value_7'=>'0',
-                    'value_8'=>'0',
-                    'value_9'=>'0',
-                    'value_10'=>'0',
-                    'value_11'=>'0',
-                    'value_12'=>'0',
-                    'value_13'=>'0',
-                    'value_14'=>'7',
-                    'value_15'=>'0',
-                    'torso_1'=>'0',
-                    'torso_2'=>'0',
-                    'torso_3'=>'0',
-                    'torso_4'=>'1',
-                    'torso_5'=>'1',
-                    'torso_6'=>'1',
-                    'torso_7'=>'1',
-                    'torso_8'=>'1',
-                    'torso_9'=>'1',
-                    'torso_10'=>'1',
-                    'description'=>'Verbesserte biologische Schilde und ein neues Deflektordesign steigern die Effizienz der Schilde.',
-                    'dev_info'=>'',
-            ), // Endof Component Biologische Schildkuppel
-
-             // Component Schildüberwachungsgehirn
-             2=>array(
-                    'name'=>'Schildüberwachungsgehirn',
-                    'resource_1'=>'7500',
-                    'resource_2'=>'10500',
-                    'resource_3'=>'3450',
-                    'resource_4'=>'10',
-                    'buildtime'=>'40',
-                    'unit_1'=>'0',
-                    'unit_2'=>'0',
-                    'unit_3'=>'0',
-                    'unit_4'=>'0',
-                    'unit_5'=>'0',
-                    'unit_6'=>'1',
-                    'value_1'=>'0',
-                    'value_2'=>'0',
-                    'value_3'=>'0',
-                    'value_4'=>'65',
-                    'value_5'=>'0',
-                    'value_6'=>'0',
-                    'value_7'=>'0',
-                    'value_8'=>'0',
-                    'value_9'=>'0',
-                    'value_10'=>'0',
-                    'value_11'=>'0',
-                    'value_12'=>'0',
-                    'value_13'=>'0',
-                    'value_14'=>'6',
-                    'value_15'=>'0',
-                    'torso_1'=>'0',
-                    'torso_2'=>'0',
-                    'torso_3'=>'0',
-                    'torso_4'=>'0',
-                    'torso_5'=>'0',
-                    'torso_6'=>'0',
-                    'torso_7'=>'0',
-                    'torso_8'=>'0',
-                    'torso_9'=>'1',
-                    'torso_10'=>'1',
-                    'description'=>'Das Schildüberwachungsgehirn analysiert die Treffer des Gegners und leitet zusätzliche Schildenergie an die meistgetroffenen Stellen und erhöht somit das Verteidigungspotenzial.',
-                    'dev_info'=>'',
-            ), // Endof Component Schildüberwachungsgehirn
-
-             // Component Biologische Schildkuppel 2
-             3=>array(
-                    'name'=>'Biologische Schildkuppel 2',
-                    'resource_1'=>'18000',
-                    'resource_2'=>'21000',
-                    'resource_3'=>'10470',
-                    'resource_4'=>'30',
-                    'buildtime'=>'68',
-                    'unit_1'=>'0',
-                    'unit_2'=>'0',
-                    'unit_3'=>'0',
-                    'unit_4'=>'0',
-                    'unit_5'=>'3',
-                    'unit_6'=>'0',
-                    'value_1'=>'0',
-                    'value_2'=>'0',
-                    'value_3'=>'0',
-                    'value_4'=>'145',
-                    'value_5'=>'0',
-                    'value_6'=>'0',
-                    'value_7'=>'0',
-                    'value_8'=>'0',
-                    'value_9'=>'0',
-                    'value_10'=>'0',
-                    'value_11'=>'0',
-                    'value_12'=>'0',
-                    'value_13'=>'0',
-                    'value_14'=>'8',
-                    'value_15'=>'0',
-                    'torso_1'=>'0',
-                    'torso_2'=>'0',
-                    'torso_3'=>'0',
-                    'torso_4'=>'0',
-                    'torso_5'=>'0',
-                    'torso_6'=>'0',
-                    'torso_7'=>'0',
-                    'torso_8'=>'0',
-                    'torso_9'=>'1',
-                    'torso_10'=>'1',
-                    'description'=>'Die 2. Revision der biologischen Schildkuppel erzeugt eine feste Masse um das Schiff, die die Schildstärke auf Kosten von Wendigkeit und Geschwindigkeit verbessert.',
-                    'dev_info'=>'',
-            ), // Endof Component Biologische Schildkuppel 2
-*/
-      'name'=>'Waffendeck I',
+      'name'=>'Ponte armi I',
       'num'=>'1',
       ), // Endof Category Defensivelemente
 
@@ -16284,7 +16069,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
         3=>array(
              // Component Basic Launcher
              0=>array(
-                    'name'=>'Basic Launcher',
+                    'name'=>'Lanciagranate di base',
                     'resource_1'=>'750',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -16321,13 +16106,13 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Ein Energiekern der den Scout optimal mit Energie versorgt ohne dessen Wendigkeit einzuschränken.',
+                    'description'=>'Potenziamento elementare per le nostre navi, dagli effetti assai limitati sugli scudi nemici.',
                     'dev_info'=>'',
             ), // Endof Component Basic Launcher
 
              // Component Verbesserter Launcher
              1=>array(
-                    'name'=>'Verbesserter Launcher',
+                    'name'=>'Lanciagranate migliorato',
                     'resource_1'=>'1500',
                     'resource_2'=>'75',
                     'resource_3'=>'0',
@@ -16364,13 +16149,13 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Der Warpkern macht unsere Schiffe warpfähig, d.h. sie können schneller als Warp 0.99 fliegen. Auch stockt er den Energievorrat unserer Schiffe auf. Alternativ können natürlich andere Warpkerne installiert werden, welche dann Zusatztechnologien besitzen.',
+                    'description'=>'Miglioramento tecnologico del lanciagranate di base, dagli effetti pi&ugrave; rilevanti.',
                     'dev_info'=>'',
             ), // Endof Component Verbesserter Laucher
 
              // Component Frequenz Launcher
              2=>array(
-                    'name'=>'Frequenz Launcher',
+                    'name'=>'Lanciagranate a frequenza',
                     'resource_1'=>'4500',
                     'resource_2'=>'1125',
                     'resource_3'=>'375',
@@ -16407,13 +16192,13 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Der Bio-Warpkern fungiert in erster Linie wie ein Warpkern, nur dass er durch biotechnologische Verbesserungen mehr Energie erzeugt als die Basisversion.',
+                    'description'=>'Sviluppo a base organica del lanciagranate, destinato alle agili e veloci Gled Kraan. Gli elevati costi, sia in termini di risorse che di valorosi Breen, sono giustificati dalla notevole potenza di fuoco che esso permette.',
                     'dev_info'=>'',
             ), // Endof Component Frequenz Launcher
 
              // Component Dual-Frequenz Launcher
              3=>array(
-                    'name'=>'Dual-Frequenz Launcher',
+                    'name'=>'Doppio lanciagranate a frequenza',
                     'resource_1'=>'6750',
                     'resource_2'=>'750',
                     'resource_3'=>'450',
@@ -16450,97 +16235,11 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Der Bio-Energieverteiler verbessert die Energieverteilung in den Schiffen der Mittelklasse, um deren Effektivität zu steigern.',
+                    'description'=>'Sviluppo a base organica del lanciagranate, destinato alle possenti Gor&#acute;Taan. Gli enormi costi, sia in termini di risorse che di valorosi Breen, sono giustificati dalla notevole potenza di fuoco che esso permette.',
                     'dev_info'=>'',
             ), // Endof Component Dual-Frequenz Launcher
 
-         /**    // Component Schwerer Energieverteiler
-             4=>array(
-                    'name'=>'Schwerer Energieverteiler',
-                    'resource_1'=>'750',
-                    'resource_2'=>'4500',
-                    'resource_3'=>'300',
-                    'resource_4'=>'6',
-                    'buildtime'=>'8',
-                    'unit_1'=>'0',
-                    'unit_2'=>'0',
-                    'unit_3'=>'0',
-                    'unit_4'=>'0',
-                    'unit_5'=>'2',
-                    'unit_6'=>'0',
-                    'value_1'=>'0',
-                    'value_2'=>'0',
-                    'value_3'=>'0',
-                    'value_4'=>'0',
-                    'value_5'=>'0',
-                    'value_6'=>'0',
-                    'value_7'=>'0',
-                    'value_8'=>'0',
-                    'value_9'=>'0',
-                    'value_10'=>'7',
-                    'value_11'=>'0',
-                    'value_12'=>'0',
-                    'value_13'=>'50',
-                    'value_14'=>'0',
-                    'value_15'=>'0',
-                    'torso_1'=>'0',
-                    'torso_2'=>'0',
-                    'torso_3'=>'0',
-                    'torso_4'=>'0',
-                    'torso_5'=>'0',
-                    'torso_6'=>'1',
-                    'torso_7'=>'1',
-                    'torso_8'=>'1',
-                    'torso_9'=>'1',
-                    'torso_10'=>'1',
-                    'description'=>'Der schwere Energieverteiler ist speziell für die schweren Schiffe konzipiert und erreicht die effizienteste Energieausbeute überhaupt.',
-                    'dev_info'=>'',
-            ), // Endof Component Schwerer Energieverteiler
-
-             // Component Bi-Tionide Nervenbahnen
-             5=>array(
-                    'name'=>'Bi-Tionide Nervenbahnen',
-                    'resource_1'=>'1800',
-                    'resource_2'=>'6000',
-                    'resource_3'=>'1800',
-                    'resource_4'=>'0',
-                    'buildtime'=>'6',
-                    'unit_1'=>'0',
-                    'unit_2'=>'0',
-                    'unit_3'=>'0',
-                    'unit_4'=>'0',
-                    'unit_5'=>'1',
-                    'unit_6'=>'0',
-                    'value_1'=>'0',
-                    'value_2'=>'0',
-                    'value_3'=>'0',
-                    'value_4'=>'20',
-                    'value_5'=>'0',
-                    'value_6'=>'0',
-                    'value_7'=>'0',
-                    'value_8'=>'0',
-                    'value_9'=>'0',
-                    'value_10'=>'9',
-                    'value_11'=>'0',
-                    'value_12'=>'0',
-                    'value_13'=>'55',
-                    'value_14'=>'0',
-                    'value_15'=>'0',
-                    'torso_1'=>'0',
-                    'torso_2'=>'0',
-                    'torso_3'=>'0',
-                    'torso_4'=>'0',
-                    'torso_5'=>'0',
-                    'torso_6'=>'0',
-                    'torso_7'=>'0',
-                    'torso_8'=>'1',
-                    'torso_9'=>'1',
-                    'torso_10'=>'1',
-                    'description'=>'Eine bahnbrechende Erfindung auf dem Gebiet der Energieleitungssysteme ermöglicht dieses revolutionäre Energiegewinnungssystem. Durch komplizierte Verzweigungen im Schiffsaufbau wird verbrauchte Energie wiederverwertet und teilweise sogar Energie gewonnen.',
-                    'dev_info'=>'',
-            ), // Endof Component Bi-Tionide Nervenbahnen
-*/
-      'name'=>'Waffendeck II',
+      'name'=>'Ponte armi II',
       'num'=>'4',
       ), // Endof Category Waffendeck II
 
@@ -16549,7 +16248,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
         4=>array(
              // Component Schilde
              0=>array(
-                    'name'=>'Schilde',
+                    'name'=>'Scudo',
                     'resource_1'=>'225',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -16586,13 +16285,13 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Das Fluidraum Navigationssystem sendet Navigations- und Sensorimpulse durch fluiden statt normalen Raum, aus dem auch Spezies 8472 stammt. Dadurch werden Verbesserungen in Reaktio und auch in der Meldegeschwindigkeit erzielt.',
+                    'description'=>'Questa &egrave; la forma pi&ugrave; semplice di protezione disponibile per le nostre navi da guerra, richiede costi minimi con risultati relativamente soddisfacenti.',
                     'dev_info'=>'',
             ), // Endof Component Fluidraum-Navigationssystem
 
              // Component KSA
              1=>array(
-                    'name'=>'Phasenschilde',
+                    'name'=>'Scudo di fase',
                     'resource_1'=>'1500',
                     'resource_2'=>'75',
                     'resource_3'=>'0',
@@ -16635,7 +16334,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
 
              // Component Biomassenaustausch
              2=>array(
-                    'name'=>'Quantenschilde',
+                    'name'=>'Scudo quantico',
                     'resource_1'=>'4500',
                     'resource_2'=>'1125',
                     'resource_3'=>'375',
@@ -16672,12 +16371,12 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Mit dem Biomassenaustausch ist es möglich, Gegnerschiffe zu zersetzen.',
+                    'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
                     'dev_info'=>'',
             ), // Endof Component Biomassenaustausch
             
              3=>array(
-                    'name'=>'Organischepanzerung MKI',
+                    'name'=>'Corazza organica MK I',
                     'resource_1'=>'2625',
                     'resource_2'=>'300',
                     'resource_3'=>'150',
@@ -16714,12 +16413,12 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Mit dem Biomassenaustausch ist es möglich, Gegnerschiffe zu zersetzen.',
+                    'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
                     'dev_info'=>'',
               ),
                     
               4=>array(
-                    'name'=>'Organischepanzerung MKII',
+                    'name'=>'Corazza organica MK II',
                     'resource_1'=>'375',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -16756,12 +16455,12 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Mit dem Biomassenaustausch ist es möglich, Gegnerschiffe zu zersetzen.',
+                    'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
                     'dev_info'=>'',
               ),
               
               5=>array(
-                    'name'=>'Organischepanzerung MKIII',
+                    'name'=>'Corazza organica MK III',
                     'resource_1'=>'675',
                     'resource_2'=>'37.5',
                     'resource_3'=>'0',
@@ -16798,20 +16497,20 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Mit dem Biomassenaustausch ist es möglich, Gegnerschiffe zu zersetzen.',
+                    'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
                     'dev_info'=>'',
               ),
                     
-      'name'=>'Hülle/Schilde',
+      'name'=>'Scafo/Scudo',
       'num'=>'6',
       ), // Endof Category Hülle/Schilde
 
 
         // Category Computersystem
         5=>array(
-             // Component Biogenetisches Interface MK I
+             // Component Interfaccia Biogenetica MK I
              0=>array(
-                    'name'=>'Biogenetisches Interface MK I',
+                    'name'=>'Interfaccia Biogenetica MK I',
                     'resource_1'=>'1050',
                     'resource_2'=>'150',
                     'resource_3'=>'0',
@@ -16854,7 +16553,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
 
              // Component Atomare Sensoren
              1=>array(
-                    'name'=>'Biogenetisches Interface MK II',
+                    'name'=>'Interfaccia Biogenetica MK II',
                     'resource_1'=>'1725',
                     'resource_2'=>'300',
                     'resource_3'=>'0',
@@ -16897,7 +16596,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
 
              // Component Erweiterte Schiffsdatenbank
              2=>array(
-                    'name'=>'Biogenetisches Interface MK III',
+                    'name'=>'Interfaccia Biogenetica MK III',
                     'resource_1'=>'0',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -16939,7 +16638,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
             ), // Endof Component Erweiterte Schiffsdatenbank
 
               3=>array(
-                    'name'=>'Biogenetisches Interface MK IV',
+                    'name'=>'Interfaccia Biogenetica MK IV',
                     'resource_1'=>'300',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
