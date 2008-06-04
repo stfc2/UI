@@ -296,9 +296,11 @@ document.getElementById( "costs8" ).firstChild.nodeValue = costs[8];
 		$tcost[1]+=round($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0);
 		$tcost[2]+=round($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0);
 
+		/* 04/06/08 - AC: Use real ship name if it exist */
+		$ship_name = empty($ship['ship_name'])? $ship['name'] : $ship['ship_name'];
 		$game->out('
 			<tr>
-				<td width=130><b><input type="checkbox" name="ships[]" value="'.$ship['ship_id'].'" checked="checked" onClick ="return Change('.round(0.6*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).','.round($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0).','.round($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0).',0,0,0,0,0,0,this.checked);">&nbsp;'.$ship['name'].'</b></td>
+				<td width=130><b><input type="checkbox" name="ships[]" value="'.$ship['ship_id'].'" checked="checked" onClick ="return Change('.round(0.6*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).','.round($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0).','.round($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0).',0,0,0,0,0,0,this.checked);">&nbsp;'.$ship_name.'</b></td>
 				<td width=100><b>'.round(100/$ship['value_5']*$ship['hitpoints'],0).'% ('.$ship['hitpoints'].'/'.$ship['value_5'].')</b></td>
 				<td width=190><b>'.$costs.'</b></td>
 				<td width=70><b>'.ceil($ship['buildtime']*0.6/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])*5).' '.constant($game->sprache("TEXT36")).'</b></td>
@@ -610,12 +612,13 @@ elseif(!empty($_POST['man_ships'])) {
 
 
 
-
+	/* 04/06/08 - AC: Use real ship name if it exist */
+	$ship_name = empty($ship['ship_name'])? $ship['name'] : $ship['ship_name'];
     $game->out('
 
 	<tr>
 
-		<td><b><input type="checkbox" name="ships[]" value="'.$ship['ship_id'].'" checked="checked">&nbsp;'.$ship['name'].'</b></td>
+		<td><b><input type="checkbox" name="ships[]" value="'.$ship['ship_id'].'" checked="checked">&nbsp;'.$ship_name.'</b></td>
 
 		<td>'.$units.'</td>
 
@@ -1023,11 +1026,14 @@ document.getElementById( "costs8" ).firstChild.nodeValue = costs[8];
 
 
 
+    /* 04/06/08 - AC: Use real ship name if it exist */
+    $ship_name = empty($ship['ship_name'])? $ship['name'] : $ship['ship_name'];
+
     $game->out('
 
 	<tr>
 
-		<td><b><input type="checkbox" name="ships[]" value="'.$ship['ship_id'].'" checked="checked"  onClick ="return Change('.round(0.7*($ship['resource_1']-$ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).','.round(0.7*($ship['resource_2']-$ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).','.round(0.7*($ship['resource_3']-$ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).','.$ship['unit_1'].','.$ship['unit_2'].','.$ship['unit_3'].','.$ship['unit_4'].','.$ship['unit_5'].','.$ship['unit_6'].',this.checked);">&nbsp;'.$ship['name'].'</b></td>
+		<td><b><input type="checkbox" name="ships[]" value="'.$ship['ship_id'].'" checked="checked"  onClick ="return Change('.round(0.7*($ship['resource_1']-$ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).','.round(0.7*($ship['resource_2']-$ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).','.round(0.7*($ship['resource_3']-$ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).','.$ship['unit_1'].','.$ship['unit_2'].','.$ship['unit_3'].','.$ship['unit_4'].','.$ship['unit_5'].','.$ship['unit_6'].',this.checked);">&nbsp;'.$ship_name.'</b></td>
 
 		<td><b>'.$reward.'</b></td>
 
