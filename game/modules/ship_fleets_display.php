@@ -210,20 +210,20 @@ if(isset($_GET['pfleet_details'])) {
     }
 
     $order_by = (!empty($_GET['order_by'])) ? $_GET['order_by'] : 'template';
-    
+
     switch($order_by) {
         case 'template':
             $order_by_str = 's.template_id ASC';
         break;
-        
+
         case 'torso':
             $order_by_str = 'st.ship_torso ASC';
         break;
-        
+
         case 'experience':
             $order_by_str = 's.experience DESC';
         break;
-        
+
         case 'construction_time':
             $order_by_str = 's.construction_time ASC';
         break;
@@ -233,7 +233,8 @@ if(isset($_GET['pfleet_details'])) {
         break;
 
         case 'name':
-            $order_by_str = 'st.name ASC';
+            /* 04/06/08 - AC: Order by the real name of the ships */
+            $order_by_str = 's.ship_name ASC';
         break;
     }
 
