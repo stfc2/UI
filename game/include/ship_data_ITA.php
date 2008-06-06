@@ -7525,7 +7525,7 @@ $SHIP_TORSO = array(
 
 			30 => 0,  // Workers needed to build
 
-			31 => 'Das Scoutschiff ist ein kleines, unbewaffnetes Schiff, dass mit einer geringen Besatzung bemannt ist und zum Ausspionieren von Planeten konzipiert ist.',
+			31 => 'La classe Scout &egrave; una piccola nave disarmata, concepita per lo spionaggio dei pianeti.',
 
 	    ),
 
@@ -7599,7 +7599,7 @@ $SHIP_TORSO = array(
 
 			30 => 82,  // Workers needed to build
 
-			31 => 'Das Standard-Transportschiff des Krenim-Imperiums kann 4000 Einheiten Rohstoffe oder 400 Soldaten transportieren. Sein Kampfpotential ist sehr gering und ist ohne Begleitschutz sehr leicht angreifbar.',
+			31 => 'La nave da carico standard dei Krenim pu&ograve; trasportare 400 soldati oppure 4000 unit&agrave; di materiali. Il suo potenziale in battaglia &egrave; molto limitato ed &egrave; facile preda di navi ostili se lasciato senza scorta.',
 
 		 ),
 
@@ -7815,7 +7815,7 @@ $SHIP_TORSO = array(
 
 			30 => 353,  // Workers needed to build
 
-			31 => 'Das Patrol Ship ist eine &auml;ltere Schiffsklasse der Krenim. Obwohl es bereits seid l&auml;ngerer Zeit durch effizientere Designs abgel&ouml;st worden ist, wird es aufgrund der kosteng&uuml;nstigen Produktion immer noch vom Imperium gebaut und verwendet.',
+			31 => 'La classe Patrol rappresenta il modello pi&ugrave; piccolo delle navi da guerra a disposizione dei Krenim. Nonostante la sua limitata capacit&agrave; in combattimento, rappresenta un ottimo compromesso tra i costi e le prestazioni.',
 
 		 ),
 
@@ -8027,7 +8027,7 @@ $SHIP_TORSO = array(
 
 			30 => 1072,  // Workers needed to build
 
-			31 => 'Der schwere Kreuzer geh&ouml;rt zu den hochentwickelten Schiffsklassen der Krenim. Ausgestattet mit besonderen neuen Technologien ist der Kreuzer eine enorm schlagkr&auml;ftige Waffe des Imperiums gegen seine Feinde.',
+			31 => 'La classe Cruiser rappresenta la punta di diamante della flotta Krenim. Equipaggiata con le pi&ugrave; recenti tecnologie, il suo potenziale militare &egrave; tremendo.',
 
 		 ),
 
@@ -8165,11 +8165,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Waffenschiff',  // Name
+			29 => 'Gunship',  // Name
 
 			30 => 1476,  // Workers needed to build
 
-			31 => 'Das Waffenschiff ist eine gewaltige, mobile Gesch&uuml;tzplattform, welche mit zahlreichen Waffen best&uuml;ckt ist. Es ist ein Symbol f&uuml;r den brutalen Imperialismus der Krenim und ihrer unbarmherzigen Haltung gegen&uuml;ber ihren Feinden. Schon wenige dieser Schiffe k&ouml;nnen eine ganze Kolonie ausl&ouml;schen.',
+			31 => 'La classe Gunship &egrave; un cannone orbitale mobile, con decine di armi di ultima generazione installate. &Egrave; il simbolo del brutale imperialismo dei Krenim nei confronti delle altre razze. Poche navi di questa classe sono in grado di distruggere una colonia.',
 
 		 ),
 
@@ -8382,7 +8382,7 @@ $SHIP_TORSO = array(
 
 			30 => 575,  // Workers needed to build
 
-			31 => 'Um die am &auml;ußersten Rand gelegenen Kolonien des gewaltigen Krenim-Imperiums effektiv verteidigen zu k&ouml;nnen, entwickelten Wissenschaftler im Auftrag des Verteidigungsministeriums diese Orbitalplattformen. Dabei handelt es sich im Prinzip um große Massebeschleuniger, die hohe St&uuml;ckzahlen von Chronotonentorpedos in kurzer Zeit auf feindliche Flotten schleudern.',
+			31 => 'Il progetto di questo Cannone Orbitale &egrave; stato richiesto dal Ministro della Difesa in persona per proteggere le Colonie pi&ugrave; importanti.',
 
 	    ),
 
