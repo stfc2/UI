@@ -22,6 +22,9 @@
 
 include('config.inc.php');
 
+define('GENERAL', 1);
+
+define('DATABASE_ERROR', 2);
 
 define('NL', "\n");
 
@@ -31,6 +34,70 @@ $db_password = '';
 
 error_reporting(E_ALL);
 
+function message($type, $message) {
+
+	/* Out from the game we have no user name */
+	$username = '<i><b>external user</b></i>';
+	/* */
+
+	switch($type) {
+		case GENERAL:
+			echo '
+				<html>
+				<head>
+				<title>Frontline Combat :: System Announcement</title>
+				<style type="text/css">
+				<!--
+				a:link    { font-family: Arial,serif; font-size: 10px; text-decoration: none; color: #CCCCCC; }
+				a:visited { font-family: Arial,serif; font-size: 10px; text-decoration: none; color: #CCCCCC; }
+				a:hover   { font-family: Arial,serif; font-size: 10px; text-decoration: none; color: #FFFFFF; }
+				a:active  { font-family: Arial,serif; font-size: 10px; text-decoration: none; color: #CCCCCC; }
+
+				td { font-family: Arial,serif; font-size: 12px; color: #FFFFFF; }
+
+				input.button, input.button_nosize, input.field, input.field_nosize, textarea, select
+				{ color: #959595; font-family: Verdana; font-size: 10px; background-color: #000000; border: 1px solid #959595; }
+
+				//-->
+				</style>
+				</head>
+
+				<body bgcolor="#000000" background="../gfx/template_bg.jpg">
+
+				<table bgcolor="#000025" width="500" align="center" cellspacing="4" cellpadding="4" style="border: 1px solid #C0C0C0;">
+				<tr>
+				<td><span style="font-size: 14px; font-weight: bold;">Frontline Combat :: System Announcement</span></td>
+				</tr>
+				</table>
+				<table bgcolor="#000025" width="500" align="center" cellspacing="4" cellpadding="4" style="border-left: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; border-right: 1px solid #C0C0C0;">
+				<tr>
+				<td>'.$message.'</td>
+				</tr>
+				</table>
+
+				</body>
+				</html>
+			';
+			$fp = fopen(ERROR_LOG_FILE, 'a');
+			fwrite($fp, '<hr><br><br><br><br><i>'.date('d.m.y H:i:s', time()).'</i>&nbsp;&nbsp;&nbsp;<b>User:</b>&nbsp;'.$username.'&nbsp;&nbsp;&nbsp;<b>General Error:</b><br>'.$message."\n");
+			fclose($fp);
+		break;
+
+		case DATABASE_ERROR:
+			global $db;
+
+			echo '<span style="font-size: 20px; font-family: Verdana, Arial, Helvetica, sans-serif;"><b>Frontline Combat :: Database Error</b></span><hr>'.
+			'<span style="font-size: 11px; font-family: Verdana, Arial, Helvetica, sans-serif;">'.$message.'<br><br>'.$db->error['message'].' ('.$db->error['number'].')<br><br>'.$db->error['sql'].'</span>';
+
+			$fp = fopen(ERROR_LOG_FILE, 'a');
+			fwrite($fp, '<hr><br><br><br><br><i>'.date('d.m.y H:i:s', time()).'</i>&nbsp;&nbsp;&nbsp;<b>User:</b>&nbsp;'.$username.'&nbsp;&nbsp;&nbsp;<b>Database Error:</b><br>'.$message.'<br><br>'.$db->error['message'].' ('.$db->error['number'].')<br><br>'.$db->error['sql']."\n");
+			fclose($fp);
+
+		break;
+	}
+
+	exit;
+}
 function parse_link($get_string = '') {
     return $_SERVER['PHP_SELF'].'?'.$get_string;
 }
@@ -457,7 +524,7 @@ table.border_blue         { border: 1px solid #000000; }
     <script type="text/javascript">
 
 /*
-Combo-Box Viewer script- Created by and © Dynamicdrive.com
+Combo-Box Viewer script- Created by and Copyright Dynamicdrive.com
 Visit http://www.dynamicdrive.com/ for this script and more
 This notice MUST stay intact for legal use
 */
