@@ -1654,17 +1654,18 @@ $svon = $RACE_DATA[$game->player['user_race']][$von];
 
 //echo ('Snach: '.$snach.' Svon: '.$svon);
 
+/*
 if($art==0)$ergebniss=($snach/$svon)- (($snach/$svon)*30/100);
 if($art==1)$ergebniss =($snach/$svon) - (($snach/ $svon)*15/100);
 if($art==2)$ergebniss = ($snach/$svon);
 if($art==3)$ergebniss = ($snach/$svon) + (($snach/$svon)*25/100);
-
-/* 05/03/08 - AC: I don't know why, but this code rise a PHP error of Index 9 undefined...
-if($art==0)$ergebniss=($RACE_DATA[$game->player['user_race']][$nach]/$RACE_DATA[$game->player['user_race']][$von])+(($RACE_DATA[$game->player['user_race']][$nach]/$RACE_DATA[$game->player['user_race']][$von])*20/100);
-if($art==1)$ergebniss =($RACE_DATA[$game->player['user_race']][$nach]/$RACE_DATA[$game->player['user_race']][$von]) + (($RACE_DATA[$game->player['user_race'][$nach]]/ $RACE_DATA[$game->player['user_race']][$von])*10/100);
-if($art==2)$ergebniss = ($RACE_DATA[$game->player['user_race']][$nach]/$RACE_DATA[$game->player['user_race']][$von]);
-if($art==3)$ergebniss = ($RACE_DATA[$game->player['user_race']][$nach]/$RACE_DATA[$game->player['user_race']][$von]) -  (($RACE_DATA[$game->player['user_race']][$nach]/$RACE_DATA[$game->player['user_race']][$von])*20/100);
 */
+// Il rateo di scambio viene pesato in base alla razza, penalizzando di fatto lo scambio di risorse tra le razze; usiamo il rateo 1:1:1 modificato dalle disponibilità
+if($art==0) $ergebniss = ( 1 - (1*60/100));
+if($art==1) $ergebniss = ( 1 - (1*30/100));
+if($art==2) $ergebniss = 1;
+if($art==3) $ergebniss = ( 1 + (1*25/100));
+
 return $ergebniss;
 }
 
