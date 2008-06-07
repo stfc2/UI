@@ -1649,22 +1649,29 @@ global $db;
 global $game;
 global $RACE_DATA, $UNIT_NAME, $UNIT_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK;
 
+/*
 $snach = $RACE_DATA[$game->player['user_race']][$nach];
 $svon = $RACE_DATA[$game->player['user_race']][$von];
+*/
 
+// Il rateo di scambio viene pesato in base alla razza, penalizzando di fatto lo scambio di risorse tra le razze; usiamo il rateo 1:1:0,8 modificato dalle disponibilità
+if($nach == 9 || $nach == 10) {
+	$snach = 1;
+}
+else {
+	$snach = 0.80;
+}
+if($von == 9 || $von == 10) {
+	$svon = 1;
+}
+else {
+	$svon = 0.80;
+}
 //echo ('Snach: '.$snach.' Svon: '.$svon);
-
-/*
-if($art==0)$ergebniss=($snach/$svon)- (($snach/$svon)*30/100);
-if($art==1)$ergebniss =($snach/$svon) - (($snach/ $svon)*15/100);
+if($art==0)$ergebniss = ($snach/$svon)- (($snach/$svon)*60/100);
+if($art==1)$ergebniss = ($snach/$svon) - (($snach/ $svon)*30/100);
 if($art==2)$ergebniss = ($snach/$svon);
 if($art==3)$ergebniss = ($snach/$svon) + (($snach/$svon)*25/100);
-*/
-// Il rateo di scambio viene pesato in base alla razza, penalizzando di fatto lo scambio di risorse tra le razze; usiamo il rateo 1:1:1 modificato dalle disponibilità
-if($art==0) $ergebniss = ( 1 - (1*60/100));
-if($art==1) $ergebniss = ( 1 - (1*30/100));
-if($art==2) $ergebniss = 1;
-if($art==3) $ergebniss = ( 1 + (1*25/100));
 
 return $ergebniss;
 }
