@@ -20118,7 +20118,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
         0=>array(
              // Component  Energiekern
              0=>array(
-                    'name'=>'Nucleo Energetico',
+                    'name'=>'Energiekern',
                     'resource_1'=>'450',
                     'resource_2'=>'225',
                     'resource_3'=>'0',
@@ -20155,15 +20155,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+					                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Il Nucleo Energetico &egrave; un semplice Nucleo di Curvatura, basato sulla reazione materia-antimateria, produce una quantit&agrave; limitata di energia.',
+                    'description'=>'Der Energiekern ist ein einfacher Warpkern, der auf dem Materie-Antimaterie-Prinzip basiert und begrenzt Energie liefert.',
                     'dev_info'=>'',
             ), // Endof Component Verb. Standardreaktor
 
              // Component Quantenmatrix
              1=>array(
-                    'name'=>'Matrice Quantica',
+                    'name'=>'Quantenmatrix',
                     'resource_1'=>'1050',
                     'resource_2'=>'525',
                     'resource_3'=>'300',
@@ -20200,15 +20200,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'La Matrice Quantica &egrave; una tecnologia innovativa sviluppata dagli scenziati Krenim e produce abbastanza energia per un vascello da guerra.',
+                    'description'=>'Die Quantenmatrix basiert auf verschiedenen modernen Forschungsergebnissen der Krenimphysiker. Die Matrix liefert genug Energie für ein Kampfschiff.',
                     'dev_info'=>'',
             ), // Endof Component Stufe II Verb. Standardreaktor
 
              // Component Zwillings-Quantenkern
              2=>array(
-                    'name'=>'Matrice Quantica Seriale',
+                    'name'=>'Zwillings-Quantenkern',
                     'resource_1'=>'1800',
                     'resource_2'=>'825',
                     'resource_3'=>'225',
@@ -20245,15 +20245,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-                    'torso_11'=>'0',
+                    					                    'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'La Matrice Quantica Seriale rappresenta uno sviluppo della precedente tecnologia, capace di migliorare la resa unendo svariati elementi base in una matrice complessa',
+					'description'=>'Der Zwillingskern ist eine Variante der Quantenmatrix. Durch mehrere hintereinander geschaltete Systeme wird die Energiegewinnung und Verteilung optimiert und kann so auch für große Kreuzer verwendet werden.',
                     'dev_info'=>'',
             ), // Endof Component Stufe III Verb.Standardreaktor
 
              // Component Temporaler Kern
              3=>array(
-                    'name'=>'Nucleo Temporale',
+                    'name'=>'Temporaler Kern',
                     'resource_1'=>'3750',
                     'resource_2'=>'2250',
                     'resource_3'=>'900',
@@ -20290,13 +20290,13 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Questo nucleo energetico &egrave; stato sviluppato dallo scenziato Annorax allo scopo di fornire energia al vascello Gunship per operare il Manipolatore di Flusso.',
+                    'description'=>'Der temporale Kern basiert auf den Forschungen des Wissenschaftlers Annorax. Er ist speziell für das Gunship konzipiert und liefert die Energie für den Flussmanipulator.',
                     'dev_info'=>'',
             ), // Endof Component Tetrionreaktor
 
-      'name'=>'Sistemi Energetici',
+      'name'=>'Energiesysteme',
       'num'=>'4',
       ), // Endof Category Maschinenraum
 
@@ -20305,7 +20305,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
         1=>array(
              // Component Nachbrenner
              0=>array(
-                    'name'=>'Postbruciatori',
+                    'name'=>'Nachbrenner',
                     'resource_1'=>'3000',
                     'resource_2'=>'1500',
                     'resource_3'=>'1000',
@@ -20342,15 +20342,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'I postbruciatori non sono il mezzo migliore per la propulsione, inoltre consumano grandi quantit&agrave; di energia.',
+                    'description'=>'Die Nachbrenner sind eine nicht sehr effektive und sehr energieverschwendende Methode, ein Schiff anzutreiben.',
                     'dev_info'=>'',
             ), // Endof Component TRX1
 
              // Component Warpspulen
              1=>array(
-                    'name'=>'Gondola di curvatura',
+                    'name'=>'Warpspulen',
                     'resource_1'=>'3100',
                     'resource_2'=>'1550',
                     'resource_3'=>'1033.33',
@@ -20387,15 +20387,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Le Gondole di Curvatura generano un campo Warp attorno alla nave, permettendo di viaggiare nel subspazio.',
+                    'description'=>'Die Warpspulen bauen ein stabiles Warpfeld um das Schiff herum auf und können es so durch den Subraum befördern.',
                     'dev_info'=>'',
             ), // Endof Component Warpspulen
 
              // Component Verb. Plasmaeinspritzung
              2=>array(
-                    'name'=>'Iniettori di Plasma potenziati',
+                    'name'=>'Verb. Plasmaeinspritzung',
                     'resource_1'=>'3200',
                     'resource_2'=>'1600',
                     'resource_3'=>'1066.67',
@@ -20432,15 +20432,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Gli Iniettori di Plasma potenziati aumentano la resa delle Gondole di Curvatura.',
+                    'description'=>'Die verbesserte Plasmaeinspritzung erhöht deutlich die Triebwerksleistung der Warpspulen.',
                     'dev_info'=>'',
             ), // Endof Component Verb. Plasmaeinspritzung
 
              // Component Phasenmodulationsspule
              3=>array(
-                    'name'=>'Bobine a Modulazione di Fase',
+                    'name'=>'Phasenmodulationsspule',
                     'resource_1'=>'3400',
                     'resource_2'=>'1700',
                     'resource_3'=>'1133.33',
@@ -20477,13 +20477,12 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Le Bobine a Modulazione di Fase sono un progetto nato per equipaggiare le pi&ugrave; grandi navi da guerra, in sostituzione delle meno efficenti Gondole di Curvatura.',
+                    'description'=>'Die Phasenmodulationsspule ist eine Neuentwicklung, die speziell für die schwere Kreuzerklasse entworfen wurde und in Zukunft frühere Warpspulen ablösen soll.',
                     'dev_info'=>'',
             ), // Endof Component Phasenmodulationsspule
-             
-      'name'=>'Componenti Sala Macchine',
+      'name'=>'Antriebssysteme',
       'num'=>'4',
       ), // Endof Category Antrieb
 
@@ -20492,7 +20491,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
         2=>array(
              // Component Phaserkanone
              0=>array(
-                    'name'=>'Cannone Phaser',
+                    'name'=>'Phaserkanone',
                     'resource_1'=>'450',
                     'resource_2'=>'225',
                     'resource_3'=>'0',
@@ -20529,15 +20528,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Il Cannone Phaser &egrave; un&#146;arma economica ma dalle scarse capacità, basato sul principio del Phased Energy Rectification. Utilizzabile su tutte le navi di basso livello.',
+                    'description'=>'Die Phaserkanone ist eine kostengünstige, aber relativ leistungsarme Waffe, welche auf dem Phased Energy Rectification-Prinzip beruht. Sie kann auf allen niedrigeren Schiffstypen eingebaut werden.',
                     'dev_info'=>'',
             ), // Endof Component Phaserkanone
 
              // Component Phaserphalanx
              1=>array(
-                    'name'=>'Banchi Phaser',
+                    'name'=>'Phaserphalanx',
                     'resource_1'=>'600',
                     'resource_2'=>'225',
                     'resource_3'=>'0',
@@ -20574,15 +20573,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Il Banco Phaser &egrave; lo sviluppo del Cannone Phaser. Una serie di emettitori vengono accoppiati per migliorare precisione e potenza e ottimizzare il consumo di energia.',
+                    'description'=>'Die Phaserphalanx ist ein System mehrerer parallel aufgebauter Phaserkanonen. Durch die Schaltung wird der Energiebedarf verringert und gleichzeitig die Angriffskraft verbessert. ',
                     'dev_info'=>'',
             ), // Endof Component Phaserphalanx
 
              // Component Erweitertes Phasergeschütz
              2=>array(
-                    'name'=>'Estensione Phaser',
+                    'name'=>'Erweitertes Phasergeschütz',
                     'resource_1'=>'1500',
                     'resource_2'=>'375',
                     'resource_3'=>'75',
@@ -20619,15 +20618,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Un miglioramento nella tecnologia del cannone Phaser, pi&ugrave; potente della precedente versione ma con qualche problema di surriscaldamento, tale da necessitare una maggiore opera di manutenzione.',
+                    'description'=>'Das Phasergeschütz stellt eine Weiterentwicklung früherer Phaserwaffen dar und ist stärker als diese, überhitzt aber auch leichter und benötigt deshalb zusätzliche Wartung.',
                     'dev_info'=>'',
             ), // Endof Component Erweitertes Phasergeschütz
 
              // Component Disruptorgeschütz
              3=>array(
-                    'name'=>'Disgregatore',
+                    'name'=>'Disruptorgeschütz',
                     'resource_1'=>'5250',
                     'resource_2'=>'750',
                     'resource_3'=>'150',
@@ -20664,15 +20663,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Il Disgregatore rappresenta un balzo in avanti rispetto alla tecnologia Phaser che andr&agrave; a sostituire gradualmente.',
+                    'description'=>'Das Disruptorgeschütz ist eine Neuentwicklung der Krenim, die nach und nach die alten Phaserwaffen ablösen soll.',
                     'dev_info'=>'',
             ), // Endof Component Disruptorgeschütz
 
              // Component Schw. Pulsdisruptoren
              4=>array(
-                    'name'=>'Disgregatore ad Impulsi',
+                    'name'=>'Schw. Pulsdisruptoren',
                     'resource_1'=>'6750',
                     'resource_2'=>'3375',
                     'resource_3'=>'1200',
@@ -20709,14 +20708,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Il Disgregatori ad Impulsi aumenta il potere distruttivo della prima tecnologia sviluppata in questo campo, aumentando costi di costruzione e consumo di energia.',
+                    'description'=>'Der Pulsdisruptor ist das Neueste in der Waffentechnik der Krenim. Er ist sehr stark, kostet aber auch viel und benötigt große Mengen Energie.',
                     'dev_info'=>'',
             ), // Endof Component Schw. Pulsdisruptoren
 
             5=>array(
-                    'name'=>'Compressore di Particelle',
+                    'name'=>'Verdichtung',
                     'resource_1'=>'12000',
                     'resource_2'=>'6000',
                     'resource_3'=>'3000',
@@ -20753,14 +20752,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Il Compressore di Particelle si basa sullo stesso principio del Disgregatore, con la differenza che il plasma viene ultracompresso prima di essere lanciato sul bersaglio, causando danni ragguardevoli sia allo scafo che agli scudi. Spesso &egrave; sufficente un solo colpo per abbattere le navi minori.',
+                    'description'=>'Die Verdichtung beruht auf dem Disruptorprinzip, nur dass das Plasma vor dem Abschuss noch einmal ultrahoch verdichtet und dann auf ein feindliches Ziel geschleudert wird. Durch die Verdichtung ist das Plasma energetisch so hoch geladen, dass es immense Schäden an Hülle und Schilden verursacht. Bei kleineren Schiffen reicht meist ein Schuss um das Ziel zu zerstören.',
                     'dev_info'=>'',
             ),
             
             6=>array(
-                    'name'=>'Ultraemettitore',
+                    'name'=>'Ultraemitter',
                     'resource_1'=>'0',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -20797,13 +20796,13 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Tecnologia ibrida tra il Compressore di Plasma e il Banco Phaser: molti Compressori vengono accoppiati in serie per moltiplicare il potere distruttivo, a discapito di un enorme impiego di energia.',
+                    'description'=>'Der Ultraemitter ist ein Hybrid aus Phaserphalanx und Verdichtung. Hier werden mehrere Phaserstrahlen gebündelt und auf das Ziel ausgerichtet. Ist der gebündelte Phaserstrahl erst mal auf dem Ziel fixiert, wird über diesen die ultrahochverdichtete Plasmaladung geschleudert. Bei kleineren Zielen schwächt der Phaserstrahl die Schilde meist so sehr dass die Plasmaladung direkt auf die Hülle auftrifft, was die Vernichtung des Ziels zur Folge hat. Der Nachteil der Waffe ist dass sie immens viel Energie benötigt und kleinere Schiffe ihr leicht ausweichen können.',
                     'dev_info'=>'',
             ),
             
-      'name'=>'Armamento Convenzionale',
+      'name'=>'Konventionelle Waffen',
       'num'=>'7',
       ), // Endof Category Leichte Waffen
 
@@ -20812,7 +20811,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
         3=>array(
              // Component Fusionstorpedos
              0=>array(
-                    'name'=>'Siluri a Fusione',
+                    'name'=>'Fusionstorpedos',
                     'resource_1'=>'750',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -20849,15 +20848,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'I Siluri a Fusione sono semplici proiettili con una testata nucleare a fusione. Economici ma poco potenti.',
+                    'description'=>'Fusionstorpedos sind Projektile mit einem einfachen Kernfusionssprengkopf, der billig herzustellen ist, aber nur über geringe Sprengkraft verfügt.',
                     'dev_info'=>'',
             ), // Endof Component Fusionstorpedos
 
              // Component Photonentorpedos
              1=>array(
-                    'name'=>'Siluri Fotonici',
+                    'name'=>'Photonentorpedos',
                     'resource_1'=>'1500',
                     'resource_2'=>'75',
                     'resource_3'=>'0',
@@ -20894,15 +20893,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Evoluzione nel campo dei siluri, la testata impiegata si basa su una reazione materia-antimateria.',
+                    'description'=>'Photonentorpedos sind eine erweiterte Variante der Torpedos, die anstelle der Kernfusion einen Materie-Antimateriesprengkopf verwenden.',
                     'dev_info'=>'',
             ), // Endof Component Photonentorpedos
 
              // Component Phasenverschobene Torpedos
              2=>array(
-                    'name'=>'Siluri Transfasici',
+                    'name'=>'Phasenverschobene Torpedos',
                     'resource_1'=>'4500',
                     'resource_2'=>'1125',
                     'resource_3'=>'375',
@@ -20939,15 +20938,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Sviluppo recente della tecnologia Krenim, sono in grado di infliggere danni ingenti alle navi nemiche.',
+                    'description'=>'Die phasenverschobenen Torpedos sind ein Produkt der physikalischen Forschungsarbeit der Krenim. Sie umgehen die Schilde eines Feindschiffes und richten großen Schaden an.',
                     'dev_info'=>'',
             ), // Endof Component Phasenverschobene Torpedos
 
              // Component Chronotonentorpedos
              3=>array(
-                    'name'=>'Cronosiluri Mk I',
+                    'name'=>'Chronotonentorpedos',
                     'resource_1'=>'6750',
                     'resource_2'=>'750',
                     'resource_3'=>'450',
@@ -20984,14 +20983,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'I Cronosiluri sono basati sulla tecnologia temporale e sono in grado di causare danni devastanti agli scudi e alle corazze delle navi nemiche.',
+                    'description'=>'Die Chronitontorpedos basieren auf temporalmechanischen Prinzipien und sind phasenverschoben, wodurch sie Schilde und Panzerung recht einfach durchbrechen können.',
                     'dev_info'=>'',
             ), // Endof Component Chronotonentorpedos
 
               4=>array(
-                    'name'=>'Cronosiluri Mk II',
+                    'name'=>'Verb. Chronotonentorpedos',
                     'resource_1'=>'18000',
                     'resource_2'=>'7500',
                     'resource_3'=>'750',
@@ -21028,13 +21027,13 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Secondo stadio di sviluppo dei Cronosiluri.',
+                    'description'=>'Verbesserte Zielerfassung, selbstreparierende Geschosse und stärkere Sprengköpfe verringern die Blindgängerrate und erhöhen die Gesamteffizienz der Waffe.',
                     'dev_info'=>'',
             ),
             
-      'name'=>'Armamento Pesante',
+      'name'=>'Schwere Waffen',
       'num'=>'5',
       ), // Endof Category Schwere Waffen
 
@@ -21042,7 +21041,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
         // Category Defensivmaßnahmen
         4=>array(
               0=>array(
-                    'name'=>'Corazza Duranid MK1',
+                    'name'=>'Duranid-Panzerung MK1',
                     'resource_1'=>'225',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -21079,14 +21078,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'La Corazza Duranid &egrave; una efficace tecnologia di rivestimento per gli scafi delle navi spaziali, che consiste in una lega flessibile ma resistente.',
+                    'description'=>'Die Duranid-Panzerung ist eine effektive Hüllenform, die aus einer speziellen flexiblen und doch sehr widerstansfähigen Legierung besteht.',
                     'dev_info'=>'',
             ),
             
             1=>array(
-                    'name'=>'Corazza Duranid MK2',
+                    'name'=>'Duranid-Panzerung MK2',
                     'resource_1'=>'600',
                     'resource_2'=>'225',
                     'resource_3'=>'0',
@@ -21123,14 +21122,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'La Corazza Duranid &egrave; una efficace tecnologia di rivestimento per gli scafi delle navi spaziali, che consiste in una lega flessibile ma resistente.',
+                    'description'=>'Die Duranid-Panzerung ist eine effektive Hüllenform, die aus einer speziellen flexiblen und doch sehr widerstansfähigen Legierung besteht.',
                     'dev_info'=>'',
             ),
             
             2=>array(
-                    'name'=>'Corazza a cristalli quantici',
+                    'name'=>'Quantenkristallpanzer',
                     'resource_1'=>'1500',
                     'resource_2'=>'375',
                     'resource_3'=>'75',
@@ -21167,14 +21166,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-				    'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'La corazza a cristalli quantici &egrave; una nuova invenzione dei fisici Krenim, composta da cristalli che si rigenerano automaticamente dopo l&#146;impatto.',
+                    'description'=>'Der Quantenkristallpanzer ist eine besondere Entwicklung der physikalischen Forschung der Krenim. Er besteht aus Kristallen, die sich ohne jede Energie nach Beschädigung selbst neu formieren.',
                     'dev_info'=>'',
             ),
             
             3=>array(
-                    'name'=>'Scudi multifrequenza',
+                    'name'=>'Multi-Phasenschilde',
                     'resource_1'=>'375',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -21211,14 +21210,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-					'torso_11'=>'0',
+					                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Gli scudi multifrequenza si basano sullo stesso principio dei Siluri Transfasici, applicato in senso difensivo.',
+                    'description'=>'Die Multiphasenschilde sind eine neue Entwicklung, die mit einem ähnlichen Prinzip wie die phasenverschobenen Torpedos arbeiten, nur anstatt zur Offensive in defensiver Form.',
                     'dev_info'=>'',
             ),
             
             4=>array(
-                    'name'=>'Scudi Temporali',
+                    'name'=>'Temporale Schilde',
                     'resource_1'=>'675',
                     'resource_2'=>'37.5',
                     'resource_3'=>'0',
@@ -21255,13 +21254,13 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-				    'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Questi sono gli scudi pi&ugrave; potenti dei Krenim, basati sulla tecnologia Cronitron.',
+                    'description'=>'Die temporalen Schilde sind die stärksten Schilde der Krenim. Sie arbeiten ebenfalls auf Chronitonbasis und verhindern das Durchdringen von Torpedos und Phasern durch die Schilde.',
                     'dev_info'=>'',
             ),
             
-      'name'=>'Sistemi Difensivi',
+      'name'=>'Defensivmaßnahmen',
       'num'=>'5',
       ), // Endof Category Hülle/Schilde
 
@@ -21270,7 +21269,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
         5=>array(
              // Component Isolineare Systeme
              0=>array(
-                    'name'=>'Sistema Isolineare',
+                    'name'=>'Isolineare Systeme',
                     'resource_1'=>'1050',
                     'resource_2'=>'150',
                     'resource_3'=>'0',
@@ -21307,15 +21306,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Il Sistema Isolineare &egrave; una superata tecnologia Krenim molto semplice ed economica.',
+                    'description'=>'Isolineare Komponenten basieren auf einer einfachen Technologie, die von den Krenim inzwischen als veraltet betrachtet wird.',
                     'dev_info'=>'',
             ), // Endof Component Isolineare Systeme
 
              // Component Datenverarbeitung
              1=>array(
-                    'name'=>'Data Processing',
+                    'name'=>'Datenverarbeitung',
                     'resource_1'=>'4500',
                     'resource_2'=>'1125',
                     'resource_3'=>'375',
@@ -21352,15 +21351,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Le tecnologie di Data Processing hanno reso possibile una migliore interpretazione delle informazioni ricevute dai sensori, con notevoli vantaggi per l&#146;equipaggio.',
+                    'description'=>'Ein verbessertes Datenverarbeitungssystem ermöglicht der Besatzung eine bessere Auswertung von Sensordaten.',
                     'dev_info'=>'',
             ), // Endof Component Datenverarbeitung
 
              // Component Quantum-Subsysteme
              2=>array(
-                    'name'=>'Sottosistemi quantici',
+                    'name'=>'Quantum-Subsysteme',
                     'resource_1'=>'600',
                     'resource_2'=>'225',
                     'resource_3'=>'0',
@@ -21397,15 +21396,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Parti vitali dei computer di bordo sono state potenziate attraverso l&#146;uso di cristalli quantici.',
+                    'description'=>'Durch Verwendung von Quantenkristallen wird die Rechnerleistung enorm verbessert.',
                     'dev_info'=>'',
             ), // Endof Component Quantum-Subsysteme
 
              // Component Quadcore-Prozessoreinheit
              3=>array(
-                    'name'=>'Processori Multicore',
+                    'name'=>'Quadcore-Prozessoreinheit',
                     'resource_1'=>'300',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -21442,15 +21441,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Unit&agrave; di calcolo multicore rendono i tempi di elaborazione rapidissimi, a vantaggio della nave stessa.',
+                    'description'=>'Der enorm verbesserte Rechnerkern dieses Systems verbessert die Datenauswertung.',
                     'dev_info'=>'',
             ), // Endof Component Computersystem Typ IV
 
              // Component Biotronische Komponenten
              4=>array(
-                    'name'=>'Componenti Biotroniche',
+                    'name'=>'Biotronische Komponenten',
                     'resource_1'=>'450',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -21487,13 +21486,13 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Le componenti biotroniche impiegano hardware parzialmente biologico, con caratteristiche di velocit&agrave; di calcolo mai sperimentate prima.',
+                    'description'=>'Biotronische Komponenten verwenden halborganische und sehr schnelle Systeme, die eine außergewöhnliche Leistungssteigerung bringen.',
                     'dev_info'=>'',
             ), // Endof Component Biotronische Komponenten
              
-      'name'=>'Componenti Elettroniche',
+      'name'=>'Computerkomponenten',
       'num'=>'5',
       ), // Endof Category Computerkomponenten
 
@@ -21502,7 +21501,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
         6=>array(
              // Component Sanitäterausbildung
              0=>array(
-                    'name'=>'Addestramento Medico',
+                    'name'=>'Sanitäterausbildung',
                     'resource_1'=>'1500',
                     'resource_2'=>'150',
                     'resource_3'=>'0',
@@ -21539,14 +21538,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Addestramento di base per tutti i membri dell&#146;equipaggio.',
+                    'description'=>'Die Sanitäterausbildung bereitet dafür geeignete Kandidaten auf eventuelle Notfalleinsätze vor, bei denen Besatzungsmitglieder verletzt werden.',
                     'dev_info'=>'',
             ), // Endof Component Sanitäterausbildung
             
             1=>array(
-                    'name'=>'Infermeria di bordo',
+                    'name'=>'Krankenstation',
+
                     'resource_1'=>'2250',
                     'resource_2'=>'300',
                     'resource_3'=>'0',
@@ -21583,14 +21583,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Questa parte della nave viene attrezzata per fornire le necessarie cure mediche per i feriti durante gli scontri.',
+                    'description'=>'Die Krankenstation dient der Versorgung von Besatzungsmitgliedern, die bei Kämpfen verwundet werden.',
                     'dev_info'=>'',
             ),
             
             2=>array(
-                    'name'=>'Postazioni Biomediche',
+                    'name'=>'Biobetten',
                     'resource_1'=>'975',
                     'resource_2'=>'225',
                     'resource_3'=>'0',
@@ -21627,14 +21627,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Le postazioni biomediche sono letti attrezzati con moderne apparecchiature di trattamento che permettono ogni tipo di trattamento necessario senza ricorrere al ricovero su navi ospedali o su strutture planetarie.',
+                    'description'=>'Biobetten ermöglichen die Behandlung von Schwerverletzten, ohne das diese auf ein Lazarettschiff oder ein planetares Krankenhaus verlegt werden müssen.',
                     'dev_info'=>'',
             ),
             
             3=>array(
-                    'name'=>'Stimolatori Neuroattivi',
+                    'name'=>'Neuroaktive Aufputschmittel',
                     'resource_1'=>'3000',
                     'resource_2'=>'375',
                     'resource_3'=>'0',
@@ -21671,14 +21671,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Questi stimolatori possono essere applicati a feriti gravi in caso di necessit&agrave; per permettergli di rimanere in azione.',
+                    'description'=>'Neuroaktive Aufputschmittel können der Besatzung im Ausnahmefall verabreicht werden, um in schwierigen Zeiten ihre Effizienz aufrecht zu erhalten.',
                     'dev_info'=>'',
             ),
             
             4=>array(
-                    'name'=>'Sezione Xenobiologica',
+                    'name'=>'Xenobiologische Abteilung',
                     'resource_1'=>'1500',
                     'resource_2'=>'150',
                     'resource_3'=>'0',
@@ -21715,13 +21715,13 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Questa struttura permette di analizzare e verificare l&#146;adattamento di agenti genetici stranieri alla fisiologia Krenim allo scopo di aumentare le capacit&agrave; dell&#146;equipaggio.',
+                    'description'=>'Die xenobiologische Abteilung erforscht die Möglichkeiten zur Adaption von fremden Genen an das organische System der Krenim und verbessert durch die Entwicklungen die Leistungsfähigkeit der Besatzung.',
                     'dev_info'=>'',
             ),
 
-      'name'=>'Componenti Mediche',
+      'name'=>'Medizinische Komponenten',
       'num'=>'5',
       ), // Endof Category Medizinische Einrichtungen
 
@@ -21730,7 +21730,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
         7=>array(
              // Component Vidiianischer Harvester
              0=>array(
-                    'name'=>'Compartimenti Equipaggio Migliorati',
+                    'name'=>'Erweiterte Mannschaftsräume',
                     'resource_1'=>'225',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -21767,15 +21767,15 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'I compartimenti equipaggio sono pi&ugrave; confortevoli e forniscono un supporto al morale dell&#146;equipaggio.',
+                    'description'=>'Verbesserte Mannschaftskabinen halten die Moral und Kampfbereitschaft der Besatzung auch bei langen Reisen auf hohem Level.',
                     'dev_info'=>'',
             ), // Endof Component Vidiianischer Harvester
 
              // Component Metaschilde
              1=>array(
-                    'name'=>'Metascudo',
+                    'name'=>'Metaschilde',
                     'resource_1'=>'450',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -21812,14 +21812,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Variante degli scudi che aumenta leggermente le caratteristiche difensive della nave.',
+                    'description'=>'Metaschilde sind eine erweiterte Schildvariante, die geringfügig die Defensivkapazitäten verbessern.',
                     'dev_info'=>'',
             ), // Endof Component Metaschilde
             
             2=>array(
-                    'name'=>'Area Addestramento',
+                    'name'=>'Trainingsräume',
                     'resource_1'=>'1500',
                     'resource_2'=>'150',
                     'resource_3'=>'0',
@@ -21856,14 +21856,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Le aree addestrative sono fornite di oloemettitori e generatori di gravit&agrave; che permettono all&#146;equipaggio di mantenersi in allenamento.',
+                    'description'=>'Die Trainingsräume sind mit speziellen Holoemittern und Grav-Generatoren ausgestattet, damit die Crew ihre körperlichen Fähigkeiten verbessern kann.',
                     'dev_info'=>'',
             ),
             
             3=>array(
-                    'name'=>'Disgregatore ad Alta Frequenza',
+                    'name'=>'Hochfrequenz-Disruptorkanonen',
                     'resource_1'=>'2250',
                     'resource_2'=>'300',
                     'resource_3'=>'0',
@@ -21900,14 +21900,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Sviluppo della tecnologia dei Disgregatori, sono tuttavia suscettibili di surriscaldamento.',
+                    'description'=>'Hochfrequenz-Disruptorkanonen sind eine Spezialentwicklung der Waffentechnik. Sie sind stark, neigen aber schnell zur Überhitzung.',
                     'dev_info'=>'',
             ),
             
             4=>array(
-                    'name'=>'Laboratorio di Bordo',
+                    'name'=>'Bordlaboratorium',
                     'resource_1'=>'450',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -21944,14 +21944,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Il Laboratorio di Bordo &egrave; fornito di equipaggiamento di altissimo livello, permettendo maggiore rapidit&agrave; nei compiti di ricerca ed elaborazione dati.',
+                    'description'=>'Das Laboratorium ist eine gut ausgestattete Einrichtung, welche sehr effizient die Forschungsarbeiten und die Datenauswertung vorantreibt.',
                     'dev_info'=>'',
             ),
             
             5=>array(
-                    'name'=>'Sistemi per Armi Pesanti',
+                    'name'=>'Schwere Waffensysteme',
                     'resource_1'=>'4500',
                     'resource_2'=>'1125',
                     'resource_3'=>'375',
@@ -21988,13 +21988,13 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Questo sistema integra le armi pesanti della nave con ulteriori sistemi d&#146;arma di vario tipo ed impiego.',
+                    'description'=>'Dieses allgemeine Waffenupgrade beinhaltet neben weiteren Torpedoschächten auch leichte Raketen und Bomben, welche die Kampfstärke erhöhen.',
                     'dev_info'=>'',
             ),
 
-      'name'=>'Componenti secondarie',
+      'name'=>'Sekundärkomponenten',
       'num'=>'6',
       ), // Endof Category Sekundärkomponenten
 
@@ -22002,7 +22002,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
         // Category Sensorik
         8=>array(
             0=>array(
-                    'name'=>'Aggiornamento Sensori',
+                    'name'=>'Verbesserte Sensoren',
                     'resource_1'=>'225',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -22039,14 +22039,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'La portata dei sensori viene aumentata grazie al potenziamento dei sistemi di controllo.',
+                    'description'=>'Durch Verbesserung der Leitsysteme wird die Sensorsensibilität verbessert.',
                     'dev_info'=>'',
             ),
             
             1=>array(
-                    'name'=>'Sensori Optronici',
+                    'name'=>'Optotronische Fühler',
                     'resource_1'=>'375',
                     'resource_2'=>'112.5',
                     'resource_3'=>'0',
@@ -22083,14 +22083,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Tecnologia sensoriale impiegata da una civilt&agrave; soggiogata tempo fa dai Krenim.',
+                    'description'=>'Bei den optotronischen Fühlern handelt es sich um die Entwicklung eines Volkes, dass sich schon vor einiger Zeit den Krenim unterworfen hat.',
                     'dev_info'=>'',
             ),
             
             2=>array(
-                    'name'=>'Microsonde',
+                    'name'=>'Mikro-Sondendrohnen',
                     'resource_1'=>'975',
                     'resource_2'=>'225',
                     'resource_3'=>'0',
@@ -22127,14 +22127,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Microsonde autoreplicanti che viaggiano per la nave aumentando le capacit&agrave; di diagnostica delle anomalie e potenziando la capacit&agrave; di scansione dello spazio profondo.',
+                    'description'=>'Mikro-Sondendrohnen sind sich selbstreplizierende, kleine Drohnen, die um das Schiff herumfliegen und sowohl die Schiffsdiagnose wie auch die Tiefenraumabtastung enorm verbessern.',
                     'dev_info'=>'',
             ),
             
             3=>array(
-                    'name'=>'Cartografia Temporale',
+                    'name'=>'Temporale Kartographie',
                     'resource_1'=>'1275',
                     'resource_2'=>'300',
                     'resource_3'=>'37.5',
@@ -22171,13 +22171,13 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-				    'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Questo sistema tattico si basa su un database esteso che permette di verificare l&#146;esito delle tattiche impiegabili in una battaglia.',
+                    'description'=>'Die temporale Kartographie stellt eine umfangreiche taktische Datenbank dar, die in der Lage ist, viele verschiedene taktische Möglichkeiten und deren unmittelbare Folgen zu ermitteln und zu berechnen.',
                     'dev_info'=>'',
             ),
             
-      'name'=>'Sensori',
+      'name'=>'Sensorik',
       'num'=>'4',
       ), // Endof Category Sensorik
 
@@ -22185,7 +22185,7 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
         // Category Temporale Experimentalkomponenten
         9=>array(
             0=>array(
-                    'name'=>'Manipolatore di Flusso Temporale',
+                    'name'=>'Temporaler Fluss-Manipulator',
                     'resource_1'=>'2625',
                     'resource_2'=>'300',
                     'resource_3'=>'150',
@@ -22222,14 +22222,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Questo sistema d&#146;arma viene impiegato solo sulle maggiori navi Krenim, pensata principalmente per il bombardamento dei pianeti.',
+                    'description'=>'Der temporale Flussmanipulator ist eine enorm schlagkräftige, aber auch teure Waffe, die ausschließlich auf dem Gunship installiert werden kann. Sie wird vor allem zur Bombardierung von Planetenoberflächen verwendet.',
                     'dev_info'=>'',
             ),
             
             1=>array(
-                    'name'=>'Mascheramento Croniton',
+                    'name'=>'Chronitonentarnung',
                     'resource_1'=>'975',
                     'resource_2'=>'225',
                     'resource_3'=>'0',
@@ -22266,14 +22266,14 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Il mascheramento Croniton occulta l&#146;immagine della nave attraverso un cambiamento di fase. Molto efficace e poco costoso in termini di energia impiegata.',
+                    'description'=>'Die Chronitontarnung verschleiert die Signaturen eines Schiffes, indem es das Schiff selbst außer Phase hebt. Die Technologie ist effizient, aber teuer.',
                     'dev_info'=>'',
             ),
             
             2=>array(
-                    'name'=>'Corazzatura Transfasica',
+                    'name'=>'Phasenverschobene Panzerung',
                     'resource_1'=>'375',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -22310,13 +22310,13 @@ Bei Treffer Senkung von Geschwindigkeit und Wendigkeit des Geners
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-					'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'La corazzatura transfasica aumenta notevolmente la resistenza dello scafo.',
+                    'description'=>'Die phasenverschobene Panzerung ist eine sehr effektive, aber teure Panzerung, die jedoch fast kaum Energie benötigt und daher sehr beliebt ist.',
                     'dev_info'=>'',
             ),
             
-      'name'=>'Componenti Temporali Sperimentali',
+      'name'=>'Temporale Experimentalkomponenten',
       'num'=>'3',
       ), // Endof Category Temporale Experimentalkomponenten
 
