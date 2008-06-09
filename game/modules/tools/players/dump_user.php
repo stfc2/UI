@@ -55,7 +55,7 @@ if(($user = $db->queryrow($sql, MYSQL_ASSOC)) === false) {
 }
 
 if(empty($user['user_id'])) {
-    message(NOTICE, 'Der Spieler existiert nicht');
+    message(NOTICE, 'The player doesn&#146;t exist');
 }
 
 echo make_query_str('user', $user).'
@@ -73,7 +73,7 @@ unset($user);
 $sql = 'SELECT *
         FROM ship_fleets
         WHERE user_id = '.$user_id;
-        
+
 if(!$q_fleets = $db->query($sql)) {
     message(DATABASE_ERROR, 'Could not query fleets data');
 }
@@ -87,7 +87,7 @@ unset($fleet);
 $sql = 'SELECT *
         FROM ships
         WHERE user_id = '.$user_id;
-        
+
 if(!$q_ships = $db->query($sql)) {
     message(DATABASE_ERROR, 'Could not query ships data');
 }
@@ -102,7 +102,7 @@ $sql = 'SELECT *
         FROM user_diplomacy
         WHERE user1_id = '.$user_id.' OR
               user2_id = '.$user_id;
-              
+
 if(!$q_udiplomacy = $db->query($sql)) {
     message(DATABASE_ERROR, 'Could not query user diplomacy data');
 }
@@ -114,7 +114,7 @@ while($udiplomacy = $db->fetchrow($q_udiplomacy, MYSQL_ASSOC)) {
 $sql = 'SELECT *
         FROM tc_coords_memo
         WHERE user_id = '.$user_id;
-        
+
 if(!$q_tcm = $db->query($sql)) {
     message(DATABASE_ERROR, 'Could not query tc coords memo');
 }
