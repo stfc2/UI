@@ -56,7 +56,9 @@ define ("GER_Text17", '<option value="10" selected>3m Pause</option>');
 
 define ("GER_Text18", '<option value="10">3m Pause</option>');
 
-define ("GER_Text19", '</table><b>&nbsp;Platz x</b> markiert den aktiven Ausbildungsplatz');
+define ("GER_Text19", 'Die');
+
+define ("GER_Text19a", 'Symbol markiert den aktiven Ausbildungsplatz');
 
 define ("GER_Text20", 'Du musst ein(e) ');
 
@@ -118,7 +120,9 @@ define ("ENG_Text17", '<option value="10" selected>3 minutes of pause</option>')
 
 define ("ENG_Text18", '<option value="10">3 minutes of pause</option>');
 
-define ("ENG_Text19", '</table><b>&nbsp;Place x</b> marks the active training place');
+define ("ENG_Text19", 'The');
+
+define ("ENG_Text19a", 'icon marks the active training position');
 
 define ("ENG_Text20", 'You need a ');
 
@@ -180,7 +184,9 @@ define ("ITA_Text17", '<option value="10" selected>3 minuti di pausa</option>');
 
 define ("ITA_Text18", '<option value="10">3 minuti di pausa</option>');
 
-define ("ITA_Text19", '</table><b>&nbsp;Il numero in grassetto</b> segnala l\'addestramento attivo');
+define ("ITA_Text19", 'L&#146;icona');
+
+define ("ITA_Text19a", 'segnala l\'addestramento attivo');
 
 define ("ITA_Text20", 'Devi avere una ');
 

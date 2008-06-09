@@ -247,12 +247,12 @@ $game->out('
 <table border=0 cellpadding=2 cellspacing=2 width=398 class="style_inner">
 <tr><td><center>
 <form name="academy" method="post" action="'.GAME_EXE.'?a=academy">
-<table border=0 cellpadding=2 cellspacing=2 width=280>'.constant($game->sprache("Text16")));
+<table border=0 cellpadding=2 cellspacing=2 width=280><tr><td>&nbsp;</td>'.constant($game->sprache("Text16")).'</tr>');
 
 for ($t=0; $t<10; $t++)
 {
-if ($game->planet['unittrain_actual']!=($t+1)) $game->out('<tr><td width=40>'.($t+1).':</td>');
-else $game->out('<tr><td width=40><b><u>'.($t+1).'</u></b>:</td>');
+if ($game->planet['unittrain_actual']!=($t+1)) $game->out('<tr><td>&nbsp;</td><td width=40>'.($t+1).':</td>');
+else $game->out('<tr><td><img src="'.$game->PLAIN_GFX_PATH.'arrow_right.png"></td><td width=40><b><u>'.($t+1).'</u></b>:</td>');
 $game->out('<td width=150><select name="listid_'.$t.'" class="Select" size="1"><option value="-1">'.(constant($game->sprache("Text25"))).'</option>');
 if ($game->planet['unittrainid_'.($t+1)]==10) $game->out(constant($game->sprache("Text17")));
 else $game->out(constant($game->sprache("Text18")));
@@ -283,7 +283,7 @@ $game->out('
 </tr>
 ');
 }
-$game->out(constant($game->sprache("Text19")).'<br><input type="submit" name="exec_list" class="button_nosize" value="'.constant($game->sprache("Text22")).'"></form></center></td></tr></table></td></tr></table>');
+$game->out('</table>'.constant($game->sprache("Text19")).'&nbsp;<img src="'.$game->PLAIN_GFX_PATH.'arrow_right.png">&nbsp;'.constant($game->sprache("Text19a")).'<br><input type="submit" name="exec_list" class="button_nosize" value="'.constant($game->sprache("Text22")).'"></form></center></td></tr></table></td></tr></table>');
 }
 
 
