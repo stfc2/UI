@@ -199,7 +199,7 @@ if(isset($_GET['member_list'])) {
           <td width="70">'.$user_race.'</td>
           <td width="70">'.$user['user_planets'].'</td>
           <td width="80">'.$user['user_points'].'</td>
-          '.( ($game->option_retr('alliance_status_member')==1) ? '<td width="80">'.(($user['user_vacation_end']<$ACTUAL_TICK) ? timeformat(time()-$user['last_active']) : 'urlaub').'</td>' : '<td width="80"><b>'.$stats_str.'<b></td>' ).'
+          '.( ($game->option_retr('alliance_status_member')==1) ? '<td width="80">'.(($user['user_vacation_end']<$ACTUAL_TICK) ? timeformat(time()-$user['last_active']) : constant($game->sprache("TEXT85"))).'</td>' : '<td width="80"><b>'.$stats_str.'<b></td>' ).'
         </tr>
             ');
         }

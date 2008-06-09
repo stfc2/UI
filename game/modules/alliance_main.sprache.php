@@ -190,6 +190,8 @@ define ("GER_TEXT83", 'Allianz Schiffe');
 
 define ("GER_TEXT84", 'Allianz Chat');
 
+define ("GER_TEXT85", 'urlaub');
+
 
 //English
 
@@ -363,6 +365,8 @@ define ("ENG_TEXT83", 'Alliance ships');
 
 define ("ENG_TEXT84", 'Alliance chat');
 
+define ("ENG_TEXT85", 'holiday');
+
 //Italiano
 
 define ("ITA_TEXT0", 'Sei gi&agrave; membro di un\'allenaza');
@@ -535,5 +539,6 @@ define ("ITA_TEXT83", 'Navi dell&#146;Alleanza');
 
 define ("ITA_TEXT84", 'Chat dell&#146;Alleanza');
 
+define ("ITA_TEXT85", 'vacanza');
 
 ?>
