@@ -4491,7 +4491,7 @@ else
 		{
 //			if ($game->player['user_points']<400 && ($game->player['user_id']>12 && $game->player['user_id']!=62 ) )
 			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
-			if ($game->player['user_points']<400 && $game->player['user_id']>10)
+			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_DEVELOPER)
 				$game->out(constant($game->sprache("TEXT262")));
 			else
 				Show_CreateBidding();
@@ -4507,7 +4507,7 @@ else
 		{
 //			if ($game->player['user_points']<400 && ($game->player['user_id']>12 && $game->player['user_id']!=62 ) )
 			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
-			if ($game->player['user_points']<400 && $game->player['user_id']>10)
+			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_DEVELOPER)
 				$game->out(constant($game->sprache("TEXT262")));
 			else
 				Show_Bidding();
@@ -4523,7 +4523,7 @@ else
 		{
 //			if ($game->player['user_points']<400 && ($game->player['user_id']>12 && $game->player['user_id']!=62 ) )
 			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
-			if ($game->player['user_points']<400 && $game->player['user_id']>10)
+			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_DEVELOPER)
 				$game->out(constant($game->sprache("TEXT262")));
 			else
 				own_bids();
@@ -4539,7 +4539,7 @@ else
 		{
 //			if ($game->player['user_points']<400 && ($game->player['user_id']>12 && $game->player['user_id']!=62 ) )
 			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
-			if ($game->player['user_points']<400 && $game->player['user_id']>10)
+			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_DEVELOPER)
 				$game->out(constant($game->sprache("TEXT262")));
 			else
 				Show_Bidding(1);
@@ -4555,7 +4555,7 @@ else
 		{
 //			if ($game->player['user_points']<400 && ($game->player['user_id']>12 && $game->player['user_id']!=62 ) )
 			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
-			if ($game->player['user_points']<400 && $game->player['user_id']>10)
+			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_DEVELOPER)
 				$game->out(constant($game->sprache("TEXT262")));
 			else
 				Show_Bidding_Detail();
@@ -4571,7 +4571,7 @@ else
 		{
 //			if ($game->player['user_points']<400 && ($game->player['user_id']>12 && $game->player['user_id']!=62 ) )
 			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
-			if ($game->player['user_points']<400 && $game->player['user_id']>10)
+			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_DEVELOPER)
 				$game->out(constant($game->sprache("TEXT262")));
 			else
 				Submit_Bid();
