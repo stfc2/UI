@@ -869,6 +869,10 @@ form {
           <td valign="top">'.constant($game->sprache("TEXT63")).'</td>
           <td>&nbsp;<a href="'.parse_link('a=database&planet_type='.$planet_type.'#'.$planet_type).'">'.$planet_type.'</a></td>
         </tr>
+		<tr>
+		  <td valign="top">'.constant($game->sprache("TEXT92")).'</td>
+          <td>&nbsp;'.constant($game->sprache("TEXT93")).'</td>
+		</tr>
         <tr height="15"><td></td></tr>
     ');
     

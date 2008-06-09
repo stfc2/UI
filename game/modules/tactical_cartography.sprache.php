@@ -208,6 +208,12 @@ define ("GER_TEXT90", '<span style="color: #89CAEF;">hellblau</span> - Planet ei
 
 define ("GER_TEXT91", 'Wenn das Bild nicht richtig aktualisiert wird,<br>stellt in den Optionen eures Browsers<br>"Bei jedem Zugriff auf die Seite nach neuer Version suchen" ein');
 
+define ("GER_TEXT92", 'Survey:');
+
+define ("GER_TEXT93", 'No expedition done yet.');
+
+
+
 //English
 define ("ENG_TEXT0", 'Tactical headquarters:');
 
@@ -395,6 +401,11 @@ define ("ENG_TEXT90", '<span style="color: #89CAEF;">light blue</span> - Planet 
 
 define ("ENG_TEXT91", 'If the picture is not updated correctly,<br>places in the options of your browser<br>"Look for new version every visit to the site"');
 
+define ("ENG_TEXT92", 'Survey:');
+
+define ("ENG_TEXT93", 'No expedition done yet.');
+
+
 
 //Italiano
 define ("ITA_TEXT0", 'Comando Tattico:');
@@ -557,13 +568,13 @@ define ("ITA_TEXT77", '1 Nave');
 
 define ("ITA_TEXT78", 'Navi');
 
-define ("ITA_TEXT79", 'Associazione di flotta che vola su questo pianeta');
+define ("ITA_TEXT79", 'Gruppo di navi in movimento verso questo pianeta');
 
 define ("ITA_TEXT80", 'Dettagli');
 
 define ("ITA_TEXT81", 'Arrivo:');
 
-define ("ITA_TEXT82", 'Arrivo della 1. Federazione:');
+define ("ITA_TEXT82", 'Arrivo della 1. ondata:');
 
 define ("ITA_TEXT83", 'Flotte da inviare a questo pianeta');
 
@@ -582,5 +593,11 @@ define ("ITA_TEXT89", '<span style="color: #FF0000;">rosso</span> - Pianeta di u
 define ("ITA_TEXT90", '<span style="color: #89CAEF;">azzurro</span> - Pianeta di un alleato<br>');
 
 define ("ITA_TEXT91", 'Se l&#146;immagine non si aggiorna correttamente,<br>configurare il browser in modo che aggiorni<br>le immagini ad ogni nuova apertura di pagina.');
+
+define ("ITA_TEXT92", 'Sopralluoghi:');
+
+define ("ITA_TEXT93", '<i>Nessun rapporto disponibile</i>');
+
+
 
 ?>
