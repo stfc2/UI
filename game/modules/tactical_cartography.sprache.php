@@ -594,7 +594,7 @@ define ("ITA_TEXT90", '<span style="color: #89CAEF;">azzurro</span> - Pianeta di
 
 define ("ITA_TEXT91", 'Se l&#146;immagine non si aggiorna correttamente,<br>configurare il browser in modo che aggiorni<br>le immagini ad ogni nuova apertura di pagina.');
 
-define ("ITA_TEXT92", 'Sopralluoghi:');
+define ("ITA_TEXT92", 'Dettagli:');
 
 define ("ITA_TEXT93", '<i>Nessun rapporto disponibile</i>');
 
