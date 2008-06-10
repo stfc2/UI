@@ -27,21 +27,21 @@ $main_html .= '<span class=header>Sondaggi</span><br>';
 if(isset($_REQUEST['remove'])) {
 	$poll = $db->queryrow('SELECT * FROM portal_poll WHERE id="'.((int)$_REQUEST['id']).'"');
 	log_action('Il sondaggio con il titolo "'.$poll['question'].'" &egrave; stata cancellata');
-	
 
-    $sql = 'DELETE FROM portal_poll WHERE id="'.((int)$_REQUEST['id']).'" LIMIT 1';
-    if(!$db->query($sql)) {
-        //message(DATABASE_ERROR, 'Could not remove portal news data');
-    }
 
-    $sql = 'DELETE FROM portal_poll_voted WHERE poll_id="'.((int)$_REQUEST['id']).'" LIMIT 1';
-    if(!$db->query($sql)) {
-        //message(DATABASE_ERROR, 'Could not remove portal news data');
-    }
+	$sql = 'DELETE FROM portal_poll WHERE id="'.((int)$_REQUEST['id']).'" LIMIT 1';
+	if(!$db->query($sql)) {
+		//message(DATABASE_ERROR, 'Could not remove portal news data');
+	}
 
-    $main_html .= '<span class=header3><font color=green>Il sondaggio &egrave; stato cancellato</font></span><br>';
+	$sql = 'DELETE FROM portal_poll_voted WHERE poll_id="'.((int)$_REQUEST['id']).'" LIMIT 1';
+	if(!$db->query($sql)) {
+		//message(DATABASE_ERROR, 'Could not remove portal news data');
+	}
 
-	
+	$main_html .= '<span class=header3><font color=green>Il sondaggio &egrave; stato cancellato</font></span><br>';
+
+
 }
 
 
@@ -50,38 +50,47 @@ if(isset($_POST['submit'])) {
 
 	if (!isset($_POST['id']) || empty($_POST['id']))
 	{
-    $sql = 'INSERT INTO portal_poll (date, question, choice_1, choice_2, choice_3, choice_4, choice_5, choice_6, choice_7, choice_8, choice_9, choice_10)
-
-            VALUES ('.time().', "'.$_POST['question'].'", "'.addslashes($_POST['choice_1']).'", "'.addslashes($_POST['choice_2']).'", "'.addslashes($_POST['choice_3']).'", "'.addslashes($_POST['choice_4']).'", "'.addslashes($_POST['choice_5']).'", "'.addslashes($_POST['choice_6']).'", "'.addslashes($_POST['choice_7']).'", "'.addslashes($_POST['choice_8']).'", "'.addslashes($_POST['choice_9']).'", "'.addslashes($_POST['choice_10']).'")';
+		$sql = 'INSERT INTO portal_poll (date, question, choice_1, choice_2, choice_3, choice_4, choice_5, choice_6, choice_7, choice_8, choice_9, choice_10)
+		        VALUES ('.time().', "'.$_POST['question'].'", "'.addslashes($_POST['choice_1']).'", "'.addslashes($_POST['choice_2']).'", "'.addslashes($_POST['choice_3']).'", "'.addslashes($_POST['choice_4']).'", "'.addslashes($_POST['choice_5']).'", "'.addslashes($_POST['choice_6']).'", "'.addslashes($_POST['choice_7']).'", "'.addslashes($_POST['choice_8']).'", "'.addslashes($_POST['choice_9']).'", "'.addslashes($_POST['choice_10']).'")';
 
 		log_action('Il sondaggio con il titolo "'.$_POST['question'].'" &egrave; stata salvato');
 
-    if(!$db->query($sql)) {
+		if(!$db->query($sql)) {
 
-        //message(DATABASE_ERROR, 'Could not insert portal news data');
+			//message(DATABASE_ERROR, 'Could not insert portal news data');
 
-    }
-    $main_html .= '<span class=header3><font color=green>Il sondaggio &egrave; stato pubblicato</font></span><br>';
-    
+		}
+		$main_html .= '<span class=header3><font color=green>Il sondaggio &egrave; stato pubblicato</font></span><br>';
+
 	}
 	else
 	{
-    $sql = 'UPDATE portal_poll SET question="'.$_POST['question'].'", choice_1="'.addslashes($_POST['choice_1']).'" WHERE id="'.((int)$_POST['id']).'"';
-	
-	log_action('Il sondaggio con il titolo "'.$_POST['question'].'" &egrave; stato modificato');
-        
-//echo $sql;
-            
+		$sql = 'UPDATE portal_poll SET
+		               question="'.$_POST['question'].'",
+		               choice_1="'.addslashes($_POST['choice_1']).'",
+		               choice_2="'.addslashes($_POST['choice_2']).'",
+		               choice_3="'.addslashes($_POST['choice_3']).'",
+		               choice_4="'.addslashes($_POST['choice_4']).'",
+		               choice_5="'.addslashes($_POST['choice_5']).'",
+		               choice_6="'.addslashes($_POST['choice_6']).'",
+		               choice_7="'.addslashes($_POST['choice_7']).'",
+		               choice_8="'.addslashes($_POST['choice_8']).'",
+		               choice_9="'.addslashes($_POST['choice_9']).'",
+		               choice_10="'.addslashes($_POST['choice_10']).'",
+		               closed='.$_POST['closed'].'
+		        WHERE id="'.((int)$_POST['id']).'"';
 
-    if(!$db->query($sql)) {
+		log_action('Il sondaggio con il titolo "'.$_POST['question'].'" &egrave; stato modificato');
 
-        //message(DATABASE_ERROR, 'Could not update portal news data');
+		if(!$db->query($sql)) {
 
-    }
-    $main_html .= '<span class=header3><font color=green>Il sondaggio &egrave stato pubblicato</font></span><br>';
-    
+			//message(DATABASE_ERROR, 'Could not update portal news data');
+
+		}
+		$main_html .= '<span class=header3><font color=green>Il sondaggio &egrave stato pubblicato</font></span><br>';
+
 	}
-	
+
 
 }
 
@@ -167,6 +176,16 @@ Domanda: <input type="text" name="question" value="'.$question.'" class="field">
 <br><br>
 
 10a opzione: <input type="text" name="choice_10" value="'.$choice_10.'" class="field">
+
+<br><br>
+
+<select name="closed" class="select">
+
+  <option value="1" '.($new['closed'] == true ? 'selected="selected"' : '').'>Chiuso</option>
+
+  <option value="0" '.($new['closed'] == false ? 'selected="selected"' : '').'>Aperto</option>
+
+</select>
 
 <br><br>
 
