@@ -222,7 +222,7 @@ function display_poll() {
 
 
 
-    if(empty($already_voted['poll_id'])) {
+    if(empty($already_voted['poll_id']) && empty($poll_data['closed'])) {
 
         $game->out('
 
