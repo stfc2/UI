@@ -220,6 +220,10 @@ define('SHIP_IN_REFIT', 2);
 define('SHIP_RUST_CHECK', 700);
 
 
+// Planets and colonies names
+define ('UNINHABITATED_PLANET', 'Inesplorato');
+
+define ('UNINHABITATED_COLONY', 'Isolato');
 
 
 // Beschleuningt den Scheduler

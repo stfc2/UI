@@ -1,11 +1,11 @@
 <?php
 /*    
-	This file is part of STFC.
-	Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
-		
-	STFC is based on STGC,
-	Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
-	
+    This file is part of STFC.
+    Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
+
+    STFC is based on STGC,
+    Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
+
     STFC is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 3 of the License, or
@@ -151,9 +151,9 @@ function create_planet($user_id, $id_type, $id_value) {
     switch($id_type) {
         case 'quadrant':
             $quadrant_id = $id_value;
-            
+
             // Verify that a suitable system already exists
-            
+
             // In one of 5 cases it creates in any case a new system
             if(mt_rand(1, 5) != 3) {
                 $sector_id_min = ( ($quadrant_id - 1) * $game->sectors_per_quadrant) + 1; // (id - 1) * 81
@@ -165,11 +165,11 @@ function create_planet($user_id, $id_type, $id_value) {
                               sector_id <= '.$sector_id_max.' AND
                               system_closed = 0 AND
                               system_n_planets < '.$game->system_max_planets;
-                              
+
                 if(($q_systems = $db->query($sql)) === false) {
                     message(DATABASE_ERROR, 'world::create_planet(): Could not query systems data');
                 }
-                
+
                 $available_systems = array();
                 $n_available = 0;
 
@@ -193,7 +193,7 @@ function create_planet($user_id, $id_type, $id_value) {
 
             if(!$system_id) {
                 $_temp = create_system('quadrant', $quadrant_id);
-                
+
                 $system_id = $_temp[0];
                 $sector_id = $_temp[1];
             }
@@ -201,7 +201,7 @@ function create_planet($user_id, $id_type, $id_value) {
                 $sql = 'SELECT planet_distance_id
                         FROM planets
                         WHERE system_id = '.$system_id;
-                        
+
                 if(($planet_did = $db->queryrowset($sql)) === false) {
                     message(DATABASE_ERROR, 'world::create_planet(): Could not query planets did data');
                 }
@@ -284,15 +284,15 @@ function create_planet($user_id, $id_type, $id_value) {
             $sql = 'SELECT sector_id, planet_distance_id
                     FROM planets
                     WHERE system_id = '.$system_id;
-                    
+
             if(($planet_did = $db->queryrowset($sql)) === false) {
                 message(DATABASE_ERROR, 'world::create_planet(): Could not query planet did data');
             }
-            
+
             for($i = 0; $i < count($planet_did); ++$i) {
                 unset($free_distances[$planet_did[$i]['planet_distance_id']]);
             }
-            
+
             $sector_id = $planet_did[0]['sector_id'];
         break;
     }
@@ -307,7 +307,7 @@ function create_planet($user_id, $id_type, $id_value) {
             // a lot of metal, little minerals, little dilithium (15%)
             'a' => 7,  // 3.0  0.1  0.8  0.1
             'b' => 8,  // 3.0  0.1  0.8  0.1
-            
+
             // medium metals, minerals, dilithium (60%)
             'c' => 10,  // 1.0  1.0  1.0  0.6
             'd' => 12,  // 1.0  1.0  1.0  0.5
@@ -315,17 +315,17 @@ function create_planet($user_id, $id_type, $id_value) {
             'f' => 6,   // 1.0  1.0  1.0  0.8
             'h' => 13,  // 1.0  1.0  1.0  0.5
             'k' => 11,  // 1.0  1.0  1.0  0.4
-            
+
             // a lot of metal, medium minerals, medium dilithium (10%)
             'g' => 10, // 1.5  1.0  1.0  0.8
-            
+
             // little metal, lots of minerals, much dilithium (5%)
             'i' => 5,  // 0.3  1.6  1.6  0.5
-            
+
             // little metal, a lot of minerals, little dilithium (5%)
             'j' => 2,  // 0.3  2.0  0.4  0.6
             'l' => 3,  // 0.4  1.9  0.5  0.7
-            
+
             // M/N/Y (5%)
             'm' => 1,  // 1.0  1.0  1.0  1.0
             'n' => 1,  // 0.95 0.95 0.95 1.1
@@ -341,26 +341,26 @@ function create_planet($user_id, $id_type, $id_value) {
         }
         
         $planet_type = $type_array[array_rand($type_array)];
-		
-		// Varianza randomica delle costanti base del pianeta
-		$rateo_1 = $PLANETS_DATA[$planet_type][0] + ((250 - mt_rand(0, 500))*0.001);
-		$rateo_2 = $PLANETS_DATA[$planet_type][1] + ((250 - mt_rand(0, 500))*0.001);
-		$rateo_3 = $PLANETS_DATA[$planet_type][2] + ((250 - mt_rand(0, 500))*0.001);
-		$rateo_4 = $PLANETS_DATA[$planet_type][3];
+
+        // Varianza randomica delle costanti base del pianeta
+        $rateo_1 = $PLANETS_DATA[$planet_type][0] + ((250 - mt_rand(0, 500))*0.001);
+        $rateo_2 = $PLANETS_DATA[$planet_type][1] + ((250 - mt_rand(0, 500))*0.001);
+        $rateo_3 = $PLANETS_DATA[$planet_type][2] + ((250 - mt_rand(0, 500))*0.001);
+        $rateo_4 = $PLANETS_DATA[$planet_type][3];
 
         $sql = 'INSERT INTO planets (planet_name, system_id, sector_id, planet_type, planet_owner, planet_owned_date, planet_distance_id, planet_distance_px, planet_covered_distance, planet_tick_cdistance, planet_max_cdistance, resource_1, resource_2, resource_3, resource_4, planet_points, rateo_1, rateo_2, rateo_3, rateo_4)
-                VALUES ("Inesplorato", '.$system_id.', '.$sector_id.', "'.$planet_type.'", 0, '.$game->TIME.', '.$planet_distance_id.', '.$planet_distance_px.', 0, '.( mt_rand(10, 30) ).', '.( 2 * M_PI * $planet_distance_px ).', 0, 0, 0, 0, 0, '.$rateo_1.', '.$rateo_2.', '.$rateo_3.', '.$rateo_4.')';
+                VALUES ("'.UNINHABITATED_PLANET.'", '.$system_id.', '.$sector_id.', "'.$planet_type.'", 0, '.$game->TIME.', '.$planet_distance_id.', '.$planet_distance_px.', 0, '.( mt_rand(10, 30) ).', '.( 2 * M_PI * $planet_distance_px ).', 0, 0, 0, 0, 0, '.$rateo_1.', '.$rateo_2.', '.$rateo_3.', '.$rateo_4.')';
     }
     else {
         $planet_type = (mt_rand(1, 2) == 1) ? 'm' : 'n';
 
-		$rateo_1 = $PLANETS_DATA[$planet_type][0];
-		$rateo_2 = $PLANETS_DATA[$planet_type][1];
-		$rateo_3 = $PLANETS_DATA[$planet_type][2];
-		$rateo_4 = $PLANETS_DATA[$planet_type][3];
-		
-        $sql = 'INSERT INTO planets (planet_name, system_id, sector_id, planet_type, planet_owner, planet_owned_date, planet_distance_id, planet_distance_px, planet_covered_distance, planet_tick_cdistance, planet_max_cdistance, resource_1, resource_2, resource_3, resource_4, planet_points, recompute_static, max_resources, max_worker, max_units, workermine_1, workermine_2, workermine_3, , rateo_1, rateo_2, rateo_3, rateo_4)
-                VALUES ("Isolato", '.$system_id.', '.$sector_id.', "'.$planet_type.'", '.$user_id.', '.$game->TIME.', '.$planet_distance_id.', '.$planet_distance_px.', 0, '.( mt_rand(10, 30) ).', '.( 2 * M_PI * $planet_distance_px ).', 200, 200, 100, 100, 10, 1, '.$PLANETS_DATA[$planet_type][6].', '.$PLANETS_DATA[$planet_type][7].', '.$PLANETS_DATA[$planet_type][7].', 100, 100, 100, '.$rateo_1.', '.$rateo_2.', '.$rateo_3.', '.$rateo_4.')';
+        $rateo_1 = $PLANETS_DATA[$planet_type][0];
+        $rateo_2 = $PLANETS_DATA[$planet_type][1];
+        $rateo_3 = $PLANETS_DATA[$planet_type][2];
+        $rateo_4 = $PLANETS_DATA[$planet_type][3];
+
+        $sql = 'INSERT INTO planets (planet_name, system_id, sector_id, planet_type, planet_owner, planet_owned_date, planet_distance_id, planet_distance_px, planet_covered_distance, planet_tick_cdistance, planet_max_cdistance, resource_1, resource_2, resource_3, resource_4, planet_points, recompute_static, max_resources, max_worker, max_units, workermine_1, workermine_2, workermine_3, rateo_1, rateo_2, rateo_3, rateo_4)
+                VALUES ("'.UNINHABITATED_COLONY.'", '.$system_id.', '.$sector_id.', "'.$planet_type.'", '.$user_id.', '.$game->TIME.', '.$planet_distance_id.', '.$planet_distance_px.', 0, '.( mt_rand(10, 30) ).', '.( 2 * M_PI * $planet_distance_px ).', 200, 200, 100, 100, 10, 1, '.$PLANETS_DATA[$planet_type][6].', '.$PLANETS_DATA[$planet_type][7].', '.$PLANETS_DATA[$planet_type][7].', 100, 100, 100, '.$rateo_1.', '.$rateo_2.', '.$rateo_3.', '.$rateo_4.')';
     }
 
     if(!$db->query($sql)) {

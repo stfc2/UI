@@ -579,23 +579,21 @@ elseif(!empty($_POST['jump'])) {
                                        s.system_x, s.system_y
                                 FROM (planets p)
                                 INNER JOIN (starsystems s) ON s.system_id = p.system_id
-                                WHERE p.planet_name LIKE "%'.$planet_name.'%" AND p.planet_name!="Unbek. Kolonie" AND p.planet_name!="Unbek. Planet" AND p.planet_owner <> 0';
+                                WHERE p.planet_name LIKE "%'.$planet_name.'%" AND p.planet_name!="'.UNINHABITATED_COLONY.'" AND p.planet_name!="'.UNINHABITATED_PLANET.'" AND p.planet_owner <> 0';
                                 
                         if(($planets = $db->queryrowset($sql)) === false) {
                             message(DATABASE_ERROR, 'Could not query planet data');
                         }
 
                         $n_planets = count($planets);
-                        
-                        $lower_planet_name = strtolower($planet_name);
-                        
-                        if($lower_planet_name == 'unbek. kolonie') $n_planets = 0;
-                        elseif($lower_planet_name == 'unbek. planet') $n_planets = 0;
+
+                        if($planet_name == UNINHABITATED_COLONY) $n_planets = 0;
+                        elseif($planet_name == UNINHABITATED_PLANET) $n_planets = 0;
 
                         if($n_planets == 0) {
                             message(NOTICE, constant($game->sprache("TEXT46")).$planet_name.constant($game->sprache("TEXT42")));
                         }
-			
+
                         elseif($n_planets == 1) {
                             redirect('a=tactical_cartography&planet_id='.encode_planet_id($planets[0]['planet_id']));
                         }
@@ -607,11 +605,11 @@ elseif(!empty($_POST['jump'])) {
                             ');
 
                             for($i = 0; $i < $n_planets; ++$i) {
-				if((strtolower($planets[$i]['planet_name'])!="unbek. kolonie") && (strtolower($planets[$i]['planet_name'])!="unbek. planet"))
-{
-                                $game->out('<table><tr><td width="100px"><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planets[$i]['planet_id'])).'">'.$game->get_sector_name($planets[$i]['sector_id']).':'.$game->get_system_cname($planets[$i]['system_x'], $planets[$i]['system_y']).':'.($planets[$i]['planet_distance_id'] + 1).'</a></td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planets[$i]['planet_id'])).'">'.$planets[$i]['planet_name'].'</a></tr></table>');
+                                if(($planets[$i]['planet_name']!=UNINHABITATED_COLONY) && ($planets[$i]['planet_name']!=UNINHABITATED_PLANET))
+                                {
+                                    $game->out('<table><tr><td width="100px"><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planets[$i]['planet_id'])).'">'.$game->get_sector_name($planets[$i]['sector_id']).':'.$game->get_system_cname($planets[$i]['system_x'], $planets[$i]['system_y']).':'.($planets[$i]['planet_distance_id'] + 1).'</a></td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planets[$i]['planet_id'])).'">'.$planets[$i]['planet_name'].'</a></tr></table>');
+                                }
                             }
-}
 
                             $game->out('</td></tr></table><br>');
                         }
@@ -869,10 +867,10 @@ form {
           <td valign="top">'.constant($game->sprache("TEXT63")).'</td>
           <td>&nbsp;<a href="'.parse_link('a=database&planet_type='.$planet_type.'#'.$planet_type).'">'.$planet_type.'</a></td>
         </tr>
-		<tr>
-		  <td valign="top">'.constant($game->sprache("TEXT92")).'</td>
+        <tr>
+          <td valign="top">'.constant($game->sprache("TEXT92")).'</td>
           <td>&nbsp;'.constant($game->sprache("TEXT93")).'</td>
-		</tr>
+        </tr>
         <tr height="15"><td></td></tr>
     ');
     
