@@ -16,7 +16,7 @@ $game->out('
 		</tr>
 		<tr>
 		<td>
-			<a href="JavaScript:void(window.open(\'help/faq.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));"><span class="sub_caption2">FAQ</span></a>
+			<a href="JavaScript:void(window.open(\'help/faq.htm\',\'STFC\',\'toolbar=no,width=750,height=600,resizable=no,scrollbars=yes\'));"><span class="sub_caption2">FAQ</span></a>
 		</td>
 		</tr>
 		<tr>
