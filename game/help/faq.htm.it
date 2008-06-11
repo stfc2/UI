@@ -1,7 +1,6 @@
 <html>
 <head>
   <title>Star Trek: Frontline Combat 2 - Frequently Asked Questions</title>
-</head>
 
 <style type="text/css">
 <!-- A:link {FONT-SIZE: 11px; COLOR: #c0c0c0; FONT-FAMILY: Arial, Luxi Sans; TEXT-DECORATION: none}
@@ -51,6 +50,7 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 -->
 
 </style>
+</head>
 
 <body bgcolor="#000000" text="#DDDDDD"  background="/gfx/bg_stars1.gif">
 <div align="center"><span class="caption">Faq</span></div>
@@ -94,6 +94,7 @@ Che cosa pu&ograve; essere perso in seguito a un attacco? (strutture, difese, tr
 	<tr>
 		<td valign="top" align="justify"><b>Ammesso ci sia, qual'&egrave; il numero massimo di pianeti colonizzabili?</b></td>
 		<td valign="top" align="justify">Non esiste alcun limite esplicito, tuttavia esistono diversi strumenti per contrastare l'espansione incontrollata, questi creano una sorta di limite naturale.</td>
+	</tr>
 	<tr>
 		<td valign="top" align="justify"><b>Quali &egrave; meglio colonizzare tra le varie classi di pianeti?</b></td>
 		<td valign="top" align="justify">I pianeti si possono principalmente suddividere in due tipologie: abitativi e minerari.<br>Alla prima tipologia appartengono principalmente i pianeti di classe M e N, sebbene anche quelli di classe E, F, K ed H non presentino particolari ostacoli alle forme di vita.<br>Alla seconda tipologia appartengono i pianeti A, B e G (alta concentrazione di metallo), I, J ed L (elevata presenza di minerali), Y (immense riserve di tutte le risorse).</td>
@@ -103,8 +104,16 @@ Che cosa pu&ograve; essere perso in seguito a un attacco? (strutture, difese, tr
 		<td valign="top" align="justify">Volendo si. Il sistema, automaticamente, assegner&agrave; un nuovo pianeta al giocatore che &egrave; rimasto senza, al momento della login. Sul nuovo pianeta bisogner&agrave; ricominciare da zero, ma eventuali flotte si potranno recuperare.</td>
 	</tr>
 	<tr>
-		<td valign="top" align="justify"><b>Posso colonizzare i pianeti del giocatore <u>ColoniNPG)</u>?</b></td>
+		<td valign="top" align="justify"><b>Posso colonizzare i pianeti del giocatore <u>Coloni(NPG)</u>?</b></td>
 		<td valign="top" align="justify">Certamente, la procedura da seguire &egrave; la stessa come per un pianeta di un comune giocatore.</td>
+	</tr>
+	<tr>
+		<td valign="top" align="justify"><b>Una volta colonizzato un nuovo pianeta, come faccio a trasportare truppe aggiuntive su di esso?</b></td>
+		<td valign="top" align="justify">Per farlo &egrave; necessario utilizzare uno o pi&ugrave; navi cargo, altrimenti, se sul pianeta &egrave; presente un "<b>Centro Commerciale</b>", &egrave; possibile acquistare truppe al <b>Centro Commerciale Galattico di Ursa Mirror</b> da inviare presso il pianeta o ancora usare i trasporti Ferengi tramite il tattico.</td>
+	</tr>
+	<tr>
+		<td valign="top" align="justify"><b>Come faccio ad inviare risorse ad un pianeta con i Ferengi?</b></td>
+		<td valign="top" align="justify"><br>Prima di tutto occorre selezionare come pianeta attivo quello da cui si vuole inviare risorse, quindi tramite la sezione "<b>Cartografia Stellare</b>" del pannello "<b>Tattico</b>" o mediante il pannello "<b>Pianeti</b>", selezionare il pianeta a cui inviare le risorse; a questo punto, in fondo alla pagina comparir&agrave; la scritta: "<b><u>Invia Risorse / Unit&agrave; tramite la Gilda del Commercio Ferengi [Visualizza]</u></b>", selezionare la voce "Visualizza", verr&agrave; visualizzato un pannello in cui poter inserire il quantitativo di risorse e/o unit&agrave; (eccetto i lavoratori) che si intende inviare.<br><b>N.B.</b>: i Ferengi richiederanno una tassa, inversamente proporzionale al livello di Centro Commerciale, per effettuare la spedizione ed inoltre l'eventuale quantitativo di risorse spedite in eccesso verr&agrave; perduto.</td>
 	</tr>
 	<tr>
 		<td valign="top" align="justify"><b>Ho creato un progetto per costruire una nave, ho lo <u>Spazioporto</u> ed il <u>Cantiere Navale</u>, ma non me la lascia costruire, come mai?</b></td>
