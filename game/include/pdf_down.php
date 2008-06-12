@@ -21,12 +21,12 @@
 */
 // #############################################################################
 
-// Game-Objekt
+// Game-Object
 include('functions.php');
 $game = new game();
 
 // #############################################################################
-// SQL-Objekt für Datenbankzugriff
+// SQL-Object for Database access
 include('global.php');
 include('sql.php');
 $db = new sql($config['server'].":".$config['port'], $config['game_database'], $config['user'], $config['password']); // create sql-object for db-connection
@@ -38,7 +38,7 @@ if(isset($_GET['sql_debug'])) $db->debug = true;
 include('session.php');
 
 // #############################################################################
-//Generierung
+//Generation
 define('FPDF_FONTPATH','fpdf153/font/');
 require('fpdf153/fpdf.php');
 
@@ -47,38 +47,68 @@ $id = $_POST['id'];
 
 $sql = 'SELECT id, sender, receiver, subject, text, time FROM message WHERE id = '.$id;
 
-if(($messagedata = $db->queryrow($sql)) === false) {
-   message(DATABASE_ERROR, 'Could not query alliance data');
+if(($messagedata = $db->queryrow($sql)) == false) {
+    /* 12/06/08 - AC: Look also into archived message */
+    $sql = 'SELECT id, sender, receiver, subject, text, time FROM message_archiv WHERE id = '.$id;
+    if(($messagedata = $db->queryrow($sql)) == false) {
+        message(DATABASE_ERROR, 'Could not query message data');
+    }
 }
 
- $sender = $messagedata['sender'];
- $receiver = $messagedata['receiver'];
- $subject = $messagedata['subject'];
- $text = html_entity_decode($messagedata['text']);
- $time = date('d.m.y H:i', $messagedata['time']);
+$sender = $messagedata['sender'];
+$receiver = $messagedata['receiver'];
+$subject = $messagedata['subject'];
+$text = html_entity_decode($messagedata['text']);
+$time = date('d.m.y H:i', $messagedata['time']);
 
 if($user!=$receiver) {
-  redirect('../index.php?a=messages');
+    redirect('../index.php?a=messages');
 }
 
-//AbsenderData
+//Sender data
 
 $sql = 'SELECT user_name FROM user WHERE user_id = '.$sender;
 
-if(($sendername = $db->queryrow($sql)) === false) {
-   message(DATABASE_ERROR, 'Could not query alliance data');
+if(($sendername = $db->queryrow($sql)) == false) {
+    message(DATABASE_ERROR, 'Could not query sender data');
+}
+
+/* 12/06/08 - AC: Translate also this! */
+switch($game->player['language'])
+{
+    case 'GER':
+        $created = 'Erstellt am ';
+        $sender = 'Absender:					';
+        $recipient = 'EmpfÃ¤nger:			';
+        $date =  'Datum:										';
+        $title = 'Titel:														';
+    break;
+    case 'ITA':
+        $created = 'Creato il ';
+        $sender = 'Mittente:								';
+        $recipient = 'Destinatario:	';
+        $date =  'Data:														';
+        $title = 'Titolo:												';
+    break;
+    default:
+        $created = 'Created on ';
+        $sender = 'Sender:							';
+        $recipient = 'Recipient:			';
+        $date =  'Date:											';
+        $title = 'Title:												';
+    break;
 }
 
 $pdf=new FPDF();
 $pdf->Open();
-$pdf->SetAuthor(''.$game->player['user_name'].'');
-$pdf->SetTitle("http://stfc.nonsolotaku.it");
+$pdf->SetAuthor($game->player['user_name']);
+$pdf->SetTitle($config['game_url']);
 $pdf->SetAutoPageBreak(on, 15.0);
 $pdf->AddPage();
 $pdf->SetFont('Arial','I',8);
-$pdf->MultiCell(0,7,'Erstellt am '.date('d.m.y H:i', time()).'', 0, R);
+$pdf->MultiCell(0,7,$created.date('d.m.y H:i', time()).'', 0, R);
 $pdf->SetFont('Arial','B',16);
-$pdf->MultiCell(0,7,''.$pdf->MultiCell(0,7,'Absender:					'.$sendername['user_name'].''),$pdf->MultiCell(0,7,'Empfänger:			'.$game->player['user_name'].''),$pdf->MultiCell(0,7,'Datum:										'.$time.''),$pdf->MultiCell(0,7,'Titel:														'.$subject.'').'');
+$pdf->MultiCell(0,7,''.$pdf->MultiCell(0,7,$sender.$sendername['user_name']),$pdf->MultiCell(0,7,$recipient.$game->player['user_name']),$pdf->MultiCell(0,7,$date.$time),$pdf->MultiCell(0,7,$title.$subject));
 $pdf->Ln();
 $pdf->MultiCell(0,7,$text, 1);
 $pdf->Output(''.$game->player['user_name'].'_'.$id.'_Message.pdf', D);
