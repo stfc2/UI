@@ -99,6 +99,8 @@ define('LOGBOOK_REVOLUTION', 9);
 
 define('LOGBOOK_TACTICAL_2', 10);
 
+define('LOGBOOK_SURVEY', 11);
+
 // Ferengi NPC-Dealers:
 
 define('FERENGI_TRADESHIP_ID', 2); // <-- Template, not ship!
