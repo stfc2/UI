@@ -343,9 +343,12 @@ function create_planet($user_id, $id_type, $id_value) {
         $planet_type = $type_array[array_rand($type_array)];
 
         // Varianza randomica delle costanti base del pianeta
-        $rateo_1 = $PLANETS_DATA[$planet_type][0] + ((250 - mt_rand(0, 500))*0.001);
-        $rateo_2 = $PLANETS_DATA[$planet_type][1] + ((250 - mt_rand(0, 500))*0.001);
-        $rateo_3 = $PLANETS_DATA[$planet_type][2] + ((250 - mt_rand(0, 500))*0.001);
+        $rateo_1 = round(($PLANETS_DATA[$planet_type][0] + ((250 - mt_rand(0, 500))*0.001)), 2);
+		if($rateo_1 < 0) $rateo_1 = 0.1;
+        $rateo_2 = round(($PLANETS_DATA[$planet_type][1] + ((250 - mt_rand(0, 500))*0.001)), 2);
+		if($rateo_2 < 0) $rateo_2 = 0.1;
+        $rateo_3 = round(($PLANETS_DATA[$planet_type][2] + ((250 - mt_rand(0, 500))*0.001)), 2);
+		if($rateo_3 < 0) $rateo_3 = 0.1;
         $rateo_4 = $PLANETS_DATA[$planet_type][3];
 
         $sql = 'INSERT INTO planets (planet_name, system_id, sector_id, planet_type, planet_owner, planet_owned_date, planet_distance_id, planet_distance_px, planet_covered_distance, planet_tick_cdistance, planet_max_cdistance, resource_1, resource_2, resource_3, resource_4, planet_points, rateo_1, rateo_2, rateo_3, rateo_4)
