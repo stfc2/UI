@@ -146,6 +146,23 @@ function format_filesize($value, $limes = 6, $comma = 0) {
     return $results;
   } 
 
+  function cpu () {
+    if ($fd = fopen('/proc/cpuinfo', 'r')) {
+      $results['cpu'] = array();
+
+      while ($buf = fgets($fd, 512)) {
+        if (preg_match('/^model name\s+(.*)\s*kB/i', $buf, $ar_buf)) {
+          $results['cpu']['model'] = $ar_buf[1];
+        } else if (preg_match('/^cpu MHz\s+(.*)\s*kB/i', $buf, $ar_buf)) {
+          $results['cpu']['freq'] = $ar_buf[1];
+        }
+      }
+      fclose($fd);
+    } else {
+      $results['cpu'] = array();
+    }
+    return $results;
+  } 
 
 
 
@@ -205,6 +222,9 @@ $planet['planetpercent_'.$t]=round(100/($p_percent['num'])*$planet['planetcount_
 //$second_line = explode(':', @fgets($fp));
 //@fclose($fp);
 
+//mySQL version info
+$tmp = mysql_get_server_info();
+$mysqlver = substr($tmp, 0, strpos($tmp, "-"));
 
 $main_html .= '
 <style type="text/css">
@@ -242,7 +262,7 @@ td.value_row { color: #BOBOBO; font-weight: bold;}
               <tr height="10"><td></td></tr>
               <tr>
                 <td class="desc_row">Total RAM:</td>
-                <td class="value_row">256 MB</td>
+                <td class="value_row">'.round($results['ram']['total']/1024, 2).' MB</td>
               </tr>
               <tr>
                 <td class="desc_row">Free RAM:</td>
@@ -261,7 +281,7 @@ td.value_row { color: #BOBOBO; font-weight: bold;}
             <tr height="10"><td></td></tr>
               <tr>
                 <td class="desc_row">mySQL Version:</td>
-                <td class="value_row">4.1.10</td>
+                <td class="value_row">'.$mysqlver.'</td>
               </tr>
 
                <tr height="10"><td></td></tr>
