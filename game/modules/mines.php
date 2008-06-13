@@ -30,7 +30,7 @@ if ($game->planet['workermine_3']<100) $game->planet['workermine_3']=100;
 function ResourcesPerTickMetal() {
 	$rid=0;
     global $RACE_DATA,$PLANETS_DATA, $addres, $game;
-    $result = 0.25*(3*((pow(((3*$PLANETS_DATA[$game->planet['planet_type']][$rid])*(1+$game->planet['building_'.($rid+2)])),1.35))/100*(50+ (50*(1/($game->planet['building_'.($rid+2)]*100+100))*($game->planet['workermine_'.($rid+1)]+100))))*($RACE_DATA[$game->player['user_race']][9+$rid]*($addres[$game->planet['research_5']]*$RACE_DATA[$game->player['user_race']][20])));
+    $result = 0.25*(3*((pow(((3*$game->planet['rateo_1'])*(1+$game->planet['building_'.($rid+2)])),1.35))/100*(50+ (50*(1/($game->planet['building_'.($rid+2)]*100+100))*($game->planet['workermine_'.($rid+1)]+100))))*($RACE_DATA[$game->player['user_race']][9+$rid]*($addres[$game->planet['research_5']]*$RACE_DATA[$game->player['user_race']][20])));
    
     if (round($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4, 0)<$game->planet['min_troops_required'])
     	$result=$result* (1/$game->planet['min_troops_required']*($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4));
@@ -42,7 +42,7 @@ function ResourcesPerTickMetal() {
 function ResourcesPerTickMineral() {
 	$rid=1;
     global $RACE_DATA,$PLANETS_DATA, $addres, $game;
-    $result = 0.25*(3*((pow(((3*$PLANETS_DATA[$game->planet['planet_type']][$rid])*(1+$game->planet['building_'.($rid+2)])),1.35))/100*(50+ (50*(1/($game->planet['building_'.($rid+2)]*100+100))*($game->planet['workermine_'.($rid+1)]+100))))*($RACE_DATA[$game->player['user_race']][9+$rid]*($addres[$game->planet['research_5']]*$RACE_DATA[$game->player['user_race']][20])));
+    $result = 0.25*(3*((pow(((3*$game->planet['rateo_2'])*(1+$game->planet['building_'.($rid+2)])),1.35))/100*(50+ (50*(1/($game->planet['building_'.($rid+2)]*100+100))*($game->planet['workermine_'.($rid+1)]+100))))*($RACE_DATA[$game->player['user_race']][9+$rid]*($addres[$game->planet['research_5']]*$RACE_DATA[$game->player['user_race']][20])));
     if (round($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4, 0)<$game->planet['min_troops_required'])
     	$result=$result* (1/$game->planet['min_troops_required']*(round($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4, 0)));
     if($result < 10) $round = 1;
@@ -53,7 +53,7 @@ function ResourcesPerTickMineral() {
 function ResourcesPerTickLatinum() {
 	$rid=2;
     global $RACE_DATA,$PLANETS_DATA, $addres, $game;
-    $result = 0.2*(3*((pow(((3*$PLANETS_DATA[$game->planet['planet_type']][$rid])*(1+$game->planet['building_'.($rid+2)])),1.35))/100*(50+ (50*(1/($game->planet['building_'.($rid+2)]*100+100))*($game->planet['workermine_'.($rid+1)]+100))))*($RACE_DATA[$game->player['user_race']][9+$rid]*($addres[$game->planet['research_5']]*$RACE_DATA[$game->player['user_race']][20])));
+    $result = 0.2*(3*((pow(((3*$game->planet['rateo_3'])*(1+$game->planet['building_'.($rid+2)])),1.35))/100*(50+ (50*(1/($game->planet['building_'.($rid+2)]*100+100))*($game->planet['workermine_'.($rid+1)]+100))))*($RACE_DATA[$game->player['user_race']][9+$rid]*($addres[$game->planet['research_5']]*$RACE_DATA[$game->player['user_race']][20])));
     if (round($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4, 0)<$game->planet['min_troops_required'])
     	$result=$result* (1/$game->planet['min_troops_required']*(round($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4, 0)));
     if($result < 10) $round = 1;
@@ -64,7 +64,7 @@ function ResourcesPerTickLatinum() {
 function ResourcesPerHourMetal() {
 	$rid=0;
     global $RACE_DATA,$PLANETS_DATA, $addres, $game;
-    $result = 0.25*(3*((pow(((3*$PLANETS_DATA[$game->planet['planet_type']][$rid])*(1+$game->planet['building_'.($rid+2)])),1.35))/100*(50+ (50*(1/($game->planet['building_'.($rid+2)]*100+100))*($game->planet['workermine_'.($rid+1)]+100))))*($RACE_DATA[$game->player['user_race']][9+$rid]*($addres[$game->planet['research_5']]*$RACE_DATA[$game->player['user_race']][20])));
+    $result = 0.25*(3*((pow(((3*$game->planet['rateo_1'])*(1+$game->planet['building_'.($rid+2)])),1.35))/100*(50+ (50*(1/($game->planet['building_'.($rid+2)]*100+100))*($game->planet['workermine_'.($rid+1)]+100))))*($RACE_DATA[$game->player['user_race']][9+$rid]*($addres[$game->planet['research_5']]*$RACE_DATA[$game->player['user_race']][20])));
    
     if (round($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4, 0)<$game->planet['min_troops_required'])
     	$result=$result* (1/$game->planet['min_troops_required']*($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4));
@@ -77,7 +77,7 @@ function ResourcesPerHourMetal() {
 function ResourcesPerHourMineral() {
 	$rid=1;
     global $RACE_DATA,$PLANETS_DATA, $addres, $game;
-    $result = 0.25*(3*((pow(((3*$PLANETS_DATA[$game->planet['planet_type']][$rid])*(1+$game->planet['building_'.($rid+2)])),1.35))/100*(50+ (50*(1/($game->planet['building_'.($rid+2)]*100+100))*($game->planet['workermine_'.($rid+1)]+100))))*($RACE_DATA[$game->player['user_race']][9+$rid]*($addres[$game->planet['research_5']]*$RACE_DATA[$game->player['user_race']][20])));
+    $result = 0.25*(3*((pow(((3*$game->planet['rateo_2'])*(1+$game->planet['building_'.($rid+2)])),1.35))/100*(50+ (50*(1/($game->planet['building_'.($rid+2)]*100+100))*($game->planet['workermine_'.($rid+1)]+100))))*($RACE_DATA[$game->player['user_race']][9+$rid]*($addres[$game->planet['research_5']]*$RACE_DATA[$game->player['user_race']][20])));
     if (round($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4, 0)<$game->planet['min_troops_required'])
     	$result=$result* (1/$game->planet['min_troops_required']*(round($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4, 0)));
     if($result < 10) $round = 1;
@@ -89,7 +89,7 @@ function ResourcesPerHourMineral() {
 function ResourcesPerHourLatinum() {
 	$rid=2;
     global $RACE_DATA,$PLANETS_DATA, $addres, $game;
-    $result = 0.2*(3*((pow(((3*$PLANETS_DATA[$game->planet['planet_type']][$rid])*(1+$game->planet['building_'.($rid+2)])),1.35))/100*(50+ (50*(1/($game->planet['building_'.($rid+2)]*100+100))*($game->planet['workermine_'.($rid+1)]+100))))*($RACE_DATA[$game->player['user_race']][9+$rid]*($addres[$game->planet['research_5']]*$RACE_DATA[$game->player['user_race']][20])));
+    $result = 0.2*(3*((pow(((3*$game->planet['rateo_3'])*(1+$game->planet['building_'.($rid+2)])),1.35))/100*(50+ (50*(1/($game->planet['building_'.($rid+2)]*100+100))*($game->planet['workermine_'.($rid+1)]+100))))*($RACE_DATA[$game->player['user_race']][9+$rid]*($addres[$game->planet['research_5']]*$RACE_DATA[$game->player['user_race']][20])));
     if (round($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4, 0)<$game->planet['min_troops_required'])
     	$result=$result* (1/$game->planet['min_troops_required']*(round($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4, 0)));
     if($result < 10) $round = 1;
