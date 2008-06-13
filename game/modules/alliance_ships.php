@@ -49,7 +49,7 @@ function Ships_List($focus=0,$search_name="")
 		message(NOTICE, constant($game->sprache("TEXT67")));
 	}
 
-	/* AC: Get serach name */
+	/* AC: Get search name */
 	$search_name=htmlspecialchars($_REQUEST['search']);
 
 	/* AC: Check query focus */
@@ -121,6 +121,31 @@ function Ships_List($focus=0,$search_name="")
 	else if ($_REQUEST['order']==5)
 	{
 		$ordermethod = 's.hitpoints DESC,s.ship_scrap,s.ship_repair,st.name ASC';
+	}
+	/* Ordered by player reversed */
+	else if ($_REQUEST['order']==-1)
+	{
+		$ordermethod = 'u.user_name DESC, st.ship_torso DESC, s.ship_scrap,s.ship_repair,st.name ASC';
+	}
+	/* Ordered by shiptorso reversed */
+	else if ($_REQUEST['order']==-2)
+	{
+		$ordermethod = 'st.ship_torso ASC, u.user_name, s.ship_scrap,s.ship_repair,st.name ASC';
+	}
+	/* Ordered by name reversed */
+	else if ($_REQUEST['order']==-3)
+	{
+		$ordermethod = 's.ship_name DESC, u.user_name, s.ship_scrap,s.ship_repair,st.name ASC';
+	}
+	/* Ordered by position reversed */
+	else if ($_REQUEST['order']==-4)
+	{
+		$ordermethod = 'pl.planet_name, fl.fleet_name DESC,s.ship_scrap,s.ship_repair,st.name ASC';
+	}
+	/* Ordered by hitpoints time reversed */
+	else if ($_REQUEST['order']==-5)
+	{
+		$ordermethod = 's.hitpoints ASC,s.ship_scrap,s.ship_repair,st.name ASC';
 	}
 
 	$sql = 'SELECT s.ship_id, s.hitpoints, s.ship_repair, s.ship_scrap, s.ship_untouchable,
@@ -196,64 +221,65 @@ function Ships_List($focus=0,$search_name="")
 	/**
 	 * AC: Create main table
 	 */
+	switch($_REQUEST['order'])
+	{
+		// Player
+		case 1:
+		case -1:
+			$header1 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order='.($_REQUEST['order']*-1).'&search='.$search_name).'"><b><u>'.constant($game->sprache("TEXT70")).'</u></b></a>';
+			$header2 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=2&search='.$search_name).'"><b>'.constant($game->sprache("TEXT60")).'</b></a>';
+			$header3 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=3&search='.$search_name).'"><b>'.constant($game->sprache("TEXT6")).'</b></a>';
+			$header4 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=4&search='.$search_name).'"><b>'.constant($game->sprache("TEXT7")).'</b></a>';
+			$header5 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=5&search='.$search_name).'"><b>'.constant($game->sprache("TEXT8")).'</b></a>';
+		break;
+		// Class
+		case 2:
+		case -2:
+			$header1 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=1&search='.$search_name).'"><b>'.constant($game->sprache("TEXT70")).'</b></a>';
+			$header2 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order='.($_REQUEST['order']*-1).'&search='.$search_name).'"><b><u>'.constant($game->sprache("TEXT60")).'</u></b></a>';
+			$header3 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=3&search='.$search_name).'"><b>'.constant($game->sprache("TEXT6")).'</b></a>';
+			$header4 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=4&search='.$search_name).'"><b>'.constant($game->sprache("TEXT7")).'</b></a>';
+			$header5 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=5&search='.$search_name).'"><b>'.constant($game->sprache("TEXT8")).'</b></a>';
+		break;
+		// Name
+		case 3:
+		case -3:
+			$header1 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=1&search='.$search_name).'"><b>'.constant($game->sprache("TEXT70")).'</b></a>';
+			$header2 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=2&search='.$search_name).'"><b>'.constant($game->sprache("TEXT60")).'</b></a>';
+			$header3 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order='.($_REQUEST['order']*-1).'&search='.$search_name).'"><b><u>'.constant($game->sprache("TEXT6")).'</u></b></a>';
+			$header4 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=4&search='.$search_name).'"><b>'.constant($game->sprache("TEXT7")).'</b></a>';
+			$header5 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=5&search='.$search_name).'"><b>'.constant($game->sprache("TEXT8")).'</b></a>';
+		break;
+		// Position
+		case 4:
+		case -4:
+			$header1 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=1&search='.$search_name).'"><b>'.constant($game->sprache("TEXT70")).'</b></a>';
+			$header2 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=2&search='.$search_name).'"><b>'.constant($game->sprache("TEXT60")).'</b></a>';
+			$header3 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=3&search='.$search_name).'"><b>'.constant($game->sprache("TEXT6")).'</b></a>';
+			$header4 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order='.($_REQUEST['order']*-1).'&search='.$search_name).'"><b><u>'.constant($game->sprache("TEXT7")).'</u></b></a>';
+			$header5 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=5&search='.$search_name).'"><b>'.constant($game->sprache("TEXT8")).'</b></a>';
+		break;
+		// Condition
+		case 5:
+		case -5:
+			$header1 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=1&search='.$search_name).'"><b>'.constant($game->sprache("TEXT70")).'</b></a>';
+			$header2 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=2&search='.$search_name).'"><b>'.constant($game->sprache("TEXT60")).'</b></a>';
+			$header3 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=3&search='.$search_name).'"><b>'.constant($game->sprache("TEXT6")).'</b></a>';
+			$header4 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order=4&search='.$search_name).'"><b>'.constant($game->sprache("TEXT7")).'</b></a>';
+			$header5 = '<a href="'.parse_link('a=alliance_ships&view=ships_list&order='.($_REQUEST['order']*-1).'&search='.$search_name).'"><b><u>'.constant($game->sprache("TEXT8")).'</u></b></a>';
+		break;
+	}
+
 	$game->out('<br><center><table border=0 cellpadding=1 cellspacing=1 class="style_inner">
 		<tr>
 		<td><b>#</b></td>
-		<td width=160><a href="'.parse_link('a=alliance_ships&alliance=&view=ships_list&order=1&search='.$search_name).'"><b>');
-
-	// Player
-	if ($_REQUEST['order']==1)
-		$game->out('<u>'.constant($game->sprache("TEXT70")).'</u>');
-	else
-		$game->out(constant($game->sprache("TEXT70")));
-
-	$game->out('
-		</b></a></td>
-		<td width=160><a href="'.parse_link('a=alliance_ships&alliance=&view=ships_list&order=2&search='.$search_name).'"><b>');
-
-	// Class
-	if ($_REQUEST['order']==2)
-		$game->out('<u>'.constant($game->sprache("TEXT60")).'</u>');
-	else
-		$game->out(constant($game->sprache("TEXT60")));
-
-	$game->out('
-		</b></a></td>
-		<td width=160><a href="'.parse_link('a=alliance_ships&alliance=&view=ships_list&order=3&search='.$search_name).'"><b>');
-
-	// Name
-	if ($_REQUEST['order']==3)
-		$game->out('<u>'.constant($game->sprache("TEXT6")).'</u>');
-	else
-		$game->out(constant($game->sprache("TEXT6")));
-
-	$game->out('</b></a>
-		</td>
-		<td width=160><a href="'.parse_link('a=alliance_ships&alliance=&view=ships_list&order=4&search='.$search_name).'"><b>');
-
-	// Position
-	if ($_REQUEST['order']==4)
-		$game->out('<u>'.constant($game->sprache("TEXT7")).'</u>');
-	else
-		$game->out(constant($game->sprache("TEXT7")));
-
-	$game->out('</b></a></td>
-		<td width=160 align="center"><a href="'.parse_link('a=alliance_ships&view=ships_list&order=5&search='.$search_name).'"><b>');
-
-	// Condition
-	if ($_REQUEST['order']==5)
-		$game->out('<u>'.constant($game->sprache("TEXT8")).'</u>');
-	else
-		$game->out(constant($game->sprache("TEXT8")));
-
-	$game->out('</b></a>
-		</td>
-		<td width=75 align="center">
-		<b>'.constant($game->sprache("TEXT9")).'</b>
-		</td>
-		<td width=75 align="center">
-		<b>'.constant($game->sprache("TEXT10")).'</b>
-		</td>
+		<td width=160>'.$header1.'</td>
+		<td width=160>'.$header2.'</td>
+		<td width=160>'.$header3.'</td>
+		<td width=160>'.$header4.'</td>
+		<td width=160 align="center">'.$header5.'</td>
+		<td width=75 align="center"><b>'.constant($game->sprache("TEXT9")).'</b></td>
+		<td width=75 align="center"><b>'.constant($game->sprache("TEXT10")).'</b></td>
 		</tr>');
 
 	$class_title = constant($game->sprache("TEXT12"));
@@ -399,10 +425,10 @@ function Ships_List($focus=0,$search_name="")
 	$max_pages = ceil($n_ships['n_ships'] / 20);
 	$game->out('<br><center><table border=0 cellpadding=2 cellspacing=2 class="style_inner" width=400><tr>
 		<td width=50 align=middle>
-			'.(($queryfocus>0) ? '<a href="'.parse_link('a=alliance_ships&alliance&order='.$_REQUEST['order'].'&start=0').'"><span class="text_large">[1]</a>' : '[1]').'
+			'.(($queryfocus>0) ? '<a href="'.parse_link('a=alliance_ships&order='.$_REQUEST['order'].'&start=0').'"><span class="text_large">[1]</a>' : '[1]').'
 		</td>
 		<td width=150 align=middle>
-			'.(($queryfocus>0) ? '<a href="'.parse_link('a=alliance_ships&alliance&order='.$_REQUEST['order'].'&start='.($queryfocus-20)).'"><span class="text_large">'.constant($game->sprache("TEXT32")).'</a>' : '').'
+			'.(($queryfocus>0) ? '<a href="'.parse_link('a=alliance_ships&order='.$_REQUEST['order'].'&start='.($queryfocus-20)).'"><span class="text_large">'.constant($game->sprache("TEXT32")).'</a>' : '').'
 		</td>
 		<td width=150 align=middle>
 			'.(($queryfocus < $n_ships['n_ships']-20) ? '<a href="'.parse_link('a=alliance_ships&order='.$_REQUEST['order'].'&start='.($queryfocus+20)).'"><span class="text_large">'.constant($game->sprache("TEXT33")).'</a>' : '').'
