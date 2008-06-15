@@ -155,36 +155,36 @@ function create_planet($user_id, $id_type, $id_value) {
             // Verify that a suitable system already exists
 
             // In one of 5 cases it creates in any case a new system
-            if(mt_rand(1, 5) != 3) {
-                $sector_id_min = ( ($quadrant_id - 1) * $game->sectors_per_quadrant) + 1; // (id - 1) * 81
-                $sector_id_max = $quadrant_id * $game->sectors_per_quadrant; // id * 81
+				if(mt_rand(1, 5) != 3) {
+					$sector_id_min = ( ($quadrant_id - 1) * $game->sectors_per_quadrant) + 1; // (id - 1) * 81
+					$sector_id_max = $quadrant_id * $game->sectors_per_quadrant; // id * 81
 
-                $sql = 'SELECT system_id, sector_id, system_n_planets
+					$sql = 'SELECT system_id, sector_id, system_n_planets
                         FROM starsystems
                         WHERE sector_id >= '.$sector_id_min.' AND
                               sector_id <= '.$sector_id_max.' AND
                               system_closed = 0 AND
                               system_n_planets < '.$game->system_max_planets;
 
-                if(($q_systems = $db->query($sql)) === false) {
-                    message(DATABASE_ERROR, 'world::create_planet(): Could not query systems data');
-                }
+					if(($q_systems = $db->query($sql)) === false) {
+						message(DATABASE_ERROR, 'world::create_planet(): Could not query systems data');
+					}
 
-                $available_systems = array();
-                $n_available = 0;
+					$available_systems = array();
+					$n_available = 0;
 
-                while($system = $db->fetchrow($q_systems)) {
-                    $available_systems[] = array($system['sector_id'], $system['system_id']);
+					while($system = $db->fetchrow($q_systems)) {
+						$available_systems[] = array($system['sector_id'], $system['system_id']);
 
-                    //if( ++$n_available > 30) break;
-                }
+						//if( ++$n_available > 30) break;
+					}
 
-                $chosen_system = $available_systems[array_rand($available_systems)];
+					$chosen_system = $available_systems[array_rand($available_systems)];
 
-                $sector_id = $chosen_system[0];
-                $system_id = $chosen_system[1];
-            }
-
+					$sector_id = $chosen_system[0];
+					$system_id = $chosen_system[1];
+				}
+			
             // If a new system must be created ($system_id = 0), then it's orbitals are all free
             // (in the Alpha-2 it has nevertheless searched * roll *) )
             // Otherwise, a free search
@@ -280,19 +280,28 @@ function create_planet($user_id, $id_type, $id_value) {
             $system_id = $id_value;
             
             // NOTE: The system chosen must exist
-            
-            $sql = 'SELECT sector_id, planet_distance_id
-                    FROM planets
-                    WHERE system_id = '.$system_id;
-
+            /*
+			$sql = 'SELECT sector_id, planet_distance_id
+				FROM planets
+				WHERE system_id = '.$system_id;
+			*/
+			
+			$sql = 'SELECT s.sector_id, p.planet_distance_id
+					FROM starsystems s
+					LEFT JOIN planets p
+					ON s.system_id = p.system_id 
+					WHERE s.system_id = '.$system_id;
+		
             if(($planet_did = $db->queryrowset($sql)) === false) {
                 message(DATABASE_ERROR, 'world::create_planet(): Could not query planet did data');
             }
-
-            for($i = 0; $i < count($planet_did); ++$i) {
-                unset($free_distances[$planet_did[$i]['planet_distance_id']]);
-            }
-
+			
+			if(isset($planet_did[0]['planet_distance_id'])) {
+				for($i = 0; $i < count($planet_did); ++$i) {
+					unset($free_distances[$planet_did[$i]['planet_distance_id']]);
+				}
+			}
+			
             $sector_id = $planet_did[0]['sector_id'];
         break;
     }
