@@ -35,7 +35,7 @@ function create_system($id_type, $id_value) {
                     FROM starsystems_slots
                     WHERE quadrant_id = '.$quadrant_id.'
                     LIMIT 1';
-                          
+
             if(($free_slot = $db->queryrow($sql)) === false) {
                 message(DATABASE_ERROR, 'world::create_system(): Could not query starsystem slots');
             }
@@ -48,7 +48,7 @@ function create_system($id_type, $id_value) {
                     FROM starsystems_slots
                     WHERE sector_id = '.$id_value.'
                     LIMIT 1';
-                    
+
             if(($free_slot = $db->queryrow($sql)) === false) {
                 message(DATABASE_ERROR, 'world::create_system(): Could not query starsystem slots');
             }
@@ -145,7 +145,7 @@ function create_system($id_type, $id_value) {
 
 function create_planet($user_id, $id_type, $id_value) {
     global $db, $game, $PLANETS_DATA;
-    
+
     $system_id = $sector_id = 0;
 
     switch($id_type) {
@@ -155,36 +155,36 @@ function create_planet($user_id, $id_type, $id_value) {
             // Verify that a suitable system already exists
 
             // In one of 5 cases it creates in any case a new system
-				if(mt_rand(1, 5) != 3) {
-					$sector_id_min = ( ($quadrant_id - 1) * $game->sectors_per_quadrant) + 1; // (id - 1) * 81
-					$sector_id_max = $quadrant_id * $game->sectors_per_quadrant; // id * 81
+            if(mt_rand(1, 5) != 3) {
+                $sector_id_min = ( ($quadrant_id - 1) * $game->sectors_per_quadrant) + 1; // (id - 1) * 81
+                $sector_id_max = $quadrant_id * $game->sectors_per_quadrant; // id * 81
 
-					$sql = 'SELECT system_id, sector_id, system_n_planets
+                $sql = 'SELECT system_id, sector_id, system_n_planets
                         FROM starsystems
                         WHERE sector_id >= '.$sector_id_min.' AND
                               sector_id <= '.$sector_id_max.' AND
                               system_closed = 0 AND
                               system_n_planets < '.$game->system_max_planets;
 
-					if(($q_systems = $db->query($sql)) === false) {
-						message(DATABASE_ERROR, 'world::create_planet(): Could not query systems data');
-					}
+                if(($q_systems = $db->query($sql)) === false) {
+                    message(DATABASE_ERROR, 'world::create_planet(): Could not query systems data');
+                }
 
-					$available_systems = array();
-					$n_available = 0;
+                $available_systems = array();
+                $n_available = 0;
 
-					while($system = $db->fetchrow($q_systems)) {
-						$available_systems[] = array($system['sector_id'], $system['system_id']);
+                while($system = $db->fetchrow($q_systems)) {
+                    $available_systems[] = array($system['sector_id'], $system['system_id']);
 
-						//if( ++$n_available > 30) break;
-					}
+                    //if( ++$n_available > 30) break;
+                }
 
-					$chosen_system = $available_systems[array_rand($available_systems)];
+                $chosen_system = $available_systems[array_rand($available_systems)];
 
-					$sector_id = $chosen_system[0];
-					$system_id = $chosen_system[1];
-				}
-			
+                $sector_id = $chosen_system[0];
+                $system_id = $chosen_system[1];
+            }
+
             // If a new system must be created ($system_id = 0), then it's orbitals are all free
             // (in the Alpha-2 it has nevertheless searched * roll *) )
             // Otherwise, a free search
@@ -274,35 +274,41 @@ function create_planet($user_id, $id_type, $id_value) {
                 }
             }
         break;
-        
+
         case 'system':
             $free_distances = $game->planet_distances;
             $system_id = $id_value;
-            
+
             // NOTE: The system chosen must exist
             /*
-			$sql = 'SELECT sector_id, planet_distance_id
-				FROM planets
-				WHERE system_id = '.$system_id;
-			*/
-			
-			$sql = 'SELECT s.sector_id, p.planet_distance_id
-					FROM starsystems s
-					LEFT JOIN planets p
-					ON s.system_id = p.system_id 
-					WHERE s.system_id = '.$system_id;
-		
+            $sql = 'SELECT sector_id, planet_distance_id
+                    FROM planets
+                    WHERE system_id = '.$system_id;
+            */
+
+            /* 16/06/08 - AC: First of all, obtain sector ID, starsystem may be empty! */
+            $sql = 'SELECT sector_id
+                    FROM starsystems
+                    WHERE system_id = '.$system_id;
+
+            if(($system = $db->queryrow($sql)) === false) {
+                message(DATABASE_ERROR, 'world::create_planet(): Could not query sector did data');
+            }
+
+            $sector_id = $system['sector_id'];
+
+            /* 16/06/08 - AC: then check for already occupied planet slot */
+            $sql = 'SELECT planet_distance_id
+                    FROM planets
+                    WHERE system_id = '.$system_id;
+
             if(($planet_did = $db->queryrowset($sql)) === false) {
                 message(DATABASE_ERROR, 'world::create_planet(): Could not query planet did data');
             }
-			
-			if(isset($planet_did[0]['planet_distance_id'])) {
-				for($i = 0; $i < count($planet_did); ++$i) {
-					unset($free_distances[$planet_did[$i]['planet_distance_id']]);
-				}
-			}
-			
-            $sector_id = $planet_did[0]['sector_id'];
+
+            for($i = 0; $i < count($planet_did); ++$i) {
+                unset($free_distances[$planet_did[$i]['planet_distance_id']]);
+            }
         break;
     }
 
@@ -348,16 +354,16 @@ function create_planet($user_id, $id_type, $id_value) {
                 $type_array[] = $type;
             }
         }
-        
+
         $planet_type = $type_array[array_rand($type_array)];
 
         // Varianza randomica delle costanti base del pianeta
         $rateo_1 = round(($PLANETS_DATA[$planet_type][0] + ((250 - mt_rand(0, 500))*0.001)), 2);
-		if($rateo_1 < 0.1) $rateo_1 = 0.1;
+        if($rateo_1 < 0.1) $rateo_1 = 0.1;
         $rateo_2 = round(($PLANETS_DATA[$planet_type][1] + ((250 - mt_rand(0, 500))*0.001)), 2);
-		if($rateo_2 < 0.1) $rateo_2 = 0.1;
+        if($rateo_2 < 0.1) $rateo_2 = 0.1;
         $rateo_3 = round(($PLANETS_DATA[$planet_type][2] + ((250 - mt_rand(0, 500))*0.001)), 2);
-		if($rateo_3 < 0.1) $rateo_3 = 0.1;
+        if($rateo_3 < 0.1) $rateo_3 = 0.1;
         $rateo_4 = $PLANETS_DATA[$planet_type][3];
 
         $sql = 'INSERT INTO planets (planet_name, system_id, sector_id, planet_type, planet_owner, planet_owned_date, planet_distance_id, planet_distance_px, planet_covered_distance, planet_tick_cdistance, planet_max_cdistance, resource_1, resource_2, resource_3, resource_4, planet_points, rateo_1, rateo_2, rateo_3, rateo_4)
@@ -384,7 +390,7 @@ function create_planet($user_id, $id_type, $id_value) {
     $sql = 'UPDATE starsystems
             SET system_n_planets = system_n_planets + 1
             WHERE system_id = '.$system_id;
-            
+
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'world::create_planet(): Could not update starsystem data');
     }
