@@ -1201,20 +1201,28 @@ $UNIT_DESCRIPTION = array (
 
 
 	// Kazon
+	/*
+		0	-	Esecutore
+		1	-	Assassino
+		2	-	Templare
+		3	-	Alto Kazon
+		4	-	Tecnico
+		5	-	Medico
+	*/
 
 	11 => array(
 
-		0 => 'Die Exekutor ist relativ kostengünstig und kann daher<br>schon früh im Spiel gut als Verteidigung für Ihren Planeten eingesetzt werden.<br>Im späteren Spielverlauf ist sie als Besatzung für die meisten Schiffe aber nicht mehr geeignet.',
+		0 => 'Gli Esecutori sono relativamente economici e facilmente accessibili ad inizio gioco.<br>per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
 
-		1 => 'Die Assasine sind vor allem im Nahkampf effektiv und haben eine verstärkte Verteidigung<br>Sie können fast überall effizient eingesetzt werden obwohl ihre Ausbildung im Vergleich zu der Exekutor ein ganzes Stück teurer ist.',
+		1 => 'Gli Assassini sono particolarmente efficaci nel combattimento a corto raggio; data la loro alta capacit&agrave; difensiva possono essere impiegati in qualsiasi situazione. Il loro addestramento risulta pi&ugrave; costoso di quello degli Esecutori.',
 
-		2 => 'Der Templar ist ein Kampfexperte, die alle Situationen bestehen werden. Sie wurden ausschließlich zum Kämpfen ausgebildet und kennen keine Furcht. Auch wenn ihre Verteidigung relativ schwach ist, sollten sich feindliche Kämpfer lieber außerhalb ihres Einflussgebietes aufhalten.',
+		2 => 'I Templari sono esperti in combattimento in grado di sopravvivere ad ogni situazione e non conoscono paura. Anche se la loro difesa &egrave; relativamente debole, gli avversari farebbero bene a stare alla larga dalla loro zona di operazioni.',
 
-		3 => 'Der Hohe Kazon wird nicht für Kampfeinsätze sondern zur Führung von Schiffen ausgebildet.<br>High Kazon sind teuer in ihrer Ausbildung, sind aber auf jedem Schiff erforderlich. Ihre Kampfstärke ist mit der Exekutoren gleichzusetzen.',
+		3 => 'Gli Alti Kazon non vengono addestrati al combattimento ma al comando delle navi stellari. Il loro addestramento &egrave; dispendioso ma sono figure necessarie per ogni vascello. In combattimento la loro efficacia &grave; paragonabile a quella degli Esecutori.',
 
-		4 => 'Der Techniker wird nicht für Kampfeinsätze sondern zur Instandhaltung von Schiffen ausgebildet.<br>Techniker sind teuer in ihrer Ausbildung, sind aber auf fast jedem Schiff erforderlich',
+		4 => 'Il Tecnico &egrave; addestrato per svolgere operazioni di manutenzione a bordo delle navi stellari piuttosto che a portare a termine missioni di combattimento. &Eacute; praticamente indispensabile tra i membri dell&#146;equipaggio.',
 
-		5 => 'Der Mediziner kämpft nicht und kann bei Kampfhandlungen auch nicht getötet werden, sondern wird nur auf Schiffen eingesetzt, um Verletzte zu verarzten.',
+		5 => 'Il medico non viene addestrato per svolgere missioni di guerra ma per fornire supporto medico sulle navi stellari.',
 
 	),
 
@@ -1576,27 +1584,27 @@ $BUILDING_DESCRIPTION = array (
 
 	11 => array(
 
-		0 => 'Je höher das Gebäude ausgebaut ist,desto mehr neue Gebäude können gebaut werden.',
+		0 => 'Maggiore il livello di questa struttura, maggiore il numero di strutture costruibili sul pianeta.',
 
-		1 => 'Je höher das Gebäude ausgebaut ist,desto mehr Metall wird pro Tick abgebaut.',
+		1 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di metalli ottenuta ad ogni tick.',
 
-		2 => 'Je höher das Gebäude ausgebaut ist,desto mehr Mineralien werden pro Tick abgebaut.',
+		2 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di minerali ottenuta ad ogni tick.',
 
-		3 => 'Je höher das Gebäude ausgebaut ist,desto mehr Latinum kann pro Tick produziert werden.',
+		3 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di dilitio ottenuta ad ogni tick.',
 
-		4 => 'Man muss ein Fusionskraftwerk pro 10 Gebäude bauen,damit diese noch mit ausreichend Energie versorgt werden.',
+		4 => 'Costruire un livello di questa struttura permette di alimentare 10 livelli di altre strutture presenti sul pianeta.',
 
-		5 => 'Je nach Liv. des Shrine of War können Arbeiter zu verschiedenen Einheiten-typen ausgebildet werden.',
+		5 => 'Dal livello del Santuario della Guerra dipende il livello delle unit&agrave; che possono essere addestrate.',
 
-		6 => 'Der Raumhafen dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet eine Verbesserung der Sensorenstärke.',
+		6 => 'Potenziare questa struttura aumenta la portata dei sensori installati sul pianeta. Inoltre, ti permette di riparare le navi danneggiate e di gestire gli equipaggi.',
 
-		7 => 'Je höher das Gebäude ausgebaut ist,<br>desto schneller können Schiffe gebaut werden.',
+		7 => 'Maggiore il livello di questa struttura, maggiore la velocit&agrave; con cui vengono costruite le navi stellari.',
 
 		8 => 'Potenziare questa struttura permette di ricercare un maggior numero di tecnologie.<br>Alcune tecnologie sono necessarie per produrre soldati o navi.',
 
 		9 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
 
-		10 => 'Diese Einrichtung ermöglicht es, mit anderen Spielern Geschäftsbeziehungen zu schließen, die automatisiert abgewickelt werden.',
+		10 => 'Questa struttura ti permette di stringere accordi commerciali con altri giocatori.',
 
 		11 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di materie prime stoccabili (circa 45.000 per livello).',
 
@@ -1911,18 +1919,25 @@ $TECH_DESCRIPTION = array (
 
 
 	// Kazon
+	/*
+		0	-	Terraforming
+		1	-	Ricerca Medica
+		2	-	Difesa Orbitale
+		3	-	Automazione
+		4	-	Lavorazione Materiali
+	*/
 
 	11 => array(
 
-		0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Liv. einen zusätzlichen Arbeiter.<br>Außerdem erhöht sich das max. Bevölkerungslimit auf dem Planeten pro Liv. um 450.',
+		0 => 'Grazie al <b>Terraforming</b> guadagni un lavoratore extra per ogni 10 cicli di tick per ogni livello di Terraforming sviluppato. Inoltre, per ogni livello viene innalzato il limite di popolazione del pianeta di circa 450 unit&agrave;.',
 
-		1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Liv. einen zusätzlichen Arbeiter.',
+		1 => 'Grazie alla <b>Ricerca Medica</b> guadagni un lavoratore extra ogni 5 cicli di tick per ogni livello sviluppato.',
 
-		2 => 'Durch das Erforschen der Orbitalabwehr verändern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Liv. wie folgt:<br>Kosten -3.5% / Liv.<br>Anzahl: +2 / Liv.',
+		2 => 'Miglioramenti nella tecnologia della <b>Difesa Orbitale</b> ti permettono di potenziare le difese planetarie. Per ogni livello di sviluppo vengono applicate le seguenti modifiche:<br>Costi di realizzazione -3.5% / Liv.<br>Difese basiche: +1 / Liv.<br>Difese avanzate: +1 / Liv.',
 
-		3 => 'Durch Automatisierung laufen <b>sämtliche</b> Bau- Ausbildungsvorgänge auf Ihrem Planeten 2% pro Liv. schneller ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
+		3 => 'Attraverso l&#146;<b>Automazione</b> dei processi costruttivi delle strutture di questo pianeta, viene risparmiato circa il 20% del tempo di costruzione per livello.<br>Un risparmio di circa 1/5 del tempo di costruzione di ogni struttura giustifica l&#146;elevato costo in risorse per affrontare lo sviluppo.',
 
-		4 => 'Rohstoffverarbeitung erhöht den Ressourcenoutput sämtlicher Minen/Raffinerien:<br>Liv. 1: +4,5%<br>Liv. 2: +8,75%<br>Liv. 3: +12,75%<br>Liv. 4: +16,5%<br>Liv. 5: +20%<br>Liv. 6: +23,25%<br>Liv. 7: +26,25%<br>Liv. 8: +29%<br>Liv. 9: +31,5%',
+		4 => 'Miglioramenti nella <b>Lavorazione dei Materiali</b> aumentano la quantit&agrave; di risorse estratte dalle miniere/raffinerie:<br>Liv. 1: +4,5%<br>Liv. 2: +8,75%<br>Liv. 3: +12,75%<br>Liv. 4: +16,5%<br>Liv. 5: +20%<br>Liv. 6: +23,25%<br>Liv. 7: +26,25%<br>Liv. 8: +29%<br>Liv. 9: +31,5%',
 
 	),
 
