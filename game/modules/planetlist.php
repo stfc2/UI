@@ -136,14 +136,14 @@ if (isset($_REQUEST['a2']) && $_REQUEST['a2']>=0)
 }
 
 
-$game->out('<center><span class="caption">'.constant($game->sprache("TEXT1")).'</span></center><br><br>');
-$game->out('<center>'.constant($game->sprache("TEXT2")).'<br>'.constant($game->sprache("TEXT3")).'<br>
+$game->out('<span class="caption">'.constant($game->sprache("TEXT1")).'</span><br><br>');
+$game->out(constant($game->sprache("TEXT2")).'<br>'.constant($game->sprache("TEXT3")).'<br>
 '.constant($game->sprache("TEXT4")).'<font color=#80ff80>'.constant($game->sprache("TEXT5")).'</font>'.constant($game->sprache("TEXT6")).'<br>
-'.constant($game->sprache("TEXT7")).'<font color=#ffff80>'.constant($game->sprache("TEXT8")).'</font> '.constant($game->sprache("TEXT9")).' <font color=#ff8080>'.constant($game->sprache("TEXT10")).'</font>.</center><br><br>');
+'.constant($game->sprache("TEXT7")).'<font color=#ffff80>'.constant($game->sprache("TEXT8")).'</font> '.constant($game->sprache("TEXT9")).' <font color=#ff8080>'.constant($game->sprache("TEXT10")).'</font>.<br><br>');
 
-$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT12")).' '.HelpPopup('planetlist').' :</span></center><br>');
+$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT12")).' '.HelpPopup('planetlist').' :</span><br><br>');
 $game->out('
-<center><table border=0 cellpadding=1 cellspacing=1 class="style_inner">
+<table border=0 cellpadding=1 cellspacing=1 class="style_inner">
 <tr><td width=90 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT13")).'</span></td><td width=20 valign="top"></td><td width=80 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT14")).'</span></td><td width=130 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT57")).'</span><br>@ Warp 6</td><td width=310 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT15")).'</span></td><td width=100 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT16")).'</span></td><td width=60 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT17")).'</span></td><td width=60 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT18")).'</span></td></tr>
 ');
 
@@ -493,7 +493,7 @@ $dilitio = conversione($dilitio);
 $game->out('<tr><td colspan=8><hr color=#FFFFFF size=1>
 
 <tr>
-<td colspan=8><fieldset><legend>'.constant($game->sprache("TEXT40")).'</legend><center>
+<td colspan=8><fieldset><legend>'.constant($game->sprache("TEXT40")).'</legend>
 <table border=0 cellpadding=0 cellspacing=0 widtH=500>
 <tr>
 <td align=center><img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;<b>'.$metallo.'</td>
@@ -517,7 +517,7 @@ $game->out('<tr><td colspan=8><hr color=#FFFFFF size=1>
 
 // Optionen zur Sortierung etc.:
 $game->out('</table><br><br>
-<center><table border=0 cellpadding=1 cellspacing=1 class="style_inner">
+<table border=0 cellpadding=1 cellspacing=1 class="style_inner">
 <tr valign=top><td width=120><b>'.constant($game->sprache("TEXT41")).'</b><br>
 <a href="'.parse_link('a=planetlist&s_o=0').'">'.($game->option_retr('planetlist_order')==0 ? '<u>' : '').''.constant($game->sprache("TEXT42")).'</u></a><br>
 <a href="'.parse_link('a=planetlist&s_o=1').'">'.($game->option_retr('planetlist_order')==1 ? '<u>' : '').''.constant($game->sprache("TEXT43")).'</u></a><br>
