@@ -297,7 +297,7 @@ define ("ENG_TEXT66", 'Assign');
 
 
 //Italiano
-define ("ITA_TEXT0", 'Abilit&agrave:');
+define ("ITA_TEXT0", 'Abilit&agrave;:');
 
 define ("ITA_TEXT1", 'Armi Leggere:');
 
@@ -313,7 +313,7 @@ define ("ITA_TEXT6", 'Reazione:');
 
 define ("ITA_TEXT7", 'Prontezza:');
 
-define ("ITA_TEXT8", 'Agilit&agrave:');
+define ("ITA_TEXT8", 'Agilit&agrave;:');
 
 define ("ITA_TEXT9", 'Esperienza:');
 
@@ -355,7 +355,7 @@ define ("ITA_TEXT27", 'Ancora non possiedi un');
 
 define ("ITA_TEXT28", 'sul pianeta attivo');
 
-define ("ITA_TEXT29", 'Non c\e alcuna nave selezionata');
+define ("ITA_TEXT29", 'Non c&#146;&egrave; alcuna nave selezionata');
 
 define ("ITA_TEXT30", 'Nesuna nave permessa &egrave stata selezionata');
 
@@ -377,13 +377,13 @@ define ("ITA_TEXT38", 'Ripara');
 
 define ("ITA_TEXT39", 'Nessuna nave selezionata');
 
-define ("ITA_TEXT40", '<b>Seleziona le navi su cui imbarcare equipaggio</b><br>In questa finestra puoi vedere una lista di tutte le navi in cui puoi imbarcare equipaggio.<br>La distribuzione automatica di unit&agrave &egrave configurata per il massimo.');
+define ("ITA_TEXT40", '<b>Seleziona le navi su cui imbarcare equipaggio</b><br>In questa finestra puoi vedere una lista di tutte le navi in cui puoi imbarcare equipaggio.<br>La distribuzione automatica di unit&agrave; &egrave; configurata per il massimo.');
 
-define ("ITA_TEXT41", 'Unit&agrave:');
+define ("ITA_TEXT41", 'Unit&agrave;:');
 
 define ("ITA_TEXT42", 'Equipaggio:');
 
-define ("ITA_TEXT43", 'Imbarcare equipaggio');
+define ("ITA_TEXT43", 'Imbarca/sbarca Equipaggio');
 
 define ("ITA_TEXT44", '<b>Seleziona le navi da smantellare</b><br>In questa finestra puoi vedere una lista di tutte le navi che possono essere smantellate.<br>Le navi possono essere smantellate in parallelo.');
 
@@ -395,21 +395,21 @@ define ("ITA_TEXT47", 'Smantella');
 
 define ("ITA_TEXT48", 'Non &egrave; stato indicato nessun nome per la nuova flotta');
 
-define ("ITA_TEXT49", 'Almeno una nave non &egrave nello stesso Spazioporto del pianeta rispetto alle altre');
+define ("ITA_TEXT49", 'Almeno una nave non &egrave; nello stesso Spazioporto del pianeta rispetto alle altre');
 
-define ("ITA_TEXT50", 'Fallimento nel creare nuova Flotta');
+define ("ITA_TEXT50", 'Errore nel creare una nuova Flotta');
 
 define ("ITA_TEXT51", 'La Flotta non esiste');
 
-define ("ITA_TEXT52", 'La Flotta non &egrave nell\'orbita del pianeta attivo');
+define ("ITA_TEXT52", 'La Flotta non &egrave; nell&#146;orbita del pianeta attivo');
 
-define ("ITA_TEXT53", 'Nessuna delle navi seleizonati pu&ograve essere spostata in una Flotta');
+define ("ITA_TEXT53", 'Nessuna delle navi selezionate pu&ograve; essere spostata in una Flotta');
 
 define ("ITA_TEXT54", 'La Nave selezionata non esiste');
 
 define ("ITA_TEXT55", 'Visualizzazione dettagliata della Nave selezionata');
 
-define ("ITA_TEXT56", '<b>Navi nello Spazioporto</b><br>Qui tutte le navi sono attualmente fuori servizio per essere riparate / aggiornate / occupate, oltre i vascelli di recente produzione<br><b>U</b>= Nessuna azione pu&ograve essere compiuta (asta, riparazione, smantellamento)<br><b>R</b>= Attualmente in Riparazione (incluso il periodo di riposo)<br><b>S</b>= Attualmente in Smantellamento  (incluso il periodo di riposo)<br><b>B=xx%</b>= &Egrave la % di potenza occupata, sotto 100% cade');
+define ("ITA_TEXT56", '<b>Navi nello Spazioporto</b><br>Qui tutte le navi sono attualmente fuori servizio per essere riparate / aggiornate / occupate, oltre i vascelli di recente produzione.<br><br><b>U</b>= Nessuna azione pu&ograve; essere compiuta sulla nave (pu&ograve; essere sotto asta, in riparazione o in smantellamento)<br><b>R</b>= Attualmente in Riparazione (incluso il periodo di latenza)<br><b>S</b>= Attualmente in Smantellamento (incluso il periodo di latenza)<br><b>B=xx%</b>= &Egrave; la % di truppe a bordo (viene visualizzata qualora tale valore sia sotto il 100%); non influisce sull&#146;efficienza della nave');
 
 define ("ITA_TEXT57", 'Dettagli');
 

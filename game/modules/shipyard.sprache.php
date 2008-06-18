@@ -155,7 +155,7 @@ define ("GER_TEXT65", 'Latinum');
 
 define ("GER_TEXT66", 'Arbeiter');
 
-define ("GER_TEXT67", 'Requested resources');
+define ("GER_TEXT67", 'Missing resources');
 
 
 //English
@@ -294,7 +294,7 @@ define ("ENG_TEXT65", 'Dilithium');
 
 define ("ENG_TEXT66", 'Workers');
 
-define ("ENG_TEXT67", 'Requested resources');
+define ("ENG_TEXT67", 'Missing resources');
 
 
 //Italiano
@@ -433,6 +433,6 @@ define ("ITA_TEXT65", 'Dilitio');
 
 define ("ITA_TEXT66", 'Lavoratori');
 
-define ("ITA_TEXT67", 'Risorse richieste');
+define ("ITA_TEXT67", 'Risorse mancanti');
 
 ?>
