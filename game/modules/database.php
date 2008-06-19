@@ -24,12 +24,84 @@
 
 $game->init_player();
 
+function UnitFight($atk_units, $atk_race, $dfd_units, $dfd_race)
+{
+global $RACE_DATA;
+$atk_alive=$atk_units;
+$dfd_alive=$dfd_units;
+
+
+$total_dmg[0]=$atk_alive[0]*GetAttackUnit(0,$atk_race)+$atk_alive[1]*GetAttackUnit(1,$atk_race)+$atk_alive[2]*GetAttackUnit(2,$atk_race)+$atk_alive[3]*GetAttackUnit(3,$atk_race)+$RACE_DATA[$atk_race][21]*$atk_alive[4]*0.2;
+$total_dmg[1]=$dfd_alive[0]*GetAttackUnit(0,$dfd_race)+$dfd_alive[1]*GetAttackUnit(1,$dfd_race)+$dfd_alive[2]*GetAttackUnit(2,$dfd_race)+$dfd_alive[3]*GetAttackUnit(3,$dfd_race)+$RACE_DATA[$dfd_race][21]*$dfd_alive[4];
+
+$total_dfd[0]=$atk_alive[0]*GetDefenseUnit(0,$atk_race)+$atk_alive[1]*GetDefenseUnit(1,$atk_race)+$atk_alive[2]*GetDefenseUnit(2,$atk_race)+$atk_alive[3]*GetDefenseUnit(3,$atk_race)+$RACE_DATA[$atk_race][21]*$atk_alive[4]*0.25;
+$total_dfd[1]=$dfd_alive[0]*GetDefenseUnit(0,$dfd_race)+$dfd_alive[1]*GetDefenseUnit(1,$dfd_race)+$dfd_alive[2]*GetDefenseUnit(2,$dfd_race)+$dfd_alive[3]*GetDefenseUnit(3,$dfd_race)+$RACE_DATA[$dfd_race][21]*$dfd_alive[4]*1.3;
+
+
+if ($total_dmg[0]/$total_dfd[1]>$total_dmg[1]/$total_dfd[0])
+{
+// Attacker Wins:
+$percent=$total_dfd[1]/$total_dmg[0];
+$total_dmg[1]*=$percent;
+// Dfd Dmg on Worker:
+if ($total_dmg[1]>=$RACE_DATA[$atk_race][21]*2*$atk_alive[4]) {$total_dmg[1]-=$RACE_DATA[$atk_race][21]*2*$atk_alive[4]; $atk_alive[4]=0;}
+else {$atk_alive[4]-=$total_dmg[1]/($RACE_DATA[$atk_race][21]*2); $total_dmg[1]=0;}
+
+// Dfd Dmg:
+for ($t=0; $t<4; $t++)
+{
+if ($total_dmg[1]<=0) break;
+if ($total_dmg[1]>=GetDefenseUnit($t,$atk_race)*$atk_alive[$t]) {$total_dmg[1]-=GetDefenseUnit($t,$atk_race)*$atk_alive[$t]; $atk_alive[$t]=0;}
+else {$atk_alive[$t]-=$total_dmg[1]/GetDefenseUnit($t,$atk_race); $total_dmg[1]=0; break;}
+}
+
+$dfd_alive=array(0,0,0,0,0);
+
+}
+else
+{
+$percent=$total_dmg[0]/$total_dmg[1];
+$total_dmg[0]*=$percent;
+
+// Atk Dmg on Worker:
+if ($total_dmg[0]>=$RACE_DATA[$dfd_race][21]*2*$dfd_alive[4]) {$total_dmg[0]-=$RACE_DATA[$dfd_race][21]*2*$dfd_alive[4]; $dfd_alive[4]=0;}
+else {$dfd_alive[4]-=$total_dmg[0]/($RACE_DATA[$dfd_race][21]*2); $total_dmg[0]=0;}
+
+// Atk Dmg:
+for ($t=0; $t<4; $t++)
+{
+if ($total_dmg[0]<=0) break;
+if ($total_dmg[0]>=GetDefenseUnit($t,$dfd_race)*$dfd_alive[$t]) {$total_dmg[0]-=GetDefenseUnit($t,$dfd_race)*$dfd_alive[$t]; $dfd_alive[$t]=0;}
+else {$dfd_alive[$t]-=$total_dmg[0]/GetDefenseUnit($t,$dfd_race); $total_dmg[0]=0; break;}
+}
+
+$atk_alive=array(0,0,0,0,0);
+
+}
+
+
+for ($t=0; $t<5; $t++)
+{
+if ($dfd_alive[$t]<0) $dfd_alive[$t]=0;
+if ($atk_alive[$t]<0) $atk_alive[$t]=0;
+if ($dfd_alive[$t]>$dfd_units[$t]) $dfd_alive[$t]=$dfd_units[$t];
+if ($atk_alive[$t]>$atk_units[$t]) $atk_alive[$t]=$atk_units[$t];
+
+$dfd_alive[$t]=round($dfd_alive[$t]);
+$atk_alive[$t]=round($atk_alive[$t]);
+}
+
+return (array(0=>$atk_alive,1=>$dfd_alive));
+
+}
+
+
 $DATABASE_MODULES = array(
     'planets' => constant($game->sprache("TEXT11")),
     'security' => constant($game->sprache("TEXT12")),
-//    'combatsim' => constant($game->sprache("TEXT13")),
+    'combatsim' => constant($game->sprache("TEXT13")),
 //    'academy' => constant($game->sprache("TEXT14")),
-    'faq' =>  constant($game->sprache("TEXT15")),
+//    'faq' =>  constant($game->sprache("TEXT15")),
     'guide' => constant($game->sprache("TEXT16"))
 );
 
@@ -95,11 +167,174 @@ if($module == 'planets' || isset($_GET['planet_type']))
 }
 else if($module == 'security')
 {
-    $game->out('<span class="caption">Working / In lavorazione');
+    $game->out('
+<table align="center" border="0" cellpadding="3" cellspacing="3" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+    <tr>
+       <td align="center">'.constant($game->sprache("TEXT17")).'</td><td align="center">'.constant($game->sprache("TEXT18")).'</td>
+       <td align="center">'.constant($game->sprache("TEXT17")).'</td><td align="center">'.constant($game->sprache("TEXT18")).'</td>
+    </tr>
+    ');
+
+    for($planet = 0;$planet < 20;$planet++)
+	{
+    	$security = round(pow($planet*MIN_TROOPS_PLANET,1+$planet*0.01),0);
+        $game->out('
+    <tr>
+        <td align="center">'.($planet+1).'</td><td align="center">'.$security.'</td>
+    ');
+
+    	$security = round(pow(($planet+20)*MIN_TROOPS_PLANET,1+($planet+20)*0.01),0);
+        $game->out('
+        <td align="center">'.($planet+21).'</td><td align="center">'.$security.'</td>
+    </tr>');
+	}
+    $game->out('
+    <tr>
+        <td></td><td></td><td align="center">41+</td><td align="center">'.constant($game->sprache("TEXT19")).'</td>
+    </tr>
+</table>');
 }
 else if($module == 'combatsim')
 {
-    $game->out('<span class="caption">Working / In lavorazione');
+    $units = array(
+        constant($game->sprache("TEXT20")),
+        constant($game->sprache("TEXT21")),
+        constant($game->sprache("TEXT22")),
+        constant($game->sprache("TEXT23")),
+        constant($game->sprache("TEXT24")));
+
+    if(empty($_POST['startsim'])) {
+        $game->out('
+<form name="campsim" method="post" action="'.parse_link('a=database&view=combatsim').'">
+    <table width=400" align="center" border="0" cellpadding="3" cellspacing="3" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+    <tr>
+        <td colspan="4" align="center"><span class="sub_caption">'.constant($game->sprache("TEXT25")).'</span></td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">'.constant($game->sprache("TEXT26")).'</td>
+        <td colspan="2" align="center">'.constant($game->sprache("TEXT27")).'<td>
+    </tr>');
+
+        for($i=1;$i<6;$i++)
+        {
+            $game->out('
+    <tr>
+        <td>'.$units[$i-1].'</td>
+        <td><input type="text" name="atk_unit_'.$i.'" value="0" class="Field_nosize" size="10" maxlength="5"></td>
+        <td>'.$units[$i-1].'</td>
+        <td><input type="text" name="dfd_unit_'.$i.'" value="0" class="Field_nosize" size="10" maxlength="5"></td>
+    </tr>');
+        }
+
+        $game->out('
+    <tr>
+        <td>'.constant($game->sprache("TEXT28")).'</td>
+        <td>
+            <select name="atk_race" class="Select" size="1">');
+
+        foreach($RACE_DATA as $i => $race) {
+            if($i != 6 && $i != 7 && $i != 12) 
+                $game->out('
+            <option value="'.$i.'">'.$race[0].'</option>');
+        }
+
+        $game->out('
+            </select>
+        </td>
+        <td>'.constant($game->sprache("TEXT28")).'</td>
+        <td>
+            <select name="dfd_race" class="Select" size="1">');
+
+        foreach($RACE_DATA as $i => $race) {
+            if($i != 6 && $i != 7 && $i != 12) 
+                $game->out('
+            <option value="'.$i.'">'.$race[0].'</option>');
+        }
+
+        $game->out('
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4" align="center"><input class="button" type="submit" name="startsim" value="'.constant($game->sprache("TEXT29")).'"></td>
+    </tr>
+    </table>
+</form>
+            ');
+    }
+    else
+    {
+        $atk_units = array();
+        $dfd_units = array();
+
+        $atk_units[0] = $_POST['atk_unit_1'];
+        $atk_units[1] = $_POST['atk_unit_2'];
+        $atk_units[2] = $_POST['atk_unit_3'];
+        $atk_units[3] = $_POST['atk_unit_4'];
+        $atk_units[4] = $_POST['atk_unit_5'];
+
+        $dfd_units[0] = $_POST['dfd_unit_1'];
+        $dfd_units[1] = $_POST['dfd_unit_2'];
+        $dfd_units[2] = $_POST['dfd_unit_3'];
+        $dfd_units[3] = $_POST['dfd_unit_4'];
+        $dfd_units[4] = $_POST['dfd_unit_5'];
+
+        $atk_race = $_POST['atk_race'];
+        $dfd_race = $_POST['dfd_race'];
+
+        $res = UnitFight($atk_units, $atk_race, $dfd_units, $dfd_race);
+
+        $atk_alive = $res[0];
+        $dfd_alive = $res[1];
+
+        $n_atk_alive = array_sum($atk_alive);
+        $n_dfd_alive = array_sum($dfd_alive);
+
+        $game->out('
+    <table width="400" align="center" border="0" cellpadding="3" cellspacing="3" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+    <tr>
+        <td colspan="4" align="center"><span class="sub_caption">'.constant($game->sprache("TEXT30")).'</span><br>'.constant($game->sprache("TEXT31")).'</td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">'.constant($game->sprache("TEXT26")).'</td>
+        <td colspan="2" align="center">'.constant($game->sprache("TEXT27")).'<td>
+    </tr>');
+
+        for($i=1;$i<6;$i++)
+        {
+            $game->out('
+    <tr>
+        <td>'.$units[$i-1].'</td>
+        <td>'.($atk_units[$i-1]-$atk_alive[$i-1]).'</td>
+        <td>'.$units[$i-1].'</td>
+        <td>'.($dfd_units[$i-1]-$dfd_losses[$i-1]).'</td>
+    </tr>');
+        }
+
+        $game->out('
+    <tr>
+        <td>'.constant($game->sprache("TEXT28")).'</td>
+        <td>'.$RACE_DATA[$atk_race][0].'</td>
+        <td>'.constant($game->sprache("TEXT28")).'</td>
+        <td>'.$RACE_DATA[$dfd_race][0].'</td>
+    </tr>
+    <tr>
+        <td colspan="4" align="center">');
+
+        if($n_dfd_alive >= $n_atk_alive)
+            $game->out('<span class="sub_caption">'.constant($game->sprache("TEXT32")).'</span>');
+        else
+            $game->out('<span class="sub_caption">'.constant($game->sprache("TEXT33")).'</span>');
+
+        $game->out('
+        </td>
+    </tr>
+    </table>
+    <br>
+    <a href="'.parse_link('a=database&view=combatsim').'">'.constant($game->sprache("TEXT34")).'</a>
+        ');
+
+    }
 }
 else if($module == 'academy')
 {

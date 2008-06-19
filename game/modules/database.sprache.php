@@ -56,6 +56,42 @@ define ("GER_TEXT15", 'FAQ');
 
 define ("GER_TEXT16", 'Aufbau');
 
+define ("GER_TEXT17", 'Planet');
+
+define ("GER_TEXT18", 'Ben&ouml;tigte Sicherheit');
+
+define ("GER_TEXT19", 'Plani max.');
+
+define ("GER_TEXT20", 'Lvl 1');
+
+define ("GER_TEXT21", 'Lvl 2');
+
+define ("GER_TEXT22", 'Lvl 3');
+
+define ("GER_TEXT23", 'Lvl 4');
+
+define ("GER_TEXT24", 'Arbeiter');
+
+define ("GER_TEXT25", 'Bodenkampfsimulator');
+
+define ("GER_TEXT26", 'Angreifer');
+
+define ("GER_TEXT27", 'Verteidiger');
+
+define ("GER_TEXT28", 'Rasse');
+
+define ("GER_TEXT29", 'Berechnen');
+
+define ("GER_TEXT30", 'Theoretisches Endergebnis');
+
+define ("GER_TEXT31", 'Verluste an Bodentruppen pro Partei');
+
+define ("GER_TEXT32", 'Verteidiger hat gewonnen');
+
+define ("GER_TEXT33", 'Angreifer hat gewonnen');
+
+define ("GER_TEXT34", 'Zuruck');
+
 
 
 //English
@@ -80,6 +116,54 @@ define ("ENG_TEXT8", '* Without Research');
 define ("ENG_TEXT9", 'Max resources:*');
 
 define ("ENG_TEXT10", '* Without Silos');
+
+define ("ENG_TEXT11", 'Planets Database');
+
+define ("ENG_TEXT12", 'Security Troops');
+
+define ("ENG_TEXT13", 'Combat simulator');
+
+define ("ENG_TEXT14", 'Troops - Academy');
+
+define ("ENG_TEXT15", 'FAQ');
+
+define ("ENG_TEXT16", 'Guide');
+
+define ("ENG_TEXT17", 'Planet');
+
+define ("ENG_TEXT18", 'Security required');
+
+define ("ENG_TEXT19", 'Planet Max');
+
+define ("ENG_TEXT20", 'Level 1');
+
+define ("ENG_TEXT21", 'Level 2');
+
+define ("ENG_TEXT22", 'Level 3');
+
+define ("ENG_TEXT23", 'Level 4');
+
+define ("ENG_TEXT24", 'Workers');
+
+define ("ENG_TEXT25", 'Ground combat simulator');
+
+define ("ENG_TEXT26", 'Attacker');
+
+define ("ENG_TEXT27", 'Defender');
+
+define ("ENG_TEXT28", 'Race');
+
+define ("ENG_TEXT29", 'Calculate');
+
+define ("ENG_TEXT30", 'Theoretical final');
+
+define ("ENG_TEXT31", 'Loss of ground troops per party');
+
+define ("ENG_TEXT32", 'Defender won');
+
+define ("ENG_TEXT33", 'Attacker won');
+
+define ("ENG_TEXT34", 'Back');
 
 
 
@@ -119,6 +203,40 @@ define ("ITA_TEXT15", 'FAQ');
 
 define ("ITA_TEXT16", 'Guida');
 
+define ("ITA_TEXT17", 'Pianeta');
 
+define ("ITA_TEXT18", 'Sicurezza richiesta');
+
+define ("ITA_TEXT19", 'Max pianeta');
+
+define ("ITA_TEXT20", 'Livello 1');
+
+define ("ITA_TEXT21", 'Livello 2');
+
+define ("ITA_TEXT22", 'Livello 3');
+
+define ("ITA_TEXT23", 'Livello 4');
+
+define ("ITA_TEXT24", 'Lavoratori');
+
+define ("ITA_TEXT25", 'Simulatore combattimenti');
+
+define ("ITA_TEXT26", 'Attaccante');
+
+define ("ITA_TEXT27", 'Difensore');
+
+define ("ITA_TEXT28", 'Specie');
+
+define ("ITA_TEXT29", 'Calcola');
+
+define ("ITA_TEXT30", 'Esito teorico');
+
+define ("ITA_TEXT31", 'Perdite di truppe a terra per parte');
+
+define ("ITA_TEXT32", 'Il difensore ha vinto');
+
+define ("ITA_TEXT33", 'L&#146;attaccante ha vinto');
+
+define ("ITA_TEXT34", 'Indietro');
 
 ?>
