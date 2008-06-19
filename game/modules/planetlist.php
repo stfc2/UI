@@ -119,17 +119,6 @@ if (isset($_GET['s_s']) && $_GET['s_s']>=0 && $_GET['s_s']<=3) $game->option_sto
 
 if (!$game->SITTING_MODE && isset($_GET['s_op']) && $_GET['s_op']>=0 && $_GET['s_op']<=2) $game->option_store('redalert_options',(int)$_GET['s_op']);
 
-function Zeit($minutes)
-{
-$minutes/=60;
-$days=0;
-$hours=0;
-while($minutes>=60*24) {$days++; $minutes-=60*24;}
-while($minutes>=60) {$hours++; $minutes-=60;}
-
-return (''.round($days,0).'d '.round($hours,0).'h '.round($minutes,0).'m');
-}
-
 if (isset($_REQUEST['a2']) && $_REQUEST['a2']>=0)
 {
  $game->player->active_planet($_REQUEST['a2']);
@@ -143,6 +132,9 @@ $game->out(constant($game->sprache("TEXT2")).'<br>'.constant($game->sprache("TEX
 
 $game->out('<span class="sub_caption">'.constant($game->sprache("TEXT12")).' '.HelpPopup('planetlist').' :</span><br><br>');
 $game->out('
+<table border=0 cellpadding=1 cellaspacing=1 class="style_outer">
+<tr>
+<td>
 <table border=0 cellpadding=1 cellspacing=1 class="style_inner">
 <tr><td width=90 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT13")).'</span></td><td width=20 valign="top"></td><td width=80 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT14")).'</span></td><td width=130 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT57")).'</span><br>@ Warp 6</td><td width=310 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT15")).'</span></td><td width=100 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT16")).'</span></td><td width=60 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT17")).'</span></td><td width=60 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT18")).'</span></td></tr>
 ');
@@ -307,12 +299,12 @@ foreach ($planets as $key => $planet) {
 	{
 		if($planet['build_active']==$planet['building_queue']-1) $stufendreck=1;
 		$planet['building_'.($planet['build_active']+1)]++;
-		$building=$BUILDING_NAME[$game->player['user_race']][$planet['build_active']].' ('.constant($game->sprache("TEXT18b")).' '.($planet['building_'.($planet['build_active']+1)]).') <b>'.Zeit($NEXT_TICK+TICK_DURATION*60*($planet['building_finish']-$ACTUAL_TICK)).'</b><br>';
+		$building=$BUILDING_NAME[$game->player['user_race']][$planet['build_active']].' ('.constant($game->sprache("TEXT18b")).' '.($planet['building_'.($planet['build_active']+1)]).') <b>'.Zeit(TICK_DURATION*($planet['building_finish']-$ACTUAL_TICK)).'</b><br>';
 	if(isset($planet['building_queue']))
 	{
-			$planet_notactive=$db->query('SELECT building_1,building_2,building_3,building_4,building_5,building_queue,building_6,building_7,building_8,building_10,building_11,building_13 FROM planets WHERE planet_id='.$planet['planet_id']);
-			$planet_notactive=$db->fetchrow($planet_notactive);
-		$building.=$BUILDING_NAME[$game->player['user_race']][$planet['building_queue']-1].' ('.constant($game->sprache("TEXT18b")).' '.($planet['building_'.($planet['building_queue'])]+1).') <b>'.Zeit($NEXT_TICK+TICK_DURATION*60*($planet['building_finish']-$ACTUAL_TICK+GetBuildingTimeTicks($planet['building_queue']-1,$stufendreck,$planet['planet_type'],$game->player['user_race'],$planet_notactive,$planet['research_4'])));
+		$planet_notactive=$db->query('SELECT building_1,building_2,building_3,building_4,building_5,building_queue,building_6,building_7,building_8,building_10,building_11,building_13 FROM planets WHERE planet_id='.$planet['planet_id']);
+		$planet_notactive=$db->fetchrow($planet_notactive);
+		$building.=$BUILDING_NAME[$game->player['user_race']][$planet['building_queue']-1].' ('.constant($game->sprache("TEXT18b")).' '.($planet['building_'.($planet['building_queue'])]+1).') <b>'.Zeit(TICK_DURATION*($planet['building_finish']-$ACTUAL_TICK+GetBuildingTimeTicks($planet['building_queue']-1,$stufendreck,$planet['planet_type'],$game->player['user_race'],$planet_notactive,$planet['research_4'])));
 	}
 	}
 	//GetBuildingTimeTicks($planet['building_queue']-1,$planet['planet_type'],$game->player['user_race'])
@@ -322,10 +314,10 @@ foreach ($planets as $key => $planet) {
 	if (isset($planet['research_id']))
 	{
 		if ($planet['research_id']>=5)
-			$research=$ship_components[$game->player['user_race']][($planet['research_id']-5)][$planet['catresearch_'.(($planet['research_id']-4))]]['name'].' <b>'.Zeit($NEXT_TICK+TICK_DURATION*60*($planet['research_finish']-$ACTUAL_TICK)).'</b>';
+			$research=$ship_components[$game->player['user_race']][($planet['research_id']-5)][$planet['catresearch_'.(($planet['research_id']-4))]]['name'].' <b>'.Zeit(TICK_DURATION*($planet['research_finish']-$ACTUAL_TICK)).'</b>';
 		else
 		{
-			$research=$TECH_NAME[$game->player['user_race']][$planet['research_id']].' <b>'.Zeit($NEXT_TICK+TICK_DURATION*60*($planet['research_finish']-$ACTUAL_TICK)).'</b>';
+			$research=$TECH_NAME[$game->player['user_race']][$planet['research_id']].' <b>'.Zeit(TICK_DURATION*($planet['research_finish']-$ACTUAL_TICK)).'</b>';
 		}
 	}
 
@@ -339,7 +331,7 @@ foreach ($planets as $key => $planet) {
 		{
 			$academy=constant($game->sprache("TEXT22")).' ('.$UNIT_NAME[$game->player['user_race']][$planet['unittrainid_'.($planet['unittrain_actual'])]-1].' ';
 			if ($planet['unittrain_error']==0)
-			$academy.='<b>'.( ($NEXT_TICK+TICK_DURATION*60*($planet['unittrainid_nexttime']-$ACTUAL_TICK)>$NEXT_TICK+TICK_DURATION*60-ACTUAL_TICK) ? ''.Zeit($NEXT_TICK+TICK_DURATION*60*($planet['unittrainid_nexttime']-$ACTUAL_TICK)).'' : constant($game->sprache("TEXT20")) ).'</b>)';
+			$academy.='<b>'.( ($NEXT_TICK+TICK_DURATION*60*($planet['unittrainid_nexttime']-$ACTUAL_TICK)>$NEXT_TICK+TICK_DURATION*60-ACTUAL_TICK) ? Zeit(TICK_DURATION*($planet['unittrainid_nexttime']-$ACTUAL_TICK)) : constant($game->sprache("TEXT20")) ).'</b>)';
 			else
 			{
 				if($planet['unittrain_error']==2){
@@ -359,7 +351,7 @@ foreach ($planets as $key => $planet) {
 			$text=(TICK_DURATION).constant($game->sprache("TEXT21"));
 			if ($planet['unittrainid_'.($planet['unittrain_actual'])]==11) $text=(TICK_DURATION).constant($game->sprache("TEXT21"));
 			if ($planet['unittrainid_'.($planet['unittrain_actual'])]==12) $text=(TICK_DURATION).constant($game->sprache("TEXT21"));
-			$academy= constant($game->sprache("TEXT22")).' ('.$text.' <b>'.Zeit($NEXT_TICK+TICK_DURATION*60*($planet['unittrainid_nexttime']-$ACTUAL_TICK)).'</b>)';
+			$academy= constant($game->sprache("TEXT22")).' ('.$text.' <b>'.Zeit(TICK_DURATION*($planet['unittrainid_nexttime']-$ACTUAL_TICK)).'</b>)';
 		}
 
 		// ALT, habs mal geändert, sollte nun besser passen. Gruß Mojo ;)
@@ -373,7 +365,7 @@ foreach ($planets as $key => $planet) {
 
 	if (isset($planet['shipyard_active']))
 	{
-		$shipbuild=constant($game->sprache("TEXT24")).'<br><b>'.Zeit($NEXT_TICK+TICK_DURATION*60*($planet['shipyard_active']-$ACTUAL_TICK).'</b>');
+		$shipbuild=constant($game->sprache("TEXT24")).'<br><b>'.Zeit(TICK_DURATION*($planet['shipyard_active']-$ACTUAL_TICK)).'</b>';
 	}
 	// Farben für die Symbole festlegen
 	if(isset($planet['building_queue'])){ $building_color=(($planet['building_finish']-$ACTUAL_TICK+GetBuildingTimeTicks($planet['building_queue']-1,$stufendreck,$planet,$game->player['user_race'],$planet_notactive,$planet['research_4'])))/12;
@@ -516,7 +508,8 @@ $game->out('<tr><td colspan=8><hr color=#FFFFFF size=1>
 </fieldset></tr>');
 
 // Optionen zur Sortierung etc.:
-$game->out('</table><br><br>
+$game->out('</table></td></tr></table><br><br>
+<table border=0 cellpadding=1 cellspacing=1 class="style_outer"><tr><td>
 <table border=0 cellpadding=1 cellspacing=1 class="style_inner">
 <tr valign=top><td width=120><b>'.constant($game->sprache("TEXT41")).'</b><br>
 <a href="'.parse_link('a=planetlist&s_o=0').'">'.($game->option_retr('planetlist_order')==0 ? '<u>' : '').''.constant($game->sprache("TEXT42")).'</u></a><br>
@@ -537,6 +530,9 @@ $game->out('</table><br><br>
 '.(($game->SITTING_MODE) ? '' :'<a href="'.parse_link('a=planetlist&s_op=0').'">').($game->option_retr('redalert_options')==0 ? '<u>' : '').''.constant($game->sprache("TEXT54")).'</u>'.(($game->SITTING_MODE) ? '' :'</a>').'<br>
 '.(($game->SITTING_MODE) ? '' :'<a href="'.parse_link('a=planetlist&s_op=1').'">').($game->option_retr('redalert_options')==1 ? '<u>' : '').''.constant($game->sprache("TEXT55")).'</u>'.(($game->SITTING_MODE) ? '' :'</a>').'<br>
 '.(($game->SITTING_MODE) ? '' :'<a href="'.parse_link('a=planetlist&s_op=2').'">').($game->option_retr('redalert_options')==2 ? '<u>' : '').''.constant($game->sprache("TEXT56")).'</u>'.(($game->SITTING_MODE) ? '' :'</a>').'
+</td>
+</tr>
+</table>
 </td>
 </tr>
 </table>

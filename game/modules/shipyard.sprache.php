@@ -391,9 +391,9 @@ define ("ITA_TEXT44", 'Difesa:');
 
 define ("ITA_TEXT45", 'Navi costruibili');
 
-define ("ITA_TEXT46", 'Equipaggio Nave(i)');
+define ("ITA_TEXT46", 'Seleziona equipaggio nave(i)');
 
-define ("ITA_TEXT47", 'Seleziona:');
+define ("ITA_TEXT47", ':');
 
 define ("ITA_TEXT48", '* Info: Il numero nei campi di input rappresenta il max. numero di unit&agrave; disponibili per ogni nave');
 

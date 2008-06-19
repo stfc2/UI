@@ -23,21 +23,10 @@
 
 $game->init_player();
 
-$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span></center><br><br>');
+$game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>');
 
 
 if ($game->planet['building_queue']==0) unset($game->planet['building_queue']);
-
-function Zeit($minutes)
-{
-$days=0;
-$hours=0;
-while($minutes>=60*24) {$days++; $minutes-=60*24;}
-while($minutes>=60) {$hours++; $minutes-=60;}
-
-return (''.round($days,0).'d '.round($hours,0).'h '.round($minutes,0).'m');
-}
-
 
 function GetBuildingPrice($building,$resource)
 {
@@ -143,7 +132,7 @@ $t=$_REQUEST['id'];
 if (($t==11 && $game->planet['building_1']<4) || ($t==10 && $game->planet['building_1']<3) || ($t==6 && $game->planet['building_1']<5) || ($t==8 && $game->planet['building_1']<9) || ($t==7 && $game->planet['building_7']<1) || ($t==9 && ($game->planet['building_6']<5 || $game->planet['building_7']<1))  || ($t==12 && ($game->planet['building_6']<1 || $game->planet['building_7']<1))) {}
 else
 {
-if ($_REQUEST['id']!=4 && $buildings>=($capital==true ? $game->planet['building_5']*11+14 : $game->planet['building_5']*15+3)) {$game->out('<center><span class="text_large">'.constant($game->sprache("TEXT1")).'<br>'.constant($game->sprache("TEXT2")).'</span></center><br><center><span class="text_large">'.constant($game->sprache("TEXT6")).'</span></center><br>');}
+if ($_REQUEST['id']!=4 && $buildings>=($capital==true ? $game->planet['building_5']*11+14 : $game->planet['building_5']*15+3)) {$game->out('<span class="text_large">'.constant($game->sprache("TEXT1")).'<br>'.constant($game->sprache("TEXT2")).'</span><br><span class="text_large">'.constant($game->sprache("TEXT6")).'</span><br>');}
 else
 if ($db->query('UPDATE planets SET resource_1=resource_1-'.(GetBuildingPrice($_REQUEST['id'],0)).',resource_2=resource_2-'.(GetBuildingPrice($_REQUEST['id'],1)).',resource_3=resource_3-'.(GetBuildingPrice($_REQUEST['id'],2)).'  WHERE planet_id= "'.$game->planet['planet_id'].'"')==true)
 {
@@ -179,7 +168,7 @@ if ($game->player['pending_capital_choice']) $capital=0;
 
 
 $userquery=$db->query('SELECT * FROM scheduler_instbuild WHERE planet_id="'.$game->planet['planet_id'].'"');
-if (isset($game->planet['building_queue'])) {$game->out('<center><span class="text_large">'.constant($game->sprache("TEXT3")).'</span></center><br>');}
+if (isset($game->planet['building_queue'])) {$game->out('<span class="text_large">'.constant($game->sprache("TEXT3")).'</span><br>');}
 else if ($db->num_rows()>0) {Start_Queued();}
 else if ($game->planet['resource_1']>=GetBuildingPrice($_REQUEST['id'],0) && $game->planet['resource_2']>=GetBuildingPrice($_REQUEST['id'],1) && $game->planet['resource_3']>=GetBuildingPrice($_REQUEST['id'],2) && $game->planet['building_'.($_REQUEST['id']+1)]<$MAX_BUILDING_LVL[$capital][$_REQUEST['id']])
 {
@@ -188,7 +177,7 @@ $t=$_REQUEST['id'];
 if (($t==11 && $game->planet['building_1']<4) || ($t==10 && $game->planet['building_1']<3) || ($t==6 && $game->planet['building_1']<5) || ($t==8 && $game->planet['building_1']<9) || ($t==7 && $game->planet['building_7']<1) || ($t==9 && ($game->planet['building_6']<5 || $game->planet['building_7']<1)) || ($t==12 && ($game->planet['building_6']<1 || $game->planet['building_7']<1)) ) {}
 else
 {
-if ($_REQUEST['id']!=4 && $buildings>=($capital==true ? $game->planet['building_5']*11+14 : $game->planet['building_5']*15+3)) {$game->out('<center><span class="text_large">'.constant($game->sprache("TEXT1")).'<br>'.constant($game->sprache("TEXT2")).'</span></center><br>');}
+if ($_REQUEST['id']!=4 && $buildings>=($capital==true ? $game->planet['building_5']*11+14 : $game->planet['building_5']*15+3)) {$game->out('<span class="text_large">'.constant($game->sprache("TEXT1")).'<br>'.constant($game->sprache("TEXT2")).'</span><br>');}
 else
 if ($db->query('UPDATE planets SET resource_1=resource_1-'.(GetBuildingPrice($_REQUEST['id'],0)).',resource_2=resource_2-'.(GetBuildingPrice($_REQUEST['id'],1)).',resource_3=resource_3-'.(GetBuildingPrice($_REQUEST['id'],2)).'  WHERE planet_id= "'.$game->planet['planet_id'].'"')==true)
 {
@@ -221,7 +210,7 @@ if ($game->planet['building_queue']==0) unset($game->planet['building_queue']);
 $capital=(($game->player['user_capital']==$game->planet['planet_id']) ? 1 : 0);
 $buildings=$game->planet['building_1']+$game->planet['building_2']+$game->planet['building_3']+$game->planet['building_4']+$game->planet['building_10']+$game->planet['building_6']+$game->planet['building_7']+$game->planet['building_8']+$game->planet['building_9']+$game->planet['building_11']+$game->planet['building_12']+$game->planet['building_13'];
 $schedulerquery=$db->query('SELECT * FROM scheduler_instbuild WHERE planet_id="'.$game->planet['planet_id'].'"');
-if ($db->num_rows()<1) {$game->out('<center><class="text_large">'.constant($game->sprache("TEXT4")).'</span></center><br>');}
+if ($db->num_rows()<1) {$game->out('<class="text_large">'.constant($game->sprache("TEXT4")).'</span><br>');}
 else
 {
 $scheduler = $db->fetchrow($schedulerquery);
@@ -229,20 +218,20 @@ if(isset($game->planet['building_queue']))
 {
 $t=$game->planet['building_queue']-1;
 if (($t==11 && $game->planet['building_1']<4) || ($t==10 && $game->planet['building_1']<3) | ($t==6 && $game->planet['building_1']<5) || ($t==8 && $game->planet['building_1']<9) || ($t==7 && $game->planet['building_7']<1) || ($t==9 && ($game->planet['building_6']<5 || $game->planet['building_7']<1)) || ($t==12 && ($game->planet['building_6']<1 || $game->planet['building_7']<1)) ) {
-$game->out('<center><span class="text_large">'.constant($game->sprache("TEXT5")).'</span></center><br>');
+$game->out('<span class="text_large">'.constant($game->sprache("TEXT5")).'</span><br>');
 $abbruch=1;
 }
 
 if($scheduler['installation_type']==4 && $buildings>=($capital==true ? ($game->planet['building_5']-1)*11+14 : ($game->planet['building_5']-1)*15+3))
 {
-$game->out('<center><span class="text_large">'.constant($game->sprache("TEXT6")).'</span></center><br>');
+$game->out('<span class="text_large">'.constant($game->sprache("TEXT6")).'</span><br>');
 $abbruch=1;
 }
 }
 if($abbruch==0){
 if (!isset($game->planet['building_queue']) || $game->planet['building_queue']-1!=$scheduler['installation_type'])
 {
-if (($db->query('DELETE FROM scheduler_instbuild WHERE planet_id="'.$game->planet['planet_id'].'" LIMIT 1'))!=true) {$game->out('<center><span class="text_large">'.constant($game->sprache("TEXT7")).'<br>'.constant($game->sprache("TEXT8")).' (ID='.$game->planet['planet_id'].') '.constant($game->sprache("TEXT9")).'</span></center><br>');}
+if (($db->query('DELETE FROM scheduler_instbuild WHERE planet_id="'.$game->planet['planet_id'].'" LIMIT 1'))!=true) {$game->out('<span class="text_large">'.constant($game->sprache("TEXT7")).'<br>'.constant($game->sprache("TEXT8")).' (ID='.$game->planet['planet_id'].') '.constant($game->sprache("TEXT9")).'</span><br>');}
 else
 {
 $db->query('UPDATE planets SET resource_1=resource_1+'.(GetBuildingPrice($scheduler['installation_type'],0)).',resource_2=resource_2+'.(GetBuildingPrice($scheduler['installation_type'],1)).',resource_3=resource_3+'.(GetBuildingPrice($scheduler['installation_type'],2)).'  WHERE planet_id= "'.$game->planet['planet_id'].'"');
@@ -252,7 +241,7 @@ $db->query('UPDATE planets SET resource_1=resource_1+'.(GetBuildingPrice($schedu
 else if ($game->planet['building_queue']-1==$scheduler['installation_type'])// If the building in queue was the same but +1 lvl (we need to pay back some more)
 {
 	$game->planet['building_'.($scheduler['installation_type']+1)]++;
-		if (($db->query('DELETE FROM scheduler_instbuild WHERE planet_id="'.$game->planet['planet_id'].'" LIMIT 1'))!=true) {$game->out('<center><span class="text_large">'.constant($game->sprache("TEXT7")).'<br>'.constant($game->sprache("TEXT8")).' (ID='.$game->planet['planet_id'].') '.constant($game->sprache("TEXT9")).'</span></center><br>');}
+		if (($db->query('DELETE FROM scheduler_instbuild WHERE planet_id="'.$game->planet['planet_id'].'" LIMIT 1'))!=true) {$game->out('<span class="text_large">'.constant($game->sprache("TEXT7")).'<br>'.constant($game->sprache("TEXT8")).' (ID='.$game->planet['planet_id'].') '.constant($game->sprache("TEXT9")).'</span><br>');}
 		else
 		{
 		$db->query('UPDATE planets SET resource_1=resource_1+'.(GetBuildingPrice($scheduler['installation_type'],0)).',resource_2=resource_2+'.(GetBuildingPrice($scheduler['installation_type'],1)).',resource_3=resource_3+'.(GetBuildingPrice($scheduler['installation_type'],2)).'  WHERE planet_id= "'.$game->planet['planet_id'].'"');
@@ -291,13 +280,13 @@ $game->init_player(11);
 if ($game->planet['building_queue']==0) unset($game->planet['building_queue']);
 
 $schedulerquery=$db->query('SELECT * FROM scheduler_instbuild WHERE planet_id="'.$game->planet['planet_id'].'"');
-if ($db->num_rows()<1 || !isset($game->planet['building_queue'])) {$game->out('<center><class="text_large">'.constant($game->sprache("TEXT4")).'</span></center><br>');}
+if ($db->num_rows()<1 || !isset($game->planet['building_queue'])) {$game->out('<class="text_large">'.constant($game->sprache("TEXT4")).'</span><br>');}
 else
 {
 $scheduler = $db->fetchrow($schedulerquery);
 
 $game->planet['building_'.($scheduler['installation_type']+1)]++;
-if ($db->query('UPDATE planets SET building_queue=0  WHERE planet_id= "'.$game->planet['planet_id'].'"')==false)  {$game->out('<center><class="text_large">'.constant($game->sprache("TEXT10")).'<br>'.constant($game->sprache("TEXT8")).' (ID='.$game->planet['planet_id'].') '.constant($game->sprache("TEXT9")).'</span></center><br>');}
+if ($db->query('UPDATE planets SET building_queue=0  WHERE planet_id= "'.$game->planet['planet_id'].'"')==false)  {$game->out('<class="text_large">'.constant($game->sprache("TEXT10")).'<br>'.constant($game->sprache("TEXT8")).' (ID='.$game->planet['planet_id'].') '.constant($game->sprache("TEXT9")).'</span><br>');}
 else
 {
 $db->query('UPDATE planets SET resource_1=resource_1+'.(GetBuildingPrice($game->planet['building_queue']-1,0)).',resource_2=resource_2+'.(GetBuildingPrice($game->planet['building_queue']-1,1)).',resource_3=resource_3+'.(GetBuildingPrice($game->planet['building_queue']-1,2)).'  WHERE planet_id= "'.$game->planet['planet_id'].'"');
@@ -330,7 +319,7 @@ $scheduler = $db->fetchrow($schedulerquery);
 $game->planet['building_'.($scheduler['installation_type']+1)]++;
 
 $game->out('
-<center><center><table border=0 cellpadding=0 cellspacing=0 width=300 class="style_inner"><tr><td>
+<table border=0 cellpadding=0 cellspacing=0 width=300 class="style_inner"><tr><td>
 <tr><td>'.constant($game->sprache("TEXT11")).' <b>'.$BUILDING_NAME[$game->player['user_race']][$scheduler['installation_type']].' ('.constant($game->sprache("TEXT12")).' '.($game->planet['building_'.($scheduler['installation_type']+1)]).')</b><br>
 '.constant($game->sprache("TEXT13")).'<br>
 <b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['build_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b><br>
@@ -342,7 +331,7 @@ $game->out('
 <a href="'.parse_link_ex('a=building&a2=abort_build2',LINK_CLICKID).'"><b>'.constant($game->sprache("TEXT14")).'</b></a>
 </td></tr>' : '').'
 
-</table></center><br>
+</table><br>
 ');
 
 
@@ -351,17 +340,17 @@ $game->set_autorefresh(($NEXT_TICK+TICK_DURATION*60*($scheduler['build_finish']-
 else // Test for malfunction of building_queue:
 {
 if (isset($game->planet['building_queue']))
-if ($db->query('UPDATE planets SET building_queue=0  WHERE planet_id= "'.$game->planet['planet_id'].'"')==false)  {$game->out('<center><span class="text_large"><b>Error in "Queue Malfunction Detected": The Works in the queue could not be removed!<br>'.constant($game->sprache("TEXT8")).' (ID='.$game->planet['planet_id'].') '.constant($game->sprache("TEXT9")).'</b></span></center><br>');}
+if ($db->query('UPDATE planets SET building_queue=0  WHERE planet_id= "'.$game->planet['planet_id'].'"')==false)  {$game->out('<span class="text_large"><b>Error in "Queue Malfunction Detected": The Works in the queue could not be removed!<br>'.constant($game->sprache("TEXT8")).' (ID='.$game->planet['planet_id'].') '.constant($game->sprache("TEXT9")).'</b></span><br>');}
 }
 
 $avai=($game->planet['building_5'])*11+14;
 if (!$capital) $avai=($game->planet['building_5'])*15+3;
 $used=$game->planet['building_1']+$game->planet['building_2']+$game->planet['building_3']+$game->planet['building_4']+$game->planet['building_10']+$game->planet['building_6']+$game->planet['building_7']+$game->planet['building_8']+$game->planet['building_9']+$game->planet['building_11']+$game->planet['building_12']+$game->planet['building_13'];
-$game->out('<center>'.constant($game->sprache("TEXT16")).' <b id="timer2" title="time1_'.$NEXT_TICK.'_type1_3">&nbsp;</b> '.constant($game->sprache("TEXT17")).'<br>'.constant($game->sprache("TEXT18")).' '.$used.'/'.$avai.' '.constant($game->sprache("TEXT19")).'</center><br><br>');
+$game->out(constant($game->sprache("TEXT16")).' <b id="timer2" title="time1_'.$NEXT_TICK.'_type1_3">&nbsp;</b> '.constant($game->sprache("TEXT17")).'<br>'.constant($game->sprache("TEXT18")).' '.$used.'/'.$avai.' '.constant($game->sprache("TEXT19")).'<br><br>');
 
-$game->out('<center><span class="sub_caption">'.(isset($scheduler['installation_type']) ? constant($game->sprache("TEXT20")) : constant($game->sprache("TEXT21")) ).' '.HelpPopup('building_1').' :</span></center><br>');
+$game->out('<span class="sub_caption">'.(isset($scheduler['installation_type']) ? constant($game->sprache("TEXT20")) : constant($game->sprache("TEXT21")) ).' '.HelpPopup('building_1').' :</span><br><br>');
 
-$game->out('<center><table border=0 cellpadding=2 cellspacing=2 width=595 class="style_outer">');
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width=595 class="style_outer">');
 
 $game->out('<tr><td width=595>
 <table border=0 cellpadding=2 cellspacing=2 width=595 class="style_inner">

@@ -34,28 +34,6 @@ $game->out('<span class="caption">'.$BUILDING_NAME[$game->player['user_race']][7
 
 
 
-function Zeit($minutes)
-
-{
-
-$days=0;
-
-$hours=0;
-
-while($minutes>=60*24) {$days++; $minutes-=60*24;}
-
-while($minutes>=60) {$hours++; $minutes-=60;}
-
-
-
-return (''.$days.'d '.$hours.'h '.$minutes.'m');
-
-}
-
-
-
-
-
 function ComponentMetRequirements($cat_id,$comp_id,$comp, $ship)
 
 {
@@ -326,7 +304,7 @@ global $game;
 
 global $ship_components;
 
-$text='<font color=#000000><table width=500 border=0 cellpadding=0 cellspacing=0><tr><td width=250><table width=* border=0 cellpadding=0 cellspacing=0><tr><td valign=top><u>'.constant($game->sprache("TEXT3")).'</u><br><b>'.$template['name'].'</b><br><br></td></tr><tr><td valign=top><u>'.constant($game->sprache("TEXT4")).'</u><br>'.str_replace("\r\n", '<br>',wordwrap($template['description'], 40,"<br>",1 )).'<br><br></td></tr><tr><td valign=top><u>'.constant($game->sprache("TEXT5")).'</u><br><img src='.FIXED_GFX_PATH.'ship'.$game->player['user_race'].'_'.$template['ship_torso'].'.jpg></td></tr><tr><td valign=top><u>'.constant($game->sprache("TEXT6")).'</u><br>';
+$text='<table width=500 border=0 cellpadding=0 cellspacing=0><tr><td width=250><table width=* border=0 cellpadding=0 cellspacing=0><tr><td valign=top><u>'.constant($game->sprache("TEXT3")).'</u><br><b>'.$template['name'].'</b><br><br></td></tr><tr><td valign=top><u>'.constant($game->sprache("TEXT4")).'</u><br>'.str_replace("\r\n", '<br>',wordwrap($template['description'], 40,"<br>",1 )).'<br><br></td></tr><tr><td valign=top><u>'.constant($game->sprache("TEXT5")).'</u><br><img src='.FIXED_GFX_PATH.'ship'.$game->player['user_race'].'_'.$template['ship_torso'].'.jpg></td></tr><tr><td valign=top><u>'.constant($game->sprache("TEXT6")).'</u><br>';
 
 
 
@@ -377,7 +355,7 @@ $text.='<u>'.constant($game->sprache("TEXT21")).'</u> <b>'.$template['value_14']
 
 
 $text.='<br></td></tr><tr><td valign=top><u>'.constant($game->sprache("TEXT22")).'</u><br><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$template['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$template['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$template['resource_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_worker_small.gif>'.$template['resource_4'].'<br>&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif>'.$template['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif>'.$template['unit_6'].'<br><br><u>'.constant($game->sprache("TEXT23")).'</u><br>'.(Zeit($template['buildtime']*TICK_DURATION)).'<br><br><u>'.constant($game->sprache("TEXT24")).'</u><br><img src='.$game->GFX_PATH.'menu_unit1_small.gif>'.$template['min_unit_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif>'.$template['min_unit_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif>'.$template['min_unit_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif>'.$template['min_unit_4'].'</td></tr></table></td></tr></table>';
-$text.='</td></tr></table></td></tr></table><br></font>';
+$text.='</td></tr></table></td></tr></table>';
 
 
 
@@ -472,7 +450,7 @@ while (($scheduler = $db->fetchrow($schedulerquery))==true)
 
         {
 
-        $game->out('<center><span style="font-family:Arial,serif;font-size:11pt"><b>'.constant($game->sprache("TEXT25")).'</b></span></center><br>');
+        $game->out('<span style="font-family:Arial,serif;font-size:11pt"><b>'.constant($game->sprache("TEXT25")).'</b></span><br>');
 
         }
 
@@ -567,25 +545,25 @@ else
 
 	{
 
-  		$schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE planet_id= "'.$game->planet['planet_id'].'" ORDER BY finish_build DESC LIMIT 1');
+		$schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE planet_id= "'.$game->planet['planet_id'].'" ORDER BY finish_build DESC LIMIT 1');
 
-  		$start_time=$ACTUAL_TICK;
+		$start_time=$ACTUAL_TICK;
 
-  		if ($db->num_rows()>0) {$scheduler = $db->fetchrow($schedulerquery); $start_time=$scheduler['finish_build'];}
+		if ($db->num_rows()>0) {$scheduler = $db->fetchrow($schedulerquery); $start_time=$scheduler['finish_build'];}
 
-  		for ($x=0; $x<$_REQUEST['count']; $x++)
+		for ($x=0; $x<$_REQUEST['count']; $x++)
 
-		  	{
+		{
 
-  			if ($db->query('INSERT INTO scheduler_shipbuild (ship_type,planet_id,start_build,finish_build,unit_1,unit_2,unit_3,unit_4)
+			if ($db->query('INSERT INTO scheduler_shipbuild (ship_type,planet_id,start_build,finish_build,unit_1,unit_2,unit_3,unit_4)
 
-		  			VALUES ("'.($_REQUEST['id']).'","'.$game->planet['planet_id'].'","'.$start_time.'","'.($start_time+$template['buildtime']).'","'.$_REQUEST['count1'].'","'.$_REQUEST['count2'].'","'.$_REQUEST['count3'].'","'.$_REQUEST['count4'].'")')==false)  {message(DATABASE_ERROR, 'ship_query: Could not call INSERT INTO in scheduler_shipbuild'); exit();}
+					VALUES ("'.($_REQUEST['id']).'","'.$game->planet['planet_id'].'","'.$start_time.'","'.($start_time+$template['buildtime']).'","'.$_REQUEST['count1'].'","'.$_REQUEST['count2'].'","'.$_REQUEST['count3'].'","'.$_REQUEST['count4'].'")')==false)  {message(DATABASE_ERROR, 'ship_query: Could not call INSERT INTO in scheduler_shipbuild'); exit();}
 
 
 
 			$start_time+=$template['buildtime'];
 
-			}
+		}
 
 
 
@@ -609,7 +587,7 @@ if (!CanAffordTemplateUnits($_REQUEST['count1'],$_REQUEST['count2'],$_REQUEST['c
 
 if (!TemplateMetRequirements($template)) $text.=constant($game->sprache("TEXT28"));
 
-$game->out('<center><span style="font-family:Arial,serif;font-size:11pt"><b>'.constant($game->sprache("TEXT29")).'<br>'.$text.'</b></span></center><br>');
+$game->out('<span style="font-family:Arial,serif;font-size:11pt"><b>'.constant($game->sprache("TEXT29")).'<br>'.$text.'</b></span><br>');
 
 }
 
@@ -663,7 +641,7 @@ if ($db->num_rows()>0)
 
 {
 
-$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT30")).' '.HelpPopup('shipyard_3').':</span></center><br>');
+$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT30")).' '.HelpPopup('shipyard_3').':</span><br><br>');
 
 $scheduler = $db->fetchrow($schedulerquery);
 
@@ -671,7 +649,7 @@ $template=$db->queryrow('SELECT * FROM ship_templates WHERE (owner="'.$game->pla
 
 $game->out('
 
-<center><table border=0 cellpadding=0 cellspacing=0 width=300 class="style_inner"><tr><td>
+<table border=0 cellpadding=0 cellspacing=0 width=300 class="style_inner"><tr><td>
 
 <span class="sub_caption2">'.constant($game->sprache("TEXT31")).' <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.$template['name'].'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span class="sub_caption2">'.$template['name'].'</span></a></span><br>
 
@@ -742,7 +720,7 @@ $game->out('<br><span class="sub_caption2">'.constant($game->sprache("TEXT34")).
 
 
 
-if ($display) $game->out('</td></tr></table></center><br>');
+if ($display) $game->out('</td></tr></table><br>');
 
 
 
@@ -754,19 +732,19 @@ if ($display) $game->out('</td></tr></table></center><br>');
 
 
 
-$game->out('<center>'.constant($game->sprache("TEXT40")).'</center><br>');
+$game->out(constant($game->sprache("TEXT40")).'<br><br>');
 
 
 
 $game->out('
 
-<center>
+
 
 <table border=0 cellpadding=0 cellspacing=0 width=200 class="style_outer">
 
-<tr><td width=200>
+<tr><td width=200 align="center">
 
-<center><span class="sub_caption2">'.constant($game->sprache("TEXT41")).'</span></center><br>
+<span class="sub_caption2">'.constant($game->sprache("TEXT41")).'</span><br><br>
 
 <table border=0 cellpadding=0 cellspacing=0 width=200 class="style_inner">
 
@@ -826,9 +804,9 @@ Show_Common_Menues();
 
 ///////////////////////// 3rd Schiffstemplate Menu
 
-$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT45")).' '.HelpPopup('shipyard_2').':</span></center><br>');
+$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT45")).' '.HelpPopup('shipyard_2').':</span><br><br>');
 
-$game->out('<center><table border=0 cellpadding=2 cellspacing=2 width=400 class="style_outer"><tr><td width=25>&nbsp;</td><td>');
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width=400 class="style_outer"><tr><td width=25>&nbsp;</td><td align="center">');
 
 
 
@@ -864,7 +842,7 @@ if ($maxunit[3]>$template['max_unit_4']) $maxunit[3]=$template['max_unit_4'];
 
 
 
-$game->out('<center><span class="sub_caption2">'.constant($game->sprache("TEXT46")).' "'.$_REQUEST['count'].'x <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.$template['name'].'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span class="sub_caption2">'.$template['name'].'</span></a>" '.constant($game->sprache("TEXT47")).'</span></center><br>
+$game->out('<span class="sub_caption2">'.constant($game->sprache("TEXT46")).' "'.$_REQUEST['count'].'x <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.$template['name'].'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span class="sub_caption2">'.$template['name'].'</span></a>" '.constant($game->sprache("TEXT47")).'</span><br><br>
 
 <form name="send" method="post" action="index.php?a=shipyard&a2=start_build&id='.$template['id'].'" onSubmit="return document.send.submit.disabled = true;">
 <script type="text/javascript" language="JavaScript">
@@ -992,9 +970,9 @@ Show_Common_Menues();
 
 ///////////////////////// 3rd Schiffstemplate Menu
 
-$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT45")).' '.HelpPopup('shipyard_1').' :</span></center><br>');
+$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT45")).' '.HelpPopup('shipyard_1').' :</span><br><br>');
 
-$game->out('<center><table border=0 cellpadding=2 cellspacing=2 width=500 class="style_outer"><tr><td width=500>');
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width=500 class="style_outer"><tr><td width=500>');
 
 
 
@@ -1079,7 +1057,7 @@ else
 
 {
 
-$game->out('</table><center><br><br><b>'.constant($game->sprache("TEXT58")).'</b></u></center><br><br>');
+$game->out('</table><br><br><b>'.constant($game->sprache("TEXT58")).'</b></u><br><br>');
 
 
 
@@ -1104,7 +1082,7 @@ if ($game->planet['building_8']<1)
 {
 
 message(NOTICE, constant($game->sprache("TEXT59")).' '.$BUILDING_NAME[$game->player['user_race']][7].' '.constant($game->sprache("TEXT60")));
-//$game->out('<center><span class="text_large">'.constant($game->sprache("TEXT59")).' '.$BUILDING_NAME[$game->player['user_race']]['7'].' '.constant($game->sprache("TEXT60")).'</span></center><br><br>');
+//$game->out('<span class="text_large">'.constant($game->sprache("TEXT59")).' '.$BUILDING_NAME[$game->player['user_race']]['7'].' '.constant($game->sprache("TEXT60")).'</span><br><br>');
 
 }
 

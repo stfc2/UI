@@ -39,7 +39,7 @@ function ZeitDetailShort($seconds) {
 
 $game->init_player();
 
-$game->out('<center><span class="caption">'.$BUILDING_NAME[$game->player['user_race']][6].':</span><br><br>');
+$game->out('<span class="caption">'.$BUILDING_NAME[$game->player['user_race']][6].':</span><br><br>');
 
 
 

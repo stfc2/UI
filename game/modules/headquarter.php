@@ -49,35 +49,35 @@ $change_error='';
 if (isset($_REQUEST['exec_namechange']) && isset($_REQUEST['planet_name']) && !empty($_REQUEST['planet_name']) && isset($_REQUEST['planet_altname']))
 {
     for ($count=0; $count < strlen($_REQUEST['planet_name']); $count++) {
-       $val=ord( (substr($_REQUEST['planet_name'], $count, 1)) );
-       if (($val>21 && $val<28) || ($val>93 && $val<97) || $val>122 || $val==92)
-       {
-        $change_error='<br><font color=red>'.constant($game->sprache("TEXT1")).'</font>';
-	}
+        $val=ord( (substr($_REQUEST['planet_name'], $count, 1)) );
+        if (($val>21 && $val<28) || ($val>93 && $val<97) || $val>122 || $val==92)
+        {
+            $change_error='<br><font color=red>'.constant($game->sprache("TEXT1")).'</font>';
+        }
     }
     for ($count=0; $count < strlen($_REQUEST['planet_altname']); $count++) {
-       $val=ord( (substr($_REQUEST['planet_altname'], $count, 1)) );
-       if (($val>21 && $val<28) || ($val>93 && $val<97) || $val>122 || $val==92)
+        $val=ord( (substr($_REQUEST['planet_altname'], $count, 1)) );
+        if (($val>21 && $val<28) || ($val>93 && $val<97) || $val>122 || $val==92)
         {
-        $change_error='<br><font color=red>'.constant($game->sprache("TEXT2")).'</font>';
-	}
+            $change_error='<br><font color=red>'.constant($game->sprache("TEXT2")).'</font>';
+        }
     }
-	if (empty($change_error))
-	{
-	  $db->query('UPDATE planets SET planet_name="'.htmlspecialchars(addslashes($_REQUEST['planet_name'])).'", planet_altname="'.htmlspecialchars(addslashes($_REQUEST['planet_altname'])).'" WHERE planet_id= "'.$game->planet['planet_id'].'"');
-  	  redirect('a=headquarter');
-	}
+    if (empty($change_error))
+    {
+        $db->query('UPDATE planets SET planet_name="'.htmlspecialchars(addslashes($_REQUEST['planet_name'])).'", planet_altname="'.htmlspecialchars(addslashes($_REQUEST['planet_altname'])).'" WHERE planet_id= "'.$game->planet['planet_id'].'"');
+        redirect('a=headquarter');
+    }
 }
 
 
-$game->out('<center><span class="caption">'.$BUILDING_NAME[$game->player['user_race']][0].':</span></center><br>');
+$game->out('<span class="caption">'.$BUILDING_NAME[$game->player['user_race']][0].':</span><br><br>');
 
 
 
-$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT3")).' <u>'.$game->planet['planet_name'].'</u><br></span>');
-$game->out('<center>'.constant($game->sprache("TEXT4")).' <u>'.$game->planet['planet_altname'].'</u><br>');
+$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT3")).' <u>'.$game->planet['planet_name'].'</u><br></span>');
+$game->out(constant($game->sprache("TEXT4")).' <u>'.$game->planet['planet_altname'].'</u><br>');
 if ($capital) $game->out('<span class="sub_caption">('.constant($game->sprache("TEXT5")).')');
-$game->out('</span></center><br><br>');
+$game->out('</span><br><br>');
 
 
 $system=$db->queryrow('SELECT system_x, system_y FROM starsystems WHERE system_id = '.$game->planet['system_id']);
@@ -87,7 +87,7 @@ if ($game->player['user_capital']==$game->planet['planet_id']) $m_points=$MAX_PO
 
 
 
-// "Wird gebaut" Anzeige:
+// "If built" display:
 $building=constant($game->sprache("TEXT6"));
 $build=$db->queryrow('SELECT installation_type, build_finish FROM scheduler_instbuild WHERE planet_id="'.$game->planet['planet_id'].'"');
 if ($db->num_rows()>0) $building=$BUILDING_NAME[$game->player['user_race']][$build['installation_type']].' ('.constant($game->sprache("TEXT6a")).' '.($game->planet['building_'.($build['installation_type']+1).'']+1).')</td><td><b id="timer2" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($build['build_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b>';
@@ -145,9 +145,9 @@ $shipbuild=$template['name'].'</td><td><b id="timer4" title="time1_'.($NEXT_TICK
 
 
 
-// Hauptanzeige:
+// Main Display:
 $game->out('
-<center><table border=0 cellpadding=1 cellaspacing=1 class="style_outer">
+<table border=0 cellpadding=1 cellaspacing=1 class="style_outer">
 <tr>
 <td width=450>
 

@@ -41,16 +41,6 @@ error_reporting(E_ERROR);
 $game->out('<span class="caption">'.constant($game->sprache("TEXT3")).'</span><br><br>'.display_view_navigation('ship_template', $module, $STEMPLATE_MODULES).'<br><br>');
 
 
-function Zeit($minutes)
-{
-$days=0;
-$hours=0;
-while($minutes>=60*24) {$days++; $minutes-=60*24;}
-while($minutes>=60) {$hours++; $minutes-=60;}
-
-return (''.$days.'d '.$hours.'h '.$minutes.'m');
-}
-
 function CreateShipInfoText($ship)
 {
 global $db;
@@ -80,7 +70,7 @@ function CreateInfoText($comp)
 {
 global $db;
 global $game;
-$text=''.$comp['description'].'<br><br><u>'.constant($game->sprache("TEXT4")).'<br></u><img src='.$game->GFX_PATH.'menu_metal_small.gif> '.$comp['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif> '.$comp['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif> '.$comp['resource_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_worker_small.gif> '.$comp['resource_4'].'<br><img src='.$game->GFX_PATH.'menu_unit1_small.gif> '.$comp['unit_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif> '.$comp['unit_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif> '.$comp['unit_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif> '.$comp['unit_4'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif> '.$comp['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif> '.$comp['unit_6'].'<br><u>'.constant($game->sprache("TEXT5")).'</u>  +'.($comp['buildtime']*TICK_DURATION).' '.constant($game->sprache("TEXT6")).'<br><br><u>'.constant($game->sprache("TEXT22")).'</u><br>';
+$text=$comp['description'].'<br><br><u>'.constant($game->sprache("TEXT4")).'<br></u><img src='.$game->GFX_PATH.'menu_metal_small.gif> '.$comp['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif> '.$comp['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif> '.$comp['resource_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_worker_small.gif> '.$comp['resource_4'].'<br><img src='.$game->GFX_PATH.'menu_unit1_small.gif> '.$comp['unit_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif> '.$comp['unit_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif> '.$comp['unit_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif> '.$comp['unit_4'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif> '.$comp['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif> '.$comp['unit_6'].'<br><u>'.constant($game->sprache("TEXT5")).'</u>  +'.($comp['buildtime']*TICK_DURATION).' '.constant($game->sprache("TEXT6")).'<br><br><u>'.constant($game->sprache("TEXT22")).'</u><br>';
 
 if ($comp['value_1']!=0) $text.=constant($game->sprache("TEXT8")).' '.$comp['value_1'].'<br>';
 if ($comp['value_2']!=0) $text.=constant($game->sprache("TEXT9")).' '.$comp['value_2'].'<br>';
@@ -146,7 +136,7 @@ global $db,$game;
 //		{
 //			if (($_POST[0]==4) && ($_POST[5]!=1)) return 0;
 //		}
-	
+
 
 return 1;
 }
@@ -185,11 +175,11 @@ while (($template=$db->fetchrow($templatequery))==true)
 }
 
 $game->out('
-<center><center><table border=0 cellpadding=1 cellspacing=1 width=600 background="'.$game->GFX_PATH.'template_bg3.jpg"  class="border_grey"><tr><td>
-<b><u><center>'.constant($game->sprache("TEXT2")).':</u></center></b><br>
+<table border=0 cellpadding=1 cellspacing=1 width=600 background="'.$game->GFX_PATH.'template_bg3.jpg"  class="border_grey"><tr><td align="center">
+<b><u>'.constant($game->sprache("TEXT2")).':</u></b><br><br>
 <form method="post" action="'.parse_link('a=ship_template&view=compare').'">
-<center><input class="button_nosize" type="submit" name="none" value="'.constant($game->sprache("TEXT23")).'"></center>
-<center>
+<input class="button_nosize" type="submit" name="none" value="'.constant($game->sprache("TEXT23")).'">
+
 <table border=0 cellpadding=1 cellspacing=1>
 <tr valign=top>
 ');
@@ -203,8 +193,8 @@ for ($t=0; $t<3; $t++)
 
 for ($t=0; $t<3; $t++)
 {
-	
-	if (!isset($_REQUEST['ship'.$t])) $game->out('<td width=200><center><span class="sub_caption">'.constant($game->sprache("TEXT24")).'</span><br><select name="ship'.$t.'">'.$shiplist[$t].'</select></center></td>');
+
+	if (!isset($_REQUEST['ship'.$t])) $game->out('<td width=200 align="center"><span class="sub_caption">'.constant($game->sprache("TEXT24")).'</span><br><select name="ship'.$t.'">'.$shiplist[$t].'</select></td>');
 	else
 	{
 		$templatequery=$db->query('SELECT * FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (removed=0) AND (id='.(int)$_POST['ship'.$t].')ORDER BY ship_torso ASC, name ASC');
@@ -217,9 +207,9 @@ for ($t=0; $t<3; $t++)
 			<u>'.constant($game->sprache("TEXT25")).'</u><br>
 			<i>'.$SHIP_TORSO[$game->player['user_race']][$template['ship_torso']][29].'</i>
 			<br><br><u>'.constant($game->sprache("TEXT26")).'</u><br>');
-		
-		
-			
+
+
+
 			for ($tt=0; $tt<10; $tt++)
 			{
 if ($template['component_'.($tt+1)]>=0)
@@ -235,8 +225,8 @@ if ($template['component_'.($tt+1)]>=0)
 				else 
 					$game->out('- Nicht belegt<br>');
 			} */
-			
-			
+
+
 			$game->out('<br><u>'.constant($game->sprache("TEXT28")).'</u><br>');
 
 			$game->out('<u>'.constant($game->sprache("TEXT8")).'</u> <b>'.PutValue($template_array,'value_1',$t).'</b><br>');
@@ -252,7 +242,7 @@ if ($template['component_'.($tt+1)]>=0)
 			$game->out('<u>'.constant($game->sprache("TEXT18")).'</u> <b>'.PutValue($template_array,'value_11',$t).'</b><br>');
 			$game->out('<u>'.constant($game->sprache("TEXT19")).'</u> <b>'.PutValue($template_array,'value_12',$t).'</b><br>');
 			$game->out('<u>'.constant($game->sprache("TEXT29")).'</u> <b>'.PutValue($template_array,'value_14',$t).'/'.PutValue($template_array,'value_13',$t).'</b><br>');
-		
+
 			$game->out('<br><br>
 			<u>'.constant($game->sprache("TEXT30")).'</u><br>
 			<img src="'.$game->GFX_PATH.'menu_metal_small.gif"><b id="price1">'.$template['resource_1'].'</b>
@@ -274,7 +264,7 @@ if ($template['component_'.($tt+1)]>=0)
 			</td>
 			');
 		}
-		else $game->out('<td width=200><center><span class="sub_caption">'.constant($game->sprache("TEXT24")).'</span><br><select name="ship'.$t.'">'.$shiplist[$t].'</select></center></td>');
+		else $game->out('<td width=200 align="center"><span class="sub_caption">'.constant($game->sprache("TEXT24")).'</span><br><select name="ship'.$t.'">'.$shiplist[$t].'</select></td>');
 	}
 
 }
@@ -282,7 +272,7 @@ if ($template['component_'.($tt+1)]>=0)
 $game->out('
 </tr></table>
 </form>
-<br><center>
+<br>
 </td></tr></table>');
 }
 
@@ -297,11 +287,11 @@ global $SHIP_TORSO,$SHIP_TORSO_DATA, $UNIT_DESCRIPTION, $UNIT_DATA, $UNIT_NAME,$
 $ship_class = array(constant($game->sprache("TEXT33")), constant($game->sprache("TEXT34")), constant($game->sprache("TEXT35")), constant($game->sprache("TEXT36")), constant($game->sprache("TEXT36")), constant($game->sprache("TEXT37")), constant($game->sprache("TEXT37")), constant($game->sprache("TEXT38")), constant($game->sprache("TEXT38")), constant($game->sprache("TEXT39")), constant($game->sprache("TEXT39")), constant($game->sprache("TEXT40")), constant($game->sprache("TEXT41"))); 
 
 $game->out('
-<center><table border=0 cellpadding=2 cellspacing=2 width=475 class="style_outer"><tr><td>
-<center>
+<table border=0 cellpadding=2 cellspacing=2 width=475 class="style_outer"><tr><td align="center">
+
 <span class="sub_caption">'.constant($game->sprache("TEXT1")).':</span>
-<br><span class="sub_caption2">(1/3) '.constant($game->sprache("TEXT42")).'</span>
-</center><br><table border=0 cellpadding=2 cellspacing=2 width=475 class="style_inner"><tr><td>
+<br><span class="sub_caption2">(1/3) '.constant($game->sprache("TEXT42")).'</span><br>
+<br><table border=0 cellpadding=2 cellspacing=2 width=475 class="style_inner"><tr><td>
 <form method="post" action="'.parse_link('a=ship_template&view=create').'">');
 
 $game->out('<table border=0 cellpadding=2 cellspacing=2><tr><td>&nbsp;</td><td align="left" width=150><b>'.constant($game->sprache("TEXT43")).'</b></td><td width=100><b>'.constant($game->sprache("TEXT44")).'</b></td><td width=50 align="center"><b>'.constant($game->sprache("TEXT45")).'</b></td><td width=75 align="center"><b>'.constant($game->sprache("TEXT46")).'</b></td><td width=75 align="center"><b>'.constant($game->sprache("TEXT47")).'</b></td><td width=50 align="center"><b>'.constant($game->sprache("TEXT48")).'</b></td></tr>');
@@ -494,7 +484,7 @@ WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$SHIP_TORSO[$gam
 $game->out('</table></select>
 <center><br>
 <input class="button_nosize" type="submit" name="step1" value="(1/3) '.constant($game->sprache("TEXT51")).'" disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-<input class="button_nosize" type="submit" name="step2" value="(2/3) '.constant($game->sprache("TEXT52")).'">
+<input class="button_nosize" type="submit" name="step2" value="(2/3) '.constant($game->sprache("TEXT52")).'"></center>
 </form></td></tr></table></td></tr></table>');
 
 }
@@ -877,12 +867,12 @@ return true;
 
 </script>
 
-<center><table border=0 cellpadding=2 cellspacing=2 width=500 class="style_outer">
-<tr><td>
-<center>
+<table border=0 cellpadding=2 cellspacing=2 width=500 class="style_outer">
+<tr><td align="center">
+
 <span class="sub_caption">'.constant($game->sprache("TEXT1")).':</span>
-<br><span class="sub_caption2">(2/3) '.constant($game->sprache("TEXT56")).'</span><br>
-</center>
+<br><span class="sub_caption2">(2/3) '.constant($game->sprache("TEXT56")).'</span><br><br>
+
 ');
 
 $game->out('
@@ -913,7 +903,7 @@ if (ComponentMetRequirements($key,$t,$components[$t],$_POST['ship_torso']))
 {
 $comp=$components[$t];
 $part1='<input type="radio" name="c'.($key+1).'" value="'.$t.'"';
-$part2='onClick ="return UpdateCompleteCategory'.($key+1).'('.$comp['resource_1'].','.$comp['resource_2'].','.$comp['resource_3'].','.$comp['resource_4'].','.($comp['buildtime']*TICK_DURATION).','.$comp['unit_1'].','.$comp['unit_2'].','.$comp['unit_3'].','.$comp['unit_4'].','.$comp['unit_5'].','.$comp['unit_6'].','.$comp['value_1'].','.$comp['value_2'].','.$comp['value_3'].','.$comp['value_4'].','.$comp['value_5'].','.$comp['value_6'].','.$comp['value_7'].','.$comp['value_8'].','.$comp['value_9'].','.$comp['value_10'].','.$comp['value_11'].','.$comp['value_12'].','.$comp['value_13'].','.$comp['value_14'].','.$comp['value_15'].',\''.$comp['name'].'\');">'.$comp['name'].'';
+$part2='onClick ="return UpdateCompleteCategory'.($key+1).'('.$comp['resource_1'].','.$comp['resource_2'].','.$comp['resource_3'].','.$comp['resource_4'].','.($comp['buildtime']*TICK_DURATION).','.$comp['unit_1'].','.$comp['unit_2'].','.$comp['unit_3'].','.$comp['unit_4'].','.$comp['unit_5'].','.$comp['unit_6'].','.$comp['value_1'].','.$comp['value_2'].','.$comp['value_3'].','.$comp['value_4'].','.$comp['value_5'].','.$comp['value_6'].','.$comp['value_7'].','.$comp['value_8'].','.$comp['value_9'].','.$comp['value_10'].','.$comp['value_11'].','.$comp['value_12'].','.$comp['value_13'].','.$comp['value_14'].','.$comp['value_15'].',\''.$comp['name'].'\');">'.$comp['name'];
 $game->out($part1.' '.$part2.' [<a href="javascript:void(0);" onclick="return overlib(\''.CreateInfoText($comp).'\', CAPTION, \''.$comp['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.constant($game->sprache("TEXT58")).'</a>]<br>');
 }
 
@@ -925,7 +915,7 @@ $game->out('<br></td></tr></table>');
 $game->out('
 </td>
 <td valign=top>
-<center>
+
 <table border=0 cellpadding=0 cellspacing=0 class="style_inner">
 <tr valign=top>
 <td width=240>
@@ -982,13 +972,13 @@ $game->out('
 <u>'.constant($game->sprache("TEXT19")).'</u> <b id="skilla2">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][25].'</b><br>
 </td><td width=100>
 <u>'.constant($game->sprache("TEXT61")).'</u><br><b id="skilla4">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][27].'</b>/<b id="skilla3">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][26].'</b></td></tr></table>
-</center></td>
-</tr></table></center>
+</td>
+</tr></table>
 
 </td></tr></table>
 <input type=hidden name="ship_torso" value="'.$_POST['ship_torso'].'">
 <br>
-<br><center>
+<br>
 <input class="button_nosize" type="submit" name="step1" value="(1/3) '.constant($game->sprache("TEXT51")).'">&nbsp;&nbsp;&nbsp;
 <input class="button_nosize" onClick="return CheckEnergy()" type="submit" name="step3" value="(3/3) '.constant($game->sprache("TEXT52")).'">
 </form></td></tr></table>');
@@ -1013,11 +1003,11 @@ else
 $_POST[($t)]=-1;
 
 $game->out('
-<center><table border=0 cellpadding=2 cellspacing=2 width=450 class="style_outer"><tr><td>
-<center>
+<table border=0 cellpadding=2 cellspacing=2 width=450 class="style_outer"><tr><td align="center">
+
 <span class="sub_caption">'.constant($game->sprache("TEXT1")).':</span>
-<br><span class="sub_caption2">(3/3) '.constant($game->sprache("TEXT62")).'</span>
-</center><br><table border=0 cellpadding=2 cellspacing=2 width=450 class="style_inner"><tr><td>
+<br><span class="sub_caption2">(3/3) '.constant($game->sprache("TEXT62")).'</span><br>
+<br><table border=0 cellpadding=2 cellspacing=2 width=450 class="style_inner"><tr><td>
 <form method="post" action="'.parse_link('a=ship_template&view=create').'">');
 
 
@@ -1025,8 +1015,8 @@ if ($game->player['user_race']==9) // Test for the decoy ship:
 {
 if (($_POST[3])>=0 && ($_POST[8])>=0)
 {
-	$game->out('<center><span class="sub_caption2">'.constant($game->sprache("TEXT63")).' '.$ship_components[$game->player['user_race']][3][$_POST[3]]['name'].' '.constant($game->sprache("TEXT64")).'<br><br></span></center>');
-    	$_POST[3]=0;
+	$game->out('<span class="sub_caption2">'.constant($game->sprache("TEXT63")).' '.$ship_components[$game->player['user_race']][3][$_POST[3]]['name'].' '.constant($game->sprache("TEXT64")).'<br><br></span>');
+	$_POST[3]=0;
 }
 }
 
@@ -1170,8 +1160,8 @@ $game->out('<br></td></tr>
 
 <br><center>
 <input class="button_nosize" type="submit" name="step2" value="(2/3) '.constant($game->sprache("TEXT51")).'">&nbsp;&nbsp;&nbsp;
-<input class="button_nosize" type="submit" name="step4" value="'.constant($game->sprache("TEXT62")).'">
-</form></td></tr></table></center><br>');
+<input class="button_nosize" type="submit" name="step4" value="'.constant($game->sprache("TEXT62")).'"></center>
+</form></td></tr></table><br>');
 $game->out('</td></tr></table>');
 }
 
@@ -1216,11 +1206,11 @@ if (SpecialRequirements()!=1) {echo constant($game->sprache("TEXT70"));exit(0);}
 
 
 $game->out('
-<center><table border=0 cellpadding=2 cellspacing=2 width=450 class="style_outer"><tr><td>
-<center>
+<table border=0 cellpadding=2 cellspacing=2 width=450 class="style_outer"><tr><td>
+
 <span class="sub_caption">'.constant($game->sprache("TEXT1")).':</span>
 <br><span class="sub_caption2">'.constant($game->sprache("TEXT71")).'</span>
-</center><br><table border=0 cellpadding=2 cellspacing=2 width=450 class="style_inner"><tr><td>
+<br><table border=0 cellpadding=2 cellspacing=2 width=450 class="style_inner"><tr><td>
 ');
 
 
@@ -1318,8 +1308,8 @@ if ($value[9]>9.99) $value[9]=9.99;
 $game->out('
 </table>
 <br>
-<center><span class="sub_caption2">'.constant($game->sprache("TEXT74")).'</span></center>
-</td></tr></table></center><br>');
+<span class="sub_caption2">'.constant($game->sprache("TEXT74")).'</span>
+</td></tr></table><br>');
 
 $game->out('</td></tr></table>');
 
@@ -1361,7 +1351,7 @@ $templatequery=$db->query('SELECT id,name,ship_torso FROM ship_templates WHERE (
 $number=$db->num_rows();
 
 $game->out('
-<center><table border=0 cellpadding=2 cellspacing=2 width=600 class="style_outer"><tr><td>
+<table border=0 cellpadding=2 cellspacing=2 width=600 class="style_outer"><tr><td>
 <span class="sub_caption2">'.((isset($template['name'])) ? $template['name'].':' : constant($game->sprache("TEXT0")).':').'</span><br>');
 
 $game->out('<table border=0 cellpadding=0 cellspacing=0 width="600" class="style_inner">
@@ -1391,7 +1381,7 @@ for ($t=0; $t<10; $t++)
 {
 	if ($template['component_'.($t+1)]>=0)
 	{
-		$game->out('-&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($ship_components[$game->player['user_race']][$t][$template['component_'.($t+1)]]).'\', CAPTION, \''.$ship_components[$game->player['user_race']][$t][$template['component_'.($t+1)]]['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.( ($game->planet['catresearch_'.($t+1).'']<=$template['component_'.($t+1).'']) ? '<b><span style="color: red;">'.$ship_components[$game->player['user_race']][$t][$template['component_'.($t+1).'']]['name'].'</span>' : '<b><span style="color: green;">'.$ship_components[$game->player['user_race']][$t][$template['component_'.($t+1).'']]['name'].'</span>' ).'</b></a><br>');
+		$game->out('-&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($ship_components[$game->player['user_race']][$t][$template['component_'.($t+1)]]).'\', CAPTION, \''.$ship_components[$game->player['user_race']][$t][$template['component_'.($t+1)]]['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.( ($game->planet['catresearch_'.($t+1)]<=$template['component_'.($t+1)]) ? '<b><span style="color: red;">'.$ship_components[$game->player['user_race']][$t][$template['component_'.($t+1)]]['name'].'</span>' : '<b><span style="color: green;">'.$ship_components[$game->player['user_race']][$t][$template['component_'.($t+1)]]['name'].'</span>' ).'</b></a><br>');
 	} else $game->out(constant($game->sprache("TEXT27")));
 }
 
@@ -1445,19 +1435,19 @@ $game->out('<br></td></tr>
 $game->out('</td>
 
 
-<td width="230" valign="top">
-<span class="sub_caption2"><center>'.constant($game->sprache("TEXT75")).' ('.$number.' '.(($number > 1) ? constant($game->sprache("TEXT83")) : constant($game->sprache("TEXT43"))).')</center></span>
+<td width="230" valign="top" align="center">
+<span class="sub_caption2">'.constant($game->sprache("TEXT75")).' ('.$number.' '.(($number > 1) ? constant($game->sprache("TEXT83")) : constant($game->sprache("TEXT43"))).')</span>
 <form action="'.parse_link('a=ship_template').'" name="shipselect">
 <input type="hidden" name="a" value="ship_template">
 
-<center><select name="template" size="20" style="width: 200px;" onChange="document.shipselect.submit()">>');
+<select name="template" size="20" style="width: 200px;" onChange="document.shipselect.submit()">>');
 
 while (($tmplate=$db->fetchrow($templatequery))==true)
 $game->out('<option value="'.$tmplate['id'].'" '.(($tmplate['id']==$_GET['template']) ? 'selected="selected"' : '').'>'.$tmplate['name'].' ('.$SHIP_TORSO[$game->player['user_race']][$tmplate['ship_torso']][29].')</option>');
 
 $game->out('
 </select><br><br>
-<center>
+
 '.(isset($template['name']) ? '<input class="button_nosize" type="submit" name="delete" value="'.constant($game->sprache("TEXT76")).' '.$template['name'].'" onClick="return confirm(\''.constant($game->sprache("TEXT77")).'\')">' : '').'
 </form>
 </td>
@@ -1481,7 +1471,7 @@ $game->out('</td></tr><tr><td align="left">'.constant($game->sprache("TEXT78")).
 
 if ($game->player['user_id']>13)
 {
-$game->out('<center><span class="caption">Momentan deaktiviert.<br><br>');
+$game->out('<span class="caption">Momentan deaktiviert.<br><br>');
 }
 
 */
@@ -1489,7 +1479,7 @@ $game->out('<center><span class="caption">Momentan deaktiviert.<br><br>');
 if ($game->planet['building_8']<1)
 {
 message(NOTICE, constant($game->sprache("TEXT81")).' '.$BUILDING_NAME[$game->player['user_race']]['7'].' '.constant($game->sprache("TEXT82")));
-//$game->out('<center><span class="text_large">'.constant($game->sprache("TEXT81")).' '.$BUILDING_NAME[$game->player['user_race']]['7'].' '.constant($game->sprache("TEXT82")).'</span></center><br><br>');
+//$game->out('<span class="text_large">'.constant($game->sprache("TEXT81")).' '.$BUILDING_NAME[$game->player['user_race']]['7'].' '.constant($game->sprache("TEXT82")).'</span><br><br>');
 
 
 }

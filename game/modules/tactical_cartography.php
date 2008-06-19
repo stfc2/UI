@@ -67,18 +67,6 @@ return round($price,0);
 
 
 
-function Zeit($minutes)
-{
-$days=0;
-$hours=0;
-while($minutes>=60*24) {$days++; $minutes-=60*24;}
-while($minutes>=60) {$hours++; $minutes-=60;}
-
-return (''.$days.'d '.$hours.'h '.$minutes.'m');
-}
-
-
-
 function set_tcartography_remind($view, $id) {
     global $db, $game;
     
@@ -260,10 +248,9 @@ function display_ferengi_transfer($planet_id,$planet_system,$system_x,$system_y,
   </td>
   </tr>
   <tr>
-    <td colspan=3>
-	<center><input class="button" type="submit" name="trade" value="'.constant($game->sprache("TEXT21")).'"><br><br><b>
+    <td colspan=3 align="center">
+	<input class="button" type="submit" name="trade" value="'.constant($game->sprache("TEXT21")).'"><br><br><b>
 	[<a href="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id'].'&strade=0').'"><i>'.constant($game->sprache("TEXT17")).'</i></a>]</b>
-	</center>
     </td>
   </tr>
 
@@ -726,7 +713,7 @@ elseif(isset($_GET['memo_setup'])) {
     $n_cmemo = $db->num_rows($q_cmemo);
 
     $game->out('
-<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">'.constant($game->sprache("TEXT1")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]</center><br><br>
+<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">'.constant($game->sprache("TEXT1")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]<br><br>
     
 <table width="400" border="0"><form method="post" action="'.parse_link('a=tactical_cartography').'"><tr><td>
   '.constant($game->sprache("TEXT53")).'
@@ -833,7 +820,7 @@ form {
 //-->
 </style>
 
-<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<b>'.constant($game->sprache("TEXT1")).'</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]</center><br><br>
+<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<b>'.constant($game->sprache("TEXT1")).'</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]<br><br>
 
 <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
@@ -848,7 +835,7 @@ form {
 </table>
 <br>
 
-'.( (!empty($_GET['message'])) ? '<br><center><b>'.base64_decode($_GET['message']).'</b></center><br>' : '' ).'
+'.( (!empty($_GET['message'])) ? '<br><b>'.base64_decode($_GET['message']).'</b><br>' : '' ).'
 
 <br>
 <table class="style_inner" width="400" align="center" border="0" cellpadding="0" cellspacing="0">
@@ -1287,7 +1274,7 @@ elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty(
     }
 
     $game->out('
-<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<b>'.constant($game->sprache("TEXT1")).'</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]</center><br><br>
+<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<b>'.constant($game->sprache("TEXT1")).'</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]<br><br>
 
 <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>

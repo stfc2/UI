@@ -74,20 +74,6 @@ if ($num>4) {$num=0; $text.='<br>';}
 return $text;
 }
 
-function Zeit($minutes)
-{
-$days=0;
-$hours=0;
-while($minutes>=60*24) {$days++; $minutes-=60*24;}
-while($minutes>=60) {$hours++; $minutes-=60;}
-
-return (''.round($days,0).'d '.round($hours,0).'h '.round($minutes,0).'m');
-}
-
-
-
-
-
 function GetCatResearchPrice($level,$resource)
 {
 global $db;
@@ -282,7 +268,7 @@ $game->init_player(12);
 $done=0;
 
 $userquery=$db->query('SELECT * FROM scheduler_research WHERE (planet_id="'.$game->planet['planet_id'].'")');
-if ($db->num_rows()!=0) {$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT19")).'</span></center><br>');}
+if ($db->num_rows()!=0) {$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT19")).'</span><br>');}
 else
 {
 // Start Local Research:
@@ -326,7 +312,7 @@ $game->init_player(12);
 $done=0;
 
 $userquery=$db->query('SELECT * FROM scheduler_research WHERE (planet_id="'.$game->planet['planet_id'].'")');
-if ($db->num_rows()!=0) {$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT19")).'</span></center><br>');}
+if ($db->num_rows()!=0) {$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT19")).'</span><br>');}
 else
 {
 // Start Cat-Research:
@@ -378,35 +364,35 @@ $scheduler = $db->fetchrow($schedulerquery);
 
 if ($scheduler['research_id']<5)
 $game->out('
-<center><table border=0 cellpadding=2 cellspacing=2 width=300 class="style_inner"><tr><td>
+<table border=0 cellpadding=2 cellspacing=2 width=300 class="style_inner"><tr><td>
 '.constant($game->sprache("TEXT20")).' <b>'.$TECH_NAME[$game->player['user_race']][$scheduler['research_id']].'</b><br>
 '.constant($game->sprache("TEXT21")).'<br>
 <b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b><br>
 <a href="'.parse_link_ex('a=researchlabs&a2=abort_research',LINK_CLICKID).'"><b>'.constant($game->sprache("TEXT22")).'</b></a>
-</td></tr></table></center><br>
+</td></tr></table><br>
 ');
 else
 {
 $game->out('
-<center><table border=0 cellpadding=2 cellspacing=2 width=300 class="style_inner"><tr><td>
+<table border=0 cellpadding=2 cellspacing=2 width=300 class="style_inner"><tr><td>
 '.constant($game->sprache("TEXT20")).' <b>'.$ship_components[$game->player['user_race']][($scheduler['research_id']-5)][$game->planet['catresearch_'.(($scheduler['research_id']-4))]]['name'].'</b><br>
 '.constant($game->sprache("TEXT21")).'<br>
 <b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b><br>
 <a href="'.parse_link_ex('a=researchlabs&a2=abort_research',LINK_CLICKID).'"><b>'.constant($game->sprache("TEXT22")).'</b></a>
-</td></tr></table></center><br>
+</td></tr></table><br>
 ');
 }
 
 $game->set_autorefresh($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish']-$ACTUAL_TICK));
 }
 
-$game->out('<center>'.constant($game->sprache("TEXT23")).' <b id="timer2" title="time1_'.$NEXT_TICK.'_type1_3">&nbsp;</b> '.constant($game->sprache("TEXT24")).'</center><br><br>');
+$game->out(''.constant($game->sprache("TEXT23")).' <b id="timer2" title="time1_'.$NEXT_TICK.'_type1_3">&nbsp;</b> '.constant($game->sprache("TEXT24")).'<br><br><br>');
 
 
 
 // Schiffskomponenten-Forschung:
-$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT25")).' '.HelpPopup('research_catresearch').' :</span></center><br>');
-$game->out('<center><table border=0 cellpadding=2 cellspacing=2 width=498 class="style_outer">');
+$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT25")).' '.HelpPopup('research_catresearch').' :</span><br><br>');
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width=498 class="style_outer">');
 $game->out('
 <tr><td width=550>
 <table border=0 cellpadding=2 cellspacing=2 width=550 class="style_inner">
@@ -478,10 +464,10 @@ $game->out('<img src="'.$game->GFX_PATH.'menu_metal_small.gif"> '.  GetCatResear
 <img src="'.$game->GFX_PATH.'menu_latinum_small.gif"> '.GetCatResearchPrice($game->planet['catresearch_'.($key+1)],2).'&nbsp; </td><td>'.GetCatResearchTime($game->planet['catresearch_'.($key+1)],($key+1)).'</td><td>'.$build_text.'</td></tr>');
 } // while
 
-$game->out('</table></td></tr></table></center>');
+$game->out('</table></td></tr></table>');
 $game->out('<br><br>');
-$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT33")).' '.HelpPopup('research_localresearch').' :</span></center><br>');
-$game->out('<center><table border=0 cellpadding=2 cellspacing=2 width=550 class="style_outer">');
+$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT33")).' '.HelpPopup('research_localresearch').' :</span><br><br>');
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width=550 class="style_outer">');
 $game->out('
 <tr>
 <td width=550>
@@ -515,14 +501,14 @@ $game->out('<tr><td><b><a href="javascript:void(0);" onmouseover="return overlib
 }
 }
 
-$game->out('</td></tr></table></td></tr></table></center>');
+$game->out('</td></tr></table></td></tr></table>');
 }
 
 
 if ($game->planet['building_9']<1)
 {
 message(NOTICE, constant($game->sprache("TEXT40")).' '.$BUILDING_NAME[$game->player['user_race']][8].' '.constant($game->sprache("TEXT41")));
-//$game->out('<center><span class="text_large">'.constant($game->sprache("TEXT40")).' '.$BUILDING_NAME[$game->player['user_race']]['8'].' '.constant($game->sprache("TEXT41")).'</span></center><br><br>');
+//$game->out('<span class="text_large">'.constant($game->sprache("TEXT40")).' '.$BUILDING_NAME[$game->player['user_race']]['8'].' '.constant($game->sprache("TEXT41")).'</span><br><br>');
 
 
 }
