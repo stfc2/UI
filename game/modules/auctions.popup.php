@@ -44,16 +44,6 @@ include('../include/session.php');
 //$game->init_player();
 
 
-function Zeit($minutes)
-{
-$days=0;
-$hours=0;
-while($minutes>=60*24) {$days++; $minutes-=60*24;}
-while($minutes>=60) {$hours++; $minutes-=60;}
-
-return (''.$days.'d '.$hours.'h '.$minutes.'m');
-}
-
 echo '
 
 <html>
