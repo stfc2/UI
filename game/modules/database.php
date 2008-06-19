@@ -24,14 +24,25 @@
 
 $game->init_player();
 
+$DATABASE_MODULES = array(
+    'planets' => constant($game->sprache("TEXT11")),
+    'security' => constant($game->sprache("TEXT12")),
+//    'combatsim' => constant($game->sprache("TEXT13")),
+//    'academy' => constant($game->sprache("TEXT14")),
+    'faq' =>  constant($game->sprache("TEXT15")),
+    'guide' => constant($game->sprache("TEXT16"))
+);
 
-if(1 || isset($_GET['planet_type']))
+$module = (!empty($_GET['view'])) ? $_GET['view'] : 'planets';
+$game->out('<span class="caption">'.constant($game->sprache("TEXT0")).' '.$RACE_DATA[$game->player['user_race']][0].'</span><br><br>'.display_view_navigation('database', $module, $DATABASE_MODULES).'<br><br>');
+
+if($module == 'planets' || isset($_GET['planet_type']))
 {
 
     foreach($PLANETS_TEXT as $type => $data) {
-        $type = strtoupper($type);
+        $type = strtolower($type);
 
-        if(strtolower($type) == strtolower($_GET['planet_type'])) {
+        if($type == strtolower($_GET['planet_type'])) {
             $high_start = '<span style="color: #FFFF00; font-weight: bold;">';
             $high_end = '</span>';
         }
@@ -43,7 +54,7 @@ if(1 || isset($_GET['planet_type']))
 <table width="450" align="center" border="0" cellpadding="3" cellspacing="3" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
   <tr>
     <td valign="top"><u>'.constant($game->sprache("TEXT1")).'</u></td>
-    <td><a name="'.$type.'">'.$high_start.$type.$high_end.'</a></td>
+    <td><a name="'.strtoupper($type).'">'.$high_start.strtoupper($type).$high_end.'</a></td>
   </tr>
   <tr>
     <td valign="top"><u>'.constant($game->sprache("TEXT2")).'</u></td>
@@ -52,6 +63,14 @@ if(1 || isset($_GET['planet_type']))
   <tr>
     <td valign="top"><u>'.constant($game->sprache("TEXT3")).'</u></td>
     <td>'.$data[1].'</td>
+  </tr>
+  <tr>
+    <td valign="top"<u>'.constant($game->sprache("TEXT7")).'</u></td>
+    <td>'.$PLANETS_DATA[$type][7].'<br>'.constant($game->sprache("TEXT8")).'</td>
+  </tr>
+  <tr>
+    <td valign="top"<u>'.constant($game->sprache("TEXT9")).'</u></td>
+    <td>'.$PLANETS_DATA[$type][6].'<br>'.constant($game->sprache("TEXT10")).'</td>
   </tr>
   <tr>
     <td valign="top"><u>'.constant($game->sprache("TEXT4")).'</u></td>
@@ -66,7 +85,7 @@ if(1 || isset($_GET['planet_type']))
     <td>'.$data[4].'</td>
   </tr>
   <tr>
-  <td colspan="2" valign="top"><img src="'.FIXED_GFX_PATH.'planet_type_'.strtolower($type).'.png" border="0"></td>
+  <td colspan="2" valign="top"><img src="'.FIXED_GFX_PATH.'planet_type_'.$type.'.png" border="0"></td>
   </tr>
   
 </table>
@@ -74,5 +93,26 @@ if(1 || isset($_GET['planet_type']))
         ');
     }
 }
+else if($module == 'security')
+{
+    $game->out('<span class="caption">Working / In lavorazione');
+}
+else if($module == 'combatsim')
+{
+    $game->out('<span class="caption">Working / In lavorazione');
+}
+else if($module == 'academy')
+{
+    $game->out('<span class="caption">Working / In lavorazione');
+}
+else if($module == 'faq')
+{
+    $game->out('<span class="caption">Working / In lavorazione');
+}
+else if($module == 'guide')
+{
+    $game->out('<span class="caption">Working / In lavorazione');
+}
+
 
 ?>
