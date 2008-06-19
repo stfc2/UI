@@ -321,6 +321,20 @@ function ZeitDetail($seconds) {
 
 // #############################################################################
 
+function Zeit($minutes)
+{
+	$days=0;
+	$hours=0;
+
+	while($minutes>=60*24) {$days++; $minutes-=60*24;}
+
+	while($minutes>=60) {$hours++; $minutes-=60;}
+
+	return ($days.'d '.$hours.'h '.$minutes.'m');
+}
+
+// #############################################################################
+
 function redirect($get = '') {
 	if ((strpos($get,'.php'))===false) header('Location: '.parse_link($get));
 	else header('Location: '.$get);
