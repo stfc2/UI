@@ -38,6 +38,7 @@ error_reporting(E_ERROR);
 		'compare' => constant($game->sprache("TEXT2")),
     );
 
+$module = (!empty($_GET['view'])) ? $_GET['view'] : 'view';
 $game->out('<span class="caption">'.constant($game->sprache("TEXT3")).'</span><br><br>'.display_view_navigation('ship_template', $module, $STEMPLATE_MODULES).'<br><br>');
 
 
