@@ -83,7 +83,7 @@ function taxes_pagination($start, $n_count, $n_per_page) {
         message(DATABASE_ERROR, 'Could not query alliance data');
     }
 
-  $game->out('<center><span class="caption">'.constant($game->sprache("TEXT4")).':</span><br><br>');
+  $game->out('<span class="caption">'.constant($game->sprache("TEXT4")).':</span><br><br>');
 
 function GetOwnRess($type,$percent) {
  

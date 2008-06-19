@@ -27,7 +27,7 @@ if (!file_exists($filename)) $filename = 'include/static/static_components.php';
 include($filename);
 
 
-$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span></center><br>');
+$game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>');
 
 function TimeDetailShort($seconds)
 {
@@ -164,13 +164,13 @@ function Ships_List($focus=0,$search_name="")
 
 	$shipquery = $db->query($sql);
 
-	$game->out('<center>'.constant($game->sprache("TEXT1")).'</center><br>');
+	$game->out(constant($game->sprache("TEXT1")).'<br><br>');
 
 	$game->out('<span class="sub_caption"><a href="alliancefleets.php?alliance='.$alliance['alliance_tag'].'&size=6&map" target=_blank><u>'.constant($game->sprache("TEXT68")).'</u></a></span><br>');
 
 
 	/* AC: Searching ship */
-	$game->out('<br><br><center><table border=0 cellpadding=2 cellspacing=2  class="style_inner" width=300>
+	$game->out('<br><br><table border=0 cellpadding=2 cellspacing=2  class="style_inner" width=300>
 		<tr>
 			<td align="center" valign="middle">
 				<form method="post" action="'.parse_link('a=alliance_ships&order='.$_REQUEST['order']).'">
@@ -181,12 +181,12 @@ function Ships_List($focus=0,$search_name="")
 				</form>
 			</td>
 		</tr>
-		</table></center>');
+		</table>');
 
 	/* AC: If we have to search ships */
 	if($search_name!="" && $focus==0)
 	{
-		$game->out('<br><center><table border=0 cellpadding=2 cellspacing=2 class="style_inner" width=300>
+		$game->out('<br><table border=0 cellpadding=2 cellspacing=2 class="style_inner" width=300>
 			<tr>
 				<td width=150>
 					<b>'.constant($game->sprache("TEXT3")).'</b>
@@ -213,10 +213,10 @@ function Ships_List($focus=0,$search_name="")
 			');
 		}
 
-		$game->out('</table></center>');
+		$game->out('</table>');
 	}
 
-	$game->out('<br><br><center><span class="sub_caption">'.constant($game->sprache("TEXT4")).' '.HelpPopup('alliance_ships').' :</span></center>');
+	$game->out('<br><br><span class="sub_caption">'.constant($game->sprache("TEXT4")).' '.HelpPopup('alliance_ships').' :</span><br>');
 
 	/**
 	 * AC: Create main table
@@ -270,7 +270,7 @@ function Ships_List($focus=0,$search_name="")
 		break;
 	}
 
-	$game->out('<br><center><table border=0 cellpadding=1 cellspacing=1 class="style_inner">
+	$game->out('<br><table border=0 cellpadding=1 cellspacing=1 class="style_inner">
 		<tr>
 		<td><b>#</b></td>
 		<td width=160>'.$header1.'</td>
@@ -423,7 +423,7 @@ function Ships_List($focus=0,$search_name="")
 			WHERE user_id IN ('.implode(',',$members).') AND st.ship_class IN ('.implode(',', $sels).')';
 	$n_ships = $db->queryrow($sql);
 	$max_pages = ceil($n_ships['n_ships'] / 20);
-	$game->out('<br><center><table border=0 cellpadding=2 cellspacing=2 class="style_inner" width=400><tr>
+	$game->out('<br><table border=0 cellpadding=2 cellspacing=2 class="style_inner" width=400><tr>
 		<td width=50 align=middle>
 			'.(($queryfocus>0) ? '<a href="'.parse_link('a=alliance_ships&order='.$_REQUEST['order'].'&start=0').'"><span class="text_large">[1]</a>' : '[1]').'
 		</td>
@@ -439,7 +439,7 @@ function Ships_List($focus=0,$search_name="")
 		</tr></table>');
 
 	/* Show up ship's filter */
-	$game->out('<br><center>
+	$game->out('<br>
 		<table border=0 class="style_inner" width=300>
 		<tr>
 		<td>
@@ -467,7 +467,7 @@ function Ships_List($focus=0,$search_name="")
 			</td></tr></table>
 			</fieldset>
 		</td>
-		</tr></table></center>');
+		</tr></table>');
 }
 
 function CreateShipInfoText($ship)

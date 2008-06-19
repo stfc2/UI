@@ -26,7 +26,7 @@ $THREADS_PER_PAGE = 10;
 $POSTS_PER_PAGE = 15;
 
 $game->init_player();
-$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).':</span><br><br>');
+$game->out('<span class="caption">'.constant($game->sprache("TEXT0")).':</span><br><br>');
 
 
 // Dieser Override ist nicht 100% stabil

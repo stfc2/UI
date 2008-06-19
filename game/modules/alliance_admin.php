@@ -23,7 +23,7 @@
 
 
 $game->init_player();
-$game->out('<center><span class="caption">'.constant($game->sprache("TEXT28")).':</span><br><br>');
+$game->out('<span class="caption">'.constant($game->sprache("TEXT28")).':</span><br><br>');
 
     $sql = 'SELECT *
             FROM alliance

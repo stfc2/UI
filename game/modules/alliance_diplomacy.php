@@ -34,7 +34,7 @@ function get_opid($alliance1_id) {
 }
 
 $game->init_player();
-$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).':</span><br><br>');
+$game->out('<span class="caption">'.constant($game->sprache("TEXT0")).':</span><br><br>');
 
 
 
@@ -998,9 +998,8 @@ else {
   </tr>
 </table>
 <br>
-<center>
 '.constant($game->sprache("TEXT72")).'
-</center>
+<br>
         ');
     }
     else {
