@@ -98,10 +98,10 @@ return (array(0=>$atk_alive,1=>$dfd_alive));
 
 $DATABASE_MODULES = array(
     'planets' => constant($game->sprache("TEXT11")),
-    'security' => constant($game->sprache("TEXT12")),
-    'combatsim' => constant($game->sprache("TEXT13")),
-//    'academy' => constant($game->sprache("TEXT14")),
-//    'faq' =>  constant($game->sprache("TEXT15")),
+    'racedata' => constant($game->sprache("TEXT12")),
+    'security' => constant($game->sprache("TEXT13")),
+    'combatsim' => constant($game->sprache("TEXT14")),
+//    'academy' => constant($game->sprache("TEXT15")),
     'guide' => constant($game->sprache("TEXT16"))
 );
 
@@ -336,11 +336,73 @@ else if($module == 'combatsim')
 
     }
 }
-else if($module == 'academy')
+else if($module == 'racedata')
 {
-    $game->out('<span class="caption">Working / In lavorazione');
+    foreach($RACE_DATA as $i => $race) {
+        // Skip Borg, Q, 29th Humans races
+        if($i != 6 && $i != 7 && $i != 12)
+        {
+            $game->out('[<a href="'.parse_link('a=database&view=racedata&show_race='.$i.'#'.$i.'').'">'.$race[0].'</a>] ');
+        }
+    }
+
+    $game->out('
+    <table width="400" align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+    <tr>
+        <td align="center"><span class="sub_caption">'.constant($game->sprache("TEXT64")).'</span></td>
+    </tr>
+    ');
+
+    foreach($RACE_DATA as $i => $race) {
+        // Skip Borg, Q, 29th Humans races
+        if($i != 6 && $i != 7 && $i != 12)
+        {
+            $game->out('
+    <tr><td>
+    <table width="400" align="center" border="0" cellpadding="3" cellspacing="3" background="'.$game->GFX_PATH.'template_bg3.jpg" class="style_inner">');
+
+            foreach($race as $j => $value) {
+                switch($j)
+                {
+                    // Name of the race and Fighting power of workers
+                    case 0:
+                        if(isset($_GET['show_race'])) $show = (int)$_GET['show_race']; else $show = -1;
+
+                        if($i == $show) {
+                            $data = '<span style="color: #FFFF00; font-weight: bold;">'.$value.'</span>';
+                        }
+                        else {
+                            $data = $value;
+                        }
+                        $data ='<a name="'.$i.'">'.$data.'</a>';
+                    break;
+                    // Fighting power of workers
+                    case 21:
+                        $data = $value;
+                    break;
+                    // Playable?
+                    case 22:
+                        $data = ($value ? constant($game->sprache("TEXT65")) : constant($game->sprache("TEXT66")));
+                    break;
+                    default:
+                        $data = ($value * 100).' %';
+                    break;
+                }
+                $game->out('
+    <tr>
+        <td>'.constant($game->sprache("TEXT".($j+35))).'</td><td width="60" align="center">'.$data.'</td>
+    </tr>
+            ');
+            }
+            $game->out('
+    </table>
+    </td></tr>');
+        }
+    }
+    $game->out('</table>');
+
 }
-else if($module == 'faq')
+else if($module == 'academy')
 {
     $game->out('<span class="caption">Working / In lavorazione');
 }
