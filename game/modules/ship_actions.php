@@ -801,7 +801,7 @@ switch($step) {
         $ship_id = (int)$_POST['ship_id'];
         
         $sql = 'INSERT INTO scheduler_shipmovement (user_id, move_status, move_exec_started, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
-                VALUES ('.$game->player['user_id'].', 0, 0, '.$planet_id.', '.$planet_id.', 0, 0, 0, '.$ACTUAL_TICK.', '.($ACTUAL_TICK + 1).', '.$n_ships.', 25, "'.serialize(array($ship_id)).'")';
+                VALUES ('.$game->player['user_id'].', 0, 0, '.$planet_id.', '.$planet_id.', 0, 0, 0, '.$ACTUAL_TICK.', '.($ACTUAL_TICK + 1).', '.$n_ships.', 24, "'.serialize(array($ship_id)).'")';
 
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not insert new movement data');
