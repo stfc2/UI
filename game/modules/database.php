@@ -123,43 +123,48 @@ if($module == 'planets' || isset($_GET['planet_type']))
         }
 
         $game->out('
-<table width="450" align="center" border="0" cellpadding="3" cellspacing="3" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
   <tr>
-    <td valign="top"><u>'.constant($game->sprache("TEXT1")).'</u></td>
-    <td><a name="'.strtoupper($type).'">'.$high_start.strtoupper($type).$high_end.'</a></td>
+    <td>
+    <table width="450" align="center" border="0" cellpadding="3" cellspacing="3" class="style_inner">
+      <tr>
+        <td valign="top"><u>'.constant($game->sprache("TEXT1")).'</u></td>
+        <td><a name="'.strtoupper($type).'">'.$high_start.strtoupper($type).$high_end.'</a></td>
+      </tr>
+      <tr>
+        <td valign="top"><u>'.constant($game->sprache("TEXT2")).'</u></td>
+        <td>'.$high_start.$data[0].$high_end.'</td>
+      </tr>
+      <tr>
+        <td valign="top"><u>'.constant($game->sprache("TEXT3")).'</u></td>
+        <td>'.$data[1].'</td>
+      </tr>
+      <tr>
+        <td valign="top"<u>'.constant($game->sprache("TEXT7")).'</u></td>
+        <td>'.$PLANETS_DATA[$type][7].'<br>'.constant($game->sprache("TEXT8")).'</td>
+      </tr>
+      <tr>
+        <td valign="top"<u>'.constant($game->sprache("TEXT9")).'</u></td>
+        <td>'.$PLANETS_DATA[$type][6].'<br>'.constant($game->sprache("TEXT10")).'</td>
+      </tr>
+      <tr>
+        <td valign="top"><u>'.constant($game->sprache("TEXT4")).'</u></td>
+        <td>'.$data[2].'</td>
+      </tr>
+      <tr>
+        <td valign="top"><u>'.constant($game->sprache("TEXT5")).'</u></td>
+        <td align="justify">'.$data[3].'</td>
+      </tr>
+      <tr>
+        <td valign="top"><u>'.constant($game->sprache("TEXT6")).'</u></td>
+        <td>'.$data[4].'</td>
+      </tr>
+      <tr>
+        <td colspan="2" valign="top"><img src="'.FIXED_GFX_PATH.'planet_type_'.$type.'.png" border="0"></td>
+      </tr>
+    </table>
+    </td>
   </tr>
-  <tr>
-    <td valign="top"><u>'.constant($game->sprache("TEXT2")).'</u></td>
-    <td>'.$high_start.$data[0].$high_end.'</td>
-  </tr>
-  <tr>
-    <td valign="top"><u>'.constant($game->sprache("TEXT3")).'</u></td>
-    <td>'.$data[1].'</td>
-  </tr>
-  <tr>
-    <td valign="top"<u>'.constant($game->sprache("TEXT7")).'</u></td>
-    <td>'.$PLANETS_DATA[$type][7].'<br>'.constant($game->sprache("TEXT8")).'</td>
-  </tr>
-  <tr>
-    <td valign="top"<u>'.constant($game->sprache("TEXT9")).'</u></td>
-    <td>'.$PLANETS_DATA[$type][6].'<br>'.constant($game->sprache("TEXT10")).'</td>
-  </tr>
-  <tr>
-    <td valign="top"><u>'.constant($game->sprache("TEXT4")).'</u></td>
-    <td>'.$data[2].'</td>
-  </tr>
-  <tr>
-    <td valign="top"><u>'.constant($game->sprache("TEXT5")).'</u></td>
-    <td>'.$data[3].'</td>
-  </tr>
-  <tr>
-    <td valign="top"><u>'.constant($game->sprache("TEXT6")).'</u></td>
-    <td>'.$data[4].'</td>
-  </tr>
-  <tr>
-  <td colspan="2" valign="top"><img src="'.FIXED_GFX_PATH.'planet_type_'.$type.'.png" border="0"></td>
-  </tr>
-  
 </table>
 <br>
         ');
@@ -168,30 +173,36 @@ if($module == 'planets' || isset($_GET['planet_type']))
 else if($module == 'security')
 {
     $game->out('
-<table align="center" border="0" cellpadding="3" cellspacing="3" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
-    <tr>
-       <td align="center">'.constant($game->sprache("TEXT17")).'</td><td align="center">'.constant($game->sprache("TEXT18")).'</td>
-       <td align="center">'.constant($game->sprache("TEXT17")).'</td><td align="center">'.constant($game->sprache("TEXT18")).'</td>
-    </tr>
+<table align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+  <tr>
+    <td>
+      <table align="center" border="0" cellpadding="3" cellspacing="3" class="style_inner">
+        <tr>
+          <td align="center">'.constant($game->sprache("TEXT17")).'</td><td align="center">'.constant($game->sprache("TEXT18")).'</td>
+          <td align="center">'.constant($game->sprache("TEXT17")).'</td><td align="center">'.constant($game->sprache("TEXT18")).'</td>
+        </tr>
     ');
 
     for($planet = 0;$planet < 20;$planet++)
-	{
-    	$security = round(pow($planet*MIN_TROOPS_PLANET,1+$planet*0.01),0);
+    {
+        $security = round(pow($planet*MIN_TROOPS_PLANET,1+$planet*0.01),0);
         $game->out('
-    <tr>
-        <td align="center">'.($planet+1).'</td><td align="center">'.$security.'</td>
+        <tr>
+          <td align="center">'.($planet+1).'</td><td align="center">'.$security.'</td>
     ');
 
-    	$security = round(pow(($planet+20)*MIN_TROOPS_PLANET,1+($planet+20)*0.01),0);
+        $security = round(pow(($planet+20)*MIN_TROOPS_PLANET,1+($planet+20)*0.01),0);
         $game->out('
-        <td align="center">'.($planet+21).'</td><td align="center">'.$security.'</td>
-    </tr>');
-	}
+          <td align="center">'.($planet+21).'</td><td align="center">'.$security.'</td>
+        </tr>');
+    }
     $game->out('
-    <tr>
-        <td></td><td></td><td align="center">41+</td><td align="center">'.constant($game->sprache("TEXT19")).'</td>
-    </tr>
+        <tr>
+          <td></td><td></td><td align="center">41+</td><td align="center">'.constant($game->sprache("TEXT19")).'</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
 </table>');
 }
 else if($module == 'combatsim')
@@ -359,7 +370,7 @@ else if($module == 'racedata')
         {
             $game->out('
     <tr><td>
-    <table width="400" align="center" border="0" cellpadding="3" cellspacing="3" background="'.$game->GFX_PATH.'template_bg3.jpg" class="style_inner">');
+    <table width="400" align="center" border="0" cellpadding="3" cellspacing="3" class="style_inner">');
 
             foreach($race as $j => $value) {
                 switch($j)
