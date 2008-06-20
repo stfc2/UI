@@ -40,8 +40,6 @@ switch($game->player['language'])
     break;
 }
 
-$game->out('
-<center><span class="caption">'.$title1.'</span><br><br><span class="sub_caption2">'.$title2.'</span></center><br><br>
-');
+$game->out('<span class="caption">'.$title1.'</span><br><br><span class="sub_caption2">'.$title2.'</span><br><br>');
 
 ?>

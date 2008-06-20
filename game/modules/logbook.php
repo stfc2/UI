@@ -123,7 +123,7 @@ function update_unread_count() {
 
 $LOGS_PER_PAGE = 15;
 
-$game->out('<center><span class="caption">'.constant($game->sprache("TEXT4")).'</span><br>');
+$game->out('<span class="caption">'.constant($game->sprache("TEXT4")).'</span><br>');
 
 if(isset($_GET['show_log'])) {
     $log_id = (int)$_GET['show_log'];
@@ -219,7 +219,7 @@ if(isset($_GET['show_log'])) {
         $game->out('<a href="'.parse_link('a=logbook&show_log='.$next_log).'">'.constant($game->sprache("TEXT9")).'</a>');
     }
 
-    $game->out('<br><br><center><a href="'.parse_link('a=logbook&delete_log='.$log_id).'">'.constant($game->sprache("TEXT10")).'</a></center>');
+    $game->out('<br><br><a href="'.parse_link('a=logbook&delete_log='.$log_id).'">'.constant($game->sprache("TEXT10")).'</a>');
 }
 elseif(!empty($_POST['read_submit'])) {
     if(empty($_POST['log_id'])) {

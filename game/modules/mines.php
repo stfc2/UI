@@ -221,7 +221,7 @@ function deactivate_buttons() {
 //-->
 </script>
 
-<center><span class="caption">'.constant($game->sprache("TEXT5")).'</span></center><br><br>
+<span class="caption">'.constant($game->sprache("TEXT5")).'</span><br><br>
 
 <table width="500" border="0" align="center">
   <tr>

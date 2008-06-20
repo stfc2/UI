@@ -3,7 +3,7 @@
 $game->init_player();
 
 $game->out('
-	<center><span class="caption">Aiuto</span>
+	<span class="caption">Aiuto</span>
 	<br><br>
 	<table border=0 cellpadding=2 cellspacing=2 width="95%" class="style_outer" align="center">
 	<tr>
@@ -73,7 +73,6 @@ $game->out('
 		</td>
 	</tr>
 	</table>
-	</center>
 	');
 
 ?>
