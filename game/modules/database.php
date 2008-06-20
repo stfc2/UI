@@ -141,11 +141,11 @@ if($module == 'planets' || isset($_GET['planet_type']))
       </tr>
       <tr>
         <td valign="top"<u>'.constant($game->sprache("TEXT7")).'</u></td>
-        <td>'.$PLANETS_DATA[$type][7].'<br>'.constant($game->sprache("TEXT8")).'</td>
+        <td>'.$PLANETS_DATA[$type][7].'<br><i>'.constant($game->sprache("TEXT8")).'</i></td>
       </tr>
       <tr>
         <td valign="top"<u>'.constant($game->sprache("TEXT9")).'</u></td>
-        <td>'.$PLANETS_DATA[$type][6].'<br>'.constant($game->sprache("TEXT10")).'</td>
+        <td>'.$PLANETS_DATA[$type][6].'<br><i>'.constant($game->sprache("TEXT10")).'</i></td>
       </tr>
       <tr>
         <td valign="top"><u>'.constant($game->sprache("TEXT4")).'</u></td>
@@ -217,30 +217,33 @@ else if($module == 'combatsim')
     if(empty($_POST['startsim'])) {
         $game->out('
 <form name="campsim" method="post" action="'.parse_link('a=database&view=combatsim').'">
-    <table width=400" align="center" border="0" cellpadding="3" cellspacing="3" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
-    <tr>
-        <td colspan="4" align="center"><span class="sub_caption">'.constant($game->sprache("TEXT25")).'</span></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center">'.constant($game->sprache("TEXT26")).'</td>
-        <td colspan="2" align="center">'.constant($game->sprache("TEXT27")).'<td>
-    </tr>');
+<table width=400" align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+  <tr>
+     <td align="center"><span class="sub_caption">'.constant($game->sprache("TEXT25")).'</span></td>
+   </tr>
+   <tr>
+     <td>
+       <table width="400" align="center" border="0" cellpadding="3" cellspacing="3" class="style_inner">
+         <tr>
+          <td colspan="2" align="center">'.constant($game->sprache("TEXT26")).'</td>
+          <td colspan="2" align="center">'.constant($game->sprache("TEXT27")).'<td>
+        </tr>');
 
         for($i=1;$i<6;$i++)
         {
             $game->out('
-    <tr>
-        <td>'.$units[$i-1].'</td>
-        <td><input type="text" name="atk_unit_'.$i.'" value="0" class="Field_nosize" size="10" maxlength="5"></td>
-        <td>'.$units[$i-1].'</td>
-        <td><input type="text" name="dfd_unit_'.$i.'" value="0" class="Field_nosize" size="10" maxlength="5"></td>
-    </tr>');
+        <tr>
+          <td>'.$units[$i-1].'</td>
+          <td><input type="text" name="atk_unit_'.$i.'" value="0" class="Field_nosize" size="10" maxlength="5"></td>
+          <td>'.$units[$i-1].'</td>
+          <td><input type="text" name="dfd_unit_'.$i.'" value="0" class="Field_nosize" size="10" maxlength="5"></td>
+        </tr>');
         }
 
         $game->out('
-    <tr>
-        <td>'.constant($game->sprache("TEXT28")).'</td>
-        <td>
+        <tr>
+          <td>'.constant($game->sprache("TEXT28")).'</td>
+          <td>
             <select name="atk_race" class="Select" size="1">');
 
         foreach($RACE_DATA as $i => $race) {
@@ -251,9 +254,9 @@ else if($module == 'combatsim')
 
         $game->out('
             </select>
-        </td>
-        <td>'.constant($game->sprache("TEXT28")).'</td>
-        <td>
+          </td>
+          <td>'.constant($game->sprache("TEXT28")).'</td>
+          <td>
             <select name="dfd_race" class="Select" size="1">');
 
         foreach($RACE_DATA as $i => $race) {
@@ -264,14 +267,16 @@ else if($module == 'combatsim')
 
         $game->out('
             </select>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="4" align="center"><input class="button" type="submit" name="startsim" value="'.constant($game->sprache("TEXT29")).'"></td>
-    </tr>
-    </table>
-</form>
-            ');
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" align="center"><input class="button" type="submit" name="startsim" value="'.constant($game->sprache("TEXT29")).'"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</form>');
     }
     else
     {
@@ -302,35 +307,38 @@ else if($module == 'combatsim')
         $n_dfd_alive = array_sum($dfd_alive);
 
         $game->out('
-    <table width="400" align="center" border="0" cellpadding="3" cellspacing="3" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
-    <tr>
-        <td colspan="4" align="center"><span class="sub_caption">'.constant($game->sprache("TEXT30")).'</span><br>'.constant($game->sprache("TEXT31")).'</td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center">'.constant($game->sprache("TEXT26")).'</td>
-        <td colspan="2" align="center">'.constant($game->sprache("TEXT27")).'<td>
-    </tr>');
+<table width="400" align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+  <tr>
+    <td align="center"><span class="sub_caption">'.constant($game->sprache("TEXT30")).'</span><br>'.constant($game->sprache("TEXT31")).'</td>
+  </tr>
+  <tr>
+    <td>
+      <table width="400" align="center" border="0" cellpadding="3" cellspacing="3" class="style_inner">
+        <tr>
+          <td colspan="2" align="center">'.constant($game->sprache("TEXT26")).'</td>
+          <td colspan="2" align="center">'.constant($game->sprache("TEXT27")).'<td>
+        </tr>');
 
         for($i=1;$i<6;$i++)
         {
             $game->out('
-    <tr>
-        <td>'.$units[$i-1].'</td>
-        <td>'.($atk_units[$i-1]-$atk_alive[$i-1]).'</td>
-        <td>'.$units[$i-1].'</td>
-        <td>'.($dfd_units[$i-1]-$dfd_losses[$i-1]).'</td>
-    </tr>');
+        <tr>
+          <td>'.$units[$i-1].'</td>
+          <td>'.($atk_units[$i-1]-$atk_alive[$i-1]).'</td>
+          <td>'.$units[$i-1].'</td>
+          <td>'.($dfd_units[$i-1]-$dfd_losses[$i-1]).'</td>
+        </tr>');
         }
 
         $game->out('
-    <tr>
-        <td>'.constant($game->sprache("TEXT28")).'</td>
-        <td>'.$RACE_DATA[$atk_race][0].'</td>
-        <td>'.constant($game->sprache("TEXT28")).'</td>
-        <td>'.$RACE_DATA[$dfd_race][0].'</td>
-    </tr>
-    <tr>
-        <td colspan="4" align="center">');
+        <tr>
+            <td>'.constant($game->sprache("TEXT28")).'</td>
+            <td>'.$RACE_DATA[$atk_race][0].'</td>
+            <td>'.constant($game->sprache("TEXT28")).'</td>
+            <td>'.$RACE_DATA[$dfd_race][0].'</td>
+        </tr>
+        <tr>
+            <td colspan="4" align="center">');
 
         if($n_dfd_alive >= $n_atk_alive)
             $game->out('<span class="sub_caption">'.constant($game->sprache("TEXT32")).'</span>');
@@ -338,12 +346,14 @@ else if($module == 'combatsim')
             $game->out('<span class="sub_caption">'.constant($game->sprache("TEXT33")).'</span>');
 
         $game->out('
-        </td>
-    </tr>
-    </table>
-    <br>
-    <a href="'.parse_link('a=database&view=combatsim').'">'.constant($game->sprache("TEXT34")).'</a>
-        ');
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<br>
+<a href="'.parse_link('a=database&view=combatsim').'">'.constant($game->sprache("TEXT34")).'</a>');
 
     }
 }
