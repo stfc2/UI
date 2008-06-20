@@ -1716,7 +1716,14 @@ echo'
 			if(empty($planet_id)) {
 				message(GENERAL, constant($this->sprache("NONEWPLANET")), '$planet_id = empty');
 			}
-
+			else {
+				$sql = 'INSERT INTO planet_details (planet_id, user_id, alliance_id, source_uid, source_aid, timestamp, log_code) '
+				. ' VALUES ('.$planet_id.', '.$this->player['user_id'].', 0, '.$this->player['user_id'].', 0, '.time().', 0)';
+				if(!$db->query($sql)) {
+					message(DATABASE_ERROR, 'Could not update planet details data');
+				}
+			}
+						
 			$sql = 'UPDATE user
 			        SET user_points = 10,
 			            user_planets = 1,
