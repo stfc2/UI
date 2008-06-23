@@ -640,6 +640,8 @@ define ("ITA_TEXT113", 'Sfuggito al controllo di <b>');
 
 define ("ITA_TEXT114", '</b> in seguito a rivolta della popolazione locale il ');
 
+define ("ITA_TEXT115", 'La leadership delle forze controllanti il pianeta svanisce, abbandonando la popolazione locale a se stessa il ');
+
 
 
 
