@@ -802,12 +802,143 @@ elseif(!empty($_GET['planet_id'])) {
     }
     
     set_tcartography_remind(4, $planet_id);
-    
+   
+//////////////
+// <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateShipInfoText($SHIP_TORSO[$ship['race']][$ship['ship_torso']]).'\', CAPTION, \''.$SHIP_TORSO[$ship['race']][$ship['ship_torso']][29].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$SHIP_TORSO[$ship['race']][$ship['ship_torso']][29].'</a>
+/////////////   
     $quadrant_id = $game->get_quadrant($planet['sector_id']);
 
     $planet_thumb = (!empty($planet['planet_thumb'])) ? $planet['planet_thumb'] : $game->PLAIN_GFX_PATH.'planet_type_'.$planet['planet_type'].'.png';
     $planet_type = strtoupper($planet['planet_type']);
+	
+// Ultimo aggiornamento.
+	$sql = 'SELECT timestamp FROM `planet_details`'
+        . ' WHERE `planet_id` = '.$planet['planet_id']
+        . ' ORDER BY timestamp DESC'
+        . ' LIMIT 0, 1';
+	if(($_temp = $db->queryrow($sql)) == true) {
+		$last_update = constant($game->sprache("TEXT94")).'<b>'.date("d.m.y H:i", $_temp['timestamp']);
+	}
+	else {
+		$last_update = constant($game->sprache("TEXT93"));
+	}
+	$history_text   = constant($game->sprache("TEXT95"));
+	$survey_text    = constant($game->sprache("TEXT96"));
+	$tactical_text  = constant($game->sprache("TEXT97"));
+// --- Dati storici del pianeta ---
+// Fondatore
+	$sql = 'SELECT d.user_id, d.timestamp, u.user_name FROM planet_details d'
+        . ' LEFT JOIN user u ON d.user_id = u.user_id'
+        . ' WHERE planet_id = '.$planet['planet_id']
+        . ' AND log_code = 0'
+        . ' LIMIT 0, 1';
+	if(($_temp = $db->queryrow($sql)) == true) {
+		$history_text .= constant($game->sprache("TEXT98")).$_temp['user_name'].constant($game->sprache("TEXT99")).date("d.m.y H:i", $_temp['timestamp']).'<br>';
+	}
+// Colonizzazione
+	$sql = 'SELECT d.user_id, d.timestamp, u.user_name, alliance.alliance_tag FROM planet_details d'
+        . ' LEFT JOIN user u ON d.user_id = u.user_id'
+		. ' LEFT JOIN alliance ON d.source_aid = alliance.alliance_id'
+        . ' WHERE planet_id = '.$planet['planet_id']
+        . ' AND log_code = 25'
+		. ' ORDER BY timestamp ASC';
+	if($_history = $db->query($sql)) {
+		while($_temp = $db->fetchrow($_history)) {
+			$history_text .= constant($game->sprache("TEXT109")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT99")).date("d.m.y H:i", $_temp['timestamp']).'<br>';
+		}
+	}
+// --- Conquista del pianeta!
+	$sql = 'SELECT d.user_id, d.timestamp, d.defeat_uid, d.defeat_aid, u.user_name, alliance.alliance_tag FROM planet_details d'
+        . ' LEFT JOIN user u ON d.user_id = u.user_id'
+		. ' LEFT JOIN alliance ON d.source_aid = alliance.alliance_id'
+        . ' WHERE planet_id = '.$planet['planet_id']
+        . ' AND log_code = 26'
+		. ' ORDER BY timestamp ASC';
+	if($_history = $db->query($sql)) {
+		while($_temp = $db->fetchrow($_history)) {
+			$sql = 'SELECT user_name FROM user WHERE user_id = '.$_temp['defeat_uid'];
+			if(!$_history_q1 = $db->queryrow($sql)) {
+				$_history_d1 = '<i>&#171;Sconosciuto&#187;</i>';
+				}
+			else {
+				$_history_d1 = $_history_q1['user_name'];
+				$sql = 'SELECT alliance_tag FROM alliance WHERE alliance_id = '.$_temp['defeat_aid'];
+				if($_history_q2 = $db->queryrow($sql)) {
+					$_history_d2 = '['.$_history_q2['alliance_tag'].']';
+					}
+				else {
+					$_history_d2 = '&nbsp;';
+					}
+				}
+				
+			$sql = 'SELECT alliance_tag FROM';
+			
+			$history_text .= constant($game->sprache("TEXT110")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT111")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT112")).$_history_d1.$_history_d2.'</b><br>.';
+		}
+	}
+// --- Rivolte sul pianeta
+	$sql = 'SELECT d.user_id, d.timestamp, u.user_name, alliance.alliance_tag FROM planet_details d'
+        . ' LEFT JOIN user u ON d.user_id = u.user_id'
+		. ' LEFT JOIN alliance ON d.source_aid = alliance.alliance_id'
+        . ' WHERE planet_id = '.$planet['planet_id']
+        . ' AND log_code = 27'
+		. ' ORDER BY timestamp ASC';
+	if($_history = $db->query($sql)) {
+		while($_temp = $db->fetchrow($_history)) {
+			$history_text .= constant($game->sprache("TEXT110")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT111")).date("d.m.y H:i", $_temp['timestamp']).'<br>';
+		}
+	}	
+// --- Dati geologici del pianeta ---
+	$sql = 'SELECT survey_1, survey_2, survey_3, timestamp, source_uid, user.user_name, source_aid, alliance.alliance_tag, ship_name'
+        . ' FROM `planet_details`'
+        . ' LEFT JOIN user ON planet_details.source_uid = user.user_id'
+        . ' LEFT JOIN alliance ON planet_details.source_aid = alliance.alliance_id'
+        . ' WHERE `planet_id` = '.$planet['planet_id']
+        . ' AND planet_details.user_id = '.$game->player['user_id']
+        . ' AND `log_code` = 100'
+        . ' ORDER BY timestamp DESC'
+        . ' LIMIT 0,1';
+	if(($_temp = $db->queryrow($sql)) == true) {
+		$survey_text .= constant($game->sprache("TEXT100")).$_temp['ship_name'].constant($game->sprache("TEXT101")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT102")).date("d.m.y H:i", $_temp['timestamp']).':<br><br>';
+		$survey_text .= '<table width=250 border=0 cellpadding= 0 cellspacing=0>';
+		switch($_temp['survey_1']) {
+			case 0:
+				$_survey1 = '<tr align=left><td>'.constant($game->sprache("TEXT103")).'</td><td align=center><font color=red>'.constant($game->sprache("TEXT106")).'</font><td></tr>';
+			break;
+			case 1:
+				$_survey1 = '<tr align=left><td>'.constant($game->sprache("TEXT103")).'</td><td align=center><font color=grey><b>'.constant($game->sprache("TEXT107")).'</b></font></td></tr>';
+			break;
+			case 2:
+				$_survey1 = '<tr align=left><td>'.constant($game->sprache("TEXT103")).'</td><td align=center><font color=green>'.constant($game->sprache("TEXT108")).'</font></td></tr>';
+			break;
+		}
+		switch($_temp['survey_2']) {
+			case 0:
+				$_survey2 = '<tr align=left><td>'.constant($game->sprache("TEXT104")).'</td><td align=center><font color=red>'.constant($game->sprache("TEXT106")).'</font></td></tr>';
+			break;
+			case 1:
+				$_survey2 = '<tr align=left><td>'.constant($game->sprache("TEXT104")).'</td><td align=center><font color=grey><b>'.constant($game->sprache("TEXT107")).'</b></font></td></tr>';
+			break;
+			case 2:
+				$_survey2 = '<tr align=left><td>'.constant($game->sprache("TEXT104")).'</td><td align=center><font color=green>'.constant($game->sprache("TEXT108")).'</font></td></tr>';
+			break;
+		}
+		switch($_temp['survey_3']) {
+			case 0:
+				$_survey3 = '<tr align=left><td>'.constant($game->sprache("TEXT105")).'</td><td align=center><font color=red>'.constant($game->sprache("TEXT106")).'</font></td></tr>';
+			break;
+			case 1:
+				$_survey3 = '<tr align=left><td>'.constant($game->sprache("TEXT105")).'</td><td align=center><font color=grey><b>'.constant($game->sprache("TEXT107")).'</b></font></td></tr>';
+			break;
+			case 2:
+				$_survey3 = '<tr align=left><td>'.constant($game->sprache("TEXT105")).'</td><td align=center><font color=green>'.constant($game->sprache("TEXT108")).'</font></td></tr>';
+			break;
+		}
+		$survey_text .= $_survey1.$_survey2.$_survey3.'</table>';
+	}
 
+	$detail_text = $history_text.$survey_text.$tactical_text;
+	
     $game->out('
 <style type="text/css">
 <!--
@@ -856,7 +987,7 @@ form {
         </tr>
         <tr>
           <td valign="top">'.constant($game->sprache("TEXT92")).'</td>
-          <td>&nbsp;'.constant($game->sprache("TEXT93")).'</td>
+          <td>&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$detail_text.'\', CAPTION, \''.$last_update.'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$last_update.'</a></td>
         </tr>
         <tr height="15"><td></td></tr>
     ');

@@ -598,6 +598,50 @@ define ("ITA_TEXT92", 'Dettagli:');
 
 define ("ITA_TEXT93", '<i>Nessun rapporto disponibile</i>');
 
+define ("ITA_TEXT94", '<i>Database aggiornato al</i> ');
+
+define ("ITA_TEXT95", '<u>Informazioni Storiche</u><br>');
+
+define ("ITA_TEXT96", '<br><u>Informazioni Geologiche</u><br>');
+
+define ("ITA_TEXT97", '<br><u>Informazioni Tattico/Politiche</u><br>');
+
+define ("ITA_TEXT98", 'Luogo di nascita della civilt&agrave fondata da <b>');
+
+define ("ITA_TEXT99", ' </b> il ');
+
+define ("ITA_TEXT100", 'Analasi geologica del pianeta effettuata dalle squadre scientifiche a bordo della nave <b>');
+
+define ("ITA_TEXT101", '</b>, appartenente alle forze di <b>');
+
+define ("ITA_TEXT102", '</b>, eseguita il ');
+
+define ("ITA_TEXT103", 'Presenza di Metalli: ');
+
+define ("ITA_TEXT104", 'Presenza di Minerali: ');
+
+define ("ITA_TEXT105", 'Presenza di Dilitio: ');
+
+define ("ITA_TEXT106", '-- INFERIORE alla norma --');
+
+define ("ITA_TEXT107", '-- nella norma --');
+
+define ("ITA_TEXT108", '-- SUPERIORE alla norma --');
+
+define ("ITA_TEXT109", 'Colonizzato dalle forze di <b>');
+
+define ("ITA_TEXT110", 'Le forze di <b>');
+
+define ("ITA_TEXT111", '</b> vincono la battaglia sulla superficie del pianeta il ');
+
+define ("ITA_TEXT112", ', togliendone il controllo alle forze di <b>');
+
+define ("ITA_TEXT113", 'Sfuggito al controllo di <b>');
+
+define ("ITA_TEXT114", '</b> in seguito a rivolta della popolazione locale il ');
+
+
+
 
 
 ?>
