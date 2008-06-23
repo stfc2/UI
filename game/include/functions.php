@@ -379,6 +379,7 @@ function get_move_action_str($code, $unexspected = array()) {
 		case 23: $str = constant($game->sprache("MOVEHAND")); break;
 		case 24: $str = constant($game->sprache("MOVECOLONIZE")); break;
 		case 25: $str = constant($game->sprache("MOVECOLONIZE")); break;
+		case 26: $str = constant($game->sprache("MOVESURVEY")); break;
 
 		case 31: $str = constant($game->sprache("MOVECARGO")); break;
 		case 32: $str = 'You should not see this'; break; // Ferengifake Transport
