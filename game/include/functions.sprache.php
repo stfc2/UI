@@ -217,7 +217,7 @@ define ("GER_MOVEHAND", 'Alle Schiffe &uuml;bergeben');
 
 define ("GER_MOVECOLONIZE", 'Kolonisieren');
 
-define ("GER_MOVESURVEY", 'Survey Planet');
+define ("GER_MOVESURVEY", 'Survey planet');
 
 define ("GER_MOVECARGO", 'Ladung &uuml;bergeben und Zur&uuml;ckfliegen');
 
@@ -474,7 +474,7 @@ define ("ENG_MOVEHAND", 'Hand over all ships');
 
 define ("ENG_MOVECOLONIZE", 'Colonize');
 
-define ("ENG_MOVESURVEY", 'Survey Planet');
+define ("ENG_MOVESURVEY", 'Survey planet');
 
 define ("ENG_MOVECARGO", 'Hand over cargo and return');
 
@@ -731,7 +731,7 @@ define ("ITA_MOVEHAND", 'Consegna tutte le navi');
 
 define ("ITA_MOVECOLONIZE", 'Colonizzazione');
 
-define ("ITA_MOVESURVEY", 'Analisi Pianeta');
+define ("ITA_MOVESURVEY", 'Analisi pianeta');
 
 define ("ITA_MOVECARGO", 'Consegna il carico e rientra');
 
