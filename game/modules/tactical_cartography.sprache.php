@@ -642,7 +642,13 @@ define ("ITA_TEXT114", '</b> in seguito a rivolta della popolazione locale il ')
 
 define ("ITA_TEXT115", 'La leadership delle forze controllanti il pianeta svanisce, abbandonando la popolazione locale a se stessa il ');
 
+define ("ITA_TEXT116", 'In data ');
 
+define ("ITA_TEXT117", ', navi appartenenti alle forze di <b>');
+
+define ("ITA_TEXT118", '</b> raggiungono il pianeta, prime in assoluto.');
+
+define ("ITA_TEXT119", '</b> raggiugono il pianeta, contendendone il diritto di colonizzazione.');
 
 
 

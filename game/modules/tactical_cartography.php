@@ -835,13 +835,34 @@ elseif(!empty($_GET['planet_id'])) {
 	if(($_temp = $db->queryrow($sql)) == true) {
 		$history_text .= constant($game->sprache("TEXT98")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : '<i>&#171;Sconosciuto&#187;</i>').constant($game->sprache("TEXT99")).date("d.m.y H:i", $_temp['timestamp']).'<br>';
 	}
+// Scopritore del pianeta
+	$sql = 'SELECT d.user_id, d.timestamp, u.user_name, alliance.alliance_tag FROM planet_details d'
+        . ' LEFT JOIN user u ON d.user_id = u.user_id'
+	. ' LEFT JOIN alliance ON d.source_aid = alliance.alliance_id'
+        . ' WHERE planet_id = '.$planet['planet_id']
+        . ' AND log_code = 1';
+	if(($_temp = $db->queryrow($sql)) == true) {
+		$history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT117")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : '<i>&#171;Sconosciuto&#187;</i>').( (!empty($_temp['alliance_tag'])) ? '['.$_temp['alliance_tag'].']' : '&nbsp;' ).constant($game->sprache("TEXT118")).'<br>';
+	}
+// Contendenti
+	$sql = 'SELECT d.user_id, d.timestamp, u.user_name, alliance.alliance_tag FROM planet_details d'
+        . ' LEFT JOIN user u ON d.user_id = u.user_id'
+	. ' LEFT JOIN alliance ON d.source_aid = alliance.alliance_id'
+        . ' WHERE planet_id = '.$planet['planet_id']
+        . ' AND log_code = 2'
+	. ' ORDER BY timestamp ASC';
+	if($_history = $db->query($sql)) {
+		while($_temp = $db->fetchrow($_history)) {
+			$history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT117")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : '<i>&#171;Sconosciuto&#187;</i>').( (!empty($_temp['alliance_tag'])) ? '['.$_temp['alliance_tag'].']' : '&nbsp;' ).constant($game->sprache("TEXT119")).'<br>';
+		}
+	}
 // Colonizzazione
 	$sql = 'SELECT d.user_id, d.timestamp, u.user_name, alliance.alliance_tag FROM planet_details d'
         . ' LEFT JOIN user u ON d.user_id = u.user_id'
-		. ' LEFT JOIN alliance ON d.source_aid = alliance.alliance_id'
+	. ' LEFT JOIN alliance ON d.source_aid = alliance.alliance_id'
         . ' WHERE planet_id = '.$planet['planet_id']
         . ' AND log_code = 25'
-		. ' ORDER BY timestamp ASC';
+	. ' ORDER BY timestamp ASC';
 	if($_history = $db->query($sql)) {
 		while($_temp = $db->fetchrow($_history)) {
 			$history_text .= constant($game->sprache("TEXT109")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT99")).date("d.m.y H:i", $_temp['timestamp']).'<br>';
