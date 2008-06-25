@@ -1643,24 +1643,38 @@ $snach = $RACE_DATA[$game->player['user_race']][$nach];
 $svon = $RACE_DATA[$game->player['user_race']][$von];
 */
 
-// Il rateo di scambio viene pesato in base alla razza, penalizzando di fatto lo scambio di risorse tra le razze; usiamo il rateo 1:1:0,8 modificato dalle disponibilità
-if($nach == 9 || $nach == 10) {
-	$snach = 1;
+// Il rateo di scambio viene pesato in base alla razza, penalizzando di fatto lo scambio di risorse tra le razze; usiamo il rateo 2,5:1:0,8 modificato dalle disponibilità
+switch($nach) {
+	case 1:
+	case 9:
+		$snach = 3.0;
+	break;
+	case 10:
+		$snach = 2.0;
+	break;
+	case 11:
+		$snach = 1.60;
+	break;
 }
-else {
-	$snach = 0.80;
+
+switch($von) {
+	case 1:
+	case 9:
+		$svon = 3.0;
+	break;
+	case 10:
+		$svon = 2.0;
+	break;
+	case 11:
+		$svon = 1.60;
+	break;
 }
-if($von == 9 || $von == 10) {
-	$svon = 1;
-}
-else {
-	$svon = 0.80;
-}
+
 //echo ('Snach: '.$snach.' Svon: '.$svon);
-if($art==0)$ergebniss = ($snach/$svon)- (($snach/$svon)*60/100);
-if($art==1)$ergebniss = ($snach/$svon) - (($snach/ $svon)*30/100);
+if($art==0)$ergebniss = ($snach/$svon)- (($snach/$svon)*30/100);
+if($art==1)$ergebniss = ($snach/$svon) - (($snach/ $svon)*15/100);
 if($art==2)$ergebniss = ($snach/$svon);
-if($art==3)$ergebniss = ($snach/$svon) + (($snach/$svon)*25/100);
+if($art==3)$ergebniss = ($snach/$svon) + (($snach/$svon)*15/100);
 
 return $ergebniss;
 }
@@ -2363,7 +2377,10 @@ function sold_formel_truppen($grundkosten,$anzahl,$art,$x1=0)
 	}
 
 	$x=$daten[$art];
+	/* No more tick, let's use a fixed parameter
 	$q=$ACTUAL_TICK;
+	*/
+	$q = 500;
 	$result = ((($y2-$y1)/(((25/216)*$q)-$x1))*$x) + ($y2 - (($y2-$y1)/(((25/216)*$q)-$x1) * (25/216)*$q));
 	if($result<$y2) $result=$y2;
 	if($result>$y1) $result=$y1;
