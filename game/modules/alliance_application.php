@@ -354,6 +354,12 @@ if($game->player['user_alliance_rights6'] != 1) {
     message(DATABASE_ERROR, 'Could not add user to alliance');
   }
 
+  $sql = 'INSERT INTO userally_history (user_id, alliance_id, join_date) VALUES ('.$application_data['application_user'].', '.$application_data['application_alliance'].', '.time().')';
+  
+  if(!$db->query($sql)) {
+    message(DATABASE_ERROR, 'Could not record userally history');
+  }
+  
  /* if($application_data['application_read']!=1) {
   
     $sql = 'UPDATE alliance SET alliance_application_new = (alliance_application_new - 1) WHERE alliance_id = '.$game->player['user_alliance'];

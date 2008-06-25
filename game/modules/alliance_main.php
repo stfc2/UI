@@ -393,6 +393,12 @@ elseif(!empty($_POST['leave_confirm'])) {
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not update user alliance data');
     }
+// DC ----
+    $sql = 'UPDATE userally_history SET leave_date = '.time().' WHERE user_id = '.$game->player['user_id'].' AND alliance_id '.$game->player['user_alliance'];
+    if(!$db->query($sql)) {
+        message(DATABASE_ERROR, 'Could not update userally_history data');
+    }
+// DC ----
     alliance_log('<font color=green>'.$game->player['user_name'].'</font> '.constant($game->sprache("TEXT48")));
     
     $sql = 'UPDATE alliance
@@ -489,6 +495,14 @@ elseif(isset($_GET['new'])) {
     	message(DATABASE_ERROR, 'Could not update user alliance data');
     }
     
+// DC ---- We have a nice table to use, let's do it
+	$sql = 'INSERT INTO userally_history (user_id, alliance_id, join_date)'
+		. 'VALUES ('.$game->player['user_id'].', '.$new_alliance_id.', '.time().')';
+	if(!$db->query($sql)) {
+		message(DATABASE_ERROR, 'Could not update userally_history data');
+    }	
+// DC ----
+
     redirect('a=alliance_main');
 }
 

@@ -160,6 +160,11 @@ if(!empty($_POST['kick_confirm'])) {
     }
     alliance_log('<font color=green>'.$user_data['user_name'].'</font> '.constant($game->sprache("TEXT11")).' <font color=green>'.$game->player['user_name'].'</font>'.constant($game->sprache("TEXT12")));
 
+    $sql = 'UPDATE userally_history SET leave_date = '.time().' WHERE user_id = '.$user_id.' AND alliance_id = '.$game->player['user_alliance'];
+  
+  if(!$db->query($sql)) {
+    message(DATABASE_ERROR, 'Could not record userally history');
+  }
     
     $sql = 'UPDATE alliance
             SET alliance_points = alliance_points - '.$user_data['user_points'].',
