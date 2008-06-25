@@ -905,4 +905,17 @@ define ("ITA_TEXT141", 'Attaccante:');
 
 define ("ITA_TEXT142", '* Attenzione, il nuovo sistema di combattimento &egrave; installato a livello sperimentale, se riscontrate problemi scrivete sul Forum!');
 
+define ("ITA_TEXT146", 'Presenza di Metalli: ');
+
+define ("ITA_TEXT147", 'Presenza di Minerali: ');
+
+define ("ITA_TEXT148", 'Presenza di Dilitio: ');
+
+define ("ITA_TEXT149", '-- INFERIORE alla norma --');
+
+define ("ITA_TEXT150", '-- nella norma --');
+
+define ("ITA_TEXT151", '-- SUPERIORE alla norma --');
+
+
 ?>

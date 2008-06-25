@@ -122,7 +122,9 @@ function display_logbook($log) {
         <td width="385">'.constant($game->sprache("TEXT35")).'</td>
       </tr>
     </table>
-    <br> $game->out('
+    <br>
+	
+	$game->out('
     <table border="0" cellpadding="2" cellspacing="2">
        <tr>
         <td width="200"><b>'.constant($game->sprache("TEXT46")).'</b></td>
@@ -441,6 +443,65 @@ function display_logbook($log) {
                 ');
             }
         break;
+		
+		case 26:
+			
+			switch($log['log_data'][11]) {
+				case 0: $text_1 = constant($game->sprache("TEXT149")); $color1 = 'red';
+				case 1: $text_1 = constant($game->sprache("TEXT150")); $color1 = 'grey';
+				case 2: $text_1 = constant($game->sprache("TEXT151")); $color1 = 'green';
+			}
+			switch($log['log_data'][12]) {
+				case 0: $text_2 = constant($game->sprache("TEXT149")); $color1 = 'red';
+				case 1: $text_2 = constant($game->sprache("TEXT150")); $color1 = 'grey';
+				case 2: $text_2 = constant($game->sprache("TEXT151")); $color1 = 'green';
+			}
+			switch($log['log_data'][13]) {
+				case 0: $text_3 = constant($game->sprache("TEXT149")); $color1 = 'red';
+				case 1: $text_3 = constant($game->sprache("TEXT150")); $color1 = 'grey';
+				case 2: $text_3 = constant($game->sprache("TEXT151")); $color1 = 'green';
+			}	
+			
+			$game->out('
+<br>
+<table align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+  <tr>
+    <td width="450">
+      <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+			<td width="450">
+				<table border=0 cellpadding=0 cellspacing=0>
+					<tr>
+						<td width="330" align="left">'.$log['log_data'][9].'</td>
+					</tr>
+				</table>
+            <br>
+			'.constant($game->sprache("TEXT144")).'<br>
+			'.constant($game->sprache("TEXT145")).'<br><br><br><br>
+				<table border=0 cellpadding="0" cellspacing="0">
+					<tr>
+						<td width="200" align="left">'.constant($game->sprache("TEXT_146")).'</td>
+						<td width="150" align="left"><font color='.$color1.'>'.$text_1.'</font></td>
+					</tr>
+					<tr>
+						<td width="200" align="left">'.constant($game->sprache("TEXT_147")).'</td>
+						<td width="150" align="left"><font color='.$color2.'>'.$text_2.'</font></td>
+					</tr>
+					<tr>
+						<td width="200" align="left">'.constant($game->sprache("TEXT_148")).'</td>
+						<td width="150" align="left"><font color='.$color3.'>'.$text_3.'</font></td>
+					</tr>
+				</table>
+			</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<br>
+			');
+		break;
+		
         
         case 31:
             $ships = &$log['log_data'][8];

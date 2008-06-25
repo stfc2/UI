@@ -423,4 +423,10 @@ define ("ITA_TEXT63", 'Spionaggio');
 
 define ("ITA_TEXT64", 'Continua >>');
 
+define ("ITA_TEXT65", 'Analisi pianeta');
+
+define ("ITA_TEXT66", 'Le missioni esplorative sono assegnabili a flotte composte da una sola nave.');
+
+define ("ITA_TEXT67", '<b>Analisi Pianeta:</b><br>La nave approccer&agrave; il pianeta, eseguir&agrave; una serie di scansioni della superficie e sbarcher&agrave; una squadra scientifica a terra per i rilievi geologici qualora sia possibile, riferendo poi gli esiti delle analisi.');
+
 ?>

@@ -431,7 +431,76 @@ function display_logbook($log) {
                 ');
             }
         break;
-        
+		
+		case 26:			
+			switch($log['log_data'][11]) {
+				case 0: $text_1 = constant($game->sprache("TEXT149"));
+						$color1 = 'red';
+				break;
+				case 1: $text_1 = constant($game->sprache("TEXT150"));
+						$color1 = 'grey';
+				break;
+				case 2: $text_1 = constant($game->sprache("TEXT151"));
+						$color1 = 'green';
+				break;
+			}
+			switch($log['log_data'][12]) {
+				case 0: $text_2 = constant($game->sprache("TEXT149"));
+						$color2 = 'red';
+				break;
+				case 1: $text_2 = constant($game->sprache("TEXT150"));
+						$color2 = 'grey';
+				break;
+				case 2: $text_2 = constant($game->sprache("TEXT151"));
+						$color2 = 'green';
+				break;
+			}
+			switch($log['log_data'][13]) {
+				case 0: $text_3 = constant($game->sprache("TEXT149"));
+						$color3 = 'red';
+				break;
+				case 1: $text_3 = constant($game->sprache("TEXT150"));
+						$color3 = 'grey';
+				break;
+				case 2: $text_3 = constant($game->sprache("TEXT151"));
+						$color3 = 'green';
+				break;
+			}	
+			
+			$game->out('
+		<table border=0 cellpadding=0 cellspacing=0>
+			<tr>
+				<td align=left width=350>'.$log['log_data'][8].'</td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td align=left width=350>'.$log['log_data'][9].'</td>
+			</tr>			
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<table border=0 cellpadding=0 cellspacing=0>
+				<tr>
+					<td align=left width=200>'.constant($game->sprache("TEXT146")).'</td>
+					<td align=left><font color='.$color1.'>'.$text_1.'</font></td>
+				</tr>
+				<tr>
+					<td align=left width=200>'.constant($game->sprache("TEXT147")).'</td>
+					<td align=left><font color='.$color2.'>'.$text_2.'</font></td>
+				</tr>
+				<tr>
+					<td align=left width=200>'.constant($game->sprache("TEXT148")).'</td>
+					<td align=left><font color='.$color3.'>'.$text_3.'</font></td>
+				</tr>
+				</table>
+			</tr>
+		</table>
+			');
+		break;
+		
         case 31:
             $ships = &$log['log_data'][8];
             $wares = &$log['log_data'][9];
@@ -935,7 +1004,7 @@ if(count($a_fleets) <= 0) {
         break;
 
         default:
-            message(GENERAL, 'Unknown action code', '$ldata[\'action_data\'] = '.$ldata['action_code']);
+            message(GENERAL, 'Unknown action code in logbook_tactical.php', '$ldata[\'action_data\'] = '.$ldata['action_code']);
         break;
     }
 
