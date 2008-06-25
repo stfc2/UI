@@ -185,8 +185,12 @@ $game->out('<center>'.display_view_navigation('stats&a2=viewalliance&id='.$_REQU
 
 if ($_REQUEST['view']=='overview')
 {
-
+if($game->player['user_alliance'] == $alliance['alliance_id']) {
 $game->out('<br><center><span class="sub_caption2">'.constant($game->sprache("TEXT14")).'</span><br><a href="alliancemap.php?alliance='.$alliance['alliance_tag'].'&size=6&map" target=_blank><img src="alliancemap.php?alliance='.$alliance['alliance_tag'].'&size=1" border=0></a>');
+}
+else {
+$game->out('<br><center><span class="sub_caption2">'.constant($game->sprache("TEXT14")).'</span><br>Informazione riservata<br><br>');	
+}
 
 $game->out('<br><center><span class="sub_caption2">'.constant($game->sprache("TEXT15")).'</span>');
 // Allytext:
@@ -490,6 +494,14 @@ if(($history2 = $db->fetchrow($historyqry2))!=true) {
   $game->out('<tr><td align="center"></td><td align="center">'.constant($game->sprache("TEXT51")).'</td><td align="center"></td></tr>');
 }
 
+// ---- DC Fog of War, first steps. Let's hide the maps for non-allied players
+if($user['user_alliance'] == $game->player['user_alliance']) {
+	$_link_image = '<a href="usermap.php?user='.$user['user_name'].'&size=6&map" target=_blank><img src="usermap.php?user='.$user['user_name'].'&size=1" border=0></a>';
+}
+else {
+	$_link_image = 'Informazione riservata';
+}
+// DC ----
 $game->out('
 
       </table>
@@ -500,7 +512,7 @@ $game->out('
 <table border=0 cellpadding=2 cellspacing=2 class="style_outer"><tr>
 <td width=450>
 <span class="sub_caption">'.constant($game->sprache("TEXT52")).'</span><br>
-<center><a href="usermap.php?user='.$user['user_name'].'&size=6&map" target=_blank><img src="usermap.php?user='.$user['user_name'].'&size=1" border=0></a>
+<center>'.$_link_image.'
 </center>
 </td></tr></table>
 <br>
@@ -512,10 +524,12 @@ $game->out('
 <td width=450>
 <span class="sub_caption">'.constant($game->sprache("TEXT53")).'</span><br>');
 
+if($user['user_alliance'] == $game->player['user_alliance']) {
 $game->out('
 <center><table border=1 cellpadding=0 cellspacing=0 class="style_inner">
 <tr><td width=80><b>'.constant($game->sprache("TEXT53")).'</td><td width=200><b>'.constant($game->sprache("TEXT18")).'</td><td width=50><b>'.constant($game->sprache("TEXT11")).'</td><td width=50><b>'.constant($game->sprache("TEXT55")).'</td></tr>
 ');
+
 
 $planetquery=$db->query('SELECT pl.*, sys.system_x, sys.system_y FROM (planets pl) LEFT JOIN (starsystems sys) on sys.system_id = pl.system_id  WHERE pl.planet_owner="'.$user['user_id'].'" ORDER BY pl.planet_name');
 while(($planet = $db->fetchrow($planetquery))==true)
@@ -556,8 +570,10 @@ $game->out('</td></tr></table>
 
 
     }
-
-
+}
+else {
+	$game->out('<center>Informazione riservata</center>');
+}
 
 
 

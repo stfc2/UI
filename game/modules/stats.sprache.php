@@ -475,9 +475,9 @@ define ("ITA_TEXT47",'Storico alleanza:');
 
 define ("ITA_TEXT48",'Alleanza');
 
-define ("ITA_TEXT49",'Unisciti');
+define ("ITA_TEXT49",'Ingresso');
 
-define ("ITA_TEXT50",'Abbandona');
+define ("ITA_TEXT50",'Uscita');
 
 define ("ITA_TEXT51",'- Nessun imput -');
 
