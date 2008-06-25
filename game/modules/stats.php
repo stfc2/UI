@@ -189,7 +189,7 @@ if($game->player['user_alliance'] == $alliance['alliance_id']) {
 $game->out('<br><center><span class="sub_caption2">'.constant($game->sprache("TEXT14")).'</span><br><a href="alliancemap.php?alliance='.$alliance['alliance_tag'].'&size=6&map" target=_blank><img src="alliancemap.php?alliance='.$alliance['alliance_tag'].'&size=1" border=0></a>');
 }
 else {
-$game->out('<br><center><span class="sub_caption2">'.constant($game->sprache("TEXT14")).'</span><br>Informazione riservata<br><br>');	
+$game->out('<br><center><span class="sub_caption2">'.constant($game->sprache("TEXT14")).'</span><br>'.constant($game->sprache("TEXT90")).'<br><br>');	
 }
 
 $game->out('<br><center><span class="sub_caption2">'.constant($game->sprache("TEXT15")).'</span>');
@@ -499,7 +499,7 @@ if($user['user_alliance'] == $game->player['user_alliance']) {
 	$_link_image = '<a href="usermap.php?user='.$user['user_name'].'&size=6&map" target=_blank><img src="usermap.php?user='.$user['user_name'].'&size=1" border=0></a>';
 }
 else {
-	$_link_image = 'Informazione riservata';
+	$_link_image = constant($game->sprache("TEXT90"));
 }
 // DC ----
 $game->out('
@@ -525,20 +525,20 @@ $game->out('
 <span class="sub_caption">'.constant($game->sprache("TEXT53")).'</span><br>');
 
 if($user['user_alliance'] == $game->player['user_alliance']) {
-$game->out('
+    $game->out('
 <center><table border=1 cellpadding=0 cellspacing=0 class="style_inner">
 <tr><td width=80><b>'.constant($game->sprache("TEXT53")).'</td><td width=200><b>'.constant($game->sprache("TEXT18")).'</td><td width=50><b>'.constant($game->sprache("TEXT11")).'</td><td width=50><b>'.constant($game->sprache("TEXT55")).'</td></tr>
 ');
 
 
-$planetquery=$db->query('SELECT pl.*, sys.system_x, sys.system_y FROM (planets pl) LEFT JOIN (starsystems sys) on sys.system_id = pl.system_id  WHERE pl.planet_owner="'.$user['user_id'].'" ORDER BY pl.planet_name');
-while(($planet = $db->fetchrow($planetquery))==true)
-{
-$game->out('<td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
-if($planet['planet_name']=="") $planet['planet_name']="(unbennant)";
-$game->out($planet['planet_name'].'</a></td><td>'.$planet['planet_points'].'</td><td>'.strtoupper($planet['planet_type']).'</td></tr>');
-}
-$game->out('</td></tr></table>
+    $planetquery=$db->query('SELECT pl.*, sys.system_x, sys.system_y FROM (planets pl) LEFT JOIN (starsystems sys) on sys.system_id = pl.system_id  WHERE pl.planet_owner="'.$user['user_id'].'" ORDER BY pl.planet_name');
+    while(($planet = $db->fetchrow($planetquery))==true)
+    {
+        $game->out('<td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
+        if($planet['planet_name']=="") $planet['planet_name']="(unbennant)";
+            $game->out($planet['planet_name'].'</a></td><td>'.$planet['planet_points'].'</td><td>'.strtoupper($planet['planet_type']).'</td></tr>');
+    }
+    $game->out('</td></tr></table>
 </td></tr></table>
 
 <br>
@@ -563,26 +563,25 @@ $game->out('</td></tr></table>
         message(DATABASE_ERROR, 'Could not query diplomacy private data');
     }
     while($diplomacy = $db->fetchrow($q_diplomacy)) {
-    $opid = ($diplomacy['user1_id'] == $user['user_id']) ? 2 : 1;
-    if($diplomacy['accepted']) {
-        $game->out('<tr><td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$diplomacy['user'.$opid.'_id']).'">'.$diplomacy['user'.$opid.'_name'].'</a>'.( ($diplomacy['user'.$opid.'_aid']) ? ' [<a href="'.parse_link('a=stats&a2=viewalliance&id='.$diplomacy['user'.$opid.'_aid']).'">'.$diplomacy['user'.$opid.'_atag'].'</a>]' : '' ).'</td><td>'.$diplomacy['user'.$opid.'_points'].'</td><td>'.$diplomacy['user'.$opid.'_planets'].'</td><td>'.$diplomacy['user'.$opid.'_honor'].'</td><td>'.gmdate('d.m.Y', $diplomacy['date']).'</td></tr>');
+        $opid = ($diplomacy['user1_id'] == $user['user_id']) ? 2 : 1;
+        if($diplomacy['accepted']) {
+            $game->out('<tr><td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$diplomacy['user'.$opid.'_id']).'">'.$diplomacy['user'.$opid.'_name'].'</a>'.( ($diplomacy['user'.$opid.'_aid']) ? ' [<a href="'.parse_link('a=stats&a2=viewalliance&id='.$diplomacy['user'.$opid.'_aid']).'">'.$diplomacy['user'.$opid.'_atag'].'</a>]' : '' ).'</td><td>'.$diplomacy['user'.$opid.'_points'].'</td><td>'.$diplomacy['user'.$opid.'_planets'].'</td><td>'.$diplomacy['user'.$opid.'_honor'].'</td><td>'.gmdate('d.m.Y', $diplomacy['date']).'</td></tr>');
+       }
     }
-
-
-    }
-}
-else {
-	$game->out('<center>Informazione riservata</center>');
-}
-
-
-
 
 $game->out('
 </table></center>
 </td></tr>
 </table>
 ');
+}
+else {
+	$game->out('<center>'.constant($game->sprache("TEXT90")).'</center></td></tr></table>');
+}
+
+
+
+
 
 $user['user_signature'] = strip_tags($user['user_signature']);
 $user['user_signature'] = str_replace("<script", "<!--", $user['user_signature']); 

@@ -199,6 +199,8 @@ define ("GER_TEXT88",'Get&auml;tigte Auktionen:');
 
 define ("GER_TEXT89",'Aktuelle Auktionen anzeigen');
 
+define ("GER_TEXT90",'Reserved information');
+
 //English
 define ("ENG_TEXT1",'Overview');
 
@@ -378,6 +380,8 @@ define ("ENG_TEXT88",'Transacted autions:');
 
 define ("ENG_TEXT89",'Current auctions ads');
 
+define ("ENG_TEXT90",'Reserved information');
+
 //Italian
 define ("ITA_TEXT1",'Dettagli');
 
@@ -556,5 +560,7 @@ define ("ITA_TEXT87",'Media Punti:');
 define ("ITA_TEXT88",'Aste Concluse:');
 
 define ("ITA_TEXT89",'Annunci aste attuali');
+
+define ("ITA_TEXT90",'Informazione riservata');
 
 ?>
