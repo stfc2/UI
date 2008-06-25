@@ -32,19 +32,19 @@ include($filename);
 
 $game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">'.constant($game->sprache("TEXT1")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<b>'.constant($game->sprache("TEXT5")).'</b>]</center><br>[<a href="'.parse_link('a=tactical_sensors&view_attack').'">'.constant($game->sprache("TEXT32")).'</a>]&nbsp;[<a href="'.parse_link('a=tactical_sensors&delete_ferengi').'">'.constant($game->sprache("TEXT33")).'</a>]&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT34")).'</a>]<br><br>');
 
-$filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 51, 54, 55)';
+$filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 51, 54, 55)';
 
 if (isset($_GET['delete_ferengi']))
 {
-	$filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 51, 54, 55)';
+	$filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 51, 54, 55)';
 }
 elseif (isset($_GET['view_attack'])) 
 {
-	$filter_stream = '(40, 41, 42, 43, 44, 45, 51, 54, 55)';	
+	$filter_stream = '(40, 41, 42, 43, 44, 45, 46, 51, 54, 55)';
 }
 else
 {
-	$filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 51, 54, 55)';
+	$filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 51, 54, 55)';
 }
 
 
