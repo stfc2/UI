@@ -94,6 +94,8 @@ define ("GER_TEXT34", 'Alles anzeigen');
 
 define ("GER_TEXT35", 'Assimilate');
 
+define ("GER_TEXT36", 'Analyze');
+
 //English
 define ("ENG_TEXT0", 'Tactical headquarters:');
 
@@ -163,6 +165,8 @@ define ("ENG_TEXT34", 'Indicate everything');
 
 define ("ENG_TEXT35", 'Assimilate');
 
+define ("ENG_TEXT36", 'Analyze');
+
 //ItaGLIENSE
 define ("ITA_TEXT0", 'Comando Tattico:');
 
@@ -231,5 +235,7 @@ define ("ITA_TEXT33", 'Nascondere trasporti Ferengi');
 define ("ITA_TEXT34", 'Indicare tutto');
 
 define ("ITA_TEXT35", 'Assimilare');
+
+define ("ITA_TEXT36", 'Analizzare');
 
 ?>
