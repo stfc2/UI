@@ -193,13 +193,9 @@ while ($move = $db->fetchrow($q_moves))
 
         else
         {
-
-
-
-            if ($game->player['user_id'] == 11)
-                $game->out(constant($game->sprache("TEXT8")).' ' . (isset($move['user_name']) ? '<a href="' .
-                    parse_link('a=stats&a2=viewplayer&id=' . $move['user_id']) . '"><b>' . $move['owner_name'] .
-                    '</b></a>':'<b>'.constant($game->sprache("TEXT9")).'</b>') . '<br>');
+            $game->out(constant($game->sprache("TEXT8")).' ' . (isset($move['owner_name']) ? '<a href="' .
+                parse_link('a=stats&a2=viewplayer&id=' . $move['user_id']) . '"><b>' . $move['owner_name'] .
+                '</b></a>':'<b>'.constant($game->sprache("TEXT9")).'</b>') . '<br>');
 
             if (!empty($move['start']))
             {
@@ -251,6 +247,7 @@ while ($move = $db->fetchrow($q_moves))
             40 => constant($game->sprache("TEXT24")), 41 => constant($game->sprache("TEXT24")),
             42 => constant($game->sprache("TEXT24")), 43 => constant($game->sprache("TEXT25")),
             44 => constant($game->sprache("TEXT26")), 45 => constant($game->sprache("TEXT20")),
+            46 => constant($game->sprache("TEXT35")),
             51 => constant($game->sprache("TEXT24")), 53 => constant($game->sprache("TEXT25")),
             54 => constant($game->sprache("TEXT26")), 55 => constant($game->sprache("TEXT20")), );
 

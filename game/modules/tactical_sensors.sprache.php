@@ -92,6 +92,8 @@ define ("GER_TEXT33", 'Ferengitransporte ausblenden');
 
 define ("GER_TEXT34", 'Alles anzeigen');
 
+define ("GER_TEXT35", 'Assimilate');
+
 //English
 define ("ENG_TEXT0", 'Tactical headquarters:');
 
@@ -137,11 +139,11 @@ define ("ENG_TEXT22", 'Auction fleet');
 
 define ("ENG_TEXT23", 'Trade route');
 
-define ("ENG_TEXT24", 'Attacking');
+define ("ENG_TEXT24", 'Attack');
 
-define ("ENG_TEXT25", 'Plundering');
+define ("ENG_TEXT25", 'Plunder');
 
-define ("ENG_TEXT26", 'Bombing');
+define ("ENG_TEXT26", 'Bomb');
 
 define ("ENG_TEXT27", 'Ship:');
 
@@ -158,6 +160,8 @@ define ("ENG_TEXT32", 'Indicate only attacks');
 define ("ENG_TEXT33", 'Hide ferengi transport');
 
 define ("ENG_TEXT34", 'Indicate everything');
+
+define ("ENG_TEXT35", 'Assimilate');
 
 //ItaGLIENSE
 define ("ITA_TEXT0", 'Comando Tattico:');
@@ -225,5 +229,7 @@ define ("ITA_TEXT32", 'Indicare solo attacchi');
 define ("ITA_TEXT33", 'Nascondere trasporti Ferengi');
 
 define ("ITA_TEXT34", 'Indicare tutto');
+
+define ("ITA_TEXT35", 'Assimilare');
 
 ?>
