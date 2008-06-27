@@ -36,12 +36,12 @@ class math {
 class maps {
     function maps() {
         global $game;
-        
+
         $this->galaxy_map_size = $game->galaxy_map_size;
         $this->quadrant_map_size = $game->quadrant_map_size;
         $this->sector_map_size = $game->sector_map_size;
         $this->system_map_size = $game->system_map_size;
-        
+
         $this->galaxy_detail_map_size = $game->galaxy_detail_map_size;
 
         $this->quadrant_map_split = $game->quadrant_map_split;
@@ -54,6 +54,9 @@ class maps {
         $this->max_sectors = $game->max_sectors;
         $this->max_systems_per_sector = $game->max_systems_per_sector;
 
+        /* 27/06/08 - AC: This module can also be called when $game->player is NOT inizialized */
+        if(isset($game->player['language')
+        {
 		/* 29/02/08 - AC: Localize this strings */
 		switch($game->player['language'])
 		{
@@ -66,7 +69,7 @@ class maps {
 				$this->str_points = 'Punkte:';
 				$this->str_name = 'Name:';
 				$this->str_class = 'Klasse:';
-			    $this->str_uninhabited = 'unbewohnt';
+				$this->str_uninhabited = 'unbewohnt';
 			break;
 			case 'ENG':
 				$this->str_sector = 'Sector';
@@ -77,7 +80,7 @@ class maps {
 				$this->str_points = 'Points:';
 				$this->str_name = 'Name:';
 				$this->str_class = 'Class:';
-			    $this->str_uninhabited = 'uninhabited';
+				$this->str_uninhabited = 'uninhabited';
 			break;
 			case 'ITA':
 				$this->str_sector = 'Settore';
@@ -88,9 +91,23 @@ class maps {
 				$this->str_points = 'Punti:';
 				$this->str_name = 'Nome:';
 				$this->str_class = 'Classe:';
-			    $this->str_uninhabited = 'disabitato';
+				$this->str_uninhabited = 'disabitato';
 			break;
 		}
+        }
+        else
+        {
+            /* AC: They should not be used, but for safety... */
+            $this->str_sector = 'Sector';
+            $this->str_details = 'Details';
+            $this->str_planets = 'Planets:';
+            $this->str_owner = 'Owner:';
+            $this->str_alliance = 'Alliance:';
+            $this->str_points = 'Points:';
+            $this->str_name = 'Name:';
+            $this->str_class = 'Class:';
+            $this->str_uninhabited = 'uninhabited';
+        }
     }
 
     function draw_horizontal_dotline($im, $x1, $x2, $y, $color, $dot_distance = 2) {
