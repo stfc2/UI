@@ -358,11 +358,11 @@ function create_planet($user_id, $id_type, $id_value) {
         $planet_type = $type_array[array_rand($type_array)];
 
         // Varianza randomica delle costanti base del pianeta
-        $rateo_1 = round(($PLANETS_DATA[$planet_type][0] + ((250 - mt_rand(0, 500))*0.001)), 2);
+        $rateo_1 = round(($PLANETS_DATA[$planet_type][0] + ((400 - mt_rand(0, 800))*0.001)), 2);
         if($rateo_1 < 0.1) $rateo_1 = 0.1;
-        $rateo_2 = round(($PLANETS_DATA[$planet_type][1] + ((250 - mt_rand(0, 500))*0.001)), 2);
+        $rateo_2 = round(($PLANETS_DATA[$planet_type][1] + ((350 - mt_rand(0, 700))*0.001)), 2);
         if($rateo_2 < 0.1) $rateo_2 = 0.1;
-        $rateo_3 = round(($PLANETS_DATA[$planet_type][2] + ((250 - mt_rand(0, 500))*0.001)), 2);
+        $rateo_3 = round(($PLANETS_DATA[$planet_type][2] + ((300 - mt_rand(0, 600))*0.001)), 2);
         if($rateo_3 < 0.1) $rateo_3 = 0.1;
         $rateo_4 = $PLANETS_DATA[$planet_type][3];
 
