@@ -906,7 +906,7 @@ elseif(!empty($_GET['planet_id'])) {
 	. ' ORDER BY timestamp ASC';
 	if($_history = $db->query($sql)) {
 		while($_temp = $db->fetchrow($_history)) {
-			$history_text .= constant($game->sprache("TEXT110")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT111")).date("d.m.y H:i", $_temp['timestamp']).'<br>';
+			$history_text .= constant($game->sprache("TEXT113")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT114")).date("d.m.y H:i", $_temp['timestamp']).'<br>';
 		}
 	}	
 // --- Cancellazione dell'account del giocatore!!!
@@ -969,6 +969,22 @@ elseif(!empty($_GET['planet_id'])) {
 	}
 
 	$detail_text = $history_text.$survey_text.$tactical_text;
+
+    $planet_is_known = false;	
+    $sql = 'SELECT * FROM planet_details WHERE log_code = 500 AND planet_id = '.$planet['planet_id'].' AND user_id = '.$game->player['user_id'];
+    if($db->queryrow($sql) == true) $planet_is_known = true;
+
+    if($own_planet || ($game->player['user_alliance'] == $planet_owner['alliance_id']) || $planet_is_known) {
+    	$_thumb = '<a href='.$planet_thumb.' target="_blank"><img src="'.$planet_thumb.'" width="80" height="80" border="0"></a><br>';
+	$_name  = '&nbsp;<b>'.$planet['planet_name'].'</b>&nbsp;('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')';
+	$_planet_type = '&nbsp;<a href="'.parse_link('a=database&planet_type='.$planet_type.'#'.$planet_type).'">'.$planet_type.'</a>';
+    } 
+    else {
+	$_thumb = '&nbsp;<br>';
+	$_name  = '&nbsp;<b><i>&#171;Sconosciuto&#187;</i></b>&nbsp;('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')';
+	$_planet_type = '&nbsp;<b><i>&#171;Sconosciuto&#187;</i></b>';
+    }
+    
 	
     $game->out('
 <style type="text/css">
@@ -1003,18 +1019,18 @@ form {
 <table class="style_inner" width="400" align="center" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td width="120" align="center">
-      <a href='.$planet_thumb.' target="_blank"><img src="'.$planet_thumb.'" width="80" height="80" border="0"></a><br>
+      '.$_thumb.'
     </td>
 
     <td width="280" valign="top">
       <table width="280" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td valign="top">'.constant($game->sprache("TEXT62")).'</td>
-          <td>&nbsp;<b>'.$planet['planet_name'].'</b>&nbsp;('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')</td>
+          <td>'.$_name.'</td>
         </tr>
         <tr>
           <td valign="top">'.constant($game->sprache("TEXT63")).'</td>
-          <td>&nbsp;<a href="'.parse_link('a=database&planet_type='.$planet_type.'#'.$planet_type).'">'.$planet_type.'</a></td>
+          <td>'.$_planet_type.'</td>
         </tr>
         <tr>
           <td valign="top">'.constant($game->sprache("TEXT92")).'</td>
@@ -1023,7 +1039,7 @@ form {
         <tr height="15"><td></td></tr>
     ');
     
-    if($free_planet) {
+    if($free_planet && $planet_is_known) {
         $game->out('
         <tr>
           <td colspan="2" valign="top"><i>'.constant($game->sprache("TEXT64")).'</i></td>
@@ -1044,7 +1060,7 @@ form {
         </tr>
         ');
     }
-    else {
+    elseif(($game->player['user_alliance'] == $planet_owner['alliance_id']) || $planet_is_known)  {
         $game->out('
         <tr>
           <td valign="top">'.constant($game->sprache("TEXT69")).'</td>
