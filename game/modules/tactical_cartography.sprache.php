@@ -405,7 +405,59 @@ define ("ENG_TEXT92", 'Survey:');
 
 define ("ENG_TEXT93", 'No expedition done yet.');
 
+define ("ENG_TEXT94", '<i>Database updated on</i> ');
 
+define ("ENG_TEXT95", '<u>Historical information</u><br>');
+
+define ("ENG_TEXT96", '<br><u>Geological information</u><br>');
+
+define ("ENG_TEXT97", '<br><u>Tactical/Political information</u><br>');
+
+define ("ENG_TEXT98", 'Birth of place of the civilization founded by <b>');
+
+define ("ENG_TEXT99", ' </b> on ');
+
+define ("ENG_TEXT100", 'Geological analysis of the planet carried out by scientific teams on board the ship <b>');
+
+define ("ENG_TEXT101", '</b>, belonging to the forces of <b>');
+
+define ("ENG_TEXT102", '</b>, executed on ');
+
+define ("ENG_TEXT103", 'Presence of metals: ');
+
+define ("ENG_TEXT104", 'Presence of minerals: ');
+
+define ("ENG_TEXT105", 'Presence of dilithium: ');
+
+define ("ENG_TEXT106", '-- BELOW standard --');
+
+define ("ENG_TEXT107", '-- standard --');
+
+define ("ENG_TEXT108", '-- ABOVE standard --');
+
+define ("ENG_TEXT109", 'Colonized by forces of <b>');
+
+define ("ENG_TEXT110", 'Forces of <b>');
+
+define ("ENG_TEXT111", '</b> win the battle on the surface of the planet on ');
+
+define ("ENG_TEXT112", ', removing it from the control of forces of <b>');
+
+define ("ENG_TEXT113", 'Escaped from the control of <b>');
+
+define ("ENG_TEXT114", '</b> following a revolt of the local population on ');
+
+define ("ENG_TEXT115", 'The leadership of the forces controlling the planet disappears, leaving the local population itself on ');
+
+define ("ENG_TEXT116", 'On date ');
+
+define ("ENG_TEXT117", ', ships belonging to forces of <b>');
+
+define ("ENG_TEXT118", '</b> reached the planet, the first ever.');
+
+define ("ENG_TEXT119", '</b> reached the planet, fighting for the right of colonization.');
+
+define ("ENG_TEXT120", '<i>&#171;Unknown&#187;</i>');
 
 //Italiano
 define ("ITA_TEXT0", 'Comando Tattico:');
@@ -606,11 +658,11 @@ define ("ITA_TEXT96", '<br><u>Informazioni Geologiche</u><br>');
 
 define ("ITA_TEXT97", '<br><u>Informazioni Tattico/Politiche</u><br>');
 
-define ("ITA_TEXT98", 'Luogo di nascita della civilt&agrave fondata da <b>');
+define ("ITA_TEXT98", 'Luogo di nascita della civilt&agrave; fondata da <b>');
 
 define ("ITA_TEXT99", ' </b> il ');
 
-define ("ITA_TEXT100", 'Analasi geologica del pianeta effettuata dalle squadre scientifiche a bordo della nave <b>');
+define ("ITA_TEXT100", 'Analisi geologica del pianeta effettuata dalle squadre scientifiche a bordo della nave <b>');
 
 define ("ITA_TEXT101", '</b>, appartenente alle forze di <b>');
 
@@ -650,6 +702,6 @@ define ("ITA_TEXT118", '</b> raggiungono il pianeta, prime in assoluto.');
 
 define ("ITA_TEXT119", '</b> raggiugono il pianeta, contendendone il diritto di colonizzazione.');
 
-
+define ("ITA_TEXT120", '<i>&#171;Sconosciuto&#187;</i>');
 
 ?>
