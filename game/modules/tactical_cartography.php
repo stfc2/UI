@@ -833,7 +833,7 @@ elseif(!empty($_GET['planet_id'])) {
         . ' AND log_code = 0'
         . ' LIMIT 0, 1';
 	if(($_temp = $db->queryrow($sql)) == true) {
-		$history_text .= constant($game->sprache("TEXT98")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : '<i>&#171;Sconosciuto&#187;</i>').constant($game->sprache("TEXT99")).date("d.m.y H:i", $_temp['timestamp']).'<br>';
+		$history_text .= constant($game->sprache("TEXT98")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).constant($game->sprache("TEXT99")).date("d.m.y H:i", $_temp['timestamp']).'<br>';
 	}
 // Scopritore del pianeta
 	$sql = 'SELECT d.user_id, d.timestamp, u.user_name, alliance.alliance_tag FROM planet_details d'
@@ -842,7 +842,7 @@ elseif(!empty($_GET['planet_id'])) {
         . ' WHERE planet_id = '.$planet['planet_id']
         . ' AND log_code = 1';
 	if(($_temp = $db->queryrow($sql)) == true) {
-		$history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT117")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : '<i>&#171;Sconosciuto&#187;</i>').( (!empty($_temp['alliance_tag'])) ? '['.$_temp['alliance_tag'].']' : '&nbsp;' ).constant($game->sprache("TEXT118")).'<br>';
+		$history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT117")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).( (!empty($_temp['alliance_tag'])) ? '['.$_temp['alliance_tag'].']' : '&nbsp;' ).constant($game->sprache("TEXT118")).'<br>';
 	}
 // Contendenti
 	$sql = 'SELECT d.user_id, d.timestamp, u.user_name, alliance.alliance_tag FROM planet_details d'
@@ -853,7 +853,7 @@ elseif(!empty($_GET['planet_id'])) {
 	. ' ORDER BY timestamp ASC';
 	if($_history = $db->query($sql)) {
 		while($_temp = $db->fetchrow($_history)) {
-			$history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT117")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : '<i>&#171;Sconosciuto&#187;</i>').( (!empty($_temp['alliance_tag'])) ? '['.$_temp['alliance_tag'].']' : '&nbsp;' ).constant($game->sprache("TEXT119")).'<br>';
+			$history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT117")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).( (!empty($_temp['alliance_tag'])) ? '['.$_temp['alliance_tag'].']' : '&nbsp;' ).constant($game->sprache("TEXT119")).'<br>';
 		}
 	}
 // Colonizzazione
@@ -879,7 +879,7 @@ elseif(!empty($_GET['planet_id'])) {
 		while($_temp = $db->fetchrow($_history)) {
 			$sql = 'SELECT user_name FROM user WHERE user_id = '.$_temp['defeat_uid'];
 			if(!$_history_q1 = $db->queryrow($sql)) {
-				$_history_d1 = '<i>&#171;Sconosciuto&#187;</i>';
+				$_history_d1 = constant($game->sprache("TEXT120"));
 				}
 			else {
 				$_history_d1 = $_history_q1['user_name'];
@@ -971,7 +971,7 @@ elseif(!empty($_GET['planet_id'])) {
 	$detail_text = $history_text.$survey_text.$tactical_text;
 
     $planet_is_known = false;	
-    $sql = 'SELECT * FROM planet_details WHERE log_code = 500 AND planet_id = '.$planet['planet_id'].' AND user_id = '.$game->player['user_id'];
+    $sql = 'SELECT * FROM planet_details WHERE log_code = 500 AND system_id = '.$planet['system_id'].' AND user_id = '.$game->player['user_id'];
     if($db->queryrow($sql) == true) $planet_is_known = true;
 
     if($own_planet || ($game->player['user_alliance'] == $planet_owner['alliance_id']) || $planet_is_known) {
