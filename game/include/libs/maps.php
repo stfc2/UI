@@ -188,7 +188,7 @@ class maps {
             }
 
             $angle = (360 * $covered ) / $outline;
-            
+
             /*
             $quadrant = ceil($angle / 90);
             $angle -= ($quadrant - 1) * 90;
@@ -329,9 +329,9 @@ class maps {
         if( ($sector_id < 1) || ($sector_id > $this->max_sectors) ) {
             message(GENERAL, 'Invalid sector id '.$sector_id);
         }
-        
+
         //$g_coords = $game->get_sector_global_coords($game->get_sector_name($sector_id));
-        
+
         $im = imagecreate($this->sector_map_size, $this->sector_map_size);
         //$im = imagecreatefrompng('maps/templates/sector_'.$g_coords[0].'_'.$g_coords[1].'.jpg');
         imagecolorallocate($im, 0, 0, 0);
@@ -406,7 +406,7 @@ class maps {
         if(empty($system['system_id'])) {
             message(GENERAL, 'Could not find system '.$system_id);
         }
-
+// DC ---- Fog of war is Incoming!!!
         $sql = 'SELECT p.planet_id, p.planet_name, p.planet_type, p.planet_distance_px, p.planet_covered_distance, p.planet_current_x, p.planet_current_y, p.planet_points,
                        u.user_id, u.user_name, u.user_attack_protection, u.user_points,
                        a.alliance_id, a.alliance_tag, a.alliance_name
@@ -418,7 +418,15 @@ class maps {
         if(!$q_planets = $db->query($sql)) {
             message(DATABASE_ERROR, 'Could not query planets data');
         }
-        
+
+// DC ---- 
+        $system_is_known = false;
+        $sql = 'SELECT COUNT(*) AS system_is_known FROM planet_details WHERE system_id = '.$system_id.' AND log_code = 500 AND user_id = '.$game->player['user_id'];	
+        if(!$q_details = $db->queryrow($sql)) {
+            message(DATABASE_ERROR, 'Could not query planet details data');
+        }
+        if(isset($q_details['system_is_known']) && ($q_details['system_is_known'] > 0)) $system_is_known = true;
+// ----
 
         $n_planets = $db->num_rows($q_planets);
 
@@ -450,13 +458,13 @@ class maps {
         for($i = 1; $i <= ($star_size + 10); ++$i) {
             $used_distances[$i] = true;
         }
-        
+
         $rect_coords = array(
-		    array(3, 5, 1, 3),
-			array(7, 5, 5, 3),
-			array(3, 1, 1, -1),
-			array(7, 1, 5, -1),
-		);
+            array(3, 5, 1, 3),
+            array(7, 5, 5, 3),
+            array(3, 1, 1, -1),
+            array(7, 1, 5, -1),
+        );
 
         while($planet = $db->fetchrow($q_planets)) {
             $radius = $planet['planet_distance_px'];
@@ -490,51 +498,64 @@ class maps {
                 $planet_colors[$current_type] = imagecolorallocate($im, $PLANETS_DATA[$current_type][9][0], $PLANETS_DATA[$current_type][9][1], $PLANETS_DATA[$current_type][9][2]);
             }
 
-            imagefilledellipse($im, $planet_x, $planet_y, $PLANETS_DATA[$current_type][8], $PLANETS_DATA[$current_type][8], $planet_colors[$current_type]);
-
-            $map_html .= '<area href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'" shape="circle" coords="'.(int)$planet_x.', '.(int)$planet_y.', '.$PLANETS_DATA[$current_type][8].'"';
-            $map_html .= ' onmouseover="return overlib(\'<font color=gray><b>'.$this->str_name.'</b> '.str_replace("'","\'",$planet['planet_name']).'</font><br><font color=gray><b>'.$this->str_class.'</b> '.strtoupper($planet['planet_type']).'</font>';
-            if(empty($planet['user_id'])) {
-			    $map_html .= '<br><i>'.$this->str_uninhabited.'</i>';
+            if(($planet['user_id'] == $game->player['user_id']) || ($planet['alliance_id'] == $game->player['user_alliance']) || $system_is_known) {
+                imagefilledellipse($im, $planet_x, $planet_y, $PLANETS_DATA[$current_type][8], $PLANETS_DATA[$current_type][8], $planet_colors[$current_type]);
             }
             else {
-                $map_html .= '<br><b>'.$this->str_owner.'</b> '.$planet['user_name'];
-                $map_html .= ((!empty($planet['alliance_name'])) ? '<br><font color=gray><b>'.$this->str_alliance.'</b> '.str_replace("'","\'",$planet['alliance_name']).' ['.$planet['alliance_tag'].']</font>' : '' ).'<br><b>'.$this->str_points.'</b> '.$planet['planet_points'].' ('.$planet['user_points'].' ges.)';
+                $fake_colors = imagecolorallocate($im, 255, 255, 255);
+                imagefilledellipse($im, $planet_x, $planet_y, 5, 5, $fake_colors);
             }
-            $map_html .= '\', CAPTION, \''.$this->str_details.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">';
+
+// DC ---- Fog of War: here we go!
+            if(($planet['user_id'] == $game->player['user_id']) || ($planet['alliance_id'] == $game->player['user_alliance']) || $system_is_known) {
+                $map_html .= '<area href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'" shape="circle" coords="'.(int)$planet_x.', '.(int)$planet_y.', '.$PLANETS_DATA[$current_type][8].'"';
+                $map_html .= ' onmouseover="return overlib(\'<font color=gray><b>'.$this->str_name.'</b> '.str_replace("'","\'",$planet['planet_name']).'</font><br><font color=gray><b>'.$this->str_class.'</b> '.strtoupper($planet['planet_type']).'</font>';
+                if(empty($planet['user_id'])) {
+                    $map_html .= '<br><i>'.$this->str_uninhabited.'</i>';
+                }
+                else {
+                    $map_html .= '<br><b>'.$this->str_owner.'</b> '.$planet['user_name'];	
+                    $map_html .= ((!empty($planet['alliance_name'])) ? '<br><font color=gray><b>'.$this->str_alliance.'</b> '.str_replace("'","\'",$planet['alliance_name']).' ['.$planet['alliance_tag'].']</font>' : '' ).'<br><b>'.$this->str_points.'</b> '.$planet['planet_points'].' ('.$planet['user_points'].' ges.)';
+                }
+                $map_html .= '\', CAPTION, \''.$this->str_details.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">';
+            }
+            else {
+                $map_html .= '<area href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'" shape="circle" coords="'.(int)$planet_x.', '.(int)$planet_y.', '.$PLANETS_DATA[$current_type][8].'"';
+                $map_html .= ' onmouseover="return overlib(\'<b><i>&#171;Nessuna Informazione&#187;</i></b>\', CAPTION, \''.$this->str_details.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">';
+            }
 
             $rect_colors = array();
 
-      
-            if($planet['planet_id'] == $game->planet['planet_id']) {
-                $rect_colors[] = $cl_active_planet;
-            }
-            
-            if($planet['user_attack_protection'] > $ACTUAL_TICK) {
-            	$rect_colors[] = $cl_attack_protection;
-            }
- 
-            $rotz = 0;   
- 
-            $rotz = $planet['alliance_id'];
- 
-            if(empty($rotz)) $rotz = 0;
+            if(($planet['user_id'] == $game->player['user_id']) || ($planet['alliance_id'] == $game->player['user_alliance']) || $system_is_known) {
+                if($planet['planet_id'] == $game->planet['planet_id']) {
+                    $rect_colors[] = $cl_active_planet;
+                }
 
-            $sql = 'SELECT * FROM alliance_diplomacy WHERE (alliance1_id = '.$rotz.' OR alliance2_id = '.$rotz.') AND (alliance1_id = '.$game->player['user_alliance'].' OR alliance2_id = '.$game->player['user_alliance'].') AND ((status = 0) OR (type=1 AND status=2))';
+                if($planet['user_attack_protection'] > $ACTUAL_TICK) {
+                    $rect_colors[] = $cl_attack_protection;
+                }
 
-            if(($alliance_1 = $db->queryrow($sql)) === false) {
-               message(DATABASE_ERROR, 'Could not query alliance data');
-            }
+                $rotz = 0;
 
-            if(!empty($alliance_1['ad_id'])){
+                $rotz = $planet['alliance_id'];
 
-            $sql = 'SELECT * from alliance WHERE alliance_id != '.$game->player['user_alliance'].' AND (alliance_id = '.$alliance_1['alliance1_id'].' OR alliance_id = '.$alliance_1['alliance2_id'].')';
+                if(empty($rotz)) $rotz = 0;
 
-            if(($alliance_2 = $db->queryrow($sql)) === false) {
-               message(DATABASE_ERROR, 'Could not query alliance data');
-            }
+                $sql = 'SELECT * FROM alliance_diplomacy WHERE (alliance1_id = '.$rotz.' OR alliance2_id = '.$rotz.') AND (alliance1_id = '.$game->player['user_alliance'].' OR alliance2_id = '.$game->player['user_alliance'].') AND ((status = 0) OR (type=1 AND status=2))';
 
-            }
+                if(($alliance_1 = $db->queryrow($sql)) === false) {
+                    message(DATABASE_ERROR, 'Could not query alliance data');
+                }
+
+                if(!empty($alliance_1['ad_id'])){
+
+                    $sql = 'SELECT * from alliance WHERE alliance_id != '.$game->player['user_alliance'].' AND (alliance_id = '.$alliance_1['alliance1_id'].' OR alliance_id = '.$alliance_1['alliance2_id'].')';
+
+                    if(($alliance_2 = $db->queryrow($sql)) === false) {
+                        message(DATABASE_ERROR, 'Could not query alliance data');
+                    }
+                }
+
                 if($planet['user_id'] == $game->player['user_id']) {
                    $rect_colors[] = $cl_own_planet;
                 }
@@ -548,15 +569,16 @@ class maps {
                   $rect_colors[] = $cl_alliance_bnd_pbnd;
                 }
 
+            }
 
             if(!empty($rect_colors)) {
                 for($i = 0; $i < count($rect_colors); ++$i) {
-				    imagefilledrectangle($im,
-				        ($planet_x - $planet_width - $rect_coords[$i][0]), ($planet_y - $rect_coords[$i][1]),
-				        ($planet_x - $planet_width - $rect_coords[$i][2]), ($planet_y - $rect_coords[$i][3]),
-				                                    
-				    $rect_colors[$i]);
-				}
+                    imagefilledrectangle($im,
+                        ($planet_x - $planet_width - $rect_coords[$i][0]), ($planet_y - $rect_coords[$i][1]),
+                        ($planet_x - $planet_width - $rect_coords[$i][2]), ($planet_y - $rect_coords[$i][3]),
+
+                    $rect_colors[$i]);
+                }
             }
 
         }
@@ -568,7 +590,7 @@ class maps {
 
         return $map_html;
     }
-    
+
     function create_galaxy_detail_map() {
         global $game, $db;
 
@@ -580,16 +602,16 @@ class maps {
 
         $sql = 'SELECT system_id, sector_id, system_x, system_y, system_starcolor_red, system_starcolor_green, system_starcolor_blue
                 FROM starsystems';
-                
+
         if(!$q_systems = $db->query($sql)) {
             message(DATABASE_ERROR, 'Could not query starsystems data');
         }
-        
+
         $px_per_sector = ($this->galaxy_detail_map_size - ((2 * $this->quadrant_map_split) - 1)) / (2 * $this->quadrant_map_split);
         $px_per_system = $px_per_sector / $this->sector_map_split;
-        
+
         $next_quadrant_start = ( (9 * $px_per_sector) + $this->quadrant_map_split );
-        
+
         $quadrant_start_coords = array(
             1 => array(0, 0),
             2 => array($next_quadrant_start, 0),
@@ -597,32 +619,32 @@ class maps {
             4 => array($next_quadrant_start, $next_quadrant_start)
 
         );
-        
+
         $star_colors = array(
             imagecolorallocate($im, 0, 0, 255), // blau
             imagecolorallocate($im, 255, 255, 255), // weiß
             imagecolorallocate($im, 200, 100, 0), // gelb
             imagecolorallocate($im, 255, 0, 0), // rot
         );
-        
+
         while($system = $db->fetchrow($q_systems)) {
             $quadrant_id = $game->get_quadrant($system['sector_id']);
 
             $start_x = $quadrant_start_coords[$quadrant_id][0];
             $start_y = $quadrant_start_coords[$quadrant_id][1];
-            
+
             $sector_lcoords = $game->get_sector_coords($system['sector_id']);
-            
+
             // Eigentlich:
             // $start_x += ( ($sector_lcoords[0] - 1) * $px_per_sector ) + ($sector_lcoords[0] - 1)
             $start_x += ($sector_lcoords[0] - 1) * ($px_per_sector + 1);
             $start_y += ($sector_lcoords[1] - 1) * ($px_per_sector + 1);
-            
+
             $start_x += ($system['system_x'] - 1) * $px_per_system;
             $start_y += ($system['system_y'] - 1) * $px_per_system;
-            
+
             $cl = $star_colors[3];
-            
+
             if($system['system_starcolor_red'] <= 25) {
                 $cl = $star_colors[0];
             }
@@ -634,7 +656,7 @@ class maps {
                     $cl = $star_colors[2];
                 }
             }
-            
+
             imagefilledellipse($im, ($start_x + 2), ($start_y + 2), 3, 3, $cl);
         }
 
