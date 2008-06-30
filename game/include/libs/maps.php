@@ -55,7 +55,7 @@ class maps {
         $this->max_systems_per_sector = $game->max_systems_per_sector;
 
         /* 27/06/08 - AC: This module can also be called when $game->player is NOT inizialized */
-        if(isset($game->player['language')
+        if(isset($game->player['language']))
         {
 		/* 29/02/08 - AC: Localize this strings */
 		switch($game->player['language'])
