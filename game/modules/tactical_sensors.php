@@ -1,11 +1,11 @@
 <?php
-/*    
-	This file is part of STFC.
-	Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
-		
-	STFC is based on STGC,
-	Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
-	
+/*
+    This file is part of STFC.
+    Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
+
+    STFC is based on STGC,
+    Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
+
     STFC is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 3 of the License, or
@@ -36,15 +36,11 @@ $filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 26, 31, 32, 33, 34, 35, 36, 3
 
 if (isset($_GET['delete_ferengi']))
 {
-	$filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 26, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 51, 54, 55)';
+    $filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 26, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 51, 54, 55)';
 }
-elseif (isset($_GET['view_attack'])) 
+elseif (isset($_GET['view_attack']))
 {
-	$filter_stream = '(40, 41, 42, 43, 44, 45, 46, 51, 54, 55)';
-}
-else
-{
-	$filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 26, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 51, 54, 55)';
+    $filter_stream = '(40, 41, 42, 43, 44, 45, 46, 51, 54, 55)';
 }
 
 
@@ -58,23 +54,27 @@ $dest = (!empty($_GET['dest'])) ? (int)$_GET['dest']:0;
 
 $sql = 'SELECT ss.*,
 
-			   p1.planet_name AS start_planet_name,
+               p1.planet_name AS start_planet_name,
 
-			   u1.user_id AS start_owner_id, u1.user_name AS start_owner_name,
+               u1.user_id AS start_owner_id, u1.user_name AS start_owner_name,
 
-			   u2.user_name as owner_name,
+               u2.user_name as owner_name,
 
-			   p2.planet_name AS dest_planet_name
+               p2.planet_name AS dest_planet_name,
 
-		FROM (scheduler_shipmovement ss, planets p2)
+               p2.planet_id AS dest_id,
 
-		LEFT JOIN (planets p1) ON p1.planet_id = ss.start
+               p2.building_7 AS dest_sensors
 
-		LEFT JOIN (user u1) ON u1.user_id = p1.planet_owner
+        FROM (scheduler_shipmovement ss, planets p2)
 
-		LEFT JOIN (user u2) ON u2.user_id = ss.user_id
+                LEFT JOIN (planets p1) ON p1.planet_id = ss.start
 
-		WHERE p2.planet_id = ss.dest AND
+                LEFT JOIN (user u1) ON u1.user_id = p1.planet_owner
+
+                LEFT JOIN (user u2) ON u2.user_id = ss.user_id
+
+        WHERE p2.planet_id = ss.dest AND
 
               p2.planet_owner = ' . $game->player['user_id'] . ' AND
 
@@ -84,9 +84,9 @@ $sql = 'SELECT ss.*,
 
               ss.user_id<>' . $game->player['user_id'] . ' AND
 
-			  ss.move_status = 0 AND ss.action_code IN '.$filter_stream.'' . (($start) ?
+              ss.move_status = 0 AND ss.action_code IN '.$filter_stream.'' . (($start) ?
     ' AND ss.start = ' . $start:'') . (($dest) ? ' AND ss.dest = ' . $dest:'') . '
-              
+
         ORDER BY ss.move_finish ASC';
 
 
@@ -128,20 +128,21 @@ while ($move = $db->fetchrow($q_moves))
     {
         // Todo: Flotten querien, Werte berechnen:
         //array('n_ships', 'sum_sensors', 'sum_cloak')
-        $sensor2 = get_friendly_orbit_fleets($game->planet['planet_id']);
+        /* 30/06/08 - AC: Planet sensors depends on target planet NOT on currently active planet!  */
+        $sensor2 = get_friendly_orbit_fleets($move['dest_id']);
         //array('n_ships', 'sum_sensors', 'sum_cloak', 'status', 'torso' => array(0...9) )
         $sensor1 = get_move_ship_details($move['move_id']);
-        $visibility = GetVisibility($sensor1['sum_sensors'] + ($game->planet['building_7'] +
+        $visibility = GetVisibility($sensor1['sum_sensors'] + ($move['dest_sensors'] +
             1) * 200, $sensor1['sum_cloak'], $sensor1['n_ships'], $sensor2['sum_sensors'], $sensor2['sum_cloak']);
         $travelled = 100 / ($move['move_finish'] - $move['move_begin']) * ($ACTUAL_TICK -
             $move['move_begin']);
     }
     else
-	{
+    {
         $sensor1 = get_move_ship_details($move['move_id']);
         $sensor1['n_ships'] = $move['n_ships'];
         $sensor1['torso'][1] = $move['n_ships'];
-	}
+    }
 
 
 
@@ -296,9 +297,9 @@ while ($move = $db->fetchrow($q_moves))
 
         $game->out('
 
-	  <br><br>
+          <br><br>
 
-	  '.constant($game->sprache("TEXT31")).' ' . (($i < 10) ? '<b id="timer' . $i . '" title="time1_' . (($ticks_left *
+          '.constant($game->sprache("TEXT31")).' ' . (($i < 10) ? '<b id="timer' . $i . '" title="time1_' . (($ticks_left *
             TICK_DURATION * 60) + $NEXT_TICK) . '_type2_2">&nbsp;</b>':format_time($ticks_left *
             TICK_DURATION)) . '
 
