@@ -261,6 +261,8 @@ define ("GER_TEXT117", 'Borgdrohne');
 
 define ("GER_TEXT118", '<b>Es gab keine Verluste an Bodentruppen auf deiner Seite.</b><br><br>');
 
+define ("GER_TEXT118a", '<b>Es gab keine Verluste an Bodentruppen auf der gegnerischen Seite.</b><br><br>');
+
 define ("GER_TEXT119", '# Verluste');
 
 /* <-- Define for auction logbook entries --> */
@@ -556,6 +558,8 @@ define ("ENG_TEXT117", 'Borg drone');
 
 define ("ENG_TEXT118", '<b>There were no losses of ground troops on your side.</b><br><br>');
 
+define ("ENG_TEXT118a", '<b>There was no loss of ground troops on the opposing side.</b><br><br>');
+
 define ("ENG_TEXT119", '# losses');
 
 /* <-- Define for auction logbook entries --> */
@@ -850,6 +854,8 @@ define ("ITA_TEXT116", 'Tipo costruzione');
 define ("ITA_TEXT117", 'Drone Borg');
 
 define ("ITA_TEXT118", '<b>Non hai subito perdite tra le tue truppe a terra.</b><br><br>');
+
+define ("ITA_TEXT118a", '<b>Non vi &egrave; stata alcuna perdita di truppe di terra da parte dell&#146;opponente.</b><br><br>');
 
 define ("ITA_TEXT119", '# perdite');
 

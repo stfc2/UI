@@ -965,7 +965,7 @@ if(count($a_fleets) <= 0) {
 
                     if(isset($log['log_data'][19])) {
                         if(array_sum($log['log_data'][19]) == 0) {
-                            $game->out(constant($game->sprache("TEXT118")));
+                            $game->out(constant($game->sprache("TEXT118a")));
                         }
                         else {
                             $game->out('
