@@ -23,23 +23,12 @@ $game->init_player();
 
 check_auth(STGC_DEVELOPER);
 
-class sdl {
-    function log($text) {
-        global $game;
- 
-        $game->out($text.'<br>'.NL);
-    }
-}
-
-
-$sdl = new sdl();
-
 $sql = 'UPDATE planets
         SET planet_next_attack = 0';
 
 
 if(!$db->query($sql)) {
-    $sdl->log('- Warning: Could not zero planet attacked data! CONTINUED');
+    message(DATABASE_ERROR,'- Warning: Could not zero planet attacked data! CONTINUED');
 }
 
 $already_processed = array();
@@ -48,16 +37,16 @@ $sql = 'SELECT ss.*,
                p.building_7 AS dest_building_7,
                u1.user_id AS dest_user_id, u1.user_alliance AS dest_user_alliance,
                u2.user_alliance AS move_user_alliance
-        FROM scheduler_shipmovement ss, planets p
-        INNER JOIN user u1 ON u1.user_id = p.planet_owner
-        INNER JOIN user u2 ON u2.user_id = ss.user_id
+        FROM (scheduler_shipmovement ss, planets p)
+        INNER JOIN (user u1) ON u1.user_id = p.planet_owner
+        INNER JOIN (user u2) ON u2.user_id = ss.user_id
         WHERE p.planet_id = ss.dest AND
-              ss.action_code IN (21, 24, 41) AND
+              ss.action_code IN (40, 41, 42, 43, 44, 45, 46, 51, 54, 55) AND
               ss.move_status = 0
         ORDER BY ss.move_finish ASC';
 
 if(!$q_moves = $db->query($sql)) {
-    $sdl->log('- Error: Could not select moves data for planet attacked! SKIP');
+    message(DATABASE_ERROR,'- Error: Could not select moves data for planet attacked! SKIP');
 }
 else {
     while($move = $db->fetchrow($q_moves)) {
@@ -68,15 +57,15 @@ else {
         // taken from get_move_ship_details() and adapted
 
         $sql = 'SELECT SUM(st.value_11) AS sum_sensors, SUM(st.value_12) AS sum_cloak
-                FROM scheduler_shipmovement ss
-                INNER JOIN ship_fleets f ON f.move_id = ss.move_id
-                INNER JOIN ships s ON s.fleet_id = f.fleet_id
-                INNER JOIN ship_templates st ON st.id = s.template_id
+                FROM (scheduler_shipmovement ss)
+                INNER JOIN (ship_fleets f) ON f.move_id = ss.move_id
+                INNER JOIN (ships s) ON s.fleet_id = f.fleet_id
+                INNER JOIN (ship_templates st) ON st.id = s.template_id
                 WHERE ss.move_id = '.$move['move_id'].'
                 GROUP BY ss.move_id';
 
         if(($move_ships = $db->queryrow($sql)) === false) {
-            $sdl->log('- Error: Could not select moves fleet detail data! SKIP');
+            message(DATABASE_ERROR,'- Error: Could not select moves fleet detail data! SKIP');
 
             break;
         }
@@ -90,15 +79,15 @@ else {
                        u.user_alliance,
                        ud.ud_id, ud.accepted,
                        ad.ad_id, ad.type, ad.status
-                FROM ship_fleets f
-                INNER JOIN user u ON u.user_id = f.user_id
-                LEFT JOIN user_diplomacy ud ON ( ( ud.user1_id = '.$move['dest_user_id'].' AND ud.user2_id = f.user_id ) OR ( ud.user1_id = f.user_id AND ud.user2_id = '.$move['dest_user_id'].' ) )
-                LEFT JOIN alliance_diplomacy ad ON ( ( ad.alliance1_id = '.$move['dest_user_alliance'].' AND ad.alliance2_id = u.user_alliance) OR ( ad.alliance1_id = u.user_alliance AND ad.alliance2_id = '.$move['dest_user_alliance'].' ) )
+                FROM (ship_fleets f)
+                INNER JOIN (user u) ON u.user_id = f.user_id
+                LEFT JOIN (user_diplomacy ud) ON ( ( ud.user1_id = '.$move['dest_user_id'].' AND ud.user2_id = f.user_id ) OR ( ud.user1_id = f.user_id AND ud.user2_id = '.$move['dest_user_id'].' ) )
+                LEFT JOIN (alliance_diplomacy ad) ON ( ( ad.alliance1_id = '.$move['dest_user_alliance'].' AND ad.alliance2_id = u.user_alliance) OR ( ad.alliance1_id = u.user_alliance AND ad.alliance2_id = '.$move['dest_user_alliance'].' ) )
                 WHERE f.planet_id = '.$move['dest'].' AND
                       f.user_id <> '.$move['dest_user_id'];
 
         if(!$q_user = $db->query($sql)) {
-            $sdl->log('- Error: Could not select friendly user data! SKIP');
+            message(DATABASE_ERROR,'- Error: Could not select friendly user data! SKIP');
 
             break;
         }
@@ -122,14 +111,14 @@ else {
         }
 
         $sql = 'SELECT SUM(st.value_11) AS sum_sensors, SUM(st.value_12) AS sum_cloak
-                FROM ships s, ship_fleets f
-                INNER JOIN ship_templates st ON st.id = s.template_id
+                FROM (ships s, ship_fleets f)
+                INNER JOIN (ship_templates st) ON st.id = s.template_id
                 WHERE s.user_id IN ('.implode(',', $allied_user).') AND
                       s.fleet_id = f.fleet_id AND
                       f.planet_id = '.$move['dest'];
 
         if(($friendly_ships = $db->queryrow($sql)) === false) {
-            $sdl->log('- Error: Could not select friendly fleets data! SKIP');
+            message(DATABASE_ERROR,'- Error: Could not select friendly fleets data! SKIP');
 
             break;
         }
@@ -143,6 +132,8 @@ else {
         if($travelled < ($visibility +     ( (100 - $visibility) / 4) ) ) $move['n_ships'] = 0;
         if($travelled < ($visibility + 2 * ( (100 - $visibility) / 4) ) ) $move['action_code'] = 0;
 
+        $game->out('Pianeta attaccato<br>');
+
         $sql = 'UPDATE planets
                 SET planet_next_attack = '.(time() + ($move['move_finish'] - $ACTUAL_TICK) * 300).',
                     planet_attack_ships = '.$move['n_ships'].',
@@ -150,7 +141,7 @@ else {
                 WHERE planet_id= '.$move['dest'];
 
         if(!$db->query($sql)) {
-            $sdl->log('- Warning: Could not update planet attacked data! CONTINUED');
+            message(DATABASE_ERROR,'- Warning: Could not update planet attacked data! CONTINUED');
         }
     }
 }
