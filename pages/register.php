@@ -245,7 +245,7 @@ function display_registration($data = array(), $message = '') {
 
         <tr>
           <td colspan="2"><input style="border: none;" type="checkbox" name="confirm_agb" value="1"'.( ($agb_checked) ? ' checked="checked"' : '' ).'>&nbsp;I hereby declare that, read the <a href="agb.html" target=_blank><b>terms and conditions</b></a> and accepted them.<br>
-          <br><b>It is 1 per account IP [<a href="javascript: void;" onmouseover="return overlib(\'This limitation means that every player who for more than 4 days after his registration with more than one account on its IP plays banned or deleted. <br> If it is due to a router, etc. Technically not possible, can the people by sending copies of ID card verification. <br> <u> To <b> Please click on the link!\', CAPTION, \'1 Account pro IP:\', WIDTH, 400, FGCOLOR, \'#ffffff\', TEXTCOLOR, \'#ffffff\', FGBACKGROUND,\'http://stfc.nonsolotaku.it/stgc4_gfx/skin1/bg_stars1.gif\', BGCOLOR, \'#33355E\', BORDER, 2, CAPTIONFONT, \'Arial\', CAPTIONSIZE, 2, TEXTFONT, \'Arial\', TEXTSIZE, 2);" onmouseout="return nd();">Info</a>]<br><a href=index.php?a=multis><u>Full Description</u></a></b></td>          	
+          <br><b>It is 1 per account IP [<a href="javascript: void;" onmouseover="return overlib(\'This limitation means that every player who for more than 4 days after his registration with more than one account on its IP plays banned or deleted. <br> If it is due to a router, etc. Technically not possible, can the people by sending copies of ID card verification. <br> <u> To <b> Please click on the link!\', CAPTION, \'1 Account pro IP:\', WIDTH, 400, FGCOLOR, \'#ffffff\', TEXTCOLOR, \'#ffffff\', FGBACKGROUND,\'http://stfc.nonsolotaku.it/stfc_gfx/skin1/bg_stars1.gif\', BGCOLOR, \'#33355E\', BORDER, 2, CAPTIONFONT, \'Arial\', CAPTIONSIZE, 2, TEXTFONT, \'Arial\', TEXTSIZE, 2);" onmouseout="return nd();">Info</a>]<br><a href=index.php?a=multis><u>Full Description</u></a></b></td>          	
         </tr>
 
         <tr height="20"><td></td></tr>
@@ -502,7 +502,7 @@ if(isset($_POST['submit'])) {
 	        die('Database error - Could not load skin data');
     	}
 
-        $gfxpath='http://stfc.nonsolotaku.it/stgc5_gfx/';
+        $gfxpath='http://stfc.nonsolotaku.it/stfc_gfx/';
 
 /*    	$sql = 'INSERT INTO user (user_active, user_name, user_loginname, user_password, user_email, user_auth_level, user_race, user_gfxpath, user_skinpath, user_registration_time, user_registration_ip, user_birthday, user_gender, plz, country)
         	    VALUES (2, "'.$_POST['user_name'].'", "'.$_POST['login_name'].'", "'.md5($_POST['user_password']).'", "'.$_POST['user_email'].'", 1, '.$_POST['user_race'].', "'.$gfxpath.'", "skin'.$skin_data['skin_id'].'/", '.time().', "'.$_SERVER['REMOTE_ADDR'].'", "'.$birthday_str.'", "'.$_POST['user_gender'].'", '.$_POST['plz'].', "'.$_POST['country'].'")';*/
