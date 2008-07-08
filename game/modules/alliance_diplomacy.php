@@ -107,7 +107,7 @@ if(!empty($_GET['do'])) {
         message(DATABASE_ERROR, 'Alliance name could not be read - Alliance / NAP text');
     	}
 
-	$betreff = costant($game->sprache("TEXT7"));
+	$betreff = constant($game->sprache("TEXT7"));
 	$sql6=mysql_query($sql6);
 	while ($werte=mysql_fetch_assoc($sql6)) {
 	if($ally_one==$werte['alliance_id'])$ally_one=$werte['alliance_name'];
