@@ -394,7 +394,7 @@ elseif(!empty($_POST['leave_confirm'])) {
         message(DATABASE_ERROR, 'Could not update user alliance data');
     }
 // DC ----
-    $sql = 'UPDATE userally_history SET leave_date = '.time().' WHERE user_id = '.$game->player['user_id'].' AND alliance_id '.$game->player['user_alliance'];
+    $sql = 'UPDATE userally_history SET leave_date = '.time().' WHERE user_id = '.$game->player['user_id'].' AND alliance_id = '.$game->player['user_alliance'];
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not update userally_history data');
     }
