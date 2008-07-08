@@ -27,8 +27,10 @@ function warpf($warp_factor) {
     if($warp_factor > 10) message(GENERAL, 'Invalid Warp-Factor '.$warp_factor, 'warpf(): factor too high');
 
 //    return pow($warp_factor, 1.69897);
-
-    return ( 24 * (1 / (1 + (23 * exp((-0.65 * $warp_factor))) ) ) );
+    if($warp_factor <= 9.99)
+        return ( 24 * (1 / (1 + (23 * exp((-0.65 * $warp_factor))) ) ) );
+    else
+        return 32; // Borg "transwarp"
 }
 
 function get_distance($s_system, $d_system) {
