@@ -466,22 +466,10 @@ function display_logbook($log) {
 						$color3 = 'green';
 				break;
 			}	
-			
-			$game->out('
-		<table border=0 cellpadding=0 cellspacing=0>
-			<tr>
-				<td align=left width=350>'.$log['log_data'][8].'</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td align=left width=350>'.$log['log_data'][9].'</td>
-			</tr>			
-			<tr>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
+
+			$game->out(
+				$log['log_data'][8].'<br><br>'.
+				$log['log_data'][9].'<br><br>
 				<table border=0 cellpadding=0 cellspacing=0>
 				<tr>
 					<td align=left width=200>'.constant($game->sprache("TEXT146")).'</td>
@@ -495,10 +483,8 @@ function display_logbook($log) {
 					<td align=left width=200>'.constant($game->sprache("TEXT148")).'</td>
 					<td align=left><font color='.$color3.'>'.$text_3.'</font></td>
 				</tr>
-				</table>
-			</tr>
-		</table>
-			');
+				</table>'
+			);
 		break;
 		
         case 31:
