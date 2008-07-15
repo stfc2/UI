@@ -185,6 +185,8 @@ function display_poll() {
 
             FROM portal_poll
 
+            WHERE closed = 0
+
             ORDER BY date DESC
 
             LIMIT 0, 1';
