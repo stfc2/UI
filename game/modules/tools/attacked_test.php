@@ -23,20 +23,23 @@ $game->init_player();
 
 check_auth(STGC_DEVELOPER);
 
-$sql = 'UPDATE planets
+$game->out('<span class="caption">Attacked planets</span><br><br>');
+
+/*$sql = 'UPDATE planets
         SET planet_next_attack = 0';
 
 
 if(!$db->query($sql)) {
     message(DATABASE_ERROR,'- Warning: Could not zero planet attacked data! CONTINUED');
-}
+}*/
 
 $already_processed = array();
 
 $sql = 'SELECT ss.*,
+               p.planet_name,
                p.building_7 AS dest_building_7,
-               u1.user_id AS dest_user_id, u1.user_alliance AS dest_user_alliance,
-               u2.user_alliance AS move_user_alliance
+               u1.user_id AS dest_user_id, u1.user_alliance AS dest_user_alliance, u1.user_name AS defender,
+               u2.user_alliance AS move_user_alliance, u2.user_name AS attacker
         FROM (scheduler_shipmovement ss, planets p)
         INNER JOIN (user u1) ON u1.user_id = p.planet_owner
         INNER JOIN (user u2) ON u2.user_id = ss.user_id
@@ -49,6 +52,17 @@ if(!$q_moves = $db->query($sql)) {
     message(DATABASE_ERROR,'- Error: Could not select moves data for planet attacked! SKIP');
 }
 else {
+
+    $game->out('
+        <table border="0" cellpadding="2" cellspacing="2" class="style_outer">
+        <tr>
+            <td>
+            <table border="0" cellpadding="2" cellspacing="2" class="style_inner">
+            <tr>
+                <td width="150"><b>Planet Name</b></td><td width="120"><b>Owner</b></td><td width="120"><b>Attacker</b></td><td width="100"><b>Time</b></td><td><b>Action</b></td>
+            </tr>
+    ');
+
     while($move = $db->fetchrow($q_moves)) {
         if(isset($already_processed[$move['dest']])) continue;
 
@@ -132,9 +146,11 @@ else {
         if($travelled < ($visibility +     ( (100 - $visibility) / 4) ) ) $move['n_ships'] = 0;
         if($travelled < ($visibility + 2 * ( (100 - $visibility) / 4) ) ) $move['action_code'] = 0;
 
-        $game->out('Pianeta attaccato<br>');
+        $attack = time() + ($move['move_finish'] - $ACTUAL_TICK) * 300;
+  
+        $game->out('<tr><td>'.$move['planet_name'].'</td><td>'.$move['defender'].'</td><td>'.$move['attacker'].'</td><td>'.date('d.m.y H:i', ($attack)).'</td><td>'.$move['action_code'].'</td></tr>');
 
-        $sql = 'UPDATE planets
+/*        $sql = 'UPDATE planets
                 SET planet_next_attack = '.(time() + ($move['move_finish'] - $ACTUAL_TICK) * 300).',
                     planet_attack_ships = '.$move['n_ships'].',
                     planet_attack_type= '.$move['action_code'].'
@@ -142,8 +158,17 @@ else {
 
         if(!$db->query($sql)) {
             message(DATABASE_ERROR,'- Warning: Could not update planet attacked data! CONTINUED');
-        }
+        }*/
     }
+
+    $game->out('
+            </table>
+            </td>
+        </tr>
+        </table>');
 }
+
+$game->out('<br><br><a href="'.parse_link('a=tools/attacked_test').'"><span class="sub_caption2">Refresh</span></a><br>');
+
 
 ?>
