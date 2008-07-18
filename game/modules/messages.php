@@ -522,7 +522,7 @@ function outbox()
 			if ($message['receiver'] == SUPPORTUSER)
 				$userName = '<b><font color=yellow>'.constant($game->sprache("TEXT12")).'</font></b>';
 			else if(!isset($message['user_name']))
-				$userName = '<i>gelöscht<i>';
+				$userName = '<i>gelÃ¶scht<i>';
 			else
 				$userName = '<a href="'.parse_link('a=stats&a2=viewplayer&id='.$message['receiver']).'">'.$message['user_name'].'</a>';
 
@@ -856,8 +856,8 @@ function newMessage()
 	{
 		if(isset($_POST['text']))
 			$text = $_POST['text'];
-	 	if(isset($_POST['subject']))
-			$subject = $_POST['subject'];
+	 	if(isset($_REQUEST['subject']))
+			$subject = $_REQUEST['subject'];
 		if(isset($_REQUEST['receiver']))
 			$receiver = $_REQUEST['receiver'];
 	}
@@ -918,7 +918,7 @@ function submitMessage()
 	{
 		if (empty($_POST['subject'])) $_POST['subject']='...';
 
-		// An mehrere Empfänger schicken?
+		// An mehrere EmpfÃ¤nger schicken?
 		if (strstr($_POST['receiver'],';'))
 		{
 			$result = $db->query('UPDATE user SET user_message_sig="'.htmlspecialchars($_POST['message_sig']).'" WHERE user_id='.$game->player['user_id']);

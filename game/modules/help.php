@@ -69,6 +69,11 @@ $game->out('
 			<a href="JavaScript:void(window.open(\'help/ships.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Navi</a>
 		</td>
 		</tr>
+		<tr>
+		<td align="center">
+		<a href="'.parse_link('a=messages&a2=newpost&receiver=STFC-Support&subject=Richiesta%20di%20aiuto').'"><span style="color: #FFFF00; font-weight: bold; font-size: 11pt;"><u>Se ti senti perduto, segui questo link per scrivere al Supporto!</u></a></span>
+		</td>
+		</tr>
 		</table>
 		</td>
 	</tr>
