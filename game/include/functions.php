@@ -257,7 +257,7 @@ function HelpPopup($name) {
 
 function stgc_log($file, $entry) {
 	$fp = fopen('./logs/'.$file.'.log', 'ab');
-	fputs($fp, $_SERVER['REMOTE_ADDR'].' ['.gmdate('d.m.y H:i:s', time()).'] '.$entry.NL);
+	fputs($fp, $_SERVER['REMOTE_ADDR'].' ['.date('d.m.y H:i:s', time()).'] '.$entry.NL);
 	fclose($fp);
 }
 
