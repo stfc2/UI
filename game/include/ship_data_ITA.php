@@ -5594,7 +5594,15 @@ $SHIP_TORSO = array(
 
 	// Borg
 
-    6 => array(),
+    6 => array(
+		6 => array(
+			29 => 'Sfera Borg',  // Name
+		),
+
+		11 => array(
+			29 => 'Cubo Borg',  // Name
+		),
+	),
 
 
 
