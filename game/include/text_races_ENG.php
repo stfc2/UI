@@ -572,6 +572,18 @@ $UNIT_NAME = array(
 
     6 => array(
 
+        0 => 'Simple drone',
+
+        1 => 'Assault drone',
+
+        2 => 'Elite drone',
+
+        3 => 'Commander drone',
+
+        4 => 'Technician drone',
+
+        5 => 'Physicians drone',
+
     ),
 
 
