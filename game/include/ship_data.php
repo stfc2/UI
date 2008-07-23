@@ -5596,11 +5596,31 @@ $SHIP_TORSO = array(
 
 	6 => array(
 		6 => array(
+			0 => 50000,  // Metal
+
+			1 => 50000,  // Minerals
+
+			2 => 50000,  // Latinum
+
+			13 => 252,  // Buildtime (in 5 Minuten Schritten)
+
 			29 => 'Borg sphere',  // Name
+
+			30 => 500,  // Benötige Arbeiter zum Bau
 		),
 
 		11 => array(
+			0 => 500000,  // Metal
+
+			1 => 500000,  // Minerals
+
+			2 => 500000,  // Latinum
+
+			13 => 552,  // Buildtime (in 5 Minuten Schritten)
+
 			29 => 'Borg cube',  // Name
+
+			30 => 50000,  // Benötige Arbeiter zum Bau
 		),
 	),
 
