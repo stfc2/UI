@@ -803,120 +803,82 @@ elseif(!empty($_GET['planet_id'])) {
     
     set_tcartography_remind(4, $planet_id);
    
-//////////////
-// <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateShipInfoText($SHIP_TORSO[$ship['race']][$ship['ship_torso']]).'\', CAPTION, \''.$SHIP_TORSO[$ship['race']][$ship['ship_torso']][29].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$SHIP_TORSO[$ship['race']][$ship['ship_torso']][29].'</a>
-/////////////   
     $quadrant_id = $game->get_quadrant($planet['sector_id']);
 
     $planet_thumb = (!empty($planet['planet_thumb'])) ? $planet['planet_thumb'] : $game->PLAIN_GFX_PATH.'planet_type_'.$planet['planet_type'].'.png';
     $planet_type = strtoupper($planet['planet_type']);
 	
-// Ultimo aggiornamento.
-	$sql = 'SELECT timestamp FROM `planet_details`'
-        . ' WHERE `planet_id` = '.$planet['planet_id']
-        . ' ORDER BY timestamp DESC'
-        . ' LIMIT 0, 1';
-	if(($_temp = $db->queryrow($sql)) == true) {
-		$last_update = constant($game->sprache("TEXT94")).'<b>'.date("d.m.y H:i", $_temp['timestamp']);
-	}
-	else {
-		$last_update = constant($game->sprache("TEXT93"));
-	}
+
 	$history_text   = constant($game->sprache("TEXT95"));
 	$survey_text    = constant($game->sprache("TEXT96"));
 	$tactical_text  = constant($game->sprache("TEXT97"));
+
+
 // --- Dati storici del pianeta ---
+	$sql = 'SELECT d.*, u.user_name, alliance.alliance_tag FROM planet_details d
+		LEFT JOIN user u ON d.user_id = u.user_id
+		LEFT JOIN alliance ON d.source_aid = alliance.alliance_id
+		WHERE planet_id = '.$planet['planet_id'].'
+		AND d.log_code IN (0, 1, 2, 25, 26, 27, 28, 29) 
+		ORDER BY timestamp ASC';
+		
+	if($_history = $db->query($sql)) {
+		while($_temp = $db->fetchrow($_history)) {
+			switch($_temp['log_code']) {
 // Fondatore
-	$sql = 'SELECT d.user_id, d.timestamp, u.user_name FROM planet_details d'
-        . ' LEFT JOIN user u ON d.user_id = u.user_id'
-        . ' WHERE planet_id = '.$planet['planet_id']
-        . ' AND log_code = 0'
-        . ' LIMIT 0, 1';
-	if(($_temp = $db->queryrow($sql)) == true) {
-		$history_text .= constant($game->sprache("TEXT98")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).constant($game->sprache("TEXT99")).date("d.m.y H:i", $_temp['timestamp']).'<br>';
-	}
+			case 0: $history_text .= constant($game->sprache("TEXT98")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).constant($game->sprache("TEXT99")).date("d.m.y H:i", $_temp['timestamp']).'<br>';
+				break;
 // Scopritore del pianeta
-	$sql = 'SELECT d.user_id, d.timestamp, u.user_name, alliance.alliance_tag FROM planet_details d'
-        . ' LEFT JOIN user u ON d.user_id = u.user_id'
-	. ' LEFT JOIN alliance ON d.source_aid = alliance.alliance_id'
-        . ' WHERE planet_id = '.$planet['planet_id']
-        . ' AND log_code = 1';
-	if(($_temp = $db->queryrow($sql)) == true) {
-		$history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT117")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).( (!empty($_temp['alliance_tag'])) ? '['.$_temp['alliance_tag'].']' : '&nbsp;' ).constant($game->sprache("TEXT118")).'<br>';
-	}
+			case 1: $history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT117")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).( (!empty($_temp['alliance_tag'])) ? '['.$_temp['alliance_tag'].']' : '&nbsp;' ).constant($game->sprache("TEXT118")).'<br>';
+				break;
 // Contendenti
-	$sql = 'SELECT d.user_id, d.timestamp, u.user_name, alliance.alliance_tag FROM planet_details d'
-        . ' LEFT JOIN user u ON d.user_id = u.user_id'
-	. ' LEFT JOIN alliance ON d.source_aid = alliance.alliance_id'
-        . ' WHERE planet_id = '.$planet['planet_id']
-        . ' AND log_code = 2'
-	. ' ORDER BY timestamp ASC';
-	if($_history = $db->query($sql)) {
-		while($_temp = $db->fetchrow($_history)) {
-			$history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT117")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).( (!empty($_temp['alliance_tag'])) ? '['.$_temp['alliance_tag'].']' : '&nbsp;' ).constant($game->sprache("TEXT119")).'<br>';
-		}
-	}
+			case 2: $history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT117")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).( (!empty($_temp['alliance_tag'])) ? '['.$_temp['alliance_tag'].']' : '&nbsp;' ).constant($game->sprache("TEXT119")).'<br>';
+				break;
 // Colonizzazione
-	$sql = 'SELECT d.user_id, d.timestamp, u.user_name, alliance.alliance_tag FROM planet_details d'
-        . ' LEFT JOIN user u ON d.user_id = u.user_id'
-	. ' LEFT JOIN alliance ON d.source_aid = alliance.alliance_id'
-        . ' WHERE planet_id = '.$planet['planet_id']
-        . ' AND log_code = 25'
-	. ' ORDER BY timestamp ASC';
-	if($_history = $db->query($sql)) {
-		while($_temp = $db->fetchrow($_history)) {
-			$history_text .= constant($game->sprache("TEXT109")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT99")).date("d.m.y H:i", $_temp['timestamp']).'<br>';
-		}
-	}
+			case 25: $history_text .= constant($game->sprache("TEXT109")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT99")).date("d.m.y H:i", $_temp['timestamp']).'.<br>';
+				break;
 // --- Conquista del pianeta!
-	$sql = 'SELECT d.user_id, d.timestamp, d.defeat_uid, d.defeat_aid, u.user_name, alliance.alliance_tag FROM planet_details d'
-        . ' LEFT JOIN user u ON d.user_id = u.user_id'
-		. ' LEFT JOIN alliance ON d.source_aid = alliance.alliance_id'
-        . ' WHERE planet_id = '.$planet['planet_id']
-        . ' AND log_code = 26'
-		. ' ORDER BY timestamp ASC';
-	if($_history = $db->query($sql)) {
-		while($_temp = $db->fetchrow($_history)) {
-			$sql = 'SELECT user_name FROM user WHERE user_id = '.$_temp['defeat_uid'];
-			if(!$_history_q1 = $db->queryrow($sql)) {
-				$_history_d1 = constant($game->sprache("TEXT120"));
-				}
-			else {
-				$_history_d1 = $_history_q1['user_name'];
-				$sql = 'SELECT alliance_tag FROM alliance WHERE alliance_id = '.$_temp['defeat_aid'];
-				if($_history_q2 = $db->queryrow($sql)) {
-					$_history_d2 = '['.$_history_q2['alliance_tag'].']';
+			case 26: $sql = 'SELECT user_name FROM user WHERE user_id = '.$_temp['defeat_uid'];
+				 if(!$_history_q1 = $db->queryrow($sql)) {
+					$_history_d1 = constant($game->sprache("TEXT120"));
+				 }
+				 else {
+					$_history_d1 = $_history_q1['user_name'];
+					$sql = 'SELECT alliance_tag FROM alliance WHERE alliance_id = '.$_temp['defeat_aid'];
+					if($_history_q2 = $db->queryrow($sql)) {
+						$_history_d2 = '['.$_history_q2['alliance_tag'].']';
+						}
+					else {
+						$_history_d2 = '&nbsp;';
 					}
-				else {
-					$_history_d2 = '&nbsp;';
-					}
-				}
+				 }
 				
-			$sql = 'SELECT alliance_tag FROM';
-			
-			$history_text .= constant($game->sprache("TEXT110")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT111")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT112")).$_history_d1.$_history_d2.'</b><br>.';
-		}
-	}
+				 $history_text .= constant($game->sprache("TEXT110")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT111")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT112")).$_history_d1.$_history_d2.'</b>.<br>';  				
+				 break;
 // --- Rivolte sul pianeta
-	$sql = 'SELECT d.user_id, d.timestamp, u.user_name, alliance.alliance_tag FROM planet_details d'
-        . ' LEFT JOIN user u ON d.user_id = u.user_id'
-	. ' LEFT JOIN alliance ON d.source_aid = alliance.alliance_id'
-        . ' WHERE planet_id = '.$planet['planet_id']
-        . ' AND log_code = 27'
-	. ' ORDER BY timestamp ASC';
-	if($_history = $db->query($sql)) {
-		while($_temp = $db->fetchrow($_history)) {
-			$history_text .= constant($game->sprache("TEXT113")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT114")).date("d.m.y H:i", $_temp['timestamp']).'<br>';
-		}
-	}	
+			case 27: $history_text .= constant($game->sprache("TEXT113")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT114")).date("d.m.y H:i", $_temp['timestamp']).'.<br>';
+				break;	
 // --- Cancellazione dell'account del giocatore!!!
-	$sql = 'SELECT timestamp FROM planet_details'
-        . ' WHERE planet_id = '.$planet['planet_id']
-        . ' AND log_code = 28'
-	. ' ORDER BY timestamp ASC';
-	if($_history = $db->query($sql)) {
-		while($_temp = $db->fetchrow($_history))  {
-			$history_text .= constant($game->sprache("TEXT115")).date("d.m.y H:i", $_temp['timestamp']).'<br>';
+			case 28: $history_text .= constant($game->sprache("TEXT115")).date("d.m.y H:i", $_temp['timestamp']).'.<br>';
+				break;
+// --- Assimilazione del pianeta da parte dei Borg(NPG)!!!
+			case 29: $sql = 'SELECT user_name FROM user WHERE user_id = '.$_temp['defeat_uid'];
+				 if(!$_history_q1 = $db->queryrow($sql)) {
+					$_history_d1 = constant($game->sprache("TEXT120"));
+				 }
+				 else {
+					$_history_d1 = $_history_q1['user_name'];
+					$sql = 'SELECT alliance_tag FROM alliance WHERE alliance_id = '.$_temp['defeat_aid'];
+					if($_history_q2 = $db->queryrow($sql)) {
+						$_history_d2 = '['.$_history_q2['alliance_tag'].']';
+						}
+					else {
+						$_history_d2 = '&nbsp;';
+					}
+				 }
+							
+				 $history_text .= constant($game->sprache("TEXT121")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT112")).$_history_d1.$_history_d2.'</b>.<br>';
+			}
 		}
 	}
 // --- Dati geologici del pianeta ---
@@ -968,16 +930,28 @@ elseif(!empty($_GET['planet_id'])) {
 		$survey_text .= $_survey1.$_survey2.$_survey3.'</table>';
 	}
 
-	$detail_text = $history_text.$survey_text.$tactical_text;
+//	$detail_text = $history_text.$survey_text.$tactical_text;
 
     $planet_is_known = false;	
     $sql = 'SELECT * FROM planet_details WHERE log_code = 500 AND system_id = '.$planet['system_id'].' AND user_id = '.$game->player['user_id'];
     if($db->queryrow($sql) == true) $planet_is_known = true;
 
+    $last_update = constant($game->sprache("TEXT93"));
+    
     if($own_planet || ($game->player['user_alliance'] == $planet_owner['alliance_id']) || $planet_is_known) {
     	$_thumb = '<a href='.$planet_thumb.' target="_blank"><img src="'.$planet_thumb.'" width="80" height="80" border="0"></a><br>';
 	$_name  = '&nbsp;<b>'.$planet['planet_name'].'</b>&nbsp;('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')';
 	$_planet_type = '&nbsp;<a href="'.parse_link('a=database&planet_type='.$planet_type.'#'.$planet_type).'">'.$planet_type.'</a>';
+// DC: Yeah, yeah, i know.... why bothering on building all the texts if the planet is not known?
+	$detail_text = $history_text.$survey_text.$tactical_text;
+// Ultimo aggiornamento.
+	$sql = 'SELECT timestamp FROM `planet_details`'
+		. ' WHERE `planet_id` = '.$planet['planet_id']
+		. ' ORDER BY timestamp DESC'
+		. ' LIMIT 0, 1';
+	if(($_temp = $db->queryrow($sql)) == true) {
+		$last_update = constant($game->sprache("TEXT94")).'<b>'.date("d.m.y H:i", $_temp['timestamp']);
+	}	
     } 
     else {
 	$_thumb = '&nbsp;<br>';
