@@ -23,7 +23,7 @@
 
 
 $game->init_player();
-$game->out('<center><span class="caption">Handelsrouten</span></center><br>');
+$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span></center><br>');
 
 
 // #############################################################################
@@ -33,7 +33,7 @@ $game->out('<center><span class="caption">Handelsrouten</span></center><br>');
 // Kompatibilit� mit ship_send zu haben (wie z.B. bei ship_fleets_display gefordert)
 
 if(empty($_POST['fleets'])) {
-    message(NOTICE, 'Keine Flotte ausgew�lt');
+    message(NOTICE, constant($game->sprache("TEXT1")));
 }
 
 $fleet_id = (int)$_POST['fleets'][0];
@@ -43,7 +43,7 @@ $fleet_id = (int)$_POST['fleets'][0];
 // Flotten-Daten laden
 
 if(empty($fleet_id)) {
-    message(NOTICE, 'Keine Flotte ausgew�lt');
+    message(NOTICE, constant($game->sprache("TEXT1")));
 }
 
 $sql = 'SELECT *
@@ -61,7 +61,7 @@ if(($fleet = $db->queryrow($sql)) === false) {
 $start = (int)$fleet['planet_id'];
 
 if($start == 0) {
-    message(NOTICE, 'Die Flotte ist nicht auf einem Planeten stationiert');
+    message(NOTICE, constant($game->sprache("TEXT2")));
 }
 
 if($start == $game->planet['planet_id']) {
@@ -88,11 +88,11 @@ else {
     }
 
     if(empty($start_planet['planet_id'])) {
-        message(NOTICE, 'Der Startplanet existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT3")));
     }
 
     if(empty($start_planet['user_id'])) {
-        message(NOTICE, 'Ein unbewohnter Planet kann nicht Start/Ziel einer Handelsroute sein');
+        message(NOTICE, constant($game->sprache("TEXT4")));
     }
 }
 
@@ -105,13 +105,13 @@ if(!empty($_POST['dest_coord'])) {
     $n_pieces = count($coord_pieces);
     
     if($n_pieces != 3) {
-        message(NOTICE, 'Ungltiges Koordinatenformat');
+        message(NOTICE, constant($game->sprache("TEXT5")));
     }
 
     $sector_id = $game->get_sector_id($coord_pieces[0]);
 
-    $letters = array('A' => 1, 'B' => 2, 'C' => 3, 'D' => 4, 'E' => 5, 'F' => 6, 'G' => 7);
-    $numbers = array('1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, '7' => 7);
+    $letters = array('A' => 1, 'B' => 2, 'C' => 3, 'D' => 4, 'E' => 5, 'F' => 6, 'G' => 7, 'H' => 8, 'I' => 9, 'J' => 10, 'K' => 11, 'L' => 12, 'M' => 13, 'N' => 14, 'O' => 15, 'P' => 16, 'Q' => 17, 'R' => 18);
+    $numbers = array('1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9, '10' => 10, '11' => 11, '12' => 12, '13' => 13, '14' => 14, '15' => 15, '16' => 16, '17' => 17, '18' => 18);
 
     if(!isset($letters[$coord_pieces[1][0]])) {
         message(NOTICE, 'Ungltige Y-Koordinate fr System angegeben', $coord_pieces[1][0].' no part of $letters');
@@ -142,11 +142,11 @@ if(!empty($_POST['dest_coord'])) {
     }
 
     if(empty($planet['planet_id'])) {
-        message(NOTICE, 'Ex existiert kein Planet mit den Koordinaten <b>'.$_POST['dest_coord'].'</b>');
+        message(NOTICE, constant($game->sprache("TEXT6")).'<b>'.$_POST['dest_coord'].'</b>');
     }
     
     if(empty($planet['user_id'])) {
-        message(NOTICE, 'Unbewohnte Planeten k�nen nicht Start/Ziel einer Handelsroute sein');
+        message(NOTICE, constant($game->sprache("TEXT4")));
     }
     
     $dest = (int)$planet['planet_id'];
@@ -156,7 +156,7 @@ else {
 }
 
 if(empty($dest)) {
-    message(NOTICE, 'Es wurde kein Ziel angegeben');
+    message(NOTICE, constant($game->sprache("TEXT7")));
 }
 
 
@@ -164,7 +164,7 @@ if(empty($dest)) {
 // Bl�sinn
 
 if($start == $dest) {
-    message(NOTICE, 'Start und Ziel sind identisch!');
+    message(NOTICE, constant($game->sprache("TEXT8")));
 }
 
 
@@ -195,11 +195,11 @@ else {
     }
 
     if(empty($dest_planet['planet_id'])) {
-        message(NOTICE, 'Der Zielplanet existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT9")));
     }
     
     if(empty($dest_planet['user_id'])) {
-        message(NOTICE, 'Unbewohnte Planeten k�nen nicht Start/Ziel einer Handelsroute sein');
+        message(NOTICE, constant($game->sprache("TEXT4")));
     }
 }
 
@@ -223,7 +223,7 @@ while($_temp = $db->fetchrow($q_stpls)) {
     if($_temp['warp_speed'] < $max_warp_speed) $max_warp_speed = $_temp['warp_speed'];
 
     if($_temp['ship_torso'] != SHIP_TYPE_TRANSPORTER) {
-        message(NOTICE, 'Auf einer Handelsroute drfen nur Transporter mitfliegen');
+        message(NOTICE, constant($game->sprache("TEXT10")));
     }
 
 }
@@ -317,7 +317,7 @@ switch($step) {
         // Das ist aber...unwahrscheinlich...
                      
         if($load_sum == 0) {
-            message(NOTICE, 'Auf diser Handelsroute werden die Transporter nie beladen');
+            message(NOTICE, constant($game->sprache("TEXT11")));
         }
         
         $max_resources = $fleet['n_ships'] * MAX_TRANSPORT_RESOURCES;
@@ -371,9 +371,12 @@ switch($step) {
             $n_units += $value;
         }
             
+	$route_mode = (!empty($_POST['n_run'])) ? $_POST['n_run'] : 'one';
+	
+	$_mode = ($route_mode == 'one') ? 2 : -1;
 
         $sql = 'INSERT INTO scheduler_shipmovement (user_id, move_status, move_exec_started, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
-                VALUES ('.$game->player['user_id'].', 0, 0, '.$start.', '.$dest.', '.$distance.', '.$distance.', '.($velocity * TICK_DURATION).', '.$ACTUAL_TICK.', '.($ACTUAL_TICK + max((int)$_POST['move_time'], $min_time)).', '.$fleet['n_ships'].', 34, "'.serialize(array(0, $start, $dest, $start_actions, $dest_actions)).'")';
+                VALUES ('.$game->player['user_id'].', 0, 0, '.$start.', '.$dest.', '.$distance.', '.$distance.', '.($velocity * TICK_DURATION).', '.$ACTUAL_TICK.', '.($ACTUAL_TICK + max((int)$_POST['move_time'], $min_time)).', '.$fleet['n_ships'].', 34, "'.serialize(array(0, $start, $dest, $start_actions, $dest_actions, $_mode)).'")';
                 
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not insert new movement data');
@@ -427,39 +430,40 @@ switch($step) {
   <input type="hidden" name="dest" value="'.$dest.'">
   <input type="hidden" name="fleets[0]" value="'.$fleet_id.'">
   <input type="hidden" name="step" value="dest_setup">
+  <input type="hidden" name="n_run" value="'.$_POST['n_run'].'">
   <tr>
     <td>
-      Start: <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($start)).'"><b>'.$start_planet['planet_name'].'</b></a> ('.$game->get_sector_name($start_planet['sector_id']).':'.$game->get_system_cname($start_planet['system_x'], $start_planet['system_y']).':'.($start_planet['planet_distance_id'] + 1).')'.( ($start_planet['user_id'] != $game->player['user_id']) ? ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$start_planet['user_id']).'"><b>'.$start_planet['user_name'].'</b></a>' : '' ).'<br>
-      Ziel: <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($dest)).'"><b>'.$dest_planet['planet_name'].'</b></a> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')'.( ($dest_planet['user_id'] != $game->player['user_id']) ? ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$dest_planet['user_id']).'"><b>'.$dest_planet['user_name'].'</b></a>' : '' ).'<br><br>      Flotte: <a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$fleet_id).'"><b>'.$fleet['fleet_name'].'</b></a><br><br>
-      Max. Ladekapazit�: <b>'.($fleet['n_ships'] * MAX_TRANSPORT_RESOURCES).' Rohstoffe / '.($fleet['n_ships'] * MAX_TRANSPORT_UNITS).' Personen</b><br><br>
-      <b>Aktionen beim <u>Start</u>planeten</b><br><br>
+      '.constant($game->sprache("TEXT12")).'<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($start)).'"><b>'.$start_planet['planet_name'].'</b></a> ('.$game->get_sector_name($start_planet['sector_id']).':'.$game->get_system_cname($start_planet['system_x'], $start_planet['system_y']).':'.($start_planet['planet_distance_id'] + 1).')'.( ($start_planet['user_id'] != $game->player['user_id']) ? constant($game->sprache("TEXT13")).'<a href="'.parse_link('a=stats&a2=viewplayer&id='.$start_planet['user_id']).'"><b>'.$start_planet['user_name'].'</b></a>' : '' ).'<br>
+      '.constant($game->sprache("TEXT14")).'<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($dest)).'"><b>'.$dest_planet['planet_name'].'</b></a> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')'.( ($dest_planet['user_id'] != $game->player['user_id']) ? constant($game->sprache("TEXT13")).'<a href="'.parse_link('a=stats&a2=viewplayer&id='.$dest_planet['user_id']).'"><b>'.$dest_planet['user_name'].'</b></a>' : '' ).'<br><br>      '.constant($game->sprache("TEXT15")).'<a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$fleet_id).'"><b>'.$fleet['fleet_name'].'</b></a><br><br>
+      '.constant($game->sprache("TEXT16")).'<b>'.($fleet['n_ships'] * MAX_TRANSPORT_RESOURCES).' '.constant($game->sprache("TEXT17")).($fleet['n_ships'] * MAX_TRANSPORT_UNITS).constant($game->sprache("TEXT18")).'</b><br><br>
+      <b>'.constant($game->sprache("TEXT19")).'</b><br><br>
       <table border="0">
         <tr>
           <td width="10">&nbsp;</td>
           <td>
             <table border="0">
               <tr>
-                <td colspan="2"><b>Schiffe beladen</b></td>
-                <td>alles</td>
+                <td colspan="2"><b>'.constant($game->sprache("TEXT20")).'</b></td>
+                <td>'.constant($game->sprache("TEXT21")).'</td>
               </tr>
               <tr>
-                <td width="80">Metall:</td>
+                <td width="80">'.constant($game->sprache("TEXT22")).'</td>
                 <td width="160"><input class="field" type="text" name="start_load_r1" value=""></td>
                 <td><input type="checkbox" name="start_load_r1_all" value="1" onClick="document.traderoute_form.start_load_r1.disabled = this.checked;"></td>
               </tr>
               <tr>
-                <td>Meineralien:</td>
+                <td>'.constant($game->sprache("TEXT23")).'</td>
                 <td><input class="field" type="text" name="start_load_r2" value=""></td>
                 <td><input type="checkbox" name="start_load_r2_all" value="1" onClick="document.traderoute_form.start_load_r2.disabled = this.checked;"></td>
               </tr>
               <tr>
-                <td>Latinum:</td>
+                <td>'.constant($game->sprache("TEXT24")).'</td>
                 <td><input class="field" type="text" name="start_load_r3" value=""></td>
                 <td><input type="checkbox" name="start_load_r3_all" value="1" onClick="document.traderoute_form.start_load_r3.disabled = this.checked;"></td>
               </tr>
               <tr><td height="5"></td></tr>
               <tr>
-                <td>Arbeiter:</td>
+                <td>'.constant($game->sprache("TEXT25")).'</td>
                 <td><input class="field" type="text" name="start_load_r4" value=""></td>
                 <td><input type="checkbox" name="start_load_r4_all" value="1" onClick="document.traderoute_form.start_load_r4.disabled = this.checked;"></td>
               </tr>
@@ -503,26 +507,26 @@ switch($step) {
           <td>
             <table border="0">
               <tr>
-                <td colspan="3"><b>Schiffe entladen</b></td>
+                <td colspan="3"><b>'.constant($game->sprache("TEXT26")).'</b></td>
               </tr>
               <tr>
-                <td width="80">Metall:</td>
+                <td width="80">'.constant($game->sprache("TEXT22")).'</td>
                 <td width="160"><input class="field" type="text" name="start_unload_r1" value=""></td>
                 <td><input type="checkbox" name="start_unload_r1_all" value="1" onClick="document.traderoute_form.start_unload_r1.disabled = this.checked;"></td>
               </tr>
               <tr>
-                <td>Meineralien:</td>
+                <td>'.constant($game->sprache("TEXT23")).'</td>
                 <td><input class="field" type="text" name="start_unload_r2" value=""></td>
                 <td><input type="checkbox" name="start_unload_r2_all" value="1" onClick="document.traderoute_form.start_unload_r2.disabled = this.checked;"></td>
               </tr>
               <tr>
-                <td>Latinum:</td>
+                <td>'.constant($game->sprache("TEXT24")).'</td>
                 <td><input class="field" type="text" name="start_unload_r3" value=""></td>
                 <td><input type="checkbox" name="start_unload_r3_all" value="1" onClick="document.traderoute_form.start_unload_r3.disabled = this.checked;"></td>
               </tr>
               <tr><td height="5"></td></tr>
               <tr>
-                <td>Arbeiter:</td>
+                <td>'.constant($game->sprache("TEXT25")).'</td>
                 <td><input class="field" type="text" name="start_unload_r4" value=""></td>
                 <td><input type="checkbox" name="start_unload_r4_all" value="1" onClick="document.traderoute_form.start_unload_r4.disabled = this.checked;"></td>
               </tr>
@@ -565,8 +569,8 @@ switch($step) {
       <table width="440" align="center" border="0" cellpadding="0" cellspacing="0"><tr><td width="220">
       </td>
       <td width="220" valign="middle">
-        <input class="button" type="button" value="<< Zurck" onClick="return window.history.back();">&nbsp;&nbsp;
-        <input class="button" type="submit" name="submit" value="Weiter >>">
+        <input class="button" type="button" value="'.constant($game->sprache("TEXT27")).'" onClick="return window.history.back();">&nbsp;&nbsp;
+        <input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT28")).'">
       </td></tr></table>
     </td>
   </tr>
@@ -584,39 +588,40 @@ switch($step) {
   <input type="hidden" name="step" value="summary">
   <input type="hidden" name="move_time" value="'.$_POST['move_time'].'">
   <input type="hidden" name="start_setup_post" value="'.base64_encode(gzcompress(serialize($_POST), 9)).'">
+  <input type="hidden" name="n_run" value="'.$_POST['n_run'].'">
   <tr>
     <td>
-      Start: <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($start)).'"><b>'.$start_planet['planet_name'].'</b></a> ('.$game->get_sector_name($start_planet['sector_id']).':'.$game->get_system_cname($start_planet['system_x'], $start_planet['system_y']).':'.($start_planet['planet_distance_id'] + 1).')'.( ($start_planet['user_id'] != $game->player['user_id']) ? ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$start_planet['user_id']).'"><b>'.$start_planet['user_name'].'</b></a>' : '' ).'<br>
-      Ziel: <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($dest)).'"><b>'.$dest_planet['planet_name'].'</b></a> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')'.( ($dest_planet['user_id'] != $game->player['user_id']) ? ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$dest_planet['user_id']).'"><b>'.$dest_planet['user_name'].'</b></a>' : '' ).'<br><br>      Flotte: <a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$fleet_id).'"><b>'.$fleet['fleet_name'].'</b></a><br><br>
-      Max. Ladekapazit�: <b>'.($fleet['n_ships'] * MAX_TRANSPORT_RESOURCES).' Rohstoffe / '.($fleet['n_ships'] * MAX_TRANSPORT_UNITS).' Personen</b><br><br>
-      <b>Aktionen beim <u>Ziel</u>planeten</b><br><br>
+      '.constant($game->sprache("TEXT12")).'<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($start)).'"><b>'.$start_planet['planet_name'].'</b></a> ('.$game->get_sector_name($start_planet['sector_id']).':'.$game->get_system_cname($start_planet['system_x'], $start_planet['system_y']).':'.($start_planet['planet_distance_id'] + 1).')'.( ($start_planet['user_id'] != $game->player['user_id']) ? constant($game->sprache("TEXT13")).'<a href="'.parse_link('a=stats&a2=viewplayer&id='.$start_planet['user_id']).'"><b>'.$start_planet['user_name'].'</b></a>' : '' ).'<br>
+      '.constant($game->sprache("TEXT14")).'<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($dest)).'"><b>'.$dest_planet['planet_name'].'</b></a> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')'.( ($dest_planet['user_id'] != $game->player['user_id']) ? ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$dest_planet['user_id']).'"><b>'.$dest_planet['user_name'].'</b></a>' : '' ).'<br><br>      Flotte: <a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$fleet_id).'"><b>'.$fleet['fleet_name'].'</b></a><br><br>
+      '.constant($game->sprache("TEXT16")).'<b>'.($fleet['n_ships'] * MAX_TRANSPORT_RESOURCES).' '.constant($game->sprache("TEXT17")).($fleet['n_ships'] * MAX_TRANSPORT_UNITS).constant($game->sprache("TEXT18")).'</b><br><br>
+      <b>'.constant($game->sprache("TEXT29")).'</b><br><br>
       <table border="0">
         <tr>
           <td width="10">&nbsp;</td>
           <td>
             <table border="0">
               <tr>
-                <td colspan="2"><b>Schiffe beladen</b></td>
-                <td>alles</td>
+                <td colspan="2"><b>'.constant($game->sprache("TEXT20")).'</b></td>
+                <td>'.constant($game->sprache("TEXT21")).'</td>
               </tr>
               <tr>
-                <td width="80">Metall:</td>
+                <td width="80">'.constant($game->sprache("TEXT22")).'</td>
                 <td width="160"><input class="field" type="text" name="dest_load_r1" value=""></td>
                 <td><input type="checkbox" name="dest_load_r1_all" value="1" onClick="document.traderoute_form.dest_load_r1.disabled = this.checked;"></td>
               </tr>
               <tr>
-                <td>Meineralien:</td>
+                <td>'.constant($game->sprache("TEXT23")).'</td>
                 <td><input class="field" type="text" name="dest_load_r2" value=""></td>
                 <td><input type="checkbox" name="dest_load_r2_all" value="1" onClick="document.traderoute_form.dest_load_r2.disabled = this.checked;"></td>
               </tr>
               <tr>
-                <td>Latinum:</td>
+                <td>'.constant($game->sprache("TEXT24")).'</td>
                 <td><input class="field" type="text" name="dest_load_r3" value=""></td>
                 <td><input type="checkbox" name="dest_load_r3_all" value="1" onClick="document.traderoute_form.dest_load_r3.disabled = this.checked;"></td>
               </tr>
               <tr><td height="5"></td></tr>
               <tr>
-                <td>Arbeiter:</td>
+                <td>'.constant($game->sprache("TEXT25")).'</td>
                 <td><input class="field" type="text" name="dest_load_r4" value=""></td>
                 <td><input type="checkbox" name="dest_load_r4_all" value="1" onClick="document.traderoute_form.dest_load_r4.disabled = this.checked;"></td>
               </tr>
@@ -660,26 +665,26 @@ switch($step) {
           <td>
             <table border="0">
               <tr>
-                <td colspan="3"><b>Schiffe entladen</b></td>
+                <td colspan="3"><b>'.constant($game->sprache("TEXT26")).'</b></td>
               </tr>
               <tr>
-                <td width="80">Metall:</td>
+                <td width="80">'.constant($game->sprache("TEXT22")).'</td>
                 <td width="160"><input class="field" type="text" name="dest_unload_r1" value=""></td>
                 <td><input type="checkbox" name="dest_unload_r1_all" value="1" onClick="document.traderoute_form.dest_unload_r1.disabled = this.checked;"></td>
               </tr>
               <tr>
-                <td>Meineralien:</td>
+                <td>'.constant($game->sprache("TEXT23")).'</td>
                 <td><input class="field" type="text" name="dest_unload_r2" value=""></td>
                 <td><input type="checkbox" name="dest_unload_r2_all" value="1" onClick="document.traderoute_form.dest_unload_r2.disabled = this.checked;"></td>
               </tr>
               <tr>
-                <td>Latinum:</td>
+                <td>'.constant($game->sprache("TEXT24")).'</td>
                 <td><input class="field" type="text" name="dest_unload_r3" value=""></td>
                 <td><input type="checkbox" name="dest_unload_r3_all" value="1" onClick="document.traderoute_form.dest_unload_r3.disabled = this.checked;"></td>
               </tr>
               <tr><td height="5"></td></tr>
               <tr>
-                <td>Arbeiter:</td>
+                <td>'.constant($game->sprache("TEXT25")).'</td>
                 <td><input class="field" type="text" name="dest_unload_r4" value=""></td>
                 <td><input type="checkbox" name="dest_unload_r4_all" value="1" onClick="document.traderoute_form.dest_unload_r4.disabled = this.checked;"></td>
               </tr>
@@ -722,8 +727,8 @@ switch($step) {
       <table width="440" align="center" border="0" cellpadding="0" cellspacing="0"><tr><td width="220">
       </td>
       <td width="220" valign="middle">
-        <input class="button" type="button" value="<< Zurck" onClick="return window.history.back();">&nbsp;&nbsp;
-        <input class="button" type="submit" name="submit" value="Weiter >>">
+        <input class="button" type="button" value="'.constant($game->sprache("TEXT27")).'" onClick="return window.history.back();">&nbsp;&nbsp;
+        <input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT28")).'">
       </td></tr></table>
     </td>
   </tr>
@@ -740,7 +745,7 @@ switch($step) {
         }
         elseif($inter_planet) {
             $min_time = 6;
-            $max_speed_str = 'Impuls';
+            $max_speed_str = constant($game->sprache("TEXT30"));
         }
         else {
             include_once('include/libs/moves.php');
@@ -760,19 +765,21 @@ switch($step) {
   <input type="hidden" name="step" value="start_setup">
   <tr>
     <td>
-      Start: <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($start)).'"><b>'.$start_planet['planet_name'].'</b></a> ('.$game->get_sector_name($start_planet['sector_id']).':'.$game->get_system_cname($start_planet['system_x'], $start_planet['system_y']).':'.($start_planet['planet_distance_id'] + 1).')'.( ($start_planet['user_id'] != $game->player['user_id']) ? ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$start_planet['user_id']).'"><b>'.$start_planet['user_name'].'</b></a>' : '' ).'<br>
-      Ziel: <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($dest)).'"><b>'.$dest_planet['planet_name'].'</b></a> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')'.( ($dest_planet['user_id'] != $game->player['user_id']) ? ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$dest_planet['user_id']).'"><b>'.$dest_planet['user_name'].'</b></a>' : '' ).'<br><br>
-      Flotte: <a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$fleet_id).'"><b>'.$fleet['fleet_name'].'</b></a><br><br>
-      Max. Geschwindigkeit: <b>'.$max_speed_str.'</b><br>
-      Min. Reisezeit: <b>'.$min_time.' Ticks</b><br><br>
-      Flugdauer: <input class="field" style="width: 40px;" type="text" name="move_time" value="'.$min_time.'"> <i>+</i>&nbsp;<i id="timer2" title="time1_'.$NEXT_TICK.'_type1_4">&nbsp;</i><br><br>
-      
+      '.constant($game->sprache("TEXT12")).'<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($start)).'"><b>'.$start_planet['planet_name'].'</b></a> ('.$game->get_sector_name($start_planet['sector_id']).':'.$game->get_system_cname($start_planet['system_x'], $start_planet['system_y']).':'.($start_planet['planet_distance_id'] + 1).')'.( ($start_planet['user_id'] != $game->player['user_id']) ? constant($game->sprache("TEXT13")).'<a href="'.parse_link('a=stats&a2=viewplayer&id='.$start_planet['user_id']).'"><b>'.$start_planet['user_name'].'</b></a>' : '' ).'<br>
+      '.constant($game->sprache("TEXT14")).'<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($dest)).'"><b>'.$dest_planet['planet_name'].'</b></a> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')'.( ($dest_planet['user_id'] != $game->player['user_id']) ? constant($game->sprache("TEXT13")).'<a href="'.parse_link('a=stats&a2=viewplayer&id='.$dest_planet['user_id']).'"><b>'.$dest_planet['user_name'].'</b></a>' : '' ).'<br><br>
+      '.constant($game->sprache("TEXT15")).'<a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$fleet_id).'"><b>'.$fleet['fleet_name'].'</b></a><br><br>
+      '.constant($game->sprache("TEXT31")).'<b>'.$max_speed_str.'</b><br>
+      '.constant($game->sprache("TEXT32")).'<b>'.$min_time.' Ticks</b><br><br>
+      '.constant($game->sprache("TEXT33")).'<input class="field" style="width: 40px;" type="text" name="move_time" value="'.$min_time.'"> <i>+</i>&nbsp;<i id="timer2" title="time1_'.$NEXT_TICK.'_type1_4">&nbsp;</i><br><br>
+      Selezionare una tipologia di incarico tra le opzioni seguenti:<br>
+      <input type="radio" name="n_run" checked="checked" value="one">Corsa unica (Partenza->Arrivo->Partenza);<br>
+      <input type="radio" name="n_run" value="many">Corsa continua, fino a revoca;<br><br><br>
       <table width="440" align="center" border="0" cellpadding="0" cellspacing="0"><tr><td width="220">
-      </td>
-      <td width="220" valign="middle">
-        <input class="button" type="button" value="<< Zurck" onClick="return window.history.back();">&nbsp;&nbsp;
-        <input class="button" type="submit" name="submit" value="Weiter >>">
-      </td></tr></table>
+       </td>
+       <td width="220" valign="middle">
+        <input class="button" type="button" value="'.constant($game->sprache("TEXT27")).'" onClick="return window.history.back();">&nbsp;&nbsp;
+        <input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT28")).'">
+       </td></tr></table>
     </td>
   </tr>
   </form>
