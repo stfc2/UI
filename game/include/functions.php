@@ -1707,7 +1707,7 @@ echo'
 //			$planet_id = $this->create_planet($this->player['user_id'], 'quadrant', mt_rand(1, 4)); creazione del pianeta madre in maniera randomica
 //			$planet_id = $this->create_planet($this->player['user_id'], 'quadrant', $this->pick_quadrant());
 			// Diamo un sistema nuovo al giocatore nuovo
-			$_temp = $this->create_system('quadrant', $this->pick_quadrant());
+			$_temp = $this->create_system('quadrant', $this->pick_quadrant(), 1);
 			$_system_id = $_temp[0];
 			$_temp = $this->create_planet(0, 'system', $_system_id);
 			$_temp = $this->create_planet(0, 'system', $_system_id);
