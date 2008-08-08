@@ -74,11 +74,11 @@ $SHIP_TORSO = array(
 
 			21 => 10,   // Value8 (Wendigkeit)
 
-			22 => 0,   // Value9 (Erfahrung)
+			22 => 16,   // Value9 (Erfahrung)
 
 			23 => 6.9,   // Value10 (Warp)
 
-			24 => 5,   // Value11 (Sensoren)
+			24 => 12,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -1002,13 +1002,13 @@ $SHIP_TORSO = array(
 
 			21 => 10,   // Value8 (Wendigkeit)
 
-			22 => 0,   // Value9 (Erfahrung)
+			22 => 15,   // Value9 (Erfahrung)
 
 			23 => 4.4,   // Value10 (Warp)
 
-			24 => 5,   // Value11 (Sensoren)
+			24 => 7,   // Value11 (Sensoren)
 
-			25 => 0,   // Value12 (Tarnung)
+			25 => 3,   // Value12 (Tarnung)
 
 			26 => 8,   // Value13 (Energy Available)
 
@@ -1930,13 +1930,13 @@ $SHIP_TORSO = array(
 
 			21 => 12,   // Value8 (Wendigkeit)
 
-			22 => 0,   // Value9 (Erfahrung)
+			22 => 13,   // Value9 (Erfahrung)
 
 			23 => 3.9,   // Value10 (Warp)
 
-			24 => 4,   // Value11 (Sensoren)
+			24 => 6,   // Value11 (Sensoren)
 
-			25 => 3,   // Value12 (Tarnung)
+			25 => 4,   // Value12 (Tarnung)
 
 			26 => 8,   // Value13 (Energy Available)
 
@@ -2858,11 +2858,11 @@ $SHIP_TORSO = array(
 
 			21 => 11,   // Value8 (Wendigkeit)
 
-			22 => 0,   // Value9 (Erfahrung)
+			22 => 22,   // Value9 (Erfahrung)
 
 			23 => 3.8,   // Value10 (Warp)
 
-			24 => 5,   // Value11 (Sensoren)
+			24 => 15,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -3787,11 +3787,11 @@ $SHIP_TORSO = array(
 
 			21 => 10,   // Value8 (Wendigkeit)
 
-			22 => 0,   // Value9 (Erfahrung)
+			22 => 20,   // Value9 (Erfahrung)
 
 			23 => 7,   // Value10 (Warp)
 
-			24 => 5,   // Value11 (Sensoren)
+			24 => 12,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -4717,11 +4717,11 @@ $SHIP_TORSO = array(
 
 			21 => 10, // Value8 (Wendigkeit)
 
-			22 => 0, // Value9 (Erfahrung)
+			22 => 8, // Value9 (Erfahrung)
 
 			23 => 5.8, // Value10 (Warp)
 
-			24 => 4, // Value11 (Sensoren)
+			24 => 8, // Value11 (Sensoren)
 
 			25 => 0, // Value12 (Tarnung)
 
@@ -6610,11 +6610,11 @@ $SHIP_TORSO = array(
 
 			21 => 10,   // Value8 (Wendigkeit)
 
-			22 => 0,   // Value9 (Erfahrung)
+			22 => 25,   // Value9 (Erfahrung)
 
 			23 => 4.3,   // Value10 (Warp)
 
-			24 => 6,   // Value11 (Sensoren)
+			24 => 15,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -7535,11 +7535,11 @@ $SHIP_TORSO = array(
 
 			21 => 3,   // Value8 (Wendigkeit)
 
-			22 => 0,   // Value9 (Erfahrung)
+			22 => 10,   // Value9 (Erfahrung)
 
 			23 => 5.5,   // Value10 (Warp)
 
-			24 => 1,   // Value11 (Sensoren)
+			24 => 7,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -8474,11 +8474,11 @@ $SHIP_TORSO = array(
 
 			21 => 12,   // Value8 (Wendigkeit)
 
-			22 => 0,   // Value9 (Erfahrung)
+			22 => 10,   // Value9 (Erfahrung)
 
 			23 => 4.5,   // Value10 (Warp)
 
-			24 => 5,   // Value11 (Sensoren)
+			24 => 10,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
