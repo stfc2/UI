@@ -22,7 +22,7 @@
 
 
 
-function create_system($id_type, $id_value) {
+function create_system($id_type, $id_value, $is_mother) {
     global $db, $game;
 
     $sector_id = $system_x = $system_y = 0;
@@ -122,9 +122,17 @@ function create_system($id_type, $id_value) {
             $star_color = array(mt_rand(100, 150), mt_rand(40, 80), mt_rand(0, 15));
         break;
     }
+    
+    
+    if((int)$is_mother == 1) {
+	$max_planets = 8;
+    }
+    else {
+        $max_planets = 4 + (mt_rand(0,4));
+    }
 
-    $sql = 'INSERT INTO starsystems (system_name, sector_id, system_x, system_y, system_map_x, system_map_y, system_global_x, system_global_y, system_starcolor_red, system_starcolor_green, system_starcolor_blue, system_starsize)
-            VALUES ("System '.$game->get_sector_name($sector_id).':'.$game->get_system_cname($system_x, $system_y).'", '.$sector_id.', '.$system_x.', '.$system_y.', '.$system_map_x.', '.$system_map_y.', '.$system_coords[0].', '.$system_coords[1].', '.$star_color[0].', '.$star_color[1].', '.$star_color[2].', '.$star_size.')';
+    $sql = 'INSERT INTO starsystems (system_name, sector_id, system_x, system_y, system_map_x, system_map_y, system_global_x, system_global_y, system_starcolor_red, system_starcolor_green, system_starcolor_blue, system_starsize, system_max_planets)
+            VALUES ("System '.$game->get_sector_name($sector_id).':'.$game->get_system_cname($system_x, $system_y).'", '.$sector_id.', '.$system_x.', '.$system_y.', '.$system_map_x.', '.$system_map_y.', '.$system_coords[0].', '.$system_coords[1].', '.$star_color[0].', '.$star_color[1].', '.$star_color[2].', '.$star_size.', '.$max_planets.')';
 
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'world::create_system(): Could not insert new system data');
@@ -164,7 +172,8 @@ function create_planet($user_id, $id_type, $id_value) {
                         WHERE sector_id >= '.$sector_id_min.' AND
                               sector_id <= '.$sector_id_max.' AND
                               system_closed = 0 AND
-                              system_n_planets < '.$game->system_max_planets;
+                              system_n_planets < system_max_planets';
+//                              system_n_planets < '.$game->system_max_planets;			      
 
                 if(($q_systems = $db->query($sql)) === false) {
                     message(DATABASE_ERROR, 'world::create_planet(): Could not query systems data');
@@ -192,7 +201,7 @@ function create_planet($user_id, $id_type, $id_value) {
             $free_distances = $game->planet_distances;
 
             if(!$system_id) {
-                $_temp = create_system('quadrant', $quadrant_id);
+                $_temp = create_system('quadrant', $quadrant_id, 0);
 
                 $system_id = $_temp[0];
                 $sector_id = $_temp[1];
@@ -223,7 +232,7 @@ function create_planet($user_id, $id_type, $id_value) {
 
             // In one of 3 cases it creates in any case a new system
             if(mt_rand(1, 3) != 2) {
-                $sql = 'SELECT system_id, sector_id, system_n_planets
+                $sql = 'SELECT system_id, sector_id, system_n_planets, system_max_planets
                         FROM starsystems
                         WHERE sector_id >= '.$sector_id.' AND
                               system_closed = 0';
@@ -233,10 +242,12 @@ function create_planet($user_id, $id_type, $id_value) {
                 }
 
                 while($system = $db->fetchrow($q_systems)) {
-                    if($system['system_n_planets'] > $game->system_max_planets) {
+//                    if($system['system_n_planets'] > $game->system_max_planets) {
+		    if($system['system_n_planets'] > $system['system_max_planets']) {
                         stgc_log('world', 'System '.$system['system_id'].' has '.$system['system_n_planets']);
                     }
-                    elseif($system['system_n_planets'] < $game->system_max_planets) {
+//                    elseif($system['system_n_planets'] < $game->system_max_planets) {
+                      elseif($system['system_n_planets'] < $system['system_max_planets']) {
                         $system_id = $system['system_id'];
                         $sector_id = $system['sector_id'];
                         break;
@@ -251,7 +262,7 @@ function create_planet($user_id, $id_type, $id_value) {
             $free_distances = $game->planet_distances;
 
             if(!$system_id) {
-                $_temp = create_system('sector', $sector_id);
+                $_temp = create_system('sector', $sector_id, 0);
 
                 $system_id = $_temp[0];
                 //$sector_id = $_temp[1];
