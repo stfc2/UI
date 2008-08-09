@@ -168,6 +168,8 @@ define ("GER_TEXT74", 'Klasse:');
 
 define ("GER_TEXT75", 'Flotten zusammenfgen');
 
+define ("GER_TEXT76", 'Handelsroute');
+
 //English
 define ("ENG_TEXT0", 'Fleets:');
 
@@ -315,6 +317,8 @@ define ("ENG_TEXT74", 'Class:');
 
 define ("ENG_TEXT75", 'Flotten zusammenfgen');
 
+define ("ENG_TEXT76", 'Trade route');
+
 //Italian
 define ("ITA_TEXT0", 'Flotte:');
 
@@ -461,5 +465,7 @@ define ("ITA_TEXT73", '<i>disabitato</i>');
 define ("ITA_TEXT74", 'Classe:');
 
 define ("ITA_TEXT75", 'Unisci flotte');
+
+define ("ITA_TEXT76", 'Rotta Commerciale');
 
 ?>

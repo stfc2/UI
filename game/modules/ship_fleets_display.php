@@ -496,14 +496,14 @@ function ShipSelection(cSelectType) {
         </tr>
     ');
     
-/*
+
     if($n_transporter == $n_ships) {
         $game->out('
         <tr><td height="5"></td></tr>
-        <tr><td>&nbsp;</td><td><input style="width: 130px;" class="button" type="submit" name="new_route" value="Handelsroute" onClick="return document.fleet_form.action = \''.parse_link('a=ship_traderoute').'\'"></td></tr>
+        <tr><td>&nbsp;</td><td><input style="width: 130px;" class="button" type="submit" name="new_route" value="'.constant($game->sprache("TEXT76")).'" onClick="return document.fleet_form.action = \''.parse_link('a=ship_traderoute').'\'"></td></tr>
         ');
     }
-*/
+
     
     $game->out('
       </table>
