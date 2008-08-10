@@ -371,7 +371,7 @@ function Ships_List($focus=0,$search_name="")
 			<td align="center">
 				<a href="javascript:void(0);" onmouseover="return overlib(\''.$crew_desc.'\', CAPTION, \''.$crew_title.'\', WIDTH, 200, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$crew.'</a>
 			</td>
-			<td align="center">'.date('d.m.y H:i', $ship['construction_time']).'</td>
+			<td align="center">'.date('d/m/y H:i', $ship['construction_time']).'</td>
 			</tr>');
 
 		$n++;
@@ -593,9 +593,9 @@ function Ship_Details()
 
             <b>'.$ship['ship_ncc'].'</b><br>
 
-            <b>'.date('d.m.y H:i:s', $ship['construction_time']).'</b><br><br>
+            <b>'.date('d/m/y H:i:s', $ship['construction_time']).'</b><br><br>
 
-            <b>'.( (!empty($ship['last_refit_time'])) ? date('d.m.y H:i:s', $ship['last_refit_time']) : constant($game->sprache("TEXT74"))).'</b><br>
+            <b>'.( (!empty($ship['last_refit_time'])) ? date('d/m/y H:i:s', $ship['last_refit_time']) : constant($game->sprache("TEXT74"))).'</b><br>
 
             <b>'.$ship['hitpoints'].'</b> / <b>'.$ship['value_5'].'</b><br>
 

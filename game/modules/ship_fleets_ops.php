@@ -623,7 +623,7 @@ elseif(isset($_GET['offduty_ships'])) {
 
     if(empty($ship_ids)) {
         //print_r($fleetinfo);
-	//message(NOTICE, 'Keine Schiffe ausgewählt oder Raumhafen ist voll '.count($_POST['ships']).' gewaehlt, '.$no_ships.' zugelassen ('.$MAX_SPACEDOCK_SHIPS[$fleetinfo['building_7']].' max.; '.$spacedockships['n_spacedockships'].' schon vebraucht -> Raumhafenlvl: '.$fleetinfo['building_7'].')');
+	//message(NOTICE, 'None ships selected or space port is full '.count($_POST['ships']).' chosen, '.$no_ships.' approved ('.$MAX_SPACEDOCK_SHIPS[$fleetinfo['building_7']].' max.; '.$spacedockships['n_spacedockships'].' already vebraucht -> Spacedock lvl: '.$fleetinfo['building_7'].')');
 	message(NOTICE, constant($game->sprache("TEXT35")));
     }
 
@@ -877,9 +877,9 @@ elseif(isset($_GET['ship_details'])) {
 
             <b>'.$ship['ship_ncc'].'</b><br>
 
-            <b>'.date('d.m.y H:i:s', $ship['construction_time']).'</b><br><br>
+            <b>'.date('d/m/y H:i:s', $ship['construction_time']).'</b><br><br>
 
-            <b>'.( (!empty($ship['last_refit_time'])) ? date('d.m.y H:i:s', $ship['last_refit_time']) : constant($game->sprache("TEXT58"))).'</b><br>
+            <b>'.( (!empty($ship['last_refit_time'])) ? date('d/m/y H:i:s', $ship['last_refit_time']) : constant($game->sprache("TEXT58"))).'</b><br>
 
             <b>'.$ship['hitpoints'].'</b> / <b>'.$ship['value_5'].'</b><br>
 

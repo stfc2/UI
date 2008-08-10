@@ -299,7 +299,7 @@ function Ships_List($focus=0,$search_name="")
 		$name_desc = constant($game->sprache("TEXT19")).' '.(($ship['ship_ncc'] != '') ? $ship['ship_ncc'] : '<i>'.constant($game->sprache("TEXT20")).'</i>');
 
 		/* Add construction date */
-		$name_desc .= '<br>'.constant($game->sprache("TEXT11")).' '.date('d.m.y H:i', $ship['construction_time']);
+		$name_desc .= '<br>'.constant($game->sprache("TEXT11")).' '.date('d/m/y H:i', $ship['construction_time']);
 		
 		/* Check ship current position */
 		$position = '';
@@ -636,7 +636,7 @@ function Ship_Details()
 
             <b>'.$ship['ship_ncc'].'</b><br>
 
-            <b>'.date('d.m.y H:i:s', $ship['construction_time']).'</b><br><br>
+            <b>'.date('d/m/y H:i:s', $ship['construction_time']).'</b><br><br>
 
             <b>'.$ship['hitpoints'].'</b> / <b>'.$ship['value_5'].'</b><br>
 
