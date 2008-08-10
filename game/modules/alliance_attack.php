@@ -85,12 +85,12 @@ $sql = 'SELECT ss.user_id AS start_user_id, ss.dest, ss.move_begin, ss.move_fini
 
         FROM (planets p1, user u1, scheduler_shipmovement ss)
 
-        -- für Summe der Sensoren/Tarnung des Angreifers
+        -- for sum of the sensors/camouflage of the aggressor
         INNER JOIN (ship_fleets f) ON f.move_id = ss.move_id
         INNER JOIN (ships s) ON s.fleet_id = f.fleet_id
         INNER JOIN (ship_templates st) ON st.id = s.template_id
         
-        -- für Daten des Angreifers
+        -- for data of the attackers
         INNER JOIN (user u2) ON u2.user_id = ss.user_id
         LEFT JOIN (alliance a) ON a.alliance_id = u2.user_alliance
         
@@ -107,13 +107,14 @@ if(!$q_moves = $db->query($sql)){
 }
 
 $commands = array(
-    41 => 'Angreifen',
-    42 => 'Angreifen',
-    51 => 'Angreifen',
+    41 => constant($game->sprache("TEXT16")),
+    42 => constant($game->sprache("TEXT16")),
+    46 => constant($game->sprache("TEXT27")),
+    51 => constant($game->sprache("TEXT16")),
     52 => '(error)',
-    53 => 'Plündern',
-    54 => 'Bombardieren',
-    55 => 'Übernehmen'
+    53 => constant($game->sprache("TEXT25")),
+    54 => constant($game->sprache("TEXT26")),
+    55 => constant($game->sprache("TEXT28"))
 );
 
 while($move = $db->fetchrow($q_moves)) {
@@ -210,7 +211,7 @@ if(($q_moves = $db->query($sql)) === false){
 while($move = $db->fetchrow($q_moves)) {
     $attacked_user = array($move['dest_user_id'], $move['dest_user_name'], $move['dest_alliance_id'], $move['dest_alliance_tag']);
 
-    // Bei 51 könnte auch eine freie Flotte angegriffen werden
+    // With 51 also a free fleet could be attacked
     if($move['action_code'] == 51) {
         $action_data = (array)unserialize($move['action_data']);
         

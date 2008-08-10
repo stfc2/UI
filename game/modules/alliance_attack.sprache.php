@@ -29,9 +29,9 @@ define ("GER_TEXT1", 'Du bist nicht Mitglied einer Allianz');
 
 define ("GER_TEXT2", 'Du besitzt nicht die erforderlichen Rechte zum Betrachten der Seite');
 
-define ("GER_TEXT3", 'Taktische Übersicht - Feindliche Angriffe');
+define ("GER_TEXT3", 'Taktische &Uuml;bersicht - Feindliche Angriffe');
 
-define ("GER_TEXT4", 'Hier werden alle Angriffe auf deine Allianz aufgelistet, die auf den Planeten eines Mitgliedes durchgeführt werden.');
+define ("GER_TEXT4", 'Hier werden alle Angriffe auf deine Allianz aufgelistet, die auf den Planeten eines Mitgliedes durchgef&uuml;hrt werden.');
 
 define ("GER_TEXT5", 'Spieler');
 
@@ -47,7 +47,7 @@ define ("GER_TEXT10", 'Ankunft');
 
 define ("GER_TEXT11", 'Tactical Overview - Own Attacks');
 
-define ("GER_TEXT11", 'Taktische Übersicht - Eigene Angriffe');
+define ("GER_TEXT11", 'Taktische &Uuml;bersicht - Eigene Angriffe');
 
 define ("GER_TEXT12", 'Hier werden alle Angriffe deiner Allianz gegen andere Spieler aufgelistet. Hier werden ALLE Angriffe (sowohl auf Planeten wie auf Schiffe) aufgelistet.');
 
@@ -57,13 +57,13 @@ define ("GER_TEXT14", 'Stationieren');
 
 define ("GER_TEXT16", 'Angreifen');
 
-define ("GER_TEXT17", 'Zurückfliegen');
+define ("GER_TEXT17", 'Zur&uuml;ckfliegen');
 
 define ("GER_TEXT18", 'Transportieren');
 
 define ("GER_TEXT19", 'Spionieren');
 
-define ("GER_TEXT20", 'Übergeben');
+define ("GER_TEXT20", '&Uuml;bergeben');
 
 define ("GER_TEXT21", 'Kolonisieren');
 
@@ -73,22 +73,26 @@ define ("GER_TEXT23", 'Ferengitransport');
 
 define ("GER_TEXT24", 'Auktionsflotte');
 
-define ("GER_TEXT25", 'Plündern');
+define ("GER_TEXT25", 'Pl&uuml;ndern');
 
 define ("GER_TEXT26", 'Bombardieren');
+
+define ("GER_TEXT27", 'Assimilaten');
+
+define ("GER_TEXT28", '&Uuml;bernehmen');
 
 
 
 //English
 define ("ENG_TEXT0", 'Alliance');
 
-define ("ENG_TEXT1", 'Du bist nicht Mitglied einer Allianz');
+define ("ENG_TEXT1", 'You are not member of an alliance');
 
-define ("ENG_TEXT2", 'Du besitzt nicht die erforderlichen Rechte zum Betrachten der Seite');
+define ("ENG_TEXT2", 'You does not possess the necessary rights for regarding the side');
 
 define ("ENG_TEXT3", 'Tactical Overview - Hostile Attack');
 
-define ("ENG_TEXT4", 'Hier werden alle Angriffe auf deine Allianz aufgelistet, die auf den Planeten eines Mitgliedes durchgeführt werden.');
+define ("ENG_TEXT4", 'Here are listed all attacks on your alliance, which are accomplished on the planets of a member.');
 
 define ("ENG_TEXT5", 'Player');
 
@@ -104,7 +108,7 @@ define ("ENG_TEXT10", 'Arrival');
 
 define ("ENG_TEXT11", 'Tactical Overview - Own Attacks');
 
-define ("ENG_TEXT12", 'Hier werden alle Angriffe deiner Allianz gegen andere Spieler aufgelistet. Hier werden ALLE Angriffe (sowohl auf Planeten wie auf Schiffe) aufgelistet.');
+define ("ENG_TEXT12", 'Here are listed all attacks of your alliance against other players. Here ALL attacks (both on planets and on ships) are listed.');
 
 define ("ENG_TEXT13", 'Victim');
 
@@ -131,6 +135,10 @@ define ("ENG_TEXT24", 'Auction Fleet');
 define ("ENG_TEXT25", 'Pillage');
 
 define ("ENG_TEXT26", 'Bombing');
+
+define ("ENG_TEXT27", 'Assimilate');
+
+define ("ENG_TEXT28", 'Take over');
 
 
 
@@ -186,6 +194,10 @@ define ("ITA_TEXT24", 'Flotta Acquisita');
 define ("ITA_TEXT25", 'Saccheggio');
 
 define ("ITA_TEXT26", 'Bombardamento');
+
+define ("ITA_TEXT27", 'Assimilazione');
+
+define ("ITA_TEXT28", 'Conquista');
 
 
 
