@@ -1725,7 +1725,7 @@ else {
 
 			INNER JOIN (ship_templates st) ON st.id = s.template_id
 
-			WHERE s.fleet_id = -'.$game->planet['planet_id'].' ORDER BY s.ship_untouchable DESC,s.ship_scrap,s.ship_repair,st.name ASC';
+			WHERE s.fleet_id = -'.$game->planet['planet_id'].' ORDER BY s.ship_untouchable DESC,s.ship_scrap,s.ship_repair,st.name,s.ship_name ASC';
 
 
 
