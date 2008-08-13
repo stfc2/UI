@@ -22,13 +22,13 @@
 
 $SHIP_TORSO = array(
 
-		// Federazione
+	// Federazione
 
-    0 => array(
+	0 => array(
 
-    	// Scout
+		// Scout
 
-	    0 => array(
+		0 => array(
 
 			0 => 2150,  // Metal
 
@@ -86,7 +86,7 @@ $SHIP_TORSO = array(
 
 			27 => 2,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Scout',  // Name
 
@@ -94,11 +94,11 @@ $SHIP_TORSO = array(
 
 			31 => 'La classe Scout &egrave; una nave adatta allo spionaggio. Queste navi non hanno molte armi, il grosso dell&#146;energia &egrave; speso per i sensori.',
 
-	    ),
+		),
 
-    	// Cargo
+		// Cargo
 
-	    1 => array(
+		1 => array(
 
 			0 => 4250,  // Metal
 
@@ -156,7 +156,7 @@ $SHIP_TORSO = array(
 
 			27 => 4,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cargo',  // Name
 
@@ -228,7 +228,7 @@ $SHIP_TORSO = array(
 
 			27 => 5,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Colonizzatrice',  // Name
 
@@ -298,7 +298,7 @@ $SHIP_TORSO = array(
 
 			27 => 6,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Miranda (refit)',  // Name
 
@@ -368,7 +368,7 @@ $SHIP_TORSO = array(
 
 			27 => 10,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Sabre',  // Name
 
@@ -438,7 +438,7 @@ $SHIP_TORSO = array(
 
 			27 => 15,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Defiant',  // Name
 
@@ -510,7 +510,7 @@ $SHIP_TORSO = array(
 
 			27 => 18,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Steamrunner',  // Name
 
@@ -580,7 +580,7 @@ $SHIP_TORSO = array(
 
 			27 => 25,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Excelsior',  // Name
 
@@ -650,7 +650,7 @@ $SHIP_TORSO = array(
 
 			27 => 30,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Nebula',  // Name
 
@@ -720,7 +720,7 @@ $SHIP_TORSO = array(
 
 			27 => 50,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Galaxy',  // Name
 
@@ -790,7 +790,7 @@ $SHIP_TORSO = array(
 
 			27 => 62,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Akira',  // Name
 
@@ -860,7 +860,7 @@ $SHIP_TORSO = array(
 
 			27 => 71,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Sovereign',  // Name
 
@@ -930,7 +930,7 @@ $SHIP_TORSO = array(
 
 			27 => 33,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cannone Orbitale',  // Name
 
@@ -1014,7 +1014,7 @@ $SHIP_TORSO = array(
 
 			27 => 2,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Scout',  // Name
 
@@ -1084,7 +1084,7 @@ $SHIP_TORSO = array(
 
 			27 => 4,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cargo',  // Name
 
@@ -1154,7 +1154,7 @@ $SHIP_TORSO = array(
 
 			27 => 5,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Colonizzatrice',  // Name
 
@@ -1224,7 +1224,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Talon Class',  // Name
 
@@ -1294,7 +1294,7 @@ $SHIP_TORSO = array(
 
 			27 => 8,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Talon Class',  // Name
 
@@ -1364,7 +1364,7 @@ $SHIP_TORSO = array(
 
 			27 => 10,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Science Class',  // Name
 
@@ -1434,7 +1434,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Science Class',  // Name
 
@@ -1504,7 +1504,7 @@ $SHIP_TORSO = array(
 
 			27 => 15,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Norexan Class',  // Name
 
@@ -1574,7 +1574,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Norexan Class',  // Name
 
@@ -1644,7 +1644,7 @@ $SHIP_TORSO = array(
 
 			27 => 18,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'D&acute;deridex Class',  // Name
 
@@ -1714,7 +1714,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'D&acute;deridex Class',  // Name
 
@@ -1784,7 +1784,7 @@ $SHIP_TORSO = array(
 
 			27 => 125,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Scimitar Class',  // Name
 
@@ -1854,7 +1854,7 @@ $SHIP_TORSO = array(
 
 			27 => 33,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cannone Orbitale',  // Name
 
@@ -1942,7 +1942,7 @@ $SHIP_TORSO = array(
 
 			27 => 2,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Scout',  // Name
 
@@ -2014,7 +2014,7 @@ $SHIP_TORSO = array(
 
 			27 => 4,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cargo',  // Name
 
@@ -2086,7 +2086,7 @@ $SHIP_TORSO = array(
 
 			27 => 5,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Colonizzatrice',  // Name
 
@@ -2156,7 +2156,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'B&acute;rel (Bird of Prey)',  // Name
 
@@ -2226,7 +2226,7 @@ $SHIP_TORSO = array(
 
 			27 => 8,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'B&acute;rel (Bird of Prey)',  // Name
 
@@ -2298,7 +2298,7 @@ $SHIP_TORSO = array(
 
 			27 => 10,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'K&acute;T&acute;Inga',  // Name
 
@@ -2368,7 +2368,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'K&acute;T&acute;Inga',  // Name
 
@@ -2438,7 +2438,7 @@ $SHIP_TORSO = array(
 
 			27 => 15,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'K&acute;vort',  // Name
 
@@ -2508,7 +2508,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'K&acute;vort',  // Name
 
@@ -2578,7 +2578,7 @@ $SHIP_TORSO = array(
 
 			27 => 38,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Vorcha',  // Name
 
@@ -2648,7 +2648,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Vorcha',  // Name
 
@@ -2718,7 +2718,7 @@ $SHIP_TORSO = array(
 
 			27 => 125,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Negh&acute;Var',  // Name
 
@@ -2788,7 +2788,7 @@ $SHIP_TORSO = array(
 
 			27 => 33,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cannone orbitale',  // Name
 
@@ -2870,7 +2870,7 @@ $SHIP_TORSO = array(
 
 			27 => 2,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Gul Vystan',  // Name
 
@@ -2944,7 +2944,7 @@ $SHIP_TORSO = array(
 
 			27 => 4,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cargo',  // Name
 
@@ -3016,7 +3016,7 @@ $SHIP_TORSO = array(
 
 			27 => 5,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Colonizzatrice',  // Name
 
@@ -3086,7 +3086,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Hideki',  // Name
 
@@ -3156,7 +3156,7 @@ $SHIP_TORSO = array(
 
 			27 => 8,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Hideki',  // Name
 
@@ -3228,7 +3228,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'L.Kreuzer',  // Name
 
@@ -3298,7 +3298,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'L.Kreuzer',  // Name
 
@@ -3368,7 +3368,7 @@ $SHIP_TORSO = array(
 
 			27 => 25,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Galor',  // Name
 
@@ -3438,7 +3438,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Galor',  // Name
 
@@ -3509,7 +3509,7 @@ $SHIP_TORSO = array(
 
 			27 => 60,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Keldon',  // Name
 
@@ -3579,7 +3579,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Keldon',  // Name
 
@@ -3649,7 +3649,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Schlachtschiff',  // Name
 
@@ -3719,7 +3719,7 @@ $SHIP_TORSO = array(
 
 			27 => 33,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cannone orbitale',  // Name
 
@@ -3799,7 +3799,7 @@ $SHIP_TORSO = array(
 
 			27 => 2,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Obsid. Scout',  // Name
 
@@ -3871,7 +3871,7 @@ $SHIP_TORSO = array(
 
 			27 => 4,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Transportschiff',  // Name
 
@@ -3943,7 +3943,7 @@ $SHIP_TORSO = array(
 
 			27 => 5,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Karemma Colonizzatrice',  // Name
 
@@ -4013,7 +4013,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Attackship',  // Name
 
@@ -4084,7 +4084,7 @@ $SHIP_TORSO = array(
 
 			27 => 8,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Attackship',  // Name
 
@@ -4156,7 +4156,7 @@ $SHIP_TORSO = array(
 
 			27 => 10,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'V-Klasse',  // Name
 
@@ -4226,7 +4226,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'V-Klasse',  // Name
 
@@ -4296,7 +4296,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Kreuzer',  // Name
 
@@ -4366,7 +4366,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Kreuzer',  // Name
 
@@ -4437,7 +4437,7 @@ $SHIP_TORSO = array(
 
 			27 => 10,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'BSC',  // Name
 
@@ -4508,7 +4508,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'BSC',  // Name
 
@@ -4580,7 +4580,7 @@ $SHIP_TORSO = array(
 
 			27 => 58,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Dread',  // Name
 
@@ -4650,7 +4650,7 @@ $SHIP_TORSO = array(
 
 			27 => 33,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cannone orbitale',  // Name
 
@@ -4729,7 +4729,7 @@ $SHIP_TORSO = array(
 
 			27 => 2, // Value14 (Used Energy)
 
-			28 => 0, // Auf 0 lassen
+			28 => 0, // Leave at 0
 
 			29 => 'Scout', // Name
 
@@ -4801,7 +4801,7 @@ $SHIP_TORSO = array(
 
 			27 => 4, // Value14 (Used Energy)
 
-			28 => 0, // Auf 0 lassen
+			28 => 0, // Leave at 0
 
 			29 => 'Cargo', // Name
 
@@ -4873,7 +4873,7 @@ $SHIP_TORSO = array(
 
 			27 => 5, // Value14 (Used Energy)
 
-			28 => 0, // Auf 0 lassen
+			28 => 0, // Leave at 0
 
 			29 => 'Colonizzatrice', // Name
 
@@ -4944,7 +4944,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Scavenger',  // Name
 
@@ -5015,7 +5015,7 @@ $SHIP_TORSO = array(
 
 			27 => 10, // Value14 (Used Energy)
 
-			28 => 0, // Auf 0 lassen
+			28 => 0, // Leave at 0
 
 			29 => 'Scavenger', // Name
 
@@ -5086,7 +5086,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'L.Kreuzer',  // Name
 
@@ -5157,7 +5157,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'L.Kreuzer',  // Name
 
@@ -5228,7 +5228,7 @@ $SHIP_TORSO = array(
 
 			27 => 45, // Value14 (Used Energy)
 
-			28 => 0, // Auf 0 lassen
+			28 => 0, // Leave at 0
 
 			29 => 'D&acute;Kora-Class', // Name
 
@@ -5298,7 +5298,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'D&acute;Kora-Class',  // Name
 
@@ -5368,7 +5368,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Schw.Kreuzer',  // Name
 
@@ -5438,7 +5438,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Schw.Kreuzer',  // Name
 
@@ -5508,7 +5508,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Schlachtschiff',  // Name
 
@@ -5578,7 +5578,7 @@ $SHIP_TORSO = array(
 
 			27 => 33,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cannone orbitale',  // Name
 
@@ -5606,7 +5606,7 @@ $SHIP_TORSO = array(
 
 			29 => 'Sfera Borg',  // Name
 
-			30 => 500,  // Benötige Arbeiter zum Bau
+			30 => 500,  // Benï¿½e Arbeiter zum Bau
 		),
 
 		11 => array(
@@ -5620,7 +5620,7 @@ $SHIP_TORSO = array(
 
 			29 => 'Cubo Borg',  // Name
 
-			30 => 50000,  // Benötige Arbeiter zum Bau
+			30 => 50000,  // Benï¿½e Arbeiter zum Bau
 		),
 	),
 
@@ -5698,7 +5698,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Scout',  // Name
 
@@ -5770,7 +5770,7 @@ $SHIP_TORSO = array(
 
 			27 => 4,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cargo',  // Name
 
@@ -5842,7 +5842,7 @@ $SHIP_TORSO = array(
 
 			27 => 7,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Colonizzatrice',  // Name
 
@@ -5912,7 +5912,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Gled Kraan',  // Name
 
@@ -5982,7 +5982,7 @@ $SHIP_TORSO = array(
 
 			27 => 10,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Gled Kraan',  // Name
 
@@ -6052,7 +6052,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'L.Kreuzer',  // Name
 
@@ -6122,7 +6122,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'L.Kreuzer',  // Name
 
@@ -6192,7 +6192,7 @@ $SHIP_TORSO = array(
 
 			27 => 15,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Gor&acute;Taan',  // Name
 
@@ -6262,7 +6262,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Gor&acute;Taan',  // Name
 
@@ -6332,7 +6332,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Schw.Kreuzer',  // Name
 
@@ -6402,7 +6402,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Schw.Kreuzer',  // Name
 
@@ -6472,7 +6472,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Schlachtschiff',  // Name
 
@@ -6542,7 +6542,7 @@ $SHIP_TORSO = array(
 
 			27 => 33,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cannone orbitale',  // Name
 
@@ -6622,7 +6622,7 @@ $SHIP_TORSO = array(
 
 			27 => 2,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Scout',  // Name
 
@@ -6694,7 +6694,7 @@ $SHIP_TORSO = array(
 
 			27 => 4,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cargo',  // Name
 
@@ -6766,7 +6766,7 @@ $SHIP_TORSO = array(
 
 			27 => 5,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Colonizzatrice',  // Name
 
@@ -6836,7 +6836,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Fregatte',  // Name
 
@@ -6906,7 +6906,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Fregatte',  // Name
 
@@ -6976,7 +6976,7 @@ $SHIP_TORSO = array(
 
 			27 => 18,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Hunter-Class',  // Name
 
@@ -7046,7 +7046,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Hunter-Class',  // Name
 
@@ -7116,7 +7116,7 @@ $SHIP_TORSO = array(
 
 			27 => 25,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Holoship',  // Name
 
@@ -7187,7 +7187,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Holoship',  // Name
 
@@ -7257,7 +7257,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Schw.Kreuzer',  // Name
 
@@ -7327,7 +7327,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Schw.Kreuzer',  // Name
 
@@ -7397,7 +7397,7 @@ $SHIP_TORSO = array(
 
 			27 => 50,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Venatic-Class',  // Name
 
@@ -7468,7 +7468,7 @@ $SHIP_TORSO = array(
 
 			27 => 33,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cannone orbitale',  // Name
 
@@ -7547,7 +7547,7 @@ $SHIP_TORSO = array(
 
 			27 => 30,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Scout',  // Name
 
@@ -7621,7 +7621,7 @@ $SHIP_TORSO = array(
 
 			27 => 30,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cargo',  // Name
 
@@ -7695,7 +7695,7 @@ $SHIP_TORSO = array(
 
 			27 => 30,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Colonizzatrice',  // Name
 
@@ -7766,7 +7766,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Patrol',  // Name
 
@@ -7837,7 +7837,7 @@ $SHIP_TORSO = array(
 
 			27 => 30,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Patrol',  // Name
 
@@ -7908,7 +7908,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'L.Kreuzer',  // Name
 
@@ -7979,7 +7979,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'L.Kreuzer',  // Name
 
@@ -8049,7 +8049,7 @@ $SHIP_TORSO = array(
 
 			27 => 30,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cruiser',  // Name
 
@@ -8120,7 +8120,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cruiser',  // Name
 
@@ -8191,7 +8191,7 @@ $SHIP_TORSO = array(
 
 			27 => 160,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Gunship',  // Name
 
@@ -8262,7 +8262,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Waffenschiff',  // Name
 
@@ -8333,7 +8333,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Schlachtschiff',  // Name
 
@@ -8404,7 +8404,7 @@ $SHIP_TORSO = array(
 
 			27 => 33,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cannone orbitale',  // Name
 
@@ -8486,7 +8486,7 @@ $SHIP_TORSO = array(
 
 			27 => 2,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Torpedo',  // Name
 
@@ -8556,7 +8556,7 @@ $SHIP_TORSO = array(
 
 			27 => 4,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Medium Transport',  // Name
 
@@ -8628,7 +8628,7 @@ $SHIP_TORSO = array(
 
 			27 => 5,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Colonizzatrice',  // Name
 
@@ -8702,7 +8702,7 @@ $SHIP_TORSO = array(
 
 			27 => 25,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Raptor',  // Name
 
@@ -8772,7 +8772,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Mojo1987 - erwischt',  // Name
 
@@ -8842,7 +8842,7 @@ $SHIP_TORSO = array(
 
 			27 => 45,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Raider',  // Name
 
@@ -8912,7 +8912,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Raider',  // Name
 
@@ -8982,7 +8982,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Kreuzer',  // Name
 
@@ -9052,7 +9052,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Kreuzer',  // Name
 
@@ -9122,7 +9122,7 @@ $SHIP_TORSO = array(
 
 			27 => 84,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Predator',  // Name
 
@@ -9194,7 +9194,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Predator',  // Name
 
@@ -9264,7 +9264,7 @@ $SHIP_TORSO = array(
 
 			27 => 1,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Schlachtschiff',  // Name
 
@@ -9275,9 +9275,9 @@ $SHIP_TORSO = array(
 			),
 
 
-    	// Orbital gun
+		// Orbital gun
 
-	    12 => array(
+		12 => array(
 
 			0 => 43344,  // Metal
 
@@ -9335,7 +9335,7 @@ $SHIP_TORSO = array(
 
 			27 => 33,   // Value14 (Used Energy)
 
-			28 => 0,   // Auf 0 lassen
+			28 => 0,   // Leave at 0
 
 			29 => 'Cannone orbitale',  // Name
 
@@ -9343,89 +9343,89 @@ $SHIP_TORSO = array(
 
 			31 => 'In den sich ausweitenden Gefechten um die Vorherrschaft einzelner Kazonsekten kommt es immer &ouml;fter zu K&auml;mpfen, die um ganze Planeten gef&uuml;hrt werden. Zum Schutz ihrer Welten haben verschiedene Sekten unabh&auml;ngig voneinander dieses mit sechs Partikelgesch&uuml;tzen bewaffnete orbitale Ger&auml;t entwickelt.',
 
-	    ),
-	    
+		),
+
 
 	),
 
 
 
 
-    // Menschen 29th
+	// Menschen 29th
 
-    12 => array(
+	12 => array(
 
-	    0 => array(
+		0 => array(
 
-			0 => 500,
+			0 => 500,  // Metal
 
-			1 => 100,
+			1 => 100,  // Minerals
 
-			2 => 0,
+			2 => 0,  // Latinum
 
-			3 => 5,
+			3 => 5,  // Min. Unit 1(L. Infanterie)
 
-			4 => 0,
+			4 => 0,  // Min. Unit 2 (Sturmtruppe)
 
-			5 => 0,
+			5 => 0,  // Min. Unit 3 (Hazard Team)
 
-			6 => 0,
+			6 => 0,  // Min. Unit 4 (Commander)
 
-			7 => 10,
+			7 => 10,  // Max Unit 1 (L. Infanterie)
 
-			8 => 0,
+			8 => 0,  // Max Unit 2 (Sturmtruppe)
 
-			9 => 0,
+			9 => 0,  // Max Unit 3 (Hazard Team)
 
-			10 => 1,
+			10 => 1,  // Max Unit 4 (Commander)
 
-			11 => 0,
+			11 => 0,  // Unit 5 (Officer)
 
-			12 => 0,
+			12 => 0,  // Unit 6 (Medical staff)
 
-			13 => 2,
+			13 => 2,  // Buildtime (steps in 5 minutes)
 
-			14 => 10,
+			14 => 10,   // Value1 (Light weapons)
 
-			15 => 0,
+			15 => 0,   // Value2 (Heavy weapons)
 
-			16 => 0,
+			16 => 0,   // Value3 (Planetary weapons)
 
-			17 => 0,
+			17 => 0,   // Value4 (Shield strength)
 
-			18 => 10,
+			18 => 10,   // Value5 (Hull or hitpoints)
 
-			19 => 4,
+			19 => 4,   // Value6 (Reaction speed)
 
-			20 => 2,
+			20 => 2,   // Value7 (Readiness)
 
-			21 => 10,
+			21 => 10,   // Value8 (Agility)
 
-			22 => 0,
+			22 => 0,   // Value9 (Experience)
 
-			23 => 4,
+			23 => 4,   // Value10 (Warp)
 
-			24 => 5,
+			24 => 5,   // Value11 (Sensors)
 
-			25 => 0,
+			25 => 0,   // Value12 (Camouflage)
 
-			26 => 8,
+			26 => 8,   // Value13 (Energy Available)
 
-			27 => 2,
+			27 => 2,   // Value14 (Used Energy)
 
-			28 => 0,
+			28 => 0,   // Leave at 0
 
-			29 => 'Scout 29th',
+			29 => 'Scout 29th',  // Name
 
-			30 => 10,
+			30 => 10,  // Workers needed to build
 
-			31 => 'Forschrittlichere Version des seit mehreren Jahrhunderten eingesetzen Scout.',
+			31 => 'Versione vigorosa dello scout poich&egrave; sono trascorsi parecchi secoli di esplorazione.',
 
-	    ),
+		),
 
-	    
 
-	    1 => array(
+
+		1 => array(
 
 			0 => 650,
 
@@ -9489,15 +9489,15 @@ $SHIP_TORSO = array(
 
 			30 => 50,
 
-			31 => 'Fortschrittlichere Version des seit mehreren Jahrhunderten eingesetzen Transporters.',
+			31 => 'Versione vigorosa di trasporto poich&egrave; sono trascorsi parecchi secoli di esplorazione.',
 
 
 
-	    ),
+		),
 
 
 
-	    2 => array(
+		2 => array(
 
 			0 => 30000,
 
@@ -9561,13 +9561,13 @@ $SHIP_TORSO = array(
 
 			30 => 500,
 
-			31 => 'Fortschrittlichere Version des seit Jahrhunderten eingesetzten Kolonisationsschiff.',
+			31 => 'Versione vigorosa di colonizzatrice poich&egrave; sono trascorsi parecchi secoli di esplorazione.',
 
-	    ),
+		),
 
-    	
 
-	    3 => array(
+
+		3 => array(
 
 			0 => 15000,
 
@@ -9627,17 +9627,17 @@ $SHIP_TORSO = array(
 
 			28 => 0,
 
-			29 => 'Prometheus-Klasse',
+			29 => 'Prometheus',
 
 			30 => 450,
 
-			31 => 'Vor knapp 300 Jahren wurde die Prometheus auÃŸer Dienst, wurde aber aufgrund der Eins&auml;tze in der Vergangenheit wieder reaktiviert.',
+			31 => 'Dopo quasi 300 anni la Prometheus &egrave; stata messa fuori servizio, tuttavia &egrave; stata nuovamente riattivata per le operazioni nel passato',
 
-	    ),	
+		),
 
-	    
 
-	    4 => array(
+
+		4 => array(
 
 			0 => 20000,
 
@@ -9697,15 +9697,15 @@ $SHIP_TORSO = array(
 
 			28 => 0,
 
-			29 => 'Wells-Klasse',
+			29 => 'Wells',
 
 			30 => 200,
 
-			31 => 'Das R&uuml;ckgrat der Flotte bilden die Zeitschiffe der Wells-Klasse, die f&uuml;r die unterschiedlichsten Aufgaben benutzt werden k&ouml;nnen.',
+			31 => 'La spina dorsale della flotta, le navi del tempo classe Wells, possono essere utilizzate per una grande variet&agrave; di compiti.',
 
-	    ),
+		),
 
-                    5 => array(
+		5 => array(
 
 			0 => 20000,
 
@@ -9769,20 +9769,20 @@ $SHIP_TORSO = array(
 
 			30 => 200,
 
-			31 => 'Das R&uuml;ckgrat der Flotte bilden die Zeitschiffe der Wells-Klasse, die f&uuml;r die unterschiedlichsten Aufgaben benutzt werden k&ouml;nnen.',
+			31 => 'La spina dorsale della flotta, le navi del tempo classe Wells, possono essere utilizzate per una grande variet&agrave; di compiti.',
 
-	    ),
+		),
 
 
-    ),
+	),
 
 );
 
-	
 
 
 
-// Preise der Schiffe anpassen
+
+// Prices of the ships adapt
 
 foreach ($SHIP_TORSO as $key1 => $foo) 
 
