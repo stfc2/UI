@@ -5602,11 +5602,11 @@ $SHIP_TORSO = array(
 
 			2 => 50000,  // Latinum
 
-			13 => 252,  // Buildtime (in 5 Minuten Schritten)
+			13 => 252,  // Buildtime (in 5 minutes steps)
 
 			29 => 'Sfera Borg',  // Name
 
-			30 => 500,  // Ben�e Arbeiter zum Bau
+			30 => 500,  // Workers needed to build
 		),
 
 		11 => array(
@@ -5616,11 +5616,11 @@ $SHIP_TORSO = array(
 
 			2 => 500000,  // Latinum
 
-			13 => 552,  // Buildtime (in 5 Minuten Schritten)
+			13 => 552,  // Buildtime (in 5 minutes steps)
 
 			29 => 'Cubo Borg',  // Name
 
-			30 => 50000,  // Ben�e Arbeiter zum Bau
+			30 => 50000,  // Workers needed to build
 		),
 	),
 
