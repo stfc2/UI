@@ -294,4 +294,9 @@ function send_borg_fleet($fleet_id, $dest) {
     return true;
 }
 
+function send_premonition_to_user($user_id)
+{
+    return true;
+}
+
 ?>
