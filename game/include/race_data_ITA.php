@@ -875,7 +875,7 @@ $RACE_DATA = array(
 
    12 => array( 
 
-      0 => 'Umani del XXX sec', 
+      0 => 'Umani del 29° sec', 
 
       1 => 1.0, 
 
