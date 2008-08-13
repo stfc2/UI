@@ -121,6 +121,9 @@ define('SUPPORTUSER', 5);
 
 define('BORG_USERID', 6);
 
+// Future Humans
+
+define('FUTURE_HUMANS_UID', 7);
 
 // Ship types - Constant values
 
