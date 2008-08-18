@@ -20,28 +20,28 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// Neue Kampfdauern Kolo 12 Ticks Bomben 6 Ticks
+// New battle duration: colo 12 ticks bombs 6 ticks
 
 $game->init_player();
-$game->out('<center><span class="caption">Schiffsbewegungen</span></center><br>');
+$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span></center><br>');
 
 
 if(empty($_REQUEST['step'])) {
-    message(GENERAL, 'Ungültige Paramterübergabe', '$_REQUEST[\'step\'] = empty');
+    message(GENERAL, constant($game->sprache("TEXT1")), '$_REQUEST[\'step\'] = empty');
 }
 
 $step = (!empty($_POST['step'])) ? $_POST['step'] : $_GET['step'];
 
 // #############################################################################
-// Es müssen Flotten für ship_actions übergeben werden
+// There is a need for fleets over ship_actions
 
 if(empty($_POST['fleets'])) {
-    message(NOTICE, 'Keine Flotten ausgewählt');
+    message(NOTICE, constant($game->sprache("TEXT2")));
 }
 
 
 // #############################################################################
-// Die Flotten-IDs "säubern" (zu integer casten gegen SQL-Exploits)
+// The fleets IDs "clean" (integer cast against SQL exploits)
 
 $fleet_ids = array();
 
@@ -55,10 +55,10 @@ for($i = 0; $i < count($_POST['fleets']); ++$i) {
 
 
 // #############################################################################
-// War eine gültige Flotten-ID dabei?
+// War fleets has a valid ID?
 
 if(empty($fleet_ids)) {
-    message(NOTICE, 'Keine gültige Flotte wurden übergeben');
+    message(NOTICE, constant($game->sprache("TEXT3")));
 }
 
 $sql = 'SELECT *
@@ -73,13 +73,13 @@ $fleets = array($db->fetchrow($q_fleets));
 $fleet_ids = array($fleets[0]['fleet_id']);
 
 if(empty($fleets[0])) {
-    message(NOTICE, 'Keine der Flotten konnte gefunden werden');
+    message(NOTICE, constant($game->sprache("TEXT4")));
 }
 
 $planet_id = (int)$fleets[0]['planet_id'];
 
 if($planet_id == 0) {
-    message(NOTICE, 'Mindestens eine der ausgewählten Flotten ist nicht auf einem Planeten stationiert');
+    message(NOTICE, constant($game->sprache("TEXT5")));
 }
 
 while($_temp = $db->fetchrow($q_fleets)) {
@@ -92,14 +92,14 @@ while($_temp = $db->fetchrow($q_fleets)) {
 $n_fleets = count($fleets);
 
 if($n_fleets == 0) {
-    message(NOTICE, 'Keine der Flotten konnte auf dem Planeten gefunden werden');
+    message(NOTICE, constant($game->sprache("TEXT6")));
 }
 
 $fleet_ids_str = implode(',', $fleet_ids);
 
 
 // #############################################################################
-// Planetendaten holen
+// Bring planet data
 
 if($planet_id == $game->planet['planet_id']) {
     $planet = $game->planet;
@@ -110,7 +110,7 @@ if($planet_id == $game->planet['planet_id']) {
     $planet['user_vacation_start'] = $game->player['user_vacation_start'];
     $planet['user_vacation_end'] = $game->player['user_vacation_end'];
 
-    // Spielerdaten müssen nicht übernommen werden, da sie nicht angezeigt/benutzt werden
+    // Player data must not be accepted because they are not displayed / used
 }
 else {
     $sql = 'SELECT p.planet_id, p.planet_name, p.system_id, p.sector_id, p.planet_distance_id,
@@ -126,7 +126,7 @@ else {
     }
 
     if(empty($planet['planet_id'])) {
-        message(NOTICE, 'Der Startplanet existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT7")));
     }
     
     if(empty($planet['user_id'])) {
@@ -140,8 +140,8 @@ else {
 
 
 // #############################################################################
-// Welche Schiffsklassen sind dabei?
-// (für Befehlsmöglichkeiten)
+// Which ship classes are they?
+// (for command opportunities)
 
 $sql = 'SELECT st.ship_torso, st.value_10 AS warp_speed
         FROM (ships s, ship_templates st)
@@ -179,7 +179,7 @@ while($_temp = $db->fetchrow($q_stpls)) {
 
 
 // #############################################################################
-// Ein paar Einstellungen setzen
+// A few settings set
 
 $user_id = (!empty($_GET['user_id'])) ? (int)$_GET['user_id'] : 0;
 
@@ -191,12 +191,12 @@ $planet_vacation = ($planet['user_vacation_start'] <= $ACTUAL_TICK) && ($planet[
 $starter_atkptc = ($game->player['user_attack_protection'] > $ACTUAL_TICK) ? true : false;
 
 if($in_orb){
-  message(NOTICE, 'Du darfst Orbs nicht bewegen.');
+  message(NOTICE, constant($game->sprache("TEXT8")));
 }
 
 // #############################################################################
-// Wenn der Zielspieler nicht Besitzer des Planeten ist (und es einen Zieluser gibt),
-// seine Daten holen
+// If the target player isn't the owner of the planet (and a target users there),
+// fetch its data
 
 if(!empty($user_id)) {
     if($planet['user_id'] != $user_id) {
@@ -212,7 +212,7 @@ if(!empty($user_id)) {
         }
 
         if(empty($fleet['user_id'])) {
-            message(NOTICE, 'Der gewählte Spieler hat keine Flotten/Planeten bei den angegeben Koordinaten');
+            message(NOTICE, constant($game->sprache("TEXT9")));
         }
         
         $dest_atkptc = ($fleet['user_attack_protection'] > $ACTUAL_TICK) ? true : false;
@@ -232,7 +232,7 @@ if(!isset($dest_atkptc)) {
     $user_id = $planet['user_id'];
     
     if($planet_vacation) {
-        message(NOTICE, 'Der Herrscher des Zielplaneten befindet sich um Urlaubsmodus');
+        message(NOTICE, constant($game->sprache("TEXT10")));
     }
 }
 
@@ -244,23 +244,23 @@ switch($step) {
     case 'surrender_exec':
 
         if($game->player['user_id']>10){
-          message(NOTICE, 'Flottenübergabe - Cheatversuch!');
+          message(NOTICE, constant($game->sprache("TEXT11")));
         }
 
         if($atkptc_present) {
-            message(NOTICE, 'Es dürfen keine Schiffe übergeben werden, da eine der beiden Parteien noch unter Angriffsschutz steht');
+            message(NOTICE, constant($game->sprache("TEXT12")));
         }
         
         if($other_party['user_id'] == $game->player['user_id']) {
-            message(NOTICE, 'Als ich das letzte Mal nachgesehen habe, gehörten die Schiffe schon dir');
+            message(NOTICE, constant($game->sprache("TEXT13")));
         }
         
         if($planetary_dest && $free_planet) {
-            message(NOTICE, 'Schiffe können nicht einem unbewohnten Planeten übergeben werden');
+            message(NOTICE, constant($game->sprache("TEXT14")));
         }
 
         // #############################################################################
-        // Schiffe übergeben
+        // Ships hand over
 
         $sql = 'UPDATE ships
                 SET user_id = '.$user_id.'
@@ -279,7 +279,7 @@ switch($step) {
         }
 
         // #############################################################################
-        // Logbuch-Eintrag abschicken (sponsored by action_23.php)
+        // Logbook Entry (sponsored by action_23.php)
 
         $sql = 'SELECT st.name, st.ship_torso, st.race,
                        COUNT(s.ship_id) AS n_ships
@@ -300,22 +300,22 @@ switch($step) {
             $log_data[8][] = array($stpl['name'], $stpl['ship_torso'], $stpl['race'], $stpl['n_ships']);
         }
 
-        add_logbook_entry($user_id, LOGBOOK_TACTICAL, 'Flottenverband von '.$game->player['user_name'].' hat sich ergeben', $log_data);
+        add_logbook_entry($user_id, LOGBOOK_TACTICAL, constant($game->sprache("TEXT15")).' '.$game->player['user_name'].' '.constant($game->sprache("TEXT16")), $log_data);
 
         redirect('a=tactical_cartography&planet_id='.encode_planet_id($planet_id));
     break;
 
     case 'surrender_setup':
         if($game->player['user_id']>10){
-          message(NOTICE, 'Flottenübergabe - Cheatversuch!');
+          message(NOTICE, constant($game->sprache("TEXT11")));
         }
 
         if($atkptc_present) {
-            message(NOTICE, 'Es dürfen keine Schiffe übergeben werden, da eine der beiden Parteien noch unter Angriffsschutz steht');
+            message(NOTICE, constant($game->sprache("TEXT12")));
         }
         
         if($other_party['user_id'] == $game->player['user_id']) {
-            message(NOTICE, 'Als ich das letzte Mal nachgesehen habe, gehörten die Schiffe schon dir');
+            message(NOTICE, constant($game->sprache("TEXT13")));
         }
     
         $game->out('
@@ -333,10 +333,9 @@ switch($step) {
         $game->out('
   <tr>
     <td>
-      Standort: <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id)).'"><b>'.$planet['planet_name'].'</b></a> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')'.( ($planet['user_id'] != $game->player['user_id']) ? ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['user_id']).'"><b>'.$planet['user_name'].'</b></a>' : '' ).'<br><br>
-      Flotten: <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
-      <b>Übergeben:</b><br>Die Schiffe werden die Kontrolle '.( ($planetary_dest) ? 'an den Herrscher des Planeten' : 'dem Befehlshaber der Flotte' ).' übergeben<br>
-        ');
+      '.constant($game->sprache("TEXT17")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id)).'"><b>'.$planet['planet_name'].'</b></a> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')'.( ($planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT18")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['user_id']).'"><b>'.$planet['user_name'].'</b></a>' : '' ).'<br><br>
+      '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
+      '.constant($game->sprache("TEXT20")).( ($planetary_dest) ? constant($game->sprache("TEXT21")) : constant($game->sprache("TEXT22")) ).constant($game->sprache("TEXT23")));
 
         if($in_transporter) {
             $resource_1 = $resource_2 = $resource_3 = $resource_4 = $unit_1 = $unit_2 = $unit_3 = $unit_4 = $unit_5 = $unit_6 = 0;
@@ -359,10 +358,10 @@ switch($step) {
             $n_units = $unit_1 + $unit_2 + $unit_3 + $unit_4 + $unit_5 + $unit_6;
 
             if($n_resources > 0) {
-                if($resource_1 > 0) $game->out('<br>Metall: <b>'.$resource_1.'</b>');
-                if($resource_2 > 0) $game->out('<br>Mineralien: <b>'.$resource_2.'</b>');
-                if($resource_3 > 0) $game->out('<br>Latinum: <b>'.$resource_3.'</b>');
-                if($resource_4 > 0) $game->out('<br>Arbeiter: <b>'.$resource_4.'</b>');
+                if($resource_1 > 0) $game->out('<br>'.constant($game->sprache("TEXT24")).' <b>'.$resource_1.'</b>');
+                if($resource_2 > 0) $game->out('<br>'.constant($game->sprache("TEXT25")).' <b>'.$resource_2.'</b>');
+                if($resource_3 > 0) $game->out('<br>'.constant($game->sprache("TEXT26")).' <b>'.$resource_3.'</b>');
+                if($resource_4 > 0) $game->out('<br>'.constant($game->sprache("TEXT27")).' <b>'.$resource_4.'</b>');
                 $game->out('<br>');
             }
 
@@ -379,7 +378,7 @@ switch($step) {
 
         $game->out('
       <br>
-      <center><input class="button" type="button" name="cancel" value="<< Zurück" value="<< Zurück" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="Durchführen"></center>
+      <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
     </td>
   </tr>
   </form>
@@ -391,24 +390,24 @@ switch($step) {
     case 'attack_bomb_exec':
     case 'attack_invade_exec':
         if($game->SITTING_MODE){
-            message(NOTICE, 'Du darfst im Sittingmodus nicht angreifen!');
+            message(NOTICE, constant($game->sprache("TEXT30")));
         }
 
         if($atkptc_present) {
-            message(NOTICE, 'Es darf kein Kampf stattfinden, da eine der beiden Parteien noch unter Angriffsschutz steht');
+            message(NOTICE, constant($game->sprache("TEXT31")));
         }
 
         if($other_party['user_id'] == $game->player['user_id']) {
-            message(NOTICE, 'Als ich das letzte Mal nachgesehen habe, gehörten die Schiffe schon dir');
+            message(NOTICE, constant($game->sprache("TEXT13")));
         }
 
         if($planetary_dest && $free_planet) {
-            message(NOTICE, 'Lass doch den unbewohnten Planeten in Ruhe');
+            message(NOTICE, constant($game->sprache("TEXT32")));
         }
 
 
         // #############################################################################
-        // Move starten
+        // Move start
         
         $sql = 'SELECT COUNT(ship_id) AS n_ships
                 FROM ships
@@ -421,7 +420,7 @@ switch($step) {
         $n_ships = $_nships['n_ships'];
 
         if($n_ships == 0) {
-            message(GENERAL, 'Es fliegen keine Schiffe in den Flotten mit', 'Unexspected: $n_ships = 0');
+            message(GENERAL, constant($game->sprache("TEXT33")), 'Unexspected: $n_ships = 0');
         }
         
 	$duration=2;
@@ -434,7 +433,7 @@ switch($step) {
             
             case 'attack_bomb_exec':
                 if(!$planetary_dest) {
-                    message(NOTICE, 'Nur Planeten können bombardiert werden');
+                    message(NOTICE, constant($game->sprache("TEXT34")));
                 }
                 
                 $focus = (int)$_POST['focus'];
@@ -449,17 +448,17 @@ switch($step) {
             
             case 'attack_invade_exec':
                 if(!$planetary_dest) {
-                    message(NOTICE, 'Nur Planeten können übernommen werden');
+                    message(NOTICE, constant($game->sprache("TEXT35")));
                 }
                 
                 if(!$in_colo) {
-                    message(NOTICE, 'In keiner der Flotten befindet sich ein Kolonisationsschiff');
+                    message(NOTICE, constant($game->sprache("TEXT36")));
                 }
             
                 $action_code = 55;
                 
                 if(empty($_POST['ship_id'])) {
-                    message(GENERAL, 'Ungültige Paramterübergabe', '$_POST[\'ship_id\'] = empty');
+                    message(GENERAL, constant($game->sprache("TEXT1")), '$_POST[\'ship_id\'] = empty');
                 }
                 
                 $action_data = array((int)$_POST['ship_id']);
@@ -495,15 +494,15 @@ switch($step) {
     
     case 'attack_setup':
         if($game->SITTING_MODE){
-            message(NOTICE, 'Du darfst im Sittingmodus nicht angreifen!');
+            message(NOTICE, constant($game->sprache("TEXT30")));
         }
 
         if($atkptc_present) {
-            message(NOTICE, 'Es darf kein Kampf stattfinden, da eine der beiden Parteien noch unter Angriffsschutz steht');
+            message(NOTICE, constant($game->sprache("TEXT31")));
         }
 
         if($other_party['user_id'] == $game->player['user_id']) {
-            message(NOTICE, 'Als ich das letzte Mal nachgesehen habe, gehörten die gegnerischen Streitkräfte dir?!');
+            message(NOTICE, constant($game->sprache("TEXT37")));
         }
 
         $game->out('
@@ -521,21 +520,20 @@ switch($step) {
         $game->out('
   <tr>
     <td>
-      Standort: <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id)).'"><b>'.$planet['planet_name'].'</b></a> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')'.( ($planet['user_id'] != $game->player['user_id']) ? ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['user_id']).'"><b>'.$planet['user_name'].'</b></a>' : '' ).'<br><br>
-      Flotten: <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
-      <b>Angreifen:</b><br>
+      '.constant($game->sprache("TEXT17")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id)).'"><b>'.$planet['planet_name'].'</b></a> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')'.( ($planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT18")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['user_id']).'"><b>'.$planet['user_name'].'</b></a>' : '' ).'<br><br>
+      '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
+      <b>'.constant($game->sprache("TEXT38")).'</b><br>
         ');
         
         if($planetary_dest) {
-            $game->out('
-      Die Schiffe werden die planetare Verteidigung angreifen und...<br><br>
-      <input type="radio" name="step" value="attack_normal_exec" checked="checked" onClick="return document.send_form.submit.value = \'Durchführen\';">&nbsp;<b>im Orbit bleiben</b><br>
-      <input type="radio" name="step" value="attack_bomb_setup" onClick="return document.send_form.submit.value = \'Weiter >>\';">&nbsp;<b>Bombardieren</b><br>
-      <input type="radio" name="step" value="attack_invade_setup"'.( (!$in_colo) ? ' disabled="disabled">&nbsp;Übernehmen<br>' : ' onClick="return document.send_form.submit.value = \'Weiter >>\';">&nbsp;<b>Übernehmen</b><br>' )
+            $game->out(constant($game->sprache("TEXT39")).'<br><br>
+      <input type="radio" name="step" value="attack_normal_exec" checked="checked" onClick="return document.send_form.submit.value = \''.constant($game->sprache("TEXT29")).'\';">&nbsp;<b>'.constant($game->sprache("TEXT40")).'</b><br>
+      <input type="radio" name="step" value="attack_bomb_setup" onClick="return document.send_form.submit.value = \''.constant($game->sprache("TEXT41")).'\';">&nbsp;<b>'.constant($game->sprache("TEXT42")).'</b><br>
+      <input type="radio" name="step" value="attack_invade_setup"'.( (!$in_colo) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT43")).'<br>' : ' onClick="return document.send_form.submit.value = \''.constant($game->sprache("TEXT41")).'\';">&nbsp;<b>'.constant($game->sprache("TEXT43")).'</b><br>' )
             );
         }
         else {
-            $game->out('Die Schiffe werden die feindliche Flotte angreifen.<br><input type="hidden" name="step" value="attack_normal_exec">');
+            $game->out(constant($game->sprache("TEXT44")).'<br><input type="hidden" name="step" value="attack_normal_exec">');
         }
 
         if($in_transporter) {
@@ -559,10 +557,10 @@ switch($step) {
             $n_units = $unit_1 + $unit_2 + $unit_3 + $unit_4 + $unit_5 + $unit_6;
 
             if($n_resources > 0) {
-                if($resource_1 > 0) $game->out('<br>Metall: <b>'.$resource_1.'</b>');
-                if($resource_2 > 0) $game->out('<br>Mineralien: <b>'.$resource_2.'</b>');
-                if($resource_3 > 0) $game->out('<br>Latinum: <b>'.$resource_3.'</b>');
-                if($resource_4 > 0) $game->out('<br>Arbeiter: <b>'.$resource_4.'</b>');
+                if($resource_1 > 0) $game->out('<br>'.constant($game->sprache("TEXT24")).' <b>'.$resource_1.'</b>');
+                if($resource_2 > 0) $game->out('<br>'.constant($game->sprache("TEXT25")).' <b>'.$resource_2.'</b>');
+                if($resource_3 > 0) $game->out('<br>'.constant($game->sprache("TEXT26")).' <b>'.$resource_3.'</b>');
+                if($resource_4 > 0) $game->out('<br>'.constant($game->sprache("TEXT27")).' <b>'.$resource_4.'</b>');
                 $game->out('<br>');
             }
 
@@ -579,7 +577,7 @@ switch($step) {
 
         $game->out('
       <br>
-      <center><input class="button" type="button" name="cancel" value="<< Zurück" value="<< Zurück" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="Durchführen"></center>
+      <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
     </td>
   </tr>
   </form>
@@ -589,15 +587,15 @@ switch($step) {
     
     case 'attack_bomb_setup':
         if($atkptc_present) {
-            message(NOTICE, 'Es darf kein Kampf stattfinden, da eine der beiden Parteien noch unter Angriffsschutz steht');
+            message(NOTICE, constant($game->sprache("TEXT31")));
         }
         
         if(!$planetary_dest) {
-            message(NOTICE, 'Nur ein Planet kann bombardiert werden');
+            message(NOTICE, constant($game->sprache("TEXT34")));
         }
 
         if($other_party['user_id'] == $game->player['user_id']) {
-            message(NOTICE, 'Als ich das letzte Mal nachgesehen habe, gehörten die gegnerischen Streitkräfte dir?!');
+            message(NOTICE, constant($game->sprache("TEXT37")));
         }
 
         $game->out('
@@ -615,16 +613,15 @@ switch($step) {
         $game->out('
   <tr>
     <td>
-      Standort: <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id)).'"><b>'.$planet['planet_name'].'</b></a> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')'.( ($planet['user_id'] != $game->player['user_id']) ? ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['user_id']).'"><b>'.$planet['user_name'].'</b></a>' : '' ).'<br><br>
-      Flotten: <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
-      <b>Bombardieren:</b><br>
-      Alle Schiffe mit planetaren Waffen werden nach dem Ausschalten der orbitalen Verteidigung die Planetenoberfläche angreifen. Dadurch können Gebäude zerstört und Arbeiter getötet werden.<br><b>Wenn kein Schiff planetare Waffen besitzt, kann auch kein Bombardement stattfinden!<br>Der planetare Angriff wird solange fortgesetzt, bis er abgebrochen oder alle Gebäude auf dem Planeten zerstört wurden.</b>
+      '.constant($game->sprache("TEXT17")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id)).'"><b>'.$planet['planet_name'].'</b></a> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')'.( ($planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT18")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['user_id']).'"><b>'.$planet['user_name'].'</b></a>' : '' ).'<br><br>
+      '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
+      '.constant($game->sprache("TEXT45")).'
       <br><br>
-      <input type="radio" name="focus" value="0" checked="checked">&nbsp;alles bombardieren<br>
-      <input type="radio" name="focus" value="1">&nbsp;konzentrieren auf Minen<br>
-      <input type="radio" name="focus" value="2">&nbsp;konzentrieren auf Produktionsgebäude<br>
-      <input type="radio" name="focus" value="3">&nbsp;konzentrieren auf Regierung/Forschung<br><br>
-      <center><input class="button" type="button" name="cancel" value="<< Zurück" value="<< Zurück" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="Durchführen"></center>
+      <input type="radio" name="focus" value="0" checked="checked">&nbsp;'.constant($game->sprache("TEXT46")).'<br>
+      <input type="radio" name="focus" value="1">&nbsp;'.constant($game->sprache("TEXT47")).'<br>
+      <input type="radio" name="focus" value="2">&nbsp;'.constant($game->sprache("TEXT48")).'<br>
+      <input type="radio" name="focus" value="3">&nbsp;'.constant($game->sprache("TEXT49")).'<br><br>
+      <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
     </td>
   </tr>
   </form>
@@ -634,19 +631,19 @@ switch($step) {
     
     case 'attack_invade_setup':
         if($atkptc_present) {
-            message(NOTICE, 'Es darf kein Kampf stattfinden, da eine der beiden Parteien noch unter Angriffsschutz steht');
+            message(NOTICE, constant($game->sprache("TEXT31")));
         }
 
         if($other_party['user_id'] == $game->player['user_id']) {
-            message(NOTICE, 'Als ich das letzte Mal nachgesehen habe, gehörten die gegnerischen Streitkräfte dir?!');
+            message(NOTICE, constant($game->sprache("TEXT37")));
         }
         
         if(!$planetary_dest) {
-            message(NOTICE, 'Nur ein Planet kann übernommen werden');
+            message(NOTICE, constant($game->sprache("TEXT35")));
         }
         
         if(!$in_colo) {
-            message(NOTICE, 'In keiner der Flotten befindet sich ein Kolonisationsschiff');
+            message(NOTICE, constant($game->sprache("TEXT36")));
         }
 
         $game->out('
@@ -681,16 +678,14 @@ switch($step) {
         $game->out('
   <tr>
     <td>
-      Standort: <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id)).'"><b>'.$planet['planet_name'].'</b></a> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')'.( ($planet['user_id'] != $game->player['user_id']) ? ' von <a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['user_id']).'"><b>'.$planet['user_name'].'</b></a>' : '' ).'<br><br>
-      Flotten: <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
-      <b>Angreifen und Übernehmen:</b><br>
-      Die Schiffe werden die planetare Verteidigung angreifen. Wenn diese ausgeschaltet wurde, versuchen die auf den Transportern der Flotte befindlichen Bodentruppen sowie die des verwenden Kolonisationsschiff die Kontrolle über den Planeten zu erlangen. Dabei wird das Kolonieschiff benutzt, um auf den Planeten zu laden und das provisorische Hauptquartier zu errichten.<br><br>
-      Folgendes Kolonieschiff wird bei dem Übernahmeversuch benutzt:<br><br>
+      '.constant($game->sprache("TEXT17")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id)).'"><b>'.$planet['planet_name'].'</b></a> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')'.( ($planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT18")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['user_id']).'"><b>'.$planet['user_name'].'</b></a>' : '' ).'<br><br>
+      '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
+      '.constant($game->sprache("TEXT50")).'<br><br>
       
       <table border="0" cellpadding="2" cellspacing="2">
         <tr>
           <td width="20" align="right"><input type="radio" name="ship_id" value="'.$first_cship['ship_id'].'" checked="checked"></td>
-          <td width="350" align="left"><b>'.$first_cship['name'].'</b> ('.$first_cship['hitpoints'].'/'.$first_cship['max_hitpoints'].', Exp: '.$first_cship['experience'].')<br>Besatzung: '.$first_cship['unit_1'].'/'.$first_cship['unit_2'].'/'.$first_cship['unit_3'].'/'.$first_cship['unit_4'].'</td>
+          <td width="350" align="left"><b>'.$first_cship['name'].'</b> ('.$first_cship['hitpoints'].'/'.$first_cship['max_hitpoints'].', Exp: '.$first_cship['experience'].')<br>'.constant($game->sprache("TEXT51")).' '.$first_cship['unit_1'].'/'.$first_cship['unit_2'].'/'.$first_cship['unit_3'].'/'.$first_cship['unit_4'].'</td>
         </tr>
         ');
 
@@ -698,7 +693,7 @@ switch($step) {
             $game->out('
         <tr>
           <td align="right"><input type="radio" name="ship_id" value="'.$cship['ship_id'].'"></td>
-          <td align="left"><b>'.$cship['name'].'</b> ('.$cship['hitpoints'].'/'.$cship['max_hitpoints'].', Exp: '.$cship['experience'].')<br>Besatzung: '.$cship['unit_1'].'/'.$cship['unit_2'].'/'.$cship['unit_3'].'/'.$cship['unit_4'].'</td>
+          <td align="left"><b>'.$cship['name'].'</b> ('.$cship['hitpoints'].'/'.$cship['max_hitpoints'].', Exp: '.$cship['experience'].')<br>'.constant($game->sprache("TEXT51")).' '.$cship['unit_1'].'/'.$cship['unit_2'].'/'.$cship['unit_3'].'/'.$cship['unit_4'].'</td>
         </tr>
             ');
         }
@@ -727,10 +722,10 @@ switch($step) {
             $n_units = $unit_1 + $unit_2 + $unit_3 + $unit_4 + $unit_5 + $unit_6;
 
             if($n_resources > 0) {
-                if($resource_1 > 0) $game->out('<br>Metall: <b>'.$resource_1.'</b>');
-                if($resource_2 > 0) $game->out('<br>Mineralien: <b>'.$resource_2.'</b>');
-                if($resource_3 > 0) $game->out('<br>Latinum: <b>'.$resource_3.'</b>');
-                if($resource_4 > 0) $game->out('<br>Arbeiter: <b>'.$resource_4.'</b>');
+                if($resource_1 > 0) $game->out('<br>'.constant($game->sprache("TEXT24")).' <b>'.$resource_1.'</b>');
+                if($resource_2 > 0) $game->out('<br>'.constant($game->sprache("TEXT25")).' <b>'.$resource_2.'</b>');
+                if($resource_3 > 0) $game->out('<br>'.constant($game->sprache("TEXT26")).' <b>'.$resource_3.'</b>');
+                if($resource_4 > 0) $game->out('<br>'.constant($game->sprache("TEXT27")).' <b>'.$resource_4.'</b>');
                 $game->out('<br>');
             }
 
@@ -747,7 +742,7 @@ switch($step) {
 
         $game->out('
       <br>
-      <center><input class="button" type="button" name="cancel" value="<< Zurück" value="<< Zurück" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="Durchführen"></center>
+      <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
     </td>
   </tr>
   </form>
@@ -758,27 +753,27 @@ switch($step) {
     case 'colo_exec':
 
         if($game->SITTING_MODE){
-            message(NOTICE, 'Im Sittingmodus ist das Kolonisieren nicht erlaubt!');
+            message(NOTICE, constant($game->sprache("TEXT52")));
         }
 
         if($atkptc_present) {
-            message(NOTICE, 'Mit aktiviertem Angriffsschutz dürfen keine unbewohnten Planeten kolonisiert werden.');
+            message(NOTICE, constant($game->sprache("TEXT53")));
         }
 
         if(!$free_planet) {
-            message(NOTICE, 'Der Planet ist nicht unbewohnt...');
+            message(NOTICE, constant($game->sprache("TEXT54")));
         }
 
         if(!$planetary_dest) {
-            message(NOTICE, 'Nur ein Planet kann kolonisiert werden');
+            message(NOTICE, constant($game->sprache("TEXT55")));
         }
 
         if(!$in_colo) {
-            message(NOTICE, 'In keiner der Flotten befindet sich ein Kolonisationsschiff');
+            message(NOTICE, constant($game->sprache("TEXT36")));
         }
         
         // #############################################################################
-        // Move starten
+        // Move start
 
         $sql = 'SELECT COUNT(ship_id) AS n_ships
                 FROM ships
@@ -791,11 +786,11 @@ switch($step) {
         $n_ships = $_nships['n_ships'];
 
         if($n_ships == 0) {
-            message(GENERAL, 'Es fliegen keine Schiffe in den Flotten mit', 'Unexspected: $n_ships = 0');
+            message(GENERAL, constant($game->sprache("TEXT33")), 'Unexspected: $n_ships = 0');
         }
 
         if(empty($_POST['ship_id'])) {
-            message(GENERAL, 'Ungültige Paramterübergabe', '$_POST[\'ship_id\'] = empty');
+            message(GENERAL, constant($game->sprache("TEXT1")), '$_POST[\'ship_id\'] = empty');
         }
         
         $ship_id = (int)$_POST['ship_id'];
@@ -827,23 +822,23 @@ switch($step) {
     
     case 'colo_setup':
         if($game->SITTING_MODE){
-            message(NOTICE, 'Im Sittingmodus ist das Kolonisieren nicht erlaubt!');
+            message(NOTICE, constant($game->sprache("TEXT52")));
         }
 
         if($atkptc_present) {
-            message(NOTICE, 'Mit aktiviertem Angriffsschutz dürfen keine unbewohnten Planeten kolonisiert werden.');
+            message(NOTICE, constant($game->sprache("TEXT53")));
         }
 
         if(!$free_planet) {
-            message(NOTICE, 'Der Planet ist nicht unbewohnt...');
+            message(NOTICE, constant($game->sprache("TEXT54")));
         }
 
         if(!$planetary_dest) {
-            message(NOTICE, 'Nur ein Planet kann kolonisiert werden');
+            message(NOTICE, constant($game->sprache("TEXT55")));
         }
 
         if(!$in_colo) {
-            message(NOTICE, 'In keiner der Flotten befindet sich ein Kolonisationsschiff');
+            message(NOTICE, constant($game->sprache("TEXT36")));
         }
 
         $game->out('
@@ -878,16 +873,14 @@ switch($step) {
         $game->out('
   <tr>
     <td>
-      Standort: <i>unbewohnt</i> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')
-      Flotten: <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
-      <b>Kolonisieren:</b><br>
-      Der Zielplanet wird, wenn er unbewohnt ist, von einem Kolonisationsschiff der Flotte kolonisiert. Dabei wird dieses Schiff demontiert und daraus das erste Gebäude gebaut. Seine überschüssige Besatzung wird auf dem Planeten stationiert. Die anderen Schiffe bleiben im Orbit des Planeten.<br><br>
-      Folgendes Kolonieschiff wird bei der Kolonisation benutzt:<br><br>
+      '.constant($game->sprache("TEXT17")).' '.constant($game->sprache("TEXT56")).' ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')
+      '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
+      '.constant($game->sprache("TEXT57")).'<br><br>
 
       <table border="0" cellpadding="2" cellspacing="2">
         <tr>
           <td width="20" align="right"><input type="radio" name="ship_id" value="'.$first_cship['ship_id'].'" checked="checked"></td>
-          <td width="350" align="left"><b>'.$first_cship['name'].'</b> ('.$first_cship['hitpoints'].'/'.$first_cship['max_hitpoints'].', Exp: '.$first_cship['experience'].')<br>Besatzung: '.$first_cship['unit_1'].'/'.$first_cship['unit_2'].'/'.$first_cship['unit_3'].'/'.$first_cship['unit_4'].'</td>
+          <td width="350" align="left"><b>'.$first_cship['name'].'</b> ('.$first_cship['hitpoints'].'/'.$first_cship['max_hitpoints'].', Exp: '.$first_cship['experience'].')<br>'.constant($game->sprache("TEXT51")).' '.$first_cship['unit_1'].'/'.$first_cship['unit_2'].'/'.$first_cship['unit_3'].'/'.$first_cship['unit_4'].'</td>
         </tr>
         ');
 
@@ -895,7 +888,7 @@ switch($step) {
             $game->out('
         <tr>
           <td align="right"><input type="radio" name="ship_id" value="'.$cship['ship_id'].'"></td>
-          <td align="left"><b>'.$cship['name'].'</b> ('.$cship['hitpoints'].'/'.$cship['max_hitpoints'].', Exp: '.$cship['experience'].')<br>Besatzung: '.$cship['unit_1'].'/'.$cship['unit_2'].'/'.$cship['unit_3'].'/'.$cship['unit_4'].'</td>
+          <td align="left"><b>'.$cship['name'].'</b> ('.$cship['hitpoints'].'/'.$cship['max_hitpoints'].', Exp: '.$cship['experience'].')<br>'.constant($game->sprache("TEXT51")).' '.$cship['unit_1'].'/'.$cship['unit_2'].'/'.$cship['unit_3'].'/'.$cship['unit_4'].'</td>
         </tr>
             ');
         }
@@ -903,7 +896,7 @@ switch($step) {
         $game->out('
       </table><br><br>
       <br>
-      <center><input class="button" type="button" name="cancel" value="<< Zurück" value="<< Zurück" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="Durchführen"></center>
+      <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
     </td>
   </tr>
   </form>
@@ -912,7 +905,7 @@ switch($step) {
     break;
     
     default:
-        message(GENERAL, 'Ungültige Parameterübergabe', '$step = "'.$step.'"');
+        message(GENERAL, constant($game->sprache("TEXT1")), '$step = "'.$step.'"');
     break;
 }
 
