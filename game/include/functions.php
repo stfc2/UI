@@ -878,7 +878,7 @@ class game {
 	var $galaxy_map_size = 368;
 	var $quadrant_map_size = 368;
 	var $sector_map_size = 368;
-	var $system_map_size = 368;
+	var $system_map_size = 472;
 
 	var $galaxy_detail_map_size = 503;
 
@@ -886,7 +886,7 @@ class game {
 	var $sector_map_split = 9;
 	var $system_max_planets = 5;
 	var $starsize_range = array(10, 20);
-	var $planet_distances = array( array(43, 53), array(68, 78), array(93, 103), array(118, 128), array(143, 155) );
+	var $planet_distances = array( array(43, 53), array(68, 78), array(93, 103), array(118, 128), array(143, 155), array(170, 180), array(195, 205), array(220, 230) );
 
 	var $uid_cache = array();
 
