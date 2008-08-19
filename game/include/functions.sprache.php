@@ -236,45 +236,54 @@ define ("GER_MOVEATTACKBOMB", 'Angreifen und Bombardieren');
 define ("GER_MOVEATTACKTAKE", 'Angreifen und &uuml;bernehmen');
 
 // Used by init_player()
-define ("GER_INVCALL1", 'Ungültiger Aufruf<br><br><br>Dieser Fehler kann entstehen unter anderem entstehen,<br>wenn du versuchst, zwei Dinge gleichzeitig zu bauen.<br>Gehe in diesem Fall zurück zum Baumenü und versuche es erneut.');
+define ("GER_INVCALL1", 'Ung&uuml;ltiger Aufruf<br><br><br>Dieser Fehler kann entstehen unter anderem entstehen,<br>wenn du versuchst, zwei Dinge gleichzeitig zu bauen.<br>Gehe in diesem Fall zur&uuml;ck zum Baumen&uuml; und versuche es erneut.');
 
-define ("GER_INVCALL2", 'Ungültiger Aufruf, keine ID gefunden<br><br><br>Dieser Fehler kann entstehen unter anderem entstehen,<br>wenn du versuchst, zwei Dinge gleichzeitig zu bauen.<br>Gehe in diesem Fall zurück zum Baumenü und versuche es erneut.');
+define ("GER_INVCALL2", 'Ung&uuml;ltiger Aufruf, keine ID gefunden<br><br><br>Dieser Fehler kann entstehen unter anderem entstehen,<br>wenn du versuchst, zwei Dinge gleichzeitig zu bauen.<br>Gehe in diesem Fall zur&uuml;ck zum Baumen&uuml; und versuche es erneut.');
 
-define ("GER_INVCALL3", 'Ungültiger Aufruf, User oder Aufruf falsch<br><br><br>Dieser Fehler kann entstehen unter anderem entstehen,<br>wenn du versuchst, zwei Dinge gleichzeitig zu bauen.<br>Gehe in diesem Fall zurück zum Baumenü und versuche es erneut.');
+define ("GER_INVCALL3", 'Ung&uuml;ltiger Aufruf, User oder Aufruf falsch<br><br><br>Dieser Fehler kann entstehen unter anderem entstehen,<br>wenn du versuchst, zwei Dinge gleichzeitig zu bauen.<br>Gehe in diesem Fall zur&uuml;ck zum Baumen&uuml; und versuche es erneut.');
 
 define ("GER_NOPLANETFND", 'Der Planet wurde nicht gefunden');
 
-define ("GER_NOPLANETOWN", 'Der Planet gehört dir nicht');
+define ("GER_NOPLANETOWN", 'Der Planet geh&ouml;rt dir nicht');
 
 define ("GER_SITBLOCKED", 'Der Sittingmodus dieses Spielers wurde fur 24 Stunden gesperrt.<br>Dr&uuml;ck F5 und log dich neu ein.');
 
 define ("GER_NOCOOKIE", '<br>Es konnte keine Session-Cookie gesetzt werden, bitte &uuml;berpr&uuml;fe die Cookie-Einstellungen deines Browsers');
 
-define ("GER_HOMELOST", 'Da dein Heimatplanet von einem anderen Spieler angegriffen und übernommen wurde, wurde auf deiner ältesten Kolonie ein provisorischer Regierungssitz eingerichtet. Du kannst jedoch deine neue Heimatwelt auch auf einen anderen Planeten verlegen.<br><b>Diese Wahl kann nicht mehr rückgängig gemacht werden.</b>');
+define ("GER_HOMELOST", 'Da dein Heimatplanet von einem anderen Spieler angegriffen und &uuml;bernommen wurde, wurde auf deiner &auml;ltesten Kolonie ein provisorischer Regierungssitz eingerichtet. Du kannst jedoch deine neue Heimatwelt auch auf einen anderen Planeten verlegen.<br><b>Diese Wahl kann nicht mehr r&uuml;ckg&auml;ngig gemacht werden.</b>');
 
 define ("GER_REDALRM", 'ROTER ALARM');
 
 define ("GER_APPLY", '&Uuml;bernehmen');
 
-define ("GER_INVRACE", 'Ungültige Rasse');
+define ("GER_INVRACE", 'Ung&uuml;ltige Rasse');
 
 // Used by load_active_planet()
-define ("GER_NONEWPLANET", 'Es konnte kein neuer Planet für dich erstellt werden');
+define ("GER_NONEWPLANET", 'Es konnte kein neuer Planet f&uuml;r dich erstellt werden');
 
-define ("GER_NEWPLANET1", 'Es wurde kein Planet für');
+define ("GER_NEWPLANET1", 'Es wurde kein Planet f&uuml;r');
 
-define ("GER_NEWPLANET2", 'gefunden, daher wurde versucht, einen neuen zu erschaffen.<br>Aktualisiere diese Seite (durch Klicken auf "Aktualisieren"/"Neu Laden" oder Drücken von F5), um es noch einmal zu versuchen.');
+define ("GER_NEWPLANET2", 'gefunden, daher wurde versucht, einen neuen zu erschaffen.<br>Aktualisiere diese Seite (durch Klicken auf "Aktualisieren"/"Neu Laden" oder Dr&uuml;cken von F5), um es noch einmal zu versuchen.');
 
 // Used by get_system_cname()
-define ("GER_INVYCOORD", 'Ungültige Y-Koordinate für System angegeben');
+define ("GER_INVYCOORD", 'Ung&uuml;ltige Y-Koordinate f&uuml;r System angegeben');
 
-define ("GER_INVXCOORD", 'Ungültige X-Koordinate für System angegeben');
+define ("GER_INVXCOORD", 'Ung&uuml;ltige X-Koordinate f&uuml;r System angegeben');
 
 // Used by get_alliance_name()
-define ("GER_DELETED", '<i>gelöscht</i>');
+define ("GER_DELETED", '<i>gel&ouml;scht</i>');
 
 // Used by sitting operation
 define ("GER_LOGOUT", 'Ausloggen');
+
+// Used by get_wares_by_ker()
+define ("GER_METAL", 'Metall');
+
+define ("GER_MINERALS", 'Mineralien');
+
+define ("GER_DILITHIUM", 'Latinum');
+
+define ("GER_WORKERS2", 'Arbeiter');
 
 
 //English
@@ -533,6 +542,15 @@ define ("ENG_DELETED", '<i>deleted</i>');
 // Used by sitting operation
 define ("ENG_LOGOUT", 'Logout');
 
+// Used by get_wares_by_ker()
+define ("ENG_METAL", 'Metal');
+
+define ("ENG_MINERALS", 'Minerals');
+
+define ("ENG_DILITHIUM", 'Dilithium');
+
+define ("ENG_WORKERS2", 'Workers');
+
 
 //Italian
 
@@ -789,6 +807,15 @@ define ("ITA_DELETED", '<i>cancellata</i>');
 
 // Used by sitting operation
 define ("ITA_LOGOUT", 'Logout');
+
+// Used by get_wares_by_ker()
+define ("ITA_METAL", 'Metallo');
+
+define ("ITA_MINERALS", 'Minerali');
+
+define ("ITA_DILITHIUM", 'Dilitio');
+
+define ("ITA_WORKERS2", 'Lavoratori');
 
 
 ?>

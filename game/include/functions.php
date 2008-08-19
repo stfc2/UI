@@ -474,19 +474,18 @@ function get_wares_by_id($user_race = 0) {
 }
 
 function get_wares_by_key($user_race = 0) {
-	global $UNIT_NAME;
+	global $UNIT_NAME, $game;
 
 	if(!$user_race) {
-		global $game;
 
 		$user_race = $game->player['user_race'];
 	}
 
 	return array(
-		'resource_1' => 'Metall',
-		'resource_2' => 'Mineralien',
-		'resource_3' => 'Latinum',
-		'resource_4' => 'Arbeiter',
+		'resource_1' => constant($game->sprache("METAL")),
+		'resource_2' => constant($game->sprache("MINERALS")),
+		'resource_3' => constant($game->sprache("DILITHIUM")),
+		'resource_4' => constant($game->sprache("WORKERS2")),
 		'unit_1' => $UNIT_NAME[$user_race][0],
 		'unit_2' => $UNIT_NAME[$user_race][1],
 		'unit_3' => $UNIT_NAME[$user_race][2],
