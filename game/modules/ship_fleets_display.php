@@ -446,7 +446,7 @@ function ShipSelection(cSelectType) {
         <tr><td height="5"></td></tr>
         <tr>
           <td><select style="width: 130px;" name="to_fleet">'.$other_fleets_html.'</select></td>
-          <td><input class="button" style="width: 130px;" type="submit" name="change_fleet_submit" value="'.constant($game->sprache("TEXT44")).'" onClick="return document.fleet_form.action = \''.parse_link('a=ship_fleets_distribute&change_fleet='.$fleet_id).'\'">'.( ( ($n_resources > 0) || ($n_units > 0) ) ? '&nbsp;&nbsp;<input class="button" type="submit" name="loadingf_submit" value="'.constant($game->sprache("TEXT45")).'"  onClick="return document.fleet_form.action = \''.parse_link('a=ship_fleets_loadingf&to').'\'">' : '' ).'</td>
+          <td><input class="button" style="width: 130px;" type="submit" name="change_fleet_submit" value="'.constant($game->sprache("TEXT44")).'" onClick="return document.fleet_form.action = \''.parse_link('a=ship_fleets_distribute&change_fleet='.$fleet_id).'\'">'.( ( ($n_resources > 0) || ($n_units > 0) ) ? '&nbsp;&nbsp;<input class="button" style="width: 130px;" type="submit" name="loadingf_submit" value="'.constant($game->sprache("TEXT45")).'"  onClick="return document.fleet_form.action = \''.parse_link('a=ship_fleets_loadingf&to').'\'">' : '' ).'</td>
         </tr>
         ');
     }

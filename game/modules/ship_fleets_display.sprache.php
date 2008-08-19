@@ -112,7 +112,7 @@ define ("GER_TEXT43", 'Neue Flotte Gründen');
 
 define ("GER_TEXT44", 'Flotte wechseln');
 
-define ("GER_TEXT45", 'Flotte belanden');
+define ("GER_TEXT45", 'Flotte beladen');
 
 define ("GER_TEXT46", 'Kolonien/Memo:');
 
@@ -259,9 +259,9 @@ define ("ENG_TEXT42", 'Set home port');
 
 define ("ENG_TEXT43", 'Create new fleet');
 
-define ("ENG_TEXT44", 'Fleet switch');
+define ("ENG_TEXT44", 'Switch fleet');
 
-define ("ENG_TEXT45", 'Flotte belanden');
+define ("ENG_TEXT45", 'Load fleet');
 
 define ("ENG_TEXT46", 'Colony/Memo:');
 
@@ -410,7 +410,7 @@ define ("ITA_TEXT43", 'Crea nuova flotta');
 
 define ("ITA_TEXT44", 'Cambia flotta');
 
-define ("ITA_TEXT45", 'Flotte belanden');
+define ("ITA_TEXT45", 'Carica flotta');
 
 define ("ITA_TEXT46", 'Colonia/Memo:');
 
