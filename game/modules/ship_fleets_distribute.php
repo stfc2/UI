@@ -26,18 +26,18 @@ $game->init_player();
 
 if(!empty($_GET['new_fleet'])) {
     if(empty($_POST['ships'])) {
-        message(NOTICE, 'Es wurde kein Schiff ausgewï¿½lt');
+        message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
     if(empty($_POST['new_fleet_name'])) {
-        message(NOTICE, 'Es wurde kein Name fr die neue Flotte angegeben');
+        message(NOTICE, constant($game->sprache("TEXT1")));
     }
 
     $old_fleet_id = (int)$_GET['new_fleet'];
     $new_fleet_name = addslashes(htmlspecialchars($_POST['new_fleet_name']));
 
     // #############################################################################
-    // Flotten-Daten abfragen
+    // Fleet data query
 
     $sql = 'SELECT *
             FROM ship_fleets
@@ -48,15 +48,15 @@ if(!empty($_GET['new_fleet'])) {
     }
 
     if(empty($old_fleet['fleet_id'])) {
-        message(NOTICE, 'Ursprngliche Flotte existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT2")));
     }
 
     if($old_fleet['user_id'] != $game->player['user_id']) {
-        message(NOTICE, 'Ursprngliche Flotte existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT2")));
     }
 
     // #############################################################################
-    // $_POST['ships'] parsen
+    // Parse $_POST['ships']
 
     $ship_ids = array();
 
@@ -69,43 +69,43 @@ if(!empty($_GET['new_fleet'])) {
     }
 
     if(empty($ship_ids)) {
-        message(NOTICE, 'Es wurde kein Schiff ausgewï¿½lt');
+        message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
     $changed_ships = count($ship_ids);
 
     $sql = 'SELECT COUNT(ship_id) AS num FROM ships WHERE ship_id IN ('.implode(',', $ship_ids).') AND fleet_id='.$old_fleet_id;
     if(!($get_row=$db->queryrow($sql))) {message(DATABASE_ERROR, 'Could not query ships fleet data');}
-    if($get_row['num']!=$changed_ships) {message(NOTICE, 'Cheatversuch');}
+    if($get_row['num']!=$changed_ships) {message(NOTICE, constant($game->sprache("TEXT3")));}
 
 
     if($changed_ships > $old_fleet['n_ships']) {
-        message(NOTICE, 'Die alte Flotte besitzt weniger Schiffe als gewechselt werden sollen');
+        message(NOTICE, constant($game->sprache("TEXT4")));
     }
     elseif($changed_ships == $old_fleet['n_ships']) {
-        message(NOTICE, 'Wenn aus allen Schiffen eine neue Flotte erstellt werden soll, kann man die bisherige auch einfach umbennen');
+        message(NOTICE, constant($game->sprache("TEXT5")));
     }
 
     // #############################################################################
-    // Ladung der Flotte checken
+    // Check load of the fleet
 
     $n_oresources = $old_fleet['resource_1'] + $old_fleet['resource_2'] + $old_fleet['resource_3'];
     $n_ounits = $old_fleet['resource_4'] + $old_fleet['unit_1'] + $old_fleet['unit_2'] + $old_fleet['unit_3'] + $old_fleet['unit_4'] + $old_fleet['unit_5'] + $old_fleet['unit_6'];
 
-    // Nur wenn die alte Flotte die bisherige Ladung nicht mehr tragen kann, werden Teile
-    // auf die neue Flotte verlagert und zwar das Maximum ihrer Kapazitï¿½
-    // (ist wesentlich einfacher zu programmieren)
+    // Only if the old fleet cannot carry the past load any longer, parts are shifted
+    // on the new fleet to the maximum of their capacity
+    // (is substantially simpler to program) 
     $wares_loaded = ( ($n_oresources > 0) || ($n_ounits) );
 
-    // Hier werden die Ladung, die an die neue Flotte bergeben wird, gespeichert
+    // Here the load, which is loaded to the new fleet, are stored
     $nwares = array();
 
-    // Steuert das SQL-Verhalten beim Update
+    // Controls the SQL behavior when Update
     $distribute_wares = false;
 
 
     // #############################################################################
-    // Umverteilung der Ladung bestimmen
+    // Determine redistribution of cargo
 
     if($wares_loaded) {
         $sql = 'SELECT s.ship_id
@@ -118,10 +118,10 @@ if(!empty($_GET['new_fleet'])) {
             message(DATABASE_ERROR, 'Could not query ships data');
         }
 
-        // $_o -> alte, unverï¿½derte Flotte
-        // $_n -> neue, verkleinerte Flotte
-        // $_c -> neue, abgespaltene Flotte
-        //        (c kommt von change, da dieser Code ein modifiziertes change_fleet ist)
+        // $_o -> old, unver???derte fleet
+        // $_n -> new, reduced fleet
+        // $_c -> new, separated fleet
+        //        (c comes from change, since this code is a modified change_fleet)
 
         $n_ntransporter = $n_ctransporter = 0;
 
@@ -133,13 +133,13 @@ if(!empty($_GET['new_fleet'])) {
         $max_nresources = $n_ntransporter * MAX_TRANSPORT_RESOURCES;
         $max_nunits = $n_ntransporter * MAX_TRANSPORT_UNITS;
 
-        // Rohstoffe ausgleichen
+        // Adjust raw materials
         $n_nresources = $n_oresources;
         $r_type = 1;
 
         while($n_nresources > $max_nresources) {
             if($r_type == 4) {
-                message(GENERAL, 'Der Lagerraum (Rohstoffe) der Flotten reicht nicht aus (ist eine Flotte berladen?)', 'Unexspected: $r_type = 4');
+                message(GENERAL, constant($game->sprache("TEXT6")), 'Unexspected: $r_type = 4');
             }
 
             $to_move = $n_nresources - $max_nresources;
@@ -152,11 +152,11 @@ if(!empty($_GET['new_fleet'])) {
             ++$r_type;
         }
 
-        // Einheiten ausgleichen
-        // HINWEIS: Etwas komplizierter, da es nicht linear verlï¿½ft, sondern
-        //          resource_4 -> unit_1 vorkommt, daher werden wir resource_4
-        //          zuerst gesondert bearbeiten und dann ggf. noch in einem
-	    //          while() die unit_1 - unit_6
+        // Adjust units
+        // NOTICE: Etwas komplizierter, da es nicht linear verl???ft, sondern
+        //         resource_4 -> unit_1 vorkommt, daher werden wir resource_4
+        //         zuerst gesondert bearbeiten und dann ggf. noch in einem
+	    //         while() die unit_1 - unit_6
         $n_nunits = $n_ounits;
 
         if($n_nunits > $max_nunits) {
@@ -172,7 +172,7 @@ if(!empty($_GET['new_fleet'])) {
 
         while($n_nunits > $max_nunits) {
             if($u_type == 7) {
-                message(GENERAL, 'Der Lagerraum (Einheiten) der Flotten reicht nicht aus (ist eine Flotte berladen?)', 'Unexspected: $u_type = 7');
+                message(GENERAL, constant($game->sprache("TEXT7")), 'Unexspected: $u_type = 7');
             }
 
             $to_move = $n_nunits - $max_nunits;
@@ -185,15 +185,15 @@ if(!empty($_GET['new_fleet'])) {
             ++$u_type;
         }
 
-        // ï¿½erprfung, ob Waren getauscht wurden
-        // WICHTIG: Wenn ja, unbedingt sicherstellen, das ALLE Werte in $nwares
-        //          existieren, da es sonst SQL-Syntax-Fehler gibt
+        // ???erprfung, ob Waren getauscht wurden
+        // IMPORTANT: If, absolutely sure, that ALL values exist into
+        //            $nwares, since there are otherwise SQL syntax errors 
 
         if(!empty($nwares)) {
             $distribute_wares = true;
 
-            // Thereotisch msste der erste Wert immer gesetzt sein, aber sicher
-            // ist sicher
+            // Theoretically had to be always set the first value, but 
+            // is safe reliably
             if(empty($nwares['resource_1'])) $nwares['resource_1'] = 0;
             if(empty($nwares['resource_2'])) $nwares['resource_2'] = 0;
             if(empty($nwares['resource_3'])) $nwares['resource_3'] = 0;
@@ -208,7 +208,7 @@ if(!empty($_GET['new_fleet'])) {
     }
     
     // #############################################################################
-    // Daten der alten Flotte updaten
+    // Update data of the old fleet
 
     if($distribute_wares) {
         $sql = 'UPDATE ship_fleets
@@ -236,7 +236,7 @@ if(!empty($_GET['new_fleet'])) {
     }
     
     // #############################################################################
-    // Neue Flotte grnden
+    // Create new fleet
     
     if($distribute_wares) {
         $sql = 'INSERT INTO ship_fleets (fleet_name, user_id, planet_id, move_id, n_ships, resource_1, resource_2, resource_3, resource_4, unit_1, unit_2, unit_3, unit_4, unit_5, unit_6)
@@ -254,11 +254,11 @@ if(!empty($_GET['new_fleet'])) {
     $new_fleet_id = $db->insert_id();
     
     if(empty($new_fleet_id)) {
-        message(GENERAL, 'Neue Flotte konnte nicht richtig erstellt werden', '$new_fleet_id = empty');
+        message(GENERAL, constant($game->sprache("TEXT8")), '$new_fleet_id = empty');
     }
 
     // #############################################################################
-    // Daten der Schiffe updaten
+    // Update data of the ships
 
     $sql = 'UPDATE ships
             SET fleet_id = '.$new_fleet_id.'
@@ -268,12 +268,12 @@ if(!empty($_GET['new_fleet'])) {
     }
     
     // #############################################################################
-    // Redirect bzw. Redistribute Meldung
+    // Redirect and/or Redistribute message
 
     if($distribute_wares) {
-        $game->out('<center><span class="caption">Flotten:</span></center>');
+        $game->out('<center><span class="caption">'.constant($game->sprache("TEXT9")).'</span></center>');
 
-        $str = 'Da die verkleinerte Flotte nicht mehr alle Rohstoffe/Einheiten der ursprnglichen Flotte transportieren konnte, wurden folgende Waren von den abgespaltenen Schiffen mitgenommen:<br><br>';
+        $str = constant($game->sprache("TEXT10"));
 
         $wares_names = get_wares_names();
 
@@ -281,7 +281,7 @@ if(!empty($_GET['new_fleet'])) {
             if($value > 0) $str .= $wares_names[$key].': <b>'.$value.'</b><br>';
         }
 
-        $str .= '<br><a href="'.parse_link('a=ship_fleets_display&'.( (!empty($old_fleet['planet_id'])) ? 'p' : 'm' ).'fleet_details='.$old_fleet_id).'">zur verkleinerten Flotte</a><br><a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$new_fleet_id).'">zur neu gegründeten Flotte</a>';
+        $str .= '<br><a href="'.parse_link('a=ship_fleets_display&'.( (!empty($old_fleet['planet_id'])) ? 'p' : 'm' ).'fleet_details='.$old_fleet_id).'">'.constant($game->sprache("TEXT11")).'</a><br><a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$new_fleet_id).'">'.constant($game->sprache("TEXT12")).'</a>';
 
         message(NOTICE, $str);
     }
@@ -291,18 +291,18 @@ if(!empty($_GET['new_fleet'])) {
 }
 elseif(!empty($_GET['change_fleet'])) {
     if(empty($_POST['ships'])) {
-        message(NOTICE, 'Es wurde kein Schiff ausgewählt');
+        message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
     if(empty($_POST['to_fleet'])) {
-        message(NOTICE, 'Es wurde keine Zielflotte angegeben');
+        message(NOTICE, constant($game->sprache("TEXT13")));
     }
 
     $old_fleet_id = (int)$_GET['change_fleet'];
     $new_fleet_id = (int)$_POST['to_fleet'];
 
     // #############################################################################
-    // Flotten-Daten abfragen
+    // Fleet data query
 
     $sql = 'SELECT *
             FROM ship_fleets
@@ -322,35 +322,35 @@ elseif(!empty($_GET['change_fleet'])) {
     }
 
     if(empty($old_fleet['fleet_id'])) {
-        message(NOTICE, 'Ursprngliche Flotte existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT2")));
     }
 
     if($old_fleet['user_id'] != $game->player['user_id']) {
-        message(NOTICE, 'Ursprngliche Flotte existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT2")));
     }
 
     if(empty($new_fleet['fleet_id'])) {
-        message(NOTICE, 'Neue Flotte existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT14")));
     }
 
     if($new_fleet['user_id'] != $game->player['user_id']) {
-        message(NOTICE, 'Neue Flotte existiert nicht');
+        message(NOTICE, constant($game->sprache("TEXT14")));
     }
 
-    // Schiffe kï¿½nen nur die Flotte wechseln, wenn sie sich am selben Ort befinden
+    // Ships can only change the fleet when they are on the same site
     if(!empty($old_fleet['planet_id'])) {
         if($old_fleet['planet_id'] != $new_fleet['planet_id']) {
-            message(NOTICE, 'Die Flotten halten sich nicht am selben Ort (Planet) auf');
+            message(NOTICE, constant($game->sprache("TEXT15")));
         }
     }
     else {
         if($old_fleet['move_id'] != $new_fleet['move_id']) {
-            message(NOTICE, 'Die Flotten halten sich nicht am selben Ort (Flug) auf');
+            message(NOTICE, constant($game->sprache("TEXT16")));
         }
     }
 
     // #############################################################################
-    // $_POST['ships'] parsen
+    // Parse $_POST['ships']
 
     $ship_ids = array();
 
@@ -364,43 +364,43 @@ elseif(!empty($_GET['change_fleet'])) {
 
 
     if(empty($ship_ids)) {
-        message(NOTICE, 'Es wurde kein Schiff ausgewï¿½lt');
+        message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
     $changed_ships = count($ship_ids);
 
     $sql = 'SELECT COUNT(ship_id) AS num FROM ships WHERE ship_id IN ('.implode(',', $ship_ids).') AND fleet_id='.$old_fleet_id;
     if(!($get_row=$db->queryrow($sql))) {message(DATABASE_ERROR, 'Could not query ships fleet data');}
-    if($get_row['num']!=$changed_ships) {message(NOTICE, 'Cheatversuch');}
+    if($get_row['num']!=$changed_ships) {message(NOTICE, constant($game->sprache("TEXT3")));}
 
 
 
     if($changed_ships > $old_fleet['n_ships']) {
-        message(NOTICE, 'Die alte Flotte besitzt weniger Schiffe als gewechselt werden sollen');
+        message(NOTICE, constant($game->sprache("TEXT4")));
     }
 
     $all_ship_change = ($changed_ships == $old_fleet['n_ships']);
 
     // #############################################################################
-    // Ladung der Flotte checken
+    // Check load of the fleet
 
     $n_oresources = $old_fleet['resource_1'] + $old_fleet['resource_2'] + $old_fleet['resource_3'];
     $n_ounits = $old_fleet['resource_4'] + $old_fleet['unit_1'] + $old_fleet['unit_2'] + $old_fleet['unit_3'] + $old_fleet['unit_4'] + $old_fleet['unit_5'] + $old_fleet['unit_6'];
 
-    // Nur wenn die alte Flotte die bisherige Ladung nicht mehr tragen kann, werden Teile
-    // auf die neue Flotte verlagert und zwar das Maximum ihrer Kapazitï¿½
-    // (ist wesentlich einfacher zu programmieren)
+    // Only if the old fleet cannot carry the past load any longer, parts are shifted
+    // on the new fleet to the maximum of their capacity
+    // (is substantially simpler to program) 
     $wares_loaded = ( ($n_oresources > 0) || ($n_ounits) );
 
-    // Hier werden die Ladung, die an die neue Flotte bergeben wird, gespeichert
+    // Here the load, which is loaded to the new fleet, are stored
     $nwares = array();
 
-    // Steuert das SQL-Verhalten beim Update
+    // Controls the SQL behavior when Update
     $distribute_wares = false;
 
 
     // #############################################################################
-    // Umverteilung der Ladung bestimmen
+    // Determine redistribution of cargo
 
     if($wares_loaded && $all_ship_change) {
         $nwares['resource_1'] = $old_fleet['resource_1'];
@@ -427,9 +427,9 @@ elseif(!empty($_GET['change_fleet'])) {
             message(DATABASE_ERROR, 'Could not query ships data');
         }
 
-        // $_o -> alte, unverï¿½derte Flotte
-        // $_n -> neue, verkleinerte Flotte
-        // $_c -> Wechselnde Schiffe
+        // $_o -> old, unver???derte fleet
+        // $_n -> new, reduced fleet
+        // $_c -> changing ships
 
         $n_ntransporter = $n_ctransporter = 0;
 
@@ -441,13 +441,13 @@ elseif(!empty($_GET['change_fleet'])) {
         $max_nresources = $n_ntransporter * MAX_TRANSPORT_RESOURCES;
         $max_nunits = $n_ntransporter * MAX_TRANSPORT_UNITS;
 
-        // Rohstoffe ausgleicheb
+        // Adjust raw materials
         $n_nresources = $n_oresources;
         $r_type = 1;
 
         while($n_nresources > $max_nresources) {
             if($r_type == 4) {
-                message(GENERAL, 'Der Lagerraum (Rohstoffe) der Flotten reicht nicht aus (ist eine Flotte berladen?)', 'Unexspected: $r_type = 4');
+                message(GENERAL, constant($game->sprache("TEXT6")), 'Unexspected: $r_type = 4');
             }
 
             $to_move = $n_nresources - $max_nresources;
@@ -460,10 +460,10 @@ elseif(!empty($_GET['change_fleet'])) {
             ++$r_type;
         }
 
-        // Einheiten ausgleichen
-        // HINWEIS: Etwas komplizierter, da es nicht linear verlï¿½ft, sondern
-        //          resource_4 -> unit_1 vorkommt, daher werden wir resource_4
-        //          zuerst gesondert bearbeiten und dann ggf. noch in ein while()
+        // Adjust units
+        // NOTICE: Etwas komplizierter, da es nicht linear verl???ft, sondern
+        //         resource_4 -> unit_1 vorkommt, daher werden wir resource_4
+        //         zuerst gesondert bearbeiten und dann ggf. noch in ein while()
         $n_nunits = $n_ounits;
 
         if($n_nunits > $max_nunits) {
@@ -479,7 +479,7 @@ elseif(!empty($_GET['change_fleet'])) {
 
         while($n_nunits > $max_nunits) {
             if($u_type == 7) {
-                message(GENERAL, 'Der Lagerraum (Einheiten) der Flotten reicht nicht aus (ist eine Flotte berladen?)', 'Unexspected: $u_type = 7');
+                message(GENERAL, constant($game->sprache("TEXT7")), 'Unexspected: $u_type = 7');
             }
 
             $to_move = $n_nunits - $max_nunits;
@@ -492,15 +492,15 @@ elseif(!empty($_GET['change_fleet'])) {
             ++$u_type;
         }
 
-        // ï¿½erprfung, ob Waren getauscht wurden
-        // WICHTIG: Wenn ja, unbedingt sicherstellen, das ALLE Werte in $nwares
-        //          existieren, da es sonst SQL-Syntax-Fehler gibt
+        // ???erprfung, ob Waren getauscht wurden
+        // IMPORTANT: If, absolutely sure, that ALL values exist into
+        //            $nwares, since there are otherwise SQL syntax errors 
 
         if(!empty($nwares)) {
             $distribute_wares = true;
 
-            // Thereotisch msste der erste Wert immer gesetzt sein, aber sicher
-            // ist sicher
+            // Theoretically had to be always set the first value, but 
+            // is safe reliably
             if(empty($nwares['resource_1'])) $nwares['resource_1'] = 0;
             if(empty($nwares['resource_2'])) $nwares['resource_2'] = 0;
             if(empty($nwares['resource_3'])) $nwares['resource_3'] = 0;
@@ -515,7 +515,7 @@ elseif(!empty($_GET['change_fleet'])) {
     }
 
     // #############################################################################
-    // Daten der Schiffe updaten
+    // Update data of the ships
 
     $sql = 'UPDATE ships
             SET fleet_id = '.$new_fleet_id.'
@@ -526,7 +526,7 @@ elseif(!empty($_GET['change_fleet'])) {
     }
 
     // #############################################################################
-    // Daten der alten Flotte updaten
+    // Update data of the old fleet
 
     if($all_ship_change) {
         $sql = 'DELETE FROM ship_fleets
@@ -564,7 +564,7 @@ elseif(!empty($_GET['change_fleet'])) {
     }
 
     // #############################################################################
-    // Daten der neuen Flotte updaten
+    // Update data of the new fleet
 
     if($distribute_wares) {
         $sql = 'UPDATE ship_fleets
@@ -592,12 +592,12 @@ elseif(!empty($_GET['change_fleet'])) {
     }
     
     // #############################################################################
-    // Redirect bzw. Redistribute Meldung
+    // Redirect and/or Redistribute message
 
     if($distribute_wares && !$all_ship_change) {
-        $game->out('<center><span class="caption">Flotten:</span></center>');
+        $game->out('<center><span class="caption">'.constant($game->sprache("TEXT9")).'</span></center>');
 
-        $str = 'Da die verkleinerte Flotte nicht mehr alle Rohstoffe/Einheiten der ursprnglichen Flotte transportieren konnte, wurden folgende Waren von den abgespaltenen Schiffen mitgenommen:<br><br>';
+        $str = constant($game->sprache("TEXT10"));
 
         $wares_names = get_wares_names();
 
@@ -605,7 +605,7 @@ elseif(!empty($_GET['change_fleet'])) {
             if($value > 0) $str .= $wares_names[$key].': <b>'.$value.'</b><br>';
         }
 
-        $str .= '<br><a href="'.parse_link('a=ship_fleets_display&'.( (!empty($old_fleet['planet_id'])) ? 'p' : 'm' ).'fleet_details='.$old_fleet_id).'">zur verkleinerten Flotte</a><br><a href="'.parse_link('a=ship_fleets_display&'.( (!empty($new_fleet['planet_id'])) ? 'p' : 'm' ).'fleet_details='.$new_fleet_id).'">zur vergrï¿½erten Flotte</a>';
+        $str .= '<br><a href="'.parse_link('a=ship_fleets_display&'.( (!empty($old_fleet['planet_id'])) ? 'p' : 'm' ).'fleet_details='.$old_fleet_id).'">'.constant($game->sprache("TEXT11")).'</a><br><a href="'.parse_link('a=ship_fleets_display&'.( (!empty($new_fleet['planet_id'])) ? 'p' : 'm' ).'fleet_details='.$new_fleet_id).'">'.constant($game->sprache("TEXT12")).'</a>';
 
         message(NOTICE, $str);
     }
