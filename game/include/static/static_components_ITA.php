@@ -2935,7 +2935,7 @@ $ship_components=array(
 1=>array(
         // Category Alloggi
         0=>array(
-             // Component Alloggi equipaggio I
+             // Component Alloggi Equipaggio I
              0=>array(
                     'name'=>'Alloggi equipaggio I',
                     'resource_1'=>'750',
@@ -2978,9 +2978,9 @@ $ship_components=array(
                     'torso_12'=>'0',
                     'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
                     'dev_info'=>'',
-            ), // Endof Component Alloggi equipaggio I
+            ), // Endof Component Alloggi Equipaggio I
 
-             // Component Alloggi equipaggio II
+             // Component Alloggi Equipaggio II
              1=>array(
                     'name'=>'Alloggi equipaggio II',
                     'resource_1'=>'1500',
@@ -3023,9 +3023,9 @@ $ship_components=array(
                     'torso_12'=>'0',
                     'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
                     'dev_info'=>'',
-            ), // Endof Component Alloggi equipaggio II
+            ), // Endof Component Alloggi Equipaggio II
 
-             // Component Alloggi equipaggio III
+             // Component Alloggi Equipaggio III
              2=>array(
                     'name'=>'Alloggi equipaggio III',
                     'resource_1'=>'2250',
@@ -3068,9 +3068,9 @@ $ship_components=array(
                     'torso_12'=>'0',
                     'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
                     'dev_info'=>'',
-            ), // Endof Component Alloggi equipaggio III
+            ), // Endof Component Alloggi Equipaggio III
 
-             // Component Alloggi equipaggio IV
+             // Component Alloggi Equipaggio IV
              3=>array(
                     'name'=>'Alloggi equipaggio IV',
                     'resource_1'=>'3000',
@@ -3113,9 +3113,9 @@ $ship_components=array(
                     'torso_12'=>'0',
                     'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
                     'dev_info'=>'',
-            ), // Endof Component Alloggi equipaggio IV
+            ), // Endof Component Alloggi Equipaggio IV
 
-             // Component Alloggi equipaggio V
+             // Component Alloggi Equipaggio V
              4=>array(
                     'name'=>'Alloggi equipaggio V',
                     'resource_1'=>'3750',
@@ -3158,9 +3158,9 @@ $ship_components=array(
                     'torso_12'=>'0',
                     'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
                     'dev_info'=>'',
-            ), // Endof Component Alloggi equipaggio V
+            ), // Endof Component Alloggi Equipaggio V
 
-             // Component Alloggi equipaggio VI
+             // Component Alloggi Equipaggio VI
              5=>array(
                     'name'=>'Alloggi equipaggio VI',
                     'resource_1'=>'4500',
@@ -3203,9 +3203,9 @@ $ship_components=array(
                     'torso_12'=>'0',
                     'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
                     'dev_info'=>'',
-            ), // Endof Component Alloggi equipaggio VI
+            ), // Endof Component Alloggi Equipaggio VI
 
-             // Component Alloggi equipaggio VII
+             // Component Alloggi Equipaggio VII
              6=>array(
                     'name'=>'Alloggi equipaggio VII',
                     'resource_1'=>'5250',
@@ -3248,9 +3248,9 @@ $ship_components=array(
                     'torso_12'=>'0',
                     'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
                     'dev_info'=>'',
-            ), // Endof Component Alloggi equipaggio VII
+            ), // Endof Component Alloggi Equipaggio VII
 
-             // Component Alloggi equipaggio VIII
+             // Component Alloggi Equipaggio VIII
              7=>array(
                     'name'=>'Alloggi equipaggio VIII',
                     'resource_1'=>'6000',
@@ -3293,9 +3293,9 @@ $ship_components=array(
                     'torso_12'=>'0',
                     'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
                     'dev_info'=>'',
-            ), // Endof Component Alloggi equipaggio VIII
+            ), // Endof Component Alloggi Equipaggio VIII
 
-             // Component Alloggi equipaggio IX
+             // Component Alloggi Equipaggio IX
              8=>array(
                     'name'=>'Alloggi equipaggio IX',
                     'resource_1'=>'6750',
@@ -3338,9 +3338,9 @@ $ship_components=array(
                     'torso_12'=>'0',
                     'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
                     'dev_info'=>'',
-            ), // Endof Component Alloggi equipaggio IX
+            ), // Endof Component Alloggi Equipaggio IX
 
-             // Component Alloggi equipaggio X
+             // Component Alloggi Equipaggio X
              9=>array(
                     'name'=>'Alloggi equipaggio X',
                     'resource_1'=>'10500',
@@ -3383,16 +3383,16 @@ $ship_components=array(
                     'torso_12'=>'0',
                     'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
                     'dev_info'=>'',
-            ), // Endof Component Alloggi equipaggio X
+            ), // Endof Component Alloggi Equipaggio X
 
       'name'=>'Alloggi',
       'num'=>'10',
-      ), // Endof Category Unterbringung
+      ), // Endof CategoryAlloggi
 
 
-        // Category Maschinenraum
+        // Category Sala Macchine
         1=>array(
-             // Component Warp Antrieb I
+             // Component Propulsore Warp
              0=>array(
                     'name'=>'Nucleo curvatura I',
                     'resource_1'=>'2000',
@@ -3435,9 +3435,9 @@ $ship_components=array(
                     'torso_12'=>'1',
                     'description'=>'Il primo modello di nucleo a curvatura. L&#146;energia viene prodotta attraverso una singolarit&agrave; quantica artificiale. Incrementa la velocit&agrave; massima di fattore warp 1.2.',
                     'dev_info'=>'',
-            ), // Endof Component Nucleo Curvatura I
+            ), // Endof Component Nucleo Curvatura
 
-             // Component Nucleo Curvatura II
+             // Component Nucleo Curvatura
              1=>array(
                     'name'=>'Nucleo curvatura II',
                     'resource_1'=>'2300',
@@ -3480,9 +3480,9 @@ $ship_components=array(
                     'torso_12'=>'1',
                     'description'=>'Secondo stadio di sviluppo del nucleo a curvatura. L&#146;energia viene prodotta attraverso una singolarit&agrave; quantica artificiale. Incrementa la velocit&agrave; della nave di fattore warp 1.6.',
                     'dev_info'=>'',
-            ), // Endof Component Nucleo Curvatura II
+            ), // Endof Component Nucleo CurvaturaI
 
-             // Component Nucleo Curvatura III
+             // Component Nucleo CurvaturaII
              2=>array(
                     'name'=>'Nucleo curvatura III',
                     'resource_1'=>'2500',
@@ -3525,9 +3525,9 @@ $ship_components=array(
                     'torso_12'=>'1',
                     'description'=>'Terzo stadio di sviluppo del nucleo a curvatura. L&#146;energia viene prodotta attraverso una singolarit&agrave; quantica artificiale. Incrementa la velocit&agrave; della nave di fattore warp 2.',
                     'dev_info'=>'',
-            ), // Endof Component Nucleo Curvatura III
+            ), // Endof Component Nucleo CurvaturaII
 
-             // Component Nucleo Curvatura IV
+             // Component Nucleo CurvaturaV
              3=>array(
                     'name'=>'Nucleo curvatura IV',
                     'resource_1'=>'3000',
@@ -3570,16 +3570,16 @@ $ship_components=array(
                     'torso_12'=>'1',
                     'description'=>'Stadio finale dello sviluppo del nucleo a curvatura. L&#146;energia viene prodotta attraverso una singolarit&agrave; quantica artificiale. Incrementa la velocit&agrave; della nave di fattore warp 2.6 e fornisce una grande quantit&agrave; di energia.',
                     'dev_info'=>'',
-            ), // Endof Component Nucleo Curvatura IV
+            ), // Endof Component Nucleo CurvaturaV
 
       'name'=>'Sala macchine',
       'num'=>'4',
-      ), // Endof Category Sala Macchine
+      ), // Endof Category Maschinenraum
 
 
         // Category Primäre Waffen
         2=>array(
-             // Component 'Disgregatore  MK IV
+             // Component Disgregatore MK IV
              0=>array(
                     'name'=>'Disgregatore MK IV',
                     'resource_1'=>'500',
@@ -3622,9 +3622,9 @@ $ship_components=array(
                     'torso_12'=>'0',
                     'description'=>'Il modello base di disgregatore romulano',
                     'dev_info'=>'',
-            ), // Endof Component 'Disgregatore  MK IV
+            ), // Endof Component Disgregatore MK IV
 
-             // Component 'Disgregatore  MK VI
+             // Component Disgregatore MK VI
              1=>array(
                     'name'=>'Disgregatore MK VI',
                     'resource_1'=>'660',
@@ -3667,9 +3667,9 @@ $ship_components=array(
                     'torso_12'=>'0',
                     'description'=>'Modello di disgregatore potenziato rispetto al IV ma decisamente ancora debole.',
                     'dev_info'=>'',
-            ), // Endof Component 'Disgregatore  MK VI
+            ), // Endof Component Disgregatore MK VI
 
-             // Component 'Disgregatore  MK VIII
+             // Component Disgregatore MK VIII
              2=>array(
                     'name'=>'Disgregatore MK VIII',
                     'resource_1'=>'720',
@@ -3712,9 +3712,9 @@ $ship_components=array(
                     'torso_12'=>'0',
                     'description'=>'Il Disgregatore MK VIII raggiunge un livello di potenza discreto rispetto ai suoi predecessori.',
                     'dev_info'=>'',
-            ), // Endof Component 'Disgregatore  MK VIII
+            ), // Endof Component Disgregatore MK VIII
 
-             // Component 'Disgregatore  MK X
+             // Component Disgregatore MK X
              3=>array(
                     'name'=>'Disgregatore MK X',
                     'resource_1'=>'840',
@@ -3757,9 +3757,9 @@ $ship_components=array(
                     'torso_12'=>'1',
                     'description'=>'Elevato potere distruttivo, decisamente fatale se impiegato contro vascelli piccoli.',
                     'dev_info'=>'',
-            ), // Endof Component 'Disgregatore  MK X
+            ), // Endof Component Disgregatore MK X
 
-             // Component 'Disgregatore  MK XII
+             // Component Disgregatore MK XII
              4=>array(
                     'name'=>'Disgregatore MK XII',
                     'resource_1'=>'960',
@@ -3802,9 +3802,9 @@ $ship_components=array(
                     'torso_12'=>'1',
                     'description'=>'Il ragguardevole potere distruttivo risulta efficace anche su navi di medie dimensioni.',
                     'dev_info'=>'',
-            ), // Endof Component 'Disgregatore  MK XII
+            ), // Endof Component Disgregatore MK XII
 
-             // Component 'Disgregatore   MK XIV
+             // Component Disgregatore  MK XIV
              5=>array(
                     'name'=>'Disgregatore MK XIV',
                     'resource_1'=>'1230',
@@ -3847,9 +3847,9 @@ $ship_components=array(
                     'torso_12'=>'1',
                     'description'=>'Questo modello si rivela particolarmente micidiale e viene solitamente impiegato sulle principali navi da guerra.',
                     'dev_info'=>'',
-            ), // Endof Component 'Disgregatore   MK XIV
+            ), // Endof Component Disgregatore  MK XIV
 
-             // Component 'Disgregatore  MK XXI
+             // Component Disgregatore MK XXI
              6=>array(
                     'name'=>'Disgregatore MK XXI',
                     'resource_1'=>'1560',
@@ -3890,9 +3890,9 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Potere distruttivo enorme. Solitamente, non rimane traccia alcuna della nave colpita dai Disgregatori MK XXI.',
+                    'description'=>'Potere distruttivo enorme. Solitamente non rimane traccia alcuna della nave colpita dai Disgregatori MK XXI.',
                     'dev_info'=>'',
-            ), // Endof Component 'Disgregatore  MK XXI
+            ), // Endof Component Disgregatore MK XXI
 
       'name'=>'Armi primarie',
       'num'=>'7',
@@ -4032,7 +4032,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'I Siluri al Plasma sono costituiti da gas ionizzati ad altissima temperatura, racchiusi in un contenimento magnetico impiegato come involucro. A contatto con una superficie non protetta l&#146;involucro si dissipa liberando la forza distruttrice del plasma.',
+                    'description'=>'I siluri al plasma sono costituiti da gas ionizzati ad altissima temperatura, racchiusi in un contenimento magnetico impiegato come involucro. A contatto con una superficie non protetta l&#146;involucro si dissipa liberando la forza distruttrice del plasma.',
                     'dev_info'=>'',
             ), // Endof Component Plasmatorpedos MKI
 
@@ -4077,7 +4077,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'I Siluri al Plasma MK II sono basati sulla stessa tecnologia del modello precedente, caratterizzati da un migliore involucro elettromagnetico.',
+                    'description'=>'I siluri al plasma MK II sono basati sulla stessa tecnologia del modello precedente, caratterizzati da un migliore involucro elettromagnetico.',
                     'dev_info'=>'',
             ), // Endof Component Plasmatorpedos MK II
 
@@ -4122,7 +4122,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'I Siluri al Plasma MK V rappresentano lo stadio finale dello sviluppo di questa tecnologia. L&#146;enorme consumo di energia di questo sistema d&#146;arma ne rende possibile l&#146;impiego solo sulle navi da guerra maggiori, svolgendo anche il compito di armi planetarie.',
+                    'description'=>'I siluri al plasma MK V rappresentano lo stadio finale dello sviluppo di questa tecnologia. L&#146;enorme consumo di energia di questo sistema d&#146;arma ne rende possibile l&#146;impiego solo sulle navi da guerra maggiori, svolgendo anche il compito di armi planetarie.',
                     'dev_info'=>'',
             ), // Endof Component Plasmatorpedos MK  V
 
@@ -4135,7 +4135,7 @@ $ship_components=array(
         4=>array(
              // Component Duraniumpanzerung
              0=>array(
-                    'name'=>'Corazza in Duranio',
+                    'name'=>'Corazza in duranio',
                     'resource_1'=>'300',
                     'resource_2'=>'150',
                     'resource_3'=>'100',
@@ -4174,7 +4174,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'La corazzatura standard delle navi. Il Duranio &egrave; un acciaio particolarmente resistente e leggero.',
+                    'description'=>'La corazzatura standard delle navi. Il duranio &egrave; un acciaio particolarmente resistente e leggero.',
                     'dev_info'=>'',
             ), // Endof Component Duraniumpanzerung
 
@@ -4270,7 +4270,7 @@ $ship_components=array(
 
              // Component Duranium- Tritanium- Panzerung
              3=>array(
-                    'name'=>'Corazza Duranio-Tritanio',
+                    'name'=>'Corazza duranio-tritanio',
                     'resource_1'=>'600',
                     'resource_2'=>'300',
                     'resource_3'=>'200',
@@ -4309,7 +4309,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'La Corazza di Duranio-Tritanio rappresenta il massimo nella tecnologia di protezione degli scafi e consiste in un wafer di strati di Duranio e Tritanio sovrapposti.',
+                    'description'=>'La corazza di duranio-tritanio rappresenta il massimo nella tecnologia di protezione degli scafi e consiste in un wafer di strati di Duranio e Tritanio sovrapposti.',
                     'dev_info'=>'',
             ), // Endof Component Duranium- Tritanium- Panzerung
 
@@ -4390,7 +4390,7 @@ $ship_components=array(
                     'value_9'=>'0',
                     'value_10'=>'0',
                     'value_11'=>'0',
-                    'value_12'=>'12',
+                    'value_12'=>'6',
                     'value_13'=>'0',
                     'value_14'=>'2',
                     'value_15'=>'0',
@@ -4435,7 +4435,7 @@ $ship_components=array(
                     'value_9'=>'0',
                     'value_10'=>'0',
                     'value_11'=>'0',
-                    'value_12'=>'12',
+                    'value_12'=>'7',
                     'value_13'=>'0',
                     'value_14'=>'2',
                     'value_15'=>'0',
@@ -4480,7 +4480,7 @@ $ship_components=array(
                     'value_9'=>'0',
                     'value_10'=>'0',
                     'value_11'=>'0',
-                    'value_12'=>'12',
+                    'value_12'=>'8',
                     'value_13'=>'0',
                     'value_14'=>'3',
                     'value_15'=>'0',
@@ -4525,7 +4525,7 @@ $ship_components=array(
                     'value_9'=>'0',
                     'value_10'=>'0',
                     'value_11'=>'0',
-                    'value_12'=>'12',
+                    'value_12'=>'8',
                     'value_13'=>'0',
                     'value_14'=>'3',
                     'value_15'=>'0',
@@ -4570,7 +4570,7 @@ $ship_components=array(
                     'value_9'=>'0',
                     'value_10'=>'0',
                     'value_11'=>'0',
-                    'value_12'=>'12',
+                    'value_12'=>'9',
                     'value_13'=>'0',
                     'value_14'=>'5',
                     'value_15'=>'0',
@@ -5192,7 +5192,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'La Griglia di Sensori rappresenta un ulteriore sviluppo degli Scanner. L&#146;equipaggio viene supportato con un costante afflusso di dati da un numero maggiore di sensori, permettendo di reagire con pi&ugrave; prontezza nelle situazioni di emergenza.',
+                    'description'=>'La griglia di sensori rappresenta un ulteriore sviluppo degli Scanner. L&#146;equipaggio viene supportato con un costante afflusso di dati da un numero maggiore di sensori, permettendo di reagire con pi&ugrave; prontezza nelle situazioni di emergenza.',
                     'dev_info'=>'',
             ), // Endof Component Sensorgitter
 
@@ -5305,15 +5305,15 @@ $ship_components=array(
                     'value_3'=>'0',
                     'value_4'=>'0',
                     'value_5'=>'0',
-                    'value_6'=>'0',
-                    'value_7'=>'0',
-                    'value_8'=>'0',
+                    'value_6'=>'9',
+                    'value_7'=>'6',
+                    'value_8'=>'15',
                     'value_9'=>'0',
                     'value_10'=>'0',
                     'value_11'=>'0',
-                    'value_12'=>'10',
+                    'value_12'=>'12',
                     'value_13'=>'0',
-                    'value_14'=>'0',
+                    'value_14'=>'10',
                     'value_15'=>'0',
                     'torso_1'=>'0',
                     'torso_2'=>'0',
@@ -5327,7 +5327,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Il sistema di occultamento rappresenta una tecnologia tipicamente romulana. Esso rende molto difficile rilevare la presenza della nave.',
+                    'description'=>'Il sistema di occultamento rappresenta una tecnologia tipicamente romulana. Esso rende molto difficile rilevare la presenza della nave o colpirla in combattimento.',
                     'dev_info'=>'',
             ), // Endof Component Tarnvorrichtung
 
@@ -11719,7 +11719,7 @@ $ship_components=array(
                     'unit_4'=>'0',
                     'unit_5'=>'0',
                     'unit_6'=>'0',
-                    'value_1'=>'5',
+                    'value_1'=>'15',
                     'value_2'=>'0',
                     'value_3'=>'0',
                     'value_4'=>'0',
@@ -11764,8 +11764,8 @@ $ship_components=array(
                     'unit_4'=>'0',
                     'unit_5'=>'0',
                     'unit_6'=>'0',
-                    'value_1'=>'0',
-                    'value_2'=>'5',
+                    'value_1'=>'40',
+                    'value_2'=>'15',
                     'value_3'=>'0',
                     'value_4'=>'0',
                     'value_5'=>'0',
@@ -11810,8 +11810,8 @@ $ship_components=array(
                     'unit_5'=>'0',
                     'unit_6'=>'0',
                     'value_1'=>'95',
-                    'value_2'=>'10',
-                    'value_3'=>'2',
+                    'value_2'=>'35',
+                    'value_3'=>'5',
                     'value_4'=>'0',
                     'value_5'=>'0',
                     'value_6'=>'2',
@@ -12605,7 +12605,7 @@ $ship_components=array(
                     'value_8'=>'3',
                     'value_9'=>'0',
                     'value_10'=>'0',
-                    'value_11'=>'4',
+                    'value_11'=>'5',
                     'value_12'=>'0',
                     'value_13'=>'0',
                     'value_14'=>'1',
@@ -12645,12 +12645,12 @@ $ship_components=array(
                     'value_3'=>'0',
                     'value_4'=>'0',
                     'value_5'=>'0',
-                    'value_6'=>'0',
-                    'value_7'=>'0',
-                    'value_8'=>'0',
+                    'value_6'=>'2',
+                    'value_7'=>'4',
+                    'value_8'=>'3',
                     'value_9'=>'0',
                     'value_10'=>'0',
-                    'value_11'=>'2',
+                    'value_11'=>'9',
                     'value_12'=>'0',
                     'value_13'=>'0',
                     'value_14'=>'4',
@@ -12691,11 +12691,11 @@ $ship_components=array(
                     'value_4'=>'0',
                     'value_5'=>'0',
                     'value_6'=>'2',
-                    'value_7'=>'1',
-                    'value_8'=>'0',
+                    'value_7'=>'4',
+                    'value_8'=>'3',
                     'value_9'=>'0',
                     'value_10'=>'0',
-                    'value_11'=>'3',
+                    'value_11'=>'14',
                     'value_12'=>'0',
                     'value_13'=>'0',
                     'value_14'=>'5',
@@ -12736,11 +12736,11 @@ $ship_components=array(
                     'value_4'=>'0',
                     'value_5'=>'0',
                     'value_6'=>'3',
-                    'value_7'=>'2',
+                    'value_7'=>'5',
                     'value_8'=>'15',
                     'value_9'=>'0',
                     'value_10'=>'0',
-                    'value_11'=>'4',
+                    'value_11'=>'6',
                     'value_12'=>'0',
                     'value_13'=>'0',
                     'value_14'=>'5',
@@ -12830,7 +12830,7 @@ $ship_components=array(
                     'value_8'=>'4',
                     'value_9'=>'4',
                     'value_10'=>'0',
-                    'value_11'=>'8',
+                    'value_11'=>'10',
                     'value_12'=>'0',
                     'value_13'=>'0',
                     'value_14'=>'3',
@@ -13010,7 +13010,7 @@ $ship_components=array(
                     'value_1'=>'0',
                     'value_2'=>'0',
                     'value_3'=>'0',
-                    'value_4'=>'70',
+                    'value_4'=>'100',
                     'value_5'=>'0',
                     'value_6'=>'0',
                     'value_7'=>'0',
@@ -13056,7 +13056,7 @@ $ship_components=array(
                     'value_2'=>'0',
                     'value_3'=>'0',
                     'value_4'=>'0',
-                    'value_5'=>'120',
+                    'value_5'=>'200',
                     'value_6'=>'0',
                     'value_7'=>'0',
                     'value_8'=>'0',
@@ -13103,12 +13103,12 @@ $ship_components=array(
                     'value_4'=>'0',
                     'value_5'=>'0',
                     'value_6'=>'0',
-                    'value_7'=>'0',
-                    'value_8'=>'0',
+                    'value_7'=>'4',
+                    'value_8'=>'10',
                     'value_9'=>'0',
                     'value_10'=>'0',
                     'value_11'=>'0',
-                    'value_12'=>'10',
+                    'value_12'=>'12',
                     'value_13'=>'0',
                     'value_14'=>'4',
                     'value_15'=>'0',
