@@ -181,7 +181,7 @@ $BUILDING_NAME = array(
 
 	4 => array(
 
-		0 => 'Tempio dei Fondatorio',
+		0 => 'Tempio dei Fondatori',
 
 		1 => 'Campo Estrazione Metalli',
 
@@ -195,15 +195,15 @@ $BUILDING_NAME = array(
 
 		6 => 'Base Navale',
 
-		7 => 'Ormeggio Spaziale',
+		7 => 'Darsena Spaziale',
 
-		8 => 'Associazione per lo Sviluppo',
+		8 => 'Centro di Sviluppo',
 
 		9 => 'Piattaforma Orbitale',
 
 		10 => 'Centro Commerciale',
 
-		11 => 'Borsa Materiali Grezzi',
+		11 => 'Deposito Risorse',
 
 		12 => 'Piattaforma Orb. Leggera',
 
@@ -658,7 +658,7 @@ $UNIT_NAME = array(
 
 		1 => 'Guardia Imperiale',
 
-		2 => 'Fante d&#146;Elite',
+		2 => 'Elite',
 
 		3 => 'Ufficiale',
 
@@ -1410,27 +1410,27 @@ $BUILDING_DESCRIPTION = array (
 
 	4 => array(
 
-		0 => 'Je weiter der Gründertempel ausgebaut ist, umso mehr Gebäudepläne geben die Gründer frei.',
+		0 => 'Il livello del Tempio dei Fondatori influenza il numero di strutture edificabili sul pianeta.',
 
-		1 => 'Je größer das Metallabbaulager ist, um so mehr Sklaven können darin arbeiten und mehr Metall steht pro Tick zur Verfügung.',
+		1 => 'Maggiore il livello di questa struttura, maggiore &egrave; il numero di schiavi impiegati al suo interno e la quantit&agrave; di metallo prodotto.',
 
-		2 => 'Je größer das Mineralienabbaulager ist, umso mehr Sklaven können darin arbeiten und mehr Mineralien steht pro Tick zur Verfügung.',
+		2 => 'Maggiore il livello di questa struttura, maggiore &egrave; il numero di schiavi impiegati al suo interno e la quantit&agrave; di minerale prodotto.',
 
-		3 => 'Je größer das Latinumwerk ist, umso mehr Barren Latinum werden Sklaven pro Tick gießen.',
+		3 => 'Maggiore il livello di questa struttura, maggiore &egrave; il numero di schiavi impiegati al suo interno e la quantit&agrave; di dilitio prodotto.',
 
-		4 => 'Pro Energiekollektor können 10 Gebäude mit Energie versorgt werden.',
+		4 => 'Costruire un livello di questa struttura permette di alimentare 10 livelli di altre strutture presenti sul pianeta.',
 
-		5 => 'Je höher die Klonfabrik ausgebaut ist, umso komplexere Genome können reproduziert werden.',
+		5 => 'Sviluppando questa struttura possono essere generati un maggior numero di cloni con genomi differenti e specifici.',
 
-		6 => 'Das Raumdock dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet eine Verbesserung der Sensorenstärke.',
+		6 => 'Questa struttura permette il ricovero e la manutenzione delle navi. Potenziare questa struttura aumenta la potenza dei sensori sul pianeta e diminuisce il rischio di spionaggio da parte di navi ostili.',
 
-		7 => 'Je höher das Gebäude ausgebaut ist,<br>desto schneller können Schiffe gebaut werden.',
+		7 => 'Lo sviluppo di questa struttura permette di accelerare la costruzione delle navi.',
 
-		8 => 'Je effektiver die Erkenntnisvereinigung ist, umso mehr Technologien werden erkannt.',
+		8 => 'Il potenziamento di questa struttura rende possibile l&#146;accesso ad un maggior numero di tecnologie.',
 
 		9 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
 
-		10 => 'Dieses Gebäude dient zur automatischen Handelsabwicklung mit anderen Spielern.',
+		10 => 'Questa struttura permette gli scambi commerciali tra pianeti. A seconda del livello, &eacute possibile raggiungere pianeti molto distanti.',
 
 		11 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di materie prime stoccabili (circa 42.500 per livello).',
 
@@ -1719,7 +1719,8 @@ $TECH_DESCRIPTION = array (
 		3 => 'Attraverso l&#146;<b>Automazione</b> dei processi costruttivi delle strutture di questo pianeta, viene risparmiato circa il 20% del tempo di costruzione per livello.<br>Un risparmio di circa 1/5 del tempo di costruzione di ogni struttura giustifica l&#146;elevato costo in risorse per affrontare lo sviluppo.',
 
 		4 => 'Miglioramenti nella <b>Lavorazione dei Materiali</b> aumentano la quantit&agrave; di risorse estratte dalle miniere/raffinerie:<br>Liv. 1: +4,5%<br>Liv. 2: +8,75%<br>Liv. 3: +12,75%<br>Liv. 4: +16,5%<br>Liv. 5: +20%<br>Liv. 6: +23,25%<br>Liv. 7: +26,25%<br>Liv. 8: +29%<br>Liv. 9: +31,5%',
-	),
+
+	),
 
 
 
