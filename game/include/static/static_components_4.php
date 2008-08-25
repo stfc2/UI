@@ -27,11 +27,11 @@
 $ship_components=array(
 // Race Dominion
 4=>array(
-        // Categoria Nucleo Curvatura
+        // Category Warpkerne
         0=>array(
              // Component Level 1 Warpkern
              0=>array(
-                    'name'=>'Warpcore Livello 1',
+                    'name'=>'Level 1 Warpkern',
                     'resource_1'=>'450',
                     'resource_2'=>'225',
                     'resource_3'=>'0',
@@ -68,15 +68,15 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-	            'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Modello basico di fonte energetica per le astronavi. Pu&ograve; essere montato su tutte le navi e innalza la curvatura massima di Warp 1.0',
+                    'description'=>'Der Level 1 Warpkern ist die kleinste Variante der Energieeinheiten er kann in jedes Schiff eingebaut werden. Der Warpkern Level 1 erhöht den Warpfaktor um 1.',
                     'dev_info'=>'',
             ), // Endof Component Level 1 Warpkern
 
              // Component Level 2 Warpkern
              1=>array(
-                    'name'=>'Warpcore Livello 2',
+                    'name'=>'Level 2 Warpkern',
                     'resource_1'=>'1050',
                     'resource_2'=>'525',
                     'resource_3'=>'300',
@@ -113,15 +113,15 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-		    'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Modello avanzato che fornisce maggiore energia rispetto al livello precedente di sviluppo, il miglior Warpcore installabile su una nave civile.',
+                    'description'=>'Der Level 2 Warpkern ist eine weiterentwickelte Energiequelle, sie kann in jeden Schiffstyp eingebaut werden. Der Warpkern Level 2 erhöht den Warpfaktor um 1.',
                     'dev_info'=>'',
             ), // Endof Component Level 2 Warpkern
 
              // Component Level 3 Warpkern
              2=>array(
-                    'name'=>'Warpcore Livello 3',
+                    'name'=>'Level 3 Warpkern',
                     'resource_1'=>'1800',
                     'resource_2'=>'825',
                     'resource_3'=>'225',
@@ -158,15 +158,15 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-	            'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Modello di sviluppo intermedio. Il rendimento energetico &grave; ulteriormente migliorato. Questo &grave; il primo step di sviluppo del WarpCore dedicato esclusivamente alle navi militari.',
+                    'description'=>'Der Level 3 Warpkern ist die mittlere Variante der Energieeinheiten er kann in fast jedes Schiff eingebaut werden. Der Warpkern Level 3 erhöht den Warpfaktor um 1. Er ist dem Militär vorbehalten.',
                     'dev_info'=>'',
             ), // Endof Component Level 3 Warpkern
 
              // Component Dilithiumschmelze I
              3=>array(
-                    'name'=>'Fusione del Dilitio Liv. 1',
+                    'name'=>'Dilithiumschmelze I',
                     'resource_1'=>'3750',
                     'resource_2'=>'2250',
                     'resource_3'=>'900',
@@ -205,13 +205,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Per migliorare la resa dei Warpcore in termini di massima curvatura &egrave; stata sviluppata una tecnica di fusione del Dilitio. La curvatura massima della nave aumenta di Warp 2.0',
+                    'description'=>'Die Dilithiumschmelze ist eine neue Technologie die nur auf größeren Schiffen angewandt werden kann. sie erhöht den Warpfaktor um 2.',
                     'dev_info'=>'',
             ), // Endof Component Dilithiumschmelze I
 
              // Component Dilithiumschmelze II
              4=>array(
-                    'name'=>'Fusione del Dilitio Liv. 2',
+                    'name'=>'Dilithiumschmelze II',
                     'resource_1'=>'3750',
                     'resource_2'=>'2250',
                     'resource_3'=>'3750',
@@ -250,11 +250,11 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Lo sviluppo della tecnologia di fusione del dilitio ha permesso la realizzazione di un Warpcore in grado di fornire l&#146;energia necessaria alla propulsione delle navi maggiori della flotta.',
+                    'description'=>'Die Kombination aus 2 Dilithiumschmelzen und Warpkernen ist nur fuer die Dreadnought einsetzbar. Sie bietet maximale Energieausbeute.',
                     'dev_info'=>'',
             ), // Endof Component Dilithiumschmelze II
 
-      'name'=>'Warpcore',
+      'name'=>'Warpkerne',
       'num'=>'5',
       ), // Endof Category Warpkerne
 
@@ -263,7 +263,7 @@ $ship_components=array(
         1=>array(
              // Component Tachyonengondeln
              0=>array(
-                    'name'=>'Gondole Tachioniche Mk I',
+                    'name'=>'Tachyonengondeln',
                     'resource_1'=>'750',
                     'resource_2'=>'112.5',
                     'resource_3'=>'0',
@@ -300,15 +300,15 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-	            'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Le Gondole Tachioniche rappresentano il sistema basico di propulsione a curvatura, efficace solo per le navi civili.',
+                    'description'=>'Die Tachyonengondel ist unser erster Warpantrieb.',
                     'dev_info'=>'',
             ), // Endof Component Tachyonengondeln
 
              // Component Verbesserte Tachyonengondel
              1=>array(
-                    'name'=>'Gondole Tachioniche Mk II',
+                    'name'=>'Verbesserte Tachyonengondel',
                     'resource_1'=>'1125',
                     'resource_2'=>'300',
                     'resource_3'=>'75',
@@ -345,15 +345,15 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-	            'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Sviluppo della tecnologia di base che aumenta la potenza del campo di curvatura, aumentando la velocit&agrave; massima della nave al costo di un maggior consumo energetico.',
+                    'description'=>'Die Verbesserte Tachyonengondel ist eine Weiterentwicklung der Tachyonengondeln.',
                     'dev_info'=>'',
             ), // Endof Component Verbesserte Tachyonengondel
 
              // Component Gaußgondeln
              2=>array(
-                    'name'=>'Gondole Gauss',
+                    'name'=>'Gaußgondeln',
                     'resource_1'=>'4500',
                     'resource_2'=>'1200',
                     'resource_3'=>'600',
@@ -392,13 +392,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Le Gondole Gauss sono un progetto dedicato esclusivamente alle navi militari. La resa in termini di campo di curvatura e consumo energetico sono assolutamente superiori rispetto ai sistemi di curvatura precedenti.',
+                    'description'=>'Die Gaußgondeln sind ein geheimer militärischer Antrieb. Er steht nur den Streitkräften zur Verfügung.',
                     'dev_info'=>'',
             ), // Endof Component Gaußgondeln
 
              // Component Phasenkomprimierer
              3=>array(
-                    'name'=>'Compressore di Fase',
+                    'name'=>'Phasenkomprimierer',
                     'resource_1'=>'10500',
                     'resource_2'=>'3750',
                     'resource_3'=>'1800',
@@ -437,11 +437,11 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Il Compressore di Fase applicato alle Gondole Gauss realizzano il miglior sistema di curvatura esistente per la propulsione delle navi nello spazio.',
+                    'description'=>'Der Phasenkomprimierer ist eine der modernsten Möglichkeiten, sich durch das Raum-Zeit-Kontinuum zu bewegen.',
                     'dev_info'=>'',
             ), // Endof Component Phasenkomprimierer
 
-      'name'=>'Motori',
+      'name'=>'Antriebe',
       'num'=>'4',
       ), // Endof Category Antriebe
 
@@ -450,7 +450,7 @@ $ship_components=array(
         2=>array(
              // Component Polaronstrahler
              0=>array(
-                    'name'=>'Emettitore Polaronico',
+                    'name'=>'Polaronstrahler',
                     'resource_1'=>'600',
                     'resource_2'=>'225',
                     'resource_3'=>'0',
@@ -489,13 +489,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Tecnologia di base per le armi del Dominio.',
+                    'description'=>'Die Polaronstrahler sind die Grundwaffe des Dominion.',
                     'dev_info'=>'',
             ), // Endof Component Polaronstrahler
 
              // Component Polaronstrahl
              1=>array(
-                    'name'=>'Concentratore Polaronico',
+                    'name'=>'Polaronstrahl',
                     'resource_1'=>'1500',
                     'resource_2'=>'375',
                     'resource_3'=>'75',
@@ -534,13 +534,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Perfezionamento della tecnologia polaronica che ne aumenta notevolmente la capacit&agrave; distruttiva. Questa tecnologia &egrave; rappresenta il meglio impiegabile su navi civili.',
+                    'description'=>'Der Polaronstrahl ist eine konsequente Weiterentwicklung der Polarontechnologie.',
                     'dev_info'=>'',
             ), // Endof Component Polaronstrahl
 
              // Component Impulspoleronkannone
              2=>array(
-                    'name'=>'Impulsi Polaronici Liv. 1',
+                    'name'=>'Impulspoleronkannone',
                     'resource_1'=>'5250',
                     'resource_2'=>'750',
                     'resource_3'=>'150',
@@ -579,13 +579,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'La tecnologia degli Impulsi Polaronici permette la creazione di un cannone basato sull&#146;impiego delle onde polaroniche.',
+                    'description'=>'Die Impulspoleronkannone stellt die höchste Entwicklungsstufe der Polarontechnik dar.',
                     'dev_info'=>'',
             ), // Endof Component Impulspoleronkannone
 
              // Component Massebeschleuniger
              3=>array(
-                    'name'=>'Acceleratore di massa',
+                    'name'=>'Massebeschleuniger',
                     'resource_1'=>'6750',
                     'resource_2'=>'3375',
                     'resource_3'=>'1200',
@@ -624,13 +624,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Tecnologia basata sull&#146;accelerazione delle particelle della materia, impiegabile tanto contro navi ostili che come arma planetaria economica.',
+                    'description'=>'Der Massbeschleuniger kann sowohl gegen Schiffe als auch bedingt gegen Planeten eingesetzt werden.',
                     'dev_info'=>'',
             ), // Endof Component Massebeschleuniger
 
              // Component Impulspolarondisruptor
              4=>array(
-                    'name'=>'Impulsi Polaronici Liv. 2',
+                    'name'=>'Impulspolarondisruptor',
                     'resource_1'=>'12000',
                     'resource_2'=>'6000',
                     'resource_3'=>'3000',
@@ -669,11 +669,11 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Il top della tecnologia polaronica del Dominio permette la realizzazione di un disgregatore impiegabile sulle maggiori navi della flotta. La sua potenza &egrave; incomparabile rispetto ai sistemi d&#146;arma precedenti.',
+                    'description'=>'Der Impulspolarondisruptor ist die stärkste leichte Waffe, über die das Dominion verfügt.',
                     'dev_info'=>'',
             ), // Endof Component Impulspolarondisruptor
 
-      'name'=>'Armi Energetiche',
+      'name'=>'Strahlenwaffen',
       'num'=>'5',
       ), // Endof Category Strahlenwaffen
 
@@ -682,7 +682,7 @@ $ship_components=array(
         3=>array(
              // Component Polarontorpedos
              0=>array(
-                    'name'=>'Siluri Polaronici',
+                    'name'=>'Polarontorpedos',
                     'resource_1'=>'1800',
                     'resource_2'=>'750',
                     'resource_3'=>'0',
@@ -721,13 +721,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'I siluri polaronici sono l&#146;armamento pesante di base per le navi del Dominio in uso anche su navi civili come sistemi di autodifesa.',
+                    'description'=>'Polarontorpedos sind die ersten Torpedos, die auf Dominionschiffen zum Einsatz kommen.',
                     'dev_info'=>'',
             ), // Endof Component Polarontorpedos
 
              // Component Photonentorpedos
              1=>array(
-                    'name'=>'Siluri Fotonici',
+                    'name'=>'Photonentorpedos',
                     'resource_1'=>'3750',
                     'resource_2'=>'1200',
                     'resource_3'=>'510',
@@ -766,13 +766,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'I siluri fotonici sono un tipo di armamento basato su una tecnologia standard delle razze del quadrante Alfa.',
+                    'description'=>'Photonentorpedos sind eine Standardwaffe aus dem Alphaquadranten.',
                     'dev_info'=>'',
             ), // Endof Component Photonentorpedos
 
              // Component Quantentorpedos
              2=>array(
-                    'name'=>'Siluri Quantici',
+                    'name'=>'Quantentorpedos',
                     'resource_1'=>'13500',
                     'resource_2'=>'5625',
                     'resource_3'=>'3600',
@@ -811,13 +811,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'I Siluri Quantici sono una tecnologia peculiare del Dominio, di enorme potenza ed efficacia.',
+                    'description'=>'Quantentorpedos sind eine der eindrucksvolleren Waffen des Dominion.',
                     'dev_info'=>'',
             ), // Endof Component Quantentorpedos
 
              // Component Breentorpedos
              3=>array(
-                    'name'=>'Siluri Breen',
+                    'name'=>'Breentorpedos',
                     'resource_1'=>'22500',
                     'resource_2'=>'11250',
                     'resource_3'=>'2250',
@@ -856,11 +856,11 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'I siluri Breen sono armi molto potenti, ottenuti grazie ad uno scambio di tecnologia con gli scenziati Breen.',
+                    'description'=>'Breentorpedos sind eine mächtige Waffe, die das Dominion von den Breen im Austausch erhalten hat.',
                     'dev_info'=>'',
             ), // Endof Component Breentorpedos
 
-      'name'=>'Siluri',
+      'name'=>'Torpedos',
       'num'=>'4',
       ), // Endof Category Torpedos
 
@@ -869,7 +869,7 @@ $ship_components=array(
         4=>array(
              // Component Regenerativer Schild
              0=>array(
-                    'name'=>'Scudo Rigenerante',
+                    'name'=>'Regenerativer Schild',
                     'resource_1'=>'750',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -908,13 +908,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Gli Scudi Rigeneranti sono un sistema economico e relativamente efficace per la difesa degli scafi.',
+                    'description'=>'Der regenerative Schild ist eine sehr wirksame Erweiterung, die bereits früh zur Verfügung steht.',
                     'dev_info'=>'',
             ), // Endof Component Regenerativer Schild
 
              // Component Phasenvariationsschild
              1=>array(
-                    'name'=>'Variatore di Fase',
+                    'name'=>'Phasenvariationsschild',
                     'resource_1'=>'1500',
                     'resource_2'=>'75',
                     'resource_3'=>'0',
@@ -953,13 +953,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Questa nuova tecnologia di Scudi &egrave; ottenuta attraverso la combinazione di una matrice di scudi con la dipolarit&agrave; di fase.',
+                    'description'=>'Das Phasenvariationsschild ist eine Kombination aus einer verbesserten Schildmatrix und der Nutzung der Phasendipolarität.',
                     'dev_info'=>'',
             ), // Endof Component Phasenvariationsschild
 
              // Component Mehrphasenpanzerung
              2=>array(
-                    'name'=>'Corazza Multifasica',
+                    'name'=>'Mehrphasenpanzerung',
                     'resource_1'=>'4500',
                     'resource_2'=>'1125',
                     'resource_3'=>'375',
@@ -998,13 +998,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Tecnologia che muta la fase della struttura dello scafo con lo scopo di aumentarne la resistenza.',
+                    'description'=>'Die Mehrphasenpanzerung ist eine Entwicklung, die mit Hilfe der Phasendipolarität eine Verschiebung der Raumstruktur zum Schutze des Schiffes erzeugt.',
                     'dev_info'=>'',
             ), // Endof Component Mehrphasenpanzerung
 
              // Component Neutrinoknotenverstärkung
              3=>array(
-                    'name'=>'Corazza Neutrinica',
+                    'name'=>'Neutrinoknotenverstärkung',
                     'resource_1'=>'6750',
                     'resource_2'=>'750',
                     'resource_3'=>'450',
@@ -1043,13 +1043,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'La struttura atomica della lega impiegata per le corazze viene riorganizzata per aumentarne la robustezza strutturale.',
+                    'description'=>'Die Aufladung der Hülle führt zu einer Neuausrichtung der Neutrinostrukturen im Raum, wodutch die Hülle an Intigrität gewinnt.',
                     'dev_info'=>'',
             ), // Endof Component Neutrinoknotenverstärkung
 
              // Component Creonspule
              4=>array(
-                    'name'=>'Bobine Creon',
+                    'name'=>'Creonspule',
                     'resource_1'=>'18000',
                     'resource_2'=>'7500',
                     'resource_3'=>'750',
@@ -1088,11 +1088,11 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'La prima Bobina Creon fu ritrovata decadi fa sul pianeta morto Creon e successivamente venne migliorata dagli scienziati Dominion. Il suo impiego &egrave; possibile solo sulle navi pi&grave; grandi della flotta.',
+                    'description'=>'Die erste Creonspule wurde vor vielen Jahrzehnten auf dem toten Planteten Creon gefunden und von Wissenschaftlern des Dominion verbessert, um nun auf den größten Schlachtschiffen eingesetzt zu werden.',
                     'dev_info'=>'',
             ), // Endof Component Creonspule
 
-      'name'=>'Sistemi Difensivi',
+      'name'=>'Defensive Einrichtungen',
       'num'=>'5',
       ), // Endof Category Defensive Einrichtungen
 
@@ -1101,7 +1101,7 @@ $ship_components=array(
         5=>array(
              // Component Siliciumprozessoren
              0=>array(
-                    'name'=>'Processori in Silicio',
+                    'name'=>'Siliciumprozessoren',
                     'resource_1'=>'225',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -1140,13 +1140,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'I nuovi processori in silicio garantiscono un miglioramento delle prestazioni della componente A.I.',
+                    'description'=>'Neuartige Siliciumprozessoren im AI-Core führen zu einer verbesserten Ausnutzung der vorhandenen Daten.',
                     'dev_info'=>'',
             ), // Endof Component Siliciumprozessoren
 
              // Component Dualkopplung
              1=>array(
-                    'name'=>'Accoppiamento Strutturale',
+                    'name'=>'Dualkopplung',
                     'resource_1'=>'375',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -1185,13 +1185,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'L&#146;accoppiamento strutturale dei processori garantisce un netto miglioramento nei tempi di risposta delle interfacce.',
+                    'description'=>'Die Kopplung mehrerer vernetzter Chipsätze verbessert die Koordination der unterschiedlichen Interfaces.',
                     'dev_info'=>'',
             ), // Endof Component Dualkopplung
 
              // Component Kubriksystem
              2=>array(
-                    'name'=>'Sistema Kubrik',
+                    'name'=>'Kubriksystem',
                     'resource_1'=>'675',
                     'resource_2'=>'37.5',
                     'resource_3'=>'0',
@@ -1230,13 +1230,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'I processori vengono interlacciati con la nuova tecnologia Kubrik, radoppiandone di fatto la capacit&agrave; elaborativa.',
+                    'description'=>'Durch das Kubriksystem werden die Prozessoren so vernetzt, dass sie ihre Leistungsfähigkeit zu 100% entfalten können.',
                     'dev_info'=>'',
             ), // Endof Component Kubriksystem
 
              // Component Leitstand I
              3=>array(
-                    'name'=>'Posto di Controllo Liv. 1',
+                    'name'=>'Leitstand I',
                     'resource_1'=>'900',
                     'resource_2'=>'75',
                     'resource_3'=>'0',
@@ -1248,7 +1248,7 @@ $ship_components=array(
                     'unit_4'=>'0',
                     'unit_5'=>'0',
                     'unit_6'=>'0',
-                    'value_1'=>'15',
+                    'value_1'=>'5',
                     'value_2'=>'0',
                     'value_3'=>'0',
                     'value_4'=>'0',
@@ -1275,13 +1275,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'La nuova organizzazione delle postazioni di controllo di tiro aumentano la coordinazione tra i sistemi e la resa delle armi stesse.',
+                    'description'=>'Der Feuerleitstand verbessert sowohl die allgemeine Koordination, als auch die Waffenleistung.',
                     'dev_info'=>'',
             ), // Endof Component Leitstand I
 
              // Component Leitstand II
              4=>array(
-                    'name'=>'Posto di Controllo Liv. 2',
+                    'name'=>'Leitstand II',
                     'resource_1'=>'1050',
                     'resource_2'=>'150',
                     'resource_3'=>'0',
@@ -1293,8 +1293,8 @@ $ship_components=array(
                     'unit_4'=>'0',
                     'unit_5'=>'0',
                     'unit_6'=>'0',
-                    'value_1'=>'40',
-                    'value_2'=>'15',
+                    'value_1'=>'0',
+                    'value_2'=>'5',
                     'value_3'=>'0',
                     'value_4'=>'0',
                     'value_5'=>'0',
@@ -1320,13 +1320,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Questa versione permette di controllare efficacemente anche le armi pesanti della nave.',
+                    'description'=>'Der Feuerleitstand verbessert sowohl die allgemeine Koordination, als auch die Waffenleistung.<br>Diese 2. Revision ist zusätzlich noch mit den schweren Geschützen der Kreuzer gekoppelt.',
                     'dev_info'=>'',
             ), // Endof Component Leitstand II
 
              // Component Gammarechner
              5=>array(
-                    'name'=>'Gamma Elaboratore',
+                    'name'=>'Gammarechner',
                     'resource_1'=>'1725',
                     'resource_2'=>'300',
                     'resource_3'=>'0',
@@ -1339,8 +1339,8 @@ $ship_components=array(
                     'unit_5'=>'0',
                     'unit_6'=>'0',
                     'value_1'=>'95',
-                    'value_2'=>'35',
-                    'value_3'=>'5',
+                    'value_2'=>'10',
+                    'value_3'=>'2',
                     'value_4'=>'0',
                     'value_5'=>'0',
                     'value_6'=>'2',
@@ -1365,11 +1365,11 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Con l&#146;impiego delle particelle gamma viene creata una connessione neurale con i sistemi di elaborazione dati.',
+                    'description'=>'Mit Hilfe der künstlich replizierten Gammateilchen wird eine biosynthetische CPU-Verknüpfung mit Responsezeiten von <1ns möglich.',
                     'dev_info'=>'',
             ), // Endof Component Gammarechner
 
-      'name'=>'Componenti A.I.',
+      'name'=>'AI-Kern',
       'num'=>'6',
       ), // Endof Category AI-Kern
 
@@ -1378,7 +1378,7 @@ $ship_components=array(
         6=>array(
              // Component Kampfzentrum I
              0=>array(
-                    'name'=>'Centro Addestramento I',
+                    'name'=>'Kampfzentrum I',
                     'resource_1'=>'300',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -1417,13 +1417,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+                    'description'=>'Das ständige Trainieren unter Extrembedingungen führt zu Perfektionierung der Kampffähigkeiten.',
                     'dev_info'=>'',
             ), // Endof Component Kampfzentrum I
 
              // Component Kampfzentrum II
              1=>array(
-                    'name'=>'Centro Addestramento II',
+                    'name'=>'Kampfzentrum II',
                     'resource_1'=>'450',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -1462,13 +1462,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+                    'description'=>'Das ständige Trainieren unter Extrembedingungen führt zu Perfektionierung der Kampffähigkeiten.',
                     'dev_info'=>'',
             ), // Endof Component Kampfzentrum II
 
              // Component Kampfzentrum III
              2=>array(
-                    'name'=>'Centro Addestramento III',
+                    'name'=>'Kampfzentrum III',
                     'resource_1'=>'750',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -1507,13 +1507,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+                    'description'=>'Das ständige Trainieren unter Extrembedingungen führt zu Perfektionierung der Kampffähigkeiten.',
                     'dev_info'=>'',
             ), // Endof Component Kampfzentrum III
 
              // Component Kampfzentrum IV
              3=>array(
-                    'name'=>'Centro Addestramento IV',
+                    'name'=>'Kampfzentrum IV',
                     'resource_1'=>'1500',
                     'resource_2'=>'150',
                     'resource_3'=>'0',
@@ -1552,13 +1552,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+                    'description'=>'Das ständige Trainieren unter Extrembedingungen führt zu Perfektionierung der Kampffähigkeiten.',
                     'dev_info'=>'',
             ), // Endof Component Kampfzentrum IV
 
              // Component Kampfzentrum V
              4=>array(
-                    'name'=>'Centro Addestramento V',
+                    'name'=>'Kampfzentrum V',
                     'resource_1'=>'2250',
                     'resource_2'=>'300',
                     'resource_3'=>'0',
@@ -1597,13 +1597,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+                    'description'=>'Das ständige Trainieren unter Extrembedingungen führt zu Perfektionierung der Kampffähigkeiten.',
                     'dev_info'=>'',
             ), // Endof Component Kampfzentrum V
 
              // Component Kampfzentrum VI
              5=>array(
-                    'name'=>'Centro Addestramento VI',
+                    'name'=>'Kampfzentrum VI',
                     'resource_1'=>'3000',
                     'resource_2'=>'375',
                     'resource_3'=>'0',
@@ -1642,11 +1642,11 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+                    'description'=>'Das ständige Trainieren unter Extrembedingungen führt zu Perfektionierung der Kampffähigkeiten.',
                     'dev_info'=>'',
             ), // Endof Component Kampfzentrum VI
 
-      'name'=>'Zone Addestramento',
+      'name'=>'Trainingseinheiten',
       'num'=>'6',
       ), // Endof Category Trainingseinheiten
 
@@ -1655,7 +1655,7 @@ $ship_components=array(
         7=>array(
              // Component Unterkunft I
              0=>array(
-                    'name'=>'Sistemazione I',
+                    'name'=>'Unterkunft I',
                     'resource_1'=>'75',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -1692,15 +1692,15 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-	            'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
                     'dev_info'=>'',
             ), // Endof Component Unterkunft I
 
              // Component Unterkunft II
              1=>array(
-                    'name'=>'Sistemazione II',
+                    'name'=>'Unterkunft II',
                     'resource_1'=>'300',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -1739,13 +1739,13 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
                     'dev_info'=>'',
             ), // Endof Component Unterkunft II
 
              // Component Unterkunft III
              2=>array(
-                    'name'=>'Sistemazione III',
+                    'name'=>'Unterkunft III',
                     'resource_1'=>'600',
                     'resource_2'=>'75',
                     'resource_3'=>'0',
@@ -1782,15 +1782,15 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-	            'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
                     'dev_info'=>'',
             ), // Endof Component Unterkunft III
 
              // Component Unterkunft IV
              3=>array(
-                    'name'=>'Sistemazione IV',
+                    'name'=>'Unterkunft IV',
                     'resource_1'=>'900',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -1827,15 +1827,15 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-	            'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
                     'dev_info'=>'',
             ), // Endof Component Unterkunft IV
 
              // Component Unterkunft V
              4=>array(
-                    'name'=>'Sistemazione V',
+                    'name'=>'Unterkunft V',
                     'resource_1'=>'1500',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -1872,15 +1872,15 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-	            'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
                     'dev_info'=>'',
             ), // Endof Component Unterkunft V
 
              // Component Unterkunft VI
              5=>array(
-                    'name'=>'Sistemazione VI',
+                    'name'=>'Unterkunft VI',
                     'resource_1'=>'1875',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -1917,15 +1917,15 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-	            'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
                     'dev_info'=>'',
             ), // Endof Component Unterkunft VI
 
              // Component Unterkunft VII
              6=>array(
-                    'name'=>'Sistemazione VII',
+                    'name'=>'Unterkunft VII',
                     'resource_1'=>'2250',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -1962,15 +1962,15 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-	            'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
                     'dev_info'=>'',
             ), // Endof Component Unterkunft VII
 
              // Component Unterkunft VIII
              7=>array(
-                    'name'=>'Sistemazione VIII',
+                    'name'=>'Unterkunft VIII',
                     'resource_1'=>'3000',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -2007,15 +2007,15 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-		    'torso_11'=>'0',
+										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
                     'dev_info'=>'',
             ), // Endof Component Unterkunft VIII
 
              // Component Truppendepot
              8=>array(
-                    'name'=>'Deposito Truppe',
+                    'name'=>'Truppendepot',
                     'resource_1'=>'3750',
                     'resource_2'=>'300',
                     'resource_3'=>'75',
@@ -2052,13 +2052,13 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-                    'torso_11'=>'0',
+					                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
                     'dev_info'=>'',
             ), // Endof Component Truppendepot
 
-      'name'=>'Alloggi',
+      'name'=>'Quartiere',
       'num'=>'9',
       ), // Endof Category Quartiere
 
@@ -2067,52 +2067,7 @@ $ship_components=array(
         8=>array(
              // Component Sensorischer Scout
              0=>array(
-                    'name'=>'Scanner Micronico',
-                    'resource_1'=>'375',
-                    'resource_2'=>'112.5',
-                    'resource_3'=>'125',
-                    'resource_4'=>'5',
-                    'buildtime'=>'2',
-                    'unit_1'=>'0',
-                    'unit_2'=>'0',
-                    'unit_3'=>'0',
-                    'unit_4'=>'0',
-                    'unit_5'=>'0',
-                    'unit_6'=>'0',
-                    'value_1'=>'0',
-                    'value_2'=>'0',
-                    'value_3'=>'0',
-                    'value_4'=>'0',
-                    'value_5'=>'0',
-                    'value_6'=>'0',
-                    'value_7'=>'0',
-                    'value_8'=>'0',
-                    'value_9'=>'0',
-                    'value_10'=>'0',
-                    'value_11'=>'8',
-                    'value_12'=>'2',
-                    'value_13'=>'0',
-                    'value_14'=>'1',
-                    'value_15'=>'0',
-                    'torso_1'=>'1',
-                    'torso_2'=>'0',
-                    'torso_3'=>'0',
-                    'torso_4'=>'0',
-                    'torso_5'=>'0',
-                    'torso_6'=>'0',
-                    'torso_7'=>'0',
-                    'torso_8'=>'0',
-                    'torso_9'=>'0',
-                    'torso_10'=>'0',
-                    'torso_11'=>'0',
-                    'torso_12'=>'0',
-                    'description'=>'Gli Scanner Micronici sono studiati per equipaggiare le navi spia del Dominio, fornendo un ottimo supporto alla scansione di un pianeta e fornendo dati utili per sfuggire alle difese orbitali.',
-                    'dev_info'=>'',
-            ), // Endof Component Sensorischer Scout
-
-             // Component Simultane Ortung
-             1=>array(
-                    'name'=>'Sensori Guida',
+                    'name'=>'Sensorischer Scout',
                     'resource_1'=>'375',
                     'resource_2'=>'112.5',
                     'resource_3'=>'0',
@@ -2134,7 +2089,7 @@ $ship_components=array(
                     'value_8'=>'3',
                     'value_9'=>'0',
                     'value_10'=>'0',
-                    'value_11'=>'5',
+                    'value_11'=>'4',
                     'value_12'=>'0',
                     'value_13'=>'0',
                     'value_14'=>'1',
@@ -2151,13 +2106,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'I Sensori Guida sono particolarmente adatti a non perdere il controllo di quanto accade sul campo di battaglia.',
+                    'description'=>'Das sensorische Scoutschiff ist besonders geeignet, um die Übersicht im Kampf nicht zu verlieren.',
                     'dev_info'=>'',
-            ), // Endof Component Simultane Ortung
+            ), // Endof Component Sensorischer Scout
 
-// Component Simultane Ortung
-             2=>array(
-                    'name'=>'Rilevatore Simultaneo',
+             // Component Simultane Ortung
+             1=>array(
+                    'name'=>'Simultane Ortung',
                     'resource_1'=>'975',
                     'resource_2'=>'225',
                     'resource_3'=>'0',
@@ -2174,12 +2129,12 @@ $ship_components=array(
                     'value_3'=>'0',
                     'value_4'=>'0',
                     'value_5'=>'0',
-                    'value_6'=>'2',
-                    'value_7'=>'4',
-                    'value_8'=>'3',
+                    'value_6'=>'0',
+                    'value_7'=>'0',
+                    'value_8'=>'0',
                     'value_9'=>'0',
                     'value_10'=>'0',
-                    'value_11'=>'9',
+                    'value_11'=>'2',
                     'value_12'=>'0',
                     'value_13'=>'0',
                     'value_14'=>'4',
@@ -2196,13 +2151,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Il Rivelatore Simultaneo permette la scansione parallela di pi&ugrave; bersagli.',
+                    'description'=>'Die simultane Ortung ermöglicht das parallele Scannen verschiedener Bereiche.',
                     'dev_info'=>'',
             ), // Endof Component Simultane Ortung
-	    
+
              // Component Ungestörte Ortung
-             3=>array(
-                    'name'=>'Rilevatore Asincrono',
+             2=>array(
+                    'name'=>'Ungestörte Ortung',
                     'resource_1'=>'1275',
                     'resource_2'=>'300',
                     'resource_3'=>'37.5',
@@ -2220,11 +2175,11 @@ $ship_components=array(
                     'value_4'=>'0',
                     'value_5'=>'0',
                     'value_6'=>'2',
-                    'value_7'=>'4',
-                    'value_8'=>'3',
+                    'value_7'=>'1',
+                    'value_8'=>'0',
                     'value_9'=>'0',
                     'value_10'=>'0',
-                    'value_11'=>'14',
+                    'value_11'=>'3',
                     'value_12'=>'0',
                     'value_13'=>'0',
                     'value_14'=>'5',
@@ -2241,13 +2196,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Il miglior sistema basato su tecnologie tradizionali permette la scansione di aree mediante impiego di sonde camuffate.',
+                    'description'=>'Die höchste Form der normalen Sensorenerweiterung ermöglicht die Abtastung des Raums mit Hilfe getarnter Sonden.',
                     'dev_info'=>'',
             ), // Endof Component Ungestörte Ortung
 
              // Component Gefechtsstand
-             4=>array(
-                    'name'=>'Posto di Comando',
+             3=>array(
+                    'name'=>'Gefechtsstand',
                     'resource_1'=>'1500',
                     'resource_2'=>'300',
                     'resource_3'=>'75',
@@ -2265,11 +2220,11 @@ $ship_components=array(
                     'value_4'=>'0',
                     'value_5'=>'0',
                     'value_6'=>'3',
-                    'value_7'=>'5',
+                    'value_7'=>'2',
                     'value_8'=>'15',
                     'value_9'=>'0',
                     'value_10'=>'0',
-                    'value_11'=>'6',
+                    'value_11'=>'4',
                     'value_12'=>'0',
                     'value_13'=>'0',
                     'value_14'=>'5',
@@ -2286,13 +2241,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Il Posto di Comando &egrave; una postazione extra situata sul Ponte di Comando della nave che si occupa della coordinazione tra le varie sezioni.',
+                    'description'=>'Der Gefechtsstand ist ein zusätzlicher Brückenposten, der die Kampfkoordination übernimmt.',
                     'dev_info'=>'',
             ), // Endof Component Gefechtsstand
 
              // Component Sekundärbrücke
-             5=>array(
-                    'name'=>'Ponte Secondario',
+             4=>array(
+                    'name'=>'Sekundärbrücke',
                     'resource_1'=>'1800',
                     'resource_2'=>'300',
                     'resource_3'=>'75',
@@ -2331,13 +2286,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Il Ponte Secondario &egrave; una sottosezione usata unicamente durante gli scontri.',
+                    'description'=>'Die Sekundärbrücke ist eine spezielle Unterabteilung, die allein zur Gefechtskoordination eingesetzt wird.',
                     'dev_info'=>'',
             ), // Endof Component Sekundärbrücke
 
              // Component Gefechtsbrücke I
-             6=>array(
-                    'name'=>'Ponte di Combattimento I',
+             5=>array(
+                    'name'=>'Gefechtsbrücke I',
                     'resource_1'=>'2250',
                     'resource_2'=>'300',
                     'resource_3'=>'75',
@@ -2359,7 +2314,7 @@ $ship_components=array(
                     'value_8'=>'4',
                     'value_9'=>'4',
                     'value_10'=>'0',
-                    'value_11'=>'10',
+                    'value_11'=>'8',
                     'value_12'=>'0',
                     'value_13'=>'0',
                     'value_14'=>'3',
@@ -2376,13 +2331,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Soluzione progettuale che enfatizza funzionalit&agrave; ed efficacia del Ponte Secondario.',
+                    'description'=>'Die 1. Gefechtsbrücke ist eine konsequente Weiterentwicklung der Sekundärbrücke.',
                     'dev_info'=>'',
             ), // Endof Component Gefechtsbrücke I
 
              // Component Gefechtsbrücke II
-             7=>array(
-                    'name'=>'Ponte di Combattimento II',
+             6=>array(
+                    'name'=>'Gefechtsbrücke II',
                     'resource_1'=>'2625',
                     'resource_2'=>'300',
                     'resource_3'=>'150',
@@ -2421,12 +2376,12 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Questa soluzione progettuale &egrave; il centro di comando definitivo per ogni tipo di conflitto ed &egrave; il risultato di decadi di studio.',
+                    'description'=>'Die 2. Gefechtsbrücke ist das ultimative Kommandozentrum für jede Art von Konflikt und das Ergebnis jahrzehntelanger Forschung.',
                     'dev_info'=>'',
             ), // Endof Component Gefechtsbrücke II
 
-      'name'=>'Sistemi di Combattimento',
-      'num'=>'8',
+      'name'=>'Kampfsysteme',
+      'num'=>'7',
       ), // Endof Category Kampfsysteme
 
 
@@ -2434,7 +2389,7 @@ $ship_components=array(
         9=>array(
              // Component Verbesserte Headsets
              0=>array(
-                    'name'=>'Intercom Migliorato',
+                    'name'=>'Verbesserte Headsets',
                     'resource_1'=>'375',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -2473,13 +2428,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Sistemi di Intercomunicazione di bordo migliorato.',
+                    'description'=>'Neue Headsets verbessern die interne Kommunikation.',
                     'dev_info'=>'',
             ), // Endof Component Verbesserte Headsets
 
              // Component Waffenaufrüstung
              1=>array(
-                    'name'=>'Sistema Offensivo Integrato',
+                    'name'=>'Waffenaufrüstung',
                     'resource_1'=>'19500',
                     'resource_2'=>'11250',
                     'resource_3'=>'6000',
@@ -2518,13 +2473,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Sistema di integrazione degli armamenti per le navi militari del Dominio.',
+                    'description'=>'Die Waffenaufrüstung ist ein ´Komplettpaket´ für die Oberklasse des Dominion.',
                     'dev_info'=>'',
             ), // Endof Component Waffenaufrüstung
 
              // Component Doppelschilde
              2=>array(
-                    'name'=>'Scudi Secondari',
+                    'name'=>'Doppelschilde',
                     'resource_1'=>'7500',
                     'resource_2'=>'3000',
                     'resource_3'=>'750',
@@ -2539,7 +2494,7 @@ $ship_components=array(
                     'value_1'=>'0',
                     'value_2'=>'0',
                     'value_3'=>'0',
-                    'value_4'=>'100',
+                    'value_4'=>'70',
                     'value_5'=>'0',
                     'value_6'=>'0',
                     'value_7'=>'0',
@@ -2563,13 +2518,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Ottimi per contrastare armi ad altissima energia, entrano in funzione non appena cedono gli scudi primari.',
+                    'description'=>'Der zweite Schild ist als Schutz vor Hochenergiewaffen geeignet und aktiviert sich bei Zusammenbruch der primären Schildemitter.',
                     'dev_info'=>'',
             ), // Endof Component Doppelschilde
 
              // Component Hochenergiehülle
              3=>array(
-                    'name'=>'Rivestimento AntiEnergetico',
+                    'name'=>'Hochenergiehülle',
                     'resource_1'=>'7500',
                     'resource_2'=>'3000',
                     'resource_3'=>'750',
@@ -2585,7 +2540,7 @@ $ship_components=array(
                     'value_2'=>'0',
                     'value_3'=>'0',
                     'value_4'=>'0',
-                    'value_5'=>'200',
+                    'value_5'=>'120',
                     'value_6'=>'0',
                     'value_7'=>'0',
                     'value_8'=>'0',
@@ -2608,13 +2563,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Questo sistema riflette parte dell&#146;enegia che entra in contatto con lo scafo, deviandone una parte verso i sistemi energetici interni della nave stessa.',
+                    'description'=>'Diese Hülle weist Energie teilweise ab und führt sie der schiffsinternen Energieversorgung zu. Die Lebensdauer der Hülle erhöht sich und der Energieverbrauch ist moderat.',
                     'dev_info'=>'',
             ), // Endof Component Hochenergiehülle
 
              // Component Multiphasentarnung
              4=>array(
-                    'name'=>'Occultamento Multifasico',
+                    'name'=>'Multiphasentarnung',
                     'resource_1'=>'11250',
                     'resource_2'=>'3750',
                     'resource_3'=>'2250',
@@ -2632,12 +2587,12 @@ $ship_components=array(
                     'value_4'=>'0',
                     'value_5'=>'0',
                     'value_6'=>'0',
-                    'value_7'=>'4',
-                    'value_8'=>'10',
+                    'value_7'=>'0',
+                    'value_8'=>'0',
                     'value_9'=>'0',
                     'value_10'=>'0',
                     'value_11'=>'0',
-                    'value_12'=>'12',
+                    'value_12'=>'10',
                     'value_13'=>'0',
                     'value_14'=>'4',
                     'value_15'=>'0',
@@ -2653,13 +2608,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'L&#146;occultamento fornisce un grande vantaggio in combattimento e permette di avvicinarsi a pianeti con una debole rete di sensori senza destare allarme.',
+                    'description'=>'Die Tarnung verschafft den Schiffen immense Vorteile im Kampf und erlaubt bei schwachen Sensoren auf den Zielplaneten einen Angriff mit kurzer Vorwarnzeit.',
                     'dev_info'=>'',
             ), // Endof Component Multiphasentarnung
 
              // Component Kompletterweiterung
              5=>array(
-                    'name'=>'Estensione Completa',
+                    'name'=>'Kompletterweiterung',
                     'resource_1'=>'35000',
                     'resource_2'=>'3000',
                     'resource_3'=>'750',
@@ -2698,16 +2653,17 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Questo pacchetto di migliorie &egrave; disponibile solo a poche navi della Flotta ma fornisce un incremento completo a tutte le caratteristiche della nave stessa.',
+                    'description'=>'Dieses Komplettpaket beschränkt sich auf kleine aber umfassende Anderungen und Verbesserungen in allen Systemen.',
                     'dev_info'=>'',
             ), // Endof Component Kompletterweiterung
 
-      'name'=>'Sviluppi Segreti',
+      'name'=>'Geheime Entwicklungen',
       'num'=>'6',
       ), // Endof Category Geheime Entwicklungen
 
 
 ), // Endof Race Dominion
+
 
 
 ); // End of static-components
