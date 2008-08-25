@@ -1638,7 +1638,7 @@ $SHIP_TORSO = array(
 
 			24 => 23,   // Value11 (Sensoren)
 
-			25 => 12,   // Value12 (Tarnung)
+			25 => 8,   // Value12 (Tarnung)
 
 			26 => 35,   // Value13 (Energy Available)
 
@@ -1780,7 +1780,7 @@ $SHIP_TORSO = array(
 
 			25 => 2,   // Value12 (Tarnung)
 
-			26 => 149,   // Value13 (Energy Available)
+			26 => 154,   // Value13 (Energy Available)
 
 			27 => 125,   // Value14 (Used Energy)
 

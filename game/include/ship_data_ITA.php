@@ -1638,7 +1638,7 @@ $SHIP_TORSO = array(
 
 			24 => 23,   // Value11 (Sensors)
 
-			25 => 12,   // Value12 (Camouflage)
+			25 => 8,   // Value12 (Camouflage)
 
 			26 => 35,   // Value13 (Energy Available)
 
@@ -1780,7 +1780,7 @@ $SHIP_TORSO = array(
 
 			25 => 2,   // Value12 (Camouflage)
 
-			26 => 149,   // Value13 (Energy Available)
+			26 => 154,   // Value13 (Energy Available)
 
 			27 => 125,   // Value14 (Used Energy)
 
@@ -2876,7 +2876,7 @@ $SHIP_TORSO = array(
 
 			30 => 5,  // Workers needed to build
 
-			31 => 'Die Gul Vystan ist zum Spionieren gedacht und nicht als Angriffsschiff geeignet. Alle zur Verf&uuml;gung stehenden Kapazit&auml;ten wurden f&uuml;r die Sensortechnik an Board verwendet. Somit blieb f&uuml;r sonstige Ausr&uuml;stung kein Platz mehr.',
+			31 => 'Le navi classe Gul Vystan sono piccoli vascelli con poco equipaggio ma dotate di potenti sensori per la raccolta di dati.',
 
 
 
@@ -2950,7 +2950,7 @@ $SHIP_TORSO = array(
 
 			30 => 30,  // Workers needed to build
 
-			31 => 'I cargo servono a caricare 4000 unit&agrave; di risorse o 400 truppe. Possono anche servire a fornire supporto su pianeti attacc',
+			31 => 'I cargo servono a caricare 4000 unit&agrave; di risorse o 400 truppe. Possono anche servire a fornire supporto come trasporto truppe durante i tentativi di invasione di altri mondi.',
 
 			),
 
@@ -3162,7 +3162,7 @@ $SHIP_TORSO = array(
 
 			30 => 86,  // Workers needed to build
 
-			31 => 'Die Hideki-Klasse wurde als kleines, wendiges Eskortschiff konzipiert. Doch aufgrund aktueller Ereignisse und fehlender Vorrichtungen wird sie in letzter Zeit allerdings haupts&auml;chlich als Kampfschiff produziert; wodurch die Geschwindigkeit in den Hintergrund tritt.',
+			31 => 'La classe Hideki viene concepita come agile e veloce nave da scorta; tuttavia, in seguito ai recenti eventi e alla scarsit&agrave; di mezzi, viene anche impiegata come nave da combattimento da seconda linea.',
 
 		),
 
@@ -3374,7 +3374,7 @@ $SHIP_TORSO = array(
 
 			30 => 169,  // Workers needed to build
 
-			31 => 'Die Schiffe der Galor III-Klasse sind Angriffskreuzer und geh&ouml;ren zu den meistbenutzten Schiffen der Cardassianer. Galors  sind durch ihre maximale Wandlungsf&auml;higkeit hochgef&auml;hrlich; man wei&beta; nie welche Waffen eingebaut wurden...',
+			31 => 'Le navi classe Galor III sono incrociatori d&#146;attacco e di fatto sono le navi maggiormente impiegate dai Cardassiani. Queste navi sono molto pericolose per la loro incredibile variet&agrave; di allestimento. Una di queste varianti non possedeva nessun tipo di arma...',
 
 		),
 		
@@ -3515,7 +3515,7 @@ $SHIP_TORSO = array(
 
 			30 => 1130,  // Workers needed to build
 
-			31 => 'Die Keldon-Klasse ist eine modifizierte und stark aufger&uuml;stete Version der Galor-Klasse, die jedoch weniger schnell und wendig ist. Sie wurden von den Cardassianern speziell ausger&uuml;stet, um gegen ihr Pendant der F&ouml;deration, die Schiffe der Sovereign-Klasse, zu k&auml;mpfen und zu siegen.',
+			31 => 'La classe Keldon &egrave; una versione modificata e pesantemente attrezzata della classe Galor, anche se risulta molto meno agile e veloce. Queste navi sono allestite con particolare cura dai Cardassiani, di modo da poter combattere e trionfare sulla loro controparte Federale, la classe Sovereign.',
 
 		),
 		
@@ -3725,7 +3725,7 @@ $SHIP_TORSO = array(
 
 			30 => 350,  // Workers needed to build
 
-			31 => 'Diese orbitale Waffenplattform wurde w&auml;hrend des Dominionkrieges entwickelt und seitdem immer weiter verbessert. Sie ist ausgestattet mit 3 Disruptorkanonen und einem schnell feuernden Torpedorohr, geladen mit 400 Plasmatorpedos, best&uuml;ckt. Damit stellt es eine m&auml;chtige Defensive der Cardassianischen Union dar.',
+			31 => 'Queste piattaforme orbitali vennero sviluppate durante la guerra del Dominio e vengono aggiornate costantemente da allora. Ogni piattaforma monta tre disgregatori e veloci tubi di lancio con una dotazione di 400 siluri al plasma. Di fatto, rappresentano uno strumento di difesa formidabile per l&#146;Unione Cardassiana.',
 
 	    ),
 
@@ -3801,11 +3801,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Leave at 0
 
-			29 => 'Obsid. Scout',  // Name
+			29 => 'Obsidian Scout',  // Name
 
 			30 => 15,  // Workers needed to build
 
-			31 => 'Zuerst war es nur ein Nichtangriffspakt, sp&auml;ter sahen die Cardassianer die Gr&ouml;&beta;e des Dominions, und stellten uns daher ihre Scoutschiffe zur Verf&uuml;gung. Obwohl sie nicht vom Dominion gebaut worden sind, k&ouml;nnten sie von den Vorta entworfen worden sein: Sie sind schnell, wendig, und schlecht mit den Sensoren zu erfassen.'
+			31 => 'I disegni di questa nave vennero ceduti dai Cardassiani come atto di sottomissione, dopo aver constatato la grandezza del Dominio. Il Dominio tuttavia non ha mai seguito i disegni originali e ha lasciato che i Vorta si occupassero di revisionare il progetto, ottenendo navi veloci, agili e con una discreta dotazione di sensori.'
 
 	    ),
 
@@ -3873,11 +3873,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Leave at 0
 
-			29 => 'Transportschiff',  // Name
+			29 => 'Nave da trasporto',  // Name
 
 			30 => 8,  // Workers needed to build
 
-			31 => 'Durch unser B&uuml;ndnisse mit den Cardassianern (das inzwischen wieder aufgehoben worden ist) haben wir dieses Schiff kennen gelernt, &uuml;bernommen und verbessert. Es stellt einen guten Frachter dar und wir werden ihn von nun an einsetzten, nachdem die Hauptlieferanten unserer Frachtschiffe, die Karemma, eine kleine Lektion ihn Treue lernen mussten. Sie k&ouml;nnen momentan nicht die gew&uuml;nschte Menge bereitstellen, also wird das diese Klasse &uuml;bernehmen.',
+			31 => 'Nel periodo di alleanza con i Cardassiani (attualmente gi&agrave; troncata) abbiamo appreso, ottenuto e migliorato il progetto di questa nave. Si tratta di una buona nave da carico che rimpiazza quelle dei nostri vecchi fornitori, i Karemma, ai quali abbiamo dato una dura lezione di lealt&agrave;.',
 
 	    ),
 
@@ -3945,11 +3945,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Leave at 0
 
-			29 => 'Karemma Colonizzatrice',  // Name
+			29 => 'Colonizzatrice Karemma',  // Name
 
 			30 => 1555,  // Workers needed to build
 
-			31 => 'Mit dieser Klasse k&ouml;nnen sie einen Planeten zum richtigen Weg bekehren. Sobald Sie bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerst&ouml;rt haben, geht das Karemma Schiff verloren (da es f&uuml;r die ersten Einrichtungen demontiert wird) und der Planet steht unter Ihrem Kommando. Durch den Aufstand der Karemma, hat sich die Produktion verlangsamt, daher der hohe Preis.',
+			31 => 'Grazie a questa nave &egrave; possibile rimettere un pianeta sulla retta via. Non appena le difese planetarie e le difese a terra sono spazzate via, la nave Karemma scende sul pianeta, viene smantellata e il pianeta risulta sotto controllo. In seguito alla ribellione dei Karemma la produzione ha subito un rallentamento e per questo i costi di questa nave sono cos&igrave; elevati.',
 
 	    ),
 
@@ -4090,7 +4090,7 @@ $SHIP_TORSO = array(
 
 			30 => 96,  // Workers needed to build
 
-			31 => 'Von unseren Feinden manchmal &acute;Battlebug&acute; genannt, stellt dieses Schiff unsere R&uuml;ckrad dar und es ist inzwischen DAS Symbol unserer glorreichen Gr&uuml;nder und hat dem Dominion schon gute Dienste geleistet.',
+			31 => 'Talvolta indicata dai nostri avversari come &acute;BattleBug&acute;, questa nave rappresenta la seconda linea delle nostre navi da combattimento, anche se &egrave; il simbolo dei nostri gloriosi Fondatori. In combattimento ha sempre dato ottima prova di se.',
 
 	    ),
 
@@ -4158,11 +4158,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Leave at 0
 
-			29 => 'V-Klasse',  // Name
+			29 => 'Classe &acute;V&acute;',  // Name
 
 			30 => 356,  // Workers needed to build
 
-			31 => 'Obgleich unsere Jem Hadar Attack Fighter, mit Freude ihre fehlende Feuerkraft mit Suizidangriffen kompensieren, hatten die G&ouml;tter die Weißheit, das dies auf lange Sicht gesehen, unserer Ressourcen zu stark beanspruchen w&uuml;rde. So wurde die Mischung zwischen Feuerkraft und Beweglichkeit, von den Vorta entworfen und in der V-Klasse vereint, damit der Suizid, so glorreich er auch sein mag, nicht immer die letzte Option sein muss.',
+			31 => 'Nonostante i nostri Jem Hadar compensino, con gioia, la sua bassa potenza di fuoco con una giusta furia suicida, questa nave si &egrave; rivelata alla lunga troppo dispendiosa in termini di risorse consumate. La miscela di potere di fuoco e agilit&agrave; in seguito alla revisione del progetto rendono il suicidio, anche se glorioso, l&#146;opzione finale.',
 
 	),
 
@@ -4439,11 +4439,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Leave at 0
 
-			29 => 'BSC',  // Name
+			29 => 'BattleCruiser',  // Name
 
 			30 => 867,  // Workers needed to build
 
-			31 => 'Einer der m&auml;chtigsten Waffen des Dominions. Das Kampfschiff ist ein sehr wichtiger Bestandteil einer jeden Flotte. Seine Bewaffnung macht es zu einem mehr als gef&auml;hrlichen Kriegschiff und ist oft mehr als genug, um das Wort der Gr&uuml;nder in die entferntesten Winkel der Galaxie zu bringen...',
+			31 => 'Una delle navi pi&ugrave; potenti del Dominio. Il BattleCruiser &egrave; una componente molto importante di ogni flotta. I suoi armamenti la rendono una delle navi pi&ugrave; potenti sul campo di battaglia, spesso sufficente a portare la parola dei Fondatori fin nei pi&ugrave; remoti angoli della Galassia.',
 
 	    ),
 
@@ -4582,11 +4582,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Leave at 0
 
-			29 => 'Dread',  // Name
+			29 => 'Dreadnaught',  // Name
 
 			30 => 2532,  // Workers needed to build
 
-			31 => 'Dieses Schiff ist die letzte Linie des Gefechts, sollten die Gegner es je dorthin schaffen. Nur die treuesten und erfahrensten Jem Hadar bzw. Vorta d&uuml;rfen dieses Schiff &uuml;berhaupt betreten. Seine Gr&ouml;sse ist gewaltig und seine Feuerkraft noch gr&ouml;&beta;er: Jeder der sich ihm in den Wegs stellt ist Staub: Sei es ein Schiff oder ein Planet...',
+			31 => 'Questa nave &egrave; l&#146;ultima linea di combattimento, se mai qualche avversario dovesse raggiungerla. Solo i pi&ugrave; fedeli e dotati Jem Hadar e Vorta sono ammessi su queste navi. Le sue dimensioni sono enormi e il suo potere di fuoco lo &egrave; ancora di pi&ugrave;. Chiunque gli si pari innanzi &egrave; ridotto in polvere, che sia una nave o un pianeta...',
 
 	    ),
 
@@ -4656,7 +4656,7 @@ $SHIP_TORSO = array(
 
 			30 => 300,  // Workers needed to build
 
-			31 => 'Um der zunehmenden Bedrohung der Welten des Dominion von außen entgegenzutreten, haben die Wissenschaftler diese effiziente Kampfstation entwickelt. Ausgestattet mit Polarongesch&uuml;tzen und einem Torpedowerfer stellt es eine effektive Gegenmaßnahme gegen jeden Angreifer dar.',
+			31 => 'Per affrontare il crescente rischio di aggressioni da parte di altri mondi, gli scenziati del Dominio hanno sviluppato questa efficente stazione da battaglia. Munito di cannoni polaronici e lanciasiluri, rappresenta una efficace contromisura per qualsiasi aggressione.',
 
 	    ),
 
