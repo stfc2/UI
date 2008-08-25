@@ -22,7 +22,6 @@
 
 
 $game->init_player();
-//include('academy.sprache.php'); wird nun in der index.php geregelt
 $game->out('<span class="caption">'.$BUILDING_NAME[$game->player['user_race']][5].':</span><br><br>');
 $game->out('[<b>'.$BUILDING_NAME[$game->player['user_race']][5].'</b>]<br><br>');
 
@@ -113,8 +112,8 @@ if ($game->planet['unittrainid_nexttime']>0) return 0;
 				else // If Break
 				{
 					if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==10) {$db->query('UPDATE planets SET unittrain_actual="'.($game->planet['unittrain_actual']).'",unittrainid_nexttime="'.($ACTUAL_TICK+1).'" WHERE planet_id="'.$game->planet['planet_id'].'" LIMIT 1');}
-					if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==11) {$db->query('UPDATE planets SET unittrain_actual="'.($game->planet['unittrain_actual']).'",unittrainid_nexttime="'.($ACTUAL_TICK+1).'" WHERE planet_id="'.$game->planet['planet_id'].'" LIMIT 1');}
-					if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==12) {$db->query('UPDATE planets SET unittrain_actual="'.($game->planet['unittrain_actual']).'",unittrainid_nexttime="'.($ACTUAL_TICK+1).'" WHERE planet_id="'.$game->planet['planet_id'].'" LIMIT 1');}
+					if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==11) {$db->query('UPDATE planets SET unittrain_actual="'.($game->planet['unittrain_actual']).'",unittrainid_nexttime="'.($ACTUAL_TICK+9).'" WHERE planet_id="'.$game->planet['planet_id'].'" LIMIT 1');}
+					if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==12) {$db->query('UPDATE planets SET unittrain_actual="'.($game->planet['unittrain_actual']).'",unittrainid_nexttime="'.($ACTUAL_TICK+18).'" WHERE planet_id="'.$game->planet['planet_id'].'" LIMIT 1');}
 				}
 				$started=1;
 			}
@@ -131,6 +130,55 @@ if ($game->planet['unittrainid_nexttime']>0) return 0;
 
 }
 
+function Reset_List()
+{
+	global $game,$db;
+
+	$db->query('UPDATE planets SET
+	                   unittrainid_1  = 0,
+	                   unittrainid_2  = 0,
+	                   unittrainid_3  = 0,
+	                   unittrainid_4  = 0,
+	                   unittrainid_5  = 0,
+	                   unittrainid_6  = 0,
+	                   unittrainid_7  = 0,
+	                   unittrainid_8  = 0,
+	                   unittrainid_9  = 0,
+	                   unittrainid_10 = 0,
+	                   unittrainnumber_1  = 0,
+	                   unittrainnumber_2  = 0,
+	                   unittrainnumber_3  = 0,
+	                   unittrainnumber_4  = 0,
+	                   unittrainnumber_5  = 0,
+	                   unittrainnumber_6  = 0,
+	                   unittrainnumber_7  = 0,
+	                   unittrainnumber_8  = 0,
+	                   unittrainnumber_9  = 0,
+	                   unittrainnumber_10 = 0,
+	                   unittrainnumberleft_1  = 0,
+	                   unittrainnumberleft_2  = 0,
+	                   unittrainnumberleft_3  = 0,
+	                   unittrainnumberleft_4  = 0,
+	                   unittrainnumberleft_5  = 0,
+	                   unittrainnumberleft_6  = 0,
+	                   unittrainnumberleft_7  = 0,
+	                   unittrainnumberleft_8  = 0,
+	                   unittrainnumberleft_9  = 0,
+	                   unittrainnumberleft_10 = 0,
+	                   unittrainendless_1  = 0,
+	                   unittrainendless_2  = 0,
+	                   unittrainendless_3  = 0,
+	                   unittrainendless_4  = 0,
+	                   unittrainendless_5  = 0,
+	                   unittrainendless_6  = 0,
+	                   unittrainendless_7  = 0,
+	                   unittrainendless_8  = 0,
+	                   unittrainendless_9  = 0,
+	                   unittrainendless_10 = 0,
+	                   unittrain_actual = 1,
+	                   unittrainid_nexttime=-1
+	            WHERE planet_id="'.$game->planet['planet_id'].'"');
+}
 
 function Save_List()
 {
@@ -245,6 +293,10 @@ else $game->out('<tr><td><img src="'.$game->PLAIN_GFX_PATH.'arrow_right.png"></t
 $game->out('<td width=150><select name="listid_'.$t.'" class="Select" size="1"><option value="-1">'.(constant($game->sprache("Text25"))).'</option>');
 if ($game->planet['unittrainid_'.($t+1)]==10) $game->out(constant($game->sprache("Text17")));
 else $game->out(constant($game->sprache("Text18")));
+if ($game->planet['unittrainid_'.($t+1)]==11) $game->out(constant($game->sprache("Text31")));
+else $game->out(constant($game->sprache("Text32")));
+if ($game->planet['unittrainid_'.($t+1)]==12) $game->out(constant($game->sprache("Text33")));
+else $game->out(constant($game->sprache("Text34")));
 
 for ($u=0; $u<6; $u++)
 {
@@ -272,7 +324,9 @@ $game->out('
 </tr>
 ');
 }
-$game->out('</table>'.constant($game->sprache("Text19")).'&nbsp;<img src="'.$game->PLAIN_GFX_PATH.'arrow_right.png">&nbsp;'.constant($game->sprache("Text19a")).'<br><input type="submit" name="exec_list" class="button_nosize" value="'.constant($game->sprache("Text22")).'"></form></td></tr></table></td></tr></table>');
+$game->out('</table>'.constant($game->sprache("Text19")).'&nbsp;<img src="'.$game->PLAIN_GFX_PATH.'arrow_right.png">&nbsp;'.constant($game->sprache("Text19a")).'<br>
+<input type="submit" name="exec_list" class="button_nosize" value="'.constant($game->sprache("Text22")).'">&nbsp;&nbsp;
+<input type="submit" name="reset_list" class="button_nosize" value="'.constant($game->sprache("Text35")).'"></form></td></tr></table></td></tr></table>');
 }
 
 
@@ -410,6 +464,11 @@ redirect('a=academy');
 if (isset($_POST['stop_list']))
 {
 Stop_Train();
+redirect('a=academy');
+}
+if (isset($_POST['reset_list']))
+{
+Reset_List();
 redirect('a=academy');
 }
 Show_Main();

@@ -82,6 +82,16 @@ define ("GER_Text29", 'Nee, TAP wir wollen doch nich BUGs nutzen');
 
 define ("GER_Text30", 'Netter Versuch');
 
+define ("GER_Text31", '<option value="11" selected>27 Minuten Pause</option>');
+
+define ("GER_Text32", '<option value="11">27 Minuten Pause</option>');
+
+define ("GER_Text33", '<option value="12" selected>54 Minuten Pause</option>');
+
+define ("GER_Text34", '<option value="12">54 Minuten Pause</option>');
+
+define ("GER_Text35", 'Reset');
+
 //English
 
 define ("ENG_Text1", '<center><table border="0" cellpadding="1" cellspacing="1" width="300" class="style_outer"><tr><td><center><table border=0 cellpadding=1 cellspacing=1 width=300 class="style_inner"><tr><td><tr><td>It is trained: <b>');
@@ -146,6 +156,17 @@ define ("ENG_Text29", 'Nee, TAP we want to use but not BUGs');
 
 define ("ENG_Text30", 'Nice try');
 
+define ("ENG_Text31", '<option value="11" selected>27 Minutes Pause</option>');
+
+define ("ENG_Text32", '<option value="11">27 Minutes Pause</option>');
+
+define ("ENG_Text33", '<option value="12" selected>54 Minutes Pause</option>');
+
+define ("ENG_Text34", '<option value="12">54 Minutes Pause</option>');
+
+define ("ENG_Text35", 'Reset');
+
+
 //Italiano
 
 define ("ITA_Text1", '<center><table border="0" cellpadding="1" cellspacing="1" width="300" class="style_outer"><tr><td><center><table border=0 cellpadding=1 cellspacing=1 width=300 class="style_inner"><tr><td><tr><td>In addestramento: <b>');
@@ -209,5 +230,15 @@ define ("ITA_Text28", '54 Minuti di Pausa');
 define ("ITA_Text29", 'Nonostante gli sforzi, il software potrebbe contenere bachi');
 
 define ("ITA_Text30", 'Buon Addestramento');
+
+define ("ITA_Text31", '<option value="11" selected>27 minuti di pausa</option>');
+
+define ("ITA_Text32", '<option value="11">27 minuti di pausa</option>');
+
+define ("ITA_Text33", '<option value="12" selected>54 minuti di pausa</option>');
+
+define ("ITA_Text34", '<option value="12">54 minuti di pausa</option>');
+
+define ("ITA_Text35", 'Azzera');
 
 ?>
