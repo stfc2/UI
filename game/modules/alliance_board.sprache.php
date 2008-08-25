@@ -73,6 +73,17 @@ define ("GER_TEXT23", '<b>Autor</b>');
 
 define ("GER_TEXT24", '<b>Letzter Post</b>');
 
+define ("GER_TEXT25", 'Wichtig:');
+
+define ("GER_TEXT26", 'Taktischen:');
+
+define ("GER_TEXT27", 'Diplomat:');
+
+define ("GER_TEXT25", 'Admin');
+
+define ("GER_TEXT26", 'Pr&auml;esident');
+
+define ("GER_TEXT27", 'Diplomat');
 
 
 
@@ -128,7 +139,17 @@ define ("ENG_TEXT23", '<b>Author</b>');
 
 define ("ENG_TEXT24", '<b>Last post</b>');
 
+define ("ENG_TEXT25", 'Important:');
 
+define ("ENG_TEXT26", 'Tactical:');
+
+define ("ENG_TEXT27", 'Diplomat:');
+
+define ("ENG_TEXT25", 'Admin');
+
+define ("ENG_TEXT26", 'President');
+
+define ("ENG_TEXT27", 'Diplomat');
 
 
 
@@ -143,7 +164,7 @@ define ("ITA_TEXT3", 'Il topic &egrave; vuoto');
 
 define ("ITA_TEXT4", 'Indice Board');
 
-define ("ITA_TEXT5", 'Apri un nuovo topic');
+define ("ITA_TEXT5", 'Nuovo thread');
 
 define ("ITA_TEXT6", 'Oggetto:');
 
@@ -183,6 +204,16 @@ define ("ITA_TEXT23", '<b>Autore</b>');
 
 define ("ITA_TEXT24", '<b>Ultimo post</b>');
 
+define ("ITA_TEXT25", 'Importante:');
 
+define ("ITA_TEXT26", 'Tattico:');
+
+define ("ITA_TEXT27", 'Diplomatico:');
+
+define ("ITA_TEXT28", 'Admin');
+
+define ("ITA_TEXT29", 'Presidente');
+
+define ("ITA_TEXT30", 'Diplomatico');
 
 ?>

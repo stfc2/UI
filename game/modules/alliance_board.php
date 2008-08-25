@@ -1,11 +1,11 @@
 <?php
-/*    
-	This file is part of STFC.
-	Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
-		
-	STFC is based on STGC,
-	Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
-	
+/*
+    This file is part of STFC.
+    Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
+
+    STFC is based on STGC,
+    Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
+
     STFC is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 3 of the License, or
@@ -22,7 +22,7 @@
 
 
 
-$THREADS_PER_PAGE = 10;
+$THREADS_PER_PAGE = 15;
 $POSTS_PER_PAGE = 15;
 
 $game->init_player();
@@ -37,7 +37,7 @@ if(!empty($_GET['override_aid'])) {
 
     $game->player['user_alliance'] = (int)$_GET['override_aid'];
     $game->player['alliance_name'] = 'Overriden';
-    
+
     $override_str = '&override_aid='.(int)$_GET['override_aid'];
 }
 else {
@@ -53,28 +53,38 @@ if(!empty($_POST['new_thread_submit'])) {
     if(empty($_POST['post_title'])) {
         message(NOTICE, constant($game->sprache("TEXT2")));
     }
-    
+
     $post_title = addslashes($_POST['post_title']);
-    
+
     if(empty($_POST['post_text'])) {
         message(NOTICE, constant($game->sprache("TEXT3")));
     }
-    
+
+    $th_flags_high = 0;
+    $th_flags_tactical = 0;
+    $th_flags_diplomacy = 0;
+
+    if(!empty($_POST['thflags1'])) $th_flags_high = 1;
+
+    if(!empty($_POST['thflags2'])) $th_flags_tactical = 1;
+
+    if(!empty($_POST['thflags3'])) $th_flags_diplomacy = 1;
+
     $post_text = str_replace("\n", '<br>', htmlspecialchars($_POST['post_text']));
-    
-    $sql = 'INSERT INTO alliance_bthreads (alliance_id, user_id, thread_replies, thread_title, thread_last_post_date)
-            VALUES ('.$game->player['user_alliance'].', '.$game->player['user_id'].', 0, "'.$post_title.'", '.$game->TIME.')';
-            
+
+    $sql = 'INSERT INTO alliance_bthreads (alliance_id, user_id, thread_replies, thread_title, thread_priority, thread_tactical, thread_diplomacy, thread_last_post_date)
+            VALUES ('.$game->player['user_alliance'].', '.$game->player['user_id'].', 0, "'.$post_title.'",  '.$th_flags_high.', '.$th_flags_tactical.', '.$th_flags_diplomacy.', '.$game->TIME.')';
+
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not insert new thread data');
     }
-    
+
     $new_thread_id = $db->insert_id();
-    
+
     if(empty($new_thread_id)) {
         message(GENERAL, 'Could not get new thread id', '$new_thread_id == empty');
     }
-    
+
     $sql = 'INSERT INTO alliance_bposts (alliance_id, thread_id, user_id, post_deleted, post_title, post_date, post_text)
             VALUES ('.$game->player['user_alliance'].', '.$new_thread_id.', '.$game->player['user_id'].', 0, "'.$post_title.'", '.$game->TIME.', "'.$post_text.'")';
             
@@ -92,7 +102,7 @@ if(!empty($_POST['new_thread_submit'])) {
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not update thread first post data');
     }
-    
+
     redirect('a=alliance_board&show_thread='.$new_thread_id.$override_str);
 }
 elseif(isset($_GET['new_thread'])) {
@@ -112,6 +122,15 @@ elseif(isset($_GET['new_thread'])) {
           <td rowspan="8" width="40">&nbsp;</td>
           <td width="100">'.constant($game->sprache("TEXT6")).'</td>
           <td width="340"><input class="field" type="text" name="post_title" size="30" maxlength="30" style="width: 320px;"></td>
+        </tr>
+        <tr>
+          '.( ($game->player['user_alliance_status'] == 2 || $game->player['user_alliance_status'] == 3 || $game->player['user_alliance_status'] == 4) ? '<td width="100">'.constant($game->sprache("TEXT25")).' </td><td><input type="checkbox" name="thflags1" value="1"></td>' : '&nbsp').'
+        </tr>
+        <tr>
+          '.( ($game->player['user_alliance_rights3'] == 1) ? '<td width="100">'.constant($game->sprache("TEXT26")).' </td><td><input type="checkbox" name="thflags2" value="1"></td>' : '&nbsp').'
+        </tr>
+        <tr>
+          '.( ($game->player['user_alliance_rights5'] == 1) ? '<td width="100">'.constant($game->sprache("TEXT27")).' </td><td><input type="checkbox" name="thflags3" value="1"></td>' : '&nbsp').'
         </tr>
         <tr height="5"><td></td></tr>
         <tr>
@@ -147,19 +166,19 @@ elseif(!empty($_POST['new_post_submit'])) {
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not insert new post data');
     }
-    
+
     $new_post_id = $db->insert_id();
-    
+
     $sql = 'UPDATE alliance_bthreads
             SET thread_replies = thread_replies + 1,
                 thread_last_post_id = '.$new_post_id.',
                 thread_last_post_date = '.$game->TIME.'
             WHERE thread_id = '.$thread_id;
-            
+
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not update thread data');
     }
-    
+
     redirect('a=alliance_board&show_thread='.$thread_id.$override_str);
 }
 elseif(!empty($_GET['new_post'])) {
@@ -168,15 +187,15 @@ elseif(!empty($_GET['new_post'])) {
     $sql = 'SELECT thread_id, alliance_id, thread_title
             FROM alliance_bthreads
             WHERE thread_id = '.$thread_id;
-            
+
     if(($thread = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query thread data');
     }
-    
+
     if(empty($thread['thread_id'])) {
         message(NOTICE, constant($game->sprache("TEXT9")));
     }
-    
+
     if($thread['alliance_id'] != $game->player['user_alliance']) {
         message(NOTICE, constant($game->sprache("TEXT9")));
     }
@@ -345,61 +364,61 @@ elseif(!empty($_POST['delete_post_confirm'])) {
     if(empty($_POST['post_id'])) {
         message(NOTICE, constant($game->sprache("TEXT19")));
     }
-    
+
     $post_id = (int)$_POST['post_id'];
-    
+
     $sql = 'SELECT p.post_id, p.user_id, p.alliance_id, p.post_deleted,
                    t.thread_id, t.thread_first_post_id, t.thread_last_post_id
             FROM (alliance_bposts p, alliance_bthreads t)
             WHERE p.post_id = '.$post_id.' AND
                   t.thread_id = p.thread_id';
-                  
+
     if(($post = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query post/thread data');
     }
-    
+
     if(empty($post['post_id'])) {
         message(NOTICE, constant($game->sprache("TEXT11")));
     }
-    
+
     if($post['alliance_id'] != $game->player['user_alliance']) {
         message(NOTICE, constant($game->sprache("TEXT9")));
     }
-    
+
     if($post['post_deleted'] != 0) {
         message(NOTICE, constant($game->sprache("TEXT9")));
     }
-    
+
     $first_post = ($post['thread_first_post_id'] == $post_id) ? true : false;
-    
+
     // Das kann sicher noch zusammengefasst werden,
     // aber ich hab heute Abend keine Ahnung, wie ich
     // das machen soll...
     $allowed = false;
-    
+
     if($game->player['user_alliance_status'] >= ALLIANCE_STATUS_ADMIN) {
         $allowed = true;
     }
     elseif( ($post['user_id'] == $game->player['user_id']) && (!$first_post) ) {
         $allowed = true;
     }
-    
+
     if(!$allowed) {
         message(NOTICE, constant($game->sprache("TEXT12")));
     }
-    
+
     if($first_post) {
         $sql = 'UPDATE alliance_bposts
                 SET post_deleted = 1
                 WHERE thread_id = '.$post['thread_id'];
-                
+
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not update post delete data');
         }
         
         $sql = 'DELETE FROM alliance_bthreads
                 WHERE thread_id = '.$post['thread_id'];
-                
+
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not delete thread data');
         }
@@ -410,13 +429,13 @@ elseif(!empty($_POST['delete_post_confirm'])) {
         $sql = 'UPDATE alliance_bposts
                 SET post_deleted = 1
                 WHERE post_id = '.$post_id;
-                
+
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not update post delete data');
         }
-        
+
         $last_post = ($post['thread_last_post_id'] == $post_id) ? true : false;
-        
+
         if($last_post) {
             $sql = 'SELECT post_id, post_date
                     FROM alliance_bposts
@@ -424,17 +443,17 @@ elseif(!empty($_POST['delete_post_confirm'])) {
                           post_deleted = 0
                     ORDER BY post_date DESC
                     LIMIT 1';
-                    
+
             if(($new_last_post = $db->queryrow($sql)) === false) {
                 message(DATABASE_ERROR, 'Could not query new last post data');
             }
-            
+
             $sql = 'UPDATE alliance_bthreads
                     SET thread_replies = thread_replies - 1,
                         thread_last_post_id = '.$new_last_post['post_id'].',
                         thread_last_post_date = '.$new_last_post['post_date'].'
                     WHERE thread_id = '.$post['thread_id'];
-                        
+
             if(!$db->query($sql)) {
                 message(DATABASE_ERROR, 'Could not update thread data');
             }
@@ -443,15 +462,15 @@ elseif(!empty($_POST['delete_post_confirm'])) {
             $sql = 'UPDATE alliance_bthreads
                     SET thread_replies = thread_replies - 1
                     WHERE thread_id = '.$post['thread_id'];
-                    
+
             if(!$db->query($sql)) {
                 message(DATABASE_ERROR, 'Could not update thread replies count data');
             }
         }
-        
+
         redirect('a=alliance_board&show_thread='.$post['thread_id'].$override_str);
     }
-    
+
 
 }
 elseif(!empty($_GET['delete_post'])) {
@@ -474,7 +493,7 @@ elseif(!empty($_GET['delete_post'])) {
 }
 elseif(!empty($_GET['show_thread'])) {
     $thread_id = (int)$_GET['show_thread'];
-    
+
     $start = (!empty($_GET['start'])) ? $_GET['start'] : 0;
 
     $sql = 'SELECT *
@@ -484,25 +503,25 @@ elseif(!empty($_GET['show_thread'])) {
     if(($thread = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query thread data');
     }
-    
+
     if(empty($thread['thread_id'])) {
         message(NOTICE, constant($game->sprache("TEXT9")));
     }
-    
+
     if($thread['alliance_id'] != $game->player['user_alliance']) {
         message(NOTICE, constant($game->sprache("TEXT9")));
     }
-    
+
     $n_posts = $thread['thread_replies'] + 1;
 
     $sql = 'SELECT p.*,
-                   u.user_id, u.user_name, u.user_avatar
+                   u.user_id, u.user_name, u.user_avatar, u.user_alliance_status
             FROM (alliance_bposts p)
             LEFT JOIN (user u) ON u.user_id = p.user_id
             WHERE p.thread_id = '.$thread_id.' AND
                   p.post_deleted = 0
             LIMIT '.$start.', '.$POSTS_PER_PAGE;
-            
+
     if(!$q_posts = $db->query($sql)) {
         message(DATABASE_ERROR, 'Could not query posts data');
     }
@@ -541,7 +560,7 @@ elseif(!empty($_GET['show_thread'])) {
         }
 
         $own_post = ($post['user_id'] == $game->player['user_id']) ? true : false;
-        
+
         $game->out('
       <table class="style_inner" width="480" align="center" border="0" cellpadding="2" cellspacing="2">
         <tr>
@@ -554,21 +573,24 @@ elseif(!empty($_GET['show_thread'])) {
           <tr>
             <td width="70" valign="top">');
 
-			if (!empty($post['user_avatar']))
-			{
-
-				$info = scale_image($post['user_avatar'],100*0.6,166*0.6);
-				if ($info[0]>0 && $info[1]>0)
-				$game->out('<img src="'.$post['user_avatar'].'" width="'.$info[0].'" height="'.$info[1].'">');
-				else $game->out('&nbsp;');
-
-				//$game->out('<img src="'.$post['user_avatar'].'">');
-			}
-			else $game->out('&nbsp;');
+        if (!empty($post['user_avatar']))
+        {
+            $info = scale_image($post['user_avatar'],100*0.6,166*0.6);
+            if ($info[0]>0 && $info[1]>0)
+                $game->out('<img src="'.$post['user_avatar'].'" width="'.$info[0].'" height="'.$info[1].'">');
+            else $game->out('&nbsp;');
+        }
+        else $game->out('&nbsp;');
 
 
+        if($post['user_alliance_status'] == 2)
+            $game->out('<br><font color="yellow">'.constant($game->sprache("TEXT28")).'</font>');
+        elseif ($post['user_alliance_status'] == 3)
+            $game->out('<br><font color="red">'.constant($game->sprache("TEXT29")).'</font>');
+        elseif ($post['user_alliance_status'] == 4)
+            $game->out('<br><font color="#FFA500">'.constant($game->sprache("TEXT30")).'</font>');
 
-			$game->out('</td>
+        $game->out('</td>
             <td width="410" valign="top" colspan="2">'.$post['post_text'].'</td>
         </tr>
       </table>
@@ -650,7 +672,9 @@ else {
                        u.user_id, u.user_name
                 FROM (alliance_bthreads t)
                 LEFT JOIN (user u) ON u.user_id = t.user_id
-                WHERE t.alliance_id = '.$game->player['user_alliance'].'
+                WHERE t.alliance_id = '.$game->player['user_alliance'].' AND
+                      t.thread_tactical IN ('.(($game->player['user_alliance_rights3'] == 1) ? '0, 1' : '0').') AND
+                      t.thread_diplomacy IN ('.(($game->player['user_alliance_rights5'] == 1) ? '0, 1' : '0').')
                 ORDER BY thread_priority DESC, thread_last_post_date DESC
                 LIMIT '.$start.', '.$THREADS_PER_PAGE;
 
@@ -682,22 +706,31 @@ else {
     
     if($n_threads > 0) {
         while($thread = $db->fetchrow($q_threads)) {
+            if ($thread['thread_tactical'] == 1 && $game->player['user_alliance_rights3'] != 1) continue;
+
+            if ($thread['thread_diplomacy'] == 1 && $game->player['user_alliance_rights5'] != 1) continue;
+
             if(empty($thread['user_id'])) {
                 $thread['user_id'] = 0;
                 $thread['user_name'] = constant($game->sprache("TEXT20"));
             }
-            
+
             $thr_n_pages = ceil($thread['thread_replies'] / $POSTS_PER_PAGE);
-            
+
             if($thr_n_pages == 0) $start_str = '';
             else $start_str = '&start='.( ($thr_n_pages - 1) * $POSTS_PER_PAGE);
 
+            $threadtitle = '';
+
+            if ($thread['thread_diplomacy'] == 1) $threadtitle = '<font color="#FFA500"><b>.D. </b></font>';
+            if ($thread['thread_tactical'] == 1) $threadtitle .= '<font color="yellow"><b>.T. </b></font>';
+
             if($thread['thread_priority'] == 1) {
-                $threadtitle = '<b><font color = "yellow">'.htmlspecialchars(stripslashes($thread['thread_title'])).'</font></b>';
+                $threadtitle .= '<b><font color="yellow">'.htmlspecialchars(stripslashes($thread['thread_title'])).'</font></b>';
             }
             else
             {
-                $threadtitle = htmlspecialchars(stripslashes($thread['thread_title']));
+                $threadtitle .= htmlspecialchars(stripslashes($thread['thread_title']));
             }
 
             $game->out('
