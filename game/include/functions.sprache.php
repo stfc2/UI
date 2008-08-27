@@ -551,6 +551,24 @@ define ("ENG_DILITHIUM", 'Dilithium');
 
 define ("ENG_WORKERS2", 'Workers');
 
+// Used by load_active_planet
+define ("ENG_NEWPLANET3",'Here you have the opportunity to create a new home.');
+
+define ("ENG_STARTPOINT",'Start point:');
+
+define ("ENG_RANDOM",'Random');
+
+define ("ENG_GAMMAQ",'Gamma Quadrant');
+
+define ("ENG_DELTAQ",'Delta Quadrant');
+
+define ("ENG_ALPHAQ",'Alpha Quadrant');
+
+define ("ENG_BETAQ",'Beta Quadrant');
+
+define ("ENG_COLONIZE",'Colonize!');
+
+
 
 //Italian
 
@@ -816,6 +834,23 @@ define ("ITA_MINERALS", 'Minerali');
 define ("ITA_DILITHIUM", 'Dilitio');
 
 define ("ITA_WORKERS2", 'Lavoratori');
+
+// Used by load_active_planet
+define ("ITA_NEWPLANET3",'Qu&igrave; hai l&#146;opportunit&agrave; di crearti una nuova casa.');
+
+define ("ITA_STARTPOINT",'Punto iniziale:');
+
+define ("ITA_RANDOM",'Casuale');
+
+define ("ITA_GAMMAQ",'Quadrante Gamma');
+
+define ("ITA_DELTAQ",'Quadrante Delta');
+
+define ("ITA_ALPHAQ",'Quadrante Alfa');
+
+define ("ITA_BETAQ",'Quadrante Beta');
+
+define ("ITA_COLONIZE",'Colonizza!');
 
 
 ?>

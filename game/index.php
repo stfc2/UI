@@ -26,31 +26,31 @@ ignore_user_abort(true);
 
 
 // #############################################################################
-// Error-Level bestimmen
+// Determine Error-Level
 if(isset($_GET['debug'])) error_reporting(E_ALL);
 else error_reporting(E_ERROR);
 
 
 // #############################################################################
-// Ausgabepuffer
+// Output buffer
 ob_start();
 ob_implicit_flush(0);
 
 
 // #############################################################################
-// Konstanten
+// Constants
 define('GAME_EXE', 'index.php');
 define('IN_SCHEDULER', false);
 
 // #############################################################################
 
-// Game-Objekt
+// Game object
 include('include/functions.sprache.php'); // include translations
 include('include/functions.php');
 $game = new game();
 
 // #############################################################################
-// SQL-Objekt fï¿½r Datenbankzugriff
+// SQL object for database access
 include('include/global.php');
 include('include/sql.php');
 $db = new sql($config['server'].":".$config['port'], $config['game_database'], $config['user'], $config['password']); // create sql-object for db-connection
@@ -65,7 +65,7 @@ if(isset($_GET['sql_debug'])) $db->debug = true;
 
 
 // #############################################################################
-// Config laden und auswerten
+// Load and evaluate config
 $game->load_config();
 $ACTUAL_TICK = $NEXT_TICK = 0;
 
@@ -104,8 +104,11 @@ if(isset($_GET['hide_notepad'])) {
     $game->player['user_hidenotepad'] = 1;
 }
 
+if(isset($_POST['set_planet']))
+	$game->set_planet((int)$_POST['quadrant'],$_POST['type']);
+
 // #############################################################################
-// Sicherheitscode
+// Security Code
 if( ($game->TIME - $game->player['last_secimage'] > 3600 * 1.5) && ($game->player['content_secimage'] == '') ) {
     if($game->player['user_auth_level'] == STGC_DEVELOPER) {
         $sql = 'UPDATE user
@@ -139,7 +142,7 @@ if( ($game->TIME - $game->player['last_secimage'] > 3600 * 1.5) && ($game->playe
 }
 
 // #############################################################################
-// Zu Ladendes Modul überprüfen
+// Load modules check
 if (file_exists('include/text_races_'.$game->player['language'].'.php')) {
 	include('include/text_races_'.$game->player['language'].'.php');
 }else{
@@ -204,14 +207,14 @@ if($game->player['content_secimage'] != '' && $game->TIME >= $game->player['time
 
 
 // #############################################################################
-// HTML ausgeben
+// HTML spend
 $game->display();
 
 if(isset($_GET['sql_debug'])) $db->debug_info();
 
 
 // #############################################################################
-// Ausgabe-Komprimierung
+// Output compression
 $gzip_contents = ob_get_contents();
 ob_end_clean();
 

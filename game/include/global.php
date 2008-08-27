@@ -231,6 +231,10 @@ define ('UNINHABITATED_PLANET', 'Inesplorato');
 define ('UNINHABITATED_COLONY', 'Isolato');
 
 
+// User can choose initial planet's quadrant
+define ('USERCHOICEQUADRANT', 0);
+
+
 // Beschleuningt den Scheduler
 
 $addres = array(

@@ -1534,7 +1534,7 @@ echo'
 					/* 22/06/08 - AC: At least for this summer, update field last_active also with sitting */
 					$sql = 'UPDATE user
 					        SET num_sitting=num_sitting+1,
-				                last_active = '.$this->TIME.'
+					            last_active = '.$this->TIME.'
 					        WHERE user_id = '.$this->uid;
 					$db->query($sql);
 				}
@@ -1700,45 +1700,74 @@ echo'
 		}
 
 		if(empty($this->player['planets'])) {
-			global $ACTUAL_TICK;
-
-			$db->lock('starsystems_slots');
-//			$planet_id = $this->create_planet($this->player['user_id'], 'quadrant', mt_rand(1, 4)); creazione del pianeta madre in maniera randomica
-//			$planet_id = $this->create_planet($this->player['user_id'], 'quadrant', $this->pick_quadrant());
-			// Diamo un sistema nuovo al giocatore nuovo
-			$_temp = $this->create_system('quadrant', $this->pick_quadrant(), 1);
-			$_system_id = $_temp[0];
-			$_temp = $this->create_planet(0, 'system', $_system_id);
-			$_temp = $this->create_planet(0, 'system', $_system_id);
-			$_temp = $this->create_planet(0, 'system', $_system_id);
-			$_temp = $this->create_planet(0, 'system', $_system_id);
-			$planet_id = $this->create_planet($this->player['user_id'], 'system', $_system_id);
-			$db->unlock();
-
-			if(empty($planet_id)) {
-				message(GENERAL, constant($this->sprache("NONEWPLANET")), '$planet_id = empty');
+			// User cannot choose quadrant
+			if(USERCHOICEQUADRANT == 0) {
+				// Random quadrant and no type selection
+				$this->set_planet(0,'');
+				message(GENERAL, constant($this->sprache("NEWPLANET1")).' <i>'.$this->player['user_name'].'</i> '.constant($this->sprache("NEWPLANET2")));
 			}
 			else {
-				$sql = 'INSERT INTO planet_details (planet_id, user_id, alliance_id, source_uid, source_aid, timestamp, log_code) '
-				. ' VALUES ('.$planet_id.', '.$this->player['user_id'].', 0, '.$this->player['user_id'].', 0, '.time().', 0)';
-				if(!$db->query($sql)) {
-					message(DATABASE_ERROR, 'Could not update planet details data');
-				}
-			}
-						
-			$sql = 'UPDATE user
-			        SET user_points = 10,
-			            user_planets = 1,
-			            user_attack_protection = '.($ACTUAL_TICK + USER_ATTACK_PROTECTION).',
-			            user_capital = '.$planet_id.',
-			            active_planet = '.$planet_id.'
-			        WHERE user_id = '.$this->player['user_id'];
+				echo '
+				<html>
+				<head>
+				<title>Frontline Combat :: Choosing Quadrant</title>
+				<style type="text/css">
+				<!--
+				a:link    { font-family: Arial,serif; font-size: 10px; text-decoration: none; color: #CCCCCC; }
+				a:visited { font-family: Arial,serif; font-size: 10px; text-decoration: none; color: #CCCCCC; }
+				a:hover   { font-family: Arial,serif; font-size: 10px; text-decoration: none; color: #FFFFFF; }
+				a:active  { font-family: Arial,serif; font-size: 10px; text-decoration: none; color: #CCCCCC; }
 
-			if(!$db->query($sql)) {
-				message(DATABASE_ERROR, 'Could not update user rest time');
-			}
+				td { font-family: Arial,serif; font-size: 12px; color: #FFFFFF; }
 
-			message(GENERAL, constant($this->sprache("NEWPLANET1")).' <i>'.$this->player['user_name'].'</i> '.constant($this->sprache("NEWPLANET2")));
+				input.button, input.button_nosize, input.field, input.field_nosize, textarea, select
+				{ color: #959595; font-family: Verdana; font-size: 10px; background-color: #000000; border: 1px solid #959595; }
+
+				//-->
+				</style>
+				</head>
+
+				<body bgcolor="#000000" background="../gfx/template_bg.jpg">
+
+				<table bgcolor="#000025" width="500" align="center" cellspacing="4" cellpadding="4" style="border: 1px solid #C0C0C0;">
+				<tr>
+					<td><span style="font-size: 14px; font-weight: bold;">Frontline Combat :: System-Announcement</span></td>
+				</tr>
+				</table>
+				<table bgcolor="#000025" width="500" align="center" cellspacing="4" cellpadding="4" style="border-left: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; border-right: 1px solid #C0C0C0;">
+				<tr>
+					<td>'.constant($this->sprache("NEWPLANET1")).' <i>'.$this->player['user_name'].'</i>.<br>
+					'.constant($this->sprache("NEWPLANET3")).'<br><br>
+					<form action="index.php" method="POST">
+					<table>
+					<tr>
+						<td>'.constant($this->sprache("TCLASS")).'</td>
+						<td>&nbsp;</td>
+						<td><input type="radio" name="type" value="n"> N</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>&nbsp;</td>
+						<td><input type="radio" name="type" value="m"> M</td>
+					</tr>
+					</table><br>
+					<table>
+					<tr><td>'.constant($this->sprache("STARTPOINT")).'</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="0"> '.constant($this->sprache("RANDOM")).'</td></tr>
+					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="1"> '.constant($this->sprache("GAMMAQ")).'</td></tr>
+					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="2"> '.constant($this->sprache("DELTAQ")).'</td></tr>
+					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="3"> '.constant($this->sprache("ALPHAQ")).'</td></tr>
+					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="4"> '.constant($this->sprache("BETAQ")).'</td></tr>
+					</table>
+					<br><center>
+					<input type="submit" name="set_planet" value="'.constant($this->sprache("COLONIZE")).'" class="button">
+					</center>
+					</form></td>
+				</tr>
+				</table>
+				</body>
+				</html>
+				';
+			}
 		}
 
 		$sql = 'SELECT planets.*,
@@ -2169,6 +2198,59 @@ echo'
 		stgc_log('pick_quadrant', 'Player race: '.$this->player['user_race'].' assigned quadrant: '.$picked_quadrant);
 
 		return($picked_quadrant);
+	}
+
+	function set_planet($quadrant,$type)
+	{
+		global $ACTUAL_TICK,$db;
+
+		// Random quadrant
+		if(!$quadrant)
+			$quadrant = $this->pick_quadrant();
+
+		$db->lock('starsystems_slots');
+		// Diamo un sistema nuovo al giocatore nuovo
+		$_temp = $this->create_system('quadrant', $quadrant, 1);
+		$_system_id = $_temp[0];
+		$_temp = $this->create_planet(0, 'system', $_system_id);
+		$_temp = $this->create_planet(0, 'system', $_system_id);
+		$_temp = $this->create_planet(0, 'system', $_system_id);
+		$_temp = $this->create_planet(0, 'system', $_system_id);
+		$planet_id = $this->create_planet($this->player['user_id'], 'system', $_system_id);
+		$db->unlock();
+
+		if(empty($planet_id)) {
+			message(GENERAL, constant($this->sprache("NONEWPLANET")), '$planet_id = empty');
+		}
+		else {
+			$sql = 'INSERT INTO planet_details (planet_id, user_id, alliance_id, source_uid, source_aid, timestamp, log_code) '
+			. ' VALUES ('.$planet_id.', '.$this->player['user_id'].', 0, '.$this->player['user_id'].', 0, '.time().', 0)';
+			if(!$db->query($sql)) {
+				message(DATABASE_ERROR, 'Could not update planet details data');
+			}
+		}
+
+		if($type == 'm' || $type == 'n') {
+			$sql = 'UPDATE planets
+			        SET planet_type = "'.$type.'"
+			        WHERE planet_id = '.$planet_id;
+
+			if(!$db->query($sql)) {
+				message(DATABASE_ERROR, 'Could not change user planet type');
+			}
+		}
+
+		$sql = 'UPDATE user
+		        SET user_points = 10,
+		            user_planets = 1,
+		            user_attack_protection = '.($ACTUAL_TICK + USER_ATTACK_PROTECTION).',
+		            user_capital = '.$planet_id.',
+		            active_planet = '.$planet_id.'
+		        WHERE user_id = '.$this->player['user_id'];
+
+		if(!$db->query($sql)) {
+			message(DATABASE_ERROR, 'Could not update user rest time');
+		}
 	}
 
 }
