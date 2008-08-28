@@ -185,12 +185,7 @@ $game->out('<center>'.display_view_navigation('stats&a2=viewalliance&id='.$_REQU
 
 if ($_REQUEST['view']=='overview')
 {
-if($game->player['user_alliance'] == $alliance['alliance_id']) {
 $game->out('<br><center><span class="sub_caption2">'.constant($game->sprache("TEXT14")).'</span><br><a href="alliancemap.php?alliance='.$alliance['alliance_tag'].'&size=6&map" target=_blank><img src="alliancemap.php?alliance='.$alliance['alliance_tag'].'&size=1" border=0></a>');
-}
-else {
-$game->out('<br><center><span class="sub_caption2">'.constant($game->sprache("TEXT14")).'</span><br>'.constant($game->sprache("TEXT90")).'<br><br>');	
-}
 
 $game->out('<br><center><span class="sub_caption2">'.constant($game->sprache("TEXT15")).'</span>');
 // Allytext:
@@ -494,14 +489,8 @@ if(($history2 = $db->fetchrow($historyqry2))!=true) {
   $game->out('<tr><td align="center"></td><td align="center">'.constant($game->sprache("TEXT51")).'</td><td align="center"></td></tr>');
 }
 
-// ---- DC Fog of War, first steps. Let's hide the maps for non-allied players
-if($user['user_alliance'] == $game->player['user_alliance']) {
-	$_link_image = '<a href="usermap.php?user='.$user['user_name'].'&size=6&map" target=_blank><img src="usermap.php?user='.$user['user_name'].'&size=1" border=0></a>';
-}
-else {
-	$_link_image = constant($game->sprache("TEXT90"));
-}
-// DC ----
+$_link_image = '<a href="usermap.php?user='.$user['user_name'].'&size=6&map" target=_blank><img src="usermap.php?user='.$user['user_name'].'&size=1" border=0></a>';
+
 $game->out('
 
       </table>
