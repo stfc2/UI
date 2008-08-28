@@ -105,7 +105,12 @@ if(isset($_GET['hide_notepad'])) {
 }
 
 if(isset($_POST['set_planet']))
+{
 	$game->set_planet((int)$_POST['quadrant'],$_POST['type']);
+
+	// Automatically add the new player to the relative alliance
+	$game->join_alliance();
+}
 
 // #############################################################################
 // Security Code

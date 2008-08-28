@@ -285,6 +285,35 @@ define ("GER_DILITHIUM", 'Latinum');
 
 define ("GER_WORKERS2", 'Arbeiter');
 
+// Used by load_active_planet
+define ("GER_NEWPLANET3",'Hier hast du nun die Möglichkeit eine neue Heimat zu wählen.');
+
+define ("GER_STARTPOINT",'Startpunkt:');
+
+define ("GER_RANDOM",'Zufall');
+
+define ("GER_GAMMAQ",'Gamma Quadrant');
+
+define ("GER_DELTAQ",'Delta Quadrant');
+
+define ("GER_ALPHAQ",'Alpha Quadrant');
+
+define ("GER_BETAQ",'Beta Quadrant');
+
+define ("GER_COLONIZE",'Kolonisieren!');
+
+// Used by join_alliance
+define ("GER_ALLYFOUNDED", 'hat die Allianz <b>gegr&uuml;ndet</b>');
+
+define ("GER_ALLYJOINED", 'hat die Allianz <b>betreten</b>');
+
+define ("GER_WARDECLARATION", 'Kriegserkl&auml;rung');
+
+define ("GER_WARDECL1", 'Die Allianz <b>');
+
+define ("GER_WARDECL2", '</b> hat ihnen soeben den <b><font color="red">Krieg</font></b> erkl&auml;rt.');
+
+
 
 //English
 
@@ -567,6 +596,17 @@ define ("ENG_ALPHAQ",'Alpha Quadrant');
 define ("ENG_BETAQ",'Beta Quadrant');
 
 define ("ENG_COLONIZE",'Colonize!');
+
+// Used by join_alliance
+define ("ENG_ALLYFOUNDED", 'has <b>founded</b> the alliance');
+
+define ("ENG_ALLYJOINED", 'has <b>entered</b> the alliance');
+
+define ("ENG_WARDECLARATION", 'War declaration');
+
+define ("ENG_WARDECL1", 'The alliance <b>');
+
+define ("ENG_WARDECL2", '</b> has just sent its <b><font color=\"red\">War declaration</font></b>.');
 
 
 
@@ -852,5 +892,15 @@ define ("ITA_BETAQ",'Quadrante Beta');
 
 define ("ITA_COLONIZE",'Colonizza!');
 
+// Used by join_alliance
+define ("ITA_ALLYFOUNDED", 'ha <b>fondato</b> l&#146;alleanza');
+
+define ("ITA_ALLYJOINED", 'si &egrave; <b>unito</b> all&#146;alleanza');
+
+define ("ITA_WARDECLARATION", 'Dichiarazione di Guerra');
+
+define ("ITA_WARDECL1", 'L&#146;Alleanza <b>');
+
+define ("ITA_WARDECL2", '</b> ha appena inviato la sua <b><font color=\"red\">Dichiarazione di Guerra</font></b>.');
 
 ?>

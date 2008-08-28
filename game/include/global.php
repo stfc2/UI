@@ -22,7 +22,7 @@
 
 
 
-include_once('/home/taku/public_html/stfc/config.inc.php');
+include_once('/home/taku/public_html/stfc/config2.inc.php');
 
 // Line break
 
@@ -236,6 +236,29 @@ define ('USER_CHOOSE_QUADRANT', 1);
 
 // User start with a whole system
 define ('USER_WHOLE_SYSTEM', 1);
+
+
+// Alliances Names
+define ('ALLIANCE_UFP_NAME', 'United Federation of Planets');
+
+define ('ALLIANCE_RE_NAME', 'Romulan Empire');  // Romulan Empire
+
+define ('ALLIANCE_KE_NAME', 'Klingon Empire');  // Klingon Empire
+
+define ('ALLIANCE_CU_NAME', 'Cardassian Union');  // Cardassian Union
+
+define ('ALLIANCE_D_NAME', 'Dominion');   // Dominion
+
+// Alliances Tags
+define ('ALLIANCE_UFP_TAG', 'UFP'); // United Federation of Planets
+
+define ('ALLIANCE_RE_TAG', 'RE');  // Romulan Empire
+
+define ('ALLIANCE_KE_TAG', 'KE');  // Klingon Empire
+
+define ('ALLIANCE_CU_TAG', 'CU');  // Cardassian Union
+
+define ('ALLIANCE_D_TAG', 'DOM');   // Dominion
 
 
 // Beschleuningt den Scheduler

@@ -2257,6 +2257,128 @@ echo'
 		}
 	}
 
+	function join_alliance()
+	{
+		global $db;
+
+		$alliance_name = '';
+		$alliance_tag = '';
+
+		switch($this->player['user_race'])
+		{
+			case 0:
+				$alliance_name = ALLIANCE_UFP_NAME;
+				$alliance_tag = ALLIANCE_UFP_TAG;
+			break;
+			case 1:
+				$alliance_name = ALLIANCE_RE_NAME;
+				$alliance_tag = ALLIANCE_RE_TAG;
+			break;
+			case 2:
+				$alliance_name = ALLIANCE_KE_NAME;
+				$alliance_tag = ALLIANCE_KE_TAG;
+			break;
+			case 3:
+				$alliance_name = ALLIANCE_CU_NAME;
+				$alliance_tag = ALLIANCE_CU_TAG;
+			break;
+			case 4:
+				$alliance_name = ALLIANCE_D_NAME;
+				$alliance_tag = ALLIANCE_D_TAG;
+			break;
+		}
+
+		// Search the appropriate alliance for this player */
+		$sql = 'SELECT alliance_id FROM alliance WHERE alliance_tag = '.$alliance_tag;
+
+		// Create the alliance if it not exists
+		if(($alliance = $db->queryrow($sql)) === false) {
+			$sql = 'INSERT INTO alliance (alliance_name, alliance_tag, alliance_owner, alliance_text, alliance_logo, alliance_homepage, alliance_points, alliance_planets, alliance_honor)
+				VALUES ("'.$alliance_name.'", "'.$alliance_tag.'", "'.$this->player['user_id'].'", "", "", "", '.$this->player['user_points'].', '.$this->player['user_planets'].', '.$this->player['user_honor'].')';
+			if(!$db->query($sql)) {
+				message(DATABASE_ERROR, 'Could not insert new alliance data');
+			}
+
+			$new_alliance_id = $db->insert_id();
+
+			/* Automatically declare war to other alliances */
+			if(!$alliances = $db->query('SELECT alliance_id FROM alliance WHERE alliance_id <> '.$new_alliance_id)) {
+				message(DATABASE_ERROR, 'Could not query alliances data');
+			}
+
+			while($alliance = $db->fetchrow($alliances)) {
+				$sql = 'INSERT INTO alliance_diplomacy (alliance1_id, alliance2_id, type, date, status)
+				        VALUES ('.$new_alliance_id.', '.$alliance['alliance_id'].', '.ALLIANCE_DIPLOMACY_WAR.', '.$this->TIME.', 0)';
+				if(!$db->query($sql)) {
+					message(DATABASE_ERROR, 'Could not insert new war declaration data');
+				}
+
+				// Tell that to the player
+				$sql = 'SELECT user_id FROM user WHERE user_alliance = '.$alliance['alliance_id'];
+				$receivers = $db->query($sql);
+
+				if(!$db->query($sql)) {
+					message(DATABASE_ERROR, 'Could not query alliance users');
+				}
+
+				$sender = 0;
+				$subject = constant($this->sprache("WARDECLARATION"));
+				$text = constant($this->sprache("WARDECL1")).$alliance_name.constant($this->sprache("WARDECL2")); 
+				$act_time = time();
+
+				while ($receiver = $db->fetchrow($receivers)) {
+					$sql = 'INSERT INTO message (sender, receiver, subject, text, time)
+					        VALUES ('.$sender.', '.$receiver['user_id'].', "'.$subject.'", "'.$text.'", '.$act_time.')';
+					if(!$db->query($sql)) {
+						message(DATABASE_ERROR, 'Could not send message to user');
+					}
+
+					$sql = 'UPDATE user SET unread_messages = 1 WHERE user_id = '.$receiver['user_id'];
+					if(!$db->query($sql)) {
+						message(DATABASE_ERROR, 'Could not set unread message flag');
+					}
+				}
+			}
+			/* End of war declaration notification */
+
+			alliance_log('<font color=green>'.$this->player['user_name'].'</font> '.constant($this->sprache("ALLYFOUNDED")).' <font color=red>'.$alliance_name.' ['.$alliance_tag.']</font>',0,$new_alliance_id);
+
+			$sql = 'UPDATE user
+				SET user_alliance = '.$new_alliance_id.',
+				    user_alliance_status = '.ALLIANCE_STATUS_OWNER.',
+				    user_alliance_rights1 = 1,
+				    user_alliance_rights2 = 1,
+				    user_alliance_rights3 = 1,
+				    user_alliance_rights4 = 1,
+				    user_alliance_rights5 = 1,
+				    user_alliance_rights6 = 1,
+				    user_alliance_rights7 = 1,
+				    user_alliance_rights8 = 1
+				WHERE user_id = '.$this->player['user_id'];
+
+			if(!$db->query($sql)) {
+				message(DATABASE_ERROR, 'Could not update user alliance data'); 
+			}
+		}
+		else {
+			$new_alliance_id = $alliance['alliance_id'];
+
+			$sql = 'UPDATE user
+				SET user_alliance = '.$new_alliance_id.',
+				    user_alliance_status = '.ALLIANCE_STATUS_MEMBER.'
+				WHERE user_id = '.$this->player['user_id'];
+
+			alliance_log('<font color=green>'.$this->player['user_name'].'</font> '.constant($this->sprache("ALLYJOINED")),0,$new_alliance_id);
+
+			if(!$db->query($sql)) {
+				message(DATABASE_ERROR, 'Could not add user to alliance');
+			}
+		}
+
+		// Update local data
+		$this->player['user_alliance'] = $new_alliance_id;
+	}
+
 }
 
 // #############################################################################
