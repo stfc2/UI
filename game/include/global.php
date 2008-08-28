@@ -232,7 +232,10 @@ define ('UNINHABITATED_COLONY', 'Isolato');
 
 
 // User can choose initial planet's quadrant
-define ('USERCHOICEQUADRANT', 0);
+define ('USER_CHOOSE_QUADRANT', 1);
+
+// User start with a whole system
+define ('USER_WHOLE_SYSTEM', 1);
 
 
 // Beschleuningt den Scheduler

@@ -1701,7 +1701,7 @@ echo'
 
 		if(empty($this->player['planets'])) {
 			// User cannot choose quadrant
-			if(USERCHOICEQUADRANT == 0) {
+			if(USER_CHOOSE_QUADRANT == 0) {
 				// Random quadrant and no type selection
 				$this->set_planet(0,'');
 				message(GENERAL, constant($this->sprache("NEWPLANET1")).' <i>'.$this->player['user_name'].'</i> '.constant($this->sprache("NEWPLANET2")));
@@ -2209,14 +2209,18 @@ echo'
 			$quadrant = $this->pick_quadrant();
 
 		$db->lock('starsystems_slots');
-		// Diamo un sistema nuovo al giocatore nuovo
-		$_temp = $this->create_system('quadrant', $quadrant, 1);
-		$_system_id = $_temp[0];
-		$_temp = $this->create_planet(0, 'system', $_system_id);
-		$_temp = $this->create_planet(0, 'system', $_system_id);
-		$_temp = $this->create_planet(0, 'system', $_system_id);
-		$_temp = $this->create_planet(0, 'system', $_system_id);
-		$planet_id = $this->create_planet($this->player['user_id'], 'system', $_system_id);
+		// Give a whole system to the new player
+		if(USER_WHOLE_SYSTEM) {
+			$_temp = $this->create_system('quadrant', $quadrant, 1);
+			$_system_id = $_temp[0];
+			$_temp = $this->create_planet(0, 'system', $_system_id);
+			$_temp = $this->create_planet(0, 'system', $_system_id);
+			$_temp = $this->create_planet(0, 'system', $_system_id);
+			$_temp = $this->create_planet(0, 'system', $_system_id);
+			$planet_id = $this->create_planet($this->player['user_id'], 'system', $_system_id);
+		}
+		else
+			$planet_id = $this->create_planet($this->player['user_id'], 'quadrant', $quadrant);
 		$db->unlock();
 
 		if(empty($planet_id)) {
