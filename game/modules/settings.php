@@ -217,7 +217,7 @@ global $config;
 
         <tr>
           <td valign=top>'.constant($game->sprache("TEXT28")).'</td>
-          <td><input type="checkbox" name="user_enable_sig" value="1"'.( ($data['user_enable_sig']) ? ' checked="checked"' : '' ).'> '.constant($game->sprache("TEXT29")).'<br>(<a href="http://stfc.nonsolotaku.it/game/sig_tmp/'.strtolower($game->player['user_name']).'.jpg" target=_blank>http://stfc.nonsolotaku.it/game/sig.php?user='.$game->player['user_name'].'</a>)<br>
+          <td><input type="checkbox" name="user_enable_sig" value="1"'.( ($data['user_enable_sig']) ? ' checked="checked"' : '' ).'> '.constant($game->sprache("TEXT29")).'<br>(<a href="http://stfc.nonsolotaku.it/game2/sig_tmp/'.strtolower($game->player['user_name']).'.jpg" target=_blank>http://stfc.nonsolotaku.it/game2/sig.php?user='.$game->player['user_name'].'</a>)<br>
 	  <i>'.constant($game->sprache("TEXT30")).'</i></td>
         </tr>
 
