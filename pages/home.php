@@ -99,7 +99,7 @@ $main_html .= '
 </table>
 </td>
     <td width="400" rowspan="5" valign="top">
-    <img src="./gfx/welcome.jpg" alt="welcome" border=0>
+    <img src="./gfx/welcome.jpg" alt="Benvenuti su Star Trek: Frontline Combat 2!" border=0>
     </td>
 
 </td></tr></table>

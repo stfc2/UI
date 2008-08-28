@@ -22,7 +22,7 @@
 
 
 $player_online = $db->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE last_active > '.(time() - 60 * 20));
-
+$player_online2 = $db2->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE last_active > '.(time() - 60 * 20));
 
 $main_html .= '
 <center><span class="caption">Login</span></center><br>
@@ -36,41 +36,38 @@ $main_html .= '
           <td width="30%">Login:</td>
           <td width="70%"><input type="text" name="user_name" size="30" class="field"></td>
         </tr>
-
         <tr>
           <td>Password:</td>
           <td><input type="password" name="user_password" size="30" class="field"></td>
         </tr>
-        
         <tr>
-          <td>Galaxy:</td>
+          <td>Galassia:</td>
           <td>
             <select name="galaxy">
               <option value="./game/index.php" selected="selected">Brown Bobby ['.$player_online['num'].' online]</option> !-->
+              <option value="./game2/index.php">Fried Egg ['.$player_online2['num'].' online]</option> !-->
             </select>
           </td>
-	  </tr>
-	  
-	  <tr><td height="5">&nbsp;</td></tr>
-	  
-	  <tr>
-	    <td>&nbsp;</td>
-        <td><input type="checkbox" name="proxy_mode" value="1">&nbsp;I use a <a href=http://en.wikipedia.org/wiki/Proxy target=_blank><u>Proxyserver</u></a> *</td>
-	  </tr>
+        </tr>
+        <tr><td height="5">&nbsp;</td></tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><input type="checkbox" name="proxy_mode" value="1">&nbsp;Sto usando un <a href=http://it.wikipedia.org/wiki/Proxy target=_blank><u>server proxy</u></a> *</td>
+        </tr>
       </table>
     </td>
   </tr>
   <tr>
     <td colspan=2>
-      * <i>Only use it if the images are not loaded.</i>
+      * <i>Usare solo se le immagini non vengono caricate.</i>
     </td>
   </tr>
 </table>
 
 <br>
 <center>
-[<a href="index.php?a=lost_password">Forgotten password</a>]<br><br>
-<input class="button" type="submit" name="stgc_login" value="Confirm">
+[ <a href="index.php?a=lost_password">Recupero password dimenticata</a> ]<br><br>
+<input class="button" type="submit" name="stgc_login" value="Conferma">
 </center>
 </form>
 ';
