@@ -625,7 +625,7 @@ elseif(!empty($game->player['alliance_name'])) {
         message(DATABASE_ERROR, 'Could not query alliance data');
     } 
 
-    
+    /* 28/08/08 - AC: On 2nd galaxy the alliances are fixed
     if($game->player['user_alliance_rights6']==1) { 
 
       if(!empty($new_app['application_id'])) {
@@ -636,9 +636,9 @@ elseif(!empty($game->player['alliance_name'])) {
             <a href="'.parse_link('a=alliance_application&application=admin').'">'.constant($game->sprache("TEXT67")).'</a><br>
 	    
          '); }
-    } 
+    }
     //else { $game->out('<br>'); }
-    
+    */
     if($game->player['user_alliance_rights8']==1) {
      
     $game->out('<a href="'.parse_link('a=alliance_rights').'">'.constant($game->sprache("TEXT68")).'</a></br>');
@@ -649,14 +649,16 @@ elseif(!empty($game->player['alliance_name'])) {
     $game->out('<a href="'.parse_link('a=alliance_massmail').'">'.constant($game->sprache("TEXT69")).'</a>');
     }
    // else { $game->out('<br>'); }
-    
+
+    /* 28/08/08 - AC: On 2nd galaxy the alliances are fixed
     if($game->player['user_id'] == $alliance_rights['alliance_owner']) {
         $game->out('<br><br><a href="'.parse_link('a=alliance_admin&delete').'">'.constant($game->sprache("TEXT70")).'</a>');
     }
     else {
         $game->out('<br><br><a href="'.parse_link('a=alliance_main&leave').'">'.constant($game->sprache("TEXT71")).'</a>');
     }
-    
+    */
+
     $game->out('
           </td>
         </tr>
