@@ -748,7 +748,7 @@ function view()
 		$datum 	= date("d.m.y H:i", $message['time']);
 		$text		= nl2br($message['text']);
 
-		$game->out('<center><p><span class="sub_caption2"><b>'.constant($game->sprache("TEXT23")).' [<a href="'.$config['game_url'].'/game/include/pdf_gen.php?id='.(int)$_REQUEST['id'].'" target="_blank"> PDF </a>]:</b></p>
+		$game->out('<center><p><span class="sub_caption2"><b>'.constant($game->sprache("TEXT23")).' [<a href="'.$config['game_url'].'/game2/include/pdf_gen.php?id='.(int)$_REQUEST['id'].'" target="_blank"> PDF </a>]:</b></p>
 						 <table width="50%" border="0" cellpadding="0" cellspacing="0"   class="style_inner">
 						  <tr>
 						   <td width="25%">'.constant($game->sprache("TEXT24")).'</td>
@@ -794,7 +794,7 @@ function view()
 							    <input type="submit" style="width: 120px;" class="button" value="'.constant($game->sprache("TEXT17")).'">
 							   </form>
                                                    <td width="33%" align="right">
-                                                   <form method="post" action="'.$config['game_url'].'/game/include/pdf_down.php">
+                                                   <form method="post" action="'.$config['game_url'].'/game2/include/pdf_down.php">
                                                    <input type="hidden" name="id" value="'.$message['id'].'">&nbsp;
                                                    <input type="hidden" name="check" value="0">&nbsp;
                                                    <input type="submit" style="width: 120px;" class="button" value="'.constant($game->sprache("TEXT29")).'">

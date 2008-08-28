@@ -33,7 +33,7 @@ function getimagesize_remote($image_url) {
 // ---------------------- Gallery-Funktionen -----------------------------------
 // -----------------------------------------------------------------------------
 
-$uploaddir = '/home/taku/public_html/stfc/game/gallery/';
+$uploaddir = '/home/taku/public_html/stfc/game2/gallery/';
 
 function GiveThumb($path)
 {
