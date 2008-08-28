@@ -36,13 +36,14 @@ ini_set ('error_reporting', E_ALL);
 	'trade_buy_truppen' =>constant($game->sprache("TEXT2")), // Truppenhandel kaufen Trade_Buy_truppen
 	'trade_sold_truppen' =>constant($game->sprache("TEXT3")), // Truppenhandel kaufen Trade_Sold_truppen
 	'trade_ress'=>constant($game->sprache("TEXT4")), //Resshandel
+/* 27/08/08 - AC: Auctions are disabled on second galaxy
 	'create_bidding' => constant($game->sprache("TEXT5")), //Show_CreateBidding();
 	'view_bidding' => constant($game->sprache("TEXT6")), //Show_Bidding();
 	'view_own_bidding' => constant($game->sprache("TEXT7")), //Show_Bidding(1);
 	'own_bidding' => constant($game->sprache("TEXT8")), //Show_Bidding(1);
 	'konto_status' => constant($game->sprache("TEXT9")), //Konto_Status
 	'status_bezahlen'=>constant($game->sprache("TEXT10")),//Show_schulden
-	'warteschlange'=>constant($game->sprache("TEXT11")), //Ship_warten
+	'warteschlange'=>constant($game->sprache("TEXT11")), //Ship_warten*/
 
     );
 function vergleich($wert1,$wert2)
@@ -4487,6 +4488,7 @@ else
 	{
 		Show_Status();
 	}
+/* 27/08/08 - AC: Auctions are disabled on second galaxy
 	elseif ($sub_action=='create_bidding')
 	{
 		if ($game->player['deny_trade'])
@@ -4495,8 +4497,7 @@ else
 		}
 		else
 		{
-//			if ($game->player['user_points']<400 && ($game->player['user_id']>12 && $game->player['user_id']!=62 ) )
-			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
+			// 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points
 			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_DEVELOPER)
 				$game->out(constant($game->sprache("TEXT262")));
 			else
@@ -4511,8 +4512,7 @@ else
 		}
 		else
 		{
-//			if ($game->player['user_points']<400 && ($game->player['user_id']>12 && $game->player['user_id']!=62 ) )
-			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
+			// 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points
 			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_DEVELOPER)
 				$game->out(constant($game->sprache("TEXT262")));
 			else
@@ -4527,8 +4527,7 @@ else
 		}
 		else
 		{
-//			if ($game->player['user_points']<400 && ($game->player['user_id']>12 && $game->player['user_id']!=62 ) )
-			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
+			// 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points
 			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_DEVELOPER)
 				$game->out(constant($game->sprache("TEXT262")));
 			else
@@ -4543,8 +4542,7 @@ else
 		}
 		else
 		{
-//			if ($game->player['user_points']<400 && ($game->player['user_id']>12 && $game->player['user_id']!=62 ) )
-			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
+			// 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points
 			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_DEVELOPER)
 				$game->out(constant($game->sprache("TEXT262")));
 			else
@@ -4559,8 +4557,7 @@ else
 		}
 		else
 		{
-//			if ($game->player['user_points']<400 && ($game->player['user_id']>12 && $game->player['user_id']!=62 ) )
-			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
+			// 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points
 			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_DEVELOPER)
 				$game->out(constant($game->sprache("TEXT262")));
 			else
@@ -4575,8 +4572,7 @@ else
 		}
 		else
 		{
-//			if ($game->player['user_points']<400 && ($game->player['user_id']>12 && $game->player['user_id']!=62 ) )
-			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
+			// 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points
 			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_DEVELOPER)
 				$game->out(constant($game->sprache("TEXT262")));
 			else
@@ -4591,6 +4587,7 @@ else
 	{
 		Show_schulden();
 	}
+*/
 	else
 	{
 		Show_Main_a();
