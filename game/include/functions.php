@@ -1707,6 +1707,36 @@ echo'
 				message(GENERAL, constant($this->sprache("NEWPLANET1")).' <i>'.$this->player['user_name'].'</i> '.constant($this->sprache("NEWPLANET2")));
 			}
 			else {
+				global $RACE_DATA;
+
+				$race=$RACE_DATA[$this->player['user_race']][0];
+
+				// Count players of player's race on each quadrant
+				$tips = array();
+				for ($quad = 1; $quad < 5; $quad++)
+				{
+					$text = '';
+					for ($race = 0; $race < 5; $race++)
+					{
+						$sql = 'SELECT user_id FROM planets, user
+					    	    WHERE planet_owner = user_id AND
+						              user_race='.$race.' AND
+					            CEIL(sector_id / 81) = '.$quad.'
+					            GROUP BY user_id';
+
+						if(!$q_players = $db->query($sql)) {
+							message(DATABASE_ERROR, 'Could not query users data');
+						}
+
+						$players = 0;
+						while($_player = $db->fetchrow($q_players)) {
+							$players++;
+						}
+						$text .= $RACE_DATA[$race][0].': '.$players.'<br>';
+					}
+					$tips[$quad] = overlib('Numero giocatori',$text);
+				}
+
 				echo '
 				<html>
 				<head>
@@ -1725,10 +1755,13 @@ echo'
 
 				//-->
 				</style>
+
+				<script type="text/javascript" language="JavaScript" src="'.$this->player['user_jspath'].'overlib.js"></script>
+
 				</head>
 
 				<body bgcolor="#000000" background="../gfx/template_bg.jpg">
-
+				<div id="overDiv" style="Z-INDEX: 1000; VISIBILITY: hidden; POSITION: absolute"></div>
 				<table bgcolor="#000025" width="500" align="center" cellspacing="4" cellpadding="4" style="border: 1px solid #C0C0C0;">
 				<tr>
 					<td><span style="font-size: 14px; font-weight: bold;">Frontline Combat :: System-Announcement</span></td>
@@ -1753,10 +1786,10 @@ echo'
 					</table><br>
 					<table>
 					<tr><td>'.constant($this->sprache("STARTPOINT")).'</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="0"> '.constant($this->sprache("RANDOM")).'</td></tr>
-					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="1"> '.constant($this->sprache("GAMMAQ")).'</td></tr>
-					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="2"> '.constant($this->sprache("DELTAQ")).'</td></tr>
-					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="3"> '.constant($this->sprache("ALPHAQ")).'</td></tr>
-					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="4"> '.constant($this->sprache("BETAQ")).'</td></tr>
+					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="1"> '.constant($this->sprache("GAMMAQ")).'</td><td>'.$tips[1].'</td></tr>
+					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="2"> '.constant($this->sprache("DELTAQ")).'</td><td>'.$tips[2].'</td></tr>
+					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="3"> '.constant($this->sprache("ALPHAQ")).'</td><td>'.$tips[3].'</td></tr>
+					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="4"> '.constant($this->sprache("BETAQ")).'</td><td>'.$tips[4].'</td></tr>
 					</table>
 					<br><center>
 					<input type="submit" name="set_planet" value="'.constant($this->sprache("COLONIZE")).'" class="button">
@@ -1767,6 +1800,7 @@ echo'
 				</body>
 				</html>
 				';
+				exit;
 			}
 		}
 
@@ -2263,38 +2297,48 @@ echo'
 
 		$alliance_name = '';
 		$alliance_tag = '';
+		$alliance_logo = FIXED_GFX_PATH;
 
 		switch($this->player['user_race'])
 		{
 			case 0:
 				$alliance_name = ALLIANCE_UFP_NAME;
 				$alliance_tag = ALLIANCE_UFP_TAG;
+				$alliance_logo .= ALLIANCE_UFP_LOGO;
 			break;
 			case 1:
 				$alliance_name = ALLIANCE_RE_NAME;
 				$alliance_tag = ALLIANCE_RE_TAG;
+				$alliance_logo .= ALLIANCE_RE_LOGO;
 			break;
 			case 2:
 				$alliance_name = ALLIANCE_KE_NAME;
 				$alliance_tag = ALLIANCE_KE_TAG;
+				$alliance_logo .= ALLIANCE_KE_LOGO;
 			break;
 			case 3:
 				$alliance_name = ALLIANCE_CU_NAME;
 				$alliance_tag = ALLIANCE_CU_TAG;
+				$alliance_logo .= ALLIANCE_CU_LOGO;
 			break;
 			case 4:
 				$alliance_name = ALLIANCE_D_NAME;
 				$alliance_tag = ALLIANCE_D_TAG;
+				$alliance_logo .= ALLIANCE_D_LOGO;
 			break;
 		}
 
 		// Search the appropriate alliance for this player */
-		$sql = 'SELECT alliance_id FROM alliance WHERE alliance_tag = '.$alliance_tag;
+		$sql = 'SELECT alliance_id FROM alliance WHERE alliance_tag = "'.$alliance_tag.'"';
 
 		// Create the alliance if it not exists
 		if(($alliance = $db->queryrow($sql)) === false) {
+			message(DATABASE_ERROR, 'Could not query alliance id');
+		}
+
+		if(empty($alliance['alliance_id'])) {
 			$sql = 'INSERT INTO alliance (alliance_name, alliance_tag, alliance_owner, alliance_text, alliance_logo, alliance_homepage, alliance_points, alliance_planets, alliance_honor)
-				VALUES ("'.$alliance_name.'", "'.$alliance_tag.'", "'.$this->player['user_id'].'", "", "", "", '.$this->player['user_points'].', '.$this->player['user_planets'].', '.$this->player['user_honor'].')';
+				VALUES ("'.$alliance_name.'", "'.$alliance_tag.'", "'.$this->player['user_id'].'", "", "'.$alliance_logo.'", "", '.$this->player['user_points'].', '.$this->player['user_planets'].', '.$this->player['user_honor'].')';
 			if(!$db->query($sql)) {
 				message(DATABASE_ERROR, 'Could not insert new alliance data');
 			}
@@ -2376,7 +2420,10 @@ echo'
 		}
 
 		// Update local data
-		$this->player['user_alliance'] = $new_alliance_id;
+		$this->player['alliance_id'] = (int)$new_alliance_id;
+		$this->player['alliance_name'] = $alliance_name;
+		$this->player['alliance_tag'] = $alliance_tag;
+		//$this->player['user_alliance'] = $new_alliance_id;
 	}
 
 }

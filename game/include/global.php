@@ -241,7 +241,7 @@ define ('USER_WHOLE_SYSTEM', 1);
 // Alliances Names
 define ('ALLIANCE_UFP_NAME', 'United Federation of Planets');
 
-define ('ALLIANCE_RE_NAME', 'Romulan Empire');  // Romulan Empire
+define ('ALLIANCE_RE_NAME', 'Romulan Star Empire');  // Romulan Empire
 
 define ('ALLIANCE_KE_NAME', 'Klingon Empire');  // Klingon Empire
 
@@ -252,13 +252,24 @@ define ('ALLIANCE_D_NAME', 'Dominion');   // Dominion
 // Alliances Tags
 define ('ALLIANCE_UFP_TAG', 'UFP'); // United Federation of Planets
 
-define ('ALLIANCE_RE_TAG', 'RE');  // Romulan Empire
+define ('ALLIANCE_RE_TAG', 'RSE');  // Romulan Empire
 
 define ('ALLIANCE_KE_TAG', 'KE');  // Klingon Empire
 
 define ('ALLIANCE_CU_TAG', 'CU');  // Cardassian Union
 
 define ('ALLIANCE_D_TAG', 'DOM');   // Dominion
+
+// Alliances Logos
+define ('ALLIANCE_UFP_LOGO', 'emblems/United_Federation_of_Planets_logo.png'); // United Federation of Planets
+
+define ('ALLIANCE_RE_LOGO', 'emblems/Romulan_Star_Empire_logo.png');  // Romulan Empire
+
+define ('ALLIANCE_KE_LOGO', 'emblems/Klingon_Empire_logo.png');  // Klingon Empire
+
+define ('ALLIANCE_CU_LOGO', 'emblems/Cardassian_Union_logo.png');  // Cardassian Union
+
+define ('ALLIANCE_D_LOGO', 'emblems/Dominion_logo.png');   // Dominion
 
 
 // Beschleuningt den Scheduler
