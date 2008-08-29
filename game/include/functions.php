@@ -1721,6 +1721,7 @@ echo'
 						$sql = 'SELECT user_id FROM planets, user
 						        WHERE planet_owner = user_id AND
 						              user_race='.$race.' AND
+						              user_auth_level < '.STGC_DEVELOPER.' AND
 						              CEIL(sector_id / 81) = '.$quad.'
 						              GROUP BY user_id';
 
