@@ -21,19 +21,31 @@
 */
 
 
-if( (empty($_GET['user_id'])) || (empty($_GET['key'])) ) {
-    $main_html = '<br><br><br><br><center><span class="caption">Bad call</span></center>';
+if( (empty($_GET['galaxy'])) || (empty($_GET['user_id'])) || (empty($_GET['key'])) ) {
+    $main_html = '<br><br><br><br><center><span class="caption">Impossibile cancellare l&#146;account (Chiamata invalida)</span></center>';
     return 1;
 }
 
+$galaxy = (int)$_GET['galaxy'];
+
 $user_id = (int)$_GET['user_id'];
+
+switch($galaxy)
+{
+    case 0:
+        $mydb = $db;
+    break;
+    case 1:
+        $mydb = $db2;
+    break;
+}
 
 $sql = 'SELECT user_id, user_registration_ip, last_ip
         FROM user
         WHERE user_id = '.$user_id;
-        
-if(($user = $db->queryrow($sql)) === false) {
-    $main_html = '<br><br><br><br><center><span class="caption">Bad call</span></center>';
+
+if(($user = $mydb->queryrow($sql)) === false) {
+    $main_html = '<br><br><br><br><center><span class="caption">Impossibile cancellare l&#146;account (Chiamata invalida)</span></center>';
     return 1;
 }
 
@@ -42,7 +54,7 @@ $last_ip_split = explode('.', $user['last_ip']);
 $confirm_key = md5( ((int)$reg_ip_split[0] + (int)$reg_ip_split[1] + (int)$reg_ip_split[2] + (int)$reg_ip_split[3]) * ((int)$last_ip_split[0] + (int)$last_ip_split[1] + (int)$last_ip_split[2] + (int)$last_ip_split[3]) - (int)$user_id );
 
 if($_GET['key'] != $confirm_key) {
-    $main_html = '<br><br><br><br><center><span class="caption">The confirmation code is invalid</span></center>';
+    $main_html = '<br><br><br><br><center><span class="caption">Il codice di conferma &egrave; invalido</span></center>';
     return 1;
 }
 
@@ -56,7 +68,7 @@ if(!$db->query($sql)) {
 
 
 $main_html = '<center><span class="caption">Account deletion:</span></center><br>
-</center><br>The deletion of your account was confirmed.</b><br><br>It will be finally deleted with the computation of the next Ticks (max. in 3 min).<br><br><br>';
+</center><br>La cancellazione del tuo account &egrave; stata confermata.</b><br><br>Sar&agrave; definitivamente cancellato con il calcolo del prossimo tick (massimo in 3 minuti).<br><br><br>';
 
 
 ?>

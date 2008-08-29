@@ -1208,7 +1208,7 @@ switch($module) {
 
             $confirm_key = md5( ((int)$reg_ip_split[0] + (int)$reg_ip_split[1] + (int)$reg_ip_split[2] + (int)$reg_ip_split[3]) * ((int)$last_ip_split[0] + (int)$last_ip_split[1] + (int)$last_ip_split[2] + (int)$last_ip_split[3]) - (int)$game->uid );
 
-            $confirm_link = 'http://stfc.nonsolotaku.it/index.php?a=delete&user_id='.$game->player['user_id'].'&key='.$confirm_key;
+            $confirm_link = 'http://stfc.nonsolotaku.it/index.php?a=delete&galaxy=1&user_id='.$game->player['user_id'].'&key='.$confirm_key;
 
             $mail_message = $game->player['user_name'].',
 
