@@ -285,6 +285,26 @@ define ("GER_DILITHIUM", 'Latinum');
 
 define ("GER_WORKERS2", 'Arbeiter');
 
+// Used by load_active_planet
+define ("GER_NEWPLANET3",'Hier hast du nun die Möglichkeit eine neue Heimat zu wählen.');
+
+define ("GER_STARTPOINT",'Startpunkt:');
+
+define ("GER_RANDOM",'Zufall');
+
+define ("GER_GAMMAQ",'Gamma Quadrant');
+
+define ("GER_DELTAQ",'Delta Quadrant');
+
+define ("GER_ALPHAQ",'Alpha Quadrant');
+
+define ("GER_BETAQ",'Beta Quadrant');
+
+define ("GER_COLONIZE",'Kolonisieren!');
+
+define ("GER_NUM_PLAYERS", 'Spieler zahl');
+
+
 
 //English
 
@@ -567,6 +587,8 @@ define ("ENG_ALPHAQ",'Alpha Quadrant');
 define ("ENG_BETAQ",'Beta Quadrant');
 
 define ("ENG_COLONIZE",'Colonize!');
+
+define ("ENG_NUM_PLAYERS", 'Players number');
 
 
 
@@ -852,5 +874,6 @@ define ("ITA_BETAQ",'Quadrante Beta');
 
 define ("ITA_COLONIZE",'Colonizza!');
 
+define ("ITA_NUM_PLAYERS", 'Numero giocatori');
 
 ?>

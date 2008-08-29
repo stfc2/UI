@@ -1707,6 +1707,41 @@ echo'
 				message(GENERAL, constant($this->sprache("NEWPLANET1")).' <i>'.$this->player['user_name'].'</i> '.constant($this->sprache("NEWPLANET2")));
 			}
 			else {
+				global $RACE_DATA;
+
+				$race=$RACE_DATA[$this->player['user_race']][0];
+
+				// Count players of player's race on each quadrant
+				$tips = array();
+				for ($quad = 1; $quad < 5; $quad++)
+				{
+					$text = '';
+					for ($race = 0; $race < 13; $race++)
+					{
+						// Skip Borg, Q and 29th Humans races
+						if($race == 6 || $race == 7 || $race == 12)
+							continue;
+
+						$sql = 'SELECT user_id FROM planets, user
+						        WHERE planet_owner = user_id AND
+						              user_race='.$race.' AND
+						              user_auth_level < '.STGC_DEVELOPER.' AND
+						              CEIL(sector_id / 81) = '.$quad.'
+						              GROUP BY user_id';
+
+						if(!$q_players = $db->query($sql)) {
+							message(DATABASE_ERROR, 'Could not query users data');
+						}
+
+						$players = 0;
+						while($_player = $db->fetchrow($q_players)) {
+							$players++;
+						}
+						$text .= $RACE_DATA[$race][0].': '.$players.'<br>';
+					}
+					$tips[$quad] = overlib(constant($this->sprache("NUM_PLAYERS")),$text);
+				}
+
 				echo '
 				<html>
 				<head>
@@ -1725,10 +1760,13 @@ echo'
 
 				//-->
 				</style>
+
+				<script type="text/javascript" language="JavaScript" src="'.$this->player['user_jspath'].'overlib.js"></script>
+
 				</head>
 
 				<body bgcolor="#000000" background="../gfx/template_bg.jpg">
-
+				<div id="overDiv" style="Z-INDEX: 1000; VISIBILITY: hidden; POSITION: absolute"></div>
 				<table bgcolor="#000025" width="500" align="center" cellspacing="4" cellpadding="4" style="border: 1px solid #C0C0C0;">
 				<tr>
 					<td><span style="font-size: 14px; font-weight: bold;">Frontline Combat :: System-Announcement</span></td>
@@ -1753,10 +1791,10 @@ echo'
 					</table><br>
 					<table>
 					<tr><td>'.constant($this->sprache("STARTPOINT")).'</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="0"> '.constant($this->sprache("RANDOM")).'</td></tr>
-					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="1"> '.constant($this->sprache("GAMMAQ")).'</td></tr>
-					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="2"> '.constant($this->sprache("DELTAQ")).'</td></tr>
-					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="3"> '.constant($this->sprache("ALPHAQ")).'</td></tr>
-					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="4"> '.constant($this->sprache("BETAQ")).'</td></tr>
+					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="1"> '.constant($this->sprache("GAMMAQ")).'</td><td>'.$tips[1].'</td></tr>
+					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="2"> '.constant($this->sprache("DELTAQ")).'</td><td>'.$tips[2].'</td></tr>
+					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="3"> '.constant($this->sprache("ALPHAQ")).'</td><td>'.$tips[3].'</td></tr>
+					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="4"> '.constant($this->sprache("BETAQ")).'</td><td>'.$tips[4].'</td></tr>
 					</table>
 					<br><center>
 					<input type="submit" name="set_planet" value="'.constant($this->sprache("COLONIZE")).'" class="button">
@@ -1767,6 +1805,7 @@ echo'
 				</body>
 				</html>
 				';
+				exit;
 			}
 		}
 
