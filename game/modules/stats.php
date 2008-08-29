@@ -516,7 +516,7 @@ $game->out('
 
     $game->out('
 <center><table border=1 cellpadding=0 cellspacing=0 class="style_inner">
-<tr><td width=80><b>'.constant($game->sprache("TEXT53")).'</td><td width=200><b>'.constant($game->sprache("TEXT18")).'</td><td width=50><b>'.constant($game->sprache("TEXT11")).'</td><td width=50><b>'.constant($game->sprache("TEXT55")).'</td></tr>
+<tr><td width=80><b>'.constant($game->sprache("TEXT69")).'</td><td width=200><b>'.constant($game->sprache("TEXT18")).'</td><td width=50><b>'.constant($game->sprache("TEXT11")).'</td><td width=50><b>'.constant($game->sprache("TEXT55")).'</td></tr>
 ');
 
      $sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
