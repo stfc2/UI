@@ -235,7 +235,7 @@ define ('UNINHABITATED_COLONY', 'Isolato');
 define ('USER_CHOOSE_QUADRANT', 1);
 
 // User start with a whole system
-define ('USER_WHOLE_SYSTEM', 1);
+define ('USER_WHOLE_SYSTEM', 0);
 
 
 // Alliances Names
