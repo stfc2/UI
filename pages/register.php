@@ -20,14 +20,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-define ("GALAXY1_NAME", 'Brown Bobby');
-define ("GALAXY2_NAME", 'Fried Egg');
-
-define ("GALAXY1_IMG", 'gfx/ngc7742.jpg');
-define ("GALAXY2_IMG", 'gfx/m64.jpg');
-
-define ("GALAXY1_BG", 'gfx/ngc7742bg.jpg');
-define ("GALAXY2_BG", 'gfx/m64bg.jpg');
 
 
 
@@ -47,14 +39,14 @@ function send_mail($myname, $myemail, $contactname, $contactemail, $subject, $me
 
 
 
-function display_success($galaxy) {
+function display_success($galaxy,$bg) {
     global $main_html;
     $main_html .= '
 <table align="center" border="0" cellpadding="2" cellspacing="2" width="700" class="border_grey" style=" background-color:#000000; background-position:left; background-repeat:no-repeat;">
   <tr>
     <td width="100%">
     <center><span class="sub_caption">Registrazione per la galassia "'.$galaxy.'" avvenuta con successo:</span></center>
-      <table width="100%" border="0" cellpadding="0" cellspacing="0" style=" background-image:url(\'gfx/ngc7742bg.jpg\'); background-position:left; background-repeat:no-repeat;">
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" style=" background-image:url(\''.$bg.'\'); background-position:left; background-repeat:no-repeat;">
         <tr height="300">
           <td width="100%" valign=top><span class="sub_caption2"><br><br>La tua registrazione ha avuto successo!<br><br>Una email &egrave; stata inviata al tuo indirizzo,
           con la quale potrai attivare il tuo account. <br> <b> Il messaggio potrebbe venire marcato come spam, ti preghiamo di verificare in caso di ritardo.</span></td>
@@ -363,14 +355,17 @@ switch($galaxy)
     case 0:
         $mydb = $db;
         $galaxyname = GALAXY1_NAME;
+        $galaxyimg = GALAXY1_BG;
     break;
     case 1:
         $mydb = $db2;
         $galaxyname = GALAXY2_NAME;
+        $galaxyimg = GALAXY2_BG;
     break;
     default:
         $mydb = $db;
         $galaxyname = GALAXY1_NAME;
+        $galaxyimg = GALAXY2_BG;
     break;
 }
 
@@ -605,7 +600,7 @@ if(isset($_POST['submit'])) {
     	}
 
     	$activation_key = md5( pow($user_id,2) );
-    	$activation_link = 'http://stfc.nonsolotaku.it/index.php?a=activate&user_id='.$user_id.'&key='.$activation_key;
+    	$activation_link = 'http://stfc.nonsolotaku.it/index.php?a=activate&galaxy='.$galaxy.'&user_id='.$user_id.'&key='.$activation_key;
         define('EXT_NL', "\r\n");
 		$mail_message = 'Congratulazioni! '.$_POST['user_name'].','."\n".'La tua registrazione a Star Trek: Frontline Combat II (Galassia '.$galaxyname.') ha avuto successo!'."\n".'Per attivare il tuo account devi clikkare sul link seguente:'."\n".$activation_link."\n\n".'Se non hai eseguito la registrazione, ignora questa email.'."\n".'Dopo 48 ore, il tuo indirizzo email verrà automaticamente rimosso dal nostro database.'."\n\n".'Lunga vita e prosperità,'."\n".'The STFC Team.'."\n\n".'Credits: http://stfc.nonsolotaku.it/index.php?a=imprint';
 		send_mail("STFC2 Mailer","admin@nonsolotaku.it",$_POST['user_name'],$_REQUEST['user_email'],"Registrazione Star Trek: Frontline Combat",$mail_message);
@@ -621,7 +616,7 @@ if(isset($_POST['submit'])) {
 
 
     
-    display_success($galaxyname);
+    display_success($galaxyname,$galaxyimg);
     return true;
 
 }

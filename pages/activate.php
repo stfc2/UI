@@ -60,7 +60,7 @@ function display_message($header,$message,$bg) {
   <tr>
     <td width="100%">
     <center><span class="sub_caption">'.$header.'</span></center>
-      <table width="100%" border="0" cellpadding="0" cellspacing="0" style=" background-image:url(\'gfx/'.$bg.'.jpg\'); background-position:left; background-repeat:yes;">
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" style=" background-image:url(\''.$bg.'\'); background-position:left; background-repeat:yes;">
         <tr height="300">
           <td width="100%" valign=top><span class="sub_caption2"><br>'.$message.'<br><br></span></td>
         </tr>
@@ -72,22 +72,38 @@ function display_message($header,$message,$bg) {
 
 
 
-$main_html = '<center><span class="caption">Account Activation</span></center><br>';
+$main_html = '<center><span class="caption">Attivazione account</span></center><br>';
 
 
-if( (empty($_GET['user_id'])) || (empty($_GET['key'])) ) {
-display_message('Error in the account activation (Invalid call)','','ngc7742bg');
+if( (empty($_GET['galaxy'])) || (empty($_GET['user_id'])) || (empty($_GET['key']))) {
+display_message('Errore nell&#146;attivazione dell&#146;account (Chiamata invalida)','','ngc7742bg');
     return 1;
 }
+
+$galaxy = (int)$_GET['galaxy'];
 
 $user_id = (int)$_GET['user_id'];
 
 $gkey=$_GET['key'];
 $key = md5( pow( $user_id ,2) );
-$bg='ngc7742bg';
+
+switch($galaxy)
+{
+    case 0:
+        $galaxyname = GALAXY1_NAME;
+        $bg = GALAXY1_BG;
+        $mydb = $db;
+    break;
+    case 1:
+        $galaxyname = GALAXY2_NAME;
+        $bg = GALAXY2_BG;
+        $mydb = $db2;
+    break;
+}
+
 
 if($gkey != $key) {
-display_message('Error in the account activation (Invalid activation code #1)','',$bg);
+display_message('Errore nell&#146;attivazione dell&#146;account (Codice attivazione invalido #1)','',$bg);
 return 1;
 }
 
@@ -96,30 +112,30 @@ $sql = 'SELECT user_active
         WHERE user_id = '.$user_id;
 
 	 
-if(($user_data = $db->queryrow($sql)) === false) {
+if(($user_data = $mydb->queryrow($sql)) === false) {
     die('Database error - Could not verify user');
 }
 
 if(empty($user_data['user_active'])) {
-	display_message('Error in the account activation (Invalid activation code #2)','',$bg);
+	display_message('Errore nell&#146;attivazione dell&#146;account (Codice attivazione invalido #2)','',$bg);
     return 1;
 }
 
 if($user_data['user_active'] != 2) {
-	display_message('Error in the account activation (player already activated)','',$bg);
+	display_message('Errore nell&#146;attivazione dell&#146;account (giocatore gi&agrave; attivato)','',$bg);
     return 1;
 }
 
 $sql = 'UPDATE user
         SET user_active = 1, last_active='.time().'
         WHERE user_id = '.$user_id;
-$db->query($sql);  
+$mydb->query($sql);
 
 
 mt_srand((double)microtime()*1000000);
 
 $current_proverb = $proverbs[mt_rand(0, ($n_proverbs - 1))];
 
-display_message('Your account has been successfully activated!','You can now use your login name and password.<br><br>Before you go into the world of STFC, another wisdom for a successful game:<br><br><table width="100%" border="0" align="center"><tr><td width="10%">&nbsp;</td><td width="90%"><i>'.$current_proverb.'</i></td></tr></table>',$bg);
+display_message('Il tuo account &egrave; stato attivato con successo!','Ora puoi usare le tue login e password.<br><br>Prima di entrare nel mondo di STFC, una perla di saggezza per un gioco di successo:<br><br><table width="100%" border="0" align="center"><tr><td width="10%">&nbsp;</td><td width="90%"><i>'.$current_proverb.'</i></td></tr></table>',$bg);
 
 ?>
