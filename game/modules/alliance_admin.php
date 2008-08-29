@@ -105,7 +105,7 @@ elseif(!empty($_POST['status_change'])) {
         message(GENERAL, 'Invalid request', '$_POST[\'user_id\'] was empty');
     }
     if($game->player['user_alliance_rights8'] != 1) {
-        message(NOTICE, constant($game->sprache("TEXT5")));
+        message(NOTICE, constant($game->sprache("TEXT0")));
     }
     $user_id = (int)$_POST['user_id'];
 
@@ -118,7 +118,7 @@ elseif(!empty($_POST['status_change'])) {
     }
 
     if(empty($user_data['user_id'])) {
-        message(NOTICE, constant($game->sprache("TEXT6")));
+        message(NOTICE, constant($game->sprache("TEXT2")));
     }
 
     if($user_data['user_alliance'] != $game->player['user_alliance']) {
@@ -141,7 +141,7 @@ elseif(!empty($_POST['status_change'])) {
 }
 elseif(!empty($_POST['status_change_diplo'])) {
     if($game->player['user_alliance_rights8'] != 1) {
-        message(NOTICE, constant($game->sprache("TEXT5")));
+        message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
     if(empty($_POST['user_id'])) {
@@ -323,8 +323,8 @@ elseif(!empty($_POST['settings_submit'])) {
 
     }
 
-    // Entfernt da unnötig by Mojo1987
-    //'.( (!empty($_POST['alliance_password'])) ? 'alliance_password = "'.md5($_POST['alliance_password']).'",' : '' ).' entfernt da wegen Bewerbung unnötig
+    // 	Removed as unnecessary by Mojo1987
+    //'.( (!empty($_POST['alliance_password'])) ? 'alliance_password = "'.md5($_POST['alliance_password']).'",' : '' ).'remove unnecessary because due to application
 
     $sql = 'UPDATE alliance
             SET 
