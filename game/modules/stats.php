@@ -513,19 +513,35 @@ $game->out('
 <td width=450>
 <span class="sub_caption">'.constant($game->sprache("TEXT53")).'</span><br>');
 
-if($user['user_alliance'] == $game->player['user_alliance']) {
+
     $game->out('
 <center><table border=1 cellpadding=0 cellspacing=0 class="style_inner">
-<tr><td width=80><b>'.constant($game->sprache("TEXT53")).'</td><td width=200><b>'.constant($game->sprache("TEXT18")).'</td><td width=50><b>'.constant($game->sprache("TEXT11")).'</td><td width=50><b>'.constant($game->sprache("TEXT55")).'</td></tr>
+<tr><td width=80><b>'.constant($game->sprache("TEXT69")).'</td><td width=200><b>'.constant($game->sprache("TEXT18")).'</td><td width=50><b>'.constant($game->sprache("TEXT11")).'</td><td width=50><b>'.constant($game->sprache("TEXT55")).'</td></tr>
 ');
 
-
-    $planetquery=$db->query('SELECT pl.*, sys.system_x, sys.system_y FROM (planets pl) LEFT JOIN (starsystems sys) on sys.system_id = pl.system_id  WHERE pl.planet_owner="'.$user['user_id'].'" ORDER BY pl.planet_name');
-    while(($planet = $db->fetchrow($planetquery))==true)
-    {
+     $sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
+              FROM (planets pl)
+              LEFT JOIN (starsystems sys) on sys.system_id = pl.system_id
+              LEFT JOIN (user u) on pl.planet_owner = u.user_id
+              LEFT JOIN (alliance al) on u.user_alliance = al.alliance_id
+              LEFT JOIN (planet_details pd) on pl.system_id = pd.system_id
+              WHERE pl.planet_owner="'.$user['user_id'].'" AND
+              (al.alliance_id = "'.$game->player['user_alliance'].'" OR (pd.user_id = "'.$game->player['user_id'].'" AND pd.log_code = 500))
+              GROUP BY pl.planet_id
+              ORDER BY pl.planet_name'; 
+//    $planetquery=$db->query('SELECT pl.*, sys.system_x, sys.system_y FROM (planets pl) LEFT JOIN (starsystems sys) on sys.system_id = pl.system_id  WHERE pl.planet_owner="'.$user['user_id'].'" ORDER BY pl.planet_name');
+    $planetquery=$db->query($sql_pl);
+    $numero_righe = $db->num_rows($planetquery);
+    if($numero_righe == 0) {
+	$game->out('<td> --- </td><td> --- </td><td> --- </td><td> --- </td></tr>');
+    }
+    else {
+        while(($planet = $db->fetchrow($planetquery))==true)
+        {
         $game->out('<td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
-        if($planet['planet_name']=="") $planet['planet_name']="(unbennant)";
+        if($planet['planet_name']=="") $planet['planet_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
             $game->out($planet['planet_name'].'</a></td><td>'.$planet['planet_points'].'</td><td>'.strtoupper($planet['planet_type']).'</td></tr>');
+        }
     }
     $game->out('</td></tr></table>
 </td></tr></table>
@@ -563,12 +579,6 @@ $game->out('
 </td></tr>
 </table>
 ');
-}
-else {
-	$game->out('<center>'.constant($game->sprache("TEXT90")).'</center></td></tr></table>');
-}
-
-
 
 
 
