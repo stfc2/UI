@@ -599,6 +599,8 @@ define ("ENG_BETAQ",'Beta Quadrant');
 
 define ("ENG_COLONIZE",'Colonize!');
 
+define ("ENG_NUM_PLAYERS", 'Players number');
+
 // Used by join_alliance
 define ("ENG_ALLYFOUNDED", 'has <b>founded</b> the alliance');
 
@@ -609,8 +611,6 @@ define ("ENG_WARDECLARATION", 'War declaration');
 define ("ENG_WARDECL1", 'The alliance <b>');
 
 define ("ENG_WARDECL2", '</b> has just sent its <b><font color=\"red\">War declaration</font></b>.');
-
-define ("ENG_NUM_PLAYERS", 'Players number');
 
 
 
