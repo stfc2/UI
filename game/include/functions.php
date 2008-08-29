@@ -1719,10 +1719,10 @@ echo'
 					for ($race = 0; $race < 5; $race++)
 					{
 						$sql = 'SELECT user_id FROM planets, user
-					    	    WHERE planet_owner = user_id AND
+						        WHERE planet_owner = user_id AND
 						              user_race='.$race.' AND
-					            CEIL(sector_id / 81) = '.$quad.'
-					            GROUP BY user_id';
+						              CEIL(sector_id / 81) = '.$quad.'
+						              GROUP BY user_id';
 
 						if(!$q_players = $db->query($sql)) {
 							message(DATABASE_ERROR, 'Could not query users data');
@@ -1734,7 +1734,7 @@ echo'
 						}
 						$text .= $RACE_DATA[$race][0].': '.$players.'<br>';
 					}
-					$tips[$quad] = overlib('Numero giocatori',$text);
+					$tips[$quad] = overlib(constant($this->sprache("NUM_PLAYERS")),$text);
 				}
 
 				echo '

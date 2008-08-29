@@ -302,6 +302,8 @@ define ("GER_BETAQ",'Beta Quadrant');
 
 define ("GER_COLONIZE",'Kolonisieren!');
 
+define ("GER_NUM_PLAYERS", 'Spieler zahl');
+
 // Used by join_alliance
 define ("GER_ALLYFOUNDED", 'hat die Allianz <b>gegr&uuml;ndet</b>');
 
@@ -608,6 +610,8 @@ define ("ENG_WARDECL1", 'The alliance <b>');
 
 define ("ENG_WARDECL2", '</b> has just sent its <b><font color=\"red\">War declaration</font></b>.');
 
+define ("ENG_NUM_PLAYERS", 'Players number');
+
 
 
 //Italian
@@ -891,6 +895,8 @@ define ("ITA_ALPHAQ",'Quadrante Alfa');
 define ("ITA_BETAQ",'Quadrante Beta');
 
 define ("ITA_COLONIZE",'Colonizza!');
+
+define ("ITA_NUM_PLAYERS", 'Numero giocatori');
 
 // Used by join_alliance
 define ("ITA_ALLYFOUNDED", 'ha <b>fondato</b> l&#146;alleanza');
