@@ -137,7 +137,7 @@ $game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT8")
 if (!empty($alliance['alliance_logo']))// && fopen($alliance['logo_link'],"r")!=FALSE)
 {
 $info = getimagesize_remote($alliance['alliance_logo']);
-if ($info[0]>0 && $info[1]>0 && $info[0]<=350 && $info[1]<=280)
+if ($info[0]>0 && $info[1]>0 && $info[0]<=350 && $info[1]<=350)
 {
 $game->out('<table border=0 cellpadding=0 cellspacing=0><tr><td width=350><center><img src="'.$alliance['alliance_logo'].'"></center></td></tr></table><br>');
 }
