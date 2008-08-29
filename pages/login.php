@@ -44,8 +44,8 @@ $main_html .= '
           <td>Galassia:</td>
           <td>
             <select name="galaxy">
-              <option value="./game/index.php" selected="selected">Brown Bobby ['.$player_online['num'].' online]</option> !-->
-              <option value="./game2/index.php">Fried Egg ['.$player_online2['num'].' online]</option> !-->
+              <option value="./game/index.php" selected="selected">'.GALAXY1_NAME.' ['.$player_online['num'].' online]</option> !-->
+              <option value="./game2/index.php">'.GALAXY2_NAME.' ['.$player_online2['num'].' online]</option> !-->
             </select>
           </td>
         </tr>

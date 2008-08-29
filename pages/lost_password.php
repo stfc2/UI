@@ -143,8 +143,8 @@ $main_html .= '
           <td>Galassia:</td>
           <td>
             <select name="galaxy">
-              <option value="0">Brown Bobby ['.$player_online['num'].' online]</option>
-              <option value="1">Fried Egg ['.$player_online2['num'].' online]</option>
+              <option value="0">'.GALAXY1_NAME.' ['.$player_online['num'].' online]</option>
+              <option value="1">'.GALAXY2_NAME.' ['.$player_online2['num'].' online]</option>
             </select>
           </td>
         </tr>

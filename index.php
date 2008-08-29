@@ -28,6 +28,16 @@ define('DATABASE_ERROR', 2);
 
 define('NL', "\n");
 
+define ("GALAXY1_NAME", 'Brown Bobby');
+define ("GALAXY2_NAME", 'Fried Egg');
+
+define ("GALAXY1_IMG", 'gfx/ngc7742.jpg');
+define ("GALAXY2_IMG", 'gfx/m64.jpg');
+
+define ("GALAXY1_BG", 'gfx/ngc7742bg.jpg');
+define ("GALAXY2_BG", 'gfx/m64bg.jpg');
+
+
 $db_name = '';
 $db_user = '';
 $db_password = '';
