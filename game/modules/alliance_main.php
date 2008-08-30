@@ -98,8 +98,11 @@ if(isset($_GET['member_list'])) {
 
     for ($t=0; $t<12; $t++)
     {
-    $r_tmp = $db->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE user_race='.$t.' AND user_alliance = '.$game->player['user_alliance']);
-    $race['racecount_'.$t]=$r_tmp['num'];
+        if($RACE_DATA[$t][22])
+        {
+            $r_tmp = $db->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE user_race='.$t.' AND user_alliance = '.$game->player['user_alliance']);
+            $race['racecount_'.$t]=$r_tmp['num'];
+        }
     }
 
     $t_percent = $db->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE user_alliance = '.$game->player['user_alliance']);
@@ -107,7 +110,10 @@ if(isset($_GET['member_list'])) {
 
     for ($t=0; $t<12; $t++)
     {
-    $race['racepercent_'.$t]=round(100/($t_percent['num'])*$race['racecount_'.$t],0);
+        if($RACE_DATA[$t][22])
+        {
+            $race['racepercent_'.$t]=round(100/($t_percent['num'])*$race['racecount_'.$t],0);
+        }
     }
     // Racial distribution end
 
@@ -319,7 +325,7 @@ if(isset($_GET['member_list'])) {
         <tr><td width="350" align="left"><i>'.constant($game->sprache("TEXT30")).'</i></td><td width="175" align="right">&nbsp;</td></tr>
         </table>
         <table class="style_inner" width="350" align="center" border="0" cellpadding="2" cellspacing="2">
-
+              <tr>
                 <td width="130" class="desc_row">'.constant($game->sprache("TEXT31")).'</td>
                 <td width="140" class="value_row">'.$race['racecount_0'].' ('.$race['racepercent_0'].'%)</td>
               </tr>
@@ -355,7 +361,6 @@ if(isset($_GET['member_list'])) {
                 <td class="desc_row">'.constant($game->sprache("TEXT39")).'</td>
                 <td class="value_row">'.$race['racecount_10'].' ('.$race['racepercent_10'].'%)</b></td>
               </tr>
-              <tr>
               <tr>
                 <td class="desc_row">'.constant($game->sprache("TEXT40")).'</td>
                 <td class="value_row">'.$race['racecount_11'].' ('.$race['racepercent_11'].'%)</b></td>
