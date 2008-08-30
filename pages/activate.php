@@ -75,7 +75,7 @@ function display_message($header,$message,$bg) {
 $main_html = '<center><span class="caption">Attivazione account</span></center><br>';
 
 
-if( (empty($_GET['galaxy'])) || (empty($_GET['user_id'])) || (empty($_GET['key']))) {
+if( (!isset($_GET['galaxy'])) || (empty($_GET['user_id'])) || (empty($_GET['key']))) {
 display_message('Errore nell&#146;attivazione dell&#146;account (Chiamata invalida)','','ngc7742bg');
     return 1;
 }

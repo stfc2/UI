@@ -21,7 +21,7 @@
 */
 
 
-if( (empty($_GET['galaxy'])) || (empty($_GET['user_id'])) || (empty($_GET['key'])) ) {
+if( (!isset($_GET['galaxy'])) || (empty($_GET['user_id'])) || (empty($_GET['key'])) ) {
     $main_html = '<br><br><br><br><center><span class="caption">Impossibile cancellare l&#146;account (Chiamata invalida)</span></center>';
     return 1;
 }
