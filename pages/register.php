@@ -602,7 +602,7 @@ if(isset($_POST['submit'])) {
     	$activation_key = md5( pow($user_id,2) );
     	$activation_link = 'http://stfc.nonsolotaku.it/index.php?a=activate&galaxy='.$galaxy.'&user_id='.$user_id.'&key='.$activation_key;
         define('EXT_NL', "\r\n");
-		$mail_message = 'Congratulazioni! '.$_POST['user_name'].','."\n".'La tua registrazione a Star Trek: Frontline Combat II (Galassia '.$galaxyname.') ha avuto successo!'."\n".'Per attivare il tuo account devi clikkare sul link seguente:'."\n".$activation_link."\n\n".'Se non hai eseguito la registrazione, ignora questa email.'."\n".'Dopo 48 ore, il tuo indirizzo email verrà automaticamente rimosso dal nostro database.'."\n\n".'Lunga vita e prosperità,'."\n".'The STFC Team.'."\n\n".'Credits: http://stfc.nonsolotaku.it/index.php?a=imprint';
+		$mail_message = 'Congratulazioni '.$_POST['user_name'].'!'."\n".'La tua registrazione a Star Trek: Frontline Combat II (Galassia '.$galaxyname.') ha avuto successo!'."\n".'Per attivare il tuo account devi cliccare sul link seguente:'."\n".$activation_link."\n\n".'Se non hai eseguito la registrazione, ignora questa email.'."\n".'Dopo 48 ore, il tuo indirizzo email verr&agrave; automaticamente rimosso dal nostro database.'."\n\n".'Lunga vita e prosperit&agrave;,'."\n".'Il team STFC.'."\n\n".'Credits: http://stfc.nonsolotaku.it/index.php?a=imprint';
 		send_mail("STFC2 Mailer","admin@nonsolotaku.it",$_POST['user_name'],$_REQUEST['user_email'],"Registrazione Star Trek: Frontline Combat",$mail_message);
 
        // Update NewRegister
