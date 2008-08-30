@@ -29,7 +29,7 @@
 
 /* 
 
-0 => Föderation
+0 => FÃ¶deration
 1 => Romulaner 
 2 => Klingonen 
 3 => Cardassianer
@@ -46,7 +46,7 @@
 
  * 0 => Name der Rasse 
 
- * 1 => Bauzeit (Gebäude) 
+ * 1 => Bauzeit (GebÃ¤ude) 
 
  * 2 => Bauzeit (Einheiten) 
 
@@ -54,7 +54,7 @@
 
  * 4 => Forschungszeit 
 
- * 5 => Baukosten (Gebäude) 
+ * 5 => Baukosten (GebÃ¤ude) 
 
  * 6 => Baukosten (Einheiten) 
 
@@ -78,23 +78,23 @@
 
  * 16 => Einheitenverteidigung 
 
- * 17 => Gebäudeverteidigung (gegen planetare Angriffe) 
+ * 17 => GebÃ¤udeverteidigung (gegen planetare Angriffe) 
 
  * 18 => Schiffsgeschwindigkeit 
 
  * 19 => Sensorenreichweite 
 
- * 20 => Technologieausnutzung (Verändert den Wirkungsgrad ALLER Technologien) 
+ * 20 => Technologieausnutzung (VerÃ¤ndert den Wirkungsgrad ALLER Technologien) 
 
  * 21 => Kampfkraft der Arbeiter 
   
  * 22 => playable 
 
- * 23 => Metkostenfaktor für Gebäude
+ * 23 => Metkostenfaktor fÃ¼r GebÃ¤ude
 
- * 24 => Minkostenfaktor für Gebäude
+ * 24 => Minkostenfaktor fÃ¼r GebÃ¤ude
 
- * 25 => Latkostenfaktor für Gebäude
+ * 25 => Latkostenfaktor fÃ¼r GebÃ¤ude
 
  */ 
 
@@ -467,7 +467,7 @@ $RACE_DATA = array(
 
       21 => 2.5, 
        
-      22 => true, 
+      22 => false, 
 
       23 => 0.8, 
 
@@ -659,7 +659,7 @@ $RACE_DATA = array(
 
       21 => 5, 
        
-      22 => true,
+      22 => false,
 
       23 => 0.7, 
 
@@ -723,7 +723,7 @@ $RACE_DATA = array(
 
       21 => 5, 
        
-      22 => true,
+      22 => false,
 
       23 => 0.95, 
 
@@ -787,7 +787,7 @@ $RACE_DATA = array(
 
       21 => 3, 
        
-      22 => true, 
+      22 => false, 
 
       23 => 0.9, 
 
@@ -853,7 +853,7 @@ $RACE_DATA = array(
 
       21 => 4, 
        
-      22 => true, 
+      22 => false, 
 
       23 => 1.1, 
 
@@ -875,7 +875,7 @@ $RACE_DATA = array(
 
    12 => array( 
 
-      0 => 'Umani del 29° sec', 
+      0 => 'Umani del 29Â° sec', 
 
       1 => 1.0, 
 

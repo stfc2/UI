@@ -247,7 +247,8 @@ else if($module == 'combatsim')
             <select name="atk_race" class="Select" size="1">');
 
         foreach($RACE_DATA as $i => $race) {
-            if($i != 6 && $i != 7 && $i != 12) 
+            // Skip non playable races
+            if($race[22])
                 $game->out('
             <option value="'.$i.'">'.$race[0].'</option>');
         }
@@ -260,7 +261,8 @@ else if($module == 'combatsim')
             <select name="dfd_race" class="Select" size="1">');
 
         foreach($RACE_DATA as $i => $race) {
-            if($i != 6 && $i != 7 && $i != 12) 
+            // Skip non playable races
+            if($race[22])
                 $game->out('
             <option value="'.$i.'">'.$race[0].'</option>');
         }
@@ -360,8 +362,8 @@ else if($module == 'combatsim')
 else if($module == 'racedata')
 {
     foreach($RACE_DATA as $i => $race) {
-        // Skip Borg, Q, 29th Humans races
-        if($i != 6 && $i != 7 && $i != 12)
+        // Skip non playable races
+        if($race[22])
         {
             $game->out('[<a href="'.parse_link('a=database&view=racedata&show_race='.$i.'#'.$i.'').'">'.$race[0].'</a>] ');
         }
@@ -375,8 +377,8 @@ else if($module == 'racedata')
     ');
 
     foreach($RACE_DATA as $i => $race) {
-        // Skip Borg, Q, 29th Humans races
-        if($i != 6 && $i != 7 && $i != 12)
+        // Skip non playable races
+        if($race[22])
         {
             $game->out('
     <tr><td>

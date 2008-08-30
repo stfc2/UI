@@ -98,8 +98,11 @@ if(isset($_GET['member_list'])) {
 
     for ($t=0; $t<12; $t++)
     {
-    $r_tmp = $db->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE user_race='.$t.' AND user_alliance = '.$game->player['user_alliance']);
-    $race['racecount_'.$t]=$r_tmp['num'];
+        if($RACE_DATA[$t][22])
+        {
+            $r_tmp = $db->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE user_race='.$t.' AND user_alliance = '.$game->player['user_alliance']);
+            $race['racecount_'.$t]=$r_tmp['num'];
+        }
     }
 
     $t_percent = $db->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE user_alliance = '.$game->player['user_alliance']);
@@ -107,7 +110,10 @@ if(isset($_GET['member_list'])) {
 
     for ($t=0; $t<12; $t++)
     {
-    $race['racepercent_'.$t]=round(100/($t_percent['num'])*$race['racecount_'.$t],0);
+        if($RACE_DATA[$t][22])
+        {
+            $race['racepercent_'.$t]=round(100/($t_percent['num'])*$race['racecount_'.$t],0);
+        }
     }
     // Racial distribution end
 
@@ -319,7 +325,7 @@ if(isset($_GET['member_list'])) {
         <tr><td width="350" align="left"><i>'.constant($game->sprache("TEXT30")).'</i></td><td width="175" align="right">&nbsp;</td></tr>
         </table>
         <table class="style_inner" width="350" align="center" border="0" cellpadding="2" cellspacing="2">
-
+              <tr>
                 <td width="130" class="desc_row">'.constant($game->sprache("TEXT31")).'</td>
                 <td width="140" class="value_row">'.$race['racecount_0'].' ('.$race['racepercent_0'].'%)</td>
               </tr>
@@ -338,7 +344,8 @@ if(isset($_GET['member_list'])) {
               <tr>
                 <td class="desc_row">'.constant($game->sprache("TEXT35")).'</td>
                 <td class="value_row">'.$race['racecount_4'].' ('.$race['racepercent_4'].'%)</b></td>
-              </tr>
+              </tr>');
+/* 30/08/08 - AC: Only 5 races in 2nd galaxy
               <tr>
                 <td class="desc_row">'.constant($game->sprache("TEXT36")).'</td>
                 <td class="value_row">'.$race['racecount_5'].' ('.$race['racepercent_5'].'%)</b></td>
@@ -356,10 +363,10 @@ if(isset($_GET['member_list'])) {
                 <td class="value_row">'.$race['racecount_10'].' ('.$race['racepercent_10'].'%)</b></td>
               </tr>
               <tr>
-              <tr>
                 <td class="desc_row">'.constant($game->sprache("TEXT40")).'</td>
                 <td class="value_row">'.$race['racecount_11'].' ('.$race['racepercent_11'].'%)</b></td>
-              </tr>
+              </tr>*/
+    $game->out('
         </table>
     </td>
   </tr> 
@@ -625,7 +632,7 @@ elseif(!empty($game->player['alliance_name'])) {
         message(DATABASE_ERROR, 'Could not query alliance data');
     } 
 
-    /* 28/08/08 - AC: On 2nd galaxy the alliances are fixed
+    
     if($game->player['user_alliance_rights6']==1) { 
 
       if(!empty($new_app['application_id'])) {
@@ -636,9 +643,9 @@ elseif(!empty($game->player['alliance_name'])) {
             <a href="'.parse_link('a=alliance_application&application=admin').'">'.constant($game->sprache("TEXT67")).'</a><br>
 	    
          '); }
-    }
+    } 
     //else { $game->out('<br>'); }
-    */
+    
     if($game->player['user_alliance_rights8']==1) {
      
     $game->out('<a href="'.parse_link('a=alliance_rights').'">'.constant($game->sprache("TEXT68")).'</a></br>');
@@ -649,16 +656,14 @@ elseif(!empty($game->player['alliance_name'])) {
     $game->out('<a href="'.parse_link('a=alliance_massmail').'">'.constant($game->sprache("TEXT69")).'</a>');
     }
    // else { $game->out('<br>'); }
-
-    /* 28/08/08 - AC: On 2nd galaxy the alliances are fixed
+    
     if($game->player['user_id'] == $alliance_rights['alliance_owner']) {
         $game->out('<br><br><a href="'.parse_link('a=alliance_admin&delete').'">'.constant($game->sprache("TEXT70")).'</a>');
     }
     else {
         $game->out('<br><br><a href="'.parse_link('a=alliance_main&leave').'">'.constant($game->sprache("TEXT71")).'</a>');
     }
-    */
-
+    
     $game->out('
           </td>
         </tr>
