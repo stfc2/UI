@@ -90,7 +90,7 @@ $map_url='maps/tmp/'.$alliance['alliance_id'].'_'.$size.'.html';
 if (file_exists($image_url))
 {
 	// Delete files only if it isn't player's alliance
-	if (($game->player['user_alliance'] == $alliance['alliance_id']) && (filemtime($image_url)<time()-3600*6))
+	if (($game->player['user_alliance'] != $alliance['alliance_id']) || (filemtime($image_url)<time()-3600*6))
 	{
 		@unlink($image_url);
 		@unlink($map_url);
