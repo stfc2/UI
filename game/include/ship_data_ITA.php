@@ -196,7 +196,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    3 => array(
 
-			0 => 'Talon Class',  // Name
+			0 => 'Talon',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -206,7 +206,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    4 => array(
 
-			0 => 'Talon Class',  // Name
+			0 => 'Talon',  // Name
 
 			1 => 'Questa &egrave; la seconda nave della classe Talon. Non ha talenti particolari, la resistenza che ha ai combattimenti &egrave; buona per il suo prezzo.',
 
@@ -216,7 +216,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    5 => array(
 
-			0 => 'Science Class',  // Name
+			0 => 'Science',  // Name
 
 			1 => 'Questa &egrave; una delle due navi di classe Science. Non ha talenti particolari, la resistenza che ha ai combattimenti &egrave; buona per il suo prezzo.',
 
@@ -226,7 +226,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    6 => array(
 
-			0 => 'Science Class',  // Name
+			0 => 'Science',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -236,7 +236,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    7 => array(
 
-			0 => 'Norexan Class',  // Name
+			0 => 'Norexan',  // Name
 
 			1 => 'La Norexan appartiene ad una classe di navi superiore. &Egrave; la prima nave ad equipaggiare i siluri fotonici, quindi il suo potenziale di attacco &egrave; molto alto.',
 
@@ -246,7 +246,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    8 => array(
 
-			0 => 'Norexan Class',  // Name
+			0 => 'Norexan',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -256,7 +256,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    9 => array(
 
-			0 => 'D&acute;deridex Class',  // Name
+			0 => 'D&acute;deridex',  // Name
 
 			1 => 'Lo sparviero da guerra &egrave; una nave di classe D&#146;deridex. Fornito degli ultimi aggiornamenti pu&ograve; lasciare gravi ferite sulle flotte nemiche.',
 
@@ -266,7 +266,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    10 => array(
 
-			0 => 'D&acute;deridex Class',  // Name
+			0 => 'D&acute;deridex',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -276,7 +276,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    11 => array(
 
-			0 => 'Scimitar Class',  // Name
+			0 => 'Scimitar',  // Name
 
 			1 => 'La classe Scimitar &egrave; la classe d&#146;elite della flotta romulana, &egrave; la nave che possiede la maggior manovrabilit&agrave; della flotta.',
 
@@ -490,7 +490,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    5 => array(
 
-			0 => 'L.Kreuzer',  // Name
+			0 => 'Incrociatore leggero',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -500,7 +500,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    6 => array(
 
-			0 => 'L.Kreuzer',  // Name
+			0 => 'Incrociatore leggero',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -550,7 +550,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    11 => array(
 
-			0 => 'Schlachtschiff',  // Name
+			0 => 'Nave da battaglia',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -627,7 +627,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    5 => array(
 
-			0 => 'Classe &acute;V&acute;',  // Name
+			0 => '&acute;V&acute;',  // Name
 
 			1 => 'Nonostante i nostri Jem Hadar compensino, con gioia, la sua bassa potenza di fuoco con una giusta furia suicida, questa nave si &egrave; rivelata alla lunga troppo dispendiosa in termini di risorse consumate. La miscela di potere di fuoco e agilit&agrave; in seguito alla revisione del progetto rendono il suicidio, anche se glorioso, l&#146;opzione finale.',
 
@@ -637,7 +637,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    6 => array(
 
-			0 => 'V-Klasse',  // Name
+			0 => 'V',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -647,7 +647,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    7 => array(
 
-			0 => 'Kreuzer',  // Name
+			0 => 'Incrociatore',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -657,7 +657,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    8 => array(
 
-			0 => 'Kreuzer',  // Name
+			0 => 'Incrociatore',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -764,7 +764,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    5 => array(
 
-			0 => 'L.Kreuzer',  // Name
+			0 => 'Incrociatore leggero',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -774,7 +774,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    6 => array(
 
-			0 => 'L.Kreuzer',  // Name
+			0 => 'Incrociatore leggero',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -784,7 +784,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    7 => array(
 
-			0 => 'D&acute;Kora-Class', // Name
+			0 => 'D&acute;Kora', // Name
 
 			1 => 'La pi&ugrave; famosa di tutte le navi Ferengi con un buon potenziale offensivo e difensivo. Dal momento che ogni Ferengi acquista per la propria nave vario armamento la D&acute;Koras &egrave; molto forte.',
 
@@ -794,7 +794,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    8 => array(
 
-			0 => 'D&acute;Kora-Class',  // Name
+			0 => 'D&acute;Kora',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -804,7 +804,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    9 => array(
 
-			0 => 'Schw.Kreuzer',  // Name
+			0 => 'Incrociatore pesante',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -814,7 +814,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    10 => array(
 
-			0 => 'Schw.Kreuzer',  // Name
+			0 => 'Incrociatore pesante',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -824,7 +824,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    11 => array(
 
-			0 => 'Schlachtschiff',  // Name
+			0 => 'Nave da battaglia',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -850,11 +850,15 @@ $SHIP_TORSO_LOCALE = array(
 
 			0 => 'Sfera Borg',  // Name
 
+			1 => 'Piccola nave corazzata usata per gli scopi pi&ugrave; disparati, comunque principalmente esplorativi.',
+
 		),
 
 		11 => array(
 
 			0 => 'Cubo Borg',  // Name
+
+			1 => 'Il Cubo Borg &egrave; l&#146;astronave pi&ugrave; comune di questa razza. Il Cubo ha una dimensione di circa 3 chilometri di lato, l&#146;aspetto esteriore &egrave; quello di una superficie uniforme di condotti e strutture priva di elementi distintivi, come se l&#146;astronave fosse perennemente incompleta.',
 
 		),
 	),
@@ -923,7 +927,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    5 => array(
 
-			0 => 'L.Kreuzer',  // Name
+			0 => 'Incrociatore leggero',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -933,7 +937,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    6 => array(
 
-			0 => 'L.Kreuzer',  // Name
+			0 => 'Incrociatore leggero',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -963,7 +967,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    9 => array(
 
-			0 => 'Schw.Kreuzer',  // Name
+			0 => 'Incrociatore pesante',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -973,7 +977,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    10 => array(
 
-			0 => 'Schw.Kreuzer',  // Name
+			0 => 'Incrociatore pesante',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -983,7 +987,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    11 => array(
 
-			0 => 'Schlachtschiff',  // Name
+			0 => 'Nave da battaglia',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -1040,7 +1044,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    3 => array(
 
-			0 => 'Fregatte',  // Name
+			0 => 'Fregata',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -1050,7 +1054,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    4 => array(
 
-			0 => 'Fregatte',  // Name
+			0 => 'Fregata',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -1060,7 +1064,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    5 => array(
 
-			0 => 'Hunter-Class',  // Name
+			0 => 'Hunter',  // Name
 
 			1 => 'La classe Hunter &egrave; la nave base degli Hirogeni. Da millenni esplorano lo spazio a bordo di queste navi, sono ideale soprattutto per la battaglia. Un importante simbolo della loro civilt&agrave;.',
 
@@ -1070,7 +1074,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    6 => array(
 
-			0 => 'Hunter-Class',  // Name
+			0 => 'Hunter',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -1100,7 +1104,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    9 => array(
 
-			0 => 'Schw.Kreuzer',  // Name
+			0 => 'Incrociatore pesante',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -1110,7 +1114,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    10 => array(
 
-			0 => 'Schw.Kreuzer',  // Name
+			0 => 'Incrociatore pesante',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -1120,7 +1124,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    11 => array(
 
-			0 => 'Venatic-Class',  // Name
+			0 => 'Venatic',  // Name
 
 			1 => 'La classe Venatic &egrave; la pi&ugrave potente nave da guerra hirogeni. Nonostante le piccole dimensioni (appena 600 metri), spicca tra tutte le navi hirogeni. Lo scafo estremamente pesante compensa i deboli scudi montati. L&#146;armamento rende questa nave un avversario temibile per qualunque avversario.', 
 
@@ -1199,7 +1203,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    5 => array(
 
-			0 => 'L.Kreuzer',  // Name
+			0 => 'Incrociatore leggero',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -1209,7 +1213,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    6 => array(
 
-			0 => 'L.Kreuzer',  // Name
+			0 => 'Incrociatore leggero',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -1249,7 +1253,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    10 => array(
 
-			0 => 'Waffenschiff',  // Name
+			0 => 'Gunship',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -1259,7 +1263,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    11 => array(
 
-			0 => 'Schlachtschiff',  // Name
+			0 => 'Nave da battaglia',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -1356,7 +1360,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    7 => array(
 
-			0 => 'Kreuzer',  // Name
+			0 => 'Incrociatore',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -1366,7 +1370,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    8 => array(
 
-			0 => 'Kreuzer',  // Name
+			0 => 'Incrociatore',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
@@ -1396,7 +1400,7 @@ $SHIP_TORSO_LOCALE = array(
 
 	    11 => array(
 
-			0 => 'Schlachtschiff',  // Name
+			0 => 'Nave da battaglia',  // Name
 
 			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
