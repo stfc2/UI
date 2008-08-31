@@ -60,8 +60,8 @@ if(isset($_GET['sql_debug'])) $db->debug = true;
 // #############################################################################
 // Includes
 //include('include/text_planets.php');
-//include('include/ship_data.php');
-//include('include/race_data.php');
+include('include/ship_data.php');
+include('include/race_data.php');
 
 
 // #############################################################################
@@ -153,16 +153,10 @@ if (file_exists('include/text_planets_'.$game->player['language'].'.php')) {
 }else{
 	include('include/text_planets.php');
 }
-if (file_exists('include/ship_data_'.$game->player['language'].'.php')) {
+if (file_exists('include/ship_data_'.$game->player['language'].'.php'))
 	include('include/ship_data_'.$game->player['language'].'.php');
-}else{
-	include('include/ship_data.php');
-}
-if (file_exists('include/race_data_'.$game->player['language'].'.php')) {
+if (file_exists('include/race_data_'.$game->player['language'].'.php'))
 	include('include/race_data_'.$game->player['language'].'.php');
-}else{
-	include('include/race_data.php');
-}
 // #############################################################################
 
 
