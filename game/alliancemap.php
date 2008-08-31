@@ -80,17 +80,21 @@ $alliance = $db->queryrow($sql);
        
        
 //Assign names:
-$image_url='maps/tmp/'.$alliance['alliance_id'].'_'.$size.'.png';
-$map_url='maps/tmp/'.$alliance['alliance_id'].'_'.$size.'.html';
-       
+if($game->player['user_alliance'] == $alliance['alliance_id']) {
+	$image_url='maps/tmp/'.$alliance['alliance_id'].'_'.$size.'.png';
+	$map_url='maps/tmp/'.$alliance['alliance_id'].'_'.$size.'.html';
+}
+else {
+	$image_url='maps/tmp/'.$alliance['alliance_id'].'_'.$game->player['user_id'].'_'.$size.'.png';
+	$map_url='maps/tmp/'.$alliance['alliance_id'].'_'.$game->player['user_id'].'_'.$size.'.html';
+}
 
 
 
 //Delete old picture
 if (file_exists($image_url))
 {
-	// Delete files only if it isn't player's alliance
-	if (($game->player['user_alliance'] != $alliance['alliance_id']) || (filemtime($image_url)<time()-3600*6))
+	if (filemtime($image_url)<time()-3600*6)
 	{
 		@unlink($image_url);
 		@unlink($map_url);
