@@ -276,7 +276,7 @@ $game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT43"
 
 
 function Submit_Bid()
-// 220408 DC ---- Mettiamo un pò di ordine in questo casino maledetto!!!!
+// 220408 DC ---- Mettiamo un po' di ordine in questo casino maledetto!!!!
 {
 global $db;
 global $game,$ACTUAL_TICK;
@@ -300,16 +300,16 @@ if ($_REQUEST['id']<0) return 0;
 
 	// DC ---- Controllino veloce per vedere se il venditore sta facendo offerte alla propria asta
 	if ($tradedata['user']==$game->player['user_id']) {$game->out('<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center><span class="sub_caption">'.constant($game->sprache("TEXT46")).'<br><a href="'.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata['id']).'">'.constant($game->sprache("TEXT47")).'</a></span></center></td></tr></table></center><br>'); return 0;}
-	// DC ---- Se l'asta è chiusa, ci sono buone probabilità che non si possano fare ulteriori offerte
+	// DC ---- Se l'asta e` chiusa, ci sono buone probabilita` che non si possano fare ulteriori offerte
 	if ($tradedata['end_time']<$ACTUAL_TICK) {$game->out('<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center><span class="sub_caption">'.constant($game->sprache("TEXT48")).'<br><a href="'.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata['id']).'">'.constant($game->sprache("TEXT47")).'</a></span></center></td></tr></table></center><br>'); return 0;}
 
-	$min_bieten=-1;     // -1 significa che NON CI SONO OFFERTE (quindi la tabella biddings è VUOTA, quindi $tradedata['num_bids'] è ZERO
+	$min_bieten=-1;     // -1 significa che NON CI SONO OFFERTE (quindi la tabella biddings e` VUOTA, quindi $tradedata['num_bids'] e` ZERO
 	if ($tradedata['num_bids']==1) $min_bieten=1;
 
 	//DC ---- Inizia il mal di testa; questa IF servirebbe a capire se stiamo facendo la prima offerta
 	if ($tradedata['num_bids']<2)
 	{
-		//DC ---- La prima offerta è pari al prezzo base stabilito dal venditore
+		//DC ---- La prima offerta e` pari al prezzo base stabilito dal venditore
 		$min_resources[0]=$tradedata['resource_1'];
 		$min_resources[1]=$tradedata['resource_2'];
 		$min_resources[2]=$tradedata['resource_3'];
@@ -322,7 +322,7 @@ if ($_REQUEST['id']<0) return 0;
 		$min_resources[8]=$tradedata['unit_6'];
 		//ende
 		if ($tradedata['num_bids']!=0)
-		//DC ---- La droga inizia a scorrere: qui siamo nel caso ci sia un solo offerente, ossia il primo (che lo ricordo può solo offrire il prezzo base stabilito dal venditore)
+		//DC ---- La droga inizia a scorrere: qui siamo nel caso ci sia un solo offerente, ossia il primo (che lo ricordo puo` solo offrire il prezzo base stabilito dal venditore)
 		{
 			$min_resources[0]=$tradedata['resource_1']+$tradedata['add_resource_1'];
 			$min_resources[1]=$tradedata['resource_2']+$tradedata['add_resource_2'];
@@ -338,20 +338,20 @@ if ($_REQUEST['id']<0) return 0;
 		else $min_price=$actual_price;*/
 	}
 	else
-	/*DC ---- Per come è scritta questa IF, qui siamo nel caso in cui $tradedata['num_bids'] sia maggiore di uno, ossia è stata fatta un'offerta successiva a quella iniziale, quindi gli offerenti sono
+	/*DC ---- Per come e` scritta questa IF, qui siamo nel caso in cui $tradedata['num_bids'] sia maggiore di uno, ossia e` stata fatta un'offerta successiva a quella iniziale, quindi gli offerenti sono
 	ALMENO DUE */
 	{
 		//DC ---- Una simpatica query ci valorizza $prelast_bid con i dati presi dalla tabella bidding (la tabella degli utenti che partecipano all'asta); in particolare, questa query ritorna
-		// il penultimo offerente in ordine di offerta più alta
+		// il penultimo offerente in ordine di offerta piu` alta
 		$prelast_bid=$db->queryrow('SELECT * FROM bidding WHERE trade_id = "'.$tradedata['id'].'" ORDER BY max_bid DESC LIMIT 1,1');
 		// Um zu testen, ob ein Gleichstand besteht, dann wird ja nicht max_bid +1
-		//DC ----  il commento in crucco è particolarmente delirante, google non è di aiuto in questo caso
-		//DC ---- Questa simpatica query ci ritorna chi effettivamente sta facendo l'offerta più alta
+		//DC ----  il commento in crucco e` particolarmente delirante, google non e` di aiuto in questo caso
+		//DC ---- Questa simpatica query ci ritorna chi effettivamente sta facendo l'offerta piu` alta
 		$last_bid=$db->queryrow('SELECT * FROM bidding WHERE trade_id = "'.$tradedata['id'].'" ORDER BY max_bid DESC LIMIT 1');
 		//DC ---- Questa IF si pone l'annoso problema dei due ultimi offerenti aventi la stessa offerta
 		if ($last_bid['max_bid']!=$prelast_bid['max_bid'])
 		{
-			$min_bieten=$prelast_bid['max_bid']+1+1; // +1 für aktuelles gebot, nochmal +1 für das nächste
+			$min_bieten=$prelast_bid['max_bid']+1+1; // +1 for the current offer, again +1 for the next
 
 			$min_resources[0]=($tradedata['resource_1']+($prelast_bid['max_bid']+2)*$tradedata['add_resource_1']);
 			$min_resources[1]=($tradedata['resource_2']+($prelast_bid['max_bid']+2)*$tradedata['add_resource_2']);
@@ -366,7 +366,7 @@ if ($_REQUEST['id']<0) return 0;
 		}
 		else
 		{
-			$min_bieten=$prelast_bid['max_bid']+1; // +1 für das nächste gebot, weil ja gleichstand war
+			$min_bieten=$prelast_bid['max_bid']+1; // +1 for the next offer because it was the same stand
 
 			$min_resources[0]=($tradedata['resource_1']+($prelast_bid['max_bid']+1)*$tradedata['add_resource_1']);
 			$min_resources[1]=($tradedata['resource_2']+($prelast_bid['max_bid']+1)*$tradedata['add_resource_2']);
@@ -410,15 +410,15 @@ if ($_REQUEST['id']<0) return 0;
 		if($prev_bid == null)
 			$prev_bid['trade_id'] = 0;
 			
-		if ($prev_bid['trade_id']!=0) //DC ---- Come faceva notare il crucco, qui ci chiediamo se abbiamo già fatto o meno delle offerte.
+		if ($prev_bid['trade_id']!=0) //DC ---- Come faceva notare il crucco, qui ci chiediamo se abbiamo gia` fatto o meno delle offerte.
 		{
-			// DC ---- Qui ci chiediamo se per caso abbiamo fatto l'offerta iniziale; per verificarsi questa eventualità $prev_bid deve essere valorizzato con qualcosa e $tradedata['num_bids'] deve essere a 1
-			//ossia  esiste un solo offerente e nella tabella biddings c'è traccia della nostra offerta;
+			// DC ---- Qui ci chiediamo se per caso abbiamo fatto l'offerta iniziale; per verificarsi questa eventualita` $prev_bid deve essere valorizzato con qualcosa e $tradedata['num_bids'] deve essere a 1
+			//ossia  esiste un solo offerente e nella tabella biddings c'e` traccia della nostra offerta;
 			if ($tradedata['num_bids']==1) {$game->out('<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center><span class="sub_caption">'.constant($game->sprache("TEXT52")).'<br><a href="'.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata['id']).'">'.constant($game->sprache("TEXT47")).'</a></span></center></td></tr></table></center><br>'); return 0;}
 			//DC ----  Nel caso stia rilanciando di meno rispetto alla volta precedente, mi viene segnalato!
 			if ($_REQUEST['max_bid']<=$prev_bid['max_bid']) {$game->out('<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center><span class="sub_caption">'.constant($game->sprache("TEXT53")).' '.$prev_bid['max_bid'].' '.constant($game->sprache("TEXT54")).'<br><a href="'.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata['id']).'">'.constant($game->sprache("TEXT47")).'</a></span></center></td></tr></table></center><br>'); return 0;}
 			//DC ---- Ok ho rilanciato correttamente, scriviamo ste dannate tabelle!!! La tabella bidding va aggiornata con la mia nuova offerta mentre
-			//la  tabella FHB_bid_meldung serve a segnare in che minuto è stata superata l'offerta più alta dalla mia offerta, per poterlo segnalare all'offerente superato.
+			//la  tabella FHB_bid_meldung serve a segnare in che minuto e` stata superata l'offerta piu` alta dalla mia offerta, per poterlo segnalare all'offerente superato.
 			$db->lock('bidding','FHB_bid_meldung');
 			$db->query('INSERT INTO FHB_bid_meldung (user_id , bieter , time , tick , trade_id ) VALUES ('.$last_bid['user'].','.$game->player['user_id'].',1,'.$ACTUAL_TICK.','.$tradedata['id'].')');	
 			$db->query('UPDATE bidding SET max_bid="'.$_REQUEST['max_bid'].'" WHERE trade_id = "'.$tradedata['id'].'" AND user="'.$game->player['user_id'].'"');
@@ -428,7 +428,7 @@ if ($_REQUEST['id']<0) return 0;
 		}
 		else
 		{
-			//DC ---- Il caso più semplice: non ho ancora fatto un'offerta, quindi la butto nella tabella bidding e segno nella FHB_bid_meldung il momento della mia temporanea vittoria
+			//DC ---- Il caso piu` semplice: non ho ancora fatto un'offerta, quindi la butto nella tabella bidding e segno nella FHB_bid_meldung il momento della mia temporanea vittoria
 			$db->lock('bidding','FHB_bid_meldung');
 			$db->query('INSERT INTO FHB_bid_meldung (user_id , bieter , time , tick , trade_id ) VALUES ('.$last_bid['user'].','.$game->player['user_id'].',1,'.$ACTUAL_TICK.','.$tradedata['id'].')');
 			$db->query('INSERT INTO bidding (trade_id,user,max_bid) VALUES ('.$tradedata['id'].','.$game->player['user_id'].','.$_REQUEST['max_bid'].')');
@@ -666,7 +666,7 @@ function Show_Bidding_Detail()
 		</td></tr></table>');
 	}
 
-	// Die Preis + Bieten Übersicht:
+	// The bid price + summary:
 	$min_bieten=-1;     // -1 means that there was NO bid yet
 	if ($tradedata['num_bids']==1) $min_bieten=1;
 
@@ -721,7 +721,7 @@ function Show_Bidding_Detail()
 		if ($last_bid['max_bid']!=$prelast_bid['max_bid'])
 		{
 
-			$min_bieten=$prelast_bid['max_bid']+1+1; // +1 fr aktuelles gebot, nochmal +1 für das nächste
+			$min_bieten=$prelast_bid['max_bid']+1+1; // +1 for the current offer, again +1 for the next
 
 			$min_resources[0]=($tradedata['resource_1']+($prelast_bid['max_bid']+2)*$tradedata['add_resource_1']);
 			$min_resources[1]=($tradedata['resource_2']+($prelast_bid['max_bid']+2)*$tradedata['add_resource_2']);
@@ -754,7 +754,7 @@ function Show_Bidding_Detail()
 		}
 		else
 		{
-			$min_bieten=$prelast_bid['max_bid']+1; // +1 fr das nächste gebot, weil ja "gleichstand" war
+			$min_bieten=$prelast_bid['max_bid']+1; // +1 for the next bid, because was "directly stand"
 
 			$min_resources[0]=($tradedata['resource_1']+($prelast_bid['max_bid']+1)*$tradedata['add_resource_1']);
 			$min_resources[1]=($tradedata['resource_2']+($prelast_bid['max_bid']+1)*$tradedata['add_resource_2']);
@@ -793,7 +793,7 @@ function Show_Bidding_Detail()
 
 
 
-	// Wenn die Auktion noch läuft:
+	// If the auction is still running:
 	if ((60*TICK_DURATION*($tradedata['end_time']-$ACTUAL_TICK))+$NEXT_TICK>0)
 	{
 		$game->set_autorefresh((60*TICK_DURATION*($tradedata['end_time']-$ACTUAL_TICK))+$NEXT_TICK);
@@ -824,7 +824,7 @@ function Show_Bidding_Detail()
 		
 		if ($min_bieten==-1)
 		{
-			// Verkäufer??
+			// Seller?
 			if ($tradedata['user']==$game->player['user_id'])
 				$game->out(constant($game->sprache("TEXT72")).' ('.$min_price.')<br>
 					<form method="post" action="'.parse_link('a=trade&view=cancel_bid&id='.$_REQUEST['id']).'">
@@ -884,10 +884,10 @@ function Show_Bidding_Detail()
 					window.setTimeout( \'UpdateValues()\', 500 );
 				}
 				</script>');
-			// Verkäufer??
+			// Seller?
 			if ($tradedata['user']==$game->player['user_id'])
 			{
-				// Wenn Verkäufer, dann eine Gebotsliste zeigen:
+				// If it the Seller, then show a bid:
 				$liste=$db->query('SELECT b.*,u.user_id,u.user_name FROM (bidding b) LEFT JOIN (user u) ON u.user_id=b.user WHERE b.trade_id = "'.$tradedata['id'].'" ORDER BY b.max_bid DESC, b.id ASC');
 				$game->out(constant($game->sprache("TEXT87")).'
 				<table border=0 cellpadding=1 cellspacing=1><tr><td width=100></td><td width=150></td></tr>');
@@ -1452,10 +1452,10 @@ function Show_CreateBidding()
 	///////// Form for new auction
 	$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT5")).' '.HelpPopup('trade_createauction').' :</span></center><br>');
 	//TAP|BNC> tobi
-	//<TAP|BNC> du hattest das gleiche problem
-	//<TAP|BNC> er speichert den erhöhungsschritt bei lv1,2,3 nich
-	//<TAP|BNC> [22:10] <Secius> Startpreis:  2    2    2    2    2    2    22    2    2
-	//<TAP|BNC> [22:10] <Secius> Erhöhungsschritt:  50055    5    5    0    0    0    5    55    5
+	//<TAP|BNC> you had the same problem
+	//<TAP|BNC> it store increase step with lv1,2,3 nich
+	//<TAP|BNC> [22:10] <Secius> Start prices:  2    2    2    2    2    2    22    2    2
+	//<TAP|BNC> [22:10] <Secius> Increase step:  50055    5    5    0    0    0    5    55    5
 	//<Secius> yep hab den formular felden die namen 4-6 gegeben und net 1-3
 	function tap_beides(){
 		global $game;
@@ -1643,7 +1643,7 @@ $snach = $RACE_DATA[$game->player['user_race']][$nach];
 $svon = $RACE_DATA[$game->player['user_race']][$von];
 */
 
-// Il rateo di scambio viene pesato in base alla razza, penalizzando di fatto lo scambio di risorse tra le razze; usiamo il rateo 2,5:1:0,8 modificato dalle disponibilità
+// Il rateo di scambio viene pesato in base alla razza, penalizzando di fatto lo scambio di risorse tra le razze; usiamo il rateo 2,5:1:0,8 modificato dalle disponibilita`
 switch($nach) {
 	case 1:
 	case 9:
@@ -3740,7 +3740,7 @@ function Show_schulden($zustand=0)
 		if($k_1['ress_2']>$s_1['ress_2']) $k_1['ress_2']=$s_1['ress_2'];
 		if($k_1['ress_3']>$s_1['ress_3']) $k_1['ress_3']=$s_1['ress_3'];
 
-		//Wenn zu groß dann
+		//If too large then
 		if(($k_1['unit_1']+$_POST['unit1'])>$s_1['unit_1']) $_POST['unit1']=$s_1['unit_1']-$k_1['unit_1'];
 		if(($k_1['unit_2']+$_POST['unit2'])>$s_1['unit_2']) $_POST['unit2']=$s_1['unit_2']-$k_1['unit_2'];
 		if(($k_1['unit_3']+$_POST['unit3'])>$s_1['unit_3']) $_POST['unit3']=$s_1['unit_3']-$k_1['unit_3'];
@@ -3844,9 +3844,9 @@ function Show_schulden($zustand=0)
 
 function ship_pick()
 {
-	//[02:05] <Karnickl> [02:04:12] <Exekutor4> hm kein wunder das er unübersichtlich ist^^ <-- 5k zeilen code. 4500 sind müll *duck*
-	//[02:14] <Exekutor4> naja wenn ihr die stgc'ler mal bestrafen wollt dann könnt ihr tap den source geben^^
-	//[02:17] <Karnickl> @sci. kein wunder, dass nix fertig wird *g* zu tap+source=w.bush+macht
+	//[02:05] <Karnickl> [02:04:12] <Exekutor4> hmm no surprise that he is confusing ^^ <-- 5k line code. 4500 are waste *duck*
+	//[02:14] <Exekutor4> Well if you punish the times stgc'ler want then you can tap the source type^^
+	//[02:17] <Karnickl> @sci. no wonder that nothing is done *g* tap+source=makes+w.bush
 	global $db;
 	global $game,$ACTUAL_TICK;
 
