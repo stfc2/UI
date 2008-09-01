@@ -64,9 +64,14 @@ if(!isset($user['user_id'])) {
 
 
 //Assign names:
-$image_url='maps/tmp/u_'.$user['user_id'].'_'.$game->player['user_id'].'_'.$size.'.png';
-$map_url='maps/tmp/u_'.$user['user_id'].'_'.$game->player['user_id'].'_'.$size.'.html';
-
+if($game->player['user_alliance'] == $user['user_alliance']) {
+	$image_url='maps/tmp/u_'.$user['user_id'].'_'.$size.'.png';
+	$map_url='maps/tmp/u_'.$user['user_id'].'_'.$size.'.html';
+}
+else {
+	$image_url='maps/tmp/u_'.$user['user_id'].'_'.$game->player['user_id'].'_'.$size.'.png';
+	$map_url='maps/tmp/u_'.$user['user_id'].'_'.$game->player['user_id'].'_'.$size.'.html';
+}
 
 
 
