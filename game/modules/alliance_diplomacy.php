@@ -775,7 +775,8 @@ elseif(!empty($_GET['details'])) {
             
             switch($diplomacy['status']) {
                 case 0:
-                    $game->out('<tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=suggest_peace&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT51")).'</a>]</td></tr>');
+/* 29/08/08 - AC: Actually you cannot suggest peace to an alliance 
+                    $game->out('<tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=suggest_peace&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT51")).'</a>]</td></tr>');*/
                 break;
                 
                 case $mpid:
@@ -990,10 +991,12 @@ else {
     
     if($game->player['user_alliance_rights5'] == 1 || $game->player['user_id'] == $alliance['alliance_owner']) {
         $game->out('
-      </table>
+      </table>');
+/* 29/08/08 - Actually diplomacy is switched off
       <table width="430" align="center" border="0" cellpadding="2" cellspacing="2">
         <tr><td width="430" align="right">[<a href="'.parse_link('a=alliance_diplomacy&new').'">'.constant($game->sprache("TEXT71")).'</a>]</td></tr>
-      </table>
+      </table>*/
+        $game->out('
     </td>
   </tr>
 </table>

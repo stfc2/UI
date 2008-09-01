@@ -30,7 +30,7 @@ define ("GER_TEXT4",'Suchen');
 
 define ("GER_TEXT5",'<< Zur&uuml;ck');
 
-define ("GER_TEXT6",'Bestätigen');
+define ("GER_TEXT6",'Best&auml;tigen');
 
 define ("GER_TEXT7",'M&ouml;gliche Namen:');
 
@@ -52,9 +52,9 @@ define ("GER_TEXT15",'Du kannst nicht mit dir selbst ein B&uuml;ndnis eingehen')
 
 define ("GER_TEXT16",'Du hast bereits ein B&uuml;ndnis/B&uuml;ndnisangebot mit diesem Spieler');
 
-define ("GER_TEXT17",'Persönliches B&uuml;ndnisangebot');
+define ("GER_TEXT17",'Pers&ouml;nliches B&uuml;ndnisangebot');
 
-define ("GER_TEXT18",'Soeben wurde dir ein neues Persönliches B&uuml;ndnis vorgeschlagen. Schau am Besten in deiner User-Diplomatie nach.');
+define ("GER_TEXT18",'Soeben wurde dir ein neues Pers&ouml;nliches B&uuml;ndnis vorgeschlagen. Schau am Besten in deiner User-Diplomatie nach.');
 
 define ("GER_TEXT19",'Neues B&uuml;ndnis vorschlagen');
 
@@ -103,6 +103,8 @@ define ("GER_TEXT40",'Zur&uuml;ckziehen');
 define ("GER_TEXT41",'Wartet');
 
 define ("GER_TEXT42",'Unbekannt');
+
+define ("GER_TEXT43", 'Diplomatische Beziehungen zwischen den Akteuren verschiedener Rassen sind nicht erlaubt!');
 
 // English
 define ("ENG_TEXT1",'Diplomacy:');
@@ -189,6 +191,8 @@ define ("ENG_TEXT41",'Waiting');
 
 define ("ENG_TEXT42",'Unknown');
 
+define ("ENG_TEXT43", 'Diplomatic relations between players of different races are not allowed!');
+
 // Italian
 define ("ITA_TEXT1",'Diplomazia:');
 
@@ -230,17 +234,17 @@ define ("ITA_TEXT19",'Proponi nuova alleanza');
 
 define ("ITA_TEXT20",'Nessun patto specificato');
 
-define ("ITA_TEXT21",'L\'alleanza non esiste');
+define ("ITA_TEXT21",'L&#146;alleanza non esiste');
 
-define ("ITA_TEXT22",'L\'alleanza non esiste / &egrave; gi&agrave; stata accettata');
+define ("ITA_TEXT22",'L&#146;alleanza non esiste / &egrave; gi&agrave; stata accettata');
 
-define ("ITA_TEXT23",'L\'alleanza non puo essere trovata (l\'alleanza &egrave; stata recentemente rotta dalla controparte?)');
+define ("ITA_TEXT23",'L&#146;alleanza non puo essere trovata (l&#146;alleanza &egrave; stata recentemente rotta dalla controparte?)');
 
-define ("ITA_TEXT24",'1. Parte non può essere trovata');
+define ("ITA_TEXT24",'1. Parte non pu&ograve; essere trovata');
 
-define ("ITA_TEXT25",'2. Parte non può essere trovata');
+define ("ITA_TEXT25",'2. Parte non pu&ograve; essere trovata');
 
-define ("ITA_TEXT26",'L\'alleanza non esiste / non &egrave; stata accettata');
+define ("ITA_TEXT26",'L&#146;alleanza non esiste / non &egrave; stata accettata');
 
 define ("ITA_TEXT27",'Alleanza rotta');
 
@@ -273,5 +277,7 @@ define ("ITA_TEXT40",'Ritira');
 define ("ITA_TEXT41",'In attesa');
 
 define ("ITA_TEXT42",'Sconosciuto');
+
+define ("ITA_TEXT43", 'Non sono ammesse relazioni diplomatiche con giocatori di specie differenti dalla propria!');
 
 ?>
