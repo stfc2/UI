@@ -62,7 +62,7 @@ $sql = 'UPDATE user
         SET user_active = 4
         WHERE user_id = '.$user_id;
         
-if(!$db->query($sql)) {
+if(!$mydb->query($sql)) {
     die('Database error - Could not delete registered user');
 }
 
