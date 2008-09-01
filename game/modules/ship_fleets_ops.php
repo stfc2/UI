@@ -23,9 +23,9 @@
 
 $game->init_player();
 
+include('include/static/static_components.php');
 $filename = 'include/static/static_components_'.$game->player['language'].'.php';
-if (!file_exists($filename)) $filename = 'include/static/static_components.php';
-include($filename);
+if (file_exists($filename)) include($filename);
 
 
 
