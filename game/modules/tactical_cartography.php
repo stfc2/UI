@@ -819,7 +819,7 @@ elseif(!empty($_GET['planet_id'])) {
 		LEFT JOIN user u ON d.user_id = u.user_id
 		LEFT JOIN alliance ON d.source_aid = alliance.alliance_id
 		WHERE planet_id = '.$planet['planet_id'].'
-		AND d.log_code IN (0, 1, 2, 25, 26, 27, 28, 29) 
+		AND d.log_code IN (0, 1, 2, 25, 26, 27, 28, 29, 30) 
 		ORDER BY timestamp ASC';
 		
 	if($_history = $db->query($sql)) {
@@ -878,19 +878,21 @@ elseif(!empty($_GET['planet_id'])) {
 				 }
 							
 				 $history_text .= constant($game->sprache("TEXT121")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT112")).$_history_d1.$_history_d2.'</b>.<br>';
+// --- Cessione del pianeta alla fazione indipendente Settlers
+			case 30: $history_text .= constant($game->sprache("TEXT122")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT123")).date("d.m.y H:i", $_temp['timestamp']).'.<br>';
+				break;
 			}
 		}
 	}
 // --- Dati geologici del pianeta ---
-	$sql = 'SELECT survey_1, survey_2, survey_3, timestamp, source_uid, user.user_name, source_aid, alliance.alliance_tag, ship_name'
-        . ' FROM `planet_details`'
-        . ' LEFT JOIN user ON planet_details.source_uid = user.user_id'
-        . ' LEFT JOIN alliance ON planet_details.source_aid = alliance.alliance_id'
-        . ' WHERE `planet_id` = '.$planet['planet_id']
-        . ' AND planet_details.user_id = '.$game->player['user_id']
-        . ' AND `log_code` = 100'
-        . ' ORDER BY timestamp DESC'
-        . ' LIMIT 0,1';
+	$sql = 'SELECT survey_1, survey_2, survey_3, timestamp, source_uid, user.user_name, source_aid, alliance.alliance_tag, ship_name
+	        FROM `planet_details` 
+                LEFT JOIN user ON planet_details.source_uid = user.user_id
+                LEFT JOIN alliance ON planet_details.source_aid = alliance.alliance_id
+                WHERE `planet_id` = '.$planet['planet_id'].'
+                AND planet_details.user_id = '.$game->player['user_id'].'
+                AND `log_code` = 100 
+                ORDER BY timestamp DESC';
 	if(($_temp = $db->queryrow($sql)) == true) {
 		$survey_text .= constant($game->sprache("TEXT100")).$_temp['ship_name'].constant($game->sprache("TEXT101")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT102")).date("d.m.y H:i", $_temp['timestamp']).':<br><br>';
 		$survey_text .= '<table width=250 border=0 cellpadding= 0 cellspacing=0>';
@@ -929,7 +931,24 @@ elseif(!empty($_GET['planet_id'])) {
 		}
 		$survey_text .= $_survey1.$_survey2.$_survey3.'</table>';
 	}
-
+	
+// Informazioni tattico/politiche sul pianeta (sistema coloni)
+	$sql = 'SELECT * FROM `planet_details`
+                LEFT JOIN user ON planet_details.source_uid = user.user_id
+                LEFT JOIN alliance ON planet_details.source_aid = alliance.alliance_id
+                WHERE `planet_id` = '.$planet['planet_id'].'
+                AND `log_code` = 300
+                ORDER BY timestamp DESC
+                LIMIT 0,1';
+	if(($_temp = $db->queryrow($sql)) == true) {
+		$tactical_text .= '<i>Le seguenti informazioni indicano il mood dei coloni sul pianeta rispetto ad ogni razza e vengono aggiornate automaticamente ad ogni tick:</i><br><br>';
+		$tactical_text .= 'Federazione: '.$_temp['mood_race0'].'   Romulani : '.$_temp['mood_race1'].'   Klingon: '.$_temp['mood_race2'].'<br>';
+		$tactical_text .= 'Cardassiani: '.$_temp['mood_race3'].'   Dominio  : '.$_temp['mood_race4'].'   Ferengi: '.$_temp['mood_race5'].'<br>';
+		$tactical_text .= 'Breen      : '.$_temp['mood_race8'].'   Hirogeni : '.$_temp['mood_race9'].'   Krenim : '.$_temp['mood_race10'].'<br>';
+		$tactical_text .= 'Kazon      : '.$_temp['mood_race11'].'<br><br>';
+		$tactical_text .= '<font size=-2><i> Valore medio = 100, indica indifferenza.<br>Valori superiori indicano comportamenti benevoli verso la razza.<br>Valori inferiori indicano che i coloni sono ostili verso la razza.</i></font>';
+	}
+	
 //	$detail_text = $history_text.$survey_text.$tactical_text;
 
     $planet_is_known = false;	

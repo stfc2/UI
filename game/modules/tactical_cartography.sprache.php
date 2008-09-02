@@ -214,6 +214,10 @@ define ("GER_TEXT93", 'No expedition done yet.');
 
 define ("GER_TEXT121", 'Il pianeta viene assimilato dai Borg in data ');
 
+define ("GER_TEXT122", 'Ai coloni del pianeta viene concessa l&#146;indipendenza da <b>');
+
+define ("GER_TEXT123", '</b> in data ');
+
 
 
 //English
@@ -463,6 +467,12 @@ define ("ENG_TEXT120", '<i>&#171;Unknown&#187;</i>');
 
 define ("ENG_TEXT121", 'Il pianeta viene assimilato dalla comunit&agrave Borg in data ');
 
+define ("ENG_TEXT122", 'Ai coloni del pianeta viene concessa l&#146;indipendenza da <b>');
+
+define ("ENG_TEXT123", '</b> in data ');
+
+
+
 //Italiano
 define ("ITA_TEXT0", 'Comando Tattico:');
 
@@ -709,5 +719,9 @@ define ("ITA_TEXT119", '</b> raggiugono il pianeta, contendendone il diritto di 
 define ("ITA_TEXT120", '<i>&#171;Sconosciuto&#187;</i>');
 
 define ("ITA_TEXT121", 'Il pianeta viene assimilato dalla comunit&agrave Borg in data ');
+
+define ("ITA_TEXT122", 'Ai coloni del pianeta, <b>');
+
+define ("ITA_TEXT123", '</b> concede l&#146;indipendenza in data ');
 
 ?>
