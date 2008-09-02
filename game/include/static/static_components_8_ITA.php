@@ -167,7 +167,7 @@ $ship_components=array(
         1=>array(
              // Component Bionucleo di curvatura MK I
              0=>array(
-                    'name'=>'Bionucleo di curvatura MK I',
+                    'name'=>'Nucleo di curvatura MK I',
                     'resource_1'=>'750',
                     'resource_2'=>'112.5',
                     'resource_3'=>'0',
@@ -204,13 +204,13 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Il bionucleo di curvatura di base consente a tutte le nostre navi di rendere nota a tutta la galassia la nostra potenza con maggiore alacrit&agrave; e costi irrisori.',
+                    'description'=>'Il nucleo di curvatura di base consente a tutte le nostre navi di rendere nota a tutta la galassia la nostra potenza con maggiore alacrit&agrave; e costi irrisori.',
                     'dev_info'=>'',
             ), // Endof Component Bionucleo di curvatura MK I
 
              // Component Bionucleo di curvatura MK II
              1=>array(
-                    'name'=>'Bionucleo di curvatura MK II',
+                    'name'=>'Nucleo di curvatura MK II',
                     'resource_1'=>'750',
                     'resource_2'=>'112.5',
                     'resource_3'=>'0',
@@ -247,13 +247,13 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'La versione superiore del bionucleo di curvatura viene utilizzata dalle nostre navi da guerra allo scopo di diffondere la presenza della Confederazione tra le razze imbelli pi&ugrave; velocemente, anche se la sua composizione a base prevalentemente organica prevede l&#146;utilizzo di entusiasti volontari.',
+                    'description'=>'La versione superiore del nucleo di curvatura viene utilizzata dalle nostre navi da guerra allo scopo di diffondere la presenza della Confederazione tra le razze imbelli pi&ugrave; velocemente, anche se la sua composizione a base prevalentemente organica prevede l&#146;utilizzo di entusiasti volontari.',
                     'dev_info'=>'',
             ), // Endof Component Bionucleo di curvatura MK II
 
              // Component Bionucleo di curvatura MK III
              2=>array(
-                    'name'=>'Bionucleo di curvatura MK III',
+                    'name'=>'Nucleo di curvatura MK III',
                     'resource_1'=>'1125',
                     'resource_2'=>'300',
                     'resource_3'=>'75',
@@ -290,11 +290,11 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Questa versione del bionucleo di curvatura viene utilizzata esclusivamente dalle possenti Gor&acute;Taan, allo scopo di compensarne l&#146;eccessiva lentezza. I costi di produzione sono elevati, ma la Confederazione richiede doverosi sacrifici al nostro popolo.',
+                    'description'=>'Questa versione del nucleo di curvatura viene utilizzata esclusivamente dalle possenti Gor&acute;Taan, allo scopo di compensarne l&#146;eccessiva lentezza. I costi di produzione sono elevati, ma la Confederazione richiede doverosi sacrifici al nostro popolo.',
                     'dev_info'=>'',
             ), // Endof Component Bionucleo di curvatura MK III
 
-      'name'=>'Bionucleo di curvatura',
+      'name'=>'Nucleo di curvatura',
       'num'=>'3',
       ), // Endof Category Curvatura
 
@@ -575,7 +575,7 @@ $ship_components=array(
 
              // Component Scudo di fase
              1=>array(
-                    'name'=>'Scudo di fase',
+                    'name'=>'Scudo fasico',
                     'resource_1'=>'1500',
                     'resource_2'=>'75',
                     'resource_3'=>'0',
@@ -612,7 +612,7 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Kurzsprungantrieb: Diese Technologie erm&ouml;glicht es dem Scout Warpspr&uuml;ge innerhalb eines sehr begrenzten Raumes durchzuf&uuml;ren, wodurch er in der Lage ist, gegnerischen Langstreckengeschossen auszuweichen und sich selbst immer in die g&uuml;stigste Feuerposition zu bringen.',
+                    'description'=>'Gli scudi fasici sono progettati in modo tale da modulare le loro fasi e che vi siano sempre almeno 2 &acute;strati&acute; sovrapposti per evitare la penetrazione dei proiettili.',
                     'dev_info'=>'',
             ), // Endof Component Scudo di fase
 
@@ -655,7 +655,7 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
+                    'description'=>'Gli scudi quantici sono uno sviluppo della tecnologia degli scudi tradizionali, qui barriere di energia quantica vengono deflesse dallo scafo della nave per prevenire l&#146;attraversamento del campo difensivo.',
                     'dev_info'=>'',
             ), // Endof Component Scudo quantico
             
@@ -834,7 +834,7 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Die Fluidraum-Sensoren arbeiten ähnlich wie die Fluidraum-Navigation. Sie k&ouml;nnen somit effizienter und mit gr&ouml;ßerer Reichweite scannen, was enorme Vorteile mit sich bringt.',
+                    'description'=>'Sistemi informatici base in dotazione a tutte le navi Breen.',
                     'dev_info'=>'',
             ), // Endof Component Interfaccia Biogenetica
 
@@ -877,7 +877,7 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Die atomaren Sensoren wurden f&uuml;r den Kampf entwickelt. Sie erfassen den genauen Aufbau der Ziele und k&ouml;nnen somit die verwundbaren Stellen aufzeigen. Aber auch beim Forschen sind sie n&uuml;zlich um die genaue Zusammensetzung eines Objektes zu bestimmen.',
+                    'description'=>'Sistemi informatici migliorati in dotazione alle navi Breen di classe media.',
                     'dev_info'=>'',
             ), // Endof Component Interfaccia Biogenetica MK II
 
@@ -920,7 +920,7 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Die erweiterte Schiffsdatenbank optimiert die DatenEertragung <i>innerhalb</i> des Schiffes. Auch sind erweiterte und aktuelle Infos Eer Feindschiffe u.E verfEbar.',
+                    'description'=>'Sistemi informatici avanzati in dotazione alle navi di classe superiore.',
                     'dev_info'=>'',
             ), // Endof Component Interfaccia Biogenetica MK III
 
@@ -963,7 +963,7 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Die erweiterte Schiffsdatenbank optimiert die DatenEertragung <i>innerhalb</i> des Schiffes. Auch sind erweiterte und aktuelle Infos Eer Feindschiffe u.E verfEbar.',
+                    'description'=>'Sistemi informatici estremamente avanzati e veloci disponibili per le navi ammiraglie.',
                     'dev_info'=>'',
             ), // Endof Component Interfaccia Biogenetica MK IV
 
@@ -976,7 +976,7 @@ $ship_components=array(
         6=>array(
              // Component Kampfsimulator MKI
              0=>array(
-                    'name'=>'Kampfsimulator MKI',
+                    'name'=>'Simulatore combattimento MKI',
                     'resource_1'=>'1500',
                     'resource_2'=>'150',
                     'resource_3'=>'0',
@@ -1013,13 +1013,13 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Der Kortikalalarm ist ein Implantat, welches den Piloten eingesetzt wird und sie mit den Schiffssystemen verbindet. Somit werden Sensoreninfos sofort an den Piloten geleitet und die Aktionen laufen schneller ab.',
+                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
                     'dev_info'=>'',
             ), // Endof Component Kortikalalarm
 
              // Component Kampfsimulator MKII
              1=>array(
-                    'name'=>'Kampfsimulator MKII',
+                    'name'=>'Simulatore combattimento MKII',
                     'resource_1'=>'7500',
                     'resource_2'=>'3000',
                     'resource_3'=>'750',
@@ -1056,13 +1056,13 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Die telepatische Kommunikation wird durch ein spezielles Feld verstärkt, sodass auch Kommunikation zwischen Schiffen in weiterer Entfernung erm&ouml;glicht wird. Diese Technik dient zur Verfeinerung von Taktiken sowie zur Aufklärung.',
+                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
                     'dev_info'=>'',
             ), // Endof Component Kortikaler Hypertransiver
 
              // Component Kampfsimulator MKIII
              2=>array(
-                    'name'=>'Kampfsimulator MKIII',
+                    'name'=>'Simulatore combattimento MKIII',
                     'resource_1'=>'2250',
                     'resource_2'=>'300',
                     'resource_3'=>'0',
@@ -1099,12 +1099,12 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Die neurale Regeneration ist ein neu entwickeltes Gerät, dass mit äußerst komplexen Methoden Nervenschäden bei Piloten repariert.  ',
+                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
                     'dev_info'=>'',
             ), // Endof Component Neurale Regeneration
 
               3=>array(
-                    'name'=>'Kampfsimulator MKIV',
+                    'name'=>'Simulatore combattimento MKIV',
                     'resource_1'=>'3000',
                     'resource_2'=>'375',
                     'resource_3'=>'0',
@@ -1141,12 +1141,12 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Die neurale Regeneration ist ein neu entwickeltes Gerät, dass mit äußerst komplexen Methoden Nervenschäden bei Piloten repariert.',
+                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
                     'dev_info'=>'',
             ),
             
             4=>array(
-                    'name'=>'Kampfsimulator MKV',
+                    'name'=>'Simulatore combattimento MKV',
                     'resource_1'=>'250',
                     'resource_2'=>'125',
                     'resource_3'=>'25',
@@ -1183,11 +1183,11 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Die neurale Regeneration ist ein neu entwickeltes Gerät, dass mit äußerst komplexen Methoden Nervenschäden bei Piloten repariert.  ',
+                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
                     'dev_info'=>'',
             ),
             
-      'name'=>'Trainingsraum',
+      'name'=>'Area formazione',
       'num'=>'5',
       ), // Endof Category Trainingsraum
 
@@ -1196,7 +1196,7 @@ $ship_components=array(
         7=>array(
              // Component Fluider Torpedo
              0=>array(
-                    'name'=>'Sensorenstation',
+                    'name'=>'Stazione sensori',
                     'resource_1'=>'2625',
                     'resource_2'=>'300',
                     'resource_3'=>'150',
@@ -1233,13 +1233,13 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Diese Waffe ist besonders effektiv gegen schwere Schiffe.',
+                    'description'=>'Un comune banco di sensori a corto raggio.',
                     'dev_info'=>'',
             ), // Endof Component Fluider Torpedo
 
              // Component Erweiterte Sensoren
              1=>array(
-                    'name'=>'Erweiterte Sensoren',
+                    'name'=>'Sensori avanzati',
                     'resource_1'=>'375',
                     'resource_2'=>'112.5',
                     'resource_3'=>'0',
@@ -1276,13 +1276,13 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Diese Waffe ist besonders effektiv gegen schwere Schiffe.',
+                    'description'=>'Questa tipologia di sensori a medio raggio forniscono dati discretamente accurati.',
                     'dev_info'=>'',
             ), // Endof Component Fluider Torpedo II
 
              // Component Dual Sensorenstation
              2=>array(
-                    'name'=>'Dual Sensorenstation',
+                    'name'=>'Stazione sensori duale',
                     'resource_1'=>'975',
                     'resource_2'=>'225',
                     'resource_3'=>'0',
@@ -1319,13 +1319,13 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Dieses GeschEz feuert einen Strom fluider Plasmateilchen auf das Gegnerschiff. Diese Technologie ist experimentell und kann nur auf den drei Eliteschiffen installiert werden.',
+                    'description'=>'Con questo componente, ogni stazione sensoriale contiene il numero doppio di sensori in grado di elaborare una quantit&agrave; maggiore di informazioni.',
                     'dev_info'=>'',
             ), // Endof Component Fluid-Plasma GeschEz
 
              // Component TiefenraumScaner
              3=>array(
-                    'name'=>'TiefenraumScaner',
+                    'name'=>'Scanner spazio profondo',
                     'resource_1'=>'1275',
                     'resource_2'=>'300',
                     'resource_3'=>'37.5',
@@ -1362,11 +1362,11 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Extreme Feuerkraft kombiniert mit dem besten verfEbaren KElaggregat ergibt diese zerst&ouml;rerische Waffe.',
+                    'description'=>'Questi scanner per lo spazio profondo rappresentano la punta di diamante dei nostri sensori. Aumentano in maniera considerevole la quantit&agravel e l&#146;accuratenzza dei dati acquisiti anche a lunghe distanze.',
                     'dev_info'=>'',
-            ), // Endof Component B-GeschEzphalanx
+            ), // Endof Component
 
-      'name'=>'Wissenschaftssektion',
+      'name'=>'Sezione scientifica',
       'num'=>'4',
       ), // Endof Category Schwere Waffen
 
@@ -1375,7 +1375,7 @@ $ship_components=array(
         8=>array(
              // Component Energieschild
              0=>array(
-                    'name'=>'Energieschild',
+                    'name'=>'Scudo energetico',
                     'resource_1'=>'2625',
                     'resource_2'=>'300',
                     'resource_3'=>'150',
@@ -1412,13 +1412,13 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Die Trägheitsdämpfer verbessern die Flugstabilität durch Generierung eines Trägheitsfeldes, welches die Einwirkung der Gravitationskräfte bei Man&ouml;vern vermindert.',
+                    'description'=>'The inertial dampers improve flight stability by generating an inertial field, which is the influence of gravitational forces in maneuvers reduced.',
                     'dev_info'=>'',
-            ), // Endof Component Trägheitsdämpfer
+            ), // Endof Component
 
              // Component  Mehrphasen EdS
              1=>array(
-                    'name'=>'Mehrphasen EdS',
+                    'name'=>'More phases EdS',
                     'resource_1'=>'2625',
                     'resource_2'=>'300',
                     'resource_3'=>'150',
@@ -1455,13 +1455,13 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Speziell auf die Eliteklasse abgestimmte Felder maximieren die Wendigkeit und Reaktion fE optimale Ergebnisse.',
+                    'description'=>'Especially in the elite class concerted fields maximize the agility and response for optimal results.',
                     'dev_info'=>'',
             ), // Endof Component Tinoide Dämpfer
 
              // Component Bionisches Waffensystem MKI
              2=>array(
-                    'name'=>'Bionisches Waffensystem MKI',
+                    'name'=>'Sistema d&#146;arma bionico  MKI',
                     'resource_1'=>'375',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -1498,13 +1498,13 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Die taktischen Nervenbahnen verbessern die Wahrnehmung der Piloten unserer Schiffe. Somit ist es ein leichtes, Gefahren frEzeitig zu entdecken.',
+                    'description'=>'The tactical nerve pathways to improve the perception of the pilots of our ships. Thus, it is a light, to detect threats early.',
                     'dev_info'=>'',
             ), // Endof Component Taktische Nervenbahnen
 
              // Component Bionisches Waffensystem MKII
              3=>array(
-                    'name'=>'Bionisches Waffensystem MKII',
+                    'name'=>'Sistema d&#146;arma bionico  MKII',
                     'resource_1'=>'19500',
                     'resource_2'=>'11250',
                     'resource_3'=>'6000',
@@ -1541,13 +1541,13 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Die Bioneurale Symbiose verbindet die Nervenbahnen der Piloten 1:1 mit denen des Schiffs. Dadurch wird leichteres Navigieren erm&ouml;glicht, jedoch besteht auf Dauer die Gefahr von Nervenschäden beim Piloten.',
+                    'description'=>'The symbiosis Bioneurale connects the nerves of the pilots 1:1 with those of the ship. This will allow easier navigation, but there is the risk of permanent nerve damage from the pilots.',
                     'dev_info'=>'',
             ), // Endof Component Bioneurale Symbiose
 
-             // Component  Energidämpfungslauncher
+             // Component  Energy damping Launcher
              4=>array(
-                    'name'=>'Energid&auml;mpfungslauncher',
+                    'name'=>'Energy damping Launcher',
                     'resource_1'=>'7500',
                     'resource_2'=>'3000',
                     'resource_3'=>'750',
@@ -1584,9 +1584,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Durch Verwendung bioneuraler Leitkomponenten konnte die Effektivität erneut verbessert werden, ohne den Energieverbrauch zu erh&ouml;hen. Sie sind speziell fE die mittelklasse konzipiert.',
+                    'description'=>'By using bioneuraler control components could again be improved without the energy consumption to increase. They are specifically designed for the midium class.',
                     'dev_info'=>'',
-            ), // Endof Component Bioneurale Trägheitsdämpfer
+            ), // Endof Component Energy damping Launcher
 
              // Component Erw.Tarnvorrichtung
              5=>array(
@@ -1627,14 +1627,14 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Das taktische Nebensystem ist eigentlich eine einfache Zielerweiterung. Jedoch greift es auf Daten aus der Datenbank zurEk, was eine gewaltige Steigerung der Feuerkraft zur Folge hat.<br><tt>Ben&ouml;tigt: Erweiterte Schiffsdatenbank</tt>',
+                    'description'=>'In addition to the tactical system is actually an easy target enlargement. However, it draws on data from the database, which is a huge increase in firepower to follow.<br><tt>Requires: Advanced ship database</tt>',
                     'dev_info'=>'',
             ), // Endof Component Taktisches Nebensystem
 
             
-      'name'=>' Experimentelles',
+      'name'=>' Sperimentale',
       'num'=>'6',
-      ), // Endof Category  Experimentelles
+      ), // Endof Category  Experimental
 
 
 
