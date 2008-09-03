@@ -305,9 +305,9 @@ define ("ENG_TEXT53", 'No alliance tag indicated');
 
 define ("ENG_TEXT54", 'There is already an alliance with this name/tag');
 
-define ("ENG_TEXT55", 'has the alliance');
+define ("ENG_TEXT55", 'has founded the alliance');
 
-define ("ENG_TEXT56", 'founded');
+define ("ENG_TEXT56", '');
 
 define ("ENG_TEXT57", 'Members:');
 
@@ -479,9 +479,9 @@ define ("ITA_TEXT53", 'Non esistono alleanza con la tag indicata');
 
 define ("ITA_TEXT54", 'Esiste gi&agrave un\'alleanza col nome/tag scelto');
 
-define ("ITA_TEXT55", 'ha l\'alleanza');
+define ("ITA_TEXT55", 'ha fondato l#&146;alleanza');
 
-define ("ITA_TEXT56", 'fondata');
+define ("ITA_TEXT56", '');
 
 define ("ITA_TEXT57", 'Membri');
 
