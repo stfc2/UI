@@ -132,7 +132,7 @@ $PLANETS_TEXT = array(
         1 => 'Possibile',
         2 => 'Media presenza di tutte le risorse',
         3 => 'I pianeti di questa classe sono in tutto simili alla Terra. La loro atmosfera &egrave; ricca di ossigeno e la superfice ha abbondanti riserve d&#146;acqua. Ideale per la vita.',
-        4 => 'Terra, Vulcan, Quo&acute;nos, Romulus, Bajor, Cardassia, ...'
+        4 => 'Terra, Vulcan, Qo&acute;noS, Romulus, Bajor, Cardassia, ...'
     ),
     
     'n' => array(
