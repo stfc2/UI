@@ -635,7 +635,7 @@ switch($portal_action) {
 
         
 
-        if((time() - 15) < $game->player['last_shoutbox_post']) {
+        if($game->player['user_auth_level'] != STGC_DEVELOPER && (time() - 15) < $game->player['last_shoutbox_post']) {
 
             $sql = 'UPDATE user
 
