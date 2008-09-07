@@ -59,12 +59,13 @@ function ColoMetRestriction($template) // Verifica di unicità delle colonizzatr
 	if(!($template['ship_torso'] == 2 && $template['ship_class'] == 0))
 		return 1;
 
+	if($game->player['user_max_colo'] == 0) return 1;
+
 	$sql = 'SELECT COUNT(*) AS conteggio FROM ship_templates, ships WHERE ship_templates.id = ships.template_id
 				AND ship_templates.ship_torso = 2 AND ship_templates.ship_class = 0
 				AND ships.user_id = '.$game->player['user_id'];
 
-	$risultato = $db->queryrow($sql);
-	if($risultato['conteggio']  > 0)	return 0;
+	$risultato = (int)$db->queryrow($sql);
 
 	$sql = 'SELECT COUNT(*) AS conteggio FROM scheduler_shipbuild, ship_templates, planets WHERE scheduler_shipbuild.ship_type = ship_templates.id
 				AND scheduler_shipbuild.planet_id = planets.planet_id
@@ -72,8 +73,9 @@ function ColoMetRestriction($template) // Verifica di unicità delle colonizzatr
 				AND ship_class = 0
 				AND planets.planet_owner = '.$game->player['user_id'];
 
-	$risultato = $db->queryrow($sql);
-	if($risultato['conteggio']  > 0) 	return 0;
+	$risultato += (int)$db->queryrow($sql);
+
+	if($risultato >= $game->player['user_max_colo']) return 0;
 
 	return 1;
 }
@@ -235,10 +237,10 @@ if ($template['min_unit_3']!=0) $num[8]=floor($planet['unit_3']/$template['min_u
 
 if ($template['min_unit_4']!=0) $num[9]=floor($planet['unit_4']/$template['min_unit_4']); else $num[9]=9999;
 
-// Non si possono costruire più di 1 colonizzatrice alla volta
-if ($template['ship_torso'] == 2 && $template['ship_class'] == 0 && min($num) > 0)
-	return 1;
-
+// Non si possono costruire piu' di user_max_colo colonizzatrice alla volta
+if($template['ship_torso'] == 2 && $template['ship_class'] == 0) {
+	if (($game->player['user_max_colo'] != 0) && (min($num) > $game->player['user_max_colo']))	return (int)$game->player['user_max_colo'];
+}
 return min($num);
 
 }
@@ -529,9 +531,10 @@ $db->lock('scheduler_shipbuild', 'ship_templates', 'ship_ccategory', 'ship_compo
 $game->init_player();
 
 
-// Non si possono avere più di 1 colonizzatrice alla volta
-if ($template['ship_torso'] == 2 && $template['ship_class'] == 0 && $_REQUEST['count'] >1)
-	$_REQUEST['count'] = 1;
+// Non si possono avere più di user_max_colo colonizzatrice alla volta
+if($template['ship_torso'] == 2 && $template['ship_class'] == 0) {
+	if (($game->player['user_max_colo'] != 0) && ($_REQUEST['count'] > $game->player['user_max_colo']))	$_REQUEST['count'] = $game->player['user_max_colo'];
+}
 
 if (CanAffordTemplate($template,$game->player,$game->planet)>=$_REQUEST['count'] && CanAffordTemplateUnits($_REQUEST['count1'],$_REQUEST['count2'],$_REQUEST['count3'],$_REQUEST['count4'],$_REQUEST['count'],$template,$game->planet) && TemplateMetRequirements($template))
 
