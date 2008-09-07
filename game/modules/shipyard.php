@@ -359,9 +359,11 @@ $text.='</td></tr></table></td></tr></table>';
 
 
 
-$text=str_replace("'",'´',$text);
+//$text=str_replace("'",'&acute;',$text);
 
-$text=str_replace('"','´',$text);
+$text=addslashes($text);
+
+$text=str_replace('"','&quot;',$text);
 
 return $text;
 
@@ -1042,7 +1044,7 @@ $build_text='&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return
 }
 
 
-$game->out('<tr height=15><td width=200><b><a href="'.parse_link('a=ship_template&view=compare&ship0='.$template['id']).'" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.str_replace("'",'´',$template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a></b></td><td>'.(Zeit($template['buildtime']*TICK_DURATION)).'</td><td>');
+$game->out('<tr height=15><td width=200><b><a href="'.parse_link('a=ship_template&view=compare&ship0='.$template['id']).'" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a></b></td><td>'.(Zeit($template['buildtime']*TICK_DURATION)).'</td><td>');
 
 
 $game->out('<form name="send'.$template['id'].'" method="post" action="index.php?a=shipyard&a2=start_build&id='.$template['id'].'" onSubmit="return document.send'.$template['id'].'.submit.disabled = true;"><input type="text" name="count" size="4" class="field_nosize" value="'.$maxnum.'">&nbsp;&nbsp;&nbsp;'.$build_text.'</td></tr></form>');

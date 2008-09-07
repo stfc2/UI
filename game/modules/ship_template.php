@@ -35,7 +35,7 @@ error_reporting(E_ERROR);
     $STEMPLATE_MODULES = array(
         'view' => constant($game->sprache("TEXT0")),
         'create' => constant($game->sprache("TEXT1")),
-		'compare' => constant($game->sprache("TEXT2")),
+        'compare' => constant($game->sprache("TEXT2")),
     );
 
 $module = (!empty($_GET['view'])) ? $_GET['view'] : 'view';
@@ -213,7 +213,7 @@ for ($t=0; $t<3; $t++)
 
 			for ($tt=0; $tt<10; $tt++)
 			{
-if ($template['component_'.($tt+1)]>=0)
+	if ($template['component_'.($tt+1)]>=0)
 	{
 		$game->out('-&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($ship_components[$game->player['user_race']][$tt][$template['component_'.($tt+1)]]).'\', CAPTION, \''.$ship_components[$game->player['user_race']][$tt][$template['component_'.($tt+1)]]['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$ship_components[$game->player['user_race']][$tt][$template['component_'.($tt+1)]]['name'].'</a><br>');
 	} else $game->out(constant($game->sprache("TEXT27")));
@@ -1197,8 +1197,8 @@ $_POST[7]=$_POST['7']=(int)$_POST['7'];
 $_POST[8]=$_POST['8']=(int)$_POST['8'];
 $_POST[9]=$_POST['9']=(int)$_POST['9'];
 
-$_POST['ship_name']=addslashes(htmlspecialchars($_POST['ship_name']));
-$_POST['ship_description']=addslashes(htmlspecialchars($_POST['ship_description']));
+$_POST['ship_name']=htmlspecialchars($_POST['ship_name']);
+$_POST['ship_description']=htmlspecialchars($_POST['ship_description']);
 
 $_POST['ship_torso']=(int)$_POST['ship_torso'];
 if (GlobalTorsoReq($_POST['ship_torso'])>$game->player['user_points']) exit(0);

@@ -48,7 +48,7 @@ return $free_units;
 $change_error='';
 if (isset($_REQUEST['exec_namechange']) && isset($_REQUEST['planet_name']) && !empty($_REQUEST['planet_name']) && isset($_REQUEST['planet_altname']))
 {
-    for ($count=0; $count < strlen($_REQUEST['planet_name']); $count++) {
+/*    for ($count=0; $count < strlen($_REQUEST['planet_name']); $count++) {
         $val=ord( (substr($_REQUEST['planet_name'], $count, 1)) );
         if (($val>21 && $val<28) || ($val>93 && $val<97) || $val>122 || $val==92)
         {
@@ -61,10 +61,10 @@ if (isset($_REQUEST['exec_namechange']) && isset($_REQUEST['planet_name']) && !e
         {
             $change_error='<br><font color=red>'.constant($game->sprache("TEXT2")).'</font>';
         }
-    }
+    }*/
     if (empty($change_error))
     {
-        $db->query('UPDATE planets SET planet_name="'.htmlspecialchars(addslashes($_REQUEST['planet_name'])).'", planet_altname="'.htmlspecialchars(addslashes($_REQUEST['planet_altname'])).'" WHERE planet_id= "'.$game->planet['planet_id'].'"');
+        $db->query('UPDATE planets SET planet_name="'.htmlspecialchars($_REQUEST['planet_name']).'", planet_altname="'.htmlspecialchars($_REQUEST['planet_altname']).'" WHERE planet_id= "'.$game->planet['planet_id'].'"');
         redirect('a=headquarter');
     }
 }
