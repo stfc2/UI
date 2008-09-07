@@ -65,7 +65,8 @@ function ColoMetRestriction($template) // Verifica di unicità delle colonizzatr
 				AND ship_templates.ship_torso = 2 AND ship_templates.ship_class = 0
 				AND ships.user_id = '.$game->player['user_id'];
 
-	$risultato = (int)$db->queryrow($sql);
+	$_temp = $db->queryrow($sql);
+	$risultato = $_temp['conteggio'];
 
 	$sql = 'SELECT COUNT(*) AS conteggio FROM scheduler_shipbuild, ship_templates, planets WHERE scheduler_shipbuild.ship_type = ship_templates.id
 				AND scheduler_shipbuild.planet_id = planets.planet_id
@@ -73,8 +74,9 @@ function ColoMetRestriction($template) // Verifica di unicità delle colonizzatr
 				AND ship_class = 0
 				AND planets.planet_owner = '.$game->player['user_id'];
 
-	$risultato += (int)$db->queryrow($sql);
-
+	$_temp = $db->queryrow($sql);
+	$risultato += $_temp['conteggio'];
+	
 	if($risultato >= $game->player['user_max_colo']) return 0;
 
 	return 1;
