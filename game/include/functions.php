@@ -1065,7 +1065,7 @@ class game {
 		{
 			// 21/02/08 - AC: Check if alliance homepage is empty
 			if($alliance_hp['hp'] == '')
-				$alliance_hp['hp'] = 'http://stfc.nonsolotaku.it/game/index.php?a=alliance_board'; // <- temp solution!!
+				$alliance_hp['hp'] = 'http://stfc.nonsolotaku.it/game2/index.php?a=alliance_board'; // <- temp solution!!
 			$pos1 = stripos($alliance_hp['hp'], "http://");
 			if($pos1!==false)
 			{
