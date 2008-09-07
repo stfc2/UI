@@ -139,6 +139,8 @@ define ("GER_TEXT56", 'Der Planet konnte nicht kolonisiert, da er nicht unbewohn
 
 define ("GER_TEXT57", 'Der Planet konnte nicht kolonisiert werden, da das beim Start gew&auml;hlte Kolonisationsschiff nicht mehr verf&uuml;gbar war.');
 
+define ("GER_TEXT57a", 'Der Pianet konnte nicht kolonisiert werden, da die maximale Anzahl von kolonizable Planeten erreicht wurde.');
+
 define ("GER_TEXT58", 'Der Planet wurde erfolgreich kolonisiert.');
 
 define ("GER_TEXT59", 'Dein Flottenverband hat den Zielplaneten erreicht, die Ladung auf den Planeten gebeamt und befindet sich wieder auf dem R&uuml;ckflug.');
@@ -432,9 +434,11 @@ define ("ENG_TEXT54", 'Ship type');
 
 define ("ENG_TEXT55", 'Number');
 
-define ("ENG_TEXT56", 'The planet could not be colonized, because it was not uninhabited.');
+define ("ENG_TEXT56", 'The planet could not be colonized because it was not uninhabited.');
 
-define ("ENG_TEXT57", 'The planet could not be colonized, because the Colonization ship selected when starting was no longer available.');
+define ("ENG_TEXT57", 'The planet could not be colonized because the Colonization ship selected when starting was no longer available.');
+
+define ("ENG_TEXT57a", 'The pianet could not be colonized because the maximum number of colonizable planets was reached.');
 
 define ("ENG_TEXT58", 'The planet has been successfully colonized.');
 
@@ -732,6 +736,8 @@ define ("ITA_TEXT55", 'Numero');
 define ("ITA_TEXT56", 'Il pianeta non &egrave; stato colonizzato perch&eacute; non era disabitato.');
 
 define ("ITA_TEXT57", 'Il pianeta non &egrave; stato colonizzato perch&eacute; la nave colonizzatrice selezionata all&#146;avvio non &egrave; pi&ugrave; disponibile.');
+
+define ("ITA_TEXT57a", 'Il pianeta non &egrave; stato colonizzato perch&eacute; &egrave; stato raggiunto il limite massimo di pianeti colonizzabili.');
 
 define ("ITA_TEXT58", 'Il pianeta &egrave; stato colonizzato con successo.');
 

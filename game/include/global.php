@@ -237,6 +237,9 @@ define ('USER_CHOOSE_QUADRANT', 1);
 // User start with a whole system
 define ('USER_WHOLE_SYSTEM', 0);
 
+// User max number colonizable planets
+define ('USER_MAX_PLANETS', 40);
+
 
 // Alliances Names
 define ('ALLIANCE_UFP_NAME', 'United Federation of Planets');

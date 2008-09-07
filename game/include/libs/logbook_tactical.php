@@ -412,6 +412,7 @@ function display_logbook($log) {
             switch($log['log_data'][8]) {
                 case -1: $game->out(constant($game->sprache("TEXT56"))); break;
                 case -2: $game->out(constant($game->sprache("TEXT57"))); break;
+                case -3: $game->out(constant($game->sprache("TEXT57a"))); break;
                 case 1: $game->out(constant($game->sprache("TEXT58"))); break;
                 default: $game->out('Illegal status code - report this as a bug'); break;
             }
