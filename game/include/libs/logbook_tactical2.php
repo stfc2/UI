@@ -655,7 +655,7 @@ function display_logbook($log) {
                             else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT93")));
                         }
                     break;
-                    
+
                     case 54:
                         if( ($log['log_data'][8] == CWIN_ATTACKER) && (!$log['log_data'][9]) ) {
                             $game->out(constant($game->sprache("TEXT92")));
@@ -663,36 +663,36 @@ function display_logbook($log) {
                         elseif( ($log['log_data'][8] == CWIN_DEFENDER) && ($log['log_data'][9]) ) {
                             $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a>, '.constant($game->sprache("TEXT83")));
                         }
-                        
+
                         switch($log['log_data'][17]) {
-                            // Keine planetaren Waffen waren verf�gbar
+                            // No planetary weapons were available
                             case -3:
                                 if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT94")));
                                 else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT93")));
                             break;
-                            
+
                             case -2:
                                 if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT95")));
                                 else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT96")));
                             break;
-                            
+
                             case -1:
                                 if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT97")));
                                 else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT93")));
                             break;
-                            
+
                             case 1:
                                 if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT98")));
                                 else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT99")));
                             break;
-                            
+
                             case 2:
                                 if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT100")));
                                 else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT101")));
                             break;
                         }
                     break;
-                    
+
                     case 55:
                         if( ($log['log_data'][8] == CWIN_ATTACKER) && (!$log['log_data'][9]) ) {
                             $game->out(constant($game->sprache("TEXT92")));
@@ -702,19 +702,25 @@ function display_logbook($log) {
                         }
                         
                         switch($log['log_data'][17]) {
-                            // Kolonieschiff nicht gefunden
+                            // Max number of planets reached
+                            case -3:
+                                if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT103a")));
+                                else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT106a")));
+                            break;
+
+                            // Colonization ship not found
                             case -2:
                                 if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT102")));
                                 else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT93")));
                             break;
-                            
-                            // Angreifer hat Bodenkampf verloren
+
+                            // Attacker has lost ground battle
                             case -1:
                                 if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT103")));
                                 else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT104")));
                             break;
-                            
-                            // Kolonisation war erfolgreich
+
+                            // Colonization was successfull
                             case 1:
                                 if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT105")));
                                 else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT106")));

@@ -233,11 +233,15 @@ define ("GER_TEXT102", 'Dein Flottenverband hat die gegnerischen Streitkr&auml;f
 
 define ("GER_TEXT103", 'Dein Flottenverband hat die gegnerischen Streitkr&auml;fte angegriffen und komplett zerst&ouml;rt. In dem darauffolgenden Bodenkampf konnten die gegnerischen Streitkr&auml;fte jedoch nicht &uuml;berw&auml;ltigt werden.');
 
+define ("GER_TEXT103a", 'Dein Flottenverband hat die gegnerischen Streitkr&auml;fte angegriffen und komplett zerst&ouml;rt. Allerdings sind die folgenden Battle Ground hat nicht stattgefunden, da Sie hat die maximal zul&auml;ssige Limit von Planeten geh&ouml;rt.');
+
 define ("GER_TEXT104", 'hat deine Streitkr&auml;fte im Orbit komplett zerst&ouml;rt. In dem darauffolgenden Bodenkampf konnten deine Einheiten eine &Uuml;bernahme durch feindliche Truppen verhindern.');
 
 define ("GER_TEXT105", 'Dein Flottenverband hat die gegnerischen Streitkr&auml;fte angegriffen und komplett zerst&ouml;rt. In dem darauffolgenden Bodenkampf haben deine Streitkr&auml;fte die Kontrolle &uuml;ber alle planetaren Einrichtungen gewinnen k&ouml;nnen, so dass der Planet nun unter deiner Kontrolle steht.');
 
 define ("GER_TEXT106", 'hat deine Streitkr&auml;fte im Orbit komplett zerst&ouml;rt. In dem darauffolgenden Bodenkampf wurden deine Einheiten von den feindlichen Truppen vernichtet, so dass diese nun die Kontrolle &uuml;ber den Planeten haben.');
+
+define ("GER_TEXT106a", 'hat deine Streitkr&auml;fte im Orbit komplett zerst&ouml;rt. Aber die folgenden Schlacht Boden hat nicht stattgefunden, da hat er erreicht die maximale Anzahl der im Besitz Planeten.');
 
 define ("GER_TEXT107", '<b>Angreifende Flotten</b><br><i>Keine angreifenden Flotten -- Bug, bitte melden</i><br><br>');
 
@@ -532,11 +536,15 @@ define ("ENG_TEXT102", 'Your naval force has attacked and completely destroyed t
 
 define ("ENG_TEXT103", 'Your naval force has attacked and completely destroyed the opposing armed forces. However, in the following ground battle the opposing armed forces could not become overpowers.');
 
+define ("ENG_TEXT103a", 'Your naval force has attacked and completely destroyed the opposing armed forces. However, the following ground battle has not taken place, since you has reached the maximum number of colonizable planets.');
+
 define ("ENG_TEXT104", 'has destroyed completely your armed forces in the orbit. However in the following ground battle your units prevented an assumption by the hostile troops.');
 
 define ("ENG_TEXT105", 'Your naval force attacked and completely destroyed the opposing armed forces. In the following ground battle your armed forces taken the control about all planetary equipments, so that the planet stands now under your control.');
 
 define ("ENG_TEXT106", 'has destroyed completely your armed forces in the orbit. In the following ground battle your units were destroyed by the hostile troops, so that these have now the control of the planet.');
+
+define ("ENG_TEXT106a", 'has destroyed completely your armed forces in the orbit. But the following ground battle has not taken place since he has reached the maximum number of colonizable planets.');
 
 define ("ENG_TEXT107", '<b>Attacking fleets</b><br><i>No attacking fleets -- Bug, please report!</i><br><br>');
 
@@ -829,13 +837,17 @@ define ("ITA_TEXT101", 'ha continuato il bombardamento della superficie.');
 
 define ("ITA_TEXT102", 'Le tue forze navali hanno attaccato e distrutto completamente le forze avversarie. Tuttavia, la nave colonizzatrice da impiegare per l&#146;invasione non era pi&ugrave; presente - probabilmente persa durante lo scontro.');
 
-define ("ITA_TEXT103", 'Le tue forze navali hanno attaccato e distrutto completamente le forze opposte. Tuttavia, nella conseguente battaglia a terra, le forze avversarie non sono state battute.');
+define ("ITA_TEXT103", 'Le tue forze navali hanno attaccato e distrutto completamente le forze avversarie. Tuttavia, nella conseguente battaglia a terra, le forze avversarie non sono state battute.');
+
+define ("ITA_TEXT103a", 'Le tue forze navali hanno attaccato e distrutto completamente le forze avversarie. Tuttavia, la conseguente battaglia a terra non ha avuto luogo, poich&eacute; &egrave; stato raggiunto il limite massimo di pianeti colonizzabili.');
 
 define ("ITA_TEXT104", 'ha distrutto completamente le tue forze in orbita. Tuttavia, nella conseguente battaglia a terra, le tue unit&agrave; hanno impedito l&#146;invasione del pianeta da parte delle truppe ostili.');
 
 define ("ITA_TEXT105", 'Le tue forze navali hanno attaccato e distrutto completamente le forze opposte. Nella conseguente battaglia a terra hanno preso il controllo di tutte le strutture presenti, prendendo possesso del pianeta.');
 
 define ("ITA_TEXT106", 'ha completamente distrutto le tue forze in orbita. Nella conseguente battaglia a terra le tue unit&agrave; sono state battute dalle truppe ostili ed ora queste hanno assunto il controllo del pianeta.');
+
+define ("ITA_TEXT106a", 'ha completamente distrutto le tue forze in orbita. Ma la conseguente battaglia a terra non ha avuto luogo poich&eacute; egli ha raggiunto il limite massimo di pianeti colonizzabili.');
 
 define ("ITA_TEXT107", '<b>Flotte in attacco</b><br><i>Nessuna flotta in attacco -- Bug, per favore segnalare!</i><br><br>');
 
