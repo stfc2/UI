@@ -46,6 +46,8 @@ Al momento non sei autenticato.<br>Per accedere a questa sezione, &egrave; neces
 
   <tr><td colspan=2>'.$message.'</td></tr>
 
+  <tr><td width="25%">Galassia:</td><td width="45%"><select name="galaxy"><option value="0" selected="selected">'.GALAXY1_NAME.'</option> !--><option value="1">'.GALAXY2_NAME.'</option> !--></select></td><td></td></tr>
+
   <tr><td width="25%">Nome utente:</td><td width="45%"><input style="width: 125px;" type="text" name="name" value="'.$_POST['name'].'"></td><td></td></tr>
 
   <tr><td width="25%">Password:</td><td width="45%"><input style="width: 125px;" type="password" name="password" value=""></td><td></td></tr>
@@ -97,14 +99,25 @@ function do_login()
 
 {
 
-global $db;
+global $db,$db2;
 
-    if(empty($_POST['name']) || empty($_POST['password'])) {
+    if(!isset($_POST['galaxy']) || empty($_POST['name']) || empty($_POST['password'])) {
 
         display_login('Per favore compila tutti i campi'); return 1;
 
     }
 
+
+    $galaxy = (int)$_POST['galaxy'];
+    switch($galaxy)
+    {
+        case 0:
+            $mydb = $db;
+        break;
+        case 1:
+            $mydb = $db2;
+        break;
+    }
 
 
     $pass = md5($_POST['password']);
@@ -119,7 +132,7 @@ global $db;
 
 
 
-    if(($login_user = $db->queryrow($sql)) === false) {
+    if(($login_user = $mydb->queryrow($sql)) === false) {
 
         display_login('Impossibile connettersi al database');
 
@@ -137,6 +150,7 @@ global $db;
 
     $cookie_data = array('id' => $login_user['user_id']);
 
+    $cookie_data['galaxy'] = $galaxy;
 
 
     if($login_user['user_password'] == $pass) {

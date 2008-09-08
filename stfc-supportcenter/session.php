@@ -41,6 +41,12 @@
 
 
 
+    if(!isset($cookie_data['galaxy'])) {
+       return;
+    }
+
+
+
     if(empty($cookie_data['id'])) {
 
        return;
@@ -98,6 +104,7 @@
 
 
     $user=$player_data;
+    $user['galaxy'] = $cookie_data['galaxy'];
 
     unset($player_data);
 ?>
