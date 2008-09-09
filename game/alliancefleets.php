@@ -128,18 +128,30 @@ if (($handle = @fopen ($image_url, "rb"))!=true)
 
 	$grid=imagecolorallocatealpha($im, 64, 64, 64,0);
 	$grid2=imagecolorallocatealpha($im, 128, 128, 128,0);
+	$grid3=imagecolorallocatealpha($im, 96, 96, 96,0);
 
 	if ($size>2)
 	{
 		for ($t=0; $t<=162;$t++)
 		{
-			imageline($im,0,$t*$size,162*$size,$t*$size,$grid);
-			imageline($im,$t*$size,0,$t*$size,162*$size,$grid);
+			// Systems grid
+			if($t == 0 || $t % 9)
+			{
+				imageline($im,0,$t*$size,162*$size,$t*$size,$grid);
+				imageline($im,$t*$size,0,$t*$size,162*$size,$grid);
+			}
+			// Sectors grid is a little brighter
+			else
+			{
+				imageline($im,0,$t*$size,162*$size,$t*$size,$grid3);
+				imageline($im,$t*$size,0,$t*$size,162*$size,$grid3);
+			}
 		}
 	}
 
-	imageline($im,0,82*$size,162*$size,82*$size,$grid2);
-	imageline($im,82*$size,0,82*$size,162*$size,$grid2);
+	// Quadrant grid
+	imageline($im,0,81*$size,162*$size,81*$size,$grid2);
+	imageline($im,81*$size,0,81*$size,162*$size,$grid2);
 
 
 	// Read ALL starsystems from the DB
@@ -182,20 +194,20 @@ if (($handle = @fopen ($image_url, "rb"))!=true)
 		// Quadrant coordinates
 		$system['sector_id']--;
 
-		$px_x=82*$size;
-		$px_y=82*$size;
+		$px_x=81*$size;
+		$px_y=81*$size;
 		$tmp=$system['sector_id']-243;
 
 		if ($system['sector_id']<243)
 		{
 			$px_x=0;
-			$px_y=82*$size;
+			$px_y=81*$size;
 			$tmp=$system['sector_id']-162;
 		}
 
 		if ($system['sector_id']<162)
 		{
-			$px_x=82*$size;
+			$px_x=81*$size;
 			$px_y=0;
 			$tmp=$system['sector_id']-81;
 		}
