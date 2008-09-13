@@ -136,18 +136,30 @@ $color[5]=imagecolorallocatealpha($im, 255, 0, 0,20);
 
 $grid=imagecolorallocatealpha($im, 64, 64, 64,0);
 $grid2=imagecolorallocatealpha($im, 128, 128, 128,0);
+$grid3=imagecolorallocatealpha($im, 96, 96, 96,0);
 
 if ($size>2)
 {
-for ($t=0; $t<=162;$t++)
-{
-imageline($im,0,$t*$size,162*$size,$t*$size,$grid);
-imageline($im,$t*$size,0,$t*$size,162*$size,$grid);
-}
+	for ($t=0; $t<=162;$t++)
+	{
+		// Systems grid
+		if($t == 0 || $t % 9)
+		{
+			imageline($im,0,$t*$size,162*$size,$t*$size,$grid);
+			imageline($im,$t*$size,0,$t*$size,162*$size,$grid);
+		}
+		// Sectors grid is a little brighter
+		else
+		{
+			imageline($im,0,$t*$size,162*$size,$t*$size,$grid3);
+			imageline($im,$t*$size,0,$t*$size,162*$size,$grid3);
+		}
+	}
 }
 
-imageline($im,0,82*$size,162*$size,82*$size,$grid2);
-imageline($im,82*$size,0,82*$size,162*$size,$grid2);
+// Quadrant grid
+imageline($im,0,81*$size,162*$size,81*$size,$grid2);
+imageline($im,81*$size,0,81*$size,162*$size,$grid2);
 
 
 
@@ -182,20 +194,20 @@ $system=$glob_systems[$planet['system_id']];
 // Quadrant coordinates
 $system['sector_id']--;
 
-$px_x=82*$size;
-$px_y=82*$size;
+$px_x=81*$size;
+$px_y=81*$size;
 $tmp=$system['sector_id']-243;
 
 if ($system['sector_id']<243)
 {
 $px_x=0;
-$px_y=82*$size;
+$px_y=81*$size;
 $tmp=$system['sector_id']-162;
 }
 
 if ($system['sector_id']<162)
 {
-$px_x=82*$size;
+$px_x=81*$size;
 $px_y=0;
 $tmp=$system['sector_id']-81;
 }
@@ -229,8 +241,8 @@ $px_y+=$pos_y*$size*9;
 $px_x+=($system['system_x'] - 1)*$size+1;
 $px_y+=($system['system_y'] - 1)*$size+1;
 
-if ($size>2)	
-{	
+if ($size>2)
+{
 imagefilledrectangle ($im, $px_x,$px_y, $px_x+$size-2, $px_y+$size-2, $color[5]);
 $map_data.='<area href="'.$config['game_url'].'/game2/index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.$px_x.','.$px_y.', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$system['system_name'].'">
 ';
@@ -314,8 +326,8 @@ echo'<html><body bgcolor="#000000" text="#DDDDDD"  background="'.$config['game_u
 
 </body></html>';
 
-	
-	
+
+
 }
 
 $db->close();
