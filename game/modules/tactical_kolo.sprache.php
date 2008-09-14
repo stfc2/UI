@@ -32,6 +32,8 @@ define ("GER_TEXT3", 'Spieler Info');
 
 define ("GER_TEXT4", 'Kolonisierung');
 
+define ("GER_TEXT4a", 'Bekannte Systeme');
+
 define ("GER_TEXT5", 'Sensoren');
 
 
@@ -46,6 +48,8 @@ define ("ENG_TEXT3", 'Player info');
 
 define ("ENG_TEXT4", 'Colonization');
 
+define ("ENG_TEXT4a", 'Known systems');
+
 define ("ENG_TEXT5", 'Sensors');
 
 //Italiano
@@ -58,6 +62,8 @@ define ("ITA_TEXT2", 'Movimento Navi');
 define ("ITA_TEXT3", 'Informazioni Giocatore');
 
 define ("ITA_TEXT4", 'Colonizzazione');
+
+define ("ITA_TEXT4a", 'Sistemi conosciuti');
 
 define ("ITA_TEXT5", 'Sensori');
 
