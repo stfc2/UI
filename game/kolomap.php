@@ -43,6 +43,21 @@ fclose($handle);
 
 // create sql-object for db-connection
 $db = new sql($config['server'].":".$config['port'], $config['game_database'], $config['user'], $config['password']); // create sql-object for db-connection
+
+// Load player parameters 
+$game = new game();
+
+$game->load_config();
+$ACTUAL_TICK = $NEXT_TICK = 0;
+
+$ACTUAL_TICK = $game->config['tick_id'];
+$NEXT_TICK = $game->config['tick_time'] - time();//$game->TIME;
+$LAST_TICK_TIME = $game->config['tick_time'] - TICK_DURATION * 60;
+
+include('include/session.php');
+// load player parameters
+
+// Check map size request
 if ($_GET['size']<1) $_GET['size']=1;
 if ($_GET['size']>8) $_GET['size']=8;
 
@@ -80,15 +95,31 @@ if (file_exists($image_url))
 	}
 }
 
+// Localize strings
+switch($game->player['language'])
+{
+	case 'GER':
+		$title = 'Karte von kolonisierbar Planeten:';
+		$created = 'Erstellt der ';
+	break;
+	case 'ITA':
+		$title = 'Mappa pianeti colonizzabili:';
+		$created = 'Creata il ';
+	break;
+	default:
+		$title = 'Map of colonizable planets:';
+		$created = 'Created at ';
+	break;
+}
 
 
 
 // Generate new picture?: 
 if (($handle = @fopen ($image_url, "rb"))!=true)
 {
-	
+
 $map_data='<map name="detail_map">';
-	
+
 $im = imagecreatetruecolor(162*$size, 162*$size);
 imagecolorallocatealpha($im, 0, 0, 0,0);
 $color[1]=imagecolorallocatealpha($im, 90, 64, 64,0);
@@ -215,11 +246,11 @@ else $size2=$size-2;
 
 if ($size>1)
 {
-imagestring ($im, $size2,15,162*$size-12-$size,'Created at '.date('d.m.y H:i', time()), $color[4]);
+imagestring ($im, $size2,15,162*$size-12-$size,$created.date('d.m.y H:i', time()), $color[4]);
 }
 else
 {
-imagestring ($im, $size2,5,162*$size-15,'Created at', $color[4]);
+imagestring ($im, $size2,5,162*$size-15,$created, $color[4]);
 imagestring ($im, $size2,5,162*$size-8,date('d.m.y H:i', time()), $color[4]);
 }
 
@@ -271,7 +302,7 @@ fclose($handle);
 }
 
 echo'<html><body bgcolor="#000000" text="#DDDDDD"  background="'.$config['game_url'].'/gfx/bg_stars1.gif"><center>
-<span style="font-family: Verdana; font-size: 15px;"><b>Galaxy map of the player:</b></span><br>
+<span style="font-family: Verdana; font-size: 15px;"><b>'.$title.'</b></span><br>
 <img border=0 usemap="#detail_map" src="'.$image_url.'" >
 
 '.$map_data.'
@@ -279,7 +310,7 @@ echo'<html><body bgcolor="#000000" text="#DDDDDD"  background="'.$config['game_u
 </body></html>';
 
 
-	
+
 }
 
 $db->close();
