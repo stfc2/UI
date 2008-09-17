@@ -46,9 +46,9 @@ $main_html='<center><span class="caption">Credits</span></center>
 
 </td></tr></table>
 <br>
-<span style="font-size:10pt">Star Trek is a registered trademark of Paramount Pictures.<br>
+<span style="font-size:10pt">Star Trek&trade; is a registered trademark of Paramount Pictures.<br>
 This site is strictly non-profit.<br>No copyright infringement is intended.<br>
-All other Content is copyrighted by the siteowner,<br>unless otherwise noted.<br>©2006-2008</span>
+All other Content is copyrighted by the siteowner,<br>unless otherwise noted.<br>&copy;2006-2008</span>
 
 
 
