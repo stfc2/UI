@@ -2239,6 +2239,16 @@ echo'
 	{
 		global $ACTUAL_TICK,$db;
 
+		// Check if player REALLY doesn't have already a planet
+		$sql = 'SELECT planet_id FROM planets WHERE planet_owner = '.$this->player['user_id'];
+
+		if(!$db->query($sql)) {
+			message(DATABASE_ERROR, 'Could not query user planets data');
+		}
+
+		if($db->num_rows() != 0)
+			return 0;
+
 		// Random quadrant
 		if(!$quadrant)
 			$quadrant = $this->pick_quadrant();
@@ -2295,6 +2305,16 @@ echo'
 	function join_alliance()
 	{
 		global $db;
+
+		// Check if player REALLY doesn't belong to an alliance
+		$sql = 'SELECT user_alliance FROM user WHERE user_id = '.$this->player['user_id'];
+
+		if(!$user_alliance = $db->queryrow($sql)) {
+			message(DATABASE_ERROR, 'Could not query user alliance');
+		}
+
+		if(!empty($user_alliance['user_alliance']))
+			return 0;
 
 		$alliance_name = '';
 		$alliance_tag = '';
