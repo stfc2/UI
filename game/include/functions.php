@@ -2243,6 +2243,16 @@ echo'
 	{
 		global $ACTUAL_TICK,$db;
 
+		// Check if player REALLY doesn't have already a planet
+		$sql = 'SELECT planet_id FROM planets WHERE planet_owner = '.$this->player['user_id'];
+
+		if(!$db->query($sql)) {
+			message(DATABASE_ERROR, 'Could not query user planets data');
+		}
+
+		if($db->num_rows() != 0)
+			return 0;
+
 		// Random quadrant
 		if(!$quadrant)
 			$quadrant = $this->pick_quadrant();
