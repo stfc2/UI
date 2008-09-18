@@ -993,7 +993,7 @@ $game->out('
 function display_gallery() {
     global $game, $RACE_DATA, $ACTUAL_TICK;
     if(!empty($message)) $game->out('<center><span class="sub_caption">'.$message.'</span></center><br>');
-    if (isset($_REQUEST['mesg'])) $_REQUEST['mesg']=$_REQUEST['mesg'].'<br><br>';
+    if (isset($_REQUEST['mesg'])) $_REQUEST['mesg']=stripslashes($_REQUEST['mesg']).'<br><br>';
     $game->out('<center><table border=0 cellspacing=2 cellpadding=2 width=300 class="style_outer">
     <tr><td>
     <span class="sub_caption2"><center>'.$_REQUEST['mesg'].'</center></span>

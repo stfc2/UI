@@ -140,7 +140,7 @@ define ("GER_TEXT50f", 'Woche');
 
 define ("GER_TEXT50g", 'Wochen');
 
-define ("GER_TEXT51", 'Mit dem L&ouml;schen des Accounts werden alle Benutzerdaten aus der Datenbank gel&ouml;scht und die Planeten gelten als unbewohnt. <b>Dies kann nicht mehr r&uuml;ckg&auml;ngig gemacht werden.</b><br><br><u>Nachdem du hier mit deinem Passwort best&auml;tigt hast, bekommst du eine Email</u>.<br>In dieser findest du dann einen Link, der den L&ouml;schungsprozess abschließt. Dies muss sp&auml;testens 3h nach dem Best&auml;tigen erfolgen, w&auml;hrend dieser Zeit kannst du dich <b>nicht</b> mehr in deinen Account einloggen. Sollte du bis dahin nicht auf den Link geklickt haben, ist dein Account wieder aktiviert.');
+define ("GER_TEXT51", 'Mit dem L&ouml;schen des Accounts werden alle Benutzerdaten aus der Datenbank gel&ouml;scht und die Planeten gelten als unbewohnt. <b>Dies kann nicht mehr r&uuml;ckg&auml;ngig gemacht werden.</b><br><br><u>Nachdem du hier mit deinem Passwort best&auml;tigt hast, bekommst du eine Email</u>.<br>In dieser findest du dann einen Link, der den L&ouml;schungsprozess abschlie&beta;t. Dies muss sp&auml;testens 3h nach dem Best&auml;tigen erfolgen, w&auml;hrend dieser Zeit kannst du dich <b>nicht</b> mehr in deinen Account einloggen. Sollte du bis dahin nicht auf den Link geklickt haben, ist dein Account wieder aktiviert.');
 
 define ("GER_TEXT52", 'Aktuelles Passwort:');
 
@@ -148,7 +148,7 @@ define ("GER_TEXT53", '(Zum Best&auml;tigen eingeben)');
 
 define ("GER_TEXT54", 'Account l&ouml;schen');
 
-define ("GER_TEXT55", 'Wenn der Angriffsschutz deaktiviert ist, kann deine Kolonie von jedem Spieler angegriffen oder ausspioniert werden, du kannst aber auch dasselbe tun.<br>Außerdem k&ouml;nnen unbewohnte Planeten kolonisiert werden.');
+define ("GER_TEXT55", 'Wenn der Angriffsschutz deaktiviert ist, kann deine Kolonie von jedem Spieler angegriffen oder ausspioniert werden, du kannst aber auch dasselbe tun.<br>Au&beta;erdem k&ouml;nnen unbewohnte Planeten kolonisiert werden.');
 
 define ("GER_TEXT56", 'Angriffsschutz abbrechen');
 
@@ -272,7 +272,7 @@ define ("GER_TEXT114", 'Von dieser Seite darf kein Avatar gelinkt werden');
 
 define ("GER_TEXT115", 'Der Avatar konnte nicht gefunden werden (404 - Nicht gefunden)');
 
-define ("GER_TEXT116", 'Der Avatar ist zu groß (> 100 KiB)');
+define ("GER_TEXT116", 'Der Avatar ist zu gro&beta; (> 100 KiB)');
 
 define ("GER_TEXT117", 'Die Signatur ist zu lang (');
 
@@ -614,17 +614,17 @@ define ("ENG_TEXT137", 'Empty');
 
 //Italiano
 
-define ("ITA_TEXT1", 'Errore: il file caricato non &egrave; un\'immagine.');
+define ("ITA_TEXT1", 'Errore: il file caricato non  un%27immagine.');
 
 define ("ITA_TEXT2", 'Errore: caricamento cancellato.');
 
 define ("ITA_TEXT3", 'Errore: errore di sistema durante il tentativo di caricamento.');
 
-define ("ITA_TEXT4", 'Errore: il file &egrave; troppo grande (fino a 350kb).');
+define ("ITA_TEXT4", 'Errore: il file %E8 troppo grande (fino a 350kb).');
 
 define ("ITA_TEXT5", 'Errore: non ci sono spazi liberi.');
 
-define ("ITA_TEXT6", 'L\'immagine &egrave; stata aggiunta alla tua galleria.');
+define ("ITA_TEXT6", 'L%27immagine %E8 stata aggiunta alla tua galleria.');
 
 define ("ITA_TEXT7", 'Errore: tentato attacco.');
 
@@ -786,7 +786,7 @@ define ("ITA_TEXT75", '(inserisci per disabilitare)');
 
 define ("ITA_TEXT76", 'Disabilita');
 
-define ("ITA_TEXT77", 'Con la modalit&agrave SITTING si pu&ograve dare l\'account in concessione ad un altro giocatore (es. in caso di prolungata assenza).');
+define ("ITA_TEXT77", 'Con la modalit&agrave; SITTING si pu&ograve; dare l\'account in concessione ad un altro giocatore (es. in caso di prolungata assenza).');
 
 define ("ITA_TEXT78", 'Autorizza alla gestione:');
 
@@ -818,7 +818,7 @@ define ("ITA_TEXT91", 'Modalit&agrave Vacanza');
 
 define ("ITA_TEXT92", 'Account login');
 
-define ("ITA_TEXT93", 'Esci dalla modalit&agrave Sitting');
+define ("ITA_TEXT93", 'Esci dalla modalit&agrave; Sitting');
 
 define ("ITA_TEXT94", 'Logout');
 
@@ -846,9 +846,9 @@ define ("ITA_TEXT105", 'Password');
 
 define ("ITA_TEXT106", 'Nome Login');
 
-define ("ITA_TEXT107", 'Modalit&agrave Vacanza');
+define ("ITA_TEXT107", 'Modalit&agrave; Vacanza');
 
-define ("ITA_TEXT108", 'Modalit&agrave Sitting');
+define ("ITA_TEXT108", 'Modalit&agrave; Sitting');
 
 define ("ITA_TEXT109", 'Galleria');
 
@@ -860,33 +860,33 @@ define ("ITA_TEXT112", 'IP-Link');
 
 define ("ITA_TEXT113", 'Preferenze Personali');
 
-define ("ITA_TEXT114", 'Da questa pagina non &egrave possibile linkare l\'avatar');
+define ("ITA_TEXT114", 'Da questa pagina non &egrave; possibile linkare l\'avatar');
 
-define ("ITA_TEXT115", 'L\'avatar non &egrave stato trovato (404 - Not Found)');
+define ("ITA_TEXT115", 'L\'avatar non &egrave; stato trovato (404 - Not Found)');
 
-define ("ITA_TEXT116", 'L\'avatar &egrave troppo grande (> 100 KiB)');
+define ("ITA_TEXT116", 'L\'avatar &egrave; troppo grande (> 100 KiB)');
 
-define ("ITA_TEXT117", 'La firma &egrave troppo lunga(');
+define ("ITA_TEXT117", 'La firma &egrave; troppo lunga(');
 
 define ("ITA_TEXT118", 'al massimo 1000 caratteri)');
 
-define ("ITA_TEXT119", 'Formato invalid del numero ICQ');
+define ("ITA_TEXT119", 'Formato invalido del numero ICQ');
 
-define ("ITA_TEXT120", 'L\'account non pu&ograve essere rimosso finche si &egrave nella modalit&agrave Sitting');
+define ("ITA_TEXT120", 'L\'account non pu&ograve; essere rimosso finche si &egrave; nella modalit&agrave; Sitting');
 
 define ("ITA_TEXT121", 'La password attuale non &egrave; valida');
 
 define ("ITA_TEXT122", 'Risulta che tu abbia richiesto la cancellazione dell\'account. Per completare il processo di cancellazione, hai bisogno di cliccare sul collegamento seguente. Successivamente non ci sar&agrave; nessun modo di ritornare indietro, se sei sicuro conferma la tua scelta.');
 
-define ("ITA_TEXT123", 'La protezione agli attacchi non pu&ograve essere rimossa nella modalit&agrave Sitting');
+define ("ITA_TEXT123", 'La protezione agli attacchi non pu&ograve; essere rimossa nella modalit&agrave Sitting');
 
-define ("ITA_TEXT124", 'Il sito &egrave bloccato in modalit&agrave Sitting');
+define ("ITA_TEXT124", 'Il sito &egrave bloccato in modalit&agrave; Sitting');
 
 define ("ITA_TEXT125", 'La password non &egrave; nuova');
 
 define ("ITA_TEXT126", 'La nuova password non corrisponde');
 
-define ("ITA_TEXT127", 'Non &egrave stato inserito il Nome Login');
+define ("ITA_TEXT127", 'Non &egrave; stato inserito il Nome Login');
 
 define ("ITA_TEXT128", 'Non esiste la login inserita');
 
@@ -894,17 +894,17 @@ define ("ITA_TEXT129", 'Periodo di partenza invalido');
 
 define ("ITA_TEXT130", 'Periodo di vacanza invalido');
 
-define ("ITA_TEXT131", '<BR>Non &egrave settata nessuna sessione nei cookies, controlli la configurazione dei cookies del suo browser');
+define ("ITA_TEXT131", '<BR>Non &egrave; settata nessuna sessione nei cookies, controlla la configurazione dei cookies del tuo browser');
 
 define ("ITA_TEXT132", 'Cancellazione fallita');
 
 define ("ITA_TEXT133", 'Spazio libero');
 
-define ("ITA_TEXT134", 'L\'immagine &egrave stata cancellata');
+define ("ITA_TEXT134", 'L%27immagine %E8 stata cancellata');
 
 define ("ITA_TEXT135", 'Modifica avatar fallita');
 
-define ("ITA_TEXT136", 'L\'avatar &egrave; stato configurato correttamente');
+define ("ITA_TEXT136", 'L%27avatar %E8 stato configurato correttamente');
 
 define ("ITA_TEXT137", 'Vuoto');
 
