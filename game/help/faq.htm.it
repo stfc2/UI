@@ -80,8 +80,12 @@ Che cosa pu&ograve; essere perso in seguito a un attacco? (strutture, difese, tr
 		<td valign="top" align="justify">Non si depredano risorse, si prende proprio il possesso del pianeta se si vince lo scontro. Durante tale scontro tutte le strutture del pianeta possono essere distrutte, se l'attaccante bombarda la superficie.</td>
 	</tr>
 	<tr>
-		<td valign="top" align="justify"><b>Come si colonizzano nuovi pianeti?</b></td>
+		<td valign="top" align="justify"><b>Come si <u>colonizzano</u> i pianeti disabitati?</b></td>
 		<td valign="top" align="justify">Si arriva a 200 punti (alcune specie come i Ferengi ne richiedono fino a 250), si crea un progetto per la nave colonizzatrice e la si invia sul pianeta da colonizzare.<br><b><u>N.B.:</u></b> di solito &egrave; buona norma inviare <b>prima</b> uno scout per accertarsi che in orbita al pianeta desiderato non siano presenti navi ostili.</td>
+	</tr>
+	<tr>
+		<td valign="top" align="justify"><b>Come si <u>conquistano</u> i pianeti occupati?</b></td>
+		<td valign="top" align="justify">Per conquistare un pianeta occupato bisogna prima di tutto eliminare tutte le eventuali difese planetarie presenti (flotte di navi e cannoni, leggeri, pesanti ed orbitali).<br>Fatto questo &egrave; possibile iniziare il bombardamento della superficie per indebolire ulteriormente le difese a terra (truppe e lavoratori) oppure tentare direttamente l&#146;assalto al pianeta con una flotta composta da una colonizzatrice e altre navi (cargo o navi da guerra con alloggi equipaggio ingranditi) cariche di truppe.<br>Con la prima opzione, il combattimento a terra sar&agrave; pi&ugrave; semplice ma a causa del bombardamento si perderanno diversi livelli delle strutture costruite sul pianeta (ma non le ricerche planetarie) con il secondo metodo, le strutture verrano mantenute a discapito di uno scontro a terra pi&ugrave; feroce.</td>
 	</tr>
 	<tr>
 		<td valign="top" align="justify"><b>Gli scout vengono attaccati dalle altre navi? E dai cannoni ornbitali?</b></td>
