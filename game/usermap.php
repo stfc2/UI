@@ -64,7 +64,7 @@ if(!isset($user['user_id'])) {
 
 
 //Assign names:
-if($game->player['user_alliance'] == $user['user_alliance']) {
+if($game->player['user_alliance'] == $user['user_alliance'] && $game->player['user_alliance_rights3'] == 1) {
 	$image_url='maps/tmp/u_'.$user['user_id'].'_'.$size.'.png';
 	$map_url='maps/tmp/u_'.$user['user_id'].'_'.$size.'.html';
 }
@@ -158,9 +158,12 @@ SELECT s.system_id, s.system_name, s.sector_id, s.system_x, s.system_y
 while($system = $db->fetchrow($q_systems))
 $glob_systems[$system['system_id']]=$system;
 
-if($game->player['user_id'] == $user['user_id'] || $game->player['user_alliance'] == $user['user_alliance']) {
+// If the player is showing his map or is a member of his alliance AND has rights to see tactical info
+if(($game->player['user_id'] == $user['user_id']) ||
+   ($game->player['user_alliance'] == $user['user_alliance'] && $game->player['user_alliance_rights3'] == 1)) {
     $sql = 'SELECT system_id FROM planets WHERE planet_owner='.$user['user_id'].' GROUP BY system_id';
 }
+// Otherwise display only what the player knows
 else {
     $sql = 'SELECT pl.system_id FROM (planets pl)
                    LEFT JOIN (planet_details pd) on pl.system_id = pd.system_id
