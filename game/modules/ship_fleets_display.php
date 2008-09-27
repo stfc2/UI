@@ -1022,14 +1022,14 @@ else {
             if($only_location > 0) {
                 $location_str = overlib(
                     $planet_coord_str,
-                    '<b>'.$ol_planet['planet_name'].'</b><br>'.( (!empty($ol_planet['user_id'])) ? constant($game->sprache("TEXT72")).' <b>'.$ol_planet['user_name'].'</b>' : constant($game->sprache("TEXT73")) ).'<br>'.constant($game->sprache("TEXT74")).' <b>'.strtoupper($ol_planet['planet_type']).'</b>',
+                    '<b>'.addslashes($ol_planet['planet_name']).'</b><br>'.( (!empty($ol_planet['user_id'])) ? constant($game->sprache("TEXT72")).' <b>'.$ol_planet['user_name'].'</b>' : constant($game->sprache("TEXT73")) ).'<br>'.constant($game->sprache("TEXT74")).' <b>'.strtoupper($ol_planet['planet_type']).'</b>',
                     parse_link('a=tactical_cartography&planet_id='.encode_planet_id($only_location))
                 );
             }
             else {
                 $location_str = overlib(
                     $game->get_sector_name($fleet['sector_id']).':'.$game->get_system_cname($fleet['system_x'], $fleet['system_y']).':'.($fleet['planet_distance_id'] + 1),
-                    '<b>'.$fleet['planet_name'].'</b><br>'.( (!empty($fleet['stationated_owner_id'])) ? constant($game->sprache("TEXT72")).' <b>'.$fleet['stationated_owner_name'].'</b>' : constant($game->sprache("TEXT73")) ).'<br>'.constant($game->sprache("TEXT74")).' <b>'.strtoupper($fleet['planet_type']).'</b>',
+                    '<b>'.addslashes($fleet['planet_name']).'</b><br>'.( (!empty($fleet['stationated_owner_id'])) ? constant($game->sprache("TEXT72")).' <b>'.$fleet['stationated_owner_name'].'</b>' : constant($game->sprache("TEXT73")) ).'<br>'.constant($game->sprache("TEXT74")).' <b>'.strtoupper($fleet['planet_type']).'</b>',
                     parse_link('a=tactical_cartography&planet_id='.encode_planet_id($fleet['planet_id']))
                 );
             }
@@ -1037,13 +1037,13 @@ else {
         elseif(!empty($fleet['move_id'])) {
             $start_planet_str = overlib(
                 $game->get_sector_name($fleet['start_sector_id']).':'.$game->get_system_cname($fleet['start_system_x'], $fleet['start_system_y']).':'.($fleet['start_distance_id'] + 1),
-                '<b>'.$fleet['start_planet_name'].'</b><br>'.( (!empty($fleet['start_owner_id'])) ? constant($game->sprache("TEXT72")).' <b>'.$fleet['start_owner_name'].'</b>' : constant($game->sprache("TEXT73")) ).'<br>'.constant($game->sprache("TEXT74")).' <b>'.strtoupper($fleet['start_planet_type']).'</b>',
+                '<b>'.addslashes($fleet['start_planet_name']).'</b><br>'.( (!empty($fleet['start_owner_id'])) ? constant($game->sprache("TEXT72")).' <b>'.$fleet['start_owner_name'].'</b>' : constant($game->sprache("TEXT73")) ).'<br>'.constant($game->sprache("TEXT74")).' <b>'.strtoupper($fleet['start_planet_type']).'</b>',
                 parse_link('a=tactical_cartography&planet_id='.encode_planet_id($fleet['start']))
             );
             
             $dest_planet_str = overlib(
                 $game->get_sector_name($fleet['dest_sector_id']).':'.$game->get_system_cname($fleet['dest_system_x'], $fleet['dest_system_y']).':'.($fleet['dest_distance_id'] + 1),
-                '<b>'.$fleet['dest_planet_name'].'</b><br>'.( (!empty($fleet['dest_owner_id'])) ? constant($game->sprache("TEXT72")).' <b>'.$fleet['dest_owner_name'].'</b>' : constant($game->sprache("TEXT73")) ).'<br>'.constant($game->sprache("TEXT74")).' <b>'.strtoupper($fleet['dest_planet_type']).'</b>',
+                '<b>'.addslashes($fleet['dest_planet_name']).'</b><br>'.( (!empty($fleet['dest_owner_id'])) ? constant($game->sprache("TEXT72")).' <b>'.$fleet['dest_owner_name'].'</b>' : constant($game->sprache("TEXT73")) ).'<br>'.constant($game->sprache("TEXT74")).' <b>'.strtoupper($fleet['dest_planet_type']).'</b>',
                 parse_link('a=tactical_cartography&planet_id='.encode_planet_id($fleet['dest']))
             );
 
