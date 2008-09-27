@@ -98,7 +98,7 @@ $sql = 'SELECT ss.user_id AS start_user_id, ss.dest, ss.move_begin, ss.move_fini
               u1.user_alliance = '.$game->player['user_alliance'].' AND
               ss.move_status = 0 AND
               ss.dest = p1.planet_id AND
-              ss.action_code IN  (24,25,40,41,42,43,44,45,50,51,52,53,54,55)
+              ss.action_code IN  (24,25,40,41,42,43,44,45,46,50,51,52,53,54,55)
         GROUP BY ss.move_id
         ORDER BY p1.planet_next_attack ASC';
         
