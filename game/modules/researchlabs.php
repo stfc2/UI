@@ -27,9 +27,9 @@
 
 
 $game->init_player();
+include('include/static/static_components_'.$game->player['user_race'].'.php');
 $filename = 'include/static/static_components_'.$game->player['user_race'].'_'.$game->player['language'].'.php';
-if (!file_exists($filename)) $filename = 'include/static/static_components_'.$game->player['user_race'].'.php';
-include($filename);
+if (file_exists($filename)) include($filename);
 
 
 $game->out('<span class="caption">'.$BUILDING_NAME[$game->player['user_race']][8].':</span><br><br>');

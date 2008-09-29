@@ -26,9 +26,9 @@ $game->init_player();
 $capital=(($game->player['user_capital']==$game->planet['planet_id']) ? 1 : 0);
 if ($game->player['pending_capital_choice']) $capital=0;
 
+include('include/static/static_components_'.$game->player['user_race'].'.php');
 $filename = 'include/static/static_components_'.$game->player['user_race'].'_'.$game->player['language'].'.php';
-if (!file_exists($filename)) $filename = 'include/static/static_components_'.$game->player['user_race'].'.php';
-include($filename);
+if (file_exists($filename)) include($filename);
 
 
 
@@ -309,6 +309,7 @@ $game->out('<fieldset><legend><span class="sub_caption2">'.constant($game->sprac
 $n = count($ship_components[$game->player['user_race']]);
 foreach ($ship_components[$game->player['user_race']] as $key => $components)
 {
+
 	$style = ($key < $n-1) ? 'style="border-bottom-color:A0A0A0; border-bottom-style:dotted; border-bottom-width:1px"' : '';
 	$cname=$components['name'];
 	/*if (strlen($cname)>13)

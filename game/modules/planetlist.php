@@ -24,9 +24,9 @@ include_once('include/libs/moves.php');
 
 //Day ne globale Klasse ist nett, aber nicht immer passt ihr inhalt
 $game->init_player();
+include('include/static/static_components_'.$game->player['user_race'].'.php');
 $filename = 'include/static/static_components_'.$game->player['user_race'].'_'.$game->player['language'].'.php';
-if (!file_exists($filename)) $filename = 'include/static/static_components_'.$game->player['user_race'].'.php';
-include($filename);
+if (file_exists($filename)) include($filename);
 
 error_reporting(E_ERROR);
 function GetBuildingTimeTicks($building,$stufe=0,$planet_t,$player_race,$planet_prob,$plani_forsch=1)
