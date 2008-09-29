@@ -26,9 +26,9 @@ $game->init_player();
 $capital=(($game->player['user_capital']==$game->planet['planet_id']) ? 1 : 0);
 if ($game->player['pending_capital_choice']) $capital=0;
 
+include('include/static/static_components_'.$game->player['user_race'].'.php');
 $filename = 'include/static/static_components_'.$game->player['user_race'].'_'.$game->player['language'].'.php';
-if (!file_exists($filename)) $filename = 'include/static/static_components_'.$game->player['user_race'].'.php';
-include($filename);
+if (file_exists($filename)) include($filename);
 
 
 

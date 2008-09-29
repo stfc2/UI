@@ -24,9 +24,9 @@
 
 $game->init_player();
 
+include('include/static/static_components_'.$game->player['user_race'].'.php');
 $filename = 'include/static/static_components_'.$game->player['user_race'].'_'.$game->player['language'].'.php';
-if (!file_exists($filename)) $filename = 'include/static/static_components_'.$game->player['user_race'].'.php';
-include($filename);
+if (file_exists($filename)) include($filename);
 
 $game->out('<span class="caption">'.$BUILDING_NAME[$game->player['user_race']][7].':</span><br><br>');
 
@@ -76,7 +76,7 @@ function ColoMetRestriction($template) // Verifica di unicità delle colonizzatr
 
 	$_temp = $db->queryrow($sql);
 	$risultato += $_temp['conteggio'];
-	
+
 	if($risultato >= $game->player['user_max_colo']) return 0;
 
 	return 1;
