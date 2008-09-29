@@ -1027,7 +1027,7 @@ form {
         </tr>
         <tr>
           <td valign="top">'.constant($game->sprache("TEXT92")).'</td>
-          <td>&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.$detail_text.'\', CAPTION, \''.$last_update.'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$last_update.'</a></td>
+          <td>&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.addslashes($detail_text).'\', CAPTION, \''.$last_update.'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$last_update.'</a></td>
         </tr>
         <tr height="15"><td></td></tr>
     ');
@@ -1288,7 +1288,7 @@ form {
         $sql = 'SELECT fleet_id, fleet_name, n_ships
                 FROM ship_fleets
                 WHERE user_id = '.$game->player['user_id'].' AND
-                      planet_id = '.$game->planet['planet_id'].' AND
+                      planet_id <> 0 AND
                       n_ships > 0
                 ORDER BY fleet_name';
 
@@ -1308,7 +1308,7 @@ form {
   </tr>
   <tr>
     <td width="250" align="center">
-      <select name="fleets[]" style="width: 210px;" multiple="multiple">
+      <select name="fleets[]" style="width: 210px;" multiple="multiple" size="5">
             ');
             
             while($fleet = $db->fetchrow($q_fleets)) {
