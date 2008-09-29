@@ -285,13 +285,13 @@ $BUILDING_NAME = array(
 
 		10 => 'Centro per il Commercio',
 
-		11 => 'Silo',
+		11 => 'Silos',
 
 		12 => 'Cannone Orb. Leggero',
 
 	),
 
-	// Hirogen
+	// Hirogeni
 
 	9 => array(
 
@@ -391,7 +391,7 @@ $BUILDING_NAME = array(
 
 
 
-	// Mensch 29th
+	// Umani 29o
 
 	12 => array(
 
@@ -424,7 +424,7 @@ $BUILDING_NAME = array(
 	),
 
 
-	// Siedler
+	// Coloni
 
 	13 => array(
 
@@ -462,7 +462,7 @@ $BUILDING_NAME = array(
 
 $UNIT_NAME = array(
 
-	// Föderation
+	// Federazione
 
 	0 => array(
 
@@ -482,7 +482,7 @@ $UNIT_NAME = array(
 
 
 
-	// Romulaner
+	// Romulani
 
 	1 => array(
 
@@ -502,7 +502,7 @@ $UNIT_NAME = array(
 
 
 
-	// Klingonen
+	// Klingon
 
 	2 => array(
 
@@ -522,7 +522,7 @@ $UNIT_NAME = array(
 
 
 
-	// Cardassianer
+	// Cardassiani
 
 	3 => array(
 
@@ -542,7 +542,7 @@ $UNIT_NAME = array(
 
 
 
-	// Dominion
+	// Dominio
 
 	4 => array(
 
@@ -630,7 +630,7 @@ $UNIT_NAME = array(
 
 
 
-	// Hirogen
+	// Hirogeni
 
 	9 => array(
 
@@ -691,7 +691,7 @@ $UNIT_NAME = array(
 
 	
 
-	// Menschen 29th
+	// Umani 29o
 
 	12 => array(
 
@@ -710,10 +710,10 @@ $UNIT_NAME = array(
 	),
 
 
-	// Siedler
+	// Coloni
 	13 => array(
 
-		0 => 'Siedler',
+		0 => 'Colono',
 
 		1 => 'Miliziano',
 
@@ -739,9 +739,9 @@ $TECH_NAME = array(
 
 	0 => array(
 
-		0 => 'Terraforming',	// pro level +1 zu arbeitern/tick; +500 zu max. Bev.
+		0 => 'Terraforming',	// 1 per level to employees / tick; +500 max. Pop
 
-		1 => 'Ricerca Medica', // pro level +2 zu arbeitern
+		1 => 'Ricerca Medica', // +2 per level to employees
 
 		2 => 'Difesa Orbitale',
 
@@ -755,7 +755,7 @@ $TECH_NAME = array(
 
 
 
-	//Romulan Empire
+	// Romulan Empire
 
 	1 => array(
 
@@ -903,7 +903,7 @@ $TECH_NAME = array(
 
 		0 => 'Adattamento Ecologico',
 
-		1 => 'Ricerca Bioscentifica',
+		1 => 'Ricerca Bioscientifica',
 
 		2 => 'Strutture Difensive Orbitali',
 
@@ -933,7 +933,7 @@ $TECH_NAME = array(
 
 	
 
-	// Menschen 29th
+	// Umani 29o
 
 	12 => array(
 
@@ -952,13 +952,13 @@ $TECH_NAME = array(
 
 
 
-	// Siedler
+	// Coloni
 
 	13 => array(
 
-		0 => 'Terraforming',	// pro level +1 zu arbeitern/tick; +500 zu max. Bev.
+		0 => 'Terraforming',	// 1 per level to employees / tick; +500 max. Pop
 
-		1 => 'Ricerca Medica', // pro level +2 zu arbeitern
+		1 => 'Ricerca Medica', // +2 per level to employees
 
 		2 => 'Difesa Orbitale',
 
@@ -1010,7 +1010,7 @@ $UNIT_DESCRIPTION = array (
 	*/
 	1 => array(
 
-		0 => 'I Centurioni sono relativamente economici e facilmente accessibili ad inizio gioco.<br>per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
+		0 => 'I Centurioni sono relativamente economici e facilmente accessibili ad inizio gioco per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
 
 		1 => 'I Decurioni rappresentano un pi&ugrave; elevato standard qualitativo rispetto ai Centurioni.<br>Possono essere impiegati per qualsiasi scopo, anche se il loro addestramento risulta pi&ugrave; costoso rispetto a quello dei Centurioni.',
 
@@ -1030,11 +1030,11 @@ $UNIT_DESCRIPTION = array (
 		2	-	BetleH
 		3	-	Generale
 		4	-	Tecnico
-		5	-	Guaritore	
+		5	-	Guaritore
 	*/
 	2 => array(
 
-		0 => 'I Combattenti sono relativamente economici e facilmente accessibili ad inizio gioco.<br>per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
+		0 => 'I Combattenti sono relativamente economici e facilmente accessibili ad inizio gioco per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
 
 		1 => 'I Combattenti Esperti rappresentano un pi&ugrave; elevato standard qualitativo rispetto ai Combattenti.<br>Possono essere impiegati per qualsiasi scopo, anche se il loro addestramento risulta pi&ugrave; costoso rispetto a quello dei Combattenti.',
 
@@ -1058,7 +1058,7 @@ $UNIT_DESCRIPTION = array (
 	*/
 	3 => array(
 
-		0 => 'I Miliziani sono relativamente economici e facilmente accessibili ad inizio gioco.<br>per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
+		0 => 'I Miliziani sono relativamente economici e facilmente accessibili ad inizio gioco per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
 
 		1 => 'I Miliziani Scelti rappresentano un pi&ugrave; elevato standard qualitativo rispetto ai Miliziani.<br>Possono essere impiegati per qualsiasi scopo, anche se il loro addestramento risulta pi&ugrave; costoso rispetto a quello dei Miliziani.',
 
@@ -1106,7 +1106,7 @@ $UNIT_DESCRIPTION = array (
 	*/
 	5 => array(
 
-		0 => 'I Mercenari sono relativamente economici e facilmente accessibili ad inizio gioco.<br>per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
+		0 => 'I Mercenari sono relativamente economici e facilmente accessibili ad inizio gioco per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
 
 		1 => 'I Mercenari Scelti rappresentano un pi&ugrave; elevato standard qualitativo rispetto ai Mercenari.<br>Possono essere impiegati per qualsiasi scopo, anche se il loro reclutamento risulta pi&ugrave; costoso rispetto a quello dei Mercenari.',
 
@@ -1142,7 +1142,7 @@ $UNIT_DESCRIPTION = array (
 	*/
 	8 => array(
 
-		0 => 'I Soldati sono relativamente economici e facilmente accessibili ad inizio gioco.<br>per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
+		0 => 'I Soldati sono relativamente economici e facilmente accessibili ad inizio gioco per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
 
 		1 => 'I BreeMok rappresentano un pi&ugrave; elevato standard qualitativo rispetto ai Soldati.<br>Possono essere impiegati per qualsiasi scopo, anche se il loro reclutamento risulta pi&ugrave; costoso rispetto a quello dei Soldati.',
 
@@ -1169,7 +1169,7 @@ $UNIT_DESCRIPTION = array (
 	*/
 	9 => array(
 
-		0 => 'I Cacciatori sono relativamente economici e facilmente accessibili ad inizio gioco.<br>per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
+		0 => 'I Cacciatori sono relativamente economici e facilmente accessibili ad inizio gioco per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
 
 		1 => 'Il Beta &egrave; particolarmente efficace nel combattimento a distanza e, anche grazie alla sua robusta difesa, pu&ògrave; essere virtualmente impiegato in qualsiasi ruolo, anche se il suo addestramento, paragonato a quello dei Cacciatori, risulta particolarmente dispendioso.',
 
@@ -1196,17 +1196,17 @@ $UNIT_DESCRIPTION = array (
 	*/
 	10 => array(
 
-		0 => 'I Soldati sono relativamente economici e facilmente accessibili ad inizio gioco.<br>per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
+		0 => 'I Soldati sono relativamente economici e facilmente accessibili ad inizio gioco per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
 
-		1 => 'Die Imperialen Gardisten werden lange und sorgfältig für ihre Aufgaben trainiert und verfügt über ausgezeichnete Bewaffnung und Ausbildung. Allerdings ist ihre Ausbildung ein gutes Stück teurer als die von einfachen Kämpfern.',
+		1 => 'I membri della Guardia Imperiale saranno addestrati lungamente e con attenzione alle loro mansioni ed all&#146;uso eccellente delle armi. Tuttavia, la loro formazione &egrave; un po&#146; pi&ugrave; costosa rispetto ai combattenti semplici.',
 
-		2 => 'Die Eliteinfanteristen sind besonders hart trainierte Kämpfer des Imperiums, die sich voll und ganz ihrem Dienst widmen. Sie sind teuer in der Ausbildung, aber auch entsprechend stark.',
+		2 => 'I corpi d&#146;&Eacute;lite sono speciali combattenti dell&#146;impero addestrati duramente, che si dedicano pienamente al loro servizio. Essi sono costosi in materia di formazione, ma anche forti di conseguenza.',
 
-		3 => 'Offiziere dienen als Kommandeure von Kampftrupps und Kriegsschiffen des Krenim-Imperiums. Ihre Kampfausbildung ist nicht so intensiv wie die anderer Kämpfer, dafür werden sie aber in Strategie und Taktik geschult.',
+		3 => 'Gli ufficiali servono da comandanti delle truppe da combattimento e delle navi da guerra dell&#146;Impero Krenim.<br>La loro formazione non &egrave; principalmente orientata allo scontro fisico quanto gli altri combattenti, ma nelle strategie e nelle tattiche militari.',
 
-		4 => 'Ingenieure werden benötigt, um Schiffe instand zu halten und die komplexe Technik der Krenimschiffe zu bedienen. Sie werden speziell für ihre Aufgabe ausgebildet und nehmen nicht direkt an Kampfhandlungen teil.',
+		4 => 'Gli Ingegneri sono necessari per manutenere e far funzionare la complessa tecnologia delle navi Krenim. Sono formati specialmente per le loro competenze e non prendono parte diretta nelle ostilit&agrave;.',
 
-		5 => 'Ärzte sind für das Wohlergehen und die Einsatzbereitschaft der Schiffsbesatzung zuständig. Ebenso wenig wie Ingenieure beteiligen sich Ärzte an Kampfhandlungen, sie kümmern sich lediglich um die Verwundeten.', 
+		5 => 'I medici sono responsabili del benessere e della prontezza dell&#146;equipaggio. Come per gli Ingegneri non partecipano ai combattimenti, si prendono cura dei feriti.', 
 
 	),
 
@@ -1240,25 +1240,25 @@ $UNIT_DESCRIPTION = array (
 
 	
 
-	// Menschen 29th
+	// Umani 29p
 
 	12 => array(
 
-		0 => 'Leichte Infanterie',
+		0 => 'Fanteria leggera',
 
 		1 => 'Sturmtruppen',
 
 		2 => 'Hazard Teams',
 
-		3 => 'Commander',
+		3 => 'Comandante',
 
-		4 => 'Techniker',
+		4 => 'Tecnico',
 
-		5 => 'Mediziner',
+		5 => 'Medico',
 
-	),	
+	),
 
-	// Siedler
+	// Coloni
 
 	13 => array(
 
@@ -1304,7 +1304,7 @@ $BUILDING_DESCRIPTION = array (
 
 
 
-	// Romulaner
+	// Romulani
 
 	1 => array(
 
@@ -1338,7 +1338,7 @@ $BUILDING_DESCRIPTION = array (
 
 
 
-	// Klingonen
+	// Klingon
 
 	2 => array(
 
@@ -1372,7 +1372,7 @@ $BUILDING_DESCRIPTION = array (
 
 
 
-	// Cardassianer
+	// Cardassiani
 
 	3 => array(
 
@@ -1406,7 +1406,7 @@ $BUILDING_DESCRIPTION = array (
 
 
 
-	// Dominion
+	// Dominio
 
 	4 => array(
 
@@ -1454,17 +1454,17 @@ $BUILDING_DESCRIPTION = array (
 
 		4 => 'Costruire un livello di questa struttura permette di alimentare 10 livelli di altre strutture presenti sul pianeta.',
 
-		5 => 'Je nach Liv. der Akademie können Arbeiter zu verschiedenen Einheiten-typen ausgebildet werden.',
+		5 => 'A seconda del livello di Accademia i lavoratori possano essere addestrati come diversi tipi di unit&agrave;.',
 
-		6 => 'Der Raumhafen dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet eine Verbesserung der Sensorenstärke.',
+		6 => 'Lo Spazioporto serve per la riparazione delle navi danneggiate. Con ogni stadio di sviluppo il pianeta riceve un miglioramento della forza dei sensori.',
 
-		7 => 'Je höher das Gebäude ausgebaut ist,<br>desto schneller können Schiffe gebaut werden.',
+		7 => 'Maggiore &egrave; il livello di questa struttura, maggiore sar&agrave; la velocit&agrave; di costruzione delle navi stellari.',
 
 		8 => 'Potenziare questa struttura permette di ricercare un maggior numero di tecnologie.<br>Alcune tecnologie sono necessarie per produrre soldati o navi.',
 
 		9 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
 
-		10 => 'Diese Einrichtung ermöglicht es, mit anderen Spielern Geschäftsbeziehungen zu schließen, die automatisiert abgewickelt werden.',
+		10 => 'Questa struttura rende possibile concludere rapporti commerciali con gli altri giocatori che saranno completati in modo automatico.',
 
 		11 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di materie prime stoccabili (circa 35.000 per livello).',
 
@@ -1494,29 +1494,29 @@ $BUILDING_DESCRIPTION = array (
 
 	8 => array(
 
-		0 => 'Je höher die Kältekammer entwickelt ist, desto höher entwickelte Gebäude können erzeugt werden.',
+		0 => 'Maggiore &egrave; il livello della Camera di Raffreddamento, maggiore sar&agrave; il numero di strutture costruibili sul pianeta.',
 
-		1 => 'Je höher der Metallextraktor entwickelt ist, desto mehr Metall wird pro Tick abgebaut.',
+		1 => 'Maggiore &egrave; il livello dell&#146;Estrattore di Metalli, maggiore sar&agrave; la quantit&agrave; di metalli ottenuta ad ogni tick.',
 
-		2 => 'Je höher der Mineralienextraktor entwickelt ist,desto mehr Mineralien werden pro Tick abgebaut.',
+		2 => 'Maggiore &egrave; il livello dell&#146;Estrattore di Minerali, maggiore sar&agrave; la quantit&agrave; di minerali ottenuta ad ogni tick.',
 
-		3 => 'Je höher der Latinumextraktor entwickelt ist, desto mehr Latinum kann pro Tick produziert werden.',
+		3 => 'Maggiore &egrave; il livello dell&#146;Estrattore di Dilitio, maggiore sar&agrave; la quantit&agrave; di dilitio ottenuta ad ogni tick.',
 
 		4 => 'Alle 10 Einrichtungsorganismen muss eine neue Kraftquelle erzeugt werden, um diese mit Energie zu versorgen.',
 
-		5 => 'Je besser die Breen Kaserne entwickelt ist, desto bessere Kämpfer können Ausgebildet werden.',
+		5 => 'Meglio sar&agrave; sviluppata la Caserma Breen, migliore saranno i combattenti che possono essere addestrati.',
 
-		6 => 'Der Raumhafen dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet eine Verbesserung der Sensorenstärke.',
+		6 => 'Lo Spazioporto serve per la riparazione delle navi danneggiate. Con ogni stadio di sviluppo il pianeta riceve un miglioramento della forza dei sensori.',
 
-		7 => 'Je höher die Breenwerft entwickelt ist,<br>desto schneller können Schiffe gebaut werden.',
+		7 => 'Pi&ugrave; il Cantiere Navale Breen sar&agrave; sviluppato, pi&ugrave; velocemente le navi saranno costruite.',
 
 		8 => 'Potenziare questa struttura permette di ricercare un maggior numero di tecnologie.<br>Alcune tecnologie sono necessarie per produrre soldati o navi.',
 
 		9 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
 
-		10 => 'Diese Einrichtung ermöglicht es, mit anderen Spielern Geschäftsbeziehungen zu schließen, die automatisiert abgewickelt werden.',
+		10 => 'Questa struttura rende possibile concludere rapporti commerciali con gli altri giocatori che saranno completati in modo automatico.',
 
-		11 => 'Der Bio-Lagerkern dient dazu, je nach entwicklungsstufe, die Anzahl der maximal lagerbaren Ressourcen zu erhöhen. Zusätzlich Lagerbar pro Tick und Entwicklungsstufe: 50.000.',
+		11 => 'Questa struttura ti permette di aumentare la capacit&agrave; di stoccaggio di risorse sul tuo pianeta di 50000 unit&agrave;.',
 
 		12 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali potenziate a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
 
@@ -1524,33 +1524,33 @@ $BUILDING_DESCRIPTION = array (
 
 
 
-	// Hirogen
+	// Hirogeni
 
 	9 => array(
 
-		0 => 'Je höher das Gebäude ausgebaut ist, desto mehr neue Gebäude können gebaut werden.',
+		0 => 'Maggiore il livello di questa struttura, maggiore il numero di strutture costruibili sul pianeta.',
 
-		1 => 'Je höher das Gebäude ausgebaut ist, desto mehr Metall wird pro Tick abgebaut.',
+		1 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di metalli ottenuta ad ogni tick.',
 
-		2 => 'Je höher das Gebäude ausgebaut ist, desto mehr Mineralien werden pro Tick abgebaut.',
+		2 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di minerali ottenuta ad ogni tick.',
 
-		3 => 'Je höher das Gebäude ausgebaut ist, desto mehr Latinum kann pro Tick produziert werden.',
+		3 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di dilitio ottenuta ad ogni tick.',
 
-		4 => 'Man muss ein Kraftwerk pro 10 Gebäude bauen, damit diese noch mit ausreichend Energie versorgt werden.',
+		4 => 'Costruire un livello di questa struttura permette di alimentare 10 livelli di altre strutture presenti sul pianeta.',
 
-		5 => 'Je nach Liv. des Trainingscenter können Arbeiter zu verschiedenen Einheiten-typen ausgebildet werden.',
+		5 => 'A seconda del livello di Centro di Addestramento i lavoratori possono essere addestrati in diversi tipi di unit&agrave;.',
 
-		6 => 'Der Raumhafen dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet eine Verbesserung der Sensorenstärke.',
+		6 => 'Lo Spazioporto serve per la riparazione delle navi danneggiate. Con ogni stadio di sviluppo il pianeta riceve un miglioramento della forza dei sensori.',
 
-		7 => 'Je höher das Gebäude ausgebaut ist,<br>desto schneller können Schiffe gebaut werden.',
+		7 => 'Maggiore il livello di questa struttura, maggiore sar&agrave; la velocit&agrave; di costruzione delle navi stellari.',
 
 		8 => 'Potenziare questa struttura permette di ricercare un maggior numero di tecnologie.<br>Alcune tecnologie sono necessarie per produrre soldati o navi.',
 
 		9 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
 
-		10 => 'Diese Einrichtung ermöglicht es, mit anderen Spielern Geschäftsbeziehungen zu schließen, die automatisiert abgewickelt werden.',
+		10 => 'Questa struttura rende possibile concludere rapporti commerciali con gli altri giocatori che saranno completati in modo automatico.',
 
-		11 => 'Das Commodity stock dient dazu, die maximal lagerbaren Ressourcen zu erhöhen. Zusätzlich lagerbare Ressourcen pro Liv. pro Typ: 50.000',
+		11 => 'Stoccaggio Materie Prime consente di aumentare il numero di risorse accumulabili. Ad ogni livello la quantit&agrave; di risorsa stoccabile viene incrementata di 50000 per tipo.',
 
 		12 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali potenziate a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
 
@@ -1562,27 +1562,27 @@ $BUILDING_DESCRIPTION = array (
 
 	10 => array(
 
-		 0 => 'Je weiter das Imperiale Hauptquartier der Kolonie ausgebaut ist, desto mehr und unterschiedliche Gebäude können gebaut werden.',
+		 0 => 'Pi&ugrave; il Krenim Imperium viene ampliato, pi&ugrave; costruzioni differenti possono essere costruite.',
 
-		1 => 'Je höher die Metal Miner ausgebaut ist, desto mehr Metall wird pro Tick gefördert.',
+		1 => 'Maggiore il livello di Minatori di Metallo, maggiore la quantit&agrave; di metalli ottenuta ad ogni tick.',
 
-		2 => 'Je höher die Mineral Extraction ausgebaut ist, desto mehr Mineral wird pro Tick gefördert.',
+		2 => 'Maggiore il livello di Estrattori di Minerali, maggiore la quantit&agrave; di metalli ottenuta ad ogni tick.',
 
-		3 => 'Je höher die Latinumraffination ausgebaut ist, desto mehr Latinum wird pro Tick gefördert.',
+		3 => 'Maggiore il livello di Estrattori di Dilitio, maggiore la quantit&agrave; di dilitio ottenuta ad ogni tick.',
 
-		4 => 'Um eine wachsende Kolonie zu versorgen, müssen Nuclear Reactore gebaut werden. Jeder Nuclear Reactor kann zehn zusätzliche Gebäude versorgen.',
+		4 => 'Al fine di poter alimentare una colonia in crescita, &egrave; necessario costruire un Reattore Nucleare. Ogni reattore nucleare &egrave; in grado di fornire energia ad ulteriori dieci edifici.',
 
-		5 => 'Die War Academy dient der Ausbildung von Kämpfern und Spezialisten. Je höher die War Academy ausgebaut ist, desto bessere Einheiten können ausgebildet werden.',
+		5 => 'L&#146;Accademia della Guerra serve per la formazione di combattenti e specialisti. Pi&ugrave; l&#146;Accademia &egrave; stata sviluppata, migliore &egrave; il tipo di unit&agrave; che possono essere addestrate.',
 
-		6 => 'Der Orbital Harbour dient der Beherbergung und Reparatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet eine Verbesserung der Sensorenstärke.',
+		6 => 'Il Porto Orbitale serve per l&#146;ormeggio e la riparazione delle navi danneggiate. Attraverso ogni fase di sviluppo, i sensori del pianeta migliorano la loro portata.',
 
-		7 => 'Die War Shipyard dient dem Bau neuer Schiffe. Je höher die Werft ausgebaut ist, desto schneller können Schiffe fertiggestellt werden.',
+		7 => 'L&#146;Arsenale Militare serve per la costruzione di nuove navi. Pi&ugrave; il cantiere navale viene ampliato, pi&ugrave; velocemente saranno completate le navi.',
 
-		8 => 'Das Laboratory dient der Erforschung neuer Technologien. Je höher das Laboratory ausgebaut ist, desto mehr neue Technologien können entwickelt werden.',
+		8 => 'I Laboratori servono per ricercare nuove tecnologie. Pi&ugrave; i Laboratori sono estesi, pi&ugrave; nuove tecnologie possono essere sviluppate.',
 
 		9 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
 
-		10 => 'Die Handelsbörse ermöglicht die Teilnahme am galaktischen Handel mit anderen Spielern und Allianzen.',
+		10 => 'La Borsa Mercantile rende possibile partecipare a scambi commerciali con altri giocatori e alleanze.',
 
 		11 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di materie prime stoccabili (circa 50.000 per livello).',
 
@@ -1626,31 +1626,31 @@ $BUILDING_DESCRIPTION = array (
 
 
 
-	// Menschen 29th
+	// Umani 29o
 
 	12 => array(
 
-		0 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr neue Gebäude können gebaut werden.',
+		0 => 'Maggiore il livello di questa struttura, maggiore il numero di strutture costruibili sul pianeta.',
 
-		1 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Metall wird pro Tick abgebaut.',
+		1 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di metalli ottenuta ad ogni tick.',
 
-		2 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Mineralien werden pro Tick abgebaut.',
+		2 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di minerali ottenuta ad ogni tick.',
 
-		3 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Latinum kann pro Tick produziert werden.',
+		3 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di dilitio ottenuta ad ogni tick.',
 
-		4 => 'Man muss ein Kraftwerk pro 10 Gebäude bauen,<br>damit diese noch mit ausreichend Energie versorgt werden.',
+		4 => 'Costruire un livello di questa struttura permette di alimentare 10 livelli di altre strutture presenti sul pianeta.',
 
-		5 => 'Je nach Liv. der Akademie können Arbeiter zu veschiedenen Einheiten-<br>typen ausgebildet werden.',
+		5 => 'A seconda del livello di Accademia i lavoratori possano essere addestrati come diversi tipi di unit&agrave;.',
 
-		6 => 'Der Raumhafen dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet +200 Sensorenstärke.',
+		6 => 'Lo Spazioporto serve per la riparazione delle navi danneggiate. Con ogni stadio di sviluppo il pianeta riceve un miglioramento della forza dei sensori.',
 
-		7 => 'Je höher das Gebäude ausgebaut ist,<br>desto schneller können Schiffe gebaut werden.<br>Pro 50 Punkte des Planeten kann der jeweils nächsthöhere Rumpftyp gebaut werden.',
+		7 => 'Maggiore il livello di questa struttura, maggiore la velocit&agrave; con cui vengono costruite le navi stellari.<br>Per 50 point of the planet the next higher in each case type of trunk can be built.',
 
 		8 => 'Potenziare questa struttura permette di ricercare un maggior numero di tecnologie.<br>Alcune tecnologie sono necessarie per produrre soldati o navi.',
 
 		9 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
 
-		10 => 'Diese Einrichtung ermöglicht es, mit anderen Spielern Geschäftsbeziehungen zu schließen, die automatisiert abgewickelt werden.',
+		10 => 'Questa struttura rende possibile concludere rapporti commerciali con gli altri giocatori che saranno completati in modo automatico.',
 
 		11 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di materie prime stoccabili (circa 10.000 per livello).',
 
@@ -1660,30 +1660,30 @@ $BUILDING_DESCRIPTION = array (
 
 
 
-	// Siedler
+	// Coloni
 	13 => array(
 
-		0 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr neue Gebäude können gebaut werden.',
+		0 => 'Maggiore il livello di questa struttura, maggiore il numero di strutture costruibili sul pianeta.',
 
-		1 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Metall wird pro Tick abgebaut.',
+		1 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di metalli ottenuta ad ogni tick.',
 
-		2 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Mineralien werden pro Tick abgebaut.',
+		2 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di minerali ottenuta ad ogni tick.',
 
-		3 => 'Je höher das Gebäude ausgebaut ist,<br>desto mehr Latinum kann pro Tick produziert werden.',
+		3 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di dilitio ottenuta ad ogni tick.',
 
-		4 => 'Man muss ein Kraftwerk pro 10 Gebäude bauen,<br>damit diese noch mit ausreichend Energie versorgt werden.',
+		4 => 'Costruire un livello di questa struttura permette di alimentare 10 livelli di altre strutture presenti sul pianeta.',
 
-		5 => 'Je nach Liv. der Akademie können Arbeiter zu veschiedenen Einheiten-<br>typen ausgebildet werden.',
+		5 => 'A seconda del livello di Accademia i lavoratori possano essere addestrati come diversi tipi di unit&agrave;.',
 
-		6 => 'Der Raumhafen dient der Reperatur beschädigter Schiffe. Durch jede Ausbaustufe erhält der Planet +200 Sensorenstärke.',
+		6 => 'Lo Spazioporto serve per la riparazione delle navi danneggiate. Con ogni stadio di sviluppo il pianeta riceve un miglioramento della forza dei sensori.',
 
-		7 => 'Je höher das Gebäude ausgebaut ist,<br>desto schneller können Schiffe gebaut werden.<br>Pro 50 Punkte des Planeten kann der jeweils nächsthöhere Rumpftyp gebaut werden.',
+		7 => 'Maggiore il livello di questa struttura, maggiore la velocit&agrave; con cui vengono costruite le navi stellari.<br>Pro 50 Punkte des Planeten kann der jeweils nächsthöhere Rumpftyp gebaut werden.',
 
 		8 => 'Potenziare questa struttura permette di ricercare un maggior numero di tecnologie.<br>Alcune tecnologie sono necessarie per produrre soldati o navi.',
 
 		9 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
 
-		10 => 'Diese Einrichtung ermöglicht es, mit anderen Spielern Geschäftsbeziehungen zu schließen, die automatisiert abgewickelt werden.',
+		10 => 'Questa struttura rende possibile concludere rapporti commerciali con gli altri giocatori che saranno completati in modo automatico.',
 
 		11 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di materie prime stoccabili (circa 10.000 per livello).',
 
@@ -1810,13 +1810,13 @@ $TECH_DESCRIPTION = array (
 
 		0 => 'Grazie al <b>Terraforming</b> guadagni un lavoratore extra per ogni 10 cicli di tick per ogni livello di Terraforming sviluppato. Inoltre, per ogni livello viene innalzato il limite di popolazione del pianeta di circa 425 unit&agrave;.',
 
-			1 => 'Grazie agli studi sullo <b>Sviluppo dei Cloni</b> &egrave; possibile ottenere un lavoratore extra ogni 5 cicli di tick per ogni livello sviluppato.',
+		1 => 'Grazie agli studi sullo <b>Sviluppo dei Cloni</b> &egrave; possibile ottenere un lavoratore extra ogni 5 cicli di tick per ogni livello sviluppato.',
 
-			2 => 'Miglioramenti nella tecnologia della <b>Difesa Orbitale</b> ti permettono di potenziare le difese planetarie. Per ogni livello di sviluppo vengono applicate le seguenti modifiche:<br>Costi di realizzazione -3.5% / Liv.<br>Difese basiche: +1 / Liv.<br>Difese avanzate: +1 / Liv.',
+		2 => 'Miglioramenti nella tecnologia della <b>Difesa Orbitale</b> ti permettono di potenziare le difese planetarie. Per ogni livello di sviluppo vengono applicate le seguenti modifiche:<br>Costi di realizzazione -3.5% / Liv.<br>Difese basiche: +1 / Liv.<br>Difese avanzate: +1 / Liv.',
 
-			3 => 'Attraverso l&#146;<b>Automazione</b> dei processi costruttivi delle strutture di questo pianeta, viene risparmiato circa il 20% del tempo di costruzione per livello.<br>Un risparmio di circa 1/5 del tempo di costruzione di ogni struttura giustifica l&#146;elevato costo in risorse per affrontare lo sviluppo.',
+		3 => 'Attraverso l&#146;<b>Automazione</b> dei processi costruttivi delle strutture di questo pianeta, viene risparmiato circa il 20% del tempo di costruzione per livello.<br>Un risparmio di circa 1/5 del tempo di costruzione di ogni struttura giustifica l&#146;elevato costo in risorse per affrontare lo sviluppo.',
 
-			4 => 'Miglioramenti nella <b>Lavorazione dei Materiali</b> aumentano la quantit&agrave; di risorse estratte dalle miniere/raffinerie:<br>Liv. 1: +4,5%<br>Liv. 2: +8,75%<br>Liv. 3: +12,75%<br>Liv. 4: +16,5%<br>Liv. 5: +20%<br>Liv. 6: +23,25%<br>Liv. 7: +26,25%<br>Liv. 8: +29%<br>Liv. 9: +31,5%',
+		4 => 'Miglioramenti nella <b>Lavorazione dei Materiali</b> aumentano la quantit&agrave; di risorse estratte dalle miniere/raffinerie:<br>Liv. 1: +4,5%<br>Liv. 2: +8,75%<br>Liv. 3: +12,75%<br>Liv. 4: +16,5%<br>Liv. 5: +20%<br>Liv. 6: +23,25%<br>Liv. 7: +26,25%<br>Liv. 8: +29%<br>Liv. 9: +31,5%',
 
 	),
 
@@ -1917,15 +1917,15 @@ $TECH_DESCRIPTION = array (
 
 	10 => array(
 
-		 0 => 'Durch ökologische Anpassung eines Planeten bekommt man pro 10 Ticks einen zusätzlichen Arbeiter, außerdem vergrößert es den Wohnraum der Bevölkerung um 575.',
+		0 => 'Tramite l&#146;<b>Adattamento Ecologico</b> di un pianeta ottieni un lavoratore extra per ogni 10 cicli di tick, esso inoltre aumenta lo spazio abitativo di 575.',
 
-		1 => 'Die biochemische Forschung verbessert die Gesundheit der Bevölkerung und führt zu einem höheren Bevölkerungswachstum: In jedem 5. Tick gibt es einen zusätzlichen Arbeiter.',
+		1 => 'La <b>Ricerca Bioscientifica</b> migliora la salute della popolazione e e conduce ad una crescita demografica maggiore: ad ogni 5 cicli di tick viene prodotto un operaio supplementare.',
 
-		2 => 'Durch das Erforschen von orbitalen Defensivmaßnahmen verändern sich die Kosten und die maximale Anzahl an orbitalen Large Orbital Battlestationen wie folgt: Kosten -3,5% / Liv., Anzahl +2 / Liv.',
+		2 => 'L&#146;esplorazione delle <b>Strutture Difensive Orbitali</b> modifica i costi ed il numero massimo di grandi stazioni di battaglia orbitali come segue: Costi -3.5%/Liv., Quantit&agrave; +2/Liv.',
 
-		3 => 'Durch Mechanisierung laufen sämtliche Entwicklungs- und Produktionsvorgänge um 2% pro Liv. schneller ab. Eine Einsparung von fast 1/5 der Entwicklungszeiten auf dem Planeten rechtfertigt den hohen Forschungspreis.',
+		3 => 'La <b>Meccanizzazione</b> consente di ridurre i tempi di produzione e di sviluppo del 2% ad ogni livello.<br>Un risparmio di quasi 1/5 del tempo nello sviluppo del pianeta giustifica il prezzo elevato.',
 
-		4 => 'Bergbaurobotik erhöht den Rohstoffoutput aller Minen auf dem Planeten wie folgt:<br>Liv. 1: +4,5%<br>Liv. 2: 8,75%<br>Liv. 3: +12,75%<br>Liv. 4: +16,5%<br>Liv. 5: +20%<br>Liv. 6: +23,25%<br>Liv. 7: +26,25%<br>Liv. 8: +29%<br>Liv. 9: +31,5%', 
+		4 => 'La <b>Robotica Estrattiva</b> incrementa la produzione di risorse nel modo seguente:<br>Liv. 1: +4.5%<br>Liv. 2: 8.75%<br>Liv. 3: +12.75%<br>Liv. 4: +16.5%<br>Liv. 5: +20%<br>Liv. 6: +23.25%<br>Liv. 7: +26.25%<br>Liv. 8: +29%<br>Liv. 9: +31.5%',
 
 	),
 
@@ -1954,40 +1954,40 @@ $TECH_DESCRIPTION = array (
 
 	),
 
-	
 
-	
 
-	// Menschen 29th
+
+
+	// Umani 29o
 
 	12 => array(
 
-		0 => 'Terraforming',
+		0 => 'Grazie al <b>Terraforming</b> guadagni un lavoratore extra per ogni 10 cicli di tick per ogni livello di Terraforming sviluppato. Inoltre, per ogni livello viene innalzato il limite di popolazione del pianeta di circa 450 unit&agrave;.',
 
-		1 => 'Medizinische Forschung',
+		1 => 'Grazie alla <b>Ricerca Medica</b> guadagni un lavoratore extra ogni 5 cicli di tick per ogni livello sviluppato.',
 
-		2 => 'Orbitalabwehr',
+		2 => 'Miglioramenti nella tecnologia della <b>Difesa Orbitale</b> ti permettono di potenziare le difese planetarie. Per ogni livello di sviluppo vengono applicate le seguenti modifiche:<br>Costi di realizzazione -3.5% / Liv.<br>Difese basiche: +1 / Liv.<br>Difese avanzate: +1 / Liv.',
 
-		3 => 'Automatisierung',
+		3 => 'Attraverso l&#146;<b>Automazione</b> dei processi costruttivi delle strutture di questo pianeta, viene risparmiato circa il 20% del tempo di costruzione per livello.<br>Un risparmio di circa 1/5 del tempo di costruzione di ogni struttura giustifica l&#146;elevato costo in risorse per affrontare lo sviluppo.',
 
-		4 => 'Rohstoffverarbeitung'
+		4 => 'Miglioramenti nella <b>Lavorazione dei Materiali</b> aumentano la quantit&agrave; di risorse estratte dalle miniere/raffinerie:<br>Liv. 1: +4,5%<br>Liv. 2: +8,75%<br>Liv. 3: +12,75%<br>Liv. 4: +16,5%<br>Liv. 5: +20%<br>Liv. 6: +23,25%<br>Liv. 7: +26,25%<br>Liv. 8: +29%<br>Liv. 9: +31,5%',
 
 	),
 
 
-	// Siedler
+	// Coloni
 
 	13 => array(
 
-		0 => 'Durch Terraforming bekommen Sie pro 10 Ticks und Liv. einen zusätzlichen Arbeiter.<br>Außerdem erhöht sich das max. Bevölkerungslimit auf dem Planeten pro Liv. um 500.',
+		0 => 'Grazie al <b>Terraforming</b> guadagni un lavoratore extra per ogni 10 cicli di tick per ogni livello di Terraforming sviluppato. Inoltre, per ogni livello viene innalzato il limite di popolazione del pianeta di circa 450 unit&agrave;.',
 
-		1 => 'Durch medizinische Forschung bekommen Sie pro 5 Ticks und Liv. einen zusätzlichen Arbeiter.',
+		1 => 'Grazie alla <b>Ricerca Medica</b> guadagni un lavoratore extra ogni 5 cicli di tick per ogni livello sviluppato.',
 
-		2 => 'Durch das Erforschen der Orbitalabwehr verändern sich die Kosten / max. Anzahl der Verteidigungsplattformen pro Liv. wie folgt:<br>Kosten -3.5% / Liv.<br>Anzahl: +2 / Liv.',
+		2 => 'Miglioramenti nella tecnologia della <b>Difesa Orbitale</b> ti permettono di potenziare le difese planetarie. Per ogni livello di sviluppo vengono applicate le seguenti modifiche:<br>Costi di realizzazione -3.5% / Liv.<br>Difese basiche: +1 / Liv.<br>Difese avanzate: +1 / Liv.',
 
-		3 => 'Durch Automatisierung laufen <b>sämtliche</b> Bau- Ausbildungsvorgänge auf Ihrem Planeten 2% pro Liv. schneller ab.<br>Eine Einsparung von fast 1/5 der Bau- und Ausbildungszeiten auf dem jeweiligen Planeten rechtfertigen den hohen Forschungspreis.',
+		3 => 'Attraverso l&#146;<b>Automazione</b> dei processi costruttivi delle strutture di questo pianeta, viene risparmiato circa il 20% del tempo di costruzione per livello.<br>Un risparmio di circa 1/5 del tempo di costruzione di ogni struttura giustifica l&#146;elevato costo in risorse per affrontare lo sviluppo.',
 
-		4 => 'Rohstoffverarbeitung erhöht den Ressourcenoutput sämtlicher Minen/Raffinerien:<br>Liv. 1: +4,5%<br>Liv. 2: +8,75%<br>Liv. 3: +12,75%<br>Liv. 4: +16,5%<br>Liv. 5: +20%<br>Liv. 6: +23,25%<br>Liv. 7: +26,25%<br>Liv. 8: +29%<br>Liv. 9: +31,5%',
+		4 => 'Miglioramenti nella <b>Lavorazione dei Materiali</b> aumentano la quantit&agrave; di risorse estratte dalle miniere/raffinerie:<br>Liv. 1: +4,5%<br>Liv. 2: +8,75%<br>Liv. 3: +12,75%<br>Liv. 4: +16,5%<br>Liv. 5: +20%<br>Liv. 6: +23,25%<br>Liv. 7: +26,25%<br>Liv. 8: +29%<br>Liv. 9: +31,5%',
 
 	),
 
