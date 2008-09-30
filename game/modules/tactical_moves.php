@@ -23,7 +23,7 @@
 
 
 $game->init_player();
-$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">'.constant($game->sprache("TEXT1")).'</a>]&nbsp;&nbsp;[<b>'.constant($game->sprache("TEXT2")).'</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_known').'">'.constant($game->sprache("TEXT4a")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]</center><br>');
+$game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">'.constant($game->sprache("TEXT1")).'</a>]&nbsp;&nbsp;[<b>'.constant($game->sprache("TEXT2")).'</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_known').'">'.constant($game->sprache("TEXT4a")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]<br><br>');
 
 $move_id = $start = $dest = 0;
 
@@ -38,19 +38,21 @@ $sql = 'SELECT ss.*,
 			   p1.planet_name AS start_planet_name,
 			   u1.user_id AS start_owner_id, u1.user_name AS start_owner_name,
 			   p2.planet_name AS dest_planet_name,
-			   u2.user_id AS dest_owner_id, u2.user_name AS dest_owner_name
+			   u2.user_id AS dest_owner_id, u2.user_name AS dest_owner_name, pd.log_code
 		FROM (scheduler_shipmovement ss)
 		INNER JOIN (planets p1) ON p1.planet_id = ss.start
 		LEFT JOIN (user u1) ON u1.user_id = p1.planet_owner
 		INNER JOIN (planets p2) ON p2.planet_id = ss.dest
 		LEFT JOIN (user u2) ON u2.user_id = p2.planet_owner
+		LEFT JOIN (planet_details pd) ON (ss.user_id = pd.user_id AND p2.system_id = pd.system_id AND pd.log_code = 500)
 		WHERE ss.user_id = '.$game->player['user_id'].' AND
 			  ss.move_begin <= '.$ACTUAL_TICK.' AND
 			  ss.move_status = 0'.
 			  ( ($move_id) ? ' AND ss.move_id = '.$move_id : '' ).
               ( ($start) ? ' AND ss.start = '.$start : '' ).
-              ( ($dest) ? ' AND ss.dest = '.$dest : '' );
-			  
+              ( ($dest) ? ' AND ss.dest = '.$dest : '' ).
+	      ' GROUP BY ss.move_id';
+
 if(!$q_moves = $db->query($sql)) {
 	message(DATABASE_ERROR, 'Could not query moves data');
 }
@@ -70,7 +72,7 @@ $sql = 'SELECT *
 		FROM ship_fleets
 		WHERE user_id = '.$game->player['user_id'].' AND
 			  move_id <> 0';
-			  
+
 if(!$q_fleets = $db->query($sql)) {
 	message(DATABASE_ERROR, 'Could not query fleets data');
 }
@@ -78,70 +80,70 @@ if(!$q_fleets = $db->query($sql)) {
 $fleets_by_move = $wares_by_move = array();
 
 while($fleet = $db->fetchrow($q_fleets)) {
-    $move_id = $fleet['move_id'];
+	$move_id = $fleet['move_id'];
 
 	if(!isset($fleets_by_move[$move_id])) $fleets_by_move[$move_id] = array();
-	
+
 	$fleets_by_move[$move_id][] = array($fleet['fleet_id'], $fleet['fleet_name'], $fleet['n_ships']);
-	
+
 	if($fleet['resource_1'] > 0) {
 	    if(!isset($wares_by_move[$move_id][0])) $wares_by_move[$move_id][0] = $fleet['resource_1'];
 	    else $wares_by_move[$move_id][0] += $fleet['resource_1'];
-    }
-    
+	}
+
 	if($fleet['resource_2'] > 0) {
 	    if(!isset($wares_by_move[$move_id][1])) $wares_by_move[$move_id][1] = $fleet['resource_2'];
 	    else $wares_by_move[$move_id][1] += $fleet['resource_2'];
-    }
-    
+	}
+
 	if($fleet['resource_3'] > 0) {
 	    if(!isset($wares_by_move[$move_id][2])) $wares_by_move[$move_id][2] = $fleet['resource_3'];
 	    else $wares_by_move[$move_id][2] += $fleet['resource_3'];
-    }
-    
+	}
+
 	if($fleet['resource_4'] > 0) {
 	    if(!isset($wares_by_move[$move_id][3])) $wares_by_move[$move_id][3] = $fleet['resource_4'];
 	    else $wares_by_move[$move_id][3] += $fleet['resource_4'];
-    }
-    
+	}
+
 	if($fleet['unit_1'] > 0) {
 	    if(!isset($wares_by_move[$move_id][4])) $wares_by_move[$move_id][4] = $fleet['unit_1'];
 	    else $wares_by_move[$move_id][4] += $fleet['unit_1'];
-    }
+	}
 	if($fleet['unit_2'] > 0) {
 	    if(!isset($wares_by_move[$move_id][5])) $wares_by_move[$move_id][5] = $fleet['unit_2'];
 	    else $wares_by_move[$move_id][5] += $fleet['unit_2'];
-    }
-    
+	}
+
 	if($fleet['unit_3'] > 0) {
 	    if(!isset($wares_by_move[$move_id][6])) $wares_by_move[$move_id][6] = $fleet['unit_3'];
 	    else $wares_by_move[$move_id][6] += $fleet['unit_3'];
-    }
+	}
 
 	if($fleet['unit_4'] > 0) {
 	    if(!isset($wares_by_move[$move_id][7])) $wares_by_move[$move_id][7] = $fleet['unit_4'];
 	    else $wares_by_move[$move_id][7] += $fleet['unit_4'];
-    }
-    
+	}
+
 	if($fleet['unit_5'] > 0) {
 	    if(!isset($wares_by_move[$move_id][8])) $wares_by_move[$move_id][8] = $fleet['unit_5'];
 	    else $wares_by_move[$move_id][8] += $fleet['unit_5'];
-    }
-    
+	}
+
 	if($fleet['unit_6'] > 0) {
 	    if(!isset($wares_by_move[$move_id][9])) $wares_by_move[$move_id][9] = $fleet['unit_6'];
 	    else $wares_by_move[$move_id][9] += $fleet['unit_6'];
-    }
+	}
 }
 
-// Fr die Ankunftstimer
+// For the arrival timer
 $i = 2;
 
 while($move = $db->fetchrow($q_moves)) {
 	$move_id = $move['move_id'];
-	
+
 	$n_fleets = count($fleets_by_move[$move_id]);
-	
+
 	if($n_fleets == 0) {
 		message(GENERAL, constant($game->sprache("TEXT8")), '$n_fleets[$move[\'move_id\']] = empty');
 	}
@@ -157,35 +159,41 @@ while($move = $db->fetchrow($q_moves)) {
 		if(empty($move['start_owner_id'])) $start_owner_str = ' <i>'.constant($game->sprache("TEXT9")).'</i>';
 		elseif($move['start_owner_id'] != $game->player['user_id']) $start_owner_str = ' '.constant($game->sprache("TEXT10")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$move['start_owner_id']).'"><b>'.$move['start_owner_name'].'</b></a>';
 		else $start_owner_str = '';
-		
+
 		$game->out(constant($game->sprache("TEXT11")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($move['start'])).'"><b>'.$move['start_planet_name'].'</b></a>'.$start_owner_str.'<br>');
 	}
 	else {
 		if(empty($move['start_owner_id'])) $start_owner_str = ' <i>'.constant($game->sprache("TEXT9")).'</i>';
 		elseif($move['start_owner_id'] != $game->player['user_id']) $start_owner_str = ' '.constant($game->sprache("TEXT10")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$move['start_owner_id']).'"><b>'.$move['start_owner_name'].'</b></a>';
 		else $start_owner_str = '';
-		
-	    if(empty($move['dest_owner_id'])) $dest_owner_str = ' <i>'.constant($game->sprache("TEXT9")).'</i>';
+
+		if(empty($move['dest_owner_id'])) $dest_owner_str = ' <i>'.constant($game->sprache("TEXT9")).'</i>';
 		elseif($move['dest_owner_id'] != $game->player['user_id']) $dest_owner_str = ' '.constant($game->sprache("TEXT10")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$move['dest_owner_id']).'"><b>'.$move['dest_owner_name'].'</b></a>';
 		else $dest_owner_str = '';
-		
+
+		$system_is_known = false;
+		if(isset($move['log_code']) && $move['log_code'] == 500) { $system_is_known = true; }
+
+		$know_dest_str = ' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($move['dest'])).'"><b>'.$move['dest_planet_name'].'</b></a>'.$dest_owner_str;
+		$unknow_dest_str = ' <b><i>&#171;'.constant($game->sprache("TEXT28")).'&#187;</i></b>';
+
 		$game->out(constant($game->sprache("TEXT12")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($move['start'])).'"><b>'.$move['start_planet_name'].'</b></a>'.$start_owner_str.'<br>
-	  '.constant($game->sprache("TEXT13")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($move['dest'])).'"><b>'.$move['dest_planet_name'].'</b></a>'.$dest_owner_str.'<br>
+		'.constant($game->sprache("TEXT13")).( $system_is_known ? $know_dest_str : $unknow_dest_str).'<br>
 		');
 	}
-	
+
 	$game->out('
 	  <br>
 	  <select name="fleets[]" style="width: 200px;">
 	');
-	
+
 	for($j = 0; $j < $n_fleets; ++$j) {
 		$game->out('<option value="'.$fleets_by_move[$move_id][$j][0].'">'.$fleets_by_move[$move_id][$j][1].' ('.$fleets_by_move[$move_id][$j][2].')</option>');
 	}
-	
+
 	$ticks_left = $move['move_finish'] - $ACTUAL_TICK;
 	if($ticks_left < 0) $ticks_left = 0;
-	
+
 	$game->out('
 	  </select>&nbsp;&nbsp;<input class="button" type="submit" name="fleet_details" value="'.constant($game->sprache("TEXT14")).'">
 	  <br><br>
@@ -253,7 +261,7 @@ while($move = $db->fetchrow($q_moves)) {
 </table>
 <br>
 	');
-	
+
 	++$i;
 }
 
