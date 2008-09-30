@@ -170,6 +170,8 @@ define ("GER_TEXT75", 'Flotten zusammenfgen');
 
 define ("GER_TEXT76", 'Handelsroute');
 
+define ("GER_TEXT77", '<i>unbekannt</i>');
+
 //English
 define ("ENG_TEXT0", 'Fleets:');
 
@@ -319,6 +321,8 @@ define ("ENG_TEXT75", 'Flotten zusammenfgen');
 
 define ("ENG_TEXT76", 'Trade route');
 
+define ("ENG_TEXT77", '<i>unknown</i>');
+
 //Italian
 define ("ITA_TEXT0", 'Flotte:');
 
@@ -426,7 +430,7 @@ define ("ITA_TEXT51", 'Errore - La flotta &egrave; posizionata sul pianeta');
 
 define ("ITA_TEXT55", 'Partenza:');
 
-define ("ITA_TEXT56", '<i>sconosciuto</i>'); 
+define ("ITA_TEXT56", '<i>sconosciuto</i>');
 
 define ("ITA_TEXT57", 'Obiettivo:');
 
@@ -467,5 +471,7 @@ define ("ITA_TEXT74", 'Classe:');
 define ("ITA_TEXT75", 'Unisci flotte');
 
 define ("ITA_TEXT76", 'Rotta Commerciale');
+
+define ("ITA_TEXT77", '<i>sconosciuta</i>');
 
 ?>
