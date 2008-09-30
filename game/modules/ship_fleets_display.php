@@ -1042,22 +1042,31 @@ else {
             );
 
             // 30/09/08 - AC: Added fog of war also in this module
-            $sql = 'SELECT COUNT(*) AS system_is_known FROM planet_details
-                    WHERE log_code = 500 AND system_id = '.$dest_planet['system_id'].' AND user_id = '.$game->player['user_id'];
-            if((($_temp = $db->queryrow($sql)) == true) && ($_temp['system_is_known'] > 0)) {
+            $system_known = false;
+            if($fleet['dest_owner_id'] == $game->player['user_id'])
+                $system_known = true;
+            else {
+                $sql = 'SELECT pd.log_code FROM (planets p)
+                               LEFT JOIN (planet_details pd) ON p.system_id = pd.system_id
+                        WHERE p.planet_id = '.$fleet['dest'].' AND pd.user_id = '.$game->player['user_id'];
+                if((($_temp = $db->queryrow($sql)) == true) && ($_temp['log_code'] > 0)) {
+                    $system_known = true;
+                }
+            }
+            if($system_known) {
                 $dest_name = addslashes($fleet['dest_planet_name']);
-                $dest_owner = $fleet['dest_owner_name'];
+                $dest_owner = ( (!empty($fleet['dest_owner_id'])) ? constant($game->sprache("TEXT72")).' <b>'.$fleet['dest_owner_name'].'</b>' : constant($game->sprache("TEXT73")) );
                 $dest_class = strtoupper($fleet['dest_planet_type']);
             }
             else {
                 $dest_name = '&#171;'.constant($game->sprache("TEXT56")).'&#187;';
-                $dest_owner = '&#171;'.constant($game->sprache("TEXT56")).'&#187;';
+                $dest_owner = constant($game->sprache("TEXT72")).' <b>&#171;'.constant($game->sprache("TEXT56")).'&#187;</b>';
                 $dest_class = '&#171;'.constant($game->sprache("TEXT77")).'&#187;';
             }
 
             $dest_planet_str = overlib(
                 $game->get_sector_name($fleet['dest_sector_id']).':'.$game->get_system_cname($fleet['dest_system_x'], $fleet['dest_system_y']).':'.($fleet['dest_distance_id'] + 1),
-                '<b>'.$dest_name.'</b><br>'.( (!empty($fleet['dest_owner_id'])) ? constant($game->sprache("TEXT72")).' <b>'.$dest_owner.'</b>' : constant($game->sprache("TEXT73")) ).'<br>'.constant($game->sprache("TEXT74")).' <b>'.$dest_class.'</b>',
+                '<b>'.$dest_name.'</b><br>'.$dest_owner.'<br>'.constant($game->sprache("TEXT74")).' <b>'.$dest_class.'</b>',
                 parse_link('a=tactical_cartography&planet_id='.encode_planet_id($fleet['dest']))
             );
 
