@@ -214,11 +214,15 @@ define ("GER_TEXT92", 'Survey:');
 
 define ("GER_TEXT93", 'No expedition done yet.');
 
-define ("GER_TEXT121", 'Il pianeta viene assimilato dai Borg in data ');
+define ("GER_TEXT121", 'The planet is assimilated by the Borg on ');
 
-define ("GER_TEXT122", 'Ai coloni del pianeta viene concessa l&#146;indipendenza da <b>');
+define ("GER_TEXT122", 'To the settlers of the planets, <b>');
 
-define ("GER_TEXT123", '</b> in data ');
+define ("GER_TEXT123", '</b> grant independence on ');
+
+define ("GER_TEXT124", 'The following information indicates the mood of the settlers on the planet than any species and is updated automatically every tick:');
+
+define ("GER_TEXT125", 'Average value = 100, indicates indifference.<br>Higher values indicate benevolent behavior toward the race.<br>Lower values indicate that the settlers are hostile towards the race.');
 
 
 
@@ -469,11 +473,15 @@ define ("ENG_TEXT119", '</b> reached the planet, fighting for the right of colon
 
 define ("ENG_TEXT120", '<i>&#171;Unknown&#187;</i>');
 
-define ("ENG_TEXT121", 'Il pianeta viene assimilato dalla comunit&agrave Borg in data ');
+define ("ENG_TEXT121", 'The planet is assimilated by the Borg on ');
 
-define ("ENG_TEXT122", 'Ai coloni del pianeta viene concessa l&#146;indipendenza da <b>');
+define ("ENG_TEXT122", 'To the settlers of the planets, <b>');
 
-define ("ENG_TEXT123", '</b> in data ');
+define ("ENG_TEXT123", '</b> grant independence on ');
+
+define ("ENG_TEXT124", 'The following information indicates the mood of the settlers on the planet than any species and is updated automatically every tick:');
+
+define ("ENG_TEXT125", 'Average value = 100, indicates indifference.<br>Higher values indicate benevolent behavior toward the race.<br>Lower values indicate that the settlers are hostile towards the race.');
 
 
 
@@ -729,5 +737,9 @@ define ("ITA_TEXT121", 'Il pianeta viene assimilato dalla comunit&agrave Borg in
 define ("ITA_TEXT122", 'Ai coloni del pianeta, <b>');
 
 define ("ITA_TEXT123", '</b> concede l&#146;indipendenza in data ');
+
+define ("ITA_TEXT124", 'Le seguenti informazioni indicano lo stato d&#146;animo dei coloni sul pianeta rispetto ad ogni razza e vengono aggiornate automaticamente ad ogni tick:');
+
+define ("ITA_TEXT125", 'Valore medio = 100, indica indifferenza.<br>Valori superiori indicano comportamenti benevoli verso la raxza.<br>Valori inferiori indicano che i coloni sono ostili verso la razza.');
 
 ?>
