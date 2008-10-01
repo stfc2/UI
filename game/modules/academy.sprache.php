@@ -30,7 +30,7 @@ define ("GER_Text4", 'Ausgebildet wird nichts');
 
 define ("GER_Text5", 'Verbleibende Zeit:');
 
-define ("GER_Text6", '<center><table border="0" cellpadding="2" cellspacing="2" background="http://stfc.nonsolotaku.it/stgc5_gfx/skin1/template_bg3.jpg" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Verf&uuml;gbare Einheiten:</span></center><br>');
+define ("GER_Text6", '<center><table border="0" cellpadding="2" cellspacing="2" background="http://www.stfc.it/stfc_gfx/skin1/template_bg3.jpg" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Verf&uuml;gbare Einheiten:</span></center><br>');
 
 define ("GER_Text7", '<tr><td width=115><b>Einheit:</b></td><td width=215><b>Kosten:</b></td><td width=70><b>Dauer:</b></td></tr>');
 
@@ -104,7 +104,7 @@ define ("ENG_Text4", 'Nothing is trained');
 
 define ("ENG_Text5", 'Remaining time:');
 
-define ("ENG_Text6", '<center><table border="0" cellpadding="2" cellspacing="2" background="http://stfc.nonsolotaku.it/stgc/stgc5_gfx/skin1/template_bg3.jpg" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Available units:</span></center><br>');
+define ("ENG_Text6", '<center><table border="0" cellpadding="2" cellspacing="2" background="http://www.stfc.it/stfc_gfx/skin1/template_bg3.jpg" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Available units:</span></center><br>');
 
 define ("ENG_Text7", '<tr><td width=115><b>Unit: </b></td><td width=215><b>Costs:</b></td><td width=70><b>Duration:</b></td></tr>');
 
@@ -179,7 +179,7 @@ define ("ITA_Text4", 'Nessuno in addestramento');
 
 define ("ITA_Text5", 'Tempo rimanente:');
 
-define ("ITA_Text6", '<center><table border="0" cellpadding="2" cellspacing="2" background="http://stfc.nonsolotaku.it/stgc/stgc5_gfx/skin1/template_bg3.jpg" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Unit&agrave; disponibili:</span></center><br>');
+define ("ITA_Text6", '<center><table border="0" cellpadding="2" cellspacing="2" background="http://www.stfc.it/stfc_gfx/skin1/template_bg3.jpg" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Unit&agrave; disponibili:</span></center><br>');
 
 define ("ITA_Text7", '<tr><td width=115><b>Unit&agrave;: </b></td><td width=215><b>Costi:</b></td><td width=70><b>Durata:</b></td></tr>');
 

@@ -210,7 +210,7 @@ class maps {
                 $angle -= 270;
             }
             else {
-                return message(GENERAL, 'Bad angle '.$angle.'° of planet distance '.$radius);
+                return message(GENERAL, 'Bad angle '.$angle.'Â° of planet distance '.$radius);
             }
 
             $tri_a = sin( ($angle * M_PI ) / 180 ) * $radius;
@@ -444,7 +444,7 @@ class maps {
 
         $orbit_color = imagecolorallocate($im, 50, 50, 50);
 
-        $cl_own_planet = imagecolorallocate($im, 0, 255, 0); // grün
+        $cl_own_planet = imagecolorallocate($im, 0, 255, 0); // grÃ¼n
         $cl_active_planet = imagecolorallocate($im, 255, 255, 0); // gelb
         $cl_alliance_planet = imagecolorallocate($im, 0, 0, 255); // blau
         $cl_attack_protection = imagecolorallocate($im, 180, 180, 180); // grau
@@ -622,7 +622,7 @@ class maps {
 
         $star_colors = array(
             imagecolorallocate($im, 0, 0, 255), // blau
-            imagecolorallocate($im, 255, 255, 255), // weiß
+            imagecolorallocate($im, 255, 255, 255), // weiÃŸ
             imagecolorallocate($im, 200, 100, 0), // gelb
             imagecolorallocate($im, 255, 0, 0), // rot
         );
@@ -660,7 +660,7 @@ class maps {
             imagefilledellipse($im, ($start_x + 2), ($start_y + 2), 3, 3, $cl);
         }
 
-        imagepng($im, '/home/taku/public_html/stfc/game/maps/images/galaxy_detail.png');
+        imagepng($im, '/root/stfc/game/maps/images/galaxy_detail.png');
         imagedestroy($im);
     }
 }
