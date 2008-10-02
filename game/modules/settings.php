@@ -217,7 +217,7 @@ global $config;
 
         <tr>
           <td valign=top>'.constant($game->sprache("TEXT28")).'</td>
-          <td><input type="checkbox" name="user_enable_sig" value="1"'.( ($data['user_enable_sig']) ? ' checked="checked"' : '' ).'> '.constant($game->sprache("TEXT29")).'<br>(<a href="http://www.stfc.it/game/sig_tmp/'.strtolower($game->player['user_name']).'.jpg" target=_blank>http://www.stfc.it/game/sig.php?user='.$game->player['user_name'].'</a>)<br>
+          <td><input type="checkbox" name="user_enable_sig" value="1"'.( ($data['user_enable_sig']) ? ' checked="checked"' : '' ).'> '.constant($game->sprache("TEXT29")).'<br>(<a href="'.$config['game_url'].'/game/sig_tmp/'.strtolower($game->player['user_name']).'.jpg" target=_blank>'.$config['game_url'].'/game/sig.php?user='.$game->player['user_name'].'</a>)<br>
 	  <i>'.constant($game->sprache("TEXT30")).'</i></td>
         </tr>
 
@@ -346,7 +346,7 @@ function display_delete_account($message = '') {
       <table border="0" cellpadding="0" cellspacing="0">
         <tr>
           <td>
-            <input class="button" style="width: 200px;" type="submit" name="submit_del" value="'.constant($game->sprache("TEXT54")).'">
+            <input class="button" style="width: 200px;" type="submit" name="submit_del" value="'.constant($game->sprache("TEXT10")).'">
           </td>
         </tr>
       </table>
@@ -1148,13 +1148,13 @@ switch($module) {
 
                 if(substr($_POST['user_skinpath'], -1, 1) != '/') $_POST['user_skinpath'] .= '/';
             }
-            
-            
 
-				if ($_POST['country']!='DE' && $_POST['country']!='AT' && $_POST['country']!='CH' &&
-					$_POST['country']!='IT' && $_POST['country']!='FR' && $_POST['country']!='EN' &&
-					$_POST['country']!='SP') $_POST['country']='XX';
-	
+
+
+            if ($_POST['country']!='DE' && $_POST['country']!='AT' && $_POST['country']!='CH' &&
+                $_POST['country']!='IT' && $_POST['country']!='FR' && $_POST['country']!='EN' &&
+                $_POST['country']!='SP') $_POST['country']='XX';
+
 
             $sql = 'UPDATE user
                     SET user_avatar = "'.addslashes($_POST['user_avatar']).'",
@@ -1201,14 +1201,14 @@ switch($module) {
                 message(DATABASE_ERROR, 'Could not update user active data');
             }
 
-          	include_once('include/libs/email.php');
+            include_once('include/libs/email.php');
 
             $reg_ip_split = explode('.', $game->player['user_registration_ip']);
             $last_ip_split = explode('.', $game->player['last_ip']);
 
             $confirm_key = md5( ((int)$reg_ip_split[0] + (int)$reg_ip_split[1] + (int)$reg_ip_split[2] + (int)$reg_ip_split[3]) * ((int)$last_ip_split[0] + (int)$last_ip_split[1] + (int)$last_ip_split[2] + (int)$last_ip_split[3]) - (int)$game->uid );
 
-            $confirm_link = 'http://www.stfc.it/index.php?a=delete&galaxy=0&user_id='.$game->player['user_id'].'&key='.$confirm_key;
+            $confirm_link = $config['game_url'].'/index.php?a=delete&galaxy=0&user_id='.$game->player['user_id'].'&key='.$confirm_key;
 
             $mail_message = $game->player['user_name'].',
 
@@ -1216,14 +1216,14 @@ switch($module) {
 
 '.$confirm_link.'
 
-Live long and in peace, 
-Your STFC team.
+Lunga vita e prosperità,
+il team STFC.
 
 
-Credits: http://www.stfc.it/index.php?a=imprint';
+Credits: '.$config['game_url'].'/index.php?a=imprint';
 
-            stgc_mail('admin@nonsolotaku.it', 'admin@nonsolotaku.it', $game->player['user_email'], $game->player['user_email'], 'Star Trek: Frontline Combat - Account deletion', $mail_message);
-            header('Location: http://www.stfc.it');
+            stgc_mail('STFC2 Mailer', 'admin@stfc.it', $game->player['user_name'], $game->player['user_email'], 'Star Trek: Frontline Combat - '.constant($game->sprache("TEXT54")), $mail_message);
+            header('Location: '.$config['game_url']);
             exit;
         }
 
