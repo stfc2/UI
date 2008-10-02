@@ -246,7 +246,7 @@ $game->set_autorefresh(($NEXT_TICK+TICK_DURATION*60*($game->planet['unittrainid_
 
 
 //////////////////////// 2nd Buildmenu
-$game->out(constant($game->sprache("Text6")));
+$game->out('<table border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">'.constant($game->sprache("Text6")).'</span><br>');
 
 $game->out('
 
