@@ -103,13 +103,15 @@ $main_html .= '
           <td width="380" height="60" background="./gfx/welcome_logo.jpg"></td>
         </tr>
         <tr>
-          <td><span style="color: #6D87AC; font-size:12px">
-          &Egrave; un progetto sviluppato dal gioco online Star Trek Galaxy Conquest.<br><br><br>
+          <td><span style="color: #6D87AC; font-size:12px"><br>
           Questo &egrave; un gioco multiplayer ambientato nell&#146;universo di Star Trek&trade;
           per il quale non &egrave; necessario altro che un semplice browser web ed una connessione
           ad Internet.<br><br>
           STFC2 &egrave; un gioco strategico e tattico che gira in tempo reale per dare ai giocatori
-          la massima esperienza di gioco possibile.</span>
+          la massima esperienza di gioco possibile.<br><br>
+          Scegli la tua specie tra Federali, Klingon, Romulani e tanti altri, fonda le tue colonie,
+          costruisci la tua flotta ed espandi la tua rete commerciale per arrivare l&agrave; dove
+          nessun &egrave; mai giunto prima!</span>
           </td>
         </tr>
       </table>
