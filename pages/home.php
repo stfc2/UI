@@ -84,25 +84,40 @@ else {
 }
 
 $main_html .= '
-<table width="650" border="0" cellpadding="2" cellspacing="2">
-<tr valign="top">
-<td width="250" valign="top">
-<table width="250" border="0" cellpadding="2" cellspacing="2" valign="top">
-
-  <tr height="30"><td width="250"></td></tr>
-  <tr>
-    <td width="250" align="left" background="./gfx/template_bg3.jpg"><img src="./gfx/bar.jpg" alt="empty" border=0></td>
-  </tr>
-  <tr>
-    <td width="250" align="left"><img src="./gfx/defiant.jpg" alt="defiant" border=0></td>
+<table width="660" border="0" cellpadding="2" cellspacing="2">
+  <tr valign="top">
+    <td width="250" valign="top">
+      <table width="250" border="0" cellpadding="2" cellspacing="2" valign="top">
+        <tr height="30"><td width="250"></td></tr>
+        <tr>
+          <td width="250" align="left" background="./gfx/template_bg3.jpg"><img src="./gfx/bar.jpg" alt="empty" border=0></td>
+        </tr>
+        <tr>
+          <td width="250" align="left"><img src="./gfx/defiant.jpg" alt="defiant" border=0></td>
+        </tr>
+      </table>
+    </td>
+    <td width="380" "height=320">
+      <table border="0">
+        <tr>
+          <td width="380" height="60" background="./gfx/welcome_logo.jpg"></td>
+        </tr>
+        <tr>
+          <td><span style="color: #6D87AC; font-size:12px"><br>
+          Questo &egrave; un gioco multiplayer ambientato nell&#146;universo di Star Trek&trade;
+          per il quale non &egrave; necessario altro che un semplice browser web ed una connessione
+          ad Internet.<br><br>
+          STFC2 &egrave; un gioco strategico e tattico che gira in tempo reale per dare ai giocatori
+          la massima esperienza di gioco possibile.<br><br>
+          Scegli la tua specie tra Federali, Klingon, Romulani e tanti altri, fonda le tue colonie,
+          costruisci la tua flotta ed espandi la tua rete commerciale per arrivare l&agrave; dove
+          nessun &egrave; mai giunto prima!</span>
+          </td>
+        </tr>
+      </table>
+    </td>
   </tr>
 </table>
-</td>
-    <td width="400" rowspan="5" valign="top">
-    <img src="./gfx/welcome.jpg" alt="Benvenuti su Star Trek: Frontline Combat 2!" border=0>
-    </td>
-
-</td></tr></table>
 ';
 
 ?>
