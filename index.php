@@ -463,12 +463,15 @@ $action = htmlspecialchars((!empty($_GET['a'])) ? $_GET['a'] : 'home');
 $main_html = '';
 
 if(strstr($action, '.')) {
-    $main_html = '<br><br><br><br><center><span style="font-size: 20px;">The selected site "'.$action.'" doesn&#146;t exist</span></center>';
+    $main_html = '<br><br><center><span style="font-size: 20px;">La pagina selezionata "'.$action.'" non esiste.</span></center><br><br>';
 }
 
-if(!include('pages/'.$action.'.php')) {
-    $main_html = '<br><br><br><br><center><span style="font-size: 20px;">The selected site "'.$action.'" doesn&#146;t exist</span></center>';
+if(!file_exists('pages/'.$action.'.php')) {
+    $main_html = '<br><br><center><span style="font-size: 20px;">La pagina selezionata "'.$action.'" non esiste.</span></center><br><br>';
 }
+else
+    include('pages/'.$action.'.php');
+
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -480,19 +483,22 @@ if(!include('pages/'.$action.'.php')) {
 
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="pragma" content="no-cache">
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
+  <meta name="title" content="Star Trek: Frontline Combat">
   <meta name="description" content="ST: Frontline Combat is a free browser based multi-player game by playing the role of different races and peoples of the universe and rewrite history.">
-  <meta name="keywords" content="star trek, startrek, galaxy, conquest, universe, game, gratis, free, multiplayer, strategy, onlinegame, bbg, free, browser, based, galaxy, universe, klingon, romulan, federation, federazione">
+  <meta name="keywords" content="star, trek, game, gratis, multiplayer, onlinegame, browser, klingon, romulan, federation">
   <meta name="author" content="Florian Brede & Philipp Schmidt">
-  <meta name="publisher" content="Florian Brede & Philipp Schmidt">
   <meta name="copyright" content="Paramount Pic., Brede, Schmidt">
+  <meta http-equiv="content-language" content="IT">
+  <meta http-equiv="Content-Type" content="text/html; iso-8859-1">
+  <meta name="ROBOTS" content="INDEX,NOFOLLOW">
+  <meta name="creation_Date" content="10/02/2008">
+  <meta name="revisit-after" content="7 days">
+
+  <meta name="publisher" content="Florian Brede & Philipp Schmidt">
   <meta name="page-topic" content="Star Trek Online Game">
   <meta name="date" content="2003-06-22">
-  <meta name="content-language" content="en">
   <meta name="page-type" content="game">
-  <meta name="robots" content="index,nofollow">
-  <meta name="revisit-after" content="10">
 <style type="text/css">
 <!-- A:link {FONT-SIZE: 11px; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"; TEXT-DECORATION: none}
 A:visited {FONT-SIZE: 11px; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"; TEXT-DECORATION: none}
@@ -698,6 +704,18 @@ window.attachEvent("onload", expandone)
         </td>
     </tr>
 </table><br />
+<script language=javascript type="text/javascript" src="http://ss.webring.com/navbar?f=j;y=adminstfc;u=defurl">
+</script>
+<center>Powered by <a href="http://dir.webring.com/rw" target=_top>WebRing</a>.</center>
+
+<!--optional-->
+<noscript><center><table bgcolor=gray cellspacing=0 border=2><tr>
+<td><table cellpadding=2 cellspacing=0 border=0><tr><td align=center>
+<font face=arial size=-1>This site is a member of WebRing. 
+<br>To browse visit <a href="http://ss.webring.com/navbar?f=l;y=adminstfc;u=defurl">
+Here</a>.</font></td></tr></table></td></tr></table>
+</center></noscript>
+
 </body>
 </html>
 
