@@ -22,7 +22,7 @@
 
 
 
-include_once('/home/taku/public_html/stfc/config2.inc.php');
+include_once('/root/stfc/config2.inc.php');
 
 // Line break
 

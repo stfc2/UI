@@ -20,7 +20,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 //Deutsch
-define ("GER_Text1", '<center><table border="0" cellpadding="1" cellspacing="1" width="300" class="style_outer"><tr><td><center><table border=0 cellpadding=1 cellspacing=1 width=300 class="style_inner"><tr><td><tr><td>Ausgebildet wird: <b>');
+define ("GER_Text1", '<table border="0" cellpadding="1" cellspacing="1" width="300" class="style_outer"><tr><td><table border=0 cellpadding=1 cellspacing=1 width=300 class="style_inner"><tr><td><tr><td>Ausgebildet wird: <b>');
 
 define ("GER_Text2", '</b><br>Verbleibende Zeit bis zur Fertigstellung:<br>');
 
@@ -30,7 +30,7 @@ define ("GER_Text4", 'Ausgebildet wird nichts');
 
 define ("GER_Text5", 'Verbleibende Zeit:');
 
-define ("GER_Text6", '<center><table border="0" cellpadding="2" cellspacing="2" background="http://stfc.nonsolotaku.it/stgc5_gfx/skin1/template_bg3.jpg" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Verf&uuml;gbare Einheiten:</span></center><br>');
+define ("GER_Text6", 'Verf&uuml;gbare Einheiten:');
 
 define ("GER_Text7", '<tr><td width=115><b>Einheit:</b></td><td width=215><b>Kosten:</b></td><td width=70><b>Dauer:</b></td></tr>');
 
@@ -40,15 +40,15 @@ define ("GER_Text9", ' (Standard: ');
 
 define ("GER_Text10", ')<br><u>Verteidigung:</u> ');
 
-define ("GER_Text11", '<br><center><span class="sub_caption">Ausbildungsstatus ');
+define ("GER_Text11", '<br><span class="sub_caption">Ausbildungsstatus ');
 
 define ("GER_Text12", '<br><center><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2"><center>Ausbildungsstatus: <u>AKTIV</u></center><br>');
 
 define ("GER_Text13", '<br><center><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_inner"><tr><td width=100%><span class="sub_caption2"><center>Ausbildungsstatus: <u>GESTOPPT</u></center><br>');
 
-define ("GER_Text14", '<br><center><span class="sub_caption">Ausbildungsliste ');
+define ("GER_Text14", '<br><span class="sub_caption">Ausbildungsliste ');
 
-define ("GER_Text15", '<br><center><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Ausbildungsliste *:</center><br>');
+define ("GER_Text15", '<br><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Ausbildungsliste *:<br>');
 
 define ("GER_Text16", '<td width=40><b>Platz:</b></td><td width=150><b>Belegung:</b></td><td width=50><b>Anzahl:</b></td><td width=40><b>Endlos:</b></td>');
 
@@ -94,7 +94,7 @@ define ("GER_Text35", 'Reset');
 
 //English
 
-define ("ENG_Text1", '<center><table border="0" cellpadding="1" cellspacing="1" width="300" class="style_outer"><tr><td><center><table border=0 cellpadding=1 cellspacing=1 width=300 class="style_inner"><tr><td><tr><td>It is trained: <b>');
+define ("ENG_Text1", '<table border="0" cellpadding="1" cellspacing="1" width="300" class="style_outer"><tr><td><table border=0 cellpadding=1 cellspacing=1 width=300 class="style_inner"><tr><td><tr><td>It is trained: <b>');
 
 define ("ENG_Text2", '</b><br>Remaining time until the completion:<br>');
 
@@ -104,7 +104,7 @@ define ("ENG_Text4", 'Nothing is trained');
 
 define ("ENG_Text5", 'Remaining time:');
 
-define ("ENG_Text6", '<center><table border="0" cellpadding="2" cellspacing="2" background="http://stfc.nonsolotaku.it/stgc/stgc5_gfx/skin1/template_bg3.jpg" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Available units:</span></center><br>');
+define ("ENG_Text6", 'Available units:');
 
 define ("ENG_Text7", '<tr><td width=115><b>Unit: </b></td><td width=215><b>Costs:</b></td><td width=70><b>Duration:</b></td></tr>');
 
@@ -114,15 +114,15 @@ define ("ENG_Text9", ' (Standard: ');
 
 define ("ENG_Text10", ')<br><u>Defence:</u> ');
 
-define ("ENG_Text11", '<br><center><span class="sub_caption">Training status');
+define ("ENG_Text11", '<br><span class="sub_caption">Training status');
 
 define ("ENG_Text12", '<br><center><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2"><center>Training status:<u>ACTIVE</u></center><br>');
 
 define ("ENG_Text13", '<br><center><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_inner"><tr><td width=100%><span class="sub_caption2"><center>Training status:<u>STOPPED</u></center><br>');
 
-define ("ENG_Text14", '<br><center><span class="sub_caption">Training list ');
+define ("ENG_Text14", '<br><span class="sub_caption">Training list ');
 
-define ("ENG_Text15", '<br><center><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Training list *:</center><br>');
+define ("ENG_Text15", '<br><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Training list *:<br>');
 
 define ("ENG_Text16", '<td width=40><b>Place:</b></td><td width=150><b>Occupancy:</b></td><td width=50><b>Quantity:</b></td><td width=40><b>Infinite:</b></td>');
 
@@ -169,7 +169,7 @@ define ("ENG_Text35", 'Reset');
 
 //Italiano
 
-define ("ITA_Text1", '<center><table border="0" cellpadding="1" cellspacing="1" width="300" class="style_outer"><tr><td><center><table border=0 cellpadding=1 cellspacing=1 width=300 class="style_inner"><tr><td><tr><td>In addestramento: <b>');
+define ("ITA_Text1", '<table border="0" cellpadding="1" cellspacing="1" width="300" class="style_outer"><tr><td><table border=0 cellpadding=1 cellspacing=1 width=300 class="style_inner"><tr><td><tr><td>In addestramento: <b>');
 
 define ("ITA_Text2", '</b><br>Tempo rimanente per il completamento:<br>');
 
@@ -179,7 +179,7 @@ define ("ITA_Text4", 'Nessuno in addestramento');
 
 define ("ITA_Text5", 'Tempo rimanente:');
 
-define ("ITA_Text6", '<center><table border="0" cellpadding="2" cellspacing="2" background="http://stfc.nonsolotaku.it/stgc/stgc5_gfx/skin1/template_bg3.jpg" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Unit&agrave; disponibili:</span></center><br>');
+define ("ITA_Text6", 'Unit&agrave; disponibili:');
 
 define ("ITA_Text7", '<tr><td width=115><b>Unit&agrave;: </b></td><td width=215><b>Costi:</b></td><td width=70><b>Durata:</b></td></tr>');
 
@@ -189,15 +189,15 @@ define ("ITA_Text9", ' (Standard: ');
 
 define ("ITA_Text10", ')<br><u>Difesa:</u> ');
 
-define ("ITA_Text11", '<br><center><span class="sub_caption">Stato Accademia');
+define ("ITA_Text11", '<br><span class="sub_caption">Stato Accademia');
 
-define ("ITA_Text12", '<br><center><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2"><center>Stato Accademia:<u>ATTIVA</u></center><br>');
+define ("ITA_Text12", '<br><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2"><center>Stato Accademia:<u>ATTIVA</u></center><br>');
 
-define ("ITA_Text13", '<br><center><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_inner"><tr><td width=100%><span class="sub_caption2"><center>Stato Accademia:<u>FERMA</u></center><br>');
+define ("ITA_Text13", '<br><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_inner"><tr><td width=100%><span class="sub_caption2"><center>Stato Accademia:<u>FERMA</u></center><br>');
 
-define ("ITA_Text14", '<br><center><span class="sub_caption">Lista Addestramento ');
+define ("ITA_Text14", '<br><span class="sub_caption">Lista Addestramento ');
 
-define ("ITA_Text15", '<br><center><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Lista Addestramento *:</center><br>');
+define ("ITA_Text15", '<br><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Lista Addestramento *:<br>');
 
 define ("ITA_Text16", '<td width=40><b>Posizione:</b></td><td width=150><b>Occupazione:</b></td><td width=50><b>Quantit&agrave;:</b></td><td width=40><b>Infiniti:</b></td>');
 

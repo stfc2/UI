@@ -275,7 +275,7 @@ function display_registration($data = array(), $message = '', $galaxy) {
 
         <tr>
           <td colspan="2"><input style="border: none;" type="checkbox" name="confirm_agb" value="1"'.( ($agb_checked) ? ' checked="checked"' : '' ).'>&nbsp;Dichiaro in questa sede di aver preso visione dei <a href="agb.html" target=_blank><b>termini e condizioni per il gioco</b></a> e di accettarli.<br>
-          <br><b>Solo un account per IP [<a href="javascript: void;" onmouseover="return overlib(\'Questa limitazione significa che ogni giocatore che per pi&ugrave; di 4 giorni successivi alla registrazione avr&agrave; pi&ugrave; di un account in funzione sul proprio IP, se li vedr&agrave; bannati o cancellati!<br>Se ci&ograve; &egrave; dovuto a motivi tecnici quali router o altro, deve subito comunicare al Supporto le ragione dei diversi account loggati dallo stesso IP. <br> <u> <b> Seguite il link in basso!(Non ancora attivo...)\', CAPTION, \'Solo un Account per IP:\', WIDTH, 400, FGCOLOR, \'#ffffff\', TEXTCOLOR, \'#ffffff\', FGBACKGROUND,\'http://stfc.nonsolotaku.it/stfc_gfx/skin1/bg_stars1.gif\', BGCOLOR, \'#33355E\', BORDER, 2, CAPTIONFONT, \'Arial\', CAPTIONSIZE, 2, TEXTFONT, \'Arial\', TEXTSIZE, 2);" onmouseout="return nd();">Info</a>]<br><a href=index.php?a=multis><u>Dettagli sulla limitazione</u></a></b></td>          	
+          <br><b>Solo un account per IP [<a href="javascript: void;" onmouseover="return overlib(\'Questa limitazione significa che ogni giocatore che per pi&ugrave; di 4 giorni successivi alla registrazione avr&agrave; pi&ugrave; di un account in funzione sul proprio IP, se li vedr&agrave; bannati o cancellati!<br>Se ci&ograve; &egrave; dovuto a motivi tecnici quali router o altro, deve subito comunicare al Supporto le ragione dei diversi account loggati dallo stesso IP. <br> <u> <b> Seguite il link in basso!(Non ancora attivo...)\', CAPTION, \'Solo un Account per IP:\', WIDTH, 400, FGCOLOR, \'#ffffff\', TEXTCOLOR, \'#ffffff\', FGBACKGROUND,\'http://www.stfc.it/stfc_gfx/skin1/bg_stars1.gif\', BGCOLOR, \'#33355E\', BORDER, 2, CAPTIONFONT, \'Arial\', CAPTIONSIZE, 2, TEXTFONT, \'Arial\', TEXTSIZE, 2);" onmouseout="return nd();">Info</a>]<br><a href=index.php?a=multis><u>Dettagli sulla limitazione</u></a></b></td>          	
         </tr>
 
         <tr height="20"><td></td></tr>
@@ -285,7 +285,7 @@ function display_registration($data = array(), $message = '', $galaxy) {
              <input type=hidden name="galaxy" value="'.$galaxy.'">
              <input type="submit" name="submit_b" value="Registrami">
              <br><br>
-             <i>* Il nome scelto apparir&agrave; in gioco<br>** Il Login verr&agrave; usato esclusivamente per accedere al gioco<br>*** Se indicato, il codice apparir&agrave; nella <a href="http://stfc.nonsolotaku.it/index.php?a='.(($galaxy) ? 'fe' : 'be').'_karte" target=_blank><u>mappa degli Utenti</u></a>. (Non ancora attivo!)</i>
+             <i>* Il nome scelto apparir&agrave; in gioco<br>** Il Login verr&agrave; usato esclusivamente per accedere al gioco<br>*** Se indicato, il codice apparir&agrave; nella <a href="http://www.stfc.it/index.php?a='.(($galaxy) ? 'fe' : 'be').'_karte" target=_blank><u>mappa degli Utenti</u></a>. (Non ancora attivo!)</i>
           </td>
         </tr>
       </table>
@@ -570,7 +570,7 @@ if(isset($_POST['submit'])) {
 	        die('Database error - Could not load skin data');
     	}
 
-        $gfxpath='http://stfc.nonsolotaku.it/stfc_gfx/';
+        $gfxpath='http://www.stfc.it/stfc_gfx/';
 
 /*    	$sql = 'INSERT INTO user (user_active, user_name, user_loginname, user_password, user_email, user_auth_level, user_race, user_gfxpath, user_skinpath, user_registration_time, user_registration_ip, user_birthday, user_gender, plz, country)
         	    VALUES (2, "'.$_POST['user_name'].'", "'.$_POST['login_name'].'", "'.md5($_POST['user_password']).'", "'.$_POST['user_email'].'", 1, '.$_POST['user_race'].', "'.$gfxpath.'", "skin'.$skin_data['skin_id'].'/", '.time().', "'.$_SERVER['REMOTE_ADDR'].'", "'.$birthday_str.'", "'.$_POST['user_gender'].'", '.$_POST['plz'].', "'.$_POST['country'].'")';*/
@@ -600,10 +600,10 @@ if(isset($_POST['submit'])) {
     	}
 
     	$activation_key = md5( pow($user_id,2) );
-    	$activation_link = 'http://stfc.nonsolotaku.it/index.php?a=activate&galaxy='.$galaxy.'&user_id='.$user_id.'&key='.$activation_key;
+    	$activation_link = 'http://www.stfc.it/index.php?a=activate&galaxy='.$galaxy.'&user_id='.$user_id.'&key='.$activation_key;
         define('EXT_NL', "\r\n");
-		$mail_message = 'Congratulazioni '.$_POST['user_name'].'!'."\n".'La tua registrazione a Star Trek: Frontline Combat II (Galassia '.$galaxyname.') ha avuto successo!'."\n".'Per attivare il tuo account devi cliccare sul link seguente:'."\n".$activation_link."\n\n".'Se non hai eseguito la registrazione, ignora questa email.'."\n".'Dopo 48 ore, il tuo indirizzo email verr&agrave; automaticamente rimosso dal nostro database.'."\n\n".'Lunga vita e prosperit&agrave;,'."\n".'Il team STFC.'."\n\n".'Credits: http://stfc.nonsolotaku.it/index.php?a=imprint';
-		send_mail("STFC2 Mailer","admin@nonsolotaku.it",$_POST['user_name'],$_REQUEST['user_email'],"Registrazione Star Trek: Frontline Combat",$mail_message);
+		$mail_message = 'Congratulazioni '.$_POST['user_name'].'!'."\n".'La tua registrazione a Star Trek: Frontline Combat II (Galassia '.$galaxyname.') ha avuto successo!'."\n".'Per attivare il tuo account devi cliccare sul link seguente:'."\n".$activation_link."\n\n".'Se non hai eseguito la registrazione, ignora questa email.'."\n".'Dopo 48 ore, il tuo indirizzo email verrà automaticamente rimosso dal nostro database.'."\n\n".'Lunga vita e prosperità,'."\n".'Il team STFC.'."\n\n".'Credits: http://www.stfc.it/index.php?a=imprint';
+		send_mail("STFC2 Mailer","admin@stfc.it",$_POST['user_name'],$_REQUEST['user_email'],"Registrazione Star Trek: Frontline Combat",$mail_message);
 
        // Update NewRegister
 

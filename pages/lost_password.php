@@ -100,9 +100,9 @@ Lunga vita e prosperità,
 il team STFC.
 
 
-Credits: http://stfc.nonsolotaku.it/index.php?a=imprint';
+Credits: http://www.stfc.it/index.php?a=imprint';
 
-        send_mail("STFC Mailer","admin@nonsolotaku.it",$_POST['user_name'],$player['user_email'],"STFC2 Password Reminder",$mail_message);
+        send_mail("STFC Mailer","admin@stfc.it",$_POST['user_name'],$player['user_email'],"STFC2 Password Reminder",$mail_message);
 
         $message='Presto riceverai la nuova password via e-mail.';
     }

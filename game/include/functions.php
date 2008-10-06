@@ -926,7 +926,7 @@ class game {
 
 		/* 01/02/08 - AC: Initialize this ALSO if user is not STGC_DEVELOPER... */
 		$banner = '';
-		if($this->player['user_auth_level'] != STGC_DEVELOPER) $banner = '<center><a href="http://stfc.nonsolotaku.it/g2g.php?id=4" target="_blank"><img border="0" src="'.FIXED_GFX_PATH.'../stgcbanner2.jpg" valign="top"></a></center>';
+		if($this->player['user_auth_level'] != STGC_DEVELOPER) $banner = '<center><img border="0" src="'.FIXED_GFX_PATH.'../stgcbanner2.jpg" valign="top"></center>';
 
 
 		echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -1065,7 +1065,7 @@ class game {
 		{
 			// 21/02/08 - AC: Check if alliance homepage is empty
 			if($alliance_hp['hp'] == '')
-				$alliance_hp['hp'] = 'http://stfc.nonsolotaku.it/game2/index.php?a=alliance_board'; // <- temp solution!!
+				$alliance_hp['hp'] = JSCRIPT_PATH.parse_link('a=alliance_board'); // <- temp solution!!
 			$pos1 = stripos($alliance_hp['hp'], "http://");
 			if($pos1!==false)
 			{

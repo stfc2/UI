@@ -234,7 +234,7 @@ td.value_row { color: #BOBOBO; font-weight: bold;}
 <table border="0" cellpadding="0" cellspacing="0" width="600" align="center">
   <tr>
     <td valign="top" align="center" width="300" valign=top>
-      <span class="sub_caption">Server Web/DB (NonSolOtaku)</span><br><br>
+      <span class="sub_caption">Server Web/DB (STFC)</span><br><br>
 
       <table border="0" cellpadding="2" cellspacing="2" width="270" class="border_grey" style=" background-image:url(\'gfx/template_bg.jpg\'); background-position:left; background-repeat:yes;">
         <tr>
@@ -410,7 +410,7 @@ td.value_row { color: #BOBOBO; font-weight: bold;}
               <tr height="10"><td></td></tr>
               <tr>
                 <td width="170" class="desc_row">Visualizza galassia:</td>
-                <td width="100" class="value_row"><a href="http://stfc.nonsolotaku.it/game/maps/images/galaxy_detail.png" target=_blank><i>Clicca</i></a></td>
+                <td width="100" class="value_row"><a href="http://www.stfc.it/game/maps/images/galaxy_detail.png" target=_blank><i>Clicca</i></a></td>
               </tr>
               <tr height="10"><td></td></tr>
               <tr>
@@ -478,7 +478,7 @@ td.value_row { color: #BOBOBO; font-weight: bold;}
               <tr height="10"><td></td></tr>
               <tr>
                 <td width="170" class="desc_row">Visualizza galassia:</td>
-                <td width="100" class="value_row"><a href="http://stfc.nonsolotaku.it/game2/maps/images/galaxy_detail.png" target=_blank><i>Clicca</i></a></td>
+                <td width="100" class="value_row"><a href="http://www.stfc.it/game2/maps/images/galaxy_detail.png" target=_blank><i>Clicca</i></a></td>
               </tr>
               <tr height="10"><td></td></tr>
               <tr>
