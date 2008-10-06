@@ -80,6 +80,8 @@ define ("GER_TEXT26", 'Latinum:');
 
 define ("GER_TEXT27", 'Arbeiter:');
 
+define ("GER_TEXT28", 'Unbekannt');
+
 //English
 define ("ENG_TEXT0", 'Tactical headquarters:');
 
@@ -139,6 +141,8 @@ define ("ENG_TEXT26", 'Dilithium:');
 
 define ("ENG_TEXT27", 'Workers:');
 
+define ("ENG_TEXT28", 'Unknown');
+
 //ItaGLiano
 define ("ITA_TEXT0", 'Comando Tattico:');
 
@@ -197,5 +201,7 @@ define ("ITA_TEXT25", 'Minerali:');
 define ("ITA_TEXT26", 'Dilitio:');
 
 define ("ITA_TEXT27", 'Lavoratori:');
+
+define ("ITA_TEXT28", 'Sconosciuto');
 
 ?>

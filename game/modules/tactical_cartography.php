@@ -807,7 +807,7 @@ elseif(!empty($_GET['planet_id'])) {
 
     $planet_thumb = (!empty($planet['planet_thumb'])) ? $planet['planet_thumb'] : $game->PLAIN_GFX_PATH.'planet_type_'.$planet['planet_type'].'.png';
     $planet_type = strtoupper($planet['planet_type']);
-	
+
 
 	$history_text   = constant($game->sprache("TEXT95"));
 	$survey_text    = constant($game->sprache("TEXT96"));
@@ -821,7 +821,7 @@ elseif(!empty($_GET['planet_id'])) {
 		WHERE planet_id = '.$planet['planet_id'].'
 		AND d.log_code IN (0, 1, 2, 25, 26, 27, 28, 29, 30) 
 		ORDER BY timestamp ASC';
-		
+
 	if($_history = $db->query($sql)) {
 		while($_temp = $db->fetchrow($_history)) {
 			switch($_temp['log_code']) {
@@ -852,7 +852,7 @@ elseif(!empty($_GET['planet_id'])) {
 						$_history_d2 = '&nbsp;';
 					}
 				 }
-				
+
 				 $history_text .= constant($game->sprache("TEXT110")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT111")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT112")).$_history_d1.$_history_d2.'</b>.<br>';  				
 				 break;
 // --- Rivolte sul pianeta
@@ -876,7 +876,7 @@ elseif(!empty($_GET['planet_id'])) {
 						$_history_d2 = '&nbsp;';
 					}
 				 }
-							
+
 				 $history_text .= constant($game->sprache("TEXT121")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT112")).$_history_d1.$_history_d2.'</b>.<br>';
 // --- Cessione del pianeta alla fazione indipendente Settlers
 			case 30: $history_text .= constant($game->sprache("TEXT122")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT123")).date("d.m.y H:i", $_temp['timestamp']).'.<br>';
@@ -931,7 +931,7 @@ elseif(!empty($_GET['planet_id'])) {
 		}
 		$survey_text .= $_survey1.$_survey2.$_survey3.'</table>';
 	}
-	
+
 // Informazioni tattico/politiche sul pianeta (sistema coloni)
 	$sql = 'SELECT * FROM `planet_details`
                 LEFT JOIN user ON planet_details.source_uid = user.user_id
@@ -941,23 +941,33 @@ elseif(!empty($_GET['planet_id'])) {
                 ORDER BY timestamp DESC
                 LIMIT 0,1';
 	if(($_temp = $db->queryrow($sql)) == true) {
-		$tactical_text .= '<i>Le seguenti informazioni indicano il mood dei coloni sul pianeta rispetto ad ogni razza e vengono aggiornate automaticamente ad ogni tick:</i><br><br>';
-		$tactical_text .= 'Federazione: '.$_temp['mood_race0'].'   Romulani : '.$_temp['mood_race1'].'   Klingon: '.$_temp['mood_race2'].'<br>';
-		$tactical_text .= 'Cardassiani: '.$_temp['mood_race3'].'   Dominio  : '.$_temp['mood_race4'].'   Ferengi: '.$_temp['mood_race5'].'<br>';
-		$tactical_text .= 'Breen      : '.$_temp['mood_race8'].'   Hirogeni : '.$_temp['mood_race9'].'   Krenim : '.$_temp['mood_race10'].'<br>';
-		$tactical_text .= 'Kazon      : '.$_temp['mood_race11'].'<br><br>';
-		$tactical_text .= '<font size=-2><i> Valore medio = 100, indica indifferenza.<br>Valori superiori indicano comportamenti benevoli verso la razza.<br>Valori inferiori indicano che i coloni sono ostili verso la razza.</i></font>';
+		$tactical_text .= '<i>'.constant($game->sprache("TEXT124")).'</i><br><br>';
+		$num = 0;
+		foreach($RACE_DATA as $i => $race) {
+			// Skip non playable races
+			if($race[22]) {
+				$tactical_text .= $race[0].': '.$_temp['mood_race'.$i].' ';
+				$num++;
+				if($num > 3) {
+					$tactical_text .= '<br>';
+					$num = 0;
+				}
+			}
+		}
+		$tactical_text .= '<br><br><font size=-2><i>'.constant($game->sprache("TEXT125")).'</i></font>';
 	}
-	
+
 //	$detail_text = $history_text.$survey_text.$tactical_text;
 
-    $planet_is_known = false;	
+    $planet_is_known = false;
     $sql = 'SELECT * FROM planet_details WHERE log_code = 500 AND system_id = '.$planet['system_id'].' AND user_id = '.$game->player['user_id'];
     if($db->queryrow($sql) == true) $planet_is_known = true;
 
     $last_update = constant($game->sprache("TEXT93"));
     
-    if($own_planet || ($game->player['user_alliance'] == $planet_owner['alliance_id']) || $planet_is_known) {
+    if($own_planet ||
+       ($game->player['user_alliance'] == $planet_owner['alliance_id'] && $game->player['user_alliance_rights3'] == 1) ||
+       $planet_is_known) {
     	$_thumb = '<a href='.$planet_thumb.' target="_blank"><img src="'.$planet_thumb.'" width="80" height="80" border="0"></a><br>';
 	$_name  = '&nbsp;<b>'.$planet['planet_name'].'</b>&nbsp;('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')';
 	$_planet_type = '&nbsp;<a href="'.parse_link('a=database&planet_type='.$planet_type.'#'.$planet_type).'">'.$planet_type.'</a>';
@@ -974,8 +984,8 @@ elseif(!empty($_GET['planet_id'])) {
     } 
     else {
 	$_thumb = '&nbsp;<br>';
-	$_name  = '&nbsp;<b><i>&#171;Sconosciuto&#187;</i></b>&nbsp;('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')';
-	$_planet_type = '&nbsp;<b><i>&#171;Sconosciuto&#187;</i></b>';
+	$_name  = '&nbsp;<b>'.constant($game->sprache("TEXT120")).'</b>&nbsp;('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')';
+	$_planet_type = '&nbsp;<b>'.constant($game->sprache("TEXT120")).'</b>';
     }
     
 	

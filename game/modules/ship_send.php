@@ -2,10 +2,10 @@
 /*    
 	This file is part of STFC.
 	Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
-		
+
 	STFC is based on STGC,
 	Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
-	
+
     STFC is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 3 of the License, or
@@ -27,7 +27,7 @@ $game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'<
 
 
 // #############################################################################
-// Es mssen Flotten fr ship_send bergeben werden
+// Fleets ,ust be selected for ship_send
 
 if(empty($_POST['fleets'])) {
     message(NOTICE, constant($game->sprache("TEXT1")));
@@ -35,7 +35,7 @@ if(empty($_POST['fleets'])) {
 
 
 // #############################################################################
-// Die Flotten-IDs "sï¿½bern" (zu integer casten gegen SQL-Exploits)
+// The fleets IDs "pure" (cast to integer against SQL exploits)
 
 $fleet_ids = array();
 
@@ -49,7 +49,7 @@ for($i = 0; $i < count($_POST['fleets']); ++$i) {
 
 
 // #############################################################################
-// War eine gltige Flotten-ID dabei?
+// Was a valid ID fleets this?
 
 if(empty($fleet_ids)) {
     message(NOTICE, constant($game->sprache("TEXT2")));
@@ -58,7 +58,7 @@ if(empty($fleet_ids)) {
 $sql = 'SELECT *
         FROM ship_fleets
         WHERE fleet_id IN ('.implode(',', $fleet_ids).')';
-        
+
 if(!$q_fleets = $db->query($sql)) {
     message(DATABASE_ERROR, 'Could not query fleet data');
 }
@@ -90,7 +90,7 @@ if($n_fleets == 0) {
 }
 
 // #############################################################################
-// Ziel suchen
+// Search target
 
 if(!empty($_POST['dest_coord'])) {
     $coord_pieces = explode(':', $_POST['dest_coord']);
@@ -126,7 +126,7 @@ if(!empty($_POST['dest_coord'])) {
                   s.system_y = '.$system_y.' AND
                   p.system_id = s.system_id AND
                   p.planet_distance_id = '.$distance_id;
-                  
+
     if(($planet = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query planets data');
     }
@@ -134,13 +134,13 @@ if(!empty($_POST['dest_coord'])) {
     if(empty($planet['planet_id'])) {
         message(NOTICE, constant($game->sprache("TEXT11")).' <b>'.$_POST['dest_coord'].'</b>');
     }
-    
+
     $dest = (int)$planet['planet_id'];
 }
 else {
-	if(!empty($_POST['dest'])) {
-		$dest = (is_numeric($_POST['dest'])) ? (int)$_POST['dest'] : decode_planet_id($_POST['dest']);
-	}
+    if(!empty($_POST['dest'])) {
+        $dest = (is_numeric($_POST['dest'])) ? (int)$_POST['dest'] : decode_planet_id($_POST['dest']);
+    }
 }
 
 if(empty($dest)) {
@@ -149,18 +149,18 @@ if(empty($dest)) {
 
 
 // #############################################################################
-// Startplanet-Daten holen
+// Fetch start planet data
 
 if($start == $game->planet['planet_id']) {
     $start_planet = $game->planet;
-    
+
     $start_planet['user_id'] = $game->player['user_id'];
     $start_planet['user_name'] = $game->player['user_name'];
     $start_planet['user_attack_protection'] = $game->player['user_attack_protection'];
     $start_planet['user_vacation_start'] = $game->player['user_vacation_start'];
     $start_planet['user_vacation_end'] = $game->player['user_vacation_end'];
 
-    // Spielerdaten müssen nicht bernommen werden, da sie nicht angezeigt/benutzt werden
+    // Player data can not be fetched, because they are not displayed / used
 }
 else {
     $sql = 'SELECT p.planet_id, p.planet_name, p.system_id, p.sector_id, p.planet_distance_id,
@@ -170,7 +170,7 @@ else {
             LEFT JOIN (user u) ON u.user_id = p.planet_owner
             WHERE p.planet_id = '.$start.' AND
                   s.system_id = p.system_id';
-                  
+
     if(($start_planet = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query start planet data');
     }
@@ -178,7 +178,7 @@ else {
     if(empty($start_planet['planet_id'])) {
         message(NOTICE, constant($game->sprache("TEXT13")));
     }
-    
+
     if(empty($start_planet['user_id'])) {
         $start_planet['user_id'] = 0;
         $start_planet['user_name'] = '';
@@ -191,7 +191,7 @@ else {
 
 
 // #############################################################################
-// Zielplanet-Daten holen
+// Fetch target planet data
 
 if($dest == $game->planet['planet_id']) {
     $dest_planet = $game->planet;
@@ -201,8 +201,9 @@ if($dest == $game->planet['planet_id']) {
     $dest_planet['user_attack_protection'] = $game->player['user_attack_protection'];
     $dest_planet['user_vacation_start'] = $game->player['user_vacation_start'];
     $dest_planet['user_vacation_end'] = $game->player['user_vacation_end'];
-        
-    // Alle Spielerdaten mssen nicht bernommen werden, da sie nicht angezeigt/benutzt werden
+    $dest_planet['system_is_known'] = true;
+
+    // Player data can not be fetched, because they are not displayed / used
 }
 else {
     $sql = 'SELECT p.planet_id, p.planet_name, p.system_id, p.sector_id, p.planet_distance_id,
@@ -212,7 +213,7 @@ else {
             LEFT JOIN (user u) ON u.user_id = p.planet_owner
             WHERE p.planet_id = '.$dest.' AND
                   s.system_id = p.system_id';
-                      
+
     if(($dest_planet = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query destination planet data');
     }
@@ -220,7 +221,7 @@ else {
     if(empty($dest_planet['planet_id'])) {
         message(NOTICE, constant($game->sprache("TEXT14")));
     }
-    
+
     if(empty($dest_planet['user_id'])) {
         $dest_planet['user_id'] = 0;
         $dest_planet['user_name'] = '';
@@ -228,11 +229,21 @@ else {
         $dest_planet['user_vacation_start'] = 0;
         $dest_planet['user_vacation_end'] = 0;
     }
+
+    $dest_planet['system_is_known'] = false;
+    $sql = 'SELECT COUNT(*) AS system_is_known FROM planet_details
+            WHERE log_code = 500 AND system_id = '.$dest_planet['system_id'].' AND user_id = '.$game->player['user_id'];
+    if(($_temp = $db->queryrow($sql)) == true) {
+        if($_temp['system_is_known'] > 0) $dest_planet['system_is_known'] = true;
+    }
+    else {
+       message(DATABASE_ERROR, 'Could not query destination planet details data');
+    }
 }
 
 
 // #############################################################################
-// Inter-Orbitaler Flug ist NICHT mï¿½lich, wie ursprnglich vorgesehen,
+// Inter-orbital flight is not possible, as initial planned,
 // das wird seperat gelï¿½t
 
 if($start == $dest) {
@@ -241,7 +252,7 @@ if($start == $dest) {
 
 
 // #############################################################################
-// Wenn Urlaubsmodus aktiviert ist, gleich abbrechen
+// When vacation mode is activated immediately cancel
 
 if( ($dest_planet['user_vacation_start'] <= $ACTUAL_TICK) && ($dest_planet['user_vacation_end'] > $ACTUAL_TICK) ) {
     message(NOTICE, constant($game->sprache("TEXT16")));
@@ -249,20 +260,20 @@ if( ($dest_planet['user_vacation_start'] <= $ACTUAL_TICK) && ($dest_planet['user
 
 
 // #############################################################################
-// Welche Schiffsklassen fliegen mit?
-// (fr Warp-Geschwindigkeiten + Befehlsmï¿½lichkeiten)
+// Which ship's classes fly also?
+// (for warp speed + command possibilities)
 
 $sql = 'SELECT st.ship_torso, st.value_10 AS warp_speed
         FROM (ships s, ship_templates st)
         WHERE s.fleet_id IN ('.implode(',', $fleet_ids).') AND
               st.id = s.template_id';
-        
+
 if(!$q_stpls = $db->query($sql)) {
     message(DATABASE_ERROR, 'Could not query ship template data');
 }
 
 $in_scout = $in_transporter = $in_colo = $in_orb = $in_other_torso = false;
-$max_warp_speed = 9.99; // genauer interessiert das keinen
+$max_warp_speed = 9.99; // not interested in precision
 
 while($_temp = $db->fetchrow($q_stpls)) {
     if($_temp['warp_speed'] < $max_warp_speed) $max_warp_speed = $_temp['warp_speed'];
@@ -271,12 +282,12 @@ while($_temp = $db->fetchrow($q_stpls)) {
         $in_scout = true;
         continue;
     }
-    
+
     if($_temp['ship_torso'] == SHIP_TYPE_TRANSPORTER) {
         $in_transporter = true;
         continue;
     }
-    
+
     if($_temp['ship_torso'] == SHIP_TYPE_COLO) {
         $in_colo = true;
         continue;
@@ -286,14 +297,14 @@ while($_temp = $db->fetchrow($q_stpls)) {
         $in_orb = true;
         continue;
     }
-    
+
     $in_other_torso = true;
 }
 
 $sql = 'SELECT n_ships AS ship_count'
         . ' FROM ship_fleets'
         . ' WHERE fleet_id IN ('.implode(',', $fleet_ids).')';
-		
+
 if(!$q_snbr = $db->query($sql)) {
     message(DATABASE_ERROR, 'Could not query ship template data');
 }
@@ -304,7 +315,7 @@ while($_temp = $db->fetchrow($q_snbr)) {
 }
 
 // #############################################################################
-// Ein paar Einstellungen setzen
+// A few settings set
 
 $free_planet = ($dest_planet['user_id'] == 0) ? true : false;
 $own_planet = ($game->player['user_id'] == $dest_planet['user_id']) ? true : false;
@@ -327,6 +338,11 @@ if($starter_atkptc && $free_planet) {
     message(NOTICE, constant($game->sprache("TEXT18")));
 }
 
+
+$know_dest_str = ' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($dest)).'"><b>'.$dest_planet['planet_name'].'</b></a> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')'.( ($dest_planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT26")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$dest_planet['user_id']).'"><b>'.$dest_planet['user_name'].'</b></a>' : '' );
+$unknow_dest_str = ' <b><i>&#171;'.constant($game->sprache("TEXT68")).'&#187;</i></b>'.'('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')';
+$dest_str = $dest_planet['system_is_known'] ? $know_dest_str : $unknow_dest_str;
+
 $step = (!empty($_POST['step'])) ? $_POST['step'] : 'basic_setup';
 
 switch($step) {
@@ -337,10 +353,10 @@ switch($step) {
     //case 'surrender_exec':
     case 'transport_exec':
     case 'spy_exec':
-	case 'survey_exec':
+    case 'survey_exec':
     case 'colo_exec':
         $distance = $velocity = 0;
-    
+
         if($game->player['user_auth_level'] == STGC_DEVELOPER) $min_time = 1;
         elseif($inter_planet) $min_time = 6;
         else {
@@ -350,36 +366,36 @@ switch($step) {
             $velocity = warpf($max_warp_speed);
             $min_time = ceil( ( ($distance / $velocity) / TICK_DURATION ) );
         }
-        
+
         $cur_istardate = (int)str_replace('.', '', $game->config['stardate']);
         $min_istardate = $cur_istardate + $min_time;
         $des_istardate = (int)$_POST['arrival'];
-        
+
         if($des_istardate < $min_istardate) {
             message(NOTICE, constant($game->sprache("TEXT19")).' '.($game->config['stardate'] + ($min_time / 10)));
         }
-        
+
         $move_time = $des_istardate - $cur_istardate;
-        
+
         $sql = 'SELECT COUNT(ship_id) AS n_ships
                 FROM ships
                 WHERE fleet_id IN ('.implode(',', $fleet_ids).')';
-                
+
         if(($_nships = $db->queryrow($sql)) === false) {
             message(DATABASE_ERROR, 'Could not query real n_ships data');
         }
-        
+
         $n_ships = $_nships['n_ships'];
-        
+
         if($n_ships == 0) {
             message(GENERAL, constant($game->sprache("TEXT20")), 'Unexspected: $n_ships = 0');
         }
-        
+
         $action = (!empty($_POST['action'])) ? $_POST['action'] : 'stationate';
-        
+
         $action_code = 0;
         $action_data = "";
-        
+
         switch($step) {
             case 'stationate_exec':
                 if($atkptc_present && !$own_planet) {
@@ -388,15 +404,15 @@ switch($step) {
 
                 $action_code = ($dest_planet['user_id'] != $game->player['user_id']) ? 21: 11;;
             break;
-            
+
             case 'comeback_exec':
                 if(!$own_planet) {
                     message(NOTICE, constant($game->sprache("TEXT21")));
                 }
-                
+
                 $action_code = 14;
             break;
-            
+
             case 'attack_normal_exec':
                 if($own_planet || $free_planet || $atkptc_present) {
                     message(NOTICE, constant($game->sprache("TEXT21")));
@@ -407,7 +423,7 @@ switch($step) {
 
                 $action_code = 41;
             break;
-            
+
             case 'attack_comeback_exec':
                 if($own_planet || $free_planet || $atkptc_present) {
                     message(NOTICE, constant($game->sprache("TEXT21")));
@@ -415,7 +431,7 @@ switch($step) {
 
                 $action_code = 42;
             break;
-            
+
             case 'surrender_exec':
                 if($game->player['user_id']>10){
                   message(NOTICE, constant($game->sprache("TEXT23")));
@@ -426,7 +442,7 @@ switch($step) {
 
                 $action_code = 23;
             break;
-            
+
             case 'transport_exec':
                 if($own_planet || $free_planet || !$in_transporter) {
                     message(NOTICE, constant($game->sprache("TEXT21")));
@@ -438,23 +454,23 @@ switch($step) {
 
                 $action_code = 31;
             break;
-            
+
             case 'spy_exec':
                 if(!$in_scout || $in_other_torso || $in_transporter || $in_colo) {
                     message(NOTICE, constant($game->sprache("TEXT25")));
                 }
-                
+
                 $action_code = 22;
             break;
-			
-			case 'survey_exec':
-				if(explore_fleet == false) {
+
+            case 'survey_exec':
+                if(explore_fleet == false) {
                     message(NOTICE, constant($game->sprache("TEXT25")));
                 }
-				
-				$action_code = 26;
+
+                $action_code = 26;
             break;
-            
+
             case 'colo_exec':
                 if(!$in_colo || !$free_planet) {
                     message(NOTICE, constant($game->sprache("TEXT21")));
@@ -475,7 +491,7 @@ switch($step) {
 
         $sql = 'INSERT INTO scheduler_shipmovement (user_id, move_status, move_exec_started, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
                 VALUES ('.$game->player['user_id'].', 0, 0, '.$start.', '.$dest.', '.$distance.', '.$distance.', '.($velocity * TICK_DURATION).', '.$ACTUAL_TICK.', '.($ACTUAL_TICK + $move_time).', '.$n_ships.', '.$action_code.', "'.$action_data.'")';
-                
+
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not insert new movement data');
         }
@@ -490,7 +506,7 @@ switch($step) {
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not update fleets position data');
         }
-        
+
         redirect('a=tactical_moves&dest='.$dest);
     break;
 
@@ -500,7 +516,7 @@ switch($step) {
     //case 'surrender_setup':
     case 'transport_setup':
     case 'spy_setup':
-	case 'survey_setup':
+    case 'survey_setup':
     case 'colo_setup':
         $game->out('
 <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
@@ -520,20 +536,20 @@ switch($step) {
   <tr>
     <td>
       '.constant($game->sprache("TEXT28")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($start)).'"><b>'.$start_planet['planet_name'].'</b></a> ('.$game->get_sector_name($start_planet['sector_id']).':'.$game->get_system_cname($start_planet['system_x'], $start_planet['system_y']).':'.($start_planet['planet_distance_id'] + 1).')'.( ($start_planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT26")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$start_planet['user_id']).'"><b>'.$start_planet['user_name'].'</b></a>' : '' ).'<br>
-      '.constant($game->sprache("TEXT29")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($dest)).'"><b>'.$dest_planet['planet_name'].'</b></a> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')'.( ($dest_planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT26")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$dest_planet['user_id']).'"><b>'.$dest_planet['user_name'].'</b></a>' : '' ).'<br><br>
+      '.constant($game->sprache("TEXT29")).$dest_str.'<br><br>
       '.constant($game->sprache("TEXT30")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
       '.constant($game->sprache("TEXT31")).' <b>'.($_POST['higher_arrival_stardate'].'.'.$_POST['lower_arrival_stardate']).'</b><br><br>
         ');
-        
+
         switch($step) {
             case 'stationate_setup':
                 $game->out(constant($game->sprache("TEXT32")).'<br><input type="hidden" name="step" value="stationate_exec">');
             break;
-            
+
             case 'comeback_setup':
                 $game->out(constant($game->sprache("TEXT33")).'<br><input type="hidden" name="step" value="comeback_exec">');
             break;
-            
+
             case 'attack_setup':
                 if($game->SITTING_MODE) {
                     message(NOTICE, constant($game->sprache("TEXT22")));
@@ -543,23 +559,23 @@ switch($step) {
       <input type="radio" name="step" value="attack_comeback_exec" onClick="return document.send_form.submit.value = \''.constant($game->sprache("TEXT35")).'\';">&nbsp;<b>'.constant($game->sprache("TEXT37")).'</b><br><br>
                 ');
             break;
-            
+
             case 'transport_setup':
                 $game->out(constant($game->sprache("TEXT38")).'<br><input type="hidden" name="step" value="transport_exec">');
             break;
-            
+
             case 'spy_setup':
                 if(!$in_scout || $in_other_torso || $in_transporter || $in_colo) {
                     message(NOTICE, constant($game->sprache("TEXT25")));
                 }
-                
+
                 $game->out(constant($game->sprache("TEXT39")).'<br><input type="hidden" name="step" value="spy_exec">');
             break;
-			
-			case 'survey_setup':
-				$game->out(constant($game->sprache("TEXT67")).'<br><input type="hidden" name="step" value="survey_exec">');
+
+            case 'survey_setup':
+                $game->out(constant($game->sprache("TEXT67")).'<br><input type="hidden" name="step" value="survey_exec">');
             break;
-            
+
             case 'colo_setup':
                 if($game->SITTING_MODE) {
                     message(NOTICE, constant($game->sprache("TEXT22")));
@@ -570,7 +586,7 @@ switch($step) {
                         WHERE s.fleet_id IN ('.implode(',', $fleet_ids).') AND
                               st.id = s.template_id AND
                               st.ship_torso = '.SHIP_TYPE_COLO;
-                              
+
                 if(!$q_cships = $db->query($sql)) {
                     message(DATABASE_ERROR, 'Could not query colonisation ship data');
                 }
@@ -580,7 +596,7 @@ switch($step) {
                 if(empty($first_cship['ship_id'])) {
                     message(GENERAL, 'Unexspected: Second try to find colo ship failed', '$first_cship[\'ship_id\'] = empty');
                 }
-                
+
                 $game->out(constant($game->sprache("TEXT40")).'<br><br>
 
       <table border="0" cellpadding="2" cellspacing="2">
@@ -651,7 +667,7 @@ switch($step) {
 </table>
       ');
     break;
-    
+
     case 'basic_setup':
     default:
         if($game->player['user_auth_level'] == STGC_DEVELOPER) {
@@ -664,7 +680,7 @@ switch($step) {
         }
         else {
             include_once('include/libs/moves.php');
-            
+
             $distance = get_distance(array($start_planet['system_global_x'], $start_planet['system_global_y']), array($dest_planet['system_global_x'], $dest_planet['system_global_y']));
             $velocity = warpf($max_warp_speed);
             $min_time = ceil( ( ($distance / $velocity) / TICK_DURATION) );
@@ -710,38 +726,38 @@ function update_times() {
         document.send_form.higher_arrival_stardate.value = \''.$min_stardate_split[0].'\';
         document.send_form.lower_arrival_stardate.value = \''.$min_stardate_split[1].'\';
     }
-    
+
     var int_stardate = parseInt(document.send_form.higher_arrival_stardate.value + document.send_form.lower_arrival_stardate.value);
-    
+
     if(int_stardate < '.$min_stardate_int.') {
         alert(\''.constant($game->sprache("TEXT19")).' '.$min_stardate.'\');
-        
+
         document.send_form.higher_arrival_stardate.value = \''.$min_stardate_split[0].'\';
         document.send_form.lower_arrival_stardate.value = \''.$min_stardate_split[1].'\';
-        
+
         int_stardate = '.$min_stardate_int.';
     }
-    
+
     var arrival_minutes = (int_stardate - '.(int)str_replace('.', '', $game->config['stardate']).') * '.TICK_DURATION.';
     var arrival_hours = 0;
     var arrival_days = Math.floor(arrival_minutes / 1440);
 
     arrival_minutes -= arrival_days * 1440;
-    
+
     while(arrival_minutes > 59) {
         arrival_hours++;
         arrival_minutes -= 60;
     }
-    
+
     document.send_form.arrival_days.value = arrival_days;
     document.send_form.arrival_hours.value = arrival_hours;
     document.send_form.arrival_minutes.value = arrival_minutes;
-    
+
     return true;
 }
 //-->
 </script>
-        
+
 <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
   <form name="send_form" method="post" action="'.parse_link('a=ship_send').'" onSubmit="return document.send_form.submit.disabled = true;">
   <input type="hidden" name="dest" value="'.encode_planet_id($dest).'">
@@ -764,46 +780,46 @@ function update_times() {
             $game->out(constant($game->sprache("TEXT29")).' <i>'.constant($game->sprache("TEXT51")).'</i> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')<br><br>');
         }
         else {
-            $game->out(constant($game->sprache("TEXT29")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($dest)).'"><b>'.$dest_planet['planet_name'].'</b></a> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')'.( ($dest_planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT26")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$dest_planet['user_id']).'"><b>'.$dest_planet['user_name'].'</b></a>' : '' ).'<br><br>');
+            $game->out(constant($game->sprache("TEXT29")).$dest_str.'<br><br>');
         }
-        
+
         $game->out('
       '.constant($game->sprache("TEXT30")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
       '.constant($game->sprache("TEXT52")).' <b>'.$max_speed_str.'</b><br>
       '.constant($game->sprache("TEXT53")).' '.$min_stardate.'</b><br><br>
       '.constant($game->sprache("TEXT31")).' <input class="field" style="width: 45px;" type="text" name="higher_arrival_stardate" value="'.$min_stardate_split[0].'" maxlength="5" onBlur="return update_times();">&nbsp;.&nbsp;<input class="field" style="width: 15px;" type="text" name="lower_arrival_stardate" value="'.$min_stardate_split[1].'" maxlength="1" onBlur="return update_times();">&nbsp;&nbsp;<input class="button" style="width: 20px;" type="button" value="+" onClick="return increment_arrival();"">&nbsp;<input class="button" style="width: 20px;" type="button" value="-" onClick="return decrement_arrival();"><br><br>
       '.constant($game->sprache("TEXT54")).' <input class="field" style="width: 25px;" type="text" name="arrival_days" value="" disabled="disabled">&nbsp;<i>'.constant($game->sprache("TEXT55")).'</i>&nbsp;&nbsp;<input class="field" style="width: 25px;" name="arrival_hours" value="" disabled="disabled">&nbsp;<i>'.constant($game->sprache("TEXT56")).'</i>&nbsp;&nbsp;<input class="field" style="width: 25px;" name="arrival_minutes" value="" disabled="disabled">&nbsp;<i>'.constant($game->sprache("TEXT57")).' +</i>&nbsp;<i id="timer2" title="time1_'.$NEXT_TICK.'_type1_4">&nbsp;</i><br><br>
-      
+
       <table width="440" align="center" border="0" cellpadding="0" cellspacing="0"><tr><td width="220">
         ');
-        
+
         if($free_planet) {
-            // $atkptc_present ist hier nicht nï¿½ig, weil unbewohnte Planeten mit
-            // Angriffsschutz garnicht angeflogen werden kï¿½nen
-            
+            // $atkptc_present is not used here, because uninhabited planet
+            // Attack protection not to be approached know
+
             $game->out('
         <input type="radio" name="step" value="stationate_setup">&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>
-		<input type="radio" name="step" value="survey_setup"'.( (!$explore_fleet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT65")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT65")).'</b><br>').'
+        <input type="radio" name="step" value="survey_setup"'.( (!$explore_fleet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT65")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT65")).'</b><br>').'
         <input type="radio" name="step" value="colo_setup"'.( (!$in_colo) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT59")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT59")).'</b><br>' )
             );
         }
         elseif($own_planet) {
             $game->out('
         <input type="radio" name="step" value="stationate_setup" checked="checked">&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>
-		<input type="radio" name="step" value="survey_setup"'.( (!$explore_fleet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT65")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT65")).'</b><br>').'
+        <input type="radio" name="step" value="survey_setup"'.( (!$explore_fleet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT65")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT65")).'</b><br>').'
         <input type="radio" name="step" value="comeback_setup">&nbsp;<b>'.constant($game->sprache("TEXT60")).'</b><br>
             ');
         }
         else {
             $game->out('
         <input type="radio" name="step" value="stationate_setup"'.( ($atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT58")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>' ).'
-		<input type="radio" name="step" value="survey_setup"'.( (!$explore_fleet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT65")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT65")).'</b><br>' ).'
+        <input type="radio" name="step" value="survey_setup"'.( (!$explore_fleet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT65")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT65")).'</b><br>' ).'
         <input type="radio" name="step" value="attack_setup"'.( ($own_planet || $free_planet || $atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT61")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT61")).'</b><br>' ).'
         <input type="radio" name="step" value="transport_setup"'.( ($own_planet || $free_planet || !$in_transporter) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT62")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT62")).'</b><br>' ).'
         <input type="radio" name="step" value="spy_setup"'.( (!$in_scout || $atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT63")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT63")).'</b><br>' ).'
             ');
         }
-        
+
         $game->out('
       </td>
       <td width="220" valign="middle">

@@ -59,7 +59,7 @@ define ("GER_TEXT17", 'Orbs d&uuml;rfen nicht bewegt werden.');
 
 define ("GER_TEXT18", 'Mit aktiviertem Angriffsschutz d&uuml;rfen keine unbewohnten Planeten angeflogen werden');
 
-define ("GER_TEXT19", 'Die fr&uuml;hstmögliche Ankunft ist Sternzeit');
+define ("GER_TEXT19", 'Die fr&uuml;hstm&ouml;gliche Ankunft ist Sternzeit');
 
 define ("GER_TEXT20", 'Es fliegen keine Schiffe in den Flotten mit');
 
@@ -71,7 +71,7 @@ define ("GER_TEXT23", 'Cheatversuch - Flotten&uuml;bergabe!');
 
 define ("GER_TEXT24", 'Du darfst nur zu deinen eigenen Planeten Waren transportieren.');
 
-define ("GER_TEXT25", 'Nur Aufkl&auml;rungsschiffe (1. Rumpfklasse) können Spionageeins&auml;tze fliegen');
+define ("GER_TEXT25", 'Nur Aufkl&auml;rungsschiffe (1. Rumpfklasse) k&ouml;nnen Spionageeins&auml;tze fliegen');
 
 define ("GER_TEXT26", 'von');
 
@@ -127,7 +127,7 @@ define ("GER_TEXT51", 'unbewohnt');
 
 define ("GER_TEXT52", 'Max. Geschwindigkeit:');
 
-define ("GER_TEXT53", 'fr&uuml;hstmögliche Ankunft: <b>Sternzeit');
+define ("GER_TEXT53", 'fr&uuml;hstm&ouml;gliche Ankunft: <b>Sternzeit');
 
 define ("GER_TEXT54", 'Flugdauer:');
 
@@ -150,6 +150,14 @@ define ("GER_TEXT62", 'Transportieren');
 define ("GER_TEXT63", 'Ausspionieren');
 
 define ("GER_TEXT64", 'Weiter >>');
+
+define ("GER_TEXT65", 'Planet Analysen');
+
+define ("GER_TEXT66", 'Die Sondierungsmissionen kann nur auf eine Flotte bestehend aus einem einzigen Schiff.');
+
+define ("GER_TEXT67", '<b>Planet Analysen:</b><br>Das Schiff wird sich bei den Planeten, f&uuml;hrt eine Reihe von Scans des Gebiets und ein wissenschaftliches Team wird strahlte bis auf den Boden f&uuml;r geologische Erhebungen, wenn m&ouml;glich, dann werden der Kommission die Ergebnisse der Analysen.');
+
+define ("GER_TEXT68", 'Unbekannt');
 
 //English
 define ("ENG_TEXT0", 'Ship movements');
@@ -286,6 +294,14 @@ define ("ENG_TEXT62", 'Transport');
 define ("ENG_TEXT63", 'Spy');
 
 define ("ENG_TEXT64", 'Continue >>');
+
+define ("ENG_TEXT65", 'Planet analysis');
+
+define ("ENG_TEXT66", 'The exploratory missions can be assigned only to a fleet composed by a single ship.');
+
+define ("ENG_TEXT67", '<b>Planet analysis:</b><br>The ship will approach the planet, will perform a series of scans of the area and a scientific team will be beamed down to the ground for geological surveys if possible, then it will report the results of the analysis.');
+
+define ("ENG_TEXT68", 'Unknown');
 
 //Italiano
 define ("ITA_TEXT0", 'Movimenti flotte');
@@ -428,5 +444,7 @@ define ("ITA_TEXT65", 'Analisi pianeta');
 define ("ITA_TEXT66", 'Le missioni esplorative sono assegnabili a flotte composte da una sola nave.');
 
 define ("ITA_TEXT67", '<b>Analisi Pianeta:</b><br>La nave approccer&agrave; il pianeta, eseguir&agrave; una serie di scansioni della superficie e sbarcher&agrave; una squadra scientifica a terra per i rilievi geologici qualora sia possibile, riferendo poi gli esiti delle analisi.');
+
+define ("ITA_TEXT68", 'Sconosciuto');
 
 ?>
