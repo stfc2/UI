@@ -487,7 +487,8 @@ if(!empty($_GET['do'])) {
 
             redirect('a=alliance_diplomacy');
         break;
-        
+
+/* 21/09/08 - AC: Actually you cannot suggest peace to an alliance
         case 'suggest_peace':
             if($diplomacy['type'] != ALLIANCE_DIPLOMACY_WAR) {
                 message(NOTICE, constant($game->sprache("TEXT77")));
@@ -507,7 +508,8 @@ if(!empty($_GET['do'])) {
             
             redirect('a=alliance_diplomacy&details='.$ad_id);
         break;
-
+*/
+/* 21/09/08 - AC: Better to disable also this...
         case 'suggest_pact':
             if($diplomacy['type'] != ALLIANCE_DIPLOMACY_NAP) {
                 message(NOTICE, constant($game->sprache("TEXT79")));
@@ -529,7 +531,7 @@ if(!empty($_GET['do'])) {
             }
 
             redirect('a=alliance_diplomacy&details='.$ad_id);
-        break;
+        break;*/
     }
 }
 elseif(!empty($_POST['new_submit'])) {
@@ -681,6 +683,7 @@ elseif(!empty($_POST['new_submit'])) {
     
     redirect('a=alliance_diplomacy&details='.$db->insert_id());
 }
+/* 21/09/08 - AC: On 2nd galaxy the diplomacy is turned off
 elseif(isset($_GET['new'])) {
     $game->out('
 <table width="450" align="center" border="0" cellpadding="2" cellspacing="4" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
@@ -717,7 +720,7 @@ elseif(isset($_GET['new'])) {
   </form>
 </table>
     ');
-}
+}*/
 elseif(!empty($_GET['details'])) {
     if($game->player['user_alliance_rights5'] != 1 && $game->player['user_id'] != $alliance['alliance_owner']) {
         message(NOTICE, constant($game->sprache("TEXT2")));
@@ -775,7 +778,7 @@ elseif(!empty($_GET['details'])) {
             
             switch($diplomacy['status']) {
                 case 0:
-/* 29/08/08 - AC: Actually you cannot suggest peace to an alliance 
+/* 29/08/08 - AC: Actually you cannot suggest peace to an alliance
                     $game->out('<tr><td>[<a href="'.parse_link('a=alliance_diplomacy&do=suggest_peace&ad_id='.$ad_id).'">'.constant($game->sprache("TEXT51")).'</a>]</td></tr>');*/
                 break;
                 

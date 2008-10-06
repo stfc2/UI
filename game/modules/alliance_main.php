@@ -376,7 +376,7 @@ if(isset($_GET['member_list'])) {
 <br>
     ');
 }
-
+/* 21/09/08 - AC: On 2nd galaxy the alliance are fixed
 elseif(!empty($_POST['leave_confirm'])) {
     check_membership(true);
     
@@ -511,7 +511,7 @@ elseif(isset($_GET['new'])) {
 // DC ----
 
     redirect('a=alliance_main');
-}
+}*/
 
 // No action, also examine whether the player is in an alliance or not
 elseif(!empty($game->player['alliance_name'])) {
