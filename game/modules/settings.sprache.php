@@ -140,13 +140,13 @@ define ("GER_TEXT50f", 'Woche');
 
 define ("GER_TEXT50g", 'Wochen');
 
-define ("GER_TEXT51", 'Mit dem L&ouml;schen des Accounts werden alle Benutzerdaten aus der Datenbank gel&ouml;scht und die Planeten gelten als unbewohnt. <b>Dies kann nicht mehr r&uuml;ckg&auml;ngig gemacht werden.</b><br><br><u>Nachdem du hier mit deinem Passwort best&auml;tigt hast, bekommst du eine Email</u>.<br>In dieser findest du dann einen Link, der den L&ouml;schungsprozess abschlie&beta;t. Dies muss sp&auml;testens 3h nach dem Best&auml;tigen erfolgen, w&auml;hrend dieser Zeit kannst du dich <b>nicht</b> mehr in deinen Account einloggen. Sollte du bis dahin nicht auf den Link geklickt haben, ist dein Account wieder aktiviert.');
+define ("GER_TEXT51", 'Mit dem L&ouml;schen des Accounts werden alle Benutzerdaten aus der Datenbank gel&ouml;scht und die Planeten gelten als unbewohnt.<br><b>Dies kann nicht mehr r&uuml;ckg&auml;ngig gemacht werden.</b><br><br><u>Nachdem du hier mit deinem Passwort best&auml;tigt hast, bekommst du eine Email</u>.<br>In dieser findest du dann einen Link, der den L&ouml;schungsprozess abschlie&beta;t. Dies muss sp&auml;testens 3h nach dem Best&auml;tigen erfolgen, w&auml;hrend dieser Zeit kannst du dich <b>nicht</b> mehr in deinen Account einloggen. Sollte du bis dahin nicht auf den Link geklickt haben, ist dein Account wieder aktiviert.');
 
 define ("GER_TEXT52", 'Aktuelles Passwort:');
 
 define ("GER_TEXT53", '(Zum Best&auml;tigen eingeben)');
 
-define ("GER_TEXT54", 'Account l&ouml;schen');
+define ("GER_TEXT54", 'Account Stornierung');
 
 define ("GER_TEXT55", 'Wenn der Angriffsschutz deaktiviert ist, kann deine Kolonie von jedem Spieler angegriffen oder ausspioniert werden, du kannst aber auch dasselbe tun.<br>Au&beta;erdem k&ouml;nnen unbewohnte Planeten kolonisiert werden.');
 
@@ -436,13 +436,13 @@ define ("ENG_TEXT50f", 'week');
 
 //define ("ENG_TEXT50g", 'weeks');
 
-define ("ENG_TEXT51", 'With the deletion of the account, all user data from the database will be erased and the planets apply as uninhabited. <b>This can not be undone.</b><br><br><u>After you here with your password confirms you receive an email</u>.<br>In this you will find a link that the erasure process concludes. This must be no later than 3 hours after the confirmation, during this time you can <b>not</b> more log into your account. If you had not clicked the link, your account is activated.');
+define ("ENG_TEXT51", 'With the deletion of the account, all user data from the database will be erased and the planets apply as uninhabited.<br><b>This can not be undone.</b><br><br><u>After you here with your password confirms you receive an email</u>.<br>In this you will find a link that the erasure process concludes. This must be no later than 3 hours after the confirmation, during this time you can <b>not</b> more log into your account. If you had not clicked the link, your account is activated.');
 
 define ("ENG_TEXT52", 'Current Password:');
 
 define ("ENG_TEXT53", '(insert to confirm)');
 
-define ("ENG_TEXT54", 'Delete account');
+define ("ENG_TEXT54", 'Account deletion');
 
 define ("ENG_TEXT55", 'When the attack protection is disabled, your colony can be attacked by every player, but you can also do the same.<br>In addition, uninhabited planets can be colonized.');
 
@@ -732,7 +732,7 @@ define ("ITA_TEXT50f", 'settimana');
 
 define ("ITA_TEXT50g", 'settimane');
 
-define ("ITA_TEXT51", 'Con la cancellazione dell\'account, tutti i dati dell\'utente verranno eliminati dal database, ed i pianeti che possedeva fino ad allora risulteranno disabitati. <b>Il procedimento non &egrave; reversibile.</b><br><br><u>Dopo aver confermato il tuo intento inserendo la password riceverai un&#146;e-mail</u>.<br>Al suo interno troverai un collegamento che dovrai selezionare per completare la procedura di cancellazione. Questo deve essere fatto entro 3 ore dalla conferma, durante tale periodo <b>non</b> potrai loggare col tuo account. Se non avrai cliccato il collegamento entro le 3 ore, il tuo account verr&agrave; riattivato.');
+define ("ITA_TEXT51", 'Con la cancellazione dell\'account, tutti i dati dell\'utente verranno eliminati dal database, ed i pianeti che possedeva fino ad allora risulteranno disabitati.<br><b>Il procedimento non &egrave; reversibile.</b><br><br><u>Dopo aver confermato il tuo intento inserendo la password riceverai un&#146;e-mail</u>.<br>Al suo interno troverai un collegamento che dovrai selezionare per completare la procedura di cancellazione. Questo deve essere fatto entro 3 ore dalla conferma, durante tale periodo <b>non</b> potrai loggare col tuo account. Se non avrai cliccato il collegamento entro le 3 ore, il tuo account verr&agrave; riattivato.');
 
 define ("ITA_TEXT52", 'Password attuale:');
 
