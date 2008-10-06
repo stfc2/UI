@@ -519,21 +519,30 @@ $game->out('
 <tr><td width=80><b>'.constant($game->sprache("TEXT69")).'</td><td width=200><b>'.constant($game->sprache("TEXT18")).'</td><td width=50><b>'.constant($game->sprache("TEXT11")).'</td><td width=50><b>'.constant($game->sprache("TEXT55")).'</td></tr>
 ');
 
-     $sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
+
+    // 30/09/08 - AC: If the player belongs to the alliance AND has rights to see tactical info
+    if($game->player['user_alliance_rights3'] == 1) {
+        $filter = '(al.alliance_id = "'.$game->player['user_alliance'].'" OR (pd.user_id = "'.$game->player['user_id'].'" AND pd.log_code = 500))';
+    }
+    else {
+        $filter = 'pd.user_id = "'.$game->player['user_id'].'" AND pd.log_code = 500';
+    }
+
+    $sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
               FROM (planets pl)
               LEFT JOIN (starsystems sys) on sys.system_id = pl.system_id
               LEFT JOIN (user u) on pl.planet_owner = u.user_id
               LEFT JOIN (alliance al) on u.user_alliance = al.alliance_id
               LEFT JOIN (planet_details pd) on pl.system_id = pd.system_id
               WHERE pl.planet_owner="'.$user['user_id'].'" AND
-              (al.alliance_id = "'.$game->player['user_alliance'].'" OR (pd.user_id = "'.$game->player['user_id'].'" AND pd.log_code = 500))
+              '.$filter.'
               GROUP BY pl.planet_id
               ORDER BY pl.planet_name'; 
 //    $planetquery=$db->query('SELECT pl.*, sys.system_x, sys.system_y FROM (planets pl) LEFT JOIN (starsystems sys) on sys.system_id = pl.system_id  WHERE pl.planet_owner="'.$user['user_id'].'" ORDER BY pl.planet_name');
     $planetquery=$db->query($sql_pl);
     $numero_righe = $db->num_rows($planetquery);
     if($numero_righe == 0) {
-	$game->out('<td> --- </td><td> --- </td><td> --- </td><td> --- </td></tr>');
+        $game->out('<td> --- </td><td> --- </td><td> --- </td><td> --- </td></tr>');
     }
     else {
         while(($planet = $db->fetchrow($planetquery))==true)
