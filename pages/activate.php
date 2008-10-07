@@ -50,33 +50,12 @@ $proverbs = array(
 $n_proverbs = count($proverbs);
 
 
-
-
-
-function display_message($header,$message,$bg) {
-    global $main_html;
-    $main_html .= '
-<table align="center" border="0" cellpadding="2" cellspacing="2" width="500" class="border_grey" style=" background-color:#000000; background-position:left; background-repeat:no-repeat;">
-  <tr>
-    <td width="100%">
-    <center><span class="sub_caption">'.$header.'</span></center>
-      <table width="100%" border="0" cellpadding="0" cellspacing="0" style=" background-image:url(\''.$bg.'\'); background-position:left; background-repeat:yes;">
-        <tr height="300">
-          <td width="100%" valign=top><span class="sub_caption2"><br>'.$message.'<br><br></span></td>
-        </tr>
-	</table>
-	</td>
-	</tr>
-	</table>';
-}
-
-
-
+$err_title = 'Errore nell&#146;attivazione dell&#146;account';
 $main_html = '<center><span class="caption">Attivazione account</span></center><br>';
 
 
 if( (!isset($_GET['galaxy'])) || (empty($_GET['user_id'])) || (empty($_GET['key']))) {
-display_message('Errore nell&#146;attivazione dell&#146;account (Chiamata invalida)','','ngc7742bg');
+    display_message($err_title,'Almeno una delle seguenti informazioni risulta mancante:<ul><li>galassia</li><li>ID utente</li><li>codice attivazione</li></ul>',GALAXY1_BG);
     return 1;
 }
 
@@ -103,33 +82,38 @@ switch($galaxy)
 
 
 if($gkey != $key) {
-display_message('Errore nell&#146;attivazione dell&#146;account (Codice attivazione invalido #1)','',$bg);
-return 1;
+    display_message($err_title,'Il codice di attivazione fornito non corrisponde con quello memorizzato nel sistema (link troncato?).',$bg);
+    return 1;
 }
 
 $sql = 'SELECT user_active
         FROM user
         WHERE user_id = '.$user_id;
 
-	 
+
 if(($user_data = $mydb->queryrow($sql)) === false) {
-    die('Database error - Could not verify user');
+    display_message($err_title,'Errore interno nella SELECT mySQL, si prega di contattare lo Staff.',$bg);
+    return 1;
 }
 
 if(empty($user_data['user_active'])) {
-	display_message('Errore nell&#146;attivazione dell&#146;account (Codice attivazione invalido #2)','',$bg);
+    display_message($err_title,'Impossibile recuperare le informazioni relative allo stato di attivazione del giocatore (utente inesistente?).',$bg);
     return 1;
 }
 
 if($user_data['user_active'] != 2) {
-	display_message('Errore nell&#146;attivazione dell&#146;account (giocatore gi&agrave; attivato)','',$bg);
+    display_message($err_title,'Il giocatore &egrave; gi&agrave; stato attivato.',$bg);
     return 1;
 }
 
 $sql = 'UPDATE user
         SET user_active = 1, last_active='.time().'
         WHERE user_id = '.$user_id;
-$mydb->query($sql);
+
+if(!$mydb->query($sql)) {
+    display_message($err_title,'Errore interno nella UPDATE mySQL, si prega di contattare lo Staff.',$bg);
+    return 1;
+}
 
 
 mt_srand((double)microtime()*1000000);

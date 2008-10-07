@@ -111,6 +111,24 @@ function message($type, $message) {
 function parse_link($get_string = '') {
     return $_SERVER['PHP_SELF'].'?'.$get_string;
 }
+
+function display_message($header,$message,$bg) {
+    global $main_html;
+    $main_html .= '
+<table align="center" border="0" cellpadding="2" cellspacing="2" width="500" class="border_grey" style=" background-color:#000000; background-position:left; background-repeat:no-repeat;">
+  <tr>
+    <td width="100%">
+      <center><span class="sub_caption">'.$header.'</span></center>
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" style=" background-image:url(\''.$bg.'\'); background-position:left; background-repeat:yes;">
+        <tr height="300">
+          <td width="100%" valign=top><span class="sub_caption2"><br>'.$message.'<br><br></span></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>';
+}
+
 class sql {
     var $login = array(
         'server' => 'localhost',
@@ -374,7 +392,7 @@ class sql {
 
             $table =         (!empty($data['explain']['table']))         ? $data['explain']['table']         : '';
             $type =          (!empty($data['explain']['type']))          ? $data['explain']['type']          : '';
-            $possible_keys = (!empty($data['explain']['possible_keys'])) ? $data['explain']['possible_keys'] : '';	
+            $possible_keys = (!empty($data['explain']['possible_keys'])) ? $data['explain']['possible_keys'] : '';
             $key =           (!empty($data['explain']['key']))           ? $data['explain']['key']           : '';
             $key_len =       (!empty($data['explain']['key_len']))       ? $data['explain']['key_len']       : '';
             $ref =           (!empty($data['explain']['ref']))           ? $data['explain']['ref']           : '';

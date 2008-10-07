@@ -21,8 +21,13 @@
 */
 
 
-if( (!isset($_GET['galaxy'])) || (empty($_GET['user_id'])) || (empty($_GET['key'])) ) {
-    $main_html = '<br><br><br><br><center><span class="caption">Impossibile cancellare l&#146;account (Chiamata invalida)</span></center>';
+
+$err_title = 'Errore nella cancellazione dell&#146;account';
+$main_html = '<center><span class="caption">Cancellazione account</span></center><br>';
+
+
+if( (!isset($_GET['galaxy'])) || (empty($_GET['user_id'])) || (empty($_GET['key']))) {
+    display_message($err_title,'Almeno una delle seguenti informazioni risulta mancante:<ul><li>galassia</li><li>ID utente</li><li>codice di conferma</li></ul>',GALAXY1_BG);
     return 1;
 }
 
@@ -34,9 +39,11 @@ switch($galaxy)
 {
     case 0:
         $mydb = $db;
+        $bg = GALAXY1_BG;
     break;
     case 1:
         $mydb = $db2;
+        $bg = GALAXY2_BG;
     break;
 }
 
@@ -45,7 +52,12 @@ $sql = 'SELECT user_id, user_registration_ip, last_ip
         WHERE user_id = '.$user_id;
 
 if(($user = $mydb->queryrow($sql)) === false) {
-    $main_html = '<br><br><br><br><center><span class="caption">Impossibile cancellare l&#146;account (Chiamata invalida)</span></center>';
+    display_message($err_title,'Errore interno nella SELECT mySQL, si prega di contattare lo Staff.',$bg);
+    return 1;
+}
+
+if(empty($user['user_id'])) {
+    display_message($err_title,'Impossibile recuperare le informazioni relative al giocatore (utente inesistente?).',$bg);
     return 1;
 }
 
@@ -54,21 +66,21 @@ $last_ip_split = explode('.', $user['last_ip']);
 $confirm_key = md5( ((int)$reg_ip_split[0] + (int)$reg_ip_split[1] + (int)$reg_ip_split[2] + (int)$reg_ip_split[3]) * ((int)$last_ip_split[0] + (int)$last_ip_split[1] + (int)$last_ip_split[2] + (int)$last_ip_split[3]) - (int)$user_id );
 
 if($_GET['key'] != $confirm_key) {
-    $main_html = '<br><br><br><br><center><span class="caption">Il codice di conferma &egrave; invalido</span></center>';
+    display_message($err_title,'Il codice di conferma fornito non corrisponde con quello memorizzato nel sistema (link troncato?).',$bg);
     return 1;
 }
 
 $sql = 'UPDATE user
         SET user_active = 4
         WHERE user_id = '.$user_id;
-        
+
 if(!$mydb->query($sql)) {
-    die('Database error - Could not delete registered user');
+    display_message($err_title,'Errore interno nella UPDATE mySQL, si prega di contattare lo Staff.',$bg);
+    return 1;
 }
 
 
-$main_html = '<center><span class="caption">Account deletion:</span></center><br>
-</center><br>La cancellazione del tuo account &egrave; stata confermata.</b><br><br>Sar&agrave; definitivamente cancellato con il calcolo del prossimo tick (massimo in 3 minuti).<br><br><br>';
+display_message('La cancellazione del tuo account &egrave; stata confermata.','Sar&agrave; definitivamente rimosso con il calcolo del prossimo tick (massimo in 3 minuti).',$bg);
 
 
 ?>
