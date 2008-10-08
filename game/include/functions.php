@@ -455,15 +455,18 @@ function get_wares_names() {
 }
 
 function get_wares_by_id($user_race = 0) {
-	global $UNIT_NAME;
+	global $UNIT_NAME,$game;
 	
 	if(!$user_race) {
-		global $game;
 
 		$user_race = $game->player['user_race'];
 	}
 
-	return array('Metall', 'Mineralien', 'Latinum', 'Arbeiter',
+	return array(
+		constant($game->sprache("METAL")),
+		constant($game->sprache("MINERALS")),
+		constant($game->sprache("DILITHIUM")),
+		constant($game->sprache("WORKERS2")),
 		$UNIT_NAME[$user_race][0],
 		$UNIT_NAME[$user_race][1],
 		$UNIT_NAME[$user_race][2],
