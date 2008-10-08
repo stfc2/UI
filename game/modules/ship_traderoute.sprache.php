@@ -24,7 +24,7 @@
 
 define ("GER_TEXT0", 'Handelsrouten');
 
-define ("GER_TEXT1", 'Keine Flotte ausgewï¿½lt');
+define ("GER_TEXT1", 'Keine Flotte ausgew&aumlhlt');
 
 define ("GER_TEXT2", 'Die Flotte ist nicht auf einem Planeten stationiert');
 
@@ -32,7 +32,15 @@ define ("GER_TEXT3", 'Der Startplanet existiert nicht');
 
 define ("GER_TEXT4", 'Ein unbewohnter Planet kann nicht Start/Ziel einer Handelsroute sein');
 
-define ("GER_TEXT5", 'Ungltiges Koordinatenformat');
+define ("GER_TEXT5", 'Ung&uuml;ltiges Koordinatenformat');
+
+define ("GER_TEXT5a", 'Ung&uuml;ltige Y-Koordinate f&uuml;r System angegeben');
+
+define ("GER_TEXT5b", 'no part of $letters');
+
+define ("GER_TEXT5c", 'Ungltige X-Koordinate f&uuml;r System angegeben');
+
+define ("GER_TEXT5d", 'no part of $numbers');
 
 define ("GER_TEXT6", 'Ex existiert kein Planet mit den Koordinaten ');
 
@@ -42,7 +50,7 @@ define ("GER_TEXT8", 'Start und Ziel sind identisch!');
 
 define ("GER_TEXT9", 'Der Zielplanet existiert nicht');
 
-define ("GER_TEXT10", 'Auf einer Handelsroute drfen nur Transporter mitfliegen');
+define ("GER_TEXT10", 'Auf einer Handelsroute d&uuml;rfen nur Transporter mitfliegen');
 
 define ("GER_TEXT11", 'Auf diser Handelsroute werden die Transporter nie beladen');
 
@@ -54,7 +62,7 @@ define ("GER_TEXT14", ' Ziel: ');
 
 define ("GER_TEXT15", 'Flotte: ');
 
-define ("GER_TEXT16", 'Max. Ladekapazitï¿½: ');
+define ("GER_TEXT16", 'Max. Ladekapazit&auml;t: ');
 
 define ("GER_TEXT17", 'Rohstoffe / ');
 
@@ -76,7 +84,7 @@ define ("GER_TEXT25", 'Arbeiter:');
 
 define ("GER_TEXT26", '-- Schiffe entladen --');
 
-define ("GER_TEXT27", '<< Zurck');
+define ("GER_TEXT27", '<< Zur&uuml;ck');
 
 define ("GER_TEXT28", 'Weiter >>');
 
@@ -89,6 +97,18 @@ define ("GER_TEXT31", 'Max. Geschwindigkeit: ');
 define ("GER_TEXT32", 'Min. Reisezeit: ');
 
 define ("GER_TEXT33", 'Flugdauer: ');
+
+define ("GER_TEXT34", 'Wählen Sie eine Art der Zuordnung zwischen den folgenden Optionen:');
+
+define ("GER_TEXT35", 'Einzel-Rennen (Start->Anreise->Start)');
+
+define ("GER_TEXT36", 'Rennen wird solange fortgesetzt, bis Widerruf');
+
+define ("GER_TEXT37", 'Legen Sie fest, ob oder nicht, damit Logbuch Berichte über Lieferungen:');
+
+define ("GER_TEXT38", 'Logbuch Bericht aktiviert');
+
+define ("GER_TEXT39", 'Logbuch Bericht deaktiviert');
 
 
 //English
@@ -104,6 +124,14 @@ define ("ENG_TEXT3", 'Departure Planet does not exist');
 define ("ENG_TEXT4", 'An uninhabited planet can not be departure / destination of a trade route');
 
 define ("ENG_TEXT5", 'Unknow Coordinates Format');
+
+define ("ENG_TEXT5a", 'Invalid Y-coordinate for specified system');
+
+define ("ENG_TEXT5b", 'no part of $letters');
+
+define ("ENG_TEXT5c", 'Invalid X-coordinate for specified system');
+
+define ("ENG_TEXT5d", 'no part of $numbers');
 
 define ("ENG_TEXT6", 'No Planets exists at ');
 
@@ -151,15 +179,28 @@ define ("ENG_TEXT27", '<< Back');
 
 define ("ENG_TEXT28", 'Proceed >>');
 
-define ("ENG_TEXT29", 'Action at the <u>Destination</u> planete');
+define ("ENG_TEXT29", 'Action at the <u>Destination</u> planet');
 
-define ("ENG_TEXT30", 'Impuls');
+define ("ENG_TEXT30", 'Impulse');
 
-define ("ENG_TEXT31", 'Max. Geschwindigkeit: ');
+define ("ENG_TEXT31", 'Maximum speed: ');
 
-define ("ENG_TEXT32", 'Min. Reisezeit: ');
+define ("ENG_TEXT32", 'Minimum journey: ');
 
-define ("ENG_TEXT33", 'Flugdauer: ');
+define ("ENG_TEXT33", 'Flight duration: ');
+
+define ("ENG_TEXT34", 'Select a type of assignment between the following options:');
+
+define ("ENG_TEXT35", 'Single race (Start->Arrival->Start)');
+
+define ("ENG_TEXT36", 'Race continues until withdrawal');
+
+define ("ENG_TEXT37", 'Select whether or not to enable logbook reports on deliveries:');
+
+define ("ENG_TEXT38", 'Logbook report enabled');
+
+define ("ENG_TEXT39", 'Logbook report disabled');
+
 
 //Italiano
 
@@ -174,6 +215,14 @@ define ("ITA_TEXT3", 'Il pianeta di partenza non esiste');
 define ("ITA_TEXT4", 'Un pianeta disabitato non pu&ograve; essere partenza/destinazione di una rotta commerciale');
 
 define ("ITA_TEXT5", 'Coordinate in un formato sconosciuto');
+
+define ("ITA_TEXT5a", 'Coordinata Y invalida per il sistema specificato');
+
+define ("ITA_TEXT5b", 'non fa parte di $letters');
+
+define ("ITA_TEXT5c", 'Coordinata X invalida per il sistema specificato');
+
+define ("ITA_TEXT5d", 'non fa parte di $numbers');
 
 define ("ITA_TEXT6", 'Non esiste nessun pianeta in ');
 
@@ -230,6 +279,18 @@ define ("ITA_TEXT31", 'Velocit&agrave; Massima: ');
 define ("ITA_TEXT32", 'Min. Tempo di Volo: ');
 
 define ("ITA_TEXT33", 'Durata del Volo: ');
+
+define ("ITA_TEXT34", 'Selezionare una tipologia di incarico tra le opzioni seguenti:');
+
+define ("ITA_TEXT35", 'Corsa unica (Partenza->Arrivo->Partenza)');
+
+define ("ITA_TEXT36", 'Corsa continua, fino a revoca');
+
+define ("ITA_TEXT37", 'Selezionare se abilitare o meno i rapporti sulle consegne:');
+
+define ("ITA_TEXT38", 'Rapporti abilitati');
+
+define ("ITA_TEXT39", 'Rapporti disabilitati');
 
 
 ?>

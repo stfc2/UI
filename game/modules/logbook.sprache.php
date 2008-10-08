@@ -151,7 +151,9 @@ define ("GER_TEXT62", 'Dabei konnte nicht alles transferiert werden, da das Maxi
 
 define ("GER_TEXT63", 'Ware/Einheit');
 
-define ("GER_TEXT64", '&uuml;bergeben');
+define ("GER_TEXT64", 'entladen');
+
+define ("GER_TEXT64a", 'laden');
 
 define ("GER_TEXT65", 'Dein Flottenverband hat den Zielplaneten erreicht, konnte die Ladung aber nicht auf dem Planeten abladen, da der Absender nicht der Besitzer des Planeten ist.');
 
@@ -448,7 +450,9 @@ define ("ENG_TEXT62", 'Besides, everything could not be transferred, because the
 
 define ("ENG_TEXT63", 'Good/Unit');
 
-define ("ENG_TEXT64", 'hand over');
+define ("ENG_TEXT64", 'Unloaded');
+
+define ("ENG_TEXT64a", 'Loaded');
 
 define ("ENG_TEXT65", 'Your naval force has reached the target planet, however, the load could not be transferred on the planet, because you aren&#146:t the owner of the planet.');
 
@@ -745,7 +749,9 @@ define ("ITA_TEXT62", 'Tuttavia, non tutto &egrave; stato trasferito per mancanz
 
 define ("ITA_TEXT63", 'Merci/Unit&agrave;');
 
-define ("ITA_TEXT64", 'ceduto');
+define ("ITA_TEXT64", 'Scaricato');
+
+define ("ITA_TEXT64a", 'Caricato');
 
 define ("ITA_TEXT65", 'Le tue forze navali hanno raggiunto il pianeta bersaglio, tuttavia il carico non &egrave; stato trasferito perch&eacute; non sei il padrone del pianeta.');
 

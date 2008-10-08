@@ -504,7 +504,7 @@ function display_logbook($log) {
                 $game->out(constant($game->sprache("TEXT59")).( ($planet_overloaded) ? ' '.constant($game->sprache("TEXT60")) : '' ) );
             }
             else {
-                $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> hat auf die Oberfläche der Kolonie Waren/Einheiten gebeamt und befindet sich wieder auf dem Rückflug.'.( ($planet_overloaded) ? ' '.constant($game->sprache("TEXT61")) : '' ));
+                $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT61")).( ($planet_overloaded) ? ' '.constant($game->sprache("TEXT62")) : '' ));
             }
 
             $game->out('
@@ -590,6 +590,100 @@ function display_logbook($log) {
     <a href="'.parse_link('a=ship_fleets_ops&ship_details='.$log['log_data'][8]).'">'.$log['log_data'][9].'</a> (<i>'.$SHIP_TORSO[$log['log_data'][11]][$log['log_data'][10]][29].'</i>, <i>'.$RACE_DATA[$log['log_data'][11]][0].'</i>)
     <br>
             ');
+        break;
+
+        case 34:
+            $ships = &$log['log_data'][8];
+            $unloaded_wares = &$log['log_data'][9];
+            $loaded_wares = &$log['log_data'][10];
+            $planet_overloaded = $log['log_data'][11];
+
+            // Shows communication of the action
+            $game->out('
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="65" valign="top"><b>'.constant($game->sprache("TEXT34")).'&nbsp;</b></td>
+        <td width="385">
+            ');
+
+            if($ldata['user_id'] == $game->player['user_id']) {
+                $game->out(constant($game->sprache("TEXT59")).( ($planet_overloaded) ? ' '.constant($game->sprache("TEXT60")) : '' ) );
+            }
+            else {
+                $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT61")).( ($planet_overloaded) ? ' '.constant($game->sprache("TEXT62")) : '' ));
+            }
+
+            // Shows number and type of ships involved
+            $game->out('
+        </td>
+      </tr>
+    </table>
+    <br>
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="350"><b>'.constant($game->sprache("TEXT54")).'</b></td>
+        <td width="100"><b>'.constant($game->sprache("TEXT55")).'</b></td>
+      </tr>
+            ');
+
+            for($i = 0; $i < count($ships); ++$i) {
+                $game->out('
+      <tr>
+        <td>'.$ships[$i][0].' (<i>'.$SHIP_TORSO[$ships[$i][2]][$ships[$i][1]][29].'</i>, <i>'.$RACE_DATA[$ships[$i][2]][0].'</i>)</td>
+        <td>'.$ships[$i][3].'</td>
+      </tr>
+                ');
+            }
+
+            // Shows unloaded goods
+            $game->out('
+	</table>
+	<br>
+	<table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="350"><b>'.constant($game->sprache("TEXT63")).'</b></td>
+        <td width="100"><b>'.constant($game->sprache("TEXT64")).'</b></td>
+      </tr>
+		   ');
+
+		   $wares_names = get_wares_by_id();
+		   
+		   for($i = 0; $i < count($wares_names); ++$i) {
+			   if($unloaded_wares[$i] > 0) {
+				   $game->out('
+	  <tr>
+		<td>'.$wares_names[$i].'</td>
+		<td>'.$unloaded_wares[$i].'</td>
+	  </tr>
+				   ');
+			   }
+		   }
+		   
+            // Shows loaded goods
+            $game->out('
+	</table>
+	<br>
+	<table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="350"><b>'.constant($game->sprache("TEXT63")).'</b></td>
+        <td width="100"><b>'.constant($game->sprache("TEXT64a")).'</b></td>
+      </tr>
+		   ');
+
+		   $wares_names = get_wares_by_id();
+		   
+		   for($i = 0; $i < count($wares_names); ++$i) {
+			   if($loaded_wares[$i] > 0) {
+				   $game->out('
+	  <tr>
+		<td>'.$wares_names[$i].'</td>
+		<td>'.$loaded_wares[$i].'</td>
+	  </tr>
+				   ');
+			   }
+		   }
+		   
+		   $game->out('</table><br>');
         break;
         
         case 40:
