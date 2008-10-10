@@ -606,7 +606,7 @@ define ("ITA_TEXT57", 'Spazio libero');
 
 define ("ITA_TEXT58", 'Salva');
 
-define ("ITA_TEXT59", 'Prego fallo su <a href="http://forum.nonsolotaku.it/index.php?showforum=22"> nel forum del gioco</a> indicando la pagina da cui sei arrivato, o cosa vuoi fare.<br><br>Controlla tuttavia, che non vi sia un thread gi&agrave; esistente in merito!');
+define ("ITA_TEXT59", 'Prego fallo su <a href="http://forum.stfc.it"> nel forum del gioco</a> indicando la pagina da cui sei arrivato, o cosa vuoi fare.<br><br>Controlla tuttavia, che non vi sia un thread gi&agrave; esistente in merito!');
 
 define ("ITA_TEXT60", 'Galassia');
 
