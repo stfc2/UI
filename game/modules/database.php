@@ -429,7 +429,54 @@ else if($module == 'academy')
 }
 else if($module == 'guide')
 {
-    $game->out('<span class="caption">Working / In lavorazione');
+    if(isset($_GET['page'])) {
+        $page = (int)$_GET['page'];
+    }
+    else
+        $page = 0;
+
+    $file = 'help/guide/page'.$page.'.php';
+    if(!file_exists($file)) {
+        $guide_html =  '<span class="caption">La pagina specificata della guida non esiste.</span></center><br><br>';
+    }
+    else
+        include($file);
+
+    $game->out('
+    <table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
+      <tr>
+        <td>
+          <table width="450" align="center" border="0" cellpadding="3" cellspacing="3" class="style_inner">
+            <tr><td>'.$guide_html.'</td></tr>
+          </table>
+        </td>
+      </tr>
+    </table><br>');
+
+    $game->out('
+        <table width="420" align="center" border="0" cellpadding="3" cellspacing="3" class="style_inner">
+            <tr>
+    ');
+
+    if($page > 0)
+        $game->out('<td width="140">[<a href="'.parse_link('a=database&view=guide&page='.($page-1)).'">Pagina precedente</a>]</td>');
+    else
+        $game->out('<td width="140"></td>');
+
+    if ($page != 0)
+        $game->out('<td width="140" align="center">[<a href="'.parse_link('a=database&view=guide').'">Indice</a>]</td>');
+    else
+        $game->out('<td width="140"></td>');
+
+    if($page < 4)
+        $game->out('<td width="140" align="right">[<a href="'.parse_link('a=database&view=guide&page='.($page+1)).'">Pagina successiva</a>]</td>');
+    else
+        $game->out('<td width="140"></td>');
+
+    $game->out('
+            </tr>
+        </table');
+
 }
 
 
