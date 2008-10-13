@@ -5,10 +5,10 @@ $game->init_player();
 $game->out('
 	<span class="caption">Aiuto</span>
 	<br><br>
-	<table border=0 cellpadding=2 cellspacing=2 width="95%" class="style_outer" align="center">
+	<table border=0 cellpadding=2 cellspacing=2 width="600" class="style_outer" align="center">
 	<tr>
 		<td>
-		<table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="5">
+		<table class="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="5">
 		<tr>
 			<td>
 			<span class="sub_caption">File di aiuto disponibili:</span>
@@ -69,12 +69,51 @@ $game->out('
 			<a href="JavaScript:void(window.open(\'help/ships.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Navi</a>
 		</td>
 		</tr>
+		</table>
+		</td>
+		<td valign="top">
+		<table class="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="5">
 		<tr>
-		<td align="center">
-		<a href="'.parse_link('a=messages&a2=newpost&receiver=STFC-Support&subject=Richiesta%20di%20aiuto').'"><span style="color: #FFFF00; font-weight: bold; font-size: 11pt;"><u>Se ti senti perduto, segui questo link per scrivere al Supporto!</u></a></span>
+			<td>
+			<span class="sub_caption">Guida in game:</span>
+			</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="'.parse_link('a=database&view=guide').'"><span class="sub_caption2">INDICE</span></a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="'.parse_link('a=database&view=guide&page=1').'">Il gioco</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="'.parse_link('a=database&view=guide&page=2').'">I pianeti</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="'.parse_link('a=database&view=guide&page=3').'">Le strutture</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="'.parse_link('a=database&view=guide&page=4').'">Le ricerche planetarie</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="'.parse_link('a=database&view=guide&page=5').'">TBD</a>
 		</td>
 		</tr>
 		</table>
+		</td>
+	</tr>
+	<tr>
+		<td align="center" colspan="2">
+		<a href="'.parse_link('a=messages&a2=newpost&receiver=STFC-Support&subject=Richiesta%20di%20aiuto').'"><span style="color: #FFFF00; font-weight: bold; font-size: 11pt;"><u>Se ti senti perduto, segui questo link per scrivere al Supporto!</u></a></span>
 		</td>
 	</tr>
 	</table>
