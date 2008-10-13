@@ -297,7 +297,8 @@ function display_registration($data = array(), $message = '', $galaxy) {
    ';
 }
 
-
+$title_html = 'Star Trek: Frontline Combat - Registrazione';
+$meta_descr = 'STFC: Pagina in cui effettuare la registrazione ad una galassia di gioco fornendo i dettagli del proprio account, quali nick, email, sesso, razza scelta, data di nascita ecc.';
 $main_html = '<center><span class="caption">Registrazione</span></center><br>';
 if (!isset($_REQUEST['galaxy']))
 {

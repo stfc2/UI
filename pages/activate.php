@@ -51,6 +51,8 @@ $n_proverbs = count($proverbs);
 
 
 $err_title = 'Errore nell&#146;attivazione dell&#146;account';
+$title_html = 'ST: Frontline Combat - Attivazione account';
+$meta_descr = 'STFC: Pagina di conferma attivazione account.';
 $main_html = '<center><span class="caption">Attivazione account</span></center><br>';
 
 

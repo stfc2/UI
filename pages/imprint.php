@@ -20,7 +20,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
+$title_html = 'Star Trek: Frontline Combat - Credits';
+$meta_descr = 'STFC: Pagina relativa ai credits del gioco, con i nomi ed i nick degli operatori ed i contatti email.';
 $main_html='<center><span class="caption">Credits</span></center>
 <br>
 <center>

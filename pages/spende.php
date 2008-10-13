@@ -20,7 +20,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
+$title_html = 'Star Trek: Frontline Combat - Supporta STFC!';
+$meta_descr = 'STFC: Pagina in cui e` possibile effettuare una donazione ad importo libero con cui supportare il gioco ed il lavoro svolto dallo staff.';
 $main_html='<center><span class="caption">Supporta Star Trek: Frontline Combat!</span>
 <br><br>
 <table border=0 cellpadding=0 cellspacing=0>

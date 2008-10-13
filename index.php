@@ -478,6 +478,8 @@ $db2 = new sql($config['server'].":".$config['port'], $config['game_database2'],
 
 $action = htmlspecialchars((!empty($_GET['a'])) ? $_GET['a'] : 'home');
 
+$title_html = 'Star Trek: Frontline Combat';
+$meta_descr = 'ST: Frontline Combat is a free browser based multi-player game by playing the role of different races and peoples of the universe and rewrite history.';
 $main_html = '';
 
 if(strstr($action, '.')) {
@@ -497,25 +499,25 @@ else
 <html>
 
 <head>
-  <title>Star Trek: Frontline Combat</title>
+  <title><?php echo $title_html; ?></title>
 
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="pragma" content="no-cache">
 
   <meta name="title" content="Star Trek: Frontline Combat">
-  <meta name="description" content="ST: Frontline Combat is a free browser based multi-player game by playing the role of different races and peoples of the universe and rewrite history.">
+  <meta name="description" content="<?php echo $meta_descr; ?>">
   <meta name="keywords" content="star, trek, game, gratis, multiplayer, onlinegame, browser, klingon, romulan, federation">
   <meta name="author" content="Florian Brede & Philipp Schmidt">
   <meta name="copyright" content="Paramount Pic., Brede, Schmidt">
   <meta http-equiv="content-language" content="IT">
   <meta http-equiv="Content-Type" content="text/html; iso-8859-1">
   <meta name="ROBOTS" content="INDEX,NOFOLLOW">
-  <meta name="creation_Date" content="10/02/2008">
+  <meta name="creation_Date" content="10/13/2008">
   <meta name="revisit-after" content="7 days">
 
   <meta name="publisher" content="Florian Brede & Philipp Schmidt">
   <meta name="page-topic" content="Star Trek Online Game">
-  <meta name="date" content="2003-06-22">
+  <meta name="date" content="2008-10-13">
   <meta name="page-type" content="game">
 <style type="text/css">
 <!-- A:link {FONT-SIZE: 11px; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"; TEXT-DECORATION: none}

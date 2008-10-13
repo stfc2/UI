@@ -49,7 +49,8 @@ function generate_random_string($n_chars) {
     return $rand_str;
 }
 
-
+$title_html = 'Star Trek: Frontline Combat - Recupero password';
+$meta_descr = 'STFC: Pagina con cui richiedere al sistema una nuova password in sostituzione a quella dimenticata.';
 $main_html .= '
 <center><span class="caption">Recupero password</span></center><br>';
 

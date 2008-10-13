@@ -24,6 +24,8 @@
 $player_online = $db->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE last_active > '.(time() - 60 * 20));
 $player_online2 = $db2->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE last_active > '.(time() - 60 * 20));
 
+$title_html = 'Star Trek: Frontline Combat - Login';
+$meta_descr = 'STFC: Pagina per effettuare la login alla galassia di gioco a cui si e` iscritti (galassia Brown Bobby o Fried Egg).';
 $main_html .= '
 <center><span class="caption">Login</span></center><br>
 

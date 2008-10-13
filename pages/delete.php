@@ -23,6 +23,8 @@
 
 
 $err_title = 'Errore nella cancellazione dell&#146;account';
+$title_html = 'ST: Frontline Combat - Cancellazione account';
+$meta_descr = 'STFC: Pagina di conferma eliminazione account.';
 $main_html = '<center><span class="caption">Cancellazione account</span></center><br>';
 
 

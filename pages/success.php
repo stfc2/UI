@@ -20,7 +20,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
+$title_html = 'Star Trek: Frontline Combat - Donazione effettuata';
+$meta_descr = 'STFC: Pagina di conferma per la donazione effettuata con successo.';
 $main_html='<center><span class="caption">Grazie per la tua donazione!</span>
 <br><br>
 <table border=0 cellpadding=0 cellspacing=0>

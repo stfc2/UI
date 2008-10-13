@@ -222,6 +222,8 @@ $pa_ingame2 = $db2->queryrow('SELECT COUNT(ad_id) AS num FROM alliance_diplomacy
 $tmp = mysql_get_server_info();
 $mysqlinfo = substr($tmp, 0, strpos($tmp, "-"));
 
+$title_html = 'Star Trek: Frontline Combat - Statistiche';
+$meta_descr = 'STFC: Pagina in cui vengono mostrate alcune statistiche di uptime del server e ed informazioni sulle galassie di gioco, i punti accumulati, i pianeti presenti, le alleanze e via dicendo.';
 $main_html .= '
 <style type="text/css">
 <!--
