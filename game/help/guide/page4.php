@@ -20,7 +20,7 @@ ne riduce i costi di costruzione;<li>
 classi &egrave; una tecnologia importantissima);</li>
 <li><u>'.$TECH_NAME[$game->player['user_race']][4].'</u>: questa tecnologia aumenta l&#146;efficienza delle miniere. <b>ATTENZIONE</b>: per poter ottenere
 questa tecnologia devono verificarsi queste condizioni: livello di tutte e tre le miniere sul pianeta ALMENO a 5 e livello del Centro di Ricerca
-almeno a 3.;li:
+almeno a 3.</li>
 </ul>
 </p>
 <p align="justify">
