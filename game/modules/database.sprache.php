@@ -156,6 +156,14 @@ define ("GER_TEXT65", 'Ja');
 
 define ("GER_TEXT66", 'Nein');
 
+define ("GER_TEXT67", 'Die angegebene Seite Leitfaden ist nicht vorhanden.');
+
+define ("GER_TEXT68", 'Vorige Seite');
+
+define ("GER_TEXT69", 'Index');
+
+define ("GER_TEXT70", 'N&auml;chste Seite');
+
 
 
 //English
@@ -292,6 +300,14 @@ define ("ENG_TEXT64", 'The breed values of STFC');
 define ("ENG_TEXT65", 'Yes');
 
 define ("ENG_TEXT66", 'No');
+
+define ("ENG_TEXT67", 'The specified page of the guide doesn&#146;t exist.');
+
+define ("ENG_TEXT68", 'Previous page');
+
+define ("ENG_TEXT69", 'Index');
+
+define ("ENG_TEXT70", 'Next page');
 
 
 
@@ -430,5 +446,14 @@ define ("ITA_TEXT64", 'Valori razziali di STFC');
 define ("ITA_TEXT65", 'Si');
 
 define ("ITA_TEXT66", 'No');
+
+define ("ITA_TEXT67", 'La pagina specificata della guida non esiste.');
+
+define ("ITA_TEXT68", 'Pagina precedente');
+
+define ("ITA_TEXT69", 'Indice');
+
+define ("ITA_TEXT70", 'Pagina successiva');
+
 
 ?>
