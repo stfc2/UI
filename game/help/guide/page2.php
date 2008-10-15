@@ -6,7 +6,7 @@ In STFC i pianeti rappresentano il fulcro del gioco in senso stretto. Essi, infa
 (<img src="'.$game->GFX_PATH.'menu_metal_small.gif"> metalli, <img src="'.$game->GFX_PATH.'menu_mineral_small.gif"> minerali e
 <img src="'.$game->GFX_PATH.'menu_latinum_small.gif"> dilitio) con le quali si realizzano diverse strutture (cantieri navali, accademie, centri di
 ricerca, centri commerciali etc) e ricerche tecnologiche.<br>
-I pianeti vengono catalogati secondo uno schema consultabile alla voce <a href="'.parse_link('a=database').'">&quot;<u>Generale</u>&quot;</a> del
+I pianeti vengono catalogati secondo uno schema consultabile alla voce <a href="'.parse_link('a=database').'">&quot;<span class="highlight_link">Generale</span>&quot;</a> del
 Database a disposizione di ogni giocatore.</p>
 <p>
 In linea di principio, esistono due categorie di pianeti:

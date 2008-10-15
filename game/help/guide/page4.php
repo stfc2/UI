@@ -1,5 +1,16 @@
 <?PHP
 
+function research_max_lev($planet) {
+	global $game,$TECH_NAME,$MAX_RESEARCH_LVL;
+	$research_level = '<ul>';
+	for($rsc = 0;$rsc < 5;$rsc++)
+	{
+		$research_level .= '<li>'.$TECH_NAME[$game->player['user_race']][$rsc].' = <b>'.$MAX_RESEARCH_LVL[$planet][$rsc].'</b></li>';
+	}
+	$research_level .= '</ul>';
+	return $research_level;
+}
+
 $guide_html = '<span class="caption">LE RICERCHE TECNOLOGICHE</span>
 <p align="justify">
 Il secondo metodo per ottenere punti &egrave; portare avanti delle ricerche tecnologiche planetarie. Per poter accedere a questa funzione
@@ -12,7 +23,7 @@ Le ricerche planetarie sono di cinque tipi:
 abitabile; sviluppare tale tecnologia aumenta il numero massimo di lavoratori e soldati ospitabili su un pianeta e la velocit&agrave; di costruzione
 dei lavoratori;</li>
 <li><u>'.$TECH_NAME[$game->player['user_race']][1].'</u>: la seconda tipologia riguarda l&#146;incremento della produzione di lavoratori sul pianeta; questa tecnologia
-offre un incremento doppio a parit&agrave; di livello rispetto alla tecnologia di precedente, ma non aumenta la capacit&agrave; massima del pianeta
+offre un incremento doppio a parit&agrave; di livello rispetto alla tecnologia precedente, ma non aumenta la capacit&agrave; massima del pianeta
 stesso;</li>
 <li><u>'.$TECH_NAME[$game->player['user_race']][2].'</u>: aumenta il numero di piattaforme orbitali difensive costruibili sul pianeta e contemporaneamente
 ne riduce i costi di costruzione;<li>
@@ -23,9 +34,15 @@ questa tecnologia devono verificarsi queste condizioni: livello di tutte e tre l
 almeno a 3.</li>
 </ul>
 </p>
+<p align="justify">Come per le strutture, anche le ricerche sono organizzate a livelli, pi&ugrave; &egrave; alto il livello e maggiore sono i benefici ottenuti dalla struttura stessa; da notare che esiste un limite ai livelli delle ricerche pari a: 
+<table width="100%">
+<tr><td>'.research_max_lev(1).'</td><td>'.research_max_lev(0).'</td></tr>
+<tr><td>per il pianeta capitale</td><td>per tutte le colonie.<br></td></tr>
+</table>
+</p>
 <p align="justify">
 &Egrave; possibile anche sviluppare tecnologie da utilizzare poi durante la creazione di un progetto navale per la realizzazione di una nave
-spaziale; le tecnologie aumentano i costi in risorse e personale delle navi ma le rendono generalmente più performanti.</p>
+spaziale; le tecnologie aumentano i costi in risorse e personale delle navi ma le rendono generalmente pi&ugrave; performanti.</p>
 <p align="justify">
 <b>Come si sviluppano le ricerche planetarie?</b><br>
 Seguendo il men&ugrave;
