@@ -622,7 +622,7 @@ $UNIT_NAME = array(
 
 		3 => 'OmakBreen',
 
-		4 => 'Tecnico',
+		4 => 'Riparatore',
 
 		5 => 'Medico',
 
@@ -994,9 +994,9 @@ $UNIT_DESCRIPTION = array (
 
 		3 => 'Il Comandate &egrave; addestrato per il governo delle navi stellari.<br>Sono costosi come addestramento, ma necessari su ogni nave.<br>Le loro capacit&agrave; in battaglia sono paragonabili a quelle della Fanteria Leggera.',
 
-		4 => 'Il tecnico &egrave; addestrato per svolgere compiti di manutenzione sulle navi stellari.<br>Il loro addestramento &egrave; molto costoso, ma sono richiesti sulla maggior parte delle navi stellari.',
+		4 => 'Il Tecnico &egrave; addestrato per svolgere compiti di manutenzione sulle navi stellari.<br>Il loro addestramento &egrave; molto costoso, ma sono richiesti sulla maggior parte delle navi stellari.',
 
-		5 => 'Il medico non &egrave; addestrato al combattimento ma solo per fornire assistenza medica sulle navi stellari.',
+		5 => 'Il Medico non &egrave; addestrato al combattimento ma solo per fornire assistenza medica sulle navi stellari.',
 
 	),
 	// Romulani
@@ -1018,9 +1018,9 @@ $UNIT_DESCRIPTION = array (
 
 		3 => 'Il Comandate &egrave; addestrato per il governo delle navi stellari.<br>Sono costosi come addestramento, ma necessari su ogni nave.<br>Le loro capacit&agave; in battaglia sono paragonabili a quelle dei Centurioni.',
 
-		4 => 'Il tecnico &egrave; addestrato per svolgere compiti di manutenzione sulle navi stellari.<br>Il loro addestramento &egrave; molto costoso, ma sono richiesti sulla maggior parte delle navi stellari.',
+		4 => 'Il Tecnico &egrave; addestrato per svolgere compiti di manutenzione sulle navi stellari.<br>Il loro addestramento &egrave; molto costoso, ma sono richiesti sulla maggior parte delle navi stellari.',
 
-		5 => 'Il medico non &egrave; addestrato al combattimento ma solo per fornire assistenza medica sulle navi stellari.',
+		5 => 'Il Medico non &egrave; addestrato al combattimento ma solo per fornire assistenza medica sulle navi stellari.',
 
 	),
 	// Klingon
@@ -1042,9 +1042,9 @@ $UNIT_DESCRIPTION = array (
 
 		3 => 'Il Generale &egrave; addestrato per il governo delle navi stellari.<br>Sono costosi come addestramento, ma necessari su ogni nave.<br>Le loro capacit&agave; in battaglia sono paragonabili a quelle dei Combattenti.',
 
-		4 => 'Il tecnico &egrave; addestrato per svolgere compiti di manutenzione sulle navi stellari.<br>Il loro addestramento &egrave; molto costoso, ma sono richiesti sulla maggior parte delle navi stellari.',
+		4 => 'Il Tecnico &egrave; addestrato per svolgere compiti di manutenzione sulle navi stellari.<br>Il loro addestramento &egrave; molto costoso, ma sono richiesti sulla maggior parte delle navi stellari.',
 
-		5 => 'Il guaritore non &egrave; addestrato al combattimento ma solo per fornire assistenza medica sulle navi stellari, anche se, generalmente, i Klingon sconfitti preferiscono morire piuttosto che farsi curare.',
+		5 => 'Il Guaritore non &egrave; addestrato al combattimento ma solo per fornire assistenza medica sulle navi stellari, anche se, generalmente, i Klingon sconfitti preferiscono morire piuttosto che farsi curare.',
 
 	),
 	// Cardassiani
@@ -1066,9 +1066,9 @@ $UNIT_DESCRIPTION = array (
 
 		3 => 'Il Gul &egrave; addestrato per il governo delle navi stellari.<br>Sono costosi come addestramento, ma necessari su ogni nave.<br>Le loro capacit&agave; in battaglia sono paragonabili a quelle dei Miliziani.',
 
-		4 => 'Il tecnico &egrave; addestrato per svolgere compiti di manutenzione sulle navi stellari.<br>Il loro addestramento &egrave; molto costoso, ma sono richiesti sulla maggior parte delle navi stellari.',
+		4 => 'Il Tecnico &egrave; addestrato per svolgere compiti di manutenzione sulle navi stellari.<br>Il loro addestramento &egrave; molto costoso, ma sono richiesti sulla maggior parte delle navi stellari.',
 
-		5 => 'Il medico non &egrave; addestrato al combattimento ma solo per fornire assistenza medica sulle navi stellari.',
+		5 => 'Il Medico non &egrave; addestrato al combattimento ma solo per fornire assistenza medica sulle navi stellari.',
 
 	),
 	// Dominion
@@ -1090,9 +1090,9 @@ $UNIT_DESCRIPTION = array (
 
 		3 => 'Per le loro qualit&agrave; di comando, i Vorta svolgono ottimamente la funzione di comandanti delle navi stellari. Tuttavia, sul campo di battaglia, il loro rendimento &egrave; piuttosto basso, paragonabile a quello di un Jem&#146;Hadar semplice.',
 
-		4 => 'Il tecnico &egrave; addestrato per svolgere compiti di manutenzione sulle navi stellari.<br>Il loro addestramento &egrave; molto costoso, ma sono richiesti sulla maggior parte delle navi stellari.',
+		4 => 'Il Tecnico &egrave; addestrato per svolgere compiti di manutenzione sulle navi stellari.<br>Il loro addestramento &egrave; molto costoso, ma sono richiesti sulla maggior parte delle navi stellari.',
 
-		5 => 'Il medico non &egrave; addestrato al combattimento ma solo per fornire assistenza medica sulle navi stellari.',
+		5 => 'Il Medico non &egrave; addestrato al combattimento ma solo per fornire assistenza medica sulle navi stellari.',
 
 	),
 	// Ferengi
@@ -1114,9 +1114,9 @@ $UNIT_DESCRIPTION = array (
 
 		3 => 'Il DaiMon &egrave; addestrato per il governo delle navi stellari.<br>Sono costosi come addestramento, ma necessari su ogni nave.<br>Le loro capacit&agave; in battaglia sono paragonabili a quelle dei Mercenari.',
 
-		4 => 'Il tecnico &egrave; addestrato per svolgere compiti di manutenzione sulle navi stellari.<br>Il loro addestramento &egrave; molto costoso, ma sono richiesti sulla maggior parte delle navi stellari.',
+		4 => 'Il Tecnico &egrave; addestrato per svolgere compiti di manutenzione sulle navi stellari.<br>Il loro addestramento &egrave; molto costoso, ma sono richiesti sulla maggior parte delle navi stellari.',
 
-		5 => 'Il medico non &egrave; addestrato al combattimento ma solo per fornire assistenza medica sulle navi stellari.',
+		5 => 'Il Medico non &egrave; addestrato al combattimento ma solo per fornire assistenza medica sulle navi stellari.',
 
 	),
 	// Borg
@@ -1137,7 +1137,7 @@ $UNIT_DESCRIPTION = array (
 		1	-	BreeMok
 		2	-	Breen
 		3	-	OmakBreen
-		4	-	Tecnico
+		4	-	Riparatore
 		5	-	Medico
 	*/
 	8 => array(
@@ -1150,9 +1150,9 @@ $UNIT_DESCRIPTION = array (
 
 		3 => 'L&#146;OmakBreen una innata capacit&agrave; per il comando di una nave stellare, inoltre viene addestrato al combattimento come un Soldato. Viene impiegato principalmente per la guida delle nostre bio-astronavi.',
 
-		4 => 'Il Tecnico &egrave; addestrato per svolgere operazioni di manutenzione a bordo delle bio-astronavi piuttosto che a portare a termine missioni di combattimento. &Eacute; praticamente indispensabile tra i membri dell&#146;equipaggio.',
+		4 => 'Il Riparatore &egrave; addestrato per svolgere operazioni di manutenzione a bordo delle bio-astronavi piuttosto che a portare a termine missioni di combattimento. &Eacute; praticamente indispensabile tra i membri dell&#146;equipaggio.',
 
-		5 => 'Il medico non viene addestrato per svolgere missioni di guerra ma per fornire supporto medico sulle navi stellari.',
+		5 => 'Il Medico non viene addestrato per svolgere missioni di guerra ma per fornire supporto medico sulle navi stellari.',
 
 	),
 
@@ -1179,7 +1179,7 @@ $UNIT_DESCRIPTION = array (
 
 		4 => 'Il Tecnico &egrave; addestrato per svolgere operazioni di manutenzione a bordo delle navi stellari piuttosto che a portare a termine missioni di combattimento. &Eacute; praticamente indispensabile tra i membri dell&#146;equipaggio.',
 
-		5 => 'Il medico non viene addestrato per svolgere missioni di guerra ma per fornire supporto medico sulle navi stellari.',
+		5 => 'Il Medico non viene addestrato per svolgere missioni di guerra ma per fornire supporto medico sulle navi stellari.',
 
 	),
 
@@ -1206,7 +1206,7 @@ $UNIT_DESCRIPTION = array (
 
 		4 => 'Gli Ingegneri sono necessari per manutenere e far funzionare la complessa tecnologia delle navi Krenim. Sono formati specialmente per le loro competenze e non prendono parte diretta nelle ostilit&agrave;.',
 
-		5 => 'I medici sono responsabili del benessere e della prontezza dell&#146;equipaggio. Come per gli Ingegneri non partecipano ai combattimenti, si prendono cura dei feriti.', 
+		5 => 'I Dottori sono responsabili del benessere e della prontezza dell&#146;equipaggio. Come per gli Ingegneri non partecipano ai combattimenti, si prendono cura dei feriti.', 
 
 	),
 
@@ -1224,7 +1224,7 @@ $UNIT_DESCRIPTION = array (
 
 	11 => array(
 
-		0 => 'Gli Esecutori sono relativamente economici e facilmente accessibili ad inizio gioco.<br>per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
+		0 => 'Gli Esecutori sono relativamente economici e facilmente accessibili ad inizio gioco per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
 
 		1 => 'Gli Assassini sono particolarmente efficaci nel combattimento a corto raggio; data la loro alta capacit&agrave; difensiva possono essere impiegati in qualsiasi situazione. Il loro addestramento risulta pi&ugrave; costoso di quello degli Esecutori.',
 
@@ -1234,7 +1234,7 @@ $UNIT_DESCRIPTION = array (
 
 		4 => 'Il Tecnico &egrave; addestrato per svolgere operazioni di manutenzione a bordo delle navi stellari piuttosto che a portare a termine missioni di combattimento. &Eacute; praticamente indispensabile tra i membri dell&#146;equipaggio.',
 
-		5 => 'Il medico non viene addestrato per svolgere missioni di guerra ma per fornire supporto medico sulle navi stellari.',
+		5 => 'Il Medico non viene addestrato per svolgere missioni di guerra ma per fornire supporto medico sulle navi stellari.',
 
 	),
 
@@ -1274,17 +1274,17 @@ $BUILDING_DESCRIPTION = array (
 	// Federazione
 	0 => array(
 
-		0 => 'Con l&#180;alzarsi del livello di questa costruzione<br>si accede ad un numero maggiore di strutture realizzabili.',
+		0 => 'Con l&#180;alzarsi del livello di questa costruzione si accede ad un numero maggiore di strutture realizzabili.',
 
-		1 => 'Potenziare questa struttura permette,<br>di estrarre una maggiore quantit&agrave; di metalli per tick.',
+		1 => 'Potenziare questa struttura permette, di estrarre una maggiore quantit&agrave; di metalli per tick.',
 
-		2 => 'Potenziare questa struttura permette,<br>di estrarre una maggiore quantit&agrave; di minerali per tick.',
+		2 => 'Potenziare questa struttura permette, di estrarre una maggiore quantit&agrave; di minerali per tick.',
 
-		3 => 'Potenziare questa struttura permette,<br>di estrarre una maggiore quantit&agrave; di dilitio per tick.',
+		3 => 'Potenziare questa struttura permette, di estrarre una maggiore quantit&agrave; di dilitio per tick.',
 
-		4 => 'Ogni livello di questa struttura,<br>fornisce energia ad altre 10 costruzioni.',
+		4 => 'Ogni livello di questa struttura, fornisce energia ad altre 10 costruzioni.',
 
-		5 => 'A seconda del livello di questa struttura,<br>i tuoi lavoratori vengono convertiti in una maggiore variet&agrave; di truppe.',
+		5 => 'A seconda del livello di questa struttura, i tuoi lavoratori vengono convertiti in una maggiore variet&agrave; di truppe.',
 
 		6 => 'Potenziare questa struttura aumenta la portata dei sensori installati sul pianeta. Inoltre, ti permette di riparare le navi danneggiate e di gestire gli equipaggi.',
 

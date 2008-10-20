@@ -181,45 +181,45 @@ define ("ENG_TEXT18", 'There must be more than one fleet selected');
 
 define ("ENG_TEXT19", 'At least one of the selected fleets is not on the same planet as the other');
 
-define ("ENG_TEXT20", 'Mindestens eine der ausgew&auml;hlten Flotten ist nicht gemeinsam mit den anderen unterwegs');
+define ("ENG_TEXT20", 'At least one of the selected fleets is not together with the others on the way');
 
-define ("ENG_TEXT21", 'Eine der ausgew&auml;hlten Flotte befindet sich weder im Orbit um einen Planeten noch auf Reise');
+define ("ENG_TEXT21", 'One of the selected fleet is neither in the orbit around a planet nor on journey');
 
-define ("ENG_TEXT22", 'Von den ausgew&auml;hlten Flotten wurden nur');
+define ("ENG_TEXT22", 'Of the selected fleets only');
 
-define ("ENG_TEXT23", 'in der Datenbank gefunden');
+define ("ENG_TEXT23", 'were found in the database');
 
-define ("ENG_TEXT24", 'Es wurde kein Name fr die zusammengesetzte Flotte angegeben');
+define ("ENG_TEXT24", 'There was no name indicated for the compound fleet');
 
-define ("ENG_TEXT25", 'Keine der ausgew&auml;hlten Flotte enthielt Schiffe');
+define ("ENG_TEXT25", 'None of the selected fleet contained ships');
 
-define ("ENG_TEXT26", 'Ung&uuml;ltige Parameter-Übergabe');
+define ("ENG_TEXT26", 'Invalid Parameter Surrender');
 
-define ("ENG_TEXT27", 'Ung&uuml;ltige Alarmstufe angegeben');
+define ("ENG_TEXT27", 'Invalid Alarm status indicated');
 
 define ("ENG_TEXT28", 'No ship selected');
 
-define ("ENG_TEXT29", 'Die ausgew&auml;hlten Schiffe existieren nicht');
+define ("ENG_TEXT29", 'The selected ships do not exist');
 
-define ("ENG_TEXT30", 'Die ausgew&auml;hlten Schiffe existieren nicht oder die Schiffe sind keiner gltigen Flotte zugewiesen oder die Flotte befindet sich nicht auf einem Planeten');
+define ("ENG_TEXT30", 'The selected ships do not exist or the ships are assigned to no valid fleet or the fleet are not on a planet');
 
-define ("ENG_TEXT31", 'Die Schiffe sind keiner gltigen Flotte zugewiesen');
+define ("ENG_TEXT31", 'The ships are not assigned to a valid fleet');
 
-define ("ENG_TEXT32", 'Du kannst nur Schiffe in das Trockendock eines deiner Planeten setzen');
+define ("ENG_TEXT32", 'You can set ships into the dry dock only on one of your planets');
 
-define ("ENG_TEXT33", 'Du besitzt noch keine(n)');
+define ("ENG_TEXT33", 'You don&#146;t possesses yet');
 
-define ("ENG_TEXT34", 'auf dem Stationierungsplaneten der Flotte');
+define ("ENG_TEXT34", 'on the stationing planet of the fleet');
 
-define ("ENG_TEXT35", 'Keine Schiffe ausgewaehlt oder Raumhafen ist voll');
+define ("ENG_TEXT35", 'No ships selected or space port is full');
 
-define ("ENG_TEXT36", 'Es wurden mehr Schiffe au&beta;er Dienst gestellt, als die Flotte besa&beta;');
+define ("ENG_TEXT36", 'Were deactivated more ships, than the fleet possessed');
 
-define ("ENG_TEXT37", 'Eines der Schiffe befindet sich nicht in derselben Flotte wie die anderen');
+define ("ENG_TEXT37", 'One of the ships is not in the same fleet as the others');
 
 define ("ENG_TEXT38", 'The ships could not be taken out of service because thus the charge of the fleet, the maximum capacity Transporter would have exceeded');
 
-define ("ENG_TEXT39", 'Das gew&auml;hlte Schiff existiert nicht');
+define ("ENG_TEXT39", 'The selected ship does not exist');
 
 define ("ENG_TEXT40", 'Ship overview:');
 
@@ -290,6 +290,56 @@ define ("ITA_TEXT12", 'Occultamento:');
 define ("ITA_TEXT13", 'Energia utilizzata:');
 
 define ("ITA_TEXT14", 'Energia prodotta:');
+
+define ("ITA_TEXT15", 'Non &egrave; stato inserito il nuovo nome');
+
+define ("ITA_TEXT16", 'La flotta selezionata non esiste');
+
+define ("ITA_TEXT17", 'Nessuna flotta selezionata');
+
+define ("ITA_TEXT18", 'Devono esserci pi&ugrave; di una flotta selezionate');
+
+define ("ITA_TEXT19", 'Almeno una delle flotte selezionate non si trova presso lo stesso pianeta delle altre');
+
+define ("ITA_TEXT20", 'Almeno una delle flotte selezionate non si trova in movimento insieme alle altre');
+
+define ("ITA_TEXT21", 'Una delle flotte selezionate n&egrave; si trova nell&#146;orbita intorno ad un pianeta n&egrave; in viaggio');
+
+define ("ITA_TEXT22", 'Delle flotte selezionate solo');
+
+define ("ITA_TEXT23", 'sono state trovate nel database');
+
+define ("ITA_TEXT24", 'Non &egrave; stato indicato un nome per la flotta da comporre');
+
+define ("ITA_TEXT25", 'Nessuna delle flotte selezionate contiene navi');
+
+define ("ITA_TEXT26", 'Parametro per la resa non valido');
+
+define ("ITA_TEXT27", 'Condizione di Allarme indicata invalida');
+
+define ("ITA_TEXT28", 'Nessuna nave selezionata');
+
+define ("ITA_TEXT29", 'Le navi selezionate non esistono');
+
+define ("ITA_TEXT30", 'Le navi selezionate non esistono oppure non sono assegnate ad una flotta valida o la flotta non si trova presso un pianeta');
+
+define ("ITA_TEXT31", 'Le navi non sono assegnate ad una flotta valida');
+
+define ("ITA_TEXT32", '&Egrave; possibile portare le navi in bacino di carenaggio solo su uno dei tuoi pianeti');
+
+define ("ITA_TEXT33", 'Non possiedi ancora');
+
+define ("ITA_TEXT34", 'sul pianeta attorno cui staziona la flotta');
+
+define ("ITA_TEXT35", 'Nessuna nave selezionata o lo spazioporto &egrave; al completo');
+
+define ("ITA_TEXT36", 'Sono state disattivate pi&ugrave; navi, di quante la flotta possedeva');
+
+define ("ITA_TEXT37", 'Una delle navi non &egrave; nella stessa flotta delle altre');
+
+define ("ITA_TEXT38", 'Le navi non possono essere messe fuori servizio perch&egrave; altrimenti il carico presente sulla flotta eccederebbe la capienza massima dei trasporti presenti');
+
+define ("ITA_TEXT39", 'La nave selezionata non esiste');
 
 define ("ITA_TEXT40", 'Panoramica nave:');
 

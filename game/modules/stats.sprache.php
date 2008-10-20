@@ -201,6 +201,10 @@ define ("GER_TEXT89",'Aktuelle Auktionen anzeigen');
 
 define ("GER_TEXT90",'Reserved information');
 
+define ("GER_TEXT91", 'Urlaub');
+
+define ("GER_TEXT92", 'Auszeichnung');
+
 //English
 define ("ENG_TEXT1",'Overview');
 
@@ -382,6 +386,10 @@ define ("ENG_TEXT89",'Current auctions ads');
 
 define ("ENG_TEXT90",'Reserved information');
 
+define ("ENG_TEXT91", 'Holiday');
+
+define ("ENG_TEXT92", 'Award');
+
 //Italian
 define ("ITA_TEXT1",'Dettagli');
 
@@ -562,5 +570,9 @@ define ("ITA_TEXT88",'Aste Concluse:');
 define ("ITA_TEXT89",'Annunci aste attuali');
 
 define ("ITA_TEXT90",'Informazione riservata');
+
+define ("ITA_TEXT91", 'Vacanza');
+
+define ("ITA_TEXT92", 'Premio');
 
 ?>
