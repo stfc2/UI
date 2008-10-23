@@ -3815,7 +3815,7 @@ function Show_schulden($zustand=0)
 			$text.="</tr>";
 		}
 	}
-	$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT242")).' <!--'.HelpPopup('trade_viewstatus').'--> :</span></center><br>');
+	$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT242")).' '.HelpPopup('trade_debts').' :</span></center><br>');
 	$game->out($text);
 	$game->out('</table></center>');
 	if(isset($_REQUEST['status_bezahlen']) && $_REQUEST['status_bezahlen']==1)
