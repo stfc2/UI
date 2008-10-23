@@ -12,7 +12,7 @@ A.nav:link {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:visited {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:hover {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:active {FONT-WEIGHT: bold; FONT-SIZE: 10px}
-TD {FONT-SIZE: 11px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
+TD {FONT-SIZE: 12px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
 input[type=checkbox] { border-style: none;}
 INPUT[type=submit], INPUT[type=text], INPUT[type=password] {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
 TEXTAREA {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
@@ -59,7 +59,26 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 <tr><td>
 	<table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="5">
 	<tr>
-	<td><font size="3"><b>In stesura</b></font></td>
+	<td align="justify">&Egrave; possibile utilizzare questa struttura per costruire diverse tipologie di navi stellari.<br>
+	L&#146;elenco del tipo di navi costruibili, dipende dal numero di progetti disponibili, realizzati nella sezione <b>Progetti
+	Navi</b> e pu&ograve; essere pi&ugrave; o meno lungo.<br><br>
+	Ogni nave possiede determinati requisiti in termini di:
+	<ul>
+	<li>punteggio (globale e sul pianeta)</li>
+	<li>componenti tecnologici</li>
+	<li>materie prime (metallo, minerali, dilitio)</li>
+	<li>equipaggio (truppe di 1&deg;, 2&deg;, 3&deg; livello, comandanti, tecnici, medici)</li>
+	<li>lavoratori</li>
+	</ul>
+	Quando su un pianeta non sono presenti i requisiti necessari in termini di punteggio e/o componenti tecnologici, il pulsante
+	<input type="submit" name="submit" class="button" style="width: 60px;" value ="Inizia"> sar&agrave; sostituito dalla scritta rossa
+	<font color=#FF0000>Inizia</font>. Posizionando il cursore sul nome del progetto, verra visualizzato un riquadro popup in cui
+	sar&agrave; possibile verificare quali componenti devono essere ancora ricercati per poter avviare la produzione.<br><br>
+	Viceversa, se a mancare &egrave; una o pi&ugrave; delle risorse richieste, il bottone
+	<input type="submit" name="submit" class="button" style="width: 60px;" value ="Inizia"> verr&agrave; rimpiazzato
+	dalla scritta gialla <font color=#FFFF00>Inizia</font> su cui sar&agrave; possibile posizionare il mouse per visualizzare un
+	riquadro popup che mostrer&agrave; il tipo e la quantit&agrave; di risorsa richiesta per poter iniziare la costruzione.
+	</td>
 	</tr>
 	</table>
 </td>

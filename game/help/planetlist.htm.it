@@ -12,7 +12,7 @@ A.nav:link {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:visited {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:hover {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:active {FONT-WEIGHT: bold; FONT-SIZE: 10px}
-TD {FONT-SIZE: 11px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
+TD {FONT-SIZE: 12px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
 input[type=checkbox] { border-style: none;}
 INPUT[type=submit], INPUT[type=text], INPUT[type=password] {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
 TEXTAREA {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
@@ -59,8 +59,46 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 <tr><td>
 	<table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="5">
 	<tr>
-	<td><font size="3"><b>In stesura</b></font></td>
+	<td align="justify">
+		<font size="3">Nella pagina "Pianeti" vengono elencati tutti i pianeti del giocatore.</font>
+	</td>
 	</tr>
+	<tr>
+	<td align="justify">
+	Per ogni pianeta viene visualizzato:
+	<ul>
+	<li><b>Nome</b>: che &egrave; possibile modificare tramite la struttura di comando.</li>
+	<li><b>Posizione</b>: coordinate (Settore:Sistema:Pianeta)</li>
+	<li><b>Distanza</b>: a Warp 6 dal pianeta attivato in quel momento</li>
+	<li><b>Risorse</b>: selezionabili dal riquadro in fondo alla lista ossia:
+		<ul>
+		<li>Risorse (materie prime quali metallo, minerali, dilitio e lavoratori)</li>
+		<li>Truppe (1&deg;, 2&deg;, 3&deg; livello, comando, tecnici e medici)</li>
+		<li>Etichetta (denominazione libera assegnata dal giocatore)</li>
+		<li>Reddito (produzione delle risorse ad ogni tick)</li>
+		</ul></li>
+	<li><b>Stato</b>: contrassegnato dalle lettere: B (costruzione), R (ricerca), A (accademia), S (navi) indicante
+	l&#146;eventuale attivit&agrave; presente sul pianeta.</li>
+	<li><b>Punti</b>: il punteggio raggiunto</li>
+	<li><b>Classe</b>: la tipologia di pianeta</li>
+	</ul><br>
+	L&#146;elenco dei pianeti, pu&ograve; essere ordinato nei seguenti modi:
+	<ul>
+		<li>Nome</li>
+		<li>Punti</li>
+		<li>Et&agrave;</li>
+		<li>Coordinate</li>
+		<li>Rivolte</li>
+		<li>Classe</li>
+		<li>Etichetta</li>
+	</ul>
+	tramite l&#146;apposito riquadro posizionato in fondo alla lista.<br><br>
+	Infine, in questo pannello vengono normalmente visualizzati le condizioni di allarme (flotta diretta verso il
+	pianeta con un ordine di attacco) per ogni pianeta. &Egrave; comunque possibile filtrare gli attacchi in arrivo
+	nascondendo quelli che impiegheranno pi&ugrave; di sette giorni ad arrivare o disabilitarli del tutto.
+	</td>
+	</tr>
+	<tr>
 	</table>
 </td>
 </tr>

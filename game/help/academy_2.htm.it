@@ -12,7 +12,7 @@ A.nav:link {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:visited {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:hover {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:active {FONT-WEIGHT: bold; FONT-SIZE: 10px}
-TD {FONT-SIZE: 11px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
+TD {FONT-SIZE: 12px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
 input[type=checkbox] { border-style: none;}
 INPUT[type=submit], INPUT[type=text], INPUT[type=password] {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
 TEXTAREA {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
@@ -59,7 +59,46 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 <tr><td>
 	<table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="5">
 	<tr>
-	<td><font size="3"><b>In stesura</b></font></td>
+	<td align="justify">La struttura che permette di addestrare i lavoratori presenti sul pianeta in unit&agrave; specializzate
+	(in compiti di combattimento, di comando, ecc), per poter operare deve essere istruita compilando una lista delle
+	attivit&agrave; addestrative da compiere.<br>
+	La lista &egrave; composta da dieci righe in cui &egrave; possibile specificare l&#146;attivit&agrave; da svolgere, il
+	quantitativo richiesto e se tale operazione abbia o meno termine.<br>
+	Le attivit&agrave; possibili sono sostanzialmente due:
+	<ul>
+	<li>addestramento di un lavoratore</li>
+	<li>inserimento di una pausa</li>
+	</ul>
+	Il tipo di unit&agrave; addestrabili varia a seconda del livello della struttura, mentre i tempi di attesa, prestabiliti, sono:
+	<ul>
+	<li>3 minuti (1 tick)</li>
+	<li>27 minuti (9 tick)</li>
+	<li>54 minuti (18 tick)</li>
+	</ul>
+	<br>
+	Quando il quantitativo richiesto in una riga viene completato, la struttura passa alla riga successiva, fino ad esaurimento
+	dei task impartiti.</br>
+	<br>Nel caso in cui si utilizzi il flag "<b>Infiniti</b>" &egrave; possibile istruire la struttura all&#146;addestramento continuato di
+	varie tipologie di unit&agrave;. Ad esempio &egrave; possibile addestrare 10 fanti di primo livello, attendere 10 tick, addestrare
+	5 tecnici quindi ricominciare, nel modo seguente:<br><br>
+	<center>
+	<table>
+	<tr>
+	<td><b>Posizione:</b></td><td><b>Occupazione:</b></td><td><b>Quantit&agrave;:</b></td><td><b>Infiniti:</b></td>
+	</tr>
+	<tr>
+	<td>1:</td><td>Fante leggero</td><td>10</td><td>Si</td>
+	</tr>
+	<tr>
+	<td>2:</td><td>3 minuti di pausa</td><td>10</td><td>Si</td>
+	</tr>
+	<tr>
+	<td>3:</td><td>Tecnico</td><td>5</td><td>Si</td>
+	</tr>
+	</table></center><br>
+	&Egrave; possibile alternare task infiniti con quelli finiti: semplicemente dalla seconda esecuzione le attivit&agrave; ormai portate
+	a termine verranno saltate e la struttura ripeter&agrave; quindi solamente le operazioni perpetue.
+	</td>
 	</tr>
 	</table>
 </td>
