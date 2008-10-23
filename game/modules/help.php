@@ -61,6 +61,56 @@ $game->out('
 		</tr>
 		<tr>
 		<td>
+			<a href="JavaScript:void(window.open(\'help/trade_viewstatus.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Centro commerciale : Stato consegne</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="JavaScript:void(window.open(\'help/trade_buy_truppen.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Centro commerciale : Acquisto truppe</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="JavaScript:void(window.open(\'help/trade_sold_truppen.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Centro commerciale : Vendita truppe</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="JavaScript:void(window.open(\'help/trade_res.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Centro commerciale : Commercio risorse</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="JavaScript:void(window.open(\'help/trade_createauction.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Centro commerciale : Creazione asta</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="JavaScript:void(window.open(\'help/trade_viewauction.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Centro commerciale : Visualizzazione aste</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="JavaScript:void(window.open(\'help/trade_viewownauction.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Centro commerciale : Aste proprie</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="JavaScript:void(window.open(\'help/konto.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Centro commerciale : Conto fiduciario</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="JavaScript:void(window.open(\'help/trade_debts.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Centro commerciale : Pagamento debiti</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="JavaScript:void(window.open(\'help/ship_avis.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Centro commerciale : Recupero navi</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
 			<a href="JavaScript:void(window.open(\'help/planetlist.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Pianeti</a>
 		</td>
 		</tr>
