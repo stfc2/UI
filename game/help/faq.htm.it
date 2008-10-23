@@ -11,7 +11,7 @@ A.nav:link {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:visited {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:hover {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:active {FONT-WEIGHT: bold; FONT-SIZE: 10px}
-TD {FONT-SIZE: 11px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
+TD {FONT-SIZE: 12px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
 input[type=checkbox] { border-style: none;}
 INPUT[type=submit], INPUT[type=text], INPUT[type=password] {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
 TEXTAREA {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
@@ -81,7 +81,7 @@ Che cosa pu&ograve; essere perso in seguito a un attacco? (strutture, difese, tr
 	</tr>
 	<tr>
 		<td valign="top" align="justify"><b>Come si <u>colonizzano</u> i pianeti disabitati?</b></td>
-		<td valign="top" align="justify">Si arriva a 200 punti (alcune specie come i Ferengi ne richiedono fino a 250), si crea un progetto per la nave colonizzatrice e la si invia sul pianeta da colonizzare.<br><b><u>N.B.:</u></b> di solito &egrave; buona norma inviare <b>prima</b> uno scout per accertarsi che in orbita al pianeta desiderato non siano presenti navi ostili.</td>
+		<td valign="top" align="justify">Si arriva a 200 punti (alcune specie come i Ferengi ne richiedono fino a 250), si crea un progetto per la nave colonizzatrice e la si invia sul pianeta da colonizzare.<br><b><u>N.B.: di solito &egrave; buona norma inviare <i>prima</i> uno scout per accertarsi che in orbita al pianeta desiderato non siano presenti navi ostili.</u></b></td>
 	</tr>
 	<tr>
 		<td valign="top" align="justify"><b>Come si <u>conquistano</u> i pianeti occupati?</b></td>
@@ -117,7 +117,7 @@ Che cosa pu&ograve; essere perso in seguito a un attacco? (strutture, difese, tr
 	</tr>
 	<tr>
 		<td valign="top" align="justify"><b>Come faccio ad inviare risorse ad un pianeta con i Ferengi?</b></td>
-		<td valign="top" align="justify">Prima di tutto occorre selezionare come pianeta attivo quello da cui si vuole inviare risorse, quindi tramite la sezione "<b>Cartografia Stellare</b>" del pannello "<b>Tattico</b>" o mediante il pannello "<b>Pianeti</b>", selezionare il pianeta a cui inviare le risorse; a questo punto, in fondo alla pagina comparir&agrave; la scritta: "<b><u>Invia Risorse / Unit&agrave; tramite la Gilda del Commercio Ferengi [Visualizza]</u></b>", selezionare la voce "Visualizza", verr&agrave; visualizzato un pannello in cui poter inserire il quantitativo di risorse e/o unit&agrave; (eccetto i lavoratori) che si intende inviare.<br><b>N.B.</b>: i Ferengi richiederanno una tassa, inversamente proporzionale al livello di Centro Commerciale, per effettuare la spedizione ed inoltre l'eventuale quantitativo di risorse spedite in eccesso verr&agrave; perduto.</td>
+		<td valign="top" align="justify">Prima di tutto occorre selezionare come pianeta attivo quello da cui si vuole inviare risorse, quindi tramite la sezione "<b>Cartografia Stellare</b>" del pannello "<b>Tattico</b>" o mediante il pannello "<b>Pianeti</b>", selezionare il pianeta a cui inviare le risorse; a questo punto, in fondo alla pagina comparir&agrave; la scritta: "<b><u>Invia Risorse / Unit&agrave; tramite la Gilda del Commercio Ferengi [Visualizza]</u></b>", selezionare la voce "Visualizza", verr&agrave; visualizzato un pannello in cui poter inserire il quantitativo di risorse e/o unit&agrave; (eccetto i lavoratori) che si intende inviare.<br><b><u>N.B.: i Ferengi richiederanno una tassa, inversamente proporzionale al livello di Centro Commerciale, per effettuare la spedizione ed inoltre l'eventuale quantitativo di risorse spedite in eccesso verr&agrave; perduto.</u></b></td>
 	</tr>
 	<tr>
 		<td valign="top" align="justify"><b>Ho creato un progetto per costruire una nave, ho lo <u>Spazioporto</u> ed il <u>Cantiere Navale</u>, ma non me la lascia costruire, come mai?</b></td>
