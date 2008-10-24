@@ -515,7 +515,7 @@ elseif(!empty($_GET['show_thread'])) {
     $n_posts = $thread['thread_replies'] + 1;
 
     $sql = 'SELECT p.*,
-                   u.user_id, u.user_name, u.user_avatar, u.user_alliance_status
+                   u.user_id, u.user_name, u.user_avatar, u.user_alliance_status, u.user_alliance
             FROM (alliance_bposts p)
             LEFT JOIN (user u) ON u.user_id = p.user_id
             WHERE p.thread_id = '.$thread_id.' AND
@@ -583,12 +583,17 @@ elseif(!empty($_GET['show_thread'])) {
         else $game->out('&nbsp;');
 
 
-        if($post['user_alliance_status'] == 2)
-            $game->out('<br><font color="yellow">'.constant($game->sprache("TEXT28")).'</font>');
-        elseif ($post['user_alliance_status'] == 3)
-            $game->out('<br><font color="red">'.constant($game->sprache("TEXT29")).'</font>');
-        elseif ($post['user_alliance_status'] == 4)
-            $game->out('<br><font color="#FFA500">'.constant($game->sprache("TEXT30")).'</font>');
+        // 24/10/08 - AC: Ok, check status but also check if he's still in the alliance
+        if($post['user_alliance'] == $post['alliance_id']) {
+            if($post['user_alliance_status'] == 2)
+                $game->out('<br><font color="yellow">'.constant($game->sprache("TEXT28")).'</font>');
+            elseif ($post['user_alliance_status'] == 3)
+                $game->out('<br><font color="red">'.constant($game->sprache("TEXT29")).'</font>');
+            elseif ($post['user_alliance_status'] == 4)
+                $game->out('<br><font color="#FFA500">'.constant($game->sprache("TEXT30")).'</font>');
+        }
+        else
+            $game->out('<br><font color="#AAAAAA"><u>'.constant($game->sprache("TEXT31")).'</u></font>');
 
         $game->out('</td>
             <td width="410" valign="top" colspan="2">'.$post['post_text'].'</td>

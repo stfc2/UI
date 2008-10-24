@@ -79,12 +79,13 @@ define ("GER_TEXT26", 'Taktischen:');
 
 define ("GER_TEXT27", 'Diplomat:');
 
-define ("GER_TEXT25", 'Admin');
+define ("GER_TEXT28", 'Admin');
 
-define ("GER_TEXT26", 'Pr&auml;esident');
+define ("GER_TEXT29", 'Pr&auml;esident');
 
-define ("GER_TEXT27", 'Diplomat');
+define ("GER_TEXT30", 'Diplomat');
 
+define ("GER_TEXT31", 'Ex Mitglied');
 
 
 
@@ -145,11 +146,13 @@ define ("ENG_TEXT26", 'Tactical:');
 
 define ("ENG_TEXT27", 'Diplomat:');
 
-define ("ENG_TEXT25", 'Admin');
+define ("ENG_TEXT28", 'Admin');
 
-define ("ENG_TEXT26", 'President');
+define ("ENG_TEXT29", 'President');
 
-define ("ENG_TEXT27", 'Diplomat');
+define ("ENG_TEXT30", 'Diplomat');
+
+define ("ENG_TEXT31", 'Ex Member');
 
 
 
@@ -215,5 +218,7 @@ define ("ITA_TEXT28", 'Admin');
 define ("ITA_TEXT29", 'Presidente');
 
 define ("ITA_TEXT30", 'Diplomatico');
+
+define ("ITA_TEXT31", 'Ex Membro');
 
 ?>
