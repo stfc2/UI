@@ -44,7 +44,7 @@ else {
     switch($action) {
     case 'post_shoutbox':
         if(empty($_POST['ally_shoutbox_msg'])) break;
-        if((time() - 15) < $game->player['last_shoutbox_post']) {
+        if((time() - 5) < $game->player['last_shoutbox_post']) {
             $sql = 'UPDATE user SET last_shoutbox_post = '.time().', shoutbox_flood_error = shoutbox_flood_error + 1
                     WHERE user_id = '.$game->player['user_id'];
             if(!$db->query($sql)) {
