@@ -394,6 +394,8 @@ if ($game->planet['planet_id']==$_GET['planet_id']) redirect('a=tactical_cartogr
 		if ($ships<1) $ships=1;
 		send_fake_transporter(array(FERENGI_TRADESHIP_ID=>$ships), FERENGI_USERID, $game->planet['planet_id'], $dest['planet_id']);
 		$db->query('UPDATE config SET ferengitax_1=ferengitax_1+'.($gebuehr[0]).', ferengitax_2=ferengitax_2+'.($gebuehr[1]).', ferengitax_3=ferengitax_3+'.($gebuehr[2]));
+		//Let's put the tax collected in the Trade Center Depot
+		$db->query('UPDATE FHB_Handels_Lager SET ress_1=ress_1+'.($gebuehr[0]).', ress_2=ress_2+'.($gebuehr[1]).', ress_3=ress_3+'.($gebuehr[2]));
 	    }
 
 redirect('a=tactical_cartography&planet_id='.encode_planet_id($_GET['planet_id']));	
