@@ -12,7 +12,7 @@ A.nav:link {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:visited {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:hover {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:active {FONT-WEIGHT: bold; FONT-SIZE: 10px}
-TD {FONT-SIZE: 11px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
+TD {FONT-SIZE: 12px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
 input[type=checkbox] { border-style: none;}
 INPUT[type=submit], INPUT[type=text], INPUT[type=password] {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
 TEXTAREA {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
@@ -54,12 +54,29 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 
 <body bgcolor="#000000" text="#DDDDDD"  background="/gfx/bg_stars1.gif">
 
-<div align="center"><span class="caption">Cantiere Navale</span></div>
+<div align="center"><span class="caption">Cantiere Navale</span><br>
+<span class="sub_caption">Stato costruzione</span>
+</div>
 <table border=0 cellpadding=2 cellspacing=2 width="95%" class="style_outer" align="center">
 <tr><td>
 	<table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="5">
 	<tr>
-	<td><font size="3"><b>In stesura</b></font></td>
+	<td align="justify">Quando il cantiere navale &egrave; in funzione, oltre alla normale visualizzazione
+	dell&#146;elenco delle tipologie di navi costruibili, viene mostrato un piccolo riquadro che riporta
+	lo stato di avanzamento dei lavori del vascello attualmente in costruzione e l&#146;eventuale coda di
+	lavoro presente.<br><br>
+	Usando il bottone <input type="submit" class="button" style="width: 200px;" value ="Interrompi"> &egrave;
+	possibile eliminare la costruzione in corso e passare a quella successiva o terminare	le attivit&agrave;
+	qualora non vi fossero presenti lavori in coda.<br>
+	Se al cantiere &egrave; stata impartita la costruzione di pi&ugrave; navi, il riquadro di stato mostra il
+	numero di navi accodate e se si seleziona il link &quot;Visualizza dettagli&quot;, verr&agrave; mostrato
+	l&#146;elenco completo delle astronavi in attesa di essere prodotte e la data prevista di consegna.<br><br>
+	<b><u>NOTA: Se mettendo pi&ugrave; di una nave in produzione, il numero di truppe di sicurezza presenti
+	sul pianeta viene meno, questi andr&agrave; in rivolta e non sar&agrave; possibile interrompere la costruzione
+	fino al ripristino delle condizioni di normalit&agrave;.</u></b><br><br>
+	<b><u>NOTA: Attualmente non &egrave; possibile eliminare una o pi&ugrave; voci dalla coda senza prima
+	interrompere tutti i lavori precedenti.</u></b>
+	</td>
 	</tr>
 	</table>
 </td>

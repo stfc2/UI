@@ -12,7 +12,7 @@ A.nav:link {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:visited {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:hover {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:active {FONT-WEIGHT: bold; FONT-SIZE: 10px}
-TD {FONT-SIZE: 11px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
+TD {FONT-SIZE: 12px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
 input[type=checkbox] { border-style: none;}
 INPUT[type=submit], INPUT[type=text], INPUT[type=password] {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
 TEXTAREA {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
@@ -54,12 +54,36 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 
 <body bgcolor="#000000" text="#DDDDDD"  background="/gfx/bg_stars1.gif">
 
-<div align="center"><span class="caption">Cantiere Navale</span></div>
+<div align="center"><span class="caption">Cantiere Navale</span><br>
+<span class="sub_caption">Equipaggio navi</span>
+</div>
 <table border=0 cellpadding=2 cellspacing=2 width="95%" class="style_outer" align="center">
 <tr><td>
 	<table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="5">
 	<tr>
-	<td><font size="3"><b>In stesura</b></font></td>
+	<td align="justify">Tutti i modelli di nave stellare possiedono determinati requisiti minimi
+	e massimi di equipaggio imbarcato, in alcuni casi questi coincidono e non &egrave; possibile far
+	salire a bordo personale extra.<br>
+	Tramite la ricerca di alloggi pi&ugrave; spaziosi, &egrave; possibile modificare determinate
+	tipologie di astronavi per aumentarne la capacit&agrave; di carico in modo da poter imbarcare una
+	quantit&agrave; superiore di personale.<br>
+	Questo accorgimento pu&ograve; essere principalmente utile a due scopi:<ul>
+	<li>per la creazione di navi "cargo" veloci, per quelle specie che possiedono navi da trasporto con
+	un fattore Warp relativamente basso;</li>
+	<li>per le operazioni di conquista di un pianeta, in quanto queste truppe aggiuntive verranno
+		coinvolte, assieme alle truppe presenti sulla nave colonizzatrice ed eventuali cargo, nelle operazioni
+		di sbarco per i combattimenti a terra.</li>
+	</ul>
+	Quando tramite la struttura adibita alla costruzione dei vascelli si impartisce l&#146;ordine per avviare
+	la produzione di un determinato numero di navi, viene visualizzato un riquadro in cui &egrave; possibile
+	specificare il quantitativo di equipaggio che sar&agrave; imbarcato su di esse (l&#146;impostazione
+	predefinita	&egrave; il valore minimo).<br>
+	<u>Non &egrave; possibile inserire un numero inferiore al limite minimo di equipaggio.</u><br>
+	<u>Nel caso in cui si stiano costruendo pi&ugrave; navi, questi parametri saranno assegnati
+	a tutte le unita prodotte.</u><br><br>
+	<b><u>NOTA: La struttura NON verifica se imbarcando il quantitativo di truppe specificato, sul pianeta
+		vengono a mancare le unita necessarie per mantenere la sicurezza.</u></b>
+	</td>
 	</tr>
 	</table>
 </td>
