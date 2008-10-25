@@ -22,7 +22,7 @@
 include_once('include/libs/moves.php');
 
 
-//Day ne globale Klasse ist nett, aber nicht immer passt ihr inhalt
+//Ne day global class is nice, but not always match their content
 $game->init_player();
 include('include/static/static_components_'.$game->player['user_race'].'.php');
 $filename = 'include/static/static_components_'.$game->player['user_race'].'_'.$game->player['language'].'.php';
@@ -153,7 +153,7 @@ $spacedock_planets = array();
 $spacedock_ids = array();
 
 
-// 1. Den Planet und das Starsystem holen
+// 1. Fetch the planet and the star system
 $planetquery=$db->query('SELECT pl. * , sys.system_x, sys.system_y FROM (planets pl)
 LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id WHERE pl.planet_owner = '.$game->player['user_id'].'
 GROUP BY pl.planet_id
@@ -168,7 +168,7 @@ while(($planet = $db->fetchrow($planetquery)))
 	$numerate++;
 }
 
-// 1.1 Den Planet und das Starsystem holen für Spacedock
+// 1.1 Fetch the planet and the star system to get Spacedock
 /*$planetquery=$db->query('SELECT pl. * , sys.system_x, sys.system_y FROM (planets pl)
 LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id WHERE pl.planet_owner = '.$game->player['user_id'].'
 GROUP BY pl.planet_id
@@ -183,7 +183,7 @@ while(($spacedock_planet = $db->fetchrow($planetquery)))
 	$numerate_space++;
 }*/
 
-// 2. Forschung holen
+// 2. Fetch research
 $planetquery=$db->query('SELECT r.planet_id AS tmp1, r.research_id, r.research_start, r.research_finish
 FROM (scheduler_research r)
 WHERE r.planet_id IN ('.implode(', ',$planet_ids).')');
@@ -195,7 +195,7 @@ while(($research = $db->fetchrow($planetquery)))
 }
 
 
-// 3. Gebäudebau holen
+// 3. Fetch building
 $planetquery=$db->query('SELECT b.planet_id AS tmp2, b.installation_type AS build_active, b.build_finish AS building_finish
 FROM (scheduler_instbuild b)
 WHERE b.planet_id IN ('.implode(', ',$planet_ids).')');
@@ -206,7 +206,7 @@ while(($building = $db->fetchrow($planetquery)))
 }
 
 
-// 4. Schiffsbau holen
+// 4. Fetch shipbuilding
 $planetquery=$db->query('SELECT s.planet_id AS tmp3, MAX(s.finish_build) AS shipyard_active
 FROM (scheduler_shipbuild s)
 WHERE s.planet_id IN ('.implode(', ',$planet_ids).') GROUP BY s.planet_id');
@@ -215,8 +215,8 @@ while(($shipyard = $db->fetchrow($planetquery)))
 	$planets[$shipyard['tmp3']]['shipyard_active']=$shipyard['shipyard_active'];
 }
 
-// 4.1 Holen des RH Inhalts
-// Ja ich weis falsche Stelle und unsauber gecodet, aber funzen tuts dennoch^^
+// 4.1 Bring contents of the Spacedock
+// Yes, I know the wrong body and improper coded, but does function nevertheless^^
 /*
 $planetquery=$db->query('SELECT s.fleet_id AS tmp4, COUNT(s.ship_id) AS spacedock_full
 FROM (ships s)
@@ -238,7 +238,7 @@ while(($coordinates = $db->fetchrow($planetquery)))
 	$planets[$coordinates['tmp4']]['system_global_y']=$coordinates['system_global_y'];
 }
 
-// 5. Das Array sortieren:
+// 5. Sort the array:
 foreach ($planets as $key => $row) {
    $sort[$key]  = $row['numerate'];
 }
@@ -246,7 +246,7 @@ array_multisort($sort, SORT_ASC, $planets);
 unset($sort);
 
 
-// 6. Daten ausgeben:
+// 6. Output data:
 foreach ($planets as $key => $planet) {
 
 	/* 21/03/08 - AC: Add distance from currently selected planet */
@@ -292,7 +292,7 @@ foreach ($planets as $key => $planet) {
 
 	if ($planet['building_queue']==0) unset($planet['building_queue']);
 
-	// Gebäude-Anzeige:
+	// Building announcement:
 	$building=constant($game->sprache("TEXT18a"));
 	$stufendreck=0;
 	if (isset($planet['build_active'])) 
@@ -309,7 +309,7 @@ foreach ($planets as $key => $planet) {
 	}
 	//GetBuildingTimeTicks($planet['building_queue']-1,$planet['planet_type'],$game->player['user_race'])
 
-	// Forschungs-Anzeige:
+	// Research announcement:
 	$research=constant($game->sprache("TEXT18a"));
 	if (isset($planet['research_id']))
 	{
@@ -354,7 +354,7 @@ foreach ($planets as $key => $planet) {
 			$academy= constant($game->sprache("TEXT22")).' ('.$text.' <b>'.Zeit(TICK_DURATION*($planet['unittrainid_nexttime']-$ACTUAL_TICK)).'</b>)';
 		}
 
-		// ALT, habs mal geändert, sollte nun besser passen. Gruß Mojo ;)
+		// ALT, habs times changed, should fit now better. Greeting Mojo ;)
 		/*$unitcount=($planet['unit_1']*2+$planet['unit_2']*3+$planet['unit_3']*4+$planet['unit_4']*4+$planet['unit_5']*4+$planet['unit_6']*4);
 		if ($unitcount>$planet['max_units']-4)
 		{
@@ -367,7 +367,7 @@ foreach ($planets as $key => $planet) {
 	{
 		$shipbuild=constant($game->sprache("TEXT24")).'<br><b>'.Zeit(TICK_DURATION*($planet['shipyard_active']-$ACTUAL_TICK)).'</b>';
 	}
-	// Farben für die Symbole festlegen
+	// Set colors for the symbols
 	if(isset($planet['building_queue'])){ $building_color=(($planet['building_finish']-$ACTUAL_TICK+GetBuildingTimeTicks($planet['building_queue']-1,$stufendreck,$planet,$game->player['user_race'],$planet_notactive,$planet['research_4'])))/12;
 	}else{
 	$building_color=($planet['building_finish']-$ACTUAL_TICK)/12;
@@ -387,7 +387,7 @@ foreach ($planets as $key => $planet) {
 	$shipyard_color='#80'.dechex(128+16*$shipyard_color-1).'80';
 
 
-	// Ausgabe von Baustatus, etc:
+	// Output of construction status, etc.:
 	$status='<table border=0 cellpadding=0 cellspacing=0><tr>';
 	if (isset($planet['build_active'])) $status.='<td width=12><a href="javascript:void(0);" onmouseover="return overlib(\''.$building.'\', CAPTION, \''.constant($game->sprache("TEXT25")).'\', WIDTH, 250, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color='.$building_color.'>'.constant($game->sprache("TEXT29")).'</font></a></td>'; else $status.='<td width=12>&nbsp;</td>';
 	if (isset($planet['research_id'])) $status.='<td width=12><a href="javascript:void(0);" onmouseover="return overlib(\''.$research.'\', CAPTION, \''.constant($game->sprache("TEXT26")).'\', WIDTH, 250, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color='.$research_color.'>'.constant($game->sprache("TEXT30")).'</font></a></td>'; else $status.='<td width=12>&nbsp;</td>';
@@ -395,7 +395,7 @@ foreach ($planets as $key => $planet) {
 	if (isset($planet['shipyard_active'])) $status.='<td width=12><a href="javascript:void(0);" onmouseover="return overlib(\''.$shipbuild.'\', CAPTION, \''.constant($game->sprache("TEXT28")).'\', WIDTH, 250, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color='.$shipyard_color.'>'.constant($game->sprache("TEXT32")).'</font></a></td>'; else $status.='<td width=12>&nbsp;</td>';
 	
 
-	// Ausgabe der Sicherheitstruppenanzeige
+	// Output of security forces display
 	if (round($planet['unit_1'] * 2 + $planet['unit_2'] * 3 + $planet['unit_3'] * 4 + $planet['unit_4'] * 4, 0)<$planet['min_security_troops']) 
 	{
 		$percent=round($planet['unit_1'] * 2 + $planet['unit_2'] * 3 + $planet['unit_3'] * 4 + $planet['unit_4'] * 4, 0)/$planet['min_security_troops'];
@@ -409,14 +409,14 @@ foreach ($planets as $key => $planet) {
 	$tax=$db->queryrow('SELECT taxes FROM alliance WHERE alliance_id = '.$game->player['user_alliance'].'');
 
 
-	// Anzeige der Ressourcen
+	// Display of resources
 	if ($game->option_retr('planetlist_show')==0){ 
 		$stat_out='<img src="'.$game->GFX_PATH.'menu_metal_small.gif">'.(($planet['resource_1']>=100000) ? round($planet['resource_1']/1000).'k' : round($planet['resource_1'],0)).'&nbsp;
 		<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">'.(($planet['resource_2']>=100000) ? round($planet['resource_2']/1000).'k' : round($planet['resource_2'],0)).'&nbsp;
 		<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">'.(($planet['resource_3']>=100000) ? round($planet['resource_3']/1000).'k' : round($planet['resource_3'],0)).'
 		<img src="'.$game->GFX_PATH.'menu_worker_small.gif">'.round($planet['resource_4'],0).'';
 	}
-	// Anzeige des Truppenstatus
+	// Display of the troops status
 	elseif($game->option_retr('planetlist_show')==1){
 		$stat_out='<img src="'.$game->GFX_PATH.'menu_unit1_small.gif">'.round($planet['unit_1'],0).'&nbsp;
 		<img src="'.$game->GFX_PATH.'menu_unit2_small.gif">'.round($planet['unit_2'],0).'&nbsp;
@@ -444,7 +444,7 @@ foreach ($planets as $key => $planet) {
 	$unita5 = $unita5 + round($planet['unit_5'],0);
 	$unita6 = $unita6 + round($planet['unit_6'],0);
 
-	// Anzeige der Koordinaten und des Wechselsymbols:
+	// Show the coordinates and the exchange symbol:
 	if ($game->planet['planet_id']==$planet['planet_id'])
 	{
 		$game->out('
@@ -462,13 +462,13 @@ foreach ($planets as $key => $planet) {
 			<td>'.$stat_out.'&nbsp;&nbsp;');
 	}
 
-	// Ausgabe des Baustatus von oben etc. sowie die Anzeige bei drohendem Angriff (wird im Scheduler gesetzt):
+	// Output status of construction from above, etc. as well as the display of impending attack (is set in the scheduler):
 	$attack=$planet['planet_next_attack'];
 	if ($game->option_retr('redalert_options')==2) $attack=0;
 	if ($game->option_retr('redalert_options')==1 && $attack-date()>3600*24*7) $attack=0;
 	$game->out('</td><td>'.( $attack>0 ? '<font color=red><b>'.constant($game->sprache("TEXT39")).' </b>'.date('d.m.y H:i', ($attack)).'</font></b><br>' : '').$status.'</td><td>'.$planet['planet_points'].'</td><td>'.strtoupper($planet['planet_type']).'</td></tr>');
 
-} // Ende der Planetentabelle
+} // End of the planets table
 
 function conversione ($risorsa) {
 if ($risorsa >= 1000000) $risorsa = round($risorsa/1000000,2).' Mio.';
@@ -507,7 +507,7 @@ $game->out('<tr><td colspan=8><hr color=#FFFFFF size=1>
 
 </fieldset></tr>');
 
-// Optionen zur Sortierung etc.:
+// Options for sorting etc.:
 $game->out('</table></td></tr></table><br><br>
 <table border=0 cellpadding=1 cellspacing=1 class="style_outer"><tr><td>
 <table border=0 cellpadding=1 cellspacing=1 class="style_inner">
