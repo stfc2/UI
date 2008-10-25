@@ -26,15 +26,15 @@ define ("GER_TEXT1", 'Planeten:');
 
 define ("GER_TEXT2", 'Hier findest du eine Auflistung deiner Planeten.');
 
-define ("GER_TEXT3", 'Die Buchstaben unter Status zeigen dir welche Vorgänge momentan ablaufen.');
+define ("GER_TEXT3", 'Die Buchstaben unter Status zeigen dir welche VorgÃ¤nge momentan ablaufen.');
 
 define ("GER_TEXT4", 'Je ');
 
-define ("GER_TEXT5", 'grüner');
+define ("GER_TEXT5", 'grÃ¼ner');
 
-define ("GER_TEXT6", ' die Farbe ist, desto länger laufen die Auftr&auml;ge noch.');
+define ("GER_TEXT6", ' die Farbe ist, desto lÃ¤nger laufen die Auftr&auml;ge noch.');
 
-define ("GER_TEXT7", 'Das A für Einheitenausbildung zeigt ');
+define ("GER_TEXT7", 'Das A fÃ¼r Einheitenausbildung zeigt ');
 
 define ("GER_TEXT8", 'fehlende Ressourcen');
 
@@ -94,11 +94,11 @@ define ("GER_TEXT32", 'S');
 
 define ("GER_TEXT33", 'Sicherheitstruppen:');
 
-define ("GER_TEXT34", 'Benötigt:');
+define ("GER_TEXT34", 'BenÃ¶tigt:');
 
 define ("GER_TEXT35", 'Drohende Revolution:');
 
-define ("GER_TEXT36", 'Arbeiteraufstände:');
+define ("GER_TEXT36", 'ArbeiteraufstÃ¤nde:');
 
 define ("GER_TEXT37", 'Zum Planeten wechseln');
 
@@ -106,7 +106,7 @@ define ("GER_TEXT38", 'w');
 
 define ("GER_TEXT39", 'Angriff am');
 
-define ("GER_TEXT40", 'Gesamtmenge an Verfügbaren Ressourcen und Truppen auf eigenen Planeten');
+define ("GER_TEXT40", 'Gesamtmenge an VerfÃ¼gbaren Ressourcen und Truppen auf eigenen Planeten');
 
 define ("GER_TEXT41", 'Sortieren nach:');
 
@@ -118,7 +118,7 @@ define ("GER_TEXT44", 'Alter');
 
 define ("GER_TEXT45", 'Koordinaten');
 
-define ("GER_TEXT46", 'Aufstände');
+define ("GER_TEXT46", 'AufstÃ¤nde');
 
 define ("GER_TEXT47", 'Klasse');
 
@@ -326,13 +326,13 @@ define ("ITA_TEXT27", 'Stato addestramento:');
 
 define ("ITA_TEXT28", 'Stato costruzione navi:');
 
-define ("ITA_TEXT29", 'B');
+define ("ITA_TEXT29", 'C');
 
 define ("ITA_TEXT30", 'R');
 
 define ("ITA_TEXT31", 'A');
 
-define ("ITA_TEXT32", 'S');
+define ("ITA_TEXT32", 'N');
 
 define ("ITA_TEXT33", 'Forze di sicurezza:');
 
@@ -344,7 +344,7 @@ define ("ITA_TEXT36", 'Lavoratori in rivolta:');
 
 define ("ITA_TEXT37", 'Vai al pianeta');
 
-define ("ITA_TEXT38", 'w');
+define ("ITA_TEXT38", 'a');
 
 define ("ITA_TEXT39", 'Attacco');
 

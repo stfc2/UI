@@ -168,7 +168,7 @@ while(($planet = $db->fetchrow($planetquery)))
 	$numerate++;
 }
 
-// 1.1 Den Planet und das Starsystem holen für Spacedock
+// 1.1 Den Planet und das Starsystem holen fÃ¼r Spacedock
 /*$planetquery=$db->query('SELECT pl. * , sys.system_x, sys.system_y FROM (planets pl)
 LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id WHERE pl.planet_owner = '.$game->player['user_id'].'
 GROUP BY pl.planet_id
@@ -195,7 +195,7 @@ while(($research = $db->fetchrow($planetquery)))
 }
 
 
-// 3. Gebäudebau holen
+// 3. GebÃ¤udebau holen
 $planetquery=$db->query('SELECT b.planet_id AS tmp2, b.installation_type AS build_active, b.build_finish AS building_finish
 FROM (scheduler_instbuild b)
 WHERE b.planet_id IN ('.implode(', ',$planet_ids).')');
@@ -292,7 +292,7 @@ foreach ($planets as $key => $planet) {
 
 	if ($planet['building_queue']==0) unset($planet['building_queue']);
 
-	// Gebäude-Anzeige:
+	// GebÃ¤ude-Anzeige:
 	$building=constant($game->sprache("TEXT18a"));
 	$stufendreck=0;
 	if (isset($planet['build_active'])) 
@@ -335,11 +335,11 @@ foreach ($planets as $key => $planet) {
 			else
 			{
 				if($planet['unittrain_error']==2){
-					$academy.='<br><b>'.constant($game->sprache("TEXT23")).'</b>';
+					$academy.='<br><b>'.constant($game->sprache("TEXT23")).'</b>)';
 					$outofspace=1;
 				}
 				else {
-					$academy.='<b>'.constant($game->sprache("TEXT19")).'</b>)';
+					$academy.='<br><b>'.constant($game->sprache("TEXT19")).'</b>)';
 					$outofresources=1;
 				}
 				
@@ -354,7 +354,7 @@ foreach ($planets as $key => $planet) {
 			$academy= constant($game->sprache("TEXT22")).' ('.$text.' <b>'.Zeit(TICK_DURATION*($planet['unittrainid_nexttime']-$ACTUAL_TICK)).'</b>)';
 		}
 
-		// ALT, habs mal geändert, sollte nun besser passen. Gruß Mojo ;)
+		// ALT, habs mal geÃ¤ndert, sollte nun besser passen. GruÃŸ Mojo ;)
 		/*$unitcount=($planet['unit_1']*2+$planet['unit_2']*3+$planet['unit_3']*4+$planet['unit_4']*4+$planet['unit_5']*4+$planet['unit_6']*4);
 		if ($unitcount>$planet['max_units']-4)
 		{
@@ -367,7 +367,7 @@ foreach ($planets as $key => $planet) {
 	{
 		$shipbuild=constant($game->sprache("TEXT24")).'<br><b>'.Zeit(TICK_DURATION*($planet['shipyard_active']-$ACTUAL_TICK)).'</b>';
 	}
-	// Farben für die Symbole festlegen
+	// Farben fÃ¼r die Symbole festlegen
 	if(isset($planet['building_queue'])){ $building_color=(($planet['building_finish']-$ACTUAL_TICK+GetBuildingTimeTicks($planet['building_queue']-1,$stufendreck,$planet,$game->player['user_race'],$planet_notactive,$planet['research_4'])))/12;
 	}else{
 	$building_color=($planet['building_finish']-$ACTUAL_TICK)/12;

@@ -77,7 +77,7 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 		<li>Etichetta (denominazione libera assegnata dal giocatore)</li>
 		<li>Reddito (produzione delle risorse ad ogni tick)</li>
 		</ul></li>
-	<li><b>Stato</b>: contrassegnato dalle lettere: B (costruzione), R (ricerca), A (accademia), S (navi) indicante
+	<li><b>Stato</b>: contrassegnato dalle lettere: C (costruzione), R (ricerca), A (accademia), N (navi) indicante
 	l&#146;eventuale attivit&agrave; presente sul pianeta.</li>
 	<li><b>Punti</b>: il punteggio raggiunto</li>
 	<li><b>Classe</b>: la tipologia di pianeta</li>
