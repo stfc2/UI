@@ -658,7 +658,7 @@ $game->out('
 
 <table border=0 cellpadding=0 cellspacing=0 width=300 class="style_inner"><tr><td>
 
-<span class="sub_caption2">'.constant($game->sprache("TEXT31")).' <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.$template['name'].'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span class="sub_caption2">'.$template['name'].'</span></a></span><br>
+<span class="sub_caption2">'.constant($game->sprache("TEXT31")).' <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span class="sub_caption2">'.$template['name'].'</span></a></span><br>
 
 '.constant($game->sprache("TEXT32")).'<br>
 
@@ -702,7 +702,7 @@ while(($scheduler = $db->fetchrow($schedulerquery))==true)
 
 $template=$db->queryrow('SELECT * FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (id="'.$scheduler['ship_type'].'")');
 
-$game->out('-&nbsp; <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.$template['name'].'\', WIDTH, 
+$game->out('-&nbsp; <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 
 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a> ('.constant($game->sprache("TEXT36")).' '.date("d.M H:i",time()+$NEXT_TICK+(($scheduler['finish_build']-$ACTUAL_TICK)*TICK_DURATION*60)).' '.constant($game->sprache("TEXT37")).')<br>');}
 
 } // End of: "if ($db->num_rows()>0)"
@@ -742,7 +742,7 @@ if ($display) $game->out('</td></tr></table><br>');
 $game->out(constant($game->sprache("TEXT40")).'<br><br>');
 
 
-
+/* 19/10/08 - AC: Vediam che succede se lo disattivo...
 $game->out('
 
 
@@ -777,7 +777,7 @@ $game->out('</td></tr></table></td></tr></table><br>
 
 
 
-');
+');*/
 
 }
 
@@ -849,7 +849,7 @@ if ($maxunit[3]>$template['max_unit_4']) $maxunit[3]=$template['max_unit_4'];
 
 
 
-$game->out('<span class="sub_caption2">'.constant($game->sprache("TEXT46")).' "'.$_REQUEST['count'].'x <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.$template['name'].'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span class="sub_caption2">'.$template['name'].'</span></a>" '.constant($game->sprache("TEXT47")).'</span><br><br>
+$game->out('<span class="sub_caption2">'.constant($game->sprache("TEXT46")).' "'.$_REQUEST['count'].'x <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span class="sub_caption2">'.$template['name'].'</span></a>" '.constant($game->sprache("TEXT47")).'</span><br><br>
 
 <form name="send" method="post" action="index.php?a=shipyard&a2=start_build&id='.$template['id'].'" onSubmit="return document.send.submit.disabled = true;">
 <script type="text/javascript" language="JavaScript">
