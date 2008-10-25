@@ -55,8 +55,8 @@ $game->out('
 <table cellpadding="2" cellspacing="2">
   <tr>
     <td width="150">&nbsp;</td>
-    <td width="150">Systeme</td>
-    <td width="150">Planeten</td>
+    <td width="150">Systems</td>
+    <td width="150">Planets</td>
   </tr>
   <tr>
     <td>Alpha</td>
