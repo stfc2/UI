@@ -691,7 +691,7 @@ function submitMessage()
 		// 11/04/08 - AC: Add mass email
 		else if ($_POST['receiver'] == '*')
 		{
-			$mes_qry = $db->query('SELECT user_id FROM user WHERE 1');
+			$mes_qry = $db->query('SELECT user_id FROM user WHERE user_auth_level < 2');
 
 			while ($receiver=$db->fetchrow($mes_qry))
 			{
