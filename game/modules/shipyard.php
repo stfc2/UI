@@ -742,7 +742,7 @@ if ($display) $game->out('</td></tr></table><br>');
 $game->out(constant($game->sprache("TEXT40")).'<br><br>');
 
 
-
+/* 19/10/08 - AC: Vediam che succede se lo disattivo...
 $game->out('
 
 
@@ -777,7 +777,7 @@ $game->out('</td></tr></table></td></tr></table><br>
 
 
 
-');
+');*/
 
 }
 
