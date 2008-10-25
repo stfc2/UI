@@ -23,7 +23,6 @@
 
 $game->init_player();
 $game->out('<span class="caption">'.$BUILDING_NAME[$game->player['user_race']][5].':</span><br><br>');
-$game->out('[<b>'.$BUILDING_NAME[$game->player['user_race']][5].'</b>]<br><br>');
 
 function UnitMetRequirements($unit)
 {
@@ -98,8 +97,8 @@ global $game;
 global $UNIT_NAME, $UNIT_DESCRIPTION, $UNIT_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK;
 if ($game->planet['unittrainid_nexttime']>0) return 0;
 
-		// 1. Zur n�chsten Einheit springen + neue Zeit setzen:
-		// Zuerst:
+		// 1. Jump to the next unit + new time set:
+		// First:
 		$started=0;
 		$tries=0;
 		while ($started==0 && $tries<=10)
@@ -223,8 +222,10 @@ $game->out(constant($game->sprache("Text1")).$UNIT_NAME[$game->player['user_race
 
 if ($game->planet['unittrain_error']==0)
 $game->out('<b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($game->planet['unittrainid_nexttime']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b></td></tr></table></td></tr></table><br>');
-else
+else if ($game->planet['unittrain_error']==1)
 $game->out(constant($game->sprache("Text3")));
+else
+$game->out(constant($game->sprache("Text36")));
 
 }
 else

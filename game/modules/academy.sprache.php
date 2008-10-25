@@ -92,6 +92,8 @@ define ("GER_Text34", '<option value="12">54 Minuten Pause</option>');
 
 define ("GER_Text35", 'Reset');
 
+define ("GER_Text36", '<b>Unzureichend freiem Speicherplatz - Warten</b></td></tr></table></td></tr></table><br>');
+
 //English
 
 define ("ENG_Text1", '<table border="0" cellpadding="1" cellspacing="1" width="300" class="style_outer"><tr><td><table border=0 cellpadding=1 cellspacing=1 width=300 class="style_inner"><tr><td><tr><td>It is trained: <b>');
@@ -166,6 +168,7 @@ define ("ENG_Text34", '<option value="12">54 Minutes Pause</option>');
 
 define ("ENG_Text35", 'Reset');
 
+define ("ENG_Text36", '<b>Insufficient space available on planet - Waiting</b></td></tr></table></td></tr></table><br>');
 
 //Italiano
 
@@ -173,7 +176,7 @@ define ("ITA_Text1", '<table border="0" cellpadding="1" cellspacing="1" width="3
 
 define ("ITA_Text2", '</b><br>Tempo rimanente per il completamento:<br>');
 
-define ("ITA_Text3", '<b>Troppo poche risorse - Attendere</b></td></tr></table></td></tr></table><br>');
+define ("ITA_Text3", '<b>Risorse disponibili insufficienti - In attesa</b></td></tr></table></td></tr></table><br>');
 
 define ("ITA_Text4", 'Nessuno in addestramento');
 
@@ -240,5 +243,7 @@ define ("ITA_Text33", '<option value="12" selected>54 minuti di pausa</option>')
 define ("ITA_Text34", '<option value="12">54 minuti di pausa</option>');
 
 define ("ITA_Text35", 'Azzera');
+
+define ("ITA_Text36", '<b>Spazio sul pianeta insufficiente - In attesa</b></td></tr></table></td></tr></table><br>');
 
 ?>
