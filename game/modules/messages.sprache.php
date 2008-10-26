@@ -63,6 +63,7 @@ define ("GER_TEXT39", 'von');
 define ("GER_TEXT40", 'Spieler verschickt');
 define ("GER_TEXT41", 'Der Empf&auml;nger existiert nicht!');
 define ("GER_TEXT42", 'Ihre Nachricht wurde verschickt');
+define ("GER_TEXT43", 'Sicher das alle Archivierten-Nachrichten l&ouml;schen wollen?');
 
 //English
 define ("ENG_TEXT0", 'Are you sure you want to delete all messages?');
@@ -108,6 +109,7 @@ define ("ENG_TEXT39", 'of');
 define ("ENG_TEXT40", 'Players');
 define ("ENG_TEXT41", 'The recipients doesn\`t exist!');
 define ("ENG_TEXT42", 'Your message was sent away');
+define ("ENG_TEXT43", 'Are you sure you want to delete all archived messages?');
 
 //Italian
 define ("ITA_TEXT0", 'Sei sicuro di voler cancellare tutti i messaggi?');
@@ -153,5 +155,6 @@ define ("ITA_TEXT39", 'di');
 define ("ITA_TEXT40", 'giocatori');
 define ("ITA_TEXT41", 'I destinatari non esistono!');
 define ("ITA_TEXT42", 'Il tuo messaggio &egrave; stato trasmesso');
+define ("ITA_TEXT43", 'Sei sicuro di voler cancellare tutti i messaggi archiviati?');
 
 ?>
