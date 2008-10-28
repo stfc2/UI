@@ -20,20 +20,31 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 if(!empty($_GET['file'])) {
-    $gzip_contents = '<table border=0>'.str_replace("\n", '<br>'."\n", implode('', file($_GET['file'].'.log'))).'</table>';
-    
-    $gzip_size = strlen($gzip_contents);
-    $gzip_crc = crc32($gzip_contents);
+    $filename = $_GET['file'].'.log';
+    if (file_exists($filename))
+    {
+        $gzip_contents = '<table border=0>'.implode('', file($filename)).'</table>';
 
-    $gzip_contents = gzcompress($gzip_contents, 9);;
-    $gzip_contents = substr($gzip_contents, 0, strlen($gzip_contents) - 4);
+        $gzip_size = strlen($gzip_contents);
+        $gzip_crc = crc32($gzip_contents);
 
-    header('Content-Encoding: gzip');
+        $gzip_contents = gzcompress($gzip_contents, 9);
+        $gzip_contents = substr($gzip_contents, 0, strlen($gzip_contents) - 4);
 
-    echo "\x1f\x8b\x08\x00\x00\x00\x00\x00";
-    echo $gzip_contents;
-    echo pack('V', $gzip_crc);
-    echo pack('V', $gzip_size);
+        header('Content-Encoding: gzip');
+
+        echo "\x1f\x8b\x08\x00\x00\x00\x00\x00";
+        echo $gzip_contents;
+        echo pack('V', $gzip_crc);
+        echo pack('V', $gzip_size);
+    }
+    else {
+        $gzip_contents = implode('',file($filename.'.gz'));
+
+        header('Content-Encoding: gzip');
+
+        echo $gzip_contents;
+    }
 }
 else {
     header('Location: view_log.php?file=tick_'.date('d-m-Y', time()));
