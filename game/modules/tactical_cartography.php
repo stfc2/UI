@@ -963,10 +963,12 @@ elseif(!empty($_GET['planet_id'])) {
 
     $planet_is_known = false;
     $sql = 'SELECT * FROM planet_details WHERE log_code = 500 AND system_id = '.$planet['system_id'].' AND user_id = '.$game->player['user_id'];
-    if($db->queryrow($sql) == true) $planet_is_known = true;
+    // 29/10/08 - AC: No FOW for admins
+    if($game->player['user_auth_level'] == STGC_DEVELOPER || $db->queryrow($sql) == true)
+        $planet_is_known = true;
 
     $last_update = constant($game->sprache("TEXT93"));
-    
+
     if($own_planet ||
        ($game->player['user_alliance'] == $planet_owner['alliance_id'] && $game->player['user_alliance_rights3'] == 1) ||
        $planet_is_known) {
