@@ -98,17 +98,17 @@ define ("GER_TEXT32", 'Min. Reisezeit: ');
 
 define ("GER_TEXT33", 'Flugdauer: ');
 
-define ("GER_TEXT34", 'Wählen Sie eine Art der Zuordnung zwischen den folgenden Optionen:');
+define ("GER_TEXT34", 'W&auml;hlen Sie die Art des Transportes:');
 
-define ("GER_TEXT35", 'Einzel-Rennen (Start->Anreise->Start)');
+define ("GER_TEXT35", 'Einmaliger Transport (Startplanet->Zielplanet->Startplanet)');
 
-define ("GER_TEXT36", 'Rennen wird solange fortgesetzt, bis Widerruf');
+define ("GER_TEXT36", 'Dauertransport bis manueller Abbruch');
 
-define ("GER_TEXT37", 'Legen Sie fest, ob oder nicht, damit Logbuch Berichte über Lieferungen:');
+define ("GER_TEXT37", 'Legen Sie fest, ob Sie Logbuchberichte &uuml;ber Lieferungen erhalten m&ouml;chten:');
 
-define ("GER_TEXT38", 'Logbuch Bericht aktiviert');
+define ("GER_TEXT38", 'Logbuch Berichte aktivieren');
 
-define ("GER_TEXT39", 'Logbuch Bericht deaktiviert');
+define ("GER_TEXT39", 'Logbuch Berichte deaktivieren');
 
 
 //English
