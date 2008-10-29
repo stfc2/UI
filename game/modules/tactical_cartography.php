@@ -961,10 +961,11 @@ elseif(!empty($_GET['planet_id'])) {
 
     $planet_is_known = false;
     $sql = 'SELECT * FROM planet_details WHERE log_code = 500 AND system_id = '.$planet['system_id'].' AND user_id = '.$game->player['user_id'];
-    if($db->queryrow($sql) == true) $planet_is_known = true;
+    if($game->player['user_auth_level'] == STGC_DEVELOPER || $db->queryrow($sql) == true)
+        $planet_is_known = true;
 
     $last_update = constant($game->sprache("TEXT93"));
-    
+
     if($own_planet || ($game->player['user_alliance'] == $planet_owner['alliance_id']) || $planet_is_known) {
     	$_thumb = '<a href='.$planet_thumb.' target="_blank"><img src="'.$planet_thumb.'" width="80" height="80" border="0"></a><br>';
 	$_name  = '&nbsp;<b>'.$planet['planet_name'].'</b>&nbsp;('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')';
