@@ -151,11 +151,11 @@ define ("GER_TEXT63", 'Ausspionieren');
 
 define ("GER_TEXT64", 'Weiter >>');
 
-define ("GER_TEXT65", 'Planet Analysen');
+define ("GER_TEXT65", 'Planet analysieren');
 
 define ("GER_TEXT66", 'Die Sondierungsmissionen kann nur auf eine Flotte bestehend aus einem einzigen Schiff.');
 
-define ("GER_TEXT67", '<b>Planet Analysen:</b><br>Das Schiff wird sich bei den Planeten, f&uuml;hrt eine Reihe von Scans des Gebiets und ein wissenschaftliches Team wird strahlte bis auf den Boden f&uuml;r geologische Erhebungen, wenn m&ouml;glich, dann werden der Kommission die Ergebnisse der Analysen.');
+define ("GER_TEXT67", '<b>Planet analysieren:</b><br>Das Schiff wird sich dem Planeten ann&auml;hern und eine Reihe von Scans des Gebietes durchf&uuml;hren. Ein Team aus Wissenschaftlern wird auf die Oberfl&auml;che gebeamt, um einige geologische Studien durchzuf&uuml;hren und dann ein Gutachten &uuml;ber die Ergebnisse vorlegen.');
 
 define ("GER_TEXT68", 'Unbekannt');
 
