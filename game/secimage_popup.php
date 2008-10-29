@@ -75,8 +75,6 @@ if( (stristr($_SERVER['HTTP_USER_AGENT'], 'php')) || (stristr($_SERVER['HTTP_USE
 
 
 
-$GFX_PATH=FIXED_GFX_PATH.'skin1/';
-
 echo'
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -131,7 +129,7 @@ echo'
 </style>
 
 </head>
-<body bgcolor="#727272" text="#FFFFFF" background="'.$GFX_PATH.'template_bg.jpg">
+<body bgcolor="#727272" text="#FFFFFF" background="'.FIXED_GFX_PATH.'template_bg.jpg">
 <center><span style="font-family: Verdana; font-size: 18px;">'.constant($game->sprache("TEXT0")).'<br></span>
 <span style="font-family: Verdana; font-size: 12px;">
 ';
