@@ -129,7 +129,7 @@ echo'
 </style>
 
 </head>
-<body bgcolor="#727272" text="#FFFFFF" background="'.$game->GFX_PATH.'template_bg.jpg">
+<body bgcolor="#727272" text="#FFFFFF" background="'.FIXED_GFX_PATH.'template_bg.jpg">
 <center><span style="font-family: Verdana; font-size: 18px;">'.constant($game->sprache("TEXT0")).'<br></span>
 <span style="font-family: Verdana; font-size: 12px;">
 ';
