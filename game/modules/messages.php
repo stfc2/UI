@@ -105,7 +105,7 @@ if($subAction == 'inbox')
 
 	else if(isset($_GET['srremoverequest'])) {
 
-		$game->out('<div align="center"><b>'.constant($game->sprache("TEXT0")).'</b><br><br>[<a href="'.parse_link('a=messages&srremoveall=1').'"><b>'.constant($game->sprache("TEXT1")).'</b></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=messages').'"><b>'.constant($game->sprache("TEXT2")).'</b></a>]</div><br><br>');
+		$game->out('<div align="center"><b>'.constant($game->sprache("TEXT3")).'</b><br><br>[<a href="'.parse_link('a=messages&srremoveall=1').'"><b>'.constant($game->sprache("TEXT1")).'</b></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=messages').'"><b>'.constant($game->sprache("TEXT2")).'</b></a>]</div><br><br>');
 
 	} 
  
@@ -128,9 +128,9 @@ if($subAction == 'inbox')
 
 	else if(isset($_GET['rremoverequest'])) {
 
-		$game->out('<div align="center"><b>'.constant($game->sprache("TEXT3")).'</b><br><br>[<a href="'.parse_link('a=messages&rremoveall=1').'"><b>'.constant($game->sprache("TEXT1")).'</b></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=messages').'"><b>'.constant($game->sprache("TEXT2")).'</b></a>]</div><br><br>');
+		$game->out('<div align="center"><b>'.constant($game->sprache("TEXT0")).'</b><br><br>[<a href="'.parse_link('a=messages&rremoveall=1').'"><b>'.constant($game->sprache("TEXT1")).'</b></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=messages').'"><b>'.constant($game->sprache("TEXT2")).'</b></a>]</div><br><br>');
 
-	} 
+	}
 
 
 	// do 'rmarkall'
@@ -194,6 +194,14 @@ else if($subAction == 'archiv')
 													$db->query('DELETE FROM message_archiv WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
 
 		}
+
+	}
+
+	// do 'arremoverequest'
+
+	else if(isset($_GET['aremoverequest'])) {
+
+		$game->out('<div align="center"><b>'.constant($game->sprache("TEXT43")).'</b><br><br>[<a href="'.parse_link('a=messages&aremoveall=1').'"><b>'.constant($game->sprache("TEXT1")).'</b></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=messages').'"><b>'.constant($game->sprache("TEXT2")).'</b></a>]</div><br><br>');
 
 	}
 
@@ -617,7 +625,7 @@ function archiv()
 		}
 
 	$links 	= navigation_show_pagelinks($page, $perpage, $archStat['messages'], 'a=messages&a2=archiv');
-	$delete	= '<a href="'.parse_link('a=messages&a2=archiv&aremoveall=1').'">'.constant($game->sprache("TEXT20")).'</a>';
+	$delete	= '<a href="'.parse_link('a=messages&a2=archiv&aremoverequest=1').'">'.constant($game->sprache("TEXT20")).'</a>';
 
 	if($archStat['messages'] != 0)
 		$links2 = $delete;
