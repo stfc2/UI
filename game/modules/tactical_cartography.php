@@ -992,7 +992,6 @@ elseif(!empty($_GET['planet_id'])) {
 <style type="text/css">
 <!--
 form {
-    background-image: url(none);
     spacing = 0px;
     padding: 0px;
     border: 0px solid #000000;
