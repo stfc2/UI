@@ -78,7 +78,7 @@ define ("GER_TEXT27", 'Markierung Diplomat/Standart');
 
 define ("GER_TEXT28", 'Markierung Admin/Standart');
 
-define ("GER_TEXT29", 'Präsidentenamt &uuml;bergeben');
+define ("GER_TEXT29", 'Pr&auml;sidentenamt &uuml;bergeben');
 
 define ("GER_TEXT30", 'Rassenverteilung innerhalb der Allianz');
 
@@ -112,9 +112,9 @@ define ("GER_TEXT44", 'Diplomat');
 
 define ("GER_TEXT45", 'Admin');
 
-define ("GER_TEXT46", 'Präsident');
+define ("GER_TEXT46", 'Pr&auml;sident');
 
-define ("GER_TEXT47", 'Der Präsident kann seine Allianz nicht verlassen');
+define ("GER_TEXT47", 'Der Pr&auml;sident kann seine Allianz nicht verlassen');
 
 define ("GER_TEXT48", 'hat die Allianz <b>verlassen</b>');
 
@@ -122,7 +122,7 @@ define ("GER_TEXT49", 'Willst du wirklich deine Allianz verlassen?');
 
 define ("GER_TEXT50", '<< Zur&uuml;ck');
 
-define ("GER_TEXT51", 'Bestätigen');
+define ("GER_TEXT51", 'Best&auml;tigen');
 
 define ("GER_TEXT52", 'Kein Allianz-Name angegeben');
 
@@ -369,7 +369,7 @@ define ("ENG_TEXT85", 'holiday');
 
 //Italiano
 
-define ("ITA_TEXT0", 'Sei gi&agrave; membro di un\'allenaza');
+define ("ITA_TEXT0", 'Sei gi&agrave; membro di un\'alleanza');
 
 define ("ITA_TEXT1", 'Non sei un membro dell\'alleanza');
 
@@ -463,7 +463,7 @@ define ("ITA_TEXT45", 'Amministratore');
 
 define ("ITA_TEXT46", 'Presidente');
 
-define ("ITA_TEXT47", 'Il Presidente non pu&ograve lasciare l\'allenaza');
+define ("ITA_TEXT47", 'Il Presidente non pu&ograve; lasciare l\'alleanza');
 
 define ("ITA_TEXT48", 'ha <b>lasciato</b> l\'Alleanza');
 
@@ -473,11 +473,11 @@ define ("ITA_TEXT50", '<< Indietro');
 
 define ("ITA_TEXT51", 'Conferma');
 
-define ("ITA_TEXT52", 'Non esistono alleanza col nome indicato');
+define ("ITA_TEXT52", 'Non esistono alleanze col nome indicato');
 
-define ("ITA_TEXT53", 'Non esistono alleanza con la tag indicata');
+define ("ITA_TEXT53", 'Non esistono alleanze con la tag indicata');
 
-define ("ITA_TEXT54", 'Esiste gi&agrave un\'alleanza col nome/tag scelto');
+define ("ITA_TEXT54", 'Esiste gi&agrave; un\'alleanza col nome/tag scelto');
 
 define ("ITA_TEXT55", 'ha fondato l#&146;alleanza');
 
