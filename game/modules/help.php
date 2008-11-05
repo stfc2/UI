@@ -3,7 +3,7 @@
 $game->init_player();
 
 $game->out('
-	<span class="caption">Aiuto</span>
+	<span class="caption">'.constant($game->sprache("TEXT0")).'</span>
 	<br><br>
 	<table border=0 cellpadding=2 cellspacing=2 width="600" class="style_outer" align="center">
 	<tr>
@@ -11,84 +11,84 @@ $game->out('
 		<table class="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="5">
 		<tr>
 			<td>
-			<span class="sub_caption">File di aiuto disponibili: *</span>
+			<span class="sub_caption">'.constant($game->sprache("TEXT100")).'</span>
 			</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="JavaScript:void(window.open(\'help/faq.htm\',\'STFC\',\'toolbar=no,width=750,height=600,resizable=no,scrollbars=yes\'));"><span class="sub_caption2">FAQ</span></a>
+			<a href="JavaScript:void(window.open(\'help/faq.htm\',\'STFC\',\'toolbar=no,width=750,height=600,resizable=no,scrollbars=yes\'));"><span class="sub_caption2">'.constant($game->sprache("TEXT101")).'</span></a>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="JavaScript:void(window.open(\'help/building_1.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Costruzioni</a>
+			<a href="JavaScript:void(window.open(\'help/building_1.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">'.constant($game->sprache("TEXT102")).'</a>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="JavaScript:void(window.open(\'help/research_catresearch.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Centro Ricerche : Divisione componenti navi</a>
+			<a href="JavaScript:void(window.open(\'help/research_catresearch.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">'.constant($game->sprache("TEXT103")).'</a>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="JavaScript:void(window.open(\'help/research_localresearch.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Centro Ricerche : Divisione ricerche planetarie</a>
+			<a href="JavaScript:void(window.open(\'help/research_localresearch.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">'.constant($game->sprache("TEXT104")).'</a>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="JavaScript:void(window.open(\'help/shipyard_1.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Cantiere Navale</a>
+			<a href="JavaScript:void(window.open(\'help/shipyard_1.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">'.constant($game->sprache("TEXT105")).'</a>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="JavaScript:void(window.open(\'help/shipyard_2.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));"><s>Cantiere Navale : Equipaggio navi</s></a>
+			<a href="JavaScript:void(window.open(\'help/shipyard_2.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">'.constant($game->sprache("TEXT106")).'</a>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="JavaScript:void(window.open(\'help/shipyard_3.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));"><s>Cantiere Navale : Stato costruzione</s></a>
+			<a href="JavaScript:void(window.open(\'help/shipyard_3.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">'.constant($game->sprache("TEXT107")).'</a>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="JavaScript:void(window.open(\'help/academy_1.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Accademia : Stato accademia</a>
+			<a href="JavaScript:void(window.open(\'help/academy_1.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">'.constant($game->sprache("TEXT108")).'</a>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="JavaScript:void(window.open(\'help/academy_2.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Accademia : Lista addestramento</a>
+			<a href="JavaScript:void(window.open(\'help/academy_2.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">'.constant($game->sprache("TEXT109")).'</a>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="JavaScript:void(window.open(\'help/trade_viewstatus.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));"><s>Centro commerciale : Stato consegne</s></a>
+			<a href="JavaScript:void(window.open(\'help/trade_viewstatus.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">'.constant($game->sprache("TEXT110")).'</a>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="JavaScript:void(window.open(\'help/trade_buy_truppen.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));"><s>Centro commerciale : Acquisto truppe</s></a>
+			<a href="JavaScript:void(window.open(\'help/trade_buy_truppen.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">'.constant($game->sprache("TEXT111")).'</a>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="JavaScript:void(window.open(\'help/trade_sold_truppen.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));"><s>Centro commerciale : Vendita truppe</s></a>
+			<a href="JavaScript:void(window.open(\'help/trade_sold_truppen.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">'.constant($game->sprache("TEXT112")).'</a>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="JavaScript:void(window.open(\'help/trade_ress.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));"><s>Centro commerciale : Commercio risorse</s></a>
+			<a href="JavaScript:void(window.open(\'help/trade_ress.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">'.constant($game->sprache("TEXT113")).'</a>
 		</td>
 		</tr>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="JavaScript:void(window.open(\'help/planetlist.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Pianeti</a>
+			<a href="JavaScript:void(window.open(\'help/planetlist.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">'.constant($game->sprache("TEXT120")).'</a>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="JavaScript:void(window.open(\'help/ships.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">Navi</a>
+			<a href="JavaScript:void(window.open(\'help/ships.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));">'.constant($game->sprache("TEXT121")).'</a>
 		</td>
 		</tr>
 		</table>
@@ -97,32 +97,32 @@ $game->out('
 		<table class="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="5">
 		<tr>
 			<td>
-			<span class="sub_caption">Guida in game:</span>
+			<span class="sub_caption">'.constant($game->sprache("TEXT200")).'</span>
 			</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="'.parse_link('a=database&view=guide').'"><span class="sub_caption2">INDICE</span></a>
+			<a href="'.parse_link('a=database&view=guide').'"><span class="sub_caption2">'.constant($game->sprache("TEXT201")).'</span></a>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="'.parse_link('a=database&view=guide&page=1').'">Il gioco</a>
+			<a href="'.parse_link('a=database&view=guide&page=1').'">'.constant($game->sprache("TEXT202")).'</a>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="'.parse_link('a=database&view=guide&page=2').'">I pianeti</a>
+			<a href="'.parse_link('a=database&view=guide&page=2').'">'.constant($game->sprache("TEXT203")).'</a>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="'.parse_link('a=database&view=guide&page=3').'">Le strutture</a>
+			<a href="'.parse_link('a=database&view=guide&page=3').'">'.constant($game->sprache("TEXT204")).'</a>
 		</td>
 		</tr>
 		<tr>
 		<td>
-			<a href="'.parse_link('a=database&view=guide&page=4').'">Le ricerche planetarie</a>
+			<a href="'.parse_link('a=database&view=guide&page=4').'">'.constant($game->sprache("TEXT205")).'</a>
 		</td>
 		</tr>
 		<tr>
@@ -135,12 +135,12 @@ $game->out('
 	</tr>
 	<tr>
 		<td align="center" colspan="2">
-		<a href="'.parse_link('a=messages&a2=newpost&receiver=STFC-Support&subject=Richiesta%20di%20aiuto').'"><span style="color: #FFFF00; font-weight: bold; font-size: 11pt;"><u>Se ti senti perduto, segui questo link per scrivere al Supporto!</u></a></span>
+		<a href="'.parse_link('a=messages&a2=newpost&receiver=STFC-Support&subject='.constant($game->sprache("TEXT1"))).'"><span style="color: #FFFF00; font-weight: bold; font-size: 11pt;"><u>'.constant($game->sprache("TEXT2")).'</u></a></span>
 		</td>
 	</tr>
 	<tr>
 	<td colspan="2">
-	<br><br>* I file di aiuto contrassegnati dal nome <s>barrato</s> non sono al momento disponibili.
+	<br><br>'.constant($game->sprache("TEXT3")).'
 	</td>
 	</tr>
 	</table>
