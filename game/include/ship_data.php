@@ -4409,7 +4409,7 @@ $SHIP_TORSO = array(
 
 			13 => 446,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 0,   // Value1 (Leichte Waffen)
+			14 => 185,   // Value1 (Leichte Waffen)
 
 			15 => 135,   // Value2 (Schwere Waffen)
 
@@ -4429,7 +4429,7 @@ $SHIP_TORSO = array(
 
 			23 => 3,   // Value10 (Warp)
 
-			24 => 14,   // Value11 (Sensoren)
+			24 => 20,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -4570,9 +4570,9 @@ $SHIP_TORSO = array(
 
 			22 => 1,   // Value9 (Erfahrung)
 
-			23 => 3,   // Value10 (Warp)
+			23 => 1,   // Value10 (Warp)
 
-			24 => 8,   // Value11 (Sensoren)
+			24 => 22,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
