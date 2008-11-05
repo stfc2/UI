@@ -330,9 +330,9 @@ define ("GER_TEXT150", 'Mineral das man bekommt:');
 
 define ("GER_TEXT151", 'Metall das man eingetauscht hat:');
 
-define ("GER_TEXT152", 'Zurück');
+define ("GER_TEXT152", 'Zur&uuml;ck');
 
-define ("GER_TEXT153", 'Die Menge an Ressourcen die du einkaufen m&ouml;chtest steht nicht mehr zur Verfügung');
+define ("GER_TEXT153", 'Die Menge an Ressourcen die du einkaufen m&ouml;chtest steht nicht mehr zur Verf&uuml;gung');
 
 define ("GER_TEXT154", 'Metall das man bekommt:');
 
@@ -342,7 +342,7 @@ define ("GER_TEXT156", 'Latinum das man bekommt:');
 
 define ("GER_TEXT157", 'Latinum das man eingetauscht hat:');
 
-define ("GER_TEXT158", '<br><b>Entweder der Bot kann deiner Zahlungsmethode nicht nachkommen weil seine Rohstoffe dafür nicht ausrreichen oder du hast nicht mehr die ben&ouml;tigten Ressourcen auf deinem Planeten</b><br>');
+define ("GER_TEXT158", '<br><b>Entweder der Bot kann deiner Zahlungsmethode nicht nachkommen weil seine Rohstoffe daf&uuml;r nicht ausrreichen oder du hast nicht mehr die ben&ouml;tigten Ressourcen auf deinem Planeten</b><br>');
 
 define ("GER_TEXT159", 'Umrechnung:');
 
@@ -362,7 +362,7 @@ define ("GER_TEXT166", 'In Metall');
 
 define ("GER_TEXT167", 'Latinum');
 
-define ("GER_TEXT168", '* In Klammer sind die Rohstoffe die der Ferengie NPC H&auml;ndler zurverfügung hat. Sollten sie niedriger sein als das was du bei einer bestimmten Zahlungsart bekommen solltest, wird der Handel nicht m&ouml;glich sein.');
+define ("GER_TEXT168", '* In Klammer sind die Rohstoffe die der Ferengie NPC H&auml;ndler zurverf&uuml;gung hat. Sollten sie niedriger sein als das was du bei einer bestimmten Zahlungsart bekommen solltest, wird der Handel nicht m&ouml;glich sein.');
 
 define ("GER_TEXT169", 'Art der Bezahlung:');
 
@@ -380,7 +380,7 @@ define ("GER_TEXT175", 'Ferengi Transport  (12h) - 35% Steuern');
 
 define ("GER_TEXT176", 'Galaxy Post (36h) - 15% Steuern');
 
-define ("GER_TEXT177", '* Die Ferengie Handelsgilde übernimmt keine Haftung für verloren Gegangene Ladung. Bei der Post übernehmen wir nicht mal die Tapianische Sicherheit.');
+define ("GER_TEXT177", '* Die Ferengie Handelsgilde &uuml;bernimmt keine Haftung f&uuml;r verloren Gegangene Ladung. Bei der Post &uuml;bernehmen wir nicht mal die Tapianische Sicherheit.');
 
 define ("GER_TEXT178", '<br><br>Hm da gibts ein Fehler - Bug oder Cheat das ist hier die Frage<br><br>');
 
@@ -402,7 +402,7 @@ define ("GER_TEXT186", 'S&ouml;ldnermarkt - Truppen Verkauf:');
 
 define ("GER_TEXT187", 'Verkaufte Truppen:');
 
-define ("GER_TEXT188", '<br><b>Entweder der Bot kann deiner Zahlungsmethode nicht nachkommen weil seine Rohstoffe dafür nicht ausrreichen oder du hast nicht mehr die Verfügbaren Truppen auf deinem Planeten</b><br>');
+define ("GER_TEXT188", '<br><b>Entweder der Bot kann deiner Zahlungsmethode nicht nachkommen weil seine Rohstoffe daf&uuml;r nicht ausrreichen oder du hast nicht mehr die Verf&uuml;gbaren Truppen auf deinem Planeten</b><br>');
 
 define ("GER_TEXT189", 'Rohstoff egal');
 
@@ -416,7 +416,7 @@ define ("GER_TEXT193", 'Alles als Minralien');
 
 define ("GER_TEXT194", 'Alles als Latinum');
 
-define ("GER_TEXT195", 'Jedes für sich');
+define ("GER_TEXT195", 'Jedes f&uuml;r sich');
 
 define ("GER_TEXT196", 'Art');
 
@@ -424,15 +424,15 @@ define ("GER_TEXT197", 'Einheiten');
 
 define ("GER_TEXT198", 'Verkaufen');
 
-define ("GER_TEXT199", 'Söldnermarkt - Truppen Kauf:');
+define ("GER_TEXT199", 'S&ouml;ldnermarkt - Truppen Kauf:');
 
-define ("GER_TEXT200", 'Die Söldner sind unterwegs zu dir');
+define ("GER_TEXT200", 'Die S&ouml;ldner sind unterwegs zu dir');
 
 define ("GER_TEXT201", 'Ressourcenkosten Metall:');
 
-define ("GER_TEXT202", 'Deine Rohstoffe reichen nicht aus um die gewünschten Truppen zu kaufen');
+define ("GER_TEXT202", 'Deine Rohstoffe reichen nicht aus um die gew&uuml;nschten Truppen zu kaufen');
 
-define ("GER_TEXT203", 'Die Menge an Truppen die du einkaufen möchtest steht nicht mehr zur Verfügung');
+define ("GER_TEXT203", 'Die Menge an Truppen die du einkaufen m&ouml;chtest steht nicht mehr zur Verf&uuml;gung');
 
 define ("GER_TEXT204", 'Ressourcenkosten Mineral:');
 
@@ -446,7 +446,7 @@ define ("GER_TEXT208", 'Steuerkosten-Latinum:');
 
 define ("GER_TEXT209", '<br><b>Leider reichen deine Rohstoffe nicht aus bei deiner gewählten Zahlungsart</b><br>');
 
-define ("GER_TEXT210", '<center>Deine Eingaben sind größer als das was es zu kaufen gibt</center><br>');
+define ("GER_TEXT210", '<center>Deine Eingaben sind gr&ouml;&beta;er als das was es zu kaufen gibt</center><br>');
 
 define ("GER_TEXT211", 'Zum Verkauf');
 
@@ -462,7 +462,7 @@ define ("GER_TEXT216", 'Laufende Gebote:');
 
 define ("GER_TEXT217", 'Laufende Auktionen:');
 
-define ("GER_TEXT218", 'Für Auktionen gesperrt:');
+define ("GER_TEXT218", 'F&uuml;r Auktionen gesperrt:');
 
 define ("GER_TEXT219", 'seit');
 
@@ -486,7 +486,7 @@ define ("GER_TEXT228", 'Vor');
 
 define ("GER_TEXT229", 'Minuten <br>Du wurdest bei');
 
-define ("GER_TEXT230", 'überboten');
+define ("GER_TEXT230", '&uuml;berboten');
 
 define ("GER_TEXT231", 'Handelsnotepad:');
 
@@ -512,7 +512,7 @@ define ("GER_TEXT241", 'Bezahlen');
 
 define ("GER_TEXT242", 'Auktionsschulden:');
 
-define ("GER_TEXT243", 'Bezahlung für Auktion');
+define ("GER_TEXT243", 'Bezahlung f&uuml;r Auktion');
 
 define ("GER_TEXT244", 'Auf dem Planeten');
 
@@ -522,13 +522,13 @@ define ("GER_TEXT246", 'Einzahlen');
 
 define ("GER_TEXT247", 'Schiffabhohl Stelle:');
 
-define ("GER_TEXT248", 'Das Schiff ist unterwegs zu dir, es wird dringends davon abgeraten das Schiff zurück zum Startplanet zu schicken.');
+define ("GER_TEXT248", 'Das Schiff ist unterwegs zu dir, es wird dringends davon abgeraten das Schiff zur&uuml;ck zum Startplanet zu schicken.');
 
 define ("GER_TEXT249", '<br><b>Keine Schiffe ausgewählt</b><br>');
 
 define ("GER_TEXT250", '<center>Keine Schiffe zum abhohlen vorhanden</center>');
 
-define ("GER_TEXT251", 'Ziel Planet für das Schiff/die Schiffe:');
+define ("GER_TEXT251", 'Ziel Planet f&uuml;r das Schiff/die Schiffe:');
 
 define ("GER_TEXT252", 'Schiff schicken');
 
@@ -538,7 +538,7 @@ define ("GER_TEXT254", 'Die Truppen und Rohstoffe sind unterwegs zu dir');
 
 define ("GER_TEXT255", '<center>Keine Konten vorhanden</center>');
 
-define ("GER_TEXT256", 'Ziel Planet für die Ware:');
+define ("GER_TEXT256", 'Ziel Planet f&uuml;r die Ware:');
 
 define ("GER_TEXT257", 'Auszahlen');
 
@@ -600,7 +600,7 @@ define ("ENG_TEXT9", 'Trust account');
 
 define ("ENG_TEXT10", 'Pay debts');
 
-define ("ENG_TEXT11", 'Schiffe abhohlen');
+define ("ENG_TEXT11", 'Ships withdrawal');
 
 define ("ENG_TEXT12", 'Skills:');
 
@@ -1078,13 +1078,13 @@ define ("ENG_TEXT245", 'Available:');
 
 define ("ENG_TEXT246", 'Deposit');
 
-define ("ENG_TEXT247", 'Ship ??abhohl?? agency :');
+define ("ENG_TEXT247", 'Ships withdrawal agency :');
 
 define ("ENG_TEXT248", 'The ship is en route to you, it is discouraged dringends the ship back to the departure planet.');
 
 define ("ENG_TEXT249", '<br><b>No ships selected</b><br>');
 
-define ("ENG_TEXT250", '<center>No ship to ??abhohlen?? available</center>');
+define ("ENG_TEXT250", '<center>No ship to withdraw available</center>');
 
 define ("ENG_TEXT251", 'Target planet for the ship/ships:');
 
