@@ -468,7 +468,7 @@ function view()
 	LEFT JOIN user u2 on u2.user_id=m.receiver
 	WHERE m.id = "'.(int)$_REQUEST['id'].'"');
 	output('<center>
-	             <table width="90%" border="0" cellpadding="0" cellspacing="0" background="'.FIXED_GFX_PATH.'skin1/template_bg3.jpg" class="border_grey">
+	             <table width="90%" border="0" cellpadding="0" cellspacing="0" class="border_grey">
 					  <tr>
 					   <td width="100%">');
 
