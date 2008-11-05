@@ -97,21 +97,21 @@ $ship_components_locale=array(
         2=>array(
              // Component Polaronstrahler
              0=>array(
-                    'name'=>'Emettitore Polaronico',
+                    'name'=>'Emettitore Polaronico Liv.1',
                     'description'=>'Tecnologia di base per le armi del Dominio.',
             ), // Endof Component Polaronstrahler
 
              // Component Polaronstrahl
              1=>array(
-                    'name'=>'Concentratore Polaronico',
-                    'description'=>'Perfezionamento della tecnologia polaronica che ne aumenta notevolmente la capacit&agrave; distruttiva. Questa tecnologia &egrave; rappresenta il meglio impiegabile su navi civili.',
+                    'name'=>'Emettitore Polaronico Liv.2',
+                    'description'=>'Perfezionamento della tecnologia polaronica che ne aumenta notevolmente la capacit&agrave; distruttiva. Questa tecnologia rappresenta il meglio impiegabile su navi civili.',
             ), // Endof Component Polaronstrahl
 
-             // Component Impulspoleronkannone
+             // Component Polaronstrahl
              2=>array(
-                    'name'=>'Impulsi Polaronici Liv. 1',
-                    'description'=>'La tecnologia degli Impulsi Polaronici permette la creazione di un cannone basato sull&#146;impiego delle onde polaroniche.',
-            ), // Endof Component Impulspoleronkannone
+                    'name'=>'Emettitore Polaronico Liv.3',
+                    'description'=>'Ultimo step evolutivo della tecnologia polaronica di base.',
+            ), // Endof Component Polaronstrahl
 
              // Component Massebeschleuniger
              3=>array(
@@ -119,8 +119,14 @@ $ship_components_locale=array(
                     'description'=>'Tecnologia basata sull&#146;accelerazione delle particelle della materia, impiegabile tanto contro navi ostili che come arma planetaria economica.',
             ), // Endof Component Massebeschleuniger
 
-             // Component Impulspolarondisruptor
+             // Component Impulspoleronkannone
              4=>array(
+                    'name'=>'Impulsi Polaronici Liv. 1',
+                    'description'=>'La tecnologia degli Impulsi Polaronici permette la creazione di un cannone basato sull&#146;impiego delle onde polaroniche.',
+            ), // Endof Component Impulspoleronkannone
+
+             // Component Impulspolarondisruptor
+             5=>array(
                     'name'=>'Impulsi Polaronici Liv. 2',
                     'description'=>'Il top della tecnologia polaronica del Dominio permette la realizzazione di un disgregatore impiegabile sulle maggiori navi della flotta. La sua potenza &egrave; incomparabile rispetto ai sistemi d&#146;arma precedenti.',
             ), // Endof Component Impulspolarondisruptor
@@ -131,31 +137,43 @@ $ship_components_locale=array(
 
         // Category Torpedos
         3=>array(
-             // Component Polarontorpedos
-             0=>array(
-                    'name'=>'Siluri Polaronici',
-                    'description'=>'I siluri polaronici sono l&#146;armamento pesante di base per le navi del Dominio in uso anche su navi civili come sistemi di autodifesa.',
-            ), // Endof Component Polarontorpedos
-
              // Component Photonentorpedos
-             1=>array(
+             0=>array(
                     'name'=>'Siluri Fotonici',
                     'description'=>'I siluri fotonici sono un tipo di armamento basato su una tecnologia standard delle razze del quadrante Alfa.',
             ), // Endof Component Photonentorpedos
 
              // Component Quantentorpedos
-             2=>array(
+             1=>array(
                     'name'=>'Siluri Quantici',
-                    'description'=>'I Siluri Quantici sono una tecnologia peculiare del Dominio, di enorme potenza ed efficacia.',
+                    'description'=>'I Siluri Quantici sono una tecnologia proveniente dalle razze del Quadrante Alfa, di enorme potenza ed efficacia.',
             ), // Endof Component Quantentorpedos
 
-             // Component Breentorpedos
+             // Component Sovramodulazione Liv. 1
+             2=>array(
+                    'name'=>'Sovramodulazione Liv. 1',
+                    'description'=>'La Sovramodulazione degli Emettitori Polaronici ne migliora la resa al costo di un modesto consumo di energia e di necessit&agrave; di manutenzione.',
+            ), // Endof Component Sovramodulazione Liv.1
+
+             // Component Sovramodulazione Liv. 2
              3=>array(
+                    'name'=>'Sovramodulazione Liv. 2',
+                    'description'=>'La Sovramodulazione degli Emettitori Polaronici ne migliora la resa al costo di un modesto consumo di energia e di necessit&agrave; di manutenzione.',
+            ), // Endof Component Sovramodulazione Liv.2
+
+             // Component Sovramodulazione Liv. 3
+             4=>array(
+                    'name'=>'Sovramodulazione Liv. 3',
+                    'description'=>'La Sovramodulazione degli Emettitori Polaronici ne migliora la resa al costo di un modesto consumo di energia e di necessit&agrave; di manutenzione.',
+            ), // Endof Component Sovramodulazione Liv.3
+
+             // Component Breentorpedos
+             5=>array(
                     'name'=>'Siluri Breen',
                     'description'=>'I siluri Breen sono armi molto potenti, ottenuti grazie ad uno scambio di tecnologia con gli scenziati Breen.',
             ), // Endof Component Breentorpedos
 
-      'name'=>'Siluri',
+      'name'=>'Servosistemi d&#146;Arma',
       ), // Endof Category Torpedos
 
 
@@ -241,40 +259,58 @@ $ship_components_locale=array(
         6=>array(
              // Component Kampfzentrum I
              0=>array(
-                    'name'=>'Centro Addestramento I',
-                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+                    'name'=>'Addestramento Civili',
+                    'description'=>'Addestramento per equipaggi destinati alle navi civili.',
             ), // Endof Component Kampfzentrum I
 
              // Component Kampfzentrum II
              1=>array(
-                    'name'=>'Centro Addestramento II',
-                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+                    'name'=>'Addestramento Base I',
+                    'description'=>'Addestramento base per equipaggi destinati alle navi leggere della flotta.',
             ), // Endof Component Kampfzentrum II
 
              // Component Kampfzentrum III
              2=>array(
-                    'name'=>'Centro Addestramento III',
-                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+                    'name'=>'Addestramento Base II',
+                    'description'=>'Addestramento base per equipaggi destinati alle navi intermedie della flotta.',
             ), // Endof Component Kampfzentrum III
 
              // Component Kampfzentrum IV
              3=>array(
-                    'name'=>'Centro Addestramento IV',
-                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+                    'name'=>'Addestramento Base III',
+                    'description'=>'Addestramento base per equipaggi destinati alle navi pesanti della flotta.',
             ), // Endof Component Kampfzentrum IV
 
              // Component Kampfzentrum V
              4=>array(
-                    'name'=>'Centro Addestramento V',
-                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+                    'name'=>'Addestramento Intermedio I',
+                    'description'=>'Addestramento intermedio per equipaggi destinati alle navi leggere della flotta.',
             ), // Endof Component Kampfzentrum V
 
              // Component Kampfzentrum VI
              5=>array(
-                    'name'=>'Centro Addestramento VI',
-                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+                    'name'=>'Addestramento Intermedio II',
+                    'description'=>'Addestramento intermedio per equipaggi destinati alle navi pesanti della flotta.',
             ), // Endof Component Kampfzentrum VI
 
+			// Component Kampfzentrum VI
+             6=>array(
+                    'name'=>'Addestramento Avanzato I',
+                    'description'=>'Addestramento avanzato per equipaggi destinati alle navi leggere della flotta.',
+            ), // Endof Component Kampfzentrum VI
+			
+			// Component Kampfzentrum VI
+             7=>array(
+                    'name'=>'Addestramento Avanzato II',
+                    'description'=>'Addestramento avanzato per equipaggi destinati alle navi pesanti della flotta.',
+            ), // Endof Component Kampfzentrum VI
+		
+			// Component Kampfzentrum VI
+             8=>array(
+                    'name'=>'Addestramento Elite',
+                    'description'=>'Livello di addestramento massimo disponibile per ottenere i migliori Jem&#146;Hadar destinati a governare le navi del Dominion.',
+            ), // Endof Component Kampfzentrum VI
+			
       'name'=>'Zone Addestramento',
       ), // Endof Category Trainingseinheiten
 
