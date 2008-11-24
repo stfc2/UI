@@ -502,13 +502,12 @@ else
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
   <title><?php echo $title_html; ?></title>
   <meta http-equiv="Content-Language" content="it">
+  <meta name="description" content="<?php echo $meta_descr; ?>">
+  <meta name="keywords" content="star, trek, game, gratis, multiplayer, onlinegame, browser, klingon, romulan, federation">
 
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="pragma" content="no-cache">
-
   <meta name="title" content="Star Trek: Frontline Combat">
-  <meta name="description" content="<?php echo $meta_descr; ?>">
-  <meta name="keywords" content="star, trek, game, gratis, multiplayer, onlinegame, browser, klingon, romulan, federation">
   <meta name="author" content="Florian Brede & Philipp Schmidt">
   <meta name="copyright" content="Paramount Pic., Brede, Schmidt">
   <meta name="ROBOTS" content="INDEX,NOFOLLOW">
