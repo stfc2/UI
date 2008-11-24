@@ -459,15 +459,8 @@ $ship_components_locale=array(
 			'dev_info'=>'',
 		), // Endof Component Stellare Astronomie
 
-		// Component Zielerfassungssysteme
-		6=>array(
-			'name'=>'Sistema acquisizione bersaglio',
-			'description'=>'Con un sistema di acquisizione del bersaglio accoppiato a sensori rinforzati non solo il grado di risoluzione la profondit&agrave; di scansione dei sensori vengono migliorati ma anche il consumo degli armamenti &egrave; ridotto al minimo.',
-			'dev_info'=>'',
-		), // Endof Component Zielerfassungssysteme
-
 		'name'=>'Sezione scientifica',
-		'num'=>'7',
+		'num'=>'6',
 	), // Endof Category Wissenschaftssektion
 
 
@@ -521,9 +514,15 @@ $ship_components_locale=array(
 			'description'=>'Il lanciatore rapido, &egrave; un lanciasiluri migliorato che permette di lanciare costantemente senza la lunga sequenza di caricamento.',
 			'dev_info'=>'',
 		), // Endof Component Rapid-Launcher
+		
+		// Component Cloaking Device
+        7=>array(
+            'name'=>'Sistema di Occultamento',
+            'description'=>'Questo sistema &egrave; frutto di uno scambio di tecnologie con l&#146;Impero Stellare Romulano effettuato ai tempi del primo conflitto contro il Dominio.',
+        ), // Endof Component Cloaking Device
 
 		'name'=>'Sperimentale',
-		'num'=>'7',
+		'num'=>'8',
 	), // Endof Category Experimentelles
 
 

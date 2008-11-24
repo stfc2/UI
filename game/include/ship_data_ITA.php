@@ -55,19 +55,9 @@ $SHIP_TORSO_LOCALE = array(
 
 	    ),
 
-        // Miranda
+        // Sabre
 
 	    3 => array(
-
-			0 => 'Miranda (refit)',  // Name
-
-			1 => 'Questa &egrave; la prima fregata disponibile. Verr&agrave; sostituita presto, ma ben armata pu&ograve; essere presa in considerazione da qualsiasi avversario. Il basso punteggio che serve per prenderla &egrave; certamente un fattore favorevole, ma senza un attrezzatura adeguata &egrave; meglio pensare rapidamente ad un&#146;alternativa.',
-
-	    ),
-
-    	// Sabre
-
-	    4 => array(
 
 			0 => 'Sabre',  // Name
 
@@ -75,23 +65,33 @@ $SHIP_TORSO_LOCALE = array(
 
 	    ),
 
-       	// Defiant
-
-	    5 => array(
-
-			0 => 'Defiant',  // Name
-
-			1 => 'Questo &egrave; l&#146;incrociatore leggero della Flotta Stellare. Grazie ai siluri fotonici questa nave possiede una capacit&agrave; di fuoco elevata. Ma la scarsa difesa e gli scudi ne limitano le sue applicazioni. Come nave di attacco leggera, con capacit&agrave; di cammuffamento installata, &egrave; la migliore scelta.',
-
-	    ),
-
     	// Steamrunner
 
-	    6 => array(
+	    4 => array(
 
 			0 => 'Steamrunner',  // Name
 
 			1 => 'La classe Steamrunner ha in origine una rapida velocit&agrave; di costruzione, un&#146;elevata manegevolezza anche se ha un armamento moderato. Ciononostante, questa nave rimpiazzer&agrave; rapidamente la vecchia elite.',
+
+	    ),
+
+       	// Intrepid
+
+	    5 => array(
+
+			0 => 'Intrepid',  // Name
+
+			1 => 'Incrociatore Leggero di ultima generazione, incorpora tecnologie uniche tra quelle presenti su tutte le navi federali. Nato per viaggiare ad altissime velocit&agrave; di crociera, vanta una dotazione d&#146;armi mai vista su navi esplorative di questa stazza.',
+
+	    ),
+
+    	// Defiant
+
+	    6 => array(
+
+			0 => 'Defiant',  // Name
+
+			1 => 'Questo &egrave; l&#146;incrociatore leggero della Flotta Stellare. Grazie ai siluri fotonici questa nave possiede una capacit&agrave; di fuoco elevata. Ma la scarsa difesa e gli scudi ne limitano le sue applicazioni. Come nave di attacco leggera, con capacit&agrave; di cammuffamento installata, &egrave; la migliore scelta.',
 
 	    ),
 

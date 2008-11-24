@@ -937,20 +937,19 @@ class game {
 <html>
 <!--'.$banner.' //-->
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
   <title>'.GetTabbyAction($_GET['a']).' - Star Trek: Frontline Combat 2</title>
+  <meta name="Content-Language" content="'.$this->player['language'].'">
+  <meta name="description" content="ST: Frontline Combat is a free browser based multiplayer game, take the role of different races and peoples of the universe and rewrite history.">
+  <meta name="keywords" content="star trek, startrek, galaxy, conquest, universe, game, gratis, kostenlos, spiel, multiplayer, strategy, strategie, onlinegame, bbg, free, browser, based, galaxie, universum, klingon, klingonen, federation, f&ouml;deration">
 
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="pragma" content="no-cache">
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-
-  <meta name="description" content="ST: Frontline Combat is a free browser based multiplayer game, take the role of different races and peoples of the universe and rewrite history.">
-  <meta name="keywords" content="star trek, startrek, galaxy, conquest, universe, game, gratis, kostenlos, spiel, multiplayer, strategy, strategie, onlinegame, bbg, free, browser, based, galaxie, universum, klingon, klingonen, federation, f&ouml;deration">
   <meta name="author" content="Florian Brede & Philipp Schmidt">
   <meta name="publisher" content="Florian Brede & Philipp Schmidt">
   <meta name="copyright" content="Paramount Pic., Brede, Schmidt">
   <meta name="page-topic" content="Star Trek Online Game">
   <meta name="date" content="2003-06-22">
-  <meta name="content-language" content="'.$this->player['language'].'">
   <meta name="page-type" content="game">
   <meta name="robots" content="index,nofollow">
   <meta name="revisit-after" content="10">
@@ -2373,10 +2372,10 @@ function GlobalTorsoReq($ship)
 		$dat[0]=50;
 		$dat[1]=100;
 		$dat[2]=200;
-		$dat[3]=300;
-		$dat[4]=200;
-		$dat[5]=1500;
-		$dat[6]=1000;
+		$dat[3]=200;
+		$dat[4]=400;
+		$dat[5]=1000;
+		$dat[6]=1500;
 		$dat[7]=2500;
 		$dat[8]=3500;
 		$dat[9]=6000;
@@ -2564,7 +2563,7 @@ function LocalTorsoReq($ship)
 		$dat[1]=100;
 		$dat[2]=200;
 		$dat[3]=200;
-		$dat[4]=200;
+		$dat[4]=300;
 		$dat[5]=400;
 		$dat[6]=400;
 		$dat[7]=420;

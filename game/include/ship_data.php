@@ -146,7 +146,7 @@ $SHIP_TORSO = array(
 
 			22 => 5,   // Value9 (Erfahrung)
 
-			23 => 3.8,   // Value10 (Warp)
+			23 => 3.4,   // Value10 (Warp)
 
 			24 => 5,   // Value11 (Sensoren)
 
@@ -218,7 +218,7 @@ $SHIP_TORSO = array(
 
 			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 4.6,   // Value10 (Warp)
+			23 => 5.4,   // Value10 (Warp)
 
 			24 => 0,   // Value11 (Sensoren)
 
@@ -238,79 +238,9 @@ $SHIP_TORSO = array(
 
 	    ),
 
-        // Miranda
+        // Sabre
 
 	    3 => array(
-
-			0 => 23020,  // Metal
-
-			1 => 19510,  // Minerals
-
-			2 => 4608,  // Latinum
-
-			3 => 30,  // Min. Unit 1(L. Infanterie)
-
-			4 => 0,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 0,  // Min. Unit 3 (Hazard Team)
-
-			6 => 0,  // Min. Unit 4 (Commander)
-
-			7 => 50,  // Max Unit 1 (L. Infanterie)
-
-			8 => 10,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 4,  // Max Unit 3 (Hazard Team)
-
-			10 => 0,  // Max Unit 4 (Commander)
-
-			11 => 7,  // Unit 5 (Offizier)
-
-			12 => 5,  // Unit 6 (Medizinisches Personal)
-
-			13 => 140,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 20,   // Value1 (Leichte Waffen)
-
-			15 => 65,   // Value2 (Schwere Waffen)
-
-			16 => 0,   // Value3 (Planetare Waffen)
-
-			17 => 220,   // Value4 (Schildstärke)
-
-			18 => 300,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 3,   // Value6 (Reaktionsgeschw.)
-
-			20 => 9,   // Value7 (Bereitschaft)
-
-			21 => 15,   // Value8 (Wendigkeit)
-
-			22 => 9,   // Value9 (Erfahrung)
-
-			23 => 3.8,   // Value10 (Warp)
-
-			24 => 4,   // Value11 (Sensoren)
-
-			25 => 0,   // Value12 (Tarnung)
-
-			26 => 12,   // Value13 (Energy Available)
-
-			27 => 6,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Miranda (refit)',  // Name
-
-			30 => 218,  // Benötige Arbeiter zum Bau
-
-			31 => 'Diese schon lange in der Flotte dienende Fregatte hat vielleicht ihre besten Tage hinter sich, jedoch entsprechend aufgerüstet stellt sie immer noch einen ernst zu nehmenden Gegner dar. Aufgrund ihres Alters ist sie zwar in der Anschaffung günstig, aber ohne Nachrüstung sollte man sich schnell nach einer Alternative umsehen.',
-
-	    ),
-
-    	// Sabre
-
-	    4 => array(
 
 			0 => 13320,  // Metal
 
@@ -326,15 +256,15 @@ $SHIP_TORSO = array(
 
 			6 => 0,  // Min. Unit 4 (Commander)
 
-			7 => 75,  // Max Unit 1 (L. Infanterie)
+			7 => 50,  // Max Unit 1 (L. Infanterie)
 
-			8 => 25,  // Max Unit 2 (Sturmtruppe)
+			8 => 10,  // Max Unit 2 (Sturmtruppe)
 
-			9 => 0,  // Max Unit 3 (Hazard Team)
+			9 => 4,  // Max Unit 3 (Hazard Team)
 
-			10 => 5,  // Max Unit 4 (Commander)
+			10 => 2,  // Max Unit 4 (Commander)
 
-			11 => 6,  // Unit 5 (Offizier)
+			11 => 5,  // Unit 5 (Offizier)
 
 			12 => 3,  // Unit 6 (Medizinisches Personal)
 
@@ -356,7 +286,7 @@ $SHIP_TORSO = array(
 
 			21 => 34,   // Value8 (Wendigkeit)
 
-			22 => 11,   // Value9 (Erfahrung)
+			22 => 10,   // Value9 (Erfahrung)
 
 			23 => 7,   // Value10 (Warp)
 
@@ -370,7 +300,7 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Sabre',  // Name
+			29 => 'Saber',  // Name
 
 			30 => 168,  // Benötige Arbeiter zum Bau
 
@@ -378,87 +308,15 @@ $SHIP_TORSO = array(
 
 	    ),
 
-       	// Defiant
-
-	    5 => array(
-
-			0 => 29830,  // Metal
-
-			1 => 26915,  // Minerals
-
-			2 => 5532,  // Latinum
-
-			3 => 25,  // Min. Unit 1(L. Infanterie)
-
-			4 => 10,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 0,  // Min. Unit 3 (Hazard Team)
-
-			6 => 0,  // Min. Unit 4 (Commander)
-
-			7 => 90,  // Max Unit 1 (L. Infanterie)
-
-			8 => 25,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 5,  // Max Unit 3 (Hazard Team)
-
-			10 => 5,  // Max Unit 4 (Commander)
-
-			11 => 6,  // Unit 5 (Offizier)
-
-			12 => 1,  // Unit 6 (Medizinisches Personal)
-
-			13 => 146,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 55,   // Value1 (Leichte Waffen)
-
-			15 => 20,   // Value2 (Schwere Waffen)
-
-			16 => 15,   // Value3 (Planetare Waffen)
-
-			17 => 480,   // Value4 (Schildstärke)
-
-			18 => 120,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 13,   // Value6 (Reaktionsgeschw.)
-
-			20 => 14,   // Value7 (Bereitschaft)
-
-			21 => 32,   // Value8 (Wendigkeit)
-
-			22 => 14,   // Value9 (Erfahrung)
-
-			23 => 6.5,   // Value10 (Warp)
-
-			24 => 11,   // Value11 (Sensoren)
-
-			25 => 10,   // Value12 (Tarnung)
-
-			26 => 17,   // Value13 (Energy Available)
-
-			27 => 15,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Defiant',  // Name
-
-			30 => 205,  // Benötige Arbeiter zum Bau
-
-			31 => 'Der kompakteste leichte Kreuzer der Sternenflotte. Ausgestattet mit Quantentorpedos besitzt sie eine für ihre Verhältnisse enorme Feuerkraft. Jedoch schränken Schildkapazität und Crewgröße den Einsatzradius ein. Als leichtes Angriffsschiff mit vorinstallierter Tarnvorrichtung ist sie die beste Wahl.',
-
-		    ),
-
-
-
     	// Steamrunner
 
-	    6 => array(
+	    4 => array(
 
-			0 => 33380,  // Metal
+			0 => 23842,  // Metal
 
-			1 => 19690,  // Minerals
+			1 => 14064,  // Minerals
 
-			2 => 10752,  // Latinum
+			2 => 7680,  // Latinum
 
 			3 => 20,  // Min. Unit 1(L. Infanterie)
 
@@ -476,19 +334,19 @@ $SHIP_TORSO = array(
 
 			10 => 6,  // Max Unit 4 (Commander)
 
-			11 => 16,  // Unit 5 (Offizier)
+			11 => 14,  // Unit 5 (Offizier)
 
 			12 => 0,  // Unit 6 (Medizinisches Personal)
 
 			13 => 119,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 90,   // Value1 (Leichte Waffen)
+			14 => 64,   // Value1 (Leichte Waffen)
 
-			15 => 160,   // Value2 (Schwere Waffen)
+			15 => 115,   // Value2 (Schwere Waffen)
 
-			16 => 25,   // Value3 (Planetare Waffen)
+			16 => 18,   // Value3 (Planetare Waffen)
 
-			17 => 500,   // Value4 (Schildstärke)
+			17 => 360,   // Value4 (Schildstärke)
 
 			18 => 15,   // Value5 (Hülle bzw. Hitpoins)
 
@@ -498,7 +356,7 @@ $SHIP_TORSO = array(
 
 			21 => 28,   // Value8 (Wendigkeit)
 
-			22 => 14,   // Value9 (Erfahrung)
+			22 => 10,   // Value9 (Erfahrung)
 
 			23 => 4.6,   // Value10 (Warp)
 
@@ -506,17 +364,159 @@ $SHIP_TORSO = array(
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 20,   // Value13 (Energy Available)
+			26 => 18,   // Value13 (Energy Available)
 
-			27 => 18,   // Value14 (Used Energy)
+			27 => 10,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Steamrunner',  // Name
 
-			30 => 245,  // Benötige Arbeiter zum Bau
+			30 => 175,  // Benötige Arbeiter zum Bau
 
 			31 => 'Die Steamrunner Klasse wurde ursprünglich als schnell baubares Aushilfsschiff dienen doch ihre hohe Manövrierbarkeit und moderate Bewaffnung ließen sie schnell die ältere Elite verdrängen.',
+
+	    ),
+
+       	// Intrepid
+
+	    5 => array(
+
+			0 => 34800,  // Metal
+
+			1 => 29800,  // Minerals
+
+			2 => 25450,  // Latinum
+
+			3 => 40,  // Min. Unit 1(L. Infanterie)
+
+			4 => 10,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 0,  // Min. Unit 3 (Hazard Team)
+
+			6 => 2,  // Min. Unit 4 (Commander)
+
+			7 => 90,  // Max Unit 1 (L. Infanterie)
+
+			8 => 25,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 10,  // Max Unit 3 (Hazard Team)
+
+			10 => 6,  // Max Unit 4 (Commander)
+
+			11 => 11,  // Unit 5 (Offizier)
+
+			12 => 1,  // Unit 6 (Medizinisches Personal)
+
+			13 => 195,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 180,   // Value1 (Leichte Waffen)
+
+			15 => 75,   // Value2 (Schwere Waffen)
+
+			16 => 0,   // Value3 (Planetare Waffen)
+
+			17 => 460,   // Value4 (Schildstärke)
+
+			18 => 380,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 16,   // Value6 (Reaktionsgeschw.)
+
+			20 => 24,   // Value7 (Bereitschaft)
+
+			21 => 32,   // Value8 (Wendigkeit)
+
+			22 => 10,   // Value9 (Erfahrung)
+
+			23 => 8.15,   // Value10 (Warp)
+
+			24 => 18,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 61,   // Value13 (Energy Available)
+
+			27 => 11,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Intrepid',  // Name
+
+			30 => 380,  // Benötige Arbeiter zum Bau
+
+			31 => 'Light Cruiser letzten Generation, mit einzigartigen Technologien von denen auf Schiffen des Bundes. Geboren zu reisen bei sehr hohen Reisegeschwindigkeit, hat ein Rüstung je gesehen Sondierungsgespräche über ein Schiff von dieser Tonnage.',
+
+		    ),
+
+
+
+    	// Defiant
+
+	    6 => array(
+
+			0 => 30800,  // Metal
+
+			1 => 26915,  // Minerals
+
+			2 => 10650,  // Latinum
+
+			3 => 25,  // Min. Unit 1(L. Infanterie)
+
+			4 => 10,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 0,  // Min. Unit 3 (Hazard Team)
+
+			6 => 0,  // Min. Unit 4 (Commander)
+
+			7 => 40,  // Max Unit 1 (L. Infanterie)
+
+			8 => 20,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 5,  // Max Unit 3 (Hazard Team)
+
+			10 => 4,  // Max Unit 4 (Commander)
+
+			11 => 6,  // Unit 5 (Offizier)
+
+			12 => 1,  // Unit 6 (Medizinisches Personal)
+
+			13 => 146,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 145,   // Value1 (Leichte Waffen)
+
+			15 => 95,   // Value2 (Schwere Waffen)
+
+			16 => 15,   // Value3 (Planetare Waffen)
+
+			17 => 480,   // Value4 (Schildstärke)
+
+			18 => 120,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 15,   // Value6 (Reaktionsgeschw.)
+
+			20 => 26,   // Value7 (Bereitschaft)
+
+			21 => 38,   // Value8 (Wendigkeit)
+
+			22 => 18,   // Value9 (Erfahrung)
+
+			23 => 6.5,   // Value10 (Warp)
+
+			24 => 11,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 17,   // Value13 (Energy Available)
+
+			27 => 15,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Defiant',  // Name
+
+			30 => 245,  // Benötige Arbeiter zum Bau
+
+			31 => 'Der kompakteste leichte Kreuzer der Sternenflotte. Ausgestattet mit Quantentorpedos besitzt sie eine für ihre Verhältnisse enorme Feuerkraft. Jedoch schränken Schildkapazität und Crewgröße den Einsatzradius ein. Als leichtes Angriffsschiff mit vorinstallierter Tarnvorrichtung ist sie die beste Wahl.',
 
 	    ),
 
@@ -558,7 +558,7 @@ $SHIP_TORSO = array(
 
 			16 => 10,   // Value3 (Planetare Waffen)
 
-			17 => 440,   // Value4 (Schildstärke)
+			17 => 520,   // Value4 (Schildstärke)
 
 			18 => 300,   // Value5 (Hülle bzw. Hitpoins)
 
@@ -568,7 +568,7 @@ $SHIP_TORSO = array(
 
 			21 => 24,   // Value8 (Wendigkeit)
 
-			22 => 20,   // Value9 (Erfahrung)
+			22 => 10,   // Value9 (Erfahrung)
 
 			23 => 3.6,   // Value10 (Warp)
 
@@ -838,9 +838,9 @@ $SHIP_TORSO = array(
 
 			16 => 50,   // Value3 (Planetare Waffen)
 
-			17 => 500,   // Value4 (Schildstärke)
+			17 => 980,   // Value4 (Schildstärke)
 
-			18 => 1200,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 1050,   // Value5 (Hülle bzw. Hitpoins)
 
 			19 => 11,   // Value6 (Reaktionsgeschw.)
 
@@ -4409,7 +4409,7 @@ $SHIP_TORSO = array(
 
 			13 => 446,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 0,   // Value1 (Leichte Waffen)
+			14 => 185,   // Value1 (Leichte Waffen)
 
 			15 => 135,   // Value2 (Schwere Waffen)
 
@@ -4429,7 +4429,7 @@ $SHIP_TORSO = array(
 
 			23 => 3,   // Value10 (Warp)
 
-			24 => 14,   // Value11 (Sensoren)
+			24 => 20,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -4570,9 +4570,9 @@ $SHIP_TORSO = array(
 
 			22 => 1,   // Value9 (Erfahrung)
 
-			23 => 3,   // Value10 (Warp)
+			23 => 1,   // Value10 (Warp)
 
-			24 => 8,   // Value11 (Sensoren)
+			24 => 22,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
