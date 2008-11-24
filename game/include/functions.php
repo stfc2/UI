@@ -2514,10 +2514,10 @@ function GlobalTorsoReq($ship)
 		$dat[0]=50;
 		$dat[1]=100;
 		$dat[2]=200;
-		$dat[3]=300;
-		$dat[4]=200;
-		$dat[5]=1500;
-		$dat[6]=1000;
+		$dat[3]=200;
+		$dat[4]=400;
+		$dat[5]=1000;
+		$dat[6]=1500;
 		$dat[7]=2500;
 		$dat[8]=3500;
 		$dat[9]=6000;
@@ -2705,7 +2705,7 @@ function LocalTorsoReq($ship)
 		$dat[1]=100;
 		$dat[2]=200;
 		$dat[3]=200;
-		$dat[4]=200;
+		$dat[4]=300;
 		$dat[5]=400;
 		$dat[6]=400;
 		$dat[7]=420;
