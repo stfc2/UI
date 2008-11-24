@@ -259,7 +259,7 @@ while($payment = $db->fetchrow($payments)) {
 					<td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$payment['receiver']).'">'.$game->uc_get($payment['receiver']).'</a></td>
 					<td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$payment['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$payment['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$payment['resource_3'].'</td>
 					<td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$payment['sender']).'">'.$game->uc_get($payment['sender']).'</a></td>
-					<td><a href="javascript:void(0);" onmouseover="return overlib(\''.htmlspecialchars(stripslashes($payment['reason'])).'\', CAPTION, \''.constant($game->sprache("TEXT21")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.constant($game->sprache("TEXT22")).'</a></td>
+					<td><a href="javascript:void(0);" onmouseover="return overlib(\''.htmlspecialchars($payment['reason']).'\', CAPTION, \''.constant($game->sprache("TEXT21")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.constant($game->sprache("TEXT22")).'</a></td>
 					<td>'.date("j.n.y H:i",$payment['timestamp']).'</td>
 				</tr>');
 
@@ -674,7 +674,7 @@ while($payment = $db->fetchrow($payments)) {
 					<td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$payment['receiver']).'">'.$game->uc_get($payment['receiver']).'</a></td>
 					<td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$payment['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$payment['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$payment['resource_3'].'</td>
 					<td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$payment['sender']).'">'.$game->uc_get($payment['sender']).'</a></td>
-					<td><a href="javascript:void(0);" onmouseover="return overlib(\''.htmlspecialchars(stripslashes($payment['reason'])).'\', CAPTION, \''.constant($game->sprache("TEXT21")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.constant($game->sprache("TEXT22")).'</a></td>
+					<td><a href="javascript:void(0);" onmouseover="return overlib(\''.htmlspecialchars($payment['reason']).'\', CAPTION, \''.constant($game->sprache("TEXT21")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.constant($game->sprache("TEXT22")).'</a></td>
 					<td>'.$mode.'</td>
 					<td>'.date("j.n.y H:i",$payment['timestamp']).'</td>
 				</tr>');
