@@ -132,8 +132,9 @@ while ($move = $db->fetchrow($q_moves))
         $sensor2 = get_friendly_orbit_fleets($move['dest_id']);
         //array('n_ships', 'sum_sensors', 'sum_cloak', 'status', 'torso' => array(0...9) )
         $sensor1 = get_move_ship_details($move['move_id']);
-        $visibility = GetVisibility($sensor1['sum_sensors'] + ($move['dest_sensors'] +
-            1) * 200, $sensor1['sum_cloak'], $sensor1['n_ships'], $sensor2['sum_sensors'], $sensor2['sum_cloak']);
+        /* 25/11/08 - AC: Spacedock sensors must be added to orbit fleets NOT to incoming fleets... */
+        $visibility = GetVisibility($sensor1['sum_sensors'], $sensor1['sum_cloak'], $sensor1['n_ships'],
+            $sensor2['sum_sensors'] + ($move['dest_sensors'] + 1) * 200, $sensor2['sum_cloak']);
         $travelled = 100 / ($move['move_finish'] - $move['move_begin']) * ($ACTUAL_TICK -
             $move['move_begin']);
     }
