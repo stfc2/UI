@@ -1310,7 +1310,7 @@ form {
             $game->out('
 <br><br>
 <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
-  <form name="send_form" method="post" action="'.parse_link('a=ship_send').'" onSubmit="return document.send_form.submit.disabled = true;">
+  <form name="send_form" method="post" action="'.parse_link('a=ship_send').'">
   <tr>
     <td colspan="2" align="center"><b>'.constant($game->sprache("TEXT83")).'</b><br><br>
   </tr>
