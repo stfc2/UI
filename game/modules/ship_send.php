@@ -759,7 +759,7 @@ function update_times() {
 </script>
 
 <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
-  <form name="send_form" method="post" action="'.parse_link('a=ship_send').'" onSubmit="return document.send_form.submit.disabled = true;">
+  <form name="send_form" method="post" action="'.parse_link('a=ship_send').'">
   <input type="hidden" name="dest" value="'.encode_planet_id($dest).'">
         ');
 
