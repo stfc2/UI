@@ -1990,7 +1990,7 @@ $ship_components_locale=array(
 		// Component Polaronstrahl
 		1=>array(
 			'name'=>'Concentratore polaronico',
-			'description'=>'Perfezionamento della tecnologia polaronica che ne aumenta notevolmente la capacit&agrave; distruttiva. Questa tecnologia &egrave; rappresenta il meglio impiegabile su navi civili.',
+			'description'=>'Perfezionamento della tecnologia polaronica che ne aumenta notevolmente la capacit&agrave; distruttiva. Questa tecnologia rappresenta il meglio impiegabile su navi civili.',
 			'dev_info'=>'',
 		), // Endof Component Polaronstrahl
 
