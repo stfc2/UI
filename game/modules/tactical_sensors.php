@@ -30,9 +30,12 @@ if (!file_exists($filename)) $filename = 'include/static/static_components_9.php
 include($filename);
 
 
-$game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">'.constant($game->sprache("TEXT1")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_known').'">'.constant($game->sprache("TEXT4a")).'</a>]&nbsp;&nbsp;[<b>'.constant($game->sprache("TEXT5")).'</b>]<br>[<a href="'.parse_link('a=tactical_sensors&view_attack').'">'.constant($game->sprache("TEXT32")).'</a>]&nbsp;[<a href="'.parse_link('a=tactical_sensors&delete_ferengi').'">'.constant($game->sprache("TEXT33")).'</a>]&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT34")).'</a>]<br><br>');
+$game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">'.constant($game->sprache("TEXT1")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_known').'">'.constant($game->sprache("TEXT4a")).'</a>]&nbsp;&nbsp;[<b>'.constant($game->sprache("TEXT5")).'</b>]<br>[<a href="'.parse_link('a=tactical_sensors&view_attack').'">'.constant($game->sprache("TEXT32")).'</a>]&nbsp;[<a href="'.parse_link('a=tactical_sensors&delete_ferengi').'">'.constant($game->sprache("TEXT33")).'</a>]&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT34")).'</a>]&nbsp;[<a href="'.parse_link('a=tactical_sensors&fleets_sensors').'">'.constant($game->sprache("TEXT37")).'</a>]<br><br>');
 
 $filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 26, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 51, 54, 55)';
+
+$planets_selection = 'p2.planet_owner = ' . $game->player['user_id'] . ' AND';
+$fleets_sensors = false;
 
 if (isset($_GET['delete_ferengi']))
 {
@@ -42,7 +45,34 @@ elseif (isset($_GET['view_attack']))
 {
     $filter_stream = '(40, 41, 42, 43, 44, 45, 46, 51, 54, 55)';
 }
+else if (isset($_GET['fleets_sensors']))
+{
+    $sql = 'SELECT fleet_id, fleet_name, n_ships, planet_id
+            FROM ship_fleets
+            WHERE user_id = '.$game->player['user_id'].' AND
+                  move_id = 0';
 
+    if(!$q_fleets = $db->query($sql)) {
+        message(DATABASE_ERROR, 'Could not query moves fleets data!');
+    }
+
+    while($_fl = $db->fetchrow($q_fleets)) {
+        $fleet_ids[$_fl['planet_id']] = $_fl['fleet_id'];
+        $fleet_planets[] = $_fl['planet_id'];
+        $fleet_names[$_fl['planet_id']] = $_fl['fleet_name'];
+        //$n_ships[] = $_fl['n_ships'];
+    }
+
+    if(count($fleet_ids) == 0) {
+        message(NOTICE, constant($game->sprache("TEXT38")));
+    }
+
+    $fleet_planets_str = implode(',', $fleet_planets);
+
+    $planets_selection = 'p2.planet_id IN ('.$fleet_planets_str.') AND';
+
+    $fleets_sensors = true;
+}
 
 
 
@@ -76,7 +106,7 @@ $sql = 'SELECT ss.*,
 
         WHERE p2.planet_id = ss.dest AND
 
-              p2.planet_owner = ' . $game->player['user_id'] . ' AND
+              '.$planets_selection.'
 
               ss.move_begin <= ' . $ACTUAL_TICK . ' AND
 
@@ -132,9 +162,18 @@ while ($move = $db->fetchrow($q_moves))
         $sensor2 = get_friendly_orbit_fleets($move['dest_id']);
         //array('n_ships', 'sum_sensors', 'sum_cloak', 'status', 'torso' => array(0...9) )
         $sensor1 = get_move_ship_details($move['move_id']);
+
+        if($fleets_sensors)
+            $sensor3 = get_fleet_details($fleet_ids[$move['dest_id']]);
+        else
+        {
+            $sensor3['sum_sensors'] = ($move['dest_sensors'] + 1) * 200;
+            $sensor3['sum_cloak'] = 0;
+        }
+
         /* 25/11/08 - AC: Spacedock sensors must be added to orbit fleets NOT to incoming fleets... */
         $visibility = GetVisibility($sensor1['sum_sensors'], $sensor1['sum_cloak'], $sensor1['n_ships'],
-            $sensor2['sum_sensors'] + ($move['dest_sensors'] + 1) * 200, $sensor2['sum_cloak']);
+            $sensor2['sum_sensors'] + $sensor3['sum_sensors'], $sensor2['sum_cloak'] + $sensor3['sum_cloak']);
         $travelled = 100 / ($move['move_finish'] - $move['move_begin']) * ($ACTUAL_TICK -
             $move['move_begin']);
     }
@@ -305,6 +344,9 @@ while ($move = $db->fetchrow($q_moves))
             TICK_DURATION)) . '
 
     ');
+
+        if($fleets_sensors)
+            $game->out('<br><br>'.constant($game->sprache("TEXT39")).' <a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$fleet_ids[$move['dest_id']].'').'"><b>'.$fleet_names[$move['dest_id']].'</b></a>');
 
         $game->out('
 

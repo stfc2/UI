@@ -94,9 +94,15 @@ define ("GER_TEXT33", 'Ferengitransporte ausblenden');
 
 define ("GER_TEXT34", 'Alles anzeigen');
 
-define ("GER_TEXT35", 'Assimilate');
+define ("GER_TEXT35", 'Assimilieren');
 
-define ("GER_TEXT36", 'Analyze');
+define ("GER_TEXT36", 'Analysieren');
+
+define ("GER_TEXT37", 'Zeige Flotten-Sensoren');
+
+define ("GER_TEXT38", 'Sie haben noch keine Flotte in station&auml;ren Umlaufbahn');
+
+define ("GER_TEXT39", 'Gefunden durch:');
 
 //English
 define ("ENG_TEXT0", 'Tactical headquarters:');
@@ -171,6 +177,12 @@ define ("ENG_TEXT35", 'Assimilate');
 
 define ("ENG_TEXT36", 'Analyze');
 
+define ("ENG_TEXT37", 'Show fleets sensors');
+
+define ("ENG_TEXT38", 'You don&#146;t have any fleet in stationary orbit');
+
+define ("ENG_TEXT39", 'Found by:');
+
 //ItaGLIENSE
 define ("ITA_TEXT0", 'Comando Tattico:');
 
@@ -243,5 +255,11 @@ define ("ITA_TEXT34", 'Indicare tutto');
 define ("ITA_TEXT35", 'Assimilare');
 
 define ("ITA_TEXT36", 'Analizzare');
+
+define ("ITA_TEXT37", 'Mostra sensori flotte');
+
+define ("ITA_TEXT38", 'Non hai alcuna flotta in orbita stazionaria');
+
+define ("ITA_TEXT39", 'Rilevata da:');
 
 ?>
