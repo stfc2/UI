@@ -949,7 +949,7 @@ class game {
   <meta name="publisher" content="Florian Brede & Philipp Schmidt">
   <meta name="copyright" content="Paramount Pic., Brede, Schmidt">
   <meta name="page-topic" content="Star Trek Online Game">
-  <meta name="date" content="2003-06-22">
+  <meta name="date" content="2008-11-27">
   <meta name="page-type" content="game">
   <meta name="robots" content="index,nofollow">
   <meta name="revisit-after" content="10">
@@ -957,8 +957,14 @@ class game {
 
 		if($this->auto_refresh > 0) echo '<meta http-equiv="refresh" content="'.$this->auto_refresh.'; URL=index.php?a='.$this->current_module.'">';
 
+		// Check presence of localized javascript
+		if ('stgc2_'.$this->player['language'].'.js')
+			$stgcjs = 'stgc2_'.$this->player['language'].'.js';
+		else
+			$stgcjs = 'stgc2_ENG.js';
+
 		echo '
-  <script type="text/javascript" language="JavaScript" src="'.$this->player['user_jspath'].'stgc2_'.$this->player['language'].'.js"></script>
+  <script type="text/javascript" language="JavaScript" src="'.$this->player['user_jspath'].$stgcjs.'"></script>
   <script type="text/javascript" language="JavaScript" src="'.$this->player['user_jspath'].'overlib.js"></script>
   <script type="text/javascript" language="JavaScript" src="'.$this->player['user_jspath'].'popup.js"></script>
 
