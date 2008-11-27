@@ -21,13 +21,11 @@
 */
 
 
-
-
 $game->init_player();
 
+include('include/static/static_components_9.php');
 $filename = 'include/static/static_components_9_'.$game->player['language'].'.php';
-if (!file_exists($filename)) $filename = 'include/static/static_components_9.php';
-include($filename);
+if (file_exists($filename)) include($filename);
 
 
 $game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">'.constant($game->sprache("TEXT1")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_known').'">'.constant($game->sprache("TEXT4a")).'</a>]&nbsp;&nbsp;[<b>'.constant($game->sprache("TEXT5")).'</b>]<br>[<a href="'.parse_link('a=tactical_sensors&view_attack').'">'.constant($game->sprache("TEXT32")).'</a>]&nbsp;[<a href="'.parse_link('a=tactical_sensors&delete_ferengi').'">'.constant($game->sprache("TEXT33")).'</a>]&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT34")).'</a>]&nbsp;[<a href="'.parse_link('a=tactical_sensors&fleets_sensors').'">'.constant($game->sprache("TEXT37")).'</a>]<br><br>');
@@ -151,17 +149,17 @@ $visible_actions = array(32, 33);
 
 while ($move = $db->fetchrow($q_moves))
 {
-    $move_id = $move['move_id'];
     $visibility = 0;
+
+    //array('n_ships', 'sum_sensors', 'sum_cloak', 'status', 'torso' => array(0...9) )
+    $sensor1 = get_move_ship_details($move['move_id']);
 
     if (!in_array($move['action_code'], $visible_actions))
     {
-        // Todo: Flotten querien, Werte berechnen:
+        // Todo: Fleets queries, calculate values:
         //array('n_ships', 'sum_sensors', 'sum_cloak')
         /* 30/06/08 - AC: Planet sensors depends on target planet NOT on currently active planet!  */
         $sensor2 = get_friendly_orbit_fleets($move['dest_id']);
-        //array('n_ships', 'sum_sensors', 'sum_cloak', 'status', 'torso' => array(0...9) )
-        $sensor1 = get_move_ship_details($move['move_id']);
 
         if($fleets_sensors)
             $sensor3 = get_fleet_details($fleet_ids[$move['dest_id']]);
@@ -179,8 +177,7 @@ while ($move = $db->fetchrow($q_moves))
     }
     else
     {
-        $sensor1 = get_move_ship_details($move['move_id']);
-        $sensor1['n_ships'] = $move['n_ships'];
+	// Ferengi(NPC) doesn't have ships templates stored in the DB
         $sensor1['torso'][1] = $move['n_ships'];
     }
 
@@ -189,9 +186,6 @@ while ($move = $db->fetchrow($q_moves))
 
     if ($travelled >= $visibility || in_array($move['action_code'], $visible_actions))
     {
-
-
-
         $game->out('
 
 	<table width="200" align="center" border="0" cellpadding="2" cellspacing="2" background="' .
@@ -353,8 +347,6 @@ while ($move = $db->fetchrow($q_moves))
     </td>
 
   </tr>
-
-  </form>
 
 </table><br>
 
