@@ -120,7 +120,7 @@ $commands = array(
 while($move = $db->fetchrow($q_moves)) {
     $dest_fleets = get_friendly_orbit_fleets($move['dest'], $move['dest_user_id']);
 
-    $visibility = GetVisibility($move['sum_atk_sensors'] + ( $move['Dest_spacedock'] + 1) * 200, $move['sum_atk_cloak'], $move['n_ships'], $dest_fleets['sum_sensors'], $dest_fleets['sum_cloak']);
+    $visibility = GetVisibility($move['sum_atk_sensors'], $move['sum_atk_cloak'], $move['n_ships'], $dest_fleets['sum_sensors'], $dest_fleets['sum_cloak'], ($move['Dest_spacedock'] + 1) * 200);
     $travelled = 100 / ($move['move_finish'] - $move['move_begin']) * ($ACTUAL_TICK - $move['move_begin']);
     
 	if($travelled >= $visibility)  {
