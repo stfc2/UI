@@ -81,49 +81,30 @@ $dest = (!empty($_GET['dest'])) ? (int)$_GET['dest']:0;
 
 
 $sql = 'SELECT ss.*,
-
                p1.planet_name AS start_planet_name,
-
                u1.user_id AS start_owner_id, u1.user_name AS start_owner_name,
-
                u2.user_name as owner_name,
-
                p2.planet_name AS dest_planet_name,
-
                p2.planet_id AS dest_id,
-
                p2.building_7 AS dest_sensors
-
         FROM (scheduler_shipmovement ss, planets p2)
-
                 LEFT JOIN (planets p1) ON p1.planet_id = ss.start
-
                 LEFT JOIN (user u1) ON u1.user_id = p1.planet_owner
-
                 LEFT JOIN (user u2) ON u2.user_id = ss.user_id
-
         WHERE p2.planet_id = ss.dest AND
-
               '.$planets_selection.'
-
               ss.move_begin <= ' . $ACTUAL_TICK . ' AND
-
               ss.move_finish >= ' . $ACTUAL_TICK . ' AND
-
               ss.user_id<>' . $game->player['user_id'] . ' AND
-
               ss.move_status = 0 AND ss.action_code IN '.$filter_stream.'' . (($start) ?
     ' AND ss.start = ' . $start:'') . (($dest) ? ' AND ss.dest = ' . $dest:'') . '
-
         ORDER BY ss.move_finish ASC';
 
 
 
 if (!$q_moves = $db->query($sql))
 {
-
     message(DATABASE_ERROR, 'Could not query moves data');
-
 }
 
 
@@ -146,6 +127,9 @@ $i = 2;
 
 // DC Lasciamo i codici dei trasporti Ferengi come "visibili"
 $visible_actions = array(32, 33);
+
+// Number of fleets displayed
+$fleets_displayed = 0;
 
 while ($move = $db->fetchrow($q_moves))
 {
@@ -177,11 +161,9 @@ while ($move = $db->fetchrow($q_moves))
     }
     else
     {
-	// Ferengi(NPC) doesn't have ships templates stored in the DB
+        // Ferengi(NPC) doesn't have ships templates stored in the DB
         $sensor1['torso'][1] = $move['n_ships'];
     }
-
-
 
 
     if ($travelled >= $visibility || in_array($move['action_code'], $visible_actions))
@@ -195,19 +177,16 @@ while ($move = $db->fetchrow($q_moves))
 
 	<td>
 
-	');
+        ');
 
 
 
         if ($move['start'] == $move['dest'])
         {
-
             $game->out(constant($game->sprache("TEXT7")).' <a href="' . parse_link('a=tactical_cartography&planet_id=' .
                 encode_planet_id($move['start'])) . '"><b>' . $move['start_planet_name'] .
                 '</b></a><br>');
-
         }
-
         else
         {
             $game->out(constant($game->sprache("TEXT8")).' ' . (isset($move['owner_name']) ? '<a href="' .
@@ -216,40 +195,28 @@ while ($move = $db->fetchrow($q_moves))
 
             if (!empty($move['start']))
             {
-
                 if (empty($move['start_owner_id']))
                     $start_owner_str = ' <i>'.constant($game->sprache("TEXT10")).'</i>';
-
                 elseif ($move['start_owner_id'] != $game->player['user_id'])
                     $start_owner_str = ' '.constant($game->sprache("TEXT11")).' <a href="' . parse_link('a=stats&a2=viewplayer&id=' . $move['start_owner_id']) .
                         '"><b>' . $move['start_owner_name'] . '</b></a>';
-
                 else
                     $start_owner_str = '';
-
 
 
                 $game->out(constant($game->sprache("TEXT12")).' <a href="' . parse_link('a=tactical_cartography&planet_id=' .
                     encode_planet_id($move['start'])) . '"><b>' . $move['start_planet_name'] .
                     '</b></a>' . $start_owner_str . '<br>');
-
             }
-
             else
             {
-
                 $game->out(constant($game->sprache("TEXT12")).' <i>'.constant($game->sprache("TEXT13")).'</i><br>');
-
             }
-
-
 
             $game->out(constant($game->sprache("TEXT14")).' <a href="' . parse_link('a=tactical_cartography&planet_id=' .
                 encode_planet_id($move['dest'])) . '"><b>' . $move['dest_planet_name'] .
                 '</b></a><br>');
-
         }
-
 
 
         $commands = array(11 => constant($game->sprache("TEXT15")), 12 => constant($game->sprache("TEXT16")),
@@ -270,9 +237,6 @@ while ($move = $db->fetchrow($q_moves))
             54 => constant($game->sprache("TEXT26")), 55 => constant($game->sprache("TEXT20")), );
 
 
-
-
-
         if (in_array($move['action_code'], $visible_actions) || $travelled >= $visibility +
             ((100 - $visibility) / 4))
         {
@@ -288,45 +252,32 @@ while ($move = $db->fetchrow($q_moves))
         if (in_array($move['action_code'], $visible_actions) || $travelled >= $visibility +
             3 * ((100 - $visibility) / 4))
         {
-
             $game->out('<br>'.constant($game->sprache("TEXT29")));
 
             for ($t = 0; $t < 14; $t++)
             {
-
                 if (isset($sensor1['torso'][$t]) && $sensor1['torso'][$t] > 0)
                     if (!isset($SHIP_TORSO[$game->player['user_race']][$t][0]))
                         if ($SHIP_TORSO[9][6][0])
                         {
-
                             $game->out('<br><b>' . $sensor1['torso'][$t] . 'x</b> '.constant($game->sprache("TEXT30")).' ' .
                                 (7) . ')');
-
                         }
                         else
                         {
                             $game->out('<br><b>' . $sensor1['torso'][$t] . '</b> Typ ' . ($t + 1));
                         }
-
                     else
                         $game->out('<br><b>' . $sensor1['torso'][$t] . 'x</b> ' . ($SHIP_TORSO[$game->
                             player['user_race']][$t][29]));
-
             }
-
         }
-
-
-
-
-
 
 
         $ticks_left = $move['move_finish'] - $ACTUAL_TICK;
 
         if ($ticks_left < 0)
             $ticks_left = 0;
-
 
 
         $game->out('
@@ -337,7 +288,7 @@ while ($move = $db->fetchrow($q_moves))
             TICK_DURATION * 60) + $NEXT_TICK) . '_type2_2">&nbsp;</b>':format_time($ticks_left *
             TICK_DURATION)) . '
 
-    ');
+        ');
 
         if($fleets_sensors)
             $game->out('<br><br>'.constant($game->sprache("TEXT39")).' <a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$fleet_ids[$move['dest_id']].'').'"><b>'.$fleet_names[$move['dest_id']].'</b></a>');
@@ -350,18 +301,17 @@ while ($move = $db->fetchrow($q_moves))
 
 </table><br>
 
-	');
-
+        ');
 
 
         ++$i;
-
+        $fleets_displayed++;
     }
-
-
-
 }
 
+// Some fleets are present, but not revealed by player's sensors
+if($fleets_displayed == 0)
+    message(NOTICE, constant($game->sprache("TEXT6")));
 
 
 ?>
