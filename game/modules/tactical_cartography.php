@@ -853,7 +853,7 @@ elseif(!empty($_GET['planet_id'])) {
 					}
 				 }
 
-				 $history_text .= constant($game->sprache("TEXT110")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT111")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT112")).$_history_d1.$_history_d2.'</b>.<br>';  				
+				 $history_text .= constant($game->sprache("TEXT110")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT111")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT112")).$_history_d1.$_history_d2.'</b>.<br>';
 				 break;
 // --- Rivolte sul pianeta
 			case 27: $history_text .= constant($game->sprache("TEXT113")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT114")).date("d.m.y H:i", $_temp['timestamp']).'.<br>';
@@ -877,7 +877,8 @@ elseif(!empty($_GET['planet_id'])) {
 					}
 				 }
 
-				 $history_text .= constant($game->sprache("TEXT121")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT112")).$_history_d1.$_history_d2.'</b>.<br>';
+				 $history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT121")).constant($game->sprache("TEXT112")).$_history_d1.$_history_d2.'</b>.<br>';
+				break;
 // --- Cessione del pianeta alla fazione indipendente Settlers
 			case 30: $history_text .= constant($game->sprache("TEXT122")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT123")).date("d.m.y H:i", $_temp['timestamp']).'.<br>';
 				break;

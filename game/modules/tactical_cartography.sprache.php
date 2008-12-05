@@ -473,7 +473,7 @@ define ("ENG_TEXT119", '</b> reached the planet, fighting for the right of colon
 
 define ("ENG_TEXT120", '<i>&#171;Unknown&#187;</i>');
 
-define ("ENG_TEXT121", 'The planet is assimilated by the Borg on ');
+define ("ENG_TEXT121", ', the planet was assimilated by the Borg collective');
 
 define ("ENG_TEXT122", 'To the settlers of the planets, <b>');
 
@@ -728,11 +728,11 @@ define ("ITA_TEXT117", ', navi appartenenti alle forze di <b>');
 
 define ("ITA_TEXT118", '</b> raggiungono il pianeta, prime in assoluto.');
 
-define ("ITA_TEXT119", '</b> raggiugono il pianeta, contendendone il diritto di colonizzazione.');
+define ("ITA_TEXT119", '</b> raggiungono il pianeta, contendendone il diritto di colonizzazione.');
 
 define ("ITA_TEXT120", '<i>&#171;Sconosciuto&#187;</i>');
 
-define ("ITA_TEXT121", 'Il pianeta viene assimilato dalla comunit&agrave Borg in data ');
+define ("ITA_TEXT121", ', il pianeta viene assimilato dalla comunit&agrave; Borg');
 
 define ("ITA_TEXT122", 'Ai coloni del pianeta, <b>');
 
