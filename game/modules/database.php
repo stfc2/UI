@@ -470,7 +470,7 @@ else if($module == 'guide')
     else
         $game->out('<td width="140"></td>');
 
-    if($page < 4)
+    if($page < 7)
         $game->out('<td width="140" align="right">[<a href="'.parse_link('a=database&view=guide&page='.($page+1)).'">'.constant($game->sprache("TEXT70")).'</a>]</td>');
     else
         $game->out('<td width="140"></td>');

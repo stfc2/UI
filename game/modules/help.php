@@ -127,7 +127,17 @@ $game->out('
 		</tr>
 		<tr>
 		<td>
-			<a href="'.parse_link('a=database&view=guide&page=5').'">TBD</a>
+			<a href="'.parse_link('a=database&view=guide&page=5').'">'.constant($game->sprache("TEXT206")).'</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="'.parse_link('a=database&view=guide&page=6').'">'.constant($game->sprache("TEXT207")).'</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="'.parse_link('a=database&view=guide&page=7').'">'.constant($game->sprache("TEXT208")).'</a>
 		</td>
 		</tr>
 		</table>
