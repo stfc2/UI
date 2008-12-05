@@ -51,7 +51,7 @@ presentato un pannello che elenca tutte le ricerche relative ai componenti insta
 di ricerca planetaria. Se la struttura di ricerca non &egrave; occupata e sul pianeta sono presenti risorse a sufficienza, accanto al nome, al costo
 in risorse nonch&eacute; al tempo necessario per lo sviluppo, &egrave; possibile trovare un <span style="color: green">link verde</span> che
 permette di avviare la ricerca selezionata.<br>
-Non &egrave; possibile pi&ugrave; di una ricerca in coda.
+Non &egrave; possibile avere pi&ugrave; di una ricerca in coda.
 
 ';
 ?>

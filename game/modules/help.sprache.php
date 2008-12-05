@@ -32,9 +32,12 @@ define ("GER_TEXT121", 'Schiffe');
 define ("GER_TEXT200", 'Ingame guide:');
 define ("GER_TEXT201", 'INDEX');
 define ("GER_TEXT202", 'The game');
-define ("GER_TEXT203", 'The planets');
-define ("GER_TEXT204", 'The structures');
-define ("GER_TEXT205", 'The planetary researches');
+define ("GER_TEXT203", 'Planets');
+define ("GER_TEXT204", 'Structures');
+define ("GER_TEXT205", 'Planetary researches');
+define ("GER_TEXT206", 'Star ships');
+define ("GER_TEXT207", 'Ship templates');
+define ("GER_TEXT208", 'Ship components');
 
 
 // English
@@ -69,9 +72,12 @@ define ("ENG_TEXT121", 'Ships');
 define ("ENG_TEXT200", 'Ingame guide:');
 define ("ENG_TEXT201", 'INDEX');
 define ("ENG_TEXT202", 'The game');
-define ("ENG_TEXT203", 'The planets');
-define ("ENG_TEXT204", 'The structures');
-define ("ENG_TEXT205", 'The planetary researches');
+define ("ENG_TEXT203", 'Planets');
+define ("ENG_TEXT204", 'Structures');
+define ("ENG_TEXT205", 'Planetary researches');
+define ("ENG_TEXT206", 'Star ships');
+define ("ENG_TEXT207", 'Ship templates');
+define ("ENG_TEXT208", 'Ship components');
 
 
 //Italiano
@@ -109,6 +115,9 @@ define ("ITA_TEXT202", 'Il gioco');
 define ("ITA_TEXT203", 'I pianeti');
 define ("ITA_TEXT204", 'Le strutture');
 define ("ITA_TEXT205", 'Le ricerche planetarie');
+define ("ITA_TEXT206", 'Le navi stellari');
+define ("ITA_TEXT207", 'I progetti navali');
+define ("ITA_TEXT208", 'I componenti navi');
 
 
 

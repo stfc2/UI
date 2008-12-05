@@ -8,6 +8,9 @@ brevemente STFC), lo scrittore spera possa essere utile al giocatore inesperto p
 <li><a href="'.parse_link('a=database&view=guide&page=2').'">I PIANETI</li>
 <li><a href="'.parse_link('a=database&view=guide&page=3').'">LE STRUTTURE</li>
 <li><a href="'.parse_link('a=database&view=guide&page=4').'">LE RICERCHE PLANETARIE</li>
+<li><a href="'.parse_link('a=database&view=guide&page=5').'">LE NAVI STELLARI</li>
+<li><a href="'.parse_link('a=database&view=guide&page=6').'">I PROGETTI NAVALI</li>
+<li><a href="'.parse_link('a=database&view=guide&page=7').'">I COMPONENTI NAVI</li>
 </ul>
 </p>';
 
