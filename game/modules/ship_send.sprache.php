@@ -121,7 +121,7 @@ define ("GER_TEXT48", 'Impuls');
 
 define ("GER_TEXT49", 'Warp');
 
-define ("GER_TEXT50", 'Ungultige Sternzeit-Angabe');
+define ("GER_TEXT50", 'Ung&uuml;ltige Sternzeit-Angabe');
 
 define ("GER_TEXT51", 'unbewohnt');
 
@@ -336,7 +336,7 @@ define ("ITA_TEXT14", 'Il pianeta obiettivo non esiste');
 
 define ("ITA_TEXT15", 'La flotta &egrave; gi&agrave; in orbita stazionaria sul pianeta di partenza');
 
-define ("ITA_TEXT16", 'Il proprietario del pianeta obiettivo &egrave; in modalita&agrave; vacanza');
+define ("ITA_TEXT16", 'Il proprietario del pianeta obiettivo &egrave; in modalit&agrave; vacanza');
 
 define ("ITA_TEXT17", 'I cannoni orbitali non possono essere spostati.');
 
