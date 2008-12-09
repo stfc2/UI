@@ -269,7 +269,7 @@ define ("ENG_TEXT35", 'Kriegserkl&auml;rung');
 
 define ("ENG_TEXT36", 'The Alliance <b>');
 
-define ("ENG_TEXT37", '</b> hat ihnen soeben den <b><font color="red">Krieg</font></b> erkl&auml;rt.');
+define ("ENG_TEXT37", '</b> has just sent its <b><font color="red">War declaration</font></b>.');
 
 define ("ENG_TEXT38", 'Nichtangriffspakt');
 

@@ -434,9 +434,9 @@ define ("ENG_TEXT54", 'Ship type');
 
 define ("ENG_TEXT55", 'Number');
 
-define ("ENG_TEXT56", 'The planet could not be colonized, because it was not uninhabited.');
+define ("ENG_TEXT56", 'The planet could not be colonized because it was not uninhabited.');
 
-define ("ENG_TEXT57", 'The planet could not be colonized, because the Colonization ship selected when starting was no longer available.');
+define ("ENG_TEXT57", 'The planet could not be colonized because the Colonization ship selected when starting was no longer available.');
 
 define ("ENG_TEXT58", 'The planet has been successfully colonized.');
 
@@ -829,7 +829,7 @@ define ("ITA_TEXT101", 'ha continuato il bombardamento della superficie.');
 
 define ("ITA_TEXT102", 'Le tue forze navali hanno attaccato e distrutto completamente le forze avversarie. Tuttavia, la nave colonizzatrice da impiegare per l&#146;invasione non era pi&ugrave; presente - probabilmente persa durante lo scontro.');
 
-define ("ITA_TEXT103", 'Le tue forze navali hanno attaccato e distrutto completamente le forze opposte. Tuttavia, nella conseguente battaglia a terra, le forze avversarie non sono state battute.');
+define ("ITA_TEXT103", 'Le tue forze navali hanno attaccato e distrutto completamente le forze avversarie. Tuttavia, nella conseguente battaglia a terra, le forze avversarie non sono state battute.');
 
 define ("ITA_TEXT104", 'ha distrutto completamente le tue forze in orbita. Tuttavia, nella conseguente battaglia a terra, le tue unit&agrave; hanno impedito l&#146;invasione del pianeta da parte delle truppe ostili.');
 
