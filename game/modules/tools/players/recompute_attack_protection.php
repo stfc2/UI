@@ -34,7 +34,7 @@ if(isset($_POST['submit'])) {
         message(NOTICE, 'Number of days is invalid!');
     }
 
-    $sql = 'SELECT user_id, user_registrationtime, user_attack_protection
+    $sql = 'SELECT user_id, user_registration_time, user_attack_protection
             FROM user
             WHERE user_attack_protection = 0';
 
@@ -44,7 +44,7 @@ if(isset($_POST['submit'])) {
     $protec_time = ($_POST['days'] * 24 * 60 * 60);
 
     while($user = $db->fetchrow($q_user)) {
-        $still_registred = ($user['user_registrationtime'] - $now);
+        $still_registred = ($user['user_registration_time'] - $now);
         $still_protection = ($protec_time - $still_registred);
 
         if($still_protection > 0) {
