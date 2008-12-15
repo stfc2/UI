@@ -98,7 +98,7 @@ $sql = 'SELECT ss.user_id AS start_user_id, ss.dest, ss.move_begin, ss.move_fini
               u1.user_alliance = '.$game->player['user_alliance'].' AND
               ss.move_status = 0 AND
               ss.dest = p1.planet_id AND
-              ss.action_code IN  (24,25,40,41,42,43,44,45,50,51,52,53,54,55)
+              ss.action_code IN  (24,25,40,41,42,43,44,45,46,50,51,52,53,54,55)
         GROUP BY ss.move_id
         ORDER BY p1.planet_next_attack ASC';
         
@@ -120,15 +120,17 @@ $commands = array(
 while($move = $db->fetchrow($q_moves)) {
     $dest_fleets = get_friendly_orbit_fleets($move['dest'], $move['dest_user_id']);
 
-    $visibility = GetVisibility($move['sum_atk_sensors'], $move['sum_atk_cloak'], $move['n_ships'], $dest_fleets['sum_sensors'], $dest_fleets['sum_cloak'], ($move['Dest_spacedock'] + 1) * 200);
-    $travelled = 100 / ($move['move_finish'] - $move['move_begin']) * ($ACTUAL_TICK - $move['move_begin']);
-    
-	if($travelled >= $visibility)  {
-        $n_ships = ($travelled >= $visibility + ((100 - $visibility) / 4)) ? $move['n_ships'] : '-';	
+    $flight_duration = $move['move_finish'] - $move['move_begin'];
+    $visibility = GetVisibility($move['sum_atk_sensors'], $move['sum_atk_cloak'], $move['n_ships'],
+        $dest_fleets['sum_sensors'], $dest_fleets['sum_cloak'], ($move['dest_spacedock'] + 1) * 200,$flight_duration);
+    $travelled = 100 / $flight_duration * ($ACTUAL_TICK - $move['move_begin']);
+
+    if($travelled >= $visibility)  {
+        $n_ships = ($travelled >= $visibility + ((100 - $visibility) / 4)) ? $move['n_ships'] : '-';
         $command = ($travelled >= $visibility + 2 * ((100 - $visibility) / 4)) ? $commands[$move['action_code']] : '-';
-        
-	    $game->out('
-		<tr>
+
+        $game->out('
+        <tr>
           <td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$move['dest_user_id']).'">'.$move['dest_user_name'].'</a></td>
           <td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($move['dest'])).'">'.$move['dest_name'].'</a></td>
           <td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$move['start_user_id']).'">'.$move['start_user_name'].'</a>'.( (!empty($move['start_alliance_id'])) ? ' [<a href="'.parse_link('a=stats&a2=viewalliance&id='.$move['start_alliance_id']).'">'.$move['start_alliance_tag'].'</a>]' : '' ).'</td>
@@ -137,7 +139,7 @@ while($move = $db->fetchrow($q_moves)) {
           <td>'.format_time( ($move['move_finish'] - $ACTUAL_TICK) * TICK_DURATION ).'</td>
         </tr>
         ');
-	}
+    }
 }
 
 $game->out('

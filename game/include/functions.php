@@ -523,35 +523,44 @@ function is_planet_attacked($planet_id) {
 
 // This function returns at which point the fleet (with id 1) is visible when fleet 2 is in orbit.
 // The values range from 0-100 (percent)
-function GetVisibility($sensor1,$cloak1,$ships1,$sensor2,$cloak2,$sensor3)
+function GetVisibility($sensor1,$cloak1,$ships1,$sensor2,$cloak2,$sensor3,$flight_duration)
 {
-	// Larger the fleet, easier the detection on sensor; cap to 300 incoming ships
-	$fleet_signature = 1300-($ships1/2.12)-(($ships1/8.803)^2);
-	if ($fleet_signature < 1) $fleet_signature = 1;
-	if ($fleet_signature > 1300) $fleet_signature = 1300;
-	// Cloaking of fleet, based on average fleet cloaking capabilites, cap to 3200
-	$fleet_cloak = ($cloak1/$ships1)*(38+(($cloak1/$ships1)^0.899));
-	if ($fleet_cloak < 1) $fleet_cloak = 1;
-	if ($fleet_cloak > 3200) $fleet_cloak = 3200;
+	// Calculate fleet visibility only for outer system flights
+	if($flight_duration > 6) {
+		// Larger the fleet, easier the detection on sensor; cap to 300 incoming ships
+		$fleet_signature = 1300-($ships1/2.12)-pow($ships1/8.803,2);
+		if ($fleet_signature < 1) $fleet_signature = 1;
+		if ($fleet_signature > 1300) $fleet_signature = 1300;
+		// Cloaking of fleet, based on average fleet cloaking capabilites, cap to 3200
+		$fleet_cloak = ($cloak1/$ships1)*(38+pow($cloak1/$ships1,0.899));
+		if ($fleet_cloak < 1) $fleet_cloak = 1;
+		if ($fleet_cloak > 3200) $fleet_cloak = 3200;
 
-	$cloak = $fleet_signature + $fleet_cloak;
+		$cloak = $fleet_signature + $fleet_cloak;
 
-	// We can see incoming fleet using the spacedock sensors (200 points per structure level), 
-	// our orbiting fleet sensors and the help of allied fleets
-	$sensor=$sensor2+($cloak2*0.05)+$sensor3;
+		// We can see incoming fleet using the spacedock sensors (200 points per structure level), 
+		// our orbiting fleet sensors and the help of allied fleets
+		$sensor=$sensor2+($cloak2*0.05)+$sensor3;
 
 
-	/* The previous version start here
-	$cloak=(($sensor1/$ships1)*5+($cloak1/$ships1)*125)*10;
-	$sensor=$sensor2+$cloak2*0.05+2000; // 2000 is planet-standard
-	and ends here */
+		/* The previous version start here
+		$cloak=(($sensor1/$ships1)*5+($cloak1/$ships1)*125)*10;
+		$sensor=$sensor2+$cloak2*0.05+2000; // 2000 is planet-standard
+		and ends here */
 
-	if ($cloak==0) $cloak=1;
-	if ($sensor==0) $sensor=1;
+		if ($cloak==0) $cloak=1;
+		if ($sensor==0) $sensor=1;
 
-	$visibility=round(($cloak/$sensor)*100);
-	if ($visibility<20) $visibility=20;
-	if ($visibility>100) $visibility=100;
+		$visibility=round(($cloak/$sensor)*100);
+		if ($visibility<20) $visibility=20;
+		if ($visibility>100) $visibility=100;
+	}
+	else
+		// Standard visibility for inter planet flights
+		$visibility = 20;
+
+	stgc_log('GetVisibility', '(vis) '.$visibility.' = GetVisibility((sensor1) '.$sensor1.',(cloak1) '.$cloak1.',(ships1) '.$ships1.',(sensor2) '.$sensor2.',(cloak2) '.$cloak2.',(sensor3) '.$sensor3.',(duration) '.$flight_duration.')');
+
 	return $visibility;
 }
 
