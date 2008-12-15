@@ -519,21 +519,26 @@ $game->out('
 <tr><td width=80><b>'.constant($game->sprache("TEXT69")).'</td><td width=200><b>'.constant($game->sprache("TEXT18")).'</td><td width=50><b>'.constant($game->sprache("TEXT11")).'</td><td width=50><b>'.constant($game->sprache("TEXT55")).'</td></tr>
 ');
 
-    if($game->player['user_auth_level'] == STGC_DEVELOPER)
+    // Player is a developer? No FOW
+    // Players are in the same ally? No FOW
+    if($game->player['user_auth_level'] == STGC_DEVELOPER || 
+       $game->player['user_alliance'] == $user['user_alliance'])
         $sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
                    FROM (planets pl) LEFT JOIN (starsystems sys) on sys.system_id = pl.system_id
                    WHERE pl.planet_owner="'.$user['user_id'].'" ORDER BY pl.planet_name';
-    else
-        $sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
+    // Otherwise show only known planets
+    else {
+        $sql_pl = 'SELECT pl. *, sys.system_x, sys.system_y
                    FROM (planets pl)
-                   LEFT JOIN (starsystems sys) on sys.system_id = pl.system_id
-                   LEFT JOIN (user u) on pl.planet_owner = u.user_id
-                   LEFT JOIN (alliance al) on u.user_alliance = al.alliance_id
-                   LEFT JOIN (planet_details pd) on pl.system_id = pd.system_id
-                   WHERE pl.planet_owner="'.$user['user_id'].'" AND
-                   (al.alliance_id = "'.$game->player['user_alliance'].'" OR (pd.user_id = "'.$game->player['user_id'].'" AND pd.log_code = 500))
+                   LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id
+                   LEFT JOIN (planet_details pd) ON pl.system_id = pd.system_id
+                   WHERE pl.planet_owner = "'.$user['user_id'].'" AND
+                         pd.user_id = "'.$game->player['user_id'].'" AND
+                         pd.log_code = 500
                    GROUP BY pl.planet_id
                    ORDER BY pl.planet_name';
+    }
+
     $planetquery=$db->query($sql_pl);
     $numero_righe = $db->num_rows($planetquery);
     if($numero_righe == 0) {
