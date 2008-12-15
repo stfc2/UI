@@ -25,9 +25,9 @@ if ($user['right']==1) {include('forbidden.php'); return 1;}
 $main_html .= '<span class=header>Comunicati news</span><br>';
 
 if(isset($_REQUEST['remove'])) {
-	$msg = $db->queryrow('SELECT * FROM portal_news WHERE id="'.((int)$_REQUEST['id']).'"');
-	log_action('La news Portale con il titolo "'.$msg['header'].'" &egrave; stata cancellata');
-	
+    $msg = $db->queryrow('SELECT * FROM portal_news WHERE id="'.((int)$_REQUEST['id']).'"');
+    log_action('La news Portale con il titolo "'.$msg['header'].'" &egrave; stata cancellata');
+
 
     $sql = 'DELETE FROM portal_news WHERE id="'.((int)$_REQUEST['id']).'" LIMIT 1';
     if(!$db->query($sql)) {
@@ -35,48 +35,63 @@ if(isset($_REQUEST['remove'])) {
     }
     $main_html .= '<span class=header3><font color=green>Il messaggio &egrave; stato cancellato</font></span><br>';
 
-	
+
 }
 
 
 
 if(isset($_POST['submit'])) {
 
-	if (!isset($_POST['id']) || empty($_POST['id']))
-	{
-    $sql = 'INSERT INTO portal_news (type, header, message, date)
+    $send_time = time();
 
-            VALUES ('.$_POST['type'].', "'.$_POST['title'].'", "'.addslashes($_POST['text']).'", '.time().')';
+    if (!isset($_POST['id']) || empty($_POST['id']))
+    {
+         $sql = 'INSERT INTO portal_news (type, header, message, date)
+                 VALUES ('.$_POST['type'].', "'.$_POST['title'].'", "'.addslashes($_POST['text']).'", '.$send_time.')';
 
-		log_action('La newe Portale con il titolo "'.$_POST['title'].'" &egrave; stata salvata');
+         log_action('La newe Portale con il titolo "'.$_POST['title'].'" &egrave; stata salvata');
 
-    if(!$db->query($sql)) {
+         if(!$db->query($sql)) {
 
-        //message(DATABASE_ERROR, 'Could not insert portal news data');
+             //message(DATABASE_ERROR, 'Could not insert portal news data');
 
+        }
+
+        $main_html .= '<span class=header3><font color=green>L&#146;annuncio &egrave; stato pubblicato</font></span><br>';
     }
-    $main_html .= '<span class=header3><font color=green>L&#146;annuncio &egrave; stato pubblicato</font></span><br>';
-    
-	}
-	else
-	{
-    $sql = 'UPDATE portal_news SET type='.((int)$_POST['type']).', header="'.$_POST['title'].'", message="'.addslashes($_POST['text']).'" WHERE id="'.((int)$_POST['id']).'"';
-	
-	log_action('La news Portale (nuova?) con il titolo "'.$_POST['title'].'" &egrave; stata modificata');
-        
+    else
+    {
+        $sql = 'UPDATE portal_news SET type='.((int)$_POST['type']).', header="'.$_POST['title'].'", message="'.addslashes($_POST['text']).'" WHERE id="'.((int)$_POST['id']).'"';
+
+        log_action('La news Portale (nuova?) con il titolo "'.$_POST['title'].'" &egrave; stata modificata');
+
 //echo $sql;
-            
 
-    if(!$db->query($sql)) {
 
-        //message(DATABASE_ERROR, 'Could not update portal news data');
+        if(!$db->query($sql)) {
+
+            //message(DATABASE_ERROR, 'Could not update portal news data');
+
+        }
+        $main_html .= '<span class=header3><font color=green>L&#146;annuncio &egrave stato pubblicato</font></span><br>';
 
     }
-    $main_html .= '<span class=header3><font color=green>L&#146;annuncio &egrave stato pubblicato</font></span><br>';
-    
-	}
-	
 
+    // Se e` stata richiesta una copia via messaggio
+    if(isset($_POST['message'])) {
+        $mes_qry = $db->query('SELECT user_id FROM user WHERE user_auth_level < 2');
+
+        while ($receiver=$db->fetchrow($mes_qry))
+        {
+            $result = $db->query('INSERT INTO message (sender, receiver, subject, text, time)
+                                  VALUES ("'.SUPPORTUSER.'","'.$receiver['user_id'].'","'.$_POST['title'].'","'.addslashes($_POST['text']).'","'.$send_time.'")');
+
+            if (($num=$db->queryrow('SELECT COUNT(id) as unread FROM message WHERE (receiver="'.$receiver['user_id'].'") AND (rread=0)')))
+                $db->query('UPDATE user SET unread_messages="'.$num['unread'].'" WHERE user_id="'.$receiver['user_id'].'"');
+        }
+
+        log_action('Messaggio con il titolo "'.$_POST['title'].'" inviato a tutta la utenza');
+    }
 }
 
 
@@ -108,11 +123,11 @@ $main_html .= '
 
 <br>
 Attenzione: La News sar&agrave; in formato HTML, usare un &#8249;br&#8250 <br> per inserire una nuova linea (non usare il tasto Enter), <br> i link possono essere inseriti con il tag standard &#8249;a&#8250;.
-
+<br><br>
 
 <form method="post" action="index.php?p=news">
 
-<select name="type" class="select">
+Tipologia:&nbsp;<select name="type" class="select">
 
   <option value="1" '.($type==1 ? 'selected="selected"' : '').'>Bug</option>
 
@@ -128,11 +143,15 @@ Attenzione: La News sar&agrave; in formato HTML, usare un &#8249;br&#8250 <br> p
 
 <br><br>
 
-<input type="text" name="title" value="'.$header.'" class="field">
+Invia a tutti gli utenti una copia come messaggio:&nbsp;<input type="checkbox" name="message">
 
 <br><br>
 
-<textarea name="text" rows="15" cols="60">'.$message.'</textarea>
+Titolo:&nbsp;<input type="text" name="title" value="'.$header.'" class="field">
+
+<br><br>
+
+Testo:<br><textarea name="text" rows="15" cols="60">'.$message.'</textarea>
 
 <br><br>
 
