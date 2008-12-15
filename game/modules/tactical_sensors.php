@@ -154,10 +154,10 @@ while ($move = $db->fetchrow($q_moves))
         }
 
         /* 25/11/08 - AC: Spacedock sensors must be added to orbit fleets NOT to incoming fleets... */
+        $flight_duration = $move['move_finish'] - $move['move_begin'];
         $visibility = GetVisibility($sensor1['sum_sensors'], $sensor1['sum_cloak'], $sensor1['n_ships'],
-            $sensor2['sum_sensors'], $sensor2['sum_cloak'], $sensor3['sum_sensors']);
-        $travelled = 100 / ($move['move_finish'] - $move['move_begin']) * ($ACTUAL_TICK -
-            $move['move_begin']);
+            $sensor2['sum_sensors'], $sensor2['sum_cloak'], $sensor3['sum_sensors'],$flight_duration);
+        $travelled = 100 / $flight_duration * ($ACTUAL_TICK - $move['move_begin']);
     }
     else
     {

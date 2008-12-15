@@ -140,8 +140,10 @@ else {
         $dest_sum_sensors = (!empty($friendly_ships['sum_sensors'])) ? (int)$friendly_ships['sum_sensors'] : 0;
         $dest_sum_cloak = (!empty($friendly_ships['sum_cloak'])) ? (int)$friendly_ships['sum_cloak'] : 0;
 
-        $visibility = GetVisibility($move_sum_sensors, $move_sum_cloak, $move['n_ships'], $dest_sum_sensors, $dest_sum_cloak, ($move['dest_building_7'] + 1) * 200);
-        $travelled = 100 / ($move['move_finish'] - $move['move_begin']) * ($ACTUAL_TICK - $move['move_begin']);
+        $flight_duration = $move['move_finish'] - $move['move_begin'];
+        $visibility = GetVisibility($move_sum_sensors, $move_sum_cloak, $move['n_ships'],
+            $dest_sum_sensors, $dest_sum_cloak, ($move['dest_building_7'] + 1) * 200,$flight_duration);
+        $travelled = 100 / $flight_duration * ($ACTUAL_TICK - $move['move_begin']);
 
         if($travelled < ($visibility +     ( (100 - $visibility) / 4) ) ) $move['n_ships'] = 0;
         if($travelled < ($visibility + 2 * ( (100 - $visibility) / 4) ) ) $move['action_code'] = 0;
