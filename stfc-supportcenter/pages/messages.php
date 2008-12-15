@@ -701,9 +701,9 @@ function submitMessage()
 						message(DATABASE_ERROR, 'message_query: Could not call INSERT INTO in message');
 						exit();
 				}
-				log_action('Messaggio con il titolo "'.$_POST['subject'].'" inviato a '.$recv_list[$i]);
 				UpdateUnreadMessages($receiver['user_id']);
 			}
+			log_action('Messaggio con il titolo "'.$_POST['subject'].'" inviato a tutta la utenza');
 		}
 		else
 		{
