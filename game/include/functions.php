@@ -179,8 +179,6 @@ function message($type, $message, $add = false) {
 			$fp = fopen(ERROR_LOG_FILE, 'a');
 			fwrite($fp, '<hr><br><br><br><br><i>'.date('d.m.y H:i:s', time()).'</i>&nbsp;&nbsp;&nbsp;<b>User:</b>&nbsp;'.$username.'&nbsp;&nbsp;&nbsp;<b>General Error:</b><br>'.$message.((!empty($add)) ? '<br>'.$add : '')."\n");
 			fclose($fp);
-
-			exit;
 		break;
 
 		case DATABASE_ERROR:
@@ -558,8 +556,6 @@ function GetVisibility($sensor1,$cloak1,$ships1,$sensor2,$cloak2,$sensor3,$fligh
 	else
 		// Standard visibility for inter planet flights
 		$visibility = 20;
-
-	stgc_log('GetVisibility', '(vis) '.$visibility.' = GetVisibility((sensor1) '.$sensor1.',(cloak1) '.$cloak1.',(ships1) '.$ships1.',(sensor2) '.$sensor2.',(cloak2) '.$cloak2.',(sensor3) '.$sensor3.',(duration) '.$flight_duration.')');
 
 	return $visibility;
 }
@@ -985,7 +981,7 @@ class game {
 		if($this->auto_refresh > 0) echo '<meta http-equiv="refresh" content="'.$this->auto_refresh.'; URL=index.php?a='.$this->current_module.'">';
 
 		// Check presence of localized javascript
-		if ('stgc2_'.$this->player['language'].'.js')
+		if (file_exists('stgc2_'.$this->player['language'].'.js'))
 			$stgcjs = 'stgc2_'.$this->player['language'].'.js';
 		else
 			$stgcjs = 'stgc2_ENG.js';
