@@ -813,7 +813,7 @@ function update_times() {
         else {
             $game->out('
         <input type="radio" name="step" value="stationate_setup"'.( ($atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT58")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>' ).'
-        <input type="radio" name="step" value="survey_setup"'.( (!$explore_fleet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT65")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT65")).'</b><br>' ).'
+        <input type="radio" name="step" value="survey_setup"'.( ($atkptc_present || !$explore_fleet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT65")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT65")).'</b><br>' ).'
         <input type="radio" name="step" value="attack_setup"'.( ($own_planet || $free_planet || $atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT61")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT61")).'</b><br>' ).'
         <input type="radio" name="step" value="transport_setup"'.( ($own_planet || $free_planet || !$in_transporter) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT62")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT62")).'</b><br>' ).'
         <input type="radio" name="step" value="spy_setup"'.( (!$in_scout || $atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT63")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT63")).'</b><br>' ).'
