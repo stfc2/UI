@@ -425,7 +425,8 @@ class maps {
         if(!$q_details = $db->queryrow($sql)) {
             message(DATABASE_ERROR, 'Could not query planet details data');
         }
-        if(isset($q_details['system_is_known']) && ($q_details['system_is_known'] > 0)) $system_is_known = true;
+        if(isset($q_details['system_is_known']) && ($q_details['system_is_known'] > 0) ||
+           $game->player['user_auth_level'] == STGC_DEVELOPER) $system_is_known = true;
 // ----
 
         $n_planets = $db->num_rows($q_planets);
@@ -445,11 +446,11 @@ class maps {
         $orbit_color = imagecolorallocate($im, 50, 50, 50);
 
         $cl_own_planet = imagecolorallocate($im, 0, 255, 0); // green
-        $cl_active_planet = imagecolorallocate($im, 255, 255, 0); // gelb
-        $cl_alliance_planet = imagecolorallocate($im, 0, 0, 255); // blau
-        $cl_attack_protection = imagecolorallocate($im, 180, 180, 180); // grau
-        $cl_alliance_war = imagecolorallocate($im, 255, 0, 0); // rot
-        $cl_alliance_bnd_pbnd = imagecolorallocate($im, 137, 202, 239); // hellblau
+        $cl_active_planet = imagecolorallocate($im, 255, 255, 0); // yellow
+        $cl_alliance_planet = imagecolorallocate($im, 0, 0, 255); // blue
+        $cl_attack_protection = imagecolorallocate($im, 180, 180, 180); // gray
+        $cl_alliance_war = imagecolorallocate($im, 255, 0, 0); // red
+        $cl_alliance_bnd_pbnd = imagecolorallocate($im, 137, 202, 239); // lightblue
 
         $map_html = '<map name="system_map">'.NL;
         $used_distances = array();
@@ -621,10 +622,10 @@ class maps {
         );
 
         $star_colors = array(
-            imagecolorallocate($im, 0, 0, 255), // blau
+            imagecolorallocate($im, 0, 0, 255), // blue
             imagecolorallocate($im, 255, 255, 255), // white
-            imagecolorallocate($im, 200, 100, 0), // gelb
-            imagecolorallocate($im, 255, 0, 0), // rot
+            imagecolorallocate($im, 200, 100, 0), // yellow
+            imagecolorallocate($im, 255, 0, 0), // red
         );
 
         while($system = $db->fetchrow($q_systems)) {
