@@ -425,7 +425,8 @@ class maps {
         if(!$q_details = $db->queryrow($sql)) {
             message(DATABASE_ERROR, 'Could not query planet details data');
         }
-        if(isset($q_details['system_is_known']) && ($q_details['system_is_known'] > 0)) $system_is_known = true;
+        if(isset($q_details['system_is_known']) && ($q_details['system_is_known'] > 0) ||
+           $game->player['user_auth_level'] == STGC_DEVELOPER) $system_is_known = true;
 // ----
 
         $n_planets = $db->num_rows($q_planets);
