@@ -26,7 +26,7 @@ dei lavoratori;</li>
 offre un incremento doppio a parit&agrave; di livello rispetto alla tecnologia precedente, ma non aumenta la capacit&agrave; massima del pianeta
 stesso;</li>
 <li><u>'.$TECH_NAME[$game->player['user_race']][2].'</u>: aumenta il numero di piattaforme orbitali difensive costruibili sul pianeta e contemporaneamente
-ne riduce i costi di costruzione;<li>
+ne riduce i costi di costruzione;</li>
 <li><u>'.$TECH_NAME[$game->player['user_race']][3].'</u>: questa tecnologia rende pi&ugrave; veloce la costruzione delle strutture sul pianeta (per alcune
 classi &egrave; una tecnologia importantissima);</li>
 <li><u>'.$TECH_NAME[$game->player['user_race']][4].'</u>: questa tecnologia aumenta l&#146;efficienza delle miniere. <b>ATTENZIONE</b>: per poter ottenere
