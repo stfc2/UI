@@ -51,8 +51,8 @@ for($i = 1; $i <= 6; ++$i) {
     $units_on_planets = $db->queryrow($sql);
 
     $sql = 'SELECT SUM(unit_'.$i.') AS sum
-            FROM scheduler_shipmovement
-            WHERE move_status = 0';;
+            FROM ship_fleets
+            WHERE planet_id = 0';
 
     $units_on_travel = $db->queryrow($sql);
     
