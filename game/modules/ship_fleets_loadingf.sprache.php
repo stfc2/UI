@@ -190,11 +190,11 @@ define ("ITA_TEXT22", 'Non esiste in proprietario per la flotta selezionata');
 
 define ("ITA_TEXT23", 'Nessuna flotta da scaricare selezionata');
 
-define ("ITA_TEXT24", 'Der Herrscher hat keine Flotte in der N?e deiner Flotte');
+define ("ITA_TEXT24", 'Il proprietario non ha trasporti nella sua flotta');
 
-define ("ITA_TEXT25", 'La seguente flotta ha');
+define ("ITA_TEXT25", 'La flotta appartenente a');
 
-define ("ITA_TEXT26", 'im der N?e deiner Flotte:');
+define ("ITA_TEXT26", 'ha i seguenti trasporti:');
 
 define ("ITA_TEXT27", 'Navi');
 

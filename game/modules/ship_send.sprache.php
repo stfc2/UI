@@ -357,7 +357,7 @@ define ("ITA_TEXT22", 'Non puoi impostare un attacco in modalit&agrave; Sitting.
 
 define ("ITA_TEXT23", 'Cheatattempt - Fleet delivery!');
 
-define ("ITA_TEXT24", 'Puoi trasportare merci solo su i tuoi pianeti.');
+define ("ITA_TEXT24", 'Puoi trasportare merci solo sui tuoi pianeti.');
 
 define ("ITA_TEXT25", 'Solo le navi da ricognizione (scafo di 1a classe) possono effettuare missioni di spionaggio');
 
