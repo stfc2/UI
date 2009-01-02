@@ -2265,8 +2265,6 @@ echo'
 			$picked_quadrant = mt_rand(1 ,4);
 		}
 
-		stgc_log('pick_quadrant', 'Player race: '.$this->player['user_race'].' assigned quadrant: '.$picked_quadrant);
-
 		return($picked_quadrant);
 	}
 
