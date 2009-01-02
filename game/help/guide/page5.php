@@ -27,7 +27,7 @@ Un&#146;altro aspetto assai importante sulle navi stellari, che vedremo nel dett
 </p>
 <p align="justify">
 <b>Come si costruiscono le navi stellari?</b><br>
-Per poter iniziare a produrre le proprie astronavi, bisogna prima di tutto dotare il pianeta di uno "<a href="'.parse_link('a=spacedock').'"><span class="highlight_link">'.$BUILDING_NAME[$game->player['user_race']][6].'</span></a>", requisito necessario per poter poi costruire un "<a href="'.parse_link('a=shipyard').'"><span class="highlight_link">'.$BUILDING_NAME[$game->player['user_race']][7].'</span></a>".<br>Fatto ci&ograve; sar&agrave; possibile creare un progetto nave seguendo il men&ugrave; "<a href="'.parse_link('a=ship_template').'"><span class="highlight_link">Progetti navi</span></a>".
+Per poter iniziare a produrre le proprie astronavi, bisogna prima di tutto dotare il pianeta di uno "<a href="'.parse_link('a=spacedock').'"><span class="highlight_link">'.$BUILDING_NAME[$game->player['user_race']][6].'</span></a>", requisito necessario per poter poi costruire un "<a href="'.parse_link('a=shipyard').'"><span class="highlight_link">'.$BUILDING_NAME[$game->player['user_race']][7].'</span></a>".<br>Fatto ci&ograve; sar&agrave; possibile creare un progetto nave seguendo il men&ugrave; "<a href="'.parse_link('a=ship_template').'"><span class="highlight_link">Progetti navi</span></a>".<br>Tutti i progetti navi disponibili, saranno visualizzati nel "<a href="'.parse_link('a=shipyard').'"><span class="highlight_link">'.$BUILDING_NAME[$game->player['user_race']][7].'</span></a>" per essere messi in produzione a patto che il pianeta selezionato rispetti i requisiti di punti locali, componenti navi sviluppati, risorse ed equipaggio che ogni progetto richiede. 
 </p>
 ';
 ?>

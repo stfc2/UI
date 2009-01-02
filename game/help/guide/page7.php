@@ -1,9 +1,5 @@
 <?PHP
 
-include('include/static/static_components.php');
-$filename = 'include/static/static_components_'.$game->player['language'].'.php';
-if (file_exists($filename)) include($filename);
-
 $guide_html = '<span class="caption">I COMPONENTI NAVI</span>
 <p align="justify">
 I componenti navi sono speciali tecnologie ricercabili mediante la struttura "<a href="'.parse_link('a=researchlabs').'"><span class="highlight_link">'.$BUILDING_NAME[$game->player['user_race']][8].'</span></a>",
