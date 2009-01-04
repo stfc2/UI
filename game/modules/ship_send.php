@@ -27,7 +27,7 @@ $game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'<
 
 
 // #############################################################################
-// Fleets ,ust be selected for ship_send
+// Fleets must be selected for ship_send
 
 if(empty($_POST['fleets'])) {
     message(NOTICE, constant($game->sprache("TEXT1")));
@@ -798,7 +798,7 @@ function update_times() {
             // Attack protection not to be approached know
 
             $game->out('
-        <input type="radio" name="step" value="stationate_setup">&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>
+        <input type="radio" name="step" value="stationate_setup" checked="checked">&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>
         <input type="radio" name="step" value="survey_setup"'.( (!$explore_fleet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT65")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT65")).'</b><br>').'
         <input type="radio" name="step" value="colo_setup"'.( (!$in_colo) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT59")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT59")).'</b><br>' )
             );
@@ -812,7 +812,7 @@ function update_times() {
         }
         else {
             $game->out('
-        <input type="radio" name="step" value="stationate_setup"'.( ($atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT58")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>' ).'
+        <input type="radio" name="step" value="stationate_setup"'.( ($atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT58")).'<br>' : ' checked="checked">&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>' ).'
         <input type="radio" name="step" value="survey_setup"'.( ($atkptc_present || !$explore_fleet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT65")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT65")).'</b><br>' ).'
         <input type="radio" name="step" value="attack_setup"'.( ($own_planet || $free_planet || $atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT61")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT61")).'</b><br>' ).'
         <input type="radio" name="step" value="transport_setup"'.( ($own_planet || $free_planet || !$in_transporter) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT62")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT62")).'</b><br>' ).'
