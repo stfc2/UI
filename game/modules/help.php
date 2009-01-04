@@ -140,6 +140,31 @@ $game->out('
 			<a href="'.parse_link('a=database&view=guide&page=7').'">'.constant($game->sprache("TEXT208")).'</a>
 		</td>
 		</tr>
+		<tr>
+		<td>
+			<a href="'.parse_link('a=database&view=guide&page=8').'">'.constant($game->sprache("TEXT209")).'</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="'.parse_link('a=database&view=guide&page=9').'">'.constant($game->sprache("TEXT210")).'</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="'.parse_link('a=database&view=guide&page=10').'">'.constant($game->sprache("TEXT211")).'</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="'.parse_link('a=database&view=guide&page=11').'">'.constant($game->sprache("TEXT212")).'</a>
+		</td>
+		</tr>
+		<tr>
+		<td>
+			<a href="'.parse_link('a=database&view=guide&page=12').'">'.constant($game->sprache("TEXT213")).'</a>
+		</td>
+		</tr>
 		</table>
 		</td>
 	</tr>

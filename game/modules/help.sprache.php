@@ -38,6 +38,11 @@ define ("GER_TEXT205", 'Planetary researches');
 define ("GER_TEXT206", 'Star ships');
 define ("GER_TEXT207", 'Ship templates');
 define ("GER_TEXT208", 'Ship components');
+define ("GER_TEXT209", 'Fleets (creation)');
+define ("GER_TEXT210", 'Fleets (moving with Fleets menu)');
+define ("GER_TEXT211", 'Fleets (moving with Tactic menu)');
+define ("GER_TEXT212", 'Fleets (commands)');
+define ("GER_TEXT213", 'Fleets (commands from the orbit)');
 
 
 // English
@@ -78,6 +83,11 @@ define ("ENG_TEXT205", 'Planetary researches');
 define ("ENG_TEXT206", 'Star ships');
 define ("ENG_TEXT207", 'Ship templates');
 define ("ENG_TEXT208", 'Ship components');
+define ("ENG_TEXT209", 'Fleets (creation)');
+define ("ENG_TEXT210", 'Fleets (moving with Fleets menu)');
+define ("ENG_TEXT211", 'Fleets (moving with Tactic menu)');
+define ("ENG_TEXT212", 'Fleets (commands)');
+define ("ENG_TEXT213", 'Fleets (commands from the orbit)');
 
 
 //Italiano
@@ -118,7 +128,11 @@ define ("ITA_TEXT205", 'Le ricerche planetarie');
 define ("ITA_TEXT206", 'Le navi stellari');
 define ("ITA_TEXT207", 'I progetti navali');
 define ("ITA_TEXT208", 'I componenti navi');
-
+define ("ITA_TEXT209", 'Le flotte (la creazione)');
+define ("ITA_TEXT210", 'Le flotte (spostarsi col men&ugrave; Flotte)');
+define ("ITA_TEXT211", 'Le flotte (spostarsi col men&ugrave; Tattico)');
+define ("ITA_TEXT212", 'Le flotte (i comandi)');
+define ("ITA_TEXT213", 'Le flotte (i comandi dall&#146;orbita)');
 
 
 ?>
