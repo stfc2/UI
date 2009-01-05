@@ -757,19 +757,19 @@ function display_logbook($log) {
                         }
 
                         switch($log['log_data'][17]) {
-                            // Kolonieschiff nicht gefunden
+                            // Colony ship not found
                             case -2:
                                 if($log['log_data'][8] == CWIN_ATTACKER) $game->out('win fight, no colo ship');
                                 else $game->out(constant($game->sprache("TEXT88")));
                             break;
 
-                            // Angreifer hat Bodenkampf verloren
+                            // Attacker has lost ground battle
                             case -1:
                                 if($log['log_data'][8] == CWIN_ATTACKER) $game->out('win fight, lose infantery');
                                 else $game->out(constant($game->sprache("TEXT89")));
                             break;
 
-                            // Kolonisation war erfolgreich
+                            // Colonization was successful
                             case 1:
                                 if($log['log_data'][8] == CWIN_ATTACKER) $game->out('win all');
                                 else $game->out(constant($game->sprache("TEXT90")));
@@ -797,7 +797,7 @@ function display_logbook($log) {
                         }
                         
                         switch($log['log_data'][17]) {
-                            // Keine planetaren Waffen waren verfügbar
+                            // No planetary weapons were available
                             case -3:
                                 if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT94")));
                                 else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT93")));
@@ -834,19 +834,19 @@ function display_logbook($log) {
                         }
                         
                         switch($log['log_data'][17]) {
-                            // Kolonieschiff nicht gefunden
+                            // Colony ship not found
                             case -2:
                                 if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT102")));
                                 else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT93")));
                             break;
                             
-                            // Angreifer hat Bodenkampf verloren
+                            // Attacker has lost ground battle
                             case -1:
                                 if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT103")));
                                 else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT104")));
                             break;
                             
-                            // Kolonisation war erfolgreich
+                            // Colonization was successful
                             case 1:
                                 if($log['log_data'][8] == CWIN_ATTACKER) $game->out(constant($game->sprache("TEXT105")));
                                 else $game->out(constant($game->sprache("TEXT51")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['user_id']).'"><b>'.$game->uc_get($ldata['user_id']).'</b></a> '.constant($game->sprache("TEXT106")));
@@ -934,7 +934,7 @@ if(count($a_fleets) <= 0) {
                     }
                     else {
 
-//Anfang TruppenBomben
+//Beginning troops bombs
  $game->out('<table border="0" cellpadding="2" cellspacing="2">
        <tr><td width="200"><b>'.constant($game->sprache("TEXT46")).'</b></td>
         <td width="150"><b>'.constant($game->sprache("TEXT114")).'</b></td></tr>');
@@ -948,7 +948,7 @@ if(count($a_fleets) <= 0) {
         <td width="150">'.$log['log_data'][18][$i].'</td></tr>' );
       
       }$truppen_bomben++;
-      } //Ende Truppenbomben
+      } //End troops bombs
                         $game->out('
     <tr><td><br></td><td></td></tr>
       <tr>
@@ -958,7 +958,7 @@ if(count($a_fleets) <= 0) {
                          ');
                          
                         
-                         // $NUM_BUILDING = größter index
+                         // $NUM_BUILDING = the largest index
                          for($i = 1; $i <= ($NUM_BUILDING); ++$i) {
                              if($log['log_data'][18][$i] > 0) {
                                  $game->out('
@@ -974,7 +974,7 @@ if(count($a_fleets) <= 0) {
                      }
                      
                      
-                     if($log['log_data'][20][0] > 0) // Dann haben wir ein "Antiborgschiff" gehabt...
+                     if($log['log_data'][20][0] > 0) // Then we have had an "Antiborgship"...
                      {
                         $game->out('
 							    <table border="0" cellpadding="2" cellspacing="2">
