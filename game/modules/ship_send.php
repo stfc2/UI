@@ -23,7 +23,7 @@
 
 
 $game->init_player();
-$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span></center><br>');
+$game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>');
 
 
 // #############################################################################
@@ -402,7 +402,7 @@ switch($step) {
                     message(NOTICE, constant($game->sprache("TEXT21")));
                 }
 
-                $action_code = ($dest_planet['user_id'] != $game->player['user_id']) ? 21: 11;;
+                $action_code = ($dest_planet['user_id'] != $game->player['user_id']) ? 21: 11;
             break;
 
             case 'comeback_exec':
@@ -814,8 +814,8 @@ function update_times() {
             $game->out('
         <input type="radio" name="step" value="stationate_setup"'.( ($atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT58")).'<br>' : ' checked="checked">&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>' ).'
         <input type="radio" name="step" value="survey_setup"'.( ($atkptc_present || !$explore_fleet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT65")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT65")).'</b><br>' ).'
-        <input type="radio" name="step" value="attack_setup"'.( ($own_planet || $free_planet || $atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT61")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT61")).'</b><br>' ).'
-        <input type="radio" name="step" value="transport_setup"'.( ($own_planet || $free_planet || !$in_transporter) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT62")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT62")).'</b><br>' ).'
+        <input type="radio" name="step" value="attack_setup"'.( ($atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT61")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT61")).'</b><br>' ).'
+        <input type="radio" name="step" value="transport_setup"'.( (!$in_transporter) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT62")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT62")).'</b><br>' ).'
         <input type="radio" name="step" value="spy_setup"'.( (!$in_scout || $atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT63")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT63")).'</b><br>' ).'
             ');
         }
