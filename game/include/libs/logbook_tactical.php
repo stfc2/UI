@@ -941,7 +941,7 @@ if(count($a_fleets) <= 0) {
                     }
                     else {
 
-//Anfang TruppenBomben
+//Beginning troops bombs
  $game->out('<table border="0" cellpadding="2" cellspacing="2">
        <tr><td width="200"><b>'.constant($game->sprache("TEXT46")).'</b></td>
         <td width="150"><b>'.constant($game->sprache("TEXT114")).'</b></td></tr>');
@@ -955,7 +955,7 @@ if(count($a_fleets) <= 0) {
         <td width="150">'.$log['log_data'][18][$i].'</td></tr>' );
       
       }$truppen_bomben++;
-      } //Ende Truppenbomben
+      } //End troops bombs
                         $game->out('
     <tr><td><br></td><td></td></tr>
       <tr>
@@ -965,7 +965,7 @@ if(count($a_fleets) <= 0) {
                          ');
                          
                         
-                         // $NUM_BUILDING = größter index
+                         // $NUM_BUILDING = the largest index
                          for($i = 1; $i <= ($NUM_BUILDING); ++$i) {
                              if($log['log_data'][18][$i] > 0) {
                                  $game->out('
@@ -981,7 +981,7 @@ if(count($a_fleets) <= 0) {
                      }
                      
                      
-                     if($log['log_data'][20][0] > 0) // Dann haben wir ein "Antiborgschiff" gehabt...
+                     if($log['log_data'][20][0] > 0) // Then we have had an "Antiborgship"...
                      {
                         $game->out('
 							    <table border="0" cellpadding="2" cellspacing="2">

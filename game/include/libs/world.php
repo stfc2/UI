@@ -125,7 +125,7 @@ function create_system($id_type, $id_value, $is_mother) {
     
     
     if((int)$is_mother == 1) {
-	$max_planets = 8;
+        $max_planets = 8;
     }
     else {
         $max_planets = 4 + (mt_rand(0,4));
@@ -173,7 +173,6 @@ function create_planet($user_id, $id_type, $id_value) {
                               sector_id <= '.$sector_id_max.' AND
                               system_closed = 0 AND
                               system_n_planets < system_max_planets';
-//                              system_n_planets < '.$game->system_max_planets;			      
 
                 if(($q_systems = $db->query($sql)) === false) {
                     message(DATABASE_ERROR, 'world::create_planet(): Could not query systems data');
@@ -242,12 +241,10 @@ function create_planet($user_id, $id_type, $id_value) {
                 }
 
                 while($system = $db->fetchrow($q_systems)) {
-//                    if($system['system_n_planets'] > $game->system_max_planets) {
-		    if($system['system_n_planets'] > $system['system_max_planets']) {
+                    if($system['system_n_planets'] > $system['system_max_planets']) {
                         stgc_log('world', 'System '.$system['system_id'].' has '.$system['system_n_planets']);
                     }
-//                    elseif($system['system_n_planets'] < $game->system_max_planets) {
-                      elseif($system['system_n_planets'] < $system['system_max_planets']) {
+                    elseif($system['system_n_planets'] < $system['system_max_planets']) {
                         $system_id = $system['system_id'];
                         $sector_id = $system['sector_id'];
                         break;
@@ -368,7 +365,7 @@ function create_planet($user_id, $id_type, $id_value) {
 
         $planet_type = $type_array[array_rand($type_array)];
 
-        // Varianza randomica delle costanti base del pianeta
+        // Random variance of the constants basis of the planet
         $rateo_1 = round(($PLANETS_DATA[$planet_type][0] + ((400 - mt_rand(0, 800))*0.001)), 2);
         if($rateo_1 < 0.1) $rateo_1 = 0.1;
         $rateo_2 = round(($PLANETS_DATA[$planet_type][1] + ((350 - mt_rand(0, 700))*0.001)), 2);
