@@ -512,7 +512,7 @@ function Show_Bidding_Detail()
 	$ship=$db->queryrow('SELECT s.*,t.*,u.user_race AS owner_race FROM (ships s)
 				LEFT JOIN (ship_templates t) ON t.id=s.template_id
 				LEFT JOIN (user u) ON u.user_id=t.owner
-				WHERE s.ship_id="'.$tradedata['ship_id'].'" LIMIT 1');
+				WHERE s.ship_id="'.$tradedata['ship_id'].'"');
 
 /*	$ship=$db->queryrow('SELECT s.*,t.*,u.user_race AS owner_race FROM (ships s)
 				LEFT JOIN (ship_templates t) ON t.id=s.template_id
@@ -551,6 +551,11 @@ function Show_Bidding_Detail()
 	if ($ship['experience']>=$ship_ranks[8]) $rank_nr=9;
 	if ($ship['experience']>=$ship_ranks[9]) $rank_nr=10;
 
+	/* 22/01/09 - AC: Orb doesn't have crew */
+	if($ship['ship_torso'] != SHIP_TYPE_ORB)
+		$crew = round(100/($ship['max_unit_1']+$ship['max_unit_2']+$ship['max_unit_3']+$ship['max_unit_4']+$ship['unit_5']+$ship['unit_6'])*($ship['unit_1']+$ship['unit_2']+$ship['unit_3']+$ship['unit_4']+$ship['unit_5']+$ship['unit_6']) ).'%';
+	else
+		$crew = constant($game->sprache("TEXT275"));
 
 	if ($tradedata['show_data']==0)
 	{
@@ -564,7 +569,7 @@ function Show_Bidding_Detail()
 		<u>'.constant($game->sprache("TEXT70")).'</u>&nbsp;'.$ship['name'].'<br>
 		<u>'.constant($game->sprache("TEXT66")).'</u>&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateShipInfoText($SHIP_TORSO[$ship['race']][$ship['ship_torso']]).'\', CAPTION, \''.$SHIP_TORSO[$ship['race']][$ship['ship_torso']][29].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$SHIP_TORSO[$ship['race']][$ship['ship_torso']][29].'</a> ('.($ship['ship_torso']+1).')<br>
 		<u>'.constant($game->sprache("TEXT67")).'</u>&nbsp;'.(100/$ship['value_5']*$ship['hitpoints']).'%<br>
-		<u>'.constant($game->sprache("TEXT68")).'</u>&nbsp;'.round(100/($ship['max_unit_1']+$ship['max_unit_2']+$ship['max_unit_3']+$ship['max_unit_4']+$ship['unit_5']+$ship['unit_6'])*($ship['unit_1']+$ship['unit_2']+$ship['unit_3']+$ship['unit_4']+$ship['unit_5']+$ship['unit_6']) ).'%<br>
+		<u>'.constant($game->sprache("TEXT68")).'</u>&nbsp;'.$crew.'<br>
 		<i>'.constant($game->sprache("TEXT69")).'</i>
 		</td></tr></table>');
 	}
@@ -588,7 +593,7 @@ function Show_Bidding_Detail()
 		<b><u>'.constant($game->sprache("TEXT268")).'</u>&nbsp;'.date('d.m.y H:i:s', $ship['construction_time']).'</b><br>
 		<b><u>'.constant($game->sprache("TEXT70")).'</u>&nbsp;'.$ship['name'].'<br></b>
 		<b><u>'.constant($game->sprache("TEXT66")).'</u>&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateShipInfoText($SHIP_TORSO[$ship['race']][$ship['ship_torso']]).'\', CAPTION, \''.$SHIP_TORSO[$ship['race']][$ship['ship_torso']][29].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$SHIP_TORSO[$ship['race']][$ship['ship_torso']][29].'</a> ('.($ship['ship_torso']+1).')<br>
-		<u>'.constant($game->sprache("TEXT68")).'</u>&nbsp;'.round(100/($ship['max_unit_1']+$ship['max_unit_2']+$ship['max_unit_3']+$ship['max_unit_4']+$ship['unit_5']+$ship['unit_6'])*($ship['unit_1']+$ship['unit_2']+$ship['unit_3']+$ship['unit_4']+$ship['unit_5']+$ship['unit_6']) ).'%<br>
+		<u>'.constant($game->sprache("TEXT68")).'</u>&nbsp;'.$crew.'<br>
 		<u>'.constant($game->sprache("TEXT67")).'</u>&nbsp;'.$ship['hitpoints'].'/'.$ship['value_5'].'<br>
 		<u>'.constant($game->sprache("TEXT13")).'</u> '.$ship['value_1'].' + <span style="color: yellow">'.round($ship['value_1']*$ship_rank_bonus[$rank_nr-1],0).'</span><br>
 		<u>'.constant($game->sprache("TEXT14")).'</u> '.$ship['value_2'].' + <span style="color: yellow">'.round($ship['value_2']*$ship_rank_bonus[$rank_nr-1],0).'</span><br>
