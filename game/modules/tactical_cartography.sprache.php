@@ -275,7 +275,7 @@ define ("ENG_TEXT21", 'Start delivery');
 
 define ("ENG_TEXT22", 'extimated time of arrival:');
 
-define ("ENG_TEXT23", 'You can never leave the mode is a player send Ferengi transport.');
+define ("ENG_TEXT23", 'You cannot send Ferengi transport while the Holiday mode is active.');
 
 define ("ENG_TEXT24", 'The planet, or the system does not exist!');
 
@@ -534,7 +534,7 @@ define ("ITA_TEXT21", 'Inizio consegna');
 
 define ("ITA_TEXT22", 'tempo stimato per la consegna:');
 
-define ("ITA_TEXT23", 'Non puoi modficare la modalit&agrave; che sia un giocatore ad inviare un trasporto Ferengi.');
+define ("ITA_TEXT23", 'Non puoi inviare un trasporto Ferengi quando &egrave; stata attivata la Modalit&agrave; Vacanza.');
 
 define ("ITA_TEXT24", 'Il pianeta, o il sistema non esiste!');
 
