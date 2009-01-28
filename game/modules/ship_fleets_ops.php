@@ -141,7 +141,7 @@ if(!empty($_GET['rename_fleet'])) {
 
     $fleet_id = (int)$_GET['rename_fleet'];
 
-    $new_name = addslashes($_POST['fleet_name']);
+    $new_name = htmlspecialchars($_POST['fleet_name']);
 
 
 
