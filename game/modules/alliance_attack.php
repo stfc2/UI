@@ -122,7 +122,7 @@ while($move = $db->fetchrow($q_moves)) {
 
     $flight_duration = $move['move_finish'] - $move['move_begin'];
     $visibility = GetVisibility($move['sum_atk_sensors'], $move['sum_atk_cloak'], $move['n_ships'],
-        $dest_fleets['sum_sensors'], $dest_fleets['sum_cloak'], ($move['dest_spacedock'] + 1) * 200,$flight_duration);
+        $dest_fleets['sum_sensors'], $dest_fleets['sum_cloak'], ($move['dest_spacedock'] + 1) * PLANETARY_SENSOR_VALUE,$flight_duration);
     $travelled = 100 / $flight_duration * ($ACTUAL_TICK - $move['move_begin']);
 
     if($travelled >= $visibility)  {
