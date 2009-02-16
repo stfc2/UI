@@ -620,6 +620,101 @@ function display_skins() {
 }
 
 
+/**
+* Function to retrieve the latest posts from the forums
+*/
+function display_lastposts()
+{
+    global $game;
+
+    $dir = "forum"; // Path to the folder of your forum from the main directory
+    $limit = "5"; // Number of topic to show
+    $f_url = "http://forum.stfc.it/"; // Forum url
+
+    require $_SERVER['DOCUMENT_ROOT']."/".$dir."/conf_global.php";
+
+    // Database connection
+    $fdb = mysql_connect($INFO['sql_host'], $INFO['sql_user'], $INFO['sql_pass']);
+    mysql_select_db($INFO['sql_database'], $fdb);
+
+
+    // Filtered query
+    $qr = mysql_query("SELECT t.title as t_title, "
+      ."t.starter_id as t_starter, "
+      ."t.starter_name as t_starter_n, "
+      ."t.forum_id as forumid, "
+      ."FROM_UNIXTIME((t.start_date), '%d.%m.%y') as start_d, "
+      ."t.posts as t_posts, "
+      ."t.tid as t_id, "
+      ."t.last_post as t_last_posted, "
+      ."t.last_poster_id as t_last, "
+      ."t.last_poster_name as t_name, "
+      ."p.post as p_post, "
+      ."g.g_title "
+    ."FROM nonsolotaku_topics t, "
+      ."nonsolotaku_posts p, "
+      ."nonsolotaku_members m, "
+      ."nonsolotaku_groups g "
+    ."WHERE topic_id=tid && "
+      ."new_topic=1 && "
+      ."m.id=t.starter_id && "
+      ."m.mgroup=g.g_id && "
+      ."t.approved=1 && "       // Only approved topic
+      ."t.forum_id<>'15' && "   // "Forum Staff" filter
+      ."t.forum_id<>'37' && "   // "Cestino" filter
+      ."t.forum_id<>'12' "      // "Deliri & Spam" filter
+    ."ORDER BY t_last_posted DESC "
+    ."LIMIT 0, ".$limit);
+
+    $game->out('
+<table class="style_outer" border="0" cellpadding="2" cellspacing="2" width="250">
+  <tr>
+    <td align="center"><span class="sub_caption">'.constant($game->sprache("TEXT18")).'</span><br><br>
+      <table border="0" cellpadding="5" cellspacing="5" width="90%" class="style_inner">
+    ');
+
+    // calculating the number of replies
+    $nrows = mysql_num_rows($qr);
+
+    for ($i=0; $i < $nrows; $i++) {
+
+        $row = mysql_fetch_array($qr);
+
+        $author_id=$row['t_starter'];
+        $author=$row['t_starter_n'];
+        $topic_title=$row['t_title'];
+        $topic_id=$row['t_id'];
+        $num_posts=$row['t_posts'];
+        $last_author=$row['t_name'];
+        $last_id=$row['t_last'];
+        $creation_date=$row['start_d'];
+        // Date and hour of last post
+        $posttime=strftime ("%d/%m/%y, %H:%M", $row['t_last_posted']);
+
+        $game->out('
+        <tr>
+          <td valign="top">
+            <a href="'.$f_url.'?showtopic='.$topic_id.'&view=getnewpost"><span class="text_large">'.$topic_title.'</span></a><br>
+            <b>'.constant($game->sprache("TEXT19")).'</b> <a href="'.$f_url.'?showuser='.$author_id.'" >'.$author.'</a><br/>
+            <b>'.constant($game->sprache("TEXT20")).'</b> '.$num_posts.'<br>
+            <b>'.constant($game->sprache("TEXT21")).'</b> <a href="'.$f_url.'?showuser='.$last_id.'">'.$last_author.'</a><br>
+            <b>'.constant($game->sprache("TEXT22")).'</b> '.$posttime.'
+          </td>
+        </tr>'
+        );
+    }
+
+    $game->out('
+      </table>
+    </td>
+  </tr>
+</table>
+    ');
+
+    mysql_close($fdb);
+
+    return;
+}
 
 
 
@@ -868,14 +963,21 @@ switch($portal_action) {
 
         $game->out('<br>');
 
+        display_lastposts();
+
+        $game->out('<br>');
 
         display_galaxymap();
-                $game->out('<br>');
+
+        $game->out('<br>');
+
 //        display_usermap();
-                $game->out('<br>');
+
+//        $game->out('<br>');
+
         display_skins();
 
-        
+
 
         $game->out('
 
