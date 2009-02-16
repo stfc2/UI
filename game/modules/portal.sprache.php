@@ -58,6 +58,16 @@ define ("GER_TEXT16", 'Portal:');
 
 define ("GER_TEXT17", 'Bitte votet f&uuml;r STFC');
 
+define ("GER_TEXT18", 'Aktuelles aus dem Forum:');
+
+define ("GER_TEXT19", 'Autor:');
+
+define ("GER_TEXT20", 'Antworten:');
+
+define ("GER_TEXT21", 'Last von:');
+
+define ("GER_TEXT22", 'Datum:');
+
 //English
 define ("ENG_TEXT0", 'Send');
 
@@ -94,6 +104,16 @@ define ("ENG_TEXT15", 'You have already voted in this poll');
 define ("ENG_TEXT16", 'Portal:');
 
 define ("ENG_TEXT17", 'Please vote for STFC');
+
+define ("ENG_TEXT18", 'Latest from the forum:');
+
+define ("ENG_TEXT19", 'Author:');
+
+define ("ENG_TEXT20", 'Replies:');
+
+define ("ENG_TEXT21", 'Last by:');
+
+define ("ENG_TEXT22", 'Date:');
 
 //Italian
 define ("ITA_TEXT0", 'Invia');
@@ -132,5 +152,14 @@ define ("ITA_TEXT16", 'Portale:');
 
 define ("ITA_TEXT17", 'Vota per STFC');
 
+define ("ITA_TEXT18", 'Ultime dal forum:');
+
+define ("ITA_TEXT19", 'Autore:');
+
+define ("ITA_TEXT20", 'Risposte:');
+
+define ("ITA_TEXT21", 'Ultima da:');
+
+define ("ITA_TEXT22", 'Data:');
 
 ?>
