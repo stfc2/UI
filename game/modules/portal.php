@@ -694,10 +694,10 @@ function display_lastposts()
         $game->out('
         <tr>
           <td valign="top">
-            <a href="'.$f_url.'?showtopic='.$topic_id.'&view=getnewpost"><span class="text_large">'.$topic_title.'</span></a><br>
-            <b>'.constant($game->sprache("TEXT19")).'</b> <a href="'.$f_url.'?showuser='.$author_id.'" >'.$author.'</a><br/>
+            <a href="'.$f_url.'?showtopic='.$topic_id.'&view=getnewpost" target=_blank><span class="text_large">'.$topic_title.'</span></a><br>
+            <b>'.constant($game->sprache("TEXT19")).'</b> <a href="'.$f_url.'?showuser='.$author_id.'" target=_blank>'.$author.'</a><br/>
             <b>'.constant($game->sprache("TEXT20")).'</b> '.$num_posts.'<br>
-            <b>'.constant($game->sprache("TEXT21")).'</b> <a href="'.$f_url.'?showuser='.$last_id.'">'.$last_author.'</a><br>
+            <b>'.constant($game->sprache("TEXT21")).'</b> <a href="'.$f_url.'?showuser='.$last_id.'" target=_blank>'.$last_author.'</a><br>
             <b>'.constant($game->sprache("TEXT22")).'</b> '.$posttime.'
           </td>
         </tr>'
@@ -935,7 +935,7 @@ switch($portal_action) {
        display_poll();
 //	display_spenden();
 
-	$game->out("<a href='http://www.galaxy-news.de/?page=charts&op=vote&game_id=1666' target='_blank'><img src='http://www.galaxy-news.de/images/vote.gif' border=0 alt='Die besten Browsergames in den Galaxy-News MMOG-Charts!'></a><br>".constant($game->sprache("TEXT17"))."<br><br><b>IRC-Chat: #stfc2 @ Quakenet</b><br><br>");
+       $game->out('<a href="http://www.stfc.it/index.php?a=spende"><img src="http://www.stfc.it/gfx/paypal.gif" border 0 alt="Supporta anche tu STFC!"></a><br><br><span class="text_large" style="color: #23F025"><blink>Supporta anche tu STFC!</blink></span><br><br>');
 
        display_news();
 
