@@ -21,60 +21,6 @@
 */
 
 //deutsch
-define ("GER_TEXT0", 'F&auml;higkeiten:');
-
-define ("GER_TEXT1", 'L. Waffen:');
-
-define ("GER_TEXT2", 'Schw. Waffen:');
-
-define ("GER_TEXT3", 'Pl. Waffen:');
-
-define ("GER_TEXT4", 'Schildst&auml;rke:');
-
-define ("GER_TEXT5", 'H&uuml;lle (HP):');
-
-define ("GER_TEXT6", 'Reaktion:');
-
-define ("GER_TEXT7", 'Bereitschaft:');
-
-define ("GER_TEXT8", 'Wendigkeit:');
-
-define ("GER_TEXT9", 'Erfahrung:');
-
-define ("GER_TEXT10", 'Warp:');
-
-define ("GER_TEXT11", 'Sensoren:');
-
-define ("GER_TEXT12", 'Tarnung:');
-
-define ("GER_TEXT13", 'Verbraucht Energie:');
-
-define ("GER_TEXT14", 'Liefert Energie:');
-
-define ("GER_TEXT15", 'Flotte:');
-
-define ("GER_TEXT16", 'Trockendock:');
-
-define ("GER_TEXT17", 'Schiffsklasse:');
-
-define ("GER_TEXT18", 'Rumpftyp:');
-
-define ("GER_TEXT19", 'Rasse:');
-
-define ("GER_TEXT20", 'H&uuml;llenzustand:');
-
-define ("GER_TEXT21", 'Leichte Waffen:');
-
-define ("GER_TEXT22", 'Schwere Waffen:');
-
-define ("GER_TEXT23", 'Planetare Waffen:');
-
-define ("GER_TEXT24", 'Energieverbrauch:');
-
-define ("GER_TEXT25", 'Crew:');
-
-define ("GER_TEXT26", '- Nicht belegt<br>');
-
 define ("GER_TEXT27", 'Du besitzt noch keine(n)');
 
 define ("GER_TEXT28", 'auf dem aktiven Planeten');
@@ -159,60 +105,6 @@ define ("GER_TEXT66", 'Assign');
 
 
 //English
-define ("ENG_TEXT0", 'Skills:');
-
-define ("ENG_TEXT1", 'L. weapons:');
-
-define ("ENG_TEXT2", 'H. weapons:');
-
-define ("ENG_TEXT3", 'Pl. weapons:');
-
-define ("ENG_TEXT4", 'Shield strength:');
-
-define ("ENG_TEXT5", 'Shell (HP):');
-
-define ("ENG_TEXT6", 'Reaction:');
-
-define ("ENG_TEXT7", 'Readiness:');
-
-define ("ENG_TEXT8", 'Agility:');
-
-define ("ENG_TEXT9", 'Experience:');
-
-define ("ENG_TEXT10", 'Warp:');
-
-define ("ENG_TEXT11", 'Sensors:');
-
-define ("ENG_TEXT12", 'Camouflage:');
-
-define ("ENG_TEXT13", 'Used energy:');
-
-define ("ENG_TEXT14", 'Energy supplied:');
-
-define ("ENG_TEXT15", 'Fleet:');
-
-define ("ENG_TEXT16", 'Dry dock:');
-
-define ("ENG_TEXT17", 'Ship\'s class:');
-
-define ("ENG_TEXT18", 'Hull type:');
-
-define ("ENG_TEXT19", 'Race:');
-
-define ("ENG_TEXT20", 'Hull condition:');
-
-define ("ENG_TEXT21", 'Light weapons:');
-
-define ("ENG_TEXT22", 'Heavy weapons:');
-
-define ("ENG_TEXT23", 'Planetary weapons:');
-
-define ("ENG_TEXT24", 'Energy consumption:');
-
-define ("ENG_TEXT25", 'Crew:');
-
-define ("ENG_TEXT26", '- Not used<br>');
-
 define ("ENG_TEXT27", 'You still don\'t possess a');
 
 define ("ENG_TEXT28", 'on the active planet');
@@ -275,7 +167,7 @@ define ("ENG_TEXT56", '<b>Ships in the dry dock</b><br>Here are all ships that a
 
 define ("ENG_TEXT57", 'Details');
 
-define ("ENG_TEXT58", 'In service since:');
+define ("ENG_TEXT58", 'In service:');
 
 define ("ENG_TEXT59", 'Create new fleet');
 
@@ -297,67 +189,13 @@ define ("ENG_TEXT66", 'Assign');
 
 
 //Italiano
-define ("ITA_TEXT0", 'Abilit&agrave;:');
-
-define ("ITA_TEXT1", 'Armi Leggere:');
-
-define ("ITA_TEXT2", 'Armi Pesanti:');
-
-define ("ITA_TEXT3", 'Armi Planetarie:');
-
-define ("ITA_TEXT4", 'Potenza Scudi:');
-
-define ("ITA_TEXT5", 'Punti Scafo (HP):');
-
-define ("ITA_TEXT6", 'Reazione:');
-
-define ("ITA_TEXT7", 'Prontezza:');
-
-define ("ITA_TEXT8", 'Agilit&agrave;:');
-
-define ("ITA_TEXT9", 'Esperienza:');
-
-define ("ITA_TEXT10", 'Curvatura (Warp):');
-
-define ("ITA_TEXT11", 'Sensori:');
-
-define ("ITA_TEXT12", 'Occultamento:');
-
-define ("ITA_TEXT13", 'Energia utilizzata:');
-
-define ("ITA_TEXT14", 'Energia prodotta:');
-
-define ("ITA_TEXT15", 'Flotta:');
-
-define ("ITA_TEXT16", 'Spazioporto:');
-
-define ("ITA_TEXT17", 'Classe Nave:');
-
-define ("ITA_TEXT18", 'Tipo Scafo:');
-
-define ("ITA_TEXT19", 'Specie:');
-
-define ("ITA_TEXT20", 'Condizioni Scafo:');
-
-define ("ITA_TEXT21", 'Armi Leggere:');
-
-define ("ITA_TEXT22", 'Armi Pesanti:');
-
-define ("ITA_TEXT23", 'Armi Planetarie:');
-
-define ("ITA_TEXT24", 'Consumo di Energia:');
-
-define ("ITA_TEXT25", 'Equipaggio:');
-
-define ("ITA_TEXT26", '- non installato<br>');
-
 define ("ITA_TEXT27", 'Ancora non possiedi un');
 
 define ("ITA_TEXT28", 'sul pianeta attivo');
 
 define ("ITA_TEXT29", 'Non c&#146;&egrave; alcuna nave selezionata');
 
-define ("ITA_TEXT30", 'Nesuna nave permessa &egrave stata selezionata');
+define ("ITA_TEXT30", 'Non &egrave; possibile compiere l&#146;operazione scelta sulla navi selezionate');
 
 define ("ITA_TEXT31", '<b>Seleziona le navi da riparare</b><br>In questa finestra puoi vedere una lista di tutte le navi che possono essere riparate.<br>Le navi possono essere riparate in parallelo.');
 
@@ -371,7 +209,7 @@ define ("ITA_TEXT35", 'Durata:');
 
 define ("ITA_TEXT36", 'Minuti');
 
-define ("ITA_TEXT37", 'Costi totale:');
+define ("ITA_TEXT37", 'Totale costi:');
 
 define ("ITA_TEXT38", 'Ripara');
 
@@ -383,13 +221,13 @@ define ("ITA_TEXT41", 'Unit&agrave;:');
 
 define ("ITA_TEXT42", 'Equipaggio:');
 
-define ("ITA_TEXT43", 'Imbarca/sbarca Equipaggio');
+define ("ITA_TEXT43", 'Imbarca/sbarca equipaggio');
 
 define ("ITA_TEXT44", '<b>Seleziona le navi da smantellare</b><br>In questa finestra puoi vedere una lista di tutte le navi che possono essere smantellate.<br>Le navi possono essere smantellate in parallelo.');
 
 define ("ITA_TEXT45", 'Risorse:');
 
-define ("ITA_TEXT46", 'Profitto totale:');
+define ("ITA_TEXT46", 'Totale profitto:');
 
 define ("ITA_TEXT47", 'Smantella');
 
@@ -397,27 +235,27 @@ define ("ITA_TEXT48", 'Non &egrave; stato indicato nessun nome per la nuova flot
 
 define ("ITA_TEXT49", 'Almeno una nave non &egrave; nello stesso Spazioporto del pianeta rispetto alle altre');
 
-define ("ITA_TEXT50", 'Errore nel creare una nuova Flotta');
+define ("ITA_TEXT50", 'Errore nel creare una nuova flotta');
 
-define ("ITA_TEXT51", 'La Flotta non esiste');
+define ("ITA_TEXT51", 'La flotta non esiste');
 
-define ("ITA_TEXT52", 'La Flotta non &egrave; nell&#146;orbita del pianeta attivo');
+define ("ITA_TEXT52", 'La flotta non &egrave; nell&#146;orbita del pianeta attivo');
 
-define ("ITA_TEXT53", 'Nessuna delle navi selezionate pu&ograve; essere spostata in una Flotta');
+define ("ITA_TEXT53", 'Nessuna delle navi selezionate pu&ograve; essere spostata in una flotta');
 
-define ("ITA_TEXT54", 'La Nave selezionata non esiste');
+define ("ITA_TEXT54", 'La nave selezionata non esiste');
 
-define ("ITA_TEXT55", 'Visualizzazione dettagliata della Nave selezionata');
+define ("ITA_TEXT55", 'Visualizzazione dettagliata della nave selezionata');
 
 define ("ITA_TEXT56", '<b>Navi nello Spazioporto</b><br>Qui tutte le navi sono attualmente fuori servizio per essere riparate / aggiornate / occupate, oltre i vascelli di recente produzione.<br><br><b>U</b>= Nessuna azione pu&ograve; essere compiuta sulla nave (pu&ograve; essere sotto asta, in riparazione o in smantellamento)<br><b>R</b>= Attualmente in Riparazione (incluso il periodo di latenza)<br><b>S</b>= Attualmente in Smantellamento (incluso il periodo di latenza)<br><b>B=xx%</b>= &Egrave; la % di truppe a bordo (viene visualizzata qualora tale valore sia sotto il 100%); non influisce sull&#146;efficienza della nave');
 
 define ("ITA_TEXT57", 'Dettagli');
 
-define ("ITA_TEXT58", 'In servizio da:');
+define ("ITA_TEXT58", 'Metti in servizio:');
 
-define ("ITA_TEXT59", 'Crea nuova Flotta');
+define ("ITA_TEXT59", 'Crea nuova flotta');
 
-define ("ITA_TEXT60", 'Unisci a Flotta');
+define ("ITA_TEXT60", 'Unisci a flotta');
 
 define ("ITA_TEXT61", 'Codice contratto:');
 
