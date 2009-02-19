@@ -41,7 +41,7 @@ Infatti prima di poter esser operativa, una nave deve essere inserita in una flo
 </p>
 <p align="justify">
 <b>Come faccio a creare una flotta?</b><br>
-Selezionare il men&ugrave; "<a href="'.parse_link('a=spacedock').'"><span class="highlight_link">'.$BUILDING_NAME[$game->player['user_race']][6].'</span></a>", tramite il mouse e l&#146;aiuto dei tasti <u>Ctrl</u> o <u>Shift</u>, selezionare dalla lista le navi che si desiderano unire in una flotta, quindi inserire il nome che si vuole dare alla flotta nel campo "In servizio da:" e premere il bottone <input class="button_nosize" type="submit" value ="Crea nuova Flotta">.
+Selezionare il men&ugrave; "<a href="'.parse_link('a=spacedock').'"><span class="highlight_link">'.$BUILDING_NAME[$game->player['user_race']][6].'</span></a>", tramite il mouse e l&#146;aiuto dei tasti <u>Ctrl</u> o <u>Shift</u>, selezionare dalla lista le navi che si desiderano unire in una flotta, quindi inserire il nome che si vuole dare alla flotta nel campo "Metti in servizio:" e premere il bottone <input class="button_nosize" type="submit" value ="Crea nuova flotta">.
 </p>
 
 ';
