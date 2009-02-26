@@ -89,11 +89,9 @@ define ("GER_TEXT59", 'Neue Flotte gr&uuml;nden');
 
 define ("GER_TEXT60", 'Flotte anschlie&beta;en');
 
-define ("GER_TEXT61", 'Namen:');
+define ("GER_TEXT61", 'Contract Code:');
 
-define ("GER_TEXT62", 'Contract Code:');
-
-define ("GER_TEXT63", 'Geba&uuml;de datum:');
+define ("GER_TEXT62", 'Geba&uuml;de datum:');
 
 define ("GER_TEXT63", 'No name for the ship was indicated');
 
@@ -173,11 +171,9 @@ define ("ENG_TEXT59", 'Create new fleet');
 
 define ("ENG_TEXT60", 'Connect fleet');
 
-define ("ENG_TEXT61", 'Name:');
+define ("ENG_TEXT61", 'Contract Code:');
 
-define ("ENG_TEXT62", 'Contract Code:');
-
-define ("ENG_TEXT63", 'Construction date:');
+define ("ENG_TEXT62", 'Construction date:');
 
 define ("ENG_TEXT63", 'No name for the ship was indicated');
 

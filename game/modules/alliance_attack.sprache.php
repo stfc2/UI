@@ -45,8 +45,6 @@ define ("GER_TEXT9", 'Befehl');
 
 define ("GER_TEXT10", 'Ankunft');
 
-define ("GER_TEXT11", 'Tactical Overview - Own Attacks');
-
 define ("GER_TEXT11", 'Taktische &Uuml;bersicht - Eigene Angriffe');
 
 define ("GER_TEXT12", 'Hier werden alle Angriffe deiner Allianz gegen andere Spieler aufgelistet. Hier werden ALLE Angriffe (sowohl auf Planeten wie auf Schiffe) aufgelistet.');

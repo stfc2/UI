@@ -130,6 +130,8 @@ define ("GER_PLAYERINFO", 'Spieler Info');
 
 define ("GER_COLONIZATION", 'Kolonisierung');
 
+define ("GER_KNOWNSYSTEMS", 'Bekannte Systeme');
+
 define ("GER_SENSORS", 'Sensoren');
 
 define ("GER_USERDIPLOMACY", 'User Diplomatie');
@@ -166,6 +168,10 @@ define ("GER_ALLYTAXES", 'Allianz Kasse');
 
 define ("GER_ALLYFORUM", 'Allianz Forum');
 
+define ("GER_ALLYSHIPS", 'Allianz Schiffe');
+
+define ("GER_ALLYCHAT", 'Allianz Chat');
+
 define ("GER_BUYTROOPS", 'Truppenkauf');
 
 define ("GER_SHIPS", 'Schiffe');
@@ -198,9 +204,6 @@ define ("GER_NOTEHIDE", 'Ausblenden');
 define ("GER_NOTESAVE", 'Sichern');
 
 define ("GER_NOTESHOW", 'Notizblock wieder anzeigen');
-
-// Help
-define ("GER_HELP", 'Hilfe');
 
 // Used by get_move_action_str
 define ("GER_MOVEWAIT", 'Anfliegen und im Orbit warten');
@@ -416,6 +419,8 @@ define ("ENG_PLAYERINFO", 'Player info');
 
 define ("ENG_COLONIZATION", 'Colonization');
 
+define ("ENG_KNOWNSYSTEMS", 'Known systems');
+
 define ("ENG_SENSORS", 'Sensors');
 
 define ("ENG_USERDIPLOMACY", 'User diplomacy');
@@ -452,6 +457,10 @@ define ("ENG_ALLYTAXES", 'Alliance fund');
 
 define ("ENG_ALLYFORUM", 'Alliance forum');
 
+define ("ENG_ALLYSHIPS", 'Alliance ships');
+
+define ("ENG_ALLYCHAT", 'Alliance chat');
+
 define ("ENG_BUYTROOPS", 'Buy troops');
 
 define ("ENG_SHIPS", 'Ships');
@@ -484,9 +493,6 @@ define ("ENG_NOTEHIDE", 'Hide');
 define ("ENG_NOTESAVE", 'Save');
 
 define ("ENG_NOTESHOW", 'Show Notepad again');
-
-// Help
-define ("ENG_HELP", 'Help');
 
 // Used by get_move_action_str
 define ("ENG_MOVEWAIT", 'Approach and wait in orbit');
@@ -702,6 +708,8 @@ define ("ITA_PLAYERINFO", 'Info giocatore');
 
 define ("ITA_COLONIZATION", 'Colonizzazione');
 
+define ("ITA_KNOWNSYSTEMS", 'Sistemi conosciuti');
+
 define ("ITA_SENSORS", 'Sensori');
 
 define ("ITA_USERDIPLOMACY", 'Diplomazia');
@@ -738,6 +746,10 @@ define ("ITA_ALLYTAXES", 'Cassa alleanza');
 
 define ("ITA_ALLYFORUM", 'Forum alleanza');
 
+define ("ITA_ALLYSHIPS", 'Navi alleanza');
+
+define ("ITA_ALLYCHAT", 'Chat alleanza');
+
 define ("ITA_BUYTROOPS", 'Compra truppe');
 
 define ("ITA_SHIPS", 'Navi');
@@ -770,9 +782,6 @@ define ("ITA_NOTEHIDE", 'Nascondi');
 define ("ITA_NOTESAVE", 'Salva');
 
 define ("ITA_NOTESHOW", 'Mostra blocco appunti');
-
-// Help
-define ("ITA_HELP", 'Aiuto');
 
 // Used by get_move_action_str
 define ("ITA_MOVEWAIT", 'Orbita stazionaria');
