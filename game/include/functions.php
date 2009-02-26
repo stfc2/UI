@@ -96,6 +96,7 @@ function GetTabbyAction($tab) {
 		'tactical_moves' => constant($game->sprache("SHIPMOVES")),
 		'tactical_player' => constant($game->sprache("PLAYERINFO")),
 		'tactical_kolo' => constant($game->sprache("COLONIZATION")),
+		'tactical_known' => constant($game->sprache("KNOWNSYSTEMS")),
 		'tactical_sensors' => constant($game->sprache("SENSORS")),
 		'user_diplomacy' => constant($game->sprache("USERDIPLOMACY")),
 		'alliance_main' => constant($game->sprache("ALLYMAIN")),
@@ -113,6 +114,8 @@ function GetTabbyAction($tab) {
 		'alliance_massmail' => constant($game->sprache("ALLYMASSMAIL")),
 		'alliance_taxes' => constant($game->sprache("ALLYTAXES")),
 		'alliance_board' => constant($game->sprache("ALLYFORUM")),
+		'alliance_ships' => constant($game->sprache("ALLYSHIPS")),
+		'alliance_chat' => constant($game->sprache("ALLYCHAT")),
 		'ships' => constant($game->sprache("SHIPS"))
 
 	);
