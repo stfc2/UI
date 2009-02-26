@@ -172,19 +172,19 @@ global $config;
           <td width="300">
 
         ');
-        if ($game->player['language']==GER)
+        if ($game->player['language']=="GER")
         {
            $game->out('<select name="user_language"><option value="GER" selected>'.constant($game->sprache("TEXT20")).'</option><option value="ENG">'.constant($game->sprache("TEXT21")).'</option><option value="ITA">'.constant($game->sprache("TEXT22")).'</option><option value="FRA">'.constant($game->sprache("TEXT23")).'</option><option value="SPA">'.constant($game->sprache("TEXT24")).'</option></select></td>'); 
         }
-        else if($game->player['language']==ITA)
+        else if($game->player['language']=="ITA")
         {
            $game->out('<select name="user_language"><option value="GER">'.constant($game->sprache("TEXT20")).'</option><option value="ENG">'.constant($game->sprache("TEXT21")).'</option><option value="ITA" selected>'.constant($game->sprache("TEXT22")).'</option><option value="FRA">'.constant($game->sprache("TEXT23")).'</option><option value="SPA">'.constant($game->sprache("TEXT24")).'</option></select></td>');
         }
-        else if($game->player['language']==FRA)
+        else if($game->player['language']=="FRA")
         {
            $game->out('<select name="user_language"><option value="GER">'.constant($game->sprache("TEXT20")).'</option><option value="ENG">'.constant($game->sprache("TEXT21")).'</option><option value="ITA">'.constant($game->sprache("TEXT22")).'</option><option value="FRA" selected>'.constant($game->sprache("TEXT23")).'</option><option value="SPA">'.constant($game->sprache("TEXT24")).'</option></select></td>');
         }
-        else if($game->player['language']==SPA)
+        else if($game->player['language']=="SPA")
         {
            $game->out('<select name="user_language"><option value="GER">'.constant($game->sprache("TEXT20")).'</option><option value="ENG">'.constant($game->sprache("TEXT21")).'</option><option value="ITA">'.constant($game->sprache("TEXT22")).'</option><option value="FRA">'.constant($game->sprache("TEXT23")).'</option><option value="SPA" selected>'.constant($game->sprache("TEXT24")).'</option></select></td>');
         }
@@ -993,7 +993,7 @@ $game->out('
 function display_gallery() {
     global $game, $RACE_DATA, $ACTUAL_TICK;
     if(!empty($message)) $game->out('<center><span class="sub_caption">'.$message.'</span></center><br>');
-    if (isset($_REQUEST['mesg'])) $_REQUEST['mesg']=stripslashes($_REQUEST['mesg']).'<br><br>';
+    if (isset($_REQUEST['mesg'])) { $_REQUEST['mesg']=stripslashes($_REQUEST['mesg']).'<br><br>'; } else { $_REQUEST['mesg']=''; }
     $game->out('<center><table border=0 cellspacing=2 cellpadding=2 width=300 class="style_outer">
     <tr><td>
     <span class="sub_caption2"><center>'.$_REQUEST['mesg'].'</center></span>
