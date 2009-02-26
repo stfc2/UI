@@ -114,7 +114,8 @@ if($module == 'planets' || isset($_GET['planet_type']))
     foreach($PLANETS_TEXT as $type => $data) {
         $type = strtolower($type);
 
-        if($type == strtolower($_GET['planet_type'])) {
+        /* 26/02/09 - AC: Check if it's currently present in the url request */
+        if(isset($_GET['planet_type']) && $type == strtolower($_GET['planet_type'])) {
             $high_start = '<span style="color: #FFFF00; font-weight: bold;">';
             $high_end = '</span>';
         }
