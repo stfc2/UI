@@ -289,7 +289,7 @@ define ("GER_DILITHIUM", 'Latinum');
 define ("GER_WORKERS2", 'Arbeiter');
 
 // Used by load_active_planet
-define ("GER_NEWPLANET3",'Hier hast du nun die Möglichkeit eine neue Heimat zu wählen.');
+define ("GER_NEWPLANET3",'Hier hast du nun die M&ouml;glichkeit eine neue Heimat zu w&auml;hlen.');
 
 define ("GER_STARTPOINT",'Startpunkt:');
 
