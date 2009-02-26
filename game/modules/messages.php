@@ -474,11 +474,11 @@ value="'.$message['id'].'"></td>
 							</tr>');
 		}
 
-	$links 	= navigation_show_pagelinks($page, $perpage, $inStat['messages'], 'a=messages&a2=inbox');
+	$links 	= navigation_show_pagelinks($page, $perpage, $sysStat['messages'], 'a=messages&a2=inbox');
 	$mark		= '<a href="'.parse_link('a=messages&rmarkall=1').'">'.constant($game->sprache("TEXT13")).'</a>';
 	$delete	= '<a href="'.parse_link('a=messages&srremoverequest=1').'">'.constant($game->sprache("TEXT19")).'</a>';
 
-	if($sysStatunr['unreadMessages'] != 0)
+	if($sysStatunr['messages'] != 0)
 	{
 		$links2 = $mark;
 		if($sysStat['messages'] != 0)
