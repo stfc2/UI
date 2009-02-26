@@ -652,7 +652,7 @@ global $userquery;
 global $RACE_DATA;
 
 $search_name=htmlspecialchars($_REQUEST['search']);
-$_REQUEST['start']=$_REQUEST['start'];
+//$_REQUEST['start']=$_REQUEST['start'];
 
 
 if (isset($_REQUEST['start'])) {$focus=$_REQUEST['start'];}
@@ -906,7 +906,7 @@ global $game;
 
 
 $search_name=htmlspecialchars($_REQUEST['search']);
-$_REQUEST['start']=$_REQUEST['start'];
+//$_REQUEST['start']=$_REQUEST['start'];
 if (isset($_REQUEST['start'])) {$focus=$_REQUEST['start'];}
 $start=$focus;
 
