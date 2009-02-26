@@ -1157,15 +1157,14 @@ if(!empty($_GET['set_alert_phase'])) {
 }
 
     // Anfang lesen Homebase Koords
+    if($fleet['homebase']!=0) {
+        $planet_id = $fleet['homebase'];
+        $sql = 'SELECT * FROM planets WHERE planet_id = '.$planet_id;
 
-    $planet_id = $fleet['homebase'];
+        $planet_koords = $db->queryrow($sql);
 
-    $sql = 'SELECT * FROM planets WHERE planet_id = '.$planet_id;
-
-    $planet_koords = $db->queryrow($sql);
-   
-    $system=$db->queryrow('SELECT system_x, system_y FROM starsystems WHERE system_id = '.$planet_koords['system_id']);
-
+        $system=$db->queryrow('SELECT system_x, system_y FROM starsystems WHERE system_id = '.$planet_koords['system_id']);
+    }
     // Ende lesen Homebasekoords
 
 
