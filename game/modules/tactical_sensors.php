@@ -149,7 +149,7 @@ while ($move = $db->fetchrow($q_moves))
             $sensor3 = get_fleet_details($fleet_ids[$move['dest_id']]);
         else
         {
-            $sensor3['sum_sensors'] = ($move['dest_sensors'] + 1) * 200;
+            $sensor3['sum_sensors'] = ($move['dest_sensors'] + 1) * PLANETARY_SENSOR_VALUE;
             $sensor3['sum_cloak'] = 0;
         }
 

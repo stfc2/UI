@@ -220,9 +220,13 @@ define('SHIP_IN_REPAIR', 1);
 
 define('SHIP_IN_REFIT', 2);
 
-// Valore indicativo di controllo decadenza scafo
+// Indicative value of hull loss
 
 define('SHIP_RUST_CHECK', 700);
+
+// Indicative value of the sensor's power, reference value = 200
+
+define ('PLANETARY_SENSOR_VALUE', 200);
 
 
 // Planets and colonies names
