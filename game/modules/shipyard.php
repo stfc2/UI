@@ -34,13 +34,15 @@ $game->out('<span class="caption">'.$BUILDING_NAME[$game->player['user_race']][7
 
 
 
-function ComponentMetRequirements($cat_id,$comp_id,$comp, $ship)
+function ComponentMetRequirements($cat_id,$comp_id, $ship)
 
 {
 
-global $db,$game;
+global $db,$game,$ship_components;
 
 if ($comp_id<0) return 1;
+
+$comp = $ship_components[$game->player['user_race']][$cat_id][$comp_id];
 
 if ($comp['torso_'.($ship+1)]!=1) return 0;
 
@@ -89,7 +91,7 @@ function TemplateMetRequirements($template)
 
 global $game;
 
-global $ship_components;
+//global $ship_components;
 
 if ($game->player['user_points']<GlobalTorsoReq($template['ship_torso'])) { return 0; }
 
@@ -97,25 +99,25 @@ if ($game->planet['planet_points']<LocalTorsoReq($template['ship_torso'])) { ret
 
 if(!ColoMetRestriction($template)) return 0;
 
-if (!ComponentMetRequirements(0,$template['component_1'],$ship_components[$game->player['user_race']][0][$template['component_1']],$template['ship_torso'])) return 0;
+if (!ComponentMetRequirements(0,$template['component_1'],$template['ship_torso'])) return 0;
 
-if (!ComponentMetRequirements(1,$template['component_2'],$ship_components[$game->player['user_race']][1][$template['component_2']],$template['ship_torso'])) return 0;
+if (!ComponentMetRequirements(1,$template['component_2'],$template['ship_torso'])) return 0;
 
-if (!ComponentMetRequirements(2,$template['component_3'],$ship_components[$game->player['user_race']][2][$template['component_3']],$template['ship_torso'])) return 0;
+if (!ComponentMetRequirements(2,$template['component_3'],$template['ship_torso'])) return 0;
 
-if (!ComponentMetRequirements(3,$template['component_4'],$ship_components[$game->player['user_race']][3][$template['component_4']],$template['ship_torso'])) return 0;
+if (!ComponentMetRequirements(3,$template['component_4'],$template['ship_torso'])) return 0;
 
-if (!ComponentMetRequirements(4,$template['component_5'],$ship_components[$game->player['user_race']][4][$template['component_5']],$template['ship_torso'])) return 0;
+if (!ComponentMetRequirements(4,$template['component_5'],$template['ship_torso'])) return 0;
 
-if (!ComponentMetRequirements(5,$template['component_6'],$ship_components[$game->player['user_race']][5][$template['component_6']],$template['ship_torso'])) return 0;
+if (!ComponentMetRequirements(5,$template['component_6'],$template['ship_torso'])) return 0;
 
-if (!ComponentMetRequirements(6,$template['component_7'],$ship_components[$game->player['user_race']][6][$template['component_7']],$template['ship_torso'])) return 0;
+if (!ComponentMetRequirements(6,$template['component_7'],$template['ship_torso'])) return 0;
 
-if (!ComponentMetRequirements(7,$template['component_8'],$ship_components[$game->player['user_race']][7][$template['component_8']],$template['ship_torso'])) return 0;
+if (!ComponentMetRequirements(7,$template['component_8'],$template['ship_torso'])) return 0;
 
-if (!ComponentMetRequirements(8,$template['component_9'],$ship_components[$game->player['user_race']][8][$template['component_9']],$template['ship_torso'])) return 0;
+if (!ComponentMetRequirements(8,$template['component_9'],$template['ship_torso'])) return 0;
 
-if (!ComponentMetRequirements(9,$template['component_10'],$ship_components[$game->player['user_race']][9][$template['component_10']],$template['ship_torso'])) return 0;
+if (!ComponentMetRequirements(9,$template['component_10'],$template['ship_torso'])) return 0;
 
 
 //if ($game->planet['planet_points']<TorsoRequirements($template['ship_torso'],0) || $game->player['user_points']<TorsoRequirements($template['ship_torso'],0)) return 0;
@@ -217,6 +219,8 @@ function CanAffordTemplate($template,$player,$planet)
 
 {
 
+global $game;
+
 // Calculate how many types of the template could be build:
 
 if ($template['resource_1']!=0) $num[0]=floor($planet['resource_1']/$template['resource_1']); else $num[0]=9999;
@@ -241,7 +245,8 @@ if ($template['min_unit_4']!=0) $num[9]=floor($planet['unit_4']/$template['min_u
 
 // Non si possono costruire piu' di user_max_colo colonizzatrice alla volta
 if($template['ship_torso'] == 2 && $template['ship_class'] == 0) {
-	if (($game->player['user_max_colo'] != 0) && (min($num) > $game->player['user_max_colo']))	return (int)$game->player['user_max_colo'];
+	if (($game->player['user_max_colo'] != 0) && (min($num) > $game->player['user_max_colo']))
+		return (int)$game->player['user_max_colo'];
 }
 return min($num);
 
@@ -1021,7 +1026,7 @@ if ($template['ship_torso']!=$torso_num)
 
 $template['buildtime']=$template['buildtime']+round($template['buildtime']*0.3*(0.9-(0.1*$game->planet['building_8'])),0);
 
-unset($maxnum);
+$maxnum = 0;
 
 if (!TemplateMetRequirements($template))
 
