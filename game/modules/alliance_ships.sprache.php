@@ -140,7 +140,7 @@ define ("GER_TEXT64", 'Hüllenzustand:');
 
 define ("GER_TEXT65", 'Energieverbrauch:');
 
-define ("GER_TEXT56", '- Nicht belegt<br>');
+define ("GER_TEXT66", '- Nicht belegt<br>');
 
 define ("GER_TEXT67", 'Du hast nicht die erforderlichen Rechte zum Betrachten/Bearbeiten der Seite');
 

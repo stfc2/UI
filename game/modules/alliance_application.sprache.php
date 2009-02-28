@@ -74,7 +74,7 @@ define ("GER_TEXT25", 'Du bist der Allianz beigetreten.');
 
 define ("GER_TEXT26", 'hat die Allianz <b>betreten</b>');
 
-define ("GER_TEXT27". ' wurde abgelehnt.');
+define ("GER_TEXT27", ' wurde abgelehnt.');
 
 define ("GER_TEXT28", 'Präsident');
 
@@ -167,7 +167,7 @@ define ("ENG_TEXT25", 'You are joining the alliance.');
 
 define ("ENG_TEXT26", 'has <b>entered</b> the Alliance');
 
-define ("ENG_TEXT27". 'was rejected.');
+define ("ENG_TEXT27", 'was rejected.');
 
 define ("ENG_TEXT28", 'President');
 

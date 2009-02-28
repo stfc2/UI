@@ -220,4 +220,5 @@ define ("ITA_TEXT29", 'Presidente');
 define ("ITA_TEXT30", 'Diplomatico');
 
 define ("ITA_TEXT31", 'Ex Membro');
+
 ?>
