@@ -303,6 +303,12 @@ else {
 [05:11:18] <TAP> if you have nen run, then simply everything fits
 [05:11:24] <TAP> I overtake gladly ;)
 */
+
+/* 26/02/09 - AC: Check if it's currently present in the url request */
+if(!isset($_REQUEST['sort'])) $_REQUEST['sort'] = 0;
+if(!isset($_REQUEST['member_list'])) $_REQUEST['member_list'] = 0;
+/* */
+
 if($_REQUEST['sort']==1)
 {
 if($_REQUEST['member_list']==1) 
