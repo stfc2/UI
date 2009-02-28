@@ -35,7 +35,7 @@ $action = '404';
 $main_html = '';
 
 if(!include('pages/'.$action.'.php')) {
-    $main_html = '<br><br><br><br><center><span style="font-size: 20px;">Die gewählte Seite "'.$action.'" existiert nicht</span></center>';
+    $main_html = '<br><br><br><br><center><span style="font-size: 20px;">The selected page "'.$action.'" does not exists</span></center>';
 }
 
 ?>
@@ -50,8 +50,8 @@ if(!include('pages/'.$action.'.php')) {
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
-  <meta name="description" content="ST: Galaxy Conquest ist ein kostenloses Browser basiertes Multiplayerspiel, indem Sie in der Rolle verschiedener Rassen und Völker das Universum übernehmen und die Geschichte neu schreiben können.">
-  <meta name="keywords" content="star trek, startrek, galaxy, conquest, universe, game, gratis, kostenlos, spiel, multiplayer, strategie, onlinegame, bbg, free, browser, based, galaxie, universum, klingon, klingonen, federation, föderation">
+  <meta name="description" content="ST: Frontline Combat is a free browser based multiplayer game, take the role of different races and peoples of the universe and rewrite history.">
+  <meta name="keywords" content="star trek, startrek, galaxy, conquest, universe, game, gratis, kostenlos, spiel, multiplayer, strategy, strategie, onlinegame, bbg, free, browser, based, galaxie, universum, klingon, klingonen, federation, f&ouml;deration">
   <meta name="author" content="Florian Brede & Philipp Schmidt">
   <meta name="publisher" content="Florian Brede & Philipp Schmidt">
   <meta name="copyright" content="Paramount Pic., Brede, Schmidt">

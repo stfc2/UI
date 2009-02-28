@@ -32,7 +32,7 @@ define ("GER_TEXT3", 'Du bestitzt nicht die erforderlichen Berechtigungen um die
 
 define ("GER_TEXT4", 'Der Spieler ist nicht in deiner Allianz');
 
-define ("GER_TEXT5", 'Die Rechte des Pr&auml;sidenten können nicht ge&auml;ndert werden!');
+define ("GER_TEXT5", 'Die Rechte des Pr&auml;sidenten k&ouml;nnen nicht ge&auml;ndert werden!');
 
 define ("GER_TEXT6", 'Du kannst deine eigenen Rechte nicht &auml;ndern!');
 

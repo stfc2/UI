@@ -36,11 +36,11 @@ define ("GER_TEXT6", 'Allianz Vorlage');
 
 define ("GER_TEXT7", 'Bewerbungstext:');
 
-define ("GER_TEXT8", 'Zurück');
+define ("GER_TEXT8", 'Zur&uuml;ck');
 
-define ("GER_TEXT9", 'Bestätigen');
+define ("GER_TEXT9", 'Best&auml;tigen');
 
-define ("GER_TEXT10", 'Du bestitzt nicht die erforderlichen Berechtigungen um diesen Vorgang auszuführen.');
+define ("GER_TEXT10", 'Du bestitzt nicht die erforderlichen Berechtigungen um diesen Vorgang auszuf&uuml;hren.');
 
 define ("GER_TEXT11", 'Beworben am:');
 
@@ -62,7 +62,7 @@ define ("GER_TEXT19", 'Planeten:');
 
 define ("GER_TEXT20", 'Aktionen:');
 
-define ("GER_TEXT21", 'Zurück zur Übersicht');
+define ("GER_TEXT21", 'Zur&uuml;ck zur &Uuml;bersicht');
 
 define ("GER_TEXT22", 'Du bist nicht in der Allianz an die dieses Angebot ging!');
 
@@ -76,7 +76,7 @@ define ("GER_TEXT26", 'hat die Allianz <b>betreten</b>');
 
 define ("GER_TEXT27", ' wurde abgelehnt.');
 
-define ("GER_TEXT28", 'Präsident');
+define ("GER_TEXT28", 'Pr&auml;sident');
 
 define ("GER_TEXT29", 'Member');
 
@@ -92,19 +92,19 @@ define ("GER_TEXT34", 'Bewerbung abgelehnt');
 
 define ("GER_TEXT35", 'Bewerbung angenommen');
 
-define ("GER_TEXT36", 'Bewerben nicht möglich');
+define ("GER_TEXT36", 'Bewerben nicht m&ouml;glich');
 
 define ("GER_TEXT37", 'Die Allianz hat das Bewerben nicht erlaubt');
 
 define ("GER_TEXT38", 'Du hast dich bereits bei einer Allianz beworben.');
 
-define ("GER_TEXT39", 'Sicher das du deine Bewerbung zurückziehen möchtest?');
+define ("GER_TEXT39", 'Sicher das du deine Bewerbung zur&uuml;ckziehen m&ouml;chtest?');
 
 define ("GER_TEXT40", 'Ja');
 
 define ("GER_TEXT41", 'Nein');
 
-define ("GER_TEXT42", 'Du kannst nur Bewerbungen löschen, wenn du auch welche gestellt hast.');
+define ("GER_TEXT42", 'Du kannst nur Bewerbungen l&ouml;schen, wenn du auch welche gestellt hast.');
 
 define ("GER_TEXT43", 'Sie haben sich erfolgreich beworben.');
 
@@ -115,7 +115,7 @@ define ("GER_TEXT44", 'Allianz-Bewerbungen');
 //English
 define ("ENG_TEXT0", 'You are already a member of an alliance');
 
-define ("ENG_TEXT1", 'You aren\`t a member of an alliance');
+define ("ENG_TEXT1", 'You aren#146;t a member of an alliance');
 
 define ("ENG_TEXT2", 'You already applied with an alliance.');
 

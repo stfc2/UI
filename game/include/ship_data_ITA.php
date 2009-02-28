@@ -349,7 +349,7 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 
-    	// K´T´Inga
+    	// K'T'Inga
 
 	    5 => array(
 

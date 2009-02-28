@@ -72,21 +72,21 @@ define ("GER_TEXT23", 'Dies gibt die Position in der Galaxie an<br>Sektor-Positi
 
 define ("GER_TEXT24", 'Position/Koordinaten');
 
-define ("GER_TEXT25", 'Dieser Wert gibt an, wieviele Rohstoffe von jedem Typ maximal auf dem Planeten gelagert werden können.<br>Dieser Wert ist festgesetzt und l&auml;sst sich nur durch Ausbau der ver&auml;ndern');
+define ("GER_TEXT25", 'Dieser Wert gibt an, wieviele Rohstoffe von jedem Typ maximal auf dem Planeten gelagert werden k&ouml;nnen.<br>Dieser Wert ist festgesetzt und l&auml;sst sich nur durch Ausbau der ver&auml;ndern');
 
 define ("GER_TEXT26", 'Maximale Ressourcen');
 
-define ("GER_TEXT27", 'Dieser Wert gibt an, wieviele der maximalen Kampfeinheiten auf dem Planeten noch unbesetzt sind.<br>Diese Zahl variiert von Planet zu Planet und kann durch Terraforming um bis zu 5000 erhöht werden.<br>Je nach Einheitentyp werden unterschiedlich viele Pl&auml;tze besetzt:');
+define ("GER_TEXT27", 'Dieser Wert gibt an, wieviele der maximalen Kampfeinheiten auf dem Planeten noch unbesetzt sind.<br>Diese Zahl variiert von Planet zu Planet und kann durch Terraforming um bis zu 5000 erh&ouml;ht werden.<br>Je nach Einheitentyp werden unterschiedlich viele Pl&auml;tze besetzt:');
 
-define ("GER_TEXT28", 'benötigt 2 Pl&auml;tze');
+define ("GER_TEXT28", 'ben&ouml;tigt 2 Pl&auml;tze');
 
-define ("GER_TEXT29", 'benötigt 3 Pl&auml;tze');
+define ("GER_TEXT29", 'ben&ouml;tigt 3 Pl&auml;tze');
 
-define ("GER_TEXT30", 'benötigt 4 Pl&auml;tze');
+define ("GER_TEXT30", 'ben&ouml;tigt 4 Pl&auml;tze');
 
 define ("GER_TEXT31", 'Freie Einheiten');
 
-define ("GER_TEXT32", 'Dieser Wert gibt an, wieviele der maximalen Arbeiter auf dem Planeten noch unbesetzt sind.<br>Diese Zahl variiert von Planet zu Planet und kann durch Terraforming um bis zu 5000 erhöht werden.');
+define ("GER_TEXT32", 'Dieser Wert gibt an, wieviele der maximalen Arbeiter auf dem Planeten noch unbesetzt sind.<br>Diese Zahl variiert von Planet zu Planet und kann durch Terraforming um bis zu 5000 erh&ouml;ht werden.');
 
 define ("GER_TEXT33", 'Freie Arbeiter');
 

@@ -32,7 +32,7 @@ ob_implicit_flush(0);
 
 
 // #############################################################################
-// Konstanten
+// Constants
 define('TPL_MGR_EXE', "template_manager.php");
 define('IN_SCHEDULER', false);
 
@@ -51,18 +51,18 @@ include('template_manager.sprache.php');
 
 
 // #############################################################################
-// SQL-Objekt für Datenbankzugriff
+// SQL object for database access
 $db = new sql($config['server'].":".$config['port'], $config['game_database'], $config['user'], $config['password']); // create sql-object for db-connection
 if(isset($_GET['sql_debug'])) $db->debug = true;
 
 
 // #############################################################################
-// Game-Objekt
+// Game object
 $game = new game();
 
 
 // #############################################################################
-// Config laden und auswerten
+// Load and evaluate config
 $game->load_config();
 $ACTUAL_TICK = $NEXT_TICK = 0;
 
@@ -439,9 +439,9 @@ echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
 
 
-  <meta name="description" content="ST: Galaxy Conquest ist ein kostenloses Browser basiertes Multiplayerspiel, indem Sie in der Rolle verschiedener Rassen und Völker das Universum übernehmen und die Geschichte neu schreiben können.">
+  <meta name="description" content="ST: Frontline Combat is a free browser based multiplayer game, take the role of different races and peoples of the universe and rewrite history.">
 
-  <meta name="keywords" content="star trek, startrek, galaxy, conquest, universe, game, gratis, kostenlos, spiel, multiplayer, strategie, onlinegame, bbg, free, browser, based, galaxie, universum, klingon, klingonen, federation, föderation">
+  <meta name="keywords" content="star trek, startrek, galaxy, conquest, universe, game, gratis, kostenlos, spiel, multiplayer, strategy, strategie, onlinegame, bbg, free, browser, based, galaxie, universum, klingon, klingonen, federation, f&ouml;deration">
 
   <meta name="author" content="Florian Brede & Philipp Schmidt">
 
@@ -449,13 +449,13 @@ echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
   <meta name="copyright" content="Paramount Pic., Brede, Schmidt">
 
-  <meta name="page-topic" content="Star Trek Online Spiel">
+  <meta name="page-topic" content="Star Trek Online Game">
 
-  <meta name="date" content="2003-06-22">
+  <meta name="date" content="2009-02-28">
 
-  <meta name="content-language" content="de">
+  <meta name="content-language" content="en">
 
-  <meta name="page-type" content="spiel">
+  <meta name="page-type" content="game">
 
   <meta name="robots" content="index,nofollow">
 
