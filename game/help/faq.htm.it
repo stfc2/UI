@@ -134,9 +134,10 @@ Che cosa pu&ograve; essere perso in seguito a un attacco? (strutture, difese, tr
 	</tr>
 	<tr>
 		<td valign="top"><b>Come funzionano le varie condizioni di allarme per le flotte (<font color=#00FF00>Verde</font>, <font color=#FFFF00>Giallo</font>, <font color=#FF0000>Rosso</font>)?</b></td>
-		<td valign="top" align="justify"><ul><li><font color=#00FF00>Verde</font>: le navi con questo livello di allarme non attaccano nessuna nave in arrivo a meno che queste non siano in allarme rosso visto che scattando il combattimento le navi si difenderanno.</li>
-		<li><font color=#FFFF00>Giallo</font>: le navi reagiscono prontamente a qualsiasi attacco subiscano.</li>
-		<li><font color=#FF0000>Rosso</font>: le navi attaccano a vista qualsiasi vascello o altro che non venga riconosciuto/a come amico/a o alleato/a.</li></ul></td>
+		<td valign="top" align="justify">Prima di tutto va detto che tale condizione di allarme determina solamente le regole di ingaggio a scopo difensivo. Il livello di allarme con cui una flotta approccia l'orbita di un pianeta &egrave; ininfluente.
+		<ul><li><font color=#00FF00>Verde</font>: le navi con questo livello di allarme non attaccano nessuna nave in arrivo.<br>Ovviamente si difenderanno da un'attacco diretto (in pratica: non reagiranno ad un attacco rivolto al pianeta, ma solo a se stesse).</li>
+		<li><font color=#FFFF00>Giallo</font>: le navi attaccheranno navi in arrivo con ordini offensivi e/o agiranno di concerto ad eventuali altre flotte proprie o alleate sotto attacco (in pratica: le flotte in questo stato di allarme reagiranno anche se ad essere attaccata sar&agrave; un'altra flotta).</li>
+		<li><font color=#FF0000>Rosso</font>: le navi attaccano a vista qualsiasi vascello che non venga riconosciuto/a come amico/a o alleato/a a prescindere dall'ordine ad esse impartito (offensivo o meno).</li></ul></td>
 	</tr>
 	<tr>
 		<td valign="top"><b>Ho la mia prima astronave! Ma il sistema non me la fa spostare...come posso fare?</b></td>
@@ -152,6 +153,11 @@ Che cosa pu&ograve; essere perso in seguito a un attacco? (strutture, difese, tr
 	</tr>
 	</table>
 </td>
+</tr>
+</tr>
+	<td align="justify">
+		Versione FAQ 1.0 - 09/02/09
+	</td>
 </tr>
 </table>
 </body>
