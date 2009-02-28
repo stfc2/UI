@@ -63,7 +63,7 @@ $num=0;
 
 
 
-for ($t=0; $t<13; $t++)
+for ($t=0; $t<12; $t++)
 {
 if ($comp['torso_'.($t+1)]==1 && $first!=1) { $text.=',&nbsp;'.$SHIP_TORSO[$game->player['user_race']][$t][29].''; $num++;}
 if ($comp['torso_'.($t+1)]==1 && $first==1) { $text.=$SHIP_TORSO[$game->player['user_race']][$t][29].''; $first=0; $num++;}
@@ -102,7 +102,7 @@ elseif($resource==2) {
 return round($price,0);
 }
 
-function GetCatResearchTime($level,$cat_id,$comp)
+function GetCatResearchTime($level,$cat_id)
 {
 global $db;
 global $game;
@@ -432,26 +432,26 @@ $tmp = strtr(html_entity_decode($components['name']), $trans);
 if (strlen($tmp)>13)
 {
 
-if($components['text_category'] !=null)
+/*if($components['text_category'] !=null)
 {
 
 //$catname='<a href="javascript:void(0);" onmouseover="return overlib(\''.$components['text_category'].'\',CAPTION,\''.$components['name'].'\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color="#FFFFFF">'.substr($components['name'], 0,11);
 $catname='<a href="javascript:void(0);" onmouseover="return overlib(\''.$components['text_category'].'\',CAPTION,\''.$components['name'].'\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color="#FFFFFF">'.substr($tmp, 0,11);
 $catname=$catname.'...</font></a>';
-}else{
+}else{*/
 //$catname='<a href="javascript:void(0);" onmouseover="return overlib(\'\',CAPTION,\''.$components['name'].'\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color="#FFFFFF">'.substr($components['name'], 0,11);
 $catname='<a href="javascript:void(0);" onmouseover="return overlib(\'\',CAPTION,\''.$components['name'].'\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color="#FFFFFF">'.substr($tmp, 0,11);
 $catname=$catname.'...</font></a>';
-}
+/*}*/
 }
 else
 {
-if($components['text_category'] !=null)
+/*if($components['text_category'] !=null)
 {
 $catname='<a href="javascript:void(0);" onmouseover="return overlib(\''.$components['text_category'].'\',CAPTION,\''.$components['name'].'\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color="#FFFFFF">'.$components['name'].'</font></a>';
-}else{
+}else{*/
 $catname=$components['name'];
-}
+/*}*/
 }
 
 if ($game->planet['catresearch_'.($key+1)]>=$game->planet['building_9'] && $game->planet['building_9']<9) // Wenn man nicht erst Forschungszentrum hochbauen muss
