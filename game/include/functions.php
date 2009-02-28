@@ -96,6 +96,7 @@ function GetTabbyAction($tab) {
 		'tactical_moves' => constant($game->sprache("SHIPMOVES")),
 		'tactical_player' => constant($game->sprache("PLAYERINFO")),
 		'tactical_kolo' => constant($game->sprache("COLONIZATION")),
+		'tactical_known' => constant($game->sprache("KNOWNSYSTEMS")),
 		'tactical_sensors' => constant($game->sprache("SENSORS")),
 		'user_diplomacy' => constant($game->sprache("USERDIPLOMACY")),
 		'alliance_main' => constant($game->sprache("ALLYMAIN")),
@@ -113,6 +114,8 @@ function GetTabbyAction($tab) {
 		'alliance_massmail' => constant($game->sprache("ALLYMASSMAIL")),
 		'alliance_taxes' => constant($game->sprache("ALLYTAXES")),
 		'alliance_board' => constant($game->sprache("ALLYFORUM")),
+		'alliance_ships' => constant($game->sprache("ALLYSHIPS")),
+		'alliance_chat' => constant($game->sprache("ALLYCHAT")),
 		'ships' => constant($game->sprache("SHIPS"))
 
 	);
@@ -526,6 +529,7 @@ function GetVisibility($sensor1,$cloak1,$ships1,$sensor2,$cloak2,$sensor3,$fligh
 	// Calculate fleet visibility only for outer system flights
 	if($flight_duration > 6) {
 		// Larger the fleet, easier the detection on sensor; cap to 300 incoming ships
+		if($ships1 > 299) $ships1 = 299;
 		$fleet_signature = 1300-($ships1/2.12)-pow($ships1/8.803,2);
 		if ($fleet_signature < 1) $fleet_signature = 1;
 		if ($fleet_signature > 1300) $fleet_signature = 1300;
@@ -551,7 +555,7 @@ function GetVisibility($sensor1,$cloak1,$ships1,$sensor2,$cloak2,$sensor3,$fligh
 
 		$visibility=round(($cloak/$sensor)*100);
 		if ($visibility<20) $visibility=20;
-		if ($visibility>100) $visibility=100;
+		if ($visibility>85) $visibility=85;
 	}
 	else
 		// Standard visibility for inter planet flights
@@ -1562,10 +1566,9 @@ echo'
 			if($this->SITTING_MODE) {
 				if ($this->player['num_sitting']>=0)
 				{
-					/* 22/06/08 - AC: At least for this summer, update field last_active also with sitting */
+					/* 07/01/09 - AC: Removed update field last_active with sitting */
 					$sql = 'UPDATE user
 					        SET num_sitting=num_sitting+1,
-					            last_active = '.$this->TIME.'
 					        WHERE user_id = '.$this->uid;
 					$db->query($sql);
 				}
