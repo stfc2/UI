@@ -20,13 +20,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-//include('mines.sprache.php');
-
-
-if ($game->planet['workermine_1']<100) $game->planet['workermine_1']=100;
-if ($game->planet['workermine_2']<100) $game->planet['workermine_2']=100;
-if ($game->planet['workermine_3']<100) $game->planet['workermine_3']=100;
-
 function ResourcesPerTickMetal() {
 	$rid=0;
     global $RACE_DATA,$PLANETS_DATA, $addres, $game;
@@ -167,6 +160,12 @@ else {
     $max_metal_worker = $game->planet['building_2'] * 100 + 100;
 	$max_minerals_worker = $game->planet['building_3'] * 100 + 100;
     $max_latinum_worker = $game->planet['building_4'] * 100 + 100;
+
+    // 24/02/09 - AC: This check was misplaced (no init_player() called yet) but.. it's really needed?
+    if ($game->planet['workermine_1']<100) $game->planet['workermine_1']=100;
+    if ($game->planet['workermine_2']<100) $game->planet['workermine_2']=100;
+    if ($game->planet['workermine_3']<100) $game->planet['workermine_3']=100;
+    //
 
     if( ($game->planet['workermine_1'] + $game->planet['resource_4']) < $max_metal_worker) $max_metal_worker = $game->planet['workermine_1'] + $game->planet['resource_4'];
     if( ($game->planet['workermine_2'] + $game->planet['resource_4']) < $max_minerals_worker) $max_minerals_worker = $game->planet['workermine_2'] + $game->planet['resource_4'];
