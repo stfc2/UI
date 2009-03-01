@@ -67,7 +67,7 @@ define ("GER_TEXT22",'Diplomat');
 
 define ("GER_TEXT23",'Admin');
 
-define ("GER_TEXT24",'Präsident');
+define ("GER_TEXT24",'Pr&auml;sident');
 
 define ("GER_TEXT25",'Vertr&auml;ge:');
 
@@ -81,7 +81,7 @@ define ("GER_TEXT29",'Krieg');
 
 define ("GER_TEXT30",'NAP');
 
-define ("GER_TEXT31",'Bündnis');
+define ("GER_TEXT31",'B&uuml;ndnis');
 
 define ("GER_TEXT32",'Der angegebene Spieler konnte leider nicht gefunden werden.');
 
@@ -111,7 +111,7 @@ define ("GER_TEXT44",'Status:');
 
 define ("GER_TEXT45",'Nachricht schicken');
 
-define ("GER_TEXT46",'Bündnis vorschlagen');
+define ("GER_TEXT46",'B&uuml;ndnis vorschlagen');
 
 define ("GER_TEXT47",'Allianz History:');
 
@@ -131,7 +131,7 @@ define ("GER_TEXT54",'Koord.:');
 
 define ("GER_TEXT55",'Klasse:');
 
-define ("GER_TEXT56",'Persönliche B&uuml;ndnisse:');
+define ("GER_TEXT56",'Pers&ouml;nliche B&uuml;ndnisse:');
 
 define ("GER_TEXT57",'besteht seit:');
 
