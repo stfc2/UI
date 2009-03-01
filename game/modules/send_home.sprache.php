@@ -51,7 +51,7 @@ define ("GER_TEXT13", 'Orbs d&uuml;rfen nicht bewegt werden.');
 
 define ("GER_TEXT14", 'Mit aktiviertem Angriffsschutz d&uuml;rfen keine unbewohnten Planeten angeflogen werden');
 
-define ("GER_TEXT15", 'Die fr&uuml;hstmögliche Ankunft ist Sternzeit');
+define ("GER_TEXT15", 'Die fr&uuml;hstm&ouml;gliche Ankunft ist Sternzeit');
 
 define ("GER_TEXT16", 'Es fliegen keine Schiffe in den Flotten mit');
 

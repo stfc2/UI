@@ -92,7 +92,7 @@ define ("GER_TEXT33", 'AE = Allgemeine Einstellungen');
 
 define ("GER_TEXT34", 'AK = Allianzkasse');
 
-define ("GER_TEXT35", 'TÜ = Takt. &Uuml;bersicht');
+define ("GER_TEXT35", 'T&Uuml; = Takt. &Uuml;bersicht');
 
 define ("GER_TEXT36", 'M = Massmail');
 

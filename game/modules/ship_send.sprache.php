@@ -101,7 +101,7 @@ define ("GER_TEXT38", '<b>Transportieren:</b><br>Die Transporter der Flotte werd
 
 define ("GER_TEXT39", '<b>Ausspionieren:</b><br>Die Aufkl&auml;rungsschiffe fliegen den Planeten an und versuchen ihn unauff&auml;llig zu scannen, um Informationen ber Geb&auml;ude, Ressourcen, Einheiten und Technologien der Kolonie herauszufinden. Werden die Schiffe dabei entdeckt, sind sie meistens verloren, da nicht schnell genug vom passiven Modus in den aktiven gewechselt werden kann.');
 
-define ("GER_TEXT40", '<b>Kolonisieren:</b><br>Der Zielplanet wird, wenn er unbewohnt ist, von einem Kolonisationsschiff der Flotte kolonisiert. Dabei wird dieses Schiff demontiert und daraus das erste Gebï¿½de gebaut. Seine berschssige Besatzung wird auf dem Planeten stationiert. Die anderen Schiffe bleiben im Orbit des Planeten.<br>Folgendes Kolonieschiff wird bei der Kolonisation benutzt:');
+define ("GER_TEXT40", '<b>Kolonisieren:</b><br>Der Zielplanet wird, wenn er unbewohnt ist, von einem Kolonisationsschiff der Flotte kolonisiert. Dabei wird dieses Schiff demontiert und daraus das erste Geb&auml;ude gebaut. Seine berschssige Besatzung wird auf dem Planeten stationiert. Die anderen Schiffe bleiben im Orbit des Planeten.<br>Folgendes Kolonieschiff wird bei der Kolonisation benutzt:');
 
 define ("GER_TEXT41", 'Besatzung:');
 

@@ -29,7 +29,7 @@ define ("GER_TEXT29", 'Es wurde kein Schiff ausgew&auml;hlt');
 
 define ("GER_TEXT30", 'Es wurde kein zul&auml;ssiges Schiff ausgew&auml;hlt');
 
-define ("GER_TEXT31", '<b>Zu reparierende Schiffe w&auml;hlen</b><br>In diesem Fenster siehst du eine Auflistung aller Schiffe, die repariert werden können.<br>Schiffe können parallel repariert werden.');
+define ("GER_TEXT31", '<b>Zu reparierende Schiffe w&auml;hlen</b><br>In diesem Fenster siehst du eine Auflistung aller Schiffe, die repariert werden k&ouml;nnen.<br>Schiffe k&ouml;nnen parallel repariert werden.');
 
 define ("GER_TEXT32", 'Name:');
 
@@ -47,7 +47,7 @@ define ("GER_TEXT38", 'Reparieren');
 
 define ("GER_TEXT39", 'Es wurde kein Schiff ausgew&auml;hlt');
 
-define ("GER_TEXT40", '<b>Zu bemannende Schiffe w&auml;hlen</b><br>In diesem Fenster siehst du eine Auflistung aller Schiffe, die bemannt werden können.<br>Die automatische Verteilung der Einheiten ist auf das Maximum ausgelegt.');
+define ("GER_TEXT40", '<b>Zu bemannende Schiffe w&auml;hlen</b><br>In diesem Fenster siehst du eine Auflistung aller Schiffe, die bemannt werden k&ouml;nnen.<br>Die automatische Verteilung der Einheiten ist auf das Maximum ausgelegt.');
 
 define ("GER_TEXT41", 'Einheiten:');
 
@@ -55,7 +55,7 @@ define ("GER_TEXT42", 'Bemannen:');
 
 define ("GER_TEXT43", 'Bemannen');
 
-define ("GER_TEXT44", '<b>Zu verschrottende Schiffe w&auml;hlen</b><br>In diesem Fenster siehst du eine Auflistung aller Schiffe, die verschrottet werden können.<br>Schiffe können parallel verschrottet werden.');
+define ("GER_TEXT44", '<b>Zu verschrottende Schiffe w&auml;hlen</b><br>In diesem Fenster siehst du eine Auflistung aller Schiffe, die verschrottet werden k&ouml;nnen.<br>Schiffe k&ouml;nnen parallel verschrottet werden.');
 
 define ("GER_TEXT45", 'Ressourcen:');
 
