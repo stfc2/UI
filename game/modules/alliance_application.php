@@ -43,9 +43,9 @@ function get_owner_name($owner_id) {
   
 
 
-// Überprüft, ob der Spieler Mitglied/kein Mitglied einer Allianz ist
-//   $requirement == true -> der Spieler muss in einer Allianz sein
-//   $requirement == false -> der Spieler darf NICHT in einer Allianz sein
+// Checks if the player is member or not of an alliance
+//   $requirement == true -> the player must be in an alliance
+//   $requirement == false -> the player must NOT be in an alliance
 function check_membership($requirement) {
     global $game;
     
@@ -131,7 +131,7 @@ if(isset($_GET['vorlage']) && $_GET['vorlage']==1) {$text=$alliance_name['allian
             </tr>
              <tr>
               ');
-//old von mojo<td colspan="2" align="center">[<a href="javascript:void(0);" onClick="return text();">Allianz Vorlage</a>]</td>
+//old by mojo<td colspan="2" align="center">[<a href="javascript:void(0);" onClick="return text();">Allianz Vorlage</a>]</td>
             $game->out('<td colspan="2" align="center">[<a href="'.parse_link('a=alliance_application&application=new&alliance='.$_GET['alliance'].'&vorlage=1').'">'.constant($game->sprache("TEXT6")).'</a>]</td></tr>
 	     <tr>
               <td colspan="2" align="center">'.constant($game->sprache("TEXT7")).'</td>
@@ -159,7 +159,7 @@ if(isset($_GET['vorlage']) && $_GET['vorlage']==1) {$text=$alliance_name['allian
   
   check_membership(true);
 
-// Rechtecheck
+// Rights check
     
 $sql = 'SELECT *
       FROM alliance
@@ -173,7 +173,7 @@ if($game->player['user_alliance_rights6'] != 1) {
     message(NOTICE, constant($game->sprache("TEXT10")));
 }
 
-// Check Ende
+// Check End
 
 
   $game->out('
@@ -236,7 +236,7 @@ if($game->player['user_alliance_rights6'] != 1) {
 }  
 
 
-  // Wird nur gesetzt wen nicht schon gelesen, da sonst Minuswerte entstehen können.
+  // If only if not already set to read, otherwise negative values can arise.
 
   $sql = 'UPDATE alliance_application SET application_read = 1 WHERE application_id = '.$_GET['app_id'];
 
@@ -401,7 +401,7 @@ if($game->player['user_alliance_rights6'] != 1) {
 
   SystemMessage($application_data['application_user'], constant($game->sprache("TEXT34")), constant($game->sprache("TEXT23")).$application_data['alliance_name'].constant($game->sprache("TEXT27")));
 
- /* // Wird nur gesetzt wen nicht schon gelesen, da sonst Minuswerte entstehen können.
+ /* // If only if not already set to read, otherwise negative values can arise.
 
     if($application_data['application_read']!=1) {
   
@@ -529,7 +529,7 @@ $sql = 'INSERT INTO alliance_application (application_user, application_username
      message(DATABASE_ERROR, 'Could not update alliance read Data');
    } */
 
-// Messageing einbauen!!!
+// Messaging installed!!!
 
 $game->out(constant($game->sprache("TEXT43")));
 
@@ -540,7 +540,7 @@ if(isset($_GET['surdelete'])) {
 
 if($_GET['surdelete']!=1) {
 
-  message(NOTICE, 'Cheatversuch');
+  message(NOTICE, 'Cheatattempt');
 
 }
 else {
@@ -561,7 +561,7 @@ if(isset($_GET['delete'])) {
 
 if($_GET['delete']!=1) {
 
-  message(NOTICE, 'Cheatversuch');
+  message(NOTICE, 'Cheatattempt');
 
 }
 else {

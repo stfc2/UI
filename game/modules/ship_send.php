@@ -243,9 +243,9 @@ else {
 
 
 // #############################################################################
-// Inter-orbital flight is not possible, as initial planned,
-// das wird seperat gel�t
-
+// Inter-orbital flight is not possible, as originally planned,
+// which will be resolved separately
+ 
 if($start == $dest) {
     message(NOTICE, constant($game->sprache("TEXT15")));
 }

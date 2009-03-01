@@ -21,9 +21,9 @@
 */
 
 
-// Kurze Erklärung zum Forschungssystem:
-// a.) Lokale Forschung, in der Datenbank Forschungsid 0-4
-// b.) Komponentenforschung, in der Datenbank cat_id+5, also 5-xx.
+// A brief explanation of the research system:
+// a.) Local research, research_id 0-4 in the database
+// b.) Components research, in the database cat_id+5, ie 5-xx.
 
 
 $game->init_player();
@@ -96,7 +96,7 @@ elseif($resource==2) {
  $price*=$RACE_DATA[$game->player['user_race']][28];
 }
 
-//Ausgenommen durch Taps unnachgiebiges jammern
+//Excluded by Taps unyielding whine
 //if ($price>$game->planet['max_resources']) $price=$game->planet['max_resources'];
 
 return round($price,0);
@@ -390,7 +390,7 @@ $game->out(''.constant($game->sprache("TEXT23")).' <b id="timer2" title="time1_'
 
 
 
-// Schiffskomponenten-Forschung:
+// Ship components research:
 $game->out('<span class="sub_caption">'.constant($game->sprache("TEXT25")).' '.HelpPopup('research_catresearch').' :</span><br><br>');
 $game->out('<table border=0 cellpadding=2 cellspacing=2 width=498 class="style_outer">');
 $game->out('
@@ -474,7 +474,7 @@ $game->out('
 <table border=0 cellpadding=2 cellspacing=2 width=600 class="style_inner"><tr><td width=150><b>'.constant($game->sprache("TEXT34")).'</b></td><td width=175><b>'.constant($game->sprache("TEXT35")).'</b></td><td width=100><b>'.constant($game->sprache("TEXT36")).'</b></td><td width=*>&nbsp;</td></tr>');
 
 
-// Lokale Forschung:
+// Local research:
 for ($t=0; $t<5; $t++)
 {
 

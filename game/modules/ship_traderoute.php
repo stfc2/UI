@@ -161,7 +161,7 @@ if(empty($dest)) {
 
 
 // #############################################################################
-// Bl�sinn
+// <lost comment>
 
 if($start == $dest) {
     message(NOTICE, constant($game->sprache("TEXT8")));
