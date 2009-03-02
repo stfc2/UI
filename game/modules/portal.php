@@ -84,7 +84,7 @@ function display_shoutbox() {
 
 for($i = $count; $i >= 0; --$i) {
 
-        $game->out('<i>'.$sb_posts[$i]['player_name'].' ('.date('H:i', $sb_posts[$i]['timestamp']).')</i>:<br>'.wordwrap($sb_posts[$i]['message'], 25, '<br>', 1).'<br>');
+        $game->out('<i>'.$sb_posts[$i]['player_name'].' ('.date('d.m.y H:i', $sb_posts[$i]['timestamp']).')</i>:<br>'.wordwrap($sb_posts[$i]['message'], 25, '<br>', 1).'<br>');
 
     }
 
