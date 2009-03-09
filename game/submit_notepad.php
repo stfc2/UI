@@ -25,7 +25,7 @@
 error_reporting(E_ALL);
 
 // #############################################################################
-// Konstanten
+// Constants
 define('NOTEPAD_EXE', $_SERVER['PHP_SELF']);
 define('IN_SCHEDULER', false);
 
@@ -41,19 +41,19 @@ include('include/sql.php');
 include('include/functions.php');
 
 // #############################################################################
-// SQL-Objekt für Datenbankzugriff
+// SQL-Object for Database connection
 $db = new sql($config['server'].":".$config['port'], $config['game_database'], $config['user'], $config['password']); // create sql-object for db-connection
 
 if(isset($_GET['sql_debug'])) $db->debug = true;
 
 
 // #############################################################################
-// Game-Objekt
+// Game-Object
 $game = new game();
 
 
 // #############################################################################
-// Config laden und auswerten
+// Config load and evaluate
 $game->load_config();
 $ACTUAL_TICK = $NEXT_TICK = 0;
 
@@ -71,29 +71,49 @@ if($game->config['game_stopped'] == 1 && $game->player['user_auth_level'] != STG
 
 $game->init_player();
 
-
-$sql = 'UPDATE user
-        SET user_notepad = "'.mysql_real_escape_string($_POST['user_notepad']).'"
-        WHERE user_id = '.$game->player['user_id'];
-
-if(!$db->query($sql)) {
-    message(DATABASE_ERROR, 'Could not update notepad data');
-}
-
-switch($game->player['language'])
+if(isset($_POST['user_notepad']))
 {
-	case 'GER':
-		$title = 'Submitted new notepad data:';
-		$button ='Fenster schlie&beta;ßen';
-	break;
-	case 'ENG':
-		$title = 'Submitted new notepad data:';
-		$button ='Close window';
-	break;
-	case 'ITA':
-		$title = 'Nuovi dati inviati al blocco appunti:';
-		$button ='Chiudi finestra';
-	break;
+    $sql = 'UPDATE user
+            SET user_notepad = "'.mysql_real_escape_string($_POST['user_notepad']).'"
+            WHERE user_id = '.$game->player['user_id'];
+
+    if(!$db->query($sql)) {
+        message(DATABASE_ERROR, 'Could not update notepad data');
+    }
+
+    switch($game->player['language'])
+    {
+	    case 'GER':
+		    $title = 'Submitted new notepad data:';
+		    $button ='Fenster schlie&beta;en';
+	    break;
+	    case 'ENG':
+		    $title = 'Submitted new notepad data:';
+		    $button ='Close window';
+	    break;
+	    case 'ITA':
+		    $title = 'Nuovi dati inviati al blocco appunti:';
+		    $button ='Chiudi finestra';
+	    break;
+    }
+}
+else
+{
+    switch($game->player['language'])
+    {
+	    case 'GER':
+		    $title = 'Notepad data NOT submitted!';
+		    $button ='Fenster schlie&beta;en';
+	    break;
+	    case 'ENG':
+		    $title = 'Notepad data NOT submitted!';
+		    $button ='Close window';
+	    break;
+	    case 'ITA':
+		    $title = 'Nuovi dati NON inviati al blocco appunti!';
+		    $button ='Chiudi finestra';
+	    break;
+    }
 }
 ?>
 
@@ -108,14 +128,14 @@ switch($game->player['language'])
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
-  <meta name="description" content="ST: Frontline Combat Conquest ist ein kostenloses Browser basiertes Multiplayerspiel, indem Sie in der Rolle verschiedener Rassen und Völker das Universum übernehmen und die Geschichte neu schreiben können.">
-  <meta name="keywords" content="star trek, startrek, galaxy, conquest, universe, game, gratis, kostenlos, spiel, multiplayer, strategie, onlinegame, bbg, free, browser, based, galaxie, universum, klingon, klingonen, federation, föderation">
+  <meta name="description" content="ST: Frontline Combat is a free browser based multiplayer game, take the role of different races and peoples of the universe and rewrite history.">
+  <meta name="keywords" content="star trek, startrek, galaxy, conquest, universe, game, gratis, kostenlos, spiel, multiplayer, strategy, strategie, onlinegame, bbg, free, browser, based, galaxie, universum, klingon, klingonen, federation, f&ouml;deration">
   <meta name="author" content="Florian Brede & Philipp Schmidt">
   <meta name="publisher" content="Florian Brede & Philipp Schmidt">
   <meta name="copyright" content="Paramount Pic., Brede, Schmidt">
-  <meta name="page-topic" content="Star Trek Online Spiel">
-  <meta name="date" content="2003-06-22">
-  <meta name="content-language" content="de">
+  <meta name="page-topic" content="Star Trek Online Game">
+  <meta name="date" content="2009-03-09">
+  <meta name="content-language" content="it">
   <meta name="page-type" content="spiel">
   <meta name="robots" content="index,nofollow">
   <meta name="revisit-after" content="10">
@@ -160,7 +180,7 @@ switch($game->player['language'])
 
 <body bgcolor="#000000" text="#CCCCCC" background="<?php echo $game->PLAIN_GFX_PATH ?>general_bg.jpg">
 
-<span style="font-family: Arial,serif; font-size: 14pt; text-decoration: underline;"><?php echo $title ?></span><br><br><span style="font-family: Arial,serif; font-size: 10pt; font-weight: bold;"><?php echo str_replace("\n", '<br>', $_POST['user_notepad']) ?></span><br><br><br>
+<span style="font-family: Arial,serif; font-size: 14pt; text-decoration: underline;"><?php echo $title ?></span><br><br><span style="font-family: Arial,serif; font-size: 10pt; font-weight: bold;"><?php echo (isset($_POST['user_notepad']) ? str_replace("\n", '<br>', $_POST['user_notepad']):'') ?></span><br><br><br>
 
 <input type="button" class="button" onClick="JavaScript:self.close()" value="<?php echo $button ?>">
 
