@@ -448,7 +448,7 @@ foreach ($planets as $key => $planet) {
 	if ($game->planet['planet_id']==$planet['planet_id'])
 	{
 		$game->out('
-			<tr><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'"><b>'.$planet['planet_name'].'</b></a></td><td></td>
+			<tr><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'"><span class="highlight">'.$planet['planet_name'].'</span></a></td><td></td>
 			<td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td>
 			<td></td>
 			<td>'.$stat_out.'&nbsp;&nbsp;');
