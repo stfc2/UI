@@ -77,11 +77,11 @@ $ship_components_locale=array(
                     'description'=>'Sviluppo della tecnologia di base che aumenta la potenza del campo di curvatura, aumentando la velocit&agrave; massima della nave al costo di un maggior consumo energetico.',
             ), // Endof Component Verbesserte Tachyonengondel
 
-             // Component Gaußgondeln
+             // Component GauÃŸgondeln
              2=>array(
                     'name'=>'Gondole Gauss',
                     'description'=>'Le Gondole Gauss sono un progetto dedicato esclusivamente alle navi militari. La resa in termini di campo di curvatura e consumo energetico sono assolutamente superiori rispetto ai sistemi di curvatura precedenti.',
-            ), // Endof Component Gaußgondeln
+            ), // Endof Component GauÃŸgondeln
 
              // Component Phasenkomprimierer
              3=>array(
@@ -179,16 +179,16 @@ $ship_components_locale=array(
                     'description'=>'Tecnologia che muta la fase della struttura dello scafo con lo scopo di aumentarne la resistenza.',
             ), // Endof Component Mehrphasenpanzerung
 
-             // Component Neutrinoknotenverstärkung
+             // Component NeutrinoknotenverstÃ¤rkung
              3=>array(
                     'name'=>'Corazza Neutrinica',
                     'description'=>'La struttura atomica della lega impiegata per le corazze viene riorganizzata per aumentarne la robustezza strutturale.',
-            ), // Endof Component Neutrinoknotenverstärkung
+            ), // Endof Component NeutrinoknotenverstÃ¤rkung
 
              // Component Creonspule
              4=>array(
                     'name'=>'Bobine Creon',
-                    'description'=>'La prima Bobina Creon fu ritrovata decadi fa sul pianeta morto Creon e successivamente venne migliorata dagli scienziati Dominion. Il suo impiego &egrave; possibile solo sulle navi pi&grave; grandi della flotta.',
+                    'description'=>'La prima Bobina Creon fu ritrovata decadi fa sul pianeta morto Creon e successivamente venne migliorata dagli scienziati Dominion. Il suo impiego &egrave; possibile solo sulle navi pi&ugrave; grandi della flotta.',
             ), // Endof Component Creonspule
 
       'name'=>'Sistemi Difensivi',
@@ -359,11 +359,11 @@ $ship_components_locale=array(
                     'description'=>'Il Rivelatore Simultaneo permette la scansione parallela di pi&ugrave; bersagli.',
             ), // Endof Component Simultane Ortung
 
-             // Component Ungestörte Ortung
+             // Component UngestÃ¶rte Ortung
              3=>array(
                     'name'=>'Rilevatore Asincrono',
                     'description'=>'Il miglior sistema basato su tecnologie tradizionali permette la scansione di aree mediante impiego di sonde camuffate.',
-            ), // Endof Component Ungestörte Ortung
+            ), // Endof Component UngestÃ¶rte Ortung
 
              // Component Gefechtsstand
              4=>array(
@@ -371,23 +371,23 @@ $ship_components_locale=array(
                     'description'=>'Il Posto di Comando &egrave; una postazione extra situata sul Ponte di Comando della nave che si occupa della coordinazione tra le varie sezioni.',
             ), // Endof Component Gefechtsstand
 
-             // Component Sekundärbrücke
+             // Component SekundÃ¤rbrÃ¼cke
              5=>array(
                     'name'=>'Ponte Secondario',
                     'description'=>'Il Ponte Secondario &egrave; una sottosezione usata unicamente durante gli scontri.',
-            ), // Endof Component Sekundärbrücke
+            ), // Endof Component SekundÃ¤rbrÃ¼cke
 
-             // Component Gefechtsbrücke I
+             // Component GefechtsbrÃ¼cke I
              6=>array(
                     'name'=>'Ponte di Combattimento I',
                     'description'=>'Soluzione progettuale che enfatizza funzionalit&agrave; ed efficacia del Ponte Secondario.',
-            ), // Endof Component Gefechtsbrücke I
+            ), // Endof Component GefechtsbrÃ¼cke I
 
-             // Component Gefechtsbrücke II
+             // Component GefechtsbrÃ¼cke II
              7=>array(
                     'name'=>'Ponte di Combattimento II',
                     'description'=>'Questa soluzione progettuale &egrave; il centro di comando definitivo per ogni tipo di conflitto ed &egrave; il risultato di decadi di studio.',
-            ), // Endof Component Gefechtsbrücke II
+            ), // Endof Component GefechtsbrÃ¼cke II
 
       'name'=>'Sistemi di Combattimento',
       ), // Endof Category Kampfsysteme
@@ -401,11 +401,11 @@ $ship_components_locale=array(
                     'description'=>'Sistemi di Intercomunicazione di bordo migliorato.',
             ), // Endof Component Verbesserte Headsets
 
-             // Component Waffenaufrüstung
+             // Component WaffenaufrÃ¼stung
              1=>array(
                     'name'=>'Sistema Offensivo Integrato',
                     'description'=>'Sistema di integrazione degli armamenti per le navi militari del Dominio.',
-            ), // Endof Component Waffenaufrüstung
+            ), // Endof Component WaffenaufrÃ¼stung
 
              // Component Doppelschilde
              2=>array(
@@ -413,11 +413,11 @@ $ship_components_locale=array(
                     'description'=>'Ottimi per contrastare armi ad altissima energia, entrano in funzione non appena cedono gli scudi primari.',
             ), // Endof Component Doppelschilde
 
-             // Component Hochenergiehülle
+             // Component HochenergiehÃ¼lle
              3=>array(
                     'name'=>'Rivestimento AntiEnergetico',
                     'description'=>'Questo sistema riflette parte dell&#146;enegia che entra in contatto con lo scafo, deviandone una parte verso i sistemi energetici interni della nave stessa.',
-            ), // Endof Component Hochenergiehülle
+            ), // Endof Component HochenergiehÃ¼lle
 
              // Component Multiphasentarnung
              4=>array(
