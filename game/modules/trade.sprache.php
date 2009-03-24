@@ -388,7 +388,7 @@ define ("GER_TEXT179", 'Planet von dem Bezahlt werden soll:');
 
 define ("GER_TEXT180", 'Planet wo die Ware hin soll:');
 
-define ("GER_TEXT181", 'Handel abschließen');
+define ("GER_TEXT181", 'Handel abschlie&beta;en');
 
 define ("GER_TEXT182", 'Du musst auch schon wo Zahl eintragen<br>');
 
@@ -444,7 +444,7 @@ define ("GER_TEXT207", 'Steuerkosten-Mineral:');
 
 define ("GER_TEXT208", 'Steuerkosten-Latinum:');
 
-define ("GER_TEXT209", '<br><b>Leider reichen deine Rohstoffe nicht aus bei deiner gewählten Zahlungsart</b><br>');
+define ("GER_TEXT209", '<br><b>Leider reichen deine Rohstoffe nicht aus bei deiner gew&auml;hlten Zahlungsart</b><br>');
 
 define ("GER_TEXT210", '<center>Deine Eingaben sind gr&ouml;&beta;er als das was es zu kaufen gibt</center><br>');
 
@@ -524,7 +524,7 @@ define ("GER_TEXT247", 'Schiffabhohl Stelle:');
 
 define ("GER_TEXT248", 'Das Schiff ist unterwegs zu dir, es wird dringends davon abgeraten das Schiff zur&uuml;ck zum Startplanet zu schicken.');
 
-define ("GER_TEXT249", '<br><b>Keine Schiffe ausgewählt</b><br>');
+define ("GER_TEXT249", '<br><b>Keine Schiffe ausgew&auml;hlt</b><br>');
 
 define ("GER_TEXT250", '<center>Keine Schiffe zum abhohlen vorhanden</center>');
 
