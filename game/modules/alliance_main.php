@@ -370,7 +370,7 @@ if(isset($_GET['member_list'])) {
   </tr> 
 </table>
 <br>
-<i>'.constant($game->sprache("TEXT41")).'</i>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);">'.constant($game->sprache("TEXT42")).'</a>&nbsp;&nbsp;&nbsp;'.sprintf($member_status[ALLIANCE_STATUS_FINANZ], constant($game->sprache("TEXT43"))).'&nbsp;&nbsp;&nbsp;'.sprintf($member_status[ALLIANCE_STATUS_DIPLO], constant($game->sprache("TEXT44"))).'&nbsp;&nbsp;&nbsp;'.sprintf($member_status[ALLIANCE_STATUS_ADMIN], constant($game->sprache("TEXT45"))).'&nbsp;&nbsp;&nbsp;'.sprintf($member_status[ALLIANCE_STATUS_OWNER], constant($game->sprache("TEXT46"))).'
+<i>'.constant($game->sprache("TEXT41")).'</i>&nbsp;&nbsp;&nbsp;'.constant($game->sprache("TEXT42")).'&nbsp;&nbsp;&nbsp;'.sprintf($member_status[ALLIANCE_STATUS_DIPLO], constant($game->sprache("TEXT44"))).'&nbsp;&nbsp;&nbsp;'.sprintf($member_status[ALLIANCE_STATUS_ADMIN], constant($game->sprache("TEXT45"))).'&nbsp;&nbsp;&nbsp;'.sprintf($member_status[ALLIANCE_STATUS_OWNER], constant($game->sprache("TEXT46"))).'
 <br>
     ');
 }
