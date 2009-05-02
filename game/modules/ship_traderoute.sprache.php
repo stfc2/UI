@@ -110,6 +110,8 @@ define ("GER_TEXT38", 'Logbuch Berichte aktivieren');
 
 define ("GER_TEXT39", 'Logbuch Berichte deaktivieren');
 
+define ("GER_TEXT40", 'Sie sind nicht der Besitzer des Planeten zu starten!');
+
 
 //English
 
@@ -201,6 +203,8 @@ define ("ENG_TEXT38", 'Logbook report enabled');
 
 define ("ENG_TEXT39", 'Logbook report disabled');
 
+define ("ENG_TEXT40", 'You are not the owner of the start planet!');
+
 
 //Italiano
 
@@ -291,6 +295,8 @@ define ("ITA_TEXT37", 'Selezionare se abilitare o meno i rapporti sulle consegne
 define ("ITA_TEXT38", 'Rapporti abilitati');
 
 define ("ITA_TEXT39", 'Rapporti disabilitati');
+
+define ("ITA_TEXT40", 'Non sei il proprietario del pianeta di partenza!');
 
 
 ?>
