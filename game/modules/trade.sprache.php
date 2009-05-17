@@ -182,7 +182,7 @@ define ("GER_TEXT75", '<i>* Da du der Verk&auml;ufer bist, kannst du die Auktion
 
 define ("GER_TEXT76", 'Mitbieten');
 
-define ("GER_TEXT77", 'Willst du wirklich das 1. Gebot fr dieses Schiff abgeben?');
+define ("GER_TEXT77", 'Willst du wirklich das 1. Gebot f&uuml;r dieses Schiff abgeben?');
 
 define ("GER_TEXT78", '<i>* Da du das 1. Gebot abgibst, bietest du auf');
 
