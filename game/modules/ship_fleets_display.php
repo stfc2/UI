@@ -22,7 +22,7 @@
 
 
 $game->init_player();
-$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span></center><br>');
+$game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>');
 $game->out('<div align="center">[<a href="'.parse_link('a=ship_fleets_display&mass_set_homebase').'">'.constant($game->sprache("TEXT1")).'</a>]<br><br>');
 
 if(isset($_POST['set_homebase'])) {
