@@ -74,6 +74,18 @@ if ($num>4) {$num=0; $text.='<br>';}
 return $text;
 }
 
+function CreateResearchInfoText($rsrc)
+{
+    global $game, $TECH_DESCRIPTION;
+
+    $text = '<table><tr>';
+    $text .= '<td valign=top><img src='.$game->GFX_PATH.'research_'.$rsrc.'.gif></td>';
+    $text .= '<td align=justify valign=top>'.$TECH_DESCRIPTION[$game->player['user_race']][$rsrc].'</td>';
+    $text .= '</tr></table>';
+
+	return $text;
+}
+
 function GetCatResearchPrice($level,$resource)
 {
 global $db;
