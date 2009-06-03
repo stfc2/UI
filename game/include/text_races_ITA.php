@@ -251,6 +251,32 @@ $BUILDING_NAME = array(
 
 	6 => array(
 
+		0 => 'Alcova della Regina',
+
+		1 => 'Impianti estrattivi metalliferi',
+
+		2 => 'Impianti estrattivi minerari',
+
+		3 => 'Impianti raffinamento dilitio',
+
+		4 => 'Nucleo energetico',
+
+		5 => 'Addestramento droni',
+
+		6 => 'Spazioporto',
+
+		7 => 'Cantiere Navale',
+
+		8 => 'Centro Ricerche',
+
+		9 => 'Cannone Orbitale',
+
+		10 => 'Intrarete connettiva',
+
+		11 => 'Depositi',
+
+		12 => 'Cannone Orb. Leggero',
+
 	),
 
 	// Q
