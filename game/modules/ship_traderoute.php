@@ -94,6 +94,11 @@ else {
     if(empty($start_planet['user_id'])) {
         message(NOTICE, constant($game->sprache("TEXT4")));
     }
+
+    // 02/05/09 - AC: Player does own the planet?
+    if($start_planet['user_id'] != $game->player['user_id']) {
+        message(NOTICE, constant($game->sprache("TEXT40")));
+    }
 }
 
 
@@ -161,7 +166,7 @@ if(empty($dest)) {
 
 
 // #############################################################################
-// Bl�sinn
+// <lost comment>
 
 if($start == $dest) {
     message(NOTICE, constant($game->sprache("TEXT8")));
