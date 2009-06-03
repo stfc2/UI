@@ -4381,7 +4381,7 @@ $SHIP_TORSO = array(
 
 	    9 => array(
 
-			0 => 4700,  // Metal
+			0 => 14700,  // Metal
 
 			1 => 44725,  // Minerals
 
@@ -4405,9 +4405,9 @@ $SHIP_TORSO = array(
 
 			11 => 6,  // Unit 5 (Offizier)
 
-			12 => 0,  // Unit 6 (Medizinisches Personal)
+			12 => 2,  // Unit 6 (Medizinisches Personal)
 
-			13 => 446,  // Buildtime (in 5 Minuten Schritten)
+			13 => 486,  // Buildtime (in 5 Minuten Schritten)
 
 			14 => 185,   // Value1 (Leichte Waffen)
 
@@ -4550,7 +4550,7 @@ $SHIP_TORSO = array(
 
 			12 => 16,  // Unit 6 (Medizinisches Personal)
 
-			13 => 589,  // Buildtime (in 5 Minuten Schritten)
+			13 => 669,  // Buildtime (in 5 Minuten Schritten)
 
 			14 => 395,   // Value1 (Leichte Waffen)
 
@@ -4558,9 +4558,9 @@ $SHIP_TORSO = array(
 
 			16 => 38,   // Value3 (Planetare Waffen)
 
-			17 => 290,   // Value4 (Schildstärke)
+			17 => 300,   // Value4 (Schildstärke)
 
-			18 => 490,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 530,   // Value5 (Hülle bzw. Hitpoins)
 
 			19 => 12,   // Value6 (Reaktionsgeschw.)
 
@@ -4570,7 +4570,7 @@ $SHIP_TORSO = array(
 
 			22 => 1,   // Value9 (Erfahrung)
 
-			23 => 1,   // Value10 (Warp)
+			23 => 2,   // Value10 (Warp)
 
 			24 => 22,   // Value11 (Sensoren)
 
@@ -4578,13 +4578,13 @@ $SHIP_TORSO = array(
 
 			26 => 70,   // Value13 (Energy Available)
 
-			27 => 58,   // Value14 (Used Energy)
+			27 => 49,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Dread',  // Name
 
-			30 => 2532,  // Benötige Arbeiter zum Bau
+			30 => 2600,  // Benötige Arbeiter zum Bau
 
 			31 => 'Dieses Schiff ist die letzte Linie des Gefechts, sollten die Gegner es je dorthin schaffen. Nur die treuesten und erfahrensten Jem Hadar bzw. Vorta dürfen dieses Schiff überhaupt betreten. Seine Grösse ist gewaltig und seine Feuerkraft noch größer: Jeder der sich ihm in den Wegs stellt ist Staub: Sei es ein Schiff oder ein Planet...',
 
