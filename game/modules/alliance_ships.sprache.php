@@ -83,7 +83,6 @@ define ("GER_TEXT30",'The ship is for sale.');
 
 define ("GER_TEXT31",'The ships has no crew.');
 
-
 define ("GER_TEXT32",'<< Zur&uuml;ck');
 
 define ("GER_TEXT33",'Vorw&auml;rts >>');
@@ -118,9 +117,9 @@ define ("GER_TEXT53", 'Verbraucht Energie:');
 
 define ("GER_TEXT54", 'Liefert Energie:');
 
-define ("GER_TEXT55", 'Gewählte Schiff existiert nicht');
+define ("GER_TEXT55", 'Gew&auml;hlte Schiff existiert nicht');
 
-define ("GER_TEXT56", 'Detailansicht des gewählten Schiffs');
+define ("GER_TEXT56", 'Detailansicht des gew&auml;hlten Schiffs');
 
 define ("GER_TEXT57", 'Flotte:');
 
@@ -136,7 +135,7 @@ define ("GER_TEXT62", 'Contract Code:');
 
 define ("GER_TEXT63", 'Geba&uuml;de datum:');
 
-define ("GER_TEXT64", 'Hüllenzustand:');
+define ("GER_TEXT64", 'H&uuml;llenzustand:');
 
 define ("GER_TEXT65", 'Energieverbrauch:');
 

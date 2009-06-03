@@ -77,20 +77,20 @@ if(!empty($_POST['from_submit'])) {
     $nwares = $fwares = $pwares = array();
     
     /*
-     * Dies ist eigentlich noch ein Relikt aus der Zeit, in der das Modul gleichzeitig be-/entladen
-     * k�nen sollte...vielleicht kommt das sp�er wider einmal rein...
+     * This is actually another relic from the time in which the module should be able to load/unload
+     * at the same time...perhaps, the once purely appreciable resist... 
      *
-     * $pwares -> Waren auf dem Planeten
-     * $fwares -> Waren auf der Flotte
-     * $nwares -> Waren, die der Flotte hinzugefgt werden soll
+     * $pwares -> products on the planet
+     * $fwares -> products on the fleet
+     * $nwares -> products that should be added to the fleet
      *
-     * $max_ -> Maximal-Wert
-     * $n_   -> Aktueller Gesamt-Wert
+     * $max_ -> Maximum value
+     * $n_   -> Total Current value
      */
     
     $wares_names = get_wares_names();
 
-    // POST-variablen parsen + SQL-daten auf integer casten
+    // POST variables parse + SQL data to integer cast
     foreach($wares_names as $key => $name) {
         $nwares[$key] = (!empty($_POST['add_'.$key])) ? abs((int)$_POST['add_'.$key]) : 0;
         $fwares[$key] = (int)$fleet[$key];
@@ -441,23 +441,23 @@ elseif(!empty($_POST['to_submit'])) {
     $nwares = $fwares = $pwares = array();
 
     /*
-     * Dies ist eigentlich noch ein Relikt aus der Zeit, in der das Modul gleichzeitig be-/entladen
-     * k�nen sollte...vielleicht kommt das sp�er wider einmal rein...
+     * This is actually another relic from the time in which the module should be able to load/unload
+     * at the same time...perhaps, the once purely appreciable resist... 
      *
-     * $pwares -> Waren auf dem Planeten
-     * $fwares -> Waren auf der Flotte
-     * $nwares -> Waren, die dem Planeten hinzugefgt werden soll
-     * $twares -> Waren, die tats�hlich transferiert wurden
+     * $pwares -> products on the planet
+     * $fwares -> products on the fleet
+     * $nwares -> products that should be added to the planet
+     * $twares -> products which were transferred
      *
-     * $max_ -> Maximal-Wert
-     * $n_   -> Aktueller Gesamt-Wert
+     * $max_ -> Maximum value
+     * $n_   -> Total current value
      */
 
     $wares_names = get_wares_names();
     
     $units_space = array('unit_1' => 2, 'unit_2' => 3, 'unit_3' => 4, 'unit_4' => 4, 'unit_5' => 4, 'unit_6' => 4);
 
-    // POST-variablen parsen + SQL-daten auf integer casten
+    // POST variables parse + SQL data to integer cast
     foreach($wares_names as $key => $name) {
         $nwares[$key] = (!empty($_POST['add_'.$key])) ? abs((int)$_POST['add_'.$key]) : 0;
         $fwares[$key] = (int)$fleet[$key];
@@ -468,7 +468,7 @@ elseif(!empty($_POST['to_submit'])) {
     $n_pworker = $pwares['resource_4'];
     $n_punits = ($pwares['unit_1'] * 2) + ($pwares['unit_2'] * 3) + ($pwares['unit_3'] * 4) + ($pwares['unit_4'] * 4) + ($pwares['unit_5'] * 4) + ($pwares['unit_6'] * 4);
 
-    // Ein paar Kontrollen
+    // A few checks
     if($pwares['resource_1'] > $max_presources) {
         message(NOTICE, constant($game->sprache("TEXT24")));
     }
@@ -530,10 +530,10 @@ elseif(!empty($_POST['to_submit'])) {
         $twares[$key] = $value;
     }
     
-    // Schulden abziehen
-    // (bernommen aus scheduler/moves_31.php)
+    // Debts take off
+    // (taken from scheduler/moves_31.php)
     if(!$own_planet) {
-        // Umschreiben in das von der Berechnung erwartete Format
+        // Describe into the format expected by the computation
         
         $rfleets = array(
             'n1' => (!empty($twares['resource_1'])) ? $twares['resource_1'] : 0,

@@ -23,7 +23,7 @@
 //deutsch
 define ("GER_TEXT0",'Schiffe');
 
-define ("GER_TEXT1",'Here there is the list of all your ships.<br>The colors shows the ship&#146;s condition.<br><font color=#80ff80>Green</font> for normal condition <font color=#ffff80>yellow</font> for warning or unusual condition and <font color=#ff8080>red</font> for critial condition.');
+define ("GER_TEXT1",'Here there is the list of all your ships.<br>The colors shows the ship&#146;s condition.<br><font color=#80ff80>Green</font> for normal condition <font color=#ffff80>yellow</font> for warning or unusual condition and <font color=#ff8080>red</font> for critical condition.');
 
 define ("GER_TEXT2",'Spieler suchen');
 
@@ -83,7 +83,6 @@ define ("GER_TEXT30",'The ship is for sale.');
 
 define ("GER_TEXT31",'The ships has no crew.');
 
-
 define ("GER_TEXT32",'<< Zur&uuml;ck');
 
 define ("GER_TEXT33",'Vorw&auml;rts >>');
@@ -118,9 +117,9 @@ define ("GER_TEXT53", 'Verbraucht Energie:');
 
 define ("GER_TEXT54", 'Liefert Energie:');
 
-define ("GER_TEXT55", 'Gewählte Schiff existiert nicht');
+define ("GER_TEXT55", 'Gew&auml;hlte Schiff existiert nicht');
 
-define ("GER_TEXT56", 'Detailansicht des gewählten Schiffs');
+define ("GER_TEXT56", 'Detailansicht des gew&auml;hlten Schiffs');
 
 define ("GER_TEXT57", 'Flotte:');
 
@@ -136,7 +135,7 @@ define ("GER_TEXT62", 'Contract Code:');
 
 define ("GER_TEXT63", 'Geba&uuml;de datum:');
 
-define ("GER_TEXT64", 'Hüllenzustand:');
+define ("GER_TEXT64", 'H&uuml;llenzustand:');
 
 define ("GER_TEXT65", 'Energieverbrauch:');
 
@@ -162,7 +161,7 @@ define ("GER_TEXT74", 'Docked');
 //English
 define ("ENG_TEXT0",'Ships:');
 
-define ("ENG_TEXT1",'Here there is the list of all your ships.<br>The colors shows the ship&#146;s condition.<br><font color=#80ff80>Green</font> for normal condition <font color=#ffff80>yellow</font> for warning or unusual condition and <font color=#ff8080>red</font> for critial condition.');
+define ("ENG_TEXT1",'Here there is the list of all your ships.<br>The colors shows the ship&#146;s condition.<br><font color=#80ff80>Green</font> for normal condition <font color=#ffff80>yellow</font> for warning or unusual condition and <font color=#ff8080>red</font> for critical condition.');
 
 define ("ENG_TEXT2",'Search ship');
 

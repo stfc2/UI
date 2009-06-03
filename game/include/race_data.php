@@ -29,72 +29,78 @@
 
 /* 
 
-0 => Föderation
-1 => Romulaner 
-2 => Klingonen 
-3 => Cardassianer
+0 => Federation
+1 => Romulan
+2 => Klingon
+3 => Cardassian
 4 => Dominion
-5 => Ferengi 
+5 => Ferengi
  6 => Borg
  7 => Q
 8 => Breen
 9 => Hirogen
-10 => Vidiianer ==> Krenim 
+10 => Vidiianer ==> Krenim
 11 => Kazon
- 12 => Menschen 29th
- 13 => Siedler
+ 12 => Men 29th
+ 13 => Settler
 
- * 0 => Name der Rasse 
+ * 0 => Name of Race
 
- * 1 => Bauzeit (Gebäude) 
+ * 1 => Construction period (buildings)
 
- * 2 => Bauzeit (Einheiten) 
+ * 2 => Construction period (units)
 
- * 3 => Bauzeit (Schiffe) 
+ * 3 => Construction period (ships)
 
- * 4 => Forschungszeit 
+ * 4 => Research Time
 
- * 5 => Baukosten (Gebäude) 
+ * 5 => Cost (buildings)
 
- * 6 => Baukosten (Einheiten) 
+ * 6 => Cost (units)
 
- * 7 => Baukosten (Schiffe) 
+ * 7 => Cost (ships)
 
- * 8 => Forschungskosten 
+ * 8 => Research and development expenses
 
- * 9 => Metallminenausbeute 
+ * 9 => Metal mine yield
 
- * 10 => Mineralienminenausbeute 
+ * 10 => Mineral mine yield
 
- * 11 => Latinumraffinerieausbeute 
+ * 11 => Latinum refinery yield
 
- * 12 => "Arbeiterausbeute" 
+ * 12 => "Workers yield"
 
- * 13 => Schiffsangriff 
+ * 13 => Ship attack
 
- * 14 => Einheitenangriff 
+ * 14 => Unit attack
 
- * 15 => Schiffsverteidigung 
+ * 15 => Ship defense
 
- * 16 => Einheitenverteidigung 
+ * 16 => Unit defense
 
- * 17 => Gebäudeverteidigung (gegen planetare Angriffe) 
+ * 17 => Building defense (against planetary attacks)
 
- * 18 => Schiffsgeschwindigkeit 
+ * 18 => Ship speed
 
- * 19 => Sensorenreichweite 
+ * 19 => Sensors range
 
- * 20 => Technologieausnutzung (Verändert den Wirkungsgrad ALLER Technologien) 
+ * 20 => Technology Exploitation (Modifies the efficiency of ALL technologies)
 
- * 21 => Kampfkraft der Arbeiter 
+ * 21 => Fighting power of workers
   
- * 22 => playable 
+ * 22 => Playable
 
- * 23 => Metkostenfaktor für Gebäude
+ * 23 => Metal cost factor for buildings
 
- * 24 => Minkostenfaktor für Gebäude
+ * 24 => Mineral cost factor for buildings
 
- * 25 => Latkostenfaktor für Gebäude
+ * 25 => Latinum cost factor for buildings
+
+ * 26 => Metal cost factor for research
+
+ * 27 => Mineral cost factor for research
+
+ * 28 => Latinum cost factor for research
 
  */ 
 
@@ -147,7 +153,7 @@ $RACE_DATA = array(
       20 => 1.1, 
 
       21 => 3, 
-       
+
       22 => true,
 
       23 => 1.0, 
@@ -171,7 +177,7 @@ $RACE_DATA = array(
 
       1 => 1.0, 
 
-      2 => 0.95, 
+      2 => 1.0, 
 
       3 => 0.90, 
 
@@ -210,7 +216,7 @@ $RACE_DATA = array(
       20 => 1.00,
 
       21 => 3.5, 
-       
+
       22 => true, 
 
       23 => 1.1, 
@@ -338,7 +344,7 @@ $RACE_DATA = array(
       20 => 1.0, 
 
       21 => 3, 
-       
+
       22 => true, 
 
       23 => 1.0, 
@@ -363,7 +369,7 @@ $RACE_DATA = array(
 
       1 => 1.20, 
 
-      2 => 0.95, 
+      2 => 0.90, 
 
       3 => 1.05, 
 
@@ -377,11 +383,11 @@ $RACE_DATA = array(
 
       8 => 1.25, 
 
-      9 => 0.94, 
+      9 => 0.90, 
 
-      10 => 0.94, 
+      10 => 0.90, 
 
-      11 => 0.89, 
+      11 => 0.85, 
 
       12 => 0.75, 
 
@@ -402,7 +408,7 @@ $RACE_DATA = array(
       20 => 0.85, 
 
       21 => 2, 
-       
+
       22 => true, 
 
       23 => 1.3, 
@@ -466,7 +472,7 @@ $RACE_DATA = array(
       20 => 0.7, 
 
       21 => 2.5, 
-       
+
       22 => false, 
 
       23 => 0.8, 

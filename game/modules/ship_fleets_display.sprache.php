@@ -108,7 +108,7 @@ define ("GER_TEXT41", 'Kurs nach Hause');
 
 define ("GER_TEXT42", 'Heimathafen setzen');
 
-define ("GER_TEXT43", 'Neue Flotte Gründen');
+define ("GER_TEXT43", 'Neue Flotte Gr&uuml;nden');
 
 define ("GER_TEXT44", 'Flotte wechseln');
 
@@ -138,7 +138,7 @@ define ("GER_TEXT59", 'Ankunft in:');
 
 define ("GER_TEXT60", 'Flugkontrolle');
 
-define ("GER_TEXT61", 'Hier habt ihr die M&ouml;glichkeit für alle Flotten den selben Heimathafen zu setzen. Das ist insofern Praktisch da so schnell und einfach Flotten gesammelt werden k&ouml,nnen.');
+define ("GER_TEXT61", 'Hier habt ihr die M&ouml;glichkeit f&uuml;r alle Flotten den selben Heimathafen zu setzen. Das ist insofern Praktisch da so schnell und einfach Flotten gesammelt werden k&ouml,nnen.');
 
 define ("GER_TEXT62", 'Koordinaten:');
 

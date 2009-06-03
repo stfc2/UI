@@ -182,7 +182,7 @@ define ("GER_TEXT75", '<i>* Da du der Verk&auml;ufer bist, kannst du die Auktion
 
 define ("GER_TEXT76", 'Mitbieten');
 
-define ("GER_TEXT77", 'Willst du wirklich das 1. Gebot fr dieses Schiff abgeben?');
+define ("GER_TEXT77", 'Willst du wirklich das 1. Gebot f&uuml;r dieses Schiff abgeben?');
 
 define ("GER_TEXT78", '<i>* Da du das 1. Gebot abgibst, bietest du auf');
 
@@ -388,7 +388,7 @@ define ("GER_TEXT179", 'Planet von dem Bezahlt werden soll:');
 
 define ("GER_TEXT180", 'Planet wo die Ware hin soll:');
 
-define ("GER_TEXT181", 'Handel abschließen');
+define ("GER_TEXT181", 'Handel abschlie&beta;en');
 
 define ("GER_TEXT182", 'Du musst auch schon wo Zahl eintragen<br>');
 
@@ -444,7 +444,7 @@ define ("GER_TEXT207", 'Steuerkosten-Mineral:');
 
 define ("GER_TEXT208", 'Steuerkosten-Latinum:');
 
-define ("GER_TEXT209", '<br><b>Leider reichen deine Rohstoffe nicht aus bei deiner gewählten Zahlungsart</b><br>');
+define ("GER_TEXT209", '<br><b>Leider reichen deine Rohstoffe nicht aus bei deiner gew&auml;hlten Zahlungsart</b><br>');
 
 define ("GER_TEXT210", '<center>Deine Eingaben sind gr&ouml;&beta;er als das was es zu kaufen gibt</center><br>');
 
@@ -524,7 +524,7 @@ define ("GER_TEXT247", 'Schiffabhohl Stelle:');
 
 define ("GER_TEXT248", 'Das Schiff ist unterwegs zu dir, es wird dringends davon abgeraten das Schiff zur&uuml;ck zum Startplanet zu schicken.');
 
-define ("GER_TEXT249", '<br><b>Keine Schiffe ausgewählt</b><br>');
+define ("GER_TEXT249", '<br><b>Keine Schiffe ausgew&auml;hlt</b><br>');
 
 define ("GER_TEXT250", '<center>Keine Schiffe zum abhohlen vorhanden</center>');
 
@@ -575,6 +575,8 @@ define ("GER_TEXT272", 'average');
 define ("GER_TEXT273", 'good');
 
 define ("GER_TEXT274", 'Auktionsflotte');
+
+define ("GER_TEXT275", 'keine');
 
 
 // English
@@ -1133,6 +1135,8 @@ define ("ENG_TEXT272", 'average');
 define ("ENG_TEXT273", 'good');
 
 define ("ENG_TEXT274", 'Auction fleet');
+
+define ("ENG_TEXT275", 'none');
 
 
 // Italian
@@ -1693,6 +1697,8 @@ define ("ITA_TEXT272", 'neutro');
 define ("ITA_TEXT273", 'favorevole');
 
 define ("ITA_TEXT274", 'Flotta asta');
+
+define ("ITA_TEXT275", 'nessuno');
 
 
 ?>

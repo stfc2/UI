@@ -87,7 +87,7 @@ define ("GER_TEXT31", 'Keine Allianz angegeben');
 
 define ("GER_TEXT32", 'Die andere Allianz konnte nicht gefunden werden');
 
-define ("GER_TEXT33", 'Du kannst keine Vertr&auml;ge mit deiner eigenen Ally schließen.');
+define ("GER_TEXT33", 'Du kannst keine Vertr&auml;ge mit deiner eigenen Ally schlie&beta;en.');
 
 define ("GER_TEXT34", 'Deine Allianz steht bereits in Kontakt mit dieser Allianz');
 
@@ -261,7 +261,7 @@ define ("ENG_TEXT31", 'Keine Allianz angegeben');
 
 define ("ENG_TEXT32", 'Die andere Allianz konnte nicht gefunden werden');
 
-define ("ENG_TEXT33", 'Du kannst keine Vertr&auml;ge mit deiner eigenen Ally schließen.');
+define ("ENG_TEXT33", 'Du kannst keine Vertr&auml;ge mit deiner eigenen Ally schlie&beta;en.');
 
 define ("ENG_TEXT34", 'Deine Allianz steht bereits in Kontakt mit dieser Allianz');
 

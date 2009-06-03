@@ -32,7 +32,7 @@ define ("GER_TEXT3", 'Du bestitzt nicht die erforderlichen Berechtigungen um die
 
 define ("GER_TEXT4", 'Der Spieler ist nicht in deiner Allianz');
 
-define ("GER_TEXT5", 'Die Rechte des Pr&auml;sidenten können nicht ge&auml;ndert werden!');
+define ("GER_TEXT5", 'Die Rechte des Pr&auml;sidenten k&ouml;nnen nicht ge&auml;ndert werden!');
 
 define ("GER_TEXT6", 'Du kannst deine eigenen Rechte nicht &auml;ndern!');
 
@@ -92,7 +92,7 @@ define ("GER_TEXT33", 'AE = Allgemeine Einstellungen');
 
 define ("GER_TEXT34", 'AK = Allianzkasse');
 
-define ("GER_TEXT35", 'TÜ = Takt. &Uuml;bersicht');
+define ("GER_TEXT35", 'T&Uuml; = Takt. &Uuml;bersicht');
 
 define ("GER_TEXT36", 'M = Massmail');
 

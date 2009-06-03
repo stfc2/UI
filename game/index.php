@@ -149,19 +149,19 @@ if( ($game->TIME - $game->player['last_secimage'] > 3600 * 1.5) && ($game->playe
 // #############################################################################
 // Load modules check
 if (file_exists('include/text_races_'.$game->player['language'].'.php')) {
-	include('include/text_races_'.$game->player['language'].'.php');
+    include('include/text_races_'.$game->player['language'].'.php');
 }else{
-	include('include/text_races.php');
+    include('include/text_races.php');
 }
 if (file_exists('include/text_planets_'.$game->player['language'].'.php')) {
-	include('include/text_planets_'.$game->player['language'].'.php');
+    include('include/text_planets_'.$game->player['language'].'.php');
 }else{
-	include('include/text_planets.php');
+    include('include/text_planets.php');
 }
 if (file_exists('include/ship_data_'.$game->player['language'].'.php'))
-	include('include/ship_data_'.$game->player['language'].'.php');
+    include('include/ship_data_'.$game->player['language'].'.php');
 if (file_exists('include/race_data_'.$game->player['language'].'.php'))
-	include('include/race_data_'.$game->player['language'].'.php');
+    include('include/race_data_'.$game->player['language'].'.php');
 // #############################################################################
 
 
@@ -190,19 +190,19 @@ if($game->SITTING_MODE) {
 
 
 if($game->player['content_secimage'] != '' && $game->TIME >= $game->player['timeout_secimage']) {
-	include('modules/security.php');
+    include('modules/security.php');
 }
-    else 
-        {
-    	        if( (strstr($action, '..')) && ($game->player['user_auth_level'] != STGC_DEVELOPER) ) 
-                {
-    		        message(GENERAL, 'Sicherheitsbruch', '$action = \''.$action.'\'');
-    	        }
-    	
-            	$game->current_module = $action;
-		if (file_exists('modules/'.$action.'.sprache.php')) include('modules/'.$action.'.sprache.php');
-    	        include('modules/'.$action.'.php');
-        }
+else
+{
+    if( (strstr($action, '..')) && ($game->player['user_auth_level'] != STGC_DEVELOPER) ) 
+    {
+        message(GENERAL, 'Sicherheitsbruch', '$action = \''.$action.'\'');
+    }
+
+    $game->current_module = $action;
+    if (file_exists('modules/'.$action.'.sprache.php')) include('modules/'.$action.'.sprache.php');
+        include('modules/'.$action.'.php');
+}
 
 
 // #############################################################################
@@ -238,22 +238,20 @@ if( (isset($_SERVER['HTTP_ACCEPT_ENCODING'])) && (strstr($_SERVER['HTTP_ACCEPT_E
 
     if ($game->player['user_id']<12)
     {
-    // Ausgabe der Gr��e vor/nach der Kompression:
-    $gzip_result=floor($gzip_size/1024).'kb / '.floor(strlen($gzip_contents)/1024).'kb<br>'.($total_gtime*1000).' msecs';
-    $gzip_size = strlen($gzip_result);
-    $gzip_crc = crc32($gzip_result);
-    $gzip_result = gzcompress($gzip_result, $compression);
-    $gzip_result = substr($gzip_result, 0, strlen($gzip_result) - 4);
+        // Calculate size of the file before / after the compression:
+        $gzip_result=floor($gzip_size/1024).'kb / '.floor(strlen($gzip_contents)/1024).'kb<br>'.($total_gtime*1000).' msecs';
+        $gzip_size = strlen($gzip_result);
+        $gzip_crc = crc32($gzip_result);
+        $gzip_result = gzcompress($gzip_result, $compression);
+        $gzip_result = substr($gzip_result, 0, strlen($gzip_result) - 4);
 
-    header('Content-Encoding: gzip');
+        header('Content-Encoding: gzip');
 
-    echo "\x1f\x8b\x08\x00\x00\x00\x00\x00";
-    echo $gzip_result;
-    echo pack('V', $gzip_crc);
-    echo pack('V', $gzip_size);
+        echo "\x1f\x8b\x08\x00\x00\x00\x00\x00";
+        echo $gzip_result;
+        echo pack('V', $gzip_crc);
+        echo pack('V', $gzip_size);
     }
-	   
-    
 }
 else {
     echo $gzip_contents;

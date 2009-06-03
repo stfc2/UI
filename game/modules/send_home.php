@@ -28,7 +28,7 @@ $game->init_player();
 if(isset($_POST['send_homebase'])) {
 
 // #############################################################################
-// Es müssen Flotten für ship_send übergeben werden
+// Some fleets must be passed to ship_send
 
 if(empty($_POST['fleets'])) {
     message(NOTICE, constant($game->sprache("TEXT1")));
@@ -36,7 +36,7 @@ if(empty($_POST['fleets'])) {
 
 
 // #############################################################################
-// Die Flotten-IDs "säubern" (zu integer casten gegen SQL-Exploits)
+// The fleets IDs "clean" (cast to integer against SQL exploits)
 
 $fleet_ids = array();
 
@@ -53,7 +53,7 @@ if($fleet_ids[1]!=0){
 }
 
 // #############################################################################
-// War eine gültige Flotten-ID dabei?
+// Was a valid fleet-ID?
 
 if(empty($fleet_ids)) {
     message(NOTICE, constant($game->sprache("TEXT3")));
@@ -94,7 +94,7 @@ if($n_fleets == 0) {
 }
 
 // #############################################################################
-// Ziel suchen und aus DB Holen
+// Target search and retrieve from DB
 
 $fleetid = $_POST['fleets'][0];
 
@@ -111,7 +111,7 @@ if($dest==0) {
 }
 
 // #############################################################################
-// Startplanet-Daten holen
+// Starting planet data fetch
 
 if($start == $game->planet['planet_id']) {
     $start_planet = $game->planet;
@@ -122,7 +122,7 @@ if($start == $game->planet['planet_id']) {
     $start_planet['user_vacation_start'] = $game->player['user_vacation_start'];
     $start_planet['user_vacation_end'] = $game->player['user_vacation_end'];
 
-    // Spielerdaten müssen nicht übernommen werden, da sie nicht angezeigt/benutzt werden
+    // Player data does not have to be taken, since they are not displayed/used
 }
 else {
     $sql = 'SELECT p.planet_id, p.planet_name, p.system_id, p.sector_id, p.planet_distance_id,
@@ -153,7 +153,7 @@ else {
 
 
 // #############################################################################
-// Zielplanet-Daten holen
+// Target planet data fetch
 
 if($dest == $game->planet['planet_id']) {
     $dest_planet = $game->planet;
@@ -164,7 +164,7 @@ if($dest == $game->planet['planet_id']) {
     $dest_planet['user_vacation_start'] = $game->player['user_vacation_start'];
     $dest_planet['user_vacation_end'] = $game->player['user_vacation_end'];
         
-    // Alle Spielerdaten müssen nicht übernommen werden, da sie nicht angezeigt/benutzt werden
+    // Player data does not have to be taken, since they are not displayed/used
 }
 else {
     $sql = 'SELECT p.planet_id, p.planet_name, p.system_id, p.sector_id, p.planet_distance_id,
@@ -194,8 +194,8 @@ else {
 
 
 // #############################################################################
-// Inter-Orbitaler Flug ist NICHT möglich, wie ursprünglich vorgesehen,
-// das wird seperat gelöst
+// Inter-orbital flight is not possible, as originally planned,
+// which will be resolved separately
 
 if($start == $dest) {
     message(NOTICE, constant($game->sprache("TEXT10")));
@@ -203,22 +203,22 @@ if($start == $dest) {
 
 
 // #############################################################################
-// Wenn Urlaubsmodus aktiviert ist, gleich abbrechen
+// If vacation mode is activated, immediately cancel
 
 if( ($dest_planet['user_vacation_start'] <= $ACTUAL_TICK) && ($dest_planet['user_vacation_end'] > $ACTUAL_TICK) ) {
     message(NOTICE, constant($game->sprache("TEXT11")));
 }
 
 // #############################################################################
-// Wenn Noobschutz aktiviert ist, gleich abbrechen
+// If Noob protection is enabled, just cancel
 
 if($dest_planet['user_attack_protection']>= $ACTUAL_TICK){
     message(NOTICE, constant($game->sprache("TEXT12")));
 }
 
 // #############################################################################
-// Welche Schiffsklassen fliegen mit?
-// (für Warp-Geschwindigkeiten + Befehlsmöglichkeiten)
+// Which classes to fly with?
+// (for warp speed command + options)
 
 $sql = 'SELECT st.ship_torso, st.value_10 AS warp_speed
         FROM (ships s, ship_templates st)
@@ -230,7 +230,7 @@ if(!$q_stpls = $db->query($sql)) {
 }
 
 $in_scout = $in_transporter = $in_colo = $in_orb = $in_other_torso = false;
-$max_warp_speed = 9.99; // genauer interessiert das keinen
+$max_warp_speed = 9.99; // we don't need much precision
 
 while($_temp = $db->fetchrow($q_stpls)) {
     if($_temp['warp_speed'] < $max_warp_speed) $max_warp_speed = $_temp['warp_speed'];
@@ -259,7 +259,7 @@ while($_temp = $db->fetchrow($q_stpls)) {
 }
 
 // #############################################################################
-// Ein paar Einstellungen setzen
+// A few settings set
 
 $free_planet = ($dest_planet['user_id'] == 0) ? true : false;
 $own_planet = ($game->player['user_id'] == $dest_planet['user_id']) ? true : false;

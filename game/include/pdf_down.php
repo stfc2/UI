@@ -79,7 +79,7 @@ switch($game->player['language'])
     case 'GER':
         $created = 'Erstellt am ';
         $sender = 'Absender:					';
-        $recipient = 'Empfänger:			';
+        $recipient = 'Empf&aum;nger:			';
         $date =  'Datum:										';
         $title = 'Titel:														';
     break;
