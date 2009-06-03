@@ -10570,7 +10570,7 @@ $ship_components=array(
                     'value_7'=>'0',
                     'value_8'=>'0',
                     'value_9'=>'0',
-                    'value_10'=>'1',
+                    'value_10'=>'1.2',
                     'value_11'=>'0',
                     'value_12'=>'0',
                     'value_13'=>'25',
@@ -10615,7 +10615,7 @@ $ship_components=array(
                     'value_7'=>'0',
                     'value_8'=>'0',
                     'value_9'=>'0',
-                    'value_10'=>'1',
+                    'value_10'=>'1.6',
                     'value_11'=>'0',
                     'value_12'=>'0',
                     'value_13'=>'50',
@@ -10708,7 +10708,7 @@ $ship_components=array(
                     'value_10'=>'2',
                     'value_11'=>'0',
                     'value_12'=>'0',
-                    'value_13'=>'65',
+                    'value_13'=>'75',
                     'value_14'=>'0',
                     'value_15'=>'0',
                     'torso_1'=>'0',
@@ -10847,7 +10847,7 @@ $ship_components=array(
                     'value_7'=>'0',
                     'value_8'=>'0',
                     'value_9'=>'0',
-                    'value_10'=>'4',
+                    'value_10'=>'4.4',
                     'value_11'=>'0',
                     'value_12'=>'0',
                     'value_13'=>'0',
@@ -11128,7 +11128,7 @@ $ship_components=array(
                     'value_11'=>'0',
                     'value_12'=>'0',
                     'value_13'=>'0',
-                    'value_14'=>'5',
+                    'value_14'=>'9',
                     'value_15'=>'0',
                     'torso_1'=>'0',
                     'torso_2'=>'0',
@@ -11173,7 +11173,7 @@ $ship_components=array(
                     'value_11'=>'0',
                     'value_12'=>'0',
                     'value_13'=>'0',
-                    'value_14'=>'10',
+                    'value_14'=>'18',
                     'value_15'=>'0',
                     'torso_1'=>'0',
                     'torso_2'=>'0',
@@ -11450,7 +11450,7 @@ $ship_components=array(
                     'value_11'=>'0',
                     'value_12'=>'0',
                     'value_13'=>'0',
-                    'value_14'=>'4',
+                    'value_14'=>'14',
                     'value_15'=>'0',
                     'torso_1'=>'0',
                     'torso_2'=>'0',
@@ -11982,7 +11982,7 @@ $ship_components=array(
       ), // Endof Category AI-Kern
 
 
-// Category Trainingseinheiten
+        // Category Trainingseinheiten
         6=>array(
              // Component Training für Zivilisten
              0=>array(
@@ -13033,7 +13033,7 @@ $ship_components=array(
                     'dev_info'=>'',
             ), // Endof Component Gefechtsstand
 
-            // Component Sekundärbrücke
+             // Component Sekundärbrücke
              5=>array(
                     'name'=>'Sekundärbrücke',
                     'resource_1'=>'1800',
@@ -13105,7 +13105,7 @@ $ship_components=array(
                     'value_11'=>'14',
                     'value_12'=>'0',
                     'value_13'=>'0',
-                    'value_14'=>'7',
+                    'value_14'=>'6',
                     'value_15'=>'0',
                     'torso_1'=>'0',
                     'torso_2'=>'0',
@@ -13150,7 +13150,7 @@ $ship_components=array(
                     'value_11'=>'22',
                     'value_12'=>'0',
                     'value_13'=>'0',
-                    'value_14'=>'7',
+                    'value_14'=>'5',
                     'value_15'=>'0',
                     'torso_1'=>'0',
                     'torso_2'=>'0',
