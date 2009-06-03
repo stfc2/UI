@@ -54,7 +54,7 @@ return 1;
 
 }
 
-function ColoMetRestriction($template) // Verifica di unicità delle colonizzatrici
+function ColoMetRestriction($template) // Verification of the uniqueness of the colony ship
 {
 	global $game,$db;
 
@@ -135,31 +135,31 @@ function TemplateMetRequirementsText($template)
 
 global $game;
 
-global $ship_components;
+//global $ship_components;
 
 if ($game->player['user_points']<GlobalTorsoReq($template['ship_torso'])) { $game->out('<tr><td>'.constant($game->sprache("TEXT0")).' '.GlobalTorsoReq($template['ship_torso']).' '.constant($game->sprache("TEXT1")).'</td></tr>'); }
 
 if ($game->planet['planet_points']<LocalTorsoReq($template['ship_torso'])) { $game->out('<tr><td>'.constant($game->sprache("TEXT0")).' '.LocalTorsoReq($template['ship_torso']).' '.constant($game->sprache("TEXT2")).'</td></tr>'); }
 
-if (!ComponentMetRequirements(0,$template['component_1'],$ship_components[$game->player['user_race']][0][$template['component_1']],$template['ship_torso'])) { }
+if (!ComponentMetRequirements(0,$template['component_1'],$template['ship_torso'])) { }
 
-if (!ComponentMetRequirements(1,$template['component_2'],$ship_components[$game->player['user_race']][1][$template['component_2']],$template['ship_torso'])) { }
+if (!ComponentMetRequirements(1,$template['component_2'],$template['ship_torso'])) { }
 
-if (!ComponentMetRequirements(2,$template['component_3'],$ship_components[$game->player['user_race']][2][$template['component_3']],$template['ship_torso'])) { }
+if (!ComponentMetRequirements(2,$template['component_3'],$template['ship_torso'])) { }
 
-if (!ComponentMetRequirements(3,$template['component_4'],$ship_components[$game->player['user_race']][3][$template['component_4']],$template['ship_torso'])) { }
+if (!ComponentMetRequirements(3,$template['component_4'],$template['ship_torso'])) { }
 
-if (!ComponentMetRequirements(4,$template['component_5'],$ship_components[$game->player['user_race']][4][$template['component_5']],$template['ship_torso'])) { }
+if (!ComponentMetRequirements(4,$template['component_5'],$template['ship_torso'])) { }
 
-if (!ComponentMetRequirements(5,$template['component_6'],$ship_components[$game->player['user_race']][5][$template['component_6']],$template['ship_torso'])) { }
+if (!ComponentMetRequirements(5,$template['component_6'],$template['ship_torso'])) { }
 
-if (!ComponentMetRequirements(6,$template['component_7'],$ship_components[$game->player['user_race']][6][$template['component_7']],$template['ship_torso'])) { }
+if (!ComponentMetRequirements(6,$template['component_7'],$template['ship_torso'])) { }
 
-if (!ComponentMetRequirements(7,$template['component_8'],$ship_components[$game->player['user_race']][7][$template['component_8']],$template['ship_torso'])) { }
+if (!ComponentMetRequirements(7,$template['component_8'],$template['ship_torso'])) { }
 
-if (!ComponentMetRequirements(8,$template['component_9'],$ship_components[$game->player['user_race']][8][$template['component_9']],$template['ship_torso'])) { }
+if (!ComponentMetRequirements(8,$template['component_9'],$template['ship_torso'])) { }
 
-if (!ComponentMetRequirements(9,$template['component_10'],$ship_components[$game->player['user_race']][9][$template['component_10']],$template['ship_torso'])) { }
+if (!ComponentMetRequirements(9,$template['component_10'],$template['ship_torso'])) { }
 
 
 //if ($game->planet['planet_points']<TorsoRequirements($template['ship_torso'],0) || $game->player['user_points']<TorsoRequirements($template['ship_torso'],0)) return 0;
@@ -243,7 +243,7 @@ if ($template['min_unit_3']!=0) $num[8]=floor($planet['unit_3']/$template['min_u
 
 if ($template['min_unit_4']!=0) $num[9]=floor($planet['unit_4']/$template['min_unit_4']); else $num[9]=9999;
 
-// Non si possono costruire piu' di user_max_colo colonizzatrice alla volta
+// You cannot have more than user_max_colo colony ship at same time
 if($template['ship_torso'] == 2 && $template['ship_class'] == 0) {
 	if (($game->player['user_max_colo'] != 0) && (min($num) > $game->player['user_max_colo']))
 		return (int)$game->player['user_max_colo'];
@@ -538,7 +538,7 @@ $db->lock('scheduler_shipbuild', 'ship_templates', 'ship_ccategory', 'ship_compo
 $game->init_player();
 
 
-// Non si possono avere più di user_max_colo colonizzatrice alla volta
+// You cannot have more than user_max_colo colony ship at same time
 if($template['ship_torso'] == 2 && $template['ship_class'] == 0) {
 	if (($game->player['user_max_colo'] != 0) && ($_REQUEST['count'] > $game->player['user_max_colo']))	$_REQUEST['count'] = $game->player['user_max_colo'];
 }
@@ -740,7 +740,7 @@ if ($display) $game->out('</td></tr></table><br>');
 
 
 
-///////////////////////// 2nd Einheitenmenü
+///////////////////////// 2nd Unit Menu
 
 
 
@@ -814,7 +814,7 @@ Show_Common_Menues();
 
 
 
-///////////////////////// 3rd Schiffstemplate Menu
+///////////////////////// 3rd Ship template menu
 
 $game->out('<span class="sub_caption">'.constant($game->sprache("TEXT45")).' '.HelpPopup('shipyard_2').':</span><br><br>');
 
@@ -980,7 +980,7 @@ Show_Common_Menues();
 
 
 
-///////////////////////// 3rd Schiffstemplate Menu
+///////////////////////// 3rd Ship template menu
 
 $game->out('<span class="sub_caption">'.constant($game->sprache("TEXT45")).' '.HelpPopup('shipyard_1').' :</span><br><br>');
 
