@@ -21,9 +21,9 @@
 */
 
 
-// Kurze Erklärung zum Forschungssystem:
-// a.) Lokale Forschung, in der Datenbank Forschungsid 0-4
-// b.) Komponentenforschung, in der Datenbank cat_id+5, also 5-xx.
+// A brief explanation of the research system:
+// a.) Local research, research_id 0-4 in the database
+// b.) Components research, in the database cat_id+5, ie 5-xx.
 
 
 $game->init_player();
@@ -74,6 +74,18 @@ if ($num>4) {$num=0; $text.='<br>';}
 return $text;
 }
 
+function CreateResearchInfoText($rsrc)
+{
+    global $game, $TECH_DESCRIPTION;
+
+    $text = '<table><tr>';
+    $text .= '<td valign=top><img src='.$game->GFX_PATH.'research_'.$rsrc.'.gif></td>';
+    $text .= '<td align=justify valign=top>'.$TECH_DESCRIPTION[$game->player['user_race']][$rsrc].'</td>';
+    $text .= '</tr></table>';
+
+	return $text;
+}
+
 function GetCatResearchPrice($level,$resource)
 {
 global $db;
@@ -96,7 +108,7 @@ elseif($resource==2) {
  $price*=$RACE_DATA[$game->player['user_race']][28];
 }
 
-//Ausgenommen durch Taps unnachgiebiges jammern
+//Excluded by Taps unyielding whine
 //if ($price>$game->planet['max_resources']) $price=$game->planet['max_resources'];
 
 return round($price,0);
@@ -390,7 +402,7 @@ $game->out(''.constant($game->sprache("TEXT23")).' <b id="timer2" title="time1_'
 
 
 
-// Schiffskomponenten-Forschung:
+// Ship components research:
 $game->out('<span class="sub_caption">'.constant($game->sprache("TEXT25")).' '.HelpPopup('research_catresearch').' :</span><br><br>');
 $game->out('<table border=0 cellpadding=2 cellspacing=2 width=498 class="style_outer">');
 $game->out('
@@ -474,7 +486,7 @@ $game->out('
 <table border=0 cellpadding=2 cellspacing=2 width=600 class="style_inner"><tr><td width=150><b>'.constant($game->sprache("TEXT34")).'</b></td><td width=175><b>'.constant($game->sprache("TEXT35")).'</b></td><td width=100><b>'.constant($game->sprache("TEXT36")).'</b></td><td width=*>&nbsp;</td></tr>');
 
 
-// Lokale Forschung:
+// Local research:
 for ($t=0; $t<5; $t++)
 {
 
@@ -497,7 +509,7 @@ $build_text='<span style="color: red">'.constant($game->sprache("TEXT38")).' '.(
 if ($game->planet['research_'.($t+1)]>=$MAX_RESEARCH_LVL[$capital][$t]) $build_text=constant($game->sprache("TEXT39"));
 }
 
-$game->out('<tr><td><b><a href="javascript:void(0);" onmouseover="return overlib(\''.$TECH_DESCRIPTION[$game->player['user_race']][$t].'\', CAPTION, \''.$TECH_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$TECH_NAME[$game->player['user_race']][$t].'</b></td><td><img src="'.$game->GFX_PATH.'menu_metal_small.gif">'.GetResearchPrice($t,0).'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">'.GetResearchPrice($t,1).'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">'.GetResearchPrice($t,2).'</td><td>&nbsp;'.GetResearchTime($t).'</td><td>'.$build_text.'</td></tr>');
+$game->out('<tr><td><b><a href="javascript:void(0);" onmouseover="return overlib(\''.CreateResearchInfoText($t).'\', CAPTION, \''.$TECH_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$TECH_NAME[$game->player['user_race']][$t].'</b></td><td><img src="'.$game->GFX_PATH.'menu_metal_small.gif">'.GetResearchPrice($t,0).'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">'.GetResearchPrice($t,1).'&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">'.GetResearchPrice($t,2).'</td><td>&nbsp;'.GetResearchTime($t).'</td><td>'.$build_text.'</td></tr>');
 }
 }
 
