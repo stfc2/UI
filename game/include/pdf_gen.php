@@ -102,7 +102,7 @@ switch($game->player['language'])
 $pdf=new FPDF();
 $pdf->Open();
 $pdf->SetAuthor($game->player['user_name']);
-$pdf->SetTitle($config['game_url']);
+$pdf->SetTitle($config['site_url']);
 $pdf->SetAutoPageBreak(on, 15.0);
 $pdf->AddPage();
 $pdf->SetFont('Arial','I',8);
