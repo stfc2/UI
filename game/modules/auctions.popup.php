@@ -100,7 +100,7 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 
 </style>
 
-<body bgcolor="#000000" text="#DDDDDD"  background="'.$config['game_url'].'/gfx/bg_stars1.gif">
+<body bgcolor="#000000" text="#DDDDDD"  background="'.$config['site_url'].'/gfx/bg_stars1.gif">
 
   <table class="style_inner" width="550" align="center" border="0" cellpadding="2" cellspacing="0">
     
@@ -122,7 +122,7 @@ if(isset($_GET['user'])) {
 
   while($tradedata = $db->fetchrow($q_tradedata)) {
   
-    echo '<tr><td width="55" align="center">[<a onclick="opener.window.location=this.href;self.close();return false" href="/game2/index.php?a=trade&view=view_bidding_detail&id='.$tradedata['id'].'">'.constant($game->sprache("TEXT5")).'</a>]</td><td>'.$tradedata['header'].'</td><td><img src="'.PROXY_GFX_PATH.'/skin1/menu_metal_small.gif">&nbsp;'.$tradedata['resource_1'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_mineral_small.gif">&nbsp;'.$tradedata['resource_2'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_latinum_small.gif">&nbsp;'.$tradedata['resource_3'].'&nbsp;<br><img src="'.PROXY_GFX_PATH.'/skin1/menu_unit1_small.gif">&nbsp;'.$tradedata['unit_1'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit2_small.gif">&nbsp;'.$tradedata['unit_2'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit3_small.gif">&nbsp;'.$tradedata['unit_3'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit4_small.gif">&nbsp;'.$tradedata['unit_4'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit5_small.gif">&nbsp;'.$tradedata['unit_5'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit6_small.gif">&nbsp;'.$tradedata['unit_6'].'</td><td>'.Zeit(TICK_DURATION*($tradedata['end_time']-$config['tick_id'])).'</td></tr>';
+    echo '<tr><td width="55" align="center">[<a onclick="opener.window.location=this.href;self.close();return false" href="/game/index.php?a=trade&view=view_bidding_detail&id='.$tradedata['id'].'">'.constant($game->sprache("TEXT5")).'</a>]</td><td>'.$tradedata['header'].'</td><td><img src="'.PROXY_GFX_PATH.'/skin1/menu_metal_small.gif">&nbsp;'.$tradedata['resource_1'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_mineral_small.gif">&nbsp;'.$tradedata['resource_2'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_latinum_small.gif">&nbsp;'.$tradedata['resource_3'].'&nbsp;<br><img src="'.PROXY_GFX_PATH.'/skin1/menu_unit1_small.gif">&nbsp;'.$tradedata['unit_1'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit2_small.gif">&nbsp;'.$tradedata['unit_2'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit3_small.gif">&nbsp;'.$tradedata['unit_3'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit4_small.gif">&nbsp;'.$tradedata['unit_4'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit5_small.gif">&nbsp;'.$tradedata['unit_5'].'&nbsp;<img src="'.PROXY_GFX_PATH.'/skin1/menu_unit6_small.gif">&nbsp;'.$tradedata['unit_6'].'</td><td>'.Zeit(TICK_DURATION*($tradedata['end_time']-$config['tick_id'])).'</td></tr>';
 
   }
 
