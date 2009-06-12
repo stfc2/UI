@@ -649,6 +649,7 @@ global $db;
 global $game;
 global $userquery;
 global $RACE_DATA;
+global $config;
 
 $search_name=htmlspecialchars($_REQUEST['search']);
 //$_REQUEST['start']=$_REQUEST['start'];
@@ -690,39 +691,39 @@ $game->out('<center><table boder=0 cellpadding=2 cellspacing=2 class="style_inne
 if ((isset($_REQUEST['a3']) && $_REQUEST['a3']==1) || (!isset($_REQUEST['a3'])))
 {
 $game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=player_ranking&a3=1&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT60")).'</u></a><br>[<a href="/game/include/pdf_ranking.php?action=user&order=points" target="_blank"><b>PDF</b></a>]
+<a href="'.parse_link('a=stats&a2=player_ranking&a3=1&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT60")).'</u></a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=points" target="_blank"><b>PDF</b></a>]
 </td>');
 }
 else
 {
 $game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=player_ranking&a3=1&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT60")).'</a><br>[<a href="/game/include/pdf_ranking.php?action=user&order=points" target="_blank"><b>PDF</b></a>]
+<a href="'.parse_link('a=stats&a2=player_ranking&a3=1&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT60")).'</a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=points" target="_blank"><b>PDF</b></a>]
 </td>');
 }
 
 if (isset($_REQUEST['a3']) && $_REQUEST['a3']==2)
 {
 $game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=player_ranking&a3=2&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT61")).'</u></a><br>[<a href="/game/include/pdf_ranking.php?action=user&order=planets" target="_blank"><b>PDF</b></a>]
+<a href="'.parse_link('a=stats&a2=player_ranking&a3=2&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT61")).'</u></a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=planets" target="_blank"><b>PDF</b></a>]
 </td>');
 }
 else
 {
 $game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=player_ranking&a3=2&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT61")).'</a><br>[<a href="/game/include/pdf_ranking.php?action=user&order=planets" target="_blank"><b>PDF</b></a>]
+<a href="'.parse_link('a=stats&a2=player_ranking&a3=2&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT61")).'</a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=planets" target="_blank"><b>PDF</b></a>]
 </td>');
 }
 
 if (isset($_REQUEST['a3']) && $_REQUEST['a3']==3)
 {
 $game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=player_ranking&a3=3&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT62")).'</u></a><br>[<a href="/game/include/pdf_ranking.php?action=user&order=honor" target="_blank"><b>PDF</b></a>]
+<a href="'.parse_link('a=stats&a2=player_ranking&a3=3&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT62")).'</u></a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=honor" target="_blank"><b>PDF</b></a>]
 </td>');
 }
 else
 {
 $game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=player_ranking&a3=3&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT62")).'</a><br>[<a href="/game/include/pdf_ranking.php?action=user&order=honor" target="_blank"><b>PDF</b></a>]
+<a href="'.parse_link('a=stats&a2=player_ranking&a3=3&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT62")).'</a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=honor" target="_blank"><b>PDF</b></a>]
 </td>');
 }
 
@@ -902,6 +903,7 @@ function Alliance_Ranking($focus=0, $highlight)
 {
 global $db;
 global $game;
+global $config;
 
 
 $search_name=htmlspecialchars($_REQUEST['search']);
@@ -943,52 +945,52 @@ $game->out('<center><table boder=0 cellpadding=2 cellspacing=2 class="style_inne
 if ((isset($_REQUEST['a3']) && $_REQUEST['a3']==1) || (!isset($_REQUEST['a3'])))
 {
 $game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=alliance_ranking&a3=1&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT83")).'</u></b></a><br><b>[<a href="/game/include/pdf_ranking.php?action=alliance&order=points" target="_blank">PDF</a>]</b>
+<a href="'.parse_link('a=stats&a2=alliance_ranking&a3=1&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT83")).'</u></b></a><br><b>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=alliance&order=points" target="_blank">PDF</a>]</b>
 </td>');
 }
 else
 {
 $game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=alliance_ranking&a3=1&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT83")).'</a><br><b>[<a href="/game/include/pdf_ranking.php?action=alliance&order=points" target="_blank">PDF</a>]</b>
+<a href="'.parse_link('a=stats&a2=alliance_ranking&a3=1&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT83")).'</a><br><b>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=alliance&order=points" target="_blank">PDF</a>]</b>
 </td>');
 }
 
 if ((isset($_REQUEST['a3']) && $_REQUEST['a3']==4))
 {
 $game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=alliance_ranking&a3=4&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT84")).'</u><br></b></a><b>[<a href="/game/include/pdf_ranking.php?action=alliance&order=points_avg" target="_blank">PDF</a>]</b>
+<a href="'.parse_link('a=stats&a2=alliance_ranking&a3=4&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT84")).'</u><br></b></a><b>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=alliance&order=points_avg" target="_blank">PDF</a>]</b>
 </td>');
 }
 else
 {
 $game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=alliance_ranking&a3=4&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT84")).'</a><br><b>[<a href="/game/include/pdf_ranking.php?action=alliance&order=points_avg" target="_blank">PDF</a>]</b>
+<a href="'.parse_link('a=stats&a2=alliance_ranking&a3=4&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT84")).'</a><br><b>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=alliance&order=points_avg" target="_blank">PDF</a>]</b>
 </td>');
 }
 
 if (isset($_REQUEST['a3']) && $_REQUEST['a3']==2)
 {
 $game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=alliance_ranking&a3=2&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT61")).'</u><br></b></a><b>[<a href="/game/include/pdf_ranking.php?action=alliance&order=planets" target="_blank">PDF</a>]</b>
+<a href="'.parse_link('a=stats&a2=alliance_ranking&a3=2&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT61")).'</u><br></b></a><b>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=alliance&order=planets" target="_blank">PDF</a>]</b>
 </td>');
 }
 else
 {
 $game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=alliance_ranking&a3=2&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT61")).'</a><br><b>[<a href="/game/include/pdf_ranking.php?action=alliance&order=planets" target="_blank">PDF</a>]</b>
+<a href="'.parse_link('a=stats&a2=alliance_ranking&a3=2&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT61")).'</a><br><b>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=alliance&order=planets" target="_blank">PDF</a>]</b>
 </td>');
 }
 
 if (isset($_REQUEST['a3']) && $_REQUEST['a3']==3)
 {
 $game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=alliance_ranking&a3=3&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT62")).'</u><br></b></a><b>[<a href="/game/include/pdf_ranking.php?action=alliance&order=honor" target="_blank">PDF</a>]</b>
+<a href="'.parse_link('a=stats&a2=alliance_ranking&a3=3&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT62")).'</u><br></b></a><b>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=alliance&order=honor" target="_blank">PDF</a>]</b>
 </td>');
 }
 else
 {
 $game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=alliance_ranking&a3=3&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT62")).'</a><br><b>[<a href="/game/include/pdf_ranking.php?action=alliance&order=honor" target="_blank">PDF</a>]</b>
+<a href="'.parse_link('a=stats&a2=alliance_ranking&a3=3&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT62")).'</a><br><b>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=alliance&order=honor" target="_blank">PDF</a>]</b>
 </td>');
 }
 
