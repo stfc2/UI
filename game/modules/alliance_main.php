@@ -216,7 +216,7 @@ if(isset($_GET['member_list'])) {
         <tr height="5"><td></td></tr>
         <tr><!--<td align="left">
           <input class="button" type="submit" name="status_change_fin" value="'.constant($game->sprache("TEXT26")).'"></td>!-->
-	   <td><input class="button" type="submit" name="status_change_diplo" value="'.constant($game->sprache("TEXT27")).'"></td>
+          <td><input class="button" type="submit" name="status_change_diplo" value="'.constant($game->sprache("TEXT27")).'"></td>
           <td align="left">
           <input class="button" type="submit" name="status_change" value="'.constant($game->sprache("TEXT28")).'">
 
@@ -224,7 +224,7 @@ if(isset($_GET['member_list'])) {
        </tr>
         
         <!--<tr height="5"><td></td></tr>
-	 <tr><td align="left">
+       <tr><td align="left">
           <input class="button" type="submit" name="status_change" value="'.constant($game->sprache("TEXT28")).'">
 
         </td></tr>!-->
@@ -256,11 +256,11 @@ if(isset($_GET['member_list'])) {
         while($user = $db->fetchrow($q_user)) {
 
         switch($user['user_race']) {
- 
+
         case 0:
         $user_race = constant($game->sprache("TEXT12"));
         break;
- 
+
         case 1:
         $user_race = constant($game->sprache("TEXT13"));
         break;
@@ -304,7 +304,7 @@ if(isset($_GET['member_list'])) {
         }
 
         if ($user['last_active']>(time()-60*3)) $stats_str='<span style="color: green">'.constant($game->sprache("TEXT23")).'</span>';
-	    else if ($user['last_active']>(time()-60*9)) $stats_str='<span style="color: orange">'.constant($game->sprache("TEXT24")).'</span>';
+        else if ($user['last_active']>(time()-60*9)) $stats_str='<span style="color: orange">'.constant($game->sprache("TEXT24")).'</span>';
             else $stats_str='<span style="color: red">'.constant($game->sprache("TEXT25")).'</span>';
 
             $game->out('
@@ -416,7 +416,7 @@ elseif(!empty($_POST['leave_confirm'])) {
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not update alliance data');
     }
-	
+
     redirect('a=alliance_main');
 }
 elseif(isset($_GET['leave'])) {
@@ -444,24 +444,24 @@ elseif(isset($_GET['leave'])) {
 }
 elseif(isset($_GET['new'])) {
     check_membership(false);
-    
-	$alliance_name = addslashes($_POST['alliance_name']);
-	
-	if(empty($alliance_name)) {
-		message(NOTICE, constant($game->sprache("TEXT52")));
-	}
-	
-	$alliance_tag = addslashes($_POST['alliance_tag']);
-	
-	if(empty($alliance_tag)) {
-		message(NOTICE, constant($game->sprache("TEXT53")));
-	}
-	
-	$sql = 'SELECT alliance_id
-	        FROM alliance
-	        WHERE alliance_tag = "'.$alliance_tag.'" OR
+
+    $alliance_name = addslashes($_POST['alliance_name']);
+
+    if(empty($alliance_name)) {
+        message(NOTICE, constant($game->sprache("TEXT52")));
+    }
+
+    $alliance_tag = addslashes($_POST['alliance_tag']);
+
+    if(empty($alliance_tag)) {
+        message(NOTICE, constant($game->sprache("TEXT53")));
+    }
+
+    $sql = 'SELECT alliance_id
+            FROM alliance
+            WHERE alliance_tag = "'.$alliance_tag.'" OR
                alliance_name = "'.$alliance_name.'"';
-	              
+
     if(($ally_exists = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query alliance name/tag data');
     }
@@ -469,24 +469,24 @@ elseif(isset($_GET['new'])) {
     if(!empty($ally_exists['alliance_id'])) {
         message(NOTICE, constant($game->sprache("TEXT54")));
     }
-	
+
     // Password entry removed
 
-	$sql = 'INSERT INTO alliance (alliance_name, alliance_tag, alliance_owner, alliance_text, alliance_logo, alliance_homepage, alliance_points, alliance_planets, alliance_honor)
-			VALUES ("'.$alliance_name.'", "'.$alliance_tag.'", "'.$game->player['user_id'].'", "", "", "", '.$game->player['user_points'].', '.$game->player['user_planets'].', '.$game->player['user_honor'].')';
-			
+    $sql = 'INSERT INTO alliance (alliance_name, alliance_tag, alliance_owner, alliance_text, alliance_logo, alliance_homepage, alliance_points, alliance_planets, alliance_honor)
+            VALUES ("'.$alliance_name.'", "'.$alliance_tag.'", "'.$game->player['user_id'].'", "", "", "", '.$game->player['user_points'].', '.$game->player['user_planets'].', '.$game->player['user_honor'].')';
+
     if(!$db->query($sql)) {
-    	message(DATABASE_ERROR, 'Could not insert new alliance data');
+        message(DATABASE_ERROR, 'Could not insert new alliance data');
     }
-    	
-    
-	$new_alliance_id = $db->insert_id();
-    	alliance_log('<font color=green>'.$game->player['user_name'].'</font> '.constant($game->sprache("TEXT55")).' <font color=red>'.$alliance_name.' ['.$alliance_tag.']</font> '.constant($game->sprache("TEXT56")),0,$new_alliance_id);
-    
+
+
+    $new_alliance_id = $db->insert_id();
+    alliance_log('<font color=green>'.$game->player['user_name'].'</font> '.constant($game->sprache("TEXT55")).' <font color=red>'.$alliance_name.' ['.$alliance_tag.']</font> '.constant($game->sprache("TEXT56")),0,$new_alliance_id);
+
     $sql = 'UPDATE user
-			SET user_alliance = '.$new_alliance_id.',
-				user_alliance_status = '.ALLIANCE_STATUS_OWNER.',
-                           user_alliance_rights1 = 1,
+            SET user_alliance = '.$new_alliance_id.',
+                user_alliance_status = '.ALLIANCE_STATUS_OWNER.',
+                user_alliance_rights1 = 1,
                 user_alliance_rights2 = 1,
                 user_alliance_rights3 = 1,
                 user_alliance_rights4 = 1,
@@ -494,18 +494,18 @@ elseif(isset($_GET['new'])) {
                 user_alliance_rights6 = 1,
                 user_alliance_rights7 = 1,
                 user_alliance_rights8 = 1
-			WHERE user_id = '.$game->player['user_id'];
-			
+            WHERE user_id = '.$game->player['user_id'];
+
     if(!$db->query($sql)) {
-    	message(DATABASE_ERROR, 'Could not update user alliance data');
+        message(DATABASE_ERROR, 'Could not update user alliance data');
     }
     
 // DC ---- We have a nice table to use, let's do it
-	$sql = 'INSERT INTO userally_history (user_id, alliance_id, join_date)'
-		. 'VALUES ('.$game->player['user_id'].', '.$new_alliance_id.', '.time().')';
-	if(!$db->query($sql)) {
-		message(DATABASE_ERROR, 'Could not update userally_history data');
-    }	
+    $sql = 'INSERT INTO userally_history (user_id, alliance_id, join_date)
+            VALUES ('.$game->player['user_id'].', '.$new_alliance_id.', '.time().')';
+    if(!$db->query($sql)) {
+        message(DATABASE_ERROR, 'Could not update userally_history data');
+    }
 // DC ----
 
     redirect('a=alliance_main');
@@ -607,20 +607,20 @@ elseif(!empty($game->player['alliance_name'])) {
             <a href="'.parse_link('a=alliance_taxes').'">'.constant($game->sprache("TEXT64")).'</a><br><br>
             <a href="'.parse_link('a=alliance_board').'">'.constant($game->sprache("TEXT65")).'</a><br>
     ');
-	
-    if($game->player['user_alliance_rights7']==1) { 
+
+    if($game->player['user_alliance_rights7']==1) {
         $game->out(' 
 
             <a href="'.parse_link('a=alliance_chat').'">'.constant($game->sprache("TEXT84")).'</a><br><br> '); 
-	}
-	else { $game->out('<br>'); }
+    }
+    else { $game->out('<br>'); }
 
     if($game->player['user_alliance_rights1']==1) { 
     
     $game->out('
 
             <a href="'.parse_link('a=alliance_admin&settings').'">'.constant($game->sprache("TEXT66")).'</a><br> '); 
-    } 
+    }
     //else { $game->out('<br>'); }
 
 
@@ -628,7 +628,7 @@ elseif(!empty($game->player['alliance_name'])) {
 
     if(($new_app = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query alliance data');
-    } 
+    }
 
     
     if($game->player['user_alliance_rights6']==1) { 
@@ -639,22 +639,22 @@ elseif(!empty($game->player['alliance_name'])) {
       }
       else { $game->out('
             <a href="'.parse_link('a=alliance_application&application=admin').'">'.constant($game->sprache("TEXT67")).'</a><br>
-	    
+
          '); }
     } 
     //else { $game->out('<br>'); }
     
     if($game->player['user_alliance_rights8']==1) {
-     
+
     $game->out('<a href="'.parse_link('a=alliance_rights').'">'.constant($game->sprache("TEXT68")).'</a></br>');
-    } 
-    //else { $game->out('<br>'); 
+    }
+    //else { $game->out('<br>');
 
     if($game->player['user_alliance_rights4']==1) {   
     $game->out('<a href="'.parse_link('a=alliance_massmail').'">'.constant($game->sprache("TEXT69")).'</a>');
     }
    // else { $game->out('<br>'); }
-    
+
     if($game->player['user_id'] == $alliance_rights['alliance_owner']) {
         $game->out('<br><br><a href="'.parse_link('a=alliance_admin&delete').'">'.constant($game->sprache("TEXT70")).'</a>');
     }
@@ -667,27 +667,27 @@ elseif(!empty($game->player['alliance_name'])) {
         </tr>
       </table>
       <br>');
-      
+
       $game->out('<br><table class="style_inner" width="330" align="center" border="0" cellpadding="2" cellspacing="2">
         <tr>
           <td width="330"><b>'.constant($game->sprache("TEXT72")).' '.(!isset($_GET['all_logs']) ? '[<a href="'.parse_link('a=alliance_main&all_logs').'">'.constant($game->sprache("TEXT73")).'</a>]' : '').':</b><br><br>');
-	  
-	  
+
+
     $log_qry=$db->query('SELECT * FROM alliance_logs WHERE alliance='.$game->player['user_alliance'].' AND permission<='.$game->player['user_alliance_status'].' ORDER BY id DESC '.(!isset($_GET['all_logs']) ? 'LIMIT 5' : ''));  
     while (($log=$db->fetchrow($log_qry))==true)
     {
     $game->out('<table border=0 cellpadding=0 cellspacing=0><tr><td width=80>'.date('d.m.y H:i',$log['timestamp']).'</td><td width=250>'.stripslashes($log['message']).'</td></tr></table>');
     };
-	
-	  
-    $game->out('	  
-	  </td>
+
+
+    $game->out('
+          </td>
         </tr>
       </table>');
-      
-           
-      
-$game->out('     
+
+
+
+$game->out('
       <br>
       <table class="style_inner" width="330" align="center" border="0" cellpadding="2" cellspacing="2">
         <tr>

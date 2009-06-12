@@ -1,11 +1,11 @@
 <?php
-/*    
+/*
 	This file is part of STFC.
 	Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
-		
+
 	STFC is based on STGC,
 	Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
-	
+
     STFC is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 3 of the License, or
@@ -73,35 +73,35 @@ $game->out('</table></center><br>');
 if( (!empty($_POST['new_submit'])) || (!empty($_GET['suggest'])) ) {
     if(!empty($_GET['suggest'])) {
         $user2_id = (int)$_GET['suggest'];
-        
+
         $sql = 'SELECT user_id
                 FROM user
                 WHERE user_id = '.$user2_id;
     }
     else {
         $user2_name = addslashes($_POST['user2_name']);
-	if($_POST['search']!="")
-{
+        if($_POST['search']!="")
+        {
 
-}
-      if(empty($user2_name)) {
+        }
+        if(empty($user2_name)) {
             message(NOTICE, constant($game->sprache("TEXT13")));
         }
-        
+
         $sql = 'SELECT user_id
                 FROM user
                 WHERE user_name = "'.$user2_name.'"';
     }
-            
+
     if(($user2 = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query user2 data');
     }
-    
+
     if(empty($user2['user_id'])) {
         message(NOTICE, constant($game->sprache("TEXT14")));
 
     }
-    
+
     if($user2['user_id'] == $game->player['user_id']) {
         message(NOTICE, constant($game->sprache("TEXT15")));
     }
@@ -110,24 +110,24 @@ if( (!empty($_POST['new_submit'])) || (!empty($_GET['suggest'])) ) {
             FROM user_diplomacy
             WHERE (user1_id = '.$game->player['user_id'].' AND user2_id = '.$user2['user_id'].') OR
                   (user1_id = '.$user2['user_id'].' AND user2_id = '.$game->player['user_id'].')';
-            
+
     if(($ud_exists = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query user diplomacy data');
     }
-    
+
     if(!empty($ud_exists['ud_id'])) {
         message(NOTICE, constant($game->sprache("TEXT16")));
     }
-    
+
     $sql = 'INSERT INTO user_diplomacy (user1_id, user2_id, accepted)
             VALUES ('.$game->player['user_id'].', '.$user2['user_id'].', 0)';
-    
+
     SystemMessage($user2['user_id'], constant($game->sprache("TEXT17")), constant($game->sprache("TEXT18")));
-        
+
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not insert new diplomacy private data');
     }
-    
+
     redirect('a=user_diplomacy');
 }
 elseif(isset($_GET['new'])) {
@@ -148,7 +148,7 @@ elseif(isset($_GET['new'])) {
 }
 elseif(!empty($_GET['accept'])) {
     $ud_id = (int)$_GET['accept'];
-    
+
     if(empty($ud_id)) {
         message(NOTICE, constant($game->sprache("TEXT20")));
     }
@@ -156,28 +156,28 @@ elseif(!empty($_GET['accept'])) {
     $sql = 'SELECT user1_id, user2_id, accepted
             FROM user_diplomacy
             WHERE ud_id = '.$ud_id;
-            
+
     if(($diplomacy = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query diplomacy private data');
     }
-    
+
     if($diplomacy['user2_id'] != $game->player['user_id']) {
         message(NOTICE, constant($game->sprache("TEXT21")));
     }
-    
+
     if($diplomacy['accepeted'] != 0) {
         message(NOTICE, constant($game->sprache("TEXT22")));
     }
-    
+
     $sql = 'UPDATE user_diplomacy
             SET date = '.$game->TIME.',
                 accepted = 1
             WHERE ud_id = '.$ud_id;
-            
+
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not update diplomacy private accepted data');
     }
-    
+
     redirect('a=user_diplomacy');
 }
 elseif(!empty($_GET['deny'])) {
@@ -241,7 +241,7 @@ elseif(!empty($_GET['cancel'])) {
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not delete diplomacy private data');
     }
-    
+
     redirect('a=user_diplomacy');
 }
 elseif(!empty($_GET['break'])) {
@@ -254,11 +254,11 @@ elseif(!empty($_GET['break'])) {
     $sql = 'SELECT ud_id, user1_id, user2_id, accepted
             FROM user_diplomacy
             WHERE ud_id = '.$ud_id;
-            
+
     if(($diplomacy = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query diplomacy private data');
     }
-    
+
     if(empty($diplomacy['ud_id'])) {
         message(NOTICE, constant($game->sprache("TEXT23")));
     }
@@ -270,33 +270,33 @@ elseif(!empty($_GET['break'])) {
     if(empty($diplomacy['user2_id'])) {
         message(NOTICE, constant($game->sprache("TEXT25")));
     }
-    
+
     $opid = ($diplomacy['user1_id'] == $game->player['user_id']) ? 2 : 1;
-            
+
     if( ($diplomacy['user1_id'] != $game->player['user_id']) && ($diplomacy['user2_id'] != $game->player['user_id']) ) {
         message(NOTICE, constant($game->sprache("TEXT21")));
     }
-    
+
     if($diplomacy['accepted'] != 1) {
         message(NOTICE, constant($game->sprache("TEXT26")));
     }
-    
+
     $sql = 'DELETE FROM user_diplomacy
             WHERE ud_id = '.$ud_id;
-            
+
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not delete diplomacy private data');
     }
-    
+
     add_logbook_entry($diplomacy['user'.$opid.'_id'], LOGBOOK_UDIPLOMACY, constant($game->sprache("TEXT27")), array('what' => 'break', 'who_id' => $game->player['user_id'], 'who_name' => $game->player['user_name']));
-    
+
     redirect('a=user_diplomacy');
 }
 else {
 /*
-[05:11:14] <Secius> das macht ann auf dem stgc treffen 2x freigetränke^^
-[05:11:18] <TAP> wenn du nen lauf hast, dann passt einfach alles
-[05:11:24] <TAP> die übernehm ich gern ;)
+[05:11:14] <Secius> that makes ann on stgc meets 2x free beverages^^
+[05:11:18] <TAP> if you have nen run, then simply everything fits
+[05:11:24] <TAP> I overtake gladly ;)
 */
 
 /* 26/02/09 - AC: Check if it's currently present in the url request */
