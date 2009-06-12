@@ -517,7 +517,7 @@ function display_usermap() {
   <table class="style_outer" border="0" cellpadding="2" cellspacing="2" width="250">
   <tr>
     <td align="center"><span class="sub_caption">'.constant($game->sprache("TEXT8")).'</span><br><br>
-    <a href="'.$config['game_url'].'/index.php?a=bb_karte" target=_blank><img src="'.$config['game_url'].'/bbkarte_thumb.png" border=0></a>
+    <a href="'.$config['site_url'].'/index.php?a=bb_karte" target=_blank><img src="'.$config['site_url'].'/bbkarte_thumb.png" border=0></a>
     </td>
   </tr>
   </table>

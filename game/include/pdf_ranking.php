@@ -139,7 +139,7 @@ if(isset($_GET['action'])) {
 
     $pdf->SetAuthor($game->player['user_name']);
 
-    $pdf->SetTitle($config['game_url']);
+    $pdf->SetTitle($config['site_url']);
 
     $pdf->AddPage(); 
 
@@ -199,7 +199,7 @@ if(isset($_GET['action'])) {
 
     $pdf->SetAuthor($game->player['user_name']);
 
-    $pdf->SetTitle($config['game_url']);
+    $pdf->SetTitle($config['site_url']);
 
     $pdf->AddPage(L); 
 
