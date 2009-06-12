@@ -227,14 +227,14 @@ $px_y+=($system['system_y'] - 1)*$size+1;
 if ($size>2)
 {
 imagefilledrectangle ($im, $px_x,$px_y, $px_x+$size-2, $px_y+$size-2, $color[5]);
-$map_data.='<area href="'.$config['game_url'].'/game2/index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.$px_x.','.$px_y.', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$system['system_name'].'">
+$map_data.='<area href="'.$config['game_url'].'/index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.$px_x.','.$px_y.', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$system['system_name'].'">
 ';
 
 }
 else
 {
 imagefilledrectangle ($im, $px_x-1,$px_y-1, $px_x+$size-2, $px_y+$size-2, $color[5]);
-$map_data.='<area href="'.$config['game_url'].'/game2/index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.($px_x-1).','.($px_y-1).', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$system['system_name'].'">
+$map_data.='<area href="'.$config['game_url'].'/index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.($px_x-1).','.($px_y-1).', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$system['system_name'].'">
 ';
 }
 };
@@ -301,7 +301,7 @@ fclose($handle);
 
 }
 
-echo'<html><body bgcolor="#000000" text="#DDDDDD"  background="'.$config['game_url'].'/gfx/bg_stars1.gif"><center>
+echo'<html><body bgcolor="#000000" text="#DDDDDD"  background="'.$config['site_url'].'/gfx/bg_stars1.gif"><center>
 <span style="font-family: Verdana; font-size: 15px;"><b>'.$title.'</b></span><br>
 <img border=0 usemap="#detail_map" src="'.$image_url.'" >
 
