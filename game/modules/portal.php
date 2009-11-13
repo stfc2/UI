@@ -935,7 +935,7 @@ switch($portal_action) {
        display_poll();
 //	display_spenden();
 
-       $game->out('<a href="http://www.stfc.it/index.php?a=spende"><img src="http://www.stfc.it/gfx/paypal.gif" border 0 alt="Supporta anche tu STFC!"></a><br><br><span class="text_large" style="color: #23F025"><blink>Supporta anche tu STFC!</blink></span><br><br>');
+       $game->out('<a href="http://www.stfc.it/index.php?a=spende"><img src="http://www.stfc.it/gfx/paypal.gif" border 0 alt="Supporta anche tu STFC!"></a>&nbsp;&nbsp;&nbsp;<a href="http://www.topwebgames.it/"><img src="http://www.topwebgames.it/button.php?u=stfc" alt="Top Web Games Italia" border="0" /></a><br><br><span class="text_large" style="color: #23F025"><blink>Supporta anche tu STFC!</blink></span><br><br>');
 
        display_news();
 
