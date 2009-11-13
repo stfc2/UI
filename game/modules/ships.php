@@ -125,7 +125,18 @@ function Ships_List($focus=0,$search_name="")
 	{
 		$ordermethod = 's.construction_time DESC,s.ship_scrap,s.ship_repair,st.name ASC';
 	}
-	
+
+	$shipsxpage = 20;
+
+	/* Vary number of displayable ships per page according max number of ships owned */
+	$sql = 'SELECT COUNT(ship_id) AS n_ships
+			FROM (ships s)
+			INNER JOIN (ship_templates st) ON st.id = s.template_id
+			WHERE user_id = '.$game->player['user_id'].' AND st.ship_class IN ('.implode(',', $sels).')';
+	$n_ships = $db->queryrow($sql);
+	if($n_ships['n_ships'] > 500)
+		$shipsxpage = 100;
+
 
 	$sql = 'SELECT s.ship_id, s.hitpoints, s.ship_repair, s.ship_scrap, s.ship_untouchable,
 			s.unit_1,s.unit_2,s.unit_3,s.unit_4, s.ship_name, s.ship_ncc, s.fleet_id,
@@ -137,7 +148,7 @@ function Ships_List($focus=0,$search_name="")
 			LEFT JOIN (ship_fleets fl) ON fl.fleet_id = s.fleet_id
 			LEFT JOIN (planets pl) ON pl.planet_id = ABS(s.fleet_id)
 			WHERE s.user_id = '.$game->player['user_id'].'
-			AND st.ship_class IN ('.implode(',', $sels).') ORDER BY '.$ordermethod.' LIMIT '.$queryfocus.',20';
+			AND st.ship_class IN ('.implode(',', $sels).') ORDER BY '.$ordermethod.' LIMIT '.$queryfocus.','.$shipsxpage;
 
 	$shipquery = $db->query($sql);
 
@@ -385,19 +396,19 @@ function Ships_List($focus=0,$search_name="")
 			INNER JOIN (ship_templates st) ON st.id = s.template_id
 			WHERE user_id = '.$game->player['user_id'].' AND st.ship_class IN ('.implode(',', $sels).')';
 	$n_ships = $db->queryrow($sql);
-	$max_pages = ceil($n_ships['n_ships'] / 20);
+	$max_pages = ceil($n_ships['n_ships'] / $shipsxpage);
 	$game->out('<br><center><table border=0 cellpadding=2 cellspacing=2 class="style_inner" width=400><tr>
 		<td width=50 align=middle>
 			'.(($queryfocus>0) ? '<a href="'.parse_link('a=ships&order='.$_REQUEST['order'].'&start=0').'"><span class="text_large">[1]</a>' : '[1]').'
 		</td>
 		<td width=150 align=middle>
-			'.(($queryfocus>0) ? '<a href="'.parse_link('a=ships&order='.$_REQUEST['order'].'&start='.($queryfocus-20)).'"><span class="text_large">'.constant($game->sprache("TEXT32")).'</a>' : '').'
+			'.(($queryfocus>0) ? '<a href="'.parse_link('a=ships&order='.$_REQUEST['order'].'&start='.($queryfocus-$shipsxpage)).'"><span class="text_large">'.constant($game->sprache("TEXT32")).'</a>' : '').'
 		</td>
 		<td width=150 align=middle>
-			'.(($queryfocus < $n_ships['n_ships']-20) ? '<a href="'.parse_link('a=ships&order='.$_REQUEST['order'].'&start='.($queryfocus+20)).'"><span class="text_large">'.constant($game->sprache("TEXT33")).'</a>' : '').'
+			'.(($queryfocus < $n_ships['n_ships']-$shipsxpage) ? '<a href="'.parse_link('a=ships&order='.$_REQUEST['order'].'&start='.($queryfocus+$shipsxpage)).'"><span class="text_large">'.constant($game->sprache("TEXT33")).'</a>' : '').'
 		</td>
 		<td width=50 align=middle>
-			'.(($queryfocus < $n_ships['n_ships']-20) ? '<a href="'.parse_link('a=ships&order='.$_REQUEST['order'].'&start='.($n_ships['n_ships']-20)).'"><span class="text_large">['.$max_pages.']</a>' : '['.$max_pages.']').'
+			'.(($queryfocus < $n_ships['n_ships']-$shipsxpage) ? '<a href="'.parse_link('a=ships&order='.$_REQUEST['order'].'&start='.($n_ships['n_ships']-$shipsxpage)).'"><span class="text_large">['.$max_pages.']</a>' : '['.$max_pages.']').'
 		</td>
 		</tr></table>');
 
