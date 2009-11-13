@@ -740,6 +740,6 @@ define ("ITA_TEXT123", '</b> concede l&#146;indipendenza in data ');
 
 define ("ITA_TEXT124", 'Le seguenti informazioni indicano lo stato d&#146;animo dei coloni sul pianeta rispetto ad ogni razza e vengono aggiornate automaticamente ad ogni tick:');
 
-define ("ITA_TEXT125", 'Valore medio = 100, indica indifferenza.<br>Valori superiori indicano comportamenti benevoli verso la raxza.<br>Valori inferiori indicano che i coloni sono ostili verso la razza.');
+define ("ITA_TEXT125", 'Valore medio = 100, indica indifferenza.<br>Valori superiori indicano comportamenti benevoli verso la razza.<br>Valori inferiori indicano che i coloni sono ostili verso la razza.');
 
 ?>
