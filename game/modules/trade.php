@@ -1238,7 +1238,7 @@ function Show_CreateBidding()
 	$db->lock('ships','ship_templates','ship_trade');
 	$game->init_player();
 	// Get all ships:
-	$shipqry=$db->query('SELECT ships.*,ship_templates.ship_torso,ship_templates.name,ship_templates.value_5 FROM ships LEFT JOIN ship_templates ON ship_templates.id=ships.template_id WHERE ships.fleet_id="-'.$game->planet['planet_id'].'" AND ships.ship_untouchable=0 ORDER BY ships.template_id ASC, ships.hitpoints, ships.experience DESC');
+	$shipqry=$db->query('SELECT ships.*,ship_templates.ship_torso,ship_templates.name,ship_templates.value_5 FROM ships LEFT JOIN ship_templates ON ship_templates.id=ships.template_id WHERE ships.fleet_id="-'.$game->planet['planet_id'].'" AND ships.ship_untouchable=0 AND ship_templates.ship_torso <> '.SHIP_TYPE_COLO.' ORDER BY ships.template_id ASC, ships.hitpoints, ships.experience DESC');
 
 	$shiplist=array();
 	$actual_class=-1;
