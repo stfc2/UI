@@ -28,6 +28,19 @@ define('DATABASE_ERROR', 2);
 
 define('NL', "\n");
 
+define ("GALAXY1_NAME", 'Brown Bobby');
+define ("GALAXY2_NAME", 'Fried Egg');
+define ("GALAXY3_NAME", 'Forge');
+
+define ("GALAXY1_IMG", 'gfx/ngc7742.jpg');
+define ("GALAXY2_IMG", 'gfx/m64.jpg');
+define ("GALAXY3_IMG", 'gfx/m64.jpg');
+
+define ("GALAXY1_BG", 'gfx/ngc7742bg.jpg');
+define ("GALAXY2_BG", 'gfx/m64bg.jpg');
+define ("GALAXY3_BG", 'gfx/m64bg.jpg');
+
+
 $db_name = '';
 $db_user = '';
 $db_password = '';
@@ -101,6 +114,24 @@ function message($type, $message) {
 function parse_link($get_string = '') {
     return $_SERVER['PHP_SELF'].'?'.$get_string;
 }
+
+function display_message($header,$message,$bg) {
+    global $main_html;
+    $main_html .= '
+<table align="center" border="0" cellpadding="2" cellspacing="2" width="500" class="border_grey" style=" background-color:#000000; background-position:left; background-repeat:no-repeat;">
+  <tr>
+    <td width="100%">
+      <center><span class="sub_caption">'.$header.'</span></center>
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" style=" background-image:url(\''.$bg.'\'); background-position:left; background-repeat:yes;">
+        <tr>
+          <td width="100%" valign="top"><span class="sub_caption2"><br>'.$message.'<br><br></span></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>';
+}
+
 class sql {
     var $login = array(
         'server' => 'localhost',
@@ -364,7 +395,7 @@ class sql {
 
             $table =         (!empty($data['explain']['table']))         ? $data['explain']['table']         : '';
             $type =          (!empty($data['explain']['type']))          ? $data['explain']['type']          : '';
-            $possible_keys = (!empty($data['explain']['possible_keys'])) ? $data['explain']['possible_keys'] : '';	
+            $possible_keys = (!empty($data['explain']['possible_keys'])) ? $data['explain']['possible_keys'] : '';
             $key =           (!empty($data['explain']['key']))           ? $data['explain']['key']           : '';
             $key_len =       (!empty($data['explain']['key_len']))       ? $data['explain']['key_len']       : '';
             $ref =           (!empty($data['explain']['ref']))           ? $data['explain']['ref']           : '';
@@ -446,19 +477,25 @@ function stgc_mail($myname, $myemail, $contactname, $contactemail, $subject, $me
 
 
 $db = new sql($config['server'].":".$config['port'], $config['game_database'], $config['user'], $config['password']); // create sql-object for db-connection
-
+$db2 = new sql($config['server'].":".$config['port'], $config['game_database2'], $config['user'], $config['password']);
+$db3 = new sql($config['server'].":".$config['port'], $config['game_database3'], $config['user'], $config['password']);
 
 $action = htmlspecialchars((!empty($_GET['a'])) ? $_GET['a'] : 'home');
 
+$title_html = 'Star Trek: Frontline Combat';
+$meta_descr = 'ST: Frontline Combat is a free browser based multi-player game by playing the role of different races and peoples of the universe and rewrite history.';
 $main_html = '';
 
 if(strstr($action, '.')) {
-    $main_html = '<br><br><br><br><center><span style="font-size: 20px;">The selected site "'.$action.'" doesn&#146;t exist</span></center>';
+    $main_html = '<br><br><center><span style="font-size: 20px;">La pagina selezionata "'.$action.'" non esiste.</span></center><br><br>';
 }
 
-if(!include('pages/'.$action.'.php')) {
-    $main_html = '<br><br><br><br><center><span style="font-size: 20px;">The selected site "'.$action.'" doesn&#146;t exist</span></center>';
+if(!file_exists('pages/'.$action.'.php')) {
+    $main_html = '<br><br><center><span style="font-size: 20px;">La pagina selezionata "'.$action.'" non esiste.</span></center><br><br>';
 }
+else
+    include('pages/'.$action.'.php');
+
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -466,23 +503,24 @@ if(!include('pages/'.$action.'.php')) {
 <html>
 
 <head>
-  <title>Star Trek: Frontline Combat</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title><?php echo $title_html; ?></title>
+  <meta http-equiv="Content-Language" content="it">
+  <meta name="description" content="<?php echo $meta_descr; ?>">
+  <meta name="keywords" content="star, trek, game, gratis, multiplayer, onlinegame, browser, klingon, romulan, federation">
 
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="pragma" content="no-cache">
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-
-  <meta name="description" content="ST: Frontline Combat is a free browser based multi-player game by playing the role of different races and peoples of the universe and rewrite history.">
-  <meta name="keywords" content="star trek, startrek, galaxy, conquest, universe, game, gratis, free, multiplayer, strategy, onlinegame, bbg, free, browser, based, galaxy, universe, klingon, romulan, federation, federazione">
+  <meta name="title" content="Star Trek: Frontline Combat">
   <meta name="author" content="Florian Brede & Philipp Schmidt">
-  <meta name="publisher" content="Florian Brede & Philipp Schmidt">
   <meta name="copyright" content="Paramount Pic., Brede, Schmidt">
+  <meta name="ROBOTS" content="INDEX,NOFOLLOW">
+  <meta name="creation_Date" content="11/14/2008">
+  <meta name="revisit-after" content="7 days">
+  <meta name="publisher" content="Florian Brede & Philipp Schmidt">
   <meta name="page-topic" content="Star Trek Online Game">
-  <meta name="date" content="2003-06-22">
-  <meta name="content-language" content="en">
+  <meta name="date" content="2008-11-14">
   <meta name="page-type" content="game">
-  <meta name="robots" content="index,nofollow">
-  <meta name="revisit-after" content="10">
 <style type="text/css">
 <!-- A:link {FONT-SIZE: 11px; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"; TEXT-DECORATION: none}
 A:visited {FONT-SIZE: 11px; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"; TEXT-DECORATION: none}
@@ -561,7 +599,7 @@ window.attachEvent("onload", expandone)
 
 </script>
 
-  <script language="JavaScript" src="overlib.js"></script>
+  <script type="text/JavaScript" src="overlib.js"></script>
 </head>
 
 <body text="#c0c0c0" background="gfx/bg_stars1.gif" >
@@ -612,14 +650,14 @@ window.attachEvent("onload", expandone)
 
         </td>
     </tr>
-<tr height="20">
+<tr>
 <td width=750 bgcolor="#131C46">&nbsp;
 <a class="nav" href="<?php echo parse_link() ?>"><img src="gfx/home.jpg" alt="home" border=0 onMouseOver="this.src='gfx/homeh.jpg';" onMouseOut="this.src='gfx/home.jpg';"></a> &nbsp;
 <a class="nav" href="<?php echo parse_link('a=login') ?>"><img src="gfx/login.jpg" alt="login" border=0 onMouseOver="this.src='gfx/loginh.jpg';" onMouseOut="this.src='gfx/login.jpg';"></a> &nbsp;&nbsp;
 <a class="nav" href="<?php echo parse_link('a=register') ?>"><img src="gfx/register.jpg" alt="register" border=0 onMouseOver="this.src='gfx/registerh.jpg';" onMouseOut="this.src='gfx/register.jpg';"></a> &nbsp;&nbsp;
 <a class="nav" href="<?php echo parse_link('a=stats') ?>"><img src="gfx/stats.jpg" alt="stats" border=0 onMouseOver="this.src='gfx/statsh.jpg';" onMouseOut="this.src='gfx/stats.jpg';"></a> &nbsp;&nbsp;
 <a class="nav" href="http://wiki.stgc.de" target=_blank><img src="gfx/faq.jpg" alt="faq" border=0 onMouseOver="this.src='gfx/faqh.jpg';" onMouseOut="this.src='gfx/faq.jpg';"></a>
-<a class="nav" href="http://forum.nonsolotaku.it" target=_blank><img src="gfx/forum.jpg" alt="forum" border=0 onMouseOver="this.src='gfx/forumh.jpg';" onMouseOut="this.src='gfx/forum.jpg';"></a>
+<a class="nav" href="http://forum.stfc.it" target=_blank><img src="gfx/forum.jpg" alt="forum" border=0 onMouseOver="this.src='gfx/forumh.jpg';" onMouseOut="this.src='gfx/forum.jpg';"></a>
 <a class="nav" href="<?php echo parse_link('a=imprint') ?>"><img src="gfx/impressum.jpg" alt="impressum" border=0 onMouseOver="this.src='gfx/impressumh.jpg';" onMouseOut="this.src='gfx/impressum.jpg';"></a> &nbsp;&nbsp;
 <a class="nav" href="http://stgcsource.de/" target=_blank><img src="gfx/developer.jpg" alt="Development" border=0 onMouseOver="this.src='gfx/developerh.jpg';" onMouseOut="this.src='gfx/developer.jpg';"></a></td>
 </tr>
@@ -688,6 +726,18 @@ window.attachEvent("onload", expandone)
         </td>
     </tr>
 </table><br />
+<script language=javascript type="text/javascript" src="http://ss.webring.com/navbar?f=j;y=adminstfc;u=defurl">
+</script>
+<center>Powered by <a href="http://dir.webring.com/rw" target=_top>WebRing</a>.</center>
+
+<!--optional-->
+<noscript><center><table bgcolor=gray cellspacing=0 border=2><tr>
+<td><table cellpadding=2 cellspacing=0 border=0><tr><td align=center>
+<font face=arial size=-1>This site is a member of WebRing. 
+<br>To browse visit <a href="http://ss.webring.com/navbar?f=l;y=adminstfc;u=defurl">
+Here</a>.</font></td></tr></table></td></tr></table>
+</center></noscript>
+
 </body>
 </html>
 
