@@ -21,6 +21,8 @@
 */
 
 
+define ("GALAXY1_NAME", 'Brown Bobby');
+define ("GALAXY2_NAME", 'Fried Egg');
 
 
 define('NL', "\n");
@@ -385,6 +387,7 @@ $main_html = '';
 include('../game/include/global.php');
 
 $db = new sql($config['server'].":".$config['port'], $config['game_database'], $config['user'], $config['password']); // create sql-object for db-connection
+$db2 = new sql($config['server'].":".$config['port'], $config['game_database2'], $config['user'], $config['password']); // create sql-object for db-connection
 
 
 include('session.php');
@@ -414,9 +417,22 @@ global $user;
 
 if (!empty($user))
 {
-$db = new sql($config['server'].":".$config['port'], $config['game_database'], $config['user'], $config['password']); // create sql-object for db-connection
-	
-	
+
+$show_logout = '<br><a href="index.php?logout"><b>Logout</b></a><br>';
+
+// create sql-object for db-connection
+switch($user['galaxy'])
+{
+    case 0:
+        $galaxyname = '(Galassia '.GALAXY1_NAME.')';
+        $db = new sql($config['server'].":".$config['port'], $config['game_database'], $config['user'], $config['password']);
+    break;
+    case 1:
+        $galaxyname = '(Galassia '.GALAXY2_NAME.')';
+        $db = new sql($config['server'].":".$config['port'], $config['game_database2'], $config['user'], $config['password']);
+    break;
+}
+
 if(strstr($action, '.')) {
 
     $main_html = '<center><br><br><table border="0" cellpadding=0 cellspacing=0 class="border_black_2"><tr><td><img src=404.jpg></td></tr></table></center></td><td width=40></td></tr></table>';
@@ -524,9 +540,6 @@ text-align:left;
 
 </style>
 
-<script type="text/javascript" language="JavaScript" src="|game_url/stgc5_gfx/../stgc2.js"></script>
-<script type="text/javascript" language="JavaScript" src="|game_url/stgc5_gfx/../overlib.js"></script>
-  
 
 <BODY bgcolor="#107710" onload="start();" >
 <div id="overDiv" style="Z-INDEX: 1000; VISIBILITY: hidden; POSITION: absolute"></div>
@@ -540,7 +553,7 @@ text-align:left;
 
 <table border=0 cellpadding=0 cellspacing=0 width=900 bgcolor=#bbbbbbb>
 
-<tr><td><span class="header0">STFC-Speed Supportcenter</span></td></tr></table>
+<tr><td><span class="header0">STFC Supportcenter</span></td><td align="right"><span class="header3"><?php echo $galaxyname; ?></span></td></tr></table>
 <table border=0 cellpadding=0 cellspacing=0 width=900 bgcolor=#cccccc>
 
 <tr valign=top>
@@ -552,6 +565,7 @@ text-align:left;
 <a href="index.php?p=stats">Statistiche</a><br>
 <a href="index.php?p=log">Log squadre</a><br>
 <a href="index.php?p=log2">Log multiban</a><br>
+<?php echo $show_logout; ?>
 </td>
 
 

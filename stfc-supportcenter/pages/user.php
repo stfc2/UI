@@ -75,7 +75,7 @@ if (isset($_POST['activate']) && $_POST['confirm3']==1)
 
 if (isset($_POST['submitdata']))
 {
-	
+
     if(empty($_POST['name'])) {
        	$main_html .= '<span class=header3><font color=red>Nessun nome giocatore</font></span><br>';
         return true;
@@ -109,16 +109,43 @@ if (isset($_POST['submitdata']))
         return true;
     }
 
-	$sql='UPDATE user SET user_name="'.$_POST['name'].'", user_loginname="'.$_POST['loginname'].'", user_race="'.$_POST['race'].'", user_alliance_status="'.$_POST['alliance_status'].'", user_email="'.$_POST['email'].'" WHERE user_id="'.$_POST['id'].'"';
-	$db->query($sql);
+    $sql='UPDATE user SET user_name="'.$_POST['name'].'", user_loginname="'.$_POST['loginname'].'", user_race="'.$_POST['race'].'", user_alliance_status="'.$_POST['alliance_status'].'", user_email="'.$_POST['email'].'" WHERE user_id="'.$_POST['id'].'"';
+    $db->query($sql);
 
-	/* 21/05/08 - AC: Aggiunta possibilita' cambio specie anche per giocatori con piu' di 100pt */
-	$sql='UPDATE ship_templates SET race="'.$_POST['race'].'" WHERE owner="'.$_POST['id'].'"';
-	$db->query($sql);
-	/* */
+    /* 21/05/08 - AC: Aggiunta possibilita' cambio specie anche per giocatori con piu' di 100pt */
+    $sql='UPDATE ship_templates SET race="'.$_POST['race'].'" WHERE owner="'.$_POST['id'].'"';
+    $db->query($sql);
+    /* */
 
-	$main_html .= '<span class=header3><font color=green>Dati giocatori ripresi</font></span><br>';
-	log_action('Dati giocatori '.$_POST['name'].' modificati');	
+    /* 27/04/09 - AC: Added code check to assign correct rights to a new alliance president */
+    if($_POST['alliance_status'] == 3)
+    {
+        // Retrive alliance ID
+        $sql = 'SELECT user_alliance FROM user WHERE user_id = '.$_POST['id'];
+        $user=$db->queryrow($sql);
+
+        // If set, change alliance owner
+        if (isset($user['user_alliance']))
+        {
+            $sql = 'UPDATE user, alliance
+                    SET alliance_owner = '.$_POST['id'].',
+                        user_alliance_rights1 = 1,
+                        user_alliance_rights2 = 1,
+                        user_alliance_rights3 = 1,
+                        user_alliance_rights4 = 1,
+                        user_alliance_rights5 = 1,
+                        user_alliance_rights6 = 1,
+                        user_alliance_rights7 = 1,
+                        user_alliance_rights8 = 1
+                    WHERE user_id = '.$_POST['id'].' AND alliance_id = '.$user['user_alliance'];
+
+            $db->query($sql);
+        }
+    }
+    /* */
+
+    $main_html .= '<span class=header3><font color=green>Dati giocatori ripresi</font></span><br>';
+    log_action('Dati giocatori '.$_POST['name'].' modificati');
 }
 
 
@@ -167,15 +194,15 @@ $main_html .= '
               <option value="3"'.( ($player['user_race'] == 3) ? ' selected="selected"' : '' ).'>Cardassiani</option>
               <option value="4"'.( ($player['user_race'] == 4) ? ' selected="selected"' : '' ).'>Dominio</option>
               <option value="5"'.( ($player['user_race'] == 5) ? ' selected="selected"' : '' ).'>Ferengi</option>
-			  <option value="8"'.( ($player['user_race'] == 8) ? ' selected="selected"' : '' ).'>Breen</option>
-			  <option value="9"'.( ($player['user_race'] == 9) ? ' selected="selected"' : '' ).'>Hirogei</option>
-			  <option value="11"'.( ($player['user_race'] == 11) ? ' selected="selected"' : '' ).'>Kazon</option>
-			  <option value="12"'.( ($player['user_race'] == 12) ? ' selected="selected"' : '' ).'>Krenim</option>
+              <option value="8"'.( ($player['user_race'] == 8) ? ' selected="selected"' : '' ).'>Breen</option>
+              <option value="9"'.( ($player['user_race'] == 9) ? ' selected="selected"' : '' ).'>Hirogeni</option>
+              <option value="11"'.( ($player['user_race'] == 11) ? ' selected="selected"' : '' ).'>Kazon</option>
+              <option value="12"'.( ($player['user_race'] == 12) ? ' selected="selected"' : '' ).'>Krenim</option>
             </select>
             </td>
             </tr>
 </table><br>
-* Attenzione: La specie solitamente pu&ograve essere modificata, ma a partire da almeno ~100 punti.sul pianeta non &egrave; raccomandabile (problemi con la ricerca dei componenti).
+* Attenzione: La specie solitamente pu&ograve; essere modificata, ma a partire da almeno ~100 punti sul pianeta non &egrave; raccomandabile (problemi con la ricerca dei componenti).
 <br>
 <input type=hidden name="id" value="'.$player['user_id'].'">
 <input class="button" type="submit" name="submitdata" value="Aggiorna dati">
