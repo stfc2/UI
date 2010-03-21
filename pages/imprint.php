@@ -20,7 +20,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
+$title_html = 'Star Trek: Frontline Combat - Credits';
+$meta_descr = 'STFC: Pagina relativa ai credits del gioco, con i nomi ed i nick degli operatori ed i contatti email.';
 $main_html='<center><span class="caption">Credits</span></center>
 <br>
 <center>
@@ -38,7 +39,7 @@ $main_html='<center><span class="caption">Credits</span></center>
 <tr><td width=50 valign=top>&nbsp;</td><td width=120>Nicknames</td><td width=30 valign=top>&nbsp;</td><td width=200><font>Archer, Lares, Kail</font></td></tr>
 <tr><td width=50 valign=top>&nbsp;</td><td width=120>Town</td><td width=30 valign=top>&nbsp;</td><td width=200><font>Genoa</font></td></tr>
 <tr><td width=50 valign=top>&nbsp;</td><td width=120>ZIP</td><td width=30 valign=top>&nbsp;</td><td width=180><font>16100</font></td></tr>
-<tr><td width=50 valign=top>&nbsp;</td><td width=120><a href="mailto:admin@nonsolotaku.it"><u>Contact</u></a></td><td width=30 valign=top>&nbsp;</td><td width=120></td></tr>
+<tr><td width=50 valign=top>&nbsp;</td><td width=120><a href="mailto:admin@stfc.it"><u>Contact</u></a></td><td width=30 valign=top>&nbsp;</td><td width=120></td></tr>
 </table>
 
 <br>

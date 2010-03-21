@@ -50,76 +50,78 @@ $proverbs = array(
 $n_proverbs = count($proverbs);
 
 
+$err_title = 'Errore nell&#146;attivazione dell&#146;account';
+$title_html = 'ST: Frontline Combat - Attivazione account';
+$meta_descr = 'STFC: Pagina di conferma attivazione account.';
+$main_html = '<center><span class="caption">Attivazione account</span></center><br>';
 
 
-
-function display_message($header,$message,$bg) {
-    global $main_html;
-    $main_html .= '
-<table align="center" border="0" cellpadding="2" cellspacing="2" width="500" class="border_grey" style=" background-color:#000000; background-position:left; background-repeat:no-repeat;">
-  <tr>
-    <td width="100%">
-    <center><span class="sub_caption">'.$header.'</span></center>
-      <table width="100%" border="0" cellpadding="0" cellspacing="0" style=" background-image:url(\'gfx/'.$bg.'.jpg\'); background-position:left; background-repeat:yes;">
-        <tr height="300">
-          <td width="100%" valign=top><span class="sub_caption2"><br>'.$message.'<br><br></span></td>
-        </tr>
-	</table>
-	</td>
-	</tr>
-	</table>';
-}
-
-
-
-$main_html = '<center><span class="caption">Account Activation</span></center><br>';
-
-
-if( (empty($_GET['user_id'])) || (empty($_GET['key'])) ) {
-display_message('Error in the account activation (Invalid call)','','ngc7742bg');
+if( (!isset($_GET['galaxy'])) || (empty($_GET['user_id'])) || (empty($_GET['key']))) {
+    display_message($err_title,'Almeno una delle seguenti informazioni risulta mancante:<ul><li>galassia</li><li>ID utente</li><li>codice attivazione</li></ul>',GALAXY1_BG);
     return 1;
 }
+
+$galaxy = (int)$_GET['galaxy'];
 
 $user_id = (int)$_GET['user_id'];
 
 $gkey=$_GET['key'];
 $key = md5( pow( $user_id ,2) );
-$bg='ngc7742bg';
+
+switch($galaxy)
+{
+    case 0:
+        $galaxyname = GALAXY1_NAME;
+        $bg = GALAXY1_BG;
+        $mydb = $db;
+    break;
+    case 1:
+        $galaxyname = GALAXY2_NAME;
+        $bg = GALAXY2_BG;
+        $mydb = $db2;
+    break;
+}
+
 
 if($gkey != $key) {
-display_message('Error in the account activation (Invalid activation code #1)','',$bg);
-return 1;
+    display_message($err_title,'Il codice di attivazione fornito non corrisponde con quello memorizzato nel sistema (link troncato?).',$bg);
+    return 1;
 }
 
 $sql = 'SELECT user_active
         FROM user
         WHERE user_id = '.$user_id;
 
-	 
-if(($user_data = $db->queryrow($sql)) === false) {
-    die('Database error - Could not verify user');
+
+if(($user_data = $mydb->queryrow($sql)) === false) {
+    display_message($err_title,'Errore interno nella SELECT mySQL, si prega di contattare lo Staff.',$bg);
+    return 1;
 }
 
 if(empty($user_data['user_active'])) {
-	display_message('Error in the account activation (Invalid activation code #2)','',$bg);
+    display_message($err_title,'Impossibile recuperare le informazioni relative allo stato di attivazione del giocatore (utente inesistente?).',$bg);
     return 1;
 }
 
 if($user_data['user_active'] != 2) {
-	display_message('Error in the account activation (player already activated)','',$bg);
+    display_message($err_title,'Il giocatore &egrave; gi&agrave; stato attivato.',$bg);
     return 1;
 }
 
 $sql = 'UPDATE user
         SET user_active = 1, last_active='.time().'
         WHERE user_id = '.$user_id;
-$db->query($sql);  
+
+if(!$mydb->query($sql)) {
+    display_message($err_title,'Errore interno nella UPDATE mySQL, si prega di contattare lo Staff.',$bg);
+    return 1;
+}
 
 
 mt_srand((double)microtime()*1000000);
 
 $current_proverb = $proverbs[mt_rand(0, ($n_proverbs - 1))];
 
-display_message('Your account has been successfully activated!','You can now use your login name and password.<br><br>Before you go into the world of STFC, another wisdom for a successful game:<br><br><table width="100%" border="0" align="center"><tr><td width="10%">&nbsp;</td><td width="90%"><i>'.$current_proverb.'</i></td></tr></table>',$bg);
+display_message('Il tuo account &egrave; stato attivato con successo!','Ora puoi usare le tue login e password.<br><br>Prima di entrare nel mondo di STFC, una perla di saggezza per un gioco di successo:<br><br><table width="100%" border="0" align="center"><tr><td width="10%">&nbsp;</td><td width="90%"><i>'.$current_proverb.'</i></td></tr></table>',$bg);
 
 ?>
