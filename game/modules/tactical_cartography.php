@@ -853,7 +853,7 @@ elseif(!empty($_GET['planet_id'])) {
 					}
 				 }
 
-				 $history_text .= constant($game->sprache("TEXT110")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT111")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT112")).$_history_d1.$_history_d2.'</b>.<br>';
+				 $history_text .= constant($game->sprache("TEXT110")).(empty($_temp['user_name']) ? constant($game->sprache("TEXT120")) : $_temp['user_name']).'['.(empty($_temp['alliance_tag']) ? ' ' : $_temp['alliance_tag']).']'.constant($game->sprache("TEXT111")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT112")).$_history_d1.$_history_d2.'</b>.<br>';
 				 break;
 // --- Rivolte sul pianeta
 			case 27: $history_text .= constant($game->sprache("TEXT113")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT114")).date("d.m.y H:i", $_temp['timestamp']).'.<br>';
