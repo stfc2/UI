@@ -165,7 +165,7 @@ $action = (!empty($_GET['a'])) ? $_GET['a'] : 'portal';
 if($game->SITTING_MODE) {
     $auth_table = array(
         'ship_fleets_distribute' => 1, 'ship_fleets_loadingf' => 1, 'ship_fleets_loadingp' => 1, 'ship_fleets_ops' => 1, 'ship_fleets_display' => 1,
-        'ship_send' => 1, 'ship_actions' => 1, 'ship_moves_cmd' => 1,
+        'ship_send' => 1, 'ship_actions' => 1, 'ship_moves_cmd' => 1, 'ships' => 1,
         'tactical_cartography' => 1, 'tactical_moves' => 1, 'tactical_sensors'  => 1,
         'trade' => 2,
         'messages' => 3,
