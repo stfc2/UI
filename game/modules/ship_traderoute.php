@@ -206,6 +206,39 @@ else {
     if(empty($dest_planet['user_id'])) {
         message(NOTICE, constant($game->sprache("TEXT4")));
     }
+
+    /* START OF RULE TO AVOID ROUTES BETWEEN SITTER AND SITTED */
+
+    /* 23/04/10 - AC: Check if dest planet is owned by a user that is a sitter of the player */
+    if(($dest_planet['user_id'] == $game->player['user_sitting_id1']) ||
+       ($dest_planet['user_id'] == $game->player['user_sitting_id2']) ||
+       ($dest_planet['user_id'] == $game->player['user_sitting_id3']) ||
+       ($dest_planet['user_id'] == $game->player['user_sitting_id4']) ||
+       ($dest_planet['user_id'] == $game->player['user_sitting_id5'])) {
+        message(NOTICE, constant($game->sprache("TEXT41")));
+    }
+
+    /**
+      * 23/04/10 - AC: Now we need to check if the dest planet is owned by a user sitted BY the player
+      */
+    $sql = 'SELECT user_sitting_id1, user_sitting_id2, user_sitting_id3,
+                   user_sitting_id4, user_sitting_id5
+            FROM user
+            WHERE user_id = '.$dest_planet['user_id'];
+
+    if(($dest_sitters = $db->queryrow($sql)) === false) {
+        message(DATABASE_ERROR, 'Could not query destination user sitters data');
+    }
+
+    if(($dest_sitters['user_sitting_id1'] == $game->player['user_id']) ||
+       ($dest_sitters['user_sitting_id2'] == $game->player['user_id']) ||
+       ($dest_sitters['user_sitting_id3'] == $game->player['user_id']) ||
+       ($dest_sitters['user_sitting_id4'] == $game->player['user_id']) ||
+       ($dest_sitters['user_sitting_id5'] == $game->player['user_id'])) {
+        message(NOTICE, constant($game->sprache("TEXT42")));
+    }
+
+    /* END OF RULE TO AVOID ROUTES BETWEEN SITTER AND SITTED */
 }
 
 
