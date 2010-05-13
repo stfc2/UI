@@ -1565,10 +1565,9 @@ echo'
 			if($this->SITTING_MODE) {
 				if ($this->player['num_sitting']>=0)
 				{
-					/* 22/06/08 - AC: At least for this summer, update field last_active also with sitting */
+					/* 13/05/10 - AC: At least for this summer, update field last_active also with sitting */
 					$sql = 'UPDATE user
-					        SET num_sitting=num_sitting+1,
-					            last_active = '.$this->TIME.'
+					        SET num_sitting=num_sitting+1
 					        WHERE user_id = '.$this->uid;
 					$db->query($sql);
 				}
