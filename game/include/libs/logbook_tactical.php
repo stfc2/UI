@@ -353,10 +353,10 @@ function display_logbook($log) {
                 $game->out('</table><br>');
             }
         break;
-        
+
         case 23:
             $ships = &$log['log_data'][8];
-        
+
             $game->out('
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
@@ -399,7 +399,7 @@ function display_logbook($log) {
 
             $game->out('</table><br>');
         break;
-        
+
         case 24:
         case 25:
             $game->out('
@@ -408,11 +408,14 @@ function display_logbook($log) {
         <td width="65" valign="top"><b>'.constant($game->sprache("TEXT34")).'&nbsp;</b></td>
         <td width="385">
             ');
-            
+
             switch($log['log_data'][8]) {
                 case -1: $game->out(constant($game->sprache("TEXT56"))); break;
                 case -2: $game->out(constant($game->sprache("TEXT57"))); break;
+                case -3: $game->out(constant($game->sprache("TEXT152"))); break;
+                case -4: $game->out(constant($game->sprache("TEXT153"))); break;
                 case 1: $game->out(constant($game->sprache("TEXT58"))); break;
+                case 2: $game->out(constant($game->sprache("TEXT154"))); break;
                 default: $game->out('Illegal status code - report this as a bug'); break;
             }
 
@@ -431,8 +434,8 @@ function display_logbook($log) {
                 ');
             }
         break;
-		
-		case 26:			
+
+		case 26:
 			switch($log['log_data'][11]) {
 				case 0: $text_1 = constant($game->sprache("TEXT149"));
 						$color1 = 'red';
@@ -487,6 +490,29 @@ function display_logbook($log) {
 			);
 		break;
 		
+        case 27:
+            $game->out('
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="65" valign="top"><b>'.constant($game->sprache("TEXT34")).'&nbsp;</b></td>
+        <td width="385">
+            ');
+
+            switch($log['log_data'][8]) {
+                case -1: $game->out(constant($game->sprache("TEXT155"))); break;
+                case -2: $game->out(constant($game->sprache("TEXT157"))); break;
+                case 1: $game->out(constant($game->sprache("TEXT156"))); break;
+                default: $game->out('Illegal status code - report this as a bug'); break;
+            }
+
+            $game->out('
+        </td>
+      </tr>
+    </table>
+            ');
+        break;
+
+
         case 31:
             $ships = &$log['log_data'][8];
             $wares = &$log['log_data'][9];
