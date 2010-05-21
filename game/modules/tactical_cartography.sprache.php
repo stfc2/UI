@@ -224,6 +224,14 @@ define ("GER_TEXT124", 'The following information indicates the mood of the sett
 
 define ("GER_TEXT125", 'Average value = 100, indicates indifference.<br>Higher values indicate benevolent behavior toward the race.<br>Lower values indicate that the settlers are hostile towards the race.');
 
+define ("GER_TEXT126", 'Land team');
+
+define ("GER_TEXT127", 'Terraforming experiments of <b>');
+
+define ("GER_TEXT128", '</b> morph the planetoid, changing it to class <b>');
+
+
+
 
 
 //English
@@ -483,6 +491,12 @@ define ("ENG_TEXT124", 'The following information indicates the mood of the sett
 
 define ("ENG_TEXT125", 'Average value = 100, indicates indifference.<br>Higher values indicate benevolent behavior toward the race.<br>Lower values indicate that the settlers are hostile towards the race.');
 
+define ("ENG_TEXT126", 'Land team');
+
+define ("ENG_TEXT127", 'Terraforming experiments of <b>');
+
+define ("ENG_TEXT128", '</b> morph the planetoid, changing it to class <b>');
+
 
 
 //Italiano
@@ -741,5 +755,11 @@ define ("ITA_TEXT123", '</b> concede l&#146;indipendenza in data ');
 define ("ITA_TEXT124", 'Le seguenti informazioni indicano lo stato d&#146;animo dei coloni sul pianeta rispetto ad ogni razza e vengono aggiornate automaticamente ad ogni tick:');
 
 define ("ITA_TEXT125", 'Valore medio = 100, indica indifferenza.<br>Valori superiori indicano comportamenti benevoli verso la razza.<br>Valori inferiori indicano che i coloni sono ostili verso la razza.');
+
+define ("ITA_TEXT126", 'Sbarca squadra');
+
+define ("ITA_TEXT127", 'Gli esperimenti di terraforming di <b>');
+
+define ("ITA_TEXT128", '</b> modificano la struttura del planetoide, riclassificandolo come classe <b>');
 
 ?>
