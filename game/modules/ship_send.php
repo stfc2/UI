@@ -319,6 +319,7 @@ while($_temp = $db->fetchrow($q_snbr)) {
 
 $free_planet = ($dest_planet['user_id'] == 0) ? true : false;
 $own_planet = ($game->player['user_id'] == $dest_planet['user_id']) ? true : false;
+$planet_unknown = ($dest_planet['system_is_known']) ? false : true;
 
 $starter_atkptc = ($game->player['user_attack_protection'] > $ACTUAL_TICK) ? true : false;
 $dest_atkptc = ($dest_planet['user_attack_protection'] > $ACTUAL_TICK) ? true : false;
@@ -792,8 +793,14 @@ function update_times() {
 
       <table width="440" align="center" border="0" cellpadding="0" cellspacing="0"><tr><td width="220">
         ');
-
-        if($free_planet) {
+        if($planet_unknown) {
+            $game->out('
+        <input type="radio" name="step" value="stationate_setup" checked="checked">&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>
+        <input type="radio" name="step" value="survey_setup"'.( (!$explore_fleet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT65")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT65")).'</b><br>').'
+        <input type="radio" name="step" value="attack_setup"'.( ($atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT61")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT61")).'</b><br>' ).'
+            ');
+        }
+        elseif($free_planet) {
             // $atkptc_present is not used here, because uninhabited planet
             // Attack protection not to be approached know
 
