@@ -137,6 +137,20 @@ define ("GER_TEXT56", '<i>unbewohnt</i>');
 
 define ("GER_TEXT57", '<b>Kolonisieren:</b><br>Der Zielplanet wird, wenn er unbewohnt ist, von einem Kolonisationsschiff der Flotte kolonisiert. Dabei wird dieses Schiff demontiert und daraus das erste Geb&auml;ude gebaut. Seine &uuml;bersch&uuml;ssige Besatzung wird auf dem Planeten stationiert. Die anderen Schiffe bleiben im Orbit des Planeten.<br><br>Folgendes Kolonieschiff wird bei der Kolonisation benutzt:');
 
+define ("GER_TEXT58", '<b>Planeten-Analyse:</b><br>Das Schiff f&uuml;hrt eine Reihe von Scans der Umgebung und von Bord eines wissenschaftlichen Teams am Boden f&uuml;r die Ausf&uuml;hrung Geological Survey, wenn m&ouml;glich, die Berichterstattung dann die Ergebnisse der Analyse.');
+
+define ("GER_TEXT59", '<b>Terraform:</b><br>Das Ziel Asteroiden, verwenden eine Technologie im Versuchsstadium, &Auml;nderungen in ihrer Zusammensetzung. Die Folgen sind unvorhersehbar, aber das Experiment kann die Geburt eines neuen Planeten lebenswichtig f&uuml;hren. NB Um zu funktionieren, muss die Flotte haben eine Reserve von 250.000');
+
+define ("GER_TEXT60", 'Unzureichende Ressourcen, um das Terraforming durchzuf&uuml;hren!');
+
+define ("GER_TEXT61", '<b>Erster Kontakt:</b><br>Das Schiff wird eine Erkundung Team mit der Aufgabe, einen ersten Kontakt mit der lokalen Bev&ouml;lkerung komplette Land. Wenn das Team erfolgreich sein wird, das Vertrauen in Ihr Rennen wird wachsen.');
+
+define ("GER_TEXT62", 'Missionen auf dem Planeten sind nur f&uuml;r Flotten, bestehend aus einem einzigen Schiff zugewiesen.');
+
+define ("GER_TEXT63", 'Erforderlich: ');
+
+define ("GER_TEXT64", '<b>Diplomatische Vertr&auml;ge:</b><br>Das Schiff wird Land eine diplomatische Delegation mit der Aufgabe, Vereinbarungen &uuml;ber die Zusammenarbeit und den kulturellen Austausch mit der lokalen Bev&ouml;lkerung zu kn&uuml;pfen. Sollten die Verhandlungen Ende gut, wird das Vertrauen in Ihre Rasse von Anwohnern deutlich erh&ouml;hen.<br>Die Reaktion der Siedler konnte einige Zeit dauern ankommen.')
+
 
 //English
 define ("ENG_TEXT0", 'Ship movements');
@@ -260,6 +274,20 @@ define ("ENG_TEXT56", '<i>uninhabited</i>');
 
 define ("ENG_TEXT57", '<b>Colonize:</b><br>The aim planet will be colonized if it is uninhabited, by a colonization ship of the fleet. Besides, this ship will be dismantled and the first building is built from it. Its crew will be stationed on the planet. The other ships will remain in the orbit of the planet. <br> the following colony ship will be used with the colonization:');
 
+define ("ENG_TEXT58", '<b>Planet analysis:</b><br>The ship will perform a series of scans of the area and will disembark a scientific team on the ground for executing geological survey if possible, reporting then the results of the analysis.');
+
+define ("ENG_TEXT59", '<b>Terraform:</b><br>The target asteroid, using an experimental technology, changes in its composition. The effects are unpredictable but the experiment may lead to the birth of a new vital planet. NB In order to function, the fleet must have a reserve of 250,000');
+
+define ("ENG_TEXT60", 'Insufficient resources in order to perform the terraforming!');
+
+define ("ENG_TEXT61", '<b>First Contact:</b><br>The ship will land an exploring team with the task to complete a first contact with the local population. If the team will be successful, confidence in your race will grow.');
+
+define ("ENG_TEXT62", 'Missions on the planets are assigned only to fleets composed by a single ship.');
+
+define ("ENG_TEXT63", 'Required: ');
+
+define ("ENG_TEXT64", '<b>Diplomatic Treaties:</b><br>The ship will land a diplomatic delegation with the job to forge agreements on cooperation and cultural exchange with the local population. If negotiations ends well, the confidence in your race by residents will increase significantly.<br>The response of the settlers could take some time to arrive.')
+
 
 //Italiano
 define ("ITA_TEXT0", 'Movimenti flotte');
@@ -341,7 +369,7 @@ define ("ITA_TEXT35", 'Solo i pianeti possono essere conquistati');
 
 define ("ITA_TEXT36", 'In nessuna delle flotte &egrave; presente una nave colonizzatrice');
 
-define ("ITA_TEXT37", 'Quando ho controllato l#&146;ultima volta, le forze avversarie ti appartenevano?!');
+define ("ITA_TEXT37", 'Quando ho controllato l&#146;ultima volta, le forze avversarie ti appartenevano?!');
 
 define ("ITA_TEXT38", 'Attacco:');
 
@@ -382,5 +410,19 @@ define ("ITA_TEXT55", 'Solo i pianeti possono essere colonizzati');
 define ("ITA_TEXT56", '<i>disabitato</i>');
 
 define ("ITA_TEXT57", '<b>Colonizzazione:</b><br>Il pianeta obiettivo, se disabitato, viene colonizzato da una nave colonizzatrice della flotta. Questa nave viene smantellata per costruire con essa il primo edificio. Il suo equipaggio viene trasferito sul pianeta. Le altre navi restano in orbita del pianeta.<br>Le seguenti navi colonizzatrice saranno utilizzate per la colonizzazione:');
+
+define ("ITA_TEXT58", '<b>Analisi Pianeta:</b><br>La nave eseguir&agrave; una serie di scansioni della superficie e sbarcher&agrave; una squadra scientifica a terra per i rilievi geologici qualora sia possibile, riferendo poi gli esiti delle analisi.');
+
+define ("ITA_TEXT59", '<b>Terraform:</b><br>L&#146;asteroide obiettivo, mediante una tecnologia sperimentale, viene modificato nella sua composizione. Gli effetti dell&#146;esperimento sono imprevedibili ma possono portare alla nascita di un nuovo pianeta vitale. N.B. Per poter funzionare, la flotta deve disporre di una riserva di almeno 250.000');
+
+define ("ITA_TEXT60", 'Risorse insufficenti per procedere al terraforming!');
+
+define ("ITA_TEXT61", '<b>Primo Contatto:</b><br>La nave sbarcher&agrave; una squadra esplorativa con il compito di portare a termine un primo contatto con la popolazione locale. Se la squadra avr&agrave; successo, la fiducia nella nostra razza da parte degli abitanti aumenter&agrave;.');
+
+define ("ITA_TEXT62", 'Le missioni sui pianeti sono assegnabili solo a flotte composte da una singola nave.');
+
+define ("ITA_TEXT63", 'Richiesto: ');
+
+define ("ITA_TEXT64", '<b>Trattati Diplomatici:</b><br>La nave sbarcher&agrave; una delegazione diplomatica con il compito di stringere accordi di cooperazione e scambio culturale con la popolazione locale. Se le trattative andranno a buon fine, la fiducia nella nostra razza da parte degli abitanti aumenter&agrave; sensibilmente.<br>La risposta dei Coloni potrebbe richiedere un p&ograve; di tempo per arrivare.');
 
 ?>
