@@ -244,4 +244,71 @@ function send_premonition_to_user($user_id)
     return true;
 }
 
+// This function checks that on the ship are present the requested number of units in order to perform ground mission
+// 
+// missing: array, it shows which and how many units are missing the requirements
+function meet_mission_req($ship_id, $unit_1, $unit_2, $unit_3, $unit_4, $unit_5, $unit_6)
+{
+    global $db;
+
+    $sql = 'SELECT s.unit_1 - st.min_unit_1 AS unit_1,
+                   s.unit_2 - st.min_unit_2 AS unit_2,
+                   s.unit_3 - st.min_unit_3 AS unit_3,
+                   s.unit_4 - st.min_unit_4 AS unit_4,
+                   st.unit_5, st.unit_6
+            FROM ships s
+            INNER JOIN ship_templates st ON s.template_id = st.id
+            WHERE ship_id = '.$ship_id;
+
+    if(($ship = $db->queryrow($sql)) === false) {
+        message(DATABASE_ERROR, 'Could not query ship data');
+    }
+
+    $aboard = array((int)$ship['unit_1'], (int)$ship['unit_2'], (int)$ship['unit_3'], (int)$ship['unit_4'], (int)$ship['unit_5'], (int)$ship['unit_6']);
+
+    $tocheck = array((int)$unit_1, (int)$unit_2, (int)$unit_3, (int)$unit_4, (int)$unit_5, (int)$unit_6);
+
+    $missing = array(0, 0, 0, 0, 0);
+
+    foreach($tocheck as $id => $unit){
+        if($unit > $aboard[$id]) {
+            $missing[$id] = $unit - $aboard[$key];
+        }
+    }
+
+    return ($missing);
+}
+
+function requirements_str_ok($unit_1, $unit_2, $unit_3, $unit_4, $unit_5, $unit_6)
+{
+    global $game;
+
+    $requirements = array($unit_1, $unit_2, $unit_3, $unit_4, $unit_5, $unit_6);
+
+    foreach($requirements as $key => $unit){
+        if($unit > 0)
+        {
+            $id_unit = $key + 1;
+            $mystring .= '<img src="'.$game->GFX_PATH.'menu_unit'."$id_unit".'_small.gif"> <b>'.$unit.'</b>    ';
+        }
+    }
+
+    return($mystring);
+}
+
+function requirements_str_bad($unit_1, $unit_2, $unit_3, $unit_4, $unit_5, $unit_6, $missing)
+{
+    global $game;
+
+    $requirements = array($unit_1, $unit_2, $unit_3, $unit_4, $unit_5, $unit_6);
+
+    foreach($requirements as $key => $unit){
+        if($unit > 0)
+        {
+            $id_unit = $key +1;
+            $mystring .= '<img src="'.$game->GFX_PATH.'menu_unit'."$id_unit".'_small.gif"> '.($missing[$key] == 0 ? '<b>'.$unit.'</b>    ' : '<b><font color="red">'.$unit.'</b></font>    ');
+        }
+    }
+    return($mystring);
+}
 ?>
