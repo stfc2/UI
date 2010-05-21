@@ -113,7 +113,7 @@ if($planet_id == $game->planet['planet_id']) {
     // Player data must not be accepted because they are not displayed / used
 }
 else {
-    $sql = 'SELECT p.planet_id, p.planet_name, p.system_id, p.sector_id, p.planet_distance_id,
+    $sql = 'SELECT p.planet_id, p.planet_type, p.planet_name, p.system_id, p.sector_id, p.planet_distance_id,
                    s.system_x, s.system_y,
                    u.user_id, u.user_name, u.user_attack_protection, u.user_vacation_start, u.user_vacation_end
             FROM (planets p, starsystems s)
@@ -147,7 +147,7 @@ $sql = 'SELECT st.ship_torso, st.value_10 AS warp_speed
         FROM (ships s, ship_templates st)
         WHERE s.fleet_id IN ('.implode(',', $fleet_ids).') AND
               st.id = s.template_id';
-        
+
 if(!$q_stpls = $db->query($sql)) {
     message(DATABASE_ERROR, 'Could not query ship template data');
 }
@@ -159,12 +159,12 @@ while($_temp = $db->fetchrow($q_stpls)) {
         $in_scout = true;
         continue;
     }
-    
+
     if($_temp['ship_torso'] == SHIP_TYPE_TRANSPORTER) {
         $in_transporter = true;
         continue;
     }
-    
+
     if($_temp['ship_torso'] == SHIP_TYPE_COLO) {
         $in_colo = true;
         continue;
@@ -176,6 +176,21 @@ while($_temp = $db->fetchrow($q_stpls)) {
     }
 
 }
+
+// How many ships are they?
+$sql = 'SELECT n_ships AS ship_count'
+        . ' FROM ship_fleets'
+        . ' WHERE fleet_id IN ('.implode(',', $fleet_ids).')';
+
+if(!$q_snbr = $db->query($sql)) {
+    message(DATABASE_ERROR, 'Could not query ships number data');
+}
+
+while($_temp = $db->fetchrow($q_snbr)) {
+    $ship_number += $_temp['ship_count'];
+    $explore_fleet = ($ship_number == 1) ? true : false;
+}
+
 
 
 // #############################################################################
@@ -385,7 +400,174 @@ switch($step) {
 </table>
       ');
     break;
-    
+
+    case 'survey_exec':
+        switch($_POST['mission']) {
+            case 'survey':
+                $duration = 6;
+                $action_code = 26;
+                $action_data = array(0);
+            break;
+            case 'first_contact':
+                $duration = 8;
+                $action_code = 27;
+                $action_data = array(0);
+            break;
+            case 'diplomatic':
+                $duration = 6;
+                $action_code = 27;
+                $action_data = array(1);
+            break;
+            default:
+                message(GENERAL, constant($game->sprache("TEXT1")));
+            break;
+        }
+
+        $sql = 'INSERT INTO scheduler_shipmovement (user_id, move_status, move_exec_started, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
+                VALUES ('.$game->player['user_id'].', 0, 0, '.$planet_id.', '.$planet_id.', 0, 0, 0, '.$ACTUAL_TICK.', '.($ACTUAL_TICK + $duration).', 1, '.$action_code.', "'.serialize($action_data).'")';
+                
+        if(!$db->query($sql)) {
+        	message(DATABASE_ERROR, 'Could not insert new movement data');
+        }
+
+        $new_move_id = $db->insert_id();
+
+        if(empty($new_move_id)) {
+            message(GENERAL, 'Could not obtain new move id', '$new_move_id = empty');
+        }
+
+        $sql = 'UPDATE ship_fleets SET planet_id = 0, move_id = '.$new_move_id.' WHERE fleet_id IN ('.implode(',', $fleet_ids).')';
+
+        if(!$db->query($sql)) {
+            message(DATABASE_ERROR, 'Could not update fleets location data');
+        }
+        // =====>
+
+
+        redirect('a=tactical_cartography&planet_id='.encode_planet_id($planet_id));
+
+    break;
+
+
+    case 'survey_setup':
+        if($game->SITTING_MODE){
+            message(NOTICE, constant($game->sprache("TEXT30")));
+        }
+
+        if($atkptc_present) {
+            message(NOTICE, constant($game->sprache("TEXT31")));
+        }
+
+        if(!$explore_fleet) {
+            message(NOTICE, constant($game->sprache("TEXT62")));
+        }
+
+        $sql = 'SELECT ship_id FROM ships USE INDEX (fleet_id) WHERE fleet_id IN ('.implode(',', $fleet_ids).')';
+
+        if(($myship = $db->queryrow($sql)) === false) {
+            message(DATABASE_ERROR, 'Could not query real n_ships data');
+        }
+
+        include_once('include/libs/moves.php');
+
+
+        $game->out('
+            <form name="send_form" method="post" action="'.parse_link('a=ship_actions&step=survey_exec').'" onSubmit="return document.send_form.submit.disabled = true;">    		
+            <table class="style_inner" align="center" border="0" rules="rows" cellpadding="2" cellspacing="2" width="450">');
+        // Geological analysiss
+        $game->out('
+              <tr>
+                <td><input type="radio" name="mission" value="survey" checked="checked"></td>
+                <td>'.constant($game->sprache("TEXT58")).'</td>
+              </tr>');
+
+        /**
+         * Missions for Settler's planets
+         */
+        if($planet['user_id'] == INDEPENDENT_USERID) {
+            // First Contact
+            $requirement_text = constant($game->sprache("TEXT63"));
+            $results = meet_mission_req($myship['ship_id'], 5, 0, 1, 1, 0, 0);
+            $all_clear = (array_sum($results) == 0 ? true : false);
+            if($all_clear) 
+            {
+                $requirement_text .= requirements_str_ok(5, 0, 1, 1, 0, 0);
+            }
+            else
+            {
+                $requirement_text .= requirements_str_bad(5, 0, 1, 1, 0, 0, $results);
+            }
+
+            $game->out('
+              <tr>
+                <td><input type="radio" name="mission" value="first_contact" '.($all_clear ? '' : 'disabled="disabled"').'></td>
+                <td>'.constant($game->sprache("TEXT61")).'<br><br>'.$requirement_text.'</td>
+              </tr>');
+            // Diplomatic relationships
+            $requirement_text = constant($game->sprache("TEXT63"));
+            $results = meet_mission_req($myship['ship_id'], 0, 5, 5, 2, 0, 0);
+            $all_clear = (array_sum($results) == 0 ? true : false);
+            if($all_clear && $game->player['user_id'] == 390) 
+            {
+                $requirement_text .= requirements_str_ok(0, 5, 5, 2, 0, 0);
+            }
+            else
+            {
+                $requirement_text .= requirements_str_bad(0, 5, 5, 2, 0, 0, $results);
+            }
+            $game->out('
+              <tr>
+                <td><input type="radio" name="mission" value="diplomatic" '.($all_clear ? '' : 'disabled="disabled"').'></td>
+                <td>'.constant($game->sprache("TEXT64")).'<br><br>Not yet available!!!<br>'.$requirement_text.'</td>
+              </tr>');
+            switch($game->player['user_race']){
+                case 0: // Federation
+                break;
+                case 1: // Romulan
+                break;
+                case 2: // Klingon
+                break;
+                case 3: // Cardassian
+                break;
+                case 4: // Dominion
+                break;
+                case 5: // Ferengi
+                break;
+                case 6: // Borg
+                break;
+                case 7: // Q
+                break;
+                case 8: // Breen
+                break;
+                case 9: // Hirogen
+                break;
+                case 10: // Krenim
+                break;
+                case 11: // Kazon
+                break;
+                case 12: // Men 29th century
+                break;
+                case 13: // Settlers
+                break;
+            }
+        }
+        /* Template for other missions
+        $game->out('
+              <tr>
+                <td><input type="radio" name="mission" value="<<<----!!!CAMBIAMI!!!---->>"></td>
+                <td>'.constant($game->sprache("TEXTXX")).'</td>
+              </tr>');
+        */
+        $game->out('
+            </table><br><br><br>
+            <input type="hidden" name="fleets[]" value="'.$fleets[0]['fleet_id'].'">
+            <input type="hidden" name="step" value="survey_exec">
+            <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
+            </form>');
+    break;
+
+
+
     case 'attack_normal_exec':
     case 'attack_bomb_exec':
     case 'attack_invade_exec':
@@ -422,30 +604,30 @@ switch($step) {
         if($n_ships == 0) {
             message(GENERAL, constant($game->sprache("TEXT33")), 'Unexspected: $n_ships = 0');
         }
-        
-	$duration=2;
+
+        $duration=2;
         switch($step) {
             case 'attack_normal_exec':
                 $action_code = 51;
                 $action_data = array((int)$user_id);
-		$duration=2;
+                $duration=2;
             break;
             
             case 'attack_bomb_exec':
                 if(!$planetary_dest) {
                     message(NOTICE, constant($game->sprache("TEXT34")));
                 }
-                
+
                 $focus = (int)$_POST['focus'];
-                
+
                 if($focus < 0) $focus = 0;
                 if($focus > 3) $focus = 3;
-                
+
                 $action_code = 54;
                 $action_data = array($focus);
-		$duration=6;
+                $duration=6;
             break;
-            
+
             case 'attack_invade_exec':
                 if(!$planetary_dest) {
                     message(NOTICE, constant($game->sprache("TEXT35")));
@@ -583,7 +765,7 @@ switch($step) {
   </form>
 </table>
       ');
-    break;
+    break;    	
     
     case 'attack_bomb_setup':
         if($atkptc_present) {
@@ -795,8 +977,17 @@ switch($step) {
         
         $ship_id = (int)$_POST['ship_id'];
         
+        $is_terraform = false;
+        if(!empty($_POST['type'])) {
+            switch($_POST['type']) {
+                case 'terraform': 
+                    $is_terraform = true;
+                break;
+            }
+        }
+
         $sql = 'INSERT INTO scheduler_shipmovement (user_id, move_status, move_exec_started, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
-                VALUES ('.$game->player['user_id'].', 0, 0, '.$planet_id.', '.$planet_id.', 0, 0, 0, '.$ACTUAL_TICK.', '.($ACTUAL_TICK + 1).', '.$n_ships.', 24, "'.serialize(array($ship_id)).'")';
+                VALUES ('.$game->player['user_id'].', 0, 0, '.$planet_id.', '.$planet_id.', 0, 0, 0, '.$ACTUAL_TICK.', '.($ACTUAL_TICK + 1).', '.$n_ships.', 24, "'.serialize(array($ship_id, $is_terraform)).'")';
 
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not insert new movement data');
@@ -853,7 +1044,7 @@ switch($step) {
             $game->out('<input type="hidden" name="fleets[]" value="'.$fleets[$i]['fleet_id'].'">');
         }
 
-        $sql = 'SELECT s.ship_id, s.hitpoints, s.experience, s.unit_1, s.unit_2, s.unit_3, s.unit_4,
+        $sql = 'SELECT s.ship_id, s.fleet_id, s.hitpoints, s.experience, s.unit_1, s.unit_2, s.unit_3, s.unit_4,
                        st.name, st.value_5 AS max_hitpoints
                 FROM (ships s, ship_templates st)
                 WHERE s.fleet_id IN ('.$fleet_ids_str.') AND
@@ -875,7 +1066,8 @@ switch($step) {
     <td>
       '.constant($game->sprache("TEXT17")).' '.constant($game->sprache("TEXT56")).' ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')
       '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
-      '.constant($game->sprache("TEXT57")).'<br><br>
+      <input type="radio" name="type" value="terraform" '.(($planet['planet_type'] != 'd') ? 'disabled="disabled"' : '&nbsp;').'>'.constant($game->sprache("TEXT59")).'<br><br>
+      <input type="radio" name="type" value="colony" checked="checked">'.constant($game->sprache("TEXT57")).'<br><br>
 
       <table border="0" cellpadding="2" cellspacing="2">
         <tr>
