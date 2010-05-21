@@ -815,12 +815,13 @@ elseif(!empty($_GET['planet_id'])) {
 
 
 // --- Dati storici del pianeta ---
+// Il log viene presentato a partire dall'ultimo evento a ritroso per altri 9 elementi massimo, onde evitare che la finestra di log sia troppo grande.
 	$sql = 'SELECT d.*, u.user_name, alliance.alliance_tag FROM planet_details d
 		LEFT JOIN user u ON d.user_id = u.user_id
 		LEFT JOIN alliance ON d.source_aid = alliance.alliance_id
 		WHERE planet_id = '.$planet['planet_id'].'
-		AND d.log_code IN (0, 1, 2, 25, 26, 27, 28, 29, 30) 
-		ORDER BY timestamp ASC';
+		AND d.log_code IN (0, 1, 2, 25, 26, 27, 28, 29, 30, 31) 
+		ORDER BY timestamp DESC LIMIT 0, 10';
 
 	if($_history = $db->query($sql)) {
 		while($_temp = $db->fetchrow($_history)) {
@@ -835,7 +836,7 @@ elseif(!empty($_GET['planet_id'])) {
 			case 2: $history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT117")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).( (!empty($_temp['alliance_tag'])) ? '['.$_temp['alliance_tag'].']' : '&nbsp;' ).constant($game->sprache("TEXT119")).'<br>';
 				break;
 // Colonizzazione
-			case 25: $history_text .= constant($game->sprache("TEXT109")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT99")).date("d.m.y H:i", $_temp['timestamp']).'.<br>';
+			case 25: $history_text .= constant($game->sprache("TEXT109")).(!empty($_temp['user_name']) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).(!empty($_temp['alliance_tag']) ? '['.$_temp['alliance_tag'].']' : '').constant($game->sprache("TEXT99")).date("d.m.y H:i", $_temp['timestamp']).'.<br>';
 				break;
 // --- Conquista del pianeta!
 			case 26: $sql = 'SELECT user_name FROM user WHERE user_id = '.$_temp['defeat_uid'];
@@ -881,6 +882,10 @@ elseif(!empty($_GET['planet_id'])) {
 				break;
 // --- Cessione del pianeta alla fazione indipendente Settlers
 			case 30: $history_text .= constant($game->sprache("TEXT122")).$_temp['user_name'].'['.$_temp['alliance_tag'].']'.constant($game->sprache("TEXT123")).date("d.m.y H:i", $_temp['timestamp']).'.<br>';
+				break;
+// --- Terraforming del pianeta
+			case 31: 
+				$history_text .= constant($game->sprache("TEXT127")).(!empty($_temp['user_name']) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).(!empty($_temp['alliance_tag']) ? '['.$_temp['alliance_tag'].']' : '').constant($game->sprache("TEXT128")).strtoupper($_temp['planet_type']).constant($game->sprache("TEXT99")).date("d.m.y H:i", $_temp['timestamp']).'.<br>';
 				break;
 			}
 		}
@@ -934,6 +939,7 @@ elseif(!empty($_GET['planet_id'])) {
 	}
 
 // Informazioni tattico/politiche sul pianeta (sistema coloni)
+/* <-------------- DISABLED AT THE MOMENT SINCE THEY ARE NOT FULLY IMPLEMENTED ------->
 	$sql = 'SELECT * FROM `planet_details`
                 LEFT JOIN user ON planet_details.source_uid = user.user_id
                 LEFT JOIN alliance ON planet_details.source_aid = alliance.alliance_id
@@ -956,9 +962,7 @@ elseif(!empty($_GET['planet_id'])) {
 			}
 		}
 		$tactical_text .= '<br><br><font size=-2><i>'.constant($game->sprache("TEXT125")).'</i></font>';
-	}
-
-//	$detail_text = $history_text.$survey_text.$tactical_text;
+	}*/
 
     $planet_is_known = false;
     $sql = 'SELECT * FROM planet_details WHERE log_code = 500 AND system_id = '.$planet['system_id'].' AND user_id = '.$game->player['user_id'];
@@ -972,7 +976,7 @@ elseif(!empty($_GET['planet_id'])) {
 	$_name  = '&nbsp;<b>'.$planet['planet_name'].'</b>&nbsp;('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')';
 	$_planet_type = '&nbsp;<a href="'.parse_link('a=database&planet_type='.$planet_type.'#'.$planet_type).'">'.$planet_type.'</a>';
 // DC: Yeah, yeah, i know.... why bothering on building all the texts if the planet is not known?
-	$detail_text = $history_text.$survey_text.$tactical_text;
+	$detail_text = $history_text.$survey_text /*.$tactical_text*/;
 // Ultimo aggiornamento.
 	$sql = 'SELECT timestamp FROM `planet_details`'
 		. ' WHERE `planet_id` = '.$planet['planet_id']
@@ -1130,6 +1134,7 @@ form {
     <td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet_owner['user_id'].'">'.$planet_owner['user_name']).'</a></td>
     <td>
       <input type="image" src="'.$game->GFX_PATH.'tc_transport.gif" name="ptransport_submit" title="'.constant($game->sprache("TEXT75")).'" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_fleets_loadingp&to&return_to='.urlencode('a=tactical_cartography&planet_id='.encode_planet_id($planet_id))).'\';">&nbsp;
+      <input type="image" src="'.$game->GFX_PATH.'tc_party.gif" name="survey_submit" title="'.constant($game->sprache("TEXT126")).'" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=survey_setup&user_id='.$planet['planet_owner']).'\';">&nbsp;
             ');
             
             if(!$own_planet) {
