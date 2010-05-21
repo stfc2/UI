@@ -319,6 +319,31 @@ define ("GER_TEXT141", 'Angreifer:');
 
 define ("GER_TEXT142", '* Achtung, das neue Kampfsystem ist experimentell installiert, bei groben Abweichungen bitte &uuml;ber das Forum melden!');
 
+define ("GER_TEXT146", 'Metal presence: ');
+
+define ("GER_TEXT147", 'Mineral presence: ');
+
+define ("GER_TEXT148", 'Dilithium presence: ');
+
+define ("GER_TEXT149", '-- UNDER average --');
+
+define ("GER_TEXT150", '-- average --');
+
+define ("GER_TEXT151", '-- OVER average --');
+
+define ("GER_TEXT152", 'The experiment did not occur for lack of resources');
+
+define ("GER_TEXT153", 'This operation can only be performed on unsettled class <b>D</b> planets');
+
+define ("GER_TEXT154", 'The experiment did occur correctly, at least there is a planet still orbiting here.');
+
+define ("GER_TEXT155", 'Settlers on this planet had a First Contact with our race yet!.');
+
+define ("GER_TEXT156", 'The Settlers on this planet welcomed our Diplomatic delegation. The First Contact has occured positively!');
+
+define ("GER_TEXT157", 'The Settlers on this planet <b>has rejected</b> our Diplomatic delegation!');
+
+
 
 //English
 define ("ENG_TEXT0", 'First page');
@@ -617,6 +642,32 @@ define ("ENG_TEXT140", 'Defender:');
 define ("ENG_TEXT141", 'Attacker:');
 
 define ("ENG_TEXT142", '* Attention, the new combat system is installed experimentally, for gross deviations please log on the Forum!');
+
+define ("ENG_TEXT146", 'Metal presence: ');
+
+define ("ENG_TEXT147", 'Mineral presence: ');
+
+define ("ENG_TEXT148", 'Dilithium presence: ');
+
+define ("ENG_TEXT149", '-- UNDER average --');
+
+define ("ENG_TEXT150", '-- average --');
+
+define ("ENG_TEXT151", '-- OVER average --');
+
+define ("ENG_TEXT152", 'The experiment did not occur for lack of resources');
+
+define ("ENG_TEXT153", 'This operation can only be performed on unsettled class <b>D</b> planets');
+
+define ("ENG_TEXT154", 'The experiment did occur correctly, at least there is a planet still orbiting here.');
+
+define ("ENG_TEXT155", 'Settlers on this planet had a First Contact with our race yet!.');
+
+define ("ENG_TEXT156", 'The Settlers on this planet welcomed our Diplomatic delegation. The First Contact has occured positively!');
+
+define ("ENG_TEXT157", 'The Settlers on this planet <b>has rejected</b> our Diplomatic delegation!');
+
+
 
 
 //Italian
@@ -928,6 +979,18 @@ define ("ITA_TEXT149", '-- INFERIORE alla norma --');
 define ("ITA_TEXT150", '-- nella norma --');
 
 define ("ITA_TEXT151", '-- SUPERIORE alla norma --');
+
+define ("ITA_TEXT152", 'L&#146;esperimento non ha avuto luogo per mancanza delle risorse necessarie');
+
+define ("ITA_TEXT153", 'L&#146;operazione &egrave; possibile solo su pianeti di classe <b>D</b> disabitati');
+
+define ("ITA_TEXT154", 'L&#146;esperimento ha avuto successo, quantomeno esiste ancora un pianeta in questa orbita.');
+
+define ("ITA_TEXT155", 'La popolazione di questo pianeta ha gi&agrave; avuto un primo contatto con la nostra civilt&agrave;.');
+
+define ("ITA_TEXT156", 'La popolazione di questo pianeta ha accolto con benevolenza la nostra delegazione diplomatica. Il Primo contatto &eacute; avvenuto con successo.');
+
+define ("ITA_TEXT157", 'La popolazione di questo pianeta ha respindo la nostra delegazione diplomatica.');
 
 
 ?>
