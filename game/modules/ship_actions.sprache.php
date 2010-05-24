@@ -149,7 +149,7 @@ define ("GER_TEXT62", 'Missionen auf dem Planeten sind nur f&uuml;r Flotten, bes
 
 define ("GER_TEXT63", 'Erforderlich: ');
 
-define ("GER_TEXT64", '<b>Diplomatische Vertr&auml;ge:</b><br>Das Schiff wird Land eine diplomatische Delegation mit der Aufgabe, Vereinbarungen &uuml;ber die Zusammenarbeit und den kulturellen Austausch mit der lokalen Bev&ouml;lkerung zu kn&uuml;pfen. Sollten die Verhandlungen Ende gut, wird das Vertrauen in Ihre Rasse von Anwohnern deutlich erh&ouml;hen.<br>Die Reaktion der Siedler konnte einige Zeit dauern ankommen.')
+define ("GER_TEXT64", '<b>Diplomatische Vertr&auml;ge:</b><br>Das Schiff wird Land eine diplomatische Delegation mit der Aufgabe, Vereinbarungen &uuml;ber die Zusammenarbeit und den kulturellen Austausch mit der lokalen Bev&ouml;lkerung zu kn&uuml;pfen. Sollten die Verhandlungen Ende gut, wird das Vertrauen in Ihre Rasse von Anwohnern deutlich erh&ouml;hen.<br>Die Reaktion der Siedler konnte einige Zeit dauern ankommen.');
 
 
 //English
@@ -286,7 +286,7 @@ define ("ENG_TEXT62", 'Missions on the planets are assigned only to fleets compo
 
 define ("ENG_TEXT63", 'Required: ');
 
-define ("ENG_TEXT64", '<b>Diplomatic Treaties:</b><br>The ship will land a diplomatic delegation with the job to forge agreements on cooperation and cultural exchange with the local population. If negotiations ends well, the confidence in your race by residents will increase significantly.<br>The response of the settlers could take some time to arrive.')
+define ("ENG_TEXT64", '<b>Diplomatic Treaties:</b><br>The ship will land a diplomatic delegation with the job to forge agreements on cooperation and cultural exchange with the local population. If negotiations ends well, the confidence in your race by residents will increase significantly.<br>The response of the settlers could take some time to arrive.');
 
 
 //Italiano
