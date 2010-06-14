@@ -41,7 +41,35 @@ error_reporting(E_ERROR);
 $module = (!empty($_GET['view'])) ? $_GET['view'] : 'view';
 $game->out('<span class="caption">'.constant($game->sprache("TEXT3")).'</span><br><br>'.display_view_navigation('ship_template', $module, $STEMPLATE_MODULES).'<br><br>');
 
+function RoundsFire($race, $torso)
+{
+	// DC ---
+	// Brown Bobby Version ROF = 1
+	
+	$rof = 1;
+	
+	return $rof;
+}
 
+function Torpedoes($race, $torso)
+{
+	// DC ---
+	// Brown Bobby Version
+	
+	if($torso < 5) return 0; 
+	
+	$max_torp = 15;
+	
+	if($torso == 6)  $max_torp += 30; 
+	if($torso == 7)  $max_torp += 60; 
+	if($torso == 8)  $max_torp += 130;
+	if($torso == 9)  $max_torp += 180;
+	if($torso == 10) $max_torp += 220;
+	if($torso == 11) $max_torp += 260;
+	if($torso == 12) $max_torp += 400;
+	
+	return $max_torp;
+}
 function CreateShipInfoText($ship)
 {
 global $db;
@@ -233,6 +261,7 @@ for ($t=0; $t<3; $t++)
 			$game->out('<u>'.constant($game->sprache("TEXT8")).'</u> <b>'.PutValue($template_array,'value_1',$t).'</b><br>');
 			$game->out('<u>'.constant($game->sprache("TEXT9")).'</u> <b>'.PutValue($template_array,'value_2',$t).'</b><br>');
 			$game->out('<u>'.constant($game->sprache("TEXT10")).'</u> <b>'.PutValue($template_array,'value_3',$t).'</b><br>');
+			$game->out('<u>'.constant($game->sprache("TEXT85")).'</u> <b>'.PutValue($template_array,'max_torp',$t).'</b><br>');
 			$game->out('<u>'.constant($game->sprache("TEXT11")).'</u> <b>'.PutValue($template_array,'value_4',$t).'</b><br>');
 			$game->out('<u>'.constant($game->sprache("TEXT12")).'</u> <b>'.PutValue($template_array,'value_5',$t).'</b><br>');
 			$game->out('<u>'.constant($game->sprache("TEXT13")).'</u> <b>'.PutValue($template_array,'value_6',$t).'</b><br>');
@@ -412,7 +441,11 @@ if ($game->player['user_race']==8) // Breen
   }
   if ($t==8)
   {
-    $t=12;
+    $t=9;
+  }
+  if ($t==10)
+  {
+    $t=11;
   }
 }
 
@@ -972,6 +1005,7 @@ $game->out('
 <u>'.constant($game->sprache("TEXT18")).'</u> <b id="skilla1">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][24].'</b><br>
 <u>'.constant($game->sprache("TEXT19")).'</u> <b id="skilla2">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][25].'</b><br>
 </td><td width=100>
+<u>'.constant($game->sprache("TEXT85")).'</u> <b>'.Torpedoes($game->player['user_race'], $_POST['ship_torso']).'</b><br>
 <u>'.constant($game->sprache("TEXT61")).'</u><br><b id="skilla4">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][27].'</b>/<b id="skilla3">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][26].'</b></td></tr></table>
 </td>
 </tr></table>
@@ -1110,6 +1144,9 @@ $price[10]+=$comp['unit_6'];
 
 if ($value[9]>9.99) $value[9]=9.99;
 
+$value[15] = RoundsFire($game->player['user_race'], $_POST['ship_torso']); // this is rof on ship_templates DB
+$value[16] = Torpedoes($game->player['user_race'], $_POST['ship_torso']); // this is max_torp on ship_templates DB
+
 $game->out('<br></td></tr>
 <tr>
 <td width=25% valign=top><span class="text_large">'.constant($game->sprache("TEXT28")).'</td>
@@ -1119,6 +1156,7 @@ $game->out('<br></td></tr>
 $game->out('<u>'.constant($game->sprache("TEXT8")).'</u> <b>'.$value[0].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT9")).'</u> <b>'.$value[1].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT10")).'</u> <b>'.$value[2].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT85")).'</u> <b>'.($_POST['ship_torso'] < 5 ? 'N/A' : $value[16]).'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT11")).'</u> <b>'.$value[3].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT12")).'</u> <b>'.$value[4].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT13")).'</u> <b>'.$value[5].'</b><br>');
@@ -1305,6 +1343,8 @@ if ($value[13]>$value[12]) exit(0);
 
 if ($value[9]>9.99) $value[9]=9.99;
 
+$value[15] = RoundsFire($game->player['user_race'], $_POST['ship_torso']); // this is rof on ship_templates DB
+$value[16] = Torpedoes($game->player['user_race'], $_POST['ship_torso']); // this is max_torp on ship_templates DB
 
 $game->out('
 </table>
@@ -1318,10 +1358,10 @@ $game->out('</td></tr></table>');
 $db->query('INSERT INTO ship_templates
 (owner, timestamp, name, description, race, ship_torso, ship_class, component_1, component_2, component_3, component_4, component_5, component_6, component_7, component_8, component_9, component_10,
 value_1, value_2, value_3, value_4, value_5, value_6, value_7, value_8, value_9, value_10, value_11, value_12, value_13, value_14, value_15,
-resource_1, resource_2, resource_3, resource_4, unit_5, unit_6, min_unit_1, min_unit_2, min_unit_3, min_unit_4, max_unit_1, max_unit_2, max_unit_3, max_unit_4, buildtime) VALUES
+resource_1, resource_2, resource_3, resource_4, unit_5, unit_6, min_unit_1, min_unit_2, min_unit_3, min_unit_4, max_unit_1, max_unit_2, max_unit_3, max_unit_4, buildtime, rof, max_torp) VALUES
 ("'.$game->player['user_id'].'","'.time().'","'.$_POST['ship_name'].'","'.$_POST['ship_description'].'","'.$game->player['user_race'].'","'.$_POST['ship_torso'].'","'.GetShipClass($game->player['user_race'],$_POST['ship_torso']).'","'.$_POST[0].'","'.$_POST[1].'","'.$_POST[2].'","'.$_POST[3].'","'.$_POST[4].'","'.$_POST[5].'","'.$_POST[6].'","'.$_POST[7].'","'.$_POST[8].'","'.$_POST[9].'",
 "'.$value[0].'","'.$value[1].'","'.$value[2].'","'.$value[3].'","'.$value[4].'","'.$value[5].'","'.$value[6].'","'.$value[7].'","'.$value[8].'","'.$value[9].'","'.$value[10].'","'.$value[11].'","'.$value[12].'","'.$value[13].'","'.$value[14].'",
-"'.$price[0].'","'.$price[1].'","'.$price[2].'","'.$price[3].'","'.$price[9].'","'.$price[10].'","'.$price[5].'","'.$price[6].'","'.$price[7].'","'.$price[8].'","'.$price[11].'","'.$price[12].'","'.$price[13].'","'.$price[14].'","'.$price[4].'"
+"'.$price[0].'","'.$price[1].'","'.$price[2].'","'.$price[3].'","'.$price[9].'","'.$price[10].'","'.$price[5].'","'.$price[6].'","'.$price[7].'","'.$price[8].'","'.$price[11].'","'.$price[12].'","'.$price[13].'","'.$price[14].'","'.$price[4].'","'.$value[15].'","'.$value[16].'"
 )
 ');
 }
@@ -1395,6 +1435,7 @@ $game->out('<br></td></tr></table></td><td width="50%">
 $game->out('<u>'.constant($game->sprache("TEXT8")).'</u> <b>'.$template['value_1'].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT9")).'</u> <b>'.$template['value_2'].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT10")).'</u> <b>'.$template['value_3'].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT85")).'</u> <b>'.($template['ship_torso'] < 5 ? 'N/A' : $template['max_torp']).'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT11")).'</u> <b>'.$template['value_4'].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT12")).'</u> <b>'.$template['value_5'].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT13")).'</u> <b>'.$template['value_6'].'</b><br>');
