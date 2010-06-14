@@ -6276,69 +6276,69 @@ $SHIP_TORSO = array(
 
 	    9 => array(
 
-			0 => 100000000,  // Metal
+			0 => 40400,  // Metal
 
-			1 => 1,  // Minerals
+			1 => 80856,  // Minerals
 
-			2 => 1,  // Latinum
+			2 => 35236,  // Latinum
 
-			3 => 1,  // Min. Unit 1(Centurion)
+			3 => 210,  // Min. Unit 1(Centurion)
 
-			4 => 1,  // Min. Unit 2 (Rem. Truppen)
+			4 => 30,  // Min. Unit 2 (Rem. Truppen)
 
-			5 => 1,  // Min. Unit 3 (Tal Shiar)
+			5 => 10,  // Min. Unit 3 (Tal Shiar)
 
-			6 => 1,  // Min. Unit 4 (Commander)
+			6 => 2,  // Min. Unit 4 (Commander)
 
-			7 => 1,  // Max Unit 1 (Centurion)
+			7 => 210,  // Max Unit 1 (Centurion)
 
-			8 => 1,  // Max Unit 2 (Rem. Truppen)
+			8 => 150,  // Max Unit 2 (Rem. Truppen)
 
-			9 => 1,  // Max Unit 3 (Tal Shiar)
+			9 => 50,  // Max Unit 3 (Tal Shiar)
 
-			10 => 1,  // Max Unit 4 (Commander)
+			10 => 8,  // Max Unit 4 (Commander)
 
-			11 => 1,  // Unit 5 (Offizier)
+			11 => 15,  // Unit 5 (Offizier)
 
-			12 => 1,  // Unit 6 (Medizinisches Personal)
+			12 => 4,  // Unit 6 (Medizinisches Personal)
 
-			13 => 1,  // Buildtime (in 5 Minuten Schritten)
+			13 => 407,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 1,   // Value1 (Leichte Waffen)
+			14 => 108,   // Value1 (Leichte Waffen)
 
-			15 => 1,   // Value2 (Schwere Waffen)
+			15 => 163,   // Value2 (Schwere Waffen)
 
-			16 => 1,   // Value3 (Planetare Waffen)
+			16 => 38,   // Value3 (Planetare Waffen)
 
-			17 => 1,   // Value4 (Schildstärke)
+			17 => 660,   // Value4 (Schildstärke)
 
-			18 => 1,   // Value5 (Hülle bzw. Hitpoints)
+			18 => 980,   // Value5 (Hülle bzw. Hitpoints)
 
-			19 => 1,   // Value6 (Reaktionsgeschw.)
+			19 => 16,   // Value6 (Reaktionsgeschw.)
 
-			20 => 1,   // Value7 (Bereitschaft)
+			20 => 18,   // Value7 (Bereitschaft)
 
-			21 => 1,   // Value8 (Wendigkeit)
+			21 => 15,   // Value8 (Wendigkeit)
 
-			22 => 1,   // Value9 (Erfahrung)
+			22 => 5,   // Value9 (Erfahrung)
 
-			23 => 1,   // Value10 (Warp)
+			23 => 1.6,   // Value10 (Warp)
 
-			24 => 1,   // Value11 (Sensoren)
+			24 => 12,   // Value11 (Sensoren)
 
-			25 => 1,   // Value12 (Tarnung)
+			25 => 5,   // Value12 (Tarnung)
 
-			26 => 1,   // Value13 (Energy Available)
+			26 => 46,   // Value13 (Energy Available)
 
-			27 => 1,   // Value14 (Used Energy)
+			27 => 35,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Schw.Kreuzer',  // Name
+			29 => 'Chel Grett',  // Name
 
-			30 => 1,  // Benötige Arbeiter zum Bau
+			30 => 772,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Chel Gretta Schiffe dieser Klasse sind schwere Kreuzer, entworfen, um eine Schutzmauer gegen die feindlichen Schiffe schnell zu bauen.',
 
 			),
 
@@ -6416,69 +6416,69 @@ $SHIP_TORSO = array(
 
 	    11 => array(
 
-			0 => 100000000,  // Metal
+			0 => 77800,  // Metal
 
-			1 => 1,  // Minerals
+			1 => 130070,  // Minerals
 
-			2 => 1,  // Latinum
+			2 => 64920,  // Latinum
 
-			3 => 1,  // Min. Unit 1(Centurion)
+			3 => 250,  // Min. Unit 1(Centurion)
 
-			4 => 1,  // Min. Unit 2 (Rem. Truppen)
+			4 => 100,  // Min. Unit 2 (Rem. Truppen)
 
-			5 => 1,  // Min. Unit 3 (Tal Shiar)
+			5 => 50,  // Min. Unit 3 (Tal Shiar)
 
-			6 => 1,  // Min. Unit 4 (Commander)
+			6 => 3,  // Min. Unit 4 (Commander)
 
-			7 => 1,  // Max Unit 1 (Centurion)
+			7 => 250,  // Max Unit 1 (Centurion)
 
-			8 => 1,  // Max Unit 2 (Rem. Truppen)
+			8 => 200,  // Max Unit 2 (Rem. Truppen)
 
-			9 => 1,  // Max Unit 3 (Tal Shiar)
+			9 => 100,  // Max Unit 3 (Tal Shiar)
 
-			10 => 1,  // Max Unit 4 (Commander)
+			10 => 12,  // Max Unit 4 (Commander)
 
-			11 => 1,  // Unit 5 (Offizier)
+			11 => 18,  // Unit 5 (Offizier)
 
-			12 => 1,  // Unit 6 (Medizinisches Personal)
+			12 => 7,  // Unit 6 (Medizinisches Personal)
 
-			13 => 1,  // Buildtime (in 5 Minuten Schritten)
+			13 => 573,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 1,   // Value1 (Leichte Waffen)
+			14 => 163,   // Value1 (Leichte Waffen)
 
-			15 => 1,   // Value2 (Schwere Waffen)
+			15 => 246,   // Value2 (Schwere Waffen)
 
-			16 => 1,   // Value3 (Planetare Waffen)
+			16 => 50,   // Value3 (Planetare Waffen)
 
-			17 => 1,   // Value4 (Schildstärke)
+			17 => 980,   // Value4 (Schildstärke)
 
-			18 => 1,   // Value5 (Hülle bzw. Hitpoints)
+			18 => 1050,   // Value5 (Hülle bzw. Hitpoints)
 
-			19 => 1,   // Value6 (Reaktionsgeschw.)
+			19 => 18,   // Value6 (Reaktionsgeschw.)
 
-			20 => 1,   // Value7 (Bereitschaft)
+			20 => 20,   // Value7 (Bereitschaft)
 
-			21 => 1,   // Value8 (Wendigkeit)
+			21 => 12,   // Value8 (Wendigkeit)
 
-			22 => 1,   // Value9 (Erfahrung)
+			22 => 8,   // Value9 (Erfahrung)
 
-			23 => 1,   // Value10 (Warp)
+			23 => 1.6,   // Value10 (Warp)
 
-			24 => 1,   // Value11 (Sensoren)
+			24 => 9,   // Value11 (Sensoren)
 
-			25 => 1,   // Value12 (Tarnung)
+			25 => 5,   // Value12 (Tarnung)
 
-			26 => 1,   // Value13 (Energy Available)
+			26 => 55,   // Value13 (Energy Available)
 
-			27 => 1,   // Value14 (Used Energy)
+			27 => 41,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Schlachtschiff',  // Name
+			29 => 'Gel Chak',  // Name
 
-			30 => 1,  // Benötige Arbeiter zum Bau
+			30 => 1560,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Das Gel Chak-Klasse Schlachtschiffe sind das Flaggschiff der Flotte Breen. Räumen außerhalb selten engagierte Freunde, bilden sie den höchstmöglichen Abschreckung gegen Versuche der Invasion.',
 
 			),
 

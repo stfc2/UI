@@ -967,9 +967,9 @@ $SHIP_TORSO_LOCALE = array(
 
 	    9 => array(
 
-			0 => 'Incrociatore pesante',  // Name
+			0 => 'Chel Grett',  // Name
 
-			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+			1 => 'Le navi classe Chel Grett sono incrociatori pesanti studiati per fare muro contro le pi&ugrave; pesanti navi offensive nemiche.',
 
 		),
 
@@ -987,9 +987,9 @@ $SHIP_TORSO_LOCALE = array(
 
 	    11 => array(
 
-			0 => 'Nave da battaglia',  // Name
+			0 => 'Gel Chak',  // Name
 
-			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+			1 => 'Le navi da battaglia classe Gel Chak sono le navi ammiraglie delle flotte Breen. Queste navi rappresentano il miglior deterrente possibile contro ogni tentativo di invasione.',
 
 		),
 
