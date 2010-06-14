@@ -190,6 +190,8 @@ define ("GER_TEXT82", 'bauen, bevor Schiffstemplates erstellt werden k&ouml;nnen
 
 define ("GER_TEXT83", 'Schiffe');
 
+define ("GER_TEXT85", 'Torpedo in stock:');
+
 //English
 define ("ENG_TEXT0", 'Overview');
 
@@ -359,6 +361,9 @@ define ("ENG_TEXT82", 'built, before Ship templates can be created.');
 
 define ("ENG_TEXT83", 'Ships');
 
+define ("ENG_TEXT85", 'Torpedo in stock:');
+
+
 //Italiano
 define ("ITA_TEXT0", 'Dettagli');
 
@@ -527,5 +532,21 @@ define ("ITA_TEXT81", 'Devi avere un');
 define ("ITA_TEXT82", 'costruito, prima che i Progetti possano essere creati.');
 
 define ("ITA_TEXT83", 'Navi');
+
+define ("ITA_TEXT84", 'Armamento:');
+
+define ("ITA_TEXT85", 'Dotazione Siluri:');
+
+define ("ITA_TEXT86", 'Dotazione Mine:');
+
+define ("ITA_TEXT87", 'Scafo e Sistemi:');
+
+define ("ITA_TEXT88", 'Propulsione:');
+
+define ("ITA_TEXT89", 'Equipaggio:');
+
+define ("ITA_TEXT90", 'Zone Ricovero:');
+
+define ("ITA_TEXT91", 'Zone Detentive:');
 
 ?>
