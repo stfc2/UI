@@ -1353,7 +1353,7 @@ class game {
 		<select name="login_sitting" size="4" style="width: 100px;" onChange="document.sittingselect.submit()">';
 
 		$select_size = ($db->num_rows($susr) + 1);
-		if($select_size==1) $template_vars['USER_SITTING'].='<option></option>';	
+		if($select_size==1) $template_vars['USER_SITTING'].='<option></option>';
 
 		while($sittinguser = $db->fetchrow($susr)) 
 			$template_vars['USER_SITTING'].='<option value="'.$sittinguser['user_id'].'">'.$sittinguser['user_name'].'</option>';
@@ -1565,7 +1565,7 @@ echo'
 			if($this->SITTING_MODE) {
 				if ($this->player['num_sitting']>=0)
 				{
-					/* 13/05/10 - AC: At least for this summer, update field last_active also with sitting */
+					/* 13/05/10 - AC: Removed update field last_active with sitting */
 					$sql = 'UPDATE user
 					        SET num_sitting=num_sitting+1
 					        WHERE user_id = '.$this->uid;
@@ -1583,6 +1583,24 @@ echo'
 						exit;
 				}
 
+				/* 14/06/10 - AC: Now we store in a separate table the sitter's IP */
+				$db->lock('user_sitter_iplog');
+
+				$sql = 'SELECT * FROM user_sitter_iplog WHERE user_id = '.$this->uid.' ORDER BY id DESC LIMIT 1';
+
+				if(($user_sitter_iplog = $db->queryrow($sql)) === false) {
+					message(DATABASE_ERROR, 'Could not query sitter_iplog data');
+				}
+
+				if($user_sitter_iplog['ip']!=$_SERVER["REMOTE_ADDR"] || empty($user_sitter_iplog['id'])) {
+
+					$sql = 'INSERT INTO user_sitter_iplog (user_id, sitter_id, ip, time)
+					        VALUES ('.$this->uid.','.$this->player['sitting_user_id'].',"'.$_SERVER["REMOTE_ADDR"].'",'.time().')';
+
+					$db->query($sql);
+				}
+
+				$db->unlock('user_sitter_iplog');
 			}
 
 		}
@@ -2503,9 +2521,9 @@ function GlobalTorsoReq($ship)
 		$dat[6]=0;
 		$dat[7]=3000;
 		$dat[8]=0;
-		$dat[9]=0;
+		$dat[9]=6000;
 		$dat[10]=0;
-		$dat[11]=0;
+		$dat[11]=15000;
 		$dat[12]=500;
 	}
 	elseif ($game->player['user_race']==9) //Hiro
@@ -2693,9 +2711,9 @@ function LocalTorsoReq($ship)
 		$dat[6]=0;
 		$dat[7]=400;
 		$dat[8]=0;
-		$dat[9]=0;
+		$dat[9]=450;
 		$dat[10]=0;
-		$dat[11]=0;
+		$dat[11]=500;
 		$dat[12]=340;
 	}
 	elseif ($game->player['user_race']==9) //Hiro

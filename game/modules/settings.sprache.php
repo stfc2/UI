@@ -126,7 +126,7 @@ define ("GER_TEXT49", '{skin_farbe}');
 
 define ("GER_TEXT50", '&Uuml;bernehmen');
 
-define ("GER_TEXT50a", 'W&auml;hrend des Urlaubsmodus kannst du deinen Account nicht benutzen, kannst aber auch nicht angegriffen werden und erh&auml;ltst nur 20% der Ressourcen. Bauvorg&auml;nge werden ganz normal abgeschlossen. Du darfst nach dieser Aktivierung bis zum Start des Urlaubsmodus keinen Spieler mehr angreifen. <b>Eine Flotte, die sich bereits im Anflug auf einen deiner Planeten befindet, wird dennoch ankommen!</b>');
+define ("GER_TEXT50a", 'W&auml;hrend des Urlaubsmodus kannst du deinen Account nicht benutzen, kannst aber auch nicht angegriffen werden und erh&auml;ltst nur 20% der Ressourcen. Bauvorg&auml;nge werden ganz normal abgeschlossen. Du darfst nach dieser Aktivierung bis zum Start des Urlaubsmodus keinen Spieler mehr angreifen.<br><b>Eine Flotte, die sich bereits im Anflug auf einen deiner Planeten befindet, wird dennoch ankommen!</b>');
 
 define ("GER_TEXT50b", 'Aktivieren in');
 
@@ -168,7 +168,7 @@ define ("GER_TEXT62a", 'Datum / Uhrzeit');
 
 define ("GER_TEXT63", 'IP-Adresse');
 
-define ("GER_TEXT64", 'Hier hast du die M&ouml;glichkeit deinen aktuell aktiven Planeten an den Siedler zu &uuml;bergeben.<br><b>Achtung! Bis der Planet an den Siedler geht dauert es etwa 6 Stunden. Der Vorgang kann nicht r&uuml;ckg&auml;ngig gemacht werden.');
+define ("GER_TEXT64", 'Hier hast du die M&ouml;glichkeit deinen aktuell aktiven Planeten an den Siedler zu &uuml;bergeben.<br><br><b>Achtung! Bis der Planet an den Siedler geht dauert es etwa 6 Stunden.<br><u>Der Vorgang kann nicht r&uuml;ckg&auml;ngig gemacht werden.</u></b>');
 
 define ("GER_TEXT65", 'Koordinaten:');
 
@@ -316,6 +316,10 @@ define ("GER_TEXT136", 'Avatar wurde gesetzt');
 
 define ("GER_TEXT137", 'Leer');
 
+define ("GER_TEXT138", 'Hier werden die <b>letzen 10 sitter</b> aufgelistet, von denen sich in deinen Account eingeloggt wurde. Bist du der Meinung, dein Account wurde gehackt so melde dich bitte bei einem Spieladmin.');
+
+define ("GER_TEXT139", 'Sitter name');
+
 //English
 
 define ("ENG_TEXT1", 'Error: the file uploaded was not image.');
@@ -422,7 +426,7 @@ define ("ENG_TEXT49", '{skin_color}');
 
 define ("ENG_TEXT50", 'Apply');
 
-define ("ENG_TEXT50a", 'During the holiday mode, you cannot use your account and will receive only 20% of resources but you cannot be attacked. Building procedure are completely locked. You may attack no more player after the activation of the vacation mode.<b>A fleet, which already is in the approach on one of your planets, will arrive nevertheless!</b>');
+define ("ENG_TEXT50a", 'During the holiday mode, you cannot use your account and will receive only 20% of resources but you cannot be attacked. Building procedure are completely locked. You may attack no more player after the activation of the vacation mode.<br><b>A fleet, which already is in the approach on one of your planets, will arrive nevertheless!</b>');
 
 define ("ENG_TEXT50b", 'Activate in');
 
@@ -464,7 +468,7 @@ define ("ENG_TEXT62a", 'Date / Time');
 
 define ("ENG_TEXT63", 'IP Address');
 
-define ("ENG_TEXT64", 'Here you have the possibility of your currently active planet to be over by settlers.<br><b>Attention! Until the planet to the settlers goes, it takes about 6 hours. The process may not be back.');
+define ("ENG_TEXT64", 'Here you have the possibility to abandon your currently active planet.<br><br><b>Attention! Until the settlers leave the planet, it takes about 6 hours.<br><u>The process cannot be undone.</u></b>');
 
 define ("ENG_TEXT65", 'Coordinates:');
 
@@ -612,6 +616,10 @@ define ("ENG_TEXT136", 'Avatar has been set');
 
 define ("ENG_TEXT137", 'Empty');
 
+define ("ENG_TEXT138", 'Here are listed the last 10 <b>sitter</b> which logged into your account. If you believe your account has been hacked sign up for a game Admin.');
+
+define ("ENG_TEXT139", 'Sitter name');
+
 //Italiano
 
 define ("ITA_TEXT1", 'Errore: il file caricato non  un%27immagine.');
@@ -718,7 +726,7 @@ define ("ITA_TEXT49", '{colore skin}');
 
 define ("ITA_TEXT50", 'Applica');
 
-define ("ITA_TEXT50a", 'Durante la modalit&agrave; vacanza, non puoi usare il tuo account e riceverai solo il 20% delle risorse, ma non sarai attaccato. Le costruzioni sono completamente bloccate. Non &egrave; pi&ugrave; possibile attaccare nessun giocatore dopo l\'attivazione della modalit&agrave; vacanza. <b>Una flotta, che fosse gi&agrave; in approccio verso uno dei tuoi pianeti, arriver&agrave; comunque!</b>');
+define ("ITA_TEXT50a", 'Durante la modalit&agrave; vacanza, non puoi usare il tuo account e riceverai solo il 20% delle risorse, ma non sarai attaccato. Le costruzioni sono completamente bloccate. Non &egrave; pi&ugrave; possibile attaccare nessun giocatore dopo l\'attivazione della modalit&agrave; vacanza.<br><b>Una flotta, che fosse gi&agrave; in approccio verso uno dei tuoi pianeti, arriver&agrave; comunque!</b>');
 
 define ("ITA_TEXT50b", 'Attiva in');
 
@@ -752,15 +760,15 @@ define ("ITA_TEXT59", '(dopo la modifica alla password &egrave; necessario ri-lo
 
 define ("ITA_TEXT60", 'Nome Login:');
 
-define ("ITA_TEXT61", 'Qui sono elencati tutti gli account che sono stati esclusi (perch&eacute dalla ricerca automatica risultavano con l\'IP in uso).<br>Momentaneamente la ricerca automatica &egrave disattivata e nessuno degli IP &egrave assegnato.<br><i>Gli account sono collegati, non $egrave possibile commerciare o trasferire navi e risorse.');
+define ("ITA_TEXT61", 'Qui sono elencati tutti gli account che sono stati esclusi (perch&egrave; dalla ricerca automatica risultavano con l&#146;IP in uso).<br>Momentaneamente la ricerca automatica &egrave; disattivata e nessuno degli IP &egrave; assegnato.<br><i>Gli account sono collegati, non &egrave; possibile commerciare o trasferire navi e risorse.');
 
-define ("ITA_TEXT62", 'Questo &egrave l\'elenco degli ultimi 10 <b>indirizzi IP</b> che hanno loggato il tuo account. Se credi che il tuo account sia stato utilizzato da qualcun altro a tua insaputa segnalalo subito ad un Admin.');
+define ("ITA_TEXT62", 'Questo &egrave l\'elenco degli ultimi 10 <b>indirizzi IP</b> che hanno loggato il tuo account.<br>Se credi che il tuo account sia stato utilizzato da qualcun altro a tua insaputa segnalalo subito ad un Admin.');
 
 define ("ITA_TEXT62a", 'Data / Ora');
 
 define ("ITA_TEXT63", 'Indirizzo IP');
 
-define ("ITA_TEXT64", 'Qu&igrave &egrave possibile vedere le colonie attualmente attive ed eventualmente abbandonarle.<br><b>Attenzione! Affinch&eacute il pianeta venga abbandonato dai coloni occorrono 6 ore. Il processo non &egrave reversibile.');
+define ("ITA_TEXT64", 'Qu&igrave &egrave; possibile avere la possibilit&agrave; di abbandonare la colonia attualmente attiva.<br><br><b>Attenzione! Affinch&eacute; il pianeta venga abbandonato dai coloni occorrono 6 ore.<br><u>Il processo non &egrave; reversibile.</u></b>');
 
 define ("ITA_TEXT65", 'Coordinate:');
 
@@ -907,5 +915,9 @@ define ("ITA_TEXT135", 'Modifica avatar fallita');
 define ("ITA_TEXT136", 'L%27avatar %E8 stato configurato correttamente');
 
 define ("ITA_TEXT137", 'Vuoto');
+
+define ("ITA_TEXT138", 'Questo &egrave l&#146;elenco degli ultimi 10 <b>sitter</b> che hanno loggato il tuo account.<br>Se credi che il tuo account sia stato utilizzato da qualcun altro a tua insaputa segnalalo subito ad un Admin.');
+
+define ("ITA_TEXT139", 'Nome sitter');
 
 ?>
