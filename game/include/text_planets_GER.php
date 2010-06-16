@@ -33,7 +33,7 @@ $PLANETS_TEXT = array(
     'a' => array(
         0 => 'Gas-Supergigant_std',
         1 => 'unmöglich',
-        2 => 'hohe Vorkommen metallischer Elemente, kaum Mineralien',
+        2 => 'Riesige Vorkommen von metallischen Elementen, kaum Mineralien',
         3 => 'Planeten dieser Klasse sind sehr groß, meistens eine 300 bis 1000fache Masse der Erde, und liegen in der kalten Zone ihrer Sonne (hohe Entfernung). Durch die geringe Sonneneinstrahlung und hohe Gravitation bilden sie dichte Atmosphären aus Wasserstoff. Die hohen Kerntemperaturen verursachen eine Wärmeabstrahlung und eine hohe Oberflächentemperatur. Leben ist nur auf orbitalen Stationen möglich.',
         4 => 'Jupiter'
     ),
@@ -41,15 +41,15 @@ $PLANETS_TEXT = array(
     'b' => array(
         0 => 'Gas-Giganten',
         1 => 'unmöglich',
-        2 => 'hohe Vorkommen metallischer Elemente, kaum Mineralien',
+        2 => 'hohe Vorkommen metallischer Elemente, kaum Lathinum',
         3 => 'Planeten dieser Klasse sind sehr groß, meistens eine 10 bis 100fache Masse der Erde, und liegen in der kalten Zone ihrer Sonne (hohe Entfernung). Durch die geringe Sonneneinstrahlung und hohe Gravitation bilden sie dichte Atmosphären aus Wasserstoff. Die hohen Kerntemperaturen verursachen eine Wärmeabstrahlung und eine hohe Oberflächentemperatur. Leben ist nur auf orbitalen Stationen möglich.',
-        4 => 'Saturn, Neptun'
+        4 => 'Saturn'
     ),
     
     'c' => array(
         0 => 'Klasse-C-Welt',
         1 => 'aufwändig, aber möglich',
-        2 => 'mittlere Vorkommen aller wichtigen Rohstoffen',
+        2 => 'Geringe Vorkommen von metallischen Elementen',
         3 => 'Planeten dieser Klasse ähneln in Masse und Entfernung zur Sonne der Erde, ihre Atmosphäre und Oberfläche ist jedoch durch starke Treibhauseffekte aufgeheizt, so dass Wasser z.B. nur im gasförmigen Zustand vorhanden ist. Mit technischer Unterstützung und Versorgung von außen ist Leben möglich',
         4 => 'Venus'
     ),
@@ -57,7 +57,7 @@ $PLANETS_TEXT = array(
     'd' => array(
         0 => 'Klasse-D-Welt',
         1 => 'aufwändig, aber möglich',
-        2 => 'mittlere Vorkommen aller wichtigen Rohstoffe',
+        2 => 'Hohe Vorkommen von metallischen Elementen, kaum Lathinum',
         3 => 'Planeten dieser Klasse gelten meist nur als Planetoiden, da sie je nach Größe keine regelmäßige Form besitzen, weil ihre Gravitation nicht ausreicht, um eine Kugel zu bilden. Ihre Atmosphäre ist, wenn vorhanden, sehr dünn. Die Oberfläche besteht aus Silikaten und verschiedenen Metallverbindungen. Mit technischer Unterstützung und Versorgung von außen ist Leben möglich.',
         4 => 'Ceres (Asteroid im Sol-System)'
     ),
@@ -65,7 +65,7 @@ $PLANETS_TEXT = array(
     'e' => array(
         0 => 'Klasse-E-Welt',
         1 => 'mit technischer Hilfe möglich',
-        2 => 'mittlere Vorkommen aller wichtigen Rohstoffe',
+        2 => 'hohe Vorkommen von Mineralien',
         3 => 'Planeten dieser Klasse ähneln in Masse und Entfernung zur Sonne der Erde und werden als Vorläufer der verschiedenen Klassen nach F gesehen. Ihr Kern ist noch geschmolzen, sie besitzen jedoch bereits eine dünne Atmosphäre mit Sauerstoff-Bestandteilen. Mit technischer Unterstützung und Versorgung von außen ist Leben möglich.',
         4 => '-'
     ),
@@ -73,7 +73,7 @@ $PLANETS_TEXT = array(
     'f' => array(
         0 => 'Klasse-F-Welt',
         1 => 'mit technischer Hilfe möglich',
-        2 => 'mittlere Vorkommen aller wichtigen Rohstoffe',
+        2 => 'hohe Vorkommen von Lathinum',
         3 => 'Planeten dieser Klasse ähneln in Masse und Entfernung zur Sonne der Erde. Ihre Atmosphäre ist bereits sehr sauerstoffreich, doch durch ihr geringes Alter (ca. 1 Mrd. Jahre) ist ihre Oberfläche oft noch nicht vollkommen erstarrt. Mit geringer technischer Unterstützung ist Leben möglich.',
         4 => '-'
     ),
@@ -89,7 +89,7 @@ $PLANETS_TEXT = array(
     'h' => array(
         0 => 'Klasse-H-Welt',
         1 => 'aufwändig, aber möglich',
-        2 => 'mittlere Vorkommen aller wichtigen Rohstoffe',
+        2 => 'hohe Vorkommen von Lathinum, kaum Mineralien',
         3 => 'Planten dieser Klasse kommen auf ungefähr 10% der Erdmasse und liegen in einer großen Entfernung zur Sonne (kalte Zone). Durch ihr geringes Alter ist die Oberfläche noch geschmolzen oder ist immer noch geologisch sehr aktiv. Die Atmosphäre besteht vornehmlich aus Wasserstoff. Mit technischer Hilfe und Versorgung von außen ist Leben möglich.',
         4 => 'Gothos'
     ),
@@ -97,7 +97,7 @@ $PLANETS_TEXT = array(
     'i' => array(
         0 => 'Klasse-I-Welt',
         1 => 'aufwändig, aber möglich',
-        2 => 'hohe Vorkommen mineralischer Elemente und Latinum, kaum Metalle',
+        2 => 'riesige Vorkommen von Lathinum, kaum Metallen',
         3 => 'Planeten dieser Klasse ähneln in Masse und Entfernung zur Sonne der Erde. Sie haben eine sehr aktive Oberfläche voller Vulkane und ihre Atmosphäre ist stark toxisch. Mit technischer Hilfe und Versorgung von außen ist Leben möglich.',
         4 => '-'
     ),
@@ -105,7 +105,7 @@ $PLANETS_TEXT = array(
     'j' => array(
         0 => 'Klasse-J-Welt',
         1 => 'aufwändig, aber möglich',
-        2 => 'enorme Vorkommen mineralischer Elemente, kaum Latinum und Metalle',
+        2 => 'hohe Einlagen von mineralischen Elementen, Metallen kaum',
         3 => 'Planeten dieser Klasse kommen auf ungefähr 10%-100% der Erdmasse. Ihre aus Edelgasen bestehende Atmosphäre ist dünn und das gesamte Erscheinungsbild ist eher mondartig. Mit technischer Hilfe und Versorgung von außen ist Leben möglich.',
         4 => 'Luna (Erdmond)'
     ),
@@ -113,17 +113,17 @@ $PLANETS_TEXT = array(
     'k' => array(
         0 => 'Klasse-K-Welt',
         1 => 'aufwändig, aber möglich',
-        2 => 'mittlere Vorkommen aller wichtigen Rohstoffe',
+        2 => 'geringe Vorkommen von Mineralien Elemente',
         3 => 'Planeten dieser Klasse kommen auf ungefähr 10% der Erdmasse und liegen in derselben Zone wie die Erde. Sie haben eine feste Oberfläche, doch durch ihre geringe Größe reicht die Gravitation nicht aus, um eine dichte Atmosphäre zu bilden und Wasser im flüssigen Zustand zu halten. Mit technischer Unterstützung und Versorgung von außen ist Leben möglich.',
         4 => 'Mars'
     ),
     
     'l' => array(
-        0 => 'Eis-Planet',
-        1 => 'mit technischer Hilfe möglch',
-        2 => 'enorme Vorkommen mineralischer Rohstoffe, kaum Metalle und Latinum',
+        0 => 'Eisriesenwelt',
+        1 => 'unmöglich',
+        2 => 'enorme Vorkommen mineralischer Rohstoffe, kaum Latinum',
         3 => 'Planeten dieser Klasse kommen auf ungefähr 10% der Erdmasse und liegen in der kalten Zone. Durch die geringe Sonneneintrahlung und den festen, kalten Kern ist ihre Oberfläche und die gesamte Atmosphäre permanent gefroren. Mit technischer Unterstützung und Versorgung von außen ist Leben möglich.',
-        4 => '-'
+        4 => 'Uranus, Neptun'
     ),
         
     
@@ -146,7 +146,7 @@ $PLANETS_TEXT = array(
     'y' => array(
         0 => 'Dämon-Planet',
         1 => 'sehr aufwändig, aber möglich',
-        2 => 'unermeßliche Vorkommen aller Rohstoffe',
+        2 => 'hoch Vorkommen aller Rohstoffe',
         3 => 'Planeten dieser Klasse sind Planeten bzw. Planetoiden haben eine extrem toxische Atmosphäre und ihre sehr aktive Oberfläche kühlt selten unter 500 Kelvin ab. Die Oberflächenwinde erreichen mehrfache Schallgeschwindigkeit und den aggresiven Atmosphären-Gasen können nur wenige Stoffe widerstehen. Mit massiver technischer Unterstützung und Versorgung von außen ist Leben möglich',
         4 => '-'
     ),

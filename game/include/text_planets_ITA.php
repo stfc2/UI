@@ -33,7 +33,7 @@ $PLANETS_TEXT = array(
     'a' => array(
         0 => 'Supergigante gassoso',
         1 => 'Impossibile',
-        2 => 'Alta presenza di metalli, scarsit&agrave; di minerali',
+        2 => 'Enorme presenza di metalli, scarsit&agrave; di minerali',
         3 => 'I pianeti di questa classe sono molto grandi, normalmente tra le 300 e le 1000 volte la massa della Terra, sono situati nella zona fredda della propria stella (a grande distanza da essa). A causa della bassa radiazione solare ed elevata gravit&agrave;, si forma una densa atmosfera di idrogeno.  Le elevate temperature causano il dissiparsi del calore del nucleo ed elevate temperature in superficie. La vita &egrave; possibile solo su stazioni orbitali.',
         4 => 'Giove'
     ),
@@ -41,15 +41,15 @@ $PLANETS_TEXT = array(
     'b' => array(
         0 => 'Gigante gassoso',
         1 => 'Impossibile',
-        2 => 'Alta presenza di metalli, scarsit&agrave; di minerali',
+        2 => 'Alta presenza di metalli, scarsit&agrave; di dilitio',
         3 => 'I pianeti di questa classe sono molto grandi, normalmente tra le 10 e le 100 volte la massa della Terra, sono situati nella zona fredda della propria stella (a grande distanza da essa). A causa della bassa radiazione solare ed elevata gravit&agrave;, si forma una densa atmosfera di idrogeno.  Le elevate temperature causano il dissiparsi del calore del nucleo ed elevate temperature in superficie. La vita &egrave; possibile solo su stazioni orbitali.',
-        4 => 'Saturno, Nettuno'
+        4 => 'Saturno'
     ),
     
     'c' => array(
         0 => 'Pianeta di Classe C',
         1 => 'Richiede pesante intervento di terraforming',
-        2 => 'Media presenza di tutte le risorse',
+        2 => 'Bassa presenza di metalli',
         3 => 'I pianeti di questa classe sono simili in massa e distanza dalla propria stella alla Terra, tuttavia a causa di un pesante effetto serra, l&#146;atmosfera e la superficie sono notevolmente caldi, il che rende la presenza dell&#146;acqua possibile al solo stato gassoso. La vita &egrave; possibile solo attraverso un supporto tecnologico ed un rifornimento di risorse dall&#146;esterno.',
         4 => 'Venere'
     ),
@@ -57,7 +57,7 @@ $PLANETS_TEXT = array(
     'd' => array(
         0 => 'Pianeta di Classe D',
         1 => 'Richiede pesante intervento di terraforming',
-        2 => 'Media presenza di tutte le risorse',
+        2 => 'Alta presenza di metalli e minerali, scarsit&agrave; di dilitio',
         3 => 'Questa classe planetaria normalmente si applica solo a planetoidi di forma non regolare, dovuta alla scarsit&agrave; della propria forza gravitazionale. La loro atmosfera, se presente, &egrave molto rarefatta. La superficie &egrave; composta di silicati e vari composti metallici. La vita &egrave; possibile solo attraverso un supporto tecnologico ed un rifornimento di risorse dall&#146;esterno.',
         4 => 'Ceres (Asteroide del Sistema Solare)'
     ),
@@ -65,7 +65,7 @@ $PLANETS_TEXT = array(
     'e' => array(
         0 => 'Pianeta di Classe E',
         1 => 'Richiede minimo intervento di terraforming',
-        2 => 'Media presenza di tutte le risorse',
+        2 => 'Alta presenza di minerali',
         3 => 'I pianeti di questa classe sono simili in massa e distanza dalla propria stella alla Terra e vengono considerati i precursori dei pianeti di classe F conosciuti. Il nucleo del pianeta &egrave; fuso e possiedono una rarefatta atmosfera con tracce di ossigeno. La vita &egrave; possibile attraverso modesti supporto tecnologico e rifornimento di risorse dall&#146;esterno.',
         4 => '-'
     ),
@@ -73,7 +73,7 @@ $PLANETS_TEXT = array(
     'f' => array(
         0 => 'Pianeta di Classe F',
         1 => 'Richiede minimo intervento di terraforming',
-        2 => 'Media presenza di tutte le risorse',
+        2 => 'Alta presenza di dilitio',
         3 => 'I pianeti di questa classe sono simili alla Terra come massa e distanza dalla propria stella. La loro atmosfera &egrave; molto ricca di ossigeno, ma dato che sono pianeti piuttosto giovani, spesso la superficie non si &egrave; completamente solidificata. La sopravvivenza sul pianeta &egrave; possibile con un piccolo supporto tecnologico.',
         4 => '-'
     ),
@@ -89,7 +89,7 @@ $PLANETS_TEXT = array(
     'h' => array(
         0 => 'Pianeta di classe H',
         1 => 'Richiede pesante intervento di terraforming',
-        2 => 'Media presenza di tutte le risorse',
+        2 => 'Alta presenza di dilitio, scarsit&agrave; di minerali',
         3 => 'I pianeti di questa classe raggiungono solo il 10% della massa della Terra e hanno un&#146;orbita molto distante dal proprio sole. A causa della loro recente formazione, la superficie risulta ancora fusa o caratterizzata da intensi fenomeni geologici. L&#146;atmosfera &egrave; caratterizzata principalmente da idrogeno. La sopravvivenza sul pianeta &egrave; possibile solo grazie al supporto vitale e rifornimenti di risorse dall&#146;esterno.',
         4 => 'Gothos'
     ),
@@ -97,7 +97,7 @@ $PLANETS_TEXT = array(
     'i' => array(
         0 => 'Pianeta di Classe I',
         1 => 'Richiede pesante intervento di terraforming',
-        2 => 'Elevata presenza di dilitio e minerali, scarsit&agrave; di metalli',
+        2 => 'Enorme presenza di dilitio, scarsit&agrave; di metalli',
         3 => 'I pianeti di questa classe somigliano alla Terra in massa e orbita. La superfice &egrave; costellata di vulcani attivi e l&#146;atmosfera &egrave; ricca di gas tossici. La sopravvivenza sul pianeta &egrave; possibile solo grazie al supporto vitale e rifornimenti di risorse dall&#146;esterno.',
         4 => '-'
     ),
@@ -105,25 +105,25 @@ $PLANETS_TEXT = array(
     'j' => array(
         0 => 'Pianeta di Classe J',
         1 => 'Richiede pesante intervento di terraforming',
-        2 => 'Enormi depositi di minerali, scarsit&agrave; di metalli e dilitio',
+        2 => 'Elevata presenza di minerali, scarsit&agrave; di metalli',
         3 => 'I pianeti di questa classe raggiungono il 10%-100% della massa terrestre. La loro atmosfera composta da gas nobili &egrave; molto rarefatta e la superfice ha un aspetto lunare. La sopravvivenza sul pianeta &egrave; possibile solo grazie al supporto vitale e rifornimenti di risorse dall&#146;esterno.',
         4 => 'Luna'
     ),
     
     'k' => array(
         0 => 'Pianeta di Classe K',
-        1 => 'Richiede pesante intervento di terraforming',
-        2 => 'Media presenza di tutte le risorse',
+        1 => 'Richiede medio intervento di terraforming',
+        2 => 'Bassa presenza di minerali',
         3 => 'I pianeti di questa classe hanno il 10% della massa terrestre e un&#146;orbita analoga. La superfice &egrave; compatta ma, a causa della bassa forza gravitazionale, non riescono a trattenere un&#146;atmosfera o a mantenere l&#146;acqua allo stato liquido. La sopravvivenza sul pianeta &egrave; possibile solo grazie al supporto vitale e rifornimenti di risorse dall&#146;esterno.',
         4 => 'Marte'
     ),
     
     'l' => array(
-        0 => 'Pianeta ghiacciato',
-        1 => 'Richiede minimo intervento di terraforming',
-        2 => 'Enormi depositi di minerali, scarsit&agrave; di metalli e dilitio',
-        3 => 'I pianeti di questa classe hanno il 10% della massa terrestre e un&#146;orbita molto distante dal sole. A causa della distanza dal sole e del nucleo interno compatto e freddo, la superfice e l&#146;intera atmosfera sono perennemente ghiacciati. La sopravvivenza sul pianeta &egrave; possibile solo grazie al supporto vitale e rifornimenti di risorse dall&#146;esterno.',
-        4 => '-'
+        0 => 'Gigante ghiacciato',
+        1 => 'Impossibile',
+        2 => 'Enormi depositi di minerali, scarsit&agrave; di dilitio',
+        3 => 'I pianeti di questa classe hanno una massa tra le 10 e le 100 volte superiore a quella della Terra e un&#146;orbita molto distante dal sole. La densa atmosfera &egrave; composta da elementi quali acqua, ammoniaca e metano e  ricopre un nucleo roccioso. La vita &egrave; possibile solo su stazioni orbitali.',
+        4 => 'Urano, Nettuno'
     ),
         
     
@@ -146,7 +146,7 @@ $PLANETS_TEXT = array(
     'y' => array(
         0 => 'Pianeta infuocato',
         1 => 'Richiede pesante intervento di terraforming',
-        2 => 'Immense riserve di metalli, minerali e dilitio',
+        2 => 'Altissime riserve di metalli, minerali e dilitio',
         3 => 'I pianeti di questa classe hanno un&#146;atmosfera estremamente tossica e la temperatura in superfice raramente scendo sotto i 500 gradi Kelvin. I venti di superfice soffiano ad altissima velocit&agrave; e ben poche sostanze resistono ai gas corrosivi in atmosfera. La vita &egrave; possibile solo attraverso massicci interventi di terraforming e l&#146;impiego di ingenti risorse.',
         4 => '-'
     ),
