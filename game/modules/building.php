@@ -60,6 +60,31 @@ elseif($resource==2) {
 return round($price,0);
 }
 
+function GetFuturePts($t)
+{
+	/*
+	GetBuildingPts ritorna la somma dei punti struttura usati sul pianeta e dei punti struttura impiegati dalla costruzione della struttura,
+	di modo che se GetBuildingPts torna un valore maggiore, la costruzione non può essere avviata
+	*/
+	global $db;
+	global $game;
+
+	$_points = round(pow($game->planet['building_'.($t+1)]+1,1.5)-pow($game->planet['building_'.($t+1)],1.5));
+
+	$schedulerquery=$db->query('SELECT * FROM scheduler_instbuild WHERE planet_id="'.$game->planet['planet_id'].'"');
+	if ($db->num_rows()>0)
+	{
+		$scheduler = $db->fetchrow($schedulerquery);
+		$q = $scheduler['installation_type']+1;
+		$_points_q = round(pow($game->planet['building_'.($q)]+1,1.5)-pow($game->planet['building_'.($q)],1.5));
+	}
+
+	$_total = $_points + $_points_q + $game->planet['planet_points'];
+
+	return($_total); 
+
+}
+
 function GetBuildingTime($building)
 {
 global $db;
