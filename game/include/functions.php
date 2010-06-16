@@ -2356,7 +2356,7 @@ echo'
 
 	function set_planet($quadrant,$type)
 	{
-		global $ACTUAL_TICK,$db;
+		global $ACTUAL_TICK,$db,$MAX_POINTS;
 
 		// Check if player REALLY doesn't have already a planet
 		$sql = 'SELECT planet_id FROM planets WHERE planet_owner = '.$this->player['user_id'];
