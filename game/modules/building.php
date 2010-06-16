@@ -365,7 +365,7 @@ if ($tt==9) $t=12;
 if (($t==11 && $game->planet['building_1']<4) || ($t==10 && $game->planet['building_1']<3) ||  ($t==6 && $game->planet['building_1']<5) || ($t==8 && $game->planet['building_1']<9) || ($t==7 && $game->planet['building_7']<1) || ($t==9 && ($game->planet['building_6']<5 || $game->planet['building_7']<1))  || ($t==12 && ($game->planet['building_6']<1 || $game->planet['building_7']<1))) {}
 else
 {
-if ($game->planet['resource_1']>=GetBuildingPrice($t,0) && $game->planet['resource_2']>=GetBuildingPrice($t,1) && $game->planet['resource_3']>=GetBuildingPrice($t,2))
+if ($game->planet['resource_1']>=GetBuildingPrice($t,0) && $game->planet['resource_2']>=GetBuildingPrice($t,1) && $game->planet['resource_3']>=GetBuildingPrice($t,2) && $game->planet['planet_available_points']>=GetFuturePts($t))
 {
 $build_text='<a href="'.parse_link_ex('a=building&a2=start_build&id='.$t,LINK_CLICKID).'"><span style="color: green">'.constant($game->sprache("TEXT25")).' (~'.round(pow($game->planet['building_'.($t+1)]+1,1.5)-pow($game->planet['building_'.($t+1)],1.5)).' '.constant($game->sprache("TEXT26")).')</span></a>';
 if ($game->planet['building_'.($t+1)]>0) $build_text='<a href="'.parse_link_ex('a=building&a2=start_build&id='.$t,LINK_CLICKID).'"><span style="color: green">'.constant($game->sprache("TEXT27")).' '.($game->planet['building_'.($t+1)]+1).' (~'.round(pow($game->planet['building_'.($t+1)]+1,1.5)-pow($game->planet['building_'.($t+1)],1.5)).' '.constant($game->sprache("TEXT26")).')</span></a>';
