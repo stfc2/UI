@@ -44,8 +44,20 @@ $ship_components_locale=array(
              // Component Bioconvertitore MK III
              2=>array(
                     'name'=>'Bioconvertitore MK III',
-                    'description'=>'La versione definitiva del bioconvertitore &egrave; un componente insostituibile della Gor&acute;Taan, l&#146;orgoglio delle nostre navi, poich&eacute; fornisce un discreto contributo al nucleo di curvatura, oltre a sopperire al suo elevato fabbisogno energetico. Non vi &egrave; alcun dubbio che ci&ograve; ne giustifichi sia gli alti costi di produzione che uno spirito di abnegazione ampiamente diffuso.',
+                    'description'=>'Questa versione del bioconvertitore &egrave; un componente insostituibile della Gor&acute;Taan, l&#146;orgoglio delle nostre navi, poich&eacute; fornisce un discreto contributo al nucleo di curvatura, oltre a sopperire al suo elevato fabbisogno energetico. Non vi &egrave; alcun dubbio che ci&ograve; ne giustifichi sia gli alti costi di produzione che uno spirito di abnegazione ampiamente diffuso.',
             ), // Endof Component Bioconvertitore MK III
+
+            // Component Bioconvertitore MK IV
+             2=>array(
+                    'name'=>'Bioconvertitore MK IV',
+                    'description'=>'Prototipo di bioconvertitore &egrave; componente impiegabile sulle classi pi&ugrave; pesanti della flotta.',
+            ), // Endof Component Bioconvertitore MK IV
+
+            // Component Bioconvertitore MK V
+             3=>array(
+                    'name'=>'Bioconvertitore MK V',
+                    'description'=>'Questa versione viene realizzata per soddisfare la richiesta di potenza delle ammiraglie della flotta, le navi classe Gel&acute;Chak.',
+            ), // Endof Component Bioconvertitore MK V
 
       'name'=>'Bioconvertitore',
       ), // Endof Category Convertitore
@@ -117,8 +129,31 @@ $ship_components_locale=array(
       ), // Endof Category Ponte armi II
 
 
-        // Category Scafo/Scudo
+        // Category Scafo
         4=>array(
+             // Component Corazza organica MK I
+             0=>array(
+                    'name'=>'Corazza organica MK I',
+                    'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
+            ), // Endof Component Corazza organica MK I
+
+             // Component Corazza organica MK II
+              1=>array(
+                    'name'=>'Corazza organica MK II',
+                    'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
+            ), // Endof Component Corazza organica MK II
+
+             // Component Corazza organica MK III
+              2=>array(
+                    'name'=>'Corazza organica MK III',
+                    'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
+            ), // Endof Component Corazza organica MK III
+
+      'name'=>'Scafo',
+      ), // Endof Category Scafo
+
+       // Category Scudo
+        5=>array(
              // Component Scudo
              0=>array(
                     'name'=>'Scudo',
@@ -137,30 +172,30 @@ $ship_components_locale=array(
                     'description'=>'Gli scudi quantici sono uno sviluppo della tecnologia degli scudi tradizionali, qui barriere di energia quantica vengono deflesse dallo scafo della nave per prevenire l&#146;attraversamento del campo difensivo.',
             ), // Endof Component Scudo quantico
 
-             // Component Corazza organica MK I
+			// Component Scudo
              3=>array(
-                    'name'=>'Corazza organica MK I',
-                    'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
-            ), // Endof Component Corazza organica MK I
+                    'name'=>'Emettitore di campo stocastico Alfa',
+                    'description'=>'Questo sistema incrementa notevolmente la resa degli scudi quantici. Essendo un prototipo tuttavia, le sue prestazioni non sono ancora quelle sperate.',
+            ), // Endof Component Scudo
 
-             // Component Corazza organica MK II
-              4=>array(
-                    'name'=>'Corazza organica MK II',
-                    'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
-            ), // Endof Component Corazza organica MK II
+             // Component Scudo di fase
+             4=>array(
+                    'name'=>'Emettitore di campo stocastico Beta',
+                    'description'=>'Evoluzione progettuale della versione Alfa.',
+            ), // Endof Component Scudo di fase
 
-             // Component Corazza organica MK III
-              5=>array(
-                    'name'=>'Corazza organica MK III',
-                    'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
-            ), // Endof Component Corazza organica MK III
+             // Component Scudo quantico
+             5=>array(
+                    'name'=>'Emettitore di campo Zeta',
+                    'description'=>'Questa versione si avvicina al massimo risultato possibile per questa tecnologia. Tuttavia, questo modulo &egrave; impiegabile solo sulle navi ammiraglie della flotta.',
+            ), // Endof Component Scudo quantico
 
-      'name'=>'Scafo/Scudo',
-      ), // Endof Category Scafo/Scudo
+      'name'=>'Scudo',
+      ), // Endof Category Scudo
 
 
         // Category Sistema di elaborazione
-        5=>array(
+        6=>array(
              // Component Interfaccia Biogenetica MK I
              0=>array(
                     'name'=>'Interfaccia Biogenetica MK I',
@@ -185,12 +220,24 @@ $ship_components_locale=array(
                     'description'=>'Sistemi informatici estremamente avanzati e veloci disponibili per le navi ammiraglie.',
             ), // Endof Component Interfaccia Biogenetica MK IV
 
+             // Component Interfaccia Biogenetica MK IV
+             4=>array(
+                    'name'=>'Interfaccia Biogenetica MK V',
+                    'description'=>'Sistemi informatici estremamente avanzati e veloci disponibili per le navi ammiraglie.',
+            ), // Endof Component Interfaccia Biogenetica MK IV
+
+             // Component Interfaccia Biogenetica MK IV
+             5=>array(
+                    'name'=>'Interfaccia Biogenetica MK VI',
+                    'description'=>'Sistemi informatici estremamente avanzati e veloci disponibili per le navi ammiraglie.',
+            ), // Endof Component Interfaccia Biogenetica MK IV
+
       'name'=>'Sistema di elaborazione',
       ), // Endof Category Sistema di elaborazione
 
 
         // Category Trainingsraum
-        6=>array(
+        7=>array(
              // Component Kampfsimulator MKI
              0=>array(
                     'name'=>'Simulatore combattimento MKI',
@@ -224,7 +271,7 @@ $ship_components_locale=array(
 
 
         // Category Wissenschaftssektion
-        7=>array(
+        8=>array(
              // Component Fluider Torpedo
              0=>array(
                     'name'=>'Stazione sensori',
@@ -245,7 +292,13 @@ $ship_components_locale=array(
 
              // Component TiefenraumScaner
              3=>array(
-                    'name'=>'Scanner spazio profondo',
+                    'name'=>'Scanner spazio profondo I',
+                    'description'=>'Questi scanner per lo spazio profondo rappresentano la punta di diamante dei nostri sensori. Aumentano in maniera considerevole la quantit&agravel e l&#146;accuratenzza dei dati acquisiti anche a lunghe distanze.',
+            ), // Endof Component
+
+             // Component TiefenraumScaner
+             4=>array(
+                    'name'=>'Scanner spazio profondo II',
                     'description'=>'Questi scanner per lo spazio profondo rappresentano la punta di diamante dei nostri sensori. Aumentano in maniera considerevole la quantit&agravel e l&#146;accuratenzza dei dati acquisiti anche a lunghe distanze.',
             ), // Endof Component
 
@@ -254,7 +307,7 @@ $ship_components_locale=array(
 
 
         // Category  Experimentelles
-        8=>array(
+        9=>array(
              // Component Energieschild
              0=>array(
                     'name'=>'Scudo energetico',
