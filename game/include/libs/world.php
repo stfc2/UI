@@ -154,6 +154,173 @@ function create_system($id_type, $id_value, $is_mother) {
 function create_planet($user_id, $id_type, $id_value) {
     global $db, $game, $PLANETS_DATA;
 
+    // Planet raw materials production according to its type
+    $planet_templates = array(
+        'bbb' => array(-0.25, -0.25, -0.25), // max penalty -0.25 to all ress
+        'bnb' => array(-0.25,     0, -0.25), // metall and latinum penalty
+        'nbb' => array(    0, -0.25, -0.25), // mineral and latinum penalty
+        'bbn' => array(-0.25, -0.25,     0), // metall and mineral penalty
+        'nnb' => array(    0,     0, -0.25),
+        'nbn' => array(    0, -0.25,     0),
+        'bnn' => array(-0.25,     0,     0),
+        'nnn' => array(    0,     0,     0), // neutral
+        'gnn' => array( 0.25,     0,     0),
+        'ngn' => array(    0,  0.25,     0),
+        'nng' => array(    0,     0,  0.25),
+        'ggn' => array( 0.25,  0.25,     0), // bonus to metal and mineral
+        'ngg' => array(    0,  0.25,  0.25), // bonus to mineral and latinum
+        'gng' => array( 0.25,     0,  0.25), // bonus to metal and latinum
+        'ggg' => array( 0.25,  0.25,  0.25)  // max bonsu 0.25 to all ress
+    );
+
+    // Planet type probability according to its orbit
+    $planet_type_probabilities = array(
+        // Orbil level 0
+        0 => array(
+            'a' => 1,
+            'b' => 1,
+            'c' => 7,
+            'd' => 11,
+            'e' => 1,
+            'f' => 1,
+            'h' => 60,
+            'k' => 7,
+            'g' => 3,
+            'i' => 2,
+            'j' => 1,
+            'l' => 1,
+            'm' => 1,
+            'n' => 1,
+            'y' => 2,
+        ),
+        // Orbit level 1
+        1 => array(
+            'a' => 1,
+            'b' => 1,
+            'c' => 19,
+            'd' => 11,
+            'e' => 1,
+            'f' => 1,
+            'h' => 35,
+            'k' => 18,
+            'g' => 5,
+            'i' => 2,
+            'j' => 1,
+            'l' => 1,
+            'm' => 1,
+            'n' => 1,
+            'y' => 2,
+        ),
+        // Orbit level 2
+        2 => array(
+            'a' => 1,
+            'b' => 1,
+            'c' => 13,
+            'd' => 7,
+            'e' => 14,
+            'f' => 14,
+            'h' => 5,
+            'k' => 9,
+            'g' => 18,
+            'i' => 1,
+            'j' => 1,
+            'l' => 1,
+            'm' => 7,
+            'n' => 6,
+            'y' => 2,
+        ),
+        // Orbit level 3
+        3 => array(
+            'a' => 1,
+            'b' => 1,
+            'c' => 10,
+            'd' => 7,
+            'e' => 18,
+            'f' => 16,
+            'h' => 5,
+            'k' => 9,
+            'g' => 15,
+            'i' => 1,
+            'j' => 1,
+            'l' => 1,
+            'm' => 6,
+            'n' => 7,
+            'y' => 2,
+        ),
+        // Orbit level 4
+        4 => array(
+            'a' => 4,
+            'b' => 6,
+            'c' => 5,
+            'd' => 11,
+            'e' => 18,
+            'f' => 10,
+            'h' => 1,
+            'k' => 16,
+            'g' => 6,
+            'i' => 5,
+            'j' => 4,
+            'l' => 9,
+            'm' => 2,
+            'n' => 1,
+            'y' => 2,
+        ),
+        // Orbit level 5
+        5 => array(
+            'a' => 33,
+            'b' => 6,
+            'c' => 3,
+            'd' => 5,
+            'e' => 1,
+            'f' => 1,
+            'h' => 1,
+            'k' => 3,
+            'g' => 1,
+            'i' => 15,
+            'j' => 7,
+            'l' => 20,
+            'm' => 1,
+            'n' => 1,
+            'y' => 2,
+        ),
+        // Orbit level 6
+        6 => array(
+            'a' => 20,
+            'b' => 10,
+            'c' => 3,
+            'd' => 5,
+            'e' => 1,
+            'f' => 1,
+            'h' => 1,
+            'k' => 3,
+            'g' => 1,
+            'i' => 20,
+            'j' => 7,
+            'l' => 24,
+            'm' => 1,
+            'n' => 1,
+            'y' => 2,
+        ),
+        // Orbit level 7
+        7 => array(
+            'a' => 15,
+            'b' => 10,
+            'c' => 3,
+            'd' => 9,
+            'e' => 1,
+            'f' => 1,
+            'h' => 1,
+            'k' => 1,
+            'g' => 1,
+            'i' => 15,
+            'j' => 9,
+            'l' => 30,
+            'm' => 1,
+            'n' => 1,
+            'y' => 2,
+        )
+    );
+
     $system_id = $sector_id = 0;
 
     switch($id_type) {
@@ -326,38 +493,9 @@ function create_planet($user_id, $id_type, $id_value) {
     // Create!
 
     if(!$user_id) {
-        $type_probabilities = array(
-            // a lot of metal, little minerals, little dilithium (15%)
-            'a' => 7,  // 3.0  0.1  0.8  0.1
-            'b' => 8,  // 3.0  0.1  0.8  0.1
-
-            // medium metals, minerals, dilithium (60%)
-            'c' => 10,  // 1.0  1.0  1.0  0.6
-            'd' => 12,  // 1.0  1.0  1.0  0.5
-            'e' => 8,   // 1.0  1.0  1.0  0.7
-            'f' => 6,   // 1.0  1.0  1.0  0.8
-            'h' => 13,  // 1.0  1.0  1.0  0.5
-            'k' => 11,  // 1.0  1.0  1.0  0.4
-
-            // a lot of metal, medium minerals, medium dilithium (10%)
-            'g' => 10, // 1.5  1.0  1.0  0.8
-
-            // little metal, lots of minerals, much dilithium (5%)
-            'i' => 5,  // 0.3  1.6  1.6  0.5
-
-            // little metal, a lot of minerals, little dilithium (5%)
-            'j' => 2,  // 0.3  2.0  0.4  0.6
-            'l' => 3,  // 0.4  1.9  0.5  0.7
-
-            // M/N/Y (5%)
-            'm' => 1,  // 1.0  1.0  1.0  1.0
-            'n' => 1,  // 0.95 0.95 0.95 1.1
-            'y' => 3,  // 2.5  2.5  2.5  0.2
-        );
-
         $type_array = array();
 
-        foreach($type_probabilities as $type => $probability) {
+        foreach($planet_type_probabilities[$planet_distance_id] as $type => $probability) {
             for($i = 0; $i < $probability; ++$i) {
                 $type_array[] = $type;
             }
@@ -365,12 +503,40 @@ function create_planet($user_id, $id_type, $id_value) {
 
         $planet_type = $type_array[array_rand($type_array)];
 
+        $type_probabilities = array(
+            'bbb' => 1,
+            'bbn' => 3,
+            'bnb' => 3,
+            'nbb' => 3,
+            'bnn' => 5,
+            'nbn' => 5,
+            'nnb' => 5,
+            'nnn' => 50,
+            'gnn' => 5,
+            'ngn' => 5,
+            'nng' => 5,
+            'ggn' => 3,
+            'ngg' => 3,
+            'gng' => 3,
+            'ggg' => 1, 
+        );
+
+        $template_array = array();
+
+        foreach($type_probabilities as $type => $probability) {
+            for($i = 0; $i < $probability; ++$i) {
+                $template_array[] = $type;
+            }
+        }
+
+        $planet_template = $template_array[array_rand($template_array)];
+
         // Random variance of the constants basis of the planet
-        $rateo_1 = round(($PLANETS_DATA[$planet_type][0] + ((400 - mt_rand(0, 800))*0.001)), 2);
+        $rateo_1 = round(($PLANETS_DATA[$planet_type][0] + $planet_templates[$planet_template][0]), 2);
         if($rateo_1 < 0.1) $rateo_1 = 0.1;
-        $rateo_2 = round(($PLANETS_DATA[$planet_type][1] + ((350 - mt_rand(0, 700))*0.001)), 2);
+        $rateo_2 = round(($PLANETS_DATA[$planet_type][1] + $planet_templates[$planet_template][1]), 2);
         if($rateo_2 < 0.1) $rateo_2 = 0.1;
-        $rateo_3 = round(($PLANETS_DATA[$planet_type][2] + ((300 - mt_rand(0, 600))*0.001)), 2);
+        $rateo_3 = round(($PLANETS_DATA[$planet_type][2] + $planet_templates[$planet_template][2]), 2);
         if($rateo_3 < 0.1) $rateo_3 = 0.1;
         $rateo_4 = $PLANETS_DATA[$planet_type][3];
 
