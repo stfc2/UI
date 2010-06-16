@@ -254,8 +254,8 @@ if(isset($_GET['pfleet_details'])) {
 
     while($s_ship = $db->fetchrow($q_ships)) {
         /* 07/04/08 - AC: If present, show also ship's name */
-        //$ships_option_html .= '<option id="'.($s_ship['max_hitpoints']-$s_ship['hitpoints']).'" value="'.$s_ship['ship_id'].'">'.$s_ship['ship_name'].' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Exp: '.$s_ship['experience'].')</option>';
-        $ships_option_html .= '<option id="'.($s_ship['max_hitpoints']-$s_ship['hitpoints']).'" value="'.$s_ship['ship_id'].'">'.(($s_ship['ship_name'] != '')? $s_ship['ship_name'].' - '.$s_ship['template_name'] : $s_ship['template_name']).' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Exp: '.$s_ship['experience'].')</option>';
+        $new_id = $s_ship['max_hitpoints']-$s_ship['hitpoints'] + (($s_ship['ship_torso'] > 4 && $s_ship['torp'] == 0) ? 100000 : 0);
+        $ships_option_html .= '<option id="'.$new_id.'" value="'.$s_ship['ship_id'].'">'.(($s_ship['ship_name'] != '')? $s_ship['ship_name'].' - '.$s_ship['template_name'] : $s_ship['template_name']).' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Torp: '.($s_ship['ship_torso'] < 5 ? 'n/a' : $s_ship['torp']).', Exp: '.$s_ship['experience'].')</option>';
 
         if($s_ship['ship_torso'] == SHIP_TYPE_TRANSPORTER) $n_transporter++;
 
@@ -323,7 +323,7 @@ if(isset($_GET['pfleet_details'])) {
         $max_resources = $n_transporter * MAX_TRANSPORT_RESOURCES;
         $max_units = $n_transporter * MAX_TRANSPORT_UNITS;
 
-        if( ($n_resources < $max_resources) || ($n_units < $max_resources) ) $game->out('[<a href="'.parse_link('a=ship_fleets_loadingp&from='.$fleet_id).'">'.constant($game->sprache("TEXT19")).'</a>]&nbsp;');
+        if( ($n_resources < $max_resources) || ($n_units < $max_units) ) $game->out('[<a href="'.parse_link('a=ship_fleets_loadingp&from='.$fleet_id).'">'.constant($game->sprache("TEXT19")).'</a>]&nbsp;');
         if( ($n_resources > 0) || ($n_units > 0) ) $game->out('[<a href="'.parse_link('a=ship_fleets_loadingp&to='.$fleet_id).'">'.constant($game->sprache("TEXT20")).'</a>]');
 
         $game->out('<br>');
@@ -357,17 +357,22 @@ function ShipSelection(cSelectType) {
 	  
       if (cSelectType == "All") {
          objShipListBox.options[i].selected = true;
-	  } else if (cSelectType == "Damaged") {
-	     if (objShipListBox.options[i].id > 0) {
+      } else if (cSelectType == "Damaged") {
+         if ((objShipListBox.options[i].id > 0) && (objShipListBox.options[i].id < 100000)) {
             objShipListBox.options[i].selected = true;
-		 } else {
+         } else {
             objShipListBox.options[i].selected = false;
-	     }
-	  } else if (cSelectType == "None") {
+         }
+      } else if (cSelectType == "None") {
          objShipListBox.options[i].selected = false;
-	  }
+      } else if (cSelectType == "Depleted") {
+         if (objShipListBox.options[i].id > 99999) {
+            objShipListBox.options[i].selected = true;
+         } else {
+            objShipListBox.options[i].selected = false;
+         }
+      }
    }
-     
 }
 //--></SCRIPT>
       <br>
@@ -382,17 +387,22 @@ function ShipSelection(cSelectType) {
 		<center><b>'.constant($game->sprache("TEXT26")).'</b></center>
 		 <table height="115" border="0" cellpadding="2" cellspacing="0">
 		  <tr valign="middle">
-		   <td height=33%>
+		   <td height=25%>
 		    <input class="button" style="width: 90px;" type="button" name="select_all" value="'.constant($game->sprache("TEXT27")).'" onClick="ShipSelection(\'All\')">
 		   </td>
 		  </tr>
 		  <tr valign="middle">
-		   <td height=33%>
+		   <td height=25%>
 		    <input class="button" style="width: 90px;" type="button" name="select_damaged" value="'.constant($game->sprache("TEXT28")).'" onClick="ShipSelection(\'Damaged\')">
 		   </td>
 		  </tr>
 		  <tr valign="middle">
-		   <td height=33%>
+		   <td height=25%>
+		    <input class="button" style="width: 90px;" type="button" name="select_depleted" value="'.constant($game->sprache("TEXT78")).'" onClick="ShipSelection(\'Depleted\')">
+		   </td>
+		  </tr>
+		  <tr valign="middle">
+		   <td height=25%>
 		    <input class="button" style="width: 90px;" type="button" name="select_none" value="'.constant($game->sprache("TEXT29")).'" onClick="ShipSelection(\'None\')">
 		   </td>
 		  </tr>
@@ -616,7 +626,7 @@ elseif(isset($_GET['mfleet_details'])) {
     while($s_ship = $db->fetchrow($q_ships)) {
         /* 07/04/08 - AC: If present, show also ship's name */
         //$ships_option_html .= '<option value="'.$s_ship['ship_id'].'">'.$s_ship['ship_name'].' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Exp: '.$s_ship['experience'].')</option>';
-        $ships_option_html .= '<option value="'.$s_ship['ship_id'].'">'.(($s_ship['ship_name'] != '')? $s_ship['ship_name'].' - '.$s_ship['template_name'] : $s_ship['template_name']).' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Exp: '.$s_ship['experience'].')</option>';
+        $ships_option_html .= '<option value="'.$s_ship['ship_id'].'">'.(($s_ship['ship_name'] != '')? $s_ship['ship_name'].' - '.$s_ship['template_name'] : $s_ship['template_name']).' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Torp: '.($s_ship['ship_torso'] < 5 ? 'n/a' : $s_ship['torp']).', Exp: '.$s_ship['experience'].')</option>';
         if($s_ship['ship_torso'] == SHIP_TYPE_TRANSPORTER) $n_transporter++;
 
         $n_ships++;
