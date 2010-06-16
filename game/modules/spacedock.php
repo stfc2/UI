@@ -1425,11 +1425,8 @@ elseif(!empty($_POST['new_fleet'])) {
 
 
     $sql = 'UPDATE ships
-
-			SET fleet_id = '.$new_fleet_id.',
-			    last_refit_time = '.$game->TIME.',
-			    next_refit = '.($ACTUAL_TICK+NEXT_REFIT_TICK).'
-			WHERE ship_id IN ('.implode(',', $ship_ids).') AND ship_untouchable=0 AND fleet_id<0';
+            SET fleet_id = '.$new_fleet_id.',
+            WHERE ship_id IN ('.implode(',', $ship_ids).') AND ship_untouchable=0 AND fleet_id<0';
 
 
 
@@ -1603,11 +1600,7 @@ elseif(!empty($_POST['change_fleet'])) {
 
 
 
-    $sql = 'UPDATE ships
-
-            SET fleet_id = '.$new_fleet_id.',
-			    last_refit_time = '.$game->TIME.',
-			    next_refit = '.($ACTUAL_TICK+NEXT_REFIT_TICK).'
+    $sql = 'UPDATE ships SET fleet_id = '.$new_fleet_id.'
             WHERE ship_id IN ('.implode(',', $ship_ids).') AND ship_untouchable=0';
 
 
@@ -1626,11 +1619,8 @@ elseif(!empty($_POST['change_fleet'])) {
 
 
 
-    $sql = 'UPDATE ship_fleets
-
-			SET n_ships = n_ships + '.$n_ships.'
-
-			WHERE fleet_id = '.$new_fleet_id;
+    $sql = 'UPDATE ship_fleets SET n_ships = n_ships + '.$n_ships.'
+            WHERE fleet_id = '.$new_fleet_id;
 
 
 
@@ -1661,10 +1651,7 @@ elseif(!empty($_POST['rename_ship'])) {
 
 	$ship_id = (int)$_POST['ships'][0];
 
-	$sql = 'UPDATE ships
-
-	        SET ship_name = "'.$new_ship_name.'"
-
+	$sql = 'UPDATE ships SET ship_name = "'.$new_ship_name.'"
 	        WHERE ship_id = '.$ship_id;
 
 	if(!$db->query($sql)) {
@@ -1689,10 +1676,7 @@ elseif(!empty($_POST['change_ship_ncc'])) {
 
 	$ship_id = (int)$_POST['ships'][0];
 
-	$sql = 'UPDATE ships
-
-	        SET ship_ncc = "'.$new_ship_ncc.'"
-
+	$sql = 'UPDATE ships SET ship_ncc = "'.$new_ship_ncc.'"
 	        WHERE ship_id = '.$ship_id;
 
 	if(!$db->query($sql)) {
