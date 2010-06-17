@@ -1982,24 +1982,24 @@ $ship_components_locale=array(
 	2=>array(
 		// Component Polaronstrahler
 		0=>array(
-			'name'=>'Emettitore polaronico',
+			'name'=>'Emettitore polaronico Liv.1',
 			'description'=>'Tecnologia di base per le armi del Dominio.',
 			'dev_info'=>'',
 		), // Endof Component Polaronstrahler
 
 		// Component Polaronstrahl
 		1=>array(
-			'name'=>'Concentratore polaronico',
+			'name'=>'Emettitore polaronico Liv.2',
 			'description'=>'Perfezionamento della tecnologia polaronica che ne aumenta notevolmente la capacit&agrave; distruttiva. Questa tecnologia rappresenta il meglio impiegabile su navi civili.',
 			'dev_info'=>'',
 		), // Endof Component Polaronstrahl
 
-		// Component Impulspoleronkannone
+		// Component Polaronstrahl
 		2=>array(
-			'name'=>'Impulsi polaronici liv. 1',
-			'description'=>'La tecnologia degli Impulsi Polaronici permette la creazione di un cannone basato sull&#146;impiego delle onde polaroniche.',
+			'name'=>'Emettitore Polaronico Liv.3',
+			'description'=>'Ultimo step evolutivo della tecnologia polaronica di base.',
 			'dev_info'=>'',
-		), // Endof Component Impulspoleronkannone
+		), // Endof Component Polaronstrahl
 
 		// Component Massebeschleuniger
 		3=>array(
@@ -2008,50 +2008,71 @@ $ship_components_locale=array(
 			'dev_info'=>'',
 		), // Endof Component Massebeschleuniger
 
-		// Component Impulspolarondisruptor
+		// Component Impulspoleronkannone
 		4=>array(
+			'name'=>'Impulsi polaronici liv. 1',
+			'description'=>'La tecnologia degli Impulsi Polaronici permette la creazione di un cannone basato sull&#146;impiego delle onde polaroniche.',
+			'dev_info'=>'',
+		), // Endof Component Impulspoleronkannone
+
+		// Component Impulspolarondisruptor
+		5=>array(
 			'name'=>'Impulsi polaronici liv. 2',
 			'description'=>'Il top della tecnologia polaronica del Dominio permette la realizzazione di un disgregatore impiegabile sulle maggiori navi della flotta. La sua potenza &egrave; incomparabile rispetto ai sistemi d&#146;arma precedenti.',
 			'dev_info'=>'',
 		), // Endof Component Impulspolarondisruptor
 
 		'name'=>'Armi energetiche',
-		'num'=>'5',
+		'num'=>'6',
 	), // Endof Category Strahlenwaffen
 
 
 	// Category Torpedos
 	3=>array(
-		// Component Polarontorpedos
-		0=>array(
-			'name'=>'Siluri polaronici',
-			'description'=>'I siluri polaronici sono l&#146;armamento pesante di base per le navi del Dominio in uso anche su navi civili come sistemi di autodifesa.',
-			'dev_info'=>'',
-		), // Endof Component Polarontorpedos
-
 		// Component Photonentorpedos
-		1=>array(
-			'name'=>'Siluri fotonici',
+		0=>array(
+			'name'=>'Siluri Fotonici',
 			'description'=>'I siluri fotonici sono un tipo di armamento basato su una tecnologia standard delle razze del quadrante Alfa.',
 			'dev_info'=>'',
 		), // Endof Component Photonentorpedos
 
 		// Component Quantentorpedos
-		2=>array(
-			'name'=>'Siluri quantici',
-			'description'=>'I Siluri Quantici sono una tecnologia peculiare del Dominio, di enorme potenza ed efficacia.',
+		1=>array(
+			'name'=>'Siluri Quantici',
+			'description'=>'I Siluri Quantici sono una tecnologia proveniente dalle razze del Quadrante Alfa, di enorme potenza ed efficacia.',
 			'dev_info'=>'',
 		), // Endof Component Quantentorpedos
 
-		// Component Breentorpedos
+		// Component Sovramodulazione Liv. 1
+		2=>array(
+			'name'=>'Sovramodulazione Liv. 1',
+			'description'=>'La Sovramodulazione degli Emettitori Polaronici ne migliora la resa al costo di un modesto consumo di energia e di necessit&agrave; di manutenzione.',
+			'dev_info'=>'',
+		), // Endof Component Sovramodulazione Liv.1
+
+		// Component Sovramodulazione Liv. 2
 		3=>array(
+			'name'=>'Sovramodulazione Liv. 2',
+			'description'=>'La Sovramodulazione degli Emettitori Polaronici ne migliora la resa al costo di un modesto consumo di energia e di necessit&agrave; di manutenzione.',
+			'dev_info'=>'',
+		), // Endof Component Sovramodulazione Liv.2
+
+		// Component Sovramodulazione Liv. 3
+		4=>array(
+			'name'=>'Sovramodulazione Liv. 3',
+			'description'=>'La Sovramodulazione degli Emettitori Polaronici ne migliora la resa al costo di un modesto consumo di energia e di necessit&agrave; di manutenzione.',
+			'dev_info'=>'',
+		), // Endof Component Sovramodulazione Liv.3
+
+		// Component Breentorpedos
+		5=>array(
 			'name'=>'Siluri Breen',
 			'description'=>'I siluri Breen sono armi molto potenti, ottenuti grazie ad uno scambio di tecnologia con gli scenziati Breen.',
 			'dev_info'=>'',
 		), // Endof Component Breentorpedos
 
-		'name'=>'Siluri',
-		'num'=>'4',
+		'name'=>'Servosistemi d&#146;arma',
+		'num'=>'6',
 	), // Endof Category Torpedos
 
 
@@ -2150,48 +2171,69 @@ $ship_components_locale=array(
 	6=>array(
 		// Component Kampfzentrum I
 		0=>array(
-			'name'=>'Centro addestramento I',
-			'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+			'name'=>'Addestramento Civili',
+			'description'=>'Addestramento per equipaggi destinati alle navi civili.',
 			'dev_info'=>'',
 		), // Endof Component Kampfzentrum I
 
 		// Component Kampfzentrum II
 		1=>array(
-			'name'=>'Centro addestramento II',
-			'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+			'name'=>'Addestramento Base I',
+			'description'=>'Addestramento base per equipaggi destinati alle navi leggere della flotta.',
 			'dev_info'=>'',
 		), // Endof Component Kampfzentrum II
 
 		// Component Kampfzentrum III
 		2=>array(
-			'name'=>'Centro addestramento III',
-			'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+			'name'=>'Addestramento Base II',
+			'description'=>'Addestramento base per equipaggi destinati alle navi intermedie della flotta.',
 			'dev_info'=>'',
 		), // Endof Component Kampfzentrum III
 
 		// Component Kampfzentrum IV
 		3=>array(
-			'name'=>'Centro addestramento IV',
-			'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+			'name'=>'Addestramento Base III',
+			'description'=>'Addestramento base per equipaggi destinati alle navi pesanti della flotta.',
 			'dev_info'=>'',
 		), // Endof Component Kampfzentrum IV
 
 		// Component Kampfzentrum V
 		4=>array(
-			'name'=>'Centro addestramento V',
-			'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+			'name'=>'Addestramento Intermedio I',
+			'description'=>'Addestramento intermedio per equipaggi destinati alle navi leggere della flotta.',
 			'dev_info'=>'',
 		), // Endof Component Kampfzentrum V
 
 		// Component Kampfzentrum VI
-		5=>array(
-			'name'=>'Centro addestramento VI',
-			'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
+		3=>array(
+			'name'=>'Addestramento Intermedio II',
+			'description'=>'Addestramento intermedio per equipaggi destinati alle navi pesanti della flotta.',
 			'dev_info'=>'',
 		), // Endof Component Kampfzentrum VI
 
+		// Component Kampfzentrum VII
+		6=>array(
+			'name'=>'Addestramento Avanzato I',
+			'description'=>'Addestramento avanzato per equipaggi destinati alle navi leggere della flotta.',
+			'dev_info'=>'',
+		), // Endof Component Kampfzentrum VII
+
+		// Component Kampfzentrum VIII
+		7=>array(
+			'name'=>'Addestramento Avanzato II',
+			'description'=>'Addestramento avanzato per equipaggi destinati alle navi pesanti della flotta.',
+			'dev_info'=>'',
+		), // Endof Component Kampfzentrum VII
+
+		// Component Kampfzentrum IX
+		8=>array(
+			'name'=>'Addestramento Elite',
+			'description'=>'Livello di addestramento massimo disponibile per ottenere i migliori Jem&#146;Hadar destinati a governare le navi del Dominion.',
+			'dev_info'=>'',
+		), // Endof Component Kampfzentrum IX
+
 		'name'=>'Zone addestramento',
-		'num'=>'6',
+		'num'=>'9',
 	), // Endof Category Trainingseinheiten
 
 
@@ -2859,11 +2901,26 @@ $ship_components_locale=array(
 		// Component Bio-Konverter MK III
 		2=>array(
 			'name'=>'Bioconvertitore MK III',
-			'description'=>'La versione definitiva del bioconvertitore &egrave; un componente insostituibile della Gor&acute;Taan, l&#146;orgoglio delle nostre navi, poich&eacute; fornisce un discreto contributo al nucleo di curvatura, oltre a sopperire al suo elevato fabbisogno energetico. Non vi &egrave; alcun dubbio che ci&ograve; ne giustifichi sia gli alti costi di produzione che uno spirito di abnegazione ampiamente diffuso.',
+			'description'=>'Questa versione del bioconvertitore &egrave; un componente insostituibile della Gor&acute;Taan, l&#146;orgoglio delle nostre navi, poich&eacute; fornisce un discreto contributo al nucleo di curvatura, oltre a sopperire al suo elevato fabbisogno energetico. Non vi &egrave; alcun dubbio che ci&ograve; ne giustifichi sia gli alti costi di produzione che uno spirito di abnegazione ampiamente diffuso.',
 			'dev_info'=>'',
 		), // Endof Component Bio-Konverter MK III
+
+		// Component Bio-Konverter MK IV
+		3=>array(
+			'name'=>'Bioconvertitore MK IV',
+			'description'=>'Prototipo di bioconvertitore &egrave; componente impiegabile sulle classi pi&ugrave; pesanti della flotta.',
+			'dev_info'=>'',
+		), // Endof Component Bio-Konverter MK IV
+
+		// Component Bio-Konverter MK V
+		4=>array(
+			'name'=>'Bioconvertitore MK V',
+			'description'=>'Questa versione viene realizzata per soddisfare la richiesta di potenza delle ammiraglie della flotta, le navi classe Gel&acute;Chak.',
+			'dev_info'=>'',
+		), // Endof Component Bio-Konverter MK V
+
 		'name'=>'Bioconvertitore',
-		'num'=>'3',
+		'num'=>'5',
 	), // Endof Category Waffen
 
 
@@ -2944,50 +3001,81 @@ $ship_components_locale=array(
 	), // Endof Category Weapons deck II
 
 
-	// Category Hull/Shield
+	// Category Hull
 	4=>array(
-		// Component Shield
+		// Component Corazza organica MK I
+		0=>array(
+			'name'=>'Corazza organica MK I',
+			'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
+			'dev_info'=>'',
+		), // Endof Component Corazza organica MK I
+
+		// Component Corazza organica MK II
+		1=>array(
+			'name'=>'Corazza organica MK II',
+			'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
+			'dev_info'=>'',
+		), // Endof Component Corazza organica MK II
+
+		// Component Corazza organica MK III
+		2=>array(
+			'name'=>'Corazza organica MK III',
+			'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
+			'dev_info'=>'',
+		), // Endof Component Corazza organica MK III
+
+		'name'=>'Scafo',
+		'num'=>'3',
+	), // Endof Category Hull
+
+
+	// Category Shield
+	5=>array(
+		// Component Scudo
 		0=>array(
 			'name'=>'Scudo',
 			'description'=>'Questa &egrave; la forma pi&ugrave; semplice di protezione disponibile per le nostre navi da guerra, richiede costi minimi con risultati relativamente soddisfacenti.',
 			'dev_info'=>'',
-		), // Endof Component Fluidraum-Navigationssystem
+		), // Endof Component Scudo
 
-		// Component KSA
+		// Component Scudo di fase
 		1=>array(
 			'name'=>'Scudo fasico',
 			'description'=>'Gli scudi fasici sono progettati in modo tale da modulare le loro fasi e che vi siano sempre almeno 2 &acute;strati&acute; sovrapposti per evitare la penetrazione dei proiettili.',
 			'dev_info'=>'',
-		), // Endof Component KSA
+		), // Endof Component Scudo di fase
 
-		// Component Biomassenaustausch
+		// Component Scudo quantico
 		2=>array(
 			'name'=>'Scudo quantico',
 			'description'=>'Gli scudi quantici sono uno sviluppo della tecnologia degli scudi tradizionali, qui barriere di energia quantica vengono deflesse dallo scafo della nave per prevenire l&#146;attraversamento del campo difensivo.',
 			'dev_info'=>'',
-		), // Endof Component Biomassenaustausch
-		
+		), // Endof Component Scudo quantico
+
+		// Component Scudo
 		3=>array(
-			'name'=>'Corazza organica MK I',
-			'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
+			'name'=>'Emettitore di campo stocastico Alfa',
+			'description'=>'Questo sistema incrementa notevolmente la resa degli scudi quantici. Essendo un prototipo tuttavia, le sue prestazioni non sono ancora quelle sperate.',
 			'dev_info'=>'',
-		 ),
-			
-		 4=>array(
-			'name'=>'Corazza organica MK II',
-			'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
+		), // Endof Component Scudo
+
+		// Component Scudo di fase
+		4=>array(
+			'name'=>'Emettitore di campo stocastico Beta',
+			'description'=>'Evoluzione progettuale della versione Alfa.',
 			'dev_info'=>'',
-		 ),
-		 
-		 5=>array(
-			'name'=>'Corazza organica MK III',
-			'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
+		), // Endof Component Scudo di fase
+
+		// Component Scudo quantico
+		5=>array(
+			'name'=>'Emettitore di campo Zeta',
+			'description'=>'Questa versione si avvicina al massimo risultato possibile per questa tecnologia. Tuttavia, questo modulo &egrave; impiegabile solo sulle navi ammiraglie della flotta.',
 			'dev_info'=>'',
-		 ),
-			
-		'name'=>'Scafo/Scudo',
+		), // Endof Component Scudo quantico
+
+		'name'=>'Scudo',
 		'num'=>'6',
-	), // Endof Category Hull/Shield
+	), // Endof Category Scudo
 
 
 	// Category Computersystem
@@ -3013,14 +3101,29 @@ $ship_components_locale=array(
 			'dev_info'=>'',
 		), // Endof Component Erweiterte Schiffsdatenbank
 
-		 3=>array(
+		// Component Interfaccia Biogenetica MK IV
+		3=>array(
 			'name'=>'Interfaccia Biogenetica MK IV',
 			'description'=>'Sistemi informatici estremamente avanzati e veloci disponibili per le navi ammiraglie.',
 			'dev_info'=>'',
-		),
+		), // Endof Component Interfaccia Biogenetica MK IV
+
+		// Component Interfaccia Biogenetica MK IV
+		4=>array(
+			'name'=>'Interfaccia Biogenetica MK V',
+			'description'=>'Sistemi informatici estremamente avanzati e veloci disponibili per le navi ammiraglie.',
+			'dev_info'=>'',
+		), // Endof Component Interfaccia Biogenetica MK IV
+
+		// Component Interfaccia Biogenetica MK IV
+		5=>array(
+			'name'=>'Interfaccia Biogenetica MK VI',
+			'description'=>'Sistemi informatici estremamente avanzati e veloci disponibili per le navi ammiraglie.',
+			'dev_info'=>'',
+		), // Endof Component Interfaccia Biogenetica MK IV
 
 		'name'=>'Sistema di elaborazione',
-		'num'=>'4',
+		'num'=>'6',
 	), // Endof Category Informationstechnisches
 
 
@@ -3089,12 +3192,20 @@ $ship_components_locale=array(
 
 		// Component TiefenraumScaner
 		3=>array(
-			'name'=>'Scanner spazio profondo',
+			'name'=>'Scanner spazio profondo I',
 			'description'=>'Questi scanner per lo spazio profondo rappresentano la punta di diamante dei nostri sensori. Aumentano in maniera considerevole la quantit&agravel e l&#146;accuratenzza dei dati acquisiti anche a lunghe distanze.',
 			'dev_info'=>'',
 		), // Endof Component TiefenraumScaner
+
+		// Component TiefenraumScaner
+		4=>array(
+			'name'=>'Scanner spazio profondo II',
+			'description'=>'Questi scanner per lo spazio profondo rappresentano la punta di diamante dei nostri sensori. Aumentano in maniera considerevole la quantit&agravel e l&#146;accuratenzza dei dati acquisiti anche a lunghe distanze.',
+			'dev_info'=>'',
+		), // Endof Component TiefenraumScaner
+
 		'name'=>'Sezione scientifica',
-		'num'=>'4',
+		'num'=>'5',
 	), // Endof Category Schwere Waffen
 
 
