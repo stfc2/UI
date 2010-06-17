@@ -112,6 +112,10 @@ define ("GER_TEXT39", 'Logbuch Berichte deaktivieren');
 
 define ("GER_TEXT40", 'Sie sind nicht der Besitzer des Planeten zu starten!');
 
+define ("GER_TEXT41", 'Sie k&ouml;nnen nicht feststellen Handelsweg mit einem Ihrer sitter!');
+
+define ("GER_TEXT42", 'Sie k&ouml;nnen nicht feststellen Handelsweg mit einem Ihrer Sitzung!');
+
 
 //English
 
@@ -204,6 +208,10 @@ define ("ENG_TEXT38", 'Logbook report enabled');
 define ("ENG_TEXT39", 'Logbook report disabled');
 
 define ("ENG_TEXT40", 'You are not the owner of the start planet!');
+
+define ("ENG_TEXT41", 'You cannot establish a trade route with one of your sitter!');
+
+define ("ENG_TEXT42", 'You cannot establish a trade route with one of your sitting!');
 
 
 //Italiano
@@ -298,5 +306,8 @@ define ("ITA_TEXT39", 'Rapporti disabilitati');
 
 define ("ITA_TEXT40", 'Non sei il proprietario del pianeta di partenza!');
 
+define ("ITA_TEXT41", 'Non puoi stabilire una rotta commerciale con un tuo sitter!');
+
+define ("ITA_TEXT42", 'Non puoi stabilire una rotta commerciale con un tuo sittato!');
 
 ?>
