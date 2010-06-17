@@ -341,14 +341,14 @@ $style = 'style="border-bottom-color:A0A0A0; border-bottom-style:dotted; border-
 
 $game->out('
 		<tr>
-			<td '.$style.'>Punti Struttura Disponibili 
+			<td '.$style.'>'.constant($game->sprache("TEXT59")).'
 			</td>
 			<td align=center '.$style.'>
 			<b>('.$game->planet['planet_available_points'].')</b>
 			</td>
 		</tr>
 		<tr>
-			<td '.$style.'>Punti Struttura Impiegati
+			<td '.$style.'>'.constant($game->sprache("TEXT60")).'
 			</td>
 			<td align=center '.$style.'>
 			<b>('.$game->planet['planet_points'].')</b>
