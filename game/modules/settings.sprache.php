@@ -316,6 +316,10 @@ define ("GER_TEXT136", 'Avatar wurde gesetzt');
 
 define ("GER_TEXT137", 'Leer');
 
+define ("GER_TEXT138", 'Hier werden die <b>letzen 10 sitter</b> aufgelistet, von denen sich in deinen Account eingeloggt wurde. Bist du der Meinung, dein Account wurde gehackt so melde dich bitte bei einem Spieladmin.');
+
+define ("GER_TEXT139", 'Sitter name');
+
 //English
 
 define ("ENG_TEXT1", 'Error: the file uploaded was not image.');
@@ -612,6 +616,10 @@ define ("ENG_TEXT136", 'Avatar has been set');
 
 define ("ENG_TEXT137", 'Empty');
 
+define ("ENG_TEXT138", 'Here are listed the last 10 <b>sitter</b> which logged into your account. If you believe your account has been hacked sign up for a game Admin.');
+
+define ("ENG_TEXT139", 'Sitter name');
+
 //Italiano
 
 define ("ITA_TEXT1", 'Errore: il file caricato non  un%27immagine.');
@@ -732,7 +740,7 @@ define ("ITA_TEXT50f", 'settimana');
 
 define ("ITA_TEXT50g", 'settimane');
 
-define ("ITA_TEXT51", 'Con la cancellazione dell\'account, tutti i dati dell\'utente verranno eliminati dal database, ed i pianeti che possedeva fino ad allora risulteranno disabitati.<br><b>Il procedimento non &egrave; reversibile.</b><br><br><u>Dopo aver confermato il tuo intento inserendo la password riceverai un&#146;e-mail</u>.<br>Al suo interno troverai un collegamento che dovrai selezionare per completare la procedura di cancellazione. Questo deve essere fatto entro 3 ore dalla conferma, durante tale periodo <b>non</b> potrai loggare col tuo account. Se non avrai cliccato il collegamento entro le 3 ore, il tuo account verr&agrave; riattivato.');
+define ("ITA_TEXT51", 'Con la cancellazione dell\'account, tutti i dati dell\'utente verranno eliminati dal database, ed i pianeti posseduti fino a quel momento risulteranno disabitati.<br><b>Il procedimento non &egrave; reversibile.</b><br><br><u>Dopo aver confermato il tuo intento inserendo la password riceverai un&#146;e-mail</u>.<br>Al suo interno troverai un collegamento che dovrai selezionare per completare la procedura di cancellazione. Questo deve essere fatto entro 3 ore dalla conferma, durante tale periodo <b>non</b> potrai loggare col tuo account. Se non avrai cliccato il collegamento entro le 3 ore, il tuo account verr&agrave; riattivato.');
 
 define ("ITA_TEXT52", 'Password attuale:');
 
@@ -752,9 +760,9 @@ define ("ITA_TEXT59", '(dopo la modifica alla password &egrave; necessario ri-lo
 
 define ("ITA_TEXT60", 'Nome Login:');
 
-define ("ITA_TEXT61", 'Qui sono elencati tutti gli account che sono stati esclusi (perch&eacute dalla ricerca automatica risultavano con l\'IP in uso).<br>Momentaneamente la ricerca automatica &egrave disattivata e nessuno degli IP &egrave assegnato.<br><i>Gli account sono collegati, non $egrave possibile commerciare o trasferire navi e risorse.');
+define ("ITA_TEXT61", 'Qui sono elencati tutti gli account che sono stati esclusi (perch&egrave; dalla ricerca automatica risultavano con l&#146;IP in uso).<br>Momentaneamente la ricerca automatica &egrave; disattivata e nessuno degli IP &egrave; assegnato.<br><i>Gli account sono collegati, non &egrave; possibile commerciare o trasferire navi e risorse.');
 
-define ("ITA_TEXT62", 'Questo &egrave l\'elenco degli ultimi 10 <b>indirizzi IP</b> che hanno loggato il tuo account. Se credi che il tuo account sia stato utilizzato da qualcun altro a tua insaputa segnalalo subito ad un Admin.');
+define ("ITA_TEXT62", 'Questo &egrave l\'elenco degli ultimi 10 <b>indirizzi IP</b> che hanno loggato il tuo account.<br>Se credi che il tuo account sia stato utilizzato da qualcun altro a tua insaputa segnalalo subito ad un Admin.');
 
 define ("ITA_TEXT62a", 'Data / Ora');
 
@@ -907,5 +915,9 @@ define ("ITA_TEXT135", 'Modifica avatar fallita');
 define ("ITA_TEXT136", 'L%27avatar %E8 stato configurato correttamente');
 
 define ("ITA_TEXT137", 'Vuoto');
+
+define ("ITA_TEXT138", 'Questo &egrave l&#146;elenco degli ultimi 10 <b>sitter</b> che hanno loggato il tuo account.<br>Se credi che il tuo account sia stato utilizzato da qualcun altro a tua insaputa segnalalo subito ad un Admin.');
+
+define ("ITA_TEXT139", 'Nome sitter');
 
 ?>

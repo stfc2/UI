@@ -631,7 +631,7 @@ function display_iplog($message = '') {
       <table border="0" cellpadding="0" cellspacing="4" class="style_inner" width="400">
 
       <tr>
-        <td width="200">'.constant($game->sprache("TEXT62")).'</td>
+        <td>'.constant($game->sprache("TEXT62")).'</td>
       <tr>
 
       <tr>
@@ -640,9 +640,9 @@ function display_iplog($message = '') {
 
       <tr>
 
-       <td align="center"><table border="0" cellpadding="0" cellspacing="0" width="200">
+        <td align="center"><table border="0" cellpadding="1" cellspacing="1" width="250">
 
-      <tr><td ><b>'.constant($game->sprache("TEXT62a")).'</b></td><td><b>'.constant($game->sprache("TEXT63")).'</b></td></tr>
+        <tr><td width="125"><b>'.constant($game->sprache("TEXT62a")).'</b></td><td width="125"><b>'.constant($game->sprache("TEXT63")).'</b></td></tr>
 
       ');
 
@@ -656,12 +656,43 @@ function display_iplog($message = '') {
             
       }
 
-    
     $game->out('
 
-    </table>
+        </table></td>
+      </tr>
 
-    <td></tr>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+
+      <tr>
+        <td>'.constant($game->sprache("TEXT138")).'</td>
+      <tr>
+
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+
+      <tr>
+
+        <td align="center"><table border="0" cellpadding="1" cellspacing="1" width="250">
+
+        <tr><td width="125"><b>'.constant($game->sprache("TEXT62a")).'</b></td><td width="125"><b>'.constant($game->sprache("TEXT139")).'</b></td></tr>
+
+      ');
+
+
+
+      $qry=$db->query('SELECT l.time,u.user_name AS sitter FROM (user_sitter_iplog l) LEFT JOIN (user u) ON u.user_id = l.sitter_id WHERE l.user_id='.$game->player['user_id'].' ORDER BY time DESC LIMIT 10');
+
+      while($iplog = $db->fetchrow($qry)) {
+          $game->out('<tr><td>'.date('d.m.y H:i', $iplog['time']).'</td><td>'.$iplog['sitter'].'</td></tr>');
+      }
+
+
+    $game->out('
+        </table><td>
+      </tr>
 
       <tr>
         <td>&nbsp;</td>
