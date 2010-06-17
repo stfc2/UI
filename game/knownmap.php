@@ -161,13 +161,15 @@ if (($handle = @fopen ($image_url, "rb"))!=true)
 		$known_systems[$system['system_id']]=$system;
 
 	// Select systems of alliance's members
-	$sql = 'SELECT pl.system_id FROM (planets pl)
-	               LEFT JOIN (user u) ON pl.planet_owner = u.user_id
-	        WHERE u.user_alliance = '.$game->player['user_alliance'].'
-	        GROUP BY pl.system_id';
-	$systems = $db->query($sql);
-	while($system = $db->fetchrow($systems))
-		$allied_systems[$system['system_id']]=$system;
+	if($game->player['user_alliance'] != 0) {
+		$sql = 'SELECT pl.system_id FROM (planets pl)
+		               LEFT JOIN (user u) ON pl.planet_owner = u.user_id
+		        WHERE u.user_alliance = '.$game->player['user_alliance'].'
+		        GROUP BY pl.system_id';
+		$systems = $db->query($sql);
+		while($system = $db->fetchrow($systems))
+			$allied_systems[$system['system_id']]=$system;
+	}
 
 	// Select all systems
 	//$q_planets = $db->query('SELECT system_id FROM planets GROUP BY system_id');
