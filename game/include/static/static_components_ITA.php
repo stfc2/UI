@@ -49,7 +49,7 @@ $ship_components_locale=array(
 		// Component 1500-P-C-Warpcore
 		3=>array(
 			'name'=>'1500-P-C-Warpcore',
-			'description'=>'Il Warpcore 1500 Pulse Cochrane &egrave; lo stato dell&#146;arte della tecnologia della Federazione, viene normalmente integrato nella classe Sovereign.<br>Incrementa considerevolmente il quantitativo di energia prodotta ed il fattore Warp di 3.4.',
+			'description'=>'Il Warpcore 1500 Pulse Cochrane &egrave; lo stato dell&#146;arte della tecnologia della Federazione, viene normalmente integrato nelle classi Sovereign e Defiant.<br>Incrementa considerevolmente il quantitativo di energia prodotta ed il fattore Warp di 3.4.',
 			'dev_info'=>'',
 		), // Endof Component 1500-P-C-Warpcore
 
