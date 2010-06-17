@@ -1648,26 +1648,26 @@ $svon = $RACE_DATA[$game->player['user_race']][$von];
 switch($nach) {
 	case 1:
 	case 9:
-		$snach = 3.0;
+		$snach = 1.0;
 	break;
 	case 10:
-		$snach = 2.0;
+		$snach = 1.0;
 	break;
 	case 11:
-		$snach = 1.60;
+		$snach = 0.85;
 	break;
 }
 
 switch($von) {
 	case 1:
 	case 9:
-		$svon = 3.0;
+		$svon = 1.0;
 	break;
 	case 10:
-		$svon = 2.0;
+		$svon = 1.0;
 	break;
 	case 11:
-		$svon = 1.60;
+		$svon = 0.85;
 	break;
 }
 
@@ -1764,10 +1764,10 @@ if(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && isset($_PO
 		}
 		else if($_POST['bezahlungsart']==3 && $_POST['Art']=="Mineral") // minerali contro metallo
 		{
-			if($daten['ress_1']<1500000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,0));}
-			if($daten['ress_1']>=1500000 && $daten['ress_1']<=12000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,1));}
-			if($daten['ress_1']>=12000001 && $daten['ress_1']<=69000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,2));}
-			if($daten['ress_1']>69000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,3));}
+			if($daten['ress_1']<1000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,0));}
+			if($daten['ress_1']>=1000000 && $daten['ress_1']<=8000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,1));}
+			if($daten['ress_1']>=8000001 && $daten['ress_1']<=46000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,2));}
+			if($daten['ress_1']>46000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,3));}
 		}
 		else if($_POST['bezahlungsart']==4 && $_POST['Art']=="Mineral") // minerali contro latinum
 		{
@@ -1778,10 +1778,10 @@ if(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && isset($_PO
 		}
 		else if($_POST['bezahlungsart']==5 && $_POST['Art']=="Latinum") // latinum zu metall
 		{
-			if($daten['ress_1']<1500000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,0));}
-			if($daten['ress_1']>=1500000 && $daten['ress_1']<=12000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,1));}
-			if($daten['ress_1']>=12000001 && $daten['ress_1']<=69000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,2));}
-			if($daten['ress_1']>69000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,3));}
+			if($daten['ress_1']<1000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,0));}
+			if($daten['ress_1']>=1000000 && $daten['ress_1']<=8000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,1));}
+			if($daten['ress_1']>=8000001 && $daten['ress_1']<=46000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,2));}
+			if($daten['ress_1']>46000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,3));}
 		}
 		else if($_POST['bezahlungsart']==6 && $_POST['Art']=="Latinum") // latinum zu mineral
 		{
@@ -2133,22 +2133,22 @@ elseif(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && $_REQU
 	}
 	if($_POST['Art']=="Mineral") // mineral zu metall
 	{
-		if($daten['ress_1']<1500000){
+		if($daten['ress_1']<1000000){
 			$flag_rateo['Metall'][1] = 1;
 			$rate['Metall'][1] = Ress_price(9,10,0);
 			$kosten['Metall'][1]=(int)($_POST['menge']*$rate['Metall'][1]);
 			}
-		if($daten['ress_1']>=1500000 && $daten['ress_1']<=12000000){
+		if($daten['ress_1']>=1000000 && $daten['ress_1']<=8000000){
 			$flag_rateo['Metall'][1] = 2;
 			$rate['Metall'][1] = Ress_price(9,10,1);
 			$kosten['Metall'][1]=(int)($_POST['menge']*$rate['Metall'][1]);
 			}
-		if($daten['ress_1']>=12000001 && $daten['ress_1']<=69000000){
+		if($daten['ress_1']>=8000001 && $daten['ress_1']<=46000000){
 			$flag_rateo['Metall'][1] = 3;
 			$rate['Metall'][1] = Ress_price(9,10,2);
 			$kosten['Metall'][1]=(int)($_POST['menge']*$rate['Metall'][1]);
 			}
-		if($daten['ress_1']>69000000){
+		if($daten['ress_1']>46000000){
 			$flag_rateo['Metall'][1] = 4;
 			$rate['Metall'][1] = Ress_price(9,10,3);
 			$kosten['Metall'][1]=(int)($_POST['menge']*$rate['Metall'][1]);
@@ -2180,22 +2180,22 @@ elseif(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && $_REQU
 	}
 	if($_POST['Art']=="Latinum") // latinum zu metall
 	{
-		if($daten['ress_1']<1500000){
+		if($daten['ress_1']<1000000){
 			$flag_rateo['Metall'][2] = 1;
 			$rate['Metall'][2] = Ress_price(9,11,0);
 			$kosten['Metall'][2]=(int)($_POST['menge']*$rate['Metall'][2]);
 			}
-		if($daten['ress_1']>=1500000 && $daten['ress_1']<=12000000){
+		if($daten['ress_1']>=1000000 && $daten['ress_1']<=8000000){
 			$flag_rateo['Metall'][2] = 2;
 			$rate['Metall'][2] = Ress_price(9,11,1);
 			$kosten['Metall'][2]=(int)($_POST['menge']*$rate['Metall'][2]);
 			}
-		if($daten['ress_1']>=12000001 && $daten['ress_1']<=69000000){
+		if($daten['ress_1']>=8000001 && $daten['ress_1']<=46000000){
 			$flag_rateo['Metall'][2] = 3;
 			$rate['Metall'][2] = Ress_price(9,11,2);
 			$kosten['Metall'][2]=(int)($_POST['menge']*$rate['Metall'][2]);
 			}
-		if($daten['ress_1']>69000000){
+		if($daten['ress_1']>46000000){
 			$flag_rateo['Metall'][2] = 4;
 			$rate['Metall'][2] = Ress_price(9,11,3);
 			$kosten['Metall'][2]=(int)($_POST['menge']*$rate['Metall'][2]);
