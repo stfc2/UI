@@ -138,6 +138,12 @@ define ("GER_TEXT56", 'Angriff:');
 
 define ("GER_TEXT57", 'Verteidigung:');
 
+define ("GER_TEXT58", 'Allocation');
+
+define ("GER_TEXT59", 'Structure Points Available');
+
+define ("GER_TEXT60", 'Structure Points Used');
+
 
 //English
 
@@ -257,6 +263,13 @@ define ("ENG_TEXT56", 'Attack:');
 
 define ("ENG_TEXT57", 'Defense:');
 
+define ("ENG_TEXT58", 'Allocation');
+
+define ("ENG_TEXT59", 'Structure Points Available');
+
+define ("ENG_TEXT60", 'Structure Points Used');
+
+
 //Italiano
 
 define ("ITA_TEXT1", '* Il nome del pianeta contiene caratteri non permessi');
@@ -374,5 +387,11 @@ define ("ITA_TEXT55", 'Attivit&agrave;');
 define ("ITA_TEXT56", 'Attacco:');
 
 define ("ITA_TEXT57", 'Difesa:');
+
+define ("ITA_TEXT58", 'Allocazione');
+
+define ("ITA_TEXT59", 'Punti Struttura Disponibili');
+
+define ("ITA_TEXT60", 'Punti Struttura Impiegati');
 
 ?>

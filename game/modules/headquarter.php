@@ -334,6 +334,28 @@ foreach ($ship_components[$game->player['user_race']] as $key => $components)
 }
 $game->out('</table></fieldset>');
 
+$game->out('<fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT58")).':</span></legend>
+<table border=0 width=210>');
+
+$style = 'style="border-bottom-color:A0A0A0; border-bottom-style:dotted; border-bottom-width:1px"';
+
+$game->out('
+		<tr>
+			<td '.$style.'>'.constant($game->sprache("TEXT59")).'
+			</td>
+			<td align=center '.$style.'>
+			<b>('.$game->planet['planet_available_points'].')</b>
+			</td>
+		</tr>
+		<tr>
+			<td '.$style.'>'.constant($game->sprache("TEXT60")).'
+			</td>
+			<td align=center '.$style.'>
+			<b>('.$game->planet['planet_points'].')</b>
+			</td>
+		</tr>');
+
+$game->out('</table></fieldset>');
 
 
 $game->out('
