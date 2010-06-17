@@ -224,7 +224,20 @@ function display_poll() {
 
 
 
-    if(empty($already_voted['poll_id']) && empty($poll_data['closed'])) {
+    $sql = 'SELECT user_registration_time
+            FROM user
+            WHERE user_id = '.$game->player['user_id'];
+
+    if(($user_data = $db->queryrow($sql)) === false) {
+
+        message(DATABASE_ERROR, 'Could not query user data');
+
+    }
+
+    $time = $poll_data['date'] - $user_data['user_registration_time'];
+    $oneMonth = (30 * 24 * 60 * 60);
+
+    if(empty($already_voted['poll_id']) && empty($poll_data['closed']) && ($time >= $oneMonth)) {
 
         $game->out('
 
