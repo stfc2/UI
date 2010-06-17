@@ -522,15 +522,16 @@ $game->out('
     // Player is a developer? No FOW
     // Players are in the same ally? No FOW
     // BUT: the player IS in an alliance!
-    if ($game->player['user_auth_level'] == STGC_DEVELOPER || 
+    if ($game->player['user_auth_level'] == STGC_DEVELOPER ||
        ($game->player['user_alliance'] != 0 &&
-        $game->player['user_alliance'] == $user['user_alliance']))
+        $game->player['user_alliance'] == $user['user_alliance'] &&
+        $game->player['user_alliance_rights3'] == 1))
         $sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
                    FROM (planets pl) LEFT JOIN (starsystems sys) on sys.system_id = pl.system_id
                    WHERE pl.planet_owner="'.$user['user_id'].'" ORDER BY pl.planet_name';
     // Otherwise show only known planets
     else {
-        $sql_pl = 'SELECT pl. *, sys.system_x, sys.system_y
+        $sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
                    FROM (planets pl)
                    LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id
                    LEFT JOIN (planet_details pd) ON pl.system_id = pd.system_id
