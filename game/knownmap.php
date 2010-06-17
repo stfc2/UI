@@ -161,7 +161,7 @@ if (($handle = @fopen ($image_url, "rb"))!=true)
 		$known_systems[$system['system_id']]=$system;
 
 	// Select systems of alliance's members
-	if($game->player['user_alliance'] != 0) {
+	if($game->player['user_alliance'] != 0 AND $game->player['user_alliance_rights3'] == 1) {
 		$sql = 'SELECT pl.system_id FROM (planets pl)
 		               LEFT JOIN (user u) ON pl.planet_owner = u.user_id
 		        WHERE u.user_alliance = '.$game->player['user_alliance'].'
