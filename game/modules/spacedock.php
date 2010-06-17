@@ -1425,7 +1425,7 @@ elseif(!empty($_POST['new_fleet'])) {
 
 
     $sql = 'UPDATE ships
-            SET fleet_id = '.$new_fleet_id.',
+            SET fleet_id = '.$new_fleet_id.'
             WHERE ship_id IN ('.implode(',', $ship_ids).') AND ship_untouchable=0 AND fleet_id<0';
 
 
