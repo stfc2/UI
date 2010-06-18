@@ -2178,104 +2178,19 @@ echo'
 
 		switch($this->player['user_race']) {
 		case 0:		// Federazione
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 10)
-				$picked_quadrant--;
-			if ($magic_number < 15)
-				$picked_quadrant--;
-			if ($magic_number < 85)
-				$picked_quadrant--;
+			$picked_quadrant = 3;
 			break;
 		case 1:		// Romulani
 			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 10)
-				$picked_quadrant--;
-			if ($magic_number < 15)
-				$picked_quadrant--;
-			if ($magic_number < 50)
-				$picked_quadrant--;
 			break;
 		case 2:		// Klingon
 			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 10)
-				$picked_quadrant--;
-			if ($magic_number < 15)
-				$picked_quadrant--;
-			if ($magic_number < 85)
-				$picked_quadrant--;
 			break;
 		case 3:		// Cardassiani
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 70)
-				$picked_quadrant--;
-			if ($magic_number < 75)
-				$picked_quadrant--;
-			if ($magic_number < 95)
-				$picked_quadrant--;
+			$picked_quadrant = 3;
 			break;
 		case 4:		// Dominion
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 5)
-				$picked_quadrant--;
-			if ($magic_number < 10)
-				$picked_quadrant--;
-			if ($magic_number < 40)
-				$picked_quadrant--;
-			break;
-		case 5:		// Ferengi
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 20)
-				$picked_quadrant--;
-			if ($magic_number < 25)
-				$picked_quadrant--;
-			if ($magic_number < 95)
-				$picked_quadrant--;
-			break;
-		case 8:		// Breen
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 75)
-				$picked_quadrant--;
-			if ($magic_number < 80)
-				$picked_quadrant--;
-			if ($magic_number < 95)
-				$picked_quadrant--;
-			break;
-		case 9:		// Hirogeni
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 10)
-				$picked_quadrant--;
-			if ($magic_number < 80)
-				$picked_quadrant--;
-			if ($magic_number < 90)
-				$picked_quadrant--;
-			break;
-		case 10:	// Krenim
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 10)
-				$picked_quadrant--;
-			if ($magic_number < 80)
-				$picked_quadrant--;
-			if ($magic_number < 90)
-				$picked_quadrant--;
-			break;
-		case 11:	// Kazon
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 10)
-				$picked_quadrant--;
-			if ($magic_number < 80)
-				$picked_quadrant--;
-			if ($magic_number < 90)
-				$picked_quadrant--;
+			$picked_quadrant = 1;
 			break;
 		default: 
 			$picked_quadrant = mt_rand(1 ,4);
