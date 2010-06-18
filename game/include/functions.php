@@ -1583,6 +1583,24 @@ echo'
 						exit;
 				}
 
+				/* 14/06/10 - AC: Now we store in a separate table the sitter's IP */
+				$db->lock('user_sitter_iplog');
+
+				$sql = 'SELECT * FROM user_sitter_iplog WHERE user_id = '.$this->uid.' ORDER BY id DESC LIMIT 1';
+
+				if(($user_sitter_iplog = $db->queryrow($sql)) === false) {
+					message(DATABASE_ERROR, 'Could not query sitter_iplog data');
+				}
+
+				if($user_sitter_iplog['ip']!=$_SERVER["REMOTE_ADDR"] || empty($user_sitter_iplog['id'])) {
+
+					$sql = 'INSERT INTO user_sitter_iplog (user_id, sitter_id, ip, time)
+					        VALUES ('.$this->uid.','.$this->player['sitting_user_id'].',"'.$_SERVER["REMOTE_ADDR"].'",'.time().')';
+
+					$db->query($sql);
+				}
+
+				$db->unlock('user_sitter_iplog');
 			}
 
 		}
