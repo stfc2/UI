@@ -341,7 +341,7 @@ define ("ITA_TEXT35", 'Solo i pianeti possono essere conquistati');
 
 define ("ITA_TEXT36", 'In nessuna delle flotte &egrave; presente una nave colonizzatrice');
 
-define ("ITA_TEXT37", 'Quando ho controllato l#&146;ultima volta, le forze avversarie ti appartenevano?!');
+define ("ITA_TEXT37", 'Quando ho controllato l&#146;ultima volta, le forze avversarie ti appartenevano?!');
 
 define ("ITA_TEXT38", 'Attacco:');
 

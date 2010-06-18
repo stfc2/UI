@@ -147,7 +147,7 @@ $sql = 'SELECT st.ship_torso, st.value_10 AS warp_speed
         FROM (ships s, ship_templates st)
         WHERE s.fleet_id IN ('.implode(',', $fleet_ids).') AND
               st.id = s.template_id';
-        
+
 if(!$q_stpls = $db->query($sql)) {
     message(DATABASE_ERROR, 'Could not query ship template data');
 }
@@ -159,12 +159,12 @@ while($_temp = $db->fetchrow($q_stpls)) {
         $in_scout = true;
         continue;
     }
-    
+
     if($_temp['ship_torso'] == SHIP_TYPE_TRANSPORTER) {
         $in_transporter = true;
         continue;
     }
-    
+
     if($_temp['ship_torso'] == SHIP_TYPE_COLO) {
         $in_colo = true;
         continue;
@@ -422,30 +422,30 @@ switch($step) {
         if($n_ships == 0) {
             message(GENERAL, constant($game->sprache("TEXT33")), 'Unexspected: $n_ships = 0');
         }
-        
-	$duration=2;
+
+        $duration=2;
         switch($step) {
             case 'attack_normal_exec':
                 $action_code = 51;
                 $action_data = array((int)$user_id);
-		$duration=2;
+                $duration=2;
             break;
             
             case 'attack_bomb_exec':
                 if(!$planetary_dest) {
                     message(NOTICE, constant($game->sprache("TEXT34")));
                 }
-                
+
                 $focus = (int)$_POST['focus'];
-                
+
                 if($focus < 0) $focus = 0;
                 if($focus > 3) $focus = 3;
-                
+
                 $action_code = 54;
                 $action_data = array($focus);
-		$duration=6;
+                $duration=6;
             break;
-            
+
             case 'attack_invade_exec':
                 if(!$planetary_dest) {
                     message(NOTICE, constant($game->sprache("TEXT35")));
@@ -583,7 +583,7 @@ switch($step) {
   </form>
 </table>
       ');
-    break;
+    break;    	
     
     case 'attack_bomb_setup':
         if($atkptc_present) {
