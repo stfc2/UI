@@ -164,6 +164,12 @@ define ("GER_TEXT69", 'Index');
 
 define ("GER_TEXT70", 'N&auml;chste Seite');
 
+define ("GER_TEXT71", 'Non-standard structures:');
+
+define ("GER_TEXT72", 'lvl.');
+
+define ("GER_TEXT73", 'None');
+
 
 
 //English
@@ -308,6 +314,12 @@ define ("ENG_TEXT68", 'Previous page');
 define ("ENG_TEXT69", 'Index');
 
 define ("ENG_TEXT70", 'Next page');
+
+define ("ENG_TEXT71", 'Non-standard structures:');
+
+define ("ENG_TEXT72", 'lvl.');
+
+define ("ENG_TEXT73", 'None');
 
 
 
@@ -454,6 +466,12 @@ define ("ITA_TEXT68", 'Pagina precedente');
 define ("ITA_TEXT69", 'Indice');
 
 define ("ITA_TEXT70", 'Pagina successiva');
+
+define ("ITA_TEXT71", 'Strutture non-standard:');
+
+define ("ITA_TEXT72", 'liv.');
+
+define ("ITA_TEXT73", 'Nessuna');
 
 
 ?>

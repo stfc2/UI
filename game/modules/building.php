@@ -132,7 +132,7 @@ function Start_Queued()
 
 global $db;
 global $game;
-global $NUM_BUILDING, $BUILDING_NAME, $BUILDING_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK;
+global $NUM_BUILDING, $BUILDING_NAME, $BUILDING_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK,$PLANETS_DATA;
 $pow_factor=2;
 $_REQUEST['id']=(int)$_REQUEST['id'];
 
@@ -150,7 +150,7 @@ $capital=(($game->player['user_capital']==$game->planet['planet_id']) ? 1 : 0);
 if ($game->player['pending_capital_choice']) $capital=0;
 
 
-if ($game->planet['resource_1']>=GetBuildingPrice($_REQUEST['id'],0) && $game->planet['resource_2']>=GetBuildingPrice($_REQUEST['id'],1) && $game->planet['resource_3']>=GetBuildingPrice($_REQUEST['id'],2) && $game->planet['building_'.($_REQUEST['id']+1)]<$MAX_BUILDING_LVL[$capital][$_REQUEST['id']])
+if ($game->planet['resource_1']>=GetBuildingPrice($_REQUEST['id'],0) && $game->planet['resource_2']>=GetBuildingPrice($_REQUEST['id'],1) && $game->planet['resource_3']>=GetBuildingPrice($_REQUEST['id'],2) && $game->planet['building_'.($_REQUEST['id']+1)]<($MAX_BUILDING_LVL[$capital][$_REQUEST['id']] + ($capital == 0 ? $PLANETS_DATA[$game->planet['planet_type']][14][$_REQUEST['id']] : 0)))
 {
 $buildings=$game->planet['building_1']+$game->planet['building_2']+$game->planet['building_3']+$game->planet['building_4']+$game->planet['building_10']+$game->planet['building_6']+$game->planet['building_7']+$game->planet['building_8']+$game->planet['building_9']+$game->planet['building_11']+$game->planet['building_12'];
 $t=$_REQUEST['id'];
@@ -179,7 +179,7 @@ function Start_Build()
 {
 global $db;
 global $game;
-global $NUM_BUILDING, $BUILDING_NAME, $BUILDING_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK;
+global $NUM_BUILDING, $BUILDING_NAME, $BUILDING_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK,$PLANETS_DATA;
 $pow_factor=2;
 $_REQUEST['id']=(int)$_REQUEST['id'];
 // New: Table locking
@@ -195,7 +195,7 @@ if ($game->player['pending_capital_choice']) $capital=0;
 $userquery=$db->query('SELECT * FROM scheduler_instbuild WHERE planet_id="'.$game->planet['planet_id'].'"');
 if (isset($game->planet['building_queue'])) {$game->out('<span class="text_large">'.constant($game->sprache("TEXT3")).'</span><br>');}
 else if ($db->num_rows()>0) {Start_Queued();}
-else if ($game->planet['resource_1']>=GetBuildingPrice($_REQUEST['id'],0) && $game->planet['resource_2']>=GetBuildingPrice($_REQUEST['id'],1) && $game->planet['resource_3']>=GetBuildingPrice($_REQUEST['id'],2) && $game->planet['building_'.($_REQUEST['id']+1)]<$MAX_BUILDING_LVL[$capital][$_REQUEST['id']])
+else if ($game->planet['resource_1']>=GetBuildingPrice($_REQUEST['id'],0) && $game->planet['resource_2']>=GetBuildingPrice($_REQUEST['id'],1) && $game->planet['resource_3']>=GetBuildingPrice($_REQUEST['id'],2) && $game->planet['building_'.($_REQUEST['id']+1)]<($MAX_BUILDING_LVL[$capital][$_REQUEST['id']] + ($capital == 0 ? $PLANETS_DATA[$game->planet['planet_type']][14][$_REQUEST['id']] : 0)))
 {
 $buildings=$game->planet['building_1']+$game->planet['building_2']+$game->planet['building_3']+$game->planet['building_4']+$game->planet['building_10']+$game->planet['building_6']+$game->planet['building_7']+$game->planet['building_8']+$game->planet['building_9']+$game->planet['building_11']+$game->planet['building_12']+$game->planet['building_13'];
 $t=$_REQUEST['id'];
@@ -328,7 +328,7 @@ function Show_Main()
 {
 global $db;
 global $game;
-global $NUM_BUILDING, $BUILDING_DESCRIPTION, $BUILDING_NAME, $BUILDING_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK;
+global $NUM_BUILDING, $BUILDING_DESCRIPTION, $BUILDING_NAME, $BUILDING_DATA, $MAX_BUILDING_LVL, $PLANETS_DATA, $NEXT_TICK, $ACTUAL_TICK;
 
 $capital=(($game->player['user_capital']==$game->planet['planet_id']) ? 1 : 0);
 if ($game->player['pending_capital_choice']) $capital=0;
@@ -394,13 +394,13 @@ if ($game->planet['resource_1']>=GetBuildingPrice($t,0) && $game->planet['resour
 {
 $build_text='<a href="'.parse_link_ex('a=building&a2=start_build&id='.$t,LINK_CLICKID).'"><span style="color: green">'.constant($game->sprache("TEXT25")).' (~'.round(pow($game->planet['building_'.($t+1)]+1,1.5)-pow($game->planet['building_'.($t+1)],1.5)).' '.constant($game->sprache("TEXT26")).')</span></a>';
 if ($game->planet['building_'.($t+1)]>0) $build_text='<a href="'.parse_link_ex('a=building&a2=start_build&id='.$t,LINK_CLICKID).'"><span style="color: green">'.constant($game->sprache("TEXT27")).' '.($game->planet['building_'.($t+1)]+1).' (~'.round(pow($game->planet['building_'.($t+1)]+1,1.5)-pow($game->planet['building_'.($t+1)],1.5)).' '.constant($game->sprache("TEXT26")).')</span></a>';
-if ($game->planet['building_'.($t+1)]>=$MAX_BUILDING_LVL[$capital][$t]) $build_text=constant($game->sprache("TEXT28"));
+if ($game->planet['building_'.($t+1)]>=($MAX_BUILDING_LVL[$capital][$t] + ($capital == 0 ? $PLANETS_DATA[$game->planet['planet_type']][14][$t] : 0))) $build_text=constant($game->sprache("TEXT28"));
 }
 else
 {
 $build_text='<span style="color: red">'.constant($game->sprache("TEXT25")).' (~'.round(pow($game->planet['building_'.($t+1)]+1,1.5)-pow($game->planet['building_'.($t+1)],1.5)).' '.constant($game->sprache("TEXT26")).')</span>';
 if ($game->planet['building_'.($t+1)]>0) $build_text='<span style="color: red">'.constant($game->sprache("TEXT27")).' '.($game->planet['building_'.($t+1)]+1).' (~'.round(pow($game->planet['building_'.($t+1)]+1,1.5)-pow($game->planet['building_'.($t+1)],1.5)).' '.constant($game->sprache("TEXT26")).')</span>';
-if ($game->planet['building_'.($t+1)]>=$MAX_BUILDING_LVL[$capital][$t]) $build_text=constant($game->sprache("TEXT28"));
+if ($game->planet['building_'.($t+1)]>=($MAX_BUILDING_LVL[$capital][$t] + ($capital == 0 ? $PLANETS_DATA[$game->planet['planet_type']][14][$t] : 0))) $build_text=constant($game->sprache("TEXT28"));
 }
 $game->out('<tr><td><b><a href="javascript:void(0);" onmouseover="return overlib(\''.$BUILDING_DESCRIPTION[$game->player['user_race']][$t].'\', CAPTION, \''.$BUILDING_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$BUILDING_NAME[$game->player['user_race']][$t].'</b></td><td><img src="'.$game->GFX_PATH.'menu_metal_small.gif"> '.GetBuildingPrice($t,0).'&nbsp;&nbsp; <img src="'.$game->GFX_PATH.'menu_mineral_small.gif">'.GetBuildingPrice($t,1).'&nbsp;&nbsp; <img src="'.$game->GFX_PATH.'menu_latinum_small.gif"> '.GetBuildingPrice($t,2).'&nbsp; </td><td>'.GetBuildingTime($t).'</td><td>'.$build_text.'</td></tr>');
 }

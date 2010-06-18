@@ -123,6 +123,16 @@ if($module == 'planets' || isset($_GET['planet_type']))
             $high_start = $high_end = '';
         }
 
+        $struct_string = '';
+        foreach($PLANETS_DATA[$type][14] as $key => $structure_modifier) {
+            if($structure_modifier != 0) {
+                $lvl_modifier = 9 + ($structure_modifier);
+                $struct_string .= $BUILDING_NAME[$game->player['user_race']][$key].': ';
+                $struct_string .= (constant($game->sprache("TEXT72"))).$lvl_modifier.'; ';
+            }
+        }
+        if(empty($struct_string)) $struct_string = constant($game->sprache("TEXT73"));
+
         $game->out('
 <table width="450" align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
   <tr>
@@ -151,6 +161,10 @@ if($module == 'planets' || isset($_GET['planet_type']))
       <tr>
         <td valign="top"><u>'.constant($game->sprache("TEXT4")).'</u></td>
         <td>'.$data[2].'</td>
+      </tr>
+      <tr>
+      	<td valign="top"><u>'.constant($game->sprache("TEXT71")).'</u></td>
+        <td align="justify">'.$struct_string.'</td>
       </tr>
       <tr>
         <td valign="top"><u>'.constant($game->sprache("TEXT5")).'</u></td>
