@@ -906,7 +906,7 @@ class game {
 	var $galaxy_map_size = 368;
 	var $quadrant_map_size = 368;
 	var $sector_map_size = 368;
-	var $system_map_size = 472;
+	var $system_map_size = 492;
 
 	var $galaxy_detail_map_size = 503;
 
