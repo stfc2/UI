@@ -74,7 +74,7 @@ switch($game->player['language'])
 		$created = 'Erstellt der ';
 		$legend = 'Legende:';
 		$tknown_systems = 'Erkundet Systeme';
-		$tallied_systems = 'Systeme mit mindestens einem Planeten, die ein Mitglied Ihres Allianz';
+		$tallied_systems = 'Erkundet durch Verbuendeten';
 		$tunknown_systems = 'Unbekannt Systeme';
 	break;
 	case 'ITA':
@@ -82,15 +82,15 @@ switch($game->player['language'])
 		$created = 'Creata il ';
 		$legend = 'Legenda:';
 		$tknown_systems = 'Sistemi esplorati';
-		$tallied_systems = 'Sistemi con almeno un pianeta appartenente ad un membro della propria alleanza';
+		$tallied_systems = 'Sistemi esplorati da alleati';
 		$tunknown_systems = 'Sistemi inesplorati';
 	break;
 	default:
 		$title = 'Known systems map:';
 		$created = 'Created at ';
 		$legend = 'Legend:';
-		$tknown_systems = 'Explored systems';
-		$tallied_systems = 'Systems with at least one planet belonging to a member of your alliance';
+		$tknown_systems = 'Explored systems by own';
+		$tallied_systems = 'Explored systems by allies';
 		$tunknown_systems = 'Unknown systems';
 	break;
 }
@@ -155,19 +155,23 @@ if (($handle = @fopen ($image_url, "rb"))!=true)
 	          GROUP BY pl.system_id';*/
 
 	$sql = 'SELECT system_id FROM `planet_details`
-	        WHERE user_id = '.$game->player['user_id'].' AND log_code = 500 GROUP BY system_id';
+	        WHERE user_id = '.$game->player['user_id'].' AND log_code = 101 GROUP BY system_id';
 	$systems = $db->query($sql);
 	while($system = $db->fetchrow($systems))
 		$known_systems[$system['system_id']]=$system;
 
 	// Select systems of alliance's members
-	$sql = 'SELECT pl.system_id FROM (planets pl)
-	               LEFT JOIN (user u) ON pl.planet_owner = u.user_id
-	        WHERE u.user_alliance = '.$game->player['user_alliance'].'
-	        GROUP BY pl.system_id';
-	$systems = $db->query($sql);
-	while($system = $db->fetchrow($systems))
-		$allied_systems[$system['system_id']]=$system;
+	// Only do this if we are allowed by the alliance
+	if($game->player['user_alliance'] != 0 AND $game->player['user_alliance_rights3'] == 1) {
+		$sql = 'SELECT system_id FROM planet_details
+		        WHERE user_id <> '.$game->player['user_id'].' AND
+		              alliance_id = '.$game->player['user_alliance'].' AND
+		              log_code = 101
+		        GROUP BY system_id';
+		$systems = $db->query($sql);
+		while($system = $db->fetchrow($systems))
+			$allied_systems[$system['system_id']]=$system;
+	}
 
 	// Select all systems
 	//$q_planets = $db->query('SELECT system_id FROM planets GROUP BY system_id');
