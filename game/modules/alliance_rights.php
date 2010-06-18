@@ -180,7 +180,7 @@ if(!empty($_POST['kick_confirm'])) {
 
     redirect('a=alliance_rights');
 }
-
+/*21/09/08 - AC: What about kick a member???
 elseif(!empty($_POST['kick'])) {
     if(empty($_POST['user_id'])) {
         message(GENERAL, 'Invalid request', '$_POST[\'user_id\'] was empty');
@@ -215,7 +215,7 @@ elseif(!empty($_POST['kick'])) {
   </form>
 </table><br>
     ');
-}
+}*/
 
 
 $listquery=$db->query('SELECT * FROM user WHERE user_alliance = '.$game->player['user_alliance'].' ORDER by user_name ASC');
