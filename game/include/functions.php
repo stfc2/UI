@@ -2542,16 +2542,16 @@ function GlobalTorsoReq($ship)
 		$dat[0]=50;
 		$dat[1]=100;
 		$dat[2]=200;
-		$dat[3]=200;
-		$dat[4]=400;
-		$dat[5]=1000;
-		$dat[6]=1500;
+		$dat[3]=0;
+		$dat[4]=0;
+		$dat[5]=200;
+		$dat[6]=1000;
 		$dat[7]=2500;
-		$dat[8]=3500;
-		$dat[9]=6000;
-		$dat[10]=6500;
-		$dat[11]=12000;
-		$dat[12]=500;
+		$dat[8]=4500;
+		$dat[9]=9500;
+		$dat[10]=0;
+		$dat[11]=0;
+		$dat[12]=0;
 	}
 	elseif ($game->player['user_race']==1) // Rom
 	{
@@ -2559,15 +2559,15 @@ function GlobalTorsoReq($ship)
 		$dat[1]=100;
 		$dat[2]=200;
 		$dat[3]=0; //none ship
-		$dat[4]=200;
-		$dat[5]=1000;
-		$dat[6]=0; //none ship
-		$dat[7]=3500;
-		$dat[8]=0; //none ship
-		$dat[9]=6500;
+		$dat[4]=0; //none ship
+		$dat[5]=200;
+		$dat[6]=1000; 
+		$dat[7]=3000;
+		$dat[8]=5000; 
+		$dat[9]=9500;
 		$dat[10]=0; //none ship
-		$dat[11]=15000;
-		$dat[12]=500;
+		$dat[11]=0; //none ship
+		$dat[12]=0; //none ship
 	}
 	elseif ($game->player['user_race']==2) // Kling
 	{
@@ -2575,15 +2575,15 @@ function GlobalTorsoReq($ship)
 		$dat[1]=100;
 		$dat[2]=200;
 		$dat[3]=0; //none ship
-		$dat[4]=200;
-		$dat[5]=1000;
-		$dat[6]=0;
-		$dat[7]=3500;
-		$dat[8]=0; //none ship
-		$dat[9]=6500;
-		$dat[10]=0;
-		$dat[11]=15000;
-		$dat[12]=500;
+		$dat[4]=0; //none ship
+		$dat[5]=200;
+		$dat[6]=1000;
+		$dat[7]=3000;
+		$dat[8]=6000;
+		$dat[9]=12500;
+		$dat[10]=0; // none ship
+		$dat[11]=0; // none ship
+		$dat[12]=0;
 	}
 	elseif ($game->player['user_race']==3) // Card
 	{
@@ -2591,14 +2591,14 @@ function GlobalTorsoReq($ship)
 		$dat[1]=100;
 		$dat[2]=200;
 		$dat[3]=0; //none ship
-		$dat[4]=200;
-		$dat[5]=0;
-		$dat[6]=0;
-		$dat[7]=3000;
-		$dat[8]=0;
-		$dat[9]=6500;
-		$dat[10]=0;
-		$dat[11]=0;
+		$dat[4]=0; //none ship
+		$dat[5]=200;
+		$dat[6]=0; //none ship
+		$dat[7]=3500;
+		$dat[8]=0; //none ship
+		$dat[9]=9500;
+		$dat[10]=0; //none ship
+		$dat[11]=0; //none ship
 		$dat[12]=500;
 	}
 	elseif ($game->player['user_race']==4) // Dom
@@ -2607,15 +2607,15 @@ function GlobalTorsoReq($ship)
 		$dat[1]=100;
 		$dat[2]=200;
 		$dat[3]=0; //none ship
-		$dat[4]=200;
-		$dat[5]=1000;
-		$dat[6]=0;
-		$dat[7]=0;
-		$dat[8]=0;
-		$dat[9]=6000;
-		$dat[10]=0;
-		$dat[11]=15000;
-		$dat[12]=500;
+		$dat[4]=0; //none ship
+		$dat[5]=200;
+		$dat[6]=0; //none ship
+		$dat[7]=0; //none ship
+		$dat[8]=5500;
+		$dat[9]=11000;
+		$dat[10]=0; //none ship
+		$dat[11]=0; //none ship
+		$dat[12]=0;
 	}
 	elseif ($game->player['user_race']==5) // Ferg
 	{
@@ -2732,16 +2732,16 @@ function LocalTorsoReq($ship)
 		$dat[0]=50;
 		$dat[1]=100;
 		$dat[2]=200;
-		$dat[3]=200;
-		$dat[4]=300;
-		$dat[5]=400;
-		$dat[6]=400;
-		$dat[7]=420;
-		$dat[8]=420;
+		$dat[3]=0;
+		$dat[4]=0;
+		$dat[5]=200;
+		$dat[6]=260;
+		$dat[7]=320;
+		$dat[8]=400;
 		$dat[9]=450;
-		$dat[10]=450;
-		$dat[11]=505;
-		$dat[12]=400;
+		$dat[10]=0;
+		$dat[11]=0;
+		$dat[12]=0;
 	}
 	elseif ($game->player['user_race']==1) // Rom
 	{
@@ -2749,15 +2749,15 @@ function LocalTorsoReq($ship)
 		$dat[1]=100;
 		$dat[2]=200;
 		$dat[3]=0; //none ship
-		$dat[4]=200;
-		$dat[5]=400;
-		$dat[6]=0; //none ship
-		$dat[7]=420;
-		$dat[8]=0; //none ship
+		$dat[4]=0;
+		$dat[5]=200;
+		$dat[6]=300;
+		$dat[7]=350;
+		$dat[8]=400;
 		$dat[9]=450;
 		$dat[10]=0; //none ship
-		$dat[11]=505;
-		$dat[12]=400;
+		$dat[11]=0;
+		$dat[12]=0;
 	}
 	elseif ($game->player['user_race']==2) // Kling
 	{
@@ -2765,15 +2765,15 @@ function LocalTorsoReq($ship)
 		$dat[1]=100;
 		$dat[2]=200;
 		$dat[3]=0; //none ship
-		$dat[4]=200;
-		$dat[5]=400;
-		$dat[6]=0;
-		$dat[7]=420;
-		$dat[8]=0; //none ship
-		$dat[9]=450;
+		$dat[4]=0;
+		$dat[5]=200;
+		$dat[6]=300;
+		$dat[7]=350;
+		$dat[8]=400; //none ship
+		$dat[9]=510;
 		$dat[10]=0;
-		$dat[11]=500;
-		$dat[12]=300;
+		$dat[11]=0;
+		$dat[12]=0;
 	}
 	elseif ($game->player['user_race']==3) // Card
 	{
@@ -2781,15 +2781,15 @@ function LocalTorsoReq($ship)
 		$dat[1]=100;
 		$dat[2]=200;
 		$dat[3]=0; //none ship
-		$dat[4]=200;
-		$dat[5]=0;
+		$dat[4]=0;
+		$dat[5]=200;
 		$dat[6]=0;
-		$dat[7]=420;
+		$dat[7]=350;
 		$dat[8]=0;
 		$dat[9]=450;
 		$dat[10]=0;
 		$dat[11]=0;
-		$dat[12]=380;
+		$dat[12]=0;
 	}
 	elseif ($game->player['user_race']==4) // Dom
 	{
@@ -2797,15 +2797,15 @@ function LocalTorsoReq($ship)
 		$dat[1]=100;
 		$dat[2]=200;
 		$dat[3]=0; //none ship
-		$dat[4]=200;
-		$dat[5]=400;
+		$dat[4]=0;
+		$dat[5]=200;
 		$dat[6]=0;
 		$dat[7]=0;
-		$dat[8]=0;
-		$dat[9]=450;
+		$dat[8]=380;
+		$dat[9]=500;
 		$dat[10]=0;
-		$dat[11]=500;
-		$dat[12]=320;
+		$dat[11]=0;
+		$dat[12]=0;
 	}
 	elseif ($game->player['user_race']==5) // Ferg
 	{
