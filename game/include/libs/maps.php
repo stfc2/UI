@@ -332,6 +332,9 @@ class maps {
     }
 
     function create_sector_map($sector_id) {
+
+        include_once('include/libs/moves.php');	   
+
         global $db, $game;
 
         ////////// Retrieve coordinates of the user planet capital
