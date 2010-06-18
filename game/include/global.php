@@ -236,13 +236,13 @@ define ('UNINHABITATED_COLONY', 'Isolato');
 
 
 // User can choose initial planet's quadrant
-define ('USER_CHOOSE_QUADRANT', 1);
+define ('USER_CHOOSE_QUADRANT', 0);
 
 // User start with a whole system
-define ('USER_WHOLE_SYSTEM', 0);
+define ('USER_WHOLE_SYSTEM', 1);
 
 // User max number colonizable planets
-define ('USER_MAX_PLANETS', 40);
+define ('USER_MAX_PLANETS', 80);
 
 
 // Alliances Names
