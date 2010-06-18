@@ -603,7 +603,15 @@ elseif(!empty($game->player['alliance_name'])) {
           <td width="200">
             <a href="'.parse_link('a=alliance_main&member_list').'">'.constant($game->sprache("TEXT4")).'</a><br>
             <a href="'.parse_link('a=alliance_attack').'">'.constant($game->sprache("TEXT61")).'</a><br>
-            <a href="alliancemap.php?alliance='.$alliance['alliance_tag'].'&size=6&map" target=_blank>'.constant($game->sprache("TEXT62")).'</a><br>
+    ');        
+    
+    if($game->player['user_alliance_rights3']==1) {
+        $game->out(' 
+            <a href="alliancemap.php?alliance='.$alliance['alliance_tag'].'&size=6&map" target=_blank>'.constant($game->sprache("TEXT62")).'</a><br> '); 
+    }
+    else { $game->out('<br>'); }
+
+    $game->out('     
             <a href="'.parse_link('a=alliance_ships').'">'.constant($game->sprache("TEXT83")).'</a><br>
             <a href="'.parse_link('a=alliance_diplomacy').'">'.constant($game->sprache("TEXT63")).'</a><br>
             <a href="'.parse_link('a=alliance_taxes').'">'.constant($game->sprache("TEXT64")).'</a><br><br>
