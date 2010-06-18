@@ -72,12 +72,13 @@ if(isset($_POST['do_surrender_planet'])) {
             message(NOTICE, constant($game->sprache("TEXT8")));
 
         }
-
+/*
         if($game->player['user_capital']==$game->planet['planet_id']) {
 
             message(NOTICE, constant($game->sprache("TEXT9")));
 
         }
+*/
 
         $sql = 'UPDATE planets
                 SET planet_surrender = ('.$game->config['tick_id'].' + 120)
