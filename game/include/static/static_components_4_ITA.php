@@ -27,450 +27,346 @@
 $ship_components_locale=array(
 // Race Dominion
 4=>array(
-        // Categoria Nucleo Curvatura
+        // Category Frigate
         0=>array(
-             // Component Level 1 Warpkern
+             // Component M/ARA Mark I
              0=>array(
-                    'name'=>'Warpcore Livello 1',
-                    'description'=>'Modello basico di fonte energetica per le astronavi. Pu&ograve; essere montato su tutte le navi e innalza la curvatura massima di Warp 1.0',
-            ), // Endof Component Level 1 Warpkern
+                    'name'=>'Sviluppo Liv. I',
+                    'description'=>'Primo livello di aggiornamento.',
+            ), // Endof Component M/ARA Mark I
 
-             // Component Level 2 Warpkern
+             // Component M/ARA Mark II
              1=>array(
-                    'name'=>'Warpcore Livello 2',
-                    'description'=>'Modello avanzato che fornisce maggiore energia rispetto al livello precedente di sviluppo, il miglior Warpcore installabile su una nave civile.',
-            ), // Endof Component Level 2 Warpkern
+                    'name'=>'Sviluppo Liv. II',
+                    'description'=>'Secondo livello di aggiornamento.',
+            ), // Endof Component M/ARA Mark II
 
-             // Component Level 3 Warpkern
+             // Component M/ARA Mark III
              2=>array(
-                    'name'=>'Warpcore Livello 3',
-                    'description'=>'Modello di sviluppo intermedio. Il rendimento energetico &grave; ulteriormente migliorato. Questo &grave; il primo step di sviluppo del WarpCore dedicato esclusivamente alle navi militari.',
-            ), // Endof Component Level 3 Warpkern
+                    'name'=>'Sviluppo Liv. III',
+                    'description'=>'Terzo livello di aggiornamento.',
+            ), // Endof Component M/ARA Mark III
 
-             // Component Dilithiumschmelze I
+             // Component 1500-P-C-Warpkern
              3=>array(
-                    'name'=>'Fusione del Dilitio Liv. 1',
-                    'description'=>'Per migliorare la resa dei Warpcore in termini di massima curvatura &egrave; stata sviluppata una tecnica di fusione del Dilitio. La curvatura massima della nave aumenta di Warp 2.0',
-            ), // Endof Component Dilithiumschmelze I
+                    'name'=>'Sviluppo Liv. IV',
+                    'description'=>'Quarto livello di aggiornamento.',
+            ), // Endof Component 1500-P-C-Warpkern
+            
+            4=>array(
+                    'name'=>'Sviluppo Liv. V',
+                    'description'=>'Livello finale di aggiornamento.',
+            ), // Endof Component 1500-P-C-Warpkern
 
-             // Component Dilithiumschmelze II
-             4=>array(
-                    'name'=>'Fusione del Dilitio Liv. 2',
-                    'description'=>'Lo sviluppo della tecnologia di fusione del dilitio ha permesso la realizzazione di un Warpcore in grado di fornire l&#146;energia necessaria alla propulsione delle navi maggiori della flotta.',
-            ), // Endof Component Dilithiumschmelze II
-
-      'name'=>'Warpcore',
-      ), // Endof Category Warpkerne
+      'name'=>'Fregata',
+      ), // Endof Category Frigate
 
 
-        // Category Antriebe
+        // Category V-Type Spec
         1=>array(
-             // Component Tachyonengondeln
+             // Component Sviluppo I
              0=>array(
-                    'name'=>'Gondole Tachioniche Mk I',
-                    'description'=>'Le Gondole Tachioniche rappresentano il sistema basico di propulsione a curvatura, efficace solo per le navi civili.',
-            ), // Endof Component Tachyonengondeln
+                    'name'=>'V-Type Spec I',
+                    'description'=>'Con questa evoluzione, la classe Attackship viene spinta oltra i limiti del proprio design. Primo livello di sviluppo.',
+            ), // Endof Component Bussardkollektoren Typ I
 
-             // Component Verbesserte Tachyonengondel
+             // Component Sviluppo II
              1=>array(
-                    'name'=>'Gondole Tachioniche Mk II',
-                    'description'=>'Sviluppo della tecnologia di base che aumenta la potenza del campo di curvatura, aumentando la velocit&agrave; massima della nave al costo di un maggior consumo energetico.',
-            ), // Endof Component Verbesserte Tachyonengondel
+                    'name'=>'V-Type Spec II',
+                    'description'=>'Secondo livello di sviluppo.',
+            ), // Endof Component Bussardkollektoren Typ II
 
-             // Component Gaußgondeln
+             // Component Sviluppo III
              2=>array(
-                    'name'=>'Gondole Gauss',
-                    'description'=>'Le Gondole Gauss sono un progetto dedicato esclusivamente alle navi militari. La resa in termini di campo di curvatura e consumo energetico sono assolutamente superiori rispetto ai sistemi di curvatura precedenti.',
-            ), // Endof Component Gaußgondeln
+                    'name'=>'V-Type Spec III',
+                    'description'=>'Terzo livello di sviluppo.',
+            ), // Endof Component Bussardkollektoren Typ III
 
-             // Component Phasenkomprimierer
+             // Component Sviluppo Liv. IV
              3=>array(
-                    'name'=>'Compressore di Fase',
-                    'description'=>'Il Compressore di Fase applicato alle Gondole Gauss realizzano il miglior sistema di curvatura esistente per la propulsione delle navi nello spazio.',
-            ), // Endof Component Phasenkomprimierer
+                    'name'=>'V-Type Spec IV',
+                    'description'=>'Quarto livello di sviluppo.',
+            ), // Endof Component Bussardkollektoren Typ IV
 
-      'name'=>'Motori',
-      ), // Endof Category Antriebe
+             // Component Sviluppo Liv. V
+             4=>array(
+                    'name'=>'V-Type Spec V',
+                    'description'=>'Livello finale di sviluppo. Con questa modifica, le Attackship Grado V diventano in assoluto le fregate migliori di tutta la galassia.',
+            ), // Endof Component Bussardkollektoren Typ V
+
+      'name'=>'V-Type Spec',
+      ), // Endof Category V-Type Spec
 
 
-        // Category Strahlenwaffen
+
+        // Category Computersystem
         2=>array(
-             // Component Polaronstrahler
+             // Component Crew Training
              0=>array(
-                    'name'=>'Emettitore Polaronico Liv.1',
-                    'description'=>'Tecnologia di base per le armi del Dominio.',
-            ), // Endof Component Polaronstrahler
+                    'name'=>'Training Base I',
+                    'description'=>'Addestramento base per equipaggi delle Attackship',
+            ), // Endof Component LCARS Grundsystem
 
-             // Component Polaronstrahl
+             // Component LCARS 2.0
              1=>array(
-                    'name'=>'Emettitore Polaronico Liv.2',
-                    'description'=>'Perfezionamento della tecnologia polaronica che ne aumenta notevolmente la capacit&agrave; distruttiva. Questa tecnologia rappresenta il meglio impiegabile su navi civili.',
-            ), // Endof Component Polaronstrahl
+                    'name'=>'Training Base II',
+                    'description'=>'Migliori tecniche di addestramento per migliori risultati ma tempi di addestramento allungati.',
+            ), // Endof Component LCARS 2.0
 
-             // Component Polaronstrahl
+             // Component LCARS 2.5
              2=>array(
-                    'name'=>'Emettitore Polaronico Liv.3',
-                    'description'=>'Ultimo step evolutivo della tecnologia polaronica di base.',
-            ), // Endof Component Polaronstrahl
+                    'name'=>'V-Type Training I',
+                    'description'=>'Addestramento indicato per equipaggi destinati alle fregate V-Type.',
+            ), // Endof Component LCARS 2.5
 
-             // Component Massebeschleuniger
+             // Component LCARS 2.5 Rev.2
              3=>array(
-                    'name'=>'Acceleratore di massa',
-                    'description'=>'Tecnologia basata sull&#146;accelerazione delle particelle della materia, impiegabile tanto contro navi ostili che come arma planetaria economica.',
-            ), // Endof Component Massebeschleuniger
+                    'name'=>'V-Type Training II',
+                    'description'=>'I migliori equipaggi selezionati per le fregate V-Type.',
+            ), // Endof Component LCARS 2.5 Rev.2
 
-             // Component Impulspoleronkannone
+             // Component LCARS 3.0
              4=>array(
-                    'name'=>'Impulsi Polaronici Liv. 1',
-                    'description'=>'La tecnologia degli Impulsi Polaronici permette la creazione di un cannone basato sull&#146;impiego delle onde polaroniche.',
-            ), // Endof Component Impulspoleronkannone
+                    'name'=>'Elite Training I',
+                    'description'=>'I JemHadar che compongono questa selezione sono tra i migliori cloni disponibili. Una selezione molto costosa ma la migliore possibile.',
+            ), // Endof Component LCARS 3.0
 
-             // Component Impulspolarondisruptor
+             // Component LCARS 3.0 (20 MegaQuads/sec)
              5=>array(
-                    'name'=>'Impulsi Polaronici Liv. 2',
-                    'description'=>'Il top della tecnologia polaronica del Dominio permette la realizzazione di un disgregatore impiegabile sulle maggiori navi della flotta. La sua potenza &egrave; incomparabile rispetto ai sistemi d&#146;arma precedenti.',
-            ), // Endof Component Impulspolarondisruptor
+                    'name'=>'Elite Training II',
+                    'description'=>'I top class degli equipaggi. Costo altissimo per i cloni meglio addestrati in assoluto.',
+            ), // Endof Component LCARS 3.0 (20 MegaQuads/sec)
 
-      'name'=>'Armi Energetiche',
-      ), // Endof Category Strahlenwaffen
+      'name'=>'Equipaggio',
+      ), // Endof Category Computersystem
 
 
-        // Category Torpedos
+      // Category Sensors
         3=>array(
-             // Component Photonentorpedos
+             // Component Small Array II
              0=>array(
-                    'name'=>'Siluri Fotonici',
-                    'description'=>'I siluri fotonici sono un tipo di armamento basato su una tecnologia standard delle razze del quadrante Alfa.',
-            ), // Endof Component Photonentorpedos
+                    'name'=>'Sensori Base II',
+                    'description'=>'Aggiornamento intermedio sensori per Fregata.',
+            ), // Endof Component Sensori Base II
 
-             // Component Quantentorpedos
+             // Component Small Array III
              1=>array(
-                    'name'=>'Siluri Quantici',
-                    'description'=>'I Siluri Quantici sono una tecnologia proveniente dalle razze del Quadrante Alfa, di enorme potenza ed efficacia.',
-            ), // Endof Component Quantentorpedos
-
-             // Component Sovramodulazione Liv. 1
+                    'name'=>'Sensori Base III',
+                    'description'=>'Aggiornamento finale sensori per Fregata.',
+            ), // Endof Component Sensori Base III
+            
+            // Component Small Array II
              2=>array(
-                    'name'=>'Sovramodulazione Liv. 1',
-                    'description'=>'La Sovramodulazione degli Emettitori Polaronici ne migliora la resa al costo di un modesto consumo di energia e di necessit&agrave; di manutenzione.',
-            ), // Endof Component Sovramodulazione Liv.1
+                    'name'=>'Sensori II',
+                    'description'=>'Aggiornamento intermedio sensori per Incrociatore Leggero.',
+            ), // Endof Component Sensori Base II
 
-             // Component Sovramodulazione Liv. 2
+             // Component Small Array III
              3=>array(
-                    'name'=>'Sovramodulazione Liv. 2',
-                    'description'=>'La Sovramodulazione degli Emettitori Polaronici ne migliora la resa al costo di un modesto consumo di energia e di necessit&agrave; di manutenzione.',
-            ), // Endof Component Sovramodulazione Liv.2
+                    'name'=>'Sensori III',
+                    'description'=>'Aggiornamento finale sensori per Incrociatore Leggero.',
+            ), // Endof Component Sensori Base III
+            
+            4=>array(
+                    'name'=>'Sensori Avanzati II',
+                    'description'=>'Aggiornamento intermedio sensori per Incrociatore.',
+            ), // Endof Component Sensori Base II
 
-             // Component Sovramodulazione Liv. 3
-             4=>array(
-                    'name'=>'Sovramodulazione Liv. 3',
-                    'description'=>'La Sovramodulazione degli Emettitori Polaronici ne migliora la resa al costo di un modesto consumo di energia e di necessit&agrave; di manutenzione.',
-            ), // Endof Component Sovramodulazione Liv.3
-
-             // Component Breentorpedos
+             // Component Small Array III
              5=>array(
-                    'name'=>'Siluri Breen',
-                    'description'=>'I siluri Breen sono armi molto potenti, ottenuti grazie ad uno scambio di tecnologia con gli scenziati Breen.',
-            ), // Endof Component Breentorpedos
+                    'name'=>'Sensori Avanzati III',
+                    'description'=>'Aggiornamento finale sensori per Incrociatore.',
+            ), // Endof Component Sensori Base III
 
-      'name'=>'Servosistemi d&#146;Arma',
-      ), // Endof Category Torpedos
+			6=>array(
+                    'name'=>'Sensori di Fase II',
+                    'description'=>'Aggiornamento intermedio sensori per BattleCruiser.',
+            ), // Endof Component Sensori Base II
 
-
-        // Category Defensive Einrichtungen
+             // Component Small Array III
+             7=>array(
+                    'name'=>'Sensori di Fase III',
+                    'description'=>'Aggiornamento finale sensori per BattleCruiser.',
+            ), // Endof Component Sensori Base III
+            
+      'name'=>'Sensori',
+      ), // Endof Category Computersystem
+      
+      // Category BSC
         4=>array(
-             // Component Regenerativer Schild
+             // Component M/ARA Mark I
              0=>array(
-                    'name'=>'Scudo Rigenerante',
-                    'description'=>'Gli Scudi Rigeneranti sono un sistema economico e relativamente efficace per la difesa degli scafi.',
-            ), // Endof Component Regenerativer Schild
+                    'name'=>'Sviluppo Liv. I',
+                    'description'=>'Primo livello di aggiornamento.',
+            ), // Endof Component M/ARA Mark I
 
-             // Component Phasenvariationsschild
+             // Component M/ARA Mark II
              1=>array(
-                    'name'=>'Variatore di Fase',
-                    'description'=>'Questa nuova tecnologia di Scudi &egrave; ottenuta attraverso la combinazione di una matrice di scudi con la dipolarit&agrave; di fase.',
-            ), // Endof Component Phasenvariationsschild
+                    'name'=>'Sviluppo Liv. II',
+                    'description'=>'Secondo livello di aggiornamento.',
+            ), // Endof Component M/ARA Mark II
 
-             // Component Mehrphasenpanzerung
+             // Component M/ARA Mark III
              2=>array(
-                    'name'=>'Corazza Multifasica',
-                    'description'=>'Tecnologia che muta la fase della struttura dello scafo con lo scopo di aumentarne la resistenza.',
-            ), // Endof Component Mehrphasenpanzerung
+                    'name'=>'Sviluppo Liv. III',
+                    'description'=>'Terzo livello di aggiornamento.',
+            ), // Endof Component M/ARA Mark III
 
-             // Component Neutrinoknotenverstärkung
+             // Component 1500-P-C-Warpkern
              3=>array(
-                    'name'=>'Corazza Neutrinica',
-                    'description'=>'La struttura atomica della lega impiegata per le corazze viene riorganizzata per aumentarne la robustezza strutturale.',
-            ), // Endof Component Neutrinoknotenverstärkung
+                    'name'=>'Sviluppo Liv. IV',
+                    'description'=>'Quarto livello di aggiornamento.',
+            ), // Endof Component 1500-P-C-Warpkern
+            
+            4=>array(
+                    'name'=>'Sviluppo Liv. V',
+                    'description'=>'Livello finale di aggiornamento.',
+            ), // Endof Component 1500-P-C-Warpkern
 
-             // Component Creonspule
-             4=>array(
-                    'name'=>'Bobine Creon',
-                    'description'=>'La prima Bobina Creon fu ritrovata decadi fa sul pianeta morto Creon e successivamente venne migliorata dagli scienziati Dominion. Il suo impiego &egrave; possibile solo sulle navi pi&grave; grandi della flotta.',
-            ), // Endof Component Creonspule
-
-      'name'=>'Sistemi Difensivi',
-      ), // Endof Category Defensive Einrichtungen
+      'name'=>'Battlecruiser',
+      ), // Endof Category Frigate
 
 
-        // Category AI-Kern
+        // Category Sistemi Controllo/Energia
         5=>array(
-             // Component Siliciumprozessoren
+             // Component Sviluppo I
              0=>array(
-                    'name'=>'Processori in Silicio',
-                    'description'=>'I nuovi processori in silicio garantiscono un miglioramento delle prestazioni della componente A.I.',
-            ), // Endof Component Siliciumprozessoren
+                    'name'=>'Core System I',
+                    'description'=>'Il Core System riunisce la componente di produzione energia con la rete di computer per il governo della nave sotto un unico sistema.',
+            ), // Endof Component Bussardkollektoren Typ I
 
-             // Component Dualkopplung
+             // Component Sviluppo II
              1=>array(
-                    'name'=>'Accoppiamento Strutturale',
-                    'description'=>'L&#146;accoppiamento strutturale dei processori garantisce un netto miglioramento nei tempi di risposta delle interfacce.',
-            ), // Endof Component Dualkopplung
+                    'name'=>'Core System II',
+                    'description'=>'Evoluzione dalle prestazioni aumentate del Core System.',
+            ), // Endof Component Bussardkollektoren Typ II
 
-             // Component Kubriksystem
+             // Component Sviluppo III
              2=>array(
-                    'name'=>'Sistema Kubrik',
-                    'description'=>'I processori vengono interlacciati con la nuova tecnologia Kubrik, radoppiandone di fatto la capacit&agrave; elaborativa.',
-            ), // Endof Component Kubriksystem
-
-             // Component Leitstand I
-             3=>array(
-                    'name'=>'Posto di Controllo Liv. 1',
-                    'description'=>'La nuova organizzazione delle postazioni di controllo di tiro aumentano la coordinazione tra i sistemi e la resa delle armi stesse.',
-            ), // Endof Component Leitstand I
-
-             // Component Leitstand II
-             4=>array(
-                    'name'=>'Posto di Controllo Liv. 2',
-                    'description'=>'Questa versione permette di controllare efficacemente anche le armi pesanti della nave.',
-            ), // Endof Component Leitstand II
-
-             // Component Gammarechner
-             5=>array(
-                    'name'=>'Gamma Elaboratore',
-                    'description'=>'Con l&#146;impiego delle particelle gamma viene creata una connessione neurale con i sistemi di elaborazione dati.',
-            ), // Endof Component Gammarechner
-
-      'name'=>'Componenti A.I.',
-      ), // Endof Category AI-Kern
-
-
-        // Category Trainingseinheiten
-        6=>array(
-             // Component Kampfzentrum I
-             0=>array(
-                    'name'=>'Addestramento Civili',
-                    'description'=>'Addestramento per equipaggi destinati alle navi civili.',
-            ), // Endof Component Kampfzentrum I
-
-             // Component Kampfzentrum II
-             1=>array(
-                    'name'=>'Addestramento Base I',
-                    'description'=>'Addestramento base per equipaggi destinati alle navi leggere della flotta.',
-            ), // Endof Component Kampfzentrum II
-
-             // Component Kampfzentrum III
-             2=>array(
-                    'name'=>'Addestramento Base II',
-                    'description'=>'Addestramento base per equipaggi destinati alle navi intermedie della flotta.',
-            ), // Endof Component Kampfzentrum III
-
-             // Component Kampfzentrum IV
-             3=>array(
-                    'name'=>'Addestramento Base III',
-                    'description'=>'Addestramento base per equipaggi destinati alle navi pesanti della flotta.',
-            ), // Endof Component Kampfzentrum IV
-
-             // Component Kampfzentrum V
-             4=>array(
-                    'name'=>'Addestramento Intermedio I',
-                    'description'=>'Addestramento intermedio per equipaggi destinati alle navi leggere della flotta.',
-            ), // Endof Component Kampfzentrum V
-
-             // Component Kampfzentrum VI
-             5=>array(
-                    'name'=>'Addestramento Intermedio II',
-                    'description'=>'Addestramento intermedio per equipaggi destinati alle navi pesanti della flotta.',
-            ), // Endof Component Kampfzentrum VI
-
-			// Component Kampfzentrum VI
-             6=>array(
-                    'name'=>'Addestramento Avanzato I',
-                    'description'=>'Addestramento avanzato per equipaggi destinati alle navi leggere della flotta.',
-            ), // Endof Component Kampfzentrum VI
-			
-			// Component Kampfzentrum VI
-             7=>array(
-                    'name'=>'Addestramento Avanzato II',
-                    'description'=>'Addestramento avanzato per equipaggi destinati alle navi pesanti della flotta.',
-            ), // Endof Component Kampfzentrum VI
-		
-			// Component Kampfzentrum VI
-             8=>array(
-                    'name'=>'Addestramento Elite',
-                    'description'=>'Livello di addestramento massimo disponibile per ottenere i migliori Jem&#146;Hadar destinati a governare le navi del Dominion.',
-            ), // Endof Component Kampfzentrum VI
-			
-      'name'=>'Zone Addestramento',
-      ), // Endof Category Trainingseinheiten
-
-
-        // Category Quartiere
-        7=>array(
-             // Component Unterkunft I
-             0=>array(
-                    'name'=>'Sistemazione I',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
-            ), // Endof Component Unterkunft I
-
-             // Component Unterkunft II
-             1=>array(
-                    'name'=>'Sistemazione II',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
-            ), // Endof Component Unterkunft II
-
-             // Component Unterkunft III
-             2=>array(
-                    'name'=>'Sistemazione III',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
-            ), // Endof Component Unterkunft III
-
-             // Component Unterkunft IV
-             3=>array(
-                    'name'=>'Sistemazione IV',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
-            ), // Endof Component Unterkunft IV
-
-             // Component Unterkunft V
-             4=>array(
-                    'name'=>'Sistemazione V',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
-            ), // Endof Component Unterkunft V
-
-             // Component Unterkunft VI
-             5=>array(
-                    'name'=>'Sistemazione VI',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
-            ), // Endof Component Unterkunft VI
-
-             // Component Unterkunft VII
-             6=>array(
-                    'name'=>'Sistemazione VII',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
-            ), // Endof Component Unterkunft VII
-
-             // Component Unterkunft VIII
-             7=>array(
-                    'name'=>'Sistemazione VIII',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
-            ), // Endof Component Unterkunft VIII
-
-             // Component Truppendepot
-             8=>array(
-                    'name'=>'Deposito Truppe',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
-            ), // Endof Component Truppendepot
-
-      'name'=>'Alloggi',
-      ), // Endof Category Quartiere
-
-
-        // Category Kampfsysteme
-        8=>array(
-             // Component Sensorischer Scout
-             0=>array(
-                    'name'=>'Scanner Micronico',
-                    'description'=>'Gli Scanner Micronici sono studiati per equipaggiare le navi spia del Dominio, fornendo un ottimo supporto alla scansione di un pianeta e fornendo dati utili per sfuggire alle difese orbitali.',
-            ), // Endof Component Sensorischer Scout
-
-             // Component Simultane Ortung
-             1=>array(
-                    'name'=>'Sensori Guida',
-                    'description'=>'I Sensori Guida sono particolarmente adatti a non perdere il controllo di quanto accade sul campo di battaglia.',
-            ), // Endof Component Simultane Ortung
-
-             // Component Simultane Ortung
-             2=>array(
-                    'name'=>'Rilevatore Simultaneo',
-                    'description'=>'Il Rivelatore Simultaneo permette la scansione parallela di pi&ugrave; bersagli.',
-            ), // Endof Component Simultane Ortung
-
-             // Component Ungestörte Ortung
-             3=>array(
-                    'name'=>'Rilevatore Asincrono',
-                    'description'=>'Il miglior sistema basato su tecnologie tradizionali permette la scansione di aree mediante impiego di sonde camuffate.',
-            ), // Endof Component Ungestörte Ortung
-
-             // Component Gefechtsstand
-             4=>array(
-                    'name'=>'Posto di Comando',
-                    'description'=>'Il Posto di Comando &egrave; una postazione extra situata sul Ponte di Comando della nave che si occupa della coordinazione tra le varie sezioni.',
-            ), // Endof Component Gefechtsstand
-
-             // Component Sekundärbrücke
-             5=>array(
-                    'name'=>'Ponte Secondario',
-                    'description'=>'Il Ponte Secondario &egrave; una sottosezione usata unicamente durante gli scontri.',
-            ), // Endof Component Sekundärbrücke
-
-             // Component Gefechtsbrücke I
-             6=>array(
                     'name'=>'Ponte di Combattimento I',
-                    'description'=>'Soluzione progettuale che enfatizza funzionalit&agrave; ed efficacia del Ponte Secondario.',
-            ), // Endof Component Gefechtsbrücke I
+                    'description'=>'Al Core System vengono aggiunte una serie di postazioni tattiche per il controllo avanzato delle fasi di combattimento.',
+            ), // Endof Component Bussardkollektoren Typ III
 
-             // Component Gefechtsbrücke II
-             7=>array(
-                    'name'=>'Ponte di Combattimento II',
-                    'description'=>'Questa soluzione progettuale &egrave; il centro di comando definitivo per ogni tipo di conflitto ed &egrave; il risultato di decadi di studio.',
-            ), // Endof Component Gefechtsbrücke II
-
-      'name'=>'Sistemi di Combattimento',
-      ), // Endof Category Kampfsysteme
-
-
-        // Category Geheime Entwicklungen
-        9=>array(
-             // Component Verbesserte Headsets
-             0=>array(
-                    'name'=>'Intercom Migliorato',
-                    'description'=>'Sistemi di Intercomunicazione di bordo migliorato.',
-            ), // Endof Component Verbesserte Headsets
-
-             // Component Waffenaufrüstung
-             1=>array(
-                    'name'=>'Sistema Offensivo Integrato',
-                    'description'=>'Sistema di integrazione degli armamenti per le navi militari del Dominio.',
-            ), // Endof Component Waffenaufrüstung
-
-             // Component Doppelschilde
-             2=>array(
-                    'name'=>'Scudi Secondari',
-                    'description'=>'Ottimi per contrastare armi ad altissima energia, entrano in funzione non appena cedono gli scudi primari.',
-            ), // Endof Component Doppelschilde
-
-             // Component Hochenergiehülle
+             // Component Sviluppo Liv. IV
              3=>array(
-                    'name'=>'Rivestimento AntiEnergetico',
-                    'description'=>'Questo sistema riflette parte dell&#146;enegia che entra in contatto con lo scafo, deviandone una parte verso i sistemi energetici interni della nave stessa.',
-            ), // Endof Component Hochenergiehülle
+                    'name'=>'Ponte di Combattimento II',
+                    'description'=>'Versione migliorata del Ponte di Combattimento, vengono richiesti equipaggi molto esperti per un impiego efficace.',
+            ), // Endof Component Bussardkollektoren Typ IV
 
-             // Component Multiphasentarnung
+             // Component Sviluppo Liv. V
              4=>array(
-                    'name'=>'Occultamento Multifasico',
-                    'description'=>'L&#146;occultamento fornisce un grande vantaggio in combattimento e permette di avvicinarsi a pianeti con una debole rete di sensori senza destare allarme.',
-            ), // Endof Component Multiphasentarnung
+                    'name'=>'Ambiente Multicontrollo',
+                    'description'=>'Le navi con questa componente sono il vero nucleo della flotta. Possono gestire i vascelli minori durante il combattimento, aumentandone la coordinazione.',
+            ), // Endof Component Bussardkollektoren Typ V
 
-             // Component Kompletterweiterung
-             5=>array(
-                    'name'=>'Estensione Completa',
-                    'description'=>'Questo pacchetto di migliorie &egrave; disponibile solo a poche navi della Flotta ma fornisce un incremento completo a tutte le caratteristiche della nave stessa.',
-            ), // Endof Component Kompletterweiterung
+      'name'=>'Dread: Controllo/Energia',
+      ), // Endof Category V-Type Spec
 
-      'name'=>'Sviluppi Segreti',
-      ), // Endof Category Geheime Entwicklungen
+	  // Category Sistemi Controllo/Energia
+        6=>array(
+             // Component Sviluppo I
+             0=>array(
+                    'name'=>'Array a Fase Polaronica Tipo IX',
+                    'description'=>'',
+            ), // Endof Component Bussardkollektoren Typ I
 
+             // Component Sviluppo II
+             1=>array(
+                    'name'=>'Array a Fase Polaronica Tipo XII',
+                    'description'=>'',
+            ), // Endof Component Bussardkollektoren Typ II
 
+             // Component Sviluppo III
+             2=>array(
+                    'name'=>'Falange a Fase Polaronica Tipo I',
+                    'description'=>'',
+            ), // Endof Component Bussardkollektoren Typ III
+
+             // Component Sviluppo Liv. IV
+             3=>array(
+                    'name'=>'Falange a Fase Polaronica Tipo I',
+                    'description'=>'',
+            ), // Endof Component Bussardkollektoren Typ IV
+
+             // Component Sviluppo Liv. V
+             4=>array(
+                    'name'=>'Falange a Fase Polaronica Tipo I',
+                    'description'=>'',
+            ), // Endof Component Bussardkollektoren Typ V
+
+      'name'=>'Dread: Armi Polaroniche',
+      ), // Endof Category V-Type Spec
+      
+      // Category Sistemi Scafo/Scudi
+        7=>array(
+             // Component Sviluppo I
+             0=>array(
+                    'name'=>'Tecnologie Scafo/Scudi I',
+                    'description'=>'',
+            ), // Endof Component Bussardkollektoren Typ I
+
+             // Component Sviluppo II
+             1=>array(
+                    'name'=>'Tecnologie Scafo/Scudi II',
+                    'description'=>'',
+            ), // Endof Component Bussardkollektoren Typ II
+
+             // Component Sviluppo III
+             2=>array(
+                    'name'=>'Tecnologie Scafo/Scudi III',
+                    'description'=>'',
+            ), // Endof Component Bussardkollektoren Typ III
+
+             // Component Sviluppo Liv. IV
+             3=>array(
+                    'name'=>'Tecnologie Scafo/Scudi IV',
+                    'description'=>'',
+            ), // Endof Component Bussardkollektoren Typ IV
+
+             // Component Sviluppo Liv. V
+             4=>array(
+                    'name'=>'Tecnologie Scafo/Scudi V',
+                    'description'=>'',
+            ), // Endof Component Bussardkollektoren Typ V
+
+      'name'=>'Dread: Tecnologie Scafo/Scudi',
+      ), // Endof Category V-Type Spec
+      
+      // Category Sensori/Armi Planetarie
+        8=>array(
+             // Component Sviluppo I
+             0=>array(
+                    'name'=>'Sensori/Armi Planetarie I',
+                    'description'=>'',
+            ), // Endof Component Bussardkollektoren Typ I
+
+             // Component Sviluppo II
+             1=>array(
+                    'name'=>'Sensori/Armi Planetarie II',
+                    'description'=>'',
+            ), // Endof Component Bussardkollektoren Typ II
+
+             // Component Sviluppo III
+             2=>array(
+                    'name'=>'Sensori/Armi Planetarie III',
+                    'description'=>'',
+            ), // Endof Component Bussardkollektoren Typ III
+
+             // Component Sviluppo Liv. IV
+             3=>array(
+                    'name'=>'Sensori/Armi Planetarie IV',
+                    'description'=>'',
+            ), // Endof Component Bussardkollektoren Typ IV
+
+             // Component Sviluppo Liv. V
+             4=>array(
+                    'name'=>'Sensori/Armi Planetarie V',
+                    'description'=>'',
+            ), // Endof Component Bussardkollektoren Typ V
+
+      'name'=>'Dread: Sensori/Armi Planetarie',
+      ), // Endof Category V-Type Spec
+      
 ), // Endof Race Dominion
 
 

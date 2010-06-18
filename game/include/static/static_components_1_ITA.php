@@ -27,408 +27,412 @@
 $ship_components_locale=array(
 // Race Romulan
 1=>array(
-        // Category Alloggi
+        // Category Talon
         0=>array(
-             // Component Alloggi Equipaggio I
+             // Component Talon Type-I
              0=>array(
-                    'name'=>'Alloggi equipaggio I',
-                    'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
-            ), // Endof Component Alloggi Equipaggio I
+                    'name'=>'Talon Type-I',
+                    'description'=>'Primo livello di aggiornamento.',
+            ), // Endof Component M/ARA Mark I
 
-             // Component Alloggi Equipaggio II
+             // Component Talon Type-II
              1=>array(
-                    'name'=>'Alloggi equipaggio II',
-                    'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
-            ), // Endof Component Alloggi Equipaggio II
+                    'name'=>'Talon Type-II',
+                    'description'=>'Secondo livello di aggiornamento.',
+            ), // Endof Component M/ARA Mark II
 
-             // Component Alloggi Equipaggio III
+             // Component M/ARA Mark III
              2=>array(
-                    'name'=>'Alloggi equipaggio III',
-                    'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
-            ), // Endof Component Alloggi Equipaggio III
+                    'name'=>'Talon Type-III',
+                    'description'=>'Terzo livello di aggiornamento.',
+            ), // Endof Component M/ARA Mark III
 
-             // Component Alloggi Equipaggio IV
+             // Component 1500-P-C-Warpkern
              3=>array(
-                    'name'=>'Alloggi equipaggio IV',
-                    'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
-            ), // Endof Component Alloggi Equipaggio IV
+                    'name'=>'Talon Type-IV',
+                    'description'=>'Quarto livello di aggiornamento.',
+            ), // Endof Component 1500-P-C-Warpkern
+            
+            4=>array(
+                    'name'=>'Talon Type-V',
+                    'description'=>'Livello finale di aggiornamento.',
+            ), // Endof Component 1500-P-C-Warpkern
 
-             // Component Alloggi Equipaggio V
-             4=>array(
-                    'name'=>'Alloggi equipaggio V',
-                    'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
-            ), // Endof Component Alloggi Equipaggio V
-
-             // Component Alloggi Equipaggio VI
-             5=>array(
-                    'name'=>'Alloggi equipaggio VI',
-                    'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
-            ), // Endof Component Alloggi Equipaggio VI
-
-             // Component Alloggi Equipaggio VII
-             6=>array(
-                    'name'=>'Alloggi equipaggio VII',
-                    'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
-            ), // Endof Component Alloggi Equipaggio VII
-
-             // Component Alloggi Equipaggio VIII
-             7=>array(
-                    'name'=>'Alloggi equipaggio VIII',
-                    'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
-            ), // Endof Component Alloggi Equipaggio VIII
-
-             // Component Alloggi Equipaggio IX
-             8=>array(
-                    'name'=>'Alloggi equipaggio IX',
-                    'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
-            ), // Endof Component Alloggi Equipaggio IX
-
-             // Component Alloggi Equipaggio X
-             9=>array(
-                    'name'=>'Alloggi equipaggio X',
-                    'description'=>'Incrementa lo spazio abitativo a bordo della nave disponibile per l&#146;equipaggio.',
-            ), // Endof Component Alloggi Equipaggio X
-
-      'name'=>'Alloggi',
-      ), // Endof CategoryAlloggi
+      'name'=>'Sviluppo Talon',
+      ), // Endof Category Talon
 
 
-        // Category Sala Macchine
+        // Category Science
         1=>array(
-             // Component Propulsore Warp
+             // Component Science Type-I
              0=>array(
-                    'name'=>'Nucleo curvatura I',
-                    'description'=>'Il primo modello di nucleo a curvatura. L&#146;energia viene prodotta attraverso una singolarit&agrave; quantica artificiale. Incrementa la velocit&agrave; massima di fattore warp 1.2.',
-            ), // Endof Component Nucleo Curvatura
+                    'name'=>'Science Type-I',
+                    'description'=>'Primo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ I
 
-             // Component Nucleo Curvatura
+             // Component Sviluppo II
              1=>array(
-                    'name'=>'Nucleo curvatura II',
-                    'description'=>'Secondo stadio di sviluppo del nucleo a curvatura. L&#146;energia viene prodotta attraverso una singolarit&agrave; quantica artificiale. Incrementa la velocit&agrave; della nave di fattore warp 1.6.',
-            ), // Endof Component Nucleo CurvaturaI
+                    'name'=>'Science Type-II',
+                    'description'=>'Secondo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ II
 
-             // Component Nucleo CurvaturaII
+             // Component Sviluppo III
              2=>array(
-                    'name'=>'Nucleo curvatura III',
-                    'description'=>'Terzo stadio di sviluppo del nucleo a curvatura. L&#146;energia viene prodotta attraverso una singolarit&agrave; quantica artificiale. Incrementa la velocit&agrave; della nave di fattore warp 2.',
-            ), // Endof Component Nucleo CurvaturaII
+                    'name'=>'Science Type-III',
+                    'description'=>'Terzo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ III
 
-             // Component Nucleo CurvaturaV
+             // Component Sviluppo Liv. IV
              3=>array(
-                    'name'=>'Nucleo curvatura IV',
-                    'description'=>'Stadio finale dello sviluppo del nucleo a curvatura. L&#146;energia viene prodotta attraverso una singolarit&agrave; quantica artificiale. Incrementa la velocit&agrave; della nave di fattore warp 2.6 e fornisce una grande quantit&agrave; di energia.',
-            ), // Endof Component Nucleo CurvaturaV
+                    'name'=>'Science Type-IV',
+                    'description'=>'Quarto livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ IV
 
-      'name'=>'Sala macchine',
-      ), // Endof Category Maschinenraum
+             // Component Sviluppo Liv. V
+             4=>array(
+                    'name'=>'Science Type-V',
+                    'description'=>'Livello finale di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ V
+
+      'name'=>'Sviluppo Science',
+      ), // Endof Category Light Cruiser
 
 
-        // Category Primäre Waffen
+        // Category Norexan
         2=>array(
-             // Component Disgregatore MK IV
+             // Component Norexan Type-I
              0=>array(
-                    'name'=>'Disgregatore MK IV',
-                    'description'=>'Il modello base di disgregatore romulano',
-            ), // Endof Component Disgregatore MK IV
+                    'name'=>'Norexan Type-I',
+                    'description'=>'Primo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ I
 
-             // Component Disgregatore MK VI
+             // Component Sviluppo II
              1=>array(
-                    'name'=>'Disgregatore MK VI',
-                    'description'=>'Modello di disgregatore potenziato rispetto al IV ma decisamente ancora debole.',
-            ), // Endof Component Disgregatore MK VI
+                    'name'=>'Norexan Type-II',
+                    'description'=>'Secondo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ II
 
-             // Component Disgregatore MK VIII
+             // Component Sviluppo III
              2=>array(
-                    'name'=>'Disgregatore MK VIII',
-                    'description'=>'Il Disgregatore MK VIII raggiunge un livello di potenza discreto rispetto ai suoi predecessori.',
-            ), // Endof Component Disgregatore MK VIII
+                    'name'=>'Norexan Type-III',
+                    'description'=>'Terzo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ III
 
-             // Component Disgregatore MK X
+             // Component Sviluppo Liv. IV
              3=>array(
-                    'name'=>'Disgregatore MK X',
-                    'description'=>'Elevato potere distruttivo, decisamente fatale se impiegato contro vascelli piccoli.',
-            ), // Endof Component Disgregatore MK X
+                    'name'=>'Norexan Type-IV',
+                    'description'=>'Quarto livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ IV
 
-             // Component Disgregatore MK XII
+             // Component Sviluppo Liv. V
              4=>array(
-                    'name'=>'Disgregatore MK XII',
-                    'description'=>'Il ragguardevole potere distruttivo risulta efficace anche su navi di medie dimensioni.',
-            ), // Endof Component Disgregatore MK XII
-
-             // Component Disgregatore  MK XIV
+                    'name'=>'Norexan Type-V',
+                    'description'=>'Livello finale di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ V
+            
+            // Component Valdore Type-I
              5=>array(
-                    'name'=>'Disgregatore MK XIV',
-                    'description'=>'Questo modello si rivela particolarmente micidiale e viene solitamente impiegato sulle principali navi da guerra.',
-            ), // Endof Component Disgregatore  MK XIV
-
-             // Component Disgregatore MK XXI
+                    'name'=>'Valdore Type-I',
+                    'description'=>'Questo &egrave; un poderoso potenziamento per la classe Norexan. La Valdore &egrave; un incrociatore, studiato per scortare la nave da battaglia Scimitar. I suoi sistemi d&#146;amra, propulsivi e di occultamento sono superiori rispetto a quelli dell&#146;Incrociatore Pesante D´deridex, ma la sua corazza e gli scudi non sono altrettanto efficaci. La Valdore &grave; un incrociatore veramente micidiale.',
+            ), // Endof Component Bussardkollektoren Typ V
+            
+            // Component Valdore Type-II
              6=>array(
-                    'name'=>'Disgregatore MK XXI',
-                    'description'=>'Potere distruttivo enorme. Solitamente non rimane traccia alcuna della nave colpita dai Disgregatori MK XXI.',
-            ), // Endof Component Disgregatore MK XXI
-
-      'name'=>'Armi primarie',
-      ), // Endof Category Primäre Waffen
-
-
-        // Category Sekundäre Waffen
-        3=>array(
-             // Component Ionentorpedos
-             0=>array(
-                    'name'=>'Siluri ionici',
-                    'description'=>'I Siluri Ionici hanno un potere distruttivo ridotto per la scarsa reazione delle particelle accelerate e consolidate elettromagneticamente, tuttavia risultano fatali contro vascelli di ridotte dimensioni.',
-            ), // Endof Component Ionentorpedos
-
-             // Component Plasmawerfer
-             1=>array(
-                    'name'=>'Cannoni al plasma',
-                    'description'=>'I cannoni al plasma rappresentano il prototipo dei siluri al plasma. Quest&#146;arma in realt&agrave; lancia delle sfere di plasma di gas ionizzato ad altissime temperature che perdono parte della loro energia a causa della mancanza di un contenimento durante la traettoria verso il bersaglio.',
-            ), // Endof Component Plasmawerfer
-
-             // Component Plasmatorpedos MKI
-             2=>array(
-                    'name'=>'Siluri al plasma MK I',
-                    'description'=>'I siluri al plasma sono costituiti da gas ionizzati ad altissima temperatura, racchiusi in un contenimento magnetico impiegato come involucro. A contatto con una superficie non protetta l&#146;involucro si dissipa liberando la forza distruttrice del plasma.',
-            ), // Endof Component Plasmatorpedos MKI
-
-             // Component Plasmatorpedos MK II
-             3=>array(
-                    'name'=>'Siluri al plasma MK II',
-                    'description'=>'I siluri al plasma MK II sono basati sulla stessa tecnologia del modello precedente, caratterizzati da un migliore involucro elettromagnetico.',
-            ), // Endof Component Plasmatorpedos MK II
-
-             // Component Plasmatorpedos MK  V
-             4=>array(
-                    'name'=>'Siluri al plasma MK V',
-                    'description'=>'I siluri al plasma MK V rappresentano lo stadio finale dello sviluppo di questa tecnologia. L&#146;enorme consumo di energia di questo sistema d&#146;arma ne rende possibile l&#146;impiego solo sulle navi da guerra maggiori, svolgendo anche il compito di armi planetarie.',
-            ), // Endof Component Plasmatorpedos MK  V
-
-      'name'=>'Armi secondarie',
-      ), // Endof Category Sekundäre Waffen
+                    'name'=>'Valdore Type-II',
+                    'description'=>'Secondo livello di sviluppo per la classe Valdore.',
+            ), // Endof Component Bussardkollektoren Typ V
+            
+            // Component Sviluppo Liv. V
+             7=>array(
+                    'name'=>'Valdore Type-III',
+                    'description'=>'Livello finale di aggiornamento. A tutti gli effetti, questo incrociatore &egrave; paragonabile ad un incrociatore pesante.',
+            ), // Endof Component Bussardkollektoren Typ V
 
 
-        // Category Hülle / Schilde
-        4=>array(
-             // Component Duraniumpanzerung
-             0=>array(
-                    'name'=>'Corazza in duranio',
-                    'description'=>'La corazzatura standard delle navi. Il duranio &egrave; un acciaio particolarmente resistente e leggero.',
-            ), // Endof Component Duraniumpanzerung
-
-             // Component Schildemitter
-             1=>array(
-                    'name'=>'Generatori di scudi',
-                    'description'=>'Gli scudi generati da questo sistema consistono in un campo di forze antigravitazionale intorno alla nave. Se qualcosa viene a contatto dello scafo, gli scudi invertono la spinta gravitazionale in quel punto, rilfettendo ad esempio la forza d&#146;urto di un siluro.',
-            ), // Endof Component Schildemitter
-
-             // Component Regenerative Schilde
-             2=>array(
-                    'name'=>'Scudo rigenerante',
-                    'description'=>'Questo sistema automatico &egrave; capace di individuare rapidamente falle nello scafo e proiettare un campo di contenimento, capace di limitare la perdita di integrit&agrave; nella struttura dello scafo stesso.',
-            ), // Endof Component Regenerative Schilde
-
-             // Component Duranium- Tritanium- Panzerung
-             3=>array(
-                    'name'=>'Corazza duranio-tritanio',
-                    'description'=>'La corazza di duranio-tritanio rappresenta il massimo nella tecnologia di protezione degli scafi e consiste in un wafer di strati di Duranio e Tritanio sovrapposti.',
-            ), // Endof Component Duranium- Tritanium- Panzerung
-
-             // Component Primär- und Sekundärschilde
-             4=>array(
-                    'name'=>'Scudi primari e secondari',
-                    'description'=>'Attraverso un sistema di scudi doppi ed indipendenti, si raggiunge un livello di protezione mai visto a vantaggio delle navi di classe Scimitar.',
-            ), // Endof Component Primär- und Sekundärschilde
-
-      'name'=>'Scafo/Scudi',
-      ), // Endof Category Hülle / Schilde
+      'name'=>'Sviluppo Norexan',
+      ), // Endof Category Cruiser
 
 
         // Category Computersystem
-        5=>array(
-             // Component Standardrechner
+        3=>array(
+             // Component Crew Training
              0=>array(
-                    'name'=>'Computer standard',
-                    'description'=>'Modello basico del calcolatore di bordo.',
-            ), // Endof Component Standardrechner
+                    'name'=>'Basic I',
+                    'description'=>'Addestramento basico, pensato per gli equipaggi imbarcati sulla classe Talon.',
+            ), // Endof Component LCARS Grundsystem
 
-             // Component Boardcomputer
+             // Component LCARS 2.0
              1=>array(
-                    'name'=>'Computer tattico',
-                    'description'=>'Designazione per la nuova generazione di calcolatori disponibili per i vascelli romulani.',
-            ), // Endof Component Boardcomputer
+                    'name'=>'Basic II',
+                    'description'=>'Addestramento basico esteso, pensato per gli equipaggi imbarcati sulla classe Talon.',
+            ), // Endof Component LCARS 2.0
 
-             // Component Telemetrie-Auswertungs-System
+             // Component LCARS 2.5
              2=>array(
-                    'name'=>'Sistema di analisi telemetrico',
-                    'description'=>'Un enorme passo avanti nella tecnologia dei computer di bordo. La potenza di calcolo e la velocit&agrave; di comunicazione tra le varie componenti del sistema &egrave; vistosamente migliorato rispetto ai vecchi modelli.',
-            ), // Endof Component Telemetrie-Auswertungs-System
+                    'name'=>'Advanced I',
+                    'description'=>'Addestramento avanzato, pensato per gli equipaggi imbarcati sulla classe Science.',
+            ), // Endof Component LCARS 2.5
 
-             // Component Simultanrechensystem
+             // Component LCARS 2.5 Rev.2
              3=>array(
-                    'name'=>'Computer simultronico',
-                    'description'=>'Attraverso la simultaneit&agrave; delle operazioni aritmetiche e degli altri processi, possibile attraverso componenti in bio-gel, le capacit&agrave; dei computer di bordo sono ulteriormente potenziate.',
-            ), // Endof Component Simultanrechensystem
+                    'name'=>'Advanced II',
+                    'description'=>'Addestramento avanzato esteso, pensato per gli equipaggi imbarcati sulla classe Science.',
+            ), // Endof Component LCARS 2.5 Rev.2
 
-             // Component Angriffs-System
+             // Component LCARS 3.0
              4=>array(
-                    'name'=>'Sistemi d&#146;attacco',
-                    'description'=>'La migliore rappresentazione dei computer di bordo. Le funzioni di questo sistema sono nettamente pi&ugrave; potenti rispetto ai modelli precedenti, ma le richieste di spazio e di energia ne permettono l&#146;impiego solo sulle maggiori navi da guerra.',
-            ), // Endof Component Angriffs-System
+                    'name'=>'Elite I',
+                    'description'=>'Addestramento di elite, riservato agli equipaggi imbarcati sulla classe Norexan.',
+            ), // Endof Component LCARS 3.0
 
-      'name'=>'Computer',
+             // Component LCARS 3.0 (20 MegaQuads/sec)
+             5=>array(
+                    'name'=>'Elite II',
+                    'description'=>'Addestramento esteso di elite, riservato agli equipaggi imbarcati sulla classe Norexan.',
+            ), // Endof Component LCARS 3.0 (20 MegaQuads/sec)
+            
+            // Component LCARS 3.0
+             6=>array(
+                    'name'=>'Elite III',
+                    'description'=>'Addestramento di elite, riservato agli equipaggi imbarcati sulla classe D´deridex.',
+            ), // Endof Component LCARS 3.0
+
+             // Component LCARS 3.0 (20 MegaQuads/sec)
+             7=>array(
+                    'name'=>'Elite IV',
+                    'description'=>'Addestramento esteso di elite, riservato agli equipaggi imbarcati sulla classe D´deridex.',
+            ), // Endof Component LCARS 3.0 (20 MegaQuads/sec)
+
+      'name'=>'Equipaggio',
       ), // Endof Category Computersystem
 
 
-        // Category Medizin. Einrichtungen
-        6=>array(
-             // Component Lebenserhaltungs-System
+      // Category Sensori e Occultamento
+        4=>array(
+             // Component Small Array II
              0=>array(
-                    'name'=>'Supporto vitale',
-                    'description'=>'Il supporto vitale garantisce una costante riserva di aria respirabile all&#146;interno della nave.',
-            ), // Endof Component Lebenserhaltungs-System
+                    'name'=>'Sensori Base II',
+                    'description'=>'Primo aggiornamento ai sensori della fregata classe Talon.',
+            ), // Endof Component Sensori Base II
 
-             // Component Krankenstation
+             // Component Small Array III
              1=>array(
-                    'name'=>'Infermeria',
-                    'description'=>'In questa struttura vengono curati i feriti gravi o conservati i cadaveri.',
-            ), // Endof Component Krankenstation
-
-             // Component Umweltregulatoren
+                    'name'=>'Sensori Base III',
+                    'description'=>'Aggiornamento finale ai sensori della fregata classe Talon.',
+            ), // Endof Component Sensori Base III
+            
+            // Component Small Array II
              2=>array(
-                    'name'=>'Regolatore ambientale',
-                    'description'=>'Questo sistema mantiene un clima confortevole su tutti i ponti della nave.',
-            ), // Endof Component Umweltregulatoren
+                    'name'=>'Sensori II',
+                    'description'=>'Primo aggiornamento ai sensori per incrociatore leggero classe Science.',
+            ), // Endof Component Sensori Base II
 
-             // Component Notfallprozedere
+             // Component Small Array III
              3=>array(
-                    'name'=>'Procedure di emergenza',
-                    'description'=>'Una serie di regole e addestramenti impartiti all&#146;equipaggio per prepararlo ad ogni possibile evenienza.',
-            ), // Endof Component Notfallprozedere
+                    'name'=>'Sensori III',
+                    'description'=>'Aggiornamento finale ai sensori per incrociatore leggero classe Science.',
+            ), // Endof Component Sensori Base III
+            
+            4=>array(
+                    'name'=>'Sensori Avanzati II',
+                    'description'=>'Primo aggiornamento ai sensori per incrociatore classe Norexan.',
+            ), // Endof Component Sensori Base II
 
-             // Component Notsystem
-             4=>array(
-                    'name'=>'Sistema di emergenza',
-                    'description'=>'Il sistema di emergenza provvede alle funzioni base di supporto vitale e gravit&agrave; artificiale con sottosistemi ridondanti, cos&igrave; da mantenere l&#146;equipaggio in sicurezza anche in caso di gravi danni alla nave.',
-            ), // Endof Component Notsystem
-
-      'name'=>'Supporto',
-      ), // Endof Category Medizin. Einrichtungen
-
-
-        // Category Antrieb
-        7=>array(
-             // Component Warpspulen
-             0=>array(
-                    'name'=>'Bobine di curvatura',
-                    'description'=>'Le bobine di curvatura standard rappresentano i sistemi di base per raggiungere velocit&agrave; trans-luce.',
-            ), // Endof Component Warpspulen
-
-             // Component Plasmaspulen
-             1=>array(
-                    'name'=>'Bobine al plasma',
-                    'description'=>'Le bobine al plasma permettono alla nave di raggiungere velocit&agrave; maggiori rispetto alle bobine di vecchia generazione.',
-            ), // Endof Component Plasmaspulen
-
-             // Component RS Leiter
-             2=>array(
-                    'name'=>'Superconduttori',
-                    'description'=>'Questa tecnologia permette di migliorare il funzionamento delle bobine di curvatura riducendo la dispersione di energia, aumentando la velocit&agrave; massima raggiungibile.',
-            ), // Endof Component RS Leiter
-
-             // Component RS Kollektoren
-             3=>array(
-                    'name'=>'Collettore RS',
-                    'description'=>'Questi collettori realizzati con superconduttori catturano una maggiore quantit&agrave; di energia dal nucleo e la portano direttamente alle bobine senza perdite rilevanti. Questo incremento di energia aumenta la velocit&agrave; massima raggiungibile.',
-            ), // Endof Component RS Kollektoren
-
-      'name'=>'Propulsori',
-      ), // Endof Category Antrieb
-
-
-        // Category Wissenschaftsstation
-        8=>array(
-             // Component Deflektor
-             0=>array(
-                    'name'=>'Deflettore',
-                    'description'=>'Il deflettore funziona sullo stesso principio del generatore di scudi.',
-            ), // Endof Component Deflektor
-
-             // Component Sensorenphalanx
-             1=>array(
-                    'name'=>'Rilevatore',
-                    'description'=>'Questo sistema ha come scopo la scansione dello spazio a corto raggio intorno alla nave.',
-            ), // Endof Component Sensorenphalanx
-
-             // Component Sensorabtastung
-             2=>array(
-                    'name'=>'Scanner',
-                    'description'=>'Lo scanner &egrave; il risultato dello sviluppo del Rilevatore, rispetto al quale offre maggiore precisione e portata.',
-            ), // Endof Component Sensorabtastung
-
-             // Component Sensorgitter
-             3=>array(
-                    'name'=>'Griglia sensoriale',
-                    'description'=>'La griglia di sensori rappresenta un ulteriore sviluppo degli Scanner. L&#146;equipaggio viene supportato con un costante afflusso di dati da un numero maggiore di sensori, permettendo di reagire con pi&ugrave; prontezza nelle situazioni di emergenza.',
-            ), // Endof Component Sensorgitter
-
-             // Component Longrange Sensoren
-             4=>array(
-                    'name'=>'Sensori a lungo raggio',
-                    'description'=>'Questo sistema permette di raccogliere informazioni dettagliate su lunghe distanze.',
-            ), // Endof Component Longrange Sensoren
-
-             // Component Zielerfassung
+             // Component Small Array III
              5=>array(
-                    'name'=>'Puntamento bersaglio',
-                    'description'=>'Questo sistema offre una migliore capacit&agrave; di acquisire, inseguire e colpire il bersaglio.',
-            ), // Endof Component Zielerfassung
+                    'name'=>'Sensori Avanzati III',
+                    'description'=>'Aggiornamento finale ai sensori per incrociatore classe Norexan.',
+            ), // Endof Component Sensori Base III
 
-             // Component Tarnvorrichtung
              6=>array(
-                    'name'=>'Sistema di occultamento',
-                    'description'=>'Il sistema di occultamento rappresenta una tecnologia tipicamente romulana. Esso rende molto difficile rilevare la presenza della nave o colpirla in combattimento.',
-            ), // Endof Component Tarnvorrichtung
+                    'name'=>'Falange Sensoriale II',
+                    'description'=>'Primo aggiornamento ai sensori per incrociatore classe D´deridex.',
+            ), // Endof Component Sensori Base II
 
-      'name'=>'Postazione scientifica',
-      ), // Endof Category Wissenschaftsstation
+             // Component Small Array III
+             7=>array(
+                    'name'=>'Falange Sensoriale III',
+                    'description'=>'Aggiornamento finale ai sensori per incrociatore classe D´deridex.',
+            ), // Endof Component Sensori Base III
 
-
-        // Category Experimentelles
-        9=>array(
-             // Component Talaron Radiation Emitter
+      'name'=>'Sensori e Occultamento',
+      ), // Endof Category Computersystem
+      
+		// Category DDex
+        5=>array(
+             // Component D´deridex Type-I
              0=>array(
-                    'name'=>'Matrice talaronica',
-                    'description'=>'La matrice talaronica &egrave; una nuova e pericolosa arma. &Egrave; stata sviluppata dai Remani e permette lo sterminio di un intero pianeta. Pu&ograve; distruggere l&#146;equipaggio di una nave con un solo colpo. Questo sistema &egrave; applicabile alla sola classe Scimitar.',
-            ), // Endof Component Talaron Radiation Emitter
+                    'name'=>'D´deridex Type-I',
+                    'description'=>'Primo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ I
 
-             // Component Talarontarnung
+             // Component Sviluppo II
              1=>array(
-                    'name'=>'Occultamento talaronico',
-                    'description'=>'Questo sistema funziona sul principio della matrice talaronica. A differenza dell&#146;occultamento tradizionale, questo sistema permette di fare fuoco anche se la nave ha l&#146;occultamento attivato.',
-            ), // Endof Component Talarontarnung
+                    'name'=>'D´deridex Type-II',
+                    'description'=>'Secondo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ II
 
-             // Component Haluzinogene
+             // Component Sviluppo III
              2=>array(
-                    'name'=>'Allucinogeni',
-                    'description'=>'Droghe sintetiche che aumentano prontezza e reazione dell&#146;equipaggio della nave.',
-            ), // Endof Component Haluzinogene
+                    'name'=>'D´deridex Type-III',
+                    'description'=>'Terzo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ III
 
-             // Component Neuroemitter
+             // Component Sviluppo Liv. IV
              3=>array(
-                    'name'=>'Emettitore neuronico',
-                    'description'=>'Prontezza e reazione dell&#146;equipaggio sono potenziate attraverso l&#146;uso di questi innesti.',
-            ), // Endof Component Neuroemitter
+                    'name'=>'D´deridex Type-IV',
+                    'description'=>'Quarto livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ IV
 
-             // Component Subraumsonden
+             // Component Sviluppo Liv. V
              4=>array(
-                    'name'=>'Sonda subspaziale',
-                    'description'=>'La sonda subspaziale rappresenta uno sviluppo eccezionale dei sensori. Le prestazioni in portata e precisione raggiungono livelli mai sognati.',
-            ), // Endof Component Subraumsonden
+                    'name'=>'D´deridex Type-V',
+                    'description'=>'Livello finale di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ V
 
-      'name'=>'Sperimentazione',
-      ), // Endof Category Experimentelles
+      'name'=>'Sviluppo D´deridex',
+      ), // Endof Category Light Cruiser
 
+		// Category Scimitar: Sistemi Offensivi
+        6=>array(
+             // Component Scimitar: Sistemi Offensivi
+             0=>array(
+                    'name'=>'Sistemi Offensivi',
+                    'description'=>'Primo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ I
 
+             // Component Sviluppo II
+             1=>array(
+                    'name'=>'Sistemi Offensivi II',
+                    'description'=>'Secondo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ II
+
+             // Component Sviluppo III
+             2=>array(
+                    'name'=>'Sistemi Offensivi III',
+                    'description'=>'Terzo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ III
+
+             // Component Sviluppo Liv. IV
+             3=>array(
+                    'name'=>'Sistemi Offensivi IV',
+                    'description'=>'Quarto livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ IV
+
+             // Component Sviluppo Liv. V
+             4=>array(
+                    'name'=>'Sistemi Offensivi V',
+                    'description'=>'Livello finale di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ V
+
+      'name'=>'Scimitar: Sistemi Offensivi',
+      ), // Endof Category Light Cruiser
+      
+      // Category Scimitar: Scafo
+        7=>array(
+             // Component Scimitar: Scafo
+             0=>array(
+                    'name'=>'Scafo',
+                    'description'=>'Primo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ I
+
+             // Component Sviluppo II
+             1=>array(
+                    'name'=>'Scafo II',
+                    'description'=>'Secondo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ II
+
+             // Component Sviluppo III
+             2=>array(
+                    'name'=>'Scafo III',
+                    'description'=>'Terzo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ III
+
+             // Component Sviluppo Liv. IV
+             3=>array(
+                    'name'=>'Scafo IV',
+                    'description'=>'Quarto livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ IV
+
+             // Component Sviluppo Liv. V
+             4=>array(
+                    'name'=>'Scafo V',
+                    'description'=>'Livello finale di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ V
+
+      'name'=>'Scimitar: Scafo',
+      ), // Endof Category Light Cruiser
+      
+      // Category Scimitar: Motori e Occultamento
+        8=>array(
+             // Component Scimitar: Motori e Occultamento
+             0=>array(
+                    'name'=>'Motori e Occultamento',
+                    'description'=>'Primo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ I
+
+             // Component Sviluppo II
+             1=>array(
+                    'name'=>'Motori e Occultamento II',
+                    'description'=>'Secondo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ II
+
+             // Component Sviluppo III
+             2=>array(
+                    'name'=>'Motori e Occultamento III',
+                    'description'=>'Terzo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ III
+
+             // Component Sviluppo Liv. IV
+             3=>array(
+                    'name'=>'Motori e Occultamento IV',
+                    'description'=>'Quarto livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ IV
+
+             // Component Sviluppo Liv. V
+             4=>array(
+                    'name'=>'Motori e Occultamento V',
+                    'description'=>'Livello finale di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ V
+
+      'name'=>'Scimitar: Motori e Occultamento',
+      ), // Endof Category Light Cruiser
+      
+      // Category Scimitar: Doppi Scudi
+        9=>array(
+             // Component Scimitar: Doppi Scudi
+             0=>array(
+                    'name'=>'Doppi Scudi',
+                    'description'=>'Primo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ I
+
+             // Component Sviluppo II
+             1=>array(
+                    'name'=>'Doppi Scudi II',
+                    'description'=>'Secondo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ II
+
+             // Component Sviluppo III
+             2=>array(
+                    'name'=>'Doppi Scudi III',
+                    'description'=>'Terzo livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ III
+
+             // Component Sviluppo Liv. IV
+             3=>array(
+                    'name'=>'Doppi Scudi IV',
+                    'description'=>'Quarto livello di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ IV
+
+             // Component Sviluppo Liv. V
+             4=>array(
+                    'name'=>'Doppi Scudi V',
+                    'description'=>'Livello finale di aggiornamento.',
+            ), // Endof Component Bussardkollektoren Typ V
+
+      'name'=>'Scimitar: Doppi Scudi',
+      ), // Endof Category Light Cruiser
+      
 ), // Endof Race Romulaner
 
 
