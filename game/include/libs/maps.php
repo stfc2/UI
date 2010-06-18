@@ -70,6 +70,8 @@ class maps {
 				$this->str_name = 'Name:';
 				$this->str_class = 'Klasse:';
 				$this->str_uninhabited = 'unbewohnt';
+				$this->str_range = 'Range:';
+				$this->str_outrange = 'Outside optimal range';
 			break;
 			case 'ENG':
 				$this->str_sector = 'Sector';
@@ -81,6 +83,8 @@ class maps {
 				$this->str_name = 'Name:';
 				$this->str_class = 'Class:';
 				$this->str_uninhabited = 'uninhabited';
+				$this->str_range = 'Range:';
+				$this->str_outrange = 'Outside optimal range';
 			break;
 			case 'ITA':
 				$this->str_sector = 'Settore';
@@ -92,6 +96,8 @@ class maps {
 				$this->str_name = 'Nome:';
 				$this->str_class = 'Classe:';
 				$this->str_uninhabited = 'disabitato';
+				$this->str_range = 'Distanza:';
+				$this->str_outrange = 'Fuori portata ottimale';
 			break;
 		}
         }
@@ -107,6 +113,8 @@ class maps {
             $this->str_name = 'Name:';
             $this->str_class = 'Class:';
             $this->str_uninhabited = 'uninhabited';
+            $this->str_range = 'Range:';
+            $this->str_outrange = 'Outside optimal range';
         }
     }
 
@@ -324,7 +332,24 @@ class maps {
     }
 
     function create_sector_map($sector_id) {
+
+        include_once('include/libs/moves.php');	   
+
         global $db, $game;
+
+        ////////// Retrieve coordinates of the user planet capital
+
+        $sql = 'SELECT system_id FROM planets WHERE planet_id = '.$game->player['user_capital'];
+        if(!$capitalsystem = $db->queryrow($sql)) {
+            message(DATABASE_ERROR, 'Could not query starsystems data');
+        }
+
+        $sql = 'SELECT * FROM starsystems WHERE system_id = '.$capitalsystem['system_id'];
+        if(!$capitalcoord = $db->queryrow($sql)) {
+            message(DATABASE_ERROR, 'Could not query starsystems data');
+        }
+
+        ///////////
 
         if( ($sector_id < 1) || ($sector_id > $this->max_sectors) ) {
             message(GENERAL, 'Invalid sector id '.$sector_id);
@@ -379,7 +404,29 @@ class maps {
 
             imagefilledellipse($im, $system['system_map_x'], $system['system_map_y'], $star_size, $star_size, $star_color);
 
-            $map_html .= '<area href="'.parse_link('a=tactical_cartography&system_id='.encode_system_id($system['system_id'])).'" shape="circle" coords="'.$system['system_map_x'].', '.$system['system_map_y'].', '.$star_size.'" onmouseover="return overlib(\''.$system['system_name'].'<br>'.$this->str_planets.' '.$system['system_n_planets'].'\', CAPTION, \''.$this->str_details.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">';
+            ////////////////// Calculate the distance in A.U. between the capital system and the target one
+
+            if ($capitalcoord['system_id'] != $system['system_id']) {
+                $distance = get_distance(array($capitalcoord['system_global_x'], $capitalcoord['system_global_y']),
+                                array($system['system_global_x'], $system['system_global_y']));
+                $distance = round($distance, 2);
+            }
+            else
+            {
+                $distance = 0;
+            }
+
+            if($distance > MAX_BOUND_RANGE) {
+                $distance_str = '<br>'.$this->str_range.$distance.' A.U.<br>'.$this->str_outrange;
+            }
+            else
+            {
+                $distance_str = '<br>'.$this->str_range.$distance.' A.U.<br>';
+            }
+
+            /////////////////
+
+            $map_html .= '<area href="'.parse_link('a=tactical_cartography&system_id='.encode_system_id($system['system_id'])).'" shape="circle" coords="'.$system['system_map_x'].', '.$system['system_map_y'].', '.$star_size.'" onmouseover="return overlib(\''.$system['system_name'].'<br>'.$this->str_planets.' '.$system['system_n_planets'].$distance_str.'\', CAPTION, \''.$this->str_details.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">';
 
             $used_fields[$coord_id] = $system['system_id'];
         }

@@ -1456,7 +1456,7 @@ echo'
 	}
 
 	function init_player($awaiting_click = 0) {
-		global $db, $RACE_DATA;
+		global $db, $RACE_DATA, $MAX_POINTS;
 
 		if(empty($this->player)) {
 			message(GENERAL, 'Invalid call of game->init_player(): game::$player is empty');
@@ -1636,6 +1636,14 @@ echo'
 					message(DATABASE_ERROR, 'Could not update user capital data');
 				}
 
+				$sql = 'UPDATE planets
+				        SET planet_available_points = '.$MAX_POINTS[1].'
+				        WHERE planet_id = '.$planet_id;
+
+				if(!$db->query($sql)) {
+					message(DATABASE_ERROR, 'Could not update capital planet structure points');
+				}
+
 				if(!$db->query('SET @i=0')) {
 					message(DATABASE_ERROR, 'Could not set sql iterator variable for planet owner enum! SKIP');
 				}
@@ -1648,6 +1656,8 @@ echo'
 				if(!$db->query($sql)) {
 					message(DATABASE_ERROR, 'Could not update planet owner enum data! SKIP');
 				}
+
+				$this->refactor_structure_points($planet_id, $this->uid);
 
 				$this->player['user_capital'] = $planet_id;
 				$this->player['pending_capital_choice'] = 0;
@@ -2093,6 +2103,13 @@ echo'
 		return create_planet($user_id, $id_type, $id_value);
 	}
 
+	// Return the distance between two systems
+	function get_distance($s_system, $d_system){
+		include_once('include/libs/moves.php');
+
+		return get_distance($s_system, $d_system);
+	}
+
 	function uc_get($uid) {
 		if( isset($uid) && ( (!isset($this->uid_cache[$uid])) || (empty($this->uid_cache[$uid]))) ) {
 			global $db;
@@ -2199,9 +2216,58 @@ echo'
 		return($picked_quadrant);
 	}
 
+	function refactor_structure_points($capital, $user_id)
+	{
+		global $db, $MAX_POINTS;
+
+		////////// Recupero le coordinate del pianeta capitale del giocatore
+
+		$sql = 'SELECT system_id FROM planets WHERE planet_id = '.$capital;
+		if(!$capitalsystem = $db->queryrow($sql)) {
+			message(DATABASE_ERROR, 'Could not query planets data');
+		}
+
+		$sql = 'SELECT * FROM starsystems WHERE system_id = '.$capitalsystem['system_id'];
+		if(!$capitalcoord = $db->queryrow($sql)) {
+			message(DATABASE_ERROR, 'Could not query starsystems data');
+		}
+
+		///////////
+
+		$sql = "SELECT p.planet_id, p.system_id, ss.system_global_x, ss.system_global_y
+		        FROM planets p INNER JOIN starsystems ss ON p.system_id = ss.system_id
+		        WHERE p.planet_owner = ".$user_id." AND p.planet_id != ".$capital;
+
+		if(!$q_planets = $db->query($sql)) {
+			message(DATABASE_ERROR, 'Could not query user planets data');
+		}
+
+		// DC: In God we trust
+		while($_temp = $db->fetchrow($q_planets)) {
+			if ($capitalcoord['system_id'] != $_temp['system_id']) {
+				$distance = $this->get_distance(array($capitalcoord['system_global_x'], $capitalcoord['system_global_y']),
+				array($_temp['system_global_x'], $_temp['system_global_y']));
+				$distance = round($distance, 2);
+			}
+			else {
+				$distance = 0;
+			}
+
+			if($distance > MAX_BOUND_RANGE) {
+				$sql = 'UPDATE planets SET planet_available_points = '.$MAX_POINTS[2].'
+				        WHERE planet_id = '.$_temp['planet_id'];
+			}
+			else {
+				$sql = 'UPDATE planets SET planet_available_points = '.$MAX_POINTS[0].'
+				        WHERE planet_id = '.$_temp['planet_id'];
+			}
+			$db->query($sql);
+		}
+	}
+
 	function set_planet($quadrant,$type)
 	{
-		global $ACTUAL_TICK,$db;
+		global $ACTUAL_TICK,$db,$MAX_POINTS;
 
 		// Check if player REALLY doesn't have already a planet
 		$sql = 'SELECT planet_id FROM planets WHERE planet_owner = '.$this->player['user_id'];
@@ -2263,6 +2329,14 @@ echo'
 
 		if(!$db->query($sql)) {
 			message(DATABASE_ERROR, 'Could not update user rest time');
+		}
+
+		$sql = 'UPDATE planets
+		        SET planet_available_points = '.$MAX_POINTS[1].'
+		        WHERE planet_id = '.$planet_id;
+
+		if(!$db->query($sql)) {
+			message(DATABASE_ERROR, 'Could not update capital planet structure points');
 		}
 	}
 

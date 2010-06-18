@@ -228,6 +228,8 @@ define('SHIP_RUST_CHECK', 700);
 
 define ('PLANETARY_SENSOR_VALUE', 450);
 
+// Optimum distance from the capital system to gain maximum structure points
+define('MAX_BOUND_RANGE', 20000);
 
 // Planets and colonies names
 define ('UNINHABITATED_PLANET', 'Inesplorato');
@@ -490,6 +492,8 @@ $MAX_POINTS = array(
     0 => 677,
 
     1 => 1173,
+
+    2 => 320,
 
 );
 
