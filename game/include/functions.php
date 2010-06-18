@@ -529,7 +529,6 @@ function GetVisibility($sensor1,$cloak1,$ships1,$sensor2,$cloak2,$sensor3,$fligh
 	// Calculate fleet visibility only for outer system flights
 	if($flight_duration > 6) {
 		// Larger the fleet, easier the detection on sensor; cap to 300 incoming ships
-		if($ships1 > 299) $ships1 = 299;
 		$fleet_signature = 1300-($ships1/2.12)-pow($ships1/8.803,2);
 		if ($fleet_signature < 1) $fleet_signature = 1;
 		if ($fleet_signature > 1300) $fleet_signature = 1300;
@@ -1354,7 +1353,7 @@ class game {
 		<select name="login_sitting" size="4" style="width: 100px;" onChange="document.sittingselect.submit()">';
 
 		$select_size = ($db->num_rows($susr) + 1);
-		if($select_size==1) $template_vars['USER_SITTING'].='<option></option>';	
+		if($select_size==1) $template_vars['USER_SITTING'].='<option></option>';
 
 		while($sittinguser = $db->fetchrow($susr)) 
 			$template_vars['USER_SITTING'].='<option value="'.$sittinguser['user_id'].'">'.$sittinguser['user_name'].'</option>';
@@ -1568,7 +1567,7 @@ echo'
 				{
 					/* 07/01/09 - AC: Removed update field last_active with sitting */
 					$sql = 'UPDATE user
-					        SET num_sitting=num_sitting+1,
+					        SET num_sitting=num_sitting+1
 					        WHERE user_id = '.$this->uid;
 					$db->query($sql);
 				}
