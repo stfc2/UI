@@ -521,23 +521,25 @@ $game->out('
 
     // 15/12/08 - AC: No FOW for admins and for players that belongs to the same alliance 
     //            AND has rights to see tactical info.
-    if($game->player['user_auth_level'] == STGC_DEVELOPER ||
+    if ($game->player['user_auth_level'] == STGC_DEVELOPER ||
        ($game->player['user_alliance'] == $user['user_alliance'] &&
         $game->player['user_alliance_rights3'] == 1))
         $sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
                    FROM (planets pl) LEFT JOIN (starsystems sys) on sys.system_id = pl.system_id
                    WHERE pl.planet_owner="'.$user['user_id'].'" ORDER BY pl.planet_name';
+    // Otherwise show only known planets
     else {
         $sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
                    FROM (planets pl)
-                   LEFT JOIN (starsystems sys) on sys.system_id = pl.system_id
-                   LEFT JOIN (planet_details pd) on pl.system_id = pd.system_id
-                   WHERE pl.planet_owner="'.$user['user_id'].'" AND
+                   LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id
+                   LEFT JOIN (planet_details pd) ON pl.system_id = pd.system_id
+                   WHERE pl.planet_owner = "'.$user['user_id'].'" AND
                          pd.user_id = "'.$game->player['user_id'].'" AND
                          pd.log_code = 500
                    GROUP BY pl.planet_id
                    ORDER BY pl.planet_name';
     }
+
     $planetquery=$db->query($sql_pl);
     $numero_righe = $db->num_rows($planetquery);
     if($numero_righe == 0) {
