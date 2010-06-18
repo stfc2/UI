@@ -226,7 +226,7 @@ define('SHIP_RUST_CHECK', 700);
 
 // Indicative value of the sensor's power, reference value = 200
 
-define ('PLANETARY_SENSOR_VALUE', 300);
+define ('PLANETARY_SENSOR_VALUE', 450);
 
 
 // Planets and colonies names
