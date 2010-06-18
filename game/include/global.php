@@ -209,7 +209,7 @@ define('NOTICE', 3);
 
 
 // Constants for ships's refit
-define('REFIT_TICK', 5);
+define('REFIT_TICK', 3);
 
 define('NEXT_REFIT_TICK', 2400);
 
