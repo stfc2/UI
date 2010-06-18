@@ -26,71 +26,71 @@ $SHIP_TORSO = array(
 
     0 => array(
 
-    	// Scout
+    	// Fighter
 
 	    0 => array(
 
-			0 => 2150,  // Metal
+			0 => 30000,  // Metal
 
-			1 => 1338,  // Minerals
+			1 => 30000,  // Minerals
 
-			2 => 2960,  // Latinum
+			2 => 24000,  // Latinum
 
-			3 => 15,  // Min. Unit 1(L. Infanterie)
+			3 => 5,  // Min. Unit 1(L. Infanterie)
 
 			4 => 0,  // Min. Unit 2 (Sturmtruppe)
 
 			5 => 0,  // Min. Unit 3 (Hazard Team)
 
-			6 => 1,  // Min. Unit 4 (Commander)
+			6 => 0,  // Min. Unit 4 (Commander)
 
-			7 => 15,  // Max Unit 1 (L. Infanterie)
+			7 => 5,  // Max Unit 1 (L. Infanterie)
 
 			8 => 0,  // Max Unit 2 (Sturmtruppe)
 
 			9 => 0,  // Max Unit 3 (Hazard Team)
 
-			10 => 1,  // Max Unit 4 (Commander)
+			10 => 0,  // Max Unit 4 (Commander)
 
-			11 => 0,  // Unit 5 (Offizier)
+			11 => 1,  // Unit 5 (Offizier)
 
-			12 => 1,  // Unit 6 (Medizinisches Personal)
+			12 => 0,  // Unit 6 (Medizinisches Personal)
 
-			13 => 20,  // Buildtime (in 5 Minuten Schritten)
+			13 => 5,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 0,   // Value1 (Leichte Waffen)
+			14 => 15,   // Value1 (Leichte Waffen)
 
-			15 => 0,   // Value2 (Schwere Waffen)
+			15 => 5,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 0,   // Value4 (Schildstärke)
+			17 => 100,   // Value4 (Schildstärke)
 
-			18 => 10,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 100,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 4,   // Value6 (Reaktionsgeschw.)
+			19 => 13,   // Value6 (Reaktionsgeschw.)
 
-			20 => 2,   // Value7 (Bereitschaft)
+			20 => 18,   // Value7 (Bereitschaft)
 
-			21 => 10,   // Value8 (Wendigkeit)
+			21 => 20,   // Value8 (Wendigkeit)
 
-			22 => 16,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 6.9,   // Value10 (Warp)
+			23 => 7.5,   // Value10 (Warp)
 
-			24 => 12,   // Value11 (Sensoren)
+			24 => 5,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 8,   // Value13 (Energy Available)
+			26 => 40,   // Value13 (Energy Available)
 
-			27 => 2,   // Value14 (Used Energy)
+			27 => 40,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Scout',  // Name
+			29 => 'Fighter',  // Name
 
-			30 => 15,  // Benötige Arbeiter zum Bau
+			30 => 60,  // Benötige Arbeiter zum Bau
 
 			31 => 'Bei der Danube Klasse handelt es sich um Kurzstrecken Aufklärer. Da hier alle Energie für die Sensoren benötigt wird, sind diese Schiffe unbewaffnet.',
 
@@ -100,13 +100,13 @@ $SHIP_TORSO = array(
 
 	    1 => array(
 
-			0 => 4250,  // Metal
+			0 => 80000,  // Metal
 
-			1 => 5800,  // Minerals
+			1 => 80000,  // Minerals
 
-			2 => 4640,  // Latinum
+			2 => 64000,  // Latinum
 
-			3 => 56,  // Min. Unit 1(L. Infanterie)
+			3 => 30,  // Min. Unit 1(L. Infanterie)
 
 			4 => 0,  // Min. Unit 2 (Sturmtruppe)
 
@@ -114,7 +114,7 @@ $SHIP_TORSO = array(
 
 			6 => 1,  // Min. Unit 4 (Commander)
 
-			7 => 56,  // Max Unit 1 (L. Infanterie)
+			7 => 30,  // Max Unit 1 (L. Infanterie)
 
 			8 => 0,  // Max Unit 2 (Sturmtruppe)
 
@@ -122,45 +122,45 @@ $SHIP_TORSO = array(
 
 			10 => 1,  // Max Unit 4 (Commander)
 
-			11 => 2,  // Unit 5 (Offizier)
+			11 => 3,  // Unit 5 (Offizier)
 
 			12 => 1,  // Unit 6 (Medizinisches Personal)
 
-			13 => 40,  // Buildtime (in 5 Minuten Schritten)
+			13 => 10,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 15,   // Value1 (Leichte Waffen)
+			14 => 30,   // Value1 (Leichte Waffen)
 
-			15 => 0,   // Value2 (Schwere Waffen)
+			15 => 15,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 5,   // Value4 (Schildstärke)
+			17 => 400,   // Value4 (Schildstärke)
 
-			18 => 20,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 1000,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 2,   // Value6 (Reaktionsgeschw.)
+			19 => 11,   // Value6 (Reaktionsgeschw.)
 
-			20 => 1,   // Value7 (Bereitschaft)
+			20 => 15,   // Value7 (Bereitschaft)
 
-			21 => 5,   // Value8 (Wendigkeit)
+			21 => 12,   // Value8 (Wendigkeit)
 
-			22 => 5,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 3.4,   // Value10 (Warp)
+			23 => 6.5,   // Value10 (Warp)
 
 			24 => 5,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 10,   // Value13 (Energy Available)
+			26 => 30,   // Value13 (Energy Available)
 
-			27 => 4,   // Value14 (Used Energy)
+			27 => 30,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Transporter',  // Name
+			29 => 'Cargo',  // Name
 
-			30 => 105,  // Benötige Arbeiter zum Bau
+			30 => 350,  // Benötige Arbeiter zum Bau
 
 			31 => 'Mit dem Transporter kann man entweder 4000 Rohstoffe bzw. 400 Einheiten transportieren, oder sie mit auf einen Angriff schicken. Sie sind relativ langsam, dafür ist ihre Verteidigung akzeptabel.',
 
@@ -172,13 +172,13 @@ $SHIP_TORSO = array(
 
 	    2 => array(
 
-			0 => 59900,  // Metal
+			0 => 150000,  // Metal
 
-			1 => 19450,  // Minerals
+			1 => 150000,  // Minerals
 
-			2 => 32360,  // Latinum
+			2 => 120000,  // Latinum
 
-			3 => 104,  // Min. Unit 1(L. Infanterie)
+			3 => 260,  // Min. Unit 1(L. Infanterie)
 
 			4 => 0,  // Min. Unit 2 (Sturmtruppe)
 
@@ -186,7 +186,7 @@ $SHIP_TORSO = array(
 
 			6 => 3,  // Min. Unit 4 (Commander)
 
-			7 => 200,  // Max Unit 1 (L. Infanterie)
+			7 => 260,  // Max Unit 1 (L. Infanterie)
 
 			8 => 0,  // Max Unit 2 (Sturmtruppe)
 
@@ -194,255 +194,255 @@ $SHIP_TORSO = array(
 
 			10 => 3,  // Max Unit 4 (Commander)
 
-			11 => 16,  // Unit 5 (Offizier)
+			11 => 20,  // Unit 5 (Offizier)
 
-			12 => 2,  // Unit 6 (Medizinisches Personal)
+			12 => 5,  // Unit 6 (Medizinisches Personal)
 
-			13 => 170,  // Buildtime (in 5 Minuten Schritten)
+			13 => 75,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 10,   // Value1 (Leichte Waffen)
+			14 => 50,   // Value1 (Leichte Waffen)
 
-			15 => 0,   // Value2 (Schwere Waffen)
+			15 => 50,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 10,   // Value4 (Schildstärke)
+			17 => 1000,   // Value4 (Schildstärke)
 
-			18 => 50,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 800,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 0,   // Value6 (Reaktionsgeschw.)
+			19 => 17,   // Value6 (Reaktionsgeschw.)
 
-			20 => 0,   // Value7 (Bereitschaft)
+			20 => 22,   // Value7 (Bereitschaft)
 
-			21 => 0,   // Value8 (Wendigkeit)
+			21 => 15,   // Value8 (Wendigkeit)
 
 			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 5.4,   // Value10 (Warp)
+			23 => 7.5,   // Value10 (Warp)
 
-			24 => 0,   // Value11 (Sensoren)
+			24 => 10,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 15,   // Value13 (Energy Available)
+			26 => 100,   // Value13 (Energy Available)
 
-			27 => 5,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Kolonisationsschiff',  // Name
+			29 => 'Colonizzatrice',  // Name
 
-			30 => 1955,  // Benötige Arbeiter zum Bau
+			30 => 4000,  // Benötige Arbeiter zum Bau
 
 			31 => 'Mit dem Kolonieschiff kannst du einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerstört hast, geht das Kolonieschiff verloren (da seine Holoemitter zur Simulation erster Einrichtungen demontiert werden) und der Planet steht unter deinem Kommando.',
 
 	    ),
 
-        // Sabre
+        // No ship
 
 	    3 => array(
 
-			0 => 13320,  // Metal
+			0 => 100000000,  // Metal
 
-			1 => 19410,  // Minerals
+			1 => 1,  // Minerals
 
-			2 => 6528,  // Latinum
+			2 => 1,  // Latinum
 
-			3 => 25,  // Min. Unit 1(L. Infanterie)
+			3 => 1,  // Min. Unit 1(Centurion)
 
-			4 => 0,  // Min. Unit 2 (Sturmtruppe)
+			4 => 1,  // Min. Unit 2 (Rem. Truppen)
 
-			5 => 0,  // Min. Unit 3 (Hazard Team)
+			5 => 1,  // Min. Unit 3 (Tal Shiar)
 
-			6 => 0,  // Min. Unit 4 (Commander)
+			6 => 1,  // Min. Unit 4 (Commander)
 
-			7 => 50,  // Max Unit 1 (L. Infanterie)
+			7 => 1,  // Max Unit 1 (Centurion)
 
-			8 => 10,  // Max Unit 2 (Sturmtruppe)
+			8 => 1,  // Max Unit 2 (Rem. Truppen)
 
-			9 => 4,  // Max Unit 3 (Hazard Team)
+			9 => 1,  // Max Unit 3 (Tal Shiar)
 
-			10 => 2,  // Max Unit 4 (Commander)
+			10 => 1,  // Max Unit 4 (Commander)
 
-			11 => 5,  // Unit 5 (Offizier)
-
-			12 => 3,  // Unit 6 (Medizinisches Personal)
-
-			13 => 119,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 70,   // Value1 (Leichte Waffen)
-
-			15 => 0,   // Value2 (Schwere Waffen)
-
-			16 => 0,   // Value3 (Planetare Waffen)
-
-			17 => 10,   // Value4 (Schildstärke)
-
-			18 => 200,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 7,   // Value6 (Reaktionsgeschw.)
-
-			20 => 11,   // Value7 (Bereitschaft)
-
-			21 => 34,   // Value8 (Wendigkeit)
-
-			22 => 10,   // Value9 (Erfahrung)
-
-			23 => 7,   // Value10 (Warp)
-
-			24 => 10,   // Value11 (Sensoren)
-
-			25 => 0,   // Value12 (Tarnung)
-
-			26 => 17,   // Value13 (Energy Available)
-
-			27 => 10,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Saber',  // Name
-
-			30 => 168,  // Benötige Arbeiter zum Bau
-
-			31 => 'Die Sabre ist eine der neusten Entwicklungen der Förderation im Bereich der Fregatten. Die modulare Bauweise gestattet eine höhere Aufrüstfähigkeit als der Miranda. Ihre Vielseitigkeit sollte sie in keiner Flotte fehlen.',
-
-	    ),
-
-    	// Steamrunner
-
-	    4 => array(
-
-			0 => 23842,  // Metal
-
-			1 => 14064,  // Minerals
-
-			2 => 7680,  // Latinum
-
-			3 => 20,  // Min. Unit 1(L. Infanterie)
-
-			4 => 0,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 5,  // Min. Unit 3 (Hazard Team)
-
-			6 => 0,  // Min. Unit 4 (Commander)
-
-			7 => 100,  // Max Unit 1 (L. Infanterie)
-
-			8 => 50,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 25,  // Max Unit 3 (Hazard Team)
-
-			10 => 6,  // Max Unit 4 (Commander)
-
-			11 => 14,  // Unit 5 (Offizier)
-
-			12 => 0,  // Unit 6 (Medizinisches Personal)
-
-			13 => 119,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 64,   // Value1 (Leichte Waffen)
-
-			15 => 115,   // Value2 (Schwere Waffen)
-
-			16 => 18,   // Value3 (Planetare Waffen)
-
-			17 => 360,   // Value4 (Schildstärke)
-
-			18 => 15,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 10,   // Value6 (Reaktionsgeschw.)
-
-			20 => 8,   // Value7 (Bereitschaft)
-
-			21 => 28,   // Value8 (Wendigkeit)
-
-			22 => 10,   // Value9 (Erfahrung)
-
-			23 => 4.6,   // Value10 (Warp)
-
-			24 => 10,   // Value11 (Sensoren)
-
-			25 => 0,   // Value12 (Tarnung)
-
-			26 => 18,   // Value13 (Energy Available)
-
-			27 => 10,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Steamrunner',  // Name
-
-			30 => 175,  // Benötige Arbeiter zum Bau
-
-			31 => 'Die Steamrunner Klasse wurde ursprünglich als schnell baubares Aushilfsschiff dienen doch ihre hohe Manövrierbarkeit und moderate Bewaffnung ließen sie schnell die ältere Elite verdrängen.',
-
-	    ),
-
-       	// Intrepid
-
-	    5 => array(
-
-			0 => 34800,  // Metal
-
-			1 => 29800,  // Minerals
-
-			2 => 25450,  // Latinum
-
-			3 => 40,  // Min. Unit 1(L. Infanterie)
-
-			4 => 10,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 0,  // Min. Unit 3 (Hazard Team)
-
-			6 => 2,  // Min. Unit 4 (Commander)
-
-			7 => 90,  // Max Unit 1 (L. Infanterie)
-
-			8 => 25,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 10,  // Max Unit 3 (Hazard Team)
-
-			10 => 6,  // Max Unit 4 (Commander)
-
-			11 => 11,  // Unit 5 (Offizier)
+			11 => 1,  // Unit 5 (Offizier)
 
 			12 => 1,  // Unit 6 (Medizinisches Personal)
 
-			13 => 195,  // Buildtime (in 5 Minuten Schritten)
+			13 => 1,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 180,   // Value1 (Leichte Waffen)
+			14 => 1,   // Value1 (Leichte Waffen)
 
-			15 => 75,   // Value2 (Schwere Waffen)
+			15 => 1,   // Value2 (Schwere Waffen)
 
-			16 => 0,   // Value3 (Planetare Waffen)
+			16 => 1,   // Value3 (Planetare Waffen)
 
-			17 => 460,   // Value4 (Schildstärke)
+			17 => 1,   // Value4 (Schildstärke)
 
-			18 => 380,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 1,   // Value5 (Hülle bzw. Hitpoints)
 
-			19 => 16,   // Value6 (Reaktionsgeschw.)
+			19 => 1,   // Value6 (Reaktionsgeschw.)
 
-			20 => 24,   // Value7 (Bereitschaft)
+			20 => 1,   // Value7 (Bereitschaft)
 
-			21 => 32,   // Value8 (Wendigkeit)
+			21 => 1,   // Value8 (Wendigkeit)
 
-			22 => 10,   // Value9 (Erfahrung)
+			22 => 1,   // Value9 (Erfahrung)
 
-			23 => 8.15,   // Value10 (Warp)
+			23 => 1,   // Value10 (Warp)
 
-			24 => 18,   // Value11 (Sensoren)
+			24 => 1,   // Value11 (Sensoren)
 
-			25 => 0,   // Value12 (Tarnung)
+			25 => 1,   // Value12 (Tarnung)
 
-			26 => 61,   // Value13 (Energy Available)
+			26 => 1,   // Value13 (Energy Available)
 
-			27 => 11,   // Value14 (Used Energy)
+			27 => 1,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Intrepid',  // Name
+			29 => 'Talon Class',  // Name
 
-			30 => 380,  // Benötige Arbeiter zum Bau
+			30 => 1,  // Benötige Arbeiter zum Bau
+
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+
+	    ),
+
+    	// No ship
+
+	    4 => array(
+
+			0 => 100000000,  // Metal
+
+			1 => 1,  // Minerals
+
+			2 => 1,  // Latinum
+
+			3 => 1,  // Min. Unit 1(Centurion)
+
+			4 => 1,  // Min. Unit 2 (Rem. Truppen)
+
+			5 => 1,  // Min. Unit 3 (Tal Shiar)
+
+			6 => 1,  // Min. Unit 4 (Commander)
+
+			7 => 1,  // Max Unit 1 (Centurion)
+
+			8 => 1,  // Max Unit 2 (Rem. Truppen)
+
+			9 => 1,  // Max Unit 3 (Tal Shiar)
+
+			10 => 1,  // Max Unit 4 (Commander)
+
+			11 => 1,  // Unit 5 (Offizier)
+
+			12 => 1,  // Unit 6 (Medizinisches Personal)
+
+			13 => 1,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 1,   // Value1 (Leichte Waffen)
+
+			15 => 1,   // Value2 (Schwere Waffen)
+
+			16 => 1,   // Value3 (Planetare Waffen)
+
+			17 => 1,   // Value4 (Schildstärke)
+
+			18 => 1,   // Value5 (Hülle bzw. Hitpoints)
+
+			19 => 1,   // Value6 (Reaktionsgeschw.)
+
+			20 => 1,   // Value7 (Bereitschaft)
+
+			21 => 1,   // Value8 (Wendigkeit)
+
+			22 => 1,   // Value9 (Erfahrung)
+
+			23 => 1,   // Value10 (Warp)
+
+			24 => 1,   // Value11 (Sensoren)
+
+			25 => 1,   // Value12 (Tarnung)
+
+			26 => 1,   // Value13 (Energy Available)
+
+			27 => 1,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Talon Class',  // Name
+
+			30 => 1,  // Benötige Arbeiter zum Bau
+
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+
+	    ),
+
+       	// Sabre
+
+	    5 => array(
+
+			0 => 100000,  // Metal
+
+			1 => 100000,  // Minerals
+
+			2 => 80000,  // Latinum
+
+			3 => 36,  // Min. Unit 1(L. Infanterie)
+
+			4 => 9,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 0,  // Min. Unit 3 (Hazard Team)
+
+			6 => 1,  // Min. Unit 4 (Commander)
+
+			7 => 36,  // Max Unit 1 (L. Infanterie)
+
+			8 => 9,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 0,  // Max Unit 3 (Hazard Team)
+
+			10 => 1,  // Max Unit 4 (Commander)
+
+			11 => 6,  // Unit 5 (Offizier)
+
+			12 => 2,  // Unit 6 (Medizinisches Personal)
+
+			13 => 10,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 250,   // Value1 (Leichte Waffen)
+
+			15 => 150,   // Value2 (Schwere Waffen)
+
+			16 => 10,   // Value3 (Planetare Waffen)
+
+			17 => 500,   // Value4 (Schildstärke)
+
+			18 => 350,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 10,   // Value6 (Reaktionsgeschw.)
+
+			20 => 15,   // Value7 (Bereitschaft)
+
+			21 => 25,   // Value8 (Wendigkeit)
+
+			22 => 0,   // Value9 (Erfahrung)
+
+			23 => 7.50,   // Value10 (Warp)
+
+			24 => 10,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 50,   // Value13 (Energy Available)
+
+			27 => 50,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Sabre',  // Name
+
+			30 => 250,  // Benötige Arbeiter zum Bau
 
 			31 => 'Light Cruiser letzten Generation, mit einzigartigen Technologien von denen auf Schiffen des Bundes. Geboren zu reisen bei sehr hohen Reisegeschwindigkeit, hat ein Rüstung je gesehen Sondierungsgespräche über ein Schiff von dieser Tonnage.',
 
@@ -450,435 +450,225 @@ $SHIP_TORSO = array(
 
 
 
-    	// Defiant
+    	// Intrepid
 
 	    6 => array(
 
-			0 => 30800,  // Metal
+			0 => 160000,  // Metal
 
-			1 => 26915,  // Minerals
+			1 => 160000,  // Minerals
 
-			2 => 10650,  // Latinum
+			2 => 128000,  // Latinum
 
-			3 => 25,  // Min. Unit 1(L. Infanterie)
+			3 => 76,  // Min. Unit 1(L. Infanterie)
 
-			4 => 10,  // Min. Unit 2 (Sturmtruppe)
+			4 => 32,  // Min. Unit 2 (Sturmtruppe)
 
 			5 => 0,  // Min. Unit 3 (Hazard Team)
 
-			6 => 0,  // Min. Unit 4 (Commander)
+			6 => 2,  // Min. Unit 4 (Commander)
 
-			7 => 40,  // Max Unit 1 (L. Infanterie)
+			7 => 76,  // Max Unit 1 (L. Infanterie)
 
-			8 => 20,  // Max Unit 2 (Sturmtruppe)
+			8 => 32,  // Max Unit 2 (Sturmtruppe)
 
-			9 => 5,  // Max Unit 3 (Hazard Team)
+			9 => 0,  // Max Unit 3 (Hazard Team)
 
-			10 => 4,  // Max Unit 4 (Commander)
+			10 => 2,  // Max Unit 4 (Commander)
 
 			11 => 6,  // Unit 5 (Offizier)
 
-			12 => 1,  // Unit 6 (Medizinisches Personal)
-
-			13 => 146,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 145,   // Value1 (Leichte Waffen)
-
-			15 => 95,   // Value2 (Schwere Waffen)
-
-			16 => 15,   // Value3 (Planetare Waffen)
-
-			17 => 480,   // Value4 (Schildstärke)
-
-			18 => 120,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 15,   // Value6 (Reaktionsgeschw.)
-
-			20 => 26,   // Value7 (Bereitschaft)
-
-			21 => 38,   // Value8 (Wendigkeit)
-
-			22 => 18,   // Value9 (Erfahrung)
-
-			23 => 6.5,   // Value10 (Warp)
-
-			24 => 11,   // Value11 (Sensoren)
-
-			25 => 0,   // Value12 (Tarnung)
-
-			26 => 17,   // Value13 (Energy Available)
-
-			27 => 15,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Defiant',  // Name
-
-			30 => 245,  // Benötige Arbeiter zum Bau
-
-			31 => 'Der kompakteste leichte Kreuzer der Sternenflotte. Ausgestattet mit Quantentorpedos besitzt sie eine für ihre Verhältnisse enorme Feuerkraft. Jedoch schränken Schildkapazität und Crewgröße den Einsatzradius ein. Als leichtes Angriffsschiff mit vorinstallierter Tarnvorrichtung ist sie die beste Wahl.',
-
-	    ),
-
-    	// Excelsior
-
-	    7 => array(
-
-			0 => 51390,  // Metal
-
-			1 => 37445,  // Minerals
-
-			2 => 20956,  // Latinum
-
-			3 => 80,  // Min. Unit 1(L. Infanterie)
-
-			4 => 20,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 5,  // Min. Unit 3 (Hazard Team)
-
-			6 => 0,  // Min. Unit 4 (Commander)
-
-			7 => 100,  // Max Unit 1 (L. Infanterie)
-
-			8 => 50,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 75,  // Max Unit 3 (Hazard Team)
-
-			10 => 5,  // Max Unit 4 (Commander)
-
-			11 => 13,  // Unit 5 (Offizier)
-
-			12 => 5,  // Unit 6 (Medizinisches Personal)
-
-			13 => 265,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 190,   // Value1 (Leichte Waffen)
-
-			15 => 110,   // Value2 (Schwere Waffen)
-
-			16 => 10,   // Value3 (Planetare Waffen)
-
-			17 => 520,   // Value4 (Schildstärke)
-
-			18 => 300,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 9,   // Value6 (Reaktionsgeschw.)
-
-			20 => 5,   // Value7 (Bereitschaft)
-
-			21 => 24,   // Value8 (Wendigkeit)
-
-			22 => 10,   // Value9 (Erfahrung)
-
-			23 => 3.6,   // Value10 (Warp)
-
-			24 => 1,   // Value11 (Sensoren)
-
-			25 => 0,   // Value12 (Tarnung)
-
-			26 => 30,   // Value13 (Energy Available)
-
-			27 => 25,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Excelsior',  // Name
-
-			30 => 550,  // Benötige Arbeiter zum Bau
-
-			31 => 'Die Exelsior gehört zur Klasse der Kreuzer und bietet ein sehr wirtschaftliches Verhältnis. Aufgrund zahlreicher Weiterentwicklungen durch die Sternenflotte gibt es sie in mehreren Ausführungen. Die aktuellste Version besitzt sogar mehrphasige, regenerierende Schilde.',
-
-	    ),
-
-    	// Nebula
-
-	    8 => array(
-
-			0 => 55740,  // Metal
-
-			1 => 50370,  // Minerals
-
-			2 => 21296,  // Latinum
-
-			3 => 120,  // Min. Unit 1(L. Infanterie)
-
-			4 => 10,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 10,  // Min. Unit 3 (Hazard Team)
-
-			6 => 1,  // Min. Unit 4 (Commander)
-
-			7 => 150,  // Max Unit 1 (L. Infanterie)
-
-			8 => 125,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 100,  // Max Unit 3 (Hazard Team)
-
-			10 => 10,  // Max Unit 4 (Commander)
-
-			11 => 15,  // Unit 5 (Offizier)
-
 			12 => 4,  // Unit 6 (Medizinisches Personal)
 
-			13 => 272,  // Buildtime (in 5 Minuten Schritten)
+			13 => 15,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 145,   // Value1 (Leichte Waffen)
+			14 => 400,   // Value1 (Leichte Waffen)
 
-			15 => 140,   // Value2 (Schwere Waffen)
+			15 => 350,   // Value2 (Schwere Waffen)
 
-			16 => 25,   // Value3 (Planetare Waffen)
+			16 => 30,   // Value3 (Planetare Waffen)
 
-			17 => 700,   // Value4 (Schildstärke)
+			17 => 750,   // Value4 (Schildstärke)
 
-			18 => 300,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 500,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 4,   // Value6 (Reaktionsgeschw.)
+			19 => 12,   // Value6 (Reaktionsgeschw.)
 
-			20 => 5,   // Value7 (Bereitschaft)
+			20 => 16,   // Value7 (Bereitschaft)
 
-			21 => 17,   // Value8 (Wendigkeit)
+			21 => 20,   // Value8 (Wendigkeit)
 
-			22 => 13,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 4,   // Value10 (Warp)
+			23 => 7.5,   // Value10 (Warp)
 
-			24 => 13,   // Value11 (Sensoren)
-
-			25 => 0,   // Value12 (Tarnung)
-
-			26 => 38,   // Value13 (Energy Available)
-
-			27 => 30,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Nebula',  // Name
-
-			30 => 790,  // Benötige Arbeiter zum Bau
-
-			31 => 'Die Nebula ist zwar ein Ableger der Galaxie-Klasse, sollte jedoch als eigener Schiffstyp mit eigenen Fähigkeiten gesehen werden. Ihre Größe macht sie zwar behäbiger als leichte Kreuzer, in Punkto Feuerkraft und Schildstärke steht sie jedoch über ihnen.',
-
-	    ),
-
-    	// Galaxy
-
-	    9 => array(
-
-			0 => 67340,  // Metal
-
-			1 => 53920,  // Minerals
-
-			2 => 35236,  // Latinum
-
-			3 => 200,  // Min. Unit 1(L. Infanterie)
-
-			4 => 5,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 10,  // Min. Unit 3 (Hazard Team)
-
-			6 => 2,  // Min. Unit 4 (Commander)
-
-			7 => 500,  // Max Unit 1 (L. Infanterie)
-
-			8 => 200,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 150,  // Max Unit 3 (Hazard Team)
-
-			10 => 12,  // Max Unit 4 (Commander)
-
-			11 => 15,  // Unit 5 (Offizier)
-
-			12 => 4,  // Unit 6 (Medizinisches Personal)
-
-			13 => 354,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 280,   // Value1 (Leichte Waffen)
-
-			15 => 40,   // Value2 (Schwere Waffen)
-
-			16 => 45,   // Value3 (Planetare Waffen)
-
-			17 => 600,   // Value4 (Schildstärke)
-
-			18 => 1100,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 10,   // Value6 (Reaktionsgeschw.)
-
-			20 => 4,   // Value7 (Bereitschaft)
-
-			21 => 18,   // Value8 (Wendigkeit)
-
-			22 => 20,   // Value9 (Erfahrung)
-
-			23 => 3.4,   // Value10 (Warp)
-
-			24 => 11,   // Value11 (Sensoren)
-
-			25 => 0,   // Value12 (Tarnung)
-
-			26 => 54,   // Value13 (Energy Available)
-
-			27 => 50,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Galaxy',  // Name
-
-			30 => 965,  // Benötige Arbeiter zum Bau
-
-			31 => 'Die Galaxy zeichnet sich durch beeindruckende Kampfkraft aus. Obwohl als Forschungsschiff klassifiziert konnte diese Schiffsklasse ihr Kampfgeschick in jeder größeren Schlacht der Föderation unter Beweis stellen. Was ihr an offensiver Bewaffnung fehlt macht sie locker duch ihre schweren Schilde und Panzerung wett. Einer Galaxy sollte man nur in Gruppen auf den Leib rücken.',
-
-	    ),
-
-		// Akira
-
-	    10 => array(
-
-			0 => 56180,  // Metal
-
-			1 => 43590,  // Minerals
-
-			2 => 39272,  // Latinum
-
-			3 => 55,  // Min. Unit 1(L. Infanterie)
-
-			4 => 10,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 5,  // Min. Unit 3 (Hazard Team)
-
-			6 => 0,  // Min. Unit 4 (Commander)
-
-			7 => 150,  // Max Unit 1 (L. Infanterie)
-
-			8 => 55,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 25,  // Max Unit 3 (Hazard Team)
-
-			10 => 12,  // Max Unit 4 (Commander)
-
-			11 => 5,  // Unit 5 (Offizier)
-
-			12 => 3,  // Unit 6 (Medizinisches Personal)
-
-			13 => 326,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 0,   // Value1 (Leichte Waffen)
-
-			15 => 280,   // Value2 (Schwere Waffen)
-
-			16 => 60,   // Value3 (Planetare Waffen)
-
-			17 => 200,   // Value4 (Schildstärke)
-
-			18 => 900,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 18,   // Value6 (Reaktionsgeschw.)
-
-			20 => 6,   // Value7 (Bereitschaft)
-
-			21 => 21,   // Value8 (Wendigkeit)
-
-			22 => 18,   // Value9 (Erfahrung)
-
-			23 => 3,   // Value10 (Warp)
-
-			24 => 3,   // Value11 (Sensoren)
+			24 => 12,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
 			26 => 70,   // Value13 (Energy Available)
 
-			27 => 62,   // Value14 (Used Energy)
+			27 => 70,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Akira',  // Name
+			29 => 'Intrepid',  // Name
 
-			30 => 181,  // Benötige Arbeiter zum Bau
+			30 => 400,  // Benötige Arbeiter zum Bau
 
-			31 => 'Das erste für die Schlacht entwickelte Schiff der Föderation, Ausgestattet mit mehreren Torpedowerfern kann es ein wahres Inferno auf Feindflotten beschwören. Regenerative Schilde sorgen für ausreichenden Schutz. Diese Schiffsklasse wurde mit dem Augenmerk auf höchste Überlebensfähigkeit, Schnelligkeit und Angriffskraft entwickelt.',
+			31 => 'Die Exelsior gehört zur Klasse der Kreuzer und bietet ein sehr wirtschaftliches Verhältnis. Aufgrund zahlreicher Weiterentwicklungen durch die Sternenflotte gibt es sie in mehreren Ausführungen. Die aktuellste Version besitzt sogar mehrphasige, regenerierende Schilde.',
+
+	    ),
+
+    	// Defiant
+
+	    7 => array(
+
+			0 => 240000,  // Metal
+
+			1 => 240000,  // Minerals
+
+			2 => 192000,  // Latinum
+
+			3 => 108,  // Min. Unit 1(L. Infanterie)
+
+			4 => 54,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 0,  // Min. Unit 3 (Hazard Team)
+
+			6 => 3,  // Min. Unit 4 (Commander)
+
+			7 => 108,  // Max Unit 1 (L. Infanterie)
+
+			8 => 54,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 0,  // Max Unit 3 (Hazard Team)
+
+			10 => 3,  // Max Unit 4 (Commander)
+
+			11 => 6,  // Unit 5 (Offizier)
+
+			12 => 4,  // Unit 6 (Medizinisches Personal)
+
+			13 => 40,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 650,   // Value1 (Leichte Waffen)
+
+			15 => 550,   // Value2 (Schwere Waffen)
+
+			16 => 50,   // Value3 (Planetare Waffen)
+
+			17 => 1200,   // Value4 (Schildstärke)
+
+			18 => 600,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 15,   // Value6 (Reaktionsgeschw.)
+
+			20 => 20,   // Value7 (Bereitschaft)
+
+			21 => 15,   // Value8 (Wendigkeit)
+
+			22 => 0,   // Value9 (Erfahrung)
+
+			23 => 7.5,   // Value10 (Warp)
+
+			24 => 18,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 100,   // Value13 (Energy Available)
+
+			27 => 100,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Defiant',  // Name
+
+			30 => 800,  // Benötige Arbeiter zum Bau
+
+			31 => 'Die Exelsior gehört zur Klasse der Kreuzer und bietet ein sehr wirtschaftliches Verhältnis. Aufgrund zahlreicher Weiterentwicklungen durch die Sternenflotte gibt es sie in mehreren Ausführungen. Die aktuellste Version besitzt sogar mehrphasige, regenerierende Schilde.',
+
+	    ),
+
+    	// Galaxy
+
+	    8 => array(
+
+			0 => 550000,  // Metal
+
+			1 => 525500,  // Minerals
+
+			2 => 446250,  // Latinum
+
+			3 => 230,  // Min. Unit 1(L. Infanterie)
+
+			4 => 100,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 45,  // Min. Unit 3 (Hazard Team)
+
+			6 => 6,  // Min. Unit 4 (Commander)
+
+			7 => 230,  // Max Unit 1 (L. Infanterie)
+
+			8 => 100,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 45,  // Max Unit 3 (Hazard Team)
+
+			10 => 6,  // Max Unit 4 (Commander)
+
+			11 => 15,  // Unit 5 (Offizier)
+
+			12 => 6,  // Unit 6 (Medizinisches Personal)
+
+			13 => 143,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 1100,   // Value1 (Leichte Waffen)
+
+			15 => 1000,   // Value2 (Schwere Waffen)
+
+			16 => 100,   // Value3 (Planetare Waffen)
+
+			17 => 4500,   // Value4 (Schildstärke)
+
+			18 => 2500,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 21,   // Value6 (Reaktionsgeschw.)
+
+			20 => 23,   // Value7 (Bereitschaft)
+
+			21 => 12,   // Value8 (Wendigkeit)
+
+			22 => 0,   // Value9 (Erfahrung)
+
+			23 => 6.9,   // Value10 (Warp)
+
+			24 => 15,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 180,   // Value13 (Energy Available)
+
+			27 => 180,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Galaxy',  // Name
+
+			30 => 1600,  // Benötige Arbeiter zum Bau
+
+			31 => 'With the introduction of the Galaxy class vessels, the Federation try to overrun the opponents, building a large and capable ship, with huge firepower and overwhelming defence. Designed to be a scientific ship also, the Galaxy class can truly go where no other Federation ship has gone before. This is the prototype of the class.',
 
 	    ),
 
     	// Sovereign
 
-	    11 => array(
+	    9 => array(
 
-			0 => 129800,  // Metal
+			0 => 700000,  // Metal
 
-			1 => 78150,  // Minerals
+			1 => 700000,  // Minerals
 
-			2 => 64920,  // Latinum
-
-			3 => 250,  // Min. Unit 1(L. Infanterie)
-
-			4 => 100,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 50,  // Min. Unit 3 (Hazard Team)
-
-			6 => 3,  // Min. Unit 4 (Commander)
-
-			7 => 500,  // Max Unit 1 (L. Infanterie)
-
-			8 => 200,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 100,  // Max Unit 3 (Hazard Team)
-
-			10 => 12,  // Max Unit 4 (Commander)
-
-			11 => 18,  // Unit 5 (Offizier)
-
-			12 => 7,  // Unit 6 (Medizinisches Personal)
-
-			13 => 499,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 400,   // Value1 (Leichte Waffen)
-
-			15 => 80,   // Value2 (Schwere Waffen)
-
-			16 => 50,   // Value3 (Planetare Waffen)
-
-			17 => 980,   // Value4 (Schildstärke)
-
-			18 => 1050,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 11,   // Value6 (Reaktionsgeschw.)
-
-			20 => 3,   // Value7 (Bereitschaft)
-
-			21 => 18,   // Value8 (Wendigkeit)
-
-			22 => 20,   // Value9 (Erfahrung)
-
-			23 => 3.7,   // Value10 (Warp)
-
-			24 => 9,   // Value11 (Sensoren)
-
-			25 => 0,   // Value12 (Tarnung)
-
-			26 => 77,   // Value13 (Energy Available)
-
-			27 => 71,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Sovereign',  // Name
-
-			30 => 1951,  // Benötige Arbeiter zum Bau
-
-			31 => 'Die Sovereign Klasse ist die modernste Schiffklasse der Föderation. Sie ist zwar offiziell ein Allround Schiff entfaltet aber ihr wahres Potential im Kampf. Starke Waffen und Schilde sowie eine gute Manövrierfähigkeit machen sie zu einem Gegner dem ein Schiff nicht alleine gegenübertreten sollte. Es kann eine verloren schienende Schlacht ohne Probleme wenden.',
-
-	    ),
-
-    	// Orbitalgeschütz
-
-	    12 => array(
-
-			0 => 50400,  // Metal
-
-			1 => 50400,  // Minerals
-
-			2 => 40320,  // Latinum
+			2 => 595000,  // Latinum
 
 			3 => 0,  // Min. Unit 1(L. Infanterie)
 
@@ -896,47 +686,47 @@ $SHIP_TORSO = array(
 
 			10 => 0,  // Max Unit 4 (Commander)
 
-			11 => 0,  // Unit 5 (Offizier)
+			11 => 18,  // Unit 5 (Offizier)
 
-			12 => 0,  // Unit 6 (Medizinisches Personal)
+			12 => 6,  // Unit 6 (Medizinisches Personal)
 
-			13 => 240,  // Buildtime (in 5 Minuten Schritten)
+			13 => 200,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 250,   // Value1 (Leichte Waffen)
+			14 => 2475,   // Value1 (Leichte Waffen)
 
-			15 => 250,   // Value2 (Schwere Waffen)
+			15 => 2475,   // Value2 (Schwere Waffen)
 
-			16 => 0,   // Value3 (Planetare Waffen)
+			16 => 165,   // Value3 (Planetare Waffen)
 
-			17 => 700,   // Value4 (Schildstärke)
+			17 => 12100,   // Value4 (Schildstärke)
 
-			18 => 100,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 6050,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 35,   // Value6 (Reaktionsgeschw.)
+			19 => 26,   // Value6 (Reaktionsgeschw.)
 
 			20 => 25,   // Value7 (Bereitschaft)
 
-			21 => 0,   // Value8 (Wendigkeit)
+			21 => 11,   // Value8 (Wendigkeit)
 
 			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 0,   // Value10 (Warp)
+			23 => 9.8,   // Value10 (Warp)
 
-			24 => 35,   // Value11 (Sensoren)
+			24 => 30,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 33,   // Value13 (Energy Available)
+			26 => 0,   // Value13 (Energy Available)
 
-			27 => 33,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Orbitalgeschütz',  // Name
+			29 => 'Sovereign',  // Name
 
-			30 => 425,  // Benötige Arbeiter zum Bau
+			30 => 2400,  // Benötige Arbeiter zum Bau
 
-			31 => 'Aufgrund der Angreifbarkeit vieler Welten der Föderation sahen sich die Techniker zur Konstruktion dieser automatisierten Waffenplattform genötigt. Ausgestattet mit Phaserbänken und schnell feuernden Photonentorpedorampen bildet es eine wichtige Komponente in der Verteidigungsstrategie der Föderierten.',
+			31 => 'This is the basic hull for the Sovereign class, admiral federation ship. Her mighty shield system is one of the best around the galaxy.',
 
 	    ),
 
@@ -954,71 +744,71 @@ $SHIP_TORSO = array(
 
     1 => array(
 
-    	// Scout
+    	// Fighter
 
 	    0 => array(
 
-		    0 => 950,  // Metal
+		    0 => 35625,  // Metal
 
-			1 => 772.5,  // Minerals
+			1 => 35625,  // Minerals
 
-			2 => 983.33,  // Latinum
+			2 => 15960,  // Latinum
 
-			3 => 12,  // Min. Unit 1(Centurion)
+			3 => 5,  // Min. Unit 1(Centurion)
 
 			4 => 0,  // Min. Unit 2 (Rem. Truppen)
 
 			5 => 0,  // Min. Unit 3 (Tal Shiar)
 
-			6 => 1,  // Min. Unit 4 (Commander)
+			6 => 0,  // Min. Unit 4 (Commander)
 
-			7 => 15,  // Max Unit 1 (Centurion)
+			7 => 5,  // Max Unit 1 (Centurion)
 
 			8 => 0,  // Max Unit 2 (Rem. Truppen)
 
 			9 => 0,  // Max Unit 3 (Tal Shiar)
 
-			10 => 1,  // Max Unit 4 (Commander)
+			10 => 0,  // Max Unit 4 (Commander)
 
-			11 => 0,  // Unit 5 (Offizier)
+			11 => 1,  // Unit 5 (Offizier)
 
-			12 => 1,  // Unit 6 (Medizinisches Personal)
+			12 => 0,  // Unit 6 (Medizinisches Personal)
 
-			13 => 15,  // Buildtime (in 5 Minuten Schritten)
+			13 => 5,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 0,   // Value1 (Leichte Waffen)
+			14 => 14,   // Value1 (Leichte Waffen)
 
-			15 => 0,   // Value2 (Schwere Waffen)
+			15 => 5,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 0,   // Value4 (Schildstärke)
+			17 => 95,   // Value4 (Schildstärke)
 
-			18 => 10,   // Value5 (Hülle bzw. Hitpoints)
+			18 => 95,   // Value5 (Hülle bzw. Hitpoints)
 
-			19 => 4,   // Value6 (Reaktionsgeschw.)
+			19 => 13,   // Value6 (Reaktionsgeschw.)
 
-			20 => 2,   // Value7 (Bereitschaft)
+			20 => 18,   // Value7 (Bereitschaft)
 
-			21 => 10,   // Value8 (Wendigkeit)
+			21 => 19,   // Value8 (Wendigkeit)
 
-			22 => 15,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 4.4,   // Value10 (Warp)
+			23 => 6.9,   // Value10 (Warp)
 
-			24 => 7,   // Value11 (Sensoren)
+			24 => 5,   // Value11 (Sensoren)
 
-			25 => 3,   // Value12 (Tarnung)
+			25 => 0,   // Value12 (Tarnung)
 
-			26 => 8,   // Value13 (Energy Available)
+			26 => 40,   // Value13 (Energy Available)
 
-			27 => 2,   // Value14 (Used Energy)
+			27 => 40,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Scout',  // Name
+			29 => 'Fighter',  // Name
 
-			30 => 5,  // Benötige Arbeiter zum Bau
+			30 => 63,  // Benötige Arbeiter zum Bau
 
 			31 => 'Das Scoutschiff ist zum Spionieren gedacht und nicht als Angriffsschiff geeignet.',
 
@@ -1028,67 +818,67 @@ $SHIP_TORSO = array(
 
 	    1 => array(
 
-			0 => 4520,  // Metal
+			0 => 95000,  // Metal
 
-			1 => 7020,  // Minerals
+			1 => 95000,  // Minerals
 
-			2 => 2573.33,  // Latinum
+			2 => 42560,  // Latinum
 
-			3 => 48,  // Min. Unit 1(Centurion)
+			3 => 29,  // Min. Unit 1(Centurion)
 
 			4 => 0,  // Min. Unit 2 (Rem. Truppen)
 
 			5 => 0,  // Min. Unit 3 (Tal Shiar)
 
-			6 => 2,  // Min. Unit 4 (Commander)
+			6 => 1,  // Min. Unit 4 (Commander)
 
-			7 => 50,  // Max Unit 1 (Centurion)
+			7 => 29,  // Max Unit 1 (Centurion)
 
 			8 => 0,  // Max Unit 2 (Rem. Truppen)
 
 			9 => 0,  // Max Unit 3 (Tal Shiar)
 
-			10 => 3,  // Max Unit 4 (Commander)
+			10 => 1,  // Max Unit 4 (Commander)
 
 			11 => 3,  // Unit 5 (Offizier)
 
-			12 => 2,  // Unit 6 (Medizinisches Personal)
+			12 => 1,  // Unit 6 (Medizinisches Personal)
 
-			13 => 45,  // Buildtime (in 5 Minuten Schritten)
+			13 => 9,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 15,   // Value1 (Leichte Waffen)
+			14 => 27,   // Value1 (Leichte Waffen)
 
-			15 => 0,   // Value2 (Schwere Waffen)
+			15 => 14,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 5,   // Value4 (Schildstärke)
+			17 => 380,   // Value4 (Schildstärke)
 
-			18 => 20,   // Value5 (Hülle bzw. Hitpoints)
+			18 => 950,   // Value5 (Hülle bzw. Hitpoints)
 
-			19 => 2,   // Value6 (Reaktionsgeschw.)
+			19 => 11,   // Value6 (Reaktionsgeschw.)
 
-			20 => 1,   // Value7 (Bereitschaft)
+			20 => 15,   // Value7 (Bereitschaft)
 
-			21 => 5,   // Value8 (Wendigkeit)
+			21 => 11,   // Value8 (Wendigkeit)
 
-			22 => 5,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 4.9,   // Value10 (Warp)
+			23 => 5.9,   // Value10 (Warp)
 
-			24 => 5,   // Value11 (Sensoren)
+			24 => 9,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 10,   // Value13 (Energy Available)
+			26 => 100,   // Value13 (Energy Available)
 
-			27 => 4,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Transporter',  // Name
 
-			30 => 85,  // Benötige Arbeiter zum Bau
+			30 => 333,  // Benötige Arbeiter zum Bau
 
 			31 => 'Mit dem Transporter kann man entweder Rohstoffe bzw. Einheiten transportieren, oder sie mit auf einen Angriff schicken. Sie sind relativ langsam, dafür ist ihre Verteidigung akzeptabel.',
 
@@ -1098,67 +888,67 @@ $SHIP_TORSO = array(
 
 	    2 => array(
 
-			0 => 80680,  // Metal
+			0 => 190000,  // Metal
 
-			1 => 26060,  // Minerals
+			1 => 190000,  // Minerals
 
-			2 => 23773.33,  // Latinum
+			2 => 152000,  // Latinum
 
-			3 => 110,  // Min. Unit 1(Centurion)
+			3 => 190,  // Min. Unit 1(Centurion)
 
-			4 => 0,  // Min. Unit 2 (Rem. Truppen)
+			4 => 60,  // Min. Unit 2 (Rem. Truppen)
 
 			5 => 0,  // Min. Unit 3 (Tal Shiar)
 
 			6 => 3,  // Min. Unit 4 (Commander)
 
-			7 => 200,  // Max Unit 1 (Centurion)
+			7 => 190,  // Max Unit 1 (Centurion)
 
-			8 => 0,  // Max Unit 2 (Rem. Truppen)
+			8 => 60,  // Max Unit 2 (Rem. Truppen)
 
 			9 => 0,  // Max Unit 3 (Tal Shiar)
 
-			10 => 6,  // Max Unit 4 (Commander)
+			10 => 3,  // Max Unit 4 (Commander)
 
-			11 => 14,  // Unit 5 (Offizier)
+			11 => 20,  // Unit 5 (Offizier)
 
 			12 => 5,  // Unit 6 (Medizinisches Personal)
 
-			13 => 205,  // Buildtime (in 5 Minuten Schritten)
+			13 => 68,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 10,   // Value1 (Leichte Waffen)
+			14 => 45,   // Value1 (Leichte Waffen)
 
-			15 => 0,   // Value2 (Schwere Waffen)
+			15 => 45,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 10,   // Value4 (Schildstärke)
+			17 => 950,   // Value4 (Schildstärke)
 
-			18 => 50,   // Value5 (Hülle bzw. Hitpoints)
+			18 => 760,   // Value5 (Hülle bzw. Hitpoints)
 
-			19 => 0,   // Value6 (Reaktionsgeschw.)
+			19 => 17,   // Value6 (Reaktionsgeschw.)
 
-			20 => 0,   // Value7 (Bereitschaft)
+			20 => 22,   // Value7 (Bereitschaft)
 
-			21 => 0,   // Value8 (Wendigkeit)
+			21 => 15,   // Value8 (Wendigkeit)
 
 			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 4.5,   // Value10 (Warp)
+			23 => 5.7,   // Value10 (Warp)
 
-			24 => 0,   // Value11 (Sensoren)
+			24 => 9,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 15,   // Value13 (Energy Available)
+			26 => 100,   // Value13 (Energy Available)
 
-			27 => 5,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Kolonieschiff',  // Name
 
-			30 => 1855,  // Benötige Arbeiter zum Bau
+			30 => 3800,  // Benötige Arbeiter zum Bau
 
 			31 => 'Mit dem Kolonieschiff kannst du einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerstört hast, geht das Kolonieschiff verloren (da seine Schiffshülle zur Errichtung erster Einrichtungen demontiert wird) und der Planet steht unter deinem Kommando.',
 
@@ -1234,71 +1024,133 @@ $SHIP_TORSO = array(
 
 			),
 
-    	// Talon
+    	// Totes Temp
 
 	    4 => array(
 
-			0 => 21448,  // Metal
+			0 => 100000000,  // Metal
 
-			1 => 17524,  // Minerals
+			1 => 1,  // Minerals
 
-			2 => 4983,  // Latinum
+			2 => 1,  // Latinum
 
-			3 => 25,  // Min. Unit 1(Centurion)
+			3 => 1,  // Min. Unit 1(Centurion)
 
-			4 => 0,  // Min. Unit 2 (Rem. Truppen)
+			4 => 1,  // Min. Unit 2 (Rem. Truppen)
 
-			5 => 0,  // Min. Unit 3 (Tal Shiar)
+			5 => 1,  // Min. Unit 3 (Tal Shiar)
 
-			6 => 0,  // Min. Unit 4 (Commander)
+			6 => 1,  // Min. Unit 4 (Commander)
 
-			7 => 50,  // Max Unit 1 (Centurion)
+			7 => 1,  // Max Unit 1 (Centurion)
 
-			8 => 10,  // Max Unit 2 (Rem. Truppen)
+			8 => 1,  // Max Unit 2 (Rem. Truppen)
 
-			9 => 0,  // Max Unit 3 (Tal Shiar)
+			9 => 1,  // Max Unit 3 (Tal Shiar)
 
-			10 => 4,  // Max Unit 4 (Commander)
+			10 => 1,  // Max Unit 4 (Commander)
 
-			11 => 9,  // Unit 5 (Offizier)
+			11 => 1,  // Unit 5 (Offizier)
 
-			12 => 2,  // Unit 6 (Medizinisches Personal)
+			12 => 1,  // Unit 6 (Medizinisches Personal)
 
-			13 => 126,  // Buildtime (in 5 Minuten Schritten)
+			13 => 1,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 28,   // Value1 (Leichte Waffen)
+			14 => 1,   // Value1 (Leichte Waffen)
 
-			15 => 30,   // Value2 (Schwere Waffen)
+			15 => 1,   // Value2 (Schwere Waffen)
 
-			16 => 0,   // Value3 (Planetare Waffen)
+			16 => 1,   // Value3 (Planetare Waffen)
 
-			17 => 180,   // Value4 (Schildstärke)
+			21 => 1,   // Value8 (Wendigkeit)
 
-			18 => 160,   // Value5 (Hülle bzw. Hitpoints)
+			22 => 1,   // Value9 (Erfahrung)
 
-			19 => 5,   // Value6 (Reaktionsgeschw.)
+			23 => 1,   // Value10 (Warp)
 
-			20 => 2,   // Value7 (Bereitschaft)
+			24 => 1,   // Value11 (Sensoren)
 
-			21 => 30,   // Value8 (Wendigkeit)
+			25 => 1,   // Value12 (Tarnung)
 
-			22 => 7,   // Value9 (Erfahrung)
+			26 => 1,   // Value13 (Energy Available)
 
-			23 => 5.4,   // Value10 (Warp)
-
-			24 => 3,   // Value11 (Sensoren)
-
-			25 => 10,   // Value12 (Tarnung)
-
-			26 => 20,   // Value13 (Energy Available)
-
-			27 => 8,   // Value14 (Used Energy)
+			27 => 1,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Talon Class',  // Name
 
-			30 => 94,  // Benötige Arbeiter zum Bau
+			30 => 1,  // Benötige Arbeiter zum Bau
+
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+
+			),
+
+    	// Talon
+
+	    5 => array(
+
+			0 => 95000,  // Metal
+
+			1 => 95000,  // Minerals
+
+			2 => 76000,  // Latinum
+
+			3 => 37,  // Min. Unit 1(Centurion)
+
+			4 => 10,  // Min. Unit 2 (Rem. Truppen)
+
+			5 => 0,  // Min. Unit 3 (Tal Shiar)
+
+			6 => 1,  // Min. Unit 4 (Commander)
+
+			7 => 37,  // Max Unit 1 (Centurion)
+
+			8 => 10,  // Max Unit 2 (Rem. Truppen)
+
+			9 => 0,  // Max Unit 3 (Tal Shiar)
+
+			10 => 1,  // Max Unit 4 (Commander)
+
+			11 => 5,  // Unit 5 (Offizier)
+
+			12 => 1,  // Unit 6 (Medizinisches Personal)
+
+			13 => 14,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 250,   // Value1 (Leichte Waffen)
+
+			15 => 150,   // Value2 (Schwere Waffen)
+
+			16 => 10,   // Value3 (Planetare Waffen)
+
+			17 => 500,   // Value4 (Schildstärke)
+
+			18 => 350,   // Value5 (Hülle bzw. Hitpoints)
+
+			19 => 10,   // Value6 (Reaktionsgeschw.)
+
+			20 => 15,   // Value7 (Bereitschaft)
+
+			21 => 25,   // Value8 (Wendigkeit)
+
+			22 => 0,   // Value9 (Erfahrung)
+
+			23 => 7.5,   // Value10 (Warp)
+
+			24 => 10,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 50,   // Value13 (Energy Available)
+
+			27 => 50,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Talon Class',  // Name
+
+			30 => 237,  // Benötige Arbeiter zum Bau
 
 			31 => 'Die Talon Class ist eines der 2 Mittelklasse-Schiffe. Sie hat keinerlei besondere Fertigkeiten und ihre Kampfstärke ist dem Preis angemessen.',
 
@@ -1306,563 +1158,283 @@ $SHIP_TORSO = array(
 
     	// Sience
 
-	    5 => array(
+	    6 => array(
 
-			0 => 32794,  // Metal
+			0 => 152000,  // Metal
 
-			1 => 23397,  // Minerals
+			1 => 152000,  // Minerals
 
-			2 => 6598,  // Latinum
+			2 => 121600,  // Latinum
 
-			3 => 60,  // Min. Unit 1(Centurion)
+			3 => 73,  // Min. Unit 1(Centurion)
 
-			4 => 10,  // Min. Unit 2 (Rem. Truppen)
+			4 => 32,  // Min. Unit 2 (Rem. Truppen)
 
 			5 => 0,  // Min. Unit 3 (Tal Shiar)
 
-			6 => 0,  // Min. Unit 4 (Commander)
+			6 => 2,  // Min. Unit 4 (Commander)
 
-			7 => 75,  // Max Unit 1 (Centurion)
+			7 => 73,  // Max Unit 1 (Centurion)
 
-			8 => 25,  // Max Unit 2 (Rem. Truppen)
+			8 => 32,  // Max Unit 2 (Rem. Truppen)
 
 			9 => 0,  // Max Unit 3 (Tal Shiar)
 
-			10 => 5,  // Max Unit 4 (Commander)
+			10 => 2,  // Max Unit 4 (Commander)
 
-			11 => 10,  // Unit 5 (Offizier)
+			11 => 6,  // Unit 5 (Offizier)
 
-			12 => 5,  // Unit 6 (Medizinisches Personal)
+			12 => 2,  // Unit 6 (Medizinisches Personal)
 
-			13 => 163,  // Buildtime (in 5 Minuten Schritten)
+			13 => 23,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 109,   // Value1 (Leichte Waffen)
+			14 => 400,   // Value1 (Leichte Waffen)
 
-			15 => 90,   // Value2 (Schwere Waffen)
+			15 => 350,   // Value2 (Schwere Waffen)
 
-			16 => 0,   // Value3 (Planetare Waffen)
+			16 => 30,   // Value3 (Planetare Waffen)
 
-			17 => 140,   // Value4 (Schildstärke)
+			17 => 750,   // Value4 (Schildstärke)
 
-			18 => 360,   // Value5 (Hülle bzw. Hitpoints)
+			18 => 500,   // Value5 (Hülle bzw. Hitpoints)
 
-			19 => 1,   // Value6 (Reaktionsgeschw.)
+			19 => 12,   // Value6 (Reaktionsgeschw.)
 
-			20 => 2,   // Value7 (Bereitschaft)
+			20 => 16,   // Value7 (Bereitschaft)
 
-			21 => 26,   // Value8 (Wendigkeit)
+			21 => 20,   // Value8 (Wendigkeit)
 
-			22 => 7,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 5.8,   // Value10 (Warp)
+			23 => 7.5,   // Value10 (Warp)
 
-			24 => 16,   // Value11 (Sensoren)
+			24 => 12,   // Value11 (Sensoren)
 
-			25 => 8,   // Value12 (Tarnung)
+			25 => 0,   // Value12 (Tarnung)
 
-			26 => 25,   // Value13 (Energy Available)
+			26 => 70,   // Value13 (Energy Available)
 
-			27 => 10,   // Value14 (Used Energy)
+			27 => 70,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Sience Class',  // Name
 
-			30 => 231,  // Benötige Arbeiter zum Bau
+			30 => 380,  // Benötige Arbeiter zum Bau
 
 			31 => 'Die Sience Class ist eines der 2 Mittelklasse-Schiffe. Sie hat keinerlei besondere Fertigkeiten und ihre Kampfstärke ist dem Preis angemessen.',
 
 			),
 
-    	// Totes Temp
-
-	    6 => array(
-
-			0 => 100000000,  // Metal
-
-			1 => 1,  // Minerals
-
-			2 => 1,  // Latinum
-
-			3 => 1,  // Min. Unit 1(Centurion)
-
-			4 => 1,  // Min. Unit 2 (Rem. Truppen)
-
-			5 => 1,  // Min. Unit 3 (Tal Shiar)
-
-			6 => 1,  // Min. Unit 4 (Commander)
-
-			7 => 1,  // Max Unit 1 (Centurion)
-
-			8 => 1,  // Max Unit 2 (Rem. Truppen)
-
-			9 => 1,  // Max Unit 3 (Tal Shiar)
-
-			10 => 1,  // Max Unit 4 (Commander)
-
-			11 => 1,  // Unit 5 (Offizier)
-
-			12 => 1,  // Unit 6 (Medizinisches Personal)
-
-			13 => 1,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 1,   // Value1 (Leichte Waffen)
-
-			15 => 1,   // Value2 (Schwere Waffen)
-
-			16 => 1,   // Value3 (Planetare Waffen)
-
-			17 => 1,   // Value4 (Schildstärke)
-
-			18 => 1,   // Value5 (Hülle bzw. Hitpoints)
-
-			19 => 1,   // Value6 (Reaktionsgeschw.)
-
-			20 => 1,   // Value7 (Bereitschaft)
-
-			21 => 1,   // Value8 (Wendigkeit)
-
-			22 => 1,   // Value9 (Erfahrung)
-
-			23 => 1,   // Value10 (Warp)
-
-			24 => 1,   // Value11 (Sensoren)
-
-			25 => 1,   // Value12 (Tarnung)
-
-			26 => 1,   // Value13 (Energy Available)
-
-			27 => 1,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Sience Class',  // Name
-
-			30 => 1,  // Benötige Arbeiter zum Bau
-
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
-
-			),			
-
     	// Norexan
 
 	    7 => array(
 
-			0 => 51338,  // Metal
+			0 => 228000,  // Metal
 
-			1 => 33419,  // Minerals
+			1 => 228000,  // Minerals
 
-			2 => 17696,  // Latinum
+			2 => 182000,  // Latinum
 
-			3 => 120,  // Min. Unit 1(Centurion)
+			3 => 109,  // Min. Unit 1(Centurion)
 
-			4 => 20,  // Min. Unit 2 (Rem. Truppen)
+			4 => 46,  // Min. Unit 2 (Rem. Truppen)
 
-			5 => 5,  // Min. Unit 3 (Tal Shiar)
+			5 => 14,  // Min. Unit 3 (Tal Shiar)
 
-			6 => 1,  // Min. Unit 4 (Commander)
+			6 => 3,  // Min. Unit 4 (Commander)
 
-			7 => 130,  // Max Unit 1 (Centurion)
+			7 => 109,  // Max Unit 1 (Centurion)
 
-			8 => 25,  // Max Unit 2 (Rem. Truppen)
+			8 => 46,  // Max Unit 2 (Rem. Truppen)
 
-			9 => 5,  // Max Unit 3 (Tal Shiar)
+			9 => 14,  // Max Unit 3 (Tal Shiar)
 
-			10 => 5,  // Max Unit 4 (Commander)
+			10 => 3,  // Max Unit 4 (Commander)
 
-			11 => 11,  // Unit 5 (Offizier)
+			11 => 5,  // Unit 5 (Offizier)
 
-			12 => 7,  // Unit 6 (Medizinisches Personal)
+			12 => 1,  // Unit 6 (Medizinisches Personal)
 
-			13 => 267,  // Buildtime (in 5 Minuten Schritten)
+			13 => 36,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 185,   // Value1 (Leichte Waffen)
+			14 => 650,   // Value1 (Leichte Waffen)
 
-			15 => 155,   // Value2 (Schwere Waffen)
+			15 => 550,   // Value2 (Schwere Waffen)
 
-			16 => 10,   // Value3 (Planetare Waffen)
+			16 => 50,   // Value3 (Planetare Waffen)
 
-			17 => 590,   // Value4 (Schildstärke)
+			17 => 1200,   // Value4 (Schildstärke)
 
-			18 => 480,   // Value5 (Hülle bzw. Hitpoints)
+			18 => 600,   // Value5 (Hülle bzw. Hitpoints)
 
-			19 => 6,   // Value6 (Reaktionsgeschw.)
+			19 => 15,   // Value6 (Reaktionsgeschw.)
 
-			20 => 0,   // Value7 (Bereitschaft)
+			20 => 20,   // Value7 (Bereitschaft)
 
-			21 => 18,   // Value8 (Wendigkeit)
+			21 => 15,   // Value8 (Wendigkeit)
 
-			22 => 11,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 5.2,   // Value10 (Warp)
+			23 => 7.5,   // Value10 (Warp)
 
-			24 => 17,   // Value11 (Sensoren)
+			24 => 18,   // Value11 (Sensoren)
 
-			25 => 1,   // Value12 (Tarnung)
+			25 => 0,   // Value12 (Tarnung)
 
-			26 => 25,   // Value13 (Energy Available)
+			26 => 100,   // Value13 (Energy Available)
 
-			27 => 15,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Norexan Class',  // Name
 
-			30 => 436,  // Benötige Arbeiter zum Bau
+			30 => 760,  // Benötige Arbeiter zum Bau
 
 			31 => 'Die Norexan Class gehört zur Oberklasse, sie besitzt als erstes Schiff Quantentorpedos und kann dadurch immense Schäden anrichten.',
 
 			),
 
-    	// Totes Temp
+    	// Warbird
 
 	    8 => array(
 
-			0 => 100000000,  // Metal
+			0 => 494000,  // Metal
 
-			1 => 1,  // Minerals
+			1 => 494000,  // Minerals
 
-			2 => 1,  // Latinum
+			2 => 407788,  // Latinum
 
-			3 => 1,  // Min. Unit 1(Centurion)
+			3 => 209,  // Min. Unit 1(Centurion)
 
-			4 => 1,  // Min. Unit 2 (Rem. Truppen)
+			4 => 91,  // Min. Unit 2 (Rem. Truppen)
 
-			5 => 1,  // Min. Unit 3 (Tal Shiar)
+			5 => 41,  // Min. Unit 3 (Tal Shiar)
 
-			6 => 1,  // Min. Unit 4 (Commander)
+			6 => 6,  // Min. Unit 4 (Commander)
 
-			7 => 1,  // Max Unit 1 (Centurion)
+			7 => 209,  // Max Unit 1 (Centurion)
 
-			8 => 1,  // Max Unit 2 (Rem. Truppen)
+			8 => 91,  // Max Unit 2 (Rem. Truppen)
 
-			9 => 1,  // Max Unit 3 (Tal Shiar)
-
-			10 => 1,  // Max Unit 4 (Commander)
-
-			11 => 1,  // Unit 5 (Offizier)
-
-			12 => 1,  // Unit 6 (Medizinisches Personal)
-
-			13 => 1,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 1,   // Value1 (Leichte Waffen)
-
-			15 => 1,   // Value2 (Schwere Waffen)
-
-			16 => 1,   // Value3 (Planetare Waffen)
-
-			17 => 1,   // Value4 (Schildstärke)
-
-			18 => 1,   // Value5 (Hülle bzw. Hitpoints)
-
-			19 => 1,   // Value6 (Reaktionsgeschw.)
-
-			20 => 1,   // Value7 (Bereitschaft)
-
-			21 => 1,   // Value8 (Wendigkeit)
-
-			22 => 1,   // Value9 (Erfahrung)
-
-			23 => 1,   // Value10 (Warp)
-
-			24 => 1,   // Value11 (Sensoren)
-
-			25 => 1,   // Value12 (Tarnung)
-
-			26 => 1,   // Value13 (Energy Available)
-
-			27 => 1,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Norexan Class',  // Name
-
-			30 => 1,  // Benötige Arbeiter zum Bau
-
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
-
-			),
-
-    	// Warbird
-
-	    9 => array(
-
-			0 => 81953,  // Metal
-
-			1 => 43477,  // Minerals
-
-			2 => 26151,  // Latinum
-
-			3 => 200,  // Min. Unit 1(Centurion)
-
-			4 => 50,  // Min. Unit 2 (Rem. Truppen)
-
-			5 => 30,  // Min. Unit 3 (Tal Shiar)
-
-			6 => 1,  // Min. Unit 4 (Commander)
-
-			7 => 210,  // Max Unit 1 (Centurion)
-
-			8 => 50,  // Max Unit 2 (Rem. Truppen)
-
-			9 => 35,  // Max Unit 3 (Tal Shiar)
+			9 => 41,  // Max Unit 3 (Tal Shiar)
 
 			10 => 6,  // Max Unit 4 (Commander)
 
-			11 => 15,  // Unit 5 (Offizier)
+			11 => 16,  // Unit 5 (Offizier)
 
-			12 => 3,  // Unit 6 (Medizinisches Personal)
+			12 => 7,  // Unit 6 (Medizinisches Personal)
 
-			13 => 352,  // Buildtime (in 5 Minuten Schritten)
+			13 => 117,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 245,   // Value1 (Leichte Waffen)
+			14 => 1100,   // Value1 (Leichte Waffen)
 
-			15 => 250,   // Value2 (Schwere Waffen)
+			15 => 1000,   // Value2 (Schwere Waffen)
 
-			16 => 5,   // Value3 (Planetare Waffen)
+			16 => 100,   // Value3 (Planetare Waffen)
 
-			17 => 250,   // Value4 (Schildstärke)
+			17 => 4500,   // Value4 (Schildstärke)
 
-			18 => 600,   // Value5 (Hülle bzw. Hitpoints)
+			18 => 2500,   // Value5 (Hülle bzw. Hitpoints)
 
-			19 => 2,   // Value6 (Reaktionsgeschw.)
+			19 => 21,   // Value6 (Reaktionsgeschw.)
 
-			20 => 1,   // Value7 (Bereitschaft)
+			20 => 23,   // Value7 (Bereitschaft)
 
-			21 => 10,   // Value8 (Wendigkeit)
+			21 => 12,   // Value8 (Wendigkeit)
 
-			22 => 9,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 4.0,   // Value10 (Warp)
+			23 => 6.9,   // Value10 (Warp)
 
-			24 => 23,   // Value11 (Sensoren)
+			24 => 15,   // Value11 (Sensoren)
 
-			25 => 8,   // Value12 (Tarnung)
+			25 => 0,   // Value12 (Tarnung)
 
-			26 => 35,   // Value13 (Energy Available)
+			26 => 180,   // Value13 (Energy Available)
 
-			27 => 18,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'D´deridex Class',  // Name
-
-			30 => 947,  // Benötige Arbeiter zum Bau
-
-			31 => 'Die D´deridex Class gehört zu den behäbigen aber erfahrenen Schiffen. Mit den richtigen Upgrades versehen kann sie einige Kratzer auf den Schiffen deiner Gegner hinterlassen.',
-
-			),
-
-    	// Totes Temp
-
-	    10 => array(
-
-			0 => 100000000,  // Metal
-
-			1 => 1,  // Minerals
-
-			2 => 1,  // Latinum
-
-			3 => 1,  // Min. Unit 1(Centurion)
-
-			4 => 1,  // Min. Unit 2 (Rem. Truppen)
-
-			5 => 1,  // Min. Unit 3 (Tal Shiar)
-
-			6 => 1,  // Min. Unit 4 (Commander)
-
-			7 => 1,  // Max Unit 1 (Centurion)
-
-			8 => 1,  // Max Unit 2 (Rem. Truppen)
-
-			9 => 1,  // Max Unit 3 (Tal Shiar)
-
-			10 => 1,  // Max Unit 4 (Commander)
-
-			11 => 1,  // Unit 5 (Offizier)
-
-			12 => 1,  // Unit 6 (Medizinisches Personal)
-
-			13 => 1,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 1,   // Value1 (Leichte Waffen)
-
-			15 => 1,   // Value2 (Schwere Waffen)
-
-			16 => 1,   // Value3 (Planetare Waffen)
-
-			17 => 1,   // Value4 (Schildstärke)
-
-			18 => 1,   // Value5 (Hülle bzw. Hitpoints)
-
-			19 => 1,   // Value6 (Reaktionsgeschw.)
-
-			20 => 1,   // Value7 (Bereitschaft)
-
-			21 => 1,   // Value8 (Wendigkeit)
-
-			22 => 1,   // Value9 (Erfahrung)
-
-			23 => 1,   // Value10 (Warp)
-
-			24 => 1,   // Value11 (Sensoren)
-
-			25 => 1,   // Value12 (Tarnung)
-
-			26 => 1,   // Value13 (Energy Available)
-
-			27 => 1,   // Value14 (Used Energy)
+			27 => 180,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'D´deridex Class',  // Name
 
-			30 => 1,  // Benötige Arbeiter zum Bau
+			30 => 1520,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'The D´deridex Class is a massive warbird, born to take the challenge of the heavy cruisers builded by the enemies of the Empire. This ship boast the finest duranium/tritanium armor among all the Romulan ships.',
 
 			),
 
     	// Scimitar
 
-	    11 => array(
+	    9 => array(
 
-			0 => 178210,  // Metal
+			0 => 686000,  // Metal
 
-			1 => 64105,  // Minerals
+			1 => 686000,  // Minerals
 
-			2 => 74737,  // Latinum
+			2 => 583100,  // Latinum
 
-			3 => 300,  // Min. Unit 1(Centurion)
+			3 => 0,  // Min. Unit 1(Centurion)
 
-			4 => 100,  // Min. Unit 2 (Rem. Truppen)
+			4 => 0,  // Min. Unit 2 (Rem. Truppen)
 
-			5 => 100,  // Min. Unit 3 (Tal Shiar)
+			5 => 0,  // Min. Unit 3 (Tal Shiar)
 
-			6 => 2,  // Min. Unit 4 (Commander)
+			6 => 0,  // Min. Unit 4 (Commander)
 
-			7 => 300,  // Max Unit 1 (Centurion)
+			7 => 0,  // Max Unit 1 (Centurion)
 
-			8 => 100,  // Max Unit 2 (Rem. Truppen)
+			8 => 0,  // Max Unit 2 (Rem. Truppen)
 
-			9 => 100,  // Max Unit 3 (Tal Shiar)
+			9 => 0,  // Max Unit 3 (Tal Shiar)
 
-			10 => 5,  // Max Unit 4 (Commander)
+			10 => 0,  // Max Unit 4 (Commander)
 
-			11 => 21,  // Unit 5 (Offizier)
+			11 => 17,  // Unit 5 (Offizier)
 
-			12 => 8,  // Unit 6 (Medizinisches Personal)
+			12 => 5,  // Unit 6 (Medizinisches Personal)
 
-			13 => 576,  // Buildtime (in 5 Minuten Schritten)
+			13 => 190,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 115,   // Value1 (Leichte Waffen)
+			14 => 2228,   // Value1 (Leichte Waffen)
 
-			15 => 150,   // Value2 (Schwere Waffen)
+			15 => 2228,   // Value2 (Schwere Waffen)
 
-			16 => 50,   // Value3 (Planetare Waffen)
+			16 => 189,   // Value3 (Planetare Waffen)
 
-			17 => 100,   // Value4 (Schildstärke)
+			17 => 11207,   // Value4 (Schildstärke)
 
-			18 => 800,   // Value5 (Hülle bzw. Hitpoints)
+			18 => 6036,   // Value5 (Hülle bzw. Hitpoints)
 
-			19 => 0,   // Value6 (Reaktionsgeschw.)
+			19 => 26,   // Value6 (Reaktionsgeschw.)
 
-			20 => 4,   // Value7 (Bereitschaft)
+			20 => 25,   // Value7 (Bereitschaft)
 
-			21 => 5,   // Value8 (Wendigkeit)
+			21 => 11,   // Value8 (Wendigkeit)
 
-			22 => 6,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 3.7,   // Value10 (Warp)
+			23 => 9.7,   // Value10 (Warp)
 
 			24 => 25,   // Value11 (Sensoren)
 
-			25 => 2,   // Value12 (Tarnung)
+			25 => 35,   // Value12 (Tarnung)
 
-			26 => 154,   // Value13 (Energy Available)
+			26 => 0,   // Value13 (Energy Available)
 
-			27 => 125,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Scimitar Class',  // Name
 
-			30 => 1873,  // Benötige Arbeiter zum Bau
+			30 => 2352,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Scimitar Class gehört zur Eliteklasse, sie besitzt die größte Manövrierbarkeit der Romulanischen Flotte.',
+			31 => 'This ship design cames from the Reman Wirbird Scimitar, built by Shinzon. While this version does not reach the power of the Reman one, remain a mighty ship indeed. The Talaron technology has been removed.',
 
 			),
-
-    	// Orbitalgeschütz
-
-	    12 => array(
-
-			0 => 51408,  // Metal
-
-			1 => 51408,  // Minerals
-
-			2 => 22896,  // Latinum
-
-			3 => 0,  // Min. Unit 1(L. Infanterie)
-
-			4 => 0,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 0,  // Min. Unit 3 (Hazard Team)
-
-			6 => 0,  // Min. Unit 4 (Commander)
-
-			7 => 0,  // Max Unit 1 (L. Infanterie)
-
-			8 => 0,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 0,  // Max Unit 3 (Hazard Team)
-
-			10 => 0,  // Max Unit 4 (Commander)
-
-			11 => 0,  // Unit 5 (Offizier)
-
-			12 => 0,  // Unit 6 (Medizinisches Personal)
-
-			13 => 216,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 25,   // Value1 (Leichte Waffen)
-
-			15 => 375,   // Value2 (Schwere Waffen)
-
-			16 => 0,   // Value3 (Planetare Waffen)
-
-			17 => 700,   // Value4 (Schildstärke)
-
-			18 => 200,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 32,   // Value6 (Reaktionsgeschw.)
-
-			20 => 25,   // Value7 (Bereitschaft)
-
-			21 => 0,   // Value8 (Wendigkeit)
-
-			22 => 0,   // Value9 (Erfahrung)
-
-			23 => 0,   // Value10 (Warp)
-
-			24 => 27,   // Value11 (Sensoren)
-
-			25 => 22,   // Value12 (Tarnung)
-
-			26 => 33,   // Value13 (Energy Available)
-
-			27 => 33,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Orbitalgeschütz',  // Name
-
-			30 => 325,  // Benötige Arbeiter zum Bau
-
-			31 => 'Seid dem Sturz Shinzons erheben sich vermehrt verschiedene Fraktionen gegen das romulanische Sternenimperium und bedrohen offen die romulanischen Welten. Als Schutzmaßnahme wurden diese Orbitalplattformen entwickelt, welche, ausgestattet mit Disruptoren und Plasmatorpedos, eine effektive Verteidigung gewährleisten.',
-
-	    ),
 
 ), //Romulaner
 
@@ -1882,71 +1454,71 @@ $SHIP_TORSO = array(
 
 
 
-    	// Scout
+    	// Fighter
 
 	    0 => array(
 
-			0 => 2880,  // Metal
+			0 => 34650,  // Metal
 
-			1 => 3696,  // Minerals
+			1 => 31500,  // Minerals
 
-			2 => 4630,  // Latinum
+			2 => 22680,  // Latinum
 
-			3 => 10,  // Min. Unit 1(L. Infanterie)
+			3 => 6,  // Min. Unit 1(L. Infanterie)
 
 			4 => 0,  // Min. Unit 2 (Sturmtruppe)
 
 			5 => 0,  // Min. Unit 3 (Hazard Team)
 
-			6 => 1,  // Min. Unit 4 (Commander)
+			6 => 0,  // Min. Unit 4 (Commander)
 
-			7 => 10,  // Max Unit 1 (L. Infanterie)
+			7 => 6,  // Max Unit 1 (L. Infanterie)
 
 			8 => 0,  // Max Unit 2 (Sturmtruppe)
 
 			9 => 0,  // Max Unit 3 (Hazard Team)
 
-			10 => 1,  // Max Unit 4 (Commander)
+			10 => 0,  // Max Unit 4 (Commander)
 
 			11 => 1,  // Unit 5 (Offizier)
 
 			12 => 0,  // Unit 6 (Medizinisches Personal)
 
-			13 => 55,  // Buildtime (in 5 Minuten Schritten)
+			13 => 6,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 0,   // Value1 (Leichte Waffen)
+			14 => 21,   // Value1 (Leichte Waffen)
 
-			15 => 0,   // Value2 (Schwere Waffen)
+			15 => 7,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 0,   // Value4 (Schildstärke)
+			17 => 120,   // Value4 (Schildstärke)
 
-			18 => 15,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 120,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 4,   // Value6 (Reaktionsgeschw.)
+			19 => 11,   // Value6 (Reaktionsgeschw.)
 
-			20 => 3,   // Value7 (Bereitschaft)
+			20 => 14,   // Value7 (Bereitschaft)
 
-			21 => 12,   // Value8 (Wendigkeit)
+			21 => 24,   // Value8 (Wendigkeit)
 
-			22 => 13,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 3.9,   // Value10 (Warp)
+			23 => 7.2,   // Value10 (Warp)
 
-			24 => 6,   // Value11 (Sensoren)
+			24 => 4,   // Value11 (Sensoren)
 
-			25 => 4,   // Value12 (Tarnung)
+			25 => 0,   // Value12 (Tarnung)
 
-			26 => 8,   // Value13 (Energy Available)
+			26 => 40,   // Value13 (Energy Available)
 
-			27 => 2,   // Value14 (Used Energy)
+			27 => 40,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Scout',  // Name
+			29 => 'Fighter',  // Name
 
-			30 => 5,  // Benötige Arbeiter zum Bau
+			30 => 51,  // Benötige Arbeiter zum Bau
 
 			31 => 'Der Scout ist zum ausspionieren von Flotten und Planeten gedacht. Auch wenn der Dienst auf ihm keine Ehre bringt erfüllt er doch seinen Zweck.',
 
@@ -1958,13 +1530,13 @@ $SHIP_TORSO = array(
 
 	    1 => array(
 
-			0 => 8520,  // Metal
+			0 => 92400,  // Metal
 
-			1 => 8960,  // Minerals
+			1 => 84000,  // Minerals
 
-			2 => 5870,  // Latinum
+			2 => 60480,  // Latinum
 
-			3 => 50,  // Min. Unit 1(L. Infanterie)
+			3 => 31,  // Min. Unit 1(L. Infanterie)
 
 			4 => 0,  // Min. Unit 2 (Sturmtruppe)
 
@@ -1972,53 +1544,53 @@ $SHIP_TORSO = array(
 
 			6 => 1,  // Min. Unit 4 (Commander)
 
-			7 => 50,  // Max Unit 1 (L. Infanterie)
+			7 => 32,  // Max Unit 1 (L. Infanterie)
 
 			8 => 0,  // Max Unit 2 (Sturmtruppe)
 
 			9 => 0,  // Max Unit 3 (Hazard Team)
 
-			10 => 2,  // Max Unit 4 (Commander)
+			10 => 1,  // Max Unit 4 (Commander)
 
-			11 => 1,  // Unit 5 (Offizier)
+			11 => 3,  // Unit 5 (Offizier)
 
 			12 => 1,  // Unit 6 (Medizinisches Personal)
 
-			13 => 75,  // Buildtime (in 5 Minuten Schritten)
+			13 => 11,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 18,   // Value1 (Leichte Waffen)
+			14 => 42,   // Value1 (Leichte Waffen)
 
-			15 => 0,   // Value2 (Schwere Waffen)
+			15 => 21,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 5,   // Value4 (Schildstärke)
+			17 => 480,   // Value4 (Schildstärke)
 
-			18 => 25,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 1200,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 3,   // Value6 (Reaktionsgeschw.)
+			19 => 9,   // Value6 (Reaktionsgeschw.)
 
-			20 => 1,   // Value7 (Bereitschaft)
+			20 => 13,   // Value7 (Bereitschaft)
 
-			21 => 5,   // Value8 (Wendigkeit)
+			21 => 14,   // Value8 (Wendigkeit)
 
-			22 => 5,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 4.4,   // Value10 (Warp)
+			23 => 6.2,   // Value10 (Warp)
 
-			24 => 4,   // Value11 (Sensoren)
+			24 => 7,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 10,   // Value13 (Energy Available)
+			26 => 100,   // Value13 (Energy Available)
 
-			27 => 4,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Transporter',  // Name
 
-			30 => 117,  // Benötige Arbeiter zum Bau
+			30 => 294,  // Benötige Arbeiter zum Bau
 
 			31 => 'Mit einem Transporter kann man entweder 4000 Rohstoffe bzw. 400 Krieger transportieren, oder sie mit in eine Schlacht schicken. Sie sind relativ langsam, dafür ist ihre Verteidigung akzeptabel.',
 
@@ -2030,67 +1602,67 @@ $SHIP_TORSO = array(
 
 	    2 => array(
 
-			0 => 78080,  // Metal
+			0 => 231000,  // Metal
 
-			1 => 25880,  // Minerals
+			1 => 210000,  // Minerals
 
-			2 => 34390,  // Latinum
+			2 => 151200,  // Latinum
 
-			3 => 100,  // Min. Unit 1(L. Infanterie)
+			3 => 200,  // Min. Unit 1(L. Infanterie)
 
-			4 => 0,  // Min. Unit 2 (Sturmtruppe)
+			4 => 50,  // Min. Unit 2 (Sturmtruppe)
 
-			5 => 0,  // Min. Unit 3 (Hazard Team)
+			5 => 10,  // Min. Unit 3 (Hazard Team)
 
-			6 => 1,  // Min. Unit 4 (Commander)
+			6 => 3,  // Min. Unit 4 (Commander)
 
 			7 => 200,  // Max Unit 1 (L. Infanterie)
 
-			8 => 0,  // Max Unit 2 (Sturmtruppe)
+			8 => 50,  // Max Unit 2 (Sturmtruppe)
 
-			9 => 0,  // Max Unit 3 (Hazard Team)
+			9 => 10,  // Max Unit 3 (Hazard Team)
 
-			10 => 6,  // Max Unit 4 (Commander)
+			10 => 3,  // Max Unit 4 (Commander)
 
 			11 => 20,  // Unit 5 (Offizier)
 
-			12 => 2,  // Unit 6 (Medizinisches Personal)
+			12 => 5,  // Unit 6 (Medizinisches Personal)
 
-			13 => 255,  // Buildtime (in 5 Minuten Schritten)
+			13 => 83,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 12,   // Value1 (Leichte Waffen)
+			14 => 70,   // Value1 (Leichte Waffen)
 
-			15 => 0,   // Value2 (Schwere Waffen)
+			15 => 70,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 10,   // Value4 (Schildstärke)
+			17 => 1200,   // Value4 (Schildstärke)
 
-			18 => 55,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 960,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 0,   // Value6 (Reaktionsgeschw.)
+			19 => 14,   // Value6 (Reaktionsgeschw.)
 
-			20 => 0,   // Value7 (Bereitschaft)
+			20 => 18,   // Value7 (Bereitschaft)
 
-			21 => 0,   // Value8 (Wendigkeit)
+			21 => 18,   // Value8 (Wendigkeit)
 
 			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 5.4,   // Value10 (Warp)
+			23 => 6.4,   // Value10 (Warp)
 
-			24 => 0,   // Value11 (Sensoren)
+			24 => 7,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 15,   // Value13 (Energy Available)
+			26 => 100,   // Value13 (Energy Available)
 
-			27 => 5,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Kolonisationsschiff',  // Name
 
-			30 => 1470,  // Benötige Arbeiter zum Bau
+			30 => 3360,  // Benötige Arbeiter zum Bau
 
 			31 => 'Mit dem Kolonieschiff kannst du einen Planeten kolonisieren. Sobald du die Planetare Verteidigung beseitigt und feindlichen Truppen ausgeschaltet hast, geht das Kolonieschiff verloren (da seine Holoemitter zur Simulation erster Einrichtungen demontiert werden) und der Planet steht unter deinem Kommando.',
 
@@ -2166,151 +1738,9 @@ $SHIP_TORSO = array(
 
 			),
 
-    	// Bird of Prey
-
-	    4 => array(
-
-			0 => 16365,  // Metal
-
-			1 => 8433,  // Minerals
-
-			2 => 1801,  // Latinum
-
-			3 => 12,  // Min. Unit 1(L. Infanterie)
-
-			4 => 0,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 0,  // Min. Unit 3 (Hazard Team)
-
-			6 => 1,  // Min. Unit 4 (Commander)
-
-			7 => 24,  // Max Unit 1 (L. Infanterie)
-
-			8 => 10,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 0,  // Max Unit 3 (Hazard Team)
-
-			10 => 4,  // Max Unit 4 (Commander)
-
-			11 => 9,  // Unit 5 (Offizier)
-
-			12 => 1,  // Unit 6 (Medizinisches Personal)
-
-			13 => 68,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 50,   // Value1 (Leichte Waffen)
-
-			15 => 0,   // Value2 (Schwere Waffen)
-
-			16 => 0,   // Value3 (Planetare Waffen)
-
-			17 => 160,   // Value4 (Schildstärke)
-
-			18 => 100,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 16,   // Value6 (Reaktionsgeschw.)
-
-			20 => 17,   // Value7 (Bereitschaft)
-
-			21 => 28,   // Value8 (Wendigkeit)
-
-			22 => 16,   // Value9 (Erfahrung)
-
-			23 => 4.1,   // Value10 (Warp)
-
-			24 => 2,   // Value11 (Sensoren)
-
-			25 => 8,   // Value12 (Tarnung)
-
-			26 => 20,   // Value13 (Energy Available)
-
-			27 => 8,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'B´rel (Bird of Prey)',  // Name
-
-			30 => 103,  // Benötige Arbeiter zum Bau
-
-			31 => 'Die B´rel-Klasse ist eines der 2 Mittelklasse-Schiffe. Als die alten Bird of Preys den Schiffen der noch jungen Föderation immer öfter unterlegen waren, wurde diese Klasse komplett neu entworfen. Heraus kam ein starker, wendiger Angriffsjäger.',
-
-			),
-
-
-
-    	// K´T´Inga
-
-	    5 => array(
-
-			0 => 26548,  // Metal
-
-			1 => 14199,  // Minerals
-
-			2 => 3324,  // Latinum
-
-			3 => 100,  // Min. Unit 1(L. Infanterie)
-
-			4 => 0,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 0,  // Min. Unit 3 (Hazard Team)
-
-			6 => 1,  // Min. Unit 4 (Commander)
-
-			7 => 175,  // Max Unit 1 (L. Infanterie)
-
-			8 => 30,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 0,  // Max Unit 3 (Hazard Team)
-
-			10 => 5,  // Max Unit 4 (Commander)
-
-			11 => 9,  // Unit 5 (Offizier)
-
-			12 => 1,  // Unit 6 (Medizinisches Personal)
-
-			13 => 111,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 160,   // Value1 (Leichte Waffen)
-
-			15 => 20,   // Value2 (Schwere Waffen)
-
-			16 => 10,   // Value3 (Planetare Waffen)
-
-			17 => 120,   // Value4 (Schildstärke)
-
-			18 => 560,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 16,   // Value6 (Reaktionsgeschw.)
-
-			20 => 17,   // Value7 (Bereitschaft)
-
-			21 => 22,   // Value8 (Wendigkeit)
-
-			22 => 18,   // Value9 (Erfahrung)
-
-			23 => 5.0,   // Value10 (Warp)
-
-			24 => 2,   // Value11 (Sensoren)
-
-			25 => 0,   // Value12 (Tarnung)
-
-			26 => 25,   // Value13 (Energy Available)
-
-			27 => 10,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'K´T´Inga',  // Name
-
-			30 => 204,  // Benötige Arbeiter zum Bau
-
-			31 => 'Die K´T´Inga ist das zweite der 2 Mittelklasse-Schiffe. Sie ersetzt die alte D7 Klasse deren Hüllenmodell sie auch verwendet. Jedoch hat sie weitaus bessere Waffen und Schilde.',
-
-			),
-
 // Totes Temp
 
-	    6 => array(
+	    4 => array(
 
 			0 => 100000000,  // Metal
 
@@ -2370,9 +1800,151 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'K´T´Inga',  // Name
+			29 => 'B´rel (Bird of Prey)',  // Name
 
 			30 => 1,  // Benötige Arbeiter zum Bau
+
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+
+			),
+
+
+
+    	// Bird of Prey
+
+	    5 => array(
+
+			0 => 105000,  // Metal
+
+			1 => 105000,  // Minerals
+
+			2 => 84000,  // Latinum
+
+			3 => 42,  // Min. Unit 1(L. Infanterie)
+
+			4 => 11,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 0,  // Min. Unit 3 (Hazard Team)
+
+			6 => 2,  // Min. Unit 4 (Commander)
+
+			7 => 42,  // Max Unit 1 (L. Infanterie)
+
+			8 => 11,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 0,  // Max Unit 3 (Hazard Team)
+
+			10 => 2,  // Max Unit 4 (Commander)
+
+			11 => 6,  // Unit 5 (Offizier)
+
+			12 => 2,  // Unit 6 (Medizinisches Personal)
+
+			13 => 17,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 250,   // Value1 (Leichte Waffen)
+
+			15 => 150,   // Value2 (Schwere Waffen)
+
+			16 => 10,   // Value3 (Planetare Waffen)
+
+			17 => 500,   // Value4 (Schildstärke)
+
+			18 => 350,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 10,   // Value6 (Reaktionsgeschw.)
+
+			20 => 15,   // Value7 (Bereitschaft)
+
+			21 => 25,   // Value8 (Wendigkeit)
+
+			22 => 0,   // Value9 (Erfahrung)
+
+			23 => 7.5,   // Value10 (Warp)
+
+			24 => 10,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 50,   // Value13 (Energy Available)
+
+			27 => 50,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'B´rel (Bird of Prey)',  // Name
+
+			30 => 262,  // Benötige Arbeiter zum Bau
+
+			31 => 'Die B´rel-Klasse ist eines der 2 Mittelklasse-Schiffe. Als die alten Bird of Preys den Schiffen der noch jungen Föderation immer öfter unterlegen waren, wurde diese Klasse komplett neu entworfen. Heraus kam ein starker, wendiger Angriffsjäger.',
+
+			),
+
+	// K'T'Inga
+
+	    6 => array(
+
+			0 => 168000,  // Metal
+
+			1 => 168000,  // Minerals
+
+			2 => 134400,  // Latinum
+
+			3 => 90,  // Min. Unit 1(Centurion)
+
+			4 => 37,  // Min. Unit 2 (Rem. Truppen)
+
+			5 => 0,  // Min. Unit 3 (Tal Shiar)
+
+			6 => 4,  // Min. Unit 4 (Commander)
+
+			7 => 90,  // Max Unit 1 (Centurion)
+
+			8 => 37,  // Max Unit 2 (Rem. Truppen)
+
+			9 => 0,  // Max Unit 3 (Tal Shiar)
+
+			10 => 4,  // Max Unit 4 (Commander)
+
+			11 => 7,  // Unit 5 (Offizier)
+
+			12 => 3,  // Unit 6 (Medizinisches Personal)
+
+			13 => 28,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 400,   // Value1 (Leichte Waffen)
+
+			15 => 350,   // Value2 (Schwere Waffen)
+
+			16 => 30,   // Value3 (Planetare Waffen)
+
+			17 => 750,   // Value4 (Schildstärke)
+
+			18 => 500,   // Value5 (Hülle bzw. Hitpoints)
+
+			19 => 12,   // Value6 (Reaktionsgeschw.)
+
+			20 => 16,   // Value7 (Bereitschaft)
+
+			21 => 20,   // Value8 (Wendigkeit)
+
+			22 => 0,   // Value9 (Erfahrung)
+
+			23 => 7.5,   // Value10 (Warp)
+
+			24 => 12,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 70,   // Value13 (Energy Available)
+
+			27 => 70,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'K´T´Inga',  // Name
+
+			30 => 420,  // Benötige Arbeiter zum Bau
 
 			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
 
@@ -2382,361 +1954,151 @@ $SHIP_TORSO = array(
 
 	    7 => array(
 
-			0 => 54164,  // Metal
+			0 => 252000,  // Metal
 
-			1 => 36782,  // Minerals
+			1 => 252000,  // Minerals
 
-			2 => 18087,  // Latinum
+			2 => 201600,  // Latinum
 
-			3 => 40,  // Min. Unit 1(L. Infanterie)
+			3 => 126,  // Min. Unit 1(Centurion)
 
-			4 => 10,  // Min. Unit 2 (Sturmtruppe)
+			4 => 53,  // Min. Unit 2 (Rem. Truppen)
 
-			5 => 20,  // Min. Unit 3 (Hazard Team)
+			5 => 16,  // Min. Unit 3 (Tal Shiar)
 
-			6 => 0,  // Min. Unit 4 (Commander)
+			6 => 4,  // Min. Unit 4 (Commander)
 
-			7 => 90,  // Max Unit 1 (L. Infanterie)
+			7 => 126,  // Max Unit 1 (Centurion)
 
-			8 => 25,  // Max Unit 2 (Sturmtruppe)
+			8 => 53,  // Max Unit 2 (Rem. Truppen)
 
-			9 => 20,  // Max Unit 3 (Hazard Team)
+			9 => 16,  // Max Unit 3 (Tal Shiar)
 
-			10 => 5,  // Max Unit 4 (Commander)
+			10 => 4,  // Max Unit 4 (Commander)
 
-			11 => 21,  // Unit 5 (Offizier)
+			11 => 7,  // Unit 5 (Offizier)
 
-			12 => 1,  // Unit 6 (Medizinisches Personal)
+			12 => 3,  // Unit 6 (Medizinisches Personal)
 
-			13 => 289,  // Buildtime (in 5 Minuten Schritten)
+			13 => 44,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 270,   // Value1 (Leichte Waffen)
+			14 => 650,   // Value1 (Leichte Waffen)
 
-			15 => 80,   // Value2 (Schwere Waffen)
+			15 => 550,   // Value2 (Schwere Waffen)
 
-			16 => 25,   // Value3 (Planetare Waffen)
+			16 => 50,   // Value3 (Planetare Waffen)
 
-			17 => 480,   // Value4 (Schildstärke)
+			17 => 1200,   // Value4 (Schildstärke)
 
-			18 => 300,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 600,   // Value5 (Hülle bzw. Hitpoints)
 
-			19 => 8,   // Value6 (Reaktionsgeschw.)
+			19 => 15,   // Value6 (Reaktionsgeschw.)
 
-			20 => 11,   // Value7 (Bereitschaft)
+			20 => 20,   // Value7 (Bereitschaft)
 
-			21 => 16,   // Value8 (Wendigkeit)
+			21 => 15,   // Value8 (Wendigkeit)
 
-			22 => 11,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 5.0,   // Value10 (Warp)
+			23 => 7.5,   // Value10 (Warp)
 
-			24 => 2,   // Value11 (Sensoren)
+			24 => 18,   // Value11 (Sensoren)
 
-			25 => 15,   // Value12 (Tarnung)
+			25 => 0,   // Value12 (Tarnung)
 
-			26 => 25,   // Value13 (Energy Available)
+			26 => 100,   // Value13 (Energy Available)
 
-			27 => 15,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'K´vort',  // Name
 
-			30 => 438,  // Benötige Arbeiter zum Bau
+			30 => 840,  // Benötige Arbeiter zum Bau
 
 			31 => 'Die Kvort wurde entwickelt als man feststellte dass die B´rel zwar sehr schnell und wendig war jedoch nur im Schwarm größere Schäden verursacht. Die K´vort Klasse wurde daher mit stärkeren Waffen und Schilden ausgestattet.',
 
 			),
 
-// Totes Temp
+    	// Vorcha
 
 	    8 => array(
 
-			0 => 100000000,  // Metal
+			0 => 577500,  // Metal
 
-			1 => 1,  // Minerals
+			1 => 525000,  // Minerals
 
-			2 => 1,  // Latinum
+			2 => 401625,  // Latinum
 
-			3 => 1,  // Min. Unit 1(Centurion)
+			3 => 179,  // Min. Unit 1(L. Infanterie)
 
-			4 => 1,  // Min. Unit 2 (Rem. Truppen)
+			4 => 78,  // Min. Unit 2 (Sturmtruppe)
 
-			5 => 1,  // Min. Unit 3 (Tal Shiar)
+			5 => 35,  // Min. Unit 3 (Hazard Team)
 
-			6 => 1,  // Min. Unit 4 (Commander)
+			6 => 5,  // Min. Unit 4 (Commander)
 
-			7 => 1,  // Max Unit 1 (Centurion)
+			7 => 179,  // Max Unit 1 (L. Infanterie)
 
-			8 => 1,  // Max Unit 2 (Rem. Truppen)
+			8 => 78,  // Max Unit 2 (Sturmtruppe)
 
-			9 => 1,  // Max Unit 3 (Tal Shiar)
-
-			10 => 1,  // Max Unit 4 (Commander)
-
-			11 => 1,  // Unit 5 (Offizier)
-
-			12 => 1,  // Unit 6 (Medizinisches Personal)
-
-			13 => 1,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 1,   // Value1 (Leichte Waffen)
-
-			15 => 1,   // Value2 (Schwere Waffen)
-
-			16 => 1,   // Value3 (Planetare Waffen)
-
-			17 => 1,   // Value4 (Schildstärke)
-
-			18 => 1,   // Value5 (Hülle bzw. Hitpoints)
-
-			19 => 1,   // Value6 (Reaktionsgeschw.)
-
-			20 => 1,   // Value7 (Bereitschaft)
-
-			21 => 1,   // Value8 (Wendigkeit)
-
-			22 => 1,   // Value9 (Erfahrung)
-
-			23 => 1,   // Value10 (Warp)
-
-			24 => 1,   // Value11 (Sensoren)
-
-			25 => 1,   // Value12 (Tarnung)
-
-			26 => 1,   // Value13 (Energy Available)
-
-			27 => 1,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'K´vort',  // Name
-
-			30 => 1,  // Benötige Arbeiter zum Bau
-
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
-
-			),
-
-    	// Vorcha
-
-	    9 => array(
-
-			0 => 70460,  // Metal
-
-			1 => 47230,  // Minerals
-
-			2 => 26423,  // Latinum
-
-			3 => 200,  // Min. Unit 1(L. Infanterie)
-
-			4 => 20,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 25,  // Min. Unit 3 (Hazard Team)
-
-			6 => 1,  // Min. Unit 4 (Commander)
-
-			7 => 200,  // Max Unit 1 (L. Infanterie)
-
-			8 => 50,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 25,  // Max Unit 3 (Hazard Team)
+			9 => 35,  // Max Unit 3 (Hazard Team)
 
 			10 => 5,  // Max Unit 4 (Commander)
 
-			11 => 12,  // Unit 5 (Offizier)
+			11 => 21,  // Unit 5 (Offizier)
 
-			12 => 1,  // Unit 6 (Medizinisches Personal)
+			12 => 9,  // Unit 6 (Medizinisches Personal)
 
-			13 => 348,  // Buildtime (in 5 Minuten Schritten)
+			13 => 143,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 250,   // Value1 (Leichte Waffen)
+			14 => 1100,   // Value1 (Leichte Waffen)
 
-			15 => 90,   // Value2 (Schwere Waffen)
+			15 => 1000,   // Value2 (Schwere Waffen)
 
-			16 => 45,   // Value3 (Planetare Waffen)
+			16 => 100,   // Value3 (Planetare Waffen)
 
-			17 => 160,   // Value4 (Schildstärke)
+			17 => 2500,   // Value4 (Schildstärke)
 
-			18 => 500,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 4500,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 4,   // Value6 (Reaktionsgeschw.)
+			19 => 21,   // Value6 (Reaktionsgeschw.)
 
-			20 => 11,   // Value7 (Bereitschaft)
-
-			21 => 15,   // Value8 (Wendigkeit)
-
-			22 => 9,   // Value9 (Erfahrung)
-
-			23 => 3.8,   // Value10 (Warp)
-
-			24 => 2,   // Value11 (Sensoren)
-
-			25 => 12,   // Value12 (Tarnung)
-
-			26 => 55,   // Value13 (Energy Available)
-
-			27 => 38,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Vorcha',  // Name
-
-			30 => 902,  // Benötige Arbeiter zum Bau
-
-			31 => 'Die Vorcha wurde entwickelt als man feststellte, dass die K´T´Inga von unten leicht anzugreifen war. Bei ihr wurden Offensiv- und Defensivpotentiial noch einmal verstärkt. Durch ihre verhältnissmäßig geringe Bauzeit stellt sie nach der K´T´Inga das neue Rückrat der Flotte dar.',
-
-			),
-
-// Totes Temp
-
-	    10 => array(
-
-			0 => 100000000,  // Metal
-
-			1 => 1,  // Minerals
-
-			2 => 1,  // Latinum
-
-			3 => 1,  // Min. Unit 1(Centurion)
-
-			4 => 1,  // Min. Unit 2 (Rem. Truppen)
-
-			5 => 1,  // Min. Unit 3 (Tal Shiar)
-
-			6 => 1,  // Min. Unit 4 (Commander)
-
-			7 => 1,  // Max Unit 1 (Centurion)
-
-			8 => 1,  // Max Unit 2 (Rem. Truppen)
-
-			9 => 1,  // Max Unit 3 (Tal Shiar)
-
-			10 => 1,  // Max Unit 4 (Commander)
-
-			11 => 1,  // Unit 5 (Offizier)
-
-			12 => 1,  // Unit 6 (Medizinisches Personal)
-
-			13 => 1,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 1,   // Value1 (Leichte Waffen)
-
-			15 => 1,   // Value2 (Schwere Waffen)
-
-			16 => 1,   // Value3 (Planetare Waffen)
-
-			17 => 1,   // Value4 (Schildstärke)
-
-			18 => 1,   // Value5 (Hülle bzw. Hitpoints)
-
-			19 => 1,   // Value6 (Reaktionsgeschw.)
-
-			20 => 1,   // Value7 (Bereitschaft)
-
-			21 => 1,   // Value8 (Wendigkeit)
-
-			22 => 1,   // Value9 (Erfahrung)
-
-			23 => 1,   // Value10 (Warp)
-
-			24 => 1,   // Value11 (Sensoren)
-
-			25 => 1,   // Value12 (Tarnung)
-
-			26 => 1,   // Value13 (Energy Available)
-
-			27 => 1,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Vorcha',  // Name
-
-			30 => 1,  // Benötige Arbeiter zum Bau
-
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
-
-			),
-
-    	// Negh
-
-	    11 => array(
-
-			0 => 114257,  // Metal
-
-			1 => 49629,  // Minerals
-
-			2 => 52971,  // Latinum
-
-			3 => 150,  // Min. Unit 1(L. Infanterie)
-
-			4 => 150,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 60,  // Min. Unit 3 (Hazard Team)
-
-			6 => 3,  // Min. Unit 4 (Commander)
-
-			7 => 150,  // Max Unit 1 (L. Infanterie)
-
-			8 => 150,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 150,  // Max Unit 3 (Hazard Team)
-
-			10 => 5,  // Max Unit 4 (Commander)
-
-			11 => 15,  // Unit 5 (Offizier)
-
-			12 => 6,  // Unit 6 (Medizinisches Personal)
-
-			13 => 450,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 350,   // Value1 (Leichte Waffen)
-
-			15 => 180,   // Value2 (Schwere Waffen)
-
-			16 => 45,   // Value3 (Planetare Waffen)
-
-			17 => 300,   // Value4 (Schildstärke)
-
-			18 => 600,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 6,   // Value6 (Reaktionsgeschw.)
-
-			20 => 12,   // Value7 (Bereitschaft)
+			20 => 23,   // Value7 (Bereitschaft)
 
 			21 => 12,   // Value8 (Wendigkeit)
 
-			22 => 15,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 4.2,   // Value10 (Warp)
+			23 => 6.9,   // Value10 (Warp)
 
-			24 => 24,   // Value11 (Sensoren)
+			24 => 15,   // Value11 (Sensoren)
 
-			25 => 8,   // Value12 (Tarnung)
+			25 => 0,   // Value12 (Tarnung)
 
-			26 => 134,   // Value13 (Energy Available)
+			26 => 180,   // Value13 (Energy Available)
 
-			27 => 125,   // Value14 (Used Energy)
+			27 => 180,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Negh´Var',  // Name
+			29 => 'Vorcha',  // Name
 
-			30 => 1873,  // Benötige Arbeiter zum Bau
+			30 => 1344,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Negh´Var wurde als Pendant zur Keldon Klasse der Cardassianer entwickelt und ist eines der stärksten Schiffe der Galaxie. In diesem Schiff wurden die modernsten Waffen eingebaut über die das Reich verfügt und die stärksten Schilde und Panzerung machen es zu einer harten Nuss für jeden Gegner. Der Rumpf ist von Disrupturbänken geradezu bedeckt und ein Toter Winkel wurde völlig verhindert.',
+			31 => 'Vorcha class vessels are the heavy cruisers of Klingon Empire. Their armor is the most thickest among all the heavy cruisers in the galaxy. Her weapons are fearsome, capable to inflict heavy punishment to enemy ships and planets.',
 
 			),
 
-    	// Orbitalgeschütz
+    	// Negh'Var
 
-	    12 => array(
+	    9 => array(
 
-			0 => 49632,  // Metal
+			0 => 735000,  // Metal
 
-			1 => 49632,  // Minerals
+			1 => 735000,  // Minerals
 
-			2 => 32736,  // Latinum
+			2 => 624750,  // Latinum
 
 			3 => 0,  // Min. Unit 1(L. Infanterie)
 
@@ -2754,49 +2116,49 @@ $SHIP_TORSO = array(
 
 			10 => 0,  // Max Unit 4 (Commander)
 
-			11 => 0,  // Unit 5 (Offizier)
+			11 => 19,  // Unit 5 (Offizier)
 
-			12 => 0,  // Unit 6 (Medizinisches Personal)
+			12 => 7,  // Unit 6 (Medizinisches Personal)
 
-			13 => 264,  // Buildtime (in 5 Minuten Schritten)
+			13 => 220,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 250,   // Value1 (Leichte Waffen)
+			14 => 2835,   // Value1 (Leichte Waffen)
 
-			15 => 250,   // Value2 (Schwere Waffen)
+			15 => 2835,   // Value2 (Schwere Waffen)
 
-			16 => 0,   // Value3 (Planetare Waffen)
+			16 => 189,   // Value3 (Planetare Waffen)
 
-			17 => 350,   // Value4 (Schildstärke)
+			17 => 6772,   // Value4 (Schildstärke)
 
-			18 => 500,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 11048,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 25,   // Value6 (Reaktionsgeschw.)
+			19 => 20,   // Value6 (Reaktionsgeschw.)
 
-			20 => 25,   // Value7 (Bereitschaft)
+			20 => 19,   // Value7 (Bereitschaft)
 
-			21 => 0,   // Value8 (Wendigkeit)
+			21 => 9,   // Value8 (Wendigkeit)
 
 			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 0,   // Value10 (Warp)
+			23 => 8.9,   // Value10 (Warp)
 
-			24 => 18,   // Value11 (Sensoren)
+			24 => 20,   // Value11 (Sensoren)
 
-			25 => 15,   // Value12 (Tarnung)
+			25 => 20,   // Value12 (Tarnung)
 
-			26 => 33,   // Value13 (Energy Available)
+			26 => 0,   // Value13 (Energy Available)
 
-			27 => 33,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Orbitalgeschütz',  // Name
+			29 => 'Negh´Var',  // Name
 
-			30 => 325,  // Benötige Arbeiter zum Bau
+			30 => 2580,  // Benötige Arbeiter zum Bau
 
-			31 => 'Viele Feinde wollen von dem Reichtum und der Glorie des klingonischen Reiches zehren, und manchmal reicht der Stolz und die Kraft der Krieger nicht aus, um die Welten des Reiches zu schützen. Aus diesem Grunde schufen die begabten Wissenschaftler des Hauses Korath dieses mit drei Superdisruptoren und Photonentorpedos bewaffnete Orbitalgeschütz.',
+			31 => 'This is the base project for the Klingon Admiral Ship. This is a fearsome planet-busting weapon, with the strongest armor among all the ships in the galaxy.',
 
-	    ),
+			),
 
 	),
 
@@ -2810,17 +2172,17 @@ $SHIP_TORSO = array(
 
     3 => array(
 
-    	// Scout
+    	// Fighter
 
 	    0 => array(
 
-		    0 => 5125,  // Metal
+		    0 => 29700,  // Metal
 
-			1 => 1760,  // Minerals
+			1 => 27000,  // Minerals
 
-			2 => 3529,  // Latinum
+			2 => 21600,  // Latinum
 
-			3 => 1,  // Min. Unit 1(L. Infanterie)
+			3 => 5,  // Min. Unit 1(L. Infanterie)
 
 			4 => 0,  // Min. Unit 2 (Sturmtruppe)
 
@@ -2828,7 +2190,7 @@ $SHIP_TORSO = array(
 
 			6 => 0,  // Min. Unit 4 (Commander)
 
-			7 => 9,  // Max Unit 1 (L. Infanterie)
+			7 => 5,  // Max Unit 1 (L. Infanterie)
 
 			8 => 0,  // Max Unit 2 (Sturmtruppe)
 
@@ -2836,45 +2198,45 @@ $SHIP_TORSO = array(
 
 			10 => 0,  // Max Unit 4 (Commander)
 
-			11 => 0,  // Unit 5 (Offizier)
+			11 => 1,  // Unit 5 (Offizier)
 
 			12 => 0,  // Unit 6 (Medizinisches Personal)
 
-			13 => 32,  // Buildtime (in 5 Minuten Schritten)
+			13 => 5,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 0,   // Value1 (Leichte Waffen)
+			14 => 17,   // Value1 (Leichte Waffen)
 
-			15 => 0,   // Value2 (Schwere Waffen)
+			15 => 6,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 0,   // Value4 (Schildstärke)
+			17 => 95,   // Value4 (Schildstärke)
 
-			18 => 9,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 95,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 4,   // Value6 (Reaktionsgeschw.)
+			19 => 12,   // Value6 (Reaktionsgeschw.)
 
-			20 => 2,   // Value7 (Bereitschaft)
+			20 => 16,   // Value7 (Bereitschaft)
 
-			21 => 11,   // Value8 (Wendigkeit)
+			21 => 19,   // Value8 (Wendigkeit)
 
-			22 => 22,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 3.8,   // Value10 (Warp)
+			23 => 7.3,   // Value10 (Warp)
 
-			24 => 15,   // Value11 (Sensoren)
+			24 => 5,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 3,   // Value13 (Energy Available)
+			26 => 40,   // Value13 (Energy Available)
 
-			27 => 2,   // Value14 (Used Energy)
+			27 => 40,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Gul Vystan',  // Name
 
-			30 => 5,  // Benötige Arbeiter zum Bau
+			30 => 57,  // Benötige Arbeiter zum Bau
 
 			31 => 'Die Gul Vystan ist zum Spionieren gedacht und nicht als Angriffsschiff geeignet. Alle zur Verfügung stehenden Kapazitäten wurden für die Sensortechnik an Board verwendet. Somit blieb für sonstige Ausrüstung kein Platz mehr.',
 
@@ -2888,13 +2250,13 @@ $SHIP_TORSO = array(
 
 	    1 => array(
 
-			0 => 5650,  // Metal
+			0 => 79200,  // Metal
 
-			1 => 6225,  // Minerals
+			1 => 72000,  // Minerals
 
-			2 => 11129,  // Latinum
+			2 => 57600,  // Latinum
 
-			3 => 30,  // Min. Unit 1(L. Infanterie)
+			3 => 27,  // Min. Unit 1(L. Infanterie)
 
 			4 => 0,  // Min. Unit 2 (Sturmtruppe)
 
@@ -2902,7 +2264,7 @@ $SHIP_TORSO = array(
 
 			6 => 1,  // Min. Unit 4 (Commander)
 
-			7 => 40,  // Max Unit 1 (L. Infanterie)
+			7 => 27,  // Max Unit 1 (L. Infanterie)
 
 			8 => 0,  // Max Unit 2 (Sturmtruppe)
 
@@ -2910,45 +2272,45 @@ $SHIP_TORSO = array(
 
 			10 => 1,  // Max Unit 4 (Commander)
 
-			11 => 0,  // Unit 5 (Offizier)
+			11 => 3,  // Unit 5 (Offizier)
 
 			12 => 1,  // Unit 6 (Medizinisches Personal)
 
-			13 => 52,  // Buildtime (in 5 Minuten Schritten)
+			13 => 10,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 17,   // Value1 (Leichte Waffen)
+			14 => 33,   // Value1 (Leichte Waffen)
 
-			15 => 0,   // Value2 (Schwere Waffen)
+			15 => 17,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 5,   // Value4 (Schildstärke)
+			17 => 380,   // Value4 (Schildstärke)
 
-			18 => 19,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 950,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 2,   // Value6 (Reaktionsgeschw.)
+			19 => 10,   // Value6 (Reaktionsgeschw.)
 
-			20 => 2,   // Value7 (Bereitschaft)
+			20 => 14,   // Value7 (Bereitschaft)
 
-			21 => 5,   // Value8 (Wendigkeit)
+			21 => 11,   // Value8 (Wendigkeit)
 
-			22 => 6,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 2,   // Value10 (Warp)
+			23 => 6.3,   // Value10 (Warp)
 
-			24 => 4,5,   // Value11 (Sensoren)
+			24 => 10,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 6,   // Value13 (Energy Available)
+			26 => 100,   // Value13 (Energy Available)
 
-			27 => 4,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Transporter',  // Name
 
-			30 => 30,  // Benötige Arbeiter zum Bau
+			30 => 331,  // Benötige Arbeiter zum Bau
 
 			31 => 'Mit Transportern kann man entweder Rohstoffe bzw. Einheiten transportieren, oder sie mit auf einen Angriff schicken.',
 
@@ -2960,67 +2322,67 @@ $SHIP_TORSO = array(
 
 	    2 => array(
 
-			0 => 85450,  // Metal
+			0 => 198000,  // Metal
 
-			1 => 25225,  // Minerals
+			1 => 180000,  // Minerals
 
-			2 => 41529,  // Latinum
+			2 => 144000,  // Latinum
 
-			3 => 100,  // Min. Unit 1(L. Infanterie)
+			3 => 200,  // Min. Unit 1(L. Infanterie)
 
-			4 => 0,  // Min. Unit 2 (Sturmtruppe)
+			4 => 50,  // Min. Unit 2 (Sturmtruppe)
 
-			5 => 0,  // Min. Unit 3 (Hazard Team)
+			5 => 10,  // Min. Unit 3 (Hazard Team)
 
-			6 => 4,  // Min. Unit 4 (Commander)
+			6 => 3,  // Min. Unit 4 (Commander)
 
-			7 => 250,  // Max Unit 1 (L. Infanterie)
+			7 => 200,  // Max Unit 1 (L. Infanterie)
 
-			8 => 0,  // Max Unit 2 (Sturmtruppe)
+			8 => 50,  // Max Unit 2 (Sturmtruppe)
 
-			9 => 0,  // Max Unit 3 (Hazard Team)
+			9 => 10,  // Max Unit 3 (Hazard Team)
 
-			10 => 4,  // Max Unit 4 (Commander)
+			10 => 3,  // Max Unit 4 (Commander)
 
-			11 => 5,  // Unit 5 (Offizier)
+			11 => 20,  // Unit 5 (Offizier)
 
-			12 => 4,  // Unit 6 (Medizinisches Personal)
+			12 => 5,  // Unit 6 (Medizinisches Personal)
 
-			13 => 252,  // Buildtime (in 5 Minuten Schritten)
+			13 => 75,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 11,   // Value1 (Leichte Waffen)
+			14 => 55,   // Value1 (Leichte Waffen)
 
-			15 => 0,   // Value2 (Schwere Waffen)
+			15 => 55,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 10,   // Value4 (Schildstärke)
+			17 => 950,   // Value4 (Schildstärke)
 
-			18 => 48,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 760,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 0,   // Value6 (Reaktionsgeschw.)
+			19 => 15,   // Value6 (Reaktionsgeschw.)
 
-			20 => 1,   // Value7 (Bereitschaft)
+			20 => 20,   // Value7 (Bereitschaft)
 
-			21 => 0,   // Value8 (Wendigkeit)
+			21 => 14,   // Value8 (Wendigkeit)
 
-			22 => 1,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 2.8,   // Value10 (Warp)
+			23 => 6.8,   // Value10 (Warp)
 
-			24 => 0,   // Value11 (Sensoren)
+			24 => 10,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 6,   // Value13 (Energy Available)
+			26 => 100,   // Value13 (Energy Available)
 
-			27 => 5,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Kolonieschiff',  // Name
 
-			30 => 1180,  // Benötige Arbeiter zum Bau
+			30 => 3780,  // Benötige Arbeiter zum Bau
 
 			31 => 'Mit Kolonieschiffen können Planeten erobert werden. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerstört hast, geht das Kolonieschiff verloren, da es zur Konstruktion erster Einrichtungen demontiert wird, und der Planet steht unter deinem Kommando.',
 
@@ -3096,81 +2458,9 @@ $SHIP_TORSO = array(
 
 			),
 
-    	// Hideki
+    	// Totes Temp
 
 	    4 => array(
-
-			0 => 15090,  // Metal
-
-			1 => 22960,  // Minerals
-
-			2 => 7815,  // Latinum
-
-			3 => 20,  // Min. Unit 1(L. Infanterie)
-
-			4 => 0,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 0,  // Min. Unit 3 (Hazard Team)
-
-			6 => 2,  // Min. Unit 4 (Commander)
-
-			7 => 50,  // Max Unit 1 (L. Infanterie)
-
-			8 => 10,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 0,  // Max Unit 3 (Hazard Team)
-
-			10 => 4,  // Max Unit 4 (Commander)
-
-			11 => 7,  // Unit 5 (Offizier)
-
-			12 => 4,  // Unit 6 (Medizinisches Personal)
-
-			13 => 157,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 10,   // Value1 (Leichte Waffen)
-
-			15 => 0,   // Value2 (Schwere Waffen)
-
-			16 => 0,   // Value3 (Planetare Waffen)
-
-			17 => 115,   // Value4 (Schildstärke)
-
-			18 => 110,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 10,   // Value6 (Reaktionsgeschw.)
-
-			20 => 17,   // Value7 (Bereitschaft)
-
-			21 => 30,   // Value8 (Wendigkeit)
-
-			22 => 8,   // Value9 (Erfahrung)
-
-			23 => 3.2,   // Value10 (Warp)
-
-			24 => 10,   // Value11 (Sensoren)
-
-			25 => 0,   // Value12 (Tarnung)
-
-			26 => 8,   // Value13 (Energy Available)
-
-			27 => 8,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Hideki',  // Name
-
-			30 => 86,  // Benötige Arbeiter zum Bau
-
-			31 => 'Die Hideki-Klasse wurde als kleines, wendiges Eskortschiff konzipiert. Doch aufgrund aktueller Ereignisse und fehlender Vorrichtungen wird sie in letzter Zeit allerdings hauptsächlich als Kampfschiff produziert; wodurch die Geschwindigkeit in den Hintergrund tritt.',
-
-		),
-
-
-
-        	// Totes Temp
-
-	    5 => array(
 
 			0 => 100000000,  // Metal
 
@@ -3230,13 +2520,85 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'L.Kreuzer',  // Name
+			29 => 'Hideki',  // Name
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
 			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
 
 			),
+
+
+
+    	// Hideki
+
+	    5 => array(
+
+			0 => 99000,  // Metal
+
+			1 => 90000,  // Minerals
+
+			2 => 72000,  // Latinum
+
+			3 => 38,  // Min. Unit 1(L. Infanterie)
+
+			4 => 10,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 0,  // Min. Unit 3 (Hazard Team)
+
+			6 => 1,  // Min. Unit 4 (Commander)
+
+			7 => 38,  // Max Unit 1 (L. Infanterie)
+
+			8 => 10,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 0,  // Max Unit 3 (Hazard Team)
+
+			10 => 1,  // Max Unit 4 (Commander)
+
+			11 => 6,  // Unit 5 (Offizier)
+
+			12 => 2,  // Unit 6 (Medizinisches Personal)
+
+			13 => 15,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 250,   // Value1 (Leichte Waffen)
+
+			15 => 150,   // Value2 (Schwere Waffen)
+
+			16 => 10,   // Value3 (Planetare Waffen)
+
+			17 => 500,   // Value4 (Schildstärke)
+
+			18 => 350,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 10,   // Value6 (Reaktionsgeschw.)
+
+			20 => 15,   // Value7 (Bereitschaft)
+
+			21 => 25,   // Value8 (Wendigkeit)
+
+			22 => 0,   // Value9 (Erfahrung)
+
+			23 => 7.5,   // Value10 (Warp)
+
+			24 => 10,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 50,   // Value13 (Energy Available)
+
+			27 => 50,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Hideki',  // Name
+
+			30 => 214,  // Benötige Arbeiter zum Bau
+
+			31 => 'Die Hideki-Klasse wurde als kleines, wendiges Eskortschiff konzipiert. Doch aufgrund aktueller Ereignisse und fehlender Vorrichtungen wird sie in letzter Zeit allerdings hauptsächlich als Kampfschiff produziert; wodurch die Geschwindigkeit in den Hintergrund tritt.',
+
+		),
 
     	// Totes Temp
 
@@ -3312,67 +2674,67 @@ $SHIP_TORSO = array(
 
 	    7 => array(
 
-			0 => 43075,  // Metal
+			0 => 237600,  // Metal
 
-			1 => 22950,  // Minerals
+			1 => 216000,  // Minerals
 
-			2 => 17373,  // Latinum
+			2 => 172800,  // Latinum
 
-			3 => 60,  // Min. Unit 1(L. Infanterie)
+			3 => 114,  // Min. Unit 1(Centurion)
 
-			4 => 30,  // Min. Unit 2 (Sturmtruppe)
+			4 => 48,  // Min. Unit 2 (Rem. Truppen)
 
-			5 => 5,  // Min. Unit 3 (Hazard Team)
+			5 => 15,  // Min. Unit 3 (Tal Shiar)
 
-			6 => 2,  // Min. Unit 4 (Commander)
+			6 => 3,  // Min. Unit 4 (Commander)
 
-			7 => 100,  // Max Unit 1 (L. Infanterie)
+			7 => 114,  // Max Unit 1 (Centurion)
 
-			8 => 50,  // Max Unit 2 (Sturmtruppe)
+			8 => 48,  // Max Unit 2 (Rem. Truppen)
 
-			9 => 75,  // Max Unit 3 (Hazard Team)
+			9 => 15,  // Max Unit 3 (Tal Shiar)
 
-			10 => 5,  // Max Unit 4 (Commander)
+			10 => 3,  // Max Unit 4 (Commander)
 
-			11 => 15,  // Unit 5 (Offizier)
+			11 => 6,  // Unit 5 (Offizier)
 
 			12 => 2,  // Unit 6 (Medizinisches Personal)
 
-			13 => 310,  // Buildtime (in 5 Minuten Schritten)
+			13 => 40,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 25,   // Value1 (Leichte Waffen)
+			14 => 650,   // Value1 (Leichte Waffen)
 
-			15 => 40,   // Value2 (Schwere Waffen)
+			15 => 550,   // Value2 (Schwere Waffen)
 
-			16 => 0,   // Value3 (Planetare Waffen)
+			16 => 50,   // Value3 (Planetare Waffen)
 
-			17 => 150,   // Value4 (Schildstärke)
+			17 => 1200,   // Value4 (Schildstärke)
 
-			18 => 250,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 600,   // Value5 (Hülle bzw. Hitpoints)
 
-			19 => 12,   // Value6 (Reaktionsgeschw.)
+			19 => 15,   // Value6 (Reaktionsgeschw.)
 
-			20 => 16,   // Value7 (Bereitschaft)
+			20 => 20,   // Value7 (Bereitschaft)
 
-			21 => 18,   // Value8 (Wendigkeit)
+			21 => 15,   // Value8 (Wendigkeit)
 
-			22 => 15,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 3.8,   // Value10 (Warp)
+			23 => 7.5,   // Value10 (Warp)
 
-			24 => 24,   // Value11 (Sensoren)
+			24 => 18,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 41,   // Value13 (Energy Available)
+			26 => 100,   // Value13 (Energy Available)
 
-			27 => 25,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Galor',  // Name
 
-			30 => 169,  // Benötige Arbeiter zum Bau
+			30 => 756,  // Benötige Arbeiter zum Bau
 
 			31 => 'Die Schiffe der Galor III-Klasse sind Angriffskreuzer und gehören zu den meistbenutzten Schiffen der Cardassianer. Galor’s  sind durch ihre maximale Wandlungsfähigkeit hochgefährlich; man weiß nie welche Waffen eingebaut wurden...',
 
@@ -3453,221 +2815,11 @@ $SHIP_TORSO = array(
 
 	    9 => array(
 
-			0 => 45150,  // Metal
+			0 => 630000,  // Metal
 
-			1 => 39400,  // Minerals
+			1 => 630000,  // Minerals
 
-			2 => 22700,  // Latinum
-
-			3 => 140,  // Min. Unit 1(L. Infanterie)
-
-			4 => 0,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 25,  // Min. Unit 3 (Hazard Team)
-
-			6 => 3,  // Min. Unit 4 (Commander)
-
-			7 => 150,  // Max Unit 1 (L. Infanterie)
-
-			8 => 125,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 100,  // Max Unit 3 (Hazard Team)
-
-			10 => 10,  // Max Unit 4 (Commander)
-
-			11 => 29,  // Unit 5 (Offizier)
-
-			12 => 3,  // Unit 6 (Medizinisches Personal)
-
-			13 => 395,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 50,   // Value1 (Leichte Waffen)
-
-			15 => 60,   // Value2 (Schwere Waffen)
-
-			16 => 10,   // Value3 (Planetare Waffen)
-
-			17 => 200,   // Value4 (Schildstärke)
-
-			18 => 350,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 14,   // Value6 (Reaktionsgeschw.)
-
-			20 => 13,   // Value7 (Bereitschaft)
-
-			21 => 13,   // Value8 (Wendigkeit)
-
-			22 => 14,   // Value9 (Erfahrung)
-
-			23 => 3.2,   // Value10 (Warp)
-
-			24 => 20,   // Value11 (Sensoren)
-
-			25 => 0,   // Value12 (Tarnung)
-
-			26 => 72,   // Value13 (Energy Available)
-
-			27 => 60,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Keldon',  // Name
-
-			30 => 1130,  // Benötige Arbeiter zum Bau
-
-			31 => 'Die Keldon-Klasse ist eine modifizierte und stark aufgerüstete Version der Galor-Klasse, die jedoch weniger schnell und wendig ist. Sie wurden von den Cardassianern speziell ausgerüstet, um gegen ihr Pendant der Föderation, die Schiffe der Sovereign-Klasse, zu kämpfen und zu siegen.',
-
-		),
-		
-					// Totes Temp
-
-	    10 => array(
-
-			0 => 100000000,  // Metal
-
-			1 => 1,  // Minerals
-
-			2 => 1,  // Latinum
-
-			3 => 1,  // Min. Unit 1(Centurion)
-
-			4 => 1,  // Min. Unit 2 (Rem. Truppen)
-
-			5 => 1,  // Min. Unit 3 (Tal Shiar)
-
-			6 => 1,  // Min. Unit 4 (Commander)
-
-			7 => 1,  // Max Unit 1 (Centurion)
-
-			8 => 1,  // Max Unit 2 (Rem. Truppen)
-
-			9 => 1,  // Max Unit 3 (Tal Shiar)
-
-			10 => 1,  // Max Unit 4 (Commander)
-
-			11 => 1,  // Unit 5 (Offizier)
-
-			12 => 1,  // Unit 6 (Medizinisches Personal)
-
-			13 => 1,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 1,   // Value1 (Leichte Waffen)
-
-			15 => 1,   // Value2 (Schwere Waffen)
-
-			16 => 1,   // Value3 (Planetare Waffen)
-
-			17 => 1,   // Value4 (Schildstärke)
-
-			18 => 1,   // Value5 (Hülle bzw. Hitpoints)
-
-			19 => 1,   // Value6 (Reaktionsgeschw.)
-
-			20 => 1,   // Value7 (Bereitschaft)
-
-			21 => 1,   // Value8 (Wendigkeit)
-
-			22 => 1,   // Value9 (Erfahrung)
-
-			23 => 1,   // Value10 (Warp)
-
-			24 => 1,   // Value11 (Sensoren)
-
-			25 => 1,   // Value12 (Tarnung)
-
-			26 => 1,   // Value13 (Energy Available)
-
-			27 => 1,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Keldon',  // Name
-
-			30 => 1,  // Benötige Arbeiter zum Bau
-
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
-
-			),
-			
-						// Totes Temp
-
-	    11 => array(
-
-			0 => 100000000,  // Metal
-
-			1 => 1,  // Minerals
-
-			2 => 1,  // Latinum
-
-			3 => 1,  // Min. Unit 1(Centurion)
-
-			4 => 1,  // Min. Unit 2 (Rem. Truppen)
-
-			5 => 1,  // Min. Unit 3 (Tal Shiar)
-
-			6 => 1,  // Min. Unit 4 (Commander)
-
-			7 => 1,  // Max Unit 1 (Centurion)
-
-			8 => 1,  // Max Unit 2 (Rem. Truppen)
-
-			9 => 1,  // Max Unit 3 (Tal Shiar)
-
-			10 => 1,  // Max Unit 4 (Commander)
-
-			11 => 1,  // Unit 5 (Offizier)
-
-			12 => 1,  // Unit 6 (Medizinisches Personal)
-
-			13 => 1,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 1,   // Value1 (Leichte Waffen)
-
-			15 => 1,   // Value2 (Schwere Waffen)
-
-			16 => 1,   // Value3 (Planetare Waffen)
-
-			17 => 1,   // Value4 (Schildstärke)
-
-			18 => 1,   // Value5 (Hülle bzw. Hitpoints)
-
-			19 => 1,   // Value6 (Reaktionsgeschw.)
-
-			20 => 1,   // Value7 (Bereitschaft)
-
-			21 => 1,   // Value8 (Wendigkeit)
-
-			22 => 1,   // Value9 (Erfahrung)
-
-			23 => 1,   // Value10 (Warp)
-
-			24 => 1,   // Value11 (Sensoren)
-
-			25 => 1,   // Value12 (Tarnung)
-
-			26 => 1,   // Value13 (Energy Available)
-
-			27 => 1,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Schlachtschiff',  // Name
-
-			30 => 1,  // Benötige Arbeiter zum Bau
-
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
-
-			),
-
-    	// Orbitalgeschütz
-
-	    12 => array(
-
-			0 => 52920,  // Metal
-
-			1 => 47880,  // Minerals
-
-			2 => 38304,  // Latinum
+			2 => 535000,  // Latinum
 
 			3 => 0,  // Min. Unit 1(L. Infanterie)
 
@@ -3685,49 +2837,49 @@ $SHIP_TORSO = array(
 
 			10 => 0,  // Max Unit 4 (Commander)
 
-			11 => 0,  // Unit 5 (Offizier)
+			11 => 16,  // Unit 5 (Offizier)
 
-			12 => 0,  // Unit 6 (Medizinisches Personal)
+			12 => 5,  // Unit 6 (Medizinisches Personal)
 
-			13 => 252,  // Buildtime (in 5 Minuten Schritten)
+			13 => 180,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 400,   // Value1 (Leichte Waffen)
+			14 => 2475,   // Value1 (Leichte Waffen)
 
-			15 => 50,   // Value2 (Schwere Waffen)
+			15 => 2475,   // Value2 (Schwere Waffen)
 
-			16 => 0,   // Value3 (Planetare Waffen)
+			16 => 165,   // Value3 (Planetare Waffen)
 
-			17 => 400,   // Value4 (Schildstärke)
+			17 => 8621,   // Value4 (Schildstärke)
 
-			18 => 400,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 7054,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 26,   // Value6 (Reaktionsgeschw.)
+			19 => 23,   // Value6 (Reaktionsgeschw.)
 
-			20 => 25,   // Value7 (Bereitschaft)
+			20 => 22,   // Value7 (Bereitschaft)
 
-			21 => 0,   // Value8 (Wendigkeit)
+			21 => 10,   // Value8 (Wendigkeit)
 
 			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 0,   // Value10 (Warp)
+			23 => 9.7,   // Value10 (Warp)
 
-			24 => 25,   // Value11 (Sensoren)
+			24 => 28,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 33,   // Value13 (Energy Available)
+			26 => 0,   // Value13 (Energy Available)
 
-			27 => 33,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Orbitalgeschütz',  // Name
+			29 => 'Keldon',  // Name
 
-			30 => 350,  // Benötige Arbeiter zum Bau
+			30 => 2160,  // Benötige Arbeiter zum Bau
 
-			31 => 'Diese orbitale Waffenplattform wurde während des Dominionkrieges entwickelt und seitdem immer weiter verbessert. Sie ist ausgestattet mit 3 Disruptorkanonen und einem schnell feuernden Torpedorohr, geladen mit 400 Plasmatorpedos, bestückt. Damit stellt es eine mächtige Defensive der Cardassianischen Union dar.',
+			31 => 'Die Keldon-Klasse ist eine modifizierte und stark aufgerüstete Version der Galor-Klasse, die jedoch weniger schnell und wendig ist. Sie wurden von den Cardassianern speziell ausgerüstet, um gegen ihr Pendant der Föderation, die Schiffe der Sovereign-Klasse, zu kämpfen und zu siegen.',
 
-	    ),
+		),
 
 	),
 
@@ -3739,17 +2891,17 @@ $SHIP_TORSO = array(
 
 
 
-		// Scout
+		// Fighter
 
 	    0 => array(
 
-			0 => 5865,  // Metal
+			0 => 31050,  // Metal
 
-			1 => 2173,  // Minerals
+			1 => 31050,  // Minerals
 
-			2 => 3550,  // Latinum
+			2 => 23460,  // Latinum
 
-			3 => 5,  // Min. Unit 1(L. Infanterie)
+			3 => 6,  // Min. Unit 1(L. Infanterie)
 
 			4 => 0,  // Min. Unit 2 (Sturmtruppe)
 
@@ -3757,56 +2909,57 @@ $SHIP_TORSO = array(
 
 			6 => 0,  // Min. Unit 4 (Commander)
 
-			7 => 10,  // Max Unit 1 (L. Infanterie)
+			7 => 6,  // Max Unit 1 (L. Infanterie)
 
 			8 => 0,  // Max Unit 2 (Sturmtruppe)
 
 			9 => 0,  // Max Unit 3 (Hazard Team)
 
-			10 => 1,  // Max Unit 4 (Commander)
+			10 => 0,  // Max Unit 4 (Commander)
 
 			11 => 1,  // Unit 5 (Offizier)
 
 			12 => 0,  // Unit 6 (Medizinisches Personal)
 
-			13 => 65,  // Buildtime (in 5 Minuten Schritten)
+			13 => 6,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 0,   // Value1 (Leichte Waffen)
+			14 => 18,   // Value1 (Leichte Waffen)
 
-			15 => 0,   // Value2 (Schwere Waffen)
+			15 => 6,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 0,   // Value4 (Schildstärke)
+			17 => 115,   // Value4 (Schildstärke)
 
-			18 => 10,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 115,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 4,   // Value6 (Reaktionsgeschw.)
+			19 => 12,   // Value6 (Reaktionsgeschw.)
 
-			20 => 2,   // Value7 (Bereitschaft)
+			20 => 16,   // Value7 (Bereitschaft)
 
-			21 => 10,   // Value8 (Wendigkeit)
+			21 => 23,   // Value8 (Wendigkeit)
 
-			22 => 20,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 7,   // Value10 (Warp)
+			23 => 7.7,   // Value10 (Warp)
 
-			24 => 12,   // Value11 (Sensoren)
+			24 => 6,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 8,   // Value13 (Energy Available)
+			26 => 40,   // Value13 (Energy Available)
 
-			27 => 2,   // Value14 (Used Energy)
+			27 => 40,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Obsid. Scout',  // Name
 
-			30 => 15,  // Benötige Arbeiter zum Bau
+			30 => 56,  // Benötige Arbeiter zum Bau
 
-			31 => 'Zuerst war es nur ein Nichtangriffspakt, später sahen die Cardassianer die Größe des Dominions, und stellten uns daher ihre Scoutschiffe zur Verfügung. Obwohl sie nicht vom Dominion gebaut worden sind, könnten sie von den Vorta entworfen worden sein: Sie sind schnell, wendig, und schlecht mit den Sensoren zu erfassen.'
-
+			31 => 'Zuerst war es nur ein Nichtangriffspakt, später sahen die Cardassianer die Größe des Dominions, und stellten uns daher ihre Scoutschiffe zur Verfügung. Obwohl sie nicht vom Dominion gebaut worden sind, könnten sie von den Vorta entworfen worden sein: Sie sind schnell, wendig, und schlecht mit den Sensoren zu erfassen.',
+			
+			
 	    ),
 
 
@@ -3815,13 +2968,13 @@ $SHIP_TORSO = array(
 
 	    1 => array(
 
-			0 => 4395,  // Metal
+			0 => 82800,  // Metal
 
-			1 => 5745,  // Minerals
+			1 => 82800,  // Minerals
 
-			2 => 4575,  // Latinum
+			2 => 62560,  // Latinum
 
-			3 => 5,  // Min. Unit 1(L. Infanterie)
+			3 => 35,  // Min. Unit 1(L. Infanterie)
 
 			4 => 0,  // Min. Unit 2 (Sturmtruppe)
 
@@ -3829,7 +2982,7 @@ $SHIP_TORSO = array(
 
 			6 => 1,  // Min. Unit 4 (Commander)
 
-			7 => 40,  // Max Unit 1 (L. Infanterie)
+			7 => 35,  // Max Unit 1 (L. Infanterie)
 
 			8 => 0,  // Max Unit 2 (Sturmtruppe)
 
@@ -3837,47 +2990,48 @@ $SHIP_TORSO = array(
 
 			10 => 1,  // Max Unit 4 (Commander)
 
-			11 => 1,  // Unit 5 (Offizier)
+			11 => 3,  // Unit 5 (Offizier)
 
 			12 => 1,  // Unit 6 (Medizinisches Personal)
 
-			13 => 85,  // Buildtime (in 5 Minuten Schritten)
+			13 => 11,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 15,   // Value1 (Leichte Waffen)
+			14 => 36,   // Value1 (Leichte Waffen)
 
-			15 => 0,   // Value2 (Schwere Waffen)
+			15 => 18,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 5,   // Value4 (Schildstärke)
+			17 => 460,   // Value4 (Schildstärke)
 
-			18 => 20,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 1150,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 2,   // Value6 (Reaktionsgeschw.)
+			19 => 10,   // Value6 (Reaktionsgeschw.)
 
-			20 => 1,   // Value7 (Bereitschaft)
+			20 => 14,   // Value7 (Bereitschaft)
 
-			21 => 5,   // Value8 (Wendigkeit)
+			21 => 14,   // Value8 (Wendigkeit)
 
-			22 => 5,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 3.9,   // Value10 (Warp)
+			23 => 6.7,   // Value10 (Warp)
 
-			24 => 5,   // Value11 (Sensoren)
+			24 => 11,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 8,   // Value13 (Energy Available)
+			26 => 100,   // Value13 (Energy Available)
 
-			27 => 4,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Transportschiff',  // Name
 
-			30 => 8,  // Benötige Arbeiter zum Bau
+			30 => 322,  // Benötige Arbeiter zum Bau
 
 			31 => 'Durch unser Bündnisse mit den Cardassianern (das inzwischen wieder aufgehoben worden ist) haben wir dieses Schiff kennen gelernt, übernommen und verbessert. Es stellt einen guten Frachter dar und wir werden ihn von nun an einsetzten, nachdem die Hauptlieferanten unserer Frachtschiffe, die Karemma, eine kleine Lektion ihn Treue lernen mussten. Sie können momentan nicht die gewünschte Menge bereitstellen, also wird das diese Klasse übernehmen.',
+			
 
 	    ),
 
@@ -3887,69 +3041,70 @@ $SHIP_TORSO = array(
 
 	    2 => array(
 
-			0 => 67905,  // Metal
+			0 => 207000,  // Metal
 
-			1 => 22535,  // Minerals
+			1 => 207000,  // Minerals
 
-			2 => 34825,  // Latinum
+			2 => 156400,  // Latinum
 
-			3 => 100,  // Min. Unit 1(L. Infanterie)
+			3 => 200,  // Min. Unit 1(L. Infanterie)
 
-			4 => 0,  // Min. Unit 2 (Sturmtruppe)
+			4 => 50,  // Min. Unit 2 (Sturmtruppe)
 
-			5 => 0,  // Min. Unit 3 (Hazard Team)
+			5 => 10,  // Min. Unit 3 (Hazard Team)
 
-			6 => 4,  // Min. Unit 4 (Commander)
+			6 => 3,  // Min. Unit 4 (Commander)
 
 			7 => 200,  // Max Unit 1 (L. Infanterie)
 
-			8 => 0,  // Max Unit 2 (Sturmtruppe)
+			8 => 50,  // Max Unit 2 (Sturmtruppe)
 
-			9 => 0,  // Max Unit 3 (Hazard Team)
+			9 => 10,  // Max Unit 3 (Hazard Team)
 
-			10 => 6,  // Max Unit 4 (Commander)
+			10 => 3,  // Max Unit 4 (Commander)
 
-			11 => 13,  // Unit 5 (Offizier)
+			11 => 20,  // Unit 5 (Offizier)
 
-			12 => 1,  // Unit 6 (Medizinisches Personal)
+			12 => 5,  // Unit 6 (Medizinisches Personal)
 
-			13 => 315,  // Buildtime (in 5 Minuten Schritten)
+			13 => 79,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 10,   // Value1 (Leichte Waffen)
+			14 => 60,   // Value1 (Leichte Waffen)
 
-			15 => 0,   // Value2 (Schwere Waffen)
+			15 => 60,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 10,   // Value4 (Schildstärke)
+			17 => 1150,   // Value4 (Schildstärke)
 
-			18 => 50,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 920,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 0,   // Value6 (Reaktionsgeschw.)
+			19 => 15,   // Value6 (Reaktionsgeschw.)
 
-			20 => 0,   // Value7 (Bereitschaft)
+			20 => 20,   // Value7 (Bereitschaft)
 
-			21 => 0,   // Value8 (Wendigkeit)
+			21 => 17,   // Value8 (Wendigkeit)
 
 			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 4.1,   // Value10 (Warp)
+			23 => 7.9,   // Value10 (Warp)
 
-			24 => 0,   // Value11 (Sensoren)
+			24 => 11,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 9,   // Value13 (Energy Available)
+			26 => 100,   // Value13 (Energy Available)
 
-			27 => 5,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Karemma Kolonieschiffe',  // Name
 
-			30 => 1555,  // Benötige Arbeiter zum Bau
+			30 => 3680,  // Benötige Arbeiter zum Bau
 
 			31 => 'Mit dieser Klasse können sie einen Planeten zum richtigen Weg bekehren. Sobald Sie bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerstört haben, geht das Karemma Schiff verloren (da es für die ersten Einrichtungen demontiert wird) und der Planet steht unter Ihrem Kommando. Durch den Aufstand der Karemma, hat sich die Produktion verlangsamt, daher der hohe Preis.',
+			
 
 	    ),
 
@@ -4024,23 +3179,95 @@ $SHIP_TORSO = array(
 			),
 
 
-    	// Attackship
+	     	// Totes Temp
 
 	    4 => array(
 
-			0 => 1825,  // Metal
+			0 => 100000000,  // Metal
 
-			1 => 12137.5,  // Minerals
+			1 => 1,  // Minerals
 
-			2 => 360,  // Latinum
+			2 => 1,  // Latinum
 
-			3 => 20,  // Min. Unit 1(L. Infanterie)
+			3 => 1,  // Min. Unit 1(Centurion)
 
-			4 => 0,  // Min. Unit 2 (Sturmtruppe)
+			4 => 1,  // Min. Unit 2 (Rem. Truppen)
+
+			5 => 1,  // Min. Unit 3 (Tal Shiar)
+
+			6 => 1,  // Min. Unit 4 (Commander)
+
+			7 => 1,  // Max Unit 1 (Centurion)
+
+			8 => 1,  // Max Unit 2 (Rem. Truppen)
+
+			9 => 1,  // Max Unit 3 (Tal Shiar)
+
+			10 => 1,  // Max Unit 4 (Commander)
+
+			11 => 1,  // Unit 5 (Offizier)
+
+			12 => 1,  // Unit 6 (Medizinisches Personal)
+
+			13 => 1,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 1,   // Value1 (Leichte Waffen)
+
+			15 => 1,   // Value2 (Schwere Waffen)
+
+			16 => 1,   // Value3 (Planetare Waffen)
+
+			17 => 1,   // Value4 (Schildstärke)
+
+			18 => 1,   // Value5 (Hülle bzw. Hitpoints)
+
+			19 => 1,   // Value6 (Reaktionsgeschw.)
+
+			20 => 1,   // Value7 (Bereitschaft)
+
+			21 => 1,   // Value8 (Wendigkeit)
+
+			22 => 1,   // Value9 (Erfahrung)
+
+			23 => 1,   // Value10 (Warp)
+
+			24 => 1,   // Value11 (Sensoren)
+
+			25 => 1,   // Value12 (Tarnung)
+
+			26 => 1,   // Value13 (Energy Available)
+
+			27 => 1,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Attackship',  // Name
+
+			30 => 1,  // Benötige Arbeiter zum Bau
+
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+
+			),
+
+	    
+
+    	// Attackship
+
+	    5 => array(
+
+			0 => 103500,  // Metal
+
+			1 => 103500,  // Minerals
+
+			2 => 78200,  // Latinum
+
+			3 => 40,  // Min. Unit 1(L. Infanterie)
+
+			4 => 10,  // Min. Unit 2 (Sturmtruppe)
 
 			5 => 0,  // Min. Unit 3 (Hazard Team)
 
-			6 => 2,  // Min. Unit 4 (Commander)
+			6 => 1,  // Min. Unit 4 (Commander)
 
 			7 => 40,  // Max Unit 1 (L. Infanterie)
 
@@ -4048,123 +3275,52 @@ $SHIP_TORSO = array(
 
 			9 => 0,  // Max Unit 3 (Hazard Team)
 
-			10 => 4,  // Max Unit 4 (Commander)
+			10 => 1,  // Max Unit 4 (Commander)
 
-			11 => 7,  // Unit 5 (Offizier)
+			11 => 6,  // Unit 5 (Offizier)
 
-			12 => 5,  // Unit 6 (Medizinisches Personal)
+			12 => 2,  // Unit 6 (Medizinisches Personal)
 
-			13 => 146,  // Buildtime (in 5 Minuten Schritten)
+			13 => 16,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 65,   // Value1 (Leichte Waffen)
+			14 => 250,   // Value1 (Leichte Waffen)
 
-			15 => 25,   // Value2 (Schwere Waffen)
+			15 => 150,   // Value2 (Schwere Waffen)
 
-			16 => 0,   // Value3 (Planetare Waffen)
+			16 => 10,   // Value3 (Planetare Waffen)
 
-			17 => 90,   // Value4 (Schildstärke)
+			17 => 500,   // Value4 (Schildstärke)
 
-			18 => 320,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 350,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 13,   // Value6 (Reaktionsgeschw.)
+			19 => 25,   // Value6 (Reaktionsgeschw.)
 
-			20 => 20,   // Value7 (Bereitschaft)
+			20 => 10,   // Value7 (Bereitschaft)
 
-			21 => 18,   // Value8 (Wendigkeit)
+			21 => 15,   // Value8 (Wendigkeit)
 
-			22 => 11,   // Value9 (Erfahrung)
+			22 => 25,   // Value9 (Erfahrung)
 
-			23 => 3,   // Value10 (Warp)
+			23 => 7.5,   // Value10 (Warp)
 
-			24 => 14,   // Value11 (Sensoren)
+			24 => 10,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 20,   // Value13 (Energy Available)
+			26 => 50,   // Value13 (Energy Available)
 
-			27 => 8,   // Value14 (Used Energy)
+			27 => 50,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Attackship',  // Name
 
-			30 => 96,  // Benötige Arbeiter zum Bau
+			30 => 230,  // Benötige Arbeiter zum Bau
 
 			31 => 'Von unseren Feinden manchmal ´Battlebug´ genannt, stellt dieses Schiff unsere Rückrad dar und es ist inzwischen DAS Symbol unserer glorreichen Gründer und hat dem Dominion schon gute Dienste geleistet.',
+	
 
 	    ),
-
-	    
-
-    	// V-Klasse
-
-	    5 => array(
-
-			0 => 2850,  // Metal
-
-			1 => 7325,  // Minerals
-
-			2 => 10590,  // Latinum
-
-			3 => 50,  // Min. Unit 1(L. Infanterie)
-
-			4 => 15,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 5,  // Min. Unit 3 (Hazard Team)
-
-			6 => 2,  // Min. Unit 4 (Commander)
-
-			7 => 75,  // Max Unit 1 (L. Infanterie)
-
-			8 => 15,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 5,  // Max Unit 3 (Hazard Team)
-
-			10 => 5,  // Max Unit 4 (Commander)
-
-			11 => 8,  // Unit 5 (Offizier)
-
-			12 => 2,  // Unit 6 (Medizinisches Personal)
-
-			13 => 172,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 165,   // Value1 (Leichte Waffen)
-
-			15 => 85,   // Value2 (Schwere Waffen)
-
-			16 => 0,   // Value3 (Planetare Waffen)
-
-			17 => 210,   // Value4 (Schildstärke)
-
-			18 => 360,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 16,   // Value6 (Reaktionsgeschw.)
-
-			20 => 20,   // Value7 (Bereitschaft)
-
-			21 => 7,   // Value8 (Wendigkeit)
-
-			22 => 12,   // Value9 (Erfahrung)
-
-			23 => 3,   // Value10 (Warp)
-
-			24 => 16,   // Value11 (Sensoren)
-
-			25 => 0,   // Value12 (Tarnung)
-
-			26 => 25,   // Value13 (Energy Available)
-
-			27 => 10,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'V-Klasse',  // Name
-
-			30 => 356,  // Benötige Arbeiter zum Bau
-
-			31 => 'Obgleich unsere Jem Hadar Attack Fighter, mit Freude ihre fehlende Feuerkraft mit Suizidangriffen kompensieren, hatten die Götter die Weißheit, das dies auf lange Sicht gesehen, unserer Ressourcen zu stark beanspruchen würde. So wurde die Mischung zwischen Feuerkraft und Beweglichkeit, von den Vorta entworfen und in der V-Klasse vereint, damit der Suizid, so glorreich er auch sein mag, nicht immer die letzte Option sein muss.',
-
-	),
 
  	// Totes Temp
 
@@ -4306,299 +3462,86 @@ $SHIP_TORSO = array(
 
 			),
 
- 	// Totes Temp
+ 	// Battlecruiser
 
 	    8 => array(
 
-			0 => 100000000,  // Metal
+			0 => 517500,  // Metal
 
-			1 => 1,  // Minerals
+			1 => 517500,  // Minerals
 
-			2 => 1,  // Latinum
+			2 => 415438,  // Latinum
 
-			3 => 1,  // Min. Unit 1(Centurion)
+			3 => 230,  // Min. Unit 1(L. Infanterie)
 
-			4 => 1,  // Min. Unit 2 (Rem. Truppen)
+			4 => 100,  // Min. Unit 2 (Sturmtruppe)
 
-			5 => 1,  // Min. Unit 3 (Tal Shiar)
+			5 => 45,  // Min. Unit 3 (Hazard Team)
 
-			6 => 1,  // Min. Unit 4 (Commander)
+			6 => 6,  // Min. Unit 4 (Commander)
 
-			7 => 1,  // Max Unit 1 (Centurion)
+			7 => 230,  // Max Unit 1 (L. Infanterie)
 
-			8 => 1,  // Max Unit 2 (Rem. Truppen)
+			8 => 100,  // Max Unit 2 (Sturmtruppe)
 
-			9 => 1,  // Max Unit 3 (Tal Shiar)
+			9 => 45,  // Max Unit 3 (Hazard Team)
 
-			10 => 1,  // Max Unit 4 (Commander)
+			10 => 6,  // Max Unit 4 (Commander)
 
-			11 => 1,  // Unit 5 (Offizier)
+			11 => 18,  // Unit 5 (Offizier)
 
-			12 => 1,  // Unit 6 (Medizinisches Personal)
+			12 => 7,  // Unit 6 (Medizinisches Personal)
 
-			13 => 1,  // Buildtime (in 5 Minuten Schritten)
+			13 => 137,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 1,   // Value1 (Leichte Waffen)
+			14 => 1100,   // Value1 (Leichte Waffen)
 
-			15 => 1,   // Value2 (Schwere Waffen)
+			15 => 1000,   // Value2 (Schwere Waffen)
 
-			16 => 1,   // Value3 (Planetare Waffen)
+			16 => 100,   // Value3 (Planetare Waffen)
 
-			17 => 1,   // Value4 (Schildstärke)
+			17 => 2500,   // Value4 (Schildstärke)
 
-			18 => 1,   // Value5 (Hülle bzw. Hitpoints)
+			18 => 4500,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 1,   // Value6 (Reaktionsgeschw.)
+			19 => 21,   // Value6 (Reaktionsgeschw.)
 
-			20 => 1,   // Value7 (Bereitschaft)
+			20 => 23,   // Value7 (Bereitschaft)
 
-			21 => 1,   // Value8 (Wendigkeit)
+			21 => 12,   // Value8 (Wendigkeit)
 
-			22 => 1,   // Value9 (Erfahrung)
+			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 1,   // Value10 (Warp)
+			23 => 6.9,   // Value10 (Warp)
 
-			24 => 1,   // Value11 (Sensoren)
-
-			25 => 1,   // Value12 (Tarnung)
-
-			26 => 1,   // Value13 (Energy Available)
-
-			27 => 1,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Kreuzer',  // Name
-
-			30 => 1,  // Benötige Arbeiter zum Bau
-
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
-
-			),
-
-
-    	// BSC
-
-	    9 => array(
-
-			0 => 14700,  // Metal
-
-			1 => 44725,  // Minerals
-
-			2 => 23975,  // Latinum
-
-			3 => 250,  // Min. Unit 1(L. Infanterie)
-
-			4 => 40,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 20,  // Min. Unit 3 (Hazard Team)
-
-			6 => 2,  // Min. Unit 4 (Commander)
-
-			7 => 250,  // Max Unit 1 (L. Infanterie)
-
-			8 => 40,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 20,  // Max Unit 3 (Hazard Team)
-
-			10 => 5,  // Max Unit 4 (Commander)
-
-			11 => 6,  // Unit 5 (Offizier)
-
-			12 => 2,  // Unit 6 (Medizinisches Personal)
-
-			13 => 486,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 185,   // Value1 (Leichte Waffen)
-
-			15 => 135,   // Value2 (Schwere Waffen)
-
-			16 => 0,   // Value3 (Planetare Waffen)
-
-			17 => 270,   // Value4 (Schildstärke)
-
-			18 => 400,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 14,   // Value6 (Reaktionsgeschw.)
-
-			20 => 17,   // Value7 (Bereitschaft)
-
-			21 => 1,   // Value8 (Wendigkeit)
-
-			22 => 1,   // Value9 (Erfahrung)
-
-			23 => 3,   // Value10 (Warp)
-
-			24 => 20,   // Value11 (Sensoren)
+			24 => 15,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 25,   // Value13 (Energy Available)
+			26 => 180,   // Value13 (Energy Available)
 
-			27 => 10,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'BSC',  // Name
-
-			30 => 867,  // Benötige Arbeiter zum Bau
-
-			31 => 'Einer der mächtigsten Waffen des Dominions. Das Kampfschiff ist ein sehr wichtiger Bestandteil einer jeden Flotte. Seine Bewaffnung macht es zu einem mehr als gefährlichen Kriegschiff und ist oft mehr als genug, um das Wort der Gründer in die entferntesten Winkel der Galaxie zu bringen...',
-
-	    ),
-
-
- 	// Totes Temp
-
-	    10 => array(
-
-			0 => 100000000,  // Metal
-
-			1 => 1,  // Minerals
-
-			2 => 1,  // Latinum
-
-			3 => 1,  // Min. Unit 1(Centurion)
-
-			4 => 1,  // Min. Unit 2 (Rem. Truppen)
-
-			5 => 1,  // Min. Unit 3 (Tal Shiar)
-
-			6 => 1,  // Min. Unit 4 (Commander)
-
-			7 => 1,  // Max Unit 1 (Centurion)
-
-			8 => 1,  // Max Unit 2 (Rem. Truppen)
-
-			9 => 1,  // Max Unit 3 (Tal Shiar)
-
-			10 => 1,  // Max Unit 4 (Commander)
-
-			11 => 1,  // Unit 5 (Offizier)
-
-			12 => 1,  // Unit 6 (Medizinisches Personal)
-
-			13 => 1,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 1,   // Value1 (Leichte Waffen)
-
-			15 => 1,   // Value2 (Schwere Waffen)
-
-			16 => 1,   // Value3 (Planetare Waffen)
-
-			17 => 1,   // Value4 (Schildstärke)
-
-			18 => 1,   // Value5 (Hülle bzw. Hitpoints)
-
-			19 => 1,   // Value6 (Reaktionsgeschw.)
-
-			20 => 1,   // Value7 (Bereitschaft)
-
-			21 => 1,   // Value8 (Wendigkeit)
-
-			22 => 1,   // Value9 (Erfahrung)
-
-			23 => 1,   // Value10 (Warp)
-
-			24 => 1,   // Value11 (Sensoren)
-
-			25 => 1,   // Value12 (Tarnung)
-
-			26 => 1,   // Value13 (Energy Available)
-
-			27 => 1,   // Value14 (Used Energy)
+			27 => 180,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'BSC',  // Name
 
-			30 => 1,  // Benötige Arbeiter zum Bau
+			30 => 1472,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'This is the main ship for the Dominion fleets. Her arsenal, one of the most destructive of the galaxy, is the pride of the Founders. Her hull is well protected by cutting-edge technology, giving high chance to survive in the battlefield.',
 
 			),
-
 
 
     	// Dread
 
-	    11 => array(
+	    9 => array(
 
-			0 => 80900,  // Metal
+			0 => 805000,  // Metal
 
-			1 => 59275,  // Minerals
+			1 => 805000,  // Minerals
 
-			2 => 68550,  // Latinum
-
-			3 => 300,  // Min. Unit 1(L. Infanterie)
-
-			4 => 150,  // Min. Unit 2 (Sturmtruppe)
-
-			5 => 100,  // Min. Unit 3 (Hazard Team)
-
-			6 => 7,  // Min. Unit 4 (Commander)
-
-			7 => 300,  // Max Unit 1 (L. Infanterie)
-
-			8 => 150,  // Max Unit 2 (Sturmtruppe)
-
-			9 => 100,  // Max Unit 3 (Hazard Team)
-
-			10 => 7,  // Max Unit 4 (Commander)
-
-			11 => 21,  // Unit 5 (Offizier)
-
-			12 => 16,  // Unit 6 (Medizinisches Personal)
-
-			13 => 669,  // Buildtime (in 5 Minuten Schritten)
-
-			14 => 395,   // Value1 (Leichte Waffen)
-
-			15 => 235,   // Value2 (Schwere Waffen)
-
-			16 => 38,   // Value3 (Planetare Waffen)
-
-			17 => 300,   // Value4 (Schildstärke)
-
-			18 => 530,   // Value5 (Hülle bzw. Hitpoins)
-
-			19 => 12,   // Value6 (Reaktionsgeschw.)
-
-			20 => 17,   // Value7 (Bereitschaft)
-
-			21 => 1,   // Value8 (Wendigkeit)
-
-			22 => 1,   // Value9 (Erfahrung)
-
-			23 => 2,   // Value10 (Warp)
-
-			24 => 22,   // Value11 (Sensoren)
-
-			25 => 0,   // Value12 (Tarnung)
-
-			26 => 70,   // Value13 (Energy Available)
-
-			27 => 49,   // Value14 (Used Energy)
-
-			28 => 0,   // Auf 0 lassen
-
-			29 => 'Dread',  // Name
-
-			30 => 2600,  // Benötige Arbeiter zum Bau
-
-			31 => 'Dieses Schiff ist die letzte Linie des Gefechts, sollten die Gegner es je dorthin schaffen. Nur die treuesten und erfahrensten Jem Hadar bzw. Vorta dürfen dieses Schiff überhaupt betreten. Seine Grösse ist gewaltig und seine Feuerkraft noch größer: Jeder der sich ihm in den Wegs stellt ist Staub: Sei es ein Schiff oder ein Planet...',
-
-	    ),
-
-    	// Orbitalgeschütz
-
-	    12 => array(
-
-			0 => 29784,  // Metal
-
-			1 => 29784,  // Minerals
-
-			2 => 22440,  // Latinum
+			2 => 684250,  // Latinum
 
 			3 => 0,  // Min. Unit 1(L. Infanterie)
 
@@ -4616,50 +3559,50 @@ $SHIP_TORSO = array(
 
 			10 => 0,  // Max Unit 4 (Commander)
 
-			11 => 0,  // Unit 5 (Offizier)
+			11 => 21,  // Unit 5 (Offizier)
 
-			12 => 0,  // Unit 6 (Medizinisches Personal)
+			12 => 7,  // Unit 6 (Medizinisches Personal)
 
-			13 => 204,  // Buildtime (in 5 Minuten Schritten)
+			13 => 210,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 350,   // Value1 (Leichte Waffen)
+			14 => 2700,   // Value1 (Leichte Waffen)
 
-			15 => 85,   // Value2 (Schwere Waffen)
+			15 => 2700,   // Value2 (Schwere Waffen)
 
-			16 => 0,   // Value3 (Planetare Waffen)
+			16 => 180,   // Value3 (Planetare Waffen)
 
-			17 => 250,   // Value4 (Schildstärke)
+			17 => 8539,   // Value4 (Schildstärke)
 
-			18 => 250,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 10436,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 31,   // Value6 (Reaktionsgeschw.)
+			19 => 23,   // Value6 (Reaktionsgeschw.)
 
-			20 => 25,   // Value7 (Bereitschaft)
+			20 => 22,   // Value7 (Bereitschaft)
 
-			21 => 0,   // Value8 (Wendigkeit)
+			21 => 10,   // Value8 (Wendigkeit)
 
 			22 => 0,   // Value9 (Erfahrung)
 
-			23 => 0,   // Value10 (Warp)
+			23 => 9.7,   // Value10 (Warp)
 
-			24 => 33,   // Value11 (Sensoren)
+			24 => 30,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 33,   // Value13 (Energy Available)
+			26 => 0,   // Value13 (Energy Available)
 
-			27 => 33,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Orbitalgeschütz',  // Name
+			29 => 'Dreadnaught',  // Name
 
-			30 => 300,  // Benötige Arbeiter zum Bau
+			30 => 2760,  // Benötige Arbeiter zum Bau
 
-			31 => 'Um der zunehmenden Bedrohung der Welten des Dominion von außen entgegenzutreten, haben die Wissenschaftler diese effiziente Kampfstation entwickelt. Ausgestattet mit Polarongeschützen und einem Torpedowerfer stellt es eine effektive Gegenmaßnahme gegen jeden Angreifer dar.',
+			31 => 'This ship is the bastion of the Founders. Her mighty is undisputed all over the galaxy.',
+			
 
 	    ),
-
 
 	),
 

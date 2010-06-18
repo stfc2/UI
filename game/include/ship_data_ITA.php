@@ -75,9 +75,19 @@ $SHIP_TORSO_LOCALE = array(
 
 	    ),
 
-       	// Intrepid
+       	// Sabre
 
 	    5 => array(
+
+			0 => 'Sabre',  // Name
+
+			1 => 'Il Sabre &egrave; l&#146;evoluzione della classe fregata. La costruzione modulare comprende una pi&ugrave; ampia gamma di equipaggiamento rispetto al Miranda. L&#146;adattabilit&agrave; di questa nave la rende ideale per qualsiasi tipo di flotta.',
+
+	    ),
+
+    	// Intrepid
+
+	    6 => array(
 
 			0 => 'Intrepid',  // Name
 
@@ -87,7 +97,7 @@ $SHIP_TORSO_LOCALE = array(
 
     	// Defiant
 
-	    6 => array(
+	    7 => array(
 
 			0 => 'Defiant',  // Name
 
@@ -95,33 +105,23 @@ $SHIP_TORSO_LOCALE = array(
 
 	    ),
 
-    	// Excelsior
-
-	    7 => array(
-
-			0 => 'Excelsior',  // Name
-
-			1 => 'L&#146;Excelsior appartiene alla classe degli incrociatori ed &egrave; molto economica per quello che pu&ograve offrire. Conta su numerosi avanzamenti della Flotta Stellare in molti settori. La versione pi&ugrave; avanzata possiede anche il Multiphaser e gli scudi rigeneranti.',
-
-	    ),
-
-    	// Nebula
+    	// Galaxy
 
 	    8 => array(
 
-			0 => 'Nebula',  // Name
+			0 => 'Galaxy',  // Name
 
-			1 => 'La classe Nebula appartiene alla classe di navi Galaxy e bisogna considerarla anche in base alla sua taglia. Sar&agrave; certamente pi&ugrave; lenta degli incrociatori leggeri ma la potenza di fuoco e gli scudi sono il punto di forza di questa nave.',
+			1 => 'Con l&#146;introduzione dei vascelli di classe Galaxy, la Federazione tenta di superare i propri avversari, costruendo una grande e capace unit&agrave;, con enorme capacit&agrave; di fuoco e capacit&agrave; difensive imponenti. Disegnata per funzionare anche come vascello scentifico, la classe Galaxy pu&ograve; realmente andare dove nessuna nave Federale ha mai potuto arrivare prima. Questo &egrave; il modello prototipo.',
 
 	    ),
 
-    	// Galaxy
+    	// Sovereign
 
 	    9 => array(
 
-			0 => 'Galaxy',  // Name
+			0 => 'Sovereign',  // Name
 
-			1 => 'La Galaxy si distingue per l&#146;impressionante capacit&agrave; di combattimento. Questa nave pu&ograve; dare prova del suo valore nelle pi&ugrave; grandi battaglie della Federazione. Quello che le manca come potere offensivo lo compensa con gli scudi e lo scafo.',
+			1 => 'La classe Sovereign &egrave; la pi&ugrave; moderna classe di navi della Federazione. &egrave; una nave a tutto tondo, anche se mostra tutto il suo potenziale in battaglia. Armi forti e scudi efficienti, cos&igrave come la buona manegevolezza, non la fa un facile bersaglio. Pu&ograve girare tranquillamente da sola senza problemi.',
 
 	    ),
 
@@ -202,9 +202,19 @@ $SHIP_TORSO_LOCALE = array(
 
 			),
 
-    	// Talon
+    	// Morte temporanea
 
 	    4 => array(
+
+			0 => 'Talon',  // Name
+
+			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+
+			),
+
+    	// Talon
+
+	    5 => array(
 
 			0 => 'Talon',  // Name
 
@@ -214,21 +224,11 @@ $SHIP_TORSO_LOCALE = array(
 
     	// Sience
 
-	    5 => array(
-
-			0 => 'Science',  // Name
-
-			1 => 'Questa &egrave; una delle due navi di classe Science. Non ha talenti particolari, la resistenza che ha ai combattimenti &egrave; buona per il suo prezzo.',
-
-			),
-
-    	// Morte temporanea
-
 	    6 => array(
 
 			0 => 'Science',  // Name
 
-			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+			1 => 'Questa &egrave; una delle due navi di classe Science. Non ha talenti particolari, la resistenza che ha ai combattimenti &egrave; buona per il suo prezzo.',
 
 			),
 
@@ -242,23 +242,23 @@ $SHIP_TORSO_LOCALE = array(
 
 			),
 
-    	// Morte temporanea
+    	// Warbird
 
 	    8 => array(
 
-			0 => 'Norexan',  // Name
-
-			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+			0 => 'D&acute;deridex',  // Name
+			
+			1 => 'La classe D&acute;deridex &egrave; uno sparviero da guerra massiccio, nato per raccogliere la sfida lanciata dagli incrociatori pesanti costruiti dai nemici dell&#146;Impero. Questa nave vanta l&#146;armatura in duranio/tritanio migliore tra tutte le navi Romulane. Questo &egrave; il progetto prototipo della classe.',
 
 			),
 
-    	// Warbird
+    	// Scimitar
 
 	    9 => array(
 
-			0 => 'D&acute;deridex',  // Name
+			0 => 'Scimitar',  // Name
 
-			1 => 'Lo sparviero da guerra &egrave; una nave di classe D&#146;deridex. Fornito degli ultimi aggiornamenti pu&ograve; lasciare gravi ferite sulle flotte nemiche.',
+			1 => 'Questa nave deriva dal Warbird Remano Scimitar, costruito da Shinzon. Nonostante non raggiunga la potenza della versione remana, rimane una nave temibile. Dalla nave sono state rimosse tutte le tecnologie Talaroniche.',
 
 			),
 
@@ -272,13 +272,13 @@ $SHIP_TORSO_LOCALE = array(
 
 			),
 
-    	// Scimitar
+    	// Morte temporanea
 
 	    11 => array(
 
-			0 => 'Scimitar',  // Name
+			0 => 'D&acute;deridex',  // Name
 
-			1 => 'La classe Scimitar &egrave; la classe d&#146;elite della flotta romulana, &egrave; la nave che possiede la maggior manovrabilit&agrave; della flotta.',
+			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
 			),
 
@@ -339,9 +339,19 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 
-    	// Bird of Prey
+		// Morte temporanea
 
 	    4 => array(
+
+			0 => 'B&acute;rel (Bird of Prey)',  // Name
+
+			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+
+		),
+
+    	// Bird of Prey
+
+	    5 => array(
 
 			0 => 'B&acute;rel (Bird of Prey)',  // Name
 
@@ -349,23 +359,13 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 
-    	// K'T'Inga
-
-	    5 => array(
-
-			0 => 'K&acute;T&acute;Inga',  // Name
-
-			1 => 'Il K&acute;T&acute;Inga &egrave; la seconda nave delle stazze medie. Sostituisce il vecchio classe D7, prendendone il design ma migliorandone molto la potenza di fuoco e la precisione.',
-
-		),
-
-		// Morte temporanea
+    	// K´T´Inga
 
 	    6 => array(
 
 			0 => 'K&acute;T&acute;Inga',  // Name
 
-			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+			1 => 'Il K&acute;T&acute;Inga &egrave; la seconda nave delle stazze medie. Sostituisce il vecchio classe D7, prendendone il design ma migliorandone molto la potenza di fuoco e la precisione.',
 
 		),
 
@@ -379,23 +379,24 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 
-		// Morte temporanea
+    	// Vorcha
 
 	    8 => array(
 
-			0 => 'K&acute;vort',  // Name
+			0 => 'Vorcha',  // Name
 
-			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+			1 => 'I Vorcha sono gli incrociatori pesanti della Flotta Imperiale Klingon. La loro corazza &egrave; la pi&ugrave; spessa tra tutte le navi pari grado nella galassia. La sua potenza di fuoco &egrave; spaventosa, capace di infliggere pesanti punizioni alle navi e ai pianeti nemici.',
 
 		),
 
-    	// Vorcha
+
+    	// Negh
 
 	    9 => array(
 
-			0 => 'Vorcha',  // Name
+			0 => 'Negh&acute;Var',  // Name
 
-			1 => 'Il K&acute;T&acute;Inga era attaccabile facilmente da dietro, per questo motivo &egrave; stato sviluppato il Vorcha. Questa nave migliora l&#146;offensiva del K&acute;T&acute;Inga e ne elimina i punti deboli.',
+			1 => 'Il Negh&acute;Var &egrave; stato sviluppato dalla classe Keldon dei Cardassiani. &egrave; una delle navi pi&ugrave forti dell&#146;intera galassia. Questa nave monta gli ultimi ritrovati in fatto di armi, oltre ad avere una struttura molto resistente. Questa nave &egrave; praticamente priva di punti deboli.',
 
 		),
 
@@ -409,13 +410,13 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 
-    	// Negh
+		// Morte temporanea
 
 	    11 => array(
 
-			0 => 'Negh&acute;Var',  // Name
+			0 => 'Vorcha',  // Name
 
-			1 => 'Il Negh&acute;Var &egrave; stato sviluppato dalla classe Keldon dei Cardassiani. &egrave; una delle navi pi&ugrave forti dell&#146;intera galassia. Questa nave monta gli ultimi ritrovati in fatto di armi, oltre ad avere una struttura molto resistente. Questa nave &egrave; praticamente priva di punti deboli.',
+			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
 		),
 
@@ -476,23 +477,23 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 
-    	// Hideki
+    	// Morte temporanea
 
 	    4 => array(
 
 			0 => 'Hideki',  // Name
 
-			1 => 'La classe Hideki viene concepita come agile e veloce nave da scorta; tuttavia, in seguito ai recenti eventi e alla scarsit&agrave; di mezzi, viene anche impiegata come nave da combattimento da seconda linea.',
+			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
 		),
 
-       	// Morte temporanea
+    	// Hideki
 
 	    5 => array(
 
-			0 => 'Incrociatore leggero',  // Name
+			0 => 'Hideki',  // Name
 
-			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+			1 => 'La classe Hideki viene concepita come agile e veloce nave da scorta; tuttavia, in seguito ai recenti eventi e alla scarsit&agrave; di mezzi, viene anche impiegata come nave da combattimento da seconda linea.',
 
 		),
 
@@ -613,25 +614,25 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 
-    	// Attackship
+     	// Morte temporanea
 
 	    4 => array(
+
+			0 => 'Attackship',  // Name
+
+			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+
+		),
+
+    	// Attackship
+
+	    5 => array(
 
 			0 => 'Attackship',  // Name
 
 			1 => 'Talvolta indicata dai nostri avversari come &acute;BattleBug&acute;, questa nave rappresenta la seconda linea delle nostre navi da combattimento, anche se &egrave; il simbolo dei nostri gloriosi Fondatori. In combattimento ha sempre dato ottima prova di se.',
 
 	    ),
-
-    	// V-Klasse
-
-	    5 => array(
-
-			0 => '&acute;V&acute;',  // Name
-
-			1 => 'Nonostante i nostri Jem Hadar compensino, con gioia, la sua bassa potenza di fuoco con una giusta furia suicida, questa nave si &egrave; rivelata alla lunga troppo dispendiosa in termini di risorse consumate. La miscela di potere di fuoco e agilit&agrave; in seguito alla revisione del progetto rendono il suicidio, anche se glorioso, l&#146;opzione finale.',
-
-		),
 
  		// Morte temporanea
 
@@ -653,23 +654,23 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 
-	 	// Morte temporanea
+    	// BSC
 
 	    8 => array(
 
-			0 => 'Incrociatore',  // Name
+			0 => 'BattleCruiser',  // Name
 
-			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+			1 => 'Questa &egrave; la nave principale delle flotte del Dominion. Il suo arsenale, uno dei pi&ugrave; distruttivi di tutta la galassia, &egrave; l&#146;orgoglio dei Fondatori. Il suo scafo &egrave; ben protetto dalle pi&ugrave; avanzate tecnologie, garantendo elevate possibilit&agrave; di sopravvivere sul campo di battaglia.',
 
-		),
+	    ),
 
-    	// BSC
+    	// Dread
 
 	    9 => array(
 
-			0 => 'BattleCruiser',  // Name
+			0 => 'Dreadnaught',  // Name
 
-			1 => 'Una delle navi pi&ugrave; potenti del Dominio. Il BattleCruiser &egrave; una componente molto importante di ogni flotta. I suoi armamenti la rendono una delle navi pi&ugrave; potenti sul campo di battaglia, spesso sufficente a portare la parola dei Fondatori fin nei pi&ugrave; remoti angoli della Galassia.',
+			1 => 'In sviluppo...',
 
 	    ),
 
@@ -683,15 +684,15 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 
-    	// Dread
+	 	// Morte temporanea
 
 	    11 => array(
 
-			0 => 'Dreadnaught',  // Name
+			0 => 'BSC',  // Name
 
-			1 => 'Questa nave &egrave; l&#146;ultima linea di combattimento, se mai qualche avversario dovesse raggiungerla. Solo i pi&ugrave; fedeli e dotati Jem Hadar e Vorta sono ammessi su queste navi. Le sue dimensioni sono enormi e il suo potere di fuoco lo &egrave; ancora di pi&ugrave;. Chiunque gli si pari innanzi &egrave; ridotto in polvere, che sia una nave o un pianeta...',
+			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
 
-	    ),
+		),
 
     	// Orbital gun
 
