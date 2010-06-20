@@ -27,7 +27,7 @@ $filename = 'include/static/static_components_'.$game->player['language'].'.php'
 if (file_exists($filename)) include($filename);
 
 
-$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span></center><br>');
+$game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>');
 
 function TimeDetailShort($seconds)
 {
@@ -156,7 +156,8 @@ function Ships_List($focus=0,$search_name="")
 
 
 	/* AC: Searching ship */
-	$game->out('<br><center><table border=0 cellpadding=2 cellspacing=2  class="style_inner" width=300>
+	$game->out('<br><table border=0 cellpadding=1 cellspacing=1  class="style_outer" width=300><tr><td>
+		<table border=0 cellpadding=2 cellspacing=2  class="style_inner" width=300>
 		<tr>
 			<td align="center" valign="middle">
 				<form method="post" action="'.parse_link('a=ships&view=ships_list&order='.$_REQUEST['order']).'">
@@ -167,12 +168,15 @@ function Ships_List($focus=0,$search_name="")
 				</form>
 			</td>
 		</tr>
-		</table></center>');
+		</table>
+	</td></tr>
+	</table>');
 
 	/* AC: If we have to search ships */
 	if($search_name!="" && $focus==0)
 	{
-		$game->out('<br><center><table border=0 cellpadding=2 cellspacing=2 class="style_inner" width=300>
+		$game->out('<br><table border=0 cellpadding=1 cellspacing=1  class="style_outer" width=300><tr><td>
+		<table border=0 cellpadding=2 cellspacing=2 class="style_inner" width=300>
 			<tr>
 				<td width=150>
 					<b>'.constant($game->sprache("TEXT3")).'</b>
@@ -199,10 +203,10 @@ function Ships_List($focus=0,$search_name="")
 			');
 		}
 
-		$game->out('</table></center>');
+		$game->out('</table></td></tr></table>');
 	}
 
-	$game->out('<br><br><center><span class="sub_caption">'.constant($game->sprache("TEXT4")).' '.HelpPopup('ships').' :</span></center>');
+	$game->out('<br><br><span class="sub_caption">'.constant($game->sprache("TEXT4")).' '.HelpPopup('ships').' :</span><br>');
 
 	/**
 	 * AC: Create main table
@@ -251,7 +255,8 @@ function Ships_List($focus=0,$search_name="")
 		break;
 	}
 
-	$game->out('<br><center><table border=0 cellpadding=1 cellspacing=1 class="style_inner">
+	$game->out('<br><table border=0 cellpadding=2 cellspacing=2 class="style_outer"><tr><td>
+	<table border=0 cellpadding=2 cellspacing=2 class="style_inner">
 		<tr>
 		<td><b>#</b></td>
 		<td width=160>'.$header1.'</td>
@@ -388,7 +393,7 @@ function Ships_List($focus=0,$search_name="")
 		$n++;
 	}
 
-	$game->out('</table>');
+	$game->out('</table></td></tr></table>');
 
 	/* AC: Pages browsing */
 	$sql = 'SELECT COUNT(ship_id) AS n_ships
@@ -397,7 +402,8 @@ function Ships_List($focus=0,$search_name="")
 			WHERE user_id = '.$game->player['user_id'].' AND st.ship_class IN ('.implode(',', $sels).')';
 	$n_ships = $db->queryrow($sql);
 	$max_pages = ceil($n_ships['n_ships'] / $shipsxpage);
-	$game->out('<br><center><table border=0 cellpadding=2 cellspacing=2 class="style_inner" width=400><tr>
+	$game->out('<br><table border=0 cellpadding=1 cellspacing=1 class="style_outer" width=400><tr><td>
+		<table border=0 cellpadding=2 cellspacing=2 class="style_inner" width=400><tr>
 		<td width=50 align=middle>
 			'.(($queryfocus>0) ? '<a href="'.parse_link('a=ships&order='.$_REQUEST['order'].'&start=0').'"><span class="text_large">[1]</a>' : '[1]').'
 		</td>
@@ -410,11 +416,12 @@ function Ships_List($focus=0,$search_name="")
 		<td width=50 align=middle>
 			'.(($queryfocus < $n_ships['n_ships']-$shipsxpage) ? '<a href="'.parse_link('a=ships&order='.$_REQUEST['order'].'&start='.($n_ships['n_ships']-$shipsxpage)).'"><span class="text_large">['.$max_pages.']</a>' : '['.$max_pages.']').'
 		</td>
-		</tr></table>');
+		</tr></table></td></tr></table>');
 
 	/* Show up ship's filter */
-	$game->out('<br><center>
-		<table border=0 class="style_inner" width=300>
+	$game->out('<br>
+		<table border=0 cellpadding=1 cellspacing=1 class="style_outer" width=300><tr><td>
+		<table border=0 cellpadding=1 cellspacing=1 class="style_inner" width=300>
 		<tr>
 		<td>
 			<fieldset><legend>'.constant($game->sprache("TEXT68")).'</legend>
@@ -441,7 +448,7 @@ function Ships_List($focus=0,$search_name="")
 			</td></tr></table>
 			</fieldset>
 		</td>
-		</tr></table></center>');
+		</tr></table></td></tr></table>');
 }
 
 function CreateShipInfoText($ship)

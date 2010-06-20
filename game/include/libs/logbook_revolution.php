@@ -31,51 +31,34 @@ function display_logbook($log) {
 
 
     $game->out('
-
 <br>
-
-<table align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
-
+<table align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
-
-    <td width="450">
-
-      <table border="0" cellpadding="0" cellspacing="0">
-
+    <td>
+      <table align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
         <tr>
-
           <td width="450">
-
-            <table border=0 cellpadding=0 cellspacing=0>
-
+            <table border="0" cellpadding="0" cellspacing="0">
               <tr>
-
-                <td width="330" align="left"><b><u>'.$log['log_title'].'</u></b></td>
-
-                <td width="120" align="right"><b>'.date('d.m.y H:i:s', $log['log_date']).'</b></td>
-
+                <td width="450">
+                  <table border=0 cellpadding=0 cellspacing=0>
+                    <tr>
+                      <td width="330" align="left"><b><u>'.$log['log_title'].'</u></b></td>
+                      <td width="120" align="right"><b>'.date('d.m.y H:i:s', $log['log_date']).'</b></td>
+                    </tr>
+                  </table>
+                  <br>
+                  '.constant($game->sprache("TEXT136")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($log['log_data']['planet_id'])).'"><b>'.$log['log_data']['planet_name'].'</a></b> '.constant($game->sprache("TEXT137")).'
+                </td>
               </tr>
-
             </table>
-
-            <br>
-
-			'.constant($game->sprache("TEXT136")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($log['log_data']['planet_id'])).'"><b>'.$log['log_data']['planet_name'].'</a></b> '.constant($game->sprache("TEXT137")).'
-
           </td>
-
         </tr>
-
       </table>
-
     </td>
-
   </tr>
-
 </table>
-
 <br>
-
     ');
 
 }

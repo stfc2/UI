@@ -31,51 +31,34 @@ function display_logbook($log) {
 
 
     $game->out('
-
 <br>
-
-<table align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
-
+<table align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
-
-    <td width="450">
-
-      <table border="0" cellpadding="0" cellspacing="0">
-
+    <td>
+      <table align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
         <tr>
-
           <td width="450">
-
-            <table border=0 cellpadding=0 cellspacing=0>
-
+            <table border="0" cellpadding="0" cellspacing="0">
               <tr>
-
-                <td width="330" align="left"><b><u>'.$log['log_title'].'</u></b></td>
-
-                <td width="120" align="right"><b>'.date('d.m.y H:i:s', $log['log_date']).'</b></td>
-
+                <td width="450">
+                  <table border=0 cellpadding=0 cellspacing=0>
+                    <tr>
+                      <td width="330" align="left"><b><u>'.$log['log_title'].'</u></b></td>
+                      <td width="120" align="right"><b>'.date('d.m.y H:i:s', $log['log_date']).'</b></td>
+                    </tr>
+                  </table>
+                  <br>
+                  '.constant($game->sprache("TEXT130")).' <b>'.$log['log_data']['planet_name'].'</b> '.constant($game->sprache("TEXT131")).' "<b>'.$BUILDING_NAME[$game->player['user_race']][$log['log_data']['building_id']-1].'</b>" '.constant($game->sprache("TEXT132")).' <b>'.$log['log_data']['prev_level'].'</b> '.constant($game->sprache("TEXT133")).' <b>'.($log['log_data']['prev_level']-1).'</b> '.constant($game->sprache("TEXT134")).' <b>'.(100-round($log['log_data']['troops_percent'])).'%</b> '.constant($game->sprache("TEXT135")).'
+                </td>
               </tr>
-
             </table>
-
-            <br>
-
-			'.constant($game->sprache("TEXT130")).' <b>'.$log['log_data']['planet_name'].'</b> '.constant($game->sprache("TEXT131")).' "<b>'.$BUILDING_NAME[$game->player['user_race']][$log['log_data']['building_id']-1].'</b>" '.constant($game->sprache("TEXT132")).' <b>'.$log['log_data']['prev_level'].'</b> '.constant($game->sprache("TEXT133")).' <b>'.($log['log_data']['prev_level']-1).'</b> '.constant($game->sprache("TEXT134")).' <b>'.(100-round($log['log_data']['troops_percent'])).'%</b> '.constant($game->sprache("TEXT135")).'
-
           </td>
-
         </tr>
-
       </table>
-
     </td>
-
   </tr>
-
 </table>
-
 <br>
-
     ');
 
 }

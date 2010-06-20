@@ -686,7 +686,7 @@ define ("ITA_TEXT89", '<span style="color: #FF0000;">rosso</span> - Pianeta di u
 
 define ("ITA_TEXT90", '<span style="color: #89CAEF;">azzurro</span> - Pianeta di un alleato<br>');
 
-define ("ITA_TEXT91", 'Se l&#146;immagine non si aggiorna correttamente,<br>configurare il browser in modo che aggiorni<br>le immagini ad ogni nuova apertura di pagina.');
+define ("ITA_TEXT91", 'Se l&#146;immagine non si aggiorna correttamente, configurare il browser in modo che aggiorni le immagini ad ogni nuova apertura di pagina.');
 
 define ("ITA_TEXT92", 'Dettagli:');
 

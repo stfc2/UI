@@ -204,12 +204,10 @@ while (($template=$db->fetchrow($templatequery))==true)
 }
 
 $game->out('
-<table border=0 cellpadding=1 cellspacing=1 width=600 background="'.$game->GFX_PATH.'template_bg3.jpg"  class="border_grey"><tr><td align="center">
-<b><u>'.constant($game->sprache("TEXT2")).':</u></b><br><br>
+<table border=0 cellpadding=2 cellspacing=2 width=600 class="style_outer"><tr><td>
+'.constant($game->sprache("TEXT2")).':<br>
+<table border=0 cellpadding=2 cellspacing=2 wisth=600 class="style_inner">
 <form method="post" action="'.parse_link('a=ship_template&view=compare').'">
-<input class="button_nosize" type="submit" name="none" value="'.constant($game->sprache("TEXT23")).'">
-
-<table border=0 cellpadding=1 cellspacing=1>
 <tr valign=top>
 ');
 
@@ -300,9 +298,13 @@ for ($t=0; $t<3; $t++)
 }
 
 $game->out('
+</tr>
+<tr>
+  <td colspan="3" align="center">
+  <input class="button_nosize" type="submit" name="none" value="'.constant($game->sprache("TEXT23")).'">
+  </form>
+</td>
 </tr></table>
-</form>
-<br>
 </td></tr></table>');
 }
 

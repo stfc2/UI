@@ -661,16 +661,17 @@ $template=$db->queryrow('SELECT * FROM ship_templates WHERE (owner="'.$game->pla
 
 $game->out('
 
-<table border=0 cellpadding=0 cellspacing=0 width=300 class="style_inner"><tr><td>
+<table border=0 cellpadding=1 cellspacing=1 width=300 class="style_outer"><tr><td>
+<table border=0 cellpadding=1 cellspacing=1 width=300 class="style_inner"><tr><td>
 
 <span class="sub_caption2">'.constant($game->sprache("TEXT31")).' <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span class="sub_caption2">'.$template['name'].'</span></a></span><br>
 
-'.constant($game->sprache("TEXT32")).'<br>
+'.constant($game->sprache("TEXT32")).'
 
-<b id="timer2" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['finish_build']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b>
+<b id="timer2" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['finish_build']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b><br><br>
 
 
-
+<center>
 <form name="abort" method="post" action="index.php?a=shipyard&a2=abort_build" onSubmit="return document.abort.submita.disabled = true;">
 
 <input type="hidden" name="correct_abort" value="1">
@@ -678,7 +679,7 @@ $game->out('
 <input type="submit" name="submita" class="button" style="width: 200px;" value ="'.constant($game->sprache("TEXT33")).'">
 
 </form>
-
+</center>
 ');
 
 $display=1;
@@ -732,7 +733,7 @@ $game->out('<br><span class="sub_caption2">'.constant($game->sprache("TEXT34")).
 
 
 
-if ($display) $game->out('</td></tr></table><br>');
+if ($display) $game->out('</td></tr></table></td></tr></table><br>');
 
 
 
@@ -818,7 +819,7 @@ Show_Common_Menues();
 
 $game->out('<span class="sub_caption">'.constant($game->sprache("TEXT45")).' '.HelpPopup('shipyard_2').':</span><br><br>');
 
-$game->out('<table border=0 cellpadding=2 cellspacing=2 width=400 class="style_outer"><tr><td width=25>&nbsp;</td><td align="center">');
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width=400 class="style_outer"><tr><td align="center">');
 
 
 
@@ -923,7 +924,7 @@ document.getElementsByName("count4")[0].value='.$maxunit[3].';
 
 </tr><tr>
 
-<td colspan=2>
+<td colspan=2 align="center">
 
 </b><i>'.constant($game->sprache("TEXT48")).'</i>
 <br>
@@ -938,11 +939,7 @@ document.getElementsByName("count4")[0].value='.$maxunit[3].';
 
 <input type="hidden" name="id" value="'.$_REQUEST['id'].'"><br>
 
-<center><input type="submit" name="submit" class="button" value ="'.constant($game->sprache("TEXT50")).'"></center>
-
-
-
-
+<input type="submit" name="submit" class="button" value ="'.constant($game->sprache("TEXT50")).'">
 
 </form>
 
@@ -952,11 +949,7 @@ document.getElementsByName("count4")[0].value='.$maxunit[3].';
 
 </table>
 
-
-
-');
-
-$game->out('</td><td width=25>&nbsp;</td></tr></table>');
+</td></tr></table>');
 
 }
 

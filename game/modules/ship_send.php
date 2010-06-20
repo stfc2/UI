@@ -520,6 +520,7 @@ switch($step) {
     case 'survey_setup':
     case 'colo_setup':
         $game->out('
+<table class="style_outer" align="center" border="0" cellpadding="2" cellspacing="2" width="450"><tr><td>
 <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
   <form name="send_form" method="post" action="'.parse_link('a=ship_send').'" onSubmit="return document.send_form.submit.disabled = true;">
   <input type="hidden" name="dest" value="'.encode_planet_id($dest).'">
@@ -666,6 +667,7 @@ switch($step) {
   </tr>
   </form>
 </table>
+</td></tr></table>
       ');
     break;
 
@@ -759,6 +761,7 @@ function update_times() {
 //-->
 </script>
 
+<table class="style_outer" align="center" border="0" cellpadding="2" cellspacing="2" width="450"><tr><td>
 <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
   <form name="send_form" method="post" action="'.parse_link('a=ship_send').'">
   <input type="hidden" name="dest" value="'.encode_planet_id($dest).'">
@@ -837,6 +840,7 @@ function update_times() {
   </tr>
   </form>
 </table>
+</td></tr></table>
 
 <script type="text/javascript" language="JavaScript">
 <!--

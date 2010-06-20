@@ -20,11 +20,11 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 //Deutsch
-define ("GER_Text1", '<table border="0" cellpadding="1" cellspacing="1" width="300" class="style_outer"><tr><td><table border=0 cellpadding=1 cellspacing=1 width=300 class="style_inner"><tr><td><tr><td>Ausgebildet wird: <b>');
+define ("GER_Text1", 'Ausgebildet wird:');
 
-define ("GER_Text2", '</b><br>Verbleibende Zeit bis zur Fertigstellung:<br>');
+define ("GER_Text2", 'Verbleibende Zeit bis zur Fertigstellung:');
 
-define ("GER_Text3", '<b>Zu wenige Ressourcen - Warten</b></td></tr></table></td></tr></table><br>');
+define ("GER_Text3", 'Zu wenige Ressourcen - Warten');
 
 define ("GER_Text4", 'Ausgebildet wird nichts');
 
@@ -40,15 +40,15 @@ define ("GER_Text9", ' (Standard: ');
 
 define ("GER_Text10", ')<br><u>Verteidigung:</u> ');
 
-define ("GER_Text11", '<br><span class="sub_caption">Ausbildungsstatus ');
+define ("GER_Text11", 'Ausbildungsstatus');
 
-define ("GER_Text12", '<br><center><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2"><center>Ausbildungsstatus: <u>AKTIV</u></center><br>');
+define ("GER_Text12", 'Ausbildungsstatus: <u>AKTIV</u>');
 
-define ("GER_Text13", '<br><center><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_inner"><tr><td width=100%><span class="sub_caption2"><center>Ausbildungsstatus: <u>GESTOPPT</u></center><br>');
+define ("GER_Text13", 'Ausbildungsstatus: <u>GESTOPPT</u>');
 
 define ("GER_Text14", '<br><span class="sub_caption">Ausbildungsliste ');
 
-define ("GER_Text15", '<br><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Ausbildungsliste *:<br>');
+define ("GER_Text15", 'Ausbildungsliste *:');
 
 define ("GER_Text16", '<td width=40><b>Platz:</b></td><td width=150><b>Belegung:</b></td><td width=50><b>Anzahl:</b></td><td width=40><b>Endlos:</b></td>');
 
@@ -92,15 +92,15 @@ define ("GER_Text34", '<option value="12">54 Minuten Pause</option>');
 
 define ("GER_Text35", 'Reset');
 
-define ("GER_Text36", '<b>Unzureichend freiem Speicherplatz - Warten</b></td></tr></table></td></tr></table><br>');
+define ("GER_Text36", 'Unzureichend freiem Speicherplatz - Warten');
 
 //English
 
-define ("ENG_Text1", '<table border="0" cellpadding="1" cellspacing="1" width="300" class="style_outer"><tr><td><table border=0 cellpadding=1 cellspacing=1 width=300 class="style_inner"><tr><td><tr><td>It is trained: <b>');
+define ("ENG_Text1", 'Current unit trained:');
 
-define ("ENG_Text2", '</b><br>Remaining time until the completion:<br>');
+define ("ENG_Text2", 'Remaining time until the completion:');
 
-define ("ENG_Text3", '<b>Too few resources - Waiting</b></td></tr></table></td></tr></table><br>');
+define ("ENG_Text3", 'Too few resources - Waiting');
 
 define ("ENG_Text4", 'Nothing is trained');
 
@@ -116,15 +116,15 @@ define ("ENG_Text9", ' (Standard: ');
 
 define ("ENG_Text10", ')<br><u>Defence:</u> ');
 
-define ("ENG_Text11", '<br><span class="sub_caption">Training status');
+define ("ENG_Text11", 'Training status');
 
-define ("ENG_Text12", '<br><center><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2"><center>Training status:<u>ACTIVE</u></center><br>');
+define ("ENG_Text12", 'Training status: <u>ACTIVE</u>');
 
-define ("ENG_Text13", '<br><center><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_inner"><tr><td width=100%><span class="sub_caption2"><center>Training status:<u>STOPPED</u></center><br>');
+define ("ENG_Text13", 'Training status: <u>STOPPED</u>');
 
 define ("ENG_Text14", '<br><span class="sub_caption">Training list ');
 
-define ("ENG_Text15", '<br><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Training list *:<br>');
+define ("ENG_Text15", 'Training list *:');
 
 define ("ENG_Text16", '<td width=40><b>Place:</b></td><td width=150><b>Occupancy:</b></td><td width=50><b>Quantity:</b></td><td width=40><b>Infinite:</b></td>');
 
@@ -168,15 +168,15 @@ define ("ENG_Text34", '<option value="12">54 Minutes Pause</option>');
 
 define ("ENG_Text35", 'Reset');
 
-define ("ENG_Text36", '<b>Insufficient space available on planet - Waiting</b></td></tr></table></td></tr></table><br>');
+define ("ENG_Text36", 'Insufficient space available on planet - Waiting');
 
 //Italiano
 
-define ("ITA_Text1", '<table border="0" cellpadding="1" cellspacing="1" width="300" class="style_outer"><tr><td><table border=0 cellpadding=1 cellspacing=1 width=300 class="style_inner"><tr><td><tr><td>In addestramento: <b>');
+define ("ITA_Text1", 'In addestramento:');
 
-define ("ITA_Text2", '</b><br>Tempo rimanente per il completamento:<br>');
+define ("ITA_Text2", 'Tempo rimanente per il completamento:');
 
-define ("ITA_Text3", '<b>Risorse disponibili insufficienti - In attesa</b></td></tr></table></td></tr></table><br>');
+define ("ITA_Text3", 'In attesa - Risorse disponibili insufficienti');
 
 define ("ITA_Text4", 'Nessuno in addestramento');
 
@@ -192,15 +192,15 @@ define ("ITA_Text9", ' (Standard: ');
 
 define ("ITA_Text10", ')<br><u>Difesa:</u> ');
 
-define ("ITA_Text11", '<br><span class="sub_caption">Stato Accademia');
+define ("ITA_Text11", 'Stato Accademia');
 
-define ("ITA_Text12", '<br><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2"><center>Stato Accademia:<u>ATTIVA</u></center><br>');
+define ("ITA_Text12", 'Stato Accademia: <u>ATTIVA</u>');
 
-define ("ITA_Text13", '<br><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_inner"><tr><td width=100%><span class="sub_caption2"><center>Stato Accademia:<u>FERMA</u></center><br>');
+define ("ITA_Text13", 'Stato Accademia: <u>FERMA</u>');
 
-define ("ITA_Text14", '<br><span class="sub_caption">Lista Addestramento ');
+define ("ITA_Text14", 'Lista Addestramento');
 
-define ("ITA_Text15", '<br><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">Lista Addestramento *:<br>');
+define ("ITA_Text15", 'Lista Addestramento *:');
 
 define ("ITA_Text16", '<td width=40><b>Posizione:</b></td><td width=150><b>Occupazione:</b></td><td width=50><b>Quantit&agrave;:</b></td><td width=40><b>Infiniti:</b></td>');
 
@@ -244,6 +244,6 @@ define ("ITA_Text34", '<option value="12">54 minuti di pausa</option>');
 
 define ("ITA_Text35", 'Azzera');
 
-define ("ITA_Text36", '<b>Spazio sul pianeta insufficiente - In attesa</b></td></tr></table></td></tr></table><br>');
+define ("ITA_Text36", 'In attesa - Spazio sul pianeta insufficiente');
 
 ?>

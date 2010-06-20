@@ -291,7 +291,8 @@ if(isset($_GET['pfleet_details'])) {
     $ap_red_str = ($fleet['alert_phase'] == ALERT_PHASE_RED) ? '[<span style="color: #FF0000;">'.constant($game->sprache("TEXT11")).'</span>]' : '[<a href="'.parse_link('a=ship_fleets_ops&set_alert_phase='.$fleet_id.'&to='.ALERT_PHASE_RED.'&planet').'">'.constant($game->sprache("TEXT11")).'</a>]';
 
     $game->out('
-<table class="style_inner" width="450" align="center" border="0" cellpadding="4" cellspacing="2">
+<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer"><tr><td>
+<table width="450" align="center" border="0" cellpadding="4" cellspacing="2" class="style_inner">
   <form name="fleet_form" method="post" action="">
   <tr>
     <td>
@@ -523,6 +524,7 @@ function ShipSelection(cSelectType) {
   <input type="hidden" name="fleets[]" value="'.$fleet_id.'">
   </form>
 </table>
+</td></tr></table>
     ');
 }
 elseif(isset($_GET['mfleet_details'])) {
@@ -662,7 +664,8 @@ elseif(isset($_GET['mfleet_details'])) {
 
     // Ende lesen Homebasekoords
     $game->out('
-<table class="style_inner" width="450" align="center" border="0" cellpadding="2" cellspacing="2">
+<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer"><tr><td>
+<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
   <form name="fleet_form" method="post" action="">
   <tr>
     <td>
@@ -770,6 +773,7 @@ href="'.parse_link('a=ship_fleets_display&mfleet_details='.$fleet_id.'&order_by=
   </tr>
   </form>
 </table>
+</td></tr></table>
     ');
 }
 elseif(isset($_GET['mass_set_homebase'])) {
@@ -778,6 +782,7 @@ elseif(isset($_GET['mass_set_homebase'])) {
 
   $game->out('
   <form action="'.parse_link('a=ship_fleets_display').'" method="post">
+  <table class="style_outer" width="250" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
   <table class="style_inner" width="250" align="center" border="0" cellpadding="2" cellspacing="2">
   
    <tr>
@@ -790,12 +795,13 @@ elseif(isset($_GET['mass_set_homebase'])) {
      <td><b>'.constant($game->sprache("TEXT62")).'</b></td><td>&nbsp;</td>
    </tr>
    <tr>
-     <td><input type="text" name="pos_home_all"></td><td><input type="submit" name="mass_save" value="'.constant($game->sprache("TEXT63")).'"></td>
+     <td><input type="text" name="pos_home_all" class="field"></td><td><input type="submit" name="mass_save" value="'.constant($game->sprache("TEXT63")).'" class="button"></td>
    </tr>
 
    </table></td></tr>
 
    </table>
+   </td></tr></table>
    </form>
    ');
  }
@@ -966,6 +972,7 @@ else {
     }
 
     $game->out('
+<table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer"><tr><td>
 <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
   <table width="400" border="0" cellpadding="2" cellspacing="0">
     <form method="get" action="'.parse_link('').'">
@@ -1254,7 +1261,7 @@ if(!empty($_GET['set_alert_phase'])) {
 
   </table>
 </form>
-</td></tr></table></div>
+</td></tr></table></td></tr></table></div>
     ');
 }
 

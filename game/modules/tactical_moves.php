@@ -149,10 +149,13 @@ while($move = $db->fetchrow($q_moves)) {
 	}
 	
 	$game->out('
-<table class="style_inner" width="450" align="center" border="0" cellpadding="2" cellspacing="2">
-  <form method="post" action="'.parse_link('a=ship_fleets_display&mfleet_details').'">
+<table class="style_outer" width="450" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
-	<td>
+    <td>
+      <table class="style_inner" width="450" align="center" border="0" cellpadding="2" cellspacing="2">
+      <form method="post" action="'.parse_link('a=ship_fleets_display&mfleet_details').'">
+        <tr>
+	      <td>
 	');
 	
 	if($move['start'] == $move['dest']) {
@@ -178,13 +181,13 @@ while($move = $db->fetchrow($q_moves)) {
 		$unknow_dest_str = ' <b><i>&#171;'.constant($game->sprache("TEXT28")).'&#187;</i></b>';
 
 		$game->out(constant($game->sprache("TEXT12")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($move['start'])).'"><b>'.$move['start_planet_name'].'</b></a>'.$start_owner_str.'<br>
-		'.constant($game->sprache("TEXT13")).( $system_is_known ? $know_dest_str : $unknow_dest_str).'<br>
+		   '.constant($game->sprache("TEXT13")).( $system_is_known ? $know_dest_str : $unknow_dest_str).'<br>
 		');
 	}
 
 	$game->out('
-	  <br>
-	  <select name="fleets[]" style="width: 200px;">
+	      <br>
+	      <select name="fleets[]" style="width: 200px;">
 	');
 
 	for($j = 0; $j < $n_fleets; ++$j) {
@@ -195,11 +198,11 @@ while($move = $db->fetchrow($q_moves)) {
 	if($ticks_left < 0) $ticks_left = 0;
 
 	$game->out('
-	  </select>&nbsp;&nbsp;<input class="button" type="submit" name="fleet_details" value="'.constant($game->sprache("TEXT14")).'">
-	  <br><br>
-	  '.constant($game->sprache("TEXT15")).' <b>'.get_move_action_str($move['action_code']).'</b><br>
-	  '.constant($game->sprache("TEXT16")).' '.( ($i < 10) ? '<b id="timer'.$i.'" title="time1_'.( ($ticks_left * TICK_DURATION * 60) + $NEXT_TICK).'_type2_2">&nbsp;</b>' : format_time( $ticks_left * TICK_DURATION ) ).'
-      <br><br>
+	      </select>&nbsp;&nbsp;<input class="button" type="submit" name="fleet_details" value="'.constant($game->sprache("TEXT14")).'">
+	      <br><br>
+	      '.constant($game->sprache("TEXT15")).' <b>'.get_move_action_str($move['action_code']).'</b><br>
+	      '.constant($game->sprache("TEXT16")).' '.( ($i < 10) ? '<b id="timer'.$i.'" title="time1_'.( ($ticks_left * TICK_DURATION * 60) + $NEXT_TICK).'_type2_2">&nbsp;</b>' : format_time( $ticks_left * TICK_DURATION ) ).'
+          <br><br>
     ');
     
     switch($move['action_code']) {
@@ -255,9 +258,12 @@ while($move = $db->fetchrow($q_moves)) {
     }
     
     $game->out('
+          </td>
+        </tr>
+      </form>
+      </table>
     </td>
   </tr>
-  </form>
 </table>
 <br>
 	');

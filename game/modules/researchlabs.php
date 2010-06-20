@@ -376,22 +376,24 @@ $scheduler = $db->fetchrow($schedulerquery);
 
 if ($scheduler['research_id']<5)
 $game->out('
+<table border=0 cellpadding=1 cellspacing=1 width=300 class="style_outer"><tr><td>
 <table border=0 cellpadding=2 cellspacing=2 width=300 class="style_inner"><tr><td>
 '.constant($game->sprache("TEXT20")).' <b>'.$TECH_NAME[$game->player['user_race']][$scheduler['research_id']].'</b><br>
-'.constant($game->sprache("TEXT21")).'<br>
+'.constant($game->sprache("TEXT21")).'
 <b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b><br>
 <a href="'.parse_link_ex('a=researchlabs&a2=abort_research',LINK_CLICKID).'"><b>'.constant($game->sprache("TEXT22")).'</b></a>
-</td></tr></table><br>
+</td></tr></table></td></tr></table><br>
 ');
 else
 {
 $game->out('
+<table border=0 cellpadding=1 cellspacing=1 width=300 class="style_outer"><tr><td>
 <table border=0 cellpadding=2 cellspacing=2 width=300 class="style_inner"><tr><td>
 '.constant($game->sprache("TEXT20")).' <b>'.$ship_components[$game->player['user_race']][($scheduler['research_id']-5)][$game->planet['catresearch_'.(($scheduler['research_id']-4))]]['name'].'</b><br>
-'.constant($game->sprache("TEXT21")).'<br>
+'.constant($game->sprache("TEXT21")).'
 <b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b><br>
 <a href="'.parse_link_ex('a=researchlabs&a2=abort_research',LINK_CLICKID).'"><b>'.constant($game->sprache("TEXT22")).'</b></a>
-</td></tr></table><br>
+</td></tr></table></td></tr></table><br>
 ');
 }
 

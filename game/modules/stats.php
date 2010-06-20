@@ -86,7 +86,7 @@ $rank_honor[8]=2000;
 $rank_honor[9]=5000;
 
 
-$game->out('<center><span class="caption">'.constant($game->sprache("TEXT4")).'</span></center><br><br>');
+$game->out('<span class="caption">'.constant($game->sprache("TEXT4")).'</span><br><br>');
 
 
 
@@ -94,16 +94,25 @@ function Show_Main()
 {
 global $db;
 global $game;
-$game->out('<br><center><table boder=0 cellpadding=0 cellspacing=0 class="style_inner" width=350>
-<tr height="30">
-<td width=150 align=middle>
-<a href="'.parse_link('a=stats&a2=player_ranking').'"><span class="sub_caption2">'.constant($game->sprache("TEXT5")).'</a>
-</td>
-<td width=150 align=middle>
-<a href="'.parse_link('a=stats&a2=alliance_ranking').'"><span class="sub_caption2">'.constant($game->sprache("TEXT6")).'</a>
-<br></td>
-</tr>
-</table><br><br><br>
+$game->out('<br>
+<table border="0" cellpadding="1" cellspacing="1" class="style_outer" width="60%">
+  <tr>
+    <td>
+      <table border="0" cellpadding="1" cellspacing="1" class="style_inner" width="100%>
+        <tr height="30">
+          <td width=150 align=middle>
+            <a href="'.parse_link('a=stats&a2=player_ranking').'"><span class="sub_caption2">'.constant($game->sprache("TEXT5")).'</a>
+          </td>
+          <td width=150 align=middle>
+            <a href="'.parse_link('a=stats&a2=alliance_ranking').'"><span class="sub_caption2">'.constant($game->sprache("TEXT6")).'</a>
+            <br>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<br><br>
 ');
 
 }
@@ -130,16 +139,18 @@ $alliancequery=$db->query($query);
 if (($alliance = $db->fetchrow($alliancequery))==false) {$game->out('<center><p><span class="sub_caption">'.constant($game->sprache("TEXT7")).'</span></center>');}
 else
 {
-$game->out('<center><table boder=0 cellpadding=0 cellspacing=0 class="style_outer"><tr><td width=400>
-<br><center>');
-$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT8")).' '.$alliance['alliance_name'].' ['.$alliance['alliance_tag'].']</span></center>');
+$game->out('<table align="center" border="0" cellpadding="0" cellspacing="0" class="style_outer">
+  <tr>
+    <td width="400" align="center">
+    <br>
+    <span class="sub_caption">'.constant($game->sprache("TEXT8")).' '.$alliance['alliance_name'].' ['.$alliance['alliance_tag'].']</span>');
 // Show the alliance logo:
 if (!empty($alliance['alliance_logo']))// && fopen($alliance['logo_link'],"r")!=FALSE)
 {
 $info = getimagesize_remote($alliance['alliance_logo']);
 if ($info[0]>0 && $info[1]>0 && $info[0]<=350 && $info[1]<=350)
 {
-$game->out('<table border=0 cellpadding=0 cellspacing=0><tr><td width=350><center><img src="'.$alliance['alliance_logo'].'"></center></td></tr></table><br>');
+$game->out('<table border=0 cellpadding=0 cellspacing=0><tr><td width=350 align="center"><img src="'.$alliance['alliance_logo'].'"></td></tr></table><br>');
 }
 }
 else {$game->out('<br>');}
@@ -690,93 +701,160 @@ $rankpos='user_rank_honor';
 Show_Main();
 
 // Menu PLAYER Specific
-$game->out('<center><table boder=0 cellpadding=2 cellspacing=2 class="style_inner" width=300><tr>');
+$game->out('<table border="0" cellpadding="1" cellspacing="1" class="style_outer" width="60%">
+  <tr>
+    <td>
+      <table border="0" cellpadding="2" cellspacing="2" class="style_inner" width="100%">
+        <tr>');
 
 if ((isset($_REQUEST['a3']) && $_REQUEST['a3']==1) || (!isset($_REQUEST['a3'])))
 {
-$game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=player_ranking&a3=1&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT60")).'</u></a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=points" target="_blank"><b>PDF</b></a>]
-</td>');
+$game->out('
+          <td width=100 align=middle>
+            <a href="'.parse_link('a=stats&a2=player_ranking&a3=1&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT60")).'</u></a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=points" target="_blank"><b>PDF</b></a>]
+          </td>');
 }
 else
 {
-$game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=player_ranking&a3=1&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT60")).'</a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=points" target="_blank"><b>PDF</b></a>]
-</td>');
+$game->out('
+          <td width=100 align=middle>
+            <a href="'.parse_link('a=stats&a2=player_ranking&a3=1&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT60")).'</a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=points" target="_blank"><b>PDF</b></a>]
+          </td>');
 }
 
 if (isset($_REQUEST['a3']) && $_REQUEST['a3']==2)
 {
-$game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=player_ranking&a3=2&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT61")).'</u></a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=planets" target="_blank"><b>PDF</b></a>]
-</td>');
+$game->out('
+          <td width=100 align=middle>
+            <a href="'.parse_link('a=stats&a2=player_ranking&a3=2&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT61")).'</u></a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=planets" target="_blank"><b>PDF</b></a>]
+          </td>');
 }
 else
 {
-$game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=player_ranking&a3=2&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT61")).'</a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=planets" target="_blank"><b>PDF</b></a>]
-</td>');
+$game->out('
+          <td width=100 align=middle>
+            <a href="'.parse_link('a=stats&a2=player_ranking&a3=2&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT61")).'</a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=planets" target="_blank"><b>PDF</b></a>]
+          </td>');
 }
 
 if (isset($_REQUEST['a3']) && $_REQUEST['a3']==3)
 {
-$game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=player_ranking&a3=3&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT62")).'</u></a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=honor" target="_blank"><b>PDF</b></a>]
-</td>');
+$game->out('
+          <td width=100 align=middle>
+            <a href="'.parse_link('a=stats&a2=player_ranking&a3=3&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT62")).'</u></a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=honor" target="_blank"><b>PDF</b></a>]
+          </td>');
 }
 else
 {
-$game->out('<td width=100 align=middle>
-<a href="'.parse_link('a=stats&a2=player_ranking&a3=3&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT62")).'</a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=honor" target="_blank"><b>PDF</b></a>]
-</td>');
+$game->out('
+          <td width=100 align=middle>
+            <a href="'.parse_link('a=stats&a2=player_ranking&a3=3&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT62")).'</a><br>[<a href="'.$config['game_url'].'/include/pdf_ranking.php?action=user&order=honor" target="_blank"><b>PDF</b></a>]
+          </td>');
 }
 
-$game->out('</tr></table>');
+$game->out('
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>');
 
 
 // Men Top20, Eigene Platzierung + Spieler suchen
-$game->out('<br><center><table boder=0 cellpadding=2 cellspacing=2  class="style_inner" width=300><tr>
-
-<td width=150 align=middle>
-<a href="'.parse_link('a=stats&a2=player_ranking&a3='.$_REQUEST['a3'].'&start=0').'"><span class="text_large">'.constant($game->sprache("TEXT63")).'</a>
-</td>
-<td width=150 align=middle>
-<a href="'.parse_link('a=stats&a2=player_ranking&a3='.$_REQUEST['a3']).'"><span class="text_large">'.constant($game->sprache("TEXT64")).'</a>
-</td>
-</tr>
-<tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr>
-<tr>
-<td valign=top><form method="post" action="'.parse_link('a=stats&a2=player_ranking&a3='.$_REQUEST['a3']).'">
-<center><input type="text" name="search" size="16" class="field" value="'.htmlspecialchars($_REQUEST['search']).'"></td>
-<td><center><input type="submit" name="exec_search" class="button" width=100 value="'.constant($game->sprache("TEXT65")).'"></td></tr></form>
-
+$game->out('<br>
+<table border="0" cellpadding="1" cellspacing="1" class="style_outer" width="60%">
+  <tr>
+    <td>
+      <table border="0" cellpadding="2" cellspacing="2" class="style_inner" width="100%">
+        <tr>
+          <td width=150 align=middle>
+            <a href="'.parse_link('a=stats&a2=player_ranking&a3='.$_REQUEST['a3'].'&start=0').'"><span class="text_large">'.constant($game->sprache("TEXT63")).'</a>
+          </td>
+          <td width=150 align=middle>
+            <a href="'.parse_link('a=stats&a2=player_ranking&a3='.$_REQUEST['a3']).'"><span class="text_large">'.constant($game->sprache("TEXT64")).'</a>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td valign="top" align="center">
+            <form method="post" action="'.parse_link('a=stats&a2=player_ranking&a3='.$_REQUEST['a3']).'">
+            <input type="text" name="search" size="16" class="field" value="'.htmlspecialchars($_REQUEST['search']).'">
+          </td>
+          <td align="center">
+            <input type="submit" name="exec_search" class="button" width=100 value="'.constant($game->sprache("TEXT65")).'">
+            </form>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
 </table>
 ');
 //Tobis spezial, ja mojo reg dich ab a=stats&a2=player_ranking&a3=1
 if($search_name!="" && $focus==0)
 {
-$game->out('<br><center><table boder=0 cellpadding=2 cellspacing=2 class="style_inner" width=300><tr>
-<td width=150><b>'.constant($game->sprache("TEXT66")).'</b></td>
-</tr>');
-$search_sonder=$db->query('SELECT u.user_name FROM (user u)  WHERE u.user_name LIKE "%'.$_REQUEST['search'].'%" ORDER by u.user_name ASC');
-while (($user = $db->fetchrow($search_sonder)) != false)
-{
-$game->out('
-<tr>
-<td width=150><a href="'.parse_link('a=stats&a2=player_ranking&search='.$user ['user_name'].'&a3='.$_REQUEST['a3']).'">'.$user ['user_name'].'</a>
-</td>
-</tr>
-');
-}
-$game->out('</table></center>');
+    $game->out('<br>
+<table border="0" cellpadding="1" cellspacing="1" class="style_outer" width="60%">
+  <tr>
+    <td>
+      <table border="0" cellpadding="2" cellspacing="2" class="style_inner" width="100%">
+        <tr>
+          <td width=150><b>'.constant($game->sprache("TEXT66")).'</b></td>
+        </tr>');
+    $search_sonder=$db->query('SELECT u.user_name FROM (user u)  WHERE u.user_name LIKE "%'.$_REQUEST['search'].'%" ORDER by u.user_name ASC');
+    while (($user = $db->fetchrow($search_sonder)) != false)
+    {
+        $game->out('
+        <tr>
+          <td width=150><a href="'.parse_link('a=stats&a2=player_ranking&search='.$user ['user_name'].'&a3='.$_REQUEST['a3']).'">'.$user ['user_name'].'</a></td>
+        </tr>
+        ');
+    }
+    $game->out('
+      </table>
+    </td>
+  </tr>
+</table>');
 }
 // Men << >>
-$game->out('<br><center><table boder=0 cellpadding=2 cellspacing=2 class="style_inner" width=300><tr>
-<td width=150 align=middle><a href="'.parse_link('a=stats&a2=player_ranking&a3='.$_REQUEST['a3'].'&start='.($start-20)).'"><span class="text_large">'.constant($game->sprache("TEXT67")).'</a>
-</td><td width=150 align=middle><a href="'.parse_link('a=stats&a2=player_ranking&a3='.$_REQUEST['a3'].'&start='.($start+20)).'"><span class="text_large">'.constant($game->sprache("TEXT68")).'</a>
-</td></tr></table>');
+$game->out('<br>
+<table border="0" cellpadding="1" cellspacing="1" class="style_outer" width="60%">
+  <tr>
+    <td>
+      <table border="0" cellpadding="2" cellspacing="2" class="style_inner" width="100%">
+        <tr>
+          <td width=150 align=middle>
+            <a href="'.parse_link('a=stats&a2=player_ranking&a3='.$_REQUEST['a3'].'&start='.($start-20)).'"><span class="text_large">'.constant($game->sprache("TEXT67")).'</a>
+          </td>
+          <td width=150 align=middle>
+            <a href="'.parse_link('a=stats&a2=player_ranking&a3='.$_REQUEST['a3'].'&start='.($start+20)).'"><span class="text_large">'.constant($game->sprache("TEXT68")).'</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>');
 
-$game->out('<br><center><table boder=0 cellpadding=1 cellspacing=1 width=550 class="style_inner">
+$game->out('<br>
+<table border="0" cellpadding="2" cellspacing="2" class="style_outer" width="90%">
+<tr>
+<td>
+<table border="0" cellpadding="1" cellspacing="1" class="style_inner" width="100%">
 <tr>
 <td width=50>
 <b>'.constant($game->sprache("TEXT69")).'</b>
@@ -881,13 +959,26 @@ $game->out('<td align=center style="border-bottom-color:#C0C0C0; border-bottom-w
 "><i>'.$gradi[$rank_nr-1].'</td></tr>');
 }
 
-$game->out('</table>');
+$game->out('</table></td></tr></table>');
 
 // Men << >>
-$game->out('<br><center><table boder=0 cellpadding=2 cellspacing=2 class="style_inner" width=300><tr>
-<td width=150 align=middle><a href="'.parse_link('a=stats&a2=player_ranking&a3='.$_REQUEST['a3'].'&start='.($start-20)).'"><span class="text_large">'.constant($game->sprache("TEXT67")).'</a>
-</td><td width=150 align=middle><a href="'.parse_link('a=stats&a2=player_ranking&a3='.$_REQUEST['a3'].'&start='.($start+20)).'"><span class="text_large">'.constant($game->sprache("TEXT68")).'</a>
-</td></tr></table>');
+$game->out('<br>
+<table border="0" cellpadding="1" cellspacing="1" class="style_outer" width="60%">
+  <tr>
+    <td>
+      <table border="0" cellpadding="2" cellspacing="2" class="style_inner" width="100%">
+        <tr>
+          <td width=150 align=middle>
+            <a href="'.parse_link('a=stats&a2=player_ranking&a3='.$_REQUEST['a3'].'&start='.($start-20)).'"><span class="text_large">'.constant($game->sprache("TEXT67")).'</a>
+          </td>
+          <td width=150 align=middle>
+            <a href="'.parse_link('a=stats&a2=player_ranking&a3='.$_REQUEST['a3'].'&start='.($start+20)).'"><span class="text_large">'.constant($game->sprache("TEXT68")).'</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>');
 }
 
 
@@ -944,7 +1035,11 @@ $rankpos='alliance_rank_points_avg';
 Show_Main();
 
 // Menu ALLIANCE Specific
-$game->out('<center><table boder=0 cellpadding=2 cellspacing=2 class="style_inner" width=400><tr>');
+$game->out('<table border="0" cellpadding="1" cellspacing="1" class="style_outer" width="80%">
+<tr>
+  <td>
+    <table border="0" cellpadding="2" cellspacing="2" class="style_inner" width="100%">
+      <tr>');
 
 if ((isset($_REQUEST['a3']) && $_REQUEST['a3']==1) || (!isset($_REQUEST['a3'])))
 {
@@ -998,38 +1093,66 @@ $game->out('<td width=100 align=middle>
 </td>');
 }
 
-$game->out('</tr></table>');
+$game->out('</tr></table></td></tr></table>');
 
 
 
 // Men Top20, Eigene Platzierung + Allianz suchen
-$game->out('<br><center><table boder=0 cellpadding=2 cellspacing=2 class="style_inner" width=300><tr>
-
-<td width=150 align=middle>
-<a href="'.parse_link('a=stats&a2=alliance_ranking&a3='.$_REQUEST['a3'].'&start=0').'"><span class="text_large">'.constant($game->sprache("TEXT63")).'</a>
-</td>
-<td width=150 align=middle>
-<a href="'.parse_link('a=stats&a2=alliance_ranking&a3='.$_REQUEST['a3']).'"><span class="text_large">'.constant($game->sprache("TEXT64")).'</a>
-</td>
-</tr>
-<tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr>
-<tr>
-<td valign=top><form method="post" action="'.parse_link('a=stats&a2=alliance_ranking&a3='.$_REQUEST['a3']).'">
-<center><input type="text" name="search" size="16" class="field" value="'.$_REQUEST['search'].'"></td>
-<td><center><input type="submit" name="exec_search" class="button" width=100 value="'.constant($game->sprache("TEXT85")).'"></td></tr></form>
-
+$game->out('<br>
+<table border="0" cellpadding="1" cellspacing=1" class="style_outer" width="60%">
+  <tr>
+    <td>
+      <table border="0" cellpadding="2" cellspacing="2" class="style_inner" width="100%">
+        <tr>
+          <td width=150 align=middle>
+            <a href="'.parse_link('a=stats&a2=alliance_ranking&a3='.$_REQUEST['a3'].'&start=0').'"><span class="text_large">'.constant($game->sprache("TEXT63")).'</a>
+          </td>
+          <td width=150 align=middle>
+            <a href="'.parse_link('a=stats&a2=alliance_ranking&a3='.$_REQUEST['a3']).'"><span class="text_large">'.constant($game->sprache("TEXT64")).'</a>
+          </td>
+        </tr>
+        <tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr>
+        <tr>
+          <td valign=top align="center">
+            <form method="post" action="'.parse_link('a=stats&a2=alliance_ranking&a3='.$_REQUEST['a3']).'">
+            <input type="text" name="search" size="16" class="field" value="'.$_REQUEST['search'].'">
+          </td>
+          <td align="center">
+            <input type="submit" name="exec_search" class="button" width=100 value="'.constant($game->sprache("TEXT85")).'">
+            </form>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
 </table>
 ');
 
 
 
-// Men << >>
-$game->out('<br><center><table boder=0 cellpadding=2 cellspacing=2 class="style_inner" width=300><tr>
-<td width=150 align=middle><a href="'.parse_link('a=stats&a2=alliance_ranking&a3='.$_REQUEST['a3'].'&start='.($start-20)).'"><span class="text_large">'.constant($game->sprache("TEXT67")).'</a>
-</td><td width=150 align=middle><a href="'.parse_link('a=stats&a2=alliance_ranking&a3='.$_REQUEST['a3'].'&start='.($start+20)).'"><span class="text_large">'.constant($game->sprache("TEXT68")).'</a>
-</td></tr></table>');
+// Alliance << >>
+$game->out('<br>
+<table border="0" cellpadding="1" cellspacing="1" class="style_outer" width="60%">
+  <tr>
+    <td>
+      <table border="0" cellpadding="2" cellspacing="2" class="style_inner" width="100%">
+        <tr>
+          <td width=150 align=middle>
+            <a href="'.parse_link('a=stats&a2=alliance_ranking&a3='.$_REQUEST['a3'].'&start='.($start-20)).'"><span class="text_large">'.constant($game->sprache("TEXT67")).'</a>
+          </td>
+          <td width=150 align=middle>
+            <a href="'.parse_link('a=stats&a2=alliance_ranking&a3='.$_REQUEST['a3'].'&start='.($start+20)).'"><span class="text_large">'.constant($game->sprache("TEXT68")).'</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>');
 
-$game->out('<br><center><table boder=0 cellpadding=1 cellspacing=1 width=600 class="style_inner">
+$game->out('<br>
+<table border=0" cellpadding="2" cellspacing="2" class="style_outer" width="90%">
+<tr><td>
+<table border="0" cellpadding="1" cellspacing="1" class="style_inner" widrth="100%">
 <tr>
 <td width=50>
 <b>'.constant($game->sprache("TEXT69")).'</b>
@@ -1100,13 +1223,26 @@ $game->out($alliance['alliance_member'].'</td>
 
 }
 
-$game->out('</table>');
+$game->out('</table></td></tr></table>');
 
-// Men << >>
-$game->out('<br><center><table boder=0 cellpadding=2 cellspacing=2 class="style_inner" width=300><tr>
-<td width=150 align=middle><a href="'.parse_link('a=stats&a2=alliance_ranking&a3='.$_REQUEST['a3'].'&start='.($start-20)).'"><span class="text_large">'.constant($game->sprache("TEXT67")).'</a>
-</td><td width=150 align=middle><a href="'.parse_link('a=stats&a2=alliance_ranking&a3='.$_REQUEST['a3'].'&start='.($start+20)).'"><span class="text_large">'.constant($game->sprache("TEXT68")).'</a>
-</td></tr></table>');
+// Alliance << >>
+$game->out('<br>
+<table border="0" cellpadding="1" cellspacing="1" class="style_outer" width="60%">
+  <tr>
+    <td>
+      <table border="0" cellpadding="2" cellspacing="2" class="style_inner" width="100%">
+        <tr>
+          <td width=150 align=middle>
+            <a href="'.parse_link('a=stats&a2=alliance_ranking&a3='.$_REQUEST['a3'].'&start='.($start-20)).'"><span class="text_large">'.constant($game->sprache("TEXT67")).'</a>
+          </td>
+          <td width=150 align=middle>
+            <a href="'.parse_link('a=stats&a2=alliance_ranking&a3='.$_REQUEST['a3'].'&start='.($start+20)).'"><span class="text_large">'.constant($game->sprache("TEXT68")).'</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>');
 
 }
 

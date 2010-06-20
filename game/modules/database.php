@@ -124,7 +124,7 @@ if($module == 'planets' || isset($_GET['planet_type']))
         }
 
         $game->out('
-<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
     <td>
     <table width="450" align="center" border="0" cellpadding="3" cellspacing="3" class="style_inner">
@@ -174,7 +174,7 @@ if($module == 'planets' || isset($_GET['planet_type']))
 else if($module == 'security')
 {
     $game->out('
-<table align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+<table align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
     <td>
       <table align="center" border="0" cellpadding="3" cellspacing="3" class="style_inner">
@@ -218,7 +218,7 @@ else if($module == 'combatsim')
     if(empty($_POST['startsim'])) {
         $game->out('
 <form name="campsim" method="post" action="'.parse_link('a=database&view=combatsim').'">
-<table width=400" align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+<table width=400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
      <td align="center"><span class="sub_caption">'.constant($game->sprache("TEXT25")).'</span></td>
    </tr>
@@ -308,7 +308,7 @@ else if($module == 'combatsim')
         $n_dfd_alive = array_sum($dfd_alive);
 
         $game->out('
-<table width="400" align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+<table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
     <td align="center"><span class="sub_caption">'.constant($game->sprache("TEXT30")).'</span><br>'.constant($game->sprache("TEXT31")).'</td>
   </tr>
@@ -369,7 +369,7 @@ else if($module == 'racedata')
     }
 
     $game->out('
-    <table width="400" align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+    <table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
     <tr>
         <td align="center"><span class="sub_caption">'.constant($game->sprache("TEXT64")).'</span></td>
     </tr>

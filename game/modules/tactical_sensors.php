@@ -170,13 +170,12 @@ while ($move = $db->fetchrow($q_moves))
     {
         $game->out('
 
-	<table width="200" align="center" border="0" cellpadding="2" cellspacing="2" background="' .
-            $game->GFX_PATH . 'template_bg3.jpg" class="border_grey">
-
-  	<tr>
-
-	<td>
-
+<table border="0" width="200" align="center" cellpadding="2" cellspacing="2" class="style_outer">
+  <tr>
+    <td>
+      <table border="0" width="200" align="center" cellpadding="2" cellspacing="2" class="style_inner">
+        <tr>
+          <td>
         ');
 
 
@@ -295,10 +294,11 @@ while ($move = $db->fetchrow($q_moves))
 
         $game->out('
 
+          </td>
+        </tr>
+      </table>
     </td>
-
   </tr>
-
 </table><br>
 
         ');

@@ -29,10 +29,18 @@ global $game;
 
 $game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">'.constant($game->sprache("TEXT1")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<b>'.constant($game->sprache("TEXT3")).'</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_known').'">'.constant($game->sprache("TEXT4a")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]<br><br>
 
-<table border=0 cellpadding=2 cellspacing=2 class="style_outer"><tr>
-<td width=450>
-<center><a href="usermap.php?user='.$game->player['user_name'].'&size=6&map" target=_blank><img src="usermap.php?user='.$game->player['user_name'].'&size=2" border=0></a>
-</center>
-</td></tr></table>');
+<table border="0" cellpadding="2" cellspacing="2" width="450" class="style_outer">
+  <tr>
+    <td>
+      <table border="0" cellpadding="2" cellspacing="2" width="450" class="style_inner">
+	    <tr>
+          <td align="center">
+            <a href="usermap.php?user='.$game->player['user_name'].'&size=6&map" target=_blank><img src="usermap.php?user='.$game->player['user_name'].'&size=2" border=0></a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table');
 
 ?>

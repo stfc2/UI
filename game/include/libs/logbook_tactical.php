@@ -55,7 +55,8 @@ function display_logbook($log) {
 
     $game->out('
 <br>
-<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer"><tr><td>
+<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
   <tr><td>
     <table border="0" cellpadding="0" cellspacing="0">
       <tr>
@@ -1127,6 +1128,9 @@ if(count($a_fleets) <= 0) {
     }
 
     $game->out('</td></tr>
+</table>
+</td>
+</tr>
 </table>
 <br>
     ');

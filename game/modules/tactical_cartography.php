@@ -99,6 +99,7 @@ function display_cartography_jump() {
 
     $game->out('
 <br><br>
+<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
 <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="400">
   <form name="jump_form" method="post" action="'.parse_link('a=tactical_cartography').'">
   <tr>
@@ -143,6 +144,7 @@ function display_cartography_jump() {
   <tr><td height="2"></td></tr>
   </form>
 </table>
+</td></tr></table>
 <br>
     ');
 }
@@ -155,20 +157,20 @@ function display_cartography_jump() {
 function display_ferengi_transfer($planet_id,$planet_system,$system_x,$system_y,$build_11) {
     global $game, $db;
 
+    $game->out('<br><br>
+<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
+  <table class="style_inner" wisth0"400" align="center" border="0" cellpadding="2" cellspacing="2"');
+
     if ($game->option_retr('show_trade')==0)
         $game->out('
-<br><br>
-<table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="400">
   <tr>
-    <td><b>'.constant($game->sprache("TEXT15")).'  <b>[<a href="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id'].'&strade=1').'"><i>'.constant($game->sprache("TEXT16")).'</i></a>]</b><br></td></tr></table>');
+    <td><b>'.constant($game->sprache("TEXT15")).'  <b>[<a href="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id'].'&strade=1').'"><i>'.constant($game->sprache("TEXT16")).'</i></a>]</b></td></tr>');
 	/* 25/05/08 - AC: We need to check commercial centre presence also on the active planet */
     elseif ($build_11<1 || $game->planet['building_11']<1)
     {
         $game->out('
-<br><br>
-<table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="400">
   <tr>
-    <td><b>'.constant($game->sprache("TEXT15")).'  <b>[<a href="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id'].'"&strade=0').'"><i>'.constant($game->sprache("TEXT17")).'</i></a>]</b><br><b><br>'.constant($game->sprache("TEXT18")).'</b><br></td></tr></table>');
+    <td><b>'.constant($game->sprache("TEXT15")).'  <b>[<a href="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id'].'"&strade=0').'"><i>'.constant($game->sprache("TEXT17")).'</i></a>]</b><br><b><br>'.constant($game->sprache("TEXT18")).'</b></td></tr>');
     }
     else
     {
@@ -215,13 +217,11 @@ function display_ferengi_transfer($planet_id,$planet_system,$system_x,$system_y,
 	}
 	</script>
 	
-<br><br>
-<table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="400">
   <form name="tradeform" method="post" action="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id']).'">
   <tr>
     <td colspan=3 align="center"><b>'.constant($game->sprache("TEXT19")).'<br>('.constant($game->sprache("TEXT22")).' '.Zeit($distance*TICK_DURATION).')</b><br><br>
     </td>
-   </tr>
+  </tr>
   <tr>
   <td><img src='.$game->GFX_PATH.'menu_metal_small.gif>&nbsp;&nbsp;&nbsp;<input class="field"  style="width: 60px;" type="text" name="res_1" value="0" onFocus="UpdateValues();">&nbsp&nbsp</td>
   <td><img src='.$game->GFX_PATH.'menu_unit1_small.gif>&nbsp;&nbsp;&nbsp;<input class="field"  style="width: 60px;" type="text" name="unit_1" value="0" onFocus="UpdateValues();">&nbsp&nbsp</td>
@@ -253,14 +253,10 @@ function display_ferengi_transfer($planet_id,$planet_system,$system_x,$system_y,
 	[<a href="'.parse_link('a=tactical_cartography&planet_id='.$_GET['planet_id'].'&strade=0').'"><i>'.constant($game->sprache("TEXT17")).'</i></a>]</b>
     </td>
   </tr>
-
-
-
-</table>
-</form>
-<br>
-    ');
+  </form>');
     }
+
+	$game->out('</table></td></tr></table><br>');
 }
 
 
@@ -541,7 +537,8 @@ elseif(!empty($_POST['jump'])) {
                         }
                         else {
                             $game->out('
-<table class="style_inner" width="400" align="center" cellspacing="2" cellpadding="2">
+<table class="style_outer" width="80%" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
+<table class="style_inner" width="80%" align="center" border="0" cellspacing="2" cellpadding="2">
   <tr>
     <td>'.constant($game->sprache("TEXT43")).' <b>'.$n_systems.'</b> '.constant($game->sprache("TEXT44")).' <b>'.$system_name.'</b> '.constant($game->sprache("TEXT45")).'<br><br>
                             ');
@@ -550,7 +547,7 @@ elseif(!empty($_POST['jump'])) {
                                 $game->out('- <a href="'.parse_link('a=tactical_cartography&system_id='.encode_system_id($systems[$i]['system_id'])).'">'.$game->get_sector_name($systems[$i]['sector_id']).':'.$game->get_system_cname($systems[$i]['system_x'], $systems[$i]['system_y']).'</a><br>');
                             }
 
-                            $game->out('</td></tr></table><br>');
+                            $game->out('</td></tr></table></td></tr></table><br>');
                         }
 //                    }
                 break;
@@ -586,6 +583,7 @@ elseif(!empty($_POST['jump'])) {
                         }
                         else {
                             $game->out('
+<table class="style_outer" width="80%" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
 <table class="style_inner" width="80%" align="center" cellspacing="2" cellpadding="2">
   <tr>
     <td>'.constant($game->sprache("TEXT43")).' <b>'.$n_planets.'</b> '.constant($game->sprache("TEXT47")).' <b>'.$planet_name.'</b> '.constant($game->sprache("TEXT45")).'<br><br>
@@ -598,7 +596,7 @@ elseif(!empty($_POST['jump'])) {
                                 }
                             }
 
-                            $game->out('</td></tr></table><br>');
+                            $game->out('</td></tr></table></td></tr></table><br>');
                         }
 //                    }
                 break;
@@ -714,12 +712,17 @@ elseif(isset($_GET['memo_setup'])) {
 
     $game->out('
 <span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">'.constant($game->sprache("TEXT1")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_known').'">'.constant($game->sprache("TEXT4a")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]<br><br>
-    
-<table width="400" border="0"><form method="post" action="'.parse_link('a=tactical_cartography').'"><tr><td>
-  '.constant($game->sprache("TEXT53")).'
-  <br><br>
-  '.constant($game->sprache("TEXT54")).' <b>'.(15 - $n_cmemo).'</b> / <b>15</b><br><br>
-  '.constant($game->sprache("TEXT55")).'&nbsp;&nbsp;<input class="field" type="text" name="memo_name" value=""><br><br>
+<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+  <tr>
+    <td>
+      <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+      <form method="post" action="'.parse_link('a=tactical_cartography').'">
+        <tr>
+          <td>
+            '.constant($game->sprache("TEXT53")).'
+            <br><br>
+            '.constant($game->sprache("TEXT54")).' <b>'.(15 - $n_cmemo).'</b> / <b>15</b><br><br>
+            '.constant($game->sprache("TEXT55")).'&nbsp;&nbsp;<input class="field" type="text" name="memo_name" value=""><br><br>
     ');
     
     while($cmemo = $db->fetchrow($q_cmemo)) {
@@ -730,7 +733,7 @@ elseif(isset($_GET['memo_setup'])) {
         $game->out('<input type="radio" name="memo_entry" value="-1" checked="checked">&nbsp;<i>'.constant($game->sprache("TEXT57")).'<i><br><br>');
     }
     
-    $game->out('<br><input class="button" type="submit" name="memo_add" value="'.constant($game->sprache("TEXT58")).'"></td></tr></form></table>');
+    $game->out('<br><input class="button" type="submit" name="memo_add" value="'.constant($game->sprache("TEXT58")).'"></td></tr></form></table></td></tr></table>');
 }
 elseif(!empty($_GET['planet_id'])) {
     if(is_numeric($_GET['planet_id'])) {
@@ -1006,83 +1009,95 @@ form {
 
 <span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<b>'.constant($game->sprache("TEXT1")).'</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_known').'">'.constant($game->sprache("TEXT4a")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]<br><br>
 
-<table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
-  <tr>
-    <td width="20">&nbsp;</td>
-    <td width="380">
-        <a href="'.parse_link('a=tactical_cartography&galaxy').'">'.constant($game->sprache("TEXT60")).'</a> ->
-        <a href="'.parse_link('a=tactical_cartography&quadrant_id='.$quadrant_id).'">'.$QUADRANT_NAME[$quadrant_id].'</a> ->
-        <a href="'.parse_link('a=tactical_cartography&sector_id='.$planet['sector_id']).'">'.constant($game->sprache("TEXT61")).' '.$game->get_sector_name($planet['sector_id']).'</a> ->
-        <a href="'.parse_link('a=tactical_cartography&system_id='.encode_system_id($planet['system_id'])).'">'.$planet['system_name'].'</a>
-    </td>
-  </tr>
+<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+<tr>
+  <td>
+    <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+    <tr>
+      <td width="20">&nbsp;</td>
+      <td width="380">
+          <a href="'.parse_link('a=tactical_cartography&galaxy').'">'.constant($game->sprache("TEXT60")).'</a> ->
+          <a href="'.parse_link('a=tactical_cartography&quadrant_id='.$quadrant_id).'">'.$QUADRANT_NAME[$quadrant_id].'</a> ->
+          <a href="'.parse_link('a=tactical_cartography&sector_id='.$planet['sector_id']).'">'.constant($game->sprache("TEXT61")).' '.$game->get_sector_name($planet['sector_id']).'</a> ->
+          <a href="'.parse_link('a=tactical_cartography&system_id='.encode_system_id($planet['system_id'])).'">'.$planet['system_name'].'</a>
+      </td>
+    </tr>
+    </table>
+  </td>
+</tr>
 </table>
 <br>
 
 '.( (!empty($_GET['message'])) ? '<br><b>'.base64_decode($_GET['message']).'</b><br>' : '' ).'
 
 <br>
-<table class="style_inner" width="400" align="center" border="0" cellpadding="0" cellspacing="0">
+<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
-    <td width="120" align="center">
-      '.$_thumb.'
-    </td>
+    <td>
+      <table class="style_inner" width="400" align="center" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="120" align="center">
+            '.$_thumb.'
+          </td>
 
-    <td width="280" valign="top">
-      <table width="280" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td valign="top">'.constant($game->sprache("TEXT62")).'</td>
-          <td>'.$_name.'</td>
-        </tr>
-        <tr>
-          <td valign="top">'.constant($game->sprache("TEXT63")).'</td>
-          <td>'.$_planet_type.'</td>
-        </tr>
-        <tr>
-          <td valign="top">'.constant($game->sprache("TEXT92")).'</td>
-          <td>&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.addslashes($detail_text).'\', CAPTION, \''.$last_update.'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$last_update.'</a></td>
-        </tr>
-        <tr height="15"><td></td></tr>
+          <td width="280" valign="top">
+            <table width="280" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td valign="top">'.constant($game->sprache("TEXT62")).'</td>
+                <td>'.$_name.'</td>
+              </tr>
+              <tr>
+                <td valign="top">'.constant($game->sprache("TEXT63")).'</td>
+                <td>'.$_planet_type.'</td>
+              </tr>
+              <tr>
+                <td valign="top">'.constant($game->sprache("TEXT92")).'</td>
+                <td>&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.addslashes($detail_text).'\', CAPTION, \''.$last_update.'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$last_update.'</a></td>
+              </tr>
+              <tr height="15"><td></td></tr>
     ');
     
     if($free_planet && $planet_is_known) {
         $game->out('
-        <tr>
-          <td colspan="2" valign="top"><i>'.constant($game->sprache("TEXT64")).'</i></td>
-        </tr>
+              <tr>
+                <td colspan="2" valign="top"><i>'.constant($game->sprache("TEXT64")).'</i></td>
+              </tr>
         ');
     }
     elseif($own_planet) {
         $game->out('
-        <tr>
-          <td valign="top" colspan="2">'.( ($planet_id == $game->player['user_capital']) ? constant($game->sprache("TEXT65")) : constant($game->sprache("TEXT66")) ).'</td>
-        </tr>
-        <tr>
-          <td valign="top" colspan="2">'.( ($planet_id != $game->planet['planet_id']) ? '<a href="'.parse_link('a=headquarter&switch_active_planet='.$planet_id).'"><i>'.constant($game->sprache("TEXT67")).'</i></a>' : '&nbsp;' ).'</td>
-        </tr>
-        <tr>
-          <td valign="top">'.constant($game->sprache("TEXT68")).'</td>
-          <td>&nbsp;<u>'.$planet['planet_points'].'</u>&nbsp;/&nbsp;<u>'.( ($planet_id == $game->player['user_capital']) ? $MAX_POINTS[1] : $MAX_POINTS[0] ).'</u></td>
-        </tr>
+              <tr>
+                <td valign="top" colspan="2">'.( ($planet_id == $game->player['user_capital']) ? constant($game->sprache("TEXT65")) : constant($game->sprache("TEXT66")) ).'</td>
+              </tr>
+              <tr>
+                <td valign="top" colspan="2">'.( ($planet_id != $game->planet['planet_id']) ? '<a href="'.parse_link('a=headquarter&switch_active_planet='.$planet_id).'"><i>'.constant($game->sprache("TEXT67")).'</i></a>' : '&nbsp;' ).'</td>
+              </tr>
+              <tr>
+                <td valign="top">'.constant($game->sprache("TEXT68")).'</td>
+                <td>&nbsp;<u>'.$planet['planet_points'].'</u>&nbsp;/&nbsp;<u>'.( ($planet_id == $game->player['user_capital']) ? $MAX_POINTS[1] : $MAX_POINTS[0] ).'</u></td>
+              </tr>
         ');
     }
     elseif(($game->player['user_alliance'] == $planet_owner['alliance_id']) || $planet_is_known)  {
         $game->out('
-        <tr>
-          <td valign="top">'.constant($game->sprache("TEXT69")).'</td>
-          <td>&nbsp;<a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['planet_owner']).'">'.$planet_owner['user_name'].'</a> ('.$planet_owner['user_points'].')</td>
-        </tr>
-        <tr>
-          <td valign="top">'.constant($game->sprache("TEXT70")).'</td>
-          <td>&nbsp;'.( (!empty($planet_owner['alliance_id'])) ? '<a href="'.parse_link('a=stats&a2=viewalliance&id='.$planet_owner['alliance_id']).'">'.$planet_owner['alliance_name'].'</a>&nbsp;[<a href="'.parse_link('a=stats&a2=viewalliance&id='.$planet_owner['alliance_id']).'">'.$planet_owner['alliance_tag'].'</a>]<br>' : constant($game->sprache("TEXT71")) ).'</td>
-        <tr>
-          <td valign="top">'.constant($game->sprache("TEXT68")).'</td>
-          <td>&nbsp;<u>'.$planet['planet_points'].'</u>&nbsp;/&nbsp;<u>'.( ($planet_id == $planet_owner['user_capital']) ? $MAX_POINTS[1] : $MAX_POINTS[0] ).'</u></td>
-        </tr>
+              <tr>
+                <td valign="top">'.constant($game->sprache("TEXT69")).'</td>
+                <td>&nbsp;<a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['planet_owner']).'">'.$planet_owner['user_name'].'</a> ('.$planet_owner['user_points'].')</td>
+              </tr>
+              <tr>
+                <td valign="top">'.constant($game->sprache("TEXT70")).'</td>
+                <td>&nbsp;'.( (!empty($planet_owner['alliance_id'])) ? '<a href="'.parse_link('a=stats&a2=viewalliance&id='.$planet_owner['alliance_id']).'">'.$planet_owner['alliance_name'].'</a>&nbsp;[<a href="'.parse_link('a=stats&a2=viewalliance&id='.$planet_owner['alliance_id']).'">'.$planet_owner['alliance_tag'].'</a>]<br>' : constant($game->sprache("TEXT71")) ).'</td>
+              <tr>
+                <td valign="top">'.constant($game->sprache("TEXT68")).'</td>
+                <td>&nbsp;<u>'.$planet['planet_points'].'</u>&nbsp;/&nbsp;<u>'.( ($planet_id == $planet_owner['user_capital']) ? $MAX_POINTS[1] : $MAX_POINTS[0] ).'</u></td>
+              </tr>
         ');
     }
     
     $game->out('
+	        </table>
+          </td>
+        </tr>
       </table>
     </td>
   </tr>
@@ -1106,40 +1121,43 @@ form {
 
         $game->out('
 <br><br>
-<table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
-	<td width="50">&nbsp;</td>
-	<td width="150"><b>'.constant($game->sprache("TEXT72")).'</b></td>
-	<td width="110"><b>'.constant($game->sprache("TEXT73")).'</b></td>
-	<td width="90">&nbsp;</td>
-  </tr>
-  <form name="srs_form" method="post" action="">
+    <td>
+      <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+        <tr>
+	      <td width="50">&nbsp;</td>
+          <td width="150"><b>'.constant($game->sprache("TEXT72")).'</b></td>
+          <td width="110"><b>'.constant($game->sprache("TEXT73")).'</b></td>
+          <td width="90">&nbsp;</td>
+        </tr>
+        <form name="srs_form" method="post" action="">
         ');
         
         if($free_planet) {
             $game->out('
-  <tr>
-    <td align="center"><img src="'.$planet_thumb.'" width="20" height="20" border="0"></td>
-    <td>'.$planet['planet_name'].'</td>
-    <td><i>'.constant($game->sprache("TEXT73a")).'</i></td>
-    '.( ($game->SITTING_MODE) ? '' : '<td><input type="image" src="'.$game->GFX_PATH.'tc_colo.gif" name="colo_submit" title="'.constant($game->sprache("TEXT74")).'" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=colo_setup\'"' ).'></td>' ).'
-  </tr>
+        <tr>
+          <td align="center"><img src="'.$planet_thumb.'" width="20" height="20" border="0"></td>
+          <td>'.$planet['planet_name'].'</td>
+          <td><i>'.constant($game->sprache("TEXT73a")).'</i></td>
+          '.( ($game->SITTING_MODE) ? '' : '<td><input type="image" src="'.$game->GFX_PATH.'tc_colo.gif" name="colo_submit" title="'.constant($game->sprache("TEXT74")).'" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=colo_setup\'"' ).'></td>' ).'
+        </tr>
             ');
         }
         else {
             $game->out('
-  <tr>
-    <td align="center"><img src="'.$planet_thumb.'" width="20" height="20" border="0"></td>
-    <td>'.$planet['planet_name'].'</td>
-    <td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet_owner['user_id'].'">'.$planet_owner['user_name']).'</a></td>
-    <td>
-      <input type="image" src="'.$game->GFX_PATH.'tc_transport.gif" name="ptransport_submit" title="'.constant($game->sprache("TEXT75")).'" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_fleets_loadingp&to&return_to='.urlencode('a=tactical_cartography&planet_id='.encode_planet_id($planet_id))).'\';">&nbsp;
-      <input type="image" src="'.$game->GFX_PATH.'tc_party.gif" name="survey_submit" title="'.constant($game->sprache("TEXT126")).'" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=survey_setup&user_id='.$planet['planet_owner']).'\';">&nbsp;
+        <tr>
+          <td align="center"><img src="'.$planet_thumb.'" width="20" height="20" border="0"></td>
+          <td>'.$planet['planet_name'].'</td>
+          <td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet_owner['user_id'].'">'.$planet_owner['user_name']).'</a></td>
+          <td>
+            <input type="image" src="'.$game->GFX_PATH.'tc_transport.gif" name="ptransport_submit" title="'.constant($game->sprache("TEXT75")).'" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_fleets_loadingp&to&return_to='.urlencode('a=tactical_cartography&planet_id='.encode_planet_id($planet_id))).'\';">&nbsp;
+            <input type="image" src="'.$game->GFX_PATH.'tc_party.gif" name="survey_submit" title="'.constant($game->sprache("TEXT126")).'" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=survey_setup&user_id='.$planet['planet_owner']).'\';">&nbsp;
             ');
             
             if(!$own_planet) {
                 $game->out('
-      '.( ($game->SITTING_MODE) ? '' : '<input type="image" src="'.$game->GFX_PATH.'tc_attack.gif" title="'.constant($game->sprache("TEXT76")).'" name="attack_submit" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=attack_setup&user_id='.$planet['planet_owner']).'\';">' ).'
+            '.( ($game->SITTING_MODE) ? '' : '<input type="image" src="'.$game->GFX_PATH.'tc_attack.gif" title="'.constant($game->sprache("TEXT76")).'" name="attack_submit" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=attack_setup&user_id='.$planet['planet_owner']).'\';">' ).'
                 ');
             }
             
@@ -1183,11 +1201,11 @@ form {
             }
 
             $game->out('
-  <tr>
-    <td align="center"><img src="'.$game->PLAIN_GFX_PATH.'fleet_'.$fleet['user_race'].'.gif" border="0"></td>
-    <td><i>'.( ($fleet['n_ships'] == 1) ? constant($game->sprache("TEXT77")) : $fleet['n_ships'].' '.constant($game->sprache("TEXT78")) ).'</i> [<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id).$detail_link).'">'.$detail_symbol.'</a>]</td>
-    <td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$fleet['user_id']).'">'.$fleet['user_name'].'</a></td>
-    <td>
+        <tr>
+         <td align="center"><img src="'.$game->PLAIN_GFX_PATH.'fleet_'.$fleet['user_race'].'.gif" border="0"></td>
+         <td><i>'.( ($fleet['n_ships'] == 1) ? constant($game->sprache("TEXT77")) : $fleet['n_ships'].' '.constant($game->sprache("TEXT78")) ).'</i> [<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id).$detail_link).'">'.$detail_symbol.'</a>]</td>
+         <td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$fleet['user_id']).'">'.$fleet['user_name'].'</a></td>
+         <td>
             ');
             
             if($fleet['user_id'] != $game->player['user_id']) {
@@ -1195,7 +1213,7 @@ form {
                 
                 if($planet['planet_owner'] != $fleet['user_id']) {
                     $game->out('
-      '.( ($game->SITTING_MODE) ? '' : '<input type="image" src="'.$game->GFX_PATH.'tc_attack.gif" title="'.constant($game->sprache("TEXT76")).'" name="attack_submit" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=attack_setup&user_id='.$fleet['user_id']).'\';">' ).'
+         '.( ($game->SITTING_MODE) ? '' : '<input type="image" src="'.$game->GFX_PATH.'tc_attack.gif" title="'.constant($game->sprache("TEXT76")).'" name="attack_submit" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=attack_setup&user_id='.$fleet['user_id']).'\';">' ).'
                     ');
                 }
             }
@@ -1204,9 +1222,9 @@ form {
             
             if($fleet['user_id'] == $sensor_details) {
                 $game->out('
-  <tr>
-    <td>&nbsp;</td>
-    <td colspan="3">
+        <tr>
+          <td>&nbsp;</td>
+          <td colspan="3">
                 ');
                 
                 while($torso = $db->fetchrow($q_torsos)) {
@@ -1214,8 +1232,8 @@ form {
                 }
                 
                 $game->out('
-    </td>
-  </tr>
+          </td>
+        </tr>
                 ');
             }
         }
@@ -1226,22 +1244,22 @@ form {
             if($n_own_fleets > 5) $select_size += ($n_own_fleets / 5);
 
             $game->out('
-  <tr><td height="10"></td></tr>
-  <tr>
-    <td colspan="4" align="center"><select name="fleets[]" style="width: 200px;" size="'.$select_size.'" multiple="multiple">');
+        <tr><td height="10"></td></tr>
+        <tr>
+          <td colspan="4" align="center"><select name="fleets[]" style="width: 200px;" size="'.$select_size.'" multiple="multiple">');
             
             while($fleet = $db->fetchrow($q_own_fleets)) {
                 $game->out('<option value="'.$fleet['fleet_id'].'">'.$fleet['fleet_name'].' ('.$fleet['n_ships'].')</option>');
             }
             
             $game->out('
-    </select></td>
-  </tr>
-  <tr><td height="5"></td></tr>
+          </select></td>
+        </tr>
+        <tr><td height="5"></td></tr>
             ');
         }
         
-        $game->out('</form></table>');
+        $game->out('</form></table></td></tr></table>');
     }
 
     $sql = 'SELECT move_id, move_finish
@@ -1269,12 +1287,18 @@ form {
 
         $game->out('
 <br><br>
-<table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td>
-      <b>1</b> '.constant($game->sprache("TEXT79")).'.&nbsp;[<a href="'.parse_link('a=tactical_moves&dest='.encode_planet_id($planet_id)).'">'.constant($game->sprache("TEXT80")).'</a>]<br><br>
-      '.constant($game->sprache("TEXT81")).' <b id="timer2" title="time1_'.( ( $ticks_left * TICK_DURATION * 60) + $NEXT_TICK).'_type2_2">&nbsp;</b>
-    </td>
+      <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+        <tr>
+          <td>
+            <b>1</b> '.constant($game->sprache("TEXT79")).'.&nbsp;[<a href="'.parse_link('a=tactical_moves&dest='.encode_planet_id($planet_id)).'">'.constant($game->sprache("TEXT80")).'</a>]<br><br>
+            '.constant($game->sprache("TEXT81")).' <b id="timer2" title="time1_'.( ( $ticks_left * TICK_DURATION * 60) + $NEXT_TICK).'_type2_2">&nbsp;</b>
+          </td>
+        </tr>
+      </table>
+	</td>
   </tr>
 </table>
         ');
@@ -1287,12 +1311,18 @@ form {
 
         $game->out('
 <br><br>
-<table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td>
-      <b>'.$n_moves.'</b> '.constant($game->sprache("TEXT79")).'.&nbsp;[<a href="'.parse_link('a=tactical_moves&dest='.encode_planet_id($planet_id)).'">'.constant($game->sprache("TEXT80")).'</a>]<br><br>
-      '.constant($game->sprache("TEXT82")).' <b id="timer2" title="time1_'.( $ticks_left * TICK_DURATION * 60).'_type2_2">&nbsp;</b>
-    </td>
+      <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+        <tr>
+          <td>
+            <b>'.$n_moves.'</b> '.constant($game->sprache("TEXT79")).'.&nbsp;[<a href="'.parse_link('a=tactical_moves&dest='.encode_planet_id($planet_id)).'">'.constant($game->sprache("TEXT80")).'</a>]<br><br>
+            '.constant($game->sprache("TEXT82")).' <b id="timer2" title="time1_'.( $ticks_left * TICK_DURATION * 60).'_type2_2">&nbsp;</b>
+          </td>
+        </tr>
+      </table>
+	</td>
   </tr>
 </table>
         ');
@@ -1315,14 +1345,17 @@ form {
         if($n_fleets > 0) {
             $game->out('
 <br><br>
-<table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
-  <form name="send_form" method="post" action="'.parse_link('a=ship_send').'">
+<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
-    <td colspan="2" align="center"><b>'.constant($game->sprache("TEXT83")).'</b><br><br>
-  </tr>
-  <tr>
-    <td width="250" align="center">
-      <select name="fleets[]" style="width: 210px;" multiple="multiple" size="5">
+    <td>
+      <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+        <form name="send_form" method="post" action="'.parse_link('a=ship_send').'">
+        <tr>
+          <td colspan="2" align="center"><b>'.constant($game->sprache("TEXT83")).'</b><br><br>
+        </tr>
+        <tr>
+          <td width="250" align="center">
+            <select name="fleets[]" style="width: 210px;" multiple="multiple" size="5">
             ');
             
             while($fleet = $db->fetchrow($q_fleets)) {
@@ -1330,14 +1363,17 @@ form {
             }
             
             $game->out('
-      </select>
-    </td>
-    <td width="150" align="left" valign="middle">
-      <input type="submit" class="button" name="submit" value="'.constant($game->sprache("TEXT84")).'">
-    </td>
+            </select>
+          </td>
+          <td width="150" align="left" valign="middle">
+            <input type="submit" class="button" name="submit" value="'.constant($game->sprache("TEXT84")).'">
+          </td>
+        </tr>
+        <input type="hidden" name="dest" value="'.encode_planet_id($planet_id).'">
+        </form>
+      </table>
+	</td>
   </tr>
-  <input type="hidden" name="dest" value="'.encode_planet_id($planet_id).'">
-  </form>
 </table>
             ');
         }
@@ -1396,7 +1432,7 @@ elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty(
                        constant($game->sprache("TEXT87")).
                        constant($game->sprache("TEXT88")).
                        constant($game->sprache("TEXT89")).
-                       constant($game->sprache("TEXT90"));
+                       constant($game->sprache("TEXT90")).'<br>';
 
 ;
                        
@@ -1461,10 +1497,16 @@ elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty(
     $game->out('
 <span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<b>'.constant($game->sprache("TEXT1")).'</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_known').'">'.constant($game->sprache("TEXT4a")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]<br><br>
 
-<table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
-    <td width="20">&nbsp;</td>
-    <td width="380">'.$nav_html.'</td>
+    <td>
+      <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+        <tr>
+          <td width="20">&nbsp;</td>
+          <td width="380">'.$nav_html.'</td>
+        </tr>
+      </table>
+	</td>
   </tr>
 </table>
 <br>
@@ -1495,10 +1537,17 @@ elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty(
   <tr><td height="40" align="right" valign="middle">'.$letters[8].'</td></tr>
 </table>
 <br>
-<table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
-    <td width="20">&nbsp;</td>
-    <td width="380">'.$legend_html.$map_html.'<br>'.constant($game->sprache("TEXT91")).'</font></td>
+    <td>
+      <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+        <tr>
+          <td width="20">&nbsp;</td>
+          <td width="360">'.$legend_html.$map_html.constant($game->sprache("TEXT91")).'</font></td>
+          <td width="20">&nbsp;</td>
+        </tr>
+      </table>
+	</td>
   </tr>
 </table>
 <br>

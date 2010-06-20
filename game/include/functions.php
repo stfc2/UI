@@ -1018,7 +1018,7 @@ class game {
 
 		if($this->player['user_hidenotepad'] == 0) {
 			$notepad_html = '
-<table align="center" border="0" cellpadding="2" cellspacing="2" width="'.( ($this->player['notepad_width']!=0) ? ''.($this->player['notepad_width']+35).'px' : '335px' ).'" background="'.$this->GFX_PATH.'template_bg3.jpg" class="border_grey">
+<table align="center" border="0" cellpadding="2" cellspacing="2" width="'.( ($this->player['notepad_width']!=0) ? ''.($this->player['notepad_width']+35).'px' : '335px' ).'" class="border_grey">
   <tr>
     <td>
       <table border="0" cellpadding="0" cellspacing="0" width="'.( ($this->player['notepad_width']!=0) ? ''.($this->player['notepad_width']+30).'px' : '330px' ).'">

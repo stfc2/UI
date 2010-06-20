@@ -405,15 +405,18 @@ else {
 
     $game->out('
 <br>
-<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
-  <form method="post" action="'.parse_link('a=logbook').'" name="logbook">
+<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
-    <td width="280"><b>'.constant($game->sprache("TEXT20")).'</b></td>
-    <td width="40"><b>'.constant($game->sprache("TEXT21")).'</b></td>
-    <td width="115"><b>'.constant($game->sprache("TEXT22")).'</b></td>
-    <td width="15"><input name="check1" type="checkbox" onClick="flevToggleCheckboxes(\'logbook\',true,false)" value="'.constant($game->sprache("TEXT23")).'"></td>
-  </tr>
-  <tr height="2"><td></td></tr>
+    <td>
+      <table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
+        <form method="post" action="'.parse_link('a=logbook').'" name="logbook">
+        <tr>
+          <td width="280"><b>'.constant($game->sprache("TEXT20")).'</b></td>
+          <td width="40"><b>'.constant($game->sprache("TEXT21")).'</b></td>
+          <td width="115"><b>'.constant($game->sprache("TEXT22")).'</b></td>
+          <td width="15"><input name="check1" type="checkbox" onClick="flevToggleCheckboxes(\'logbook\',true,false)" value="'.constant($game->sprache("TEXT23")).'"></td>
+        </tr>
+        <tr height="2"><td></td></tr>
     ');
 
     while($log_entry = $db->fetchrow($q_logs)) {
@@ -426,24 +429,33 @@ else {
         }
 
         $game->out('
-  <tr>
-    <td><a href="'.parse_link('a=logbook&show_log='.$log_entry['log_id']).'">'.$read_start.$log_entry['log_title'].$read_end.'</a></td>
-    <td>'.$log_types[$log_entry['log_type']].'</td>
-    <td>'.date('d.m.y H:i:s', $log_entry['log_date']).'</td>
-    <td align="center"><input type="checkbox" name="log_id[]" value="'.$log_entry['log_id'].'"></td>
-  </tr>
+        <tr>
+          <td><a href="'.parse_link('a=logbook&show_log='.$log_entry['log_id']).'">'.$read_start.$log_entry['log_title'].$read_end.'</a></td>
+          <td>'.$log_types[$log_entry['log_type']].'</td>
+          <td>'.date('d.m.y H:i:s', $log_entry['log_date']).'</td>
+          <td align="center"><input type="checkbox" name="log_id[]" value="'.$log_entry['log_id'].'"></td>
+        </tr>
         ');
     }
 
     $game->out('
+      </table>
+    </td>
+  </tr>
 </table>
 <br>
-<table align="center" width="450" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+<table width="450" align="center" border="0" cellpadding="1" cellspacing="1" class="style_outer">
   <tr>
-    <td width="120" align="left"><b>'.constant($game->sprache("TEXT24")).'</b></td>
-    <td width="330" align="right"><input class="button" type="submit" name="read_submit" value="'.constant($game->sprache("TEXT25")).'">&nbsp;&nbsp;<input class="button" type="submit" name="delete_submit" value="'.constant($game->sprache("TEXT26")).'"></td>
+    <td>
+      <table align="center" width="450" border="0" cellpadding="2" cellspacing="2" class="style_inner">
+        <tr>
+          <td width="120" align="left"><b>'.constant($game->sprache("TEXT24")).'</b></td>
+          <td width="330" align="right"><input class="button" type="submit" name="read_submit" value="'.constant($game->sprache("TEXT25")).'">&nbsp;&nbsp;<input class="button" type="submit" name="delete_submit" value="'.constant($game->sprache("TEXT26")).'"></td>
+        </tr>
+        </form>
+      </table>
+    </td>
   </tr>
-  </form>
 </table>
 <br>
     '.logbook_pagination($start, $n_logs, $LOGS_PER_PAGE)).'</form>';

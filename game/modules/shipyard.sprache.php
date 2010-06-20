@@ -85,7 +85,7 @@ define ("GER_TEXT30", 'Baustatus');
 
 define ("GER_TEXT31", 'Gebaut wird:');
 
-define ("GER_TEXT32", 'Verbleibende Zeit bis zur Fertigstellung:');
+define ("GER_TEXT32", 'Verbleibende Zeit:');
 
 define ("GER_TEXT33", 'Alle Bauauftr&auml;ge abbrechen');
 
@@ -224,7 +224,7 @@ define ("ENG_TEXT30", 'Building status');
 
 define ("ENG_TEXT31", 'Will be constructed:');
 
-define ("ENG_TEXT32", 'Remaining time to completion:');
+define ("ENG_TEXT32", 'Remaining time:');
 
 define ("ENG_TEXT33", 'Cancel all contracts');
 
@@ -363,7 +363,7 @@ define ("ITA_TEXT30", 'Stato costruzione');
 
 define ("ITA_TEXT31", 'Sar&agrave; costruito:');
 
-define ("ITA_TEXT32", 'Tempo rimanente al completamento:');
+define ("ITA_TEXT32", 'Tempo rimanente:');
 
 define ("ITA_TEXT33", 'Interrompi');
 

@@ -344,18 +344,19 @@ $scheduler = $db->fetchrow($schedulerquery);
 $game->planet['building_'.($scheduler['installation_type']+1)]++;
 
 $game->out('
-<table border=0 cellpadding=0 cellspacing=0 width=300 class="style_inner"><tr><td>
+<table border=0 cellpadding=1 cellspacing=1 width=300 class="style_outer"><tr><td>
+<table border=0 cellpadding=1 cellspacing=1 width=300 class="style_inner"><tr><td>
 <tr><td>'.constant($game->sprache("TEXT11")).' <b>'.$BUILDING_NAME[$game->player['user_race']][$scheduler['installation_type']].' ('.constant($game->sprache("TEXT12")).' '.($game->planet['building_'.($scheduler['installation_type']+1)]).')</b><br>
-'.constant($game->sprache("TEXT13")).'<br>
+'.constant($game->sprache("TEXT13")).'
 <b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['build_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b><br>
 <a href="'.parse_link_ex('a=building&a2=abort_build',LINK_CLICKID).'"><b>'.constant($game->sprache("TEXT14")).'</b></a>
 </td></tr>
 '.(isset($game->planet['building_queue']) ? '<tr><td><br>'.constant($game->sprache("TEXT15")).' <b>'.$BUILDING_NAME[$game->player['user_race']][$game->planet['building_queue']-1].' ('.constant($game->sprache("TEXT12")).' '.($game->planet['building_'.($game->planet['building_queue'])]+1).')</b><br>
-'.constant($game->sprache("TEXT13")).'<br>
+'.constant($game->sprache("TEXT13")).'
 <b id="timer4" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['build_finish']-$ACTUAL_TICK)+TICK_DURATION*60*GetBuildingTimeTicks($game->planet['building_queue']-1)).'_type1_1">&nbsp;</b><br>
 <a href="'.parse_link_ex('a=building&a2=abort_build2',LINK_CLICKID).'"><b>'.constant($game->sprache("TEXT14")).'</b></a>
 </td></tr>' : '').'
-
+</td></tr></table>
 </table><br>
 ');
 
@@ -379,7 +380,7 @@ $game->out('<table border=0 cellpadding=2 cellspacing=2 width=595 class="style_o
 
 $game->out('<tr><td width=595>
 <table border=0 cellpadding=2 cellspacing=2 width=595 class="style_inner">
-<tr><td width=125><b>'.constant($game->sprache("TEXT29")).'</b></td><td width=250><b>'.constant($game->sprache("TEXT22")).'</b></td><td width=75><b>'.constant($game->sprache("TEXT23")).'</b></td><td width=145><b>'.constant($game->sprache("TEXT24")).'</b></td></tr>
+<tr><td width=150><b>'.constant($game->sprache("TEXT29")).'</b></td><td width=120><b>'.constant($game->sprache("TEXT22")).'</b></td><td width=75><b>'.constant($game->sprache("TEXT23")).'</b></td><td width=145><b>'.constant($game->sprache("TEXT24")).'</b></td></tr>
 ');
 for ($tt=0; $tt<=$NUM_BUILDING; $tt++)
 {

@@ -29,14 +29,25 @@ global $RACE_DATA;
 if((!empty($_POST['searcher'])))
 {
     $game->out('
-<table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="4">
+<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
+<table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <form method="post" action="'.parse_link('a=user_diplomacy').'">
   <tr>
     <td align="left">
       <b>'.(constant($game->sprache("TEXT2"))).'</b><br><br>
       '.(constant($game->sprache("TEXT3"))).'&nbsp;&nbsp;<input class="field" type="text" name="user2_name" value="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="button" type="submit" name="searcher" value="'.(constant($game->sprache("TEXT4"))).'">
-</td></tr><tr><td align="center"><input class="button" type="button" value="'.(constant($game->sprache("TEXT5"))).'" onClick="return window.history.back();">&nbsp;&nbsp;&nbsp;<input class="button" type="submit" name="new_submit" value="'.(constant($game->sprache("TEXT6"))).'">    </td>  </tr></form></table>');
-$game->out('<br><center><table boder=0 cellpadding=2 cellspacing=2 class="style_inner" width=300><tr>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+	  <input class="button" type="button" value="'.(constant($game->sprache("TEXT5"))).'" onClick="return window.history.back();">&nbsp;&nbsp;&nbsp;<input class="button" type="submit" name="new_submit" value="'.(constant($game->sprache("TEXT6"))).'">
+	</td>
+  </tr>
+  </form>
+</table>
+</td></tr></table>');
+$game->out('<br><table class="style_outer" width="300" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
+<table boder="0" cellpadding="2" cellspacing="2" class="style_inner" width="300"><tr>
 <td width=150><b>'.(constant($game->sprache("TEXT7"))).'</b></td>
 </tr>
 <tr>
@@ -68,7 +79,7 @@ $game->out('</td>
 </tr>
 ');
 }
-$game->out('</table></center><br>');
+$game->out('</table></td></tr></table><br>');
 }
 if( (!empty($_POST['new_submit'])) || (!empty($_GET['suggest'])) ) {
     if(!empty($_GET['suggest'])) {
@@ -133,17 +144,23 @@ if( (!empty($_POST['new_submit'])) || (!empty($_GET['suggest'])) ) {
 elseif(isset($_GET['new'])) {
 
     $game->out('
-<table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="4">
+<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>	
+<table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <form method="post" action="'.parse_link('a=user_diplomacy').'">
   <tr>
     <td align="left">
       <b>'.constant($game->sprache("TEXT19")).'</b><br><br>
       '.constant($game->sprache("TEXT3")).'&nbsp;&nbsp;<input class="field" type="text" name="user2_name" value="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="button" type="submit" name="searcher" value="'.constant($game->sprache("TEXT4")).'">
-</td></tr><tr><td align="center"><input class="button" type="button" value="'.constant($game->sprache("TEXT5")).'" onClick="return window.history.back();">&nbsp;&nbsp;&nbsp;<input class="button" type="submit" name="new_submit" value="'.constant($game->sprache("TEXT6")).'">
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+	  <input class="button" type="button" value="'.constant($game->sprache("TEXT5")).'" onClick="return window.history.back();">&nbsp;&nbsp;&nbsp;<input class="button" type="submit" name="new_submit" value="'.constant($game->sprache("TEXT6")).'">
     </td>
   </tr>
 </form>
 </table>
+</td></tr></table>
     ');
 }
 elseif(!empty($_GET['accept'])) {
@@ -376,6 +393,7 @@ if($_REQUEST['sort']==2 && $_REQUEST['member_list']!=1)
 if($_REQUEST['sort']==1 && $_REQUEST['member_list']!=1) {$art_b=1;}else{$art_b=0;}
 if(empty($_REQUEST['sort']) && $_REQUEST['member_list']!=1) {$art_c=1;}else{$art_c=0;}
     $game->out('
+<table class="style_outer" width="500" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
 <table class="style_inner" width="500" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td width="180"><a href="'.parse_link('a=user_diplomacy&sort=1&member_list='.$art_b.'').'"><b>'.constant($game->sprache("TEXT28")).'</b></a></td>
@@ -429,7 +447,7 @@ if(empty($_REQUEST['sort']) && $_REQUEST['member_list']!=1) {$art_c=1;}else{$art
     }
 
     $game->out('
-</table>
+</table></td></tr></table>
 <table width="500" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr><td width="500" align="right">[<a href="'.parse_link('a=user_diplomacy&new').'">'.constant($game->sprache("TEXT19")).'</a>]</td></tr>
 </table>

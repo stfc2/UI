@@ -25,9 +25,18 @@ $game->init_player();
 
 $game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">'.constant($game->sprache("TEXT1")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<b>'.constant($game->sprache("TEXT5")).'</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT6")).'</a>]<br><br>
 
-<table border=0 cellpadding=2 cellspacing=2 class="style_outer"><tr>
-<td width=450 align="center">
-<a href="knownmap.php?size=6&map" target=_blank><img src="knownmap.php?size=2" border=0></a>
-</td></tr></table>');
+<table border="0" cellpadding="2" cellspacing="2" width="450" class="style_outer">
+  <tr>
+    <td>
+      <table border="0" cellpadding="2" cellspacing="2" width="450" class="style_inner">
+	    <tr>
+          <td align="center">
+            <a href="knownmap.php?size=6&map" target=_blank><img src="knownmap.php?size=2" border=0></a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table');
 
 ?>

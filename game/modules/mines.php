@@ -222,7 +222,7 @@ function deactivate_buttons() {
 
 <span class="caption">'.constant($game->sprache("TEXT5")).'</span><br><br>
 
-<table width="500" border="0" align="center">
+<table width="450" border="0" align="center">
   <tr>
     <td>'.constant($game->sprache("TEXT6")).'<br>'.constant($game->sprache("TEXT7")).'<br>'.constant($game->sprache("TEXT8")).'
     '.((round($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4, 0)<$game->planet['min_troops_required']) ? '<br><u>'.constant($game->sprache("TEXT9")).round(100*round($game->planet['unit_1'] * 2 + $game->planet['unit_2'] * 3 + $game->planet['unit_3'] * 4 + $game->planet['unit_4'] * 4, 0)/$game->planet['min_troops_required'],0).'%</b> '.constant($game->sprache("TEXT10")).'</u>' : '' ).'
@@ -230,6 +230,7 @@ function deactivate_buttons() {
   </tr>
 </table>
 <br><br>
+<table width="450" align="center" border="0" cellpadding="1" cellspacing="1" class="style_outer"><tr><td>
 <table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
   <form name="metal_form" method="post" action="'.parse_link('a=mines').'" onSubmit="return deactivate_buttons();">
   <tr>
@@ -242,7 +243,9 @@ function deactivate_buttons() {
   <input type="hidden" name="type" value="1">
   </form>
 </table>
+</td></tr></table>
 <br><br>
+<table width="450" align="center" border="0" cellpadding="1" cellspacing="1" class="style_outer"><tr><td>
 <table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
   <form name="minerals_form" method="post" action="'.parse_link('a=mines').'" onSubmit="return deactivate_buttons();">
   <tr>
@@ -255,7 +258,9 @@ function deactivate_buttons() {
   <input type="hidden" name="type" value="2">
   </form>
 </table>
+</td></tr></table>
 <br><br>
+<table width="450" align="center" border="0" cellpadding="1" cellspacing="1" class="style_outer"><tr><td>
 <table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
   <form name="latinum_form" method="post" action="'.parse_link('a=mines').'" onSubmit="return deactivate_buttons();">
   <tr>
@@ -268,6 +273,7 @@ function deactivate_buttons() {
   <input type="hidden" name="type" value="3">
   </form>
 </table>
+</td></tr></table>
     ');
 }
 

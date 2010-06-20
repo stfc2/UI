@@ -483,7 +483,7 @@ $metallo = conversione($metallo);
 $minerali = conversione($minerali);
 $dilitio = conversione($dilitio);
 
-$game->out('<tr><td colspan=8><hr color=#FFFFFF size=1>
+$game->out('<tr><td colspan=8><hr size=1>
 
 <tr>
 <td colspan=8><fieldset><legend>'.constant($game->sprache("TEXT40")).'</legend>

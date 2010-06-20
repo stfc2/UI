@@ -48,7 +48,7 @@ define ("GER_TEXT11", 'Gebaut wird:');
 
 define ("GER_TEXT12", 'Stufe');
 
-define ("GER_TEXT13", 'Verbleibende Zeit bis zur Fertigstellung:');
+define ("GER_TEXT13", 'Verbleibende Zeit:');
 
 define ("GER_TEXT14", 'Abbrechen');
 
@@ -113,7 +113,7 @@ define ("ENG_TEXT11", 'Building:');
 
 define ("ENG_TEXT12", 'Level');
 
-define ("ENG_TEXT13", 'Remaining time until completion:');
+define ("ENG_TEXT13", 'Remaining time:');
 
 define ("ENG_TEXT14", 'Cancel');
 
@@ -179,11 +179,11 @@ define ("ITA_TEXT11", 'Costruzione:');
 
 define ("ITA_TEXT12", 'Livello');
 
-define ("ITA_TEXT13", 'Tempo per terminare la costruzione/aggiornamento:');
+define ("ITA_TEXT13", 'Tempo rimanente:');
 
 define ("ITA_TEXT14", 'Cancella');
 
-define ("ITA_TEXT15", 'Costruzioni in coda:');
+define ("ITA_TEXT15", 'Costruzione in coda:');
 
 define ("ITA_TEXT16", 'Il tempo potrebbe aumentare di');
 

@@ -27,25 +27,32 @@ function display_logbook($log) {
 
     $game->out('
 <br>
-<table align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+<table align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
-    <td width="450">
-      <table border="0" cellpadding="0" cellspacing="0">
+    <td>
+      <table align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
         <tr>
           <td width="450">
-            <table border=0 cellpadding=0 cellspacing=0>
+            <table border="0" cellpadding="0" cellspacing="0">
               <tr>
-                <td width="330" align="left"><b><u>'.$log['log_title'].'</u></b></td>
-                <td width="120" align="right"><b>'.date('d.m.y H:i:s', $log['log_date']).'</b></td>
+                <td width="450">
+                  <table border=0 cellpadding=0 cellspacing=0>
+                    <tr>
+                      <td width="330" align="left"><b><u>'.$log['log_title'].'</u></b></td>
+                      <td width="120" align="right"><b>'.date('d.m.y H:i:s', $log['log_date']).'</b></td>
+                    </tr>
+                  </table>
+                  <br>
+                  '.constant($game->sprache("TEXT128")).', '.$game->player['user_name'].'!<br>
+                  '.constant($game->sprache("TEXT129")).'<br>
+                  <img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;'.$log['log_data']['resource_1'].'
+                  &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;'.$log['log_data']['resource_2'].'
+                  &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;'.$log['log_data']['resource_3'].'
+                </td>
               </tr>
             </table>
-            <br>
-			'.constant($game->sprache("TEXT128")).', '.$game->player['user_name'].'!<br>
-			'.constant($game->sprache("TEXT129")).'<br>
-	        <img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;'.$log['log_data']['resource_1'].'
-			&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;'.$log['log_data']['resource_2'].'
-	        &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;'.$log['log_data']['resource_3'].'        </td>
-        	</tr>
+          </td>
+        </tr>
       </table>
     </td>
   </tr>

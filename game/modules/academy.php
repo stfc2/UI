@@ -216,44 +216,41 @@ $pow_factor=2;
 ///////////////////////// 1st Build in Progress
 if ($game->planet['unittrainid_nexttime']>0)
 {
+$game->out('
+<table border="0" cellpadding="1" cellspacing="1" width="350" class="style_outer"><tr><td>
+<table border="0" cellpadding="1" cellspacing="1" width="350" class="style_inner"><tr><td>');
+
 if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]<=6)
 {
-$game->out(constant($game->sprache("Text1")).$UNIT_NAME[$game->player['user_race']][$game->planet['unittrainid_'.($game->planet['unittrain_actual'])]-1].constant($game->sprache("Text2")));
+$game->out(constant($game->sprache("Text1")).' <b>'.$UNIT_NAME[$game->player['user_race']][$game->planet['unittrainid_'.($game->planet['unittrain_actual'])]-1].'</b><br>
+	'.constant($game->sprache("Text2")));
 
 if ($game->planet['unittrain_error']==0)
-$game->out('<b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($game->planet['unittrainid_nexttime']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b></td></tr></table></td></tr></table><br>');
+    $game->out('<b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($game->planet['unittrainid_nexttime']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b>');
 else if ($game->planet['unittrain_error']==1)
-$game->out(constant($game->sprache("Text3")));
+    $game->out('<b>'.constant($game->sprache("Text3")).'</b>');
 else
-$game->out(constant($game->sprache("Text36")));
-
+    $game->out('<b>'.constant($game->sprache("Text36")).'</b>');
 }
 else
 {
 $text=constant($game->sprache("Text26"));
 if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==11) $text=constant($game->sprache("Text27"));
 if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==12) $text=constant($game->sprache("Text28"));
-$game->out('
-<table border="0" cellpadding="1" cellspacing="1" width="300" class="style_outer"><tr><td><table border=0 cellpadding=1 cellspacing=1 width=300 class="style_inner"><tr><td>
-<tr><td>'.
-constant($game->sprache("Text4")) .'- <b>'.$text.'</b><br>'.
-constant($game->sprache("Text5")).'<br>
-<b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($game->planet['unittrainid_nexttime']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b></td></tr></table></td></tr></table>
-<br>');
+$game->out(constant($game->sprache("Text4")) .'- <b>'.$text.'</b><br>'.
+constant($game->sprache("Text5")).'
+<b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($game->planet['unittrainid_nexttime']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b>');
 }
+$game->out('</td></tr></table></td></tr></table><br>');
 
 $game->set_autorefresh(($NEXT_TICK+TICK_DURATION*60*($game->planet['unittrainid_nexttime']-$ACTUAL_TICK)));
 }
 
 
 //////////////////////// 2nd Buildmenu
-$game->out('<table border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">'.constant($game->sprache("Text6")).'</span><br>');
-
-$game->out('
-
-<table border=0 cellpadding=1 cellspacing=1 width=398 class="style_inner">
-
-');
+$game->out('<table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer">
+  <tr><td width=100%><span class="sub_caption2">'.constant($game->sprache("Text6")).'</span><br>
+  <table border=0 cellpadding=1 cellspacing=1 width=398 class="style_inner">');
 
 $game->out(constant($game->sprache("Text7")));
 for ($t=0; $t<6; $t++)
@@ -268,20 +265,22 @@ $game->out('<tr height=20><td><img src="'.$game->GFX_PATH.'menu_unit'.($t+1).'_s
 $game->out('</td></tr></table></td></tr></table>');
 
 
-$game->out(constant($game->sprache("Text11")).HelpPopup('academy_1').' :</span><br>');
+$game->out('<br><span class="sub_caption">'.constant($game->sprache("Text11")).HelpPopup('academy_1').' :</span><br><br>
+<table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%><span class="sub_caption2">');
 if ($game->planet['unittrainid_nexttime']>0) $game->out(constant($game->sprache("Text12")));
 else $game->out(constant($game->sprache("Text13")));
-$game->out('<table border=0 cellpadding=2 cellspacing=2 width=398 class="style_inner">
+$game->out('</span>');
+$game->out('<table border="0" cellpadding="2" cellspacing="2" width="400" class="style_inner">
 <tr><td align="center">
+<br>
 <form name="academy" method="post" action="'.GAME_EXE.'?a=academy"><input type="submit" name="start_list" class="button_nosize" value="'.constant($game->sprache("Text23")).'">&nbsp;&nbsp;&nbsp;<input type="submit" name="stop_list" class="button_nosize" value="'.constant($game->sprache("Text24")).'"></form>
 
 </td></tr></table></td></tr></table>');
 
 
-$game->out(constant($game->sprache("Text14")).HelpPopup('academy_2').' :</span><br>');
-$game->out(constant($game->sprache("Text15")));
-$game->out('
-
+$game->out('<br><span class="sub_caption">'.constant($game->sprache("Text14")).' '.HelpPopup('academy_2').' :</span><br>');
+$game->out('<br><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%>
+<span class="sub_caption2">'.constant($game->sprache("Text15")).'</span><br>
 <table border=0 cellpadding=2 cellspacing=2 width=398 class="style_inner">
 <tr><td align="center">
 <form name="academy" method="post" action="'.GAME_EXE.'?a=academy">
