@@ -380,7 +380,7 @@ $game->out('<table border=0 cellpadding=2 cellspacing=2 width=595 class="style_o
 
 $game->out('<tr><td width=595>
 <table border=0 cellpadding=2 cellspacing=2 width=595 class="style_inner">
-<tr><td width=150><b>'.constant($game->sprache("TEXT29")).'</b></td><td width=120><b>'.constant($game->sprache("TEXT22")).'</b></td><td width=75><b>'.constant($game->sprache("TEXT23")).'</b></td><td width=145><b>'.constant($game->sprache("TEXT24")).'</b></td></tr>
+<tr><td width=130><b>'.constant($game->sprache("TEXT29")).'</b></td><td width=140><b>'.constant($game->sprache("TEXT22")).'</b></td><td width=75><b>'.constant($game->sprache("TEXT23")).'</b></td><td width=145><b>'.constant($game->sprache("TEXT24")).'</b></td></tr>
 ');
 for ($tt=0; $tt<=$NUM_BUILDING; $tt++)
 {
