@@ -539,11 +539,11 @@ function Ship_Details()
 
     $game->out('
 
-<table width="450" align="center" border="0" cellpadding="4" cellspacing="2" class="style_outer">
+<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
 
   <tr>
 
-    <td><span class="sub_caption2">'.constant($game->sprache("TEXT56")).' ('.$ship['name'].')</span><br><br>
+    <td><span class="sub_caption2">'.constant($game->sprache("TEXT56")).' ('.$ship['name'].')</span><br>
 
       <table width="450" align="center" cellpadding="0" cellspacing="0" border="0" class="style_inner">
 
@@ -597,7 +597,7 @@ function Ship_Details()
 
           </td>
 
-          <td align="left" valign="top" width="150">
+          <td align="left" valign="top" width="160">
 
             ['.( ($ship['fleet_id'] > 0) ? '<a href="'.parse_link('a=ship_fleets_display&'.( (!empty($ship['planet_id'])) ? 'p' : 'm' ).'fleet_details='.$ship['fleet_id']).'">'.$ship['fleet_name'].'</a>' : '<a href="'.parse_link('a=spacedock').'">'.$ship['planet_name'].'</a>' ).']<br><br>
 
@@ -645,7 +645,7 @@ function Ship_Details()
 
           </td>
 
-          <td align="center>" valign="top" width="180"><img src="'.FIXED_GFX_PATH.'ship'.$ship['race'].'_'.$ship['ship_torso'].'.jpg"><br><br>
+          <td align="center>" valign="top" width="170"><img src="'.FIXED_GFX_PATH.'ship'.$ship['race'].'_'.$ship['ship_torso'].'.jpg"><br><br>
 
     ');
 
