@@ -563,7 +563,9 @@ elseif(!empty($_POST['jump'])) {
                                        s.system_x, s.system_y
                                 FROM (planets p)
                                 INNER JOIN (starsystems s) ON s.system_id = p.system_id
-                                WHERE p.planet_name LIKE "%'.$planet_name.'%" AND p.planet_name!="'.UNINHABITATED_COLONY.'" AND p.planet_name!="'.UNINHABITATED_PLANET.'" AND p.planet_owner <> 0';
+                                INNER JOIN (planet_details pd) ON s.system_id = pd.system_id AND log_code = 500 AND pd.user_id = '.$game->player['user_id'].'
+                                WHERE p.planet_name LIKE "%'.$planet_name.'%" AND p.planet_name!="'.UNINHABITATED_COLONY.'" AND p.planet_name!="'.UNINHABITATED_PLANET.'" AND p.planet_owner <> 0
+                                GROUP BY p.planet_id';
                                 
                         if(($planets = $db->queryrowset($sql)) === false) {
                             message(DATABASE_ERROR, 'Could not query planet data');
