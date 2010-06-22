@@ -199,10 +199,10 @@ $owntaxDay=GetOwnRess(1,$adata['taxes']);
 
     $game->out('
       
-<table width="430" align="center" border="0" cellpadding="2" cellspacing="4" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+<table width="430" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
     <td align="center">
-      <span style="font-size: 12pt; font-weight: bold;">'.$adata['alliance_name'].' ['.$adata['alliance_tag'].']</span><br><br><br>
+      <span style="font-size: 12pt; font-weight: bold;">'.$adata['alliance_name'].' ['.$adata['alliance_tag'].']</span><br>
       
 
       <table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
@@ -589,10 +589,10 @@ $owntaxDay=GetOwnRess(1,$adata['taxes']);
 
     $game->out('
       
-<table width="430" align="center" border="0" cellpadding="2" cellspacing="4" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+<table width="430" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
     <td align="center">
-      <span style="font-size: 12pt; font-weight: bold;">'.$adata['alliance_name'].' ['.$adata['alliance_tag'].']</span><br><br><br>
+      <span style="font-size: 12pt; font-weight: bold;">'.$adata['alliance_name'].' ['.$adata['alliance_tag'].']</span><br>
       
 
       <table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
