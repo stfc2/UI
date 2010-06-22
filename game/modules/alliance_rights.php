@@ -1,11 +1,11 @@
 <?php
-/*    
+/*
 	This file is part of STFC.
 	Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
-		
+
 	STFC is based on STGC,
 	Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
-	
+
     STFC is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 3 of the License, or
@@ -35,9 +35,9 @@ return ($days.'d '.$hours.'h');
 }
 
 
-// Überprüft, ob der Spieler Mitglied/kein Mitglied einer Allianz ist
-//   $requirement == true -> der Spieler muss in einer Allianz sein
-//   $requirement == false -> der Spieler darf NICHT in einer Allianz sein
+//  Checks that the player is a member / not a member of an alliance
+//  $Requirement == true -> the player has to be in an alliance
+//  $Requirement == false -> the player may NOT be in an alliance
 function check_membership($requirement) {
     global $game;
     
@@ -200,19 +200,25 @@ elseif(!empty($_POST['kick'])) {
         message(NOTICE, constant($game->sprache("TEXT7")));
     }
     $game->out('
-<table class="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="2">
-  <form method="post" action="'.parse_link('a=alliance_rights').'">
-  <tr height="5"><td></td></tr>
+<table width="300" align="center" border="0" cellpadding="1" cellspacing="1" class="style_outer">
   <tr>
-    <td align="center">
-      '.constant($game->sprache("TEXT16")).'<a href="'.parse_link('a=stats&a2=viewplayer&id='.$user_id).'">'.$user_data['user_name'].'</a>'.constant($game->sprache("TEXT17")).'<br><br>
-      <input class="button" type="button" value="'.constant($game->sprache("TEXT18")).'" onClick="return window.history.back();">&nbsp;&nbsp;
-      <input class="button" type="submit" name="kick_confirm" value="'.constant($game->sprache("TEXT19")).'">
+    <td>
+      <table class="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="2">
+        <form method="post" action="'.parse_link('a=alliance_rights').'">
+        <tr height="5"><td></td></tr>
+        <tr>
+          <td align="center">
+            '.constant($game->sprache("TEXT16")).'<a href="'.parse_link('a=stats&a2=viewplayer&id='.$user_id).'">'.$user_data['user_name'].'</a>'.constant($game->sprache("TEXT17")).'<br><br>
+            <input class="button" type="button" value="'.constant($game->sprache("TEXT18")).'" onClick="return window.history.back();">&nbsp;&nbsp;
+            <input class="button" type="submit" name="kick_confirm" value="'.constant($game->sprache("TEXT19")).'">
+          </td>
+        </tr>
+        <tr height="5"><td></td></tr>
+        <input type="hidden" name="user_id" value="'.$user_id.'">
+        </form>
+      </table>
     </td>
   </tr>
-  <tr height="5"><td></td></tr>
-  <input type="hidden" name="user_id" value="'.$user_id.'">
-  </form>
 </table><br>
     ');
 }
@@ -221,11 +227,13 @@ elseif(!empty($_POST['kick'])) {
 $listquery=$db->query('SELECT * FROM user WHERE user_alliance = '.$game->player['user_alliance'].' ORDER by user_name ASC');
 
 $game->out('
-
-<table class="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="4">
+<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
-    <td><b>'.constant($game->sprache("TEXT20")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT21")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT22")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT23")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT24")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT25")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT26")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT27")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT28")).'</b></td><td><b>'.constant($game->sprache("TEXT29")).'</b></td>
-  </tr>
+    <td>
+      <table class="style_inner" width="450" align="center" border="0" cellpadding="2" cellspacing="2">
+        <tr>
+          <td><b>'.constant($game->sprache("TEXT20")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT21")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT22")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT23")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT24")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT25")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT26")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT27")).'</b></td><td align="center"><b>'.constant($game->sprache("TEXT28")).'</b></td><td><b>'.constant($game->sprache("TEXT29")).'</b></td>
+        </tr>
 
 ');
 
@@ -307,7 +315,11 @@ $game->out(' <form action="'.parse_link('a=alliance_rights').'" method="post"><i
 
 
 $game->out('
-</table><br><br>
+      </table>
+    </td>
+  </tr>
+</table>
+<br><br>
 <table>
 
 <tr>
