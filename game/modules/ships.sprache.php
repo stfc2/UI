@@ -31,7 +31,7 @@ define ("GER_TEXT3",'M&ouml;gliche Namen:');
 
 define ("GER_TEXT4",'List');
 
-define ("GER_TEXT5",'Klasss:');
+define ("GER_TEXT5",'Klass:');
 
 define ("GER_TEXT6",'Name:');
 

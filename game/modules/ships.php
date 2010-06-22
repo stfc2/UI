@@ -152,7 +152,7 @@ function Ships_List($focus=0,$search_name="")
 
 	$shipquery = $db->query($sql);
 
-	$game->out('<center>'.constant($game->sprache("TEXT1")).'</center><br>');
+	$game->out(constant($game->sprache("TEXT1")).'<br><br>');
 
 
 	/* AC: Searching ship */
