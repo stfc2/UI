@@ -683,38 +683,45 @@ elseif(!empty($_POST['new_submit'])) {
 }
 elseif(isset($_GET['new'])) {
     $game->out('
-<table width="450" align="center" border="0" cellpadding="2" cellspacing="4" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
-    <td align="center">
-      <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
-      <table width="430" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="430" align="left"><a href="'.parse_link('a=alliance_diplomacy').'">'.constant($game->sprache("TEXT39")).'</a> &raquo; '.constant($game->sprache("TEXT40")).'</td></tr>
-      </table>
-      <table width="430" align="center" border="0" cellpadding="2" cellspacing="2" class="border_grey">
-        <form method="post" action="'.parse_link('a=alliance_diplomacy').'">
-        <tr>
-          <td align="center">'.constant($game->sprache("TEXT41")).'<input class="field" type="text" name="alliance2_tag" maxlength="6" size="10"></td>
-        </tr>
-        <tr height="5"><td></td></tr>
+    <td>
+      <table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
         <tr>
           <td align="center">
-            <select name="type">
-              <option value="2">'.constant($game->sprache("TEXT42")).'</option>
-              <option value="3">'.constant($game->sprache("TEXT43")).'</option>
-              <option value="1">'.constant($game->sprache("TEXT44")).'</option>
-            </select>
-          </td>
-        </tr>
-        <tr height="5"><td></td></tr>
-        <tr>
-          <td align="center">
-            <input class="button" type="button" value="'.constant($game->sprache("TEXT45")).'" onClick="return window.history.back();">  
-            <input class="button" type="submit" name="new_submit" value="'.constant($game->sprache("TEXT46")).'">
+            <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
+            <table width="430" align="center" border="0" cellpadding="2" cellspacing="2">
+              <tr><td width="430" align="left"><a href="'.parse_link('a=alliance_diplomacy').'">'.constant($game->sprache("TEXT39")).'</a> &raquo; '.constant($game->sprache("TEXT40")).'</td></tr>
+            </table>
+            <form method="post" action="'.parse_link('a=alliance_diplomacy').'">
+            <table width="430" align="center" border="0" cellpadding="2" cellspacing="2" class="border_grey">
+              <tr>
+                <td align="center">'.constant($game->sprache("TEXT41")).'<input class="field" type="text" name="alliance2_tag" maxlength="6" size="10"></td>
+              </tr>
+              <tr height="5"><td></td></tr>
+              <tr>
+                <td align="center">
+                  <select name="type">
+                    <option value="2">'.constant($game->sprache("TEXT42")).'</option>
+                    <option value="3">'.constant($game->sprache("TEXT43")).'</option>
+                    <option value="1">'.constant($game->sprache("TEXT44")).'</option>
+                  </select>
+                </td>
+              </tr>
+              <tr height="5"><td></td></tr>
+              <tr>
+                <td align="center">
+                  <input class="button" type="button" value="'.constant($game->sprache("TEXT45")).'" onClick="return window.history.back();">  
+                  <input class="button" type="submit" name="new_submit" value="'.constant($game->sprache("TEXT46")).'">
+                </td>
+              </tr>
+            </table>
+            </form>
           </td>
         </tr>
       </table>
     </td>
-  </form>
+  </tr>
 </table>
     ');
 }
@@ -745,24 +752,27 @@ elseif(!empty($_GET['details'])) {
     $opid = get_opid($diplomacy['alliance1_id']);
 
     $game->out('
-<table width="450" align="center" border="0" cellpadding="2" cellspacing="4" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
-    <td align="center">
-      <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
-      <table width="430" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="430" align="left"><a href="'.parse_link('a=alliance_diplomacy').'">'.constant($game->sprache("TEXT39")).'</a> &raquo; <i>'.$diplomacy['alliance'.$opid.'_name'].'</i></td></tr>
-      </table>
-      <table width="430" align="center" border="0" cellpadding="2" cellspacing="2" class="border_grey"><tr><td>
-        <table width="300" align="center" border="0" cellpadding="0" cellspacing="0">
-          <tr>
-            <td width="150">'.constant($game->sprache("TEXT48")).'</td>
+    <td>
+      <table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
+        <tr>
+          <td align="center">
+            <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
+            <table width="430" align="center" border="0" cellpadding="2" cellspacing="2">
+              <tr><td width="430" align="left"><a href="'.parse_link('a=alliance_diplomacy').'">'.constant($game->sprache("TEXT39")).'</a> &raquo; <i>'.$diplomacy['alliance'.$opid.'_name'].'</i></td></tr>
+            </table>
+            <table width="430" align="center" border="0" cellpadding="2" cellspacing="2" class="border_grey"><tr><td>
+              <table width="300" align="center" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="150">'.constant($game->sprache("TEXT48")).'</td>
     ');
     
     switch($diplomacy['type']) {
         case ALLIANCE_DIPLOMACY_WAR:
             $game->out('
-            <td width="150"><span style="color: #FF0000;">'.constant($game->sprache("TEXT49")).'</span></td>
-          </tr>
+                  <td width="150"><span style="color: #FF0000;">'.constant($game->sprache("TEXT49")).'</span></td>
+                </tr>
           <tr height="5"><td colspan="2"></td></tr>
           <tr>
             <td width="150">'.constant($game->sprache("TEXT50")).'</td>
@@ -901,6 +911,9 @@ elseif(!empty($_GET['details'])) {
     </td>
   </tr>
 </table>
+</td>
+</tr>
+</table>
     ');
 }
 else {
@@ -919,22 +932,25 @@ else {
     }
 
     $game->out('
-<table width="450" align="center" border="0" cellpadding="2" cellspacing="4" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
-    <td align="center">
-      <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
-      <table width="430" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="430" align="left">'.constant($game->sprache("TEXT39")).'</td></tr>
-      </table>
-      <table width="430" align="center" border="0" cellpadding="2" cellspacing="2" class="border_grey">
+    <td>
+      <table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
         <tr>
+          <td align="center">
+            <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
+            <table width="430" align="center" border="0" cellpadding="2" cellspacing="2">
+              <tr><td width="430" align="left">'.constant($game->sprache("TEXT39")).'</td></tr>
+            </table>
+            <table width="430" align="center" border="0" cellpadding="2" cellspacing="2" class="border_grey">
+              <tr>
     ');
  
    
     if($game->player['user_alliance_rights5'] == 1 || $game->player['user_id'] == $alliance['alliance_owner']) {
         $game->out('
-          <td width="20"> </td>
-          <td width="210">'.constant($game->sprache("TEXT66")).'</td>
+                <td width="20"> </td>
+                <td width="210">'.constant($game->sprache("TEXT66")).'</td>
         ');
     }
     else {
@@ -942,9 +958,9 @@ else {
     }
 
     $game->out('
-          <td width="90" align="center">'.constant($game->sprache("TEXT67")).'</td>
-          <td width="110" align="center">'.constant($game->sprache("TEXT68")).'</td>
-        </tr>
+                <td width="90" align="center">'.constant($game->sprache("TEXT67")).'</td>
+                <td width="110" align="center">'.constant($game->sprache("TEXT68")).'</td>
+              </tr>
     ');
     
     while($diplomacy = $db->fetchrow($q_diplomacy)) {
@@ -966,21 +982,21 @@ else {
         
         if($game->player['user_alliance_rights5'] == 1 || $game->player['user_id'] == $alliance['alliance_owner']) {
             $game->out('
-       <tr>
-         <td width="20">[<a href="'.parse_link('a=alliance_diplomacy&details='.$diplomacy['ad_id']).'">D</a>]</td>
-         <td width="210"><a href="'.parse_link('a=stats&a2=viewalliance&id='.$diplomacy['alliance'.$ap.'_id']).'">'.$diplomacy['alliance'.$ap.'_name'].'</a></td>
-         <td width="90" align="center">'.$type_str.'</td>
-         <td width="110" align="center">'.( ($diplomacy['status'] != -1) ? date('d.m.y', $diplomacy['date']) : constant($game->sprache("TEXT70")) ).'</td>
-       </tr>
+              <tr>
+                <td width="20">[<a href="'.parse_link('a=alliance_diplomacy&details='.$diplomacy['ad_id']).'">D</a>]</td>
+                <td width="210"><a href="'.parse_link('a=stats&a2=viewalliance&id='.$diplomacy['alliance'.$ap.'_id']).'">'.$diplomacy['alliance'.$ap.'_name'].'</a></td>
+                <td width="90" align="center">'.$type_str.'</td>
+                <td width="110" align="center">'.( ($diplomacy['status'] != -1) ? date('d.m.y', $diplomacy['date']) : constant($game->sprache("TEXT70")) ).'</td>
+              </tr>
             ');
        }
        else {
             $game->out('
-       <tr>
-         <td width="230"><a href="'.parse_link('a=stats&a2=viewalliance&id='.$diplomacy['alliance'.$ap.'_id']).'">'.$diplomacy['alliance'.$ap.'_name'].'</a></td>
-         <td width="90" align="center">'.$type_str.'</td>
-         <td width="110" align="center">'.( ($diplomacy['status'] != -1) ? date('d.m.y', $diplomacy['date']) : constant($game->sprache("TEXT70")) ).'</td>
-       </tr>
+              <tr>
+                <td width="230"><a href="'.parse_link('a=stats&a2=viewalliance&id='.$diplomacy['alliance'.$ap.'_id']).'">'.$diplomacy['alliance'.$ap.'_name'].'</a></td>
+                <td width="90" align="center">'.$type_str.'</td>
+                <td width="110" align="center">'.( ($diplomacy['status'] != -1) ? date('d.m.y', $diplomacy['date']) : constant($game->sprache("TEXT70")) ).'</td>
+              </tr>
             ');
        }
     }
@@ -990,9 +1006,12 @@ else {
     
     if($game->player['user_alliance_rights5'] == 1 || $game->player['user_id'] == $alliance['alliance_owner']) {
         $game->out('
-      </table>
-      <table width="430" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="430" align="right">[<a href="'.parse_link('a=alliance_diplomacy&new').'">'.constant($game->sprache("TEXT71")).'</a>]</td></tr>
+            </table>
+            <table width="430" align="center" border="0" cellpadding="2" cellspacing="2">
+              <tr><td width="430" align="right">[<a href="'.parse_link('a=alliance_diplomacy&new').'">'.constant($game->sprache("TEXT71")).'</a>]</td></tr>
+            </table>
+          </td>
+        </tr>
       </table>
     </td>
   </tr>
@@ -1004,9 +1023,12 @@ else {
     }
     else {
         $game->out('
+            </table>
+          </td>
+        </tr>
       </table>
     </td>
-  </tr>
+  <tr>
 </table>
         ');
     }
