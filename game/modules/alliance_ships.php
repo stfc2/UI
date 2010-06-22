@@ -170,7 +170,8 @@ function Ships_List($focus=0,$search_name="")
 
 
 	/* AC: Searching ship */
-	$game->out('<br><br><table border=0 cellpadding=2 cellspacing=2  class="style_inner" width=300>
+	$game->out('<br><table border=0 cellpadding=1 cellspacing=1  class="style_outer" width=300><tr><td>
+		<table border=0 cellpadding=2 cellspacing=2  class="style_inner" width=300>
 		<tr>
 			<td align="center" valign="middle">
 				<form method="post" action="'.parse_link('a=alliance_ships&order='.$_REQUEST['order']).'">
@@ -181,12 +182,15 @@ function Ships_List($focus=0,$search_name="")
 				</form>
 			</td>
 		</tr>
+		</table>
+	</td></tr>
 		</table>');
 
 	/* AC: If we have to search ships */
 	if($search_name!="" && $focus==0)
 	{
-		$game->out('<br><table border=0 cellpadding=2 cellspacing=2 class="style_inner" width=300>
+		$game->out('<br><table border=0 cellpadding=1 cellspacing=1  class="style_outer" width=300><tr><td>
+		<table border=0 cellpadding=2 cellspacing=2 class="style_inner" width=300>
 			<tr>
 				<td width=150>
 					<b>'.constant($game->sprache("TEXT3")).'</b>
@@ -213,7 +217,7 @@ function Ships_List($focus=0,$search_name="")
 			');
 		}
 
-		$game->out('</table>');
+		$game->out('</table></td></tr></table>');
 	}
 
 	$game->out('<br><br><span class="sub_caption">'.constant($game->sprache("TEXT4")).' '.HelpPopup('alliance_ships').' :</span><br>');
@@ -270,7 +274,8 @@ function Ships_List($focus=0,$search_name="")
 		break;
 	}
 
-	$game->out('<br><table border=0 cellpadding=1 cellspacing=1 class="style_inner">
+	$game->out('<br><table border=0 cellpadding=2 cellspacing=2 class="style_outer"><tr><td>
+	<table border=0 cellpadding=2 cellspacing=2 class="style_inner">
 		<tr>
 		<td><b>#</b></td>
 		<td width=160>'.$header1.'</td>
@@ -414,7 +419,7 @@ function Ships_List($focus=0,$search_name="")
 		$n++;
 	}
 
-	$game->out('</table>');
+	$game->out('</table></td></tr></table>');
 
 	/* AC: Pages browsing */
 	$sql = 'SELECT COUNT(ship_id) AS n_ships
@@ -423,7 +428,8 @@ function Ships_List($focus=0,$search_name="")
 			WHERE user_id IN ('.implode(',',$members).') AND st.ship_class IN ('.implode(',', $sels).')';
 	$n_ships = $db->queryrow($sql);
 	$max_pages = ceil($n_ships['n_ships'] / 20);
-	$game->out('<br><table border=0 cellpadding=2 cellspacing=2 class="style_inner" width=400><tr>
+	$game->out('<br><table border=0 cellpadding=1 cellspacing=1 class="style_outer" width=400><tr><td>
+		<table border=0 cellpadding=2 cellspacing=2 class="style_inner" width=400><tr>
 		<td width=50 align=middle>
 			'.(($queryfocus>0) ? '<a href="'.parse_link('a=alliance_ships&order='.$_REQUEST['order'].'&start=0').'"><span class="text_large">[1]</a>' : '[1]').'
 		</td>
@@ -436,11 +442,12 @@ function Ships_List($focus=0,$search_name="")
 		<td width=50 align=middle>
 			'.(($queryfocus < $n_ships['n_ships']-20) ? '<a href="'.parse_link('a=alliance_ships&order='.$_REQUEST['order'].'&start='.($n_ships['n_ships']-20)).'"><span class="text_large">['.$max_pages.']</a>' : '['.$max_pages.']').'
 		</td>
-		</tr></table>');
+		</tr></table></td></tr></table>');
 
 	/* Show up ship's filter */
 	$game->out('<br>
-		<table border=0 class="style_inner" width=300>
+		<table border=0 cellpadding=1 cellspacing=1 class="style_outer" width=300><tr><td>
+		<table border=0 cellpadding=1 cellspacing=1 class="style_inner" width=300>
 		<tr>
 		<td>
 			<fieldset><legend>'.constant($game->sprache("TEXT72")).'</legend>
@@ -467,7 +474,7 @@ function Ships_List($focus=0,$search_name="")
 			</td></tr></table>
 			</fieldset>
 		</td>
-		</tr></table>');
+		</tr></table></td></tr></table>');
 }
 
 function CreateShipInfoText($ship)
@@ -566,11 +573,11 @@ function Ship_Details()
 
     $game->out('
 
-<table width="450" align="center" border="0" cellpadding="4" cellspacing="2" class="style_outer">
+<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
 
   <tr>
 
-    <td><span class="sub_caption2">'.constant($game->sprache("TEXT56")).' ('.$ship['name'].')</span><br><br>
+    <td><span class="sub_caption2">'.constant($game->sprache("TEXT56")).' ('.$ship['name'].')</span><br>
 
       <table width="450" align="center" cellpadding="0" cellspacing="0" border="0" class="style_inner">
 
@@ -591,6 +598,8 @@ function Ship_Details()
             '.constant($game->sprache("TEXT62")).'<br>
 
             '.constant($game->sprache("TEXT63")).'<br><br>
+
+            '.constant($game->sprache("TEXT77")).'<br>
 
             '.constant($game->sprache("TEXT64")).'<br>
 
@@ -622,7 +631,7 @@ function Ship_Details()
 
           </td>
 
-          <td align="left" valign="top" width="150">
+          <td align="left" valign="top" width="160">
 
             ['.( ($ship['fleet_id'] > 0) ? '<a href="'.parse_link('a=ship_fleets_display&'.( (!empty($ship['planet_id'])) ? 'p' : 'm' ).'fleet_details='.$ship['fleet_id']).'">'.$ship['fleet_name'].'</a>' : '<a href="'.parse_link('a=spacedock').'">'.$ship['planet_name'].'</a>' ).']<br><br>
 
@@ -637,6 +646,8 @@ function Ship_Details()
             <b>'.$ship['ship_ncc'].'</b><br>
 
             <b>'.date('d/m/y H:i:s', $ship['construction_time']).'</b><br><br>
+
+            <b>'.( (!empty($ship['last_refit_time'])) ? date('d/m/y H:i:s', $ship['last_refit_time']) : constant($game->sprache("TEXT78"))).'</b><br>
 
             <b>'.$ship['hitpoints'].'</b> / <b>'.$ship['value_5'].'</b><br>
 
@@ -668,7 +679,7 @@ function Ship_Details()
 
           </td>
 
-          <td align="center>" valign="top" width="180"><img src="'.FIXED_GFX_PATH.'ship'.$ship['race'].'_'.$ship['ship_torso'].'.jpg"><br><br>
+          <td align="center>" valign="top" width="170"><img src="'.FIXED_GFX_PATH.'ship'.$ship['race'].'_'.$ship['ship_torso'].'.jpg"><br><br>
 
     ');
 
