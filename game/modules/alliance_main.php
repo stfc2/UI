@@ -710,107 +710,93 @@ $game->out('
 }
 // Seems as if the player does not belong to any alliance
 else {
-	$game->out('
-<table width="520" align="center" border="0" cellpadding="0" cellspacing="0">
+    $game->out('
+<table width="520" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
-	<td width="252" align="center" valign="top">
-	  <table class="style_inner" width="250" align="center" border="0" cellpadding="2" cellspacing="4">
-	    <form method="post" action="'.parse_link('a=alliance_main&new').'">
-		<tr>
-		  <td colspan="2"><b>'.constant($game->sprache("TEXT75")).'</b><br></td>
-		</tr>
-		<tr>
-		  <td width="120">'.constant($game->sprache("TEXT76")).'</td>
-		  <td width="130"><input class="field" type="text" name="alliance_name"></td>
-		</tr>
-		<tr>
-		  <td width="120">'.constant($game->sprache("TEXT77")).'</td>
-		  <td width="130"><input class="field" type="text" name="alliance_tag" maxlength="6" size="10"></td>
-		</tr>
-		<tr>
-		  <td colspan="2" align="center"><input class="button" type="submit" name="new_submit" value="'.constant($game->sprache("TEXT51")).'"></td>
-		</tr>
-		</form>
-	  </table>
-	</td>
-	</tr>
-	 
-	<tr>
-          <td>&nbsp;</td>
+    <td align="center" valign="top">
+      <table class="style_inner" width="250" align="center" border="0" cellpadding="2" cellspacing="2">
+      <form method="post" action="'.parse_link('a=alliance_main&new').'">
+        <tr>
+          <td colspan="2"><b>'.constant($game->sprache("TEXT75")).'</b><br></td>
         </tr>
-	<tr>
-          <td align="center"><b>'.constant($game->sprache("TEXT82")).'</b></td>
+        <tr>
+          <td width="120">'.constant($game->sprache("TEXT76")).'</td>
+          <td width="130"><input class="field" type="text" name="alliance_name"></td>
         </tr>
-	<tr>
-          <td>&nbsp;</td>
+        <tr>
+          <td width="120">'.constant($game->sprache("TEXT77")).'</td>
+          <td width="130"><input class="field" type="text" name="alliance_tag" maxlength="6" size="10"></td>
         </tr>
-	
-	<tr>  
-	
+        <tr>
+          <td colspan="2" align="center"><input class="button" type="submit" name="new_submit" value="'.constant($game->sprache("TEXT51")).'"></td>
+        </tr>
+      </form>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="center"><b>'.constant($game->sprache("TEXT82")).'</b></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+
        ');
 
 
-       $sql = 'SELECT * FROM alliance_application WHERE application_user = '.$game->player['user_id'];
-   
-       if(($application_check = $db->queryrow($sql)) === false) {
+    $sql = 'SELECT * FROM alliance_application WHERE application_user = '.$game->player['user_id'];
+
+    if(($application_check = $db->queryrow($sql)) === false) {
          message(DATABASE_ERROR, 'Could not query application_check');
-       }
+    }
 
 
-       if(empty($application_check['application_id'])) {
+    if(empty($application_check['application_id'])) {
 
-
-  $game->out('
-
-	<td width="252" align="center" valign="top">
-	  <table class="style_inner" width="250" align="center" border="0" cellpadding="2" cellspacing="4">
-         <tr>
-		  <td colspan="2"><b>'.constant($game->sprache("TEXT78")).'</b><br></td>
-
-	<tr>
-	</tr>
-
-
-	<tr>
-	  <td colspan="2" align="center">[<a href="'.parse_link('a=alliance_application&list').'">'.constant($game->sprache("TEXT79")).'</a>]</td>
-	</tr>
-
-       ');
-
-        }
-        else { 
 
         $game->out('
 
-	<td width="252" align="center" valign="top">
-	  <table class="style_inner" width="250" align="center" border="0" cellpadding="2" cellspacing="4">
-         <tr>
-		  <td colspan="2"><b>'.constant($game->sprache("TEXT78")).'</b><br></td>
+    <td align="center" valign="top">
+      <table class="style_inner" width="250" align="center" border="0" cellpadding="2" cellspacing="4">
+        <tr>
+          <td colspan="2"><b>'.constant($game->sprache("TEXT78")).'</b><br></td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">[<a href="'.parse_link('a=alliance_application&list').'">'.constant($game->sprache("TEXT79")).'</a>]</td>
+        </tr>
+       ');
 
-	<tr>
-	</tr>
+    }
+    else {
 
-       <tr>
-         <td align="center">'.constant($game->sprache("TEXT80")).'<br> <span style="color: green; font-weight: bold;">'.get_alliance_name($application_check['application_alliance']).'</span></td>
-       </tr>  
+        $game->out('
 
-       <tr>
-         <td>&nbsp;</td>
-       </tr>  
-
-       <tr>
-	  <td colspan="2" align="center">[<a href="'.parse_link('a=alliance_application&surdelete=1').'">'.constant($game->sprache("TEXT81")).'</a>]</td>
-	</tr> 
+    <td align="center" valign="top">
+      <table class="style_inner" width="250" align="center" border="0" cellpadding="2" cellspacing="4">
+        <tr>
+          <td colspan="2"><b>'.constant($game->sprache("TEXT78")).'</b><br></td>
+        </tr>
+        <tr>
+          <td align="center">'.constant($game->sprache("TEXT80")).'<br> <span style="color: green; font-weight: bold;">'.get_alliance_name($application_check['application_alliance']).'</span></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">[<a href="'.parse_link('a=alliance_application&surdelete=1').'">'.constant($game->sprache("TEXT81")).'</a>]</td>
+        </tr>
 
        ');
 
-        }
+    }
 
-       $game->out('
-
-	 </tr>
-	  </table>
-	</td>
+    $game->out('
+      </table>
+    </td>
   </tr>
 </table>
 	');

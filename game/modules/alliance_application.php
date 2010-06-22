@@ -119,7 +119,10 @@ function text() {
 if(isset($_GET['vorlage']) && $_GET['vorlage']==1) {$text=$alliance_name['alliance_application_text'];}else{$text='';}
       $game->out('
 
-        <table class="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="4">
+  <table class="style_outer" width="300" align="center" border="0" cellpadding="2" cellspacing="2">
+    <tr>
+      <td>
+        <table class="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="2">
 
           <form name="load_form" action="'.parse_link('a=alliance_application').'" method="post">
           <input type="hidden" name="alliance_id" value="'.$_GET['alliance'].'">
@@ -151,6 +154,9 @@ if(isset($_GET['vorlage']) && $_GET['vorlage']==1) {$text=$alliance_name['allian
             </form>
 
         </table>
+      </td>
+    </tr>
+  </table>
 
       ');
   }
@@ -178,15 +184,14 @@ if($game->player['user_alliance_rights6'] != 1) {
 
   $game->out('
 
-  <table class="style_inner" width="450" align="center" border="0" cellpadding="2" cellspacing="4">
-
+<table class="style_outer" width="450" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
-    <td width="10">&nbsp;</td><td>'.constant($game->sprache("TEXT17")).'</td><td>'.constant($game->sprache("TEXT18")).'</td><td>'.constant($game->sprache("TEXT11")).'</td><td>'.constant($game->sprache("TEXT20")).'</td>
-  <tr>
-  	
-  
-
-  ');
+    <td>
+      <table class="style_inner" width="450" align="center" border="0" cellpadding="2" cellspacing="2">
+        <tr>
+          <td width="10">&nbsp;</td><td>'.constant($game->sprache("TEXT17")).'</td><td>'.constant($game->sprache("TEXT18")).'</td><td>'.constant($game->sprache("TEXT11")).'</td><td>'.constant($game->sprache("TEXT20")).'</td>
+        <tr>
+');
 
   $listquery=$db->query('SELECT * FROM alliance_application, user WHERE application_alliance = '.$game->player['user_alliance'].' AND user_id = application_user ORDER by application_id ASC');
 
@@ -196,31 +201,35 @@ if($game->player['user_alliance_rights6'] != 1) {
    if($application['application_read']==0) {
 
       $game->out(' 
-   
-   <tr><td><img src="'.$game->PLAIN_GFX_PATH.'new.png" alt="New"></img></td>
-   <td>'.$application['application_username'].'</td>
-   <td>'.$application['user_points'].'</td>
-   <td>'.date('d.m.y H:i', $application['application_timestamp']).'</td>
-   <td>[<a href="'.parse_link('a=alliance_application&application=accept&app_id='.$application['application_id'].'').'"><span style="color: #00FF00;">'.constant($game->sprache("TEXT12")).'</span></a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=deny&app_id='.$application['application_id'].'').'"><span style="color: #FF0000;">'.constant($game->sprache("TEXT13")).'</span></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=alliance_application&application=details&app_id='.$application['application_id'].'').'">'.constant($game->sprache("TEXT14")).'</a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=wing&app_id='.$application['application_id'].'').'">'.constant($game->sprache("TEXT15")).'</a>]</td></tr>      
-
+        <tr>
+          <td><img src="'.$game->PLAIN_GFX_PATH.'new.png" alt="New"></img></td>
+          <td>'.$application['application_username'].'</td>
+          <td>'.$application['user_points'].'</td>
+          <td>'.date('d.m.y H:i', $application['application_timestamp']).'</td>
+          <td>[<a href="'.parse_link('a=alliance_application&application=accept&app_id='.$application['application_id'].'').'"><span style="color: #00FF00;">'.constant($game->sprache("TEXT12")).'</span></a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=deny&app_id='.$application['application_id'].'').'"><span style="color: #FF0000;">'.constant($game->sprache("TEXT13")).'</span></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=alliance_application&application=details&app_id='.$application['application_id'].'').'">'.constant($game->sprache("TEXT14")).'</a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=wing&app_id='.$application['application_id'].'').'">'.constant($game->sprache("TEXT15")).'</a>]</td>
+        </tr>
   ');
 
    }
    else {
 
    $game->out(' 
-   
-   <tr><td></td>
-   <td>'.$application['application_username'].'</td>
-   <td>'.$application['user_points'].'</td>
-   <td>'.date('d.m.y H:i', $application['application_timestamp']).'</td>
-   <td>[<a href="'.parse_link('a=alliance_application&application=accept&app_id='.$application['application_id'].'').'"><span style="color: #00FF00;">'.constant($game->sprache("TEXT12")).'</span></a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=deny&app_id='.$application['application_id'].'').'"><span style="color: #FF0000;">'.constant($game->sprache("TEXT13")).'</span></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=alliance_application&application=details&app_id='.$application['application_id'].'').'">'.constant($game->sprache("TEXT14")).'</a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=wing&app_id='.$application['application_id'].'').'">'.constant($game->sprache("TEXT15")).'</a>]</td></tr>      
-
+        <tr>
+          <td></td>
+          <td>'.$application['application_username'].'</td>
+          <td>'.$application['user_points'].'</td>
+          <td>'.date('d.m.y H:i', $application['application_timestamp']).'</td>
+          <td>[<a href="'.parse_link('a=alliance_application&application=accept&app_id='.$application['application_id'].'').'"><span style="color: #00FF00;">'.constant($game->sprache("TEXT12")).'</span></a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=deny&app_id='.$application['application_id'].'').'"><span style="color: #FF0000;">'.constant($game->sprache("TEXT13")).'</span></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=alliance_application&application=details&app_id='.$application['application_id'].'').'">'.constant($game->sprache("TEXT14")).'</a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=wing&app_id='.$application['application_id'].'').'">'.constant($game->sprache("TEXT15")).'</a>]</td>
+        </tr>
   ');
    }
   }
 
-  $game->out('</table>');
+  $game->out('
+      </table>
+    </td>
+  </tr>
+</table>');
 
 
   }
@@ -269,59 +278,54 @@ if($game->player['user_alliance_rights6'] != 1) {
 
   $game->out('
 
-  <table class="style_inner" width="450" align="center" border="0" cellpadding="2" cellspacing="4">
-
-    <tr>
-      <td align="center" width="67">&nbsp;</td><td align="center" width="200"><font size="4"><b>'.constant($game->sprache("TEXT14")).'</b></font></td><td align="center" width="67">&nbsp;</td>
-    </tr>
-
-    <tr><td>&nbsp;</td><td>
-  <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="4">
-
-
+<table class="style_outer" width="450" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
-    <td align="left">'.constant($game->sprache("TEXT17")).':&nbsp;</td><td align="left">'.$application_data['application_username'].'</td>
+    <td>
+      <table class="style_inner" width="450" align="center" border="0" cellpadding="2" cellspacing="2">
+        <tr>
+          <td align="center" width="200"><font size="4"><b>'.constant($game->sprache("TEXT14")).'</b></font></td>
+        </tr>
+
+        <tr>
+          <td>
+            <table align="center" border="0" cellpadding="2" cellspacing="4">
+              <tr>
+                <td align="left">'.constant($game->sprache("TEXT17")).':&nbsp;</td><td align="left">'.$application_data['application_username'].'</td>
+              </tr>
+              <tr>
+                <td align="left">'.constant($game->sprache("TEXT18")).':</td><td align="left">'.$application_data['user_points'].'</td>
+              </tr>
+              <tr>
+                <td align="left">'.constant($game->sprache("TEXT19")).'</td><td align="left">'.$application_data['user_planets'].'</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="center" width="200">'.constant($game->sprache("TEXT7")).'<br></td>
+        </tr>
+        <tr>
+          <td align="center" width="200">'.stripslashes($application_data['application_text']).'</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="center" width="200">'.constant($game->sprache("TEXT20")).'&nbsp;[<a href="'.parse_link('a=alliance_application&application=accept&app_id='.$application_data['application_id'].'').'"><span style="color: #00FF00;">'.constant($game->sprache("TEXT12")).'</span></a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=deny&app_id='.$application_data['application_id'].'').'"><span style="color: #FF0000;">'.constant($game->sprache("TEXT13")).'</span></a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=wing&app_id='.$application_data['application_id'].'').'">'.constant($game->sprache("TEXT15")).'</a>]</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td align="center">[<a href="'.parse_link('a=alliance_application&application=admin').'">'.constant($game->sprache("TEXT21")).'</a>]</td>
+        </tr>
+      </table>
+    </td>
   </tr>
-
-  <tr>
-    <td align="left">'.constant($game->sprache("TEXT18")).':</td><td align="left">'.$application_data['user_points'].'</td>
-  </tr>
-    
-  <tr>
-    <td align="left">'.constant($game->sprache("TEXT19")).'</td><td align="left">'.$application_data['user_planets'].'</td>
-  </tr>
-
-  </table></td></tr>
-
-  <tr>
-    <td align="left">&nbsp;</td><td align="left">&nbsp</td>
-  </tr>
-
-
-  <tr>
-    <td align="center" width="67">&nbsp;</td><td align="center" width="200">'.constant($game->sprache("TEXT7")).'<br></td>
-  </tr>
-
-  <tr>
-    <td align="left" width="67">&nbsp;</td><td align="left" width="200">'.stripslashes($application_data['application_text']).'</td>
-  </tr>
-
-  <tr>
-    <td align="left">&nbsp;</td><td align="left">&nbsp;</td>
-  </tr>
-
-  <tr>
-    <td align="left" width="67"></td>&nbsp;<td align="left" width="200">'.constant($game->sprache("TEXT20")).'</td><td align="left">&nbsp;</td>
-  </tr>
-
-  <tr>
-    <td align="left" width="67"></td>&nbsp;<td align="left" width="200">[<a href="'.parse_link('a=alliance_application&application=accept&app_id='.$application_data['application_id'].'').'"><span style="color: #00FF00;">'.constant($game->sprache("TEXT12")).'</span></a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=deny&app_id='.$application_data['application_id'].'').'"><span style="color: #FF0000;">'.constant($game->sprache("TEXT13")).'</span></a>]&nbsp;[<a href="'.parse_link('a=alliance_application&application=wing&app_id='.$application_data['application_id'].'').'">'.constant($game->sprache("TEXT15")).'</a>]&nbsp;<br>[<a href="'.parse_link('a=alliance_application&application=admin').'">'.constant($game->sprache("TEXT21")).'</a>]</td><td align="left">&nbsp;</td>
-  </tr>
-
-
-  </table>
-
-  ');
+</table>');
 
   }
   

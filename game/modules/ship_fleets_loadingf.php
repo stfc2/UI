@@ -21,8 +21,6 @@
 */
 
 
-//die('noch nicht eingebaut');
-
 if(!empty($_POST['to_submit'])) {
     $db->lock('ship_fleets', 'ships', 'ship_templates');
     $game->init_player();
@@ -291,146 +289,152 @@ function unload_all() {
 //-->
 </script>
 
-<center><span class="caption">'.constant($game->sprache("TEXT6")).'</span></center><br>
+<span class="caption">'.constant($game->sprache("TEXT6")).'</span><br><br>
 
-<table class="style_inner" width="400" align="center" border="0" cellpadding="4" cellspacing="2">
-  <form name="load_form" method="post" action="'.parse_link('a=ship_fleets_loadingf&from='.$from_fleet_id.'&to='.$to_fleet_id.( ($return_to) ? '&return_to='.urlencode($return_to) : '' ) ).'" onSubmit="return document.load_form.submit_button.disabled = true;">
-  <input type="hidden" name="to_submit" value="1">
+<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td>
-      '.constant($game->sprache("TEXT9")).' <a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$from_fleet_id).'"><b>'.$from_fleet['fleet_name'].'</b></a> '.constant($game->sprache("TEXT10")).' <a'.( ($to_fleet['user_id'] == $game->player['user_id']) ? ' href="'.parse_link('a=ship_fleets_display&pfleet_details='.$to_fleet_id).'"' : '' ).'><b>'.$to_fleet['fleet_name'].'</b></a>
-      <br><br>
+      <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+        <form name="load_form" method="post" action="'.parse_link('a=ship_fleets_loadingf&from='.$from_fleet_id.'&to='.$to_fleet_id.( ($return_to) ? '&return_to='.urlencode($return_to) : '' ) ).'" onSubmit="return document.load_form.submit_button.disabled = true;">
+        <input type="hidden" name="to_submit" value="1">
+        <tr>
+          <td align="center">
+            '.constant($game->sprache("TEXT9")).' <a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$from_fleet_id).'"><b>'.$from_fleet['fleet_name'].'</b></a> '.constant($game->sprache("TEXT10")).' <a'.( ($to_fleet['user_id'] == $game->player['user_id']) ? ' href="'.parse_link('a=ship_fleets_display&pfleet_details='.$to_fleet_id).'"' : '' ).'><b>'.$to_fleet['fleet_name'].'</b></a>
+            <br><br>
     ');
 
     if($own_to_fleet) {
         $game->out('
-      <table border="0" cellpadding="0" cellspacing="0">
-        <tr>
-          <td rowspan="5" width="140" valign="top">'.constant($game->sprache("TEXT11")).'</td>
-          <td width="260"><i>'.constant($game->sprache("TEXT12")).'</i>: <b>'.($max2_resources - $n2_resources).'</b></td>
-        </tr>
-        <tr><td><i>'.constant($game->sprache("TEXT13")).'</i>: <b>'.($max2_units - $n2_units).'</b></td></tr>
-      </table>
-      <br>
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td rowspan="5" width="140" valign="top">'.constant($game->sprache("TEXT11")).'</td>
+                <td width="260"><i>'.constant($game->sprache("TEXT12")).'</i>: <b>'.($max2_resources - $n2_resources).'</b></td>
+              </tr>
+              <tr><td><i>'.constant($game->sprache("TEXT13")).'</i>: <b>'.($max2_units - $n2_units).'</b></td></tr>
+            </table>
+            <br>
         ');
     }
-    
+
     $game->out('
-      <table width="400" border="0" cellpadding="1" cellspacing="0">
-        <tr>
-          <td width="80">&nbsp;</td>
-          <td width="240" align="center"><b>'.constant($game->sprache("TEXT14")).'</b></td>
-          <td width="80" align="center">[<a href="javascript:void(0);" onClick="return unload_all();">'.constant($game->sprache("TEXT15")).'</a>]</td>
-        </tr>
+            <table width="400" border="0" cellpadding="1" cellspacing="0">
+              <tr>
+                <td width="80">&nbsp;</td>
+                <td width="240" align="center"><b>'.constant($game->sprache("TEXT14")).'</b></td>
+                <td width="80" align="center">[<a href="javascript:void(0);" onClick="return unload_all();">'.constant($game->sprache("TEXT15")).'</a>]</td>
+              </tr>
     ');
 
     if($from_fleet['resource_1'] > 0) {
         $game->out('
-        <tr>
-          <td>'.constant($game->sprache("TEXT16")).'</td>
-          <td align="center">'.$from_fleet['resource_1'].'</td>
-          <td align="center"><input style="width: 60px;" class="field" type="text" name="add_resource_1" value=""></td>
-        </tr>
+              <tr>
+                <td>'.constant($game->sprache("TEXT16")).'</td>
+                <td align="center">'.$from_fleet['resource_1'].'</td>
+                <td align="center"><input style="width: 60px;" class="field" type="text" name="add_resource_1" value=""></td>
+              </tr>
         ');
     }
 
     if($from_fleet['resource_2'] > 0) {
         $game->out('
-        <tr>
-          <td>'.constant($game->sprache("TEXT17")).'</td>
-          <td align="center">'.$from_fleet['resource_2'].'</td>
-          <td align="center"><input style="width: 60px;" class="field" type="text" name="add_resource_2" value=""></td>
-        </tr>
+              <tr>
+                <td>'.constant($game->sprache("TEXT17")).'</td>
+                <td align="center">'.$from_fleet['resource_2'].'</td>
+                <td align="center"><input style="width: 60px;" class="field" type="text" name="add_resource_2" value=""></td>
+              </tr>
         ');
     }
 
     if($from_fleet['resource_3'] > 0) {
         $game->out('
-        <tr>
-          <td>'.constant($game->sprache("TEXT18")).'</td>
-          <td align="center">'.$from_fleet['resource_3'].'</td>
-          <td align="center"><input style="width: 60px;" class="field" type="text" name="add_resource_3" value=""></td>
-        </tr>
+              <tr>
+                <td>'.constant($game->sprache("TEXT18")).'</td>
+                <td align="center">'.$from_fleet['resource_3'].'</td>
+                <td align="center"><input style="width: 60px;" class="field" type="text" name="add_resource_3" value=""></td>
+              </tr>
         ');
     }
 
     if($from_fleet['resource_4'] > 0) {
         $game->out('
-        <tr>
-          <td>'.constant($game->sprache("TEXT19")).'</td>
-          <td align="center">'.$from_fleet['resource_4'].'</td>
-          <td align="center"><input style="width: 60px;" class="field" type="text" name="add_resource_4" value=""></td>
-        </tr>
+              <tr>
+                <td>'.constant($game->sprache("TEXT19")).'</td>
+                <td align="center">'.$from_fleet['resource_4'].'</td>
+                <td align="center"><input style="width: 60px;" class="field" type="text" name="add_resource_4" value=""></td>
+              </tr>
         ');
     }
 
     if($from_fleet['unit_1'] > 0) {
         $game->out('
-        <tr>
-          <td>'.$UNIT_NAME[$game->player['user_race']][0].'</td>
-          <td align="center">'.$from_fleet['unit_1'].'</td>
-          <td align="center"><input style="width: 60px;" class="field" type="text" name="add_unit_1" value=""></td>
-        </tr>
+              <tr>
+                <td>'.$UNIT_NAME[$game->player['user_race']][0].'</td>
+                <td align="center">'.$from_fleet['unit_1'].'</td>
+                <td align="center"><input style="width: 60px;" class="field" type="text" name="add_unit_1" value=""></td>
+              </tr>
         ');
     }
 
     if($from_fleet['unit_2'] > 0) {
         $game->out('
-        <tr>
-          <td>'.$UNIT_NAME[$game->player['user_race']][1].'</td>
-          <td align="center">'.$from_fleet['unit_2'].'</td>
-          <td align="center"><input style="width: 60px;" class="field" type="text" name="add_unit_2" value=""></td>
-        </tr>
+              <tr>
+                <td>'.$UNIT_NAME[$game->player['user_race']][1].'</td>
+                <td align="center">'.$from_fleet['unit_2'].'</td>
+                <td align="center"><input style="width: 60px;" class="field" type="text" name="add_unit_2" value=""></td>
+              </tr>
         ');
     }
 
     if($from_fleet['unit_3'] > 0) {
         $game->out('
-        <tr>
-          <td>'.$UNIT_NAME[$game->player['user_race']][2].'</td>
-          <td align="center">'.$from_fleet['unit_3'].'</td>
-          <td align="center"><input style="width: 60px;" class="field" type="text" name="add_unit_3" value=""></td>
-        </tr>
+              <tr>
+                <td>'.$UNIT_NAME[$game->player['user_race']][2].'</td>
+                <td align="center">'.$from_fleet['unit_3'].'</td>
+                <td align="center"><input style="width: 60px;" class="field" type="text" name="add_unit_3" value=""></td>
+              </tr>
         ');
     }
 
     if($from_fleet['unit_4'] > 0) {
         $game->out('
-        <tr>
-          <td>'.$UNIT_NAME[$game->player['user_race']][3].'</td>
-          <td align="center">'.$from_fleet['unit_4'].'</td>
-          <td align="center"><input style="width: 60px;" class="field" type="text" name="add_unit_4" value=""></td>
-        </tr>
+              <tr>
+                <td>'.$UNIT_NAME[$game->player['user_race']][3].'</td>
+                <td align="center">'.$from_fleet['unit_4'].'</td>
+                <td align="center"><input style="width: 60px;" class="field" type="text" name="add_unit_4" value=""></td>
+              </tr>
         ');
     }
 
     if($from_fleet['unit_5'] > 0) {
         $game->out('
-        <tr>
-          <td>'.$UNIT_NAME[$game->player['user_race']][4].'</td>
-          <td align="center">'.$from_fleet['unit_5'].'</td>
-          <td align="center"><input style="width: 60px;" class="field" type="text" name="add_unit_5" value=""></td>
-        </tr>
+              <tr>
+                <td>'.$UNIT_NAME[$game->player['user_race']][4].'</td>
+                <td align="center">'.$from_fleet['unit_5'].'</td>
+                <td align="center"><input style="width: 60px;" class="field" type="text" name="add_unit_5" value=""></td>
+              </tr>
         ');
     }
 
     if($from_fleet['unit_6'] > 0) {
         $game->out('
-        <tr>
-          <td>'.$UNIT_NAME[$game->player['user_race']][5].'</td>
-          <td align="center">'.$from_fleet['unit_6'].'</td>
-          <td align="center"><input style="width: 60px;" class="field" type="text" name="add_unit_6" value=""></td>
-        </tr>
+              <tr>
+                <td>'.$UNIT_NAME[$game->player['user_race']][5].'</td>
+                <td align="center">'.$from_fleet['unit_6'].'</td>
+                <td align="center"><input style="width: 60px;" class="field" type="text" name="add_unit_6" value=""></td>
+              </tr>
         ');
     }
 
     $game->out('
+            </table>
+            <br>
+            <input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT20")).'" onClick="return window.location.href = \''.parse_link($return_to).'\'">&nbsp;&nbsp;<input class="button" type="submit" name="submit_button" value="'.constant($game->sprache("TEXT21")).'">
+          </td>
+        </tr>
+        </form>
       </table>
-      <br>
-      <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT20")).'" onClick="return window.location.href = \''.parse_link($return_to).'\'">&nbsp;&nbsp;<input class="button" type="submit" name="submit_button" value="'.constant($game->sprache("TEXT21")).'"></center>
     </td>
   </tr>
-  </form>
 </table>
     ');
 }
@@ -486,39 +490,45 @@ elseif(!empty($_GET['to_unit'])) {
     $first_fleet = $db->fetchrow($q_fleets);
     
     $game->out('
-<center><span class="caption">'.constant($game->sprache("TEXT6")).'</span></center><br>
+<span class="caption">'.constant($game->sprache("TEXT6")).'</span><br><br>
 
-<table class="style_inner" width="400" align="center" border="0" cellpadding="4" cellspacing="2">
-  <form name="load_form" method="post" action="'.parse_link('a=ship_fleets_loadingf&from='.$from_fleet_id.'&to'.( ($return_to) ? '&return_to='.urlencode($return_to) : '' ) ).'">
+<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td>
-      '.constant($game->sprache("TEXT9")).' <a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$from_fleet_id).'"><b>'.$from_fleet['fleet_name'].'</b></a>
-      <br><br>
-      '.constant($game->sprache("TEXT25")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$to_user_id).'"><b>'.$to_user_name.'</b></a> '.constant($game->sprache("TEXT26")).'
-      <br><br>
-      <table border="0" cellpadding="0" cellspacing="0">
+      <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+        <form name="load_form" method="post" action="'.parse_link('a=ship_fleets_loadingf&from='.$from_fleet_id.'&to'.( ($return_to) ? '&return_to='.urlencode($return_to) : '' ) ).'">
         <tr>
-          <td width="30"><input type="radio" name="to_fleet" value="'.$first_fleet['fleet_id'].'" checked="checked"></td>
-          <td width="200"><b>'.$first_fleet['fleet_name'].'</b> ('.$first_fleet['n_ships'].' '.constant($game->sprache("TEXT27")).')</td>
-        </tr>
+          <td align="center">
+            '.constant($game->sprache("TEXT9")).' <a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$from_fleet_id).'"><b>'.$from_fleet['fleet_name'].'</b></a>
+            <br><br>
+            '.constant($game->sprache("TEXT25")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$to_user_id).'"><b>'.$to_user_name.'</b></a> '.constant($game->sprache("TEXT26")).'
+            <br><br>
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="30"><input type="radio" name="to_fleet" value="'.$first_fleet['fleet_id'].'" checked="checked"></td>
+                <td width="200"><b>'.$first_fleet['fleet_name'].'</b> ('.$first_fleet['n_ships'].' '.constant($game->sprache("TEXT27")).')</td>
+              </tr>
     ');
     
     while($fleet = $db->fetchrow($q_fleets)) {
         $game->out('
-        <tr>
-          <td><input type="radio" name="to_fleet" value="'.$fleet['fleet_id'].'" checked="checked"></td>
-          <td><b>'.$fleet['fleet_name'].'</b> ('.$fleet['n_ships'].' '.constant($game->sprache("TEXT27")).')</td>
-        </tr>
+              <tr>
+                <td><input type="radio" name="to_fleet" value="'.$fleet['fleet_id'].'" checked="checked"></td>
+                <td><b>'.$fleet['fleet_name'].'</b> ('.$fleet['n_ships'].' '.constant($game->sprache("TEXT27")).')</td>
+              </tr>
         ');
     }
     
     $game->out('
+            </table>
+            <br>
+            <input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT20")).'" onClick="return window.location.href = \''.parse_link($return_to).'\'">&nbsp;&nbsp;<input class="button" type="submit" name="submit_button" value="'.constant($game->sprache("TEXT28")).'">
+          </td>
+        </tr>
+        </form>
       </table>
-      <br>
-      <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT20")).'" onClick="return window.location.href = \''.parse_link($return_to).'\'">&nbsp;&nbsp;<input class="button" type="submit" name="submit_button" value="'.constant($game->sprache("TEXT28")).'"></center>
     </td>
   </tr>
-  </form>
 </table>
     ');
 }
