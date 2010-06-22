@@ -467,6 +467,7 @@ switch($step) {
 
     case 'start_setup':
         $game->out('
+<table class="style_outer" align="center" border="0" cellpadding="2" cellspacing="2" width="450"><tr><td>
 <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
   <form name="traderoute_form" method="post" action="'.parse_link('a=ship_traderoute').'" onSubmit="return document.send_form.submit.disabled = true;">
   <input type="hidden" name="dest" value="'.$dest.'">
@@ -619,11 +620,13 @@ switch($step) {
   </tr>
   </form>
 </table>
+</td></tr></table>
       ');
     break;
 
     case 'dest_setup':
         $game->out('
+<table class="style_outer" align="center" border="0" cellpadding="2" cellspacing="2" width="450"><tr><td>
 <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
   <form name="traderoute_form" method="post" action="'.parse_link('a=ship_traderoute').'" onSubmit="return document.send_form.submit.disabled = true;">
   <input type="hidden" name="dest" value="'.$dest.'">
@@ -778,6 +781,7 @@ switch($step) {
   </tr>
   </form>
 </table>
+</td></tr></table>
       ');
     break;
 
@@ -802,6 +806,7 @@ switch($step) {
         }
 
         $game->out('
+<table class="style_outer" align="center" border="0" cellpadding="2" cellspacing="2" width="450"><tr><td>
 <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
   <form name="traderoute_form" method="post" action="'.parse_link('a=ship_traderoute').'" onSubmit="return document.send_form.submit.disabled = true;">
   <input type="hidden" name="dest" value="'.$dest.'">
@@ -831,6 +836,7 @@ switch($step) {
   </tr>
   </form>
 </table>
+</td></tr></table>
       ');
     break;
 }

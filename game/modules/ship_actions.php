@@ -23,7 +23,7 @@
 // New battle duration: colo 12 ticks bombs 6 ticks
 
 $game->init_player();
-$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span></center><br>');
+$game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>');
 
 
 if(empty($_REQUEST['step'])) {
@@ -334,8 +334,11 @@ switch($step) {
         }
     
         $game->out('
-<table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
-  <form name="send_form" method="post" action="'.parse_link('a=ship_actions&step=surrender_exec&user_id='.$user_id).'" onSubmit="return document.send_form.submit.disabled = true;">
+<table class="style_outer" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
+  <tr>
+    <td>
+      <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
+        <form name="send_form" method="post" action="'.parse_link('a=ship_actions&step=surrender_exec&user_id='.$user_id).'" onSubmit="return document.send_form.submit.disabled = true;">
         ');
 
         $fleet_option_html = '';
@@ -346,11 +349,11 @@ switch($step) {
         }
 
         $game->out('
-  <tr>
-    <td>
-      '.constant($game->sprache("TEXT17")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id)).'"><b>'.$planet['planet_name'].'</b></a> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')'.( ($planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT18")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['user_id']).'"><b>'.$planet['user_name'].'</b></a>' : '' ).'<br><br>
-      '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
-      '.constant($game->sprache("TEXT20")).( ($planetary_dest) ? constant($game->sprache("TEXT21")) : constant($game->sprache("TEXT22")) ).constant($game->sprache("TEXT23")));
+        <tr>
+          <td>
+            '.constant($game->sprache("TEXT17")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id)).'"><b>'.$planet['planet_name'].'</b></a> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')'.( ($planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT18")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['user_id']).'"><b>'.$planet['user_name'].'</b></a>' : '' ).'<br><br>
+            '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
+            '.constant($game->sprache("TEXT20")).( ($planetary_dest) ? constant($game->sprache("TEXT21")) : constant($game->sprache("TEXT22")) ).constant($game->sprache("TEXT23")));
 
         if($in_transporter) {
             $resource_1 = $resource_2 = $resource_3 = $resource_4 = $unit_1 = $unit_2 = $unit_3 = $unit_4 = $unit_5 = $unit_6 = 0;
@@ -392,11 +395,14 @@ switch($step) {
         }
 
         $game->out('
-      <br>
-      <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
+            <br>
+            <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
+          </td>
+        </tr>
+        </form>
+      </table>
     </td>
   </tr>
-  </form>
 </table>
       ');
     break;
@@ -427,7 +433,7 @@ switch($step) {
                 VALUES ('.$game->player['user_id'].', 0, 0, '.$planet_id.', '.$planet_id.', 0, 0, 0, '.$ACTUAL_TICK.', '.($ACTUAL_TICK + $duration).', 1, '.$action_code.', "'.serialize($action_data).'")';
                 
         if(!$db->query($sql)) {
-        	message(DATABASE_ERROR, 'Could not insert new movement data');
+            message(DATABASE_ERROR, 'Could not insert new movement data');
         }
 
         $new_move_id = $db->insert_id();
@@ -472,14 +478,18 @@ switch($step) {
 
 
         $game->out('
-            <form name="send_form" method="post" action="'.parse_link('a=ship_actions&step=survey_exec').'" onSubmit="return document.send_form.submit.disabled = true;">    		
-            <table class="style_inner" align="center" border="0" rules="rows" cellpadding="2" cellspacing="2" width="450">');
+<table class="style_outer" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
+  <tr>
+    <td>
+      <table class="style_inner" align="center" border="0" rules="rows" cellpadding="2" cellspacing="2" width="450">
+      <form name="send_form" method="post" action="'.parse_link('a=ship_actions&step=survey_exec').'" onSubmit="return document.send_form.submit.disabled = true;">');
+
         // Geological analysiss
         $game->out('
-              <tr>
-                <td><input type="radio" name="mission" value="survey" checked="checked"></td>
-                <td>'.constant($game->sprache("TEXT58")).'</td>
-              </tr>');
+        <tr>
+          <td><input type="radio" name="mission" value="survey" checked="checked"></td>
+          <td>'.constant($game->sprache("TEXT58")).'</td>
+        </tr>');
 
         /**
          * Missions for Settler's planets
@@ -499,10 +509,10 @@ switch($step) {
             }
 
             $game->out('
-              <tr>
-                <td><input type="radio" name="mission" value="first_contact" '.($all_clear ? '' : 'disabled="disabled"').'></td>
-                <td>'.constant($game->sprache("TEXT61")).'<br><br>'.$requirement_text.'</td>
-              </tr>');
+        <tr>
+          <td><input type="radio" name="mission" value="first_contact" '.($all_clear ? '' : 'disabled="disabled"').'></td>
+          <td>'.constant($game->sprache("TEXT61")).'<br><br>'.$requirement_text.'</td>
+        </tr>');
             // Diplomatic relationships
             $requirement_text = constant($game->sprache("TEXT63"));
             $results = meet_mission_req($myship['ship_id'], 0, 5, 5, 2, 0, 0);
@@ -516,10 +526,10 @@ switch($step) {
                 $requirement_text .= requirements_str_bad(0, 5, 5, 2, 0, 0, $results);
             }
             $game->out('
-              <tr>
-                <td><input type="radio" name="mission" value="diplomatic" '.($all_clear ? '' : 'disabled="disabled"').'></td>
-                <td>'.constant($game->sprache("TEXT64")).'<br><br>Not yet available!!!<br>'.$requirement_text.'</td>
-              </tr>');
+        <tr>
+          <td><input type="radio" name="mission" value="diplomatic" '.($all_clear ? '' : 'disabled="disabled"').'></td>
+          <td>'.constant($game->sprache("TEXT64")).'<br><br>Not yet available!!!<br>'.$requirement_text.'</td>
+        </tr>');
             switch($game->player['user_race']){
                 case 0: // Federation
                 break;
@@ -559,11 +569,18 @@ switch($step) {
               </tr>');
         */
         $game->out('
-            </table><br><br><br>
+        <tr>
+          <td colspan="2" align="center">
             <input type="hidden" name="fleets[]" value="'.$fleets[0]['fleet_id'].'">
             <input type="hidden" name="step" value="survey_exec">
-            <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
-            </form>');
+            <input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'">
+          </td>
+        </tr>
+        </form>
+      </table>
+    </td>
+  </tr>
+</table>');
     break;
 
 
@@ -644,7 +661,7 @@ switch($step) {
                 }
                 
                 $action_data = array((int)$_POST['ship_id']);
-		$duration=12;
+                $duration=12;
             break;
         }
 
@@ -688,8 +705,11 @@ switch($step) {
         }
 
         $game->out('
-<table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
-  <form name="send_form" method="post" action="'.parse_link('a=ship_actions&user_id='.$user_id).'" onSubmit="return document.send_form.submit.disabled = true;">
+<table class="style_outer" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
+  <tr>
+    <td>
+      <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
+        <form name="send_form" method="post" action="'.parse_link('a=ship_actions&user_id='.$user_id).'" onSubmit="return document.send_form.submit.disabled = true;">
         ');
 
         $fleet_option_html = '';
@@ -700,18 +720,18 @@ switch($step) {
         }
 
         $game->out('
-  <tr>
-    <td>
-      '.constant($game->sprache("TEXT17")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id)).'"><b>'.$planet['planet_name'].'</b></a> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')'.( ($planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT18")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['user_id']).'"><b>'.$planet['user_name'].'</b></a>' : '' ).'<br><br>
-      '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
-      <b>'.constant($game->sprache("TEXT38")).'</b><br>
+        <tr>
+          <td>
+            '.constant($game->sprache("TEXT17")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id)).'"><b>'.$planet['planet_name'].'</b></a> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')'.( ($planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT18")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['user_id']).'"><b>'.$planet['user_name'].'</b></a>' : '' ).'<br><br>
+            '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
+            <b>'.constant($game->sprache("TEXT38")).'</b><br>
         ');
         
         if($planetary_dest) {
             $game->out(constant($game->sprache("TEXT39")).'<br><br>
-      <input type="radio" name="step" value="attack_normal_exec" checked="checked" onClick="return document.send_form.submit.value = \''.constant($game->sprache("TEXT29")).'\';">&nbsp;<b>'.constant($game->sprache("TEXT40")).'</b><br>
-      <input type="radio" name="step" value="attack_bomb_setup" onClick="return document.send_form.submit.value = \''.constant($game->sprache("TEXT41")).'\';">&nbsp;<b>'.constant($game->sprache("TEXT42")).'</b><br>
-      <input type="radio" name="step" value="attack_invade_setup"'.( (!$in_colo) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT43")).'<br>' : ' onClick="return document.send_form.submit.value = \''.constant($game->sprache("TEXT41")).'\';">&nbsp;<b>'.constant($game->sprache("TEXT43")).'</b><br>' )
+            <input type="radio" name="step" value="attack_normal_exec" checked="checked" onClick="return document.send_form.submit.value = \''.constant($game->sprache("TEXT29")).'\';">&nbsp;<b>'.constant($game->sprache("TEXT40")).'</b><br>
+            <input type="radio" name="step" value="attack_bomb_setup" onClick="return document.send_form.submit.value = \''.constant($game->sprache("TEXT41")).'\';">&nbsp;<b>'.constant($game->sprache("TEXT42")).'</b><br>
+            <input type="radio" name="step" value="attack_invade_setup"'.( (!$in_colo) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT43")).'<br>' : ' onClick="return document.send_form.submit.value = \''.constant($game->sprache("TEXT41")).'\';">&nbsp;<b>'.constant($game->sprache("TEXT43")).'</b><br>' )
             );
         }
         else {
@@ -758,14 +778,17 @@ switch($step) {
         }
 
         $game->out('
-      <br>
-      <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
+            <br>
+            <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
+          </td>
+        </tr>
+        </form>
+      </table>
     </td>
   </tr>
-  </form>
 </table>
       ');
-    break;    	
+    break;
     
     case 'attack_bomb_setup':
         if($atkptc_present) {
@@ -781,8 +804,11 @@ switch($step) {
         }
 
         $game->out('
-<table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
-  <form name="send_form" method="post" action="'.parse_link('a=ship_actions&step=attack_bomb_exec&user_id='.$user_id).'" onSubmit="return document.send_form.submit.disabled = true;">
+<table class="style_outer" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
+  <tr>
+    <td>
+      <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
+        <form name="send_form" method="post" action="'.parse_link('a=ship_actions&step=attack_bomb_exec&user_id='.$user_id).'" onSubmit="return document.send_form.submit.disabled = true;">
         ');
 
         $fleet_option_html = '';
@@ -793,20 +819,23 @@ switch($step) {
         }
 
         $game->out('
-  <tr>
-    <td>
-      '.constant($game->sprache("TEXT17")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id)).'"><b>'.$planet['planet_name'].'</b></a> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')'.( ($planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT18")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['user_id']).'"><b>'.$planet['user_name'].'</b></a>' : '' ).'<br><br>
-      '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
-      '.constant($game->sprache("TEXT45")).'
-      <br><br>
-      <input type="radio" name="focus" value="0" checked="checked">&nbsp;'.constant($game->sprache("TEXT46")).'<br>
-      <input type="radio" name="focus" value="1">&nbsp;'.constant($game->sprache("TEXT47")).'<br>
-      <input type="radio" name="focus" value="2">&nbsp;'.constant($game->sprache("TEXT48")).'<br>
-      <input type="radio" name="focus" value="3">&nbsp;'.constant($game->sprache("TEXT49")).'<br><br>
-      <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
+        <tr>
+          <td>
+            '.constant($game->sprache("TEXT17")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id)).'"><b>'.$planet['planet_name'].'</b></a> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')'.( ($planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT18")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['user_id']).'"><b>'.$planet['user_name'].'</b></a>' : '' ).'<br><br>
+            '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
+            '.constant($game->sprache("TEXT45")).'
+            <br><br>
+            <input type="radio" name="focus" value="0" checked="checked">&nbsp;'.constant($game->sprache("TEXT46")).'<br>
+            <input type="radio" name="focus" value="1">&nbsp;'.constant($game->sprache("TEXT47")).'<br>
+            <input type="radio" name="focus" value="2">&nbsp;'.constant($game->sprache("TEXT48")).'<br>
+            <input type="radio" name="focus" value="3">&nbsp;'.constant($game->sprache("TEXT49")).'<br><br>
+            <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
+          </td>
+        </tr>
+        </form>
+      </table>
     </td>
   </tr>
-  </form>
 </table>
       ');
     break;
@@ -829,8 +858,11 @@ switch($step) {
         }
 
         $game->out('
-<table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
-  <form name="send_form" method="post" action="'.parse_link('a=ship_actions&step=attack_invade_exec&user_id='.$user_id).'" onSubmit="return document.send_form.submit.disabled = true;">
+<table class="style_outer" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
+  <tr>
+    <td>
+      <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
+        <form name="send_form" method="post" action="'.parse_link('a=ship_actions&step=attack_invade_exec&user_id='.$user_id).'" onSubmit="return document.send_form.submit.disabled = true;">
         ');
 
         $fleet_option_html = '';
@@ -858,25 +890,25 @@ switch($step) {
         }
 
         $game->out('
-  <tr>
-    <td>
-      '.constant($game->sprache("TEXT17")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id)).'"><b>'.$planet['planet_name'].'</b></a> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')'.( ($planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT18")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['user_id']).'"><b>'.$planet['user_name'].'</b></a>' : '' ).'<br><br>
-      '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
-      '.constant($game->sprache("TEXT50")).'<br><br>
-      
-      <table border="0" cellpadding="2" cellspacing="2">
         <tr>
-          <td width="20" align="right"><input type="radio" name="ship_id" value="'.$first_cship['ship_id'].'" checked="checked"></td>
-          <td width="350" align="left"><b>'.$first_cship['name'].'</b> ('.$first_cship['hitpoints'].'/'.$first_cship['max_hitpoints'].', Exp: '.$first_cship['experience'].')<br>'.constant($game->sprache("TEXT51")).' '.$first_cship['unit_1'].'/'.$first_cship['unit_2'].'/'.$first_cship['unit_3'].'/'.$first_cship['unit_4'].'</td>
-        </tr>
+          <td>
+            '.constant($game->sprache("TEXT17")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id)).'"><b>'.$planet['planet_name'].'</b></a> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')'.( ($planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT18")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['user_id']).'"><b>'.$planet['user_name'].'</b></a>' : '' ).'<br><br>
+            '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
+            '.constant($game->sprache("TEXT50")).'<br><br>
+      
+            <table border="0" cellpadding="2" cellspacing="2">
+              <tr>
+                <td width="20" align="right"><input type="radio" name="ship_id" value="'.$first_cship['ship_id'].'" checked="checked"></td>
+                <td width="350" align="left"><b>'.$first_cship['name'].'</b> ('.$first_cship['hitpoints'].'/'.$first_cship['max_hitpoints'].', Exp: '.$first_cship['experience'].')<br>'.constant($game->sprache("TEXT51")).' '.$first_cship['unit_1'].'/'.$first_cship['unit_2'].'/'.$first_cship['unit_3'].'/'.$first_cship['unit_4'].'</td>
+              </tr>
         ');
 
         while($cship = $db->fetchrow($q_cships)) {
             $game->out('
-        <tr>
-          <td align="right"><input type="radio" name="ship_id" value="'.$cship['ship_id'].'"></td>
-          <td align="left"><b>'.$cship['name'].'</b> ('.$cship['hitpoints'].'/'.$cship['max_hitpoints'].', Exp: '.$cship['experience'].')<br>'.constant($game->sprache("TEXT51")).' '.$cship['unit_1'].'/'.$cship['unit_2'].'/'.$cship['unit_3'].'/'.$cship['unit_4'].'</td>
-        </tr>
+              <tr>
+                <td align="right"><input type="radio" name="ship_id" value="'.$cship['ship_id'].'"></td>
+                <td align="left"><b>'.$cship['name'].'</b> ('.$cship['hitpoints'].'/'.$cship['max_hitpoints'].', Exp: '.$cship['experience'].')<br>'.constant($game->sprache("TEXT51")).' '.$cship['unit_1'].'/'.$cship['unit_2'].'/'.$cship['unit_3'].'/'.$cship['unit_4'].'</td>
+              </tr>
             ');
         }
         
@@ -923,11 +955,14 @@ switch($step) {
         }
 
         $game->out('
-      <br>
-      <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
+            <br>
+            <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
+          </td>
+        </tr>
+        </form>
+      </table>
     </td>
   </tr>
-  </form>
 </table>
       ');
     break;
@@ -1033,8 +1068,11 @@ switch($step) {
         }
 
         $game->out('
-<table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
-  <form name="send_form" method="post" action="'.parse_link('a=ship_actions&step=colo_exec').'" onSubmit="return document.send_form.submit.disabled = true;">
+<table class="style_outer" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
+  <tr>
+    <td>
+      <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
+        <form name="send_form" method="post" action="'.parse_link('a=ship_actions&step=colo_exec').'" onSubmit="return document.send_form.submit.disabled = true;">
         ');
 
         $fleet_option_html = '';
@@ -1062,36 +1100,39 @@ switch($step) {
         }
 
         $game->out('
-  <tr>
-    <td>
-      '.constant($game->sprache("TEXT17")).' '.constant($game->sprache("TEXT56")).' ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')
-      '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
-      <input type="radio" name="type" value="terraform" '.(($planet['planet_type'] != 'd') ? 'disabled="disabled"' : '&nbsp;').'>'.constant($game->sprache("TEXT59")).' <img src='.$game->GFX_PATH.'menu_latinum_small.gif>.<br><br>
-      <input type="radio" name="type" value="colony" checked="checked">'.constant($game->sprache("TEXT57")).'<br><br>
-
-      <table border="0" cellpadding="2" cellspacing="2">
         <tr>
-          <td width="20" align="right"><input type="radio" name="ship_id" value="'.$first_cship['ship_id'].'" checked="checked"></td>
-          <td width="350" align="left"><b>'.$first_cship['name'].'</b> ('.$first_cship['hitpoints'].'/'.$first_cship['max_hitpoints'].', Exp: '.$first_cship['experience'].')<br>'.constant($game->sprache("TEXT51")).' '.$first_cship['unit_1'].'/'.$first_cship['unit_2'].'/'.$first_cship['unit_3'].'/'.$first_cship['unit_4'].'</td>
-        </tr>
+          <td>
+            '.constant($game->sprache("TEXT17")).' '.constant($game->sprache("TEXT56")).' ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')
+            '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
+            <input type="radio" name="type" value="terraform" '.(($planet['planet_type'] != 'd') ? 'disabled="disabled"' : '&nbsp;').'>'.constant($game->sprache("TEXT59")).' <img src='.$game->GFX_PATH.'menu_latinum_small.gif>.<br><br>
+            <input type="radio" name="type" value="colony" checked="checked">'.constant($game->sprache("TEXT57")).'<br><br>
+
+            <table border="0" cellpadding="2" cellspacing="2">
+              <tr>
+                <td width="20" align="right"><input type="radio" name="ship_id" value="'.$first_cship['ship_id'].'" checked="checked"></td>
+                <td width="350" align="left"><b>'.$first_cship['name'].'</b> ('.$first_cship['hitpoints'].'/'.$first_cship['max_hitpoints'].', Exp: '.$first_cship['experience'].')<br>'.constant($game->sprache("TEXT51")).' '.$first_cship['unit_1'].'/'.$first_cship['unit_2'].'/'.$first_cship['unit_3'].'/'.$first_cship['unit_4'].'</td>
+              </tr>
         ');
 
         while($cship = $db->fetchrow($q_cships)) {
             $game->out('
-        <tr>
-          <td align="right"><input type="radio" name="ship_id" value="'.$cship['ship_id'].'"></td>
-          <td align="left"><b>'.$cship['name'].'</b> ('.$cship['hitpoints'].'/'.$cship['max_hitpoints'].', Exp: '.$cship['experience'].')<br>'.constant($game->sprache("TEXT51")).' '.$cship['unit_1'].'/'.$cship['unit_2'].'/'.$cship['unit_3'].'/'.$cship['unit_4'].'</td>
-        </tr>
+              <tr>
+                <td align="right"><input type="radio" name="ship_id" value="'.$cship['ship_id'].'"></td>
+                <td align="left"><b>'.$cship['name'].'</b> ('.$cship['hitpoints'].'/'.$cship['max_hitpoints'].', Exp: '.$cship['experience'].')<br>'.constant($game->sprache("TEXT51")).' '.$cship['unit_1'].'/'.$cship['unit_2'].'/'.$cship['unit_3'].'/'.$cship['unit_4'].'</td>
+              </tr>
             ');
         }
 
         $game->out('
-      </table><br><br>
-      <br>
-      <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
+            </table><br><br>
+            <br>
+            <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
+          </td>
+        </tr>
+        </form>
+      </table>
     </td>
   </tr>
-  </form>
 </table>
       ');
     break;

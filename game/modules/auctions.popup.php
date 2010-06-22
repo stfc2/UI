@@ -102,7 +102,10 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 
 <body bgcolor="#000000" text="#DDDDDD"  background="'.$config['site_url'].'/gfx/bg_stars1.gif">
 
-  <table class="style_inner" width="550" align="center" border="0" cellpadding="2" cellspacing="0">
+  <table class="style_outer" width="550" align="center" border="0" cellpadding="2" cellspacing="2">
+    <tr>
+      <td>
+        <table class="style_inner" width="550" align="center" border="0" cellpadding="2" cellspacing="2">
     
 ';
 
@@ -134,7 +137,7 @@ else { echo constant($game->sprache("TEXT6")); }
 
 
 
-echo '</table></body>
+echo '</table></td></tr></table></body>
 </html>';
 
 $db->close();
