@@ -268,19 +268,25 @@ elseif(!empty($_POST['owner_change'])) {
     }
 
     $game->out('
-<table style="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="2">
-  <form method="post" action="'.parse_link('a=alliance_admin').'">
-  <tr height="5"><td></td></tr>
+<table style="style_outer" width="300" align="center" border="0" cellpadding="1" cellspacing="1">
   <tr>
-    <td align="center">
-      '.constant($game->sprache("TEXT9")).'<a href="'.parse_link('a=stats&a2=viewplayer&id='.$user_id).'">'.$user_data['user_name'].'</a>'.constant($game->sprache("TEXT11")).'<br><br>
-      <input class="button" type="button" value="'.constant($game->sprache("TEXT12")).'" onClick="return window.history.back();">&nbsp;&nbsp;
-      <input class="button" type="submit" name="owner_change_confirm" value="'.constant($game->sprache("TEXT13")).'">
+    <td>
+      <table style="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="2">
+        <form method="post" action="'.parse_link('a=alliance_admin').'">
+        <tr height="5"><td></td></tr>
+        <tr>
+          <td align="center">
+            '.constant($game->sprache("TEXT9")).'<a href="'.parse_link('a=stats&a2=viewplayer&id='.$user_id).'">'.$user_data['user_name'].'</a>'.constant($game->sprache("TEXT11")).'<br><br>
+            <input class="button" type="button" value="'.constant($game->sprache("TEXT12")).'" onClick="return window.history.back();">&nbsp;&nbsp;
+            <input class="button" type="submit" name="owner_change_confirm" value="'.constant($game->sprache("TEXT13")).'">
+          </td>
+        </tr>
+        <tr height="5"><td></td></tr>
+        <input type="hidden" name="user_id" value="'.$user_id.'">
+        </form>
+      </table>
     </td>
   </tr>
-  <tr height="5"><td></td></tr>
-  <input type="hidden" name="user_id" value="'.$user_id.'">
-  </form>
 </table>
     ');
 }
@@ -309,21 +315,20 @@ elseif(!empty($_POST['settings_submit'])) {
 
     if($_POST['alliance_tag']!=$ally_tag['alliance_tag']) {
        
-	$sql = 'SELECT alliance_id
-	        FROM alliance
-	        WHERE alliance_tag = "'.$_POST['alliance_tag'].'"';
-	              
-      if(($ally_exists = $db->queryrow($sql)) === false) {
-          message(DATABASE_ERROR, 'Could not query alliance name/tag data');
-      }
+        $sql = 'SELECT alliance_id
+                FROM alliance
+                WHERE alliance_tag = "'.$_POST['alliance_tag'].'"';
+          
+        if(($ally_exists = $db->queryrow($sql)) === false) {
+            message(DATABASE_ERROR, 'Could not query alliance name/tag data');
+        }
     
-      if(!empty($ally_exists['alliance_id'])) {
-          message(NOTICE, costant($game->sprache("TEXT15")));
-      }
-
+        if(!empty($ally_exists['alliance_id'])) {
+            message(NOTICE, costant($game->sprache("TEXT15")));
+        }
     }
 
-    // 	Removed as unnecessary by Mojo1987
+    // Removed as unnecessary by Mojo1987
     //'.( (!empty($_POST['alliance_password'])) ? 'alliance_password = "'.md5($_POST['alliance_password']).'",' : '' ).'remove unnecessary because due to application
 
     $sql = 'UPDATE alliance
@@ -334,7 +339,7 @@ elseif(!empty($_POST['settings_submit'])) {
                 alliance_logo = "'.addslashes($_POST['alliance_logo']).'",
                 alliance_homepage = "'.addslashes($_POST['alliance_homepage']).'",
                 alliance_irc = "'.addslashes($_POST['alliance_irc']).'",
-	        alliance_application_text = "'.str_replace("\n", '<br>', htmlspecialchars($_POST['alliance_application_text'])).'"
+                alliance_application_text = "'.str_replace("\n", '<br>', htmlspecialchars($_POST['alliance_application_text'])).'"
             WHERE alliance_id = '.$game->player['user_alliance'];
             
     if(!$db->query($sql)) {
@@ -353,10 +358,10 @@ elseif(isset($_GET['settings'])) {
     }
 
     $game->out('
-<table class="style_outer" width="380" align="center" border="0" cellpadding="2" cellspacing="4">
+<table class="style_outer" width="380" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td align="center">
-      <span style="font-size: 12pt; font-weight: bold;">'.$adata['alliance_name'].' ['.$adata['alliance_tag'].']</span><br><br><br>
+      <span style="font-size: 12pt; font-weight: bold;">'.$adata['alliance_name'].' ['.$adata['alliance_tag'].']</span><br><br>
       
       <table class="style_inner" width="350" align="center" border="0" cellpadding="2" cellspacing="2">
         <form method="post" action="'.parse_link('a=alliance_admin').'">
@@ -470,20 +475,25 @@ elseif(!empty($_POST['delete_confirm'])) {
 }
 elseif(isset($_GET['delete'])) {
     $game->out('
-<table class="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="2">
-  <form method="post" action="'.parse_link('a=alliance_admin').'">
-  <tr height="5"><td></td></tr>
+<table style="style_outer" width="300" align="center" border="0" cellpadding="1" cellspacing="1">
   <tr>
-    <td align="center">
-      '.constant($game->sprache("TEXT27")).'<br><br>
-      <input class="button" type="button" value="'.constant($game->sprache("TEXT12")).'" onClick="return window.history.back();">&nbsp;&nbsp;
-      <input class="button" type="submit" name="delete_confirm" value="'.constant($game->sprache("TEXT13")).'">
+    <td>
+      <table class="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="2">
+        <form method="post" action="'.parse_link('a=alliance_admin').'">
+        <tr height="5"><td></td></tr>
+        <tr>
+          <td align="center">
+            '.constant($game->sprache("TEXT27")).'<br><br>
+            <input class="button" type="button" value="'.constant($game->sprache("TEXT12")).'" onClick="return window.history.back();">&nbsp;&nbsp;
+            <input class="button" type="submit" name="delete_confirm" value="'.constant($game->sprache("TEXT13")).'">
+          </td>
+        </tr>
+        <tr height="5"><td></td></tr>
+        </form>
+      </table>
     </td>
   </tr>
-  <tr height="5"><td></td></tr>
-  </form>
-</table>
-    ');
+</table>');
 }
 
 ?>

@@ -202,7 +202,7 @@ $owntaxDay=GetOwnRess(1,$adata['taxes']);
 <table width="430" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
     <td align="center">
-      <span style="font-size: 12pt; font-weight: bold;">'.$adata['alliance_name'].' ['.$adata['alliance_tag'].']</span><br>
+      <span style="font-size: 12pt; font-weight: bold;">'.$adata['alliance_name'].' ['.$adata['alliance_tag'].']</span><br><br>
       
 
       <table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
@@ -592,7 +592,7 @@ $owntaxDay=GetOwnRess(1,$adata['taxes']);
 <table width="430" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
     <td align="center">
-      <span style="font-size: 12pt; font-weight: bold;">'.$adata['alliance_name'].' ['.$adata['alliance_tag'].']</span><br>
+      <span style="font-size: 12pt; font-weight: bold;">'.$adata['alliance_name'].' ['.$adata['alliance_tag'].']</span><br><br>
       
 
       <table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">

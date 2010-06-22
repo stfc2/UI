@@ -120,12 +120,17 @@ if(isset($_GET['member_list'])) {
 
     $game->out('
 
-<table class="style_outer" width="380" align="center" border="0" cellpadding="2" cellspacing="4">
+<table class="style_outer" width="350" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td align="center">
-      <span style="font-size: 12pt; font-weight: bold;">'.$alliance['alliance_name'].' ['.$alliance['alliance_tag'].']</span><br><br><br>
+      <span style="font-size: 12pt; font-weight: bold;">'.$alliance['alliance_name'].' ['.$alliance['alliance_tag'].']</span><br><br>
       <table width="350" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="175" align="left"><i>'.constant($game->sprache("TEXT4")).'</i></td><td width="175" align="right">'.( ($game->player['user_alliance_rights8'] == 1) ? '[<a href="'.( ($game->option_retr('alliance_status_member')==1) ? ''.parse_link('a=alliance_main&member_list=2').'' : ''.parse_link('a=alliance_main&member_list=1').'' ).'">'.constant($game->sprache("TEXT5")).'</a>]</td></tr>' : '' ).'
+        <tr>
+          <td align="left"><i>'.constant($game->sprache("TEXT4")).'</i></td>
+          <td align="right">
+            '.( ($game->player['user_alliance_rights8'] == 1) ? '[<a href="'.( ($game->option_retr('alliance_status_member')==1) ? ''.parse_link('a=alliance_main&member_list=2').'' : ''.parse_link('a=alliance_main&member_list=1').'' ).'">'.constant($game->sprache("TEXT5")).'</a>]' : '' ).'
+          </td>
+        </tr>
       </table>
    ');
 
@@ -427,18 +432,24 @@ elseif(isset($_GET['leave'])) {
     }
 
     $game->out('
-<table class="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="2">
-  <form method="post" action="'.parse_link('a=alliance_main').'">
-  <tr height="5"><td></td></tr>
+<table class="style_outer" width="300" align="center" border="0" cellpadding="1" cellspacing="1">
   <tr>
-    <td align="center">
-      '.constant($game->sprache("TEXT49")).'<br><br>
-      <input class="button" type="button" value="'.constant($game->sprache("TEXT50")).'" onClick="return window.history.back();">&nbsp;&nbsp;
-      <input class="button" type="submit" name="leave_confirm" value="'.constant($game->sprache("TEXT51")).'">
+    <td>
+      <table class="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="2">
+        <form method="post" action="'.parse_link('a=alliance_main').'">
+        <tr height="5"><td></td></tr>
+        <tr>
+          <td align="center">
+            '.constant($game->sprache("TEXT49")).'<br><br>
+            <input class="button" type="button" value="'.constant($game->sprache("TEXT50")).'" onClick="return window.history.back();">&nbsp;&nbsp;
+            <input class="button" type="submit" name="leave_confirm" value="'.constant($game->sprache("TEXT51")).'">
+          </td>
+        </tr>
+        <tr height="5"><td></td></tr>
+        </form>
+      </table>
     </td>
   </tr>
-  <tr height="5"><td></td></tr>
-  </form>
 </table>
     ');
 }

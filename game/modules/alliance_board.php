@@ -107,7 +107,7 @@ if(!empty($_POST['new_thread_submit'])) {
 }
 elseif(isset($_GET['new_thread'])) {
     $game->out('
-<table class="style_outer" width="500" align="center" border="0" cellpadding="2" cellspacing="4">
+<table class="style_outer" width="500" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
@@ -201,7 +201,7 @@ elseif(!empty($_GET['new_post'])) {
     }
 
     $game->out('
-<table class="style_outer" width="500" align="center" border="0" cellpadding="2" cellspacing="4">
+<table class="style_outer" width="500" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
@@ -321,7 +321,7 @@ elseif(!empty($_GET['edit_post'])) {
     }
 
     $game->out('
-<table class="style_outer" width="500" align="center" border="0" cellpadding="2" cellspacing="4">
+<table class="style_outer" width="500" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
@@ -531,7 +531,7 @@ elseif(!empty($_GET['show_thread'])) {
     $next_start = 0;
 
     $game->out('
-<table class="style_outer" width="500" align="center" border="0" cellpadding="2" cellspacing="4">
+<table class="style_outer" width="500" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
@@ -693,7 +693,7 @@ else {
     }
 
     $game->out('
-<table class="style_outer" width="500" align="center" border="0" cellpadding="2" cellspacing="4">
+<table class="style_outer" width="500" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>

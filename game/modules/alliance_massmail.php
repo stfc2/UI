@@ -100,10 +100,10 @@ if(!empty($_POST['mass_mail_submit'])) {
     redirect('a=alliance_main');
 }
     $game->out('
-<table class="style_outer" width="380" align="center" border="0" cellpadding="2" cellspacing="4">
+<table class="style_outer" width="350" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td align="center">
-      <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br><br>
+      <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
 
       <table class="style_inner" width="350" align="center" border="0" cellpadding="2" cellspacing="2">
         <form method="post" action="'.parse_link('a=alliance_massmail').'">

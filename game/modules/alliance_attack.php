@@ -45,10 +45,10 @@ if($game->player['user_alliance_rights3']!=1) {
 }
 
 $game->out('
-<table class="style_outer" width="550" align="center" border="0" cellpadding="2" cellspacing="4">
+<table class="style_outer" width="520" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td align="center">
-      <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br><br>
+      <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
       <table width="520" align="center" border="0" cellpadding="0" cellspacing="2">
         <tr><td width="520" align="left"><i>'.constant($game->sprache("TEXT3")).'</i></td></tr>
       </table>
