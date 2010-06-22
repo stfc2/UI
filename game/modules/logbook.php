@@ -405,16 +405,18 @@ else {
 
     $game->out('
 <br>
-<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
+<table width="90%" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
     <td>
-      <table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
+      <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" class="style_inner">
         <form method="post" action="'.parse_link('a=logbook').'" name="logbook">
         <tr>
-          <td width="280"><b>'.constant($game->sprache("TEXT20")).'</b></td>
-          <td width="40"><b>'.constant($game->sprache("TEXT21")).'</b></td>
-          <td width="115"><b>'.constant($game->sprache("TEXT22")).'</b></td>
-          <td width="15"><input name="check1" type="checkbox" onClick="flevToggleCheckboxes(\'logbook\',true,false)" value="'.constant($game->sprache("TEXT23")).'"></td>
+          <td width="2%"></td>
+          <td width="60%"><b>'.constant($game->sprache("TEXT20")).'</b></td>
+          <td width="10%"><b>'.constant($game->sprache("TEXT21")).'</b></td>
+          <td width="20%"><b>'.constant($game->sprache("TEXT22")).'</b></td>
+          <td width="5%"><input name="check1" type="checkbox" onClick="flevToggleCheckboxes(\'logbook\',true,false)" value="'.constant($game->sprache("TEXT23")).'"></td>
+          <td width="2%"></td>
         </tr>
         <tr height="2"><td></td></tr>
     ');
@@ -422,18 +424,25 @@ else {
     while($log_entry = $db->fetchrow($q_logs)) {
         if($log_entry['log_read'] == 1) {
             $read_start = $read_end = '';
+            $style = 'style_msgread';
         }
         else {
             $read_start = '<span style="color: #FFFF00; font-weight: bold;">';
             $read_end = '</span>';
+            $style = 'style_msgunread';
         }
 
         $game->out('
         <tr>
-          <td><a href="'.parse_link('a=logbook&show_log='.$log_entry['log_id']).'">'.$read_start.$log_entry['log_title'].$read_end.'</a></td>
-          <td>'.$log_types[$log_entry['log_type']].'</td>
-          <td>'.date('d.m.y H:i:s', $log_entry['log_date']).'</td>
-          <td align="center"><input type="checkbox" name="log_id[]" value="'.$log_entry['log_id'].'"></td>
+          <td width="2%"></td>
+          <td class="'.$style.'"><a href="'.parse_link('a=logbook&show_log='.$log_entry['log_id']).'">'.$read_start.$log_entry['log_title'].$read_end.'</a></td>
+          <td class="'.$style.'">'.$log_types[$log_entry['log_type']].'</td>
+          <td class="'.$style.'">'.date('d.m.y H:i', $log_entry['log_date']).'</td>
+          <td class="'.$style.'"><input type="checkbox" name="log_id[]" value="'.$log_entry['log_id'].'"></td>
+          <td width="2%"></td>
+        </tr>
+        <tr>
+          <td height="2" colspan="6"></td>
         </tr>
         ');
     }
@@ -444,13 +453,13 @@ else {
   </tr>
 </table>
 <br>
-<table width="450" align="center" border="0" cellpadding="1" cellspacing="1" class="style_outer">
+<table width="90%" align="center" border="0" cellpadding="1" cellspacing="1" class="style_outer">
   <tr>
     <td>
-      <table align="center" width="450" border="0" cellpadding="2" cellspacing="2" class="style_inner">
+      <table align="center" width="100%" border="0" cellpadding="2" cellspacing="2" class="style_inner">
         <tr>
-          <td width="120" align="left"><b>'.constant($game->sprache("TEXT24")).'</b></td>
-          <td width="330" align="right"><input class="button" type="submit" name="read_submit" value="'.constant($game->sprache("TEXT25")).'">&nbsp;&nbsp;<input class="button" type="submit" name="delete_submit" value="'.constant($game->sprache("TEXT26")).'"></td>
+          <td width="30%" align="left"><b>'.constant($game->sprache("TEXT24")).'</b></td>
+          <td width="70%" align="right"><input class="button" type="submit" name="read_submit" value="'.constant($game->sprache("TEXT25")).'">&nbsp;&nbsp;<input class="button" type="submit" name="delete_submit" value="'.constant($game->sprache("TEXT26")).'"></td>
         </tr>
         </form>
       </table>

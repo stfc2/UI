@@ -410,35 +410,25 @@ u) on u.user_id=m.sender WHERE (m.receiver = "'.$game->player['user_id'].'") AND
 
     if($inStat['messages'] != 0)
         $game->out('
-<table width="90%" border="0" cellpadding="2" cellspacing="2" class="style_outer">
+<table width="90%" border="0" cellpadding="1" cellspacing="1" class="style_outer">
   <tr>
     <td>
       <table width="100%" border="0" cellpadding="2" cellspacing="2" class="style_inner">
         <tr>
-          <td width="50%" align="left">'.constant($game->sprache("TEXT15")).'</td>
-          <td width="50%" align="right">
-            <input style="width: 120px;" type="submit" name="rremove" class="button" value="'.constant($game->sprache("TEXT16")).'"><br>
+          <td width="30%" align="left">'.constant($game->sprache("TEXT15")).'</td>
+          <td width="70%" align="right">
+            <input style="width: 120px;" type="submit" name="rremove" class="button" value="'.constant($game->sprache("TEXT16")).'">
             <input style="width: 120px;" type="submit" class="button" name="rarchiv" value="'.constant($game->sprache("TEXT17")).'">
           </td>
         </tr>
       </table>
     </td>
   </tr>
-  <tr>
-    <td height="5"></td>
-  </tr>
-  <tr>
-    <td width="100%" align="center">'.$links.'</td>
-  </tr>
-  <tr>
-    <td height="5"></td>
-  </tr>
-  <tr>
-    <td width="100%" align="center">'.$links2.'</td>
-  </tr>
-</table>');
+</table>
+    '.$links.'<br>
+    '.$links2.'<br>');
 
-	$game->out('	</form>');
+    $game->out('</form>');
 }
 
 //systembox
@@ -465,7 +455,7 @@ u) on u.user_id=m.sender WHERE (m.receiver = "'.$game->player['user_id'].'") AND
           <td width="19%"><b>'.constant($game->sprache("TEXT26")).'</b></td>
           <td width="5%"><input name="check1" type="checkbox" onClick="flevToggleCheckboxes(\'sysmessages\',true,false)"></td>
           <td width="2%"></td>
-        <tr>
+        </tr>
         <tr>
           <td height="6" colspan="6"></td>
         </tr>');
@@ -535,35 +525,25 @@ u) on u.user_id=m.sender WHERE (m.receiver = "'.$game->player['user_id'].'") AND
 
     if($sysStat['messages'] != 0)
     $game->out('
-<table width="90%" border="0" cellpadding="2" cellspacing="2" class="style_outer">
+<table width="90%" border="0" cellpadding="1" cellspacing="1" class="style_outer">
   <tr>
     <td>
       <table width="100%" border="0" cellpadding="2" cellspacing="2" class="style_inner">
         <tr>
-          <td width="50%" align="left">'.constant($game->sprache("TEXT15")).'</td>
-          <td width="50%" align="right">
-            <input style="width: 120px;" type="submit" name="rremove" class="button" value="'.constant($game->sprache("TEXT16")).'"><br>
+          <td width="30%" align="left">'.constant($game->sprache("TEXT15")).'</td>
+          <td width="70%" align="right">
+            <input style="width: 120px;" type="submit" name="rremove" class="button" value="'.constant($game->sprache("TEXT16")).'">
             <input style="width: 120px;" type="submit" class="button" name="rarchiv" value="'.constant($game->sprache("TEXT17")).'">
           </td>
         </tr>
       </table>
     </td>
   </tr>
-  <tr>
-    <td height="5"></td>
-  </tr>
-  <tr>
-    <td width="100%"align="center">'.$links.'</td>
-  </tr>
-  <tr>
-    <td height="5"></td>
-  </tr>
-  <tr>
-    <td width="100%" align="center">'.$links2.'</td>
-  </tr>
-</table>');
+</table>
+    '.$links.'<br>
+    '.$links2.'<br>');
 
-	$game->out('</form>');
+    $game->out('</form>');
 
 }
 
@@ -635,17 +615,7 @@ function outbox()
 
     if($outStat['messages'] != 0)
         $game->out('
-<table width="90%" border="0" cellpadding="2" cellspacing="2" class="style_outer">
-  <tr>
-    <td>
-      <table width="100%" border="0" cellpadding="2" cellspacing="2" class="style_inner">
-        <tr>
-          <td width="100%" align="center">'.$links.'</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>');
+          '.$links.'<br>');
 
 
     $game->out('</form>');
@@ -734,7 +704,7 @@ function archiv()
 
     if($archStat['messages'] != 0)
         $game->out('
-<table width="90%" border="0" cellpadding="2" cellspacing="2" class="style_outer">
+<table width="90%" border="0" cellpadding="1" cellspacing="1" class="style_outer">
   <tr>
     <td>
       <table width="100%" border="0" cellpadding="2" cellspacing="2" class="style_inner">
@@ -748,22 +718,12 @@ function archiv()
             </table>
           </td>
         </tr>
-        <tr>
-          <td height="5"></td>
-        </tr>
-        <tr>
-          <td width="100%" colspan="6" align="center">'.$links.'</td>
-        </tr>
-        <tr>
-          <td height="5" colspan="6"></td>
-        </tr>
-        <tr>
-          <td width="100%" colspan="6" align="center">'.$links2.'</td>
-        </tr>
       </table>
     </td>
   </tr>
-</table>');
+</table>
+          '.$links.'<br>
+          '.$links2.'<br>');
 
     $game->out('</form>');
 }
