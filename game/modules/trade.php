@@ -4453,7 +4453,8 @@ else
 		$game->player['deny_trade']=0;
 	$sub_action = (!empty($_GET['view'])) ? $_GET['view'] : 'main';
 	$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT260")).'</span><br><b>'.constant($game->sprache("TEXT261")).'</b><br>'.display_view_navigation_extended('trade', $sub_action, $STRADE_MODULES,1));
-	$game->out('<table border=0 cellpadding=1 cellspacing=1 class="style_inner" width="690"><tr><td>');
+	$game->out('<table border="0" cellpadding="2" cellspacing="2" class="style_outer" width="90%" align="center"><tr><td>');
+	$game->out('<table border="0" cellpadding="1" cellspacing="1" class="style_inner" width="100%" align="center"><tr><td>');
 
 	if($sub_action=='main')
 	{
@@ -4594,6 +4595,7 @@ else
 	{
 		Show_Main_a();
 	}
+	$game->out('</td></tr></table>');
 	$game->out('</td></tr></table>');
 }
 ?>

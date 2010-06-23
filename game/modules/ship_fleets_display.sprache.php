@@ -402,7 +402,7 @@ define ("ITA_TEXT35", 'Warp');
 
 define ("ITA_TEXT36", 'Nome');
 
-define ("ITA_TEXT37", 'Informazioni dettagliate nave selezionata');
+define ("ITA_TEXT37", 'Dettagli nave selezionata');
 
 define ("ITA_TEXT38", 'Porta nello Spazioporto');
 

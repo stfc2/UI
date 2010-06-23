@@ -819,7 +819,7 @@ Show_Common_Menues();
 
 $game->out('<span class="sub_caption">'.constant($game->sprache("TEXT45")).' '.HelpPopup('shipyard_2').':</span><br><br>');
 
-$game->out('<table border=0 cellpadding=2 cellspacing=2 width=400 class="style_outer"><tr><td align="center">');
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width=400 class="style_outer"><tr><td>');
 
 
 
@@ -855,7 +855,7 @@ if ($maxunit[3]>$template['max_unit_4']) $maxunit[3]=$template['max_unit_4'];
 
 
 
-$game->out('<span class="sub_caption2">'.constant($game->sprache("TEXT46")).' "'.$_REQUEST['count'].'x <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span class="sub_caption2">'.$template['name'].'</span></a>" '.constant($game->sprache("TEXT47")).'</span><br><br>
+$game->out('<span class="sub_caption2">'.constant($game->sprache("TEXT46")).' "'.$_REQUEST['count'].'x <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span class="sub_caption2">'.$template['name'].'</span></a>" '.constant($game->sprache("TEXT47")).'</span><br>
 
 <form name="send" method="post" action="index.php?a=shipyard&a2=start_build&id='.$template['id'].'" onSubmit="return document.send.submit.disabled = true;">
 <script type="text/javascript" language="JavaScript">

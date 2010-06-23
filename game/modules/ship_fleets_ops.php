@@ -809,7 +809,7 @@ elseif(isset($_GET['ship_details'])) {
 
   <tr>
 
-    <td><span class="sub_caption2">'.constant($game->sprache("TEXT41")).' ('.$ship['name'].')</span><br><br>
+    <td><span class="sub_caption2">'.constant($game->sprache("TEXT41")).' ('.$ship['name'].')</span><br>
 
       <table width="450" align="center" cellpadding="0" cellspacing="0" border="0" class="style_inner">
 
