@@ -12,7 +12,7 @@ A.nav:link {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:visited {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:hover {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:active {FONT-WEIGHT: bold; FONT-SIZE: 10px}
-TD {FONT-SIZE: 11px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
+TD {FONT-SIZE: 12px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
 input[type=checkbox] { border-style: none;}
 INPUT[type=submit], INPUT[type=text], INPUT[type=password] {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
 TEXTAREA {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
@@ -59,7 +59,21 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 <tr><td>
 	<table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="5">
 	<tr>
-	<td><font size="3"><b>In stesura</b></font></td>
+	<td align="justify">In questa sezione del Centro Commerciale &egrave; possibile visualizzare (se si hanno
+	pi&ugrave; di 400 punti) le navi messe all&#146;asta dagli altri giocatori.<br><br>
+	Selezionando un&#146;asta dalla lista &egrave; possibile visualizzare i dati della nave (le informazioni
+	mostrate possono variare a seconda che il proprietario dell&#146;asta abbia o meno pagato per la versione
+	breve o quella completa) ed effettuare uno o pi&ugrave; rilanci.<br>&Egrave; inoltre possibile specificare
+	al sistema un numero massimo di rilanci da effettuare in modo automatico ad ogni tick.<br>Ad esempio, se
+	all&#146;asta che stiamo visualizzando sono presenti al momento i rilanci di due giocatori, possiamo decidere
+	di impostare il sistema di rialzare in automatico la posta di dieci passi. Quindi se dopo aver effettuato il
+	rilancio arriva un terzo giocatore (supponendo che questi non imposti rilanci automatici e che non lo abbiano
+	fatto anche i precedenti) si vedra automaticamente sorpassare la propria offerta da quella del giocatore. Al
+	termine dei dieci rilanci il giocatore potr&agrave; decidere se continuare o abbandonare l&#146;asta.<br>Se pi&ugrave;
+	giocatori hanno impostato i rilanci automatici, questi saranno gestiti dal gioco in modo prioritario secondo
+	l&#146;entrata in asta, privileggiando i primi arrivati.
+	<br><br><b>Non esiste un limite massimo al numero di rilanci automatici da effettuare, assicuratevi
+	di avere le risorse necessarie per sostenerli!</td>
 	</tr>
 	</table>
 </td>

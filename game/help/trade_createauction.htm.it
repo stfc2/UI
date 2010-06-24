@@ -12,7 +12,7 @@ A.nav:link {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:visited {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:hover {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:active {FONT-WEIGHT: bold; FONT-SIZE: 10px}
-TD {FONT-SIZE: 11px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
+TD {FONT-SIZE: 12px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
 input[type=checkbox] { border-style: none;}
 INPUT[type=submit], INPUT[type=text], INPUT[type=password] {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
 TEXTAREA {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
@@ -59,7 +59,18 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 <tr><td>
 	<table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="5">
 	<tr>
-	<td><font size="3"><b>In stesura</b></font></td>
+	<td align="justify">In questa sezione del Centro Commerciale &egrave; possibile mettere in vendita
+	all&#146;asta le navi ormeggiate all&#146;interno dello Spazioporto del pianeta del giocatore correntemente
+	selezionato.<br><br>Il giocatore seleziona il <b>tipo di nave </b> ormeggiata che desidera vendere
+	(identificato mediante il nome del Progetto nave), inserisce una breve descrizione della vendita,
+	seleziona il prezzo base, il rilancio minimo e crea l&#146;asta.<br><br>
+	Pagando una piccola somma aggiuntiva di metallo, &egrave; inoltre possibile aggiungere all&#146;asta la
+	descrizione completa della(e) nave(i) in vendita (Armi leggere, Armi pesanti, Scudi, Sensori ecc.), visualizzare
+	il nome dell&#146;asta in grassetto od evidenziarla con un colore accesso per farla spiccare rispetto le altre.<br><br>
+	Il sistema delle aste permette inoltre di poter selezionare la durata delle stesse (da 11 ore a 3 giorni),
+	differire l&#146;inizio delle contrattazioni (immediate o in 1, 3, 6, 12, 18 o 24 ore) e nel caso in cui le
+	navi in vendita siano pi&ugrave; di una, selezionare se venderle in un&#146;unica soluzione mediante la stessa
+	asta o piuttosto creare per ognuna di esse un&#146;asta separata.</td>
 	</tr>
 	</table>
 </td>
