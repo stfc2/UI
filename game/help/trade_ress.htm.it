@@ -12,7 +12,7 @@ A.nav:link {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:visited {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:hover {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:active {FONT-WEIGHT: bold; FONT-SIZE: 10px}
-TD {FONT-SIZE: 11px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
+TD {FONT-SIZE: 12px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
 input[type=checkbox] { border-style: none;}
 INPUT[type=submit], INPUT[type=text], INPUT[type=password] {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
 TEXTAREA {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
@@ -59,7 +59,13 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 <tr><td>
 	<table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="5">
 	<tr>
-	<td><font size="3"><b>In stesura</b></font></td>
+	<td align="justify">In questa sezione del Centro Commerciale &egrave; possibile scambiare materie prime.<br><br>
+	Selezionando il quantitativo della materia prima che si desidera utilizzare come permuta, &egrave;
+	possibile poi indicare con quale delle altre due materie prime si desidera venire pagati.<br>
+	Ogni risorsa ha il suo tasso di cambio che pu&ograve; essere favorevole o sfavorevole.<br><br>
+	Come per il commercio di truppe &egrave; inoltre possibile scegliere la modalit&agrave; di consegna
+	preferita (6 ore con il 30% di tasse, 12 ore con il 15% o 36 senza tasse), il pianeta dal quale
+	prelevare la risorsa da vendere e quello a cui spedire la materia prima acquistata.</td>
 	</tr>
 	</table>
 </td>

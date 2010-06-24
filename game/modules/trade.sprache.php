@@ -1462,7 +1462,7 @@ define ("ITA_TEXT156", 'Dilitio che otterrai:');
 
 define ("ITA_TEXT157", 'Dilitio che viene scambiato:');
 
-define ("ITA_TEXT158", '<br><b>Il tuo metodo di pagamento &egrave; fallito o perch&eacute; le materie prime del bot non sono sufficienti o perch&eacute;non hai pi&ugrave; le risorse necessarie sul pianeta</b><br>');
+define ("ITA_TEXT158", '<br><b>Il tuo metodo di pagamento &egrave; fallito o perch&eacute; le materie prime del bot non sono sufficienti o perch&eacute; non hai pi&ugrave; le risorse necessarie sul pianeta</b><br>');
 
 define ("ITA_TEXT159", 'Conversione:');
 

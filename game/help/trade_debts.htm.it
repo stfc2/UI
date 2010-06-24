@@ -54,18 +54,20 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 
 <body bgcolor="#000000" text="#DDDDDD"  background="/gfx/bg_stars1.gif">
 
-<div align="center"><span class="caption">Conto fiduciario</span></div>
+<div align="center"><span class="caption">Pagamento debiti</span></div>
 <table border=0 cellpadding=2 cellspacing=2 width="95%" class="style_outer" align="center">
 <tr><td>
 	<table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="5">
 	<tr>
 	<td align="justify">In questa sezione del Centro Commerciale &egrave; possibile visualizzare, dopo
-	aver concluso con successo la vendita di navi tramite aste, la lista di tutti i pagamenti disponibili.<br><br>
-	In questa sorta di &quot;conto fiduciario&quot; &egrave; possibile prelevare le risorse depositate (spiacenti
-	il Centro Commerciale <b>non paga gli interessi</b>!) da inviare ad uno dei pianeti del giocatore.<br>&Egrave; ovviamente
+	aver concluso con successo l&#146;acquisto di navi tramite aste, la lista di tutti i versamenti da effettuare.<br><br>
+	&Egrave; necessario indicare il pianeta da cui prelevare le risorse da inviare come pagamento.<br>&Egrave; ovviamente
 	possibile effettuare il trasferimento dei &quot;fondi&quot; in un&#146;unica soluzione o ripartirla tra pi&ugrave;
-	pianeti.<br><br><b><u>Le risorse presenti sul &quot;Conto fiduciario&quot; rimangono a disposizione del giocatore
-	a tempo indeterminato.<u></b></td>
+	pianeti.<br><br><b>La nave acquistata all&#146;asta sar&agrave; resa disponibile solo dopo aver effettuato il
+	pagamento.<br><br><u>Il giocatore che non dovesse estinguere il suo debito entro 72 ore ricever&agrave; un primo 
+	sollecito di pagamento; dopo altre 72 ore verr&agrave; inviato un ulteriore avviso, dopo di ch&eacute; gli sar&agrave; negato
+	l&#146;accesso al Centro Commerciale per un periodo di 48 ore la prima volta che non rispetta un pagamento, 96 ore la
+	seconda, 162 ore la terza, 288 ore la quarta e cos&igrave; via a salire.<u></b></td>
 	</tr>
 	</table>
 </td>

@@ -12,7 +12,7 @@ A.nav:link {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:visited {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:hover {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:active {FONT-WEIGHT: bold; FONT-SIZE: 10px}
-TD {FONT-SIZE: 11px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
+TD {FONT-SIZE: 12px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
 input[type=checkbox] { border-style: none;}
 INPUT[type=submit], INPUT[type=text], INPUT[type=password] {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
 TEXTAREA {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
@@ -59,7 +59,12 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 <tr><td>
 	<table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="5">
 	<tr>
-	<td><font size="3"><b>In stesura</b></font></td>
+	<td align="justify">In questa sezione del Centro Commerciale &egrave; possibile vendere le truppe del giocatore
+	come mercenari per ricevere in cambio materie prime.<br><br>Una volta inserito il numero di truppe
+	desiderate &egrave; possibile selezionare la modalit&agrave; di pagamento, prediligendo una risorsa
+	specifica o ricevendo il compenso distribuito equamente in metallo, minerali e dilitio, selezionare
+	il tipo di spedizione (6 ore con il 30% di tasse, 12 ore con il 15% o 36 ore senza tasse), il pianeta
+	da cui prelevare le truppe e quello a cui depositare le risorse.</td>
 	</tr>
 	</table>
 </td>
