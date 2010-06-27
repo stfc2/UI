@@ -729,27 +729,52 @@ function archiv()
 }
 
 function remove_message(){
-       global $db, $game;
+    global $db, $game;
 
-       if($_POST['check']==1) {
+    if($_POST['check']==1) {
 
-       $remove_id = $_POST['id'];
+        $remove_id = $_POST['id'];
 
-       $sql = 'DELETE FROM message WHERE id = '.$remove_id.' AND receiver = '.$game->player['user_id'];
+        /* 27/06/10 - AC: We need to check if the message is in the "message"
+                          or in the "message_archiv" table */
+        $sql = 'SELECT id FROM message
+                 WHERE id = '.$remove_id.' AND
+                       receiver = '.$game->player['user_id'];
 
-         if(!$db->query($sql)) {
-         message(DATABASE_ERROR, 'Could not delete message');
-       }
-       redirect('a=messages&a2=inbox');
-       }
+        if(($msg = $db->queryrow($sql)) === false) {
+            message(DATABASE_ERROR, 'Could not query message data');
+        }
 
-       else {
-       $remove_id = $_POST['id'];
+        // We assume that user has selected a real message, so if it isn't present in
+        // the "message" table it'd mean it's in the "message_archiv" one.
+        if(empty($msg['id'])) {
+            $sql = 'DELETE FROM message_archiv
+                    WHERE id = '.$remove_id.' AND
+                          receiver = '.$game->player['user_id'];
 
-       $game->out(constant($game->sprache("TEXT21")).'<br><br><form action="'.parse_link('a=messages&a2=remove_message').'" method="post"><input type="hidden" name="id" value="'.$remove_id.'">&nbsp;
+            $redir = 'a=messages&a2=archiv';
+        }
+        else {
+            $sql = 'DELETE FROM message
+                    WHERE id = '.$remove_id.' AND
+                          receiver = '.$game->player['user_id'];
+
+            $redir = 'a=messages&a2=inbox';
+        }
+        /* */
+
+        if(!$db->query($sql)) {
+            message(DATABASE_ERROR, 'Could not delete message');
+        }
+        redirect($redir);
+    }
+    else {
+        $remove_id = $_POST['id'];
+
+        $game->out(constant($game->sprache("TEXT21")).'<br><br><form action="'.parse_link('a=messages&a2=remove_message').'" method="post"><input type="hidden" name="id" value="'.$remove_id.'">&nbsp;
                                                   <input class="button" name="cancel" value="&lt;&lt; '.constant($game->sprache("TEXT22")).'" onclick="return window.history.back();" type="button">&nbsp;<input type="hidden" name="check" value="1"><input type="submit" class="button" value="'.constant($game->sprache("TEXT1")).'"></form>');
 
-       }
+    }
 }
 
 // view
@@ -761,11 +786,23 @@ function view()
     LEFT JOIN (user u) on u.user_id=m.sender
     LEFT JOIN (user u2) on u2.user_id=m.receiver
     WHERE m.id = "'.(int)$_REQUEST['id'].'"');
-    if ($message == false ||(($message['sender'] != $game->player['user_id'] && $message['receiver'] != $game->player['user_id'])))
+
+    if ($message == false ||(($message['sender'] != $game->player['user_id'] && $message['receiver'] != $game->player['user_id']))) {
         $message = $db->queryrow('SELECT m.*,u.user_name,u2.user_name AS user_name2 FROM (message_archiv m)
         LEFT JOIN (user u) on u.user_id=m.sender
         LEFT JOIN (user u2) on u2.user_id=m.receiver
         WHERE m.id = "'.(int)$_REQUEST['id'].'"');
+
+        // 27/06/10 - AC: We cannot archive an archived message!
+        $ArchiveButton = '';
+    }
+    else {
+        $ArchiveButton = '            <form method="post" action="'.parse_link('a=messages&a2=archiv').'">
+              <input type="hidden" name="archiv" value="'.$message['id'].'">&nbsp;
+              <input type="submit" style="width: 120px;" class="button" value="'.constant($game->sprache("TEXT17")).'">
+            </form>';
+    }
+
     $game->out('<table width="90%" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
     <td align="center">');
@@ -857,10 +894,7 @@ function view()
             </form>
           </td>
           <td width="33%" align="center">
-            <form method="post" action="'.parse_link('a=messages&a2=archiv').'">
-              <input type="hidden" name="archiv" value="'.$message['id'].'">&nbsp;
-              <input type="submit" style="width: 120px;" class="button" value="'.constant($game->sprache("TEXT17")).'">
-            </form>
+            '.$ArchiveButton.'
           <td width="33%" align="right">
             <form method="post" action="'.$config['game_url'].'/include/pdf_down.php">
               <input type="hidden" name="id" value="'.$message['id'].'">&nbsp;
