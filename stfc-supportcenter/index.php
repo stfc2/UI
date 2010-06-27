@@ -435,13 +435,13 @@ switch($user['galaxy'])
 
 if(strstr($action, '.')) {
 
-    $main_html = '<center><br><br><table border="0" cellpadding=0 cellspacing=0 class="border_black_2"><tr><td><img src=404.jpg></td></tr></table></center></td><td width=40></td></tr></table>';
+    $main_html = '<br><br><center><span class="header">La pagina selezionata non esiste!</span></center><br><br>';
 
 }
 else
 if(!include('pages/'.$action.'.php')) {
 
-    $main_html = '<center><br><br><table border="0" cellpadding=0 cellspacing=0 class="border_black_2"><tr><td><img src=404.jpg></td></tr></table></center></td><td width=40></td></tr></table>';
+    $main_html = '<br><br><center><span class="header">La pagina selezionata non esiste!</span></center><br><br>';
 
 }
 
@@ -608,17 +608,13 @@ Es.<br>Cambia dati<br>Blocca<br>Cancella
 </tr></table>
 
 <table border=0 cellpadding=0 cellspacing=0 width=900 bgcolor=#cccccc>
-
-<tr><td>
-
-
-<br><br>
-
-<?php echo $main_html; ?>
-
-
-</center>
-</td></tr>
+ <tr>
+    <td>
+      <br><br>
+      <?php echo $main_html; ?>
+      <br><br>
+    </td>
+  </tr>
 </table>
 
 
