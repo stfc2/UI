@@ -30,8 +30,8 @@ if (isset($_POST['remove']) && $_POST['confirm1']==1)
 	$sql='UPDATE user SET user_active=4 WHERE user_id="'.$_POST['id'].'"';
 	$db->query($sql);
 	$name=$db->queryrow('SELECT user_name FROM user WHERE user_id="'.$_POST['id'].'"');
-	log_action('Giocatore '.$name['user_name'].' cancellato');	
-	$main_html .= '<span class=header3><font color=green>Giocatori cancellati</font></span><br>';	
+	log_action('Giocatore '.$name['user_name'].' cancellato');
+	$main_html .= '<span class=header3><font color=green>Giocatore cancellato</font></span><br>';
 }
 
 if (isset($_POST['ban']) && $_POST['confirm2']==1)
@@ -39,8 +39,8 @@ if (isset($_POST['ban']) && $_POST['confirm2']==1)
 	$sql='UPDATE user SET user_active=0 WHERE user_id="'.$_POST['id'].'"';
 	$db->query($sql);
 	$name=$db->queryrow('SELECT user_name FROM user WHERE user_id="'.$_POST['id'].'"');
-	log_action('Giocatore '.$name['user_name'].' bannato');	
-	$main_html .= '<span class=header3><font color=green>Giocatori bannati</font></span><br>';	
+	log_action('Giocatore '.$name['user_name'].' bannato');
+	$main_html .= '<span class=header3><font color=green>Giocatore bannato</font></span><br>';
 }
 
 if (isset($_POST['unban']) && $_POST['confirm2']==1)
@@ -49,8 +49,8 @@ if (isset($_POST['unban']) && $_POST['confirm2']==1)
 	$db->query($sql);
 
 	$name=$db->queryrow('SELECT user_name FROM user WHERE user_id="'.$_POST['id'].'"');
-	log_action('Giocatore '.$name['user_name'].' non bannato');	
-	$main_html .= '<span class=header3><font color=green>Giocatori non bannati</font></span><br>';	
+	log_action('Giocatore '.$name['user_name'].' non bannato');
+	$main_html .= '<span class=header3><font color=green>Giocatore non bannato</font></span><br>';
 }
 
 if (isset($_POST['deactivate']) && $_POST['confirm3']==1)
@@ -59,8 +59,8 @@ if (isset($_POST['deactivate']) && $_POST['confirm3']==1)
 	$db->query($sql);
 
 	$name=$db->queryrow('SELECT user_name FROM user WHERE user_id="'.$_POST['id'].'"');
-	log_action('Giocatore '.$name['user_name'].' disattivato');	
-	$main_html .= '<span class=header3><font color=green>Giocatori disattivati</font></span><br>';	
+	log_action('Giocatore '.$name['user_name'].' disattivato');
+	$main_html .= '<span class=header3><font color=green>Giocatore disattivato</font></span><br>';
 }
 
 if (isset($_POST['activate']) && $_POST['confirm3']==1)
@@ -69,8 +69,8 @@ if (isset($_POST['activate']) && $_POST['confirm3']==1)
 	$db->query($sql);
 
 	$name=$db->queryrow('SELECT user_name FROM user WHERE user_id="'.$_POST['id'].'"');
-	log_action('Giocatore '.$name['user_name'].' attivato');	
-	$main_html .= '<span class=header3><font color=green>Giocatori attivato</font></span><br>';	
+	log_action('Giocatore '.$name['user_name'].' attivato');
+	$main_html .= '<span class=header3><font color=green>Giocatore attivato</font></span><br>';
 }
 
 if (isset($_POST['submitdata']))
