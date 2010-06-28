@@ -56,10 +56,11 @@ function Torpedoes($race, $torso)
 	// DC ---
 	// Brown Bobby Version
 	
-	if($torso < 5) return 0; 
+	if($torso < 4) return 0; 
 	
 	$max_torp = 15;
 	
+	if($torso == 5)  $max_torp += 15;
 	if($torso == 6)  $max_torp += 30; 
 	if($torso == 7)  $max_torp += 60; 
 	if($torso == 8)  $max_torp += 130;
