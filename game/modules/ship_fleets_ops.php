@@ -539,10 +539,13 @@ elseif(!empty($_GET['set_alert_phase'])) {
 
     }
 
-
-
-    redirect('a=ship_fleets_display&'.( (isset($_GET['planet'])) ? 'p' : 'm' ).'fleet_details='.$fleet_id);
-
+    // Select which is the page we have to return
+    if(isset($_GET['planet']))
+        redirect('a=ship_fleets_display&pfleet_details='.$fleet_id);
+    elseif(isset($_GET['move']))
+        redirect('a=ship_fleets_display&mfleet_details='.$fleet_id);
+    else
+        redirect('a=ship_fleets_display');
 }
 
 elseif(isset($_GET['offduty_ships'])) {

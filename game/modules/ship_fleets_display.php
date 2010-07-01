@@ -29,7 +29,7 @@ if(isset($_POST['set_homebase'])) {
 
     $coord_pieces = explode(':', $_POST['pos_homebase']);
     $n_pieces = count($coord_pieces);
-    
+
     if($n_pieces != 3) {
         message(NOTICE, constant($game->sprache("TEXT2")));
     }
@@ -60,7 +60,7 @@ if(isset($_POST['set_homebase'])) {
                   s.system_y = '.$system_y.' AND
                   p.system_id = s.system_id AND
                   p.planet_distance_id = '.$distance_id;
-                  
+
     if(($planet = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query planets data');
     }
@@ -68,7 +68,7 @@ if(isset($_POST['set_homebase'])) {
     if(empty($planet['planet_id'])) {
         message(NOTICE, constant($game->sprache("TEXT7")).' <b>'.$_POST['dest_coord'].'</b>');
     }
-    
+
     $base = (int)$planet['planet_id'];
     $fleet = $_POST['fleets'][0];
 
@@ -88,19 +88,20 @@ if(isset($_POST['set_homebase'])) {
 
     if($check_fleet['move_id']>0){
 
-    redirect('a=ship_fleets_display&mfleet_details='.$fleet.'');
+        redirect('a=ship_fleets_display&mfleet_details='.$fleet.'');
 
     }
     else {
 
-    redirect('a=ship_fleets_display&pfleet_details='.$fleet.''); }
+        redirect('a=ship_fleets_display&pfleet_details='.$fleet.'');
+    }
 }
 
 if(isset($_POST['mass_save'])) {
 
     $coord_pieces = explode(':', $_POST['pos_home_all']);
     $n_pieces = count($coord_pieces);
-    
+
     if($n_pieces != 3) {
         message(NOTICE, constant($game->sprache("TEXT2")));
     }
@@ -131,7 +132,7 @@ if(isset($_POST['mass_save'])) {
                   s.system_y = '.$system_y.' AND
                   p.system_id = s.system_id AND
                   p.planet_distance_id = '.$distance_id;
-                  
+
     if(($planet = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query planets data');
     }
@@ -139,7 +140,7 @@ if(isset($_POST['mass_save'])) {
     if(empty($planet['planet_id'])) {
         message(NOTICE, constant($game->sprache("TEXT7")).' <b>'.$_POST['dest_coord'].'</b>');
     }
-    
+
     $base = (int)$planet['planet_id'];
 
     $sql = 'UPDATE ship_fleets SET homebase = '.$base.' WHERE user_id = '.$game->player['user_id'];
@@ -270,7 +271,7 @@ if(isset($_GET['pfleet_details'])) {
             message(DATABASE_ERROR, 'Could not delete fleets data');
         }
     }
-	elseif($n_ships != $fleet['n_ships']) {
+    elseif($n_ships != $fleet['n_ships']) {
         $sql = 'UPDATE ship_fleets
                 SET n_ships = '.$n_ships.'
                 WHERE fleet_id = '.$fleet_id;
@@ -285,7 +286,7 @@ if(isset($_GET['pfleet_details'])) {
 
     $n_security = 0;
     $n_security = $fleet['unit_1']*2+$fleet['unit_2']*3+$fleet['unit_3']*4+$fleet['unit_4']*4;
-    
+
     $ap_green_str = ($fleet['alert_phase'] == ALERT_PHASE_GREEN) ? '[<span style="color: #00FF00;">'.constant($game->sprache("TEXT9")).'</span>]' : '[<a href="'.parse_link('a=ship_fleets_ops&set_alert_phase='.$fleet_id.'&to='.ALERT_PHASE_GREEN.'&planet').'">'.constant($game->sprache("TEXT9")).'</a>]';
     $ap_yellow_str = ($fleet['alert_phase'] == ALERT_PHASE_YELLOW) ? '[<span style="color: #FFFF00;">'.constant($game->sprache("TEXT10")).'</span>]' : '[<a href="'.parse_link('a=ship_fleets_ops&set_alert_phase='.$fleet_id.'&to='.ALERT_PHASE_YELLOW.'&planet').'">'.constant($game->sprache("TEXT10")).'</a>]';
     $ap_red_str = ($fleet['alert_phase'] == ALERT_PHASE_RED) ? '[<span style="color: #FF0000;">'.constant($game->sprache("TEXT11")).'</span>]' : '[<a href="'.parse_link('a=ship_fleets_ops&set_alert_phase='.$fleet_id.'&to='.ALERT_PHASE_RED.'&planet').'">'.constant($game->sprache("TEXT11")).'</a>]';
@@ -314,7 +315,7 @@ if(isset($_GET['pfleet_details'])) {
     $sql = 'SELECT * FROM planets WHERE planet_id = '.$planet_id;
 
     $planet_koords = $db->queryrow($sql);
-   
+
     $system=$db->queryrow('SELECT system_x, system_y FROM starsystems WHERE system_id = '.$planet_koords['system_id']);
 
     // Ende lesen Homebasekoords
@@ -377,7 +378,7 @@ function ShipSelection(cSelectType) {
 }
 //--></SCRIPT>
       <br>
-	  <table width="450" border="0" cellpadding="2" cellspacing="0">
+      <table width="450" border="0" cellpadding="2" cellspacing="0">
        <tr>
         <td width="410">
          <select id="ships[]" name="ships[]" style="width: 350px;" size="'.$select_size.'" multiple="multiple">
@@ -385,32 +386,32 @@ function ShipSelection(cSelectType) {
          </select>
         </td>
         <td width="40">
-		<center><b>'.constant($game->sprache("TEXT26")).'</b></center>
-		 <table height="115" border="0" cellpadding="2" cellspacing="0">
-		  <tr valign="middle">
-		   <td height=25%>
-		    <input class="button" style="width: 90px;" type="button" name="select_all" value="'.constant($game->sprache("TEXT27")).'" onClick="ShipSelection(\'All\')">
-		   </td>
-		  </tr>
-		  <tr valign="middle">
-		   <td height=25%>
-		    <input class="button" style="width: 90px;" type="button" name="select_damaged" value="'.constant($game->sprache("TEXT28")).'" onClick="ShipSelection(\'Damaged\')">
-		   </td>
-		  </tr>
-		  <tr valign="middle">
-		   <td height=25%>
-		    <input class="button" style="width: 90px;" type="button" name="select_depleted" value="'.constant($game->sprache("TEXT78")).'" onClick="ShipSelection(\'Depleted\')">
-		   </td>
-		  </tr>
-		  <tr valign="middle">
-		   <td height=25%>
-		    <input class="button" style="width: 90px;" type="button" name="select_none" value="'.constant($game->sprache("TEXT29")).'" onClick="ShipSelection(\'None\')">
-		   </td>
-		  </tr>
-		 </table>
-		</td>
+         <center><b>'.constant($game->sprache("TEXT26")).'</b></center>
+         <table height="115" border="0" cellpadding="2" cellspacing="0">
+          <tr valign="middle">
+           <td height=25%>
+            <input class="button" style="width: 90px;" type="button" name="select_all" value="'.constant($game->sprache("TEXT27")).'" onClick="ShipSelection(\'All\')">
+           </td>
+          </tr>
+          <tr valign="middle">
+           <td height=25%>
+            <input class="button" style="width: 90px;" type="button" name="select_damaged" value="'.constant($game->sprache("TEXT28")).'" onClick="ShipSelection(\'Damaged\')">
+           </td>
+          </tr>
+          <tr valign="middle">
+           <td height=25%>
+            <input class="button" style="width: 90px;" type="button" name="select_depleted" value="'.constant($game->sprache("TEXT78")).'" onClick="ShipSelection(\'Depleted\')">
+           </td>
+          </tr>
+          <tr valign="middle">
+           <td height=25%>
+            <input class="button" style="width: 90px;" type="button" name="select_none" value="'.constant($game->sprache("TEXT29")).'" onClick="ShipSelection(\'None\')">
+           </td>
+          </tr>
+         </table>
+        </td>
        </tr>
-	  </table>
+      </table>
       <br>
       '.constant($game->sprache("TEXT30")).' ['.( ($order_by == 'template') ? '<b>'.constant($game->sprache("TEXT31")).'</b>' : '<a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$fleet_id.'&order_by=template').'">'.constant($game->sprache("TEXT31")).'</a>' ).']&nbsp;['.( ($order_by == 'torso') ? '<b>'.constant($game->sprache("TEXT32")).'</b>' : '<a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$fleet_id.'&order_by=torso').'">'.constant($game->sprache("TEXT32")).'</a>' ).']&nbsp;['.( ($order_by == 'experience') ? '<b>'.constant($game->sprache("TEXT33")).'</b>' : '<a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$fleet_id.'&order_by=experience').'">'.constant($game->sprache("TEXT33")).'</a>' ).']&nbsp;['.( ($order_by == 'construction_time') ? '<b>'.constant($game->sprache("TEXT34")).'</b>' : '<a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$fleet_id.'&order_by=construction_time').'">'.constant($game->sprache("TEXT34")).'</a>' ).']&nbsp;['.( ($order_by == 'warp') ? '<b>'.constant($game->sprache("TEXT35")).'</b>' : '<a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$fleet_id.'&order_by=warp').'">'.constant($game->sprache("TEXT35")).'</a>' ).']&nbsp;['.( ($order_by == 'name') ? '<b>'.constant($game->sprache("TEXT36")).'</b>' : '<a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$fleet_id.'&order_by=name').'">'.constant($game->sprache("TEXT36")).'</a>' ).']
       <br><br>
@@ -419,8 +420,8 @@ function ShipSelection(cSelectType) {
       <br><br>
 
       <table width="450" border="0" cellpadding="2" cellspacing="0">
-  
-       
+
+
 
        <tr>
 
@@ -461,7 +462,7 @@ function ShipSelection(cSelectType) {
         </tr>
         ');
     }
-    
+
     $own_planets_html = $tcm_html = '';
 
     $sql = 'SELECT p.planet_name, p.sector_id, p.planet_distance_id,
@@ -506,7 +507,7 @@ function ShipSelection(cSelectType) {
           <td><input style="width: 130px;" class="button" type="submit" name="send_fleets" value="'.constant($game->sprache("TEXT47")).'" onClick="return document.fleet_form.action = \''.parse_link('a=ship_send').'\'"></td>
         </tr>
     ');
-    
+
 
     if($n_transporter == $n_ships) {
         $game->out('
@@ -515,7 +516,7 @@ function ShipSelection(cSelectType) {
         ');
     }
 
-    
+
     $game->out('
       </table>
       <br>
@@ -530,7 +531,7 @@ function ShipSelection(cSelectType) {
 elseif(isset($_GET['mfleet_details'])) {
     $fleet_id = (!empty($_POST['fleets'])) ? (int)$_POST['fleets'][0] : (int)$_GET['mfleet_details'];
 
-	
+
     if(empty($fleet_id)) {
         message(NOTICE, constant($game->sprache("TEXT8")));
     }
@@ -644,8 +645,8 @@ elseif(isset($_GET['mfleet_details'])) {
         }
     }
 
-   	$ticks_left = $fleet['move_finish'] - $ACTUAL_TICK;
-	if($ticks_left < 0) $ticks_left = 0;
+    $ticks_left = $fleet['move_finish'] - $ACTUAL_TICK;
+    if($ticks_left < 0) $ticks_left = 0;
 
     $ap_green_str = ($fleet['alert_phase'] == ALERT_PHASE_GREEN) ? '[<span style="color: #00FF00;">'.constant($game->sprache("TEXT9")).'</span>]' : '[<a href="'.parse_link('a=ship_fleets_ops&set_alert_phase='.$fleet_id.'&to='.ALERT_PHASE_GREEN.'&move').'">'.constant($game->sprache("TEXT9")).'</a>]';
     $ap_yellow_str = ($fleet['alert_phase'] == ALERT_PHASE_YELLOW) ? '[<span style="color: #FFFF00;">'.constant($game->sprache("TEXT10")).'</span>]' : '[<a href="'.parse_link('a=ship_fleets_ops&set_alert_phase='.$fleet_id.'&to='.ALERT_PHASE_YELLOW.'&move').'">'.constant($game->sprache("TEXT10")).'</a>]';
@@ -659,10 +660,11 @@ elseif(isset($_GET['mfleet_details'])) {
     $sql = 'SELECT * FROM planets WHERE planet_id = '.$planet_id;
 
     $planet_koords = $db->queryrow($sql);
-   
+
     $system=$db->queryrow('SELECT system_x, system_y FROM starsystems WHERE system_id = '.$planet_koords['system_id']);
 
     // Ende lesen Homebasekoords
+
     $game->out('
 <table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer"><tr><td>
 <table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
@@ -711,7 +713,7 @@ elseif(isset($_GET['mfleet_details'])) {
             $game->out('<br>');
         }
     }
-    
+
     $select_size = ($n_ships < 4) ? ($n_ships + 3) : 8;
 
     $game->out('
@@ -778,13 +780,13 @@ href="'.parse_link('a=ship_fleets_display&mfleet_details='.$fleet_id.'&order_by=
 }
 elseif(isset($_GET['mass_set_homebase'])) {
 
-  if($game->player['user_id']>0){
+    if($game->player['user_id']>0) {
 
-  $game->out('
+        $game->out('
   <form action="'.parse_link('a=ship_fleets_display').'" method="post">
   <table class="style_outer" width="250" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
   <table class="style_inner" width="250" align="center" border="0" cellpadding="2" cellspacing="2">
-  
+
    <tr>
      <td>'.constant($game->sprache("TEXT61")).'</td>
    </tr>
@@ -804,24 +806,24 @@ elseif(isset($_GET['mass_set_homebase'])) {
    </td></tr></table>
    </form>
    ');
- }
- else $game->out(constant($game->sprache("TEXT64")));
+    }
+    else $game->out(constant($game->sprache("TEXT64")));
 }
 else {
 
 
-	$only_location = 0;
-	
-	if(!empty($_GET['only_location'])) {
-		$only_location = (is_numeric($_GET['only_location'])) ? (int)$_GET['only_location'] : decode_planet_id($_GET['only_location']);
-	}
-    
+    $only_location = 0;
+
+    if(!empty($_GET['only_location'])) {
+        $only_location = (is_numeric($_GET['only_location'])) ? (int)$_GET['only_location'] : decode_planet_id($_GET['only_location']);
+    }
+
     $order_by = (!empty($_GET['order_by'])) ? (int)$_GET['order_by'] : 0;
-    
+
     if( ($order_by < 0) || ($order_by > 3) ) {
         message(NOTICE, 'No bad attempt...');
     }
-    
+
     if($only_location > 0) {
         switch($order_by) {
             case 0: $order_by_str = 'fleet_name ASC'; break;
@@ -835,11 +837,11 @@ else {
                 WHERE user_id = '.$game->player['user_id'].' AND
                       planet_id = '.$only_location.'
                 ORDER BY '.$order_by_str;
-                
+
         if(!$q_fleets = $db->query($sql)) {
             message(DATABASE_ERROR, 'Could not query fleets data');
         }
-                
+
         $sql = 'SELECT p.planet_id, p.planet_name, p.sector_id, p.planet_distance_id, p.planet_type,
                        s.system_x, s.system_y,
                        u.user_id, u.user_name
@@ -851,11 +853,11 @@ else {
         if(($ol_planet = $db->queryrow($sql)) === false) {
             message(DATABASE_ERROR, 'Could not query specified planet data');
         }
-        
+
         if(empty($ol_planet['planet_id'])) {
             message(NOTICE, 'The planet for the display area does not exist');
         }
-        
+
         $planet_coord_str = $game->get_sector_name($ol_planet['sector_id']).':'.$game->get_system_cname($ol_planet['system_x'], $ol_planet['system_y']).':'.($ol_planet['planet_distance_id'] + 1);
     }
     elseif($only_location == 0) {
@@ -867,13 +869,13 @@ else {
         }
 
         $sql = 'SELECT f.fleet_id, f.fleet_name, f.planet_id, f.n_ships, f.alert_phase, f.homebase,
-                       
+
                        p.planet_name, p.sector_id, p.planet_distance_id, p.planet_type,
                        s.system_x, s.system_y,
                        u.user_id AS stationated_owner_id, u.user_name AS stationated_owner_name,
-                       
+
                        ss.move_id, ss.start, ss.dest, ss.move_begin, ss.move_finish,
-                       
+
                        p1.planet_name AS start_planet_name, p1.sector_id AS start_sector_id, p1.planet_distance_id AS start_distance_id, p1.planet_type AS start_planet_type,
                        s1.system_x AS start_system_x, s1.system_y AS start_system_y,
                        u1.user_id AS start_owner_id, u1.user_name AS start_owner_name,
@@ -881,25 +883,25 @@ else {
                        p2.planet_name AS dest_planet_name, p2.sector_id AS dest_sector_id, p2.planet_distance_id AS dest_distance_id, p2.planet_type AS dest_planet_type,
                        s2.system_x AS dest_system_x, s2.system_y AS dest_system_y,
                        u2.user_id AS dest_owner_id, u2.user_name AS dest_owner_name
-                       
+
                 FROM (ship_fleets f)
-                
+
                 LEFT JOIN (scheduler_shipmovement ss) ON ss.move_id = f.move_id
-                
+
                 LEFT JOIN (planets p) ON p.planet_id = f.planet_id
                 LEFT JOIN (starsystems s) ON s.system_id = p.system_id
                 LEFT JOIN (user u) ON u.user_id = p.planet_owner
-                
+
                 LEFT JOIN (planets p1) ON p1.planet_id = ss.start
                 LEFT JOIN (starsystems s1) ON s1.system_id = p1.system_id
                 LEFT JOIN (user u1) ON u1.user_id = p1.planet_owner
                 LEFT JOIN (planets p2) ON p2.planet_id = ss.dest
                 LEFT JOIN (starsystems s2) ON s2.system_id = p2.system_id
                 LEFT JOIN (user u2) ON u2.user_id = p2.planet_owner
-                
+
                 WHERE f.user_id = '.$game->player['user_id'].'
                 ORDER BY '.$order_by_str;
-                
+
         if(!$q_fleets = $db->query($sql)) {
             message(DATABASE_ERROR, 'Could not query fleets data');
         }
@@ -924,7 +926,7 @@ else {
                       f.planet_id <> 0 AND
                       p.planet_id = f.planet_id
                 ORDER BY '.$order_by_str;
-                   
+
         if(!$q_fleets = $db->query($sql)) {
             message(DATABASE_ERROR, 'Could not query fleets data');
         }
@@ -948,21 +950,21 @@ else {
                        s2.system_x AS dest_system_x, s2.system_y AS dest_system_y,
                        u2.user_name AS dest_owner_id, u2.user_name AS dest_owner_name
                 FROM (ship_fleets f)
-                   
+
                 INNER JOIN (scheduler_shipmovement ss) ON ss.move_id = f.move_id
-                   
+
                 INNER JOIN (planets p1) ON p1.planet_id = ss.start
                 INNER JOIN (starsystems s1) ON s1.system_id = p1.system_id
                 LEFT JOIN (user u1) ON u1.user_id = p1.planet_owner
-                   
+
                 INNER JOIN (planets p2) ON p2.planet_id = ss.dest
                 INNER JOIN (starsystems s2) ON s2.system_id = p2.system_id
                 LEFT JOIN (user u2) ON u2.user_id = p2.planet_owner
-                   
+
                 WHERE f.user_id = '.$game->player['user_id'].' AND
                       f.move_id <> 0
                 ORDER BY '.$order_by_str;
-                     
+
         if(!$q_fleets = $db->query($sql)) {
             message(DATABASE_ERROR, 'Could not query fleets data');
         }
@@ -985,7 +987,7 @@ else {
           <option value="-1"'.( ($only_location == -1) ? ' selected="selected"' : '' ).'>'.constant($game->sprache("TEXT67")).'</option>
           <option value="-2"'.( ($only_location == -2) ? ' selected="selected"' : '' ).'>'.constant($game->sprache("TEXT68")).'</option>
     ');
-    
+
     $sql = 'SELECT DISTINCT f.planet_id, f.alert_phase, f.homebase,
                    p.planet_name, p.sector_id, p.planet_distance_id,
                    s.system_x, s.system_y
@@ -1004,7 +1006,7 @@ else {
     while($planet = $db->fetchrow($q_fplanets)) {
         $game->out('<option value="'.encode_planet_id($planet['planet_id']).'"'.( ($only_location == $planet['planet_id']) ? ' selected="selected"' : '' ).'>'.$planet['planet_name'].' ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')</option>');
     }
-    
+
     $game->out('
         </select>
       </td>
@@ -1027,11 +1029,11 @@ else {
     </tr>
     <tr><td height="5"></td></tr>
     ');
-    
+
     $i = 2;
-    
+
     $INVALID_FLEET_POSITION = false;
-    
+
     while($fleet = $db->fetchrow($q_fleets)) {
         $location_str = constant($game->sprache("TEXT56"));
 
@@ -1091,7 +1093,7 @@ else {
             if($ticks_left < 0) $ticks_left = 0;
 
             $location_str = $start_planet_str.' -> '.$dest_planet_str.' ('.( ($i < 10) ? '<b id="timer'.$i.'" title="time1_'.( ($ticks_left * TICK_DURATION * 60) + $NEXT_TICK).'_type2_2">&nbsp;</b>' : '<b>'.format_time( $ticks_left * TICK_DURATION ).'</b>' ).')';
-            
+
             ++$i;
         }
         else {
@@ -1103,86 +1105,34 @@ else {
             if(!$db->query($sql)) {
                 message(DATABASE_ERROR, 'Could not update fleets location data');
             }
-            
+
             $INVALID_FLEET_POSITION = true;
-            
+
             continue;
         }
 
-$output_phase = 'OOps';
+        $output_phase = '&nbsp;&nbsp;&nbsp;[<a href="'.parse_link('a=ship_fleets_ops&set_alert_phase='.$fleet['fleet_id'].'&to=');
 
-if ($fleet['alert_phase']==0) {
-	
-	$output_phase = '&nbsp;&nbsp;&nbsp;[<a href="index.php?a=ship_fleets_display&set_alert_phase='.$fleet['fleet_id'].'&to=1&move"><span style="color: #00FF00;">'.constant($game->sprache("TEXT9")).'</span></a>]&nbsp;&nbsp;&nbsp;';
-}
-elseif ($fleet['alert_phase']==1) {
-	
-	$output_phase = '&nbsp;&nbsp;&nbsp;[<a href="index.php?a=ship_fleets_display&set_alert_phase='.$fleet['fleet_id'].'&to=2&move"><span style="color: #FFFF00;">'.constant($game->sprache("TEXT10")).'</span></a>]&nbsp;&nbsp;&nbsp;';
-}
-else {
- 
-$output_phase = '&nbsp;&nbsp;&nbsp;[<a href="index.php?a=ship_fleets_display&set_alert_phase='.$fleet['fleet_id'].'&to=0&move"><span style="color: #FF0000;">'.constant($game->sprache("TEXT11")).'</span></a>]&nbsp;&nbsp;&nbsp;';
-	
-}
+        if ($fleet['alert_phase']==ALERT_PHASE_GREEN) {
+            $output_phase .= '1&main"><span style="color: #00FF00;">'.constant($game->sprache("TEXT9")).'</span></a>]&nbsp;&nbsp;&nbsp;';
+        }
+        elseif ($fleet['alert_phase']==ALERT_PHASE_YELLOW) {
+            $output_phase .= '2&main"><span style="color: #FFFF00;">'.constant($game->sprache("TEXT10")).'</span></a>]&nbsp;&nbsp;&nbsp;';
+        }
+        else {
+            $output_phase .= '0&main"><span style="color: #FF0000;">'.constant($game->sprache("TEXT11")).'</span></a>]&nbsp;&nbsp;&nbsp;';
+        }
 
-if(!empty($_GET['set_alert_phase'])) {
+        // Anfang lesen Homebase Koords
+        if($fleet['homebase']!=0) {
+            $planet_id = $fleet['homebase'];
+            $sql = 'SELECT * FROM planets WHERE planet_id = '.$planet_id;
 
-    $fleet_id = (int)$_GET['set_alert_phase'];
+            $planet_koords = $db->queryrow($sql);
 
-
-
-    if(!isset($_GET['to'])) {
-
-        message(GENERAL, 'Invalid transfer parameter', '$_GET[\'to\'] = empty');
-
-    }
-
-
-
-    $to = (int)$_GET['to'];
-
-
-
-    if( ($to != ALERT_PHASE_GREEN) && ($to != ALERT_PHASE_YELLOW) && ($to != ALERT_PHASE_RED) ) {
-
-        message(NOTICE, 'Invalid Alarm Status indicated');
-
-    }
-
-
-
-    $sql = 'UPDATE ship_fleets
-
-            SET alert_phase = '.$to.'
-
-            WHERE fleet_id = '.$fleet_id.' AND
-
-                  user_id = '.$game->player['user_id'];
-
-
-
-    if(!$db->query($sql)) {
-
-        message(DATABASE_ERROR, 'Could not update fleets alert phase data');
-
-    }
-
-
-
-    redirect('a=ship_fleets_display');
-
-}
-
-    // Anfang lesen Homebase Koords
-    if($fleet['homebase']!=0) {
-        $planet_id = $fleet['homebase'];
-        $sql = 'SELECT * FROM planets WHERE planet_id = '.$planet_id;
-
-        $planet_koords = $db->queryrow($sql);
-
-        $system=$db->queryrow('SELECT system_x, system_y FROM starsystems WHERE system_id = '.$planet_koords['system_id']);
-    }
-    // Ende lesen Homebasekoords
+            $system=$db->queryrow('SELECT system_x, system_y FROM starsystems WHERE system_id = '.$planet_koords['system_id']);
+        }
+        // Ende lesen Homebasekoords
 
 
         $game->out('
@@ -1197,28 +1147,28 @@ if(!empty($_GET['set_alert_phase'])) {
     </tr>
         ');
     }
-    
+
     if($INVALID_FLEET_POSITION) {
         message(NOTICE, 'At least one of your fleets have no positional data, therefore they were reset to your home planet.');
     }
-    
+
     $own_planets_html = $tcm_html = '';
-    
+
     $sql = 'SELECT p.planet_name, p.sector_id, p.planet_distance_id,
                    s.system_x, s.system_y
             FROM (planets p)
             INNER JOIN (starsystems s) ON s.system_id = p.system_id
             WHERE p.planet_owner = '.$game->uid.'
             ORDER BY p.planet_name ASC';
-            
+
     if(!$q_own_planets = $db->query($sql)) {
         message(DATABASE_ERROR, 'Could not query own planets coord data');
     }
-    
+
     while($planet = $db->fetchrow($q_own_planets)) {
         $own_planets_html .= '<option value="'.($game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1)).'">'.$planet['planet_name'].'</option>';
     }
-    
+
     $sql = 'SELECT tcm.memo_name,
                    p.sector_id, p.planet_distance_id,
                    s.system_x, s.system_y
@@ -1227,18 +1177,18 @@ if(!empty($_GET['set_alert_phase'])) {
             INNER JOIN (starsystems s) ON s.system_id = p.system_id
             WHERE tcm.user_id = '.$game->player['user_id'].' AND
                   tcm.memo_view = 4';
-            
+
     if(!$q_tcm = $db->query($sql)) {
         message(DATABASE_ERROR, 'Could not query tactical coords memo data');
     }
-    
+
     while($tcm = $db->fetchrow($q_tcm)) {
         $tcm_html .= '<option value="'.($game->get_sector_name($tcm['sector_id']).':'.$game->get_system_cname($tcm['system_x'], $tcm['system_y']).':'.($tcm['planet_distance_id'] + 1)).'">'.$tcm['memo_name'].'</option>';
     }
 
     $has_own_planets = (!empty($own_planets_html));
     $has_tcm = (!empty($tcm_html));
-    
+
     $game->out('
   </table>
   <br>
