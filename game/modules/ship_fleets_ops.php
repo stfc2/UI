@@ -499,6 +499,11 @@ elseif(isset($_GET['join_fleets'])) {
 
 elseif(!empty($_GET['set_alert_phase'])) {
 
+    /* 01/07/10 - AC: Sitter cannot change anymore fleets alert phase */
+    if($game->SITTING_MODE) {
+        message(NOTICE, constant($game->sprache("TEXT59")));
+    }
+
     $fleet_id = (int)$_GET['set_alert_phase'];
 
 

@@ -137,7 +137,9 @@ define ("GER_TEXT56", 'Geba&uuml;de datum:');
 
 define ("GER_TEXT57", 'On mission:');
 
-define ("GER_TEXT58", 'Docked'); 
+define ("GER_TEXT58", 'Docked');
+
+define ("GER_TEXT59", 'Du kannst nicht &auml;ndern, die Ausschreibung Phase einer Flotte in der Sitzung Modus.');
 
 
 //English
@@ -259,6 +261,8 @@ define ("ENG_TEXT57", 'On mission:');
 
 define ("ENG_TEXT58", 'Docked');
 
+define ("ENG_TEXT59", 'You cannot change the alert phase of a fleet in the Sitting mode.');
+
 
 //Italiano
 define ("ITA_TEXT0", 'Abilit&agrave;:');
@@ -379,5 +383,6 @@ define ("ITA_TEXT57", 'Inizio missione:');
 
 define ("ITA_TEXT58", 'In porto');
 
+define ("ITA_TEXT59", 'Non puoi modificare la condizione di allarme di una flotta in modalit&agrave; Sitting.');
 
 ?>
