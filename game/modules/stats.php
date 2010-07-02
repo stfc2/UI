@@ -908,7 +908,7 @@ if($user['user_vacation_start']<=$config_data['tick_id'] && $user['user_vacation
     $game->out('<a href="'.parse_link('a=stats&a2=viewplayer&id='.$user['user_id'].'').'">'.$user['user_name'].'</a><b><a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT71")).'\', CAPTION, \''.constant($game->sprache("TEXT91")).'\', WIDTH, 200, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color:white">*</span></a></b>'.(isset($user['id']) ? '&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT72")).'\', CAPTION, \''.constant($game->sprache("TEXT92")).'\', WIDTH, 200, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->PLAIN_GFX_PATH.'reward.jpg" border=0></a>' : ''));
   }
   else {
-  $game->out('<a href="'.parse_link('a=stats&a2=viewplayer&id='.$user['user_id'].'').'"><span style="color:yellow">'.$user['user_name'].'</a><b><a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT71")).'\', CAPTION, \''.constant($game->sprache("TEXT91")).'\', WIDTH, 200, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color:white">*</span></a></b></span></color>'.(isset($user['id']) ? '&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT72")).'\', CAPTION, \''.constant($game->sprache("TEXT92")).'\', WIDTH, 200, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->PLAIN_GFX_PATH.'reward.jpg" border=0></a>' : '')); }
+  $game->out('<a href="'.parse_link('a=stats&a2=viewplayer&id='.$user['user_id'].'').'"><span class="highlight">'.$user['user_name'].'</a><b><a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT71")).'\', CAPTION, \''.constant($game->sprache("TEXT91")).'\', WIDTH, 200, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color:white">*</span></a></b></span></color>'.(isset($user['id']) ? '&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT72")).'\', CAPTION, \''.constant($game->sprache("TEXT92")).'\', WIDTH, 200, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->PLAIN_GFX_PATH.'reward.jpg" border=0></a>' : '')); }
 }
 else
 {
@@ -917,7 +917,7 @@ else
     $game->out('<a href="'.parse_link('a=stats&a2=viewplayer&id='.$user['user_id'].'').'">'.$user['user_name'].'</a>'.(isset($user['id']) ? '&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT72")).'\', CAPTION, \''.constant($game->sprache("TEXT92")).'\', WIDTH, 200, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->PLAIN_GFX_PATH.'reward.jpg" border=0></a>' : ''));
   }
   else {
-  $game->out('<a href="'.parse_link('a=stats&a2=viewplayer&id='.$user['user_id'].'').'"><span style="color:yellow">'.$user['user_name'].'</a></span></color>'.(isset($user['id']) ? '&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT72")).'\', CAPTION, \''.constant($game->sprache("TEXT92")).'\', WIDTH, 200, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->PLAIN_GFX_PATH.'reward.jpg" border=0></a>' : '')); }
+  $game->out('<a href="'.parse_link('a=stats&a2=viewplayer&id='.$user['user_id'].'').'"><span class="highlight">'.$user['user_name'].'</a></span></color>'.(isset($user['id']) ? '&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT72")).'\', CAPTION, \''.constant($game->sprache("TEXT92")).'\', WIDTH, 200, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->PLAIN_GFX_PATH.'reward.jpg" border=0></a>' : '')); }
 }
 
 $game->out('</td>
@@ -1194,14 +1194,14 @@ $game->out('
 if (isset($_REQUEST['start']) || $alliance['alliance_id']!=$highlight)
 $game->out('<a href="'.parse_link('a=stats&a2=viewalliance&id='.$alliance['alliance_id'].'').'">'.$alliance['alliance_tag'].'</a>');
 else
-$game->out('<a href="'.parse_link('a=stats&a2=viewalliance&id='.$alliance['alliance_id'].'').'"><span style="color:yellow">'.$alliance['alliance_tag'].'</a></span></color>');
+$game->out('<a href="'.parse_link('a=stats&a2=viewalliance&id='.$alliance['alliance_id'].'').'"><span class="highlight">'.$alliance['alliance_tag'].'</a></span></color>');
 $game->out('</td>
 <td>');
 
 if (isset($_REQUEST['start']) || $alliance['alliance_id']!=$highlight)
 $game->out('<a href="'.parse_link('a=stats&a2=viewalliance&id='.$alliance['alliance_id'].'').'">'.$alliance['alliance_name'].'</a>');
 else
-$game->out('<a href="'.parse_link('a=stats&a2=viewalliance&id='.$alliance['alliance_id'].'').'"><span style="color:yellow">'.$alliance['alliance_name'].'</a></span></color>');
+$game->out('<a href="'.parse_link('a=stats&a2=viewalliance&id='.$alliance['alliance_id'].'').'"><span class="highlight">'.$alliance['alliance_name'].'</a></span></color>');
 $game->out('</td>
 <td>');
 
@@ -1292,8 +1292,10 @@ if ($sub_action=='alliance_ranking')
 if (!isset($_REQUEST['search']) || empty($_REQUEST['search']))
 {
 
-if ($game->player['user_alliance']>0) 	$alliance=$db->queryrow('SELECT alliance_tag FROM alliance WHERE alliance_id="'.$game->player['user_alliance'].'"');
-else 									$alliance=$db->queryrow('SELECT alliance_tag FROM alliance ORDER BY alliance_rank_points ASC LIMIT 1');
+if ($game->player['user_alliance']>0)
+    $alliance=$db->queryrow('SELECT alliance_tag FROM alliance WHERE alliance_id="'.$game->player['user_alliance'].'"');
+else
+    $alliance=$db->queryrow('SELECT alliance_tag FROM alliance ORDER BY alliance_rank_points ASC LIMIT 1');
 $_REQUEST['search']=htmlspecialchars($alliance['alliance_tag']);
 }
 if ($_REQUEST['a3']!=2 && $_REQUEST['a3']!=3) {$nr=$db->queryrow('SELECT alliance_rank_points AS focus, alliance_id AS highlight FROM alliance WHERE alliance_tag LIKE "'.$_REQUEST['search'].'" LIMIT 1');}
