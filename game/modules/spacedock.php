@@ -89,9 +89,9 @@ if(!empty($_POST['repair_ships_start'])) {
 
 
 	foreach($repairable_ships as $id => $ship) {
-		$costs[0]=round((0.6/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0);
-		$costs[1]=round((0.6/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0);
-		$costs[2]=round((0.6/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0);
+		$costs[0]=round((0.5/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0);
+		$costs[1]=round((0.4/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0);
+		$costs[2]=round((0.4/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0);
 
 		if ($game->planet['resource_1']>=$costs[0] && $game->planet['resource_2']>=$costs[1] && $game->planet['resource_3']>=$costs[2])
 		{
@@ -288,19 +288,19 @@ document.getElementById( "costs8" ).firstChild.nodeValue = costs[8];
 
 	foreach($repairable_ships as $id => $ship) {
 		$costs='';
-		$costs.='<img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;'.round((0.6/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).'&nbsp;&nbsp;';
-		$costs.='<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;'.round((0.6/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).'&nbsp;&nbsp;';
-		$costs.='<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;'.round((0.6/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).'';
+		$costs.='<img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;'.round((0.5/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).'&nbsp;&nbsp;';
+		$costs.='<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;'.round((0.4/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).'&nbsp;&nbsp;';
+		$costs.='<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;'.round((0.4/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).'';
 
-		$tcost[0]+=round((0.6/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0);
-		$tcost[1]+=round((0.6/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0);
-		$tcost[2]+=round((0.6/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0);
+		$tcost[0]+=round((0.5/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0);
+		$tcost[1]+=round((0.4/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0);
+		$tcost[2]+=round((0.4/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0);
 
 		/* 04/06/08 - AC: Use real ship name if it exist */
 		$ship_name = empty($ship['ship_name'])? $ship['name'] : $ship['ship_name'];
 		$game->out('
 			<tr>
-				<td width=130><b><input type="checkbox" name="ships[]" value="'.$ship['ship_id'].'" checked="checked" onClick ="return Change('.round((0.6/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).','.round((0.6/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).','.round((0.6/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).',0,0,0,0,0,0,this.checked);">&nbsp;'.$ship_name.'</b></td>
+				<td width=130><b><input type="checkbox" name="ships[]" value="'.$ship['ship_id'].'" checked="checked" onClick ="return Change('.round((0.5/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).','.round((0.4/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).','.round((0.4/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).',0,0,0,0,0,0,this.checked);">&nbsp;'.$ship_name.'</b></td>
 				<td width=100><b>'.round(100/$ship['value_5']*$ship['hitpoints'],0).'% ('.$ship['hitpoints'].'/'.$ship['value_5'].')</b></td>
 				<td width=190><b>'.$costs.'</b></td>
 				<td width=70><b>'.ceil($ship['buildtime']*0.6/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])*5).' '.constant($game->sprache("TEXT36")).'</b></td>
@@ -1259,11 +1259,11 @@ elseif(!empty($_POST['repair_ships'])) {
 
 	$costs='';
 
-	$costs.=round($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0).'&nbsp;<img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;&nbsp;';
+	$costs.=round((0.5/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_1']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).'&nbsp;<img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;&nbsp;';
 
-	$costs.=round($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0).'&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;&nbsp;';
+	$costs.=round((0.4/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_2']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).'&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;&nbsp;';
 
-	$costs.=round($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints']),0).'&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;&nbsp;';
+	$costs.=round((0.4/$RACE_DATA[$game->player['user_race']][20])*($ship['resource_3']/$ship['value_5']*($ship['value_5']-$ship['hitpoints'])),0).'&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;&nbsp;';
 
 
 
