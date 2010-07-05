@@ -730,6 +730,49 @@ elseif(isset($_GET['mfleet_details'])) {
     $ap_yellow_str = ($fleet['alert_phase'] == ALERT_PHASE_YELLOW) ? '[<span style="color: #FFFF00;">'.constant($game->sprache("TEXT10")).'</span>]' : '[<a href="'.parse_link('a=ship_fleets_ops&set_alert_phase='.$fleet_id.'&to='.ALERT_PHASE_YELLOW.'&move').'">'.constant($game->sprache("TEXT10")).'</a>]';
     $ap_red_str = ($fleet['alert_phase'] == ALERT_PHASE_RED) ? '[<span style="color: #FF0000;">'.constant($game->sprache("TEXT11")).'</span>]' : '[<a href="'.parse_link('a=ship_fleets_ops&set_alert_phase='.$fleet_id.'&to='.ALERT_PHASE_RED.'&move').'">'.constant($game->sprache("TEXT11")).'</a>]';	
 
+    $allydb_is_on = false;
+    if(($game->player['user_alliance'] != 0) && ($game->player['user_alliance_rights3']) == 1) $allydb_is_on = true;
+	$destplanet = new planets(&$db, $game->player['user_id'], $fleet['dest']);
+    $planet_is_visible = $planet_is_explored = false;
+	if($game->player['user_auth_level'] == STGC_DEVELOPER)
+    {
+    	$planet_is_visible = true;
+   	}
+    else 
+    {
+    	if($allydb_is_on)
+   		{
+   			$planet_is_visible = $destplanet->is_visible($game->player['user_alliance'], 1);
+   		}
+   		else
+   		{    			
+   			$planet_is_visible = $destplanet->is_visible($game->player['user_id'], 0);
+    	}
+    }
+
+    if(!$planet_is_visible){
+    	if($allydb_is_on)
+    		$planet_is_explored = $destplanet->is_explored($game->player['user_alliance'], 1);
+   		else
+   			$planet_is_explored = $destplanet->is_explored($game->player['user_id'], 0);
+    }
+    
+    if($planet_is_visible) {
+    	$dest_name = addslashes($fleet['dest_planet_name']);
+    }
+    elseif($planet_is_explored) {
+    	if($allydb_is_on)
+    		$destplanet->setcachevalue($game->player['user_alliance'], 1); 
+    	else
+    		$destplanet->setcachevalue($game->player['user_id'], 0);
+    	$dest_name = addslashes($destplanet->cache_planet_name);
+    }
+    else 
+    {
+    	$dest_name = '&#171;'.constant($game->sprache("TEXT56")).'&#187;';
+    }
+
+    $dest_planet_str = ' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($fleet['dest'])).'"><b>'.$dest_name.'</b></a> ('.$game->get_sector_name($fleet['dest_sector']).':'.$game->get_system_cname($fleet['dest_system_x'], $fleet['dest_system_y']).':'.($fleet['dest_distance_id'] + 1).')<br><br>';
 
     // Anfang lesen Homebase Koords
 
@@ -754,9 +797,9 @@ elseif(isset($_GET['mfleet_details'])) {
         </tr>
       </table><br>
       '.constant($game->sprache("TEXT55")).' '.( (!empty($fleet['start'])) ? '<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($fleet['start'])).'"><b>'.$fleet['start_planet_name'].'</b></a> ('.$game->get_sector_name($fleet['start_sector']).':'.$game->get_system_cname($fleet['start_system_x'], $fleet['start_system_y']).':'.($fleet['start_distance_id'] + 1).')' : constant($game->sprache("TEXT56")) ).'<br>
-      '.constant($game->sprache("TEXT57")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($fleet['dest'])).'"><b>'.$fleet['dest_planet_name'].'</b></a> ('.$game->get_sector_name($fleet['dest_sector']).':'.$game->get_system_cname($fleet['dest_system_x'], $fleet['dest_system_y']).':'.($fleet['dest_distance_id'] + 1).')<br><br>
+      '.constant($game->sprache("TEXT57")).$dest_planet_str
 
-      '.constant($game->sprache("TEXT58")).' <b>'.get_move_action_str($fleet['action_code']).'</b><br>
+      .constant($game->sprache("TEXT58")).' <b>'.get_move_action_str($fleet['action_code']).'</b><br>
       '.constant($game->sprache("TEXT59")).' <b id="timer2" title="time1_'.( ($ticks_left * TICK_DURATION * 60) + $NEXT_TICK).'_type2_2">&nbsp;</b><br><br>
 
       '.constant($game->sprache("TEXT18")).' '.$ap_green_str.'&nbsp;'.$ap_yellow_str.'&nbsp;'.$ap_red_str.'<br><br>
