@@ -19,7 +19,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
+include('include/libs/planets.php');
 
 $game->init_player();
 $game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>');
@@ -239,7 +239,7 @@ if(isset($_GET['pfleet_details'])) {
     }
 
     $sql = 'SELECT s.*,
-                   st.name AS template_name, st.ship_torso, st.value_10, st.value_5 AS max_hitpoints
+                   st.name AS template_name, st.ship_torso, st.value_10, st.value_5 AS max_hitpoints, st.max_torp
             FROM (ships s, ship_templates st)
             WHERE s.fleet_id = '.$fleet_id.' AND
                   st.id = s.template_id
@@ -251,17 +251,54 @@ if(isset($_GET['pfleet_details'])) {
 
     $n_ships = $n_transporter = 0;
     $ships_option_html = '';
+    $torso_counter = array(0,0,0,0,0,0,0,0,0,0);
+    $damage_counter = array(0,0,0,0);
+    $depleted_counter = array(0,0,0);
+    $thereshold_ammo_ratio = $fleet['ammo_ratio'];
+     
 
+    global $SHIP_TORSO;
+    
     while($s_ship = $db->fetchrow($q_ships)) {
+    	$ammo_ratio = (int)($s_ship['torp']*100/$s_ship['max_torp']);
         /* 07/04/08 - AC: If present, show also ship's name */
-        //$ships_option_html .= '<option id="'.($s_ship['max_hitpoints']-$s_ship['hitpoints']).'" value="'.$s_ship['ship_id'].'">'.$s_ship['ship_name'].' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Exp: '.$s_ship['experience'].')</option>';
-        $ships_option_html .= '<option id="'.($s_ship['max_hitpoints']-$s_ship['hitpoints']).'" value="'.$s_ship['ship_id'].'">'.(($s_ship['ship_name'] != '')? $s_ship['ship_name'].' - '.$s_ship['template_name'] : $s_ship['template_name']).' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Exp: '.$s_ship['experience'].')</option>';
+        $new_id = $s_ship['max_hitpoints']-$s_ship['hitpoints'] + (($s_ship['ship_torso'] > 4 && $ammo_ratio < $thereshold_ammo_ratio) ? 100000 : 0);
+        $ships_option_html .= '<option id="'.$new_id.'" value="'.$s_ship['ship_id'].'">'.(($s_ship['ship_name'] != '')? $s_ship['ship_name'].' - '.$s_ship['template_name'] : $s_ship['template_name']).' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Torp: '.($s_ship['ship_torso'] < 5 ? 'n/a' : $s_ship['torp']).', Exp: '.$s_ship['experience'].')</option>';
 
         if($s_ship['ship_torso'] == SHIP_TYPE_TRANSPORTER) $n_transporter++;
-
+        
+        $torso_counter[$s_ship['ship_torso']]++;
+        
+        if($s_ship['max_hitpoints'] == $s_ship['hitpoints']) $damage_counter[0]++; 
+        else
+        {
+        	$damage_counter[1]++;
+        	$dmg_ratio = (int)($s_ship['hitpoints']*100/$s_ship['max_hitpoints']);
+        	if($dmg_ratio < 25) $damage_counter[3]++; 
+        	if($dmg_ratio < 50) $damage_counter[2]++; 
+    	}
+    	
+    	if($ammo_ratio == 100 || $s_ship['ship_torso'] < 5) $depleted_counter[0]++;
+    	else
+    	{
+    		if($ammo_ratio < $thereshold_ammo_ratio) $depleted_counter[2]++; else $depleted_counter[1]++; 
+    	}
+    	
         $n_ships++;
     }
 
+    foreach($torso_counter as $key => $torso)
+    {
+    	if($torso == 0) continue;
+    	$torso_string_counter .= $SHIP_TORSO[$game->player['user_race']][$key][29].' <b>'.$torso.'</b><br>';	
+    }
+    
+    $damage_string_counter .= 'Navi integre <b>'.$damage_counter[0].'</b>';
+    
+    if($damage_counter[1]>0) $damage_string_counter .= '<br>Navi danneggiate <b>'.$damage_counter[1].'</b> di cui<br>gravemente <b>'.$damage_counter[2].'</b><br>molto gravemente <b>'.$damage_counter[3].'</b>';
+    
+    $depleted_string .= 'Scorta completa <b>'.$depleted_counter[0].'</b><br>Scorta buona <b>'.$depleted_counter[1].'</b><br>Scorta bassa <b>'.$depleted_counter[2].'</b>';
+    
     if($n_ships == 0) {
         $sql = 'DELETE FROM ship_fleets
                 WHERE fleet_id = '.$fleet_id;
@@ -280,7 +317,7 @@ if(isset($_GET['pfleet_details'])) {
         }
     }
 
-    $n_resources = $fleet['resource_1'] + $fleet['resource_2'] + $fleet['resource_3'] + $fleet['resource_4'];
+    (float)$n_resources = $fleet['resource_1'] + $fleet['resource_2'] + $fleet['resource_3'] + $fleet['resource_4'];
     $n_units = $fleet['unit_1'] + $fleet['unit_2'] + $fleet['unit_3'] + $fleet['unit_4'] + $fleet['unit_5'] + $fleet['unit_6'];
 
     $n_security = 0;
@@ -318,12 +355,56 @@ if(isset($_GET['pfleet_details'])) {
 
     // Ende lesen Homebasekoords
 
+	//DC --- Pannello composizione Flotta
+	$game->out('
+		<table width="450" cellpadding="0" cellspacing="0">
+			<tr>Sommario Composizione e Status della Flotta:</tr>
+			<tr>
+				<td width="150" align="left">Tipo</td>
+				<td width="150" align="left">Integrità</td>
+				<td width="150" align="left">Munizioni</td> 
+			<tr>
+				<td width="150" align="left">'.$torso_string_counter.'
+				</td>
+				<td width="150" align="left">'.$damage_string_counter.'
+				</td>
+				<td width="150" align="left">'.$depleted_string.'
+				</td>
+		</table>
+	  <br>	
+      <table width="450" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+      	<td width="150">Soglia di controllo siluri</td>
+      	<td width="80">
+      		<select onChange="if(this.value) document.fleet_form.ammo_ratio.value = this.value;">
+      		<option value="0" '.($thereshold_ammo_ratio == 0 ? 'selected="selected"' : '&ndspc').'>0%</option>
+      		<option value="10" '.($thereshold_ammo_ratio == 10 ? 'selected="selected"' : '&ndspc').'>10%</option>
+      		<option value="20" '.($thereshold_ammo_ratio == 20 ? 'selected="selected"' : '&ndspc').'>20%</option>
+      		<option value="30" '.($thereshold_ammo_ratio == 30 ? 'selected="selected"' : '&ndspc').'>30%</option>
+      		<option value="40" '.($thereshold_ammo_ratio == 40 ? 'selected="selected"' : '&ndspc').'>40%</option>
+      		<option value="50" '.($thereshold_ammo_ratio == 50 ? 'selected="selected"' : '&ndspc').'>50%</option>
+      		<option value="60" '.($thereshold_ammo_ratio == 60 ? 'selected="selected"' : '&ndspc').'>60%</option>
+      		<option value="70" '.($thereshold_ammo_ratio == 70 ? 'selected="selected"' : '&ndspc').'>70%</option>
+      		<option value="80" '.($thereshold_ammo_ratio == 80 ? 'selected="selected"' : '&ndspc').'>80%</option>
+      		<option value="90" '.($thereshold_ammo_ratio == 90 ? 'selected="selected"' : '&ndspc').'>90%</option>
+      		<option value="100" '.($thereshold_ammo_ratio == 100 ? 'selected="selected"' : '&ndspc').'>100%</option>
+      		</select>
+      	</td>
+      	<td>
+      		<input class="button" type="submit" name="apply_ammo_ratio" value="Cambia soglia" onClick="return document.fleet_form.action = \''.parse_link('a=ship_fleets_ops&set_ammo_ratio='.$fleet_id.'&planet').'\'">
+      	</td>
+      </tr>
+      </table>
+      <input type="hidden" name="ammo_ratio" value="'.$thereshold_ammo_ratio.'">
+      <br> 
+	');
+	//DC ---
 
     if($n_transporter > 0) {
         $max_resources = $n_transporter * MAX_TRANSPORT_RESOURCES;
         $max_units = $n_transporter * MAX_TRANSPORT_UNITS;
 
-        if( ($n_resources < $max_resources) || ($n_units < $max_resources) ) $game->out('[<a href="'.parse_link('a=ship_fleets_loadingp&from='.$fleet_id).'">'.constant($game->sprache("TEXT19")).'</a>]&nbsp;');
+        if( ($n_resources < $max_resources) || ($n_units < $max_units) ) $game->out('[<a href="'.parse_link('a=ship_fleets_loadingp&from='.$fleet_id).'">'.constant($game->sprache("TEXT19")).'</a>]&nbsp;');
         if( ($n_resources > 0) || ($n_units > 0) ) $game->out('[<a href="'.parse_link('a=ship_fleets_loadingp&to='.$fleet_id).'">'.constant($game->sprache("TEXT20")).'</a>]');
 
         $game->out('<br>');
@@ -357,17 +438,22 @@ function ShipSelection(cSelectType) {
 	  
       if (cSelectType == "All") {
          objShipListBox.options[i].selected = true;
-	  } else if (cSelectType == "Damaged") {
-	     if (objShipListBox.options[i].id > 0) {
+      } else if (cSelectType == "Damaged") {
+         if ((objShipListBox.options[i].id > 0) && (objShipListBox.options[i].id < 100000)) {
             objShipListBox.options[i].selected = true;
-		 } else {
+         } else {
             objShipListBox.options[i].selected = false;
-	     }
-	  } else if (cSelectType == "None") {
+         }
+      } else if (cSelectType == "None") {
          objShipListBox.options[i].selected = false;
-	  }
+      } else if (cSelectType == "Depleted") {
+         if (objShipListBox.options[i].id > 99999) {
+            objShipListBox.options[i].selected = true;
+         } else {
+            objShipListBox.options[i].selected = false;
+         }
+      }
    }
-     
 }
 //--></SCRIPT>
       <br>
@@ -382,17 +468,22 @@ function ShipSelection(cSelectType) {
 		<center><b>'.constant($game->sprache("TEXT26")).'</b></center>
 		 <table height="115" border="0" cellpadding="2" cellspacing="0">
 		  <tr valign="middle">
-		   <td height=33%>
+		   <td height=25%>
 		    <input class="button" style="width: 90px;" type="button" name="select_all" value="'.constant($game->sprache("TEXT27")).'" onClick="ShipSelection(\'All\')">
 		   </td>
 		  </tr>
 		  <tr valign="middle">
-		   <td height=33%>
+		   <td height=25%>
 		    <input class="button" style="width: 90px;" type="button" name="select_damaged" value="'.constant($game->sprache("TEXT28")).'" onClick="ShipSelection(\'Damaged\')">
 		   </td>
 		  </tr>
 		  <tr valign="middle">
-		   <td height=33%>
+		   <td height=25%>
+		    <input class="button" style="width: 90px;" type="button" name="select_depleted" value="'.constant($game->sprache("TEXT78")).'" onClick="ShipSelection(\'Depleted\')">
+		   </td>
+		  </tr>
+		  <tr valign="middle">
+		   <td height=25%>
 		    <input class="button" style="width: 90px;" type="button" name="select_none" value="'.constant($game->sprache("TEXT29")).'" onClick="ShipSelection(\'None\')">
 		   </td>
 		  </tr>
@@ -616,7 +707,7 @@ elseif(isset($_GET['mfleet_details'])) {
     while($s_ship = $db->fetchrow($q_ships)) {
         /* 07/04/08 - AC: If present, show also ship's name */
         //$ships_option_html .= '<option value="'.$s_ship['ship_id'].'">'.$s_ship['ship_name'].' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Exp: '.$s_ship['experience'].')</option>';
-        $ships_option_html .= '<option value="'.$s_ship['ship_id'].'">'.(($s_ship['ship_name'] != '')? $s_ship['ship_name'].' - '.$s_ship['template_name'] : $s_ship['template_name']).' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Exp: '.$s_ship['experience'].')</option>';
+        $ships_option_html .= '<option value="'.$s_ship['ship_id'].'">'.(($s_ship['ship_name'] != '')? $s_ship['ship_name'].' - '.$s_ship['template_name'] : $s_ship['template_name']).' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Torp: '.($s_ship['ship_torso'] < 5 ? 'n/a' : $s_ship['torp']).', Exp: '.$s_ship['experience'].')</option>';
         if($s_ship['ship_torso'] == SHIP_TYPE_TRANSPORTER) $n_transporter++;
 
         $n_ships++;
@@ -673,7 +764,7 @@ elseif(isset($_GET['mfleet_details'])) {
     ');
 
     if($n_transporter > 0) {
-        $n_resources = $fleet['resource_1'] + $fleet['resource_2'] + $fleet['resource_3'] + $fleet['resource_4'];
+        (float)$n_resources = $fleet['resource_1'] + $fleet['resource_2'] + $fleet['resource_3'] + $fleet['resource_4'];
         $n_units = $fleet['unit_1'] + $fleet['unit_2'] + $fleet['unit_3'] + $fleet['unit_4'] + $fleet['unit_5'] + $fleet['unit_6'];
 
         $n_security = 0;
@@ -1041,21 +1132,45 @@ else {
                 parse_link('a=tactical_cartography&planet_id='.encode_planet_id($fleet['start']))
             );
 
-            // 30/09/08 - AC: Added fog of war also in this module
-            $system_known = false;
-            if($fleet['dest_owner_id'] == $game->player['user_id'])
-                $system_known = true;
-            else {
-                $sql = 'SELECT pd.log_code FROM (planets p)
-                               LEFT JOIN (planet_details pd) ON p.system_id = pd.system_id
-                        WHERE p.planet_id = '.$fleet['dest'].' AND pd.user_id = '.$game->player['user_id'];
-                if((($_temp = $db->queryrow($sql)) == true) && ($_temp['log_code'] > 0)) {
-                    $system_known = true;
-                }
-            }
-            if($system_known) {
+            $allydb_is_on = false;
+            if(($game->player['user_alliance'] != 0) && ($game->player['user_alliance_rights3']) == 1) $allydb_is_on = true;
+            $destplanet = new planets(&$db, $game->player['user_id'], $fleet['dest']);
+            $planet_is_visible = $planet_is_explored = false;
+			if($game->player['user_auth_level'] == STGC_DEVELOPER)
+    		{
+    			$planet_is_visible = true;
+    		}
+    		else 
+    		{
+    			if($allydb_is_on)
+    			{
+    				$planet_is_visible = $destplanet->is_visible($game->player['user_alliance'], 1);
+    			}
+    			else
+    			{
+    				$planet_is_visible = $destplanet->is_visible($game->player['user_id'], 0);
+    			}
+    		}
+
+    		if(!$planet_is_visible){
+    			if($allydb_is_on)
+    				$planet_is_explored = $destplanet->is_explored($game->player['user_alliance'], 1);
+    			else
+    				$planet_is_explored = $destplanet->is_explored($game->player['user_id'], 0);
+    		}
+            
+            if($planet_is_visible) {
                 $dest_name = addslashes($fleet['dest_planet_name']);
                 $dest_owner = ( (!empty($fleet['dest_owner_id'])) ? constant($game->sprache("TEXT72")).' <b>'.$fleet['dest_owner_name'].'</b>' : constant($game->sprache("TEXT73")) );
+                $dest_class = strtoupper($fleet['dest_planet_type']);
+            }
+            elseif($planet_is_explored) {
+            	if($allydb_is_on)
+    				$destplanet->setcachevalue($game->player['user_alliance'], 1); 
+    			else
+    				$destplanet->setcachevalue($game->player['user_id'], 0);
+    			$dest_name = addslashes($destplanet->cache_planet_name);
+                $dest_owner = ( (!empty($destplanet->cache_planet_owner)) ? constant($game->sprache("TEXT72")).' <b>'.$destplanet->cache_planet_owner.'</b>' : constant($game->sprache("TEXT73")) );
                 $dest_class = strtoupper($fleet['dest_planet_type']);
             }
             else {
