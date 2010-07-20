@@ -136,7 +136,16 @@ $game->out('
 <tr>
 <td>
 <table border=0 cellpadding=1 cellspacing=1 class="style_inner">
-<tr><td width=90 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT13")).'</span></td><td width=20 valign="top"></td><td width=80 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT14")).'</span></td><td width=130 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT57")).'</span></td><td width=310 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT15")).'</span></td><td width=100 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT16")).'</span></td><td width=60 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT17")).'</span></td><td width=60 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT18")).'</span></td></tr>
+<tr>
+  <td width=130 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT13")).'</span></td>
+  <td width=20 valign="top"></td>
+  <td width=70 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT14")).'</span></td>
+  <td width=70 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT57")).'</span></td>
+  <td width=390 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT15")).'</span></td>
+  <td width=70 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT16")).'</span></td>
+  <td width=50 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT17")).'</span></td>
+  <td width=50 valign="top"><span class="sub_caption2">'.constant($game->sprache("TEXT18")).'</span></td>
+</tr>
 ');
 
 $order[0]=' pl.planet_name ASC';
@@ -459,7 +468,7 @@ foreach ($planets as $key => $planet) {
 		$game->out('
 			<tr height=20><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">'.$planet['planet_name'].'</a></td><td>[<a href="'.parse_link('a=headquarter&switch_active_planet='.$planet['planet_id']).'" title="'.constant($game->sprache("TEXT37")).'">'.constant($game->sprache("TEXT38")).'</a>]</td>
 			<td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td>
-			<td><a href="javascript:void(0);" onmouseover="return overlib(\''.$distance_str.'\', CAPTION, \'@ Warp 6.0\', WIDTH, 250, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$distance.' A.U.</a></td>
+			<td><a href="javascript:void(0);" onmouseover="return overlib(\''.$distance_str.'\', CAPTION, \'@ Warp 6.0\', WIDTH, 250, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$distance.'</a></td>
 			<td>'.$stat_out.'&nbsp;&nbsp;');
 	}
 

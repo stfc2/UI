@@ -140,7 +140,7 @@ define ("GER_TEXT55", 'max. 7 Tage');
 
 define ("GER_TEXT56", 'deaktivieren');
 
-define ("GER_TEXT57", 'Entfernung:');
+define ("GER_TEXT57", 'Entfernung:<br>(in A.U.)');
 
 //English
 define ("ENG_TEXT1", 'Planets:');
@@ -261,7 +261,7 @@ define ("ENG_TEXT55", 'max. 7 days');
 
 define ("ENG_TEXT56", 'deactivate');
 
-define ("ENG_TEXT57", 'Distance:');
+define ("ENG_TEXT57", 'Distance:<br>(in A.U.)');
 
 //Italian
 define ("ITA_TEXT1", 'Pianeti:');
@@ -382,6 +382,6 @@ define ("ITA_TEXT55", 'max. 7 giorni');
 
 define ("ITA_TEXT56", 'disattiva');
 
-define ("ITA_TEXT57", 'Distanza:');
+define ("ITA_TEXT57", 'Distanza:<br>(in U.A.)');
 
 ?>
