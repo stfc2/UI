@@ -90,8 +90,12 @@ function Ships_List($focus=0,$search_name="")
 		message(DATABASE_ERROR, 'Could not query alliance data');
 	}
 
-	// Select all members of the alliance
-	$q_members = $db->query('SELECT user_id,user_name FROM user WHERE user_alliance='.$game->player['user_alliance']);
+	// Select all ACTIVE members of the alliance
+	$sql = 'SELECT user_id, user_name
+	        FROM user
+	        WHERE user_alliance = '.$game->player['user_alliance'].' AND
+	              user_active = 1';
+	$q_members = $db->query($sql);
 	$i = 0;
 	while($member = $db->fetchrow($q_members)) {
 		$members[$i]=$member['user_id'];
