@@ -241,44 +241,37 @@ function display_poll() {
 
         $game->out('
 
-<table class="border_grey" border="0" cellpadding="2" cellspacing="2" width="250" background="'.$game->GFX_PATH.'template_bg3.jpg">
-
+<table class="style_outer" border="0" cellpadding="2" cellspacing="2" width="250">
   <tr>
+    <td>
+      <table class="style_inner" border="0" cellpadding="2" cellspacing="2" width="250">
 
-    <form name="poll" method="post" action="'.parse_link('a=portal&do=vote').'" onSubmit="return this.submit_vote.disabled = true;">
+        <tr>
 
-    <td valign="top" width="100%">
+          <form name="poll" method="post" action="'.parse_link('a=portal&do=vote').'" onSubmit="return this.submit_vote.disabled = true;">
 
-      <b>'.$poll_data['question'].'</b><br>
+            <td valign="top" width="100%">
+
+              <b>'.$poll_data['question'].'</b><br>
 
         ');
 
 
-
         for($i = 1; $i <= 10; ++$i) {
-
             if(empty($poll_data['choice_'.$i])) break;
 
-
-
             $game->out('<input type="radio" name="choice" value="'.$i.'"><b>'.$poll_data['choice_'.$i].'</b><br>');
-
         }
 
-
-
         $game->out('
-
-      <center><input type="submit" name="submit_vote" class="button_nosize" value="'.constant($game->sprache("TEXT3")).'"></center>
-
-      <input type="hidden" name="poll_id" value="'.$poll_data['id'].'">
-
+              <center><input type="submit" name="submit_vote" class="button_nosize" value="'.constant($game->sprache("TEXT3")).'"></center>
+              <input type="hidden" name="poll_id" value="'.$poll_data['id'].'">
+            </td>
+          </form>
+        </tr>
+      </table>
     </td>
-
-    </form>
-
   </tr>
-
 </table><br>
 
         ');
