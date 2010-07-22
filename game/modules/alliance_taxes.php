@@ -73,18 +73,6 @@ function taxes_pagination($start, $n_count, $n_per_page) {
     return $page_html;
 }
 
-
-
-    $sql = 'SELECT *
-            FROM alliance
-            WHERE alliance_id = '.$game->player['user_alliance'];
-
-    if(($alliance = $db->queryrow($sql)) === false) {
-        message(DATABASE_ERROR, 'Could not query alliance data');
-    }
-
-  $game->out('<span class="caption">'.constant($game->sprache("TEXT4")).':</span><br><br>');
-
 function GetOwnRess($type,$percent) {
  
     global $db,$game;
@@ -134,6 +122,16 @@ return $res;
 
 
 
+$sql = 'SELECT *
+        FROM alliance
+        WHERE alliance_id = '.$game->player['user_alliance'];
+
+if(($alliance = $db->queryrow($sql)) === false) {
+    message(DATABASE_ERROR, 'Could not query alliance data');
+}
+
+$game->out('<span class="caption">'.constant($game->sprache("TEXT4")).':</span><br><br>');
+
 if(empty($game->player['alliance_name'])) {
     message(NOTICE, constant($game->sprache("TEXT5")));
 }
@@ -141,25 +139,25 @@ if(empty($game->player['alliance_name'])) {
 if(isset($_POST['taxes']))
 {
 
-if($game->player['user_alliance_rights2'] != 1) {
-    message(NOTICE, constant($game->sprache("TEXT6")));
-}
+    if($game->player['user_alliance_rights2'] != 1) {
+        message(NOTICE, constant($game->sprache("TEXT6")));
+    }
 
-$_POST['tax_set']=(int)$_POST['tax_set'];
-if ($_POST['tax_set']>=0 && $_POST['tax_set']<=20)
-{
-    $sql = 'UPDATE alliance SET taxes='.$_POST['tax_set'].' WHERE alliance_id = '.$game->player['user_alliance'];
-	$db->query($sql);
-}
+    $_POST['tax_set']=(int)$_POST['tax_set'];
+    if ($_POST['tax_set']>=0 && $_POST['tax_set']<=20)
+    {
+        $sql = 'UPDATE alliance SET taxes='.$_POST['tax_set'].' WHERE alliance_id = '.$game->player['user_alliance'];
+        $db->query($sql);
+    }
 
-redirect('a=alliance_taxes');
+    redirect('a=alliance_taxes');
 }
 else if(!empty($_POST['details_ress'])) {
 
     $sql = 'SELECT *
             FROM alliance
             WHERE alliance_id = '.$game->player['user_alliance'];
-            
+
     if(($adata = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query alliance data');
     }
@@ -168,7 +166,7 @@ else if(!empty($_POST['details_ress'])) {
     $LOGS_PER_PAGE = 10;
 
     $sql = 'SELECT id FROM alliance_taxes WHERE alliance_id='.$adata['alliance_id'].' ORDER BY timestamp DESC';
-            
+
     if(($all_logs = $db->queryrowset($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query all log data');
     }
@@ -191,11 +189,11 @@ else if(!empty($_POST['details_ress'])) {
     $on_page_start = ( ($on_page - 1) * $LOGS_PER_PAGE);
 
 
-$tax=GetTaxes($adata['taxes'],$adata['alliance_id']);
-$taxDay=GetTaxesPerDay($adata['taxes'],$adata['alliance_id']);
+    $tax=GetTaxes($adata['taxes'],$adata['alliance_id']);
+    $taxDay=GetTaxesPerDay($adata['taxes'],$adata['alliance_id']);
 
-$owntax=GetOwnRess(0,$adata['taxes']);
-$owntaxDay=GetOwnRess(1,$adata['taxes']);
+    $owntax=GetOwnRess(0,$adata['taxes']);
+    $owntaxDay=GetOwnRess(1,$adata['taxes']);
 
     $game->out('
       
@@ -229,13 +227,13 @@ $owntaxDay=GetOwnRess(1,$adata['taxes']);
 					<td width=50><b>'.constant($game->sprache("TEXT20")).':</b></td>
 				</tr>');
 
-$start = (isset($_GET['start'])) ? $_GET['start'] : 0;
+    $start = (isset($_GET['start'])) ? $_GET['start'] : 0;
     settype($start, 'int');
 
     $sql = 'SELECT COUNT(id) AS log_id_count
             FROM alliance_taxes
             WHERE alliance_id = '.$game->player['alliance_id'];
-            
+
     if(($_n_logs = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query logbook count data');
     }
@@ -245,16 +243,16 @@ $start = (isset($_GET['start'])) ? $_GET['start'] : 0;
     $sql = 'SELECT * FROM alliance_taxes WHERE alliance_id='.$adata['alliance_id'].'
             ORDER BY timestamp DESC
             LIMIT '.$start.', '.$LOGS_PER_PAGE;
-            
+
     if($start >= $n_logs) {
         $start = ($n_logs - $LOGS_PER_PAGE);
     }
 
 
-$payments = $db->query($sql);
+    $payments = $db->query($sql);
 
-while($payment = $db->fetchrow($payments)) {
-    $game->out('
+    while($payment = $db->fetchrow($payments)) {
+        $game->out('
 				<tr>
 					<td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$payment['receiver']).'">'.$game->uc_get($payment['receiver']).'</a></td>
 					<td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$payment['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$payment['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$payment['resource_3'].'</td>
@@ -263,51 +261,46 @@ while($payment = $db->fetchrow($payments)) {
 					<td>'.date("j.n.y H:i",$payment['timestamp']).'</td>
 				</tr>');
 
-}
+    }
     $game->out('</table>');
-$game->out('<div align="center">'.taxes_pagination($start, $n_logs, $LOGS_PER_PAGE).'</div>');
+    $game->out('<div align="center">'.taxes_pagination($start, $n_logs, $LOGS_PER_PAGE).'</div>');
 
-if($game->player['user_alliance_rights2'] == 1) {
-	
-$sql = 'SELECT p.planet_id,p.planet_name,u.user_id,u.user_name
-FROM (alliance a)
-INNER JOIN (user u) ON u.user_alliance = a.alliance_id
-INNER JOIN (planets p) ON p.planet_owner = u.user_id
-WHERE a.alliance_id ='.$adata['alliance_id'].' ORDER BY u.user_name ASC, p.planet_name ASC'; 
-$plnt = $db->query($sql);
+    if($game->player['user_alliance_rights2'] == 1) {
 
-$u_id=-1;
-$op_id=-1;
+        $sql = 'SELECT p.planet_id,p.planet_name,u.user_id,u.user_name
+                FROM (alliance a)
+                INNER JOIN (user u) ON u.user_alliance = a.alliance_id
+                INNER JOIN (planets p) ON p.planet_owner = u.user_id
+                WHERE a.alliance_id ='.$adata['alliance_id'].' AND u.user_active = 1 ORDER BY u.user_name ASC, p.planet_name ASC'; 
+        $plnt = $db->query($sql);
 
-while($planet = $db->fetchrow($plnt)) {
-if ($u_id!=$planet['user_id'])
-{
-$pl_id=0;
-$op_id++;
-if ($u_id!=-1) {$planet_list.='}
+        $u_id=-1;
+        $op_id=-1;
 
-';}
-$planet_list.='if (document.resform.userlist.options['.$op_id.'].selected) {
-	';
-	
-$rcv_list.='<option value="'.$planet['user_id'].'">'.$planet['user_name'].'</option>';
-$u_id=$planet['user_id'];
-}
-$planet_list.='
-      document.resform.receiver.options['.$pl_id.'] = new Option("'.$planet['planet_name'].'", "'.$planet['planet_id'].'");
-';
+        while($planet = $db->fetchrow($plnt)) {
+            if ($u_id!=$planet['user_id'])
+            {
+                $pl_id=0;
+                $op_id++;
+                if ($u_id!=-1) {$planet_list.='}';}
+                $planet_list.='if (document.resform.userlist.options['.$op_id.'].selected) {';
 
-if ($op_id==0) $start_planet_list.='<option value="'.$planet['planet_id'].'">'.$planet['planet_name'].'</option>';
+                $rcv_list.='<option value="'.$planet['user_id'].'">'.$planet['user_name'].'</option>';
+                $u_id=$planet['user_id'];
+            }
+            $planet_list.='document.resform.receiver.options['.$pl_id.'] = new Option("'.$planet['planet_name'].'", "'.$planet['planet_id'].'");';
 
-$pl_id++;
+            if ($op_id==0) $start_planet_list.='<option value="'.$planet['planet_id'].'">'.$planet['planet_name'].'</option>';
 
-}
-if ($u_id!=-1) $planet_list.='}';
+            $pl_id++;
+
+        }
+        if ($u_id!=-1) $planet_list.='}';
 
 
-for ($t=0; $t<21; $t++) $tax_list.='<option value="'.$t.'" '.( ($t==$adata['taxes']) ? 'selected':'').'>'.$t.'%</option>';
+        for ($t=0; $t<21; $t++) $tax_list.='<option value="'.$t.'" '.( ($t==$adata['taxes']) ? 'selected':'').'>'.$t.'%</option>';
 
-    $game->out('
+        $game->out('
 
 	<script language="JavaScript">
 	function UpdateValues()
@@ -360,7 +353,7 @@ for ($t=0; $t<21; $t++) $tax_list.='<option value="'.$t.'" '.( ($t==$adata['taxe
   <input class="button" type="submit" name="payout" value="'.constant($game->sprache("TEXT33")).'">
   </form>');
 
-  $game->out('
+        $game->out('
   <br><br><b><u>'.constant($game->sprache("TEXT28")).':</u></b>
   <form method="post" action="'.parse_link('a=alliance_taxes').'">
   <table width="300" border="0" cellpadding="2" cellspacing="2">
@@ -372,49 +365,47 @@ for ($t=0; $t<21; $t++) $tax_list.='<option value="'.$t.'" '.( ($t==$adata['taxe
   <input class="button" type="submit" name="taxes" value="'.constant($game->sprache("TEXT34")).'">
   </form>');
 
+    }
+
+    $sql = 'SELECT u.user_id,u.user_name
+            FROM (alliance a)
+            INNER JOIN (user u) ON u.user_alliance = a.alliance_id
+            WHERE a.alliance_id = '.$game->player['user_alliance'].' ORDER BY u.user_name ASC'; 
+
+    $userlist = $db->query($sql);
+
+    while($alluser = $db->fetchrow($userlist)) {
+
+        $user_list.='<option value="'.$alluser['user_id'].'">'.$alluser['user_name'].'</option>';
+
+    }
 
 
-
-}
-   $sql = 'SELECT u.user_id,u.user_name
-           FROM (alliance a)
-           INNER JOIN (user u) ON u.user_alliance = a.alliance_id
-           WHERE a.alliance_id = '.$game->player['user_alliance'].' ORDER BY u.user_name ASC'; 
-
-   $userlist = $db->query($sql);
-
-   while($alluser = $db->fetchrow($userlist)) {
-
-     $user_list.='<option value="'.$alluser['user_id'].'">'.$alluser['user_name'].'</option>';
-
-   }
-
-
-   $game->out('<br><br><b><u>'.constant($game->sprache("TEXT29")).':</u></b>
+    $game->out('<br><br><b><u>'.constant($game->sprache("TEXT29")).':</u></b>
    <form method="post" action="'.parse_link('a=alliance_taxes').'">
    <table width="300" border="0" cellpadding="2" cellspacing="2">
    <tr><td>'.constant($game->sprache("TEXT24")).':</td><td><select name="userlist">'.$user_list.'</select></td></tr>
    </table><br>
    <input class="button" type="submit" name="details_ress" value="'.constant($game->sprache("TEXT35")).'">&nbsp;<input class="button" type="submit" name="all_ress" value="'.constant($game->sprache("TEXT36")).'">
    </form><br><br><table width=400><tr><td><b>'.constant($game->sprache("TEXT24")).':</b></td><td><b>'.constant($game->sprache("TEXT30")).'</b></td><td><b>'.constant($game->sprache("TEXT31")).'</b></td><td><b>'.constant($game->sprache("TEXT32")).'</b></td></tr>');
-  
 
-   $sql = 'SELECT SUM(t.resource_1) AS Met, SUM(t.resource_2) AS Min, SUM(t.resource_3) AS Lat, t.receiver, t.alliance_id, u.user_id, u.user_name
-        FROM (alliance_taxes t)
-        INNER JOIN (user u) ON u.user_id = t.receiver
-        WHERE t.receiver = '.$_POST['userlist'].' GROUP BY t.receiver';
 
-   //echo $sql;
+    $sql = 'SELECT SUM(t.resource_1) AS Met, SUM(t.resource_2) AS Min, SUM(t.resource_3) AS Lat, t.receiver, t.alliance_id, u.user_id, u.user_name
+            FROM (alliance_taxes t)
+            INNER JOIN (user u) ON u.user_id = t.receiver
+            WHERE t.receiver = '.$_POST['userlist'].' GROUP BY t.receiver';
 
-   $userdata = $db->query($sql);
+    //echo $sql;
 
-   while($out_user = $db->fetchrow($userdata)) {
+    $userdata = $db->query($sql);
 
-     $game->out('<tr><td>'.$out_user['user_name'].'</td><td>'.number_format($out_user['Met'], 0, '.', '.').'</td><td>'.number_format($out_user['Min'], 0, '.', '.').'</td><td>'.number_format($out_user['Lat'], 0, '.', '.').'</td></tr>');
+    while($out_user = $db->fetchrow($userdata)) {
 
-   }
-   $game->out('</table>');
-$game->out('</td></tr>
+        $game->out('<tr><td>'.$out_user['user_name'].'</td><td>'.number_format($out_user['Met'], 0, '.', '.').'</td><td>'.number_format($out_user['Min'], 0, '.', '.').'</td><td>'.number_format($out_user['Lat'], 0, '.', '.').'</td></tr>');
+
+    }
+    $game->out('</table>');
+    $game->out('</td></tr>
 </table></td></tr></table>
 
     ');
@@ -423,7 +414,7 @@ $game->out('</td></tr>
 
 else if(isset($_POST['all_ress'])) {
 
-$game->out('
+    $game->out('
 <table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
     <td>'.constant($game->sprache("TEXT37")).'</td><tr><td>
@@ -432,48 +423,48 @@ $game->out('
           <td><b>'.constant($game->sprache("TEXT24")).':</b></td><td><b>'.constant($game->sprache("TEXT30")).'</b></td><td><b>'.constant($game->sprache("TEXT31")).'</b></td><td><b>'.constant($game->sprache("TEXT32")).'</b></td></tr>
 ');
 
-$sql = 'SELECT user_id FROM user WHERE user_alliance = '.$game->player['user_alliance'].'';
+    $sql = 'SELECT user_id FROM user WHERE user_alliance = '.$game->player['user_alliance'].'';
 
-$user_set = $db->query($sql);
+    $user_set = $db->query($sql);
 
-$zahler = 0;
-$users = array();
+    $zahler = 0;
+    $users = array();
 
-while($list_it = $db->fetchrow($user_set)) {
+    while($list_it = $db->fetchrow($user_set)) {
 
-  $users[$zahler]=$list_it['user_id']; 
-  $zahler++;
-}
+        $users[$zahler]=$list_it['user_id']; 
+        $zahler++;
+    }
 
-$sql = 'SELECT SUM(t.resource_1) AS Met, SUM(t.resource_2) AS Min, SUM(t.resource_3) AS Lat, t.receiver, t.alliance_id, u.user_id, u.user_name
-        FROM (alliance_taxes t)
-        INNER JOIN (user u) ON u.user_id = t.receiver
-        WHERE t.receiver IN ('.implode(',', $users).') GROUP BY u.user_name ASC';
+    $sql = 'SELECT SUM(t.resource_1) AS Met, SUM(t.resource_2) AS Min, SUM(t.resource_3) AS Lat, t.receiver, t.alliance_id, u.user_id, u.user_name
+            FROM (alliance_taxes t)
+            INNER JOIN (user u) ON u.user_id = t.receiver
+            WHERE t.receiver IN ('.implode(',', $users).') GROUP BY u.user_name ASC';
 
-$allianceuser = $db->query($sql);
+    $allianceuser = $db->query($sql);
 
-while($recv_list = $db->fetchrow($allianceuser)) {
+    while($recv_list = $db->fetchrow($allianceuser)) {
 
-  $game->out('<tr><td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$recv_list['receiver'].'').'">'.$game->uc_get($recv_list['receiver']).'</a></td><td>'.number_format($recv_list['Met'], 0, '.', '.').'</td><td>'.number_format($recv_list['Min'], 0, '.', '.').'</td><td>'.number_format($recv_list['Lat'], 0, '.', '.').'</td></tr>');
+        $game->out('<tr><td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$recv_list['receiver'].'').'">'.$game->uc_get($recv_list['receiver']).'</a></td><td>'.number_format($recv_list['Met'], 0, '.', '.').'</td><td>'.number_format($recv_list['Min'], 0, '.', '.').'</td><td>'.number_format($recv_list['Lat'], 0, '.', '.').'</td></tr>');
 
-}
+    }
 
-$game->out('</table></td></tr></table>');
+    $game->out('</table></td></tr></table>');
 
 }
 
 else if(isset($_POST['payout']))
 {
 
-if($game->player['user_alliance_rights2'] != 1) {
-    message(NOTICE, constant($game->sprache("TEXT6")));
-}
+    if($game->player['user_alliance_rights2'] != 1) {
+        message(NOTICE, constant($game->sprache("TEXT6")));
+    }
 
-$_POST['res_1']=(int)$_POST['res_1'];
-$_POST['res_2']=(int)$_POST['res_2'];
-$_POST['res_3']=(int)$_POST['res_3'];
-$_POST['receiver']=(int)$_POST['receiver'];
-$_POST['mode']=(int)$_POST['mode'];
+    $_POST['res_1']=(int)$_POST['res_1'];
+    $_POST['res_2']=(int)$_POST['res_2'];
+    $_POST['res_3']=(int)$_POST['res_3'];
+    $_POST['receiver']=(int)$_POST['receiver'];
+    $_POST['mode']=(int)$_POST['mode'];
 
     $sql = 'SELECT *
             FROM alliance
@@ -483,73 +474,73 @@ $_POST['mode']=(int)$_POST['mode'];
         message(DATABASE_ERROR, 'Could not query alliance data');
     }
 
-if ($_POST['res_1']<0) $_POST['res_1']=0;
-if ($_POST['res_2']<0) $_POST['res_2']=0;
-if ($_POST['res_3']<0) $_POST['res_3']=0;
-if ($_POST['res_1']>$adata['taxes_1']) $_POST['res_1']=$adata['taxes_1'];
-if ($_POST['res_2']>$adata['taxes_2']) $_POST['res_2']=$adata['taxes_2'];
-if ($_POST['res_3']>$adata['taxes_3']) $_POST['res_3']=$adata['taxes_3'];
+    if ($_POST['res_1']<0) $_POST['res_1']=0;
+    if ($_POST['res_2']<0) $_POST['res_2']=0;
+    if ($_POST['res_3']<0) $_POST['res_3']=0;
+    if ($_POST['res_1']>$adata['taxes_1']) $_POST['res_1']=$adata['taxes_1'];
+    if ($_POST['res_2']>$adata['taxes_2']) $_POST['res_2']=$adata['taxes_2'];
+    if ($_POST['res_3']>$adata['taxes_3']) $_POST['res_3']=$adata['taxes_3'];
 
 //alt: if ($_POST['mode']>2 || $_POST['mode']<0) $_POST['mode']=0;
 
-if ($_POST['mode']>3 || $_POST['mode']<0) $_POST['mode']=0;
-if ($_POST['res_1']==0 && $_POST['res_2']==0 && $_POST['res_3']==0) {redirect('a=alliance_taxes'); exit;}
-$distance=12*36;
-if ($_POST['mode']==0) $distance=20*36;
-if ($_POST['mode']==1) $distance=20*24;
-if ($_POST['mode']==2) $distance=20*12;
-if ($_POST['mode']==3) $distance=10;
+    if ($_POST['mode']>3 || $_POST['mode']<0) $_POST['mode']=0;
+    if ($_POST['res_1']==0 && $_POST['res_2']==0 && $_POST['res_3']==0) {redirect('a=alliance_taxes'); exit;}
+    $distance=12*36;
+    if ($_POST['mode']==0) $distance=20*36;
+    if ($_POST['mode']==1) $distance=20*24;
+    if ($_POST['mode']==2) $distance=20*12;
+    if ($_POST['mode']==3) $distance=10;
 
-$tset=15;
-if ($_POST['mode']==0) $tset=0;
-if ($_POST['mode']==1) $tset=4;
-if ($_POST['mode']==2) $tset=8;
+    $tset=15;
+    if ($_POST['mode']==0) $tset=0;
+    if ($_POST['mode']==1) $tset=4;
+    if ($_POST['mode']==2) $tset=8;
 
-$ftaxes[0]=$_POST['res_1']/100*$tset;
-$ftaxes[1]=$_POST['res_2']/100*$tset;
-$ftaxes[2]=$_POST['res_3']/100*$tset;
+    $ftaxes[0]=$_POST['res_1']/100*$tset;
+    $ftaxes[1]=$_POST['res_2']/100*$tset;
+    $ftaxes[2]=$_POST['res_3']/100*$tset;
 
-$aaa=0;$bbb=0;$ccc=0;
+    $aaa=0;$bbb=0;$ccc=0;
 
-if (($_POST['res_1']+$ftaxes[0])>$adata['taxes_1']) {$_POST['res_1']=$adata['taxes_1']-$ftaxes[0]; $aaa=1;}
-if (($_POST['res_2']+$ftaxes[1])>$adata['taxes_2']) {$_POST['res_2']=$adata['taxes_2']-$ftaxes[1]; $bbb=1;}
-if (($_POST['res_3']+$ftaxes[2])>$adata['taxes_3']) {$_POST['res_3']=$adata['taxes_3']-$ftaxes[2]; $ccc=1;}
+    if (($_POST['res_1']+$ftaxes[0])>$adata['taxes_1']) {$_POST['res_1']=$adata['taxes_1']-$ftaxes[0]; $aaa=1;}
+    if (($_POST['res_2']+$ftaxes[1])>$adata['taxes_2']) {$_POST['res_2']=$adata['taxes_2']-$ftaxes[1]; $bbb=1;}
+    if (($_POST['res_3']+$ftaxes[2])>$adata['taxes_3']) {$_POST['res_3']=$adata['taxes_3']-$ftaxes[2]; $ccc=1;}
 
-$sql='SELECT u.*,p.planet_id FROM (user u) LEFT JOIN (planets p) ON p.planet_id='.$_POST['receiver'].' WHERE u.user_id=p.planet_owner AND u.user_alliance='.$game->player['user_alliance'];
-if(($user = $db->queryrow($sql)) === false || !isset($user['planet_id'])) {
-redirect('a=alliance_taxes');
-}
-$planet=$user['planet_id'];
+    $sql='SELECT u.*,p.planet_id FROM (user u) LEFT JOIN (planets p) ON p.planet_id='.$_POST['receiver'].' WHERE u.user_id=p.planet_owner AND u.user_alliance='.$game->player['user_alliance'];
+    if(($user = $db->queryrow($sql)) === false || !isset($user['planet_id'])) {
+        redirect('a=alliance_taxes');
+    }
+    $planet=$user['planet_id'];
 
-account_log($game->player['user_id'],$user['user_id'],3);
+    account_log($game->player['user_id'],$user['user_id'],3);
 
-if (($db->query('INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,resource_4,unit_1,unit_2,unit_3,unit_4,unit_5,unit_6,arrival_time) VALUES ("'.$planet.'","'.$_POST['res_1'].'","'.$_POST['res_2'].'","'.$_POST['res_3'].'",0,0,0,0,0,0,0,"'.($ACTUAL_TICK+$distance).'")'))==true)
-{
-$ships=ceil(($_POST['res_1']+$_POST['res_2']+$_POST['res_3'])/MAX_TRANSPORT_RESOURCES);
-send_fake_transporter(array(FERENGI_TRADESHIP_ID=>$ships), FERENGI_USERID, 0, $planet,($ACTUAL_TICK+$distance));
+    if (($db->query('INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,resource_4,unit_1,unit_2,unit_3,unit_4,unit_5,unit_6,arrival_time) VALUES ("'.$planet.'","'.$_POST['res_1'].'","'.$_POST['res_2'].'","'.$_POST['res_3'].'",0,0,0,0,0,0,0,"'.($ACTUAL_TICK+$distance).'")'))==true)
+    {
+        $ships=ceil(($_POST['res_1']+$_POST['res_2']+$_POST['res_3'])/MAX_TRANSPORT_RESOURCES);
+        send_fake_transporter(array(FERENGI_TRADESHIP_ID=>$ships), FERENGI_USERID, 0, $planet,($ACTUAL_TICK+$distance));
 
-if($aaa==0){$wert_1=$_POST['res_1']+$ftaxes[0];}else{$wert_1=$_POST['res_1'];}
-if($bbb==0){$wert_2=$_POST['res_2']+$ftaxes[1];}else{$wert_2=$_POST['res_2'];}
-if($ccc==0){$wert_3=$_POST['res_3']+$ftaxes[2];}else{$wert_3=$_POST['res_3'];}
+        if($aaa==0){$wert_1=$_POST['res_1']+$ftaxes[0];}else{$wert_1=$_POST['res_1'];}
+        if($bbb==0){$wert_2=$_POST['res_2']+$ftaxes[1];}else{$wert_2=$_POST['res_2'];}
+        if($ccc==0){$wert_3=$_POST['res_3']+$ftaxes[2];}else{$wert_3=$_POST['res_3'];}
 
-$sql = 'UPDATE alliance SET taxes_1=taxes_1-'.$wert_1.',taxes_2=taxes_2-'.$wert_2.',taxes_3=taxes_3-'.$wert_3.' WHERE alliance_id = '.$game->player['user_alliance'];
-$db->query($sql);
-$sql = 'INSERT INTO alliance_taxes (alliance_id,resource_1,resource_2,resource_3,receiver,sender,mode,reason,timestamp) VALUES('.$game->player['user_alliance'].','.$_POST['res_1'].','.$_POST['res_2'].','.$_POST['res_3'].','.$user['user_id'].','.$game->player['user_id'].','.$_POST['mode'].',"'.addslashes(htmlspecialchars($_POST['reason'])).'",'.time().')';
-$db->query($sql);
-$sql = 'UPDATE config SET ferengitax_1=ferengitax_1+'.$ftaxes[0].',ferengitax_2=ferengitax_2+'.$ftaxes[1].',ferengitax_3=ferengitax_3+'.$ftaxes[2];
-$db->query($sql);
+        $sql = 'UPDATE alliance SET taxes_1=taxes_1-'.$wert_1.',taxes_2=taxes_2-'.$wert_2.',taxes_3=taxes_3-'.$wert_3.' WHERE alliance_id = '.$game->player['user_alliance'];
+        $db->query($sql);
+        $sql = 'INSERT INTO alliance_taxes (alliance_id,resource_1,resource_2,resource_3,receiver,sender,mode,reason,timestamp) VALUES('.$game->player['user_alliance'].','.$_POST['res_1'].','.$_POST['res_2'].','.$_POST['res_3'].','.$user['user_id'].','.$game->player['user_id'].','.$_POST['mode'].',"'.addslashes(htmlspecialchars($_POST['reason'])).'",'.time().')';
+        $db->query($sql);
+        $sql = 'UPDATE config SET ferengitax_1=ferengitax_1+'.$ftaxes[0].',ferengitax_2=ferengitax_2+'.$ftaxes[1].',ferengitax_3=ferengitax_3+'.$ftaxes[2];
+        $db->query($sql);
 
-}
+    }
 
 
-redirect('a=alliance_taxes');
+    redirect('a=alliance_taxes');
 }
 
 else {
     $sql = 'SELECT *
             FROM alliance
             WHERE alliance_id = '.$game->player['user_alliance'];
-            
+
     if(($adata = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query alliance data');
     }
@@ -558,7 +549,7 @@ else {
    $LOGS_PER_PAGE = 10;
 
     $sql = 'SELECT id FROM alliance_taxes WHERE alliance_id='.$adata['alliance_id'].' ORDER BY timestamp DESC';
-            
+
     if(($all_logs = $db->queryrowset($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query all log data');
     }
@@ -581,11 +572,11 @@ else {
     $on_page_start = ( ($on_page - 1) * $LOGS_PER_PAGE);
 
 
-$tax=GetTaxes($adata['taxes'],$adata['alliance_id']);
-$taxDay=GetTaxesPerDay($adata['taxes'],$adata['alliance_id']);
+    $tax=GetTaxes($adata['taxes'],$adata['alliance_id']);
+    $taxDay=GetTaxesPerDay($adata['taxes'],$adata['alliance_id']);
 
-$owntax=GetOwnRess(0,$adata['taxes']);
-$owntaxDay=GetOwnRess(1,$adata['taxes']);
+    $owntax=GetOwnRess(0,$adata['taxes']);
+    $owntaxDay=GetOwnRess(1,$adata['taxes']);
 
     $game->out('
       
@@ -620,13 +611,13 @@ $owntaxDay=GetOwnRess(1,$adata['taxes']);
 					<td width=50><b>'.constant($game->sprache("TEXT20")).':</b></td>
 				</tr>');
 
-$start = (isset($_GET['start'])) ? $_GET['start'] : 0;
+    $start = (isset($_GET['start'])) ? $_GET['start'] : 0;
     settype($start, 'int');
 
     $sql = 'SELECT COUNT(id) AS log_id_count
             FROM alliance_taxes
             WHERE alliance_id = '.$game->player['alliance_id'];
-            
+
     if(($_n_logs = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query logbook count data');
     }
@@ -636,40 +627,40 @@ $start = (isset($_GET['start'])) ? $_GET['start'] : 0;
     $sql = 'SELECT * FROM alliance_taxes WHERE alliance_id='.$adata['alliance_id'].'
             ORDER BY timestamp DESC
             LIMIT '.$start.', '.$LOGS_PER_PAGE;
-            
+
     if($start >= $n_logs) {
         $start = ($n_logs - $LOGS_PER_PAGE);
     }
 
 
-$payments = $db->query($sql);
+    $payments = $db->query($sql);
 
-while($payment = $db->fetchrow($payments)) {
+    while($payment = $db->fetchrow($payments)) {
+
+        switch($payment['mode']) {
+
+            case 0:
+                $mode = constant($game->sprache("TEXT26d"));
+            break;
+
+            case 1:
+                $mode = constant($game->sprache("TEXT26c"));
+            break;
  
-    switch($payment['mode']) {
+            case 2:
+                $mode = constant($game->sprache("TEXT26b"));
+            break;
 
-    case 0:
-    $mode = constant($game->sprache("TEXT26d"));
-    break;
+            case 3:
+                $mode = constant($game->sprache("TEXT26a"));
+            break;
 
-    case 1:
-    $mode = constant($game->sprache("TEXT26c"));
-    break;
- 
-    case 2:
-    $mode = constant($game->sprache("TEXT26b"));
-    break;
+            default:
+                $mode = constant($game->sprache("TEXT26a"));
 
-    case 3:
-    $mode = constant($game->sprache("TEXT26a"));
-    break;
+        }
 
-    default:
-    $mode = constant($game->sprache("TEXT26a"));
-
-    }
-
-    $game->out('
+        $game->out('
 				<tr>
 					<td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$payment['receiver']).'">'.$game->uc_get($payment['receiver']).'</a></td>
 					<td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$payment['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$payment['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$payment['resource_3'].'</td>
@@ -679,51 +670,46 @@ while($payment = $db->fetchrow($payments)) {
 					<td>'.date("j.n.y H:i",$payment['timestamp']).'</td>
 				</tr>');
 
-}
+    }
     $game->out('</table>');
-$game->out('<div align="center">'.taxes_pagination($start, $n_logs, $LOGS_PER_PAGE).'</div>');
+    $game->out('<div align="center">'.taxes_pagination($start, $n_logs, $LOGS_PER_PAGE).'</div>');
 
-if($game->player['user_alliance_rights2'] == 1) {
-	
-$sql = 'SELECT p.planet_id,p.planet_name,u.user_id,u.user_name
-FROM (alliance a)
-INNER JOIN (user u) ON u.user_alliance = a.alliance_id
-INNER JOIN (planets p) ON p.planet_owner = u.user_id
-WHERE a.alliance_id ='.$adata['alliance_id'].' ORDER BY u.user_name ASC, p.planet_name ASC'; 
-$plnt = $db->query($sql);
+    if($game->player['user_alliance_rights2'] == 1) {
 
-$u_id=-1;
-$op_id=-1;
+        $sql = 'SELECT p.planet_id,p.planet_name,u.user_id,u.user_name
+                FROM (alliance a)
+                INNER JOIN (user u) ON u.user_alliance = a.alliance_id
+                INNER JOIN (planets p) ON p.planet_owner = u.user_id
+                WHERE a.alliance_id ='.$adata['alliance_id'].' AND u.user_active = 1 ORDER BY u.user_name ASC, p.planet_name ASC'; 
+        $plnt = $db->query($sql);
 
-while($planet = $db->fetchrow($plnt)) {
-if ($u_id!=$planet['user_id'])
-{
-$pl_id=0;
-$op_id++;
-if ($u_id!=-1) {$planet_list.='}
+        $u_id=-1;
+        $op_id=-1;
 
-';}
-$planet_list.='if (document.resform.userlist.options['.$op_id.'].selected) {
-	';
-	
-$rcv_list.='<option value="'.$planet['user_id'].'">'.$planet['user_name'].'</option>';
-$u_id=$planet['user_id'];
-}
-$planet_list.='
-      document.resform.receiver.options['.$pl_id.'] = new Option("'.$planet['planet_name'].'", "'.$planet['planet_id'].'");
-';
+        while($planet = $db->fetchrow($plnt)) {
+            if ($u_id!=$planet['user_id'])
+            {
+                $pl_id=0;
+                $op_id++;
+                if ($u_id!=-1) {$planet_list.='}';}
+                $planet_list.='if (document.resform.userlist.options['.$op_id.'].selected) {';
 
-if ($op_id==0) $start_planet_list.='<option value="'.$planet['planet_id'].'">'.$planet['planet_name'].'</option>';
+                $rcv_list.='<option value="'.$planet['user_id'].'">'.$planet['user_name'].'</option>';
+                $u_id=$planet['user_id'];
+            }
+            $planet_list.='document.resform.receiver.options['.$pl_id.'] = new Option("'.$planet['planet_name'].'", "'.$planet['planet_id'].'");';
 
-$pl_id++;
+            if ($op_id==0) $start_planet_list.='<option value="'.$planet['planet_id'].'">'.$planet['planet_name'].'</option>';
 
-}
-if ($u_id!=-1) $planet_list.='}';
+            $pl_id++;
+
+        }
+        if ($u_id!=-1) $planet_list.='}';
 
 
-for ($t=0; $t<21; $t++) $tax_list.='<option value="'.$t.'" '.( ($t==$adata['taxes']) ? 'selected':'').'>'.$t.'%</option>';
+        for ($t=0; $t<21; $t++) $tax_list.='<option value="'.$t.'" '.( ($t==$adata['taxes']) ? 'selected':'').'>'.$t.'%</option>';
 
-    $game->out('
+        $game->out('
 
 	<script language="JavaScript">
 	function UpdateValues()
@@ -777,7 +763,7 @@ for ($t=0; $t<21; $t++) $tax_list.='<option value="'.$t.'" '.( ($t==$adata['taxe
   </form>');
 
 
-  $game->out('
+        $game->out('
   <br><br><b><u>'.constant($game->sprache("TEXT28")).':</u></b>
   <form method="post" action="'.parse_link('a=alliance_taxes').'">
   <table width="300" border="0" cellpadding="2" cellspacing="2">
@@ -790,24 +776,24 @@ for ($t=0; $t<21; $t++) $tax_list.='<option value="'.$t.'" '.( ($t==$adata['taxe
   </form>');
 
 
-}
+    }
 
 
-   $sql = 'SELECT u.user_id,u.user_name
-           FROM (alliance a)
-           INNER JOIN (user u) ON u.user_alliance = a.alliance_id
-           WHERE a.alliance_id = '.$game->player['user_alliance'].' ORDER BY u.user_name ASC'; 
+    $sql = 'SELECT u.user_id,u.user_name
+            FROM (alliance a)
+            INNER JOIN (user u) ON u.user_alliance = a.alliance_id
+            WHERE a.alliance_id = '.$game->player['user_alliance'].' ORDER BY u.user_name ASC'; 
 
-   $userlist = $db->query($sql);
+    $userlist = $db->query($sql);
 
-   while($alluser = $db->fetchrow($userlist)) {
+    while($alluser = $db->fetchrow($userlist)) {
 
-     $user_list.='<option value="'.$alluser['user_id'].'">'.$alluser['user_name'].'</option>';
+        $user_list.='<option value="'.$alluser['user_id'].'">'.$alluser['user_name'].'</option>';
 
-   }
+    }
 
 
-   $game->out('<br><br><b><u>'.constant($game->sprache("TEXT29")).':</u></b>
+    $game->out('<br><br><b><u>'.constant($game->sprache("TEXT29")).':</u></b>
    <form method="post" action="'.parse_link('a=alliance_taxes').'">
    <table width="300" border="0" cellpadding="2" cellspacing="2">
    <tr><td>'.constant($game->sprache("TEXT24")).':</td><td><select name="userlist">'.$user_list.'</select></td></tr>
@@ -818,7 +804,7 @@ for ($t=0; $t<21; $t++) $tax_list.='<option value="'.$t.'" '.( ($t==$adata['taxe
 
 
    ');
-$game->out('</td></tr>
+    $game->out('</td></tr>
 </table></td></tr></table>
 
     ');

@@ -22,11 +22,11 @@
 
 function timeformat($seconds)
 {
-$days=0;
-$hours=0;
-while($seconds>=60*60*24) {$days++; $seconds-=60*60*24;}
-while($seconds>=60*60) {$hours++; $seconds-=60*60;}
-return ($days.'d '.$hours.'h');
+    $days=0;
+    $hours=0;
+    while($seconds>=60*60*24) {$days++; $seconds-=60*60*24;}
+    while($seconds>=60*60) {$hours++; $seconds-=60*60;}
+    return ($days.'d '.$hours.'h');
 }
 
 
@@ -35,31 +35,31 @@ return ($days.'d '.$hours.'h');
 //   $requirement == false -> the player must NOT be in an alliance
 function check_membership($requirement) {
     global $game;
-    
+
     $in_alliance = (!empty($game->player['alliance_name'])) ? true : false;
-    
+
     if($in_alliance && !$requirement) {
         message(NOTICE, constant($game->sprache("TEXT0")));
     }
-    
+
     if(!$in_alliance && $requirement) {
         message(NOTICE, constant($game->sprache("TEXT1")));
     }
-    
+
     return true;
 }
 
 
 $game->init_player();
 $game->out('<span class="caption">'.constant($game->sprache("TEXT2")).'</span><br><br>');
-   
- $sql = 'SELECT *
-            FROM alliance
-            WHERE alliance_id = '.$game->player['user_alliance'];
 
-    if(($alliance_rights = $db->queryrow($sql)) === false) {
-        message(DATABASE_ERROR, 'Could not query alliance data');
-    }
+$sql = 'SELECT *
+        FROM alliance
+        WHERE alliance_id = '.$game->player['user_alliance'];
+
+if(($alliance_rights = $db->queryrow($sql)) === false) {
+    message(DATABASE_ERROR, 'Could not query alliance data');
+}
 
 if(isset($_GET['member_list'])) {
     check_membership(true);
@@ -71,16 +71,18 @@ if(isset($_GET['member_list'])) {
     if(($alliance = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query alliance data');
     }
-    
+
+    // 10/0710 - AC: Added a filter for banned members
     $sql = 'SELECT user_id, user_name, user_race, user_points, user_planets, user_alliance_status, last_active, user_vacation_end
             FROM user
-            WHERE user_alliance = '.$game->player['user_alliance'].'
+            WHERE user_alliance = '.$game->player['user_alliance'].' AND
+                  user_active = 1
             ORDER BY user_points DESC';
-            
+
     if(!$q_user = $db->query($sql)) {
         message(DATABASE_ERROR, 'Could not query alliance user data');
     }
-    
+
     if($db->num_rows() == 0) {
         message(NOTICE, constant($game->sprache("TEXT3")));
     }
@@ -139,7 +141,6 @@ if(isset($_GET['member_list'])) {
       <table class="style_inner" width="350" align="center" border="0" cellpadding="2" cellspacing="2">
         <form name="mlist_form" method="post" action="'.parse_link('a=alliance_admin').'">
         <tr>
-          
           <td width="30">&nbsp;</td>
           <td width="140"><b>'.constant($game->sprache("TEXT6")).'</b></td>
           <td width="70"><b>'.constant($game->sprache("TEXT7")).'</b></td>
@@ -148,59 +149,47 @@ if(isset($_GET['member_list'])) {
           '.( ($game->option_retr('alliance_status_member')==1) ? '<td width="50"><b>'.constant($game->sprache("TEXT10")).'</b></td>' : '<td width="50"><b>'.constant($game->sprache("TEXT11")).'</b></td>' ).'
         </tr>
         ');
-         
+
         while($user = $db->fetchrow($q_user)) {
 
-        switch($user['user_race']) {
- 
-        case 0:
-        $user_race = constant($game->sprache("TEXT12"));
-        break;
- 
-        case 1:
-        $user_race = constant($game->sprache("TEXT13"));
-        break;
+            switch($user['user_race']) {
+                case 0:
+                    $user_race = constant($game->sprache("TEXT12"));
+                break;
+                case 1:
+                    $user_race = constant($game->sprache("TEXT13"));
+                break;
+                case '2':
+                    $user_race = constant($game->sprache("TEXT14"));
+                break;
+                case '3':
+                    $user_race = constant($game->sprache("TEXT15"));
+                break;
+                case '4':
+                    $user_race = constant($game->sprache("TEXT16"));
+                break;
+                case '5':
+                    $user_race = constant($game->sprache("TEXT17"));
+                break;
+                case '8':
+                    $user_race = constant($game->sprache("TEXT18"));
+                break;
+                case '9':
+                    $user_race = constant($game->sprache("TEXT19"));
+                break;
+                case '10':
+                    $user_race = constant($game->sprache("TEXT20"));
+                break;
+                case '11':
+                    $user_race = constant($game->sprache("TEXT21"));
+                break;
+                default:
+                    $user_race = constant($game->sprache("TEXT22"));
+                break;
+            }
 
-        case '2':
-        $user_race = constant($game->sprache("TEXT14"));
-        break;
-
-        case '3':
-        $user_race = constant($game->sprache("TEXT15"));
-        break;
-
-        case '4':
-        $user_race = constant($game->sprache("TEXT16"));
-        break;
-
-        case '5':
-        $user_race = constant($game->sprache("TEXT17"));
-        break;
-
-        case '8':
-        $user_race = constant($game->sprache("TEXT18"));
-        break;
-
-        case '9':
-        $user_race = constant($game->sprache("TEXT19"));
-        break;
-
-        case '10':
-        $user_race = constant($game->sprache("TEXT20"));
-        break;
-
-        case '11':
-        $user_race = constant($game->sprache("TEXT21"));
-        break;
-
-        default:
-        $user_race = constant($game->sprache("TEXT22"));
-        break;
-
-        }
-
-        if ($user['last_active']>(time()-60*3)) $stats_str='<span style="color: green">'.constant($game->sprache("TEXT23")).'</span>';
-	    else if ($user['last_active']>(time()-60*9)) $stats_str='<span style="color: orange">'.constant($game->sprache("TEXT24")).'</span>';
+            if ($user['last_active']>(time()-60*3)) $stats_str='<span style="color: green">'.constant($game->sprache("TEXT23")).'</span>';
+            else if ($user['last_active']>(time()-60*9)) $stats_str='<span style="color: orange">'.constant($game->sprache("TEXT24")).'</span>';
             else $stats_str='<span style="color: red">'.constant($game->sprache("TEXT25")).'</span>';
 
             $game->out('
@@ -214,8 +203,8 @@ if(isset($_GET['member_list'])) {
         </tr>
             ');
         }
-         
-     $game->out('
+
+        $game->out('
       </table>
       <table width="350" align="center" border="0" cellpadding="0" cellspacing="0">
         <tr height="5"><td></td></tr>
@@ -234,7 +223,7 @@ if(isset($_GET['member_list'])) {
 
         </td></tr>!-->
         ');
-        
+
         if($game->player['user_id'] == $alliance_rights['alliance_owner']) {
             $game->out('
          <tr height="5"><td></td></tr>
@@ -243,7 +232,7 @@ if(isset($_GET['member_list'])) {
          </td></tr>
             '); 
         }
-        
+
         $game->out('</form></table>');
     }
     else {
@@ -528,9 +517,10 @@ elseif(!empty($game->player['alliance_name'])) {
                    COUNT(u.user_id) AS member_count
             FROM (alliance a), (user u)
             WHERE a.alliance_id = '.$game->player['user_alliance'].' AND
-                  u.user_alliance = '.$game->player['user_alliance'].'
+                  u.user_alliance = '.$game->player['user_alliance'].' AND
+                  u.user_active = 1
             GROUP BY alliance_id';
-            
+
     if(($alliance = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query alliance data');
     }
@@ -653,7 +643,7 @@ elseif(!empty($game->player['alliance_name'])) {
     if($game->player['user_alliance_rights6']==1) { 
 
       if(!empty($new_app['application_id'])) {
-            $game->out('<a href="'.parse_link('a=alliance_application&application=admin').'"><span style="color: #FFFF00;"><b>'.constant($game->sprache("TEXT67")).'</b></span></a><br>');
+            $game->out('<a href="'.parse_link('a=alliance_application&application=admin').'"><span class="highlight"><b>'.constant($game->sprache("TEXT67")).'</b></span></a><br>');
 
       }
       else { $game->out('
