@@ -134,9 +134,9 @@ Che cosa pu&ograve; essere perso in seguito a un attacco? (strutture, difese, tr
 	</tr>
 	<tr>
 		<td valign="top"><b>Come funzionano le varie condizioni di allarme per le flotte (<font color=#00FF00>Verde</font>, <font color=#FFFF00>Giallo</font>, <font color=#FF0000>Rosso</font>)?</b></td>
-		<td valign="top" align="justify">Prima di tutto va detto che tale condizione di allarme determina solamente le regole di ingaggio a scopo difensivo. Il livello di allarme con cui una flotta approccia l'orbita di un pianeta &egrave; ininfluente.
+		<td valign="top" align="justify">Prima di tutto va detto che tale condizione di allarme determina solamente le regole di ingaggio a scopo <b>difensivo</b>. <u>Il livello di allarme con cui una flotta approccia l'orbita di un pianeta &egrave; ininfluente</u>.
 		<ul><li><font color=#00FF00>Verde</font>: le navi con questo livello di allarme non attaccano nessuna nave in arrivo.<br>Ovviamente si difenderanno da un'attacco diretto (in pratica: non reagiranno ad un attacco rivolto al pianeta, ma solo a se stesse).</li>
-		<li><font color=#FFFF00>Giallo</font>: le navi attaccheranno navi in arrivo con ordini offensivi e/o agiranno di concerto ad eventuali altre flotte proprie o alleate sotto attacco (in pratica: le flotte in questo stato di allarme reagiranno anche se ad essere attaccata sar&agrave; un'altra flotta).</li>
+		<li><font color=#FFFF00>Giallo</font>: le navi attaccheranno navi in arrivo con ordini offensivi e/o agiranno di concerto ad eventuali altre flotte proprie o alleate sotto attacco (in pratica: le flotte in questo stato di allarme reagiscono ad un atto ostile rivolto al pianeta se del giocatore o di un alleato).</li>
 		<li><font color=#FF0000>Rosso</font>: le navi attaccano a vista qualsiasi vascello che non venga riconosciuto/a come amico/a o alleato/a a prescindere dall'ordine ad esse impartito (offensivo o meno).</li></ul></td>
 	</tr>
 	<tr>
@@ -151,12 +151,57 @@ Che cosa pu&ograve; essere perso in seguito a un attacco? (strutture, difese, tr
 		<td valign="top"><b>Posso spostare i cannoni orbitali? Se non si spostano posso venderli all'asta?</b></td>
 		<td valign="top" align="justify">No, i cannoni orbitali non montano motori Warp; tuttavia possono essere venduti all'asta, perch&eacute; verranno trasportati dalle navi Ferengi.</td>
 	</tr>
+	<tr>
+		<td valign="top"><b>Che scopo ha e come funziona l'esperienza di una nave?</b></td>
+		<td valign="top" align="justify">Il valore di esperienza attributio ad una nave, viene assegnato dopo ogni scontro vittorioso e influenzer&agrave; i successivi fornendo bonus alla nave con maggior esperienza.</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Aiuto! Mi si &egrave; rivoltato un pianeta! E adesso?</b></td>
+		<td valign="top" align="justify">Quando un pianeta non ha il numero richiesto di <b>Truppe sicurezza</b> va in rivolta. Tutte le costruzioni vengono interrotte e le miniere fermano la produzione. Per poter riprendere il controllo delle code di produzione &egrave; necessario avere almeno il 70% delle truppe richieste. Per terminare la rivolta e non perdere il pianeta &egrave; necessario che il requisito di <b>Truppe Sicurezza</b> sia soddisfatto in un range di tempo variabile che dipende da quante volte il pianeta si &egrave; gi&agrave; ribellato in precedenza (<u>anche se prima era di un altro giocatore</u>). Pianeti pi&ugrave; &quot;tranquilli&quot: avranno una minore possibilit&agrave; di sfuggire al controllo del giocatore rispetto a quelli pi&ugrave; &quot;facinorosi&quot;.</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Se arrivo ad avere un pianeta che richiede tante truppe di sicurezza quanto sono gli spazi disponibili sul pianeta, potr&ograve; produrre truppe?</b></td>
+		<td valign="top" align="justify">Si, utilizzando la ricerca di <b>Terraforming</b>, che aumenta di tot (a seconda della specie del giocatore) unit&agrave; a livello il numero massimo di unit&agrave; disponibili.</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Che differenza intercorre in termini di gioco tra un <b>Trattato di Non Aggressione</b> ed un <b>Patto di Collaborazione</b>?</b></td>
+		<td valign="top" align="justify">Col <b>Patto di Collaborazione</b> le flotte in allarme rosso non attaccano le flotte con cui si &egrave; stretto questo patto. Inoltre &egrave; possibile instaurare <b>Rotte Commerciali</b>, mentre non &egrave; possibile con il <b>Trattato di Non Aggressione</b>.</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>&Egrave; possibile creare cicli infiniti di produzione delle truppe?</b></td>
+		<td valign="top" align="justify">Si, se si selezionano pi&ugrave; check box &quot;Infiniti&quot;, il gioco gestir&agrave; il numero scritto nella casella per poi passare alla riga successiva.<br>
+		Esempio:<ul><li>tecnico 45 infiniti</li><li>Medico 4 infiniti</li><li>Guida 12 infiniti</li></ul>
+		Prima verranno addestrati i 45 tecnici, poi i 4 medici e quindi le 12 guide. Arrivati in fondo si ricomincia dai 45 tecnici e via di seguito.</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Come faccio ad usare i Ferengi per trasportare risorse e truppe da un pianeta all&#146;altro?</b></td>
+		<td valign="top" align="justify"><ul><li>Selezionare nel <b>Tattico</b> il pianeta di destinazione</li>
+		<li>Attivare il focus sul pianeta di partenza</li>
+		<li>Nel tattico comparir&agrave; una maschera in basso &quot;Invia Risorse / Unit&a tramite la Gilda del Commercio Ferengi&quot; (seleziona &quot;Visualizza&quot; altrimenti)</li>
+		<li>Sceglire il materiale/uomini da mandare e selezionare &quot;Inizio consegna&quot;</li></ul></td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Le ricerche o tecnologie acquisite sul pianeta madre &egrave; esportabile sugli altri pianeti?</b></td>
+		<td valign="top" align="justify">No, ma diminuiscono i tempi di ricerca sugli altri pianeti, se si possiede gi&agrave; la tecnologia.</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Quali sono i requisti per i vari livelli di truppa?</b></td>
+		<td valign="top" align="justify"><ul><li>Truppe di 1o livello = Accademia</li><li>Truppe di 2o livello = Accademia di livello 5</li><li>Truppe di 3o livello = Accademia di livello 9 e Centro ricerche.</li></ul></td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Viene applicato un malus di tempo ogni volta che una flotta viene richiamata e poi riconfermata per una destinazione?</b></td>
+		<td valign="top" align="justify">Si.</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Aumentando l'equipaggio di una nave migliorano le sue performances?</b></td>
+		<td valign="top" align="justify">No, aumentare l&#146;equipaggio significa disporre di pi&ugrave; truppe a bordo della nave che potranno essere utilizzate nelle operazioni di conquista di un pianeta avversario.</td>
+	</tr>
 	</table>
 </td>
 </tr>
 </tr>
 	<td align="justify">
-		Versione FAQ 1.0 - 09/02/09
+		Versione FAQ 1.1 - 30/07/10
 	</td>
 </tr>
 </table>
