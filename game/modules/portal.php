@@ -282,90 +282,54 @@ function display_poll() {
 
         $game->out('
 
-<table class="border_grey" border="0" cellpadding="2" cellspacing="2" width="250" background="'.$game->GFX_PATH.'template_bg3.jpg">
-
+<table class="style_outer" border="0" cellpadding="2" cellspacing="2" width="250">
   <tr>
-
-    <td valign="top" width="100%">
-
-      '.$poll_data['question'].'<br><br>
-
-        ');
-
-
+    <td>
+      <table class="style_inner" border="0" cellpadding="2" cellspacing="2" width="250">
+        <tr>
+          <td valign="top" width="100%">
+            '.$poll_data['question'].'<br><br>');
 
         $total_votes = ($poll_data['count_1'] +
-
                         $poll_data['count_2'] +
-
                         $poll_data['count_3'] +
-
                         $poll_data['count_4'] +
-
                         $poll_data['count_5'] +
-
                         $poll_data['count_6'] +
-
                         $poll_data['count_7'] +
-
                         $poll_data['count_8'] +
-
                         $poll_data['count_9'] +
-
                         $poll_data['count_10']);
-
 
 
         if($total_votes == 0) $total_votes = 1;
 
 
-
         for($i = 1; $i <= 10; ++$i) {
-
             if(empty($poll_data['choice_'.$i])) break;
-
-
 
             $percent = 100 / $total_votes * $poll_data['count_'.$i];
 
-
-
             $game->out('
-
-      <table border="0" cellpadding="0" cellspacing="0">
-
-        <tr>
-
-          <td width="100">'.$poll_data['choice_'.$i].'</a>:&nbsp;</td>
-
-          <td width="'.round($percent / 1.5 + 1).'" bgcolor="#50d500"></td>
-
-          <td width="50">&nbsp;'.round($percent, 0).'%&nbsp;('.$poll_data['count_'.$i].')</td>
-
-        </tr>
-
-        <tr><td></td></tr>
-
-        <tr><td></td></tr>
-
-        <tr><td></td></tr>
-
-      </table>
-
-            ');
-
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="100">'.$poll_data['choice_'.$i].'</a>:&nbsp;</td>
+                <td width="'.round($percent / 1.5 + 1).'" bgcolor="#50d500"></td>
+                <td width="50">&nbsp;'.round($percent, 0).'%&nbsp;('.$poll_data['count_'.$i].')</td>
+              </tr>
+              <tr><td></td></tr>
+              <tr><td></td></tr>
+              <tr><td></td></tr>
+            </table>');
         }
 
-
-
         $game->out('
-
-      <br><b>'.constant($game->sprache("TEXT4")).' '.$total_votes.' '.constant($game->sprache("TEXT5")).'
-
+            <br><b>'.constant($game->sprache("TEXT4")).' '.$total_votes.' '.constant($game->sprache("TEXT5")).'
+          </td>
+        </tr>
+      </table>
     </td>
-
   </tr>
-
 </table><br>
 
         ');
