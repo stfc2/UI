@@ -528,7 +528,7 @@ elseif(!empty($_POST['scrap_ships_start'])) {
 
     foreach($scrapable_ships as $id => $ship) {
         $sql = 'UPDATE ships SET ship_untouchable=1, ship_scrap='.($ACTUAL_TICK+ceil($ship['buildtime']*0.2)).'
-                WHERE ship_id='.$ship['ship_id'];
+                WHERE ship_id='.$ship['ship_id'].' AND fleet_id = -'.$game->planet['planet_id'];
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not update ship data');
         }
