@@ -39,6 +39,25 @@ define ("GER_TEXT7", 'Signatur:');
 
 define ("GER_TEXT8", 'Übernehmen');
 
+//English
+define ("ENG_TEXT0", 'You do not have the required permissions to perform this operation.');
+
+define ("ENG_TEXT1", 'Do you really want to send an email to yourself? Spock would says: "That is illogical!"');
+
+define ("ENG_TEXT2", 'The title of the message is missing');
+
+define ("ENG_TEXT3", 'The body of the message is missing');
+
+define ("ENG_TEXT4", '<b>Mass mail</b><br>Here you can send to <i>all members</i> at the same time, a message game.');
+
+define ("ENG_TEXT5", 'Title:');
+
+define ("ENG_TEXT6", 'Text:');
+
+define ("ENG_TEXT7", 'Signature:');
+
+define ("ENG_TEXT8", 'Apply');
+
 
 //Italian
 define ("ITA_TEXT0", 'Non si possiedono le autorizzazioni necessarie per eseguire questa operazione.');
