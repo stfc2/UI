@@ -465,6 +465,10 @@ switch($step) {
             break;
 
             case 'survey_exec':
+                if($atkptc_present) {
+                    message(NOTICE, constant($game->sprache("TEXT21")));
+                }
+
                 if(explore_fleet == false) {
                     message(NOTICE, constant($game->sprache("TEXT25")));
                 }
