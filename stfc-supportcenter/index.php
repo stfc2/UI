@@ -576,6 +576,7 @@ text-align:left;
 <a href="index.php?p=news">Scrivi novit&agrave;</a><br>
 <a href="index.php?p=polls">Scrivi sondaggi</a><br><br>
 <a href="index.php?p=messages">Sistema messaggi</a><br>
+<a href="index.php?p=bulkmail">Email di massa</a><br>
 </td>
 
 <td width=25 bgcolor=#cccccc></td>
