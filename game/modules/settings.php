@@ -516,9 +516,27 @@ function display_loginname($message = '') {
 
 
 function display_vacation_activation($message = '') {
-    global $game;
+    global $game,$ACTUAL_TICK;
 
     if(!empty($message)) $game->out('<center><span class="sub_caption2">'.$message.'</span></center><br>');
+
+    // Retrieve last vacation data
+    if($game->player['user_last_vacation'] != 0) {
+        if($ACTUAL_TICK > $game->player['user_last_vacation'])
+            $last_vacation = format_time( ( ($ACTUAL_TICK - $game->player['user_last_vacation']) * TICK_DURATION) );
+        else
+            $last_vacation = constant($game->sprache("TEXT140"));
+    }
+    else
+        $last_vacation = constant($game->sprache("TEXT141"));
+
+    if($game->player['user_last_vacation'] != 0) {
+        $duration = $game->player['user_last_vacation_duration'].' ';
+        $duration .= (($game->player['user_last_vacation_duration'] > 1) ? constant($game->sprache("TEXT50g")) : constant($game->sprache("TEXT50f")));
+    }
+    else
+        $duration = constant($game->sprache("TEXT142"));
+    //
 
     $game->out('
 <form method="post" action="'.parse_link('a=settings&view=vacation').'">
@@ -551,6 +569,22 @@ function display_vacation_activation($message = '') {
               <option value="2">2 '.constant($game->sprache("TEXT50g")).'</option>
               <option value="3">3 '.constant($game->sprache("TEXT50g")).'</option>
             </select>
+          </td>
+        </tr>
+
+        <tr height="20"><td></td></tr>
+
+        <tr>
+          <td width="140">'.constant($game->sprache("TEXT143")).'</td>
+          <td width="260">
+          '.$last_vacation.'
+          </td>
+        </tr>
+
+        <tr>
+          <td>'.constant($game->sprache("TEXT50e")).'</td>
+          <td>
+          '.$duration.'
           </td>
         </tr>
 
@@ -775,7 +809,7 @@ function display_vacation_deactivation($message = '') {
     if(!empty($message)) $game->out('<center><span class="sub_caption2">'.$message.'</span></center><br>');
 
     // 60 * 24 * 7 = 10080
-    $duration = ( (($game->player['user_vacation_end'] - $game->player['user_vacation_start']) * 3) / 10080 );
+    $duration = ( (($game->player['user_vacation_end'] - $game->player['user_vacation_start']) * TICK_DURATION) / 10080 );
 
     $game->out('
 <form method="post" action="'.parse_link('a=settings&view=vacation').'">
@@ -784,7 +818,7 @@ function display_vacation_deactivation($message = '') {
     <td width="400">
       <table width="400" border="0" cellpadding="0" cellspacing="0" class="style_inner">
         <tr>
-          <td colspan="2">'.constant($game->sprache("TEXT71")).' <b>'.format_time( ( ($game->player['user_vacation_start'] - $ACTUAL_TICK) * 3) ).'</b> '.constant($game->sprache("TEXT72")).' <b>'.( ($duration == 1) ? ''.constant($game->sprache("TEXT73")).'' : $duration.' '.constant($game->sprache("TEXT74")).'' ).'</b>.</td>
+          <td colspan="2">'.constant($game->sprache("TEXT71")).' <b>'.format_time( ( ($game->player['user_vacation_start'] - $ACTUAL_TICK) * TICK_DURATION) ).'</b> '.constant($game->sprache("TEXT72")).' <b>'.( ($duration == 1) ? ''.constant($game->sprache("TEXT73")).'' : $duration.' '.constant($game->sprache("TEXT74")).'' ).'</b>.</td>
         </tr>
 
 
@@ -930,8 +964,7 @@ if (!$game->SITTING_MODE)
           <td colspan="2"><i>'.constant($game->sprache("TEXT53")).'</i></td>
         </tr><tr>
           <td colspan="2">
-
-		</td>
+          </td>
         </tr>
 
 
@@ -1393,6 +1426,25 @@ Credits: '.$config['site_url'].'/index.php?a=imprint';
             if(!empty($_POST['submit'])) {
                if(md5($_POST['current_password']) != $game->player['user_password']) {
                     display_vacation_activation(constant($game->sprache("TEXT121")));
+                    return;
+                }
+
+                // Let's check if the player can issue a new vacation period
+                if($ACTUAL_TICK < ($game->player['user_last_vacation'] +
+                                 (($game->player['user_last_vacation_duration'] * 7 * 24 * 60) / TICK_DURATION))) {
+                    switch($game->player['user_last_vacation_duration'])
+                    {
+                        case 1:
+                            $message = constant($game->sprache("TEXT144"));
+                        break;
+                        case 2:
+                            $message = constant($game->sprache("TEXT145"));
+                        break;
+                        case 3:
+                            $message = constant($game->sprache("TEXT146"));
+                        break;
+                    }
+                    display_vacation_activation($message);
                     return;
                 }
 

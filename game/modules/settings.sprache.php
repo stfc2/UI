@@ -320,6 +320,20 @@ define ("GER_TEXT138", 'Hier werden die <b>letzen 10 sitter</b> aufgelistet, von
 
 define ("GER_TEXT139", 'Sitter name');
 
+define ("GER_TEXT140", 'noch nicht begonnen');
+
+define ("GER_TEXT141", 'nie');
+
+define ("GER_TEXT142", 'keiner');
+
+define ("GER_TEXT143", 'Letzter Urlaub:');
+
+define ("GER_TEXT144", 'Sie m&uuml;ssen mindestens eine Woche vor erm&ouml;glichen einen neuen Modus Urlaub warten!');
+
+define ("GER_TEXT145", 'Sie m&uuml;ssen mindestens zwei Wochen vor erm&ouml;glichen einen neuen Modus Urlaub warten!');
+
+define ("GER_TEXT146", 'Sie m&uuml;ssen mindestens drei Wochen vor erm&ouml;glichen einen neuen Modus Urlaub warten!');
+
 //English
 
 define ("ENG_TEXT1", 'Error: the file uploaded was not image.');
@@ -620,6 +634,20 @@ define ("ENG_TEXT138", 'Here are listed the last 10 <b>sitter</b> which logged i
 
 define ("ENG_TEXT139", 'Sitter name');
 
+define ("ENG_TEXT140", 'not started yet');
+
+define ("ENG_TEXT141", 'never');
+
+define ("ENG_TEXT142", 'none');
+
+define ("ENG_TEXT143", 'Last holiday:');
+
+define ("ENG_TEXT144", 'You have to wait at least a week before enable a new holiday mode!');
+
+define ("ENG_TEXT145", 'You have to wait at least two weeks before enable a new holiday mode!');
+
+define ("ENG_TEXT146", 'You have to wait at least three weeks before enable a new holiday mode!');
+
 //Italiano
 
 define ("ITA_TEXT1", 'Errore: il file caricato non  un%27immagine.');
@@ -919,5 +947,19 @@ define ("ITA_TEXT137", 'Vuoto');
 define ("ITA_TEXT138", 'Questo &egrave l&#146;elenco degli ultimi 10 <b>sitter</b> che hanno loggato il tuo account.<br>Se credi che il tuo account sia stato utilizzato da qualcun altro a tua insaputa segnalalo subito ad un Admin.');
 
 define ("ITA_TEXT139", 'Nome sitter');
+
+define ("ITA_TEXT140", 'non ancora iniziata');
+
+define ("ITA_TEXT141", 'mai');
+
+define ("ITA_TEXT142", 'nessuna');
+
+define ("ITA_TEXT143", 'Ultima vacanza:');
+
+define ("ITA_TEXT144", 'Devi attendere che sia trascorsa una settimana prima di poter abilitare la modalit&agrave; vacanza!');
+
+define ("ITA_TEXT145", 'Devi attendere che siano trascorse due settimane prima di poter abilitare la modalit&agrave; vacanza!');
+
+define ("ITA_TEXT146", 'Devi attendere che siano trascorse tre settimane prima di poter abilitare la modalit&agrave; vacanza!');
 
 ?>
