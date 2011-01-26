@@ -4381,7 +4381,7 @@ $SHIP_TORSO = array(
 
 	    9 => array(
 
-			0 => 4700,  // Metal
+			0 => 14700,  // Metal
 
 			1 => 44725,  // Minerals
 
@@ -4405,9 +4405,9 @@ $SHIP_TORSO = array(
 
 			11 => 6,  // Unit 5 (Offizier)
 
-			12 => 0,  // Unit 6 (Medizinisches Personal)
+			12 => 2,  // Unit 6 (Medizinisches Personal)
 
-			13 => 446,  // Buildtime (in 5 Minuten Schritten)
+			13 => 486,  // Buildtime (in 5 Minuten Schritten)
 
 			14 => 185,   // Value1 (Leichte Waffen)
 
@@ -4550,7 +4550,7 @@ $SHIP_TORSO = array(
 
 			12 => 16,  // Unit 6 (Medizinisches Personal)
 
-			13 => 589,  // Buildtime (in 5 Minuten Schritten)
+			13 => 669,  // Buildtime (in 5 Minuten Schritten)
 
 			14 => 395,   // Value1 (Leichte Waffen)
 
@@ -4558,9 +4558,9 @@ $SHIP_TORSO = array(
 
 			16 => 38,   // Value3 (Planetare Waffen)
 
-			17 => 290,   // Value4 (Schildstärke)
+			17 => 300,   // Value4 (Schildstärke)
 
-			18 => 490,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 530,   // Value5 (Hülle bzw. Hitpoins)
 
 			19 => 12,   // Value6 (Reaktionsgeschw.)
 
@@ -4570,7 +4570,7 @@ $SHIP_TORSO = array(
 
 			22 => 1,   // Value9 (Erfahrung)
 
-			23 => 1,   // Value10 (Warp)
+			23 => 2,   // Value10 (Warp)
 
 			24 => 22,   // Value11 (Sensoren)
 
@@ -4578,13 +4578,13 @@ $SHIP_TORSO = array(
 
 			26 => 70,   // Value13 (Energy Available)
 
-			27 => 58,   // Value14 (Used Energy)
+			27 => 49,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Dread',  // Name
 
-			30 => 2532,  // Benötige Arbeiter zum Bau
+			30 => 2600,  // Benötige Arbeiter zum Bau
 
 			31 => 'Dieses Schiff ist die letzte Linie des Gefechts, sollten die Gegner es je dorthin schaffen. Nur die treuesten und erfahrensten Jem Hadar bzw. Vorta dürfen dieses Schiff überhaupt betreten. Seine Grösse ist gewaltig und seine Feuerkraft noch größer: Jeder der sich ihm in den Wegs stellt ist Staub: Sei es ein Schiff oder ein Planet...',
 
@@ -5609,7 +5609,7 @@ $SHIP_TORSO = array(
 			30 => 500,  // Benötige Arbeiter zum Bau
 		),
 
-		11 => array(
+		9 => array(
 			0 => 500000,  // Metal
 
 			1 => 500000,  // Minerals
@@ -5619,6 +5619,20 @@ $SHIP_TORSO = array(
 			13 => 552,  // Buildtime (in 5 Minuten Schritten)
 
 			29 => 'Borg cube',  // Name
+
+			30 => 50000,  // Benötige Arbeiter zum Bau
+		),
+		
+		11 => array(
+			0 => 500000,  // Metal
+
+			1 => 500000,  // Minerals
+
+			2 => 500000,  // Latinum
+
+			13 => 552,  // Buildtime (in 5 Minuten Schritten)
+
+			29 => 'Borg Tact Cube',  // Name
 
 			30 => 50000,  // Benötige Arbeiter zum Bau
 		),
@@ -6174,11 +6188,11 @@ $SHIP_TORSO = array(
 
 			18 => 190,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 15,   // Value6 (Reaktionsgeschw.)
+			19 => 20,   // Value6 (Reaktionsgeschw.)
 
 			20 => 17,   // Value7 (Bereitschaft)
 
-			21 => 18,   // Value8 (Wendigkeit)
+			21 => 25,   // Value8 (Wendigkeit)
 
 			22 => 7,   // Value9 (Erfahrung)
 
@@ -6272,7 +6286,7 @@ $SHIP_TORSO = array(
 
 			),
 
-	 	// Totes Temp
+	 	// Chel Grett
 
 	    9 => array(
 
@@ -6310,9 +6324,9 @@ $SHIP_TORSO = array(
 
 			16 => 38,   // Value3 (Planetare Waffen)
 
-			17 => 660,   // Value4 (Schildstärke)
+			17 => 880,   // Value4 (Schildstärke)
 
-			18 => 980,   // Value5 (Hülle bzw. Hitpoints)
+			18 => 700,   // Value5 (Hülle bzw. Hitpoints)
 
 			19 => 16,   // Value6 (Reaktionsgeschw.)
 
@@ -6336,7 +6350,7 @@ $SHIP_TORSO = array(
 
 			29 => 'Chel Grett',  // Name
 
-			30 => 772,  // Benötige Arbeiter zum Bau
+			30 => 750,  // Benötige Arbeiter zum Bau
 
 			31 => 'Chel Gretta Schiffe dieser Klasse sind schwere Kreuzer, entworfen, um eine Schutzmauer gegen die feindlichen Schiffe schnell zu bauen.',
 
@@ -6412,7 +6426,7 @@ $SHIP_TORSO = array(
 
 			),
 
-	 	// Totes Temp
+	 	// Gel Chak
 
 	    11 => array(
 
@@ -6438,9 +6452,9 @@ $SHIP_TORSO = array(
 
 			10 => 12,  // Max Unit 4 (Commander)
 
-			11 => 18,  // Unit 5 (Offizier)
+			11 => 20,  // Unit 5 (Offizier)
 
-			12 => 7,  // Unit 6 (Medizinisches Personal)
+			12 => 10,  // Unit 6 (Medizinisches Personal)
 
 			13 => 573,  // Buildtime (in 5 Minuten Schritten)
 
@@ -6450,13 +6464,13 @@ $SHIP_TORSO = array(
 
 			16 => 50,   // Value3 (Planetare Waffen)
 
-			17 => 980,   // Value4 (Schildstärke)
+			17 => 1050,   // Value4 (Schildstärke)
 
-			18 => 1050,   // Value5 (Hülle bzw. Hitpoints)
+			18 => 600,   // Value5 (Hülle bzw. Hitpoints)
 
-			19 => 18,   // Value6 (Reaktionsgeschw.)
+			19 => 20,   // Value6 (Reaktionsgeschw.)
 
-			20 => 20,   // Value7 (Bereitschaft)
+			20 => 18,   // Value7 (Bereitschaft)
 
 			21 => 12,   // Value8 (Wendigkeit)
 
@@ -6476,7 +6490,7 @@ $SHIP_TORSO = array(
 
 			29 => 'Gel Chak',  // Name
 
-			30 => 1560,  // Benötige Arbeiter zum Bau
+			30 => 1520,  // Benötige Arbeiter zum Bau
 
 			31 => 'Das Gel Chak-Klasse Schlachtschiffe sind das Flaggschiff der Flotte Breen. Räumen außerhalb selten engagierte Freunde, bilden sie den höchstmöglichen Abschreckung gegen Versuche der Invasion.',
 
@@ -7090,13 +7104,13 @@ $SHIP_TORSO = array(
 
 			14 => 8,   // Value1 (Leichte Waffen)
 
-			15 => 54,   // Value2 (Schwere Waffen)
+			15 => 34,   // Value2 (Schwere Waffen)
 
 			16 => 5,   // Value3 (Planetare Waffen)
 
 			17 => 50,   // Value4 (Schildstärke)
 
-			18 => 520,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 450,   // Value5 (Hülle bzw. Hitpoins)
 
 			19 => 9,   // Value6 (Reaktionsgeschw.)
 
@@ -7112,9 +7126,9 @@ $SHIP_TORSO = array(
 
 			25 => 2,   // Value12 (Tarnung)
 
-			26 => 36,   // Value13 (Energy Available)
+			26 => 43,   // Value13 (Energy Available)
 
-			27 => 25,   // Value14 (Used Energy)
+			27 => 22,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
@@ -7371,7 +7385,7 @@ $SHIP_TORSO = array(
 
 			14 => 145,   // Value1 (Leichte Waffen)
 
-			15 => 390,   // Value2 (Schwere Waffen)
+			15 => 270,   // Value2 (Schwere Waffen)
 
 			16 => 80,   // Value3 (Planetare Waffen)
 
