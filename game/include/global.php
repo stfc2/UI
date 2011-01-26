@@ -22,7 +22,7 @@
 
 
 
-include_once('/root/stfc/config.inc.php');
+include_once('/home/taku/public_html/config.inc.php');
 
 // Line break
 
@@ -209,7 +209,7 @@ define('NOTICE', 3);
 
 
 // Constants for ships's refit
-define('REFIT_TICK', 5);
+define('REFIT_TICK', 2);
 
 define('NEXT_REFIT_TICK', 2400);
 
@@ -571,9 +571,9 @@ $UNIT_DATA = array(
 
     1 => array( 
 
-        0 => 120, 
+        0 => 108, 
 
-        1 => 55, 
+        1 => 67, 
 
         2 => 0, 
 
@@ -591,9 +591,9 @@ $UNIT_DATA = array(
 
     2 => array( 
 
-        0 => 450, 
+        0 => 380, 
 
-        1 => 280, 
+        1 => 360, 
 
         2 => 230, 
 
@@ -611,11 +611,11 @@ $UNIT_DATA = array(
 
     3 => array( 
 
-        0 => 300, 
+        0 => 260, 
 
-        1 => 150, 
+        1 => 180, 
 
-        2 => 75, 
+        2 => 85, 
 
         3 => 4, 
 
@@ -631,11 +631,11 @@ $UNIT_DATA = array(
 
     4 => array( 
 
-        0 => 450, 
+        0 => 70, 
 
-        1 => 270, 
+        1 => 430, 
 
-        2 => 125, 
+        2 => 345, 
 
         3 => 10, 
 
@@ -651,11 +651,11 @@ $UNIT_DATA = array(
 
     5 => array( 
 
-        0 => 750, 
+        0 => 70, 
 
-        1 => 400, 
+        1 => 471, 
 
-        2 => 150, 
+        2 => 759, 
 
         3 => 12, 
 
