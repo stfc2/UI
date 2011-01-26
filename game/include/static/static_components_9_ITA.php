@@ -37,16 +37,34 @@ $ship_components_locale=array(
 
              // Component Plasma-Phaser
              1=>array(
-                    'name'=>'Phaser al plasma',
+                    'name'=>'Torrette Phaser al plasma I',
                     'description'=>'I phaser al plasma migliorano drasticamente i comuni phaser ad impulso. L&#146;unico inconveniente di quest&#146;arma &egrave; l&#146;alto consumo di energia.',
             ), // Endof Component Plasma-Phaser
 
              // Component Hochgeschwindigkeits Kanonenturm
              2=>array(
-                    'name'=>'Torrette ad alta velocit&agrave;',
-                    'description'=>'Quest&#146;arma &egrave; il sunto delle ricerche precedenti. Questa torre unisce l&#146;alto potere di fuoco all&#146;alta velocit&agrave;, finendo per incrementare considerevolmente gli effetti distruttivi.',
+                    'name'=>'Torrette Phaser al plasma II',
+                    'description'=>'I phaser al plasma migliorano drasticamente i comuni phaser ad impulso. L&#146;unico inconveniente di quest&#146;arma &egrave; l&#146;alto consumo di energia.',
             ), // Endof Component Hochgeschwindigkeits Kanonenturm
 
+            // Component Hochenergie Kanonentürme
+             3=>array(
+                    'name'=>'Torrette ad alta velocit&agrave;',
+                    'description'=>'Quest&#146;arma &egrave; il sunto delle ricerche precedenti. Questa torre unisce l&#146;alto potere di fuoco all&#146;alta velocit&agrave;, finendo per incrementare considerevolmente gli effetti distruttivi.',
+            ), // Endof Component Hochenergie Kanonentürme
+
+             // Component Plasma-Phaser
+             4=>array(
+                    'name'=>'Torrette Phaser al plasma Avanzate',
+                    'description'=>'I phaser al plasma migliorano drasticamente i comuni phaser ad impulso. L&#146;unico inconveniente di quest&#146;arma &egrave; l&#146;alto consumo di energia.',
+            ), // Endof Component Plasma-Phaser
+
+             // Component Hochgeschwindigkeits Kanonenturm
+             5=>array(
+                    'name'=>'Torrette ad alta velocit&agrave; Avanzate',
+                    'description'=>'Quest&#146;arma &egrave; il sunto delle ricerche precedenti. Questa torre unisce l&#146;alto potere di fuoco all&#146;alta velocit&agrave;, finendo per incrementare considerevolmente gli effetti distruttivi.',
+            ), // Endof Component Hochgeschwindigkeits Kanonenturm
+            
       'name'=>'Tecniche offensive',
       ), // Endof Category Offensivtechniken
 
@@ -71,17 +89,17 @@ $ship_components_locale=array(
                     'description'=>'Questa &egrave; la versione definitiva della corazza di monotanium. Non solo incrementa l&#146;efficienza delle ricerche precedenti, ma anche il peso dell&#146;armatura. Per questo motivo questa ricerca non pu&ograve; essere installata sulle navi pi&ugrave; piccole.',
             ), // Endof Component Monotanium-Panzerung III
 
-             // Component Inversionsschilde
+             // Component Monotanium-Panzerung IV
              3=>array(
-                    'name'=>'Scudi a inversione',
-                    'description'=>'Questi speciali scudi non solo migliorano gli scudi standard, ma rendono la nave difficilmente localizzabile.',
-            ), // Endof Component Inversionsschilde
+                    'name'=>'Corazza di monotanium IV',
+                    'description'=>'L&#146;adozione di particolari accorgimenti nell&#146;assemblaggio della corazza e il trattamento dei materiali hanno migliorato la capacit&agrave; del monotanium di diminuire l&#146;efficacia dei sensori avversari.',
+            ), // Endof Component Monotanium-Panzerung IV
 
-             // Component Gravitationsschild
+             // Component Monotanium-Panzerung V
              4=>array(
-                    'name'=>'Scudo gravitazionale',
-                    'description'=>'Questo scudo a sistema gravitazionale ha un nucleo interno che emette un campo di forza lungo il perimetro di tutta la nave. Questo campo di forza &egrave; in grado di respingere ogni tipo di proiettile.',
-            ), // Endof Component Gravitationsschild
+                    'name'=>'Corazza di monotanium V',
+                    'description'=>'L&#146;adozione di particolari accorgimenti nell&#146;assemblaggio della corazza e il trattamento dei materiali hanno migliorato la capacit&agrave; del monotanium di diminuire l&#146;efficacia dei sensori avversari.',
+            ), // Endof Component Monotanium-Panzerung V
 
       'name'=>'Tecniche difensive',
       ), // Endof Category Defensivtechniken
@@ -89,11 +107,11 @@ $ship_components_locale=array(
 
         // Category Technik
         2=>array(
-             // Component Subnukleonen-Sensoren
+             // Component Sensor Array
              0=>array(
-                    'name'=>'Sensori subnucleari',
+                    'name'=>'Sensor Array',
                     'description'=>'Questo scanner &egrave; un miglioramento dell&#146;equipaggiamento standard hirogeni.',
-            ), // Endof Component Subnukleonen-Sensoren
+            ), // Endof Component Sensor Array
 
              // Component Pirsch-Modus
              1=>array(
@@ -113,62 +131,51 @@ $ship_components_locale=array(
                     'description'=>'Questo programma, frutto della tecnologia hirogena, non &egrave; avanzato come quello della federazione, ma adempie alle sue funzioni in modo soddisfacente. Del resto un hirogeni non &egrave; delicato come un federale.',
             ), // Endof Component Holographischer Sanitäter
 
-      'name'=>'Tecnologie',
+      'name'=>'Sistemi di Supporto',
       ), // Endof Category Technik
 
 
-        // Category Decoy-Masken (leicht)
+        // Category Tecnologia Subnucleare
         3=>array(
-             // Component Sovereign-Maske
+             // Component Sonda Subnucleare
              0=>array(
-                    'name'=>'Maschera classe Sovereign',
-                    'description'=>'La maschera fornir&agrave; le informazioni della rispettiva classe di navi e ne prender&agrave; la forma. Dal momento che le attrezzature necessarie sono disponibili a bordo della nave, questo aggiornamento richiede soltanto tempo, energia e lavoratori. ATTENZIONE: Questa procedura pu&ograve; essere applicata soltanto una volta.',
+                    'name'=>'Sonda Subnucleare',
+                    'description'=>'Applicazione elementare di questa tecnologia, fornisce istantaneamente informazioni vitali sulla nave bersaglio.',
             ), // Endof Component Sovereign-Maske
 
-             // Component Valdore Class
+             // Component Fascio Subnucleare
              1=>array(
-                    'name'=>'Maschera classe Norexan',
-                    'description'=>'La maschera fornir&agrave; le informazioni della rispettiva classe di navi e ne prender&agrave; la forma. Dal momento che le attrezzature necessarie sono disponibili a bordo della nave, questo aggiornamento richiede soltanto tempo, energia e lavoratori. ATTENZIONE: Questa procedura pu&ograve; essere applicata soltanto una volta.',
-            ), // Endof Component Valdore Class
+                    'name'=>'Fascio Subnucleare',
+                    'description'=>'Vari emettitori subnucleari accoppiati migliorano le prestazioni di questo apparato.',
+            ), // Endof Component Fascio Subnucleare
 
-             // Component Vocha-Maske
+             // Component Scanner Subnucleare
              2=>array(
-                    'name'=>'Maschera classe Vorcha',
-                    'description'=>'La maschera fornir&agrave; le informazioni della rispettiva classe di navi e ne prender&agrave; la forma. Dal momento che le attrezzature necessarie sono disponibili a bordo della nave, questo aggiornamento richiede soltanto tempo, energia e lavoratori. ATTENZIONE: Questa procedura pu&ograve; essere applicata soltanto una volta.',
-            ), // Endof Component Vocha-Maske
+                    'name'=>'Scanner Subnucleare',
+                    'description'=>'Un diverso impiego della tecnologia subnucleare, maggiore richiesta di potenza ma migliore definizione della scansione.',
+            ), // Endof Component Scanner Subnucleare
 
-             // Component Ravekas-Maske
+             // Component Raggio Subnucleare
              3=>array(
-                    'name'=>'Maschera classe Ravekas',
-                    'description'=>'La maschera fornir&agrave; le informazioni della rispettiva classe di navi e ne prender&agrave; la forma. Dal momento che le attrezzature necessarie sono disponibili a bordo della nave, questo aggiornamento richiede soltanto tempo, energia e lavoratori. ATTENZIONE: Questa procedura pu&ograve; essere applicata soltanto una volta.',
-            ), // Endof Component Ravekas-Maske
+                    'name'=>'Raggio Subnucleare',
+                    'description'=>'La tecnologia subnucleare si &egrave; dimostrata estremamente versatile ed efficace, coniugando un ottimo sistema di analisi del bersaglio con un dispositivo offensivo in grado di disattivare i sistemi vitali delle navi preda.',
+            ), // Endof Component Raggio Subnucleare
 
-             // Component Attackship-Maske
+             // Component Raggio Subnucleare II
              4=>array(
-                    'name'=>'Maschera nave d&#146;attacco',
-                    'description'=>'La maschera fornir&agrave; le informazioni della rispettiva classe di navi e ne prender&agrave; la forma. Dal momento che le attrezzature necessarie sono disponibili a bordo della nave, questo aggiornamento richiede soltanto tempo, energia e lavoratori. ATTENZIONE: Questa procedura pu&ograve; essere applicata soltanto una volta.',
-            ), // Endof Component Attackship-Maske
+                    'name'=>'Raggio Subnucleare II',
+                    'description'=>'La tecnologia subnucleare si &egrave; dimostrata estremamente versatile ed efficace, coniugando un ottimo sistema di analisi del bersaglio con un dispositivo offensivo in grado di disattivare i sistemi vitali delle navi preda.',
+            ), // Endof Component Raggio Subnucleare II
 
-             // Component Schw. Verteidiger Maske
+             // Component Raggio Subnucleare III
              5=>array(
-                    'name'=>'Maschera difensore pesante',
-                    'description'=>'La maschera fornir&agrave; le informazioni della rispettiva classe di navi e ne prender&agrave; la forma. Dal momento che le attrezzature necessarie sono disponibili a bordo della nave, questo aggiornamento richiede soltanto tempo, energia e lavoratori. ATTENZIONE: Questa procedura pu&ograve; essere applicata soltanto una volta.',
-            ), // Endof Component Schw. Verteidiger Maske
+                    'name'=>'Raggio Subnucleare III',
+                    'description'=>'La tecnologia subnucleare si &egrave; dimostrata estremamente versatile ed efficace, coniugando un ottimo sistema di analisi del bersaglio con un dispositivo offensivo in grado di disattivare i sistemi vitali delle navi preda.',
+            ), // Endof Component Raggio Subnucleare III
 
-             // Component Raider-Maske
-             6=>array(
-                    'name'=>'Maschera classe Raider',
-                    'description'=>'La maschera fornir&agrave; le informazioni della rispettiva classe di navi e ne prender&agrave; la forma. Dal momento che le attrezzature necessarie sono disponibili a bordo della nave, questo aggiornamento richiede soltanto tempo, energia e lavoratori. ATTENZIONE: Questa procedura pu&ograve; essere applicata soltanto una volta.',
-            ), // Endof Component Raider-Maske
 
-             // Component Hunter-Ship-Maske
-             7=>array(
-                    'name'=>'Maschera nave Hunter',
-                    'description'=>'La maschera fornir&agrave; le informazioni della rispettiva classe di navi e ne prender&agrave; la forma. Dal momento che le attrezzature necessarie sono disponibili a bordo della nave, questo aggiornamento richiede soltanto tempo, energia e lavoratori. ATTENZIONE: Questa procedura pu&ograve; essere applicata soltanto una volta.',
-            ), // Endof Component Hunter-Ship-Maske
-
-      'name'=>'Maschere decoy (leggere)',
-      ), // Endof Category Decoy-Masken (leicht)
+      'name'=>'Tecnologia Subnucleare',
+      ), // Endof Category Tecnologia Subnucleare
 
 
         // Category Energie
@@ -287,61 +294,31 @@ $ship_components_locale=array(
 
         // Category Decoy-Masken (schwer)
         8=>array(
-             // Component Prometheus-Maske
+             // Component Inversionsschilde
              0=>array(
-                    'name'=>'Maschera classe Prometheus',
-                    'description'=>'La maschera fornir&agrave; le informazioni della rispettiva classe di navi e ne prender&agrave; la forma. Dal momento che le attrezzature necessarie sono disponibili a bordo della nave, questo aggiornamento richiede soltanto tempo, energia e lavoratori. ATTENZIONE: Questa procedura pu&ograve; essere applicata soltanto una volta.',
-            ), // Endof Component Prometheus-Maske
-
-             // Component Scimitar Class-Maske
+                    'name'=>'Scudi a inversione',
+                    'description'=>'Questi speciali scudi non solo migliorano gli scudi standard, ma rendono la nave difficilmente localizzabile.',
+            ), // Endof Component Inversionsschilde
+            
+            // Component Inversionsschilde
              1=>array(
-                    'name'=>'Maschera classe Scimitar',
-                    'description'=>'La maschera fornir&agrave; le informazioni della rispettiva classe di navi e ne prender&agrave; la forma. Dal momento che le attrezzature necessarie sono disponibili a bordo della nave, questo aggiornamento richiede soltanto tempo, energia e lavoratori. ATTENZIONE: Questa procedura pu&ograve; essere applicata soltanto una volta.',
-            ), // Endof Component Scimitar Class-Maske
+                    'name'=>'Scudi a inversione avanzato',
+                    'description'=>'Questi speciali scudi non solo migliorano gli scudi standard, ma rendono la nave difficilmente localizzabile.',
+            ), // Endof Component Inversionsschilde
 
-             // Component QI´yaH-Maske
+             // Component Gravitationsschild
              2=>array(
-                    'name'=>'Maschera classe QI&cute;yaH',
-                    'description'=>'La maschera fornir&agrave; le informazioni della rispettiva classe di navi e ne prender&agrave; la forma. Dal momento che le attrezzature necessarie sono disponibili a bordo della nave, questo aggiornamento richiede soltanto tempo, energia e lavoratori. ATTENZIONE: Questa procedura pu&ograve; essere applicata soltanto una volta.',
-            ), // Endof Component QI´yaH-Maske
+                    'name'=>'Scudo gravitazionale',
+                    'description'=>'Questo scudo a sistema gravitazionale ha un nucleo interno che emette un campo di forza lungo il perimetro di tutta la nave. Questo campo di forza &egrave; in grado di respingere ogni tipo di proiettile.',
+            ), // Endof Component Gravitationsschild
 
-             // Component Netel-Maske
+             // Component Gravitationsschild
              3=>array(
-                    'name'=>'Maschera classe Netel',
-                    'description'=>'La maschera fornir&agrave; le informazioni della rispettiva classe di navi e ne prender&agrave; la forma. Dal momento che le attrezzature necessarie sono disponibili a bordo della nave, questo aggiornamento richiede soltanto tempo, energia e lavoratori. ATTENZIONE: Questa procedura pu&ograve; essere applicata soltanto una volta.',
-            ), // Endof Component Netel-Maske
+                    'name'=>'Scudo gravitazionale avanzato',
+                    'description'=>'Questo scudo a sistema gravitazionale ha un nucleo interno che emette un campo di forza lungo il perimetro di tutta la nave. Questo campo di forza &egrave; in grado di respingere ogni tipo di proiettile.',
+            ), // Endof Component Gravitationsschild
 
-             // Component Dreadnought-Maske
-             4=>array(
-                    'name'=>'Maschera classe Dreadnought',
-                    'description'=>'La maschera fornir&agrave; le informazioni della rispettiva classe di navi e ne prender&agrave; la forma. Dal momento che le attrezzature necessarie sono disponibili a bordo della nave, questo aggiornamento richiede soltanto tempo, energia e lavoratori. ATTENZIONE: Questa procedura pu&ograve; essere applicata soltanto una volta.',
-            ), // Endof Component Dreadnought-Maske
-
-             // Component D´Kora-Class-Maske
-             5=>array(
-                    'name'=>'Maschera classe D&acute;Kora',
-                    'description'=>'La maschera fornir&agrave; le informazioni della rispettiva classe di navi e ne prender&agrave; la forma. Dal momento che le attrezzature necessarie sono disponibili a bordo della nave, questo aggiornamento richiede soltanto tempo, energia e lavoratori. ATTENZIONE: Questa procedura pu&ograve; essere applicata soltanto una volta.',
-            ), // Endof Component D´Kora-Class-Maske
-
-             // Component Behemoth Maske
-             6=>array(
-                    'name'=>'Maschera classe Behemoth',
-                    'description'=>'La maschera fornir&agrave; le informazioni della rispettiva classe di navi e ne prender&agrave; la forma. Dal momento che le attrezzature necessarie sono disponibili a bordo della nave, questo aggiornamento richiede soltanto tempo, energia e lavoratori. ATTENZIONE: Questa procedura pu&ograve; essere applicata soltanto una volta.',
-            ), // Endof Component Behemoth Maske
-
-             // Component Warship-Maske
-             7=>array(
-                    'name'=>'Maschera nave da guerra',
-                    'description'=>'La maschera fornir&agrave; le informazioni della rispettiva classe di navi e ne prender&agrave; la forma. Dal momento che le attrezzature necessarie sono disponibili a bordo della nave, questo aggiornamento richiede soltanto tempo, energia e lavoratori. ATTENZIONE: Questa procedura pu&ograve; essere applicata soltanto una volta.',
-            ), // Endof Component Warship-Maske
-
-             // Component Venatic-Class-Maske
-             8=>array(
-                    'name'=>'Maschera classe Venatic',
-                    'description'=>'La maschera fornir&agrave; le informazioni della rispettiva classe di navi e ne prender&agrave; la forma. Dal momento che le attrezzature necessarie sono disponibili a bordo della nave, questo aggiornamento richiede soltanto tempo, energia e lavoratori. ATTENZIONE: Questa procedura pu&ograve; essere applicata soltanto una volta.',
-            ), // Endof Component Venatic-Class-Maske
-
-      'name'=>'Maschere decoy (pesanti)',
+      'name'=>'Scudo/Mascheramento',
       ), // Endof Category Decoy-Masken (schwer)
 
 
