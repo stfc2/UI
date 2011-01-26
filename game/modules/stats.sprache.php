@@ -205,6 +205,18 @@ define ("GER_TEXT91", 'Urlaub');
 
 define ("GER_TEXT92", 'Auszeichnung');
 
+define ("GER_TEXT93", 'Borg Faction');
+
+define ("GER_TEXT94", 'Primary Planets (40 pts)');
+
+define ("GER_TEXT95", 'Secondary Planets (15 pts)');
+
+define ("GER_TEXT96", 'Top Ten Borg Fighters');
+
+define ("GER_TEXT97", 'Threat Rating:');
+
+
+
 //English
 define ("ENG_TEXT1",'Overview');
 
@@ -390,6 +402,18 @@ define ("ENG_TEXT91", 'Holiday');
 
 define ("ENG_TEXT92", 'Award');
 
+define ("ENG_TEXT93", 'Borg Faction');
+
+define ("ENG_TEXT94", 'Primary Planets (40 pts)');
+
+define ("ENG_TEXT95", 'Secondary Planets (15 pts)');
+
+define ("ENG_TEXT96", 'Top Ten Borg Fighters');
+
+define ("ENG_TEXT97", 'Threat Rating:');
+
+
+
 //Italian
 define ("ITA_TEXT1",'Dettagli');
 
@@ -574,5 +598,15 @@ define ("ITA_TEXT90",'Informazione riservata');
 define ("ITA_TEXT91", 'Vacanza');
 
 define ("ITA_TEXT92", 'Premio');
+
+define ("ITA_TEXT93", 'Fazione Borg');
+
+define ("ITA_TEXT94", 'Pianeti Primari (40 pts)');
+
+define ("ITA_TEXT95", 'Pianeti Secondari (15 pts)');
+
+define ("ITA_TEXT96", 'Top Ten Borg Fighters');
+
+define ("ITA_TEXT97", 'Livello minaccia:');
 
 ?>

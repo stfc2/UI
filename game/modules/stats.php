@@ -107,6 +107,10 @@ $game->out('<br>
             <a href="'.parse_link('a=stats&a2=alliance_ranking').'"><span class="sub_caption2">'.constant($game->sprache("TEXT6")).'</a>
             <br>
           </td>
+          <td width=150 align=middle>
+            <a href="'.parse_link('a=stats&a2=borgs_stats').'"><span class="sub_caption2">'.constant($game->sprache("TEXT93")).'</a>
+            <br>
+          </td>
         </tr>
       </table>
     </td>
@@ -509,26 +513,40 @@ $game->out('
   </tr>
 </table><br>
 
-<table border=0 cellpadding=2 cellspacing=2 class="style_outer"><tr>
-<td width=450>
-<span class="sub_caption">'.constant($game->sprache("TEXT52")).'</span><br>
-<center>'.$_link_image.'
-</center>
-</td></tr></table>
+<table border=0 cellpadding=2 cellspacing=2 width=450 class="style_outer">
+  <tr>
+    <td><span class="sub_caption">'.constant($game->sprache("TEXT52")).'</span></td>
+  </tr>
+  <tr>
+    <td>
+      <table border=0 cellpadding=2 cellspacing=2 width=450 class="style_inner">
+        <tr>
+          <td align="center">'.$_link_image.'</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
 <br>
 
 
 
 
-<table border=0 cellpadding=2 cellspacing=2 class="style_outer"><tr>
-<td width=450>
-<span class="sub_caption">'.constant($game->sprache("TEXT53")).'</span><br>');
+<table border=0 cellpadding=2 cellspacing=2 width=450 class="style_outer">
+  <tr>
+    <td><span class="sub_caption">'.constant($game->sprache("TEXT53")).'</span></td>
+  </tr>');
 
 
     $game->out('
-<center><table border=1 cellpadding=0 cellspacing=0 class="style_inner">
-<tr><td width=80><b>'.constant($game->sprache("TEXT69")).'</td><td width=200><b>'.constant($game->sprache("TEXT18")).'</td><td width=50><b>'.constant($game->sprache("TEXT11")).'</td><td width=50><b>'.constant($game->sprache("TEXT55")).'</td></tr>
-');
+  <tr>
+    <td>
+      <table border=0 cellpadding=2 cellspacing=2 width=450 class="style_inner">
+        <tr>
+          <td width=80>
+            <b>'.constant($game->sprache("TEXT69")).'</td><td width=200><b>'.constant($game->sprache("TEXT18")).'</td><td width=50><b>'.constant($game->sprache("TEXT11")).'</td><td width=50><b>'.constant($game->sprache("TEXT55")).'
+          </td>
+        </tr>');
 
     // Player is a developer? No FOW
     // Players are in the same ally? No FOW
@@ -570,11 +588,18 @@ $game->out('
 </td></tr></table>
 
 <br>
-<table border=0 cellpadding=2 cellspacing=2 class = "style_outer"><tr><td width=450>
-<span class="sub_caption">'.constant($game->sprache("TEXT56")).'</span><br>
-<center><table border=0 cellpadding=0 cellspacing=0 valign=left class="style_inner">
-<tr><td width=120><b>'.constant($game->sprache("TEXT18")).'</b></td><td width=70><b>'.constant($game->sprache("TEXT11")).'</b></td><td width=70><b>'.constant($game->sprache("TEXT19")).'</b></td><td width=70><b>'.constant($game->sprache("TEXT43")).'</b></td><td width=80><b>'.constant($game->sprache("TEXT57")).'</b></td></tr>
-<tr><td></td></tr>');
+<table border=0 cellpadding=2 cellspacing=2 width=450 class = "style_outer">
+  <tr>
+    <td><span class="sub_caption">'.constant($game->sprache("TEXT56")).'</span></td>
+  </tr>
+  <tr>
+    <td>
+      <table border=0 cellpadding=2 cellspacing=2 width=450 valign=left class="style_inner">
+        <tr>
+          <td width=120>
+            <b>'.constant($game->sprache("TEXT18")).'</b></td><td width=70><b>'.constant($game->sprache("TEXT11")).'</b></td><td width=70><b>'.constant($game->sprache("TEXT19")).'</b></td><td width=70><b>'.constant($game->sprache("TEXT43")).'</b></td><td width=80><b>'.constant($game->sprache("TEXT57")).'</b>
+          </td>
+        </tr>');
 
     $sql = 'SELECT d.*,
                    u1.user_name AS user1_name, u1.user_alliance AS user1_aid, u1.user_points AS user1_points, u1.user_planets AS user1_planets, u1.user_honor AS user1_honor, a1.alliance_tag AS user1_atag,
@@ -598,10 +623,10 @@ $game->out('
     }
 
 $game->out('
-</table></center>
-</td></tr>
-</table>
-');
+      </table>
+    </td>
+  </tr>
+</table>');
 
 
 
@@ -612,50 +637,332 @@ $user['user_signature'] = str_replace("javascript", "", $user['user_signature'])
 
 
 $game->out('<br>
-<table border=0 cellpadding=2 cellspacing=2 class = "style_outer"><tr><td width=450>
-<span class="sub_caption">'.constant($game->sprache("TEXT58")).'</span><br>
-<center>
-<table border=0 cellpadding=0 cellspacing=0 class = "style_inner"><tr><td width=350><br>'.stripslashes(nl2br($user['user_signature'])).'
-</td></tr></table>
-</td></tr>
+<table border=0 cellpadding=2 cellspacing=2 width=450 class="style_outer">
+  <tr>
+    <td><span class="sub_caption">'.constant($game->sprache("TEXT58")).'</span></td>
+  </tr>
+  <tr>
+    <td>
+      <table border=0 cellpadding=2 cellspacing=2 width=450 class = "style_inner">
+        <tr>
+          <td width=350><br>'.stripslashes(nl2br($user['user_signature'])).'</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
 </table>
 
 <br>
-<table border=0 cellpadding=2 cellspacing=2 class="style_outer"><tr><td width=450>
-<span class="sub_caption">'.constant($game->sprache("TEXT59")).'</span><br>
+<table border=0 cellpadding=2 cellspacing=2 width=450 class="style_outer">
+  <tr>
+    <td><span class="sub_caption">'.constant($game->sprache("TEXT59")).'</span></td>
+  </tr>
+  <tr>
+    <td align="center">
+      <table border=0 cellspacing=2 cellpadding=2 width=450 class="style_inner">
+        <tr height=15>
+          <td width=150 align="center">
+            <b>'.$user['user_gallery_name_1'].'</b>
+          </td>
+          <td width=150 align="center">
+            <b>'.$user['user_gallery_name_2'].'</b>
+          </td>
+        </tr>
+        <tr height=100>
+          <td width=150 align="center">
+            <a href="gallery.php?f=gallery/img_'.$user['user_id'].'_1.img" target=image onmouseover="return overlib(\''.$user['user_gallery_description_1'].'\', CAPTION, \''.$user['user_gallery_name_1'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.GiveThumb('gallery/img_'.$user['user_id'].'_1.img').'</a>
+          </td>
+          <td width=150 align="center">
+            <a href="gallery.php?f=gallery/img_'.$user['user_id'].'_2.img" target=image onmouseover="return overlib(\''.$user['user_gallery_description_2'].'\', CAPTION, \''.$user['user_gallery_name_2'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.GiveThumb('gallery/img_'.$user['user_id'].'_2.img').'</a>
+          </td>
+        </tr>
 
-    <center><table border=0 cellspacing=0 cellpadding=0>
+        <tr height=20><td>&nbsp;</td><td>&nbsp;</td></tr>
 
-	<tr height=15><td width=150><center><b>'.$user['user_gallery_name_1'].'</b></td><td width=150><center><b>'.$user['user_gallery_name_2'].'</b></td></tr>
-	<tr height=100><td width=150><center><a href="gallery.php?f=gallery/img_'.$user['user_id'].'_1.img" target=image onmouseover="return overlib(\''.$user['user_gallery_description_1'].'\', CAPTION, \''.$user['user_gallery_name_1'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.GiveThumb('gallery/img_'.$user['user_id'].'_1.img').'</a>
-	</td><td width=150><center><a href="gallery.php?f=gallery/img_'.$user['user_id'].'_2.img" target=image onmouseover="return overlib(\''.$user['user_gallery_description_2'].'\', CAPTION, \''.$user['user_gallery_name_2'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.GiveThumb('gallery/img_'.$user['user_id'].'_2.img').'</a></td></tr>
+        <tr height=15>
+          <td width=150 align="center">
+            <b>'.$user['user_gallery_name_3'].'</b>
+          </td>
+          <td width=150 align="center">
+            <b>'.$user['user_gallery_name_4'].'</b>
+          </td>
+        </tr>
+        <tr height=100>
+          <td width=150 align="center">
+            <a href="gallery.php?f=gallery/img_'.$user['user_id'].'_3.img" target=image onmouseover="return overlib(\''.$user['user_gallery_description_3'].'\', CAPTION, \''.$user['user_gallery_name_3'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.GiveThumb('gallery/img_'.$user['user_id'].'_3.img').'</a>
+          </td>
+          <td width=150 align="center">
+            <a href="gallery.php?f=gallery/img_'.$user['user_id'].'_4.img" target=image onmouseover="return overlib(\''.$user['user_gallery_description_4'].'\', CAPTION, \''.$user['user_gallery_name_4'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.GiveThumb('gallery/img_'.$user['user_id'].'_4.img').'</a>
+          </td>
+        </tr>
 
-	<tr height=20><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr height=20><td>&nbsp;</td><td>&nbsp;</td></tr>
 
-	<tr height=15><td width=150><center><b>'.$user['user_gallery_name_3'].'</b></td><td width=150><center><b>'.$user['user_gallery_name_4'].'</b></td></tr>
-	<tr height=100><td width=150><center><a href="gallery.php?f=gallery/img_'.$user['user_id'].'_3.img" target=image onmouseover="return overlib(\''.$user['user_gallery_description_3'].'\', CAPTION, \''.$user['user_gallery_name_3'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.GiveThumb('gallery/img_'.$user['user_id'].'_3.img').'</a></td><td width=150><center><a href="gallery.php?f=gallery/img_'.$user['user_id'].'_4.img" target=image onmouseover="return overlib(\''.$user['user_gallery_description_4'].'\', CAPTION, \''.$user['user_gallery_name_4'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.GiveThumb('gallery/img_'.$user['user_id'].'_4.img').'</a></td></tr>
+        <tr height=15>
+          <td width=150 align="center" colspan="2">
+            <b>'.$user['user_gallery_name_5'].'</b>
+          </td>
+        </tr>
+        <tr height=100>
+          <td width=150 align="center" colspan="2">
+            <a href="gallery.php?f=gallery/img_'.$user['user_id'].'_5.img" target=image onmouseover="return overlib(\''.$user['user_gallery_description_5'].'\', CAPTION, \''.$user['user_gallery_name_5'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.GiveThumb('gallery/img_'.$user['user_id'].'_5.img').'</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>');
 
-	<tr height=30><td>&nbsp;</td><td>&nbsp;</td></tr>
-
-	</table><table border=0 cellspacing=0 cellpadding=0>
-
-	<tr height=15><td width=150><center><b>'.$user['user_gallery_name_5'].'</b></td></tr>
-	<tr height=100><td width=150><center><a href="gallery.php?f=gallery/img_'.$user['user_id'].'_5.img" target=image onmouseover="return overlib(\''.$user['user_gallery_description_5'].'\', CAPTION, \''.$user['user_gallery_name_5'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.GiveThumb('gallery/img_'.$user['user_id'].'_5.img').'</a></td></tr>
-	</table>
-	</center>
+}
+}
+}
 
 
-</td></tr>
+function Show_Borg()
+{
+global $db;
+global $game;
+global $config;
+
+
+// Men BASIC
+Show_Main();
+
+
+if(($user = $db->queryrow('SELECT * FROM user WHERE user_id="'.BORG_USERID.'" LIMIT 1'))===false) 
+{
+	$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT33")).' (id='.$_REQUEST['id'].'<br>'.constant($game->sprache("TEXT34")).'</span>');
+}
+else
+{
+
+$rank_nr=1;
+global $rank_honor;
+if ($user['user_honor']>=$rank_honor[0]) $rank_nr=1;
+if ($user['user_honor']>=$rank_honor[1]) $rank_nr=2;
+if ($user['user_honor']>=$rank_honor[2]) $rank_nr=3;
+if ($user['user_honor']>=$rank_honor[3]) $rank_nr=4;
+if ($user['user_honor']>=$rank_honor[4]) $rank_nr=5;
+if ($user['user_honor']>=$rank_honor[5]) $rank_nr=6;
+if ($user['user_honor']>=$rank_honor[6]) $rank_nr=7;
+if ($user['user_honor']>=$rank_honor[7]) $rank_nr=8;
+if ($user['user_honor']>=$rank_honor[8]) $rank_nr=9;
+if ($user['user_honor']>=$rank_honor[9]) $rank_nr=10;
+
+$game->out('
+<table border=0 cellpadding=2 cellspacing=2 wisth="450" class="style_outer" align="center">
+  <tr>
+    <td>
+      <center><span class="caption">'.$user['user_name'].'</span><br><span class="sub_caption2">'.( ($user['user_attack_protection']>=$game->config['tick_id']) ? '<span style="color: red">'.constant($game->sprache("TEXT36")).'</span>' : '' ).'</span></center>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table border=0 cellpadding=1 cellspacing=1 width=450 class ="style_inner">
+        <tr>');
+
+//avatar:
+if (!empty($user['user_avatar']))
+{
+$info = getimagesize_remote($user['user_avatar']);
+
+if ($info[0]>0 && $info[1]>0 && $info[0]<=150 && $info[1]<=250)
+{
+$game->out('<td width='.$info[0].'><img src="'.$user['user_avatar'].'"></td><td width=25></td><td width=425-'.$info[0].' valign=top>');
+}
+else if ($info[0]>0 && $info[1]>0)
+{
+$width=150;
+$height=150;
+	if ($info[0]>$info[1]) {$height = 150 * ($info[1] / $info[0]);}
+ 	else {$width = 150 * ($info[0] / $info[1]);}
+
+
+$game->out('<td width='.$width.'><img src="'.$user['user_avatar'].'" width="'.$width.'" height="'.$height.'"></td><td width=25></td><td width=425-'.$width.' valign=top>');
+}
+else $game->out('<td width=200></td><td width=250 valign=top>');
+}
+else $game->out('<td width=200></td><td width=250 valign=top>');
+
+$rasse=$RACE_DATA[$user['user_race']][0];
+
+
+$planets=$db->queryrow('SELECT count(planet_id) AS num FROM planets WHERE planet_owner="'.$user['user_id'].'"');
+
+$game->out('
+            <table border=0 cellpadding=2 cellspacing=2 class="style_inner">
+              <tr>
+                <td width=70><span class="text_large">'.constant($game->sprache("TEXT19")).'</b></span></td>
+                <td width=150><span class="text_large">'.$planets['num'].'</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>'.constant($game->sprache("TEXT96")).'</b></td>
+  </tr>
+  <tr>
+    <td>
+      <table border=0 cellpadding=2 cellspacing=2 width="450" class="style_inner">
+        <tr>
+          <td width=180><b>'.constant($game->sprache("TEXT35")).'</b></td>
+          <td align="center" width=180><b>'.constant($game->sprache("TEXT97")).'</b></td></tr>');
+//borg_target table reading for threat information
+$borg_target_query = $db->query('SELECT u.user_name, bt.threat_level FROM borg_target bt INNER JOIN user u ON bt.user_id = u.user_id ORDER BY threat_level DESC LIMIT 0,10');
+while($btrow = $db->fetchrow($borg_target_query))
+{
+	if($btrow['threat_level'] > 1400.0)
+		$threat_string = 'AAA';
+	elseif($btrow['threat_level'] > 950.0)
+		$threat_string = 'AA';
+	elseif($btrow['threat_level'] > 450.0)
+		$threat_string = 'A';
+	elseif($btrow['threat_level'] > 200.0)
+		$threat_string = 'B';
+	else
+		$threat_string = 'C';
+	$game->out('<tr><td>'.$btrow['user_name'].'</td><td align="center">'.$threat_string.'</td></tr>');
+}
+$game->out('
+      </table>
+    </td>
+  </tr>
 </table>
-
+<br>
 ');
 
+$_link_image = '<a href="usermap.php?user='.$user['user_name'].'&size=6&map" target=_blank><img src="usermap.php?user='.$user['user_name'].'&size=1" border=0></a>';
+
+$game->out('
+<br>
+
+<table border=0 cellpadding=2 cellspacing=2 width="450" class="style_outer">
+  <tr>
+    <td><span class="sub_caption">'.constant($game->sprache("TEXT52")).'</span></td>
+  </tr>
+  <tr>
+    <td>
+      <table border=0 cellpadding=2 cellspacing=2 width="450" class="style_inner">
+        <tr>
+          <td align="center">'.$_link_image.'</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<br>
+');
+
+$game->out('
+<table border=0 cellpadding=2 cellspacing=2 width="450" class="style_outer">
+  <tr>
+    <td><span class="sub_caption">'.constant($game->sprache("TEXT53")).'</span></td>
+  </tr>');
+
+$game->out('
+  <tr>
+    <td align="center">
+      <b>'.constant($game->sprache("TEXT94")).'</b>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table border=0 cellpadding=2 cellspacing=2 width="450" class="style_inner">
+        <tr>
+          <td width=80><b>'.constant($game->sprache("TEXT69")).'</td>
+          <td width=200><b>'.constant($game->sprache("TEXT18")).'</td>
+          <td width=50><b>'.constant($game->sprache("TEXT11")).'</td>
+          <td width=50><b>'.constant($game->sprache("TEXT55")).'</td>
+        </tr>
+');
+
+$sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
+                   FROM (planets pl)
+                   LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id
+                   LEFT JOIN (planet_details pd) ON pl.system_id = pd.system_id
+                   WHERE pl.planet_owner = "'.BORG_USERID.'" AND
+                         pd.user_id = "'.$game->player['user_id'].'" AND
+                         pd.log_code = 500
+                   GROUP BY pl.planet_id
+                   ORDER BY pl.planet_name';
+
+$planetquery=$db->query($sql_pl);
+$numero_righe = $db->num_rows($planetquery);
+if($numero_righe == 0) {
+    $game->out('<tr><td> --- </td><td> --- </td><td> --- </td><td> --- </td></tr>');
 }
-}
+else {
+    while(($planet = $db->fetchrow($planetquery))==true)
+    {
+        if($planet['planet_type'] == "m" || $planet['planet_type'] == "n")
+        {
+            $game->out('<tr><td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
+            if($planet['planet_name']=="") $planet['planet_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
+                $game->out($planet['planet_name'].'</a></td><td>'.$planet['planet_points'].'</td><td>'.strtoupper($planet['planet_type']).'</td></tr>');
+        }
+    }
 }
 
 
+$game->out('
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <b>'.constant($game->sprache("TEXT95")).'</b>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table border=0 cellpadding=2 cellspacing=2 width="450" class="style_inner">
+        <tr>
+          <td width=80><b>'.constant($game->sprache("TEXT69")).'</td>
+          <td width=200><b>'.constant($game->sprache("TEXT18")).'</td>
+          <td width=50><b>'.constant($game->sprache("TEXT11")).'</td>
+          <td width=50><b>'.constant($game->sprache("TEXT55")).'</td>
+        </tr>');
 
+$sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
+                   FROM (planets pl)
+                   LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id
+                   LEFT JOIN (planet_details pd) ON pl.system_id = pd.system_id
+                   WHERE pl.planet_owner = "'.BORG_USERID.'" AND
+                         pd.user_id = "'.$game->player['user_id'].'" AND
+                         pd.log_code = 500
+                   GROUP BY pl.planet_id
+                   ORDER BY pl.planet_name';
+
+$planetquery=$db->query($sql_pl);
+$numero_righe = $db->num_rows($planetquery);
+if($numero_righe == 0) {
+	$game->out('<tr><td> --- </td><td> --- </td><td> --- </td><td> --- </td></tr>');
+}
+else 
+{
+	while(($planet = $db->fetchrow($planetquery))==true)
+	{
+		if($planet['planet_type'] != "m" && $planet['planet_type'] != "n")
+		{
+        $game->out('<tr><td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
+        if($planet['planet_name']=="") $planet['planet_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
+            $game->out($planet['planet_name'].'</a></td><td>'.$planet['planet_points'].'</td><td>'.strtoupper($planet['planet_type']).'</td></tr>');
+        }
+    }
+}
+
+
+$game->out('
+      </table>
+    </td>
+  </tr>
+</table>');
+
+}
+}
 
 
 function Player_Ranking($focus=0,$search_name="")
@@ -1310,5 +1617,6 @@ Alliance_Ranking($focus,$highlight);
 
 if ($sub_action=='viewplayer') Show_Player();
 if ($sub_action=='viewalliance') Show_Alliance();
+if ($sub_action=='borgs_stats') Show_Borg();
 
 ?>
