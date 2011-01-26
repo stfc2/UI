@@ -708,7 +708,7 @@ class maps {
             imagefilledellipse($im, ($start_x + 2), ($start_y + 2), 3, 3, $cl);
         }
 
-        imagepng($im, '/root/stfc/game/maps/images/galaxy_detail.png');
+        imagepng($im, '/home/taku/public_html/game/maps/images/galaxy_detail.png');
         imagedestroy($im);
     }
 }

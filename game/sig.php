@@ -22,7 +22,7 @@
 
 
 error_reporting(E_ERROR);
-$path='/root/stfc/game/sig_tmp/'.strtolower(htmlspecialchars($_REQUEST['user'])).'.jpg';
+$path='/home/taku/public_html/game/sig_tmp/'.strtolower(htmlspecialchars($_REQUEST['user'])).'.jpg';
 $imageinfo = getimagesize($path);
   if ($imageinfo[2] == 2) {header('Content-Type: image/jpeg');}
   else 
