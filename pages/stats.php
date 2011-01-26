@@ -146,6 +146,22 @@ function format_filesize($value, $limes = 6, $comma = 0) {
     return $results;
   } 
 
+  function cpu () {
+    if($fd = fopen('/proc/cpuinfo', 'r')) {
+      $results = array();
+      $results['cores'] = 0;
+
+      while($buf = fgets($fd, 512)) {
+        if(stristr($buf,"model name")) {
+          strtok($buf,':');
+          $results['model'] = strtok(':');
+          $results['cores']++;
+        }
+      }
+      fclose($fd);
+    }
+    return $results;
+  } 
 
 
 
@@ -158,6 +174,8 @@ $uptime=uptime();
 // free ram
 $results=memory();
 
+// cpu type
+$cpu=cpu();
 
 for ($t=0; $t<13; $t++)
 {
@@ -244,12 +262,12 @@ td.value_row { color: #BOBOBO; font-weight: bold;}
             <table width="100%" border="0" cellpadding="0" cellspacing="0" style=" background-image:url(\'gfx/template_bg.jpg\'); background-position:left; background-repeat:yes;">
               <tr>
                 <td width="130" class="desc_row">CPUs:</td>
-                <td width="140" class="value_row">1x Intel Xeon E5320</td>
+                <td width="140" class="value_row">'.$cpu['model'].'</td>
               </tr>
 
               <tr>
                 <td class="desc_row">Core:</td>
-                <td class="value_row">4</b></td>
+                <td class="value_row">'.$cpu['cores'].'</b></td>
               </tr>
               <tr>
               </tr>
@@ -407,7 +425,11 @@ td.value_row { color: #BOBOBO; font-weight: bold;}
             <table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td width="170" class="desc_row">In esecuzione dal:</td>
-                <td width="100" class="value_row">19.02.2008</td>
+                <td width="100" class="value_row">16.06.2010</td>
+              </tr>
+              <tr>
+                <td width="170" class="desc_row">Termine turno il:</td>
+                <td width="100" class="value_row">2011?</td>
               </tr>
               <tr height="10"><td></td></tr>
               <tr>
@@ -475,11 +497,11 @@ td.value_row { color: #BOBOBO; font-weight: bold;}
             <table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td width="170" class="desc_row">In esecuzione dal:</td>
-                <td width="100" class="value_row">08.06.2009</td>
+                <td width="100" class="value_row">28.05.2010</td>
               </tr>
               <tr>
                 <td width="170" class="desc_row">Termine turno il:</td>
-                <td width="100" class="value_row">08.12.2009</td>   
+                <td width="100" class="value_row">31.01.2011</td>   
               </tr>
               <tr height="10"><td></td></tr>
               <tr>
