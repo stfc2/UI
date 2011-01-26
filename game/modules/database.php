@@ -248,7 +248,7 @@ else if($module == 'combatsim')
             <select name="atk_race" class="Select" size="1">');
 
         foreach($RACE_DATA as $i => $race) {
-            if($i != 6 && $i != 7 && $i != 12) 
+            if($i != 7 && $i != 12) 
                 $game->out('
             <option value="'.$i.'">'.$race[0].'</option>');
         }
