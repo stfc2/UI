@@ -30,7 +30,7 @@ function warpf($warp_factor) {
     if($warp_factor <= 9.99)
         return ( 24 * (1 / (1 + (23 * exp((-0.65 * $warp_factor))) ) ) );
     else
-        return 32; // Borg "transwarp"
+        return 38; // Borg "transwarp"
 }
 
 function get_distance($s_system, $d_system) {
@@ -239,8 +239,25 @@ function send_auctioned_ship($ship_id, $dest) {
     return true;
 }
 
-function send_premonition_to_user($user_id)
+function send_premonition_to_user($user_id, $num_item)
 {
+    global $db;
+
+    // Retrieve player's home world
+    $sql = 'SELECT user_capital FROM user
+            WHERE user_id = '.$user_id;
+    if(($user_capital = $db->queryrow($sql)) === false) {
+        message(DATABASE_ERROR, 'Could not query user home world data');
+    }
+    $dest = $user_capital['user_capital'];
+
+    for($i = 0; $i < $num_item; $i++) {
+        $sql = 'INSERT INTO future_human_reward (user_id, timestamp, target_planet_id) VALUES ('.$user_id.', '.time().', '.$dest.')';
+        if(!$db->query($sql)) {
+            message(DATABASE_ERROR, 'Could not insert new future human reward data');
+        }
+    }
+
     return true;
 }
 
