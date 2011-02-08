@@ -437,10 +437,10 @@ function ShipSelection(cSelectType) {
       if (cSelectType == "All") {
          objShipListBox.options[i].selected = true;
       } else if (cSelectType == "Damaged") {
-         if ((objShipListBox.options[i].id > 0) && (objShipListBox.options[i].id < 100000)) {
-            objShipListBox.options[i].selected = true;
-         } else {
+         if ((objShipListBox.options[i].id == 0) || (objShipListBox.options[i].id == 100000)) {
             objShipListBox.options[i].selected = false;
+         } else {
+            objShipListBox.options[i].selected = true;
          }
       } else if (cSelectType == "None") {
          objShipListBox.options[i].selected = false;
