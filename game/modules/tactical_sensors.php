@@ -126,7 +126,8 @@ $i = 2;
 
 
 // DC Lasciamo i codici dei trasporti Ferengi come "visibili"
-$visible_actions = array(32, 33);
+// DC La mossa di attacco Borg è sempre visibile
+$visible_actions = array(32, 33, 46);
 
 // Number of fleets displayed
 $fleets_displayed = 0;
@@ -162,7 +163,7 @@ while ($move = $db->fetchrow($q_moves))
     else
     {
         // Ferengi(NPC) doesn't have ships templates stored in the DB
-        $sensor1['torso'][1] = $move['n_ships'];
+        if($move['move_id'] != 46) $sensor1['torso'][1] = $move['n_ships'];
     }
 
 
