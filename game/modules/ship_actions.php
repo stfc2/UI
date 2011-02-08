@@ -495,6 +495,24 @@ switch($step) {
          * Missions for Settler's planets
          */
         if($planet['user_id'] == INDEPENDENT_USERID) {
+	        // Recon
+	        $requirement_text = constant($game->sprache("TEXT63"));
+            $results = meet_mission_req($myship['ship_id'], 5, 0, 1, 1, 0, 0);
+            $all_clear = (array_sum($results) == 0 ? true : false);
+            if($all_clear) 
+            {
+                $requirement_text .= requirements_str_ok(5, 0, 1, 1, 0, 0);
+            }
+            else
+            {
+                $requirement_text .= requirements_str_bad(5, 0, 1, 1, 0, 0, $results);
+            }
+
+            $game->out('
+        <tr>
+          <td><input type="radio" name="mission" value="recon" '.($all_clear ? '' : 'disabled="disabled"').'></td>
+          <td>'.constant($game->sprache("TEXT65")).'<br><br>'.$requirement_text.'</td>
+        </tr>');
             // First Contact
             $requirement_text = constant($game->sprache("TEXT63"));
             $results = meet_mission_req($myship['ship_id'], 5, 0, 1, 1, 0, 0);

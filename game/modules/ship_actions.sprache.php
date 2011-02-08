@@ -151,6 +151,8 @@ define ("GER_TEXT63", 'Erforderlich: ');
 
 define ("GER_TEXT64", '<b>Diplomatische Vertr&auml;ge:</b><br>Das Schiff wird Land eine diplomatische Delegation mit der Aufgabe, Vereinbarungen &uuml;ber die Zusammenarbeit und den kulturellen Austausch mit der lokalen Bev&ouml;lkerung zu kn&uuml;pfen. Sollten die Verhandlungen Ende gut, wird das Vertrauen in Ihre Rasse von Anwohnern deutlich erh&ouml;hen.<br>Die Reaktion der Siedler konnte einige Zeit dauern ankommen.');
 
+define ("GER_TEXT65", '<b>Aufkl&aum;rung:</b><br>Das Schiff wird Strahl nach unten auf dem Planeten eine Untersuchung Team mit der Aufgabe der Beurteilung der sozialen und politischen Bedingungen der Bev&ouml;lkerung und erhalten n&uuml;tzliche Informationen f&uuml;r k&uuml;nftige diplomatische Kontakte.');
+
 
 //English
 define ("ENG_TEXT0", 'Ship movements');
@@ -288,6 +290,8 @@ define ("ENG_TEXT63", 'Required: ');
 
 define ("ENG_TEXT64", '<b>Diplomatic Treaties:</b><br>The ship will land a diplomatic delegation with the job to forge agreements on cooperation and cultural exchange with the local population. If negotiations ends well, the confidence in your race by residents will increase significantly.<br>The response of the settlers could take some time to arrive.');
 
+define ("ENG_TEXT65", '<b>Reconnaissance:</b><br>The ship will beam down on the planet an investigation team with the task of assessing the social and political conditions of the population and obtain useful information for future diplomatic contacts.');
+
 
 //Italiano
 define ("ITA_TEXT0", 'Movimenti flotte');
@@ -424,5 +428,7 @@ define ("ITA_TEXT62", 'Le missioni sui pianeti sono assegnabili solo a flotte co
 define ("ITA_TEXT63", 'Richiesto: ');
 
 define ("ITA_TEXT64", '<b>Trattati Diplomatici:</b><br>La nave sbarcher&agrave; una delegazione diplomatica con il compito di stringere accordi di cooperazione e scambio culturale con la popolazione locale. Se le trattative andranno a buon fine, la fiducia nella nostra razza da parte degli abitanti aumenter&agrave; sensibilmente.<br>La risposta dei Coloni potrebbe richiedere un p&ograve; di tempo per arrivare.');
+
+define ("ITA_TEXT65", '<b>Ricognizione:</b><br>La nave sbarcher&agrave; sul pianeta una squadra investigativa con il compito di verificare le condizioni sociali e politiche della popolazione ed ottenere informazioni utili per futuri contatti diplomatici.');
 
 ?>

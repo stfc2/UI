@@ -1142,7 +1142,10 @@ form {
           <td align="center"><img src="'.$planet_thumb.'" width="20" height="20" border="0"></td>
           <td>'.$planet['planet_name'].'</td>
           <td><i>'.constant($game->sprache("TEXT73a")).'</i></td>
-          '.( ($game->SITTING_MODE) ? '' : '<td><input type="image" src="'.$game->GFX_PATH.'tc_colo.gif" name="colo_submit" title="'.constant($game->sprache("TEXT74")).'" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=colo_setup\'"' ).'></td>' ).'
+          <td>
+          '.( ($game->SITTING_MODE) ? '' : '<input type="image" src="'.$game->GFX_PATH.'tc_colo.gif" name="colo_submit" title="'.constant($game->sprache("TEXT74")).'" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=colo_setup\'"' ).'>&nbsp;' ).'
+          <input type="image" src="'.$game->GFX_PATH.'tc_party.gif" name="survey_submit" title="'.constant($game->sprache("TEXT126")).'" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=survey_setup&user_id='.$planet['planet_owner']).'\';">
+          </td>
         </tr>
             ');
         }
