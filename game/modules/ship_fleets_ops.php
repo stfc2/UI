@@ -805,7 +805,14 @@ elseif(isset($_GET['ship_details'])) {
 	if ($ship['experience']>=$ship_ranks[7]) $rank_nr=8;
 	if ($ship['experience']>=$ship_ranks[8]) $rank_nr=9;
 	if ($ship['experience']>=$ship_ranks[9]) $rank_nr=10;
-	
+
+	$firststrike=(($ship['value_6']+round($ship['value_6']*$ship_rank_bonus[$rank_nr-1]))*2
+	             +($ship['value_7']+round($ship['value_7']*$ship_rank_bonus[$rank_nr-1]))*3
+	             +($ship['value_8']+round($ship['value_8']*$ship_rank_bonus[$rank_nr-1]))
+	             +$ship['value_12']
+	             +$ship['value_11']*0.5
+	             );
+
 
     $game->out('
 
@@ -851,7 +858,9 @@ elseif(isset($_GET['ship_details'])) {
 
             '.constant($game->sprache("TEXT49")).'<br>
 
-            '.constant($game->sprache("TEXT50")).'<br><br>
+            '.constant($game->sprache("TEXT50")).'<br>
+
+            '.constant($game->sprache("TEXT60")).'<br><br>
 
             '.constant($game->sprache("TEXT6")).'<br>
 
@@ -866,6 +875,8 @@ elseif(isset($_GET['ship_details'])) {
             '.constant($game->sprache("TEXT12")).'<br><br>
 
             '.constant($game->sprache("TEXT51")).'<br><br>
+
+            '.constant($game->sprache("TEXT61")).'<br><br>
 
             '.constant($game->sprache("TEXT52")).'
 
@@ -899,7 +910,9 @@ elseif(isset($_GET['ship_details'])) {
 
             <b>'.$ship['value_2'].' + <span style="color: yellow">'.round($ship['value_2']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
 
-            <b>'.$ship['value_3'].' + <span style="color: yellow">'.round($ship['value_3']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br><br>
+            <b>'.$ship['value_3'].' + <span style="color: yellow">'.round($ship['value_3']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
+
+            <b>'.$ship['torp'].' / '.$ship['max_torp'].'</b><br><br>
 
             <b>'.$ship['value_6'].' + <span style="color: yellow">'.round($ship['value_6']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
 
@@ -914,6 +927,8 @@ elseif(isset($_GET['ship_details'])) {
             <b>'.$ship['value_12'].'</b><br><br>
 
             <b>'.$ship['value_14'].'</b> / <b>'.$ship['value_13'].'</b><br><br>
+
+            <b><a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT62")).'\', CAPTION, \''.constant($game->sprache("TEXT61")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: yellow">'.$firststrike.'</span></a></b><br><br>
 
             <img src='.$game->GFX_PATH.'menu_unit1_small.gif>'.$ship['unit_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif>'.$ship['unit_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif>'.$ship['unit_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif>'.$ship['unit_4'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif>'.$ship['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif>'.$ship['unit_6'].'
 

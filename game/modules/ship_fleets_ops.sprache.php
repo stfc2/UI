@@ -141,6 +141,12 @@ define ("GER_TEXT58", 'Docked');
 
 define ("GER_TEXT59", 'Du kannst nicht &auml;ndern, die Ausschreibung Phase einer Flotte in der Sitzung Modus.');
 
+define ("GER_TEXT60", 'Torpedos:');
+
+define ("GER_TEXT61", 'Index F.S.:');
+
+define ("GER_TEXT62", 'Der Erstschlagwert (First Strike) repraesentiert die Reihenfolge in der die Schiffe im Kampf das Feuer eroeffnen. Je höher der Wert, desto groeßer die Chance als erstes zu Feuern. Allerdings werden Schiffe mit dem hoechsten Wert im Gegenzug als erste vom Feind anvisiert.');
+
 
 //English
 define ("ENG_TEXT0", 'Skills:');
@@ -263,6 +269,12 @@ define ("ENG_TEXT58", 'Docked');
 
 define ("ENG_TEXT59", 'You cannot change the alert phase of a fleet in the Sitting mode.');
 
+define ("ENG_TEXT60", 'Torpedoes:');
+
+define ("ENG_TEXT61", 'F.S. Index:');
+
+define ("ENG_TEXT62", 'This index represents the ability of the vessel to act in combat. The higher the value, the better the chance of the vessel to act before all others, however, ships with high index are being targeted first.');
+
 
 //Italiano
 define ("ITA_TEXT0", 'Abilit&agrave;:');
@@ -384,5 +396,11 @@ define ("ITA_TEXT57", 'Inizio missione:');
 define ("ITA_TEXT58", 'In porto');
 
 define ("ITA_TEXT59", 'Non puoi modificare la condizione di allarme di una flotta in modalit&agrave; Sitting.');
+
+define ("ITA_TEXT60", 'Siluri:');
+
+define ("ITA_TEXT61", 'Valutazione F.S.:');
+
+define ("ITA_TEXT62", 'Questo indice rappresenta la capacit&agrave; della nave di agire in combattimento. Maggiore &egrave; il valore, migliore la possibilit&agrave; della nave di agire prima di tutte le altre, tuttavia navi con indice elevato verranno bersagliate per prime.');
 
 ?>
