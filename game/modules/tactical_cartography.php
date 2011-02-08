@@ -159,7 +159,7 @@ function display_ferengi_transfer($planet_id,$planet_system,$system_x,$system_y,
 
     $game->out('<br><br>
 <table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
-  <table class="style_inner" wisth0"400" align="center" border="0" cellpadding="2" cellspacing="2"');
+  <table class="style_inner" wisth0"400" align="center" border="0" cellpadding="2" cellspacing="2">');
 
     if ($game->option_retr('show_trade')==0)
         $game->out('
