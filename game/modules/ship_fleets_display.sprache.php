@@ -174,6 +174,51 @@ define ("GER_TEXT77", '<i>unbekannt</i>');
 
 define ("GER_TEXT78", 'ammo depleted');
 
+define ("GER_TEXT79", 'Scout');
+
+define ("GER_TEXT80", 'Freighter');
+
+define ("GER_TEXT81", 'Coloship');
+
+define ("GER_TEXT82", 'Frigate');
+
+define ("GER_TEXT83", 'Light Cruiser');
+
+define ("GER_TEXT84", 'Cruiser');
+
+define ("GER_TEXT85", 'Heavy Cruiser');
+
+define ("GER_TEXT86", 'Battleship');
+
+define ("GER_TEXT87", 'Orbital Gun');
+
+define ("GER_TEXT88", 'Fleet Freighters Handling');
+
+define ("GER_TEXT89", 'Fleet Status');
+
+define ("GER_TEXT90", 'Unit Management');
+
+define ("GER_TEXT91", 'Fleet Orders & Setup');
+
+define ("GER_TEXT92", 'Full Armor');
+
+define ("GER_TEXT93", 'Hull damaged');
+
+define ("GER_TEXT94", 'of which <br> badly');
+
+define ("GER_TEXT95", 'very badly');
+
+define ("GER_TEXT96", 'Full Stock');
+
+define ("GER_TEXT97", 'Good Stock');
+
+define ("GER_TEXT98", 'Short Stock');
+
+define ("GER_TEXT99", 'Hull Status');
+
+define ("GER_TEXT100", 'Ammo');
+
+
 //English
 define ("ENG_TEXT0", 'Fleets:');
 
@@ -327,6 +372,51 @@ define ("ENG_TEXT77", '<i>unknown</i>');
 
 define ("ENG_TEXT78", 'ammo depleted');
 
+define ("ENG_TEXT79", 'Scout');
+
+define ("ENG_TEXT80", 'Freighter');
+
+define ("ENG_TEXT81", 'Coloship');
+
+define ("ENG_TEXT82", 'Frigate');
+
+define ("ENG_TEXT83", 'Light Cruiser');
+
+define ("ENG_TEXT84", 'Cruiser');
+
+define ("ENG_TEXT85", 'Heavy Cruiser');
+
+define ("ENG_TEXT86", 'Battleship');
+
+define ("ENG_TEXT87", 'Orbital Gun');
+
+define ("ENG_TEXT88", 'Fleet freighters handling');
+
+define ("ENG_TEXT89", 'Composition and status');
+
+define ("ENG_TEXT90", 'Unit management');
+
+define ("ENG_TEXT91", 'Orders and setup');
+
+define ("ENG_TEXT92", 'Full armor');
+
+define ("ENG_TEXT93", 'Hull damaged');
+
+define ("ENG_TEXT94", 'of which <br> badly');
+
+define ("ENG_TEXT95", 'very badly');
+
+define ("ENG_TEXT96", 'Full stock');
+
+define ("ENG_TEXT97", 'Good stock');
+
+define ("ENG_TEXT98", 'Short stock');
+
+define ("ENG_TEXT99", 'Hull status');
+
+define ("ENG_TEXT100", 'Ammo');
+
+
 //Italian
 define ("ITA_TEXT0", 'Flotte:');
 
@@ -479,5 +569,51 @@ define ("ITA_TEXT76", 'Rotta Commerciale');
 define ("ITA_TEXT77", '<i>sconosciuta</i>');
 
 define ("ITA_TEXT78", 'scorta bassa');
+
+define ("ITA_TEXT79", 'Scout');
+
+define ("ITA_TEXT80", 'Trasporto');
+
+define ("ITA_TEXT81", 'Colonizzatrice');
+
+define ("ITA_TEXT82", 'Fregata');
+
+define ("ITA_TEXT83", 'Incrociatore Leggero');
+
+define ("ITA_TEXT84", 'Incrociatore');
+
+define ("ITA_TEXT85", 'Incrociatore Pesante');
+
+define ("ITA_TEXT86", 'Nave da Battaglia');
+
+define ("ITA_TEXT87", 'Cannone Orbitale');
+
+define ("ITA_TEXT88", 'Gestione carico');
+
+define ("ITA_TEXT89", 'Composizione e stato');
+
+define ("ITA_TEXT90", 'Gestione unit&agrave;');
+
+define ("ITA_TEXT91", 'Comandi ed impostazioni');
+
+define ("ITA_TEXT92", 'Navi integre');
+
+define ("ITA_TEXT93", 'Navi danneggiate');
+
+define ("ITA_TEXT94", 'di cui<br>gravemente');
+
+define ("ITA_TEXT95", 'molto gravemente');
+
+define ("ITA_TEXT96", 'Scorta completa');
+
+define ("ITA_TEXT97", 'Scorta buona');
+
+define ("ITA_TEXT98", 'Scorta bassa');
+
+define ("ITA_TEXT99", 'Integrit&agrave;');
+
+define ("ITA_TEXT100", 'Munizioni');
+
+
 
 ?>

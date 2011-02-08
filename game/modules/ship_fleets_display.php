@@ -240,7 +240,7 @@ if(isset($_GET['pfleet_details'])) {
     }
 
     $sql = 'SELECT s.*,
-                   st.name AS template_name, st.ship_torso, st.value_10, st.value_5 AS max_hitpoints
+                   st.name AS template_name, st.ship_torso, st.value_10, st.value_5 AS max_hitpoints, st.max_torp
             FROM (ships s, ship_templates st)
             WHERE s.fleet_id = '.$fleet_id.' AND
                   st.id = s.template_id
@@ -252,16 +252,68 @@ if(isset($_GET['pfleet_details'])) {
 
     $n_ships = $n_transporter = 0;
     $ships_option_html = '';
+    $torso_counter = array(0,0,0,0,0,0,0,0,0,0);
+    $damage_counter = array(0,0,0,0);
+    $depleted_counter = array(0,0,0);
+    $thereshold_ammo_ratio = 30;
+
+    $ship_torso[0] = constant($game->sprache("TEXT79"));
+    $ship_torso[1] = constant($game->sprache("TEXT80"));
+    $ship_torso[2] = constant($game->sprache("TEXT81"));
+    $ship_torso[3] = constant($game->sprache("TEXT82"));
+    $ship_torso[4] = constant($game->sprache("TEXT82"));
+    $ship_torso[5] = constant($game->sprache("TEXT83"));
+    $ship_torso[6] = constant($game->sprache("TEXT83"));
+    $ship_torso[7] = constant($game->sprache("TEXT84"));
+    $ship_torso[8] = constant($game->sprache("TEXT84"));
+    $ship_torso[9] = constant($game->sprache("TEXT85"));
+    $ship_torso[10] = constant($game->sprache("TEXT85"));
+    $ship_torso[11] = constant($game->sprache("TEXT86"));
+    $ship_torso[12] = constant($game->sprache("TEXT87"));
 
     while($s_ship = $db->fetchrow($q_ships)) {
+        $ammo_ratio = (int)($s_ship['torp']*100/$s_ship['max_torp']);
         /* 07/04/08 - AC: If present, show also ship's name */
-        $new_id = $s_ship['max_hitpoints']-$s_ship['hitpoints'] + (($s_ship['ship_torso'] > 4 && $s_ship['torp'] == 0) ? 100000 : 0);
+        $new_id = $s_ship['max_hitpoints']-$s_ship['hitpoints'] + (($s_ship['ship_torso'] > 2 && $ammo_ratio < $thereshold_ammo_ratio) ? 100000 : 0);
         $ships_option_html .= '<option id="'.$new_id.'" value="'.$s_ship['ship_id'].'">'.(($s_ship['ship_name'] != '')? $s_ship['ship_name'].' - '.$s_ship['template_name'] : $s_ship['template_name']).' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Torp: '.($s_ship['ship_torso'] < 5 ? 'n/a' : $s_ship['torp']).', Exp: '.$s_ship['experience'].')</option>';
 
         if($s_ship['ship_torso'] == SHIP_TYPE_TRANSPORTER) $n_transporter++;
 
+        $torso_counter[$s_ship['ship_torso']]++;
+
+        if($s_ship['max_hitpoints'] == $s_ship['hitpoints'])
+            $damage_counter[0]++;
+        else {
+            $damage_counter[1]++;
+            $dmg_ratio = (int)($s_ship['hitpoints']*100/$s_ship['max_hitpoints']);
+            if($dmg_ratio < 25) $damage_counter[3]++; 
+            if($dmg_ratio < 50) $damage_counter[2]++; 
+        }
+
+        if($ammo_ratio == 100 || $s_ship['ship_torso'] < 5)
+            $depleted_counter[0]++;
+        else {
+            if($ammo_ratio < $thereshold_ammo_ratio)
+                $depleted_counter[2]++;
+            else
+                $depleted_counter[1]++;
+        }
+
         $n_ships++;
     }
+
+    foreach($torso_counter as $key => $torso)
+    {
+        if($torso == 0) continue;
+        // $torso_string_counter .= $SHIP_TORSO[$game->player['user_race']][$key][29].' <b>'.$torso.'</b><br>';
+        $torso_string_counter .= $ship_torso[$key].' <b>'.$torso.'</b><br>';	
+    }
+
+    $damage_string_counter .= constant($game->sprache("TEXT92")).' <b>'.$damage_counter[0].'</b>';
+
+    if($damage_counter[1]>0) $damage_string_counter .= '<br>'.constant($game->sprache("TEXT93")).' <b>'.$damage_counter[1].'</b> '.constant($game->sprache("TEXT94")).' <b>'.$damage_counter[2].'</b><br>'.constant($game->sprache("TEXT95")).' <b>'.$damage_counter[3].'</b>';
+
+    $depleted_string .= constant($game->sprache("TEXT96")).' <b>'.$depleted_counter[0].'</b><br>'.constant($game->sprache("TEXT97")).' <b>'.$depleted_counter[1].'</b><br>'.constant($game->sprache("TEXT98")).' <b>'.$depleted_counter[2].'</b>';
 
     if($n_ships == 0) {
         $sql = 'DELETE FROM ship_fleets
@@ -325,6 +377,8 @@ if(isset($_GET['pfleet_details'])) {
         $max_resources = $n_transporter * MAX_TRANSPORT_RESOURCES;
         $max_units = $n_transporter * MAX_TRANSPORT_UNITS;
 
+        $game->out('<fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT88")).':</span></legend>');
+
         if( ($n_resources < $max_resources) || ($n_units < $max_units) ) $game->out('[<a href="'.parse_link('a=ship_fleets_loadingp&from='.$fleet_id).'">'.constant($game->sprache("TEXT19")).'</a>]&nbsp;');
         if( ($n_resources > 0) || ($n_units > 0) ) $game->out('[<a href="'.parse_link('a=ship_fleets_loadingp&to='.$fleet_id).'">'.constant($game->sprache("TEXT20")).'</a>]');
 
@@ -348,7 +402,30 @@ if(isset($_GET['pfleet_details'])) {
             $game->out('<br><br><i>'.constant($game->sprache("TEXT25")).' <b>'.$n_security.'</b></i>');
             $game->out('<br>');
         }
+
+        $game->out('</fieldset><br><br>');
     }
+
+    //DC --- Fleet composition panel
+    $style = 'style="border-bottom-color:A0A0A0; border-bottom-style:dotted; border-bottom-width:1px"';
+    $game->out('
+        <fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT89")).':</span></legend>
+        <table width=450 cellpadding=0 cellspacing=0 border=0>
+          <tr>
+            <td '.$style.' width=50 align=left>'.constant($game->sprache("TEXT31")).'</td>
+            <td '.$style.' width=150 align=left>'.constant($game->sprache("TEXT99")).'</td>
+            <td '.$style.' width=150 align=left>'.constant($game->sprache("TEXT100")).'</td>
+          </tr>
+          <tr>
+            <td width=150 align=left>'.$torso_string_counter.'</td>
+            <td width=150 align=left>'.$damage_string_counter.'</td>
+            <td width=150 align=left>'.$depleted_string.'</td>
+          </tr>
+        </table>
+      </fieldset>
+      <br>');
+    //DC ---
+
     $select_size = 8;
     $game->out('
 <SCRIPT LANGUAGE="JavaScript"><!--
@@ -378,6 +455,7 @@ function ShipSelection(cSelectType) {
 }
 //--></SCRIPT>
       <br>
+      <fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT90")).':</span></legend>
       <table width="450" border="0" cellpadding="2" cellspacing="0">
        <tr>
         <td width="410">
@@ -417,8 +495,10 @@ function ShipSelection(cSelectType) {
       <br><br>
       <input class="button" style="width: 220px;" type="submit" name="ship_details" value="'.constant($game->sprache("TEXT37")).'" onClick="return document.fleet_form.action = \''.parse_link('a=ship_fleets_ops&ship_details').'\'">&nbsp;
       <input class="button" type="submit" name="offduty_ship" value="'.constant($game->sprache("TEXT38")).'" onClick="return document.fleet_form.action = \''.parse_link('a=ship_fleets_ops&offduty_ships').'\'"'.( ( ($fleet['stationated_owner_id'] != $game->player['user_id']) || ($fleet['spacedock_level'] == 0) ) ? ' disabled="disabled"' : '' ).'>
+      </fieldset>
       <br><br>
 
+      <fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT91")).':</span></legend>
       <table width="450" border="0" cellpadding="2" cellspacing="0">
 
 
@@ -519,6 +599,7 @@ function ShipSelection(cSelectType) {
 
     $game->out('
       </table>
+      </fieldset>
       <br>
     </td>
   </tr>
@@ -629,7 +710,7 @@ elseif(isset($_GET['mfleet_details'])) {
     while($s_ship = $db->fetchrow($q_ships)) {
         /* 07/04/08 - AC: If present, show also ship's name */
         //$ships_option_html .= '<option value="'.$s_ship['ship_id'].'">'.$s_ship['ship_name'].' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Exp: '.$s_ship['experience'].')</option>';
-        $ships_option_html .= '<option value="'.$s_ship['ship_id'].'">'.(($s_ship['ship_name'] != '')? $s_ship['ship_name'].' - '.$s_ship['template_name'] : $s_ship['template_name']).' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Torp: '.($s_ship['ship_torso'] < 5 ? 'n/a' : $s_ship['torp']).', Exp: '.$s_ship['experience'].')</option>';
+        $ships_option_html .= '<option value="'.$s_ship['ship_id'].'">'.(($s_ship['ship_name'] != '')? $s_ship['ship_name'].' - '.$s_ship['template_name'] : $s_ship['template_name']).' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Torp: '.($s_ship['ship_torso'] < 3 ? 'n/a' : $s_ship['torp']).', Exp: '.$s_ship['experience'].')</option>';
         if($s_ship['ship_torso'] == SHIP_TYPE_TRANSPORTER) $n_transporter++;
 
         $n_ships++;
