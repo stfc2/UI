@@ -192,6 +192,8 @@ define ("GER_TEXT83", 'Schiffe');
 
 define ("GER_TEXT85", 'Torpedo in stock:');
 
+define ("GER_TEXT92", 'Index F.S.:');
+
 //English
 define ("ENG_TEXT0", 'Overview');
 
@@ -362,6 +364,8 @@ define ("ENG_TEXT82", 'built, before Ship templates can be created.');
 define ("ENG_TEXT83", 'Ships');
 
 define ("ENG_TEXT85", 'Torpedo in stock:');
+
+define ("ENG_TEXT92", 'Index F.S.:');
 
 
 //Italiano
@@ -548,5 +552,7 @@ define ("ITA_TEXT89", 'Equipaggio:');
 define ("ITA_TEXT90", 'Zone Ricovero:');
 
 define ("ITA_TEXT91", 'Zone Detentive:');
+
+define ("ITA_TEXT92", 'Valutaz. F.S.:');
 
 ?>

@@ -254,6 +254,10 @@ for ($t=0; $t<3; $t++)
 					$game->out('- Nicht belegt<br>');
 			} */
 
+			$template_array[$t]['firststrike'] = $template['value_11']*0.5 
+			              +$template['value_6']*2
+			              +$template['value_7']*3
+			              +$template['value_12'];
 
 			$game->out('<br><u>'.constant($game->sprache("TEXT28")).'</u><br>');
 
@@ -272,6 +276,8 @@ for ($t=0; $t<3; $t++)
 			$game->out('<u>'.constant($game->sprache("TEXT19")).'</u> <b>'.PutValue($template_array,'value_12',$t).'</b><br>');
 			$game->out('<u>'.constant($game->sprache("TEXT29")).'</u> <b>'.PutValue($template_array,'value_14',$t).'/'.PutValue($template_array,'value_13',$t).'</b><br>');
 
+			$game->out('<br>');
+			$game->out('<u>'.constant($game->sprache("TEXT92")).'</u> <b>'.$template_array[$t]['firststrike'].'</b><br>');
 			$game->out('<br><br>
 			<u>'.constant($game->sprache("TEXT30")).'</u><br>
 			<img src="'.$game->GFX_PATH.'menu_metal_small.gif"><b id="price1">'.$template['resource_1'].'</b>
@@ -1049,14 +1055,14 @@ $game->out('
 <form method="post" action="'.parse_link('a=ship_template&view=create').'">');
 
 
-if ($game->player['user_race']==9) // Test for the decoy ship:
-{
-if (($_POST[3])>=0 && ($_POST[8])>=0)
-{
-	$game->out('<span class="sub_caption2">'.constant($game->sprache("TEXT63")).' '.$ship_components[$game->player['user_race']][3][$_POST[3]]['name'].' '.constant($game->sprache("TEXT64")).'<br><br></span>');
-	$_POST[3]=0;
-}
-}
+//if ($game->player['user_race']==9) // Test for the decoy ship:
+//{
+//if (($_POST[3])>=0 && ($_POST[8])>=0)
+//{
+//	$game->out('<span class="sub_caption2">'.constant($game->sprache("TEXT63")).' '.$ship_components[$game->player['user_race']][3][$_POST[3]]['name'].' '.constant($game->sprache("TEXT64")).'<br><br></span>');
+//	$_POST[3]=0;
+//}
+//}
 
 $game->out('
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
