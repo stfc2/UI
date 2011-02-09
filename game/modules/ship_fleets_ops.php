@@ -809,8 +809,8 @@ elseif(isset($_GET['ship_details'])) {
 	$firststrike=(($ship['value_6']+round($ship['value_6']*$ship_rank_bonus[$rank_nr-1]))*2
 	             +($ship['value_7']+round($ship['value_7']*$ship_rank_bonus[$rank_nr-1]))*3
 	             +($ship['value_8']+round($ship['value_8']*$ship_rank_bonus[$rank_nr-1]))
-	             +$ship['value_12']
 	             +$ship['value_11']*0.5
+	             +$ship['value_12']
 	             );
 
 

@@ -254,9 +254,10 @@ for ($t=0; $t<3; $t++)
 					$game->out('- Nicht belegt<br>');
 			} */
 
-			$template_array[$t]['firststrike'] = $template['value_11']*0.5 
-			              +$template['value_6']*2
+			$template_array[$t]['firststrike'] = $template['value_6']*2
 			              +$template['value_7']*3
+			              +$template['value_8']
+			              +$template['value_11']*0.5
 			              +$template['value_12'];
 
 			$game->out('<br><u>'.constant($game->sprache("TEXT28")).'</u><br>');
