@@ -854,11 +854,19 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 
-		11 => array(
+		9 => array(
 
 			0 => 'Cubo Borg',  // Name
 
 			1 => 'Il Cubo Borg &egrave; l&#146;astronave pi&ugrave; comune di questa razza. Il Cubo ha una dimensione di circa 3 chilometri di lato, l&#146;aspetto esteriore &egrave; quello di una superficie uniforme di condotti e strutture priva di elementi distintivi, come se l&#146;astronave fosse perennemente incompleta.',
+
+		),
+
+		11 => array(
+
+			0 => 'Cubo Tattico Borg',  // Name
+
+			1 => 'Esteriormente &egrave; quasi completamente coperto da una specie di scafo liscio e non espone il groviglio tubolare caratteristico degli altri cubi.',
 
 		),
 	),
