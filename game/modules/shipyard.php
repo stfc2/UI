@@ -56,32 +56,40 @@ return 1;
 
 function ColoMetRestriction($template) // Verification of the uniqueness of the colony ship
 {
-	global $game,$db;
+    global $game,$db;
 
-	if(!($template['ship_torso'] == 2 && $template['ship_class'] == 0))
-		return 1;
+    // If the ship requested isn't a colonization ship
+    if(!($template['ship_torso'] == SHIP_TYPE_COLO && $template['ship_class'] == 0))
+        return 1;
 
-	if($game->player['user_max_colo'] == 0) return 1;
+    // If the player doesn't have any limit
+    if($game->player['user_max_colo'] == 0) return 1;
 
-	$sql = 'SELECT COUNT(*) AS conteggio FROM ship_templates, ships WHERE ship_templates.id = ships.template_id
-				AND ship_templates.ship_torso = 2 AND ship_templates.ship_class = 0
-				AND ships.user_id = '.$game->player['user_id'];
+    // Let's count how many colonization ships the player already has
+    $sql = 'SELECT COUNT(*) AS num_colo FROM ship_templates, ships
+            WHERE ship_templates.id = ships.template_id AND
+                  ship_templates.ship_torso = '.SHIP_TYPE_COLO.' AND
+                  ship_templates.ship_class = 0 AND
+                  ships.user_id = '.$game->player['user_id'];
 
-	$_temp = $db->queryrow($sql);
-	$risultato = $_temp['conteggio'];
+    $_temp = $db->queryrow($sql);
+    $num_colo = $_temp['num_colo'];
 
-	$sql = 'SELECT COUNT(*) AS conteggio FROM scheduler_shipbuild, ship_templates, planets WHERE scheduler_shipbuild.ship_type = ship_templates.id
-				AND scheduler_shipbuild.planet_id = planets.planet_id
-				AND ship_templates.ship_torso = 2
-				AND ship_class = 0
-				AND planets.planet_owner = '.$game->player['user_id'];
+    // Let's count how many colonization ships the player is building
+    $sql = 'SELECT COUNT(*) AS num_colo FROM scheduler_shipbuild, ship_templates, planets
+            WHERE scheduler_shipbuild.ship_type = ship_templates.id AND
+                  scheduler_shipbuild.planet_id = planets.planet_id AND
+                  ship_templates.ship_torso = '.SHIP_TYPE_COLO.' AND
+                  ship_class = 0 AND
+                  planets.planet_owner = '.$game->player['user_id'];
 
-	$_temp = $db->queryrow($sql);
-	$risultato += $_temp['conteggio'];
+    $_temp = $db->queryrow($sql);
+    $num_colo += $_temp['num_colo'];
 
-	if($risultato >= $game->player['user_max_colo']) return 0;
+    // The total amount match the requirements?
+    if($num_colo >= $game->player['user_max_colo']) return 0;
 
-	return 1;
+    return 1;
 }
 
 
@@ -219,7 +227,7 @@ function CanAffordTemplate($template,$player,$planet)
 
 {
 
-global $game;
+global $game, $db;
 
 // Calculate how many types of the template could be build:
 
@@ -244,10 +252,33 @@ if ($template['min_unit_3']!=0) $num[8]=floor($planet['unit_3']/$template['min_u
 if ($template['min_unit_4']!=0) $num[9]=floor($planet['unit_4']/$template['min_unit_4']); else $num[9]=9999;
 
 // You cannot have more than user_max_colo colony ship at same time
-if($template['ship_torso'] == 2 && $template['ship_class'] == 0) {
-	if (($game->player['user_max_colo'] != 0) && (min($num) > $game->player['user_max_colo']))
-		return (int)$game->player['user_max_colo'];
+if($template['ship_torso'] == SHIP_TYPE_COLO && $template['ship_class'] == 0 && $game->player['user_max_colo'] != 0) {
+    // Let's count how many colonization ships the player already has
+    $sql = 'SELECT COUNT(*) AS num_colo FROM ship_templates, ships
+            WHERE ship_templates.id = ships.template_id AND
+                  ship_templates.ship_torso = '.SHIP_TYPE_COLO.' AND
+                  ship_templates.ship_class = 0 AND
+                  ships.user_id = '.$game->player['user_id'];
+
+    $_temp = $db->queryrow($sql);
+    $num_colo = $_temp['num_colo'];
+
+    // Let's count how many colonization ships the player is building
+    $sql = 'SELECT COUNT(*) AS num_colo FROM scheduler_shipbuild, ship_templates, planets
+            WHERE scheduler_shipbuild.ship_type = ship_templates.id AND
+                  scheduler_shipbuild.planet_id = planets.planet_id AND
+                  ship_templates.ship_torso = '.SHIP_TYPE_COLO.' AND
+                  ship_class = 0 AND
+                  planets.planet_owner = '.$game->player['user_id'];
+
+    $_temp = $db->queryrow($sql);
+    $num_colo += $_temp['num_colo'];
+
+    // How many colo the user can still build?
+    $max_colo = $game->player['user_max_colo'] - $num_colo;
+    if (min($num) > $max_colo) return (int)$max_colo;
 }
+
 return min($num);
 
 }
