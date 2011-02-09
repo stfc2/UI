@@ -381,6 +381,7 @@ function get_move_action_str($code, $unexspected = array()) {
 		case 24: $str = constant($game->sprache("MOVECOLONIZE")); break;
 		case 25: $str = constant($game->sprache("MOVECOLONIZE")); break;
 		case 26: $str = constant($game->sprache("MOVESURVEY")); break;
+		case 27: $str = constant($game->sprache("TEAMAWAY")); break;
 
 		case 31: $str = constant($game->sprache("MOVECARGO")); break;
 		case 32: $str = 'You should not see this'; break; // Ferengifake Transport
@@ -961,7 +962,6 @@ class game {
 		echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
 <html>
-<!--'.$banner.' //-->
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
   <title>'.GetTabbyAction($_GET['a']).' - Star Trek: Frontline Combat 2</title>

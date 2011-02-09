@@ -222,6 +222,8 @@ define ("GER_MOVECOLONIZE", 'Kolonisieren');
 
 define ("GER_MOVESURVEY", 'Survey planet');
 
+define ("GER_TEAMAWAY", 'Team Away');
+
 define ("GER_MOVECARGO", 'Ladung &uuml;bergeben und Zur&uuml;ckfliegen');
 
 define ("GER_MOVEAUCTION", 'Auktions&uuml;bergabe');
@@ -511,6 +513,8 @@ define ("ENG_MOVECOLONIZE", 'Colonize');
 
 define ("ENG_MOVESURVEY", 'Survey planet');
 
+define ("ENG_TEAMAWAY", 'Team Away');
+
 define ("ENG_MOVECARGO", 'Hand over cargo and return');
 
 define ("ENG_MOVEAUCTION", 'Auction delivery');
@@ -799,6 +803,8 @@ define ("ITA_MOVEHAND", 'Consegna tutte le navi');
 define ("ITA_MOVECOLONIZE", 'Colonizzazione');
 
 define ("ITA_MOVESURVEY", 'Analisi pianeta');
+
+define ("ITA_TEAMAWAY", 'Squadra a terra');
 
 define ("ITA_MOVECARGO", 'Consegna il carico e rientra');
 
