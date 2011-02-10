@@ -1455,7 +1455,7 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 
-		3 => array(
+		11 => array(
 
 			0 => 'Prometheus',
 

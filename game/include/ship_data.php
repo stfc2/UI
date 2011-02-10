@@ -9581,7 +9581,7 @@ $SHIP_TORSO = array(
 
     	
 
-	    3 => array(
+	    11 => array(
 
 			0 => 15000,
 
