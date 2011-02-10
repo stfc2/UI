@@ -2359,7 +2359,7 @@ else
 		$game->out(constant($game->sprache("TEXT182")));
 	$truppen=$db->queryrow('SELECT * FROM `FHB_Handels_Lager` Limit 1');
 	$game->out('<table align=center><tr><td>'.constant($game->sprache("TEXT183")).'</td></tr>');
-	$game->out('<tr><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress&step=2').'" method="post"><td><input type="text" name="menge" value="'.$_POST['menge'].'"></td></td></tr>');
+	$game->out('<tr><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress&step=2').'" method="post"><td><input type="text" class="Field_nosize" name="menge" value="'.$_POST['menge'].'"></td></td></tr>');
 	$game->out('<tr><td>'.constant($game->sprache("TEXT184")).'</td><td><select size="1" name="Art">
 		<option value="Metall">'.constant($game->sprache("TEXT123")).'</option>
 		<option value="Mineral">'.constant($game->sprache("TEXT165")).'</option>
@@ -2873,12 +2873,12 @@ function Trade_Sold_truppen()
 		if(isset($_REQUEST['handel']) && $_REQUEST['handel']=='kaufen_truppen' && $_REQUEST['step']=='2' && $_POST['unit_1']==0 && $_POST['unit_2']==0 && $_POST['unit_3']==0 &&  $_POST['unit_4']==0 && $_POST['unit_5']==0 && $_POST['unit_6']==0) $game->out('Du musst auch schon wo eine Zahl eintragen<br>');
 		$truppen=$db->queryrow('SELECT * FROM `FHB_Handels_Lager` Limit 1');
 		$game->out('<table align=center><tr><td>'.constant($game->sprache("TEXT196")).'</td><td>'.constant($game->sprache("TEXT197")).'</td></tr>');
-		$game->out('<tr><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=sold_truppen&step=2').'" method="post"><td><img src="'.$game->GFX_PATH.'menu_unit1_small.gif"></td><td><input type="text" name="unit_1" value="'.$_POST['unit_1'].'"></td></td></tr>');
-		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit2_small.gif"></td><td><input type="text" name="unit_2" value="'.$_POST['unit_2'].'"></td></tr>');
-		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit3_small.gif"></td><td><input type="text" name="unit_3" value="'.$_POST['unit_3'].'"></td></tr>');
-		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit4_small.gif"></td><td><input type="text" name="unit_4" value="'.$_POST['unit_4'].'"></td></tr>');
-		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit5_small.gif"></td><td><input type="text" name="unit_5" value="'.$_POST['unit_5'].'"></td></tr>');
-		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit6_small.gif"></td><td><input type="text" name="unit_6" value="'.$_POST['unit_6'].'"></td></tr>');
+		$game->out('<tr><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=sold_truppen&step=2').'" method="post"><td><img src="'.$game->GFX_PATH.'menu_unit1_small.gif"></td><td><input type="text" name="unit_1" value="'.$_POST['unit_1'].'" class="Field_nosize"></td></td></tr>');
+		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit2_small.gif"></td><td><input type="text" name="unit_2" value="'.$_POST['unit_2'].'" class="Field_nosize"></td></tr>');
+		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit3_small.gif"></td><td><input type="text" name="unit_3" value="'.$_POST['unit_3'].'" class="Field_nosize"></td></tr>');
+		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit4_small.gif"></td><td><input type="text" name="unit_4" value="'.$_POST['unit_4'].'" class="Field_nosize"></td></tr>');
+		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit5_small.gif"></td><td><input type="text" name="unit_5" value="'.$_POST['unit_5'].'" class="Field_nosize"></td></tr>');
+		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit6_small.gif"></td><td><input type="text" name="unit_6" value="'.$_POST['unit_6'].'" class="Field_nosize"></td></tr>');
 		$game->out('<tr><td colspan="3"><input type="submit" value="'.constant($game->sprache("TEXT198")).'"  name="submit"></td></form></tr></table>');
 	}
 }
@@ -3400,12 +3400,12 @@ function Trade_Buy_truppen()
 		/* */
 
 		$game->out('<table align="center"><tr><td>'.constant($game->sprache("TEXT196")).'</td><td>'.constant($game->sprache("TEXT197")).'</td><td align="left">'.constant($game->sprache("TEXT211")).'</td></tr>');
-		$game->out('<tr><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=kaufen_truppen&step=2').'" method="post"><td><img src="'.$game->GFX_PATH.'menu_unit1_small.gif"></td><td><input type="text" name="unit_1" value="'.$_POST['unit_1'].'"></td><td>('.$truppen['unit_1'].')<td></td></tr>');
-		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit2_small.gif"></td><td><input type="text" name="unit_2" value="'.$_POST['unit_2'].'"></td><td>('.$truppen['unit_2'].')</td></tr>');
-		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit3_small.gif"></td><td><input type="text" name="unit_3" value="'.$_POST['unit_3'].'"></td><td>('.$truppen['unit_3'].')</td></tr>');
-		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit4_small.gif"></td><td><input type="text" name="unit_4" value="'.$_POST['unit_4'].'"></td><td>('.$truppen['unit_4'].')</td></tr>');
-		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit5_small.gif"></td><td><input type="text" name="unit_5" value="'.$_POST['unit_5'].'"></td><td>('.$truppen['unit_5'].')</td></tr>');
-		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit6_small.gif"></td><td><input type="text" name="unit_6" value="'.$_POST['unit_6'].'"></td><td>('.$truppen['unit_6'].')</td></tr>');
+		$game->out('<tr><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=kaufen_truppen&step=2').'" method="post"><td><img src="'.$game->GFX_PATH.'menu_unit1_small.gif"></td><td><input type="text" name="unit_1" value="'.$_POST['unit_1'].'" class="Field_nosize"></td><td>('.$truppen['unit_1'].')<td></td></tr>');
+		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit2_small.gif"></td><td><input type="text" name="unit_2" value="'.$_POST['unit_2'].'" class="Field_nosize"></td><td>('.$truppen['unit_2'].')</td></tr>');
+		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit3_small.gif"></td><td><input type="text" name="unit_3" value="'.$_POST['unit_3'].'" class="Field_nosize"></td><td>('.$truppen['unit_3'].')</td></tr>');
+		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit4_small.gif"></td><td><input type="text" name="unit_4" value="'.$_POST['unit_4'].'" class="Field_nosize"></td><td>('.$truppen['unit_4'].')</td></tr>');
+		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit5_small.gif"></td><td><input type="text" name="unit_5" value="'.$_POST['unit_5'].'" class="Field_nosize"></td><td>('.$truppen['unit_5'].')</td></tr>');
+		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit6_small.gif"></td><td><input type="text" name="unit_6" value="'.$_POST['unit_6'].'" class="Field_nosize"></td><td>('.$truppen['unit_6'].')</td></tr>');
 		$game->out('<tr><td colspan="3"><input type="submit" value="'.constant($game->sprache("TEXT212")).'"  name="submit"></td></form></tr></table>');
 	}
 }
@@ -3832,15 +3832,15 @@ function Show_schulden($zustand=0)
 		<table border=0 cellpadding="3" cellspacing="3" class="style_inner" width=300><tr>
 		<td>'.constant($game->sprache("TEXT123")).'</td><td>'.constant($game->sprache("TEXT165")).'</td><td>'.constant($game->sprache("TEXT167")).'</td><td>Lv1</td><td>Lv2</td><td>Lv3</td><td>Lv4</td><td>'.constant($game->sprache("TEXT237")).'</td><td>'.constant($game->sprache("TEXT238")).'</td><td></td></tr>
 		<tr>
-		<td><input name="metall" type="text" size="6" maxlength="6">'.$game->planet['resource_1'].'</td>
-		<td><input name="mineralien" type="text" size="6" maxlength="6">'.$game->planet['resource_2'].'</td>
-		<td><input name="latinum" type="text" size="6" maxlength="6">'.$game->planet['resource_3'].'</td>
-		<td><input name="unit1" type="text" size="6" maxlength="6">'.$game->planet['unit_1'].'</td>
-		<td><input name="unit2" type="text" size="6" maxlength="6">'.$game->planet['unit_2'].'</td>
-		<td><input name="unit3" type="text" size="6" maxlength="6">'.$game->planet['unit_3'].'</td>
-		<td><input name="unit4" type="text" size="6" maxlength="6">'.$game->planet['unit_4'].'</td>
-		<td><input name="unit5" type="text" size="6" maxlength="6">'.$game->planet['unit_5'].'</td>
-		<td><input name="unit6" type="text" size="6" maxlength="6">'.$game->planet['unit_6'].'</td>
+		<td><input name="metall" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['resource_1'].'</td>
+		<td><input name="mineralien" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['resource_2'].'</td>
+		<td><input name="latinum" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['resource_3'].'</td>
+		<td><input name="unit1" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_1'].'</td>
+		<td><input name="unit2" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_2'].'</td>
+		<td><input name="unit3" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_3'].'</td>
+		<td><input name="unit4" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_4'].'</td>
+		<td><input name="unit5" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_5'].'</td>
+		<td><input name="unit6" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_6'].'</td>
 		</tr><tr><td colspan="10"><input type="hidden" name="auktion" value="'.$_REQUEST['auktion'].'">
 		<input type="submit" name="einzahlen" class="Button_nosize" value="'.constant($game->sprache("TEXT246")).'" style="width:100px"></td>
 		</tr></table></form>');
@@ -4233,15 +4233,15 @@ function konto_sold()
 					$db_unit_5+=$konto_full_t['unit_5'];
 					$db_unit_6+=$konto_full_t['unit_6'];
 				}
-				$game->out('<td><input name="metall" type="text" size="6" maxlength="6"><br>'.$db_ress_1.'</td>
-					<td><input name="mineralien" type="text" size="6" maxlength="6"><br>'.$db_ress_2.'</td>
-					<td><input name="latinum" type="text" size="6" maxlength="6"><br>'.$db_ress_3.'</td>
-					<td><input name="unit1" type="text" size="6" maxlength="6"><br>'.$db_unit_1.'</td>
-					<td><input name="unit2" type="text" size="6" maxlength="6"><br>'.$db_unit_2.'</td>
-					<td><input name="unit3" type="text" size="6" maxlength="6"><br>'.$db_unit_3.'</td>
-					<td><input name="unit4" type="text" size="6" maxlength="6"><br>'.$db_unit_4.'</td>
-					<td><input name="unit5" type="text" size="6" maxlength="6"><br>'.$db_unit_5.'</td>
-					<td><input name="unit6" type="text" size="6" maxlength="6"><br>'.$db_unit_6.'</td></tr></table></td></tr>');
+				$game->out('<td><input name="metall" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_ress_1.'</td>
+					<td><input name="mineralien" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_ress_2.'</td>
+					<td><input name="latinum" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_ress_3.'</td>
+					<td><input name="unit1" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_unit_1.'</td>
+					<td><input name="unit2" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_unit_2.'</td>
+					<td><input name="unit3" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_unit_3.'</td>
+					<td><input name="unit4" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_unit_4.'</td>
+					<td><input name="unit5" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_unit_5.'</td>
+					<td><input name="unit6" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_unit_6.'</td></tr></table></td></tr>');
 
 				$game->out('<tr><td colspan="2"><input type="submit" value="'.constant($game->sprache("TEXT257")).'"  name="submit"></td></tr></form></table>');
 			}
