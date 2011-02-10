@@ -524,17 +524,17 @@ $SHIP_TORSO = array(
 
 	    7 => array(
 
-			0 => 51390,  // Metal
+			0 => 41212,  // Metal
 
 			1 => 37445,  // Minerals
 
 			2 => 20956,  // Latinum
 
-			3 => 80,  // Min. Unit 1(L. Infanterie)
+			3 => 85,  // Min. Unit 1(L. Infanterie)
 
-			4 => 20,  // Min. Unit 2 (Sturmtruppe)
+			4 => 25,  // Min. Unit 2 (Sturmtruppe)
 
-			5 => 5,  // Min. Unit 3 (Hazard Team)
+			5 => 10,  // Min. Unit 3 (Hazard Team)
 
 			6 => 0,  // Min. Unit 4 (Commander)
 
@@ -546,7 +546,7 @@ $SHIP_TORSO = array(
 
 			10 => 5,  // Max Unit 4 (Commander)
 
-			11 => 13,  // Unit 5 (Offizier)
+			11 => 15,  // Unit 5 (Offizier)
 
 			12 => 5,  // Unit 6 (Medizinisches Personal)
 
@@ -558,7 +558,7 @@ $SHIP_TORSO = array(
 
 			16 => 10,   // Value3 (Planetare Waffen)
 
-			17 => 520,   // Value4 (Schildstärke)
+			17 => 670,   // Value4 (Schildstärke)
 
 			18 => 300,   // Value5 (Hülle bzw. Hitpoins)
 
@@ -570,9 +570,9 @@ $SHIP_TORSO = array(
 
 			22 => 10,   // Value9 (Erfahrung)
 
-			23 => 3.6,   // Value10 (Warp)
+			23 => 4.2,   // Value10 (Warp)
 
-			24 => 1,   // Value11 (Sensoren)
+			24 => 5,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
