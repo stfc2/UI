@@ -343,6 +343,12 @@ define ("GER_TEXT156", 'The Settlers on this planet welcomed our Diplomatic dele
 
 define ("GER_TEXT157", 'The Settlers on this planet <b>has rejected</b> our Diplomatic delegation!');
 
+define ("GER_TEXT158", 'Unsere Beziehung zu den Planeten sind: ');
+
+define ("GER_TEXT159", 'Von unseren Beobachtungen zeigten die folgenden Ergebnisse:');
+
+define ("GER_TEXT160", 'hat eine Zustimmungsrate von');
+
 
 
 //English
@@ -667,6 +673,11 @@ define ("ENG_TEXT156", 'The Settlers on this planet welcomed our Diplomatic dele
 
 define ("ENG_TEXT157", 'The Settlers on this planet <b>has rejected</b> our Diplomatic delegation!');
 
+define ("ENG_TEXT158", 'Our relationship with the planet are: ');
+
+define ("ENG_TEXT159", 'From our observations, showed the following results:');
+
+define ("ENG_TEXT160", 'has an approval rating of');
 
 
 
@@ -992,5 +1003,10 @@ define ("ITA_TEXT156", 'La popolazione di questo pianeta ha accolto con benevole
 
 define ("ITA_TEXT157", 'La popolazione di questo pianeta ha respindo la nostra delegazione diplomatica.');
 
+define ("ITA_TEXT158", 'Le nostre relazioni con il pianeta sono: ');
+
+define ("ITA_TEXT159", 'Dalle nostre osservazioni, sono emersi i seguenti risultati:');
+
+define ("ITA_TEXT160", 'ha un indice di gradimento di');
 
 ?>

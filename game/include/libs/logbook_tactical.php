@@ -511,11 +511,26 @@ function display_logbook($log) {
         <td width="385">
             ');
 
-            switch($log['log_data'][8]) {
-                case -1: $game->out(constant($game->sprache("TEXT155"))); break;
-                case -2: $game->out(constant($game->sprache("TEXT157"))); break;
-                case 1: $game->out(constant($game->sprache("TEXT156"))); break;
-                default: $game->out('Illegal status code - report this as a bug'); break;
+            $t_a_data = $log['log_data'][8];
+            switch($t_a_data['mission_type']) {
+                case 0:
+                    switch($t_a_data['mission_result']) {
+                        case -1: $game->out(constant($game->sprache("TEXT155"))); break;
+                        case -2: $game->out(constant($game->sprache("TEXT157"))); break;
+                        case 1: $game->out(constant($game->sprache("TEXT156"))); break;
+                        default: $game->out('Illegal status code - report this as a bug'); break;
+                    }
+                break;
+                case 1:
+                    $game->out(constant($game->sprache("TEXT158")).$t_a_data['user_mood'].'.<br><br>');
+                    if(isset($t_a_data['toptenlist'][0])) {
+                        $game->out(constant($game->sprache("TEXT159")).'<br><br>');
+                        foreach($t_a_data['toptenlist'] as $other_user) {
+                            $game->out('<b>'.$other_user['user_name'].'</b> ');
+                            $game->out(' '.constant($game->sprache("TEXT160")).' '.$other_user['mood_value'].'.<br>');
+                        }
+                    }
+                break;
             }
 
             $game->out('
