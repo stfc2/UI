@@ -1829,7 +1829,7 @@ if(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && isset($_PO
 								<tr><td>'.constant($game->sprache("TEXT150")).($kosten['Mineral']-$steuern).'</td></tr>
 								<tr><td>'.constant($game->sprache("TEXT151")).$_POST['menge'].'</td></tr>
 								<tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
-								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></form></td></tr></table>');
+								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
 						}
 						else{message(DATABASE_ERROR, 'Internal database error');}
 					}
@@ -1874,7 +1874,7 @@ if(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && isset($_PO
 								<tr><td>'.constant($game->sprache("TEXT156")).($kosten['Latinum']-$steuern).'</td></tr>
 								<tr><td>'.constant($game->sprache("TEXT151")).$_POST['menge'].'</td></tr>
 								<tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
-								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></form></td></tr></table>');
+								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
 						}
 						else{message(DATABASE_ERROR, 'Internal database error');}
 					}
@@ -1919,7 +1919,7 @@ if(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && isset($_PO
 								<tr><td>'.constant($game->sprache("TEXT154")).($kosten['Metall']-$steuern).'</td></tr>
 								<tr><td>'.constant($game->sprache("TEXT155")).$_POST['menge'].'</td></tr>
 								<tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
-								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></form></td></tr></table>');
+								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
 						}
 						else{message(DATABASE_ERROR, 'Internal database error');}
 					}
@@ -1964,7 +1964,7 @@ if(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && isset($_PO
 								<tr><td>'.constant($game->sprache("TEXT156")).($kosten['Latinum']-$steuern).'</td></tr>
 								<tr><td>'.constant($game->sprache("TEXT155")).$_POST['menge'].'</td></tr>
 								<tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
-								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></form></td></tr></table>');
+								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
 						}
 						else{message(DATABASE_ERROR, 'Internal database error');}
 					}
@@ -2009,7 +2009,7 @@ if(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && isset($_PO
 								<tr><td>'.constant($game->sprache("TEXT154")).($kosten['Metall']-$steuern).'</td></tr>
 								<tr><td>'.constant($game->sprache("TEXT157")).$_POST['menge'].'</td></tr>
 								<tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
-								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></form></td></tr></table>');
+								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
 						}
 						else{message(DATABASE_ERROR, 'Internal database error');}
 					}
@@ -2054,7 +2054,7 @@ if(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && isset($_PO
 								<tr><td>'.constant($game->sprache("TEXT150")).($kosten['Mineral']-$steuern).'</td></tr>
 								<tr><td>'.constant($game->sprache("TEXT157")).$_POST['menge'].'</td></tr>
 								<tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
-								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></form></td></tr></table>');
+								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
 						}
 						else{message(DATABASE_ERROR, 'Internal database error');}
 					}
@@ -2072,7 +2072,7 @@ if(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && isset($_PO
 			$game->out('<table><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress&step=2').'" method="post"><tr><td colspan=2>');
 			$game->out('<input type="hidden" name="menge" value="'.$_POST['menge'].'">');
 			$game->out('<input type="hidden" name="Art" value="'.$_POST['Art'].'">');
-			$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></td></tr></form></table>');
+			$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></td></tr></form></table>');
 		}
 	}
 }
@@ -2348,10 +2348,10 @@ elseif(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && $_REQU
 	$game->out('<tr><td colspan=2>');
 	$game->out('<input type="hidden" name="menge" value="'.$_POST['menge'].'">');
 	$game->out('<input type="hidden" name="Art" value="'.$_POST['Art'].'">');
-	$game->out('<input type="submit" value="'.constant($game->sprache("TEXT181")).'"  name="submit"></td></tr></form>');
+	$game->out('<input type="submit" value="'.constant($game->sprache("TEXT181")).'"  name="submit" class="Button_nosize"></td></tr></form>');
 	$game->out('<tr><td colspan=2><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post"><tr><td colspan=2>');
 	$game->out('<input type="hidden" name="menge" value="'.$_POST['menge'].'">');
-	$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></td></tr></form></table>');
+	$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></td></tr></form></table>');
 }
 else
 {
@@ -2365,7 +2365,7 @@ else
 		<option value="Mineral">'.constant($game->sprache("TEXT165")).'</option>
 		<option value="Latinum">'.constant($game->sprache("TEXT167")).'</option>
 		</select></td></tr>');
-	$game->out('<tr><td colspan="3"><input type="submit" value="'.constant($game->sprache("TEXT185")).'"  name="submit"></td></form></tr></table>');
+	$game->out('<tr><td colspan="3"><input type="submit" value="'.constant($game->sprache("TEXT185")).'"  name="submit" class="Button_nosize"></td></form></tr></table>');
 }
 }
 
@@ -2556,7 +2556,7 @@ function Trade_Sold_truppen()
 										'Lv6:'.$_POST['unit_6'].'</td></tr>' .
 										'<tr><td>' .
 										'<form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=sold_truppen').'" method="post">
-										<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></form></td></tr></table>');
+										<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
 									$db->query('INSERT INTO FHB_handel_log VALUES (null,'.$game->player['user_race'].',1,'.$game->player['user_id'].','.$ACTUAL_TICK.',0,'.$_POST['transportsart'].','.$kosten['gesamt'].',0,0,'.$_POST['unit_1'].','.$_POST['unit_2'].','.$_POST['unit_3'].','.$_POST['unit_4'].','.$_POST['unit_5'].','.$_POST['unit_6'].')');
 								}
 								else{message(DATABASE_ERROR, 'Internal database error');}
@@ -2601,7 +2601,7 @@ function Trade_Sold_truppen()
 										'Lv6:'.$_POST['unit_6'].'</td></tr>' .
 										'<tr><td>' .
 										'<form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=sold_truppen').'" method="post">
-										<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></form></td></tr></table>');
+										<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
 									$db->query('INSERT INTO FHB_handel_log VALUES (null,'.$game->player['user_race'].',1,'.$game->player['user_id'].','.$ACTUAL_TICK.',1,'.$_POST['transportsart'].',0,'.$kosten['gesamt'].',0,'.$_POST['unit_1'].','.$_POST['unit_2'].','.$_POST['unit_3'].','.$_POST['unit_4'].','.$_POST['unit_5'].','.$_POST['unit_6'].')');
 								}
 								else{message(DATABASE_ERROR, 'Internal database error');}
@@ -2647,7 +2647,7 @@ function Trade_Sold_truppen()
 										'Lv6:'.$_POST['unit_6'].'</td></tr>' .
 										'<tr><td>' .
 										'<form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=sold_truppen').'" method="post">
-										<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></form></td></tr></table>');
+										<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
 									$db->query('INSERT INTO FHB_handel_log VALUES (null,'.$game->player['user_race'].',1,'.$game->player['user_id'].','.$ACTUAL_TICK.',2,'.$_POST['transportsart'].',0,0,'.$kosten['gesamt'].','.$_POST['unit_1'].','.$_POST['unit_2'].','.$_POST['unit_3'].','.$_POST['unit_4'].','.$_POST['unit_5'].','.$_POST['unit_6'].')');
 								}
 								else{message(DATABASE_ERROR, 'Internal database error');}
@@ -2696,7 +2696,7 @@ function Trade_Sold_truppen()
 										'Lv6:'.$_POST['unit_6'].'</td></tr>' .
 										'<tr><td>' .
 										'<form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=sold_truppen').'" method="post">
-										<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></form></td></tr></table>');
+										<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
 									$db->query('INSERT INTO FHB_handel_log VALUES (null,'.$game->player['user_race'].',1,'.$game->player['user_id'].','.$ACTUAL_TICK.',3,'.$_POST['transportsart'].','.$kosten['Metall'].','.$kosten['Mineral'].','.$kosten['Latinum'].','.$_POST['unit_1'].','.$_POST['unit_2'].','.$_POST['unit_3'].','.$_POST['unit_4'].','.$_POST['unit_5'].','.$_POST['unit_6'].')');
 								}
 								else{message(DATABASE_ERROR, 'Internal database error');}
@@ -2721,7 +2721,7 @@ function Trade_Sold_truppen()
 				$game->out('<input type="hidden" name="unit_4" value="'.$_POST['unit_4'].'">');
 				$game->out('<input type="hidden" name="unit_5" value="'.$_POST['unit_5'].'">');
 				$game->out('<input type="hidden" name="unit_6" value="'.$_POST['unit_6'].'">');
-				$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></td></tr></form></table>');
+				$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></td></tr></form></table>');
 			}
 		}
 	}
@@ -2859,7 +2859,7 @@ function Trade_Sold_truppen()
 		$game->out('<input type="hidden" name="unit_4" value="'.$_POST['unit_4'].'">');
 		$game->out('<input type="hidden" name="unit_5" value="'.$_POST['unit_5'].'">');
 		$game->out('<input type="hidden" name="unit_6" value="'.$_POST['unit_6'].'">');
-		$game->out('<input type="submit" value="'.constant($game->sprache("TEXT181")).'"  name="submit"></td></tr></form>');
+		$game->out('<input type="submit" value="'.constant($game->sprache("TEXT181")).'"  name="submit" class="Button_nosize"></td></tr></form>');
 		$game->out('<tr><td colspan=2><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=sold_truppen').'" method="post"><tr><td colspan=2>');
 		$game->out('<input type="hidden" name="unit_1" value="'.$_POST['unit_1'].'">');
 		$game->out('<input type="hidden" name="unit_2" value="'.$_POST['unit_2'].'">');
@@ -2867,7 +2867,7 @@ function Trade_Sold_truppen()
 		$game->out('<input type="hidden" name="unit_4" value="'.$_POST['unit_4'].'">');
 		$game->out('<input type="hidden" name="unit_5" value="'.$_POST['unit_5'].'">');
 		$game->out('<input type="hidden" name="unit_6" value="'.$_POST['unit_6'].'">');
-		$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></td></tr></form></table>');
+		$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></td></tr></form></table>');
 	}
 	else{
 		if(isset($_REQUEST['handel']) && $_REQUEST['handel']=='kaufen_truppen' && $_REQUEST['step']=='2' && $_POST['unit_1']==0 && $_POST['unit_2']==0 && $_POST['unit_3']==0 &&  $_POST['unit_4']==0 && $_POST['unit_5']==0 && $_POST['unit_6']==0) $game->out('Du musst auch schon wo eine Zahl eintragen<br>');
@@ -2879,7 +2879,7 @@ function Trade_Sold_truppen()
 		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit4_small.gif"></td><td><input type="text" name="unit_4" value="'.$_POST['unit_4'].'" class="Field_nosize"></td></tr>');
 		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit5_small.gif"></td><td><input type="text" name="unit_5" value="'.$_POST['unit_5'].'" class="Field_nosize"></td></tr>');
 		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit6_small.gif"></td><td><input type="text" name="unit_6" value="'.$_POST['unit_6'].'" class="Field_nosize"></td></tr>');
-		$game->out('<tr><td colspan="3"><input type="submit" value="'.constant($game->sprache("TEXT198")).'"  name="submit"></td></form></tr></table>');
+		$game->out('<tr><td colspan="3"><input type="submit" value="'.constant($game->sprache("TEXT198")).'"  name="submit" class="Button_nosize"></td></form></tr></table>');
 	}
 }
 
@@ -3048,7 +3048,7 @@ function Trade_Buy_truppen()
 								if (($db->query('INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,resource_4,unit_1,unit_2,unit_3,unit_4,unit_5,unit_6,arrival_time) VALUES ("'.$_POST['plani_ziel'].'",0,0,0,0,"'.$_POST['unit_1'].'","'.$_POST['unit_2'].'","'.$_POST['unit_3'].'","'.$_POST['unit_4'].'","'.$_POST['unit_5'].'","'.$_POST['unit_6'].'","'.($ACTUAL_TICK+$tickzeit).'")'))==true)
 								{
 									$game->out('<table><tr><td>'.constant($game->sprache("TEXT200")).'</td></tr><tr><td>'.constant($game->sprache("TEXT148")).$plani_id_a['planet_name'].'</td><tr><td>'.constant($game->sprache("TEXT149")).$steuern.'</td></tr><tr><td>'.constant($game->sprache("TEXT201")).' '.$kosten['gesamt'].'</td></tr><td>Lv1:'.$_POST['unit_1'].'<br>Lv2:'.$_POST['unit_2'].'<br>Lv3:'.$_POST['unit_3'].'<br>Lv4:'.$_POST['unit_4'].'<br>Lv5:'.$_POST['unit_5'].'<br>Lv6:'.$_POST['unit_6'].'</td></tr><tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=kaufen_truppen').'" method="post">
-										<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></td></tr></table>');
+										<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></td></tr></table>');
 									if(($db->query('INSERT INTO FHB_handel_log VALUES (null,'.$game->player['user_race'].',2,'.$game->player['user_id'].','.$ACTUAL_TICK.',0,'.$_POST['transportsart'].','.$kosten['gesamt'].',0,0,'.$_POST['unit_1'].','.$_POST['unit_2'].','.$_POST['unit_3'].','.$_POST['unit_4'].','.$_POST['unit_5'].','.$_POST['unit_6'].')'))==false){message(DATABASE_ERROR, 'Interner Datenbankfehler');}
 								}
 								else{message(DATABASE_ERROR, 'Internal database error');}
@@ -3105,7 +3105,7 @@ function Trade_Buy_truppen()
 								if (($db->query('INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,resource_4,unit_1,unit_2,unit_3,unit_4,unit_5,unit_6,arrival_time) VALUES ("'.$_POST['plani_ziel'].'",0,0,0,0,"'.$_POST['unit_1'].'","'.$_POST['unit_2'].'","'.$_POST['unit_3'].'","'.$_POST['unit_4'].'","'.$_POST['unit_5'].'","'.$_POST['unit_6'].'","'.($ACTUAL_TICK+$tickzeit).'")'))==true)
 								{
 									$game->out('<table><tr><td>'.constant($game->sprache("TEXT200")).'</td></tr><tr><td>'.constant($game->sprache("TEXT148")).$plani_id_a['planet_name'].'</td><tr><td>'.constant($game->sprache("TEXT149")).$steuern.'</td></tr><tr><td>'.constant($game->sprache("TEXT204")).' '.$kosten['gesamt'].'</td></tr><tr><td>Lv1:'.$_POST['unit_1'].'<br>Lv2:'.$_POST['unit_2'].'<br>Lv3:'.$_POST['unit_3'].'<br>Lv4:'.$_POST['unit_4'].'<br>Lv5:'.$_POST['unit_5'].'<br>Lv6:'.$_POST['unit_6'].'</td></tr><tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=kaufen_truppen').'" method="post">
-										<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></td></tr></table>');
+										<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></td></tr></table>');
 									$db->query('INSERT INTO FHB_handel_log VALUES (null,'.$game->player['user_race'].',2,'.$game->player['user_id'].','.$ACTUAL_TICK.',1,'.$_POST['transportsart'].',0,'.$kosten['gesamt'].',0,'.$_POST['unit_1'].','.$_POST['unit_2'].','.$_POST['unit_3'].','.$_POST['unit_4'].','.$_POST['unit_5'].','.$_POST['unit_6'].')');
 								}
 								else{message(DATABASE_ERROR, 'Internal database error');}
@@ -3161,7 +3161,7 @@ function Trade_Buy_truppen()
 								if (($db->query('INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,resource_4,unit_1,unit_2,unit_3,unit_4,unit_5,unit_6,arrival_time) VALUES ("'.$_POST['plani_ziel'].'",0,0,0,0,"'.$_POST['unit_1'].'","'.$_POST['unit_2'].'","'.$_POST['unit_3'].'","'.$_POST['unit_4'].'","'.$_POST['unit_5'].'","'.$_POST['unit_6'].'","'.($ACTUAL_TICK+$tickzeit).'")'))==true)
 								{
 									$game->out('<table><tr><td>'.constant($game->sprache("TEXT200")).'</td></tr><tr><td>'.constant($game->sprache("TEXT148")).$plani_id_a['planet_name'].'</td><tr><td>'.constant($game->sprache("TEXT149")).$steuern.'</td></tr><tr><td>'.constant($game->sprache("TEXT205")).' '.$kosten['gesamt'].'</td></tr><tr><td>Lv1:'.$_POST['unit_1'].'<br>Lv2:'.$_POST['unit_2'].'<br>Lv3:'.$_POST['unit_3'].'<br>Lv4:'.$_POST['unit_4'].'<br>Lv5:'.$_POST['unit_5'].'<br>Lv6:'.$_POST['unit_6'].'</td></tr><tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=kaufen_truppen').'" method="post">
-										<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></td></tr></table>');
+										<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></td></tr></table>');
 									$db->query('INSERT INTO FHB_handel_log VALUES (null,'.$game->player['user_race'].',2,'.$game->player['user_id'].','.$ACTUAL_TICK.',2,'.$_POST['transportsart'].',0,0,'.$kosten['gesamt'].','.$_POST['unit_1'].','.$_POST['unit_2'].','.$_POST['unit_3'].','.$_POST['unit_4'].','.$_POST['unit_5'].','.$_POST['unit_6'].')');
 								}
 								else{message(DATABASE_ERROR, 'Internal database error');}
@@ -3225,7 +3225,7 @@ function Trade_Buy_truppen()
 										<tr><td>'.constant($game->sprache("TEXT205")).' '.$kosten['Latinum'].'</td></tr>
 										<tr><td>Lv1:'.$_POST['unit_1'].'<br>Lv2:'.$_POST['unit_2'].'<br>Lv3:'.$_POST['unit_3'].'<br>Lv4:'.$_POST['unit_4'].'<br>Lv5:'.$_POST['unit_5'].'<br>Lv6:'.$_POST['unit_6'].'</td></tr>
 										<tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=kaufen_truppen').'" method="post">
-										<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></td></tr></table>');
+										<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></td></tr></table>');
 									$db->query('INSERT INTO FHB_handel_log VALUES (null,'.$game->player['user_race'].',2,'.$game->player['user_id'].','.$ACTUAL_TICK.',3,'.$_POST['transportsart'].','.$kosten['Metall'].','.$kosten['Mineral'].','.$kosten['Latinum'].','.$_POST['unit_1'].','.$_POST['unit_2'].','.$_POST['unit_3'].','.$_POST['unit_4'].','.$_POST['unit_5'].','.$_POST['unit_6'].')');
 								}
 								else{message(DATABASE_ERROR, 'Internal database error');}
@@ -3250,7 +3250,7 @@ function Trade_Buy_truppen()
 				$game->out('<input type="hidden" name="unit_4" value="'.$_POST['unit_4'].'">');
 				$game->out('<input type="hidden" name="unit_5" value="'.$_POST['unit_5'].'">');
 				$game->out('<input type="hidden" name="unit_6" value="'.$_POST['unit_6'].'">');
-				$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></td></tr></form></table>');
+				$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></td></tr></form></table>');
 			}
 		}
 	}
@@ -3367,7 +3367,7 @@ function Trade_Buy_truppen()
 		$game->out('<input type="hidden" name="unit_4" value="'.$_POST['unit_4'].'">');
 		$game->out('<input type="hidden" name="unit_5" value="'.$_POST['unit_5'].'">');
 		$game->out('<input type="hidden" name="unit_6" value="'.$_POST['unit_6'].'">');
-		$game->out('<input type="submit" value="'.constant($game->sprache("TEXT181")).'"  name="submit"></td></tr></form>');
+		$game->out('<input type="submit" value="'.constant($game->sprache("TEXT181")).'"  name="submit" class="Button_nosize"></td></tr></form>');
 		$game->out('<tr><td colspan=2><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=kaufen_truppen').'" method="post"><tr><td colspan=2>');
 		$game->out('<input type="hidden" name="unit_1" value="'.$_POST['unit_1'].'">');
 		$game->out('<input type="hidden" name="unit_2" value="'.$_POST['unit_2'].'">');
@@ -3375,7 +3375,7 @@ function Trade_Buy_truppen()
 		$game->out('<input type="hidden" name="unit_4" value="'.$_POST['unit_4'].'">');
 		$game->out('<input type="hidden" name="unit_5" value="'.$_POST['unit_5'].'">');
 		$game->out('<input type="hidden" name="unit_6" value="'.$_POST['unit_6'].'">');
-		$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></td></tr></form></table>');
+		$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></td></tr></form></table>');
 	}
 	else
 	{
@@ -3406,7 +3406,7 @@ function Trade_Buy_truppen()
 		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit4_small.gif"></td><td><input type="text" name="unit_4" value="'.$_POST['unit_4'].'" class="Field_nosize"></td><td>('.$truppen['unit_4'].')</td></tr>');
 		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit5_small.gif"></td><td><input type="text" name="unit_5" value="'.$_POST['unit_5'].'" class="Field_nosize"></td><td>('.$truppen['unit_5'].')</td></tr>');
 		$game->out('<tr><td><img src="'.$game->GFX_PATH.'menu_unit6_small.gif"></td><td><input type="text" name="unit_6" value="'.$_POST['unit_6'].'" class="Field_nosize"></td><td>('.$truppen['unit_6'].')</td></tr>');
-		$game->out('<tr><td colspan="3"><input type="submit" value="'.constant($game->sprache("TEXT212")).'"  name="submit"></td></form></tr></table>');
+		$game->out('<tr><td colspan="3"><input type="submit" value="'.constant($game->sprache("TEXT212")).'"  name="submit" class="Button_nosize"></td></form></tr></table>');
 	}
 }
 
@@ -3929,7 +3929,7 @@ function ship_pick()
 								<tr><td>'.constant($game->sprache("TEXT148")).$plani_id_a['planet_name'].'</td></tr>
 								<tr><td><!--'.constant($game->sprache("TEXT149")).$steuern.'--></td></tr>
 								<tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=kaufen_truppen').'" method="post">
-								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></td></tr></table>');
+								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></td></tr></table>');
 							if(($npc_ships_wait=$db->query('SELECT w.* FROM (FHB_warteschlange w) LEFT JOIN schulden_table s on s.ship_id=w.ship_id WHERE (s.status=1 OR s.status IS NULL) AND user_id='.$game->player['user_id'].' AND '.$where_frage.')'))==false)
 								message(DATABASE_ERROR, 'Could select ships from Bot');
 							while($npc_ships_wait_t=$db->fetchrow($npc_ships_wait))
@@ -3946,7 +3946,7 @@ function ship_pick()
 						$game->out(constant($game->sprache("TEXT249")));
 						$db->unlock('ships','ship_fleets','FHB_warteschlange w','FHB_logging_ship','scheduler_shipmovement','schulden_table s','FHB_warteschlange');
 						$game->out('<table><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=ship_send').'" method="post"><tr><td>');
-						$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></td></tr></form></table>');
+						$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></td></tr></form></table>');
 					}
 				}
 				else{message(DATABASE_ERROR, 'Internal database error');}
@@ -4013,7 +4013,7 @@ function ship_pick()
 
 					$game->out('<input name="ship_auswahl[]" type="checkbox" id="ship_auswahl[]" value="'.$npc_ships_wait_t['ship_id'].'"> '.$ship['template_name'].' ('.$ship['hitpoints'].'/'.$ship['max_hitpoints'].')'.$b_title.'<br>');
 				}
-				$game->out('<br><br><input type="submit" value="'.constant($game->sprache("TEXT252")).'"  name="submit"></td></tr></form></table>');
+				$game->out('<br><br><input type="submit" value="'.constant($game->sprache("TEXT252")).'"  name="submit" class="Button_nosize"></td></tr></form></table>');
 			}
 		}
 	}
@@ -4162,7 +4162,7 @@ function konto_sold()
 						$game->out('<table><tr><td>'.constant($game->sprache("TEXT254")).'</td></tr>
 							<tr><td>'.constant($game->sprache("TEXT148")).$plani_id_a['planet_name'].'</td><tr><td><!-- '.constant($game->sprache("TEXT149")).$steuern.' --></td></tr>
 							<tr><td>Lv1:'.$_POST['unit1'].'<br>Lv2:'.$_POST['unit2'].'<br>Lv3:'.$_POST['unit3'].'<br>Lv4:'.$_POST['unit4'].'<br>Lv5:'.$_POST['unit5'].'<br>Lv6:'.$_POST['unit6'].'<br>'.constant($game->sprache("TEXT123")).':'.$_POST['metall'].'<br>'.constant($game->sprache("TEXT165")).': '.$_POST['mineralien'].'<br>'.constant($game->sprache("TEXT167")).': '.$_POST['latinum'].'</td></tr>
-							<tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=kontoauszahlung').'" method="post"><input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></td></tr></table>'); //}
+							<tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=kontoauszahlung').'" method="post"><input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></td></tr></table>'); //}
 						$db->unlock('scheduler_resourcetrade','schulden_table s','treuhandkonto t', 'treuhandkonto', 'schulden_table');
 					}
 				}else{
@@ -4173,7 +4173,7 @@ function konto_sold()
 				$db->unlock('scheduler_resourcetrade','schulden_table s','treuhandkonto t', 'treuhandkonto', 'schulden_table');
 				message(DATABASE_ERROR, 'Could not select data');
 				$game->out('<table><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=kontoauszahlung').'" method="post"><tr><td>');
-				$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit"></td></tr></form></table>');
+				$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></td></tr></form></table>');
 			}
 		}
 	}
@@ -4243,7 +4243,7 @@ function konto_sold()
 					<td><input name="unit5" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_unit_5.'</td>
 					<td><input name="unit6" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_unit_6.'</td></tr></table></td></tr>');
 
-				$game->out('<tr><td colspan="2"><input type="submit" value="'.constant($game->sprache("TEXT257")).'"  name="submit"></td></tr></form></table>');
+				$game->out('<tr><td colspan="2"><input type="submit" value="'.constant($game->sprache("TEXT257")).'"  name="submit" class="Button_nosize"></td></tr></form></table>');
 			}
 		}
 	}
