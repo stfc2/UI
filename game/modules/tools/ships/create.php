@@ -60,6 +60,8 @@ if(isset($_POST['submit'])) {
             if(!$fleet_id) {
                 message(GENERAL, 'Error', '$fleet_id = empty');
             }
+
+            $where_created = 'on Planet <b>#'.$new_fleet_planet.'</b>';
         break;
         
         case 2:
@@ -72,10 +74,12 @@ if(isset($_POST['submit'])) {
             }
 
             $fleet_id = $add_fleet_id;
+            $where_created = 'in Fleet <b>#'.$add_fleet_id.'</b>';
         break;
 
         case 3:
             $fleet_id = (-1)*$offduty_planet;
+            $where_created = 'in Drydock <b>#'.$offduty_planet.'</b>';
         break;
     }
 
@@ -87,8 +91,8 @@ if(isset($_POST['submit'])) {
     }
 
 
-    $sql = 'INSERT INTO ships (fleet_id, user_id, template_id, experience, hitpoints, construction_time, unit_1, unit_2, unit_3, unit_4)
-            VALUES ('.$fleet_id.', '.$user_id.', '.$template_id.', '.$stpl['value_9'].', '.$stpl['value_5'].', '.$game->TIME.', '.$units_str.')';
+    $sql = 'INSERT INTO ships (fleet_id, user_id, template_id, experience, hitpoints, construction_time, unit_1, unit_2, unit_3, unit_4, rof, torp, last_refit_time)
+            VALUES ('.$fleet_id.', '.$user_id.', '.$template_id.', '.$stpl['value_9'].', '.$stpl['value_5'].', '.$game->TIME.', '.$units_str.', '.$stpl['rof'].', '.$stpl['max_torp'].', '.$game->TIME.')';
             
     for($i = 0; $i < $n_ships; ++$i) {
         if(!$db->query($sql)) {
@@ -109,14 +113,17 @@ if(isset($_POST['submit'])) {
     }
 
     $fp = fopen(ADMIN_LOG_FILE, 'a');
-      fwrite($fp, '<hr><br><i>'.date('d.m.y H:i:s', time()).'</i>&nbsp;&nbsp;&nbsp;<b>Action:</b> The User <b>'.$game->player['user_name'].'</b> has generated <b>'.$n_ships.'</b> ships for Player <b>'.$user['user_name'].' (#'.$user_id.')</b> -  from Template <b>'.$template['name'].' (#'.$template_id.')</b> on Planet <b>#'.$new_fleet_planet.'</b><br>');
+      fwrite($fp, '<hr><br><i>'.date('d.m.y H:i:s', time()).'</i>&nbsp;&nbsp;&nbsp;<b>Action:</b> The User <b>'.$game->player['user_name'].'</b> has generated <b>'.$n_ships.'</b> ships for Player <b>'.$user['user_name'].' (#'.$user_id.')</b> -  from Template <b>'.$template['name'].' (#'.$template_id.')</b> '.$where_created.'<br>');
       fclose($fp);
 
     redirect('a=tools/ships/create');
 }
 elseif(!empty($_GET['filter_type'])) {
     $filter_type = addslashes($_GET['filter_type']);
-    
+
+	$order_method = 'ORDER BY st.name ASC';
+    if(isset($_GET['order_by_id']))
+        $order_method = 'ORDER BY st.id ASC';
     switch($filter_type) {
         case 'ship_torso':
             $filter_id = (int)$_GET['filter_id'];
@@ -126,7 +133,7 @@ elseif(!empty($_GET['filter_type'])) {
                     FROM ship_templates st
                     LEFT JOIN user u ON u.user_id = st.owner
                     WHERE st.ship_torso = '.$filter_id.'
-                    ORDER BY st.name ASC';
+                    '.$order_method;
         break;
 
         case 'race':
@@ -137,7 +144,7 @@ elseif(!empty($_GET['filter_type'])) {
                     FROM ship_templates st
                     LEFT JOIN user u ON u.user_id = st.owner
                     WHERE st.race = '.$filter_id.'
-                    ORDER BY st.name ASC';
+                    '.$order_method;
         break;
 
         case 'none':
@@ -145,7 +152,7 @@ elseif(!empty($_GET['filter_type'])) {
                            u.user_name
                     FROM ship_templates st
                     LEFT JOIN user u ON u.user_id = st.owner
-                    ORDER BY st.name ASC';
+                    '.$order_method;
         break;
     }
 
@@ -178,6 +185,8 @@ else {
     $game->out('
 <br><br>
 <center>
+Order template by ID: <input type="checkbox" name="order_by_id">
+<br><br>
 Show Torso:
     ');
 
