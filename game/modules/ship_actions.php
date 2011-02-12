@@ -419,10 +419,15 @@ switch($step) {
                 $action_code = 27;
                 $action_data = array(0);
             break;
+            case 'recon':
+                $duration = 8;
+                $action_code = 27;
+                $action_data = array(1);
+            break;
             case 'diplomatic':
                 $duration = 6;
                 $action_code = 27;
-                $action_data = array(1);
+                $action_data = array(2);
             break;
             default:
                 message(GENERAL, constant($game->sprache("TEXT1")));
@@ -495,8 +500,8 @@ switch($step) {
          * Missions for Settler's planets
          */
         if($planet['user_id'] == INDEPENDENT_USERID) {
-	        // Recon
-	        $requirement_text = constant($game->sprache("TEXT63"));
+            // Recon
+            $requirement_text = constant($game->sprache("TEXT63"));
             $results = meet_mission_req($myship['ship_id'], 5, 0, 1, 1, 0, 0);
             $all_clear = (array_sum($results) == 0 ? true : false);
             if($all_clear) 
