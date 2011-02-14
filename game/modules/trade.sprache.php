@@ -1330,11 +1330,11 @@ define ("ITA_TEXT90", 'Rilancia');
 
 define ("ITA_TEXT91", 'Vuoi davvero fare un&#146;offerta per questa nave?');
 
-define ("ITA_TEXT92", 'Quest&#146;a sta &egrave; per');
+define ("ITA_TEXT92", 'Quest&#146;asta &egrave; scaduta da');
 
-define ("ITA_TEXT93", 'scaduta.');
+define ("ITA_TEXT93", '.');
 
-define ("ITA_TEXT94", 'Non ci sono offerte.');
+define ("ITA_TEXT94", 'Non ci sono state offerte.');
 
 define ("ITA_TEXT95", 'Il vincitore dell&#146;asta &egrave;');
 
