@@ -349,6 +349,10 @@ define ("GER_TEXT159", 'Von unseren Beobachtungen zeigten die folgenden Ergebnis
 
 define ("GER_TEXT160", 'hat eine Zustimmungsrate von');
 
+define ("GER_TEXT161", 'deine Auktion');
+
+define ("GER_TEXT162", 'wurde  beendet.<br>Es wurden keine Gebote abgegeben.');
+
 
 
 //English
@@ -679,6 +683,10 @@ define ("ENG_TEXT159", 'From our observations, showed the following results:');
 
 define ("ENG_TEXT160", 'has an approval rating of');
 
+define ("ENG_TEXT161", 'your auction');
+
+define ("ENG_TEXT162", 'has finished.<br>There were no bids.');
+
 
 
 //Italian
@@ -1008,5 +1016,10 @@ define ("ITA_TEXT158", 'Le nostre relazioni con il pianeta sono: ');
 define ("ITA_TEXT159", 'Dalle nostre osservazioni, sono emersi i seguenti risultati:');
 
 define ("ITA_TEXT160", 'ha un indice di gradimento di');
+
+define ("ITA_TEXT161", 'la tua asta');
+
+define ("ITA_TEXT162", '&egrave; finita.<br>Non ci sono state offerte.');
+
 
 ?>

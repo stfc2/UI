@@ -66,10 +66,10 @@ if ($log['log_data']['resource_1']>0 || $log['log_data']['resource_2']>0 || $log
 else
     $game->out('
 <br>
-<table align="center" border="0" cellpadding="2" cellspacing="2" background="'.$game->GFX_PATH.'template_bg3.jpg" class="border_grey">
+<table align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
-    <td width="450">
-      <table border="0" cellpadding="0" cellspacing="0">
+    <td>
+      <table align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
         <tr>
           <td width="450">
             <table border=0 cellpadding=0 cellspacing=0>
@@ -79,7 +79,7 @@ else
               </tr>
             </table>
             <br>
-			'.$game->player['user_name'].', deine Auktion "<a href="'.parse_link('&a=trade&view=view_bidding_detail&id='.$log['log_data']['auction_id']).'">'.$log['log_data']['auction_name'].'</a>" wurde  beendet.<br>Es wurden keine Gebote abgegeben.
+            '.$game->player['user_name'].', '.constant($game->sprache("TEXT161")).' "<a href="'.parse_link('&a=trade&view=view_bidding_detail&id='.$log['log_data']['auction_id']).'">'.$log['log_data']['auction_name'].'</a>" '.constant($game->sprache("TEXT162")).'
           </td>
         </tr>
       </table>
