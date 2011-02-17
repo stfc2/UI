@@ -986,7 +986,7 @@ function newMessage()
           <td>
             '.constant($game->sprache("TEXT34")).'<br><textarea name="text" class="MessageReadField" cols="85" rows="15">'.$text.'</textarea>
             <br>
-            '.constant($game->sprache("TEXT35")).'<br><textarea name="message_sig" class="MessageReadField" cols="85" rows="3">'.$game->player['user_signature'].'</textarea>
+            '.constant($game->sprache("TEXT35")).'<br><textarea name="message_sig" class="MessageReadField" cols="85" rows="3">'.stripslashes($game->player['user_signature']).'</textarea>
           </td>
         </tr>
       </table>
