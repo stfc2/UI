@@ -39,12 +39,7 @@ ob_implicit_flush(0);
 
 // #############################################################################
 // Constants
-// 17/02/11 - AC: This one needs to be set as game/index.php if the browser is
-//            one of this: IE7, IE8, Opera
-if(stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE 7') || stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE 8')) 
-    define('GAME_EXE', 'game/index.php');
-else
-    define('GAME_EXE', 'index.php');
+define('GAME_EXE', 'index.php');
 define('IN_SCHEDULER', false);
 
 // #############################################################################
