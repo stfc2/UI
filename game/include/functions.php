@@ -1313,6 +1313,11 @@ class game {
 			/* 10/04/08 - AC: New menus addition */
 			'L_SHIPS' => constant($this->sprache("SHIPS")),
 			'U_SHIPS' => parse_link('a=ships'),
+
+            // 18/02/11 - AC: New entry, used to setup the correct URL of the game in 
+            //            the attribute 'oCMenu.onlineUrl' of the skins that have 
+            //            coolmenus in them.
+            'GAME_URL' => JSCRIPT_PATH,
 		);
 
 
