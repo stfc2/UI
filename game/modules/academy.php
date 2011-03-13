@@ -26,42 +26,41 @@ $game->out('<span class="caption">'.$BUILDING_NAME[$game->player['user_race']][5
 
 function UnitMetRequirements($unit)
 {
-global $db;
-global $game;
-global $RACE_DATA, $UNIT_NAME, $UNIT_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK;
-if (($unit==0 && $game->planet['building_6']<1) || ($unit==1 && $game->planet['building_6']<5) || ($unit==2 && ($game->planet['building_6']<9 || $game->planet['building_9']<1)) || ($unit==3 && $game->planet['building_6']<1) || ($unit==4 && $game->planet['building_6']<1) || ($unit==5 && $game->planet['building_6']<1))
-return 0;
-return 1;
+    global $game;
+    if (($unit==0 && $game->planet['building_6']<1) ||
+        ($unit==1 && $game->planet['building_6']<5) ||
+        ($unit==2 && ($game->planet['building_6']<9 || $game->planet['building_9']<1)) ||
+        ($unit==3 && $game->planet['building_6']<1) ||
+        ($unit==4 && $game->planet['building_6']<1) ||
+        ($unit==5 && $game->planet['building_6']<1))
+        return 0;
+    return 1;
 }
 
 
 
 function UnitPrice($unit,$resource)
 {
-global $db;
-global $game;
-global $RACE_DATA, $UNIT_NAME, $UNIT_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK;
+    global $game, $RACE_DATA, $UNIT_DATA;
 
-$price = $UNIT_DATA[$unit][$resource];
-$price*= $RACE_DATA[$game->player['user_race']][6];
-return round($price,0);
+    $price = $UNIT_DATA[$unit][$resource];
+    $price*= $RACE_DATA[$game->player['user_race']][6];
+    return round($price,0);
 }
 
 
 function UnitTime($unit)
 {
-global $db;
-global $game;
-global $RACE_DATA, $UNIT_NAME, $UNIT_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK;
+    global $game, $RACE_DATA, $UNIT_DATA;
 
-$time=$UNIT_DATA[$unit][4];
-$time*=$RACE_DATA[$game->player['user_race']][2];
-$time/=100;
-$time*=(100-2*($game->planet['research_4']*$RACE_DATA[$game->player['user_race']][20]));
-if ($time<1) $time=1;
-$time=round($time,0);
-$time*=TICK_DURATION;
-return (Zeit($time));
+    $time=$UNIT_DATA[$unit][4];
+    $time*=$RACE_DATA[$game->player['user_race']][2];
+    $time/=100;
+    $time*=(100-2*($game->planet['research_4']*$RACE_DATA[$game->player['user_race']][20]));
+    if ($time<1) $time=1;
+    $time=round($time,0);
+    $time*=TICK_DURATION;
+    return (Zeit($time));
 }
 
 function UnitTimeTicks($unit)
@@ -205,6 +204,57 @@ redirect('a=academy&start_list=1');
 
 
 
+function Apply_Template()
+{
+    global $game,$db,$ACTUAL_TICK;
+
+    // Check if we have the needed data
+    if(isset($_POST['templates_list']) && $_POST['templates_list'] != -1)
+    {
+        // Retrieve the minimum troops required by the ship
+        $sql = 'SELECT `min_unit_1`,`min_unit_2`,`min_unit_3`,`min_unit_4`,`unit_5` AS min_unit_5, `unit_6` AS min_unit_6
+                FROM ship_templates
+                WHERE id = '.$_POST['templates_list'];
+
+        if(($ship_crew = $db->queryrow($sql)) === false) {
+            message(DATABASE_ERROR, 'Could not query ship template data');
+        }
+
+        // Check if the academy on the planet meets all the requirements
+        $req_ok = false;
+        $queue = 1;
+        $units_to_train = '';
+        for ($t=0; $t<6; $t++)
+        {
+            if($ship_crew['min_unit_'.($t+1)] > 0 && UnitMetRequirements($t))
+            {
+                $req_ok = true;
+                $units_to_train .= 'unittrainid_'.$queue.' = '.($t+1).',
+                                    unittrainnumber_'.$queue.'  = '.$ship_crew['min_unit_'.($t+1)].',
+                                    unittrainnumberleft_'.$queue.'  = 0,
+                                    unittrainendless_'.$queue.'  = 1,';
+                $queue++;
+            }
+        }
+
+        if($req_ok)
+        {
+            $sql = 'UPDATE planets SET
+                           '.$units_to_train.'
+                           unittrain_actual = 1,
+                           unittrainid_nexttime = '.($ACTUAL_TICK+UnitTimeTicks(1)).'
+                    WHERE planet_id = '.$game->planet['planet_id'];
+
+            $db->query($sql);
+            $game->planet['unittrainid_nexttime']=0;
+        }
+        else
+            message(NOTICE, constant($game->sprache("Text37")));
+    }
+}
+
+
+
 function Show_Main()
 {
 global $db;
@@ -279,6 +329,32 @@ $game->out('<table border="0" cellpadding="2" cellspacing="2" width="400" class=
 
 
 $game->out('<br><span class="sub_caption">'.constant($game->sprache("Text14")).' '.HelpPopup('academy_2').' :</span><br>');
+
+// <--- *** Work in progress ***
+$game->out('<br><form name="academy" method="post" action="'.GAME_EXE.'?a=academy">
+<table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer">
+  <tr><td width=100%><span class="sub_caption2">'.constant($game->sprache("Text38")).'</span><br>
+  <table border=0 cellpadding=1 cellspacing=1 width=398 class="style_inner">');
+
+$sql = 'SELECT `id`,`name`
+        FROM ship_templates
+        WHERE removed <> 1 AND owner = '.$game->player['user_id'];
+
+$templates = $db->query($sql);
+
+$game->out('<tr><td>'.constant($game->sprache("Text39")).'<select name="templates_list" class="Select" size="1" onChange="UpdateTroops()"><option value="-1">'.constant($game->sprache("Text25")).'</option>');
+
+while(($template = $db->fetchrow($templates)))
+    $game->out('<option value="'.$template['id'].'">'.$template['name'].'</option>');
+    
+$game->out('</select></td>');
+
+for ($t=0; $t<6; $t++)
+    $game->out('<td><img src="'.$game->GFX_PATH.'menu_unit'.($t+1).'_small.gif">&nbsp;<b id="unit'.($t+1).'">0</b></td>');
+
+$game->out('<td><input type="submit" name="apply_template" class="button_nosize" value="'.constant($game->sprache("Text40")).'"></td></tr></table></td></tr></table></form>');
+// ---> *** End work in progress ***
+
 $game->out('<br><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%>
 <span class="sub_caption2">'.constant($game->sprache("Text15")).'</span><br>
 <table border=0 cellpadding=2 cellspacing=2 width=398 class="style_inner">
@@ -469,6 +545,11 @@ redirect('a=academy');
 if (isset($_POST['reset_list']))
 {
 Reset_List();
+redirect('a=academy');
+}
+if (isset($_POST['apply_template']))
+{
+Apply_Template();
 redirect('a=academy');
 }
 Show_Main();

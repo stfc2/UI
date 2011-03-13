@@ -94,6 +94,14 @@ define ("GER_Text35", 'Reset');
 
 define ("GER_Text36", 'Unzureichend freiem Speicherplatz - Warten');
 
+define ("GER_Text37", 'The structure does not meet the requirements needed by the troops you want to train!');
+
+define ("GER_Text38", 'Ships templates available:');
+
+define ("GER_Text39", 'Name:');
+
+define ("GER_Text40", 'Apply');
+
 //English
 
 define ("ENG_Text1", 'Current unit trained:');
@@ -170,6 +178,14 @@ define ("ENG_Text35", 'Reset');
 
 define ("ENG_Text36", 'Insufficient space available on planet - Waiting');
 
+define ("ENG_Text37", 'The structure does not meet the requirements needed by the troops you want to train!');
+
+define ("ENG_Text38", 'Ships templates available:');
+
+define ("ENG_Text39", 'Name:');
+
+define ("ENG_Text40", 'Apply');
+
 //Italiano
 
 define ("ITA_Text1", 'In addestramento:');
@@ -245,5 +261,13 @@ define ("ITA_Text34", '<option value="12">54 minuti di pausa</option>');
 define ("ITA_Text35", 'Azzera');
 
 define ("ITA_Text36", 'In attesa - Spazio sul pianeta insufficiente');
+
+define ("ITA_Text37", 'La struttura non possiede i requisiti necessari per addestrare le truppe richieste!');
+
+define ("ITA_Text38", 'Progetti navi disponibili:');
+
+define ("ITA_Text39", 'Nome:');
+
+define ("ITA_Text40", 'Applica');
 
 ?>
