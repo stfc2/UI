@@ -121,8 +121,14 @@ while($move = $db->fetchrow($q_moves)) {
     $dest_fleets = get_friendly_orbit_fleets($move['dest'], $move['dest_user_id']);
 
     $flight_duration = $move['move_finish'] - $move['move_begin'];
-    $visibility = GetVisibility($move['sum_atk_sensors'], $move['sum_atk_cloak'], $move['n_ships'],
-        $dest_fleets['sum_sensors'], $dest_fleets['sum_cloak'], ($move['dest_spacedock'] + 1) * PLANETARY_SENSOR_VALUE,$flight_duration);
+
+    // Move 46 shall be always visible
+    if($move['action_code'] != 46)
+        $visibility = GetVisibility($move['sum_atk_sensors'], $move['sum_atk_cloak'], $move['n_ships'],
+            $dest_fleets['sum_sensors'], $dest_fleets['sum_cloak'], ($move['dest_spacedock'] + 1) * PLANETARY_SENSOR_VALUE,$flight_duration);
+    else
+        $visibility = 0;
+
     $travelled = 100 / $flight_duration * ($ACTUAL_TICK - $move['move_begin']);
 
     if($travelled >= $visibility)  {
