@@ -31,7 +31,7 @@ $sql = ' SELECT *
          LIMIT 0, 2';
         
 if(($q_news = $db->query($sql)) === false) {
-    $news_html = 'Keine News verfügbar<br><br><img src="./gfx/header_newsitem.jpg"><br><br>';
+    $news_html = 'No news available<br><br><img src="./gfx/header_newsitem.jpg"><br><br>';
 }
 else {
     $news_html = '';
@@ -41,10 +41,10 @@ else {
         $today = (int)gmdate('d', time());
         
         if($news_day == $today) {
-            $date_str = 'Heute, '.gmdate('H:i', $news['date']);
+            $date_str = 'Today, '.gmdate('H:i', $news['date']);
         }
         elseif($news_day == ($today - 1)) {
-            $date_str = 'Gestern, '.gmdate('H:i', $news['date']);
+            $date_str = 'Yesterday, '.gmdate('H:i', $news['date']);
         }
         else {
             $date_str = gmdate('d.m.y', $news['date']);
@@ -60,7 +60,7 @@ $sql = ' SELECT *
          LIMIT 0, 2';
 
 if(($q_journal = $db->query($sql)) === false) {
-    $journal_html = 'Keine Zeitungs-Meldungen verfügbar<br><br><img src="./gfx/header_newsitem.jpg"><br><br>';
+    $journal_html = 'No newspaper reports available<br><br><img src="./gfx/header_newsitem.jpg"><br><br>';
 }
 else {
     $journal_html = '';
@@ -70,10 +70,10 @@ else {
         $today = (int)gmdate('d', time());
 
         if($journal_day == $today) {
-            $date_str = 'Heute, '.gmdate('H:i', $journal['date']);
+            $date_str = 'Today, '.gmdate('H:i', $journal['date']);
         }
         elseif($journal_day == ($today - 1)) {
-            $date_str = 'Gestern, '.gmdate('H:i', $journal['date']);
+            $date_str = 'Yesterday, '.gmdate('H:i', $journal['date']);
         }
         else {
             $date_str = gmdate('d.m.y', $journal['date']);
@@ -115,12 +115,12 @@ $main_html .= '
           </td>
         </tr>
         <tr valign="bottom" align="right">
-         <td><br><br><br>
+          <td><br><br><br>
            <!-- a href="http://www.sititrek.it/" target="new"><img src="./gfx/fist100x35.jpg" alt="Sito membro della Federazione Italiana Siti Trek" border="0"></a> -->
            <!-- a href="http://www.sititrek.it/" target="new"><img src="./gfx/fist100x100.jpg" alt="Sito membro della Federazione Italiana Siti Trek" border="0" width="50" height="50"></a> -->
 <a href="http://www.topwebgames.it/"><img src="http://www.topwebgames.it/button.php?u=stfc" alt="Top Web Games Italia" border="0" /></a>
-         </td>
-       </tr>
+          </td>
+        </tr>
       </table>
     </td>
   </tr>
