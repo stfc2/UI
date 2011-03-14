@@ -478,7 +478,7 @@ function stgc_mail($myname, $myemail, $contactname, $contactemail, $subject, $me
 
 $db = new sql($config['server'].":".$config['port'], $config['game_database'], $config['user'], $config['password']); // create sql-object for db-connection
 $db2 = new sql($config['server'].":".$config['port'], $config['game_database2'], $config['user'], $config['password']);
-$db3 = new sql($config['server'].":".$config['port'], $config['game_database3'], $config['user'], $config['password']);
+//$db3 = new sql($config['server'].":".$config['port'], $config['game_database3'], $config['user'], $config['password']);
 
 $action = htmlspecialchars((!empty($_GET['a'])) ? $_GET['a'] : 'home');
 
@@ -606,137 +606,126 @@ window.attachEvent("onload", expandone)
 <div id="overDiv" style="Z-INDEX: 1000; VISIBILITY: hidden; POSITION: absolute"></div>
 <table cellspacing="0" cellpadding="0" width="750" align="center" valign="top" border="0" bgcolor="#283359">
 <tbody>
+  <tr>
+    <td width="750"  bgcolor="black"></td>
+  </tr>
+  <tr>
+    <td width="750" height="5" bgcolor="black">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="750" height="10">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="750"><!-- Banner -->
+      <table width="750" height="150" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+          <td colspan="2"><img src="gfx/head_01.gif" width="750" height="132" alt=""></td>
+        </tr>
+        <tr>
+          <td><img src="gfx/head_02.gif" width="658" height="18" alt=""></td>
+          <td><a href="http://fragzshox.fr.funpic.de/" target="_blank"><img src="gfx/head_03.gif" alt="" width="92" height="18" border="0"></a></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="750" height="10">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="750" height="1" bgcolor="black"></td>
+  </tr>
+  <tr>
+    <td width=750 bgcolor="#131C46">&nbsp;
+      <a class="nav" href="<?php echo parse_link() ?>"><img src="gfx/home.jpg" alt="home" border=0 onMouseOver="this.src='gfx/homeh.jpg';" onMouseOut="this.src='gfx/home.jpg';"></a> &nbsp;
+      <a class="nav" href="<?php echo parse_link('a=login') ?>"><img src="gfx/login.jpg" alt="login" border=0 onMouseOver="this.src='gfx/loginh.jpg';" onMouseOut="this.src='gfx/login.jpg';"></a> &nbsp;&nbsp;
+      <a class="nav" href="<?php echo parse_link('a=register') ?>"><img src="gfx/register.jpg" alt="register" border=0 onMouseOver="this.src='gfx/registerh.jpg';" onMouseOut="this.src='gfx/register.jpg';"></a> &nbsp;&nbsp;
+      <a class="nav" href="<?php echo parse_link('a=stats') ?>"><img src="gfx/stats.jpg" alt="stats" border=0 onMouseOver="this.src='gfx/statsh.jpg';" onMouseOut="this.src='gfx/stats.jpg';"></a> &nbsp;&nbsp;
+      <a class="nav" href="http://wiki.stgc.de" target=_blank><img src="gfx/faq.jpg" alt="faq" border=0 onMouseOver="this.src='gfx/faqh.jpg';" onMouseOut="this.src='gfx/faq.jpg';"></a>
+      <a class="nav" href="http://forum.stfc.it" target=_blank><img src="gfx/forum.jpg" alt="forum" border=0 onMouseOver="this.src='gfx/forumh.jpg';" onMouseOut="this.src='gfx/forum.jpg';"></a>
+      <a class="nav" href="<?php echo parse_link('a=imprint') ?>"><img src="gfx/impressum.jpg" alt="impressum" border=0 onMouseOver="this.src='gfx/impressumh.jpg';" onMouseOut="this.src='gfx/impressum.jpg';"></a> &nbsp;&nbsp;
+      <a class="nav" href="http://stgcsource.de/" target=_blank><img src="gfx/developer.jpg" alt="Development" border=0 onMouseOver="this.src='gfx/developerh.jpg';" onMouseOut="this.src='gfx/developer.jpg';"></a>
+    </td>
+  </tr>
+  <tr>
+    <td width="750" height="1" bgcolor="black"></td>
+  </tr>
+  <tr>
+    <td valign="top" align="center" width="750">
+      <table cellspacing="0" cellpadding="0" width="750" align="center" border="0">
+      <tbody>
+        <tr>
+          <td align="center" width="750">
+            <!-- Middle -->
+            <table cellspacing="0" cellpadding="0" width="650" align="center" border="0">
+            <tbody>
+              <tr>
+                <td width="650"><br />
+                  <br />
+                  <?php echo $main_html; ?>
+                  <br />
+                  <br />
+                </td>
+              </tr>
+<!-- Try to insert here pledge button -->
 <tr>
-<td width="750"  bgcolor="black">
-
-        </td>
-    </tr>
-    <tr>
-    
-<td width="750" height="5" bgcolor="black">&nbsp;
-        </td>
-    </tr>
-    
-    <tr>
-<td width="750" height="10">&nbsp;
-        </td>
-    </tr>
-
-<tr>
-<td width="750"><!-- Banner -->
-<table width="750" height="150" border="0" cellpadding="0" cellspacing="0">
-	<tr>
-		<td colspan="2">
-			<img src="gfx/head_01.gif" width="750" height="132" alt=""></td>
-	</tr>
-
-	<tr>
-		<td>
-			<img src="gfx/head_02.gif" width="658" height="18" alt=""></td>
-		
-			<td><a href="http://fragzshox.fr.funpic.de/" target="_blank"><img src="gfx/head_03.gif" alt="" width="92" height="18" border="0"></a></td>
-	</tr>
-</table>
-</td></tr>
-
-
-    <tr>
-<td width="750" height="10">&nbsp;
-        </td>
-    </tr>
-
-<tr>
-<td width="750" height="1" bgcolor="black">
-
-        </td>
-    </tr>
-<tr>
-<td width=750 bgcolor="#131C46">&nbsp;
-<a class="nav" href="<?php echo parse_link() ?>"><img src="gfx/home.jpg" alt="home" border=0 onMouseOver="this.src='gfx/homeh.jpg';" onMouseOut="this.src='gfx/home.jpg';"></a> &nbsp;
-<a class="nav" href="<?php echo parse_link('a=login') ?>"><img src="gfx/login.jpg" alt="login" border=0 onMouseOver="this.src='gfx/loginh.jpg';" onMouseOut="this.src='gfx/login.jpg';"></a> &nbsp;&nbsp;
-<a class="nav" href="<?php echo parse_link('a=register') ?>"><img src="gfx/register.jpg" alt="register" border=0 onMouseOver="this.src='gfx/registerh.jpg';" onMouseOut="this.src='gfx/register.jpg';"></a> &nbsp;&nbsp;
-<a class="nav" href="<?php echo parse_link('a=stats') ?>"><img src="gfx/stats.jpg" alt="stats" border=0 onMouseOver="this.src='gfx/statsh.jpg';" onMouseOut="this.src='gfx/stats.jpg';"></a> &nbsp;&nbsp;
-<a class="nav" href="http://wiki.stgc.de" target=_blank><img src="gfx/faq.jpg" alt="faq" border=0 onMouseOver="this.src='gfx/faqh.jpg';" onMouseOut="this.src='gfx/faq.jpg';"></a>
-<a class="nav" href="http://forum.stfc.it" target=_blank><img src="gfx/forum.jpg" alt="forum" border=0 onMouseOver="this.src='gfx/forumh.jpg';" onMouseOut="this.src='gfx/forum.jpg';"></a>
-<a class="nav" href="<?php echo parse_link('a=imprint') ?>"><img src="gfx/impressum.jpg" alt="impressum" border=0 onMouseOver="this.src='gfx/impressumh.jpg';" onMouseOut="this.src='gfx/impressum.jpg';"></a> &nbsp;&nbsp;
-<a class="nav" href="http://stgcsource.de/" target=_blank><img src="gfx/developer.jpg" alt="Development" border=0 onMouseOver="this.src='gfx/developerh.jpg';" onMouseOut="this.src='gfx/developer.jpg';"></a></td>
+  <td align="center" valign="middle">
+    <font size="3" style="color: #FF2200;"><b> · Supporta STFC! Fai una donazione! --&gt;</b></font>
+    <a href='http://www.pledgie.com/campaigns/14366'><img alt='Click here to lend your support to: Campagna Donazioni 2011 and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/14366.png?skin_name=chrome' border='0' /></a>
+  </td>
 </tr>
- 
-
-<tr><td width="750" height="1" bgcolor="black">
-
-        </td>
-    </tr>
-<tr>
-<td valign="top" align="center" width="750">
-<table cellspacing="0" cellpadding="0" width="750" align="center" border="0">
-<tbody>
-<tr>
-<td align="center" width="750"><!-- Middle -->
-<table cellspacing="0" cellpadding="0" width="650" align="center" border="0">
-<tbody>
-<tr>
-<td width="650"><br>
-<br>
-
-            <?php echo $main_html; ?>
-           <br>
-<br></td>
-                            </tr>
-
-
-
-
-</table>
-<!-- Middle End --></td>
-                </tr>
-
-
-
-</table>
-
-
-        </td>
-    </tr>
-<tr>
-<td valign="top" align="center" width="750" height="10">
-<table cellspacing="0" cellpadding="0" width="750" align="center" border="0">
-<tbody>
-<tr>
-<td align="center" width="750">
-<!--  This copyright notice must never be changed or modified in any way and always be visible!  --!>
-<img src="gfx/copyright.png" alt="copyright" border=0>
-<!--  End of copyright notice  --!>
-
-<br />
-</td>
-                </tr>
- 
-
-<tr>
-<td width="750" height="1" bgcolor="black">
-
-
-                    </td>
-                </tr>
-</table>
-
-
-
-        </td>
-    </tr>
+            </table>
+            <!-- Middle End -->
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" align="center" width="750" height="10">
+      <table cellspacing="0" cellpadding="0" width="750" align="center" border="0">
+      <tbody>
+        <tr>
+          <td align="center" width="750">
+<!--  This copyright notice must never be changed or modified in any way and always be visible!  -->
+            <img src="gfx/copyright.png" alt="copyright" border="0">
+<!--  End of copyright notice  -->
+            <br />
+          </td>
+        </tr>
+        <tr>
+          <td width="750" height="1" bgcolor="black">
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
 </table><br />
-<script language=javascript type="text/javascript" src="http://ss.webring.com/navbar?f=j;y=adminstfc;u=defurl">
+<center>
+<script language="javascript" type="text/javascript" src="http://ss.webring.com/navbar?f=j;y=adminstfc;u=defurl">
 </script>
-<center>Powered by <a href="http://dir.webring.com/rw" target=_top>WebRing</a>.</center>
+Powered by <a href="http://dir.webring.com/rw" target="_top">WebRing</a>.</center>
 
 <!--optional-->
-<noscript><center><table bgcolor=gray cellspacing=0 border=2><tr>
-<td><table cellpadding=2 cellspacing=0 border=0><tr><td align=center>
-<font face=arial size=-1>This site is a member of WebRing. 
-<br>To browse visit <a href="http://ss.webring.com/navbar?f=l;y=adminstfc;u=defurl">
-Here</a>.</font></td></tr></table></td></tr></table>
-</center></noscript>
+<noscript>
+<center>
+<table bgcolor="gray" cellspacing="0" border="2">
+  <tr>
+    <td>
+      <table cellpadding="2" cellspacing="0" border="0">
+        <tr>
+          <td align="center">
+            <font face="arial" size="-1">
+              This site is a member of WebRing.<br />
+              To browse visit <a href="http://ss.webring.com/navbar?f=l;y=adminstfc;u=defurl">Here</a>.
+            </font>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</center>
+</noscript>
 
 </body>
 </html>
