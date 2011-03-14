@@ -228,9 +228,10 @@ window.attachEvent("onload", expandone)
         </td>
     </tr>
 </table><br />
+<center>
 <script language=javascript type="text/javascript" src="http://ss.webring.com/navbar?f=j;y=adminstfc;u=defurl">
 </script>
-<center>Powered by <a href="http://dir.webring.com/rw" target=_top>WebRing</a>.</center>
+Powered by <a href="http://dir.webring.com/rw" target=_top>WebRing</a>.</center>
 
 <!--optional-->
 <noscript><center><table bgcolor=gray cellspacing=0 border=2><tr>
