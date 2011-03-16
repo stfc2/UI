@@ -231,7 +231,7 @@ function Apply_Template()
                 $req_ok = true;
                 $units_to_train .= 'unittrainid_'.$queue.' = '.($t+1).',
                                     unittrainnumber_'.$queue.'  = '.$ship_crew['min_unit_'.($t+1)].',
-                                    unittrainnumberleft_'.$queue.'  = 0,
+                                    unittrainnumberleft_'.$queue.'  = '.$ship_crew['min_unit_'.($t+1)].',
                                     unittrainendless_'.$queue.'  = 1,';
                 $queue++;
             }
