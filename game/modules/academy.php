@@ -330,30 +330,40 @@ $game->out('<table border="0" cellpadding="2" cellspacing="2" width="400" class=
 
 $game->out('<br><span class="sub_caption">'.constant($game->sprache("Text14")).' '.HelpPopup('academy_2').' :</span><br>');
 
-// <--- *** Work in progress ***
+
+$game->out('<script language="JavaScript">
+function UpdateTroops() {
+    var tmpl = document.getElementById("templates_list");
+    var units = tmpl.options[tmpl.selectedIndex].label.split(\',\',6);
+    for (t=0;t<=5;t++)
+        document.getElementById( "unit"+(t+1) ).firstChild.nodeValue = units[t];
+}
+</script>');
+
 $game->out('<br><form name="academy" method="post" action="'.GAME_EXE.'?a=academy">
 <table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer">
   <tr><td width=100%><span class="sub_caption2">'.constant($game->sprache("Text38")).'</span><br>
   <table border=0 cellpadding=1 cellspacing=1 width=398 class="style_inner">');
 
-$sql = 'SELECT `id`,`name`
+$sql = 'SELECT `id`,`name`,`min_unit_1`,`min_unit_2`,`min_unit_3`,
+            `min_unit_4`,`unit_5` AS min_unit_5, `unit_6` AS min_unit_6
         FROM ship_templates
         WHERE removed <> 1 AND owner = '.$game->player['user_id'];
 
 $templates = $db->query($sql);
 
-$game->out('<tr><td>'.constant($game->sprache("Text39")).'<select name="templates_list" class="Select" size="1" onChange="UpdateTroops()"><option value="-1">'.constant($game->sprache("Text25")).'</option>');
+$game->out('<tr><td>'.constant($game->sprache("Text39")).'<select name="templates_list" id="templates_list" class="Select" size="1" onChange="UpdateTroops();"><option value="-1" label="0,0,0,0,0,0">'.constant($game->sprache("Text25")).'</option>');
 
 while(($template = $db->fetchrow($templates)))
-    $game->out('<option value="'.$template['id'].'">'.$template['name'].'</option>');
-    
+    $game->out('<option value="'.$template['id'].'" label="'.$template['min_unit_1'].','.$template['min_unit_2'].','.$template['min_unit_3'].','.$template['min_unit_4'].','.$template['min_unit_5'].','.$template['min_unit_6'].'">'.$template['name'].'</option>');
+
 $game->out('</select></td>');
 
 for ($t=0; $t<6; $t++)
     $game->out('<td><img src="'.$game->GFX_PATH.'menu_unit'.($t+1).'_small.gif">&nbsp;<b id="unit'.($t+1).'">0</b></td>');
 
 $game->out('<td><input type="submit" name="apply_template" class="button_nosize" value="'.constant($game->sprache("Text40")).'"></td></tr></table></td></tr></table></form>');
-// ---> *** End work in progress ***
+
 
 $game->out('<br><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%>
 <span class="sub_caption2">'.constant($game->sprache("Text15")).'</span><br>
