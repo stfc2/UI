@@ -209,7 +209,8 @@ function Apply_Template()
     global $game,$db,$ACTUAL_TICK;
 
     // Check if we have the needed data
-    if(isset($_POST['templates_list']) && $_POST['templates_list'] != -1)
+    if(isset($_POST['templates_list'])) $_POST['templates_list'] = (int)strtok($_POST['templates_list'],',');
+    if($_POST['templates_list'] != -1)
     {
         // Retrieve the minimum troops required by the ship
         $sql = 'SELECT `min_unit_1`,`min_unit_2`,`min_unit_3`,`min_unit_4`,`unit_5` AS min_unit_5, `unit_6` AS min_unit_6
@@ -334,9 +335,9 @@ $game->out('<br><span class="sub_caption">'.constant($game->sprache("Text14")).'
 $game->out('<script language="JavaScript">
 function UpdateTroops() {
     var tmpl = document.getElementById("templates_list");
-    var units = tmpl.options[tmpl.selectedIndex].label.split(\',\',6);
-    for (t=0;t<=5;t++)
-        document.getElementById( "unit"+(t+1) ).firstChild.nodeValue = units[t];
+    var units = tmpl.options[tmpl.selectedIndex].value.split(\',\',7);
+    for (t=1;t<=6;t++)
+        document.getElementById( "unit"+t ).firstChild.nodeValue = units[t];
 }
 </script>');
 
@@ -352,10 +353,10 @@ $sql = 'SELECT `id`,`name`,`min_unit_1`,`min_unit_2`,`min_unit_3`,
 
 $templates = $db->query($sql);
 
-$game->out('<tr><td>'.constant($game->sprache("Text39")).'<select name="templates_list" id="templates_list" class="Select" size="1" onChange="UpdateTroops();"><option value="-1" label="0,0,0,0,0,0">'.constant($game->sprache("Text25")).'</option>');
+$game->out('<tr><td>'.constant($game->sprache("Text39")).'<select name="templates_list" id="templates_list" class="Select" size="1" onChange="UpdateTroops();"><option value="-1,0,0,0,0,0,0">'.constant($game->sprache("Text25")).'</option>');
 
 while(($template = $db->fetchrow($templates)))
-    $game->out('<option value="'.$template['id'].'" label="'.$template['min_unit_1'].','.$template['min_unit_2'].','.$template['min_unit_3'].','.$template['min_unit_4'].','.$template['min_unit_5'].','.$template['min_unit_6'].'">'.$template['name'].'</option>');
+    $game->out('<option value="'.$template['id'].','.$template['min_unit_1'].','.$template['min_unit_2'].','.$template['min_unit_3'].','.$template['min_unit_4'].','.$template['min_unit_5'].','.$template['min_unit_6'].'">'.$template['name'].'</option>');
 
 $game->out('</select></td>');
 
