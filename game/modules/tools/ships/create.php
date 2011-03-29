@@ -132,7 +132,7 @@ elseif(!empty($_GET['filter_type'])) {
                            u.user_name
                     FROM ship_templates st
                     LEFT JOIN user u ON u.user_id = st.owner
-                    WHERE st.ship_torso = '.$filter_id.'
+                    WHERE st.ship_torso = '.$filter_id.' AND st.removed = 0
                     '.$order_method;
         break;
 
@@ -143,7 +143,7 @@ elseif(!empty($_GET['filter_type'])) {
                            u.user_name
                     FROM ship_templates st
                     LEFT JOIN user u ON u.user_id = st.owner
-                    WHERE st.race = '.$filter_id.'
+                    WHERE st.race = '.$filter_id.' AND st.removed = 0
                     '.$order_method;
         break;
 
@@ -152,6 +152,7 @@ elseif(!empty($_GET['filter_type'])) {
                            u.user_name
                     FROM ship_templates st
                     LEFT JOIN user u ON u.user_id = st.owner
+                    WHERE st.removed = 0
                     '.$order_method;
         break;
     }
