@@ -548,86 +548,77 @@ text-align:left;
 <center>
 
 <table border=0 cellpadding=0 cellspacing=0 width=940 bgcolor=#afafafaf>
-<tr><td width=20></td>
-<td width=900>
-
-<table border=0 cellpadding=0 cellspacing=0 width=900 bgcolor=#bbbbbbb>
-
-<tr><td><span class="header0">STFC Supportcenter</span></td><td align="right"><span class="header3"><?php echo $galaxyname; ?></span></td></tr></table>
-<table border=0 cellpadding=0 cellspacing=0 width=900 bgcolor=#cccccc>
-
-<tr valign=top>
-
-
-<td width=150 valign=top bgcolor=#bbbbbbb>
-<span class="header3">Generale:</span><br>
-<a href="index.php?p=home">Home</a><br>
-<a href="index.php?p=stats">Statistiche</a><br>
-<a href="index.php?p=log">Log squadre</a><br>
-<a href="index.php?p=log2">Log multiban</a><br>
-<?php echo $show_logout; ?>
-</td>
-
-
-<td width=25 bgcolor=#bbbbbbb></td>
-
-<td width=150 valign=top bgcolor=#cccccc>
-<span class="header3">Strumenti:</span><br>
-<a href="index.php?p=news">Scrivi novit&agrave;</a><br>
-<a href="index.php?p=polls">Scrivi sondaggi</a><br><br>
-<a href="index.php?p=messages">Sistema messaggi</a><br>
-<a href="index.php?p=bulkmail">Email di massa</a><br>
-</td>
-
-<td width=25 bgcolor=#cccccc></td>
-
-<td width=150 valign=top bgcolor=#bbbbbbb>
-<span class="header3">Giocatori:</span><br>
-<a href="index.php?p=user_stats">Sommario</a><br>
-<a href="index.php?p=user">Cerca</a><br>
-Es.<br>Cambia dati<br>Blocca<br>Cancella
-<br>
-</td>
-<td width=25 bgcolor=#bbbbbbb></td>
-<td width=150 valign=top bgcolor=#cccccc>
-<span class="header3">Pianeti:</span><br>
-<!-- <a href="index.php?p=planet_overview"><i>Sommario</i></a><br>
-<a href="index.php?p=planet_resources"><i>Risorse</i></a><br>
-<a href="index.php?p=planet_units"><i>Unit&agrave;</i></a><br>
-<a href="index.php?p=planet_ships"><i>Navi</i></a><br> !-->
-<br>
-</td>
-
-<td width=25 bgcolor=#cccccc></td>
-<td width=150 valign=top bgcolor=#bbbbbbb>
-<span class="header3">Multi:</span><br>
-<a href="index.php?p=multihunt">Multi hunting</a><br>
-<br>
-</td>
-<td width=25 bgcolor=#bbbbbbb></td>
-
-</tr></table>
-
-<table border=0 cellpadding=0 cellspacing=0 width=900 bgcolor=#cccccc>
- <tr>
-    <td>
-      <br><br>
-      <?php echo $main_html; ?>
-      <br><br>
+  <tr>
+    <td width=20></td>
+    <td width=900>
+      <table border=0 cellpadding=0 cellspacing=0 width=900 bgcolor=#bbbbbbb>
+        <tr>
+          <td>
+            <span class="header0">STFC Supportcenter</span>
+          </td>
+          <td align="right">
+            <span class="header3"><?php echo $galaxyname; ?></span>
+          </td>
+        </tr>
+      </table>
+      <table border=0 cellpadding=0 cellspacing=0 width=900 bgcolor=#cccccc>
+        <tr valign=top>
+          <td width=150 valign=top bgcolor=#bbbbbbb>
+            <span class="header3">Generale:</span><br>
+            <a href="index.php?p=home">Home</a><br>
+            <a href="index.php?p=stats">Statistiche</a><br>
+            <a href="index.php?p=log">Log squadre</a><br>
+            <a href="index.php?p=log2">Log multiban</a><br>
+            <?php echo $show_logout; ?>
+          </td>
+          <td width=25 bgcolor=#bbbbbbb></td>
+          <td width=150 valign=top bgcolor=#cccccc>
+            <span class="header3">Strumenti:</span><br>
+            <a href="index.php?p=news">Scrivi novit&agrave;</a><br>
+            <a href="index.php?p=polls">Scrivi sondaggi</a><br><br>
+            <a href="index.php?p=messages">Sistema messaggi</a><br>
+            <a href="index.php?p=bulkmail">Email di massa</a><br>
+          </td>
+          <td width=25 bgcolor=#cccccc></td>
+          <td width=150 valign=top bgcolor=#bbbbbbb>
+            <span class="header3">Giocatori:</span><br>
+            <a href="index.php?p=user_stats">Sommario</a><br>
+            <a href="index.php?p=user">Cerca</a><br>
+            Es.<br>Cambia dati<br>Blocca<br>Cancella
+            <br>
+          </td>
+          <td width=25 bgcolor=#bbbbbbb></td>
+          <td width=150 valign=top bgcolor=#cccccc>
+            <span class="header3">Pianeti:</span><br>
+            <!-- <a href="index.php?p=planet_overview"><i>Sommario</i></a><br>
+            <a href="index.php?p=planet_resources"><i>Risorse</i></a><br>
+            <a href="index.php?p=planet_units"><i>Unit&agrave;</i></a><br>
+            <a href="index.php?p=planet_ships"><i>Navi</i></a><br> !-->
+            <br>
+          </td>
+          <td width=25 bgcolor=#cccccc></td>
+          <td width=150 valign=top bgcolor=#bbbbbbb>
+            <span class="header3">Multi:</span><br>
+            <a href="index.php?p=multihunt">Multi hunting</a><br>
+            <br>
+          </td>
+          <td width=25 bgcolor=#bbbbbbb></td>
+        </tr>
+      </table>
+      <table border=0 cellpadding=0 cellspacing=0 width=900 bgcolor=#cccccc>
+        <tr>
+          <td>
+            <br><br>
+            <?php echo $main_html; ?>
+            <br><br>
+          </td>
+        </tr>
+      </table>
     </td>
-  </tr>
+    <td width=20></td>
+   </tr>
+   <tr height=25><td colspan=3></td></tr>
 </table>
-
-
-
-
-</td>
-<td width=20></td>
-</tr>
-<tr height=25><td colspan=3></td></tr>
-</table>
-
-
 
 </BODY>
 
