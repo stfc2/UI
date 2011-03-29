@@ -175,7 +175,8 @@ while($system = $db->fetchrow($q_systems))
 $glob_systems[$system['system_id']]=$system;
 
 // If the player belongs to the alliance AND has rights to see tactical info
-if($game->player['user_alliance'] == $alliance['alliance_id'] && $game->player['user_alliance_rights3'] == 1) {
+if( ($game->player['user_alliance'] == $alliance['alliance_id'] && $game->player['user_alliance_rights3'] == 1) ||
+    ($game->player['user_auth_level'] == STGC_DEVELOPER)) {
     $sql = 'SELECT system_id FROM planets
             WHERE planet_owner IN (SELECT user_id FROM user WHERE user_alliance='.$alliance['alliance_id'].')
             GROUP BY system_id';

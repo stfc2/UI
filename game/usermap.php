@@ -160,7 +160,8 @@ $glob_systems[$system['system_id']]=$system;
 
 // If the player is showing his map or is a member of his alliance AND has rights to see tactical info
 if(($game->player['user_id'] == $user['user_id']) ||
-   ($game->player['user_alliance'] == $user['user_alliance'] && $game->player['user_alliance_rights3'] == 1)) {
+   ($game->player['user_alliance'] == $user['user_alliance'] && $game->player['user_alliance_rights3'] == 1) ||
+   ($game->player['user_auth_level'] == STGC_DEVELOPER)) {
     $sql = 'SELECT system_id FROM planets WHERE planet_owner='.$user['user_id'].' GROUP BY system_id';
 }
 // Otherwise display only what the player knows
