@@ -851,6 +851,8 @@ function view()
 
         $datum = date("d.m.y H:i", $message['time']);
         $text  = nl2br($message['text']);
+        $text  = stripslashes($text);
+        $text  = htmlspecialchars_decode($text);
 
         $game->out('<p><span class="sub_caption2"><b>'.constant($game->sprache("TEXT23")).' [<a href="'.$config['game_url'].'/include/pdf_gen.php?id='.(int)$_REQUEST['id'].'" target="_blank"> PDF </a>]:</b></p>
       <table width="100%" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
