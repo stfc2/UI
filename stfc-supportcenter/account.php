@@ -22,9 +22,7 @@
 
 
 function display_login($message='')
-
 {
-
 global $main_html;
 
 
@@ -34,62 +32,47 @@ if (!empty($message)) $message='<font color=red><b>Rilevato il seguente problema
 
 
 $main_html .= '
-
-<table border=0 cellpadding=0 cellspacing=0><tr><td><span class="header1">&nbsp;Login</span></td></tr></table><br><br>
-
+<table border=0 cellpadding=0 cellspacing=0>
+  <tr>
+    <td>
+      <span class="header1">&nbsp;Login</span>
+    </td>
+  </tr>
+</table>
+<br><br>
 Al momento non sei autenticato.<br>Per accedere a questa sezione, &egrave; necessario avere accesso al tuo account.<br>
 
 <form name="login" method="post" action="index.php?p=account" onSubmit="return this.submit_b.disabled = true;">
-
-
 <table border="0" cellpadding="2" cellspacing="2" width="350">
-
-  <tr><td colspan=2>'.$message.'</td></tr>
-
-  <tr><td width="25%">Galassia:</td><td width="45%"><select name="galaxy"><option value="0" selected="selected">'.GALAXY1_NAME.'</option> !--><option value="1">'.GALAXY2_NAME.'</option> !--></select></td><td></td></tr>
-
-  <tr><td width="25%">Nome utente:</td><td width="45%"><input style="width: 125px;" type="text" name="name" value="'.$_POST['name'].'"></td><td></td></tr>
-
-  <tr><td width="25%">Password:</td><td width="45%"><input style="width: 125px;" type="password" name="password" value=""></td><td></td></tr>
-
-
   <tr>
-
-  <td colspan=2>
-
-	<input type=hidden name="submit" value="1">
-
-	<input type="submit" name="submit_b" value="Login">
-
+    <td colspan=2>'.$message.'</td>
+  </tr>
+  <tr>
+    <td width="25%">Galassia:</td>
+    <td width="75%">
+      <select name="galaxy">
+        <option value="0" selected="selected">'.GALAXY1_NAME.'</option>
+        <option value="1">'.GALAXY2_NAME.'</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%">Nome utente:</td>
+    <td width="75%"><input style="width: 125px;" type="text" name="name" value="'.$_POST['name'].'"></td>
+  </tr>
+  <tr>
+    <td width="25%">Password:</td>
+    <td width="75%"><input style="width: 125px;" type="password" name="password" value=""></td>
+  </tr>
+  <tr>
+    <td colspan=2>
+      <input type=hidden name="submit" value="1">
+	  <input type="submit" name="submit_b" value="Login">
 	</td>
-
-	</tr>
-
-
-
-
-
-      </table>
-
-
-</form>
-
-
-
-<br><br>
-
-
-
-
-
-</td>
-
-<td width=40></td></tr>
-
+  </tr>
 </table>
-
+</form>
 ';
-
 }
 
 
@@ -146,7 +129,24 @@ global $db,$db2;
 
     }
 
+    // 29/03/11 - AC: Add ip log tracking
+    //$mydb->lock('user_iplog');
 
+    $sql = 'SELECT * FROM user_iplog WHERE user_id = '.$login_user['user_id'].' ORDER BY id DESC LIMIT 1';
+
+    if(($user_iplog = $mydb->queryrow($sql)) === false) {
+        display_login('Impossibile leggere i dati ip log'); return 1;
+    }
+
+    if($user_iplog['ip']!=$_SERVER["REMOTE_ADDR"] || empty($user_iplog['id'])) {
+
+        $sql = 'INSERT INTO user_iplog (user_id, ip, time) VALUES ('.$login_user['user_id'].',"'.$_SERVER["REMOTE_ADDR"].'",'.time().')';
+
+        $mydb->query($sql);
+    }
+
+    //$mydb->unlock('user_iplog');
+    // end ip log tracking
 
     $cookie_data = array('id' => $login_user['user_id']);
 
