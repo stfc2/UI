@@ -556,9 +556,20 @@ body, textarea {
 table.border_grey         { border: 1px solid #000000; }
 table.border_grey2        { border-top: 1px solid 000000; border-right: 1px solid 000000; border-bottom: 1px solid #000000; }
 table.border_blue         { border: 1px solid #000000; }
+
+td.home_bar               { background-image:url('gfx/template_bg3.jpg'); }
+td.home_logo              { background-image:url('gfx/welcome_logo.jpg'); }
+
+td.desc_row {  }
+td.value_row { color: #BOBOBO; font-weight: bold;}
+
+
 -->
 
 </style>
+    <style type="text/css">
+    .dropcontent{display:none;}
+    </style>
     <script type="text/javascript">
 
 /*
@@ -566,12 +577,6 @@ Combo-Box Viewer script- Created by and Copyright Dynamicdrive.com
 Visit http://www.dynamicdrive.com/ for this script and more
 This notice MUST stay intact for legal use
 */
-
-if (document.getElementById){
-document.write('<style type="text/css">\n')
-document.write('.dropcontent{display:none;}\n')
-document.write('</style>\n')
-}
 
 function contractall(){
 if (document.getElementById){
@@ -604,7 +609,7 @@ window.attachEvent("onload", expandone)
 
 <body text="#c0c0c0" background="gfx/bg_stars1.gif" >
 <div id="overDiv" style="Z-INDEX: 1000; VISIBILITY: hidden; POSITION: absolute"></div>
-<table cellspacing="0" cellpadding="0" width="750" align="center" valign="top" border="0" bgcolor="#283359">
+<table cellspacing="0" cellpadding="0" width="750" align="center" border="0" bgcolor="#283359">
 <tbody>
   <tr>
     <td width="750"  bgcolor="black"></td>
@@ -617,7 +622,7 @@ window.attachEvent("onload", expandone)
   </tr>
   <tr>
     <td width="750"><!-- Banner -->
-      <table width="750" height="150" border="0" cellpadding="0" cellspacing="0">
+      <table width="750" border="0" cellpadding="0" cellspacing="0">
         <tr>
           <td colspan="2"><img src="gfx/head_01.gif" width="750" height="132" alt=""></td>
         </tr>
@@ -659,18 +664,18 @@ window.attachEvent("onload", expandone)
             <table cellspacing="0" cellpadding="0" width="650" align="center" border="0">
             <tbody>
               <tr>
-                <td width="650"><br />
-                  <br />
+                <td width="650"><br>
+                  <br>
                   <?php echo $main_html; ?>
-                  <br />
-                  <br />
+                  <br>
+                  <br>
                 </td>
               </tr>
 <!-- Try to insert here pledge button -->
 <tr>
   <td align="center" valign="middle">
     <font size="3" style="color: #FF2200;"><b> · Supporta STFC! Fai una donazione! --&gt;</b></font>
-    <a href='http://www.pledgie.com/campaigns/14366'><img alt='Click here to lend your support to: Campagna Donazioni 2011 and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/14366.png?skin_name=chrome' border='0' /></a>
+    <a href="http://www.pledgie.com/campaigns/14366"><img alt="Click here to lend your support to: Campagna Donazioni 2011 and make a donation at www.pledgie.com !" src="http://www.pledgie.com/campaigns/14366.png?skin_name=chrome" border="0"></a>
   </td>
 </tr>
             </table>
@@ -689,7 +694,7 @@ window.attachEvent("onload", expandone)
 <!--  This copyright notice must never be changed or modified in any way and always be visible!  -->
             <img src="gfx/copyright.png" alt="copyright" border="0">
 <!--  End of copyright notice  -->
-            <br />
+            <br>
           </td>
         </tr>
         <tr>
@@ -699,7 +704,7 @@ window.attachEvent("onload", expandone)
       </table>
     </td>
   </tr>
-</table><br />
+</table><br>
 <center>
 <script language="javascript" type="text/javascript" src="http://ss.webring.com/navbar?f=j;y=adminstfc;u=defurl">
 </script>
@@ -715,7 +720,7 @@ Powered by <a href="http://dir.webring.com/rw" target="_top">WebRing</a>.</cente
         <tr>
           <td align="center">
             <font face="arial" size="-1">
-              This site is a member of WebRing.<br />
+              This site is a member of WebRing.<br>
               To browse visit <a href="http://ss.webring.com/navbar?f=l;y=adminstfc;u=defurl">Here</a>.
             </font>
           </td>

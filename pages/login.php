@@ -46,15 +46,15 @@ $main_html .= '
           <td>Galassia:</td>
           <td>
             <select name="galaxy">
-              <option value="./game/index.php" selected="selected">'.GALAXY1_NAME.' ['.$player_online['num'].' online]</option> !-->
-              <option value="./game2/index.php">'.GALAXY2_NAME.' ['.$player_online2['num'].' online]</option> !-->
+              <option value="./game/index.php" selected="selected">'.GALAXY1_NAME.' ['.$player_online['num'].' online]</option>
+              <option value="./game2/index.php">'.GALAXY2_NAME.' ['.$player_online2['num'].' online]</option>
             </select>
           </td>
         </tr>
         <tr><td height="5">&nbsp;</td></tr>
         <tr>
           <td>&nbsp;</td>
-          <td><input type="checkbox" name="proxy_mode" value="1">&nbsp;Sto usando un <a href=http://it.wikipedia.org/wiki/Proxy target=_blank><u>server proxy</u></a> *</td>
+          <td><input type="checkbox" name="proxy_mode" value="1">&nbsp;Sto usando un <a href="http://it.wikipedia.org/wiki/Proxy" target="_blank"><u>server proxy</u></a> *</td>
         </tr>
       </table>
     </td>

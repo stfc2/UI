@@ -22,16 +22,15 @@
 
 $title_html = 'Star Trek: Frontline Combat - Credits';
 $meta_descr = 'STFC: Pagina relativa ai credits del gioco, con i nomi ed i nick degli operatori ed i contatti email.';
-$main_html='<center><span class="caption">Credits</span></center>
+$main_html='<center><span class="caption">Credits</span>
 <br>
-<center>
 <table border=0 cellpadding=0 cellspacing=0>
 <tr><td width=300 valign=top align=left>
 
 
 
 <table border=0 cellpadding=0 cellspacing=0>
-<tr><td width=150 valign=top><span class="sub_caption"><b>Operators:</td><td width=50>&nbsp;</span></b></td></tr>
+<tr><td width=150 valign=top><span class="sub_caption">Operators:</span></td><td width=50>&nbsp;</td></tr>
 </table>
 
 <table border=0 cellpadding=0 cellspacing=0>
@@ -49,7 +48,7 @@ $main_html='<center><span class="caption">Credits</span></center>
 <br>
 <span style="font-size:10pt">Star Trek&trade; is a registered trademark of Paramount Pictures.<br>
 This site is strictly non-profit.<br>No copyright infringement is intended.<br>
-All other Content is copyrighted by the siteowner,<br>unless otherwise noted.<br>&copy;2006-2008</span>
+All other Content is copyrighted by the siteowner,<br>unless otherwise noted.<br>&copy;2006-2008</span></center>
 
 
 

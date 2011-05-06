@@ -97,18 +97,18 @@ function display_registration($data = array(), $message = '', $galaxy) {
 
     $main_html .= '
 <form name="register" method="post" action="index.php?a=register" onSubmit="return this.submit_b.disabled = true;">
-<table align="center" border="0" cellpadding="2" cellspacing="2" width="700" class="border_grey" style=" background-color:#000000; background-position:left; background-repeat:no-repeat;">
+<table align="center" border="0" cellpadding="2" cellspacing="2" width="700" class="border_grey" style="background-color:#000000; background-position:left; background-repeat:no-repeat;">
   <tr>
-    <td width="100%">
-    <center><span class="sub_caption">(2/2) Registrazione per la galassia "'.$galaxyname.'":</span></center>
-    <center><span class="sub_caption2">'.$message.'</span></center><center>
+    <td width="100%" align="center">
+    <center><span class="sub_caption">(2/2) Registrazione per la galassia "'.$galaxyname.'":</span><br>
+    <span class="sub_caption2">'.$message.'</span></center>
 
       <table width="100%" border="0" cellpadding="0" cellspacing="0" style=" background-image:url(\''.$galaxyimg.'\'); background-position:left; background-repeat:no-repeat;">
         <tr>
           <td colspan="2"><span class="sub_caption2">Informazioni di gioco (necessarie)</span></td>
         </tr>
 
-        <tr height="10"><td></td></tr>
+        <tr><td height="10"></td></tr>
 
         <tr>
           <td width="15%">Nome giocatore *:</td>
@@ -135,7 +135,7 @@ function display_registration($data = array(), $message = '', $galaxy) {
           <td><input style="width: 200px;" type="text" name="user_email" value="'.$data['user_email'].'"></td>
         </tr>
 
-        <tr height="10"><td></td></tr>
+        <tr><td height="10"></td></tr>
 
         <tr>
           <td>Scelta della razza:</td>
@@ -225,20 +225,20 @@ function display_registration($data = array(), $message = '', $galaxy) {
 
 
 
-        <tr height="20"><td></td></tr>
+        <tr><td height="20"></td></tr>
 
         <tr>
           <td colspan="2"><span class="sub_caption2">Informazioni personali (opzionali)</span></td>
         </tr>
 
-        <tr height="10"><td></td></tr>
+        <tr><td height="10"></td></tr>
 
         <tr>
           <td>Data di nascita:</td>
           <td><input type="text" style="width: 30px;" name="user_birthday_day" maxlength="2" value="'.$data['user_birthday_day'].'">&nbsp;.&nbsp;<input type="text" class="field" style="width: 30px;" name="user_birthday_month" maxlength="2" value="'.$data['user_birthday_month'].'">&nbsp;.&nbsp;<input type="text" class="field" style="width: 50px;" name="user_birthday_year" maxlength="4" value="'.$data['user_birthday_year'].'"> (Giorno.Mese.Anno)</td>
         </tr>
 
-        <tr height="5"><td></tr></tr>
+        <tr><td height="5"></td></tr>
 
         <tr>
           <td>Sesso:</td>
@@ -250,7 +250,7 @@ function display_registration($data = array(), $message = '', $galaxy) {
             </select>
           </td>
         </tr>
-        <tr height="12"><td></td></tr>  
+        <tr><td height="12"></td></tr>  
         <tr>
           <td>Cap ***:</td>
           <td><input style="width: 90px;" class="field" type="text" name="plz" value="'.$data['plz'].'"> </td>
@@ -271,21 +271,21 @@ function display_registration($data = array(), $message = '', $galaxy) {
           </td>
         </tr>
 
-        <tr height="20"><td></td></tr>
+        <tr><td height="20"></td></tr>
 
         <tr>
           <td colspan="2"><input style="border: none;" type="checkbox" name="confirm_agb" value="1"'.( ($agb_checked) ? ' checked="checked"' : '' ).'>&nbsp;Dichiaro in questa sede di aver preso visione dei <a href="JavaScript:void(window.open(\'agb.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));"><b><u>termini e condizioni per il gioco</u></b></a> e di accettarli.<br>
           <br><b>Solo un account per IP [<a href="javascript: void;" onmouseover="return overlib(\'Questa limitazione significa che ogni giocatore che per pi&ugrave; di 4 giorni successivi alla registrazione avr&agrave; pi&ugrave; di un account in funzione sul proprio IP, se li vedr&agrave; bannati o cancellati!<br>Se ci&ograve; &egrave; dovuto a motivi tecnici quali router o altro, deve subito comunicare al Supporto le ragione dei diversi account loggati dallo stesso IP. <br> <u> <b> Seguite il link in basso!\', CAPTION, \'Solo un Account per IP:\', WIDTH, 400, FGCOLOR, \'#ffffff\', TEXTCOLOR, \'#ffffff\', FGBACKGROUND,\'http://www.stfc.it/stfc_gfx/skin1/bg_stars1.gif\', BGCOLOR, \'#33355E\', BORDER, 2, CAPTIONFONT, \'Arial\', CAPTIONSIZE, 2, TEXTFONT, \'Arial\', TEXTSIZE, 2);" onmouseout="return nd();">Info</a>]<br><a href=index.php?a=multis&galaxy='.$galaxy.'><u>Dettagli sulla limitazione</u></a></b></td>
         </tr>
 
-        <tr height="20"><td></td></tr>
+        <tr><td height="20"></td></tr>
         <tr>
           <td colspan="2">
              <input type=hidden name="submit" value="1">
              <input type=hidden name="galaxy" value="'.$galaxy.'">
              <input type="submit" name="submit_b" value="Registrami">
              <br><br>
-             <i>* Il nome scelto apparir&agrave; in gioco<br>** Il Login verr&agrave; usato esclusivamente per accedere al gioco<br>*** Se indicato, il codice apparir&agrave; nella <a href="http://www.stfc.it/index.php?a='.(($galaxy) ? 'fe' : 'be').'_karte" target=_blank><u>mappa degli Utenti</u></a>. (Non ancora attivo!)</i>
+             <i>* Il nome scelto apparir&agrave; in gioco<br>** Il Login verr&agrave; usato esclusivamente per accedere al gioco<br>*** Se indicato, il codice apparir&agrave; nella <a href="http://www.stfc.it/index.php?a='.(($galaxy) ? 'fe' : 'be').'_karte" target="_blank"><u>mappa degli Utenti</u></a>. (Non ancora attivo!)</i>
           </td>
         </tr>
       </table>
@@ -313,26 +313,26 @@ $playercount2=$db2->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE user_
 $player_online2 = $db2->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE last_active > '.(time() - 60 * 20));
 
 
-$main_html.='<center>
-<table align="center" border="0" cellpadding="2" cellspacing="2" width="750" class="border_grey" style=" background-color:#000000; background-position:left;
+$main_html.='
+<table align="center" border="0" cellpadding="2" cellspacing="2" class="border_grey" style=" background-color:#000000; background-position:left; background-repeat:no-repeat;">
   <tr>
     <td width="700" align="center">
       <span class="sub_caption">(1/2) Scegli la galassia:</span><br>
 
       <table border=0 cellpadding=2 cellspacing=2 style=" background-image:url(\'gfx/template_bg.jpg\'); background-position:left; background-repeat:yes;">
         <tr>
-          <td width="350">
+          <td width="350" align="center">
             <center><span class="sub_caption">'.GALAXY1_NAME.'</span></center><br>
-            <a href="index.php?a=register&galaxy=0"><img src="'.GALAXY1_IMG.'" border=0></a><br>
+            <a href="index.php?a=register&galaxy=0"><img src="'.GALAXY1_IMG.'" border="0" alt="'.GALAXY1_NAME.'"></a><br>
             <u>Versione:</u> STFC2<br>
             <u>In gioco da:</u> '.round($config['tick_id']/480,0).' giorni<br>
             <u>Posti disponibili:</u> '.($config['max_player']-$playercount['num']).'/'.$config['max_player'].'<br>
             <u>Giocatori online:</u> '.$player_online['num'].'<br><br>
             La Galassia "'.GALAXY1_NAME.'" &egrave; il setup base con un tempo di tick di 3 minuti.<br>
           </td>
-          <td width="350">
+          <td width="350" align="center">
             <center><span class="sub_caption">'.GALAXY2_NAME.'</span></center><br>
-            <a href="index.php?a=register&galaxy=1"><img src="'.GALAXY2_IMG.'" border=0></a><br>
+            <a href="index.php?a=register&galaxy=1"><img src="'.GALAXY2_IMG.'" border="0" alt="'.GALAXY2_NAME.'"></a><br>
             <u>Versione:</u> STFC2<br>
             <u>In gioco da:</u> '.round($config2['tick_id']/480,0).' giorni<br>
             <u>Posti disponibili:</u> '.($config2['max_player']-$playercount2['num']).'/'.$config2['max_player'].'<br>
