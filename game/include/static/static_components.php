@@ -727,7 +727,7 @@ $ship_components=array(
                     'unit_4'=>'0',
                     'unit_5'=>'3',
                     'unit_6'=>'0',
-                    'value_1'=>'100',
+                    'value_1'=>'160',
                     'value_2'=>'0',
                     'value_3'=>'0',
                     'value_4'=>'0',
@@ -1005,7 +1005,7 @@ $ship_components=array(
                     'unit_5'=>'5',
                     'unit_6'=>'0',
                     'value_1'=>'0',
-                    'value_2'=>'300',
+                    'value_2'=>'260',
                     'value_3'=>'25',
                     'value_4'=>'0',
                     'value_5'=>'0',
@@ -1149,7 +1149,7 @@ $ship_components=array(
                     'value_1'=>'0',
                     'value_2'=>'0',
                     'value_3'=>'0',
-                    'value_4'=>'900',
+                    'value_4'=>'1100',
                     'value_5'=>'0',
                     'value_6'=>'0',
                     'value_7'=>'0',
@@ -1796,7 +1796,7 @@ $ship_components=array(
                     'value_4'=>'0',
                     'value_5'=>'0',
                     'value_6'=>'6',
-                    'value_7'=>'2',
+                    'value_7'=>'6',
                     'value_8'=>'0',
                     'value_9'=>'3',
                     'value_10'=>'0',
@@ -2848,7 +2848,7 @@ $ship_components=array(
                     'unit_5'=>'8',
                     'unit_6'=>'0',
                     'value_1'=>'0',
-                    'value_2'=>'120',
+                    'value_2'=>'200',
                     'value_3'=>'0',
                     'value_4'=>'0',
                     'value_5'=>'0',
@@ -2921,12 +2921,11 @@ $ship_components=array(
                     'torso_12'=>'0',
                     'description'=>'Dieses Gerät ist das Ergebnis ein Austausch von Technologie zwischen der Föderation und die Romulan Stellar Empire geschah zu den Zeiten der Vergangenheit Kriege gegen die Dominion.',
                     'dev_info'=>'',
-            ), // Endof Component Cloaking Device
+            ), // Endof Component Rapid-Launcher
 
       'name'=>'Experimentelles',
       'num'=>'8',
       ), // Endof Category Experimentelles
-
 
 ), // Endof Race Föderation
 
