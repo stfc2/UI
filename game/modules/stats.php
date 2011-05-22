@@ -897,7 +897,7 @@ if($numero_righe == 0) {
 else {
     while(($planet = $db->fetchrow($planetquery))==true)
     {
-        if($planet['planet_type'] == "m" || $planet['planet_type'] == "n")
+        if($planet['planet_type'] == "m" || $planet['planet_type'] == "n" || $planet['planet_type'] == "y" || $planet['planet_type'] == "e" || $planet['planet_type'] == "f" || $planet['planet_type'] == "g")
         {
             $game->out('<tr><td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
             if($planet['planet_name']=="") $planet['planet_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
@@ -945,7 +945,7 @@ else
 {
 	while(($planet = $db->fetchrow($planetquery))==true)
 	{
-		if($planet['planet_type'] != "m" && $planet['planet_type'] != "n")
+		if($planet['planet_type'] != "m" && $planet['planet_type'] != "n" && $planet['planet_type'] != "y" && $planet['planet_type'] != "e" && $planet['planet_type'] != "f" && $planet['planet_type'] != "g")
 		{
         $game->out('<tr><td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
         if($planet['planet_name']=="") $planet['planet_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
