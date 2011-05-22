@@ -804,15 +804,15 @@ $SHIP_TORSO = array(
 
 	    11 => array(
 
-			0 => 129800,  // Metal
+			0 => 84370,  // Metal
 
-			1 => 78150,  // Minerals
+			1 => 66427,  // Minerals
 
-			2 => 64920,  // Latinum
+			2 => 61674,  // Latinum
 
 			3 => 250,  // Min. Unit 1(L. Infanterie)
 
-			4 => 100,  // Min. Unit 2 (Sturmtruppe)
+			4 => 75,  // Min. Unit 2 (Sturmtruppe)
 
 			5 => 50,  // Min. Unit 3 (Hazard Team)
 
@@ -826,33 +826,33 @@ $SHIP_TORSO = array(
 
 			10 => 12,  // Max Unit 4 (Commander)
 
-			11 => 18,  // Unit 5 (Offizier)
+			11 => 16,  // Unit 5 (Offizier)
 
-			12 => 7,  // Unit 6 (Medizinisches Personal)
+			12 => 5,  // Unit 6 (Medizinisches Personal)
 
-			13 => 499,  // Buildtime (in 5 Minuten Schritten)
+			13 => 439,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 400,   // Value1 (Leichte Waffen)
+			14 => 500,   // Value1 (Leichte Waffen)
 
-			15 => 80,   // Value2 (Schwere Waffen)
+			15 => 200,   // Value2 (Schwere Waffen)
 
-			16 => 50,   // Value3 (Planetare Waffen)
+			16 => 5,   // Value3 (Planetare Waffen)
 
-			17 => 980,   // Value4 (Schildstärke)
+			17 => 1180,   // Value4 (Schildstärke)
 
 			18 => 1050,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 11,   // Value6 (Reaktionsgeschw.)
+			19 => 12,   // Value6 (Reaktionsgeschw.)
 
-			20 => 3,   // Value7 (Bereitschaft)
+			20 => 14,   // Value7 (Bereitschaft)
 
-			21 => 18,   // Value8 (Wendigkeit)
+			21 => 35,   // Value8 (Wendigkeit)
 
-			22 => 20,   // Value9 (Erfahrung)
+			22 => 25,   // Value9 (Erfahrung)
 
 			23 => 3.7,   // Value10 (Warp)
 
-			24 => 9,   // Value11 (Sensoren)
+			24 => 19,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -864,7 +864,7 @@ $SHIP_TORSO = array(
 
 			29 => 'Sovereign',  // Name
 
-			30 => 1951,  // Benötige Arbeiter zum Bau
+			30 => 1400,  // Benötige Arbeiter zum Bau
 
 			31 => 'Die Sovereign Klasse ist die modernste Schiffklasse der Föderation. Sie ist zwar offiziell ein Allround Schiff entfaltet aber ihr wahres Potential im Kampf. Starke Waffen und Schilde sowie eine gute Manövrierfähigkeit machen sie zu einem Gegner dem ein Schiff nicht alleine gegenübertreten sollte. Es kann eine verloren schienende Schlacht ohne Probleme wenden.',
 
