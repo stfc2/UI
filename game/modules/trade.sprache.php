@@ -478,7 +478,7 @@ define ("GER_TEXT224", 'Auktionsid:');
 
 define ("GER_TEXT225", 'Zeit:');
 
-define ("GER_TEXT226", 'Minuten');
+define ("GER_TEXT226", 'Stunden');
 
 define ("GER_TEXT227", 'Anzahl Nicht bezahlter eigener Auktionen:');
 
@@ -1038,7 +1038,7 @@ define ("ENG_TEXT224", 'Auction ID:');
 
 define ("ENG_TEXT225", 'Time:');
 
-define ("ENG_TEXT226", 'Minutes');
+define ("ENG_TEXT226", 'Hours');
 
 define ("ENG_TEXT227", 'Number of unpaid own auctions:');
 
@@ -1600,7 +1600,7 @@ define ("ITA_TEXT224", 'ID asta:');
 
 define ("ITA_TEXT225", 'Tempo:');
 
-define ("ITA_TEXT226", 'Minuti');
+define ("ITA_TEXT226", 'Ore');
 
 define ("ITA_TEXT227", 'Numero di aste proprie non pagate:');
 
@@ -1628,7 +1628,7 @@ define ("ITA_TEXT238", 'Medici');
 
 define ("ITA_TEXT239", 'Tempo fino alla fine del periodo'); // Alternativa: Tempo disponibile prima della scadenza
 
-define ("ITA_TEXT240", 'Debiti non disponibili');
+define ("ITA_TEXT240", 'Nessun debito da estinguere');
 
 define ("ITA_TEXT241", 'Paga');
 
@@ -1638,7 +1638,7 @@ define ("ITA_TEXT243", 'Pagamento per asta');
 
 define ("ITA_TEXT244", 'Sul pianeta');
 
-define ("ITA_TEXT245", 'Disponibile:');
+define ("ITA_TEXT245", 'disponibile:');
 
 define ("ITA_TEXT246", 'Deposita');
 
