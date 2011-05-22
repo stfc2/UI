@@ -45,10 +45,6 @@ ini_set ('error_reporting', E_ALL);
 	'warteschlange'=>constant($game->sprache("TEXT11")), //Ship_warten
 
     );
-function vergleich($wert1,$wert2)
-{
-	return ($wert1>=$wert2) ? 0 : 1;
-}
 
 function CreateShipInfoText($ship)
 {
@@ -3668,111 +3664,263 @@ function Show_Main_a()
 	}
 }
 
-function Show_schulden($zustand=0)
+function Show_schulden($condition = 0)
 {
-	global $db;
-	global $game,$UNIT_NAME,$ACTUAL_TICK;
-	/*if($_POST['metall']==null)$_POST['metall']=0;
-	if($_POST['mineralien']==null)$_POST['mineralien']=0;
-	if($_POST['latinum']==null)$_POST['latinum']=0;
-	if($_POST['unit1']==null)$_POST['unit1']=0;
-	if($_POST['unit2']==null)$_POST['unit2']=0;
-	if($_POST['unit3']==null)$_POST['unit3']=0;
-	if($_POST['unit4']==null)$_POST['unit4']=0;
-	if($_POST['unit5']==null)$_POST['unit5']=0;
-	if($_POST['unit6']==null)$_POST['unit6']=0;*/
-	if(!isset($_POST['metall']))$_POST['metall']=0;
-	if(!isset($_POST['mineralien']))$_POST['mineralien']=0;
-	if(!isset($_POST['latinum']))$_POST['latinum']=0;
-	if(!isset($_POST['unit1']))$_POST['unit1']=0;
-	if(!isset($_POST['unit2']))$_POST['unit2']=0;
-	if(!isset($_POST['unit3']))$_POST['unit3']=0;
-	if(!isset($_POST['unit4']))$_POST['unit4']=0;
-	if(!isset($_POST['unit5']))$_POST['unit5']=0;
-	if(!isset($_POST['unit6']))$_POST['unit6']=0;
+    global $db,$game,$ACTUAL_TICK;
 
-	if($_POST['metall']<0)$_POST['metall']=0;
-	if($_POST['mineralien']<0)$_POST['mineralien']=0;
-	if($_POST['latinum']<0)$_POST['latinum']=0;
-	if($_POST['unit1']<0)$_POST['unit1']=0;
-	if($_POST['unit2']<0)$_POST['unit2']=0;
-	if($_POST['unit3']<0)$_POST['unit3']=0;
-	if($_POST['unit4']<0)$_POST['unit4']=0;
-	if($_POST['unit5']<0)$_POST['unit5']=0;
-	if($_POST['unit6']<0)$_POST['unit6']=0;
+    // Check the presence of the resources
+    if(!isset($_POST['metall']))$_POST['metall']=0;
+    if(!isset($_POST['mineralien']))$_POST['mineralien']=0;
+    if(!isset($_POST['latinum']))$_POST['latinum']=0;
+    if(!isset($_POST['unit1']))$_POST['unit1']=0;
+    if(!isset($_POST['unit2']))$_POST['unit2']=0;
+    if(!isset($_POST['unit3']))$_POST['unit3']=0;
+    if(!isset($_POST['unit4']))$_POST['unit4']=0;
+    if(!isset($_POST['unit5']))$_POST['unit5']=0;
+    if(!isset($_POST['unit6']))$_POST['unit6']=0;
 
-	$_POST['unit1']=(int)$_POST['unit1'];
-	$_POST['unit2']=(int)$_POST['unit2'];
-	$_POST['unit3']=(int)$_POST['unit3'];
-	$_POST['unit4']=(int)$_POST['unit4'];
-	$_POST['unit5']=(int)$_POST['unit5'];
-	$_POST['unit6']=(int)$_POST['unit6'];
-	$_POST['metall']=(int)$_POST['metall'];
-	$_POST['mineralien']=(int)$_POST['mineralien'];
-	$_POST['latinum']=(int)$_POST['latinum'];
-	if(($c_1=$db->queryrow('SELECT * FROM planets WHERE planet_id="'.$game->player['active_planet'].'" AND planet_owner="'.$game->player['user_id'].'"'))==false){message(DATABASE_ERROR, 'Could select schulden data data');}
-	if(isset($_REQUEST['status_bezahlen']) && $_REQUEST['status_bezahlen']==2 &&
-		!($c_1['unit_1']<$_POST['unit1'] || $c_1['unit_2']<$_POST['unit2'] ||
-		$c_1['unit_3']<$_POST['unit3'] || $c_1['unit_4']<$_POST['unit4'] ||
-		$c_1['unit_5']<$_POST['unit5'] || $c_1['unit_6']<$_POST['unit6'] ||
-		$c_1['resource_1']<$_POST['metall'] || $c_1['resource_2']<$_POST['mineralien'] || $c_1['resource_3']<$_POST['latinum'] ))
-	{
-		$zustand_b=0;
-		$zustand_a=0;
-		if(($k_1=$db->queryrow('SELECT * FROM treuhandkonto WHERE code="'.$_REQUEST['auktion'].'"'))==false)
-		{message(DATABASE_ERROR, 'Could select konto data data');}
-		if(($s_1=$db->queryrow('SELECT * FROM schulden_table WHERE id="'.$_REQUEST['auktion'].'"'))==false)
-		{message(DATABASE_ERROR, 'Could select schulden data data');}
+    // Force to zero if they are negative values
+    if($_POST['metall']<0)$_POST['metall']=0;
+    if($_POST['mineralien']<0)$_POST['mineralien']=0;
+    if($_POST['latinum']<0)$_POST['latinum']=0;
+    if($_POST['unit1']<0)$_POST['unit1']=0;
+    if($_POST['unit2']<0)$_POST['unit2']=0;
+    if($_POST['unit3']<0)$_POST['unit3']=0;
+    if($_POST['unit4']<0)$_POST['unit4']=0;
+    if($_POST['unit5']<0)$_POST['unit5']=0;
+    if($_POST['unit6']<0)$_POST['unit6']=0;
 
-		//Schauen ob die schulden bezahlt sind
-		(($ergebnis=vergleich($k_1['ress_1']+$_POST['metall'],$s_1['ress_1']))==0) ? $zustand_b=1 : $zustand_a=1;
-		(($ergebnis=vergleich($k_1['ress_2']+$_POST['mineralien'],$s_1['ress_2']))==0) ? $zustand_b=1 : $zustand_a=1;
-		(($ergebnis=vergleich($k_1['ress_3']+$_POST['latinum'],$s_1['ress_3']))==0) ? $zustand_b=1 : $zustand_a=1;
-		(($ergebnis=vergleich($k_1['unit_1']+$_POST['unit1'],$s_1['unit_1']))==0) ? $zustand_b=1 : $zustand_a=1;
-		(($ergebnis=vergleich($k_1['unit_2']+$_POST['unit2'],$s_1['unit_2']))==0) ? $zustand_b=1 : $zustand_a=1;
-		(($ergebnis=vergleich($k_1['unit_3']+$_POST['unit3'],$s_1['unit_3']))==0) ? $zustand_b=1 : $zustand_a=1;
-		(($ergebnis=vergleich($k_1['unit_4']+$_POST['unit4'],$s_1['unit_4']))==0) ? $zustand_b=1 : $zustand_a=1;
-		(($ergebnis=vergleich($k_1['unit_5']+$_POST['unit5'],$s_1['unit_5']))==0) ? $zustand_b=1 : $zustand_a=1;
-		(($ergebnis=vergleich($k_1['unit_6']+$_POST['unit6'],$s_1['unit_6']))==0) ? $zustand_b=1 : $zustand_a=1;
+    // Typecast to int
+    $_POST['unit1']=(int)$_POST['unit1'];
+    $_POST['unit2']=(int)$_POST['unit2'];
+    $_POST['unit3']=(int)$_POST['unit3'];
+    $_POST['unit4']=(int)$_POST['unit4'];
+    $_POST['unit5']=(int)$_POST['unit5'];
+    $_POST['unit6']=(int)$_POST['unit6'];
+    $_POST['metall']=(int)$_POST['metall'];
+    $_POST['mineralien']=(int)$_POST['mineralien'];
+    $_POST['latinum']=(int)$_POST['latinum'];
 
-		if($k_1['unit_1']>$s_1['unit_1']) $k_1['unit_1']=$s_1['unit_1'];
-		if($k_1['unit_2']>$s_1['unit_2']) $k_1['unit_2']=$s_1['unit_2'];
-		if($k_1['unit_3']>$s_1['unit_3']) $k_1['unit_3']=$s_1['unit_3'];
-		if($k_1['unit_4']>$s_1['unit_4']) $k_1['unit_4']=$s_1['unit_4'];
-		if($k_1['unit_5']>$s_1['unit_5']) $k_1['unit_5']=$s_1['unit_5'];
-		if($k_1['unit_6']>$s_1['unit_6']) $k_1['unit_6']=$s_1['unit_6'];
-		if($k_1['ress_1']>$s_1['ress_1']) $k_1['ress_1']=$s_1['ress_1'];
-		if($k_1['ress_2']>$s_1['ress_2']) $k_1['ress_2']=$s_1['ress_2'];
-		if($k_1['ress_3']>$s_1['ress_3']) $k_1['ress_3']=$s_1['ress_3'];
+    // The player has decided to pay using the planet's resources
+    if(isset($_REQUEST['status_bezahlen']) && $_REQUEST['status_bezahlen'] == 2)
+    {
+        // Retrieve auction trust account data
+        if(($k_1=$db->queryrow('SELECT * FROM treuhandkonto WHERE code="'.$_REQUEST['auktion'].'"'))==false)
+            message(DATABASE_ERROR, 'Could not retrive trust account data');
 
-		//If too large then
-		if(($k_1['unit_1']+$_POST['unit1'])>$s_1['unit_1']) $_POST['unit1']=$s_1['unit_1']-$k_1['unit_1'];
-		if(($k_1['unit_2']+$_POST['unit2'])>$s_1['unit_2']) $_POST['unit2']=$s_1['unit_2']-$k_1['unit_2'];
-		if(($k_1['unit_3']+$_POST['unit3'])>$s_1['unit_3']) $_POST['unit3']=$s_1['unit_3']-$k_1['unit_3'];
-		if(($k_1['unit_4']+$_POST['unit4'])>$s_1['unit_4']) $_POST['unit4']=$s_1['unit_4']-$k_1['unit_4'];
-		if(($k_1['unit_5']+$_POST['unit5'])>$s_1['unit_5']) $_POST['unit5']=$s_1['unit_5']-$k_1['unit_5'];
-		if(($k_1['unit_6']+$_POST['unit6'])>$s_1['unit_6']) $_POST['unit6']=$s_1['unit_6']-$k_1['unit_6'];
-		if(($k_1['ress_1']+$_POST['metall'])>$s_1['ress_1']) $_POST['metall']=$s_1['ress_1']-$k_1['ress_1'];
-		if(($k_1['ress_2']+$_POST['mineralien'])>$s_1['ress_2']) $_POST['mineralien']=$s_1['ress_2']-$k_1['ress_2'];
-		if(($k_1['ress_3']+$_POST['latinum'])>$s_1['ress_3']) $_POST['latinum']=$s_1['ress_3']-$k_1['ress_3'];
+        // Retrive auction debt data 
+        if(($s_1=$db->queryrow('SELECT * FROM schulden_table WHERE id="'.$_REQUEST['auktion'].'"'))==false)
+            message(DATABASE_ERROR, 'Could not retrieve debt data');
 
-		if(($c_1=$db->queryrow('SELECT * FROM planets WHERE planet_id="'.$game->player['active_planet'].'" AND planet_owner="'.$game->player['user_id'].'"'))==false){message(DATABASE_ERROR, 'Could select schulden data data');}
+        // Check if the player wants to "overpay" the auction
+        if(($k_1['unit_1']+$_POST['unit1'])>$s_1['unit_1']) $_POST['unit1']=$s_1['unit_1']-$k_1['unit_1'];
+        if(($k_1['unit_2']+$_POST['unit2'])>$s_1['unit_2']) $_POST['unit2']=$s_1['unit_2']-$k_1['unit_2'];
+        if(($k_1['unit_3']+$_POST['unit3'])>$s_1['unit_3']) $_POST['unit3']=$s_1['unit_3']-$k_1['unit_3'];
+        if(($k_1['unit_4']+$_POST['unit4'])>$s_1['unit_4']) $_POST['unit4']=$s_1['unit_4']-$k_1['unit_4'];
+        if(($k_1['unit_5']+$_POST['unit5'])>$s_1['unit_5']) $_POST['unit5']=$s_1['unit_5']-$k_1['unit_5'];
+        if(($k_1['unit_6']+$_POST['unit6'])>$s_1['unit_6']) $_POST['unit6']=$s_1['unit_6']-$k_1['unit_6'];
+        if(($k_1['ress_1']+$_POST['metall'])>$s_1['ress_1']) $_POST['metall']=$s_1['ress_1']-$k_1['ress_1'];
+        if(($k_1['ress_2']+$_POST['mineralien'])>$s_1['ress_2']) $_POST['mineralien']=$s_1['ress_2']-$k_1['ress_2'];
+        if(($k_1['ress_3']+$_POST['latinum'])>$s_1['ress_3']) $_POST['latinum']=$s_1['ress_3']-$k_1['ress_3'];
 
-		if(!($c_1['unit_1']<$_POST['unit1'] || $c_1['unit_2']<$_POST['unit2'] || $c_1['unit_3']<$_POST['unit3'] || $c_1['unit_4']<$_POST['unit4'] || $c_1['unit_5']<$_POST['unit5'] || $c_1['unit_6']<$_POST['unit6'] || $c_1['resource_1']<$_POST['metall'] || $c_1['resource_2']<$_POST['mineralien'] || $c_1['resource_3']<$_POST['latinum'] )==true){
-		if(($db->query('UPDATE planets SET resource_1=resource_1-'.$_POST['metall'].', resource_2=resource_2-'.$_POST['mineralien'].',resource_3=resource_3-'.$_POST['latinum'].',unit_1=unit_1-'.$_POST['unit1'].',unit_2=unit_2-'.$_POST['unit2'].',unit_3=unit_3-'.$_POST['unit3'].',unit_4=unit_4-'.$_POST['unit4'].',unit_5=unit_5-'.$_POST['unit5'].',unit_6=unit_6-'.$_POST['unit6'].' WHERE planet_id="'.$game->player['active_planet'].'" AND planet_owner="'.$game->player['user_id'].'"'))==false){message(DATABASE_ERROR, 'Could not update planet data');}
-		if(($db->query('UPDATE treuhandkonto SET ress_1=ress_1+'.$_POST['metall'].', ress_2=ress_2+'.$_POST['mineralien'].',ress_3=ress_3+'.$_POST['latinum'].',unit_1=unit_1+'.$_POST['unit1'].',unit_2=unit_2+'.$_POST['unit2'].',unit_3=unit_3+'.$_POST['unit3'].',unit_4=unit_4+'.$_POST['unit4'].',unit_5=unit_5+'.$_POST['unit5'].',unit_6=unit_6+'.$_POST['unit6'].' WHERE code="'.$_POST['auktion'].'"'))==true)
-		{
-			$game->out(constant($game->sprache("TEXT233")));
-		}else{
-			message(DATABASE_ERROR, 'Could not update konto data');
-		}
-		//Meldung posten
-		if($zustand_a==0)
-		{
-			$game->out(constant($game->sprache("TEXT234")));
-		}
-		}else{message(DATABASE_ERROR, 'Could select schulden data data');}
-	}
+        // Retrieve the resource available on the active planet
+        if(($c_1=$db->queryrow('SELECT * FROM planets WHERE planet_id="'.$game->player['active_planet'].'"'))==false)
+            message(DATABASE_ERROR, 'Could not retrieve active planet data');
+
+        // Check if the planet has the resources needed
+        if(!($c_1['unit_1']<$_POST['unit1'] ||
+            $c_1['unit_2']<$_POST['unit2'] ||
+            $c_1['unit_3']<$_POST['unit3'] ||
+            $c_1['unit_4']<$_POST['unit4'] ||
+            $c_1['unit_5']<$_POST['unit5'] ||
+            $c_1['unit_6']<$_POST['unit6'] ||
+            $c_1['resource_1']<$_POST['metall'] ||
+            $c_1['resource_2']<$_POST['mineralien'] ||
+            $c_1['resource_3']<$_POST['latinum'] ) == true)
+        {
+            // Withdraw the resources from the planet
+            $sql = 'UPDATE planets SET resource_1=resource_1-'.$_POST['metall'].',
+                                       resource_2=resource_2-'.$_POST['mineralien'].',
+                                       resource_3=resource_3-'.$_POST['latinum'].',
+                                       unit_1=unit_1-'.$_POST['unit1'].',
+                                       unit_2=unit_2-'.$_POST['unit2'].',
+                                       unit_3=unit_3-'.$_POST['unit3'].',
+                                       unit_4=unit_4-'.$_POST['unit4'].',
+                                       unit_5=unit_5-'.$_POST['unit5'].',
+                                       unit_6=unit_6-'.$_POST['unit6'].'
+                    WHERE planet_id="'.$game->player['active_planet'].'"';
+            if(($db->query($sql)) == false)
+                message(DATABASE_ERROR, 'Could not update planet data');
+            
+            // Transfer the resources on the trust account
+            $sql = 'UPDATE treuhandkonto SET ress_1=ress_1+'.$_POST['metall'].',
+                                             ress_2=ress_2+'.$_POST['mineralien'].',
+                                             ress_3=ress_3+'.$_POST['latinum'].',
+                                             unit_1=unit_1+'.$_POST['unit1'].',
+                                             unit_2=unit_2+'.$_POST['unit2'].',
+                                             unit_3=unit_3+'.$_POST['unit3'].',
+                                             unit_4=unit_4+'.$_POST['unit4'].',
+                                             unit_5=unit_5+'.$_POST['unit5'].',
+                                             unit_6=unit_6+'.$_POST['unit6'].'
+                    WHERE code="'.$_POST['auktion'].'"';
+            if(($db->query($sql)) == true)
+            {
+                $game->out(constant($game->sprache("TEXT233")));
+            }
+            else
+                message(DATABASE_ERROR, 'Could not update konto data');
+
+            // Check if the debt is paid
+            $condition=0;
+            if(($k_1['ress_1']+$_POST['metall']) < $s_1['ress_1']) $condition = 1;
+            if(($k_1['ress_2']+$_POST['mineralien']) < $s_1['ress_2']) $condition = 1;
+            if(($k_1['ress_3']+$_POST['latinum']) < $s_1['ress_3']) $condition = 1;
+            if(($k_1['unit_1']+$_POST['unit1']) < $s_1['unit_1']) $condition = 1;
+            if(($k_1['unit_2']+$_POST['unit2']) < $s_1['unit_2']) $condition = 1;
+            if(($k_1['unit_3']+$_POST['unit3']) < $s_1['unit_3']) $condition = 1;
+            if(($k_1['unit_4']+$_POST['unit4']) < $s_1['unit_4']) $condition = 1;
+            if(($k_1['unit_5']+$_POST['unit5']) < $s_1['unit_5']) $condition = 1;
+            if(($k_1['unit_6']+$_POST['unit6']) < $s_1['unit_6']) $condition = 1;
+            if($condition == 0)
+            {
+                $game->out(constant($game->sprache("TEXT234")));
+            }
+        }
+        else
+            $game->out('Risorse insufficienti sul pianeta.');
+    }
+
+    // The player has decided to pay using the resources store on his trust account(s)
+    if(isset($_REQUEST['status_bezahlen']) && $_REQUEST['status_bezahlen']==3)
+    {
+        // Retrieve auction trust account data
+        if(($k_1=$db->queryrow('SELECT * FROM treuhandkonto WHERE code="'.$_REQUEST['auktion'].'"'))==false)
+            message(DATABASE_ERROR, 'Could not retrive trust account data');
+
+        // Retrive auction debt data 
+        if(($s_1=$db->queryrow('SELECT * FROM schulden_table WHERE id="'.$_REQUEST['auktion'].'"'))==false)
+            message(DATABASE_ERROR, 'Could not retrieve debt data');
+
+        // Check if the player wants to "overpay" the auction
+        if(($k_1['unit_1']+$_POST['unit1'])>$s_1['unit_1']) $_POST['unit1']=$s_1['unit_1']-$k_1['unit_1'];
+        if(($k_1['unit_2']+$_POST['unit2'])>$s_1['unit_2']) $_POST['unit2']=$s_1['unit_2']-$k_1['unit_2'];
+        if(($k_1['unit_3']+$_POST['unit3'])>$s_1['unit_3']) $_POST['unit3']=$s_1['unit_3']-$k_1['unit_3'];
+        if(($k_1['unit_4']+$_POST['unit4'])>$s_1['unit_4']) $_POST['unit4']=$s_1['unit_4']-$k_1['unit_4'];
+        if(($k_1['unit_5']+$_POST['unit5'])>$s_1['unit_5']) $_POST['unit5']=$s_1['unit_5']-$k_1['unit_5'];
+        if(($k_1['unit_6']+$_POST['unit6'])>$s_1['unit_6']) $_POST['unit6']=$s_1['unit_6']-$k_1['unit_6'];
+        if(($k_1['ress_1']+$_POST['metall'])>$s_1['ress_1']) $_POST['metall']=$s_1['ress_1']-$k_1['ress_1'];
+        if(($k_1['ress_2']+$_POST['mineralien'])>$s_1['ress_2']) $_POST['mineralien']=$s_1['ress_2']-$k_1['ress_2'];
+        if(($k_1['ress_3']+$_POST['latinum'])>$s_1['ress_3']) $_POST['latinum']=$s_1['ress_3']-$k_1['ress_3'];
+
+        // Retrieve all active trust accounts of the player
+        $sql = 'SELECT s.status,s.id AS code_id,t.* FROM (schulden_table s)
+                                                    LEFT JOIN (treuhandkonto t) on s.id=t.code
+                WHERE s.status=1 AND s.user_ver='.$game->player['user_id'];
+                
+        if(($cash_accounts = $db->query($sql)) == true)
+        {
+            // We need some support variables here to store temporary calculation
+            $unit_1=$_POST['unit1'];
+            $unit_2=$_POST['unit2'];
+            $unit_3=$_POST['unit3'];
+            $unit_4=$_POST['unit4'];
+            $unit_5=$_POST['unit5'];
+            $unit_6=$_POST['unit6'];
+            $ress_1=$_POST['metall'];
+            $ress_2=$_POST['mineralien'];
+            $ress_3=$_POST['latinum'];
+
+            $num=0;
+            while($account = $db->fetchrow($cash_accounts))
+            {
+                // Check if all the requested resources has been transferred from one account to the other 
+                if($ress_1<=0 && $ress_2<=0 && $ress_3<=0 && $unit_1<=0 && $unit_2<=0 && $unit_3<=0 && $unit_4<=0 && $unit_5<=0 && $unit_6<=0) break;
+
+                // Check whichever the account or the requested resource are empty
+                if($ress_1>=$account['ress_1']){ $ress_1=$ress_1-$account['ress_1']; $account['ress_1']=0; } else { $account['ress_1']=$account['ress_1']-$ress_1; $ress_1=0; }
+                if($ress_2>=$account['ress_2']){ $ress_2=$ress_2-$account['ress_2']; $account['ress_2']=0; } else { $account['ress_2']=$account['ress_2']-$ress_2; $ress_2=0; }
+                if($ress_3>=$account['ress_3']){ $ress_3=$ress_3-$account['ress_3']; $account['ress_3']=0; } else { $account['ress_3']=$account['ress_3']-$ress_3; $ress_3=0; }
+                if($unit_1>=$account['unit_1']){ $unit_1=$unit_1-$account['unit_1']; $account['unit_1']=0; } else { $account['unit_1']=$account['unit_1']-$unit_1; $unit_1=0; }
+                if($unit_2>=$account['unit_2']){ $unit_2=$unit_2-$account['unit_2']; $account['unit_2']=0; } else { $account['unit_2']=$account['unit_2']-$unit_2; $unit_2=0; }
+                if($unit_3>=$account['unit_3']){ $unit_3=$unit_3-$account['unit_3']; $account['unit_3']=0; } else { $account['unit_3']=$account['unit_3']-$unit_3; $unit_3=0; }
+                if($unit_4>=$account['unit_4']){ $unit_4=$unit_4-$account['unit_4']; $account['unit_4']=0; } else { $account['unit_4']=$account['unit_4']-$unit_4; $unit_4=0; }
+                if($unit_5>=$account['unit_5']){ $unit_5=$unit_5-$account['unit_5']; $account['unit_5']=0; } else { $account['unit_5']=$account['unit_5']-$unit_5; $unit_5=0; }
+                if($unit_6>=$account['unit_6']){ $unit_6=$unit_6-$account['unit_6']; $account['unit_6']=0; } else { $account['unit_6']=$account['unit_6']-$unit_6; $unit_6=0; }
+
+                // Update the amount of resources stored on the selected trust account
+                $sql = 'UPDATE treuhandkonto SET ress_1='.$account['ress_1'].',
+                                                 ress_2='.$account['ress_2'].',
+                                                 ress_3='.$account['ress_3'].',
+                                                 unit_1='.$account['unit_1'].',
+                                                 unit_2='.$account['unit_2'].',
+                                                 unit_3='.$account['unit_3'].',
+                                                 unit_4='.$account['unit_4'].',
+                                                 unit_5='.$account['unit_5'].',
+                                                 unit_6='.$account['unit_6'].'
+                        WHERE code='.$account['code_id'];
+                if(!$db->query($sql))
+                    message(DATABASE_ERROR, 'Could not update new trust account data');
+
+                // Check if the account has been emptied
+                if ($account['ress_1']==0 &&
+                    $account['ress_2']==0 &&
+                    $account['ress_3']==0 &&
+                    $account['unit_1']==0 &&
+                    $account['unit_2']==0 &&
+                    $account['unit_3']==0 &&
+                    $account['unit_4']==0 &&
+                    $account['unit_5']==0 &&
+                    $account['unit_6']==0)
+                {
+                    if(!$db->query('UPDATE schulden_table SET status=2 WHERE id='.$account['code_id']))
+                        message(DATABASE_ERROR, 'Could not update new debt table status');
+                }
+                $num++;
+            }
+
+            // If we have emptied at least one trust account
+            if($num != 0)
+            {
+                // Transfer the resources from one account to the other
+                $sql = 'UPDATE treuhandkonto SET ress_1=ress_1+'.$_POST['metall'].',
+                                                 ress_2=ress_2+'.$_POST['mineralien'].',
+                                                 ress_3=ress_3+'.$_POST['latinum'].',
+                                                 unit_1=unit_1+'.$_POST['unit1'].',
+                                                 unit_2=unit_2+'.$_POST['unit2'].',
+                                                 unit_3=unit_3+'.$_POST['unit3'].',
+                                                 unit_4=unit_4+'.$_POST['unit4'].',
+                                                 unit_5=unit_5+'.$_POST['unit5'].',
+                                                 unit_6=unit_6+'.$_POST['unit6'].'
+                        WHERE code="'.$_POST['auktion'].'"';
+                if(($db->query($sql)) == true)
+                {
+                    $game->out(constant($game->sprache("TEXT233")));
+                }
+                else
+                    message(DATABASE_ERROR, 'Could not update konto data');
+
+                // Check if the debt is paid
+                $condition=0;
+                if(($k_1['ress_1']+$_POST['metall']) < $s_1['ress_1']) $condition = 1;
+                if(($k_1['ress_2']+$_POST['mineralien']) < $s_1['ress_2']) $condition = 1;
+                if(($k_1['ress_3']+$_POST['latinum']) < $s_1['ress_3']) $condition = 1;
+                if(($k_1['unit_1']+$_POST['unit1']) < $s_1['unit_1']) $condition = 1;
+                if(($k_1['unit_2']+$_POST['unit2']) < $s_1['unit_2']) $condition = 1;
+                if(($k_1['unit_3']+$_POST['unit3']) < $s_1['unit_3']) $condition = 1;
+                if(($k_1['unit_4']+$_POST['unit4']) < $s_1['unit_4']) $condition = 1;
+                if(($k_1['unit_5']+$_POST['unit5']) < $s_1['unit_5']) $condition = 1;
+                if(($k_1['unit_6']+$_POST['unit6']) < $s_1['unit_6']) $condition = 1;
+                if($condition == 0)
+                {
+                    $game->out(constant($game->sprache("TEXT234")));
+                }
+            }
+            else
+                message(DATABASE_ERROR, 'Could not fetch trust account(s) data');
+        }
+        else
+            message(DATABASE_ERROR, 'Could not retrieve trust account(s) data');
+    }
 
 
 	$sql_a='SELECT * FROM schulden_table WHERE status=0 AND user_kauf="'.$game->player['user_id'].'"';
@@ -3825,26 +3973,95 @@ function Show_schulden($zustand=0)
 	$game->out('</table></center>');
 	if(isset($_REQUEST['status_bezahlen']) && $_REQUEST['status_bezahlen']==1)
 	{
-		$planet_data=$db->queryrow('SELECT planet_name FROM planets WHERE planet_id='.$game->player['active_planet'].'');
 		$game->out('<br><center>'.constant($game->sprache("TEXT243")).' '.$_REQUEST['auktion'].':</center><br>
-		'.constant($game->sprache("TEXT244")).' '.$planet_data['planet_name'].' '.constant($game->sprache("TEXT245")).' <br>
-		<form method="post" action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&status_bezahlen=2').'">
-		<table border=0 cellpadding="3" cellspacing="3" class="style_inner" width=300><tr>
-		<td>'.constant($game->sprache("TEXT123")).'</td><td>'.constant($game->sprache("TEXT165")).'</td><td>'.constant($game->sprache("TEXT167")).'</td><td>Lv1</td><td>Lv2</td><td>Lv3</td><td>Lv4</td><td>'.constant($game->sprache("TEXT237")).'</td><td>'.constant($game->sprache("TEXT238")).'</td><td></td></tr>
-		<tr>
-		<td><input name="metall" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['resource_1'].'</td>
-		<td><input name="mineralien" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['resource_2'].'</td>
-		<td><input name="latinum" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['resource_3'].'</td>
-		<td><input name="unit1" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_1'].'</td>
-		<td><input name="unit2" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_2'].'</td>
-		<td><input name="unit3" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_3'].'</td>
-		<td><input name="unit4" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_4'].'</td>
-		<td><input name="unit5" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_5'].'</td>
-		<td><input name="unit6" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_6'].'</td>
-		</tr><tr><td colspan="10"><input type="hidden" name="auktion" value="'.$_REQUEST['auktion'].'">
-		<input type="submit" name="einzahlen" class="Button_nosize" value="'.constant($game->sprache("TEXT246")).'" style="width:100px"></td>
-		</tr></table></form>');
-	}
+		'.constant($game->sprache("TEXT244")).' '.$game->planet['planet_name'].' '.constant($game->sprache("TEXT245")).' <br>
+<form method="post" action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&status_bezahlen=2').'">
+<table border=0 cellpadding="3" cellspacing="3" class="style_inner" width=300>
+<tr>
+    <td>'.constant($game->sprache("TEXT123")).'</td>
+    <td>'.constant($game->sprache("TEXT165")).'</td>
+    <td>'.constant($game->sprache("TEXT167")).'</td>
+    <td>Lv1</td>
+    <td>Lv2</td>
+    <td>Lv3</td>
+    <td>Lv4</td>
+    <td>'.constant($game->sprache("TEXT237")).'</td>
+    <td>'.constant($game->sprache("TEXT238")).'</td>
+</tr>
+<tr>
+    <td><input name="metall" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['resource_1'].'</td>
+    <td><input name="mineralien" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['resource_2'].'</td>
+    <td><input name="latinum" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['resource_3'].'</td>
+    <td><input name="unit1" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_1'].'</td>
+    <td><input name="unit2" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_2'].'</td>
+    <td><input name="unit3" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_3'].'</td>
+    <td><input name="unit4" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_4'].'</td>
+    <td><input name="unit5" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_5'].'</td>
+    <td><input name="unit6" type="text" size="6" maxlength="6" class="Field_nosize">'.$game->planet['unit_6'].'</td>
+</tr>
+<tr>
+    <td colspan="9" align="center">
+        <input type="hidden" name="auktion" value="'.$_REQUEST['auktion'].'">
+        <input type="submit" name="einzahlen" class="Button_nosize" value="'.constant($game->sprache("TEXT246")).'" style="width:100px">
+    </td>
+</tr>
+</table>
+</form>');
+
+        $cash_accounts = $db->query('SELECT s.status,s.id,t.* FROM (schulden_table s) LEFT JOIN treuhandkonto t on s.id=t.code WHERE s.status=1 AND s.user_ver='.$game->player['user_id']);
+
+        if($db->num_rows() > 0)
+        {
+            $game->out('<br><br>Sul '.constant($game->sprache("TEXT9")).' '.constant($game->sprache("TEXT245")).' <br>
+<form method="post" action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&status_bezahlen=3').'">
+<table border=0 cellpadding="3" cellspacing="3" class="style_inner" width=300>
+<tr>
+    <td>'.constant($game->sprache("TEXT123")).'</td>
+    <td>'.constant($game->sprache("TEXT165")).'</td>
+    <td>'.constant($game->sprache("TEXT167")).'</td>
+    <td>Lv1</td>
+    <td>Lv2</td>
+    <td>Lv3</td>
+    <td>Lv4</td>
+    <td>'.constant($game->sprache("TEXT237")).'</td>
+    <td>'.constant($game->sprache("TEXT238")).'</td>
+</tr>');
+
+            $db_ress_1=$db_ress_2=$db_ress_3=$db_unit_1=$db_unit_2=$db_unit_3=$db_unit_4=$db_unit_5=$db_unit_6=0;
+            while($account=$db->fetchrow($cash_accounts))
+            {
+                $db_ress_1+=$account['ress_1'];
+                $db_ress_2+=$account['ress_2'];
+                $db_ress_3+=$account['ress_3'];
+                $db_unit_1+=$account['unit_1'];
+                $db_unit_2+=$account['unit_2'];
+                $db_unit_3+=$account['unit_3'];
+                $db_unit_4+=$v['unit_4'];
+                $db_unit_5+=$account['unit_5'];
+                $db_unit_6+=$account['unit_6'];
+            }
+            $game->out('
+<tr>
+    <td><input name="metall" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_ress_1.'</td>
+    <td><input name="mineralien" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_ress_2.'</td>
+    <td><input name="latinum" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_ress_3.'</td>
+    <td><input name="unit1" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_unit_1.'</td>
+    <td><input name="unit2" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_unit_2.'</td>
+    <td><input name="unit3" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_unit_3.'</td>
+    <td><input name="unit4" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_unit_4.'</td>
+    <td><input name="unit5" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_unit_5.'</td>
+    <td><input name="unit6" type="text" size="6" maxlength="6" class="Field_nosize"><br>'.$db_unit_6.'</td>
+</tr>
+<tr>
+    <td colspan="9" align="center">
+        <input type="hidden" name="auktion" value="'.$_REQUEST['auktion'].'">
+        <input type="submit" name="einzahlen" class="Button_nosize" value="'.constant($game->sprache("TEXT246")).'" style="width:100px">
+    </td>
+</tr>
+</table>
+</form>');
+        }
+    }
 }
 
 function ship_pick()
