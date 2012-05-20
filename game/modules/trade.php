@@ -332,6 +332,34 @@ if ($_REQUEST['id']<0) return 0;
 		}
 		/* 06/03/08 - AC: Those variables are not used in this function!
 		else $min_price=$actual_price;*/
+/* 17/09/11 - AC: WORKAROUND AD UN BRUTTO BUG, NON SONO SICURO SIA IL PUNTO GIUSTO MA VEDIAMO, IN PRATICA, 
+ * E' POSSIBILE FARE RILANCI A ZERO, A PATTO DI ESSERE IL PRIMO OFFERENTE, SEMPLICEMENTE MODIFICANDO 
+ * L'URL, AD ESEMPIO:
+ * http://www.stfc.it/game/index.php?a=trade&view=submit_bid&do_bid=1&id=5583
+ * IN:
+ * http://www.stfc.it/game/index.php?a=trade&view=submit_bid&do_bid=0&id=5583
+ * E COME PER MAGIA, SE IL PREZZO DI BASE ERA ZERO, AVREMO UN RILANCIO DI ZERO.
+ */
+        if ($min_resources[0] == 0 &&
+            $min_resources[1]== 0 &&
+            $min_resources[2]== 0 &&
+            $min_resources[3]== 0 &&
+            $min_resources[4]== 0 &&
+            $min_resources[5]== 0 &&
+            $min_resources[6]== 0 &&
+            $min_resources[7]== 0 &&
+            $min_resources[8]== 0)
+        {
+            $min_resources[0]=$tradedata['add_resource_1'];
+            $min_resources[1]=$tradedata['add_resource_2'];
+            $min_resources[2]=$tradedata['add_resource_3'];
+            $min_resources[3]=$tradedata['add_unit_1'];
+            $min_resources[4]=$tradedata['add_unit_2'];
+            $min_resources[5]=$tradedata['add_unit_3'];
+            $min_resources[6]=$tradedata['add_unit_4'];
+            $min_resources[7]=$tradedata['add_unit_5'];
+            $min_resources[8]=$tradedata['add_unit_6'];
+        }
 	}
 	else
 	/*DC ---- Per come e` scritta questa IF, qui siamo nel caso in cui $tradedata['num_bids'] sia maggiore di uno, ossia e` stata fatta un'offerta successiva a quella iniziale, quindi gli offerenti sono
