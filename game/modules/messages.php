@@ -854,7 +854,7 @@ function view()
         $text  = stripslashes($text);
         $text  = htmlspecialchars_decode($text);
 
-        $game->out('<p><span class="sub_caption2"><b>'.constant($game->sprache("TEXT23")).' [<a href="'.$config['game_url'].'/include/pdf_gen.php?id='.(int)$_REQUEST['id'].'" target="_blank"> PDF </a>]:</b></p>
+        $game->out('<p><span class="sub_caption2"><b>'.constant($game->sprache("TEXT23")).' [<a href="include/pdf_gen.php?id='.(int)$_REQUEST['id'].'" target="_blank"> PDF </a>]:</b></p>
       <table width="100%" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
         <tr>
           <td width="25%">'.constant($game->sprache("TEXT24")).':</td>
@@ -898,7 +898,7 @@ function view()
           <td width="33%" align="center">
             '.$ArchiveButton.'
           <td width="33%" align="right">
-            <form method="post" action="'.$config['game_url'].'/include/pdf_down.php">
+            <form method="post" action="include/pdf_down.php">
               <input type="hidden" name="id" value="'.$message['id'].'">&nbsp;
               <input type="hidden" name="check" value="0">&nbsp;
               <input type="submit" style="width: 120px;" class="button" value="'.constant($game->sprache("TEXT29")).'">

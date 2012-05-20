@@ -1,11 +1,11 @@
 <?php
-/*    
+/*
 	This file is part of STFC.
 	Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
-		
+
 	STFC is based on STGC,
 	Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
-	
+
     STFC is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 3 of the License, or
@@ -321,7 +321,7 @@ fclose($handle);
 
 }
 
-echo'<html><body bgcolor="#000000" text="#DDDDDD"  background="'.$config['site_url'].'/gfx/bg_stars1.gif"><center>
+echo'<html><body bgcolor="#000000" text="#DDDDDD"  background="/gfx/bg_stars1.gif"><center>
 <span style="font-family: Verdana; font-size: 15px;"><b>'.$title.'</b></span><br>
 <img border=0 usemap="#detail_map" src="'.$image_url.'" >
 
