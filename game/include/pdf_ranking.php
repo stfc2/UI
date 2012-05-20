@@ -49,7 +49,7 @@ class PDF extends HTML2FPDF {
 function get_alliance_tag($alliance_id) {
   global $db;
 
-$sql ='SELECT alliance_tag FROM alliance WHERE alliance_id = '.$alliance_id;
+    $sql ='SELECT alliance_tag FROM alliance WHERE alliance_id = '.$alliance_id;
 
     if(($alliance_tag = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query alliance data');
@@ -129,7 +129,7 @@ if(isset($_GET['action'])) {
     elseif($order=='honor') $order_str = 'user_honor DESC';
 
 
-    $listquery=$db->query('SELECT * FROM user WHERE user_active = 1 ORDER BY '.$order_str.''); 
+    $listquery=$db->query('SELECT user_name, user_alliance, user_planets, user_points, user_honor FROM user WHERE user_active = 1 ORDER BY '.$order_str); 
 
 
     $anfang = '<table><tr><td width="75">'.$place.'</td><td width="175">'.$name.'</td><td width="125">'.$alliance.'</td><td width="125">'.$planets.'</td><td width="100">'.$points.'</td><td width="100">'.$honor.'</td></tr>';
@@ -189,7 +189,7 @@ if(isset($_GET['action'])) {
     elseif($order=='points_avg') $order_str = 'alliance_rank_points_avg ASC';
 
 
-    $listquery=$db->query('SELECT * FROM alliance ORDER BY '.$order_str.''); 
+    $listquery=$db->query('SELECT alliance_tag, alliance_name, alliance_member, alliance_planets, alliance_honor, alliance_points FROM alliance ORDER BY '.$order_str); 
 
 
     $anfang = '<table><tr><td width="75">'.$place.'</td><td width="100">Tag:</td><td width="250">'.$name.'</td><td width="100">'.$members.'</td><td width="100">'.$planets.'</td><td width="85">'.$honor.'</td><td width="85">'.$points.'</td><td width="85">'.$pointsavg.'</td></tr>'; 

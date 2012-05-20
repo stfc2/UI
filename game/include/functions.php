@@ -1075,7 +1075,7 @@ class game {
 
 		}
 
-		$anzahl_truppen=$db->queryrow('SELECT * FROM `FHB_Handels_Lager` Limit 1');
+		$anzahl_truppen=$db->queryrow('SELECT unit_1, unit_2, unit_3, unit_4, unit_5, unit_6 FROM `FHB_Handels_Lager` LIMIT 1');
 		$alliance_hp=$db->queryrow('SELECT alliance_homepage AS hp FROM alliance WHERE alliance_id='.$this->player['user_alliance'].'');
 
 		// 01/02/08 - AC: Check if data is valid!
@@ -1550,7 +1550,7 @@ echo'
 
 				$db->lock('user_iplog');
 
-				$sql = 'SELECT * FROM user_iplog WHERE user_id = '.$this->uid.' ORDER BY id DESC LIMIT 1';
+				$sql = 'SELECT id,ip FROM user_iplog WHERE user_id = '.$this->uid.' ORDER BY id DESC LIMIT 1';
 
 				if(($user_iplog = $db->queryrow($sql)) === false) {
 					message(DATABASE_ERROR, 'Could not query iplog data');
@@ -1591,7 +1591,7 @@ echo'
 				/* 14/06/10 - AC: Now we store in a separate table the sitter's IP */
 				$db->lock('user_sitter_iplog');
 
-				$sql = 'SELECT * FROM user_sitter_iplog WHERE user_id = '.$this->uid.' ORDER BY id DESC LIMIT 1';
+				$sql = 'SELECT id,ip FROM user_sitter_iplog WHERE user_id = '.$this->uid.' ORDER BY id DESC LIMIT 1';
 
 				if(($user_sitter_iplog = $db->queryrow($sql)) === false) {
 					message(DATABASE_ERROR, 'Could not query sitter_iplog data');
@@ -2321,7 +2321,7 @@ echo'
 			message(DATABASE_ERROR, 'Could not query planets data');
 		}
 
-		$sql = 'SELECT * FROM starsystems WHERE system_id = '.$capitalsystem['system_id'];
+		$sql = 'SELECT system_id, system_global_x, system_global_y FROM starsystems WHERE system_id = '.$capitalsystem['system_id'];
 		if(!$capitalcoord = $db->queryrow($sql)) {
 			message(DATABASE_ERROR, 'Could not query starsystems data');
 		}

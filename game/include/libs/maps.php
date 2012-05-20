@@ -344,7 +344,7 @@ class maps {
             message(DATABASE_ERROR, 'Could not query starsystems data');
         }
 
-        $sql = 'SELECT * FROM starsystems WHERE system_id = '.$capitalsystem['system_id'];
+        $sql = 'SELECT system_id, system_global_x, system_global_y FROM starsystems WHERE system_id = '.$capitalsystem['system_id'];
         if(!$capitalcoord = $db->queryrow($sql)) {
             message(DATABASE_ERROR, 'Could not query starsystems data');
         }
@@ -442,7 +442,11 @@ class maps {
     function create_system_map($system_id = 0) {
         global $db, $game, $ACTUAL_TICK, $PLANETS_DATA;
 
-        $sql = 'SELECT *
+        $sql = 'SELECT system_id,
+                       system_starcolor_red,
+                       system_starcolor_green,
+                       system_starcolor_blue,
+                       system_starsize
                 FROM starsystems
                 WHERE system_id = "'.$system_id.'"';
 
@@ -589,7 +593,11 @@ class maps {
 
                 if(empty($rotz)) $rotz = 0;
 
-                $sql = 'SELECT * FROM alliance_diplomacy WHERE (alliance1_id = '.$rotz.' OR alliance2_id = '.$rotz.') AND (alliance1_id = '.$game->player['user_alliance'].' OR alliance2_id = '.$game->player['user_alliance'].') AND ((status = 0) OR (type=1 AND status=2))';
+                $sql = 'SELECT ad_id, alliance1_id, alliance2_id, type, status
+                        FROM alliance_diplomacy
+                        WHERE (alliance1_id = '.$rotz.' OR
+                               alliance2_id = '.$rotz.') AND (alliance1_id = '.$game->player['user_alliance'].' OR
+                               alliance2_id = '.$game->player['user_alliance'].') AND ((status = 0) OR (type=1 AND status=2))';
 
                 if(($alliance_1 = $db->queryrow($sql)) === false) {
                     message(DATABASE_ERROR, 'Could not query alliance data');
@@ -597,7 +605,11 @@ class maps {
 
                 if(!empty($alliance_1['ad_id'])){
 
-                    $sql = 'SELECT * from alliance WHERE alliance_id != '.$game->player['user_alliance'].' AND (alliance_id = '.$alliance_1['alliance1_id'].' OR alliance_id = '.$alliance_1['alliance2_id'].')';
+                    $sql = 'SELECT alliance_id
+                            FROM alliance
+                            WHERE alliance_id != '.$game->player['user_alliance'].' AND
+                                 (alliance_id = '.$alliance_1['alliance1_id'].' OR
+                                  alliance_id = '.$alliance_1['alliance2_id'].')';
 
                     if(($alliance_2 = $db->queryrow($sql)) === false) {
                         message(DATABASE_ERROR, 'Could not query alliance data');
