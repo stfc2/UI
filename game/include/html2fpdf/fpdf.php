@@ -1371,7 +1371,8 @@ function Image($file,$x,$y,$w=0,$h=0,$type='',$link='',$paint=true)
 		}
 		$type=strtolower($type);
 		$mqr=get_magic_quotes_runtime();
-		set_magic_quotes_runtime(0);
+		//set_magic_quotes_runtime(0); DEPRECATED
+		ini_set('magic_quotes_runtime', 0);
 		if($type=='jpg' or $type=='jpeg')	$info=$this->_parsejpg($file);
 		elseif($type=='png') $info=$this->_parsepng($file);
 		elseif($type=='gif') $info=$this->_parsegif($file); //EDITEI - GIF format included
@@ -1382,7 +1383,8 @@ function Image($file,$x,$y,$w=0,$h=0,$type='',$link='',$paint=true)
 			if(!method_exists($this,$mtd)) $this->Error('Unsupported image type: '.$type);
 			$info=$this->$mtd($file);
 		}
-		set_magic_quotes_runtime($mqr);
+		//set_magic_quotes_runtime($mqr); DEPRECATED
+		ini_set('magic_quotes_runtime', $mqr);
 		$info['i']=count($this->images)+1;
 		$this->images[$file]=$info;
 	}
@@ -1802,7 +1804,8 @@ function _putfonts()
 		$this->_out('endobj');
 	}
 	$mqr=get_magic_quotes_runtime();
-	set_magic_quotes_runtime(0);
+	//set_magic_quotes_runtime(0); DEPRECATED
+	ini_set('magic_quotes_runtime', 0);
 	foreach($this->FontFiles as $file=>$info)
 	{
 		//Font file embedding
@@ -1825,7 +1828,8 @@ function _putfonts()
 		fclose($f);
 		$this->_out('endobj');
 	}
-	set_magic_quotes_runtime($mqr);
+	//set_magic_quotes_runtime($mqr); DEPRECATED
+	ini_set('magic_quotes_runtime', $mqr);   
 	foreach($this->fonts as $k=>$font)
 	{
 		//Font objects
