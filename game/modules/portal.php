@@ -627,8 +627,8 @@ function display_lastposts()
       ."nonsolotaku_groups g "
     ."WHERE topic_id=tid && "
       ."new_topic=1 && "
-      ."m.id=t.starter_id && "
-      ."m.mgroup=g.g_id && "
+      ."m.member_id=t.starter_id && "
+      ."m.member_group_id=g.g_id && "
       ."t.approved=1 && "       // Only approved topic
       ."t.forum_id<>'15' && "   // "Forum Staff" filter
       ."t.forum_id<>'37' && "   // "Cestino" filter
@@ -905,7 +905,7 @@ switch($portal_action) {
        display_poll();
 //	display_spenden();
 
-       $game->out('<a href="http://www.pledgie.com/campaigns/14366"><img alt="Click here to lend your support to: Campagna Donazioni 2011 and make a donation at www.pledgie.com !" src="http://www.pledgie.com/campaigns/14366.png?skin_name=chrome" border="0" /></a><a href="http://www.topwebgames.it/"><img src="http://www.topwebgames.it/button.php?u=stfc" alt="Top Web Games Italia" border="0" /></a><br><br><span class="text_large" style="color: #23F025"><blink>Supporta anche tu STFC!</blink></span><br><br>');
+       $game->out('<a href="http://www.pledgie.com/campaigns/15671"><img alt="Click here to lend your support to: Campagna donazioni 2012 and make a donation at www.pledgie.com !" src="http://www.pledgie.com/campaigns/15671.png?skin_name=chrome" border="0" /></a><br><br><span class="text_large" style="color: #23F025"><blink>Supporta anche tu STFC!</blink></span><br><br>');
 
        display_news();
 
