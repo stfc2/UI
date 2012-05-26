@@ -1,11 +1,11 @@
 <?php
 /*    
-	This file is part of STFC.
-	Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
-		
-	STFC is based on STGC,
-	Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
-	
+    This file is part of STFC.
+    Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
+
+    STFC is based on STGC,
+    Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
+
     STFC is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 3 of the License, or
@@ -26,7 +26,7 @@ include('functions.php');
 $game = new game();
 
 // #############################################################################
-// SQL-Objckt for Database access
+// SQL-Object for Database access
 include('global.php');
 include('sql.php');
 $db = new sql($config['server'].":".$config['port'], $config['game_database'], $config['user'], $config['password']); // create sql-object for db-connection
@@ -39,8 +39,9 @@ include('session.php');
 
 // #############################################################################
 //Generation
-define('FPDF_FONTPATH','fpdf153/font/');
-require('fpdf153/fpdf.php');
+define('FPDF_FONTPATH','fpdf17/font/');
+require('fpdf17/fpdf.php');
+require('myPDF.php');
 
 $user = $game->player['user_id'];
 $id = $_GET['id'];
@@ -67,10 +68,16 @@ if($user!=$receiver) {
 
 //Sender data
 
-$sql = 'SELECT user_name FROM user WHERE user_id = '.$sender;
+// 26/05/12 - AC: Check if it's a message from the support system
+if ($sender == SUPPORTUSER) {
+    $sendername['user_name'] = 'STFC-Support';
+}
+else {
+    $sql = 'SELECT user_name FROM user WHERE user_id = '.$sender;
 
-if(($sendername = $db->queryrow($sql)) == false) {
-   message(DATABASE_ERROR, 'Could not query sender data');
+    if(($sendername = $db->queryrow($sql)) == false) {
+        message(DATABASE_ERROR, 'Could not query sender data');
+    }
 }
 
 /* 12/06/08 - AC: Translate also this! */
@@ -82,6 +89,7 @@ switch($game->player['language'])
         $recipient = 'Empfänger:			';
         $date =  'Datum:										';
         $title = 'Titel:														';
+        $page = 'Seite';
     break;
     case 'ITA':
         $created = 'Creato il ';
@@ -89,6 +97,7 @@ switch($game->player['language'])
         $recipient = 'Destinatario:	';
         $date =  'Data:														';
         $title = 'Titolo:												';
+        $page = 'Pagina';
     break;
     default:
         $created = 'Created on ';
@@ -96,10 +105,12 @@ switch($game->player['language'])
         $recipient = 'Recipient:			';
         $date =  'Date:											';
         $title = 'Title:												';
+        $page = 'Page';
     break;
 }
 
-$pdf=new FPDF();
+$pdf=new myPDF();
+$pdf->SetFooterData($config['site_url'],$page);
 $pdf->Open();
 $pdf->SetAuthor($game->player['user_name']);
 $pdf->SetTitle($config['site_url']);

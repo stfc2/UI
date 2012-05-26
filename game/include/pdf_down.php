@@ -39,8 +39,9 @@ include('session.php');
 
 // #############################################################################
 //Generation
-define('FPDF_FONTPATH','fpdf153/font/');
-require('fpdf153/fpdf.php');
+define('FPDF_FONTPATH','fpdf17/font/');
+require('fpdf17/fpdf.php');
+require('myPDF.php');
 
 $user = $game->player['user_id'];
 $id = $_POST['id'];
@@ -67,10 +68,16 @@ if($user!=$receiver) {
 
 //Sender data
 
-$sql = 'SELECT user_name FROM user WHERE user_id = '.$sender;
+// 26/05/12 - AC: Check if it's a message from the support system
+if ($sender == SUPPORTUSER) {
+    $sendername['user_name'] = 'STFC-Support';
+}
+else {
+    $sql = 'SELECT user_name FROM user WHERE user_id = '.$sender;
 
-if(($sendername = $db->queryrow($sql)) == false) {
-    message(DATABASE_ERROR, 'Could not query sender data');
+    if(($sendername = $db->queryrow($sql)) == false) {
+        message(DATABASE_ERROR, 'Could not query sender data');
+    }
 }
 
 /* 12/06/08 - AC: Translate also this! */
@@ -82,6 +89,7 @@ switch($game->player['language'])
         $recipient = 'Empf&aum;nger:			';
         $date =  'Datum:										';
         $title = 'Titel:														';
+        $page = 'Seite';
     break;
     case 'ITA':
         $created = 'Creato il ';
@@ -89,6 +97,7 @@ switch($game->player['language'])
         $recipient = 'Destinatario:	';
         $date =  'Data:														';
         $title = 'Titolo:												';
+        $page = 'Pagina';
     break;
     default:
         $created = 'Created on ';
@@ -96,10 +105,12 @@ switch($game->player['language'])
         $recipient = 'Recipient:			';
         $date =  'Date:											';
         $title = 'Title:												';
+        $page = 'Page';
     break;
 }
 
-$pdf=new FPDF();
+$pdf=new myPDF();
+$pdf->SetFooterData($config['site_url'],$page);
 $pdf->Open();
 $pdf->SetAuthor($game->player['user_name']);
 $pdf->SetTitle($config['site_url']);
