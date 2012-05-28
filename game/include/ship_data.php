@@ -9789,6 +9789,926 @@ $SHIP_TORSO = array(
 
 
     ),
+    
+    // Settlers
+    
+    13 => array(
+
+    	// Scout
+
+	    0 => array(
+
+			0 => 2150,  // Metal
+
+			1 => 1338,  // Minerals
+
+			2 => 2960,  // Latinum
+
+			3 => 15,  // Min. Unit 1(L. Infanterie)
+
+			4 => 0,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 0,  // Min. Unit 3 (Hazard Team)
+
+			6 => 1,  // Min. Unit 4 (Commander)
+
+			7 => 15,  // Max Unit 1 (L. Infanterie)
+
+			8 => 0,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 0,  // Max Unit 3 (Hazard Team)
+
+			10 => 1,  // Max Unit 4 (Commander)
+
+			11 => 0,  // Unit 5 (Offizier)
+
+			12 => 1,  // Unit 6 (Medizinisches Personal)
+
+			13 => 20,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 0,   // Value1 (Leichte Waffen)
+
+			15 => 0,   // Value2 (Schwere Waffen)
+
+			16 => 0,   // Value3 (Planetare Waffen)
+
+			17 => 0,   // Value4 (Schildstärke)
+
+			18 => 10,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 4,   // Value6 (Reaktionsgeschw.)
+
+			20 => 2,   // Value7 (Bereitschaft)
+
+			21 => 10,   // Value8 (Wendigkeit)
+
+			22 => 16,   // Value9 (Erfahrung)
+
+			23 => 6.9,   // Value10 (Warp)
+
+			24 => 12,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 8,   // Value13 (Energy Available)
+
+			27 => 2,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Scout',  // Name
+
+			30 => 15,  // Benötige Arbeiter zum Bau
+
+			31 => 'Bei der Danube Klasse handelt es sich um Kurzstrecken Aufklärer. Da hier alle Energie für die Sensoren benötigt wird, sind diese Schiffe unbewaffnet.',
+
+	    ),
+
+    	// Transporter
+
+	    1 => array(
+
+			0 => 4250,  // Metal
+
+			1 => 5800,  // Minerals
+
+			2 => 4640,  // Latinum
+
+			3 => 56,  // Min. Unit 1(L. Infanterie)
+
+			4 => 0,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 0,  // Min. Unit 3 (Hazard Team)
+
+			6 => 1,  // Min. Unit 4 (Commander)
+
+			7 => 56,  // Max Unit 1 (L. Infanterie)
+
+			8 => 0,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 0,  // Max Unit 3 (Hazard Team)
+
+			10 => 1,  // Max Unit 4 (Commander)
+
+			11 => 2,  // Unit 5 (Offizier)
+
+			12 => 1,  // Unit 6 (Medizinisches Personal)
+
+			13 => 40,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 15,   // Value1 (Leichte Waffen)
+
+			15 => 0,   // Value2 (Schwere Waffen)
+
+			16 => 0,   // Value3 (Planetare Waffen)
+
+			17 => 5,   // Value4 (Schildstärke)
+
+			18 => 20,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 2,   // Value6 (Reaktionsgeschw.)
+
+			20 => 1,   // Value7 (Bereitschaft)
+
+			21 => 5,   // Value8 (Wendigkeit)
+
+			22 => 5,   // Value9 (Erfahrung)
+
+			23 => 3.4,   // Value10 (Warp)
+
+			24 => 5,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 10,   // Value13 (Energy Available)
+
+			27 => 4,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Transporter',  // Name
+
+			30 => 105,  // Benötige Arbeiter zum Bau
+
+			31 => 'Mit dem Transporter kann man entweder 4000 Rohstoffe bzw. 400 Einheiten transportieren, oder sie mit auf einen Angriff schicken. Sie sind relativ langsam, dafür ist ihre Verteidigung akzeptabel.',
+
+
+
+	    ),
+
+    	// Koloschiff
+
+	    2 => array(
+
+			0 => 59900,  // Metal
+
+			1 => 19450,  // Minerals
+
+			2 => 32360,  // Latinum
+
+			3 => 104,  // Min. Unit 1(L. Infanterie)
+
+			4 => 0,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 0,  // Min. Unit 3 (Hazard Team)
+
+			6 => 3,  // Min. Unit 4 (Commander)
+
+			7 => 200,  // Max Unit 1 (L. Infanterie)
+
+			8 => 0,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 0,  // Max Unit 3 (Hazard Team)
+
+			10 => 3,  // Max Unit 4 (Commander)
+
+			11 => 16,  // Unit 5 (Offizier)
+
+			12 => 2,  // Unit 6 (Medizinisches Personal)
+
+			13 => 170,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 10,   // Value1 (Leichte Waffen)
+
+			15 => 0,   // Value2 (Schwere Waffen)
+
+			16 => 0,   // Value3 (Planetare Waffen)
+
+			17 => 10,   // Value4 (Schildstärke)
+
+			18 => 50,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 0,   // Value6 (Reaktionsgeschw.)
+
+			20 => 0,   // Value7 (Bereitschaft)
+
+			21 => 0,   // Value8 (Wendigkeit)
+
+			22 => 0,   // Value9 (Erfahrung)
+
+			23 => 5.4,   // Value10 (Warp)
+
+			24 => 0,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 15,   // Value13 (Energy Available)
+
+			27 => 5,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Kolonisationsschiff',  // Name
+
+			30 => 1955,  // Benötige Arbeiter zum Bau
+
+			31 => 'Mit dem Kolonieschiff kannst du einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerstört hast, geht das Kolonieschiff verloren (da seine Holoemitter zur Simulation erster Einrichtungen demontiert werden) und der Planet steht unter deinem Kommando.',
+
+	    ),
+
+        // Sabre
+
+	    3 => array(
+
+			0 => 13320,  // Metal
+
+			1 => 19410,  // Minerals
+
+			2 => 6528,  // Latinum
+
+			3 => 25,  // Min. Unit 1(L. Infanterie)
+
+			4 => 0,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 0,  // Min. Unit 3 (Hazard Team)
+
+			6 => 0,  // Min. Unit 4 (Commander)
+
+			7 => 50,  // Max Unit 1 (L. Infanterie)
+
+			8 => 10,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 4,  // Max Unit 3 (Hazard Team)
+
+			10 => 2,  // Max Unit 4 (Commander)
+
+			11 => 5,  // Unit 5 (Offizier)
+
+			12 => 3,  // Unit 6 (Medizinisches Personal)
+
+			13 => 119,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 70,   // Value1 (Leichte Waffen)
+
+			15 => 0,   // Value2 (Schwere Waffen)
+
+			16 => 0,   // Value3 (Planetare Waffen)
+
+			17 => 10,   // Value4 (Schildstärke)
+
+			18 => 200,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 7,   // Value6 (Reaktionsgeschw.)
+
+			20 => 11,   // Value7 (Bereitschaft)
+
+			21 => 34,   // Value8 (Wendigkeit)
+
+			22 => 10,   // Value9 (Erfahrung)
+
+			23 => 7,   // Value10 (Warp)
+
+			24 => 10,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 17,   // Value13 (Energy Available)
+
+			27 => 10,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Saber',  // Name
+
+			30 => 168,  // Benötige Arbeiter zum Bau
+
+			31 => 'Die Sabre ist eine der neusten Entwicklungen der Förderation im Bereich der Fregatten. Die modulare Bauweise gestattet eine höhere Aufrüstfähigkeit als der Miranda. Ihre Vielseitigkeit sollte sie in keiner Flotte fehlen.',
+
+	    ),
+
+    	// Steamrunner
+
+	    4 => array(
+
+			0 => 23842,  // Metal
+
+			1 => 14064,  // Minerals
+
+			2 => 7680,  // Latinum
+
+			3 => 20,  // Min. Unit 1(L. Infanterie)
+
+			4 => 0,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 5,  // Min. Unit 3 (Hazard Team)
+
+			6 => 0,  // Min. Unit 4 (Commander)
+
+			7 => 100,  // Max Unit 1 (L. Infanterie)
+
+			8 => 50,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 25,  // Max Unit 3 (Hazard Team)
+
+			10 => 6,  // Max Unit 4 (Commander)
+
+			11 => 14,  // Unit 5 (Offizier)
+
+			12 => 0,  // Unit 6 (Medizinisches Personal)
+
+			13 => 119,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 64,   // Value1 (Leichte Waffen)
+
+			15 => 115,   // Value2 (Schwere Waffen)
+
+			16 => 18,   // Value3 (Planetare Waffen)
+
+			17 => 360,   // Value4 (Schildstärke)
+
+			18 => 15,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 10,   // Value6 (Reaktionsgeschw.)
+
+			20 => 8,   // Value7 (Bereitschaft)
+
+			21 => 28,   // Value8 (Wendigkeit)
+
+			22 => 10,   // Value9 (Erfahrung)
+
+			23 => 4.6,   // Value10 (Warp)
+
+			24 => 10,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 18,   // Value13 (Energy Available)
+
+			27 => 10,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Steamrunner',  // Name
+
+			30 => 175,  // Benötige Arbeiter zum Bau
+
+			31 => 'Die Steamrunner Klasse wurde ursprünglich als schnell baubares Aushilfsschiff dienen doch ihre hohe Manövrierbarkeit und moderate Bewaffnung ließen sie schnell die ältere Elite verdrängen.',
+
+	    ),
+
+       	// Intrepid
+
+	    5 => array(
+
+			0 => 34800,  // Metal
+
+			1 => 29800,  // Minerals
+
+			2 => 25450,  // Latinum
+
+			3 => 40,  // Min. Unit 1(L. Infanterie)
+
+			4 => 10,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 0,  // Min. Unit 3 (Hazard Team)
+
+			6 => 2,  // Min. Unit 4 (Commander)
+
+			7 => 90,  // Max Unit 1 (L. Infanterie)
+
+			8 => 25,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 10,  // Max Unit 3 (Hazard Team)
+
+			10 => 6,  // Max Unit 4 (Commander)
+
+			11 => 11,  // Unit 5 (Offizier)
+
+			12 => 1,  // Unit 6 (Medizinisches Personal)
+
+			13 => 195,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 180,   // Value1 (Leichte Waffen)
+
+			15 => 75,   // Value2 (Schwere Waffen)
+
+			16 => 0,   // Value3 (Planetare Waffen)
+
+			17 => 460,   // Value4 (Schildstärke)
+
+			18 => 380,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 16,   // Value6 (Reaktionsgeschw.)
+
+			20 => 24,   // Value7 (Bereitschaft)
+
+			21 => 32,   // Value8 (Wendigkeit)
+
+			22 => 10,   // Value9 (Erfahrung)
+
+			23 => 8.15,   // Value10 (Warp)
+
+			24 => 18,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 61,   // Value13 (Energy Available)
+
+			27 => 11,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Intrepid',  // Name
+
+			30 => 380,  // Benötige Arbeiter zum Bau
+
+			31 => 'Light Cruiser letzten Generation, mit einzigartigen Technologien von denen auf Schiffen des Bundes. Geboren zu reisen bei sehr hohen Reisegeschwindigkeit, hat ein Rüstung je gesehen Sondierungsgespräche über ein Schiff von dieser Tonnage.',
+
+		    ),
+
+
+
+    	// Defiant
+
+	    6 => array(
+
+			0 => 30800,  // Metal
+
+			1 => 26915,  // Minerals
+
+			2 => 10650,  // Latinum
+
+			3 => 25,  // Min. Unit 1(L. Infanterie)
+
+			4 => 10,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 0,  // Min. Unit 3 (Hazard Team)
+
+			6 => 0,  // Min. Unit 4 (Commander)
+
+			7 => 40,  // Max Unit 1 (L. Infanterie)
+
+			8 => 20,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 5,  // Max Unit 3 (Hazard Team)
+
+			10 => 4,  // Max Unit 4 (Commander)
+
+			11 => 6,  // Unit 5 (Offizier)
+
+			12 => 1,  // Unit 6 (Medizinisches Personal)
+
+			13 => 146,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 145,   // Value1 (Leichte Waffen)
+
+			15 => 95,   // Value2 (Schwere Waffen)
+
+			16 => 15,   // Value3 (Planetare Waffen)
+
+			17 => 480,   // Value4 (Schildstärke)
+
+			18 => 120,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 15,   // Value6 (Reaktionsgeschw.)
+
+			20 => 26,   // Value7 (Bereitschaft)
+
+			21 => 38,   // Value8 (Wendigkeit)
+
+			22 => 18,   // Value9 (Erfahrung)
+
+			23 => 6.5,   // Value10 (Warp)
+
+			24 => 11,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 17,   // Value13 (Energy Available)
+
+			27 => 15,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Defiant',  // Name
+
+			30 => 245,  // Benötige Arbeiter zum Bau
+
+			31 => 'Der kompakteste leichte Kreuzer der Sternenflotte. Ausgestattet mit Quantentorpedos besitzt sie eine für ihre Verhältnisse enorme Feuerkraft. Jedoch schränken Schildkapazität und Crewgröße den Einsatzradius ein. Als leichtes Angriffsschiff mit vorinstallierter Tarnvorrichtung ist sie die beste Wahl.',
+
+	    ),
+
+    	// Excelsior
+
+	    7 => array(
+
+			0 => 41212,  // Metal
+
+			1 => 37445,  // Minerals
+
+			2 => 20956,  // Latinum
+
+			3 => 85,  // Min. Unit 1(L. Infanterie)
+
+			4 => 25,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 10,  // Min. Unit 3 (Hazard Team)
+
+			6 => 0,  // Min. Unit 4 (Commander)
+
+			7 => 100,  // Max Unit 1 (L. Infanterie)
+
+			8 => 50,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 75,  // Max Unit 3 (Hazard Team)
+
+			10 => 5,  // Max Unit 4 (Commander)
+
+			11 => 15,  // Unit 5 (Offizier)
+
+			12 => 5,  // Unit 6 (Medizinisches Personal)
+
+			13 => 265,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 190,   // Value1 (Leichte Waffen)
+
+			15 => 110,   // Value2 (Schwere Waffen)
+
+			16 => 10,   // Value3 (Planetare Waffen)
+
+			17 => 670,   // Value4 (Schildstärke)
+
+			18 => 300,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 9,   // Value6 (Reaktionsgeschw.)
+
+			20 => 5,   // Value7 (Bereitschaft)
+
+			21 => 24,   // Value8 (Wendigkeit)
+
+			22 => 10,   // Value9 (Erfahrung)
+
+			23 => 4.2,   // Value10 (Warp)
+
+			24 => 5,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 30,   // Value13 (Energy Available)
+
+			27 => 25,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Excelsior',  // Name
+
+			30 => 550,  // Benötige Arbeiter zum Bau
+
+			31 => 'Die Exelsior gehört zur Klasse der Kreuzer und bietet ein sehr wirtschaftliches Verhältnis. Aufgrund zahlreicher Weiterentwicklungen durch die Sternenflotte gibt es sie in mehreren Ausführungen. Die aktuellste Version besitzt sogar mehrphasige, regenerierende Schilde.',
+
+	    ),
+
+    	// Nebula
+
+	    8 => array(
+
+			0 => 55740,  // Metal
+
+			1 => 50370,  // Minerals
+
+			2 => 21296,  // Latinum
+
+			3 => 120,  // Min. Unit 1(L. Infanterie)
+
+			4 => 10,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 10,  // Min. Unit 3 (Hazard Team)
+
+			6 => 1,  // Min. Unit 4 (Commander)
+
+			7 => 150,  // Max Unit 1 (L. Infanterie)
+
+			8 => 125,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 100,  // Max Unit 3 (Hazard Team)
+
+			10 => 10,  // Max Unit 4 (Commander)
+
+			11 => 15,  // Unit 5 (Offizier)
+
+			12 => 4,  // Unit 6 (Medizinisches Personal)
+
+			13 => 272,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 145,   // Value1 (Leichte Waffen)
+
+			15 => 140,   // Value2 (Schwere Waffen)
+
+			16 => 25,   // Value3 (Planetare Waffen)
+
+			17 => 700,   // Value4 (Schildstärke)
+
+			18 => 300,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 4,   // Value6 (Reaktionsgeschw.)
+
+			20 => 5,   // Value7 (Bereitschaft)
+
+			21 => 17,   // Value8 (Wendigkeit)
+
+			22 => 13,   // Value9 (Erfahrung)
+
+			23 => 4,   // Value10 (Warp)
+
+			24 => 13,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 38,   // Value13 (Energy Available)
+
+			27 => 30,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Nebula',  // Name
+
+			30 => 790,  // Benötige Arbeiter zum Bau
+
+			31 => 'Die Nebula ist zwar ein Ableger der Galaxie-Klasse, sollte jedoch als eigener Schiffstyp mit eigenen Fähigkeiten gesehen werden. Ihre Größe macht sie zwar behäbiger als leichte Kreuzer, in Punkto Feuerkraft und Schildstärke steht sie jedoch über ihnen.',
+
+	    ),
+
+    	// Galaxy
+
+	    9 => array(
+
+			0 => 67340,  // Metal
+
+			1 => 53920,  // Minerals
+
+			2 => 35236,  // Latinum
+
+			3 => 200,  // Min. Unit 1(L. Infanterie)
+
+			4 => 5,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 10,  // Min. Unit 3 (Hazard Team)
+
+			6 => 2,  // Min. Unit 4 (Commander)
+
+			7 => 500,  // Max Unit 1 (L. Infanterie)
+
+			8 => 200,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 150,  // Max Unit 3 (Hazard Team)
+
+			10 => 12,  // Max Unit 4 (Commander)
+
+			11 => 15,  // Unit 5 (Offizier)
+
+			12 => 4,  // Unit 6 (Medizinisches Personal)
+
+			13 => 354,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 280,   // Value1 (Leichte Waffen)
+
+			15 => 40,   // Value2 (Schwere Waffen)
+
+			16 => 45,   // Value3 (Planetare Waffen)
+
+			17 => 600,   // Value4 (Schildstärke)
+
+			18 => 1100,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 10,   // Value6 (Reaktionsgeschw.)
+
+			20 => 4,   // Value7 (Bereitschaft)
+
+			21 => 18,   // Value8 (Wendigkeit)
+
+			22 => 20,   // Value9 (Erfahrung)
+
+			23 => 3.4,   // Value10 (Warp)
+
+			24 => 11,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 54,   // Value13 (Energy Available)
+
+			27 => 50,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Galaxy',  // Name
+
+			30 => 965,  // Benötige Arbeiter zum Bau
+
+			31 => 'Die Galaxy zeichnet sich durch beeindruckende Kampfkraft aus. Obwohl als Forschungsschiff klassifiziert konnte diese Schiffsklasse ihr Kampfgeschick in jeder größeren Schlacht der Föderation unter Beweis stellen. Was ihr an offensiver Bewaffnung fehlt macht sie locker duch ihre schweren Schilde und Panzerung wett. Einer Galaxy sollte man nur in Gruppen auf den Leib rücken.',
+
+	    ),
+
+		// Akira
+
+	    10 => array(
+
+			0 => 56180,  // Metal
+
+			1 => 43590,  // Minerals
+
+			2 => 39272,  // Latinum
+
+			3 => 55,  // Min. Unit 1(L. Infanterie)
+
+			4 => 10,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 5,  // Min. Unit 3 (Hazard Team)
+
+			6 => 0,  // Min. Unit 4 (Commander)
+
+			7 => 150,  // Max Unit 1 (L. Infanterie)
+
+			8 => 55,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 25,  // Max Unit 3 (Hazard Team)
+
+			10 => 12,  // Max Unit 4 (Commander)
+
+			11 => 5,  // Unit 5 (Offizier)
+
+			12 => 3,  // Unit 6 (Medizinisches Personal)
+
+			13 => 326,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 0,   // Value1 (Leichte Waffen)
+
+			15 => 280,   // Value2 (Schwere Waffen)
+
+			16 => 60,   // Value3 (Planetare Waffen)
+
+			17 => 200,   // Value4 (Schildstärke)
+
+			18 => 900,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 18,   // Value6 (Reaktionsgeschw.)
+
+			20 => 6,   // Value7 (Bereitschaft)
+
+			21 => 21,   // Value8 (Wendigkeit)
+
+			22 => 18,   // Value9 (Erfahrung)
+
+			23 => 3,   // Value10 (Warp)
+
+			24 => 3,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 70,   // Value13 (Energy Available)
+
+			27 => 62,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Akira',  // Name
+
+			30 => 181,  // Benötige Arbeiter zum Bau
+
+			31 => 'Das erste für die Schlacht entwickelte Schiff der Föderation, Ausgestattet mit mehreren Torpedowerfern kann es ein wahres Inferno auf Feindflotten beschwören. Regenerative Schilde sorgen für ausreichenden Schutz. Diese Schiffsklasse wurde mit dem Augenmerk auf höchste Überlebensfähigkeit, Schnelligkeit und Angriffskraft entwickelt.',
+
+	    ),
+
+    	// Sovereign
+
+	    11 => array(
+
+			0 => 65700,  // Metal
+
+			1 => 60200,  // Minerals
+
+			2 => 38000,  // Latinum
+
+			3 => 200,  // Min. Unit 1(L. Infanterie)
+
+			4 => 95,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 65,  // Min. Unit 3 (Hazard Team)
+
+			6 => 6,  // Min. Unit 4 (Commander)
+
+			7 => 300,  // Max Unit 1 (L. Infanterie)
+
+			8 => 150,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 100,  // Max Unit 3 (Hazard Team)
+
+			10 => 12,  // Max Unit 4 (Commander)
+
+			11 => 46,  // Unit 5 (Offizier)
+
+			12 => 16,  // Unit 6 (Medizinisches Personal)
+
+			13 => 420,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 500,   // Value1 (Leichte Waffen)
+
+			15 => 675,   // Value2 (Schwere Waffen)
+
+			16 => 50,   // Value3 (Planetare Waffen)
+
+			17 => 2000,   // Value4 (Schildstärke)
+
+			18 => 650,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 30,   // Value6 (Reaktionsgeschw.)
+
+			20 => 42,   // Value7 (Bereitschaft)
+
+			21 => 38,   // Value8 (Wendigkeit)
+
+			22 => 1,   // Value9 (Erfahrung)
+
+			23 => 9.6,   // Value10 (Warp)
+
+			24 => 38,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 150,   // Value13 (Energy Available)
+
+			27 => 150,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Achilles',  // Name
+
+			30 => 1450,  // Benötige Arbeiter zum Bau
+
+			31 => 'Die Sovereign Klasse ist die modernste Schiffklasse der Föderation. Sie ist zwar offiziell ein Allround Schiff entfaltet aber ihr wahres Potential im Kampf. Starke Waffen und Schilde sowie eine gute Manövrierfähigkeit machen sie zu einem Gegner dem ein Schiff nicht alleine gegenübertreten sollte. Es kann eine verloren schienende Schlacht ohne Probleme wenden.',
+
+	    ),
+
+    	// Orbitalgeschütz
+
+	    12 => array(
+
+			0 => 50400,  // Metal
+
+			1 => 50400,  // Minerals
+
+			2 => 40320,  // Latinum
+
+			3 => 0,  // Min. Unit 1(L. Infanterie)
+
+			4 => 0,  // Min. Unit 2 (Sturmtruppe)
+
+			5 => 0,  // Min. Unit 3 (Hazard Team)
+
+			6 => 0,  // Min. Unit 4 (Commander)
+
+			7 => 0,  // Max Unit 1 (L. Infanterie)
+
+			8 => 0,  // Max Unit 2 (Sturmtruppe)
+
+			9 => 0,  // Max Unit 3 (Hazard Team)
+
+			10 => 0,  // Max Unit 4 (Commander)
+
+			11 => 0,  // Unit 5 (Offizier)
+
+			12 => 0,  // Unit 6 (Medizinisches Personal)
+
+			13 => 240,  // Buildtime (in 5 Minuten Schritten)
+
+			14 => 250,   // Value1 (Leichte Waffen)
+
+			15 => 250,   // Value2 (Schwere Waffen)
+
+			16 => 0,   // Value3 (Planetare Waffen)
+
+			17 => 700,   // Value4 (Schildstärke)
+
+			18 => 100,   // Value5 (Hülle bzw. Hitpoins)
+
+			19 => 35,   // Value6 (Reaktionsgeschw.)
+
+			20 => 25,   // Value7 (Bereitschaft)
+
+			21 => 0,   // Value8 (Wendigkeit)
+
+			22 => 0,   // Value9 (Erfahrung)
+
+			23 => 0,   // Value10 (Warp)
+
+			24 => 35,   // Value11 (Sensoren)
+
+			25 => 0,   // Value12 (Tarnung)
+
+			26 => 33,   // Value13 (Energy Available)
+
+			27 => 33,   // Value14 (Used Energy)
+
+			28 => 0,   // Auf 0 lassen
+
+			29 => 'Orbitalgeschütz',  // Name
+
+			30 => 425,  // Benötige Arbeiter zum Bau
+
+			31 => 'Aufgrund der Angreifbarkeit vieler Welten der Föderation sahen sich die Techniker zur Konstruktion dieser automatisierten Waffenplattform genötigt. Ausgestattet mit Phaserbänken und schnell feuernden Photonentorpedorampen bildet es eine wichtige Komponente in der Verteidigungsstrategie der Föderierten.',
+
+	    ),
+
+    ),
 
 );
 
