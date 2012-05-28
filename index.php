@@ -671,13 +671,6 @@ window.attachEvent("onload", expandone)
                   <br>
                 </td>
               </tr>
-<!-- Try to insert here pledge button -->
-<tr>
-  <td align="center" valign="middle">
-    <font size="3" style="color: #FF2200;"><b> · Supporta STFC! Fai una donazione! --&gt;</b></font>
-    <a href="http://www.pledgie.com/campaigns/14366"><img alt="Click here to lend your support to: Campagna Donazioni 2011 and make a donation at www.pledgie.com !" src="http://www.pledgie.com/campaigns/14366.png?skin_name=chrome" border="0"></a>
-  </td>
-</tr>
             </table>
             <!-- Middle End -->
           </td>
@@ -705,9 +698,9 @@ window.attachEvent("onload", expandone)
     </td>
   </tr>
 </table><br>
-<center>
-<script language="javascript" type="text/javascript" src="http://ss.webring.com/navbar?f=j;y=adminstfc;u=defurl">
-</script>
+<div align="center">
+
+<script type="text/javascript" src="http://ss.webring.com/navbar?f=j;y=adminstfc;u=defurl"></script>
 Powered by <a href="http://dir.webring.com/rw" target="_top">WebRing</a>.</center>
 
 <!--optional-->
@@ -731,7 +724,7 @@ Powered by <a href="http://dir.webring.com/rw" target="_top">WebRing</a>.</cente
 </table>
 </center>
 </noscript>
-
+</div>
 </body>
 </html>
 
