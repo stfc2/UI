@@ -26,73 +26,113 @@ $game->init_player();
 
 function UnitFight($atk_units, $atk_race, $dfd_units, $dfd_race)
 {
-global $RACE_DATA;
-$atk_alive=$atk_units;
-$dfd_alive=$dfd_units;
+    global $RACE_DATA;
+    $atk_alive=$atk_units;
+    $dfd_alive=$dfd_units;
 
 
-$total_dmg[0]=$atk_alive[0]*GetAttackUnit(0,$atk_race)+$atk_alive[1]*GetAttackUnit(1,$atk_race)+$atk_alive[2]*GetAttackUnit(2,$atk_race)+$atk_alive[3]*GetAttackUnit(3,$atk_race)+$RACE_DATA[$atk_race][21]*$atk_alive[4]*0.2;
-$total_dmg[1]=$dfd_alive[0]*GetAttackUnit(0,$dfd_race)+$dfd_alive[1]*GetAttackUnit(1,$dfd_race)+$dfd_alive[2]*GetAttackUnit(2,$dfd_race)+$dfd_alive[3]*GetAttackUnit(3,$dfd_race)+$RACE_DATA[$dfd_race][21]*$dfd_alive[4];
+    $total_dmg[0] = $atk_alive[0] * GetAttackUnit(0,$atk_race) +
+                    $atk_alive[1] * GetAttackUnit(1,$atk_race) +
+                    $atk_alive[2] * GetAttackUnit(2,$atk_race) +
+                    $atk_alive[3] * GetAttackUnit(3,$atk_race) +
+                    $RACE_DATA[$atk_race][21] * $atk_alive[4] * 0.2;
+    $total_dmg[1] = $dfd_alive[0] * GetAttackUnit(0,$dfd_race) +
+                    $dfd_alive[1] * GetAttackUnit(1,$dfd_race) +
+                    $dfd_alive[2] * GetAttackUnit(2,$dfd_race) +
+                    $dfd_alive[3] * GetAttackUnit(3,$dfd_race) +
+                    $RACE_DATA[$dfd_race][21] * $dfd_alive[4];
 
-$total_dfd[0]=$atk_alive[0]*GetDefenseUnit(0,$atk_race)+$atk_alive[1]*GetDefenseUnit(1,$atk_race)+$atk_alive[2]*GetDefenseUnit(2,$atk_race)+$atk_alive[3]*GetDefenseUnit(3,$atk_race)+$RACE_DATA[$atk_race][21]*$atk_alive[4]*0.25;
-$total_dfd[1]=$dfd_alive[0]*GetDefenseUnit(0,$dfd_race)+$dfd_alive[1]*GetDefenseUnit(1,$dfd_race)+$dfd_alive[2]*GetDefenseUnit(2,$dfd_race)+$dfd_alive[3]*GetDefenseUnit(3,$dfd_race)+$RACE_DATA[$dfd_race][21]*$dfd_alive[4]*1.3;
-
-
-if ($total_dmg[0]/$total_dfd[1]>$total_dmg[1]/$total_dfd[0])
-{
-// Attacker Wins:
-$percent=$total_dfd[1]/$total_dmg[0];
-$total_dmg[1]*=$percent;
-// Dfd Dmg on Worker:
-if ($total_dmg[1]>=$RACE_DATA[$atk_race][21]*2*$atk_alive[4]) {$total_dmg[1]-=$RACE_DATA[$atk_race][21]*2*$atk_alive[4]; $atk_alive[4]=0;}
-else {$atk_alive[4]-=$total_dmg[1]/($RACE_DATA[$atk_race][21]*2); $total_dmg[1]=0;}
-
-// Dfd Dmg:
-for ($t=0; $t<4; $t++)
-{
-if ($total_dmg[1]<=0) break;
-if ($total_dmg[1]>=GetDefenseUnit($t,$atk_race)*$atk_alive[$t]) {$total_dmg[1]-=GetDefenseUnit($t,$atk_race)*$atk_alive[$t]; $atk_alive[$t]=0;}
-else {$atk_alive[$t]-=$total_dmg[1]/GetDefenseUnit($t,$atk_race); $total_dmg[1]=0; break;}
-}
-
-$dfd_alive=array(0,0,0,0,0);
-
-}
-else
-{
-$percent=$total_dmg[0]/$total_dmg[1];
-$total_dmg[0]*=$percent;
-
-// Atk Dmg on Worker:
-if ($total_dmg[0]>=$RACE_DATA[$dfd_race][21]*2*$dfd_alive[4]) {$total_dmg[0]-=$RACE_DATA[$dfd_race][21]*2*$dfd_alive[4]; $dfd_alive[4]=0;}
-else {$dfd_alive[4]-=$total_dmg[0]/($RACE_DATA[$dfd_race][21]*2); $total_dmg[0]=0;}
-
-// Atk Dmg:
-for ($t=0; $t<4; $t++)
-{
-if ($total_dmg[0]<=0) break;
-if ($total_dmg[0]>=GetDefenseUnit($t,$dfd_race)*$dfd_alive[$t]) {$total_dmg[0]-=GetDefenseUnit($t,$dfd_race)*$dfd_alive[$t]; $dfd_alive[$t]=0;}
-else {$dfd_alive[$t]-=$total_dmg[0]/GetDefenseUnit($t,$dfd_race); $total_dmg[0]=0; break;}
-}
-
-$atk_alive=array(0,0,0,0,0);
-
-}
+    $total_dfd[0] = $atk_alive[0] * GetDefenseUnit(0,$atk_race) +
+                    $atk_alive[1] * GetDefenseUnit(1,$atk_race) +
+                    $atk_alive[2] * GetDefenseUnit(2,$atk_race) +
+                    $atk_alive[3] * GetDefenseUnit(3,$atk_race) +
+                    $RACE_DATA[$atk_race][21] * $atk_alive[4] * 0.25;
+    $total_dfd[1] = $dfd_alive[0] * GetDefenseUnit(0,$dfd_race) +
+                    $dfd_alive[1] * GetDefenseUnit(1,$dfd_race) +
+                    $dfd_alive[2] * GetDefenseUnit(2,$dfd_race) +
+                    $dfd_alive[3] * GetDefenseUnit(3,$dfd_race) +
+                    $RACE_DATA[$dfd_race][21] * $dfd_alive[4] * 1.3;
 
 
-for ($t=0; $t<5; $t++)
-{
-if ($dfd_alive[$t]<0) $dfd_alive[$t]=0;
-if ($atk_alive[$t]<0) $atk_alive[$t]=0;
-if ($dfd_alive[$t]>$dfd_units[$t]) $dfd_alive[$t]=$dfd_units[$t];
-if ($atk_alive[$t]>$atk_units[$t]) $atk_alive[$t]=$atk_units[$t];
+    if ($total_dmg[0]/$total_dfd[1]>$total_dmg[1]/$total_dfd[0])
+    {
+        // Attacker Wins:
+        $percent=$total_dfd[1]/$total_dmg[0];
+        $total_dmg[1]*=$percent;
 
-$dfd_alive[$t]=round($dfd_alive[$t]);
-$atk_alive[$t]=round($atk_alive[$t]);
-}
+        // Dfd Dmg on Worker:
+        if ($total_dmg[1]>=$RACE_DATA[$atk_race][21]*2*$atk_alive[4]) {
+            $total_dmg[1]-=$RACE_DATA[$atk_race][21]*2*$atk_alive[4];
+            $atk_alive[4]=0;
+        }
+        else {
+            $atk_alive[4]-=$total_dmg[1]/($RACE_DATA[$atk_race][21]*2);
+            $total_dmg[1]=0;
+        }
 
-return (array(0=>$atk_alive,1=>$dfd_alive));
+        // Dfd Dmg:
+        for ($t=0; $t<4; $t++)
+        {
+            if ($total_dmg[1]<=0) break;
+            if ($total_dmg[1]>=GetDefenseUnit($t,$atk_race)*$atk_alive[$t]) {
+                $total_dmg[1]-=GetDefenseUnit($t,$atk_race)*$atk_alive[$t];
+                $atk_alive[$t]=0;
+            }
+            else {
+                $atk_alive[$t]-=$total_dmg[1]/GetDefenseUnit($t,$atk_race);
+                $total_dmg[1]=0;
+                break;
+            }
+        }
 
+        $dfd_alive=array(0,0,0,0,0);
+    }
+    else
+    {
+        // Defender Wins:
+        $percent=$total_dmg[0]/$total_dmg[1];
+        $total_dmg[0]*=$percent;
+        // Atk Dmg on Worker:
+        if ($total_dmg[0]>=$RACE_DATA[$dfd_race][21]*2*$dfd_alive[4]) {
+            $total_dmg[0]-=$RACE_DATA[$dfd_race][21]*2*$dfd_alive[4];
+            $dfd_alive[4]=0;
+        }
+        else {
+            $dfd_alive[4]-=$total_dmg[0]/($RACE_DATA[$dfd_race][21]*2);
+            $total_dmg[0]=0;
+        }
+
+        // Atk Dmg:
+        for ($t=0; $t<4; $t++)
+        {
+            if ($total_dmg[0]<=0) break;
+            if ($total_dmg[0]>=GetDefenseUnit($t,$dfd_race)*$dfd_alive[$t]) {
+                $total_dmg[0]-=GetDefenseUnit($t,$dfd_race)*$dfd_alive[$t];
+                $dfd_alive[$t]=0;
+            }
+            else {
+                $dfd_alive[$t]-=$total_dmg[0]/GetDefenseUnit($t,$dfd_race);
+                $total_dmg[0]=0;
+                break;
+            }
+        }
+
+        $atk_alive=array(0,0,0,0,0);
+    }
+
+
+    for ($t=0; $t<5; $t++)
+    {
+        if ($dfd_alive[$t]<0) $dfd_alive[$t]=0;
+        if ($atk_alive[$t]<0) $atk_alive[$t]=0;
+        if ($dfd_alive[$t]>$dfd_units[$t]) $dfd_alive[$t]=$dfd_units[$t];
+        if ($atk_alive[$t]>$atk_units[$t]) $atk_alive[$t]=$atk_units[$t];
+
+        $dfd_alive[$t]=round($dfd_alive[$t]);
+        $atk_alive[$t]=round($atk_alive[$t]);
+    }
+
+    return (array(0=>$atk_alive,1=>$dfd_alive));
 }
 
 
@@ -327,7 +367,7 @@ else if($module == 'combatsim')
           <td>'.$units[$i-1].'</td>
           <td>'.($atk_units[$i-1]-$atk_alive[$i-1]).'</td>
           <td>'.$units[$i-1].'</td>
-          <td>'.($dfd_units[$i-1]-$dfd_losses[$i-1]).'</td>
+          <td>'.($dfd_units[$i-1]-$dfd_alive[$i-1]).'</td>
         </tr>');
         }
 
