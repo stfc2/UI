@@ -258,25 +258,25 @@ class sql {
 
   <tr>
 
-    <td bgcolor="#CCCCCC" align="center"><b>query</b></td>
+    <td bgcolor="#CCCCCC" align="center" style="color:black"><b>query</b></td>
 
-    <td bgcolor="#CCCCCC" align="center"><b>execution time</b></td>
+    <td bgcolor="#CCCCCC" align="center" style="color:black"><b>execution time</b></td>
 
-    <td bgcolor="#CCCCCC" align="center"><b>table(s)</b></td>
+    <td bgcolor="#CCCCCC" align="center" style="color:black"><b>table(s)</b></td>
 
-    <td bgcolor="#CCCCCC" align="center"><b>type</b></td>
+    <td bgcolor="#CCCCCC" align="center" style="color:black"><b>type</b></td>
 
-    <td bgcolor="#CCCCCC" align="center"><b>possible keys</b></td>
+    <td bgcolor="#CCCCCC" align="center" style="color:black"><b>possible keys</b></td>
 
-    <td bgcolor="#CCCCCC" align="center"><b>key</b></td>
+    <td bgcolor="#CCCCCC" align="center" style="color:black"><b>key</b></td>
 
-    <td bgcolor="#CCCCCC" align="center"><b>key length</b></td>
+    <td bgcolor="#CCCCCC" align="center" style="color:black"><b>key length</b></td>
 
-    <td bgcolor="#CCCCCC" align="center"><b>ref</b></td>
+    <td bgcolor="#CCCCCC" align="center" style="color:black"><b>ref</b></td>
 
-    <td bgcolor="#CCCCCC" align="center"><b>rows</b></td>
+    <td bgcolor="#CCCCCC" align="center" style="color:black"><b>rows</b></td>
 
-    <td bgcolor="#CCCCCC" align="center"><b>extra</b></td>
+    <td bgcolor="#CCCCCC" align="center" style="color:black"><b>extra</b></td>
 
   </tr>
 
@@ -380,25 +380,25 @@ class sql {
 
 	<tr>
 
-		<td bgcolor="'.$color.'"><pre style=" font-size:12px; font-family:courier new">'.wordwrap(trim(str_replace("\t", '', $sql))).'</pre></td>
+		<td bgcolor="'.$color.'"><pre style=" font-size:12px; font-family:courier new; color:black">'.wordwrap(trim(str_replace("\t", '', $sql))).'</pre></td>
 
-		<td bgcolor="'.$color.'">'.$time.'</td>
+		<td bgcolor="'.$color.'" style="color:black">'.$time.'</td>
 
-		<td bgcolor="'.$color.'">'.$table[2].'</td>
+		<td bgcolor="'.$color.'" style="color:black">'.$table[2].'</td>
 
-		<td bgcolor="'.$color.'">'.$type.'</td>
+		<td bgcolor="'.$color.'" style="color:black">'.$type.'</td>
 
-		<td bgcolor="'.$color.'">'.$possible_keys.'</td>
+		<td bgcolor="'.$color.'" style="color:black">'.$possible_keys.'</td>
 
-		<td bgcolor="'.$color.'">'.$key.'</td>
+		<td bgcolor="'.$color.'" style="color:black">'.$key.'</td>
 
-		<td bgcolor="'.$color.'">'.$key_len.'</td>
+		<td bgcolor="'.$color.'" style="color:black">'.$key_len.'</td>
 
-		<td bgcolor="'.$color.'">'.$ref.'</td>
+		<td bgcolor="'.$color.'" style="color:black">'.$ref.'</td>
 
-		<td bgcolor="'.$color.'">'.$rows.'</td>
+		<td bgcolor="'.$color.'" style="color:black">'.$rows.'</td>
 
-		<td bgcolor="'.$color.'">Intensity '.$danger.(!empty($extra) ? '; '.$extra : '').'</td>
+		<td bgcolor="'.$color.'" style="color:black">Intensity '.$danger.(!empty($extra) ? '; '.$extra : '').'</td>
 
 	</tr>
 
@@ -414,23 +414,23 @@ class sql {
 
 <b>Query Server Intensity</b>:
 
-<span style="background-color:#DADADA">&nbsp;1 </span>
+<span style="background-color:#DADADA; color:black">&nbsp;1 </span>
 
-<span style="background-color:#DAD0D0"> 2 </span>
+<span style="background-color:#DAD0D0; color:black"> 2 </span>
 
-<span style="background-color:#DACACA"> 3 </span>
+<span style="background-color:#DACACA; color:black"> 3 </span>
 
-<span style="background-color:#DAC0C0"> 4 </span>
+<span style="background-color:#DAC0C0; color:black"> 4 </span>
 
-<span style="background-color:#DABABA"> 5 </span>
+<span style="background-color:#DABABA; color:black"> 5 </span>
 
-<span style="background-color:#DAB0B0"> 6 </span>
+<span style="background-color:#DAB0B0; color:black"> 6 </span>
 
-<span style="background-color:#DAAAAA"> 7 </span>
+<span style="background-color:#DAAAAA; color:black"> 7 </span>
 
-<span style="background-color:#DA9090"> 8 </span>
+<span style="background-color:#DA9090; color:black"> 8 </span>
 
-<span style="background-color:#DA8A8A"> 9&nbsp;</span><br>
+<span style="background-color:#DA8A8A; color:black"> 9&nbsp;</span><br>
 
         ';
 
