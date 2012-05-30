@@ -60,22 +60,17 @@ elseif($resource==2) {
 return round($price,0);
 }
 
-function GetFuturePts($t)
+function GetFuturePts($q,$t)
 {
 	/*
 	GetBuildingPts ritorna la somma dei punti struttura usati sul pianeta e dei punti struttura impiegati dalla costruzione della struttura,
 	di modo che se GetBuildingPts torna un valore maggiore, la costruzione non può essere avviata
 	*/
-	global $db;
 	global $game;
 
 	$_points = round(pow($game->planet['building_'.($t+1)]+1,1.5)-pow($game->planet['building_'.($t+1)],1.5));
 
-	$schedulerquery=$db->query('SELECT * FROM scheduler_instbuild WHERE planet_id="'.$game->planet['planet_id'].'"');
-	if ($db->num_rows()>0)
-	{
-		$scheduler = $db->fetchrow($schedulerquery);
-		$q = $scheduler['installation_type']+1;
+	if ($q>0) {
 		$_points_q = round(pow($game->planet['building_'.($q)]+1,1.5)-pow($game->planet['building_'.($q)],1.5));
 	}
 
@@ -362,11 +357,17 @@ $game->out('
 
 
 $game->set_autorefresh(($NEXT_TICK+TICK_DURATION*60*($scheduler['build_finish']-$ACTUAL_TICK))+TICK_DURATION);
+
+// Future structure points calculation
+$future_building = $scheduler['installation_type']+1;
 }
 else // Test for malfunction of building_queue:
 {
 if (isset($game->planet['building_queue']))
 if ($db->query('UPDATE planets SET building_queue=0  WHERE planet_id= "'.$game->planet['planet_id'].'"')==false)  {$game->out('<span class="text_large"><b>Error in "Queue Malfunction Detected": The Works in the queue could not be removed!<br>'.constant($game->sprache("TEXT8")).' (ID='.$game->planet['planet_id'].') '.constant($game->sprache("TEXT9")).'</b></span><br>');}
+
+// Future structure points calculation
+$future_building = 0;
 }
 
 $avai=($game->planet['building_5'])*11+14;
@@ -391,7 +392,7 @@ if ($tt==9) $t=12;
 if (($t==11 && $game->planet['building_1']<4) || ($t==10 && $game->planet['building_1']<3) ||  ($t==6 && $game->planet['building_1']<5) || ($t==8 && $game->planet['building_1']<9) || ($t==7 && $game->planet['building_7']<1) || ($t==9 && ($game->planet['building_6']<5 || $game->planet['building_7']<1))  || ($t==12 && ($game->planet['building_6']<1 || $game->planet['building_7']<1))) {}
 else
 {
-if ($game->planet['resource_1']>=GetBuildingPrice($t,0) && $game->planet['resource_2']>=GetBuildingPrice($t,1) && $game->planet['resource_3']>=GetBuildingPrice($t,2) && $game->planet['planet_available_points']>=GetFuturePts($t))
+if ($game->planet['resource_1']>=GetBuildingPrice($t,0) && $game->planet['resource_2']>=GetBuildingPrice($t,1) && $game->planet['resource_3']>=GetBuildingPrice($t,2) && $game->planet['planet_available_points']>=GetFuturePts($future_building,$t))
 {
 $build_text='<a href="'.parse_link_ex('a=building&a2=start_build&id='.$t,LINK_CLICKID).'"><span style="color: green">'.constant($game->sprache("TEXT25")).' (~'.round(pow($game->planet['building_'.($t+1)]+1,1.5)-pow($game->planet['building_'.($t+1)],1.5)).' '.constant($game->sprache("TEXT26")).')</span></a>';
 if ($game->planet['building_'.($t+1)]>0) $build_text='<a href="'.parse_link_ex('a=building&a2=start_build&id='.$t,LINK_CLICKID).'"><span style="color: green">'.constant($game->sprache("TEXT27")).' '.($game->planet['building_'.($t+1)]+1).' (~'.round(pow($game->planet['building_'.($t+1)]+1,1.5)-pow($game->planet['building_'.($t+1)],1.5)).' '.constant($game->sprache("TEXT26")).')</span></a>';
