@@ -184,28 +184,27 @@ else {
 		$latinum_option_html .= '<option value="'.$i.'"'.( ($game->planet['workermine_3'] == $i) ? ' selected="selected"' : '' ).'>'.$i.'</option>';
 	}
 
-     //Function Allianzsteuer von Output abziehen
-     //Rewrite by Mojo1987
+    //Function Allianzsteuer von Output abziehen
+    //Rewrite by Mojo1987
 
-     $sql = 'SELECT taxes FROM alliance WHERE alliance_id = '.$game->player['user_alliance'];
+    // Check alliance taxes only if the player has an alliance
+    $ress_tax = 0;
+    if ($game->player['user_alliance'] != 0)
+    {
+        $sql = 'SELECT taxes FROM alliance WHERE alliance_id = '.$game->player['user_alliance'];
 
-      if(($alliance_taxes = $db->queryrow($sql)) === false) {
-        message(DATABASE_ERROR, 'Could not query alliance_taxes data');
-      }
+        if(($alliance_taxes = $db->queryrow($sql)) === false) {
+            message(DATABASE_ERROR, 'Could not query alliance_taxes data');
+        }
 
-     if($alliance_taxes['taxes']!=0) {
+        if($alliance_taxes['taxes']!=0) {
+            $ress_tax = 1-$alliance_taxes['taxes']/100;
+        }
+    }
+    //Debug function for Allytax by Mojo1987
+    //echo $ress_tax;
 
-     $ress_tax = 1-$alliance_taxes['taxes']/100;
-
-     }
-     else {
-     $ress_tax = 0;
-
-     }
-     //Debugfunction for Allytax by Mojo1987
-     //echo $ress_tax;
-
-    //Function Ende
+    //Function End
 
     $game->out('
 <script type="text/javascript" language="JavaScript">

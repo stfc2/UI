@@ -1076,7 +1076,9 @@ class game {
 		}
 
 		$anzahl_truppen=$db->queryrow('SELECT unit_1, unit_2, unit_3, unit_4, unit_5, unit_6 FROM `FHB_Handels_Lager` LIMIT 1');
-		$alliance_hp=$db->queryrow('SELECT alliance_homepage AS hp FROM alliance WHERE alliance_id='.$this->player['user_alliance'].'');
+        // Retrive alliance information only if an alliance exists
+        if ($this->player['user_alliance'] != 0)
+            $alliance_hp=$db->queryrow('SELECT alliance_homepage AS hp FROM alliance WHERE alliance_id='.$this->player['user_alliance']);
 
 		// 01/02/08 - AC: Check if data is valid!
 		if($anzahl_truppen == null)
