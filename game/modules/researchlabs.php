@@ -114,26 +114,52 @@ elseif($resource==2) {
 return round($price,0);
 }
 
-function GetCatResearchTime($level,$cat_id)
+function GetCatsResearchTimes()
 {
-global $db;
-global $game;
-global $RACE_DATA, $TECH_DATA, $TECH_NAME, $MAX_RESEARCH_LVL,$NEXT_TICK,$ACTUAL_TICK;
-$time=0;
+    global $db,$game,$RACE_DATA;
 
-$time=pow($level*4,2)+3;
-$time*=$RACE_DATA[$game->player['user_race']][4];
+    $times = array();
 
-$time/=100;
-$time*=(100-2*($game->planet['research_4']*$RACE_DATA[$game->player['user_race']][20]));
+    // Retrieve for all the categories the maximum research level in all the planets 
+    // owned by the player.
+    $sql = 'SELECT MAX(catresearch_1) as mx_lvl0,
+                   MAX(catresearch_2) as mx_lvl1,
+                   MAX(catresearch_3) as mx_lvl2,
+                   MAX(catresearch_4) as mx_lvl3,
+                   MAX(catresearch_5) as mx_lvl4,
+                   MAX(catresearch_6) as mx_lvl5,
+                   MAX(catresearch_7) as mx_lvl6,
+                   MAX(catresearch_8) as mx_lvl7,
+                   MAX(catresearch_9) as mx_lvl8,
+                   MAX(catresearch_10) as mx_lvl9
+            FROM planets WHERE planet_owner='.$game->player['user_id'];
+    $rs=$db->queryrow($sql);
 
-// Test wheter this has already been researched:
-$rs=$db->queryrow('SELECT MAX(catresearch_'.$cat_id.') as mx_lvl FROM planets WHERE planet_owner='.$game->player['user_id']);
-if ($level<$rs['mx_lvl']) $time*=0.4;
+    for ($cat_id = 0; $cat_id < 10; $cat_id++) {
+        // Category research level on selected planet
+        $level = $game->planet['catresearch_'.($cat_id+1)];
 
-if ($time<1) $time=1;
-$time=TICK_DURATION*round($time,0);
-return (format_time($time));
+        $time = pow($level * 4,2) + 3;
+
+        // Add race bonus/malus to the research time
+        $time *= $RACE_DATA[$game->player['user_race']][4];
+
+        $time /= 100;
+
+        // Add technologies boost of the selected planet depending on race bonus/malus
+        $time *= (100 - 2 * ($game->planet['research_4'] * $RACE_DATA[$game->player['user_race']][20]));
+
+        // Test wheter this has already been researched:
+        if ($level < $rs['mx_lvl'.$cat_id])
+            $time *= 0.4;
+
+        if ($time<1)
+            $time = 1;
+
+        $time = TICK_DURATION * round($time,0);
+        $times[$cat_id] = (format_time($time));
+    }
+    return $times;
 }
 
 function GetCatResearchTimeTicks($level,$cat_id)
@@ -416,6 +442,9 @@ $game->out('
 ');
 
 
+// 30/05/12 - AC: Retrieve research times for all the categories at ONE time
+$cat_times = GetCatsResearchTimes();
+
 foreach ($ship_components[$game->player['user_race']] as $key => $components)
 {
 //if ($game->planet['catresearch_'.($key+1)]>=$components['num']) continue;
@@ -475,7 +504,7 @@ $game->out('<tr><td><b>'.$catname.'</b></td><td><b><a href="javascript:void(0);"
 
 $game->out('<img src="'.$game->GFX_PATH.'menu_metal_small.gif"> '.  GetCatResearchPrice($game->planet['catresearch_'.($key+1)],0).'&nbsp;&nbsp;
 <img src="'.$game->GFX_PATH.'menu_mineral_small.gif">'. GetCatResearchPrice($game->planet['catresearch_'.($key+1)],1).'&nbsp;&nbsp;
-<img src="'.$game->GFX_PATH.'menu_latinum_small.gif"> '.GetCatResearchPrice($game->planet['catresearch_'.($key+1)],2).'&nbsp; </td><td>'.GetCatResearchTime($game->planet['catresearch_'.($key+1)],($key+1)).'</td><td>'.$build_text.'</td></tr>');
+<img src="'.$game->GFX_PATH.'menu_latinum_small.gif"> '.GetCatResearchPrice($game->planet['catresearch_'.($key+1)],2).'&nbsp; </td><td>'.$cat_times[$key].'</td><td>'.$build_text.'</td></tr>');
 } // while
 
 $game->out('</table></td></tr></table>');
