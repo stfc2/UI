@@ -353,6 +353,10 @@ define ("GER_TEXT161", 'deine Auktion');
 
 define ("GER_TEXT162", 'wurde  beendet.<br>Es wurden keine Gebote abgegeben.');
 
+define ("GER_TEXT163", 'benefits from allied diplomatic actions:');
+
+define ("GER_TEXT164", 'benefits from other members of our race:');
+
 
 
 //English
@@ -687,6 +691,10 @@ define ("ENG_TEXT161", 'your auction');
 
 define ("ENG_TEXT162", 'has finished.<br>There were no bids.');
 
+define ("ENG_TEXT163", 'benefits from allied diplomatic actions:');
+
+define ("ENG_TEXT164", 'benefits from other members of our race:');
+
 
 
 //Italian
@@ -1020,6 +1028,11 @@ define ("ITA_TEXT160", 'ha un indice di gradimento di');
 define ("ITA_TEXT161", 'la tua asta');
 
 define ("ITA_TEXT162", '&egrave; finita.<br>Non ci sono state offerte.');
+
+define ("ITA_TEXT163", 'benefici da azioni diplomatiche alleate:');
+
+define ("ITA_TEXT164", 'benefici da altri membri della nostra razza:');
+
 
 
 ?>

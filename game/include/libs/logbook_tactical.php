@@ -522,12 +522,20 @@ function display_logbook($log) {
                     }
                 break;
                 case 1:
-                    $game->out(constant($game->sprache("TEXT158")).$t_a_data['user_mood'].'.<br><br>');
+                    $game->out(constant($game->sprache("TEXT158")).' '.$t_a_data['user_mood']['value']);
+                    if(isset($t_a_data['user_mood']['alliance']) || isset($t_a_data['user_mood']['race']) ) {
+                        if(!empty($t_a_data['user_mood']['alliance']))
+                            $game->out('<br>.... '.constant($game->sprache("TEXT163")).' '.$t_a_data['user_mood']['alliance'].'.');
+                        if(!empty($t_a_data['user_mood']['race']))
+                            $game->out('<br>.... '.constant($game->sprache("TEXT164")).' '.$t_a_data['user_mood']['race'].'.');
+                    }
+
+                    $game->out('<br><br>');
+
                     if(isset($t_a_data['toptenlist'][0])) {
                         $game->out(constant($game->sprache("TEXT159")).'<br><br>');
                         foreach($t_a_data['toptenlist'] as $other_user) {
-                            $game->out('<b>'.$other_user['user_name'].'</b> ');
-                            $game->out(' '.constant($game->sprache("TEXT160")).' '.$other_user['mood_value'].'.<br>');
+                            $game->out('<b>'.$other_user['user_name'].'</b> '.constant($game->sprache("TEXT160")).' '.$other_user['mood_value'].'.<br>');
                         }
                     }
                 break;
