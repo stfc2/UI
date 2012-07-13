@@ -243,6 +243,9 @@ define ('USER_CHOOSE_QUADRANT', 1);
 // User start with a whole system
 define ('USER_WHOLE_SYSTEM', 1);
 
+// User start with a boosted capital planet
+define ('USER_START_BOOST', 0);
+
 
 // Beschleuningt den Scheduler
 
