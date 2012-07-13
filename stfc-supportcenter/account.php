@@ -194,15 +194,13 @@ global $db,$db2;
 
 
 function do_logout()
-
-{    if(!setcookie('stgcsupport_session')) {
-
-    }
-
-
-
-    header('Location: logout.php'); return 1;
-
+{
+    header('Location: logout.php'); 
+    // set the expiration date to one hour ago
+    setcookie ('stgcsupport_session', '', time() - 3600);
+    $_COOKIE['stgcsupport_session'] = '';
+    unset($_COOKIE['stgcsupport_session']);
+    //return 1;
 }
 
 
@@ -213,6 +211,6 @@ if (empty($user) && isset($_POST['submit'])) {do_login(); return 1;}
 
 if (empty($user)) {display_login(); return 1;}
 
-if (isset($_GET['logout'])) {do_logout(); return 1;}
+if (isset($_POST['logout'])) {do_logout(); return 1;}
 
 ?>
