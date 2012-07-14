@@ -971,6 +971,32 @@ elseif(!empty($_POST['rename_ship'])) {
     redirect('a=spacedock');
 }
 // #############################################################################
+// Set Naval Contract Code (NCC) to the selected ship
+// #############################################################################
+elseif(!empty($_POST['change_ship_ncc'])) {
+
+    if(empty($_POST['ships'])) {
+        message(NOTICE, constant($game->sprache("TEXT39")));
+    }
+
+    if(empty($_POST['new_ship_ncc'])) {
+        message(NOTICE, constant($game->sprache("TEXT64")));
+    }
+
+    $new_ship_ncc = htmlspecialchars($_POST['new_ship_ncc']);
+
+    $ship_id = (int)$_POST['ships'][0];
+
+    $sql = 'UPDATE ships SET ship_ncc = "'.$new_ship_ncc.'"
+            WHERE ship_id = '.$ship_id;
+
+    if(!$db->query($sql)) {
+        message(DATABASE_ERROR, 'Could not update ship data');
+    }
+
+    redirect('a=spacedock');
+}
+// #############################################################################
 // Display the main page of the Spacedock
 // #############################################################################
 else {
@@ -979,7 +1005,10 @@ else {
 function UpdateShipData()
 {
   var ships = document.getElementById( "ships" );
+  var n=ships.options[ships.selectedIndex].id.split(",");
+
   document.getElementById( "ship_name" ).value = ships.options[ships.selectedIndex].title;
+  document.getElementById( "ship_ncc" ).value = n[0];
 }
 
 function ShipSelection(cSelectType) {
@@ -989,7 +1018,9 @@ function ShipSelection(cSelectType) {
         if (cSelectType == "All") {
             ships.options[i].selected = true;
         } else if (cSelectType == "Damaged") {
-            if (ships.options[i].id == -1) {
+            var n=ships.options[i].id.split(",");
+
+            if (n[1] == -1) {
                 ships.options[i].selected = true;
             } else {
                 ships.options[i].selected = false;
@@ -1002,7 +1033,7 @@ function ShipSelection(cSelectType) {
 </script>');
 
     $sql = 'SELECT s.ship_id, s.hitpoints, s.ship_repair, s.ship_scrap, s.ship_untouchable,
-                   s.unit_1,s.unit_2,s.unit_3,s.unit_4, s.ship_name,
+                   s.unit_1,s.unit_2,s.unit_3,s.unit_4, s.ship_name, s.ship_ncc,
                    st.max_unit_1,st.max_unit_2,st.max_unit_3,st.max_unit_4,
                    st.name AS template_name, st.value_5 AS max_hitpoints
             FROM (ships s)
@@ -1062,7 +1093,7 @@ function ShipSelection(cSelectType) {
         $status = $ship['hitpoints'] < $ship['max_hitpoints'] ? -1 : 0;
 
         /* 07/04/08 - AC: If present, show also ship's name */
-        $game->out('<option value="'.$ship['ship_id'].'" title="'.addslashes($ship['ship_name']).'" id="'.$status.'">'.(($ship['ship_name'] != '')? $ship['ship_name'].' - '.$ship['template_name'] : $ship['template_name']).' ('.$ship['hitpoints'].'/'.$ship['max_hitpoints'].')'.( ($ship['ship_untouchable']) ? ' U' : '' ).''.$repair.''.$scrap.''.$b_title.'</option>');
+        $game->out('<option value="'.$ship['ship_id'].'" title="'.addslashes($ship['ship_name']).'" id="'.addslashes($ship['ship_ncc']).','.$status.'">'.(($ship['ship_name'] != '')? $ship['ship_name'].' - '.$ship['template_name'] : $ship['template_name']).' ('.$ship['hitpoints'].'/'.$ship['max_hitpoints'].')'.( ($ship['ship_untouchable']) ? ' U' : '' ).''.$repair.''.$scrap.''.$b_title.'</option>');
     }
 
 
@@ -1125,6 +1156,11 @@ function ShipSelection(cSelectType) {
                 <td>'.constant($game->sprache("TEXT32")).'</td>
                 <td width="130"><input class="field" type="text" name="new_ship_name" id="ship_name" value="" maxlength="25" size="25"></td>
                 <td><input class="button" style="width: 130px;" type="submit" name="rename_ship" value="'.constant($game->sprache("TEXT65")).'"></td>
+              </tr>
+              <tr>
+                <td>'.constant($game->sprache("TEXT61")).'</td>
+                <td width="130"><input class="field" type="text" name="new_ship_ncc" id="ship_ncc" value="" maxlength="12" size="25"></td>
+                <td><input class="button" style="width: 130px;" type="submit" name="change_ship_ncc" value="'.constant($game->sprache("TEXT66")).'"></td>
               </tr>
             </table>
             <br>
