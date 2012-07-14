@@ -20,6 +20,178 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+define ("GER_NEW_THREAD",
+'Hallo member,
+
+username hat einen neuen Thread mit dem Titel <a href="link"><b>subject</b></a> in der Allianz-Forum eršffnet.
+Klicken Sie auf den Titel, um direkt dorthin fahren.
+
+
+---
+Dies ist eine automatische Nachricht, bitte nicht darauf antworten. Danke.');
+
+define ("GER_NEW_POST",
+'Hallo member,
+
+username hat einen neuen Beitrag in dem Thread mit dem Titel <a href="link"><b>subject</b></a> in der Allianz-Forum gesendet.
+Klicken Sie auf den Titel, um direkt dorthin fahren.
+
+
+---
+Dies ist eine automatische Nachricht, bitte nicht darauf antworten. Danke.');
+
+define ("ITA_NEW_THREAD",
+'Ciao member,
+
+username ha aperto un nuovo topic nel forum alleanza con il titolo <a href="link"><b>subject</b></a>.
+Clicca sul titolo per andare direttamente ad esso. 
+
+
+---
+Questo &egrave; un messaggio automatico, si prega di non rispondere. Grazie.');
+
+define ("ITA_NEW_POST",
+'Ciao member,
+
+username ha scritto un nuovo post nel forum alleanza nel topic con il titolo <a href="link"><b>subject</b></a>.
+Clicca sul titolo per andare direttamente ad esso. 
+
+
+---
+Questo &egrave; un messaggio automatico, si prega di non rispondere. Grazie.');
+
+define ("ENG_NEW_THREAD",
+'Hello member,
+
+username has opened a new thread titled <a href="link"><b>subject</b></a> in the alliance forum.
+Click on the title to go directly to it.
+
+
+---
+This is an automatic message, please do not reply to it. Thank you.');
+
+define ("ENG_NEW_POST",
+'Hello member,
+
+username has sent a new post in the thread titled <a href="link"><b>subject</b></a> in the alliance forum.
+Click on the title to go directly to it.
+
+
+---
+This is an automatic message, please do not reply to it. Thank you.');
+
+
+function SendNotification($subject,$id,$isThread)
+{
+    global $db,$game;
+
+    $sql = 'SELECT user_id,user_name,language
+            FROM user
+            WHERE user_alliance = '.$game->player['user_alliance'];
+
+    if(!$q_members = $db->query($sql)) {
+        message(DATABASE_ERROR, 'Could not query alliance user data');
+    }
+
+    // If it's a post don't care the post's title and use the thread's one
+    if(!$isThread) {
+        $sql = 'SELECT thread_title FROM alliance_bthreads
+                WHERE thread_id = '.$id;
+
+        if(($thread = $db->queryrow($sql)) === false) {
+            message(DATABASE_ERROR, 'Could not query thread data');
+        }
+
+        // This's probably an extra check
+        if(empty($thread['thread_title'])) {
+            message(NOTICE, constant($game->sprache("TEXT9")));
+        }
+
+        $subject = $thread['thread_title'];
+    }
+
+    $patterns = array();
+    $patterns[0] = '/member/';
+    $patterns[1] = '/username/';
+    $patterns[2] = '/link/';
+    $patterns[3] = '/subject/';
+
+    $replacements = array();
+    $replacements[3] = 'tmp';
+    $replacements[2] = 'tmp';
+    $replacements[1] = parse_link('a=alliance_board&show_thread='.$id);
+    $replacements[0] = $subject;
+
+    $i = 0;
+    $user_ids = array();
+
+    while($member = $db->fetchrow($q_members)) {
+        if($member['user_id'] == $game->player['user_id']) continue;
+
+        // It's a new thread?
+        if ($isThread) {
+            switch($member['language']) {
+                case 'GER':
+                    $mail_subject = 'Neuer Thread im Forum Allianz';
+                    $message_string = GER_NEW_THREAD;
+                break;
+                case 'ITA':
+                    $mail_subject = 'Nuovo topic nel forum alleanza';
+                    $message_string = ITA_NEW_THREAD;
+                break;
+                default:
+                    $mail_subject = 'New thread in alliance forum';
+                    $message_string = ENG_NEW_THREAD;
+                break;
+            }
+        }
+        else {
+            switch($member['language']) {
+                case 'GER':
+                    $mail_subject = 'Neuer Beitrag im Bundnis-Forum';
+                    $message_string = GER_NEW_POST;
+                break;
+                case 'ITA':
+                    $mail_subject = 'Nuovo post nel forum alleanza';
+                    $message_string = ITA_NEW_POST;
+                break;
+                default:
+                    $mail_subject = 'New post in alliance forum';
+                    $message_string = ENG_NEW_POST;
+                break;
+            }
+        }
+
+        $replacements[3] = $member['user_name'];
+        $replacements[2] = $game->player['user_name'];
+        $mail_text = preg_replace($patterns, $replacements, $message_string);
+
+        $sql = 'INSERT INTO message (sender, receiver, subject, text, rread, time)
+                VALUES ('.SUPPORTUSER.',
+                        '.$member['user_id'].',
+                        "'.$mail_subject.'",
+                        "'.htmlspecialchars($mail_text).'", 0, '.time().')';
+
+        if(!$db->query($sql)) {
+            message(DATABASE_ERROR, 'Could not insert message data #'.$i);
+        }
+
+        ++$i;
+        $user_ids[] = $member['user_id'];
+    }
+
+    // If there are more the one member in the alliance...
+    // Yeah I could've checked this before, maybe in a future version
+    if($i > 1) {
+        $sql = 'UPDATE user
+                SET unread_messages = unread_messages + 1
+                WHERE user_id IN ('.implode(',', $user_ids).')';
+
+        if(!$db->query($sql)) {
+            message(DATABASE_ERROR, 'Could not update user unread messages');
+        }
+    }
+}
 
 
 $THREADS_PER_PAGE = 15;
@@ -29,7 +201,7 @@ $game->init_player();
 $game->out('<span class="caption">'.constant($game->sprache("TEXT0")).':</span><br><br>');
 
 
-// Dieser Override ist nicht 100% stabil
+// This Override is not 100% stable
 if(!empty($_GET['override_aid'])) {
     if($game->player['user_auth_level'] != STGC_DEVELOPER) {
         message(GENERAL, 'Critical security breach');
@@ -102,6 +274,10 @@ if(!empty($_POST['new_thread_submit'])) {
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not update thread first post data');
     }
+
+    // 14/07/12 - AC: Send a notification of the new thread to all the
+    //            others members of the alliance
+    SendNotification($post_title,$new_thread_id,true);
 
     redirect('a=alliance_board&show_thread='.$new_thread_id.$override_str);
 }
@@ -178,6 +354,10 @@ elseif(!empty($_POST['new_post_submit'])) {
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not update thread data');
     }
+
+    // 14/07/12 - AC: Send a notification of the new post to all the
+    //            others members of the alliance
+    SendNotification($post_title,$thread_id,false);
 
     redirect('a=alliance_board&show_thread='.$thread_id.$override_str);
 }
@@ -391,9 +571,9 @@ elseif(!empty($_POST['delete_post_confirm'])) {
 
     $first_post = ($post['thread_first_post_id'] == $post_id) ? true : false;
 
-    // Das kann sicher noch zusammengefasst werden,
-    // aber ich hab heute Abend keine Ahnung, wie ich
-    // das machen soll...
+    // This can be sure summarized yet,
+    // But tonight I have no idea how
+    // I should do it ...
     $allowed = false;
 
     if($game->player['user_alliance_status'] >= ALLIANCE_STATUS_ADMIN) {
