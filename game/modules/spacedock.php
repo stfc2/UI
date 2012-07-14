@@ -971,32 +971,6 @@ elseif(!empty($_POST['rename_ship'])) {
     redirect('a=spacedock');
 }
 // #############################################################################
-// Set Naval Contract Code (NCC) to the selected ship
-// #############################################################################
-elseif(!empty($_POST['change_ship_ncc'])) {
-
-    if(empty($_POST['ships'])) {
-        message(NOTICE, constant($game->sprache("TEXT39")));
-    }
-
-    if(empty($_POST['new_ship_ncc'])) {
-        message(NOTICE, constant($game->sprache("TEXT64")));
-    }
-
-    $new_ship_ncc = htmlspecialchars($_POST['new_ship_ncc']);
-
-    $ship_id = (int)$_POST['ships'][0];
-
-    $sql = 'UPDATE ships SET ship_ncc = "'.$new_ship_ncc.'"
-            WHERE ship_id = '.$ship_id;
-
-    if(!$db->query($sql)) {
-        message(DATABASE_ERROR, 'Could not update ship data');
-    }
-
-    redirect('a=spacedock');
-}
-// #############################################################################
 // Display the main page of the Spacedock
 // #############################################################################
 else {
@@ -1006,12 +980,29 @@ function UpdateShipData()
 {
   var ships = document.getElementById( "ships" );
   document.getElementById( "ship_name" ).value = ships.options[ships.selectedIndex].title;
-  document.getElementById( "ship_ncc" ).value = ships.options[ships.selectedIndex].id;
+}
+
+function ShipSelection(cSelectType) {
+    var ships = document.getElementById("ships");
+
+    for (var i=0; i<ships.length; i++) {
+        if (cSelectType == "All") {
+            ships.options[i].selected = true;
+        } else if (cSelectType == "Damaged") {
+            if (ships.options[i].id == -1) {
+                ships.options[i].selected = true;
+            } else {
+                ships.options[i].selected = false;
+            }
+        } else if (cSelectType == "None") {
+            ships.options[i].selected = false;
+        }
+    }
 }
 </script>');
 
     $sql = 'SELECT s.ship_id, s.hitpoints, s.ship_repair, s.ship_scrap, s.ship_untouchable,
-                   s.unit_1,s.unit_2,s.unit_3,s.unit_4, s.ship_name, s.ship_ncc,
+                   s.unit_1,s.unit_2,s.unit_3,s.unit_4, s.ship_name,
                    st.max_unit_1,st.max_unit_2,st.max_unit_3,st.max_unit_4,
                    st.name AS template_name, st.value_5 AS max_hitpoints
             FROM (ships s)
@@ -1068,8 +1059,10 @@ function UpdateShipData()
             if ($besatzung!=100) $b_title=' B='.round($besatzung,0).'%';
         }
 
+        $status = $ship['hitpoints'] < $ship['max_hitpoints'] ? -1 : 0;
+
         /* 07/04/08 - AC: If present, show also ship's name */
-        $game->out('<option value="'.$ship['ship_id'].'" title="'.addslashes($ship['ship_name']).'" id="'.addslashes($ship['ship_ncc']).'">'.(($ship['ship_name'] != '')? $ship['ship_name'].' - '.$ship['template_name'] : $ship['template_name']).' ('.$ship['hitpoints'].'/'.$ship['max_hitpoints'].')'.( ($ship['ship_untouchable']) ? ' U' : '' ).''.$repair.''.$scrap.''.$b_title.'</option>');
+        $game->out('<option value="'.$ship['ship_id'].'" title="'.addslashes($ship['ship_name']).'" id="'.$status.'">'.(($ship['ship_name'] != '')? $ship['ship_name'].' - '.$ship['template_name'] : $ship['template_name']).' ('.$ship['hitpoints'].'/'.$ship['max_hitpoints'].')'.( ($ship['ship_untouchable']) ? ' U' : '' ).''.$repair.''.$scrap.''.$b_title.'</option>');
     }
 
 
@@ -1088,6 +1081,10 @@ function UpdateShipData()
     $game->out('
             </select>
             <br><br>
+            '.constant($game->sprache("TEXT67")).'
+            <input class="button" style="width: 90px;" type="button" name="select_all" value="'.constant($game->sprache("TEXT68")).'" onClick="ShipSelection(\'All\')">
+            <input class="button" style="width: 90px;" type="button" name="select_damaged" value="'.constant($game->sprache("TEXT69")).'" onClick="ShipSelection(\'Damaged\')">
+            <input class="button" style="width: 90px;" type="button" name="select_none" value="'.constant($game->sprache("TEXT70")).'" onClick="ShipSelection(\'None\')"><br><br>
             <input class="button" type="submit" name="repair_ships" value="'.constant($game->sprache("TEXT38")).'">&nbsp;
             <input class="button" type="submit" name="man_ships" value="'.constant($game->sprache("TEXT43")).'">&nbsp;
             <input class="button" type="submit" name="scrap_ships" value="'.constant($game->sprache("TEXT47")).'">&nbsp;
@@ -1128,11 +1125,6 @@ function UpdateShipData()
                 <td>'.constant($game->sprache("TEXT32")).'</td>
                 <td width="130"><input class="field" type="text" name="new_ship_name" id="ship_name" value="" maxlength="25" size="25"></td>
                 <td><input class="button" style="width: 130px;" type="submit" name="rename_ship" value="'.constant($game->sprache("TEXT65")).'"></td>
-              </tr>
-              <tr>
-                <td>'.constant($game->sprache("TEXT61")).'</td>
-                <td width="130"><input class="field" type="text" name="new_ship_ncc" id="ship_ncc" value="" maxlength="12" size="25"></td>
-                <td><input class="button" style="width: 130px;" type="submit" name="change_ship_ncc" value="'.constant($game->sprache("TEXT66")).'"></td>
               </tr>
             </table>
             <br>

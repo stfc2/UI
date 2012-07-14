@@ -101,6 +101,14 @@ define ("GER_TEXT65", 'Rename');
 
 define ("GER_TEXT66", 'Assign');
 
+define ("GER_TEXT67", 'Ship selection:');
+
+define ("GER_TEXT68", 'All');
+
+define ("GER_TEXT69", 'Damaged');
+
+define ("GER_TEXT70", 'None');
+
 
 //English
 define ("ENG_TEXT27", 'You still don\'t possess a');
@@ -183,6 +191,14 @@ define ("ENG_TEXT65", 'Rename');
 
 define ("ENG_TEXT66", 'Assign');
 
+define ("ENG_TEXT67", 'Ship selection:');
+
+define ("ENG_TEXT68", 'All');
+
+define ("ENG_TEXT69", 'Damaged');
+
+define ("ENG_TEXT70", 'None');
+
 
 //Italiano
 define ("ITA_TEXT27", 'Ancora non possiedi un');
@@ -264,6 +280,15 @@ define ("ITA_TEXT64", 'Non &egrave; stato indicato nessun codice contratto per l
 define ("ITA_TEXT65", 'Rinomina');
 
 define ("ITA_TEXT66", 'Assegna');
+
+define ("ITA_TEXT67", 'Seleziona navi:');
+
+define ("ITA_TEXT68", 'Tutte');
+
+define ("ITA_TEXT69", 'Danneggiate');
+
+define ("ITA_TEXT70", 'Nessuna');
+
 
 
 ?>
