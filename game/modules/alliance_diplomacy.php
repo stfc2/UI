@@ -583,7 +583,7 @@ elseif(!empty($_POST['new_submit'])) {
     switch($type) {
         case ALLIANCE_DIPLOMACY_WAR:
 
-       if($alliance['alliance_points']<=500 || $alliance['alliance_member']<=5) {
+       if($alliance['alliance_points']<=500 || $alliance['alliance_member']<=1) {
            message(NOTICE, constant($game->sprache("TEXT82")));
        }
 
