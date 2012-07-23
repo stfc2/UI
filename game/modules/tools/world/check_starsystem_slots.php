@@ -54,11 +54,11 @@ $game->out('
 <br>
 <table width="400" align="center" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="200">überprüfte Slots:</td>
+    <td width="200">Checked slots:</td>
     <td width="200"><b>'.$n_slots.'</td>
   </tr>
   <tr>
-    <td>Fehlerhafte Slots:</td>
+    <td>Faulty slots:</td>
     <td><b>'.$n_errors.'</b></td>
   </tr>
   <tr height="10"><td></td></tr>
@@ -67,7 +67,7 @@ $game->out('
 ');
 
 for($i = 0; $i < $n_errors; ++$i) {
-    $game->out('- In Sektor <b>'.$errors[$i][0].'</b> ist <b>'.$errors[$i][1].'</b>|<b>'.$errors[$i][2].'</b> doppelt benutzt<br>');
+    $game->out('- In sector <b>'.$errors[$i][0].'</b> position <b>'.$errors[$i][1].'</b>|<b>'.$errors[$i][2].'</b> is used twice<br>');
 }
 
 $game->out('

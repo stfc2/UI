@@ -26,7 +26,7 @@ $game->init_player();
 check_auth(STGC_DEVELOPER);
 
 if(!isset($_GET['sure'])) {
-	$game->out('<br><center>Wirklich eine Reparatur der Slots durchführen?<br><br><b>Es dürfen keine Slots bereits existieren!</b><br><br><a href="'.parse_link('a=tools/world/repair_starsystem_slots&sure').'">Neu erstellen</a></center>');
+	$game->out('<br><center>Really do a repair of the slots?<br><br><b>There MUST not be any slots already!</b><br><br><a href="'.parse_link('a=tools/world/repair_starsystem_slots&sure').'">Create new</a></center>');
 	return;
 }
 

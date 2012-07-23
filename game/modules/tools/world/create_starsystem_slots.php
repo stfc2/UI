@@ -24,13 +24,13 @@
 $magic_split = 9;
 
 
-// Muss auskommentiert sein, da dieses Tool sonst nicht ohne Planet benutzt werden kann
+// Must be commented out, because otherwise this tool cannot be used without the planet
 //$game->init_player();
 
 check_auth(STGC_DEVELOPER);
 
 if(!isset($_GET['sure'])) {
-	$game->out('<br><center>Wirklich alle Slots für Sternensysteme neu erstellen?<br><br><b>Die alten müssen vorher gelöscht sein!</b><br><br><a href="'.parse_link('a=tools/world/create_starsystem_slots&sure').'">Neu erstellen</a></center>');
+	$game->out('<br><center>Do you really want to rebuild all star systems slots?<br><br><b>The old must be deleted before!</b><br><br><a href="'.parse_link('a=tools/world/create_starsystem_slots&sure').'">Create new</a></center>');
 	return;
 }
 
