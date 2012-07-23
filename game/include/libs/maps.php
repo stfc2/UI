@@ -337,20 +337,6 @@ class maps {
 
         global $db, $game;
 
-        ////////// Retrieve coordinates of the user planet capital
-
-        $sql = 'SELECT system_id FROM planets WHERE planet_id = '.$game->player['user_capital'];
-        if(!$capitalsystem = $db->queryrow($sql)) {
-            message(DATABASE_ERROR, 'Could not query starsystems data');
-        }
-
-        $sql = 'SELECT system_id, system_global_x, system_global_y FROM starsystems WHERE system_id = '.$capitalsystem['system_id'];
-        if(!$capitalcoord = $db->queryrow($sql)) {
-            message(DATABASE_ERROR, 'Could not query starsystems data');
-        }
-
-        ///////////
-
         if( ($sector_id < 1) || ($sector_id > $this->max_sectors) ) {
             message(GENERAL, 'Invalid sector id '.$sector_id);
         }
@@ -406,8 +392,8 @@ class maps {
 
             ////////////////// Calculate the distance in A.U. between the capital system and the target one
 
-            if ($capitalcoord['system_id'] != $system['system_id']) {
-                $distance = get_distance(array($capitalcoord['system_global_x'], $capitalcoord['system_global_y']),
+            if ($game->capital_system_id != $system['system_id']) {
+                $distance = get_distance(array($game->capital_global_x, $game->capital_global_y),
                                 array($system['system_global_x'], $system['system_global_y']));
                 $distance = round($distance, 2);
             }

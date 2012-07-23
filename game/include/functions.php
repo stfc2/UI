@@ -917,6 +917,12 @@ class game {
 	var $starsize_range = array(10, 20);
 	var $planet_distances = array( array(43, 53), array(68, 78), array(93, 103), array(118, 128), array(143, 155), array(170, 180), array(195, 205), array(220, 230) );
 
+	// Store player's capital planet coordinates in order to calculate
+	// distances from it in libs\maps.php:create_sector_map() function.
+	var $capital_system_id;
+	var $capital_global_x;
+	var $capital_global_y;
+
 	var $uid_cache = array();
 
 	function game() {
@@ -1703,6 +1709,23 @@ echo'
 
 		if( ($this->player['user_auth_level'] == STGC_PLAYER) && (!$RACE_DATA[$this->player['user_race']][22]) && ($this->player['user_id']!=7103)  && ($this->player['user_id']!=4)) {
 			message(GENERAL, constant($this->sprache("INVRACE")), 'user_race = '.$this->player['user_race']);
+		}
+
+		// Retrieve coordinates of the user planet capital
+
+		$sql = 'SELECT system_id FROM planets WHERE planet_id = '.$this->player['user_capital'];
+		if(!$capitalsystem = $db->queryrow($sql)) {
+			message(DATABASE_ERROR, 'Could not query user capital data');
+		}
+
+		$sql = 'SELECT system_id, system_global_x, system_global_y FROM starsystems WHERE system_id = '.$capitalsystem['system_id'];
+		if(!$capitalcoord = $db->queryrow($sql)) {
+			message(DATABASE_ERROR, 'Could not query user capital starsystem data');
+		}
+		else {
+			$this->capital_system_id = $capitalcoord['system_id'];
+			$this->capital_global_x  = $capitalcoord['system_global_x'];
+			$this->capital_global_y  = $capitalcoord['system_global_y'];
 		}
 	}
 
