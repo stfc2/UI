@@ -418,11 +418,11 @@ $main_html .= '
             <table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td width="170" class="desc_row">In esecuzione dal:</td>
-                <td width="100" class="value_row">16.06.2010</td>
+                <td width="100" class="value_row">--.--.----</td>
               </tr>
               <tr>
                 <td width="170" class="desc_row">Termine turno il:</td>
-                <td width="100" class="value_row">2011?</td>
+                <td width="100" class="value_row">--.--.----</td>
               </tr>
               <tr><td height="10"></td></tr>
               <tr>
@@ -457,7 +457,7 @@ $main_html .= '
               </tr>
               <tr><td height="10"></td></tr>
               <tr>
-                <td class="desc_row">sistemi solari:</td>
+                <td class="desc_row">Sistemi solari:</td>
                 <td class="value_row">'.$systems_ingame['num'].'</td>
               <tr>
                 <td class="desc_row">Pianeti:</td>
@@ -469,10 +469,10 @@ $main_html .= '
                 <td class="value_row">'.$planets_ingame['points_sum'].'</td>
               </tr>
               <tr>
-                <td class="desc_row">'.chr(248).' per giocatore:</td>
+                <td class="desc_row">&oslash; per giocatore:</td>
                 <td class="value_row">'.round( ($planets_ingame['points_sum'] / $player_count['num']), 2).'</td>
               <tr>
-                <td class="desc_row">'.chr(248).' per pianeta:</td>
+                <td class="desc_row">&oslash; per pianeta:</td>
                 <td class="value_row">'.round( ($planets_ingame['points_sum'] / $planets_ingame['num']), 2).'</td>
               </tr>
               <tr><td height="10"></td></tr>
@@ -490,11 +490,11 @@ $main_html .= '
             <table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td width="170" class="desc_row">In esecuzione dal:</td>
-                <td width="100" class="value_row">28.05.2010</td>
+                <td width="100" class="value_row">--.--.----</td>
               </tr>
               <tr>
                 <td width="170" class="desc_row">Termine turno il:</td>
-                <td width="100" class="value_row">31.01.2011</td>   
+                <td width="100" class="value_row">--.--.----</td>   
               </tr>
               <tr><td height="10"></td></tr>
               <tr>
@@ -541,10 +541,10 @@ $main_html .= '
                 <td class="value_row">'.$planets_ingame2['points_sum'].'</td>
               </tr>
               <tr>
-                <td class="desc_row">'.chr(248).' per giocatore:</td>
+                <td class="desc_row">&oslash; per giocatore:</td>
                 <td class="value_row">'.round( ($planets_ingame2['points_sum'] / $player_count2['num']), 2).'</td>
               <tr>
-                <td class="desc_row">'.chr(248).' per pianeta:</td>
+                <td class="desc_row">&oslash; per pianeta:</td>
                 <td class="value_row">'.round( ($planets_ingame2['points_sum'] / $planets_ingame2['num']), 2).'</td>
               </tr>
               <tr><td height="10"></td></tr>
