@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.google.com/schemas/sitemap/0.84">
+
+
+<url>
+
+  <loc>http://www.stfc.it</loc>
+
+  <lastmod>2008-10-02</lastmod>
+
+  <changefreq>weekly</changefreq>
+
+  <priority>0.5</priority>
+
+</url>
+
+
+
+
+
+<url>
+
+  <loc>http://www.stfc.it/index.php?</loc>
+
+  <lastmod>2008-10-02</lastmod>
+
+  <changefreq>weekly</changefreq>
+
+  <priority>0.5</priority>
+
+</url>
+
+
+
+
+
+<url>
+
+  <loc>http://www.stfc.it/index.php?a=login</loc>
+
+  <lastmod>2008-10-02</lastmod>
+
+  <changefreq>weekly</changefreq>
+
+  <priority>0.5</priority>
+
+</url>
+
+
+
+
+
+<url>
+
+  <loc>http://www.stfc.it/index.php?a=register</loc>
+
+  <lastmod>2008-10-02</lastmod>
+
+  <changefreq>weekly</changefreq>
+
+  <priority>0.5</priority>
+
+</url>
+
+
+
+
+
+<url>
+
+  <loc>http://www.stfc.it/index.php?a=stats</loc>
+
+  <lastmod>2008-10-02</lastmod>
+
+  <changefreq>weekly</changefreq>
+
+  <priority>0.5</priority>
+
+</url>
+
+
+
+
+
+<url>
+
+  <loc>http://www.stfc.it/index.php?a=imprint</loc>
+
+  <lastmod>2008-10-02</lastmod>
+
+  <changefreq>weekly</changefreq>
+
+  <priority>0.5</priority>
+
+</url>
+
+
+
+
+
+<url>
+
+  <loc>http://www.stfc.it/index.php?a=lost_password</loc>
+
+  <lastmod>2008-10-02</lastmod>
+
+  <changefreq>weekly</changefreq>
+
+  <priority>0.5</priority>
+
+</url>
+
+
+
+
+
+<url>
+
+  <loc>http://www.stfc.it/index.php?a=register&amp;galaxy=0</loc>
+
+  <lastmod>2008-10-02</lastmod>
+
+  <changefreq>weekly</changefreq>
+
+  <priority>0.5</priority>
+
+</url>
+
+
+
+
+
+<url>
+
+  <loc>http://www.stfc.it/index.php?a=register&amp;galaxy=1</loc>
+
+  <lastmod>2008-10-02</lastmod>
+
+  <changefreq>weekly</changefreq>
+
+  <priority>0.5</priority>
+
+</url>
+
+
+
+
+
+<url>
+
+  <loc>http://www.stfc.it/game/maps/images/galaxy_detail.png</loc>
+
+  <lastmod>2008-10-02</lastmod>
+
+  <changefreq>weekly</changefreq>
+
+  <priority>0.5</priority>
+
+</url>
+
+
+
+
+
+<url>
+
+  <loc>http://www.stfc.it/game2/maps/images/galaxy_detail.png</loc>
+
+  <lastmod>2008-10-02</lastmod>
+
+  <changefreq>weekly</changefreq>
+
+  <priority>0.5</priority>
+
+</url>
+
+
+
+
+</urlset>

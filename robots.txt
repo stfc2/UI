@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /config.inc.php
+Disallow: /config2.inc.php
+Disallow: /bugs/
+Disallow: /game/
+Disallow: /game2/
+Disallow: /gfx/
+Disallow: /stfc_gfx/
+Disallow: /stfc_gfx2/
+Disallow: /supportcenter/
+Disallow: /testing/
