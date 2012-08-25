@@ -110,7 +110,7 @@ $RACE_DATA = array(
 
    0 => array( 
 
-      0 => 'Föderation', 
+      0 => 'F&ouml;deration', 
 
       1 => 1.0, 
 
