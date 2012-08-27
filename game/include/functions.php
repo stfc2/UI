@@ -1082,9 +1082,27 @@ class game {
 		}
 
 		$anzahl_truppen=$db->queryrow('SELECT unit_1, unit_2, unit_3, unit_4, unit_5, unit_6 FROM `FHB_Handels_Lager` LIMIT 1');
-        // Retrive alliance information only if an alliance exists
+        // Retrieve alliance information only if an alliance exists
         if ($this->player['user_alliance'] != 0)
+        {
             $alliance_hp=$db->queryrow('SELECT alliance_homepage AS hp FROM alliance WHERE alliance_id='.$this->player['user_alliance']);
+
+            // 21/02/08 - AC: Check if alliance homepage is empty
+            if($alliance_hp['hp'] == '')
+                $alliance_hp['hp'] = JSCRIPT_PATH.parse_link('a=alliance_board'); // <- temp solution!!
+            $pos1 = stripos($alliance_hp['hp'], "http://");
+            if($pos1!==false) {
+                $alliance_hp_var='<a href="'.$alliance_hp['hp'].'" target="_blank">'.constant($this->sprache("ALLYFORUM")).'</a><br>';
+            } else {
+                $alliance_hp_var='<a href="http://'.$alliance_hp['hp'].'" target="_blank">'.constant($this->sprache("ALLYFORUM")).'</a><br>';
+            }
+        }
+        else
+        {
+            // 27/08/12 - AC: These variables must be initialized for some skins.
+            $alliance_hp_var = '';
+            $alliance_hp['hp'] = '';
+        }
 
 		// 01/02/08 - AC: Check if data is valid!
 		if($anzahl_truppen == null)
@@ -1101,28 +1119,6 @@ class game {
 <li>Lv1: '.$anzahl_truppen['unit_1'].'</li><li>Lv2: '.$anzahl_truppen['unit_2'].'</li><li>Lv3: '.$anzahl_truppen['unit_3'].'</li><li>Lv4: '.$anzahl_truppen['unit_4'].'</li><li>Lv5: '.$anzahl_truppen['unit_5'].'</li><li>Lv6: '.$anzahl_truppen['unit_6'].'</li>';
 
 		if($this->player['skin_farbe']==null)$this->player['skin_farbe']="#283359";
-
-		// 01/02/08 - AC: Check if data is valid before doing this!
-		if($alliance_hp != null)
-		{
-			// 21/02/08 - AC: Check if alliance homepage is empty
-			if($alliance_hp['hp'] == '')
-				$alliance_hp['hp'] = JSCRIPT_PATH.parse_link('a=alliance_board'); // <- temp solution!!
-			$pos1 = stripos($alliance_hp['hp'], "http://");
-			if($pos1!==false)
-			{
-				$alliance_hp_var='<a href="'.$alliance_hp['hp'].'" target="_blank">'.constant($this->sprache("ALLYFORUM")).'</a><br>';
-			}else{
-				$alliance_hp_var='<a href="http://'.$alliance_hp['hp'].'" target="_blank">'.constant($this->sprache("ALLYFORUM")).'</a><br>';
-			}
-		}
-		else
-		{
-			$alliance_hp_var='';
-
-			// 01/02/08 - AC: Also THIS must be initialized..
-			$alliance_hp['hp'] = '';
-		}
 
 		/* 17/03/08 - AC: Add Trade Center link highlighting if auctions are presents */
 		global $ACTUAL_TICK;
