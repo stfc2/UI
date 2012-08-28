@@ -74,7 +74,7 @@ $PLANETS_TEXT = array(
         0 => 'Class-F-World',
         1 => 'Possible with technical assistance',
         2 => 'High occurrences of dilithium',
-        3 => 'Planets of this class are similar in mass and distance from the Sun to the Earth. Their atmosphere is already very rich in oxygen, but due to their low age (about 1 billion years), their surface often is not yet perfectly solidified. Minor technical assistance support life.',
+        3 => 'Planets of this class are similar in mass and distance from the Sun to the Earth. Their atmosphere is already very rich in oxygen, but due to their low age (about 1 billion years), their surface often is not yet perfectly solidified. Minimum technical assistance supports life.',
         4 => '-'
     ),
     
@@ -131,7 +131,7 @@ $PLANETS_TEXT = array(
         0 => 'Terrestrial World',
         1 => 'Possible',
         2 => 'Medium occurrences of all major commodities',
-        3 => 'Planets in this class are similar mass and distance from the sun of the Earth. Their atmosphere is rich in oxygen-Mole Cooling (O2, O3) and the surface is rich with water. Lebensbedigungen ideals.',
+        3 => 'Planets of this class are similar in mass and distance from the sun to the Earth. Their atmosphere is rich in oxygen-Mole Cooling (O2, O3) and the surface is rich with water. Ideal settings for Life.',
         4 => 'Terra, Vulcan, Quo&acute;nos, Romulus, Bajor, Cardassia, ...'
     ),
     
@@ -139,7 +139,7 @@ $PLANETS_TEXT = array(
         0 => 'Water-Planet',
         1 => 'Possible',
         2 => 'Moderate incidence of all major commodities',
-        3 => 'Planets in this class are similar mass and distance from the sun of the Earth. Their atmosphere is equal to that of a Class M planet procure, the surface is about far more than 90% with water. An ideal living conditions.',
+        3 => 'Planets of this class are similar in mass and distance from the sun to the Earth. Their atmosphere is equal to that of a Class M planet, the surface is about far more than 90% covered with water. An ideal living conditions.',
         4 => '-',
     ),
     
@@ -147,7 +147,7 @@ $PLANETS_TEXT = array(
         0 => 'Daemon-Planet',
         1 => 'Very expensive, but possible',
         2 => 'Very high resources of all commodities',
-        3 => 'Class of this planet are planets or planetoids have an extremely toxic atmosphere and its surface cools very active rarely below 500 Kelvin. The surface winds reach multiple sonic speed and aggressive atmospheric gases can only resist a few substances. With solid technical support and supplies from the outside is life possible.',
+        3 => 'Planets of this class are planets or planetoids having an extremely toxic atmosphere and their very active surface rarely cools below 500 Kelvin. The surface winds can reach the speed of sound and few materials can withstand the most corrosive atmospheric gases. With a strong technical support and a solid provision from outside life is possible.',
         4 => '-'
     ),
 );
