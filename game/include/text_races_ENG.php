@@ -113,13 +113,13 @@ $BUILDING_NAME = array(
 
         6 => 'Space port',
 
-        7 => 'Reich Shipyard',
+        7 => 'Empire shipyard',
 
         8 => 'Research institute',
 
         9 => 'Orbital gun',
 
-        10 => 'Trace center',
+        10 => 'Trade center',
 
         11 => 'Bunker',
 
