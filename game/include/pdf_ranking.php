@@ -62,7 +62,7 @@ function get_alliance_tag($alliance_id) {
 }
 
 
-/* 12/06/08 - AC: Translate also this! */
+/* 12/06/08 - AC: Translate also this! 
 switch($game->player['language'])
 {
   case 'GER':
@@ -95,7 +95,7 @@ switch($game->player['language'])
 
     $created = 'Creata il ';
   break;
-  default:
+  default:*/
     $place = 'Place:';
     $name = 'Name:';
     $alliance = 'Alliance:';
@@ -109,9 +109,9 @@ switch($game->player['language'])
     $allyrank = 'Actual STFC Alliance Ranking';
 
     $created = 'Created on ';
-  break;
+/*  break;
 }
-/**/
+**/
 
 if(isset($_GET['action'])) {
 
@@ -137,7 +137,8 @@ if(isset($_GET['action'])) {
 
     $pdf = new PDF(); 
 
-    $pdf->SetAuthor($game->player['user_name']);
+    //$pdf->SetAuthor($game->player['user_name']);
+    $pdf->SetAuthor('http://www.stfc.it');
 
     $pdf->SetTitle($config['site_url']);
 
@@ -157,7 +158,7 @@ if(isset($_GET['action'])) {
 
     $pdf->MultiCell(0,7,$created.date('d.m.y H:i', time()).'', 0, 'R');
 
-    $pdf->SetAutoPageBreak(on, 15.0);
+    $pdf->SetAutoPageBreak(true, 15.0);
 
     $pdf->SetFont('arial','',12); 
 
@@ -197,7 +198,8 @@ if(isset($_GET['action'])) {
 
     $pdf = new PDF(); 
 
-    $pdf->SetAuthor($game->player['user_name']);
+    //$pdf->SetAuthor($game->player['user_name']);
+    $pdf->SetAuthor('http://www.stfc.it');
 
     $pdf->SetTitle($config['site_url']);
 
@@ -217,7 +219,7 @@ if(isset($_GET['action'])) {
 
     $pdf->MultiCell(0,7,$created.date('d.m.y H:i', time()).'', 0, 'R');
 
-    $pdf->SetAutoPageBreak(on, 15.0);
+    $pdf->SetAutoPageBreak(true, 15.0);
 
     $pdf->SetFont('Arial','',12); 
 
