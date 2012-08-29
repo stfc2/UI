@@ -249,46 +249,50 @@ return $time;
 
 function Abort_Research()
 {
-global $db;
-global $game;
-global $TECH_DATA, $TECH_NAME, $MAX_RESEARCH_LVL,$NEXT_TICK,$ACTUAL_TICK;
+    global $db, $game;
 
-// New: Table locking
-$game->init_player(12);
+    $t=(int)$_REQUEST['id'];
 
-$schedulerquery=$db->query('SELECT * FROM scheduler_research WHERE planet_id="'.$game->planet['planet_id'].'"');
-if ($db->num_rows()>0)
-{
-$scheduler=$db->fetchrow($schedulerquery);
-$scheduler['research_id'];
-$t=$scheduler['research_id'];
+    // New: Table locking
+    $game->init_player(12);
 
+    // 29/08/12 - AC: Now that Abort_Research has the research_id to delete, this query is probably redundant and
+    //            it would be enough to call directly the DELETE query.
+    $sql = 'SELECT * FROM scheduler_research WHERE planet_id="'.$game->planet['planet_id'].'" AND research_id='.$t;
+    $schedulerquery = $db->query($sql);
+    if ($db->num_rows() > 0)
+    {
+        //$scheduler=$db->fetchrow($schedulerquery);
+        //$t=$scheduler['research_id'];
 
-if ($t<5)
-{
-// Abort Local Research:
-if (($db->query('DELETE FROM scheduler_research WHERE (planet_id='.$scheduler['planet_id'].') LIMIT 1'))==true)
-{
-  if (($db->query('UPDATE planets SET resource_1=resource_1+'.(GetResearchPrice($t,0)).',resource_2=resource_2+'.(GetResearchPrice($t,1)).',resource_3=resource_3+'.(GetResearchPrice($t,2)).'  WHERE planet_id= "'.$game->planet['planet_id'].'"'))!=true) {message(DATABASE_ERROR, 'research_query: Could not call DELETE FROM in scheduler_research '); exit();}
-} //end: if (($db->query('DELETE FROM scheduler_research WHERE (planet_id='.$scheduler['planet_id'].') LIMIT 1'))==true)
-}
-else
-{
-// Abort Cat-Research:
+        $sql = 'DELETE FROM scheduler_research WHERE planet_id='.$game->planet['planet_id'].' AND research_id='.$t;
+        if (($db->query($sql))==true)
+        {
+            // Abort Local Research:
+            if ($t<5) {
+                $sql = 'UPDATE planets SET resource_1=resource_1+'.(GetResearchPrice($t,0)).',
+                                           resource_2=resource_2+'.(GetResearchPrice($t,1)).',
+                                           resource_3=resource_3+'.(GetResearchPrice($t,2)).'
+                        WHERE planet_id = "'.$game->planet['planet_id'].'"';
+            }
+            // Abort Cat-Research:
+            else {
+                // a.) Get the comp:
+                $t-=5;
+                $sql = 'UPDATE planets SET resource_1=resource_1+'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],0)).',
+                                           resource_2=resource_2+'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],1)).',
+                                           resource_3=resource_3+'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],2)).'
+                        WHERE planet_id = "'.$game->planet['planet_id'].'"';
+            } //end: else
 
-// a.) Get the comp:
-$t-=5;
+            if (($db->query($sql))!=true) {
+                message(DATABASE_ERROR, 'research_query: Could not call DELETE FROM in scheduler_research!');
+                exit();
+            }
+        } //end: if (($db->query('DELETE FROM scheduler_research WHERE (planet_id='.$scheduler['planet_id'].') LIMIT 1'))==true)
+    } // end: if ($db->num_rows()>0)
 
-if (($db->query('DELETE FROM scheduler_research WHERE (planet_id='.$scheduler['planet_id'].') LIMIT 1'))==true)
-{
-  if (($db->query('UPDATE planets SET resource_1=resource_1+'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],0)).',resource_2=resource_2+'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],1)).',resource_3=resource_3+'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],2)).'  WHERE planet_id= "'.$game->planet['planet_id'].'"'))!=true) {message(DATABASE_ERROR, 'research_query: Could not call DELETE FROM in scheduler_research '); exit();}
-} //end: if (($db->query('DELETE FROM scheduler_research WHERE (planet_id='.$scheduler['planet_id'].') LIMIT 1'))==true)
-
-} //end: else
-
-} // end: if ($db->num_rows()>0)
-
-redirect('a=researchlabs');
+    redirect('a=researchlabs');
 }
 
 
@@ -305,7 +309,7 @@ $t=(int)$_REQUEST['id'];
 $game->init_player(12);
 $done=0;
 
-$userquery=$db->query('SELECT * FROM scheduler_research WHERE (planet_id="'.$game->planet['planet_id'].'")');
+$userquery=$db->query('SELECT * FROM scheduler_research WHERE (planet_id="'.$game->planet['planet_id'].'" AND research_id<5)');
 if ($db->num_rows()!=0) {$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT19")).'</span><br>');}
 else
 {
@@ -349,7 +353,7 @@ $game->init_player(12);
 
 $done=0;
 
-$userquery=$db->query('SELECT * FROM scheduler_research WHERE (planet_id="'.$game->planet['planet_id'].'")');
+$userquery=$db->query('SELECT * FROM scheduler_research WHERE (planet_id="'.$game->planet['planet_id'].'" AND research_id>=5)');
 if ($db->num_rows()!=0) {$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT19")).'</span><br>');}
 else
 {
@@ -396,32 +400,23 @@ if ($game->player['pending_capital_choice']) $capital=0;
 
 
 $schedulerquery=$db->query('SELECT * FROM scheduler_research WHERE planet_id="'.$game->planet['planet_id'].'"');
-if ($db->num_rows()>0)
+while($scheduler = $db->fetchrow($schedulerquery))
 {
-$scheduler = $db->fetchrow($schedulerquery);
-
-if ($scheduler['research_id']<5)
-$game->out('
-<table border=0 cellpadding=1 cellspacing=1 width=300 class="style_outer"><tr><td>
-<table border=0 cellpadding=2 cellspacing=2 width=300 class="style_inner"><tr><td>
-'.constant($game->sprache("TEXT20")).' <b>'.$TECH_NAME[$game->player['user_race']][$scheduler['research_id']].'</b><br>
-'.constant($game->sprache("TEXT21")).'
-<b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b><br>
-<a href="'.parse_link_ex('a=researchlabs&a2=abort_research',LINK_CLICKID).'"><b>'.constant($game->sprache("TEXT22")).'</b></a>
-</td></tr></table></td></tr></table><br>
-');
-else
-{
-$game->out('
-<table border=0 cellpadding=1 cellspacing=1 width=300 class="style_outer"><tr><td>
-<table border=0 cellpadding=2 cellspacing=2 width=300 class="style_inner"><tr><td>
-'.constant($game->sprache("TEXT20")).' <b>'.$ship_components[$game->player['user_race']][($scheduler['research_id']-5)][$game->planet['catresearch_'.(($scheduler['research_id']-4))]]['name'].'</b><br>
-'.constant($game->sprache("TEXT21")).'
-<b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b><br>
-<a href="'.parse_link_ex('a=researchlabs&a2=abort_research',LINK_CLICKID).'"><b>'.constant($game->sprache("TEXT22")).'</b></a>
-</td></tr></table></td></tr></table><br>
-');
+$game->out('<table border=0 cellpadding=1 cellspacing=1 width=300 class="style_outer"><tr><td>
+<table border=0 cellpadding=2 cellspacing=2 width=300 class="style_inner"><tr><td>');
+if ($scheduler['research_id']<5) {
+$game->out(constant($game->sprache("TEXT20")).' <b>'.$TECH_NAME[$game->player['user_race']][$scheduler['research_id']].'</b><br>');
+$timer = 'timer3';
 }
+else {
+$game->out(constant($game->sprache("TEXT20")).' <b>'.$ship_components[$game->player['user_race']][($scheduler['research_id']-5)][$game->planet['catresearch_'.(($scheduler['research_id']-4))]]['name'].'</b><br>');
+$timer = 'timer4';
+}
+
+$game->out(constant($game->sprache("TEXT21")).'
+<b id="'.$timer.'" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b><br>
+<a href="'.parse_link_ex('a=researchlabs&a2=abort_research&id='.$scheduler['research_id'],LINK_CLICKID).'"><b>'.constant($game->sprache("TEXT22")).'</b></a>
+</td></tr></table></td></tr></table><br>');
 
 $game->set_autorefresh($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish']-$ACTUAL_TICK));
 }
@@ -449,7 +444,7 @@ foreach ($ship_components[$game->player['user_race']] as $key => $components)
 {
 //if ($game->planet['catresearch_'.($key+1)]>=$components['num']) continue;
 if ($game->planet['catresearch_'.($key+1)]>=$game->planet['building_9']  && $game->planet['building_9']<9) // Wenn man nicht erst Forschungszentrum hochbauen muss
-{$comp['name']=constant($game->sprache("TEXT29"));$build_text='<span style="color: red">'.constant($game->sprache("TEXT30")).'</span>';}
+{$components[$game->planet['catresearch_'.($key+1)]]['name']=constant($game->sprache("TEXT29"));$build_text='<span style="color: red">'.constant($game->sprache("TEXT30")).'</span>';}
 elseif ($game->planet['resource_1']>=GetCatResearchPrice($game->planet['catresearch_'.($key+1)],0) && $game->planet['resource_2']>=GetCatResearchPrice($game->planet['catresearch_'.($key+1)],1) && $game->planet['resource_3']>=GetCatResearchPrice($game->planet['catresearch_'.($key+1)],2))
 {$build_text='<a href="'.parse_link_ex('a=researchlabs&a2=start_catresearch&id='.$key,LINK_CLICKID).'"><span style="color: green">'.constant($game->sprache("TEXT30")).'</span></a>';}
 else {$build_text='<span style="color: red">'.constant($game->sprache("TEXT30")).'</span>';}
