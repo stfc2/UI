@@ -1646,11 +1646,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'D´deridex Class',  // Name
+			29 => 'D&acute;deridex Class',  // Name
 
 			30 => 947,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die D´deridex Class geh&ouml;rt zu den beh&auml;bigen aber erfahrenen Schiffen. Mit den richtigen Upgrades versehen kann sie einige Kratzer auf den Schiffen deiner Gegner hinterlassen.',
+			31 => 'Die D&acute;deridex Class geh&ouml;rt zu den beh&auml;bigen aber erfahrenen Schiffen. Mit den richtigen Upgrades versehen kann sie einige Kratzer auf den Schiffen deiner Gegner hinterlassen.',
 
 			),
 
@@ -1716,7 +1716,7 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'D´deridex Class',  // Name
+			29 => 'D&acute;deridex Class',  // Name
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
@@ -2158,7 +2158,7 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'B´rel (Bird of Prey)',  // Name
+			29 => 'B&acute;rel (Bird of Prey)',  // Name
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
@@ -2228,17 +2228,17 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'B´rel (Bird of Prey)',  // Name
+			29 => 'B&acute;rel (Bird of Prey)',  // Name
 
 			30 => 103,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die B´rel-Klasse ist eines der 2 Mittelklasse-Schiffe. Als die alten Bird of Preys den Schiffen der noch jungen F&ouml;deration immer &ouml;fter unterlegen waren, wurde diese Klasse komplett neu entworfen. Heraus kam ein starker, wendiger Angriffsj&auml;ger.',
+			31 => 'Die B&acute;rel-Klasse ist eines der 2 Mittelklasse-Schiffe. Als die alten Bird of Preys den Schiffen der noch jungen F&ouml;deration immer &ouml;fter unterlegen waren, wurde diese Klasse komplett neu entworfen. Heraus kam ein starker, wendiger Angriffsj&auml;ger.',
 
 			),
 
 
 
-    	// K´T´Inga
+    	// K&acute;T&acute;Inga
 
 	    5 => array(
 
@@ -2300,11 +2300,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'K´T´Inga',  // Name
+			29 => 'K&acute;T&acute;Inga',  // Name
 
 			30 => 204,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die K´T´Inga ist das zweite der 2 Mittelklasse-Schiffe. Sie ersetzt die alte D7 Klasse deren H&uuml;llenmodell sie auch verwendet. Jedoch hat sie weitaus bessere Waffen und Schilde.',
+			31 => 'Die K&acute;T&acute;Inga ist das zweite der 2 Mittelklasse-Schiffe. Sie ersetzt die alte D7 Klasse deren H&uuml;llenmodell sie auch verwendet. Jedoch hat sie weitaus bessere Waffen und Schilde.',
 
 			),
 
@@ -2370,7 +2370,7 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'K´T´Inga',  // Name
+			29 => 'K&acute;T&acute;Inga',  // Name
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
@@ -2440,11 +2440,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'K´vort',  // Name
+			29 => 'K&acute;vort',  // Name
 
 			30 => 438,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Kvort wurde entwickelt als man feststellte dass die B´rel zwar sehr schnell und wendig war jedoch nur im Schwarm gr&ouml;&szlig;ere Sch&auml;den verursacht. Die K´vort Klasse wurde daher mit st&auml;rkeren Waffen und Schilden ausgestattet.',
+			31 => 'Die Kvort wurde entwickelt als man feststellte dass die B&acute;rel zwar sehr schnell und wendig war jedoch nur im Schwarm gr&ouml;&szlig;ere Sch&auml;den verursacht. Die K&acute;vort Klasse wurde daher mit st&auml;rkeren Waffen und Schilden ausgestattet.',
 
 			),
 
@@ -2510,7 +2510,7 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'K´vort',  // Name
+			29 => 'K&acute;vort',  // Name
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
@@ -2584,7 +2584,7 @@ $SHIP_TORSO = array(
 
 			30 => 902,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Vorcha wurde entwickelt als man feststellte, dass die K´T´Inga von unten leicht anzugreifen war. Bei ihr wurden Offensiv- und Defensivpotentiial noch einmal verst&auml;rkt. Durch ihre verh&auml;ltnissm&auml;&szlig;ig geringe Bauzeit stellt sie nach der K´T´Inga das neue R&uuml;ckrat der Flotte dar.',
+			31 => 'Die Vorcha wurde entwickelt als man feststellte, dass die K&acute;T&acute;Inga von unten leicht anzugreifen war. Bei ihr wurden Offensiv- und Defensivpotentiial noch einmal verst&auml;rkt. Durch ihre verh&auml;ltnissm&auml;&szlig;ig geringe Bauzeit stellt sie nach der K&acute;T&acute;Inga das neue R&uuml;ckrat der Flotte dar.',
 
 			),
 
@@ -2720,11 +2720,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Negh´Var',  // Name
+			29 => 'Negh&acute;Var',  // Name
 
 			30 => 1873,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Negh´Var wurde als Pendant zur Keldon Klasse der Cardassianer entwickelt und ist eines der st&auml;rksten Schiffe der Galaxie. In diesem Schiff wurden die modernsten Waffen eingebaut &uuml;ber die das Reich verf&uuml;gt und die st&auml;rksten Schilde und Panzerung machen es zu einer harten Nuss f&uuml;r jeden Gegner. Der Rumpf ist von Disrupturb&auml;nken geradezu bedeckt und ein Toter Winkel wurde v&ouml;llig verhindert.',
+			31 => 'Die Negh&acute;Var wurde als Pendant zur Keldon Klasse der Cardassianer entwickelt und ist eines der st&auml;rksten Schiffe der Galaxie. In diesem Schiff wurden die modernsten Waffen eingebaut &uuml;ber die das Reich verf&uuml;gt und die st&auml;rksten Schilde und Panzerung machen es zu einer harten Nuss f&uuml;r jeden Gegner. Der Rumpf ist von Disrupturb&auml;nken geradezu bedeckt und ein Toter Winkel wurde v&ouml;llig verhindert.',
 
 			),
 
@@ -4090,7 +4090,7 @@ $SHIP_TORSO = array(
 
 			30 => 96,  // Benötige Arbeiter zum Bau
 
-			31 => 'Von unseren Feinden manchmal ´Battlebug´ genannt, stellt dieses Schiff unsere R&uuml;ckrad dar und es ist inzwischen DAS Symbol unserer glorreichen Gr&uuml;nder und hat dem Dominion schon gute Dienste geleistet.',
+			31 => 'Von unseren Feinden manchmal &acute;Battlebug&acute; genannt, stellt dieses Schiff unsere R&uuml;ckrad dar und es ist inzwischen DAS Symbol unserer glorreichen Gr&uuml;nder und hat dem Dominion schon gute Dienste geleistet.',
 
 	    ),
 
@@ -5168,7 +5168,7 @@ $SHIP_TORSO = array(
 			),
 
 
-    	// D´Kora-Class
+    	// D&acute;Kora-Class
 
 	    7 => array(
 
@@ -5230,11 +5230,11 @@ $SHIP_TORSO = array(
 
 			28 => 0, // Auf 0 lassen
 
-			29 => 'D´Kora-Class', // Name
+			29 => 'D&acute;Kora-Class', // Name
 
 			30 => 1841, // Benötige Arbeiter zum Bau
 
-			31 => 'Das bekannteste aller Ferengi Schiffe mit gutem Offensiv- und Defensivpotential. Da sich jeder Ferengi sein Schiff selbst kauft variiert die Bewaffnung der D´Koras sehr stark.',
+			31 => 'Das bekannteste aller Ferengi Schiffe mit gutem Offensiv- und Defensivpotential. Da sich jeder Ferengi sein Schiff selbst kauft variiert die Bewaffnung der D&acute;Koras sehr stark.',
 
 			),
 
@@ -5300,7 +5300,7 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'D´Kora-Class',  // Name
+			29 => 'D&acute;Kora-Class',  // Name
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
