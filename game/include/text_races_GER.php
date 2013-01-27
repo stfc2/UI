@@ -496,7 +496,7 @@ $UNIT_NAME = array(
 
 		1 => 'Erfahrener Krieger',
 
-		2 => 'Krieger d. Bat´leth',
+		2 => 'Krieger d. Bat&acute;leth',
 
 		3 => 'General',
 
@@ -532,7 +532,7 @@ $UNIT_NAME = array(
 
 	4 => array(
 
-		0 => 'Jem´Hadar',
+		0 => 'Jem&acute;Hadar',
 
 		1 => '.E.d. Jem Hadar',
 
@@ -998,7 +998,7 @@ $UNIT_DESCRIPTION = array (
 
         1 => 'Die Erfahrenen Krieger sind vor allem im Nahkampf effektiv und haben eine verst&auml;rkte Verteidigung<br>Sie k&ouml;nnen fast &uuml;berall effizient eingesetzt werden obwohl ihre Ausbildung im Vergleich zu den einfachen Kriegern ein ganzes St&uuml;ck teurer ist.',
 
-        2 => 'Die Krieger des Bat´leth leben nur, um einen ehrenvollen Tod im Kampf finden zu k&ouml;nnen. Sie haben sich schon vorher in Schlachten glorreich geschlagen und kennen keine gr&ouml;&szlig;ere Ehre, als f&uuml;r euer Reich fallen zu d&uuml;rfen.',
+        2 => 'Die Krieger des Bat&acute;leth leben nur, um einen ehrenvollen Tod im Kampf finden zu k&ouml;nnen. Sie haben sich schon vorher in Schlachten glorreich geschlagen und kennen keine gr&ouml;&szlig;ere Ehre, als f&uuml;r euer Reich fallen zu d&uuml;rfen.',
 
         3 => 'Der General wird nicht f&uuml;r Kampfeins&auml;tze sondern zur F&uuml;hrung von Schiffen ausgebildet.<br>Gener&auml;le sind teuer in ihrer Ausbildung, sind aber auf jedem Schiff erforderlich. Ihre Kampfst&auml;rke ist mit der der einfachen Krieger gleichzusetzen.',
 
@@ -1034,11 +1034,11 @@ $UNIT_DESCRIPTION = array (
 
     4 => array(
 
-		0 => 'Die Jem´Hadar sind relativ leicht und billig zu klonen und sind am Anfang die idealen Truppen f&uuml;r die Planetenverteidigung. F&uuml;r gr&ouml;&szlig;ere Schiffe sind sie jedoch kaum geeignet.',
+		0 => 'Die Jem&acute;Hadar sind relativ leicht und billig zu klonen und sind am Anfang die idealen Truppen f&uuml;r die Planetenverteidigung. F&uuml;r gr&ouml;&szlig;ere Schiffe sind sie jedoch kaum geeignet.',
 
-		1 => 'Die Sona Kampftruppe ist eine Allzweckeinheit und vor allem im Nahkampf effektiver als die Jem´Hadar, kostet dem entsprechend aber auch mehr.',
+		1 => 'Die Sona Kampftruppe ist eine Allzweckeinheit und vor allem im Nahkampf effektiver als die Jem&acute;Hadar, kostet dem entsprechend aber auch mehr.',
 
-		2 => 'Die Honered Elders sind die Erfahrensten der Jem´Hadar. Sie besitzen durch ihre jahrlange Kampferfahrung das gr&ouml;&szlig;te Angriffspotential und sind daher die beste M&ouml;glichkeit zum Angriff oder zur Verteidigung.',
+		2 => 'Die Honered Elders sind die Erfahrensten der Jem&acute;Hadar. Sie besitzen durch ihre jahrlange Kampferfahrung das gr&ouml;&szlig;te Angriffspotential und sind daher die beste M&ouml;glichkeit zum Angriff oder zur Verteidigung.',
 
 		3 => 'Durch ihre F&uuml;hrungsqualit&auml;ten sind die Vorta die geborenen(geklonten) Anf&uuml;hrer und bestens als Commander geeignet, jedoch f&uuml;r den Kampf ungeeignet.',
 

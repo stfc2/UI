@@ -92,7 +92,7 @@ $SHIP_TORSO = array(
 
 			30 => 15,  // Benötige Arbeiter zum Bau
 
-			31 => 'Bei der Danube Klasse handelt es sich um Kurzstrecken Aufklärer. Da hier alle Energie für die Sensoren benötigt wird, sind diese Schiffe unbewaffnet.',
+			31 => 'Bei der Danube Klasse handelt es sich um Kurzstrecken Aufkl&auml;rer. Da hier alle Energie f&uuml;r die Sensoren ben&ouml;tigt wird, sind diese Schiffe unbewaffnet.',
 
 	    ),
 
@@ -162,7 +162,7 @@ $SHIP_TORSO = array(
 
 			30 => 105,  // Benötige Arbeiter zum Bau
 
-			31 => 'Mit dem Transporter kann man entweder 4000 Rohstoffe bzw. 400 Einheiten transportieren, oder sie mit auf einen Angriff schicken. Sie sind relativ langsam, dafür ist ihre Verteidigung akzeptabel.',
+			31 => 'Mit dem Transporter kann man entweder 4000 Rohstoffe bzw. 400 Einheiten transportieren, oder sie mit auf einen Angriff schicken. Sie sind relativ langsam, daf&uuml;r ist ihre Verteidigung akzeptabel.',
 
 
 
@@ -234,7 +234,7 @@ $SHIP_TORSO = array(
 
 			30 => 1955,  // Benötige Arbeiter zum Bau
 
-			31 => 'Mit dem Kolonieschiff kannst du einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerstört hast, geht das Kolonieschiff verloren (da seine Holoemitter zur Simulation erster Einrichtungen demontiert werden) und der Planet steht unter deinem Kommando.',
+			31 => 'Mit dem Kolonieschiff kannst du einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerst&ouml;rt hast, geht das Kolonieschiff verloren (da seine Holoemitter zur Simulation erster Einrichtungen demontiert werden) und der Planet steht unter deinem Kommando.',
 
 	    ),
 
@@ -304,7 +304,7 @@ $SHIP_TORSO = array(
 
 			30 => 168,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Sabre ist eine der neusten Entwicklungen der Förderation im Bereich der Fregatten. Die modulare Bauweise gestattet eine höhere Aufrüstfähigkeit als der Miranda. Ihre Vielseitigkeit sollte sie in keiner Flotte fehlen.',
+			31 => 'Die Sabre ist eine der neusten Entwicklungen der F&ouml;rderation im Bereich der Fregatten. Die modulare Bauweise gestattet eine h&ouml;here Aufr&uuml;stf&auml;higkeit als der Miranda. Ihre Vielseitigkeit sollte sie in keiner Flotte fehlen.',
 
 	    ),
 
@@ -374,7 +374,7 @@ $SHIP_TORSO = array(
 
 			30 => 175,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Steamrunner Klasse wurde ursprünglich als schnell baubares Aushilfsschiff dienen doch ihre hohe Manövrierbarkeit und moderate Bewaffnung ließen sie schnell die ältere Elite verdrängen.',
+			31 => 'Die Steamrunner Klasse wurde urspr&uuml;nglich als schnell baubares Aushilfsschiff dienen doch ihre hohe Man&ouml;vrierbarkeit und moderate Bewaffnung lie&szlig;en sie schnell die &auml;ltere Elite verdr&auml;ngen.',
 
 	    ),
 
@@ -444,7 +444,7 @@ $SHIP_TORSO = array(
 
 			30 => 380,  // Benötige Arbeiter zum Bau
 
-			31 => 'Light Cruiser letzten Generation, mit einzigartigen Technologien von denen auf Schiffen des Bundes. Geboren zu reisen bei sehr hohen Reisegeschwindigkeit, hat ein Rüstung je gesehen Sondierungsgespräche über ein Schiff von dieser Tonnage.',
+			31 => 'Light Cruiser letzten Generation, mit einzigartigen Technologien von denen auf Schiffen des Bundes. Geboren zu reisen bei sehr hohen Reisegeschwindigkeit, hat ein R&uuml;stung je gesehen Sondierungsgespr&auml;che &uuml;ber ein Schiff von dieser Tonnage.',
 
 		    ),
 
@@ -516,7 +516,7 @@ $SHIP_TORSO = array(
 
 			30 => 245,  // Benötige Arbeiter zum Bau
 
-			31 => 'Der kompakteste leichte Kreuzer der Sternenflotte. Ausgestattet mit Quantentorpedos besitzt sie eine für ihre Verhältnisse enorme Feuerkraft. Jedoch schränken Schildkapazität und Crewgröße den Einsatzradius ein. Als leichtes Angriffsschiff mit vorinstallierter Tarnvorrichtung ist sie die beste Wahl.',
+			31 => 'Der kompakteste leichte Kreuzer der Sternenflotte. Ausgestattet mit Quantentorpedos besitzt sie eine f&uuml;r ihre Verh&auml;ltnisse enorme Feuerkraft. Jedoch schr&auml;nken Schildkapazit&auml;t und Crewgr&ouml;&szlig;e den Einsatzradius ein. Als leichtes Angriffsschiff mit vorinstallierter Tarnvorrichtung ist sie die beste Wahl.',
 
 	    ),
 
@@ -586,7 +586,7 @@ $SHIP_TORSO = array(
 
 			30 => 550,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Exelsior gehört zur Klasse der Kreuzer und bietet ein sehr wirtschaftliches Verhältnis. Aufgrund zahlreicher Weiterentwicklungen durch die Sternenflotte gibt es sie in mehreren Ausführungen. Die aktuellste Version besitzt sogar mehrphasige, regenerierende Schilde.',
+			31 => 'Die Exelsior geh&ouml;rt zur Klasse der Kreuzer und bietet ein sehr wirtschaftliches Verh&auml;ltnis. Aufgrund zahlreicher Weiterentwicklungen durch die Sternenflotte gibt es sie in mehreren Ausf&uuml;hrungen. Die aktuellste Version besitzt sogar mehrphasige, regenerierende Schilde.',
 
 	    ),
 
@@ -656,7 +656,7 @@ $SHIP_TORSO = array(
 
 			30 => 790,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Nebula ist zwar ein Ableger der Galaxie-Klasse, sollte jedoch als eigener Schiffstyp mit eigenen Fähigkeiten gesehen werden. Ihre Größe macht sie zwar behäbiger als leichte Kreuzer, in Punkto Feuerkraft und Schildstärke steht sie jedoch über ihnen.',
+			31 => 'Die Nebula ist zwar ein Ableger der Galaxie-Klasse, sollte jedoch als eigener Schiffstyp mit eigenen F&auml;higkeiten gesehen werden. Ihre Gr&ouml;&szlig;e macht sie zwar beh&auml;biger als leichte Kreuzer, in Punkto Feuerkraft und Schildst&auml;rke steht sie jedoch &uuml;ber ihnen.',
 
 	    ),
 
@@ -726,7 +726,7 @@ $SHIP_TORSO = array(
 
 			30 => 965,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Galaxy zeichnet sich durch beeindruckende Kampfkraft aus. Obwohl als Forschungsschiff klassifiziert konnte diese Schiffsklasse ihr Kampfgeschick in jeder größeren Schlacht der Föderation unter Beweis stellen. Was ihr an offensiver Bewaffnung fehlt macht sie locker duch ihre schweren Schilde und Panzerung wett. Einer Galaxy sollte man nur in Gruppen auf den Leib rücken.',
+			31 => 'Die Galaxy zeichnet sich durch beeindruckende Kampfkraft aus. Obwohl als Forschungsschiff klassifiziert konnte diese Schiffsklasse ihr Kampfgeschick in jeder gr&ouml;&szlig;eren Schlacht der F&ouml;deration unter Beweis stellen. Was ihr an offensiver Bewaffnung fehlt macht sie locker duch ihre schweren Schilde und Panzerung wett. Einer Galaxy sollte man nur in Gruppen auf den Leib r&uuml;cken.',
 
 	    ),
 
@@ -796,7 +796,7 @@ $SHIP_TORSO = array(
 
 			30 => 181,  // Benötige Arbeiter zum Bau
 
-			31 => 'Das erste für die Schlacht entwickelte Schiff der Föderation, Ausgestattet mit mehreren Torpedowerfern kann es ein wahres Inferno auf Feindflotten beschwören. Regenerative Schilde sorgen für ausreichenden Schutz. Diese Schiffsklasse wurde mit dem Augenmerk auf höchste Überlebensfähigkeit, Schnelligkeit und Angriffskraft entwickelt.',
+			31 => 'Das erste f&uuml;r die Schlacht entwickelte Schiff der F&ouml;deration, Ausgestattet mit mehreren Torpedowerfern kann es ein wahres Inferno auf Feindflotten beschw&ouml;ren. Regenerative Schilde sorgen f&uuml;r ausreichenden Schutz. Diese Schiffsklasse wurde mit dem Augenmerk auf h&ouml;chste Überlebensf&auml;higkeit, Schnelligkeit und Angriffskraft entwickelt.',
 
 	    ),
 
@@ -866,7 +866,7 @@ $SHIP_TORSO = array(
 
 			30 => 1400,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Sovereign Klasse ist die modernste Schiffklasse der Föderation. Sie ist zwar offiziell ein Allround Schiff entfaltet aber ihr wahres Potential im Kampf. Starke Waffen und Schilde sowie eine gute Manövrierfähigkeit machen sie zu einem Gegner dem ein Schiff nicht alleine gegenübertreten sollte. Es kann eine verloren schienende Schlacht ohne Probleme wenden.',
+			31 => 'Die Sovereign Klasse ist die modernste Schiffklasse der F&ouml;deration. Sie ist zwar offiziell ein Allround Schiff entfaltet aber ihr wahres Potential im Kampf. Starke Waffen und Schilde sowie eine gute Man&ouml;vrierf&auml;higkeit machen sie zu einem Gegner dem ein Schiff nicht alleine gegen&uuml;bertreten sollte. Es kann eine verloren schienende Schlacht ohne Probleme wenden.',
 
 	    ),
 
@@ -932,11 +932,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Orbitalgeschütz',  // Name
+			29 => 'Orbitalgesch&uuml;tz',  // Name
 
 			30 => 425,  // Benötige Arbeiter zum Bau
 
-			31 => 'Aufgrund der Angreifbarkeit vieler Welten der Föderation sahen sich die Techniker zur Konstruktion dieser automatisierten Waffenplattform genötigt. Ausgestattet mit Phaserbänken und schnell feuernden Photonentorpedorampen bildet es eine wichtige Komponente in der Verteidigungsstrategie der Föderierten.',
+			31 => 'Aufgrund der Angreifbarkeit vieler Welten der F&ouml;deration sahen sich die Techniker zur Konstruktion dieser automatisierten Waffenplattform gen&ouml;tigt. Ausgestattet mit Phaserb&auml;nken und schnell feuernden Photonentorpedorampen bildet es eine wichtige Komponente in der Verteidigungsstrategie der F&ouml;derierten.',
 
 	    ),
 
@@ -1090,7 +1090,7 @@ $SHIP_TORSO = array(
 
 			30 => 85,  // Benötige Arbeiter zum Bau
 
-			31 => 'Mit dem Transporter kann man entweder Rohstoffe bzw. Einheiten transportieren, oder sie mit auf einen Angriff schicken. Sie sind relativ langsam, dafür ist ihre Verteidigung akzeptabel.',
+			31 => 'Mit dem Transporter kann man entweder Rohstoffe bzw. Einheiten transportieren, oder sie mit auf einen Angriff schicken. Sie sind relativ langsam, daf&uuml;r ist ihre Verteidigung akzeptabel.',
 
 			),
 
@@ -1160,7 +1160,7 @@ $SHIP_TORSO = array(
 
 			30 => 1855,  // Benötige Arbeiter zum Bau
 
-			31 => 'Mit dem Kolonieschiff kannst du einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerstört hast, geht das Kolonieschiff verloren (da seine Schiffshülle zur Errichtung erster Einrichtungen demontiert wird) und der Planet steht unter deinem Kommando.',
+			31 => 'Mit dem Kolonieschiff kannst du einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerst&ouml;rt hast, geht das Kolonieschiff verloren (da seine Schiffsh&uuml;lle zur Errichtung erster Einrichtungen demontiert wird) und der Planet steht unter deinem Kommando.',
 
 			),
 
@@ -1230,7 +1230,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -1300,7 +1300,7 @@ $SHIP_TORSO = array(
 
 			30 => 94,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Talon Class ist eines der 2 Mittelklasse-Schiffe. Sie hat keinerlei besondere Fertigkeiten und ihre Kampfstärke ist dem Preis angemessen.',
+			31 => 'Die Talon Class ist eines der 2 Mittelklasse-Schiffe. Sie hat keinerlei besondere Fertigkeiten und ihre Kampfst&auml;rke ist dem Preis angemessen.',
 
 			),
 
@@ -1370,7 +1370,7 @@ $SHIP_TORSO = array(
 
 			30 => 231,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Sience Class ist eines der 2 Mittelklasse-Schiffe. Sie hat keinerlei besondere Fertigkeiten und ihre Kampfstärke ist dem Preis angemessen.',
+			31 => 'Die Sience Class ist eines der 2 Mittelklasse-Schiffe. Sie hat keinerlei besondere Fertigkeiten und ihre Kampfst&auml;rke ist dem Preis angemessen.',
 
 			),
 
@@ -1440,7 +1440,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),			
 
@@ -1510,7 +1510,7 @@ $SHIP_TORSO = array(
 
 			30 => 436,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Norexan Class gehört zur Oberklasse, sie besitzt als erstes Schiff Quantentorpedos und kann dadurch immense Schäden anrichten.',
+			31 => 'Die Norexan Class geh&ouml;rt zur Oberklasse, sie besitzt als erstes Schiff Quantentorpedos und kann dadurch immense Sch&auml;den anrichten.',
 
 			),
 
@@ -1580,7 +1580,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -1650,7 +1650,7 @@ $SHIP_TORSO = array(
 
 			30 => 947,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die D´deridex Class gehört zu den behäbigen aber erfahrenen Schiffen. Mit den richtigen Upgrades versehen kann sie einige Kratzer auf den Schiffen deiner Gegner hinterlassen.',
+			31 => 'Die D´deridex Class geh&ouml;rt zu den beh&auml;bigen aber erfahrenen Schiffen. Mit den richtigen Upgrades versehen kann sie einige Kratzer auf den Schiffen deiner Gegner hinterlassen.',
 
 			),
 
@@ -1720,7 +1720,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -1790,7 +1790,7 @@ $SHIP_TORSO = array(
 
 			30 => 1873,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Scimitar Class gehört zur Eliteklasse, sie besitzt die größte Manövrierbarkeit der Romulanischen Flotte.',
+			31 => 'Die Scimitar Class geh&ouml;rt zur Eliteklasse, sie besitzt die gr&ouml;&szlig;te Man&ouml;vrierbarkeit der Romulanischen Flotte.',
 
 			),
 
@@ -1856,11 +1856,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Orbitalgeschütz',  // Name
+			29 => 'Orbitalgesch&uuml;tz',  // Name
 
 			30 => 325,  // Benötige Arbeiter zum Bau
 
-			31 => 'Seid dem Sturz Shinzons erheben sich vermehrt verschiedene Fraktionen gegen das romulanische Sternenimperium und bedrohen offen die romulanischen Welten. Als Schutzmaßnahme wurden diese Orbitalplattformen entwickelt, welche, ausgestattet mit Disruptoren und Plasmatorpedos, eine effektive Verteidigung gewährleisten.',
+			31 => 'Seid dem Sturz Shinzons erheben sich vermehrt verschiedene Fraktionen gegen das romulanische Sternenimperium und bedrohen offen die romulanischen Welten. Als Schutzma&szlig;nahme wurden diese Orbitalplattformen entwickelt, welche, ausgestattet mit Disruptoren und Plasmatorpedos, eine effektive Verteidigung gew&auml;hrleisten.',
 
 	    ),
 
@@ -1948,7 +1948,7 @@ $SHIP_TORSO = array(
 
 			30 => 5,  // Benötige Arbeiter zum Bau
 
-			31 => 'Der Scout ist zum ausspionieren von Flotten und Planeten gedacht. Auch wenn der Dienst auf ihm keine Ehre bringt erfüllt er doch seinen Zweck.',
+			31 => 'Der Scout ist zum ausspionieren von Flotten und Planeten gedacht. Auch wenn der Dienst auf ihm keine Ehre bringt erf&uuml;llt er doch seinen Zweck.',
 
 			),
 
@@ -2020,7 +2020,7 @@ $SHIP_TORSO = array(
 
 			30 => 117,  // Benötige Arbeiter zum Bau
 
-			31 => 'Mit einem Transporter kann man entweder 4000 Rohstoffe bzw. 400 Krieger transportieren, oder sie mit in eine Schlacht schicken. Sie sind relativ langsam, dafür ist ihre Verteidigung akzeptabel.',
+			31 => 'Mit einem Transporter kann man entweder 4000 Rohstoffe bzw. 400 Krieger transportieren, oder sie mit in eine Schlacht schicken. Sie sind relativ langsam, daf&uuml;r ist ihre Verteidigung akzeptabel.',
 
 			),
 
@@ -2162,7 +2162,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -2232,7 +2232,7 @@ $SHIP_TORSO = array(
 
 			30 => 103,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die B´rel-Klasse ist eines der 2 Mittelklasse-Schiffe. Als die alten Bird of Preys den Schiffen der noch jungen Föderation immer öfter unterlegen waren, wurde diese Klasse komplett neu entworfen. Heraus kam ein starker, wendiger Angriffsjäger.',
+			31 => 'Die B´rel-Klasse ist eines der 2 Mittelklasse-Schiffe. Als die alten Bird of Preys den Schiffen der noch jungen F&ouml;deration immer &ouml;fter unterlegen waren, wurde diese Klasse komplett neu entworfen. Heraus kam ein starker, wendiger Angriffsj&auml;ger.',
 
 			),
 
@@ -2304,7 +2304,7 @@ $SHIP_TORSO = array(
 
 			30 => 204,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die K´T´Inga ist das zweite der 2 Mittelklasse-Schiffe. Sie ersetzt die alte D7 Klasse deren Hüllenmodell sie auch verwendet. Jedoch hat sie weitaus bessere Waffen und Schilde.',
+			31 => 'Die K´T´Inga ist das zweite der 2 Mittelklasse-Schiffe. Sie ersetzt die alte D7 Klasse deren H&uuml;llenmodell sie auch verwendet. Jedoch hat sie weitaus bessere Waffen und Schilde.',
 
 			),
 
@@ -2374,7 +2374,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -2444,7 +2444,7 @@ $SHIP_TORSO = array(
 
 			30 => 438,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Kvort wurde entwickelt als man feststellte dass die B´rel zwar sehr schnell und wendig war jedoch nur im Schwarm größere Schäden verursacht. Die K´vort Klasse wurde daher mit stärkeren Waffen und Schilden ausgestattet.',
+			31 => 'Die Kvort wurde entwickelt als man feststellte dass die B´rel zwar sehr schnell und wendig war jedoch nur im Schwarm gr&ouml;&szlig;ere Sch&auml;den verursacht. Die K´vort Klasse wurde daher mit st&auml;rkeren Waffen und Schilden ausgestattet.',
 
 			),
 
@@ -2514,7 +2514,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -2584,7 +2584,7 @@ $SHIP_TORSO = array(
 
 			30 => 902,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Vorcha wurde entwickelt als man feststellte, dass die K´T´Inga von unten leicht anzugreifen war. Bei ihr wurden Offensiv- und Defensivpotentiial noch einmal verstärkt. Durch ihre verhältnissmäßig geringe Bauzeit stellt sie nach der K´T´Inga das neue Rückrat der Flotte dar.',
+			31 => 'Die Vorcha wurde entwickelt als man feststellte, dass die K´T´Inga von unten leicht anzugreifen war. Bei ihr wurden Offensiv- und Defensivpotentiial noch einmal verst&auml;rkt. Durch ihre verh&auml;ltnissm&auml;&szlig;ig geringe Bauzeit stellt sie nach der K´T´Inga das neue R&uuml;ckrat der Flotte dar.',
 
 			),
 
@@ -2654,7 +2654,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -2724,7 +2724,7 @@ $SHIP_TORSO = array(
 
 			30 => 1873,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Negh´Var wurde als Pendant zur Keldon Klasse der Cardassianer entwickelt und ist eines der stärksten Schiffe der Galaxie. In diesem Schiff wurden die modernsten Waffen eingebaut über die das Reich verfügt und die stärksten Schilde und Panzerung machen es zu einer harten Nuss für jeden Gegner. Der Rumpf ist von Disrupturbänken geradezu bedeckt und ein Toter Winkel wurde völlig verhindert.',
+			31 => 'Die Negh´Var wurde als Pendant zur Keldon Klasse der Cardassianer entwickelt und ist eines der st&auml;rksten Schiffe der Galaxie. In diesem Schiff wurden die modernsten Waffen eingebaut &uuml;ber die das Reich verf&uuml;gt und die st&auml;rksten Schilde und Panzerung machen es zu einer harten Nuss f&uuml;r jeden Gegner. Der Rumpf ist von Disrupturb&auml;nken geradezu bedeckt und ein Toter Winkel wurde v&ouml;llig verhindert.',
 
 			),
 
@@ -2790,11 +2790,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Orbitalgeschütz',  // Name
+			29 => 'Orbitalgesch&uuml;tz',  // Name
 
 			30 => 325,  // Benötige Arbeiter zum Bau
 
-			31 => 'Viele Feinde wollen von dem Reichtum und der Glorie des klingonischen Reiches zehren, und manchmal reicht der Stolz und die Kraft der Krieger nicht aus, um die Welten des Reiches zu schützen. Aus diesem Grunde schufen die begabten Wissenschaftler des Hauses Korath dieses mit drei Superdisruptoren und Photonentorpedos bewaffnete Orbitalgeschütz.',
+			31 => 'Viele Feinde wollen von dem Reichtum und der Glorie des klingonischen Reiches zehren, und manchmal reicht der Stolz und die Kraft der Krieger nicht aus, um die Welten des Reiches zu sch&uuml;tzen. Aus diesem Grunde schufen die begabten Wissenschaftler des Hauses Korath dieses mit drei Superdisruptoren und Photonentorpedos bewaffnete Orbitalgesch&uuml;tz.',
 
 	    ),
 
@@ -2876,7 +2876,7 @@ $SHIP_TORSO = array(
 
 			30 => 5,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Gul Vystan ist zum Spionieren gedacht und nicht als Angriffsschiff geeignet. Alle zur Verfügung stehenden Kapazitäten wurden für die Sensortechnik an Board verwendet. Somit blieb für sonstige Ausrüstung kein Platz mehr.',
+			31 => 'Die Gul Vystan ist zum Spionieren gedacht und nicht als Angriffsschiff geeignet. Alle zur Verf&uuml;gung stehenden Kapazit&auml;ten wurden f&uuml;r die Sensortechnik an Board verwendet. Somit blieb f&uuml;r sonstige Ausr&uuml;stung kein Platz mehr.',
 
 
 
@@ -3022,7 +3022,7 @@ $SHIP_TORSO = array(
 
 			30 => 1180,  // Benötige Arbeiter zum Bau
 
-			31 => 'Mit Kolonieschiffen können Planeten erobert werden. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerstört hast, geht das Kolonieschiff verloren, da es zur Konstruktion erster Einrichtungen demontiert wird, und der Planet steht unter deinem Kommando.',
+			31 => 'Mit Kolonieschiffen k&ouml;nnen Planeten erobert werden. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerst&ouml;rt hast, geht das Kolonieschiff verloren, da es zur Konstruktion erster Einrichtungen demontiert wird, und der Planet steht unter deinem Kommando.',
 
 		),
 
@@ -3092,7 +3092,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -3162,7 +3162,7 @@ $SHIP_TORSO = array(
 
 			30 => 86,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Hideki-Klasse wurde als kleines, wendiges Eskortschiff konzipiert. Doch aufgrund aktueller Ereignisse und fehlender Vorrichtungen wird sie in letzter Zeit allerdings hauptsächlich als Kampfschiff produziert; wodurch die Geschwindigkeit in den Hintergrund tritt.',
+			31 => 'Die Hideki-Klasse wurde als kleines, wendiges Eskortschiff konzipiert. Doch aufgrund aktueller Ereignisse und fehlender Vorrichtungen wird sie in letzter Zeit allerdings haupts&auml;chlich als Kampfschiff produziert; wodurch die Geschwindigkeit in den Hintergrund tritt.',
 
 		),
 
@@ -3234,7 +3234,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -3304,7 +3304,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -3374,7 +3374,7 @@ $SHIP_TORSO = array(
 
 			30 => 169,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Schiffe der Galor III-Klasse sind Angriffskreuzer und gehören zu den meistbenutzten Schiffen der Cardassianer. Galor’s  sind durch ihre maximale Wandlungsfähigkeit hochgefährlich; man weiß nie welche Waffen eingebaut wurden...',
+			31 => 'Die Schiffe der Galor III-Klasse sind Angriffskreuzer und geh&ouml;ren zu den meistbenutzten Schiffen der Cardassianer. Galor’s  sind durch ihre maximale Wandlungsf&auml;higkeit hochgef&auml;hrlich; man wei&szlig; nie welche Waffen eingebaut wurden...',
 
 		),
 		
@@ -3444,7 +3444,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 			
@@ -3515,7 +3515,7 @@ $SHIP_TORSO = array(
 
 			30 => 1130,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Keldon-Klasse ist eine modifizierte und stark aufgerüstete Version der Galor-Klasse, die jedoch weniger schnell und wendig ist. Sie wurden von den Cardassianern speziell ausgerüstet, um gegen ihr Pendant der Föderation, die Schiffe der Sovereign-Klasse, zu kämpfen und zu siegen.',
+			31 => 'Die Keldon-Klasse ist eine modifizierte und stark aufger&uuml;stete Version der Galor-Klasse, die jedoch weniger schnell und wendig ist. Sie wurden von den Cardassianern speziell ausger&uuml;stet, um gegen ihr Pendant der F&ouml;deration, die Schiffe der Sovereign-Klasse, zu k&auml;mpfen und zu siegen.',
 
 		),
 		
@@ -3585,7 +3585,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 			
@@ -3655,7 +3655,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -3721,11 +3721,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Orbitalgeschütz',  // Name
+			29 => 'Orbitalgesch&uuml;tz',  // Name
 
 			30 => 350,  // Benötige Arbeiter zum Bau
 
-			31 => 'Diese orbitale Waffenplattform wurde während des Dominionkrieges entwickelt und seitdem immer weiter verbessert. Sie ist ausgestattet mit 3 Disruptorkanonen und einem schnell feuernden Torpedorohr, geladen mit 400 Plasmatorpedos, bestückt. Damit stellt es eine mächtige Defensive der Cardassianischen Union dar.',
+			31 => 'Diese orbitale Waffenplattform wurde w&auml;hrend des Dominionkrieges entwickelt und seitdem immer weiter verbessert. Sie ist ausgestattet mit 3 Disruptorkanonen und einem schnell feuernden Torpedorohr, geladen mit 400 Plasmatorpedos, best&uuml;ckt. Damit stellt es eine m&auml;chtige Defensive der Cardassianischen Union dar.',
 
 	    ),
 
@@ -3805,7 +3805,7 @@ $SHIP_TORSO = array(
 
 			30 => 15,  // Benötige Arbeiter zum Bau
 
-			31 => 'Zuerst war es nur ein Nichtangriffspakt, später sahen die Cardassianer die Größe des Dominions, und stellten uns daher ihre Scoutschiffe zur Verfügung. Obwohl sie nicht vom Dominion gebaut worden sind, könnten sie von den Vorta entworfen worden sein: Sie sind schnell, wendig, und schlecht mit den Sensoren zu erfassen.'
+			31 => 'Zuerst war es nur ein Nichtangriffspakt, sp&auml;ter sahen die Cardassianer die Gr&ouml;&szlig;e des Dominions, und stellten uns daher ihre Scoutschiffe zur Verf&uuml;gung. Obwohl sie nicht vom Dominion gebaut worden sind, k&ouml;nnten sie von den Vorta entworfen worden sein: Sie sind schnell, wendig, und schlecht mit den Sensoren zu erfassen.'
 
 	    ),
 
@@ -3877,7 +3877,7 @@ $SHIP_TORSO = array(
 
 			30 => 8,  // Benötige Arbeiter zum Bau
 
-			31 => 'Durch unser Bündnisse mit den Cardassianern (das inzwischen wieder aufgehoben worden ist) haben wir dieses Schiff kennen gelernt, übernommen und verbessert. Es stellt einen guten Frachter dar und wir werden ihn von nun an einsetzten, nachdem die Hauptlieferanten unserer Frachtschiffe, die Karemma, eine kleine Lektion ihn Treue lernen mussten. Sie können momentan nicht die gewünschte Menge bereitstellen, also wird das diese Klasse übernehmen.',
+			31 => 'Durch unser B&uuml;ndnisse mit den Cardassianern (das inzwischen wieder aufgehoben worden ist) haben wir dieses Schiff kennen gelernt, &uuml;bernommen und verbessert. Es stellt einen guten Frachter dar und wir werden ihn von nun an einsetzten, nachdem die Hauptlieferanten unserer Frachtschiffe, die Karemma, eine kleine Lektion ihn Treue lernen mussten. Sie k&ouml;nnen momentan nicht die gew&uuml;nschte Menge bereitstellen, also wird das diese Klasse &uuml;bernehmen.',
 
 	    ),
 
@@ -3949,7 +3949,7 @@ $SHIP_TORSO = array(
 
 			30 => 1555,  // Benötige Arbeiter zum Bau
 
-			31 => 'Mit dieser Klasse können sie einen Planeten zum richtigen Weg bekehren. Sobald Sie bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerstört haben, geht das Karemma Schiff verloren (da es für die ersten Einrichtungen demontiert wird) und der Planet steht unter Ihrem Kommando. Durch den Aufstand der Karemma, hat sich die Produktion verlangsamt, daher der hohe Preis.',
+			31 => 'Mit dieser Klasse k&ouml;nnen sie einen Planeten zum richtigen Weg bekehren. Sobald Sie bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerst&ouml;rt haben, geht das Karemma Schiff verloren (da es f&uuml;r die ersten Einrichtungen demontiert wird) und der Planet steht unter Ihrem Kommando. Durch den Aufstand der Karemma, hat sich die Produktion verlangsamt, daher der hohe Preis.',
 
 	    ),
 
@@ -4019,7 +4019,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -4090,7 +4090,7 @@ $SHIP_TORSO = array(
 
 			30 => 96,  // Benötige Arbeiter zum Bau
 
-			31 => 'Von unseren Feinden manchmal ´Battlebug´ genannt, stellt dieses Schiff unsere Rückrad dar und es ist inzwischen DAS Symbol unserer glorreichen Gründer und hat dem Dominion schon gute Dienste geleistet.',
+			31 => 'Von unseren Feinden manchmal ´Battlebug´ genannt, stellt dieses Schiff unsere R&uuml;ckrad dar und es ist inzwischen DAS Symbol unserer glorreichen Gr&uuml;nder und hat dem Dominion schon gute Dienste geleistet.',
 
 	    ),
 
@@ -4162,7 +4162,7 @@ $SHIP_TORSO = array(
 
 			30 => 356,  // Benötige Arbeiter zum Bau
 
-			31 => 'Obgleich unsere Jem Hadar Attack Fighter, mit Freude ihre fehlende Feuerkraft mit Suizidangriffen kompensieren, hatten die Götter die Weißheit, das dies auf lange Sicht gesehen, unserer Ressourcen zu stark beanspruchen würde. So wurde die Mischung zwischen Feuerkraft und Beweglichkeit, von den Vorta entworfen und in der V-Klasse vereint, damit der Suizid, so glorreich er auch sein mag, nicht immer die letzte Option sein muss.',
+			31 => 'Obgleich unsere Jem Hadar Attack Fighter, mit Freude ihre fehlende Feuerkraft mit Suizidangriffen kompensieren, hatten die G&ouml;tter die Wei&szlig;heit, das dies auf lange Sicht gesehen, unserer Ressourcen zu stark beanspruchen w&uuml;rde. So wurde die Mischung zwischen Feuerkraft und Beweglichkeit, von den Vorta entworfen und in der V-Klasse vereint, damit der Suizid, so glorreich er auch sein mag, nicht immer die letzte Option sein muss.',
 
 	),
 
@@ -4232,7 +4232,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -4302,7 +4302,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -4372,7 +4372,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -4443,7 +4443,7 @@ $SHIP_TORSO = array(
 
 			30 => 867,  // Benötige Arbeiter zum Bau
 
-			31 => 'Einer der mächtigsten Waffen des Dominions. Das Kampfschiff ist ein sehr wichtiger Bestandteil einer jeden Flotte. Seine Bewaffnung macht es zu einem mehr als gefährlichen Kriegschiff und ist oft mehr als genug, um das Wort der Gründer in die entferntesten Winkel der Galaxie zu bringen...',
+			31 => 'Einer der m&auml;chtigsten Waffen des Dominions. Das Kampfschiff ist ein sehr wichtiger Bestandteil einer jeden Flotte. Seine Bewaffnung macht es zu einem mehr als gef&auml;hrlichen Kriegschiff und ist oft mehr als genug, um das Wort der Gr&uuml;nder in die entferntesten Winkel der Galaxie zu bringen...',
 
 	    ),
 
@@ -4514,7 +4514,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -4586,7 +4586,7 @@ $SHIP_TORSO = array(
 
 			30 => 2600,  // Benötige Arbeiter zum Bau
 
-			31 => 'Dieses Schiff ist die letzte Linie des Gefechts, sollten die Gegner es je dorthin schaffen. Nur die treuesten und erfahrensten Jem Hadar bzw. Vorta dürfen dieses Schiff überhaupt betreten. Seine Grösse ist gewaltig und seine Feuerkraft noch größer: Jeder der sich ihm in den Wegs stellt ist Staub: Sei es ein Schiff oder ein Planet...',
+			31 => 'Dieses Schiff ist die letzte Linie des Gefechts, sollten die Gegner es je dorthin schaffen. Nur die treuesten und erfahrensten Jem Hadar bzw. Vorta d&uuml;rfen dieses Schiff &uuml;berhaupt betreten. Seine Gr&ouml;sse ist gewaltig und seine Feuerkraft noch gr&ouml;&szlig;er: Jeder der sich ihm in den Wegs stellt ist Staub: Sei es ein Schiff oder ein Planet...',
 
 	    ),
 
@@ -4652,11 +4652,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Orbitalgeschütz',  // Name
+			29 => 'Orbitalgesch&uuml;tz',  // Name
 
 			30 => 300,  // Benötige Arbeiter zum Bau
 
-			31 => 'Um der zunehmenden Bedrohung der Welten des Dominion von außen entgegenzutreten, haben die Wissenschaftler diese effiziente Kampfstation entwickelt. Ausgestattet mit Polarongeschützen und einem Torpedowerfer stellt es eine effektive Gegenmaßnahme gegen jeden Angreifer dar.',
+			31 => 'Um der zunehmenden Bedrohung der Welten des Dominion von au&szlig;en entgegenzutreten, haben die Wissenschaftler diese effiziente Kampfstation entwickelt. Ausgestattet mit Polarongesch&uuml;tzen und einem Torpedowerfer stellt es eine effektive Gegenma&szlig;nahme gegen jeden Angreifer dar.',
 
 	    ),
 
@@ -4879,7 +4879,7 @@ $SHIP_TORSO = array(
 
 			30 => 1197, // Benötige Arbeiter zum Bau
 
-			31 => 'Mit dem Kolonieschiff kannst du einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerstört hast, geht das Kolonieschiff verloren (da seine Holoemitter zur Simulation erster Einrichtungen demontiert werden) und der Planet steht unter deinem Kommando.',
+			31 => 'Mit dem Kolonieschiff kannst du einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerst&ouml;rt hast, geht das Kolonieschiff verloren (da seine Holoemitter zur Simulation erster Einrichtungen demontiert werden) und der Planet steht unter deinem Kommando.',
 
 			),
 
@@ -4950,7 +4950,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -5021,7 +5021,7 @@ $SHIP_TORSO = array(
 
 			30 => 461, // Benötige Arbeiter zum Bau
 
-			31 => 'Das Mittelklasse-Schiff der Ferengi Allianz. Es besitzt keinerlei besondere Fertigkeiten und seine Kampfstärke ist dem Preis angemessen.',
+			31 => 'Das Mittelklasse-Schiff der Ferengi Allianz. Es besitzt keinerlei besondere Fertigkeiten und seine Kampfst&auml;rke ist dem Preis angemessen.',
 
 			),
 
@@ -5092,7 +5092,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -5163,7 +5163,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -5304,7 +5304,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -5374,7 +5374,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -5444,7 +5444,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -5514,7 +5514,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -5580,11 +5580,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Orbitalgeschütz',  // Name
+			29 => 'Orbitalgesch&uuml;tz',  // Name
 
 			30 => 300,  // Benötige Arbeiter zum Bau
 
-			31 => 'Immer häufiger überfallen Piraten die Kolonien und Handelshäfen der Ferengi-Allianz. Damit die Profite nicht länger darunter zu leiden haben, entwickelte ein findiger Wissenschaftler dieses teure, aber hocheffiziente Orbitalgeschütz, das mit Phasern und Plasmatorpedos bestückt ist.',
+			31 => 'Immer h&auml;ufiger &uuml;berfallen Piraten die Kolonien und Handelsh&auml;fen der Ferengi-Allianz. Damit die Profite nicht l&auml;nger darunter zu leiden haben, entwickelte ein findiger Wissenschaftler dieses teure, aber hocheffiziente Orbitalgesch&uuml;tz, das mit Phasern und Plasmatorpedos best&uuml;ckt ist.',
 
 	    ),
 
@@ -5718,7 +5718,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 		),
 
@@ -5790,7 +5790,7 @@ $SHIP_TORSO = array(
 
 			30 => 185,  // Benötige Arbeiter zum Bau
 
-			31 => 'Mit dem Transporter kann man entweder 4000 Rohstoffe bzw. 400 Einheiten transportieren, oder sie mit auf einen Angriff schicken und Rohstoffe vom angegriffenen Planeten mitnehmen lassen. Sie sind relativ langsam, dafür ist ihre Verteidigung akzeptabel.',
+			31 => 'Mit dem Transporter kann man entweder 4000 Rohstoffe bzw. 400 Einheiten transportieren, oder sie mit auf einen Angriff schicken und Rohstoffe vom angegriffenen Planeten mitnehmen lassen. Sie sind relativ langsam, daf&uuml;r ist ihre Verteidigung akzeptabel.',
 
 	 	),
 
@@ -5862,7 +5862,7 @@ $SHIP_TORSO = array(
 
 			30 => 1575,  // Benötige Arbeiter zum Bau
 
-			31 => 'Mit dem Kolonieschiff kannst du entweder einen unbewohnten Planeten kolonisieren, oder einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerstört hast, geht das Kolonieschiff verloren (da seine Holoemitter zur Simulation erster Einrichtungen demontiert werden) und der Planet steht unter deinem Kommando.',
+			31 => 'Mit dem Kolonieschiff kannst du entweder einen unbewohnten Planeten kolonisieren, oder einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerst&ouml;rt hast, geht das Kolonieschiff verloren (da seine Holoemitter zur Simulation erster Einrichtungen demontiert werden) und der Planet steht unter deinem Kommando.',
 
 	 	),
 
@@ -5932,7 +5932,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -6002,7 +6002,7 @@ $SHIP_TORSO = array(
 
 			30 => 235,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Schiffe der Gled Kraan-Klasse sind die besten Fregaten. Wendig, robust und mit den tödlichen Energiedämpfungswaffen ausgestattet. Die Fregaten der Gled Kraan-Klasse sind, wie alle Schiffe der Breen, auf organischer Basis konstruiert.',
+			31 => 'Die Schiffe der Gled Kraan-Klasse sind die besten Fregaten. Wendig, robust und mit den t&ouml;dlichen Energied&auml;mpfungswaffen ausgestattet. Die Fregaten der Gled Kraan-Klasse sind, wie alle Schiffe der Breen, auf organischer Basis konstruiert.',
 
 	 	),
 
@@ -6072,7 +6072,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -6142,7 +6142,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -6212,7 +6212,7 @@ $SHIP_TORSO = array(
 
 			30 => 865,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Schiffe der Gor Taan-Klasse sind wendige Kampfschiffe, die meistens in großen Flotten eingesetzt werden. Sie sind ausgestattet mit den tödlichen Energiedämpfungswaffen der Breen. Die Kreuzer der Gor Taan-Klasse sind, wie alle Schiffe der Breen, auf organischer Basis konstruiert.',
+			31 => 'Die Schiffe der Gor Taan-Klasse sind wendige Kampfschiffe, die meistens in gro&szlig;en Flotten eingesetzt werden. Sie sind ausgestattet mit den t&ouml;dlichen Energied&auml;mpfungswaffen der Breen. Die Kreuzer der Gor Taan-Klasse sind, wie alle Schiffe der Breen, auf organischer Basis konstruiert.',
 
 	 	),
 
@@ -6282,7 +6282,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -6422,7 +6422,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -6492,7 +6492,7 @@ $SHIP_TORSO = array(
 
 			30 => 1520,  // Benötige Arbeiter zum Bau
 
-			31 => 'Das Gel Chak-Klasse Schlachtschiffe sind das Flaggschiff der Flotte Breen. Räumen außerhalb selten engagierte Freunde, bilden sie den höchstmöglichen Abschreckung gegen Versuche der Invasion.',
+			31 => 'Das Gel Chak-Klasse Schlachtschiffe sind das Flaggschiff der Flotte Breen. R&auml;umen au&szlig;erhalb selten engagierte Freunde, bilden sie den h&ouml;chstm&ouml;glichen Abschreckung gegen Versuche der Invasion.',
 
 			),
 
@@ -6558,11 +6558,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Orbitalgeschütz',  // Name
+			29 => 'Orbitalgesch&uuml;tz',  // Name
 
 			30 => 425,  // Benötige Arbeiter zum Bau
 
-			31 => 'Diese Kampfplattform wurde für defensive Zwecke entwickelt, um die Kolonien der Breen zu schützen. Ausgestattet mit einem Energiedissipator und vier Torpedowerfern verspricht es einen effektiven Schutz der Welten der Breen-Konföderation vor seinen Feinden.',
+			31 => 'Diese Kampfplattform wurde f&uuml;r defensive Zwecke entwickelt, um die Kolonien der Breen zu sch&uuml;tzen. Ausgestattet mit einem Energiedissipator und vier Torpedowerfern verspricht es einen effektiven Schutz der Welten der Breen-Konf&ouml;deration vor seinen Feinden.',
 
 	    ),
 
@@ -6714,7 +6714,7 @@ $SHIP_TORSO = array(
 
 			30 => 12,  // Benötige Arbeiter zum Bau
 
-			31 => 'Mit dem Transporter kann man entweder Rohstoffe bzw. Einheiten transportieren, oder sie mit auf einen Angriff schicken und Rohstoffe vom angegriffenen Planeten mitnehmen lassen. Sie sind relativ langsam, dafür ist ihre Verteidigung akzeptabel.',
+			31 => 'Mit dem Transporter kann man entweder Rohstoffe bzw. Einheiten transportieren, oder sie mit auf einen Angriff schicken und Rohstoffe vom angegriffenen Planeten mitnehmen lassen. Sie sind relativ langsam, daf&uuml;r ist ihre Verteidigung akzeptabel.',
 
 		),
 
@@ -6786,7 +6786,7 @@ $SHIP_TORSO = array(
 
 			30 => 502,  // Benötige Arbeiter zum Bau
 
-			31 => 'Mit dem Kolonieschiff kannst du einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerstört hast, geht das Kolonieschiff verloren und der Planet steht unter deinem Kommando.',
+			31 => 'Mit dem Kolonieschiff kannst du einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerst&ouml;rt hast, geht das Kolonieschiff verloren und der Planet steht unter deinem Kommando.',
 
 		),
 
@@ -6856,7 +6856,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 			
@@ -6926,7 +6926,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -6996,7 +6996,7 @@ $SHIP_TORSO = array(
 
 			30 => 27,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Hunter-Class ist das Standard Schiff der Hirogen. Seit Jahrtausenden durchqueren sie in diesen Schiffen den Weltraum. Sie sind hervorragend für die Jagt geeignet, einem wichtigen Bestandteil ihrer Gesellschaft.',
+			31 => 'Die Hunter-Class ist das Standard Schiff der Hirogen. Seit Jahrtausenden durchqueren sie in diesen Schiffen den Weltraum. Sie sind hervorragend f&uuml;r die Jagt geeignet, einem wichtigen Bestandteil ihrer Gesellschaft.',
 
 		),
 
@@ -7066,7 +7066,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -7136,7 +7136,7 @@ $SHIP_TORSO = array(
 
 			30 => 199,  // Benötige Arbeiter zum Bau
 
-			31 => 'Das Holoship ist eine Weiterentwicklung der gewöhnlichen Hunter-Class. Die Holoprojektoren in seinem Inneren ermöglichen es der Crew ihre Kampffähigkeiten ständig zu erweitern und sorgen so für ständige Kampfbereitschaft.',
+			31 => 'Das Holoship ist eine Weiterentwicklung der gew&ouml;hnlichen Hunter-Class. Die Holoprojektoren in seinem Inneren erm&ouml;glichen es der Crew ihre Kampff&auml;higkeiten st&auml;ndig zu erweitern und sorgen so f&uuml;r st&auml;ndige Kampfbereitschaft.',
 
 		),
 
@@ -7207,7 +7207,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 			
@@ -7277,7 +7277,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 			
@@ -7347,7 +7347,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 			
@@ -7417,7 +7417,7 @@ $SHIP_TORSO = array(
 
 			30 => 1484,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Vanatic-Class ist das mit abstand schwerste Hirogen Kriegsschiff. Allein durch ihre Größe von knapp 600m hebt sie sich deutlich von jedem anderen Hirogen Schiff ab. Die extrem schwere Panzerung ist problemlos in der Lage, die vergleichsweise schwachen Schilde auszugleichen. Die starke Bewaffnung macht dieses Schiff zu einem harten Brocken für jeden Gegner. Sie ist in der Lage problemlos auch größere Beute zur Strecke zu bringen.',
+			31 => 'Die Vanatic-Class ist das mit abstand schwerste Hirogen Kriegsschiff. Allein durch ihre Gr&ouml;&szlig;e von knapp 600m hebt sie sich deutlich von jedem anderen Hirogen Schiff ab. Die extrem schwere Panzerung ist problemlos in der Lage, die vergleichsweise schwachen Schilde auszugleichen. Die starke Bewaffnung macht dieses Schiff zu einem harten Brocken f&uuml;r jeden Gegner. Sie ist in der Lage problemlos auch gr&ouml;&szlig;ere Beute zur Strecke zu bringen.',
 
 		),
 
@@ -7484,11 +7484,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Orbitalgeschütz',  // Name
+			29 => 'Orbitalgesch&uuml;tz',  // Name
 
 			30 => 400,  // Benötige Arbeiter zum Bau
 
-			31 => 'Feinde bedrohen immer häufiger die Welten, die den Stämmen der Hirogen als Jagdgründe dienen. Um diese lästige Bedrohung loszuwerden, wurde dieses mächtige raumgestützte Geschütz geschaffen, das mit seinen schweren Plasmakanonen schwere Schäden anrichten kann und durch die Monotaniumpanzerung kaum aufgespürt werden kann.',
+			31 => 'Feinde bedrohen immer h&auml;ufiger die Welten, die den St&auml;mmen der Hirogen als Jagdgr&uuml;nde dienen. Um diese l&auml;stige Bedrohung loszuwerden, wurde dieses m&auml;chtige raumgest&uuml;tzte Gesch&uuml;tz geschaffen, das mit seinen schweren Plasmakanonen schwere Sch&auml;den anrichten kann und durch die Monotaniumpanzerung kaum aufgesp&uuml;rt werden kann.',
 
 	    ),
 
@@ -7715,7 +7715,7 @@ $SHIP_TORSO = array(
 
 			30 => 1903,  // Benötige Arbeiter zum Bau
 
-			31 => 'Mit dem Kolonieschiff kannst du entweder einen unbewohnten Planeten kolonisieren, oder einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerstört hast, geht das Kolonieschiff verloren und der Planet steht unter deinem Kommando.',
+			31 => 'Mit dem Kolonieschiff kannst du entweder einen unbewohnten Planeten kolonisieren, oder einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerst&ouml;rt hast, geht das Kolonieschiff verloren und der Planet steht unter deinem Kommando.',
 
 		 ),
 
@@ -7786,7 +7786,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -7857,7 +7857,7 @@ $SHIP_TORSO = array(
 
 			30 => 353,  // Benötige Arbeiter zum Bau
 
-			31 => 'Das Patrol Ship ist eine ältere Schiffsklasse der Krenim. Obwohl es bereits seid längerer Zeit durch effizientere Designs abgelöst worden ist, wird es aufgrund der kostengünstigen Produktion immer noch vom Imperium gebaut und verwendet.',
+			31 => 'Das Patrol Ship ist eine &auml;ltere Schiffsklasse der Krenim. Obwohl es bereits seid l&auml;ngerer Zeit durch effizientere Designs abgel&ouml;st worden ist, wird es aufgrund der kosteng&uuml;nstigen Produktion immer noch vom Imperium gebaut und verwendet.',
 
 		 ),
 
@@ -7928,7 +7928,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -7999,7 +7999,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -8069,7 +8069,7 @@ $SHIP_TORSO = array(
 
 			30 => 1072,  // Benötige Arbeiter zum Bau
 
-			31 => 'Der schwere Kreuzer gehört zu den hochentwickelten Schiffsklassen der Krenim. Ausgestattet mit besonderen neuen Technologien ist der Kreuzer eine enorm schlagkräftige Waffe des Imperiums gegen seine Feinde.',
+			31 => 'Der schwere Kreuzer geh&ouml;rt zu den hochentwickelten Schiffsklassen der Krenim. Ausgestattet mit besonderen neuen Technologien ist der Kreuzer eine enorm schlagkr&auml;ftige Waffe des Imperiums gegen seine Feinde.',
 
 		 ),
 
@@ -8140,7 +8140,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -8211,7 +8211,7 @@ $SHIP_TORSO = array(
 
 			30 => 1476,  // Benötige Arbeiter zum Bau
 
-			31 => 'Das Waffenschiff ist eine gewaltige, mobile Geschützplattform, welche mit zahlreichen Waffen bestückt ist. Es ist ein Symbol für den brutalen Imperialismus der Krenim und ihrer unbarmherzigen Haltung gegenüber ihren Feinden. Schon wenige dieser Schiffe können eine ganze Kolonie auslöschen.',
+			31 => 'Das Waffenschiff ist eine gewaltige, mobile Gesch&uuml;tzplattform, welche mit zahlreichen Waffen best&uuml;ckt ist. Es ist ein Symbol f&uuml;r den brutalen Imperialismus der Krenim und ihrer unbarmherzigen Haltung gegen&uuml;ber ihren Feinden. Schon wenige dieser Schiffe k&ouml;nnen eine ganze Kolonie ausl&ouml;schen.',
 
 		 ),
 
@@ -8282,7 +8282,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -8353,7 +8353,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 			
@@ -8420,11 +8420,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Orbitalgeschütz',  // Name
+			29 => 'Orbitalgesch&uuml;tz',  // Name
 
 			30 => 575,  // Benötige Arbeiter zum Bau
 
-			31 => 'Um die am äußersten Rand gelegenen Kolonien des gewaltigen Krenim-Imperiums effektiv verteidigen zu können, entwickelten Wissenschaftler im Auftrag des Verteidigungsministeriums diese Orbitalplattformen. Dabei handelt es sich im Prinzip um große Massebeschleuniger, die hohe Stückzahlen von Chronotonentorpedos in kurzer Zeit auf feindliche Flotten schleudern.',
+			31 => 'Um die am &auml;u&szlig;ersten Rand gelegenen Kolonien des gewaltigen Krenim-Imperiums effektiv verteidigen zu k&ouml;nnen, entwickelten Wissenschaftler im Auftrag des Verteidigungsministeriums diese Orbitalplattformen. Dabei handelt es sich im Prinzip um gro&szlig;e Massebeschleuniger, die hohe St&uuml;ckzahlen von Chronotonentorpedos in kurzer Zeit auf feindliche Flotten schleudern.',
 
 	    ),
 
@@ -8576,7 +8576,7 @@ $SHIP_TORSO = array(
 
 			30 => 128,  // Benötige Arbeiter zum Bau
 
-			31 => 'Mit dem Transporter kann man entweder 4000 Rohstoffe bzw. 400 Einheiten transportieren, oder sie mit auf einen Angriff schicken. Sie sind relativ langsam, dafür ist ihre Verteidigung akzeptabel.',
+			31 => 'Mit dem Transporter kann man entweder 4000 Rohstoffe bzw. 400 Einheiten transportieren, oder sie mit auf einen Angriff schicken. Sie sind relativ langsam, daf&uuml;r ist ihre Verteidigung akzeptabel.',
 
 		),
 
@@ -8648,7 +8648,7 @@ $SHIP_TORSO = array(
 
 			30 => 2073,  // Benötige Arbeiter zum Bau
 
-			31 => 'Mit dem Kolonieschiff kannst du entweder einen unbewohnten Planeten kolonisieren, oder einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerstört hast, geht das Kolonieschiff verloren (da seine Holoemitter zur Simulation erster Einrichtungen demontiert werden) und der Planet steht unter deinem Kommando.'
+			31 => 'Mit dem Kolonieschiff kannst du entweder einen unbewohnten Planeten kolonisieren, oder einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerst&ouml;rt hast, geht das Kolonieschiff verloren (da seine Holoemitter zur Simulation erster Einrichtungen demontiert werden) und der Planet steht unter deinem Kommando.'
 
 		),
 
@@ -8722,7 +8722,7 @@ $SHIP_TORSO = array(
 
 			30 => 210,  // Benötige Arbeiter zum Bau
 
-			31 => 'Der Raptor ist ein hocheffizentes Angriffsschiff, das über ausgzeichnete Waffensysteme verfügt. Seine Einschränkung ist, dass er mit keinerlei Upgrades ausgestattet werden kann.',
+			31 => 'Der Raptor ist ein hocheffizentes Angriffsschiff, das &uuml;ber ausgzeichnete Waffensysteme verf&uuml;gt. Seine Einschr&auml;nkung ist, dass er mit keinerlei Upgrades ausgestattet werden kann.',
 
 		),
 
@@ -8792,7 +8792,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -8862,7 +8862,7 @@ $SHIP_TORSO = array(
 
 			30 => 171,  // Benötige Arbeiter zum Bau
 
-			31 => 'Der Raider ist ein hocheffizentes Angriffsschiff, das über ausgzeichnete Waffensysteme verfügt; darüber hinaus ist der Raider extrem wendig für seine Rumpfklasse und ist daher für spezielle Einsätze geeignet.',
+			31 => 'Der Raider ist ein hocheffizentes Angriffsschiff, das &uuml;ber ausgzeichnete Waffensysteme verf&uuml;gt; dar&uuml;ber hinaus ist der Raider extrem wendig f&uuml;r seine Rumpfklasse und ist daher f&uuml;r spezielle Eins&auml;tze geeignet.',
 
 		),
 
@@ -8932,7 +8932,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -9002,7 +9002,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -9072,7 +9072,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -9142,7 +9142,7 @@ $SHIP_TORSO = array(
 
 			30 => 301,  // Benötige Arbeiter zum Bau
 
-			31 => 'Der Stolz der Kazon, der Predator, ist teuer aber verhältnismäßig stark. Schon wenige dieser Schiffe vernichten komplette feinliche Flotten wenn nötig. Besonders seine gute Upgradefähigkeit rechtfertigen den Preis und die Bauzeit.',
+			31 => 'Der Stolz der Kazon, der Predator, ist teuer aber verh&auml;ltnism&auml;&szlig;ig stark. Schon wenige dieser Schiffe vernichten komplette feinliche Flotten wenn n&ouml;tig. Besonders seine gute Upgradef&auml;higkeit rechtfertigen den Preis und die Bauzeit.',
 
 	    ),
 
@@ -9214,7 +9214,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 			
@@ -9284,7 +9284,7 @@ $SHIP_TORSO = array(
 
 			30 => 1,  // Benötige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, füttern und ganz oft drücken.',
+			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
 
 			),
 
@@ -9351,11 +9351,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Orbitalgeschütz',  // Name
+			29 => 'Orbitalgesch&uuml;tz',  // Name
 
 			30 => 275,  // Benötige Arbeiter zum Bau
 
-			31 => 'In den sich ausweitenden Gefechten um die Vorherrschaft einzelner Kazonsekten kommt es immer öfter zu Kämpfen, die um ganze Planeten geführt werden. Zum Schutz ihrer Welten haben verschiedene Sekten unabhängig voneinander dieses mit sechs Partikelgeschützen bewaffnete orbitale Gerät entwickelt.',
+			31 => 'In den sich ausweitenden Gefechten um die Vorherrschaft einzelner Kazonsekten kommt es immer &ouml;fter zu K&auml;mpfen, die um ganze Planeten gef&uuml;hrt werden. Zum Schutz ihrer Welten haben verschiedene Sekten unabh&auml;ngig voneinander dieses mit sechs Partikelgesch&uuml;tzen bewaffnete orbitale Ger&auml;t entwickelt.',
 
 	    ),
 	    
@@ -9645,7 +9645,7 @@ $SHIP_TORSO = array(
 
 			30 => 450,
 
-			31 => 'Vor knapp 300 Jahren wurde die Prometheus außer Dienst, wurde aber aufgrund der Einsätze in der Vergangenheit wieder reaktiviert.',
+			31 => 'Vor knapp 300 Jahren wurde die Prometheus au&szlig;er Dienst, wurde aber aufgrund der Eins&auml;tze in der Vergangenheit wieder reaktiviert.',
 
 	    ),	
 
@@ -9715,7 +9715,7 @@ $SHIP_TORSO = array(
 
 			30 => 200,
 
-			31 => 'Das Rückgrat der Flotte bilden die Zeitschiffe der Wells-Klasse, die für die unterschiedlichsten Aufgaben benutzt werden können.',
+			31 => 'Das R&uuml;ckgrat der Flotte bilden die Zeitschiffe der Wells-Klasse, die f&uuml;r die unterschiedlichsten Aufgaben benutzt werden k&ouml;nnen.',
 
 	    ),
 
@@ -9783,7 +9783,7 @@ $SHIP_TORSO = array(
 
 			30 => 200,
 
-			31 => 'Das Rückgrat der Flotte bilden die Zeitschiffe der Wells-Klasse, die für die unterschiedlichsten Aufgaben benutzt werden können.',
+			31 => 'Das R&uuml;ckgrat der Flotte bilden die Zeitschiffe der Wells-Klasse, die f&uuml;r die unterschiedlichsten Aufgaben benutzt werden k&ouml;nnen.',
 
 	    ),
 
@@ -9860,7 +9860,7 @@ $SHIP_TORSO = array(
 
 			30 => 15,  // Benötige Arbeiter zum Bau
 
-			31 => 'Bei der Danube Klasse handelt es sich um Kurzstrecken Aufklärer. Da hier alle Energie für die Sensoren benötigt wird, sind diese Schiffe unbewaffnet.',
+			31 => 'Bei der Danube Klasse handelt es sich um Kurzstrecken Aufkl&auml;rer. Da hier alle Energie f&uuml;r die Sensoren ben&ouml;tigt wird, sind diese Schiffe unbewaffnet.',
 
 	    ),
 
@@ -9930,7 +9930,7 @@ $SHIP_TORSO = array(
 
 			30 => 105,  // Benötige Arbeiter zum Bau
 
-			31 => 'Mit dem Transporter kann man entweder 4000 Rohstoffe bzw. 400 Einheiten transportieren, oder sie mit auf einen Angriff schicken. Sie sind relativ langsam, dafür ist ihre Verteidigung akzeptabel.',
+			31 => 'Mit dem Transporter kann man entweder 4000 Rohstoffe bzw. 400 Einheiten transportieren, oder sie mit auf einen Angriff schicken. Sie sind relativ langsam, daf&uuml;r ist ihre Verteidigung akzeptabel.',
 
 
 
@@ -10002,7 +10002,7 @@ $SHIP_TORSO = array(
 
 			30 => 1955,  // Benötige Arbeiter zum Bau
 
-			31 => 'Mit dem Kolonieschiff kannst du einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerstört hast, geht das Kolonieschiff verloren (da seine Holoemitter zur Simulation erster Einrichtungen demontiert werden) und der Planet steht unter deinem Kommando.',
+			31 => 'Mit dem Kolonieschiff kannst du einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerst&ouml;rt hast, geht das Kolonieschiff verloren (da seine Holoemitter zur Simulation erster Einrichtungen demontiert werden) und der Planet steht unter deinem Kommando.',
 
 	    ),
 
@@ -10072,7 +10072,7 @@ $SHIP_TORSO = array(
 
 			30 => 168,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Sabre ist eine der neusten Entwicklungen der Förderation im Bereich der Fregatten. Die modulare Bauweise gestattet eine höhere Aufrüstfähigkeit als der Miranda. Ihre Vielseitigkeit sollte sie in keiner Flotte fehlen.',
+			31 => 'Die Sabre ist eine der neusten Entwicklungen der F&ouml;rderation im Bereich der Fregatten. Die modulare Bauweise gestattet eine h&ouml;here Aufr&uuml;stf&auml;higkeit als der Miranda. Ihre Vielseitigkeit sollte sie in keiner Flotte fehlen.',
 
 	    ),
 
@@ -10142,7 +10142,7 @@ $SHIP_TORSO = array(
 
 			30 => 175,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Steamrunner Klasse wurde ursprünglich als schnell baubares Aushilfsschiff dienen doch ihre hohe Manövrierbarkeit und moderate Bewaffnung ließen sie schnell die ältere Elite verdrängen.',
+			31 => 'Die Steamrunner Klasse wurde urspr&uuml;nglich als schnell baubares Aushilfsschiff dienen doch ihre hohe Man&ouml;vrierbarkeit und moderate Bewaffnung lie&szlig;en sie schnell die &auml;ltere Elite verdr&auml;ngen.',
 
 	    ),
 
@@ -10212,7 +10212,7 @@ $SHIP_TORSO = array(
 
 			30 => 380,  // Benötige Arbeiter zum Bau
 
-			31 => 'Light Cruiser letzten Generation, mit einzigartigen Technologien von denen auf Schiffen des Bundes. Geboren zu reisen bei sehr hohen Reisegeschwindigkeit, hat ein Rüstung je gesehen Sondierungsgespräche über ein Schiff von dieser Tonnage.',
+			31 => 'Light Cruiser letzten Generation, mit einzigartigen Technologien von denen auf Schiffen des Bundes. Geboren zu reisen bei sehr hohen Reisegeschwindigkeit, hat ein R&uuml;stung je gesehen Sondierungsgespr&auml;che &uuml;ber ein Schiff von dieser Tonnage.',
 
 		    ),
 
@@ -10284,7 +10284,7 @@ $SHIP_TORSO = array(
 
 			30 => 245,  // Benötige Arbeiter zum Bau
 
-			31 => 'Der kompakteste leichte Kreuzer der Sternenflotte. Ausgestattet mit Quantentorpedos besitzt sie eine für ihre Verhältnisse enorme Feuerkraft. Jedoch schränken Schildkapazität und Crewgröße den Einsatzradius ein. Als leichtes Angriffsschiff mit vorinstallierter Tarnvorrichtung ist sie die beste Wahl.',
+			31 => 'Der kompakteste leichte Kreuzer der Sternenflotte. Ausgestattet mit Quantentorpedos besitzt sie eine f&uuml;r ihre Verh&auml;ltnisse enorme Feuerkraft. Jedoch schr&auml;nken Schildkapazit&auml;t und Crewgr&ouml;&szlig;e den Einsatzradius ein. Als leichtes Angriffsschiff mit vorinstallierter Tarnvorrichtung ist sie die beste Wahl.',
 
 	    ),
 
@@ -10354,7 +10354,7 @@ $SHIP_TORSO = array(
 
 			30 => 550,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Exelsior gehört zur Klasse der Kreuzer und bietet ein sehr wirtschaftliches Verhältnis. Aufgrund zahlreicher Weiterentwicklungen durch die Sternenflotte gibt es sie in mehreren Ausführungen. Die aktuellste Version besitzt sogar mehrphasige, regenerierende Schilde.',
+			31 => 'Die Exelsior geh&ouml;rt zur Klasse der Kreuzer und bietet ein sehr wirtschaftliches Verh&auml;ltnis. Aufgrund zahlreicher Weiterentwicklungen durch die Sternenflotte gibt es sie in mehreren Ausf&uuml;hrungen. Die aktuellste Version besitzt sogar mehrphasige, regenerierende Schilde.',
 
 	    ),
 
@@ -10424,7 +10424,7 @@ $SHIP_TORSO = array(
 
 			30 => 790,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Nebula ist zwar ein Ableger der Galaxie-Klasse, sollte jedoch als eigener Schiffstyp mit eigenen Fähigkeiten gesehen werden. Ihre Größe macht sie zwar behäbiger als leichte Kreuzer, in Punkto Feuerkraft und Schildstärke steht sie jedoch über ihnen.',
+			31 => 'Die Nebula ist zwar ein Ableger der Galaxie-Klasse, sollte jedoch als eigener Schiffstyp mit eigenen F&auml;higkeiten gesehen werden. Ihre Gr&ouml;&szlig;e macht sie zwar beh&auml;biger als leichte Kreuzer, in Punkto Feuerkraft und Schildst&auml;rke steht sie jedoch &uuml;ber ihnen.',
 
 	    ),
 
@@ -10494,7 +10494,7 @@ $SHIP_TORSO = array(
 
 			30 => 965,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Galaxy zeichnet sich durch beeindruckende Kampfkraft aus. Obwohl als Forschungsschiff klassifiziert konnte diese Schiffsklasse ihr Kampfgeschick in jeder größeren Schlacht der Föderation unter Beweis stellen. Was ihr an offensiver Bewaffnung fehlt macht sie locker duch ihre schweren Schilde und Panzerung wett. Einer Galaxy sollte man nur in Gruppen auf den Leib rücken.',
+			31 => 'Die Galaxy zeichnet sich durch beeindruckende Kampfkraft aus. Obwohl als Forschungsschiff klassifiziert konnte diese Schiffsklasse ihr Kampfgeschick in jeder gr&ouml;&szlig;eren Schlacht der F&ouml;deration unter Beweis stellen. Was ihr an offensiver Bewaffnung fehlt macht sie locker duch ihre schweren Schilde und Panzerung wett. Einer Galaxy sollte man nur in Gruppen auf den Leib r&uuml;cken.',
 
 	    ),
 
@@ -10564,7 +10564,7 @@ $SHIP_TORSO = array(
 
 			30 => 181,  // Benötige Arbeiter zum Bau
 
-			31 => 'Das erste für die Schlacht entwickelte Schiff der Föderation, Ausgestattet mit mehreren Torpedowerfern kann es ein wahres Inferno auf Feindflotten beschwören. Regenerative Schilde sorgen für ausreichenden Schutz. Diese Schiffsklasse wurde mit dem Augenmerk auf höchste Überlebensfähigkeit, Schnelligkeit und Angriffskraft entwickelt.',
+			31 => 'Das erste f&uuml;r die Schlacht entwickelte Schiff der F&ouml;deration, Ausgestattet mit mehreren Torpedowerfern kann es ein wahres Inferno auf Feindflotten beschw&ouml;ren. Regenerative Schilde sorgen f&uuml;r ausreichenden Schutz. Diese Schiffsklasse wurde mit dem Augenmerk auf h&ouml;chste Überlebensf&auml;higkeit, Schnelligkeit und Angriffskraft entwickelt.',
 
 	    ),
 
@@ -10634,7 +10634,7 @@ $SHIP_TORSO = array(
 
 			30 => 1450,  // Benötige Arbeiter zum Bau
 
-			31 => 'Die Sovereign Klasse ist die modernste Schiffklasse der Föderation. Sie ist zwar offiziell ein Allround Schiff entfaltet aber ihr wahres Potential im Kampf. Starke Waffen und Schilde sowie eine gute Manövrierfähigkeit machen sie zu einem Gegner dem ein Schiff nicht alleine gegenübertreten sollte. Es kann eine verloren schienende Schlacht ohne Probleme wenden.',
+			31 => 'Die Sovereign Klasse ist die modernste Schiffklasse der F&ouml;deration. Sie ist zwar offiziell ein Allround Schiff entfaltet aber ihr wahres Potential im Kampf. Starke Waffen und Schilde sowie eine gute Man&ouml;vrierf&auml;higkeit machen sie zu einem Gegner dem ein Schiff nicht alleine gegen&uuml;bertreten sollte. Es kann eine verloren schienende Schlacht ohne Probleme wenden.',
 
 	    ),
 
@@ -10700,11 +10700,11 @@ $SHIP_TORSO = array(
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Orbitalgeschütz',  // Name
+			29 => 'Orbitalgesch&uuml;tz',  // Name
 
 			30 => 425,  // Benötige Arbeiter zum Bau
 
-			31 => 'Aufgrund der Angreifbarkeit vieler Welten der Föderation sahen sich die Techniker zur Konstruktion dieser automatisierten Waffenplattform genötigt. Ausgestattet mit Phaserbänken und schnell feuernden Photonentorpedorampen bildet es eine wichtige Komponente in der Verteidigungsstrategie der Föderierten.',
+			31 => 'Aufgrund der Angreifbarkeit vieler Welten der F&ouml;deration sahen sich die Techniker zur Konstruktion dieser automatisierten Waffenplattform gen&ouml;tigt. Ausgestattet mit Phaserb&auml;nken und schnell feuernden Photonentorpedorampen bildet es eine wichtige Komponente in der Verteidigungsstrategie der F&ouml;derierten.',
 
 	    ),
 
