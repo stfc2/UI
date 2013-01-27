@@ -22,7 +22,7 @@
 
 
 
-include_once('/home/taku/public_html/config.inc.php');
+include_once('/home/stfc/public_html/config.inc.php');
 
 // Line break
 
@@ -172,19 +172,19 @@ define('ALLIANCE_DIPLOMACY_PACT', 3);
 
 
 
-define('PLANETARY_DEFENSE_ATTACK',100);
+define('PLANETARY_DEFENSE_ATTACK',700);
 
-define('PLANETARY_DEFENSE_ATTACK2',400);
+define('PLANETARY_DEFENSE_ATTACK2',700);
 
-define('PLANETARY_DEFENSE_DEFENSE',2500);
+define('PLANETARY_DEFENSE_DEFENSE',5000);
 
 
 
 define('SPLANETARY_DEFENSE_ATTACK',350);
 
-define('SPLANETARY_DEFENSE_ATTACK2',0);
+define('SPLANETARY_DEFENSE_ATTACK2',350);
 
-define('SPLANETARY_DEFENSE_DEFENSE',1000);
+define('SPLANETARY_DEFENSE_DEFENSE',3000);
 
 
 
@@ -209,7 +209,7 @@ define('NOTICE', 3);
 
 
 // Constants for ships's refit
-define('REFIT_TICK', 2);
+define('REFIT_TICK', 3);
 
 define('NEXT_REFIT_TICK', 2400);
 
@@ -226,7 +226,7 @@ define('SHIP_RUST_CHECK', 700);
 
 // Indicative value of the sensor's power, reference value = 200
 
-define ('PLANETARY_SENSOR_VALUE', 200);
+define ('PLANETARY_SENSOR_VALUE', 450);
 
 // Optimum distance from the capital system to gain maximum structure points
 define('MAX_BOUND_RANGE', 20000);
