@@ -354,10 +354,13 @@ function create_planet($user_id, $id_type, $id_value) {
                     //if( ++$n_available > 30) break;
                 }
 
-                $chosen_system = $available_systems[array_rand($available_systems)];
+                // Check if there are available systems!
+                if (!empty($available_systems)) {
+                    $chosen_system = $available_systems[array_rand($available_systems)];
 
-                $sector_id = $chosen_system[0];
-                $system_id = $chosen_system[1];
+                    $sector_id = $chosen_system[0];
+                    $system_id = $chosen_system[1];
+                }
             }
 
             // If a new system must be created ($system_id = 0), then it's orbitals are all free
