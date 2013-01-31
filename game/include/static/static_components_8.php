@@ -70,7 +70,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Das Fluidgeschütz ist die leichteste Waffe, die erzeugt werden kann. Es ist billig, jedoch nicht sehr effektiv und kann nur auf kleinen Schiffen (+ Transportschiffen und Kolonisierern) eingesetzt werden.',
+                    'description'=>'Das Fluidgesch&uuml;tz ist die leichteste Waffe, die erzeugt werden kann. Es ist billig, jedoch nicht sehr effektiv und kann nur auf kleinen Schiffen (+ Transportschiffen und Kolonisierern) eingesetzt werden.',
                     'dev_info'=>'',
             ), // Endof Component Bio-Konverter MK I
 
@@ -115,7 +115,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Das erweiterte Fluidgeschütz ist eine Verbesserung des Fluidgeschützes. Es hat eine etwas höhere Durchschlagskraft, ist aber trotzdem nicht sehr stark. Es wird dennoch auf mehreren Schiffen angewandt, da ihr Bauaufwand eher gering ist.',
+                    'description'=>'Das erweiterte Fluidgesch&uuml;tz ist eine Verbesserung des Fluidgesch&uuml;tzes. Es hat eine etwas h&ouml;here Durchschlagskraft, ist aber trotzdem nicht sehr stark. Es wird dennoch auf mehreren Schiffen angewandt, da ihr Bauaufwand eher gering ist.',
                     'dev_info'=>'',
             ), // Endof Component Bio-Konverter MK II
 
@@ -160,7 +160,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der Biopulskanal ist speziell für den schweren Verteidiger und den Kreuzer entwickelt worden. Er hat einen eher geringen Baupreis, verbraucht jedoch eine Menge Energie.',
+                    'description'=>'Der Biopulskanal ist speziell f&uuml;r den schweren Verteidiger und den Kreuzer entwickelt worden. Er hat einen eher geringen Baupreis, verbraucht jedoch eine Menge Energie.',
                     'dev_info'=>'',
             ), // Endof Component Bio-Konverter MK III
 
@@ -250,7 +250,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Diese Version wurde entwickelt, um den Strombedarf der Flaggschiffe der Flotte erfüllen, Schiffe Gel&acute;Chak Klasse.',
+                    'description'=>'Diese Version wurde entwickelt, um den Strombedarf der Flaggschiffe der Flotte erf&uuml;llen, Schiffe Gel&acute;Chak Klasse.',
                     'dev_info'=>'',
             ), // Endof Component Bio-Konverter MK V
 
@@ -347,7 +347,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Das Hüllenschutzfeld ist eine recht neue, effektive Verbesserung der Widerstandskraft der Bioschiffe.<br>Es regt die Haut zur Bildung eines elektromagnetischen Feldes an, welches Energieladungen und Detonationen ein wenig abhält.',
+                    'description'=>'Das H&uuml;llenschutzfeld ist eine recht neue, effektive Verbesserung der Widerstandskraft der Bioschiffe.<br>Es regt die Haut zur Bildung eines elektromagnetischen Feldes an, welches Energieladungen und Detonationen ein wenig abh&auml;lt.',
                     'dev_info'=>'',
             ), // Endof Component Warp Antrieb MK II
 
@@ -392,7 +392,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der Restrukturierer wurde für kleinere Schiffstypen entwickelt. Er überwacht die Hülle und repariert diese bei Bedarf sofort durch eine Umschichtung der Hüllenbausteine. Das bringt der Hülle eine längere Lebensdauer.',
+                    'description'=>'Der Restrukturierer wurde f&uuml;r kleinere Schiffstypen entwickelt. Er &uuml;berwacht die H&uuml;lle und repariert diese bei Bedarf sofort durch eine Umschichtung der H&uuml;llenbausteine. Das bringt der H&uuml;lle eine l&auml;ngere Lebensdauer.',
                     'dev_info'=>'',
             ), // Endof Component Warp Antrieb MK III
 
@@ -435,7 +435,7 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'1',
                     'torso_10'=>'0',
-                    'description'=>'Der Restrukturierer 2 ist die schwere Variante für große Schiffe. Vom Prinzip her ist es jedoch das selbe System wie das des Restrukturierers.',
+                    'description'=>'Der Restrukturierer 2 ist die schwere Variante f&uuml;r gro&szlig;e Schiffe. Vom Prinzip her ist es jedoch das selbe System wie das des Restrukturierers.',
                     'dev_info'=>'',
             ), // Endof Component Restrukturierer 2
 
@@ -478,7 +478,7 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-                    'description'=>'Dieser Restrukturierer wurde nur für den Behemoth entwickelt, da dieser eine spezielle Außenhaut besitzt.',
+                    'description'=>'Dieser Restrukturierer wurde nur f&uuml;r den Behemoth entwickelt, da dieser eine spezielle Au&szlig;enhaut besitzt.',
                     'dev_info'=>'',
             ), // Endof Component B-Restrukturierer
 */
@@ -530,7 +530,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die regenerativen Schilde sind eine neue Entwicklung, die die Schildemitter automatisch bei Beschädigung regeneriert. Darum wird die Widerstandskraft der Schilde vergrößert.',
+                    'description'=>'Die regenerativen Schilde sind eine neue Entwicklung, die die Schildemitter automatisch bei Besch&auml;digung regeneriert. Darum wird die Widerstandskraft der Schilde vergr&ouml;&szlig;ert.',
                     'dev_info'=>'',
             ), // Endof Component Energiedissipator
 
@@ -579,7 +579,7 @@ $ship_components=array(
 
              // Component Schildüberwachungsgehirn
              2=>array(
-                    'name'=>'Schildüberwachungsgehirn',
+                    'name'=>'Schild&uuml;berwachungsgehirn',
                     'resource_1'=>'7500',
                     'resource_2'=>'10500',
                     'resource_3'=>'3450',
@@ -616,7 +616,7 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'1',
                     'torso_10'=>'1',
-                    'description'=>'Das Schildüberwachungsgehirn analysiert die Treffer des Gegners und leitet zusätzliche Schildenergie an die meistgetroffenen Stellen und erhöht somit das Verteidigungspotenzial.',
+                    'description'=>'Das Schild&uuml;berwachungsgehirn analysiert die Treffer des Gegners und leitet zus&auml;tzliche Schildenergie an die meistgetroffenen Stellen und erh&ouml;ht somit das Verteidigungspotenzial.',
                     'dev_info'=>'',
             ), // Endof Component Schildüberwachungsgehirn
 
@@ -659,7 +659,7 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'1',
                     'torso_10'=>'1',
-                    'description'=>'Die 2. Revision der biologischen Schildkuppel erzeugt eine feste Masse um das Schiff, die die Schildstärke auf Kosten von Wendigkeit und Geschwindigkeit verbessert.',
+                    'description'=>'Die 2. Revision der biologischen Schildkuppel erzeugt eine feste Masse um das Schiff, die die Schildst&auml;rke auf Kosten von Wendigkeit und Geschwindigkeit verbessert.',
                     'dev_info'=>'',
             ), // Endof Component Biologische Schildkuppel 2
 */
@@ -711,7 +711,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Ein Energiekern der den Scout optimal mit Energie versorgt ohne dessen Wendigkeit einzuschränken.',
+                    'description'=>'Ein Energiekern der den Scout optimal mit Energie versorgt ohne dessen Wendigkeit einzuschr&auml;nken.',
                     'dev_info'=>'',
             ), // Endof Component Basic Launcher
 
@@ -756,7 +756,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der Warpkern macht unsere Schiffe warpfähig, d.h. sie können schneller als Warp 0.99 fliegen. Auch stockt er den Energievorrat unserer Schiffe auf. Alternativ können natürlich andere Warpkerne installiert werden, welche dann Zusatztechnologien besitzen.',
+                    'description'=>'Der Warpkern macht unsere Schiffe warpf&auml;hig, d.h. sie k&ouml;nnen schneller als Warp 0.99 fliegen. Auch stockt er den Energievorrat unserer Schiffe auf. Alternativ k&ouml;nnen nat&uuml;rlich andere Warpkerne installiert werden, welche dann Zusatztechnologien besitzen.',
                     'dev_info'=>'',
             ), // Endof Component Verbesserter Laucher
 
@@ -846,7 +846,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der Bio-Energieverteiler verbessert die Energieverteilung in den Schiffen der Mittelklasse, um deren Effektivität zu steigern.',
+                    'description'=>'Der Bio-Energieverteiler verbessert die Energieverteilung in den Schiffen der Mittelklasse, um deren Effektivit&auml;t zu steigern.',
                     'dev_info'=>'',
             ), // Endof Component Dual-Frequenz Launcher
 
@@ -889,7 +889,7 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'1',
                     'torso_10'=>'1',
-                    'description'=>'Der schwere Energieverteiler ist speziell für die schweren Schiffe konzipiert und erreicht die effizienteste Energieausbeute überhaupt.',
+                    'description'=>'Der schwere Energieverteiler ist speziell f&uuml;r die schweren Schiffe konzipiert und erreicht die effizienteste Energieausbeute &uuml;berhaupt.',
                     'dev_info'=>'',
             ), // Endof Component Schwerer Energieverteiler
 
@@ -932,7 +932,7 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'1',
                     'torso_10'=>'1',
-                    'description'=>'Eine bahnbrechende Erfindung auf dem Gebiet der Energieleitungssysteme ermöglicht dieses revolutionäre Energiegewinnungssystem. Durch komplizierte Verzweigungen im Schiffsaufbau wird verbrauchte Energie wiederverwertet und teilweise sogar Energie gewonnen.',
+                    'description'=>'Eine bahnbrechende Erfindung auf dem Gebiet der Energieleitungssysteme erm&ouml;glicht dieses revolution&auml;re Energiegewinnungssystem. Durch komplizierte Verzweigungen im Schiffsaufbau wird verbrauchte Energie wiederverwertet und teilweise sogar Energie gewonnen.',
                     'dev_info'=>'',
             ), // Endof Component Bi-Tionide Nervenbahnen
 */
@@ -983,7 +983,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Mit dem Biomassenaustausch ist es möglich, Gegnerschiffe zu zersetzen.',
+                    'description'=>'Mit dem Biomassenaustausch ist es m&ouml;glich, Gegnerschiffe zu zersetzen.',
                     'dev_info'=>'',
               ),
                     
@@ -1027,7 +1027,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Mit dem Biomassenaustausch ist es möglich, Gegnerschiffe zu zersetzen.',
+                    'description'=>'Mit dem Biomassenaustausch ist es m&ouml;glich, Gegnerschiffe zu zersetzen.',
                     'dev_info'=>'',
               ),
               
@@ -1071,11 +1071,11 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Mit dem Biomassenaustausch ist es möglich, Gegnerschiffe zu zersetzen.',
+                    'description'=>'Mit dem Biomassenaustausch ist es m&ouml;glich, Gegnerschiffe zu zersetzen.',
                     'dev_info'=>'',
               ),
                     
-      'name'=>'Hülle',
+      'name'=>'H&uuml;lle',
       'num'=>'3',
       ), // Endof Category Hülle
       
@@ -1168,7 +1168,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Kurzsprungantrieb: Diese Technologie ermöglicht es dem Scout Warpsprünge innerhalb eines sehr begrenzten Raumes durchzuführen, wodurch er in der Lage ist, gegnerischen Langstreckengeschossen auszuweichen und sich selbst immer in die günstigste Feuerposition zu bringen.',
+                    'description'=>'Kurzsprungantrieb: Diese Technologie erm&ouml;glicht es dem Scout Warpspr&uuml;nge innerhalb eines sehr begrenzten Raumes durchzuf&uuml;hren, wodurch er in der Lage ist, gegnerischen Langstreckengeschossen auszuweichen und sich selbst immer in die g&uuml;nstigste Feuerposition zu bringen.',
                     'dev_info'=>'',
             ), // Endof Component KSA
 
@@ -1213,7 +1213,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Mit dem Biomassenaustausch ist es möglich, Gegnerschiffe zu zersetzen.',
+                    'description'=>'Mit dem Biomassenaustausch ist es m&ouml;glich, Gegnerschiffe zu zersetzen.',
                     'dev_info'=>'',
             ), // Endof Component Biomassenaustausch
                     
@@ -1258,7 +1258,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Dieses System erhöht die Quantenausbeute der Schilde. Als ein Prototyp, aber sind seine Leistungen immer noch die Hoffnung,.',
+                    'description'=>'Dieses System erh&ouml;ht die Quantenausbeute der Schilde. Als ein Prototyp, aber sind seine Leistungen immer noch die Hoffnung,.',
                     'dev_info'=>'',
             ), // Endof Component Biomassenaustausch
             
@@ -1348,7 +1348,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Diese Version liegt in der Nähe das bestmögliche Ergebnis für diese Technologie. Allerdings ist diese Form nur auf die Flaggschiffe der Flotte eingesetzt.',
+                    'description'=>'Diese Version liegt in der N&auml;he das bestm&ouml;gliche Ergebnis f&uuml;r diese Technologie. Allerdings ist diese Form nur auf die Flaggschiffe der Flotte eingesetzt.',
                     'dev_info'=>'',
             ), // Endof Component Biomassenaustausch
             
@@ -1400,7 +1400,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Fluidraum-Sensoren arbeiten ähnlich wie die Fluidraum-Navigation. Sie können somit effizienter und mit größerer Reichweite scannen, was enorme Vorteile mit sich bringt.',
+                    'description'=>'Die Fluidraum-Sensoren arbeiten &auml;hnlich wie die Fluidraum-Navigation. Sie k&ouml;nnen somit effizienter und mit gr&ouml;&szlig;erer Reichweite scannen, was enorme Vorteile mit sich bringt.',
                     'dev_info'=>'',
             ), // Endof Component Fluidraum-Sensoren
 
@@ -1445,7 +1445,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die atomaren Sensoren wurden für den Kampf entwickelt. Sie erfassen den genauen Aufbau der Ziele und können somit die verwundbaren Stellen aufzeigen. Aber auch beim Forschen sind sie nützlich um die genaue Zusammensetzung eines Objektes zu bestimmen.',
+                    'description'=>'Die atomaren Sensoren wurden f&uuml;r den Kampf entwickelt. Sie erfassen den genauen Aufbau der Ziele und k&ouml;nnen somit die verwundbaren Stellen aufzeigen. Aber auch beim Forschen sind sie n&uuml;tzlich um die genaue Zusammensetzung eines Objektes zu bestimmen.',
                     'dev_info'=>'',
             ), // Endof Component Atomare Sensoren
 
@@ -1490,7 +1490,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die erweiterte Schiffsdatenbank optimiert die Datenübertragung <i>innerhalb</i> des Schiffes. Auch sind erweiterte und aktuelle Infos über Feindschiffe u.ä. verfügbar.',
+                    'description'=>'Die erweiterte Schiffsdatenbank optimiert die Daten&uuml;bertragung <i>innerhalb</i> des Schiffes. Auch sind erweiterte und aktuelle Infos &uuml;ber Feindschiffe u.&auml;. verf&uuml;gbar.',
                     'dev_info'=>'',
             ), // Endof Component Erweiterte Schiffsdatenbank
 
@@ -1534,7 +1534,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die erweiterte Schiffsdatenbank optimiert die Datenübertragung <i>innerhalb</i> des Schiffes. Auch sind erweiterte und aktuelle Infos über Feindschiffe u.ä. verfügbar.',
+                    'description'=>'Die erweiterte Schiffsdatenbank optimiert die Daten&uuml;bertragung <i>innerhalb</i> des Schiffes. Auch sind erweiterte und aktuelle Infos &uuml;ber Feindschiffe u.&auml;. verf&uuml;gbar.',
                     'dev_info'=>'',
             ), // Endof Component Biogenetisches Interface MK IV
 
@@ -1579,7 +1579,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die erweiterte Schiffsdatenbank optimiert die Datenübertragung <i>innerhalb</i> des Schiffes. Auch sind erweiterte und aktuelle Infos über Feindschiffe u.ä. verfügbar.',
+                    'description'=>'Die erweiterte Schiffsdatenbank optimiert die Daten&uuml;bertragung <i>innerhalb</i> des Schiffes. Auch sind erweiterte und aktuelle Infos &uuml;ber Feindschiffe u.&auml;. verf&uuml;gbar.',
                     'dev_info'=>'',
             ),// Endof Component Biogenetisches Interface MK V
             
@@ -1624,7 +1624,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die erweiterte Schiffsdatenbank optimiert die Datenübertragung <i>innerhalb</i> des Schiffes. Auch sind erweiterte und aktuelle Infos über Feindschiffe u.ä. verfügbar.',
+                    'description'=>'Die erweiterte Schiffsdatenbank optimiert die Daten&uuml;bertragung <i>innerhalb</i> des Schiffes. Auch sind erweiterte und aktuelle Infos &uuml;ber Feindschiffe u.&auml;. verf&uuml;gbar.',
                     'dev_info'=>'',
             ),// Endof Component Biogenetisches Interface MK VI
             
@@ -1722,7 +1722,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die telepatische Kommunikation wird durch ein spezielles Feld verstärkt, sodass auch Kommunikation zwischen Schiffen in weiterer Entfernung ermöglicht wird. Diese Technik dient zur Verfeinerung von Taktiken sowie zur Aufklärung.',
+                    'description'=>'Die telepatische Kommunikation wird durch ein spezielles Feld verst&auml;rkt, sodass auch Kommunikation zwischen Schiffen in weiterer Entfernung erm&ouml;glicht wird. Diese Technik dient zur Verfeinerung von Taktiken sowie zur Aufkl&auml;rung.',
                     'dev_info'=>'',
             ), // Endof Component Kortikaler Hypertransiver
 
@@ -1767,7 +1767,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die neurale Regeneration ist ein neu entwickeltes Gerät, dass mit äußerst komplexen Methoden Nervenschäden bei Piloten repariert.  ',
+                    'description'=>'Die neurale Regeneration ist ein neu entwickeltes Ger&auml;t, dass mit &auml;u&szlig;erst komplexen Methoden Nervensch&auml;den bei Piloten repariert.  ',
                     'dev_info'=>'',
             ), // Endof Component Neurale Regeneration
 
@@ -1811,7 +1811,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die neurale Regeneration ist ein neu entwickeltes Gerät, dass mit äußerst komplexen Methoden Nervenschäden bei Piloten repariert.  ',
+                    'description'=>'Die neurale Regeneration ist ein neu entwickeltes Ger&auml;t, dass mit &auml;u&szlig;erst komplexen Methoden Nervensch&auml;den bei Piloten repariert.  ',
                     'dev_info'=>'',
             ),
             
@@ -1855,7 +1855,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die neurale Regeneration ist ein neu entwickeltes Gerät, dass mit äußerst komplexen Methoden Nervenschäden bei Piloten repariert.  ',
+                    'description'=>'Die neurale Regeneration ist ein neu entwickeltes Ger&auml;t, dass mit &auml;u&szlig;erst komplexen Methoden Nervensch&auml;den bei Piloten repariert.  ',
                     'dev_info'=>'',
             ),
             
@@ -1997,7 +1997,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Dieses Geschütz feuert einen Strom fluider Plasmateilchen auf das Gegnerschiff. Diese Technologie ist experimentell und kann nur auf den drei Eliteschiffen installiert werden.',
+                    'description'=>'Dieses Gesch&uuml;tz feuert einen Strom fluider Plasmateilchen auf das Gegnerschiff. Diese Technologie ist experimentell und kann nur auf den drei Eliteschiffen installiert werden.',
                     'dev_info'=>'',
             ), // Endof Component Fluid-Plasma Geschütz
 
@@ -2042,7 +2042,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Extreme Feuerkraft kombiniert mit dem besten verfügbaren Kühlaggregat ergibt diese zerstörerische Waffe.',
+                    'description'=>'Extreme Feuerkraft kombiniert mit dem besten verf&uuml;gbaren K&uuml;hlaggregat ergibt diese zerst&ouml;rerische Waffe.',
                     'dev_info'=>'',
             ), // Endof Component B-Geschützphalanx
 
@@ -2087,7 +2087,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Extreme Feuerkraft kombiniert mit dem besten verfügbaren Kühlaggregat ergibt diese zerstörerische Waffe.',
+                    'description'=>'Extreme Feuerkraft kombiniert mit dem besten verf&uuml;gbaren K&uuml;hlaggregat ergibt diese zerst&ouml;rerische Waffe.',
                     'dev_info'=>'',
             ), // Endof Component B-Geschützphalanx
 
@@ -2139,7 +2139,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Trägheitsdämpfer verbessern die Flugstabilität durch Generierung eines Trägheitsfeldes, welches die Einwirkung der Gravitationskräfte bei Manövern vermindert.',
+                    'description'=>'Die Tr&auml;gheitsd&auml;mpfer verbessern die Flugstabilit&auml;t durch Generierung eines Tr&auml;gheitsfeldes, welches die Einwirkung der Gravitationskr&auml;fte bei Man&ouml;vern vermindert.',
                     'dev_info'=>'',
             ), // Endof Component Trägheitsdämpfer
 
@@ -2184,7 +2184,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Speziell auf die Eliteklasse abgestimmte Felder maximieren die Wendigkeit und Reaktion für optimale Ergebnisse.',
+                    'description'=>'Speziell auf die Eliteklasse abgestimmte Felder maximieren die Wendigkeit und Reaktion f&uuml;r optimale Ergebnisse.',
                     'dev_info'=>'',
             ), // Endof Component Tinoide Dämpfer
 
@@ -2229,7 +2229,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die taktischen Nervenbahnen verbessern die Wahrnehmung der Piloten unserer Schiffe. Somit ist es ein leichtes, Gefahren frühzeitig zu entdecken.',
+                    'description'=>'Die taktischen Nervenbahnen verbessern die Wahrnehmung der Piloten unserer Schiffe. Somit ist es ein leichtes, Gefahren fr&uuml;hzeitig zu entdecken.',
                     'dev_info'=>'',
             ), // Endof Component Taktische Nervenbahnen
 
@@ -2274,13 +2274,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Bioneurale Symbiose verbindet die Nervenbahnen der Piloten 1:1 mit denen des Schiffs. Dadurch wird leichteres Navigieren ermöglicht, jedoch besteht auf Dauer die Gefahr von Nervenschäden beim Piloten.',
+                    'description'=>'Die Bioneurale Symbiose verbindet die Nervenbahnen der Piloten 1:1 mit denen des Schiffs. Dadurch wird leichteres Navigieren erm&ouml;glicht, jedoch besteht auf Dauer die Gefahr von Nervensch&auml;den beim Piloten.',
                     'dev_info'=>'',
             ), // Endof Component Bioneurale Symbiose
 
              // Component  Energidämpfungslauncher
              4=>array(
-                    'name'=>'Energidämpfungslauncher',
+                    'name'=>'Energid&auml;mpfungslauncher',
                     'resource_1'=>'7500',
                     'resource_2'=>'3000',
                     'resource_3'=>'750',
@@ -2319,7 +2319,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Durch Verwendung bioneuraler Leitkomponenten konnte die Effektivität erneut verbessert werden, ohne den Energieverbrauch zu erhöhen. Sie sind speziell für die mittelklasse konzipiert.',
+                    'description'=>'Durch Verwendung bioneuraler Leitkomponenten konnte die Effektivit&auml;t erneut verbessert werden, ohne den Energieverbrauch zu erh&ouml;hen. Sie sind speziell f&uuml;r die mittelklasse konzipiert.',
                     'dev_info'=>'',
             ), // Endof Component Bioneurale Trägheitsdämpfer
 
@@ -2364,7 +2364,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Das taktische Nebensystem ist eigentlich eine einfache Zielerweiterung. Jedoch greift es auf Daten aus der Datenbank zurück, was eine gewaltige Steigerung der Feuerkraft zur Folge hat.<br><tt>Benötigt: Erweiterte Schiffsdatenbank</tt>',
+                    'description'=>'Das taktische Nebensystem ist eigentlich eine einfache Zielerweiterung. Jedoch greift es auf Daten aus der Datenbank zur&uuml;ck, was eine gewaltige Steigerung der Feuerkraft zur Folge hat.<br><tt>Ben&ouml;tigt: Erweiterte Schiffsdatenbank</tt>',
                     'dev_info'=>'',
             ), // Endof Component Taktisches Nebensystem
 

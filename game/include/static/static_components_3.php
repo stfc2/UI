@@ -68,9 +68,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-					                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Warpantrieb ist primär für die Energieversorgung des Schiffes zuständig. Durch Materie / Antimaterie Reaktionen wird ein Wirkungsgrad von 100% erreicht.',
+                    'description'=>'Der Warpantrieb ist prim&auml;r f&uuml;r die Energieversorgung des Schiffes zust&auml;ndig. Durch Materie / Antimaterie Reaktionen wird ein Wirkungsgrad von 100% erreicht.',
                     'dev_info'=>'',
             ), // Endof Component Warpantrieb
 
@@ -113,9 +113,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Warpantrieb MKII ist primär für die Energieversorgung des Schiffes zuständig. Durch Materie / Antimaterie Reaktionen wird ein Wirkungsgrad von 100% erreicht.',
+                    'description'=>'Der Warpantrieb MKII ist prim&auml;r f&uuml;r die Energieversorgung des Schiffes zust&auml;ndig. Durch Materie / Antimaterie Reaktionen wird ein Wirkungsgrad von 100% erreicht.',
                     'dev_info'=>'',
             ), // Endof Component Warpantrieb MKII
 
@@ -158,9 +158,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Plasmaleiter werden zusätzlich zu einem Warpkern als Kühlaggregate eingebaut, wodurch die hohe Kerntemperatur bei Materie / Antimaterie Reaktionen keine so große Rolle mehr spielt.',
+                    'description'=>'Plasmaleiter werden zus&auml;tzlich zu einem Warpkern als K&uuml;hlaggregate eingebaut, wodurch die hohe Kerntemperatur bei Materie / Antimaterie Reaktionen keine so gro&szlig;e Rolle mehr spielt.',
                     'dev_info'=>'',
             ), // Endof Component Plasmaleiter
 
@@ -203,7 +203,7 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
                     'description'=>'Bei der Materie-Antimaterie Verdichtung wird die Materie und die Antimaterie verdichtet, was das Energieoutput anhebt.',
                     'dev_info'=>'',
@@ -255,9 +255,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch die Feldmanipulation kann ein stabiles Warpfeld erzeugt werden, was Überlichtgeschwindigkeitsreisen ermöglicht.',
+                    'description'=>'Durch die Feldmanipulation kann ein stabiles Warpfeld erzeugt werden, was &uuml;berlichtgeschwindigkeitsreisen erm&ouml;glicht.',
                     'dev_info'=>'',
             ), // Endof Component Feldmanipulation
 
@@ -300,9 +300,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Supraleiter an den Warpgondeln der Schiffe verstärken das Warpfeld dahingehend, dass nun mehr als Warp 2 möglich ist.',
+                    'description'=>'Supraleiter an den Warpgondeln der Schiffe verst&auml;rken das Warpfeld dahingehend, dass nun mehr als Warp 2 m&ouml;glich ist.',
                     'dev_info'=>'',
             ), // Endof Component Supraleiter
 
@@ -345,9 +345,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Materieumwandlung findet in den Warpspulen statt und leitet direkt zusätzliche Energie in das Warpfeld, um die Subraumblase bei höheren Geschwindigkeiten noch stabil zu halten.',
+                    'description'=>'Materieumwandlung findet in den Warpspulen statt und leitet direkt zus&auml;tzliche Energie in das Warpfeld, um die Subraumblase bei h&ouml;heren Geschwindigkeiten noch stabil zu halten.',
                     'dev_info'=>'',
             ), // Endof Component Materieumwandlung
 
@@ -390,9 +390,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Antimaterie-Fusion findet genau wie die Materieumwandlung in den Warpspulen statt und stabilisiert das Warpfeld, um höhere Geschwindigkeiten bei den Schiffen zu ermöglichen.',
+                    'description'=>'Die Antimaterie-Fusion findet genau wie die Materieumwandlung in den Warpspulen statt und stabilisiert das Warpfeld, um h&ouml;here Geschwindigkeiten bei den Schiffen zu erm&ouml;glichen.',
                     'dev_info'=>'',
             ), // Endof Component Antimaterie-Fusion
 
@@ -435,9 +435,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Quanten-Determinismus ist eine neuartige Technologie, die noch in der Erprobung ist.<br>Es wird hier versucht, durch rechnerische Ansätze die Bewegung der Quanten im Quantenstrom während des Warpvorgangs vorherzuberechnen und das Warpfeld anzupassen, damit höhere Geschwindigkeiten bei weniger Energieaufwand möglich werden.',
+                    'description'=>'Quanten-Determinismus ist eine neuartige Technologie, die noch in der Erprobung ist.<br>Es wird hier versucht, durch rechnerische Ans&auml;tze die Bewegung der Quanten im Quantenstrom w&auml;hrend des Warpvorgangs vorherzuberechnen und das Warpfeld anzupassen, damit h&ouml;here Geschwindigkeiten bei weniger Energieaufwand m&ouml;glich werden.',
                     'dev_info'=>'',
             ), // Endof Component Quanten-Determinismus
 
@@ -487,7 +487,7 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
                     'description'=>'Phaser sind die Standardwaffe auf cardassianischen Scouts und Transportern, sie sind langsam im Bau und nicht sonderlich effektiv.',
                     'dev_info'=>'',
@@ -532,9 +532,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Strahlenemitter sind eine Weiterentwicklung des Standardphasers, hier werden in der Regel die Strahlen mehrerer Emitter gebündelt auf ein Ziel gelenkt.',
+                    'description'=>'Strahlenemitter sind eine Weiterentwicklung des Standardphasers, hier werden in der Regel die Strahlen mehrerer Emitter geb&uuml;ndelt auf ein Ziel gelenkt.',
                     'dev_info'=>'',
             ), // Endof Component Strahlenemitter
 
@@ -577,9 +577,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Phasendisruptoren sind eine - für Scouts und Transporter - durchaus sinnvolle Technologie. Sie haben eine eingebaute Phasenmodulation, ändern also die Abstrahlungsfrequenz durchgängig, was eine Bedrohung für schwach gepanzerte Schiffe darstellt.',
+                    'description'=>'Phasendisruptoren sind eine - f&uuml;r Scouts und Transporter - durchaus sinnvolle Technologie. Sie haben eine eingebaute Phasenmodulation, &auml;ndern also die Abstrahlungsfrequenz durchg&auml;ngig, was eine Bedrohung f&uuml;r schwach gepanzerte Schiffe darstellt.',
                     'dev_info'=>'',
             ), // Endof Component Phasendisruptoren
 
@@ -622,9 +622,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Disruptorkanone ist der große Bruder der Phasendisruptoren. Sein teuerer Preis und seine rel. lange Bauzeit vereinigen sich mit einer moderaten Schadenswirkung.',
+                    'description'=>'Die Disruptorkanone ist der gro&szlig;e Bruder der Phasendisruptoren. Sein teuerer Preis und seine rel. lange Bauzeit vereinigen sich mit einer moderaten Schadenswirkung.',
                     'dev_info'=>'',
             ), // Endof Component Disruptorkanone
 
@@ -667,9 +667,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Kompressionsphaser ist eine schlagkräftige Waffe. Im Gegensatz zu normalen Phaserwaffen laden sich die Emitter über einen bestimmten Zeitraum auf, bevor die Energie gebündelt auf das betreffende Ziel gelenkt wird.',
+                    'description'=>'Der Kompressionsphaser ist eine schlagkr&auml;ftige Waffe. Im Gegensatz zu normalen Phaserwaffen laden sich die Emitter &uuml;ber einen bestimmten Zeitraum auf, bevor die Energie geb&uuml;ndelt auf das betreffende Ziel gelenkt wird.',
                     'dev_info'=>'',
             ), // Endof Component Kompressionsphaser
 
@@ -712,9 +712,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Spiralwellendisruptoren spiegeln den technologischen Stand der Cardassianer wieder. Sie sind durchschlagskräftig gegen alle kleineren Schiffe und für die Oberklasse wie geschaffen.',
+                    'description'=>'Die Spiralwellendisruptoren spiegeln den technologischen Stand der Cardassianer wieder. Sie sind durchschlagskr&auml;ftig gegen alle kleineren Schiffe und f&uuml;r die Oberklasse wie geschaffen.',
                     'dev_info'=>'',
             ), // Endof Component Spiralwellendisruptoren
 
@@ -764,7 +764,7 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
                     'description'=>'Microtorpedos sind kleine, selbstgetriebene Geschosse, die einen ´Warhead´ mit einer Sprengkraft von ca. 4 Isotonnen beherbergen.',
                     'dev_info'=>'',
@@ -809,7 +809,7 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
                     'description'=>'Torpedos sind selbstgetriebene Geschosse, die einen ´Warhead´ mit einer Sprengkraft von ca. 12 Isotonnen beherbergen.',
                     'dev_info'=>'',
@@ -854,9 +854,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Photonentorpedos selbstgetriebene Geschosse mit einem eigenen Zielleitsystem (also schiffscomputerunabhängig), die einen ´Warhead´ mit einer Sprengkraft von ca. 25 Isotonnen beherbergen.',
+                    'description'=>'Photonentorpedos selbstgetriebene Geschosse mit einem eigenen Zielleitsystem (also schiffscomputerunabh&auml;ngig), die einen ´Warhead´ mit einer Sprengkraft von ca. 25 Isotonnen beherbergen.',
                     'dev_info'=>'',
             ), // Endof Component Photonentorpedos
 
@@ -899,9 +899,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'In Quantum Torpedos werden Quantumfillamente im Sprengkopf verwendet. Interagieren diese Fillamente miteinander, so wird enorm viel Energie freigesetzt. Quantumtorpedos besitzen ein anderes Gehäuse sowie Gehäuseform als Photonentorpedos. Diese Torpedos erfordern eine spezielle Startvorrichtung, wobei auf modernen Schiffen universelle Startrampen verwendet werden, mit denen auch Photonentorpedos abgefeuert werden können.',
+                    'description'=>'In Quantum Torpedos werden Quantumfillamente im Sprengkopf verwendet. Interagieren diese Fillamente miteinander, so wird enorm viel Energie freigesetzt. Quantumtorpedos besitzen ein anderes Geh&auml;use sowie Geh&auml;useform als Photonentorpedos. Diese Torpedos erfordern eine spezielle Startvorrichtung, wobei auf modernen Schiffen universelle Startrampen verwendet werden, mit denen auch Photonentorpedos abgefeuert werden k&ouml;nnen.',
                     'dev_info'=>'',
             ), // Endof Component Micro-Quantentorpedos
 
@@ -944,9 +944,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Biokinetische Ladungen sind eine Art Parasiten, die besonders widerstandsfähig sind und daher mit Hilfe eines Sprengsatzes abgefeuert und zerstäubt werden können.<br>Bei Schiffen versuchen sie die Hülle zu durchdringen und die Crew zu infizieren, bei planetaren Angriffen wird der Sprengsatz in ca. 10km Höhe gezündet und bei günstigen Winden kann man Gebiete von mehreren 1000 km² auslöschen.',
+                    'description'=>'Biokinetische Ladungen sind eine Art Parasiten, die besonders widerstandsf&auml;hig sind und daher mit Hilfe eines Sprengsatzes abgefeuert und zerst&auml;ubt werden k&ouml;nnen.<br>Bei Schiffen versuchen sie die H&uuml;lle zu durchdringen und die Crew zu infizieren, bei planetaren Angriffen wird der Sprengsatz in ca. 10km H&ouml;he gez&uuml;ndet und bei g&uuml;nstigen Winden kann man Gebiete von mehreren 1000 km² ausl&ouml;schen.',
                     'dev_info'=>'',
             ), // Endof Component Biokinetische Ladungen
 
@@ -996,9 +996,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Einfache Schilde sind ausschließlich für den Einsatz auf den Schiffsklassen ´Gul Vystan´, ´Transporter´ und ´Kolonieschiff´ konzipiert und können in der Regel nicht mehr als einen Treffer wegstecken.',
+                    'description'=>'Einfache Schilde sind ausschlie&szlig;lich f&uuml;r den Einsatz auf den Schiffsklassen ´Gul Vystan´, ´Transporter´ und ´Kolonieschiff´ konzipiert und k&ouml;nnen in der Regel nicht mehr als einen Treffer wegstecken.',
                     'dev_info'=>'',
             ), // Endof Component Schilde
 
@@ -1041,9 +1041,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Diffusions-Banding ist eine neuartige Technologie, bei der ankommende Energiesalven und Torpedos mit Gegenenergie beschossen werden. Dies soll eine Diffusion auslösen, also die Flugbahn in eine andere Ricktung ablenken.',
+                    'description'=>'Diffusions-Banding ist eine neuartige Technologie, bei der ankommende Energiesalven und Torpedos mit Gegenenergie beschossen werden. Dies soll eine Diffusion ausl&ouml;sen, also die Flugbahn in eine andere Ricktung ablenken.',
                     'dev_info'=>'',
             ), // Endof Component Diffusions-Banding
 
@@ -1086,9 +1086,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Quanten Epitaxi sind eine verstärkte Schiffshülle, die 650 Punkte mehr in der Verteidigung bringt.',
+                    'description'=>'Quanten Epitaxi sind eine verst&auml;rkte Schiffsh&uuml;lle, die 650 Punkte mehr in der Verteidigung bringt.',
                     'dev_info'=>'',
             ), // Endof Component Quanten Epitaxi
 
@@ -1131,9 +1131,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Phasenschilde sind so konstruiert, dass sie ihre Phasen modulieren und immer min. 2 ´Schichten´ übereinanderliegen, um das Durchdringen von Geschossen zu verhindern.',
+                    'description'=>'Phasenschilde sind so konstruiert, dass sie ihre Phasen modulieren und immer min. 2 ´Schichten´ &uuml;bereinanderliegen, um das Durchdringen von Geschossen zu verhindern.',
                     'dev_info'=>'',
             ), // Endof Component Phasenschilde
 
@@ -1176,13 +1176,13 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Quantenschilde sind eine Weiterentwicklung der herkömmlichen Schildtechnik, hier werden Quanten durch Energiebarrieren gezielt von der Schiffshülle abgelenkt und sollen die engegenkommenden Partikel daran hindern, das Feld zu durchqueren.',
+                    'description'=>'Quantenschilde sind eine Weiterentwicklung der herk&ouml;mmlichen Schildtechnik, hier werden Quanten durch Energiebarrieren gezielt von der Schiffsh&uuml;lle abgelenkt und sollen die engegenkommenden Partikel daran hindern, das Feld zu durchqueren.',
                     'dev_info'=>'',
             ), // Endof Component Quantenschilde
 
-      'name'=>'Hülle/Schilde',
+      'name'=>'H&uuml;lle/Schilde',
       'num'=>'5',
       ), // Endof Category Hülle/Schilde
 
@@ -1228,9 +1228,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Computersysteme spielen auf cardassianischen Schiffen eine große Rolle, ihnen werden viele routinemäßige Aufgaben anvertraut.',
+                    'description'=>'Computersysteme spielen auf cardassianischen Schiffen eine gro&szlig;e Rolle, ihnen werden viele routinem&auml;&szlig;ige Aufgaben anvertraut.',
                     'dev_info'=>'',
             ), // Endof Component Computersystem
 
@@ -1273,9 +1273,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Computersysteme spielen auf cardassianischen Schiffen eine große Rolle, ihnen werden viele routinemäßige Aufgaben anvertraut.',
+                    'description'=>'Computersysteme spielen auf cardassianischen Schiffen eine gro&szlig;e Rolle, ihnen werden viele routinem&auml;&szlig;ige Aufgaben anvertraut.',
                     'dev_info'=>'',
             ), // Endof Component Daten-Imaging
 
@@ -1318,9 +1318,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Computersysteme spielen auf cardassianischen Schiffen eine große Rolle, ihnen werden viele routinemäßige Aufgaben anvertraut.',
+                    'description'=>'Computersysteme spielen auf cardassianischen Schiffen eine gro&szlig;e Rolle, ihnen werden viele routinem&auml;&szlig;ige Aufgaben anvertraut.',
                     'dev_info'=>'',
             ), // Endof Component Kristallspeicher
 
@@ -1363,9 +1363,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Computersysteme spielen auf cardassianischen Schiffen eine große Rolle, ihnen werden viele routinemäßige Aufgaben anvertraut.',
+                    'description'=>'Computersysteme spielen auf cardassianischen Schiffen eine gro&szlig;e Rolle, ihnen werden viele routinem&auml;&szlig;ige Aufgaben anvertraut.',
                     'dev_info'=>'',
             ), // Endof Component Quadritronik
 
@@ -1408,9 +1408,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Computersysteme spielen auf cardassianischen Schiffen eine große Rolle, ihnen werden viele routinemäßige Aufgaben anvertraut.',
+                    'description'=>'Computersysteme spielen auf cardassianischen Schiffen eine gro&szlig;e Rolle, ihnen werden viele routinem&auml;&szlig;ige Aufgaben anvertraut.',
                     'dev_info'=>'',
             ), // Endof Component Positronik
 
@@ -1460,7 +1460,7 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
                     'description'=>'Eine verbesserte Lebenserhaltung wirkt sich positiv auf die Leistungen der Crew aus.',
                     'dev_info'=>'',
@@ -1505,7 +1505,7 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
                     'description'=>'Eine Krankenstation bringt eine bessere Bereitschaft und Reaktion in Krisensituationen mit sich.',
                     'dev_info'=>'',
@@ -1550,7 +1550,7 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
                     'description'=>'Bioneurale-Implantate werden den Besatzungsmitgliedern implantiert und erlauben das direkte Kommunizieren untereinander und mit dem Schiffsrechner.',
                     'dev_info'=>'',
@@ -1595,9 +1595,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Bei Xenobiologe werden die Truppen auf den Schiffen mit fremden Zellen infiziert, also praktisch genmanipuliert.<br>Dies steigert die Leistungsfähigkeit und die Erfahrung.',
+                    'description'=>'Bei Xenobiologe werden die Truppen auf den Schiffen mit fremden Zellen infiziert, also praktisch genmanipuliert.<br>Dies steigert die Leistungsf&auml;higkeit und die Erfahrung.',
                     'dev_info'=>'',
             ), // Endof Component Xenobiologe
 
@@ -1647,9 +1647,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Deflektoren verstärken die Sensorleistung der Schiffe und lenken bei Überlichtgheschwindigkeit Meteoritensplitter u.ä. von der Hülle ab.',
+                    'description'=>'Deflektoren verst&auml;rken die Sensorleistung der Schiffe und lenken bei &uuml;berlichtgheschwindigkeit Meteoritensplitter u.&auml;. von der H&uuml;lle ab.',
                     'dev_info'=>'',
             ), // Endof Component Deflektoren
 
@@ -1692,9 +1692,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Sensorenplattformen erhöhen die Abtastgeschwindigkeit der näheren Umgebung und wirken sich positiv auf die Wendigkeit des Schiffes aus.',
+                    'description'=>'Sensorenplattformen erh&ouml;hen die Abtastgeschwindigkeit der n&auml;heren Umgebung und wirken sich positiv auf die Wendigkeit des Schiffes aus.',
                     'dev_info'=>'',
             ), // Endof Component Sensorenplattform
 
@@ -1737,9 +1737,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Sensorenphalanxen erhöhen die Sensorauflösung und werden mit schiffsinternen Systemen wie dem Autopiloten gekoppelt.',
+                    'description'=>'Sensorenphalanxen erh&ouml;hen die Sensoraufl&ouml;sung und werden mit schiffsinternen Systemen wie dem Autopiloten gekoppelt.',
                     'dev_info'=>'',
             ), // Endof Component Sensorphalanx
 
@@ -1782,9 +1782,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Gammaabtastung erhöht die Genauigkeit der Sensoren noch weiter.',
+                    'description'=>'Die Gammaabtastung erh&ouml;ht die Genauigkeit der Sensoren noch weiter.',
                     'dev_info'=>'',
             ), // Endof Component Gammaabtastung
 
@@ -1827,7 +1827,7 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
                     'description'=>'Durch ein Auswertungssystem werden die Sensordaten in der Telemetrie optimal aufbereitet.',
                     'dev_info'=>'',
@@ -1842,7 +1842,7 @@ $ship_components=array(
         8=>array(
              // Component Verhöre
              0=>array(
-                    'name'=>'Verhöre',
+                    'name'=>'Verh&ouml;re',
                     'resource_1'=>'550',
                     'resource_2'=>'275',
                     'resource_3'=>'206',
@@ -1879,9 +1879,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Neue Verhöhrtechniken sorgen dafür, dass die Crewmitglieder loyaler werden und besser arbeiten.',
+                    'description'=>'Neue Verh&ouml;hrtechniken sorgen daf&uuml;r, dass die Crewmitglieder loyaler werden und besser arbeiten.',
                     'dev_info'=>'',
             ), // Endof Component Verhöre
 
@@ -1924,7 +1924,7 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
                     'description'=>'Spionagetechniken des Obsidianischen Ordens verbessern Reaktion, Bereitschaft und die Sensoren des Schiffes.',
                     'dev_info'=>'',
@@ -1969,9 +1969,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Spiralwellendisruptoren MK II sind die letzte Stufe der Disruptoren, sie senden die Energiewellen in sich ausbreitenden Spiralen aus. Dadurch kommt es natürlich zu einer größeren Streunung und Schwächung der Entladungen, aber die Waffe ist so ausbalanciert, dass sie trotzdem maximalen Schaden anrichtet.',
+                    'description'=>'Spiralwellendisruptoren MK II sind die letzte Stufe der Disruptoren, sie senden die Energiewellen in sich ausbreitenden Spiralen aus. Dadurch kommt es nat&uuml;rlich zu einer gr&ouml;&szlig;eren Streunung und Schw&auml;chung der Entladungen, aber die Waffe ist so ausbalanciert, dass sie trotzdem maximalen Schaden anrichtet.',
                     'dev_info'=>'',
             ), // Endof Component Spiralwellendisruptoren MK II
 
@@ -2014,9 +2014,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die doppelte Tritanidpanzerung verstärkt die Hülle zusätzlich um 1450 Punkte.',
+                    'description'=>'Die doppelte Tritanidpanzerung verst&auml;rkt die H&uuml;lle zus&auml;tzlich um 1450 Punkte.',
                     'dev_info'=>'',
             ), // Endof Component Doppelte Tritanidpanzerung
 
@@ -2059,7 +2059,7 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
                     'description'=>'Die obsidianischen Schilde sind in ihrer Funktionsweise genauso sagenumwoben und geheimnisvoll wie der Orden selbst.',
                     'dev_info'=>'',
@@ -2074,7 +2074,7 @@ $ship_components=array(
         9=>array(
              // Component Unterkunftsräume
              0=>array(
-                    'name'=>'Unterkunftsräume',
+                    'name'=>'Unterkunftsr&auml;ume',
                     'resource_1'=>'1650',
                     'resource_2'=>'195',
                     'resource_3'=>'0',
@@ -2111,9 +2111,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Typen von Unterkünften ermöglichen es, eine größere Anzahl von Einheiten auf den Schiffen unterzubringen.',
+                    'description'=>'Die verschiedenen Typen von Unterk&uuml;nften erm&ouml;glichen es, eine gr&ouml;&szlig;ere Anzahl von Einheiten auf den Schiffen unterzubringen.',
                     'dev_info'=>'',
             ), // Endof Component Unterkunftsräume
 
@@ -2156,15 +2156,15 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Typen von Unterkünften ermöglichen es, eine größere Anzahl von Einheiten auf den Schiffen unterzubringen.',
+                    'description'=>'Die verschiedenen Typen von Unterk&uuml;nften erm&ouml;glichen es, eine gr&ouml;&szlig;ere Anzahl von Einheiten auf den Schiffen unterzubringen.',
                     'dev_info'=>'',
             ), // Endof Component Komfortausstattung
 
              // Component Verhörräume
              2=>array(
-                    'name'=>'Verhörräume',
+                    'name'=>'Verh&ouml;rr&auml;ume',
                     'resource_1'=>'4650',
                     'resource_2'=>'750',
                     'resource_3'=>'0',
@@ -2201,9 +2201,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Typen von Unterkünften ermöglichen es, eine größere Anzahl von Einheiten auf den Schiffen unterzubringen.',
+                    'description'=>'Die verschiedenen Typen von Unterk&uuml;nften erm&ouml;glichen es, eine gr&ouml;&szlig;ere Anzahl von Einheiten auf den Schiffen unterzubringen.',
                     'dev_info'=>'',
             ), // Endof Component Verhörräume
 
@@ -2246,9 +2246,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Typen von Unterkünften ermöglichen es, eine größere Anzahl von Einheiten auf den Schiffen unterzubringen.',
+                    'description'=>'Die verschiedenen Typen von Unterk&uuml;nften erm&ouml;glichen es, eine gr&ouml;&szlig;ere Anzahl von Einheiten auf den Schiffen unterzubringen.',
                     'dev_info'=>'',
             ), // Endof Component Legatenunterkunft
 
@@ -2291,13 +2291,13 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Typen von Unterkünften ermöglichen es, eine größere Anzahl von Einheiten auf den Schiffen unterzubringen.',
+                    'description'=>'Die verschiedenen Typen von Unterk&uuml;nften erm&ouml;glichen es, eine gr&ouml;&szlig;ere Anzahl von Einheiten auf den Schiffen unterzubringen.',
                     'dev_info'=>'',
             ), // Endof Component Frachtraumnutzung
 
-      'name'=>'Manschaftsräume',
+      'name'=>'Manschaftsr&auml;ume',
       'num'=>'5',
       ), // Endof Category Manschaftsräume
 

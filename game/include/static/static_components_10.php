@@ -115,7 +115,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Quantenmatrix basiert auf verschiedenen modernen Forschungsergebnissen der Krenimphysiker. Die Matrix liefert genug Energie für ein Kampfschiff.',
+                    'description'=>'Die Quantenmatrix basiert auf verschiedenen modernen Forschungsergebnissen der Krenimphysiker. Die Matrix liefert genug Energie f&uuml;r ein Kampfschiff.',
                     'dev_info'=>'',
             ), // Endof Component Stufe II Verb. Standardreaktor
 
@@ -160,7 +160,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     					                    'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Der Zwillingskern ist eine Variante der Quantenmatrix. Durch mehrere hintereinander geschaltete Systeme wird die Energiegewinnung und Verteilung optimiert und kann so auch für große Kreuzer verwendet werden.',
+					'description'=>'Der Zwillingskern ist eine Variante der Quantenmatrix. Durch mehrere hintereinander geschaltete Systeme wird die Energiegewinnung und Verteilung optimiert und kann so auch f&uuml;r gro&szlig;e Kreuzer verwendet werden.',
                     'dev_info'=>'',
             ), // Endof Component Stufe III Verb.Standardreaktor
 
@@ -205,7 +205,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der temporale Kern basiert auf den Forschungen des Wissenschaftlers Annorax. Er ist speziell für das Gunship konzipiert und liefert die Energie für den Flussmanipulator.',
+                    'description'=>'Der temporale Kern basiert auf den Forschungen des Wissenschaftlers Annorax. Er ist speziell f&uuml;r das Gunship konzipiert und liefert die Energie f&uuml;r den Flussmanipulator.',
                     'dev_info'=>'',
             ), // Endof Component Tetrionreaktor
 
@@ -302,7 +302,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Warpspulen bauen ein stabiles Warpfeld um das Schiff herum auf und können es so durch den Subraum befördern.',
+                    'description'=>'Die Warpspulen bauen ein stabiles Warpfeld um das Schiff herum auf und k&ouml;nnen es so durch den Subraum bef&ouml;rdern.',
                     'dev_info'=>'',
             ), // Endof Component Warpspulen
 
@@ -347,7 +347,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verbesserte Plasmaeinspritzung erhöht deutlich die Triebwerksleistung der Warpspulen.',
+                    'description'=>'Die verbesserte Plasmaeinspritzung erh&ouml;ht deutlich die Triebwerksleistung der Warpspulen.',
                     'dev_info'=>'',
             ), // Endof Component Verb. Plasmaeinspritzung
 
@@ -392,7 +392,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Phasenmodulationsspule ist eine Neuentwicklung, die speziell für die schwere Kreuzerklasse entworfen wurde und in Zukunft frühere Warpspulen ablösen soll.',
+                    'description'=>'Die Phasenmodulationsspule ist eine Neuentwicklung, die speziell f&uuml;r die schwere Kreuzerklasse entworfen wurde und in Zukunft fr&uuml;here Warpspulen abl&ouml;sen soll.',
                     'dev_info'=>'',
             ), // Endof Component Phasenmodulationsspule
 
@@ -487,7 +487,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Phaserkanone ist eine kostengünstige, aber relativ leistungsarme Waffe, welche auf dem Phased Energy Rectification-Prinzip beruht. Sie kann auf allen niedrigeren Schiffstypen eingebaut werden.',
+                    'description'=>'Die Phaserkanone ist eine kosteng&uuml;nstige, aber relativ leistungsarme Waffe, welche auf dem Phased Energy Rectification-Prinzip beruht. Sie kann auf allen niedrigeren Schiffstypen eingebaut werden.',
                     'dev_info'=>'',
             ), // Endof Component Phaserkanone
 
@@ -538,7 +538,7 @@ $ship_components=array(
 
              // Component Erweitertes Phasergeschütz
              2=>array(
-                    'name'=>'Erweitertes Phasergeschütz',
+                    'name'=>'Erweitertes Phasergesch&uuml;tz',
                     'resource_1'=>'1500',
                     'resource_2'=>'375',
                     'resource_3'=>'75',
@@ -577,13 +577,13 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Das Phasergeschütz stellt eine Weiterentwicklung früherer Phaserwaffen dar und ist stärker als diese, überhitzt aber auch leichter und benötigt deshalb zusätzliche Wartung.',
+                    'description'=>'Das Phasergesch&uuml;tz stellt eine Weiterentwicklung fr&uuml;herer Phaserwaffen dar und ist st&auml;rker als diese, &uuml;berhitzt aber auch leichter und ben&ouml;tigt deshalb zus&auml;tzliche Wartung.',
                     'dev_info'=>'',
             ), // Endof Component Erweitertes Phasergeschütz
 
              // Component Disruptorgeschütz
              3=>array(
-                    'name'=>'Disruptorgeschütz',
+                    'name'=>'Disruptorgesch&uuml;tz',
                     'resource_1'=>'5250',
                     'resource_2'=>'750',
                     'resource_3'=>'150',
@@ -622,7 +622,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Das Disruptorgeschütz ist eine Neuentwicklung der Krenim, die nach und nach die alten Phaserwaffen ablösen soll.',
+                    'description'=>'Das Disruptorgesch&uuml;tz ist eine Neuentwicklung der Krenim, die nach und nach die alten Phaserwaffen abl&ouml;sen soll.',
                     'dev_info'=>'',
             ), // Endof Component Disruptorgeschütz
 
@@ -667,7 +667,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Pulsdisruptor ist das Neueste in der Waffentechnik der Krenim. Er ist sehr stark, kostet aber auch viel und benötigt große Mengen Energie.',
+                    'description'=>'Der Pulsdisruptor ist das Neueste in der Waffentechnik der Krenim. Er ist sehr stark, kostet aber auch viel und ben&ouml;tigt gro&szlig;e Mengen Energie.',
                     'dev_info'=>'',
             ), // Endof Component Schw. Pulsdisruptoren
 
@@ -711,7 +711,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Verdichtung beruht auf dem Disruptorprinzip, nur dass das Plasma vor dem Abschuss noch einmal ultrahoch verdichtet und dann auf ein feindliches Ziel geschleudert wird. Durch die Verdichtung ist das Plasma energetisch so hoch geladen, dass es immense Schäden an Hülle und Schilden verursacht. Bei kleineren Schiffen reicht meist ein Schuss um das Ziel zu zerstören.',
+                    'description'=>'Die Verdichtung beruht auf dem Disruptorprinzip, nur dass das Plasma vor dem Abschuss noch einmal ultrahoch verdichtet und dann auf ein feindliches Ziel geschleudert wird. Durch die Verdichtung ist das Plasma energetisch so hoch geladen, dass es immense Sch&auml;den an H&uuml;lle und Schilden verursacht. Bei kleineren Schiffen reicht meist ein Schuss um das Ziel zu zerst&ouml;ren.',
                     'dev_info'=>'',
             ),
             
@@ -755,7 +755,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Ultraemitter ist ein Hybrid aus Phaserphalanx und Verdichtung. Hier werden mehrere Phaserstrahlen gebündelt und auf das Ziel ausgerichtet. Ist der gebündelte Phaserstrahl erst mal auf dem Ziel fixiert, wird über diesen die ultrahochverdichtete Plasmaladung geschleudert. Bei kleineren Zielen schwächt der Phaserstrahl die Schilde meist so sehr dass die Plasmaladung direkt auf die Hülle auftrifft, was die Vernichtung des Ziels zur Folge hat. Der Nachteil der Waffe ist dass sie immens viel Energie benötigt und kleinere Schiffe ihr leicht ausweichen können.',
+                    'description'=>'Der Ultraemitter ist ein Hybrid aus Phaserphalanx und Verdichtung. Hier werden mehrere Phaserstrahlen geb&uuml;ndelt und auf das Ziel ausgerichtet. Ist der geb&uuml;ndelte Phaserstrahl erst mal auf dem Ziel fixiert, wird &uuml;ber diesen die ultrahochverdichtete Plasmaladung geschleudert. Bei kleineren Zielen schw&auml;cht der Phaserstrahl die Schilde meist so sehr dass die Plasmaladung direkt auf die H&uuml;lle auftrifft, was die Vernichtung des Ziels zur Folge hat. Der Nachteil der Waffe ist dass sie immens viel Energie ben&ouml;tigt und kleinere Schiffe ihr leicht ausweichen k&ouml;nnen.',
                     'dev_info'=>'',
             ),
             
@@ -807,7 +807,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Fusionstorpedos sind Projektile mit einem einfachen Kernfusionssprengkopf, der billig herzustellen ist, aber nur über geringe Sprengkraft verfügt.',
+                    'description'=>'Fusionstorpedos sind Projektile mit einem einfachen Kernfusionssprengkopf, der billig herzustellen ist, aber nur &uuml;ber geringe Sprengkraft verf&uuml;gt.',
                     'dev_info'=>'',
             ), // Endof Component Fusionstorpedos
 
@@ -897,7 +897,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die phasenverschobenen Torpedos sind ein Produkt der physikalischen Forschungsarbeit der Krenim. Sie umgehen die Schilde eines Feindschiffes und richten großen Schaden an.',
+                    'description'=>'Die phasenverschobenen Torpedos sind ein Produkt der physikalischen Forschungsarbeit der Krenim. Sie umgehen die Schilde eines Feindschiffes und richten gro&szlig;en Schaden an.',
                     'dev_info'=>'',
             ), // Endof Component Phasenverschobene Torpedos
 
@@ -942,7 +942,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Chronitontorpedos basieren auf temporalmechanischen Prinzipien und sind phasenverschoben, wodurch sie Schilde und Panzerung recht einfach durchbrechen können.',
+                    'description'=>'Die Chronitontorpedos basieren auf temporalmechanischen Prinzipien und sind phasenverschoben, wodurch sie Schilde und Panzerung recht einfach durchbrechen k&ouml;nnen.',
                     'dev_info'=>'',
             ), // Endof Component Chronotonentorpedos
 
@@ -986,7 +986,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Verbesserte Zielerfassung, selbstreparierende Geschosse und stärkere Sprengköpfe verringern die Blindgängerrate und erhöhen die Gesamteffizienz der Waffe.',
+                    'description'=>'Verbesserte Zielerfassung, selbstreparierende Geschosse und st&auml;rkere Sprengk&ouml;pfe verringern die Blindg&auml;ngerrate und erh&ouml;hen die Gesamteffizienz der Waffe.',
                     'dev_info'=>'',
             ),
             
@@ -1037,7 +1037,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Duranid-Panzerung ist eine effektive Hüllenform, die aus einer speziellen flexiblen und doch sehr widerstansfähigen Legierung besteht.',
+                    'description'=>'Die Duranid-Panzerung ist eine effektive H&uuml;llenform, die aus einer speziellen flexiblen und doch sehr widerstansf&auml;higen Legierung besteht.',
                     'dev_info'=>'',
             ),
             
@@ -1081,7 +1081,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Duranid-Panzerung ist eine effektive Hüllenform, die aus einer speziellen flexiblen und doch sehr widerstansfähigen Legierung besteht.',
+                    'description'=>'Die Duranid-Panzerung ist eine effektive H&uuml;llenform, die aus einer speziellen flexiblen und doch sehr widerstansf&auml;higen Legierung besteht.',
                     'dev_info'=>'',
             ),
             
@@ -1125,7 +1125,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Quantenkristallpanzer ist eine besondere Entwicklung der physikalischen Forschung der Krenim. Er besteht aus Kristallen, die sich ohne jede Energie nach Beschädigung selbst neu formieren.',
+                    'description'=>'Der Quantenkristallpanzer ist eine besondere Entwicklung der physikalischen Forschung der Krenim. Er besteht aus Kristallen, die sich ohne jede Energie nach Besch&auml;digung selbst neu formieren.',
                     'dev_info'=>'',
             ),
             
@@ -1169,7 +1169,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 					                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Multiphasenschilde sind eine neue Entwicklung, die mit einem ähnlichen Prinzip wie die phasenverschobenen Torpedos arbeiten, nur anstatt zur Offensive in defensiver Form.',
+                    'description'=>'Die Multiphasenschilde sind eine neue Entwicklung, die mit einem &auml;hnlichen Prinzip wie die phasenverschobenen Torpedos arbeiten, nur anstatt zur Offensive in defensiver Form.',
                     'dev_info'=>'',
             ),
             
@@ -1213,11 +1213,11 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die temporalen Schilde sind die stärksten Schilde der Krenim. Sie arbeiten ebenfalls auf Chronitonbasis und verhindern das Durchdringen von Torpedos und Phasern durch die Schilde.',
+                    'description'=>'Die temporalen Schilde sind die st&auml;rksten Schilde der Krenim. Sie arbeiten ebenfalls auf Chronitonbasis und verhindern das Durchdringen von Torpedos und Phasern durch die Schilde.',
                     'dev_info'=>'',
             ),
             
-      'name'=>'Defensivmaßnahmen',
+      'name'=>'Defensivma&szlig;nahmen',
       'num'=>'5',
       ), // Endof Category Hülle/Schilde
 
@@ -1310,7 +1310,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Ein verbessertes Datenverarbeitungssystem ermöglicht der Besatzung eine bessere Auswertung von Sensordaten.',
+                    'description'=>'Ein verbessertes Datenverarbeitungssystem erm&ouml;glicht der Besatzung eine bessere Auswertung von Sensordaten.',
                     'dev_info'=>'',
             ), // Endof Component Datenverarbeitung
 
@@ -1445,7 +1445,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Biotronische Komponenten verwenden halborganische und sehr schnelle Systeme, die eine außergewöhnliche Leistungssteigerung bringen.',
+                    'description'=>'Biotronische Komponenten verwenden halborganische und sehr schnelle Systeme, die eine au&szlig;ergew&ouml;hnliche Leistungssteigerung bringen.',
                     'dev_info'=>'',
             ), // Endof Component Biotronische Komponenten
 
@@ -1488,7 +1488,7 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-                    'description'=>'Computersystem erhöht Bereitschaft, Reaktion und Wendigkeit',
+                    'description'=>'Computersystem erh&ouml;ht Bereitschaft, Reaktion und Wendigkeit',
                     'dev_info'=>'',
             ), // Endof Component Computersystem Typ VI
 */
@@ -1501,7 +1501,7 @@ $ship_components=array(
         6=>array(
              // Component Sanitäterausbildung
              0=>array(
-                    'name'=>'Sanitäterausbildung',
+                    'name'=>'Sanit&auml;terausbildung',
                     'resource_1'=>'1500',
                     'resource_2'=>'150',
                     'resource_3'=>'0',
@@ -1540,7 +1540,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Sanitäterausbildung bereitet dafür geeignete Kandidaten auf eventuelle Notfalleinsätze vor, bei denen Besatzungsmitglieder verletzt werden.',
+                    'description'=>'Die Sanit&auml;terausbildung bereitet daf&uuml;r geeignete Kandidaten auf eventuelle Notfalleins&auml;tze vor, bei denen Besatzungsmitglieder verletzt werden.',
                     'dev_info'=>'',
             ), // Endof Component Sanitäterausbildung
             
@@ -1584,7 +1584,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Krankenstation dient der Versorgung von Besatzungsmitgliedern, die bei Kämpfen verwundet werden.',
+                    'description'=>'Die Krankenstation dient der Versorgung von Besatzungsmitgliedern, die bei K&auml;mpfen verwundet werden.',
                     'dev_info'=>'',
             ),
             
@@ -1628,7 +1628,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Biobetten ermöglichen die Behandlung von Schwerverletzten, ohne das diese auf ein Lazarettschiff oder ein planetares Krankenhaus verlegt werden müssen.',
+                    'description'=>'Biobetten erm&ouml;glichen die Behandlung von Schwerverletzten, ohne das diese auf ein Lazarettschiff oder ein planetares Krankenhaus verlegt werden m&uuml;ssen.',
                     'dev_info'=>'',
             ),
             
@@ -1672,7 +1672,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Neuroaktive Aufputschmittel können der Besatzung im Ausnahmefall verabreicht werden, um in schwierigen Zeiten ihre Effizienz aufrecht zu erhalten.',
+                    'description'=>'Neuroaktive Aufputschmittel k&ouml;nnen der Besatzung im Ausnahmefall verabreicht werden, um in schwierigen Zeiten ihre Effizienz aufrecht zu erhalten.',
                     'dev_info'=>'',
             ),
             
@@ -1716,7 +1716,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die xenobiologische Abteilung erforscht die Möglichkeiten zur Adaption von fremden Genen an das organische System der Krenim und verbessert durch die Entwicklungen die Leistungsfähigkeit der Besatzung.',
+                    'description'=>'Die xenobiologische Abteilung erforscht die M&ouml;glichkeiten zur Adaption von fremden Genen an das organische System der Krenim und verbessert durch die Entwicklungen die Leistungsf&auml;higkeit der Besatzung.',
                     'dev_info'=>'',
             ),
 
@@ -1729,7 +1729,7 @@ $ship_components=array(
         7=>array(
              // Component Vidiianischer Harvester
              0=>array(
-                    'name'=>'Erweiterte Mannschaftsräume',
+                    'name'=>'Erweiterte Mannschaftsr&auml;ume',
                     'resource_1'=>'225',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -1813,12 +1813,12 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Metaschilde sind eine erweiterte Schildvariante, die geringfügig die Defensivkapazitäten verbessern.',
+                    'description'=>'Metaschilde sind eine erweiterte Schildvariante, die geringf&uuml;gig die Defensivkapazit&auml;ten verbessern.',
                     'dev_info'=>'',
             ), // Endof Component Metaschilde
             
             2=>array(
-                    'name'=>'Trainingsräume',
+                    'name'=>'Trainingsr&auml;ume',
                     'resource_1'=>'1500',
                     'resource_2'=>'150',
                     'resource_3'=>'0',
@@ -1857,7 +1857,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Trainingsräume sind mit speziellen Holoemittern und Grav-Generatoren ausgestattet, damit die Crew ihre körperlichen Fähigkeiten verbessern kann.',
+                    'description'=>'Die Trainingsr&auml;ume sind mit speziellen Holoemittern und Grav-Generatoren ausgestattet, damit die Crew ihre k&ouml;rperlichen F&auml;higkeiten verbessern kann.',
                     'dev_info'=>'',
             ),
             
@@ -1901,7 +1901,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Hochfrequenz-Disruptorkanonen sind eine Spezialentwicklung der Waffentechnik. Sie sind stark, neigen aber schnell zur Überhitzung.',
+                    'description'=>'Hochfrequenz-Disruptorkanonen sind eine Spezialentwicklung der Waffentechnik. Sie sind stark, neigen aber schnell zur &uuml;berhitzung.',
                     'dev_info'=>'',
             ),
             
@@ -1989,11 +1989,11 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Dieses allgemeine Waffenupgrade beinhaltet neben weiteren Torpedoschächten auch leichte Raketen und Bomben, welche die Kampfstärke erhöhen.',
+                    'description'=>'Dieses allgemeine Waffenupgrade beinhaltet neben weiteren Torpedosch&auml;chten auch leichte Raketen und Bomben, welche die Kampfst&auml;rke erh&ouml;hen.',
                     'dev_info'=>'',
             ),
 
-      'name'=>'Sekundärkomponenten',
+      'name'=>'Sekund&auml;rkomponenten',
       'num'=>'6',
       ), // Endof Category Sekundärkomponenten
 
@@ -2040,12 +2040,12 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch Verbesserung der Leitsysteme wird die Sensorsensibilität verbessert.',
+                    'description'=>'Durch Verbesserung der Leitsysteme wird die Sensorsensibilit&auml;t verbessert.',
                     'dev_info'=>'',
             ),
             
             1=>array(
-                    'name'=>'Optotronische Fühler',
+                    'name'=>'Optotronische F&uuml;hler',
                     'resource_1'=>'375',
                     'resource_2'=>'112.5',
                     'resource_3'=>'0',
@@ -2084,7 +2084,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Bei den optotronischen Fühlern handelt es sich um die Entwicklung eines Volkes, dass sich schon vor einiger Zeit den Krenim unterworfen hat.',
+                    'description'=>'Bei den optotronischen F&uuml;hlern handelt es sich um die Entwicklung eines Volkes, dass sich schon vor einiger Zeit den Krenim unterworfen hat.',
                     'dev_info'=>'',
             ),
             
@@ -2172,7 +2172,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die temporale Kartographie stellt eine umfangreiche taktische Datenbank dar, die in der Lage ist, viele verschiedene taktische Möglichkeiten und deren unmittelbare Folgen zu ermitteln und zu berechnen.',
+                    'description'=>'Die temporale Kartographie stellt eine umfangreiche taktische Datenbank dar, die in der Lage ist, viele verschiedene taktische M&ouml;glichkeiten und deren unmittelbare Folgen zu ermitteln und zu berechnen.',
                     'dev_info'=>'',
             ),
             
@@ -2223,7 +2223,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der temporale Flussmanipulator ist eine enorm schlagkräftige, aber auch teure Waffe, die ausschließlich auf dem Gunship installiert werden kann. Sie wird vor allem zur Bombardierung von Planetenoberflächen verwendet.',
+                    'description'=>'Der temporale Flussmanipulator ist eine enorm schlagkr&auml;ftige, aber auch teure Waffe, die ausschlie&szlig;lich auf dem Gunship installiert werden kann. Sie wird vor allem zur Bombardierung von Planetenoberfl&auml;chen verwendet.',
                     'dev_info'=>'',
             ),
             
@@ -2267,7 +2267,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Chronitontarnung verschleiert die Signaturen eines Schiffes, indem es das Schiff selbst außer Phase hebt. Die Technologie ist effizient, aber teuer.',
+                    'description'=>'Die Chronitontarnung verschleiert die Signaturen eines Schiffes, indem es das Schiff selbst au&szlig;er Phase hebt. Die Technologie ist effizient, aber teuer.',
                     'dev_info'=>'',
             ),
             
@@ -2311,7 +2311,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die phasenverschobene Panzerung ist eine sehr effektive, aber teure Panzerung, die jedoch fast kaum Energie benötigt und daher sehr beliebt ist.',
+                    'description'=>'Die phasenverschobene Panzerung ist eine sehr effektive, aber teure Panzerung, die jedoch fast kaum Energie ben&ouml;tigt und daher sehr beliebt ist.',
                     'dev_info'=>'',
             ),
             

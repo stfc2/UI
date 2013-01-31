@@ -68,9 +68,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-					                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere I
 
@@ -113,9 +113,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere II
 
@@ -158,9 +158,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere III
 
@@ -203,9 +203,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere IV
 
@@ -248,9 +248,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere V
 
@@ -293,9 +293,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere VI
 
@@ -338,9 +338,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere VII
 
@@ -383,9 +383,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere VIII
 
@@ -428,9 +428,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere IX
 
@@ -473,9 +473,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere X
 
@@ -527,7 +527,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die kleinste Stuff des Warp-Antriebes. Die Energie wird von einer künstlichen Quantensinguralität erzeugt. Erhöht die Grundgeschwindigkeit des Schiffes um 1.2.',
+                    'description'=>'Die kleinste Stuff des Warp-Antriebes. Die Energie wird von einer k&uuml;nstlichen Quantensinguralit&auml;t erzeugt. Erh&ouml;ht die Grundgeschwindigkeit des Schiffes um 1.2.',
                     'dev_info'=>'',
             ), // Endof Component Warp Antrieb I
 
@@ -572,7 +572,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die zweitkleinste Stufe des Warp-Antriebes. Die Energie wird von einer künstlichen Quantensinguralität erzeugt.',
+                    'description'=>'Die zweitkleinste Stufe des Warp-Antriebes. Die Energie wird von einer k&uuml;nstlichen Quantensinguralit&auml;t erzeugt.',
                     'dev_info'=>'',
             ), // Endof Component Warp Antrieb II
 
@@ -617,7 +617,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die zweit größte Stufe des Warp-Antriebes. Die Energie wird von einer künstlichen Quantensinguralität erzeugt. Erhöht die Grundgeschwindigkeit des Schiffes um 2.',
+                    'description'=>'Die zweit gr&ouml;&szlig;te Stufe des Warp-Antriebes. Die Energie wird von einer k&uuml;nstlichen Quantensinguralit&auml;t erzeugt. Erh&ouml;ht die Grundgeschwindigkeit des Schiffes um 2.',
                     'dev_info'=>'',
             ), // Endof Component Warp Antrieb III
 
@@ -662,7 +662,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die ultimative Stufe des Warp-Antriebes. Die Energie wird von einer künstlichen Quantensinguralität erzeugt. Erhöht die Grundgeschwindigkeit des Schiffes um 2.6, und liefert eine sehr große Menge an Energie.',
+                    'description'=>'Die ultimative Stufe des Warp-Antriebes. Die Energie wird von einer k&uuml;nstlichen Quantensinguralit&auml;t erzeugt. Erh&ouml;ht die Grundgeschwindigkeit des Schiffes um 2.6, und liefert eine sehr gro&szlig;e Menge an Energie.',
                     'dev_info'=>'',
             ), // Endof Component Warp Antrieb IV
 
@@ -712,9 +712,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Für romulanische Verhältnisse nicht sehr durchschlagskräftige Disruptoren',
+                    'description'=>'F&uuml;r romulanische Verh&auml;ltnisse nicht sehr durchschlagskr&auml;ftige Disruptoren',
                     'dev_info'=>'',
             ), // Endof Component Disruptor MK IV
 
@@ -757,9 +757,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Stärker als Disruptoren IV aber dennoch relativ schwach.',
+                    'description'=>'St&auml;rker als Disruptoren IV aber dennoch relativ schwach.',
                     'dev_info'=>'',
             ), // Endof Component Disruptor MK VI
 
@@ -802,9 +802,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Disruptor MK VIII sind einigermaßen durchschlagskräftig.',
+                    'description'=>'Disruptor MK VIII sind einigerma&szlig;en durchschlagskr&auml;ftig.',
                     'dev_info'=>'',
             ), // Endof Component Disruptor MK VIII
 
@@ -894,7 +894,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Wird auf mittleren Kriegsschiffen verbaut und ist ziemlich durchschlagskräftig.',
+                    'description'=>'Wird auf mittleren Kriegsschiffen verbaut und ist ziemlich durchschlagskr&auml;ftig.',
                     'dev_info'=>'',
             ), // Endof Component Disruptor MK XII
 
@@ -984,7 +984,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Enorm durchschlagskräftige Disruptoren. Wenn ein Schiff keine Schilde hat ist es ein leichtes Opfer für die Disruptoren Typ MK XXI.',
+                    'description'=>'Enorm durchschlagskr&auml;ftige Disruptoren. Wenn ein Schiff keine Schilde hat ist es ein leichtes Opfer f&uuml;r die Disruptoren Typ MK XXI.',
                     'dev_info'=>'',
             ), // Endof Component Disruptor MK XXI
 
@@ -1034,9 +1034,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Ionentorpedos haben eine erhebliche Durchschlagskraft, weil die beschleunigten und verdichteten elektromagnetisch geladenen Teilchen zwar relativ träge reagieren, aber auf schweren Schiffen verheerenden Schaden anrichten.',
+                    'description'=>'Ionentorpedos haben eine erhebliche Durchschlagskraft, weil die beschleunigten und verdichteten elektromagnetisch geladenen Teilchen zwar relativ tr&auml;ge reagieren, aber auf schweren Schiffen verheerenden Schaden anrichten.',
                     'dev_info'=>'',
             ), // Endof Component Ionentorpedos
 
@@ -1079,9 +1079,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Plasmawerfer sind die Vorgänger der Plasmatorpedos und funktionieren ähnlich. Plasamwerfer stoßen Bälle aus Ultrahocherhitzten ionisierten Gasen aus, die jedoch durch eine fehlende Eindämmung beim Flug durch das All einiges an Energie verlieren.',
+                    'description'=>'Plasmawerfer sind die Vorg&auml;nger der Plasmatorpedos und funktionieren &auml;hnlich. Plasamwerfer sto&szlig;en B&auml;lle aus Ultrahocherhitzten ionisierten Gasen aus, die jedoch durch eine fehlende Eind&auml;mmung beim Flug durch das All einiges an Energie verlieren.',
                     'dev_info'=>'',
             ), // Endof Component Plasmawerfer
 
@@ -1126,7 +1126,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Plasmatorpedos bestehen aus ultrahocherhitzten, ionisierten Gasen, welche durch einen Magnetfeldmechanismus in einem Ballen zusammengehalten werden. Beim Aufprall auf ungeschützte Materie wird dessen Molekularstruktur vom Plasma umhüllt und verliert somit völlig ihre Integrität.',
+                    'description'=>'Plasmatorpedos bestehen aus ultrahocherhitzten, ionisierten Gasen, welche durch einen Magnetfeldmechanismus in einem Ballen zusammengehalten werden. Beim Aufprall auf ungesch&uuml;tzte Materie wird dessen Molekularstruktur vom Plasma umh&uuml;llt und verliert somit v&ouml;llig ihre Integrit&auml;t.',
                     'dev_info'=>'',
             ), // Endof Component Plasmatorpedos MKI
 
@@ -1171,7 +1171,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Plasmatorpedos MK II basieren auf gleichen Technologie wie die Plasmatorpedos MK I, nur wurde bei ihnen der Schaden durch ein stärkeres Eindämmungsfeld noch etwas erhöht.',
+                    'description'=>'Plasmatorpedos MK II basieren auf gleichen Technologie wie die Plasmatorpedos MK I, nur wurde bei ihnen der Schaden durch ein st&auml;rkeres Eind&auml;mmungsfeld noch etwas erh&ouml;ht.',
                     'dev_info'=>'',
             ), // Endof Component Plasmatorpedos MK II
 
@@ -1216,7 +1216,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Plasmatorpedos MK  V stellen die ultimative Weiterentwicklung der Plasmatorpedos da. Aufgrund des ungheuren Energieverbrauchs kann diese Waffe nur auf den größten Schiffen installiert werden. Diese Waffe ermöglicht planetare Angriffe.',
+                    'description'=>'Plasmatorpedos MK  V stellen die ultimative Weiterentwicklung der Plasmatorpedos da. Aufgrund des ungheuren Energieverbrauchs kann diese Waffe nur auf den gr&ouml;&szlig;ten Schiffen installiert werden. Diese Waffe erm&ouml;glicht planetare Angriffe.',
                     'dev_info'=>'',
             ), // Endof Component Plasmatorpedos MK  V
 
@@ -1266,9 +1266,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Duraniumpanzerung ist die Standardpanzerung eines jeden Schiffes. Duranium ist eine moderne Form von Stahl, der jedoch um einiges leichter und widerstandsfähiger ist.',
+                    'description'=>'Duraniumpanzerung ist die Standardpanzerung eines jeden Schiffes. Duranium ist eine moderne Form von Stahl, der jedoch um einiges leichter und widerstandsf&auml;higer ist.',
                     'dev_info'=>'',
             ), // Endof Component Duraniumpanzerung
 
@@ -1311,9 +1311,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Schutzschilde sind gebündelte räumliche Verzerrungen, die ein abwehrendes Schwerkraftfeld erzeugen. Sie werden von einem Netz von Sendern erzeugt, die sich auf der Außenhülle des Schiffes befinden. Wenn irgend etwas auf dieses Feld trifft, kehrt das System die Anziehungskraft in diesem Bereich um, und arbeitet der Kraft des z.B. abfliegenden Photonentorpedos entgegen. Für den Torpedo scheint es so, als ob er auf einen massiven Gegenstand treffen würde.',
+                    'description'=>'Schutzschilde sind geb&uuml;ndelte r&auml;umliche Verzerrungen, die ein abwehrendes Schwerkraftfeld erzeugen. Sie werden von einem Netz von Sendern erzeugt, die sich auf der Au&szlig;enh&uuml;lle des Schiffes befinden. Wenn irgend etwas auf dieses Feld trifft, kehrt das System die Anziehungskraft in diesem Bereich um, und arbeitet der Kraft des z.B. abfliegenden Photonentorpedos entgegen. F&uuml;r den Torpedo scheint es so, als ob er auf einen massiven Gegenstand treffen w&uuml;rde.',
                     'dev_info'=>'',
             ), // Endof Component Schildemitter
 
@@ -1358,7 +1358,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Regenerative Schilde sind eine Weiterentwicklung der normalen Schildemitter. Bei dieser neuen Form wird der Schild bei einem Zusammenbruch um einiges schneller wieder aufgebaut. Auch die Stärke des Schildes konnte verbessert werden.',
+                    'description'=>'Regenerative Schilde sind eine Weiterentwicklung der normalen Schildemitter. Bei dieser neuen Form wird der Schild bei einem Zusammenbruch um einiges schneller wieder aufgebaut. Auch die St&auml;rke des Schildes konnte verbessert werden.',
                     'dev_info'=>'',
             ), // Endof Component Regenerative Schilde
 
@@ -1403,13 +1403,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Duranium-Tritanium Panzerung ist die neuste Technologie in der Schiffskonstruktion. Bei ihr wurde das schon widerstandsfähige Duranium mit einer Schicht Tritanium überzogen um größte Sicherheit zu bieten.',
+                    'description'=>'Die Duranium-Tritanium Panzerung ist die neuste Technologie in der Schiffskonstruktion. Bei ihr wurde das schon widerstandsf&auml;hige Duranium mit einer Schicht Tritanium &uuml;berzogen um gr&ouml;&szlig;te Sicherheit zu bieten.',
                     'dev_info'=>'',
             ), // Endof Component Duranium- Tritanium- Panzerung
 
              // Component Primär- und Sekundärschilde
              4=>array(
-                    'name'=>'Primärschilde und Sekundärhulle',
+                    'name'=>'Prim&auml;rschilde und Sekund&auml;rhulle',
                     'resource_1'=>'2040',
                     'resource_2'=>'1020',
                     'resource_3'=>'680',
@@ -1448,7 +1448,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Durch zwei getrennt voneinander arbeitende Schildsysteme, kann auf Kriegsschiffen der Scimitar Klasse eine ungeahnte Schild- und Hüllenstärke erreicht werden.',
+                    'description'=>'Durch zwei getrennt voneinander arbeitende Schildsysteme, kann auf Kriegsschiffen der Scimitar Klasse eine ungeahnte Schild- und H&uuml;llenst&auml;rke erreicht werden.',
                     'dev_info'=>'',
             ), // Endof Component Primär- und Sekundärschilde
 
@@ -1498,9 +1498,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Standardrechner ist die kleinste und schwächste Version eines Computers der in Raumschiffen verbaut wird.',
+                    'description'=>'Der Standardrechner ist die kleinste und schw&auml;chste Version eines Computers der in Raumschiffen verbaut wird.',
                     'dev_info'=>'',
             ), // Endof Component Standardrechner
 
@@ -1543,7 +1543,7 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
                     'description'=>'Der Bordcomputer bietet als Weiterentwicklung des Standardcomputers mehr Rechenleistung.',
                     'dev_info'=>'',
@@ -1590,7 +1590,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Das Telemetrie-Auswertungs-System stellt einen Durchbruch im Bereich der Computersysteme dar. Die Rechenleistung und die Geschwindigkeit der Kommunikation der einzelnen Systeme wurde gegenüber älteren Computersystemen um einiges erweitert.',
+                    'description'=>'Das Telemetrie-Auswertungs-System stellt einen Durchbruch im Bereich der Computersysteme dar. Die Rechenleistung und die Geschwindigkeit der Kommunikation der einzelnen Systeme wurde gegen&uuml;ber &auml;lteren Computersystemen um einiges erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Telemetrie-Auswertungs-System
 
@@ -1635,7 +1635,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Durch simultane Durchführung von Rechenoperationen und weiteren Prozessen, die mit Hilfe von Bio-Gelpacks erreicht wird, konnte die Leistungfähigkeit des Computer erweitert werden.',
+                    'description'=>'Durch simultane Durchf&uuml;hrung von Rechenoperationen und weiteren Prozessen, die mit Hilfe von Bio-Gelpacks erreicht wird, konnte die Leistungf&auml;higkeit des Computer erweitert werden.',
                     'dev_info'=>'',
             ), // Endof Component Simultanrechensystem
 
@@ -1680,7 +1680,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die ultimative Entwicklung der Computersysteme. Beim Angriffssystem konnte die Leistungsfähigkeit noch weiter erweitert werden, was aber auf Kosten des Größe und verbrauchten Energiemenge ging, weswegen dieses System nur auf den größten Kampfschiffen des Imperiums eingebaut werden kann.',
+                    'description'=>'Die ultimative Entwicklung der Computersysteme. Beim Angriffssystem konnte die Leistungsf&auml;higkeit noch weiter erweitert werden, was aber auf Kosten des Gr&ouml;&szlig;e und verbrauchten Energiemenge ging, weswegen dieses System nur auf den gr&ouml;&szlig;ten Kampfschiffen des Imperiums eingebaut werden kann.',
 
                     'dev_info'=>'',
             ), // Endof Component Angriffs-System
@@ -1731,9 +1731,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Das Lebenserhaltungs-System sorgt dafür, dass genug Sauerstoff(O²) auf dem Schiff vorhanden ist.',
+                    'description'=>'Das Lebenserhaltungs-System sorgt daf&uuml;r, dass genug Sauerstoff(O²) auf dem Schiff vorhanden ist.',
                     'dev_info'=>'',
             ), // Endof Component Lebenserhaltungs-System
 
@@ -1776,9 +1776,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Hier werden hauptsächlich verletzte Crewmitglieder verarztet oder für tot erklärt.',
+                    'description'=>'Hier werden haupts&auml;chlich verletzte Crewmitglieder verarztet oder f&uuml;r tot erkl&auml;rt.',
                     'dev_info'=>'',
             ), // Endof Component Krankenstation
 
@@ -1823,7 +1823,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Umweltregulatoren sorgen für ein angenehmes Klima auf allen Decks.',
+                    'description'=>'Die Umweltregulatoren sorgen f&uuml;r ein angenehmes Klima auf allen Decks.',
                     'dev_info'=>'',
             ), // Endof Component Umweltregulatoren
 
@@ -1868,7 +1868,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Sorgt dafür, dass jedes Crewmitglied genaue Instruktionen beim Eintreffen eines Notfalls bekommt.',
+                    'description'=>'Sorgt daf&uuml;r, dass jedes Crewmitglied genaue Instruktionen beim Eintreffen eines Notfalls bekommt.',
                     'dev_info'=>'',
             ), // Endof Component Notfallprozedere
 
@@ -1913,7 +1913,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Notsysteme sichern wichtige Hauptsysteme wie Lebenserhaltung und künstliche Schwerkraft redundant ab, so dass für die Sicherheit der Crew auch bei mittelschweren Schäden am Schiff noch garantiert ist.',
+                    'description'=>'Die Notsysteme sichern wichtige Hauptsysteme wie Lebenserhaltung und k&uuml;nstliche Schwerkraft redundant ab, so dass f&uuml;r die Sicherheit der Crew auch bei mittelschweren Sch&auml;den am Schiff noch garantiert ist.',
                     'dev_info'=>'',
             ), // Endof Component Notsystem
 
@@ -1965,7 +1965,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Standard-Warpspulen sind die einfachste Art um Überlichtgeschwindigkeit zu erreichen.',
+                    'description'=>'Standard-Warpspulen sind die einfachste Art um &uuml;berlichtgeschwindigkeit zu erreichen.',
                     'dev_info'=>'',
             ), // Endof Component Warpspulen
 
@@ -2010,7 +2010,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Plasmaspulen stellen eine Aufrüstung der Standardwarpspulen dar und verhelfen einen Schiff, noch größere Geschwindigkeiten zu erreichen.',
+                    'description'=>'Plasmaspulen stellen eine Aufr&uuml;stung der Standardwarpspulen dar und verhelfen einen Schiff, noch gr&ouml;&szlig;ere Geschwindigkeiten zu erreichen.',
                     'dev_info'=>'',
             ), // Endof Component Plasmaspulen
 
@@ -2055,7 +2055,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'RS Leiter sind Supraleiter die durch niedrigen Durchlaufverlust die effektive Energie, die bei den Warpspulen ankommt, erhöhen, und somit die maximal erreichbare Geschwindigkeit steigern.',
+                    'description'=>'RS Leiter sind Supraleiter die durch niedrigen Durchlaufverlust die effektive Energie, die bei den Warpspulen ankommt, erh&ouml;hen, und somit die maximal erreichbare Geschwindigkeit steigern.',
                     'dev_info'=>'',
             ), // Endof Component RS Leiter
 
@@ -2100,7 +2100,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'RS Kollektoren sind supraleitende Kollektoren die Weltraum-Hintergrundstrahlung in Energie umwandeln und direkt an die Warpspulen weiterleiten. Die zusätzliche Energie führt zu noch weiter erhöhten maximalen Geschindigkeiten.',
+                    'description'=>'RS Kollektoren sind supraleitende Kollektoren die Weltraum-Hintergrundstrahlung in Energie umwandeln und direkt an die Warpspulen weiterleiten. Die zus&auml;tzliche Energie f&uuml;hrt zu noch weiter erh&ouml;hten maximalen Geschindigkeiten.',
                     'dev_info'=>'',
             ), // Endof Component RS Kollektoren
 
@@ -2152,7 +2152,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der Deflektor funktioniert ähnlich wie der Schildemitter. Er ist aber nur dafür gedacht das Schiff vor Kollisionen mit Asteroiden etc. zu schützen. Zusätzlich hat er aber aufgrund seiner Konstruktionsweise die Fähigkeit einfachste Sensorergebnisse zu liefern.',
+                    'description'=>'Der Deflektor funktioniert &auml;hnlich wie der Schildemitter. Er ist aber nur daf&uuml;r gedacht das Schiff vor Kollisionen mit Asteroiden etc. zu sch&uuml;tzen. Zus&auml;tzlich hat er aber aufgrund seiner Konstruktionsweise die F&auml;higkeit einfachste Sensorergebnisse zu liefern.',
                     'dev_info'=>'',
             ), // Endof Component Deflektor
 
@@ -2197,7 +2197,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Dieses System ist ausschließlich dafür vorgesehen, den nahen Raum um das Schiff herum zu scannen.',
+                    'description'=>'Dieses System ist ausschlie&szlig;lich daf&uuml;r vorgesehen, den nahen Raum um das Schiff herum zu scannen.',
                     'dev_info'=>'',
             ), // Endof Component Sensorenphalanx
 
@@ -2242,7 +2242,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Sensorabtastung ist eine Weiterentwicklung der Sensorphalanx. Dieses System bietet eine bessere Auflösung der Daten und eine erhöhte Reichweite.',
+                    'description'=>'Die Sensorabtastung ist eine Weiterentwicklung der Sensorphalanx. Dieses System bietet eine bessere Aufl&ouml;sung der Daten und eine erh&ouml;hte Reichweite.',
                     'dev_info'=>'',
             ), // Endof Component Sensorabtastung
 
@@ -2287,7 +2287,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Das Sensorgitter stellt eine Erweiterung der Sensorabtastung dar. Durch eine bessere Weiterverarbeitung der gewonnen Daten wird die Crew früher und besser über das Geschehen im Weltraum um sie herum informiert, und kann deshalb schneller und passender reagieren.',
+                    'description'=>'Das Sensorgitter stellt eine Erweiterung der Sensorabtastung dar. Durch eine bessere Weiterverarbeitung der gewonnen Daten wird die Crew fr&uuml;her und besser &uuml;ber das Geschehen im Weltraum um sie herum informiert, und kann deshalb schneller und passender reagieren.',
                     'dev_info'=>'',
             ), // Endof Component Sensorgitter
 
@@ -2332,7 +2332,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Longrange Sensoren sind für die Erfassung von Daten über größere Entfernung verantwortlich.',
+                    'description'=>'Die Longrange Sensoren sind f&uuml;r die Erfassung von Daten &uuml;ber gr&ouml;&szlig;ere Entfernung verantwortlich.',
                     'dev_info'=>'',
             ), // Endof Component Longrange Sensoren
 
@@ -2377,7 +2377,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Das Zielerfassungsystem erhöht durch schnelle und genaue Sensoren die Treffergenauigkeit der Waffen.',
+                    'description'=>'Das Zielerfassungsystem erh&ouml;ht durch schnelle und genaue Sensoren die Treffergenauigkeit der Waffen.',
                     'dev_info'=>'',
             ), // Endof Component Zielerfassung
 
@@ -2422,7 +2422,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Tarnvorrichtung ist eine Entwicklung der Romulaner. Durch dieses System wird das Schiff für gegnerische Sensoren nur schwer bis gar nicht ortbar.',
+                    'description'=>'Die Tarnvorrichtung ist eine Entwicklung der Romulaner. Durch dieses System wird das Schiff f&uuml;r gegnerische Sensoren nur schwer bis gar nicht ortbar.',
                     'dev_info'=>'',
             ), // Endof Component Tarnvorrichtung
 
@@ -2474,7 +2474,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der Talaron Radiation Emitter ist eine ganz neue und sehr gefährliche Waffentechnologie. Sie wurde von den Remanern entwickelt und ermöglicht die Ausrottung ganzer Planeten. Sie kann aber auch gegen Schiffe eingesetzt werden, und kann bei schwachen Schilden die komplette Crew eines Schiffes mit einem Schuß töten. Dieses System ist aber nur auf der Scimitar Klasse einsetzbar, dar nur dieses Schiff über die für die Waffe erforderliche Fokussierungskomponenten verfügt.',
+                    'description'=>'Der Talaron Radiation Emitter ist eine ganz neue und sehr gef&auml;hrliche Waffentechnologie. Sie wurde von den Remanern entwickelt und erm&ouml;glicht die Ausrottung ganzer Planeten. Sie kann aber auch gegen Schiffe eingesetzt werden, und kann bei schwachen Schilden die komplette Crew eines Schiffes mit einem Schu&szlig; t&ouml;ten. Dieses System ist aber nur auf der Scimitar Klasse einsetzbar, dar nur dieses Schiff &uuml;ber die f&uuml;r die Waffe erforderliche Fokussierungskomponenten verf&uuml;gt.',
                     'dev_info'=>'',
             ), // Endof Component Talaron Radiation Emitter
 
@@ -2517,9 +2517,9 @@ $ship_components=array(
                     'torso_8'=>'1',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Talaron Tarnung basiert in etwa auf den Grundsätzen der Talaron Radiation Emitter. Nur wird hier durch die Talaronstrahlung das Schiff für die gegnerischen Sensoren unsichtbar. Anders als bei der herömmlichen Tarnung kann bei der Talaron Tarnung auch getarnt gefeuert werden.',
+                    'description'=>'Die Talaron Tarnung basiert in etwa auf den Grunds&auml;tzen der Talaron Radiation Emitter. Nur wird hier durch die Talaronstrahlung das Schiff f&uuml;r die gegnerischen Sensoren unsichtbar. Anders als bei der her&ouml;mmlichen Tarnung kann bei der Talaron Tarnung auch getarnt gefeuert werden.',
                     'dev_info'=>'',
             ), // Endof Component Talarontarnung
 
@@ -2562,7 +2562,7 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
                     'description'=>'Haluzigene sind synthetische Drogen die bei Einahme die Crew aufputschen und so die Reaktionen der Crew steigern.',
                     'dev_info'=>'',
@@ -2607,9 +2607,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'1',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch Implantierung von Neuroemittern in die komplette Crew wird die Reaktion und Bereitschaft der Crew um einiges gestärkt.',
+                    'description'=>'Durch Implantierung von Neuroemittern in die komplette Crew wird die Reaktion und Bereitschaft der Crew um einiges gest&auml;rkt.',
                     'dev_info'=>'',
             ), // Endof Component Neuroemitter
 
@@ -2652,9 +2652,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-										                    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Subraumsonden stellen eine experimenelle und revolutionäre Entwicklung der Sensoren dar. Durch Subraumsonden wird eine ungeahnte Genauigkeit und Reichweite erreicht.',
+                    'description'=>'Subraumsonden stellen eine experimenelle und revolution&auml;re Entwicklung der Sensoren dar. Durch Subraumsonden wird eine ungeahnte Genauigkeit und Reichweite erreicht.',
                     'dev_info'=>'',
             ), // Endof Component Subraumsonden
 

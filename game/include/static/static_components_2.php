@@ -70,7 +70,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der einfache Warpkern liefert genug Energie für Scouts und Transporter. Seine Leistung ist größeren Schiffen aber nicht angemessen.',
+                    'description'=>'Der einfache Warpkern liefert genug Energie f&uuml;r Scouts und Transporter. Seine Leistung ist gr&ouml;&szlig;eren Schiffen aber nicht angemessen.',
                     'dev_info'=>'',
             ), // Endof Component Warpkern
 
@@ -115,7 +115,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der Warpkern MK I ist deutlich leistungsfähiger als sein Vorgänger und liefert von sich aus die Möglichkeiten, mehr als Warp 1.2 zu erreichen.',
+                    'description'=>'Der Warpkern MK I ist deutlich leistungsf&auml;higer als sein Vorg&auml;nger und liefert von sich aus die M&ouml;glichkeiten, mehr als Warp 1.2 zu erreichen.',
                     'dev_info'=>'',
             ), // Endof Component Warpkern MK I
 
@@ -160,7 +160,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der Warpkern MK II ist eine Weiterentwicklung des MK I und hat als Boni eine höhere Energieausbeute.',
+                    'description'=>'Der Warpkern MK II ist eine Weiterentwicklung des MK I und hat als Boni eine h&ouml;here Energieausbeute.',
                     'dev_info'=>'',
             ), // Endof Component Warpkern MKII
 
@@ -205,7 +205,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die 3. Revision des Warpkerns kann bei den Oberklasseschiffen eingesetzt werden und versorgt das Schiff zuverlässig mit Energie.',
+                    'description'=>'Die 3. Revision des Warpkerns kann bei den Oberklasseschiffen eingesetzt werden und versorgt das Schiff zuverl&auml;ssig mit Energie.',
                     'dev_info'=>'',
             ), // Endof Component Warpkern MKIII
 
@@ -257,7 +257,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'´QuQmey´ bedeutet übersetzt in etwa Antriebsmaschinen, und das ist auch genau die Aufgabe dieser Schiffskomponente.<br>Diese billige 1. Revision schafft es, das Schiff um den Warpfaktor 1.6 zu beschleunigen.',
+                    'description'=>'&acute;QuQmey&acute; bedeutet &uuml;bersetzt in etwa Antriebsmaschinen, und das ist auch genau die Aufgabe dieser Schiffskomponente.<br>Diese billige 1. Revision schafft es, das Schiff um den Warpfaktor 1.6 zu beschleunigen.',
                     'dev_info'=>'',
             ), // Endof Component QuQmey MK I
 
@@ -302,7 +302,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'´QuQmey´ bedeutet übersetzt in etwa Antriebsmaschinen, und das ist auch genau die Aufgabe dieser Schiffskomponente.<br>Diese preislich noch ausgewogene 2. Revision schafft es, das Schiff um den Warpfaktor 1.9 zu beschleunigen.',
+                    'description'=>'&acute;QuQmey&acute; bedeutet &uuml;bersetzt in etwa Antriebsmaschinen, und das ist auch genau die Aufgabe dieser Schiffskomponente.<br>Diese preislich noch ausgewogene 2. Revision schafft es, das Schiff um den Warpfaktor 1.9 zu beschleunigen.',
                     'dev_info'=>'',
             ), // Endof Component QuQmey MKII
 
@@ -347,7 +347,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'´QuQmey´ bedeutet übersetzt in etwa Antriebsmaschinen, und das ist auch genau die Aufgabe dieser Schiffskomponente.<br>Diese 3. Revision schafft es, das Schiff um den Warpfaktor 2.2 zu beschleunigen und kann nicht mehr auf Transport- und Kolonisationsschiffen eingebaut werden.',
+                    'description'=>'&acute;QuQmey&acute; bedeutet &uuml;bersetzt in etwa Antriebsmaschinen, und das ist auch genau die Aufgabe dieser Schiffskomponente.<br>Diese 3. Revision schafft es, das Schiff um den Warpfaktor 2.2 zu beschleunigen und kann nicht mehr auf Transport- und Kolonisationsschiffen eingebaut werden.',
                     'dev_info'=>'',
             ), // Endof Component QuQmey MKIII
 
@@ -392,7 +392,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'´QuQmey´ bedeutet übersetzt in etwa Antriebsmaschinen, und das ist auch genau die Aufgabe dieser Schiffskomponente.<br>Diese 4. Revision schafft es, das Schiff um den Warpfaktor 3.2 zu beschleunigen und kann nur auf Schiffen der Oberklasse zum Einsatz kommen.',
+                    'description'=>'&acute;QuQmey&acute; bedeutet &uuml;bersetzt in etwa Antriebsmaschinen, und das ist auch genau die Aufgabe dieser Schiffskomponente.<br>Diese 4. Revision schafft es, das Schiff um den Warpfaktor 3.2 zu beschleunigen und kann nur auf Schiffen der Oberklasse zum Einsatz kommen.',
                     'dev_info'=>'',
             ), // Endof Component QuQmey MK IV
 
@@ -444,7 +444,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der Disruptorbeam entlädt einen Strahl beschleunigter Ionen, die aber ein relativ starkes Streuungsfeld haben und begrenzt Schaden verursachen.',
+                    'description'=>'Der Disruptorbeam entl&auml;dt einen Strahl beschleunigter Ionen, die aber ein relativ starkes Streuungsfeld haben und begrenzt Schaden verursachen.',
                     'dev_info'=>'',
             ), // Endof Component Disruptorbeam
 
@@ -489,7 +489,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der Disruptor ist eine Weiterentwicklung des Disruptorbeams. Auch er entlädt einen Strahl beschleunigter Ionen, die aber nun besser gebündelt werden, was die Leistung um 40% steigert.',
+                    'description'=>'Der Disruptor ist eine Weiterentwicklung des Disruptorbeams. Auch er entl&auml;dt einen Strahl beschleunigter Ionen, die aber nun besser geb&uuml;ndelt werden, was die Leistung um 40% steigert.',
                     'dev_info'=>'',
             ), // Endof Component Disruptor
 
@@ -534,7 +534,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Puls Disruptoren sind baugleich mit den normalen Disruptoren, der einzige Unterschied sind neuartige Unterbrecherkontakte und hitzeresistentere Komponenten, die das Abfeuern von sogenannten Disruptorsalven ermöglichen.',
+                    'description'=>'Die Puls Disruptoren sind baugleich mit den normalen Disruptoren, der einzige Unterschied sind neuartige Unterbrecherkontakte und hitzeresistentere Komponenten, die das Abfeuern von sogenannten Disruptorsalven erm&ouml;glichen.',
                     'dev_info'=>'',
             ), // Endof Component Puls Disruptoren
 
@@ -579,7 +579,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'´Back to the Roots´ lautet das Motto dieser Waffe.<br>Weil die neuartigen Technologien bei zunehmender Energiezufuhr immer fehleranfälliger wurden, griffen die Techniker hier auf die robuste Diruptorbeam-Technologie zurück und koppelten diese mit der zusätzlichen Energie neuartiger Warpkerne.',
+                    'description'=>'&acute;Back to the Roots&acute; lautet das Motto dieser Waffe.<br>Weil die neuartigen Technologien bei zunehmender Energiezufuhr immer fehleranf&auml;lliger wurden, griffen die Techniker hier auf die robuste Diruptorbeam-Technologie zur&uuml;ck und koppelten diese mit der zus&auml;tzlichen Energie neuartiger Warpkerne.',
                     'dev_info'=>'',
             ), // Endof Component Disruptorbeam MK2
 
@@ -624,7 +624,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der Gravimetrische Disruptor ist keine besondere Neuerung, die Energiezufuhr konnte weiter erhöht und somit auch die Schadenswirkung verstärkt werden.',
+                    'description'=>'Der Gravimetrische Disruptor ist keine besondere Neuerung, die Energiezufuhr konnte weiter erh&ouml;ht und somit auch die Schadenswirkung verst&auml;rkt werden.',
                     'dev_info'=>'',
             ), // Endof Component Gravimetrischer Disruptor
 
@@ -714,7 +714,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der Gravimetrischer Disruptorbeam ist im Prinzip nur eine Energieschleuder. Er basiert auf dem einfachen Disruptorbeamprinzip und legt es gewollt darauf an, die Teilchen möglichst breit zu streuen, um somit flächendeckenden Schaden zu verursachen.',
+                    'description'=>'Der Gravimetrischer Disruptorbeam ist im Prinzip nur eine Energieschleuder. Er basiert auf dem einfachen Disruptorbeamprinzip und legt es gewollt darauf an, die Teilchen m&ouml;glichst breit zu streuen, um somit fl&auml;chendeckenden Schaden zu verursachen.',
                     'dev_info'=>'',
             ), // Endof Component Gravimetrischer Disruptorbeam
 
@@ -766,7 +766,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Ionentorpedos sind teuer und relativ schwach, was ihre Leistung betrifft. Der einzige Pluspunkt ist die mögliche Installation auf Transportschiffen, was eifrigen Händlern ein besseres Gefühl geben sollte.',
+                    'description'=>'Ionentorpedos sind teuer und relativ schwach, was ihre Leistung betrifft. Der einzige Pluspunkt ist die m&ouml;gliche Installation auf Transportschiffen, was eifrigen H&auml;ndlern ein besseres Gef&uuml;hl geben sollte.',
                     'dev_info'=>'',
             ), // Endof Component Ionentorpedos
 
@@ -811,7 +811,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 					                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Photonentorpedos sind unabhängig vom Schiff und haben einen eigenen Antrieb sowie Zielleitsystem. Ein Vorteil ist, dass sie auch bei Überlichtgeschwindigkkeit eingesetzt werden können.',
+                    'description'=>'Photonentorpedos sind unabh&auml;ngig vom Schiff und haben einen eigenen Antrieb sowie Zielleitsystem. Ein Vorteil ist, dass sie auch bei Überlichtgeschwindigkkeit eingesetzt werden k&ouml;nnen.',
                     'dev_info'=>'',
             ), // Endof Component Photonentorpedos
 
@@ -856,7 +856,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Photonentorpedos sind unabhängig vom Schiff und haben einen eigenen Antrieb sowie Zielleitsystem. Ein Vorteil ist, dass sie auch bei Überlichtgeschwindigkkeit eingesetzt werden können.<br>Die 6. Revision hat eine bessere Durchschlagskraft und ein besseres Zielleitsystem.',
+                    'description'=>'Photonentorpedos sind unabh&auml;ngig vom Schiff und haben einen eigenen Antrieb sowie Zielleitsystem. Ein Vorteil ist, dass sie auch bei Überlichtgeschwindigkkeit eingesetzt werden k&ouml;nnen.<br>Die 6. Revision hat eine bessere Durchschlagskraft und ein besseres Zielleitsystem.',
                     'dev_info'=>'',
             ), // Endof Component Photonentorpedos MKVI
 
@@ -901,13 +901,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Photonentorpedos sind unabhängig vom Schiff und haben einen eigenen Antrieb sowie Zielleitsystem. Ein Vorteil ist, dass sie auch bei Überlichtgeschwindigkkeit eingesetzt werden können.<br>Der Triple Launcher kann pro Torpedorohr 3 Torpedos gleichzeitig laden und in sehr kurzen Zeitabständen starten.',
+                    'description'=>'Photonentorpedos sind unabh&auml;ngig vom Schiff und haben einen eigenen Antrieb sowie Zielleitsystem. Ein Vorteil ist, dass sie auch bei Überlichtgeschwindigkkeit eingesetzt werden k&ouml;nnen.<br>Der Triple Launcher kann pro Torpedorohr 3 Torpedos gleichzeitig laden und in sehr kurzen Zeitabst&auml;nden starten.',
                     'dev_info'=>'',
             ), // Endof Component Triple Launcher
 
-             // Component Gk´tag Sprengköpfe
+             // Component Gk&acute;tag Sprengk&ouml;pfe
              4=>array(
-                    'name'=>'Gk´tag Sprengköpfe',
+                    'name'=>'Gk&acute;tag Sprengk&ouml;pfe',
                     'resource_1'=>'16000',
                     'resource_2'=>'8000',
                     'resource_3'=>'6000',
@@ -946,9 +946,9 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Gk´tag Sprengköpfe sind eine spezielle, angepasste Version der Photonentorpedos und können auch in die Hemisphären von Planeten eindringen und seine Infrastruktur beschädigen.',
+                    'description'=>'Gk&acute;tag Sprengk&ouml;pfe sind eine spezielle, angepasste Version der Photonentorpedos und k&ouml;nnen auch in die Hemisph&auml;ren von Planeten eindringen und seine Infrastruktur besch&auml;digen.',
                     'dev_info'=>'',
-            ), // Endof Component Gk´tag Sprengköpfe
+            ), // Endof Component Gk&acute;tag Sprengk&ouml;pfe
 
       'name'=>'Schwere Waffen',
       'num'=>'5',
@@ -998,7 +998,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Nugh bedeutet übersetzt Gesellschaft und steht auf Schiffen für Crewunterkünfte.',
+                    'description'=>'Nugh bedeutet &uuml;bersetzt Gesellschaft und steht auf Schiffen f&uuml;r Crewunterk&uuml;nfte.',
                     'dev_info'=>'',
             ), // Endof Component NughI
 
@@ -1043,7 +1043,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die ´Armeeunterkünfte´ beherbergen 60 leichte Krieger.',
+                    'description'=>'Die &acute;Armeeunterk&uuml;nfte&acute; beherbergen 60 leichte Krieger.',
                     'dev_info'=>'',
             ), // Endof Component Mangghom nughI
 
@@ -1088,13 +1088,13 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die SuwvI` nughI können bis zu 70 leichte Krieger beherbergen.',
+                    'description'=>'Die SuwvI` nughI k&ouml;nnen bis zu 70 leichte Krieger beherbergen.',
                     'dev_info'=>'',
             ), // Endof Component SuwvI` nughI
 
-             // Component Da´ nughI
+             // Component Da&acute; nughI
              3=>array(
-                    'name'=>'Da´ nughI',
+                    'name'=>'Da&acute; nughI',
                     'resource_1'=>'3300',
                     'resource_2'=>'300',
                     'resource_3'=>'0',
@@ -1133,9 +1133,9 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Da steht für Benehmen / Verhalten.<br>In diesen Quartieren herrscht eine bessere Atmosphäre und es finden mehr Krieger Platz.',
+                    'description'=>'Da steht f&uuml;r Benehmen / Verhalten.<br>In diesen Quartieren herrscht eine bessere Atmosph&auml;re und es finden mehr Krieger Platz.',
                     'dev_info'=>'',
-            ), // Endof Component Da´ nughI
+            ), // Endof Component Da&acute; nughI
 
              // Component HoD nughI
              4=>array(
@@ -1182,9 +1182,9 @@ $ship_components=array(
                     'dev_info'=>'',
             ), // Endof Component HoD nughI
 
-             // Component Sa´ nughI
+             // Component Sa&acute; nughI
              5=>array(
-                    'name'=>'Sa´ nughI',
+                    'name'=>'Sa&acute; nughI',
                     'resource_1'=>'5100',
                     'resource_2'=>'900',
                     'resource_3'=>'0',
@@ -1223,9 +1223,9 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Sa ist ein General - diese Quartiere sind noch komfortabler und effizienter als die  ´HoD nughI´.',
+                    'description'=>'Sa ist ein General - diese Quartiere sind noch komfortabler und effizienter als die  &acute;HoD nughI&acute;.',
                     'dev_info'=>'',
-            ), // Endof Component Sa´ nughI
+            ), // Endof Component Sa&acute; nughI
 
              // Component VaS tIn
              6=>array(
@@ -1268,7 +1268,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'´VaS tIn´ ist eine ´besonders große Halle´, optimal also, um Krieger zu beherbergen.',
+                    'description'=>'&acute;VaS tIn&acute; ist eine &acute;besonders gro&szlig;e Halle&acute;, optimal also, um Krieger zu beherbergen.',
                     'dev_info'=>'',
             ), // Endof Component VaS tIn
 
@@ -1279,9 +1279,9 @@ $ship_components=array(
 
         // Category Computer
         5=>array(
-             // Component De´wI´
+             // Component De&acute;wI&acute;
              0=>array(
-                    'name'=>'De´wI´',
+                    'name'=>'De&acute;wI&acute;',
                     'resource_1'=>'320',
                     'resource_2'=>'160',
                     'resource_3'=>'120',
@@ -1320,13 +1320,13 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Computersysteme dienen auf klingonischen Schiffen nur zur Unterstützung, weil ein Krieger lieber seinen Sinnen als einer Maschine vertraut.',
+                    'description'=>'Computersysteme dienen auf klingonischen Schiffen nur zur Unterst&uuml;tzung, weil ein Krieger lieber seinen Sinnen als einer Maschine vertraut.',
                     'dev_info'=>'',
-            ), // Endof Component De´wI´
+            ), // Endof Component De&acute;wI&acute;
 
-             // Component De´wI´ MKII
+             // Component De&acute;wI&acute; MKII
              1=>array(
-                    'name'=>'De´wI´ MKII',
+                    'name'=>'De&acute;wI&acute; MKII',
                     'resource_1'=>'390',
                     'resource_2'=>'195',
                     'resource_3'=>'146.25',
@@ -1365,13 +1365,13 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Computersysteme dienen auf klingonischen Schiffen nur zur Unterstützung, weil ein Krieger lieber seinen Sinnen als einer Maschine vertraut.',
+                    'description'=>'Computersysteme dienen auf klingonischen Schiffen nur zur Unterst&uuml;tzung, weil ein Krieger lieber seinen Sinnen als einer Maschine vertraut.',
                     'dev_info'=>'',
-            ), // Endof Component De´wI´ MKII
+            ), // Endof Component De&acute;wI&acute; MKII
 
-             // Component De´wI´ MKIII
+             // Component De&acute;wI&acute; MKIII
              2=>array(
-                    'name'=>'De´wI´ MKIII',
+                    'name'=>'De&acute;wI&acute; MKIII',
                     'resource_1'=>'410',
                     'resource_2'=>'205',
                     'resource_3'=>'153.75',
@@ -1410,13 +1410,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Computersysteme dienen auf klingonischen Schiffen nur zur Unterstützung, weil ein Krieger lieber seinen Sinnen als einer Maschine vertraut.',
+                    'description'=>'Computersysteme dienen auf klingonischen Schiffen nur zur Unterst&uuml;tzung, weil ein Krieger lieber seinen Sinnen als einer Maschine vertraut.',
                     'dev_info'=>'',
-            ), // Endof Component De´wI´ MKIII
+            ), // Endof Component De&acute;wI&acute; MKIII
 
-             // Component De´wI´ MK IV
+             // Component De&acute;wI&acute; MK IV
              3=>array(
-                    'name'=>'De´wI´ MK IV',
+                    'name'=>'De&acute;wI&acute; MK IV',
                     'resource_1'=>'460',
                     'resource_2'=>'230',
                     'resource_3'=>'172.5',
@@ -1455,13 +1455,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Computersysteme dienen auf klingonischen Schiffen nur zur Unterstützung, weil ein Krieger lieber seinen Sinnen als einer Maschine vertraut.',
+                    'description'=>'Computersysteme dienen auf klingonischen Schiffen nur zur Unterst&uuml;tzung, weil ein Krieger lieber seinen Sinnen als einer Maschine vertraut.',
                     'dev_info'=>'',
-            ), // Endof Component De´wI´ MK IV
+            ), // Endof Component De&acute;wI&acute; MK IV
 
-             // Component De´wI´ V
+             // Component De&acute;wI&acute; V
              4=>array(
-                    'name'=>'De´wI´ V',
+                    'name'=>'De&acute;wI&acute; V',
                     'resource_1'=>'490',
                     'resource_2'=>'245',
                     'resource_3'=>'183.75',
@@ -1500,13 +1500,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Computersysteme dienen auf klingonischen Schiffen nur zur Unterstützung, weil ein Krieger lieber seinen Sinnen als einer Maschine vertraut.',
+                    'description'=>'Computersysteme dienen auf klingonischen Schiffen nur zur Unterst&uuml;tzung, weil ein Krieger lieber seinen Sinnen als einer Maschine vertraut.',
                     'dev_info'=>'',
-            ), // Endof Component De´wI´ V
+            ), // Endof Component De&acute;wI&acute; V
 
-             // Component Ngoq De´wI´
+             // Component Ngoq De&acute;wI&acute;
              5=>array(
-                    'name'=>'Ngoq De´wI´',
+                    'name'=>'Ngoq De&acute;wI&acute;',
                     'resource_1'=>'580',
                     'resource_2'=>'290',
                     'resource_3'=>'217.5',
@@ -1545,9 +1545,9 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Computersysteme dienen auf klingonischen Schiffen nur zur Unterstützung, weil ein Krieger lieber seinen Sinnen als einer Maschine vertraut.',
+                    'description'=>'Computersysteme dienen auf klingonischen Schiffen nur zur Unterst&uuml;tzung, weil ein Krieger lieber seinen Sinnen als einer Maschine vertraut.',
                     'dev_info'=>'',
-            ), // Endof Component Ngoq De´wI´
+            ), // Endof Component Ngoq De&acute;wI&acute;
 
       'name'=>'Computer',
       'num'=>'6',
@@ -1597,7 +1597,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die einfachen Sensoren sind eher für Kurzstreckenabtastungen geeignet und zu träge, um in Kämpfen von Nutzen zu sein.<br>Der größte Boni sind vermutlich die leichte Tarnung und eine Verstärkung der Schilde',
+                    'description'=>'Die einfachen Sensoren sind eher f&uuml;r Kurzstreckenabtastungen geeignet und zu tr&auml;ge, um in K&auml;mpfen von Nutzen zu sein.<br>Der gr&ouml;&szlig;te Boni sind vermutlich die leichte Tarnung und eine Verst&auml;rkung der Schilde',
                     'dev_info'=>'',
             ), // Endof Component Nochmey
 
@@ -1642,13 +1642,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'SIbDoH sind eine Art Sonden, die von Torpedoabschussrampen aus gestartet werden und das Schiff beim Navigieren, Scannen und Kämpfen unterstützen.',
+                    'description'=>'SIbDoH sind eine Art Sonden, die von Torpedoabschussrampen aus gestartet werden und das Schiff beim Navigieren, Scannen und K&auml;mpfen unterst&uuml;tzen.',
                     'dev_info'=>'',
             ), // Endof Component SIbDoH
 
-             // Component HotlhwI´
+             // Component HotlhwI&acute;
              2=>array(
-                    'name'=>'HotlhwI´',
+                    'name'=>'HotlhwI&acute;',
                     'resource_1'=>'502',
                     'resource_2'=>'251',
                     'resource_3'=>'188.25',
@@ -1687,9 +1687,9 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'HotlhwI sind Scanner, die mit Hilfe der Sensorphalanxen den Autopiloten beim Navigieren des Schiffen unterstützen.',
+                    'description'=>'HotlhwI sind Scanner, die mit Hilfe der Sensorphalanxen den Autopiloten beim Navigieren des Schiffen unterst&uuml;tzen.',
                     'dev_info'=>'',
-            ), // Endof Component HotlhwI´
+            ), // Endof Component HotlhwI&acute;
 
              // Component DoS nochmey
              3=>array(
@@ -1732,7 +1732,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'DoS nochmey sind Zielscanner, sie sind für den Kampf konzipiert und verbessern insbesondere Bereitschaft und Reaktion der Crew.',
+                    'description'=>'DoS nochmey sind Zielscanner, sie sind f&uuml;r den Kampf konzipiert und verbessern insbesondere Bereitschaft und Reaktion der Crew.',
                     'dev_info'=>'',
             ), // Endof Component DoS nochmey
 
@@ -1777,7 +1777,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Ghoch nochmey sind verbesserte Zielerfassungsysteme (wobei Ghoch im Klingonischen auch Schicksal heißt). Sie bieten keine bessere Sensorleistung, dafür bauen sie weiter auf das Offensivpotential der Schiffe auf.',
+                    'description'=>'Ghoch nochmey sind verbesserte Zielerfassungsysteme (wobei Ghoch im Klingonischen auch Schicksal hei&szlig;t). Sie bieten keine bessere Sensorleistung, daf&uuml;r bauen sie weiter auf das Offensivpotential der Schiffe auf.',
                     'dev_info'=>'',
             ), // Endof Component Ghoch nochmey
 
@@ -1826,9 +1826,9 @@ $ship_components=array(
                     'dev_info'=>'',
             ), // Endof Component NgoQ nochmey
 
-             // Component Ray´ nochmey
+             // Component Ray&acute; nochmey
              6=>array(
-                    'name'=>'Ray´ nochmey',
+                    'name'=>'Ray&acute; nochmey',
                     'resource_1'=>'1412',
                     'resource_2'=>'706',
                     'resource_3'=>'529.5',
@@ -1867,9 +1867,9 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Ray´ nochmey sind die letzte Stufe der Zielerfassungssysteme können nur auf der letzten Schiffsklassen installiert werden.<br>Ray ist die Mehrzahl von Ziele, was bedeutet, dass das System in der Lage ist, mehrere Feinde parallel anzuvisieren und simultan unter Beschuss zu nehmen.<br>Die Ray´ nochmey werden direkt mit den Waffensystemen gekoppelt und verstärken deren Leistung nochmals.',
+                    'description'=>'Die Ray&acute; nochmey sind die letzte Stufe der Zielerfassungssysteme k&ouml;nnen nur auf der letzten Schiffsklassen installiert werden.<br>Ray ist die Mehrzahl von Ziele, was bedeutet, dass das System in der Lage ist, mehrere Feinde parallel anzuvisieren und simultan unter Beschuss zu nehmen.<br>Die Ray&acute; nochmey werden direkt mit den Waffensystemen gekoppelt und verst&auml;rken deren Leistung nochmals.',
                     'dev_info'=>'',
-            ), // Endof Component Ray´ nochmey
+            ), // Endof Component Ray&acute; nochmey
 
       'name'=>'Sensoren',
       'num'=>'7',
@@ -1919,13 +1919,13 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Phasenkonverter ist eine experimentelle Technologie, welche automatisch die Phasen der Verteidigungsparameter abändert, um ein Durchdringen der Schutzschilde zu verzögern.',
+                    'description'=>'Der Phasenkonverter ist eine experimentelle Technologie, welche automatisch die Phasen der Verteidigungsparameter ab&auml;ndert, um ein Durchdringen der Schutzschilde zu verz&ouml;gern.',
                     'dev_info'=>'',
             ), // Endof Component Phasenkonverter
 
              // Component G. Disruptorkanone MK XVIII
              1=>array(
-                    'name'=>'Verbesserte Hülle',
+                    'name'=>'Verbesserte H&uuml;lle',
                     'resource_1'=>'22080',
                     'resource_2'=>'11040',
                     'resource_3'=>'8280',
@@ -1964,13 +1964,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die große Disruptorkanone ist eine Weiterentwicklung der normalen Disruptoren in Sachen Schussfrequenz und Durchschlagskraft.',
+                    'description'=>'Die gro&szlig;e Disruptorkanone ist eine Weiterentwicklung der normalen Disruptoren in Sachen Schussfrequenz und Durchschlagskraft.',
                     'dev_info'=>'',
             ), // Endof Component G. Disruptorkanone MK XVIII
 
-             // Component So´wI´
+             // Component So&acute;wI&acute;
              2=>array(
-                    'name'=>'So´wI´',
+                    'name'=>'So&acute;wI&acute;',
                     'resource_1'=>'890',
                     'resource_2'=>'445',
                     'resource_3'=>'333.75',
@@ -2009,9 +2009,9 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'So´wI´ ist eine von den Klingonen entwickelte Tarnvorrichtung, die zusätzlich das Offensivpotential stärkt.',
+                    'description'=>'So&acute;wI&acute; ist eine von den Klingonen entwickelte Tarnvorrichtung, die zus&auml;tzlich das Offensivpotential st&auml;rkt.',
                     'dev_info'=>'',
-            ), // Endof Component So´wI´
+            ), // Endof Component So&acute;wI&acute;
 
              // Component Yob
              3=>array(
@@ -2054,13 +2054,13 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Yob sind Zusatzschilde, die optional hinzugeschaltet werden können, um die Schildleistung um 90 zu steigern.',
+                    'description'=>'Yob sind Zusatzschilde, die optional hinzugeschaltet werden k&ouml;nnen, um die Schildleistung um 90 zu steigern.',
                     'dev_info'=>'',
             ), // Endof Component Yob
 
-             // Component K´d´B Ausbildung
+             // Component K&acute;d&acute;B Ausbildung
              4=>array(
-                    'name'=>'K´d´B Ausbildung',
+                    'name'=>'K&acute;d&acute;B Ausbildung',
                     'resource_1'=>'3055',
                     'resource_2'=>'1527.5',
                     'resource_3'=>'1145.63',
@@ -2099,13 +2099,13 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die K´d´B Ausbildung ist ein spezielles Ausbildungsprogramm, um die Fähigkeiten der Crew zu verbessern und sie auf bevorstehende Schlachten optimal vorzubereiten.',
+                    'description'=>'Die K&acute;d&acute;B Ausbildung ist ein spezielles Ausbildungsprogramm, um die F&auml;higkeiten der Crew zu verbessern und sie auf bevorstehende Schlachten optimal vorzubereiten.',
                     'dev_info'=>'',
-            ), // Endof Component K´d´B Ausbildung
+            ), // Endof Component K&acute;d&acute;B Ausbildung
 
-             // Component Da´ Meister
+             // Component Da&acute; Meister
              5=>array(
-                    'name'=>'Da´ Meister',
+                    'name'=>'Da&acute; Meister',
                     'resource_1'=>'5066',
                     'resource_2'=>'2533',
                     'resource_3'=>'1899.75',
@@ -2144,13 +2144,13 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Dieses Schulungsprogramm wurde speziell entwickelt, um die ´Da´ (Unteroffiziere) in taktische Kriegsführung einzuweisen.',
+                    'description'=>'Dieses Schulungsprogramm wurde speziell entwickelt, um die &acute;Da&acute; (Unteroffiziere) in taktische Kriegsf&uuml;hrung einzuweisen.',
                     'dev_info'=>'',
-            ), // Endof Component Da´ Meister
+            ), // Endof Component Da&acute; Meister
 
-             // Component Wabenstruktur Hülle
+             // Component Wabenstruktur H&uuml;lle
              6=>array(
-                    'name'=>'Wabenstruktur Hülle',
+                    'name'=>'Wabenstruktur H&uuml;lle',
                     'resource_1'=>'552',
                     'resource_2'=>'276',
                     'resource_3'=>'207',
@@ -2189,16 +2189,16 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Klingonische Wissenschaftler haben herausgefunden, dass eine Wabenstruktur (haxagonal) bei der Hüllenpanzerung eine bessere Ableitung von Hochenergiegeschossen ermöglicht.<br>Der Nachteil ist die stark vergrößerte Masse des Rumpfes, so dass diese experiementele Technologie nur auf Schiffen, der Brel-Klasse zum Einsatz kommen kann.',
+                    'description'=>'Klingonische Wissenschaftler haben herausgefunden, dass eine Wabenstruktur (haxagonal) bei der H&uuml;llenpanzerung eine bessere Ableitung von Hochenergiegeschossen erm&ouml;glicht.<br>Der Nachteil ist die stark vergr&ouml;&szlig;erte Masse des Rumpfes, so dass diese experiementele Technologie nur auf Schiffen, der Brel-Klasse zum Einsatz kommen kann.',
                     'dev_info'=>'',
-            ), // Endof Component Wabenstruktur Hülle
+            ), // Endof Component Wabenstruktur H&uuml;lle
 
       'name'=>'Experimentelles',
       'num'=>'7',
       ), // Endof Category Experimentelles
 
 
-        // Category Hülle/Schilde
+        // Category H&uuml;lle/Schilde
         8=>array(
              // Component -Yob
              0=>array(
@@ -2241,7 +2241,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Yob sind die einfachsten Schilde der Klingonen - günstig und wenig effektiv.',
+                    'description'=>'Yob sind die einfachsten Schilde der Klingonen - g&uuml;nstig und wenig effektiv.',
                     'dev_info'=>'',
             ), // Endof Component -Yob
 
@@ -2376,13 +2376,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Duranium- Tritaniumpanzerung ist eined Legierung aus den 2 Materialien Duranium und Tritanium. Sie verstärkt die Hülle um 500 Punkte.',
+                    'description'=>'Duranium- Tritaniumpanzerung ist eined Legierung aus den 2 Materialien Duranium und Tritanium. Sie verst&auml;rkt die H&uuml;lle um 500 Punkte.',
                     'dev_info'=>'',
             ), // Endof Component Duranium- Tritaniumpanzerung
 
-             // Component Hüllen-/Schildverstärker
+             // Component H&uuml;llen-/Schildverst&auml;rker
              4=>array(
-                    'name'=>'Hüllen-/Schildverstärker',
+                    'name'=>'H&uuml;llen-/Schildverst&auml;rker',
                     'resource_1'=>'6604',
                     'resource_2'=>'3302',
                     'resource_3'=>'2476.5',
@@ -2421,13 +2421,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Hüllen-/Schildverstärker sind die letzte Stufe der Verteidigungssysteme. Sie können nur auf Schiffen der Oberklasse installiert werden und können einiges an Geschossen abhalten.',
+                    'description'=>'Die H&uuml;llen-/Schildverst&auml;rker sind die letzte Stufe der Verteidigungssysteme. Sie k&ouml;nnen nur auf Schiffen der Oberklasse installiert werden und k&ouml;nnen einiges an Geschossen abhalten.',
                     'dev_info'=>'',
-            ), // Endof Component Hüllen-/Schildverstärker
+            ), // Endof Component H&uuml;llen-/Schildverst&auml;rker
 
-      'name'=>'Hülle/Schilde',
+      'name'=>'H&uuml;lle/Schilde',
       'num'=>'5',
-      ), // Endof Category Hülle/Schilde
+      ), // Endof Category H&uuml;lle/Schilde
 
 
         // Category Trainingsraum
@@ -2473,7 +2473,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Das Kadettentraining verbessert die allgemeine Leistungsfähigkeit der Crew.',
+                    'description'=>'Das Kadettentraining verbessert die allgemeine Leistungsf&auml;higkeit der Crew.',
                     'dev_info'=>'',
             ), // Endof Component Kadettentraining
 
@@ -2518,13 +2518,13 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Ausbildung zu Kriegern verbessert die allgemeine Leistungsfähigkeit der Crew.',
+                    'description'=>'Die Ausbildung zu Kriegern verbessert die allgemeine Leistungsf&auml;higkeit der Crew.',
                     'dev_info'=>'',
             ), // Endof Component Ausbildung zu Kriegern
 
-             // Component Sinnesschärfung
+             // Component Sinnessch&auml;rfung
              2=>array(
-                    'name'=>'Sinnesschärfung',
+                    'name'=>'Sinnessch&auml;rfung',
                     'resource_1'=>'320',
                     'resource_2'=>'160',
                     'resource_3'=>'120',
@@ -2563,9 +2563,9 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Sinnesschärfung verbessert die allgemeine Leistungsfähigkeit der Crew.',
+                    'description'=>'Die Sinnessch&auml;rfung verbessert die allgemeine Leistungsf&auml;higkeit der Crew.',
                     'dev_info'=>'',
-            ), // Endof Component Sinnesschärfung
+            ), // Endof Component Sinnessch&auml;rfung
 
              // Component Offiziere
              3=>array(
@@ -2608,13 +2608,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Offiziersausbildung verbessert die allgemeine Leistungsfähigkeit der ranghöheren Crewmitglieder.',
+                    'description'=>'Die Offiziersausbildung verbessert die allgemeine Leistungsf&auml;higkeit der rangh&ouml;heren Crewmitglieder.',
                     'dev_info'=>'',
             ), // Endof Component Offiziere
 
-             // Component Reaktionsschärfung
+             // Component Reaktionssch&auml;rfung
              4=>array(
-                    'name'=>'Reaktionsschärfung',
+                    'name'=>'Reaktionssch&auml;rfung',
                     'resource_1'=>'1200',
                     'resource_2'=>'600',
                     'resource_3'=>'450',
@@ -2653,9 +2653,9 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Reaktionsschärfung verbessert insbesondere die Reaktion und Bereitschaft der Crew.',
+                    'description'=>'Die Reaktionssch&auml;rfung verbessert insbesondere die Reaktion und Bereitschaft der Crew.',
                     'dev_info'=>'',
-            ), // Endof Component Reaktionsschärfung
+            ), // Endof Component Reaktionssch&auml;rfung
 
       'name'=>'Trainingsraum',
       'num'=>'5',

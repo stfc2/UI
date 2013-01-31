@@ -70,7 +70,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Ionen Kanone ist eine Entwicklung der Kazon, welche primitver als die Waffen der meisten anderen Rassen ist.<br>Dafür ist sie schnell einsatzbereit und zielsicher auch bei kleinen Schiffen.',
+                    'description'=>'Die Ionen Kanone ist eine Entwicklung der Kazon, welche primitver als die Waffen der meisten anderen Rassen ist.<br>Daf&uuml;r ist sie schnell einsatzbereit und zielsicher auch bei kleinen Schiffen.',
                     'dev_info'=>'',
             ), // Endof Component Ionen Kanone Mk II
 
@@ -115,7 +115,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Ionen Kanone ist eine Entwicklung der Kazon, welche primitver als die Waffen der meisten anderen Rassen ist.<br>Dafür ist sie schnell einsatzbereit und zielsicher auch bei kleinen Schiffen.',
+                    'description'=>'Die Ionen Kanone ist eine Entwicklung der Kazon, welche primitver als die Waffen der meisten anderen Rassen ist.<br>Daf&uuml;r ist sie schnell einsatzbereit und zielsicher auch bei kleinen Schiffen.',
                     'dev_info'=>'',
             ), // Endof Component Ionen Kanone Mk III
 
@@ -160,7 +160,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Ionen Kanone ist eine Entwicklung der Kazon, welche primitver als die Waffen der meisten anderen Rassen ist.<br>Dafür ist sie schnell einsatzbereit und zielsicher auch bei kleinen Schiffen.',
+                    'description'=>'Die Ionen Kanone ist eine Entwicklung der Kazon, welche primitver als die Waffen der meisten anderen Rassen ist.<br>Daf&uuml;r ist sie schnell einsatzbereit und zielsicher auch bei kleinen Schiffen.',
                     'dev_info'=>'',
             ), // Endof Component Ionen Kanone Mk IV
 
@@ -205,7 +205,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Ionen Kanone ist eine Entwicklung der Kazon, welche primitver als die Waffen der meisten anderen Rassen ist.<br>Dafür ist sie schnell einsatzbereit und zielsicher auch bei kleinen Schiffen.',
+                    'description'=>'Die Ionen Kanone ist eine Entwicklung der Kazon, welche primitver als die Waffen der meisten anderen Rassen ist.<br>Daf&uuml;r ist sie schnell einsatzbereit und zielsicher auch bei kleinen Schiffen.',
                     'dev_info'=>'',
             ), // Endof Component Ionen Kanone Mk V
 
@@ -250,7 +250,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Ionen Kanone ist eine Entwicklung der Kazon, welche primitver als die Waffen der meisten anderen Rassen ist.<br>Dafür ist sie schnell einsatzbereit und zielsicher auch bei kleinen Schiffen.',
+                    'description'=>'Die Ionen Kanone ist eine Entwicklung der Kazon, welche primitver als die Waffen der meisten anderen Rassen ist.<br>Daf&uuml;r ist sie schnell einsatzbereit und zielsicher auch bei kleinen Schiffen.',
                     'dev_info'=>'',
             ), // Endof Component Ionen Kanone Mk VI
 
@@ -263,7 +263,7 @@ $ship_components=array(
         1=>array(
              // Component Kobalt Sprengköpfe
              0=>array(
-                    'name'=>'Kobalt Sprengköpfe',
+                    'name'=>'Kobalt Sprengk&ouml;pfe',
                     'resource_1'=>'750',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -302,7 +302,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Kobalt Sprengköpfe sind eine andere Form der Photonen Torpedos, jedoch haben die Kazon es nicht geschaft die Leistung beträchtlich zu steigern.',
+                    'description'=>'Die Kobalt Sprengk&ouml;pfe sind eine andere Form der Photonen Torpedos, jedoch haben die Kazon es nicht geschaft die Leistung betr&auml;chtlich zu steigern.',
                     'dev_info'=>'',
             ), // Endof Component Kobalt Sprengköpfe
 
@@ -347,7 +347,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Photonentorpedos sind für die Kazon ziemlich hoch entwickelt und wurden im Laufe der Jahre von den Wissenschaftlern verschiedener Tribes entwickelt. Als Vorbild hielten die Torpedos der Voyager unter Kommando von Captain Janeway her, deren Zerstörungskraft sie zu spüren bekommen hatten.',
+                    'description'=>'Photonentorpedos sind f&uuml;r die Kazon ziemlich hoch entwickelt und wurden im Laufe der Jahre von den Wissenschaftlern verschiedener Tribes entwickelt. Als Vorbild hielten die Torpedos der Voyager unter Kommando von Captain Janeway her, deren Zerst&ouml;rungskraft sie zu sp&uuml;ren bekommen hatten.',
                     'dev_info'=>'',
             ), // Endof Component Photonen Torpedos Mk I
 
@@ -392,7 +392,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Photonentorpedos sind für die Kazon ziemlich hoch entwickelt und wurden im Laufe der Jahre von den Wissenschaftlern verschiedener Tribes entwickelt. Als Vorbild hielten die Torpedos der Voyager unter Kommando von Captain Janeway her, deren Zerstörungskraft sie zu spüren bekommen hatten.',
+                    'description'=>'Photonentorpedos sind f&uuml;r die Kazon ziemlich hoch entwickelt und wurden im Laufe der Jahre von den Wissenschaftlern verschiedener Tribes entwickelt. Als Vorbild hielten die Torpedos der Voyager unter Kommando von Captain Janeway her, deren Zerst&ouml;rungskraft sie zu sp&uuml;ren bekommen hatten.',
                     'dev_info'=>'',
             ), // Endof Component Photonen Torpedos Mk II
 
@@ -403,9 +403,9 @@ $ship_components=array(
 
         // Category Defensivsysteme
         2=>array(
-             // Component Elektrom. Gegenmaßnahmen Mk I
+             // Component Elektrom. Gegenma&szlig;nahmen Mk I
              0=>array(
-                    'name'=>'Elektrom. Gegenmaßnahmen Mk I',
+                    'name'=>'Elektrom. Gegenma&szlig;nahmen Mk I',
                     'resource_1'=>'1500',
                     'resource_2'=>'150',
                     'resource_3'=>'0',
@@ -444,13 +444,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Elektrom. Gegenmaßnahmen verbessern geringfügig die Schilde, die Reaktion und die Sensoren.',
+                    'description'=>'Die Elektrom. Gegenma&szlig;nahmen verbessern geringf&uuml;gig die Schilde, die Reaktion und die Sensoren.',
                     'dev_info'=>'',
-            ), // Endof Component Elektrom. Gegenmaßnahmen Mk I
+            ), // Endof Component Elektrom. Gegenma&szlig;nahmen Mk I
 
-             // Component Elektrom. Gegenmaßnahmen Mk II
+             // Component Elektrom. Gegenma&szlig;nahmen Mk II
              1=>array(
-                    'name'=>'Elektrom. Gegenmaßnahmen Mk II',
+                    'name'=>'Elektrom. Gegenma&szlig;nahmen Mk II',
                     'resource_1'=>'1725',
                     'resource_2'=>'300',
                     'resource_3'=>'0',
@@ -489,13 +489,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Elektrom. Gegenmaßnahmen verbessern geringfügig die Schilde, die Reaktion und die Sensoren.',
+                    'description'=>'Die Elektrom. Gegenma&szlig;nahmen verbessern geringf&uuml;gig die Schilde, die Reaktion und die Sensoren.',
                     'dev_info'=>'',
-            ), // Endof Component Elektrom. Gegenmaßnahmen Mk II
+            ), // Endof Component Elektrom. Gegenma&szlig;nahmen Mk II
 
-             // Component Elektrom. Gegenmaßnahmen Mk III
+             // Component Elektrom. Gegenma&szlig;nahmen Mk III
              2=>array(
-                    'name'=>'Elektrom. Gegenmaßnahmen Mk III',
+                    'name'=>'Elektrom. Gegenma&szlig;nahmen Mk III',
                     'resource_1'=>'1500',
                     'resource_2'=>'375',
                     'resource_3'=>'75',
@@ -534,13 +534,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Elektrom. Gegenmaßnahmen Mk III verbessern die Schilde, die Reaktion, Bereitschaft, Wendigkeit und die Sensoren.',
+                    'description'=>'Die Elektrom. Gegenma&szlig;nahmen Mk III verbessern die Schilde, die Reaktion, Bereitschaft, Wendigkeit und die Sensoren.',
                     'dev_info'=>'',
-            ), // Endof Component Elektrom. Gegenmaßnahmen Mk III
+            ), // Endof Component Elektrom. Gegenma&szlig;nahmen Mk III
 
-             // Component Kristalline Hüllenlegierung MkI
+             // Component Kristalline H&uuml;llenlegierung MkI
              3=>array(
-                    'name'=>'Kristalline Hüllenlegierung MkI',
+                    'name'=>'Kristalline H&uuml;llenlegierung MkI',
                     'resource_1'=>'2250',
                     'resource_2'=>'300',
                     'resource_3'=>'0',
@@ -579,13 +579,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Diese Schifflegierungen werden über die konventionelle Panzerungen gelegt und schützen verstärkt gegen Energiewaffen.',
+                    'description'=>'Diese Schifflegierungen werden &uuml;ber die konventionelle Panzerungen gelegt und sch&uuml;tzen verst&auml;rkt gegen Energiewaffen.',
                     'dev_info'=>'Nur gegen Energiewaffen',
             ), // Endof Component Kristalline Hüllenlegierung MkI
 
              // Component Kristalline Hüllenlegierung MkII
              4=>array(
-                    'name'=>'Kristalline Hüllenlegierung MkII',
+                    'name'=>'Kristalline H&uuml;llenlegierung MkII',
                     'resource_1'=>'3000',
                     'resource_2'=>'375',
                     'resource_3'=>'0',
@@ -624,13 +624,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Diese Schifflegierungen werden über die konventionelle Panzerungen gelegt und schützen verstärkt gegen Energiewaffen.',
+                    'description'=>'Diese Schifflegierungen werden &uuml;ber die konventionelle Panzerungen gelegt und sch&uuml;tzen verst&auml;rkt gegen Energiewaffen.',
                     'dev_info'=>'',
             ), // Endof Component Kristalline Hüllenlegierung MkII
 
              // Component Abwehr Geschütze
              5=>array(
-                    'name'=>'Abwehr Geschütze',
+                    'name'=>'Abwehr Gesch&uuml;tze',
                     'resource_1'=>'1725',
                     'resource_2'=>'300',
                     'resource_3'=>'0',
@@ -669,7 +669,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Diese variablen Geschütztürme verbessern die Verteidigung gegen Jäger und Raketen. Zusätzlich wird die Oberfläche der Hülle verstärkt.',
+                    'description'=>'Diese variablen Gesch&uuml;tzt&uuml;rme verbessern die Verteidigung gegen J&auml;ger und Raketen. Zus&auml;tzlich wird die Oberfl&auml;che der H&uuml;lle verst&auml;rkt.',
                     'dev_info'=>'',
             ), // Endof Component Abwehr Geschütze
 
@@ -721,7 +721,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Multiplex Scanner verbessern die Reaktion des Schiffes in Krisensituationen und erhöht die Sensorleistungen.',
+                    'description'=>'Multiplex Scanner verbessern die Reaktion des Schiffes in Krisensituationen und erh&ouml;ht die Sensorleistungen.',
                     'dev_info'=>'',
             ), // Endof Component Multiplex Scanner
 
@@ -766,7 +766,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Eine Sensorphalanx verbessert die Reaktion des Schiffes in Krisensituationen und erhöht die Sensorleistungen.',
+                    'description'=>'Eine Sensorphalanx verbessert die Reaktion des Schiffes in Krisensituationen und erh&ouml;ht die Sensorleistungen.',
                     'dev_info'=>'',
             ), // Endof Component Sensorphalanx
 
@@ -811,7 +811,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch die Sensor Matix werden alle Schiffe eines Kampfverbandes zentral gesteuert. Dabei verbinden sich die Computer sämtlicher Schiffe mit den Sensoren der Warships.',
+                    'description'=>'Durch die Sensor Matix werden alle Schiffe eines Kampfverbandes zentral gesteuert. Dabei verbinden sich die Computer s&auml;mtlicher Schiffe mit den Sensoren der Warships.',
                     'dev_info'=>'',
             ), // Endof Component Sensor Matrix Mk I
 
@@ -856,11 +856,11 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch die Sensor Matix werden alle Schiffe eines Kampfverbandes zentral gesteuert. Dabei verbinden sich die Computer sämtlicher Schiffe mit den Sensoren des Predators.',
+                    'description'=>'Durch die Sensor Matix werden alle Schiffe eines Kampfverbandes zentral gesteuert. Dabei verbinden sich die Computer s&auml;mtlicher Schiffe mit den Sensoren des Predators.',
                     'dev_info'=>'',
             ), // Endof Component Sensor Matrix Mk II
 
-      'name'=>'Kampfunterstützung',
+      'name'=>'Kampfunterst&uuml;tzung',
       'num'=>'4',
       ), // Endof Category Kampfunterstützung
 
@@ -908,7 +908,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Schildgeneratoren sind eine neuartige Technologie für die Kazon.<br>Die Baupläne stammen von gestrandeten Ferengi, nachdem die Kazon lange Zeit erfolglos versucht hatten, die Technologie der Föderation abzujagen.',
+                    'description'=>'Die Schildgeneratoren sind eine neuartige Technologie f&uuml;r die Kazon.<br>Die Baupl&auml;ne stammen von gestrandeten Ferengi, nachdem die Kazon lange Zeit erfolglos versucht hatten, die Technologie der F&ouml;deration abzujagen.',
                     'dev_info'=>'',
             ), // Endof Component Schildgenerator MK I
 
@@ -953,7 +953,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Schildgeneratoren sind eine neuartige Technologie für die Kazon.<br>Die Baupläne stammen von gestrandeten Ferengi, nachdem die Kazon lange Zeit erfolglos versucht hatten, die Technologie der Föderation abzujagen.',
+                    'description'=>'Die Schildgeneratoren sind eine neuartige Technologie f&uuml;r die Kazon.<br>Die Baupl&auml;ne stammen von gestrandeten Ferengi, nachdem die Kazon lange Zeit erfolglos versucht hatten, die Technologie der F&ouml;deration abzujagen.',
                     'dev_info'=>'',
             ), // Endof Component Schildgenerator MK II
 
@@ -998,7 +998,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Schildgeneratoren sind eine neuartige Technologie für die Kazon.<br>Die Baupläne stammen von gestrandeten Ferengi, nachdem die Kazon lange Zeit erfolglos versucht hatten, die Technologie der Föderation abzujagen.',
+                    'description'=>'Die Schildgeneratoren sind eine neuartige Technologie f&uuml;r die Kazon.<br>Die Baupl&auml;ne stammen von gestrandeten Ferengi, nachdem die Kazon lange Zeit erfolglos versucht hatten, die Technologie der F&ouml;deration abzujagen.',
                     'dev_info'=>'',
             ), // Endof Component Schildgenerator MK III
 
@@ -1043,7 +1043,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Schildgeneratoren sind eine neuartige Technologie für die Kazon.<br>Die Baupläne stammen von gestrandeten Ferengi, nachdem die Kazon lange Zeit erfolglos versucht hatten, die Technologie der Föderation abzujagen.',
+                    'description'=>'Die Schildgeneratoren sind eine neuartige Technologie f&uuml;r die Kazon.<br>Die Baupl&auml;ne stammen von gestrandeten Ferengi, nachdem die Kazon lange Zeit erfolglos versucht hatten, die Technologie der F&ouml;deration abzujagen.',
                     'dev_info'=>'',
             ), // Endof Component Schildgenerator MK IV
 
@@ -1088,7 +1088,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die regenerativen Schilde sind eine neuartige Technologie für die Kazon.<br>Die Baupläne stammen von gestrandeten Ferengi, nachdem die Kazon lange Zeit erfolglos versucht hatten, die Technologie der Föderation abzujagen.',
+                    'description'=>'Die regenerativen Schilde sind eine neuartige Technologie f&uuml;r die Kazon.<br>Die Baupl&auml;ne stammen von gestrandeten Ferengi, nachdem die Kazon lange Zeit erfolglos versucht hatten, die Technologie der F&ouml;deration abzujagen.',
                     'dev_info'=>'',
             ), // Endof Component Regenerative Schilde
 
@@ -1185,7 +1185,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Ein modernerer Computerkern verbessert allgemein die Reaktion, Wendigkeit und Bereitschaft des Schiffes. Zusätzlich wird durch diese Version die Waffeneffizenz erhöht.',
+                    'description'=>'Ein modernerer Computerkern verbessert allgemein die Reaktion, Wendigkeit und Bereitschaft des Schiffes. Zus&auml;tzlich wird durch diese Version die Waffeneffizenz erh&ouml;ht.',
                     'dev_info'=>'',
             ), // Endof Component Computerkern MK II
 
@@ -1230,7 +1230,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Ein modernerer Computerkern verbessert allgemein die Reaktion, Wendigkeit und Bereitschaft des Schiffes. Zusätzlich ermöglicht er eine effektivere Ausnutzung der Trägheitsdämpfer, wodurch die Wendigkeit drastisch erhöht wird.',
+                    'description'=>'Ein modernerer Computerkern verbessert allgemein die Reaktion, Wendigkeit und Bereitschaft des Schiffes. Zus&auml;tzlich erm&ouml;glicht er eine effektivere Ausnutzung der Tr&auml;gheitsd&auml;mpfer, wodurch die Wendigkeit drastisch erh&ouml;ht wird.',
                     'dev_info'=>'',
             ), // Endof Component Computerkern MK III
 
@@ -1372,7 +1372,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Antimaterie Antrieb wurde von den Kazon entwickelt, um sich schneller im Raum bewegen zu können und somit besser an Wasser und andere lebenswichtige Ressourcen zu kommen.',
+                    'description'=>'Der Antimaterie Antrieb wurde von den Kazon entwickelt, um sich schneller im Raum bewegen zu k&ouml;nnen und somit besser an Wasser und andere lebenswichtige Ressourcen zu kommen.',
                     'dev_info'=>'',
             ), // Endof Component Antimaterie Antrieb Mk I
 
@@ -1417,7 +1417,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Antimaterie Antrieb wurde von den Kazon entwickelt, um sich schneller im Raum bewegen zu können und somit besser an Wasser und andere lebenswichtige Ressourcen zu kommen.',
+                    'description'=>'Der Antimaterie Antrieb wurde von den Kazon entwickelt, um sich schneller im Raum bewegen zu k&ouml;nnen und somit besser an Wasser und andere lebenswichtige Ressourcen zu kommen.',
                     'dev_info'=>'',
             ), // Endof Component Antimaterie Antrieb Mk II
 
@@ -1462,7 +1462,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Antimaterie Antrieb wurde von den Kazon entwickelt, um sich schneller im Raum bewegen zu können und somit besser an Wasser und andere lebenswichtige Ressourcen zu kommen.',
+                    'description'=>'Der Antimaterie Antrieb wurde von den Kazon entwickelt, um sich schneller im Raum bewegen zu k&ouml;nnen und somit besser an Wasser und andere lebenswichtige Ressourcen zu kommen.',
                     'dev_info'=>'',
             ), // Endof Component Antimaterie Antrieb Mk III
 
@@ -1507,7 +1507,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Antimaterie Antrieb wurde von den Kazon entwickelt, um sich schneller im Raum bewegen zu können und somit besser an Wasser und andere lebenswichtige Ressourcen zu kommen.',
+                    'description'=>'Der Antimaterie Antrieb wurde von den Kazon entwickelt, um sich schneller im Raum bewegen zu k&ouml;nnen und somit besser an Wasser und andere lebenswichtige Ressourcen zu kommen.',
                     'dev_info'=>'',
             ), // Endof Component Antimaterie Antrieb Mk IV
 
@@ -1552,7 +1552,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Antimaterie Antrieb wurde von den Kazon entwickelt, um sich schneller im Raum bewegen zu können und somit besser an Wasser und andere lebenswichtige Ressourcen zu kommen.',
+                    'description'=>'Der Antimaterie Antrieb wurde von den Kazon entwickelt, um sich schneller im Raum bewegen zu k&ouml;nnen und somit besser an Wasser und andere lebenswichtige Ressourcen zu kommen.',
                     'dev_info'=>'',
             ), // Endof Component Antimaterie Antrieb Mk V
 
@@ -1604,7 +1604,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Dies ist ein Warpgenerator. Er liefert Energie für die Schiffe und ist relativ preiswert.',
+                    'description'=>'Dies ist ein Warpgenerator. Er liefert Energie f&uuml;r die Schiffe und ist relativ preiswert.',
                     'dev_info'=>'',
             ), // Endof Component Warpgenerator LM MK I
 
@@ -1649,7 +1649,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Dies ist eine Weiterentwicklung des Standard Warpgenerators. Er beschleunigt das Schiff um Warpfaktor 1 und hat einen höheren Energieausstoß.',
+                    'description'=>'Dies ist eine Weiterentwicklung des Standard Warpgenerators. Er beschleunigt das Schiff um Warpfaktor 1 und hat einen h&ouml;heren Energieaussto&szlig;.',
                     'dev_info'=>'',
             ), // Endof Component Warpgenerator LM MK II
 
@@ -1694,7 +1694,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Dies ist eine weitere Verbesserung im Bereich der Warpgeneratoren. Er liefert deutlich mehr Energie als die beiden Vorgängerversionen.',
+                    'description'=>'Dies ist eine weitere Verbesserung im Bereich der Warpgeneratoren. Er liefert deutlich mehr Energie als die beiden Vorg&auml;ngerversionen.',
                     'dev_info'=>'',
             ), // Endof Component Warpgenerator LM MK III
 
@@ -1739,7 +1739,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die vorletzte Stufe im Bereich der Warpgeneratoren. Sein Bonus ist die Erhöhung des Warpfaktors um 2.',
+                    'description'=>'Die vorletzte Stufe im Bereich der Warpgeneratoren. Sein Bonus ist die Erh&ouml;hung des Warpfaktors um 2.',
                     'dev_info'=>'',
             ), // Endof Component Warpgenerator LM MK IV
 
@@ -1784,7 +1784,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Dieser Warpgenerator setzt nur auf einen hohen Energieausstoß für weitere Zusatzsysteme und erhöht den Warpfaktor um 2.',
+                    'description'=>'Dieser Warpgenerator setzt nur auf einen hohen Energieaussto&szlig; f&uuml;r weitere Zusatzsysteme und erh&ouml;ht den Warpfaktor um 2.',
                     'dev_info'=>'',
             ), // Endof Component Warpgenerator LM MK V
 
@@ -1971,7 +1971,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Reperaturroboter verringern das benötigte Personal und erlauben es, noch mehr Kampfeinheiten auf den Schiffen zu stationieren.',
+                    'description'=>'Reperaturroboter verringern das ben&ouml;tigte Personal und erlauben es, noch mehr Kampfeinheiten auf den Schiffen zu stationieren.',
                     'dev_info'=>'',
             ), // Endof Component Reparatur Roboter Mk I
 
@@ -2016,7 +2016,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Reperaturroboter verringern das benötigte Personal und erlauben es, noch mehr Kampfeinheiten auf den Schiffen zu stationieren.',
+                    'description'=>'Reperaturroboter verringern das ben&ouml;tigte Personal und erlauben es, noch mehr Kampfeinheiten auf den Schiffen zu stationieren.',
                     'dev_info'=>'',
             ), // Endof Component Reparatur Roboter MK II
 
@@ -2061,7 +2061,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Reperaturroboter verringern das benötigte Personal und erlauben es, noch mehr Kampfeinheiten auf den Schiffen zu stationieren.',
+                    'description'=>'Reperaturroboter verringern das ben&ouml;tigte Personal und erlauben es, noch mehr Kampfeinheiten auf den Schiffen zu stationieren.',
                     'dev_info'=>'',
             ), // Endof Component Reparatur Roboter MK III
 
@@ -2241,11 +2241,11 @@ $ship_components=array(
                     'torso_10'=>'0',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der erweiterte Frachtraum ist die letzte Ausbaustufe zur Erhöhung der Truppenkapazität auf dem Warship.',
+                    'description'=>'Der erweiterte Frachtraum ist die letzte Ausbaustufe zur Erh&ouml;hung der Truppenkapazit&auml;t auf dem Warship.',
                     'dev_info'=>'',
             ), // Endof Component Erweiterter Frachtraum
 
-      'name'=>'Ladekapazitäten',
+      'name'=>'Ladekapazit&auml;ten',
       'num'=>'10',
       ), // Endof Category Ladekapazitäten
 
@@ -2293,7 +2293,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der  Tachyon Sensor ermöglicht es dem Predator, teilweise unsichtbar zu werden.',
+                    'description'=>'Der  Tachyon Sensor erm&ouml;glicht es dem Predator, teilweise unsichtbar zu werden.',
                     'dev_info'=>'',
             ), // Endof Component Tachyon Sensor
 
@@ -2383,7 +2383,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                                         'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Gamma Abstrahlung dieser Waffe entlädt die gegnerischen Schilde. Physikalischer Schaden wird in der Regel nicht verursacht.',
+                    'description'=>'Die Gamma Abstrahlung dieser Waffe entl&auml;dt die gegnerischen Schilde. Physikalischer Schaden wird in der Regel nicht verursacht.',
                     'dev_info'=>'',
             ), // Endof Component Shield Dissector
 

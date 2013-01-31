@@ -70,7 +70,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Der M/ARA Mark I Warpantrieb basiert auf Cochranes erstem entwickelten Warpreaktor, liefert Energie und erhöht die Grundgeschwindigkeit des Schiffes um den Warpfaktor 1.',
+                    'description'=>'Der M/ARA Mark I Warpantrieb basiert auf Cochranes erstem entwickelten Warpreaktor, liefert Energie und erh&ouml;ht die Grundgeschwindigkeit des Schiffes um den Warpfaktor 1.',
                     'dev_info'=>'',
             ), // Endof Component M/ARA Mark I
 
@@ -115,7 +115,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Der M/ARA Mark II Warpantrieb basiert auf Cochranes erstem entwickelten Warpreaktor, liefert Energie und erhöht die Grundgeschwindigkeit des Schiffes um den Warpfaktor 1.8.',
+                    'description'=>'Der M/ARA Mark II Warpantrieb basiert auf Cochranes erstem entwickelten Warpreaktor, liefert Energie und erh&ouml;ht die Grundgeschwindigkeit des Schiffes um den Warpfaktor 1.8.',
                     'dev_info'=>'',
             ), // Endof Component M/ARA Mark II
 
@@ -160,7 +160,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Der M/ARA Mark III Warpantrieb basiert auf Cochranes erstem entwickelten Warpreaktor, liefert Energie und erhöht die Grundgeschwindigkeit des Schiffes um den Warpfaktor 2.6.',
+                    'description'=>'Der M/ARA Mark III Warpantrieb basiert auf Cochranes erstem entwickelten Warpreaktor, liefert Energie und erh&ouml;ht die Grundgeschwindigkeit des Schiffes um den Warpfaktor 2.6.',
                     'dev_info'=>'',
             ), // Endof Component M/ARA Mark III
 
@@ -205,7 +205,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Der 1500-Puls-Cochrane-Warpkern ist der neueste Stand der Föderationstechnik, standardmäßig integriert in die Sovereign und Defiant Klasse.<br>Er hat einen beachtlichen Energieoutput und erhöht den Warpfaktor um 3.4.',
+                    'description'=>'Der 1500-Puls-Cochrane-Warpkern ist der neueste Stand der F&ouml;derationstechnik, standardm&auml;&szlig;ig integriert in die Sovereign und Defiant Klasse.<br>Er hat einen beachtlichen Energieoutput und erh&ouml;ht den Warpfaktor um 3.4.',
                     'dev_info'=>'',
             ), // Endof Component 1500-P-C-Warpkern
 
@@ -257,7 +257,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Bussardkollektoren wurden 1960 von Robert W. Bussard entwickelt, um mit Raumschiffen interstellare Materie einfangen zu können.<br>Durch diese zusätzliche Energie sowie fortschrittlichere Warpspulen erhöht diese Technologie die max. Warpgeschwindigkeit des Schiffes.',
+                    'description'=>'Bussardkollektoren wurden 1960 von Robert W. Bussard entwickelt, um mit Raumschiffen interstellare Materie einfangen zu k&ouml;nnen.<br>Durch diese zus&auml;tzliche Energie sowie fortschrittlichere Warpspulen erh&ouml;ht diese Technologie die max. Warpgeschwindigkeit des Schiffes.',
                     'dev_info'=>'',
             ), // Endof Component Bussardkollektoren Typ I
 
@@ -302,7 +302,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Bussardkollektoren wurden 1960 von Robert W. Bussard entwickelt, um mit Raumschiffen interstellare Materie einfangen zu können.<br>Durch diese zusätzliche Energie sowie fortschrittlichere Warpspulen erhöht diese Technologie die max. Warpgeschwindigkeit des Schiffes.',
+                    'description'=>'Bussardkollektoren wurden 1960 von Robert W. Bussard entwickelt, um mit Raumschiffen interstellare Materie einfangen zu k&ouml;nnen.<br>Durch diese zus&auml;tzliche Energie sowie fortschrittlichere Warpspulen erh&ouml;ht diese Technologie die max. Warpgeschwindigkeit des Schiffes.',
                     'dev_info'=>'',
             ), // Endof Component Bussardkollektoren Typ II
 
@@ -347,7 +347,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Bussardkollektoren wurden 1960 von Robert W. Bussard entwickelt, um mit Raumschiffen interstellare Materie einfangen zu können.<br>Durch diese zusätzliche Energie sowie fortschrittlichere Warpspulen erhöht diese Technologie die max. Warpgeschwindigkeit des Schiffes.',
+                    'description'=>'Bussardkollektoren wurden 1960 von Robert W. Bussard entwickelt, um mit Raumschiffen interstellare Materie einfangen zu k&ouml;nnen.<br>Durch diese zus&auml;tzliche Energie sowie fortschrittlichere Warpspulen erh&ouml;ht diese Technologie die max. Warpgeschwindigkeit des Schiffes.',
                     'dev_info'=>'',
             ), // Endof Component Bussardkollektoren Typ III
 
@@ -392,7 +392,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Bussardkollektoren wurden 1960 von Robert W. Bussard entwickelt, um mit Raumschiffen interstellare Materie einfangen zu können.<br>Durch diese zusätzliche Energie sowie fortschrittlichere Warpspulen erhöht diese Technologie die max. Warpgeschwindigkeit des Schiffes.',
+                    'description'=>'Bussardkollektoren wurden 1960 von Robert W. Bussard entwickelt, um mit Raumschiffen interstellare Materie einfangen zu k&ouml;nnen.<br>Durch diese zus&auml;tzliche Energie sowie fortschrittlichere Warpspulen erh&ouml;ht diese Technologie die max. Warpgeschwindigkeit des Schiffes.',
                     'dev_info'=>'',
             ), // Endof Component Bussardkollektoren Typ IV
 
@@ -437,7 +437,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Bussardkollektoren wurden 1960 von Robert W. Bussard entwickelt, um mit Raumschiffen interstellare Materie einfangen zu können.<br>Durch diese zusätzliche Energie sowie fortschrittlichere Warpspulen erhöht diese Technologie die max. Warpgeschwindigkeit des Schiffes.',
+                    'description'=>'Bussardkollektoren wurden 1960 von Robert W. Bussard entwickelt, um mit Raumschiffen interstellare Materie einfangen zu k&ouml;nnen.<br>Durch diese zus&auml;tzliche Energie sowie fortschrittlichere Warpspulen erh&ouml;ht diese Technologie die max. Warpgeschwindigkeit des Schiffes.',
                     'dev_info'=>'',
             ), // Endof Component Bussardkollektoren Typ V
 
@@ -487,9 +487,9 @@ $ship_components=array(
                     'torso_8'=>'0',
                     'torso_9'=>'0',
                     'torso_10'=>'0',
-				    'torso_11'=>'0',
+                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Kurzlebige subatomare Partikel (schneller Nadion Effekt) können in einem supraleitendem Kristall (einige Klassen) enorme nukleare Kräfte freisetzen. Es wird nun die Energie des EPS Systems eines Schiffes genutzt um diese Effekt zu erzeugen. Der Emitterkristall eines Phasers beruht auf diesem Prinzip. Die Energie aus dem EPS System wird über Steuerleitungen zur Vorbrennkammer geleitet. Dort wird ein pulsierender Strahl erzeugt, welcher nun zum Emitterkristall gelangt und dort den schnellen Nadion Effekt auslöst. Der Strahl verläßt nun den Emitterkristall und passiert die Leiteinrichtung. Danach verläßt er das Schiff und erreicht sein Ziel.',
+                    'description'=>'Kurzlebige subatomare Partikel (schneller Nadion Effekt) k&ouml;nnen in einem supraleitendem Kristall (einige Klassen) enorme nukleare Kr&auml;fte freisetzen. Es wird nun die Energie des EPS Systems eines Schiffes genutzt um diese Effekt zu erzeugen. Der Emitterkristall eines Phasers beruht auf diesem Prinzip. Die Energie aus dem EPS System wird &uuml;ber Steuerleitungen zur Vorbrennkammer geleitet. Dort wird ein pulsierender Strahl erzeugt, welcher nun zum Emitterkristall gelangt und dort den schnellen Nadion Effekt ausl&ouml;st. Der Strahl verl&auml;&szlig;t nun den Emitterkristall und passiert die Leiteinrichtung. Danach verl&auml;&szlig;t er das Schiff und erreicht sein Ziel.',
                     'dev_info'=>'',
             ), // Endof Component Phaserbank Typ-III
 
@@ -534,7 +534,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 				    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Kurzlebige subatomare Partikel (schneller Nadion Effekt) können in einem supraleitendem Kristall (einige Klassen) enorme nukleare Kräfte freisetzen. Es wird nun die Energie des EPS Systems eines Schiffes genutzt um diese Effekt zu erzeugen. Der Emitterkristall eines Phasers beruht auf diesem Prinzip. Die Energie aus dem EPS System wird über Steuerleitungen zur Vorbrennkammer geleitet. Dort wird ein pulsierender Strahl erzeugt, welcher nun zum Emitterkristall gelangt und dort den schnellen Nadion Effekt auslöst. Der Strahl verläßt nun den Emitterkristall und passiert die Leiteinrichtung. Danach verläßt er das Schiff und erreicht sein Ziel.',
+                    'description'=>'Kurzlebige subatomare Partikel (schneller Nadion Effekt) k&ouml;nnen in einem supraleitendem Kristall (einige Klassen) enorme nukleare Kr&auml;fte freisetzen. Es wird nun die Energie des EPS Systems eines Schiffes genutzt um diese Effekt zu erzeugen. Der Emitterkristall eines Phasers beruht auf diesem Prinzip. Die Energie aus dem EPS System wird &uuml;ber Steuerleitungen zur Vorbrennkammer geleitet. Dort wird ein pulsierender Strahl erzeugt, welcher nun zum Emitterkristall gelangt und dort den schnellen Nadion Effekt ausl&ouml;st. Der Strahl verl&auml;&szlig;t nun den Emitterkristall und passiert die Leiteinrichtung. Danach verl&auml;&szlig;t er das Schiff und erreicht sein Ziel.',
                     'dev_info'=>'',
             ), // Endof Component Phaserbank Typ-IV
 
@@ -579,7 +579,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Kurzlebige subatomare Partikel (schneller Nadion Effekt) können in einem supraleitendem Kristall (einige Klassen) enorme nukleare Kräfte freisetzen. Es wird nun die Energie des EPS Systems eines Schiffes genutzt um diese Effekt zu erzeugen. Der Emitterkristall eines Phasers beruht auf diesem Prinzip. Die Energie aus dem EPS System wird über Steuerleitungen zur Vorbrennkammer geleitet. Dort wird ein pulsierender Strahl erzeugt, welcher nun zum Emitterkristall gelangt und dort den schnellen Nadion Effekt auslöst. Der Strahl verläßt nun den Emitterkristall und passiert die Leiteinrichtung. Danach verläßt er das Schiff und erreicht sein Ziel.',
+					'description'=>'Kurzlebige subatomare Partikel (schneller Nadion Effekt) k&ouml;nnen in einem supraleitendem Kristall (einige Klassen) enorme nukleare Kr&auml;fte freisetzen. Es wird nun die Energie des EPS Systems eines Schiffes genutzt um diese Effekt zu erzeugen. Der Emitterkristall eines Phasers beruht auf diesem Prinzip. Die Energie aus dem EPS System wird &uuml;ber Steuerleitungen zur Vorbrennkammer geleitet. Dort wird ein pulsierender Strahl erzeugt, welcher nun zum Emitterkristall gelangt und dort den schnellen Nadion Effekt ausl&ouml;st. Der Strahl verl&auml;&szlig;t nun den Emitterkristall und passiert die Leiteinrichtung. Danach verl&auml;&szlig;t er das Schiff und erreicht sein Ziel.',
                     'dev_info'=>'',
             ), // Endof Component Phaserbank Typ-V
 
@@ -624,7 +624,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Kurzlebige subatomare Partikel (schneller Nadion Effekt) können in einem supraleitendem Kristall (einige Klassen) enorme nukleare Kräfte freisetzen. Es wird nun die Energie des EPS Systems eines Schiffes genutzt um diese Effekt zu erzeugen. Der Emitterkristall eines Phasers beruht auf diesem Prinzip. Die Energie aus dem EPS System wird über Steuerleitungen zur Vorbrennkammer geleitet. Dort wird ein pulsierender Strahl erzeugt, welcher nun zum Emitterkristall gelangt und dort den schnellen Nadion Effekt auslöst. Der Strahl verläßt nun den Emitterkristall und passiert die Leiteinrichtung. Danach verläßt er das Schiff und erreicht sein Ziel.',
+                    'description'=>'Kurzlebige subatomare Partikel (schneller Nadion Effekt) k&ouml;nnen in einem supraleitendem Kristall (einige Klassen) enorme nukleare Kr&auml;fte freisetzen. Es wird nun die Energie des EPS Systems eines Schiffes genutzt um diese Effekt zu erzeugen. Der Emitterkristall eines Phasers beruht auf diesem Prinzip. Die Energie aus dem EPS System wird &uuml;ber Steuerleitungen zur Vorbrennkammer geleitet. Dort wird ein pulsierender Strahl erzeugt, welcher nun zum Emitterkristall gelangt und dort den schnellen Nadion Effekt ausl&ouml;st. Der Strahl verl&auml;&szlig;t nun den Emitterkristall und passiert die Leiteinrichtung. Danach verl&auml;&szlig;t er das Schiff und erreicht sein Ziel.',
                     'dev_info'=>'',
             ), // Endof Component Phaserbank Typ-X
 
@@ -669,7 +669,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Kurzlebige subatomare Partikel (schneller Nadion Effekt) können in einem supraleitendem Kristall (einige Klassen) enorme nukleare Kräfte freisetzen. Es wird nun die Energie des EPS Systems eines Schiffes genutzt um diese Effekt zu erzeugen. Der Emitterkristall eines Phasers beruht auf diesem Prinzip. Die Energie aus dem EPS System wird über Steuerleitungen zur Vorbrennkammer geleitet. Dort wird ein pulsierender Strahl erzeugt, welcher nun zum Emitterkristall gelangt und dort den schnellen Nadion Effekt auslöst. Der Strahl verläßt nun den Emitterkristall und passiert die Leiteinrichtung. Danach verläßt er das Schiff und erreicht sein Ziel.',
+                    'description'=>'Kurzlebige subatomare Partikel (schneller Nadion Effekt) k&ouml;nnen in einem supraleitendem Kristall (einige Klassen) enorme nukleare Kr&auml;fte freisetzen. Es wird nun die Energie des EPS Systems eines Schiffes genutzt um diese Effekt zu erzeugen. Der Emitterkristall eines Phasers beruht auf diesem Prinzip. Die Energie aus dem EPS System wird &uuml;ber Steuerleitungen zur Vorbrennkammer geleitet. Dort wird ein pulsierender Strahl erzeugt, welcher nun zum Emitterkristall gelangt und dort den schnellen Nadion Effekt ausl&ouml;st. Der Strahl verl&auml;&szlig;t nun den Emitterkristall und passiert die Leiteinrichtung. Danach verl&auml;&szlig;t er das Schiff und erreicht sein Ziel.',
                     'dev_info'=>'',
             ), // Endof Component Phaserbank Typ-XI
 
@@ -714,7 +714,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Kurzlebige subatomare Partikel (schneller Nadion Effekt) können in einem supraleitendem Kristall (einige Klassen) enorme nukleare Kräfte freisetzen. Es wird nun die Energie des EPS Systems eines Schiffes genutzt um diese Effekt zu erzeugen. Der Emitterkristall eines Phasers beruht auf diesem Prinzip. Die Energie aus dem EPS System wird über Steuerleitungen zur Vorbrennkammer geleitet. Dort wird ein pulsierender Strahl erzeugt, welcher nun zum Emitterkristall gelangt und dort den schnellen Nadion Effekt auslöst. Der Strahl verläßt nun den Emitterkristall und passiert die Leiteinrichtung. Danach verläßt er das Schiff und erreicht sein Ziel.',
+                    'description'=>'Kurzlebige subatomare Partikel (schneller Nadion Effekt) k&ouml;nnen in einem supraleitendem Kristall (einige Klassen) enorme nukleare Kr&auml;fte freisetzen. Es wird nun die Energie des EPS Systems eines Schiffes genutzt um diese Effekt zu erzeugen. Der Emitterkristall eines Phasers beruht auf diesem Prinzip. Die Energie aus dem EPS System wird &uuml;ber Steuerleitungen zur Vorbrennkammer geleitet. Dort wird ein pulsierender Strahl erzeugt, welcher nun zum Emitterkristall gelangt und dort den schnellen Nadion Effekt ausl&ouml;st. Der Strahl verl&auml;&szlig;t nun den Emitterkristall und passiert die Leiteinrichtung. Danach verl&auml;&szlig;t er das Schiff und erreicht sein Ziel.',
                     'dev_info'=>'',
             ), // Endof Component Phaserbank Typ-XII
 
@@ -759,7 +759,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Diese Phaser arbeiten ähnlich wie ein Disruptor. Die Energie wird in einem Kurzspeicher gebündelt und dann abgegeben. Mit der direkten Zufuhr von Plasma wird die Wirkung verstärkt. Die Verstärkung verbraucht enorm viel Plasmaenergie und kann zu einer Überlastung des EPS Systems führen.',
+					'description'=>'Diese Phaser arbeiten &auml;hnlich wie ein Disruptor. Die Energie wird in einem Kurzspeicher geb&uuml;ndelt und dann abgegeben. Mit der direkten Zufuhr von Plasma wird die Wirkung verst&auml;rkt. Die Verst&auml;rkung verbraucht enorm viel Plasmaenergie und kann zu einer &uuml;berlastung des EPS Systems f&uuml;hren.',
                     'dev_info'=>'',
             ), // Endof Component Impulsphaserkanone
 
@@ -811,7 +811,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Photonentorpedos sind seit dem frühen 23. Jahrhundert auf Sternenflottenschiffen im Einsatz.<br>Sie sind unabhängig vom Schiff und haben einen eigenen Antrieb sowie Zielleitsystem. Ein Vorteil ist, dass sie auch bei Überlichtgeschwindigkkeit eingesetzt werden können.',
+					'description'=>'Photonentorpedos sind seit dem fr&uuml;hen 23. Jahrhundert auf Sternenflottenschiffen im Einsatz.<br>Sie sind unabh&auml;ngig vom Schiff und haben einen eigenen Antrieb sowie Zielleitsystem. Ein Vorteil ist, dass sie auch bei &uuml;berlichtgeschwindigkkeit eingesetzt werden k&ouml;nnen.',
                     'dev_info'=>'',
             ), // Endof Component Photonentorpedowerfer
 
@@ -856,7 +856,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'0',
-                    'description'=>'Photonentorpedos sind seit dem frühen 23. Jahrhundert auf Sternenflottenschiffen im Einsatz.<br>Sie sind unabhängig vom Schiff und haben einen eigenen Antrieb sowie Zielleitsystem. Ein Vorteil ist, dass sie auch bei Überlichtgeschwindigkkeit eingesetzt werden können.',
+                    'description'=>'Photonentorpedos sind seit dem fr&uuml;hen 23. Jahrhundert auf Sternenflottenschiffen im Einsatz.<br>Sie sind unabh&auml;ngig vom Schiff und haben einen eigenen Antrieb sowie Zielleitsystem. Ein Vorteil ist, dass sie auch bei &uuml;berlichtgeschwindigkkeit eingesetzt werden k&ouml;nnen.',
                     'dev_info'=>'',
             ), // Endof Component Photonentorpedowerfer II
 
@@ -901,7 +901,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'In Quantum Torpedos werden Quantumfillamente im Sprengkopf verwendet. Interagieren diese Fillamente miteinander, so wird enorm viel Energie freigesetzt. Quantumtorpedos besitzen ein anderes Gehäuse sowie Gehäuseform als Photonentorpedos. Diese Torpedos erfordern eine spezielle Startvorrichtung, wobei auf modernen Schiffen universelle Startrampen verwendet werden, mit denen auch Photonentorpedos abgefeuert werden können.',
+                    'description'=>'In Quantum Torpedos werden Quantumfillamente im Sprengkopf verwendet. Interagieren diese Fillamente miteinander, so wird enorm viel Energie freigesetzt. Quantumtorpedos besitzen ein anderes Geh&auml;use sowie Geh&auml;useform als Photonentorpedos. Diese Torpedos erfordern eine spezielle Startvorrichtung, wobei auf modernen Schiffen universelle Startrampen verwendet werden, mit denen auch Photonentorpedos abgefeuert werden k&ouml;nnen.',
                     'dev_info'=>'',
             ), // Endof Component Quantentorpedowerfer M-X
 
@@ -946,7 +946,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'In Quantum Torpedos werden Quantumfillamente im Sprengkopf verwendet. Interagieren diese Fillamente miteinander, so wird enorm viel Energie freigesetzt. Quantumtorpedos besitzen ein anderes Gehäuse sowie Gehäuseform als Photonentorpedos. Diese Torpedos erfordern eine spezielle Startvorrichtung, wobei auf modernen Schiffen universelle Startrampen verwendet werden, mit denen auch Photonentorpedos abgefeuert werden können.',
+                    'description'=>'In Quantum Torpedos werden Quantumfillamente im Sprengkopf verwendet. Interagieren diese Fillamente miteinander, so wird enorm viel Energie freigesetzt. Quantumtorpedos besitzen ein anderes Geh&auml;use sowie Geh&auml;useform als Photonentorpedos. Diese Torpedos erfordern eine spezielle Startvorrichtung, wobei auf modernen Schiffen universelle Startrampen verwendet werden, mit denen auch Photonentorpedos abgefeuert werden k&ouml;nnen.',
                     'dev_info'=>'',
             ), // Endof Component Quantentorpedowerfer M-XI
 
@@ -991,7 +991,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'In Quantum Torpedos werden Quantumfillamente im Sprengkopf verwendet. Interagieren diese Fillamente miteinander, so wird enorm viel Energie freigesetzt. Quantumtorpedos besitzen ein anderes Gehäuse sowie Gehäuseform als Photonentorpedos. Diese Torpedos erfordern eine spezielle Startvorrichtung, wobei auf modernen Schiffen universelle Startrampen verwendet werden, mit denen auch Photonentorpedos abgefeuert werden können.',
+                    'description'=>'In Quantum Torpedos werden Quantumfillamente im Sprengkopf verwendet. Interagieren diese Fillamente miteinander, so wird enorm viel Energie freigesetzt. Quantumtorpedos besitzen ein anderes Geh&auml;use sowie Geh&auml;useform als Photonentorpedos. Diese Torpedos erfordern eine spezielle Startvorrichtung, wobei auf modernen Schiffen universelle Startrampen verwendet werden, mit denen auch Photonentorpedos abgefeuert werden k&ouml;nnen.',
                     'dev_info'=>'',
             ), // Endof Component Quantentorpedowerfer M-XII
 
@@ -1043,13 +1043,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Regenerative Schildgitter sind eine für relativ schwache Schiffe entwickelte Technologie, durch welche die Schildintegrität bei einem Ausfall schneller und effizienter wieder hergestellt werden kann.',
+					'description'=>'Regenerative Schildgitter sind eine f&uuml;r relativ schwache Schiffe entwickelte Technologie, durch welche die Schildintegrit&auml;t bei einem Ausfall schneller und effizienter wieder hergestellt werden kann.',
                     'dev_info'=>'',
             ), // Endof Component Regenerative Schildgitter
 
              // Component Bioneurale Schilde
              1=>array(
-                    'name'=>'Verstärkte Schilde',
+                    'name'=>'Verst&auml;rkte Schilde',
                     'resource_1'=>'1820',
                     'resource_2'=>'910',
                     'resource_3'=>'728',
@@ -1088,7 +1088,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'0',
-					'description'=>'Die verstärkten Schilde wurden notwendig, als die normale Schildleistung nicht mehr ausreichte.',
+					'description'=>'Die verst&auml;rkten Schilde wurden notwendig, als die normale Schildleistung nicht mehr ausreichte.',
                     'dev_info'=>'',
             ), // Endof Component Bioneurale Schilde
 
@@ -1133,13 +1133,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Multiphasenschilde sind eine Weiterentwicklung im Vergleich zu den normalen Schilden, da durch spezielle Technologien mehrphasige Kraftfelder um das Schiff errichtet werden können, welche auch starkem Beschuss eine Weile standhalten.',
+                    'description'=>'Multiphasenschilde sind eine Weiterentwicklung im Vergleich zu den normalen Schilden, da durch spezielle Technologien mehrphasige Kraftfelder um das Schiff errichtet werden k&ouml;nnen, welche auch starkem Beschuss eine Weile standhalten.',
                     'dev_info'=>'',
             ), // Endof Component Multiphasenschilde
 
              // Component Verstärkte Hüllenpanzerung
              3=>array(
-                    'name'=>'Verstärkte Hüllenpanzerung',
+                    'name'=>'Verst&auml;rkte H&uuml;llenpanzerung',
                     'resource_1'=>'2040',
                     'resource_2'=>'1020',
                     'resource_3'=>'816',
@@ -1178,13 +1178,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Durch eine Verstärkte Hüllenpanzerung, wie sie auch auf Schiffen der Kreuzer-Klasse zum Einsatz kommt, werden Energiestöße besser absorbiert.',
+                    'description'=>'Durch eine Verst&auml;rkte H&uuml;llenpanzerung, wie sie auch auf Schiffen der Kreuzer-Klasse zum Einsatz kommt, werden Energiest&ouml;&szlig;e besser absorbiert.',
                     'dev_info'=>'',
             ), // Endof Component Verstärkte Hüllenpanzerung
 
              // Component Absorbierende Hüllenpanzerung
              4=>array(
-                    'name'=>'Absorbierende Hüllenpanzerung',
+                    'name'=>'Absorbierende H&uuml;llenpanzerung',
                     'resource_1'=>'3050',
                     'resource_2'=>'1525',
                     'resource_3'=>'1220',
@@ -1223,13 +1223,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Diese Hüllenpanzerung absorbiert das Waffenfeuer der feindlichen Schiffe und wandelt es in Energie um, wodurch sein eigener Energiebedarf gedeckt ist',
+                    'description'=>'Diese H&uuml;llenpanzerung absorbiert das Waffenfeuer der feindlichen Schiffe und wandelt es in Energie um, wodurch sein eigener Energiebedarf gedeckt ist',
                     'dev_info'=>'',
             ), // Endof Component Absorbierende Hüllenpanzerung
 
              // Component Hüllenableitpanzerung
              5=>array(
-                    'name'=>'Hüllenableitpanzerung',
+                    'name'=>'H&uuml;llenableitpanzerung',
                     'resource_1'=>'4000',
                     'resource_2'=>'2000',
                     'resource_3'=>'1600',
@@ -1268,7 +1268,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Die Hüllenableitpanzerung ist eine Schildserie, welche durch eine hohe Absorbationsfähigkeit aber auch einen hohen Entwicklungspreis für die Schildemitter hervorsticht.',
+                    'description'=>'Die H&uuml;llenableitpanzerung ist eine Schildserie, welche durch eine hohe Absorbationsf&auml;higkeit aber auch einen hohen Entwicklungspreis f&uuml;r die Schildemitter hervorsticht.',
                     'dev_info'=>'',
             ), // Endof Component Hüllenableitpanzerung
 
@@ -1320,7 +1320,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'LCARS (Library Computer Access and Retrieval System) ist die Benutzeroberfläche bzw. das Interface mit dem die Computer der Föderation ausgestattet sind.',
+                    'description'=>'LCARS (Library Computer Access and Retrieval System) ist die Benutzeroberfl&auml;che bzw. das Interface mit dem die Computer der F&ouml;deration ausgestattet sind.',
                     'dev_info'=>'',
             ), // Endof Component LCARS Grundsystem
 
@@ -1365,7 +1365,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'LCARS (Library Computer Access and Retrieval System) ist die Benutzeroberfläche bzw. das Interface mit dem die Computer der Föderation ausgestattet sind.',
+                    'description'=>'LCARS (Library Computer Access and Retrieval System) ist die Benutzeroberfl&auml;che bzw. das Interface mit dem die Computer der F&ouml;deration ausgestattet sind.',
                     'dev_info'=>'',
             ), // Endof Component LCARS 2.0
 
@@ -1410,7 +1410,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'LCARS (Library Computer Access and Retrieval System) ist die Benutzeroberfläche bzw. das Interface mit dem die Computer der Föderation ausgestattet sind.',
+                    'description'=>'LCARS (Library Computer Access and Retrieval System) ist die Benutzeroberfl&auml;che bzw. das Interface mit dem die Computer der F&ouml;deration ausgestattet sind.',
                     'dev_info'=>'',
             ), // Endof Component LCARS 2.5
 
@@ -1455,7 +1455,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'LCARS (Library Computer Access and Retrieval System) ist die Benutzeroberfläche bzw. das Interface mit dem die Computer der Föderation ausgestattet sind.',
+                    'description'=>'LCARS (Library Computer Access and Retrieval System) ist die Benutzeroberfl&auml;che bzw. das Interface mit dem die Computer der F&ouml;deration ausgestattet sind.',
                     'dev_info'=>'',
             ), // Endof Component LCARS 2.5 Rev.2
 
@@ -1500,7 +1500,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'LCARS (Library Computer Access and Retrieval System) ist die Benutzeroberfläche bzw. das Interface mit dem die Computer der Föderation ausgestattet sind.',
+                    'description'=>'LCARS (Library Computer Access and Retrieval System) ist die Benutzeroberfl&auml;che bzw. das Interface mit dem die Computer der F&ouml;deration ausgestattet sind.',
                     'dev_info'=>'',
             ), // Endof Component LCARS 3.0
 
@@ -1545,7 +1545,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'LCARS (Library Computer Access and Retrieval System) ist die Benutzeroberfläche bzw. das Interface mit dem die Computer der Föderation ausgestattet sind.',
+                    'description'=>'LCARS (Library Computer Access and Retrieval System) ist die Benutzeroberfl&auml;che bzw. das Interface mit dem die Computer der F&ouml;deration ausgestattet sind.',
                     'dev_info'=>'',
             ), // Endof Component LCARS 3.0 (20 MegaQuads/sec)
 
@@ -1597,7 +1597,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Verbesserte Umweltsysteme sorgen für eine schnellere Reaktion in Notfällen und steigern die Erfahrungswerte der Crew.',
+                    'description'=>'Verbesserte Umweltsysteme sorgen f&uuml;r eine schnellere Reaktion in Notf&auml;llen und steigern die Erfahrungswerte der Crew.',
                     'dev_info'=>'',
             ), // Endof Component Umweltsysteme
 
@@ -1642,7 +1642,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'0',
-                    'description'=>'Autom. Ventilationssystem sorgen für eine schnellere Reaktion in Notfällen, erhöhen die Bereitschaft und steigern die Erfahrungswerte der Crew.',
+                    'description'=>'Autom. Ventilationssystem sorgen f&uuml;r eine schnellere Reaktion in Notf&auml;llen, erh&ouml;hen die Bereitschaft und steigern die Erfahrungswerte der Crew.',
                     'dev_info'=>'',
             ), // Endof Component Ventilationssystem
 
@@ -1687,7 +1687,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Eine erweiterte Krankenstation sorgt für eine schnellere Reaktion in Notfällen, erhöht die Bereitschaft und steigert die Erfahrungswerte der Crew.',
+                    'description'=>'Eine erweiterte Krankenstation sorgt f&uuml;r eine schnellere Reaktion in Notf&auml;llen, erh&ouml;ht die Bereitschaft und steigert die Erfahrungswerte der Crew.',
                     'dev_info'=>'',
             ), // Endof Component Erw. Krankenstation
 
@@ -1732,7 +1732,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Das medizinisch holografische Notfallprogramm (MHN) sorgt für eine schnellere Reaktion in Notfällen, erhöht die Bereitschaft und steigert die Erfahrungswerte der Crew.',
+                    'description'=>'Das medizinisch holografische Notfallprogramm (MHN) sorgt f&uuml;r eine schnellere Reaktion in Notf&auml;llen, erh&ouml;ht die Bereitschaft und steigert die Erfahrungswerte der Crew.',
                     'dev_info'=>'',
             ), // Endof Component MHN
 
@@ -1777,7 +1777,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Das medizinisch holografische Notfallprogramm (MHN II) sorgt für eine schnellere Reaktion in Notfällen, erhöht die Bereitschaft und steigert die Erfahrungswerte der Crew.',
+                    'description'=>'Das medizinisch holografische Notfallprogramm (MHN II) sorgt f&uuml;r eine schnellere Reaktion in Notf&auml;llen, erh&ouml;ht die Bereitschaft und steigert die Erfahrungswerte der Crew.',
                     'dev_info'=>'',
             ), // Endof Component MHN II
 
@@ -1829,7 +1829,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere I
 
@@ -1874,7 +1874,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere II
 
@@ -1919,7 +1919,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere III
 
@@ -1964,7 +1964,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere IV
 
@@ -2009,7 +2009,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere V
 
@@ -2054,7 +2054,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere VI
 
@@ -2099,7 +2099,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere VII
 
@@ -2144,7 +2144,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere VIII
 
@@ -2189,7 +2189,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere IX
 
@@ -2234,7 +2234,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Durch die Mannschaftsquartiere wird der Platz für Kampftruppen auf dem Schiff erweitert.',
+                    'description'=>'Durch die Mannschaftsquartiere wird der Platz f&uuml;r Kampftruppen auf dem Schiff erweitert.',
                     'dev_info'=>'',
             ), // Endof Component Mannschaftsquartiere X
 
@@ -2286,7 +2286,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Ein Hilfsdeflektor unterstützt nicht nur die Sensoren und die Raktionsgeschwindigkeit, sondern kann auch zum Ablenken von kleineren Objekten genutzt werden (z.B. Kometensplitter etc.).',
+                    'description'=>'Ein Hilfsdeflektor unterst&uuml;tzt nicht nur die Sensoren und die Raktionsgeschwindigkeit, sondern kann auch zum Ablenken von kleineren Objekten genutzt werden (z.B. Kometensplitter etc.).',
                     'dev_info'=>'',
             ), // Endof Component Hilfsdeflektor
 
@@ -2331,7 +2331,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Eine Sensorplattform erhöht die Abtastgeschwindigkeit des Sternenfeldes im Umfeld.',
+                    'description'=>'Eine Sensorplattform erh&ouml;ht die Abtastgeschwindigkeit des Sternenfeldes im Umfeld.',
                     'dev_info'=>'',
             ), // Endof Component Sensorplattform
 
@@ -2376,7 +2376,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Eine Sensorenphalanx erhöht die Abtastgeschwindigkeit des Sternenfeldes im Umfeld.',
+                    'description'=>'Eine Sensorenphalanx erh&ouml;ht die Abtastgeschwindigkeit des Sternenfeldes im Umfeld.',
                     'dev_info'=>'',
             ), // Endof Component Sensorenphalanx
 
@@ -2421,7 +2421,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Deep Space Sensoren erhöhen die Abtastgeschwindigkeit des Sternenfeldes im weiten Umfeld.',
+                    'description'=>'Deep Space Sensoren erh&ouml;hen die Abtastgeschwindigkeit des Sternenfeldes im weiten Umfeld.',
                     'dev_info'=>'',
             ), // Endof Component Deep Space Sensoren
 
@@ -2466,7 +2466,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Eine erweiterte Astrometrie verbessert die Aufschlüsselung von Sensordaten.',
+                    'description'=>'Eine erweiterte Astrometrie verbessert die Aufschl&uuml;sselung von Sensordaten.',
                     'dev_info'=>'',
             ), // Endof Component Erw. Astronomie
 
@@ -2511,7 +2511,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Die Stellare Astronomie verbessert die Sensorenauflösung enorm.',
+                    'description'=>'Die Stellare Astronomie verbessert die Sensorenaufl&ouml;sung enorm.',
                     'dev_info'=>'',
             ), // Endof Component Stellare Astronomie
 
@@ -2570,7 +2570,7 @@ $ship_components=array(
 
              // Component Regenerative Hüllenpanzerung
              1=>array(
-                    'name'=>'Regenerative Hüllenpanzerung',
+                    'name'=>'Regenerative H&uuml;llenpanzerung',
                     'resource_1'=>'1000',
                     'resource_2'=>'500',
                     'resource_3'=>'400',
@@ -2609,7 +2609,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Regenerative Hüllenpanzerungen können sich bei der Beschädigung selbst replizieren und so für eine Weile Hüllenbrüche bei Schildausfall verhindern.<br>Die selbstreplizierenden Elemente wurden erstmals in Form von Minen während des Dominionkrieges eingesetzt.',
+                    'description'=>'Regenerative H&uuml;llenpanzerungen k&ouml;nnen sich bei der Besch&auml;digung selbst replizieren und so f&uuml;r eine Weile H&uuml;llenbr&uuml;che bei Schildausfall verhindern.<br>Die selbstreplizierenden Elemente wurden erstmals in Form von Minen w&auml;hrend des Dominionkrieges eingesetzt.',
                     'dev_info'=>'',
             ), // Endof Component Regenerative Hüllenpanzerung
 
@@ -2654,7 +2654,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Das Zielverfolgungssystem dient Schiffen der Nebula Klasse ihre Zielerfassung drastisch zu erhöhen.',
+                    'description'=>'Das Zielverfolgungssystem dient Schiffen der Nebula Klasse ihre Zielerfassung drastisch zu erh&ouml;hen.',
                     'dev_info'=>'',
             ), // Endof Component Zielverfolgungssystem
 
@@ -2699,7 +2699,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Durch den Computer simulierte Angriffsmanöver und mögliche Konterchancen',
+                    'description'=>'Durch den Computer simulierte Angriffsman&ouml;ver und m&ouml;gliche Konterchancen',
                     'dev_info'=>'',
             ), // Endof Component Stufenangriffs Doktrien
 
@@ -2744,7 +2744,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Das M-X KI-Erfassungssytem stellt eine Verbesserung der Sensorenphalanx da und eine Optimierung der Zielpeilung',
+                    'description'=>'Das M-X KI-Erfassungssytem stellt eine Verbesserung der Sensorenphalanx da und eine Optimierung der Zielpeilung',
                     'dev_info'=>'',
             ), // Endof Component M-X KI- Erfassung
 
@@ -2789,7 +2789,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-					'description'=>'Verbesserung des Phaseroutput durch das Remodulieren der Phäserbänke, wodurch die feindlichen Schilde stärker beschädigt werden.',
+                    'description'=>'Verbesserung des Phaseroutput durch das Remodulieren der Ph&auml;serb&auml;nke, wodurch die feindlichen Schilde st&auml;rker besch&auml;digt werden.',
                     'dev_info'=>'',
             ), // Endof Component RemodulationsPhalanx
 
@@ -2834,7 +2834,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'1',
                     'torso_12'=>'1',
-                    'description'=>'Der Rapid Launcher, ist eine verbesserte Torpedoabschussvorrichtung die ständig einzelne Torpedos abfeuern kann ohne lange Ladesequenzen zu haben',
+                    'description'=>'Der Rapid Launcher, ist eine verbesserte Torpedoabschussvorrichtung die st&auml;ndig einzelne Torpedos abfeuern kann ohne lange Ladesequenzen zu haben',
                     'dev_info'=>'',
             ), // Endof Component Rapid-Launcher
             
@@ -2879,7 +2879,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Dieses Gerät ist das Ergebnis ein Austausch von Technologie zwischen der Föderation und die Romulan Stellar Empire geschah zu den Zeiten der Vergangenheit Kriege gegen die Dominion.',
+                    'description'=>'Dieses Ger&auml;t ist das Ergebnis ein Austausch von Technologie zwischen der F&ouml;deration und die Romulan Stellar Empire geschah zu den Zeiten der Vergangenheit Kriege gegen die Dominion.',
                     'dev_info'=>'',
             ), // Endof Component Rapid-Launcher
 

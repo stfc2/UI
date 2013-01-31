@@ -70,7 +70,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Level 1 Warpkern ist die kleinste Variante der Energieeinheiten er kann in jedes Schiff eingebaut werden. Der Warpkern Level 1 erhöht den Warpfaktor um 1.',
+                    'description'=>'Der Level 1 Warpkern ist die kleinste Variante der Energieeinheiten er kann in jedes Schiff eingebaut werden. Der Warpkern Level 1 erh&ouml;ht den Warpfaktor um 1.',
                     'dev_info'=>'',
             ), // Endof Component Level 1 Warpkern
 
@@ -115,7 +115,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Level 2 Warpkern ist eine weiterentwickelte Energiequelle, sie kann in jeden Schiffstyp eingebaut werden. Der Warpkern Level 2 erhöht den Warpfaktor um 1.',
+                    'description'=>'Der Level 2 Warpkern ist eine weiterentwickelte Energiequelle, sie kann in jeden Schiffstyp eingebaut werden. Der Warpkern Level 2 erh&ouml;ht den Warpfaktor um 1.',
                     'dev_info'=>'',
             ), // Endof Component Level 2 Warpkern
 
@@ -160,7 +160,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Level 3 Warpkern ist die mittlere Variante der Energieeinheiten er kann in fast jedes Schiff eingebaut werden. Der Warpkern Level 3 erhöht den Warpfaktor um 1. Er ist dem Militär vorbehalten.',
+                    'description'=>'Der Level 3 Warpkern ist die mittlere Variante der Energieeinheiten er kann in fast jedes Schiff eingebaut werden. Der Warpkern Level 3 erh&ouml;ht den Warpfaktor um 1. Er ist dem Milit&auml;r vorbehalten.',
                     'dev_info'=>'',
             ), // Endof Component Level 3 Warpkern
 
@@ -205,7 +205,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Dilithiumschmelze ist eine neue Technologie die nur auf größeren Schiffen angewandt werden kann. sie erhöht den Warpfaktor um 2.',
+                    'description'=>'Die Dilithiumschmelze ist eine neue Technologie die nur auf gr&ouml;&szlig;eren Schiffen angewandt werden kann. sie erh&ouml;ht den Warpfaktor um 2.',
                     'dev_info'=>'',
             ), // Endof Component Dilithiumschmelze I
 
@@ -353,7 +353,7 @@ $ship_components=array(
 
              // Component Gaußgondeln
              2=>array(
-                    'name'=>'Gaußgondeln',
+                    'name'=>'Gau&szlig;gondeln',
                     'resource_1'=>'4500',
                     'resource_2'=>'1200',
                     'resource_3'=>'600',
@@ -392,7 +392,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Gaußgondeln sind ein geheimer militärischer Antrieb. Er steht nur den Streitkräften zur Verfügung.',
+                    'description'=>'Die Gau&szlig;gondeln sind ein geheimer milit&auml;rischer Antrieb. Er steht nur den Streitkr&auml;ften zur Verf&uuml;gung.',
                     'dev_info'=>'',
             ), // Endof Component Gaußgondeln
 
@@ -437,7 +437,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der Phasenkomprimierer ist eine der modernsten Möglichkeiten, sich durch das Raum-Zeit-Kontinuum zu bewegen.',
+                    'description'=>'Der Phasenkomprimierer ist eine der modernsten M&ouml;glichkeiten, sich durch das Raum-Zeit-Kontinuum zu bewegen.',
                     'dev_info'=>'',
             ), // Endof Component Phasenkomprimierer
 
@@ -669,7 +669,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Impulspoleronkannone stellt die höchste Entwicklungsstufe der Polarontechnik dar.',
+                    'description'=>'Die Impulspoleronkannone stellt die h&ouml;chste Entwicklungsstufe der Polarontechnik dar.',
                     'dev_info'=>'',
             ), // Endof Component Impulspoleronkannone
 
@@ -714,7 +714,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der Impulspolarondisruptor ist die stärkste leichte Waffe, über die das Dominion verfügt.',
+                    'description'=>'Der Impulspolarondisruptor ist die st&auml;rkste leichte Waffe, &uuml;ber die das Dominion verf&uuml;gt.',
                     'dev_info'=>'',
             ), // Endof Component Impulspolarondisruptor
 
@@ -991,7 +991,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Breentorpedos sind eine mächtige Waffe, die das Dominion von den Breen im Austausch erhalten hat.',
+                    'description'=>'Breentorpedos sind eine m&auml;chtige Waffe, die das Dominion von den Breen im Austausch erhalten hat.',
                     'dev_info'=>'',
             ), // Endof Component Breentorpedos
 
@@ -1043,7 +1043,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der regenerative Schild ist eine sehr wirksame Erweiterung, die bereits früh zur Verfügung steht.',
+                    'description'=>'Der regenerative Schild ist eine sehr wirksame Erweiterung, die bereits fr&uuml;h zur Verf&uuml;gung steht.',
                     'dev_info'=>'',
             ), // Endof Component Regenerativer Schild
 
@@ -1088,7 +1088,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Das Phasenvariationsschild ist eine Kombination aus einer verbesserten Schildmatrix und der Nutzung der Phasendipolarität.',
+                    'description'=>'Das Phasenvariationsschild ist eine Kombination aus einer verbesserten Schildmatrix und der Nutzung der Phasendipolarit&auml;t.',
                     'dev_info'=>'',
             ), // Endof Component Phasenvariationsschild
 
@@ -1133,13 +1133,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Mehrphasenpanzerung ist eine Entwicklung, die mit Hilfe der Phasendipolarität eine Verschiebung der Raumstruktur zum Schutze des Schiffes erzeugt.',
+                    'description'=>'Die Mehrphasenpanzerung ist eine Entwicklung, die mit Hilfe der Phasendipolarit&auml;t eine Verschiebung der Raumstruktur zum Schutze des Schiffes erzeugt.',
                     'dev_info'=>'',
             ), // Endof Component Mehrphasenpanzerung
 
              // Component Neutrinoknotenverstärkung
              3=>array(
-                    'name'=>'Neutrinoknotenverstärkung',
+                    'name'=>'Neutrinoknotenverst&auml;rkung',
                     'resource_1'=>'6750',
                     'resource_2'=>'750',
                     'resource_3'=>'450',
@@ -1178,7 +1178,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Aufladung der Hülle führt zu einer Neuausrichtung der Neutrinostrukturen im Raum, wodutch die Hülle an Intigrität gewinnt.',
+                    'description'=>'Die Aufladung der H&uuml;lle f&uuml;hrt zu einer Neuausrichtung der Neutrinostrukturen im Raum, wodutch die H&uuml;lle an Intigrit&auml;t gewinnt.',
                     'dev_info'=>'',
             ), // Endof Component Neutrinoknotenverstärkung
 
@@ -1223,7 +1223,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die erste Creonspule wurde vor vielen Jahrzehnten auf dem toten Planteten Creon gefunden und von Wissenschaftlern des Dominion verbessert, um nun auf den größten Schlachtschiffen eingesetzt zu werden.',
+                    'description'=>'Die erste Creonspule wurde vor vielen Jahrzehnten auf dem toten Planteten Creon gefunden und von Wissenschaftlern des Dominion verbessert, um nun auf den gr&ouml;&szlig;ten Schlachtschiffen eingesetzt zu werden.',
                     'dev_info'=>'',
             ), // Endof Component Creonspule
 
@@ -1275,7 +1275,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Neuartige Siliciumprozessoren im AI-Core führen zu einer verbesserten Ausnutzung der vorhandenen Daten.',
+                    'description'=>'Neuartige Siliciumprozessoren im AI-Core f&uuml;hren zu einer verbesserten Ausnutzung der vorhandenen Daten.',
                     'dev_info'=>'',
             ), // Endof Component Siliciumprozessoren
 
@@ -1320,7 +1320,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Kopplung mehrerer vernetzter Chipsätze verbessert die Koordination der unterschiedlichen Interfaces.',
+                    'description'=>'Die Kopplung mehrerer vernetzter Chips&auml;tze verbessert die Koordination der unterschiedlichen Interfaces.',
                     'dev_info'=>'',
             ), // Endof Component Dualkopplung
 
@@ -1365,7 +1365,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Durch das Kubriksystem werden die Prozessoren so vernetzt, dass sie ihre Leistungsfähigkeit zu 100% entfalten können.',
+                    'description'=>'Durch das Kubriksystem werden die Prozessoren so vernetzt, dass sie ihre Leistungsf&auml;higkeit zu 100% entfalten k&ouml;nnen.',
                     'dev_info'=>'',
             ), // Endof Component Kubriksystem
 
@@ -1455,7 +1455,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der Feuerleitstand verbessert sowohl die allgemeine Koordination, als auch die Waffenleistung.<br>Diese 2. Revision ist zusätzlich noch mit den schweren Geschützen der Kreuzer gekoppelt.',
+                    'description'=>'Der Feuerleitstand verbessert sowohl die allgemeine Koordination, als auch die Waffenleistung.<br>Diese 2. Revision ist zus&auml;tzlich noch mit den schweren Gesch&uuml;tzen der Kreuzer gekoppelt.',
                     'dev_info'=>'',
             ), // Endof Component Leitstand II
 
@@ -1500,7 +1500,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Mit Hilfe der künstlich replizierten Gammateilchen wird eine biosynthetische CPU-Verknüpfung mit Responsezeiten von <1ns möglich.',
+                    'description'=>'Mit Hilfe der k&uuml;nstlich replizierten Gammateilchen wird eine biosynthetische CPU-Verkn&uuml;pfung mit Responsezeiten von <1ns m&ouml;glich.',
                     'dev_info'=>'',
             ), // Endof Component Gammarechner
 
@@ -1513,7 +1513,7 @@ $ship_components=array(
         6=>array(
              // Component Training für Zivilisten
              0=>array(
-                    'name'=>'Training für Zivilisten',
+                    'name'=>'Training f&uuml;r Zivilisten',
                     'resource_1'=>'150',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -1552,7 +1552,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Reserviert für die Schulung von Personal für Schiffe Zivilisten.',
+                    'description'=>'Reserviert f&uuml;r die Schulung von Personal f&uuml;r Schiffe Zivilisten.',
                     'dev_info'=>'',
             ), // Endof Component Kampfzentrum I
 
@@ -1597,7 +1597,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Grundausbildung, geeignet für Schiffe der Flotte lesen.',
+                    'description'=>'Grundausbildung, geeignet f&uuml;r Schiffe der Flotte lesen.',
                     'dev_info'=>'',
             ), // Endof Component Die Ausbildung Base I
 
@@ -1642,7 +1642,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Grundausbildung, geeignet für Zwischen-Schiffe der Flotte.',
+                    'description'=>'Grundausbildung, geeignet f&uuml;r Zwischen-Schiffe der Flotte.',
                     'dev_info'=>'',
             ), // Endof Component Die Ausbildung Base II
 
@@ -1687,7 +1687,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Grundausbildung, angezeigt für die größten Schiffe in der Flotte.',
+                    'description'=>'Grundausbildung, angezeigt f&uuml;r die gr&ouml;&szlig;ten Schiffe in der Flotte.',
                     'dev_info'=>'',
             ), // Endof Component Die Ausbildung Base III
 
@@ -1732,7 +1732,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Mittelstufe Ausbildung für Schiffe der Flotte lesen.',
+                    'description'=>'Mittelstufe Ausbildung f&uuml;r Schiffe der Flotte lesen.',
                     'dev_info'=>'',
             ), // Endof Component Intermediate Training I
 
@@ -1777,7 +1777,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Mittelstufe Ausbildung für die schweren Schiffe der Flotte.',
+                    'description'=>'Mittelstufe Ausbildung f&uuml;r die schweren Schiffe der Flotte.',
                     'dev_info'=>'',
             ), // Endof Component Intermediate Training II
 
@@ -1822,7 +1822,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Mittelstufe Ausbildung für die schweren Schiffe der Flotte.',
+                    'description'=>'Mittelstufe Ausbildung f&uuml;r die schweren Schiffe der Flotte.',
                     'dev_info'=>'',
             ), // Endof Component Advanced Training I
 			
@@ -1867,7 +1867,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Erweiterte Ausbildung für die Besatzungen von Schiffen schwere Flotte.',
+                    'description'=>'Erweiterte Ausbildung f&uuml;r die Besatzungen von Schiffen schwere Flotte.',
                     'dev_info'=>'',
             ), // Endof Component Advanced Training II
 			
@@ -1912,7 +1912,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Höchstem Niveau der Ausbildung für die beste Jem Hadar, die zu regieren Schiffe in der Dominion.',
+                    'description'=>'H&ouml;chstem Niveau der Ausbildung f&uuml;r die beste Jem Hadar, die zu regieren Schiffe in der Dominion.',
                     'dev_info'=>'',
             ), // Endof Component Ausbildung von Elite
 			
@@ -1964,7 +1964,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 	            'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erh&ouml;hen.',
                     'dev_info'=>'',
             ), // Endof Component Unterkunft I
 
@@ -2009,7 +2009,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erh&ouml;hen.',
                     'dev_info'=>'',
             ), // Endof Component Unterkunft II
 
@@ -2054,7 +2054,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erh&ouml;hen.',
                     'dev_info'=>'',
             ), // Endof Component Unterkunft III
 
@@ -2099,7 +2099,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erh&ouml;hen.',
                     'dev_info'=>'',
             ), // Endof Component Unterkunft IV
 
@@ -2144,7 +2144,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erh&ouml;hen.',
                     'dev_info'=>'',
             ), // Endof Component Unterkunft V
 
@@ -2189,7 +2189,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erh&ouml;hen.',
                     'dev_info'=>'',
             ), // Endof Component Unterkunft VI
 
@@ -2234,7 +2234,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erh&ouml;hen.',
                     'dev_info'=>'',
             ), // Endof Component Unterkunft VII
 
@@ -2279,7 +2279,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erh&ouml;hen.',
                     'dev_info'=>'',
             ), // Endof Component Unterkunft VIII
 
@@ -2324,7 +2324,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erhöhen.',
+                    'description'=>'Mit den Quartieren kann man die Zahl der stationierten Truppen erh&ouml;hen.',
                     'dev_info'=>'',
             ), // Endof Component Truppendepot
 
@@ -2376,7 +2376,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Das sensorische Scoutschiff ist besonders geeignet, um die Übersicht im Kampf nicht zu verlieren.',
+                    'description'=>'Das sensorische Scoutschiff ist besonders geeignet, um die &uuml;bersicht im Kampf nicht zu verlieren.',
                     'dev_info'=>'',
             ), // Endof Component Sensorischer Scout
 
@@ -2421,7 +2421,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Das sensorische Scoutschiff ist besonders geeignet, um die Übersicht im Kampf nicht zu verlieren.',
+                    'description'=>'Das sensorische Scoutschiff ist besonders geeignet, um die &uuml;bersicht im Kampf nicht zu verlieren.',
                     'dev_info'=>'',
             ), // Endof Component Sensorischer Scout
 
@@ -2466,13 +2466,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die simultane Ortung ermöglicht das parallele Scannen verschiedener Bereiche.',
+                    'description'=>'Die simultane Ortung erm&ouml;glicht das parallele Scannen verschiedener Bereiche.',
                     'dev_info'=>'',
             ), // Endof Component Simultane Ortung
 
              // Component Ungestörte Ortung
              3=>array(
-                    'name'=>'Ungestörte Ortung',
+                    'name'=>'Ungest&ouml;rte Ortung',
                     'resource_1'=>'1275',
                     'resource_2'=>'300',
                     'resource_3'=>'37.5',
@@ -2511,7 +2511,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die höchste Form der normalen Sensorenerweiterung ermöglicht die Abtastung des Raums mit Hilfe getarnter Sonden.',
+                    'description'=>'Die h&ouml;chste Form der normalen Sensorenerweiterung erm&ouml;glicht die Abtastung des Raums mit Hilfe getarnter Sonden.',
                     'dev_info'=>'',
             ), // Endof Component Ungestörte Ortung
 
@@ -2556,13 +2556,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der Gefechtsstand ist ein zusätzlicher Brückenposten, der die Kampfkoordination übernimmt.',
+                    'description'=>'Der Gefechtsstand ist ein zus&auml;tzlicher Br&uuml;ckenposten, der die Kampfkoordination &uuml;bernimmt.',
                     'dev_info'=>'',
             ), // Endof Component Gefechtsstand
 
              // Component Sekundärbrücke
              5=>array(
-                    'name'=>'Sekundärbrücke',
+                    'name'=>'Sekund&auml;rbr&uuml;cke',
                     'resource_1'=>'1800',
                     'resource_2'=>'300',
                     'resource_3'=>'75',
@@ -2601,13 +2601,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Sekundärbrücke ist eine spezielle Unterabteilung, die allein zur Gefechtskoordination eingesetzt wird.',
+                    'description'=>'Die Sekund&auml;rbr&uuml;cke ist eine spezielle Unterabteilung, die allein zur Gefechtskoordination eingesetzt wird.',
                     'dev_info'=>'',
             ), // Endof Component Sekundärbrücke
 
              // Component Gefechtsbrücke I
              6=>array(
-                    'name'=>'Gefechtsbrücke I',
+                    'name'=>'Gefechtsbr&uuml;cke I',
                     'resource_1'=>'2250',
                     'resource_2'=>'500',
                     'resource_3'=>'100',
@@ -2646,13 +2646,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die 1. Gefechtsbrücke ist eine konsequente Weiterentwicklung der Sekundärbrücke.',
+                    'description'=>'Die 1. Gefechtsbr&uuml;cke ist eine konsequente Weiterentwicklung der Sekund&auml;rbr&uuml;cke.',
                     'dev_info'=>'',
             ), // Endof Component Gefechtsbrücke I
 
              // Component Gefechtsbrücke II
              7=>array(
-                    'name'=>'Gefechtsbrücke II',
+                    'name'=>'Gefechtsbr&uuml;cke II',
                     'resource_1'=>'2625',
                     'resource_2'=>'500',
                     'resource_3'=>'150',
@@ -2691,7 +2691,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die 2. Gefechtsbrücke ist das ultimative Kommandozentrum für jede Art von Konflikt und das Ergebnis jahrzehntelanger Forschung.',
+                    'description'=>'Die 2. Gefechtsbr&uuml;cke ist das ultimative Kommandozentrum f&uuml;r jede Art von Konflikt und das Ergebnis jahrzehntelanger Forschung.',
                     'dev_info'=>'',
             ), // Endof Component Gefechtsbrücke II
 
@@ -2749,7 +2749,7 @@ $ship_components=array(
 
              // Component Waffenaufrüstung
              1=>array(
-                    'name'=>'Waffenaufrüstung',
+                    'name'=>'Waffenaufr&uuml;stung',
                     'resource_1'=>'19500',
                     'resource_2'=>'11250',
                     'resource_3'=>'6000',
@@ -2788,7 +2788,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Waffenaufrüstung ist ein ´Komplettpaket´ für die Oberklasse des Dominion.',
+                    'description'=>'Die Waffenaufr&uuml;stung ist ein ´Komplettpaket´ f&uuml;r die Oberklasse des Dominion.',
                     'dev_info'=>'',
             ), // Endof Component Waffenaufrüstung
 
@@ -2833,13 +2833,13 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der zweite Schild ist als Schutz vor Hochenergiewaffen geeignet und aktiviert sich bei Zusammenbruch der primären Schildemitter.',
+                    'description'=>'Der zweite Schild ist als Schutz vor Hochenergiewaffen geeignet und aktiviert sich bei Zusammenbruch der prim&auml;ren Schildemitter.',
                     'dev_info'=>'',
             ), // Endof Component Doppelschilde
 
              // Component Hochenergiehülle
              3=>array(
-                    'name'=>'Hochenergiehülle',
+                    'name'=>'Hochenergieh&uuml;lle',
                     'resource_1'=>'7500',
                     'resource_2'=>'3000',
                     'resource_3'=>'750',
@@ -2878,7 +2878,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Diese Hülle weist Energie teilweise ab und führt sie der schiffsinternen Energieversorgung zu. Die Lebensdauer der Hülle erhöht sich und der Energieverbrauch ist moderat.',
+                    'description'=>'Diese H&uuml;lle weist Energie teilweise ab und f&uuml;hrt sie der schiffsinternen Energieversorgung zu. Die Lebensdauer der H&uuml;lle erh&ouml;ht sich und der Energieverbrauch ist moderat.',
                     'dev_info'=>'',
             ), // Endof Component Hochenergiehülle
 
@@ -2968,7 +2968,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Dieses Komplettpaket beschränkt sich auf kleine aber umfassende Anderungen und Verbesserungen in allen Systemen.',
+                    'description'=>'Dieses Komplettpaket beschr&auml;nkt sich auf kleine aber umfassende Anderungen und Verbesserungen in allen Systemen.',
                     'dev_info'=>'',
             ), // Endof Component Kompletterweiterung
 

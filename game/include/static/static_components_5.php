@@ -70,7 +70,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 					                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der einfache Warpkern liefert genug Energie für Scouts und Transporter. Seine Leistung ist größeren Schiffen wie dem Marauder aber nicht angemessen.',
+                    'description'=>'Der einfache Warpkern liefert genug Energie f&uuml;r Scouts und Transporter. Seine Leistung ist gr&ouml;&szlig;eren Schiffen wie dem Marauder aber nicht angemessen.',
                     'dev_info'=>'',
             ), // Endof Component Warpantrieb
 
@@ -115,7 +115,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Warpkern MK II liefert genug Energie für Scouts und Transporter. Trotzdem ist seine Leistung größeren Schiffen wie dem Marauder aber nicht angemessen.',
+                    'description'=>'Der Warpkern MK II liefert genug Energie f&uuml;r Scouts und Transporter. Trotzdem ist seine Leistung gr&ouml;&szlig;eren Schiffen wie dem Marauder aber nicht angemessen.',
                     'dev_info'=>'',
             ), // Endof Component Warp MKII
 
@@ -160,7 +160,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Warpkern MK III liefert bereits genug Energie, die auch größeren Schiffen wie dem Marauder angemessen ist.',
+                    'description'=>'Der Warpkern MK III liefert bereits genug Energie, die auch gr&ouml;&szlig;eren Schiffen wie dem Marauder angemessen ist.',
                     'dev_info'=>'',
             ), // Endof Component Warp MKIII
 
@@ -257,7 +257,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Fusionsantrieb erlaubt es den Ferengi, Überlichtgeschwindigkeit zu erreichen.',
+                    'description'=>'Der Fusionsantrieb erlaubt es den Ferengi, &uuml;berlichtgeschwindigkeit zu erreichen.',
                     'dev_info'=>'',
             ), // Endof Component Fusionsantrieb
 
@@ -302,7 +302,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Fusionsantrieb wird durch Feldgeometrie so weit aufgerüstet, dass er den Warpfaktor um 2 erhöht.',
+                    'description'=>'Der Fusionsantrieb wird durch Feldgeometrie so weit aufger&uuml;stet, dass er den Warpfaktor um 2 erh&ouml;ht.',
                     'dev_info'=>'',
             ), // Endof Component Feldgeometrie
 
@@ -347,7 +347,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Fusionsantrieb wird durch Feldkompression so weit aufgerüstet, dass er den Warpfaktor um 3 erhöht.',
+                    'description'=>'Der Fusionsantrieb wird durch Feldkompression so weit aufger&uuml;stet, dass er den Warpfaktor um 3 erh&ouml;ht.',
                     'dev_info'=>'',
             ), // Endof Component Feldkompression
 
@@ -392,7 +392,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Fusionsantrieb wird durch morderne Plasma-Injektoren verbessert, so dass er den Warpfaktor um 4 erhöht.',
+                    'description'=>'Der Fusionsantrieb wird durch morderne Plasma-Injektoren verbessert, so dass er den Warpfaktor um 4 erh&ouml;ht.',
                     'dev_info'=>'',
             ), // Endof Component Plasma-Injektion
 
@@ -444,7 +444,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Strahlenemitter sind eine Art primitve Phaser, die versuchen, feste Materie durch fokussierte Energiesalven zu beschädigen. Sie sind unzuverlässig und schwach, verglichen mit den Technologien anderer Rassen.',
+                    'description'=>'Strahlenemitter sind eine Art primitve Phaser, die versuchen, feste Materie durch fokussierte Energiesalven zu besch&auml;digen. Sie sind unzuverl&auml;ssig und schwach, verglichen mit den Technologien anderer Rassen.',
                     'dev_info'=>'',
             ), // Endof Component Strahlenemitter
 
@@ -489,7 +489,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Materiepakete werden durch Luftschleusen manuell abgeworfen und detonieren beim Aufprall auf feste Materie. Sie richten etwas mehr Schaden als Strahlenemitter an, sind auf Transportschiffen und Kolonisationsschiffen aber nicht mehr verfügbar.',
+                    'description'=>'Materiepakete werden durch Luftschleusen manuell abgeworfen und detonieren beim Aufprall auf feste Materie. Sie richten etwas mehr Schaden als Strahlenemitter an, sind auf Transportschiffen und Kolonisationsschiffen aber nicht mehr verf&uuml;gbar.',
                     'dev_info'=>'',
             ), // Endof Component Materiepakete
 
@@ -534,7 +534,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Multifrequenz Strahlen sind Disruptoren, die auf mehreren Wellenlängen parallel abgefeuert werden, wodurch sich ihre Schadenswirkung verbessert.',
+                    'description'=>'Multifrequenz Strahlen sind Disruptoren, die auf mehreren Wellenl&auml;ngen parallel abgefeuert werden, wodurch sich ihre Schadenswirkung verbessert.',
                     'dev_info'=>'',
             ), // Endof Component Multifrequenz Strahlen
 
@@ -624,7 +624,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Micropuls Strahlen bündeln die einzelnen Lichtimpulse nicht, sondern schießen sie mit einer enorm hohen Frequenz ab, so dass ihre Trefferquote extrem gut ist.',
+                    'description'=>'Micropuls Strahlen b&uuml;ndeln die einzelnen Lichtimpulse nicht, sondern schie&szlig;en sie mit einer enorm hohen Frequenz ab, so dass ihre Trefferquote extrem gut ist.',
                     'dev_info'=>'',
             ), // Endof Component Micropuls-Strahlen
 
@@ -669,7 +669,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Bei der Verdichtung wereden die Ionen komprimiert und damit der Wirkungsgrad im Vergleich zu den normalen Disruptoren erhöht.',
+                    'description'=>'Bei der Verdichtung wereden die Ionen komprimiert und damit der Wirkungsgrad im Vergleich zu den normalen Disruptoren erh&ouml;ht.',
                     'dev_info'=>'',
             ), // Endof Component Verdichtung
 
@@ -714,7 +714,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Ultraemitter sind die stärkste Waffe, die die Ferengi von anderen Kulturen ergaunern konnten.',
+                    'description'=>'Ultraemitter sind die st&auml;rkste Waffe, die die Ferengi von anderen Kulturen ergaunern konnten.',
                     'dev_info'=>'',
             ), // Endof Component Ultraemitter
 
@@ -772,7 +772,7 @@ $ship_components=array(
 
              // Component Torpedo-Härtung
              1=>array(
-                    'name'=>'Torpedo-Härtung',
+                    'name'=>'Torpedo-H&auml;rtung',
                     'resource_1'=>'1500',
                     'resource_2'=>'75',
                     'resource_3'=>'0',
@@ -811,7 +811,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Torpedo-Härtung verbessert die Leistung der Torpedos und als Konsequenz werden sie langsamer und sind eher gegen schwere Schiffsklassen effektiv.',
+                    'description'=>'Torpedo-H&auml;rtung verbessert die Leistung der Torpedos und als Konsequenz werden sie langsamer und sind eher gegen schwere Schiffsklassen effektiv.',
                     'dev_info'=>'',
             ), // Endof Component Torpedo-Härtung
 
@@ -856,7 +856,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Plasmatorpedos sind eine von anderen Rassen gestohlene Technologie, die für Ferengiverhältnisse schon ziemlich effektiv ist.',
+                    'description'=>'Plasmatorpedos sind eine von anderen Rassen gestohlene Technologie, die f&uuml;r Ferengiverh&auml;ltnisse schon ziemlich effektiv ist.',
                     'dev_info'=>'',
             ), // Endof Component Plasmatorpedos
 
@@ -901,7 +901,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Plasmatorpedos MK II sind eine von anderen Rassen gestohlene Technologie, die für Ferengiverhältnisse schon ziemlich effektiv ist. Die 2. Revision ist deutlich stärker und technisch noch nicht veraltet.',
+                    'description'=>'Plasmatorpedos MK II sind eine von anderen Rassen gestohlene Technologie, die f&uuml;r Ferengiverh&auml;ltnisse schon ziemlich effektiv ist. Die 2. Revision ist deutlich st&auml;rker und technisch noch nicht veraltet.',
                     'dev_info'=>'',
             ), // Endof Component Plasmatorpedos MKII
 
@@ -946,7 +946,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Plasmatorpedos MK III sind eine von anderen Rassen gestohlene Technologie, die für Ferengiverhältnisse schon ziemlich effektiv ist.<br>Die letzte Revision verfügt außerdem über die Möglichkeit, Einrichtungen auf Planeten anzugreifen.',
+                    'description'=>'Plasmatorpedos MK III sind eine von anderen Rassen gestohlene Technologie, die f&uuml;r Ferengiverh&auml;ltnisse schon ziemlich effektiv ist.<br>Die letzte Revision verf&uuml;gt au&szlig;erdem &uuml;ber die M&ouml;glichkeit, Einrichtungen auf Planeten anzugreifen.',
                     'dev_info'=>'',
             ), // Endof Component Plasmatorpedos MKIII
 
@@ -998,7 +998,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Schildemitter sind der Primitive Vorfahre der heute bekannten Schilde, sie sind nicht besonders zuverlässig und halten nur wenigen Treffern stand.',
+                    'description'=>'Schildemitter sind der Primitive Vorfahre der heute bekannten Schilde, sie sind nicht besonders zuverl&auml;ssig und halten nur wenigen Treffern stand.',
                     'dev_info'=>'',
             ), // Endof Component Schildemitter
 
@@ -1043,13 +1043,13 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Duranidpanzerung verstärkt die Hüllenintegrität der Ferengischiffe, so dass sie im Kampf länger standhalten.',
+                    'description'=>'Die Duranidpanzerung verst&auml;rkt die H&uuml;llenintegrit&auml;t der Ferengischiffe, so dass sie im Kampf l&auml;nger standhalten.',
                     'dev_info'=>'',
             ), // Endof Component Duranidpanzerung
 
              // Component Integritätsfeld
              2=>array(
-                    'name'=>'Integritätsfeld',
+                    'name'=>'Integrit&auml;tsfeld',
                     'resource_1'=>'0',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -1088,7 +1088,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Ein Integritätsfeld ist nicht anderes als das Eindämmungsfeld, welches schiffsintern bei der Föderation zum Einsatz kommt. Die Ferengi setzen es als Schutzschildersatz ein.',
+                    'description'=>'Ein Integrit&auml;tsfeld ist nicht anderes als das Eind&auml;mmungsfeld, welches schiffsintern bei der F&ouml;deration zum Einsatz kommt. Die Ferengi setzen es als Schutzschildersatz ein.',
                     'dev_info'=>'',
             ), // Endof Component Integritätsfeld
 
@@ -1133,7 +1133,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Schildgeneratoren sind eine etwas veraltete Variante der Standardschilde auf Föderationsschiffen.<br>Die Ferengi haben sich die Baupläne bei Handelsreisen im Alphaquadranten aneignen können.',
+                    'description'=>'Schildgeneratoren sind eine etwas veraltete Variante der Standardschilde auf F&ouml;derationsschiffen.<br>Die Ferengi haben sich die Baupl&auml;ne bei Handelsreisen im Alphaquadranten aneignen k&ouml;nnen.',
                     'dev_info'=>'',
             ), // Endof Component Schildgenerator
 
@@ -1178,7 +1178,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Phasen-Schilde sind eine Technologie, die von der Föderation vom einem Raumschiff des Intrepid Typs entwendet wurde.',
+                    'description'=>'Die Phasen-Schilde sind eine Technologie, die von der F&ouml;deration vom einem Raumschiff des Intrepid Typs entwendet wurde.',
                     'dev_info'=>'',
             ), // Endof Component Phasen-Schilde
 
@@ -1552,7 +1552,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Co² Konverter sorgen dafür, dass es zu keinen Umständen zu einem O² Mangel in den Schiffen kommt.',
+                    'description'=>'Co² Konverter sorgen daf&uuml;r, dass es zu keinen Umst&auml;nden zu einem O² Mangel in den Schiffen kommt.',
                     'dev_info'=>'',
             ), // Endof Component Co² Konverter
 
@@ -1597,7 +1597,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Durch Biofiltration werden gefährliche Viren und Krankheitserreger vorzeitig aus der Umgebungsluft ausfiltriert.',
+                    'description'=>'Durch Biofiltration werden gef&auml;hrliche Viren und Krankheitserreger vorzeitig aus der Umgebungsluft ausfiltriert.',
                     'dev_info'=>'',
             ), // Endof Component Biofiltration
 
@@ -1649,7 +1649,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Festival Räume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
+                    'description'=>'Die verschiedenen Festival R&auml;ume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
                     'dev_info'=>'',
             ), // Endof Component Kleiner Raum
 
@@ -1694,7 +1694,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Festival Räume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
+                    'description'=>'Die verschiedenen Festival R&auml;ume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
                     'dev_info'=>'',
             ), // Endof Component Clubhalle
 
@@ -1739,7 +1739,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Festival Räume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
+                    'description'=>'Die verschiedenen Festival R&auml;ume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
                     'dev_info'=>'',
             ), // Endof Component Partyraum
 
@@ -1784,13 +1784,13 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Festival Räume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
+                    'description'=>'Die verschiedenen Festival R&auml;ume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
                     'dev_info'=>'',
             ), // Endof Component Festivalraum
 
              // Component Große Halle
              4=>array(
-                    'name'=>'Große Halle',
+                    'name'=>'Gro&szlig;e Halle',
                     'resource_1'=>'525',
                     'resource_2'=>'525',
                     'resource_3'=>'11250',
@@ -1829,13 +1829,13 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Festival Räume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
+                    'description'=>'Die verschiedenen Festival R&auml;ume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
                     'dev_info'=>'',
             ), // Endof Component Große Halle
 
              // Component Spielhölle
              5=>array(
-                    'name'=>'Spielhölle',
+                    'name'=>'Spielh&ouml;lle',
                     'resource_1'=>'675',
                     'resource_2'=>'675',
                     'resource_3'=>'3750',
@@ -1874,7 +1874,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Festival Räume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
+                    'description'=>'Die verschiedenen Festival R&auml;ume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
                     'dev_info'=>'',
             ), // Endof Component Spielhölle
 
@@ -1919,11 +1919,11 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die verschiedenen Festival Räume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
+                    'description'=>'Die verschiedenen Festival R&auml;ume erlauben es, mehr Ferengi auf den Schiffen zu stationieren.',
                     'dev_info'=>'',
             ), // Endof Component Kasino
 
-      'name'=>'Festival-Räume',
+      'name'=>'Festival-R&auml;ume',
       'num'=>'7',
       ), // Endof Category Festival-Räume
 
@@ -1971,7 +1971,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Einfache Scanner verbessern die Sensorleistungen geringfügig.',
+                    'description'=>'Einfache Scanner verbessern die Sensorleistungen geringf&uuml;gig.',
                     'dev_info'=>'',
             ), // Endof Component Scanner
 
@@ -2016,7 +2016,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Sensoren verbessern die Sensorleistungen geringfügig und verbessern die Reaktion der Crew.',
+                    'description'=>'Sensoren verbessern die Sensorleistungen geringf&uuml;gig und verbessern die Reaktion der Crew.',
                     'dev_info'=>'',
             ), // Endof Component Sensoren
 
@@ -2061,7 +2061,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Eine Suchphalanx verbessert die Sensorleistungen geringfügig und verbessert allgemein die Bereitschaft des Schiffs.',
+                    'description'=>'Eine Suchphalanx verbessert die Sensorleistungen geringf&uuml;gig und verbessert allgemein die Bereitschaft des Schiffs.',
                     'dev_info'=>'',
             ), // Endof Component Suchphalanx
 
@@ -2151,13 +2151,13 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Tachionabtastung wurde von den Ferengi gestohlen und verbessert die Schiffssysteme in vielfältiger Art und Weise.',
+                    'description'=>'Tachionabtastung wurde von den Ferengi gestohlen und verbessert die Schiffssysteme in vielf&auml;ltiger Art und Weise.',
                     'dev_info'=>'',
             ), // Endof Component Tachionabtastung
 
              // Component Frühwarnphalanx
              5=>array(
-                    'name'=>'Frühwarnphalanx',
+                    'name'=>'Fr&uuml;hwarnphalanx',
                     'resource_1'=>'1800',
                     'resource_2'=>'300',
                     'resource_3'=>'75',
@@ -2196,7 +2196,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Frühwarnphalanx wurde von den Ferengi gestohlen und verbessert die Schiffssysteme in vielfältiger Art und Weise.',
+                    'description'=>'Die Fr&uuml;hwarnphalanx wurde von den Ferengi gestohlen und verbessert die Schiffssysteme in vielf&auml;ltiger Art und Weise.',
                     'dev_info'=>'',
             ), // Endof Component Frühwarnphalanx
 
@@ -2248,7 +2248,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Prototypen ist ein Komplettpaket, welches das Ferengischiff mit neuen, unerforschten Prototypen aufrüstet, welche sowohl den Warpfaktor erhöhen, als auch die Reaktion und Bereitschaft verbessern.',
+                    'description'=>'Die Prototypen ist ein Komplettpaket, welches das Ferengischiff mit neuen, unerforschten Prototypen aufr&uuml;stet, welche sowohl den Warpfaktor erh&ouml;hen, als auch die Reaktion und Bereitschaft verbessern.',
                     'dev_info'=>'',
             ), // Endof Component Prototypen
 
@@ -2293,7 +2293,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Der Subraumspalter unterstützt Schiffe geringfügig in ihren Offensivfertigkeiten.',
+                    'description'=>'Der Subraumspalter unterst&uuml;tzt Schiffe geringf&uuml;gig in ihren Offensivfertigkeiten.',
                     'dev_info'=>'',
             ), // Endof Component Subraumspalter
 
@@ -2383,7 +2383,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Erwerbsregel 34 lautet: Krieg ist gut fürs Geschäft.',
+                    'description'=>'Die Erwerbsregel 34 lautet: Krieg ist gut f&uuml;rs Gesch&auml;ft.',
                     'dev_info'=>'',
             ), // Endof Component Erwerbsregel 34
 
@@ -2428,7 +2428,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Schildgitter werden auch in Flagschiffen anderer Rassen verbaut, in den Ferengischiffen sind sie leider nicht ganz so effektiv, weil die Wissenschaftler hier nicht über das technische Wissen verfügen, um sie effizient zu nutzen.',
+                    'description'=>'Die Schildgitter werden auch in Flagschiffen anderer Rassen verbaut, in den Ferengischiffen sind sie leider nicht ganz so effektiv, weil die Wissenschaftler hier nicht &uuml;ber das technische Wissen verf&uuml;gen, um sie effizient zu nutzen.',
                     'dev_info'=>'',
             ), // Endof Component Schildgitter
 
@@ -2473,7 +2473,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'´Schnell wie der Wind´ ist eine recht freie Übersetzung für den Namen dieser Komponente. Die Fertigkeiten sind vielseitig, am Interessantesten dürfte aber die Erhöhung des Warpfaktors um 2 sein.',
+                    'description'=>'´Schnell wie der Wind´ ist eine recht freie &uuml;bersetzung f&uuml;r den Namen dieser Komponente. Die Fertigkeiten sind vielseitig, am Interessantesten d&uuml;rfte aber die Erh&ouml;hung des Warpfaktors um 2 sein.',
                     'dev_info'=>'',
             ), // Endof Component Schnell wie der Wind
 

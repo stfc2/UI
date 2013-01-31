@@ -31,7 +31,7 @@ $ship_components=array(
         0=>array(
              // Component Hochenergie Kanonentürme
              0=>array(
-                    'name'=>'Hochenergie Kanonentürme',
+                    'name'=>'Hochenergie Kanonent&uuml;rme',
                     'resource_1'=>'450',
                     'resource_2'=>'225',
                     'resource_3'=>'0',
@@ -70,7 +70,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 					'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Diese verbesserte Version der Kanonentürme verursacht wesentlich mehr Schaden als die Standardausführung.',
+                    'description'=>'Diese verbesserte Version der Kanonent&uuml;rme verursacht wesentlich mehr Schaden als die Standardausf&uuml;hrung.',
                     'dev_info'=>'',
             ), // Endof Component Hochenergie Kanonentürme
             
@@ -114,7 +114,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 					'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Beim Plasma-Phaser wird der Phaserimpuls durch das Einspritzen vom Plasma verstärkt. Diese Verstärkung verbraucht jedoch extrem viel Energie.',
+                    'description'=>'Beim Plasma-Phaser wird der Phaserimpuls durch das Einspritzen vom Plasma verst&auml;rkt. Diese Verst&auml;rkung verbraucht jedoch extrem viel Energie.',
                     'dev_info'=>'',
             ), // Endof Component Hochenergie Kanonentürme
             
@@ -160,7 +160,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Beim Plasma-Phaser wird der Phaserimpuls durch das Einspritzen vom Plasma verstärkt. Diese Verstärkung verbraucht jedoch extrem viel Energie.',
+                    'description'=>'Beim Plasma-Phaser wird der Phaserimpuls durch das Einspritzen vom Plasma verst&auml;rkt. Diese Verst&auml;rkung verbraucht jedoch extrem viel Energie.',
                     'dev_info'=>'',
             ), // Endof Component Plasma-Phaser Turret II
 
@@ -205,7 +205,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'In diesem Waffensystem vereinen sich die Erfahrungen aller bisherigen Waffensysteme. Der Turm ist nicht nur wesentlich stärker, er besitzt auch eine wesentlich höhere Feuerrate, was seine Schadenswirkung beträchtlich erhöht.',
+                    'description'=>'In diesem Waffensystem vereinen sich die Erfahrungen aller bisherigen Waffensysteme. Der Turm ist nicht nur wesentlich st&auml;rker, er besitzt auch eine wesentlich h&ouml;here Feuerrate, was seine Schadenswirkung betr&auml;chtlich erh&ouml;ht.',
                     'dev_info'=>'',
             ), // Endof Component Hochgeschwindigkeits Kanonenturm
             
@@ -250,7 +250,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Beim Plasma-Phaser wird der Phaserimpuls durch das Einspritzen vom Plasma verstärkt. Diese Verstärkung verbraucht jedoch extrem viel Energie.',
+                    'description'=>'Beim Plasma-Phaser wird der Phaserimpuls durch das Einspritzen vom Plasma verst&auml;rkt. Diese Verst&auml;rkung verbraucht jedoch extrem viel Energie.',
                     'dev_info'=>'',
             ), // Endof Component Plasma-Phaser Turret II
 
@@ -295,7 +295,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'In diesem Waffensystem vereinen sich die Erfahrungen aller bisherigen Waffensysteme. Der Turm ist nicht nur wesentlich stärker, er besitzt auch eine wesentlich höhere Feuerrate, was seine Schadenswirkung beträchtlich erhöht.',
+                    'description'=>'In diesem Waffensystem vereinen sich die Erfahrungen aller bisherigen Waffensysteme. Der Turm ist nicht nur wesentlich st&auml;rker, er besitzt auch eine wesentlich h&ouml;here Feuerrate, was seine Schadenswirkung betr&auml;chtlich erh&ouml;ht.',
                     'dev_info'=>'',
             ), // Endof Component Hochgeschwindigkeits Kanonenturm
 
@@ -347,7 +347,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 					'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Diese massive Panzerung erhöht die Widerstandskraft des jeweiligen Schiffes. Da es sich dabei eigentlich nur um eine Metallplatte handelt ist der Energieverbrauch sehr gering.',
+                    'description'=>'Diese massive Panzerung erh&ouml;ht die Widerstandskraft des jeweiligen Schiffes. Da es sich dabei eigentlich nur um eine Metallplatte handelt ist der Energieverbrauch sehr gering.',
                     'dev_info'=>'',
             ), // Endof Component Monotanium-Panzerung I
 
@@ -392,7 +392,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 					'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Diese Weiterentwicklung der Monotanium-Legierung ist wesentlich stärker, was den erhöhten Preis rechtfertigt.',
+                    'description'=>'Diese Weiterentwicklung der Monotanium-Legierung ist wesentlich st&auml;rker, was den erh&ouml;hten Preis rechtfertigt.',
                     'dev_info'=>'',
             ), // Endof Component Monotanium-Panzerung II
 
@@ -437,7 +437,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Diese finale Entwicklungsstufe der Panzerung ist nicht nur wesentlich effektiver als alle ihre Vorgänger, sondern auch wesentlich schwerer, wodurch sie von den leichteren Schiffen nicht verwendet werden kann.',
+                    'description'=>'Diese finale Entwicklungsstufe der Panzerung ist nicht nur wesentlich effektiver als alle ihre Vorg&auml;nger, sondern auch wesentlich schwerer, wodurch sie von den leichteren Schiffen nicht verwendet werden kann.',
                     'dev_info'=>'',
             ), // Endof Component Monotanium-Panzerung III
 
@@ -482,7 +482,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 					'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Die Annahme von besonderen Maßnahmen in der Versammlung der Rüstung und Materialbearbeitung haben die Fähigkeit verbessert, reduzieren Sie die Monotanium die Wirksamkeit von Sensoren Gegner.',
+                    'description'=>'Die Annahme von besonderen Ma&szlig;nahmen in der Versammlung der R&uuml;stung und Materialbearbeitung haben die F&auml;higkeit verbessert, reduzieren Sie die Monotanium die Wirksamkeit von Sensoren Gegner.',
                     'dev_info'=>'',
             ), // Endof Component Monotanium-Panzerung IV
 
@@ -527,7 +527,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Annahme von besonderen Maßnahmen in der Versammlung der Rüstung und Materialbearbeitung haben die Fähigkeit verbessert, reduzieren Sie die Monotanium die Wirksamkeit von Sensoren Gegner.',
+                    'description'=>'Die Annahme von besonderen Ma&szlig;nahmen in der Versammlung der R&uuml;stung und Materialbearbeitung haben die F&auml;higkeit verbessert, reduzieren Sie die Monotanium die Wirksamkeit von Sensoren Gegner.',
                     'dev_info'=>'',
             ), // Endof Component Monotanium-Panzerung V
             
@@ -579,7 +579,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Diese Scanner gehören zur Standardausrüstung der Hirogen.',
+                    'description'=>'Diese Scanner geh&ouml;ren zur Standardausr&uuml;stung der Hirogen.',
                     'dev_info'=>'',
             ), // Endof Component Subnukleonen-Sensoren
 
@@ -624,7 +624,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 					'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Im Pirschmodus sind Hirogen-Kampfschiffe nur schwer zu entdecken, was ihnen die Möglichkeit zum Erstschlag gibt und die Wahrscheinlichkeit der Entdeckung verringert.',
+                    'description'=>'Im Pirschmodus sind Hirogen-Kampfschiffe nur schwer zu entdecken, was ihnen die M&ouml;glichkeit zum Erstschlag gibt und die Wahrscheinlichkeit der Entdeckung verringert.',
                     'dev_info'=>'',
             ), // Endof Component Pirsch-Modus
 
@@ -669,13 +669,13 @@ $ship_components=array(
                     'torso_10'=>'0',
 					'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Durch eine dauerhafte Datenverbindung zum Relais-Netzwerk können Objekte in der Umgebung wesentlich früher entdeckt werden. Außerdem können die Relais zur besseren Zielerfassung genutzt werden.',
+                    'description'=>'Durch eine dauerhafte Datenverbindung zum Relais-Netzwerk k&ouml;nnen Objekte in der Umgebung wesentlich fr&uuml;her entdeckt werden. Au&szlig;erdem k&ouml;nnen die Relais zur besseren Zielerfassung genutzt werden.',
                     'dev_info'=>'',
             ), // Endof Component Relais-Netz-Verbindung
 
              // Component Holographischer Sanitäter
              3=>array(
-                    'name'=>'Holographischer Sanitäter',
+                    'name'=>'Holographischer Sanit&auml;ter',
                     'resource_1'=>'450',
                     'resource_2'=>'225',
                     'resource_3'=>'0',
@@ -714,7 +714,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Dieses von den Hirogentechnikern geschaffene Programm ist zwar nicht so ausgereift wie das der Föderation, es erfüllt seine Aufgabe jedoch vergleichsweise gut.',
+                    'description'=>'Dieses von den Hirogentechnikern geschaffene Programm ist zwar nicht so ausgereift wie das der F&ouml;deration, es erf&uuml;llt seine Aufgabe jedoch vergleichsweise gut.',
                     'dev_info'=>'',
             ), // Endof Component Holographischer Sanitäter
 
@@ -766,7 +766,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 					'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Primäre Anwendung dieser Technologie sofort liefert wichtige Informationen über die Ziel-Schiff.',
+                    'description'=>'Prim&auml;re Anwendung dieser Technologie sofort liefert wichtige Informationen &uuml;ber die Ziel-Schiff.',
                     'dev_info'=>'',
             ), // Endof Component Subnucleonic Probe
 
@@ -811,7 +811,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 					'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Mehrere subnukleare Emitter gekoppelten Verbesserung der Leistungsfähigkeit dieses Gerätes.',
+                    'description'=>'Mehrere subnukleare Emitter gekoppelten Verbesserung der Leistungsf&auml;higkeit dieses Ger&auml;tes.',
                     'dev_info'=>'',
             ), // Endof Component Subnucleonic Array
 
@@ -901,7 +901,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 					'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Subnukleare Technologie hat sich als äußerst vielseitig und effektiv kombiniert eine hervorragende Analyse des Zielsystems mit einem Gerät in der Lage Angriff auf die lebenswichtigen Systeme von Schiffen off Beute.',
+                    'description'=>'Subnukleare Technologie hat sich als &auml;u&szlig;erst vielseitig und effektiv kombiniert eine hervorragende Analyse des Zielsystems mit einem Ger&auml;t in der Lage Angriff auf die lebenswichtigen Systeme von Schiffen off Beute.',
                     'dev_info'=>'',
             ), // Endof Component Subnucleonic Beam 
 
@@ -946,7 +946,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 					'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Subnukleare Technologie hat sich als äußerst vielseitig und effektiv kombiniert eine hervorragende Analyse des Zielsystems mit einem Gerät in der Lage Angriff auf die lebenswichtigen Systeme von Schiffen off Beute.',
+                    'description'=>'Subnukleare Technologie hat sich als &auml;u&szlig;erst vielseitig und effektiv kombiniert eine hervorragende Analyse des Zielsystems mit einem Ger&auml;t in der Lage Angriff auf die lebenswichtigen Systeme von Schiffen off Beute.',
                     'dev_info'=>'',
             ), // Endof Component Subnucleonic Beam II
 
@@ -991,7 +991,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 					'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Subnukleare Technologie hat sich als äußerst vielseitig und effektiv kombiniert eine hervorragende Analyse des Zielsystems mit einem Gerät in der Lage Angriff auf die lebenswichtigen Systeme von Schiffen off Beute.',
+                    'description'=>'Subnukleare Technologie hat sich als &auml;u&szlig;erst vielseitig und effektiv kombiniert eine hervorragende Analyse des Zielsystems mit einem Ger&auml;t in der Lage Angriff auf die lebenswichtigen Systeme von Schiffen off Beute.',
                     'dev_info'=>'',
             ), // Endof Component Subnucleonic Beam III
 
@@ -1043,7 +1043,7 @@ $ship_components=array(
                     'torso_10'=>'0',
 					'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Das ist der einfachste und kostengünstigste Energiekern.',
+                    'description'=>'Das ist der einfachste und kosteng&uuml;nstigste Energiekern.',
                     'dev_info'=>'',
             ), // Endof Component Monozyklischer Warp-Kern
 
@@ -1088,13 +1088,13 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Der Standardkern der Hirogen arbeitet mit einer dizyklischen Kernmatrix und erzeugt deshalb bei nur unwesentlich höheren Kosten fast die doppelte Energiemenge vergleichen mit monozyklischen Kern.',
+                    'description'=>'Der Standardkern der Hirogen arbeitet mit einer dizyklischen Kernmatrix und erzeugt deshalb bei nur unwesentlich h&ouml;heren Kosten fast die doppelte Energiemenge vergleichen mit monozyklischen Kern.',
                     'dev_info'=>'',
             ), // Endof Component Dizyklischer Warp-Kern
 
              // Component Singularitätskern
              2=>array(
-                    'name'=>'Singularitätskern',
+                    'name'=>'Singularit&auml;tskern',
                     'resource_1'=>'225',
                     'resource_2'=>'825',
                     'resource_3'=>'1800',
@@ -1133,7 +1133,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Für diesen Energiekern wurde auf die Technologie der Relaisstationen zurückgegriffen. Ebenso wie sie wird er durch ein mikroskopisches schwarzes Loch angetrieben. Sein Output ist dementsprechend hoch.',
+                    'description'=>'F&uuml;r diesen Energiekern wurde auf die Technologie der Relaisstationen zur&uuml;ckgegriffen. Ebenso wie sie wird er durch ein mikroskopisches schwarzes Loch angetrieben. Sein Output ist dementsprechend hoch.',
                     'dev_info'=>'',
             ), // Endof Component Singularitätskern
 
@@ -1320,7 +1320,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Fast alle Prozesse innerhalb eines Hirogenschiffs werden durch den Zentralglobus gesteuert. <br>Durch die Verwendung von redundanten Systemen kann das Computersystem selbst bei schweren Beschädigungen aufrecht erhalten werden und auf Veränderungen extrem schnell reagieren.',
+                    'description'=>'Fast alle Prozesse innerhalb eines Hirogenschiffs werden durch den Zentralglobus gesteuert. <br>Durch die Verwendung von redundanten Systemen kann das Computersystem selbst bei schweren Besch&auml;digungen aufrecht erhalten werden und auf Ver&auml;nderungen extrem schnell reagieren.',
                     'dev_info'=>'',
             ), // Endof Component Globe-Redundant-Control
 
@@ -1372,7 +1372,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Durch die Austattung von Schiffen mit Hologeneratoren ist es den Crews möglich, ihre Fähigkeiten ständig weiterzuentwickeln, dadurch verbessern sich ihre Reaktionen und die Präzision.',
+                    'description'=>'Durch die Austattung von Schiffen mit Hologeneratoren ist es den Crews m&ouml;glich, ihre F&auml;higkeiten st&auml;ndig weiterzuentwickeln, dadurch verbessern sich ihre Reaktionen und die Pr&auml;zision.',
                     'dev_info'=>'',
             ), // Endof Component Holographischer Trainingsraum
 
@@ -1417,7 +1417,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Diese experimentelle Tarnung ermöglicht Schiffen mit Hochleistungs-Holoprojektoren sich zu tarnen. Dafür wird jedoch sehr viel Energie benötigt.',
+                    'description'=>'Diese experimentelle Tarnung erm&ouml;glicht Schiffen mit Hochleistungs-Holoprojektoren sich zu tarnen. Daf&uuml;r wird jedoch sehr viel Energie ben&ouml;tigt.',
                     'dev_info'=>'',
             ), // Endof Component Holographische Tarnung
 
@@ -1462,7 +1462,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Unter Verwendung der im Schiff vorhandenen Holoemitter können kleinere Hüllenbrüche bei Schildausfall durch Erzeugung von Holographischen Wänden geschlossen werden. Diese Technologie kann aber nur bei Schiffen verwendet werden, die standardmäßig über Holoemitter verfügen.',
+                    'description'=>'Unter Verwendung der im Schiff vorhandenen Holoemitter k&ouml;nnen kleinere H&uuml;llenbr&uuml;che bei Schildausfall durch Erzeugung von Holographischen W&auml;nden geschlossen werden. Diese Technologie kann aber nur bei Schiffen verwendet werden, die standardm&auml;&szlig;ig &uuml;ber Holoemitter verf&uuml;gen.',
                     'dev_info'=>'',
             ), // Endof Component Holographisches Reperatursystem
 
@@ -1507,7 +1507,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Diese experimentelle Tarnung ermöglicht Schiffen mit Hochleistungs-Holoprojektoren sich zu tarnen. Dafür wird jedoch sehr viel Energie benötigt.',
+                    'description'=>'Diese experimentelle Tarnung erm&ouml;glicht Schiffen mit Hochleistungs-Holoprojektoren sich zu tarnen. Daf&uuml;r wird jedoch sehr viel Energie ben&ouml;tigt.',
                     'dev_info'=>'',
             ), // Endof Component Verb. Holographische Tarnung
 
@@ -1520,7 +1520,7 @@ $ship_components=array(
         7=>array(
              // Component Jäger-Typ Photonentorpedos
              0=>array(
-                    'name'=>'Jäger-Typ Photonentorpedos',
+                    'name'=>'J&auml;ger-Typ Photonentorpedos',
                     'resource_1'=>'750',
                     'resource_2'=>'0',
                     'resource_3'=>'0',
@@ -1559,13 +1559,13 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Diese speziellen Torpedos verfügen über mehr Energie und besitzen zwei verschiedene Feuermodi. Beim ersten wird ein Teil ihrer Energie in den Antrieb geleitet, sodass sie auch schnelle Schiffe treffen können und beim zweiten verursachen sie einen größeren Schaden bei schweren Schiffen.',
+                    'description'=>'Diese speziellen Torpedos verf&uuml;gen &uuml;ber mehr Energie und besitzen zwei verschiedene Feuermodi. Beim ersten wird ein Teil ihrer Energie in den Antrieb geleitet, sodass sie auch schnelle Schiffe treffen k&ouml;nnen und beim zweiten verursachen sie einen gr&ouml;&szlig;eren Schaden bei schweren Schiffen.',
                     'dev_info'=>'',
             ), // Endof Component Jäger-Typ Photonentorpedos
 
              // Component Schläfer-Typ Plasmagranaten
              1=>array(
-                    'name'=>'Schläfer-Typ Plasmagranaten',
+                    'name'=>'Schl&auml;fer-Typ Plasmagranaten',
                     'resource_1'=>'1500',
                     'resource_2'=>'75',
                     'resource_3'=>'0',
@@ -1604,13 +1604,13 @@ $ship_components=array(
                     'torso_10'=>'0',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Diese mit Plasma gefüllten Granaten sind gegen fast jede Art von Schiff einsetzbar. Allerdings stellen sie auch eine große Belastung für das eigene Energiesystem dar.',
+                    'description'=>'Diese mit Plasma gef&uuml;llten Granaten sind gegen fast jede Art von Schiff einsetzbar. Allerdings stellen sie auch eine gro&szlig;e Belastung f&uuml;r das eigene Energiesystem dar.',
                     'dev_info'=>'',
             ), // Endof Component Schläfer-Typ Plasmagranaten
 
              // Component Reißer-Typ M-A-Granaten
              2=>array(
-                    'name'=>'Reißer-Typ M-A-Granaten',
+                    'name'=>'Rei&szlig;er-Typ M-A-Granaten',
                     'resource_1'=>'4500',
                     'resource_2'=>'1125',
                     'resource_3'=>'375',
@@ -1649,7 +1649,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Bei dieser Waffe handelt es sich eigentlich um eine Materie- und eine Antimateriekartusche. Diese werden von den Geschütztürmen (der Sicherheit wegen) seperat auf das Ziel abgefeuert. Bei einem Treffer reagieren sie miteinander und entwickeln eine extreme Sprengwirkung. Für diese Waffe werden jedoch erstklassige Schützen benötigt.',
+                    'description'=>'Bei dieser Waffe handelt es sich eigentlich um eine Materie- und eine Antimateriekartusche. Diese werden von den Gesch&uuml;tzt&uuml;rmen (der Sicherheit wegen) seperat auf das Ziel abgefeuert. Bei einem Treffer reagieren sie miteinander und entwickeln eine extreme Sprengwirkung. F&uuml;r diese Waffe werden jedoch erstklassige Sch&uuml;tzen ben&ouml;tigt.',
                     'dev_info'=>'',
             ), // Endof Component Reißer-Typ M-A-Granaten
 
@@ -1694,7 +1694,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Die Punkt-Singularitäts-Bombe ist eine extrem heikle Angelegenheit. Starke Kraftfelder halten nur für wenige Augenblicke ein microskopisches Schwarzes Loch im Zaum. Nur wenige Schiffe haben genügend Energie um diese Felder zu erzeugen.<br>Wenn die Bombe jedoch ein Ziel erreicht hat, ist ihre Zerstörungskraft unvergleichlich.',
+                    'description'=>'Die Punkt-Singularit&auml;ts-Bombe ist eine extrem heikle Angelegenheit. Starke Kraftfelder halten nur f&uuml;r wenige Augenblicke ein microskopisches Schwarzes Loch im Zaum. Nur wenige Schiffe haben gen&uuml;gend Energie um diese Felder zu erzeugen.<br>Wenn die Bombe jedoch ein Ziel erreicht hat, ist ihre Zerst&ouml;rungskraft unvergleichlich.',
                     'dev_info'=>'',
             ), // Endof Component PS-Bomben
 
@@ -1746,7 +1746,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Diese speziellen Schilde haben sind nicht nur wesentlich stärker als die Standardschilde, sie erschweren auch die Erfassung des Schiffes, wodurch es zusätzlich geschützt wird.',
+                    'description'=>'Diese speziellen Schilde haben sind nicht nur wesentlich st&auml;rker als die Standardschilde, sie erschweren auch die Erfassung des Schiffes, wodurch es zus&auml;tzlich gesch&uuml;tzt wird.',
                     'dev_info'=>'',
             ), // Endof Component Inversionsschilde
 
@@ -1790,7 +1790,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Diese speziellen Schilde haben sind nicht nur wesentlich stärker als die Standardschilde, sie erschweren auch die Erfassung des Schiffes, wodurch es zusätzlich geschützt wird.',
+                    'description'=>'Diese speziellen Schilde haben sind nicht nur wesentlich st&auml;rker als die Standardschilde, sie erschweren auch die Erfassung des Schiffes, wodurch es zus&auml;tzlich gesch&uuml;tzt wird.',
                     'dev_info'=>'',
             ), // Endof Component Inversionsschilde
             
@@ -1835,7 +1835,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Bei diesem Schildsystem wird die Gravitation des Singularitätskerns in einer Peripherie umgekehrt. Dieser masseabweisende Schild ist gegen jede jegliche Art von Geschoss äußerst effektiv.',
+                    'description'=>'Bei diesem Schildsystem wird die Gravitation des Singularit&auml;tskerns in einer Peripherie umgekehrt. Dieser masseabweisende Schild ist gegen jede jegliche Art von Geschoss &auml;u&szlig;erst effektiv.',
                     'dev_info'=>'',
             ), // Endof Component Gravitationsschild
             
@@ -1880,7 +1880,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Bei diesem Schildsystem wird die Gravitation des Singularitätskerns in einer Peripherie umgekehrt. Dieser masseabweisende Schild ist gegen jede jegliche Art von Geschoss äußerst effektiv.',
+                    'description'=>'Bei diesem Schildsystem wird die Gravitation des Singularit&auml;tskerns in einer Peripherie umgekehrt. Dieser masseabweisende Schild ist gegen jede jegliche Art von Geschoss &auml;u&szlig;erst effektiv.',
                     'dev_info'=>'',
             ), // Endof Component Gravitationsschild
 
@@ -1933,7 +1933,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Technische Verbesserungen an den Warpgondeln erhöhen die maximale Warpgeschwindigkeit spürbar.',
+                    'description'=>'Technische Verbesserungen an den Warpgondeln erh&ouml;hen die maximale Warpgeschwindigkeit sp&uuml;rbar.',
                     'dev_info'=>'',
             ), // Endof Component Warpgondeln I
 
@@ -1978,7 +1978,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Technische Verbesserungen an den Warpgondeln erhöhen die maximale Warpgeschwindigkeit spürbar.',
+                    'description'=>'Technische Verbesserungen an den Warpgondeln erh&ouml;hen die maximale Warpgeschwindigkeit sp&uuml;rbar.',
                     'dev_info'=>'',
             ), // Endof Component Warpgondeln II
 
@@ -2023,7 +2023,7 @@ $ship_components=array(
                     'torso_10'=>'0',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Technische Verbesserungen an den Warpgondeln erhöhen die maximale Warpgeschwindigkeit spürbar. Durch Upgrades an den Manövrietriebwerken wird auch die Ausweichgeschwindigkeit erhöht.',
+                    'description'=>'Technische Verbesserungen an den Warpgondeln erh&ouml;hen die maximale Warpgeschwindigkeit sp&uuml;rbar. Durch Upgrades an den Man&ouml;vrietriebwerken wird auch die Ausweichgeschwindigkeit erh&ouml;ht.',
                     'dev_info'=>'',
             ), // Endof Component Warpgondeln III
 
