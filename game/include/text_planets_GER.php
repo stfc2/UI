@@ -22,132 +22,180 @@
 
 
 /*
- * 0 => Bezeichnung des Planeten
- * 1 => menschliches Leben
- * 2 => Rohstoffvorkommen
- * 3 => Beschreibung
- * 4 => Beispiele
+ * 0 => Identification of the planet
+ * 1 => Human life
+ * 2 => Natural resources
+ * 3 => Description
+ * 4 => Examples
  */
  
 $PLANETS_TEXT = array(
     'a' => array(
-        0 => 'Gas-Supergigant_std',
-        1 => 'unm&ouml;glich',
-        2 => 'Riesige Vorkommen von metallischen Elementen, kaum Mineralien',
-        3 => 'Planeten dieser Klasse sind sehr gro&szlig;, meistens eine 300 bis 1000fache Masse der Erde, und liegen in der kalten Zone ihrer Sonne (hohe Entfernung). Durch die geringe Sonneneinstrahlung und hohe Gravitation bilden sie dichte Atmosph&auml;ren aus Wasserstoff. Die hohen Kerntemperaturen verursachen eine W&auml;rmeabstrahlung und eine hohe Oberfl&auml;chentemperatur. Leben ist nur auf orbitalen Stationen m&ouml;glich.',
-        4 => 'Jupiter'
+        0 => 'Geo thermische',
+        1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
+        2 => 'Ausgewogene Ressourcen, m&auml&szlig;ge Menge',
+        3 => 'Planets of this class are very small and rocky, marked by intense volcanic activity. This activity saturated the atmosphere with greenhouse gases, while maintaining high temperature on the surface, even if great distance from the star. When volcanic activity is out, the planet "dies", becoming a class D.',
+        4 => 'Gothos'
     ),
     
     'b' => array(
-        0 => 'Gas-Giganten',
-        1 => 'unm&ouml;glich',
-        2 => 'hohe Vorkommen metallischer Elemente, kaum Lathinum',
-        3 => 'Planeten dieser Klasse sind sehr gro&szlig;, meistens eine 10 bis 100fache Masse der Erde, und liegen in der kalten Zone ihrer Sonne (hohe Entfernung). Durch die geringe Sonneneinstrahlung und hohe Gravitation bilden sie dichte Atmosph&auml;ren aus Wasserstoff. Die hohen Kerntemperaturen verursachen eine W&auml;rmeabstrahlung und eine hohe Oberfl&auml;chentemperatur. Leben ist nur auf orbitalen Stationen m&ouml;glich.',
-        4 => 'Saturn'
+        0 => 'Geomorteus',
+        1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
+        2 => 'Ausgewogene Ressourcen, m&auml&szlig;ge Menge',
+        3 => 'Planets of this class are quite small and located in proximity to its star. Planets unfit for life, have a rarefied atmosphere of helium and sodium. The surface is molten and highly unstable. No life form has ever been discovered on this type of planet.',
+        4 => 'Mercury'
     ),
     
     'c' => array(
-        0 => 'Klasse-C-Welt',
-        1 => 'aufw&auml;ndig, aber m&ouml;glich',
-        2 => 'Geringe Vorkommen von metallischen Elementen',
-        3 => 'Planeten dieser Klasse &auml;hneln in Masse und Entfernung zur Sonne der Erde, ihre Atmosph&auml;re und Oberfl&auml;che ist jedoch durch starke Treibhauseffekte aufgeheizt, so dass Wasser z.B. nur im gasf&ouml;rmigen Zustand vorhanden ist. Mit technischer Unterst&uuml;tzung und Versorgung von au&szlig;en ist Leben m&ouml;glich',
-        4 => 'Venus'
+        0 => 'Geo inaktive',
+        1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
+        2 => 'Ausgewogene Ressourcen, m&auml&szlig;ge Menge',
+        3 => 'When volcanic activity on a planet Class A cease, this becomes a planet geo inactive. Essentially dead, these planets have a cold and rocky surface and have no geological activity.',
+        4 => 'Pluto, Psi 2000'
     ),
     
     'd' => array(
-        0 => 'Klasse-D-Welt',
-        1 => 'aufw&auml;ndig, aber m&ouml;glich',
-        2 => 'Hohe Vorkommen von metallischen Elementen, kaum Lathinum',
-        3 => 'Planeten dieser Klasse gelten meist nur als Planetoiden, da sie je nach Gr&ouml;&szlig;e keine regelm&auml;&szlig;ige Form besitzen, weil ihre Gravitation nicht ausreicht, um eine Kugel zu bilden. Ihre Atmosph&auml;re ist, wenn vorhanden, sehr d&uuml;nn. Die Oberfl&auml;che besteht aus Silikaten und verschiedenen Metallverbindungen. Mit technischer Unterst&uuml;tzung und Versorgung von au&szlig;en ist Leben m&ouml;glich.',
-        4 => 'Ceres (Asteroid im Sol-System)'
+        0 => 'Zwerg',
+        1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
+        2 => 'Ausgewogene Ressourcen, m&auml&szlig;ge Menge',
+        3 => 'This planetary class normally applies only to planetoids with irregular shape due to the scarcity of their gravitational force. Their atmosphere, if present, is very thin. The surface is composed of silicates and various metal compounds. Life is possible only through a technological support and a supply of resources from outside.',
+        4 => 'Ceres (Asteroid in Sol-System)'
     ),
     
     'e' => array(
-        0 => 'Klasse-E-Welt',
-        1 => 'mit technischer Hilfe m&ouml;glich',
-        2 => 'hohe Vorkommen von Mineralien',
-        3 => 'Planeten dieser Klasse &auml;hneln in Masse und Entfernung zur Sonne der Erde und werden als Vorl&auml;ufer der verschiedenen Klassen nach F gesehen. Ihr Kern ist noch geschmolzen, sie besitzen jedoch bereits eine d&uuml;nne Atmosph&auml;re mit Sauerstoff-Bestandteilen. Mit technischer Unterst&uuml;tzung und Versorgung von au&szlig;en ist Leben m&ouml;glich.',
-        4 => '-'
+        0 => 'Geo Kunststoff',
+        1 => 'Ben&ouml;tigt minimale Intervention von Terraforming',
+        2 => 'Anwesenheit von Mineralien &uuml;berdurchschnittlich',
+        3 => 'Planets of this class are similar in mass and distance from its star to Earth and are considered the precursors of the F class planets known. The core of the planet is molten and have a rarefied atmosphere with traces of oxygen. Life is possible through modest technological support and supply of resources from outside.',
+        4 => 'Excalbia'
     ),
     
     'f' => array(
-        0 => 'Klasse-F-Welt',
-        1 => 'mit technischer Hilfe m&ouml;glich',
-        2 => 'hohe Vorkommen von Lathinum',
-        3 => 'Planeten dieser Klasse &auml;hneln in Masse und Entfernung zur Sonne der Erde. Ihre Atmosph&auml;re ist bereits sehr sauerstoffreich, doch durch ihr geringes Alter (ca. 1 Mrd. Jahre) ist ihre Oberfl&auml;che oft noch nicht vollkommen erstarrt. Mit geringer technischer Unterst&uuml;tzung ist Leben m&ouml;glich.',
+        0 => 'Geo metallisch',
+        1 => 'Ben&ouml;tigt minimale Intervention von Terraforming',
+        2 => 'Anwesenheit von Metall &uuml;berdurchschnittlich',
+        3 => 'Planets of this class are similar to the Earth as mass and distance from its star. Their atmosphere is very rich in oxygen, but since they are planets rather young, often the surface is not completely solidified. Survival on the planet is possible with a little technological support.',
         4 => '-'
     ),
     
     'g' => array(
-        0 => 'Klasse-G-Welt',
-        1 => 'mit technischer Hilfe m&ouml;glich',
-        2 => 'hohe Vorkommen metallischer Elemente',
-        3 => 'Planeten dieser Klasse haben ungef&auml;hr die Masse der Erde, befinden sich aber in der hei&szlig;esten Zone der Sonne (geringe Entfernung). Ihre Atmosph&auml;re besteht aus schweren Gasen und gasf&ouml;rmigen Metallen, meistens existieren aber auch noch Sauerstoff-Verbindungen. Die starke Sonneneinstrahlung f&uuml;hrt zu einer hohen Oberfl&auml;chentemperatur. Mit technischer Hilfe ist Leben m&ouml;glich',
+        0 => 'Geo kristallin',
+        1 => 'Ben&ouml;tigt minimale Intervention von Terraforming',
+        2 => 'Anwesenheit von Dilithium &uuml;berdurchschnittlich',
+        3 => 'Planets of this class are similar to the Earth as mass but orbit closer to their sun. Their atmosphere is essentially made of heavy toxic gas. The proximity of the sun causes a high surface temperature. Life is possible only through life support.',
         4 => 'Ceti Alpha V'
     ),
     
     'h' => array(
-        0 => 'Klasse-H-Welt',
-        1 => 'aufw&auml;ndig, aber m&ouml;glich',
-        2 => 'hohe Vorkommen von Lathinum, kaum Mineralien',
-        3 => 'Planten dieser Klasse kommen auf ungef&auml;hr 10% der Erdmasse und liegen in einer gro&szlig;en Entfernung zur Sonne (kalte Zone). Durch ihr geringes Alter ist die Oberfl&auml;che noch geschmolzen oder ist immer noch geologisch sehr aktiv. Die Atmosph&auml;re besteht vornehmlich aus Wasserstoff. Mit technischer Hilfe und Versorgung von au&szlig;en ist Leben m&ouml;glich.',
-        4 => 'Gothos'
+        0 => 'W&uuml;ste',
+        1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
+        2 => 'Handels&uuml;bliche aller Ressourcen',
+        3 => 'Planets of this class only reach 10% of the mass of the Earth and have an orbit far from their sun. Because of their recent formation, the surface is still molten or characterized by intense geological phenomena. The atmosphere is characterized primarily of hydrogen. Survival on the planet is only possible thanks to life support and supplies of vital resources from the outside.',
+        4 => '-'
     ),
     
     'i' => array(
-        0 => 'Klasse-I-Welt',
-        1 => 'aufw&auml;ndig, aber m&ouml;glich',
-        2 => 'riesige Vorkommen von Lathinum, kaum Metallen',
-        3 => 'Planeten dieser Klasse &auml;hneln in Masse und Entfernung zur Sonne der Erde. Sie haben eine sehr aktive Oberfl&auml;che voller Vulkane und ihre Atmosph&auml;re ist stark toxisch. Mit technischer Hilfe und Versorgung von au&szlig;en ist Leben m&ouml;glich.',
+        0 => 'Gasf&ouml;rmige &Uuml;berriesen',
+        1 => 'unm&ouml;glich',
+        2 => 'Gro&szlig;e Pr&auml;senz von Dilithium, knappe Anwesenheit von Mineralien',
+        3 => 'Planets of this class are clusters of gas with a diameter of more than 140,000 kilometers, containing a metallic/crystalline core. Survival on the planet is only possible thanks to life support and supplies of vital resources from the outside.',
         4 => '-'
     ),
     
     'j' => array(
-        0 => 'Klasse-J-Welt',
-        1 => 'aufw&auml;ndig, aber m&ouml;glich',
-        2 => 'hohe Einlagen von mineralischen Elementen, Metallen kaum',
-        3 => 'Planeten dieser Klasse kommen auf ungef&auml;hr 10%-100% der Erdmasse. Ihre aus Edelgasen bestehende Atmosph&auml;re ist d&uuml;nn und das gesamte Erscheinungsbild ist eher mondartig. Mit technischer Hilfe und Versorgung von au&szlig;en ist Leben m&ouml;glich.',
-        4 => 'Luna (Erdmond)'
+        0 => 'Gasf&ouml;rmige Riesen',
+        1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
+        2 => 'Knappe Vorhandensein von Dilithium, hohe Pr&auml;senz von Metall',
+        3 => 'Planets of this class are clusters of gas with a diameter of less than 140,000 km. Survival on the planet is only possible thanks to life support and supplies of vital resources from the outside.',
+        4 => '-'
     ),
     
     'k' => array(
-        0 => 'Klasse-K-Welt',
-        1 => 'aufw&auml;ndig, aber m&ouml;glich',
-        2 => 'geringe Vorkommen von Mineralien Elemente',
-        3 => 'Planeten dieser Klasse kommen auf ungef&auml;hr 10% der Erdmasse und liegen in derselben Zone wie die Erde. Sie haben eine feste Oberfl&auml;che, doch durch ihre geringe Gr&ouml;&szlig;e reicht die Gravitation nicht aus, um eine dichte Atmosph&auml;re zu bilden und Wasser im fl&uuml;ssigen Zustand zu halten. Mit technischer Unterst&uuml;tzung und Versorgung von au&szlig;en ist Leben m&ouml;glich.',
+        0 => 'Anpassungsf&auml;hig',
+        1 => 'Ben&ouml;tigt minimale Intervention von Terraforming',
+        2 => 'Handels&uuml;bliche aller Ressourcen',
+        3 => 'Planets of this class have 10% of the Earth&grave;s mass and a similar orbit. The surface is compact but, due to the low gravitational force, fail to retain an atmosphere or to maintain the water in liquid state. Survival on the planet is only possible thanks to life support and supplies of vital resources from the outside.',
         4 => 'Mars'
     ),
     
     'l' => array(
-        0 => 'Eisriesenwelt',
-        1 => 'unm&ouml;glich',
-        2 => 'enorme Vorkommen mineralischer Rohstoffe, kaum Latinum',
-        3 => 'Planeten dieser Klasse kommen auf ungef&auml;hr 10% der Erdmasse und liegen in der kalten Zone. Durch die geringe Sonneneintrahlung und den festen, kalten Kern ist ihre Oberfl&auml;che und die gesamte Atmosph&auml;re permanent gefroren. Mit technischer Unterst&uuml;tzung und Versorgung von au&szlig;en ist Leben m&ouml;glich.',
-        4 => 'Uranus, Neptun'
+        0 => 'Begrenzt',
+        1 => 'Ben&ouml;tigt minimale Intervention von Terraforming',
+        2 => 'Handels&uuml;bliche aller Ressourcen',
+        3 => 'Planets of this class have rocky and sterile surfaces. Their atmosphere consists of oxygen and argon with high percentages of carbon dioxide. The life forms indigenous are limited to plants. Can be colonized with little effort.',
+        4 => 'Indri VIII'
     ),
         
     
     'm' => array(
-        0 => 'Terranische Welt',
+        0 => 'Terrestrial Welt',
         1 => 'm&ouml;glich',
-        2 => 'mittlere Vorkommen aller wichtigen Rohstoffe',
-        3 => 'Planeten dieser Klasse &auml;hneln in Masse und Entfernung zur Sonne der Erde. Ihre Atmosph&auml;re ist reich an Sauerstoff-Molek&uuml;hlen (O2, O3) und die Oberfl&auml;che ist reichhaltig mit Wasser bedeckt. Ideale Lebensbedigungen.',
-        4 => 'Terra, Vulkan, Quo&acute;nos, Romulus, Bajor, Cardassia, ...'
+        2 => 'Durchschnittliche Anzahl aller Ressourcen',
+        3 => 'Planets of this class are similar in mass and distance from the sun to the Earth. Their atmosphere is rich in oxygen-Mole Cooling (O2, O3) and the surface is rich with water. Ideal settings for Life.',
+        4 => 'Terra, Vulcan, Quo&acute;nos, Romulus, Bajor, Cardassia, ...'
     ),
     
     'n' => array(
-        0 => 'Wasser-Planet',
+        0 => 'Planet im Verfall',
+        1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
+        2 => 'Durchschnittliche Anzahl aller Ressourcen',
+        3 => 'Although they are often present in the Ecosphere, the planets of this class cannot support life. The surface is rocky and reaches temperatures up to 500 C° and a pressure of more than 90 times that on Earth. The atmosphere is very dense and composed of carbon dioxide. The water exists only in the form of vapor collected in dense clouds that surround the planet.',
+        4 => 'Venus',
+    ),
+
+    'o' => array(
+        0 => 'Pelagische',
         1 => 'm&ouml;glich',
-        2 => 'm&auml;&szlig;ige Vorkommen aller wichtigen Rohstoffe',
-        3 => 'Planeten dieser Klasse &auml;hneln in Masse und Entfernung zur Sonne der Erde. Ihre Atmosph&auml;re ist gleich der eines Klasse-M-Planeten beschaffen, die Oberfl&auml;che ist zu weit mehr als 90% mit Wasser bedeckt. Ideale Lebensbedingungen.',
+        2 => 'Durchschnittliche Anzahl aller Ressourcen',
+        3 => 'Planets of this class are very similar to Earth. Their atmosphere is equal to that of the M class planets, the surface is covered for 90% by water. Ideal for life.',
+        4 => 'Pacifica',
+    ),
+
+    'p' => array(
+        0 => 'Glazial',
+        1 => 'm&ouml;glich',
+        2 => 'Durchschnittliche Anzahl aller Ressourcen',
+        3 => 'Planets similar to the O class, they are characterized by low temperatures that solidify the water in thick glaciers. Aquatic life, if present, is adapted to live in extremely strict polar conditions.',
+        4 => 'Europa, Callisto',
+    ),
+
+    'q' => array(
+        0 => 'Variabel',
+        1 => 'm&ouml;glich',
+        2 => 'Durchschnittliche Anzahl aller Ressourcen',
+        3 => 'These planets are characterized by highly eccentric orbits that amplify climate change on the surface.',
         4 => '-',
     ),
-    
+
+    's' => array(
+        0 => 'Kleine &Uuml;berriesen',
+        1 => 'unm&ouml;glich',
+        2 => 'Riesige Mengen an Mineralien und Dilithium',
+        3 => 'These huge gaseous clusters are also known as brown dwarf, have a diameter of between 10 and 50 million km. If they were larger, would be classified as stars. Generate enormous heat and gravitational forces, capable of attracting around if a large number of satellites.',
+        4 => '-',
+    ),
+
+    't' => array(
+        0 => 'Gro&szlig;e &Uuml;berriesen',
+        1 => 'unm&ouml;glich',
+        2 => 'Immensen Vorhandensein von Mineralien und Dilithium',
+        3 => 'These huge gaseous clusters are also known as brown dwarf, have a diameter ranging between 50 and 120 million km. If they were larger, would be classified as stars. Generate enormous heat and gravitational forces, capable of attracting around if a large number of satellites.',
+        4 => '-',
+    ),
+
+    'x' => array(
+        0 => 'Geringf&uuml;gige brennende planet',
+        1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
+        2 => 'Enormen Reserven von Metallen, Mineralien und Dilithium',
+        3 => 'Planets of this class have an extremely toxic atmosphere and the surface rarely descend to temperature below 500 Kelvin  degrees. The surface winds blow at high speed and very few substances are resistant to corrosive gases in the atmosphere. Life is possible only through massive intervention of terraforming and the use of considerable resources.',
+        4 => '-',
+    ),
+
     'y' => array(
-        0 => 'D&auml;mon-Planet',
-        1 => 'sehr aufw&auml;ndig, aber m&ouml;glich',
-        2 => 'hoch Vorkommen aller Rohstoffe',
-        3 => 'Planeten dieser Klasse sind Planeten bzw. Planetoiden haben eine extrem toxische Atmosph&auml;re und ihre sehr aktive Oberfl&auml;che k&uuml;hlt selten unter 500 Kelvin ab. Die Oberfl&auml;chenwinde erreichen mehrfache Schallgeschwindigkeit und den aggresiven Atmosph&auml;ren-Gasen k&ouml;nnen nur wenige Stoffe widerstehen. Mit massiver technischer Unterst&uuml;tzung und Versorgung von au&szlig;en ist Leben m&ouml;glich',
+        0 => 'Gro&szlig;e brennende planet',
+        1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
+        2 => 'Enormen Reserven von Metallen, Mineralien und Dilithium',
+        3 => 'Planets of this class have an extremely toxic atmosphere and the surface rarely descend to temperature below 500 Kelvin  degrees. The surface winds blow at high speed and very few substances are resistant to corrosive gases in the atmosphere. Life is possible only through massive intervention of terraforming and the use of considerable resources.',
         4 => '-'
     ),
 );

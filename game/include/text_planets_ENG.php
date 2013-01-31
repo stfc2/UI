@@ -22,132 +22,180 @@
 
 
 /*
- * 0 => Heading the planet
+ * 0 => Identification of the planet
  * 1 => Human life
- * 2 => Raw materials
+ * 2 => Natural resources
  * 3 => Description
  * 4 => Examples
  */
  
 $PLANETS_TEXT = array(
     'a' => array(
-        0 => 'Gas-Supergiant',
-        1 => 'Impossible',
-        2 => 'Huge occurrences of metallic elements, hardly minerals',
-        3 => 'Planets in this class are very large, usually from 300 to 1000 times the mass of the Earth, and are in the cold zone of its Sun (high range). Due to the low sunlight and high gravity, they form dense atmospheres of hydrogen. The high temperatures cause a nuclear heat dissipation and high surface temperature. Life is possible only in orbital stations.',
-        4 => 'Jupiter'
+        0 => 'Geothermal',
+        1 => 'Requires heavy intervention of terraforming',
+        2 => 'Balanced resources, moderate amount',
+        3 => 'Planets of this class are very small and rocky, marked by intense volcanic activity. This activity saturated the atmosphere with greenhouse gases, while maintaining high temperature on the surface, even if great distance from the star. When volcanic activity is out, the planet "dies", becoming a class D.',
+        4 => 'Gothos'
     ),
     
     'b' => array(
-        0 => 'Gas-Giant',
-        1 => 'Impossible',
-        2 => 'High occurrences of metallic elements, hardly dilithium',
-        3 => 'Planets in this class are very large, usually from 10 to 100 times the mass of the Earth, and are in the cold zone of its Sun (high range). Due to the low sunlight and high gravity, they form dense atmospheres of hydrogen. The high temperatures cause a nuclear heat dissipation and high surface temperature. Life is possible only in orbital stations.',
-        4 => 'Saturn'
+        0 => 'Geomorteus',
+        1 => 'Requires heavy intervention of terraforming',
+        2 => 'Balanced resources, moderate amount',
+        3 => 'Planets of this class are quite small and located in proximity to its star. Planets unfit for life, have a rarefied atmosphere of helium and sodium. The surface is molten and highly unstable. No life form has ever been discovered on this type of planet.',
+        4 => 'Mercury'
     ),
     
     'c' => array(
-        0 => 'Class-C-World',
-        1 => 'Expensive, but possible',
-        2 => 'Low occurrences of metallic elements',
-        3 => 'Planets in this class are similar in mass and distance to the Sun to the Earth, its atmosphere and surface, however, is heated up by strong greenhouse so that water for example exists only in the gaseous state. With technical support and supplies from the outside life is possible.',
-        4 => 'Venus'
+        0 => 'Geo inactive',
+        1 => 'Requires heavy intervention of terraforming',
+        2 => 'Balanced resources, moderate amount',
+        3 => 'When volcanic activity on a planet Class A cease, this becomes a planet geo inactive. Essentially dead, these planets have a cold and rocky surface and have no geological activity.',
+        4 => 'Pluto, Psi 2000'
     ),
     
     'd' => array(
-        0 => 'Class-D-World',
-        1 => 'Expensive, but possible',
-        2 => 'High occurrences of metallic elements, hardly dilithium',
-        3 => 'This planetary class usually is applied only on planetoid, as they no depending on the size of a regular shape, because their gravity is not sufficient to form a ball. Their atmosphere is, if available, very thin. The surface is composed of silicates and various metal compounds. With technical support and supplies from the outside life is possible.',
-        4 => 'Ceres (Asteroid im Sol-System)'
+        0 => 'Dwarf',
+        1 => 'Requires heavy intervention of terraforming',
+        2 => 'Balanced resources, moderate amount',
+        3 => 'This planetary class normally applies only to planetoids with irregular shape due to the scarcity of their gravitational force. Their atmosphere, if present, is very thin. The surface is composed of silicates and various metal compounds. Life is possible only through a technological support and a supply of resources from outside.',
+        4 => 'Ceres (Asteroid in Sol-System)'
     ),
     
     'e' => array(
-        0 => 'Class-E-World',
-        1 => 'Possible with technical assistance',
-        2 => 'High occurrences of minerals',
-        3 => 'Planets of this class are similar in mass and distance from the Sun to the Earth and they are seen as precursors of the various classes according to F. Their core is still molten, they have, however, already a thin atmosphere with oxygen components. With technical support and supplies from the outside life is possible.',
-        4 => '-'
+        0 => 'Geo plastic',
+        1 => 'Requires minimum intervention of terraforming',
+        2 => 'Presence of minerals above the average',
+        3 => 'Planets of this class are similar in mass and distance from its star to Earth and are considered the precursors of the F class planets known. The core of the planet is molten and have a rarefied atmosphere with traces of oxygen. Life is possible through modest technological support and supply of resources from outside.',
+        4 => 'Excalbia'
     ),
     
     'f' => array(
-        0 => 'Class-F-World',
-        1 => 'Possible with technical assistance',
-        2 => 'High occurrences of dilithium',
-        3 => 'Planets of this class are similar in mass and distance from the Sun to the Earth. Their atmosphere is already very rich in oxygen, but due to their low age (about 1 billion years), their surface often is not yet perfectly solidified. Minimum technical assistance supports life.',
+        0 => 'Geo metallic',
+        1 => 'Requires minimum intervention of terraforming',
+        2 => 'Presence of metal above the average',
+        3 => 'Planets of this class are similar to the Earth as mass and distance from its star. Their atmosphere is very rich in oxygen, but since they are planets rather young, often the surface is not completely solidified. Survival on the planet is possible with a little technological support.',
         4 => '-'
     ),
     
     'g' => array(
-        0 => 'Class-G-World',
-        1 => 'Possible with technical assistance',
-        2 => 'High occurrences of metallic elements',
-        3 => 'Planets of this class are about the mass of the Earth, but they are in the hottest zone of the Sun (short distance). Their atmosphere mostly exist but consists of gases and gaseous heavy metals, also oxygen compounds. Strong solar radiation leads to a high surface temperature. With technical assistance life is possible.',
+        0 => 'Geo crystalline',
+        1 => 'Requires minimum intervention of terraforming',
+        2 => 'Presence of dilithium above the average',
+        3 => 'Planets of this class are similar to the Earth as mass but orbit closer to their sun. Their atmosphere is essentially made of heavy toxic gas. The proximity of the sun causes a high surface temperature. Life is possible only through life support.',
         4 => 'Ceti Alpha V'
     ),
     
     'h' => array(
-        0 => 'Class-H-World',
-        1 => 'Expensive, but possible',
-        2 => 'High occurrences of dilithium, hardly minerals',
-        3 => 'Planets of this class come to about 10% of Earth&grave;s mass and are at a great distance from the Sun (cold zone). Due to their low age, the surface is still molten or is still geologically active. The atmosphere is primarily composed by hydrogen. With technical assistance and supplies from the outside life is possible.',
-        4 => 'Gothos'
+        0 => 'Desert',
+        1 => 'Requires heavy intervention of terraforming',
+        2 => 'Standard presence of all resources',
+        3 => 'Planets of this class only reach 10% of the mass of the Earth and have an orbit far from their sun. Because of their recent formation, the surface is still molten or characterized by intense geological phenomena. The atmosphere is characterized primarily of hydrogen. Survival on the planet is only possible thanks to life support and supplies of vital resources from the outside.',
+        4 => '-'
     ),
     
     'i' => array(
-        0 => 'Class-I-World',
-        1 => 'Expensive, but possible',
-        2 => 'Huge occurrences of dilithium, hardly metals',
-        3 => 'Planets of this class are similar in mass and distance from the Sun to the Earth. They have a very active surface full of volcanoes and their atmosphere is very toxic. With technical assistance and supplies from the outside life is possible.',
+        0 => 'Gaseous supergiant',
+        1 => 'Impossible',
+        2 => 'Huge presence of dilithium, scarce presence of minerals',
+        3 => 'Planets of this class are clusters of gas with a diameter of more than 140,000 kilometers, containing a metallic/crystalline core. Survival on the planet is only possible thanks to life support and supplies of vital resources from the outside.',
         4 => '-'
     ),
     
     'j' => array(
-        0 => 'Class-J-World',
-        1 => 'Expensive, but possible',
-        2 => 'High deposits of mineral elements, hardly metals',
-        3 => 'Planets of this class comes about to 10% - 100% of Earth&grave;s mass. Their atmosphere is thin and consists of noble gases the overall appearance is more like a moon. With technical assistance and supplies from the outside life is possible.',
-        4 => 'Luna (Earth&grave;s Moon)'
+        0 => 'Gaseous giant',
+        1 => 'Requires heavy intervention of terraforming',
+        2 => 'Scarce presence of dilithium, high presence of metal',
+        3 => 'Planets of this class are clusters of gas with a diameter of less than 140,000 km. Survival on the planet is only possible thanks to life support and supplies of vital resources from the outside.',
+        4 => '-'
     ),
     
     'k' => array(
-        0 => 'Class-K-World',
-        1 => 'Possible with technical assistance',
-        2 => 'Low occurrences of minerals elements',
-        3 => 'Planets of this class comes about to 10% of Earth&grave;s mass and are in the same zone as the Earth. They have a solid surface, but due to their small size, the gravity is not sufficient to form a dense atmosphere, and water to maintain the liquid state. With technical support and supplies from outside life is possible.',
+        0 => 'Adaptable',
+        1 => 'Requires minimum intervention of terraforming',
+        2 => 'Standard presence of all resources',
+        3 => 'Planets of this class have 10% of the Earth&grave;s mass and a similar orbit. The surface is compact but, due to the low gravitational force, fail to retain an atmosphere or to maintain the water in liquid state. Survival on the planet is only possible thanks to life support and supplies of vital resources from the outside.',
         4 => 'Mars'
     ),
     
     'l' => array(
-        0 => 'Iced-Giant',
-        1 => 'Impossible',
-        2 => 'Huge deposits of mineral raw materials and hardly dilithium',
-        3 => 'Planets of this class comes about to 10% of Earth&grave;s mass, lying in the cold zone. Due to the low power of sun rays and the solid core, the surface is cold and the entire atmosphere is permanently frozen. With huge technical support and heavy supplies from the outside life is possible.',
-        4 => 'Uranus, Neptun'
+        0 => 'Marginal',
+        1 => 'Requires minimum intervention of terraforming',
+        2 => 'Standard presence of all resources',
+        3 => 'Planets of this class have rocky and sterile surfaces. Their atmosphere consists of oxygen and argon with high percentages of carbon dioxide. The life forms indigenous are limited to plants. Can be colonized with little effort.',
+        4 => 'Indri VIII'
     ),
         
     
     'm' => array(
         0 => 'Terrestrial World',
         1 => 'Possible',
-        2 => 'Medium occurrences of all major commodities',
+        2 => 'Average number of all resources',
         3 => 'Planets of this class are similar in mass and distance from the sun to the Earth. Their atmosphere is rich in oxygen-Mole Cooling (O2, O3) and the surface is rich with water. Ideal settings for Life.',
         4 => 'Terra, Vulcan, Quo&acute;nos, Romulus, Bajor, Cardassia, ...'
     ),
     
     'n' => array(
-        0 => 'Water-Planet',
+        0 => 'Planet in decay',
+        1 => 'Requires heavy intervention of terraforming',
+        2 => 'Average number of all resources',
+        3 => 'Although they are often present in the Ecosphere, the planets of this class cannot support life. The surface is rocky and reaches temperatures up to 500 C° and a pressure of more than 90 times that on Earth. The atmosphere is very dense and composed of carbon dioxide. The water exists only in the form of vapor collected in dense clouds that surround the planet.',
+        4 => 'Venus',
+    ),
+
+    'o' => array(
+        0 => 'Pelagic',
         1 => 'Possible',
-        2 => 'Moderate incidence of all major commodities',
-        3 => 'Planets of this class are similar in mass and distance from the sun to the Earth. Their atmosphere is equal to that of a Class M planet, the surface is about far more than 90% covered with water. An ideal living conditions.',
+        2 => 'Average number of all resources',
+        3 => 'Planets of this class are very similar to Earth. Their atmosphere is equal to that of the M class planets, the surface is covered for 90% by water. Ideal for life.',
+        4 => 'Pacifica',
+    ),
+
+    'p' => array(
+        0 => 'Glacial',
+        1 => 'Possible',
+        2 => 'Average number of all resources',
+        3 => 'Planets similar to the O class, they are characterized by low temperatures that solidify the water in thick glaciers. Aquatic life, if present, is adapted to live in extremely strict polar conditions.',
+        4 => 'Europa, Callisto',
+    ),
+
+    'q' => array(
+        0 => 'Variable',
+        1 => 'Possible',
+        2 => 'Average number of all resources',
+        3 => 'These planets are characterized by highly eccentric orbits that amplify climate change on the surface.',
         4 => '-',
     ),
-    
+
+    's' => array(
+        0 => 'Minor ultragiant',
+        1 => 'Impossible',
+        2 => 'Huge amounts of minerals and dilithium',
+        3 => 'These huge gaseous clusters are also known as brown dwarf, have a diameter of between 10 and 50 million km. If they were larger, would be classified as stars. Generate enormous heat and gravitational forces, capable of attracting around if a large number of satellites.',
+        4 => '-',
+    ),
+
+    't' => array(
+        0 => 'Major ultragiant',
+        1 => 'Impossible',
+        2 => 'Immense presence of minerals and dilithium',
+        3 => 'These huge gaseous clusters are also known as brown dwarf, have a diameter ranging between 50 and 120 million km. If they were larger, would be classified as stars. Generate enormous heat and gravitational forces, capable of attracting around if a large number of satellites.',
+        4 => '-',
+    ),
+
+    'x' => array(
+        0 => 'Minor burning planet',
+        1 => 'Requires heavy intervention of terraforming',
+        2 => 'Enormous reserves of metals, minerals and dilithium',
+        3 => 'Planets of this class have an extremely toxic atmosphere and the surface rarely descend to temperature below 500 Kelvin  degrees. The surface winds blow at high speed and very few substances are resistant to corrosive gases in the atmosphere. Life is possible only through massive intervention of terraforming and the use of considerable resources.',
+        4 => '-',
+    ),
+
     'y' => array(
-        0 => 'Daemon-Planet',
-        1 => 'Very expensive, but possible',
-        2 => 'Very high resources of all commodities',
-        3 => 'Planets of this class are planets or planetoids having an extremely toxic atmosphere and their very active surface rarely cools below 500 Kelvin. The surface winds can reach the speed of sound and few materials can withstand the most corrosive atmospheric gases. With a strong technical support and a solid provision from outside life is possible.',
+        0 => 'Major burning planet',
+        1 => 'Requires heavy intervention of terraforming',
+        2 => 'Enormous reserves of metals, minerals and dilithium',
+        3 => 'Planets of this class have an extremely toxic atmosphere and the surface rarely descend to temperature below 500 Kelvin  degrees. The surface winds blow at high speed and very few substances are resistant to corrosive gases in the atmosphere. Life is possible only through massive intervention of terraforming and the use of considerable resources.',
         4 => '-'
     ),
 );
