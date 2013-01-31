@@ -95,7 +95,7 @@ define ("ENG_TEXT2", 'Build a powerplant.');
 
 define ("ENG_TEXT3", 'Error: Build queue occupied!');
 
-define ("ENG_TEXT4", 'Error: Nothing is beeing built!');
+define ("ENG_TEXT4", 'Error: Nothing is being built!');
 
 define ("ENG_TEXT5", 'The second building needs the first one');
 
@@ -161,7 +161,7 @@ define ("ITA_TEXT2", 'Costruisci una Centrale.');
 
 define ("ITA_TEXT3", 'Errore: coda di costruzione piena!');
 
-define ("ITA_TEXT4", 'Errore: non &egrave; stato costruito nulla!');
+define ("ITA_TEXT4", 'Errore: nessun edificio in costruzione!');
 
 define ("ITA_TEXT5", 'La seconda costruzione necessita dell\'edificio prima');
 
