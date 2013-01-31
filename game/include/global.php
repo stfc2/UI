@@ -77,7 +77,7 @@ define('DATA_UID', 2);
 
 
 
-// Logbuch - Constant values
+// Logbook - Constant values
 
 define('LOGBOOK_TACTICAL', 1);
 
@@ -247,7 +247,7 @@ define ('USER_WHOLE_SYSTEM', 1);
 define ('USER_START_BOOST', 0);
 
 
-// Beschleuningt den Scheduler
+// Accelerates the Scheduler
 
 $addres = array(
 
@@ -532,7 +532,7 @@ $QUADRANT_NAME = array(
 
 /*
 
- * 0 => Metall
+ * 0 => Metal
 
  * 1 => Minerals
 
@@ -943,9 +943,9 @@ $BUILDING_DATA = array(
 
  * 2 => Dilithium
 
- * 3 => Forschzeit / Vigorous time?
+ * 3 => Research time
 
- * 4 => Forschzeitanstieg pro Lv / Vigorous time rise per Lv?
+ * 4 => Research time increase per Lv
 
  */
 
