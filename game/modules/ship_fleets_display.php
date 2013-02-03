@@ -1135,9 +1135,32 @@ else {
             }
         }
         elseif(!empty($fleet['move_id'])) {
+	    // 03/02/13 - DC: Still here, handling FOW for the starting planet
+	    $system_known = false;
+	    if($fleet['start_owner_id'] == $game->player['user_id'])
+                $system_known = true;
+            else {
+                $sql = 'SELECT pd.log_code FROM (planets p)
+                               LEFT JOIN (planet_details pd) ON p.system_id = pd.system_id
+                        WHERE p.planet_id = '.$fleet['start'].' AND pd.user_id = '.$game->player['user_id'];
+                if((($_temp = $db->queryrow($sql)) == true) && ($_temp['log_code'] > 0)) {
+                    $system_known = true;
+                }
+            }
+	    if($system_known) {
+                $start_name = addslashes($fleet['start_planet_name']);
+                $start_owner = ( (!empty($fleet['start_owner_id'])) ? constant($game->sprache("TEXT72")).' <b>'.$fleet['start_owner_name'].'</b>' : constant($game->sprache("TEXT73")) );
+                $start_class = strtoupper($fleet['start_planet_type']);
+            }
+            else {
+                $start_name = '&#171;'.constant($game->sprache("TEXT56")).'&#187;';
+                $start_owner = constant($game->sprache("TEXT72")).' <b>&#171;'.constant($game->sprache("TEXT56")).'&#187;</b>';
+                $start_class = '&#171;'.constant($game->sprache("TEXT77")).'&#187;';
+            }
+
             $start_planet_str = overlib(
                 $game->get_sector_name($fleet['start_sector_id']).':'.$game->get_system_cname($fleet['start_system_x'], $fleet['start_system_y']).':'.($fleet['start_distance_id'] + 1),
-                '<b>'.addslashes($fleet['start_planet_name']).'</b><br>'.( (!empty($fleet['start_owner_id'])) ? constant($game->sprache("TEXT72")).' <b>'.$fleet['start_owner_name'].'</b>' : constant($game->sprache("TEXT73")) ).'<br>'.constant($game->sprache("TEXT74")).' <b>'.strtoupper($fleet['start_planet_type']).'</b>',
+                '<b>'.$start_name.'</b><br>'.$start_owner.'<br>'.constant($game->sprache("TEXT74")).' <b>'.$start_class.'</b>',
                 parse_link('a=tactical_cartography&planet_id='.encode_planet_id($fleet['start']))
             );
 
