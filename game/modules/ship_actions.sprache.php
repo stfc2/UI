@@ -139,7 +139,7 @@ define ("GER_TEXT57", '<b>Kolonisieren:</b><br>Der Zielplanet wird, wenn er unbe
 
 define ("GER_TEXT58", '<b>Planeten-Analyse:</b><br>Das Schiff f&uuml;hrt eine Reihe von Scans der Umgebung und von Bord eines wissenschaftlichen Teams am Boden f&uuml;r die Ausf&uuml;hrung Geological Survey, wenn m&ouml;glich, die Berichterstattung dann die Ergebnisse der Analyse.');
 
-define ("GER_TEXT59", '<b>Terraform:</b><br>Das Ziel Asteroiden, verwenden eine Technologie im Versuchsstadium, &Auml;nderungen in ihrer Zusammensetzung. Die Folgen sind unvorhersehbar, aber das Experiment kann die Geburt eines neuen Planeten lebenswichtig f&uuml;hren. NB Um zu funktionieren, muss die Flotte haben eine Reserve von 250.000');
+define ("GER_TEXT59", '<b>Terraform:</b><br>Das Ziel Asteroiden, verwenden eine Technologie im Versuchsstadium, &Auml;nderungen in ihrer Zusammensetzung. Die Folgen sind unvorhersehbar, aber das Experiment kann die Geburt eines neuen Planeten lebenswichtig f&uuml;hren. NB Um zu funktionieren, muss die Flotte haben eine Reserve von 150.000');
 
 define ("GER_TEXT60", 'Unzureichende Ressourcen, um das Terraforming durchzuf&uuml;hren!');
 
@@ -278,7 +278,7 @@ define ("ENG_TEXT57", '<b>Colonize:</b><br>The aim planet will be colonized if i
 
 define ("ENG_TEXT58", '<b>Planet analysis:</b><br>The ship will perform a series of scans of the area and will disembark a scientific team on the ground for executing geological survey if possible, reporting then the results of the analysis.');
 
-define ("ENG_TEXT59", '<b>Terraform:</b><br>The target asteroid, using an experimental technology, changes in its composition. The effects are unpredictable but the experiment may lead to the birth of a new vital planet. NB In order to function, the fleet must have a reserve of 250,000');
+define ("ENG_TEXT59", '<b>Terraform:</b><br>The target asteroid, using an experimental technology, changes in its composition. The effects are unpredictable but the experiment may lead to the birth of a new vital planet. NB In order to function, the fleet must have a reserve of 150,000');
 
 define ("ENG_TEXT60", 'Insufficient resources in order to perform the terraforming!');
 
@@ -417,7 +417,7 @@ define ("ITA_TEXT57", '<b>Colonizzazione:</b><br>Il pianeta obiettivo, se disabi
 
 define ("ITA_TEXT58", '<b>Analisi Pianeta:</b><br>La nave eseguir&agrave; una serie di scansioni della superficie e sbarcher&agrave; una squadra scientifica a terra per i rilievi geologici qualora sia possibile, riferendo poi gli esiti delle analisi.');
 
-define ("ITA_TEXT59", '<b>Terraform:</b><br>L&#146;asteroide obiettivo, mediante una tecnologia sperimentale, viene modificato nella sua composizione. Gli effetti dell&#146;esperimento sono imprevedibili ma possono portare alla nascita di un nuovo pianeta vitale. N.B. Per poter funzionare, la flotta deve disporre di una riserva di almeno 250.000');
+define ("ITA_TEXT59", '<b>Terraform:</b><br>L&#146;asteroide obiettivo, mediante una tecnologia sperimentale, viene modificato nella sua composizione. Gli effetti dell&#146;esperimento sono imprevedibili ma possono portare alla nascita di un nuovo pianeta vitale. N.B. Per poter funzionare, la flotta deve disporre di una riserva di almeno 150.000');
 
 define ("ITA_TEXT60", 'Risorse insufficenti per procedere al terraforming!');
 
@@ -430,5 +430,7 @@ define ("ITA_TEXT63", 'Richiesto: ');
 define ("ITA_TEXT64", '<b>Trattati Diplomatici:</b><br>La nave sbarcher&agrave; una delegazione diplomatica con il compito di stringere accordi di cooperazione e scambio culturale con la popolazione locale. Se le trattative andranno a buon fine, la fiducia nella nostra razza da parte degli abitanti aumenter&agrave; sensibilmente.<br>La risposta dei Coloni potrebbe richiedere un p&ograve; di tempo per arrivare.');
 
 define ("ITA_TEXT65", '<b>Ricognizione:</b><br>La nave sbarcher&agrave; sul pianeta una squadra investigativa con il compito di verificare le condizioni sociali e politiche della popolazione ed ottenere informazioni utili per futuri contatti diplomatici.');
+
+define ("ITA_TEXT66", '<b>Colonia Indipendente:</b><br>Il pianeta obiettivo viene colonizzato da una nave colonizzatrice della flotta. Questa nave viene smantellata per costruire con essa il primo edificio. La colonia verrà gestita autonomamente dai Coloni stessi, senza un diretto controllo da parte del giocatore.');
 
 ?>
