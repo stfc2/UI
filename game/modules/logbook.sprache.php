@@ -333,7 +333,7 @@ define ("GER_TEXT151", '-- OVER average --');
 
 define ("GER_TEXT152", 'The experiment did not occur for lack of resources');
 
-define ("GER_TEXT153", 'This operation can only be performed on unsettled class <b>D</b> planets');
+define ("GER_TEXT153", 'This operation can only be performed on unsettled class <b>A</b>, <b>B</b>, <b>C</b> or <b>D</b> planets');
 
 define ("GER_TEXT154", 'The experiment did occur correctly, at least there is a planet still orbiting here.');
 
@@ -671,7 +671,7 @@ define ("ENG_TEXT151", '-- OVER average --');
 
 define ("ENG_TEXT152", 'The experiment did not occur for lack of resources');
 
-define ("ENG_TEXT153", 'This operation can only be performed on unsettled class <b>D</b> planets');
+define ("ENG_TEXT153", 'This operation can only be performed on unsettled class <b>A</b>, <b>B</b>, <b>C</b> or <b>D</b> planets');
 
 define ("ENG_TEXT154", 'The experiment did occur correctly, at least there is a planet still orbiting here.');
 
@@ -1009,7 +1009,7 @@ define ("ITA_TEXT151", '-- SUPERIORE alla norma --');
 
 define ("ITA_TEXT152", 'L&#146;esperimento non ha avuto luogo per mancanza delle risorse necessarie');
 
-define ("ITA_TEXT153", 'L&#146;operazione &egrave; possibile solo su pianeti di classe <b>D</b> disabitati');
+define ("ITA_TEXT153", 'L&#146;operazione &egrave; possibile solo su pianeti disabitati di classe <b>A</b>, <b>B</b>, <b>C</b> oppure <b>D</b>');
 
 define ("ITA_TEXT154", 'L&#146;esperimento ha avuto successo, quantomeno esiste ancora un pianeta in questa orbita.');
 
