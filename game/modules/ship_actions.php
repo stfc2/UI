@@ -1036,16 +1036,20 @@ switch($step) {
         $ship_id = (int)$_POST['ship_id'];
         
         $is_terraform = false;
+	$is_settler = false;
         if(!empty($_POST['type'])) {
             switch($_POST['type']) {
                 case 'terraform': 
                     $is_terraform = true;
                 break;
+		case 'settler':
+		    $is_settler = true;
+		break;
             }
         }
 
         $sql = 'INSERT INTO scheduler_shipmovement (user_id, move_status, move_exec_started, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
-                VALUES ('.$game->player['user_id'].', 0, 0, '.$planet_id.', '.$planet_id.', 0, 0, 0, '.$ACTUAL_TICK.', '.($ACTUAL_TICK + 1).', '.$n_ships.', 24, "'.serialize(array($ship_id, $is_terraform)).'")';
+                VALUES ('.$game->player['user_id'].', 0, 0, '.$planet_id.', '.$planet_id.', 0, 0, 0, '.$ACTUAL_TICK.', '.($ACTUAL_TICK + 1).', '.$n_ships.', 24, "'.serialize(array($ship_id, $is_terraform, $is_settler)).'")';
 
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not insert new movement data');
@@ -1127,7 +1131,8 @@ switch($step) {
           <td>
             '.constant($game->sprache("TEXT17")).' '.constant($game->sprache("TEXT56")).' ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')
             '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
-            <input type="radio" name="type" value="terraform" '.(($planet['planet_type'] != 'd') ? 'disabled="disabled"' : '&nbsp;').'>'.constant($game->sprache("TEXT59")).' <img src='.$game->GFX_PATH.'menu_latinum_small.gif>.<br><br>
+            <input type="radio" name="type" value="terraform" '.(($planet['planet_type'] != 'a' && $planet['planet_type'] != 'b' && $planet['planet_type'] != 'c' && $planet['planet_type'] != 'd') ? 'disabled="disabled"' : '&nbsp;').'>'.constant($game->sprache("TEXT59")).' <img src='.$game->GFX_PATH.'menu_latinum_small.gif>.<br><br>
+	    <input type="radio" name="type" value="settlers" disabled="disabled">'.constant($game->sprache("TEXT66")).'<br><br>
             <input type="radio" name="type" value="colony" checked="checked">'.constant($game->sprache("TEXT57")).'<br><br>
 
             <table border="0" cellpadding="2" cellspacing="2">
