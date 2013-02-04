@@ -1868,12 +1868,12 @@ echo'
 					<tr>
 						<td>'.constant($this->sprache("TCLASS")).'</td>
 						<td>&nbsp;</td>
-						<td><input type="radio" name="type" value="n"> N</td>
+						<td><input type="radio" name="type" value="m"> M</td>
 					</tr>
 					<tr>
 						<td></td>
 						<td>&nbsp;</td>
-						<td><input type="radio" name="type" value="m"> M</td>
+						<td><input type="radio" name="type" value="o"> O</td>
 					</tr>
 					</table><br>
 					<table>
