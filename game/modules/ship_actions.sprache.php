@@ -153,6 +153,8 @@ define ("GER_TEXT64", '<b>Diplomatische Vertr&auml;ge:</b><br>Das Schiff wird La
 
 define ("GER_TEXT65", '<b>Aufkl&aum;rung:</b><br>Das Schiff wird Strahl nach unten auf dem Planeten eine Untersuchung Team mit der Aufgabe der Beurteilung der sozialen und politischen Bedingungen der Bev&ouml;lkerung und erhalten n&uuml;tzliche Informationen f&uuml;r k&uuml;nftige diplomatische Kontakte.');
 
+define ("GER_TEXT66", '<b>Colonize:</b><br>The aim planet will be colonized if it is uninhabited, by a colonization ship of the fleet. Besides, this ship will be dismantled and the first building is built from it. Its crew will be stationed on the planet. The new colony will be handled by the Settlers indipendent faction , with no intervention of the player.');
+
 
 //English
 define ("ENG_TEXT0", 'Ship movements');
@@ -292,6 +294,7 @@ define ("ENG_TEXT64", '<b>Diplomatic Treaties:</b><br>The ship will land a diplo
 
 define ("ENG_TEXT65", '<b>Reconnaissance:</b><br>The ship will beam down on the planet an investigation team with the task of assessing the social and political conditions of the population and obtain useful information for future diplomatic contacts.');
 
+define ("ENG_TEXT66", '<b>Colonize:</b><br>The aim planet will be colonized if it is uninhabited, by a colonization ship of the fleet. Besides, this ship will be dismantled and the first building is built from it. Its crew will be stationed on the planet. The new colony will be handled by the Settlers indipendent faction , with no intervention of the player.');
 
 //Italiano
 define ("ITA_TEXT0", 'Movimenti flotte');
