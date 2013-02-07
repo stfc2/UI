@@ -988,7 +988,7 @@ $ship_components=array(
                     'dev_info'=>'',
             ), // Endof Component Disruptor MK XXI
 
-      'name'=>'Primäre Waffen',
+      'name'=>'Prim&auml;re Waffen',
       'num'=>'7',
       ), // Endof Category Primäre Waffen
 
@@ -1220,7 +1220,7 @@ $ship_components=array(
                     'dev_info'=>'',
             ), // Endof Component Plasmatorpedos MK  V
 
-      'name'=>'Sekundäre Waffen',
+      'name'=>'Sekund&auml;re Waffen',
       'num'=>'5',
       ), // Endof Category Sekundäre Waffen
 
@@ -1452,7 +1452,7 @@ $ship_components=array(
                     'dev_info'=>'',
             ), // Endof Component Primär- und Sekundärschilde
 
-      'name'=>'Hülle / Schilde',
+      'name'=>'H&uuml;lle / Schilde',
       'num'=>'5',
       ), // Endof Category Hülle / Schilde
 

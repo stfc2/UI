@@ -811,7 +811,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 					                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Photonentorpedos sind unabh&auml;ngig vom Schiff und haben einen eigenen Antrieb sowie Zielleitsystem. Ein Vorteil ist, dass sie auch bei Überlichtgeschwindigkkeit eingesetzt werden k&ouml;nnen.',
+                    'description'=>'Photonentorpedos sind unabh&auml;ngig vom Schiff und haben einen eigenen Antrieb sowie Zielleitsystem. Ein Vorteil ist, dass sie auch bei &Uuml;berlichtgeschwindigkkeit eingesetzt werden k&ouml;nnen.',
                     'dev_info'=>'',
             ), // Endof Component Photonentorpedos
 
@@ -856,7 +856,7 @@ $ship_components=array(
                     'torso_10'=>'1',
 										                    'torso_11'=>'0',
                     'torso_12'=>'0',
-                    'description'=>'Photonentorpedos sind unabh&auml;ngig vom Schiff und haben einen eigenen Antrieb sowie Zielleitsystem. Ein Vorteil ist, dass sie auch bei Überlichtgeschwindigkkeit eingesetzt werden k&ouml;nnen.<br>Die 6. Revision hat eine bessere Durchschlagskraft und ein besseres Zielleitsystem.',
+                    'description'=>'Photonentorpedos sind unabh&auml;ngig vom Schiff und haben einen eigenen Antrieb sowie Zielleitsystem. Ein Vorteil ist, dass sie auch bei &Uuml;berlichtgeschwindigkkeit eingesetzt werden k&ouml;nnen.<br>Die 6. Revision hat eine bessere Durchschlagskraft und ein besseres Zielleitsystem.',
                     'dev_info'=>'',
             ), // Endof Component Photonentorpedos MKVI
 
@@ -901,7 +901,7 @@ $ship_components=array(
                     'torso_10'=>'1',
                     'torso_11'=>'0',
                     'torso_12'=>'1',
-                    'description'=>'Photonentorpedos sind unabh&auml;ngig vom Schiff und haben einen eigenen Antrieb sowie Zielleitsystem. Ein Vorteil ist, dass sie auch bei Überlichtgeschwindigkkeit eingesetzt werden k&ouml;nnen.<br>Der Triple Launcher kann pro Torpedorohr 3 Torpedos gleichzeitig laden und in sehr kurzen Zeitabst&auml;nden starten.',
+                    'description'=>'Photonentorpedos sind unabh&auml;ngig vom Schiff und haben einen eigenen Antrieb sowie Zielleitsystem. Ein Vorteil ist, dass sie auch bei &Uuml;erlichtgeschwindigkkeit eingesetzt werden k&ouml;nnen.<br>Der Triple Launcher kann pro Torpedorohr 3 Torpedos gleichzeitig laden und in sehr kurzen Zeitabst&auml;nden starten.',
                     'dev_info'=>'',
             ), // Endof Component Triple Launcher
 

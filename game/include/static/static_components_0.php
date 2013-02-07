@@ -1272,7 +1272,7 @@ $ship_components=array(
                     'dev_info'=>'',
             ), // Endof Component Hüllenableitpanzerung
 
-      'name'=>'Hülle/Schilde',
+      'name'=>'H&uuml;le/Schilde',
       'num'=>'6',
       ), // Endof Category Hülle/Schilde
 
