@@ -437,7 +437,9 @@ function SystemMessage($receiver, $header, $message) {
 	if (($num=$db->queryrow('SELECT COUNT(id) as unread FROM message WHERE (receiver="'.$receiver.'") AND (rread=0)'))!=false)
 	{
 		$db->query('UPDATE user SET unread_messages="'.$num['unread'].'" WHERE user_id="'.$receiver.'"');
-		if ($game->player['user_id']==$receiver) $game->player['unread_messages']=$num['unread'];
+        // Update player only if it has been loaded
+        if (isset($game->player['user_id']) && $game->player['user_id']==$receiver)
+            $game->player['unread_messages']=$num['unread'];
 	}
 
 	return true;
