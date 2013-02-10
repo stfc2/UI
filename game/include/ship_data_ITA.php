@@ -1455,6 +1455,63 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 
+
+		4 => array(
+
+			0 => 'Wells',
+
+			1 => 'La spina dorsale della flotta, le navi del tempo classe Wells, possono essere utilizzate per una grande variet&agrave; di compiti.',
+
+		),
+
+		5 => array(
+
+			0 => 'Flecki Knuddel-Eskorte',
+
+			1 => 'La spina dorsale della flotta, le navi del tempo classe Wells, possono essere utilizzate per una grande variet&agrave; di compiti.',
+
+		),
+		
+		11 => array(
+
+			0 => 'Prometheus',
+
+			1 => 'Dopo quasi 300 anni la Prometheus &egrave; stata messa fuori servizio, tuttavia &egrave; stata nuovamente riattivata per le operazioni nel passato',
+
+		),			
+
+
+
+	),
+	
+	// Settlers
+
+	13 => array(
+
+		0 => array(
+
+			0 => 'Scout 29th',  // Name
+
+			1 => 'Versione vigorosa dello scout poich&egrave; sono trascorsi parecchi secoli di esplorazione.',
+
+		),
+
+		1 => array(
+
+			0 => 'Trasporto',
+
+			1 => 'I cargo servono a caricare 4000 unit&agrave; di risorse o 400 truppe. Possono anche servire a fornire supporto su pianeti attaccati, trasportando risorse. Non sono molto veloci, ma nel complesso hanno una buona difesa.',
+
+		),
+
+		2 => array(
+
+			0 => 'Colonizzatrice 29th',
+
+			1 => 'Versione vigorosa di colonizzatrice poich&egrave; sono trascorsi parecchi secoli di esplorazione.',
+
+		),
+
 		11 => array(
 
 			0 => 'Prometheus',
@@ -1478,8 +1535,26 @@ $SHIP_TORSO_LOCALE = array(
 			1 => 'La spina dorsale della flotta, le navi del tempo classe Wells, possono essere utilizzate per una grande variet&agrave; di compiti.',
 
 		),
+		
+		11 => array(
 
-	),
+			0 => 'Achilles',
+
+			1 => 'Nave da battaglia di discrete prestazioni, prodotta in svariati cantieri navali indipendenti con compiti di difesa delle colonie.',
+
+		),
+
+    	// Orbital gun
+
+	    12 => array(
+
+			0 => 'Cannone Orbitale',  // Name
+
+			1 => 'Questa piattaforma di difesa orbitale sperimentale &egrave; la risposta delle colonie indipendenti ai frequenti attacchi di predatori quali i Borg. Nonostante sia ancora un prototipo, molte colonie si sono affrettate ad installare questi sistemi difensivi in gran numero.',
+
+	    ),				
+
+	),	
 
 );
 
