@@ -453,10 +453,11 @@ if ($_REQUEST['id']<0) return 0;
 		else
 		{
 			//DC ---- Il caso piu` semplice: non ho ancora fatto un'offerta, quindi la butto nella tabella bidding e segno nella FHB_bid_meldung il momento della mia temporanea vittoria
-			$db->lock('bidding','FHB_bid_meldung');
-			$db->query('INSERT INTO FHB_bid_meldung (user_id , bieter , time , tick , trade_id ) VALUES ('.$last_bid['user'].','.$game->player['user_id'].',1,'.$ACTUAL_TICK.','.$tradedata['id'].')');
+			$db->lock('bidding');
+			//AC ---- Visto che qui la variabile $last_bid non esiste, la query SQL da errore ergo questa INSERT al sistema non serve
+			//$db->query('INSERT INTO FHB_bid_meldung (user_id , bieter , time , tick , trade_id ) VALUES ('.$last_bid['user'].','.$game->player['user_id'].',1,'.$ACTUAL_TICK.','.$tradedata['id'].')');
 			$db->query('INSERT INTO bidding (trade_id,user,max_bid) VALUES ('.$tradedata['id'].','.$game->player['user_id'].','.$_REQUEST['max_bid'].')');
-			$db->unlock('bidding','FHB_bid_meldung');
+			$db->unlock('bidding');
 			$game->out('<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center><span class="sub_caption">'.constant($game->sprache("TEXT57")).' '.$_REQUEST['max_bid'].' '.constant($game->sprache("TEXT58")).'<br><a href="'.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata['id']).'">'.constant($game->sprache("TEXT47")).'</a></span></center></td></tr></table></center><br>');
 		}
 	}
@@ -533,10 +534,14 @@ function Show_Bidding_Detail()
 	/* 11/04/08 - AC: It's unnecessary SELECTing the ship with ALSO flag untouchable set to
 	                  true because ship's ID is unique.
 	 */
-	$ship=$db->queryrow('SELECT s.*,t.*,u.user_race AS owner_race FROM (ships s)
+	$sql = 'SELECT s.*,t.*,u.user_race AS owner_race FROM (ships s)
 				LEFT JOIN (ship_templates t) ON t.id=s.template_id
 				LEFT JOIN (user u) ON u.user_id=t.owner
-				WHERE s.ship_id="'.$tradedata['ship_id'].'"');
+				WHERE s.ship_id="'.$tradedata['ship_id'].'"';
+
+	if(($ship = $db->queryrow($sql)) === false) {
+		message(DATABASE_ERROR, 'Cannot retrieve auctioned ship data');
+	}
 
 /*	$ship=$db->queryrow('SELECT s.*,t.*,u.user_race AS owner_race FROM (ships s)
 				LEFT JOIN (ship_templates t) ON t.id=s.template_id
@@ -4064,7 +4069,7 @@ function Show_schulden($condition = 0)
                 $db_unit_1+=$account['unit_1'];
                 $db_unit_2+=$account['unit_2'];
                 $db_unit_3+=$account['unit_3'];
-                $db_unit_4+=$v['unit_4'];
+                $db_unit_4+=$account['unit_4'];
                 $db_unit_5+=$account['unit_5'];
                 $db_unit_6+=$account['unit_6'];
             }
@@ -4245,18 +4250,28 @@ function ship_pick()
 				$game->out('<tr><td colspan=2><br>');
 				while($npc_ships_wait_t=$db->fetchrow($npc_ships_wait))
 				{
-					$ship = $db->queryrow('SELECT s.ship_id, s.hitpoints, s.unit_1,s.unit_2,s.unit_3,s.unit_4,st.max_unit_1,st.max_unit_2,st.max_unit_3,st.max_unit_4,st.name AS template_name, st.value_5 AS max_hitpoints
-						FROM (ships s) INNER JOIN (ship_templates st) ON st.id = s.template_id WHERE s.ship_id='.$npc_ships_wait_t['ship_id'].'');
+					$sql = 'SELECT s.ship_id, s.hitpoints, 
+								   s.unit_1, s.unit_2,
+								   s.unit_3,s.unit_4,
+								   st.max_unit_1,st.max_unit_2,
+								   st.max_unit_3,st.max_unit_4,
+								   st.name AS template_name,
+								   st.value_5 AS max_hitpoints
+						FROM (ships s) INNER JOIN (ship_templates st) ON st.id = s.template_id
+						WHERE s.ship_id='.$npc_ships_wait_t['ship_id'];
 
-					if (($ship['max_unit_1']+$ship['max_unit_2']+$ship['max_unit_3']+$ship['max_unit_4'])*($ship['unit_1']+$ship['unit_2']+$ship['unit_3']+$ship['unit_4'])>0)
-					{
-						$besatzung=100/($ship['max_unit_1']+$ship['max_unit_2']+$ship['max_unit_3']+$ship['max_unit_4'])*($ship['unit_1']+$ship['unit_2']+$ship['unit_3']+$ship['unit_4']);
-
-						if ($besatzung!=100)
-							$b_title=' B='.round($besatzung,0).'%';
+					if(($ship = $db->queryrow($sql)) === false) {
+						message(DATABASE_ERROR, 'Cannot retrieve delivery ship data!');
 					}
 
-					$game->out('<input name="ship_auswahl[]" type="checkbox" id="ship_auswahl[]" value="'.$npc_ships_wait_t['ship_id'].'"> '.$ship['template_name'].' ('.$ship['hitpoints'].'/'.$ship['max_hitpoints'].')'.$b_title.'<br>');
+					$crew_perc = 100 / ($ship['max_unit_1'] + $ship['max_unit_2'] +
+										$ship['max_unit_3'] + $ship['max_unit_4']) *
+									 ($ship['unit_1'] + $ship['unit_2'] + 
+									  $ship['unit_3'] + $ship['unit_4']);
+
+					$crew_title = $crew_perc!=100 ? ' B='.round($crew_perc,0).'%': '';
+
+					$game->out('<input name="ship_auswahl[]" type="checkbox" id="ship_auswahl[]" value="'.$npc_ships_wait_t['ship_id'].'"> '.$ship['template_name'].' ('.$ship['hitpoints'].'/'.$ship['max_hitpoints'].')'.$crew_title.'<br>');
 				}
 				$game->out('<br><br><input type="submit" value="'.constant($game->sprache("TEXT252")).'"  name="submit" class="Button_nosize"></td></tr></form></table>');
 			}
