@@ -744,7 +744,7 @@ define ("ENG_TEXT76", 'Bidding');
 
 define ("ENG_TEXT77", 'Do you really want to make the 1st bid for this ship?');
 
-define ("ENG_TEXT78", '<i>* Da du das 1. Gebot abgibst, bietest du auf');
+define ("ENG_TEXT78", '<i>* Since you\'re the first bidder, you are bidding on');
 
 define ("ENG_TEXT79", 'You have to take this auction');
 
@@ -1304,7 +1304,7 @@ define ("ITA_TEXT76", 'Offerta');
 
 define ("ITA_TEXT77", 'Vuoi veramente fare la prima offerta per questa nave?');
 
-define ("ITA_TEXT78", '<i>* Da du das 1. Gebot abgibst, bietest du auf');
+define ("ITA_TEXT78", '<i>* Sei il primo offerente. Stai offrendo');
 
 define ("ITA_TEXT79", 'Devi prendere quest&#146;asta');
 
@@ -1626,7 +1626,7 @@ define ("ITA_TEXT237", 'Tecnici');
 
 define ("ITA_TEXT238", 'Medici');
 
-define ("ITA_TEXT239", 'Tempo fino alla fine del periodo'); // Alternativa: Tempo disponibile prima della scadenza
+define ("ITA_TEXT239", 'Scadenza pagamento'); // Alternativa: Tempo disponibile prima della scadenza
 
 define ("ITA_TEXT240", 'Nessun debito da estinguere');
 
