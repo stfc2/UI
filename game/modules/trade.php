@@ -3993,7 +3993,12 @@ function Show_schulden($condition = 0)
 			$text.="<td><img src='".$game->GFX_PATH."menu_unit6_small.gif'>".$schulden_gesamt['unit_6']."</td>";
 			$text.="<td>";
 			$timea=(($schulden['timestep']+(20*24*6))-$ACTUAL_TICK)*3/60;
-			$text.="".$timea." ".constant($game->sprache("TEXT226"))."</td>";
+            if ($timea > 24) {
+                $timea /= 24;
+                $text.="".round($timea,0)." ".constant($game->sprache("TEXT129"))."</td>";
+            }
+            else
+                $text.="".$timea." ".constant($game->sprache("TEXT226"))."</td>";
 			$text.='<td><form method="post" action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&status_bezahlen=1').'">
 				<input type="hidden" name="auktion" value="'.$schulden['id'].'">
 				<input type="submit" name="zahlen" class="Button_nosize" value="'.constant($game->sprache("TEXT241")).'" style="width:100px"></form>
