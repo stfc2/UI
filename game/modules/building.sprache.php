@@ -93,13 +93,13 @@ define ("ENG_TEXT1", 'Not enough energy.');
 
 define ("ENG_TEXT2", 'Build a powerplant.');
 
-define ("ENG_TEXT3", 'Error: Build queue occupied!');
+define ("ENG_TEXT3", 'Error: build queue is full!');
 
-define ("ENG_TEXT4", 'Error: Nothing is being built!');
+define ("ENG_TEXT4", 'Error: no building under construction!');
 
-define ("ENG_TEXT5", 'The second building needs the first one');
+define ("ENG_TEXT5", 'The queued construction requires the building that precedes it');
 
-define ("ENG_TEXT6", 'You need a powerplant, to be able to build the second building!');
+define ("ENG_TEXT6", 'You need a powerplant to be able to build the queued building!');
 
 define ("ENG_TEXT7", 'Error: Unable to cancel build!');
 
@@ -157,15 +157,15 @@ define ("ITA_TEXT0", 'Costruzioni:');
 
 define ("ITA_TEXT1", 'Energia insufficiente.');
 
-define ("ITA_TEXT2", 'Costruisci una Centrale.');
+define ("ITA_TEXT2", 'Costruisci una Centrale Energetica.');
 
 define ("ITA_TEXT3", 'Errore: coda di costruzione piena!');
 
 define ("ITA_TEXT4", 'Errore: nessun edificio in costruzione!');
 
-define ("ITA_TEXT5", 'La seconda costruzione necessita dell\'edificio prima');
+define ("ITA_TEXT5", 'La costruzione in coda necessita dell\'edificio che lo precede');
 
-define ("ITA_TEXT6", 'Ti serve una centrale per costruire il secondo edificio!');
+define ("ITA_TEXT6", 'Ti serve una Centrale energetica per costruire gli edifici in coda!');
 
 define ("ITA_TEXT7", 'Errore: non puoi annullare la costruzione!');
 
@@ -215,6 +215,6 @@ define ("ITA_TEXT29", 'Costruzioni:');
 
 define ("ITA_TEXT30", 'Non puoi accedere a quest\'area perch&egrave; hai solo');
 
-define ("ITA_TEXT31", 'delle forze di sicurezza necessaria sul pianeta.<br>&Egrave; possibile accedere nuovamente a partire dal <b>70%<b/>.<br><br><i><u>Nota:</u> I lavori avviati proseguono e possono essere controllati dal quartier generale.');
+define ("ITA_TEXT31", 'delle forze di sicurezza necessaria sul pianeta.<br>&Egrave; possibile accedervi nuovamente a partire dal <b>70%<b/>.<br><br><i><u>Nota:</u> I lavori avviati proseguono e possono essere controllati dal quartier generale.</i>');
 
 ?>
