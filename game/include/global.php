@@ -246,6 +246,9 @@ define ('USER_WHOLE_SYSTEM', 1);
 // User start with a boosted capital planet
 define ('USER_START_BOOST', 0);
 
+// User building queue length
+define ('BUILDING_QUEUE_LEN', 2);
+
 
 // Accelerates the Scheduler
 
