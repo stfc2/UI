@@ -92,9 +92,9 @@ if(!empty($_POST['from_submit'])) {
 
     // POST variables parse + SQL data to integer cast
     foreach($wares_names as $key => $name) {
-        $nwares[$key] = (!empty($_POST['add_'.$key])) ? abs((int)$_POST['add_'.$key]) : 0;
-        $fwares[$key] = (int)$fleet[$key];
-        $pwares[$key] = (int)$fleet['avail_'.$key];
+        $nwares[$key] = (!empty($_POST['add_'.$key])) ? abs((float)$_POST['add_'.$key]) : 0;
+        $fwares[$key] = (float)$fleet[$key];
+        $pwares[$key] = (float)$fleet['avail_'.$key];
     }
     
     $n_presources = $pwares['resource_1'] + $pwares['resource_2'] + $pwares['resource_3'];
@@ -465,9 +465,9 @@ elseif(!empty($_POST['to_submit'])) {
 
     // POST variables parse + SQL data to integer cast
     foreach($wares_names as $key => $name) {
-        $nwares[$key] = (!empty($_POST['add_'.$key])) ? abs((int)$_POST['add_'.$key]) : 0;
-        $fwares[$key] = (int)$fleet[$key];
-        $pwares[$key] = (int)$fleet['p'.$key];
+        $nwares[$key] = (!empty($_POST['add_'.$key])) ? abs((float)$_POST['add_'.$key]) : 0;
+        $fwares[$key] = (float)$fleet[$key];
+        $pwares[$key] = (float)$fleet['p'.$key];
     }
 
     $n_presources = $pwares['resource_1'] + $pwares['resource_2'] + $pwares['resource_3'];
