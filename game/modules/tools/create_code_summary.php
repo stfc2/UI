@@ -36,7 +36,7 @@ $code_dirs = array(
     './modules/tools/players',
     './modules/tools/ships',
     './modules/tools/world',
-    '/home/taku/stfc/stfc-scheduler/',
+    '/home/stfc/daemons/stfc-scheduler/',
 );
 
 
