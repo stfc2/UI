@@ -20,6 +20,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 include_once('include/libs/moves.php');
+define ('FULL_DETAILS', 0);
 
 
 //Ne day global class is nice, but not always match their content
@@ -29,89 +30,6 @@ $filename = 'include/static/static_components_'.$game->player['user_race'].'_'.$
 if (file_exists($filename)) include($filename);
 
 error_reporting(E_ERROR);
-function GetBuildingTimeTicks($building,$stufe=0,$planet_t,$player_race,$planet_prob,$plani_forsch=1)
-{
-global $db;
-global $game;
-global $RACE_DATA, $BUILDING_NAME, $BUILDING_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK,$PLANETS_DATA;
-if($stufe==1)
-{
-$time=($BUILDING_DATA[$building][3] + 3*pow($planet_prob['building_'.($planet_prob['building_queue']-1)]+1,$BUILDING_DATA[$building][4]));
-}else{
-$time=($BUILDING_DATA[$building][3] + 3*pow($planet_prob['building_'.($building+1)],$BUILDING_DATA[$building][4]));
-}
-if ($building==9)
-	$time=$BUILDING_DATA[$building][3];
-if ($building==12)
-	$time=$BUILDING_DATA[$building][3];
-$time*=$RACE_DATA[$player_race][1];
-$time/=100;
-$time*=(100-2*($plani_forsch*$RACE_DATA[$player_race][20]));
-$time*=$PLANETS_DATA[$planet_t][5];
-$time=round($time,0);
-return $time;
-}
-
-/* ($game->planet['building_'.($game->planet['building_queue'])]+1).
-function GetBuildingTimeTicks($building,$planet_t,$player_race)
-{
-if($stufe==1)
-{
-$time=($BUILDING_DATA[$building][3] + 3*pow($game->planet['building_'.($game->planet['building_queue'])]+1,$BUILDING_DATA[$building][4]));
-$game->out('TAPSI 03 Build:'.$game->planet['building_queue'].'<br>');
-$game->out('TAPSI 04:Build data 4'.$BUILDING_DATA[$building][4].'<br>');
-}else{
-$time=($BUILDING_DATA[$building][3] + 3*pow($game->planet['building_'.($building+1)],$BUILDING_DATA[$building][4]));
-$game->out('TAPSI 03 Build:'.$game->planet['building_'.($building+1)].'<br>');
-$game->out('TAPSI 04:Build data 4'.$BUILDING_DATA[$building][4].'<br>');
-}
-global $db;
-global $game;
-global $RACE_DATA, $BUILDING_NAME, $BUILDING_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK,$PLANETS_DATA;
-
-$time=($BUILDING_DATA[$building][3] + 3*pow($game->planet['building_'.($building+1)],$BUILDING_DATA[$building][4]));
-$game->out("TTTTTTTTTTTTTTTtt<br>".$time);
-if ($building==9)
-	$time=$BUILDING_DATA[$building][3];
-if ($building==12)
-	$time=$BUILDING_DATA[$building][3];
-$time*=$RACE_DATA[$game->player['user_race']][1];
-$time/=100;
-$time*=(100-2*($game->planet['research_4']*$RACE_DATA[$game->player['user_race']][20]));
-$time*=$PLANETS_DATA[$game->planet['planet_type']][5];
-$game->out("HUHUUUUUUUUUUUUUU<br>".$planet_t);
-$game->out("TTTTTTTTTTTTTTTtt<br>".$time);
-$time=round($time,0);
-
-return $time;
-
-}
-/*
-function GetBuildingTimeTicks($building,$planet_t,$player_race)
-{
-$time*=$RACE_DATA[$player_race][1];
-$time/=100;
-$time*=(100-2*($game->planet['research_4']*$RACE_DATA[$player_race][20]));
-$time*=$PLANETS_DATA[$planet_t][5];
-global $db;
-global $game;
-global $RACE_DATA, $BUILDING_NAME, $BUILDING_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK,$PLANETS_DATA;
-
-$time=($BUILDING_DATA[$building][3] + 3*pow($game->planet['building_'.($building+1)],$BUILDING_DATA[$building][4]));
-if ($building==9)
-	$time=$BUILDING_DATA[$building][3];
-if ($building==12)
-	$time=$BUILDING_DATA[$building][3];
-$time*=$RACE_DATA[$game->player['user_race']][1];
-$time/=100;
-$time*=(100-2*($game->planet['research_4']*$RACE_DATA[$game->player['user_race']][20]));
-$time*=$PLANETS_DATA[$game->planet['planet_type']][5];
-$time=round($time,0);
-
-return $time;
-
-}
-*/
 
 
 if (isset($_GET['s_o']) && $_GET['s_o']>=0 && $_GET['s_o']<=6) $game->option_store('planetlist_order',(int)$_GET['s_o']);
@@ -160,6 +78,10 @@ $planets=array();
 $planet_ids=array();
 $spacedock_planets = array();
 $spacedock_ids = array();
+if (FULL_DETAILS) {
+    $researches = array();
+    $buildings = array();
+}
 
 
 // 1. Fetch the planet and the star system
@@ -193,25 +115,61 @@ while(($spacedock_planet = $db->fetchrow($planetquery)))
 }*/
 
 // 2. Fetch research
-$planetquery=$db->query('SELECT r.planet_id AS tmp1, r.research_id, r.research_start, r.research_finish
-FROM (scheduler_research r)
-WHERE r.planet_id IN ('.implode(', ',$planet_ids).')');
+if (FULL_DETAILS)
+    $sql = 'SELECT r.planet_id AS tmp1, r.research_id, r.research_start, r.research_finish
+            FROM (scheduler_research r)
+            WHERE r.planet_id IN ('.implode(', ',$planet_ids).')';
+else
+    $sql = 'SELECT r.planet_id AS tmp1,
+            MAX(r.research_finish) AS  research_active
+            FROM (scheduler_research r)
+            WHERE r.planet_id IN ('.implode(', ',$planet_ids).')
+            GROUP BY r.planet_id';
+
+$planetquery=$db->query($sql);
 while(($research = $db->fetchrow($planetquery)))
 {
-	$planets[$research['tmp1']]['research_id']=$research['research_id'];
-	$planets[$research['tmp1']]['research_start']=$research['research_start'];
-	$planets[$research['tmp1']]['research_finish']=$research['research_finish'];
+    if (FULL_DETAILS) {
+        /*	$planets[$research['tmp1']]['research_id']=$research['research_id'];
+        $planets[$research['tmp1']]['research_start']=$research['research_start'];
+        $planets[$research['tmp1']]['research_finish']=$research['research_finish'];*/
+        $researches[$research['tmp1']]['research_id']=$research['research_id'];
+        $researches[$research['tmp1']]['research_start']=$research['research_start'];
+        $researches[$research['tmp1']]['research_finish']=$research['research_finish'];
+    }
+    else {
+        $planets[$research['tmp1']]['research_active']=$research['research_active'];
+    }
 }
 
 
 // 3. Fetch building
-$planetquery=$db->query('SELECT b.planet_id AS tmp2, b.installation_type AS build_active, b.build_finish AS building_finish
-FROM (scheduler_instbuild b)
-WHERE b.planet_id IN ('.implode(', ',$planet_ids).')');
+if (FULL_DETAILS) 
+    $sql = 'SELECT b.planet_id AS tmp2,
+                   b.installation_type AS build_active,
+                   b.build_start AS building_start,
+                   b.build_finish AS building_finish
+            FROM (scheduler_instbuild b)
+            WHERE b.planet_id IN ('.implode(', ',$planet_ids).')
+            ORDER BY b.build_start ASC';
+else
+    $sql = 'SELECT b.planet_id AS tmp2,
+               MAX(b.build_finish) AS build_active
+            FROM (scheduler_instbuild b)
+            WHERE b.planet_id IN ('.implode(', ',$planet_ids).')
+            GROUP BY b.planet_id';
+
+$planetquery=$db->query($sql);
 while(($building = $db->fetchrow($planetquery)))
 {
-	$planets[$building['tmp2']]['build_active']=$building['build_active'];
-	$planets[$building['tmp2']]['building_finish']=$building['building_finish'];
+    if (FULL_DETAILS) {
+        $buildings[$building['tmp2']]['build_active']=$building['build_active'];
+        $buildings[$building['tmp2']]['building_start']=$building['building_start'];
+        $buildings[$building['tmp2']]['building_finish']=$building['building_finish'];
+    }
+    else {
+        $planets[$building['tmp2']]['build_active']=$building['build_active'];
+    }
 }
 
 
@@ -287,8 +245,6 @@ foreach ($planets as $key => $planet) {
 			$arrival_days = 0;
 		}
 
-		//echo('Distance from '.$planet['planet_name'].': '.($distance/600).' Giorni: '.$arrival_days.' Ore: '.$arrival_hours.' Minuti: '.$arrival_minutes.'<br>');
-
 		if($arrival_days > 0)
 			$distance_str = $arrival_days.' gg ';
 		else
@@ -300,37 +256,36 @@ foreach ($planets as $key => $planet) {
 	}
 	/* */
 
-	if ($planet['building_queue']==0) unset($planet['building_queue']);
+    // Building announcement:
+    if (FULL_DETAILS) {
+        $building=constant($game->sprache("TEXT18a"));
+        if (isset($build['build_active'])) 
+        {
+            $building=$BUILDING_NAME[$game->player['user_race']][$planet['build_active']].' ('.constant($game->sprache("TEXT18b")).' '.($planet['building_'.($planet['build_active']+1)]).') <b>'.Zeit(TICK_DURATION*($planet['building_finish']-$ACTUAL_TICK)).'</b><br>';
+        }
+    }
+    else {
+        if (isset($planet['build_active']))
+            $building=constant($game->sprache("TEXT58")).' <b>'.Zeit(TICK_DURATION*($planet['build_active']-$ACTUAL_TICK)).'</b>';
+    }
 
-	// Building announcement:
-	$building=constant($game->sprache("TEXT18a"));
-	$stufendreck=0;
-	if (isset($planet['build_active'])) 
-	{
-		if($planet['build_active']==$planet['building_queue']-1) $stufendreck=1;
-		$planet['building_'.($planet['build_active']+1)]++;
-		$building=$BUILDING_NAME[$game->player['user_race']][$planet['build_active']].' ('.constant($game->sprache("TEXT18b")).' '.($planet['building_'.($planet['build_active']+1)]).') <b>'.Zeit(TICK_DURATION*($planet['building_finish']-$ACTUAL_TICK)).'</b><br>';
-	if(isset($planet['building_queue']))
-	{
-		$planet_notactive=$db->query('SELECT building_1,building_2,building_3,building_4,building_5,building_queue,building_6,building_7,building_8,building_10,building_11,building_13 FROM planets WHERE planet_id='.$planet['planet_id']);
-		$planet_notactive=$db->fetchrow($planet_notactive);
-		$building.=$BUILDING_NAME[$game->player['user_race']][$planet['building_queue']-1].' ('.constant($game->sprache("TEXT18b")).' '.($planet['building_'.($planet['building_queue'])]+1).') <b>'.Zeit(TICK_DURATION*($planet['building_finish']-$ACTUAL_TICK+GetBuildingTimeTicks($planet['building_queue']-1,$stufendreck,$planet['planet_type'],$game->player['user_race'],$planet_notactive,$planet['research_4'])));
-	}
-	}
-	//GetBuildingTimeTicks($planet['building_queue']-1,$planet['planet_type'],$game->player['user_race'])
-
-	// Research announcement:
-	$research=constant($game->sprache("TEXT18a"));
-	if (isset($planet['research_id']))
-	{
-		if ($planet['research_id']>=5)
-			$research=$ship_components[$game->player['user_race']][($planet['research_id']-5)][$planet['catresearch_'.(($planet['research_id']-4))]]['name'].' <b>'.Zeit(TICK_DURATION*($planet['research_finish']-$ACTUAL_TICK)).'</b>';
-		else
-		{
-			$research=$TECH_NAME[$game->player['user_race']][$planet['research_id']].' <b>'.Zeit(TICK_DURATION*($planet['research_finish']-$ACTUAL_TICK)).'</b>';
-		}
-	}
-
+    // Research announcement:
+    if (FULL_DETAILS) {
+        $research=constant($game->sprache("TEXT18a"));
+        if (isset($planet['research_id']))
+        {
+            if ($planet['research_id']>=5)
+                $research=$ship_components[$game->player['user_race']][($planet['research_id']-5)][$planet['catresearch_'.(($planet['research_id']-4))]]['name'].' <b>'.Zeit(TICK_DURATION*($planet['research_finish']-$ACTUAL_TICK)).'</b>';
+            else
+            {
+                $research=$TECH_NAME[$game->player['user_race']][$planet['research_id']].' <b>'.Zeit(TICK_DURATION*($planet['research_finish']-$ACTUAL_TICK)).'</b>';
+            }
+        }
+    }
+    else {
+        if (isset($planet['research_active']))
+            $research=constant($game->sprache("TEXT59")).' <b>'.Zeit(TICK_DURATION*($planet['research_active']-$ACTUAL_TICK)).'</b>';
+    }
 
 	$outofresources=0;
 	$outofspace=0;
@@ -375,21 +330,25 @@ foreach ($planets as $key => $planet) {
 
 	if (isset($planet['shipyard_active']))
 	{
-		$shipbuild=constant($game->sprache("TEXT24")).'<br><b>'.Zeit(TICK_DURATION*($planet['shipyard_active']-$ACTUAL_TICK)).'</b>';
+		$shipbuild=constant($game->sprache("TEXT24")).' <b>'.Zeit(TICK_DURATION*($planet['shipyard_active']-$ACTUAL_TICK)).'</b>';
 	}
 	// Set colors for the symbols
-	if(isset($planet['building_queue'])){ $building_color=(($planet['building_finish']-$ACTUAL_TICK+GetBuildingTimeTicks($planet['building_queue']-1,$stufendreck,$planet,$game->player['user_race'],$planet_notactive,$planet['research_4'])))/12;
-	}else{
-	$building_color=($planet['building_finish']-$ACTUAL_TICK)/12;
-	}
-	if ($building_color>8) $building_color=8;
-	if ($building_color<0) $building_color=0;
-	$building_color='#80'.dechex(128+16*$building_color-1).'80';
+    if (FULL_DETAILS) {
+        $building_color=($planet['building_finish']-$ACTUAL_TICK)/12;
+        $research_color=($planet['research_finish']-$ACTUAL_TICK)/12;
+    }
+    else {
+        $building_color=($planet['build_active']-$ACTUAL_TICK)/12;
+        $research_color=($planet['research_active']-$ACTUAL_TICK)/12;
+    }
 
-	$research_color=($planet['research_finish']-$ACTUAL_TICK)/12;
-	if ($research_color>8) $research_color=8;
-	if ($research_color<0) $research_color=0;
-	$research_color='#80'.dechex(128+16*$research_color-1).'80';
+    if ($building_color>8) $building_color=8;
+    if ($building_color<0) $building_color=0;
+    $building_color='#80'.dechex(128+16*$building_color-1).'80';
+
+    if ($research_color>8) $research_color=8;
+    if ($research_color<0) $research_color=0;
+    $research_color='#80'.dechex(128+16*$research_color-1).'80';
 
 	$shipyard_color=($planet['shipyard_active']-$ACTUAL_TICK)/12;
 	if ($shipyard_color>8) $shipyard_color=8;
@@ -399,10 +358,10 @@ foreach ($planets as $key => $planet) {
 
 	// Output of construction status, etc.:
 	$status='<table border=0 cellpadding=0 cellspacing=0><tr>';
-	if (isset($planet['build_active'])) $status.='<td width=12><a href="javascript:void(0);" onmouseover="return overlib(\''.$building.'\', CAPTION, \''.constant($game->sprache("TEXT25")).'\', WIDTH, 250, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color='.$building_color.'>'.constant($game->sprache("TEXT29")).'</font></a></td>'; else $status.='<td width=12>&nbsp;</td>';
-	if (isset($planet['research_id'])) $status.='<td width=12><a href="javascript:void(0);" onmouseover="return overlib(\''.$research.'\', CAPTION, \''.constant($game->sprache("TEXT26")).'\', WIDTH, 250, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color='.$research_color.'>'.constant($game->sprache("TEXT30")).'</font></a></td>'; else $status.='<td width=12>&nbsp;</td>';
+	if (isset($planet['build_active'])) $status.='<td width=12><a href="javascript:void(0);" onmouseover="return overlib(\''.$building.'\', CAPTION, \''.constant($game->sprache("TEXT25")).'\', WIDTH, 320, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color='.$building_color.'>'.constant($game->sprache("TEXT29")).'</font></a></td>'; else $status.='<td width=12>&nbsp;</td>';
+	if (isset($planet['research_active'])) $status.='<td width=12><a href="javascript:void(0);" onmouseover="return overlib(\''.$research.'\', CAPTION, \''.constant($game->sprache("TEXT26")).'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color='.$research_color.'>'.constant($game->sprache("TEXT30")).'</font></a></td>'; else $status.='<td width=12>&nbsp;</td>';
 	if ($planet['unittrainid_nexttime']>0) $status.='<td width=12><a href="javascript:void(0);" onmouseover="return overlib(\''.$academy.'\', CAPTION, \''.constant($game->sprache("TEXT27")).'\', WIDTH, 250, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.($outofresources ? (($outofspace==1) ? '<font color=#ff8080>'.constant($game->sprache("TEXT31")).'</font>' : '<font color=#ffff80>'.constant($game->sprache("TEXT31")).'</font>') : (($outofspace==1) ? '<font color=#ff8080>'.constant($game->sprache("TEXT31")).'</font>' : '<font color=#80ff80>'.constant($game->sprache("TEXT31")).'</font>') ).'</a></td>'; else $status.='<td width=12>&nbsp;</td>';
-	if (isset($planet['shipyard_active'])) $status.='<td width=12><a href="javascript:void(0);" onmouseover="return overlib(\''.$shipbuild.'\', CAPTION, \''.constant($game->sprache("TEXT28")).'\', WIDTH, 250, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color='.$shipyard_color.'>'.constant($game->sprache("TEXT32")).'</font></a></td>'; else $status.='<td width=12>&nbsp;</td>';
+	if (isset($planet['shipyard_active'])) $status.='<td width=12><a href="javascript:void(0);" onmouseover="return overlib(\''.$shipbuild.'\', CAPTION, \''.constant($game->sprache("TEXT28")).'\', WIDTH, 270, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color='.$shipyard_color.'>'.constant($game->sprache("TEXT32")).'</font></a></td>'; else $status.='<td width=12>&nbsp;</td>';
 	
 
 	// Output of security forces display
@@ -472,7 +431,7 @@ foreach ($planets as $key => $planet) {
 			<td>'.$stat_out.'&nbsp;&nbsp;');
 	}
 
-	// Output status of construction from above, etc. as well as the display of impending attack (is set in the scheduler):
+	// Output status of construction from above, etc. as well as the display of impending attack (it's set in the scheduler):
 	$attack=$planet['planet_next_attack'];
 	if ($game->option_retr('redalert_options')==2) $attack=0;
 	if ($game->option_retr('redalert_options')==1 && $attack-date()>3600*24*7) $attack=0;

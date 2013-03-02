@@ -142,6 +142,10 @@ define ("GER_TEXT56", 'deaktivieren');
 
 define ("GER_TEXT57", 'Entfernung:<br>(in A.U.)');
 
+define ("GER_TEXT58", 'Fertigstellung aller Geb&auml;ude:');
+
+define ("GER_TEXT59", 'Fertigstellung aller Forschung:');
+
 //English
 define ("ENG_TEXT1", 'Planets:');
 
@@ -195,7 +199,7 @@ define ("ENG_TEXT22", 'active');
 
 define ("ENG_TEXT23", 'Troop limit reached!');
 
-define ("ENG_TEXT24", 'All ships finished:');
+define ("ENG_TEXT24", 'Completion of all ships:');
 
 define ("ENG_TEXT25", 'Build status:');
 
@@ -262,6 +266,10 @@ define ("ENG_TEXT55", 'max. 7 days');
 define ("ENG_TEXT56", 'deactivate');
 
 define ("ENG_TEXT57", 'Distance:<br>(in A.U.)');
+
+define ("ENG_TEXT58", 'Completion of all buildings:');
+
+define ("ENG_TEXT59", 'Completion of all researches:');
 
 //Italian
 define ("ITA_TEXT1", 'Pianeti:');
@@ -383,5 +391,9 @@ define ("ITA_TEXT55", 'max. 7 giorni');
 define ("ITA_TEXT56", 'disattiva');
 
 define ("ITA_TEXT57", 'Distanza:<br>(in U.A.)');
+
+define ("ITA_TEXT58", 'Completamento di tutte le costruzioni:');
+
+define ("ITA_TEXT59", 'Completamento di tutte le ricerche:');
 
 ?>
