@@ -287,7 +287,6 @@ if(isset($_POST['submit'])) {
                     unittrainnumberleft_10 = 0,
                     unittrain_actual = 0,
                     unittrainid_nexttime=0,
-                    building_queue=0,
                     planet_surrender=0
                 WHERE planet_id = '.$planet['planet_id'];
 
