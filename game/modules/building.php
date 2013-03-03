@@ -139,7 +139,8 @@ function isPowerOverloaded()
                  $game->planet['building_8'] +
                  $game->planet['building_9'] + 
                  $game->planet['building_11'] + 
-                 $game->planet['building_12'];
+                 $game->planet['building_12'] +
+                 $game->planet['building_13'];
 
     // Check if the active planet is the user's capital
     if ($game->player['user_capital']==$game->planet['planet_id'])
