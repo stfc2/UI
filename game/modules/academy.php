@@ -238,6 +238,16 @@ function Apply_Template()
             }
         }
 
+        // Empty the remaining slots
+        for ($t=$queue; $t <= 10; $t++)
+        {
+            $units_to_train .= 'unittrainid_'.$queue.' = 0,
+                                unittrainnumber_'.$queue.'  = 0,
+                                unittrainnumberleft_'.$queue.'  = 0,
+                                unittrainendless_'.$queue.'  = 0,';
+            $queue++;
+        }
+
         if($req_ok)
         {
             $sql = 'UPDATE planets SET
