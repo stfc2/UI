@@ -155,6 +155,16 @@ define ("GER_TEXT65", '<b>Aufkl&aum;rung:</b><br>Das Schiff wird Strahl nach unt
 
 define ("GER_TEXT66", '<b>Colonize:</b><br>The aim planet will be colonized if it is uninhabited, by a colonization ship of the fleet. Besides, this ship will be dismantled and the first building is built from it. Its crew will be stationed on the planet. The new colony will be handled by the Settlers indipendent faction , with no intervention of the player.');
 
+define("GER_TEXT67", '<b>Supporto Sviluppo Tecnologico:</b><br>Sul pianeta viene inviata una squadra con lo scopo di fornire supporto tecnologico e scientifico alla popolazione locale. Attraverso questo aiuto, la colonia beneficier&agrave; di un miglioramento alle condizioni di vita e lavoro.<br>Indicare in quale campo scientifico dovr&agrave operare la squadra:');
+
+define("GER_TEXT68", '<b>Modifica ambientale</b>: fornire tecnologie ambientali che migliorano l&#146;abitabilit&agrave; del pianeta (innalza il limite di popolazione del pianeta e fornisce un bonus alla generazione di lavoratori)');
+
+define("GER_TEXT69", '<b>Automazione</b>: fornire tecnologie che migliorano i processi produttivi sul pianeta (riduce i tempi di lavorazione delle accademie e dei cantieri)');
+
+define("GER_TEXT70", '<b>Estrazione</b>: fornire tecnologie che migliorano l&#146;estrazione e la raffinazione di materie prime (migliora la resa delle miniere sul pianeta)');
+
+define("GER_TEXT71", '<b>Supporto Difesa Planetaria</b>: Sul pianeta viene inviata una squadra tecnica per fornire supporto alla progettazione e costruzione di un sistema difensivo orbitale migliorato a disposizione della colonia, allo scopo di meglio difendersi da tentativi di invasione.');
+
 
 //English
 define ("ENG_TEXT0", 'Ship movements');
@@ -296,6 +306,16 @@ define ("ENG_TEXT65", '<b>Reconnaissance:</b><br>The ship will beam down on the 
 
 define ("ENG_TEXT66", '<b>Colonize:</b><br>The aim planet will be colonized if it is uninhabited, by a colonization ship of the fleet. Besides, this ship will be dismantled and the first building is built from it. Its crew will be stationed on the planet. The new colony will be handled by the Settlers indipendent faction , with no intervention of the player.');
 
+define("ENG_TEXT67", '<b>Supporto Sviluppo Tecnologico:</b><br>Sul pianeta viene inviata una squadra con lo scopo di fornire supporto tecnologico e scientifico alla popolazione locale. Attraverso questo aiuto, la colonia beneficier&agrave; di un miglioramento alle condizioni di vita e lavoro.<br>Indicare in quale campo scientifico dovr&agrave operare la squadra:');
+
+define("ENG_TEXT68", '<b>Modifica ambientale</b>: fornire tecnologie ambientali che migliorano l&#146;abitabilit&agrave; del pianeta (innalza il limite di popolazione del pianeta e fornisce un bonus alla generazione di lavoratori)');
+
+define("ENG_TEXT69", '<b>Automazione</b>: fornire tecnologie che migliorano i processi produttivi sul pianeta (riduce i tempi di lavorazione delle accademie e dei cantieri)');
+
+define("ENG_TEXT70", '<b>Estrazione</b>: fornire tecnologie che migliorano l&#146;estrazione e la raffinazione di materie prime (migliora la resa delle miniere sul pianeta)');
+
+define("ENG_TEXT71", '<b>Supporto Difesa Planetaria</b>: Sul pianeta viene inviata una squadra tecnica per fornire supporto alla progettazione e costruzione di un sistema difensivo orbitale migliorato a disposizione della colonia, allo scopo di meglio difendersi da tentativi di invasione.');
+
 //Italiano
 define ("ITA_TEXT0", 'Movimenti flotte');
 
@@ -435,5 +455,15 @@ define ("ITA_TEXT64", '<b>Trattati Diplomatici:</b><br>La nave sbarcher&agrave; 
 define ("ITA_TEXT65", '<b>Ricognizione:</b><br>La nave sbarcher&agrave; sul pianeta una squadra investigativa con il compito di verificare le condizioni sociali e politiche della popolazione ed ottenere informazioni utili per futuri contatti diplomatici.');
 
 define ("ITA_TEXT66", '<b>Colonia Indipendente:</b><br>Il pianeta obiettivo viene colonizzato da una nave colonizzatrice della flotta. Questa nave viene smantellata per costruire con essa il primo edificio. La colonia verrà gestita autonomamente dai Coloni stessi, senza un diretto controllo da parte del giocatore.');
+
+define("ITA_TEXT67", '<b>Supporto Sviluppo Tecnologico:</b><br>Sul pianeta viene inviata una squadra con lo scopo di fornire supporto tecnologico e scientifico alla popolazione locale. Attraverso questo aiuto, la colonia beneficier&agrave; di un miglioramento alle condizioni di vita e lavoro.<br>Indicare in quale campo scientifico dovr&agrave operare la squadra:');
+
+define("ITA_TEXT68", '<b>Modifica ambientale</b>: fornire tecnologie ambientali che migliorano l&#146;abitabilit&agrave; del pianeta (innalza il limite di popolazione del pianeta e fornisce un bonus alla generazione di lavoratori)');
+
+define("ITA_TEXT69", '<b>Automazione</b>: fornire tecnologie che migliorano i processi produttivi sul pianeta (riduce i tempi di lavorazione delle accademie e dei cantieri)');
+
+define("ITA_TEXT70", '<b>Estrazione</b>: fornire tecnologie che migliorano l&#146;estrazione e la raffinazione di materie prime (migliora la resa delle miniere sul pianeta)');
+
+define("ITA_TEXT71", '<b>Supporto Difesa Planetaria</b>: Sul pianeta viene inviata una squadra tecnica per fornire supporto alla progettazione e costruzione di un sistema difensivo orbitale migliorato a disposizione della colonia, allo scopo di meglio difendersi da tentativi di invasione.');
 
 ?>
