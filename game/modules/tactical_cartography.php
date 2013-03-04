@@ -825,7 +825,7 @@ elseif(!empty($_GET['planet_id'])) {
 		LEFT JOIN user u ON d.user_id = u.user_id
 		LEFT JOIN alliance ON d.source_aid = alliance.alliance_id
 		WHERE planet_id = '.$planet['planet_id'].'
-		AND d.log_code IN (0, 1, 2, 25, 26, 27, 28, 29, 30, 31) 
+		AND d.log_code IN (0, 1, 2, 25, 26, 27, 28, 29, 30, 31, 32) 
 		ORDER BY timestamp DESC LIMIT 0, 10';
 
 	if($_history = $db->query($sql)) {
@@ -892,6 +892,10 @@ elseif(!empty($_GET['planet_id'])) {
 			case 31: 
 				$history_text .= constant($game->sprache("TEXT127")).(!empty($_temp['user_name']) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).(!empty($_temp['alliance_tag']) ? '['.$_temp['alliance_tag'].']' : '').constant($game->sprache("TEXT128")).strtoupper($_temp['planet_type']).constant($game->sprache("TEXT99")).date("d.m.y H:i", $_temp['timestamp']).'.<br>';
 				break;
+// --- Costruzione di una Colonia per la fazione indipendente Settlers				
+			case 32: 
+				$history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT129")).(!empty($_temp['user_name']) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).(!empty($_temp['alliance_tag']) ? '['.$_temp['alliance_tag'].']' : '').constant($game->sprache("TEXT130")).'.<br>';
+				break;				
 			}
 		}
 	}
@@ -1435,7 +1439,8 @@ elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty(
         $legend_html = constant($game->sprache("TEXT85")).
                        constant($game->sprache("TEXT86")).
                        constant($game->sprache("TEXT87")).
-                       constant($game->sprache("TEXT88")).
+                       constant($game->sprache("TEXT131")).
+                       constant($game->sprache("TEXT88")).                       
                        constant($game->sprache("TEXT89")).
                        constant($game->sprache("TEXT90")).'<br>';
 
