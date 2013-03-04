@@ -230,8 +230,11 @@ define ("GER_TEXT127", 'Terraforming experiments of <b>');
 
 define ("GER_TEXT128", '</b> morph the planetoid, changing it to class <b>');
 
+define ("GER_TEXT129", ' a colony ship of ');
 
+define ("GER_TEXT130", ' starts a new independent colony!');
 
+define ("GER_TEXT131", '<span style="color: #CC6600;">arancio</span> - Pianeta Indipendente<br>');
 
 
 //English
@@ -497,7 +500,11 @@ define ("ENG_TEXT127", 'Terraforming experiments of <b>');
 
 define ("ENG_TEXT128", '</b> morph the planetoid, changing it to class <b>');
 
+define ("ENG_TEXT129", ' a colony ship of ');
 
+define ("ENG_TEXT130", ' starts a new independent colony!');
+
+define ("ENG_TEXT131", '<span style="color: #CC6600;">arancio</span> - Pianeta Indipendente<br>');
 
 //Italiano
 define ("ITA_TEXT0", 'Comando Tattico:');
@@ -761,5 +768,11 @@ define ("ITA_TEXT126", 'Sbarca squadra');
 define ("ITA_TEXT127", 'Gli esperimenti di terraforming di <b>');
 
 define ("ITA_TEXT128", '</b> modificano la struttura del planetoide, riclassificandolo come classe <b>');
+
+define ("ITA_TEXT129", ' una unit&agrave; colonizzatrice di ');
+
+define ("ITA_TEXT130", ' realizza una colonia indipendente!');
+
+define ("ITA_TEXT131", '<span style="color: #CC6600;">arancio</span> - Pianeta Indipendente<br>');
 
 ?>
