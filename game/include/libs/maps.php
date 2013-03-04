@@ -485,6 +485,7 @@ class maps {
         $cl_own_planet = imagecolorallocate($im, 0, 255, 0); // green
         $cl_active_planet = imagecolorallocate($im, 255, 255, 0); // yellow
         $cl_alliance_planet = imagecolorallocate($im, 0, 0, 255); // blue
+        $cl_settlers_planet = imagecolorallocate($im, 204, 102, 0); // orange
         $cl_attack_protection = imagecolorallocate($im, 180, 180, 180); // gray
         $cl_alliance_war = imagecolorallocate($im, 255, 0, 0); // red
         $cl_alliance_bnd_pbnd = imagecolorallocate($im, 137, 202, 239); // lightblue
@@ -604,6 +605,9 @@ class maps {
 
                 if($planet['user_id'] == $game->player['user_id']) {
                    $rect_colors[] = $cl_own_planet;
+                }
+                elseif($planet['user_id'] == INDEPENDENT_USERID) {
+                    $rect_colors[] = $cl_settlers_planet;
                 }
                 elseif($planet['alliance_id'] == $game->player['user_alliance']) {
                    $rect_colors[] = $cl_alliance_planet;
