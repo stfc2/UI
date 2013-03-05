@@ -1952,7 +1952,7 @@ echo'
 			$this->player['active_planet'] = $id;
 		}
 
-	$this->load_active_planet();
+		$this->load_active_planet();
 	}
 
 	function register_click_id($class) {
@@ -2384,7 +2384,7 @@ echo'
 
 	function set_planet($quadrant,$type)
 	{
-		global $ACTUAL_TICK,$db,$MAX_POINTS,$RACE_DATA;
+		global $ACTUAL_TICK,$db;
 
 		// Check if player REALLY doesn't have already a planet
 		$sql = 'SELECT planet_id FROM planets WHERE planet_owner = '.$this->player['user_id'];
@@ -2409,10 +2409,10 @@ echo'
 			$_temp = $this->create_planet(0, 'system', $_system_id);
 			$_temp = $this->create_planet(0, 'system', $_system_id);
 			$_temp = $this->create_planet(0, 'system', $_system_id);
-			$planet_id = $this->create_planet($this->player['user_id'], 'system', $_system_id);
+			$planet_id = $this->create_planet($this->player['user_id'],'system', $_system_id,$type,$this->player['user_race']);
 		}
 		else
-			$planet_id = $this->create_planet($this->player['user_id'], 'quadrant', $quadrant);
+			$planet_id = $this->create_planet($this->player['user_id'],'quadrant', $quadrant,$type,$this->player['user_race']);
 		$db->unlock();
 
 		if(empty($planet_id)) {
@@ -2423,48 +2423,6 @@ echo'
 			. ' VALUES ('.$planet_id.', '.$this->player['user_id'].', 0, '.$this->player['user_id'].', 0, '.time().', 0)';
 			if(!$db->query($sql)) {
 				message(DATABASE_ERROR, 'Could not update planet details data');
-			}
-		}
-
-		if($type == 'm' || $type == 'n') {
-			$sql = 'UPDATE planets
-			        SET planet_type = "'.$type.'"
-			        WHERE planet_id = '.$planet_id;
-
-			if(!$db->query($sql)) {
-				message(DATABASE_ERROR, 'Could not change user planet type');
-			}
-		}
-
-		// Ok, let's boost new players a bit
-		if(USER_START_BOOST) {
-			$sql = 'UPDATE planets
-				SET research_1 = 5,
-				    research_2 = 4,
-				    research_4 = 6,
-				    research_5 = 9,
-				    building_1 = 9,
-				    building_2 = 15,
-				    building_3 = 15,
-				    building_4 = 15,
-				    building_5 = 15,
-				    building_6 = 9,
-				    building_7 = 15,
-				    building_8 = 9,
-				    building_9 = 9,
-				    building_10 = 9,
-				    building_11 = 9,
-				    building_12 = 15,
-				    workermine_1 = 1600, workermine_2 = 1600, workermine_3 = 1600,
-				    unit_1 = 4000, unit_2 = 2000, unit_3 = 500, unit_4 = 100, unit_5 = 150, unit_6 = 100,
-				    resource_1 = '.(150000*$RACE_DATA[$this->player['user_race']][9]).', 
-				    resource_2 = '.(150000*$RACE_DATA[$this->player['user_race']][10]).', 
-				    resource_3 = '.(150000*$RACE_DATA[$this->player['user_race']][11]).',
-				    resource_4 = '.(10000*$RACE_DATA[$this->player['user_race']][12]).',
-				    recompute_static = 1
-				    WHERE planet_id = '.$planet_id;
-			if(!$db->query($sql)) {
-				message(DATABASE_ERROR, 'Could not set boosted planet for user');
 			}
 		}
 
@@ -2480,13 +2438,8 @@ echo'
 			message(DATABASE_ERROR, 'Could not update user rest time');
 		}
 
-		$sql = 'UPDATE planets
-		        SET planet_available_points = '.$MAX_POINTS[1].'
-		        WHERE planet_id = '.$planet_id;
-
-		if(!$db->query($sql)) {
-			message(DATABASE_ERROR, 'Could not update capital planet structure points');
-		}
+        // Update actual data with freshly created capital planet
+        $this->player['user_capital'] = $this->player['active_planet'] = $planet_id;
 	}
 
 }

@@ -151,7 +151,7 @@ function create_system($id_type, $id_value, $is_mother) {
     return array($new_system_id, $sector_id);
 }
 
-function create_planet($user_id, $id_type, $id_value) {
+function create_planet($user_id, $id_type, $id_value, $selected_type = 'r', $race = 0) {
     global $db, $game, $PLANETS_DATA;
 
     // Planet raw materials production according to its type
@@ -509,15 +509,105 @@ function create_planet($user_id, $id_type, $id_value) {
                 VALUES ("'.UNINHABITATED_PLANET.'", '.$system_id.', '.$sector_id.', "'.$planet_type.'", 0, '.$game->TIME.', '.$planet_distance_id.', '.$planet_distance_px.', 0, '.( mt_rand(10, 30) ).', '.( 2 * M_PI * $planet_distance_px ).', 0, 0, 0, 0, 0, '.$rateo_1.', '.$rateo_2.', '.$rateo_3.', '.$rateo_4.')';
     }
     else {
-        $planet_type = (mt_rand(1, 2) == 1) ? 'm' : 'n';
+        // If player selected a specific planet type
+        if ($selected_type != 'r')
+            $planet_type = $selected_type;
+        else
+            $planet_type = (mt_rand(1, 2) == 1) ? 'm' : 'o';
 
         $rateo_1 = $PLANETS_DATA[$planet_type][0];
         $rateo_2 = $PLANETS_DATA[$planet_type][1];
         $rateo_3 = $PLANETS_DATA[$planet_type][2];
         $rateo_4 = $PLANETS_DATA[$planet_type][3];
 
-        $sql = 'INSERT INTO planets (planet_name, system_id, sector_id, planet_type, planet_owner, planet_owned_date, planet_distance_id, planet_distance_px, planet_covered_distance, planet_tick_cdistance, planet_max_cdistance, resource_1, resource_2, resource_3, resource_4, planet_points, recompute_static, max_resources, max_worker, max_units, workermine_1, workermine_2, workermine_3, rateo_1, rateo_2, rateo_3, rateo_4)
-                VALUES ("'.UNINHABITATED_COLONY.'", '.$system_id.', '.$sector_id.', "'.$planet_type.'", '.$user_id.', '.$game->TIME.', '.$planet_distance_id.', '.$planet_distance_px.', 0, '.( mt_rand(10, 30) ).', '.( 2 * M_PI * $planet_distance_px ).', 200, 200, 100, 100, 10, 1, '.$PLANETS_DATA[$planet_type][6].', '.$PLANETS_DATA[$planet_type][7].', '.$PLANETS_DATA[$planet_type][7].', 100, 100, 100, '.$rateo_1.', '.$rateo_2.', '.$rateo_3.', '.$rateo_4.')';
+        // Ok, let's boost new players a bit
+        if(USER_START_BOOST) {
+            global $MAX_BUILDING_LVL,$MAX_RESEARCH_LVL,$RACE_DATA,$MAX_POINTS;
+            $sql = 'INSERT INTO planets
+                        (planet_name,
+                        system_id,
+                        sector_id,
+                        planet_type,
+                        planet_owner,
+                        planet_owned_date,
+                        planet_distance_id,
+                        planet_distance_px,
+                        planet_covered_distance,
+                        planet_tick_cdistance,
+                        planet_max_cdistance,
+                        building_1,
+                        building_2,
+                        building_3,
+                        building_4,
+                        building_5,
+                        building_6,
+                        building_7,
+                        building_8,
+                        building_9,
+                        building_10,
+                        building_11,
+                        building_12,
+                        research_1,
+                        research_2,
+                        research_4,
+                        research_5,
+                        resource_1,
+                        resource_2,
+                        resource_3,
+                        resource_4,
+                        planet_points,
+                        planet_available_points,
+                        recompute_static,
+                        max_resources,
+                        max_worker,
+                        max_units,
+                        workermine_1,workermine_2,workermine_3,
+                        unit_1,unit_2,unit_3,unit_4,unit_5,unit_6,
+                        rateo_1,rateo_2,rateo_3,rateo_4)
+                    VALUES ("'.UNINHABITATED_COLONY.'",
+                        '.$system_id.',
+                        '.$sector_id.',
+                        "'.$planet_type.'",
+                        '.$user_id.',
+                        '.$game->TIME.',
+                        '.$planet_distance_id.',
+                        '.$planet_distance_px.',
+                        0,
+                        '.( mt_rand(10, 30) ).',
+                        '.( 2 * M_PI * $planet_distance_px ).',
+                        '.$MAX_BUILDING_LVL[1][0].',
+                        '.$MAX_BUILDING_LVL[1][1].',
+                        '.$MAX_BUILDING_LVL[1][2].',
+                        '.$MAX_BUILDING_LVL[1][3].',
+                        '.$MAX_BUILDING_LVL[1][4].',
+                        '.$MAX_BUILDING_LVL[1][5].',
+                        '.$MAX_BUILDING_LVL[1][6].',
+                        '.$MAX_BUILDING_LVL[1][7].',
+                        '.$MAX_BUILDING_LVL[1][8].',
+                        '.$MAX_BUILDING_LVL[1][9].',
+                        '.$MAX_BUILDING_LVL[1][10].',
+                        '.$MAX_BUILDING_LVL[1][11].',
+                        5,
+                        4,
+                        6,
+                        '.$MAX_RESEARCH_LVL[1][4].',
+                        '.(150000 * $RACE_DATA[$race][9]).',
+                        '.(150000 * $RACE_DATA[$race][10]).',
+                        '.(150000 * $RACE_DATA[$race][11]).',
+                        '.(10000 * $RACE_DATA[$race][12]).',
+                        10,
+                        '.$MAX_POINTS[1].',
+                        1,
+                        '.$PLANETS_DATA[$planet_type][6].',
+                        '.$PLANETS_DATA[$planet_type][7].',
+                        '.$PLANETS_DATA[$planet_type][7].',
+                        1600,1600,1600,
+                        4000,2000,500,100,150,100,
+                        '.$rateo_1.','.$rateo_2.','.$rateo_3.','.$rateo_4.')';
+        }
+        else
+            $sql = 'INSERT INTO planets (planet_name, system_id, sector_id, planet_type, planet_owner, planet_owned_date, planet_distance_id, planet_distance_px, planet_covered_distance, planet_tick_cdistance, planet_max_cdistance, resource_1, resource_2, resource_3, resource_4, planet_points, recompute_static, max_resources, max_worker, max_units, workermine_1, workermine_2, workermine_3, rateo_1, rateo_2, rateo_3, rateo_4)
+                    VALUES ("'.UNINHABITATED_COLONY.'", '.$system_id.', '.$sector_id.', "'.$planet_type.'", '.$user_id.', '.$game->TIME.', '.$planet_distance_id.', '.$planet_distance_px.', 0, '.( mt_rand(10, 30) ).', '.( 2 * M_PI * $planet_distance_px ).', 200, 200, 100, 100, 10, 1, '.$PLANETS_DATA[$planet_type][6].', '.$PLANETS_DATA[$planet_type][7].', '.$PLANETS_DATA[$planet_type][7].', 100, 100, 100, '.$rateo_1.', '.$rateo_2.', '.$rateo_3.', '.$rateo_4.')';
     }
 
     if(!$db->query($sql)) {
