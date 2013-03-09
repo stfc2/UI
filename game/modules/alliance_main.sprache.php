@@ -479,7 +479,7 @@ define ("ITA_TEXT53", 'Non esistono alleanze con la tag indicata');
 
 define ("ITA_TEXT54", 'Esiste gi&agrave; un\'alleanza col nome/tag scelto');
 
-define ("ITA_TEXT55", 'ha fondato l#&146;alleanza');
+define ("ITA_TEXT55", 'ha fondato l&#146;alleanza');
 
 define ("ITA_TEXT56", '');
 
