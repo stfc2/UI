@@ -385,7 +385,8 @@ function Abort_Build()
         }
 
         // Remove from the queue the building (the last element found)
-        unset($schedulerquery[$id_to_remove]);
+        // unset($schedulerquery[$id_to_remove]); <-- Damn'it! It doesn't update the key in the array...
+        array_splice($schedulerquery,$id_to_remove,1);
 
         // If the building to remove is not the last one...
         if (($id_to_remove+1) < $num) {
@@ -438,19 +439,19 @@ function Abort_Build()
                     // Store initial building times
                     $start_time = $scheduler['build_start'];
                     $finish_time = $scheduler['build_finish'];
-                    
+                    $constr_time = $finish_time - $start_time;
 
                     if ($id == 0 ) {
                         if ($scheduler['build_start'] > $ACTUAL_TICK) {
                             $scheduler['build_start'] = $ACTUAL_TICK;
-                            $scheduler['build_finish'] -= $ACTUAL_TICK;                            
+                            $scheduler['build_finish'] = $scheduler['build_start'] + $constr_time;
                             $doUpdate = true;
                         }
                     }
                     else {
                         if ($scheduler['build_start'] != $old_scheduler['build_finish']) {
                             $scheduler['build_start'] = $old_scheduler['build_finish'];
-                            $scheduler['build_finish'] = $scheduler['build_start'] + $finish_time - $start_time;
+                            $scheduler['build_finish'] = $scheduler['build_start'] + $constr_time;
                             $doUpdate = true;
                         }
                     }
