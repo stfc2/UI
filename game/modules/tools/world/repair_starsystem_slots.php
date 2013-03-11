@@ -19,7 +19,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-// Muss auskommentiert sein, da dieses Tool sonst nicht ohne Planet benutzt werden kann
+// Must be commented out because this tool cannot be used otherwise without planet
 
 $game->init_player();
 
@@ -46,7 +46,7 @@ for($i = 1; $i <= $n_sectors; ++$i) {
     }
 }
 
-echo 'Prepared '.$n_slots.' slots<br>'.NL;
+$game->out('Prepared '.$n_slots.' slots<br>');
 
 
 $sql = 'SELECT sector_id, system_x, system_y
@@ -65,7 +65,7 @@ while($cur_system = $db->fetchrow($q_systems)) {
     }
 }
 
-echo 'Truncated to '.$n_slots.' through existing systems<br>'.NL;
+$game->out('Truncated to '.$n_slots.' through existing systems<br>');
 
 
 
