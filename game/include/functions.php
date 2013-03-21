@@ -268,6 +268,8 @@ function add_logbook_entry($user_id, $log_type, $log_title, $log_data) {
 	global $game, $db;
 	if (!isset($user_id) || !isset($log_type) ||!isset($log_title) ||!isset($log_data)) return;
 	if (empty($user_id) || empty($log_type) ||empty($log_title) ||empty($log_data)) return;
+	// BOT users doesn't read their logbooks
+	if(($user_id == FERENGI_USERID) || ($user_id == INDEPENDENT_USERID) || ($user_id == BORG_USERID)) return;
 
 	$sql = 'INSERT INTO logbook (user_id, log_type, log_date, log_read, log_title, log_data)
 		VALUES ('.$user_id.', '.$log_type.', '.$game->TIME.', 0, "'.$log_title.'", "'.addslashes(serialize($log_data)).'")';
