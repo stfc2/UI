@@ -260,6 +260,81 @@ if(!$db->query($sql)) {
     message(DATABASE_ERROR, 'Cannot create STFC-Admin user template!');
 }
 
+// This templates are needed by tool encourage_user
+$game->out('done.<br>Creating STFC admin ship templates...');
+
+$sql = "INSERT INTO ship_templates (
+            `id`, `owner`, `timestamp`, `name`,
+            `description`, `race`, `ship_torso`, `ship_class`,
+            `component_1`, `component_2`, `component_3`, `component_4`, `component_5`,
+            `component_6`, `component_7`, `component_8`, `component_9`, `component_10`,
+            `value_1`, `value_2`, `value_3`, `value_4`, `value_5`,
+            `value_6`, `value_7`, `value_8`, `value_9`, `value_10`,
+            `value_11`, `value_12`, `value_13`, `value_14`, `value_15`,
+            `rof`, `max_torp`,
+            `resource_1`, `resource_2`, `resource_3`, `resource_4`,
+            `unit_5`, `unit_6`,
+            `min_unit_1`, `min_unit_2`, `min_unit_3`, `min_unit_4`,
+            `max_unit_1`, `max_unit_2`, `max_unit_3`, `max_unit_4`,
+            `buildtime`, `removed`)
+        VALUES
+            (1, 10, ".$game->TIME.", 'Cargo',
+            'Encouraging cargo', 0, 1, 0,
+            -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1,
+            15, 0, 0, 5, 20,
+            2, 1, 5, 5, 3.4,
+            5, 0, 10, 4, 0,
+            1, 0,
+            4250, 5800, 4640, 105,
+            2, 1,
+            56, 0, 0, 1,
+            56, 0, 0, 1,
+            40, 0),
+            (2, 10, ".$game->TIME.", 'Coloship',
+            'Encouraging colony ship', 0, 2, 0,
+            -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1,
+            10, 0, 0, 10, 50,
+            0, 0, 0, 0, 5.4,
+            0, 0, 15, 5, 0,
+            1, 0,
+            59900, 19450, 32360, 1955,
+            16, 2,
+            104, 0, 0, 3,
+            200, 0, 0, 3,
+            170, 0),
+            (3, 10, ".$game->TIME.", 'Corvette',
+            'Encouraging hull 8', 0, 7, 2,
+            -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1,
+            190, 110, 10, 670, 300,
+            9, 5, 24, 10, 4.2,
+            5, 0, 30, 25, 0,
+            1, 75,
+            41212, 37445, 20956, 550,
+            15, 5,
+            85, 25, 10, 0,
+            100, 50, 75, 5,
+            265, 0),
+            (4, 10, ".$game->TIME.", 'Frigate',
+            'Encouraging hull 12', 0, 11, 3,
+            -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1,
+            500, 200, 5, 1180, 1050,
+            12, 14, 35, 25, 3.7,
+            19, 0, 77, 71, 0,
+            1, 275,
+            84370, 66427, 61674, 1400,
+            16, 5,
+            250, 75, 50, 3,
+            500, 200, 100, 12,
+            439, 0);";
+
+if(!$db->query($sql)) {
+    message(DATABASE_ERROR, 'Cannot create STFC-Admin ship templates!');
+}
+
 // ###########################################################################
 // ###########################################################################
 // Recreate free starsystems slots
@@ -293,8 +368,20 @@ $game->out('done.<br><b>Galaxy has been successfully reset.</b>');
 
 // ###########################################################################
 // ###########################################################################
-// Remember the admin to install the BOTS, at least until the procedure
-// will be automated in this script.
-$game->out('<br><br><h3>Remember to install the BOTs BEFORE starting the tick!</h3>');
+// Install the BOTs.
+
+$game->out('<br><br>');
+
+$_GET['sure'] = 1;
+include('install_BOTs.php');
+
+/* Restart the tick execution and the game:
+$sql = 'UPDATE config SET tick_stopped = 0,game_stopped = 0';
+
+if(!$db->query($sql)) {
+    message(DATABASE_ERROR, 'Cannot restart tick execution!');
+}
+
+$game->out('Tick restarted<br>');*/
 
 ?>
