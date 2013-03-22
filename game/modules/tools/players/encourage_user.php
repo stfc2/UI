@@ -112,8 +112,13 @@ if(isset($_POST['submit'])) {
         if(($stpl = $db->queryrow($sql)) === false)
             message(DATABASE_ERROR, 'Could not query template data');
 
+        // Check if basic template exists
+        if(empty($stpl)) {
+            message(DATABASE_ERROR, 'Cannot find ship '.$torso.' template!');
+        }
+
         $sql = 'INSERT INTO ship_fleets (fleet_name, user_id, planet_id, move_id, n_ships)
-                VALUES ("Refund_hull'.($torso+1).'", '.$user_id.', '.$user['user_capital'].', 0, '.$num.')';
+                VALUES ("Encouraging_hull'.($torso+1).'", '.$user_id.', '.$user['user_capital'].', 0, '.$num.')';
                     
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not insert new fleets data');
