@@ -215,6 +215,15 @@ define ("GER_TEXT96", 'Top Ten Borg Fighters');
 
 define ("GER_TEXT97", 'Threat Rating:');
 
+define ("GER_TEXT98", 'Siedler Faction');
+
+define ("GER_TEXT99", 'Academy Planets');
+
+define ("GER_TEXT100", 'Shipyard Planets');
+
+define ("GER_TEXT101", 'Mining Planets');
+
+define ("GER_TEXT102", 'Relation Value');
 
 
 //English
@@ -412,6 +421,15 @@ define ("ENG_TEXT96", 'Top Ten Borg Fighters');
 
 define ("ENG_TEXT97", 'Threat Rating:');
 
+define ("ENG_TEXT98", 'Settlers Faction');
+
+define ("ENG_TEXT99", 'Academy Planets');
+
+define ("ENG_TEXT100", 'Shipyard Planets');
+
+define ("ENG_TEXT101", 'Mining Planets');
+
+define ("ENG_TEXT102", 'Relation Value');
 
 
 //Italian
@@ -609,4 +627,13 @@ define ("ITA_TEXT96", 'Top Ten Borg Fighters');
 
 define ("ITA_TEXT97", 'Livello minaccia:');
 
+define ("ITA_TEXT98", 'Fazione Coloni');
+
+define ("ITA_TEXT99", 'Pianeti Accademia');
+
+define ("ITA_TEXT100", 'Pianeti Cantiere');
+
+define ("ITA_TEXT101", 'Pianeti Miniera');
+
+define ("ITA_TEXT102", 'Valore Relazioni');
 ?>

@@ -100,15 +100,19 @@ $game->out('<br>
     <td>
       <table border="0" cellpadding="1" cellspacing="1" class="style_inner" width="100%>
         <tr height="30">
-          <td width=150 align=middle>
+          <td width=112 align=middle>
             <a href="'.parse_link('a=stats&a2=player_ranking').'"><span class="sub_caption2">'.constant($game->sprache("TEXT5")).'</a>
           </td>
-          <td width=150 align=middle>
+          <td width=112 align=middle>
             <a href="'.parse_link('a=stats&a2=alliance_ranking').'"><span class="sub_caption2">'.constant($game->sprache("TEXT6")).'</a>
             <br>
           </td>
-          <td width=150 align=middle>
+          <td width=112 align=middle>
             <a href="'.parse_link('a=stats&a2=borgs_stats').'"><span class="sub_caption2">'.constant($game->sprache("TEXT93")).'</a>
+            <br>
+          </td>
+          <td width=112 align=middle>
+            <a href="'.parse_link('a=stats&a2=settlers_stats').'"><span class="sub_caption2">'.constant($game->sprache("TEXT98")).'</a>
             <br>
           </td>
         </tr>
@@ -897,7 +901,7 @@ if($numero_righe == 0) {
 else {
     while(($planet = $db->fetchrow($planetquery))==true)
     {
-        if($planet['planet_type'] == "m" || $planet['planet_type'] == "n" || $planet['planet_type'] == "y" || $planet['planet_type'] == "e" || $planet['planet_type'] == "f" || $planet['planet_type'] == "g")
+        if($planet['planet_type'] == "m" || $planet['planet_type'] == "o" || $planet['planet_type'] == "y" || $planet['planet_type'] == "x" || $planet['planet_type'] == "f" || $planet['planet_type'] == "g")
         {
             $game->out('<tr><td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
             if($planet['planet_name']=="") $planet['planet_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
@@ -945,7 +949,7 @@ else
 {
 	while(($planet = $db->fetchrow($planetquery))==true)
 	{
-		if($planet['planet_type'] != "m" && $planet['planet_type'] != "n" && $planet['planet_type'] != "y" && $planet['planet_type'] != "e" && $planet['planet_type'] != "f" && $planet['planet_type'] != "g")
+		if($planet['planet_type'] != "m" && $planet['planet_type'] != "o" && $planet['planet_type'] != "y" && $planet['planet_type'] != "x" && $planet['planet_type'] != "f" && $planet['planet_type'] != "g")
 		{
         $game->out('<tr><td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
         if($planet['planet_name']=="") $planet['planet_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
@@ -964,6 +968,290 @@ $game->out('
 }
 }
 
+function Show_Settlers()
+{
+global $db;
+global $game;
+global $config;
+
+
+// Men BASIC
+Show_Main();
+
+
+if(($user = $db->queryrow('SELECT * FROM user WHERE user_id="'.INDEPENDENT_USERID.'" LIMIT 1'))===false) 
+{
+	$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT33")).' (id='.$_REQUEST['id'].'<br>'.constant($game->sprache("TEXT34")).'</span>');
+}
+else
+{
+$game->out('
+<table border=0 cellpadding=2 cellspacing=2 wisth="450" class="style_outer" align="center">
+  <tr>
+    <td>
+      <center><span class="caption">'.$user['user_name'].'</span></center>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table border=0 cellpadding=1 cellspacing=1 width=450 class ="style_inner">
+        <tr>');
+
+//avatar:
+if (!empty($user['user_avatar']))
+{
+$info = getimagesize_remote($user['user_avatar']);
+
+if ($info[0]>0 && $info[1]>0 && $info[0]<=150 && $info[1]<=250)
+{
+$game->out('<td width='.$info[0].'><img src="'.$user['user_avatar'].'"></td><td width=25></td><td width=425-'.$info[0].' valign=top>');
+}
+else if ($info[0]>0 && $info[1]>0)
+{
+$width=150;
+$height=150;
+	if ($info[0]>$info[1]) {$height = 150 * ($info[1] / $info[0]);}
+ 	else {$width = 150 * ($info[0] / $info[1]);}
+
+
+$game->out('<td width='.$width.'><img src="'.$user['user_avatar'].'" width="'.$width.'" height="'.$height.'"></td><td width=25></td><td width=425-'.$width.' valign=top>');
+}
+else $game->out('<td width=200></td><td width=250 valign=top>');
+}
+else $game->out('<td width=200></td><td width=250 valign=top>');
+
+$rasse=$RACE_DATA[$user['user_race']][0];
+
+
+$planets=$db->queryrow('SELECT count(planet_id) AS num FROM planets WHERE planet_owner="'.$user['user_id'].'"');
+
+$game->out('
+            <table border=0 cellpadding=2 cellspacing=2 class="style_inner">
+              <tr>
+                <td width=70><span class="text_large">'.constant($game->sprache("TEXT19")).'</b></span></td>
+                <td width=150><span class="text_large">'.$planets['num'].'</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<br>
+');
+
+$_link_image = '<a href="usermap.php?user='.$user['user_name'].'&size=6&map" target=_blank><img src="usermap.php?user='.$user['user_name'].'&size=1" border=0></a>';
+
+$game->out('
+<br>
+
+<table border=0 cellpadding=2 cellspacing=2 width="450" class="style_outer">
+  <tr>
+    <td><span class="sub_caption">'.constant($game->sprache("TEXT52")).'</span></td>
+  </tr>
+  <tr>
+    <td>
+      <table border=0 cellpadding=2 cellspacing=2 width="450" class="style_inner">
+        <tr>
+          <td align="center">'.$_link_image.'</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<br>
+');
+
+$game->out('
+<table border=0 cellpadding=2 cellspacing=2 width="450" class="style_outer">
+  <tr>
+    <td><span class="sub_caption">'.constant($game->sprache("TEXT53")).'</span></td>
+  </tr>');
+
+$game->out('
+  <tr>
+    <td align="center">
+      <b>'.constant($game->sprache("TEXT99")).'</b>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table border=0 cellpadding=2 cellspacing=2 width="450" class="style_inner">
+        <tr>
+          <td width=80><b>'.constant($game->sprache("TEXT69")).'</td>
+          <td width=200><b>'.constant($game->sprache("TEXT18")).'</td>
+          <td width=60><b>'.constant($game->sprache("TEXT102")).'</td>
+          <td width=50><b>'.constant($game->sprache("TEXT55")).'</td>
+        </tr>
+');
+
+$sql_pl = 'SELECT pl.planet_id, pl.planet_name, pl.best_mood, pl.best_mood_user, pl.sector_id, pl.planet_distance_id, pl.planet_type, sys.system_x, sys.system_y
+                   FROM (planets pl)
+                   LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id
+                   LEFT JOIN (planet_details pd) ON pl.system_id = pd.system_id
+                   WHERE pl.planet_owner = "'.INDEPENDENT_USERID.'" AND
+                         pl.planet_type IN ("a","b","c","d","m","o","p") AND                         
+                         pd.user_id = "'.$game->player['user_id'].'" AND
+                         pd.log_code = 500
+                   GROUP BY pl.planet_id
+                   ORDER BY pl.sector_id, pl.system_id, pl.planet_name';
+
+$planetquery=$db->query($sql_pl);
+$numero_righe = $db->num_rows($planetquery);
+if($numero_righe == 0) {
+    $game->out('<tr><td> --- </td><td> --- </td><td> --- </td><td> --- </td></tr>');
+}
+else {
+    $sett_diplo = $db->fetchrowset($planetquery);
+    foreach($sett_diplo as $planet)
+    {
+        $game->out('<tr><td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
+        if($planet['planet_name']=="") $planet['planet_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
+        $game->out($planet['planet_name'].'</a></td>');
+        // Insane number of SELECT
+        $sql = 'SELECT SUM(mood_modifier) as mood FROM settlers_relations WHERE planet_id = '.$planet['planet_id'].' AND user_id = '.$game->player['user_id'];
+        $u_m = $db->queryrow($sql);
+        if(isset($u_m['mood']) && !empty($u_m['mood']))
+        {
+            $user_mood = $u_m['mood'];
+            $game->out('<td><span style="color: '.(($game->player['user_id'] == $planet['best_mood_user']) || ($user_mood > $planet['best_mood']) ? 'green' : 'red').'">'.$user_mood.'</span></td>');
+        }
+        else
+        {
+            $game->out('<td>---</td>');
+        }
+        $game->out('<td>'.strtoupper($planet['planet_type']).'</td></tr>');
+    }
+}
+
+
+$game->out('
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <b>'.constant($game->sprache("TEXT100")).'</b>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table border=0 cellpadding=2 cellspacing=2 width="450" class="style_inner">
+        <tr>
+          <td width=80><b>'.constant($game->sprache("TEXT69")).'</td>
+          <td width=200><b>'.constant($game->sprache("TEXT18")).'</td>
+          <td width=60><b>'.constant($game->sprache("TEXT102")).'</td>
+          <td width=50><b>'.constant($game->sprache("TEXT55")).'</td>
+        </tr>');
+
+$sql_pl = 'SELECT pl.planet_id, pl.planet_name, pl.best_mood, pl.best_mood_user, pl.sector_id, pl.planet_distance_id, pl.planet_type, sys.system_x, sys.system_y
+                   FROM (planets pl)
+                   LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id
+                   LEFT JOIN (planet_details pd) ON pl.system_id = pd.system_id
+                   WHERE pl.planet_owner = "'.INDEPENDENT_USERID.'" AND
+                         pl.planet_type IN ("h","n","k","l","e","f","g") AND
+                         pd.user_id = "'.$game->player['user_id'].'" AND
+                         pd.log_code = 500
+                   GROUP BY pl.planet_id
+                   ORDER BY pl.sector_id, pl.system_id, pl.planet_name';
+
+$planetquery=$db->query($sql_pl);
+$numero_righe = $db->num_rows($planetquery);
+if($numero_righe == 0) {
+	$game->out('<tr><td> --- </td><td> --- </td><td> --- </td><td> --- </td></tr>');
+}
+else 
+{
+    $sett_diplo = $db->fetchrowset($planetquery);
+	foreach($sett_diplo as $planet)
+	{
+        $game->out('<tr><td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
+        if($planet['planet_name']=="") $planet['planet_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
+        $game->out($planet['planet_name'].'</a></td>');
+        // Insane number of SELECT
+        $sql = 'SELECT SUM(mood_modifier) as mood FROM settlers_relations WHERE planet_id = '.$planet['planet_id'].' AND user_id = '.$game->player['user_id'];
+        $u_m = $db->queryrow($sql);
+        if(isset($u_m['mood']) && !empty($u_m['mood']))
+        {
+            $user_mood = $u_m['mood'];
+            $game->out('<td><span style="color: '.(($game->player['user_id'] == $planet['best_mood_user']) || ($user_mood > $planet['best_mood']) ? 'green' : 'red').'">'.$user_mood.'</span></td>');
+        }
+        else
+        {
+            $game->out('<td>---</td>');
+        }
+        $game->out('<td>'.strtoupper($planet['planet_type']).'</td></tr>');
+    }
+}
+
+$game->out('
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <b>'.constant($game->sprache("TEXT101")).'</b>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table border=0 cellpadding=2 cellspacing=2 width="450" class="style_inner">
+        <tr>
+          <td width=80><b>'.constant($game->sprache("TEXT69")).'</td>
+          <td width=200><b>'.constant($game->sprache("TEXT18")).'</td>
+          <td width=50><b>'.constant($game->sprache("TEXT102")).'</td>
+          <td width=50><b>'.constant($game->sprache("TEXT55")).'</td>
+        </tr>');
+
+$sql_pl = 'SELECT pl.planet_id, pl.planet_name, pl.best_mood, pl.best_mood_user, pl.sector_id, pl.planet_distance_id, pl.planet_type, sys.system_x, sys.system_y
+                   FROM (planets pl)
+                   LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id
+                   LEFT JOIN (planet_details pd) ON pl.system_id = pd.system_id
+                   WHERE pl.planet_owner = "'.INDEPENDENT_USERID.'" AND
+                         pl.planet_type IN ("i","j","s","t","x","y") AND
+                         pd.user_id = "'.$game->player['user_id'].'" AND
+                         pd.log_code = 500
+                   GROUP BY pl.planet_id
+                   ORDER BY pl.sector_id, pl.system_id, pl.planet_name';
+
+$planetquery=$db->query($sql_pl);
+$numero_righe = $db->num_rows($planetquery);
+if($numero_righe == 0) {
+	$game->out('<tr><td> --- </td><td> --- </td><td> --- </td><td> --- </td></tr>');
+}
+else 
+{
+    $sett_diplo = $db->fetchrowset($planetquery);
+	foreach($sett_diplo as $planet)
+	{
+        $game->out('<tr><td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
+        if($planet['planet_name']=="") $planet['planet_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
+        $game->out($planet['planet_name'].'</a></td>');
+        // Insane number of SELECT
+        $sql = 'SELECT SUM(mood_modifier) as mood FROM settlers_relations WHERE planet_id = '.$planet['planet_id'].' AND user_id = '.$game->player['user_id'];
+        $u_m = $db->queryrow($sql);
+        if(isset($u_m['mood']) && !empty($u_m['mood']))
+        {
+            $user_mood = $u_m['mood'];
+            $game->out('<td><span style="color: '.(($game->player['user_id'] == $planet['best_mood_user']) || ($user_mood > $planet['best_mood']) ? 'green' : 'red').'">'.$user_mood.'</span></td>');
+        }
+        else
+        {
+            $game->out('<td>---</td>');
+        }
+        $game->out('<td>'.strtoupper($planet['planet_type']).'</td></tr>');
+    }
+}
+
+$game->out('
+      </table>
+    </td>
+  </tr>
+</table>');
+
+}
+}
 
 function Player_Ranking($focus=0,$search_name="")
 {
@@ -1618,5 +1906,6 @@ Alliance_Ranking($focus,$highlight);
 if ($sub_action=='viewplayer') Show_Player();
 if ($sub_action=='viewalliance') Show_Alliance();
 if ($sub_action=='borgs_stats') Show_Borg();
+if ($sub_action=='settlers_stats') Show_Settlers();
 
 ?>
