@@ -3525,17 +3525,17 @@ function Show_Main_a()
 			'.constant($game->sprache("TEXT217")).' '.$ship_anzahl['anzahl'].'<br>
 			'.constant($game->sprache("TEXT218")).' '.$anzahl_gesperrt['anzahl'].'<br><br>');
 		$t_gesamt = $db->queryrow('SELECT sum(unit_1) AS eins, sum(unit_2) AS zwei, sum(unit_3) AS drei, sum(unit_4) AS vier, sum(unit_5) AS fuenf, sum(unit_6) AS sechs FROM `FHB_handel_log` WHERE art=1');
-		$zeit=(($ACTUAL_TICK-34149)*3)/60;
-		$zeit=(int)$zeit;
+		$time=($ACTUAL_TICK * TICK_DURATION) / (60 * 24);
+		$time=(int)$time;
 		$link='test<br>';
 		$catname='';
-		$game->out(constant($game->sprache("TEXT187")).($t_gesamt['eins']+$t_gesamt['zwei']+$t_gesamt['drei']+$t_gesamt['vier']+$t_gesamt['fuenf']+$t_gesamt['sechs']).' ('.constant($game->sprache("TEXT219")).' '.$zeit.'h)<br>
-			<li><a href="javascript:void(0);" onmouseover="return overlib(\'<img src=kurs/unit_1_.png>\',CAPTION,\'Unit 1\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->GFX_PATH.'menu_unit1_small.gif">'.$t_gesamt['eins'].' - '.constant($game->sprache("TEXT220")).'</a></li>
-			<li><a href="javascript:void(0);" onmouseover="return overlib(\'<img src=kurs/unit_2_.png>\',CAPTION,\'Unit 2\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->GFX_PATH.'menu_unit2_small.gif">'.$t_gesamt['zwei'].' - '.constant($game->sprache("TEXT220")).'</a></li>
-			<li><a href="javascript:void(0);" onmouseover="return overlib(\'<img src=kurs/unit_3_.png>\',CAPTION,\'Unit 3\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->GFX_PATH.'menu_unit3_small.gif">'.$t_gesamt['drei'].' - '.constant($game->sprache("TEXT220")).'</a></li>
-			<li><a href="javascript:void(0);" onmouseover="return overlib(\'<img src=kurs/unit_4_.png>\',CAPTION,\'Unit 4\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->GFX_PATH.'menu_unit4_small.gif">'.$t_gesamt['vier'].' - '.constant($game->sprache("TEXT220")).'</a></li>
-			<li><a href="javascript:void(0);" onmouseover="return overlib(\'<img src=kurs/unit_5_.png>\',CAPTION,\'Unit 5\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->GFX_PATH.'menu_unit5_small.gif">'.$t_gesamt['fuenf'].' - '.constant($game->sprache("TEXT220")).'</a></li>
-			<li><a href="javascript:void(0);" onmouseover="return overlib(\'<img src=kurs/unit_6_.png>\',CAPTION,\'Unit 6\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->GFX_PATH.'menu_unit6_small.gif">'.$t_gesamt['sechs'].' - '.constant($game->sprache("TEXT220")).'</a></li>
+		$game->out(constant($game->sprache("TEXT187")).' '.($t_gesamt['eins']+$t_gesamt['zwei']+$t_gesamt['drei']+$t_gesamt['vier']+$t_gesamt['fuenf']+$t_gesamt['sechs']).'<br>('.constant($game->sprache("TEXT219")).' '.$time.' '.constant($game->sprache("TEXT129")).')<br>
+			<li><a href="javascript:void(0);" onmouseover="return overlib(\'<img src=kurs/unit_1.png>\',CAPTION,\'Unit 1\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->GFX_PATH.'menu_unit1_small.gif">'.$t_gesamt['eins'].' - '.constant($game->sprache("TEXT220")).'</a></li>
+			<li><a href="javascript:void(0);" onmouseover="return overlib(\'<img src=kurs/unit_2.png>\',CAPTION,\'Unit 2\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->GFX_PATH.'menu_unit2_small.gif">'.$t_gesamt['zwei'].' - '.constant($game->sprache("TEXT220")).'</a></li>
+			<li><a href="javascript:void(0);" onmouseover="return overlib(\'<img src=kurs/unit_3.png>\',CAPTION,\'Unit 3\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->GFX_PATH.'menu_unit3_small.gif">'.$t_gesamt['drei'].' - '.constant($game->sprache("TEXT220")).'</a></li>
+			<li><a href="javascript:void(0);" onmouseover="return overlib(\'<img src=kurs/unit_4.png>\',CAPTION,\'Unit 4\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->GFX_PATH.'menu_unit4_small.gif">'.$t_gesamt['vier'].' - '.constant($game->sprache("TEXT220")).'</a></li>
+			<li><a href="javascript:void(0);" onmouseover="return overlib(\'<img src=kurs/unit_5.png>\',CAPTION,\'Unit 5\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->GFX_PATH.'menu_unit5_small.gif">'.$t_gesamt['fuenf'].' - '.constant($game->sprache("TEXT220")).'</a></li>
+			<li><a href="javascript:void(0);" onmouseover="return overlib(\'<img src=kurs/unit_6.png>\',CAPTION,\'Unit 6\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><img src="'.$game->GFX_PATH.'menu_unit6_small.gif">'.$t_gesamt['sechs'].' - '.constant($game->sprache("TEXT220")).'</a></li>
 			<br>');
 
 		$game->out('</td><td>');

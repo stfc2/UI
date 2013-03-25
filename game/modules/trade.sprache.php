@@ -1522,7 +1522,7 @@ define ("ITA_TEXT185", 'Scambia');
 
 define ("ITA_TEXT186", 'Mercato Mercenari - vendita truppe:');
 
-define ("ITA_TEXT187", 'Vendi truppe:');
+define ("ITA_TEXT187", 'Truppe vendute:');
 
 define ("ITA_TEXT188", '<br><b>Il tuo metodo di pagamento &egrave; fallito o perch&eacute; le materie prime del bot non sono sufficienti o perch&eacute;non hai pi&ugrave; le truppe disponibili sul pianeta</b><br>');
 
