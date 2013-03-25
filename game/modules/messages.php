@@ -1,11 +1,11 @@
 <?php
-/*    
-	This file is part of STFC.
-	Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
-		
-	STFC is based on STGC,
-	Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
-	
+/*
+    This file is part of STFC.
+    Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
+
+    STFC is based on STGC,
+    Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
+
     STFC is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 3 of the License, or
@@ -31,9 +31,9 @@ $game->init_player();
 $subAction = (!empty($_GET['a2'])) ? $_GET['a2'] : 'inbox';
 
 // set start page
-$perpage	= 20;
-$page 	= (isset($_REQUEST['page'])) ? $_REQUEST['page'] : 0;
-$start 	= $page * $perpage;
+$perpage    = 20;
+$page     = (isset($_REQUEST['page'])) ? $_REQUEST['page'] : 0;
+$start     = $page * $perpage;
 
 
 if (isset($_POST['receiver'])) $_POST['receiver']=htmlspecialchars($_POST['receiver']);
@@ -53,79 +53,79 @@ if ($game->player['user_id']==$user_id) $game->player['unread_messages']=$num['u
 
 if($subAction == 'inbox')
 {
-	// do 'rremove'
-	if(isset($_REQUEST['rremove']))
-	{
-		for ($i = 0; $i < $perpage; $i++)
-		{
-			if(isset($_POST['message'.$i.'']))
-			{
-				$mes=$db->queryrow('SELECT * FROM message WHERE (id = "'.(int)$_POST['message'.$i.''].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
-				if ($db->query('INSERT INTO message_removed (sender, receiver, subject, text, time)
-								VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
-					$db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
-			}
-		}
-		UpdateUnreadMessages($game->player['user_id']);
-	}
-	// do 'rarchiv'
-	if(isset($_REQUEST['rarchiv']))
-	{
-		for ($i = 0; $i < $perpage; $i++)
-		{
-			if(isset($_POST['message'.$i.'']))
-			{
-				$mes=$db->queryrow('SELECT * FROM message WHERE (id = "'.(int)$_POST['message'.$i.''].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
-				if ($db->query('INSERT INTO message_archiv (sender, receiver, subject, text, time)
-								VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
-					$db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
-			}
-		}
-		UpdateUnreadMessages($game->player['user_id']);
-	}
+    // do 'rremove'
+    if(isset($_REQUEST['rremove']))
+    {
+        for ($i = 0; $i < $perpage; $i++)
+        {
+            if(isset($_POST['message'.$i.'']))
+            {
+                $mes=$db->queryrow('SELECT * FROM message WHERE (id = "'.(int)$_POST['message'.$i.''].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
+                if ($db->query('INSERT INTO message_removed (sender, receiver, subject, text, time)
+                                VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
+                    $db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
+            }
+        }
+        UpdateUnreadMessages($game->player['user_id']);
+    }
+    // do 'rarchiv'
+    if(isset($_REQUEST['rarchiv']))
+    {
+        for ($i = 0; $i < $perpage; $i++)
+        {
+            if(isset($_POST['message'.$i.'']))
+            {
+                $mes=$db->queryrow('SELECT * FROM message WHERE (id = "'.(int)$_POST['message'.$i.''].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
+                if ($db->query('INSERT INTO message_archiv (sender, receiver, subject, text, time)
+                                VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
+                    $db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
+            }
+        }
+        UpdateUnreadMessages($game->player['user_id']);
+    }
 
-	// do 'rremoveall'
-	else if(isset($_GET['rremoveall']))
-	{
-		$mes_qry=$db->query('SELECT * FROM message WHERE (rread = "1") AND (receiver = "'.$game->player['user_id'].'") AND sender!=0');
-		while ($mes=$db->fetchrow($mes_qry))
-		{
-			if ($db->query('INSERT INTO message_removed (sender, receiver, subject, text, time)
-							VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
-				$db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
-		}
-	}
+    // do 'rremoveall'
+    else if(isset($_GET['rremoveall']))
+    {
+        $mes_qry=$db->query('SELECT * FROM message WHERE (rread = "1") AND (receiver = "'.$game->player['user_id'].'") AND sender!=0');
+        while ($mes=$db->fetchrow($mes_qry))
+        {
+            if ($db->query('INSERT INTO message_removed (sender, receiver, subject, text, time)
+                            VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
+                $db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
+        }
+    }
 
-	// do 'rremoverequest'
-	else if(isset($_GET['srremoverequest'])) {
-		$game->out('<div align="center"><b>'.constant($game->sprache("TEXT3")).'</b><br><br>[<a href="'.parse_link('a=messages&srremoveall=1').'"><b>'.constant($game->sprache("TEXT1")).'</b></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=messages').'"><b>'.constant($game->sprache("TEXT2")).'</b></a>]</div><br><br>');
+    // do 'rremoverequest'
+    else if(isset($_GET['srremoverequest'])) {
+        $game->out('<div align="center"><b>'.constant($game->sprache("TEXT3")).'</b><br><br>[<a href="'.parse_link('a=messages&srremoveall=1').'"><b>'.constant($game->sprache("TEXT1")).'</b></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=messages').'"><b>'.constant($game->sprache("TEXT2")).'</b></a>]</div><br><br>');
 
-	} 
+    } 
  
-	// do 'srremoveall'
-	else if(isset($_GET['srremoveall']))
-	{
-		$mes_qry=$db->query('SELECT * FROM message WHERE (rread = "1") AND (receiver = "'.$game->player['user_id'].'") AND sender=0');
-		while ($mes=$db->fetchrow($mes_qry))
-		{
-			if ($db->query('INSERT INTO message_removed (sender, receiver, subject, text, time)
-							VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
-				$db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
-		}
-	}
+    // do 'srremoveall'
+    else if(isset($_GET['srremoveall']))
+    {
+        $mes_qry=$db->query('SELECT * FROM message WHERE (rread = "1") AND (receiver = "'.$game->player['user_id'].'") AND sender=0');
+        while ($mes=$db->fetchrow($mes_qry))
+        {
+            if ($db->query('INSERT INTO message_removed (sender, receiver, subject, text, time)
+                            VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
+                $db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
+        }
+    }
 
-	// do 'srremoverequest'
-	else if(isset($_GET['rremoverequest'])) {
-		$game->out('<div align="center"><b>'.constant($game->sprache("TEXT0")).'</b><br><br>[<a href="'.parse_link('a=messages&rremoveall=1').'"><b>'.constant($game->sprache("TEXT1")).'</b></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=messages').'"><b>'.constant($game->sprache("TEXT2")).'</b></a>]</div><br><br>');
+    // do 'srremoverequest'
+    else if(isset($_GET['rremoverequest'])) {
+        $game->out('<div align="center"><b>'.constant($game->sprache("TEXT0")).'</b><br><br>[<a href="'.parse_link('a=messages&rremoveall=1').'"><b>'.constant($game->sprache("TEXT1")).'</b></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=messages').'"><b>'.constant($game->sprache("TEXT2")).'</b></a>]</div><br><br>');
 
-	}
+    }
 
-	// do 'rmarkall'
-	else if(isset($_GET['rmarkall']))
-	{
-		$db->query('UPDATE message SET rread = "1" WHERE receiver = "'.$game->player['user_id'].'"');
-		UpdateUnreadMessages($game->player['user_id']);
-	}
+    // do 'rmarkall'
+    else if(isset($_GET['rmarkall']))
+    {
+        $db->query('UPDATE message SET rread = "1" WHERE receiver = "'.$game->player['user_id'].'"');
+        UpdateUnreadMessages($game->player['user_id']);
+    }
 }
 
 
@@ -133,21 +133,21 @@ if($subAction == 'inbox')
 /*
 else if($subAction == 'outbox')
 {
-	// do 'sremove'
-	if(isset($_GET['sremove']))
-	{
-		for ($i = 0; $i < $perpage; $i++)
-		{
-			if(isset($_POST['message'.$i.'']))
-				$db->query('UPDATE message SET sdelete = "1" WHERE (id = "'.(int)$_POST['message'.$i.''].'") AND (sender = "'.$game->player->data['user_id'].'")');
-		}
-	}
+    // do 'sremove'
+    if(isset($_GET['sremove']))
+    {
+        for ($i = 0; $i < $perpage; $i++)
+        {
+            if(isset($_POST['message'.$i.'']))
+                $db->query('UPDATE message SET sdelete = "1" WHERE (id = "'.(int)$_POST['message'.$i.''].'") AND (sender = "'.$game->player->data['user_id'].'")');
+        }
+    }
 
-	// do 'sremoveall'
-	else if(isset($_GET['sremoveall']))
-	{
-		$db->query('UPDATE message SET sdelete = "1" WHERE (sdelete= "0") AND (sender = "'.$game->player->data['user_id'].'")');
-	}
+    // do 'sremoveall'
+    else if(isset($_GET['sremoveall']))
+    {
+        $db->query('UPDATE message SET sdelete = "1" WHERE (sdelete= "0") AND (sender = "'.$game->player->data['user_id'].'")');
+    }
 }
 
 */
@@ -155,49 +155,49 @@ else if($subAction == 'outbox')
 
 else if($subAction == 'archiv')
 {
-	// do 'aremove'
-	if(isset($_GET['aremove']))
-	{
-		for ($i = 0; $i < $perpage; $i++)
-		{
-			if(isset($_POST['message'.$i.'']))
-			{
-				$mes=$db->queryrow('SELECT * FROM message_archiv WHERE (id = "'.(int)$_POST['message'.$i.''].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
-				if ($db->query('INSERT INTO message_removed ( sender, receiver, subject, text, time)
-								VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
-					$db->queryrow('DELETE FROM message_archiv WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
-			}
-		}
-	}
+    // do 'aremove'
+    if(isset($_GET['aremove']))
+    {
+        for ($i = 0; $i < $perpage; $i++)
+        {
+            if(isset($_POST['message'.$i.'']))
+            {
+                $mes=$db->queryrow('SELECT * FROM message_archiv WHERE (id = "'.(int)$_POST['message'.$i.''].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
+                if ($db->query('INSERT INTO message_removed ( sender, receiver, subject, text, time)
+                                VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.addslashes($mes['text']).'", '.$mes['time'].')'))
+                    $db->queryrow('DELETE FROM message_archiv WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
+            }
+        }
+    }
 
-	// do 'aremoveall'
-	else if(isset($_GET['aremoveall']))
-	{
-		$mes_qry=$db->query('SELECT * FROM message_archiv WHERE (receiver = "'.$game->player['user_id'].'")');
-		while ($mes=$db->fetchrow($mes_qry))
-		{
-			if ($db->query('INSERT INTO message_removed (sender, receiver, subject, text, time)
-							VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.$mes['text'].'", '.$mes['time'].')')!=false)
-				$db->query('DELETE FROM message_archiv WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
-		}
-	}
+    // do 'aremoveall'
+    else if(isset($_GET['aremoveall']))
+    {
+        $mes_qry=$db->query('SELECT * FROM message_archiv WHERE (receiver = "'.$game->player['user_id'].'")');
+        while ($mes=$db->fetchrow($mes_qry))
+        {
+            if ($db->query('INSERT INTO message_removed (sender, receiver, subject, text, time)
+                            VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.$mes['text'].'", '.$mes['time'].')')!=false)
+                $db->query('DELETE FROM message_archiv WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
+        }
+    }
 
-	// do 'arremoverequest'
-	else if(isset($_GET['aremoverequest'])) {
+    // do 'arremoverequest'
+    else if(isset($_GET['aremoverequest'])) {
 
-		$game->out('<div align="center"><b>'.constant($game->sprache("TEXT43")).'</b><br><br>[<a href="'.parse_link('a=messages&aremoveall=1').'"><b>'.constant($game->sprache("TEXT1")).'</b></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=messages').'"><b>'.constant($game->sprache("TEXT2")).'</b></a>]</div><br><br>');
+        $game->out('<div align="center"><b>'.constant($game->sprache("TEXT43")).'</b><br><br>[<a href="'.parse_link('a=messages&aremoveall=1').'"><b>'.constant($game->sprache("TEXT1")).'</b></a>]&nbsp;&nbsp;[<a href="'.parse_link('a=messages').'"><b>'.constant($game->sprache("TEXT2")).'</b></a>]</div><br><br>');
 
-	}
+    }
 
-	// do 'archiv'
-	else if(isset($_POST['archiv']))
-	{
-		$mes=$db->queryrow('SELECT * FROM message WHERE (id = "'.(int)$_POST['archiv'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
-		if ($db->query('INSERT INTO message_archiv (sender, receiver, subject, text, time)
-						VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.$mes['text'].'", '.$mes['time'].')'))
-			$db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
-		UpdateUnreadMessages($game->player['user_id']);
-	}
+    // do 'archiv'
+    else if(isset($_POST['archiv']))
+    {
+        $mes=$db->queryrow('SELECT * FROM message WHERE (id = "'.(int)$_POST['archiv'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
+        if ($db->query('INSERT INTO message_archiv (sender, receiver, subject, text, time)
+                        VALUES ('.$mes['sender'].', '.$mes['receiver'].', "'.$mes['subject'].'", "'.$mes['text'].'", '.$mes['time'].')'))
+            $db->queryrow('DELETE FROM message WHERE (id = "'.$mes['id'].'") AND (receiver = "'.$game->player['user_id'].'") LIMIT 1');
+        UpdateUnreadMessages($game->player['user_id']);
+    }
 }
 
 
@@ -208,27 +208,27 @@ else if($subAction == 'archiv')
 
 $inStatList= $db->query('SELECT count(id) as "unreadMessages" FROM message WHERE (receiver = "'.$game->player['user_id'].'") AND 
 sender != 0 AND rread = 0');
-$inStat		= $db->fetchrow($inStatList);
+$inStat        = $db->fetchrow($inStatList);
 
 $inStat2List= $db->query('SELECT count(id) as "messages" FROM message WHERE (receiver = "'.$game->player['user_id'].'") AND 
 sender != 0');
-$inStat2		= $db->fetchrow($inStat2List);
+$inStat2        = $db->fetchrow($inStat2List);
 $inStat['messages'] = $inStat2['messages'];
 
 //systembox
-$sysStatListunr	= $db->query('SELECT count(id) as "messages" FROM message WHERE (receiver="'.$game->player['user_id'].'") AND sender = 0 AND rread = 0');
-$sysStatunr		= $db->fetchrow($sysStatListunr);
+$sysStatListunr    = $db->query('SELECT count(id) as "messages" FROM message WHERE (receiver="'.$game->player['user_id'].'") AND sender = 0 AND rread = 0');
+$sysStatunr        = $db->fetchrow($sysStatListunr);
 
-$sysStatList	= $db->query('SELECT count(id) as "messages" FROM message WHERE (receiver="'.$game->player['user_id'].'") AND sender = 0');
-$sysStat		= $db->fetchrow($sysStatList);
+$sysStatList    = $db->query('SELECT count(id) as "messages" FROM message WHERE (receiver="'.$game->player['user_id'].'") AND sender = 0');
+$sysStat        = $db->fetchrow($sysStatList);
 
 // archiv
-$archStatList	= $db->query('SELECT count(id) as "messages" FROM message_archiv WHERE (receiver="'.$game->player['user_id'].'")');
-$archStat		= $db->fetchrow($archStatList);
+$archStatList    = $db->query('SELECT count(id) as "messages" FROM message_archiv WHERE (receiver="'.$game->player['user_id'].'")');
+$archStat        = $db->fetchrow($archStatList);
 
 // outbox
-$outStatList	= $db->query('SELECT count(id) as "messages" FROM message WHERE (sender="'.$game->player['user_id'].'")');
-$outStat		= $db->fetchrow($outStatList);
+$outStatList    = $db->query('SELECT count(id) as "messages" FROM message WHERE (sender="'.$game->player['user_id'].'")');
+$outStat        = $db->fetchrow($outStatList);
 
 
 /* Javascript for multiselection */
@@ -252,10 +252,10 @@ function MM_findObj(n, d) { //v4.01
 }
 
 function flevToggleCheckboxes() { // v1.1
-	// Copyright 2002, Marja Ribbers-de Vroed, FlevOOware (www.flevooware.nl/dreamweaver/)
-	var sF = arguments[0], bT = arguments[1], bC = arguments[2], oF = MM_findObj(sF);
+    // Copyright 2002, Marja Ribbers-de Vroed, FlevOOware (www.flevooware.nl/dreamweaver/)
+    var sF = arguments[0], bT = arguments[1], bC = arguments[2], oF = MM_findObj(sF);
     for (var i=0; i<oF.length; i++) {
-		if (oF[i].type == "checkbox") {if (bT) {oF[i].checked = !oF[i].checked;} else {oF[i].checked = bC;}}} 
+        if (oF[i].type == "checkbox") {if (bT) {oF[i].checked = !oF[i].checked;} else {oF[i].checked = bC;}}} 
 }
 //-->
 </script>
@@ -302,7 +302,7 @@ $game->out('
     </td>
   </tr>
 </table>
-	 <br>');
+     <br>');
 
 if ($subAction == 'inbox') inbox();
 else if ($subAction == 'systembox') systembox();
@@ -684,8 +684,8 @@ function archiv()
         </tr>');
         }
 
-    $links 	= navigation_show_pagelinks($page, $perpage, $archStat['messages'], 'a=messages&a2=archiv');
-    $delete	= '<a href="'.parse_link('a=messages&a2=archiv&aremoverequest=1').'">'.constant($game->sprache("TEXT20")).'</a>';
+    $links     = navigation_show_pagelinks($page, $perpage, $archStat['messages'], 'a=messages&a2=archiv');
+    $delete    = '<a href="'.parse_link('a=messages&a2=archiv&aremoverequest=1').'">'.constant($game->sprache("TEXT20")).'</a>';
 
     if($archStat['messages'] != 0)
         $links2 = $delete;
@@ -929,41 +929,41 @@ function view()
 // newMessage
 function newMessage()
 {
-	global $db, $game;
+    global $db, $game;
 
-	$receiver = $subject = $text = "";
+    $receiver = $subject = $text = "";
 
-	if(isset($_POST['id']))
-	{
-		$message = $db->queryrow('SELECT * FROM message WHERE id = "'.(int)$_REQUEST['id'].'"');
+    if(isset($_POST['id']))
+    {
+        $message = $db->queryrow('SELECT * FROM message WHERE id = "'.(int)$_REQUEST['id'].'"');
 
-		if($message != false && $message['receiver'] == $game->player['user_id'])
-		{
-			if ($message['sender']==SUPPORTUSER)
-				$receiver['user_name']='STFC-Support';
-			else
-				$receiver = $db->queryrow('SELECT user_name FROM user WHERE user_id = "'.$message['sender'].'"');
-			
-			if($receiver != false)
-			{
-				$subject  = 'RE:'.$message['subject'];
-				$receiver = $receiver['user_name'];
-				$text = "\n\n\n---------------\n".$receiver." wrote:\n\n".$message['text'];
-			}
-		}
-	}
+        if($message != false && $message['receiver'] == $game->player['user_id'])
+        {
+            if ($message['sender']==SUPPORTUSER)
+                $receiver['user_name']='STFC-Support';
+            else
+                $receiver = $db->queryrow('SELECT user_name FROM user WHERE user_id = "'.$message['sender'].'"');
+            
+            if($receiver != false)
+            {
+                $subject  = 'RE:'.$message['subject'];
+                $receiver = $receiver['user_name'];
+                $text = "\n\n\n---------------\n".$receiver." wrote:\n\n".$message['text'];
+            }
+        }
+    }
 
-	else
-	{
-		if(isset($_POST['text']))
-			$text = $_POST['text'];
-	 	if(isset($_REQUEST['subject']))
-			$subject = $_REQUEST['subject'];
-		if(isset($_REQUEST['receiver']))
-			$receiver = $_REQUEST['receiver'];
-	}
+    else
+    {
+        if(isset($_POST['text']))
+            $text = $_POST['text'];
+         if(isset($_REQUEST['subject']))
+            $subject = $_REQUEST['subject'];
+        if(isset($_REQUEST['receiver']))
+            $receiver = $_REQUEST['receiver'];
+    }
 
-	$game->out('<form method="post" action="'.parse_link('a=messages&a2=submitpost').'">
+    $game->out('<form method="post" action="'.parse_link('a=messages&a2=submitpost').'">
 <table width="90%" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
     <td>
@@ -1007,122 +1007,124 @@ function newMessage()
 // submitMessage
 function submitMessage()
 {
-	global $db, $game;
+    global $db, $game;
 
-	if(empty($_POST['text']) || empty($_POST['receiver']))
-	{
-		$game->out('<p><span class="sub_caption">'.constant($game->sprache("TEXT37")).'</span></p>');
-		newMessage();
-	}
-	else
-	{
-		if (empty($_POST['subject'])) $_POST['subject']='...';
+    if(empty($_POST['text']) || empty($_POST['receiver']))
+    {
+        $game->out('<p><span class="sub_caption">'.constant($game->sprache("TEXT37")).'</span></p>');
+        newMessage();
+    }
+    else
+    {
+        if (empty($_POST['subject'])) $_POST['subject']='...';
 
-		// Send to multiple recipients?
-		if (strstr($_POST['receiver'],';'))
-		{
-			$result = $db->query('UPDATE user SET user_message_sig="'.htmlspecialchars($_POST['message_sig']).'" WHERE user_id='.$game->player['user_id']);
-			
- 			$game->player['user_message_sig']=htmlspecialchars($_POST['message_sig']);
-			if($result == false)
-			{
-				message(DATABASE_ERROR, 'message_query: Could not call update user sig');
-				exit();
-			}
+        // Send to multiple recipients?
+        if (strstr($_POST['receiver'],';'))
+        {
+            $result = $db->query('UPDATE user SET user_message_sig="'.htmlspecialchars($_POST['message_sig']).'" WHERE user_id='.$game->player['user_id']);
+            
+             $game->player['user_message_sig']=htmlspecialchars($_POST['message_sig']);
+            if($result == false)
+            {
+                message(DATABASE_ERROR, 'message_query: Could not call update user sig');
+                exit();
+            }
 
 
-			$recv_list = explode (";", str_replace(' ','',$_POST['receiver']));
-			//echo $_POST['receiver'].'<br><br>';
-			//print_r($recv_list);
-			
-			$num=0;
-			for ($i=0; $i<count($recv_list); $i++)
-			{
-			if (strtolower($recv_list[$i])==strtolower('STFC-Support'))
-				$receiver['user_id']=SUPPORTUSER;
-			else
-				$receiver = $db->queryrow('SELECT user_id FROM user WHERE user_name="'.$recv_list[$i].'"');
-			if(($receiver))
-			{
-				$result = $db->query('INSERT INTO message (sender, receiver, subject, text, time) VALUES ("'.$game->player['user_id'].'","'.$receiver['user_id'].'","'.htmlspecialchars($_POST['subject']).'","'.htmlspecialchars($_POST['text']).'\n\n'.$game->player['user_message_sig'].'","'.time().'")');
-				if($result == false)
-				{	
-						message(DATABASE_ERROR, 'message_query: Could not call INSERT INTO in message');
-						exit();
-				}
-				
-			UpdateUnreadMessages($receiver['user_id']);
+            $recv_list = explode (";", str_replace(' ','',$_POST['receiver']));
+            //echo $_POST['receiver'].'<br><br>';
+            //print_r($recv_list);
+            
+            $num=0;
+            $unknown_users = '';
+            for ($i=0; $i<count($recv_list); $i++)
+            {
+                if (strtolower($recv_list[$i])==strtolower('STFC-Support'))
+                    $receiver['user_id']=SUPPORTUSER;
+                else
+                    $receiver = $db->queryrow('SELECT user_id FROM user WHERE user_name="'.$recv_list[$i].'"');
+                if(($receiver))
+                {
+                    $result = $db->query('INSERT INTO message (sender, receiver, subject, text, time) VALUES ("'.$game->player['user_id'].'","'.$receiver['user_id'].'","'.htmlspecialchars($_POST['subject']).'","'.htmlspecialchars($_POST['text']).'\n\n'.$game->player['user_message_sig'].'","'.time().'")');
+                    if($result == false)
+                    {    
+                            message(DATABASE_ERROR, 'message_query: Could not call INSERT INTO in message');
+                            exit();
+                    }
 
-			
-			}
-			$num++;
-			}
- 			$game->out('<p><span class="sub_caption">'.constant($game->sprache("TEXT38")).' '.$num.' '.constant($game->sprache("TEXT39")).' '.count($recv_list).' '.constant($game->sprache("TEXT40")).'</span></p>');
-			
-			
-		} // End multiple Receiver
-		else
-		{
-		
-				$result = $db->query('UPDATE user SET user_message_sig="'.htmlspecialchars($_POST['message_sig']).'" WHERE user_id='.$game->player['user_id']);
-   			$game->player['user_message_sig']=htmlspecialchars($_POST['message_sig']);
-			if($result == false)
-			{
-				message(DATABASE_ERROR, 'message_query: Could not call INSERT INTO in message');
-				exit();
-			}
-  		if (strtolower($_POST['receiver'])==strtolower('STFC-Support'))
-			$receiver['user_id']=SUPPORTUSER;
-		else
-			$receiver = $db->queryrow('SELECT user_id FROM user WHERE user_name="'.htmlspecialchars($_POST['receiver']).'"');
-		if(($receiver) == false)
-		{
-			$game->out('<p><span class="sub_caption">'.constant($game->sprache("TEXT41")).'</span></p>');
-			newMessage();
-		}
-		else
-		{
-			$result = $db->query('INSERT INTO message (sender, receiver, subject, text, time) VALUES ("'.$game->player['user_id'].'","'.$receiver['user_id'].'","'.htmlspecialchars($_POST['subject']).'","'.htmlspecialchars($_POST['text']).'\n\n'.$game->player['user_message_sig'].'","'.time().'")');
-			if($result == false)
-			{
-				message(DATABASE_ERROR, 'message_query: Could not call INSERT INTO in message');
-				exit();
-			}
-			UpdateUnreadMessages($receiver['user_id']);
+                    UpdateUnreadMessages($receiver['user_id']);
 
-  			$game->out('<p><span class="sub_caption">'.constant($game->sprache("TEXT42")).'</span></p>');
-		}
-		
-	} // End single receiver
+                    $num++;
+                }
+                else {
+                    $unknown_users .= '<br>'.constant($game->sprache("TEXT44")).' '.$recv_list[$i].' '.constant($game->sprache("TEXT45"));
+                }
+            }
+            $game->out('<span class="sub_caption">'.constant($game->sprache("TEXT38")).' '.$num.' '.constant($game->sprache("TEXT39")).' '.count($recv_list).' '.constant($game->sprache("TEXT40")).'</span>');
+            if($unknown_users != '')
+                $game->out('<span class="sub_caption">'.$unknown_users.'</span>');
+        } // End multiple Receiver
+        else
+        {
+            $result = $db->query('UPDATE user SET user_message_sig="'.htmlspecialchars($_POST['message_sig']).'" WHERE user_id='.$game->player['user_id']);
+            $game->player['user_message_sig']=htmlspecialchars($_POST['message_sig']);
+            if($result == false)
+            {
+                message(DATABASE_ERROR, 'message_query: Could not call INSERT INTO in message');
+                exit();
+            }
+            if (strtolower($_POST['receiver'])==strtolower('STFC-Support'))
+                $receiver['user_id']=SUPPORTUSER;
+            else
+                $receiver = $db->queryrow('SELECT user_id FROM user WHERE user_name="'.htmlspecialchars($_POST['receiver']).'"');
+            if(($receiver) == false)
+            {
+                $game->out('<p><span class="sub_caption">'.constant($game->sprache("TEXT41")).'</span></p>');
+                newMessage();
+            }
+            else
+            {
+                $result = $db->query('INSERT INTO message (sender, receiver, subject, text, time) VALUES ("'.$game->player['user_id'].'","'.$receiver['user_id'].'","'.htmlspecialchars($_POST['subject']).'","'.htmlspecialchars($_POST['text']).'\n\n'.$game->player['user_message_sig'].'","'.time().'")');
+                if($result == false)
+                {
+                    message(DATABASE_ERROR, 'message_query: Could not call INSERT INTO in message');
+                    exit();
+                }
+                UpdateUnreadMessages($receiver['user_id']);
 
-	}
+              $game->out('<p><span class="sub_caption">'.constant($game->sprache("TEXT42")).'</span></p>');
+            }
+
+        } // End single receiver
+
+    }
 }
 
 // navigation
 function navigation_show_pagelinks($page, $perpage, $entries, $link)
 {
-	$pages	= (ceil($entries / $perpage)) ? ceil($entries / $perpage) : 1;
-	$last		= $pages - 1;
+    $pages    = (ceil($entries / $perpage)) ? ceil($entries / $perpage) : 1;
+    $last        = $pages - 1;
 
-	if($pages == 1)
-	     return '';
+    if($pages == 1)
+         return '';
 
-	$prev = $page - 1;
-	$next = $page + 1;
-	$page = $page + 1;
+    $prev = $page - 1;
+    $next = $page + 1;
+    $page = $page + 1;
 
-	$return = '<p align="center">[page '.$page.' / '.$pages.']<br>';
-	if($page != 1)
-	{
-		if($page != $pages)
-			$return .= '[<a href="'.parse_link($link.'&page=0').'">&lt;&lt;--</a>] - [<a href="'.parse_link($link.'&page='.$prev).'">&lt;-</a>] - [<a href="'.parse_link($link.'&page='.$next).'">-&gt;</a>] - [<a href="'.parse_link($link.'&page='.$last).'">--&gt;&gt;</a>]';
-		else
-			$return .= '[<a href="'.parse_link($link.'&page=0').'">&lt;&lt;--</a>] - [<a href="'.parse_link($link.'&page='.$prev).'">&lt;-</a>]';
-	}
-	elseif($page < $pages)
-		$return .= '[<a href="'.parse_link($link.'&page='.$next).'">-&gt;</a>] - [<a href="'.parse_link($link.'&page='.$last).'">--&gt;&gt;</a>]';
+    $return = '<p align="center">[page '.$page.' / '.$pages.']<br>';
+    if($page != 1)
+    {
+        if($page != $pages)
+            $return .= '[<a href="'.parse_link($link.'&page=0').'">&lt;&lt;--</a>] - [<a href="'.parse_link($link.'&page='.$prev).'">&lt;-</a>] - [<a href="'.parse_link($link.'&page='.$next).'">-&gt;</a>] - [<a href="'.parse_link($link.'&page='.$last).'">--&gt;&gt;</a>]';
+        else
+            $return .= '[<a href="'.parse_link($link.'&page=0').'">&lt;&lt;--</a>] - [<a href="'.parse_link($link.'&page='.$prev).'">&lt;-</a>]';
+    }
+    elseif($page < $pages)
+        $return .= '[<a href="'.parse_link($link.'&page='.$next).'">-&gt;</a>] - [<a href="'.parse_link($link.'&page='.$last).'">--&gt;&gt;</a>]';
 
-	return $return.'</p>';
+    return $return.'</p>';
 }
 
 ?>
