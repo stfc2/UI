@@ -256,12 +256,32 @@ $color = 0;
 
 function Show_BidDenied()
 {
-global $db;
-global $game,$ACTUAL_TICK,$NEXT_TICK,$SHIPIMAGE_PATH,$SHIP_TORSO;
-$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT43")).'</span><br>
-<center><table border=0 cellpadding=2 cellspacing=2 class="style_inner"><tr><td width=450><center>'.constant($game->sprache("TEXT44")).' '.(($game->player['trade_tick']-$ACTUAL_TICK)*3).' '.constant($game->sprache("TEXT45")).'</center></td></tr></table>
-</center>
-');
+    global $game,$ACTUAL_TICK;
+
+    // Check if the player is banned or simply doesn't have required points
+    if ($game->player['trade_tick'] > 0) {
+        $message = constant($game->sprache("TEXT44")).' '.(($game->player['trade_tick']-$ACTUAL_TICK)*TICK_DURATION).' '.constant($game->sprache("TEXT45"));
+    }
+    else {
+        $message = constant($game->sprache("TEXT262"));
+    }
+
+    $game->out('
+<center><span class="sub_caption">'.constant($game->sprache("TEXT43")).'</span><br>
+<table border=0 cellpadding=2 cellspacing=2 class="style_outer" width="90%">
+  <tr>
+    <td>
+      <table border=0 cellpadding=2 cellspacing=2 class="style_inner" width="100%">
+        <tr>
+          <td align="center">
+            '.$message.'
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</center>');
 }
 
 
@@ -4760,92 +4780,92 @@ else
 	}
 	elseif ($sub_action=='create_bidding')
 	{
-		if ($game->player['deny_trade'])
+        // Access to the auctions is denied to banned players
+        // or who have less then MIN_POINTS_AUCTIONS points.
+        if ($game->player['deny_trade'] || (
+            $game->player['user_points'] < MIN_POINTS_AUCTIONS &&
+            $game->player['user_auth_level'] < STGC_SUPPORTER))
 		{
 			Show_BidDenied();
 		}
 		else
 		{
-			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
-			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_SUPPORTER)
-				$game->out(constant($game->sprache("TEXT262")));
-			else
-				Show_CreateBidding();
+			Show_CreateBidding();
 		}
 	}
 	elseif ($sub_action=='view_bidding')
 	{
-		if ($game->player['deny_trade'])
+        // Access to the auctions is denied to banned players
+        // or who have less then MIN_POINTS_AUCTIONS points.
+        if ($game->player['deny_trade'] || (
+            $game->player['user_points'] < MIN_POINTS_AUCTIONS &&
+            $game->player['user_auth_level'] < STGC_SUPPORTER))
 		{
 			Show_BidDenied();
 		}
 		else
 		{
-			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
-			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_SUPPORTER)
-				$game->out(constant($game->sprache("TEXT262")));
-			else
-				Show_Bidding();
+			Show_Bidding();
 		}
 	}
 	elseif ($sub_action=='own_bidding')
 	{
-		if ($game->player['deny_trade'])
+        // Access to the auctions is denied to banned players
+        // or who have less then MIN_POINTS_AUCTIONS points.
+        if ($game->player['deny_trade'] || (
+            $game->player['user_points'] < MIN_POINTS_AUCTIONS &&
+            $game->player['user_auth_level'] < STGC_SUPPORTER))
 		{
 			Show_BidDenied();
 		}
 		else
 		{
-			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
-			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_SUPPORTER)
-				$game->out(constant($game->sprache("TEXT262")));
-			else
-				own_bids();
+			own_bids();
 		}
 	}
 	elseif ($sub_action=='view_own_bidding')
 	{
-		if ($game->player['deny_trade'])
+        // Access to the auctions is denied to banned players
+        // or who have less then MIN_POINTS_AUCTIONS points.
+        if ($game->player['deny_trade'] || (
+            $game->player['user_points'] < MIN_POINTS_AUCTIONS &&
+            $game->player['user_auth_level'] < STGC_SUPPORTER))
 		{
 			Show_BidDenied();
 		}
 		else
 		{
-			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
-			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_SUPPORTER)
-				$game->out(constant($game->sprache("TEXT262")));
-			else
-				Show_Bidding(1);
+			Show_Bidding(1);
 		}
 	}
 	elseif ($sub_action=='view_bidding_detail')
 	{
-		if ($game->player['deny_trade'])
+        // Access to the auctions is denied to banned players
+        // or who have less then MIN_POINTS_AUCTIONS points.
+        if ($game->player['deny_trade'] || (
+            $game->player['user_points'] < MIN_POINTS_AUCTIONS &&
+            $game->player['user_auth_level'] < STGC_SUPPORTER))
 		{
 			Show_BidDenied();
 		}
 		else
 		{
-			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
-			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_SUPPORTER)
-				$game->out(constant($game->sprache("TEXT262")));
-			else
-				Show_Bidding_Detail();
+			Show_Bidding_Detail();
 		}
 	}
 	elseif ($sub_action=='submit_bid')
 	{
-		if ($game->player['deny_trade'])
+        // Access to the auctions is denied to banned players
+        // or who have less then MIN_POINTS_AUCTIONS points.
+        if ($game->player['deny_trade'] || (
+            $game->player['user_points'] < MIN_POINTS_AUCTIONS &&
+            $game->player['user_auth_level'] < STGC_SUPPORTER))
 		{
 			Show_BidDenied();
 		}
 		else
 		{
-			/* 28/02/08 - AC: Create bidding is only for admin or players with more that 400 points */
-			if ($game->player['user_points']<400 && $game->player['user_auth_level'] < STGC_SUPPORTER)
-				$game->out(constant($game->sprache("TEXT262")));
-			else
-				Submit_Bid();
+			Submit_Bid();
 		}
 	}
 	elseif ($sub_action=='cancel_bid')
