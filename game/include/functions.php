@@ -1093,12 +1093,12 @@ class game {
 
             // 21/02/08 - AC: Check if alliance homepage is empty
             if($alliance_hp['hp'] == '')
-                $alliance_hp['hp'] = JSCRIPT_PATH.parse_link('a=alliance_board'); // <- temp solution!!
-            $pos1 = stripos($alliance_hp['hp'], "http://");
-            if($pos1!==false) {
+                $alliance_hp_var='<a href="'.parse_link('a=alliance_board').'">'.constant($this->sprache("ALLYFORUM")).'</a><br>';
+            else {
+                if(stripos($alliance_hp['hp'], "http://") == false) {
+                    $alliance_hp['hp'] ='http://'.$alliance_hp['hp'];
+                }
                 $alliance_hp_var='<a href="'.$alliance_hp['hp'].'" target="_blank">'.constant($this->sprache("ALLYFORUM")).'</a><br>';
-            } else {
-                $alliance_hp_var='<a href="http://'.$alliance_hp['hp'].'" target="_blank">'.constant($this->sprache("ALLYFORUM")).'</a><br>';
             }
         }
         else
