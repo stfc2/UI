@@ -550,7 +550,7 @@ define ("GER_TEXT260", 'Galaxy Handelszentrum von Ursa Mirror');
 
 define ("GER_TEXT261", 'Bereiche des Handelszentrums:');
 
-define ("GER_TEXT262", 'Auktionen sind erst ab 400Punkte m&ouml;glich');
+define ("GER_TEXT262", 'Auktionen sind erst ab '.MIN_POINTS_AUCTIONS.' Punkte m&ouml;glich');
 
 define ("GER_TEXT263", 'Ferengi Spezialtansport (6h) - 30% Steuern');
 
@@ -1110,7 +1110,7 @@ define ("ENG_TEXT260", 'Galaxy Trade Center of Ursa Mirror');
 
 define ("ENG_TEXT261", 'Areas of the Trade Center:');
 
-define ("ENG_TEXT262", 'Auctions are possible only from 400 points');
+define ("ENG_TEXT262", 'Auctions are possible only from '.MIN_POINTS_AUCTIONS.' points');
 
 define ("ENG_TEXT263", 'Ferengi Special Transport (6h) - 30% Taxes');
 
@@ -1228,7 +1228,7 @@ define ("ITA_TEXT42", 'Pianeta destinazione:');
 
 define ("ITA_TEXT43", 'Accesso negato:');
 
-define ("ITA_TEXT44", 'Non avrai accesso a questa sezione fino a quando sarai insolvente.<br><br>Oppure il blocco /egraveò il risultato di una violazione delle regole.<br><br>Il tuo blocco durer&agrave; ancora');
+define ("ITA_TEXT44", 'Non avrai accesso a questa sezione fino a quando sarai insolvente.<br><br>Oppure il blocco &egrave; il risultato di una violazione delle regole.<br><br>Il tuo blocco durer&agrave; ancora');
 
 define ("ITA_TEXT45", 'minuti. Una denuncia contro questo blocco &egrave; inutile.');
 
@@ -1672,7 +1672,7 @@ define ("ITA_TEXT260", 'Centro Commerciale Galattico di Ursa Mirror');
 
 define ("ITA_TEXT261", 'Aree del centro commerciale:');
 
-define ("ITA_TEXT262", 'Le aste sono possibili solo a partire da 400 punti');
+define ("ITA_TEXT262", 'Le aste sono possibili solo a partire da '.MIN_POINTS_AUCTIONS.' punti');
 
 define ("ITA_TEXT263", 'Trasporto Speciale Ferengi (6h) - 30% Tasse');
 

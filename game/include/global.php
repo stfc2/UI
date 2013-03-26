@@ -249,6 +249,9 @@ define ('USER_START_BOOST', 0);
 // User building queue length
 define ('BUILDING_QUEUE_LEN', 2);
 
+// Min. points to create auctions
+define('MIN_POINTS_AUCTIONS', USER_START_BOOST ? 1500 : 400);
+
 
 // Accelerates the Scheduler
 
