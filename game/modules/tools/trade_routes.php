@@ -82,7 +82,7 @@ $game->out('
 <table align="center" width=650 border=0 cellpadding=2 cellspacing=2 class="style_outer"><tr><td>
 <table align="center" width=650 border=0 cellpadding=2 cellspacing=2 class="style_inner">
   <tr>
-    <td><b>Dettagli</b></td>
+    <td><b>Details</b></td>
     <td><b>Operations</b></td> 
   </tr>
 ');
@@ -108,7 +108,7 @@ while($route = $db->fetchrow($q_routes)) {
 
     $game->out('
   <tr>
-    <td><a href="javascript:void(0);" onmouseover="return overlib(\''.print_route_info($route).'\',CAPTION,\'Details\', '.OVERLIB_STANDARD.');" onmouseout="return nd();">Dettagli</a></td>
+    <td><a href="javascript:void(0);" onmouseover="return overlib(\''.print_route_info($route).'\',CAPTION,\'Details\', '.OVERLIB_STANDARD.');" onmouseout="return nd();">Detalis</a></td>
     <td>
        <table>
          <tr>
@@ -125,7 +125,9 @@ while($route = $db->fetchrow($q_routes)) {
 
 $game->out('
 </table>
-</td></tr></table>
+</td></tr>
+<tr><td>Legend:<ul>U = unload<br>L = load<br><b><u>A</u></b> = un/load All the resource available</ul></td></tr>
+</table>
 ');
 
 ?>
