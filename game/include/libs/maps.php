@@ -72,6 +72,8 @@ class maps {
 				$this->str_range = 'Range:';
 				$this->str_outrange = 'Outside optimal range';
 				$this->str_uninhabited = 'unbewohnt';
+                $this->str_fleet_player = 'Fleet ';
+                $this->str_ships = 'ship/s';
 			break;
 			case 'ENG':
 				$this->str_sector = 'Sector';
@@ -85,6 +87,8 @@ class maps {
 				$this->str_range = 'Range:';
 				$this->str_outrange = 'Outside optimal range';
 				$this->str_uninhabited = 'uninhabited';
+                $this->str_fleet_player = 'Fleet ';                
+                $this->str_ships = 'ship/s';
 			break;
 			case 'ITA':
 				$this->str_sector = 'Settore';
@@ -98,6 +102,8 @@ class maps {
 				$this->str_range = 'Distanza:';
 				$this->str_outrange = 'Fuori portata ottimale';
 				$this->str_uninhabited = 'disabitato';
+                $this->str_fleet_player = 'Flotta ';                
+                $this->str_ships = 'unit&agrave;';                
 			break;
 		}
         }
@@ -443,14 +449,14 @@ class maps {
         if(empty($system['system_id'])) {
             message(GENERAL, 'Could not find system '.$system_id);
         }
-// DC ---- Fog of war is Incoming!!!
+// DC ---- Fog of war is coming!!!
         $sql = 'SELECT p.planet_id, p.planet_name, p.planet_type, p.planet_distance_px, p.planet_covered_distance, p.planet_current_x, p.planet_current_y, p.planet_points,
                        u.user_id, u.user_name, u.user_attack_protection, u.user_points,
                        a.alliance_id, a.alliance_tag, a.alliance_name
                 FROM (planets p)
                 LEFT JOIN (user u) ON u.user_id = p.planet_owner
                 LEFT JOIN (alliance a) ON a.alliance_id = u.user_alliance
-                WHERE p.system_id = '.$system_id;
+                WHERE p.system_id = '.$system_id.' ORDER BY p.planet_id';
 
         if(!$q_planets = $db->query($sql)) {
             message(DATABASE_ERROR, 'Could not query planets data');
@@ -505,7 +511,10 @@ class maps {
             array(7, 1, 5, -1),
         );
 
-        while($planet = $db->fetchrow($q_planets)) {
+        $rows_planets = $db->fetchrowset($q_planets);
+        
+        foreach($rows_planets as $planet) {
+            
             $radius = $planet['planet_distance_px'];
 
             imageellipse($im, $center_coord, $center_coord, $radius * 2, $radius * 2, $orbit_color);
@@ -556,6 +565,20 @@ class maps {
                     $map_html .= '<br><b>'.$this->str_owner.'</b> '.$planet['user_name'];	
                     $map_html .= ((!empty($planet['alliance_name'])) ? '<br><font color=gray><b>'.$this->str_alliance.'</b> '.str_replace("'","\'",$planet['alliance_name']).' ['.$planet['alliance_tag'].']</font>' : '' ).'<br><b>'.$this->str_points.'</b> '.$planet['planet_points'].' ('.$planet['user_points'].' ges.)';
                 }
+// DC Try to give more information, just for fun
+
+                $sql = 'SELECT sf.fleet_name, sf.n_ships, sf.fleet_id FROM ship_fleets sf 
+                        INNER JOIN planets pl ON pl.planet_id = sf.planet_id 
+                        WHERE pl.planet_id = '.$planet['planet_id'].' AND sf.user_id = '.$game->player['user_id'];
+
+                if($fleet_details = $db->queryrowset($sql)) {
+                
+                    foreach($fleet_details as $f_i)
+                    {
+                        $map_html .='<br>'.$this->str_fleet_player.' <b>'.$f_i['fleet_name'].'</b>, '.$f_i['n_ships'].' '.$this->str_ships;
+                    }
+                }                   
+// ----                                
                 $map_html .= '\', CAPTION, \''.$this->str_details.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">';
             }
             else {
