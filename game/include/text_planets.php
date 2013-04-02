@@ -142,6 +142,54 @@ $PLANETS_TEXT = array(
         3 => 'Planeten dieser Klasse ähneln in Masse und Entfernung zur Sonne der Erde. Ihre Atmosphäre ist gleich der eines Klasse-M-Planeten beschaffen, die Oberfläche ist zu weit mehr als 90% mit Wasser bedeckt. Ideale Lebensbedingungen.',
         4 => '-',
     ),
+
+    'o' => array(
+        0 => 'Wasser-Planet',
+        1 => 'möglich',
+        2 => 'mäßige Vorkommen aller wichtigen Rohstoffe',
+        3 => 'Planeten dieser Klasse ähneln in Masse und Entfernung zur Sonne der Erde. Ihre Atmosphäre ist gleich der eines Klasse-M-Planeten beschaffen, die Oberfläche ist zu weit mehr als 90% mit Wasser bedeckt. Ideale Lebensbedingungen.',
+        4 => '-',
+    ),
+    
+    'p' => array(
+        0 => 'Wasser-Planet',
+        1 => 'möglich',
+        2 => 'mäßige Vorkommen aller wichtigen Rohstoffe',
+        3 => 'Planeten dieser Klasse ähneln in Masse und Entfernung zur Sonne der Erde. Ihre Atmosphäre ist gleich der eines Klasse-M-Planeten beschaffen, die Oberfläche ist zu weit mehr als 90% mit Wasser bedeckt. Ideale Lebensbedingungen.',
+        4 => '-',
+    ),
+    
+    'q' => array(
+        0 => 'Wasser-Planet',
+        1 => 'möglich',
+        2 => 'mäßige Vorkommen aller wichtigen Rohstoffe',
+        3 => 'Planeten dieser Klasse ähneln in Masse und Entfernung zur Sonne der Erde. Ihre Atmosphäre ist gleich der eines Klasse-M-Planeten beschaffen, die Oberfläche ist zu weit mehr als 90% mit Wasser bedeckt. Ideale Lebensbedingungen.',
+        4 => '-',
+    ),
+
+    's' => array(
+        0 => 'Wasser-Planet',
+        1 => 'möglich',
+        2 => 'mäßige Vorkommen aller wichtigen Rohstoffe',
+        3 => 'Planeten dieser Klasse ähneln in Masse und Entfernung zur Sonne der Erde. Ihre Atmosphäre ist gleich der eines Klasse-M-Planeten beschaffen, die Oberfläche ist zu weit mehr als 90% mit Wasser bedeckt. Ideale Lebensbedingungen.',
+        4 => '-',
+    ),
+
+    't' => array(
+        0 => 'Wasser-Planet',
+        1 => 'möglich',
+        2 => 'mäßige Vorkommen aller wichtigen Rohstoffe',
+        3 => 'Planeten dieser Klasse ähneln in Masse und Entfernung zur Sonne der Erde. Ihre Atmosphäre ist gleich der eines Klasse-M-Planeten beschaffen, die Oberfläche ist zu weit mehr als 90% mit Wasser bedeckt. Ideale Lebensbedingungen.',
+        4 => '-',
+    ),
+
+    'x' => array(
+        0 => 'Wasser-Planet',
+        1 => 'möglich',
+        2 => 'mäßige Vorkommen aller wichtigen Rohstoffe',
+        3 => 'Planeten dieser Klasse ähneln in Masse und Entfernung zur Sonne der Erde. Ihre Atmosphäre ist gleich der eines Klasse-M-Planeten beschaffen, die Oberfläche ist zu weit mehr als 90% mit Wasser bedeckt. Ideale Lebensbedingungen.',
+        4 => '-',
+    ),
     
     'y' => array(
         0 => 'Dämon-Planet',

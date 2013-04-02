@@ -156,5 +156,7 @@ define ("ITA_TEXT40", 'giocatori');
 define ("ITA_TEXT41", 'I destinatari non esistono!');
 define ("ITA_TEXT42", 'Il tuo messaggio &egrave; stato trasmesso');
 define ("ITA_TEXT43", 'Sei sicuro di voler cancellare tutti i messaggi archiviati?');
+define ("ITA_TEXT44", 'Liste');
+define ("ITA_TEXT45", 'Gestore Liste Indirizzi');
 
 ?>

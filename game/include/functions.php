@@ -1257,11 +1257,11 @@ class game {
 			'ACTIVE_PLANET_POINTS' => $this->planet['planet_points'],
 			'ACTIVE_PLANET_POSITION' => '',
 			'ACTIVE_PLANET_ID' => encode_planet_id($this->planet['planet_id']),
-			'ACTIVE_PLANET_MAXRES' => (($this->planet['max_resources']>=100000) ? round($this->planet['max_resources']/1000).'k' : round($this->planet['max_resources'],0)),
-			'ACTIVE_PLANET_MAXWORKER' => (($this->planet['max_worker']>=100000) ? round($this->planet['max_worker']/1000).'k' : round($this->planet['max_worker'],0)),
-			'ACTIVE_PLANET_METAL' => (($this->planet['resource_1']>=100000) ? round($this->planet['resource_1']/1000).'k' : round($this->planet['resource_1'],0)),
-			'ACTIVE_PLANET_MINERALS' => (($this->planet['resource_2']>=100000) ? round($this->planet['resource_2']/1000).'k' : round($this->planet['resource_2'],0)),
-			'ACTIVE_PLANET_LATINUM' => (($this->planet['resource_3']>=100000) ? round($this->planet['resource_3']/1000).'k' : round($this->planet['resource_3'],0)),
+			'ACTIVE_PLANET_MAXRES' => (($this->planet['max_resources']>=100000) ? round($this->planet['max_resources']/1000.0).'k' : round($this->planet['max_resources'],0)),
+			'ACTIVE_PLANET_MAXWORKER' => (($this->planet['max_worker']>=100000) ? round($this->planet['max_worker']/1000.0).'k' : round($this->planet['max_worker'],0)),
+			'ACTIVE_PLANET_METAL' => (($this->planet['resource_1']>=100000) ? round($this->planet['resource_1']/1000.0).'k' : round($this->planet['resource_1'],0)),
+			'ACTIVE_PLANET_MINERALS' => (($this->planet['resource_2']>=100000) ? round($this->planet['resource_2']/1000.0).'k' : round($this->planet['resource_2'],0)),
+			'ACTIVE_PLANET_LATINUM' => (($this->planet['resource_3']>=100000) ? round($this->planet['resource_3']/1000.0).'k' : round($this->planet['resource_3'],0)),
 			'ACTIVE_PLANET_WORKER' => round($this->planet['resource_4'], 0).' (+'.round($this->planet['add_4'], 1).')',
 			'ACTIVE_PLANET_MAXTROOPS' => $this->planet['max_units'],
 			'ACTIVE_PLANET_MAXUNITS' => $this->planet['max_units'],
@@ -2338,6 +2338,8 @@ echo'
 		if(!$db->query($sql)) {
 			message(DATABASE_ERROR, 'Could not update capital planet structure points');
 		}
+		
+		$this->join_alliance();
 	}
 
 	function join_alliance()

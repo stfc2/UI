@@ -154,6 +154,135 @@ function create_system($id_type, $id_value, $is_mother) {
 function create_planet($user_id, $id_type, $id_value) {
     global $db, $game, $PLANETS_DATA;
 
+    // Planet raw materials production according to its type
+    $planet_templates = array(
+        'bbb' => array(-0.25, -0.25, -0.25), // max penalty -0.25 to all ress
+        'bnb' => array(-0.25,     0, -0.25), // metall and latinum penalty
+        'nbb' => array(    0, -0.25, -0.25), // mineral and latinum penalty
+        'bbn' => array(-0.25, -0.25,     0), // metall and mineral penalty
+        'nnb' => array(    0,     0, -0.25),
+        'nbn' => array(    0, -0.25,     0),
+        'bnn' => array(-0.25,     0,     0),
+        'nnn' => array(    0,     0,     0), // neutral
+        'gnn' => array( 0.25,     0,     0),
+        'ngn' => array(    0,  0.25,     0),
+        'nng' => array(    0,     0,  0.25),
+        'ggn' => array( 0.25,  0.25,     0), // bonus to metal and mineral
+        'ngg' => array(    0,  0.25,  0.25), // bonus to mineral and latinum
+        'gng' => array( 0.25,     0,  0.25), // bonus to metal and latinum
+        'ggg' => array( 0.25,  0.25,  0.25)  // max bonsu 0.25 to all ress
+    );
+    
+    // Planet type probability according to its orbit
+    $planet_type_probabilities = array(
+        // Orbil level 0
+        0 => array(
+            'a' => 30,
+            'b' => 35,
+            'c' => 10,
+            'd' => 10,
+            's' => 5,
+            't' => 4,
+            'x' => 4,
+            'y' => 2
+        ),
+        // Orbit level 1
+        1 => array(
+            'a' => 30,
+            'b' => 35,
+            'c' => 10,
+            'd' => 10,
+            's' => 5,
+            't' => 4,
+            'x' => 4,
+            'y' => 2
+        ),
+        // Orbit level 2
+        2 => array(
+            'a' => 2,
+            'c' => 8,
+            'd' => 8,
+            'e' => 15,
+            'f' => 13,
+            'g' => 8,            
+            'h' => 13,
+            'k' => 10,
+            'l' => 4,
+            'm' => 2,
+            'n' => 14,
+            'o' => 2,
+            'p' => 1
+        ),
+        // Orbit level 3
+        3 => array(
+            'a' => 1,
+            'c' => 8,
+            'd' => 8,
+            'e' => 12,
+            'f' => 13,
+            'g' => 13,            
+            'h' => 8,
+            'k' => 8,
+            'l' => 8,
+            'm' => 4,
+            'n' => 10,
+            'o' => 4,
+            'p' => 3
+        ),
+        // Orbit level 4
+        4 => array(
+            'a' => 1,
+            'c' => 8,
+            'd' => 8,
+            'e' => 12,
+            'f' => 18,
+            'g' => 19,            
+            'h' => 10,
+            'k' => 6,
+            'l' => 4,
+            'm' => 3,
+            'n' => 4,
+            'o' => 3,
+            'p' => 4
+        ),
+        // Orbit level 5
+        5 => array(
+            'a' => 3,
+            'c' => 8,
+            'd' => 8,
+            'e' => 12,
+            'f' => 18,
+            'g' => 18,            
+            'h' => 8,
+            'k' => 6,
+            'l' => 8,
+            'm' => 2,
+            'n' => 1,
+            'o' => 2,
+            'p' => 6
+        ),
+        // Orbit level 6
+        6 => array(
+            'a' => 6,
+            'c' => 10,
+            'd' => 10,
+            'i' => 22,
+            'j' => 23,
+            's' => 14,
+            't' => 14
+        ),
+        // Orbit level 7
+        7 => array(
+            'a' => 6,
+            'c' => 22,
+            'd' => 23,
+            'i' => 14,
+            'j' => 14,
+            's' => 10,
+            't' => 10
+        )
+    );
+    
     $system_id = $sector_id = 0;
 
     switch($id_type) {
@@ -326,38 +455,9 @@ function create_planet($user_id, $id_type, $id_value) {
     // Create!
 
     if(!$user_id) {
-        $type_probabilities = array(
-            // a lot of metal, little minerals, little dilithium (15%)
-            'a' => 7,  // 3.0  0.1  0.8  0.1
-            'b' => 8,  // 3.0  0.1  0.8  0.1
+         $type_array = array();
 
-            // medium metals, minerals, dilithium (60%)
-            'c' => 10,  // 1.0  1.0  1.0  0.6
-            'd' => 12,  // 1.0  1.0  1.0  0.5
-            'e' => 8,   // 1.0  1.0  1.0  0.7
-            'f' => 6,   // 1.0  1.0  1.0  0.8
-            'h' => 13,  // 1.0  1.0  1.0  0.5
-            'k' => 11,  // 1.0  1.0  1.0  0.4
-
-            // a lot of metal, medium minerals, medium dilithium (10%)
-            'g' => 10, // 1.5  1.0  1.0  0.8
-
-            // little metal, lots of minerals, much dilithium (5%)
-            'i' => 5,  // 0.3  1.6  1.6  0.5
-
-            // little metal, a lot of minerals, little dilithium (5%)
-            'j' => 2,  // 0.3  2.0  0.4  0.6
-            'l' => 3,  // 0.4  1.9  0.5  0.7
-
-            // M/N/Y (5%)
-            'm' => 1,  // 1.0  1.0  1.0  1.0
-            'n' => 1,  // 0.95 0.95 0.95 1.1
-            'y' => 3,  // 2.5  2.5  2.5  0.2
-        );
-
-        $type_array = array();
-
-        foreach($type_probabilities as $type => $probability) {
+        foreach($planet_type_probabilities[$planet_distance_id] as $type => $probability) {
             for($i = 0; $i < $probability; ++$i) {
                 $type_array[] = $type;
             }
@@ -365,17 +465,73 @@ function create_planet($user_id, $id_type, $id_value) {
 
         $planet_type = $type_array[array_rand($type_array)];
 
+        $type_probabilities = array(
+            'bbb' => 1,
+            'bbn' => 3,
+            'bnb' => 3,
+            'nbb' => 3,
+            'bnn' => 5,
+            'nbn' => 5,
+            'nnb' => 5,
+            'nnn' => 50,
+            'gnn' => 5,
+            'ngn' => 5,
+            'nng' => 5,
+            'ggn' => 3,
+            'ngg' => 3,
+            'gng' => 3,
+            'ggg' => 1, 
+        );
+
+        $template_array = array();
+
+        foreach($type_probabilities as $type => $probability) {
+            for($i = 0; $i < $probability; ++$i) {
+                $template_array[] = $type;
+            }
+        }
+
+        $planet_template = $template_array[array_rand($template_array)];
+
         // Random variance of the constants basis of the planet
-        $rateo_1 = round(($PLANETS_DATA[$planet_type][0] + ((400 - mt_rand(0, 800))*0.001)), 2);
+        $rateo_1 = round(($PLANETS_DATA[$planet_type][0] + $planet_templates[$planet_template][0]), 2);
         if($rateo_1 < 0.1) $rateo_1 = 0.1;
-        $rateo_2 = round(($PLANETS_DATA[$planet_type][1] + ((350 - mt_rand(0, 700))*0.001)), 2);
+        $rateo_2 = round(($PLANETS_DATA[$planet_type][1] + $planet_templates[$planet_template][1]), 2);
         if($rateo_2 < 0.1) $rateo_2 = 0.1;
-        $rateo_3 = round(($PLANETS_DATA[$planet_type][2] + ((300 - mt_rand(0, 600))*0.001)), 2);
+        $rateo_3 = round(($PLANETS_DATA[$planet_type][2] + $planet_templates[$planet_template][2]), 2);
         if($rateo_3 < 0.1) $rateo_3 = 0.1;
         $rateo_4 = $PLANETS_DATA[$planet_type][3];
 
-        $sql = 'INSERT INTO planets (planet_name, system_id, sector_id, planet_type, planet_owner, planet_owned_date, planet_distance_id, planet_distance_px, planet_covered_distance, planet_tick_cdistance, planet_max_cdistance, resource_1, resource_2, resource_3, resource_4, planet_points, rateo_1, rateo_2, rateo_3, rateo_4)
-                VALUES ("'.UNINHABITATED_PLANET.'", '.$system_id.', '.$sector_id.', "'.$planet_type.'", 0, '.$game->TIME.', '.$planet_distance_id.', '.$planet_distance_px.', 0, '.( mt_rand(10, 30) ).', '.( 2 * M_PI * $planet_distance_px ).', 0, 0, 0, 0, 0, '.$rateo_1.', '.$rateo_2.', '.$rateo_3.', '.$rateo_4.')';
+        $sql = 'INSERT INTO planets (planet_name, system_id, sector_id, planet_type, planet_owner, planet_owned_date, planet_distance_id, planet_distance_px, planet_covered_distance, planet_tick_cdistance, planet_max_cdistance, resource_1, resource_2, resource_3, resource_4, planet_points, rateo_1, rateo_2, rateo_3, rateo_4, research_1, research_2, research_3, research_4, research_5, building_1, building_2, building_3, building_4, building_5, building_6, building_7, building_8, building_10, building_11, building_13)
+                VALUES ("'.UNINHABITATED_PLANET.'", 
+                '.$system_id.', 
+                '.$sector_id.', 
+                "'.$planet_type.'", 0, 
+                '.$game->TIME.', 
+                '.$planet_distance_id.', 
+                '.$planet_distance_px.', 0, 
+                '.( mt_rand(10, 30) ).', 
+                '.( 2 * M_PI * $planet_distance_px ).', 0, 0, 0, 0, 0, 
+                '.$rateo_1.', 
+                '.$rateo_2.', 
+                '.$rateo_3.', 
+                '.$rateo_4.',
+                '.($planet_type == 'm' || $planet_type == 'o' ? mt_rand(0,9) : 0).', 
+                '.($planet_type == 'm' || $planet_type == 'o' ? mt_rand(0,9) : 0).',
+                '.($planet_type == 'm' || $planet_type == 'o' ? mt_rand(0,9) : 0).',
+                '.($planet_type == 'm' || $planet_type == 'o' ? mt_rand(0,9) : 0).',
+                '.($planet_type == 'm' || $planet_type == 'o' ? mt_rand(0,9) : 0).',
+                '.($planet_type == 'm' || $planet_type == 'o' ? mt_rand(0,9) : 0).',
+                '.($planet_type == 'm' || $planet_type == 'o' ? mt_rand(0,9) : 0).',
+                '.($planet_type == 'm' || $planet_type == 'o' ? mt_rand(0,9) : 0).',
+                '.($planet_type == 'm' || $planet_type == 'o' ? mt_rand(0,9) : 0).',
+                '.($planet_type == 'm' || $planet_type == 'o' ? mt_rand(0,9) : 0).',
+                '.($planet_type == 'm' || $planet_type == 'o' ? mt_rand(0,9) : 0).',
+                '.($planet_type == 'm' || $planet_type == 'o' ? mt_rand(0,9) : 0).',
+                '.($planet_type == 'm' || $planet_type == 'o' ? mt_rand(0,9) : 0).',
+                '.($planet_type == 'm' || $planet_type == 'o' ? mt_rand(0,9) : 0).',
+                '.($planet_type == 'm' || $planet_type == 'o' ? mt_rand(0,9) : 0).',
+                '.($planet_type == 'm' || $planet_type == 'o' ? mt_rand(0,9) : 0).')';
     }
     else {
         $planet_type = (mt_rand(1, 2) == 1) ? 'm' : 'n';

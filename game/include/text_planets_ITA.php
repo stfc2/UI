@@ -136,6 +136,54 @@ $PLANETS_TEXT = array(
     ),
     
     'n' => array(
+        0 => 'Pianeta in decadimento',
+        1 => 'Richiede pesante intervento di terraforming',
+        2 => 'Media presenza di tutte le risorse',
+        3 => 'Nonostante siano spesso presenti nella Ecosfera, i pianeti di questa classe non possono ospitare la vita. La superficie &grave; rocciosa e raggiunge temperature superiori ai 500 C° e una pressione superiore di 90 volte a quella terrestre. L&#146;atmosfera &egrave; molto densa e composta di diossido di carbonio. L&#146;acqua esiste solo in forma di vapore raccolto in dense nubi che avvolgono il pianeta.',
+        4 => 'Venere',
+    ),
+
+    'o' => array(
+        0 => 'Pianeta acquatico',
+        1 => 'Possibile',
+        2 => 'Media presenza di tutte le risorse',
+        3 => 'I pianeti di questa classe sono molto simili alla Terra. La loro atmosfera &egrave; uguale a quella dei pianeti di Classe M, la superficie &egrave; coperta per il 90% dall&#146;acqua. Ideale per la vita.',
+        4 => '-',
+    ),
+
+    'p' => array(
+        0 => 'Pianeta acquatico',
+        1 => 'Possibile',
+        2 => 'Media presenza di tutte le risorse',
+        3 => 'I pianeti di questa classe sono molto simili alla Terra. La loro atmosfera &egrave; uguale a quella dei pianeti di Classe M, la superficie &egrave; coperta per il 90% dall&#146;acqua. Ideale per la vita.',
+        4 => '-',
+    ),
+
+    'q' => array(
+        0 => 'Pianeta acquatico',
+        1 => 'Possibile',
+        2 => 'Media presenza di tutte le risorse',
+        3 => 'I pianeti di questa classe sono molto simili alla Terra. La loro atmosfera &egrave; uguale a quella dei pianeti di Classe M, la superficie &egrave; coperta per il 90% dall&#146;acqua. Ideale per la vita.',
+        4 => '-',
+    ),
+
+    's' => array(
+        0 => 'Pianeta acquatico',
+        1 => 'Possibile',
+        2 => 'Media presenza di tutte le risorse',
+        3 => 'I pianeti di questa classe sono molto simili alla Terra. La loro atmosfera &egrave; uguale a quella dei pianeti di Classe M, la superficie &egrave; coperta per il 90% dall&#146;acqua. Ideale per la vita.',
+        4 => '-',
+    ),
+
+    't' => array(
+        0 => 'Pianeta acquatico',
+        1 => 'Possibile',
+        2 => 'Media presenza di tutte le risorse',
+        3 => 'I pianeti di questa classe sono molto simili alla Terra. La loro atmosfera &egrave; uguale a quella dei pianeti di Classe M, la superficie &egrave; coperta per il 90% dall&#146;acqua. Ideale per la vita.',
+        4 => '-',
+    ),
+
+    'x' => array(
         0 => 'Pianeta acquatico',
         1 => 'Possibile',
         2 => 'Media presenza di tutte le risorse',

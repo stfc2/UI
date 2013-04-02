@@ -211,7 +211,7 @@ $owntaxDay=GetOwnRess(1,$adata['taxes']);
 			<b>'.constant($game->sprache("TEXT7")).'</b><br>
 <br><br><b><u>'.constant($game->sprache("TEXT8")).':</u></b><br>
 				<table width="500" cellpadding="5">
-				<tr><td width=150>'.constant($game->sprache("TEXT9")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$adata['taxes_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$adata['taxes_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$adata['taxes_3'].'&nbsp;&nbsp;</td></tr>
+				<tr><td width=150>'.constant($game->sprache("TEXT9")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.number_format($adata['taxes_1'], 0, '.', '.').'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.number_format($adata['taxes_2'], 0, '.', '.').'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.number_format($adata['taxes_3'], 0, '.', '.').'&nbsp;&nbsp;</td></tr>
 				<tr><td>'.constant($game->sprache("TEXT10")).':</td><td>'.$adata['taxes'].'%</td></tr>
 				<tr><td>'.constant($game->sprache("TEXT11")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$tax[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$tax[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$tax[2].'&nbsp;&nbsp;</td></tr>
 				<tr><td>'.constant($game->sprache("TEXT12")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$taxDay[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$taxDay[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$taxDay[2].'&nbsp;&nbsp;</td></tr>
@@ -601,13 +601,13 @@ $owntaxDay=GetOwnRess(1,$adata['taxes']);
 			<b>'.constant($game->sprache("TEXT7")).'</b><br>
 <br><br><b><u>'.constant($game->sprache("TEXT8")).':</u></b><br>
 				<table width="500" cellpadding="5">
-				<tr><td width=150>'.constant($game->sprache("TEXT9")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$adata['taxes_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$adata['taxes_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$adata['taxes_3'].'&nbsp;&nbsp;</td></tr>
+				<tr><td width=150>'.constant($game->sprache("TEXT9")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.number_format($adata['taxes_1'],0, '.', '.').'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.number_format($adata['taxes_2'], 0, '.', '.').'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.number_format($adata['taxes_3'], 0, '.', '.').'&nbsp;&nbsp;</td></tr>
 				<tr><td>'.constant($game->sprache("TEXT10")).':</td><td>'.$adata['taxes'].'%</td></tr>
 				<tr><td>'.constant($game->sprache("TEXT11")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$tax[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$tax[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$tax[2].'&nbsp;&nbsp;</td></tr>
-				<tr><td>'.constant($game->sprache("TEXT12")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$taxDay[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$taxDay[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$taxDay[2].'&nbsp;&nbsp;</td></tr>
+				<tr><td>'.constant($game->sprache("TEXT12")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.number_format($taxDay[0], 0, '.', '.').'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.number_format($taxDay[1], 0, '.', '.').'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.number_format($taxDay[2], 0, '.', '.').'&nbsp;&nbsp;</td></tr>
 				<tr><td>&nbsp;</td></tr>
 				<tr><td>'.constant($game->sprache("TEXT13")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$owntax[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$owntax[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$owntax[2].'&nbsp;&nbsp;</td></tr>
-				<tr><td>'.constant($game->sprache("TEXT14")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$owntaxDay[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$owntaxDay[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$owntaxDay[2].'&nbsp;&nbsp;</td></tr>
+				<tr><td>'.constant($game->sprache("TEXT14")).':</td><td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.number_format($owntaxDay[0], 0, '.', '.').'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.number_format($owntaxDay[1], 0, '.', '.').'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.number_format($owntaxDay[2], 0, '.', '.').'&nbsp;&nbsp;</td></tr>
 				</table>
 <br><br><b><u>'.constant($game->sprache("TEXT15")).':</u></b><br><br>
 				<table width="500" cellpadding="2" border="0">
@@ -672,7 +672,7 @@ while($payment = $db->fetchrow($payments)) {
     $game->out('
 				<tr>
 					<td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$payment['receiver']).'">'.$game->uc_get($payment['receiver']).'</a></td>
-					<td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.$payment['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.$payment['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.$payment['resource_3'].'</td>
+					<td><img src='.$game->GFX_PATH.'menu_metal_small.gif>'.number_format($payment['resource_1'], 0, '.', '.').'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif>'.number_format($payment['resource_2'], 0, '.', '.').'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif>'.number_format($payment['resource_3'], 0, '.', '.').'</td>
 					<td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$payment['sender']).'">'.$game->uc_get($payment['sender']).'</a></td>
 					<td><a href="javascript:void(0);" onmouseover="return overlib(\''.htmlspecialchars($payment['reason']).'\', CAPTION, \''.constant($game->sprache("TEXT21")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.constant($game->sprache("TEXT22")).'</a></td>
 					<td>'.$mode.'</td>

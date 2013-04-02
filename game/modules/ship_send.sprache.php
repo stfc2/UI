@@ -447,4 +447,10 @@ define ("ITA_TEXT67", '<b>Analisi Pianeta:</b><br>La nave approccer&agrave; il p
 
 define ("ITA_TEXT68", 'Sconosciuto');
 
+define ("ITA_TEXT69", '<center><b>Missioni Secondarie</b></center>');
+
+define ("ITA_TEXT70", '<b>Nessuna</b>');
+
+define ("ITA_TEXT71", '<b>Ricognizione:</b><br>La squadra a terra tenter&agrave; una missione di ricognizione delle strutture nemiche a terra, cercando di ottenere il maggior numero di informazioni.');
+
 ?>

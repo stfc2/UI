@@ -544,7 +544,52 @@ elseif(!empty($_GET['set_alert_phase'])) {
     redirect('a=ship_fleets_display&'.( (isset($_GET['planet'])) ? 'p' : 'm' ).'fleet_details='.$fleet_id);
 
 }
+elseif(!empty($_GET['set_ammo_ratio']))
+{
+	    $fleet_id = (int)$_GET['set_ammo_ratio'];
 
+
+
+    if(!isset($_POST['ammo_ratio'])) {
+
+        message(GENERAL, constant($game->sprache("TEXT26")), '$_POST[\'value\'] = empty');
+
+    }
+
+
+
+    $value = (int)$_POST['ammo_ratio'];
+
+
+
+    if( $value < 0 || $value > 100) {
+
+        message(NOTICE, constant($game->sprache("TEXT27")));
+
+    }
+
+
+
+    $sql = 'UPDATE ship_fleets
+
+            SET ammo_ratio = '.$value.'
+
+            WHERE fleet_id = '.$fleet_id.' AND
+
+                  user_id = '.$game->player['user_id'];
+
+
+
+    if(!$db->query($sql)) {
+
+        message(DATABASE_ERROR, 'Could not update fleets ammo ratio data');
+
+    }
+
+
+
+    redirect('a=ship_fleets_display&'.( (isset($_GET['planet'])) ? 'p' : 'm' ).'fleet_details='.$fleet_id);
+}
 elseif(isset($_GET['offduty_ships'])) {
 
     if(empty($_POST['ships'])) {
@@ -798,6 +843,12 @@ elseif(isset($_GET['ship_details'])) {
 	if ($ship['experience']>=$ship_ranks[8]) $rank_nr=9;
 	if ($ship['experience']>=$ship_ranks[9]) $rank_nr=10;
 	
+	$firststrike=(($ship['value_6']+round($ship['value_6']*$ship_rank_bonus[$rank_nr-1]))*2
+	             +($ship['value_7']+round($ship['value_7']*$ship_rank_bonus[$rank_nr-1]))*3
+	             +($ship['value_8']+round($ship['value_8']*$ship_rank_bonus[$rank_nr-1]))
+	             +$ship['value_12']
+	             +$ship['value_11']*0.5
+	             );
 
     $game->out('
 
@@ -843,7 +894,9 @@ elseif(isset($_GET['ship_details'])) {
 
             '.constant($game->sprache("TEXT49")).'<br>
 
-            '.constant($game->sprache("TEXT50")).'<br><br>
+            '.constant($game->sprache("TEXT50")).'<br>
+            
+            '.constant($game->sprache("TEXT60")).'<br><br>
 
             '.constant($game->sprache("TEXT6")).'<br>
 
@@ -858,6 +911,8 @@ elseif(isset($_GET['ship_details'])) {
             '.constant($game->sprache("TEXT12")).'<br><br>
 
             '.constant($game->sprache("TEXT51")).'<br><br>
+            
+            '.constant($game->sprache("TEXT61")).'<br><br>
 
             '.constant($game->sprache("TEXT52")).'
 
@@ -886,12 +941,14 @@ elseif(isset($_GET['ship_details'])) {
             <b>'.$ship['value_4'].'</b><br><br>
 
             <b><span style="color: yellow">'.$ship['experience'].'</span></b> <img src="'.$game->GFX_PATH.'rank_'.$rank_nr.'.jpg" width="47" height="12"><br><br>
+            
+            <b>'.$ship['rof'].' x '.round($ship['value_1']/$ship['rof'],0).' + <span style="color: yellow">'.round(($ship['value_1']*$ship_rank_bonus[$rank_nr-1])/$ship['rof'],0).'</span></b><br>
 
-            <b>'.$ship['value_1'].' + <span style="color: yellow">'.round($ship['value_1']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
+            <b>'.$ship['rof'].' x '.round($ship['value_2']/$ship['rof'],0).' + <span style="color: yellow">'.round(($ship['value_2']*$ship_rank_bonus[$rank_nr-1])/$ship['rof'],0).'</span></b><br>
 
-            <b>'.$ship['value_2'].' + <span style="color: yellow">'.round($ship['value_2']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
-
-            <b>'.$ship['value_3'].' + <span style="color: yellow">'.round($ship['value_3']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br><br>
+            <b>'.$ship['value_3'].' + <span style="color: yellow">'.round($ship['value_3']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
+            
+            <b>'.$ship['torp'].' / '.$ship['max_torp'].'</b><br><br>
 
             <b>'.$ship['value_6'].' + <span style="color: yellow">'.round($ship['value_6']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
 
@@ -906,6 +963,8 @@ elseif(isset($_GET['ship_details'])) {
             <b>'.$ship['value_12'].'</b><br><br>
 
             <b>'.$ship['value_14'].'</b> / <b>'.$ship['value_13'].'</b><br><br>
+            
+            <b><a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT63")).'\', CAPTION, \''.constant($game->sprache("TEXT62")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: yellow">'.$firststrike.'</span></a></b><br><br>
 
             <img src='.$game->GFX_PATH.'menu_unit1_small.gif>'.$ship['unit_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif>'.$ship['unit_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif>'.$ship['unit_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif>'.$ship['unit_4'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif>'.$ship['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif>'.$ship['unit_6'].'
 

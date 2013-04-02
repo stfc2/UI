@@ -92,16 +92,16 @@ if(!empty($_POST['from_submit'])) {
 
     // POST variables parse + SQL data to integer cast
     foreach($wares_names as $key => $name) {
-        $nwares[$key] = (!empty($_POST['add_'.$key])) ? abs((int)$_POST['add_'.$key]) : 0;
-        $fwares[$key] = (int)$fleet[$key];
-        $pwares[$key] = (int)$fleet['avail_'.$key];
+        (float)$nwares[$key] = (!empty($_POST['add_'.$key])) ? abs((float)$_POST['add_'.$key]) : 0;
+        (float)$fwares[$key] = (float)$fleet[$key];
+        (float)$pwares[$key] = (float)$fleet['avail_'.$key];
     }
     
-    $n_presources = $pwares['resource_1'] + $pwares['resource_2'] + $pwares['resource_3'];
+    (float)$n_presources = $pwares['resource_1'] + $pwares['resource_2'] + $pwares['resource_3'];
     $n_pworker = $pwares['resource_4'];
     $n_punits = $pwares['unit_1'] + $pwares['unit_2'] + $pwares['unit_3'] + $pwares['unit_4'] + $pwares['unit_5'] + $pwares['unit_6'];
     
-    $n_fresources = $fwares['resource_1'] + $fwares['resource_2'] + $fwares['resource_3'];
+    (float)$n_fresources = $fwares['resource_1'] + $fwares['resource_2'] + $fwares['resource_3'];
     $n_funits = $fwares['resource_4'] + $fwares['unit_1'] + $fwares['unit_2'] + $fwares['unit_3'] + $fwares['unit_4'] + $fwares['unit_5'] + $fwares['unit_6'];
     
     $fleet_overloaded = false;
@@ -459,12 +459,12 @@ elseif(!empty($_POST['to_submit'])) {
 
     // POST variables parse + SQL data to integer cast
     foreach($wares_names as $key => $name) {
-        $nwares[$key] = (!empty($_POST['add_'.$key])) ? abs((int)$_POST['add_'.$key]) : 0;
-        $fwares[$key] = (int)$fleet[$key];
-        $pwares[$key] = (int)$fleet['p'.$key];
+        (float)$nwares[$key] = (!empty($_POST['add_'.$key])) ? abs((float)$_POST['add_'.$key]) : 0;
+        (float)$fwares[$key] = (float)$fleet[$key];
+        (float)$pwares[$key] = (float)$fleet['p'.$key];
     }
 
-    $n_presources = $pwares['resource_1'] + $pwares['resource_2'] + $pwares['resource_3'];
+    (float)$n_presources = $pwares['resource_1'] + $pwares['resource_2'] + $pwares['resource_3'];
     $n_pworker = $pwares['resource_4'];
     $n_punits = ($pwares['unit_1'] * 2) + ($pwares['unit_2'] * 3) + ($pwares['unit_3'] * 4) + ($pwares['unit_4'] * 4) + ($pwares['unit_5'] * 4) + ($pwares['unit_6'] * 4);
 
@@ -769,11 +769,11 @@ function unload_all() {
         <tr><td height="5"></td></tr>
         <tr>
           <td rowspan="5" width="140" valign="top">'.constant($game->sprache("TEXT34")).'</td>
-          <td width="260"><i>'.constant($game->sprache("TEXT16")).'</i>: <b>'.($fleet['max_presources'] - $fleet['presource_1']).'</b></td>
+          <td width="260"><i>'.constant($game->sprache("TEXT16")).'</i>: <b>'.number_format(($fleet['max_presources'] - $fleet['presource_1']), 0, '.', '.').'</b></td>
         </tr>
-        <tr><td><i>'.constant($game->sprache("TEXT17")).'</i>: <b>'.($fleet['max_presources'] - $fleet['presource_2']).'</b></td></tr>
-        <tr><td><i>'.constant($game->sprache("TEXT18")).'</i>: <b>'.($fleet['max_presources'] - $fleet['presource_3']).'</b></td></tr>
-        <tr><td><i>'.constant($game->sprache("TEXT19")).'</i>: <b>'.($fleet['max_pworker'] - $fleet['presource_4']).'</b></td></tr>
+        <tr><td><i>'.constant($game->sprache("TEXT17")).'</i>: <b>'.number_format(($fleet['max_presources'] - $fleet['presource_2']), 0, '.', '.').'</b></td></tr>
+        <tr><td><i>'.constant($game->sprache("TEXT18")).'</i>: <b>'.number_format(($fleet['max_presources'] - $fleet['presource_3']), 0, '.', '.').'</b></td></tr>
+        <tr><td><i>'.constant($game->sprache("TEXT19")).'</i>: <b>'.number_format(($fleet['max_pworker'] - $fleet['presource_4']), 0, '.', '.').'</b></td></tr>
         <tr><td><i>'.constant($game->sprache("TEXT35")).'</i>: <b>'.($fleet['max_punits'] - ($fleet['punit_1'] * 2)- ($fleet['punit_2'] * 3) - ($fleet['punit_3'] * 4)- ($fleet['punit_4'] * 4) - ($fleet['unit_5'] * 4) - ($fleet['unit_6'] * 4)).'</b></td></tr>
         ');
     }
@@ -794,7 +794,7 @@ function unload_all() {
         $game->out('
         <tr>
           <td>'.constant($game->sprache("TEXT16")).'</td>
-          <td align="center">'.$fleet['resource_1'].'</td><td align="center">'.( ($own_planet) ? $fleet['presource_1'] : '' ).'</td>
+          <td align="center">'.number_format($fleet['resource_1'], 0, '.', '.').'</td><td align="center">'.( ($own_planet) ? number_format($fleet['presource_1'], 0, '.', '.') : '' ).'</td>
           <td align="center"><input style="width: 60px;" class="field" type="text" name="add_resource_1" value=""></td>
         </tr>
         ');
@@ -804,7 +804,7 @@ function unload_all() {
         $game->out('
         <tr>
           <td>'.constant($game->sprache("TEXT17")).'</td>
-          <td align="center">'.$fleet['resource_2'].'</td><td align="center">'.( ($own_planet) ? $fleet['presource_2'] : '' ).'</td>
+          <td align="center">'.number_format($fleet['resource_2'], 0, '.', '.').'</td><td align="center">'.( ($own_planet) ? number_format($fleet['presource_2'], 0, '.', '.') : '' ).'</td>
           <td align="center"><input style="width: 60px;" class="field" type="text" name="add_resource_2" value=""></td>
         </tr>
         ');
@@ -814,7 +814,7 @@ function unload_all() {
         $game->out('
         <tr>
           <td>'.constant($game->sprache("TEXT18")).'</td>
-          <td align="center">'.$fleet['resource_3'].'</td><td align="center">'.( ($own_planet) ? $fleet['presource_3'] : '' ).'</td>
+          <td align="center">'.number_format($fleet['resource_3'], 0, '.', '.').'</td><td align="center">'.( ($own_planet) ? number_format($fleet['presource_3'], 0, '.', '.') : '' ).'</td>
           <td align="center"><input style="width: 60px;" class="field" type="text" name="add_resource_3" value=""></td>
         </tr>
         ');

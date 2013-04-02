@@ -259,6 +259,18 @@ if(isset($_GET['pfleet_details'])) {
 
     global $SHIP_TORSO;
     
+    $ship_torso[0] = 'Scout';
+    $ship_torso[1] = 'Cargo';
+    $ship_torso[2] = 'Colonizzatrice';
+    $ship_torso[3] = 'Fregata Leggera';
+    $ship_torso[4] = 'Fregata Leggera';
+    $ship_torso[5] = 'Fregata';
+    $ship_torso[6] = 'Incrociatore Leggero';
+    $ship_torso[7] = 'Incrociatore';
+    $ship_torso[8] = 'Incrociatore Pesante';
+    $ship_torso[9] = 'Nave da Battaglia';
+    
+    
     while($s_ship = $db->fetchrow($q_ships)) {
     	$ammo_ratio = (int)($s_ship['torp']*100/$s_ship['max_torp']);
         /* 07/04/08 - AC: If present, show also ship's name */
@@ -290,7 +302,8 @@ if(isset($_GET['pfleet_details'])) {
     foreach($torso_counter as $key => $torso)
     {
     	if($torso == 0) continue;
-    	$torso_string_counter .= $SHIP_TORSO[$game->player['user_race']][$key][29].' <b>'.$torso.'</b><br>';	
+    	// $torso_string_counter .= $SHIP_TORSO[$game->player['user_race']][$key][29].' <b>'.$torso.'</b><br>';
+    	$torso_string_counter .= $ship_torso[$key].' <b>'.$torso.'</b><br>';	
     }
     
     $damage_string_counter .= 'Navi integre <b>'.$damage_counter[0].'</b>';
@@ -343,66 +356,11 @@ if(isset($_GET['pfleet_details'])) {
       '.constant($game->sprache("TEXT18")).' '.$ap_green_str.'&nbsp;'.$ap_yellow_str.'&nbsp;'.$ap_red_str.'<br><br>
     ');
 
-    // Anfang lesen Homebase Koords
-
-    $planet_id = $fleet['homebase'];
-
-    $sql = 'SELECT * FROM planets WHERE planet_id = '.$planet_id;
-
-    $planet_koords = $db->queryrow($sql);
-   
-    $system=$db->queryrow('SELECT system_x, system_y FROM starsystems WHERE system_id = '.$planet_koords['system_id']);
-
-    // Ende lesen Homebasekoords
-
-	//DC --- Pannello composizione Flotta
-	$game->out('
-		<table width="450" cellpadding="0" cellspacing="0">
-			<tr>Sommario Composizione e Status della Flotta:</tr>
-			<tr>
-				<td width="150" align="left">Tipo</td>
-				<td width="150" align="left">Integrità</td>
-				<td width="150" align="left">Munizioni</td> 
-			<tr>
-				<td width="150" align="left">'.$torso_string_counter.'
-				</td>
-				<td width="150" align="left">'.$damage_string_counter.'
-				</td>
-				<td width="150" align="left">'.$depleted_string.'
-				</td>
-		</table>
-	  <br>	
-      <table width="450" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-      	<td width="150">Soglia di controllo siluri</td>
-      	<td width="80">
-      		<select onChange="if(this.value) document.fleet_form.ammo_ratio.value = this.value;">
-      		<option value="0" '.($thereshold_ammo_ratio == 0 ? 'selected="selected"' : '&ndspc').'>0%</option>
-      		<option value="10" '.($thereshold_ammo_ratio == 10 ? 'selected="selected"' : '&ndspc').'>10%</option>
-      		<option value="20" '.($thereshold_ammo_ratio == 20 ? 'selected="selected"' : '&ndspc').'>20%</option>
-      		<option value="30" '.($thereshold_ammo_ratio == 30 ? 'selected="selected"' : '&ndspc').'>30%</option>
-      		<option value="40" '.($thereshold_ammo_ratio == 40 ? 'selected="selected"' : '&ndspc').'>40%</option>
-      		<option value="50" '.($thereshold_ammo_ratio == 50 ? 'selected="selected"' : '&ndspc').'>50%</option>
-      		<option value="60" '.($thereshold_ammo_ratio == 60 ? 'selected="selected"' : '&ndspc').'>60%</option>
-      		<option value="70" '.($thereshold_ammo_ratio == 70 ? 'selected="selected"' : '&ndspc').'>70%</option>
-      		<option value="80" '.($thereshold_ammo_ratio == 80 ? 'selected="selected"' : '&ndspc').'>80%</option>
-      		<option value="90" '.($thereshold_ammo_ratio == 90 ? 'selected="selected"' : '&ndspc').'>90%</option>
-      		<option value="100" '.($thereshold_ammo_ratio == 100 ? 'selected="selected"' : '&ndspc').'>100%</option>
-      		</select>
-      	</td>
-      	<td>
-      		<input class="button" type="submit" name="apply_ammo_ratio" value="Cambia soglia" onClick="return document.fleet_form.action = \''.parse_link('a=ship_fleets_ops&set_ammo_ratio='.$fleet_id.'&planet').'\'">
-      	</td>
-      </tr>
-      </table>
-      <input type="hidden" name="ammo_ratio" value="'.$thereshold_ammo_ratio.'">
-      <br> 
-	');
-	//DC ---
-
-    if($n_transporter > 0) {
+	if($n_transporter > 0) {
         $max_resources = $n_transporter * MAX_TRANSPORT_RESOURCES;
         $max_units = $n_transporter * MAX_TRANSPORT_UNITS;
+        
+        $game->out('<fieldset><legend><span class="sub_caption2">Gestione Carico Flotta:</span></legend>');
 
         if( ($n_resources < $max_resources) || ($n_units < $max_units) ) $game->out('[<a href="'.parse_link('a=ship_fleets_loadingp&from='.$fleet_id).'">'.constant($game->sprache("TEXT19")).'</a>]&nbsp;');
         if( ($n_resources > 0) || ($n_units > 0) ) $game->out('[<a href="'.parse_link('a=ship_fleets_loadingp&to='.$fleet_id).'">'.constant($game->sprache("TEXT20")).'</a>]');
@@ -427,7 +385,69 @@ if(isset($_GET['pfleet_details'])) {
             $game->out('<br><br><i>'.constant($game->sprache("TEXT25")).' <b>'.$n_security.'</b></i>');
             $game->out('<br>');
         }
+        
+        $game->out('</fieldset><br><br>');
     }
+    
+    // Anfang lesen Homebase Koords
+
+    $planet_id = $fleet['homebase'];
+
+    $sql = 'SELECT * FROM planets WHERE planet_id = '.$planet_id;
+
+    $planet_koords = $db->queryrow($sql);
+   
+    $system=$db->queryrow('SELECT system_x, system_y FROM starsystems WHERE system_id = '.$planet_koords['system_id']);
+
+    // Ende lesen Homebasekoords
+
+	//DC --- Pannello composizione Flotta
+	$style = 'style="border-bottom-color:A0A0A0; border-bottom-style:dotted; border-bottom-width:1px"';
+	$game->out('
+		<fieldset><legend><span class="sub_caption2">Sommario Composizione e Status della Flotta:</span></legend>
+		<table width=450 cellpadding=0 cellspacing=0 border=0>
+			<tr>
+				<td '.$style.' width=50 align=left>Tipo</td>
+				<td '.$style.' width=150 align=left>Integrità</td>
+				<td '.$style.' width=150 align=left>Munizioni</td> 
+			<tr>
+				<td width=150 align=left>'.$torso_string_counter.'
+				</td>
+				<td width=150 align=left>'.$damage_string_counter.'
+				</td>
+				<td width=150 align=left>'.$depleted_string.'
+				</td>
+		</table>
+	  <br>	
+      <table width="450" border=0 cellpadding=0 cellspacing=0>
+      <tr>
+      	<td width="150">Soglia di controllo siluri</td>
+      	<td width="80">
+      		<select onChange="if(this.value) document.fleet_form.ammo_ratio.value = this.value;">
+      		<option value="0" '.($thereshold_ammo_ratio == 0 ? 'selected="selected"' : '&ndspc').'>0%</option>
+      		<option value="10" '.($thereshold_ammo_ratio == 10 ? 'selected="selected"' : '&ndspc').'>10%</option>
+      		<option value="20" '.($thereshold_ammo_ratio == 20 ? 'selected="selected"' : '&ndspc').'>20%</option>
+      		<option value="30" '.($thereshold_ammo_ratio == 30 ? 'selected="selected"' : '&ndspc').'>30%</option>
+      		<option value="40" '.($thereshold_ammo_ratio == 40 ? 'selected="selected"' : '&ndspc').'>40%</option>
+      		<option value="50" '.($thereshold_ammo_ratio == 50 ? 'selected="selected"' : '&ndspc').'>50%</option>
+      		<option value="60" '.($thereshold_ammo_ratio == 60 ? 'selected="selected"' : '&ndspc').'>60%</option>
+      		<option value="70" '.($thereshold_ammo_ratio == 70 ? 'selected="selected"' : '&ndspc').'>70%</option>
+      		<option value="80" '.($thereshold_ammo_ratio == 80 ? 'selected="selected"' : '&ndspc').'>80%</option>
+      		<option value="90" '.($thereshold_ammo_ratio == 90 ? 'selected="selected"' : '&ndspc').'>90%</option>
+      		<option value="100" '.($thereshold_ammo_ratio == 100 ? 'selected="selected"' : '&ndspc').'>100%</option>
+      		</select>
+      	</td>
+      	<td>
+      		<input class="button" type="submit" name="apply_ammo_ratio" value="Cambia soglia" onClick="return document.fleet_form.action = \''.parse_link('a=ship_fleets_ops&set_ammo_ratio='.$fleet_id.'&planet').'\'">
+      	</td>
+      </tr>
+      </table>
+      </fieldset>
+      <input type="hidden" name="ammo_ratio" value="'.$thereshold_ammo_ratio.'">
+      <br> 
+	');
+	//DC ---
+    
     $select_size = 8;
     $game->out('
 <SCRIPT LANGUAGE="JavaScript"><!--
@@ -439,10 +459,10 @@ function ShipSelection(cSelectType) {
       if (cSelectType == "All") {
          objShipListBox.options[i].selected = true;
       } else if (cSelectType == "Damaged") {
-         if ((objShipListBox.options[i].id > 0) && (objShipListBox.options[i].id < 100000)) {
-            objShipListBox.options[i].selected = true;
-         } else {
+         if ((objShipListBox.options[i].id == 0) || (objShipListBox.options[i].id == 100000)) {
             objShipListBox.options[i].selected = false;
+         } else {
+            objShipListBox.options[i].selected = true;
          }
       } else if (cSelectType == "None") {
          objShipListBox.options[i].selected = false;
@@ -457,7 +477,8 @@ function ShipSelection(cSelectType) {
 }
 //--></SCRIPT>
       <br>
-	  <table width="450" border="0" cellpadding="2" cellspacing="0">
+      <fieldset><legend><span class="sub_caption2">Gestione unit&agrave;:</span></legend>
+	  <table width=450 border=0 cellpadding=2 cellspacing=0>
        <tr>
         <td width="410">
          <select id="ships[]" name="ships[]" style="width: 350px;" size="'.$select_size.'" multiple="multiple">
@@ -496,12 +517,12 @@ function ShipSelection(cSelectType) {
       <br><br>
       <input class="button" style="width: 220px;" type="submit" name="ship_details" value="'.constant($game->sprache("TEXT37")).'" onClick="return document.fleet_form.action = \''.parse_link('a=ship_fleets_ops&ship_details').'\'">&nbsp;
       <input class="button" type="submit" name="offduty_ship" value="'.constant($game->sprache("TEXT38")).'" onClick="return document.fleet_form.action = \''.parse_link('a=ship_fleets_ops&offduty_ships').'\'"'.( ( ($fleet['stationated_owner_id'] != $game->player['user_id']) || ($fleet['spacedock_level'] == 0) ) ? ' disabled="disabled"' : '' ).'>
+      </fieldset>
       <br><br>
 
+      <fieldset><legend><span class="sub_caption2">Comandi e impostazioni flotta:</span></legend>
       <table width="450" border="0" cellpadding="2" cellspacing="0">
   
-       
-
        <tr>
 
        <td width="250">'.constant($game->sprache("TEXT39")).' <b>'.( ($planet_koords['sector_id']==0) ? '<b>'.constant($game->sprache("TEXT40")).'</b>' : ''.$game->get_sector_name($planet_koords['sector_id']).':'.$game->get_system_cname($system['system_x'],$system['system_y']).':'.($planet_koords['planet_distance_id'] + 1).' ( '.$planet_koords['planet_name'].' )' ).'</b></td>
@@ -598,6 +619,7 @@ function ShipSelection(cSelectType) {
     
     $game->out('
       </table>
+      </fieldset>
       <br>
     </td>
   </tr>
@@ -691,7 +713,7 @@ elseif(isset($_GET['mfleet_details'])) {
     }
 
     $sql = 'SELECT s.*,
-                   st.name AS template_name, st.ship_torso, st.value_10, st.value_5 AS max_hitpoints
+                   st.name AS template_name, st.ship_torso, st.value_10, st.value_5 AS max_hitpoints, st.max_torp
             FROM (ships s, ship_templates st)
             WHERE s.fleet_id = '.$fleet_id.' AND
                   st.id = s.template_id
@@ -700,19 +722,58 @@ elseif(isset($_GET['mfleet_details'])) {
     if(($q_ships = $db->query($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query ships data');
     }
+    
+    $n_ships = $n_transporter = 0;
+    $ships_option_html = '';
+    $torso_counter = array(0,0,0,0,0,0,0,0,0,0);
+    $damage_counter = array(0,0,0,0);
+    $depleted_counter = array(0,0,0);
+    $thereshold_ammo_ratio = $fleet['ammo_ratio'];
+     
+
+    global $SHIP_TORSO;
 
     $n_ships = $n_transporter = 0;
     $ships_option_html = '';
 
     while($s_ship = $db->fetchrow($q_ships)) {
+    	$ammo_ratio = (int)($s_ship['torp']*100/$s_ship['max_torp']);
         /* 07/04/08 - AC: If present, show also ship's name */
-        //$ships_option_html .= '<option value="'.$s_ship['ship_id'].'">'.$s_ship['ship_name'].' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Exp: '.$s_ship['experience'].')</option>';
         $ships_option_html .= '<option value="'.$s_ship['ship_id'].'">'.(($s_ship['ship_name'] != '')? $s_ship['ship_name'].' - '.$s_ship['template_name'] : $s_ship['template_name']).' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Torp: '.($s_ship['ship_torso'] < 5 ? 'n/a' : $s_ship['torp']).', Exp: '.$s_ship['experience'].')</option>';
         if($s_ship['ship_torso'] == SHIP_TYPE_TRANSPORTER) $n_transporter++;
-
+        
+        $torso_counter[$s_ship['ship_torso']]++;
+        
+        if($s_ship['max_hitpoints'] == $s_ship['hitpoints']) $damage_counter[0]++; 
+        else
+        {
+        	$damage_counter[1]++;
+        	$dmg_ratio = (int)($s_ship['hitpoints']*100/$s_ship['max_hitpoints']);
+        	if($dmg_ratio < 25) $damage_counter[3]++; 
+        	if($dmg_ratio < 50) $damage_counter[2]++; 
+    	}
+    	
+    	if($ammo_ratio == 100 || $s_ship['ship_torso'] < 5) $depleted_counter[0]++;
+    	else
+    	{
+    		if($ammo_ratio < $thereshold_ammo_ratio) $depleted_counter[2]++; else $depleted_counter[1]++; 
+    	}
+    	
         $n_ships++;
     }
 
+    foreach($torso_counter as $key => $torso)
+    {
+    	if($torso == 0) continue;
+    	$torso_string_counter .= $SHIP_TORSO[$game->player['user_race']][$key][29].' <b>'.$torso.'</b><br>';	
+    }
+    
+    $damage_string_counter .= 'Navi integre <b>'.$damage_counter[0].'</b>';
+    
+   	if($damage_counter[1]>0) $damage_string_counter .= '<br>Navi danneggiate <b>'.$damage_counter[1].'</b> di cui<br>gravemente <b>'.$damage_counter[2].'</b><br>molto gravemente <b>'.$damage_counter[3].'</b>';
+    
+    $depleted_string .= 'Scorta completa <b>'.$depleted_counter[0].'</b><br>Scorta buona <b>'.$depleted_counter[1].'</b><br>Scorta bassa <b>'.$depleted_counter[2].'</b>';
+    
     if($n_ships != $fleet['n_ships']) {
         $sql = 'UPDATE ship_fleets
                 SET n_ships = '.$n_ships.'
@@ -803,10 +864,13 @@ elseif(isset($_GET['mfleet_details'])) {
       '.constant($game->sprache("TEXT59")).' <b id="timer2" title="time1_'.( ($ticks_left * TICK_DURATION * 60) + $NEXT_TICK).'_type2_2">&nbsp;</b><br><br>
 
       '.constant($game->sprache("TEXT18")).' '.$ap_green_str.'&nbsp;'.$ap_yellow_str.'&nbsp;'.$ap_red_str.'<br><br>
-      [<a href="'.parse_link('a=tactical_moves&move_id='.$fleet['move_id']).'">'.constant($game->sprache("TEXT60")).'</a>]<br>
+      [<a href="'.parse_link('a=tactical_moves&move_id='.$fleet['move_id']).'">'.constant($game->sprache("TEXT60")).'</a>]<br><br>
     ');
 
     if($n_transporter > 0) {
+    
+    	$game->out('<fieldset><legend><span class="sub_caption2">Carico Flotta:</span></legend>');
+    	
         (float)$n_resources = $fleet['resource_1'] + $fleet['resource_2'] + $fleet['resource_3'] + $fleet['resource_4'];
         $n_units = $fleet['unit_1'] + $fleet['unit_2'] + $fleet['unit_3'] + $fleet['unit_4'] + $fleet['unit_5'] + $fleet['unit_6'];
 
@@ -831,12 +895,57 @@ elseif(isset($_GET['mfleet_details'])) {
             $game->out('<br><br><i>'.constant($game->sprache("TEXT25")).' <b>'.$n_security.'</b></i>');
             $game->out('<br>');
         }
+        
+        $game->out('</fieldset>');
     }
     
+    $style = 'style="border-bottom-color:A0A0A0; border-bottom-style:dotted; border-bottom-width:1px"';
+	$game->out('
+		<fieldset><legend><span class="sub_caption2">Sommario Composizione e Status della Flotta:</span></legend>
+		<table width=450 cellpadding=0 cellspacing=0 border=0>
+			<tr>
+				<td '.$style.' width=50 align=left>Tipo</td>
+				<td '.$style.' width=150 align=left>Integrità</td>
+				<td '.$style.' width=150 align=left>Munizioni</td> 
+			<tr>
+				<td width=150 align=left>'.$torso_string_counter.'
+				</td>
+				<td width=150 align=left>'.$damage_string_counter.'
+				</td>
+				<td width=150 align=left>'.$depleted_string.'
+				</td>
+		</table>
+	  <br>	
+      <table width="450" border=0 cellpadding=0 cellspacing=0>
+      <tr>
+      	<td width="150">Soglia di controllo siluri</td>
+      	<td width="80">
+      		<select onChange="if(this.value) document.fleet_form.ammo_ratio.value = this.value;">
+      		<option value="0" '.($thereshold_ammo_ratio == 0 ? 'selected="selected"' : '&ndspc').'>0%</option>
+      		<option value="10" '.($thereshold_ammo_ratio == 10 ? 'selected="selected"' : '&ndspc').'>10%</option>
+      		<option value="20" '.($thereshold_ammo_ratio == 20 ? 'selected="selected"' : '&ndspc').'>20%</option>
+      		<option value="30" '.($thereshold_ammo_ratio == 30 ? 'selected="selected"' : '&ndspc').'>30%</option>
+      		<option value="40" '.($thereshold_ammo_ratio == 40 ? 'selected="selected"' : '&ndspc').'>40%</option>
+      		<option value="50" '.($thereshold_ammo_ratio == 50 ? 'selected="selected"' : '&ndspc').'>50%</option>
+      		<option value="60" '.($thereshold_ammo_ratio == 60 ? 'selected="selected"' : '&ndspc').'>60%</option>
+      		<option value="70" '.($thereshold_ammo_ratio == 70 ? 'selected="selected"' : '&ndspc').'>70%</option>
+      		<option value="80" '.($thereshold_ammo_ratio == 80 ? 'selected="selected"' : '&ndspc').'>80%</option>
+      		<option value="90" '.($thereshold_ammo_ratio == 90 ? 'selected="selected"' : '&ndspc').'>90%</option>
+      		<option value="100" '.($thereshold_ammo_ratio == 100 ? 'selected="selected"' : '&ndspc').'>100%</option>
+      		</select>
+      	</td>
+      	<td>
+      		<input class="button" type="submit" name="apply_ammo_ratio" value="Cambia soglia" onClick="return document.fleet_form.action = \''.parse_link('a=ship_fleets_ops&set_ammo_ratio='.$fleet_id.'&planet').'\'">
+      	</td>
+      </tr>
+      </table>
+      </fieldset>');
+	
     $select_size = ($n_ships < 4) ? ($n_ships + 3) : 8;
 
     $game->out('
-      <br>
+      <br><br>
+      <fieldset><legend><span class="sub_caption2">Gestione unit&agrave;:</span></legend>
       <select name="ships[]" style="width: 410px;" size="'.$select_size.'" multiple="multiple">
       '.$ships_option_html.'
       </select>
@@ -846,7 +955,9 @@ href="'.parse_link('a=ship_fleets_display&mfleet_details='.$fleet_id.'&order_by=
 '<b>'.constant($game->sprache("TEXT32")).'</b>' : '<a href="'.parse_link('a=ship_fleets_display&mfleet_details='.$fleet_id.'&order_by=torso').'">'.constant($game->sprache("TEXT32")).'</a>' ).']&nbsp;['.( ($order_by == 'experience') ? '<b>'.constant($game->sprache("TEXT33")).'</b>' : '<a href="'.parse_link('a=ship_fleets_display&mfleet_details='.$fleet_id.'&order_by=experience').'">'.constant($game->sprache("TEXT33")).'</a>' ).']&nbsp;['.( ($order_by == 'construction_time') ? '<b>'.constant($game->sprache("TEXT34")).'</b>' : '<a href="'.parse_link('a=ship_fleets_display&mfleet_details='.$fleet_id.'&order_by=construction_time').'">'.constant($game->sprache("TEXT34")).'</a>' ).']&nbsp;['.( ($order_by == 'warp') ? '<b>'.constant($game->sprache("TEXT35")).'</b>' : '<a href="'.parse_link('a=ship_fleets_display&mfleet_details='.$fleet_id.'&order_by=warp').'">'.constant($game->sprache("TEXT35")).'</a>' ).']&nbsp;['.( ($order_by == 'name') ? '<b>'.constant($game->sprache("TEXT36")).'</b>' : '<a href="'.parse_link('a=ship_fleets_display&mfleet_details='.$fleet_id.'&order_by=name').'">'.constant($game->sprache("TEXT36")).'</a>' ).']
       <br><br>
       <input class="button" style="width: 220px;" type="submit" name="ship_details" value="'.constant($game->sprache("TEXT37")).'" onClick="return document.fleet_form.action = \''.parse_link('a=ship_fleets_ops&ship_details').'\'">
+      </fieldset>
       <br><br>
+      <fieldset><legend><span class="sub_caption2">Comandi e impostazioni flotta:</span></legend>
       <table width="450" border="0" cellpadding="2" cellspacing="0">
 
        <tr>
@@ -888,6 +999,7 @@ href="'.parse_link('a=ship_fleets_display&mfleet_details='.$fleet_id.'&order_by=
 
     $game->out('
       </table>
+      </fieldset>
       <input type="hidden" name="fleets[]" value="'.$fleet_id.'">
       <br>
     </td>

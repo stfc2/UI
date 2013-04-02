@@ -521,21 +521,23 @@ $game->out('
 
     // 15/12/08 - AC: No FOW for admins and for players that belongs to the same alliance 
     //            AND has rights to see tactical info.
+    $allydb_is_on = false;
+    if($game->player['user_alliance_rights3'] == 1) $allydb_is_on = true;
     if ($game->player['user_auth_level'] == STGC_DEVELOPER ||
        ($game->player['user_alliance'] == $user['user_alliance'] &&
-        $game->player['user_alliance_rights3'] == 1))
+        $allydb_is_on))
         $sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
                    FROM (planets pl) LEFT JOIN (starsystems sys) on sys.system_id = pl.system_id
                    WHERE pl.planet_owner="'.$user['user_id'].'" ORDER BY pl.planet_name';
     // Otherwise show only known planets
     else {
-        $sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
+        $sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y, MAX(sd.log_code)
                    FROM (planets pl)
                    LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id
-                   LEFT JOIN (planet_details pd) ON pl.system_id = pd.system_id
+                   LEFT JOIN (starsystems_details sd) ON pl.system_id = sd.system_id
                    WHERE pl.planet_owner = "'.$user['user_id'].'" AND
-                         pd.user_id = "'.$game->player['user_id'].'" AND
-                         pd.log_code = 500
+                   		 sd.log_code IN (101, 500) AND
+                         '.($allydb_is_on ? 'sd.alliance_id = '.$game->player['user_alliance'] : 'sd.user_id = '.$game->player['user_id'] ).'
                    GROUP BY pl.planet_id
                    ORDER BY pl.planet_name';
     }
@@ -548,9 +550,24 @@ $game->out('
     else {
         while(($planet = $db->fetchrow($planetquery))==true)
         {
-        $game->out('<td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
-        if($planet['planet_name']=="") $planet['planet_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
-            $game->out($planet['planet_name'].'</a></td><td>'.$planet['planet_points'].'</td><td>'.strtoupper($planet['planet_type']).'</td></tr>');
+        	if(!isset($planet['log_code']) || (isset($planet['log_code']) && $planet['log_code'] == 500)) {
+        		$game->out('<td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
+        		if($planet['planet_name']=="") $planet['planet_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
+            	$game->out($planet['planet_name'].'</a></td><td>'.$planet['planet_points'].'</td><td>'.strtoupper($planet['planet_type']).'</td></tr>');
+        	}
+        	elseif(isset($planet['log_code']) && $planet['log_code'] == 101){
+        		$sql_pd = 'SELECT planet_name, planet_points FROM planet_details WHERE log_code = 102
+        		           AND '.($allydb_is_on ? 'alliance_id = '.$game->player['user_alliance'] : 'user_id = '.$game->player['user_id'] ).' 
+        		           AND planet_id = '.$planet['planet_id'].' AND planet_owner = '.$user['user_id'].' ORDER BY timestamp ASC LIMIT 0,1';
+        		$_planet = $db->query($sql_pd);
+        		$results=$db->num_rows($_planet);
+        		if($results > 0) {
+        			$cached_planet = $db->fetchrow($_planet);
+        			$game->out('<td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
+        			if($cached_planet['planet_name']=="") $planet['planet_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
+            		$game->out($cached_planet['planet_name'].'</a></td><td>'.$cached_planet['planet_points'].'</td><td>'.strtoupper($planet['planet_type']).'</td></tr>');
+    			}	
+        	}
         }
     }
     $game->out('</td></tr></table>

@@ -164,12 +164,12 @@ if(($game->player['user_id'] == $user['user_id']) ||
     $sql = 'SELECT system_id FROM planets WHERE planet_owner='.$user['user_id'].' GROUP BY system_id';
 }
 // Otherwise display only what the player knows
-else {
-    $sql = 'SELECT pl.system_id FROM (planets pl)
-                   LEFT JOIN (planet_details pd) on pl.system_id = pd.system_id
-            WHERE pl.planet_owner = '.$user['user_id'].' AND '
-         .($game->player['user_alliance_rights3'] == 1 ? 'pd.alliance_id = '.$game->player['user_alliance'] : 'pd.user_id = '.$game->player['user_id'])
-         .' AND pd.log_code = 101 GROUP BY pl.system_id';
+else {   
+   	$sql = "SELECT pl.system_id FROM (planets pl)\n"
+    . "LEFT JOIN (planet_details pd) on pl.system_id = pd.system_id\n"
+    . "WHERE (pl.planet_owner = ".$user['user_id']." AND ".($game->player['user_alliance_rights3'] == 1 ? 'pd.alliance_id = '.$game->player['user_alliance'] : 'pd.user_id = '.$game->player['user_id'])." AND pd.log_code = 500)\n"
+    . "OR (pd.log_code = 102 AND ".($game->player['user_alliance_rights3'] == 1 ? 'pd.alliance_id = '.$game->player['user_alliance'] : 'pd.user_id = '.$game->player['user_id'])." AND pd.planet_owner = ".$user['user_id'].")\n"
+    . "GROUP BY pl.system_id";
 }
 
 $q_planets = $db->query($sql);

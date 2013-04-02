@@ -269,16 +269,18 @@ $game->out('<span class="caption">'.constant($game->sprache("TEXT4")).'</span><b
 $game->out('
 	  <table width="90%" border=0 cellpadding=2 cellspacing=2 class="style_inner">
 	   <tr>
-		 <td width="20%" align="center"><span style="font-family:Arial,serif;font-size:9pt;"><a 
+		 <td width="16%" align="center"><span style="font-family:Arial,serif;font-size:9pt;"><a 
 href="'.parse_link('a=messages&a2=inbox').'"><b>'.constant($game->sprache("TEXT5")).( ($inStat['unreadMessages']>0) ? '<span style="color: #FF0000; font-weight: bold;"> ('.$inStat['unreadMessages'].'/'.$inStat['messages'].')</span>' : ' ('.$inStat['unreadMessages'].'/'.$inStat['messages'].')' ).'</a></span></td>
-		 <td width="20%" align="center"><span style="font-family:Arial,serif;font-size:9pt;"><a 
+		 <td width="16%" align="center"><span style="font-family:Arial,serif;font-size:9pt;"><a 
 href="'.parse_link('a=messages&a2=systembox').'"><b>'.constant($game->sprache("TEXT6")).( ($sysStatunr['messages']>0) ? '<span style="color: #FF0000; font-weight: bold;"> ('.$sysStatunr['messages'].'/'.$sysStat['messages'].')</span>' : ' ('.$sysStatunr['messages'].'/'.$sysStat['messages'].')' ).'</b></a></span></td>
-		 <td width="20%" align="center"><span style="font-family:Arial,serif;font-size:9pt;"><a 
+		 <td width="16%" align="center"><span style="font-family:Arial,serif;font-size:9pt;"><a 
 href="'.parse_link('a=messages&a2=outbox').'"><b>'.constant($game->sprache("TEXT7")).'</a></span></td>
-		 <td width="20%" align="center"><span style="font-family:Arial,serif;font-size:9pt;"><a 
+		 <td width="16%" align="center"><span style="font-family:Arial,serif;font-size:9pt;"><a 
 href="'.parse_link('a=messages&a2=archiv').'"><b>'.constant($game->sprache("TEXT8")).'('.$archStat['messages'].')</a></span></td>
-		 <td width="20%" align="center"><span style="font-family:Arial,serif;font-size:9pt;"><a 
+		 <td width="16%" align="center"><span style="font-family:Arial,serif;font-size:9pt;"><a 
 href="'.parse_link('a=messages&a2=newpost').'"><b>'.constant($game->sprache("TEXT9")).'</a></span></td>
+		<td width="16%" align="center"><span style="font-family:Arial,serif;font-size:9pt;"><a 
+href="'.parse_link('a=messages&a2=listman').'"><b>'.constant($game->sprache("TEXT44")).'</a></span></td>
 		</tr>
 	  </table>
 
@@ -292,6 +294,7 @@ else if ($subAction == 'view') view();
 else if ($subAction == 'newpost') newMessage();
 else if ($subAction == 'submitpost') submitMessage();
 else if ($subAction == 'remove_message') remove_message();
+else if ($subAction == 'listman') listman();
 
 
 
@@ -1058,6 +1061,38 @@ function navigation_show_pagelinks($page, $perpage, $entries, $link)
 		$return .= '[<a href="'.parse_link($link.'&page='.$next).'">-&gt;</a>] - [<a href="'.parse_link($link.'&page='.$last).'">--&gt;&gt;</a>]';
 
 	return $return.'</p>';
+}
+
+function listman()
+{
+	global $db, $game;
+
+	$receiver = $subject = $text = "";
+	
+	$sql = 'SELECT * FROM message_addrlist WHERE owner = '.$game->player['user_id'];
+	$readlist = $db->query($sql);
+	$index = 0;
+	while ($list_item = $db->fetchrow($readlist))
+	{
+		$index++;
+		$listbox[$index]['label'] = $list_item['label'];
+		$listbox[$index]['is_predef'] = $list_item['is_predef'];
+		$listbox[$index]['names'] = $list_item['names'];
+	}	
+
+	$game->out('<form method="post" action="'.parse_link('a=messages&a2=submitpost').'">
+		<table width="90%" border="0" cellpadding="1" cellspacing="1"  class="style_outer">
+			<tr>
+			<td width="100%" align="center">
+				<p><span class="sub_caption"><b>'.constant($game->sprache("TEXT45")).'</b></p>
+				<table width="65%" border="0" cellpadding="0" cellspacing="0"  class="style_inner">
+					<tr>
+						   
+					</tr>
+				</table>
+			</td>
+			</tr>
+		</table></form>');
 }
 
 ?>

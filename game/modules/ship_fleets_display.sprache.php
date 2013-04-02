@@ -172,6 +172,8 @@ define ("GER_TEXT76", 'Handelsroute');
 
 define ("GER_TEXT77", '<i>unbekannt</i>');
 
+define ("GER_TEXT78", 'ammo depleted');
+
 //English
 define ("ENG_TEXT0", 'Fleets:');
 
@@ -323,6 +325,8 @@ define ("ENG_TEXT76", 'Trade route');
 
 define ("ENG_TEXT77", '<i>unknown</i>');
 
+define ("ENG_TEXT78", 'ammo depleted');
+
 //Italian
 define ("ITA_TEXT0", 'Flotte:');
 
@@ -473,5 +477,7 @@ define ("ITA_TEXT75", 'Unisci flotte');
 define ("ITA_TEXT76", 'Rotta Commerciale');
 
 define ("ITA_TEXT77", '<i>sconosciuta</i>');
+
+define ("ITA_TEXT78", 'scorta bassa');
 
 ?>

@@ -21,6 +21,7 @@
 */
 
 include('include/libs/moves.php');
+include('include/libs/planets.php');
 
 
 
@@ -568,7 +569,9 @@ elseif(!empty($_POST['jump'])) {
                                        s.system_x, s.system_y
                                 FROM (planets p)
                                 INNER JOIN (starsystems s) ON s.system_id = p.system_id
-                                WHERE p.planet_name LIKE "%'.$planet_name.'%" AND p.planet_name!="'.UNINHABITATED_COLONY.'" AND p.planet_name!="'.UNINHABITATED_PLANET.'" AND p.planet_owner <> 0';
+                                INNER JOIN (starsystems_details sd) ON s.system_id = sd.system_id AND log_code = 500 AND sd.user_id = '.$game->player['user_id'].'
+                                WHERE p.planet_name LIKE "%'.$planet_name.'%" AND p.planet_name!="'.UNINHABITATED_COLONY.'" AND p.planet_name!="'.UNINHABITATED_PLANET.'" AND p.planet_owner <> 0
+                                GROUP BY p.planet_id';
                                 
                         if(($planets = $db->queryrowset($sql)) === false) {
                             message(DATABASE_ERROR, 'Could not query planet data');
@@ -742,7 +745,9 @@ elseif(!empty($_GET['planet_id'])) {
     	$planet_id = (int)decode_planet_id($_GET['planet_id']);
     }
     
-    $own_planet = $free_planet = false;
+    $own_planet = $free_planet = $allydb_is_on = false;
+    
+    if(($game->player['user_alliance'] != 0) && ($game->player['user_alliance_rights3']) == 1) $allydb_is_on = true; 
 
     if($game->planet['planet_id'] == $planet_id) {
         $planet = &$game->planet;
@@ -813,7 +818,7 @@ elseif(!empty($_GET['planet_id'])) {
 
 	$history_text   = constant($game->sprache("TEXT95"));
 	$survey_text    = constant($game->sprache("TEXT96"));
-	$tactical_text  = constant($game->sprache("TEXT97"));
+//	$tactical_text  = constant($game->sprache("TEXT97"));
 
 
 // --- Dati storici del pianeta ---
@@ -935,62 +940,87 @@ elseif(!empty($_GET['planet_id'])) {
 		$survey_text .= $_survey1.$_survey2.$_survey3.'</table>';
 	}
 
-// Informazioni tattico/politiche sul pianeta (sistema coloni)
-	$sql = 'SELECT * FROM `planet_details`
-                LEFT JOIN user ON planet_details.source_uid = user.user_id
-                LEFT JOIN alliance ON planet_details.source_aid = alliance.alliance_id
-                WHERE `planet_id` = '.$planet['planet_id'].'
-                AND `log_code` = 300
-                ORDER BY timestamp DESC
-                LIMIT 0,1';
-	if(($_temp = $db->queryrow($sql)) == true) {
-		$tactical_text .= '<i>'.constant($game->sprache("TEXT124")).'</i><br><br>';
-		$num = 0;
-		foreach($RACE_DATA as $i => $race) {
-			// Skip non playable races
-			if($race[22]) {
-				$tactical_text .= $race[0].': '.$_temp['mood_race'.$i].' ';
-				$num++;
-				if($num > 3) {
-					$tactical_text .= '<br>';
-					$num = 0;
-				}
-			}
-		}
-		$tactical_text .= '<br><br><font size=-2><i>'.constant($game->sprache("TEXT125")).'</i></font>';
-	}
-
 //	$detail_text = $history_text.$survey_text.$tactical_text;
 
-    $planet_is_known = false;
-    $sql = 'SELECT * FROM planet_details WHERE log_code = 500 AND system_id = '.$planet['system_id'].' AND user_id = '.$game->player['user_id'];
-    // 29/10/08 - AC: No FOW for admins
-    if($game->player['user_auth_level'] == STGC_DEVELOPER || $db->queryrow($sql) == true)
-        $planet_is_known = true;
+	$miopianeta = new planets(&$db, $game->player['user_id'], $planet_id);
+
+    $planet_is_visible = $planet_is_explored = false;
+
+    if($game->player['user_auth_level'] == STGC_DEVELOPER)
+    {
+    	$planet_is_visible = true;
+    }
+    else 
+    {
+    	if($allydb_is_on)
+    	{
+    		$planet_is_visible = $miopianeta->is_visible($game->player['user_alliance'], 1);
+    	}
+    	else
+    	{
+    		$planet_is_visible = $miopianeta->is_visible($game->player['user_id'], 0);
+    	}
+    }
+
+    if($allydb_is_on)
+    {
+    	$planet_is_explored = $miopianeta->is_explored($game->player['user_alliance'], 1);
+    }
+    else
+    {
+    	$planet_is_explored = $miopianeta->is_explored($game->player['user_id'], 0);
+    }
+    	
+   	
 
     $last_update = constant($game->sprache("TEXT93"));
 
-    if($own_planet ||
-       ($game->player['user_alliance'] == $planet_owner['alliance_id'] && $game->player['user_alliance_rights3'] == 1) ||
-       $planet_is_known) {
+    if($own_planet || ($game->player['user_alliance'] == $planet_owner['alliance_id'] && $allydb_is_on)) {
     	$_thumb = '<a href='.$planet_thumb.' target="_blank"><img src="'.$planet_thumb.'" width="80" height="80" border="0"></a><br>';
-	$_name  = '&nbsp;<b>'.$planet['planet_name'].'</b>&nbsp;('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')';
-	$_planet_type = '&nbsp;<a href="'.parse_link('a=database&planet_type='.$planet_type.'#'.$planet_type).'">'.$planet_type.'</a>';
-// DC: Yeah, yeah, i know.... why bothering on building all the texts if the planet is not known?
-	$detail_text = $history_text.$survey_text.$tactical_text;
-// Ultimo aggiornamento.
-	$sql = 'SELECT timestamp FROM `planet_details`'
-		. ' WHERE `planet_id` = '.$planet['planet_id']
+		$_name  = '&nbsp;<b>'.$planet['planet_name'].'</b>&nbsp;('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')';
+		$_planet_type = '&nbsp;<a href="'.parse_link('a=database&planet_type='.$planet_type.'#'.$planet_type).'">'.$planet_type.'</a>';
+		$detail_text = $history_text.$survey_text;
+		$sql = 'SELECT timestamp FROM `planet_details`'
+		. ' WHERE `planet_id` = '.$planet['planet_id']  
 		. ' ORDER BY timestamp DESC'
 		. ' LIMIT 0, 1';
-	if(($_temp = $db->queryrow($sql)) == true) {
-		$last_update = constant($game->sprache("TEXT94")).'<b>'.date("d.m.y H:i", $_temp['timestamp']);
-	}	
+		if(($_temp = $db->queryrow($sql)) == true) {
+			$last_update = constant($game->sprache("TEXT94")).'<b>'.date("d.m.y H:i", $_temp['timestamp']);
+		}	
     } 
-    else {
-	$_thumb = '&nbsp;<br>';
-	$_name  = '&nbsp;<b>'.constant($game->sprache("TEXT120")).'</b>&nbsp;('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')';
-	$_planet_type = '&nbsp;<b>'.constant($game->sprache("TEXT120")).'</b>';
+    elseif($planet_is_visible){
+    	$_thumb = '<a href='.$planet_thumb.' target="_blank"><img src="'.$planet_thumb.'" width="80" height="80" border="0"></a><br>';
+		$_name  = '&nbsp;<b>'.$planet['planet_name'].'</b>&nbsp;('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')';
+		$_planet_type = '&nbsp;<a href="'.parse_link('a=database&planet_type='.$planet_type.'#'.$planet_type).'">'.$planet_type.'</a>';
+		$detail_text = $history_text.$survey_text;
+		$sql = 'SELECT timestamp FROM `planet_details`'
+		. ' WHERE `planet_id` = '.$planet['planet_id']  
+		. ' ORDER BY timestamp DESC'
+		. ' LIMIT 0, 1';
+		if(($_temp = $db->queryrow($sql)) == true) {
+			$last_update = constant($game->sprache("TEXT94")).'<b>'.date("d.m.y H:i", $_temp['timestamp']);
+		}	
+    }
+    elseif($planet_is_explored){
+	    if($allydb_is_on)
+    		$miopianeta->setcachevalue($game->player['user_alliance'], 1); 
+    	else
+    		$miopianeta->setcachevalue($game->player['user_id'], 0);
+    		
+	    $_thumb = '<a href='.$planet_thumb.' target="_blank"><img src="'.$planet_thumb.'" width="80" height="80" border="0"></a><br>';
+		$_name  = '&nbsp;<b>'.$miopianeta->cache_planet_name.'</b>&nbsp;('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')';
+		$_planet_type = '&nbsp;<a href="'.parse_link('a=database&planet_type='.$planet_type.'#'.$planet_type).'">'.$planet_type.'</a>';
+//		$detail_text = $survey_text.$tactical_text;
+		$detail_text = $survey_text;
+		$sql = 'SELECT timestamp FROM `planet_details` WHERE (`planet_id` = '.$planet['planet_id']. ' AND log_code IN (100, 102)) ORDER BY timestamp DESC LIMIT 0, 1';
+		if(($_temp = $db->queryrow($sql)) == true) {
+			$last_update = constant($game->sprache("TEXT94")).'<b>'.date("d.m.y H:i", $_temp['timestamp']);
+	    }
+	}
+	else {
+		$_thumb = '&nbsp;<br>';
+		$_name  = '&nbsp;<b>'.constant($game->sprache("TEXT120")).'</b>&nbsp;('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')';
+		$_planet_type = '&nbsp;<b>'.constant($game->sprache("TEXT120")).'</b>';
     }
     
 	
@@ -1046,7 +1076,7 @@ form {
         <tr height="15"><td></td></tr>
     ');
     
-    if($free_planet && $planet_is_known) {
+    if($free_planet && ($planet_is_visible || $planet_is_explored)) {
         $game->out('
         <tr>
           <td colspan="2" valign="top"><i>'.constant($game->sprache("TEXT64")).'</i></td>
@@ -1067,7 +1097,7 @@ form {
         </tr>
         ');
     }
-    elseif(($game->player['user_alliance'] == $planet_owner['alliance_id']) || $planet_is_known)  {
+    elseif(($game->player['user_alliance'] == $planet_owner['alliance_id'] && $allydb_is_on) || $planet_is_visible)  {
         $game->out('
         <tr>
           <td valign="top">'.constant($game->sprache("TEXT69")).'</td>
@@ -1079,6 +1109,20 @@ form {
         <tr>
           <td valign="top">'.constant($game->sprache("TEXT68")).'</td>
           <td>&nbsp;<u>'.$planet['planet_points'].'</u>&nbsp;/&nbsp;<u>'.( ($planet_id == $planet_owner['user_capital']) ? $MAX_POINTS[1] : $MAX_POINTS[0] ).'</u></td>
+        </tr>
+        ');
+    }elseif($planet_is_explored)  {
+        $game->out('
+        <tr>
+          <td valign="top">'.constant($game->sprache("TEXT69")).'</td>
+          <td>&nbsp;<a href="'.parse_link('a=stats&a2=viewplayer&id='.$miopianeta->cache_planet_owner).'">'.$miopianeta->cache_user_name.'</a></td>
+        </tr>
+        <tr>
+          <td valign="top">'.constant($game->sprache("TEXT70")).'</td>
+          <td>&nbsp;'.( (!empty($miopianeta->cache_alliance_id)) ? '<a href="'.parse_link('a=stats&a2=viewalliance&id='.$miopianeta->cache_alliance_id).'">'.$miopianeta->cache_alliance_name.'</a>&nbsp;[<a href="'.parse_link('a=stats&a2=viewalliance&id='.$miopianeta->cache_alliance_id).'">'.$miopianeta->cache_alliance_tag.'</a>]<br>' : constant($game->sprache("TEXT71")) ).'</td>
+        <tr>
+          <td valign="top">'.constant($game->sprache("TEXT68")).'</td>
+          <td>&nbsp;<u>'.$miopianeta->cache_planet_points.'</u></td>
         </tr>
         ');
     }

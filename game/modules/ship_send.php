@@ -201,14 +201,15 @@ if($dest == $game->planet['planet_id']) {
     $dest_planet['user_attack_protection'] = $game->player['user_attack_protection'];
     $dest_planet['user_vacation_start'] = $game->player['user_vacation_start'];
     $dest_planet['user_vacation_end'] = $game->player['user_vacation_end'];
-    $dest_planet['system_is_known'] = true;
+    $dest_planet['system_is_visible'] = true;
+    $dest_planet['enemy_planet'] = false;
 
     // Player data can not be fetched, because they are not displayed / used
 }
 else {
     $sql = 'SELECT p.planet_id, p.planet_name, p.system_id, p.sector_id, p.planet_distance_id,
                    s.system_x, s.system_y, s.system_global_x, s.system_global_y,
-                   u.user_id, u.user_name, u.user_attack_protection, u.user_vacation_start, u.user_vacation_end
+                   u.user_id, u.user_name, u.user_race, u.user_alliance, u.user_attack_protection, u.user_vacation_start, u.user_vacation_end
             FROM (planets p, starsystems s)
             LEFT JOIN (user u) ON u.user_id = p.planet_owner
             WHERE p.planet_id = '.$dest.' AND
@@ -230,15 +231,24 @@ else {
         $dest_planet['user_vacation_end'] = 0;
     }
 
-    $dest_planet['system_is_known'] = false;
-    $sql = 'SELECT COUNT(*) AS system_is_known FROM planet_details
-            WHERE log_code = 500 AND system_id = '.$dest_planet['system_id'].' AND user_id = '.$game->player['user_id'];
+    $dest_planet['system_is_visible'] = false;
+    if(($game->player['user_alliance'] != 0) && ($game->player['user_alliance_rights3'] == 1))
+    	$sql = 'SELECT COUNT(*) AS system_is_visible FROM planet_details WHERE log_code = 500 AND system_id = '.$dest_planet['system_id'].' AND alliance_id = '.$game->player['user_alliance'];
+    else
+    	$sql = 'SELECT COUNT(*) AS system_is_visible FROM planet_details WHERE log_code = 500 AND system_id = '.$dest_planet['system_id'].' AND user_id = '.$game->player['user_id'];
+    
     if(($_temp = $db->queryrow($sql)) == true) {
-        if($_temp['system_is_known'] > 0) $dest_planet['system_is_known'] = true;
+        if($_temp['system_is_visible'] > 0 || ($game->player['user_auth_level'] == STGC_DEVELOPER)) $dest_planet['system_is_visible'] = true;
     }
     else {
        message(DATABASE_ERROR, 'Could not query destination planet details data');
     }
+    
+    // Really easy setup for G2: if user_alliance does not match, they are at war :)
+    $dest_planet['enemy_planet'] = false;
+    if(!empty($dest_planet['user_id']) && ($dest_planet['user_alliance'] != 0) && ($game->player['user_alliance'] != $dest_planet['user_alliance']))
+    	$dest_planet['enemy_planet'] = true;
+    
 }
 
 
@@ -319,6 +329,7 @@ while($_temp = $db->fetchrow($q_snbr)) {
 
 $free_planet = ($dest_planet['user_id'] == 0) ? true : false;
 $own_planet = ($game->player['user_id'] == $dest_planet['user_id']) ? true : false;
+$planet_not_visible = ($dest_planet['system_is_visible']) ? false : true;
 
 $starter_atkptc = ($game->player['user_attack_protection'] > $ACTUAL_TICK) ? true : false;
 $dest_atkptc = ($dest_planet['user_attack_protection'] > $ACTUAL_TICK) ? true : false;
@@ -341,7 +352,7 @@ if($starter_atkptc && $free_planet) {
 
 $know_dest_str = ' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($dest)).'"><b>'.$dest_planet['planet_name'].'</b></a> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')'.( ($dest_planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT26")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$dest_planet['user_id']).'"><b>'.$dest_planet['user_name'].'</b></a>' : '' );
 $unknow_dest_str = ' <b><i>&#171;'.constant($game->sprache("TEXT68")).'&#187;</i></b>'.'('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')';
-$dest_str = $dest_planet['system_is_known'] ? $know_dest_str : $unknow_dest_str;
+$dest_str = $dest_planet['system_is_visible'] ? $know_dest_str : $unknow_dest_str;
 
 $step = (!empty($_POST['step'])) ? $_POST['step'] : 'basic_setup';
 
@@ -353,7 +364,8 @@ switch($step) {
     //case 'surrender_exec':
     case 'transport_exec':
     case 'spy_exec':
-    case 'survey_exec':
+    case 'survey_normal_exec':
+    case 'survey_recon_exec':
     case 'colo_exec':
         $distance = $velocity = 0;
 
@@ -463,13 +475,23 @@ switch($step) {
                 $action_code = 22;
             break;
 
-            case 'survey_exec':
+            case 'survey_normal_exec':
                 if(explore_fleet == false) {
                     message(NOTICE, constant($game->sprache("TEXT25")));
                 }
 
                 $action_code = 26;
             break;
+            
+            case 'survey_recon_exec':
+                if(explore_fleet == false) {
+                    message(NOTICE, constant($game->sprache("TEXT25")));
+                }
+					
+                $action_data = serialize(array('is_recon_mission' => true, 'target_owner' => $dest_planet['user_id'], 'target_race' => $dest_planet['user_race'], 'target_alliance' => $dest_planet['user_alliance']));
+                $action_code = 26;
+            break;
+            
 
             case 'colo_exec':
                 if(!$in_colo || !$free_planet) {
@@ -573,7 +595,17 @@ switch($step) {
             break;
 
             case 'survey_setup':
-                $game->out(constant($game->sprache("TEXT67")).'<br><input type="hidden" name="step" value="survey_exec">');
+                $game->out(constant($game->sprache("TEXT67")).'<br>');
+                if($game->player['user_auth_level'] == STGC_DEVELOPER) {
+	                if($planet_not_visible == false && $dest_planet['enemy_planet'] == true){
+		                $game->out('<br>'.constant($game->sprache("TEXT69")).'<br>
+		                <input type="radio" name="step" value="survey_normal_exec" checked="checked" onClick="return document.send_form.submit.value = \''.constant($game->sprache("TEXT35")).'\';">&nbsp;'.constant($game->sprache("TEXT70")).'<br>
+		                <input type="radio" name="step" value="survey_recon_exec" onClick="return document.send_form.submit.value = \''.constant($game->sprache("TEXT35")).'\';">&nbsp;'.constant($game->sprache("TEXT71")).'<br>
+		                ');
+		            }
+	               
+                }
+                $game->out('<input type="hidden" name="step" value="survey_normal_exec">');
             break;
 
             case 'colo_setup':
@@ -792,8 +824,14 @@ function update_times() {
 
       <table width="440" align="center" border="0" cellpadding="0" cellspacing="0"><tr><td width="220">
         ');
-
-        if($free_planet) {
+		if($planet_not_visible){
+            $game->out('
+        <input type="radio" name="step" value="stationate_setup" checked="checked">&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>
+        <input type="radio" name="step" value="survey_setup"'.( (!$explore_fleet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT65")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT65")).'</b><br>').'
+        <input type="radio" name="step" value="attack_setup"'.( ($atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT61")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT61")).'</b><br>' ).'
+            ');
+        }
+        elseif($free_planet) {
             // $atkptc_present is not used here, because uninhabited planet
             // Attack protection not to be approached know
 
