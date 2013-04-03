@@ -62,7 +62,7 @@ if(empty($fleet_ids)) {
 $sql = 'SELECT *
         FROM ship_fleets
         WHERE fleet_id IN ('.implode(',', $fleet_ids).') AND move_id = 0';
-        
+
 if(!$q_fleets = $db->query($sql)) {
     message(DATABASE_ERROR, 'Could not query fleet data');
 }
@@ -100,14 +100,14 @@ $fleetid = $_POST['fleets'][0];
 
 $sql = 'SELECT homebase FROM ship_fleets WHERE fleet_id = '.$fleetid.' AND user_id = '.$game->player['user_id'];
 
-  if(($homebase = $db->queryrow($sql)) === false) {
-        message(DATABASE_ERROR, 'Could not query homebase data');
-    }
-    
+if(($homebase = $db->queryrow($sql)) === false) {
+    message(DATABASE_ERROR, 'Could not query homebase data');
+}
+
 $dest = (int)$homebase['homebase'];
 
 if($dest==0) {
-  message(NOTICE, constant($game->sprache("TEXT7")).' - '.$dest.'');
+    message(NOTICE, constant($game->sprache("TEXT7")).' - '.$dest.'');
 }
 
 // #############################################################################
@@ -132,7 +132,7 @@ else {
             LEFT JOIN (user u) ON u.user_id = p.planet_owner
             WHERE p.planet_id = '.$start.' AND
                   s.system_id = p.system_id';
-                  
+
     if(($start_planet = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query start planet data');
     }
@@ -140,7 +140,7 @@ else {
     if(empty($start_planet['planet_id'])) {
         message(NOTICE, constant($game->sprache("TEXT8")));
     }
-    
+
     if(empty($start_planet['user_id'])) {
         $start_planet['user_id'] = 0;
         $start_planet['user_name'] = '';
@@ -163,7 +163,7 @@ if($dest == $game->planet['planet_id']) {
     $dest_planet['user_attack_protection'] = $game->player['user_attack_protection'];
     $dest_planet['user_vacation_start'] = $game->player['user_vacation_start'];
     $dest_planet['user_vacation_end'] = $game->player['user_vacation_end'];
-        
+
     // Player data does not have to be taken, since they are not displayed/used
 }
 else {
@@ -174,7 +174,7 @@ else {
             LEFT JOIN (user u) ON u.user_id = p.planet_owner
             WHERE p.planet_id = '.$dest.' AND
                   s.system_id = p.system_id';
-                      
+
     if(($dest_planet = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query destination planet data');
     }
@@ -182,7 +182,7 @@ else {
     if(empty($dest_planet['planet_id'])) {
         message(NOTICE, constant($game->sprache("TEXT9")));
     }
-    
+
     if(empty($dest_planet['user_id'])) {
         $dest_planet['user_id'] = 0;
         $dest_planet['user_name'] = '';
@@ -224,7 +224,7 @@ $sql = 'SELECT st.ship_torso, st.value_10 AS warp_speed
         FROM (ships s, ship_templates st)
         WHERE s.fleet_id IN ('.implode(',', $fleet_ids).') AND
               st.id = s.template_id';
-        
+
 if(!$q_stpls = $db->query($sql)) {
     message(DATABASE_ERROR, 'Could not query ship template data');
 }
@@ -239,17 +239,17 @@ while($_temp = $db->fetchrow($q_stpls)) {
         $in_scout = true;
         continue;
     }
-    
+
     if($_temp['ship_torso'] == SHIP_TYPE_TRANSPORTER) {
         $in_transporter = true;
         continue;
     }
-    
+
     if($_temp['ship_torso'] == SHIP_TYPE_COLO) {
         $in_colo = true;
         continue;
     }
-    
+
     if($_temp['ship_torso'] == SHIP_TYPE_ORB) {
         $in_orb = true;
         continue;
@@ -275,7 +275,7 @@ if($start_planet['system_id'] == $dest_planet['system_id']) $inter_planet = true
 else $inter_system = true;
 
 if($in_orb){
-  message(NOTICE, constant($game->sprache("TEXT13")));
+    message(NOTICE, constant($game->sprache("TEXT13")));
 }
 
 if($starter_atkptc && $free_planet) {
@@ -284,66 +284,67 @@ if($starter_atkptc && $free_planet) {
 
 //$step = (!empty($_POST['step'])) ? $_POST['step'] : 'basic_setup';
 
-        $distance = $velocity = 0;
+    $distance = $velocity = 0;
+
+    if($game->player['user_auth_level'] == STGC_DEVELOPER) $min_time = 1;
+    elseif($inter_planet) $min_time = 6;
+    else {
+        include_once('include/libs/moves.php');
+
+        $distance = get_distance(array($start_planet['system_global_x'], $start_planet['system_global_y']), array($dest_planet['system_global_x'], $dest_planet['system_global_y']));
+        $velocity = warpf($max_warp_speed);
+        $min_time = ceil( ( ($distance / $velocity) / TICK_DURATION ) );
+    }
+
+    $cur_istardate = (int)str_replace('.', '', $game->config['stardate']);
+    $min_istardate = $cur_istardate + $min_time;
+    $des_istardate = $min_istardate;
     
-        if($game->player['user_auth_level'] == STGC_DEVELOPER) $min_time = 1;
-        elseif($inter_planet) $min_time = 6;
-        else {
-            include_once('include/libs/moves.php');
+    if($des_istardate < $min_istardate) {
+        message(NOTICE, constant($game->sprache("TEXT15")).' '.($game->config['stardate'] + ($min_time / 10)));
+    }
 
-            $distance = get_distance(array($start_planet['system_global_x'], $start_planet['system_global_y']), array($dest_planet['system_global_x'], $dest_planet['system_global_y']));
-            $velocity = warpf($max_warp_speed);
-            $min_time = ceil( ( ($distance / $velocity) / TICK_DURATION ) );
-        }
-        
-        $cur_istardate = (int)str_replace('.', '', $game->config['stardate']);
-        $min_istardate = $cur_istardate + $min_time;
-        $des_istardate = $min_istardate;
-        
-        if($des_istardate < $min_istardate) {
-            message(NOTICE, constant($game->sprache("TEXT15")).' '.($game->config['stardate'] + ($min_time / 10)));
-        }
-        
-        $move_time = $des_istardate - $cur_istardate;
-        
-        $sql = 'SELECT COUNT(ship_id) AS n_ships
-                FROM ships
-                WHERE fleet_id IN ('.implode(',', $fleet_ids).')';
-                
-        if(($_nships = $db->queryrow($sql)) === false) {
-            message(DATABASE_ERROR, 'Could not query real n_ships data');
-        }
-        
-        $n_ships = $_nships['n_ships'];
-        
-        if($n_ships == 0) {
-            message(GENERAL, constant($game->sprache("TEXT16")), 'Unexspected: $n_ships = 0');
-        }
-        
-        $action = (!empty($_POST['action'])) ? $_POST['action'] : 'stationate';
-        
-        $action_code = 0;
-        $action_code = ($dest_planet['user_id'] != $game->player['user_id']) ? 21: 11;;
-        
-       $sql = 'INSERT INTO scheduler_shipmovement (user_id, move_status, move_exec_started, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
-                VALUES ('.$game->player['user_id'].', 0, 0, '.$start.', '.$dest.', '.$distance.', '.$distance.', '.($velocity * TICK_DURATION).', '.$ACTUAL_TICK.', '.($ACTUAL_TICK + $move_time).', '.$n_ships.', '.$action_code.', "'.$action_data.'")';
-                
-        if(!$db->query($sql)) {
-            message(DATABASE_ERROR, 'Could not insert new movement data');
-        }
+    $move_time = $des_istardate - $cur_istardate;
 
-        $new_move_id = $db->insert_id();
+    $sql = 'SELECT COUNT(ship_id) AS n_ships
+            FROM ships
+            WHERE fleet_id IN ('.implode(',', $fleet_ids).')';
 
-        $sql = 'UPDATE ship_fleets
-                SET planet_id = 0,
-                    move_id = '.$new_move_id.'
-                WHERE fleet_id IN ('.implode(',', $fleet_ids).')';
-                
-        if(!$db->query($sql)) {
-            message(DATABASE_ERROR, 'Could not update fleets position data');
-        }
-        
-        redirect('a=ship_fleets_display');
+    if(($_nships = $db->queryrow($sql)) === false) {
+        message(DATABASE_ERROR, 'Could not query real n_ships data');
+    }
+
+    $n_ships = $_nships['n_ships'];
+
+    if($n_ships == 0) {
+        message(GENERAL, constant($game->sprache("TEXT16")), 'Unexspected: $n_ships = 0');
+    }
+
+    $action = (!empty($_POST['action'])) ? $_POST['action'] : 'stationate';
+
+    $action_code = 0;
+    $action_code = ($dest_planet['user_id'] != $game->player['user_id']) ? 21: 11;;
+    $action_data = "";
+
+   $sql = 'INSERT INTO scheduler_shipmovement (user_id, move_status, move_exec_started, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
+           VALUES ('.$game->player['user_id'].', 0, 0, '.$start.', '.$dest.', '.$distance.', '.$distance.', '.($velocity * TICK_DURATION).', '.$ACTUAL_TICK.', '.($ACTUAL_TICK + $move_time).', '.$n_ships.', '.$action_code.', "'.$action_data.'")';
+
+    if(!$db->query($sql)) {
+        message(DATABASE_ERROR, 'Could not insert new movement data');
+    }
+
+    $new_move_id = $db->insert_id();
+
+    $sql = 'UPDATE ship_fleets
+            SET planet_id = 0,
+                move_id = '.$new_move_id.'
+            WHERE fleet_id IN ('.implode(',', $fleet_ids).')';
+
+    if(!$db->query($sql)) {
+        message(DATABASE_ERROR, 'Could not update fleets position data');
+    }
+
+    redirect('a=ship_fleets_display');
 }
 
 ?>
