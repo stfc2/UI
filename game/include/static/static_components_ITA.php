@@ -2205,7 +2205,7 @@ $ship_components_locale=array(
 		), // Endof Component Kampfzentrum V
 
 		// Component Kampfzentrum VI
-		3=>array(
+		5=>array(
 			'name'=>'Addestramento Intermedio II',
 			'description'=>'Addestramento intermedio per equipaggi destinati alle navi pesanti della flotta.',
 			'dev_info'=>'',
