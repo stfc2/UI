@@ -218,6 +218,12 @@ define ("GER_TEXT99", 'Hull Status');
 
 define ("GER_TEXT100", 'Ammo');
 
+define ("GER_TEXT101", 'Flotten Position Karte:');
+
+define ("GER_TEXT102", 'Anzeigen');
+
+define ("GER_TEXT103", 'Ausblenden');
+
 
 //English
 define ("ENG_TEXT0", 'Fleets:');
@@ -415,6 +421,12 @@ define ("ENG_TEXT98", 'Short stock');
 define ("ENG_TEXT99", 'Hull status');
 
 define ("ENG_TEXT100", 'Ammo');
+
+define ("ENG_TEXT101", 'Fleets position map:');
+
+define ("ENG_TEXT102", 'Show');
+
+define ("ENG_TEXT103", 'Hide');
 
 
 //Italian
@@ -614,6 +626,11 @@ define ("ITA_TEXT99", 'Integrit&agrave;');
 
 define ("ITA_TEXT100", 'Munizioni');
 
+define ("ITA_TEXT101", 'Mappa posizione flotte:');
+
+define ("ITA_TEXT102", 'Visualizza');
+
+define ("ITA_TEXT103", 'Nascondi');
 
 
 ?>

@@ -20,10 +20,30 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+function display_fleets_map() {
+    global $game;
+
+if ($game->option_retr('show_fleets_map')==0)
+    $html_code = '<b>[&nbsp;<a href="'.parse_link('a=ship_fleets_display&sfmap=1').'"><i>'.constant($game->sprache("TEXT102")).'</i></a>&nbsp;]</b>';
+else
+    $html_code = '<b>[&nbsp;<a href="'.parse_link('a=ship_fleets_display&sfmap=0').'"><i>'.constant($game->sprache("TEXT103")).'</i></a>&nbsp;]</b><br><br>
+    <a href="userfleets.php?size=6&map" target=_blank><img src="userfleets.php?size=2" border=0></a><br>';
+
+$game->out('
+<table width="90%" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer"><tr><td>
+<table width="100%" align="center" border="0" cellpadding="4" cellspacing="2" class="style_inner"><tr><td align="center">
+'.constant($game->sprache("TEXT101")).' '.$html_code.'
+</tr><td></table></tr></td></table><br>');
+
+}
 
 $game->init_player();
 $game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>');
 $game->out('<div align="center">[<a href="'.parse_link('a=ship_fleets_display&mass_set_homebase').'">'.constant($game->sprache("TEXT1")).'</a>]<br><br>');
+
+if (isset($_GET['sfmap'])) {
+    $game->option_store('show_fleets_map',(int)$_GET['sfmap']);
+}
 
 if(isset($_POST['set_homebase'])) {
 
@@ -344,15 +364,15 @@ if(isset($_GET['pfleet_details'])) {
     $ap_red_str = ($fleet['alert_phase'] == ALERT_PHASE_RED) ? '[<span style="color: #FF0000;">'.constant($game->sprache("TEXT11")).'</span>]' : '[<a href="'.parse_link('a=ship_fleets_ops&set_alert_phase='.$fleet_id.'&to='.ALERT_PHASE_RED.'&planet').'">'.constant($game->sprache("TEXT11")).'</a>]';
 
     $game->out('
-<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer"><tr><td>
-<table width="450" align="center" border="0" cellpadding="4" cellspacing="2" class="style_inner">
+<table width="90%" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer"><tr><td>
+<table width="100%" align="center" border="0" cellpadding="4" cellspacing="2" class="style_inner">
   <form name="fleet_form" method="post" action="">
   <tr>
     <td>
-      <table width="450" border="0" cellpadding="0" cellspacing="0">
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td width="350" align="left">[<a href="'.parse_link('a=ship_fleets_display').'">'.constant($game->sprache("TEXT12")).'</a>]&nbsp;&nbsp;&nbsp;<input class="field" type="text" name="fleet_name" value="'.$fleet['fleet_name'].'" maxlength="20" size="25">&nbsp;<input name="rename_fleet_submit" type="submit" class="button" value="'.constant($game->sprache("TEXT13")).'" onClick="return document.fleet_form.action = \''.parse_link('a=ship_fleets_ops&rename_fleet='.$fleet_id).'\'"></td>
-          <td width="100" align="right">'.( ($n_ships == 1) ? '<b>1</b> '.constant($game->sprache("TEXT14")) : '<b>'.$n_ships.'</b> '.constant($game->sprache("TEXT15")) ).'</td>
+          <td width="90%" align="left">[<a href="'.parse_link('a=ship_fleets_display').'">'.constant($game->sprache("TEXT12")).'</a>]&nbsp;&nbsp;&nbsp;<input class="field" type="text" name="fleet_name" value="'.$fleet['fleet_name'].'" maxlength="20" size="25">&nbsp;<input name="rename_fleet_submit" type="submit" class="button" value="'.constant($game->sprache("TEXT13")).'" onClick="return document.fleet_form.action = \''.parse_link('a=ship_fleets_ops&rename_fleet='.$fleet_id).'\'"></td>
+          <td width="10%" align="right">'.( ($n_ships == 1) ? '<b>1</b> '.constant($game->sprache("TEXT14")) : '<b>'.$n_ships.'</b> '.constant($game->sprache("TEXT15")) ).'</td>
         </tr>
       </table><br>
       '.constant($game->sprache("TEXT16")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($fleet['planet_id'])).'"><b>'.$fleet['planet_name'].'</b></a> ('.$game->get_sector_name($fleet['sector_id']).':'.$game->get_system_cname($fleet['system_x'], $fleet['system_y']).':'.($fleet['planet_distance_id'] + 1).')'.( ($fleet['stationated_owner_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT17")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$fleet['stationated_owner_id']).'"><b>'.$fleet['stationated_owner_name'].'</b></a>' : '' ).'<br><br>
@@ -747,15 +767,15 @@ elseif(isset($_GET['mfleet_details'])) {
     // Ende lesen Homebasekoords
 
     $game->out('
-<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer"><tr><td>
-<table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
+<table width="90%" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer"><tr><td>
+<table width="100%" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
   <form name="fleet_form" method="post" action="">
   <tr>
     <td>
-      <table width="450" border="0" cellpadding="0" cellspacing="0">
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td width="350" align="left">[<a href="'.parse_link('a=ship_fleets_display').'">'.constant($game->sprache("TEXT12")).'</a>]&nbsp;&nbsp;&nbsp;<input class="field" type="text" name="fleet_name" value="'.$fleet['fleet_name'].'" maxlength="20" size="25">&nbsp;<input type="submit" class="button_nosize" name="rename_fleet_submit" value="'.constant($game->sprache("TEXT13")).'" onClick="return document.fleet_form.action = \''.parse_link('a=ship_fleets_ops&rename_fleet='.$fleet_id).'\'"></td>
-          <td width="100" align="right">'.( ($n_ships == 1) ? '<b>1</b> '.constant($game->sprache("TEXT14")) : '<b>'.$n_ships.'</b> '.constant($game->sprache("TEXT15")) ).'</td>
+          <td width="90%" align="left">[<a href="'.parse_link('a=ship_fleets_display').'">'.constant($game->sprache("TEXT12")).'</a>]&nbsp;&nbsp;&nbsp;<input class="field" type="text" name="fleet_name" value="'.$fleet['fleet_name'].'" maxlength="20" size="25">&nbsp;<input type="submit" class="button_nosize" name="rename_fleet_submit" value="'.constant($game->sprache("TEXT13")).'" onClick="return document.fleet_form.action = \''.parse_link('a=ship_fleets_ops&rename_fleet='.$fleet_id).'\'"></td>
+          <td width="10%" align="right">'.( ($n_ships == 1) ? '<b>1</b> '.constant($game->sprache("TEXT14")) : '<b>'.$n_ships.'</b> '.constant($game->sprache("TEXT15")) ).'</td>
         </tr>
       </table><br>
       '.constant($game->sprache("TEXT55")).' '.( (!empty($fleet['start'])) ? '<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($fleet['start'])).'"><b>'.$fleet['start_planet_name'].'</b></a> ('.$game->get_sector_name($fleet['start_sector']).':'.$game->get_system_cname($fleet['start_system_x'], $fleet['start_system_y']).':'.($fleet['start_distance_id'] + 1).')' : constant($game->sprache("TEXT56")) ).'<br>
@@ -1054,10 +1074,12 @@ else {
         message(NOTICE, 'Nice try...');
     }
 
+    display_fleets_map();
+
     $game->out('
-<table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer"><tr><td>
-<table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
-  <table width="400" border="0" cellpadding="2" cellspacing="0">
+<table width="90%" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer"><tr><td>
+<table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
+  <table width="100%" border="0" cellpadding="2" cellspacing="0">
     <form method="get" action="'.parse_link('').'">
     <input type="hidden" name="a" value="ship_fleets_display">
     <tr>
