@@ -26,10 +26,11 @@ error_reporting(E_ALL);
 include_once('include/global.php');
 include_once('include/sql.php');
 include_once('include/functions.php');
+include_once('maps.php');
 
 
 // create sql-object for db-connection
-$db = new sql($config['server'].":".$config['port'], $config['game_database'], $config['user'], $config['password']); // create sql-object for db-connection
+$db = new sql($config['server'].":".$config['port'], $config['game_database'], $config['user'], $config['password']);
 
 // Load player parameters 
 $game = new game();
@@ -118,32 +119,7 @@ $color[3]=imagecolorallocatealpha($im, 196, 64, 64,0);
 $color[4]=imagecolorallocatealpha($im, 96, 96, 96,0);
 $color[5]=imagecolorallocatealpha($im, 255, 0, 0,20);
 
-$grid=imagecolorallocatealpha($im, 64, 64, 64,0);
-$grid2=imagecolorallocatealpha($im, 128, 128, 128,0);
-$grid3=imagecolorallocatealpha($im, 96, 96, 96,0);
-
-if ($size>2)
-{
-	for ($t=0; $t<=162;$t++)
-	{
-		// Systems grid
-		if($t == 0 || $t % 9)
-		{
-			imageline($im,0,$t*$size,162*$size,$t*$size,$grid);
-			imageline($im,$t*$size,0,$t*$size,162*$size,$grid);
-		}
-		// Sectors grid is a little brighter
-		else
-		{
-			imageline($im,0,$t*$size,162*$size,$t*$size,$grid3);
-			imageline($im,$t*$size,0,$t*$size,162*$size,$grid3);
-		}
-	}
-}
-
-// Quadrant grid
-imageline($im,0,81*$size,162*$size,81*$size,$grid2);
-imageline($im,81*$size,0,81*$size,162*$size,$grid2);
+drawMapGrid($im,$size);
 
 
 
@@ -177,55 +153,9 @@ $q_planets = $db->query($sql);
 
 while($planet = $db->fetchrow($q_planets)) {
 $system=$glob_systems[$planet['system_id']];
-// Quadrant coordinates
-$system['sector_id']--;
-
-$px_x=81*$size;
-$px_y=81*$size;
-$tmp=$system['sector_id']-243;
-
-if ($system['sector_id']<243)
-{
-$px_x=0;
-$px_y=81*$size;
-$tmp=$system['sector_id']-162;
-}
-
-if ($system['sector_id']<162)
-{
-$px_x=81*$size;
-$px_y=0;
-$tmp=$system['sector_id']-81;
-}
-
-
-if ($system['sector_id']<81)
-{
-$px_x=0;
-$px_y=0;
-$tmp=$system['sector_id']-0;
-}
-
-
-// Sector coordinates
-$pos_x=0;
-$pos_y=0;
-
-while ($tmp>=9)
-{
-	$tmp-=9;
-	$pos_y++;
-};
-$pos_x=$tmp;
-
-
-$px_x+=$pos_x*$size*9;
-$px_y+=$pos_y*$size*9;
-
-
-// System coordinates
-$px_x+=($system['system_x'] - 1)*$size+1;
-$px_y+=($system['system_y'] - 1)*$size+1;
+$px = getSystemCoords($system,$size);
+$px_x = $px[0];
+$px_y = $px[1];
 
 if ($size>2)
 {
@@ -295,8 +225,7 @@ else
 if (!isset($map_data))
 {
 
-if (($handle = @fopen ($map_url, "rt"))!=true) {}
-else
+if (($handle = @fopen ($map_url, "rt"))==true)
 {
 $map_data = fread($handle, filesize($map_url));
 fclose($handle);
