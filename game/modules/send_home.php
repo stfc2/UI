@@ -1,11 +1,11 @@
 <?php
-/*    
-	This file is part of STFC.
-	Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
-		
-	STFC is based on STGC,
-	Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
-	
+/*
+    This file is part of STFC.
+    Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
+
+    STFC is based on STGC,
+    Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
+
     STFC is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 3 of the License, or
@@ -23,20 +23,18 @@
 
 
 $game->init_player();
-//$game->out('<center><span class="caption">'.constant($game->sprache("TEXT0")).'</span></center><br>');
 
 if(isset($_POST['send_homebase'])) {
 
     // ########################################################################
-    // Some fleets must be passed to ship_send
+    // Some fleets must be passed to send_home
 
     if(empty($_POST['fleets'])) {
         message(NOTICE, constant($game->sprache("TEXT1")));
     }
 
-
     // ########################################################################
-    // The fleets IDs "clean" (cast to integer against SQL exploits)
+    // "Clean" the fleets IDs (cast to integer against SQL exploits)
 
     $fleet_ids = array();
 
@@ -48,9 +46,8 @@ if(isset($_POST['send_homebase'])) {
         }
     }
 
-
     // #########################################################################
-    // Was a valid fleet-ID?
+    // Are there some valid fleet-ID?
 
     if(empty($fleet_ids)) {
         message(NOTICE, constant($game->sprache("TEXT3")));
@@ -64,45 +61,7 @@ if(isset($_POST['send_homebase'])) {
         message(DATABASE_ERROR, 'Could not query fleet data');
     }
 
-//$fleets = array($db->fetchrow($q_fleets));
-//$fleet_ids = array($fleets[0]['fleet_id']);
-
-//if(empty($fleets[0])) {
-//    message(NOTICE, constant($game->sprache("TEXT4")));
-//}
-
-//$start = (int)$fleets[0]['planet_id'];
-
-//if($start == 0) {
-//    message(NOTICE, constant($game->sprache("TEXT5")));
-//}
-
     while($fleet = $db->fetchrow($q_fleets)) {
-
-    // We can decide to send only fleets stationing on the same planet
-    // or any fleets in the galaxy.
-    // For code simplicity leave for the second
-    //if($_temp['planet_id'] == $start) {
-    //    $fleet_ids[] = $_temp['fleet_id'];
-    //    $fleets[] = $_temp;
-    //}
-//}
-//$n_fleets = count($fleets);
-
-//if($n_fleets == 0) {
-//    message(NOTICE, constant($game->sprache("TEXT6")));
-//}
-
-// #############################################################################
-// Target search and retrieve from DB
-
-//$fleetid = $_POST['fleets'][0];
-
-//$sql = 'SELECT homebase FROM ship_fleets WHERE fleet_id = '.$fleetid.' AND user_id = '.$game->player['user_id'];
-
-//if(($homebase = $db->queryrow($sql)) === false) {
-//    message(DATABASE_ERROR, 'Could not query homebase data');
-//}
 
         $start = (int)$fleet['planet_id'];
 
@@ -196,7 +155,6 @@ if(isset($_POST['send_homebase'])) {
             }
         }
 
-
         // #####################################################################
         // Inter-orbital flight is not possible, as originally planned,
         // which will be resolved separately
@@ -205,18 +163,18 @@ if(isset($_POST['send_homebase'])) {
             message(NOTICE, constant($game->sprache("TEXT10")));
         }
 
-
         // #####################################################################
         // If vacation mode is activated, immediately cancel
 
-        if( ($dest_planet['user_vacation_start'] <= $ACTUAL_TICK) && ($dest_planet['user_vacation_end'] > $ACTUAL_TICK) ) {
+        if(($dest_planet['user_vacation_start'] <= $ACTUAL_TICK) &&
+           ($dest_planet['user_vacation_end'] > $ACTUAL_TICK) ) {
             message(NOTICE, constant($game->sprache("TEXT11")));
         }
 
         // #####################################################################
         // If Noob protection is enabled, just cancel
 
-        if($dest_planet['user_attack_protection']>= $ACTUAL_TICK){
+        if($dest_planet['user_attack_protection'] >= $ACTUAL_TICK) {
             message(NOTICE, constant($game->sprache("TEXT12")));
         }
 
@@ -273,10 +231,9 @@ if(isset($_POST['send_homebase'])) {
 
         $atkptc_present = ($starter_atkptc || $dest_atkptc) ? true : false;
 
-        $inter_planet = $inter_system = false;
+        $$inter_system = false;
 
-        if($start_planet['system_id'] == $dest_planet['system_id']) $inter_planet = true;
-        else $inter_system = true;
+        if($start_planet['system_id'] == $dest_planet['system_id']) $inter_system = true;
 
         if($in_orb) {
             message(NOTICE, constant($game->sprache("TEXT13")));
@@ -284,18 +241,19 @@ if(isset($_POST['send_homebase'])) {
 
         if($starter_atkptc && $free_planet) {
             message(NOTICE, constant($game->sprache("TEXT14")));
-}
-
-//$step = (!empty($_POST['step'])) ? $_POST['step'] : 'basic_setup';
+        }
 
         $distance = $velocity = 0;
 
         if($game->player['user_auth_level'] == STGC_DEVELOPER) $min_time = 1;
-        elseif($inter_planet) $min_time = 6;
+        elseif($inter_system) $min_time = 6;
         else {
             include_once('include/libs/moves.php');
 
-            $distance = get_distance(array($start_planet['system_global_x'], $start_planet['system_global_y']), array($dest_planet['system_global_x'], $dest_planet['system_global_y']));
+            $distance = get_distance(array($start_planet['system_global_x'],
+                                           $start_planet['system_global_y']),
+                                     array($dest_planet['system_global_x'],
+                                           $dest_planet['system_global_y']));
             $velocity = warpf($max_warp_speed);
             $min_time = ceil( ( ($distance / $velocity) / TICK_DURATION ) );
         }
@@ -324,14 +282,18 @@ if(isset($_POST['send_homebase'])) {
             message(GENERAL, constant($game->sprache("TEXT16")), 'Unexspected: $n_ships = 0');
         }
 
-        $action = (!empty($_POST['action'])) ? $_POST['action'] : 'stationate';
-
-        $action_code = 0;
         $action_code = ($dest_planet['user_id'] != $game->player['user_id']) ? 21: 11;;
         $action_data = "";
 
-       $sql = 'INSERT INTO scheduler_shipmovement (user_id, move_status, move_exec_started, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
-               VALUES ('.$game->player['user_id'].', 0, 0, '.$start.', '.$dest.', '.$distance.', '.$distance.', '.($velocity * TICK_DURATION).', '.$ACTUAL_TICK.', '.($ACTUAL_TICK + $move_time).', '.$n_ships.', '.$action_code.', "'.$action_data.'")';
+        // It would be possible to save some movements for fleets that shares the same
+        // start and dest planet but... KISS logic won this round.
+       $sql = 'INSERT INTO scheduler_shipmovement (user_id, move_status, move_exec_started,
+                                                   start, dest, total_distance, remaining_distance,
+                                                   tick_speed, move_begin, move_finish,
+                                                   n_ships, action_code, action_data)
+               VALUES ('.$game->player['user_id'].', 0, 0, '.$start.', '.$dest.', '.$distance.',
+                       '.$distance.', '.($velocity * TICK_DURATION).', '.$ACTUAL_TICK.',
+                       '.($ACTUAL_TICK + $move_time).', '.$n_ships.', '.$action_code.', "'.$action_data.'")';
 
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not insert new movement data');
