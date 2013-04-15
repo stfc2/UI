@@ -665,7 +665,7 @@ class maps {
     }
 
     function create_galaxy_detail_map() {
-        global $game, $db;
+        global $game, $db,$game_path;
 
         $im = imagecreate($this->galaxy_detail_map_size, $this->galaxy_detail_map_size);
         imagecolorallocate($im, 0, 0, 0);
@@ -733,7 +733,7 @@ class maps {
             imagefilledellipse($im, ($start_x + 2), ($start_y + 2), 3, 3, $cl);
         }
 
-        imagepng($im, '/home/taku/public_html/game/maps/images/galaxy_detail.png');
+        imagepng($im, $game_path.'maps/images/galaxy_detail.png');
         imagedestroy($im);
     }
 }
