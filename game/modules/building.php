@@ -519,7 +519,7 @@ function Show_Main()
 '.constant($game->sprache("TEXT11")).' <b>'.$BUILDING_NAME[$game->player['user_race']][$scheduler['installation_type']].' ('.constant($game->sprache("TEXT12")).' '.($game->planet['building_'.($scheduler['installation_type']+1)]).')</b><br>
 '.constant($game->sprache("TEXT13")).'
 <b id="timer'.$t.'" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['build_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b><br>
-<a href="'.parse_link_ex('a=building&a2=abort_build&id='.$scheduler[installation_type],LINK_CLICKID).'"><b>'.constant($game->sprache("TEXT14")).'</b></a>
+<a href="'.parse_link_ex('a=building&a2=abort_build&id='.$scheduler['installation_type'],LINK_CLICKID).'"><b>'.constant($game->sprache("TEXT14")).'</b></a>
 </td></tr></table>
 </td></tr></table><br>');
 
