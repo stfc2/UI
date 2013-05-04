@@ -180,8 +180,10 @@ function message($type, $message, $add = false) {
 				</html>
 			';
 			$fp = fopen(ERROR_LOG_FILE, 'a');
-			fwrite($fp, '<hr><br><br><br><br><i>'.date('d.m.y H:i:s', time()).'</i>&nbsp;&nbsp;&nbsp;<b>User:</b>&nbsp;'.$username.'&nbsp;&nbsp;&nbsp;<b>General Error:</b><br>'.$message.((!empty($add)) ? '<br>'.$add : '')."\n");
-			fclose($fp);
+			if($fp) {
+			    fwrite($fp, '<hr><br><br><br><br><i>'.date('d.m.y H:i:s', time()).'</i>&nbsp;&nbsp;&nbsp;<b>User:</b>&nbsp;'.$username.'&nbsp;&nbsp;&nbsp;<b>General Error:</b><br>'.$message.((!empty($add)) ? '<br>'.$add : '')."\n");
+			    fclose($fp);
+			}
 		break;
 
 		case DATABASE_ERROR:
@@ -195,9 +197,10 @@ function message($type, $message, $add = false) {
 			'<span style="font-size: 11px; font-family: Verdana, Arial, Helvetica, sans-serif;">'.$message.'<br><br>'.$add->error['message'].' ('.$add->error['number'].')<br><br>'.$add->error['sql'].'</span>';
 
 			$fp = fopen(ERROR_LOG_FILE, 'a');
-			fwrite($fp, '<hr><br><br><br><br><i>'.date('d.m.y H:i:s', time()).'</i>&nbsp;&nbsp;&nbsp;<b>User:</b>&nbsp;'.$username.'&nbsp;&nbsp;&nbsp;<b>Database Error:</b><br>'.$message.'<br><br>'.$add->error['message'].' ('.$add->error['number'].')<br><br>'.$add->error['sql']."\n");
-			fclose($fp);
-
+			if($fp) {
+			    fwrite($fp, '<hr><br><br><br><br><i>'.date('d.m.y H:i:s', time()).'</i>&nbsp;&nbsp;&nbsp;<b>User:</b>&nbsp;'.$username.'&nbsp;&nbsp;&nbsp;<b>Database Error:</b><br>'.$message.'<br><br>'.$add->error['message'].' ('.$add->error['number'].')<br><br>'.$add->error['sql']."\n");
+			    fclose($fp);
+			}
 		break;
 
 		case NOTICE:
@@ -206,9 +209,10 @@ function message($type, $message, $add = false) {
 			$game->display();
 
 			$fp = fopen(ERROR_LOG_FILE, 'a');
-			fwrite($fp, '<hr><br><br><br><br><i>'.date('d.m.y H:i:s', time()).'</i>&nbsp;&nbsp;&nbsp;<b>User:</b>&nbsp;'.$username.'&nbsp;&nbsp;&nbsp;<b>Notice:</b><br>'.$message."\n");
-			fclose($fp);
-
+			if($fp) {
+			    fwrite($fp, '<hr><br><br><br><br><i>'.date('d.m.y H:i:s', time()).'</i>&nbsp;&nbsp;&nbsp;<b>User:</b>&nbsp;'.$username.'&nbsp;&nbsp;&nbsp;<b>Notice:</b><br>'.$message."\n");
+			    fclose($fp);
+			}
 		break;
 
 		default:
