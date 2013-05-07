@@ -1,4 +1,4 @@
-<?
+<?php
 /*    
 	This file is part of STFC.
 	Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
