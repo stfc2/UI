@@ -41,10 +41,10 @@ function GetBuildingPrice($building,$resource)
 
 
     if ($building==9)
-	    $price=$BUILDING_DATA[$building][$resource]/100*(100-2.5*$game->planet['research_3']);
+        $price=$BUILDING_DATA[$building][$resource]/100*(100-2.5*$game->planet['research_3']);
 
     if ($building==12)
-	    $price=$BUILDING_DATA[$building][$resource]/100*(100-2.5*$game->planet['research_3']);
+        $price=$BUILDING_DATA[$building][$resource]/100*(100-2.5*$game->planet['research_3']);
 
     $price*=$RACE_DATA[$game->player['user_race']][5];
     $price*=$PLANETS_DATA[$game->planet['planet_type']][4];
@@ -90,9 +90,9 @@ function GetBuildingTime($building)
 
     $time=($BUILDING_DATA[$building][3] + 3*pow($game->planet['building_'.($building+1)],$BUILDING_DATA[$building][4]));
     if ($building==9)
-	    $time=$BUILDING_DATA[$building][3];
+        $time=$BUILDING_DATA[$building][3];
     if ($building==12)
-	    $time=$BUILDING_DATA[$building][3];
+        $time=$BUILDING_DATA[$building][3];
     $time*=$RACE_DATA[$game->player['user_race']][1];
     $time/=100;
     $time*=(100-2*($game->planet['research_4']*$RACE_DATA[$game->player['user_race']][20]));
@@ -109,9 +109,9 @@ function GetBuildingTimeTicks($building)
 
     $time=($BUILDING_DATA[$building][3] + 3*pow($game->planet['building_'.($building+1)],$BUILDING_DATA[$building][4]));
     if ($building==9)
-	    $time=$BUILDING_DATA[$building][3];
+        $time=$BUILDING_DATA[$building][3];
     if ($building==12)
-	    $time=$BUILDING_DATA[$building][3];
+        $time=$BUILDING_DATA[$building][3];
     $time*=$RACE_DATA[$game->player['user_race']][1];
     $time/=100;
     $time*=(100-2*($game->planet['research_4']*$RACE_DATA[$game->player['user_race']][20]));
@@ -124,7 +124,7 @@ function GetBuildingTimeTicks($building)
 // Check if there is available power
 // true = power overloaded
 // false = power available
-function isPowerOverloaded()
+function isPowerOverloaded($extra_consumption = 0)
 {
     global $game;
 
@@ -141,6 +141,9 @@ function isPowerOverloaded()
                  $game->planet['building_11'] + 
                  $game->planet['building_12'] +
                  $game->planet['building_13'];
+
+    // Consider extra consumption from queued buildings
+    $buildings += $extra_consumption;
 
     // Check if the active planet is the user's capital
     if ($game->player['user_capital']==$game->planet['planet_id'])
@@ -372,12 +375,19 @@ function Abort_Build()
     else {
         $finish_time = 0;
         $id_to_remove = 0;
+        $extra_consumption = 0;
 
         foreach($schedulerquery as $id => $scheduler) {
             // From now on consider the level of the buildings that are
             // currently under construction as if they were at the built level.
             //$game->planet['building_'.($scheduler['installation_type']+1)]++;
-        
+            // NOTE for the future: this operation cannot be performed otherwise
+            // resources payback doesn't work, since GetBuildingPrice already contemplate
+            // the level upgraded by one.
+
+            // Calculate future power consumption
+            if($scheduler['installation_type'] != 4) $extra_consumption++;
+
             if($toAbort == $scheduler['installation_type']) {
                 $finish_time = $scheduler['build_finish'];
                 $id_to_remove = $id;
@@ -399,7 +409,7 @@ function Abort_Build()
                 }
 
                 // Check if player wants to remove a power plant that it's needed by future buildings
-                if ($toAbort == 4 && $scheduler['installation_type'] != 4 && isPowerOverloaded()) {
+                if ($toAbort == 4 && $scheduler['installation_type'] != 4 && isPowerOverloaded($extra_consumption)) {
                     $game->out('<span class="text_large">'.constant($game->sprache("TEXT6")).'</span><br>');
                     $abort=1;
                     break;
@@ -418,7 +428,7 @@ function Abort_Build()
                 $game->out('<span class="text_large">'.constant($game->sprache("TEXT7")).'<br>'.constant($game->sprache("TEXT8")).' (ID='.$game->planet['planet_id'].') '.constant($game->sprache("TEXT9")).'</span><br>');
                 $abort=1;
             }
-            else {            
+            else {
                 // Temporarily adjust building level by one if there was more
                 // then one of the same type being built
                 foreach($schedulerquery as $scheduler)
