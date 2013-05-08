@@ -551,6 +551,11 @@ function Show_Bidding_Detail()
 		message(DATABASE_ERROR, 'Internal database error');
 	}
 
+    // Check if the auction is still present
+    if(empty($tradedata)) {
+        message(NOTICE, constant($game->sprache("TEXT48")));
+    }
+
 	/* 11/04/08 - AC: It's unnecessary SELECTing the ship with ALSO flag untouchable set to
 	                  true because ship's ID is unique.
 	 */
@@ -562,6 +567,11 @@ function Show_Bidding_Detail()
 	if(($ship = $db->queryrow($sql)) === false) {
 		message(DATABASE_ERROR, 'Cannot retrieve auctioned ship data');
 	}
+
+    // Check if the ship is still present
+    if(empty($ship)) {
+        message(NOTICE, constant($game->sprache("TEXT249")));
+    }
 
 /*	$ship=$db->queryrow('SELECT s.*,t.*,u.user_race AS owner_race FROM (ships s)
 				LEFT JOIN (ship_templates t) ON t.id=s.template_id
