@@ -61,7 +61,7 @@ $map_url='maps/tmp/user_'.$game->player['user_id'].'_fleets_'.$size.'.html';
 
 // Delete old image, if exist
 if (file_exists($image_url)) {
-    if (filemtime($image_url)<time()-3600) {
+    if (filemtime($image_url)<time()-1800) {
         @unlink($image_url);
         @unlink($map_url);
     }
@@ -113,75 +113,78 @@ if (($handle = @fopen ($image_url, "rb"))!=true) {
         message(DATABASE_ERROR, 'Could not query fleets data');
     }
 
-    while($fleet = $db->fetchrow($q_fleets)) {
-        $planets_ids[$fleet['planet_id']]=$fleet['planet_id'];
-        $fleets[$fleet['fleet_id']]=$fleet;
-    }
+    // If there are some fleets
+    if ($db->num_rows() > 0) {
 
-    // Select all planets that have at least a fleet in the orbit
-    $sql = 'SELECT planet_id, system_id, sector_id, planet_name
-            FROM planets WHERE planet_id IN ('.implode(',',$planets_ids).')';
+        while($fleet = $db->fetchrow($q_fleets)) {
+            $planets_ids[$fleet['planet_id']]=$fleet['planet_id'];
+            $fleets[$fleet['fleet_id']]=$fleet;
+        }
 
-    if(!$q_planets = $db->query($sql)) {
-        message(DATABASE_ERROR, 'Could not query planets data');
-    }
+        // Select all planets that have at least a fleet in the orbit
+        $sql = 'SELECT planet_id, system_id, sector_id, planet_name
+                FROM planets WHERE planet_id IN ('.implode(',',$planets_ids).')';
 
-    while($planet = $db->fetchrow($q_planets)) {
-        $systems_ids[$planet['system_id']]=$planet['system_id'];
-        $planets[$planet['planet_id']]=$planet;
-    }
+        if(!$q_planets = $db->query($sql)) {
+            message(DATABASE_ERROR, 'Could not query planets data');
+        }
 
-    // Select all starsystems that have at least a fleet in one of their planets
-    $sql = 'SELECT system_id, system_name, sector_id, system_x, system_y
-            FROM starsystems WHERE system_id IN ('.implode(',',$systems_ids).')';
+        while($planet = $db->fetchrow($q_planets)) {
+            $systems_ids[$planet['system_id']]=$planet['system_id'];
+            $planets[$planet['planet_id']]=$planet;
+        }
 
-    if(!$q_systems = $db->query($sql)) {
-        message(DATABASE_ERROR, 'Could not query starsystems data');
-    }
+        // Select all starsystems that have at least a fleet in one of their planets
+        $sql = 'SELECT system_id, system_name, sector_id, system_x, system_y
+                FROM starsystems WHERE system_id IN ('.implode(',',$systems_ids).')';
 
-    // Create map
-    while($system = $db->fetchrow($q_systems))
-    {
-        $px = getSystemCoords($system,$size);
-        $px_x = $px[0];
-        $px_y = $px[1];
+        if(!$q_systems = $db->query($sql)) {
+            message(DATABASE_ERROR, 'Could not query starsystems data');
+        }
 
-        // Check for some fleets present in the system
-        $useColor = $color[2];
-        $useTitle = $system['system_name'];
+        // Create map
+        while($system = $db->fetchrow($q_systems))
+        {
+            $px = getSystemCoords($system,$size);
+            $px_x = $px[0];
+            $px_y = $px[1];
 
-        // Check all planets in the system
-        foreach($planets as $planet) {
+            // Check for some fleets present in the system
+            $useColor = $color[2];
+            $useTitle = $system['system_name'];
 
-            // If planet belong to this system
-            if ($planet['system_id'] == $system['system_id']) {
+            // Check all planets in the system
+            foreach($planets as $planet) {
 
-                $useTitle .= ' : '.$planet['planet_name'].' : ';
+                // If planet belong to this system
+                if ($planet['system_id'] == $system['system_id']) {
 
-                // Check all fleets orbiting on this planet
-                foreach ($fleets as $fleet)
-                {
-                    if($fleet['planet_id'] == $planet['planet_id'])
+                    $useTitle .= ' : '.$planet['planet_name'].' : ';
+
+                    // Check all fleets orbiting on this planet
+                    foreach ($fleets as $fleet)
                     {
-                        $useColor = $color[5];
-                        $useTitle .= '<'.$fleet['fleet_name'].'> ';
+                        if($fleet['planet_id'] == $planet['planet_id'])
+                        {
+                            $useColor = $color[5];
+                            $useTitle .= '<'.$fleet['fleet_name'].'> ';
+                        }
                     }
                 }
             }
-        }
 
-        if ($size>2)
-        {
-            imagefilledrectangle ($im, $px_x,$px_y, $px_x+$size-2, $px_y+$size-2, $useColor);
-            $map_data.='<area href="index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.$px_x.','.$px_y.', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$useTitle.'">';
-        }
-        else
-        {
-            imagefilledrectangle ($im, $px_x-1,$px_y-1, $px_x+$size-2, $px_y+$size-2, $useColor);
-            $map_data.='<area href="index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.$px_x.','.$px_y.', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$useTitle.'">';
+            if ($size>2)
+            {
+                imagefilledrectangle ($im, $px_x,$px_y, $px_x+$size-2, $px_y+$size-2, $useColor);
+                $map_data.='<area href="index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.$px_x.','.$px_y.', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$useTitle.'">';
+            }
+            else
+            {
+                imagefilledrectangle ($im, $px_x-1,$px_y-1, $px_x+$size-2, $px_y+$size-2, $useColor);
+                $map_data.='<area href="index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.$px_x.','.$px_y.', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$useTitle.'">';
+            }
         }
     }
-
 
     if ($size<3) $size2=1;
     if ($size==3) $size2=2;
