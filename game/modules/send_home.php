@@ -231,7 +231,7 @@ if(isset($_POST['send_homebase'])) {
 
         $atkptc_present = ($starter_atkptc || $dest_atkptc) ? true : false;
 
-        $$inter_system = false;
+        $inter_system = false;
 
         if($start_planet['system_id'] == $dest_planet['system_id']) $inter_system = true;
 
