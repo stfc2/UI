@@ -368,6 +368,24 @@ $sql = 'UPDATE config
     message(DATABASE_ERROR, 'Cannot reset config table to initial status!');
 }
 
+// ###########################################################################
+// ###########################################################################
+// Clean all the temporary directories.
+
+$game->out('done.<br>Clean temporary directories...');
+
+$files = array_merge_recursive(glob($config['game_path']."gallery/img_*.img"),
+        glob($config['game_path']."logs/*tick*"),
+        glob($config['game_path']."logs/fixall/tick*"),
+        glob($config['game_path']."logs/sixhours/tick*"),
+        glob($config['game_path']."maps/images/cache/*.png"),
+        glob($config['game_path']."maps/tmp/*.png"),
+        glob($config['game_path']."maps/tmp/*.html"),
+        glob($config['game_path']."sig_tmp/*.jpg"),
+        glob($config['game_path']."tmpsec/*.jpg"));
+
+array_walk($files,function ($file) { unlink($file); });
+
 $game->out('done.<br><b>Galaxy has been successfully reset.</b>');
 
 // ###########################################################################
