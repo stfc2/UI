@@ -32,10 +32,10 @@ include_once('include/libs/world.php');
 include_once('include/sql.php');
 
 // include BOTs classes definitions
-include($config['scheduler_url'].'/NPC_BOT.php');
-include($config['scheduler_url'].'/ferengi.php');
-include($config['scheduler_url'].'/borg.php');
-include($config['scheduler_url'].'/settlers.php');
+include($config['scheduler_path'].'/NPC_BOT.php');
+include($config['scheduler_path'].'/ferengi.php');
+include($config['scheduler_path'].'/borg.php');
+include($config['scheduler_path'].'/settlers.php');
 
 // Unfortunately we cannot include commons.php file here...
 class scheduler {
