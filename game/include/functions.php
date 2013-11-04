@@ -2134,11 +2134,11 @@ echo'
 		return create_system($id_type, $id_value);
 	}
 
-	// Veraltet, besser direkter Zugriff durch world.php
-	function create_planet($user_id, $id_type, $id_value) {
+	// Obsolete, better direct access by world.php
+	function create_planet($user_id, $id_type, $id_value, $selected_type = 'r', $race = 0) {
 		include_once('include/libs/world.php');
 
-		return create_planet($user_id, $id_type, $id_value);
+		return create_planet($user_id, $id_type, $id_value, $selected_type, $race);
 	}
 
 	// Return the distance between two systems
