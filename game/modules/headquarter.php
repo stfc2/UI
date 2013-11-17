@@ -89,13 +89,21 @@ if ($game->player['user_capital']==$game->planet['planet_id']) $m_points=$MAX_PO
 
 // "If built" display:
 $building=constant($game->sprache("TEXT6"));
-$build=$db->queryrow('SELECT installation_type, build_finish FROM scheduler_instbuild WHERE planet_id="'.$game->planet['planet_id'].'"');
+$sql = 'SELECT installation_type, build_finish FROM scheduler_instbuild
+        WHERE planet_id="'.$game->planet['planet_id'].'"
+        ORDER by build_start ASC
+        LIMIT 1';
+$build=$db->queryrow($sql);
 if ($db->num_rows()>0) $building=$BUILDING_NAME[$game->player['user_race']][$build['installation_type']].' ('.constant($game->sprache("TEXT6a")).' '.($game->planet['building_'.($build['installation_type']+1).'']+1).')</td><td><b id="timer2" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($build['build_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b>';
 
 
 
 $research=constant($game->sprache("TEXT6"));
-$scheduler=$db->queryrow('SELECT * FROM scheduler_research WHERE planet_id="'.$game->planet['planet_id'].'"');
+$sql = 'SELECT * FROM scheduler_research
+        WHERE planet_id="'.$game->planet['planet_id'].'"
+        ORDER by research_finish ASC
+        LIMIT 1';
+$scheduler=$db->queryrow($sql);
 if ($db->num_rows()>0)
 if ($scheduler['research_id']>=5) 
 $research=$ship_components[$game->player['user_race']][($scheduler['research_id']-5)][$game->planet['catresearch_'.(($scheduler['research_id']-4))]]['name'].'</td><td><b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b>';
