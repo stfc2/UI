@@ -143,10 +143,10 @@ if(($game->player['user_id'] == $user['user_id']) ||
 // Otherwise display only what the player knows
 else {
     $sql = 'SELECT pl.system_id FROM (planets pl)
-                   LEFT JOIN (planet_details pd) on pl.system_id = pd.system_id
+                   LEFT JOIN (starsystems_details sd) on pl.system_id = sd.system_id
             WHERE pl.planet_owner = '.$user['user_id'].' AND
-                  pd.user_id = "'.$game->player['user_id'].'" AND pd.log_code = 500
-            GROUP BY pl.system_id';
+                  sd.user_id = "'.$game->player['user_id'].'"
+	    GROUP BY pl.system_id';
 }
 
 $q_planets = $db->query($sql);

@@ -74,6 +74,12 @@ class maps {
 				$this->str_uninhabited = 'unbewohnt';
                 $this->str_fleet_player = 'Fleet ';
                 $this->str_ships = 'ship/s';
+                $this->str_res = 'Resources: ';
+                $this->str_met = 'Metals';
+                $this->str_mins = 'Minerals';
+                $this->str_dilh = 'Dilithium';
+                $this->str_unch = 'Unexplored';
+                $this->str_priv = 'Private';
 			break;
 			case 'ENG':
 				$this->str_sector = 'Sector';
@@ -87,8 +93,14 @@ class maps {
 				$this->str_range = 'Range:';
 				$this->str_outrange = 'Outside optimal range';
 				$this->str_uninhabited = 'uninhabited';
-                $this->str_fleet_player = 'Fleet ';                
+                $this->str_fleet_player = 'Fleet ';
                 $this->str_ships = 'ship/s';
+                $this->str_res = 'Resources: ';
+                $this->str_met = 'Metals';
+                $this->str_mins = 'Minerals';
+                $this->str_dilh = 'Dilithium';
+                $this->str_unch = 'Unexplored';
+                $this->str_priv = 'Private';
 			break;
 			case 'ITA':
 				$this->str_sector = 'Settore';
@@ -102,8 +114,14 @@ class maps {
 				$this->str_range = 'Distanza:';
 				$this->str_outrange = 'Fuori portata ottimale';
 				$this->str_uninhabited = 'disabitato';
-                $this->str_fleet_player = 'Flotta ';                
-                $this->str_ships = 'unit&agrave;';                
+                $this->str_fleet_player = 'Flotta ';
+                $this->str_ships = 'unit&agrave;';
+                $this->str_res = 'Risorse: ';
+                $this->str_met = 'Metalli';
+                $this->str_mins = 'Minerali';
+                $this->str_dilh = 'Dilitio';
+                $this->str_unch = 'Inesplorato';
+                $this->str_priv = 'Privato';
 			break;
 		}
         }
@@ -121,6 +139,8 @@ class maps {
             $this->str_range = 'Range:';
             $this->str_outrange = 'Outside optimal range';
             $this->str_uninhabited = 'uninhabited';
+            $this->str_unch = 'Unexplored';
+            $this->str_priv = 'Private';
         }
     }
 
@@ -416,9 +436,45 @@ class maps {
                 $distance_str = '<br>'.$this->str_range.$distance.' A.U.<br>';
             }
 
+// DC Try to give more information, just for fun
+            $explored_str = '';
+
+            $sql = 'SELECT count(*) as explored FROM starsystems_details
+                    WHERE system_id = '.$system['system_id'].'
+                    AND user_id = '.$game->player['user_id'];
+
+            if($res = $db->queryrow($sql))
+            {
+                if($res['explored'] == 0) $explored_str = '<br><i>'.$this->str_unch.'</i>';
+            }
+
+            $private_str = '';
+
+            if(!empty($system['system_owner']) && $system['system_owner'] != $game->player['user_id'])
+            {
+                $private_str = '<br><i>'.$this->str_priv.'</i>';
+            }
+
+            $sql = 'SELECT pl.planet_distance_id, sf.fleet_name, sf.n_ships FROM ship_fleets sf 
+                    INNER JOIN planets pl ON pl.planet_id = sf.planet_id 
+                    WHERE pl.system_id = '.$system['system_id'].' AND sf.user_id = '.$game->player['user_id'].'
+                    ORDER BY pl.planet_distance_id ASC';
+
+            $fleet_str = '';
+
+            if($fleet_details = $db->queryrowset($sql))
+            {
+
+                foreach($fleet_details as $f_i)
+                {
+                    $fleet_str .='<br>'.($f_i['planet_distance_id'] + 1).': '.$this->str_fleet_player.' <b>'.$f_i['fleet_name'].'</b>, '.$f_i['n_ships'].' '.$this->str_ships;
+                }
+            }
+// ----
+
             /////////////////
 
-            $map_html .= '<area href="'.parse_link('a=tactical_cartography&system_id='.encode_system_id($system['system_id'])).'" shape="circle" coords="'.$system['system_map_x'].', '.$system['system_map_y'].', '.$star_size.'" onmouseover="return overlib(\''.$system['system_name'].'<br>'.$this->str_planets.' '.$system['system_n_planets'].$distance_str.'\', CAPTION, \''.$this->str_details.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">';
+            $map_html .= '<area href="'.parse_link('a=tactical_cartography&system_id='.encode_system_id($system['system_id'])).'" shape="circle" coords="'.$system['system_map_x'].', '.$system['system_map_y'].', '.$star_size.'" onmouseover="return overlib(\''.$system['system_name'].'<br>'.$this->str_planets.' '.$system['system_n_planets'].$distance_str.$explored_str.$private_str.(!empty($fleet_str) ? $fleet_str : '').'\', CAPTION, \''.$this->str_details.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">';
 
             $used_fields[$coord_id] = $system['system_id'];
         }
@@ -464,7 +520,7 @@ class maps {
 
 // DC ---- 
         $system_is_known = false;
-        $sql = 'SELECT COUNT(*) AS system_is_known FROM planet_details WHERE system_id = '.$system_id.' AND log_code = 500 AND user_id = '.$game->player['user_id'];	
+        $sql = 'SELECT COUNT(*) AS system_is_known FROM starsystems_details WHERE system_id = '.$system_id.' AND user_id = '.$game->player['user_id'];
         if(!$q_details = $db->queryrow($sql)) {
             message(DATABASE_ERROR, 'Could not query planet details data');
         }
@@ -577,8 +633,55 @@ class maps {
                     {
                         $map_html .='<br>'.$this->str_fleet_player.' <b>'.$f_i['fleet_name'].'</b>, '.$f_i['n_ships'].' '.$this->str_ships;
                     }
-                }                   
-// ----                                
+                }
+
+// DC More info! Let's push mysql
+
+                $sql = 'SELECT survey_1, survey_2, survey_3 FROM planet_details
+                        WHERE log_code = 100 AND planet_id = '.$planet['planet_id'].'
+                        AND user_id = '.$game->player['user_id'];
+
+                if($survey_details = $db->queryrow($sql))
+                {
+                    $map_html .='<br>'.$this->str_res;
+                    switch($survey_details['survey_1'])
+                    {
+                        case 0:
+                            $map_html .='<font color=red>'.$this->str_met.'</font> ';
+                            break;
+                        case 1:
+                            $map_html .='<font color=gray>'.$this->str_met.'</font> ';
+                            break;
+                        case 2:
+                            $map_html .='<font color=green>'.$this->str_met.'</font> ';
+                            break;
+                    }
+                    switch($survey_details['survey_2'])
+                    {
+                        case 0:
+                            $map_html .='<font color=red>'.$this->str_mins.'</font> ';
+                            break;
+                        case 1:
+                            $map_html .='<font color=gray>'.$this->str_mins.'</font> ';
+                            break;
+                        case 2:
+                            $map_html .='<font color=green>'.$this->str_mins.'</font> ';
+                            break;
+                    }
+                    switch($survey_details['survey_3'])
+                    {
+                        case 0:
+                            $map_html .='<font color=red>'.$this->str_dilh.'</font>';
+                            break;
+                        case 1:
+                            $map_html .='<font color=gray>'.$this->str_dilh.'</font>';
+                            break;
+                        case 2:
+                            $map_html .='<font color=green>'.$this->str_dilh.'</font>';
+                            break;
+                    }
+                }
+// ----
                 $map_html .= '\', CAPTION, \''.$this->str_details.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">';
             }
             else {

@@ -130,8 +130,8 @@ if (($handle = @fopen ($image_url, "rb"))!=true)
 	                u.user_alliance = '.$game->player['user_alliance'].' 
 	          GROUP BY pl.system_id';*/
 
-	$sql = 'SELECT system_id FROM `planet_details`
-	        WHERE user_id = '.$game->player['user_id'].' AND log_code = 500 GROUP BY system_id';
+	$sql = 'SELECT system_id FROM `starsystems_details`
+	        WHERE user_id = '.$game->player['user_id'];
 	$systems = $db->query($sql);
 	while($system = $db->fetchrow($systems))
 		$known_systems[$system['system_id']]=$system;
