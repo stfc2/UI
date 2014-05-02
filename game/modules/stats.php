@@ -404,6 +404,8 @@ $rasse=$RACE_DATA[$user['user_race']][0];
 
 $planets=$db->queryrow('SELECT count(planet_id) AS num FROM planets WHERE planet_owner="'.$user['user_id'].'"');
 
+$rawstar=$db->queryrow('SELECT COUNT(*) AS rawnum FROM starsystems WHERE system_closed = 0');
+
 
 // Onlinestatus:
     $sql = 'SELECT d.*,
@@ -457,6 +459,18 @@ $game->out('
 </tr><tr>
 <td width=70><span class="text_large">'.constant($game->sprache("TEXT88")).'</b></span></td>
 <td width=150><span class="text_large">'.$user['num_auctions'].'</td>
+</tr><tr>
+<td width=70><span class="text_large">'.constant($game->sprache("TEXT103")).'</b></span></td>
+<td width=150><span class="text_large">'.$user['user_charted'].' / '.$rawstar['rawnum'].'</td>
+</tr><tr>
+<td width=70><span class="text_large">'.constant($game->sprache("TEXT104")).'</b></span></td>
+<td width=150><span class="text_large">'.$user['user_first_contact'].'</td>
+</tr><tr>
+<td width=70><span class="text_large">'.constant($game->sprache("TEXT105")).'</b></span></td>
+<td width=150><span class="text_large">'.$user['user_settler_made'].'</td>
+</tr><tr>
+<td width=70><span class="text_large">'.constant($game->sprache("TEXT106")).'</b></span></td>
+<td width=150><span class="text_large">'.$user['user_settler_best'].'</td>
 </tr><tr>
 <td width=70><span class="text_large">'.constant($game->sprache("TEXT44")).'</b></span></td>
 <td width=150><span class="text_large">'.$status.'</td>
@@ -566,11 +580,9 @@ $game->out('
     else {
         $sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
                    FROM (planets pl)
-                   LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id
-                   LEFT JOIN (planet_details pd) ON pl.system_id = pd.system_id
-                   WHERE pl.planet_owner = "'.$user['user_id'].'" AND
-                         pd.user_id = "'.$game->player['user_id'].'" AND
-                         pd.log_code = 500
+                   INNER JOIN (starsystems sys) USING (system_id)
+                   INNER JOIN (starsystems_details sd) ON pl.system_id = sd.system_id AND sd.user_id = '.$game->player['user_id'].'
+                   WHERE pl.planet_owner = "'.$user['user_id'].'" 
                    GROUP BY pl.planet_id
                    ORDER BY pl.planet_name';
     }
@@ -885,11 +897,9 @@ $game->out('
 
 $sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
                    FROM (planets pl)
-                   LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id
-                   LEFT JOIN (planet_details pd) ON pl.system_id = pd.system_id
-                   WHERE pl.planet_owner = "'.BORG_USERID.'" AND
-                         pd.user_id = "'.$game->player['user_id'].'" AND
-                         pd.log_code = 500
+                   INNER JOIN (starsystems sys) USING (system_id)
+                   INNER JOIN (starsystems_details sd) ON pl.system_id = sd.system_id AND sd.user_id = '.$game->player['user_id'].'
+                   WHERE pl.planet_owner = "'.BORG_USERID.'"
                    GROUP BY pl.planet_id
                    ORDER BY pl.planet_name';
 
@@ -932,11 +942,9 @@ $game->out('
 
 $sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
                    FROM (planets pl)
-                   LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id
-                   LEFT JOIN (planet_details pd) ON pl.system_id = pd.system_id
-                   WHERE pl.planet_owner = "'.BORG_USERID.'" AND
-                         pd.user_id = "'.$game->player['user_id'].'" AND
-                         pd.log_code = 500
+                   INNER JOIN (starsystems sys) USING (system_id)
+                   INNER JOIN (starsystems_details sd) ON pl.system_id = sd.system_id AND sd.user_id = '.$game->player['user_id'].'
+                   WHERE pl.planet_owner = "'.BORG_USERID.'" 
                    GROUP BY pl.planet_id
                    ORDER BY pl.planet_name';
 
@@ -1088,12 +1096,10 @@ $game->out('
 
 $sql_pl = 'SELECT pl.planet_id, pl.planet_name, pl.best_mood, pl.best_mood_user, pl.sector_id, pl.planet_distance_id, pl.planet_type, sys.system_x, sys.system_y
                    FROM (planets pl)
-                   LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id
-                   LEFT JOIN (planet_details pd) ON pl.system_id = pd.system_id
+                   INNER JOIN (starsystems sys) USING (system_id)
+                   INNER JOIN (starsystems_details sd) ON pl.system_id = sd.system_id AND sd.user_id = '.$game->player['user_id'].'
                    WHERE pl.planet_owner = "'.INDEPENDENT_USERID.'" AND
-                         pl.planet_type IN ("a","b","c","d","m","o","p") AND                         
-                         pd.user_id = "'.$game->player['user_id'].'" AND
-                         pd.log_code = 500
+                         pl.planet_type IN ("a","b","c","d","m","o","p") 
                    GROUP BY pl.planet_id
                    ORDER BY pl.sector_id, pl.system_id, pl.planet_name';
 
@@ -1147,12 +1153,10 @@ $game->out('
 
 $sql_pl = 'SELECT pl.planet_id, pl.planet_name, pl.best_mood, pl.best_mood_user, pl.sector_id, pl.planet_distance_id, pl.planet_type, sys.system_x, sys.system_y
                    FROM (planets pl)
-                   LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id
-                   LEFT JOIN (planet_details pd) ON pl.system_id = pd.system_id
+                   INNER JOIN (starsystems sys) USING (system_id)
+                   INNER JOIN (starsystems_details sd) ON pl.system_id = sd.system_id AND sd.user_id = '.$game->player['user_id'].'
                    WHERE pl.planet_owner = "'.INDEPENDENT_USERID.'" AND
-                         pl.planet_type IN ("h","n","k","l","e","f","g") AND
-                         pd.user_id = "'.$game->player['user_id'].'" AND
-                         pd.log_code = 500
+                         pl.planet_type IN ("h","n","k","l","e","f","g") 
                    GROUP BY pl.planet_id
                    ORDER BY pl.sector_id, pl.system_id, pl.planet_name';
 
@@ -1206,12 +1210,10 @@ $game->out('
 
 $sql_pl = 'SELECT pl.planet_id, pl.planet_name, pl.best_mood, pl.best_mood_user, pl.sector_id, pl.planet_distance_id, pl.planet_type, sys.system_x, sys.system_y
                    FROM (planets pl)
-                   LEFT JOIN (starsystems sys) ON sys.system_id = pl.system_id
-                   LEFT JOIN (planet_details pd) ON pl.system_id = pd.system_id
+                   INNER JOIN (starsystems sys) USING (system_id)
+                   INNER JOIN (starsystems_details sd) ON pl.system_id = sd.system_id AND sd.user_id = '.$game->player['user_id'].'
                    WHERE pl.planet_owner = "'.INDEPENDENT_USERID.'" AND
-                         pl.planet_type IN ("i","j","s","t","x","y") AND
-                         pd.user_id = "'.$game->player['user_id'].'" AND
-                         pd.log_code = 500
+                         pl.planet_type IN ("i","j","s","t","x","y") 
                    GROUP BY pl.planet_id
                    ORDER BY pl.sector_id, pl.system_id, pl.planet_name';
 

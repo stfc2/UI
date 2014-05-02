@@ -225,6 +225,14 @@ define ("GER_TEXT101", 'Mining Planets');
 
 define ("GER_TEXT102", 'Relation Value');
 
+define ("GER_TEXT103", 'Stars Explored:');
+
+define ("GER_TEXT104", 'First Contacts:');
+
+define ("GER_TEXT105", 'Settlers Made:');
+
+define ("GER_TEXT106", 'Settlers Befriended:');
+
 
 //English
 define ("ENG_TEXT1",'Overview');
@@ -431,6 +439,14 @@ define ("ENG_TEXT101", 'Mining Planets');
 
 define ("ENG_TEXT102", 'Relation Value');
 
+define ("ENG_TEXT103", 'Stars Explored:');
+
+define ("ENG_TEXT104", 'First Contacts:');
+
+define ("ENG_TEXT105", 'Settlers Made:');
+
+define ("ENG_TEXT106", 'Settlers Befriended:');
+
 
 //Italian
 define ("ITA_TEXT1",'Dettagli');
@@ -636,4 +652,13 @@ define ("ITA_TEXT100", 'Pianeti Cantiere');
 define ("ITA_TEXT101", 'Pianeti Miniera');
 
 define ("ITA_TEXT102", 'Valore Relazioni');
+
+define ("ITA_TEXT103", 'Sistemi esplorati:');
+
+define ("ITA_TEXT104", 'Primi Contatti:');
+
+define ("ITA_TEXT105", 'Colonie fondate:');
+
+define ("ITA_TEXT106", 'Colonie alleate:');
+
 ?>
