@@ -101,6 +101,9 @@ define('LOGBOOK_TACTICAL_2', 10);
 
 define('LOGBOOK_SURVEY', 11);
 
+define('LOGBOOK_SETTLERS', 12);
+
+
 // Ferengi NPC-Dealers:
 
 define('FERENGI_TRADESHIP_ID', 2); // <-- Template, not ship!
@@ -251,6 +254,8 @@ define ('BUILDING_QUEUE_LEN', 2);
 
 // Min. points to create auctions
 define('MIN_POINTS_AUCTIONS', USER_START_BOOST ? 1500 : 400);
+
+define ('HOME_SYSTEM_PRIVATE', 1);
 
 
 // Accelerates the Scheduler
@@ -560,9 +565,9 @@ $UNIT_DATA = array(
 
     0 => array( 
 
-        0 => 80, 
+        0 => 35, 
 
-        1 => 35, 
+        1 => 80, 
 
         2 => 0, 
 
@@ -580,9 +585,9 @@ $UNIT_DATA = array(
 
     1 => array( 
 
-        0 => 108, 
+        0 => 67, 
 
-        1 => 67, 
+        1 => 108, 
 
         2 => 0, 
 
@@ -620,9 +625,9 @@ $UNIT_DATA = array(
 
     3 => array( 
 
-        0 => 260, 
+        0 => 180, 
 
-        1 => 180, 
+        1 => 260, 
 
         2 => 85, 
 
