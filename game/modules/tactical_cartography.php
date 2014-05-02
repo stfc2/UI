@@ -567,11 +567,11 @@ elseif(!empty($_POST['jump'])) {
 //                    else {
                         $planet_name = addslashes($_POST['jump_id']);
 
-                        $sql = 'SELECT p.planet_id, p.planet_name,p.sector_id, p.system_id, p.planet_distance_id,
+                        $sql = 'SELECT p.planet_id, p.planet_name, p.sector_id, p.system_id, p.planet_distance_id,
                                        s.system_x, s.system_y
                                 FROM (planets p)
                                 INNER JOIN (starsystems s) ON s.system_id = p.system_id
-                                INNER JOIN (planet_details pd) ON s.system_id = pd.system_id AND log_code = 500 AND pd.user_id = '.$game->player['user_id'].'
+                                INNER JOIN (starsystems_details sd) ON p.system_id = sd.system_id AND sd.user_id = '.$game->player['user_id'].'
                                 WHERE p.planet_name LIKE "%'.$planet_name.'%" AND p.planet_name!="'.UNINHABITATED_COLONY.'" AND p.planet_name!="'.UNINHABITATED_PLANET.'" AND p.planet_owner <> 0
                                 GROUP BY p.planet_id';
 
@@ -957,33 +957,55 @@ elseif(!empty($_GET['planet_id'])) {
     }
 
 // Tactical / political information on the planet (settlers system)
-/* <-------------- DISABLED AT THE MOMENT SINCE THEY ARE NOT FULLY IMPLEMENTED ------->
-    $sql = 'SELECT * FROM `planet_details`
-                LEFT JOIN user ON planet_details.source_uid = user.user_id
-                LEFT JOIN alliance ON planet_details.source_aid = alliance.alliance_id
+
+    $sql = 'SELECT log_code, timestamp, mood_modifier FROM settlers_relations
                 WHERE `planet_id` = '.$planet['planet_id'].'
-                AND `log_code` = 300
-                ORDER BY timestamp DESC
-                LIMIT 0,1';
-    if(($_temp = $db->queryrow($sql)) == true) {
-        $tactical_text .= '<i>'.constant($game->sprache("TEXT124")).'</i><br><br>';
-        $num = 0;
-        foreach($RACE_DATA as $i => $race) {
-            // Skip non playable races
-            if($race[22]) {
-                $tactical_text .= $race[0].': '.$_temp['mood_race'.$i].' ';
-                $num++;
-                if($num > 3) {
-                    $tactical_text .= '<br>';
-                    $num = 0;
-                }
+                AND user_id = '.$game->player['user_id'].'
+                AND log_code in (1, 2, 5, 10, 11, 12, 30, 31)
+                ORDER BY timestamp ASC';
+    $q_setl = $db->query($sql);
+    $rows = $db->num_rows($q_setl);
+    if($rows > 0)
+    {
+        $tactical_text .= '<table width=250 border=0 cellpadding= 0 cellspacing=0>';
+        $q_d_setl = $db->fetchrowset($q_setl);
+        foreach($q_d_setl as $d_setl)
+        {
+            switch($d_setl['log_code'])
+            {
+            case 1:
+                $tactical_text .= '<tr align=left><td>Primo Contatto</td><td>'.date("d.m.y H:i", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
+            break;
+            case 2:
+                $tactical_text .= '<tr align=left><td>Trattato Diplomatico</td><td>'.date("d.m.y H:i", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
+            break;
+            case 5:
+                $tactical_text .= '<tr align=left><td>Supporto Tecnologico: Difesa</td><td>'.date("d.m.y H:i", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
+            break;
+            case 10:
+                $tactical_text .= '<tr align=left><td>Attacco Orbitale</td><td>'.date("d.m.y H:i", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
+            break;
+            case 11:
+                $tactical_text .= '<tr align=left><td>Bombardamento Planetario</td><td>'.date("d.m.y H:i", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
+            break;
+            case 12:
+                $tactical_text .= '<tr align=left><td>Conquista di una Colonia</td><td>'.date("d.m.y H:i", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
+            break;
+            case 30:
+                $tactical_text .= '<tr align=left><td>Fondatore</td><td>'.date("d.m.y H:i", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
+            break;
+            case 31:
+                $tactical_text .= '<tr align=left><td>Ex-Governatore</td><td>'.date("d.m.y H:i", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
+            break;
             }
         }
-        $tactical_text .= '<br><br><font size=-2><i>'.constant($game->sprache("TEXT125")).'</i></font>';
-    }*/
+        $tactical_text .= '</table>';
+    }
 
     $planet_is_known = false;
-    $sql = 'SELECT * FROM planet_details WHERE log_code = 500 AND system_id = '.$planet['system_id'].' AND user_id = '.$game->player['user_id'];
+    $sql = 'SELECT timestamp FROM starsystems_details
+            WHERE system_id = '.$planet['system_id'].'
+            AND user_id = '.$game->player['user_id'];
     if($game->player['user_auth_level'] == STGC_DEVELOPER || $db->queryrow($sql) == true)
         $planet_is_known = true;
 
@@ -994,7 +1016,7 @@ elseif(!empty($_GET['planet_id'])) {
         $_name  = '&nbsp;<b>'.$planet['planet_name'].'</b>&nbsp;('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')';
         $_planet_type = '&nbsp;<a href="'.parse_link('a=database&planet_type='.$planet_type.'#'.$planet_type).'">'.$planet_type.'</a>';
         // DC: Yeah, yeah, i know.... why bothering on building all the texts if the planet is not known?
-        $detail_text = $history_text.$survey_text /*.$tactical_text*/;
+        $detail_text = $history_text.$survey_text.$tactical_text;
         // Last update.
         $sql = 'SELECT timestamp FROM `planet_details`
                 WHERE `planet_id` = '.$planet['planet_id'].'

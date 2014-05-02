@@ -38,13 +38,13 @@ $sql = 'SELECT ss.*,
 			   p1.planet_name AS start_planet_name,
 			   u1.user_id AS start_owner_id, u1.user_name AS start_owner_name,
 			   p2.planet_name AS dest_planet_name,
-			   u2.user_id AS dest_owner_id, u2.user_name AS dest_owner_name, pd.log_code
+			   u2.user_id AS dest_owner_id, u2.user_name AS dest_owner_name, sd.timestamp
 		FROM (scheduler_shipmovement ss)
 		INNER JOIN (planets p1) ON p1.planet_id = ss.start
 		LEFT JOIN (user u1) ON u1.user_id = p1.planet_owner
 		INNER JOIN (planets p2) ON p2.planet_id = ss.dest
 		LEFT JOIN (user u2) ON u2.user_id = p2.planet_owner
-		LEFT JOIN (planet_details pd) ON (ss.user_id = pd.user_id AND p2.system_id = pd.system_id AND pd.log_code = 500)
+		LEFT JOIN (starsystems_details sd) ON (ss.user_id = sd.user_id AND p2.system_id = sd.system_id)
 		WHERE ss.user_id = '.$game->player['user_id'].' AND
 			  ss.move_begin <= '.$ACTUAL_TICK.' AND
 			  ss.move_status = 0'.
@@ -175,7 +175,7 @@ while($move = $db->fetchrow($q_moves)) {
 		else $dest_owner_str = '';
 
 		$system_is_known = false;
-		if(isset($move['log_code']) && $move['log_code'] == 500) { $system_is_known = true; }
+		if(isset($move['timestamp']) && (!empty($move['timestamp']))) { $system_is_known = true; }
 
 		$know_dest_str = ' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($move['dest'])).'"><b>'.$move['dest_planet_name'].'</b></a>'.$dest_owner_str;
 		$unknow_dest_str = ' <b><i>&#171;'.constant($game->sprache("TEXT28")).'&#187;</i></b>';
