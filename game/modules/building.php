@@ -565,9 +565,9 @@ function Show_Main()
 
     $game->out('<span class="sub_caption">'.constant($game->sprache(($queued ? "TEXT21":"TEXT20"))).' '.HelpPopup('building_1').' :</span><br><br>');
 
-    $game->out('<table border=0 cellpadding=2 cellspacing=2 width=595 class="style_outer">
-<tr><td width=595>
-<table border=0 cellpadding=2 cellspacing=2 width=595 class="style_inner">
+    $game->out('<table border=0 cellpadding=2 cellspacing=2 width=90% class="style_outer">
+<tr><td width=100%>
+<table border=0 cellpadding=2 cellspacing=2 width=100% class="style_inner">
 <tr>
     <td width=130><b>'.constant($game->sprache("TEXT29")).'</b></td>
     <td width=155><b>'.constant($game->sprache("TEXT22")).'</b></td>

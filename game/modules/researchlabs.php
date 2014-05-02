@@ -427,12 +427,16 @@ $game->out(''.constant($game->sprache("TEXT23")).' <b id="timer2" title="time1_'
 
 // Ship components research:
 $game->out('<span class="sub_caption">'.constant($game->sprache("TEXT25")).' '.HelpPopup('research_catresearch').' :</span><br><br>');
-$game->out('<table border=0 cellpadding=2 cellspacing=2 width=498 class="style_outer">');
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width=90% class="style_outer">');
 $game->out('
-<tr><td width=550>
-<table border=0 cellpadding=2 cellspacing=2 width=550 class="style_inner">
+<tr><td width=100%>
+<table border=0 cellpadding=2 cellspacing=2 width=100% class="style_inner">
 <tr>
-<td width=100><b>'.constant($game->sprache("TEXT26")).'</b></td><td width=130><b>'.constant($game->sprache("TEXT27")).'</b></td><td width=170><b>'.constant($game->sprache("TEXT0")).'</b></td><td width=75><b>'.constant($game->sprache("TEXT28")).'</b></td><td width=75>&nbsp;
+<td width=18%><b>'.constant($game->sprache("TEXT26")).'</b></td>
+<td width=24%><b>'.constant($game->sprache("TEXT27")).'</b></td>
+<td width=30%><b>'.constant($game->sprache("TEXT0")).'</b></td>
+<td width=14%><b>'.constant($game->sprache("TEXT28")).'</b></td>
+<td width=14%>&nbsp;
 </td></tr>
 ');
 
@@ -505,11 +509,12 @@ $game->out('<img src="'.$game->GFX_PATH.'menu_metal_small.gif"> '.  GetCatResear
 $game->out('</table></td></tr></table>');
 $game->out('<br><br>');
 $game->out('<span class="sub_caption">'.constant($game->sprache("TEXT33")).' '.HelpPopup('research_localresearch').' :</span><br><br>');
-$game->out('<table border=0 cellpadding=2 cellspacing=2 width=550 class="style_outer">');
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width=90% class="style_outer">');
 $game->out('
 <tr>
-<td width=550>
-<table border=0 cellpadding=2 cellspacing=2 width=600 class="style_inner"><tr><td width=150><b>'.constant($game->sprache("TEXT34")).'</b></td><td width=175><b>'.constant($game->sprache("TEXT35")).'</b></td><td width=100><b>'.constant($game->sprache("TEXT36")).'</b></td><td width=*>&nbsp;</td></tr>');
+<td width=100%>
+<table border=0 cellpadding=2 cellspacing=2 width=100% class="style_inner">
+<tr><td width=25%><b>'.constant($game->sprache("TEXT34")).'</b></td><td width=25%><b>'.constant($game->sprache("TEXT35")).'</b></td><td width=25%><b>'.constant($game->sprache("TEXT36")).'</b></td><td width=25%>&nbsp;</td></tr>');
 
 
 // Local research:
