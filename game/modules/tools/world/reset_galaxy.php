@@ -124,6 +124,7 @@ $tables = array(
     'shoutbox',
     'spenden',
     'starsystems',
+    'starsystems_details',
     'starsystems_slots',
     'stations',
     'tc_coords_memo',
