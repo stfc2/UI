@@ -2177,6 +2177,9 @@ echo'
         global $db;
         // We return true for a system where we can go freely
 
+        // If private system is disabled return true
+        if(HOME_SYSTEM_PRIVATE == 0) return true;
+
         if($this->player['user_auth_level'] == STGC_DEVELOPER) return true;
 
         $sql = 'SELECT system_owner FROM starsystems
