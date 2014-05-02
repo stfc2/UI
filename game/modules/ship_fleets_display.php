@@ -73,7 +73,7 @@ if(isset($_POST['set_homebase'])) {
 
     $distance_id = (int)$coord_pieces[2] - 1;
 
-    $sql = 'SELECT p.planet_id
+    $sql = 'SELECT p.planet_id, p.system_id
             FROM (planets p, starsystems s)
             WHERE s.sector_id = '.$sector_id.' AND
                   s.system_x = '.$system_x.' AND
@@ -87,6 +87,10 @@ if(isset($_POST['set_homebase'])) {
 
     if(empty($planet['planet_id'])) {
         message(NOTICE, constant($game->sprache("TEXT7")).' <b>'.$_POST['dest_coord'].'</b>');
+    }
+
+    if(!$game->is_system_allowed($planet['system_id'])) {
+        message(NOTICE, constant($game->sprache("TEXT104")));
     }
 
     $base = (int)$planet['planet_id'];
@@ -1162,10 +1166,10 @@ else {
 	    if($fleet['start_owner_id'] == $game->player['user_id'])
                 $system_known = true;
             else {
-                $sql = 'SELECT pd.log_code FROM (planets p)
-                               LEFT JOIN (planet_details pd) ON p.system_id = pd.system_id
-                        WHERE p.planet_id = '.$fleet['start'].' AND pd.user_id = '.$game->player['user_id'];
-                if((($_temp = $db->queryrow($sql)) == true) && ($_temp['log_code'] > 0)) {
+                // 11/11/13 - DC: New FoW Implementation
+                $sql = 'SELECT timestamp FROM starsystems_details sd INNER JOIN planets p USING ( system_id )
+                        WHERE p.planet_id = '.$fleet['start'].' AND sd.user_id = '.$game->player['user_id'];
+                if((($_temp = $db->queryrow($sql)) == true) && (!empty($_temp['timestamp']))) {
                     $system_known = true;
                 }
             }
@@ -1191,10 +1195,10 @@ else {
             if($fleet['dest_owner_id'] == $game->player['user_id'])
                 $system_known = true;
             else {
-                $sql = 'SELECT pd.log_code FROM (planets p)
-                               LEFT JOIN (planet_details pd) ON p.system_id = pd.system_id
-                        WHERE p.planet_id = '.$fleet['dest'].' AND pd.user_id = '.$game->player['user_id'];
-                if((($_temp = $db->queryrow($sql)) == true) && ($_temp['log_code'] > 0)) {
+                // 11/11/13 - DC: New FoW Implementation                
+                $sql = 'SELECT timestamp FROM starsystems_details sd INNER JOIN planets p USING ( system_id )
+                        WHERE p.planet_id = '.$fleet['dest'].' AND sd.user_id = '.$game->player['user_id'];                        
+                if((($_temp = $db->queryrow($sql)) == true) && (!empty($_temp['timestamp']))) {
                     $system_known = true;
                 }
             }

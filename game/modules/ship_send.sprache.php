@@ -159,6 +159,8 @@ define ("GER_TEXT67", '<b>Planet analysieren:</b><br>Das Schiff wird sich dem Pl
 
 define ("GER_TEXT68", 'Unbekannt');
 
+define ("GER_TEXT69", 'Ihre Schiffe sind nicht in diesen gesch&uuml;tzten System erlaubt.');
+
 //English
 define ("ENG_TEXT0", 'Ship movements');
 
@@ -303,6 +305,8 @@ define ("ENG_TEXT67", '<b>Planet analysis:</b><br>The ship will approach the pla
 
 define ("ENG_TEXT68", 'Unknown');
 
+define ("ENG_TEXT69", 'Your ships are not allowed into this protected system.');
+
 //Italiano
 define ("ITA_TEXT0", 'Movimenti flotte');
 
@@ -446,5 +450,7 @@ define ("ITA_TEXT66", 'Le missioni esplorative sono assegnabili a flotte compost
 define ("ITA_TEXT67", '<b>Analisi Pianeta:</b><br>La nave approccer&agrave; il pianeta, eseguir&agrave; una serie di scansioni della superficie e sbarcher&agrave; una squadra scientifica a terra per i rilievi geologici qualora sia possibile, riferendo poi gli esiti delle analisi.');
 
 define ("ITA_TEXT68", 'Sconosciuto');
+
+define ("ITA_TEXT69", 'Le tue navi non posso accedere a questo sistema protetto.');
 
 ?>

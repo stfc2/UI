@@ -202,6 +202,7 @@ if($dest == $game->planet['planet_id']) {
     $dest_planet['user_vacation_start'] = $game->player['user_vacation_start'];
     $dest_planet['user_vacation_end'] = $game->player['user_vacation_end'];
     $dest_planet['system_is_known'] = true;
+    $dest_planet['system_is_allowed'] = true;
 
     // Player data can not be fetched, because they are not displayed / used
 }
@@ -231,13 +232,17 @@ else {
     }
 
     $dest_planet['system_is_known'] = false;
-    $sql = 'SELECT COUNT(*) AS system_is_known FROM planet_details
-            WHERE log_code = 500 AND system_id = '.$dest_planet['system_id'].' AND user_id = '.$game->player['user_id'];
-    if(($_temp = $db->queryrow($sql)) == true) {
-        if($_temp['system_is_known'] > 0) $dest_planet['system_is_known'] = true;
-    }
-    else {
-       message(DATABASE_ERROR, 'Could not query destination planet details data');
+    // 11/11/13 - DC: New FoW Implementation
+    $sql = 'SELECT timestamp FROM starsystems_details
+            WHERE system_id = '.$dest_planet['system_id'].'
+            AND user_id = '.$game->player['user_id'];
+    $_temp = $db->queryrow($sql);
+    if(isset($_temp['timestamp']) && !empty($_temp['timestamp'])) $dest_planet['system_is_known'] = true;
+
+    $dest_planet['system_is_allowed'] = $game->is_system_allowed($dest_planet['system_id']);
+
+    if(!$dest_planet['system_is_allowed']) {
+        message(NOTICE, constant($game->sprache("TEXT69")));
     }
 }
 
@@ -356,6 +361,9 @@ switch($step) {
     case 'spy_exec':
     case 'survey_exec':
     case 'colo_exec':
+
+        if(!$dest_planet['system_is_allowed']) message(NOTICE, constant($game->sprache("TEXT69")));
+
         $distance = $velocity = 0;
 
         if($game->player['user_auth_level'] == STGC_DEVELOPER) $min_time = 1;

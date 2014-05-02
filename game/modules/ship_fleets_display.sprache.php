@@ -224,6 +224,8 @@ define ("GER_TEXT102", 'Anzeigen');
 
 define ("GER_TEXT103", 'Ausblenden');
 
+define ("GER_TEXT104", 'Ihre Schiffe sind nicht in diesen gesch&uuml;tzten System erlaubt.');
+
 
 //English
 define ("ENG_TEXT0", 'Fleets:');
@@ -428,6 +430,8 @@ define ("ENG_TEXT102", 'Show');
 
 define ("ENG_TEXT103", 'Hide');
 
+define ("ENG_TEXT104", 'Your ships are not allowed into this protected system.');
+
 
 //Italian
 define ("ITA_TEXT0", 'Flotte:');
@@ -631,6 +635,8 @@ define ("ITA_TEXT101", 'Mappa posizione flotte:');
 define ("ITA_TEXT102", 'Visualizza');
 
 define ("ITA_TEXT103", 'Nascondi');
+
+define ("ITA_TEXT104", 'Le tue navi non posso accedere a questo sistema protetto.');
 
 
 ?>
