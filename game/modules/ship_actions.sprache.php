@@ -165,6 +165,8 @@ define("GER_TEXT70", '<b>Estrazione</b>: fornire tecnologie che migliorano l&#14
 
 define("GER_TEXT71", '<b>Supporto Difesa Planetaria</b>: Sul pianeta viene inviata una squadra tecnica per fornire supporto alla progettazione e costruzione di un sistema difensivo orbitale migliorato a disposizione della colonia, allo scopo di meglio difendersi da tentativi di invasione.');
 
+define("GER_TEXT72", '<b>Verteidigung:</b> Technologien, die Oberfl&auml;che des Planeten Verteidigung (erh&ouml;ht die Anzahl der leichten und schweren Orbitalwaffen auf dem Planeten) verbessern zu liefern.');
+
 
 //English
 define ("ENG_TEXT0", 'Ship movements');
@@ -316,6 +318,8 @@ define("ENG_TEXT70", '<b>Estrazione</b>: fornire tecnologie che migliorano l&#14
 
 define("ENG_TEXT71", '<b>Supporto Difesa Planetaria</b>: Sul pianeta viene inviata una squadra tecnica per fornire supporto alla progettazione e costruzione di un sistema difensivo orbitale migliorato a disposizione della colonia, allo scopo di meglio difendersi da tentativi di invasione.');
 
+define("ENG_TEXT72", '<b>Defence:</b> deliver technologies that improve the surface defenses of the planet (increases the number of light and heavy orbital guns on the planet).');
+
 //Italiano
 define ("ITA_TEXT0", 'Movimenti flotte');
 
@@ -465,5 +469,7 @@ define("ITA_TEXT69", '<b>Automazione</b>: fornire tecnologie che migliorano i pr
 define("ITA_TEXT70", '<b>Estrazione</b>: fornire tecnologie che migliorano l&#146;estrazione e la raffinazione di materie prime (migliora la resa delle miniere sul pianeta)');
 
 define("ITA_TEXT71", '<b>Supporto Difesa Planetaria</b>: Sul pianeta viene inviata una squadra tecnica per fornire supporto alla progettazione e costruzione di un sistema difensivo orbitale migliorato a disposizione della colonia, allo scopo di meglio difendersi da tentativi di invasione.');
+
+define("ITA_TEXT72", '<b>Difesa</b>: fornire tecnologie che migliorano le difese a terra del pianeta (aumenta il numero di cannoni orbitali leggeri e pesanti sul pianeta)');
 
 ?>

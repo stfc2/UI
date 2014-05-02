@@ -436,7 +436,7 @@ switch($step) {
                 $action_data = array(3,$tech_type);
             break;
             case 'milsup':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 300);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 80);
                 $action_code = 27;
                 $action_data = array(4);            
             break;
@@ -503,7 +503,7 @@ switch($step) {
         // Geological analysis
         $game->out('
         <tr>
-          <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true" value="survey" checked="checked"></td>
+          <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true; document.send_form.rtt4.disabled=true" value="survey" checked="checked"></td>
           <td>'.constant($game->sprache("TEXT58")).'</td>
         </tr>');
 
@@ -526,7 +526,7 @@ switch($step) {
 
             $game->out('
         <tr>
-          <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true" value="recon" '.($all_clear ? '' : 'disabled="disabled"').'></td>
+          <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true; document.send_form.rtt4.disabled=true" value="recon" '.($all_clear ? '' : 'disabled="disabled"').'></td>
           <td>'.constant($game->sprache("TEXT65")).'<br><br>'.$requirement_text.'</td>
         </tr>');
             // First Contact
@@ -544,7 +544,7 @@ switch($step) {
 
             $game->out('
         <tr>
-          <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true" value="first_contact" '.($all_clear ? '' : 'disabled="disabled"').'></td>
+          <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true; document.send_form.rtt4.disabled=true" value="first_contact" '.($all_clear ? '' : 'disabled="disabled"').'></td>
           <td>'.constant($game->sprache("TEXT61")).'<br><br>'.$requirement_text.'</td>
         </tr>');
             // Diplomatic relationships
@@ -561,7 +561,7 @@ switch($step) {
             }
             $game->out('
         <tr>
-          <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true" value="diplomatic" '.($all_clear ? '' : 'disabled="disabled"').'></td>
+          <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true; document.send_form.rtt4.disabled=true" value="diplomatic" '.($all_clear ? '' : 'disabled="disabled"').'></td>
           <td>'.constant($game->sprache("TEXT64")).'<br><br>'.$requirement_text.'</td>
         </tr>');
             // Tech Support Mission
@@ -578,7 +578,7 @@ switch($step) {
             }            
             $game->out('
         <tr>
-           <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled='.($all_clear ? 'false' : 'true').'; document.send_form.rtt2.disabled='.($all_clear ? 'false' : 'true').'; document.send_form.rtt3.disabled='.($all_clear ? 'false' : 'true').'" value="techsup" '.($all_clear ? '' : 'disabled="disabled"').'></td>
+           <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled='.($all_clear ? 'false' : 'true').'; document.send_form.rtt2.disabled='.($all_clear ? 'false' : 'true').'; document.send_form.rtt3.disabled='.($all_clear ? 'false' : 'true').'; document.send_form.rtt4.disabled='.($all_clear ? 'false' : 'true').'" value="techsup" '.($all_clear ? '' : 'disabled="disabled"').'></td>
            <td>'.constant($game->sprache("TEXT67")).'
               <table class="style_inner" align="center" border="0" frames="box" cellpadding="2" cellspacing="2" width="360">
               <tr>
@@ -586,31 +586,35 @@ switch($step) {
                 <td>'.constant($game->sprache("TEXT68")).'</td>
               </tr>
               <tr>
-                <td><input type="radio" name="targettech" id="rtt2" disabled="disabled" value=3></td>
-                <td>'.constant($game->sprache("TEXT69")).'</td>              
+                <td><input type="radio" name="targettech" id="rtt2" disabled="disabled" value=2></td>
+                <td>'.constant($game->sprache("TEXT72")).'</td>
               </tr>
               <tr>
-                <td><input type="radio" name="targettech" id="rtt3" disabled="disabled" value=4></td>
-                <td>'.constant($game->sprache("TEXT70")).'</td>              
+                <td><input type="radio" name="targettech" id="rtt3" disabled="disabled" value=3></td>
+                <td>'.constant($game->sprache("TEXT69")).'</td>
+              </tr>
+              <tr>
+                <td><input type="radio" name="targettech" id="rtt4" disabled="disabled" value=4></td>
+                <td>'.constant($game->sprache("TEXT70")).'</td>
               </tr>
               </table>
            <br><br>'.$requirement_text.'</td>
         </tr>');
             // Military Support Mission
             $requirement_text = constant($game->sprache("TEXT63"));
-            $results = meet_mission_req($myship['ship_id'], 20, 15, 15, 3, 15, 0);
+            $results = meet_mission_req($myship['ship_id'], 20, 15, 15, 2, 15, 0);
             $all_clear = (array_sum($results) == 0 ? true : false);
             if($all_clear) 
             {
-                $requirement_text .= requirements_str_ok(20, 15, 15, 3, 15, 0);
+                $requirement_text .= requirements_str_ok(20, 15, 15, 2, 15, 0);
             }
             else
             {
-                $requirement_text .= requirements_str_bad(20, 15, 15, 3, 15, 0, $results);
+                $requirement_text .= requirements_str_bad(20, 15, 15, 2, 15, 0, $results);
             }
-            $game->out('            
+            $game->out('
         <tr>
-          <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true" value="milsup" '.($all_clear ? '' : 'disabled="disabled"').'></td>
+          <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true; document.send_form.rtt4.disabled=true" value="milsup" '.($all_clear ? '' : 'disabled="disabled"').'></td>
           <td>'.constant($game->sprache("TEXT71")).'<br><br>'.$requirement_text.'</td>
         </tr>');
             switch($game->player['user_race']){
