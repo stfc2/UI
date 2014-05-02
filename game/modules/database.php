@@ -415,7 +415,7 @@ else if($module == 'racedata')
     $game->out('
     <table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
     <tr>
-        <td align="center"><span class="sub_caption">'.constant($game->sprache("TEXT64")).'</span></td>
+        <td align="center"><span class="sub_caption">'.constant($game->sprache("TEXT71")).'</span></td>
     </tr>
     ');
 
@@ -450,10 +450,20 @@ else if($module == 'racedata')
                     case 22:
                         $data = ($value ? constant($game->sprache("TEXT65")) : constant($game->sprache("TEXT66")));
                     break;
+                    case 29:
+                        $data = '';
+                        if($value[0]) $data .= constant($game->sprache("TEXT72")).'<br>';
+                        if($value[1]) $data .= constant($game->sprache("TEXT73")).'<br>';
+                        if($value[2]) $data .= constant($game->sprache("TEXT74")).'<br>';
+                        if($value[3]) $data .= constant($game->sprache("TEXT75")).'<br>';
+                        if($value[4]) $data .= constant($game->sprache("TEXT76"));
+                    break;
                     default:
                         $data = ($value * 100).' %';
                     break;
                 }
+
+                if(empty($data)) $data = constant($game->sprache("TEXT77"));
                 $game->out('
     <tr>
         <td>'.constant($game->sprache("TEXT".($j+35))).'</td><td width="60" align="center">'.$data.'</td>

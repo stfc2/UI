@@ -150,7 +150,7 @@ define ("GER_TEXT62", 'Minkostenfaktor f&uuml;r Forschungen');
 
 define ("GER_TEXT63", 'Latkostenfaktor f&uuml;r Forschungen');
 
-define ("GER_TEXT64", 'Die Rassenwerte von STFC');
+define ("GER_TEXT64", 'Exportierbar Technologien');
 
 define ("GER_TEXT65", 'Ja');
 
@@ -163,6 +163,20 @@ define ("GER_TEXT68", 'Vorige Seite');
 define ("GER_TEXT69", 'Index');
 
 define ("GER_TEXT70", 'N&auml;chste Seite');
+
+define ("GER_TEXT71", 'Die Rassenwerte von STFC');
+
+define ("GER_TEXT72", 'Umwelt');
+
+define ("GER_TEXT73", 'Medizinisch');
+
+define ("GER_TEXT74", 'Verteidigung');
+
+define ("GER_TEXT75", 'Automatisierung');
+
+define ("GER_TEXT76", 'Bergbau');
+
+define ("GER_TEXT77", 'Keiner');
 
 
 
@@ -295,7 +309,7 @@ define ("ENG_TEXT62", 'Mineral costs for research');
 
 define ("ENG_TEXT63", 'Dilithium costs for research');
 
-define ("ENG_TEXT64", 'The breed values of STFC');
+define ("ENG_TEXT64", 'Exportable technologies');
 
 define ("ENG_TEXT65", 'Yes');
 
@@ -309,6 +323,19 @@ define ("ENG_TEXT69", 'Index');
 
 define ("ENG_TEXT70", 'Next page');
 
+define ("ENG_TEXT71", 'The breed values of STFC');
+
+define ("ITA_TEXT72", 'Environment');
+
+define ("ITA_TEXT73", 'Medical');
+
+define ("ITA_TEXT74", 'Defence');
+
+define ("ITA_TEXT75", 'Automation');
+
+define ("ITA_TEXT76", 'Mining');
+
+define ("ITA_TEXT77", 'None');
 
 
 //Italian
@@ -441,7 +468,7 @@ define ("ITA_TEXT62", 'Costi in minerali per la ricerca');
 
 define ("ITA_TEXT63", 'Costi in dilitio per la ricerca');
 
-define ("ITA_TEXT64", 'Valori razziali di STFC');
+define ("ITA_TEXT64", 'Tecnologie esportabili');
 
 define ("ITA_TEXT65", 'Si');
 
@@ -455,5 +482,18 @@ define ("ITA_TEXT69", 'Indice');
 
 define ("ITA_TEXT70", 'Pagina successiva');
 
+define ("ITA_TEXT71", 'Valori razziali di STFC');
+
+define ("ITA_TEXT72", 'Ambiente');
+
+define ("ITA_TEXT73", 'Medicale');
+
+define ("ITA_TEXT74", 'Difesa');
+
+define ("ITA_TEXT75", 'Automazione');
+
+define ("ITA_TEXT76", 'Estrazione');
+
+define ("ITA_TEXT77", 'Nessuna');
 
 ?>
