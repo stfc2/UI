@@ -5800,9 +5800,9 @@ $SHIP_TORSO = array(
 
 	    2 => array(
 
-	        0 => 66600,  // Metal
+	        0 => 29363,  // Metal
 
-			1 => 29363,  // Minerals
+			1 => 66600,  // Minerals
 
 			2 => 41100,  // Latinum
 
@@ -10288,69 +10288,69 @@ $SHIP_TORSO = array(
 
 	    ),
 
-    	// Excelsior
+    	// Centaur
 
 	    7 => array(
 
-			0 => 41212,  // Metal
+			0 => 41000,  // Metal
 
-			1 => 37445,  // Minerals
+			1 => 38000,  // Minerals
 
-			2 => 20956,  // Latinum
+			2 => 21500,  // Latinum
 
-			3 => 85,  // Min. Unit 1(L. Infanterie)
+			3 => 90,  // Min. Unit 1(L. Infanterie)
 
-			4 => 25,  // Min. Unit 2 (Sturmtruppe)
+			4 => 30,  // Min. Unit 2 (Sturmtruppe)
 
 			5 => 10,  // Min. Unit 3 (Hazard Team)
 
-			6 => 0,  // Min. Unit 4 (Commander)
+			6 => 1,  // Min. Unit 4 (Commander)
 
-			7 => 100,  // Max Unit 1 (L. Infanterie)
+			7 => 90,  // Max Unit 1 (L. Infanterie)
 
-			8 => 50,  // Max Unit 2 (Sturmtruppe)
+			8 => 30,  // Max Unit 2 (Sturmtruppe)
 
-			9 => 75,  // Max Unit 3 (Hazard Team)
+			9 => 10,  // Max Unit 3 (Hazard Team)
 
-			10 => 5,  // Max Unit 4 (Commander)
+			10 => 1,  // Max Unit 4 (Commander)
 
 			11 => 15,  // Unit 5 (Offizier)
 
 			12 => 5,  // Unit 6 (Medizinisches Personal)
 
-			13 => 265,  // Buildtime (in 5 Minuten Schritten)
+			13 => 480,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 190,   // Value1 (Leichte Waffen)
+			14 => 340,   // Value1 (Leichte Waffen)
 
-			15 => 110,   // Value2 (Schwere Waffen)
+			15 => 300,   // Value2 (Schwere Waffen)
 
 			16 => 10,   // Value3 (Planetare Waffen)
 
-			17 => 670,   // Value4 (Schildstärke)
+			17 => 760,   // Value4 (Schildstärke)
 
-			18 => 300,   // Value5 (Hülle bzw. Hitpoins)
+			18 => 450,   // Value5 (Hülle bzw. Hitpoins)
 
-			19 => 9,   // Value6 (Reaktionsgeschw.)
+			19 => 19,   // Value6 (Reaktionsgeschw.)
 
-			20 => 5,   // Value7 (Bereitschaft)
+			20 => 15,   // Value7 (Bereitschaft)
 
 			21 => 24,   // Value8 (Wendigkeit)
 
-			22 => 10,   // Value9 (Erfahrung)
+			22 => 1,   // Value9 (Erfahrung)
 
-			23 => 4.2,   // Value10 (Warp)
+			23 => 8.4,   // Value10 (Warp)
 
-			24 => 5,   // Value11 (Sensoren)
+			24 => 14,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 30,   // Value13 (Energy Available)
+			26 => 65,   // Value13 (Energy Available)
 
-			27 => 25,   // Value14 (Used Energy)
+			27 => 65,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Excelsior',  // Name
+			29 => 'Centaur',  // Name
 
 			30 => 550,  // Benötige Arbeiter zum Bau
 

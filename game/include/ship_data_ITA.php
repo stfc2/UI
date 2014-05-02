@@ -1471,19 +1471,19 @@ $SHIP_TORSO_LOCALE = array(
 			1 => 'La spina dorsale della flotta, le navi del tempo classe Wells, possono essere utilizzate per una grande variet&agrave; di compiti.',
 
 		),
-		
+
 		11 => array(
 
 			0 => 'Prometheus',
 
 			1 => 'Dopo quasi 300 anni la Prometheus &egrave; stata messa fuori servizio, tuttavia &egrave; stata nuovamente riattivata per le operazioni nel passato',
 
-		),			
+		),
 
 
 
 	),
-	
+
 	// Settlers
 
 	13 => array(
@@ -1535,7 +1535,17 @@ $SHIP_TORSO_LOCALE = array(
 			1 => 'La spina dorsale della flotta, le navi del tempo classe Wells, possono essere utilizzate per una grande variet&agrave; di compiti.',
 
 		),
-		
+
+		// Centaur
+
+		7 => array(
+
+			0 => 'Centaur',  // Name
+
+			1 => 'Incrociatore medio progettato per la difesa dei sistemi indipendenti. Il progetto si basa su quello della classe Excelsior.',
+
+		),
+
 		11 => array(
 
 			0 => 'Achilles',
@@ -1552,9 +1562,9 @@ $SHIP_TORSO_LOCALE = array(
 
 			1 => 'Questa piattaforma di difesa orbitale sperimentale &egrave; la risposta delle colonie indipendenti ai frequenti attacchi di predatori quali i Borg. Nonostante sia ancora un prototipo, molte colonie si sono affrettate ad installare questi sistemi difensivi in gran numero.',
 
-	    ),				
+	    ),
 
-	),	
+	),
 
 );
 
