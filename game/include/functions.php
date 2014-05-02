@@ -1628,7 +1628,7 @@ echo'
 			if(!empty($_POST['new_capital'])) {
 				$planet_id = (int)$_POST['new_capital'];
 
-				$sql = 'SELECT planet_id, planet_owner
+				$sql = 'SELECT planet_id, planet_owner, system_id
 				        FROM planets
 				        WHERE planet_id = '.$planet_id;
 
@@ -1678,6 +1678,17 @@ echo'
 
 				$this->player['user_capital'] = $planet_id;
 				$this->player['pending_capital_choice'] = 0;
+
+				// Mark the new home system as private
+				if(HOME_SYSTEM_PRIVATE) {
+					$sql = 'UPDATE starsystems SET system_closed = 1,
+					                               system_owner = '.$this->uid.'
+					        WHERE system_id = '.$new_capital['system_id'];
+
+					if(!$db->query($sql)) {
+						message(DATABASE_ERROR, 'Could not update system owner data! SKIP');
+					}
+				}
 			}
 			else {
 				$sql = 'SELECT p.planet_id, p.planet_name, p.system_id, p.sector_id, p.planet_type, p.planet_distance_id, p.planet_points, p.planet_next_attack,
@@ -2127,6 +2138,61 @@ echo'
 		return array($system_global_x, $system_global_y);
 	}
 
+    function is_ally_explored($system_id)
+    {
+        global $db;
+
+        if($this->player['user_auth_level'] == STGC_DEVELOPER) return true;
+
+        $sql = 'SELECT timestamp FROM starsystems_details
+                WHERE system_id = '.$system_id.' AND
+                      alliance_id = '.$this->player['user_alliance'];
+        if(($res = $db->queryrow($sql)) === false) {
+            message(DATABASE_ERROR, 'Could not query starsystem details');
+        }
+
+        if(!empty($res['timestamp'])) return true;
+        else return false;
+    }
+
+    function is_user_explored($system_id)
+    {
+        global $db;
+
+        if($this->player['user_auth_level'] == STGC_DEVELOPER) return true;        
+
+        $sql = 'SELECT timestamp FROM starsystems_details
+                WHERE system_id = '.$system_id.' AND
+                      user_id = '.$this->player['user_id'];
+        if(($res = $db->queryrow($sql)) === false) {
+            message(DATABASE_ERROR, 'Could not query starsystem details');
+        }
+
+        if(!empty($res['timestamp'])) return true;
+        else return false;
+    }
+
+    function is_system_allowed($system_id)
+    {
+        global $db;
+        // We return true for a system where we can go freely
+
+        if($this->player['user_auth_level'] == STGC_DEVELOPER) return true;
+
+        $sql = 'SELECT system_owner FROM starsystems
+                WHERE system_id = '.$system_id;
+
+        if(($res = $db->queryrow($sql)) === false) {
+            message(DATABASE_ERROR, 'Could not query starsystem details');
+        }
+
+        if($res['system_owner'] == 0) return true;
+
+        if($res['system_owner'] == $this->player['user_id']) return true;
+
+        return false;
+    }
+
 	// Veraltet, besser direkter Zugriff durch world.php
 	function create_system($id_type, $id_value) {
 		include_once('include/libs/world.php');
@@ -2429,6 +2495,26 @@ echo'
 			. ' VALUES ('.$planet_id.', '.$this->player['user_id'].', 0, '.$this->player['user_id'].', 0, '.time().', 0)';
 			if(!$db->query($sql)) {
 				message(DATABASE_ERROR, 'Could not update planet details data');
+			}
+
+			//DC FoW 2.0
+			$sql = 'INSERT INTO starsystems_details (system_id, user_id, timestamp)
+			        VALUES ('.$_system_id.', '.$this->player['user_id'].', '.time().')';
+
+			if(!$db->query($sql)) {
+				message(DATABASE_ERROR, 'Could not update starsystem details data');
+			}
+			//DC ----
+
+			// Mark the newly created home system as private
+			if(HOME_SYSTEM_PRIVATE) {
+				$sql = 'UPDATE starsystems SET system_closed = 1,
+				                               system_owner = '.$this->player['user_id'].'
+				        WHERE system_id = '.$_system_id;
+
+				if(!$db->query($sql)) {
+					message(DATABASE_ERROR, 'Could not update system owner data');
+				}
 			}
 		}
 
