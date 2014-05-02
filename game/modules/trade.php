@@ -1696,7 +1696,7 @@ function Show_CreateBidding()
 }
 
 
-function Ress_price($nach,$von,$art)
+function Ress_price($nach,$von)
 {
 global $db;
 global $game;
@@ -1711,42 +1711,40 @@ $svon = $RACE_DATA[$game->player['user_race']][$von];
 switch($nach) {
 	case 1:
 	case 9:
-		$snach = 3.0;
+		$snach = 4.0;
 	break;
 	case 10:
-		$snach = 2.0;
+		$snach = 5.0;
 	break;
 	case 11:
-		$snach = 1.60;
+		$snach = 2.80;
 	break;
 }
 
 switch($von) {
 	case 1:
 	case 9:
-		$svon = 3.0;
+		$svon = 4.0;
 	break;
 	case 10:
-		$svon = 2.0;
+		$svon = 5.0;
 	break;
 	case 11:
-		$svon = 1.60;
+		$svon = 2.80;
 	break;
 }
 
 //echo ('Snach: '.$snach.' Svon: '.$svon);
-if($art==0)$ergebniss = ($snach/$svon)- (($snach/$svon)*30/100);
-if($art==1)$ergebniss = ($snach/$svon) - (($snach/ $svon)*15/100);
-if($art==2)$ergebniss = ($snach/$svon);
-if($art==3)$ergebniss = ($snach/$svon) + (($snach/$svon)*15/100);
+$ergebniss = ($snach/$svon);
+
 
 return $ergebniss;
 }
 
 function Trade_Ress()
 {
-global $db;
-global $game,$ACTUAL_TICK;
+global $game, $db, $ACTUAL_TICK;
+
 /*
 [22:07:05] <TotesTAP> [02:46] <rmA> 1 : 4 : 3
 [22:07:05] <TotesTAP> [02:46] <rmA> Met : Min : Lat
@@ -1755,39 +1753,45 @@ global $game,$ACTUAL_TICK;
 [22:07:08] <TotesTAP> [02:48] <rmA> bei 36h 15% steuern
 */
 $game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT144")).' '.HelpPopup('trade_ress').' :</span></center><br>');
-if(!isset($_POST['menge']) || $_POST['menge']<0)$_POST['menge']=0;
+
 if(isset($_POST['bezahlungsart'])) $_POST['bezahlungsart']=(int)$_POST['bezahlungsart'];
-$_POST['menge']=(int)$_POST['menge'];
+
+/*
 if(isset($_POST['plani_ziel'])) $_POST['plani_ziel']=(int)$_POST['plani_ziel'];
 if(isset($_POST['plani'])) $_POST['plani']=(int)$_POST['plani'];
+*/
 
+/*
 if(isset($_POST['Art']))
 if($_POST['Art']!="Metall" && $_POST['Art']!="Latinum" && $_POST['Art']!="Mineral")
 {
 	message(NOTICE, constant($game->sprache("TEXT145")));
 }
+*/
 
+/*
 $daten=$db->queryrow('SELECT * FROM FHB_Handels_Lager WHERE id=1');
 
-/* 27/02/08 - AC: Check DB query */
+// 27/02/08 - AC: Check DB query 
 if($daten == null)
 {
 	$daten['ress_1'] = 0;
 	$daten['ress_2'] = 0;
 	$daten['ress_3'] = 0;
 }
+*/
 
 /* 04/03/08 - AC: If step is not specified, it si frist step */
 if(!isset($_REQUEST['step'])) $_REQUEST['step'] = '1';
 
-if(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && isset($_POST['plani']) && $_REQUEST['step']=='3' && $_POST['menge']!=0)
+if(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && isset($_POST['plani']) && $_REQUEST['step']=='2')
 {
 	/* 01/03/08 - AC: Check this value */
 	if(!isset($_POST['plani_ziel'])) $_POST['plani_ziel'] = 0;
-
-	$plani_id_a=$db->queryrow('SELECT planet_id,planet_name FROM `planets` WHERE planet_id='.$_POST['plani_ziel'].' AND planet_owner='.$game->player['user_id'].'');
-	$plani_id_r=$db->queryrow('SELECT planet_id,planet_name FROM `planets` WHERE planet_id='.$_POST['plani'].' AND planet_owner='.$game->player['user_id'].'');
-	if($plani_id_a['planet_id']!=$_POST['plani_ziel'] || $plani_id_r['planet_id']!=$_POST['plani'])
+	
+	$plani_id_a=$db->queryrow('SELECT planet_id,planet_name FROM `planets` WHERE planet_id='.decode_planet_id($_POST['plani_ziel']).' AND planet_owner='.$game->player['user_id'].'');
+	$plani_id_r=$db->queryrow('SELECT planet_id,planet_name FROM `planets` WHERE planet_id='.decode_planet_id($_POST['plani']).' AND planet_owner='.$game->player['user_id'].'');
+	if($plani_id_a['planet_id']!=decode_planet_id($_POST['plani_ziel']) || $plani_id_r['planet_id']!=decode_planet_id($_POST['plani']))
 	{
 		$game->out(constant($game->sprache("TEXT146")));
 	}else
@@ -1796,10 +1800,10 @@ if(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && isset($_PO
 		$kosten['Mineral']=0;
 		$kosten['Latinum']=0;
 
-		if($_POST['transportsart']!=1 && $_POST['transportsart']!=2 && $_POST['transportsart']!=3)  {$game->out('Cheat'); exit;}
-		if($_POST['transportsart']==1) {$transportsatz=0.50;$tickzeit=20*6;}
-		if($_POST['transportsart']==2) {$transportsatz=0.35;$tickzeit=20*12;}
-		if($_POST['transportsart']==3) {$transportsatz=0.15;$tickzeit=20*36;}
+		if($_POST['transport']!=1 && $_POST['transport']!=2 && $_POST['transport']!=3)  {$game->out('Cheat'); exit;}
+		if($_POST['transport']==1) {$transportsatz=0.50;$tickzeit=20*6;}
+		if($_POST['transport']==2) {$transportsatz=0.35;$tickzeit=20*12;}
+		if($_POST['transport']==3) {$transportsatz=0.15;$tickzeit=20*36;}
 
 		$daten=$db->queryrow('SELECT * FROM FHB_Handels_Lager WHERE id=1');
 
@@ -1811,578 +1815,403 @@ if(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && isset($_PO
 			$daten['ress_3'] = 0;
 		}
 
-		if($_POST['bezahlungsart']==1 && $_POST['Art']=="Metall") // metall zu mineral
-		{
-			if($daten['ress_2']<1000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,9,0));}
-			if($daten['ress_2']>=1000000 && $daten['ress_2']<=8000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,9,1));}
-			if($daten['ress_2']>=8000001 && $daten['ress_2']<=46000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,9,2));}
-			if($daten['ress_2']>46000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,9,3));}
-		}
-		else if($_POST['bezahlungsart']==2 && $_POST['Art']=="Metall") // metall zu latinum
-		{
-			if($daten['ress_3']<800000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,9,0));}
-			if($daten['ress_3']>=800000 && $daten['ress_3']<=6400000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,9,1));}
-			if($daten['ress_3']>=6400001 && $daten['ress_3']<=36800000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,9,2));}
-			if($daten['ress_3']>36800000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,9,3));}
-		}
-		else if($_POST['bezahlungsart']==3 && $_POST['Art']=="Mineral") // minerali contro metallo
-		{
-			if($daten['ress_1']<1500000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,0));}
-			if($daten['ress_1']>=1500000 && $daten['ress_1']<=12000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,1));}
-			if($daten['ress_1']>=12000001 && $daten['ress_1']<=69000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,2));}
-			if($daten['ress_1']>69000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,10,3));}
-		}
-		else if($_POST['bezahlungsart']==4 && $_POST['Art']=="Mineral") // minerali contro latinum
-		{
-			if($daten['ress_3']<800000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,10,0));}
-			if($daten['ress_3']>=800000 && $daten['ress_3']<=6400000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,10,1));}
-			if($daten['ress_3']>=6400001 && $daten['ress_3']<=36800000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,10,2));}
-			if($daten['ress_3']>36800000){$kosten['Latinum']=(int)($_POST['menge']*Ress_price(11,10,3));}
-		}
-		else if($_POST['bezahlungsart']==5 && $_POST['Art']=="Latinum") // latinum zu metall
-		{
-			if($daten['ress_1']<1500000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,0));}
-			if($daten['ress_1']>=1500000 && $daten['ress_1']<=12000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,1));}
-			if($daten['ress_1']>=12000001 && $daten['ress_1']<=69000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,2));}
-			if($daten['ress_1']>69000000){$kosten['Metall']=(int)($_POST['menge']*Ress_price(9,11,3));}
-		}
-		else if($_POST['bezahlungsart']==6 && $_POST['Art']=="Latinum") // latinum zu mineral
-		{
-			if($daten['ress_2']<1000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,11,0));}
-			if($daten['ress_2']>=1000000 && $daten['ress_2']<=8000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,11,1));}
-			if($daten['ress_2']>=8000001 && $daten['ress_2']<=46000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,11,2));}
-			if($daten['ress_2']>46000000){$kosten['Mineral']=(int)($_POST['menge']*Ress_price(10,11,3));}
-		}
-
+		// DC --- Vediamo di compattare un poco il codice
 		$db->lock('FHB_Handels_Lager','scheduler_resourcetrade');
-		$plani_inhalt=$db->queryrow('SELECT resource_2,resource_1,resource_3 FROM `planets` WHERE planet_id='.$_POST['plani'].' AND planet_owner='.$game->player['user_id'].'');
-		if($_POST['bezahlungsart']==1 && isset($transportsatz) && $_POST['menge']<=$plani_inhalt['resource_1'])
-		{ 
-			if($transportsatz!=0)
-			{$steuern=(int)($kosten['Mineral']*$transportsatz);
-			}else{$steuern=0;}
-			$daten=$db->queryrow('SELECT * FROM FHB_Handels_Lager WHERE id=1');
-
-			/* 27/02/08 - AC: Check DB query */
-			if($daten == null)
-			{
-				$daten['ress_1'] = 0;
-				$daten['ress_2'] = 0;
-				$daten['ress_3'] = 0;
-			}
-
-			if($daten['ress_2']>=$kosten['Mineral'])
-			{
-				// dem user Ressourcen abziehen:
-				if (($db->query('UPDATE planets SET resource_1=resource_1-'.$_POST['menge'].' WHERE planet_id='.$_POST['plani'].''))==true)
-				{
-					// dem NPC Ressourcen abziehen:
-					if (($db->query('UPDATE FHB_Handels_Lager SET ress_2=ress_2-'.($kosten['Mineral']).'+'.($steuern).',ress_1=ress_1+'.$_POST['menge'].' WHERE id=1'))==true)
-					{
-						// Buyers goods in the Trade Register Scheduler:
-						if (($db->query('INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,arrival_time) VALUES ("'.$_POST['plani_ziel'].'",0,'.($kosten['Mineral']-$steuern).',0,"'.($ACTUAL_TICK+$tickzeit).'")'))==true)
-						{
-							$game->out('<table><tr><td>'.constant($game->sprache("TEXT147")).'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT148")).$plani_id_a['planet_name'].'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT149")).$steuern.'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT150")).($kosten['Mineral']-$steuern).'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT151")).$_POST['menge'].'</td></tr>
-								<tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
-								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
-						}
-						else{message(DATABASE_ERROR, 'Internal database error');}
-					}
-					else{message(DATABASE_ERROR, 'Internal database error');}
-				}
-				else{message(DATABASE_ERROR, 'Internal database error');}
-			}
-			else{message(NOTICE, constant($game->sprache("TEXT153")));}
-			$db->unlock('FHB_Handels_Lager','scheduler_resourcetrade');
-		}
-		elseif($_POST['bezahlungsart']==2 && isset($transportsatz) &&  $_POST['menge']<=$plani_inhalt['resource_1'])
+		$plani_inhalt=$db->queryrow('SELECT resource_1,resource_2,resource_3 FROM `planets` WHERE planet_id='.decode_planet_id($_POST['plani']).' AND planet_owner='.$game->player['user_id'].'');		
+		if($_POST['risorsa_da'] == "Metall" && $_POST['risorsa_a']=="Mineral") // Ottengo Minerale, cedo Metallo
 		{
-			if($transportsatz!=0)
-			{
-				$steuern=(int)($kosten['Latinum']*$transportsatz);
-			}else{$steuern=0;}
-	
-			$daten=$db->queryrow('SELECT * FROM FHB_Handels_Lager WHERE id=1');
-
-			/* 27/02/08 - AC: Check DB query */
-			if($daten == null)
-			{
-				$daten['ress_1'] = 0;
-				$daten['ress_2'] = 0;
-				$daten['ress_3'] = 0;
-			}
-
-			if($daten['ress_3']>=$kosten['Latinum'])
-			{
-				// dem user Ressourcen abziehen:
-				if (($db->query('UPDATE planets SET resource_1=resource_1-'.$_POST['menge'].' WHERE planet_id='.$_POST['plani'].''))==true)
-				{
-					// dem NPC Ressourcen abziehen:
-					if (($db->query('UPDATE FHB_Handels_Lager SET ress_3=ress_3-'.($kosten['Latinum']).'+'.($steuern).',ress_1=ress_1+'.$_POST['menge'].' WHERE id=1'))==true)
-					{
-						// Buyers goods in the Trade Register Scheduler:
-						if (($db->query('INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,arrival_time) VALUES ("'.$_POST['plani_ziel'].'",0,0,'.($kosten['Latinum']-$steuern).',"'.($ACTUAL_TICK+$tickzeit).'")'))==true)
-						{
-							$game->out('<table><tr><td>'.constant($game->sprache("TEXT147")).'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT148")).$plani_id_a['planet_name'].'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT149")).$steuern.'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT156")).($kosten['Latinum']-$steuern).'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT151")).$_POST['menge'].'</td></tr>
-								<tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
-								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
-						}
-						else{message(DATABASE_ERROR, 'Internal database error');}
-					}
-					else{message(DATABASE_ERROR, 'Internal database error');}
-				}
-				else{message(DATABASE_ERROR, 'Internal database error');}
-			}
-			else{message(NOTICE, constant($game->sprache("TEXT153")));}
-			$db->unlock('FHB_Handels_Lager','scheduler_resourcetrade');
-		}
-		elseif($_POST['bezahlungsart']==3 && isset($transportsatz) &&  $_POST['menge']<=$plani_inhalt['resource_2'])
-		{
-			if($transportsatz!=0)
-			{
-				$steuern=(int)($kosten['Metall']*$transportsatz);
-			}else{$steuern=0;}
-
-			$daten=$db->queryrow('SELECT * FROM FHB_Handels_Lager WHERE id=1');
-
-			/* 27/02/08 - AC: Check DB query */
-			if($daten == null)
-			{
-				$daten['ress_1'] = 0;
-				$daten['ress_2'] = 0;
-				$daten['ress_3'] = 0;
-			}
-
-			if($daten['ress_1']>=$kosten['Metall'])
-			{
-				// dem user Ressourcen abziehen:
-				if (($db->query('UPDATE planets SET resource_2=resource_2-'.$_POST['menge'].' WHERE planet_id='.$_POST['plani'].''))==true)
-				{
-					// dem NPC Ressourcen abziehen:
-					if (($db->query('UPDATE FHB_Handels_Lager SET ress_1=ress_1-'.($kosten['Metall']).'+'.($steuern).',ress_2=ress_2+'.$_POST['menge'].' WHERE id=1'))==true)
-					{
-						// Buyers goods in the Trade Register Scheduler:
-						if (($db->query('INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,arrival_time) VALUES ("'.$_POST['plani_ziel'].'",'.($kosten['Metall']-$steuern).',0,0,"'.($ACTUAL_TICK+$tickzeit).'")'))==true)
-						{
-							$game->out('<table><tr><td>'.constant($game->sprache("TEXT147")).'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT148")).$plani_id_a['planet_name'].'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT149")).$steuern.'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT154")).($kosten['Metall']-$steuern).'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT155")).$_POST['menge'].'</td></tr>
-								<tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
-								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
-						}
-						else{message(DATABASE_ERROR, 'Internal database error');}
-					}
-					else{message(DATABASE_ERROR, 'Internal database error');}
-				}
-				else{message(DATABASE_ERROR, 'Internal database error');}
-			}
-			else{message(NOTICE, constant($game->sprache("TEXT153")));}
-			$db->unlock('FHB_Handels_Lager','scheduler_resourcetrade');
-		}
-		elseif($_POST['bezahlungsart']==4 && isset($transportsatz) && $_POST['menge']<=$plani_inhalt['resource_2'])
-		{
-			if($transportsatz!=0)
-			{
-				$steuern=(int)($kosten['Latinum']*$transportsatz);
-			}else{$steuern=0;}
-
-			$daten=$db->queryrow('SELECT * FROM FHB_Handels_Lager WHERE id=1');
-
-			/* 27/02/08 - AC: Check DB query */
-			if($daten == null)
-			{
-				$daten['ress_1'] = 0;
-				$daten['ress_2'] = 0;
-				$daten['ress_3'] = 0;
-			}
-
-			if($daten['ress_3']>=$kosten['Latinum'])
-			{
-				// dem user Ressourcen abziehen:
-				if (($db->query('UPDATE planets SET resource_2=resource_2-'.$_POST['menge'].' WHERE planet_id='.$_POST['plani'].''))==true)
-				{
-					// dem NPC Ressourcen abziehen:
-					if (($db->query('UPDATE FHB_Handels_Lager SET ress_3=ress_3-'.($kosten['Latinum']).'+'.($steuern).',ress_2=ress_2+'.$_POST['menge'].' WHERE id=1'))==true)
-					{
-						// Buyers goods in the Trade Register Scheduler:
-						if (($db->query('INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,arrival_time) VALUES ("'.$_POST['plani_ziel'].'",0,0,'.($kosten['Latinum']-$steuern).',"'.($ACTUAL_TICK+$tickzeit).'")'))==true)
-						{
-							$game->out('<table><tr><td>'.constant($game->sprache("TEXT147")).'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT148")).$plani_id_a['planet_name'].'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT149")).$steuern.'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT156")).($kosten['Latinum']-$steuern).'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT155")).$_POST['menge'].'</td></tr>
-								<tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
-								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
-						}
-						else{message(DATABASE_ERROR, 'Internal database error');}
-					}
-					else{message(DATABASE_ERROR, 'Internal database error');}
-				}
-				else{message(DATABASE_ERROR, 'Internal database error');}
-			}
-			else{message(NOTICE, constant($game->sprache("TEXT153")));}
-			$db->unlock('FHB_Handels_Lager','scheduler_resourcetrade');
-		}
-		elseif($_POST['bezahlungsart']==5 && isset($transportsatz) &&  $_POST['menge']<=$plani_inhalt['resource_3'])
-		{
-			if($transportsatz!=0)
-			{
-				$steuern=(int)($kosten['Metall']*$transportsatz);
-			}else{$steuern=0;}
-
-			$daten=$db->queryrow('SELECT * FROM FHB_Handels_Lager WHERE id=1');
-
-			/* 27/02/08 - AC: Check DB query */
-			if($daten == null)
-			{
-				$daten['ress_1'] = 0;
-				$daten['ress_2'] = 0;
-				$daten['ress_3'] = 0;
-			}
-
-			if($daten['ress_1']>=$kosten['Metall'])
-			{
-				// dem user Ressourcen abziehen:
-				if (($db->query('UPDATE planets SET resource_3=resource_3-'.$_POST['menge'].' WHERE planet_id='.$_POST['plani'].''))==true)
-				{
-					// dem NPC Ressourcen abziehen:
-					if (($db->query('UPDATE FHB_Handels_Lager SET ress_1=ress_1-'.($kosten['Metall']).'+'.($steuern).',ress_3=ress_3+'.$_POST['menge'].' WHERE id=1'))==true)
-					{
-						// Buyers goods in the Trade Register Scheduler:
-						if (($db->query('INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,arrival_time) VALUES ("'.$_POST['plani_ziel'].'",'.($kosten['Metall']-$steuern).',0,0,"'.($ACTUAL_TICK+$tickzeit).'")'))==true)
-						{
-							$game->out('<table><tr><td>'.constant($game->sprache("TEXT147")).'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT148")).$plani_id_a['planet_name'].'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT149")).$steuern.'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT154")).($kosten['Metall']-$steuern).'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT157")).$_POST['menge'].'</td></tr>
-								<tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
-								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
-						}
-						else{message(DATABASE_ERROR, 'Internal database error');}
-					}
-					else{message(DATABASE_ERROR, 'Internal database error');}
-				}
-				else{message(DATABASE_ERROR, 'Internal database error');}
-			}
-			else{message(NOTICE, constant($game->sprache("TEXT153")));}
-			$db->unlock('FHB_Handels_Lager','scheduler_resourcetrade');
-		}
-		elseif($_POST['bezahlungsart']==6 && isset($transportsatz) && $_POST['menge']<=$plani_inhalt['resource_3'])
-		{
-			if($transportsatz!=0)
+			$kosten['Mineral']=(int)($_POST['Qty']*Ress_price(10,9));
+			if($_POST['Qty']<=$plani_inhalt['resource_1'])
 			{
 				$steuern=(int)($kosten['Mineral']*$transportsatz);
-			}else{$steuern=0;}
-
-			$daten=$db->queryrow('SELECT * FROM FHB_Handels_Lager WHERE id=1');
-
-			/* 27/02/08 - AC: Check DB query */
-			if($daten == null)
-			{
-			$daten['ress_1'] = 0;
-			$daten['ress_2'] = 0;
-			$daten['ress_3'] = 0;
-			}
-
-			if($daten['ress_2']>=$kosten['Mineral'])
-			{
-				// dem user Ressourcen abziehen:
-				if (($db->query('UPDATE planets SET resource_3=resource_3-'.$_POST['menge'].' WHERE planet_id='.$_POST['plani'].''))==true)
+				if($daten['ress_2']>=($kosten['Mineral'] - $steuern))
 				{
-					// dem NPC Ressourcen abziehen:
-					if (($db->query('UPDATE FHB_Handels_Lager SET ress_2=ress_2-'.($kosten['Mineral']).'+'.($steuern).',ress_3=ress_3+'.$_POST['menge'].' WHERE id=1'))==true)
+					// dem user Ressourcen abziehen:
+					if (($db->query('UPDATE planets SET resource_1=resource_1-'.$_POST['Qty'].' WHERE planet_id='.decode_planet_id($_POST['plani']).''))==true)
 					{
-						// Buyers goods in the Trade Register Scheduler:
-						if (($db->query('INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,arrival_time) VALUES ("'.$_POST['plani_ziel'].'",0,'.($kosten['Mineral']-$steuern).',0,"'.($ACTUAL_TICK+$tickzeit).'")'))==true)
+						// dem NPC Ressourcen abziehen:
+						if (($db->query('UPDATE FHB_Handels_Lager SET ress_2=ress_2-'.($kosten['Mineral']).'+'.($steuern).',ress_1=ress_1+'.$_POST['Qty'].' WHERE id=1'))==true)
 						{
-							$game->out('<table><tr><td>'.constant($game->sprache("TEXT147")).'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT148")).$plani_id_a['planet_name'].'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT149")).$steuern.'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT150")).($kosten['Mineral']-$steuern).'</td></tr>
-								<tr><td>'.constant($game->sprache("TEXT157")).$_POST['menge'].'</td></tr>
-								<tr><td><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
-								<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
+							// Buyers goods in the Trade Register Scheduler:
+							if (($db->query('INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,arrival_time) VALUES ("'.decode_planet_id($_POST['plani_ziel']).'",0,'.($kosten['Mineral']-$steuern).',0,"'.($ACTUAL_TICK+$tickzeit).'")'))==true)
+							{
+								$game->out('<table><tr><td>'.constant($game->sprache("TEXT147")).'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT148")).$plani_id_a['planet_name'].'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT149")).$steuern.'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT150")).($kosten['Mineral']-$steuern).'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT151")).$_POST['Qty'].'</td></tr>
+									<tr><td><form name="ritorno" action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
+									<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
+							}
+							else{message(DATABASE_ERROR, 'Internal database error');}
 						}
 						else{message(DATABASE_ERROR, 'Internal database error');}
 					}
 					else{message(DATABASE_ERROR, 'Internal database error');}
 				}
-				else{message(DATABASE_ERROR, 'Internal database error');}
+				else{message(NOTICE, constant($game->sprache("TEXT153")));}
 			}
-			else{message(NOTICE, constant($game->sprache("TEXT153")));}
-			$db->unlock('FHB_Handels_Lager','scheduler_resourcetrade');
+			else{message(NOTICE, constant($game->sprache("TEXT158")));}			
 		}
-		else
+		else if($_POST['risorsa_da'] == "Metall" && $_POST['risorsa_a']=="Latinum") // Ottengo Latinum, cedo Metallo
 		{
-			$game->out(constant($game->sprache("TEXT158")));
-			$db->unlock('FHB_Handels_Lager','scheduler_resourcetrade');
-			$game->out('<table><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress&step=2').'" method="post"><tr><td colspan=2>');
-			$game->out('<input type="hidden" name="menge" value="'.$_POST['menge'].'">');
-			$game->out('<input type="hidden" name="Art" value="'.$_POST['Art'].'">');
-			$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></td></tr></form></table>');
+			$kosten['Latinum']=(int)($_POST['Qty']*Ress_price(11,9));
+			if($_POST['Qty']<=$plani_inhalt['resource_1'])
+			{
+				$steuern=(int)($kosten['Latinum']*$transportsatz);
+				if($daten['ress_3']>=($kosten['Latinum'] - $steuern))
+				{
+					// dem user Ressourcen abziehen:
+					if (($db->query('UPDATE planets SET resource_1=resource_1-'.$_POST['Qty'].' WHERE planet_id='.decode_planet_id($_POST['plani']).''))==true)
+					{
+						// dem NPC Ressourcen abziehen:
+						if (($db->query('UPDATE FHB_Handels_Lager SET ress_3=ress_3-'.($kosten['Latinum']).'+'.($steuern).',ress_1=ress_1+'.$_POST['Qty'].' WHERE id=1'))==true)
+						{
+							// Buyers goods in the Trade Register Scheduler:
+							if (($db->query('INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,arrival_time) VALUES ("'.decode_planet_id($_POST['plani_ziel']).'",0,0,'.($kosten['Latinum']-$steuern).',"'.($ACTUAL_TICK+$tickzeit).'")'))==true)
+							{
+								$game->out('<table><tr><td>'.constant($game->sprache("TEXT147")).'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT148")).$plani_id_a['planet_name'].'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT149")).$steuern.'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT156")).($kosten['Latinum']-$steuern).'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT151")).$_POST['Qty'].'</td></tr>
+									<tr><td><form name="ritorno" action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
+									<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
+							}
+							else{message(DATABASE_ERROR, 'Internal database error');}
+						}
+						else{message(DATABASE_ERROR, 'Internal database error');}
+					}
+					else{message(DATABASE_ERROR, 'Internal database error');}
+				}
+				else{message(NOTICE, constant($game->sprache("TEXT153")));}
+			}
+			else{message(NOTICE, constant($game->sprache("TEXT158")));}			
 		}
+		else if($_POST['risorsa_da'] == "Mineral" && $_POST['risorsa_a']=="Metall") // minerali contro metallo
+		{
+			$kosten['Metall']=(int)($_POST['Qty']*Ress_price(9,10));
+			if($_POST['Qty']<=$plani_inhalt['resource_2'])
+			{
+				$steuern=(int)($kosten['Metall']*$transportsatz);
+				if($daten['ress_1']>=($kosten['Metall'] - $steuern))
+				{
+					// dem user Ressourcen abziehen:
+					if (($db->query('UPDATE planets SET resource_2=resource_2-'.$_POST['Qty'].' WHERE planet_id='.decode_planet_id($_POST['plani']).''))==true)
+					{
+						// dem NPC Ressourcen abziehen:
+						if (($db->query('UPDATE FHB_Handels_Lager SET ress_1=ress_1-'.($kosten['Metall']).'+'.($steuern).',ress_2=ress_2+'.$_POST['Qty'].' WHERE id=1'))==true)
+						{
+							// Buyers goods in the Trade Register Scheduler:
+							if (($db->query('INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,arrival_time) VALUES ("'.decode_planet_id($_POST['plani_ziel']).'",'.($kosten['Metall']-$steuern).',0,0,"'.($ACTUAL_TICK+$tickzeit).'")'))==true)
+							{
+								$game->out('<table><tr><td>'.constant($game->sprache("TEXT147")).'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT148")).$plani_id_a['planet_name'].'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT149")).$steuern.'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT154")).($kosten['Metall']-$steuern).'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT155")).$_POST['Qty'].'</td></tr>
+									<tr><td><form name="ritorno" action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
+									<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
+							}
+							else{message(DATABASE_ERROR, 'Internal database error');}
+						}
+						else{message(DATABASE_ERROR, 'Internal database error');}
+					}
+					else{message(DATABASE_ERROR, 'Internal database error');}
+				}
+				else{message(NOTICE, constant($game->sprache("TEXT153")));}
+			}
+			else{message(NOTICE, constant($game->sprache("TEXT158")));}			
+		}
+		else if($_POST['risorsa_da'] == "Mineral" && $_POST['risorsa_a']=="Latinum") // minerali contro latinum
+		{
+			$kosten['Latinum']=(int)($_POST['Qty']*Ress_price(11,10));
+			if($_POST['Qty']<=$plani_inhalt['resource_2'])
+			{
+				$steuern=(int)($kosten['Latinum']*$transportsatz);
+				if($daten['ress_3']>=($kosten['Latinum'] - $steuern))
+				{
+					// dem user Ressourcen abziehen:
+					if (($db->query('UPDATE planets SET resource_2=resource_2-'.$_POST['Qty'].' WHERE planet_id='.decode_planet_id($_POST['plani']).''))==true)
+					{
+						// dem NPC Ressourcen abziehen:
+						if (($db->query('UPDATE FHB_Handels_Lager SET ress_3=ress_3-'.($kosten['Latinum']).'+'.($steuern).',ress_2=ress_2+'.$_POST['Qty'].' WHERE id=1'))==true)
+						{
+							// Buyers goods in the Trade Register Scheduler:
+							if (($db->query('INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,arrival_time) VALUES ("'.decode_planet_id($_POST['plani_ziel']).'",0,0,'.($kosten['Latinum']-$steuern).',"'.($ACTUAL_TICK+$tickzeit).'")'))==true)
+							{
+								$game->out('<table><tr><td>'.constant($game->sprache("TEXT147")).'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT148")).$plani_id_a['planet_name'].'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT149")).$steuern.'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT156")).($kosten['Latinum']-$steuern).'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT155")).$_POST['Qty'].'</td></tr>
+									<tr><td><form name="ritorno" action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
+									<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
+							}
+							else{message(DATABASE_ERROR, 'Internal database error');}
+						}
+						else{message(DATABASE_ERROR, 'Internal database error');}
+					}
+					else{message(DATABASE_ERROR, 'Internal database error');}
+				}
+				else{message(NOTICE, constant($game->sprache("TEXT153")));}
+			}
+			else{message(NOTICE, constant($game->sprache("TEXT158")));}			
+		}
+		else if($_POST['risorsa_da'] == "Latinum" && $_POST['risorsa_a']=="Metall") // latinum zu metall
+		{
+			$kosten['Metall']=(int)($_POST['Qty']*Ress_price(9,11));
+			if($_POST['Qty']<=$plani_inhalt['resource_3'])
+			{
+				$steuern=(int)($kosten['Metall']*$transportsatz);
+				if($daten['ress_1']>=($kosten['Metall'] - $steuern))
+				{
+					// dem user Ressourcen abziehen:
+					if (($db->query('UPDATE planets SET resource_3=resource_3-'.$_POST['Qty'].' WHERE planet_id='.decode_planet_id($_POST['plani']).''))==true)
+					{
+						// dem NPC Ressourcen abziehen:
+						if (($db->query('UPDATE FHB_Handels_Lager SET ress_1=ress_1-'.($kosten['Metall']).'+'.($steuern).',ress_3=ress_3+'.$_POST['Qty'].' WHERE id=1'))==true)
+						{
+							// Buyers goods in the Trade Register Scheduler:
+							if (($db->query('INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,arrival_time) VALUES ("'.decode_planet_id($_POST['plani_ziel']).'",'.($kosten['Metall']-$steuern).',0,0,"'.($ACTUAL_TICK+$tickzeit).'")'))==true)
+							{
+								$game->out('<table><tr><td>'.constant($game->sprache("TEXT147")).'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT148")).$plani_id_a['planet_name'].'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT149")).$steuern.'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT154")).($kosten['Metall']-$steuern).'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT157")).$_POST['Qty'].'</td></tr>
+									<tr><td><form name="ritorno" action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
+									<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
+							}
+							else{message(DATABASE_ERROR, 'Internal database error');}
+						}
+						else{message(DATABASE_ERROR, 'Internal database error');}
+					}
+					else{message(DATABASE_ERROR, 'Internal database error');}
+				}
+				else{message(NOTICE, constant($game->sprache("TEXT153")));}
+			}
+			else{message(NOTICE, constant($game->sprache("TEXT158")));}						
+		}
+		else if($_POST['risorsa_da'] == "Latinum" && $_POST['risorsa_a']=="Mineral") // latinum zu mineral
+		{
+			$kosten['Mineral']=(int)($_POST['Qty']*Ress_price(10,11));
+			if($_POST['Qty']<=$plani_inhalt['resource_3'])
+			{
+				$steuern=(int)($kosten['Mineral']*$transportsatz);
+				if($daten['ress_2']>=($kosten['Mineral'] - $steuern))
+				{
+					// dem user Ressourcen abziehen:
+					if (($db->query('UPDATE planets SET resource_3=resource_3-'.$_POST['Qty'].' WHERE planet_id='.decode_planet_id($_POST['plani']).''))==true)
+					{
+						// dem NPC Ressourcen abziehen:
+						if (($db->query('UPDATE FHB_Handels_Lager SET ress_2=ress_2-'.($kosten['Mineral']).'+'.($steuern).',ress_3=ress_3+'.$_POST['Qty'].' WHERE id=1'))==true)
+						{
+							// Buyers goods in the Trade Register Scheduler:
+							if (($db->query('INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,arrival_time) VALUES ("'.decode_planet_id($_POST['plani_ziel']).'",0,'.($kosten['Mineral']-$steuern).',0,"'.($ACTUAL_TICK+$tickzeit).'")'))==true)
+							{
+								$game->out('<table><tr><td>'.constant($game->sprache("TEXT147")).'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT148")).$plani_id_a['planet_name'].'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT149")).$steuern.'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT150")).($kosten['Mineral']-$steuern).'</td></tr>
+									<tr><td>'.constant($game->sprache("TEXT157")).$_POST['Qty'].'</td></tr>
+									<tr><td><form name="ritorno" action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post">
+									<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></form></td></tr></table>');
+							}
+							else{message(DATABASE_ERROR, 'Internal database error');}
+						}
+						else{message(DATABASE_ERROR, 'Internal database error');}
+					}
+					else{message(DATABASE_ERROR, 'Internal database error');}
+				}
+				else{message(NOTICE, constant($game->sprache("TEXT153")));}
+			}
+			else{message(NOTICE, constant($game->sprache("TEXT158")));}			
+		}
+		$db->unlock('FHB_Handels_Lager','scheduler_resourcetrade');
 	}
 }
-elseif(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && $_REQUEST['step']=='2'  &&  $_POST['menge']!=0)
+else
 {
+	$ressavail=$db->queryrow('SELECT * FROM FHB_Handels_Lager WHERE id=1');
 
-	/* 28/02/08 - AC: !!! TESTING !!! */
-	$kosten['Metall'][1] = 0;
-	$kosten['Metall'][2] = 0;
-	$kosten['Mineral'][1] = 0;
-	$kosten['Mineral'][2] = 0;
-	$kosten['Latinum'][1] = 0;
-	$kosten['Latinum'][2] = 0;
-	/* */
-
-	//K = (n*p) - ((n-1)*0,1) 
-	if($_POST['Art']=="Metall") // metall zu mineral
+	if($ressavail == null)
 	{
-		if($daten['ress_2']<1000000){
-			$flag_rateo['Mineral'][1] = 1;
-			$rate['Mineral'][1] = Ress_price(10,9,0);
-			$kosten['Mineral'][1]=(int)($_POST['menge']*$rate['Mineral'][1]);
-			}
-		if($daten['ress_2']>=1000000 && $daten['ress_2']<=8000000){
-			$flag_rateo['Mineral'][1] = 2;
-			$rate['Mineral'][1] = Ress_price(10,9,1);
-			$kosten['Mineral'][1]=(int)($_POST['menge']*$rate['Mineral'][1]);
-			}
-		if($daten['ress_2']>=8000001 && $daten['ress_2']<=46000000){
-			$flag_rateo['Mineral'][1] = 3;
-			$rate['Mineral'][1] = Ress_price(10,9,2);
-			$kosten['Mineral'][1]=(int)($_POST['menge']*$rate['Mineral'][1]);
-			}
-		if($daten['ress_2']>46000000){
-			$flag_rateo['Mineral'][1] = 4;
-			$rate['Mineral'][1] = Ress_price(10,9,3);
-			$kosten['Mineral'][1]=(int)($_POST['menge']*$rate['Mineral'][1]);
-			}
-	}
-	if($_POST['Art']=="Metall") // metall zu latinum
-	{
-		if($daten['ress_3']<800000){
-			$flag_rateo['Latinum'][1] = 1;
-			$rate['Latinum'][1] = Ress_price(11,9,0);
-			$kosten['Latinum'][1]=(int)($_POST['menge']*$rate['Latinum'][1]);
-			}
-		if($daten['ress_3']>=800000 && $daten['ress_3']<=6400000){
-			$flag_rateo['Latinum'][1] = 2;
-			$rate['Latinum'][1] = Ress_price(11,9,1);
-			$kosten['Latinum'][1]=(int)($_POST['menge']*$rate['Latinum'][1]);
-			}
-		if($daten['ress_3']>=6400001 && $daten['ress_3']<=36800000){
-			$flag_rateo['Latinum'][1] = 3;
-			$rate['Latinum'][1] = Ress_price(11,9,2);
-			$kosten['Latinum'][1]=(int)($_POST['menge']*$rate['Latinum'][1]);
-			}
-		if($daten['ress_3']>36800000){
-			$flag_rateo['Latinum'][1] = 4;
-			$rate['Latinum'][1] = Ress_price(11,9,3);
-			$kosten['Latinum'][1]=(int)($_POST['menge']*$rate['Latinum'][1]);
-			}
-	}
-	if($_POST['Art']=="Mineral") // mineral zu metall
-	{
-		if($daten['ress_1']<1500000){
-			$flag_rateo['Metall'][1] = 1;
-			$rate['Metall'][1] = Ress_price(9,10,0);
-			$kosten['Metall'][1]=(int)($_POST['menge']*$rate['Metall'][1]);
-			}
-		if($daten['ress_1']>=1500000 && $daten['ress_1']<=12000000){
-			$flag_rateo['Metall'][1] = 2;
-			$rate['Metall'][1] = Ress_price(9,10,1);
-			$kosten['Metall'][1]=(int)($_POST['menge']*$rate['Metall'][1]);
-			}
-		if($daten['ress_1']>=12000001 && $daten['ress_1']<=69000000){
-			$flag_rateo['Metall'][1] = 3;
-			$rate['Metall'][1] = Ress_price(9,10,2);
-			$kosten['Metall'][1]=(int)($_POST['menge']*$rate['Metall'][1]);
-			}
-		if($daten['ress_1']>69000000){
-			$flag_rateo['Metall'][1] = 4;
-			$rate['Metall'][1] = Ress_price(9,10,3);
-			$kosten['Metall'][1]=(int)($_POST['menge']*$rate['Metall'][1]);
-			}
-	
-	}
-	if($_POST['Art']=="Mineral") // mineral zu latinum
-	{
-		if($daten['ress_3']<800000){
-			$flag_rateo['Latinum'][2] = 1;
-			$rate['Latinum'][2] = Ress_price(11,10,0);
-			$kosten['Latinum'][2]=(int)($_POST['menge']*$rate['Latinum'][2]);
-			}
-		if($daten['ress_3']>=800000 && $daten['ress_3']<=6400000){
-			$flag_rateo['Latinum'][2] = 2;
-			$rate['Latinum'][2] = Ress_price(11,10,1);
-			$kosten['Latinum'][2]=(int)($_POST['menge']*$rate['Latinum'][2]);
-			}
-		if($daten['ress_3']>=6400001 && $daten['ress_3']<=36800000){
-			$flag_rateo['Latinum'][2] = 3;
-			$rate['Latinum'][2] = Ress_price(11,10,2);
-			$kosten['Latinum'][2]=(int)($_POST['menge']*$rate['Latinum'][2]);
-			}
-		if($daten['ress_3']>36800000){
-			$flag_rateo['Latinum'][2] = 4;
-			$rate['Latinum'][2] = Ress_price(11,10,3);
-			$kosten['Latinum'][2]=(int)($_POST['menge']*$rate['Latinum'][2]);
-			}
-	}
-	if($_POST['Art']=="Latinum") // latinum zu metall
-	{
-		if($daten['ress_1']<1500000){
-			$flag_rateo['Metall'][2] = 1;
-			$rate['Metall'][2] = Ress_price(9,11,0);
-			$kosten['Metall'][2]=(int)($_POST['menge']*$rate['Metall'][2]);
-			}
-		if($daten['ress_1']>=1500000 && $daten['ress_1']<=12000000){
-			$flag_rateo['Metall'][2] = 2;
-			$rate['Metall'][2] = Ress_price(9,11,1);
-			$kosten['Metall'][2]=(int)($_POST['menge']*$rate['Metall'][2]);
-			}
-		if($daten['ress_1']>=12000001 && $daten['ress_1']<=69000000){
-			$flag_rateo['Metall'][2] = 3;
-			$rate['Metall'][2] = Ress_price(9,11,2);
-			$kosten['Metall'][2]=(int)($_POST['menge']*$rate['Metall'][2]);
-			}
-		if($daten['ress_1']>69000000){
-			$flag_rateo['Metall'][2] = 4;
-			$rate['Metall'][2] = Ress_price(9,11,3);
-			$kosten['Metall'][2]=(int)($_POST['menge']*$rate['Metall'][2]);
-			}
-	
-	}
-	if($_POST['Art']=="Latinum") // latinum zu mineral
-	{
-		if($daten['ress_2']<1000000){
-			$flag_rateo['Mineral'][2] = 1;
-			$rate['Mineral'][2] = Ress_price(10,11,0);
-			$kosten['Mineral'][2]=(int)($_POST['menge']*$rate['Mineral'][2]);
-			}
-		if($daten['ress_2']>=1000000 && $daten['ress_2']<=8000000){
-			$flag_rateo['Mineral'][2] = 2;
-			$rate['Mineral'][2] = Ress_price(10,11,1);
-			$kosten['Mineral'][2]=(int)($_POST['menge']*$rate['Mineral'][2]);
-			}
-		if($daten['ress_2']>=8000001 && $daten['ress_2']<=46000000){
-			$flag_rateo['Mineral'][2] = 3;
-			$rate['Mineral'][2] = Ress_price(10,11,2);
-			$kosten['Mineral'][2]=(int)($_POST['menge']*$rate['Mineral'][2]);
-			}
-		if($daten['ress_2']>46000000){
-			$flag_rateo['Mineral'][2] = 4;
-			$rate['Mineral'][2] = Ress_price(10,11,3);
-			$kosten['Mineral'][2]=(int)($_POST['menge']*$rate['Mineral'][2]);
-			}
+			$ressavail['ress_1'] = 0;
+			$ressavail['ress_2'] = 0;
+			$ressavail['ress_3'] = 0;
 	}
 	
-	$rateo_color[1] = 'red';
-	$rateo_color[2] = 'yellow';
-	$rateo_color[3] = 'gray';
-	$rateo_color[4] = 'green';
+	$game->out('
+	<script type="text/javascript">
+	    function check_exchange(){
+	    	if(document.ScambioRisorse.risorsa_da.value ==
+	    	   document.ScambioRisorse.risorsa_a.value)
+	    	   {
+	    	   		alert("'.constant($game->sprache("TEXT278")).'");
+	    	   		
+	    			document.ScambioRisorse.risorsa_da.value = "Metall";
+	    			document.ScambioRisorse.risorsa_a.value  = "Mineral";
+	    	
+	    			document.ScambioRisorse.Qty.value    = 0;
+	    			document.ScambioRisorse.Result.value = 0;
+	    	   }
+	    }
+	    function display_rateo()
+	    {
+	    	var res_from, res_to,value_from, value_to, rateo;
+	    	
+	    	res_from = document.ScambioRisorse.risorsa_da.value;
+	    	res_to   = document.ScambioRisorse.risorsa_a.value;
+	    	
+	    	if(res_from == "Metall") value_from = 4;
+	    	if(res_from == "Mineral") value_from = 5;
+	    	if(res_from == "Latinum") value_from = 2.8;
+	    	
+	    	if(res_to == "Metall") value_to = 4;
+	    	if(res_to == "Mineral") value_to = 5;
+	    	if(res_to == "Latinum") value_to = 2.8;
+
+			rateo = Math.round((1 / value_from * value_to) * 100) / 100;
+			
+			document.ScambioRisorse.Rateo.value = rateo;	    		    	
+	    }
+	    function display_avail()
+	    {
+	    	if(document.ScambioRisorse.risorsa_a.value == "Metall")
+	    	{
+	    		document.ScambioRisorse.Avail.value = document.ScambioRisorse.Ress_Avail_1.value;
+	    	}
+	    	if(document.ScambioRisorse.risorsa_a.value == "Mineral")
+	    	{
+	    		document.ScambioRisorse.Avail.value = document.ScambioRisorse.Ress_Avail_2.value;
+	    	}
+	    	if(document.ScambioRisorse.risorsa_a.value == "Latinum")
+	    	{
+	    		document.ScambioRisorse.Avail.value = document.ScambioRisorse.Ress_Avail_3.value;
+	    	}
+	    }
+	    
+		function recompute(){
+			var res_from, res_to, quantity = 0, exchanged = 0, tax;
+			var tax_rate = new Array(0, 0.50, 0.65, 0.85);
+
+			// Exchange rates: Metall; Minerals; Latinum => 4 ; 5 ; 2.8
+			
+			res_from = document.ScambioRisorse.risorsa_da.value;
+			res_to   = document.ScambioRisorse.risorsa_a.value;
+			quantity = document.ScambioRisorse.Qty.value;
+			tax      = document.ScambioRisorse.transport.value;
+			
+			if(res_from == "Metall")
+			{
+				if(res_to == "Mineral")
+				{
+					exchanged = Math.round((quantity / 4 * 5) * tax_rate[tax]);
+				}
+				
+				if(res_to == "Latinum")
+				{
+					exchanged = Math.round((quantity / 4 * 2.8) * tax_rate[tax]);				
+				}
+			}
+			
+			if(res_from == "Mineral")
+			{
+				if(res_to == "Metall")
+				{
+					exchanged = Math.round((quantity / 5 * 4) * tax_rate[tax]);
+				}
+				
+				if(res_to == "Latinum")
+				{
+					exchanged = Math.round((quantity / 5 * 2.8) * tax_rate[tax]);				
+				}			
+			}
+			
+			if(res_from == "Latinum")
+			{
+				if(res_to == "Metall")
+				{
+					exchanged = Math.round((quantity / 2.8 * 4) * tax_rate[tax]);
+				}
+				
+				if(res_to == "Mineral")
+				{
+					exchanged = Math.round((quantity / 2.8 * 5) * tax_rate[tax]);
+				}			
+			}
+			
+			display_avail();			
+			
+			document.ScambioRisorse.Result.value = exchanged;
+			
+			if(exchanged > document.ScambioRisorse.Avail.value)
+				document.ScambioRisorse.submit.disabled = true;
+			else
+				document.ScambioRisorse.submit.disabled = false;
+
+		}
+	</script>
+	');
 	
-	$steuern[1]=(int)($kosten['Metall'][1]*0.50);
-	$steuern[2]=(int)($kosten['Mineral'][1]*0.50);
-	$steuern[3]=(int)($kosten['Latinum'][1]*0.50);
-	$steuern[4]=(int)($kosten['Metall'][2]*0.50);
-	$steuern[5]=(int)($kosten['Mineral'][2]*0.50);
-	$steuern[6]=(int)($kosten['Latinum'][2]*0.50);
-	$steuern[7]=(int)($kosten['Metall'][1]*0.35);
-	$steuern[8]=(int)($kosten['Mineral'][1]*0.35);
-	$steuern[9]=(int)($kosten['Latinum'][1]*0.35);
-	$steuern[10]=(int)($kosten['Metall'][2]*0.35);
-	$steuern[11]=(int)($kosten['Mineral'][2]*0.35);
-	$steuern[12]=(int)($kosten['Latinum'][2]*0.35);
-	$steuern[13]=(int)($kosten['Metall'][1]*0.15);
-	$steuern[14]=(int)($kosten['Mineral'][1]*0.15);
-	$steuern[15]=(int)($kosten['Latinum'][1]*0.15);
-	$steuern[16]=(int)($kosten['Metall'][2]*0.15);
-	$steuern[17]=(int)($kosten['Mineral'][2]*0.15);
-	$steuern[18]=(int)($kosten['Latinum'][2]*0.15);
-	$daten=$db->queryrow('SELECT * FROM FHB_Handels_Lager WHERE id=1');
-
-	/* 27/02/08 - AC: Check DB query */
-	if($daten == null)
-	{
-		$daten['ress_1'] = 0;
-		$daten['ress_2'] = 0;
-		$daten['ress_3'] = 0;
-	}
-
-	$game->out('<table>');
-	if($_POST['Art']=="Metall")
-	{
-		$indice1 = $flag_rateo['Mineral'][1];
-		$indice2 = $flag_rateo['Latinum'][1];
-		$game->out('<tr><td colspan=2><table><tr><td>'.constant($game->sprache("TEXT159")).' '.$_POST['menge'].' '.constant($game->sprache("TEXT123")).'</td><td>&nbsp;</td><td>'.constant($game->sprache("TEXT160")).'</td><td>Rateo</td><td>&nbsp;</td><td>'.constant($game->sprache("TEXT161")).'</td><td>Rateo</td></tr>');
-		$game->out('<tr><td></td><td>&nbsp;</td><td>'.$kosten['Mineral'][1].'('.$daten['ress_2'].')</td><td><font color="'.$rateo_color[$indice1].'">'.round($rate['Mineral'][1], 3).'</font></td><td>&nbsp;</td><td>'.$kosten['Latinum'][1].'('.$daten['ress_3'].')</td><td><font color="'.$rateo_color[$indice2].'">'.round($rate['Latinum'][1], 3).'</font></td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT162")).'</td><td>&nbsp;</td><td>'.($kosten['Mineral'][1]-$steuern[2]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Latinum'][1]-$steuern[3]).'</td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT163")).'</td><td>&nbsp;</td><td>'.($kosten['Mineral'][1]-$steuern[8]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Latinum'][1]-$steuern[9]).'</td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT164")).'</td><td>&nbsp;</td><td>'.($kosten['Mineral'][1]-$steuern[14]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Latinum'][1]-$steuern[15]).'</td></tr>');
-	}
-	if($_POST['Art']=="Mineral")
-	{
-		$indice1 = $flag_rateo['Metall'][1];
-		$indice2 = $flag_rateo['Latinum'][2];
-		$game->out('<tr><td colspan=2><table><tr><td>'.constant($game->sprache("TEXT159")).' '.$_POST['menge'].' '.constant($game->sprache("TEXT165")).'</td><td>&nbsp;</td><td>'.constant($game->sprache("TEXT166")).'</td><td>Rateo</td><td>&nbsp;</td><td>'.constant($game->sprache("TEXT161")).'</td><td>Rateo</td></tr>');
-		$game->out('<tr><td></td><td>&nbsp;</td><td>'.$kosten['Metall'][1].'('.$daten['ress_1'].')</td><td><font color="'.$rateo_color[$indice1].'">'.round($rate['Metall'][1], 3).'</font></td><td>&nbsp;</td><td>'.$kosten['Latinum'][2].'('.$daten['ress_3'].')</td><td><font color="'.$rateo_color[$indice2].'">'.round($rate['Latinum'][2], 3).'</font></td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT162")).'</td><td>&nbsp;</td><td>'.($kosten['Metall'][1]-$steuern[1]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Latinum'][2]-$steuern[6]).'</td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT163")).'</td><td>&nbsp;</td><td>'.($kosten['Metall'][1]-$steuern[7]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Latinum'][2]-$steuern[12]).'</td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT164")).'</td><td>&nbsp;</td><td>'.($kosten['Metall'][1]-$steuern[13]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Latinum'][2]-$steuern[18]).'</td></tr>');
-	}
-	if($_POST['Art']=="Latinum")
-	{
-		$indice1 = $flag_rateo['Metall'][2];
-		$indice2 = $flag_rateo['Mineral'][2];
-		$game->out('<tr><td colspan=2><table><tr><td>'.constant($game->sprache("TEXT159")).' '.$_POST['menge'].' '.constant($game->sprache("TEXT167")).'</td><td>&nbsp;</td><td>'.constant($game->sprache("TEXT166")).'</td><td>Rateo</td><td>&nbsp;</td><td>'.constant($game->sprache("TEXT160")).'</td><td>Rateo</td></tr>');
-		$game->out('<tr><td></td><td>&nbsp;</td><td>'.$kosten['Metall'][2].'('.$daten['ress_1'].')</td><td><font color="'.$rateo_color[$indice1].'">'.round($rate['Metall'][2], 3).'</font></td><td>&nbsp;</td><td>'.$kosten['Mineral'][2].'('.$daten['ress_2'].')</td><td><font color="'.$rateo_color[$indice2].'">'.round($rate['Mineral'][2], 3).'</font></td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT162")).'</td><td>&nbsp;</td><td>'.($kosten['Metall'][2]-$steuern[4]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Mineral'][2]-$steuern[5]).'</td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT163")).'</td><td>&nbsp;</td><td>'.($kosten['Metall'][2]-$steuern[10]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Mineral'][2]-$steuern[11]).'</td></tr>');
-		$game->out('<tr><td>'.constant($game->sprache("TEXT164")).'</td><td>&nbsp;</td><td>'.($kosten['Metall'][2]-$steuern[16]).'</td><td>&nbsp;</td><td>&nbsp;</td><td> '.($kosten['Mineral'][2]-$steuern[17]).'</td></tr>');
-	}
-
-	$game->out('</table><br>'.constant($game->sprache("TEXT269")).' <font color="red">'.constant($game->sprache("TEXT270")).'</font> <font color="yellow">'.constant($game->sprache("TEXT271")).'</font>  <font color="gray">'.constant($game->sprache("TEXT272")).'</font>  <font color="green">'.constant($game->sprache("TEXT273")).'</font></td></tr>');
-	$game->out('<td>'.constant($game->sprache("TEXT168")).'</td></tr>');
-	$game->out('<form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress&step=3').'" method="post"><tr><td>'.constant($game->sprache("TEXT169")).'</td><td><select size="1" name="bezahlungsart">');
-	if($_POST['Art']=="Metall")$game->out('<option value="1">'.constant($game->sprache("TEXT170")).'</option>');
-	if($_POST['Art']=="Metall")$game->out('<option value="2">'.constant($game->sprache("TEXT171")).'</option>');
-	if($_POST['Art']=="Mineral")$game->out('<option value="3">'.constant($game->sprache("TEXT172")).'</option>');
-	if($_POST['Art']=="Mineral")$game->out('<option value="4">'.constant($game->sprache("TEXT171")).'</option>');
-	if($_POST['Art']=="Latinum")$game->out('<option value="5">'.constant($game->sprache("TEXT172")).'</option>');
-	if($_POST['Art']=="Latinum")$game->out('<option value="6">'.constant($game->sprache("TEXT170")).'</option>');
-	$game->out('</select></td></tr>');
-	$game->out('<tr><td>'.constant($game->sprache("TEXT173")).'</td><td><select size="1" name="transportsart">
-		<option value="1">'.constant($game->sprache("TEXT174")).'</option>
-		<option value="2">'.constant($game->sprache("TEXT175")).'</option>
-		<option value="3">'.constant($game->sprache("TEXT176")).'</option>
-		</select></td></tr><tr><td colspan=2><br>'.constant($game->sprache("TEXT177")).'</td></tr>');
+	$game->out('<form name="ScambioRisorse" action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress&step=2').'" method="post">');
+	$game->out('<input type="hidden" name="Ress_Avail_1" value="'.$ressavail['ress_1'].'">
+			    <input type="hidden" name="Ress_Avail_2" value="'.$ressavail['ress_2'].'">
+			    <input type="hidden" name="Ress_Avail_3" value="'.$ressavail['ress_3'].'">
+	');
+	
+	$game->out('<table align=center>
+				<tr>
+				<td>'.constant($game->sprache("TEXT159")).'</td>
+				<td>: <select size="1" name="risorsa_da" onchange="display_rateo(); document.ScambioRisorse.Result.value = 0; document.ScambioRisorse.Qty.value = 0;">
+					<option value="Metall" selected>'.constant($game->sprache("TEXT123")).'</option>
+					<option value="Mineral">'.constant($game->sprache("TEXT165")).'</option>
+					<option value="Latinum">'.constant($game->sprache("TEXT167")).'</option>
+					</select>
+					==> <input name="Rateo" type="number" value="1.25" size="3" class="Field_nosize" readonly> ==>
+					<select size="1" name="risorsa_a" onchange="display_rateo(); document.ScambioRisorse.Result.value = 0; document.ScambioRisorse.Qty.value = 0; display_avail();">
+					<option value="Metall">'.constant($game->sprache("TEXT123")).'</option>
+					<option value="Mineral" selected>'.constant($game->sprache("TEXT165")).'</option>
+					<option value="Latinum">'.constant($game->sprache("TEXT167")).'</option>
+					</select>				
+				</td>
+				</tr>
+	');
+	$game->out('<tr>
+				<td>'.constant($game->sprache("TEXT276")).'</td>
+				<td>: <input name="Qty" type="number" value="0" class="Field_nosize" onchange="check_exchange(); recompute();"></td>
+				</tr>
+	');
+	$game->out('<tr>
+				<td>'.constant($game->sprache("TEXT173")).'</td>
+				<td>: <select size="1" name="transport" onchange="recompute();">
+					<option value="1">'.constant($game->sprache("TEXT174")).'</option>
+					<option value="2">'.constant($game->sprache("TEXT175")).'</option>
+					<option value="3">'.constant($game->sprache("TEXT176")).'</option>
+					</select>
+				</td>
+				</tr>
+	');
+	$game->out('<tr>
+				<td>'.constant($game->sprache("TEXT277")).'</td>
+				<td>: <input name="Result" type="number" value="0" class="Field_nosize" disabled> '.constant($game->sprache("TEXT245")).' <input name="Avail" type="number" value="'.$ressavail['ress_2'].'" class="Field_nosize" disabled><td>
+				</tr>
+	');
 	$sql='SELECT planet_id,planet_name,building_11 FROM `planets` WHERE planet_owner='.$game->player['user_id'].' ORDER BY planet_name ASC';
 	if(($planis=$db->query($sql))==false)
 	{
 		$game->out(constant($game->sprache("TEXT178")));
 	}else{
-		$game->out('<tr><td>'.constant($game->sprache("TEXT179")).'</td><td><select size="1" name="plani">');
+		$game->out('<tr><td width="150">'.constant($game->sprache("TEXT179")).'</td><td>: <select size="1" name="plani">');
 		while($planeten=$db->fetchrow($planis))
 		{
 			if ($planeten['building_11']>0)
 			{
 				if ($game->planet['planet_id'] == $planeten['planet_id'])
-					$game->out('<option value="'.$planeten['planet_id'].'" selected="selected">'.$planeten['planet_name'].'</option>');
+					$game->out('<option value="'.encode_planet_id($planeten['planet_id']).'" selected="selected">'.$planeten['planet_name'].'</option>');
 				else
-					$game->out('<option value="'.$planeten['planet_id'].'">'.$planeten['planet_name'].'</option>');
+					$game->out('<option value="'.encode_planet_id($planeten['planet_id']).'">'.$planeten['planet_name'].'</option>');
 			}
 		}
 		$game->out('</select></td></tr>');
@@ -2391,40 +2220,21 @@ elseif(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && $_REQU
 	{
 		$game->out(constant($game->sprache("TEXT178")));
 	}else{
-		$game->out('<tr><td>'.constant($game->sprache("TEXT180")).'</td><td><select size="1" name="plani_ziel">');
+		$game->out('<tr><td width="150">'.constant($game->sprache("TEXT180")).'</td><td>: <select size="1" name="plani_ziel">');
 		while($planeten=$db->fetchrow($planis))
 		{
 			if ($planeten['building_11']>0)
 			{
 				if ($game->planet['planet_id'] == $planeten['planet_id'])
-					$game->out('<option value="'.$planeten['planet_id'].'" selected="selected">'.$planeten['planet_name'].'</option>');
+					$game->out('<option value="'.encode_planet_id($planeten['planet_id']).'" selected="selected">'.$planeten['planet_name'].'</option>');
 				else
-					$game->out('<option value="'.$planeten['planet_id'].'">'.$planeten['planet_name'].'</option>');
+					$game->out('<option value="'.encode_planet_id($planeten['planet_id']).'">'.$planeten['planet_name'].'</option>');
 			}
 		}
 		$game->out('</select></td></tr>');
 	}
-	$game->out('<tr><td colspan=2>');
-	$game->out('<input type="hidden" name="menge" value="'.$_POST['menge'].'">');
-	$game->out('<input type="hidden" name="Art" value="'.$_POST['Art'].'">');
-	$game->out('<input type="submit" value="'.constant($game->sprache("TEXT181")).'"  name="submit" class="Button_nosize"></td></tr></form>');
-	$game->out('<tr><td colspan=2><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress').'" method="post"><tr><td colspan=2>');
-	$game->out('<input type="hidden" name="menge" value="'.$_POST['menge'].'">');
-	$game->out('<input type="submit" value="'.constant($game->sprache("TEXT152")).'"  name="submit" class="Button_nosize"></td></tr></form></table>');
-}
-else
-{
-	if(isset($_REQUEST['handel']) && $_REQUEST['handel']=='trade_ress' && $_REQUEST['step']=='2' && $_POST['menge']==0)
-		$game->out(constant($game->sprache("TEXT182")));
-	$truppen=$db->queryrow('SELECT * FROM `FHB_Handels_Lager` Limit 1');
-	$game->out('<table align=center><tr><td>'.constant($game->sprache("TEXT183")).'</td></tr>');
-	$game->out('<tr><form action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&handel=trade_ress&step=2').'" method="post"><td><input type="text" class="Field_nosize" name="menge" value="'.$_POST['menge'].'"></td></td></tr>');
-	$game->out('<tr><td>'.constant($game->sprache("TEXT184")).'</td><td><select size="1" name="Art">
-		<option value="Metall">'.constant($game->sprache("TEXT123")).'</option>
-		<option value="Mineral">'.constant($game->sprache("TEXT165")).'</option>
-		<option value="Latinum">'.constant($game->sprache("TEXT167")).'</option>
-		</select></td></tr>');
-	$game->out('<tr><td colspan="3"><input type="submit" value="'.constant($game->sprache("TEXT185")).'"  name="submit" class="Button_nosize"></td></form></tr></table>');
+	$game->out('<tr><td colspan="3" align="center"><input type="submit" value="'.constant($game->sprache("TEXT185")).'"  name="submit" class="Button_nosize" disabled></td></tr>');	
+	$game->out('</table></form>');
 }
 }
 

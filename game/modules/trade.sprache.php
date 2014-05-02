@@ -578,6 +578,13 @@ define ("GER_TEXT274", 'Auktionsflotte');
 
 define ("GER_TEXT275", 'keine');
 
+define ("GER_TEXT276", 'Offer');
+
+define ("GER_TEXT277", 'Converted to');
+
+define ("GER_TEXT278", 'You cannot exchange same resources type!');
+
+
 
 // English
 define ("ENG_TEXT0", 'Overview');
@@ -1138,6 +1145,13 @@ define ("ENG_TEXT274", 'Auction fleet');
 
 define ("ENG_TEXT275", 'none');
 
+define ("ENG_TEXT276", 'Offer');
+
+define ("ENG_TEXT277", 'Converted to');
+
+define ("ENG_TEXT278", 'You cannot exchange same resources type!');
+
+
 
 // Italian
 define ("ITA_TEXT0", 'Panoramica');
@@ -1464,7 +1478,7 @@ define ("ITA_TEXT157", 'Dilitio che viene scambiato:');
 
 define ("ITA_TEXT158", '<br><b>Il tuo metodo di pagamento &egrave; fallito o perch&eacute; le materie prime del bot non sono sufficienti o perch&eacute; non hai pi&ugrave; le risorse necessarie sul pianeta</b><br>');
 
-define ("ITA_TEXT159", 'Conversione:');
+define ("ITA_TEXT159", 'Conversione');
 
 define ("ITA_TEXT160", 'In minerali');
 
@@ -1494,7 +1508,7 @@ define ("ITA_TEXT171", 'Con dilitio');
 
 define ("ITA_TEXT172", 'Con metallo');
 
-define ("ITA_TEXT173", 'Trasporto:');
+define ("ITA_TEXT173", 'Trasporto');
 
 define ("ITA_TEXT174", 'Trasporto Speciale Ferengi (6h) - 50% Tasse');
 
@@ -1506,9 +1520,9 @@ define ("ITA_TEXT177", '* La Gilda del Commercio Ferengi non si assume alcuna re
 
 define ("ITA_TEXT178", '<br><br>Hmm c&#146;e stato un errore - Bug o cheat questo &egrave; il dilemma<br><br>');
 
-define ("ITA_TEXT179", 'Pianeta da cui prelevare le risorse:');
+define ("ITA_TEXT179", 'Pianeta da cui prelevare le risorse');
 
-define ("ITA_TEXT180", 'Pianeta in cui devono essere consegnate le merci:');
+define ("ITA_TEXT180", 'Pianeta in cui devono essere consegnate le merci');
 
 define ("ITA_TEXT181", 'Concludi affare');
 
@@ -1700,5 +1714,10 @@ define ("ITA_TEXT274", 'Flotta asta');
 
 define ("ITA_TEXT275", 'nessuno');
 
+define ("ITA_TEXT276", 'Offerta');
+
+define ("ITA_TEXT277", 'Convertito in');
+
+define ("ITA_TEXT278", 'Non è possibile scambiare risorse dello stesso tipo!');
 
 ?>
