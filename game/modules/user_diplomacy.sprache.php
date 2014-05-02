@@ -104,6 +104,18 @@ define ("GER_TEXT41",'Wartet');
 
 define ("GER_TEXT42",'Unbekannt');
 
+define ("GER_TEXT43", 'Colonie Indipendenti:');
+
+define ("ENG_TEXT44", 'Namen');
+
+define ("GER_TEXT45", 'Position');
+
+define ("GER_TEXT46", 'Klasse');
+
+define ("GER_TEXT47", 'Beziehungen Wert');
+
+define ("GER_TEXT48", 'Letzten Kontakt');
+
 // English
 define ("ENG_TEXT1",'Diplomacy:');
 
@@ -189,6 +201,18 @@ define ("ENG_TEXT41",'Waiting');
 
 define ("ENG_TEXT42",'Unknown');
 
+define ("ENG_TEXT43", 'Indipendent colonies:');
+
+define ("ENG_TEXT44", 'Name');
+
+define ("ENG_TEXT45", 'Position');
+
+define ("ENG_TEXT46", 'Class');
+
+define ("ENG_TEXT47", 'Relationships value');
+
+define ("ENG_TEXT48", 'Last contact');
+
 // Italian
 define ("ITA_TEXT1",'Diplomazia:');
 
@@ -273,5 +297,17 @@ define ("ITA_TEXT40",'Ritira');
 define ("ITA_TEXT41",'In attesa');
 
 define ("ITA_TEXT42",'Sconosciuto');
+
+define ("ITA_TEXT43", 'Colonie Indipendenti:');
+
+define ("ITA_TEXT44", 'Nome');
+
+define ("ITA_TEXT45", 'Posizione');
+
+define ("ITA_TEXT46", 'Classe');
+
+define ("ITA_TEXT47", 'Valore relazioni');
+
+define ("ITA_TEXT48", 'Ultimo Contatto');
 
 ?>

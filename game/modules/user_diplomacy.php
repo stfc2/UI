@@ -452,5 +452,47 @@ if(empty($_REQUEST['sort']) && $_REQUEST['member_list']!=1) {$art_c=1;}else{$art
   <tr><td width="500" align="right">[<a href="'.parse_link('a=user_diplomacy&new').'">'.constant($game->sprache("TEXT19")).'</a>]</td></tr>
 </table>
 ');
+// New Settlers Diplomacy Panel
+    $game->out('
+    <br><br><br>
+    <center><span class="caption">'.(constant($game->sprache("TEXT43"))).'</span><br><br>
+    <table class="style_outer" width="90%" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
+    <table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="2">
+    <tr>
+    <td width="140"><b>'.(constant($game->sprache("TEXT44"))).'</b></td>
+    <td width="80"><b>'.(constant($game->sprache("TEXT45"))).'</b></td>
+    <td width="60"><b>'.(constant($game->sprache("TEXT46"))).'</b></td>
+    <td width="60"><b>'.(constant($game->sprache("TEXT47"))).'</b></td>
+    <td width="90"><b>'.(constant($game->sprache("TEXT48"))).'</b></td>
+  </tr>');
+    $sql = 'SELECT sr.planet_id, p.planet_name, p.best_mood, p.best_mood_user,
+                   p.sector_id, ss.system_x, ss.system_y, p.planet_distance_id,
+                   p.planet_type, MAX(timestamp) AS last_time, SUM(mood_modifier) AS mood
+            FROM settlers_relations sr
+            INNER JOIN planets p on sr.planet_id = p.planet_id
+            INNER JOIN starsystems ss on p.system_id = ss.system_id
+            WHERE sr.user_id = '.$game->player['user_id'].'
+            GROUP BY planet_id';
+    $q_p_setdiplo = $db->query($sql);
+    $rows = $db->num_rows($q_p_setdiplo);
+    $sett_diplo = $db->fetchrowset($q_p_setdiplo);
+    for($i=0; $i < $rows; $i++)
+    {
+        $game->out('<tr>');
+        // Name
+        $game->out('<td width="140"><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($sett_diplo[$i]['planet_id'])).'">'.$sett_diplo[$i]['planet_name'].'</a></td>');
+        // Position
+        $game->out('<td width="80">'.$game->get_sector_name($sett_diplo[$i]['sector_id']).':'.$game->get_system_cname($sett_diplo[$i]['system_x'],$sett_diplo[$i]['system_y']).':'.($sett_diplo[$i]['planet_distance_id'] + 1).'</td>');
+        // Class
+        $game->out('<td width="40">'.strtoupper($sett_diplo[$i]['planet_type']).'</td>');
+        // Mood
+        $game->out('<td width="60"><span style="color: '.(($game->player['user_id'] == $sett_diplo[$i]['best_mood_user']) || ($sett_diplo[$i]['mood'] > $sett_diplo[$i]['best_mood']) ? 'green' : 'red').'">'.$sett_diplo[$i]['mood'].'</span></td>');
+        // Last Mission Time
+        $game->out('<td width="100">'.date("d.m.y H:i", $sett_diplo[$i]['last_time']).'</td>');
+        $game->out('</tr>');
+    }
+    $game->out('
+  </table></td></tr></table>
+    ');
 }
 ?>
