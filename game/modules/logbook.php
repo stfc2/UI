@@ -199,7 +199,8 @@ if(isset($_GET['show_log'])) {
         LOGBOOK_AUCTION_PURCHASER => 'logbook_auction_purchaser',
         LOGBOOK_FERENGITAX => 'logbook_ferengitax',
         LOGBOOK_REVOLUTION => 'logbook_revolution',
-        LOGBOOK_TACTICAL_SHIPFIGHT => 'logbook_shipfight'
+        LOGBOOK_TACTICAL_SHIPFIGHT => 'logbook_shipfight',
+        LOGBOOK_SETTLERS => 'logbook_settlers'
     );
     //echo'include/libs/'.$logbook_libs[$log['log_type']].'.php';
     include('include/libs/'.$logbook_libs[$log['log_type']].'.php');
@@ -401,6 +402,7 @@ else {
         LOGBOOK_AUCTION_PURCHASER => constant($game->sprache("TEXT18")),
         LOGBOOK_FERENGITAX => constant($game->sprache("TEXT19")),
         LOGBOOK_TACTICAL_2 => constant($game->sprache("TEXT14")),
+        LOGBOOK_SETTLERS => constant($game->sprache("TEXT167")),
     );
 
     $game->out('

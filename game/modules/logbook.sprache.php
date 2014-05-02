@@ -357,6 +357,49 @@ define ("GER_TEXT163", 'benefits from allied diplomatic actions:');
 
 define ("GER_TEXT164", 'benefits from other members of our race:');
 
+define ("GER_TEXT166", 'Esiste gi&agrave; un trattato diplomatico con questa colonia!!!');
+
+define ("GER_TEXT167", 'Siedl.');
+
+define ("GER_TEXT168", 'Saluti dalla Colonia ');
+
+define ("GER_TEXT169", 'I nostri cantieri hanno recentemente ultimato la preparazione di una nuova nave classe ');
+
+define ("GER_TEXT170", ', orgoglio e vanto della nostra colonia. L&#146;unit&agrave; ha appena terminato la fase di collaudo e nonostanze l&#146;inesperienza dell&#146;equipaggio &egrave; pronta ad entrare in servizio sotto il vostro comando.');
+
+define ("GER_TEXT171", 'La nostra squadra scientifica ha terminato la missione con esisto favorevole. I laboratori di ricerca sulla colonia stanno gi&agrave; lavorando per mettere in pratica quanto appena scoperto grazie al nostro aiuto.<br><br>Il valore delle nostre relazioni con il pianeta aumenta di ');
+
+define ("GER_TEXT172", 'La nostra squadra scientifica ha trovato i laboratori dei coloni gi&agrave; in possesso di sviluppi tecnologici da adottare, per ora non possono accettare nuove informazioni.');
+
+define ("GER_TEXT173", 'La nostra squadra scientifica non &egrave; in grado di fornire informazioni utili al progresso della tecnologia della colonia. La nostra tecnologia deve progredire prima di poter tentare di nuovo.');
+
+define ("GER_TEXT174", 'La nostra squadra scientifica riporta che il pianeta ha gi&agrave; raggiunto il massimo livello tecnologico possibile nel campo specifico della missione e non pu&ograve; progredire ulteriormente!');
+
+define ("GER_TEXT175", 'Qualcosa &egrave; andato storto. Segnalare questo messaggio come bug!!!');
+
+define ("GER_TEXT176", 'Tecnologia da sviluppare: ');
+
+define ("GER_TEXT177", 'Tempo stimato per la conclusione degli aggiornamenti sul pianeta: ');
+
+define ("GER_TEXT178", 'I coloni hanno respinto la nostra proposta di collaborazione perch&egrave; non esiste un Trattato diplomatico valido!!!');
+
+define ("GER_TEXT179", 'La nostra squadra ha terminato la costruzione di nuove postazioni difensive orbitali per la colonia indipendente.<br><br>Numero di nuove piattaforme orbitali posizionate: ');
+
+define ("GER_TEXT180", 'La nostra squadra non &egrave; stata in grado di installare ulteriori postazioni difensive orbitali, il sistema &egrave; gi&agrave; completo e pienamente funzionante.');
+
+define ("GER_TEXT181", 'A seguito di recenti eventi bellici ed/o attivit&agrave; diplomatica di vostri concorrenti, la popolazione di questa colonia indipendente ha deciso di favorire una diversa potenza straniera!<br><br>Il punteggio della nostra relazione diplomatica &egrave; stato superato.');
+
+define ("GER_TEXT182", 'Un gruppo di volontari addestrati sul pianeta ha deciso di unirsi alle vostre forze e mettersi al vostro comando.<br><br>Essi giungeranno sul vostro pianeta madre come truppe mercenarie.');
+
+define ("GER_TEXT184", 'Unmanned comm station, planet ');
+
+define ("GER_TEXT185", '<center>EMERGENCY DISTRESS CALL</center><br><br>Colony status: <b>Unknow</b><br>Orbital defense status: <b>Unknown</b><br>Last recorded event on automatic defense system: One or more Borg ships in standard orbit. Defenses going down. Unable to start emergency evacuation.');
+
+define ("GER_TEXT186", 'Comando difesa del pianeta ');
+
+define ("GER_TEXT187", '<b>Comunicazione prioritaria!!!</b><br>Stiamo subendo un attacco da parte dei Borg! Al momento le nostre difese reggono ma i Borg potrebbero tornare presto!');
+
+define ("GER_TEXT188", '<center>TRASMISSIONE AUTOMATICA DI EMERGENZA</center><br><br>Status della colonia: <b>Sconosciuto</b><br><br>Status difese orbitali: <b>Sconosciuto</b><br><br>Tutte le richieste di comunicazione sono state ignorate, le difese planetarie sono state superate. Impossibile avviare evacuazione di emergenza della popolazione.<br><br> Ultimo evento registrato dai sistemi automatici di difesa: presenza di una o pi&ugrave; navi ostili in orbita standard, appartenenti alle forze di ');
 
 
 //English
@@ -695,6 +738,49 @@ define ("ENG_TEXT163", 'benefits from allied diplomatic actions:');
 
 define ("ENG_TEXT164", 'benefits from other members of our race:');
 
+define ("ENG_TEXT166", 'Esiste gi&agrave; un trattato diplomatico con questa colonia!!!');
+
+define ("ENG_TEXT167", 'Settl.');
+
+define ("ENG_TEXT168", 'Saluti dalla Colonia ');
+
+define ("ENG_TEXT169", 'I nostri cantieri hanno recentemente ultimato la preparazione di una nuova nave classe ');
+
+define ("ENG_TEXT170", ', orgoglio e vanto della nostra colonia. L&#146;unit&agrave; ha appena terminato la fase di collaudo e nonostanze l&#146;inesperienza dell&#146;equipaggio &egrave; pronta ad entrare in servizio sotto il vostro comando.');
+
+define ("ENG_TEXT171", 'La nostra squadra scientifica ha terminato la missione con esisto favorevole. I laboratori di ricerca sulla colonia stanno gi&agrave; lavorando per mettere in pratica quanto appena scoperto grazie al nostro aiuto.<br><br>Il valore delle nostre relazioni con il pianeta aumenta di ');
+
+define ("ENG_TEXT172", 'La nostra squadra scientifica ha trovato i laboratori dei coloni gi&agrave; in possesso di sviluppi tecnologici da adottare, per ora non possono accettare nuove informazioni.');
+
+define ("ENG_TEXT173", 'La nostra squadra scientifica non &egrave; in grado di fornire informazioni utili al progresso della tecnologia della colonia. La nostra tecnologia deve progredire prima di poter tentare di nuovo.');
+
+define ("ENG_TEXT174", 'La nostra squadra scientifica riporta che il pianeta ha gi&agrave; raggiunto il massimo livello tecnologico possibile nel campo specifico della missione e non pu&ograve; progredire ulteriormente!');
+
+define ("ENG_TEXT175", 'Qualcosa &egrave; andato storto. Segnalare questo messaggio come bug!!!');
+
+define ("ENG_TEXT176", 'Tecnologia da sviluppare: ');
+
+define ("ENG_TEXT177", 'Tempo stimato per la conclusione degli aggiornamenti sul pianeta: ');
+
+define ("ENG_TEXT178", 'I coloni hanno respinto la nostra proposta di collaborazione perch&egrave; non esiste un Trattato diplomatico valido!!!');
+
+define ("ENG_TEXT179", 'La nostra squadra ha terminato la costruzione di nuove postazioni difensive orbitali per la colonia indipendente.<br><br>Numero di nuove piattaforme orbitali posizionate: ');
+
+define ("ENG_TEXT180", 'La nostra squadra non &egrave; stata in grado di installare ulteriori postazioni difensive orbitali, il sistema &egrave; gi&agrave; completo e pienamente funzionante.');
+
+define ("ENG_TEXT181", 'A seguito di recenti eventi bellici ed/o attivit&agrave; diplomatica di vostri concorrenti, la popolazione di questa colonia indipendente ha deciso di favorire una diversa potenza straniera!<br><br>Il punteggio della nostra relazione diplomatica &egrave; stato superato.');
+
+define ("ENG_TEXT182", 'Un gruppo di volontari addestrati sul pianeta ha deciso di unirsi alle vostre forze e mettersi al vostro comando.<br><br>Essi giungeranno sul vostro pianeta madre come truppe mercenarie.');
+
+define ("ENG_TEXT184", 'Unmanned comm station, planet ');
+
+define ("ENG_TEXT185", '<center>EMERGENCY DISTRESS CALL</center><br><br>Colony status: <b>Unknow</b><br>Orbital defense status: <b>Unknown</b><br>Last recorded event on automatic defense system: One or more Borg ships in standard orbit. Defenses going down. Unable to start emergency evacuation.');
+
+define ("ENG_TEXT186", 'Comando difesa del pianeta ');
+
+define ("ENG_TEXT187", '<b>Comunicazione prioritaria!!!</b><br>Stiamo subendo un attacco da parte dei Borg! Al momento le nostre difese reggono ma i Borg potrebbero tornare presto!');
+
+define ("ENG_TEXT188", '<center>TRASMISSIONE AUTOMATICA DI EMERGENZA</center><br><br>Status della colonia: <b>Sconosciuto</b><br><br>Status difese orbitali: <b>Sconosciuto</b><br><br>Tutte le richieste di comunicazione sono state ignorate, le difese planetarie sono state superate. Impossibile avviare evacuazione di emergenza della popolazione.<br><br> Ultimo evento registrato dai sistemi automatici di difesa: presenza di una o pi&ugrave; navi ostili in orbita standard, appartenenti alle forze di ');
 
 
 //Italian
@@ -1033,6 +1119,51 @@ define ("ITA_TEXT163", 'benefici da azioni diplomatiche alleate:');
 
 define ("ITA_TEXT164", 'benefici da altri membri della nostra razza:');
 
+define ("ITA_TEXT165", 'La nostra delegazione diplomatica ha terminato con successo la missione.<br><br>L&#146;accordo ottenuto ha rinforzato il nostro indice di gradimento sul pianeta di:');
 
+define ("ITA_TEXT166", 'Esiste gi&agrave; un trattato diplomatico con questa colonia!!!');
 
+define ("ITA_TEXT167", 'Col.');
+
+define ("ITA_TEXT168", 'Saluti dalla Colonia Indipendente ');
+
+define ("ITA_TEXT169", 'I nostri cantieri hanno ultimato la preparazione di una nave classe ');
+
+define ("ITA_TEXT170", ', orgoglio e vanto della nostra colonia.<br>L&#146;unit&agrave; ha appena terminato la fase di collaudo e nonostanze l&#146;inesperienza dell&#146;equipaggio &egrave; pronta ad entrare in servizio.<br><br>Dati i buoni rapportano che ci legano, &egrave; nostro desiderio che tale unit&agrave; serva sotto il vostro comando!');
+
+define ("ITA_TEXT171", 'La nostra squadra scientifica ha terminato la missione con esisto favorevole. I laboratori di ricerca sulla colonia stanno gi&agrave; lavorando per mettere in pratica quanto appena scoperto grazie al nostro aiuto.<br><br>Il valore delle nostre relazioni con il pianeta aumenta di ');
+
+define ("ITA_TEXT172", 'La nostra squadra scientifica ha trovato i laboratori dei coloni gi&agrave; in possesso di sviluppi tecnologici da adottare, per ora non possono accettare nuove informazioni.');
+
+define ("ITA_TEXT173", 'La nostra squadra scientifica non &egrave; in grado di fornire informazioni utili al progresso della tecnologia della colonia. La nostra tecnologia deve progredire prima di poter tentare di nuovo.');
+
+define ("ITA_TEXT174", 'La nostra squadra scientifica riporta che il pianeta ha gi&agrave; raggiunto il massimo livello tecnologico possibile nel campo specifico della missione e non pu&ograve; progredire ulteriormente!');
+
+define ("ITA_TEXT175", 'Qualcosa &egrave; andato storto. Segnalare questo messaggio come bug!!!');
+
+define ("ITA_TEXT176", 'Tecnologia da sviluppare: ');
+
+define ("ITA_TEXT177", 'Tempo stimato per la conclusione degli aggiornamenti sul pianeta: ');
+
+define ("ITA_TEXT178", 'I coloni hanno respinto la nostra proposta di collaborazione perch&egrave; non esiste un Trattato diplomatico valido!!!');
+
+define ("ITA_TEXT179", 'La nostra squadra ha terminato la costruzione di nuove postazioni difensive orbitali per la colonia indipendente.<br><br>Numero di nuove piattaforme orbitali posizionate: ');
+
+define ("ITA_TEXT180", 'La nostra squadra non &egrave; stata in grado di installare ulteriori postazioni difensive orbitali, il sistema &egrave; gi&agrave; completo e pienamente funzionante.');
+
+define ("ITA_TEXT181", 'A seguito di recenti eventi bellici ed/o attivit&agrave; diplomatica di vostri concorrenti, la popolazione di questa colonia indipendente ha deciso di favorire una diversa potenza straniera!<br><br>Il punteggio della nostra relazione diplomatica &egrave; stato superato.');
+
+define ("ITA_TEXT182", 'Un gruppo di volontari, addestrati sul pianeta, ha deciso di unirsi alle vostre forze e mettersi al vostro comando.<br><br>Essi giungeranno sul vostro pianeta capitale come truppe mercenarie.');
+
+define ("ITA_TEXT183", 'Visto il vostro interesse nel supportare le nostre attivit&agrave; estrattive sul pianeta, abbiamo deciso di donarvi, come segno di riconoscenza, parte delle risorse estratte finora.<br><br>Tale donazione giunger&agrave; sul vostro pianeta capitale secondo gli usuali canali commerciali.');
+
+define ("ITA_TEXT184", 'Stazione automatica di comunicazione, pianeta ');
+
+define ("ITA_TEXT185", '<center>TRASMISSIONE AUTOMATICA DI EMERGENZA</center><br><br>Status della colonia: <b>Sconosciuto</b><br>Status difese orbitali: <b>Sconosciuto</b><br>Ultimo evento registrato dai sistemi automatici di difesa: presenza di una o pi&ugrave; navi Borg in orbita standard. Le difese planetarie sono state superate. Impossibile avviare evacuazione di emergenza della popolazione.');
+
+define ("ITA_TEXT186", 'Comando difesa del pianeta ');
+
+define ("ITA_TEXT187", '<b>Comunicazione prioritaria!!!</b><br>Stiamo subendo un attacco da parte dei Borg! Al momento le nostre difese reggono ma i Borg potrebbero tornare presto!');
+
+define ("ITA_TEXT188", '<center>TRASMISSIONE AUTOMATICA DI EMERGENZA</center><br><br>Status della colonia: <b>Sconosciuto</b><br><br>Status difese orbitali: <b>Sconosciuto</b><br><br>Tutte le richieste di comunicazione sono state ignorate, le difese planetarie sono state superate. Impossibile avviare evacuazione di emergenza della popolazione.<br><br> Ultimo evento registrato dai sistemi automatici di difesa: presenza di una o pi&ugrave; navi ostili in orbita standard, appartenenti alle forze di ');
 ?>

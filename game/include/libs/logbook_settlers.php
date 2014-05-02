@@ -1,11 +1,11 @@
 <?php
-/*    
-	This file is part of STFC.
-	Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
-		
-	STFC is based on STGC,
-	Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
-	
+/*
+    This file is part of STFC.
+    Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
+
+    STFC is based on STGC,
+    Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
+
     STFC is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 3 of the License, or
@@ -51,6 +51,76 @@ function display_logbook($log) {
                   '.constant($game->sprache("TEXT169")).'<i><b><a href="'.parse_link('a=ships&view=ship_details&id='.$log['log_data'][2]).'">'.$log['log_data'][3].'</a></b></i>'.constant($game->sprache("TEXT170")).' 
                   ');
             break;
+        case 1:
+            $game->out('
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tr>');
+            $game->out('<td width="65" valign="top">'.constant($game->sprache("TEXT33")).'&nbsp;</td> <td width="385"><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($log['log_data'][0])).'"><b>'.$log['log_data'][1].'</b></a><br><br>');
+
+            $game->out(constant($game->sprache("TEXT158")).' '.$log['log_data'][5]['user_mood']);
+
+            $game->out('<br><br>');
+
+            if(isset($log['log_data'][5]['toptenlist'][0])) {
+                $game->out(constant($game->sprache("TEXT159")).'<br><br>');
+                foreach($log['log_data'][5]['toptenlist'] as $other_user) {
+                    $game->out('<b>'.$other_user['user_name'].'</b> '.constant($game->sprache("TEXT160")).' '.$other_user['mood_value'].'.<br>');
+                }
+            }
+
+            $game->out('<br><br>');
+
+            if(isset($log['log_data'][6]['research_1']))
+            {
+                $game->out('Modifica Ambientale <b>aggiornabile</b>');
+                if(isset($log['log_data'][6]['time_1']))
+                {
+                    $game->out(', coda di lavoro disponibile tra: '.$log['log_data'][6]['time_1']);
+                }
+                $game->out('<br>');
+            }
+
+             if(isset($log['log_data'][6]['research_2']))
+             {
+                 $game->out('Ricerche Mediche <b>aggiornabili</b>');
+                 if(isset($log['log_data'][6]['time_2']))
+                 {
+                     $game->out(', coda di lavoro disponibile tra: '.$log['log_data'][6]['time_2']);
+                 }
+                 $game->out('<br>');
+             }
+
+             if(isset($log['log_data'][6]['research_3']))
+             {
+                 $game->out('Strutture Difensive <b>aggiornabili</b>');
+                 if(isset($log['log_data'][6]['time_3']))
+                 {
+                     $game->out(', coda di lavoro disponibile tra: '.$log['log_data'][6]['time_3']);
+                 }
+                 $game->out('<br>');
+             }
+
+             if(isset($log['log_data'][6]['research_4']))
+             {
+                 $game->out('Automazione <b>aggiornabile</b>');
+                 if(isset($log['log_data'][6]['time_2']))
+                 {
+                     $game->out(', coda di lavoro disponibile tra: '.$log['log_data'][6]['time_4']);
+                 }
+                 $game->out('<br>');
+             }
+
+             if(isset($log['log_data'][6]['research_5']))
+             {
+                 $game->out('Estrazione Risorse <b>aggiornabile</b>');
+                 if(isset($log['log_data'][6]['time_5']))
+                 {
+                     $game->out(', coda di lavoro disponibile tra: '.$log['log_data'][6]['time_5']);
+                 }
+                 $game->out('<br>');
+             }
+            $game->out('</td></tr></table>');
+            break;
         case 2:
             // log_data[5] = return code
             // log_data[6] = mood modifier
@@ -65,7 +135,7 @@ function display_logbook($log) {
                 case  0:
                     $game->out('
                     '.constant($game->sprache("TEXT165")).' '.$log['log_data'][6].'.
-                    ');               
+                    ');
                     break;
             }
         break;
@@ -80,15 +150,19 @@ function display_logbook($log) {
             switch($log['log_data'][5])
             {
                 case -4:
+                    $game->out(constant($game->sprache("TEXT176")).$log['log_data'][7].'.<br><br>');
                     $game->out(constant($game->sprache("TEXT172")));
                 break;
                 case -3:
+                    $game->out(constant($game->sprache("TEXT176")).$log['log_data'][7].'.<br><br>');
                     $game->out(constant($game->sprache("TEXT173")));
                 break;
                 case -2:
+                    $game->out(constant($game->sprache("TEXT176")).$log['log_data'][7].'.<br><br>');
                     $game->out(constant($game->sprache("TEXT174")));
                 break;
                 case -1:
+                    $game->out(constant($game->sprache("TEXT176")).$log['log_data'][7].'.<br><br>');
                     $game->out(constant($game->sprache("TEXT175")));
                     break;
                 case 0:
@@ -130,7 +204,25 @@ function display_logbook($log) {
                   '.constant($game->sprache("TEXT168")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($log['log_data'][0])).'"><b>'.$log['log_data'][1].'</b></a>!<br><br>
                   '.constant($game->sprache("TEXT183")));
         break;
-    }            
+        case 103:
+            // Automatic distress call for Borg attack
+            $game->out('
+                  '.constant($game->sprache("TEXT184")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($log['log_data'][0])).'"><b>'.$log['log_data'][1].'</b></a><br><br>
+                  '.constant($game->sprache("TEXT185")));
+        break;
+        case 104:
+            // Distress call for Borg attack
+            $game->out('
+                  '.constant($game->sprache("TEXT186")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($log['log_data'][0])).'"><b>'.$log['log_data'][1].'</b></a><br><br>
+                  '.constant($game->sprache("TEXT187")));
+        break;
+        case 105:
+            // Player conquer Settlers colony
+            $game->out('
+                  '.constant($game->sprache("TEXT184")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($log['log_data'][0])).'"><b>'.$log['log_data'][1].'</b></a><br><br>
+                  '.constant($game->sprache("TEXT188")).$log['log_data'][6].'.');
+        break;
+    }
 
     $game->out('</td>
               </tr>
