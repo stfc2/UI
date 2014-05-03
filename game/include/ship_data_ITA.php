@@ -854,7 +854,7 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 
-		9 => array(
+		10 => array(
 
 			0 => 'Cubo Borg',  // Name
 
@@ -868,6 +868,13 @@ $SHIP_TORSO_LOCALE = array(
 
 			1 => 'Esteriormente &egrave; quasi completamente coperto da una specie di scafo liscio e non espone il groviglio tubolare caratteristico degli altri cubi.',
 
+		),
+
+		12 => array(
+
+			0 => 'Nave Madre Borg', // Name
+
+			1 => 'Immaginate un insieme informe di cubi, cubi tattici, sfere, tetraedi Borg fusi insieme a formare una nave gigantesca.',
 		),
 	),
 

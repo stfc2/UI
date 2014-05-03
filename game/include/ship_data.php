@@ -5609,7 +5609,7 @@ $SHIP_TORSO = array(
 			30 => 500,  // Benötige Arbeiter zum Bau
 		),
 
-		9 => array(
+		10 => array(
 			0 => 500000,  // Metal
 
 			1 => 500000,  // Minerals
@@ -5633,6 +5633,20 @@ $SHIP_TORSO = array(
 			13 => 552,  // Buildtime (in 5 Minuten Schritten)
 
 			29 => 'Borg Tact Cube',  // Name
+
+			30 => 50000,  // Benötige Arbeiter zum Bau
+		),
+		
+		12 => array(
+			0 => 500000,  // Metal
+
+			1 => 500000,  // Minerals
+
+			2 => 500000,  // Latinum
+
+			13 => 552,  // Buildtime (in 5 Minuten Schritten)
+
+			29 => 'Borg Unimatrix Zero',  // Name
 
 			30 => 50000,  // Benötige Arbeiter zum Bau
 		),
