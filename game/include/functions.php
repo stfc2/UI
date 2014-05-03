@@ -1887,7 +1887,7 @@ echo'
 					<tr>
 						<td>'.constant($this->sprache("TCLASS")).'</td>
 						<td>&nbsp;</td>
-						<td><input type="radio" name="type" value="m"> M</td>
+						<td><input type="radio" name="type" value="m" checked> M</td>
 					</tr>
 					<tr>
 						<td></td>
@@ -1896,7 +1896,7 @@ echo'
 					</tr>
 					</table><br>
 					<table>
-					<tr><td>'.constant($this->sprache("STARTPOINT")).'</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="0"> '.constant($this->sprache("RANDOM")).'</td></tr>
+					<tr><td>'.constant($this->sprache("STARTPOINT")).'</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="0" checked> '.constant($this->sprache("RANDOM")).'</td></tr>
 					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="1"> '.constant($this->sprache("GAMMAQ")).'</td><td>'.$tips[1].'</td></tr>
 					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="2"> '.constant($this->sprache("DELTAQ")).'</td><td>'.$tips[2].'</td></tr>
 					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="3"> '.constant($this->sprache("ALPHAQ")).'</td><td>'.$tips[3].'</td></tr>
