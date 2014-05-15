@@ -158,7 +158,13 @@ else {
                 echo 'The player '.$st_player_data['user_name'].' was deleted.<br>Please log in again.';
             }
             else
-            if ($st_player_data['user_active']==4) 
+            if ($st_player_data['user_active']==4)
+            {
+                $sitting_mode = 0;
+                echo 'The player '.$st_player_data['user_name'].' was deleted.<br>Please log in again.';
+            }
+            else
+            if ($st_player_data['user_active']==5)
             {
                 $sitting_mode = 0;
                 echo 'The player '.$st_player_data['user_name'].' was deleted.<br>Please log in again.';
