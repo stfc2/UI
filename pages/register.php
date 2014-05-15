@@ -51,10 +51,10 @@ function display_success($galaxy,$bg) {
           <td width="100%" valign=top><span class="sub_caption2"><br><br>La tua registrazione ha avuto successo!<br><br>Una email &egrave; stata inviata al tuo indirizzo,
           con la quale potrai attivare il tuo account. <br> <b> Il messaggio potrebbe venire marcato come spam, ti preghiamo di verificare in caso di ritardo.</span></td>
         </tr>
-	</table>
-	</td>
-	</tr>
-	</table>';
+      </table>
+    </td>
+  </tr>
+</table>';
 }
 
 
@@ -176,7 +176,7 @@ function display_registration($data = array(), $message = '', $galaxy) {
 </div>
 
 <div id="dropmsg1" class="dropcontent">
-<br>I Romulani hanno un punto di forza nel poter costruire navi e fanti velocemente e a basso costo. Hanno un tasso di produzione di dilitio bassissimo e dispongono di vascelli e soldati relativamente deboli. Tuttavia, le navi Romulane dispongono di un ottima capacità di occultamento.<br>I giocatori di questa specie partono con maggior probabilit&agrave; dal Quadrante Beta piuttosto che dal Gamma ed Alfa.<br>
+<br>I Romulani hanno un punto di forza nel poter costruire navi e fanti velocemente e a basso costo. Hanno un tasso di produzione di dilitio bassissimo e dispongono di vascelli e soldati relativamente deboli. Tuttavia, le navi Romulane dispongono di un ottima capacit&agrave; di occultamento.<br>I giocatori di questa specie partono con maggior probabilit&agrave; dal Quadrante Beta piuttosto che dal Gamma ed Alfa.<br>
 <i>Consigliata ai giocatori alle prime armi.</i>
 </div>
 
@@ -196,13 +196,13 @@ function display_registration($data = array(), $message = '', $galaxy) {
 </div>
 
 <div id="dropmsg5" class="dropcontent">
-<br>I Ferengi sono la razza commerciante per eccellenza in Star Trek. Preferiscono fare commercio, dispongono dei trasporti pi&ugrave; veloci e navi colonia molto rapide, hanno il miglior tasso di estrazione di risorse e sono velocissimi nel costruire truppe e strutture planetarie, tutto questo permette al Ferengi di espandersi pi&ugrave; velocemente di qualsiasi altra razza. La loro debolezza consiste nelle loro scadenti navi da battaglia, motivo per cui il giocatore dovrebbe concentrare tutta la sua capacit&agrave; affaristica nel comprare navi alle aste.<br>I giocatori di questa razza hanno pari possibilità di parte da un qualsiasi dei quattro quadranti.<br>
+<br>I Ferengi sono la razza commerciante per eccellenza in Star Trek. Preferiscono fare commercio, dispongono dei trasporti pi&ugrave; veloci e navi colonia molto rapide, hanno il miglior tasso di estrazione di risorse e sono velocissimi nel costruire truppe e strutture planetarie, tutto questo permette al Ferengi di espandersi pi&ugrave; velocemente di qualsiasi altra razza. La loro debolezza consiste nelle loro scadenti navi da battaglia, motivo per cui il giocatore dovrebbe concentrare tutta la sua capacit&agrave; affaristica nel comprare navi alle aste.<br>I giocatori di questa razza hanno pari possibilit&agrave; di parte da un qualsiasi dei quattro quadranti.<br>
 <i>Una razza estremamente facile da giocare in termini di gestione. Occorre senso per gli affari per sfruttare a fondo i Ferengi.</i>
 </div>
 
 <div id="dropmsg6" class="dropcontent">
 <br>I Breen sono una specie molto forte, con navi e soldati potenti ma piuttosto costosi. Il loro tasso di estrazione risorse &egrave; piuttosto basso e questo pu&ograve; portare a qualche problema economico. Dispongono anche della minor variet&agrave; di navi a disposizione, tuttavia le poche esistenti non vanno assolutamente sottovalutate. Il tempo di costruzione delle strutture planetarie &egrave; relativamente alto.<br>I giocatori di questa razza partono con prevalenza dal Quadrante Gamma.<br>
-<i>Una razza piuttosto difficile da giocare e con poca varietà di navi. Indicata per i giocatori con molto senso pratico.</i>
+<i>Una razza piuttosto difficile da giocare e con poca variet&agrave; di navi. Indicata per i giocatori con molto senso pratico.</i>
 </div>
 
 <div id="dropmsg7" class="dropcontent">
@@ -379,6 +379,9 @@ if ($config['register_blocked']) {display_registration(NULL,'La registrazione at
 else if ($config['max_player']<=$playercount['num']) {display_registration(NULL,'La registrazione attualmente non &egrave; possibile<br>('.$playercount['num'].' di '.$config['max_player'].' posti occupati)',$galaxy);return true;}
 else
 if(isset($_POST['submit'])) {
+    //
+    // Check validity of inserted data
+    //
     if(empty($_POST['user_name'])) {
         display_registration($_POST, '(Nome del giocatore non specificato)',$galaxy);
         return true;
@@ -388,36 +391,34 @@ if(isset($_POST['submit'])) {
         display_registration($_POST, '(Login non specificato)',$galaxy);
         return true;
     }
-    
+
     if(strstr($_POST['user_name'], ' ')) {
         display_registration($_POST, '(Nome del giocatore contenente spazi)',$galaxy);
         return true;
     }
-    
+
     for ($count=0; $count < strlen($_POST['user_name']); $count++) {
-       $val=ord( (substr($_POST['user_name'], $count, 1)) );
-       if ($val<48 || ($val>57 && $val<65) || ($val>90 && $val<97) || $val>122)
-       {
-        display_registration($_POST, '(Il nome scelto contiene caratteri non consentiti [solo 0-9, a-z, A-Z])',$galaxy);
-        return true;
-       }
-   }
+        $val=ord( (substr($_POST['user_name'], $count, 1)) );
+        if ($val<48 || ($val>57 && $val<65) || ($val>90 && $val<97) || $val>122)
+        {
+            display_registration($_POST, '(Il nome scelto contiene caratteri non consentiti [solo 0-9, a-z, A-Z])',$galaxy);
+            return true;
+        }
+    }
 
     for ($count=0; $count < strlen($_POST['login_name']); $count++) {
-       $val=ord( (substr($_POST['login_name'], $count, 1)) );
-       if ($val<48 || ($val>57 && $val<65) || ($val>90 && $val<97) || $val>122)
-       {
-        display_registration($_POST, '(Il Login scelto contiene caratteri non consentiti [solo 0-9, a-z, A-Z])',$galaxy);
-        return true;
-       }
-   }
-
+        $val=ord( (substr($_POST['login_name'], $count, 1)) );
+        if ($val<48 || ($val>57 && $val<65) || ($val>90 && $val<97) || $val>122)
+        {
+            display_registration($_POST, '(Il Login scelto contiene caratteri non consentiti [solo 0-9, a-z, A-Z])',$galaxy);
+            return true;
+        }
+    }
 
     if($_POST['user_name'] == $_POST['login_name']) {
         display_registration($_POST, '(Il nome giocatore e il Login coincidono!)',$galaxy);
         return true;
     }
-
 
     if(empty($_POST['user_password'])) {
         display_registration($_POST, '(Password non specificata)',$galaxy);
@@ -425,7 +426,7 @@ if(isset($_POST['submit'])) {
     }
 
     if($_POST['user_password'] != $_POST['user_password2']) {
-        display_registration($_POST, '(Le Password non coincidono)',$galaxy);
+        display_registration($_POST, '(Le password non coincidono)',$galaxy);
         return true;
     }
 
@@ -434,30 +435,28 @@ if(isset($_POST['submit'])) {
         return true;
     }
 
+    // Check email presence in the DB
     $sql = 'SELECT user_id
             FROM user
             WHERE user_email = "'.$_POST['user_email'].'"';
-    
 
     unset($user_exists);
-
-
 
     if(($user_exists = $mydb->queryrow($sql)) === false) {
         die('Database error - Could not verify email');
     }
     if(!empty($user_exists['user_id'])) {
-        display_registration($_POST, '(La Email specificata &egrave; gi&agrave; in uso nella Galassia!)',$galaxy);
+        display_registration($_POST, '(La Email specificata &egrave; gi&agrave; in uso nella Galassia!)<br>Se ti sei appena cancellato devi attendere almeno 24 ore prima di poterti reiscrivere',$galaxy);
         return true;
     }
-    
+
+
+    // Check login presence in the DB
     $sql = 'SELECT user_id
             FROM user
             WHERE user_loginname = "'.$_POST['login_name'].'"';
-    
 
     unset($user_exists);
-
 
     if(($user_exists = $mydb->queryrow($sql)) === false) {
         die('Database error - Could not verify login name');
@@ -467,9 +466,12 @@ if(isset($_POST['submit'])) {
         return true;
     }
 
+
+    // Check name presence in the DB
     $sql = 'SELECT user_id
             FROM user
             WHERE user_name = "'.$_POST['user_name'].'"';
+
     unset($user_exists);
 
     if(($user_exists = $mydb->queryrow($sql)) === false) {
@@ -480,9 +482,9 @@ if(isset($_POST['submit'])) {
         display_registration($_POST, '(Il nome del giocatore &egrave; gi&agrave; in uso nella Galassia!)',$galaxy);
         return true;
     }
-    
-    
-    
+
+
+
     if(!in_array($_POST['user_race'], array(0, 1, 2, 3, 4, 5, 8, 9, 10, 11))) {
         display_registration($_POST, '(La razza non esiste)',$galaxy);
         return true;
@@ -530,93 +532,91 @@ if(isset($_POST['submit'])) {
         display_registration($_POST, '(What <b>are</b> you then?)',$galaxy);
         return true;
     }
-    
-    
-	if ($_POST['country']!='DE' && $_POST['country']!='AT' && $_POST['country']!='CH' &&
-		$_POST['country']!='IT' && $_POST['country']!='UK' && $_POST['country']!='US' &&
-		$_POST['country']!='FR') $_POST['country']='XX';
-
-	/* 13/03/08 - AC: Select user language */
-	$lang = ''; // Default is english
-	if($_POST['country']!='XX')
-	{
-		switch($_POST['country'])
-		{
-			case 'DE':
-			case 'AT':
-			case 'CH':
-				$lang = 'GER';
-			break;
-			case 'UK':
-			case 'US':
-				$lang = 'ENG';
-			break;
-			case 'IT':
-				$lang = 'ITA';
-			break;
-		}
-	}
-
-	$_POST['plz']=(int)$_POST['plz'];
-	
 
 
+    if ($_POST['country']!='DE' && $_POST['country']!='AT' && $_POST['country']!='CH' &&
+        $_POST['country']!='IT' && $_POST['country']!='UK' && $_POST['country']!='US' &&
+        $_POST['country']!='FR') $_POST['country']='XX';
 
-        	$sql = 'SELECT skin_id, skin_html
-            	FROM skins
-            	ORDER BY skin_id ASC
-	            LIMIT 0,1';
+    /* 13/03/08 - AC: Select user language */
+    $lang = ''; // Default is english
+    if($_POST['country']!='XX')
+    {
+        switch($_POST['country'])
+        {
+            case 'DE':
+            case 'AT':
+            case 'CH':
+                $lang = 'GER';
+            break;
+            case 'UK':
+            case 'US':
+                $lang = 'ENG';
+            break;
+            case 'IT':
+                $lang = 'ITA';
+            break;
+        }
+    }
 
-    	if(($skin_data = $mydb->queryrow($sql)) === false) {
-	        die('Database error - Could not load skin data');
-    	}
-
-        $gfxpath='/stfc_gfx/';
-
-/*    	$sql = 'INSERT INTO user (user_active, user_name, user_loginname, user_password, user_email, user_auth_level, user_race, user_gfxpath, user_skinpath, user_registration_time, user_registration_ip, user_birthday, user_gender, plz, country)
-        	    VALUES (2, "'.$_POST['user_name'].'", "'.$_POST['login_name'].'", "'.md5($_POST['user_password']).'", "'.$_POST['user_email'].'", 1, '.$_POST['user_race'].', "'.$gfxpath.'", "skin'.$skin_data['skin_id'].'/", '.time().', "'.$_SERVER['REMOTE_ADDR'].'", "'.$birthday_str.'", "'.$_POST['user_gender'].'", '.$_POST['plz'].', "'.$_POST['country'].'")';*/
-
-    	$sql = 'INSERT INTO user (user_active, user_name, user_loginname, user_password, user_email, user_auth_level, user_race, user_gfxpath, user_skinpath, user_registration_time, user_registration_ip, user_birthday, user_gender, plz, country, language)
-        	    VALUES (2, "'.$_POST['user_name'].'", "'.$_POST['login_name'].'", "'.md5($_POST['user_password']).'", "'.$_POST['user_email'].'", 1, '.$_POST['user_race'].', "'.$gfxpath.'", "skin'.$skin_data['skin_id'].'/", '.time().', "'.$_SERVER['REMOTE_ADDR'].'", "'.$birthday_str.'", "'.$_POST['user_gender'].'", '.$_POST['plz'].', "'.$_POST['country'].'", "'.$lang.'")';
-
-    	if(!$mydb->query($sql)) {
-	        die('Database error - Could not insert user data');
-    	}
-    	// Bietet größere Sicherheit bei hoher Last
-    	$sql = 'SELECT user_id
-            	FROM user
-            	WHERE user_name = "'.$_POST['user_name'].'"';
-
-    	if(($new_id = $mydb->queryrow($sql)) === false) {
-	        die('Database error - Could not determine new user ID');
-    	}
-
-    	$user_id = (int)$new_id['user_id'];
-
-    	$sql = 'INSERT INTO user_templates (user_id, user_template)
-        	    VALUES ('.$user_id.', "'.addslashes($skin_data['skin_html']).'")';
-
-    	if(!$mydb->query($sql)) {
-	        die('Database error - Could not insert skin data');
-    	}
-
-    	$activation_key = md5( pow($user_id,2) );
-    	$activation_link = 'http://www.stfc.it/index.php?a=activate&galaxy='.$galaxy.'&user_id='.$user_id.'&key='.$activation_key;
-        define('EXT_NL', "\r\n");
-		$mail_message = 'Congratulazioni '.$_POST['user_name'].'!'."\n".'La tua registrazione a Star Trek: Frontline Combat II (Galassia '.$galaxyname.') ha avuto successo!'."\n".'Per attivare il tuo account devi cliccare sul link seguente:'."\n".$activation_link."\n\n".'Se non hai eseguito la registrazione, ignora questa email.'."\n".'Dopo 48 ore, il tuo indirizzo email verrà automaticamente rimosso dal nostro database.'."\n\n".'Lunga vita e prosperità,'."\n".'Il team STFC.'."\n\n".'Credits: http://www.stfc.it/index.php?a=imprint';
-		send_mail("STFC2 Mailer","admin@stfc.it",$_POST['user_name'],$_REQUEST['user_email'],"Registrazione Star Trek: Frontline Combat",$mail_message);
-
-       // Update NewRegister
-
-       $sql = 'UPDATE config SET new_register = new_register + 1';
-
-    	if(!$mydb->query($sql)) {
-	        die('Database error - Could not update new_register');
-    	}
+    $_POST['plz']=(int)$_POST['plz'];
 
 
 
-    
+    //
+    // Everything went fine, create the new user
+    //
+    $sql = 'SELECT skin_id, skin_html
+            FROM skins
+            ORDER BY skin_id ASC
+            LIMIT 0,1';
+
+    if(($skin_data = $mydb->queryrow($sql)) === false) {
+        die('Database error - Could not load skin data');
+    }
+
+    $gfxpath='/stfc_gfx/';
+
+    $sql = 'INSERT INTO user (user_active, user_name, user_loginname, user_password, user_email, user_auth_level, user_race, user_gfxpath, user_skinpath, user_registration_time, user_registration_ip, user_birthday, user_gender, plz, country, language)
+            VALUES (2, "'.$_POST['user_name'].'", "'.$_POST['login_name'].'", "'.md5($_POST['user_password']).'", "'.$_POST['user_email'].'", 1, '.$_POST['user_race'].', "'.$gfxpath.'", "skin'.$skin_data['skin_id'].'/", '.time().', "'.$_SERVER['REMOTE_ADDR'].'", "'.$birthday_str.'", "'.$_POST['user_gender'].'", '.$_POST['plz'].', "'.$_POST['country'].'", "'.$lang.'")';
+
+    if(!$mydb->query($sql)) {
+        die('Database error - Could not insert user data');
+    }
+
+    // Provides greater safety at high load
+    $sql = 'SELECT user_id
+            FROM user
+            WHERE user_name = "'.$_POST['user_name'].'"';
+
+    if(($new_id = $mydb->queryrow($sql)) === false) {
+        die('Database error - Could not determine new user ID');
+    }
+
+    $user_id = (int)$new_id['user_id'];
+
+    $sql = 'INSERT INTO user_templates (user_id, user_template)
+            VALUES ('.$user_id.', "'.addslashes($skin_data['skin_html']).'")';
+
+    if(!$mydb->query($sql)) {
+        die('Database error - Could not insert skin data');
+    }
+
+    $activation_key = md5( pow($user_id,2) );
+    $activation_link = 'http://www.stfc.it/index.php?a=activate&galaxy='.$galaxy.'&user_id='.$user_id.'&key='.$activation_key;
+    define('EXT_NL', "\r\n");
+    $mail_message = 'Congratulazioni '.$_POST['user_name'].'!'."\n".'La tua registrazione a Star Trek: Frontline Combat II (Galassia '.$galaxyname.') ha avuto successo!'."\n".'Per attivare il tuo account devi cliccare sul link seguente:'."\n".$activation_link."\n\n".'Se non hai eseguito la registrazione, ignora questa email.'."\n".'Dopo 48 ore, il tuo indirizzo email verrà automaticamente rimosso dal nostro database.'."\n\n".'Lunga vita e prosperità,'."\n".'Il team STFC.'."\n\n".'Credits: http://www.stfc.it/index.php?a=imprint';
+    send_mail("STFC2 Mailer","admin@stfc.it",$_POST['user_name'],$_REQUEST['user_email'],"Registrazione Star Trek: Frontline Combat",$mail_message);
+
+    // Update NewRegister
+
+    $sql = 'UPDATE config SET new_register = new_register + 1';
+
+    if(!$mydb->query($sql)) {
+        die('Database error - Could not update new_register');
+    }
+
+
     display_success($galaxyname,$galaxyimg);
     return true;
 
