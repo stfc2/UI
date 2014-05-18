@@ -36,37 +36,57 @@ function print_route_info($route)
     return $output;
 }
 
-function print_unloading($actions) {
+function print_unloading($actions,$planet) {
     global $game;
 
-    $output = '<td>U:</td>';
+    $output = '<tr><td>U:</td>';
     $wares = array(201 => 'metal', 202 => 'mineral', 203 => 'latinum', 204 => 'worker', 211 => 'unit1', 212 => 'unit2', 213 => 'unit3', 214 => 'unit4', 215 => 'unit5', 216 => 'unit6');
+    $no_action = 0;
 
     foreach($wares as $code => $column) {
         if($actions[$code] == -1) {
             $output .= '<td width=60><img src='.$game->GFX_PATH.'menu_'.$column.'_small.gif><b><u>A</u></b></td>';
         }
-        else {
+        elseif($actions[$code] != 0) {
             $output .= '<td width=60><img src='.$game->GFX_PATH.'menu_'.$column.'_small.gif>'.$actions[$code].'</td>';
         }
+        else {
+            $output .= '<td width=60></td>';
+            $no_action++;
+        }
     }
+
+    $output .= '<td>'.$planet.'</td></tr>';
+
+    // No output is nothing has been done
+    if ($no_action == 10)
+        $output = '';
+
     return $output;
 }
 
-function print_loading($actions) {
+function print_loading($actions,$planet) {
     global $game;
 
-    $output = '<td>L:</td>';
-    $resources = array(101 => 'metal', 102 => 'mineral', 103 => 'latinum');
-    $units = array(104 => 'worker', 111 => 'unit1', 112 => 'unit2', 113 => 'unit3', 114 => 'unit4', 115 => 'unit5', 116 => 'unit6');
+    $output = '<tr><td>L:</td>';
+    $wares = array(101 => 'metal', 102 => 'mineral', 103 => 'latinum', 104 => 'worker', 111 => 'unit1', 112 => 'unit2', 113 => 'unit3', 114 => 'unit4', 115 => 'unit5', 116 => 'unit6');
+    $no_Action = 0;
 
-    foreach($resources as $code => $column) {
-        $output .= '<td width=60><img src='.$game->GFX_PATH.'menu_'.$column.'_small.gif>'.(($actions[$code] == -1) ? '<b><u>A</u></b>' : $actions[$code]).'</td>';
+    foreach($wares as $code => $column) {
+        if($actions[$code] == -1)
+            $output .= '<td width=60><img src='.$game->GFX_PATH.'menu_'.$column.'_small.gif><b><u>A</u></b></td>';
+        elseif($actions[$code] != 0)
+            $output .= '<td width=60><img src='.$game->GFX_PATH.'menu_'.$column.'_small.gif>'.$actions[$code].'</td>';
+        else {
+            $output .= '<td width=60></td>';
+            $no_action++;
+        }
     }
 
-    foreach($units as $code => $column) {
-        $output .= '<td width=60><img src='.$game->GFX_PATH.'menu_'.$column.'_small.gif>'.(($actions[$code] == -1) ? '<b><u>A</u></b>' : $actions[$code]).'</td>';
-    }
+    $output .= '<td>'.$planet.'</td></tr>';
+
+    if ($no_action == 10)
+        $output = '';
 
     return $output;
 }
@@ -90,6 +110,7 @@ $game->out('
 $sql = 'SELECT u.user_name, ss.user_id, ss.action_data,
                p1.planet_name AS start_name, p1.planet_owner AS start_owner,
                p2.planet_name AS dest_name, p2.planet_owner AS dest_owner,
+               p1.planet_id AS start_id, p2.planet_id AS dest_id,
                u1.user_name AS start_owner_name, u2.user_name AS dest_owner_name
                FROM (scheduler_shipmovement ss)
                LEFT JOIN (user u) ON ss.user_id = u.user_id
@@ -103,19 +124,29 @@ $sql = 'SELECT u.user_name, ss.user_id, ss.action_data,
 $q_routes = $db->query($sql);
 $action_data = array();
 
+
 while($route = $db->fetchrow($q_routes)) {
     $action_data = (array)unserialize($route['action_data']);
 
+    // Start/dest planets of move and route actions do not always match
+    if($route['start_id'] == $action_data[1]) {
+        $start_actions = &$action_data[3];
+        $dest_actions = &$action_data[4];
+    }
+    else {
+        $start_actions = &$action_data[4];
+        $dest_actions =  &$action_data[3];
+    }
+
     $game->out('
   <tr>
-    <td><a href="javascript:void(0);" onmouseover="return overlib(\''.print_route_info($route).'\',CAPTION,\'Details\', '.OVERLIB_STANDARD.');" onmouseout="return nd();">Detalis</a></td>
+    <td><a href="javascript:void(0);" onmouseover="return overlib(\''.print_route_info($route).'\',CAPTION,\'Details\', '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$route['user_name'].'</a></td>
     <td>
        <table>
-         <tr>
-         '.print_unloading(&$action_data[4]).'
-         </tr>
-         <tr>
-         '.print_loading(&$action_data[3]).'
+         '.print_unloading($start_actions,'S').'
+         '.print_loading($start_actions,'S').'
+         '.print_unloading($dest_actions,'D').'
+         '.print_loading($dest_actions,'D').'
          </tr>
       </table>
     </td>
@@ -126,7 +157,7 @@ while($route = $db->fetchrow($q_routes)) {
 $game->out('
 </table>
 </td></tr>
-<tr><td>Legend:<ul>U = unload<br>L = load<br><b><u>A</u></b> = un/load All the resource available</ul></td></tr>
+<tr><td>Legend:<ul>U = unload<br>L = load<br><b><u>A</u></b> = un/load All the resource available<br>S = Start planet<br>D = Dest planet</ul></td></tr>
 </table>
 ');
 

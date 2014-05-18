@@ -239,6 +239,11 @@ else {
     }
 
     /* END OF RULE TO AVOID ROUTES BETWEEN SITTER AND SITTED */
+
+    /* START OF RULE TO AVOID ROUTES WITH THE SETTLERS */
+    if($dest_planet['user_id'] == INDEPENDENT_USERID)
+        message(NOTICE, constant($game->sprache("TEXT43")));
+    /* END OF RULE TO AVOID ROUTES WITH THE SETTLERS */
 }
 
 

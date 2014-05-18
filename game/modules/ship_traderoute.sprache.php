@@ -116,6 +116,8 @@ define ("GER_TEXT41", 'Sie k&ouml;nnen nicht feststellen Handelsweg mit einem Ih
 
 define ("GER_TEXT42", 'Sie k&ouml;nnen nicht feststellen Handelsweg mit einem Ihrer Sitzung!');
 
+define ("GER_TEXT43", 'Sie k&ouml;nnen eine Handelsstra&szlig;e mit einem Planeten der Siedler nicht etablieren!');
+
 
 //English
 
@@ -213,6 +215,8 @@ define ("ENG_TEXT41", 'You cannot establish a trade route with one of your sitte
 
 define ("ENG_TEXT42", 'You cannot establish a trade route with one of your sitting!');
 
+define ("ENG_TEXT43", 'You cannot establish a trade route with a planet of the Settlers!');
+
 
 //Italiano
 
@@ -309,5 +313,7 @@ define ("ITA_TEXT40", 'Non sei il proprietario del pianeta di partenza!');
 define ("ITA_TEXT41", 'Non puoi stabilire una rotta commerciale con un tuo sitter!');
 
 define ("ITA_TEXT42", 'Non puoi stabilire una rotta commerciale con un tuo sittato!');
+
+define ("ITA_TEXT43", 'Non puoi stabilire una rotta commerciale con un pianeta dei Coloni!');
 
 ?>
