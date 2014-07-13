@@ -157,6 +157,10 @@ define ("GER_TEXT73", 'On mission:');
 
 define ("GER_TEXT74", 'Docked');
 
+define ("GER_TEXT75", 'AT Level');
+
+define ("GER_TEXT76", 'On: ');
+
 
 //English
 define ("ENG_TEXT0",'Ships:');
@@ -295,6 +299,10 @@ define ("ENG_TEXT73", 'On mission:');
 
 define ("ENG_TEXT74", 'Docked');
 
+define ("ENG_TEXT75", 'AT Level');
+
+define ("ENG_TEXT76", 'On: ');
+
 
 //Italian
 define ("ITA_TEXT0",'Navi:');
@@ -319,7 +327,7 @@ define ("ITA_TEXT9",'Stato:');
 
 define ("ITA_TEXT10",'Equipaggio:');
 
-define ("ITA_TEXT11",'Data costruzione:');
+define ("ITA_TEXT11",'Livello AT:');
 
 define ("ITA_TEXT12",'Dettagli classe');
 
@@ -434,5 +442,9 @@ define ("ITA_TEXT72", 'Pesanti');
 define ("ITA_TEXT73", 'Inizio missione:');
 
 define ("ITA_TEXT74", 'In porto');
+
+define ("ITA_TEXT75", 'Livello AT');
+
+define ("ITA_TEXT76", 'Su: ')
 
 ?>
