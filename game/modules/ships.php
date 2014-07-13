@@ -95,10 +95,10 @@ function Ships_List($focus=0,$search_name="")
 	{
 		$ordermethod = 's.hitpoints DESC,s.ship_scrap,s.ship_repair,st.name ASC';
 	}
-	/* AC: Query user ships ordered by construction time */
+	/* AC: Query user ships ordered by AwayTeam Level */
 	else if ($_REQUEST['order']==5)
 	{
-		$ordermethod = 's.construction_time ASC,s.ship_scrap,s.ship_repair,st.name ASC';
+		$ordermethod = 's.awayteam ASC,s.ship_scrap,s.ship_repair,st.name ASC';
 	}
 	/* Ordered by shiptorso reversed */
 	else if ($_REQUEST['order']==-1)
@@ -120,10 +120,10 @@ function Ships_List($focus=0,$search_name="")
 	{
 		$ordermethod = 's.hitpoints ASC,s.ship_scrap,s.ship_repair,st.name ASC';
 	}
-	/* Ordered by construction time reversed */
+	/* Ordered by Away Team Level reversed */
 	else if ($_REQUEST['order']==-5)
 	{
-		$ordermethod = 's.construction_time DESC,s.ship_scrap,s.ship_repair,st.name ASC';
+		$ordermethod = 's.awayteam DESC,s.ship_scrap,s.ship_repair,st.name ASC';
 	}
 
 	$shipsxpage = 20;
@@ -138,15 +138,16 @@ function Ships_List($focus=0,$search_name="")
 		$shipsxpage = 100;
 
 
-	$sql = 'SELECT s.ship_id, s.hitpoints, s.ship_repair, s.ship_scrap, s.ship_untouchable,
+	$sql = 'SELECT s.ship_id, s.hitpoints, s.ship_repair, s.ship_scrap, s.ship_untouchable, s.awayteam, s.awayteamplanet_id,
 			s.unit_1,s.unit_2,s.unit_3,s.unit_4, s.ship_name, s.ship_ncc, s.fleet_id,
 			s.construction_time, st.max_unit_1,st.max_unit_2,st.max_unit_3,st.max_unit_4,
 			st.name AS template_name, st.value_5 AS max_hitpoints, fl.fleet_name,
-			fl.planet_id AS fleet_target, pl.planet_name
+			fl.planet_id AS fleet_target, pl.planet_name, pl2.planet_name AS mission_planet
 			FROM (ships s)
 			INNER JOIN (ship_templates st) ON st.id = s.template_id
 			LEFT JOIN (ship_fleets fl) ON fl.fleet_id = s.fleet_id
 			LEFT JOIN (planets pl) ON pl.planet_id = ABS(s.fleet_id)
+                        LEFT JOIN (planets pl2) ON pl2.planet_id = s.awayteamplanet_id
 			WHERE s.user_id = '.$game->player['user_id'].'
 			AND st.ship_class IN ('.implode(',', $sels).') ORDER BY '.$ordermethod.' LIMIT '.$queryfocus.','.$shipsxpage;
 
@@ -387,7 +388,7 @@ function Ships_List($focus=0,$search_name="")
 			<td align="center">
 				<a href="javascript:void(0);" onmouseover="return overlib(\''.$crew_desc.'\', CAPTION, \''.$crew_title.'\', WIDTH, 200, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$crew.'</a>
 			</td>
-			<td align="center">'.date('d/m/y H:i', $ship['construction_time']).'</td>
+			<td align="center">'.($ship['awayteam'] == 0 ? constant($game->sprache("TEXT76")).'<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($ship['awayteamplanet_id'])).'">'.$ship['mission_planet'].'</a>' : intval($ship['awayteam'])).'</td>
 			</tr>');
 
 		$n++;
