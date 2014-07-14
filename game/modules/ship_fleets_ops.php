@@ -755,7 +755,7 @@ elseif(isset($_GET['ship_details'])) {
 
                    f.fleet_name, f.planet_id, f.move_id,
 
-                   p.planet_name
+                   p.planet_name, p2.planet_name AS mission_planet_name
 
             FROM (ships s)
 
@@ -764,6 +764,8 @@ elseif(isset($_GET['ship_details'])) {
             LEFT JOIN (ship_fleets f) ON f.fleet_id = s.fleet_id
 
             LEFT JOIN (planets p) ON p.planet_id = -s.fleet_id
+
+            LEFT JOIN (planets p2) ON p2.planet_id = s.awayteamplanet_id
 
             WHERE s.ship_id = '.$ship_id;
 
@@ -812,7 +814,18 @@ elseif(isset($_GET['ship_details'])) {
 	             +$ship['value_11']*0.5
 	             +$ship['value_12']
 	             );
-
+        
+        $base_to_hit = ($ship['value_6'] + $ship['value_7'] + $ship['value_8'] + $ship['value_11']) * 0.1;
+                        
+        if($base_to_hit > 15) {
+            $base_to_hit = 15;
+        }
+                        
+        if($base_to_hit <  1) {
+            $base_to_hit =  1;
+        }
+                        
+        $tohit = round(($base_to_hit * 100)/17, 2);
 
     $game->out('
 
@@ -852,6 +865,8 @@ elseif(isset($_GET['ship_details'])) {
 
             '.constant($game->sprache("TEXT4")).'<br><br>
 
+            '.( (intval($ship['awayteam']) == 0) ? constant($game->sprache("TEXT65")) : constant($game->sprache("TEXT63"))).'<br><br>
+
             '.constant($game->sprache("TEXT9")).'<br><br>
 
             '.constant($game->sprache("TEXT48")).'<br>
@@ -876,7 +891,9 @@ elseif(isset($_GET['ship_details'])) {
 
             '.constant($game->sprache("TEXT51")).'<br><br>
 
-            '.constant($game->sprache("TEXT61")).'<br><br>
+            '.constant($game->sprache("TEXT61")).'<br>
+                
+            '.constant($game->sprache("TEXT66")).'<br><br>
 
             '.constant($game->sprache("TEXT52")).'
 
@@ -904,6 +921,8 @@ elseif(isset($_GET['ship_details'])) {
 
             <b>'.$ship['value_4'].'</b><br><br>
 
+            <b>'.( (intval($ship['awayteam']) == 0) ?  ' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($ship['awayteamplanet_id'])).'"><b>'.$ship['mission_planet_name'].'</b></a> ' : intval($ship['awayteam'])).'</b><br><br>
+
             <b><span style="color: yellow">'.$ship['experience'].'</span></b> <img src="'.$game->GFX_PATH.'rank_'.$rank_nr.'.jpg" width="47" height="12"><br><br>
 
             <b>'.$ship['value_1'].' + <span style="color: yellow">'.round($ship['value_1']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
@@ -928,8 +947,10 @@ elseif(isset($_GET['ship_details'])) {
 
             <b>'.$ship['value_14'].'</b> / <b>'.$ship['value_13'].'</b><br><br>
 
-            <b><a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT62")).'\', CAPTION, \''.constant($game->sprache("TEXT61")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: yellow">'.$firststrike.'</span></a></b><br><br>
-
+            <b><a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT62")).'\', CAPTION, \''.constant($game->sprache("TEXT61")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: yellow">'.$firststrike.'</span></a></b><br>
+                
+            <b><a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT62")).'\', CAPTION, \''.constant($game->sprache("TEXT67")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: yellow">'.$tohit.'&#37;</span></a></b><br><br>
+        
             <img src='.$game->GFX_PATH.'menu_unit1_small.gif>'.$ship['unit_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif>'.$ship['unit_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif>'.$ship['unit_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif>'.$ship['unit_4'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif>'.$ship['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif>'.$ship['unit_6'].'
 
           </td>
