@@ -194,6 +194,9 @@ define ("GER_TEXT85", 'Torpedo in stock:');
 
 define ("GER_TEXT92", 'Index F.S.:');
 
+define ("GER_TEXT93", 'Index ToHit:');
+
+
 //English
 define ("ENG_TEXT0", 'Overview');
 
@@ -366,6 +369,8 @@ define ("ENG_TEXT83", 'Ships');
 define ("ENG_TEXT85", 'Torpedo in stock:');
 
 define ("ENG_TEXT92", 'Index F.S.:');
+
+define ("ENG_TEXT93", 'Index ToHit:');
 
 
 //Italiano
@@ -554,5 +559,7 @@ define ("ITA_TEXT90", 'Zone Ricovero:');
 define ("ITA_TEXT91", 'Zone Detentive:');
 
 define ("ITA_TEXT92", 'Valutaz. F.S.:');
+
+define ("ITA_TEXT93", 'Valutaz. ToHit:');
 
 ?>
