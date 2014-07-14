@@ -145,7 +145,17 @@ define ("GER_TEXT60", 'Torpedos:');
 
 define ("GER_TEXT61", 'Index F.S.:');
 
-define ("GER_TEXT62", 'Der Erstschlagwert (First Strike) repraesentiert die Reihenfolge in der die Schiffe im Kampf das Feuer eroeffnen. Je höher der Wert, desto groeßer die Chance als erstes zu Feuern. Allerdings werden Schiffe mit dem hoechsten Wert im Gegenzug als erste vom Feind anvisiert.');
+define ("GER_TEXT62", 'Der Erstschlagwert (First Strike) repraesentiert die Reihenfolge in der die Schiffe im Kampf das Feuer eroeffnen. Je hï¿½her der Wert, desto groeï¿½er die Chance als erstes zu Feuern. Allerdings werden Schiffe mit dem hoechsten Wert im Gegenzug als erste vom Feind anvisiert.');
+
+define("GER_TEXT63", 'AT Level');
+
+define("GER_TEXT64", 'AT Strenght');
+
+define("GER_TEXT65", 'AT used on');
+
+define("GER_TEXT66", 'ToHit:');
+
+define("GER_TEXT67", 'This value represents the chance to score a hit on an enemy vessel.');
 
 
 //English
@@ -275,6 +285,16 @@ define ("ENG_TEXT61", 'F.S. Index:');
 
 define ("ENG_TEXT62", 'This index represents the ability of the vessel to act in combat. The higher the value, the better the chance of the vessel to act before all others, however, ships with high index are being targeted first.');
 
+define("ENG_TEXT63", 'AT Level');
+
+define("ENG_TEXT64", 'AT Strenght');
+
+define("ENG_TEXT65", 'AT used on');
+
+define("ENG_TEXT66", 'ToHit:');
+
+define("ENG_TEXT67", 'This value represents the chance to score a hit on an enemy vessel.');
+
 
 //Italiano
 define ("ITA_TEXT0", 'Abilit&agrave;:');
@@ -402,5 +422,15 @@ define ("ITA_TEXT60", 'Siluri:');
 define ("ITA_TEXT61", 'Valutazione F.S.:');
 
 define ("ITA_TEXT62", 'Questo indice rappresenta la capacit&agrave; della nave di agire in combattimento. Maggiore &egrave; il valore, migliore la possibilit&agrave; della nave di agire prima di tutte le altre, tuttavia navi con indice elevato verranno bersagliate per prime.');
+
+define("ITA_TEXT63", 'Livello AT:');
+
+define("ITA_TEXT64", 'Forza AT:');
+
+define("ITA_TEXT65", 'AT sbarcata su:');
+
+define("ITA_TEXT66", 'Valutazione ToHit:');
+
+define("ITA_TEXT67", 'Questo indice rappresenta la probabilit&agrave; di una nave di mettere a segno un colpo.');
 
 ?>
