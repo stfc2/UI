@@ -259,6 +259,18 @@ for ($t=0; $t<3; $t++)
 			              +$template['value_8']
 			              +$template['value_11']*0.5
 			              +$template['value_12'];
+                        
+                        $base_to_hit = ($template['value_6'] + $template['value_7'] + $template['value_8'] + $template['value_11']) * 0.1;
+                        
+                        if($base_to_hit > 15) {
+                            $base_to_hit = 15;
+                        }
+                        
+                        if($base_to_hit <  1) {
+                            $base_to_hit =  1;
+                        }
+                        
+                        $template_array[$t]['tohit'] = round(($base_to_hit * 100)/17, 2);
 
 			$game->out('<br><u>'.constant($game->sprache("TEXT28")).'</u><br>');
 
@@ -279,6 +291,7 @@ for ($t=0; $t<3; $t++)
 
 			$game->out('<br>');
 			$game->out('<u>'.constant($game->sprache("TEXT92")).'</u> <b>'.$template_array[$t]['firststrike'].'</b><br>');
+                        $game->out('<u>'.constant($game->sprache("TEXT93")).'</u> <b>'.$template_array[$t]['tohit'].'&#37;</b><br>');
 			$game->out('<br><br>
 			<u>'.constant($game->sprache("TEXT30")).'</u><br>
 			<img src="'.$game->GFX_PATH.'menu_metal_small.gif"><b id="price1">'.$template['resource_1'].'</b>
@@ -512,7 +525,7 @@ if ($game->player['user_race']==11) // Kazon
   }
 }
 
-$te=$t+1; //Ausgabe Variable für den Rumpf
+$te=$t+1; //Ausgabe Variable fï¿½r den Rumpf
 
 //Funktion Ende
 
@@ -541,7 +554,7 @@ global $game;
 global $SHIP_TORSO, $UNIT_DESCRIPTION, $UNIT_DATA, $UNIT_NAME,$NEXT_TICK,$ACTUAL_TICK;
 global $ship_components;
 // res1,res2,res3,res4,unit1,unit2,unit3,unit4,unit5,unit6
-//$game->out('<br><b>Debuggen: Diese Meldung müsst ihr nicht melden - Secius // Torso:'.$_POST['ship_torso']);
+//$game->out('<br><b>Debuggen: Diese Meldung mï¿½sst ihr nicht melden - Secius // Torso:'.$_POST['ship_torso']);
 if((!isset($_POST['ship_torso'])) || (empty($_POST['ship_torso'])  && $game->player['user_race']==8))
 {
 $game->out('<br><b>'.constant($game->sprache("TEXT53")).'</b><br>'.Show_Torso());
