@@ -815,7 +815,10 @@ elseif(isset($_GET['ship_details'])) {
 	             +$ship['value_12']
 	             );
         
-        $base_to_hit = ($ship['value_6'] + $ship['value_7'] + $ship['value_8'] + $ship['value_11']) * 0.1;
+        $base_to_hit = (($ship['value_6']+round($ship['value_6']*$ship_rank_bonus[$rank_nr-1])) 
+                       +($ship['value_7']+round($ship['value_7']*$ship_rank_bonus[$rank_nr-1])) 
+                       +($ship['value_8']+round($ship['value_8']*$ship_rank_bonus[$rank_nr-1]))
+                       + $ship['value_11']) * 0.1;
                         
         if($base_to_hit > 15) {
             $base_to_hit = 15;
