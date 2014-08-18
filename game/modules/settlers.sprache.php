@@ -22,8 +22,92 @@
 //TEDESCO
 define ("GER_TEXT0",'Settlers Colonies:');
 
+define ("GER_TEXT1", 'Relations');
+
+define ("GER_TEXT2", 'Founder');
+
+define ("GER_TEXT3", 'Missions');
+
+define ("GER_TEXT4", 'Events');
+
+define ("GER_TEXT5", 'Trainings');
+
+define ("GER_TEXT10", 'Name');
+
+define ("GER_TEXT11", 'Position');
+
+define ("GER_TEXT12", 'Class');
+
+define ("GER_TEXT13", 'Relation Value');
+
+define ("GER_TEXT14", 'Linked planet');
+
+define ("GER_TEXT15", 'none');
+
+define ("GER_TEXT16", 'Link');
+
+define ("GER_TEXT17", 'UnLink');
+
+define ("GER_TEXT18", 'Mission');
+
+define ("GER_TEXT19", 'Ship');
+
+define ("GER_TEXT20", 'Alive');
+
+define ("GER_TEXT21", 'Active');
+
+define ("GER_TEXT22", 'Recap');
+
+define ("GER_TEXT23", 'Value');
+
+define ("GER_TEXT24", 'Ally');
+
+define ("GER_TEXT25", 'Lev.');
+
 //INGLESE
 define ("ENG_TEXT0",'Settlers Colonies:');
+
+define ("ENG_TEXT1", 'Relations');
+
+define ("ENG_TEXT2", 'Founder');
+
+define ("ENG_TEXT3", 'Missions');
+
+define ("ENG_TEXT4", 'Events');
+
+define ("ENG_TEXT5", 'Trainings');
+
+define ("ENG_TEXT10", 'Name');
+
+define ("ENG_TEXT11", 'Position');
+
+define ("ENG_TEXT12", 'Class');
+
+define ("ENG_TEXT13", 'Relation Value');
+
+define ("ENG_TEXT14", 'Linked planet');
+
+define ("ENG_TEXT15", 'none');
+
+define ("ENG_TEXT16", 'Link');
+
+define ("ENG_TEXT17", 'UnLink');
+
+define ("ENG_TEXT18", 'Mission');
+
+define ("ENG_TEXT19", 'Ship');
+
+define ("ENG_TEXT20", 'Alive');
+
+define ("ENG_TEXT21", 'Active');
+
+define ("ENG_TEXT22", 'Recap');
+
+define ("ENG_TEXT23", 'Value');
+
+define ("ENG_TEXT24", 'Ally');
+
+define ("ENG_TEXT25", 'Lev.');
 
 // ITALIANO
 define ("ITA_TEXT0",'Colonie Indipendenti');
