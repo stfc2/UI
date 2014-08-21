@@ -549,7 +549,7 @@ define ("ITA_TEXT49",'Ingresso');
 
 define ("ITA_TEXT50",'Uscita');
 
-define ("ITA_TEXT51",'- Nessun imput -');
+define ("ITA_TEXT51",'- Nessun input -');
 
 define ("ITA_TEXT52",'Mappa galassia:');
 
