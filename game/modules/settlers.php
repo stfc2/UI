@@ -28,7 +28,7 @@ $operator1 = filter_input(INPUT_POST, 'link_planet', FILTER_SANITIZE_STRING);
 
 $operator2 = filter_input(INPUT_POST, 'operation', FILTER_SANITIZE_STRING);
 
-if(isset($operator1) && isset($operator2))
+if((isset($operator1) && !empty($operator1)) && (isset($operator2) && !empty($operator2)))
 {
     $sql = 'SELECT best_mood_user FROM planets WHERE planet_id = '.(int)decode_planet_id($operator1);
     if(!($cnt_q = $db->queryrow($sql))) {
@@ -51,7 +51,31 @@ if(isset($operator1) && isset($operator2))
         }
     }
     
-    redirect('a=settlers');
+    //redirect('a=settlers');
+}
+
+$operator3 = filter_input(INPUT_POST, 'selection', FILTER_SANITIZE_STRING);
+
+if(isset($operator3)) {
+    switch ($operator3) {
+        case 1:
+            $selection = 1;
+            break;
+        case 2:
+            $selection = 2;
+            break;
+        case 3:
+            $selection = 3;
+            break;
+        case 4:
+            $selection = 4;
+            break;
+        default :
+            $selection = 1;
+    }
+}
+ else {
+     $selection = 1;
 }
 
 $sub_action = filter_input(INPUT_POST, 'step', FILTER_SANITIZE_STRING);
@@ -84,6 +108,7 @@ if($sub_action == constant($game->sprache("TEXT2"))) {
     <form name="controller" method="post" action="'.parse_link('a=settlers').'">
     <input type="hidden" name="link_planet">
     <input type="hidden" name="operation">
+    <input type="hidden" name="selection" value="'.$selection.'">
     <tr><td>
     <table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="2">
     <tr>
@@ -129,6 +154,7 @@ elseif($sub_action == constant($game->sprache("TEXT3"))) {
     <form name="controller" method="post" action="'.parse_link('a=settlers').'">
     <input type="hidden" name="link_planet">
     <input type="hidden" name="operation">
+    <input type="hidden" name="selection" value="'.$selection.'">
     <tr><td>
     <table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="2">
     <tr>
@@ -197,6 +223,7 @@ elseif($sub_action == constant($game->sprache("TEXT4"))) {
     <form name="controller" method="post" action="'.parse_link('a=settlers').'">
     <input type="hidden" name="link_planet">
     <input type="hidden" name="operation">
+    <input type="hidden" name="selection" value="'.$selection.'">
     <tr><td>
     <table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="2">
     <tr>
@@ -264,6 +291,17 @@ elseif($sub_action == constant($game->sprache("TEXT1")))
     <form name="controller" method="post" action="'.parse_link('a=settlers').'">
     <input type="hidden" id = "data1" name = "link_planet" value="0">
     <input type="hidden" id = "data2" name = "operation" value="0">
+    <input type="hidden" id = "data3" name = "selection" value="'.$selection.'">
+    <tr><td>
+    <table class="style_inner" width="75%" align="center" border="0" cellpadding="2" cellspacing="2">
+    <tr>
+    <td width="25%" align="center"><button type="submit" onclick="document.controller.data3.value=1">'.($selection == 1 ? '<b>'.constant($game->sprache("TEXT26")).'</b>' : constant($game->sprache("TEXT26"))).'</button></td>
+    <td width="25%" align="center"><button type="submit" onclick="document.controller.data3.value=2">'.($selection == 2 ? '<b>'.constant($game->sprache("TEXT27")).'</b>' : constant($game->sprache("TEXT27"))).'</button></td>
+    <td width="25%" align="center"><button type="submit" onclick="document.controller.data3.value=3">'.($selection == 3 ? '<b>'.constant($game->sprache("TEXT28")).'</b>' : constant($game->sprache("TEXT28"))).'</button></td>
+    <td width="25%" align="center"><button type="submit" onclick="document.controller.data3.value=4">'.($selection == 4 ? '<b>'.constant($game->sprache("TEXT29")).'</b>' : constant($game->sprache("TEXT29"))).'</button></td>
+    </tr>
+    </table>
+    </td></tr>
     <tr><td>
     <table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="2">
     <tr>
@@ -273,6 +311,20 @@ elseif($sub_action == constant($game->sprache("TEXT1")))
     <td width="60"><b>'.(constant($game->sprache("TEXT13"))).'</b></td>
     <td width="110"><b>'.(constant($game->sprache("TEXT14"))).'</b></td>
   </tr>');
+    switch ($selection) {
+        case 1:
+            $selection_string = '';
+            break;
+        case 2:
+            $selection_string = ' AND p.planet_type IN("a", "b", "c", "d", "m", "o", "p") ';
+            break;
+        case 3:
+            $selection_string = ' AND p.planet_type IN("e", "f", "g", "h", "k", "l", "n") ';
+            break;
+        case 4:
+            $selection_string = ' AND p.planet_type IN("i", "j", "s", "t", "x", "y") ';
+            break;
+    }
     $sql = 'SELECT sr.planet_id, p.planet_name, p.best_mood, p.best_mood_user, p.best_mood_planet,
                    p.sector_id, ss.system_x, ss.system_y, p.planet_distance_id,
                    p.planet_type, p2.planet_name AS target_planet_name,
@@ -281,8 +333,8 @@ elseif($sub_action == constant($game->sprache("TEXT1")))
             INNER JOIN planets p on sr.planet_id = p.planet_id
             LEFT  JOIN planets p2 on p.best_mood_planet = p2.planet_id
             INNER JOIN starsystems ss on p.system_id = ss.system_id
-            WHERE sr.user_id = '.$game->player['user_id'].'
-            GROUP BY planet_id';
+            WHERE sr.user_id = '.$game->player['user_id'].$selection_string.'
+            GROUP BY sr.planet_id';
     $q_p_setdiplo = $db->query($sql);
     $rows = $db->num_rows($q_p_setdiplo);
     $sett_diplo = $db->fetchrowset($q_p_setdiplo);
