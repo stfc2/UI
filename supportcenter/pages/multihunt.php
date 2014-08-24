@@ -65,15 +65,15 @@ $pick_u = true;
 $pick_s = true;
 
 while($pick_u || $pick_s) {
-    // Fetch new line from the query only if needed at the moment
+    // Fetch new lines from the queries only if needed at the moment
     if($pick_u) $iplog_u = $db->fetchrow($qry_user);
     if($pick_s) $iplog_s = $db->fetchrow($qry_sitter);
 
-    // Check if both the list are still popolated
+    // Check if both the lists are still populated
     if($iplog_u && $iplog_s) {
         // Check which one has the greater time
         if($iplog_u['time'] > $iplog_s['time']) {
-            // Next look we keep the current sitter to examine
+            // Next loop we keep the current sitter to examine
             $pick_s = false;
             $pick_u = true;
 
