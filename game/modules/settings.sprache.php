@@ -650,17 +650,17 @@ define ("ENG_TEXT146", 'You have to wait at least three weeks before enable a ne
 
 //Italiano
 
-define ("ITA_TEXT1", 'Errore: il file caricato non  un%27immagine.');
+define ("ITA_TEXT1", 'Errore: il file caricato non &egrave; un%27immagine.');
 
 define ("ITA_TEXT2", 'Errore: caricamento cancellato.');
 
 define ("ITA_TEXT3", 'Errore: errore di sistema durante il tentativo di caricamento.');
 
-define ("ITA_TEXT4", 'Errore: il file %E8 troppo grande (fino a 350kb).');
+define ("ITA_TEXT4", 'Errore: il file &egrave; troppo grande (fino a 350kb).');
 
 define ("ITA_TEXT5", 'Errore: non ci sono spazi liberi.');
 
-define ("ITA_TEXT6", 'L%27immagine %E8 stata aggiunta alla tua galleria.');
+define ("ITA_TEXT6", 'L%27immagine &egrave; stata aggiunta alla tua galleria.');
 
 define ("ITA_TEXT7", 'Errore: tentato attacco.');
 
