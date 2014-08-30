@@ -239,7 +239,7 @@ class sql {
     }
 
     function insert_id() {
-        $_id = mysqli_insert_id($this->link_id);
+        $_id = @mysqli_insert_id($this->link_id);
 
         if($_id == 0) {
             return $this->raise_error();
