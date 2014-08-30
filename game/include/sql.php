@@ -76,7 +76,7 @@ class sql {
     function connect() {
         if(!is_object($this->link_id)) {
             if(!$this->link_id = @mysqli_connect($this->login['server'], $this->login['user'], $this->login['password'], $this->login['database'], $this->login['port'])) {
-                message(GENERAL, 'Could not connect to mysql server and select database: '.mysqli_connect_error());
+                message(GENERAL, 'Could not connect to mysql server and select database');
             }
         }
 
