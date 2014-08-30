@@ -936,11 +936,11 @@ define ("ITA_TEXT132", 'Cancellazione fallita');
 
 define ("ITA_TEXT133", 'Spazio libero');
 
-define ("ITA_TEXT134", 'L%27immagine %E8 stata cancellata');
+define ("ITA_TEXT134", 'L%27immagine &egrave; stata cancellata');
 
 define ("ITA_TEXT135", 'Modifica avatar fallita');
 
-define ("ITA_TEXT136", 'L%27avatar %E8 stato configurato correttamente');
+define ("ITA_TEXT136", 'L%27avatar &egrave; stato configurato correttamente');
 
 define ("ITA_TEXT137", 'Vuoto');
 
