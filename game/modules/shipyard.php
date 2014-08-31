@@ -740,7 +740,7 @@ while(($scheduler = $db->fetchrow($schedulerquery))==true)
 $template=$db->queryrow('SELECT * FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (id="'.$scheduler['ship_type'].'")');
 
 $game->out('-&nbsp; <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 
-500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a> ('.constant($game->sprache("TEXT36")).' '.date("d.M H:i",time()+$NEXT_TICK+(($scheduler['finish_build']-$ACTUAL_TICK)*TICK_DURATION*60)).' '.constant($game->sprache("TEXT37")).')<br>');}
+500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a> ('.constant($game->sprache("TEXT36")).' '.date("d.M H:i",time()+$NEXT_TICK+(($scheduler['finish_build']-$ACTUAL_TICK)*TICK_DURATION*60)).')<br>');}
 
 } // End of: "if ($db->num_rows()>0)"
 
