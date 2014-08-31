@@ -1132,7 +1132,7 @@ class game {
 		global $ACTUAL_TICK;
 		$highlight_trade = false;
 		$num_auctions=$db->queryrow('SELECT count(*) AS anzahl FROM ship_trade WHERE scheduler_processed=0 AND start_time<='.$ACTUAL_TICK.' AND end_time>='.$ACTUAL_TICK.'');
-		if($num_auctions['anzahl']>0 && $this->player['user_points']>=400)
+		if($num_auctions['anzahl']>0 && $this->player['user_points']>=MIN_POINTS_AUCTIONS)
 			$highlight_trade = true;
 
 
