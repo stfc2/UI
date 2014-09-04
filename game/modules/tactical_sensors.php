@@ -32,12 +32,12 @@ $game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><b
 
 $filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 26, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 51, 54, 55)';
 
-$planets_selection = 'p2.planet_owner = ' . $game->player['user_id'] . ' AND';
+$planets_selection = 'p2.system_id IN (SELECT DISTINCT system_id FROM planets WHERE planet_owner = ' . $game->player['user_id'] . ' ) AND';
 $fleets_sensors = false;
 
 if (isset($_GET['delete_ferengi']))
 {
-    $filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 26, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 51, 54, 55)';
+    $filter_stream = '(11, 12, 13, 14, 21, 23, 24, 25, 26, 27, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 51, 54, 55)';
 }
 elseif (isset($_GET['view_attack']))
 {
@@ -67,7 +67,7 @@ else if (isset($_GET['fleets_sensors']))
 
     $fleet_planets_str = implode(',', $fleet_planets);
 
-    $planets_selection = 'p2.planet_id IN ('.$fleet_planets_str.') AND';
+    $planets_selection = 'p2.system_id IN (SELECT DISTINCT system_id FROM planets p, ship_fleets sf WHERE p.planet_id = sf.planet_id AND sf.move_id = 0 AND sf.user_id ='.$game->player['user_id'].') AND';
 
     $fleets_sensors = true;
 }
@@ -80,17 +80,19 @@ $dest = (!empty($_GET['dest'])) ? (int)$_GET['dest']:0;
 
 
 
-$sql = 'SELECT ss.*,
-               p1.planet_name AS start_planet_name,
-               u1.user_id AS start_owner_id, u1.user_name AS start_owner_name,
-               u2.user_name as owner_name,
-               p2.planet_name AS dest_planet_name,
-               p2.planet_id AS dest_id,
-               p2.building_7 AS dest_sensors
+$sql = 'SELECT ss.*, 
+            p1.planet_name AS start_planet_name,
+            u1.user_id AS start_owner_id, 
+            u1.user_name AS start_owner_name,
+            u2.user_name as owner_name,
+            p2.planet_name AS dest_planet_name,
+            u3.user_name AS dest_owner_name,
+            p2.system_id AS dest_id
         FROM (scheduler_shipmovement ss, planets p2)
-                LEFT JOIN (planets p1) ON p1.planet_id = ss.start
-                LEFT JOIN (user u1) ON u1.user_id = p1.planet_owner
-                LEFT JOIN (user u2) ON u2.user_id = ss.user_id
+            LEFT JOIN (planets p1) ON p1.planet_id = ss.start
+            LEFT JOIN (user u1) ON u1.user_id = p1.planet_owner
+            LEFT JOIN (user u2) ON u2.user_id = ss.user_id
+            LEFT JOIN (user u3) ON u3.user_id = p2.planet_owner
         WHERE p2.planet_id = ss.dest AND
               '.$planets_selection.'
               ss.move_begin <= ' . $ACTUAL_TICK . ' AND
@@ -126,7 +128,7 @@ $i = 2;
 
 
 // DC Lasciamo i codici dei trasporti Ferengi come "visibili"
-// DC La mossa di attacco Borg è sempre visibile
+// DC La mossa di attacco Borg ï¿½ sempre visibile
 $visible_actions = array(32, 33, 46);
 
 // Number of fleets displayed
@@ -144,14 +146,17 @@ while ($move = $db->fetchrow($q_moves))
         // Todo: Fleets queries, calculate values:
         //array('n_ships', 'sum_sensors', 'sum_cloak')
         /* 30/06/08 - AC: Planet sensors depends on target planet NOT on currently active planet!  */
-        $sensor2 = get_friendly_orbit_fleets($move['dest_id']);
-
+        //$sensor2 = get_friendly_orbit_fleets($move['dest_id']);
+        $sensor2['sum_sensors'] = 0;
+        $sensor2['sum_cloak'] = 0;
+        
         if($fleets_sensors)
-            $sensor3 = get_fleet_details($fleet_ids[$move['dest_id']]);
+            $sensor3['sum_sensors'] = get_system_fleet_sensors($move['dest_id']);
         else
         {
-            $sensor3['sum_sensors'] = ($move['dest_sensors'] + 1) * PLANETARY_SENSOR_VALUE;
-            $sensor3['sum_cloak'] = 0;
+            // $sensor3['sum_sensors'] = ($move['dest_sensors'] + 1) * PLANETARY_SENSOR_VALUE;
+            $sensor3['sum_sensors'] = get_system_planetary_sensors($move['dest_id']) * PLANETARY_SENSOR_VALUE;
+            //$sensor3['sum_cloak'] = 0;
         }
 
         /* 25/11/08 - AC: Spacedock sensors must be added to orbit fleets NOT to incoming fleets... */

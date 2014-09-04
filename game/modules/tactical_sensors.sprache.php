@@ -200,6 +200,10 @@ define ("ITA_TEXT5", 'Sensori');
 
 define ("ITA_TEXT6", 'I sensori non rilevano navi in movimento');
 
+define ("ITA_TEXT7", 'Posizione:');
+
+define ("ITA_TEXT8", 'Flotta di:');
+
 define ("ITA_TEXT9", 'Ferengi (NPC)');
 
 define ("ITA_TEXT10", '(disabitato)');
