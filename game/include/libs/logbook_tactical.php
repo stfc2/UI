@@ -754,7 +754,7 @@ function display_logbook($log) {
         case 46:
         case 51:
         case 54:
-        case 99:
+        case 99:            
         case 55:
             $text = &$log['log_data'][10];
             $a_fleets = &$log['log_data'][12];
@@ -1144,7 +1144,42 @@ if(count($a_fleets) <= 0) {
                 break;
             }
         break;
+        case 100: // AY-Fleet Report
+            $game->out('
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="65" valign="top"><b>'.constant($game->sprache("TEXT34")).'&nbsp;</b></td>
+        <td width="385">
+            ');
+            
+            $game->out(constant($game->sprache("TEXT215")).'<a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$log['log_data'][8]).'"> <b>'.$log['log_data'][9].'</b></a> '
+                       .constant($game->sprache("TEXT216")).'<a href="'.parse_link('a=stats&a2=viewplayer&id='.$log['log_data'][1]).'">  <b>'.$log['log_data'][12].'</b> </a> '
+                       .constant($game->sprache("TEXT217")).'<b>'.$log['log_data'][6].'</b>. '.constant($game->sprache("TEXT218")));
+            
+            $game->out('
+        </td>
+      </tr>
+    </table>
+    <br>
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="350"><b>'.constant($game->sprache("TEXT54")).'</b></td>
+        <td width="100"><b>'.constant($game->sprache("TEXT55")).'</b></td>
+      </tr>
+            ');
+            
+            foreach ($log['log_data'][11] as $ship_report) {
+                $game->out('
+      <tr>
+        <td>'.$ship_report['name'].' (<i>'.$SHIP_TORSO[$ship_report['race']][$ship_report['ship_torso']][29].'</i>, <i>'.$RACE_DATA[$ship_report['race']][0].'</i>)</td>
+        <td>'.$ship_report['n_ships'].'</td>
+      </tr>
+                ');
+            }
 
+            $game->out('</table><br>');
+            break;
+        
         default:
             message(GENERAL, 'Unknown action code in logbook_tactical.php', '$ldata[\'action_data\'] = '.$ldata['action_code']);
         break;
