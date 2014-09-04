@@ -357,15 +357,17 @@ define ("GER_TEXT163", 'benefits from allied diplomatic actions:');
 
 define ("GER_TEXT164", 'benefits from other members of our race:');
 
+define ("GER_TEXT165", 'La nostra delegazione diplomatica ha terminato con successo la missione.<br><br>L&#146;accordo ottenuto ha rinforzato il nostro indice di gradimento sul pianeta di:');
+
 define ("GER_TEXT166", 'Esiste gi&agrave; un trattato diplomatico con questa colonia!!!');
 
-define ("GER_TEXT167", 'Siedl.');
+define ("GER_TEXT167", 'Col.');
 
-define ("GER_TEXT168", 'Saluti dalla Colonia ');
+define ("GER_TEXT168", 'Saluti dalla Colonia Indipendente ');
 
-define ("GER_TEXT169", 'I nostri cantieri hanno recentemente ultimato la preparazione di una nuova nave classe ');
+define ("GER_TEXT169", 'I nostri cantieri hanno ultimato la preparazione di una nave classe ');
 
-define ("GER_TEXT170", ', orgoglio e vanto della nostra colonia. L&#146;unit&agrave; ha appena terminato la fase di collaudo e nonostanze l&#146;inesperienza dell&#146;equipaggio &egrave; pronta ad entrare in servizio sotto il vostro comando.');
+define ("GER_TEXT170", ', orgoglio e vanto della nostra colonia.<br>L&#146;unit&agrave; ha appena terminato la fase di collaudo e nonostanze l&#146;inesperienza dell&#146;equipaggio &egrave; pronta ad entrare in servizio.<br><br>Dati i buoni rapportano che ci legano, &egrave; nostro desiderio che tale unit&agrave; serva sotto il vostro comando!');
 
 define ("GER_TEXT171", 'La nostra squadra scientifica ha terminato la missione con esisto favorevole. I laboratori di ricerca sulla colonia stanno gi&agrave; lavorando per mettere in pratica quanto appena scoperto grazie al nostro aiuto.<br><br>Il valore delle nostre relazioni con il pianeta aumenta di ');
 
@@ -389,17 +391,79 @@ define ("GER_TEXT180", 'La nostra squadra non &egrave; stata in grado di install
 
 define ("GER_TEXT181", 'A seguito di recenti eventi bellici ed/o attivit&agrave; diplomatica di vostri concorrenti, la popolazione di questa colonia indipendente ha deciso di favorire una diversa potenza straniera!<br><br>Il punteggio della nostra relazione diplomatica &egrave; stato superato.');
 
-define ("GER_TEXT182", 'Un gruppo di volontari addestrati sul pianeta ha deciso di unirsi alle vostre forze e mettersi al vostro comando.<br><br>Essi giungeranno sul vostro pianeta madre come truppe mercenarie.');
+define ("GER_TEXT182", 'Un gruppo di volontari, addestrati sul pianeta, ha deciso di unirsi alle vostre forze e mettersi al vostro comando.');
 
-define ("GER_TEXT184", 'Unmanned comm station, planet ');
+define ("GER_TEXT183", 'Visto il vostro interesse nel supportare le nostre attivit&agrave; estrattive sul pianeta, abbiamo deciso di donarvi, come segno di riconoscenza, parte delle risorse estratte finora.');
 
-define ("GER_TEXT185", '<center>EMERGENCY DISTRESS CALL</center><br><br>Colony status: <b>Unknow</b><br>Orbital defense status: <b>Unknown</b><br>Last recorded event on automatic defense system: One or more Borg ships in standard orbit. Defenses going down. Unable to start emergency evacuation.');
+define ("GER_TEXT184", 'Stazione automatica di comunicazione, pianeta ');
+
+define ("GER_TEXT185", '<center>TRASMISSIONE AUTOMATICA DI EMERGENZA</center><br><br>Status della colonia: <b>Sconosciuto</b><br>Status difese orbitali: <b>Sconosciuto</b><br>Ultimo evento registrato dai sistemi automatici di difesa: presenza di una o pi&ugrave; navi Borg in orbita standard. Le difese planetarie sono state superate. Impossibile avviare evacuazione di emergenza della popolazione.');
 
 define ("GER_TEXT186", 'Comando difesa del pianeta ');
 
 define ("GER_TEXT187", '<b>Comunicazione prioritaria!!!</b><br>Stiamo subendo un attacco da parte dei Borg! Al momento le nostre difese reggono ma i Borg potrebbero tornare presto!');
 
 define ("GER_TEXT188", '<center>TRASMISSIONE AUTOMATICA DI EMERGENZA</center><br><br>Status della colonia: <b>Sconosciuto</b><br><br>Status difese orbitali: <b>Sconosciuto</b><br><br>Tutte le richieste di comunicazione sono state ignorate, le difese planetarie sono state superate. Impossibile avviare evacuazione di emergenza della popolazione.<br><br> Ultimo evento registrato dai sistemi automatici di difesa: presenza di una o pi&ugrave; navi ostili in orbita standard, appartenenti alle forze di ');
+
+define ("GER_TEXT189", 'Sul pianeta non vi sono nostre squadre in azione!<br><br>Verificare la presenza di una squadra attraverso il Pannello Tattico.');
+
+define ("GER_TEXT190", 'Ogni tentativo di mettersi in contatto ha avuto esito negativo e dalle nostre scansioni della superficie appare evidente che la squadra a terra &egrave; stata, in qualche modo, annientata.');
+
+define ("GER_TEXT191", 'Il recupero della squadra a terra ha avuto successo, tuttavia, la squadra non ha portato a termine la missione assegnata.');
+
+define ("GER_TEXT192", 'Il recupero della squadra a terra ha avuto successo.');
+
+define ("GER_TEXT193", 'Questa missione deve svolgersi su una colonia fondata da te!');
+
+define ("GER_TEXT194", 'Questa missione NON deve svolgersi su una colonia fondata da te!');
+
+define ("GER_TEXT195", 'La colonia non ha nessun fondatore!!! Missione annullata!');
+
+define ("GER_TEXT196", 'La tua squadra &egrave; sbarcata sul pianeta con successo e ha iniziato a svolgere la propria missione.');
+
+define ("GER_TEXT197", 'La nostra squadra a terra ha incontrato una squadra di cacciatori hirogeni appostata sul pianeta. La nostra squadra &egrave; stata attaccata ma &egrave; riuscita a salvarsi, tornando a bordo della nave.<br><br>Missione Annullata.');
+
+define ("GER_TEXT198", 'Subito dopo lo sbarco, la nostra squadra &egrave; stata colta in un agguato da parte di cacciatori hirogeni ed &egrave; stata annientata!!!<br><br>Missione Annullata.');
+
+define ("GER_TEXT199", 'Questa missione ammette una sola squadra sbarcata sul pianeta.<br><br>Missione Annullata.');
+
+define ("GER_TEXT200", 'La nave non pu&ograve; procedere al recupero della squadra dal pianeta perch&egrave; ha gi&agrave; una squadra a bordo!<br><br>Missione Annullata!');
+
+define ("GER_TEXT201", 'L&#146;azione di altre squadre diplomatiche sulla colonia ha prodotto alcuni effetti secondari, brevemente riepilogati qui di seguito:<br>');
+
+define ("GER_TEXT202", 'La nostra squadra scientifica non pu&ograve; fornire nessun tipo di supporto circa la tecnologia selezionata (segnalate questo messaggio come bug, grazie!)');
+
+define ("GER_TEXT203", 'Segnale automatico ricevuto: la squadra &egrave; stata annientata sul pianeta da nemici di livello superiore.');
+
+define ("GER_TEXT204", 'La squadra di cacciatori in agguato ha segnalato di aver attaccato una squadra avversaria in arrivo sul pianeta ma non &egrave stata in grado di sconfiggerla.');
+
+define ("GER_TEXT205", 'La squadra di cacciatori in agguato segnala di aver costretto alla fuga una squadra avversaria che tentava di sbarcare sulla superfice.');
+
+define ("GER_TEXT206", 'La squadra di cacciatori in agguato segnala di aver annientato una squadra avversaria che tentava di sbarcare sulla superfice!!!');
+
+define ("GER_TEXT207", 'La nostra squadra a terra ha incontrato una squadra di cacciatori hirogeni appostata sul pianeta; i cacciatori hanno tentato un assalto ma sono stati respinti, riuscendo per&ograve; a far perdere le loro tracce.');
+
+define ("GER_TEXT208", 'La nostra squadra a terra ha incontrato una squadra di cacciatori hirogeni appostata sul pianeta; i cacciatori hanno tentato un assalto ma hanno avuto la peggio e sono stati uccisi!!!');
+
+define ("GER_TEXT209", 'Trasmissione in arrivo da:');
+
+define ("GER_TEXT210", 'Le missioni da addestramento richiedono specifiche strutture sul pianeta per essere portate a termine, strutture che non sono presenti nella colonia indicata.<br><br>Missione Annullata.');
+
+define ("GER_TEXT211", 'Essi giungeranno come truppe mercenarie sul vostro pianeta capitale.');
+
+define ("GER_TEXT212", 'Essi giungeranno come truppe mercenarie sul vostro pianeta ');
+
+define ("GER_TEXT213", 'Tale donazione giunger&agrave; sul vostro pianeta capitale secondo gli usuali canali commerciali.');
+
+define ("GER_TEXT214", 'Tale donazione giunger&agrave; tramite gli usuali canali commerciali sul vostro pianeta ');
+
+define ("GER_TEXT215", 'La nostra flotta '); 
+
+define ("GER_TEXT216", 'comunica l&#146;avvistamento di navi appartenenti a '); 
+
+define ("GER_TEXT217", ' in arrivo intorno al pianeta ');
+        
+define ("GER_TEXT218", 'Segue il dettaglio delle navi avvistate:');
 
 
 //English
@@ -738,15 +802,17 @@ define ("ENG_TEXT163", 'benefits from allied diplomatic actions:');
 
 define ("ENG_TEXT164", 'benefits from other members of our race:');
 
+define ("ENG_TEXT165", 'La nostra delegazione diplomatica ha terminato con successo la missione.<br><br>L&#146;accordo ottenuto ha rinforzato il nostro indice di gradimento sul pianeta di:');
+
 define ("ENG_TEXT166", 'Esiste gi&agrave; un trattato diplomatico con questa colonia!!!');
 
-define ("ENG_TEXT167", 'Settl.');
+define ("ENG_TEXT167", 'Col.');
 
-define ("ENG_TEXT168", 'Saluti dalla Colonia ');
+define ("ENG_TEXT168", 'Saluti dalla Colonia Indipendente ');
 
-define ("ENG_TEXT169", 'I nostri cantieri hanno recentemente ultimato la preparazione di una nuova nave classe ');
+define ("ENG_TEXT169", 'I nostri cantieri hanno ultimato la preparazione di una nave classe ');
 
-define ("ENG_TEXT170", ', orgoglio e vanto della nostra colonia. L&#146;unit&agrave; ha appena terminato la fase di collaudo e nonostanze l&#146;inesperienza dell&#146;equipaggio &egrave; pronta ad entrare in servizio sotto il vostro comando.');
+define ("ENG_TEXT170", ', orgoglio e vanto della nostra colonia.<br>L&#146;unit&agrave; ha appena terminato la fase di collaudo e nonostanze l&#146;inesperienza dell&#146;equipaggio &egrave; pronta ad entrare in servizio.<br><br>Dati i buoni rapportano che ci legano, &egrave; nostro desiderio che tale unit&agrave; serva sotto il vostro comando!');
 
 define ("ENG_TEXT171", 'La nostra squadra scientifica ha terminato la missione con esisto favorevole. I laboratori di ricerca sulla colonia stanno gi&agrave; lavorando per mettere in pratica quanto appena scoperto grazie al nostro aiuto.<br><br>Il valore delle nostre relazioni con il pianeta aumenta di ');
 
@@ -770,17 +836,79 @@ define ("ENG_TEXT180", 'La nostra squadra non &egrave; stata in grado di install
 
 define ("ENG_TEXT181", 'A seguito di recenti eventi bellici ed/o attivit&agrave; diplomatica di vostri concorrenti, la popolazione di questa colonia indipendente ha deciso di favorire una diversa potenza straniera!<br><br>Il punteggio della nostra relazione diplomatica &egrave; stato superato.');
 
-define ("ENG_TEXT182", 'Un gruppo di volontari addestrati sul pianeta ha deciso di unirsi alle vostre forze e mettersi al vostro comando.<br><br>Essi giungeranno sul vostro pianeta madre come truppe mercenarie.');
+define ("ENG_TEXT182", 'Un gruppo di volontari, addestrati sul pianeta, ha deciso di unirsi alle vostre forze e mettersi al vostro comando.');
 
-define ("ENG_TEXT184", 'Unmanned comm station, planet ');
+define ("ENG_TEXT183", 'Visto il vostro interesse nel supportare le nostre attivit&agrave; estrattive sul pianeta, abbiamo deciso di donarvi, come segno di riconoscenza, parte delle risorse estratte finora.');
 
-define ("ENG_TEXT185", '<center>EMERGENCY DISTRESS CALL</center><br><br>Colony status: <b>Unknow</b><br>Orbital defense status: <b>Unknown</b><br>Last recorded event on automatic defense system: One or more Borg ships in standard orbit. Defenses going down. Unable to start emergency evacuation.');
+define ("ENG_TEXT184", 'Stazione automatica di comunicazione, pianeta ');
+
+define ("ENG_TEXT185", '<center>TRASMISSIONE AUTOMATICA DI EMERGENZA</center><br><br>Status della colonia: <b>Sconosciuto</b><br>Status difese orbitali: <b>Sconosciuto</b><br>Ultimo evento registrato dai sistemi automatici di difesa: presenza di una o pi&ugrave; navi Borg in orbita standard. Le difese planetarie sono state superate. Impossibile avviare evacuazione di emergenza della popolazione.');
 
 define ("ENG_TEXT186", 'Comando difesa del pianeta ');
 
 define ("ENG_TEXT187", '<b>Comunicazione prioritaria!!!</b><br>Stiamo subendo un attacco da parte dei Borg! Al momento le nostre difese reggono ma i Borg potrebbero tornare presto!');
 
 define ("ENG_TEXT188", '<center>TRASMISSIONE AUTOMATICA DI EMERGENZA</center><br><br>Status della colonia: <b>Sconosciuto</b><br><br>Status difese orbitali: <b>Sconosciuto</b><br><br>Tutte le richieste di comunicazione sono state ignorate, le difese planetarie sono state superate. Impossibile avviare evacuazione di emergenza della popolazione.<br><br> Ultimo evento registrato dai sistemi automatici di difesa: presenza di una o pi&ugrave; navi ostili in orbita standard, appartenenti alle forze di ');
+
+define ("ENG_TEXT189", 'Sul pianeta non vi sono nostre squadre in azione!<br><br>Verificare la presenza di una squadra attraverso il Pannello Tattico.');
+
+define ("ENG_TEXT190", 'Ogni tentativo di mettersi in contatto ha avuto esito negativo e dalle nostre scansioni della superficie appare evidente che la squadra a terra &egrave; stata, in qualche modo, annientata.');
+
+define ("ENG_TEXT191", 'Il recupero della squadra a terra ha avuto successo, tuttavia, la squadra non ha portato a termine la missione assegnata.');
+
+define ("ENG_TEXT192", 'Il recupero della squadra a terra ha avuto successo.');
+
+define ("ENG_TEXT193", 'Questa missione deve svolgersi su una colonia fondata da te!');
+
+define ("ENG_TEXT194", 'Questa missione NON deve svolgersi su una colonia fondata da te!');
+
+define ("ENG_TEXT195", 'La colonia non ha nessun fondatore!!! Missione annullata!');
+
+define ("ENG_TEXT196", 'La tua squadra &egrave; sbarcata sul pianeta con successo e ha iniziato a svolgere la propria missione.');
+
+define ("ENG_TEXT197", 'La nostra squadra a terra ha incontrato una squadra di cacciatori hirogeni appostata sul pianeta. La nostra squadra &egrave; stata attaccata ma &egrave; riuscita a salvarsi, tornando a bordo della nave.<br><br>Missione Annullata.');
+
+define ("ENG_TEXT198", 'Subito dopo lo sbarco, la nostra squadra &egrave; stata colta in un agguato da parte di cacciatori hirogeni ed &egrave; stata annientata!!!<br><br>Missione Annullata.');
+
+define ("ENG_TEXT199", 'Questa missione ammette una sola squadra sbarcata sul pianeta.<br><br>Missione Annullata.');
+
+define ("ENG_TEXT200", 'La nave non pu&ograve; procedere al recupero della squadra dal pianeta perch&egrave; ha gi&agrave; una squadra a bordo!<br><br>Missione Annullata!');
+
+define ("ENG_TEXT201", 'L&#146;azione di altre squadre diplomatiche sulla colonia ha prodotto alcuni effetti secondari, brevemente riepilogati qui di seguito:<br>');
+
+define ("ENG_TEXT202", 'La nostra squadra scientifica non pu&ograve; fornire nessun tipo di supporto circa la tecnologia selezionata (segnalate questo messaggio come bug, grazie!)');
+
+define ("ENG_TEXT203", 'Segnale automatico ricevuto: la squadra &egrave; stata annientata sul pianeta da nemici di livello superiore.');
+
+define ("ENG_TEXT204", 'La squadra di cacciatori in agguato ha segnalato di aver attaccato una squadra avversaria in arrivo sul pianeta ma non &egrave stata in grado di sconfiggerla.');
+
+define ("ENG_TEXT205", 'La squadra di cacciatori in agguato segnala di aver costretto alla fuga una squadra avversaria che tentava di sbarcare sulla superfice.');
+
+define ("ENG_TEXT206", 'La squadra di cacciatori in agguato segnala di aver annientato una squadra avversaria che tentava di sbarcare sulla superfice!!!');
+
+define ("ENG_TEXT207", 'La nostra squadra a terra ha incontrato una squadra di cacciatori hirogeni appostata sul pianeta; i cacciatori hanno tentato un assalto ma sono stati respinti, riuscendo per&ograve; a far perdere le loro tracce.');
+
+define ("ENG_TEXT208", 'La nostra squadra a terra ha incontrato una squadra di cacciatori hirogeni appostata sul pianeta; i cacciatori hanno tentato un assalto ma hanno avuto la peggio e sono stati uccisi!!!');
+
+define ("ENG_TEXT209", 'Trasmissione in arrivo da:');
+
+define ("ENG_TEXT210", 'Le missioni da addestramento richiedono specifiche strutture sul pianeta per essere portate a termine, strutture che non sono presenti nella colonia indicata.<br><br>Missione Annullata.');
+
+define ("ENG_TEXT211", 'Essi giungeranno come truppe mercenarie sul vostro pianeta capitale.');
+
+define ("ENG_TEXT212", 'Essi giungeranno come truppe mercenarie sul vostro pianeta ');
+
+define ("ENG_TEXT213", 'Tale donazione giunger&agrave; sul vostro pianeta capitale secondo gli usuali canali commerciali.');
+
+define ("ENG_TEXT214", 'Tale donazione giunger&agrave; tramite gli usuali canali commerciali sul vostro pianeta ');
+
+define ("ENG_TEXT215", 'La nostra flotta '); 
+
+define ("ENG_TEXT216", 'comunica l&#146;avvistamento di navi appartenenti a '); 
+
+define ("ENG_TEXT217", ' in arrivo intorno al pianeta ');
+        
+define ("ENG_TEXT218", 'Segue il dettaglio delle navi avvistate:');
 
 
 //Italian
@@ -1153,9 +1281,9 @@ define ("ITA_TEXT180", 'La nostra squadra non &egrave; stata in grado di install
 
 define ("ITA_TEXT181", 'A seguito di recenti eventi bellici ed/o attivit&agrave; diplomatica di vostri concorrenti, la popolazione di questa colonia indipendente ha deciso di favorire una diversa potenza straniera!<br><br>Il punteggio della nostra relazione diplomatica &egrave; stato superato.');
 
-define ("ITA_TEXT182", 'Un gruppo di volontari, addestrati sul pianeta, ha deciso di unirsi alle vostre forze e mettersi al vostro comando.<br><br>Essi giungeranno sul vostro pianeta capitale come truppe mercenarie.');
+define ("ITA_TEXT182", 'Un gruppo di volontari, addestrati sul pianeta, ha deciso di unirsi alle vostre forze e mettersi al vostro comando.');
 
-define ("ITA_TEXT183", 'Visto il vostro interesse nel supportare le nostre attivit&agrave; estrattive sul pianeta, abbiamo deciso di donarvi, come segno di riconoscenza, parte delle risorse estratte finora.<br><br>Tale donazione giunger&agrave; sul vostro pianeta capitale secondo gli usuali canali commerciali.');
+define ("ITA_TEXT183", 'Visto il vostro interesse nel supportare le nostre attivit&agrave; estrattive sul pianeta, abbiamo deciso di donarvi, come segno di riconoscenza, parte delle risorse estratte finora.');
 
 define ("ITA_TEXT184", 'Stazione automatica di comunicazione, pianeta ');
 
@@ -1166,4 +1294,64 @@ define ("ITA_TEXT186", 'Comando difesa del pianeta ');
 define ("ITA_TEXT187", '<b>Comunicazione prioritaria!!!</b><br>Stiamo subendo un attacco da parte dei Borg! Al momento le nostre difese reggono ma i Borg potrebbero tornare presto!');
 
 define ("ITA_TEXT188", '<center>TRASMISSIONE AUTOMATICA DI EMERGENZA</center><br><br>Status della colonia: <b>Sconosciuto</b><br><br>Status difese orbitali: <b>Sconosciuto</b><br><br>Tutte le richieste di comunicazione sono state ignorate, le difese planetarie sono state superate. Impossibile avviare evacuazione di emergenza della popolazione.<br><br> Ultimo evento registrato dai sistemi automatici di difesa: presenza di una o pi&ugrave; navi ostili in orbita standard, appartenenti alle forze di ');
+
+define ("ITA_TEXT189", 'Sul pianeta non vi sono nostre squadre in azione!<br><br>Verificare la presenza di una squadra attraverso il Pannello Tattico.');
+
+define ("ITA_TEXT190", 'Ogni tentativo di mettersi in contatto ha avuto esito negativo e dalle nostre scansioni della superficie appare evidente che la squadra a terra &egrave; stata, in qualche modo, annientata.');
+
+define ("ITA_TEXT191", 'Il recupero della squadra a terra ha avuto successo, tuttavia, la squadra non ha portato a termine la missione assegnata.');
+
+define ("ITA_TEXT192", 'Il recupero della squadra a terra ha avuto successo.');
+
+define ("ITA_TEXT193", 'Questa missione deve svolgersi su una colonia fondata da te!');
+
+define ("ITA_TEXT194", 'Questa missione NON deve svolgersi su una colonia fondata da te!');
+
+define ("ITA_TEXT195", 'La colonia non ha nessun fondatore!!! Missione annullata!');
+
+define ("ITA_TEXT196", 'La tua squadra &egrave; sbarcata sul pianeta con successo e ha iniziato a svolgere la propria missione.');
+
+define ("ITA_TEXT197", 'La nostra squadra a terra ha incontrato una squadra di cacciatori hirogeni appostata sul pianeta. La nostra squadra &egrave; stata attaccata ma &egrave; riuscita a salvarsi, tornando a bordo della nave.<br><br>Missione Annullata.');
+
+define ("ITA_TEXT198", 'Subito dopo lo sbarco, la nostra squadra &egrave; stata colta in un agguato da parte di cacciatori hirogeni ed &egrave; stata annientata!!!<br><br>Missione Annullata.');
+
+define ("ITA_TEXT199", 'Questa missione ammette una sola squadra sbarcata sul pianeta.<br><br>Missione Annullata.');
+
+define ("ITA_TEXT200", 'La nave non pu&ograve; procedere al recupero della squadra dal pianeta perch&egrave; ha gi&agrave; una squadra a bordo!<br><br>Missione Annullata!');
+
+define ("ITA_TEXT201", 'L&#146;azione di altre squadre diplomatiche sulla colonia ha prodotto alcuni effetti secondari, brevemente riepilogati qui di seguito:<br>');
+
+define ("ITA_TEXT202", 'La nostra squadra scientifica non pu&ograve; fornire nessun tipo di supporto circa la tecnologia selezionata (segnalate questo messaggio come bug, grazie!)');
+
+define ("ITA_TEXT203", 'Segnale automatico ricevuto: la squadra &egrave; stata annientata sul pianeta da nemici di livello superiore.');
+
+define ("ITA_TEXT204", 'La squadra di cacciatori in agguato ha segnalato di aver attaccato una squadra avversaria in arrivo sul pianeta ma non &egrave stata in grado di sconfiggerla.');
+
+define ("ITA_TEXT205", 'La squadra di cacciatori in agguato segnala di aver costretto alla fuga una squadra avversaria che tentava di sbarcare sulla superfice.');
+
+define ("ITA_TEXT206", 'La squadra di cacciatori in agguato segnala di aver annientato una squadra avversaria che tentava di sbarcare sulla superfice!!!');
+
+define ("ITA_TEXT207", 'La nostra squadra a terra ha incontrato una squadra di cacciatori hirogeni appostata sul pianeta; i cacciatori hanno tentato un assalto ma sono stati respinti, riuscendo per&ograve; a far perdere le loro tracce.');
+
+define ("ITA_TEXT208", 'La nostra squadra a terra ha incontrato una squadra di cacciatori hirogeni appostata sul pianeta; i cacciatori hanno tentato un assalto ma hanno avuto la peggio e sono stati uccisi!!!');
+
+define ("ITA_TEXT209", 'Trasmissione in arrivo da:');
+
+define ("ITA_TEXT210", 'Le missioni da addestramento richiedono specifiche strutture sul pianeta per essere portate a termine, strutture che non sono presenti nella colonia indicata.<br><br>Missione Annullata.');
+
+define ("ITA_TEXT211", 'Essi giungeranno come truppe mercenarie sul vostro pianeta capitale.');
+
+define ("ITA_TEXT212", 'Essi giungeranno come truppe mercenarie sul vostro pianeta ');
+
+define ("ITA_TEXT213", 'Tale donazione giunger&agrave; sul vostro pianeta capitale secondo gli usuali canali commerciali.');
+
+define ("ITA_TEXT214", 'Tale donazione giunger&agrave; tramite gli usuali canali commerciali sul vostro pianeta ');
+
+define ("ITA_TEXT215", 'La nostra flotta '); 
+
+define ("ITA_TEXT216", 'comunica l&#146;avvistamento di navi appartenenti a '); 
+
+define ("ITA_TEXT217", ' in arrivo intorno al pianeta ');
+        
+define ("ITA_TEXT218", 'Segue il dettaglio delle navi avvistate:');
 ?>
