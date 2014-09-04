@@ -43,7 +43,8 @@ elseif (isset($_GET['view_attack']))
 {
     $filter_stream = '(40, 41, 42, 43, 44, 45, 46, 51, 54, 55)';
 }
-else if (isset($_GET['fleets_sensors']))
+
+if (isset($_GET['fleets_sensors']))
 {
     $sql = 'SELECT fleet_id, fleet_name, n_ships, planet_id
             FROM ship_fleets
