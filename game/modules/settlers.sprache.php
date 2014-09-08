@@ -64,6 +64,14 @@ define ("GER_TEXT24", 'Ally');
 
 define ("GER_TEXT25", 'Lev.');
 
+define ("GER_TEXT26", 'All');
+
+define ("GER_TEXT27", 'Academies');
+
+define ("GER_TEXT28", 'Shipyards');
+
+define ("GER_TEXT29", 'Mines');
+
 //INGLESE
 define ("ENG_TEXT0",'Settlers Colonies:');
 
@@ -109,6 +117,15 @@ define ("ENG_TEXT24", 'Ally');
 
 define ("ENG_TEXT25", 'Lev.');
 
+define ("ENG_TEXT26", 'All');
+
+define ("ENG_TEXT27", 'Academies');
+
+define ("ENG_TEXT28", 'Shipyards');
+
+define ("ENG_TEXT29", 'Mines');
+
+
 // ITALIANO
 define ("ITA_TEXT0",'Colonie Indipendenti');
 
@@ -153,5 +170,13 @@ define ("ITA_TEXT23", 'Valore');
 define ("ITA_TEXT24", 'Alleato');
 
 define ("ITA_TEXT25", 'Liv.');
+
+define ("ITA_TEXT26", 'Tutte');
+
+define ("ITA_TEXT27", 'Accademia');
+
+define ("ITA_TEXT28", 'Cantiere');
+
+define ("ITA_TEXT29", 'Miniera');
 
 ?>
