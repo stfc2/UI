@@ -116,6 +116,8 @@ if ($comp['value_11']!=0) $text.=constant($game->sprache("TEXT18")).' '.$comp['v
 if ($comp['value_12']!=0) $text.=constant($game->sprache("TEXT19")).' '.$comp['value_12'].'<br>';
 if ($comp['value_14']!=0) $text.=constant($game->sprache("TEXT20")).' '.$comp['value_14'].'<br>';
 if ($comp['value_13']!=0) $text.=constant($game->sprache("TEXT21")).' '.$comp['value_13'].'<br>';
+if ($comp['value_15']!=0) $text.=constant($game->sprache("TEXT94")).' '.$comp['value_13'].'<br>';
+if ($comp['value_16']!=0) $text.=constant($game->sprache("TEXT85")).' '.$comp['value_13'].'<br>';
 
 
 return $text;
@@ -274,8 +276,8 @@ for ($t=0; $t<3; $t++)
 
 			$game->out('<br><u>'.constant($game->sprache("TEXT28")).'</u><br>');
 
-			$game->out('<u>'.constant($game->sprache("TEXT8")).'</u> <b>'.PutValue($template_array,'value_1',$t).'</b><br>');
-			$game->out('<u>'.constant($game->sprache("TEXT9")).'</u> <b>'.PutValue($template_array,'value_2',$t).'</b><br>');
+			$game->out('<u>'.constant($game->sprache("TEXT8")).'</u> <b>'.PutValue($template_array,'value_1',$t).'</b> x<b>'.PutValue($template_array,'rof',$t).'</b><br>');
+			$game->out('<u>'.constant($game->sprache("TEXT9")).'</u> <b>'.PutValue($template_array,'value_2',$t).'</b> x<b>'.PutValue($template_array,'rof',$t).'</b><br>');
 			$game->out('<u>'.constant($game->sprache("TEXT10")).'</u> <b>'.PutValue($template_array,'value_3',$t).'</b><br>');
 			$game->out('<u>'.constant($game->sprache("TEXT85")).'</u> <b>'.PutValue($template_array,'max_torp',$t).'</b><br>');
 			$game->out('<u>'.constant($game->sprache("TEXT11")).'</u> <b>'.PutValue($template_array,'value_4',$t).'</b><br>');
@@ -579,23 +581,23 @@ var Cat7 = new Array(0,0,0,0,0,0,0,0,0,0,0);
 var Cat8=  new Array(0,0,0,0,0,0,0,0,0,0,0);
 var Cat9 = new Array(0,0,0,0,0,0,0,0,0,0,0);
 var Cat10 = new Array(0,0,0,0,0,0,0,0,0,0,0);
-var Cat1S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-var Cat2S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-var Cat3S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-var Cat4S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-var Cat5S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-var Cat6S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-var Cat7S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-var Cat8S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-var Cat9S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-var Cat10S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+var Cat1S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+var Cat2S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+var Cat3S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+var Cat4S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+var Cat5S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+var Cat6S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+var Cat7S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+var Cat8S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+var Cat9S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+var Cat10S = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 var CatName = new Array("-","-","-","-","-","-","-","-","-","-");
 
 function Change()
 {
 var i=0;
 var price = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-var skill = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+var skill = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 for (i=0;i<11;i++)
 { 
  if ((i==5 || i==6 ||i==7 || i==8) && Cat1S[14]!=1) {price[i+6]+=Cat1[i]; price[i]=Cat1[i];} else if ((i==5 || i==6 ||i==7 || i==8)) {price[i+6]+=Cat1[i];} else {price[i]+=Cat1[i];}
@@ -610,7 +612,7 @@ for (i=0;i<11;i++)
  if ((i==5 || i==6 ||i==7 || i==8) && Cat10S[14]!=1) {price[i+6]+=Cat10[i]; price[i]+=Cat10[i];} else if ((i==5 || i==6 ||i==7 || i==8)) {price[i+6]+=Cat10[i];} else {price[i]+=Cat10[i];}
  
  }
-for (i=0;i<15;i++)
+for (i=0;i<17;i++)
 {
  skill[i]=Cat1S[i];
  skill[i]+=Cat2S[i];
@@ -669,6 +671,8 @@ document.getElementById( "skilla1" ).firstChild.nodeValue = skill[10]+'.$SHIP_TO
 document.getElementById( "skilla2" ).firstChild.nodeValue = skill[11]+'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][25].';
 document.getElementById( "skilla3" ).firstChild.nodeValue = skill[12]+'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][26].';
 document.getElementById( "skilla4" ).firstChild.nodeValue = skill[13]+'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][27].';
+document.getElementById( "skilla6" ).firstChild.nodeValue = skill[15]+'.RoundsFire($game->player['user_race'],$_POST['ship_torso']).';
+document.getElementById( "skilla7" ).firstChild.nodeValue = skill[16]+'.Torpedoes($game->player['user_race'],$_POST['ship_torso']).';    
 //document.getElementById( "skilla5" ).firstChild.nodeValue = skill[14]+'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][28].';
 
 
@@ -697,7 +701,7 @@ function UpdateCategory9S(svalue, id)  {Cat9S[id]=svalue; }
 function UpdateCategory10S(svalue, id) {Cat10S[id]=svalue; }
 
 
-function UpdateCompleteCategory1(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,name)
+function UpdateCompleteCategory1(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,skill16,skill17,name)
 {
 CatName[0]=name;
 UpdateCategory1(val1,0);
@@ -711,10 +715,10 @@ UpdateCategory1(val8,7);
 UpdateCategory1(val9,8);
 UpdateCategory1(val10,9);
 UpdateCategory1(val11,10);
-'); for ($t=0; $t<15; $t++) $game->out('UpdateCategory1S(skill'.($t+1).','.$t.');'); $game->out('
+'); for ($t=0; $t<17; $t++) $game->out('UpdateCategory1S(skill'.($t+1).','.$t.');'); $game->out('
 Change();
 }
-function UpdateCompleteCategory2(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,name)
+function UpdateCompleteCategory2(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,skill16,skill17,name)
 {
 CatName[1]=name;
 UpdateCategory2(val1,0);
@@ -728,10 +732,10 @@ UpdateCategory2(val8,7);
 UpdateCategory2(val9,8);
 UpdateCategory2(val10,9);
 UpdateCategory2(val11,10);
-'); for ($t=0; $t<15; $t++) $game->out('UpdateCategory2S(skill'.($t+1).','.$t.');'); $game->out('
+'); for ($t=0; $t<17; $t++) $game->out('UpdateCategory2S(skill'.($t+1).','.$t.');'); $game->out('
 Change();
 }
-function UpdateCompleteCategory3(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,name)
+function UpdateCompleteCategory3(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,skill16,skill17,name)
 {
 CatName[2]=name;
 UpdateCategory3(val1,0);
@@ -745,10 +749,10 @@ UpdateCategory3(val8,7);
 UpdateCategory3(val9,8);
 UpdateCategory3(val10,9);
 UpdateCategory3(val11,10);
-'); for ($t=0; $t<15; $t++) $game->out('UpdateCategory3S(skill'.($t+1).','.$t.');'); $game->out('
+'); for ($t=0; $t<17; $t++) $game->out('UpdateCategory3S(skill'.($t+1).','.$t.');'); $game->out('
 Change();
 }
-function UpdateCompleteCategory4(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,name)
+function UpdateCompleteCategory4(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,skill16,skill17,name)
 {
 CatName[3]=name;
 UpdateCategory4(val1,0);
@@ -762,10 +766,10 @@ UpdateCategory4(val8,7);
 UpdateCategory4(val9,8);
 UpdateCategory4(val10,9);
 UpdateCategory4(val11,10);
-'); for ($t=0; $t<15; $t++) $game->out('UpdateCategory4S(skill'.($t+1).','.$t.');'); $game->out('
+'); for ($t=0; $t<17; $t++) $game->out('UpdateCategory4S(skill'.($t+1).','.$t.');'); $game->out('
 Change();
 }
-function UpdateCompleteCategory5(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,name)
+function UpdateCompleteCategory5(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,skill16,skill17,name)
 {
 CatName[4]=name;
 UpdateCategory5(val1,0);
@@ -779,10 +783,10 @@ UpdateCategory5(val8,7);
 UpdateCategory5(val9,8);
 UpdateCategory5(val10,9);
 UpdateCategory5(val11,10);
-'); for ($t=0; $t<15; $t++) $game->out('UpdateCategory5S(skill'.($t+1).','.$t.');'); $game->out('
+'); for ($t=0; $t<17; $t++) $game->out('UpdateCategory5S(skill'.($t+1).','.$t.');'); $game->out('
 Change();
 }
-function UpdateCompleteCategory6(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,name)
+function UpdateCompleteCategory6(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,skill16,skill17,name)
 {
 CatName[5]=name;
 UpdateCategory6(val1,0);
@@ -796,10 +800,10 @@ UpdateCategory6(val8,7);
 UpdateCategory6(val9,8);
 UpdateCategory6(val10,9);
 UpdateCategory6(val11,10);
-'); for ($t=0; $t<15; $t++) $game->out('UpdateCategory6S(skill'.($t+1).','.$t.');'); $game->out('
+'); for ($t=0; $t<17; $t++) $game->out('UpdateCategory6S(skill'.($t+1).','.$t.');'); $game->out('
 Change();
 }
-function UpdateCompleteCategory7(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,name)
+function UpdateCompleteCategory7(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,skill16,skill17,name)
 {
 CatName[6]=name;
 UpdateCategory7(val1,0);
@@ -813,10 +817,10 @@ UpdateCategory7(val8,7);
 UpdateCategory7(val9,8);
 UpdateCategory7(val10,9);
 UpdateCategory7(val11,10);
-'); for ($t=0; $t<15; $t++) $game->out('UpdateCategory7S(skill'.($t+1).','.$t.');'); $game->out('
+'); for ($t=0; $t<17; $t++) $game->out('UpdateCategory7S(skill'.($t+1).','.$t.');'); $game->out('
 Change();
 }
-function UpdateCompleteCategory8(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,name)
+function UpdateCompleteCategory8(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,skill16,skill17,name)
 {
 CatName[7]=name;
 UpdateCategory8(val1,0);
@@ -830,10 +834,10 @@ UpdateCategory8(val8,7);
 UpdateCategory8(val9,8);
 UpdateCategory8(val10,9);
 UpdateCategory8(val11,10);
-'); for ($t=0; $t<15; $t++) $game->out('UpdateCategory8S(skill'.($t+1).','.$t.');'); $game->out('
+'); for ($t=0; $t<17; $t++) $game->out('UpdateCategory8S(skill'.($t+1).','.$t.');'); $game->out('
 Change();
 }
-function UpdateCompleteCategory9(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,name)
+function UpdateCompleteCategory9(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,skill16,skill17,name)
 {
 CatName[8]=name;
 UpdateCategory9(val1,0);
@@ -847,10 +851,10 @@ UpdateCategory9(val8,7);
 UpdateCategory9(val9,8);
 UpdateCategory9(val10,9);
 UpdateCategory9(val11,10);
-'); for ($t=0; $t<15; $t++) $game->out('UpdateCategory9S(skill'.($t+1).','.$t.');'); $game->out('
+'); for ($t=0; $t<17; $t++) $game->out('UpdateCategory9S(skill'.($t+1).','.$t.');'); $game->out('
 Change();
 }
-function UpdateCompleteCategory10(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,name)
+function UpdateCompleteCategory10(val1,val2,val3,val4,val5,val6,val7,val8,val9,val10,val11,skill1,skill2,skill3,skill4,skill5,skill6,skill7,skill8,skill9,skill10,skill11,skill12,skill13,skill14,skill15,skill16,skill17,name)
 {
 CatName[9]=name;
 UpdateCategory10(val1,0);
@@ -864,7 +868,7 @@ UpdateCategory10(val8,7);
 UpdateCategory10(val9,8);
 UpdateCategory10(val10,9);
 UpdateCategory10(val11,10);
-'); for ($t=0; $t<15; $t++) $game->out('UpdateCategory10S(skill'.($t+1).','.$t.');'); $game->out('
+'); for ($t=0; $t<17; $t++) $game->out('UpdateCategory10S(skill'.($t+1).','.$t.');'); $game->out('
 Change();
 }
 
@@ -887,9 +891,9 @@ function getRadioByValue (radioButtonOrGroup, value) {
 
 function CheckEnergy()
 {
-var skill = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+var skill = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 
-for (i=0;i<15;i++)
+for (i=0;i<17;i++)
 {
  skill[i]=Cat1S[i];
  skill[i]+=Cat2S[i];
@@ -950,7 +954,7 @@ $game->out('
 <span class="text_large">'.$components['name'].'</span><br>
 ');
 $part1='<input type="radio" name="c'.($key+1).'" value="-1" checked="checked"';
-$part2='onClick ="return UpdateCompleteCategory'.($key+1).'(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,\'-\');">'.constant($game->sprache("TEXT57"));
+$part2='onClick ="return UpdateCompleteCategory'.($key+1).'(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,\'-\');">'.constant($game->sprache("TEXT57"));
 $game->out($part1.' '.$part2.' [<a href="javascript:void(0);" onclick="return overlib(\'\', CAPTION, \''.constant($game->sprache("TEXT57")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.constant($game->sprache("TEXT58")).'</a>]<br>');
 
 for ($t=0; $t<count($components)-1; $t++)
@@ -960,7 +964,7 @@ if (ComponentMetRequirements($key,$t,$components[$t],$_POST['ship_torso']))
 {
 $comp=$components[$t];
 $part1='<input type="radio" name="c'.($key+1).'" value="'.$t.'"';
-$part2='onClick ="return UpdateCompleteCategory'.($key+1).'('.$comp['resource_1'].','.$comp['resource_2'].','.$comp['resource_3'].','.$comp['resource_4'].','.($comp['buildtime']*TICK_DURATION).','.$comp['unit_1'].','.$comp['unit_2'].','.$comp['unit_3'].','.$comp['unit_4'].','.$comp['unit_5'].','.$comp['unit_6'].','.$comp['value_1'].','.$comp['value_2'].','.$comp['value_3'].','.$comp['value_4'].','.$comp['value_5'].','.$comp['value_6'].','.$comp['value_7'].','.$comp['value_8'].','.$comp['value_9'].','.$comp['value_10'].','.$comp['value_11'].','.$comp['value_12'].','.$comp['value_13'].','.$comp['value_14'].','.$comp['value_15'].',\''.$comp['name'].'\');">'.$comp['name'];
+$part2='onClick ="return UpdateCompleteCategory'.($key+1).'('.$comp['resource_1'].','.$comp['resource_2'].','.$comp['resource_3'].','.$comp['resource_4'].','.($comp['buildtime']*TICK_DURATION).','.$comp['unit_1'].','.$comp['unit_2'].','.$comp['unit_3'].','.$comp['unit_4'].','.$comp['unit_5'].','.$comp['unit_6'].','.$comp['value_1'].','.$comp['value_2'].','.$comp['value_3'].','.$comp['value_4'].','.$comp['value_5'].','.$comp['value_6'].','.$comp['value_7'].','.$comp['value_8'].','.$comp['value_9'].','.$comp['value_10'].','.$comp['value_11'].','.$comp['value_12'].','.$comp['value_13'].','.$comp['value_14'].','.$comp['value_15'].',0,0,\''.$comp['name'].'\');">'.$comp['name'];
 $game->out($part1.' '.$part2.' [<a href="javascript:void(0);" onclick="return overlib(\''.CreateInfoText($comp).'\', CAPTION, \''.$comp['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.constant($game->sprache("TEXT58")).'</a>]<br>');
 }
 
@@ -1022,13 +1026,14 @@ $game->out('
 <u>'.constant($game->sprache("TEXT14")).'</u> <b id="skill7">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][20].'</b><br>
 <u>'.constant($game->sprache("TEXT15")).'</u> <b id="skill8">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][21].'</b><br>
 <u>'.constant($game->sprache("TEXT16")).'</u> <b id="skill9">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][22].'</b><br>
+<u>'.constant($game->sprache("TEXT94")).'</u> <b id="skilla6">'.RoundsFire($game->player['user_race'], $_POST['ship_torso']).'</b><br>    
 </td></tr>
 <tr valign=top><td width=100>
 <u>'.constant($game->sprache("TEXT17")).'</u> <b id="skill10">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][23].'</b><br>
 <u>'.constant($game->sprache("TEXT18")).'</u> <b id="skilla1">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][24].'</b><br>
 <u>'.constant($game->sprache("TEXT19")).'</u> <b id="skilla2">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][25].'</b><br>
 </td><td width=100>
-<u>'.constant($game->sprache("TEXT85")).'</u> <b>'.Torpedoes($game->player['user_race'], $_POST['ship_torso']).'</b><br>
+<u>'.constant($game->sprache("TEXT85")).'</u> <b id="skilla7">'.Torpedoes($game->player['user_race'], $_POST['ship_torso']).'</b><br>
 <u>'.constant($game->sprache("TEXT61")).'</u><br><b id="skilla4">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][27].'</b>/<b id="skilla3">'.$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][26].'</b></td></tr></table>
 </td>
 </tr></table>
@@ -1101,6 +1106,10 @@ for ($x=0; $x<15; $x++)
 {
 $value[$x]=$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][14+$x];
 }
+
+$value[15] = Roundsfire($game->player['user_race'], $_POST['ship_torso']);
+$value[16] = Torpedoes($game->player['user_race'], $_POST['ship_torso']);
+        
 $price[0]=$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][0];
 $price[1]=$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][1];
 $price[2]=$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][2];
@@ -1121,54 +1130,54 @@ $price[14]=$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][10];
 
 for ($t=0; $t<10; $t++)
 {
-if ($_POST[($t)]>=0 && isset($ship_components[$game->player['user_race']][$t][$_POST[($t)]]['name']))
-{
-$comp=$ship_components[$game->player['user_race']][$t][$_POST[($t)]];
+    if ($_POST[($t)]>=0 && isset($ship_components[$game->player['user_race']][$t][$_POST[($t)]]['name']))
+    {
+        $comp=$ship_components[$game->player['user_race']][$t][$_POST[($t)]];
 
-$game->out('<input type=hidden name="'.($t).'" value="'.$_POST[($t)].'">-&nbsp;'.$comp['name'].'<br>');
+        $game->out('<input type=hidden name="'.($t).'" value="'.$_POST[($t)].'">-&nbsp;'.$comp['name'].'<br>');
 
-// Calculate the "values":
-for ($x=0; $x<15; $x++)
-{
-$value[$x]+=$comp['value_'.($x+1)];
-}
+        // Calculate the "values":
+        for ($x=0; $x<15; $x++)
+        {
+            $value[$x]+=$comp['value_'.($x+1)];
+        }
 
 
-$price[0]+=$comp['resource_1'];
-$price[1]+=$comp['resource_2'];
-$price[2]+=$comp['resource_3'];
-$price[3]+=$comp['resource_4'];
-$price[4]+=$comp['buildtime'];
+        $price[0]+=$comp['resource_1'];
+        $price[1]+=$comp['resource_2'];
+        $price[2]+=$comp['resource_3'];
+        $price[3]+=$comp['resource_4'];
+        $price[4]+=$comp['buildtime'];
 
-if ($comp['value_15']!=1)
-{
-$price[5]+=$comp['unit_1'];
-$price[6]+=$comp['unit_2'];
-$price[7]+=$comp['unit_3'];
-$price[8]+=$comp['unit_4'];
-$price[11]+=$comp['unit_1'];
-$price[12]+=$comp['unit_2'];
-$price[13]+=$comp['unit_3'];
-$price[14]+=$comp['unit_4'];
-}
-else
-{
-$price[11]+=$comp['unit_1'];
-$price[12]+=$comp['unit_2'];
-$price[13]+=$comp['unit_3'];
-$price[14]+=$comp['unit_4'];	
-}
+        if ($comp['value_15']!=1)
+        {
+            $price[5]+=$comp['unit_1'];
+            $price[6]+=$comp['unit_2'];
+            $price[7]+=$comp['unit_3'];
+            $price[8]+=$comp['unit_4'];
+            $price[11]+=$comp['unit_1'];
+            $price[12]+=$comp['unit_2'];
+            $price[13]+=$comp['unit_3'];
+            $price[14]+=$comp['unit_4'];
+        }
+        else
+        {
+            $price[11]+=$comp['unit_1'];
+            $price[12]+=$comp['unit_2'];
+            $price[13]+=$comp['unit_3'];
+            $price[14]+=$comp['unit_4'];	
+        }
 
-$price[9]+=$comp['unit_5'];
-$price[10]+=$comp['unit_6'];
+        $price[9]+=$comp['unit_5'];
+        $price[10]+=$comp['unit_6'];
 
-} else $game->out(constant($game->sprache("TEXT27")));
+    } else $game->out(constant($game->sprache("TEXT27")));
 }
 
 if ($value[9]>9.99) $value[9]=9.99;
 
-$value[15] = RoundsFire($game->player['user_race'], $_POST['ship_torso']); // this is rof on ship_templates DB
-$value[16] = Torpedoes($game->player['user_race'], $_POST['ship_torso']); // this is max_torp on ship_templates DB
+//$value[15] = RoundsFire($game->player['user_race'], $_POST['ship_torso']); // this is rof on ship_templates DB
+//$value[16] = Torpedoes($game->player['user_race'], $_POST['ship_torso']); // this is max_torp on ship_templates DB
 
 $game->out('<br></td></tr>
 <tr>
@@ -1178,8 +1187,9 @@ $game->out('<br></td></tr>
 
 $game->out('<u>'.constant($game->sprache("TEXT8")).'</u> <b>'.$value[0].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT9")).'</u> <b>'.$value[1].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT94")).'</u> <b>'.$value[15].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT10")).'</u> <b>'.$value[2].'</b><br>');
-$game->out('<u>'.constant($game->sprache("TEXT85")).'</u> <b>'.($_POST['ship_torso'] < 5 ? 'N/A' : $value[16]).'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT85")).'</u> <b>'.($_POST['ship_torso'] < 4 ? 'N/A' : $value[16]).'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT11")).'</u> <b>'.$value[3].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT12")).'</u> <b>'.$value[4].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT13")).'</u> <b>'.$value[5].'</b><br>');
@@ -1296,6 +1306,10 @@ for ($x=0; $x<15; $x++)
 {
 $value[$x]=$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][14+$x];
 }
+
+$value[15] = Roundsfire($game->player['user_race'], $_POST['ship_torso']);
+$value[16] = Torpedoes($game->player['user_race'], $_POST['ship_torso']);
+        
 $price[0]=$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][0];
 $price[1]=$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][1];
 $price[2]=$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][2];
@@ -1316,47 +1330,47 @@ $price[14]=$SHIP_TORSO[$game->player['user_race']][$_POST['ship_torso']][10];
 
 for ($t=0; $t<10; $t++)
 {
-if ($_POST[($t)]>=0 && isset($ship_components[$game->player['user_race']][$t][$_POST[($t)]]['name']))
-{
-$comp=$ship_components[$game->player['user_race']][$t][$_POST[($t)]];
+    if ($_POST[($t)]>=0 && isset($ship_components[$game->player['user_race']][$t][$_POST[($t)]]['name']))
+    {
+        $comp=$ship_components[$game->player['user_race']][$t][$_POST[($t)]];
 
 
-// Calculate the "values":
-for ($x=0; $x<15; $x++)
-{
-$value[$x]+=$comp['value_'.($x+1)];
-}
+        // Calculate the "values":
+        for ($x=0; $x<15; $x++)
+        {
+            $value[$x]+=$comp['value_'.($x+1)];
+        }
 
 
-$price[0]+=$comp['resource_1'];
-$price[1]+=$comp['resource_2'];
-$price[2]+=$comp['resource_3'];
-$price[3]+=$comp['resource_4'];
-$price[4]+=$comp['buildtime'];
+        $price[0]+=$comp['resource_1'];
+        $price[1]+=$comp['resource_2'];
+        $price[2]+=$comp['resource_3'];
+        $price[3]+=$comp['resource_4'];
+        $price[4]+=$comp['buildtime'];
 
-if ($comp['value_15']!=1)
-{
-$price[5]+=$comp['unit_1'];
-$price[6]+=$comp['unit_2'];
-$price[7]+=$comp['unit_3'];
-$price[8]+=$comp['unit_4'];
-$price[11]+=$comp['unit_1'];
-$price[12]+=$comp['unit_2'];
-$price[13]+=$comp['unit_3'];
-$price[14]+=$comp['unit_4'];
-}
-else
-{
-$price[11]+=$comp['unit_1'];
-$price[12]+=$comp['unit_2'];
-$price[13]+=$comp['unit_3'];
-$price[14]+=$comp['unit_4'];	
-}
+        if ($comp['value_15']!=1)
+        {
+            $price[5]+=$comp['unit_1'];
+            $price[6]+=$comp['unit_2'];
+            $price[7]+=$comp['unit_3'];
+            $price[8]+=$comp['unit_4'];
+            $price[11]+=$comp['unit_1'];
+            $price[12]+=$comp['unit_2'];
+            $price[13]+=$comp['unit_3'];
+            $price[14]+=$comp['unit_4'];
+        }
+        else
+        {
+            $price[11]+=$comp['unit_1'];
+            $price[12]+=$comp['unit_2'];
+            $price[13]+=$comp['unit_3'];
+            $price[14]+=$comp['unit_4'];	
+        }
 
-$price[9]+=$comp['unit_5'];
-$price[10]+=$comp['unit_6'];
+        $price[9]+=$comp['unit_5'];
+        $price[10]+=$comp['unit_6'];
 
-}
+    }
 }
 
 if ($value[4]==0 || $price[4]==0) {echo constant($game->sprache("TEXT73"));exit(0);}
@@ -1366,8 +1380,8 @@ if ($value[13]>$value[12]) exit(0);
 
 if ($value[9]>9.99) $value[9]=9.99;
 
-$value[15] = RoundsFire($game->player['user_race'], $_POST['ship_torso']); // this is rof on ship_templates DB
-$value[16] = Torpedoes($game->player['user_race'], $_POST['ship_torso']); // this is max_torp on ship_templates DB
+//$value[15] = RoundsFire($game->player['user_race'], $_POST['ship_torso']); // this is rof on ship_templates DB
+//$value[16] = Torpedoes($game->player['user_race'], $_POST['ship_torso']); // this is max_torp on ship_templates DB
 
 $game->out('
 </table>
@@ -1455,10 +1469,10 @@ $game->out('<br></td></tr></table></td><td width="50%">
 <td valign=top><u>'.constant($game->sprache("TEXT28")).'</u><br>');
 
 
-$game->out('<u>'.constant($game->sprache("TEXT8")).'</u> <b>'.$template['value_1'].'</b><br>');
-$game->out('<u>'.constant($game->sprache("TEXT9")).'</u> <b>'.$template['value_2'].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT8")).'</u> <b>'.$template['value_1'].'</b> x<b>'.$template['rof'].'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT9")).'</u> <b>'.$template['value_2'].'</b> x<b>'.$template['rof'].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT10")).'</u> <b>'.$template['value_3'].'</b><br>');
-$game->out('<u>'.constant($game->sprache("TEXT85")).'</u> <b>'.($template['ship_torso'] < 5 ? 'N/A' : $template['max_torp']).'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT85")).'</u> <b>'.($template['ship_torso'] < 4 ? 'N/A' : $template['max_torp']).'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT11")).'</u> <b>'.$template['value_4'].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT12")).'</u> <b>'.$template['value_5'].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT13")).'</u> <b>'.$template['value_6'].'</b><br>');
