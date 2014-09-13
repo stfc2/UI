@@ -562,4 +562,6 @@ define ("ITA_TEXT92", 'Valutaz. F.S.:');
 
 define ("ITA_TEXT93", 'Valutaz. ToHit:');
 
+define ("ITA_TEXT94", 'RoF (Rateo di Fuoco):');
+
 ?>
