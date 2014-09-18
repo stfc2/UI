@@ -80,7 +80,7 @@ $tables = array(
     'bidding_owed',
     'borg_bot',
     'borg_target',
-    `borg_npc_target`,
+    'borg_npc_target',
     'click_ids',
     'FHB_bid_meldung',
     'FHB_Bot',
