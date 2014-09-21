@@ -99,6 +99,7 @@ function GetTabbyAction($tab) {
 		'tactical_known' => constant($game->sprache("KNOWNSYSTEMS")),
 		'tactical_sensors' => constant($game->sprache("SENSORS")),
 		'user_diplomacy' => constant($game->sprache("USERDIPLOMACY")),
+		'settlers' => constant($game->sprache("INDEPENDENT_COLONIES")),
 		'alliance_main' => constant($game->sprache("ALLYMAIN")),
 		'database' => constant($game->sprache("DATABASE")),
 		'logbook' => constant($game->sprache("LOGBOOK")),
@@ -1325,6 +1326,8 @@ class game {
 			/* 10/04/08 - AC: New menus addition */
 			'L_SHIPS' => constant($this->sprache("SHIPS")),
 			'U_SHIPS' => parse_link('a=ships'),
+			'L_SETTLERS' => constant($this->sprache("INDEPENDENT_COLONIES")),
+			'U_SETTLERS' => parse_link('a=settlers'),
 
             // 18/02/11 - AC: New entry, used to setup the correct URL of the game in 
             //            the attribute 'oCMenu.onlineUrl' of the skins that have 

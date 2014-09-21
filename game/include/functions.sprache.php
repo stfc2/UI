@@ -176,6 +176,8 @@ define ("GER_BUYTROOPS", 'Truppenkauf');
 
 define ("GER_SHIPS", 'Schiffe');
 
+define ("GER_INDEPENDENT_COLONIES", 'unabh&auml;ngigen Kolonien');
+
 // Actions links
 
 define ("GER_PLANETS", 'Planeten');
@@ -467,6 +469,8 @@ define ("ENG_BUYTROOPS", 'Buy troops');
 
 define ("ENG_SHIPS", 'Ships');
 
+define ("ENG_INDEPENDENT_COLONIES", 'Independent colonies');
+
 // Actions links
 
 define ("ENG_PLANETS", 'Planets');
@@ -757,6 +761,8 @@ define ("ITA_ALLYCHAT", 'Chat alleanza');
 define ("ITA_BUYTROOPS", 'Compra truppe');
 
 define ("ITA_SHIPS", 'Navi');
+
+define ("ITA_INDEPENDENT_COLONIES", 'Colonie indipendenti');
 
 // Actions links
 
