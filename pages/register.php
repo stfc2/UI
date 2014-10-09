@@ -557,8 +557,8 @@ if(isset($_POST['submit'])) {
     $activation_key = md5( pow($user_id,2) );
     $activation_link = 'http://www.stfc.it/index.php?a=activate&galaxy='.$galaxy.'&user_id='.$user_id.'&key='.$activation_key;
     $mail_message  = $locale['mail_message_congrats'].' '.$_POST['user_name'].'!'.NL;
-    $mail_message .= $locale['mail_message_reg1a'].' '.$galaxyname.' '.$locale['mail_message_line1b'].NL;
-    $mail_message .= $locale['mail_message_reg2'].NL.$activation_link."\n\n".$locale['mail_message_line3'].NL;
+    $mail_message .= $locale['mail_message_reg1a'].' '.$galaxyname.' '.$locale['mail_message_reg1b'].NL;
+    $mail_message .= $locale['mail_message_reg2'].NL.$activation_link."\n\n".$locale['mail_message_reg3'].NL;
     $mail_message .= $locale['mail_message_reg4'].NL.NL.$locale['mail_message_sig_line1'].NL;
     $mail_message .= $locale['mail_message_sig_line2'].NL.NL.'Credits: http://www.stfc.it/index.php?a=imprint';
     send_mail("STFC2 Mailer","admin@stfc.it",$_POST['user_name'],$_REQUEST['user_email'],$locale['mail_subject_reg'],$mail_message);
