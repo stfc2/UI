@@ -359,6 +359,7 @@ $loc_strings = array(
         'fist_membership' => 'Sito membro della Federazione Italiana Siti Trek',
 
         // login.php strings
+        'login_title' => 'Star Trek: Frontline Combat - Login',
         'login_descr' => 'STFC: Pagina per effettuare la login alla galassia di gioco a cui si e` iscritti (galassia Brown Bobby o Fried Egg).',
         'login' => 'Login',
         'user_login' => 'Login:',
