@@ -20,20 +20,16 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-$title_html = 'Star Trek: Frontline Combat - Donazione effettuata';
-$meta_descr = 'STFC: Pagina di conferma per la donazione effettuata con successo.';
-$main_html='<center><span class="caption">Grazie per la tua donazione!</span>
-<br><br>
-<table border=0 cellpadding=0 cellspacing=0>
-<tr><td width=300 valign=top align="justify">
-<p>Grazie per aver effettuato la tua donazione.</p>
-<p>La transazione &egrave; stata completata e una ricevuta dell&#146;acquisto &egrave; stata inviata al tuo indirizzo email.</p>
-<p>Per visualizzare i dettagli sulla transazione effettua l&#146;accesso al tuo conto dall&#146;indirizzo 
-<a href="http://www.paypal.com/it">www.paypal.com/it</a>.</p>
-</td>
-</tr></table>
-</center>
-
-
+$title_html = $locale['success_title'];
+$meta_descr = $locale['success_descr'];
+$main_html='
+<div class="caption">'.$locale['thank_you'].'</div>
+<table align="center" width="70%" border="0" cellpadding="2" cellspacing="2" style="background-image:url(\'gfx/template_bg.jpg\'); background-position:left; background-repeat:yes;">
+  <tr>
+    <td width="100%" valign="top" align="justify">
+      '.$locale['transaction'].'
+    </td>
+  </tr>
+</table>
 ';
 ?>

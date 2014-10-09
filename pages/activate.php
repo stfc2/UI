@@ -50,14 +50,14 @@ $proverbs = array(
 $n_proverbs = count($proverbs);
 
 
-$err_title = 'Errore nell&#146;attivazione dell&#146;account';
-$title_html = 'ST: Frontline Combat - Attivazione account';
-$meta_descr = 'STFC: Pagina di conferma attivazione account.';
-$main_html = '<center><span class="caption">Attivazione account</span></center><br>';
+$err_title = $locale['activate_error_title'];
+$title_html = $locale['activate_title'];
+$meta_descr = $locale['activate_descr'];
+$main_html = '<div class="caption">'.$locale['account_activation'].'</div>';
 
 
 if( (!isset($_GET['galaxy'])) || (empty($_GET['user_id'])) || (empty($_GET['key']))) {
-    display_message($err_title,'Almeno una delle seguenti informazioni risulta mancante:<ul><li>galassia</li><li>ID utente</li><li>codice attivazione</li></ul>',GALAXY1_BG);
+    display_message($err_title,$locale['error_missing_info'],GALAXY1_BG);
     return 1;
 }
 
@@ -84,7 +84,7 @@ switch($galaxy)
 
 
 if($gkey != $key) {
-    display_message($err_title,'Il codice di attivazione fornito non corrisponde con quello memorizzato nel sistema (link troncato?).',$bg);
+    display_message($err_title,$locale['error_mismatched_code'],$bg);
     return 1;
 }
 
@@ -94,17 +94,17 @@ $sql = 'SELECT user_active
 
 
 if(($user_data = $mydb->queryrow($sql)) === false) {
-    display_message($err_title,'Errore interno nella SELECT mySQL, si prega di contattare lo Staff.',$bg);
+    display_message($err_title,$locale['error_mysql_select'],$bg);
     return 1;
 }
 
 if(empty($user_data['user_active'])) {
-    display_message($err_title,'Impossibile recuperare le informazioni relative allo stato di attivazione del giocatore (utente inesistente?).',$bg);
+    display_message($err_title,$locale['error_account_missing'],$bg);
     return 1;
 }
 
 if($user_data['user_active'] != 2) {
-    display_message($err_title,'Il giocatore &egrave; gi&agrave; stato attivato.',$bg);
+    display_message($err_title,$locale['error_already_activated'],$bg);
     return 1;
 }
 
@@ -113,7 +113,7 @@ $sql = 'UPDATE user
         WHERE user_id = '.$user_id;
 
 if(!$mydb->query($sql)) {
-    display_message($err_title,'Errore interno nella UPDATE mySQL, si prega di contattare lo Staff.',$bg);
+    display_message($err_title,$locale['error_mysql_update'],$bg);
     return 1;
 }
 
@@ -122,6 +122,6 @@ mt_srand((double)microtime()*1000000);
 
 $current_proverb = $proverbs[mt_rand(0, ($n_proverbs - 1))];
 
-display_message('Il tuo account &egrave; stato attivato con successo!','Ora puoi usare le tue login e password.<br><br>Prima di entrare nel mondo di STFC, una perla di saggezza per un gioco di successo:<br><br><table width="100%" border="0" align="center"><tr><td width="10%">&nbsp;</td><td width="90%"><i>'.$current_proverb.'</i></td></tr></table>',$bg);
+display_message($locale['activate_ok_title'],$locale['account_activated'].'<br><br><table width="100%" border="0" align="center"><tr><td width="10%">&nbsp;</td><td width="90%"><i>'.$current_proverb.'</i></td></tr></table>',$bg);
 
 ?>

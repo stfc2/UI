@@ -21,7 +21,7 @@
 */
 
 
-function send_mail($myname, $myemail, $contactname, $contactemail, $subject, $message) {
+/*function send_mail($myname, $myemail, $contactname, $contactemail, $subject, $message) {
   $headers = "MIME-Version: 1.0\n";
   $headers .= "Content-type: text/plain; charset=iso-8859-1\n";
   $headers .= "X-Priority: 1\n";
@@ -29,7 +29,7 @@ function send_mail($myname, $myemail, $contactname, $contactemail, $subject, $me
   $headers .= "X-Mailer: php\n";
   $headers .= "From: \"".$myname."\" <".$myemail.">\n";
   return(mail("\"".$contactname."\" <".$contactemail.">", $subject, $message, $headers));
-}
+}*/
 
 
 
@@ -49,15 +49,12 @@ function generate_random_string($n_chars) {
     return $rand_str;
 }
 
-$title_html = 'Star Trek: Frontline Combat - Recupero password';
-$meta_descr = 'STFC: Pagina con cui richiedere al sistema una nuova password in sostituzione a quella dimenticata.';
-$main_html .= '
-<center><span class="caption">Recupero password</span></center><br>';
+$title_html = $locale['lost_password_title'];
+$meta_descr = $locale['lost_password_descr'];
 
 if (isset($_POST['galaxy']))
 {
     $error = false;
-    $message='Si &egrave; verificato il seguente problema:';
 
     $sql = 'SELECT user_id, user_email, user_name FROM user WHERE user_name="'.htmlspecialchars($_POST['user_name']).'" AND user_loginname="'.htmlspecialchars($_POST['user_loginname']).'"';
 
@@ -70,13 +67,18 @@ if (isset($_POST['galaxy']))
 
     if($player === false)
     {
-        message(DATABASE_ERROR, 'user_query: Could not query user data');
+        message(DATABASE_ERROR, 'Could not query user data');
         exit();
     }
 
-    if (!isset($player['user_id'])) {$message.='<br>Il nome utente o il nome login &egrave; errato'; $error=1;}
-    else
-        if (strcmp(strtolower($_POST['user_email']),strtolower($player['user_email']))!=0) {$message.='<br>L&#146;indirizzo email &egrave; errato'; $error=1;}
+    if (!isset($player['user_id'])) {
+        $message = $locale['error_wrong_name_or_login'];
+        $error = true;
+    }
+    else if (strcmp(strtolower($_POST['user_email']),strtolower($player['user_email']))!=0) {
+        $message = $locale['error_wrong_email'];
+        $error = true;
+    }
 
     if (!$error)
     {
@@ -85,27 +87,22 @@ if (isset($_POST['galaxy']))
 
         /* 26/08/08 - AC: Check which galaxy the user has selected */
         if($_POST['galaxy'] == 0)
-            if(($db->query($query)) === false) {message(DATABASE_ERROR, 'lostpassword_query: Could not update user data'); exit();}
+            if(($db->query($query)) === false) {message(DATABASE_ERROR, 'Could not update user data'); exit();}
         else if($_POST['galaxy'] == 1)
-            if(($db2->query($query)) === false) {message(DATABASE_ERROR, 'lostpassword_query: Could not update user data'); exit();}
+            if(($db2->query($query)) === false) {message(DATABASE_ERROR, 'Could not update user data'); exit();}
         /* */
 
-    $mail_message =$_POST['user_name'].',
-Apparentemente avete richiesto una nuova password.
-Per cercare di effettuare il login adesso, si prega di utilizzare questa password:
-'.$newpassword.'
+        $mail_message  = $_POST['user_name'].','.NL;
+        $mail_message .= $locale['mail_message_lp1'].NL;
+        $mail_message .= $locale['mail_message_lp2'].NL;
+        $mail_message .= $newpassword.NL.NL;
+        $mail_message .= $locale['mail_message_lp3'].NL.NL;
+        $mail_message .= $locale['mail_message_sig_line1'].NL.$locale['mail_message_sig_line2'].NL.NL;
+        $mail_message .= 'Credits: http://www.stfc.it/index.php?a=imprint';
 
-Vi consigliamo di cambiare la password dopo aver effettuato l\'accesso nella pagina delle impostazioni.
+        send_mail("STFC Mailer","admin@stfc.it",$_POST['user_name'],$player['user_email'],$locale['mail_subject_lp'],$mail_message);
 
-Lunga vita e prosperità,
-il team STFC.
-
-
-Credits: http://www.stfc.it/index.php?a=imprint';
-
-        send_mail("STFC Mailer","admin@stfc.it",$_POST['user_name'],$player['user_email'],"STFC2 Password Reminder",$mail_message);
-
-        $message='Presto riceverai la nuova password via e-mail.';
+        $message = $locale['password_recovered'];
     }
 }
 
@@ -118,30 +115,31 @@ $user_email = (!empty($_POST['user_email'])) ? $_POST['user_email'] : '';
 
 $main_html .= '
 <form method="post" action="index.php?a=lost_password">
-<table align="center" border="0" cellpadding="2" cellspacing="2" width="380" class="border_grey" style="background-image:url(\'gfx/template_bg.jpg\'); background-position:left; background-repeat:yes;">
+<div class="caption">'.$locale['password_recovery'].'</div>
+<table align="center" border="0" cellpadding="2" cellspacing="2" width="380" class="border_grey">
   <tr>
-    <td width="100%">
-    <center><b>Attenzione: riceverai una nuova password generata in automatico.</b></center><br>
-    <center>'.(@$message).'</center><br>
+    <td width="100%" align="center">
+      <b>'.$locale['lost_password_warning'].'</b><br>
+      '.(@$message).'<br>
 
       <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <td width="30%">Nome <b>utente</b>:</td>
+          <td width="30%">'.$locale['player_name'].'</td>
           <td width="70%"><input type="text" name="user_name" size="30" class="field" value="'.$user_name.'"></td>
         </tr>
 
         <tr>
-          <td width="30%">Nome <b>login</b>:</td>
+          <td width="30%">'.$locale['login'].':</td>
           <td width="70%"><input type="text" name="user_loginname" size="30" class="field" value="'.$user_loginname.'"></td>
         </tr>
 
         <tr>
-          <td>Indirizzo email:</td>
+          <td>'.$locale['email'].'</td>
           <td><input type="text" name="user_email" size="30" class="field" value="'.$user_email.'"></td>
         </tr>
 
         <tr>
-          <td>Galassia:</td>
+          <td>'.$locale['galaxy'].'</td>
           <td>
             <select name="galaxy">
               <option value="0">'.GALAXY1_NAME.' ['.$player_online['num'].' online]</option>
@@ -155,8 +153,8 @@ $main_html .= '
 </table>
 <br>
 <center>
-[ <a href="index.php?a=login">Indietro alla Login</a> ]<br><br>
-<input class="button" type="submit" name="stgc_password" value="Richiedi password">
+[ <a href="index.php?a=login">'.$locale['back_to_login'].'</a> ]<br><br>
+<input class="button" type="submit" name="stgc_password" value="'.$locale['password_request'].'">
 </center>
 </form>
 ';

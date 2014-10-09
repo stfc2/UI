@@ -240,40 +240,39 @@ $pa_ingame2 = $db2->queryrow('SELECT COUNT(ad_id) AS num FROM alliance_diplomacy
 $tmp = mysql_get_server_info();
 $mysqlinfo = $tmp /*substr($tmp, 0, strpos($tmp, "-"))*/;
 
-$title_html = 'Star Trek: Frontline Combat - Statistiche';
-$meta_descr = 'STFC: Pagina in cui vengono mostrate alcune statistiche di uptime del server e ed informazioni sulle galassie di gioco, i punti accumulati, i pianeti presenti, le alleanze e via dicendo.';
+$title_html = $locale['stats_title'];
+$meta_descr = $locale['stats_descr'];
 $main_html .= '
-<center><span class="caption">Statistiche</span></center><br>
+<div class="caption">'.$locale['stats'].'</div>
 
 <table border="0" cellpadding="0" cellspacing="0" width="600" align="center">
   <tr>
     <td valign="top" align="center" width="300">
       <span class="sub_caption">Server Web/DB (STFC)</span><br><br>
 
-      <table border="0" cellpadding="2" cellspacing="2" width="270" class="border_grey" style=" background-image:url(\'gfx/template_bg.jpg\'); background-position:left; background-repeat:yes;">
+      <table border="0" cellpadding="2" cellspacing="2" width="270" class="border_grey">
         <tr>
           <td width="100%">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" style=" background-image:url(\'gfx/template_bg.jpg\'); background-position:left; background-repeat:yes;">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td width="130" class="desc_row">CPUs:</td>
                 <td width="140" class="value_row">'.$cpu['model'].'</td>
               </tr>
-
               <tr>
                 <td class="desc_row">Core:</td>
                 <td class="value_row">'.$cpu['cores'].'</td>
               </tr>
               <tr>
-                <td class="desc_row">Utilizzo:</td>
+                <td class="desc_row">'.$locale['cpu_usage'].'</td>
                 <td class="value_row">'.$loadavg[0].'</td>
               </tr>
               <tr><td height="10"></td></tr>
               <tr>
-                <td class="desc_row">RAM totale:</td>
+                <td class="desc_row">'.$locale['total_ram'].'</td>
                 <td class="value_row">'.round($results['ram']['total']/1024, 2).' MB</td>
               </tr>
               <tr>
-                <td class="desc_row">RAM libera:</td>
+                <td class="desc_row">'.$locale['free_ram'].'</td>
                 <td class="value_row">'.round($results['ram']['free']/1024, 2).' MB</td>
               </tr>
               <tr><td height="10"></td></tr>
@@ -283,15 +282,14 @@ $main_html .= '
               </tr>
               <tr><td height="10"></td></tr>
               <tr>
-                <td class="desc_row">Versione PHP:</td>
+                <td class="desc_row">'.$locale['php_version'].'</td>
                 <td class="value_row">'.phpversion().'</td>
               </tr>
-            <tr><td height="10"></td></tr>
+              <tr><td height="10"></td></tr>
               <tr>
-                <td class="desc_row">Versione mySQL:</td>
+                <td class="desc_row">'.$locale['sql_version'].'</td>
                 <td class="value_row">'.$mysqlinfo.'</td>
               </tr>
-
                <tr><td height="10"></td></tr>
                <tr><td height="10"></td></tr>
             </table>
@@ -302,52 +300,24 @@ $main_html .= '
       <br>
       <br>
 
-      <span class="sub_caption">Statistiche razziali<br>Brown Bobby</span><br><br>
+      <span class="sub_caption">'.$locale['racial_statistics'].'<br>'.GALAXY1_NAME.'</span><br><br>
 
-      <table border="0" cellpadding="2" cellspacing="2" width="270" class="border_grey" style=" background-image:url(\'gfx/template_bg.jpg\'); background-position:left; background-repeat:yes;">
+      <table border="0" cellpadding="2" cellspacing="2" width="270" class="border_grey">
         <tr>
           <td width="100%">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0">
-              <tr>
-                <td width="130" class="desc_row">Federazione:</td>
-                <td width="140" class="value_row">'.$race['racecount_0'].' ('.$race['racepercent_0'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Romulani:</td>
-                <td class="value_row">'.$race['racecount_1'].' ('.$race['racepercent_1'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Klingon:</td>
-                <td class="value_row">'.$race['racecount_2'].' ('.$race['racepercent_2'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Cardassiani:</td>
-                <td class="value_row">'.$race['racecount_3'].' ('.$race['racepercent_3'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Dominio:</td>
-                <td class="value_row">'.$race['racecount_4'].' ('.$race['racepercent_4'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Ferengi:</td>
-                <td class="value_row">'.$race['racecount_5'].' ('.$race['racepercent_5'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Breen:</td>
-                <td class="value_row">'.$race['racecount_8'].' ('.$race['racepercent_8'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Hirogeni:</td>
-                <td class="value_row">'.$race['racecount_9'].' ('.$race['racepercent_9'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Krenim:</td>
-                <td class="value_row">'.$race['racecount_10'].' ('.$race['racepercent_10'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Kazon:</td>
-                <td class="value_row">'.$race['racecount_11'].' ('.$race['racepercent_11'].'%)</td>
-              </tr>
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">';
+
+for($r = 0; $r < 12;$r++)
+{
+    // Skip Borg and Q
+    if($r > 5 && $r < 8) continue;
+    
+    $main_html .= NL.'              <tr>';
+    $main_html .= NL.'                <td width="130" class="desc_row">'.$locale['race'.$r].':</td>';
+    $main_html .= NL.'                <td width="140" class="value_row">'.$race['racecount_'.$r].' ('.$race['racepercent_'.$r].'%)</td>';
+    $main_html .= NL.'              </tr>';
+}       
+$main_html .= '
               <tr><td height="10"></td></tr>
             </table>
           </td>
@@ -356,52 +326,25 @@ $main_html .= '
 
       <br>
 
-      <span class="sub_caption">Affiliazione pianeti<br>Brown Bobby</span><br><br>
+      <span class="sub_caption">'.$locale['affiliate_planets'].'<br>'.GALAXY1_NAME.'</span><br><br>
 
-      <table border="0" cellpadding="2" cellspacing="2" width="270" class="border_grey" style=" background-image:url(\'gfx/template_bg.jpg\'); background-position:left; background-repeat:yes;">
+      <table border="0" cellpadding="2" cellspacing="2" width="270" class="border_grey">
         <tr>
           <td width="100%">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0">
-              <tr>
-                <td width="130" class="desc_row">Federazione:</td>
-                <td width="140" class="value_row">'.$planet['planetcount_0'].' ('.$planet['planetpercent_0'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Romulani:</td>
-                <td class="value_row">'.$planet['planetcount_1'].' ('.$planet['planetpercent_1'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Klingon:</td>
-                <td class="value_row">'.$planet['planetcount_2'].' ('.$planet['planetpercent_2'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Cardassiani:</td>
-                <td class="value_row">'.$planet['planetcount_3'].' ('.$planet['planetpercent_3'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Dominio:</td>
-                <td class="value_row">'.$planet['planetcount_4'].' ('.$planet['planetpercent_4'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Ferengi:</td>
-                <td class="value_row">'.$planet['planetcount_5'].' ('.$planet['planetpercent_5'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Breen:</td>
-                <td class="value_row">'.$planet['planetcount_8'].' ('.$planet['planetpercent_8'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Hirogeni:</td>
-                <td class="value_row">'.$planet['planetcount_9'].' ('.$planet['planetpercent_9'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Krenim:</td>
-                <td class="value_row">'.$planet['planetcount_10'].' ('.$planet['planetpercent_10'].'%)</td>
-              </tr>
-              <tr>
-                <td class="desc_row">Kazon:</td>
-                <td class="value_row">'.$planet['planetcount_11'].' ('.$planet['planetpercent_11'].'%)</td>
-              </tr>
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">';
+
+for($r = 0; $r < 12;$r++)
+{
+    // Skip Borg and Q
+    if($r > 5 && $r < 8) continue;
+    
+    $main_html .= NL.'              <tr>';
+    $main_html .= NL.'                <td width="130" class="desc_row">'.$locale['race'.$r].':</td>';
+    $main_html .= NL.'                <td width="140" class="value_row">'.$planet['planetcount_'.$r].' ('.$planet['planetpercent_'.$r].'%)</td>';
+    $main_html .= NL.'              </tr>';
+}       
+
+$main_html .= '
               <tr><td height="10"></td></tr>
             </table>
           </td>
@@ -410,69 +353,69 @@ $main_html .= '
     </td>
 
     <td valign="top" align="center" width="300">
-      <span class="sub_caption">Galassia Brown Bobby</span><br><br>
+      <span class="sub_caption">'.$locale['galaxy'].' '.GALAXY1_NAME.'</span><br><br>
 
-      <table border="0" cellpadding="2" cellspacing="2" width="270" class="border_grey" style=" background-image:url(\'gfx/template_bg.jpg\'); background-position:left; background-repeat:yes;">
+      <table border="0" cellpadding="2" cellspacing="2" width="270" class="border_grey">
         <tr>
           <td width="100%">
             <table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
-                <td width="170" class="desc_row">In esecuzione dal:</td>
+                <td width="170" class="desc_row">'.$locale['round_start'].'</td>
                 <td width="100" class="value_row">--.--.----</td>
               </tr>
               <tr>
-                <td width="170" class="desc_row">Termine turno il:</td>
+                <td width="170" class="desc_row">'.$locale['round_end'].'</td>
                 <td width="100" class="value_row">--.--.----</td>
               </tr>
               <tr><td height="10"></td></tr>
               <tr>
-                <td width="170" class="desc_row">Visualizza galassia:</td>
-                <td width="100" class="value_row"><a href="http://www.stfc.it/game/maps/images/galaxy_detail.png" target=_blank><i>Clicca</i></a></td>
+                <td width="170" class="desc_row">'.$locale['view_galaxy'].'</td>
+                <td width="100" class="value_row"><a href="http://www.stfc.it/game/maps/images/galaxy_detail.png" target=_blank><i>'.$locale['click'].'</i></a></td>
               </tr>
               <tr><td height="10"></td></tr>
               <tr>
-                <td width="170" class="desc_row">Giocatori attivi:</td>
+                <td width="170" class="desc_row">'.$locale['active_players'].'</td>
                 <td width="100" class="value_row">'.$player_count['num'].'</td>
               </tr>
               <tr>
-                <td class="desc_row">Iscritti oggi:</td>
+                <td class="desc_row">'.$locale['registered_today'].'</td>
                 <td class="value_row">'.$player_newreg['num'].'</td>
               </tr>
               <tr>
-                <td class="desc_row">Giocatori online:</td>
+                <td class="desc_row">'.$locale['online_players'].'</td>
                 <td class="value_row">'.$player_online['num'].'</td>
               </tr>
               <tr><td height="10"></td></tr>
               <tr>
-                <td class="desc_row">Trattati privati:</td>
+                <td class="desc_row">'.$locale['players_treaties'].'</td>
                 <td class="value_row">'.$pp_ingame['num'].'</td>
               </tr>
               <tr>
-                <td class="desc_row">Alleanze fondate:</td>
+                <td class="desc_row">'.$locale['founded_alliances'].'</td>
                 <td class="value_row">'.$alliance_ingame['num'].'</td>
               </tr>
               <tr>
-                <td class="desc_row">Trattati alleanze:</td>
+                <td class="desc_row">'.$locale['alliances_treaties'].'</td>
                 <td class="value_row">'.$pa_ingame['num'].'</td>
               </tr>
               <tr><td height="10"></td></tr>
               <tr>
-                <td class="desc_row">Sistemi solari:</td>
+                <td class="desc_row">'.$locale['solar_systems'].'</td>
                 <td class="value_row">'.$systems_ingame['num'].'</td>
               <tr>
-                <td class="desc_row">Pianeti:</td>
+                <td class="desc_row">'.$locale['planets'].'</td>
                 <td class="value_row">'.$planets_ingame['num'].'</td>
               </tr>
               <tr><td height="10"></td></tr>
               <tr>
-                <td class="desc_row">Somma di tutti i punti:</td>
+                <td class="desc_row">'.$locale['sum_of_all_points'].'</td>
                 <td class="value_row">'.$planets_ingame['points_sum'].'</td>
               </tr>
               <tr>
-                <td class="desc_row">&oslash; per giocatore:</td>
+                <td class="desc_row">'.$locale['points_by_player'].'</td>
                 <td class="value_row">'.round( ($planets_ingame['points_sum'] / $player_count['num']), 2).'</td>
               <tr>
-                <td class="desc_row">&oslash; per pianeta:</td>
+                <td class="desc_row">'.$locale['points_by_planet'].'</td>
                 <td class="value_row">'.round( ($planets_ingame['points_sum'] / $planets_ingame['num']), 2).'</td>
               </tr>
               <tr><td height="10"></td></tr>
@@ -482,69 +425,69 @@ $main_html .= '
       </table>
       <br>
 
-      <span class="sub_caption">Galassia Fried Egg</span><br><br>
+      <span class="sub_caption">'.$locale['galaxy'].' '.GALAXY2_NAME.'</span><br><br>
 
-      <table border="0" cellpadding="2" cellspacing="2" width="270" class="border_grey" style=" background-image:url(\'gfx/template_bg.jpg\'); background-position:left; background-repeat:yes;">
+      <table border="0" cellpadding="2" cellspacing="2" width="270" class="border_grey">
         <tr>
           <td width="100%">
             <table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
-                <td width="170" class="desc_row">In esecuzione dal:</td>
+                <td width="170" class="desc_row">'.$locale['round_start'].'</td>
                 <td width="100" class="value_row">--.--.----</td>
               </tr>
               <tr>
-                <td width="170" class="desc_row">Termine turno il:</td>
-                <td width="100" class="value_row">--.--.----</td>   
+                <td width="170" class="desc_row">'.$locale['round_end'].'</td>
+                <td width="100" class="value_row">--.--.----</td>
               </tr>
               <tr><td height="10"></td></tr>
               <tr>
-                <td width="170" class="desc_row">Visualizza galassia:</td>
-                <td width="100" class="value_row"><a href="http://www.stfc.it/game2/maps/images/galaxy_detail.png" target=_blank><i>Clicca</i></a></td>
+                <td width="170" class="desc_row">'.$locale['view_galaxy'].'</td>
+                <td width="100" class="value_row"><a href="http://www.stfc.it/game2/maps/images/galaxy_detail.png" target=_blank><i>'.$locale['click'].'</i></a></td>
               </tr>
               <tr><td height="10"></td></tr>
               <tr>
-                <td width="170" class="desc_row">Giocatori attivi:</td>
+                <td width="170" class="desc_row">'.$locale['active_players'].'</td>
                 <td width="100" class="value_row">'.$player_count2['num'].'</td>
               </tr>
               <tr>
-                <td class="desc_row">Iscritti oggi:</td>
+                <td class="desc_row">'.$locale['registered_today'].'</td>
                 <td class="value_row">'.$player_newreg2['num'].'</td>
               </tr>
               <tr>
-                <td class="desc_row">Giocatori online:</td>
+                <td class="desc_row">'.$locale['online_players'].'</td>
                 <td class="value_row">'.$player_online2['num'].'</td>
               </tr>
               <tr><td height="10"></td></tr>
               <tr>
-                <td class="desc_row">Trattati privati:</td>
+                <td class="desc_row">'.$locale['players_treaties'].'</td>
                 <td class="value_row">'.$pp_ingame2['num'].'</td>
               </tr>
               <tr>
-                <td class="desc_row">Alleanze fondate:</td>
+                <td class="desc_row">'.$locale['founded_alliances'].'</td>
                 <td class="value_row">'.$alliance_ingame2['num'].'</td>
               </tr>
               <tr>
-                <td class="desc_row">Trattati alleanze:</td>
+                <td class="desc_row">'.$locale['alliances_treaties'].'</td>
                 <td class="value_row">'.$pa_ingame2['num'].'</td>
               </tr>
               <tr><td height="10"></td></tr>
               <tr>
-                <td class="desc_row">Sistemi solari:</td>
+                <td class="desc_row">'.$locale['solar_systems'].'</td>
                 <td class="value_row">'.$systems_ingame2['num'].'</td>
               <tr>
-                <td class="desc_row">Pianeti:</td>
+                <td class="desc_row">'.$locale['planets'].'</td>
                 <td class="value_row">'.$planets_ingame2['num'].'</td>
               </tr>
               <tr><td height="10"></td></tr>
               <tr>
-                <td class="desc_row">Somma di tutti i punti:</td>
+                <td class="desc_row">'.$locale['sum_of_all_points'].'</td>
                 <td class="value_row">'.$planets_ingame2['points_sum'].'</td>
               </tr>
               <tr>
-                <td class="desc_row">&oslash; per giocatore:</td>
+                <td class="desc_row">'.$locale['points_by_player'].'</td>
                 <td class="value_row">'.round( ($planets_ingame2['points_sum'] / $player_count2['num']), 2).'</td>
               <tr>
-                <td class="desc_row">&oslash; per pianeta:</td>
+                <td class="desc_row">'.$locale['points_by_planet'].'</td>
                 <td class="value_row">'.round( ($planets_ingame2['points_sum'] / $planets_ingame2['num']), 2).'</td>
               </tr>
               <tr><td height="10"></td></tr>

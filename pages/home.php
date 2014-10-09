@@ -31,7 +31,7 @@ $sql = ' SELECT *
          LIMIT 0, 2';
         
 if(($q_news = $db->query($sql)) === false) {
-    $news_html = 'No news available<br><br><img src="./gfx/header_newsitem.jpg"><br><br>';
+    $news_html = $locale['nonews'].'<br><br><img src="./gfx/header_newsitem.jpg"><br><br>';
 }
 else {
     $news_html = '';
@@ -60,7 +60,7 @@ $sql = ' SELECT *
          LIMIT 0, 2';
 
 if(($q_journal = $db->query($sql)) === false) {
-    $journal_html = 'No newspaper reports available<br><br><img src="./gfx/header_newsitem.jpg"><br><br>';
+    $journal_html = $locale['noreports'].'<br><br><img src="./gfx/header_newsitem.jpg"><br><br>';
 }
 else {
     $journal_html = '';
@@ -70,10 +70,10 @@ else {
         $today = (int)gmdate('d', time());
 
         if($journal_day == $today) {
-            $date_str = 'Today, '.gmdate('H:i', $journal['date']);
+            $date_str = $locale['today'].', '.gmdate('H:i', $journal['date']);
         }
         elseif($journal_day == ($today - 1)) {
-            $date_str = 'Yesterday, '.gmdate('H:i', $journal['date']);
+            $date_str = $locale['yesterday'].', '.gmdate('H:i', $journal['date']);
         }
         else {
             $date_str = gmdate('d.m.y', $journal['date']);
@@ -104,21 +104,14 @@ $main_html .= '
         </tr>
         <tr>
           <td><span style="color: #6D87AC; font-size:12px"><br>
-          Questo &egrave; un gioco multiplayer ambientato nell&rsquo;universo di Star Trek&trade;
-          per il quale non &egrave; necessario altro che un semplice browser web ed una connessione
-          ad Internet.<br><br>
-          STFC2 &egrave; un gioco strategico e tattico che gira in tempo reale per dare ai giocatori
-          la massima esperienza di gioco possibile.<br><br>
-          Scegli la tua specie tra Federali, Klingon, Romulani e tanti altri, fonda le tue colonie,
-          costruisci la tua flotta ed espandi la tua rete commerciale per arrivare l&agrave; dove
-          nessun &egrave; mai giunto prima!</span>
+          '.$locale['welcome'].'</span>
           </td>
         </tr>
         <tr valign="bottom" align="right">
          <td><br><br><br>
-           <!-- a href="http://www.sititrek.it/" target="new"><img src="./gfx/fist100x35.jpg" alt="Sito membro della Federazione Italiana Siti Trek" border="0"></a> -->
-           <!-- a href="http://www.sititrek.it/" target="new"><img src="./gfx/fist100x100.jpg" alt="Sito membro della Federazione Italiana Siti Trek" border="0" width="50" height="50"></a> -->
-<a href="http://www.topwebgames.it/"><img src="http://www.topwebgames.it/button.php?u=stfc" alt="Top Web Games Italia" border="0"></a>
+           <!-- a href="http://www.sititrek.it/" target="new"><img src="./gfx/fist100x35.jpg" alt="'.$locale['fist_membership'].'" border="0"></a> -->
+           <!-- a href="http://www.sititrek.it/" target="new"><img src="./gfx/fist100x100.jpg" alt="'.$locale['fist_membership'].'" border="0" width="50" height="50"></a> -->
+<a href="http://www.topwebgames.it/"><img src="http://www.topwebgames.it/button.php?u=stfc" alt="Top Web Games Italia" border="0"></a><br />
          </td>
        </tr>
       </table>

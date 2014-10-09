@@ -22,14 +22,14 @@
 
 
 
-$err_title = 'Errore nella cancellazione dell&#146;account';
-$title_html = 'ST: Frontline Combat - Cancellazione account';
-$meta_descr = 'STFC: Pagina di conferma eliminazione account.';
-$main_html = '<center><span class="caption">Cancellazione account</span></center><br>';
+$err_title = $locale['delete_error_title'];
+$title_html = $locale['delete_title'];
+$meta_descr = $locale['delete_descr'];
+$main_html = '<div class="caption">'.$locale['account_deletion'].'</div>';
 
 
 if( (!isset($_GET['galaxy'])) || (empty($_GET['user_id'])) || (empty($_GET['key']))) {
-    display_message($err_title,'Almeno una delle seguenti informazioni risulta mancante:<ul><li>galassia</li><li>ID utente</li><li>codice di conferma</li></ul>',GALAXY1_BG);
+    display_message($err_title,$locale['error_missing_info'],GALAXY1_BG);
     return 1;
 }
 
@@ -54,12 +54,12 @@ $sql = 'SELECT user_id, user_registration_ip, last_ip
         WHERE user_id = '.$user_id;
 
 if(($user = $mydb->queryrow($sql)) === false) {
-    display_message($err_title,'Errore interno nella SELECT mySQL, si prega di contattare lo Staff.',$bg);
+    display_message($err_title,$locale['error_mysql_select'],$bg);
     return 1;
 }
 
 if(empty($user['user_id'])) {
-    display_message($err_title,'Impossibile recuperare le informazioni relative al giocatore (utente inesistente?).',$bg);
+    display_message($err_title,$locale['error_account_missing'],$bg);
     return 1;
 }
 
@@ -68,7 +68,7 @@ $last_ip_split = explode('.', $user['last_ip']);
 $confirm_key = md5( ((int)$reg_ip_split[0] + (int)$reg_ip_split[1] + (int)$reg_ip_split[2] + (int)$reg_ip_split[3]) * ((int)$last_ip_split[0] + (int)$last_ip_split[1] + (int)$last_ip_split[2] + (int)$last_ip_split[3]) - (int)$user_id );
 
 if($_GET['key'] != $confirm_key) {
-    display_message($err_title,'Il codice di conferma fornito non corrisponde con quello memorizzato nel sistema (link troncato?).',$bg);
+    display_message($err_title,$locale['error_mismatched_code'],$bg);
     return 1;
 }
 
@@ -77,12 +77,12 @@ $sql = 'UPDATE user
         WHERE user_id = '.$user_id;
 
 if(!$mydb->query($sql)) {
-    display_message($err_title,'Errore interno nella UPDATE mySQL, si prega di contattare lo Staff.',$bg);
+    display_message($err_title,$locale['error_mysql_update'],$bg);
     return 1;
 }
 
 
-display_message('La cancellazione del tuo account &egrave; stata confermata.','Sar&agrave; definitivamente rimosso con il calcolo del prossimo tick (massimo in 3 minuti).',$bg);
+display_message($locale['delete_ok_title'],$locale['account_deleted'],$bg);
 
 
 ?>

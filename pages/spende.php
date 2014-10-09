@@ -20,40 +20,28 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-$title_html = 'Star Trek: Frontline Combat - Supporta STFC!';
-$meta_descr = 'STFC: Pagina in cui e` possibile effettuare una donazione ad importo libero con cui supportare il gioco ed il lavoro svolto dallo staff.';
-$main_html='<center><span class="caption">Supporta Star Trek: Frontline Combat!</span>
-<br><br>
-<table border=0 cellpadding=0 cellspacing=0>
-<tr><td width=300 valign=top align="justify">
-<p>Cari colleghi e giocatori,<br><br>
-a seguito di alcune defezioni nello staff tecnico che da a tutti la possibilit&agrave; di divertirci con <b>Star Trek Frontline Combat</b>,
-le spese di gestione del server stanno diventando poco gestibili.</p>
-<p>Tenteremo per quanto possibile di sostenere la situazione, tuttavia il rischio di chiusura del server &egrave; tristemente concreto.</p>
-<p>Dunque ogni contributo spontaneo &egrave; assolutamente benaccetto! Visto il numero di utenti, basterebbe davvero poco da ciascuno per
-scongiurare il rischio di chiusura: pensate solo a quanto costano normalmente i videogiochi ed eventuali abbonamenti per giocare online,
-credo che di fronte a queste cifre diventi accettabile "<i>offrir da bere</i>" a chi senza aver mai chiesto nulla si &egrave; sempre prodigato a mantenere attivo il sito per il vostro divertimento.<p>
-<p>Purtroppo non sempre si pu&ograve; solo donare, per quanto bello, a volte ci si trova nelle condizioni di dover cortesemente chiedere... sperando di avere risposte positive dalle persone presenti dietro ai giocatori che si &egrave; iniziato a stimare nel nostro piccolo spazio virtuale.</p>
-<p>Se la generosit&agrave; di tutti dovesse superare le aspettative, ovviamente un eventuale eccesso verrebbe reinvestito nel potenziamento
-del server, oppure nel pagamento degli anni successivi.</p>
-<p>Grazie a tutti e buon gioco!</p>
-</td>
-<td width="220" valign="middle" align="center">
-<img src="gfx/uncle-sam-wants-you.jpg" width="170">
-</td>
-</tr>
-<tr>
-<td colspan="2" align="center">
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="170063">
-<input type="image" src="http://www.stfc.it/gfx/paypal.gif" border="0" name="submit" alt="">
-<img alt="" border="0" src="https://www.paypal.com/it_IT/i/scr/pixel.gif" width="1" height="1">
-</form>
-</td>
-</tr></table>
-</center>
-
-
+$title_html = $locale['donation_title'];
+$meta_descr = $locale['donation_descr'];
+$main_html='<div class="caption">'.$locale['donation'].'</div>
+<table align="center" border="0" cellpadding="2" cellspacing="2" width="520" class="border_grey" style=" background-image:url(\'gfx/template_bg.jpg\'); background-position:left; background-repeat:yes;">
+  <tr>
+    <td width="300" valign="top" align="justify">
+      '.$locale['donation_statement'].'
+    </td>
+    <td width="220" valign="middle" align="center">
+      <img src="gfx/uncle-sam-wants-you.jpg" width="170">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="170063">
+        <input type="image" src="gfx/paypal.gif" border="0" name="submit" alt="">
+        <img alt="" border="0" src="https://www.paypal.com/it_IT/i/scr/pixel.gif" width="1" height="1">
+      </form>
+    </td>
+  </tr>
+</table>
 ';
 ?>

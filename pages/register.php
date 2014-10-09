@@ -23,7 +23,7 @@
 
 
 
-function send_mail($myname, $myemail, $contactname, $contactemail, $subject, $message) {
+/*function send_mail($myname, $myemail, $contactname, $contactemail, $subject, $message) {
   $headers = "MIME-Version: 1.0\n";
   $headers .= "Content-type: text/plain; charset=iso-8859-1\n";
   $headers .= "X-Priority: 1\n";
@@ -31,7 +31,7 @@ function send_mail($myname, $myemail, $contactname, $contactemail, $subject, $me
   $headers .= "X-Mailer: php\n";
   $headers .= "From: \"".$myname."\" <".$myemail.">\n";
   return(mail("\"".$contactname."\" <".$contactemail.">", $subject, $message, $headers));
-}
+}*/
 
 
 
@@ -40,16 +40,15 @@ function send_mail($myname, $myemail, $contactname, $contactemail, $subject, $me
 
 
 function display_success($galaxy,$bg) {
-    global $main_html;
+    global $main_html,$locale;
     $main_html .= '
-<table align="center" border="0" cellpadding="2" cellspacing="2" width="700" class="border_grey" style=" background-color:#000000; background-position:left; background-repeat:no-repeat;">
+<table align="center" border="0" cellpadding="2" cellspacing="2" width="700" class="border_grey">
   <tr>
     <td width="100%">
-    <center><span class="sub_caption">Registrazione per la galassia "'.$galaxy.'" avvenuta con successo:</span></center>
+    <center><span class="sub_caption">'.$locale['registration_ok1'].' "'.$galaxy.'" '.$locale['registration_ok2'].'</span></center>
       <table width="100%" border="0" cellpadding="0" cellspacing="0" style=" background-image:url(\''.$bg.'\'); background-position:left; background-repeat:no-repeat;">
         <tr height="300">
-          <td width="100%" valign=top><span class="sub_caption2"><br><br>La tua registrazione ha avuto successo!<br><br>Una email &egrave; stata inviata al tuo indirizzo,
-          con la quale potrai attivare il tuo account. <br> <b> Il messaggio potrebbe venire marcato come spam, ti preghiamo di verificare in caso di ritardo.</span></td>
+          <td width="100%" valign=top><span class="sub_caption2"><br><br>'.$locale['registration_successfully'].'</span></td>
         </tr>
       </table>
     </td>
@@ -59,7 +58,7 @@ function display_success($galaxy,$bg) {
 
 
 function display_registration($data = array(), $message = '', $galaxy) {
-    global $main_html;
+    global $main_html,$locale;
 
     /* 28/01/08 - AC: Added initialization of this fields */
     if(!isset($data['login_name'])) $data['login_name'] = '';
@@ -97,67 +96,58 @@ function display_registration($data = array(), $message = '', $galaxy) {
 
     $main_html .= '
 <form name="register" method="post" action="index.php?a=register" onSubmit="return this.submit_b.disabled = true;">
-<table align="center" border="0" cellpadding="2" cellspacing="2" width="700" class="border_grey" style="background-color:#000000; background-position:left; background-repeat:no-repeat;">
+<table align="center" border="0" cellpadding="2" cellspacing="2" width="700" class="border_grey">
   <tr>
     <td width="100%" align="center">
-    <center><span class="sub_caption">(2/2) Registrazione per la galassia "'.$galaxyname.'":</span><br>
+    <center><span class="sub_caption">'.$locale['galaxy_registration'].' "'.$galaxyname.'":</span><br>
     <span class="sub_caption2">'.$message.'</span></center>
 
       <table width="100%" border="0" cellpadding="0" cellspacing="0" style=" background-image:url(\''.$galaxyimg.'\'); background-position:left; background-repeat:no-repeat;">
         <tr>
-          <td colspan="2"><span class="sub_caption2">Informazioni di gioco (necessarie)</span></td>
+          <td colspan="2"><span class="sub_caption2">'.$locale['player_info'].'</span></td>
         </tr>
 
         <tr><td height="10"></td></tr>
 
         <tr>
-          <td width="15%">Nome giocatore *:</td>
+          <td width="15%">'.$locale['player_name'].' *</td>
           <td width="85%"><input style="width: 200px;" type="text" name="user_name" value="'.$data['user_name'].'"></td>
         </tr>
 
         <tr>
-          <td width="15%">Login **:</td>
+          <td width="15%">'.$locale['login'].' **</td>
           <td width="85%"><input style="width: 200px;" type="text" name="login_name" value="'.$data['login_name'].'"></td>
         </tr>
 
         <tr>
-          <td>Password:</td>
+          <td>'.$locale['password'].'</td>
           <td><input style="width: 200px;" type="password" name="user_password" value="'.$data['user_password'].'"></td>
         </tr>
 
         <tr>
-          <td>Verifica Password:</td>
+          <td>'.$locale['password_verify'].'</td>
           <td><input style="width: 200px;" type="password" name="user_password2" value="'.$data['user_password2'].'"></td>
         </tr>
 
         <tr>
-          <td>Email:</td>
+          <td>'.$locale['email'].'</td>
           <td><input style="width: 200px;" type="text" name="user_email" value="'.$data['user_email'].'"></td>
         </tr>
 
         <tr><td height="10"></td></tr>
 
         <tr>
-          <td>Scelta della razza:</td>
+          <td>'.$locale['race_selection'].'</td>
           <td>
-            <select style="width: 150px;" name="user_race" onChange="expandone();">
-              <option value="0"'.( ($race_selected == 0) ? ' selected="selected"' : '' ).'>Federazione</option>
-              <option value="1"'.( ($race_selected == 1) ? ' selected="selected"' : '' ).'>Romulani</option>
-              <option value="2"'.( ($race_selected == 2) ? ' selected="selected"' : '' ).'>Klingon</option>
-              <option value="3"'.( ($race_selected == 3) ? ' selected="selected"' : '' ).'>Cardassiani</option>
-              <option value="4"'.( ($race_selected == 4) ? ' selected="selected"' : '' ).'>Dominio</option>';
-
-    switch($galaxy)
+            <select style="width: 150px;" name="user_race" onChange="expandone();">';
+    $races = $galaxy == 0 ? 12 : 5;
+    for($race = 0; $race < $races;$race++)
     {
-        case 0:
-            $main_html .= '
-              <option value="5"'.( ($race_selected == 5) ? ' selected="selected"' : '' ).'>Ferengi</option>
-              <option value="8"'.( ($race_selected == 8) ? ' selected="selected"' : '' ).'>Breen</option>
-              <option value="9"'.( ($race_selected == 9) ? ' selected="selected"' : '' ).'>Hirogeni</option>
-              <option value="10"'.( ($race_selected == 10) ? ' selected="selected"' : '' ).'>Krenim</option>
-              <option value="11"'.( ($race_selected == 11) ? ' selected="selected"' : '' ).'>Kazon</option>';
-        break;
-    }
+        // Skip Borg and Q
+        if($race > 5 && $race < 8) continue;
+        
+        $main_html .= NL.'            <option value="'.$race.'"'.( ($race_selected == $race) ? ' selected="selected"' : '' ).'>'.$locale['race'.$race].'</option>';
+    }       
 
     $main_html .= '
             </select>
@@ -165,108 +155,63 @@ function display_registration($data = array(), $message = '', $galaxy) {
         </tr>
 
        <tr>
-        <td align="center">&nbsp;
+        <td align="center">&nbsp;</td>
+        <td>';
 
-        </td>
-        <td>
+    $dropnum = 0;
+    for($race = 0; $race < $races;$race++)
+    {
+        // Skip Borg and Q
+        if($race > 5 && $race < 8) continue;
+        
+        $main_html .= NL.'          <div id="dropmsg'.$dropnum.'" class="dropcontent"><br>'.$locale['race'.$race.'_desc'].NL.'          </div>';
+        $dropnum++;
+    }       
 
-<div id="dropmsg0" class="dropcontent">
-<br>Federazione. Questa &egrave; la razza con la maggiore variet&agrave; di navi. Le navi della Federazione hanno gli scudi pi&ugrave; resistenti tra tutte le navi della Galassia. Il tasso di produzione delle risorse &egrave; nella media, cosi come quello delle truppe. In paragone alle altre specie, la Federazione gode di buoni strumenti di ricerca tecnologica.<br>I giocatori di questa specie partono con pari probabilit&agrave; dal Quadrante Alfa, Beta e Gamma, difficilmente dal Delta.<br>
-<i>Consigliata ai giocatori alle prime armi.</i>
-</div>
-
-<div id="dropmsg1" class="dropcontent">
-<br>I Romulani hanno un punto di forza nel poter costruire navi e fanti velocemente e a basso costo. Hanno un tasso di produzione di dilitio bassissimo e dispongono di vascelli e soldati relativamente deboli. Tuttavia, le navi Romulane dispongono di un ottima capacit&agrave; di occultamento.<br>I giocatori di questa specie partono con maggior probabilit&agrave; dal Quadrante Beta piuttosto che dal Gamma ed Alfa.<br>
-<i>Consigliata ai giocatori alle prime armi.</i>
-</div>
-
-<div id="dropmsg2" class="dropcontent">
-<br>I Klingon sono una razza guerriera con ottime navi e soldati. Tuttavia sono penalizzati da tempi di costruzione per le truppe e per le strutture planetarie molto alti. Inoltre, la ricerca tecnologica non rappresenta un punto a favore dei Klingon.<br>I giocatori di questa razza partono con buone probabilit&agrave; dal Quadrante Alfa, in misura minore dal Beta e Gamma.<br>
-<i>Consigliata ai giocatori alle prime armi.</i>
-</div>
-
-<div id="dropmsg3" class="dropcontent">
-<br>I Cardassiani, gli oppressori e sfruttatori di tanti popoli, sleali e falsi in ogni situazione. Possiedono soldati aggressivi ma non dispongono di una grande variet&agrave; di navi. Le loro navi sono piuttosto deboli in rapporto a quelle delle altre razze. Tra tutte, &egrave; la razza pi&ugrave; aggressiva.<br>I giocatori di questa razza iniziano a giocare con maggior probabilit&agrave; dal quadrante Alfa e Gamma.<br>
-<i>I Cardassiani necessitano di buona applicazione ed aggressivit&agrave; per essere giocati con successo.</i>
-</div>
-
-<div id="dropmsg4" class="dropcontent">
-<br>Il Dominio dispone di navi veloci e potenti. La loro capacit&agrave; estrattiva &egrave; la pi&ugrave; bassa tra tutte le razze. I tempi di costruzione delle strutture planetarie, in paragone alle altre specie, &egrave; piuttosto alto.<br>I giocatori di questa razza partono principalmente dal Quadrante Gamma.<br>
-<i>Una delle razze pi&ugrave; dure da giocare, decisamente sconsigliata ai giocatori alle prime armi.</i>
-</div>
-
-<div id="dropmsg5" class="dropcontent">
-<br>I Ferengi sono la razza commerciante per eccellenza in Star Trek. Preferiscono fare commercio, dispongono dei trasporti pi&ugrave; veloci e navi colonia molto rapide, hanno il miglior tasso di estrazione di risorse e sono velocissimi nel costruire truppe e strutture planetarie, tutto questo permette al Ferengi di espandersi pi&ugrave; velocemente di qualsiasi altra razza. La loro debolezza consiste nelle loro scadenti navi da battaglia, motivo per cui il giocatore dovrebbe concentrare tutta la sua capacit&agrave; affaristica nel comprare navi alle aste.<br>I giocatori di questa razza hanno pari possibilit&agrave; di parte da un qualsiasi dei quattro quadranti.<br>
-<i>Una razza estremamente facile da giocare in termini di gestione. Occorre senso per gli affari per sfruttare a fondo i Ferengi.</i>
-</div>
-
-<div id="dropmsg6" class="dropcontent">
-<br>I Breen sono una specie molto forte, con navi e soldati potenti ma piuttosto costosi. Il loro tasso di estrazione risorse &egrave; piuttosto basso e questo pu&ograve; portare a qualche problema economico. Dispongono anche della minor variet&agrave; di navi a disposizione, tuttavia le poche esistenti non vanno assolutamente sottovalutate. Il tempo di costruzione delle strutture planetarie &egrave; relativamente alto.<br>I giocatori di questa razza partono con prevalenza dal Quadrante Gamma.<br>
-<i>Una razza piuttosto difficile da giocare e con poca variet&agrave; di navi. Indicata per i giocatori con molto senso pratico.</i>
-</div>
-
-<div id="dropmsg7" class="dropcontent">
-<br>Gli Hirogeni sono una razza molto difficile da giocare. Il loro vantaggio arriva a gioco avanzato, ma devono lottare con la poca variet&agrave; di navi. Gli Hirogeni dispongono di eccellenti truppe di terra con la migliore capacit&agrave; difensiva delle proprie strutture.<br>I giocatori di questa razza possono iniziare con pari probabilit&agrave; da qualsiasi quadrante della galassia.<br>
-<i>Razza complessa da giocare, indicata per i pi&ugrave; esperti o per chi vuole affrontare la sfida pi&ugrave; difficile.</i>
-</div>
-
-<div id="dropmsg8" class="dropcontent">
-<br>I Krenim non possiedono truppe particolarmente forti ma hanno come enorme vantaggio lo sfruttamento della tecnologia. Nel campo della ricerca tecnologica i Krenim sono al di sopra di tutte le altre razze e anche la creazione delle truppe &egrave; piuttosto rapida.<br>I giocatori di questa razza iniziano principalmente dal Quadrante Delta.<br>
-<i>Razza semplice da giocare ma non semplicissima. Una sfida di livello medio.</i>
-</div>
-
-<div id="dropmsg9" class="dropcontent">
-<br>I Kazon appartengono alle razze guerriere, specialmente sul campo di battaglia a terra. Sono molto rapidi nel produrre truppe, il loro punto di forza. Le navi Kazon pi&ugrave; piccole non sono una minaccia per le altre razze, solo successivamente giungono al loro pieno potenziale.<br>I giocatori di questa razza iniziano principalmente dal Quadrante Delta.<br>
-<i>Consigliata ai giocatori di livello medio.</i>
-</div>
-
-</td></tr>
-
-
-
+    $main_html .= '</td></tr>
 
         <tr><td height="20"></td></tr>
 
         <tr>
-          <td colspan="2"><span class="sub_caption2">Informazioni personali (opzionali)</span></td>
+          <td colspan="2"><span class="sub_caption2">'.$locale['personal_info'].'</span></td>
         </tr>
 
         <tr><td height="10"></td></tr>
 
         <tr>
-          <td>Data di nascita:</td>
-          <td><input type="text" style="width: 30px;" name="user_birthday_day" maxlength="2" value="'.$data['user_birthday_day'].'">&nbsp;.&nbsp;<input type="text" class="field" style="width: 30px;" name="user_birthday_month" maxlength="2" value="'.$data['user_birthday_month'].'">&nbsp;.&nbsp;<input type="text" class="field" style="width: 50px;" name="user_birthday_year" maxlength="4" value="'.$data['user_birthday_year'].'"> (Giorno.Mese.Anno)</td>
+          <td>'.$locale['birthdate'].'</td>
+          <td><input type="text" style="width: 30px;" name="user_birthday_day" maxlength="2" value="'.$data['user_birthday_day'].'">&nbsp;.&nbsp;<input type="text" class="field" style="width: 30px;" name="user_birthday_month" maxlength="2" value="'.$data['user_birthday_month'].'">&nbsp;.&nbsp;<input type="text" class="field" style="width: 50px;" name="user_birthday_year" maxlength="4" value="'.$data['user_birthday_year'].'"> ('.$locale['birthdate_format'].')</td>
         </tr>
 
         <tr><td height="5"></td></tr>
 
         <tr>
-          <td>Sesso:</td>
+          <td>'.$locale['gender'].'</td>
           <td>
             <select name="user_gender">
-              <option value="-"'.( ($gender_selected == '-') ? ' selected="selected"' : '' ).'>Non indicato</option>
-              <option value="m"'.( ($gender_selected == 'm') ? ' selected="selected"' : '' ).'>Maschio</option>
-              <option value="f"'.( ($gender_selected == 'f') ? ' selected="selected"' : '' ).'>Femmina</option>
+              <option value="-"'.( ($gender_selected == '-') ? ' selected="selected"' : '' ).'>'.$locale['not_indicated'].'</option>
+              <option value="m"'.( ($gender_selected == 'm') ? ' selected="selected"' : '' ).'>'.$locale['male'].'</option>
+              <option value="f"'.( ($gender_selected == 'f') ? ' selected="selected"' : '' ).'>'.$locale['female'].'</option>
             </select>
           </td>
         </tr>
         <tr><td height="12"></td></tr>  
         <tr>
-          <td>Cap ***:</td>
+          <td>'.$locale['zipcode'].'</td>
           <td><input style="width: 90px;" class="field" type="text" name="plz" value="'.$data['plz'].'"> </td>
         </tr>
         <tr>
-          <td>Paese:</td>
+          <td>'.$locale['country'].'</td>
           <td>
           <select name="country">
-              <option value="XX"'.( ($data['country'] == 'XX') ? ' selected="selected"' : '' ).'>Non indicato</option>
-              <option value="IT"'.( ($data['country'] == 'IT') ? ' selected="selected"' : '' ).'>Italia</option>
-              <option value="UK"'.( ($data['country'] == 'UK') ? ' selected="selected"' : '' ).'>Inghilterra</option>
-              <option value="US"'.( ($data['country'] == 'US') ? ' selected="selected"' : '' ).'>Stati Uniti</option>
-              <option value="DE"'.( ($data['country'] == 'DE') ? ' selected="selected"' : '' ).'>Germania</option>
-              <option value="AT"'.( ($data['country'] == 'AT') ? ' selected="selected"' : '' ).'>Austria</option>
-              <option value="CH"'.( ($data['country'] == 'CH') ? ' selected="selected"' : '' ).'>Svizzera</option>
-              <option value="FR"'.( ($data['country'] == 'FR') ? ' selected="selected"' : '' ).'>Francia</option>
+              <option value="XX"'.( ($data['country'] == 'XX') ? ' selected="selected"' : '' ).'>'.$locale['not_indicated'].'</option>
+              <option value="IT"'.( ($data['country'] == 'IT') ? ' selected="selected"' : '' ).'>'.$locale['country_it'].'</option>
+              <option value="UK"'.( ($data['country'] == 'UK') ? ' selected="selected"' : '' ).'>'.$locale['country_en'].'</option>
+              <option value="US"'.( ($data['country'] == 'US') ? ' selected="selected"' : '' ).'>'.$locale['country_us'].'</option>
+              <option value="DE"'.( ($data['country'] == 'DE') ? ' selected="selected"' : '' ).'>'.$locale['country_de'].'</option>
+              <option value="AT"'.( ($data['country'] == 'AT') ? ' selected="selected"' : '' ).'>'.$locale['country_at'].'</option>
+              <option value="CH"'.( ($data['country'] == 'CH') ? ' selected="selected"' : '' ).'>'.$locale['country_ch'].'</option>
+              <option value="FR"'.( ($data['country'] == 'FR') ? ' selected="selected"' : '' ).'>'.$locale['country_fr'].'</option>
           </select>
           </td>
         </tr>
@@ -274,8 +219,8 @@ function display_registration($data = array(), $message = '', $galaxy) {
         <tr><td height="20"></td></tr>
 
         <tr>
-          <td colspan="2"><input style="border: none;" type="checkbox" name="confirm_agb" value="1"'.( ($agb_checked) ? ' checked="checked"' : '' ).'>&nbsp;Dichiaro in questa sede di aver preso visione dei <a href="JavaScript:void(window.open(\'agb.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));"><b><u>termini e condizioni per il gioco</u></b></a> e di accettarli.<br>
-          <br><b>Solo un account per IP [<a href="javascript: void;" onmouseover="return overlib(\'Questa limitazione significa che ogni giocatore che per pi&ugrave; di 4 giorni successivi alla registrazione avr&agrave; pi&ugrave; di un account in funzione sul proprio IP, se li vedr&agrave; bannati o cancellati!<br>Se ci&ograve; &egrave; dovuto a motivi tecnici quali router o altro, deve subito comunicare al Supporto le ragione dei diversi account loggati dallo stesso IP. <br> <u> <b> Seguite il link in basso!\', CAPTION, \'Solo un Account per IP:\', WIDTH, 400, FGCOLOR, \'#ffffff\', TEXTCOLOR, \'#ffffff\', FGBACKGROUND,\'http://www.stfc.it/stfc_gfx/skin1/bg_stars1.gif\', BGCOLOR, \'#33355E\', BORDER, 2, CAPTIONFONT, \'Arial\', CAPTIONSIZE, 2, TEXTFONT, \'Arial\', TEXTSIZE, 2);" onmouseout="return nd();">Info</a>]<br><a href=index.php?a=multis&galaxy='.$galaxy.'><u>Dettagli sulla limitazione</u></a></b></td>
+          <td colspan="2"><input style="border: none;" type="checkbox" name="confirm_agb" value="1"'.( ($agb_checked) ? ' checked="checked"' : '' ).'>&nbsp;'.$locale['term_of_use'].'<br>
+          <br><b>'.$locale['no_multiaccount'].' [<a href="javascript: void;" onmouseover="return overlib(\''.$locale['multiaccount_desc'].'\', CAPTION, \''.$locale['no_multiaccount'].':\', WIDTH, 400, FGCOLOR, \'#ffffff\', TEXTCOLOR, \'#ffffff\', FGBACKGROUND,\'http://www.stfc.it/stfc_gfx/skin1/bg_stars1.gif\', BGCOLOR, \'#33355E\', BORDER, 2, CAPTIONFONT, \'Arial\', CAPTIONSIZE, 2, TEXTFONT, \'Arial\', TEXTSIZE, 2);" onmouseout="return nd();">Info</a>]<br><a href=index.php?a=multis&galaxy='.$galaxy.'><u>'.$locale['multiaccount_title'].'</u></a></b></td>
         </tr>
 
         <tr><td height="20"></td></tr>
@@ -283,9 +228,9 @@ function display_registration($data = array(), $message = '', $galaxy) {
           <td colspan="2">
              <input type=hidden name="submit" value="1">
              <input type=hidden name="galaxy" value="'.$galaxy.'">
-             <input type="submit" name="submit_b" value="Registrami">
+             <input type="submit" name="submit_b" value="'.$locale['register'].'">
              <br><br>
-             <i>* Il nome scelto apparir&agrave; in gioco<br>** Il Login verr&agrave; usato esclusivamente per accedere al gioco<br>*** Se indicato, il codice apparir&agrave; nella <a href="http://www.stfc.it/index.php?a='.(($galaxy) ? 'fe' : 'be').'_karte" target="_blank"><u>mappa degli Utenti</u></a>. (Non ancora attivo!)</i>
+             <i>'.$locale['stars_explanations'].'</i>
           </td>
         </tr>
       </table>
@@ -297,9 +242,9 @@ function display_registration($data = array(), $message = '', $galaxy) {
    ';
 }
 
-$title_html = 'Star Trek: Frontline Combat - Registrazione';
-$meta_descr = 'STFC: Pagina in cui effettuare la registrazione ad una galassia di gioco fornendo i dettagli del proprio account, quali nick, email, sesso, razza scelta, data di nascita ecc.';
-$main_html = '<center><span class="caption">Registrazione</span></center><br>';
+$title_html = $locale['register_title'];
+$meta_descr = $locale['register_descr'];
+
 if (!isset($_REQUEST['galaxy']))
 {
 /* First galaxy */
@@ -314,30 +259,31 @@ $player_online2 = $db2->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE l
 
 
 $main_html.='
-<table align="center" border="0" cellpadding="2" cellspacing="2" class="border_grey" style=" background-color:#000000; background-position:left; background-repeat:no-repeat;">
+<div class="caption">'.$locale['registration'].'</div>
+<table align="center" border="0" cellpadding="2" cellspacing="2" width="700" class="border_grey">
   <tr>
-    <td width="700" align="center">
-      <span class="sub_caption">(1/2) Scegli la galassia:</span><br>
+    <td width="100%" align="center">
+      <span class="sub_caption">'.$locale['galaxy_selection'].'</span><br>
 
-      <table border=0 cellpadding=2 cellspacing=2 style=" background-image:url(\'gfx/template_bg.jpg\'); background-position:left; background-repeat:yes;">
+      <table border=0 cellpadding=2 cellspacing=2>
         <tr>
           <td width="350" align="center">
-            <center><span class="sub_caption">'.GALAXY1_NAME.'</span></center><br>
+            <span class="sub_caption">'.GALAXY1_NAME.'</span><br>
             <a href="index.php?a=register&galaxy=0"><img src="'.GALAXY1_IMG.'" border="0" alt="'.GALAXY1_NAME.'"></a><br>
-            <u>Versione:</u> STFC2<br>
-            <u>In gioco da:</u> '.round($config['tick_id']/480,0).' giorni<br>
-            <u>Posti disponibili:</u> '.($config['max_player']-$playercount['num']).'/'.$config['max_player'].'<br>
-            <u>Giocatori online:</u> '.$player_online['num'].'<br><br>
-            La Galassia "'.GALAXY1_NAME.'" &egrave; il setup base con un tempo di tick di 3 minuti.<br>
+            <u>'.$locale['version'].'</u> STFC2<br>
+            <u>'.$locale['running_since'].'</u> '.round($config['tick_id']/480,0).' '.$locale['days'].'<br>
+            <u>'.$locale['available_places'].'</u> '.($config['max_player']-$playercount['num']).'/'.$config['max_player'].'<br>
+            <u>'.$locale['online_players'].'</u> '.$player_online['num'].'<br><br>
+            '.$locale['galaxy1_desc'].'<br>
           </td>
           <td width="350" align="center">
-            <center><span class="sub_caption">'.GALAXY2_NAME.'</span></center><br>
+            <span class="sub_caption">'.GALAXY2_NAME.'</span><br>
             <a href="index.php?a=register&galaxy=1"><img src="'.GALAXY2_IMG.'" border="0" alt="'.GALAXY2_NAME.'"></a><br>
-            <u>Versione:</u> STFC2<br>
-            <u>In gioco da:</u> '.round($config2['tick_id']/480,0).' giorni<br>
-            <u>Posti disponibili:</u> '.($config2['max_player']-$playercount2['num']).'/'.$config2['max_player'].'<br>
-            <u>Giocatori online:</u> '.$player_online2['num'].'<br><br>
-            La Galassia "'.GALAXY2_NAME.'" &egrave; il setup in cui ci sono meno razze a disposizione e la diplomazia &egrave; solo un sogno.<br>
+            <u>'.$locale['version'].'</u> STFC2<br>
+            <u>'.$locale['running_since'].'</u> '.round($config2['tick_id']/480,0).' '.$locale['days'].'<br>
+            <u>'.$locale['available_places'].'</u> '.($config2['max_player']-$playercount2['num']).'/'.$config2['max_player'].'<br>
+            <u>'.$locale['online_players'].'</u> '.$player_online2['num'].'<br><br>
+            '.$locale['galaxy2_desc'].'<br>
           </td>
         </tr>
       </table>
@@ -375,25 +321,31 @@ $config=$mydb->queryrow('SELECT * FROM config');
 $playercount=$mydb->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE user_auth_level=1 AND user_active>0');
 $player_online = $mydb->queryrow('SELECT COUNT(user_id) AS num FROM user WHERE last_active > '.(time() - 60 * 20));
 
-if ($config['register_blocked']) {display_registration(NULL,'La registrazione attualmente &egrave; disabilitata',$galaxy); return true;}
-else if ($config['max_player']<=$playercount['num']) {display_registration(NULL,'La registrazione attualmente non &egrave; possibile<br>('.$playercount['num'].' di '.$config['max_player'].' posti occupati)',$galaxy);return true;}
+if ($config['register_blocked']) {
+    display_registration(NULL,$locale['registration_disabled'],$galaxy);
+    return true;
+}
+else if ($config['max_player']<=$playercount['num']) {
+    display_registration(NULL,$locale['registration_impossible'].'<br>('.$playercount['num'].' '.$locale['of'].' '.$config['max_player'].' '.$locale['occupied_places'].')',$galaxy);
+    return true;
+}
 else
 if(isset($_POST['submit'])) {
     //
     // Check validity of inserted data
     //
     if(empty($_POST['user_name'])) {
-        display_registration($_POST, '(Nome del giocatore non specificato)',$galaxy);
+        display_registration($_POST, $locale['error_missing_name'],$galaxy);
         return true;
     }
 
     if(empty($_POST['login_name'])) {
-        display_registration($_POST, '(Login non specificato)',$galaxy);
+        display_registration($_POST, $locale['error_missing_login'],$galaxy);
         return true;
     }
 
     if(strstr($_POST['user_name'], ' ')) {
-        display_registration($_POST, '(Nome del giocatore contenente spazi)',$galaxy);
+        display_registration($_POST, $locale['error_blank_in_name'],$galaxy);
         return true;
     }
 
@@ -401,7 +353,7 @@ if(isset($_POST['submit'])) {
         $val=ord( (substr($_POST['user_name'], $count, 1)) );
         if ($val<48 || ($val>57 && $val<65) || ($val>90 && $val<97) || $val>122)
         {
-            display_registration($_POST, '(Il nome scelto contiene caratteri non consentiti [solo 0-9, a-z, A-Z])',$galaxy);
+            display_registration($_POST, $locale['error_inv_char_in_name'],$galaxy);
             return true;
         }
     }
@@ -410,28 +362,28 @@ if(isset($_POST['submit'])) {
         $val=ord( (substr($_POST['login_name'], $count, 1)) );
         if ($val<48 || ($val>57 && $val<65) || ($val>90 && $val<97) || $val>122)
         {
-            display_registration($_POST, '(Il Login scelto contiene caratteri non consentiti [solo 0-9, a-z, A-Z])',$galaxy);
+            display_registration($_POST, $locale['error_inv_char_in_login'],$galaxy);
             return true;
         }
     }
 
     if($_POST['user_name'] == $_POST['login_name']) {
-        display_registration($_POST, '(Il nome giocatore e il Login coincidono!)',$galaxy);
+        display_registration($_POST, $locale['error_matching_name_login'],$galaxy);
         return true;
     }
 
     if(empty($_POST['user_password'])) {
-        display_registration($_POST, '(Password non specificata)',$galaxy);
+        display_registration($_POST, $locale['error_missing_password'],$galaxy);
         return true;
     }
 
     if($_POST['user_password'] != $_POST['user_password2']) {
-        display_registration($_POST, '(Le password non coincidono)',$galaxy);
+        display_registration($_POST, $locale['error_mismatching_password'],$galaxy);
         return true;
     }
 
     if(empty($_POST['user_email'])) {
-        display_registration($_POST, '(Indirizzo Email non specificato!)',$galaxy);
+        display_registration($_POST, $locale['error_missing_email'],$galaxy);
         return true;
     }
 
@@ -446,7 +398,7 @@ if(isset($_POST['submit'])) {
         die('Database error - Could not verify email');
     }
     if(!empty($user_exists['user_id'])) {
-        display_registration($_POST, '(La Email specificata &egrave; gi&agrave; in uso nella Galassia!)<br>Se ti sei appena cancellato devi attendere almeno 24 ore prima di poterti reiscrivere',$galaxy);
+        display_registration($_POST, $locale['error_existing_email'],$galaxy);
         return true;
     }
 
@@ -462,7 +414,7 @@ if(isset($_POST['submit'])) {
         die('Database error - Could not verify login name');
     }
     if(!empty($user_exists['user_id'])) {
-        display_registration($_POST, '(Il Login &egrave; gi&agrave; in uso nella Galassia!)',$galaxy);
+        display_registration($_POST, $locale['error_existing_login'],$galaxy);
         return true;
     }
 
@@ -479,19 +431,19 @@ if(isset($_POST['submit'])) {
     }
     
     if(!empty($user_exists['user_id'])) {
-        display_registration($_POST, '(Il nome del giocatore &egrave; gi&agrave; in uso nella Galassia!)',$galaxy);
+        display_registration($_POST, $locale['error_existing_name'],$galaxy);
         return true;
     }
 
 
 
     if(!in_array($_POST['user_race'], array(0, 1, 2, 3, 4, 5, 8, 9, 10, 11))) {
-        display_registration($_POST, '(La razza non esiste)',$galaxy);
+        display_registration($_POST, $locale['error_invalid_race'],$galaxy);
         return true;
     }
 
     if(empty($_POST['confirm_agb'])) {
-        display_registration($_POST, '(I termini non sono stati accettati)',$galaxy);
+        display_registration($_POST, $locale['error_unaccepted_tou'],$galaxy);
         return true;
     }
 
@@ -501,24 +453,24 @@ if(isset($_POST['submit'])) {
         $year = abs((int)$_POST['user_birthday_year']);
 
         if($day > 31) {
-            display_registration($_POST, '(La data di nascita non &egrave; valida)',$galaxy);
+            display_registration($_POST, $locale['error_invalid_birthday'],$galaxy);
             return true;
         }
 
         if($month > 12) {
-            display_registration($_POST, '(Il mese di nascita non &egrave; valido)',$galaxy);
+            display_registration($_POST, $locale['error_invalid_birthmonth'],$galaxy);
             return true;
         }
 
         if(strlen($year) != 4) $year = 1900 + $year;
 
         if($year < 1904) {
-            display_registration($_POST, '(Anno di nascita non valido)',$galaxy);
+            display_registration($_POST, $locale['error_invalid_birthyear'],$galaxy);
             return true;
         }
 
         if($year > 1999) {
-            display_registration($_POST, '(Anno di nascita non valido)',$galaxy);
+            display_registration($_POST, $locale['error_invalid_birthyear'],$galaxy);
             return true;
         }
 
@@ -529,7 +481,7 @@ if(isset($_POST['submit'])) {
     }
 
     if(!in_array($_POST['user_gender'], array('-', 'm', 'f'))) {
-        display_registration($_POST, '(What <b>are</b> you then?)',$galaxy);
+        display_registration($_POST, $locale['error_invalid_gender'],$galaxy);
         return true;
     }
 
@@ -604,9 +556,12 @@ if(isset($_POST['submit'])) {
 
     $activation_key = md5( pow($user_id,2) );
     $activation_link = 'http://www.stfc.it/index.php?a=activate&galaxy='.$galaxy.'&user_id='.$user_id.'&key='.$activation_key;
-    define('EXT_NL', "\r\n");
-    $mail_message = 'Congratulazioni '.$_POST['user_name'].'!'."\n".'La tua registrazione a Star Trek: Frontline Combat II (Galassia '.$galaxyname.') ha avuto successo!'."\n".'Per attivare il tuo account devi cliccare sul link seguente:'."\n".$activation_link."\n\n".'Se non hai eseguito la registrazione, ignora questa email.'."\n".'Dopo 48 ore, il tuo indirizzo email verrà automaticamente rimosso dal nostro database.'."\n\n".'Lunga vita e prosperità,'."\n".'Il team STFC.'."\n\n".'Credits: http://www.stfc.it/index.php?a=imprint';
-    send_mail("STFC2 Mailer","admin@stfc.it",$_POST['user_name'],$_REQUEST['user_email'],"Registrazione Star Trek: Frontline Combat",$mail_message);
+    $mail_message  = $locale['mail_message_congrats'].' '.$_POST['user_name'].'!'.NL;
+    $mail_message .= $locale['mail_message_reg1a'].' '.$galaxyname.' '.$locale['mail_message_line1b'].NL;
+    $mail_message .= $locale['mail_message_reg2'].NL.$activation_link."\n\n".$locale['mail_message_line3'].NL;
+    $mail_message .= $locale['mail_message_reg4'].NL.NL.$locale['mail_message_sig_line1'].NL;
+    $mail_message .= $locale['mail_message_sig_line2'].NL.NL.'Credits: http://www.stfc.it/index.php?a=imprint';
+    send_mail("STFC2 Mailer","admin@stfc.it",$_POST['user_name'],$_REQUEST['user_email'],$locale['mail_subject_reg'],$mail_message);
 
     // Update NewRegister
 
@@ -622,7 +577,7 @@ if(isset($_POST['submit'])) {
 
 }
 
-display_registration(NULL,'(Ci sono '.$playercount['num'].' su '.$config['max_player'].' posti occupati)',$galaxy);
+display_registration(NULL,'('.$locale['there_are'].' '.$playercount['num'].' '.$locale['on'].' '.$config['max_player'].' '.$locale['occupied_places'].')',$galaxy);
 
 }
 

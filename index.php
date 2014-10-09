@@ -20,8 +20,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-include('config.inc.php');
-
 define('GENERAL', 1);
 
 define('DATABASE_ERROR', 2);
@@ -40,6 +38,8 @@ define ("GALAXY1_BG", 'gfx/ngc7742bg.jpg');
 define ("GALAXY2_BG", 'gfx/m64bg.jpg');
 define ("GALAXY3_BG", 'gfx/m64bg.jpg');
 
+include('config.inc.php');
+include('locale.php');
 
 $db_name = '';
 $db_user = '';
@@ -464,7 +464,7 @@ class sql {
     }
 }
 
-function stgc_mail($myname, $myemail, $contactname, $contactemail, $subject, $message) {
+function send_mail($myname, $myemail, $contactname, $contactemail, $subject, $message) {
     $headers = 'MIME-Version: 1.0'.NL.
                'Content-type: text/plain; charset=iso-8859-1'.NL.
                'X-Priority: 1'.NL.
@@ -522,26 +522,26 @@ else
   <meta name="date" content="2008-11-14">
   <meta name="page-type" content="game">
 <style type="text/css">
-<!-- A:link {FONT-SIZE: 11px; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"; TEXT-DECORATION: none}
-A:visited {FONT-SIZE: 11px; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"; TEXT-DECORATION: none}
-A:hover {FONT-SIZE: 11px; COLOR: #ffd700; FONT-FAMILY: Arial, "Bitstream Vera Sans"; TEXT-DECORATION: none}
-A:active {FONT-SIZE: 11px; COLOR: #ffd700; FONT-FAMILY: Arial, "Bitstream Vera Sans"; TEXT-DECORATION: none}
+<!-- A:link {FONT-SIZE: 12px; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"; TEXT-DECORATION: none}
+A:visited {FONT-SIZE: 12px; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"; TEXT-DECORATION: none}
+A:hover {FONT-SIZE: 12px; COLOR: #ffd700; FONT-FAMILY: Arial, "Bitstream Vera Sans"; TEXT-DECORATION: none}
+A:active {FONT-SIZE: 12px; COLOR: #ffd700; FONT-FAMILY: Arial, "Bitstream Vera Sans"; TEXT-DECORATION: none}
 A.nav:link {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:visited {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:hover {FONT-WEIGHT: bold; FONT-SIZE: 10px}
 A.nav:active {FONT-WEIGHT: bold; FONT-SIZE: 10px}
-TD {FONT-SIZE: 11px; FONT-FAMILY: Arial, "Bitstream Vera Sans"; COLOR: #c0c0c0;  bgcolor=#cccccc}
-INPUT {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
-TEXTAREA {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
-SELECT {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
-SPAN.caption {FONT-WEIGHT: bold; FONT-SIZE: 19pt; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"}
+TD {FONT-SIZE: 12px; FONT-FAMILY: Arial, "Bitstream Vera Sans"; COLOR: #c0c0c0;  bgcolor=#cccccc}
+INPUT {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
+TEXTAREA {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
+SELECT {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
+div.caption {FONT-WEIGHT: bold; FONT-SIZE: 19pt; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"; text-align: center; padding-bottom: 15px;}
 SPAN.sub_caption {FONT-WEIGHT: bold; FONT-SIZE: 15pt; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"}
 SPAN.sub_caption2 {FONT-WEIGHT: bold; FONT-SIZE: 13pt; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"}
 BODY {MARGIN: 0px; SCROLLBAR-ARROW-COLOR: #ccccff; SCROLLBAR-BASE-COLOR: #131c46; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; }
 TEXTAREA {PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; SCROLLBAR-ARROW-COLOR: #ccccff; PADDING-TOP: 0px; SCROLLBAR-BASE-COLOR: #131c46;}
 
 input.button, input.button_nosize, input.field, input.field_nosize, textarea, select
-                          { color: #959595; font-family: Arial, "Bitstream Vera Sans", Helvetica, sans-serif; font-size: 11px; background-color: #000000; border: 1px solid #959595; }
+                          { color: #959595; font-family: Arial, "Bitstream Vera Sans", Helvetica, sans-serif; font-size: 12px; background-color: #000000; border: 1px solid #959595; }
 body, textarea {
       scrollbar-base-color:#000000;
       scrollbar-3dlight-color:#000000;
@@ -553,7 +553,7 @@ body, textarea {
       scrollbar-track-color:#2C2C2C;
   }
 
-table.border_grey         { border: 1px solid #000000; }
+table.border_grey         { border: 1px solid #000000; background-image:url('gfx/template_bg.jpg'); background-position:left; background-repeat:yes; }
 table.border_grey2        { border-top: 1px solid 000000; border-right: 1px solid 000000; border-bottom: 1px solid #000000; }
 table.border_blue         { border: 1px solid #000000; }
 
