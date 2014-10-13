@@ -582,38 +582,46 @@ function Show_Main()
 
         if (areRequirementsMet($t))
         {
-            // Calculate required resources for next building level
-            $met = GetBuildingPrice($t,0);
-            $min = GetBuildingPrice($t,1);
-            $lat = GetBuildingPrice($t,2);
-            $fut = GetFuturePts($future_building,$t);
-
-            // Calculate points gained for this building
-            $points = round(pow($game->planet['building_'.($t+1)]+1,1.5)-pow($game->planet['building_'.($t+1)],1.5));
-
-            if ($game->planet['resource_1']>=$met &&
-                $game->planet['resource_2']>=$min &&
-                $game->planet['resource_3']>=$lat &&
-                $game->planet['planet_available_points']>=$fut)
-            {
-                $build_text='<a href="'.parse_link_ex('a=building&a2=start_build&id='.$t,LINK_CLICKID).'"><span style="color: green">'.constant($game->sprache("TEXT25")).' (~'.$points.' '.constant($game->sprache("TEXT26")).')</span></a>';
-                if ($game->planet['building_'.($t+1)]>0) $build_text='<a href="'.parse_link_ex('a=building&a2=start_build&id='.$t,LINK_CLICKID).'"><span style="color: green">'.constant($game->sprache("TEXT27")).' '.($game->planet['building_'.($t+1)]+1).' (~'.$points.' '.constant($game->sprache("TEXT26")).')</span></a>';
-            }
-            else
-            {
-                $build_text='<span style="color: red">'.constant($game->sprache("TEXT25")).' (~'.$points.' '.constant($game->sprache("TEXT26")).')</span>';
-                if ($game->planet['building_'.($t+1)]>0) $build_text='<span style="color: red">'.constant($game->sprache("TEXT27")).' '.($game->planet['building_'.($t+1)]+1).' (~'.$points.' '.constant($game->sprache("TEXT26")).')</span>';
-            }
-
             // Check if building has reached maximum level
-            if ($game->planet['building_'.($t+1)]>=$MAX_BUILDING_LVL[$capital][$t])
+            if ($game->planet['building_'.($t+1)]>=$MAX_BUILDING_LVL[$capital][$t]) {
+                $met = $min = $lat = $build_time = 0;
                 $build_text=constant($game->sprache("TEXT28"));
+            }
+            // Otherwise check if the planet has all the need requirements
+            // to build it
+            else {
+                // Calculate required resources for next building level
+                $met = GetBuildingPrice($t,0);
+                $min = GetBuildingPrice($t,1);
+                $lat = GetBuildingPrice($t,2);
+                $fut = GetFuturePts($future_building,$t);
+
+                // Calculate points gained for this building
+                $points = round(pow($game->planet['building_'.($t+1)]+1,1.5)-pow($game->planet['building_'.($t+1)],1.5));
+
+                if ($game->planet['resource_1']>=$met &&
+                    $game->planet['resource_2']>=$min &&
+                    $game->planet['resource_3']>=$lat &&
+                    $game->planet['planet_available_points']>=$fut)
+                {
+                    $build_text='<a href="'.parse_link_ex('a=building&a2=start_build&id='.$t,LINK_CLICKID).'"><span style="color: green">'.constant($game->sprache("TEXT25")).' (~'.$points.' '.constant($game->sprache("TEXT26")).')</span></a>';
+                    if ($game->planet['building_'.($t+1)]>0) $build_text='<a href="'.parse_link_ex('a=building&a2=start_build&id='.$t,LINK_CLICKID).'"><span style="color: green">'.constant($game->sprache("TEXT27")).' '.($game->planet['building_'.($t+1)]+1).' (~'.$points.' '.constant($game->sprache("TEXT26")).')</span></a>';
+                }
+                else
+                {
+                    $build_text='<span style="color: red">'.constant($game->sprache("TEXT25")).' (~'.$points.' '.constant($game->sprache("TEXT26")).')</span>';
+                    if ($game->planet['building_'.($t+1)]>0) $build_text='<span style="color: red">'.constant($game->sprache("TEXT27")).' '.($game->planet['building_'.($t+1)]+1).' (~'.$points.' '.constant($game->sprache("TEXT26")).')</span>';
+                }
+
+                // Calculate required construction time
+                $build_time = GetBuildingTime($t);
+            }
 
             $game->out('
 <tr>
     <td><b><a href="javascript:void(0);" onmouseover="return overlib(\''.$BUILDING_DESCRIPTION[$game->player['user_race']][$t].'\', CAPTION, \''.$BUILDING_NAME[$game->player['user_race']][$t].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$BUILDING_NAME[$game->player['user_race']][$t].'</b></td>
     <td><img src="'.$game->GFX_PATH.'menu_metal_small.gif"> '.$met.'&nbsp;&nbsp; <img src="'.$game->GFX_PATH.'menu_mineral_small.gif">'.$min.'&nbsp;&nbsp; <img src="'.$game->GFX_PATH.'menu_latinum_small.gif"> '.$lat.'&nbsp; </td>
-    <td>'.GetBuildingTime($t).'</td>
+    <td>'.$build_time.'</td>
     <td>'.$build_text.'</td>
 </tr>');
         }
