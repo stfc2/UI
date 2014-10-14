@@ -671,7 +671,7 @@ $langs = array(
         'it',
 );
 
-$user_lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+$user_lang = isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) : 'en';
 
 // Check if user language is currently supported otherwise fallback to english
 if (!in_array($user_lang, $langs)) {
