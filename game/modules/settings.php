@@ -1204,8 +1204,8 @@ switch($module) {
                 $_POST['user_gfxpath'] = FIXED_GFX_PATH;
             }
 
-            if(empty($_POST['user_tutorial'])) $_POST['user_tutorial']==0;
-            if($_POST['user_tutorial']<0 && $_POST['user_tutorial']>1) $_POST['user_tutorial']==0;
+            if(empty($_POST['user_tutorial'])) $_POST['user_tutorial']=0;
+            if($_POST['user_tutorial']<0 && $_POST['user_tutorial']>1) $_POST['user_tutorial']=0;
 
             if(!empty($_POST['user_skinpath'])) {
                 $_POST['user_skinpath'] = str_replace('\\', '/', stripslashes($_POST['user_skinpath']));
