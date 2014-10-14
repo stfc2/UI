@@ -671,8 +671,14 @@ $langs = array(
         'it',
 );
 
+$user_lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 
-$locale = $loc_strings[substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2)];
+// Check if user language is currently supported otherwise fallback to english
+if (!in_array($user_lang, $langs)) {
+    $user_lang = 'en';
+}
+
+$locale = $loc_strings[$user_lang];
 
 
 ?>
