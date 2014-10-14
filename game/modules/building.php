@@ -62,25 +62,31 @@ function GetBuildingPrice($building,$resource)
     return round($price,0);
 }
 
-function GetFuturePts($q,$t)
+function GetFuturePts($t)
 {
-	/*
-	This function sum the structure points used on the planet and by the
-	construction of the building, so that if it returns	a value of structure
-	point higher of the amount available, the construction can not be started
-	*/
-	global $game;
+    /*
+     This function sum the structure points used on the planet and by the
+     construction of the building, so that if it returns a value of structure
+     point higher of the amount available, the construction can not be started
+     */
+    global $game, $NUM_BUILDING;
+    $_planet_points = 10;
 
-	$_points = round(pow($game->planet['building_'.($t+1)]+1,1.5)-pow($game->planet['building_'.($t+1)],1.5));
+    // Sum all points of the planet, $game->planet contains values
+    // actualized with the queued buildings
+    for($b = 1; $b <= $NUM_BUILDING; $b++)
+        $_planet_points += pow($game->planet['building_'.$b],1.5);
+    for($r = 1; $r <= 5; $r++)
+        $_planet_points += pow($game->planet['research_'.$r],1.5);
+    $_planet_points = round($_planet_points);
 
-	if ($q>0) {
-		$_points_q = round(pow($game->planet['building_'.($q)]+1,1.5)-pow($game->planet['building_'.($q)],1.5));
-	}
+    // Calculate points of the required building
+    $_points = round(pow($game->planet['building_'.($t+1)]+1,1.5)-pow($game->planet['building_'.($t+1)],1.5));
 
-	$_total = $_points + $_points_q + $game->planet['planet_points'];
+    // Sum up all the points
+    $_total = $_points + $_planet_points;
 
-	return($_total); 
-
+    return($_total);
 }
 
 function GetBuildingTime($building)
@@ -506,9 +512,6 @@ function Show_Main()
     // Clickids:
     $game->register_click_id(11);
 
-    // Future structure points calculation
-    $future_building = 0;
-
     // Retrieve construction queue for the planet ordered by time
     $sql = 'SELECT * FROM scheduler_instbuild
             WHERE planet_id="'.$game->planet['planet_id'].'"
@@ -537,9 +540,6 @@ function Show_Main()
             $t++;
 
             $game->set_autorefresh(($NEXT_TICK+TICK_DURATION*60*($scheduler['build_finish']-$ACTUAL_TICK))+TICK_DURATION);
-
-            // Future structure points calculation
-            $future_building += $scheduler['installation_type']+1;
         }
     }
 
@@ -594,7 +594,7 @@ function Show_Main()
                 $met = GetBuildingPrice($t,0);
                 $min = GetBuildingPrice($t,1);
                 $lat = GetBuildingPrice($t,2);
-                $fut = GetFuturePts($future_building,$t);
+                $fut = GetFuturePts($t);
 
                 // Calculate points gained for this building
                 $points = round(pow($game->planet['building_'.($t+1)]+1,1.5)-pow($game->planet['building_'.($t+1)],1.5));
