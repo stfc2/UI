@@ -44,13 +44,13 @@ switch($galaxy)
 }
 
 $main_html='<div class="caption">'.$locale['registration'].'</div>
-<table align="center" border="0" cellpadding="2" cellspacing="2" width="700" height="350" class="border_grey">
+<table align="center" border="0" cellpadding="2" cellspacing="2" width="700" class="border_grey">
   <tr>
     <td width="100%" align="center">
-    <span class="sub_caption">'.$locale['multi_account_info'].'</span><br><br>
       <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" style=" background-image:url(\''.$galaxyimg.'\'); background-position:left; background-repeat:no-repeat;">
         <tr>
           <td width=70% valign=top align="justify">
+          <span class="sub_caption">'.$locale['multi_account_info'].'</span><br><br>
           '.$locale['multi_account_desc'].'
           </td>
         </tr>
@@ -58,7 +58,7 @@ $main_html='<div class="caption">'.$locale['registration'].'</div>
     </td>
   </tr>
 </table>
-</center>
+
 
 
 ';
