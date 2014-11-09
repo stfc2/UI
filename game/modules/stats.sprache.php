@@ -439,13 +439,13 @@ define ("ENG_TEXT101", 'Mining Planets');
 
 define ("ENG_TEXT102", 'Relation Value');
 
-define ("ENG_TEXT103", 'Stars Explored:');
+define ("ENG_TEXT103", 'Stars explored:');
 
-define ("ENG_TEXT104", 'First Contacts:');
+define ("ENG_TEXT104", 'First contacts:');
 
-define ("ENG_TEXT105", 'Settlers Made:');
+define ("ENG_TEXT105", 'Settlers made:');
 
-define ("ENG_TEXT106", 'Settlers Befriended:');
+define ("ENG_TEXT106", 'Settlers befriended:');
 
 
 //Italian
