@@ -370,10 +370,11 @@ if ($user['user_honor']>=$rank_honor[8]) $rank_nr=9;
 if ($user['user_honor']>=$rank_honor[9]) $rank_nr=10;
 
 $game->out('
-<table border=0 cellpadding=2 cellspacing=2 class ="style_outer"><tr><td width=450>
-<center><span class="caption">'.constant($game->sprache("TEXT35")).' '.$user['user_name'].'</span><br><span class="sub_caption2">'.( ($user['user_attack_protection']>=$game->config['tick_id']) ? '<span style="color: red">'.constant($game->sprache("TEXT36")).'</span>' : '' ).'</span></center>
+<table border=0 cellpadding=2 cellspacing=2 class ="style_outer" width="85%">
+<tr><td align="center">
+<span class="caption">'.constant($game->sprache("TEXT35")).' '.$user['user_name'].'</span><br><span class="sub_caption2">'.( ($user['user_attack_protection']>=$game->config['tick_id']) ? '<span style="color: red">'.constant($game->sprache("TEXT36")).'</span>' : '' ).'</span>
 </td></tr><tr><td>
-<table border=0 cellpadding=1 cellspacing=1 width=450 class ="style_inner"><tr>
+<table border=0 cellpadding=1 cellspacing=1 width="100%" class ="style_inner"><tr>
 <td colspan=2><img src="'.$game->GFX_PATH.'rank_'.$rank_nr.'.jpg"></td></tr><tr>');
 
 //avatar:
@@ -440,40 +441,40 @@ if (isset($user['user_icq']) && !empty($user['user_icq'])) {$icq='<tr>
 </tr>';}
 
 $game->out('
-<table border=0 cellpadding=0 cellspacing=0 class="style_inner">
+<table border=0 cellpadding=2 cellspacing=2 class="style_inner" width="95%">
 <tr>
-<td width=70><span class="text_large">'.constant($game->sprache("TEXT42")).'</td>
-<td width=150><span class="text_large">'.$rasse.'</td>
+<td width="70%"><span class="text_large">'.constant($game->sprache("TEXT42")).'</td>
+<td width="30%"><span class="text_large">'.$rasse.'</td>
 </tr><tr>
-<td width=70><span class="text_large">'.constant($game->sprache("TEXT8")).'</b></span></td>
-<td width=150><span class="text_large"><a href="'.parse_link('a=stats&a2=viewalliance&id='.$alliance['alliance_id'].'').'"><span class="text_large">'.$alliance['alliance_tag'].' ('.$alliance['alliance_name'].')</a></span></td>
+<td width="70%"><span class="text_large">'.constant($game->sprache("TEXT8")).'</b></span></td>
+<td width="30%"><span class="text_large"><a href="'.parse_link('a=stats&a2=viewalliance&id='.$alliance['alliance_id'].'').'"><span class="text_large">'.$alliance['alliance_tag'].' ('.$alliance['alliance_name'].')</a></span></td>
 </tr><tr>
-<td width=70><span class="text_large">'.constant($game->sprache("TEXT11")).'</b></span></td>
-<td width=150><span class="text_large">'.$user['user_points'].'</td>
+<td width="70%"><span class="text_large">'.constant($game->sprache("TEXT11")).'</b></span></td>
+<td width="30%"><span class="text_large">'.$user['user_points'].'</td>
 </tr><tr>
-<td width=70><span class="text_large">'.constant($game->sprache("TEXT19")).'</b></span></td>
-<td width=150><span class="text_large">'.$planets['num'].'</td>
+<td width="70%"><span class="text_large">'.constant($game->sprache("TEXT19")).'</b></span></td>
+<td width="30%"><span class="text_large">'.$planets['num'].'</td>
 </tr><tr>
-<td width=70><span class="text_large">'.constant($game->sprache("TEXT43")).'</b></span></td>
-<td width=150><span class="text_large">'.$user['user_honor'].'</td>
+<td width="70%"><span class="text_large">'.constant($game->sprache("TEXT43")).'</b></span></td>
+<td width="30%"><span class="text_large">'.$user['user_honor'].'</td>
 </tr><tr>
-<td width=70><span class="text_large">'.constant($game->sprache("TEXT88")).'</b></span></td>
-<td width=150><span class="text_large">'.$user['num_auctions'].'</td>
+<td width="70%"><span class="text_large">'.constant($game->sprache("TEXT88")).'</b></span></td>
+<td width="30%"><span class="text_large">'.$user['num_auctions'].'</td>
 </tr><tr>
-<td width=70><span class="text_large">'.constant($game->sprache("TEXT103")).'</b></span></td>
-<td width=150><span class="text_large">'.$user['user_charted'].' / '.$rawstar['rawnum'].'</td>
+<td width="70%"><span class="text_large">'.constant($game->sprache("TEXT103")).'</b></span></td>
+<td width="30%"><span class="text_large">'.$user['user_charted'].' / '.$rawstar['rawnum'].'</td>
 </tr><tr>
-<td width=70><span class="text_large">'.constant($game->sprache("TEXT104")).'</b></span></td>
-<td width=150><span class="text_large">'.$user['user_first_contact'].'</td>
+<td width="70%"><span class="text_large">'.constant($game->sprache("TEXT104")).'</b></span></td>
+<td width="30%"><span class="text_large">'.$user['user_first_contact'].'</td>
 </tr><tr>
-<td width=70><span class="text_large">'.constant($game->sprache("TEXT105")).'</b></span></td>
-<td width=150><span class="text_large">'.$user['user_settler_made'].'</td>
+<td width="70%"><span class="text_large">'.constant($game->sprache("TEXT105")).'</b></span></td>
+<td width="30%"><span class="text_large">'.$user['user_settler_made'].'</td>
 </tr><tr>
-<td width=70><span class="text_large">'.constant($game->sprache("TEXT106")).'</b></span></td>
-<td width=150><span class="text_large">'.$user['user_settler_best'].'</td>
+<td width="70%"><span class="text_large">'.constant($game->sprache("TEXT106")).'</b></span></td>
+<td width="30%"><span class="text_large">'.$user['user_settler_best'].'</td>
 </tr><tr>
-<td width=70><span class="text_large">'.constant($game->sprache("TEXT44")).'</b></span></td>
-<td width=150><span class="text_large">'.$status.'</td>
+<td width="70%"><span class="text_large">'.constant($game->sprache("TEXT44")).'</b></span></td>
+<td width="30%"><span class="text_large">'.$status.'</td>
 </tr><span class="text_large">'.$icq.'
 </table>
 
@@ -492,17 +493,17 @@ $game->out('</center></span></td>
 <tr><td align="center"><b><a onclick="Popup(this.href);return false" href="modules/auctions.popup.php?user='.$user['user_id'].'">'.constant($game->sprache("TEXT89")).'</a></b></td></tr><tr><td>&nbsp;</td></tr>
 
 </table><br>
-<table border=0 cellpadding=2 cellspacing=2 width=450 class="style_outer">
+<table border=0 cellpadding=2 cellspacing=2 width="85%" class="style_outer">
   <tr>
     <td><span class="sub_caption">'.constant($game->sprache("TEXT47")).'</span></td>
   </tr>
   <tr>
     <td>
-      <table border=0 cellpadding=2 cellspacing=2 width=450 class="style_inner">
+      <table border=0 cellpadding=2 cellspacing=2 width="100%" class="style_inner">
         <tr>
-          <td width=150 align="center"><b>'.constant($game->sprache("TEXT48")).'</b></td>
-          <td width=150 align="center"><b>'.constant($game->sprache("TEXT49")).'</b></td>
-          <td width=150 align="center"><b>'.constant($game->sprache("TEXT50")).'</b></td>
+          <td width="33%" align="center"><b>'.constant($game->sprache("TEXT48")).'</b></td>
+          <td width="33%" align="center"><b>'.constant($game->sprache("TEXT49")).'</b></td>
+          <td width="33%" align="center"><b>'.constant($game->sprache("TEXT50")).'</b></td>
         </tr>
 
 ');
@@ -531,13 +532,13 @@ $game->out('
   </tr>
 </table><br>
 
-<table border=0 cellpadding=2 cellspacing=2 width=450 class="style_outer">
+<table border=0 cellpadding=2 cellspacing=2 width="85%" class="style_outer">
   <tr>
     <td><span class="sub_caption">'.constant($game->sprache("TEXT52")).'</span></td>
   </tr>
   <tr>
     <td>
-      <table border=0 cellpadding=2 cellspacing=2 width=450 class="style_inner">
+      <table border=0 cellpadding=2 cellspacing=2 width="100%" class="style_inner">
         <tr>
           <td align="center">'.$_link_image.'</td>
         </tr>
@@ -550,7 +551,7 @@ $game->out('
 
 
 
-<table border=0 cellpadding=2 cellspacing=2 width=450 class="style_outer">
+<table border=0 cellpadding=2 cellspacing=2 width="85%" class="style_outer">
   <tr>
     <td><span class="sub_caption">'.constant($game->sprache("TEXT53")).'</span></td>
   </tr>');
@@ -559,7 +560,7 @@ $game->out('
     $game->out('
   <tr>
     <td>
-      <table border=0 cellpadding=2 cellspacing=2 width=450 class="style_inner">
+      <table border=0 cellpadding=2 cellspacing=2 width="100%" class="style_inner">
         <tr>
           <td width=80>
             <b>'.constant($game->sprache("TEXT69")).'</td><td width=200><b>'.constant($game->sprache("TEXT18")).'</td><td width=50><b>'.constant($game->sprache("TEXT11")).'</td><td width=50><b>'.constant($game->sprache("TEXT55")).'
@@ -604,13 +605,13 @@ $game->out('
 </td></tr></table>
 
 <br>
-<table border=0 cellpadding=2 cellspacing=2 width=450 class = "style_outer">
+<table border=0 cellpadding=2 cellspacing=2 width="85%" class="style_outer">
   <tr>
     <td><span class="sub_caption">'.constant($game->sprache("TEXT56")).'</span></td>
   </tr>
   <tr>
     <td>
-      <table border=0 cellpadding=2 cellspacing=2 width=450 valign=left class="style_inner">
+      <table border=0 cellpadding=2 cellspacing=2 width="100%" class="style_inner">
         <tr>
           <td width=120>
             <b>'.constant($game->sprache("TEXT18")).'</b></td><td width=70><b>'.constant($game->sprache("TEXT11")).'</b></td><td width=70><b>'.constant($game->sprache("TEXT19")).'</b></td><td width=70><b>'.constant($game->sprache("TEXT43")).'</b></td><td width=80><b>'.constant($game->sprache("TEXT57")).'</b>
@@ -653,13 +654,13 @@ $user['user_signature'] = str_replace("javascript", "", $user['user_signature'])
 
 
 $game->out('<br>
-<table border=0 cellpadding=2 cellspacing=2 width=450 class="style_outer">
+<table border=0 cellpadding=2 cellspacing=2 width="85%" class="style_outer">
   <tr>
     <td><span class="sub_caption">'.constant($game->sprache("TEXT58")).'</span></td>
   </tr>
   <tr>
     <td>
-      <table border=0 cellpadding=2 cellspacing=2 width=450 class = "style_inner">
+      <table border=0 cellpadding=2 cellspacing=2 width="100% class="style_inner">
         <tr>
           <td width=350><br>'.stripslashes(nl2br($user['user_signature'])).'</td>
         </tr>
@@ -669,13 +670,13 @@ $game->out('<br>
 </table>
 
 <br>
-<table border=0 cellpadding=2 cellspacing=2 width=450 class="style_outer">
+<table border=0 cellpadding=2 cellspacing=2 width="85%" class="style_outer">
   <tr>
     <td><span class="sub_caption">'.constant($game->sprache("TEXT59")).'</span></td>
   </tr>
   <tr>
     <td align="center">
-      <table border=0 cellspacing=2 cellpadding=2 width=450 class="style_inner">
+      <table border=0 cellspacing=2 cellpadding=2 width="100%" class="style_inner">
         <tr height=15>
           <td width=150 align="center">
             <b>'.$user['user_gallery_name_1'].'</b>
