@@ -25,6 +25,7 @@ class sql {
 
     var $login = array(
         'server' => 'localhost',
+        'port' => '3306',
         'database' => 'mysql',
         'user' => 'root',
         'password' => '',
@@ -47,9 +48,12 @@ class sql {
 
     var $d_query = array();
 
-    function sql($server, $database, $user, $password = '') {
+    function sql($connection, $database, $user, $password = '') {
+    	$server = strtok($connection, ':');
+    	$port = strtok(':');
         $this->login = array(
             'server' => $server,
+            'port' => $port,
             'database' => $database,
             'user' => $user,
             'password' => $password
@@ -57,8 +61,8 @@ class sql {
     }
 
     function raise_error($message = false, $number = false, $sql = '') {
-        if($message === false) $message = mysql_error($this->link_id);
-        if($number === false) $number = mysql_errno($this->link_id);
+        if($message === false) $message = $this->error();
+        if($number === false) $number = $this->errno();
 
         $this->error = array(
             'message' => $message,
@@ -70,15 +74,9 @@ class sql {
     }
 
     function connect() {
-        if(!is_resource($this->link_id)) {
-            if(!$this->link_id = @mysql_connect($this->login['server'], $this->login['user'], $this->login['password'])) {
-                message(GENERAL, 'Could not connect to mysql server');
-            }
-
-            if(!@mysql_select_db($this->login['database'], $this->link_id)) {
-                $this->raise_error(false, false, 'USE '.$this->login['database']);
-
-                message(DATABASE_ERROR, 'Could not select database');
+        if(!is_object($this->link_id)) {
+            if(!$this->link_id = @mysqli_connect($this->login['server'], $this->login['user'], $this->login['password'], $this->login['database'], $this->login['port'])) {
+                message(GENERAL, 'Could not connect to mysql server and select database');
             }
         }
 
@@ -86,8 +84,8 @@ class sql {
     }
 
     function close() {
-        if(is_resource($this->link_id)) {
-            if(!@mysql_close($this->link_id)) {
+        if(is_object($this->link_id)) {
+            if(!@mysqli_close($this->link_id)) {
                 return $this->raise_error();
             }
         }
@@ -107,7 +105,7 @@ class sql {
             $table_str[] = $tables[$i].' WRITE';
         }
         $sql = 'LOCK TABLES '.implode(',', $table_str);
-        if(!mysql_query($sql, $this->link_id)) {
+        if(!mysqli_query( $this->link_id, $sql)) {
             $this->raise_error(false, false, $sql);
             message(DATABASE_ERROR, 'Could not lock tables');
         }
@@ -115,7 +113,7 @@ class sql {
     }
 
     function unlock() {
-        if(!mysql_query('UNLOCK TABLES', $this->link_id)) {
+        if(!mysqli_query( $this->link_id, 'UNLOCK TABLES')) {
             $this->raise_error(false, false, 'UNLOCK TABLES');
             message(DATABASE_ERROR, 'Could not unlock tables');
         }
@@ -125,17 +123,17 @@ class sql {
     function query_lowlevel($sql) {
         if(!$this->connect()) return false;
 
-        return @mysql_query($sql, $this->link_id);
+        return @mysqli_query( $this->link_id, $sql);
     }
 
     function query($query, $unbuffered = false) {
         if(!$this->connect()) return false;
 
-        $query_function = ($unbuffered) ? 'mysql_unbuffered_query' : 'mysql_query';
+        $query_mode = ($unbuffered) ? MYSQLI_USE_RESULT : MYSQLI_STORE_RESULT;
 
         $start_time = time() + microtime();
 
-        if(!$this->query_id = @$query_function($query, $this->link_id)) {
+        if(!$this->query_id = @mysqli_query($this->link_id, $query, $query_mode)) {
             return $this->raise_error(false, false, $query);
         }
 
@@ -156,11 +154,11 @@ class sql {
 
 
 
-    function fetchrow($query_id = false, $result_type = MYSQL_ASSOC) {
+    function fetchrow($query_id = false, $result_type = MYSQLI_ASSOC) {
         if($query_id === false) $query_id = $this->query_id;
 
-        if(!$_row = @mysql_fetch_array($query_id, $result_type)) {
-            if(($_error = mysql_error()) !== '') {
+        if(!$_row = @mysqli_fetch_array($query_id, $result_type)) {
+            if(($_error = mysqli_error($this->link_id)) !== '') {
                 return $this->raise_error($_error);
             }
             else {
@@ -171,17 +169,17 @@ class sql {
         return $_row;
     }
 
-    function fetchrowset($query_id = false, $result_type = MYSQL_ASSOC) {
+    function fetchrowset($query_id = false, $result_type = MYSQLI_ASSOC) {
         if($query_id === false) $query_id = $this->query_id;
 
         $_row = $_rowset = array();
 
-        while($_row = @mysql_fetch_array($query_id, $result_type)) {
+        while($_row = @mysqli_fetch_array($query_id, $result_type)) {
             $_rowset[] = $_row;
         }
 
         if(!$_rowset) {
-            if(($_error = mysql_error()) !== '') {
+            if(($_error = mysqli_error($this->link_id)) !== '') {
                 return $this->raise_error();
             }
             else {
@@ -192,7 +190,7 @@ class sql {
         return $_rowset;
     }
 
-    function queryrow($query, $result_type = MYSQL_ASSOC) {
+    function queryrow($query, $result_type = MYSQLI_ASSOC) {
         if(!$_qid = $this->query($query)) {
             return false;
         }
@@ -200,7 +198,7 @@ class sql {
         return $this->fetchrow($_qid, $result_type);
     }
 
-    function queryrowset($query, $result_type = MYSQL_ASSOC) {
+    function queryrowset($query, $result_type = MYSQLI_ASSOC) {
         if(!$_qid = $this->query($query, true)) {
             return false;
         }
@@ -211,7 +209,7 @@ class sql {
     function free_result($query_id = false) {
         if($query_id === false) $query_id = $this->query_id;
 
-        if(!@mysql_free_result($query_id)) {
+        if(!@((mysqli_free_result($query_id) || (is_object($query_id) && (get_class($query_id) == "mysqli_result"))) ? true : false)) {
             return $this->raise_error();
         }
 
@@ -221,7 +219,7 @@ class sql {
     function num_rows($query_id = false) {
         if($query_id === false) $query_id = $this->query_id;
 
-        $_num = @mysql_num_rows($query_id);
+        $_num = @mysqli_num_rows($query_id);
 
         if($_num === false) {
             return $this->raise_error();
@@ -231,7 +229,7 @@ class sql {
     }
 
     function affected_rows() {
-        $_num = @mysql_affected_rows($this->link_id);
+        $_num = @mysqli_affected_rows($this->link_id);
 
         if($_num === false) {
             return $this->raise_error();
@@ -241,13 +239,21 @@ class sql {
     }
 
     function insert_id() {
-        $_id = @mysql_insert_id($this->link_id);
+        $_id = @mysqli_insert_id($this->link_id);
 
-        if($_id === false) {
+        if($_id == 0) {
             return $this->raise_error();
         }
 
         return $_id;
+    }
+
+    function error() {
+        return (is_object($this->link_id) ? mysqli_error($this->link_id) : mysqli_connect_error());
+    }
+
+    function errno() {
+        return (is_object($this->link_id) ? mysqli_errno($this->link_id) : mysqli_connect_errno());
     }
 
     function debug_info() {
@@ -292,9 +298,9 @@ class sql {
 
 
 
-            $q_explain = mysql_query('EXPLAIN '.$sql, $this->link_id);
+            $q_explain = mysqli_query( $this->link_id, 'EXPLAIN '.$sql);
 
-            $data['explain'] = mysql_fetch_array($q_explain, MYSQL_ASSOC);
+            $data['explain'] = mysqli_fetch_array($q_explain,  MYSQLI_ASSOC);
 
 
 
