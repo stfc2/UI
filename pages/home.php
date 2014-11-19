@@ -107,13 +107,6 @@ $main_html .= '
           '.$locale['welcome'].'</span>
           </td>
         </tr>
-        <tr valign="bottom" align="right">
-         <td><br><br><br>
-           <!-- a href="http://www.sititrek.it/" target="new"><img src="./gfx/fist100x35.jpg" alt="'.$locale['fist_membership'].'" border="0"></a> -->
-           <!-- a href="http://www.sititrek.it/" target="new"><img src="./gfx/fist100x100.jpg" alt="'.$locale['fist_membership'].'" border="0" width="50" height="50"></a> -->
-<a href="http://www.topwebgames.it/"><img src="http://www.topwebgames.it/button.php?u=stfc" alt="Top Web Games Italia" border="0"></a><br />
-         </td>
-       </tr>
       </table>
     </td>
   </tr>
