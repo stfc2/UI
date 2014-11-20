@@ -386,21 +386,24 @@ function display_skins() {
 */
 function display_lastposts()
 {
-    global $game;
+    global $game, $config;
 
-    $dir = "forum"; // Path to the folder of your forum from the main directory
-    $limit = "5"; // Number of topic to show
-    $f_url = "http://forum.stfc.it/"; // Forum url
+    $dir = $config['forum_path'];
+    $limit = $config['forum_show'];
+    $f_url = $config['forum_url'];
 
-    require $_SERVER['DOCUMENT_ROOT']."/".$dir."/conf_global.php";
+    if ($limit == 0)
+        return;
+
+    include $_SERVER['DOCUMENT_ROOT']."/".$dir."/conf_global.php";
 
     // Database connection
-    $fdb = mysql_connect($INFO['sql_host'], $INFO['sql_user'], $INFO['sql_pass']);
-    mysql_select_db($INFO['sql_database'], $fdb);
+    $fdb = new sql($INFO['sql_host'], $INFO['sql_database'], $INFO['sql_user'], $INFO['sql_pass']); // create sql-object for db-connection
+
 
 
     // Filtered query
-    $qr = mysql_query("SELECT t.title as t_title, "
+    $qr = $fdb->query("SELECT t.title as t_title, "
       ."t.starter_id as t_starter, "
       ."t.starter_name as t_starter_n, "
       ."t.forum_id as forumid, "
@@ -435,11 +438,11 @@ function display_lastposts()
     ');
 
     // calculating the number of replies
-    $nrows = mysql_num_rows($qr);
+    $nrows = $fdb->num_rows($qr);
 
     for ($i=0; $i < $nrows; $i++) {
 
-        $row = mysql_fetch_array($qr);
+        $row = $fdb->fetchrow($qr);
 
         $author_id=$row['t_starter'];
         $author=$row['t_starter_n'];
@@ -472,7 +475,7 @@ function display_lastposts()
 </table>
     ');
 
-    mysql_close($fdb);
+    $fdb->close();
 }
 
 
