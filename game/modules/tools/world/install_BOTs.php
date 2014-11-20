@@ -109,7 +109,7 @@ $game->out('done.<br>Installing Mayflower BOT...');
 $settlers = new Settlers($db,$sdl);
 $settlers->Install();
 
-$game->out('done.<br><br><b>All BOTs installed, please check <a href="/game/logs/view_log.php?file=NPC_installation">NPC_installation log</a> for further datails.<b>');
+$game->out('done.<br><br><b>All BOTs installed, please check <a href="'.$config['site_url'].'/game/logs/view_log.php?file=NPC_installation">NPC_installation log</a> for further datails.<b>');
 
 
 // ########################################################################################
