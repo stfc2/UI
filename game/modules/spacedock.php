@@ -1025,6 +1025,14 @@ function ShipSelection(cSelectType) {
             } else {
                 ships.options[i].selected = false;
             }
+        } else if (cSelectType == "Intact") {
+            var n=ships.options[i].id.split(",");
+
+            if (n[1] == 0) {
+                ships.options[i].selected = true;
+            } else {
+                ships.options[i].selected = false;
+            }
         } else if (cSelectType == "None") {
             ships.options[i].selected = false;
         }
@@ -1050,24 +1058,24 @@ function ShipSelection(cSelectType) {
 
 
     if($select_size == 1) $null = 0;
-   
+
     if($select_size < 3) $select_size = 3;
 
     if($select_size > 10) $select_size = 10;
 
 
     $game->out('
-<table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
+<table width="90%" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
     <td>
-      <table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
+      <table width="100%" align="center" border="0" cellpadding="2" cellspacing="2" class="style_inner">
       <form name="mfleet_form" method="post" action="'.parse_link('a=spacedock').'">
         <tr>
           <td>'.constant($game->sprache("TEXT56")).'</td>
         </tr>
         <tr>
           <td>
-            <select name="ships[]" id="ships" style="width: 380px;" multiple="multiple" size="'.$select_size.'" onclick="UpdateShipData()" onkeyup="UpdateShipData()">'.( ($null==0) ? '<option></option>' : '' ).'
+            <select name="ships[]" id="ships" style="width: 100%;" multiple="multiple" size="'.$select_size.'" onclick="UpdateShipData()" onkeyup="UpdateShipData()">'.( ($null==0) ? '<option></option>' : '' ).'
     ');
 
 
@@ -1113,18 +1121,19 @@ function ShipSelection(cSelectType) {
             </select>
             <br><br>
             '.constant($game->sprache("TEXT67")).'
-            <input class="button" style="width: 90px;" type="button" name="select_all" value="'.constant($game->sprache("TEXT68")).'" onClick="ShipSelection(\'All\')">
-            <input class="button" style="width: 90px;" type="button" name="select_damaged" value="'.constant($game->sprache("TEXT69")).'" onClick="ShipSelection(\'Damaged\')">
-            <input class="button" style="width: 90px;" type="button" name="select_none" value="'.constant($game->sprache("TEXT70")).'" onClick="ShipSelection(\'None\')"><br><br>
+            <input class="button" style="width: 20%;" type="button" name="select_all" value="'.constant($game->sprache("TEXT68")).'" onClick="ShipSelection(\'All\')">
+            <input class="button" style="width: 20%;" type="button" name="select_damaged" value="'.constant($game->sprache("TEXT69")).'" onClick="ShipSelection(\'Damaged\')">
+            <input class="button" style="width: 20%;" type="button" name="select_intact" value="'.constant($game->sprache("TEXT71")).'" onClick="ShipSelection(\'Intact\')">
+            <input class="button" style="width: 20%;" type="button" name="select_none" value="'.constant($game->sprache("TEXT70")).'" onClick="ShipSelection(\'None\')"><br><br>
             <input class="button" type="submit" name="repair_ships" value="'.constant($game->sprache("TEXT38")).'">&nbsp;
             <input class="button" type="submit" name="man_ships" value="'.constant($game->sprache("TEXT43")).'">&nbsp;
             <input class="button" type="submit" name="scrap_ships" value="'.constant($game->sprache("TEXT47")).'">&nbsp;
             <input class="button" type="submit" name="view_detail" value="'.constant($game->sprache("TEXT57")).'" onClick="return document.mfleet_form.action = \''.parse_link('a=ship_fleets_ops&ship_details').'\'"><br><br>
-            <table width="400" border="0" cellpadding="2" cellspacing="0">
+            <table width="100%" border="0" cellpadding="2" cellspacing="0">
               <tr>
-                <td width="130" rowspan="2" valign="middle">'.constant($game->sprache("TEXT58")).'<br></td>
-                <td width="130"><input class="field"  style="width: 120px;" type="text" name="new_fleet_name"></td>
-                <td width="140"><input class="button" style="width: 130px;" type="submit" name="new_fleet" value="'.constant($game->sprache("TEXT59")).'"></td>
+                <td width="33%" rowspan="2" valign="middle">'.constant($game->sprache("TEXT58")).'<br></td>
+                <td width="33%"><input class="field"  style="width: 100%;" type="text" name="new_fleet_name"></td>
+                <td width="33%"><input class="button" style="width: 100%;" type="submit" name="new_fleet" value="'.constant($game->sprache("TEXT59")).'"></td>
               </tr>
               <tr>');
 
@@ -1140,13 +1149,13 @@ function ShipSelection(cSelectType) {
         $game->out('
                   </select>
                 </td>
-                <td><input class="button" style="width: 130px;" type="submit" name="change_fleet" value="'.constant($game->sprache("TEXT60")).'"></td>
+                <td><input class="button" style="width: 100%;" type="submit" name="change_fleet" value="'.constant($game->sprache("TEXT60")).'"></td>
         ');
     }
     else {
         $game->out('
-                <td><select style="width: 120px;" disabled="disabled"><option value="0">-</option></select></td>
-                <td><input class="button" style="width: 130px;" type="submit" name="change_fleet" value="'.constant($game->sprache("TEXT60")).'" disabled="disabled"></td>
+                <td><select style="width: 100%;" disabled="disabled"><option value="0">-</option></select></td>
+                <td><input class="button" style="width: 100%;" type="submit" name="change_fleet" value="'.constant($game->sprache("TEXT60")).'" disabled="disabled"></td>
         ');
     }
 
@@ -1154,13 +1163,13 @@ function ShipSelection(cSelectType) {
               </tr>
               <tr>
                 <td>'.constant($game->sprache("TEXT32")).'</td>
-                <td width="130"><input class="field" type="text" name="new_ship_name" id="ship_name" value="" maxlength="25" size="25"></td>
-                <td><input class="button" style="width: 130px;" type="submit" name="rename_ship" value="'.constant($game->sprache("TEXT65")).'"></td>
+                <td><input class="field" type="text" name="new_ship_name" id="ship_name" value="" maxlength="25" size="25"></td>
+                <td><input class="button" style="width: 100%;" type="submit" name="rename_ship" value="'.constant($game->sprache("TEXT65")).'"></td>
               </tr>
               <tr>
                 <td>'.constant($game->sprache("TEXT61")).'</td>
-                <td width="130"><input class="field" type="text" name="new_ship_ncc" id="ship_ncc" value="" maxlength="12" size="25"></td>
-                <td><input class="button" style="width: 130px;" type="submit" name="change_ship_ncc" value="'.constant($game->sprache("TEXT66")).'"></td>
+                <td><input class="field" type="text" name="new_ship_ncc" id="ship_ncc" value="" maxlength="12" size="25"></td>
+                <td><input class="button" style="width: 100%;" type="submit" name="change_ship_ncc" value="'.constant($game->sprache("TEXT66")).'"></td>
               </tr>
             </table>
             <br>

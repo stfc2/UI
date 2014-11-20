@@ -109,6 +109,8 @@ define ("GER_TEXT69", 'Damaged');
 
 define ("GER_TEXT70", 'None');
 
+define ("GER_TEXT71", 'Undamaged');
+
 
 //English
 define ("ENG_TEXT27", 'You still don\'t possess a');
@@ -198,6 +200,8 @@ define ("ENG_TEXT68", 'All');
 define ("ENG_TEXT69", 'Damaged');
 
 define ("ENG_TEXT70", 'None');
+
+define ("ENG_TEXT71", 'Undamaged');
 
 
 //Italiano
@@ -289,6 +293,7 @@ define ("ITA_TEXT69", 'Danneggiate');
 
 define ("ITA_TEXT70", 'Nessuna');
 
+define ("ITA_TEXT71", 'Integre');
 
 
 ?>
