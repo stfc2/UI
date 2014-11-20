@@ -11,6 +11,9 @@ $config['game_path']="<path to game folder on the server, for example: /usr/shar
 $config['scheduler_path']="<path to scheduler folder on ther server, for example: /home/stfc/scheduler/ >";
 $config['galaxy']=0;
 $config['uploaddir'] = '<path to gallery folder of the game, for example: /usr/share/game/gallery/ >';
+$config['forum_path'] = '<path to the folder of your forum from the main directory>';
+$config['forum_show'] = '<number of topic to show, set to 0 to disable it>';
+$config['forum_url'] = '<www url to your forum>';
 
 define ('ERROR_LOG_FILE', '<path to error log file, for example: /usr/share/game/logs/error_log.htm');
 define ('ADMIN_LOG_FILE', '<path to admin log file, for example: /usr/share/game/logs/admin_log.htm');
