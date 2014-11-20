@@ -126,7 +126,6 @@ $tables = array(
     'starsystems',
     'starsystems_details',
     'starsystems_slots',
-    'stations',
     'tc_coords_memo',
     'trade_settings',
     'transport_logs',
