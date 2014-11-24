@@ -645,10 +645,10 @@ window.attachEvent("onload", expandone)
       <a class="nav" href="<?php echo parse_link('a=login') ?>"><img src="gfx/login.jpg" alt="login" border=0 onMouseOver="this.src='gfx/loginh.jpg';" onMouseOut="this.src='gfx/login.jpg';"></a> &nbsp;&nbsp;
       <a class="nav" href="<?php echo parse_link('a=register') ?>"><img src="gfx/register.jpg" alt="register" border=0 onMouseOver="this.src='gfx/registerh.jpg';" onMouseOut="this.src='gfx/register.jpg';"></a> &nbsp;&nbsp;
       <a class="nav" href="<?php echo parse_link('a=stats') ?>"><img src="gfx/stats.jpg" alt="stats" border=0 onMouseOver="this.src='gfx/statsh.jpg';" onMouseOut="this.src='gfx/stats.jpg';"></a> &nbsp;&nbsp;
-      <a class="nav" href="http://wiki.stgc.de" target=_blank><img src="gfx/faq.jpg" alt="faq" border=0 onMouseOver="this.src='gfx/faqh.jpg';" onMouseOut="this.src='gfx/faq.jpg';"></a>
+      <a class="nav" href="http://wiki.stfc.it" target=_blank><img src="gfx/faq.jpg" alt="faq" border=0 onMouseOver="this.src='gfx/faqh.jpg';" onMouseOut="this.src='gfx/faq.jpg';"></a>
       <a class="nav" href="http://forum.stfc.it" target=_blank><img src="gfx/forum.jpg" alt="forum" border=0 onMouseOver="this.src='gfx/forumh.jpg';" onMouseOut="this.src='gfx/forum.jpg';"></a>
       <a class="nav" href="<?php echo parse_link('a=imprint') ?>"><img src="gfx/impressum.jpg" alt="impressum" border=0 onMouseOver="this.src='gfx/impressumh.jpg';" onMouseOut="this.src='gfx/impressum.jpg';"></a> &nbsp;&nbsp;
-      <a class="nav" href="http://bugs.stfc.it" target=_blank><img src="gfx/developer.jpg" alt="Development" border=0 onMouseOver="this.src='gfx/developerh.jpg';" onMouseOut="this.src='gfx/developer.jpg';"></a>
+      <a class="nav" href="https://github.com/stfc2" target=_blank><img src="gfx/developer.jpg" alt="Development" border=0 onMouseOver="this.src='gfx/developerh.jpg';" onMouseOut="this.src='gfx/developer.jpg';"></a>
     </td>
   </tr>
   <tr>
