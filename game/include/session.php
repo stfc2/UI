@@ -41,7 +41,7 @@ if(isset($_POST['stgc_login'])) {
     }
 
     if($login_user['user_auth_level'] == STGC_BOT) {
-        $game->print_login_error('Versuch´s erst garnicht');
+        $game->print_login_error('Do not even try');
     }
 
     $cookie_data = array('user_id' => $login_user['user_id']);
@@ -117,7 +117,7 @@ else {
     }
 
     if($player_data['user_auth_level'] == STGC_BOT) {
-        $game->print_login_error('Versuch´s erst garnicht');
+        $game->print_login_error('Do not even try');
     }
 
     if($user_password != $player_data['user_password']) {
@@ -140,19 +140,19 @@ else {
 
         if( ($st_player_data['user_sitting_id1'] == $user_id) || ($st_player_data['user_sitting_id2'] == $user_id) || ($st_player_data['user_sitting_id3'] == $user_id) || ($st_player_data['user_sitting_id4'] == $user_id) || ($st_player_data['user_sitting_id5'] == $user_id) ) {
 
-            if ($st_player_data['user_active']==0) 
+            if ($st_player_data['user_active']==0)
             {
                 $sitting_mode = 0;
                 echo 'The player '.$st_player_data['user_name'].' is banned.<br>Please log in again.';
             }
             else
-            if ($st_player_data['user_active']==2) 
+            if ($st_player_data['user_active']==2)
             {
                 $sitting_mode = 0;
                 echo 'The player '.$st_player_data['user_name'].' is not activated.<br>Please log in again.';
             }
             else
-            if ($st_player_data['user_active']==3) 
+            if ($st_player_data['user_active']==3)
             {
                 $sitting_mode = 0;
                 echo 'The player '.$st_player_data['user_name'].' was deleted.<br>Please log in again.';
@@ -189,7 +189,7 @@ else {
 
     if($player_data['user_active'] != 1) {
         switch($player_data['user_active']) {
-              case 0:
+            case 0:
                 $game->print_login_error('User is banned <br><br>'.$player_data['message_basement'].'');
             break;
 
