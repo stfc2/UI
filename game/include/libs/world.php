@@ -605,9 +605,11 @@ function create_planet($user_id, $id_type, $id_value, $selected_type = 'r', $rac
                         4000,2000,500,100,150,100,
                         '.$rateo_1.','.$rateo_2.','.$rateo_3.','.$rateo_4.')';
         }
-        else
+        else {
+            global $MAX_POINTS;
             $sql = 'INSERT INTO planets (planet_name, system_id, sector_id, planet_type, planet_owner, planet_owned_date, planet_distance_id, planet_distance_px, planet_covered_distance, planet_tick_cdistance, planet_max_cdistance, resource_1, resource_2, resource_3, resource_4, planet_points, planet_available_points, recompute_static, max_resources, max_worker, max_units, workermine_1, workermine_2, workermine_3, rateo_1, rateo_2, rateo_3, rateo_4)
                     VALUES ("'.UNINHABITATED_COLONY.'", '.$system_id.', '.$sector_id.', "'.$planet_type.'", '.$user_id.', '.$game->TIME.', '.$planet_distance_id.', '.$planet_distance_px.', 0, '.( mt_rand(10, 30) ).', '.( 2 * M_PI * $planet_distance_px ).', 200, 200, 100, 100, 10, '.$MAX_POINTS[1].', 1, '.$PLANETS_DATA[$planet_type][6].', '.$PLANETS_DATA[$planet_type][7].', '.$PLANETS_DATA[$planet_type][7].', 100, 100, 100, '.$rateo_1.', '.$rateo_2.', '.$rateo_3.', '.$rateo_4.')';
+        }
     }
 
     if(!$db->query($sql)) {
