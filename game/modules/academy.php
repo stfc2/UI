@@ -334,7 +334,7 @@ $game->out('</span>');
 $game->out('<table border="0" cellpadding="2" cellspacing="2" width="400" class="style_inner">
 <tr><td align="center">
 <br>
-<form name="academy" method="post" action="'.GAME_EXE.'?a=academy"><input type="submit" name="start_list" class="button_nosize" value="'.constant($game->sprache("Text23")).'">&nbsp;&nbsp;&nbsp;<input type="submit" name="stop_list" class="button_nosize" value="'.constant($game->sprache("Text24")).'"></form>
+<form name="academy" method="post" action="'.parse_link('a=academy').'"><input type="submit" name="start_list" class="button_nosize" value="'.constant($game->sprache("Text23")).'">&nbsp;&nbsp;&nbsp;<input type="submit" name="stop_list" class="button_nosize" value="'.constant($game->sprache("Text24")).'"></form>
 
 </td></tr></table></td></tr></table>');
 
@@ -351,7 +351,7 @@ function UpdateTroops() {
 }
 </script>');
 
-$game->out('<br><form name="academy" method="post" action="'.GAME_EXE.'?a=academy">
+$game->out('<br><form name="academy" method="post" action="'.parse_link('a=academy').'">
 <table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer">
   <tr><td width=100%><span class="sub_caption2">'.constant($game->sprache("Text38")).'</span><br>
   <table border=0 cellpadding=1 cellspacing=1 width=398 class="style_inner">');
@@ -380,7 +380,7 @@ $game->out('<br><table border="0" cellpadding="2" cellspacing="2" width="400" cl
 <span class="sub_caption2">'.constant($game->sprache("Text15")).'</span><br>
 <table border=0 cellpadding=2 cellspacing=2 width=398 class="style_inner">
 <tr><td align="center">
-<form name="academy" method="post" action="'.GAME_EXE.'?a=academy">
+<form name="academy" method="post" action="'.parse_link('a=academy').'">
 <table border=0 cellpadding=2 cellspacing=2 width=280><tr><td>&nbsp;</td>'.constant($game->sprache("Text16")).'</tr>');
 
 for ($t=0; $t<10; $t++)
