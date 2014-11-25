@@ -3663,7 +3663,7 @@ function Show_schulden($condition = 0)
             $game->out('Risorse insufficienti sul pianeta.');
     }
 
-    // The player has decided to pay using the resources store on his trust account(s)
+    // The player has decided to pay using the resources stored on his trust account(s)
     if(isset($_REQUEST['status_bezahlen']) && $_REQUEST['status_bezahlen']==3)
     {
         // Retrieve auction trust account data
@@ -3788,71 +3788,89 @@ function Show_schulden($condition = 0)
                     $game->out(constant($game->sprache("TEXT234")));
                 }
             }
-            else
-                message(DATABASE_ERROR, 'Could not fetch trust account(s) data');
+            /*else this is not really a DB error
+                message(DATABASE_ERROR, 'Could not fetch trust account(s) data');*/
         }
         else
             message(DATABASE_ERROR, 'Could not retrieve trust account(s) data');
     }
 
 
-	$sql_a='SELECT * FROM schulden_table WHERE status=0 AND user_kauf="'.$game->player['user_id'].'"';
-	$schulden_a=$db->query($sql_a);
-	$text='<br><center><table border=0 cellpadding="3" cellspacing="3" class="style_inner">
-		<tr><td>'.constant($game->sprache("TEXT235")).'</td><!--<td>'.constant($game->sprache("TEXT236")).'</td>--><td>'.constant($game->sprache("TEXT123")).'</td><td>'.constant($game->sprache("TEXT165")).'</td><td>'.constant($game->sprache("TEXT167")).'</td><td>Lv1</td><td>Lv2</td><td>Lv3</td><td>Lv4</td><td>'.constant($game->sprache("TEXT237")).'</td><td>'.constant($game->sprache("TEXT238")).'</td><td>'.constant($game->sprache("TEXT239")).'</td><td></td></tr>
-		<tr><td colspan="12"><hr></td></tr>';
-	if($db->num_rows()<=0)
-	{
-		$text.='<tr><td colspan="12"><center>'.constant($game->sprache("TEXT240")).'</center></td></tr>';
-	}else
-	{
-		while($schulden=$db->fetchrow($schulden_a))
-		{
-			$sql_b='SELECT t.*,u.user_name AS user_name_1,z.user_name AS user_name_2 FROM (treuhandkonto t ) LEFT JOIN schulden_table s on s.id=t.code LEFT JOIN user u on s.user_ver=u.user_id LEFT JOIN user z on s.user_kauf=z.user_id WHERE code="'.$schulden['id'].'"';
-			if(($schulden_gesamt=$db->queryrow($sql_b))==false)message(DATABASE_ERROR, 'Could not select data');
+    $sql_a='SELECT * FROM schulden_table WHERE status=0 AND user_kauf="'.$game->player['user_id'].'"';
+    $debts=$db->query($sql_a);
+    $text='<br><center><table border=0 cellpadding="3" cellspacing="3" class="style_inner">
+        <tr>
+          <td>'.constant($game->sprache("TEXT235")).'</td>
+          <!--<td>'.constant($game->sprache("TEXT236")).'</td>-->
+          <td>'.constant($game->sprache("TEXT123")).'</td>
+          <td>'.constant($game->sprache("TEXT165")).'</td>
+          <td>'.constant($game->sprache("TEXT167")).'</td>
+          <td>Lv1</td><td>Lv2</td><td>Lv3</td><td>Lv4</td>
+          <td>'.constant($game->sprache("TEXT237")).'</td>
+          <td>'.constant($game->sprache("TEXT238")).'</td>
+          <td>'.constant($game->sprache("TEXT239")).'</td>
+          <td></td>
+        </tr>
+        <tr><td colspan="12"><hr></td></tr>';
+    if($db->num_rows()<=0)
+    {
+        $text.='<tr><td colspan="12"><center>'.constant($game->sprache("TEXT240")).'</center></td></tr>';
+    }else
+    {
+        while($debt=$db->fetchrow($debts))
+        {
+/* Let's remove an insane query
+            $sql_b = 'SELECT t.*
+                      FROM (treuhandkonto t )
+                      LEFT JOIN schulden_table s ON s.id=t.code
+                      WHERE code="'.$debt['id'].'"';*/
+            $sql_b = 'SELECT * FROM treuhandkonto WHERE code='.$debt['id'];
+            if(($total_debt=$db->queryrow($sql_b))==false)
+                message(DATABASE_ERROR, 'Could not select data');
 
-			$schulden_gesamt['ress_1']=$schulden['ress_1']-$schulden_gesamt['ress_1'];
-			$schulden_gesamt['ress_2']=$schulden['ress_2']-$schulden_gesamt['ress_2'];
-			$schulden_gesamt['ress_3']=$schulden['ress_3']-$schulden_gesamt['ress_3'];
-			$schulden_gesamt['unit_1']=$schulden['unit_1']-$schulden_gesamt['unit_1'];
-			$schulden_gesamt['unit_2']=$schulden['unit_2']-$schulden_gesamt['unit_2'];
-			$schulden_gesamt['unit_3']=$schulden['unit_3']-$schulden_gesamt['unit_3'];
-			$schulden_gesamt['unit_4']=$schulden['unit_4']-$schulden_gesamt['unit_4'];
-			$schulden_gesamt['unit_5']=$schulden['unit_5']-$schulden_gesamt['unit_5'];
-			$schulden_gesamt['unit_6']=$schulden['unit_6']-$schulden_gesamt['unit_6'];
-			$text.="<tr>";
-			$text.="<td><a href=".parse_link("a=trade&view=view_bidding_detail&id=".$schulden['auktions_id']).">".$schulden['auktions_id']."</a></td>";
-			$text.="<td><img src='".$game->GFX_PATH."menu_metal_small.gif'>".$schulden_gesamt['ress_1']."</td>";
-			$text.="<td><img src='".$game->GFX_PATH."menu_mineral_small.gif'>".$schulden_gesamt['ress_2']."</td>";
-			$text.="<td><img src='".$game->GFX_PATH."menu_latinum_small.gif'> ".$schulden_gesamt['ress_3']."</td>";
-			$text.="<td><img src='".$game->GFX_PATH."menu_unit1_small.gif'>".$schulden_gesamt['unit_1']."</td>";
-			$text.="<td><img src='".$game->GFX_PATH."menu_unit2_small.gif'>".$schulden_gesamt['unit_2']."</td>";
-			$text.="<td><img src='".$game->GFX_PATH."menu_unit3_small.gif'>".$schulden_gesamt['unit_3']."</td>";
-			$text.="<td><img src='".$game->GFX_PATH."menu_unit4_small.gif'>".$schulden_gesamt['unit_4']."</td>";
-			$text.="<td><img src='".$game->GFX_PATH."menu_unit5_small.gif'>".$schulden_gesamt['unit_5']."</td>";
-			$text.="<td><img src='".$game->GFX_PATH."menu_unit6_small.gif'>".$schulden_gesamt['unit_6']."</td>";
-			$text.="<td>";
-			$timea=(($schulden['timestep']+(20*24*6))-$ACTUAL_TICK)*3/60;
+            $total_debt['ress_1']=$debt['ress_1']-$total_debt['ress_1'];
+            $total_debt['ress_2']=$debt['ress_2']-$total_debt['ress_2'];
+            $total_debt['ress_3']=$debt['ress_3']-$total_debt['ress_3'];
+            $total_debt['unit_1']=$debt['unit_1']-$total_debt['unit_1'];
+            $total_debt['unit_2']=$debt['unit_2']-$total_debt['unit_2'];
+            $total_debt['unit_3']=$debt['unit_3']-$total_debt['unit_3'];
+            $total_debt['unit_4']=$debt['unit_4']-$total_debt['unit_4'];
+            $total_debt['unit_5']=$debt['unit_5']-$total_debt['unit_5'];
+            $total_debt['unit_6']=$debt['unit_6']-$total_debt['unit_6'];
+            $text.="<tr>";
+            $text.="<td><a href=".parse_link("a=trade&view=view_bidding_detail&id=".$debt['auktions_id']).">".$debt['auktions_id']."</a></td>";
+            $text.="<td><img src='".$game->GFX_PATH."menu_metal_small.gif'>".$total_debt['ress_1']."</td>";
+            $text.="<td><img src='".$game->GFX_PATH."menu_mineral_small.gif'>".$total_debt['ress_2']."</td>";
+            $text.="<td><img src='".$game->GFX_PATH."menu_latinum_small.gif'> ".$total_debt['ress_3']."</td>";
+            $text.="<td><img src='".$game->GFX_PATH."menu_unit1_small.gif'>".$total_debt['unit_1']."</td>";
+            $text.="<td><img src='".$game->GFX_PATH."menu_unit2_small.gif'>".$total_debt['unit_2']."</td>";
+            $text.="<td><img src='".$game->GFX_PATH."menu_unit3_small.gif'>".$total_debt['unit_3']."</td>";
+            $text.="<td><img src='".$game->GFX_PATH."menu_unit4_small.gif'>".$total_debt['unit_4']."</td>";
+            $text.="<td><img src='".$game->GFX_PATH."menu_unit5_small.gif'>".$total_debt['unit_5']."</td>";
+            $text.="<td><img src='".$game->GFX_PATH."menu_unit6_small.gif'>".$total_debt['unit_6']."</td>";
+            $text.="<td>";
+            $timea=(($debt['timestep']+(20*24*6))-$ACTUAL_TICK)*3/60;
             if ($timea > 24) {
                 $timea /= 24;
                 $text.="".round($timea,0)." ".constant($game->sprache("TEXT129"))."</td>";
             }
             else
                 $text.="".$timea." ".constant($game->sprache("TEXT226"))."</td>";
-			$text.='<td><form method="post" action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&status_bezahlen=1').'">
-				<input type="hidden" name="auktion" value="'.$schulden['id'].'">
-				<input type="submit" name="zahlen" class="Button_nosize" value="'.constant($game->sprache("TEXT241")).'" style="width:100px"></form>
-				</td>';
-			$text.="</tr>";
-		}
-	}
-	$game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT242")).' '.HelpPopup('trade_debts').' :</span></center><br>');
-	$game->out($text);
-	$game->out('</table></center>');
-	if(isset($_REQUEST['status_bezahlen']) && $_REQUEST['status_bezahlen']==1)
-	{
-		$game->out('<br><center>'.constant($game->sprache("TEXT243")).' '.$_REQUEST['auktion'].':</center><br>
-		'.constant($game->sprache("TEXT244")).' '.$game->planet['planet_name'].' '.constant($game->sprache("TEXT245")).' <br>
+            $text.='<td><form method="post" action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&status_bezahlen=1').'">
+                <input type="hidden" name="auktion" value="'.$debt['id'].'">
+                <input type="hidden" name="auction_id" value="'.$debt['auktions_id'].'">
+                <input type="submit" name="zahlen" class="Button_nosize" value="'.constant($game->sprache("TEXT241")).'" style="width:100px"></form>
+                </td>';
+            $text.="</tr>";
+        }
+    }
+    $game->out('<center><span class="sub_caption">'.constant($game->sprache("TEXT242")).' '.HelpPopup('trade_debts').' :</span></center><br>');
+    $game->out($text);
+    $game->out('</table></center>');
+    if(isset($_REQUEST['status_bezahlen']) && $_REQUEST['status_bezahlen']==1)
+    {
+        $game->out('<br><center>'.constant($game->sprache("TEXT243")).' '.$_REQUEST['auction_id'].':</center><br>
+        '.constant($game->sprache("TEXT244")).' '.$game->planet['planet_name'].' '.constant($game->sprache("TEXT245")).' <br>
 <form method="post" action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&status_bezahlen=2').'">
 <table border=0 cellpadding="3" cellspacing="3" class="style_inner" width=300>
 <tr>
