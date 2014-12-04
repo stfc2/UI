@@ -521,7 +521,7 @@ check_membership(false);
       }
 
 $sql = 'INSERT INTO alliance_application (application_user, application_username, application_alliance, application_text, application_read, application_timestamp)
-	VALUES ('.$game->player['user_id'].', "'.$game->player['user_name'].'", '.$_POST['alliance_id'].', "'.mysql_real_escape_string($_POST['application_text']).'", 0, '.time().')';
+	VALUES ('.$game->player['user_id'].', "'.$game->player['user_name'].'", '.$_POST['alliance_id'].', "'.$db->escape_string($_POST['application_text']).'", 0, '.time().')';
 
    if(!$db->query($sql)) {
      message(DATABASE_ERROR, 'Could not insert application Data');

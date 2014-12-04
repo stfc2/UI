@@ -732,7 +732,7 @@ function Ship_Details()
 
 $sub_action = (!empty($_GET['view'])) ? $_GET['view'] : 'ships_list';
 
-if (isset($_REQUEST['search']) && !empty($_REQUEST['search'])) $_REQUEST['search']=htmlspecialchars(mysql_real_escape_string($_REQUEST['search']));
+if (isset($_REQUEST['search']) && !empty($_REQUEST['search'])) $_REQUEST['search']=htmlspecialchars($db->escape_string($_REQUEST['search']));
 if (isset($_REQUEST['start'])) $_REQUEST['start']=(int)$_REQUEST['start'];
 if (isset($_REQUEST['id'])) $_REQUEST['id']=(int)$_REQUEST['id'];
 

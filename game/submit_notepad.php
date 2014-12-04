@@ -74,7 +74,7 @@ $game->init_player();
 if(isset($_POST['user_notepad']))
 {
     $sql = 'UPDATE user
-            SET user_notepad = "'.mysql_real_escape_string($_POST['user_notepad']).'"
+            SET user_notepad = "'.$db->escape_string($_POST['user_notepad']).'"
             WHERE user_id = '.$game->player['user_id'];
 
     if(!$db->query($sql)) {
