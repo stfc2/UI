@@ -256,6 +256,14 @@ class sql {
         return (is_object($this->link_id) ? mysqli_errno($this->link_id) : mysqli_connect_errno());
     }
 
+    function escape_string($string) {
+        return mysqli_real_escape_string($this->link_id, $string);
+    }
+
+    function server_info() {
+        return mysqli_get_server_info ( $this->link_id );
+    }
+
     function debug_info() {
 
         echo '
