@@ -237,7 +237,7 @@ $pa_ingame2 = $db2->queryrow('SELECT COUNT(ad_id) AS num FROM alliance_diplomacy
 //@fclose($fp);
 
 //mySQL version info
-$tmp = mysql_get_server_info();
+$tmp = $db->server_info();
 $mysqlinfo = $tmp /*substr($tmp, 0, strpos($tmp, "-"))*/;
 
 $title_html = $locale['stats_title'];
