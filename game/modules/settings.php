@@ -126,13 +126,11 @@ global $config;
 	23/04/08 - AC: Actually we have removed support for geodb localization
 	if ($data['country']!='XX' && $data['plz']>0)
 	{
-	
-		$db = new sql($config['server'].":".$config['port'], $config['geodb_database'], $config['user'], $config['password']); // create sql-object for db-connection
+		$geodb = new sql($config['server'].":".$config['port'], $config['geodb_database'], $config['user'], $config['password']); // create sql-object for db-connection
 		$sql="SELECT * FROM geodb_locations WHERE plz like '%".$data['plz']."%' AND adm0='".$data['country']."'  ORDER BY LENGTH(plz)";  
-		$r=$db->queryrow($sql);
+		$r=$geodb->queryrow($sql);
 		if (isset($r['name'])) $stadt=' ('.$r['name'].')';
-              mysql_close($db);
-		$db = new sql($config['server'].":".$config['port'], $config['game_database'], $config['user'], $config['password']); // create sql-object for db-connection
+        $geodb->close();
 	}
 */
 	
