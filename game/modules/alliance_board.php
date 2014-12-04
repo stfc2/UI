@@ -23,7 +23,7 @@
 define ("GER_NEW_THREAD",
 'Hallo member,
 
-username hat einen neuen Thread mit dem Titel <a href="link"><b>subject</b></a> in der Allianz-Forum eršffnet.
+username hat einen neuen Thread mit dem Titel <a href="link"><b>subject</b></a> in der Allianz-Forum er&#353;ffnet.
 Klicken Sie auf den Titel, um direkt dorthin fahren.
 
 
@@ -288,7 +288,7 @@ elseif(isset($_GET['new_thread'])) {
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
       <table width="480" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="480" align="left"><a href="'.parse_link('a=alliance_board'.$override_str).'"><i>'.constant($game->sprache("TEXT4")).'</i></a> » <i>'.constant($game->sprache("TEXT5")).'</i></td></tr>
+        <tr><td width="480" align="left"><a href="'.parse_link('a=alliance_board'.$override_str).'"><i>'.constant($game->sprache("TEXT4")).'</i></a> &raquo; <i>'.constant($game->sprache("TEXT5")).'</i></td></tr>
       </table>
 
       <table class="style_inner" width="480" align="center" border="0" cellpadding="2" cellspacing="2">
@@ -386,7 +386,7 @@ elseif(!empty($_GET['new_post'])) {
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
       <table width="480" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="480" align="left"><a href="'.parse_link('a=alliance_board'.$override_str).'"><i>'.constant($game->sprache("TEXT8")).'</i></a> » <a href="'.parse_link('a=alliance_board&show_thread='.$thread_id.$override_str).'"><i>'.htmlspecialchars(stripslashes($thread['thread_title'])).'</i></a> » <i>'.constant($game->sprache("TEXT10")).'</i></td></tr>
+        <tr><td width="480" align="left"><a href="'.parse_link('a=alliance_board'.$override_str).'"><i>'.constant($game->sprache("TEXT8")).'</i></a> &raquo; <a href="'.parse_link('a=alliance_board&show_thread='.$thread_id.$override_str).'"><i>'.htmlspecialchars(stripslashes($thread['thread_title'])).'</i></a> &raquo; <i>'.constant($game->sprache("TEXT10")).'</i></td></tr>
       </table>
 
       <table class="style_inner" width="480" align="center" border="0" cellpadding="2" cellspacing="2">
@@ -506,7 +506,7 @@ elseif(!empty($_GET['edit_post'])) {
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
       <table width="480" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="480" align="left"><a href="'.parse_link('a=alliance_board'.$override_str).'"><i>'.constant($game->sprache("TEXT4")).'</i></a> » <a href="'.parse_link('a=alliance_board&show_thread='.$post['thread_id'].$override_str).'"><i>'.htmlspecialchars(stripslashes($post['thread_title'])).'</i></a> » <i>'.constant($game->sprache("TEXT13")).'</i></td></tr>
+        <tr><td width="480" align="left"><a href="'.parse_link('a=alliance_board'.$override_str).'"><i>'.constant($game->sprache("TEXT4")).'</i></a> &raquo; <a href="'.parse_link('a=alliance_board&show_thread='.$post['thread_id'].$override_str).'"><i>'.htmlspecialchars(stripslashes($post['thread_title'])).'</i></a> &raquo; <i>'.constant($game->sprache("TEXT13")).'</i></td></tr>
       </table>
 
       <table class="style_inner" width="480" align="center" border="0" cellpadding="2" cellspacing="2">
@@ -716,7 +716,7 @@ elseif(!empty($_GET['show_thread'])) {
     <td align="center">
       <span style="font-size: 12pt; font-weight: bold;">'.$game->player['alliance_name'].' ['.$game->player['alliance_tag'].']</span><br><br>
       <table width="480" align="center" border="0" cellpadding="2" cellspacing="2">
-        <tr><td width="480" align="left"><a href="'.parse_link('a=alliance_board'.$override_str).'"><i>'.constant($game->sprache("TEXT4")).'</i></a> » <i>'.htmlspecialchars(stripslashes($thread['thread_title'])).'</i></td></tr>
+        <tr><td width="480" align="left"><a href="'.parse_link('a=alliance_board'.$override_str).'"><i>'.constant($game->sprache("TEXT4")).'</i></a> &raquo; <i>'.htmlspecialchars(stripslashes($thread['thread_title'])).'</i></td></tr>
       </table>
     ');
     
