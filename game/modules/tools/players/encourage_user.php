@@ -37,7 +37,7 @@ if(isset($_POST['submit'])) {
             FROM user
             WHERE user_id = '.$user_id;
             
-    if(($user = $db->queryrow($sql, MYSQL_ASSOC)) === false) {
+    if(($user = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query main user data');
     }
 

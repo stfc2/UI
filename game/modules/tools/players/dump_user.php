@@ -48,7 +48,7 @@ if(isset($_POST['submit'])) {
             FROM user
             WHERE user_id = '.$user_id;
             
-    if(($user = $db->queryrow($sql, MYSQL_ASSOC)) === false) {
+    if(($user = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query main user data');
     }
 
@@ -76,7 +76,7 @@ if(isset($_POST['submit'])) {
         message(DATABASE_ERROR, 'Could not query fleets data');
     }
 
-    while($fleet = $db->fetchrow($q_fleets, MYSQL_ASSOC)) {
+    while($fleet = $db->fetchrow($q_fleets)) {
         echo make_query_str('ship_fleets', $fleet);
     }
 
@@ -90,7 +90,7 @@ if(isset($_POST['submit'])) {
         message(DATABASE_ERROR, 'Could not query ships data');
     }
 
-    while($ship = $db->fetchrow($q_ships, MYSQL_ASSOC)) {
+    while($ship = $db->fetchrow($q_ships)) {
         echo make_query_str('ships', $ship);
     }
 
@@ -105,7 +105,7 @@ if(isset($_POST['submit'])) {
         message(DATABASE_ERROR, 'Could not query user diplomacy data');
     }
 
-    while($udiplomacy = $db->fetchrow($q_udiplomacy, MYSQL_ASSOC)) {
+    while($udiplomacy = $db->fetchrow($q_udiplomacy)) {
         echo make_query_str('user_diplomacy', $udiplomacy);
     }
 
@@ -117,7 +117,7 @@ if(isset($_POST['submit'])) {
         message(DATABASE_ERROR, 'Could not query tc coords memo');
     }
 
-    while($tcm = $db->fetchrow($q_tcm, MYSQL_ASSOC)) {
+    while($tcm = $db->fetchrow($q_tcm)) {
         echo make_query_str('tc_coords_memo', $tcm);
     }
 
