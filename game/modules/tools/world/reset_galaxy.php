@@ -93,7 +93,7 @@ $tables = array(
     'FHB_ship_templates',
     'FHB_sperr_list',
     'FHB_stats',
-    'FHB_temp_grundpreis',
+    'FHB_temp_Grundpreis',
     'FHB_truppen_lib',
     'FHB_warteschlange',
     'future_human_reward',
