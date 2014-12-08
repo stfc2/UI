@@ -568,14 +568,54 @@ function GetVisibility($sensor1,$cloak1,$ships1,$sensor2,$cloak2,$sensor3,$fligh
 	}
 	else
 		// Standard visibility for inter planet flights
-		$visibility = 20;
+		$visibility = 0;
 
 	return $visibility;
 }
 
 // #############################################################################
 
-function get_friendly_orbit_fleets($planet_id, $user_id = 0, $user_alliance = 0) {
+function get_system_fleet_sensors($system_id) {
+    global $db, $game;
+    
+    $sql = 'SELECT SUM(st.value_11) AS sensor_value
+            FROM (ship_fleets f)
+            INNER JOIN (ships s) ON s.fleet_id = f.fleet_id
+            INNER JOIN (ship_templates st) ON st.id = s.template_id
+            INNER JOIN (planets p) ON f.planet_id = p.planet_id
+            WHERE p.system_id = '.$system_id.' AND
+                  f.user_id = '.$game->player['user_id'];
+    
+    if(!$sv = $db->queryrow($sql)) {
+        message(DATABASE_ERROR, 'Could not query user orbit data');
+    }
+    
+    if(!isset($sv['sensor_value']) || empty($sv['sensor_value'])) return 0;
+    
+    return($sv['sensor_value']);
+    
+}
+
+// #############################################################################
+
+function get_system_planetary_sensors($system_id) {
+    global $db, $game;
+    
+    $sql = 'SELECT SUM(building_7 + 1) as sensor_value FROM planets WHERE system_id = '.$system_id.' AND planet_owner = '.$game->player['user_id'];
+    
+    if(!$sv = $db->queryrow($sql)) {
+        message(DATABASE_ERROR, 'Could not query user orbit data');
+    }
+    
+    if(!isset($sv['sensor_value']) || empty($sv['sensor_value'])) return 0;
+    
+    return($sv['sensor_value']);
+    
+}
+
+// #############################################################################
+
+function get_friendly_orbit_fleets($system_id, $user_id = 0, $user_alliance = 0) {
 	global $db;
 
 	if(!$user_id) {
@@ -593,15 +633,17 @@ function get_friendly_orbit_fleets($planet_id, $user_id = 0, $user_alliance = 0)
 		INNER JOIN (user u) ON u.user_id = f.user_id
 		LEFT JOIN (user_diplomacy ud) ON ( ( ud.user1_id = '.$user_id.' AND ud.user2_id = f.user_id ) OR ( ud.user1_id = f.user_id AND ud.user2_id = '.$user_id.' ) )
 		LEFT JOIN (alliance_diplomacy ad) ON ( ( ad.alliance1_id = '.$user_alliance.' AND ad.alliance2_id = u.user_alliance) OR ( ad.alliance1_id = u.user_alliance AND ad.alliance2_id = '.$user_alliance.' ) )
-		WHERE f.planet_id = '.$planet_id.' AND
+                INNER JOIN (planets p) ON f.planet_id = p.planet_id
+		WHERE p.system_id = '.$system_id.' AND
 		f.user_id <> '.$user_id;
 
-	if(!$q_user = $db->query($sql)) {
+	if(!$q_user = $db->queryrowset($sql)) {
 		message(DATABASE_ERROR, 'Could not query user orbit data');
 	}
 
 	$allied_user = array($user_id);
 
+        /*
 	while($_user = $db->fetchrow($q_user)) {
 		$allied = false;
 
@@ -617,15 +659,34 @@ function get_friendly_orbit_fleets($planet_id, $user_id = 0, $user_alliance = 0)
 
 		if($allied) $allied_user[] = $_user['user_id'];
 	}
+         * 
+         */
 
+        foreach($q_user as $q_user_item) {
+		$allied = false;
+
+		if($q_user_item['user_alliance'] == $user_alliance) $allied = true;;
+
+		if(!empty($q_user_item['ud_id'])) {
+			if($q_user_item['accepted'] == 1) $allied = true;;
+		}
+
+		if(!empty($q_user_item['ad_id'])) {
+			if( ($q_user_item['type'] == ALLIANCE_DIPLOMACY_PACT) && ($q_user['status'] == 0) ) $allied = true;
+		}
+
+		if($allied) $allied_user[] = $q_user_item['user_id'];            
+        }
+        
 	$sql = 'SELECT COUNT(s.ship_id) AS n_ships,
 		SUM(st.value_11) AS sum_sensors,
 		SUM(st.value_12) AS sum_cloak
 		FROM (ships s, ship_fleets f)
 		INNER JOIN (ship_templates st) ON st.id = s.template_id
+                INNER JOIN (planets p) ON f.planet_id = p.planet_id
 		WHERE s.user_id IN ('.implode(',', $allied_user).') AND
-		s.fleet_id = f.fleet_id AND
-		f.planet_id = '.$planet_id;
+		s.fleet_id = f.fleet_id AND f.planet_id > 0 AND
+		p.system_id = '.$system_id;
 
 	if(!$q_ships = $db->query($sql)) {
 		message(DATABASE_ERROR, 'Could not query ships data');
@@ -2185,16 +2246,15 @@ echo'
 
         if($this->player['user_auth_level'] == STGC_DEVELOPER) return true;
 
-        $sql = 'SELECT system_owner FROM starsystems
-                WHERE system_id = '.$system_id;
+        $sql = 'SELECT system_owner, system_closed FROM starsystems WHERE system_id = '.$system_id;
 
         if(($res = $db->queryrow($sql)) === false) {
             message(DATABASE_ERROR, 'Could not query starsystem details');
         }
 
-        if($res['system_owner'] == 0) return true;
-
         if($res['system_owner'] == $this->player['user_id']) return true;
+
+        if($res['system_closed'] == 0) return true;
 
         return false;
     }
