@@ -121,12 +121,12 @@ function display_registration($data = array(), $message = '', $galaxy) {
 
         <tr>
           <td>'.$locale['password'].'</td>
-          <td><input style="width: 200px;" type="password" name="user_password" value="'.$data['user_password'].'"></td>
+          <td><input style="width: 200px;" type="password" name="user_password" value="'.$data['user_password'].'" autocomplete="off"></td>
         </tr>
 
         <tr>
           <td>'.$locale['password_verify'].'</td>
-          <td><input style="width: 200px;" type="password" name="user_password2" value="'.$data['user_password2'].'"></td>
+          <td><input style="width: 200px;" type="password" name="user_password2" value="'.$data['user_password2'].'" autocomplete="off"></td>
         </tr>
 
         <tr>

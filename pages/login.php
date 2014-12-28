@@ -39,7 +39,7 @@ $main_html .= '
         </tr>
         <tr>
           <td>'.$locale['password'].'</td>
-          <td><input type="password" name="user_password" size="30" class="field"></td>
+          <td><input type="password" name="user_password" size="30" class="field" autocomplete="off"></td>
         </tr>
         <tr>
           <td>'.$locale['galaxy'].'</td>
