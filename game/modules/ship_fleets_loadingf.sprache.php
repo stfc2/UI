@@ -74,7 +74,7 @@ define ("GER_TEXT24", 'Der Herrscher hat keine Flotte in der N?e deiner Flotte')
 
 define ("GER_TEXT25", 'Folgende Flotten hat');
 
-define ("GER_TEXT26", 'im der N?e deiner Flotte:');
+define ("GER_TEXT26", 'in der n&auml;he deiner Flotte:');
 
 define ("GER_TEXT27", 'Schiffe');
 
