@@ -97,19 +97,19 @@ define ("GER_TEXT63", 'No name for the ship was indicated');
 
 define ("GER_TEXT64", 'No contract code for the ship was indicated');
 
-define ("GER_TEXT65", 'Rename');
+define ("GER_TEXT65", 'Umbenennen');
 
 define ("GER_TEXT66", 'Assign');
 
-define ("GER_TEXT67", 'Ship selection:');
+define ("GER_TEXT67", 'Schiff Auswahl:');
 
-define ("GER_TEXT68", 'All');
+define ("GER_TEXT68", 'alle');
 
-define ("GER_TEXT69", 'Damaged');
+define ("GER_TEXT69", 'besch&auml;digt');
 
-define ("GER_TEXT70", 'None');
+define ("GER_TEXT70", 'keine');
 
-define ("GER_TEXT71", 'Undamaged');
+define ("GER_TEXT71", 'Unbesch&auml;digt');
 
 
 //English
