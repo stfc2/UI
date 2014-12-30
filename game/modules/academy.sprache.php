@@ -78,7 +78,7 @@ define ("GER_Text27", '27 Minuten Pause');
 
 define ("GER_Text28", '54 Minuten Pause');
 
-define ("GER_Text29", 'Nee, TAP wir wollen doch nich BUGs nutzen');
+define ("GER_Text29", 'Nee, TAP wir wollen doch nicht BUGs nutzen');
 
 define ("GER_Text30", 'Netter Versuch');
 
@@ -92,15 +92,15 @@ define ("GER_Text34", '<option value="12">54 Minuten Pause</option>');
 
 define ("GER_Text35", 'Reset');
 
-define ("GER_Text36", 'Unzureichend freiem Speicherplatz - Warten');
+define ("GER_Text36", 'Unzureichend freien Speicherplatz - Warten');
 
-define ("GER_Text37", 'The structure does not meet the requirements needed by the troops you want to train!');
+define ("GER_Text37", 'Die Struktur ist nicht gegeben f&uuml;r die Truppen die du trainieren willst');
 
-define ("GER_Text38", 'Ships templates available:');
+define ("GER_Text38", 'Schiff Templates verf&uuml;gbar:');
 
 define ("GER_Text39", 'Name:');
 
-define ("GER_Text40", 'Apply');
+define ("GER_Text40", '&Uuml;bernehmen');
 
 //English
 
