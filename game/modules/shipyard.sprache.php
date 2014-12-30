@@ -155,7 +155,7 @@ define ("GER_TEXT65", 'Latinum');
 
 define ("GER_TEXT66", 'Arbeiter');
 
-define ("GER_TEXT67", 'Missing resources');
+define ("GER_TEXT67", 'fehlende Ressourcen');
 
 
 //English
