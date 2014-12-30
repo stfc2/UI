@@ -90,7 +90,7 @@ define ("GER_TEXT32", 'Verteidiger hat gewonnen');
 
 define ("GER_TEXT33", 'Angreifer hat gewonnen');
 
-define ("GER_TEXT34", 'Zuruck');
+define ("GER_TEXT34", 'Zur&uuml;ck');
 
 define ("GER_TEXT35", 'Name der Rasse');
 
@@ -156,7 +156,7 @@ define ("GER_TEXT65", 'Ja');
 
 define ("GER_TEXT66", 'Nein');
 
-define ("GER_TEXT67", 'Die angegebene Seite Leitfaden ist nicht vorhanden.');
+define ("GER_TEXT67", 'Die angegebene Seite "Leitfaden" ist nicht vorhanden.');
 
 define ("GER_TEXT68", 'Vorige Seite');
 
