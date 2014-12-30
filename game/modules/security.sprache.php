@@ -36,11 +36,11 @@ define ("GER_TEXT5", 'Ung&uuml;ltiger Aufruf.<br>');
 
 // Used by secimage_popup.php
 
-define ("GER_TEXT6", 'Schlieﬂen');
+define ("GER_TEXT6", 'Schliessen');
 
 define ("GER_TEXT7", 'Du hast den falschen Kreis angeklickt, es erfolgt nun eine erzwungene Eingabe.<br>');
 
-define ("GER_TEXT8", 'Bitte klicke den Kreis an, der nicht vollst‰ndig geschlossen ist:');
+define ("GER_TEXT8", 'Bitte klicke den Kreis an, der nicht vollst√§ndig geschlossen ist:');
 
 //English
 define ("ENG_TEXT0", 'STFC Security Code:');
