@@ -64,7 +64,7 @@ define ("GER_TEXT20", 'Kre');
 
 define ("GER_TEXT21", 'Kaz');
 
-define ("GER_TEXT22", 'Unknown');
+define ("GER_TEXT22", 'Unbekannt');
 
 define ("GER_TEXT23", 'online');
 
