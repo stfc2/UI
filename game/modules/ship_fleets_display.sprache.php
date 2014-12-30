@@ -30,11 +30,11 @@ define ("GER_TEXT2", 'Ung&uuml;ltiges Koordinatenformat');
 
 define ("GER_TEXT3", 'Ung&uuml;ltige Y-Koordinate f&uuml;r System angegeben');
 
-define ("GER_TEXT4", 'no part of $letters');
+define ("GER_TEXT4", 'kein Teil von $letters');
 
 define ("GER_TEXT5", 'Ungltige X-Koordinate f&uuml;r System angegeben');
 
-define ("GER_TEXT6", 'no part of $numbers');
+define ("GER_TEXT6", 'kein Teil von $numbers');
 
 define ("GER_TEXT7", 'Es existiert kein Planet mit den Koordinaten');
 
@@ -46,9 +46,9 @@ define ("GER_TEXT10", 'Gelb');
 
 define ("GER_TEXT11", 'Rot');
 
-define ("GER_TEXT12", 'Flottenbersicht');
+define ("GER_TEXT12", 'Flotten&uuml;bersicht');
 
-define ("GER_TEXT13", 'Umbennenen');
+define ("GER_TEXT13", 'Umbenennen');
 
 define ("GER_TEXT14", 'Schiff');
 
@@ -176,47 +176,47 @@ define ("GER_TEXT78", 'ammo depleted');
 
 define ("GER_TEXT79", 'Scout');
 
-define ("GER_TEXT80", 'Freighter');
+define ("GER_TEXT80", 'Frachter');
 
-define ("GER_TEXT81", 'Coloship');
+define ("GER_TEXT81", 'Koloschiff');
 
-define ("GER_TEXT82", 'Frigate');
+define ("GER_TEXT82", 'Fregatte');
 
-define ("GER_TEXT83", 'Light Cruiser');
+define ("GER_TEXT83", 'Leichter Kreuzer');
 
-define ("GER_TEXT84", 'Cruiser');
+define ("GER_TEXT84", 'Kreuzer');
 
-define ("GER_TEXT85", 'Heavy Cruiser');
+define ("GER_TEXT85", 'Schwerer Kreuzer');
 
-define ("GER_TEXT86", 'Battleship');
+define ("GER_TEXT86", 'Kampfschiff');
 
-define ("GER_TEXT87", 'Orbital Gun');
+define ("GER_TEXT87", 'Orbital Gesch&uuml;tz');
 
-define ("GER_TEXT88", 'Fleet Freighters Handling');
+define ("GER_TEXT88", 'Flotten Frachter Handling');
 
-define ("GER_TEXT89", 'Fleet Status');
+define ("GER_TEXT89", 'Flotten Status');
 
-define ("GER_TEXT90", 'Unit Management');
+define ("GER_TEXT90", 'Einheiten Management');
 
-define ("GER_TEXT91", 'Fleet Orders & Setup');
+define ("GER_TEXT91", 'Flotten Befehle & Einstellungen');
 
-define ("GER_TEXT92", 'Full Armor');
+define ("GER_TEXT92", 'Schutzschild voll');
 
-define ("GER_TEXT93", 'Hull damaged');
+define ("GER_TEXT93", 'H&uuml;lle beschädigt');
 
 define ("GER_TEXT94", 'of which <br> badly');
 
 define ("GER_TEXT95", 'very badly');
 
-define ("GER_TEXT96", 'Full Stock');
+define ("GER_TEXT96", 'volles Lager');
 
-define ("GER_TEXT97", 'Good Stock');
+define ("GER_TEXT97", 'hlab volles Lager');
 
-define ("GER_TEXT98", 'Short Stock');
+define ("GER_TEXT98", 'wenig im Lager');
 
-define ("GER_TEXT99", 'Hull Status');
+define ("GER_TEXT99", 'H&uuml;llen Status');
 
-define ("GER_TEXT100", 'Ammo');
+define ("GER_TEXT100", 'Munition');
 
 define ("GER_TEXT101", 'Flotten Position Karte:');
 
