@@ -27,7 +27,7 @@ define ("GER_TEXT0", 'Erste Seite');
 
 define ("GER_TEXT1", 'Vorherige Seite');
 
-define ("GER_TEXT2", 'Nächste Seite');
+define ("GER_TEXT2", 'N&auml;chste Seite');
 
 define ("GER_TEXT3", 'Letzte Seite');
 
