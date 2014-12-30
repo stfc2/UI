@@ -29,20 +29,20 @@ define ("GER_TEXT119", '<s>Handelszentrum : Schiffabhohl Stelle</s>');
 define ("GER_TEXT120", 'Planeten');
 define ("GER_TEXT121", 'Schiffe');
 
-define ("GER_TEXT200", 'Ingame guide:');
+define ("GER_TEXT200", 'In Game Guide:');
 define ("GER_TEXT201", 'INDEX');
-define ("GER_TEXT202", 'The game');
-define ("GER_TEXT203", 'Planets');
-define ("GER_TEXT204", 'Structures');
-define ("GER_TEXT205", 'Planetary researches');
-define ("GER_TEXT206", 'Star ships');
-define ("GER_TEXT207", 'Ship templates');
-define ("GER_TEXT208", 'Ship components');
-define ("GER_TEXT209", 'Fleets (creation)');
-define ("GER_TEXT210", 'Fleets (moving with Fleets menu)');
-define ("GER_TEXT211", 'Fleets (moving with Tactic menu)');
-define ("GER_TEXT212", 'Fleets (commands)');
-define ("GER_TEXT213", 'Fleets (commands from the orbit)');
+define ("GER_TEXT202", 'Das Spiel');
+define ("GER_TEXT203", 'Planeten');
+define ("GER_TEXT204", 'Strukturen');
+define ("GER_TEXT205", 'Planetare Forschung');
+define ("GER_TEXT206", 'Sternen Kreuzer');
+define ("GER_TEXT207", 'Schiff Templates');
+define ("GER_TEXT208", 'Schiff Komponenten');
+define ("GER_TEXT209", 'Flotten (Erstellung)');
+define ("GER_TEXT210", 'Flotten (bewegen mit Flotten Men&uuml;)');
+define ("GER_TEXT211", 'Flotten (bewegen mit Taktik Men&uuml;)');
+define ("GER_TEXT212", 'Flotten (Kommandos)');
+define ("GER_TEXT213", 'Flotten (Kommandos im Orbit)');
 
 
 // English
