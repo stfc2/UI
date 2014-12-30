@@ -21,9 +21,9 @@
 */
 
 //Deutsch
-define ("GER_TEXT0", 'Du bestitzt nicht die erforderlichen Berechtigungen um diesen Vorgang auszuführen.');
+define ("GER_TEXT0", 'Du bestitzt nicht die erforderlichen Berechtigungen um diesen Vorgang auszuf&uuml;hren.');
 
-define ("GER_TEXT1", 'Du willst dir selbst ne Massmail schicken? Spock würde sagen: "Das klingt nicht logisch!"');
+define ("GER_TEXT1", 'Du willst dir selbst ne Massmail schicken? Spock w&uuml;rde sagen: "Das klingt nicht logisch!"');
 
 define ("GER_TEXT2", 'Kein Nachricht-Titel angegeben');
 
@@ -37,7 +37,7 @@ define ("GER_TEXT6", 'Text:');
 
 define ("GER_TEXT7", 'Signatur:');
 
-define ("GER_TEXT8", 'Übernehmen');
+define ("GER_TEXT8", '&Uuml;bernehmen');
 
 //English
 define ("ENG_TEXT0", 'You do not have the required permissions to perform this operation.');
