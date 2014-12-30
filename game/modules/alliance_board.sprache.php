@@ -33,13 +33,13 @@ define ("GER_TEXT3", 'Der Post-Text ist leer');
 
 define ("GER_TEXT4", 'Board-Index');
 
-define ("GER_TEXT5", 'Neues Thema eröffnen');
+define ("GER_TEXT5", 'Neues Thema er&ouml;ffnen');
 
 define ("GER_TEXT6", 'Titel:');
 
 define ("GER_TEXT7", 'Text:');
 
-define ("GER_TEXT8", 'Übernehmen');
+define ("GER_TEXT8", '&Uuml;bernehmen');
 
 define ("GER_TEXT9", 'Der Thread konnte nicht gefunden werden');
 
@@ -53,19 +53,19 @@ define ("GER_TEXT13", 'Post editieren');
 
 define ("GER_TEXT14", 'Spieler:');
 
-define ("GER_TEXT15", 'Willst du diesen Post wirklich löschen?');
+define ("GER_TEXT15", 'Willst du diesen Post wirklich l&ouml;schen?');
 
-define ("GER_TEXT16", 'Das Löschen des ersten Posts löscht den ganzen Thread.');
+define ("GER_TEXT16", 'Das L&ouml;schen des ersten Posts lÃ¶scht den ganzen Thread.');
 
-define ("GER_TEXT17", '<< Zurück');
+define ("GER_TEXT17", '<< Zur&uuml;ck');
 
-define ("GER_TEXT18", 'Bestätigen');
+define ("GER_TEXT18", 'BestÃ¤tigen');
 
 define ("GER_TEXT19", 'Kein Post angegeben');
 
-define ("GER_TEXT20", '<i>gelöscht</i>');
+define ("GER_TEXT20", '<i>gel&ouml;scht</i>');
 
-define ("GER_TEXT21", 'Neuen Thread eröffnen');
+define ("GER_TEXT21", 'Neuen Thread er&ouml;ffnen');
 
 define ("GER_TEXT22", '<b>Thread-Titel</b>');
 
