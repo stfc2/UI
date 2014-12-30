@@ -190,7 +190,7 @@ define ("GER_TEXT82", 'bauen, bevor Schiffstemplates erstellt werden k&ouml;nnen
 
 define ("GER_TEXT83", 'Schiffe');
 
-define ("GER_TEXT85", 'Torpedo in stock:');
+define ("GER_TEXT85", 'Torpedos im Lager:');
 
 define ("GER_TEXT92", 'Index F.S.:');
 
