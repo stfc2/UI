@@ -86,7 +86,7 @@ define ("GER_TEXT30", '* Verf&uuml;gbar nach ca. 30 Minuten');
 
 define ("GER_TEXT31", 'Tutorial Modus:');
 
-define ("GER_TEXT32", 'STFC-Userkartev');
+define ("GER_TEXT32", 'STFC-Userkarte');
 
 define ("GER_TEXT32a", 'ansehen');
 
@@ -258,7 +258,7 @@ define ("GER_TEXT107", 'Urlaubsmodus');
 
 define ("GER_TEXT108", 'Sittingmodus');
 
-define ("GER_TEXT109", 'Gallery');
+define ("GER_TEXT109", 'Gallerie');
 
 define ("GER_TEXT110", 'Sicherheit');
 
