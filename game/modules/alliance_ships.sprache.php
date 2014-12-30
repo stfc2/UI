@@ -23,7 +23,7 @@
 //deutsch
 define ("GER_TEXT0",'Allianz Schiffe');
 
-define ("GER_TEXT1",'Here there is the list of all your ships.<br>The colors shows the ship&#146;s condition.<br><font color=#80ff80>Green</font> for normal condition <font color=#ffff80>yellow</font> for warning or unusual condition and <font color=#ff8080>red</font> for critial condition.');
+define ("GER_TEXT1",'Liste all deiner Schiffe.<br>Die Frabe zeigt die konditionen deiner ship&#146;s .<br><font color=#80ff80>Gr&uuml;n</font> f&uuml;r normalen Zustand <font color=#ffff80>Gelb</font> f&uuml;r Warnungen <font color=#ff8080>Rot</font> f&uuml;r kritischer Zustand.');
 
 define ("GER_TEXT2",'Spieler suchen');
 
@@ -55,7 +55,7 @@ define ("GER_TEXT15",'Konditions Details');
 
 define ("GER_TEXT16",'Status Details');
 
-define ("GER_TEXT17",'Crew details');
+define ("GER_TEXT17",'Crew Details');
 
 define ("GER_TEXT19",'Naval Contract Code:');
 
@@ -69,7 +69,7 @@ define ("GER_TEXT23",'Das Schiff ist aktiv in einer Mission.');
 
 define ("GER_TEXT24",'Im Raumhafen angedockt.');
 
-define ("GER_TEXT25",'The ship is at rest.');
+define ("GER_TEXT25",'Das Schiff pausiert.');
 
 define ("GER_TEXT26",'Das Schiff ist besch&auml;digt.');
 
@@ -149,7 +149,7 @@ define ("GER_TEXT69", 'Flotte Zustand');
 
 define ("GER_TEXT70", 'Player:');
 
-define ("GER_TEXT71", 'Unnamed');
+define ("GER_TEXT71", 'Unbenannt');
 
 define ("GER_TEXT72", 'Folgende Schiffsklassen zeigen:');
 
