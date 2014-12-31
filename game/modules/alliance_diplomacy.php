@@ -34,7 +34,7 @@ function get_opid($alliance1_id) {
 }
 
 function send_declaration_to_alliances($ally_one,$ally_two,$msg_type) {
-    global $db;
+    global $game,$db;
 
     $ally_one_name = $ally_two_name = 'Unknown';
 
