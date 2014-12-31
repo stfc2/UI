@@ -1,11 +1,11 @@
 <?php
-/*    
-	This file is part of STFC.
-	Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
-		
-	STFC is based on STGC,
-	Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
-	
+/*
+    This file is part of STFC.
+    Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
+
+    STFC is based on STGC,
+    Copyright 2003-2007 by Florian Brede (florian_brede@hotmail.com) and Philipp Schmidt
+
     STFC is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 3 of the License, or
@@ -31,6 +31,133 @@ function get_opid($alliance1_id) {
     global $game;
     
     return ( ($alliance1_id == $game->player['user_alliance']) ? 2 : 1 );
+}
+
+function send_declaration_to_alliances($ally_one,$ally_two,$msg_type) {
+    global $db;
+
+    $ally_one_name = $ally_two_name = 'Unknown';
+
+    // Retrieve alliances names
+    $sql = 'SELECT alliance_id, alliance_name FROM alliance
+            WHERE alliance_id = '.$ally_one.' OR alliance_id ='.$ally_two;
+
+    if(!$q_alliances = $db->query($sql)) {
+        message(DATABASE_ERROR, 'Could not query alliances data');
+    }
+
+    while ($alliance = $db->fetchrow($q_alliances)) {
+        if($ally_one == $alliance['alliance_id']) $ally_one_name = $alliance['alliance_name'];
+        if($ally_two == $alliance['alliance_id']) $ally_two_name = $alliance['alliance_name'];
+    }
+
+    // Prepare message body and title
+    switch($msg_type)
+    {
+        case ALLIANCE_DIPLOMACY_WAR:
+            $title = constant($game->sprache("TEXT7"));
+            $text = constant($game->sprache("TEXT8")).' <b>'.$ally_one_name.'</b>'.constant($game->sprache("TEXT9")).'<b>'.$ally_two_name.'</b>'.constant($game->sprache("TEXT10"));
+        break;
+        case ALLIANCE_DIPLOMACY_NAP:
+            $title = constant($game->sprache("TEXT12"));
+            $text = constant($game->sprache("TEXT13")).' <b>'.$ally_one_name.'</b>'.constant($game->sprache("TEXT14")).'<b>'.$ally_two_name.'</b>'.constant($game->sprache("TEXT15"));
+        break;
+        case ALLIANCE_DIPLOMACY_PACT:
+            $title = constant($game->sprache("TEXT19"));
+            $text = constant($game->sprache("TEXT20")).' <b>'.$ally_one_name.'</b>'.constant($game->sprache("TEXT21")).'<b>'.$ally_two_name.'</b>'.constant($game->sprache("TEXT22"));
+        break;
+    }
+
+    $sender = 0;
+    $act_time = time();
+
+    // Send message to all the members of the two alliances
+    $sql = 'SELECT user_id FROM user
+            WHERE user_alliance = '.$ally_one.' OR user_alliance = '.$ally_two;
+
+    if(!$q_members = $db->query($sql)) {
+        message(DATABASE_ERROR, 'Could not query alliances members data');
+    }
+
+    while ($member = $db->fetchrow($q_members)) {
+        $receiver = $member['user_id'];
+
+        $sql = 'INSERT INTO message (sender, receiver, subject, text, time)
+                VALUES ('.$sender.', '.$receiver.', '.$title.', '.$text.', '.$act_time.')';
+
+        if(!$db->query($sql)) {
+            message(DATABASE_ERROR, 'Could not insert new message for user '.$receiver);
+        }
+
+        $sql = 'UPDATE user SET unread_messages = 1
+                WHERE user_id = '.$receiver;
+
+        if(!$db->query($sql)) {
+            message(DATABASE_ERROR, 'Could not update unread messages for user '.$receiver);
+        }
+    }
+}
+
+function send_declaration_to_alliance($ally_id,$msg_type) {
+    global $game,$db;
+
+    // Retrieve alliance name
+    $selected_alliance = $game->player['user_alliance']; 
+
+    $sql = 'SELECT alliance_name FROM alliance
+            WHERE alliance_id = '.$selected_alliance;
+
+    if(($alliance = $db->queryrow($sql)) === false) {
+        message(DATABASE_ERROR, 'Alliance name could not be read - War Declaration text');
+    }
+
+    // Prepare message body and title
+    switch($type)
+    {
+        case ALLIANCE_DIPLOMACY_WAR:
+            $title = constant($game->sprache("TEXT35"));
+            $text = constant($game->sprache("TEXT36")).$alliance['alliance_name'].constant($game->sprache("TEXT37")); 
+        break;
+        case ALLIANCE_DIPLOMACY_NAP:
+            $title = constant($game->sprache("TEXT38"));
+            $text = constant($game->sprache("TEXT36")).$alliance['alliance_name'].constant($game->sprache("TEXT83")).$alliances['alliance_name'].constant($game->sprache("TEXT84"));
+        break;
+        case ALLIANCE_DIPLOMACY_PACT:
+        break;
+    }
+
+    $sender = 0;
+    $act_time = time();
+
+    // Send declaration to the other alliance
+    if($type == ALLIANCE_DIPLOMACY_WAR)
+        $sql = 'SELECT user_id FROM user
+                WHERE user_alliance = '.$ally_id;
+    else
+        $sql = 'SELECT user_id FROM user
+                WHERE user_alliance = '.$ally_id.' AND user_alliance_status >= 3';
+
+    if(!$q_members = $db->query($sql)) {
+        message(DATABASE_ERROR, 'Could not query alliances members data');
+    }
+
+    while ($member = $db->fetchrow($q_members)) {
+        $receiver = $member['user_id'];
+
+        $sql = 'INSERT INTO message (sender, receiver, subject, text, time)
+                VALUES ('.$sender.', '.$receiver.', '.$title.', '.$text.', '.$act_time.')';
+
+        if(!$db->query($sql)) {
+            message(DATABASE_ERROR, 'Could not insert new message for user '.$receiver);
+        }
+
+        $sql = 'UPDATE user SET unread_messages = 1
+                WHERE user_id = '.$receiver;
+
+        if(!$db->query($sql)) {
+            message(DATABASE_ERROR, 'Could not update unread messages for user '.$receiver);
+        }
+    }
 }
 
 $game->init_player();
@@ -95,34 +222,10 @@ if(!empty($_GET['do'])) {
                         break;
                         
                         case $opid:
-  $ally_one=$diplomacy['alliance2_id'];
-  $ally_two=$diplomacy['alliance1_id'];
-  $sql2 = "SELECT user_id FROM user WHERE user_alliance =$ally_one or user_alliance=$ally_two";
-	$result2 = mysql_query($sql2) OR die(mysql_error());
-	$sender = 0;
-	$selected_alliance = $game->player['user_alliance']; 
-	$sql3 = "SELECT alliance_name FROM alliance WHERE alliance_id = $selected_alliance";
-	$sql6 = "SELECT alliance_id,alliance_name FROM alliance WHERE alliance_id =$ally_one or alliance_id=$ally_two";
-	if(($alliances = $db->queryrow($sql3))=== false) {
-        message(DATABASE_ERROR, 'Alliance name could not be read - Alliance / NAP text');
-    	}
+                            $ally_one=$diplomacy['alliance2_id'];
+                            $ally_two=$diplomacy['alliance1_id'];
+                            send_declaration_to_alliances($ally_one,$ally_two,ALLIANCE_DIPLOMACY_WAR);
 
-	$betreff = constant($game->sprache("TEXT7"));
-	$sql6=mysql_query($sql6);
-	while ($werte=mysql_fetch_assoc($sql6)) {
-	if($ally_one==$werte['alliance_id'])$ally_one=$werte['alliance_name'];
-	if($ally_two==$werte['alliance_id'])$ally_two=$werte['alliance_name'];
-	}
-		$text = constant($game->sprache("TEXT8")).' <b>'.$ally_one.'</b>'.constant($game->sprache("TEXT9")).'<b>'.$ally_two.'</b> <b>'.constant($game->sprache("TEXT10")); 
-	$act_time = time();
-	while ($row = mysql_fetch_assoc($result2)) {
-    	  foreach ($row as $key => $reciever) {  
-    	$sql4 = "INSERT INTO message (sender, receiver, subject, text, time) VALUES ('$sender', '$reciever', '$betreff', '$text', '$act_time')";
-        	$result4 = mysql_query($sql4);
-    	$sql5 = "UPDATE user SET unread_messages = 1 WHERE user_id = '$reciever'";
-        	$result5 = mysql_query($sql5);
-   	  }
-	}
                             $sql = 'DELETE FROM alliance_diplomacy
                                     WHERE ad_id = '.$ad_id;
                                     
@@ -145,35 +248,11 @@ if(!empty($_GET['do'])) {
                             if($mpid == 1) {
                                 message(NOTICE, constant($game->sprache("TEXT11")));
                             }
-                            
- $ally_one=$diplomacy['alliance2_id'];
-  $ally_two=$diplomacy['alliance1_id'];
-  $sql2 = "SELECT user_id FROM user WHERE user_alliance =$ally_one or user_alliance=$ally_two";
-	$result2 = mysql_query($sql2) OR die(mysql_error());
-	$sender = 0;
-	$selected_alliance = $game->player['user_alliance']; 
-	$sql3 = "SELECT alliance_name FROM alliance WHERE alliance_id = $selected_alliance";
-	$sql6 = "SELECT alliance_id,alliance_name FROM alliance WHERE alliance_id =$ally_one or alliance_id=$ally_two";
-	if(($alliances = $db->queryrow($sql3))=== false) {
-        message(DATABASE_ERROR, 'Alliance name could not be read - Alliance / NAP text');
-    	}
 
-	$betreff = constant($game->sprache("TEXT12"));
-	$sql6=mysql_query($sql6);
-	while ($werte=mysql_fetch_assoc($sql6)) {
-	if($ally_one==$werte['alliance_id'])$ally_one=$werte['alliance_name'];
-	if($ally_two==$werte['alliance_id'])$ally_two=$werte['alliance_name'];
-	}
-	$text = constant($game->sprache("TEXT13")).'<b>'.$ally_one.'</b>'.constant($game->sprache("TEXT14")).'<b>'.$ally_two.'</b>'.constant($game->sprache("TEXT15")); 
-	$act_time = time();
-	while ($row = mysql_fetch_assoc($result2)) {
-    	  foreach ($row as $key => $reciever) {  
-    	$sql4 = "INSERT INTO message (sender, receiver, subject, text, time) VALUES ('$sender', '$reciever', '$betreff', '$text', '$act_time')";
-        	$result4 = mysql_query($sql4);
-    	$sql5 = "UPDATE user SET unread_messages = 1 WHERE user_id = '$reciever'";
-        	$result5 = mysql_query($sql5);
-   	  }
-	}                       
+                            $ally_one=$diplomacy['alliance2_id'];
+                            $ally_two=$diplomacy['alliance1_id'];
+                            send_declaration_to_alliances($ally_one,$ally_two,ALLIANCE_DIPLOMACY_NAP);
+
                             $sql = 'UPDATE alliance_diplomacy
                                     SET date = '.$game->TIME.',
                                     status = 0
@@ -226,34 +305,10 @@ if(!empty($_GET['do'])) {
                     if($mpid == 1) {
                         message(NOTICE, constant($game->sprache("TEXT17")));
                     }
- $ally_one=$diplomacy['alliance2_id'];
-  $ally_two=$diplomacy['alliance1_id'];
-  $sql2 = "SELECT user_id FROM user WHERE user_alliance =$ally_one or user_alliance=$ally_two";
-	$result2 = mysql_query($sql2) OR die(mysql_error());
-	$sender = 0;
-	$selected_alliance = $game->player['user_alliance']; 
-	$sql3 = "SELECT alliance_name FROM alliance WHERE alliance_id = $selected_alliance";
-	$sql6 = "SELECT alliance_id,alliance_name FROM alliance WHERE alliance_id =$ally_one or alliance_id=$ally_two";
-	if(($alliances = $db->queryrow($sql3))=== false) {
-        message(DATABASE_ERROR, 'Alliance name could not be read - Alliance / NAP text');
-    	}
+                    $ally_one=$diplomacy['alliance2_id'];
+                    $ally_two=$diplomacy['alliance1_id'];
+                    send_declaration_to_alliances($ally_one,$ally_two,ALLIANCE_DIPLOMACY_PACT);
 
-	$betreff = constant($game->sprache("TEXT19"));
-	$sql6=mysql_query($sql6);
-	while ($werte=mysql_fetch_assoc($sql6)) {
-	if($ally_one==$werte['alliance_id'])$ally_one=$werte['alliance_name'];
-	if($ally_two==$werte['alliance_id'])$ally_two=$werte['alliance_name'];
-	}
-	$text = constant($game->sprache("TEXT20")).$ally_one.constant($game->sprache("TEXT21")).$ally_two.constant($game->sprache("TEXT22")); 
-	$act_time = time();
-	while ($row = mysql_fetch_assoc($result2)) {
-    	  foreach ($row as $key => $reciever) {  
-    	$sql4 = "INSERT INTO message (sender, receiver, subject, text, time) VALUES ('$sender', '$reciever', '$betreff', '$text', '$act_time')";
-        	$result4 = mysql_query($sql4);
-    	$sql5 = "UPDATE user SET unread_messages = 1 WHERE user_id = '$reciever'";
-        	$result5 = mysql_query($sql5);
-   	  }
-	}                     
                     $sql = 'UPDATE alliance_diplomacy
                             SET date = '.$game->TIME.',
                                 status = 0
@@ -583,95 +638,22 @@ elseif(!empty($_POST['new_submit'])) {
     switch($type) {
         case ALLIANCE_DIPLOMACY_WAR:
 
-       if($alliance['alliance_points']<=500 || $alliance['alliance_member']<=1) {
-           message(NOTICE, constant($game->sprache("TEXT82")));
-       }
+            if($alliance['alliance_points']<=500 || $alliance['alliance_member']<=1) {
+                message(NOTICE, constant($game->sprache("TEXT82")));
+            }
 
             $sql = 'INSERT INTO alliance_diplomacy (alliance1_id, alliance2_id, type, date, status)
                     VALUES ('.$game->player['user_alliance'].', '.$opid.', '.ALLIANCE_DIPLOMACY_WAR.', '.$game->TIME.', 0)';
-                
-	$sql2 = "SELECT user_id FROM user WHERE user_alliance = $opid";
-	$result2 = mysql_query($sql2) OR die(mysql_error());
-	
-	$sender = 0;
-	$betreff = constant($game->sprache("TEXT35"));
-	
-	$selected_alliance = $game->player['user_alliance']; 
 
-	$sql3 = "SELECT alliance_name FROM alliance WHERE alliance_id = $selected_alliance";
-	
-	if(($alliances = $db->queryrow($sql3)) === false) {
-        message(DATABASE_ERROR, 'Alliance name could not be read - War Declaration text');
-    	}	
-
-	$text = constant($game->sprache("TEXT36")).$alliances['alliance_name'].constant($game->sprache("TEXT37")); 
-
-	$act_time = time();
-
-	while ($row = mysql_fetch_assoc($result2)) {
-    	  foreach ($row as $key => $reciever) {
- 
-    
-    	$sql4 = "INSERT INTO message (sender, receiver, subject, text, time) VALUES ('$sender', '$reciever', '$betreff', '$text', '$act_time')";
-        	$result4 = mysql_query($sql4);
-
-    	$sql5 = "UPDATE user SET unread_messages = 1 WHERE user_id = '$reciever'";
-        	$result5 = mysql_query($sql5);
-
-   	  }
-	}
-
-	break;	
+            send_declaration_to_alliance($opid,ALLIANCE_DIPLOMACY_WAR);
+        break;
 
         case ALLIANCE_DIPLOMACY_NAP:
         case ALLIANCE_DIPLOMACY_PACT:
             $sql = 'INSERT INTO alliance_diplomacy (alliance1_id, alliance2_id, type, date, status)
                     VALUES ('.$game->player['user_alliance'].', '.$opid.', '.$type.', 0, -1)';
-	
-       $sql2 = "SELECT user_id FROM user WHERE user_alliance = $opid AND user_alliance_status >= 3";
-	$result2 = mysql_query($sql2) OR die(mysql_error());
-	
-	$sender = 0;
 
-	$selected_alliance = $game->player['user_alliance']; 
-
-	$sql3 = "SELECT alliance_name FROM alliance WHERE alliance_id = $selected_alliance";
-	
-	if(($alliances = $db->queryrow($sql3)) === false) {
-        message(DATABASE_ERROR, 'Alliance name could not be read - Alliance / NAP text');
-    	}
-
-	if($type==ALLIANCE_DIPLOMACY_NAP) {
-
-	$betreff = constant($game->sprache("TEXT38"));
-
-	$text = constant($game->sprache("TEXT36")).$alliances['alliance_name'].constant($game->sprache("TEXT83")).$alliances['alliance_name'].constant($game->sprache("TEXT84")); 
-
-	}
-
-	else {
-
-	$betreff = constant($game->sprache("TEXT85"));
-
-	$text = constant($game->sprache("TEXT36")).$alliances['alliance_name'].constant($game->sprache("TEXT86")).$alliances['alliance_name'].constant($game->sprache("TEXT84")); 
-
-	}
-
-	$act_time = time();
-
-	while ($row = mysql_fetch_assoc($result2)) {
-    	  foreach ($row as $key => $reciever) {
- 
-    
-    	$sql4 = "INSERT INTO message (sender, receiver, subject, text, time) VALUES ('$sender', '$reciever', '$betreff', '$text', '$act_time')";
-        	$result4 = mysql_query($sql4);
-
-    	$sql5 = "UPDATE user SET unread_messages = 1 WHERE user_id = '$reciever'";
-        	$result5 = mysql_query($sql5);
-
-   	  }
-	}
-
+            send_declaration_to_alliance($opid,$type);
         break;
     }
     
