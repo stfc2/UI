@@ -130,19 +130,19 @@ define ("GER_TEXT52", 'Technologien');
 
 define ("GER_TEXT53", 'Komponenten');
 
-define ("GER_TEXT54", 'Kinder');
+define ("GER_TEXT54", 'Geologie');
 
-define ("GER_TEXT55", 'Activity');
+define ("GER_TEXT55", 'Activit&auml;t');
 
 define ("GER_TEXT56", 'Angriff:');
 
 define ("GER_TEXT57", 'Verteidigung:');
 
-define ("GER_TEXT58", 'Allocation');
+define ("GER_TEXT58", 'Struktur Daten');
 
-define ("GER_TEXT59", 'Structure Points Available');
+define ("GER_TEXT59", 'Struktur Punkte m&ouml;glich');
 
-define ("GER_TEXT60", 'Structure Points Used');
+define ("GER_TEXT60", 'Struktur Pukte erreicht');
 
 
 //English

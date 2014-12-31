@@ -20,13 +20,13 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 //TEDESCO
-define ("GER_TEXT0",'Settlers Colonies:');
+define ("GER_TEXT0",'Settlers Kolonien:');
 
-define ("GER_TEXT1", 'Relations');
+define ("GER_TEXT1", 'Verh&auml;ltnis');
 
-define ("GER_TEXT2", 'Founder');
+define ("GER_TEXT2", 'Gr&uuml;nder');
 
-define ("GER_TEXT3", 'Missions');
+define ("GER_TEXT3", 'Missionen');
 
 define ("GER_TEXT4", 'Events');
 
@@ -36,13 +36,13 @@ define ("GER_TEXT10", 'Name');
 
 define ("GER_TEXT11", 'Position');
 
-define ("GER_TEXT12", 'Class');
+define ("GER_TEXT12", 'Klasse');
 
-define ("GER_TEXT13", 'Relation Value');
+define ("GER_TEXT13", 'Verh&auml;ltnis Wert');
 
-define ("GER_TEXT14", 'Linked planet');
+define ("GER_TEXT14", 'Verlinkter Planet');
 
-define ("GER_TEXT15", 'none');
+define ("GER_TEXT15", 'keine');
 
 define ("GER_TEXT16", 'Link');
 
@@ -50,27 +50,27 @@ define ("GER_TEXT17", 'UnLink');
 
 define ("GER_TEXT18", 'Mission');
 
-define ("GER_TEXT19", 'Ship');
+define ("GER_TEXT19", 'Schiff');
 
-define ("GER_TEXT20", 'Alive');
+define ("GER_TEXT20", 'Lebt');
 
-define ("GER_TEXT21", 'Active');
+define ("GER_TEXT21", 'Activ');
 
-define ("GER_TEXT22", 'Recap');
+define ("GER_TEXT22", 'Rekapitulation');
 
-define ("GER_TEXT23", 'Value');
+define ("GER_TEXT23", 'Wert');
 
 define ("GER_TEXT24", 'Ally');
 
 define ("GER_TEXT25", 'Lev.');
 
-define ("GER_TEXT26", 'All');
+define ("GER_TEXT26", 'Alle');
 
-define ("GER_TEXT27", 'Academies');
+define ("GER_TEXT27", 'Akademieen');
 
-define ("GER_TEXT28", 'Shipyards');
+define ("GER_TEXT28", 'Raumhafen');
 
-define ("GER_TEXT29", 'Mines');
+define ("GER_TEXT29", 'Minen');
 
 //INGLESE
 define ("ENG_TEXT0",'Settlers Colonies:');

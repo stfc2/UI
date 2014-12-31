@@ -74,7 +74,7 @@ define ("GER_TEXT23", 'Handelsroute');
 
 define ("GER_TEXT24", 'Angreifen');
 
-define ("GER_TEXT25", 'Pluendern');
+define ("GER_TEXT25", 'Pl&uuml;ndern');
 
 define ("GER_TEXT26", 'Bombardieren');
 

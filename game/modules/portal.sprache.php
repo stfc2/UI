@@ -36,7 +36,7 @@ define ("GER_TEXT5", 'Spieler');
 
 define ("GER_TEXT6", 'News:');
 
-define ("GER_TEXT7", 'Galaxiecarte:');
+define ("GER_TEXT7", 'Galaxiekarte:');
 
 define ("GER_TEXT8", 'Userkarte:');
 
@@ -44,13 +44,13 @@ define ("GER_TEXT9", 'Neuste Skins:');
 
 define ("GER_TEXT10", 'GFX-Pack');
 
-define ("GER_TEXT11", 'Übersicht aller Skins');
+define ("GER_TEXT11", '&Uuml;bersicht aller Skins');
 
 define ("GER_TEXT12", 'Du darfst nur alle 15 Sekunden in der Shoutbox etwas posten. In 15 Sekunden <b>ab jetzt</b> wird diese Sperre aufgehoben sein.');
 
 define ("GER_TEXT13", 'Die Umfrage, zu der abgestimmt wurde, existiert nicht');
 
-define ("GER_TEXT14", 'Die gewählte Antwortmöglichkeit existiert nicht');
+define ("GER_TEXT14", 'Die gew&auml;hlte Antwortm&ouml;glichkeit existiert nicht');
 
 define ("GER_TEXT15", 'Du hast bei dieser Umfrage bereits deine Stimme abgegegen');
 
@@ -64,7 +64,7 @@ define ("GER_TEXT19", 'Autor:');
 
 define ("GER_TEXT20", 'Antworten:');
 
-define ("GER_TEXT21", 'Last von:');
+define ("GER_TEXT21", 'Letzte von:');
 
 define ("GER_TEXT22", 'Datum:');
 

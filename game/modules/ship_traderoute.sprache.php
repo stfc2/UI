@@ -36,11 +36,11 @@ define ("GER_TEXT5", 'Ung&uuml;ltiges Koordinatenformat');
 
 define ("GER_TEXT5a", 'Ung&uuml;ltige Y-Koordinate f&uuml;r System angegeben');
 
-define ("GER_TEXT5b", 'no part of $letters');
+define ("GER_TEXT5b", 'kein Teil von $letters');
 
 define ("GER_TEXT5c", 'Ungltige X-Koordinate f&uuml;r System angegeben');
 
-define ("GER_TEXT5d", 'no part of $numbers');
+define ("GER_TEXT5d", 'kein Teil von $numbers');
 
 define ("GER_TEXT6", 'Ex existiert kein Planet mit den Koordinaten ');
 

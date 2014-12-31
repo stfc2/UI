@@ -59,7 +59,7 @@ define ("GER_TEXT16", 'Das L&ouml;schen des ersten Posts löscht den ganzen Thre
 
 define ("GER_TEXT17", '<< Zur&uuml;ck');
 
-define ("GER_TEXT18", 'Bestätigen');
+define ("GER_TEXT18", 'Best&auml;tigen');
 
 define ("GER_TEXT19", 'Kein Post angegeben');
 

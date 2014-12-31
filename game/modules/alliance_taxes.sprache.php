@@ -27,7 +27,7 @@ define ("GER_TEXT0", 'Erste Seite');
 
 define ("GER_TEXT1", 'Vorherige Seite');
 
-define ("GER_TEXT2", 'Nächste Seite');
+define ("GER_TEXT2", 'N&auml;chste Seite');
 
 define ("GER_TEXT3", 'Letzte Seite');
 
@@ -39,7 +39,7 @@ define ("GER_TEXT6", 'Du hast nicht die erforderlichen Rechte zum Betrachten/Bea
 
 define ("GER_TEXT7", 'Allianzkasse');
 
-define ("GER_TEXT8", 'Übersicht');
+define ("GER_TEXT8", '&Uuml;bersicht');
 
 define ("GER_TEXT9", 'Gelagerte Ressourcen');
 
@@ -65,11 +65,11 @@ define ("GER_TEXT19", 'Grund');
 
 define ("GER_TEXT20", 'Datum');
 
-define ("GER_TEXT21", 'Begründung');
+define ("GER_TEXT21", 'Begr&uuml;ndung');
 
 define ("GER_TEXT22", 'Details');
 
-define ("GER_TEXT23", 'Auszahlung tätigen');
+define ("GER_TEXT23", 'Auszahlung t&auml;tigen');
 
 define ("GER_TEXT24", 'Spieler');
 
@@ -87,25 +87,25 @@ define ("GER_TEXT26d", '36 Std.');
 
 define ("GER_TEXT27", 'Dauer');
 
-define ("GER_TEXT28", 'Steuersatz ändern');
+define ("GER_TEXT28", 'Steuersatz &auml;ndern');
 
 define ("GER_TEXT29", 'Gesamtsumme eines Spielers');
 
 define ("GER_TEXT30", 'Metall');
 
-define ("GER_TEXT31", 'Minerals');
+define ("GER_TEXT31", 'Mineral');
 
 define ("GER_TEXT32", 'Latinum');
 
 define ("GER_TEXT33", 'Auszahlen');
 
-define ("GER_TEXT34", 'Ändern');
+define ("GER_TEXT34", '&Auml;ndern');
 
 define ("GER_TEXT35", 'Anzeigen');
 
-define ("GER_TEXT36", 'Gesamtübersicht anzeigen');
+define ("GER_TEXT36", 'Gesamt&uuml;bersicht anzeigen');
 
-define ("GER_TEXT37", 'Hier wird die Menge aller Auszahlungen angezeigt die ein User jemals getätigt hat.');
+define ("GER_TEXT37", 'Hier wird die Menge aller Auszahlungen angezeigt die ein User jemals get&auml;tigt hat.');
 
 
 

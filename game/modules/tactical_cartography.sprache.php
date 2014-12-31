@@ -234,7 +234,7 @@ define ("GER_TEXT129", ' a colony ship of ');
 
 define ("GER_TEXT130", ' starts a new independent colony!');
 
-define ("GER_TEXT131", '<span style="color: #CC6600;">arancio</span> - Pianeta Indipendente<br>');
+define ("GER_TEXT131", '<span style="color: #CC6600;">orange</span> - unabh&auml;ngige Kolonie<br>');
 
 
 //English

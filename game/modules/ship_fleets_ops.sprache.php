@@ -135,9 +135,9 @@ define ("GER_TEXT55", 'Contract Code:');
 
 define ("GER_TEXT56", 'Geba&uuml;de datum:');
 
-define ("GER_TEXT57", 'On mission:');
+define ("GER_TEXT57", 'auf Mission:');
 
-define ("GER_TEXT58", 'Docked');
+define ("GER_TEXT58", 'Angedockt');
 
 define ("GER_TEXT59", 'Du kannst nicht &auml;ndern, die Ausschreibung Phase einer Flotte in der Sitzung Modus.');
 

@@ -23,15 +23,15 @@
 //deutsch
 define ("GER_TEXT0",'Allianz Schiffe');
 
-define ("GER_TEXT1",'Here there is the list of all your ships.<br>The colors shows the ship&#146;s condition.<br><font color=#80ff80>Green</font> for normal condition <font color=#ffff80>yellow</font> for warning or unusual condition and <font color=#ff8080>red</font> for critial condition.');
+define ("GER_TEXT1",'Liste all deiner Schiffe.<br>Die Frabe zeigt die konditionen deiner ship&#146;s .<br><font color=#80ff80>Gr&uuml;n</font> f&uuml;r normalen Zustand <font color=#ffff80>Gelb</font> f&uuml;r Warnungen <font color=#ff8080>Rot</font> f&uuml;r kritischer Zustand.');
 
 define ("GER_TEXT2",'Spieler suchen');
 
 define ("GER_TEXT3",'M&ouml;gliche Namen:');
 
-define ("GER_TEXT4",'List');
+define ("GER_TEXT4",'Liste');
 
-define ("GER_TEXT5",'Klass:');
+define ("GER_TEXT5",'Klasse:');
 
 define ("GER_TEXT6",'Name:');
 
@@ -43,45 +43,45 @@ define ("GER_TEXT9",'Status:');
 
 define ("GER_TEXT10",'Crew:');
 
-define ("GER_TEXT11",'Geba&uuml;de datum:');
+define ("GER_TEXT11",'Geba&uuml;de Datum:');
 
-define ("GER_TEXT12",'Class details');
+define ("GER_TEXT12",'Klassen Details');
 
-define ("GER_TEXT13",'Name details');
+define ("GER_TEXT13",'Namen Details');
 
-define ("GER_TEXT14",'Position details');
+define ("GER_TEXT14",'Positions Details');
 
-define ("GER_TEXT15",'Condition details');
+define ("GER_TEXT15",'Konditions Details');
 
-define ("GER_TEXT16",'Status details');
+define ("GER_TEXT16",'Status Details');
 
-define ("GER_TEXT17",'Crew details');
+define ("GER_TEXT17",'Crew Details');
 
 define ("GER_TEXT19",'Naval Contract Code:');
 
-define ("GER_TEXT20",'Not registered');
+define ("GER_TEXT20",'Nicht registriert');
 
-define ("GER_TEXT21",'In stationary orbit at:');
+define ("GER_TEXT21",'Stationiert im Orbit von:');
 
-define ("GER_TEXT22",'On the move.');
+define ("GER_TEXT22",'In Bewegung.');
 
-define ("GER_TEXT23",'The ship is in active service.');
+define ("GER_TEXT23",'Das Schiff ist aktiv in einer Mission.');
 
-define ("GER_TEXT24",'Moored in the spaceport.');
+define ("GER_TEXT24",'Im Raumhafen angedockt.');
 
-define ("GER_TEXT25",'The ship is at rest.');
+define ("GER_TEXT25",'Das Schiff pausiert.');
 
-define ("GER_TEXT26",'The ship is damaged.');
+define ("GER_TEXT26",'Das Schiff ist besch&auml;digt.');
 
-define ("GER_TEXT27",'The ship is seriously damaged.');
+define ("GER_TEXT27",'Das Schiff ist schwer besch&auml;digt.');
 
-define ("GER_TEXT28",'The ship is in repair:');
+define ("GER_TEXT28",'Das Schiff ist in Reparatur:');
 
-define ("GER_TEXT29",'The ship is in demolition:');
+define ("GER_TEXT29",'Das Schiff wird zerlegt:');
 
-define ("GER_TEXT30",'The ship is for sale.');
+define ("GER_TEXT30",'Das Schiff ist zu Verkaufen.');
 
-define ("GER_TEXT31",'The ships has no crew.');
+define ("GER_TEXT31",'Das Schiff hat keine Besatzung.');
 
 define ("GER_TEXT32",'<< Zur&uuml;ck');
 
@@ -149,7 +149,7 @@ define ("GER_TEXT69", 'Flotte Zustand');
 
 define ("GER_TEXT70", 'Player:');
 
-define ("GER_TEXT71", 'Unnamed');
+define ("GER_TEXT71", 'Unbenannt');
 
 define ("GER_TEXT72", 'Folgende Schiffsklassen zeigen:');
 
@@ -161,9 +161,9 @@ define ("GER_TEXT75", 'Mittlere Schiffe');
 
 define ("GER_TEXT76", 'Schwere Schiffe');
 
-define ("GER_TEXT77", 'On mission:');
+define ("GER_TEXT77", 'Auf Mission:');
 
-define ("GER_TEXT78", 'Docked');
+define ("GER_TEXT78", 'Angedockt');
 
 
 //English
