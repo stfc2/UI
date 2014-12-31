@@ -116,13 +116,15 @@ function send_declaration_to_alliance($ally_id,$msg_type) {
     {
         case ALLIANCE_DIPLOMACY_WAR:
             $title = constant($game->sprache("TEXT35"));
-            $text = constant($game->sprache("TEXT36")).$alliance['alliance_name'].constant($game->sprache("TEXT37")); 
+            $text = constant($game->sprache("TEXT36")).$alliance['alliance_name'].constant($game->sprache("TEXT37"));
         break;
         case ALLIANCE_DIPLOMACY_NAP:
             $title = constant($game->sprache("TEXT38"));
-            $text = constant($game->sprache("TEXT36")).$alliance['alliance_name'].constant($game->sprache("TEXT83")).$alliances['alliance_name'].constant($game->sprache("TEXT84"));
+            $text = constant($game->sprache("TEXT36")).$alliance['alliance_name'].constant($game->sprache("TEXT83")).$alliance['alliance_name'].constant($game->sprache("TEXT84"));
         break;
         case ALLIANCE_DIPLOMACY_PACT:
+            $title = constant($game->sprache("TEXT85"));
+            $text = constant($game->sprache("TEXT36")).$alliance['alliance_name'].constant($game->sprache("TEXT86")).$alliance['alliance_name'].constant($game->sprache("TEXT84"));
         break;
     }
 
