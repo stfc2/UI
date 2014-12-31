@@ -98,7 +98,7 @@ function send_declaration_to_alliances($ally_one,$ally_two,$msg_type) {
     }
 }
 
-function send_declaration_to_alliance($ally_id,$msg_type) {
+function send_declaration_to_alliance($ally_id,$type) {
     global $game,$db;
 
     // Retrieve alliance name
@@ -112,7 +112,7 @@ function send_declaration_to_alliance($ally_id,$msg_type) {
     }
 
     // Prepare message body and title
-    switch($msg_type)
+    switch($type)
     {
         case ALLIANCE_DIPLOMACY_WAR:
             $title = constant($game->sprache("TEXT35"));
