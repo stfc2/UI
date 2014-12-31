@@ -22,7 +22,7 @@
 
 
 
-include_once('/home/stfc/public_html/config.inc.php');
+include_once('/home/stfc/config.inc.php');
 
 // Line break
 
