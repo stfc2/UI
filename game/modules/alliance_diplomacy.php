@@ -68,6 +68,9 @@ function send_declaration_to_alliances($ally_one,$ally_two,$msg_type) {
         break;
     }
 
+    // Convert HTML special chars
+    $text = htmlspecialchars($text);
+
     $sender = 0;
     $act_time = time();
 
@@ -83,7 +86,7 @@ function send_declaration_to_alliances($ally_one,$ally_two,$msg_type) {
         $receiver = $member['user_id'];
 
         $sql = 'INSERT INTO message (sender, receiver, subject, text, time)
-                VALUES ('.$sender.', '.$receiver.', '.$title.', '.$text.', '.$act_time.')';
+                VALUES ('.$sender.', '.$receiver.', "'.$title.'", "'.$text.'", '.$act_time.')';
 
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not insert new message for user '.$receiver);
@@ -128,6 +131,9 @@ function send_declaration_to_alliance($ally_id,$type) {
         break;
     }
 
+    // Convert HTML special chars
+    $text = htmlspecialchars($text);
+
     $sender = 0;
     $act_time = time();
 
@@ -147,7 +153,7 @@ function send_declaration_to_alliance($ally_id,$type) {
         $receiver = $member['user_id'];
 
         $sql = 'INSERT INTO message (sender, receiver, subject, text, time)
-                VALUES ('.$sender.', '.$receiver.', '.$title.', '.$text.', '.$act_time.')';
+                VALUES ('.$sender.', '.$receiver.', "'.$title.'", "'.$text.'", '.$act_time.')';
 
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not insert new message for user '.$receiver);
