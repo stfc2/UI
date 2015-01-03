@@ -249,6 +249,9 @@ define ('USER_WHOLE_SYSTEM', 1);
 // User start with a boosted capital planet
 define ('USER_START_BOOST', 0);
 
+// User maximum number of planets
+define ('USER_MAX_PLANETS', 40);
+ 
 // User building queue length
 define ('BUILDING_QUEUE_LEN', 2);
 
