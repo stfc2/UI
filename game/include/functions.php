@@ -188,18 +188,28 @@ function message($type, $message, $add = false) {
 		break;
 
 		case DATABASE_ERROR:
-			if(!is_object($add)) {
-				global $db;
+            // Check if we're called from the scheduler or the UI
+            if (IN_SCHEDULER) {
+                $file = TICK_LOG_FILE;
+                $message_log = $message."<br>\n";
+            }
+            else {
+                if(!is_object($add)) {
+                    global $db;
 
-				$add = &$db;
-			}
+                    $add = &$db;
+                }
 
-			echo '<span style="font-size: 20px; font-family: Verdana, Arial, Helvetica, sans-serif;"><b>Frontline Combat :: Database Error</b></span><hr>'.
-			'<span style="font-size: 11px; font-family: Verdana, Arial, Helvetica, sans-serif;">'.$message.'<br><br>'.$add->error['message'].' ('.$add->error['number'].')<br><br>'.$add->error['sql'].'</span>';
+                echo '<span style="font-size: 20px; font-family: Verdana, Arial, Helvetica, sans-serif;"><b>Frontline Combat :: Database Error</b></span><hr>'.
+                '<span style="font-size: 11px; font-family: Verdana, Arial, Helvetica, sans-serif;">'.$message.'<br><br>'.$add->error['message'].' ('.$add->error['number'].')<br><br>'.$add->error['sql'].'</span>';
 
-			$fp = fopen(ERROR_LOG_FILE, 'a');
+                $file = ERROR_LOG_FILE;
+                $message_log = '<hr><br><br><br><br><i>'.date('d.m.y H:i:s', time()).'</i>&nbsp;&nbsp;&nbsp;<b>User:</b>&nbsp;'.$username.'&nbsp;&nbsp;&nbsp;<b>Database Error:</b><br>'.$message.'<br><br>'.$add->error['message'].' ('.$add->error['number'].')<br><br>'.$add->error['sql']."\n";
+            }
+
+			$fp = fopen($file, 'a');
 			if($fp) {
-			    fwrite($fp, '<hr><br><br><br><br><i>'.date('d.m.y H:i:s', time()).'</i>&nbsp;&nbsp;&nbsp;<b>User:</b>&nbsp;'.$username.'&nbsp;&nbsp;&nbsp;<b>Database Error:</b><br>'.$message.'<br><br>'.$add->error['message'].' ('.$add->error['number'].')<br><br>'.$add->error['sql']."\n");
+			    fwrite($fp, $message_log);
 			    fclose($fp);
 			}
 		break;
