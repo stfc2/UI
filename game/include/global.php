@@ -247,16 +247,16 @@ define ('USER_CHOOSE_QUADRANT', 1);
 define ('USER_WHOLE_SYSTEM', 1);
 
 // User start with a boosted capital planet
-define ('USER_START_BOOST', 0);
+define ('USER_START_BOOST', 1);
 
 // User maximum number of planets
-define ('USER_MAX_PLANETS', 40);
+define ('USER_MAX_PLANETS', 400);
  
 // User building queue length
-define ('BUILDING_QUEUE_LEN', 2);
+define ('BUILDING_QUEUE_LEN', 6);
 
 // Min. points to create auctions
-define('MIN_POINTS_AUCTIONS', USER_START_BOOST ? 1500 : 400);
+define ('MIN_POINTS_AUCTIONS', USER_START_BOOST ? 1500 : 400);
 
 define ('HOME_SYSTEM_PRIVATE', 1);
 
@@ -361,9 +361,19 @@ $ship_rank_bonus = array(
 
 );
 
-
-
-
+$ship_rank_tier = array(
+    
+ 1=> 120,
+ 
+ 2=> 140,
+    
+ 3=> 160,
+ 
+ 4=> 180,
+    
+ 5=> 199,
+    
+);
 
 
 
@@ -1899,5 +1909,35 @@ $PLANETS_DATA = array(
 
 );
 
+// codice ->  testo descrittivo, flag nascosto vero/falso, razza
+$SETL_EVENTS = array(
+
+    100  => array('Territorio di Caccia', true, 9),
+
+    101  => array('Territorio di Caccia', false, 9),
+    
+    120  => array('Presidio: Multiculturalismo', 0),
+    
+    121  => array('Presidio: Supremazia Tecnologica', false, 1),
+    
+    122  => array('Presidio: Sfida del Coraggio', false, 2),
+    
+    123  => array('Presidio: Xenofobia', false, 3),
+    
+    124  => array('Presidio: Controllore della Colonia', false, 4),
+    
+    130  => array('Delegazione: Pluralismo', false, 0),
+    
+    131  => array('Delegazione: Onore del Pretore', false, 1),
+    
+    132  => array('Delegazione: Promuovere Autodifesa', false, 2),
+    
+    133  => array('Delegazione: Propaganda Sovversiva', false, 3),
+    
+    134  => array('Delegazione: Denunciare Incompetenza', false, 4),
+    
+    150  => array('Addestramento Avanzato', false, -1)
+
+);
 
 ?>
