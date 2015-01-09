@@ -829,6 +829,14 @@ elseif(isset($_GET['ship_details'])) {
         }
                         
         $tohit = round(($base_to_hit * 100)/17, 2);
+        
+        $rof  = $ship['rof'];
+        $rof2 = $ship['rof2'];
+        
+        if ($ship['experience']>=$ship_rank_tier[2]) $rof = $rof + 1;
+        if ($ship['experience']>=$ship_rank_tier[4]) $rof = $rof + 1;
+        if ($ship['experience']>=$ship_rank_tier[3]) $rof2 = $rof2 + 1;
+        if ($ship['experience']>=$ship_rank_tier[5]) $rof2 = $rof2 + 1;        
 
     $game->out('
 
@@ -928,9 +936,9 @@ elseif(isset($_GET['ship_details'])) {
 
             <b><span style="color: yellow">'.$ship['experience'].'</span></b> <img src="'.$game->GFX_PATH.'rank_'.$rank_nr.'.jpg" width="47" height="12"><br><br>
 
-            <b>('.$ship['value_1'].' + <span style="color: yellow">'.round($ship['value_1']*$ship_rank_bonus[$rank_nr-1],0).'</span>)</b> x<b><span style="color: yellow">'.$ship['rof'].'</span></b><br>
+            <b>('.$ship['value_1'].' + <span style="color: yellow">'.round($ship['value_1']*$ship_rank_bonus[$rank_nr-1],0).'</span>)</b> x<b><span style="color: yellow">'.$rof.'</span></b><br>
 
-            <b>('.$ship['value_2'].' + <span style="color: yellow">'.round($ship['value_2']*$ship_rank_bonus[$rank_nr-1],0).'</span>)</b> x<b><span style="color: yellow">'.$ship['rof'].'</span></b><br>
+            <b>('.$ship['value_2'].' + <span style="color: yellow">'.round($ship['value_2']*$ship_rank_bonus[$rank_nr-1],0).'</span>)</b> x<b><span style="color: yellow">'.$rof2.'</span></b><br>
 
             <b>'.$ship['value_3'].' + <span style="color: yellow">'.round($ship['value_3']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
 
