@@ -196,6 +196,10 @@ define ("GER_TEXT92", 'Index F.S.:');
 
 define ("GER_TEXT93", 'Index ToHit:');
 
+define ("GER_TEXT94", 'Primary RoF:');
+
+define ("GER_TEXT95", 'Secondary RoF:');
+
 
 //English
 define ("ENG_TEXT0", 'Overview');
@@ -371,6 +375,10 @@ define ("ENG_TEXT85", 'Torpedo in stock:');
 define ("ENG_TEXT92", 'Index F.S.:');
 
 define ("ENG_TEXT93", 'Index ToHit:');
+
+define ("ENG_TEXT94", 'Primary RoF:');
+
+define ("ENG_TEXT95", 'Secondary RoF:');
 
 
 //Italiano
@@ -562,6 +570,8 @@ define ("ITA_TEXT92", 'Valutaz. F.S.:');
 
 define ("ITA_TEXT93", 'Valutaz. ToHit:');
 
-define ("ITA_TEXT94", 'RoF (Rateo di Fuoco):');
+define ("ITA_TEXT94", 'RoF Primario:');
+
+define ("ITA_TEXT95", 'RoF Secondario:');
 
 ?>
