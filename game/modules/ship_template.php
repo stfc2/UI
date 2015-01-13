@@ -82,8 +82,9 @@ global $db;
 global $game;
 $text='<b>'.$ship[31].'</b><br><br><u>'.constant($game->sprache("TEXT4")).'<br></u><img src='.$game->GFX_PATH.'menu_metal_small.gif> '.$ship[0].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif> '.$ship[1].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif> '.$ship[2].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_worker_small.gif> '.$ship[30].'<br><img src='.$game->GFX_PATH.'menu_unit1_small.gif> '.$ship['3'].'-'.$ship['7'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif> '.$ship['4'].'-'.$ship['8'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif> '.$ship['5'].'-'.$ship['9'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif> '.$ship['6'].'-'.$ship['10'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif> '.$ship[11].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif> '.$ship[12].'<br><u>'.constant($game->sprache("TEXT5")).'</u>  '.($ship[13]*TICK_DURATION).' '.constant($game->sprache("TEXT6")).'<br><br><u>'.constant($game->sprache("TEXT7")).'</u><br>';
 
-$text.=constant($game->sprache("TEXT8")).' '.$ship[14].'<br>';
-$text.=constant($game->sprache("TEXT9")).' '.$ship[15].'<br>';
+$text.=constant($game->sprache("TEXT8")).' '.$ship[14].' x'.$ship[32].'<br>';
+$text.=constant($game->sprache("TEXT9")).' '.$ship[15].' x'.$ship[33].'<br>';
+$text.=constant($game->sprache("TEXT85")).' '.$ship[34].'<br>';
 $text.=constant($game->sprache("TEXT10")).' '.$ship[16].'<br>';
 $text.=constant($game->sprache("TEXT11")).' '.$ship[17].'<br>';
 $text.=constant($game->sprache("TEXT12")).' '.$ship[18].'<br>';
