@@ -88,8 +88,8 @@ if(!isset($sub_action) || empty($sub_action))
 $game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>');
 
 $game->out('
-    <table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
-    <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+    <table class="style_outer" width="90%" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
+    <table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="2">
     <form method="post" action="'.parse_link('a=settlers').'">
     <tr> 
     <td><input class="Button_nosize" type="submit" name="step" value="'.constant($game->sprache("TEXT1")).'"></td>
@@ -104,7 +104,7 @@ if($sub_action == constant($game->sprache("TEXT2"))) {
     $game->out('
     <br><br><br>
     <center><span class="caption">'.(constant($game->sprache("TEXT2"))).':</span><br><br>
-    <table class="style_outer" width="50%" align="center" border="0" cellpadding="2" cellspacing="2">
+    <table class="style_outer" width="90%" align="center" border="0" cellpadding="2" cellspacing="2">
     <form name="controller" method="post" action="'.parse_link('a=settlers').'">
     <input type="hidden" name="link_planet">
     <input type="hidden" name="operation">
@@ -112,11 +112,11 @@ if($sub_action == constant($game->sprache("TEXT2"))) {
     <tr><td>
     <table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="2">
     <tr>
-    <td width="60"><b>'.(constant($game->sprache("TEXT10"))).'</b></td>
-    <td width="60"><b>'.(constant($game->sprache("TEXT11"))).'</b></td>
-    <td width="30"><b>'.(constant($game->sprache("TEXT12"))).'</b></td>
-    <td width="60"><b>'.(constant($game->sprache("TEXT23"))).'</b></td>
-    <td width="60"><b>'.(constant($game->sprache("TEXT24"))).'</b></td>    
+    <td width="20%"><b>'.(constant($game->sprache("TEXT10"))).'</b></td>
+    <td width="20%"><b>'.(constant($game->sprache("TEXT11"))).'</b></td>
+    <td width="20%"><b>'.(constant($game->sprache("TEXT12"))).'</b></td>
+    <td width="20%"><b>'.(constant($game->sprache("TEXT23"))).'</b></td>
+    <td width="20%"><b>'.(constant($game->sprache("TEXT24"))).'</b></td>
   </tr>');
     $sql = 'SELECT sr.planet_id, p.planet_name, p.planet_type, sr.mood_modifier, best_mood_user, user_name,
                    p.sector_id, ss.system_x, ss.system_y, p.planet_distance_id
@@ -141,10 +141,10 @@ if($sub_action == constant($game->sprache("TEXT2"))) {
             $game->out('<td><span style="color: '.($founder_list['mood_modifier'] == '80' ? 'green' : 'red').'">'.$founder_list['mood_modifier'].'</span></td>');
             // Controllore
             $game->out('<td>'.$founder_list['user_name'].'</td>');
-            $game->out('</tr>');            
+            $game->out('</tr>');
         }
     }
-    $game->out('</table></td></tr></form></table>');        
+    $game->out('</table></td></tr></form></table>');
 }
 elseif($sub_action == constant($game->sprache("TEXT3"))) {
     $game->out('
@@ -189,7 +189,7 @@ elseif($sub_action == constant($game->sprache("TEXT3"))) {
                 $ship_text .= '</a>';
             }
             else {
-                // I think the ship is down                
+                // I think the ship is down
                 $ship_text = 'N/A';
             }
             $game->out('<tr>');
@@ -213,13 +213,13 @@ elseif($sub_action == constant($game->sprache("TEXT3"))) {
             $game->out('</tr>');
         }
     }
-    $game->out('</table></td></tr></form></table>');    
+    $game->out('</table></td></tr></form></table>');
 }
 elseif($sub_action == constant($game->sprache("TEXT4"))) {
     $game->out('
     <br><br><br>
     <center><span class="caption">'.(constant($game->sprache("TEXT4"))).':</span><br><br>
-    <table class="style_outer" width="70%" align="center" border="0" cellpadding="2" cellspacing="2">
+    <table class="style_outer" width="90%" align="center" border="0" cellpadding="2" cellspacing="2">
     <form name="controller" method="post" action="'.parse_link('a=settlers').'">
     <input type="hidden" name="link_planet">
     <input type="hidden" name="operation">
@@ -275,7 +275,7 @@ elseif($sub_action == constant($game->sprache("TEXT4"))) {
         // tipo missione
         $game->out('<td>'.$event_text.'</td>');
         // Mood
-        $game->out('<td>'.$pre_item['best_mood'].'</td>');        
+        $game->out('<td>'.$pre_item['best_mood'].'</td>');
     }
     $game->out('
   </table></td></tr></form></table>
@@ -305,11 +305,11 @@ elseif($sub_action == constant($game->sprache("TEXT1")))
     <tr><td>
     <table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="2">
     <tr>
-    <td width="100"><b>'.(constant($game->sprache("TEXT10"))).'</b></td>
-    <td width="80"><b>'.(constant($game->sprache("TEXT11"))).'</b></td>
-    <td width="40"><b>'.(constant($game->sprache("TEXT12"))).'</b></td>
-    <td width="60"><b>'.(constant($game->sprache("TEXT13"))).'</b></td>
-    <td width="110"><b>'.(constant($game->sprache("TEXT14"))).'</b></td>
+    <td width="20%"><b>'.(constant($game->sprache("TEXT10"))).'</b></td>
+    <td width="20%"><b>'.(constant($game->sprache("TEXT11"))).'</b></td>
+    <td width="10%"><b>'.(constant($game->sprache("TEXT12"))).'</b></td>
+    <td width="20%"><b>'.(constant($game->sprache("TEXT13"))).'</b></td>
+    <td width="30%"><b>'.(constant($game->sprache("TEXT14"))).'</b></td>
   </tr>');
     switch ($selection) {
         case 1:
@@ -342,19 +342,19 @@ elseif($sub_action == constant($game->sprache("TEXT1")))
     {
         $game->out('<tr>');
         // Name
-        $game->out('<td width="100"><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($sett_diplo[$i]['planet_id'])).'">'.$sett_diplo[$i]['planet_name'].'</a></td>');
+        $game->out('<td width="20%"><a href="'.parse_link('a=settlers&detail='.encode_planet_id($sett_diplo[$i]['planet_id'])).'">'.$sett_diplo[$i]['planet_name'].'</a></td>');
         // Position
-        $game->out('<td width="80">'.$game->get_sector_name($sett_diplo[$i]['sector_id']).':'.$game->get_system_cname($sett_diplo[$i]['system_x'],$sett_diplo[$i]['system_y']).':'.($sett_diplo[$i]['planet_distance_id'] + 1).'</td>');
+        $game->out('<td width="20%"><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($sett_diplo[$i]['planet_id'])).'">'.$game->get_sector_name($sett_diplo[$i]['sector_id']).':'.$game->get_system_cname($sett_diplo[$i]['system_x'],$sett_diplo[$i]['system_y']).':'.($sett_diplo[$i]['planet_distance_id'] + 1).'</a></td>');
         // Class
-        $game->out('<td width="40">'.strtoupper($sett_diplo[$i]['planet_type']).'</td>');
+        $game->out('<td width="10%">'.strtoupper($sett_diplo[$i]['planet_type']).'</td>');
         // Mood
-        $game->out('<td width="60"><span style="color: '.(($game->player['user_id'] == $sett_diplo[$i]['best_mood_user']) || ($sett_diplo[$i]['mood'] > $sett_diplo[$i]['best_mood']) ? 'green' : 'red').'">'.$sett_diplo[$i]['mood'].'</span></td>');
+        $game->out('<td width="20%"><span style="color: '.(($game->player['user_id'] == $sett_diplo[$i]['best_mood_user']) || ($sett_diplo[$i]['mood'] > $sett_diplo[$i]['best_mood']) ? 'green' : 'red').'">'.$sett_diplo[$i]['mood'].'</span></td>');
         // Linked planet
         if($sett_diplo[$i]['best_mood_user'] == $game->player['user_id']) {
-            $game->out('<td><table width="110" border="0" cellpadding="0" cellspacing="1"><tr>');
+            $game->out('<td><table width="100%" border="0" cellpadding="0" cellspacing="1"><tr>');
             (is_null($sett_diplo[$i]['best_mood_planet']) ? $_linked_planet = constant($game->sprache("TEXT15")) : $_linked_planet = $sett_diplo[$i]['target_planet_name']);
             (is_null($sett_diplo[$i]['best_mood_planet']) ? $txt_button = constant($game->sprache("TEXT16")) : $txt_button = constant($game->sprache("TEXT17")));
-            $game->out('<td width="60" align="left">'.$_linked_planet.'</td><td width="40" align="right"><input class="Button_nosize" onclick="document.controller.data1.value=\''.encode_planet_id($sett_diplo[$i]['planet_id']).'\'; document.controller.data2.value=\''.$txt_button.'\'" type="submit" name="switch_button" value="'.$txt_button.'"></td>');
+            $game->out('<td width="70%" align="left">'.$_linked_planet.'</td><td width="30%" align="right"><input class="Button_nosize" onclick="document.controller.data1.value=\''.encode_planet_id($sett_diplo[$i]['planet_id']).'\'; document.controller.data2.value=\''.$txt_button.'\'" type="submit" name="switch_button" value="'.$txt_button.'"></td>');
             $game->out('</tr></table>');
         }
         else {
