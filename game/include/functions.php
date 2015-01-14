@@ -1562,7 +1562,7 @@ echo'
 
 			$click_id = substr(addslashes($_GET['c']), 0, 32);
 
-			$db->query_lowlevel('LOCK TABLES click_id WRITE');
+			$db->query_lowlevel('LOCK TABLES click_ids WRITE');
 
 			$sql = 'SELECT user_id, class
 			        FROM click_ids
