@@ -29,7 +29,7 @@ define ("GER_TEXT2", 'von');
 
 define ("GER_TEXT3", 'Sind sie sicher das sie die Planeten');
 
-define ("GER_TEXT4", 'aufgeben und somit an den Siedler übergeben wollen?<br>Dieser Schritt l&auml;sst sicht nicht R&uuml;ckg&auml;nig machen und wird sofort Wirksam.');
+define ("GER_TEXT4", 'aufgeben und somit an den Siedler &uuml;bergeben wollen?<br>Dieser Schritt l&auml;sst sicht nicht R&uuml;ckg&auml;nig machen und wird sofort Wirksam.');
 
 define ("GER_TEXT5", '&lt;&lt; Zur&uuml;ck');
 
@@ -37,7 +37,7 @@ define ("GER_TEXT6", 'Durchf&uuml;hren');
 
 define ("GER_TEXT7", 'Einmal aufgeben sollte reichen oder?');
 
-define ("GER_TEXT8", 'Netter Versuch, Aufgabe eines Planeten ist über Sitting nicht gestattet!');
+define ("GER_TEXT8", 'Netter Versuch, Aufgabe eines Planeten ist &uuml;ber Sitting nicht gestattet!');
 
 define ("GER_TEXT9", 'Du darfst deinen Hauptplaneten nicht aufgeben!');
 
