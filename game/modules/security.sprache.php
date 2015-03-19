@@ -40,7 +40,7 @@ define ("GER_TEXT6", 'Schliessen');
 
 define ("GER_TEXT7", 'Du hast den falschen Kreis angeklickt, es erfolgt nun eine erzwungene Eingabe.<br>');
 
-define ("GER_TEXT8", 'Bitte klicke den Kreis an, der nicht vollständig geschlossen ist:');
+define ("GER_TEXT8", 'Bitte klicke den Kreis an, der nicht vollst&auml;ndig geschlossen ist:');
 
 //English
 define ("ENG_TEXT0", 'STFC Security Code:');

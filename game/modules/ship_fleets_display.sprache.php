@@ -96,7 +96,7 @@ define ("GER_TEXT35", 'Warp');
 
 define ("GER_TEXT36", 'Name');
 
-define ("GER_TEXT37", 'Detailansicht des gewählten Schiffes');
+define ("GER_TEXT37", 'Detailansicht des gew&auml;hlten Schiffes');
 
 define ("GER_TEXT38", 'Ins Trockendock');
 
@@ -202,7 +202,7 @@ define ("GER_TEXT91", 'Flotten Befehle & Einstellungen');
 
 define ("GER_TEXT92", 'Schutzschild voll');
 
-define ("GER_TEXT93", 'H&uuml;lle beschädigt');
+define ("GER_TEXT93", 'H&uuml;lle besch&auml;digt');
 
 define ("GER_TEXT94", 'of which <br> badly');
 

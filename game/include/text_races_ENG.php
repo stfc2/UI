@@ -1030,7 +1030,7 @@ $UNIT_DESCRIPTION = array (
 
         1 => 'The Assault troop are particularly effective in close combat and have a stronger defence.<br>You can almost use them anywhere efficiently despite their training compared to the Light infantry is a lot more expensive.',
 
-        2 => 'Das Obsidianische Eisatzkomando besteht aus Kampfexperten, die alle Situationen bestehen werden. Sie wurden ausschlieÃŸlich zum KÃ¤mpfen ausgebildet und kennen keine Furcht. Auch wenn ihre Verteidigung relativ schwach ist, sollten sich feindliche KÃ¤mpfer lieber auÃŸerhalb ihres Fadenkreuzes aufhalten.',
+        2 => 'Das Obsidianische Eisatzkomando besteht aus Kampfexperten, die alle Situationen bestehen werden. Sie wurden ausschlieÃŸlich zum K&auml;mpfen ausgebildet und kennen keine Furcht. Auch wenn ihre Verteidigung relativ schwach ist, sollten sich feindliche K&auml;mpfer lieber auÃŸerhalb ihres Fadenkreuzes aufhalten.',
 
         3 => 'The Gul is trained not for combat missions but as the guidance of ships.<br>Gul are expensive in their training, however they are necessary on each ship. Their combat strength is to be equated with that of the Light infantry.',
 
@@ -1582,7 +1582,7 @@ $BUILDING_DESCRIPTION = array (
 
         6 => 'The Space port serves the repair of damaged ships. By each stage of development the planet receives +200 sensors strength.',
 
-        7 => 'The higher the building is expanded, the faster ships can be built.<br>Pro 50 Punkte des Planeten kann der jeweils nächsthöhere Rumpftyp gebaut werden.',
+        7 => 'The higher the building is expanded, the faster ships can be built.<br>Pro 50 Punkte des Planeten kann der jeweils n&auml;chsth&ouml;here Rumpftyp gebaut werden.',
 
         8 => 'The higher the building is expanded, the more new technologies can be investigated. Certain researches are necessary also for ships and troop types.',
 
@@ -1615,7 +1615,7 @@ $BUILDING_DESCRIPTION = array (
 
         6 => 'The Space port serves the repair of damaged ships. By each stage of development the planet receives +200 sensors strength.',
 
-        7 => 'The higher the building is expanded, the faster ships can be built.<br>Pro 50 Punkte des Planeten kann der jeweils nächsthöhere Rumpftyp gebaut werden.',
+        7 => 'The higher the building is expanded, the faster ships can be built.<br>Pro 50 Punkte des Planeten kann der jeweils n&auml;chsth&ouml;here Rumpftyp gebaut werden.',
 
         8 => 'The higher the building is expanded, the more new technologies can be investigated. Certain researches are necessary also for ships and troop types.',
 

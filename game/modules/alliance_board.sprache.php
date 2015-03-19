@@ -55,7 +55,7 @@ define ("GER_TEXT14", 'Spieler:');
 
 define ("GER_TEXT15", 'Willst du diesen Post wirklich l&ouml;schen?');
 
-define ("GER_TEXT16", 'Das L&ouml;schen des ersten Posts löscht den ganzen Thread.');
+define ("GER_TEXT16", 'Das L&ouml;schen des ersten Posts l&ouml;scht den ganzen Thread.');
 
 define ("GER_TEXT17", '<< Zur&uuml;ck');
 
