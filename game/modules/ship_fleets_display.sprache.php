@@ -172,7 +172,7 @@ define ("GER_TEXT76", 'Handelsroute');
 
 define ("GER_TEXT77", '<i>unbekannt</i>');
 
-define ("GER_TEXT78", 'ammo depleted');
+define ("GER_TEXT78", 'Munition leer');
 
 define ("GER_TEXT79", 'Scout');
 
