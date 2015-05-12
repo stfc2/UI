@@ -412,7 +412,7 @@ return $text;
 
 
 
-function Abort_Build()
+function Abort_Build($line)
 
 {
 
@@ -424,13 +424,15 @@ global $SHIP_NAME, $UNIT_NAME, $SHIP_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_
 
 // New: Table locking
 
+if($line < 0) return;
+
 $db->lock('scheduler_shipbuild', 'ship_templates');
 
 $game->init_player();
 
 
 
-$schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE planet_id="'.$game->planet['planet_id'].'"');
+$schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE planet_id="'.$game->planet['planet_id'].'" AND line_id = '.$line);
 
 $addplanet['resource_1']=0;
 
@@ -522,6 +524,7 @@ global $game;
 
 global $SHIP_NAME, $UNIT_NAME, $SHIP_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK;
 
+/*
 $_REQUEST['count']=(int)$_REQUEST['count'];
 
 $_REQUEST['count1']=(int)$_REQUEST['count1'];
@@ -533,15 +536,35 @@ $_REQUEST['count3']=(int)$_REQUEST['count3'];
 $_REQUEST['count4']=(int)$_REQUEST['count4'];
 
 $_REQUEST['id']=(int)$_REQUEST['id'];
+*/
+
+$count = filter_input(INPUT_POST, 'count', FILTER_SANITIZE_NUMBER_INT);
+if(is_null($count)) $count = -1;
+
+$count1 = filter_input(INPUT_POST, 'count1', FILTER_SANITIZE_NUMBER_INT);
+if(is_null($count1)) $count1 = 0;
+
+$count2 = filter_input(INPUT_POST, 'count2', FILTER_SANITIZE_NUMBER_INT);
+if(is_null($count2)) $count2 = 0;
+
+$count3 = filter_input(INPUT_POST, 'count3', FILTER_SANITIZE_NUMBER_INT);
+if(is_null($count3)) $count = 0;
+
+$count4 = filter_input(INPUT_POST, 'count4', FILTER_SANITIZE_NUMBER_INT);
+if(is_null($count4)) $count4 = 0;
+
+$line = filter_input(INPUT_POST, 'line_request', FILTER_SANITIZE_NUMBER_INT);
+if(is_null($line) OR $line < 0 OR $line > 3 ) $line = -1;
+
+if ($count <= 0) exit(0);
+
+if ($line < 0) exit(0);
 
 
-
-if ($_REQUEST['count']<=0) exit(0);
-
-$t=$_REQUEST['id'];
+$t=filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
 
 
-
+/*
 if (!isset($_REQUEST['count1']) || empty($_REQUEST['count1'])) $_REQUEST['count1']=0;
 
 if (!isset($_REQUEST['count2']) || empty($_REQUEST['count2'])) $_REQUEST['count2']=0;
@@ -549,7 +572,7 @@ if (!isset($_REQUEST['count2']) || empty($_REQUEST['count2'])) $_REQUEST['count2
 if (!isset($_REQUEST['count3']) || empty($_REQUEST['count3'])) $_REQUEST['count3']=0;
 
 if (!isset($_REQUEST['count4']) || empty($_REQUEST['count4'])) $_REQUEST['count4']=0;
-
+*/
 
 
 $templatequery=$db->query('SELECT * FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (removed=0) AND (id="'.$t.'")');
@@ -571,10 +594,10 @@ $game->init_player();
 
 // You cannot have more than user_max_colo colony ship at same time
 if($template['ship_torso'] == 2 && $template['ship_class'] == 0) {
-	if (($game->player['user_max_colo'] != 0) && ($_REQUEST['count'] > $game->player['user_max_colo']))	$_REQUEST['count'] = $game->player['user_max_colo'];
+	if (($game->player['user_max_colo'] != 0) && ($count > $game->player['user_max_colo']))	$count = $game->player['user_max_colo'];
 }
 
-if (CanAffordTemplate($template,$game->player,$game->planet)>=$_REQUEST['count'] && CanAffordTemplateUnits($_REQUEST['count1'],$_REQUEST['count2'],$_REQUEST['count3'],$_REQUEST['count4'],$_REQUEST['count'],$template,$game->planet) && TemplateMetRequirements($template))
+if (CanAffordTemplate($template,$game->player,$game->planet)>=$count && CanAffordTemplateUnits($count1,$count2,$count3,$count4,$count,$template,$game->planet) && TemplateMetRequirements($template))
 
 {
 
@@ -584,23 +607,23 @@ else
 
 {
 
-	if (($db->query('UPDATE planets SET resource_1=resource_1-'.($template['resource_1']*$_REQUEST['count']).', resource_2=resource_2-'.($template['resource_2']*$_REQUEST['count']).', resource_3=resource_3-'.($template['resource_3']*$_REQUEST['count']).', resource_4=resource_4-'.($template['resource_4']*$_REQUEST['count']).', unit_5=unit_5-'.($template['unit_5']*$_REQUEST['count']).', unit_6=unit_6-'.($template['unit_6']*$_REQUEST['count']).', unit_1=unit_1-'.($_REQUEST['count1']*$_REQUEST['count']).', unit_2=unit_2-'.($_REQUEST['count2']*$_REQUEST['count']).', unit_3=unit_3-'.($_REQUEST['count3']*$_REQUEST['count']).', unit_4=unit_4-'.($_REQUEST['count4']*$_REQUEST['count']).' WHERE planet_id= "'.$game->planet['planet_id'].'"'))==true)
+	if (($db->query('UPDATE planets SET resource_1=resource_1-'.($template['resource_1']*$count).', resource_2=resource_2-'.($template['resource_2']*$count).', resource_3=resource_3-'.($template['resource_3']*$count).', resource_4=resource_4-'.($template['resource_4']*$count).', unit_5=unit_5-'.($template['unit_5']*$count).', unit_6=unit_6-'.($template['unit_6']*$count).', unit_1=unit_1-'.($count1*$count).', unit_2=unit_2-'.($count2*$count).', unit_3=unit_3-'.($count3*$count).', unit_4=unit_4-'.($count4*$count).' WHERE planet_id= "'.$game->planet['planet_id'].'"'))==true)
 
 	{
 
-		$schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE planet_id= "'.$game->planet['planet_id'].'" ORDER BY finish_build DESC LIMIT 1');
+		$schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE planet_id= "'.$game->planet['planet_id'].'" AND line_id = '.$line.' ORDER BY finish_build DESC LIMIT 1');
 
 		$start_time=$ACTUAL_TICK;
 
 		if ($db->num_rows()>0) {$scheduler = $db->fetchrow($schedulerquery); $start_time=$scheduler['finish_build'];}
 
-		for ($x=0; $x<$_REQUEST['count']; $x++)
+		for ($x=0; $x<$count; $x++)
 
 		{
 
-			if ($db->query('INSERT INTO scheduler_shipbuild (ship_type,planet_id,start_build,finish_build,unit_1,unit_2,unit_3,unit_4)
+			if ($db->query('INSERT INTO scheduler_shipbuild (ship_type,planet_id,line_id,start_build,finish_build,unit_1,unit_2,unit_3,unit_4)
 
-					VALUES ("'.($_REQUEST['id']).'","'.$game->planet['planet_id'].'","'.$start_time.'","'.($start_time+$template['buildtime']).'","'.$_REQUEST['count1'].'","'.$_REQUEST['count2'].'","'.$_REQUEST['count3'].'","'.$_REQUEST['count4'].'")')==false)  {message(DATABASE_ERROR, 'ship_query: Could not call INSERT INTO in scheduler_shipbuild'); exit();}
+					VALUES ("'.$t.'","'.$game->planet['planet_id'].'","'.$line.'","'.$start_time.'","'.($start_time+$template['buildtime']).'","'.$count1.'","'.$count2.'","'.$count3.'","'.$count4.'")')==false)  {message(DATABASE_ERROR, 'ship_query: Could not call INSERT INTO in scheduler_shipbuild'); exit();}
 
 
 
@@ -624,9 +647,9 @@ else  // Not enough resources
 
 $text='';
 
-if (CanAffordTemplate($template,$game->player,$game->planet)<$_REQUEST['count']) $text.=constant($game->sprache("TEXT26"));
+if (CanAffordTemplate($template,$game->player,$game->planet)<$count) $text.=constant($game->sprache("TEXT26"));
 
-if (!CanAffordTemplateUnits($_REQUEST['count1'],$_REQUEST['count2'],$_REQUEST['count3'],$_REQUEST['count4'],$_REQUEST['count'],$template,$game->planet)) $text.=constant($game->sprache("TEXT27"));
+if (!CanAffordTemplateUnits($count1,$count2,$count3,$count4,$count,$template,$game->planet)) $text.=constant($game->sprache("TEXT27"));
 
 if (!TemplateMetRequirements($template)) $text.=constant($game->sprache("TEXT28"));
 
@@ -675,16 +698,19 @@ global $SHIP_NAME, $SHIP_DESCRIPTION, $UNIT_DESCRIPTION, $UNIT_DATA, $UNIT_NAME,
 
 
 ///////////////////////// 1st Build in Progress & Queue
+/*
 
-$schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build<='.$ACTUAL_TICK.') ORDER BY start_build ASC');
+$schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build<='.$ACTUAL_TICK.') ORDER BY line_id ASC, start_build ASC');
 
 $display=0;
 
 if ($db->num_rows()>0)
 
 {
-
-$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT30")).' '.HelpPopup('shipyard_3').':</span><br><br>');
+    
+$queue_label = array(constant($game->sprache("TEXT68")), constant($game->sprache("TEXT69")), constant($game->sprache("TEXT70")), constant($game->sprache("TEXT71")));
+    
+$game->out('<fieldset><legend><span class="sub_caption">'.constant($game->sprache("TEXT30")).' '.HelpPopup('shipyard_3').':</span></legend><br><br>');
 
 $scheduler = $db->fetchrow($schedulerquery);
 
@@ -692,8 +718,11 @@ $template=$db->queryrow('SELECT * FROM ship_templates WHERE (owner="'.$game->pla
 
 $game->out('
 
-<table border=0 cellpadding=1 cellspacing=1 width=300 class="style_outer"><tr><td>
-<table border=0 cellpadding=1 cellspacing=1 width=300 class="style_inner"><tr><td>
+<table border=0 cellpadding=1 cellspacing=1 width=400 class="style_outer"><tr><td>
+<table border=0 cellpadding=1 cellspacing=1 width=400 class="style_inner"><tr><td>
+
+
+<table width=380>
 
 <span class="sub_caption2">'.constant($game->sprache("TEXT31")).' <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span class="sub_caption2">'.$template['name'].'</span></a></span><br>
 
@@ -711,6 +740,7 @@ $game->out('
 
 </form>
 </center>
+</table>
 ');
 
 $display=1;
@@ -740,7 +770,7 @@ while(($scheduler = $db->fetchrow($schedulerquery))==true)
 $template=$db->queryrow('SELECT * FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (id="'.$scheduler['ship_type'].'")');
 
 $game->out('-&nbsp; <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 
-500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a> ('.constant($game->sprache("TEXT36")).' '.date("d.M H:i",time()+$NEXT_TICK+(($scheduler['finish_build']-$ACTUAL_TICK)*TICK_DURATION*60)).')<br>');}
+500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a> ('.constant($game->sprache("TEXT36")).' '.date("d.M H:i",time()+$NEXT_TICK+(($scheduler['finish_build']-$ACTUAL_TICK)*TICK_DURATION*60)).' '.constant($game->sprache("TEXT37")).')<br>');}
 
 } // End of: "if ($db->num_rows()>0)"
 
@@ -764,9 +794,9 @@ $game->out('<br><span class="sub_caption2">'.constant($game->sprache("TEXT34")).
 
 
 
-if ($display) $game->out('</td></tr></table></td></tr></table><br>');
+if ($display) $game->out('</td></tr></table></td></tr></table></fieldset><br>');
 
-
+*/
 
 
 
@@ -969,6 +999,8 @@ document.getElementsByName("count4")[0].value='.$maxunit[3].';
 <input type="hidden" name="count" value="'.$_REQUEST['count'].'">
 
 <input type="hidden" name="id" value="'.$_REQUEST['id'].'"><br>
+    
+<input type="hidden" name="line_request" value='.$_REQUEST['line_request'].'><br>
 
 <input type="submit" name="submit" class="button" value ="'.constant($game->sprache("TEXT50")).'">
 
@@ -996,110 +1028,370 @@ global $db;
 
 global $game;
 
-global $SHIP_TORSO, $SHIP_DESCRIPTION, $UNIT_DESCRIPTION, $UNIT_DATA, $UNIT_NAME, $SHIP_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK;
-
-
+global $SHIP_TORSO, $SHIP_DESCRIPTION, $UNIT_DESCRIPTION, $UNIT_DATA, $UNIT_NAME, $SHIP_DATA, $PLANETS_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK;
 
 Show_Common_Menues();
 
 
+$game->out('<fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT68")).' '.constant($game->sprache("TEXT72")).'</span></legend><br>');
 
-///////////////////////// 3rd Ship template menu
+$schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build<='.$ACTUAL_TICK.') AND line_id = 0 ORDER BY start_build ASC');
 
-$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT45")).' '.HelpPopup('shipyard_1').' :</span><br><br>');
+if ($db->num_rows()>0) {
+    
+    $game->out('<table border=0 cellpadding=2 cellspacing=2 width="100%" class="style_inner"><caption><span class="sub_caption2">'.constant($game->sprache("TEXT30")).'</span></caption>');
+    
+    $scheduler = $db->fetchrow($schedulerquery);
+    
+    $template= $db->queryrow('SELECT * FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (id="'.$scheduler['ship_type'].'")');
 
-$game->out('<table border=0 cellpadding=2 cellspacing=2 width=500 class="style_outer"><tr><td width=500>');
-
-
-
-
-
-$game->out('<table border=0 cellpadding=2 cellspacing=2 width=500 class="style_inner"><tr><td width=200><span class="sub_caption2">'.constant($game->sprache("TEXT51")).'</b></td><td width=175><span class="sub_caption2">'.constant($game->sprache("TEXT52")).'</span></td><td width=120><span class="sub_caption2">'.constant($game->sprache("TEXT53")).'</span></td></tr>');
-
-$templatequery=$db->query('SELECT * FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (removed=0)  ORDER BY ship_torso ASC, name ASC');
-
-$number=$db->num_rows();
-
-if ($number>0)
-
-{
-
-$torso_num=-1;
-
-while (($template=$db->fetchrow($templatequery))==true)
-
-{
-
-if ($template['ship_torso']!=$torso_num)
-
-{
-
-	$game->out('<tr height=8><td></td><td></td><td></td></tr>');
-
-	$torso_num=$template['ship_torso'];
-
-	$game->out('<tr height=10><td width=200><b><u>'.$SHIP_TORSO[$game->player['user_race']][$template['ship_torso']][29].':<br></b></u></td><td></td><td></td></tr>');
-
-
-
+    $game->out('<tr><th>'.constant($game->sprache("TEXT31")).'</th><th>'.constant($game->sprache("TEXT32")).'</th><th>'.constant($game->sprache("TEXT34")).'</th><th> Azione </th></tr><tr>');
+    $game->out('<td width="25%" align="center"> <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a></td>');
+    $game->out('<td width="25%" align="center"> <b id="timer2" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['finish_build']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b></td>');
+    
+    $queue_query = $db->queryrowset('SELECT ship_type, finish_build FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build>='.$ACTUAL_TICK.') AND line_id = 0 ORDER BY start_build ASC');
+    
+    $num_rows = $db->num_rows();
+    
+    if($num_rows>0) {
+        $queue_text  = '<table width=250 border=0 cellpadding=0 cellspacing=0>';
+        foreach($queue_query as $queue_finish_time) {
+            $template= $db->queryrow('SELECT name FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (id="'.$queue_finish_time['ship_type'].'")');
+            $queue_text .= '<tr><td>'.$template['name'].'</td><td>'.date("d.M H:i",time()+$NEXT_TICK+(($queue_finish_time['finish_build']-$ACTUAL_TICK)*TICK_DURATION*60)).'</td></tr>';
+        }
+        $queue_text .= '</table>';
+        $game->out('<td width="25%" align="center">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.addslashes($queue_text).'\', CAPTION, \''.constant($game->sprache("TEXT76")).'\', WIDTH, 250, '.OVERLIB_STANDARD.');" onmouseout="return nd();"> '.constant($game->sprache("TEXT34")).$num_rows.' </a> </td>');
+    }
+    else {
+        $game->out('<td width="25%" align="center"> '.constant($game->sprache("TEXT34")).'0 </td>');
+    }
+    
+    $game->out('<td width="25%" align="center"><form name="abort" method="post" action="index.php?a=shipyard&a2=abort_build" onSubmit="return document.abort.submita.disabled = true;">
+                <input type="hidden" name="correct_abort" value="1">
+                <input type="hidden" name="line_correct_abort" value="0">
+                <input type="submit" name="submita" class="button" style="width: 100px;" value ="'.constant($game->sprache("TEXT33")).'">
+                </form></td>');
+    $game->out('</tr></table><br>');
+    
 }
 
+$query_line_0 = 'SELECT * FROM ship_templates WHERE owner = '.$game->player['user_id'].' AND removed = 0 AND ship_class = 0 ORDER BY ship_torso ASC, name ASC';
 
-
-
-
-$template['buildtime']=$template['buildtime']+round($template['buildtime']*0.3*(0.9-(0.1*$game->planet['building_8'])),0);
-
-$maxnum = 0;
-
-if (!TemplateMetRequirements($template))
-
-{
-
-$build_text='&nbsp;&nbsp;<span style="color: red">'.constant($game->sprache("TEXT54")).'</span>';
-
+$list_line_0 = $db->query($query_line_0);
+$n_tplt_0 = $db->num_rows($list_line_0);
+if($n_tplt_0 > 0) {
+    $elements_lines_0 = $db->fetchrowset($list_line_0);
+    foreach ($elements_lines_0 AS $id => $element_item) {
+        $element_item['buildtime']=$element_item['buildtime']+round($element_item['buildtime']*0.3*(0.9-(0.1*$game->planet['building_8'])),0);
+        $maxnum = 0;
+        if (!TemplateMetRequirements($element_item)) {
+            $build_text='&nbsp;&nbsp;<span style="color: red">'.constant($game->sprache("TEXT54")).'</span>';
+        }
+        else if ($maxnum=CanAffordTemplate($element_item,$game->player,$game->planet)) {
+                $build_text='<input type="hidden" name="correct" value="1"><input type="submit" name="submit" class="button" style="width: 60px;" value ="'.constant($game->sprache("TEXT54")).'">';
+            }
+            else {
+                $build_text='&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateResourceRequestedText($element_item,$game->player,$game->planet).'\', CAPTION, \''.constant($game->sprache("TEXT67")).'\', WIDTH, 170, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: yellow">'.constant($game->sprache("TEXT54")).'</span></a>';
+            }
+            
+        $table0[] = '<tr height=15><td width=200><b><a href="'.parse_link('a=ship_template&view=compare&ship0='.$element_item['id']).'" onmouseover="return overlib(\''.CreateInfoText($element_item).'\', CAPTION, \''.addslashes($element_item['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$element_item['name'].'</a></b></td><td>'.(Zeit($element_item['buildtime']*TICK_DURATION)).'</td><td>'
+                   .'<form name="send'.$element_item['id'].'" method="post" action="index.php?a=shipyard&a2=start_build&id='.$element_item['id'].'" onSubmit="return document.send'.$element_item['id'].'.submit.disabled = true;"><input type="hidden" name="line_request" value=0><input type="text" name="count" size="4" class="field_nosize" value="'.$maxnum.'">&nbsp;&nbsp;&nbsp;'.$build_text.'</td></tr></form>';
+    }               
+}           
+ else {
+    
 }
 
-else if (($maxnum=CanAffordTemplate($template,$game->player,$game->planet)))
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width="100%" class="style_inner"><tr><td width=200><span class="sub_caption2">'.constant($game->sprache("TEXT51")).'</span></td><td width=175><span class="sub_caption2">'.constant($game->sprache("TEXT52")).'</span></td><td width=120><span class="sub_caption2">'.constant($game->sprache("TEXT53")).'</span></td></tr>');
 
-{
-
-$build_text='<input type="hidden" name="correct" value="1"><input type="submit" name="submit" class="button" style="width: 60px;" value ="'.constant($game->sprache("TEXT54")).'">';
-
+if(count($table0) > 0) {
+    foreach($table0 AS $row) {
+        $game->out($row);
+    }
 }
 
-else
+$game->out('</table>');
 
-{
+$game->out('</fieldset><br><br>');
 
+if( $PLANETS_DATA[$game->planet['planet_type']][14] > 1) {
+ 
+$class_selector_2 = filter_input(INPUT_POST, 'line2', FILTER_SANITIZE_NUMBER_INT);
+if(is_null($class_selector_2) OR $class_selector_2 < 0 OR $class_selector_2 > 1) $class_selector_2 = 1;
 
-$build_text='&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateResourceRequestedText($template,$game->player,$game->planet).'\', CAPTION, \''.constant($game->sprache("TEXT67")).'\', WIDTH, 170, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: yellow">'.constant($game->sprache("TEXT54")).'</span></a>';
+$game->out('<fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT69")).'</span></legend><br>');
+$game->out('<form name="select_line2_class" method="post" action="index.php?a=shipyard">');
+$game->out('<select name="line2" onchange="this.form.submit()">');
+$game->out('<option value=1 '.($class_selector_2 == 1 ? 'selected' : '').'>'.(constant($game->sprache("TEXT73"))).'</option>');
+$game->out('<option value=0 '.($class_selector_2 == 0 ? 'selected' : '').'>'.(constant($game->sprache("TEXT72"))).'</option>');
+$game->out('</select></form><br>');
 
+$schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build<='.$ACTUAL_TICK.') AND line_id = 1 ORDER BY start_build ASC');
+
+if ($db->num_rows()>0) {
+    
+    $game->out('<table border=0 cellpadding=2 cellspacing=2 width="100%" class="style_inner"><caption><span class="sub_caption2">'.constant($game->sprache("TEXT30")).'</span></caption>');
+    
+    $scheduler = $db->fetchrow($schedulerquery);
+    
+    $template=$db->queryrow('SELECT * FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (id="'.$scheduler['ship_type'].'")');
+
+    $game->out('<tr><th>'.constant($game->sprache("TEXT31")).'</th><th>'.constant($game->sprache("TEXT32")).'</th><th>'.constant($game->sprache("TEXT34")).'</th><th> Azione </th></tr><tr>');
+    $game->out('<td width="25%" align="center"> <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a></td>');
+    $game->out('<td width="25%" align="center"> <b id="timer2" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['finish_build']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b></td>');
+
+    $queue_query = $db->queryrowset('SELECT ship_type, finish_build FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build>='.$ACTUAL_TICK.') AND line_id = 1 ORDER BY start_build ASC');
+    
+    $num_rows = $db->num_rows();
+    
+    if($num_rows>0) {
+        $queue_text  = '<table width=250 border=0 cellpadding=0 cellspacing=0>';
+        foreach($queue_query as $queue_finish_time) {
+            $template= $db->queryrow('SELECT name FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (id="'.$queue_finish_time['ship_type'].'")');
+            $queue_text .= '<tr><td>'.$template['name'].'</td><td>'.date("d.M H:i",time()+$NEXT_TICK+(($queue_finish_time['finish_build']-$ACTUAL_TICK)*TICK_DURATION*60)).'</td></tr>';
+        }
+        $queue_text .= '</table>';
+        $game->out('<td width="25%" align="center">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.addslashes($queue_text).'\', CAPTION, \''.constant($game->sprache("TEXT76")).'\', WIDTH, 250, '.OVERLIB_STANDARD.');" onmouseout="return nd();"> '.constant($game->sprache("TEXT34")).$num_rows.' </a> </td>');
+    }
+    else {
+        $game->out('<td width="25%" align="center"> '.constant($game->sprache("TEXT34")).'0 </td>');
+    }    
+
+    $game->out('<td width="25%" align="center"><form name="abort" method="post" action="index.php?a=shipyard&a2=abort_build" onSubmit="return document.abort.submita.disabled = true;">
+                <input type="hidden" name="correct_abort" value="1">
+                <input type="hidden" name="line_correct_abort" value="1">
+                <input type="submit" name="submita" class="button" style="width: 100px;" value ="'.constant($game->sprache("TEXT33")).'">
+                </form></td>');
+    $game->out('</tr></table><br>');
+    
 }
 
+$query_line_1 = 'SELECT * FROM ship_templates WHERE owner = '.$game->player['user_id'].' AND removed = 0 AND ship_class = '.$class_selector_2.' ORDER BY ship_torso ASC, name ASC';
 
-$game->out('<tr height=15><td width=200><b><a href="'.parse_link('a=ship_template&view=compare&ship0='.$template['id']).'" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a></b></td><td>'.(Zeit($template['buildtime']*TICK_DURATION)).'</td><td>');
-
-
-$game->out('<form name="send'.$template['id'].'" method="post" action="index.php?a=shipyard&a2=start_build&id='.$template['id'].'" onSubmit="return document.send'.$template['id'].'.submit.disabled = true;"><input type="text" name="count" size="4" class="field_nosize" value="'.$maxnum.'">&nbsp;&nbsp;&nbsp;'.$build_text.'</td></tr></form>');
-
+$list_line_1 = $db->query($query_line_1);
+$n_tplt_1 = $db->num_rows($list_line_1);
+if($n_tplt_1 > 0) {
+    $elements_lines_1 = $db->fetchrowset($list_line_1);
+    foreach ($elements_lines_1 AS $id => $element_item) {
+        $element_item['buildtime']=$element_item['buildtime']+round($element_item['buildtime']*0.3*(0.9-(0.1*$game->planet['building_8'])),0);
+        $maxnum = 0;
+        if (!TemplateMetRequirements($element_item)) {
+            $build_text='&nbsp;&nbsp;<span style="color: red">'.constant($game->sprache("TEXT54")).'</span>';
+        }
+        else if ($maxnum=CanAffordTemplate($element_item,$game->player,$game->planet)) {
+                $build_text='<input type="hidden" name="correct" value="1"><input type="submit" name="submit" class="button" style="width: 60px;" value ="'.constant($game->sprache("TEXT54")).'">';
+            }
+            else {
+                $build_text='&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateResourceRequestedText($element_item,$game->player,$game->planet).'\', CAPTION, \''.constant($game->sprache("TEXT67")).'\', WIDTH, 170, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: yellow">'.constant($game->sprache("TEXT54")).'</span></a>';
+            }
+            
+        $table1[] = '<tr height=15><td width=200><b><a href="'.parse_link('a=ship_template&view=compare&ship0='.$element_item['id']).'" onmouseover="return overlib(\''.CreateInfoText($element_item).'\', CAPTION, \''.addslashes($element_item['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$element_item['name'].'</a></b></td><td>'.(Zeit($element_item['buildtime']*TICK_DURATION)).'</td><td>'
+                   .'<form name="send'.$element_item['id'].'" method="post" action="index.php?a=shipyard&a2=start_build&id='.$element_item['id'].'" onSubmit="return document.send'.$element_item['id'].'.submit.disabled = true;"><input type="hidden" name="line_request" value=1><input type="text" name="count" size="4" class="field_nosize" value="'.$maxnum.'">&nbsp;&nbsp;&nbsp;'.$build_text.'</td></tr></form>';
+    }               
+}           
+ else {
+    
 }
 
-$game->out('<tr><td colspan=4><br><i>'.constant($game->sprache("TEXT55")).'<br><b><font color=red>'.constant($game->sprache("TEXT56")).'</font><br><font color=green>'.constant($game->sprache("TEXT57")).'</font></b></i></td></tr></table>');
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width="100%" class="style_inner"><tr><td width=200><span class="sub_caption2">'.constant($game->sprache("TEXT51")).'</span></td><td width=175><span class="sub_caption2">'.constant($game->sprache("TEXT52")).'</span></td><td width=120><span class="sub_caption2">'.constant($game->sprache("TEXT53")).'</span></td></tr>');
 
+if(count($table1) > 0) {
+    foreach($table1 AS $row) {
+        $game->out($row);
+    }
 }
 
-else
+$game->out('</table>');
 
-{
-
-$game->out('</table><br><br><b>'.constant($game->sprache("TEXT58")).'</b></u><br><br>');
-
-
-
+$game->out('</fieldset><br><br>');
 }
 
-$game->out('</td></tr></table>');
+if( $PLANETS_DATA[$game->planet['planet_type']][14] > 2) {
+$class_selector_3 = filter_input(INPUT_POST, 'line3', FILTER_SANITIZE_NUMBER_INT);
+if(is_null($class_selector_3) OR $class_selector_3 < 0 OR $class_selector_3 > 2) $class_selector_3 = 2;
+
+$game->out('<fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT70")).'</span></legend><br>');
+
+$game->out('<form name="select_line3_class" method="post" action="index.php?a=shipyard">');
+$game->out('<select name="line3" onchange="this.form.submit()">');
+$game->out('<option value=2 '.($class_selector_3 == 2 ? 'selected' : '').'>'.(constant($game->sprache("TEXT74"))).'</option>');
+$game->out('<option value=1 '.($class_selector_3 == 1 ? 'selected' : '').'>'.(constant($game->sprache("TEXT73"))).'</option>');
+$game->out('<option value=0 '.($class_selector_3 == 0 ? 'selected' : '').'>'.(constant($game->sprache("TEXT72"))).'</option>');
+$game->out('</select></form><br>');
+
+$schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build<='.$ACTUAL_TICK.') AND line_id = 2 ORDER BY start_build ASC');
+
+if ($db->num_rows()>0) {
+    
+    $game->out('<table border=0 cellpadding=2 cellspacing=2 width="100%" class="style_inner"><caption><span class="sub_caption2">'.constant($game->sprache("TEXT30")).'</span></caption>');
+    
+    $scheduler = $db->fetchrow($schedulerquery);
+    
+    $template=$db->queryrow('SELECT * FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (id="'.$scheduler['ship_type'].'")');
+
+    $game->out('<tr><th>'.constant($game->sprache("TEXT31")).'</th><th>'.constant($game->sprache("TEXT32")).'</th><th>'.constant($game->sprache("TEXT34")).'</th><th> Azione </th></tr><tr>');
+    $game->out('<td width="25%" align="center"> <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a></td>');
+    $game->out('<td width="25%" align="center"> <b id="timer2" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['finish_build']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b></td>');
+
+    $queue_query = $db->queryrowset('SELECT ship_type, finish_build FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build>='.$ACTUAL_TICK.') AND line_id = 2 ORDER BY start_build ASC');
+    
+    $num_rows = $db->num_rows();
+    
+    if($num_rows>0) {
+        $queue_text  = '<table width=250 border=0 cellpadding=0 cellspacing=0>';
+        foreach($queue_query as $queue_finish_time) {
+            $template= $db->queryrow('SELECT name FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (id="'.$queue_finish_time['ship_type'].'")');
+            $queue_text .= '<tr><td>'.$template['name'].'</td><td>'.date("d.M H:i",time()+$NEXT_TICK+(($queue_finish_time['finish_build']-$ACTUAL_TICK)*TICK_DURATION*60)).'</td></tr>';
+        }
+        $queue_text .= '</table>';
+        $game->out('<td width="25%" align="center">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.addslashes($queue_text).'\', CAPTION, \''.constant($game->sprache("TEXT76")).'\', WIDTH, 250, '.OVERLIB_STANDARD.');" onmouseout="return nd();"> '.constant($game->sprache("TEXT34")).$num_rows.' </a> </td>');
+    }
+    else {
+        $game->out('<td width="25%" align="center"> '.constant($game->sprache("TEXT34")).'0 </td>');
+    }    
+
+    $game->out('<td width="25%" align="center"><form name="abort" method="post" action="index.php?a=shipyard&a2=abort_build" onSubmit="return document.abort.submita.disabled = true;">
+                <input type="hidden" name="correct_abort" value="1">
+                <input type="hidden" name="line_correct_abort" value="2">
+                <input type="submit" name="submita" class="button" style="width: 100px;" value ="'.constant($game->sprache("TEXT33")).'">
+                </form></td>');
+    $game->out('</tr></table><br>');
+    
+}
+
+$query_line_2 = 'SELECT * FROM ship_templates WHERE owner = '.$game->player['user_id'].' AND removed = 0 AND ship_class = '.$class_selector_3.' ORDER BY ship_torso ASC, name ASC';
+
+$list_line_2 = $db->query($query_line_2);
+$n_tplt_2 = $db->num_rows($list_line_2);
+if($n_tplt_2 > 0) {
+    $elements_lines_2 = $db->fetchrowset($list_line_2);
+    foreach ($elements_lines_2 AS $id => $element_item) {
+        $element_item['buildtime']=$element_item['buildtime']+round($element_item['buildtime']*0.3*(0.9-(0.1*$game->planet['building_8'])),0);
+        $maxnum = 0;
+        if (!TemplateMetRequirements($element_item)) {
+            $build_text='&nbsp;&nbsp;<span style="color: red">'.constant($game->sprache("TEXT54")).'</span>';
+        }
+        else if ($maxnum=CanAffordTemplate($element_item,$game->player,$game->planet)) {
+                $build_text='<input type="hidden" name="correct" value="1"><input type="submit" name="submit" class="button" style="width: 60px;" value ="'.constant($game->sprache("TEXT54")).'">';
+            }
+            else {
+                $build_text='&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateResourceRequestedText($element_item,$game->player,$game->planet).'\', CAPTION, \''.constant($game->sprache("TEXT67")).'\', WIDTH, 170, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: yellow">'.constant($game->sprache("TEXT54")).'</span></a>';
+            }
+            
+        $table2[] = '<tr height=15><td width=200><b><a href="'.parse_link('a=ship_template&view=compare&ship0='.$element_item['id']).'" onmouseover="return overlib(\''.CreateInfoText($element_item).'\', CAPTION, \''.addslashes($element_item['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$element_item['name'].'</a></b></td><td>'.(Zeit($element_item['buildtime']*TICK_DURATION)).'</td><td>'
+                   .'<form name="send'.$element_item['id'].'" method="post" action="index.php?a=shipyard&a2=start_build&id='.$element_item['id'].'" onSubmit="return document.send'.$element_item['id'].'.submit.disabled = true;"><input type="hidden" name="line_request" value=2><input type="text" name="count" size="4" class="field_nosize" value="'.$maxnum.'">&nbsp;&nbsp;&nbsp;'.$build_text.'</td></tr></form>';
+    }               
+}           
+ else {
+    
+}
+
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width=100% class="style_inner"><tr><td width=200><span class="sub_caption2">'.constant($game->sprache("TEXT51")).'</span></td><td width=175><span class="sub_caption2">'.constant($game->sprache("TEXT52")).'</span></td><td width=120><span class="sub_caption2">'.constant($game->sprache("TEXT53")).'</span></td></tr>');
+
+if(count($table2) > 0) {
+    foreach($table2 AS $row) {
+        $game->out($row);
+    }
+}
+
+$game->out('</table>');
+
+$game->out('</fieldset><br><br>');
+}
+
+if( $PLANETS_DATA[$game->planet['planet_type']][14] > 3) {
+$class_selector_4 = filter_input(INPUT_POST, 'line4', FILTER_SANITIZE_NUMBER_INT);
+if(is_null($class_selector_4) OR $class_selector_4 < 0 OR $class_selector_4 > 3) $class_selector_4 = 3;
+
+$game->out('<fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT71")).'</span></legend><br>');
+
+$game->out('<form name="select_line4_class" method="post" action="index.php?a=shipyard">');
+$game->out('<select name="line4" onchange="this.form.submit()">');
+$game->out('<option value=3 '.($class_selector_4 == 3 ? 'selected' : '').'>'.(constant($game->sprache("TEXT75"))).'</option>');
+$game->out('<option value=2 '.($class_selector_4 == 2 ? 'selected' : '').'>'.(constant($game->sprache("TEXT74"))).'</option>');
+$game->out('<option value=1 '.($class_selector_4 == 1 ? 'selected' : '').'>'.(constant($game->sprache("TEXT73"))).'</option>');
+$game->out('<option value=0 '.($class_selector_4 == 0 ? 'selected' : '').'>'.(constant($game->sprache("TEXT72"))).'</option>');
+$game->out('</select></form><br>');
+
+$schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build<='.$ACTUAL_TICK.') AND line_id = 3 ORDER BY start_build ASC');
+
+if ($db->num_rows()>0) {
+    
+    $game->out('<table border=0 cellpadding=2 cellspacing=2 width="100%" class="style_inner"><caption><span class="sub_caption2">'.constant($game->sprache("TEXT30")).'</span></caption>');
+    
+    $scheduler = $db->fetchrow($schedulerquery);
+    
+    $template=$db->queryrow('SELECT * FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (id="'.$scheduler['ship_type'].'")');
+
+    $game->out('<tr><th>'.constant($game->sprache("TEXT31")).'</th><th>'.constant($game->sprache("TEXT32")).'</th><th>'.constant($game->sprache("TEXT34")).'</th><th> Azione </th></tr><tr>');
+    $game->out('<td width="25%" align="center"> <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a></td>');
+    $game->out('<td width="25%" align="center"> <b id="timer2" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['finish_build']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b></td>');
+
+    $queue_query = $db->queryrowset('SELECT ship_type, finish_build FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build>='.$ACTUAL_TICK.') AND line_id = 3 ORDER BY start_build ASC');
+    
+    $num_rows = $db->num_rows();
+    
+    if($num_rows>0) {
+        $queue_text  = '<table width=250 border=0 cellpadding=0 cellspacing=0>';
+        foreach($queue_query as $queue_finish_time) {
+            $template= $db->queryrow('SELECT name FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (id="'.$queue_finish_time['ship_type'].'")');
+            $queue_text .= '<tr><td>'.$template['name'].'</td><td>'.date("d.M H:i",time()+$NEXT_TICK+(($queue_finish_time['finish_build']-$ACTUAL_TICK)*TICK_DURATION*60)).'</td></tr>';
+        }
+        $queue_text .= '</table>';
+        $game->out('<td width="25%" align="center">&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.addslashes($queue_text).'\', CAPTION, \''.constant($game->sprache("TEXT76")).'\', WIDTH, 250, '.OVERLIB_STANDARD.');" onmouseout="return nd();"> '.constant($game->sprache("TEXT34")).$num_rows.' </a> </td>');
+    }
+    else {
+        $game->out('<td width="25%" align="center"> '.constant($game->sprache("TEXT34")).'0 </td>');
+    }    
+
+    $game->out('<td width="25%" align="center"><form name="abort" method="post" action="index.php?a=shipyard&a2=abort_build" onSubmit="return document.abort.submita.disabled = true;">
+                <input type="hidden" name="correct_abort" value="1">
+                <input type="hidden" name="line_correct_abort" value="3">
+                <input type="submit" name="submita" class="button" style="width: 100px;" value ="'.constant($game->sprache("TEXT33")).'">
+                </form></td>');
+    $game->out('</tr></table><br>');
+    
+}
+
+$query_line_3 = 'SELECT * FROM ship_templates WHERE owner = '.$game->player['user_id'].' AND removed = 0 AND ship_class = '.$class_selector_4.' ORDER BY ship_torso ASC, name ASC';
+
+$list_line_3 = $db->query($query_line_3);
+$n_tplt_3 = $db->num_rows($list_line_3);
+if($n_tplt_3 > 0) {
+    $elements_lines_3 = $db->fetchrowset($list_line_3);
+    foreach ($elements_lines_3 AS $id => $element_item) {
+        $element_item['buildtime']=$element_item['buildtime']+round($element_item['buildtime']*0.3*(0.9-(0.1*$game->planet['building_8'])),0);
+        $maxnum = 0;
+        if (!TemplateMetRequirements($element_item)) {
+            $build_text='&nbsp;&nbsp;<span style="color: red">'.constant($game->sprache("TEXT54")).'</span>';
+        }
+        else if ($maxnum=CanAffordTemplate($element_item,$game->player,$game->planet)) {
+                $build_text='<input type="hidden" name="correct" value="1"><input type="submit" name="submit" class="button" style="width: 60px;" value ="'.constant($game->sprache("TEXT54")).'">';
+            }
+            else {
+                $build_text='&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateResourceRequestedText($element_item,$game->player,$game->planet).'\', CAPTION, \''.constant($game->sprache("TEXT67")).'\', WIDTH, 170, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: yellow">'.constant($game->sprache("TEXT54")).'</span></a>';
+            }
+            
+        $table3[] = '<tr height=15><td width=200><b><a href="'.parse_link('a=ship_template&view=compare&ship0='.$element_item['id']).'" onmouseover="return overlib(\''.CreateInfoText($element_item).'\', CAPTION, \''.addslashes($element_item['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$element_item['name'].'</a></b></td><td>'.(Zeit($element_item['buildtime']*TICK_DURATION)).'</td><td>'
+                   .'<form name="send'.$element_item['id'].'" method="post" action="index.php?a=shipyard&a2=start_build&id='.$element_item['id'].'" onSubmit="return document.send'.$element_item['id'].'.submit.disabled = true;"><input type="hidden" name="line_request" value=3><input type="text" name="count" size="4" class="field_nosize" value="'.$maxnum.'">&nbsp;&nbsp;&nbsp;'.$build_text.'</td></tr></form>';
+    }               
+}           
+ else {
+    
+}
+
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width=100% class="style_inner"><tr><td width=200><span class="sub_caption2">'.constant($game->sprache("TEXT51")).'</span></td><td width=175><span class="sub_caption2">'.constant($game->sprache("TEXT52")).'</span></td><td width=120><span class="sub_caption2">'.constant($game->sprache("TEXT53")).'</span></td></tr>');
+
+if(count($table3) > 0) {
+    foreach($table3 AS $row) {
+        $game->out($row);
+    }
+}
+
+$game->out('</table>');
+
+$game->out('</fieldset><br><br>');
+}
 
 }
 
@@ -1152,7 +1444,10 @@ if ($sub_action=='abort_build' && isset($_POST['correct_abort']))
 
 {
 
-Abort_Build(); $sub_action='main';
+    $line = filter_input(INPUT_POST, 'line_correct_abort', FILTER_SANITIZE_NUMBER_INT);
+    if(is_null($line)) $line = -1;
+    
+    Abort_Build($line); $sub_action='main';
 
 }
 
