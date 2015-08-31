@@ -624,14 +624,14 @@ $loc_strings = array(
          <p>Grazie a tutti e buon gioco!</p>',
 
          // success.php strings
-        'success_title' => 'Star Trek: Frontline Combat - Donation made',
-        'success_descr' => 'STFC: Confirmation page for the donation made successfully.',
-        'thank_you' => 'Thank you for your donation!',
-        'transaction' => '<p>Thank you for your donation.</p>
-         <p>The transaction has been completed and a receipt for your purchase has
-         been sent to your email address.</p><p>To view details about the
-         transaction log in to your <a href="http://www.paypal.com">Paypal</a>
-         account.</p>'
+        'success_title' => 'Star Trek: Frontline Combat 2 - Spende',
+        'success_descr' => 'STFC2: Best&auml;tigungsseite f&uuml;r die erfolgreiche Spende.',
+        'thank_you' => 'Vielen Dank für Ihre Spende!',
+        'transaction' => '<p>Vielen Dank für Ihre Spende.</p>
+         <p>Die Transaktion ist abgeschlossen und eine Quittung f&uuml;r Ihre Spende wurde
+         an Ihre E-Mail-Adresse gesendet.</p><p>Um Details über die Transaktion zu sehen
+         melden Sie sich an Ihrem <a href="http://www.paypal.com">Paypal</a>
+         Account an.</p>'
     ),
 
     // Italian strings
