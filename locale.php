@@ -50,6 +50,7 @@ $loc_strings = array(
           in order to increase his power and fleets to expand the commercial routes with other players
           or to fight them with all the starships available. To boldly go where nobody has gone before!',
         'fist_membership' => 'Site member of the Federazione Italiana Siti Trek',
+        
         // login.php strings
         'login_title' => 'Star Trek: Frontline Combat - Login',
         'login_descr' => 'STFC: Pagina per effettuare la login alla galassia di gioco a cui si e` iscritti (galassia Brown Bobby o Fried Egg).',
@@ -61,6 +62,7 @@ $loc_strings = array(
         'proxy_note' => 'Use only if the images are not loaded.',
         'lost_password' => 'Lost password recovery',
         'submit' => 'Submit',
+        
         // lost_password.php strings
         'lost_password_title' => 'Star Trek: Frontline Combat - Password recovery',
         'lost_password_descr' => 'STFC: Page in which request a new password to the system as a replacement for the forgot one.',
@@ -75,6 +77,7 @@ $loc_strings = array(
         'lost_password_warning' => 'Warning: you will receive an automatically generated new password.',
         'back_to_login' => 'Back to login',
         'password_request' => 'Password request',
+        
         // register.php strings
         'register_title' => 'Star Trek: Frontline Combat - Registration',
         'register_descr' => 'STFC: Page in which register to the game by providing the details of your account, such as nick, email, gender, race, date of birth and so on.',
@@ -235,6 +238,7 @@ $loc_strings = array(
         'mail_subject_reg' => 'Star Trek: Frontline Combat - Registration completed',
         'there_are' => 'There are',
         'on' => 'on',
+        
         // multis.php stringa
         'multi_account_info' => 'Information about multiple accounts',
         'multi_account_desc' => '<p>The multiaccount (ie the creation of more than one profile game belonging to the same person) is not
@@ -248,6 +252,7 @@ $loc_strings = array(
          <li>from the forum, by sending an PM (Personal Message) to one or more of the admins and / or moderators</li>
          <li>via email, by sending a detailed description to "admin &lt;at&gt; stfc &lt;dot&gt; it"</li>.
          </ul>',
+         
          // activate.php strings
         'activate_title' => 'ST: Frontline Combat - Account activation',
         'activate_descr' => 'STFC: Account activation confirmation page.',
@@ -261,6 +266,7 @@ $loc_strings = array(
         'error_mysql_update' => 'Internal error in SQL UPDATE, please Contact Us.',
         'activate_ok_title' => 'Your account has been successfully activated!',
         'account_activated' => 'Now you can use your login and password.<br /><br />Before entering the world of STFC, a pearl of wisdom for a successful game:',
+        
         // delete.php strings
         'delete_title' => 'ST: Frontline Combat - Account deletion',
         'delete_descr' => 'STFC: Account deletion confirmation page.',
@@ -268,6 +274,7 @@ $loc_strings = array(
         'delete_error_title' => 'Error deleting account',
         'delete_ok_title' => 'Your account deletion has been confirmed.',
         'account_deleted' => 'It will be removed with the calculation of the next tick (maximum 3 minutes).',
+        
         // stats.php strings
         'stats_title' => 'Star Trek: Frontline Combat - Statistics',
         'stats_descr' => 'STFC: Pagina in cui vengono mostrate alcune statistiche di uptime del server e ed informazioni sulle galassie di gioco, i punti accumulati, i pianeti presenti, le alleanze e via dicendo.',
@@ -293,6 +300,7 @@ $loc_strings = array(
         'sum_of_all_points' => 'Sum of all points:',
         'points_by_player' => '&oslash; by player:',
         'points_by_planet' => '&oslash; by planet:',
+        
         // spende.php strings
         'donation_title' => 'Star Trek: Frontline Combat - Support STFC!',
         'donation_descr' => 'STFC: Page where you can make a donation with which to support the game and the work done by the staff.',
@@ -319,6 +327,7 @@ $loc_strings = array(
          ovviamente un eventuale eccesso verrebbe reinvestito nel potenziamento
          del server, oppure nel pagamento degli anni successivi.</p>
          <p>Grazie a tutti e buon gioco!</p>',
+         
          // success.php strings
         'success_title' => 'Star Trek: Frontline Combat - Donation made',
         'success_descr' => 'STFC: Confirmation page for the donation made successfully.',
@@ -328,7 +337,6 @@ $loc_strings = array(
          been sent to your email address.</p><p>To view details about the
          transaction log in to your <a href="http://www.paypal.com">Paypal</a>
          account.</p>'
-    ),
 
     // German strings
     'de' => array(
@@ -348,7 +356,7 @@ $loc_strings = array(
 
         // login.php strings
         'login_title' => 'Star Trek: Frontline Combat 2 - Einloggen',
-        'login_descr' => 'STFC2: Pagina per effettuare la login alla galassia di gioco a cui si e` iscritti (galassia Brown Bobby o Fried Egg).',
+        'login_descr' => 'STFC2: Seite zum Einloggen in die Galaxie Bobby Brown.',
         'login' => 'Einloggen',
         'user_login' => 'Einloggen:',
         'password' => 'Passwort:',
@@ -360,7 +368,7 @@ $loc_strings = array(
 
         // lost_password.php strings
         'lost_password_title' => 'Star Trek: Frontline Combat 2 - Passwort wiederherstellen',
-        'lost_password_descr' => 'STFC2: Page in which request a new password to the system as a replacement for the forgot one.',
+        'lost_password_descr' => 'STFC2: Seite um ein neues Passwort anzuforden.',
         'password_recovery' => 'Passwort wiederherstellen',
         'error_wrong_name_or_login' => 'Das folgende Problem ist aufgetreten:<br />Player&#146;s Name oder Loginexistiert nicht.',
         'error_wrong_email' => 'Das folgende Problem ist aufgetreten:<br>Email Adresse existiert nicht.',
@@ -374,8 +382,8 @@ $loc_strings = array(
         'password_request' => 'Passwort anfordern',
 
         // register.php strings
-        'register_title' => 'Star Trek: Frontline Combat - Anmeldung',
-        'register_descr' => 'STFC: Page in which register to the game by providing the details of your account, such as nick, email, gender, race, date of birth and so on.',
+        'register_title' => 'Star Trek: Frontline Combat 2 - Anmeldung',
+        'register_descr' => 'STFC2: Seite um sich im Spiel anzumelden. Mit Details Ihres Account wie Nick, E-Mail, Geschlecht, Rasse, Geburtsdatum und so weiter.',
         'registration' => 'Anmeldung',
         'galaxy_selection' => 'Galaxie:',
         'version' => 'Version:',
@@ -504,24 +512,24 @@ $loc_strings = array(
         'registration_impossible' => 'Anmeldung im Moment nicht m&ouml;glich.',
         'of' => 'von',
         'occupied_places' => 'Slots belegt',
-        'error_missing_name' => '(Player&#146;s name not specified)',
-        'error_missing_login' => '(Login not specified)',
-        'error_missing_password' => '(Password not specified)',
-        'error_missing_email' => '(Email address not specified)',
-        'error_existing_name' => '(Player&#146;s name is already in use in this galaxy)',
-        'error_existing_login' => '(Login is already in use in this galaxy)',
-        'error_existing_email' => '(Email address is already in use in this galaxy)',
-        'error_blank_in_name' => '(Player&#146;s name contains spaces)',
-        'error_inv_char_in_name' => '(Player&#146;s name contains illegal characters [0-9, a-z, A-Z only])',
-        'error_inv_char_in_login' => '(Login contains illegal characters [0-9, a-z, A-Z only])',
-        'error_matching_name_login' => '(Player&#146;s name and Login are the same)',
-        'error_mismatching_password' => '(Passwords do not match)',
-        'error_invalid_race' => '(Selected race does not exists)',
-        'error_unaccepted_tou' => '(Terms of use are not accepted)',
-        'error_invalid_birthday' => '(Birth date invalid)',
-        'error_invalid_birthmonth' => '(Birth month invalid)',
-        'error_invalid_birthyear' => '(Birth year invalid)',
-        'error_invalid_gender' => '(What <b>are</b> you then?)',
+        'error_missing_name' => '(Player&#146;s Name nicht eingetragen)',
+        'error_missing_login' => '(Einloggen nicht eingetragen)',
+        'error_missing_password' => '(Passwort nicht eingetragen)',
+        'error_missing_email' => '(Email Adresse nicht eingetragen)',
+        'error_existing_name' => '(Player&#146;s Name existiert schon in der Galaxie)',
+        'error_existing_login' => '(Login existiert schon in der Galaxie)',
+        'error_existing_email' => '(Email Adresse existiert schon in der Galaxie)',
+        'error_blank_in_name' => '(Player&#146;s Name enth&auml;lt Leerzeichen)',
+        'error_inv_char_in_name' => '(Player&#146;s Name enth&auml;lt ung&uuml;ltige Zeichen [0-9, a-z, A-Z erlaubt])',
+        'error_inv_char_in_login' => '(Login enth&auml;lt ung&uuml;ltige Zeichen [0-9, a-z, A-Z erlaubt])',
+        'error_matching_name_login' => '(Player&#146;s Name und Login darf nicht identisch sein)',
+        'error_mismatching_password' => '(Passworde stimmen nicht &uuml;berein)',
+        'error_invalid_race' => '(Gew&auml;hlte Rasse existiert nicht)',
+        'error_unaccepted_tou' => '(Spielregeln/AGB nicht akzeptiert)',
+        'error_invalid_birthday' => '(Geburts-Tag ung&uuml;ltig)',
+        'error_invalid_birthmonth' => '(Geburts-Monat ung&uuml;ltig)',
+        'error_invalid_birthyear' => '(Geburts-Jahr ung&uuml;ltig)',
+        'error_invalid_gender' => '(Was <b>bist</b> du dann?)',
 
         'mail_message_congrats' => 'Ziel erreicht!',
         'mail_message_reg1a' => 'Deine Anmeldung bei Star Trek: Frontline Combat II (',
@@ -549,8 +557,8 @@ $loc_strings = array(
          </ul>',
 
          // activate.php strings
-        'activate_title' => 'STTF2: Frontline Combat 2 - Account activierung',
-        'activate_descr' => 'STFC2: Account activation confirmation page.',
+        'activate_title' => 'Star Trek: Frontline Combat 2 - Account activierung',
+        'activate_descr' => 'STFC2: Best&auml;tigung der Account aktivierung.',
         'account_activation' => 'Account activierung',
         'activate_error_title' => 'Account konnte nicht aktiviert werden',
         'error_missing_info' => 'mindestens eine der folgenden Imformationen fehlt:<ul><li>Galaxie</li><li>User ID</li><li>Aktivations Code</li></ul>',
@@ -563,16 +571,16 @@ $loc_strings = array(
         'account_activated' => 'Nun kannst du deinen Login und Passwort verwenden.<br /><br />Bevor du die Welt von STFC2 erkundest a pearl of wisdom for a successful game:',
 
         // delete.php strings
-        'delete_title' => 'ST: Frontline Combat - Account entfernen',
-        'delete_descr' => 'STFC: Account deletion confirmation page.',
+        'delete_title' => 'Star Trek: Frontline Combat 2 - Account entfernen',
+        'delete_descr' => 'STFC2: Best&auml;tigung Account entfernen.',
         'account_deletion' => 'Account entfernen',
         'delete_error_title' => 'Fehler beim Account entfernen',
         'delete_ok_title' => 'Das entfernen von deinem Account ist ok.',
         'account_deleted' => 'Mit dem erreichen des neuen Ticks wird die entfernung vollzogen.',
 
         // stats.php strings
-        'stats_title' => 'Star Trek: Frontline Combat - Statistik',
-        'stats_descr' => 'STFC: Pagina in cui vengono mostrate alcune statistiche di uptime del server e ed informazioni sulle galassie di gioco, i punti accumulati, i pianeti presenti, le alleanze e via dicendo.',
+        'stats_title' => 'Star Trek: Frontline Combat 2 - Statistik',
+        'stats_descr' => 'STFC2: Seite, die Statistiken der Galaxie und Informationen &uuml;ber das Spiel zeigt, die Punkte, die Planeten, Allianzen und so weiter.',
         'stats' => 'Statistik',
         'cpu_usage' => 'Usage:',
         'total_ram' => 'Total RAM:',
@@ -953,8 +961,8 @@ $loc_strings = array(
 
 $langs = array(
         'en-US',// default
-        'it',
-	'de',
+        'de',
+	'it',
 );
 
 $user_lang = isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) : 'en';
