@@ -66,7 +66,7 @@ $PLANETS_TEXT = array(
         0 => 'Geo Kunststoff',
         1 => 'Ben&ouml;tigt minimale Intervention von Terraforming',
         2 => 'Anwesenheit von Mineralien &uuml;berdurchschnittlich',
-        3 => 'Planeten dieser Klasse sind &auml;hnlich in der Masse und Entfernung zu seinem Stern wie die Erde und gelten als die Vorl&auml;ufer der F-Klasse Planeten. Der Kern des Planeten ist geschmolzen und sie haben eine verd&uuml;nnten Atmosph&auml;re mit Spuren von Sauerstoff. Das Leben ist durch bescheidene technologische Unterst&uuml;tzung und Bereitstellung von Ressourcen von außen m&ouml;glich.',
+        3 => 'Planeten dieser Klasse sind &auml;hnlich in der Masse und Entfernung zu seinem Stern wie die Erde und gelten als die Vorl&auml;ufer der F-Klasse Planeten. Der Kern des Planeten ist geschmolzen und sie haben eine verd&uuml;nnten Atmosph&auml;re mit Spuren von Sauerstoff. Das Leben ist durch bescheidene technologische Unterst&uuml;tzung und Bereitstellung von Ressourcen von aussen m&ouml;glich.',
         4 => 'Excalbia'
     ),
     
@@ -82,7 +82,7 @@ $PLANETS_TEXT = array(
         0 => 'Geo kristallin',
         1 => 'Ben&ouml;tigt minimale Intervention von Terraforming',
         2 => 'Anwesenheit von Dilithium &uuml;berdurchschnittlich',
-        3 => 'Planeten dieser Klasse sind &auml;hnlich in der Masse wie die Erde. Die Umlaufbahn ist jedoch näher an ihre Sonne. Ihre Atmosph&auml;re ist im Wesentlichen aus Schwer giftigen Gasen gebildet. Die N&auml;he der Sonne verursacht eine hohe Oberfl&auml;chentemperatur. Das Leben ist nur durch Unterst&uuml;tzung m&oul;glich.',
+        3 => 'Planeten dieser Klasse sind &auml;hnlich in der Masse wie die Erde. Die Umlaufbahn ist jedoch n&auml;her an ihre Sonne. Ihre Atmosph&auml;re ist im Wesentlichen aus Schwer giftigen Gasen gebildet. Die N&auml;he der Sonne verursacht eine hohe Oberfl&auml;chentemperatur. Das Leben ist nur durch Unterst&uuml;tzung m&ouml;glich.',
         4 => 'Ceti Alpha V'
     ),
     
@@ -90,7 +90,7 @@ $PLANETS_TEXT = array(
         0 => 'W&uuml;ste',
         1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
         2 => 'Handels&uuml;bliche aller Ressourcen',
-        3 => 'Planeten dieser Klasse erreichen nur 10% der Masse der Erde und haben eine Umlaufbahn weit von ihrer Sonne entfernt. Wegen der bisherigen Bildung ist die Oberfl&aul;che noch im geschmolzenen Zustand. Die Atmosph&auml;re ist in erster Linie aus Wasserstoff. &Uuml;berleben auf dem Planeten ist nur m&ouml;glich dank der Lebenserhaltung und den Lieferungen von lebenswichtigen Ressourcen von außen.',
+        3 => 'Planeten dieser Klasse erreichen nur 10% der Masse der Erde und haben eine Umlaufbahn weit von ihrer Sonne entfernt. Wegen der bisherigen Bildung ist die Oberfl&aul;che noch im geschmolzenen Zustand. Die Atmosph&auml;re ist in erster Linie aus Wasserstoff. &Uuml;berleben auf dem Planeten ist nur m&ouml;glich dank der Lebenserhaltung und den Lieferungen von lebenswichtigen Ressourcen von aussen.',
         4 => '-'
     ),
     
@@ -98,7 +98,7 @@ $PLANETS_TEXT = array(
         0 => 'Gasf&ouml;rmige &Uuml;berriesen',
         1 => 'unm&ouml;glich',
         2 => 'Gro&szlig;e Pr&auml;senz von Dilithium, knappe Anwesenheit von Mineralien',
-        3 => 'Planeten dieser Klasse sind Cluster von Gas mit einem Durchmesser von mehr als 140.000 Kilometer, mit einem metallischen / kristallinen Kern. &Uuml;berleben auf dem Planeten ist nur m&ouml;glich dank der Lebenserhaltung und den Lieferungen von lebenswichtigen Ressourcen von außen.',
+        3 => 'Planeten dieser Klasse sind Cluster von Gas mit einem Durchmesser von mehr als 140.000 Kilometer, mit einem metallischen / kristallinen Kern. &Uuml;berleben auf dem Planeten ist nur m&ouml;glich dank der Lebenserhaltung und den Lieferungen von lebenswichtigen Ressourcen von aussen.',
         4 => '-'
     ),
     
@@ -106,7 +106,7 @@ $PLANETS_TEXT = array(
         0 => 'Gasf&ouml;rmige Riesen',
         1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
         2 => 'Knappe Vorhandensein von Dilithium, hohe Pr&auml;senz von Metall',
-        3 => 'Planeten dieser Klasse sind Cluster von Gas mit einem Durchmesser von weniger als 140.000 km. &Uuml;berleben auf dem Planeten ist nur m&ouml;glich dank der Lebenserhaltung und den Lieferungen von lebenswichtigen Ressourcen von außen.',
+        3 => 'Planeten dieser Klasse sind Cluster von Gas mit einem Durchmesser von weniger als 140.000 km. &Uuml;berleben auf dem Planeten ist nur m&ouml;glich dank der Lebenserhaltung und den Lieferungen von lebenswichtigen Ressourcen von aussen.',
         4 => '-'
     ),
     
@@ -139,7 +139,7 @@ $PLANETS_TEXT = array(
         0 => 'Planet im Verfall',
         1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
         2 => 'Durchschnittliche Anzahl aller Ressourcen',
-        3 => 'Obwohl sie oft vorhanden sind in der &Ouml;kosph&auml;re, k&ouml;nnen die Planeten dieser Klasse nicht ohne unterst&uuml;tzung Leben. Die Oberfl&auml;che ist felsig und erreicht Temperaturen bis zu 500 C° und einem Druck von mehr als 90 Mal dem auf der Erde. Die Atmosph&auml;re ist sehr dicht und besteht aus Kohlendioxid. Das Wasser ist nur in Form von Dampf in dichten Wolken, die den Planeten umgeben vorhanden.',
+        3 => 'Obwohl sie oft vorhanden sind in der &Ouml;kosph&auml;re, k&ouml;nnen die Planeten dieser Klasse nicht ohne unterst&uuml;tzung Leben. Die Oberfl&auml;che ist felsig und erreicht Temperaturen bis zu 500 Kelvin und einem Druck von mehr als 90 Mal dem auf der Erde. Die Atmosph&auml;re ist sehr dicht und besteht aus Kohlendioxid. Das Wasser ist nur in Form von Dampf in dichten Wolken, die den Planeten umgeben vorhanden.',
         4 => 'Venus',
     ),
 
@@ -187,7 +187,7 @@ $PLANETS_TEXT = array(
         0 => 'Geringf&uuml;gige brennende planet',
         1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
         2 => 'Enormen Reserven von Metallen, Mineralien und Dilithium',
-        3 => 'Planeten dieser Klasse haben eine extrem giftige Atmosph&auml;re. Die Oberfl&auml;che hat eint Temperatur von unter 500 Grad Kelvin. Die Oberfl&auml;che hat Winde mit hoher Geschwindigkeit. Wenige Substanzen sind best&auml;ndig gegen die korrosiven Gase in der Atmosph&auml;re. Das Leben ist nur durch massive Intervention von Terraforming und die Verwendung von betr&auml;chtlichen Ressourcen m&ouml;glich.',
+        3 => 'Planeten dieser Klasse haben eine extrem giftige Atmosph&auml;re. Die Oberfl&auml;che hat eint Temperatur von unter 500 Kelvin. Die Oberfl&auml;che hat Winde mit hoher Geschwindigkeit. Wenige Substanzen sind best&auml;ndig gegen die korrosiven Gase in der Atmosph&auml;re. Das Leben ist nur durch massive Intervention von Terraforming und die Verwendung von betr&auml;chtlichen Ressourcen m&ouml;glich.',
         4 => '-',
     ),
 
@@ -195,7 +195,7 @@ $PLANETS_TEXT = array(
         0 => 'Gro&szlig;e brennende planet',
         1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
         2 => 'Enormen Reserven von Metallen, Mineralien und Dilithium',
-        3 => 'Planeten dieser Klasse haben eine extrem giftige Atmosph&auml;re. Die Oberfl&auml;che hat eint Temperatur von unter 500 Grad Kelvin. Die Oberfl&auml;che hat Winde mit hoher Geschwindigkeit. Wenige Substanzen sind best&auml;ndig gegen die korrosiven Gase in der Atmosph&auml;re. Das Leben ist nur durch massive Intervention von Terraforming und die Verwendung von betr&auml;chtlichen Ressourcen m&ouml;glich.',
+        3 => 'Planeten dieser Klasse haben eine extrem giftige Atmosph&auml;re. Die Oberfl&auml;che hat eint Temperatur von unter 500 Kelvin. Die Oberfl&auml;che hat Winde mit hoher Geschwindigkeit. Wenige Substanzen sind best&auml;ndig gegen die korrosiven Gase in der Atmosph&auml;re. Das Leben ist nur durch massive Intervention von Terraforming und die Verwendung von betr&auml;chtlichen Ressourcen m&ouml;glich.',
         4 => '-'
     ),
 );
