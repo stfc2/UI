@@ -536,17 +536,16 @@ $loc_strings = array(
         'on' => 'von',
 
         // multis.php stringa
-        'multi_account_info' => 'Information about multiple accounts',
-        'multi_account_desc' => '<p>The multiaccount (ie the creation of more than one profile game belonging to the same person) is not
-         allowed and punishable by the deletion or the expulsion (ban) for a variable period of time of the redundant accounts.</p>
-         <p>However, the staff is aware of particular conditions of use that could lead to the creation of a "fake" multi account.<br />
-         For example, two brothers who connect from the same computer or two colleagues who have access to a corporate LAN.</p>
-         <p>For all these cases, it is sufficient to take timely contact with the staff to explain the situation to them.<br />
-         In order to do this you can use a variety of methods such as: 
+        'multi_account_info' => 'Informationen zu Multi-Accounts',
+        'multi_account_desc' => '<p>Multiaccounts (dh. die Schaffung von mehr als einem Account pro Spiel pro Person) ist nich gestattet.</p>
+         <p>Es ist den Betreibern bewusst das speziellen Einsatzbedingungen zur Schaffung eines "fake" Multi-Accounts f&uuml;hren kann.<br />
+         Zum Beispiel, zwei Br&uuml;der, die aus dem gleichen Haushalt spielen oder zwei Kollegen, die den Zugang von einem Unternehmensnetzwerk haben.</p>
+         <p>Bei all diesen F&auml;llen ist es ausreichend, rechtzeitig Kontakt mit dem Personal zu ergreifen, um die Situation zu erkl&auml;ren.<br />
+         Um dies zu tun, k&ouml;nnen Sie eine Vielzahl von Methoden, wie beispielsweise folgende verwenden: 
          <ul>
-         <li>from the game, by sending a message to the support by following the "Help" section</li>
-         <li>from the forum, by sending an PM (Personal Message) to one or more of the admins and / or moderators</li>
-         <li>via email, by sending a detailed description to "admin &lt;at&gt; stfc &lt;dot&gt; it"</li>.
+         <li>aus dem Spiel, indem Sie eine Nachricht an den Support senden, indem Sie der Rubrik "Hilfe" folgen</li>
+         <li>aus dem Forum, per PM (Personal Message) an einen oder mehrere der Administratoren und / oder Moderatoren</li>
+         <li>per E-Mail, indem Sie eine detaillierte Beschreibung zu "admin &lt;at&gt; stfc2 &lt;dot&gt; ch" senden</li>.
          </ul>',
 
          // activate.php strings
@@ -625,14 +624,14 @@ $loc_strings = array(
          <p>Grazie a tutti e buon gioco!</p>',
 
          // success.php strings
-        'success_title' => 'Star Trek: Frontline Combat - Donation made',
-        'success_descr' => 'STFC: Confirmation page for the donation made successfully.',
-        'thank_you' => 'Thank you for your donation!',
-        'transaction' => '<p>Thank you for your donation.</p>
-         <p>The transaction has been completed and a receipt for your purchase has
-         been sent to your email address.</p><p>To view details about the
-         transaction log in to your <a href="http://www.paypal.com">Paypal</a>
-         account.</p>'
+        'success_title' => 'Star Trek: Frontline Combat 2 - Spende',
+        'success_descr' => 'STFC2: Best&auml;tigungsseite f&uuml;r die erfolgreiche Spende.',
+        'thank_you' => 'Vielen Dank für Ihre Spende!',
+        'transaction' => '<p>Vielen Dank für Ihre Spende.</p>
+         <p>Die Transaktion ist abgeschlossen und eine Quittung f&uuml;r Ihre Spende wurde
+         an Ihre E-Mail-Adresse gesendet.</p><p>Um Details über die Transaktion zu sehen
+         melden Sie sich an Ihrem <a href="http://www.paypal.com">Paypal</a>
+         Account an.</p>'
     ),
 
     // Italian strings
