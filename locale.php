@@ -597,31 +597,23 @@ $loc_strings = array(
         'points_by_planet' => '&oslash; per Planet:',
 
         // spende.php strings
-        'donation_title' => 'Star Trek: Frontline Combat - Support STFC!',
-        'donation_descr' => 'STFC: Page where you can make a donation with which to support the game and the work done by the staff.',
-        'donation' => 'Supporta Star Trek: Frontline Combat!',
-        'donation_statement' => '<p>Cari colleghi e giocatori,<br><br>
-         a seguito di alcune defezioni nello staff tecnico che da a tutti la possibilit&agrave;
-         di divertirci con <b>Star Trek Frontline Combat</b>,
-         le spese di gestione del server stanno diventando poco gestibili.</p>
-         <p>Tenteremo per quanto possibile di sostenere la situazione, tuttavia
-         il rischio di chiusura del server &egrave; tristemente concreto.</p>
-         <p>Dunque ogni contributo spontaneo &egrave; assolutamente benaccetto!
-         Visto il numero di utenti, basterebbe davvero poco da ciascuno per
-         scongiurare il rischio di chiusura: pensate solo a quanto costano
-         normalmente i videogiochi ed eventuali abbonamenti per giocare online,
-         credo che di fronte a queste cifre diventi accettabile "<i>offrir da
-         bere</i>" a chi senza aver mai chiesto nulla si &egrave; sempre
-         prodigato a mantenere attivo il sito per il vostro divertimento.<p>
-         <p>Purtroppo non sempre si pu&ograve; solo donare, per quanto bello,
-         a volte ci si trova nelle condizioni di dover cortesemente chiedere...
-         sperando di avere risposte positive dalle persone presenti dietro ai
-         giocatori che si &egrave; iniziato a stimare nel nostro piccolo spazio
-         virtuale.</p>
-         <p>Se la generosit&agrave; di tutti dovesse superare le aspettative,
-         ovviamente un eventuale eccesso verrebbe reinvestito nel potenziamento
-         del server, oppure nel pagamento degli anni successivi.</p>
-         <p>Grazie a tutti e buon gioco!</p>',
+        'donation_title' => 'Star Trek: Frontline Combat 2 - Spende STFC2!',
+        'donation_descr' => 'STFC2: Seite f&uuml;r eine Spende, mit der das Spiel und die Arbeit der Betreiber unterst&uuml;tzen.',
+        'donation' => 'Unterst&uuml;tze Star Trek: Frontline Combat 2!',
+        'donation_statement' => '<p>Liebe Spielerinnen und Spieler,<br><br>
+         Star Trek Frontline Combat 2 ist und bleibt ein absolut kostenloses
+         open Source Browsergame. Daf&uuml;r setzt sich das Team ein.
+         Auch gibt und wird es nicht geben das im Spiel mit Geld vorteile erzielt werden.</p>
+         <p>Tatsache jedoch ist leider, das Zeit und engagement nicht ausreicht
+         um das Spiel hier am Leben zu halten. Leider l&auml;sst sich das</p>
+         <p>ganz ohne Geld auch nicht bewerkstelligen. Wir haben eine
+         Server-Struktur die einige Spieler aushalten kann. Auch betreiben und 
+         unterhalten wird alles selbst. Dies um die Kosten so gering wie
+         irgendwie m&ouml;glich zu halten.<br><br>
+         <b>Mit einer Spende, helft ihr mit die anfallenden Kosten zu tragen.
+         Das Spiel zu erhalten wie auch den Server zu erhalten. Auch die
+         n&ouml;tige Infrastruktur zu erhalten.</b><br><br>
+         <p>Vielen Dank und gutes Spiel!</p>',
 
          // success.php strings
         'success_title' => 'Star Trek: Frontline Combat 2 - Spende',
