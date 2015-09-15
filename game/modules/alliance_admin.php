@@ -324,7 +324,7 @@ elseif(!empty($_POST['settings_submit'])) {
         }
     
         if(!empty($ally_exists['alliance_id'])) {
-            message(NOTICE, costant($game->sprache("TEXT15")));
+            message(NOTICE, constant($game->sprache("TEXT15")));
         }
     }
 
