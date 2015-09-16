@@ -1,0 +1,149 @@
+<html>
+<head>
+  <title>Star Trek: Frontline Combat 2 - Aiuto Costruzioni</title>
+</head>
+
+<style type="text/css">
+<!-- A:link {FONT-SIZE: 11px; COLOR: #c0c0c0; FONT-FAMILY: Arial, Luxi Sans; TEXT-DECORATION: none}
+A:visited {FONT-SIZE: 11px; COLOR: #c0c0c0; FONT-FAMILY: Arial, Luxi Sans; TEXT-DECORATION: none}
+A:hover {FONT-SIZE: 11px; COLOR: #ffd700; FONT-FAMILY: Arial, Luxi Sans; TEXT-DECORATION: none}
+A:active {FONT-SIZE: 11px; COLOR: #ffd700; FONT-FAMILY: Arial, Luxi Sans; TEXT-DECORATION: none}
+A.nav:link {FONT-WEIGHT: bold; FONT-SIZE: 10px}
+A.nav:visited {FONT-WEIGHT: bold; FONT-SIZE: 10px}
+A.nav:hover {FONT-WEIGHT: bold; FONT-SIZE: 10px}
+A.nav:active {FONT-WEIGHT: bold; FONT-SIZE: 10px}
+TD {FONT-SIZE: 12px; FONT-FAMILY: Arial, Luxi Sans; COLOR: #c0c0c0;  bgcolor=#cccccc}
+input[type=checkbox] { border-style: none;}
+INPUT[type=submit], INPUT[type=text], INPUT[type=password] {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
+TEXTAREA {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
+SELECT {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
+SPAN.caption {FONT-WEIGHT: bold; FONT-SIZE: 19pt; COLOR: #e0e0e0; FONT-FAMILY: Arial, Luxi Sans; }
+SPAN.sub_caption {FONT-WEIGHT: bold; FONT-SIZE: 15pt; COLOR: #c0c0c0; FONT-FAMILY: Arial, Luxi Sans}
+SPAN.sub_caption2 {FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #c0c0c0; FONT-FAMILY: Arial, Luxi Sans}
+SPAN.text_large {FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #c0c0c0; FONT-FAMILY: Arial, Luxi Sans}
+SPAN.text_medium {FONT-WEIGHT: bold; FONT-SIZE: 8pt; COLOR: #c0c0c0; FONT-FAMILY: Arial, Luxi Sans}
+BODY {MARGIN: 0px; SCROLLBAR-ARROW-COLOR: #ccccff; SCROLLBAR-BASE-COLOR: #131c46; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; }
+TEXTAREA {PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; SCROLLBAR-ARROW-COLOR: #ccccff; PADDING-TOP: 0px; SCROLLBAR-BASE-COLOR: #131c46;}
+
+input.button, input.button_nosize, input.field, input.field_nosize, textarea, select
+                          { color: #959595; font-family: Arial, Luxi Sans, Helvetica, sans-serif; font-size: 11px; background-color: #000000; border: 1px solid #959595; }
+body, textarea {
+      scrollbar-base-color:#000000;
+      scrollbar-3dlight-color:#000000;
+      scrollbar-arrow-color:#D8D8D8;
+      scrollbar-darkshadow-color:#000000;
+      scrollbar-face-color:#000000;
+      scrollbar-highlight-color:#000000;
+      scrollbar-shadow-color:#000000;
+      scrollbar-track-color:#2C2C2C;
+  }
+
+table.border_grey         { border: 1px solid #000000; }
+table.border_grey2        { border-top: 1px solid 000000; border-right: 1px solid 000000; border-bottom: 1px solid #000000; }
+table.border_blue         { border: 1px solid #000000; }
+table.style_inner         { border: 1px solid #000000; background-color:#131c47;}
+table.style_outer         { border: 1px solid #000000; background-color:#283359;}
+
+table.style_msgunread         { border: 1px solid #000000; background-color:#ff3359;}
+table.style_msgread            { border: 1px solid #000000; background-color:#2833ff;}
+
+
+-->
+
+</style>
+
+<body bgcolor="#000000" text="#DDDDDD"  background="/gfx/bg_stars1.gif">
+<div align="center"><span class="caption">Geb&auml;udebau</span></div>
+<table border=0 cellpadding=2 cellspacing=2 width="95%" class="style_outer" align="center">
+<tr><td>
+	<table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="5">
+	<tr>
+	<td><font size="3"><b>Name</b></font></td>
+	<td><font size="3"><b>Beschreibung</b></font></td>
+	<td><font size="3"><b>Bedarf</b></font></td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Hauptquartier</b></td>
+		<td valign="top" align="justify" width="350">Das Hauptquartier (kann je nach ausgew&auml;hlter Rasse anders genannt sein) ist das wichtigste Geb&auml;ude. 
+		Von der Zentrale t&auml;tigst Du weitere Operationen wie den Geb&auml;udebau, die Ausbildung, Forschung, Schiffsbau usw.</td>
+		<td valign="top">keiner</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Metallminen</b></td>
+		<td valign="top" align="justify">Nach dem Hauptquartier sind die Minen insbesondere für die Gewinnung von Metallen ein wichtiges Bauwerk. 
+		Dieses Geb&auml;ude kann aus unterirdischen Minen notwendige Metalle extrahieren. Diese sind wichtig f&uuml;r die Verwirklichung der anderen Geb&auml;ude, Raumschiffe und so weiter.</td>
+		<td valign="top">keiner</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Mineralienminen</b></td>
+		<td valign="top" align="justify">Die Mineralienmine ist das dritte Geb&auml;ude, in Reihenfolge der Wichtigkeit des Spiels. Mit diesem Geb&auml;ude kann vom Planetenuntergrund Mineralstoffe gef&ouml;rdert 
+		werden um andere Einrichtungen und Schiffe zu bauen ebenso zur Produktion von Einheiten.</td>
+		<td valign="top">keiner</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Latinumraffinerie</b></td>
+		<td valign="top" align="justify">Die Latinumraffinerie ist ein ebenso wichtiges Geb&auml;ude um die n&ouml;tigen Ressourcen zum Bau von Geb&auml;uden, Schiffen und der Ausbildung von Truppen, zu erhalten.</td>
+		<td valign="top">keiner</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Kraftwerk</b></td>
+		<td valign="top" align="justify">Das Kraftwerk liefert die ben&ouml;tigte Energie um die Entwicklung des Planeten voran zu treiben. 
+		Ist das Energielimit auf dem Planeten erreicht, kann man nicht weiter bauen bevor das Kraftwerk nicht erweitert worden ist.</td>
+		<td valign="top">keiner</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Akademie</b></td>
+		<td valign="top" align="justify">Die Akademie ist das Zentrum zur Rekrutierung und Ausbildung von Truppen und spezialisierten Einheiten die f&uuml;r den Bau-und Wartungsarbeiten von Schiffen erforderlich sind.</td>
+		<td valign="top">keiner</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Raumhafen</b></td>
+		<td valign="top" align="justify">Der Raumhafen ist der Parkplatz Deiner produzierten Schiffe. Auch n&ouml;tige Schiffsreperaturen werden dort durchgef&uuml;hrt. 
+		Schiffe welche nicht mehr ben&ouml;tigt werden k&ouml;nnen im Raumhafen verschrottet werden. Dabei erh&auml;lst Du Deine Besatzung der Schiffe zur&uuml;ck und auch einen Teil von Recyclingerl&ouml;sen. 
+		Nachtr&auml;glich k&ouml;nnen Schiffe im Raumhafen auch mit Deiner Crew bemannt werden.</td>
+		<td valign="top">Hauptquartier Stufe 5</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Schiffswerft</b></td>
+		<td valign="top" align="justify">In der Werft werden die Schiffe nach den von Dir erstellen Schiffs-Templates gebaut. 
+		Hier kann man einzelne Schiffe bauen oder ganze Reihen von Bauauftr&auml;gen erstellen.</td>
+		<td valign="top">Raumhafen Stufe 1</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Forschungszentrum</b></td>
+		<td valign="top" align="justify">Raumschiffe und Planeten m&uuml;ssen immer auf dem neuesten Stand der Technik sein. Zu diesem Zwecke gibt es das Forschungszentrum. 
+		Dort erforscht Du Verbesserungen f&uuml;r Deine Schiffe und kannst die Infrastruktur und Produktivit&auml;t Deines Planetens verbessern.</td>
+		<td valign="top">Hauptquartier Stufe 9</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>kleine Orbitalverteidigung</b></td>
+		<td valign="top" align="justify">Die kleine Orbitalverteidigung befindet sich in der Umlaufbahn des Planeten.
+		Sie ist mit leichten Waffen ausger&uuml;stet und verf&uuml;gt auch &uuml;ber Schildgitter.</td>
+		<td valign="top">Akademie Stufe 1<br>Spazioporto di livello 1</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Orbitalverteidung</b></td>
+		<td valign="top" align="justify">Wie der Vorg&auml;nger, die kleine Orbitalverteidigung, befindet sich die große Orbitalverteidigung zum Schutz Deines Planeten in der Umlaufbahn. 
+		Im Gegensatz zur kleinen Plattform befinden sich auf dieser eine betr&auml;chtliche Menge von schweren Waffen und auch die Schildgitter sind verst&auml;rkt.</td>
+		<td valign="top">Raumhafen Stufe 1 und Akademie Stufe 5</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Handelszentrum</b></td>
+		<td valign="top" align="justify">Mit dem Bau des Handelszentrums auf dem Planeten, hast Du Zugriff auf das galaktische Handelszentrum von Ursa Mirror. 
+		Hier kannst Du mit dem Ferengi Quark (NPC) oder anderen Mitspielern Handel treiben. In diesem Zentrum kannst Du Schiffe ver,- und ersteigern, 
+		Truppen kaufen und verkaufen oder mit Ressourcen handeln.</td>
+		<td valign="top">Hauptquartier Stufe 3</td>
+	</tr>
+	<tr>
+		<td valign="top"><b>Silos</b></td>
+		<td valign="top" align="justify">Im Lager werden die in den Minen gef&ouml;rderten Ressourcen gelagert. Wenn die Kapazit&auml;t des Lager ersch&ouml;pft ist kannst Du dieses weiter ausbauen. 
+		Mit dem Ausbau erreichst Du eine Steigerung von 50K weiterer Lagerkapazit&auml;t.</td>
+		<td valign="top">Hauptquartier Stufe 4</td>
+	</tr>
+	</table>
+</td>
+</tr>
+</table>
+</body>
+</html>
+
