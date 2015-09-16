@@ -222,9 +222,11 @@ if( (isset($_SERVER['HTTP_ACCEPT_ENCODING'])) && (strstr($_SERVER['HTTP_ACCEPT_E
     $gzip_crc = crc32($gzip_contents);
     $gzip_contents = gzcompress($gzip_contents, $compression);
     $gzip_contents = substr($gzip_contents, 0, strlen($gzip_contents) - 4);
+    $content_length = strlen($gzip_contents);
 
     $total_gtime = (time() + microtime()) - $start_gtime;
     header('Content-Encoding: gzip');
+    header('Content-length: '.$content_length);
 
     echo "\x1f\x8b\x08\x00\x00\x00\x00\x00";
     echo $gzip_contents;
@@ -239,8 +241,10 @@ if( (isset($_SERVER['HTTP_ACCEPT_ENCODING'])) && (strstr($_SERVER['HTTP_ACCEPT_E
         $gzip_crc = crc32($gzip_result);
         $gzip_result = gzcompress($gzip_result, $compression);
         $gzip_result = substr($gzip_result, 0, strlen($gzip_result) - 4);
+        $content_length = strlen($gzip_result);
 
         header('Content-Encoding: gzip');
+        header('Content-length: '.$content_length);
 
         echo "\x1f\x8b\x08\x00\x00\x00\x00\x00";
         echo $gzip_result;
