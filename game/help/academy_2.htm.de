@@ -82,10 +82,10 @@ table.style_msgread            { border: 1px solid #000000; background-color:#28
 	<td><b>Platz: </b></td><td><b>Belegung: </b></td><td><b>Anzahl: </b></td><td><b>Endlos:</b></td>
 	</tr>
 	<tr>
-	<td>1:</td><td>L. Infantrie</td><td>10</td><td></td>
+	<td>1:</td><td>L. Infantrie</td><td>10</td>JA<td></td>
 	</tr>
 	<tr>
-	<td>2:</td><td>3 Minuten Pause</td><td>10</td><td></td>
+	<td>2:</td><td>3 Minuten Pause</td><td>10</td>JA<td></td>
 	</tr>
 	<tr>
 	<td>3:</td><td>Techniker</td><td>5</td><td>JA</td>
