@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title>STFC2: Spielregeln/AGBs</title>
+  <meta http-equiv="Content-Language" content="de">
+  <meta name="description" content="Elenco dei termini e delle condizioni a cui sottostare per poter utilizzare il gioco.">
+  <meta name="keywords" content="star, trek, game, gratis, multiplayer, onlinegame, browser, klingon, romulan, federation">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta name="title" content="Star Trek: Frontline Combat 2">
+  <meta name="author" content="Florian Brede & Philipp Schmidt">
+  <meta name="copyright" content="Paramount Pic., Brede, Schmidt">
+  <meta name="ROBOTS" content="INDEX,NOFOLLOW">
+  <meta name="creation_Date" content="05/29/2009">
+  <meta name="revisit-after" content="7 days">
+  <meta name="publisher" content="Florian Brede & Philipp Schmidt">
+  <meta name="page-topic" content="Star Trek Online Game">
+  <meta name="date" content="2008-11-14">
+  <meta name="page-type" content="game">
+<style type="text/css">
+<!-- A:link {FONT-SIZE: 11px; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"; TEXT-DECORATION: none}
+A:visited {FONT-SIZE: 11px; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"; TEXT-DECORATION: none}
+A:hover {FONT-SIZE: 11px; COLOR: #ffd700; FONT-FAMILY: Arial, "Bitstream Vera Sans"; TEXT-DECORATION: none}
+A:active {FONT-SIZE: 11px; COLOR: #ffd700; FONT-FAMILY: Arial, "Bitstream Vera Sans"; TEXT-DECORATION: none}
+A.nav:link {FONT-WEIGHT: bold; FONT-SIZE: 10px}
+A.nav:visited {FONT-WEIGHT: bold; FONT-SIZE: 10px}
+A.nav:hover {FONT-WEIGHT: bold; FONT-SIZE: 10px}
+A.nav:active {FONT-WEIGHT: bold; FONT-SIZE: 10px}
+TD {FONT-SIZE: 12px; FONT-FAMILY: Arial, "Bitstream Vera Sans"; COLOR: #c0c0c0;  bgcolor=#cccccc}
+INPUT {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
+TEXTAREA {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
+SELECT {BORDER-RIGHT: #959595 1px solid; BORDER-TOP: #959595 1px solid; FONT-SIZE: 11px; BORDER-LEFT: #959595 1px solid; COLOR: #959595; BORDER-BOTTOM: #959595 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #000000}
+SPAN.caption {FONT-WEIGHT: bold; FONT-SIZE: 19pt; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"}
+SPAN.sub_caption {FONT-WEIGHT: bold; FONT-SIZE: 15pt; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"}
+SPAN.sub_caption2 {FONT-WEIGHT: bold; FONT-SIZE: 13pt; COLOR: #c0c0c0; FONT-FAMILY: Arial, "Bitstream Vera Sans"}
+BODY {MARGIN: 0px; SCROLLBAR-ARROW-COLOR: #ccccff; SCROLLBAR-BASE-COLOR: #131c46; PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; }
+TEXTAREA {PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; SCROLLBAR-ARROW-COLOR: #ccccff; PADDING-TOP: 0px; SCROLLBAR-BASE-COLOR: #131c46;}
+
+input.button, input.button_nosize, input.field, input.field_nosize, textarea, select
+                          { color: #959595; font-family: Arial, "Bitstream Vera Sans", Helvetica, sans-serif; font-size: 11px; background-color: #000000; border: 1px solid #959595; }
+body, textarea {
+      scrollbar-base-color:#000000;
+      scrollbar-3dlight-color:#000000;
+      scrollbar-arrow-color:#D8D8D8;
+      scrollbar-darkshadow-color:#000000;
+      scrollbar-face-color:#000000;
+      scrollbar-highlight-color:#000000;
+      scrollbar-shadow-color:#000000;
+      scrollbar-track-color:#2C2C2C;
+  }
+
+table.border_grey         { border: 1px solid #000000; }
+table.border_grey2        { border-top: 1px solid 000000; border-right: 1px solid 000000; border-bottom: 1px solid #000000; }
+table.border_blue         { border: 1px solid #000000; }
+table.style_inner         { border: 1px solid #000000; background-color:#131c47;}
+table.style_outer         { border: 1px solid #000000; background-color:#283359;}
+
+-->
+
+</style>
+</head>
+
+<body text="#c0c0c0" background="gfx/bg_stars1.gif" bgcolor="#000000" >
+<div align="center"><span class="caption">Spielregeln/AGBs</span></div>
+<table border=0 cellpadding=2 cellspacing=2 width="95%" class="style_outer" align="center">
+<tr><td>
+	<table class="style_inner" width="100%" align="center" border="0" cellpadding="5" cellspacing="5">
+<tr>
+<td valign="top">#1</td>
+<td valign="top" align="justify">
+Diese Spielregeln und AGBs gelten verbindlich für das Spiel Star Trek: Frontline Combat 2. Jeder User ist dazu verpflichtet diese Regeln zu lesen und zu verinnerlichen. Ausreden wie "Diese Regel ist mir nicht bekannt" sind daher nicht als Ausrede bei Regelverst&ouml;ssen zul&aumlssig und werden in keinster Weise anerkannt. Die Administratoren werden die Einhaltung der Spielregeln &uuml;berwachen und durchsetzen. Sollte ein User sich im Falle einer Regeldurchsetzung seitens der Administratoren unfair bzw nicht den Regeln entsprechend behandelt f&uuml;hlen, wird ihm das Recht einger&auml;umt sein Anliegen bzw. das vorhandene Problem im Forum vorzutragen und &uuml;berpr&uuml;fen zu lassen. Die dann gef&auml;llte Entscheidung ist daraufhin entg&uuml;ltig und verbindlich. Im Folgenden werden die einzelnen Regeln sowie die Ahndung bei Regelverstoß aufgelistet.
+</td>
+</tr>
+<tr>
+<td valign="top">#2</td>
+<td valign="top" align="justify">
+Der <b>Spieler</b> hat keine Eigentumsrechte an seinem Profil (oder Account) oder das unbedingte Recht, in <b>STFC2</b> teilzunehmen.<br> 
+Das Konto bleibt Eigentum von <b>STFC2</b> und kann jederzeit gesperrt oder ohne Erkl&auml;rung von <b> Dem Administrator gel&ouml;scht werden </ b>.
+</td>
+</tr>
+<tr>
+<td valign="top">#3</td>
+<td valign="top" align="justify">
+Die <b>Spieler</b> gew&auml;hrleisten <b>den Betreibern</b>, dass keine pornografischen, Kinderpornografie, extreme, tief politischen, unmenschlicher oder anderweitig potenziell anst&ouml;ßiges Material auf dieser Website veröffentlicht wird.
+Insbesondere gilt dies f&uuml;r den Namen des <b>Spielers</b>, das Image seines Avatar, die Namen der Planeten, Flotten, Schiffe, Allianz, das Tag-Allianz, das Allianz Logo, die Beschreibende der Allianz und PN-Nachrichten an <b>die Betreiber</b> oder andere Spieler gerichtet.
+Wird diese Warnung <b>ignoriert</b>, behalten wir uns vor, <b>die Spieler</b> zu Verwarnen oder auf andere Weise zu bestrafen.
+</td>
+</tr>
+<tr>
+<td valign="top">#4</td>
+<td valign="top" align="justify">
+Die <b>Spieler</b> stimmen zu, dass die Sammlung von Informationen, wie beispielsweise die E-Mail Adresse, ist f&uunl;r den alleinigen Zweck durch das <b>STFC2 Team</b> informiert zu werden.<br>
+Dies bedeutet, Informationen wie die Ank&uuml;ndigung einer neuen Spielrunde, Bugfixes, &Auml;nderungen an der <b>AGB</b> oder &auml;hnlich, aber in <u>keinem Fall</u> Werbung oder Spam.
+</td>
+</tr>
+<tr>
+<td valign="top">#5</td>
+<td valign="top" align="justify">
+Da es sich um ein freies Projekt handelt, sind die <b>Betreiber</b> nicht f&uuml;r m&ouml;gliche Sch&auml;den an der Hardware die der <b>Spieler einsetzt verantwortlich</b>. Wie auch f&uuml;r Verluste und / oder Diebstahl von Daten.<br> 
+Dies bedeutet, dass die <b>Betreiber</b> unter keinen Umst&auml;nden haftbar gemacht werden.<br>
+Auf der anderen Seite, werden die <b>Betreiber</b> alles in ihrer Macht Stehende tun, um Verlust und / oder Diebstahl der Daten zu verhindern.<br>
+F&uuml;r die Sicherheit von seinem Konto, ist nur der <b>Spieler</b> selbst verantwortlich. Auch um sicherzustellen, dass der Datenzugriff nicht an Dritte weitergegeben wird.</td>
+</tr>
+<tr>
+<td valign="top">#6</td>
+<td valign="top" align="justify">
+<b>Die Betreiber</b> sind in keiner Weise f&uuml;r die auf dieser Website von den <b>Spielern ver&ouml;ffentlichten Inhalten verantwortlich</b>, wird ein Verstoss gemeldet, wird der <b>Spieler</b> umgehend entfernt werden.</td>
+</tr>
+<tr>
+<td valign="top">#7</td>
+<td valign="top" align="justify">
+Ungeachtet s&auml;mtlicher zivil- und / oder strafrechtlichen Konsequenzen f&uuml;r die <b>Spieler</b>, wird im Falle von grober Fahrl&auml;ssigkeit bei der Erf&uuml;llung einer oder mehrerer der Verpflichtungen dieser <b>AGB</b> unmittelbar zur Kontoaufl&ouml;sung f&uuml;hren ohne vorherige Ank&uuml;ndigung</td>
+</tr>
+<tr>
+<td valign="top">#8</td>
+<td valign="top" align="justify">
+Jede Form der Beschwerde eines <b>Spielers</b> gegen die <b>Betreiber</b> ist in keiner Weise m&ouml;glich.</td>
+</tr>
+<tr>
+<td valign="top">#9</td>
+<td valign="top" align="justify">
+Jeder <b>Spieler</b> nutzt diesen Service auf eigenes Risiko, die <b>Betreiber</b> &uuml;bernehmen keine Haftung.
+</td>
+</tr>
+<tr>
+<td valign="top">#10</td>
+<td valign="top" align="justify">
+Durch die Nutzung von Spiel Bugs (Programmierfehler), eine Art von Vorteil zu erlangen ist streng verboten.
+<ul>
+<li>Der bewusste Einsatz von Fehler ist strafbar, die der <b>Betreiber</b> mit einer sofortigen Stornierung des <b>Spielerkonto</b> bestraft.</li>
+<li>Dir <b>Spieler</b>, dir einen Fehler festgestellt hatt und ihn nicht den <b>Betreibern</b> meldet, kann bestraft werden.<br> 
+Je nach Schweregrad des vergehens wird die Höhe der Strafe durch die <b>Betreiber</b> entschieden werden.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">#11</td>
+<td valign="top" align="justify">
+Verwendung von Tools oder Bots, die Aktionen des Spiels automatisieren ist verboten.<br> 
+Zugang zu <b>STFC2</b> ist nur mit einem nicht modifizierten Internet-Browser erlaubt.<br>
+Alle Skripte, die &uuml;berm&auml;ßige Anforderungen an den Server senden, sind verboten.<br>
+</td>
+</tr>
+<tr>
+<td valign="top">#12</td>
+<td valign="top" align="justify">
+Die Verwendung mehrerer Accounts ist strengstens untersagt.<ul>
+<li>Der Besitz von mehr als einem Account bei <b>STFC2 </b> wird als Multiaccount angesehen. Redundante Profile werden mit der K&uuml;ndigung bestraft werden.</li>
+<li>Wenn zwei Profile mit der gleichen IP gespielt werden, muss dies den <b>Betreibern</b> &uuml;ber den Support gemeldet werden. Es ist m&ouml;glich, eine Zulassung zu erhalten.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">#13</td>
+<td valign="top" align="justify">
+Jedes Konto (auch solche, in denen die <b>Spieler</b> Zugang durch die Sitting Option haben) muss zum Nutzen des Kontos selbst <b><u>verwendet werden, nicht um ein anderes Konto zu unterst&uuml;tzen.</u></b>
+<ul>
+<li>Konten mit einer hohen Rate an Zugriff durch den Sitter und nicht durch den <b>Spieler</b> selbst, wird benachrichtigt und / oder bei Missbrauch gesperrt.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td valign="top">#14</td>
+<td valign="top" align="justify">
+Jeder <b>Spieler</b> hat das Recht, seinen Account zu k&uuml;ndigen, nach dem Antrag an die <b>Betreiber</b> l&auml;uft eine Frist von vier Wochen, danach werden alle Daten aus der Datenbank entfernt.<br>
+Die Daten, wie beispielsweise PN-Nachrichten werden f&uuml;r eine m&ouml;gliche zivilrechtliche und / oder Strafverfolgung gespeichert.
+</td>
+</tr>
+<tr>
+<td valign="top">#15</td>
+<td valign="top" align="justify">
+Die<b>Betreiber</b> von <b>STFC2</b> handeln nach den Regeln die in der AGB stehen. Nicht nach anderen &ouml;ffentlichen Regeln.
+</td>
+</tr>
+<tr>
+<td valign="top">#16</td>
+<td valign="top" align="justify">
+Die <b>Spieler</b> werden mit einer Meldung "ingame" und / oder per E-Mail informiert, wenn es zu &Auml;nderungen an den <b>AGB's</b> kommt.<br> 
+Nach einer Frist von zwei Wochen anerkennt der <b>Spieler</b> die neue <b>AGB</b> automatisch, will er dies nicht, kann der <b>Spieler</b> seinen Account wie in Abschnitt Nr.14 k&uuml;ndigen.
+</td>
+</tr>
+<tr>
+<td valign="top">#17</td>
+<td valign="top" align="justify">
+Wenn einer der Abschnitte dieser <b>AGB</b> ineffizient ist, ber&uuml;hrt dies nicht die G&uuml;ltigkeit der &uuml;brigen Bestimmungen.<br> 
+Die <b>Betreiber</b> behalten sich das Recht vor, diese Regeln zu &auml;ndern, damit sie in Kraft treten. Die &Auml;nderungen werden sofort wirksam und werden nicht in jedem Fall r&uuml;ckwirkend.<br> 
+<u>Diese Klausel gilt auch, wenn es einen Mangel an Regulierung f&uuml;r bestimmte Situationen gibt. Um diese M&auml;ngel zu beheben, haben die <b>etreiber</b> das Recht, die entsprechenden Korrekturen vorzunehmen.</u>
+</td>
+</tr>
+<tr>
+<td valign="top">#18</td>
+<td valign="top" align="justify">
+In diesem Vertrag unter dem Begriff <b>Betreiber</b> sind die auf der Seite Impressum erw&auml;hnten Personen gemeint.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<center><input type=button value="Close" class="button_nosize" onClick="JavaScript:self.close()"></center>
+<br>
+</body>
+</html>

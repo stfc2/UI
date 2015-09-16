@@ -241,7 +241,7 @@ if(isset($_POST['submit'])) {
                     building_11 = 0,
                     building_12 = 0,
                     building_13 = 0,
-                    unit_1 = 0,
+                    unit_1 = ceil(pow(planet_owner_enum*'.MIN_TROOPS_PLANET.',1+planet_owner_enum*0.01)/2),
                     unit_2 = 0,
                     unit_3 = 0,
                     unit_4 = 0,
@@ -339,7 +339,8 @@ if(isset($_POST['submit'])) {
                     SET planet_owner = '.$user_id.',
                         planet_owned_date = '.time().',
                         planet_owner_enum = '.($n_planets - 1).',
-                        planet_available_points = '.$MAX_POINTS[0].'
+                        planet_available_points = '.$MAX_POINTS[0].',
+                        unit_1 = ceil(pow(planet_owner_enum*'.MIN_TROOPS_PLANET.',1+planet_owner_enum*0.01)/2)
                     WHERE planet_id = '.$planet_id;
 
             if(!$db->query($sql)) {

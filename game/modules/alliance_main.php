@@ -472,8 +472,8 @@ elseif(isset($_GET['new'])) {
 
     // Password entry removed
 
-    $sql = 'INSERT INTO alliance (alliance_name, alliance_tag, alliance_owner, alliance_text, alliance_logo, alliance_homepage, alliance_points, alliance_planets, alliance_honor)
-            VALUES ("'.$alliance_name.'", "'.$alliance_tag.'", "'.$game->player['user_id'].'", "", "", "", '.$game->player['user_points'].', '.$game->player['user_planets'].', '.$game->player['user_honor'].')';
+    $sql = 'INSERT INTO alliance (alliance_name, alliance_tag, alliance_owner, alliance_text, alliance_logo, alliance_homepage, alliance_points, alliance_planets, alliance_honor, alliance_application_text)
+            VALUES ("'.$alliance_name.'", "'.$alliance_tag.'", "'.$game->player['user_id'].'", "", "", "", '.$game->player['user_points'].', '.$game->player['user_planets'].', '.$game->player['user_honor'].',"")';
 
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not insert new alliance data');

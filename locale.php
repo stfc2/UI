@@ -50,7 +50,7 @@ $loc_strings = array(
           in order to increase his power and fleets to expand the commercial routes with other players
           or to fight them with all the starships available. To boldly go where nobody has gone before!',
         'fist_membership' => 'Site member of the Federazione Italiana Siti Trek',
-
+        
         // login.php strings
         'login_title' => 'Star Trek: Frontline Combat - Login',
         'login_descr' => 'STFC: Pagina per effettuare la login alla galassia di gioco a cui si e` iscritti (galassia Brown Bobby o Fried Egg).',
@@ -62,7 +62,7 @@ $loc_strings = array(
         'proxy_note' => 'Use only if the images are not loaded.',
         'lost_password' => 'Lost password recovery',
         'submit' => 'Submit',
-
+        
         // lost_password.php strings
         'lost_password_title' => 'Star Trek: Frontline Combat - Password recovery',
         'lost_password_descr' => 'STFC: Page in which request a new password to the system as a replacement for the forgot one.',
@@ -77,7 +77,7 @@ $loc_strings = array(
         'lost_password_warning' => 'Warning: you will receive an automatically generated new password.',
         'back_to_login' => 'Back to login',
         'password_request' => 'Password request',
-
+        
         // register.php strings
         'register_title' => 'Star Trek: Frontline Combat - Registration',
         'register_descr' => 'STFC: Page in which register to the game by providing the details of your account, such as nick, email, gender, race, date of birth and so on.',
@@ -90,7 +90,6 @@ $loc_strings = array(
         'online_players' => 'Online players:',
         'galaxy1_desc' => 'The "'.GALAXY1_NAME.'" galaxy is the basic setup with a tick time of 3 minutes.',
         'galaxy2_desc' => 'The "'.GALAXY2_NAME.'" galaxy is the basic setup with less available races and diplomacy is just a dream.',
-
         'galaxy_registration' => '(2/2) Registration for the galaxy',
         'player_info' => 'Player information (required)',
         'player_name' => 'Player name:',
@@ -228,7 +227,6 @@ $loc_strings = array(
         'error_invalid_birthmonth' => '(Birth month invalid)',
         'error_invalid_birthyear' => '(Birth year invalid)',
         'error_invalid_gender' => '(What <b>are</b> you then?)',
-
         'mail_message_congrats' => 'Congratulations',
         'mail_message_reg1a' => 'Your registration in Star Trek: Frontline Combat II (',
         'mail_message_reg1b' => 'Galaxy) has been successful!',
@@ -240,7 +238,7 @@ $loc_strings = array(
         'mail_subject_reg' => 'Star Trek: Frontline Combat - Registration completed',
         'there_are' => 'There are',
         'on' => 'on',
-
+        
         // multis.php stringa
         'multi_account_info' => 'Information about multiple accounts',
         'multi_account_desc' => '<p>The multiaccount (ie the creation of more than one profile game belonging to the same person) is not
@@ -254,7 +252,7 @@ $loc_strings = array(
          <li>from the forum, by sending an PM (Personal Message) to one or more of the admins and / or moderators</li>
          <li>via email, by sending a detailed description to "admin &lt;at&gt; stfc &lt;dot&gt; it"</li>.
          </ul>',
-
+         
          // activate.php strings
         'activate_title' => 'ST: Frontline Combat - Account activation',
         'activate_descr' => 'STFC: Account activation confirmation page.',
@@ -268,7 +266,7 @@ $loc_strings = array(
         'error_mysql_update' => 'Internal error in SQL UPDATE, please Contact Us.',
         'activate_ok_title' => 'Your account has been successfully activated!',
         'account_activated' => 'Now you can use your login and password.<br /><br />Before entering the world of STFC, a pearl of wisdom for a successful game:',
-
+        
         // delete.php strings
         'delete_title' => 'ST: Frontline Combat - Account deletion',
         'delete_descr' => 'STFC: Account deletion confirmation page.',
@@ -276,7 +274,7 @@ $loc_strings = array(
         'delete_error_title' => 'Error deleting account',
         'delete_ok_title' => 'Your account deletion has been confirmed.',
         'account_deleted' => 'It will be removed with the calculation of the next tick (maximum 3 minutes).',
-
+        
         // stats.php strings
         'stats_title' => 'Star Trek: Frontline Combat - Statistics',
         'stats_descr' => 'STFC: Pagina in cui vengono mostrate alcune statistiche di uptime del server e ed informazioni sulle galassie di gioco, i punti accumulati, i pianeti presenti, le alleanze e via dicendo.',
@@ -302,7 +300,7 @@ $loc_strings = array(
         'sum_of_all_points' => 'Sum of all points:',
         'points_by_player' => '&oslash; by player:',
         'points_by_planet' => '&oslash; by planet:',
-
+        
         // spende.php strings
         'donation_title' => 'Star Trek: Frontline Combat - Support STFC!',
         'donation_descr' => 'STFC: Page where you can make a donation with which to support the game and the work done by the staff.',
@@ -329,7 +327,7 @@ $loc_strings = array(
          ovviamente un eventuale eccesso verrebbe reinvestito nel potenziamento
          del server, oppure nel pagamento degli anni successivi.</p>
          <p>Grazie a tutti e buon gioco!</p>',
-
+         
          // success.php strings
         'success_title' => 'Star Trek: Frontline Combat - Donation made',
         'success_descr' => 'STFC: Confirmation page for the donation made successfully.',
@@ -339,6 +337,301 @@ $loc_strings = array(
          been sent to your email address.</p><p>To view details about the
          transaction log in to your <a href="http://www.paypal.com">Paypal</a>
          account.</p>'
+
+    // German strings
+    'de' => array(
+        // home.php strings
+        'nonews' => 'Keine Neuigkeitn verf&uuml;gbar',
+        'noreports' => 'Keine Reporte vorhanden',
+        'today' => 'Heute',
+        'yesterday' => 'gestern',
+        'welcome' => 'Star Trek Frontline Combat 2, ist ein kostenloses Multiplayerspiel im Star Trek&trade;
+          Universum. Zum Spielen wird nur ein Browser ben&ouml;tigt.<br><br>
+          STFC2 ist ein Echtzeit, Aufbau und Taktik Spiel aus dem Genere Strategie.<br><br>
+          W&auml;hle aus verschiedenen Rassen wie: Federation, Romulaner, Klingonen, Cardassianer und
+          noch mehr.<br> Nachdem deine Welt erstellt wurde, baue neue Kolonien um deine Macht zu steigern.
+          Baue Handelsschiffe wie auch Kampfschiffe um das Universum mit anderen spielern zu erkunden und zu bek&auml;mpfen.
+          Ernkunde bereiche im Universum in denen noch kein anderer jemals war!',
+        'fist_membership' => 'Site member of the Federazione Italiana Siti Trek',
+
+        // login.php strings
+        'login_title' => 'Star Trek: Frontline Combat 2 - Einloggen',
+        'login_descr' => 'STFC2: Seite zum Einloggen in die Galaxie Bobby Brown.',
+        'login' => 'Einloggen',
+        'user_login' => 'Einloggen:',
+        'password' => 'Passwort:',
+        'galaxy' => 'Galaxie:',
+        'using_proxy' => 'Ich verwende einen <a href="http://en.wikipedia.org/wiki/Proxy_server" target="_blank"><u>proxy server</u></a>',
+        'proxy_note' => 'Nur verwenden wenn keine Bilder angezeigt werden..',
+        'lost_password' => 'Passwort vergessen',
+        'submit' => 'Senden',
+
+        // lost_password.php strings
+        'lost_password_title' => 'Star Trek: Frontline Combat 2 - Passwort wiederherstellen',
+        'lost_password_descr' => 'STFC2: Seite um ein neues Passwort anzuforden.',
+        'password_recovery' => 'Passwort wiederherstellen',
+        'error_wrong_name_or_login' => 'Das folgende Problem ist aufgetreten:<br />Player&#146;s Name oder Loginexistiert nicht.',
+        'error_wrong_email' => 'Das folgende Problem ist aufgetreten:<br>Email Adresse existiert nicht.',
+        'mail_message_lp1' => 'Sie haben ein neus Passwort angefordert.',
+        'mail_message_lp2' => 'Versuchen sie sich nun mit den neun Passwort einzuloggen:',
+        'mail_message_lp3' => 'Wichtig: Nach dem einloggen das Passwort erneuern.',
+        'mail_subject_lp' => 'Star Trek: Frontline Combat 2 - Password wiederherstellen',
+        'password_recovered' => 'Das Email mit dem neun Passwort ist unterwegs.',
+        'lost_password_warning' => 'Warnung: Du erh&auml;ltst ein automatich generiertes Passwort.',
+        'back_to_login' => 'Zut&uuml;ck zum Login',
+        'password_request' => 'Passwort anfordern',
+
+        // register.php strings
+        'register_title' => 'Star Trek: Frontline Combat 2 - Anmeldung',
+        'register_descr' => 'STFC2: Seite um sich im Spiel anzumelden. Mit Details Ihres Account wie Nick, E-Mail, Geschlecht, Rasse, Geburtsdatum und so weiter.',
+        'registration' => 'Anmeldung',
+        'galaxy_selection' => 'Galaxie:',
+        'version' => 'Version:',
+        'running_since' => 'Galaxie offen seit:',
+        'days' => 'Tagen',
+        'available_places' => 'Freie Slots:',
+        'online_players' => 'Online Spieler:',
+        'galaxy1_desc' => 'Die "'.GALAXY1_NAME.'" Galaxie hat einen 3 Minuten Tick intervall.',
+        'galaxy2_desc' => 'The "'.GALAXY2_NAME.'" galaxy is the basic setup with less available races and diplomacy is just a dream.',
+
+        'galaxy_registration' => '(2/2) Anmeldung in der Galaxie',
+        'player_info' => 'Spieler Informationen',
+        'player_name' => 'Spieler Name:',
+        'password_verify' => 'Passwort wiederholen:',
+        'email' => 'Email:',
+        'race_selection' => 'Rassen Auswahl:',
+        'race0' => 'Federation',
+        'race1' => 'Romulaner',
+        'race2' => 'Klingone',
+        'race3' => 'Cardassianer',
+        'race4' => 'Dominion',
+        'race5' => 'Ferengi',
+        'race6' => 'Borg',
+        'race7' => 'Q',
+        'race8' => 'Breen',
+        'race9' => 'Hirogen',
+        'race10' => 'Krenim',
+        'race11' => 'Kazon',
+        'race0_desc' => 'Diese Rasse besitzt eine grosse Vielfalt an Schiffen.
+         Die F&ouml;derationsschiffe haben die meist resistenten Schilde unter allen Schiffen in der Galaxie.
+         Die Produktion von Ressourcen und Truppen ist im Durchschitt der Galaxie.
+         Im Vergleich zu anderen Rassen, hat der Verband gute technologische Forschungswerkzeuge.<br>
+         Die Spieler von dieser Rasse beginnt mit gleicher Wahrscheinlichkeit von dem Alpha, Beta und
+	Gamma Quadranten, kaum aus dem Delta-Quadranten.<br>
+         <i>Empfohlen f&uuml;r neue Spieler.</i>',
+        'race1_desc' => 'Die st&auml;rke der Romulaner ist, schnell und bei geringen Kosten
+         Schiffe und Truppen zu bauen. Sie haben eine sehr niedrige Rate der Produktion von Dilitium.
+         Schiffe und Truppen sind relativ schwach. Allerdings haben romulanische Schiffe offt die
+         m&ouml;glichkeit der Tarnung.<br>
+         Spieler dieser Rasse starten oft im Beta Quadrant, eher als im
+         Gamma oder Alpha Quadrant.<br>
+         <i>Empfohlen f&uuml;r neue Spieler.</i>',
+        'race2_desc' => 'Die Klingonen sind eine Krieger Rasse mit grossen Schiffen und Truppen.
+         Allerdings werden sie mit sehr hohen Bauzeiten f&uuml; Truppen und Planeten Strukturen.
+         Dar&uuml;ber hinaus ist die technische Forschung der Klingongen auch kein plus Punkt.<br>
+         Spieler dieser Rasse haben starten oft im Alpha Quadrant und eher selten
+         im Beta oder Gamma Quadrant.<br>
+         <i>Geeignet f&uuml;r neue Spieler.</i>',
+        'race3_desc' => 'Die Cardassianer, die Unterdr&uuml;cker und Ausbeuter von vielen Bev&ouml;lkerungsgruppen,
+         unfair und falsch in jeder Situation. Sie haben aggressive Soldaten aber sie verf&uuml;gen
+         nicht &uuml;ber eine Vielzahl von Schiffen. Ihre Schiffe sind eher schwach im Vergleich zu denen anderer Rassen.
+         Unter all den Rassen ist diese am aggressivsten.<br>
+         Die Spieler dieser Rasse starten meist vom Alpha oder Gamma Quadranten.<br>
+         <i>Die Cardassianer brauchen gute F&uuml;hrung und Aggressivit&auml;t, um erfolgreich gespielt zu werden.</i>',
+        'race4_desc' => 'Die Dominions haben schnelle und leistungsf&auml;hige Schiffe. Ihre Produktion ist die
+         langsamste aller Rassen. Die Bauzeit der planetarischen Strukturen ist im Vergleich zu den
+         anderen Rassen sehr hoch.<br>
+         Die Spieler von dieser Rasse starten im Wesentlichen aus dem Gamma-Quadranten.<br>
+         <i>Eine der schwierigsten Rassen zu spielen, definitiv nicht f&uuml;r neue Spieler empfohlen.</i>',
+        'race5_desc' => 'Die Ferengis sind die Exzellenz-Handels-Rasse von Star Trek.
+         Sie bevorzugen es, Geschäfte zu machen, sie haben schnelle Transporter und sehr schnelle Kolonieschiffe,
+         sie haben den g&uuml;nstigsten Preis der Rohstoffgewinnung und sind schnell, um Truppen und Planeten Strukturen
+         zu bauen, dies erm&ouml;glicht den Ferengi schneller als jede andere Rasse zu wachsen.
+         Ihre Schw&auml;che liegt in den schwachen Schlachtschiffen, weshalb die Spieler sich auf die 
+         wirtschaftlichen F&auml;higkeiten konzentrieren sollten, um Schiffe auf Auktionen zu kaufen.<br>Die Spieler dieser Rasse
+         haben die gleiche Chance, von jedem der vier Quadranten zu starten.<br>
+         <i>Eine Rasse extrem einfach zu spielen. Die Spieler m&uuml;ssen gut wirtschaften,
+         um vollen Nutzen aus den Ferengi zu holen.</i>',
+        'race6_desc' => 'Borg',
+        'race7_desc' => 'Q',
+        'race8_desc' => 'Die Breen sind eine sehr starke Rasse, mit leistungsstarken, aber recht teuren
+         Schiffen und Soldaten. Ihre Ressourcen Extraktionsrate ist relativ gering, und dies kann zum
+         Wirtschaftsproblem werden.  Sie haben auch die niedrigste Auswahl von Schiffen zur Verf&uuml;gung,
+         jedoch sollten sie nie untersch&auml;tzt werden. Die Bauzeit der Planeten Strukturen sind 
+         relativ hoch.<br>Die Spielerdieser Rasse beginnen mit einer Pr&auml;valenz
+         im Gamma Quadrant.<br>
+         <i>Eine ziemlich schwer zu spielende Rasse, mit wenig Auswahl an Schiffen. Geeignet f&uuml;r
+         Spieler mit einer Menge prktischem Sinn.</i>',
+        'race9_desc' => 'Der Hirogen ist eine Rasse sehr schwierig zu spielen. Ihr Vorteil kommt
+         sp&auml;ter im Spiel, aber sie m&uuml;ssen mit dem Mangel an Vielfalt von Schiffen k&auml;mpfen.
+         Die Hirogen haben ausgezeichnete Bodentruppen mit der besten Verteidigungskapazit&auml;t der Anlagen.<br>
+         Die Spieler dieser Rasse k&ouml;nnen mit gleicher Wahrscheinlichkeit von jedem Quadrant starten.<br>
+         <i>Komplexe Rasse, f&uuml;r erfahrenen Spieler und diejenigen die eine Herausforderung suchen.</i>',
+        'race10_desc' => 'Krenim haben keine besonders starken Truppen, aber ihre grosser Vorteil ist,
+         Nutzung der Technologie. Auf dem Gebiet der technologischen Forschung sind Krenim
+         weiter als alle anderen Rassen. Auch die Produktion der Truppen ist recht schnell.<br>
+         Die Spieler von dieser Rasse beginnen im Wesentlichen im Delta Quadrant.<br>
+         <i>Rasse einfach zu spielen aber doch nicht leicht. Eine durchschnitt Herausforderung.</i>',
+        'race11_desc' => 'Kazon geh&ouml;ren zu den Kriegerrassen, vor allem auf dem Boden Schlachtfeld.
+         Sie sind sehr schnell, im Truppen produzieren, dass ist ihre St&auml;rke. Die kleinen Kazon
+         Schiffe sind keine Bedrohung f&uuml;r andere Rassen, erst sp&auml;ter erreichen sie ihr volles Potential.<br>
+         Die Spieler dieser Rasse starten im Wesentlichen im Delta Quadrant.<br>
+         <i>F&uuml;r durchschnittliche Spieler empfohlen.</i>',
+        'personal_info' => 'Personen Informationen (optional)',
+        'birthdate' => 'Gerburtstag:',
+        'birthdate_format' => 'Tag.Monat.Jahr',
+        'gender' => 'Geschlecht:',
+        'not_indicated' => 'keine Auswahl',
+        'male' => 'M&auml;nlich',
+        'female' => 'Weiblich',
+        'zipcode' => 'PLZ:',
+        'country' => 'Land:',
+        'country_it' => 'Italien',
+        'country_en' => 'England',
+        'country_us' => 'USA',
+        'country_de' => 'Deutschland',
+        'country_at' => '&Ouml;sterreich',
+        'country_ch' => 'Schweiz',
+        'country_fr' => 'Frankreich',
+        'term_of_use' => 'Ich habe die <a href="JavaScript:void(window.open(\'agb.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));"><b><u>Nutzungsbedingungen</u></b></a> von dem Spiel gelesen und akzeptiert.',
+        'no_multiaccount' => 'Nur ein Account per IP',
+        'multiaccount_desc' => 'Diese Limitation heisst, jeder Spieler der mehr als einen Account hat \
+         betrieben ab einer IP f&uuml;r mehr als vier Tage nach Anmeldung gekickt und gebannt wird!<br />\
+         Sollte dies aus technischen Gr&uuml;nden wie Router, Modem usw. sein, ist dem Support \
+         die IP und der Grund zu nennen.<br /> \
+         <u><b>Link unten folgen!</b></u>',
+        'multiaccount_title' => 'Limitierungs Details',
+        'register' => 'Anmelden',
+        'stars_explanations' => '* Der Name wird im Spiel angezeigt.<br>**Der Name wird nicht im Spiel angezeigt.',
+        'registration_ok1' => 'Anmeldung in der Galaxie',
+        'registration_ok2' => 'erfolgreich',
+        'registration_successfully' => 'Die Anmeldung war erfolgreich!<br \><br \>
+         Ein Email mit einem Aktivierungslink wurde soeben an dein Adresse versendet.<br \>
+         <b>Die Nachricht kann als Spam markier sein. Bei Verz&ouml;gerung bitte auch den Spam Ordner kontrollieren.</b>',
+        'registration_disabled' => 'Anmeldung im Moment gesperrt.',
+        'registration_impossible' => 'Anmeldung im Moment nicht m&ouml;glich.',
+        'of' => 'von',
+        'occupied_places' => 'Slots belegt',
+        'error_missing_name' => '(Player&#146;s Name nicht eingetragen)',
+        'error_missing_login' => '(Einloggen nicht eingetragen)',
+        'error_missing_password' => '(Passwort nicht eingetragen)',
+        'error_missing_email' => '(Email Adresse nicht eingetragen)',
+        'error_existing_name' => '(Player&#146;s Name existiert schon in der Galaxie)',
+        'error_existing_login' => '(Login existiert schon in der Galaxie)',
+        'error_existing_email' => '(Email Adresse existiert schon in der Galaxie)',
+        'error_blank_in_name' => '(Player&#146;s Name enth&auml;lt Leerzeichen)',
+        'error_inv_char_in_name' => '(Player&#146;s Name enth&auml;lt ung&uuml;ltige Zeichen [0-9, a-z, A-Z erlaubt])',
+        'error_inv_char_in_login' => '(Login enth&auml;lt ung&uuml;ltige Zeichen [0-9, a-z, A-Z erlaubt])',
+        'error_matching_name_login' => '(Player&#146;s Name und Login darf nicht identisch sein)',
+        'error_mismatching_password' => '(Passworde stimmen nicht &uuml;berein)',
+        'error_invalid_race' => '(Gew&auml;hlte Rasse existiert nicht)',
+        'error_unaccepted_tou' => '(Spielregeln/AGB nicht akzeptiert)',
+        'error_invalid_birthday' => '(Geburts-Tag ung&uuml;ltig)',
+        'error_invalid_birthmonth' => '(Geburts-Monat ung&uuml;ltig)',
+        'error_invalid_birthyear' => '(Geburts-Jahr ung&uuml;ltig)',
+        'error_invalid_gender' => '(Was <b>bist</b> du dann?)',
+
+        'mail_message_congrats' => 'Ziel erreicht!',
+        'mail_message_reg1a' => 'Deine Anmeldung bei Star Trek: Frontline Combat II (',
+        'mail_message_reg1b' => 'Galaxy) Galaxie war erfolgreich!',
+        'mail_message_reg2' => 'Um deine Anmeldung abzuschlissen, folgenden Link klicken:',
+        'mail_message_reg3' => 'Sollte die Anmeldung nicht gewollt sein. Dies Email einfach nicht beachten.',
+        'mail_message_reg4' => 'Ohne erfolge aktivierung werden deine Daten nach 48 stunden aus der Datenbank entfernt.',
+        'mail_message_sig_line1' => 'Lebe und gedeihe lang',
+        'mail_message_sig_line2' => 'das STFC2 Team',
+        'mail_subject_reg' => 'Star Trek: Frontline Combat 2 - Anmeldung beendet',
+        'there_are' => 'Es ist',
+        'on' => 'von',
+
+        // multis.php stringa
+        'multi_account_info' => 'Informationen zu Multi-Accounts',
+        'multi_account_desc' => '<p>Multiaccounts (dh. die Schaffung von mehr als einem Account pro Spiel pro Person) ist nich gestattet.</p>
+         <p>Es ist den Betreibern bewusst das speziellen Einsatzbedingungen zur Schaffung eines "fake" Multi-Accounts f&uuml;hren kann.<br />
+         Zum Beispiel, zwei Br&uuml;der, die aus dem gleichen Haushalt spielen oder zwei Kollegen, die den Zugang von einem Unternehmensnetzwerk haben.</p>
+         <p>Bei all diesen F&auml;llen ist es ausreichend, rechtzeitig Kontakt mit dem Personal zu ergreifen, um die Situation zu erkl&auml;ren.<br />
+         Um dies zu tun, k&ouml;nnen Sie eine Vielzahl von Methoden, wie beispielsweise folgende verwenden: 
+         <ul>
+         <li>aus dem Spiel, indem Sie eine Nachricht an den Support senden, indem Sie der Rubrik "Hilfe" folgen</li>
+         <li>aus dem Forum, per PM (Personal Message) an einen oder mehrere der Administratoren und / oder Moderatoren</li>
+         <li>per E-Mail, indem Sie eine detaillierte Beschreibung zu "admin &lt;at&gt; stfc2 &lt;dot&gt; ch" senden</li>.
+         </ul>',
+
+         // activate.php strings
+        'activate_title' => 'Star Trek: Frontline Combat 2 - Account activierung',
+        'activate_descr' => 'STFC2: Best&auml;tigung der Account aktivierung.',
+        'account_activation' => 'Account activierung',
+        'activate_error_title' => 'Account konnte nicht aktiviert werden',
+        'error_missing_info' => 'mindestens eine der folgenden Imformationen fehlt:<ul><li>Galaxie</li><li>User ID</li><li>Aktivations Code</li></ul>',
+        'error_mismatched_code' => 'Der Aktivierungscode passt nicht zu dem im System hinterlegten Code. (truncated link?).',
+        'error_mysql_select' => 'Interner Datenbank Fehler. Bitte an den Support wenden.',
+        'error_account_missing' => 'Keine Informationen zu dem Spieler vorhanden (Spieler existiert nicht?).',
+        'error_already_activated' => 'Der Spieler ist bereits aktiviert.',
+        'error_mysql_update' => 'Interner Datenbank Fehler. Bitte an den Support wenden.',
+        'activate_ok_title' => 'Dein Account wurde erfolgreich aktiviert!',
+        'account_activated' => 'Nun kannst du deinen Login und Passwort verwenden.<br /><br />Bevor du die Welt von STFC2 erkundest a pearl of wisdom for a successful game:',
+
+        // delete.php strings
+        'delete_title' => 'Star Trek: Frontline Combat 2 - Account entfernen',
+        'delete_descr' => 'STFC2: Best&auml;tigung Account entfernen.',
+        'account_deletion' => 'Account entfernen',
+        'delete_error_title' => 'Fehler beim Account entfernen',
+        'delete_ok_title' => 'Das entfernen von deinem Account ist ok.',
+        'account_deleted' => 'Mit dem erreichen des neuen Ticks wird die entfernung vollzogen.',
+
+        // stats.php strings
+        'stats_title' => 'Star Trek: Frontline Combat 2 - Statistik',
+        'stats_descr' => 'STFC2: Seite, die Statistiken der Galaxie und Informationen &uuml;ber das Spiel zeigt, die Punkte, die Planeten, Allianzen und so weiter.',
+        'stats' => 'Statistik',
+        'cpu_usage' => 'Usage:',
+        'total_ram' => 'Total RAM:',
+        'free_ram' => 'Free RAM:',
+        'php_version' => 'PHP version:',
+        'sql_version' => 'mySQL version:',
+        'racial_statistics' => 'Rassen Statistik',
+        'affiliate_planets' => 'Besiedelte Planeten',
+        'round_start' => 'Runde gestartet am:',
+        'round_end' => 'Runde endet am:',
+        'view_galaxy' => 'Galaxie ansehen:',
+        'click' => 'Klick',
+        'active_players' => 'Active Spieler:',
+        'registered_today' => 'Heute registriert:',
+        'players_treaties' => 'Players treaties:',
+        'founded_alliances' => 'Allianzen vorhanden:',
+        'alliances_treaties' => 'Alliances treaties:',
+        'solar_systems' => 'Sonnen Systeme:',
+        'planets' => 'Planeten:',
+        'sum_of_all_points' => 'Summe aller Punkte:',
+        'points_by_player' => '&oslash; per Spieler:',
+        'points_by_planet' => '&oslash; per Planet:',
+
+        // spende.php strings
+        'donation_title' => 'Star Trek: Frontline Combat 2 - Spende STFC2!',
+        'donation_descr' => 'STFC2: Seite f&uuml;r eine Spende, mit der das Spiel und die Arbeit der Betreiber unterst&uuml;tzen.',
+        'donation' => 'Unterst&uuml;tze Star Trek: Frontline Combat 2!',
+        'donation_statement' => '<p>Liebe Spielerinnen und Spieler,<br><br>
+         Star Trek Frontline Combat 2 ist und bleibt ein absolut kostenloses
+         open Source Browsergame. Daf&uuml;r setzt sich das Team ein.
+         Auch gibt und wird es nicht geben das im Spiel mit Geld vorteile erzielt werden.</p>
+         <p>Tatsache jedoch ist leider, das Zeit und engagement nicht ausreicht
+         um das Spiel hier am Leben zu halten. Leider l&auml;sst sich das</p>
+         <p>ganz ohne Geld auch nicht bewerkstelligen. Wir haben eine
+         Server-Struktur die einige Spieler aushalten kann. Auch betreiben und 
+         unterhalten wird alles selbst. Dies um die Kosten so gering wie
+         irgendwie m&ouml;glich zu halten.<br><br>
+         <b>Mit einer Spende, helft ihr mit die anfallenden Kosten zu tragen.
+         Das Spiel zu erhalten wie auch den Server zu erhalten. Auch die
+         n&ouml;tige Infrastruktur zu erhalten.</b><br><br>
+         <p>Vielen Dank und gutes Spiel!</p>',
+
+         // success.php strings
+        'success_title' => 'Star Trek: Frontline Combat 2 - Spende',
+        'success_descr' => 'STFC2: Best&auml;tigungsseite f&uuml;r die erfolgreiche Spende.',
+        'thank_you' => 'Vielen Dank für Ihre Spende!',
+        'transaction' => '<p>Vielen Dank für Ihre Spende.</p>
+         <p>Die Transaktion ist abgeschlossen und eine Quittung f&uuml;r Ihre Spende wurde
+         an Ihre E-Mail-Adresse gesendet.</p><p>Um Details über die Transaktion zu sehen
+         melden Sie sich an Ihrem <a href="http://www.paypal.com">Paypal</a>
+         Account an.</p>'
     ),
 
     // Italian strings
@@ -557,8 +850,8 @@ $loc_strings = array(
         'mail_message_reg1b' => ') ha avuto successo!',
         'mail_message_reg2' => 'Per attivare il tuo account devi cliccare sul link seguente:',
         'mail_message_reg3' => 'Se non hai eseguito la registrazione, ignora questa email.',
-        'mail_message_reg4' => 'Dopo 48 ore, il tuo indirizzo email verrà automaticamente rimosso dal nostro database.',
-        'mail_message_sig_line1' => 'Lunga vita e prosperità',
+        'mail_message_reg4' => 'Dopo 48 ore, il tuo indirizzo email verrà  automaticamente rimosso dal nostro database.',
+        'mail_message_sig_line1' => 'Lunga vita e prosperità ',
         'mail_message_sig_line2' => 'Il team STFC',
         'mail_subject_reg' => 'Star Trek: Frontline Combat - Registrazione effettuata',
         'there_are' => 'Ci sono',
@@ -668,7 +961,8 @@ $loc_strings = array(
 
 $langs = array(
         'en-US',// default
-        'it',
+        'de',
+	'it',
 );
 
 $user_lang = isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) : 'en';

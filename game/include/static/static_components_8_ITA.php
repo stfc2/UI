@@ -48,13 +48,13 @@ $ship_components_locale=array(
             ), // Endof Component Bioconvertitore MK III
 
             // Component Bioconvertitore MK IV
-             2=>array(
+             3=>array(
                     'name'=>'Bioconvertitore MK IV',
                     'description'=>'Prototipo di bioconvertitore &egrave; componente impiegabile sulle classi pi&ugrave; pesanti della flotta.',
             ), // Endof Component Bioconvertitore MK IV
 
             // Component Bioconvertitore MK V
-             3=>array(
+             4=>array(
                     'name'=>'Bioconvertitore MK V',
                     'description'=>'Questa versione viene realizzata per soddisfare la richiesta di potenza delle ammiraglie della flotta, le navi classe Gel&acute;Chak.',
             ), // Endof Component Bioconvertitore MK V

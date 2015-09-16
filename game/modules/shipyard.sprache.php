@@ -155,7 +155,25 @@ define ("GER_TEXT65", 'Latinum');
 
 define ("GER_TEXT66", 'Arbeiter');
 
-define ("GER_TEXT67", 'fehlende Ressourcen');
+define ("GER_TEXT67", 'Fehlende Ressourcen');
+
+define ("GER_TEXT68", 'Arbeitsleitung eins:');
+
+define ("GER_TEXT69", 'Arbeitsleitung zwei:');
+
+define ("GER_TEXT70", 'Arbeitsleitung drei:');
+
+define ("GER_TEXT71", 'Arbeitsleitung vier:');
+
+define ("GER_TEXT72", 'Zivil R&uuml;mpfe');
+
+define ("GER_TEXT73", 'Milit&auml;r Rumpf Typ 1');
+
+define ("GER_TEXT74", 'Milit&auml;r Rumpf Typ 2');
+
+define ("GER_TEXT75", 'Milit&auml;r Rumpf Typ 3');
+
+define ("GER_TEXT76", 'Schiffe in der Warteschlange');
 
 
 //English
@@ -296,6 +314,24 @@ define ("ENG_TEXT66", 'Workers');
 
 define ("ENG_TEXT67", 'Missing resources');
 
+define ("ENG_TEXT68", 'Working Line One:');
+
+define ("ENG_TEXT69", 'Working Line Two:');
+
+define ("ENG_TEXT70", 'Working Line Three:');
+
+define ("ENG_TEXT71", 'Working Line Four:');
+
+define ("ENG_TEXT72", 'Civilian Hulls');
+
+define ("ENG_TEXT73", 'Type 1 Military Hulls');
+
+define ("ENG_TEXT74", 'Type 2 Military Hulls');
+
+define ("ENG_TEXT75", 'Type 3 Military Hulls');
+
+define ("ENG_TEXT76", 'Ships in the queue');
+
 
 //Italiano
 define ("ITA_TEXT0", 'Necessiti');
@@ -434,5 +470,23 @@ define ("ITA_TEXT65", 'Dilitio');
 define ("ITA_TEXT66", 'Lavoratori');
 
 define ("ITA_TEXT67", 'Risorse mancanti');
+
+define ("ITA_TEXT68", 'Linea Uno:');
+
+define ("ITA_TEXT69", 'Linea Due:');
+
+define ("ITA_TEXT70", 'Linea Tre:');
+
+define ("ITA_TEXT71", 'Linea Quattro:');
+
+define ("ITA_TEXT72", 'Scafi Civili');
+
+define ("ITA_TEXT73", 'Scafi Militari Tipo 1');
+
+define ("ITA_TEXT74", 'Scafi Militari Tipo 2');
+
+define ("ITA_TEXT75", 'Scafi Militari Tipo 3');
+
+define ("ITA_TEXT76", 'Navi in coda di costruzione');
 
 ?>
