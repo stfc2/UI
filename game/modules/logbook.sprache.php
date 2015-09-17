@@ -36,7 +36,7 @@ define ("GER_TEXT5", 'Der gew&auml;hlte Logeintrag existiert nicht');
 
 define ("GER_TEXT6", 'Fehler bei der Seitenberechnung des Logbuchs');
 
-define ("GER_TEXT7", 'Unexspected: could not determine $on_i');
+define ("GER_TEXT7", 'Uerwartet: konnet $on_i nicht bestimmen');
 
 define ("GER_TEXT8", '[vorheriger Eintrag]');
 
