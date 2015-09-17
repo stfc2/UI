@@ -90,11 +90,11 @@ define ("GER_TEXT31", 'Keine Koordinaten angegeben');
 
 define ("GER_TEXT32", 'Ung&uuml;ltige Y-Koordinate f&uuml;r System angegeben');
 
-define ("GER_TEXT33", 'no part of $letters');
+define ("GER_TEXT33", 'kein Teil von $letters');
 
 define ("GER_TEXT34", 'Ungltige X-Koordinate f&uuml;r System angegeben');
 
-define ("GER_TEXT35", 'no part of $numbers');
+define ("GER_TEXT35", 'kein Teil von $numbers');
 
 define ("GER_TEXT36", 'Es existiert kein System mit den Koordinaten');
 
@@ -142,7 +142,7 @@ define ("GER_TEXT57", 'freier Slot');
 
 define ("GER_TEXT58", 'Speichern');
 
-define ("GER_TEXT59", 'Bitte melde dies im <a href="http://forum.stgcsource.net/board.php?boardid=108">Bugforum von BB</a> unter Angabe der Seite, von der du gekommen bist bzw. was du tun wolltest.<br><br>Achte jedoch bitte darauf, dass zu genau derselben Aktion nicht schon ein Thread existiert!');
+define ("GER_TEXT59", 'Bitte melde dies im <a href="https://forum.stfc2.ch">Bugforum von BB</a> unter Angabe der Seite, von der du gekommen bist bzw. was du tun wolltest.<br><br>Achte jedoch bitte darauf, dass zu genau derselben Aktion nicht schon ein Thread existiert!');
 
 define ("GER_TEXT60", 'Galaxie');
 
@@ -210,13 +210,13 @@ define ("GER_TEXT90", '<span style="color: #89CAEF;">hellblau</span> - Planet ei
 
 define ("GER_TEXT91", 'Wenn das Bild nicht richtig aktualisiert wird,<br>stellt in den Optionen eures Browsers<br>"Bei jedem Zugriff auf die Seite nach neuer Version suchen" ein');
 
-define ("GER_TEXT92", 'Survey:');
+define ("GER_TEXT92", '&Uuml;bersicht:');
 
-define ("GER_TEXT93", 'No expedition done yet.');
+define ("GER_TEXT93", 'Nicht untersucht bis jetzt.');
 
-define ("GER_TEXT121", 'The planet is assimilated by the Borg on ');
+define ("GER_TEXT121", 'Der Planet wurde von den Borg &uuml;bernommen am ');
 
-define ("GER_TEXT122", 'To the settlers of the planets, <b>');
+define ("GER_TEXT122", 'Zu dem Siedler von diesem Planeten, <b>');
 
 define ("GER_TEXT123", '</b> grant independence on ');
 
@@ -224,15 +224,15 @@ define ("GER_TEXT124", 'The following information indicates the mood of the sett
 
 define ("GER_TEXT125", 'Average value = 100, indicates indifference.<br>Higher values indicate benevolent behavior toward the race.<br>Lower values indicate that the settlers are hostile towards the race.');
 
-define ("GER_TEXT126", 'Land team');
+define ("GER_TEXT126", 'Team landen');
 
-define ("GER_TEXT127", 'Terraforming experiments of <b>');
+define ("GER_TEXT127", 'Terraforming Experimente von <b>');
 
-define ("GER_TEXT128", '</b> morph the planetoid, changing it to class <b>');
+define ("GER_TEXT128", '</b> morphen den planetoiden, &auml;ndern ihn zur Klasse <b>');
 
-define ("GER_TEXT129", ' a colony ship of ');
+define ("GER_TEXT129", ' ein Kolonieschiff von ');
 
-define ("GER_TEXT130", ' starts a new independent colony!');
+define ("GER_TEXT130", ' startet eine neue Kolonie!');
 
 define ("GER_TEXT131", '<span style="color: #CC6600;">orange</span> - unabh&auml;ngige Kolonie<br>');
 
