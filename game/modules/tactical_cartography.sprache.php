@@ -218,11 +218,11 @@ define ("GER_TEXT121", 'Der Planet wurde von den Borg &uuml;bernommen am ');
 
 define ("GER_TEXT122", 'Zu dem Siedler von diesem Planeten, <b>');
 
-define ("GER_TEXT123", '</b> grant independence on ');
+define ("GER_TEXT123", '</b> Unabh&auml;ngigkeit zu gew&auml;hren ');
 
-define ("GER_TEXT124", 'The following information indicates the mood of the settlers on the planet than any species and is updated automatically every tick:');
+define ("GER_TEXT124", 'Die folgenden Informationen gibt die Stimmung der Siedler auf dem Planeten an und wird automatisch jeden Tick aktualisiert:');
 
-define ("GER_TEXT125", 'Average value = 100, indicates indifference.<br>Higher values indicate benevolent behavior toward the race.<br>Lower values indicate that the settlers are hostile towards the race.');
+define ("GER_TEXT125", 'Durchschnitt = 100 <br>H&ouml;here Werte zeigen wohlwollende Verhalten gegen&uuml;ber der Rasse.<br>Niedrigere Werte zeigen an, dass die Siedler feindselig gegen&uuml;ber der Rasse sind.');
 
 define ("GER_TEXT126", 'Team landen');
 
