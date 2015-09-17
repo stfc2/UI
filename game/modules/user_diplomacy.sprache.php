@@ -104,7 +104,7 @@ define ("GER_TEXT41",'Wartet');
 
 define ("GER_TEXT42",'Unbekannt');
 
-define ("GER_TEXT43", 'Colonie Indipendenti:');
+define ("GER_TEXT43", 'unabh&auml;ngige Kolonien:');
 
 define ("ENG_TEXT44", 'Namen');
 

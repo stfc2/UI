@@ -222,9 +222,9 @@ define ("GER_MOVEHAND", 'Alle Schiffe &uuml;bergeben');
 
 define ("GER_MOVECOLONIZE", 'Kolonisieren');
 
-define ("GER_MOVESURVEY", 'Survey planet');
+define ("GER_MOVESURVEY", 'Planet erkunden');
 
-define ("GER_TEAMAWAY", 'Team Away');
+define ("GER_TEAMAWAY", 'Team weg');
 
 define ("GER_MOVECARGO", 'Ladung &uuml;bergeben und Zur&uuml;ckfliegen');
 
