@@ -214,6 +214,60 @@ define ("GER_TEXT92", '&Uuml;bersicht:');
 
 define ("GER_TEXT93", 'Nicht untersucht bis jetzt.');
 
+define ("GER_TEXT94", '<i>Datenbank aktualisiert am</i> ');
+
+define ("GER_TEXT95", '<u>Historische Informationen</u><br>');
+
+define ("GER_TEXT96", '<br><u>Geologische Informationen</u><br>');
+
+define ("GER_TEXT97", '<br><u>Taktische/Politische Informationen</u><br>');
+
+define ("GER_TEXT98", 'Geburtsort der Zivilisation gegr&uuml;ndet von <b>');
+
+define ("GER_TEXT99", ' </b> auf ');
+
+define ("GER_TEXT100", 'Geologische Analyse des Planeten von wissenschaftlichen Teams an Bord des Schiffes durchgef&uuml;hrt <b>');
+
+define ("GER_TEXT101", '</b>, zugeh&ouml;rig zu den Truppen von <b>');
+
+define ("GER_TEXT102", '</b>, ausgef&uuml;hrt am ');
+
+define ("GER_TEXT103", 'Anwesenheit von Metall: ');
+
+define ("GER_TEXT104", 'Anwesenheit von Mineral: ');
+
+define ("GER_TEXT105", 'Anwesenheit von Latinum: ');
+
+define ("GER_TEXT106", '-- UNTER standard --');
+
+define ("GER_TEXT107", '-- standard --');
+
+define ("GER_TEXT108", '-- &Uuml;BER standard --');
+
+define ("GER_TEXT109", 'Kolonisiert von Truppen von <b>');
+
+define ("GER_TEXT110", 'Truppen von <b>');
+
+define ("GER_TEXT111", '</b> die Schlacht gewinnen auf der Oberfl&auml;che des Planeten auf ');
+
+define ("GER_TEXT112", ', aus der Kontrolle der Truppen entfernen <b>');
+
+define ("GER_TEXT113", 'Von der Kontrolle entkommen <b>');
+
+define ("GER_TEXT114", '</b> Ein Aufstand der lokalen Bev&ouml;lkerung auf ');
+
+define ("GER_TEXT115", 'Die Kontrolle &uuml;ber den Planeten durch die Truppen schwindet, die lokale Bev&ouml;lkerung &uuml;bernimmt ');
+
+define ("GER_TEXT116", 'am Datum ');
+
+define ("GER_TEXT117", ', Schiffe mit Truppen von <b>');
+
+define ("GER_TEXT118", '</b> erreichten den Planeten als erste &uuml;berhaupt.');
+
+define ("GER_TEXT119", '</b> erreichte den Planeten und k&auml;mpften f&uuml;r das Recht der Kolonisierung.');
+
+define ("GER_TEXT120", '<i>&#171;Unbekannt&#187;</i>');
+
 define ("GER_TEXT121", 'Der Planet wurde von den Borg &uuml;bernommen am ');
 
 define ("GER_TEXT122", 'Zu dem Siedler von diesem Planeten, <b>');
