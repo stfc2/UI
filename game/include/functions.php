@@ -399,6 +399,7 @@ function get_move_action_str($code, $unexspected = array()) {
 		case 25: $str = constant($game->sprache("MOVECOLONIZE")); break;
 		case 26: $str = constant($game->sprache("MOVESURVEY")); break;
 		case 27: $str = constant($game->sprache("TEAMAWAY")); break;
+                case 28: $str = constant($game->sprache("RETREAT")); break;
 
 		case 31: $str = constant($game->sprache("MOVECARGO")); break;
 		case 32: $str = 'You should not see this'; break; // Ferengifake Transport
@@ -2252,7 +2253,7 @@ echo'
         // We return true for a system where we can go freely
 
         // If private system is disabled return true
-        if(HOME_SYSTEM_PRIVATE == 0) return true;
+        if(HOME_SYSTEM_PRIVATE == 0 || HOME_SYSTEM_PRIVATE == 2) return true;
 
         if($this->player['user_auth_level'] == STGC_DEVELOPER) return true;
 
@@ -2267,6 +2268,32 @@ echo'
         if($res['system_closed'] == 0) return true;
 
         return false;
+    }
+    
+    function is_action_allowed($planet_id)
+    {
+        global $db;
+        
+        // If private system is disabled return true
+        if(HOME_SYSTEM_PRIVATE == 0 || HOME_SYSTEM_PRIVATE == 1) return true;
+        
+        if($this->player['user_auth_level'] == STGC_DEVELOPER) return true;        
+
+        $sql = 'SELECT planet_owner, system_owner, system_closed FROM planets INNER JOIN starsystems USING (system_id) WHERE planet_id = '.$planet_id;
+
+        if(($res = $db->queryrow($sql)) === false) {
+            message(DATABASE_ERROR, 'Could not query starsystem details');
+        }        
+                
+        if($res['system_closed'] == 0) return true;        
+        
+        if($res['planet_owner'] == INDEPENDENT_USERID || $res['planet_owner'] == BORG_USERID) return true;
+        
+        if($res['planet_owner'] == $this->player['user_id']) return true;
+        
+        if($res['system_owner'] == $this->player['user_id']) return true;
+        
+        return false; 
     }
 
 	// Veraltet, besser direkter Zugriff durch world.php
@@ -2671,83 +2698,83 @@ function GlobalTorsoReq($ship)
 
 	if ($game->player['user_race']==0) // Fed
 	{
-		$dat[0]=50;
-		$dat[1]=100;
-		$dat[2]=200;
-		$dat[3]=200;
-		$dat[4]=400;
-		$dat[5]=1000;
-		$dat[6]=1500;
-		$dat[7]=2500;
-		$dat[8]=3500;
-		$dat[9]=6000;
-		$dat[10]=6500;
-		$dat[11]=12000;
-		$dat[12]=500;
+		$dat[0]=55;
+		$dat[1]=110;
+		$dat[2]=220;
+		$dat[3]=440;
+		$dat[4]=330;
+		$dat[5]=7150;
+		$dat[6]=3850;
+		$dat[7]=330;
+		$dat[8]=3850;
+		$dat[9]=6600;
+		$dat[10]=7150;
+		$dat[11]=16500;
+		$dat[12]=0; // No orbital
 	}
 	elseif ($game->player['user_race']==1) // Rom
 	{
-		$dat[0]=50;
-		$dat[1]=100;
-		$dat[2]=200;
+		$dat[0]=55;
+		$dat[1]=115;
+		$dat[2]=230;
 		$dat[3]=0; //none ship
-		$dat[4]=200;
-		$dat[5]=1000;
-		$dat[6]=0; //none ship
-		$dat[7]=3500;
+		$dat[4]=460;
+		$dat[5]=1150;
+		$dat[6]=1725; 
+		$dat[7]=2875;
 		$dat[8]=0; //none ship
-		$dat[9]=6500;
-		$dat[10]=0; //none ship
-		$dat[11]=15000;
-		$dat[12]=500;
+		$dat[9]=6900;
+		$dat[10]=7475; //none ship
+		$dat[11]=17250;
+		$dat[12]=0; // No orbital
 	}
 	elseif ($game->player['user_race']==2) // Kling
 	{
-		$dat[0]=50;
-		$dat[1]=100;
-		$dat[2]=200;
+		$dat[0]=45;
+		$dat[1]=90;
+		$dat[2]=180;
 		$dat[3]=0; //none ship
-		$dat[4]=200;
-		$dat[5]=1000;
+		$dat[4]=360;
+		$dat[5]=900;
 		$dat[6]=0;
-		$dat[7]=3500;
+		$dat[7]=2250;
 		$dat[8]=0; //none ship
-		$dat[9]=6500;
+		$dat[9]=5400;
 		$dat[10]=0;
-		$dat[11]=15000;
-		$dat[12]=500;
+		$dat[11]=13500;
+		$dat[12]=0; // No orbital
 	}
 	elseif ($game->player['user_race']==3) // Card
 	{
-		$dat[0]=50;
-		$dat[1]=100;
-		$dat[2]=200;
+		$dat[0]=45;
+		$dat[1]=90;
+		$dat[2]=185;
 		$dat[3]=0; //none ship
-		$dat[4]=200;
+		$dat[4]=375;
 		$dat[5]=0;
 		$dat[6]=0;
-		$dat[7]=3000;
+		$dat[7]=2360;
 		$dat[8]=0;
-		$dat[9]=6500;
+		$dat[9]=5670;
 		$dat[10]=0;
 		$dat[11]=0;
 		$dat[12]=500;
 	}
 	elseif ($game->player['user_race']==4) // Dom
 	{
-		$dat[0]=50;
-		$dat[1]=100;
-		$dat[2]=200;
+		$dat[0]=65;
+		$dat[1]=135;
+		$dat[2]=275;
 		$dat[3]=0; //none ship
-		$dat[4]=200;
-		$dat[5]=1000;
+		$dat[4]=550;
+		$dat[5]=1375;
 		$dat[6]=0;
 		$dat[7]=0;
 		$dat[8]=0;
-		$dat[9]=6000;
+		$dat[9]=8250;
 		$dat[10]=0;
-		$dat[11]=15000;
-		$dat[12]=500;
+		$dat[11]=20625;
+		$dat[12]=0; //No orbital
 	}
 	elseif ($game->player['user_race']==5) // Ferg
 	{
@@ -2783,35 +2810,35 @@ function GlobalTorsoReq($ship)
 	}
 	elseif ($game->player['user_race']==9) //Hiro
 	{
-		$dat[0]=50;
-		$dat[1]=100;
-		$dat[2]=200;
+		$dat[0]=65;
+		$dat[1]=130;
+		$dat[2]=260;
 		$dat[3]=0; //none ship
 		$dat[4]=0;
-		$dat[5]=1000;
+		$dat[5]=1320;
 		$dat[6]=0;
-		$dat[7]=3000;
+		$dat[7]=3300;
 		$dat[8]=0;
-		$dat[9]=0;
+		$dat[9]=7920;
 		$dat[10]=0;
-		$dat[11]=15000;
-		$dat[12]=500;
+		$dat[11]=0;
+		$dat[12]=0; // No orbital
 	}
 	elseif ($game->player['user_race']==11) // Kazon
 	{
-		$dat[0]=0;
-		$dat[1]=100;
-		$dat[2]=200;
-		$dat[3]=400; 
+		$dat[0]=40;
+		$dat[1]=80;
+		$dat[2]=160;
+		$dat[3]=240; 
 		$dat[4]=0;
-		$dat[5]=1000;
+		$dat[5]=810;
 		$dat[6]=0;
 		$dat[7]=0;
 		$dat[8]=0;
-		$dat[9]=6000;
+		$dat[9]=4860;
 		$dat[10]=0;
 		$dat[11]=0;
-		$dat[12]=500;
+		$dat[12]=0; //No orbital
 	}
 	elseif ($game->player['user_race']==10) // Krenim
 	{
@@ -2861,19 +2888,19 @@ function LocalTorsoReq($ship)
 
 	if ($game->player['user_race']==0) // Fed
 	{
-		$dat[0]=50;
-		$dat[1]=100;
-		$dat[2]=200;
-		$dat[3]=200;
-		$dat[4]=300;
-		$dat[5]=400;
-		$dat[6]=400;
-		$dat[7]=420;
-		$dat[8]=420;
+		$dat[0]=55;
+		$dat[1]=110;
+		$dat[2]=220;
+		$dat[3]=330;
+		$dat[4]=220;
+		$dat[5]=440;
+		$dat[6]=440;
+		$dat[7]=220;
+		$dat[8]=450;
 		$dat[9]=450;
 		$dat[10]=450;
-		$dat[11]=505;
-		$dat[12]=400;
+		$dat[11]=500;
+		$dat[12]=0; //No orbital
 	}
 	elseif ($game->player['user_race']==1) // Rom
 	{
@@ -2881,63 +2908,63 @@ function LocalTorsoReq($ship)
 		$dat[1]=100;
 		$dat[2]=200;
 		$dat[3]=0; //none ship
-		$dat[4]=200;
+		$dat[4]=300;
 		$dat[5]=400;
-		$dat[6]=0; //none ship
+		$dat[6]=400; 
 		$dat[7]=420;
 		$dat[8]=0; //none ship
 		$dat[9]=450;
-		$dat[10]=0; //none ship
-		$dat[11]=505;
-		$dat[12]=400;
+		$dat[10]=450; //none ship
+		$dat[11]=500;
+		$dat[12]=0; // No orbital
 	}
 	elseif ($game->player['user_race']==2) // Kling
 	{
-		$dat[0]=50;
-		$dat[1]=100;
-		$dat[2]=200;
+		$dat[0]=45;
+		$dat[1]=90;
+		$dat[2]=180;
 		$dat[3]=0; //none ship
-		$dat[4]=200;
-		$dat[5]=400;
+		$dat[4]=270;
+		$dat[5]=360;
 		$dat[6]=0;
-		$dat[7]=420;
+		$dat[7]=375;
 		$dat[8]=0; //none ship
-		$dat[9]=450;
+		$dat[9]=405;
 		$dat[10]=0;
-		$dat[11]=500;
-		$dat[12]=300;
+		$dat[11]=450;
+		$dat[12]=0; // No orbital
 	}
 	elseif ($game->player['user_race']==3) // Card
 	{
-		$dat[0]=50;
-		$dat[1]=100;
-		$dat[2]=200;
+		$dat[0]=45;
+		$dat[1]=90;
+		$dat[2]=180;
 		$dat[3]=0; //none ship
-		$dat[4]=200;
+		$dat[4]=270;
 		$dat[5]=0;
 		$dat[6]=0;
-		$dat[7]=420;
+		$dat[7]=375;
 		$dat[8]=0;
-		$dat[9]=450;
+		$dat[9]=405;
 		$dat[10]=0;
 		$dat[11]=0;
-		$dat[12]=380;
+		$dat[12]=0; // No orbital
 	}
 	elseif ($game->player['user_race']==4) // Dom
 	{
-		$dat[0]=50;
-		$dat[1]=100;
-		$dat[2]=200;
+		$dat[0]=65;
+		$dat[1]=135;
+		$dat[2]=275;
 		$dat[3]=0; //none ship
-		$dat[4]=200;
-		$dat[5]=400;
+		$dat[4]=330;
+		$dat[5]=440;
 		$dat[6]=0;
 		$dat[7]=0;
 		$dat[8]=0;
-		$dat[9]=450;
+		$dat[9]=495;
 		$dat[10]=0;
-		$dat[11]=500;
-		$dat[12]=320;
+		$dat[11]=550;
+		$dat[12]=0; //No orbital
 	}
 	elseif ($game->player['user_race']==5) // Ferg
 	{
@@ -2973,35 +3000,35 @@ function LocalTorsoReq($ship)
 	}
 	elseif ($game->player['user_race']==9) //Hiro
 	{
-		$dat[0]=50;
-		$dat[1]=100;
-		$dat[2]=200;
+		$dat[0]=55;
+		$dat[1]=110;
+		$dat[2]=220;
 		$dat[3]=0; //none ship
 		$dat[4]=0;
-		$dat[5]=400;
+		$dat[5]=440;
 		$dat[6]=0;
-		$dat[7]=400;
+		$dat[7]=460;
 		$dat[8]=0;
-		$dat[9]=0;
+		$dat[9]=495;
 		$dat[10]=0;
-		$dat[11]=500;
-		$dat[12]=320;
+		$dat[11]=0;
+		$dat[12]=0; // No orbital
 	}
 	elseif ($game->player['user_race']==11) // Kazon
 	{
-		$dat[0]=0;
-		$dat[1]=100;
-		$dat[2]=200;
-		$dat[3]=350; 
+		$dat[0]=40;
+		$dat[1]=80;
+		$dat[2]=160;
+		$dat[3]=180; 
 		$dat[4]=0;
-		$dat[5]=400;
+		$dat[5]=360;
 		$dat[6]=0;
 		$dat[7]=0;
 		$dat[8]=0;
-		$dat[9]=450;
+		$dat[9]=405;
 		$dat[10]=0;
 		$dat[11]=0;
-		$dat[12]=380;
+		$dat[12]=0; //No orbital
 	}
 	elseif ($game->player['user_race']==10) // Krenim
 	{
