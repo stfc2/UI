@@ -161,6 +161,10 @@ define ("GER_TEXT68", 'Unbekannt');
 
 define ("GER_TEXT69", 'Ihre Schiffe sind nicht in diesen gesch&uuml;tzten System erlaubt.');
 
+define ("GER_TEXT70", 'Nessuna azione possibile su pianeti di un sistema protetto');
+
+
+
 //English
 define ("ENG_TEXT0", 'Ship movements');
 
@@ -307,6 +311,9 @@ define ("ENG_TEXT68", 'Unknown');
 
 define ("ENG_TEXT69", 'Your ships are not allowed into this protected system.');
 
+define ("ENG_TEXT70", 'Nessuna azione possibile su pianeti di un sistema protetto');
+
+
 //Italiano
 define ("ITA_TEXT0", 'Movimenti flotte');
 
@@ -452,5 +459,7 @@ define ("ITA_TEXT67", '<b>Analisi Pianeta:</b><br>La nave approccer&agrave; il p
 define ("ITA_TEXT68", 'Sconosciuto');
 
 define ("ITA_TEXT69", 'Le tue navi non posso accedere a questo sistema protetto.');
+
+define ("ITA_TEXT70", 'Nessuna azione possibile su pianeti di un sistema protetto');
 
 ?>
