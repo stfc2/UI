@@ -90,11 +90,11 @@ define ("GER_TEXT31", 'Keine Koordinaten angegeben');
 
 define ("GER_TEXT32", 'Ung&uuml;ltige Y-Koordinate f&uuml;r System angegeben');
 
-define ("GER_TEXT33", 'no part of $letters');
+define ("GER_TEXT33", 'kein Teil von $letters');
 
 define ("GER_TEXT34", 'Ungltige X-Koordinate f&uuml;r System angegeben');
 
-define ("GER_TEXT35", 'no part of $numbers');
+define ("GER_TEXT35", 'kein Teil von $numbers');
 
 define ("GER_TEXT36", 'Es existiert kein System mit den Koordinaten');
 
@@ -142,7 +142,7 @@ define ("GER_TEXT57", 'freier Slot');
 
 define ("GER_TEXT58", 'Speichern');
 
-define ("GER_TEXT59", 'Bitte melde dies im <a href="http://forum.stgcsource.net/board.php?boardid=108">Bugforum von BB</a> unter Angabe der Seite, von der du gekommen bist bzw. was du tun wolltest.<br><br>Achte jedoch bitte darauf, dass zu genau derselben Aktion nicht schon ein Thread existiert!');
+define ("GER_TEXT59", 'Bitte melde dies im <a href="https://forum.stfc2.ch">Bugforum von BB</a> unter Angabe der Seite, von der du gekommen bist bzw. was du tun wolltest.<br><br>Achte jedoch bitte darauf, dass zu genau derselben Aktion nicht schon ein Thread existiert!');
 
 define ("GER_TEXT60", 'Galaxie');
 
@@ -210,29 +210,83 @@ define ("GER_TEXT90", '<span style="color: #89CAEF;">hellblau</span> - Planet ei
 
 define ("GER_TEXT91", 'Wenn das Bild nicht richtig aktualisiert wird,<br>stellt in den Optionen eures Browsers<br>"Bei jedem Zugriff auf die Seite nach neuer Version suchen" ein');
 
-define ("GER_TEXT92", 'Survey:');
+define ("GER_TEXT92", '&Uuml;bersicht:');
 
-define ("GER_TEXT93", 'No expedition done yet.');
+define ("GER_TEXT93", 'Nicht untersucht bis jetzt.');
 
-define ("GER_TEXT121", 'The planet is assimilated by the Borg on ');
+define ("GER_TEXT94", '<i>Datenbank aktualisiert am</i> ');
 
-define ("GER_TEXT122", 'To the settlers of the planets, <b>');
+define ("GER_TEXT95", '<u>Historische Informationen</u><br>');
 
-define ("GER_TEXT123", '</b> grant independence on ');
+define ("GER_TEXT96", '<br><u>Geologische Informationen</u><br>');
 
-define ("GER_TEXT124", 'The following information indicates the mood of the settlers on the planet than any species and is updated automatically every tick:');
+define ("GER_TEXT97", '<br><u>Taktische/Politische Informationen</u><br>');
 
-define ("GER_TEXT125", 'Average value = 100, indicates indifference.<br>Higher values indicate benevolent behavior toward the race.<br>Lower values indicate that the settlers are hostile towards the race.');
+define ("GER_TEXT98", 'Geburtsort der Zivilisation gegr&uuml;ndet von <b>');
 
-define ("GER_TEXT126", 'Land team');
+define ("GER_TEXT99", ' </b> auf ');
 
-define ("GER_TEXT127", 'Terraforming experiments of <b>');
+define ("GER_TEXT100", 'Geologische Analyse des Planeten von wissenschaftlichen Teams an Bord des Schiffes durchgef&uuml;hrt <b>');
 
-define ("GER_TEXT128", '</b> morph the planetoid, changing it to class <b>');
+define ("GER_TEXT101", '</b>, zugeh&ouml;rig zu den Truppen von <b>');
 
-define ("GER_TEXT129", ' a colony ship of ');
+define ("GER_TEXT102", '</b>, ausgef&uuml;hrt am ');
 
-define ("GER_TEXT130", ' starts a new independent colony!');
+define ("GER_TEXT103", 'Anwesenheit von Metall: ');
+
+define ("GER_TEXT104", 'Anwesenheit von Mineral: ');
+
+define ("GER_TEXT105", 'Anwesenheit von Latinum: ');
+
+define ("GER_TEXT106", '-- UNTER standard --');
+
+define ("GER_TEXT107", '-- standard --');
+
+define ("GER_TEXT108", '-- &Uuml;BER standard --');
+
+define ("GER_TEXT109", 'Kolonisiert von Truppen von <b>');
+
+define ("GER_TEXT110", 'Truppen von <b>');
+
+define ("GER_TEXT111", '</b> die Schlacht gewinnen auf der Oberfl&auml;che des Planeten auf ');
+
+define ("GER_TEXT112", ', aus der Kontrolle der Truppen entfernen <b>');
+
+define ("GER_TEXT113", 'Von der Kontrolle entkommen <b>');
+
+define ("GER_TEXT114", '</b> Ein Aufstand der lokalen Bev&ouml;lkerung auf ');
+
+define ("GER_TEXT115", 'Die Kontrolle &uuml;ber den Planeten durch die Truppen schwindet, die lokale Bev&ouml;lkerung &uuml;bernimmt ');
+
+define ("GER_TEXT116", 'am Datum ');
+
+define ("GER_TEXT117", ', Schiffe mit Truppen von <b>');
+
+define ("GER_TEXT118", '</b> erreichten den Planeten als erste &uuml;berhaupt.');
+
+define ("GER_TEXT119", '</b> erreichte den Planeten und k&auml;mpften f&uuml;r das Recht der Kolonisierung.');
+
+define ("GER_TEXT120", '<i>&#171;Unbekannt&#187;</i>');
+
+define ("GER_TEXT121", 'Der Planet wurde von den Borg &uuml;bernommen am ');
+
+define ("GER_TEXT122", 'Zu dem Siedler von diesem Planeten, <b>');
+
+define ("GER_TEXT123", '</b> Unabh&auml;ngigkeit zu gew&auml;hren ');
+
+define ("GER_TEXT124", 'Die folgenden Informationen gibt die Stimmung der Siedler auf dem Planeten an und wird automatisch jeden Tick aktualisiert:');
+
+define ("GER_TEXT125", 'Durchschnitt = 100 <br>H&ouml;here Werte zeigen wohlwollende Verhalten gegen&uuml;ber der Rasse.<br>Niedrigere Werte zeigen an, dass die Siedler feindselig gegen&uuml;ber der Rasse sind.');
+
+define ("GER_TEXT126", 'Team landen');
+
+define ("GER_TEXT127", 'Terraforming Experimente von <b>');
+
+define ("GER_TEXT128", '</b> morphen den planetoiden, &auml;ndern ihn zur Klasse <b>');
+
+define ("GER_TEXT129", ' ein Kolonieschiff von ');
+
+define ("GER_TEXT130", ' startet eine neue Kolonie!');
 
 define ("GER_TEXT131", '<span style="color: #CC6600;">orange</span> - unabh&auml;ngige Kolonie<br>');
 

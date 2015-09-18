@@ -36,7 +36,7 @@ define ("GER_TEXT5", 'Der gew&auml;hlte Logeintrag existiert nicht');
 
 define ("GER_TEXT6", 'Fehler bei der Seitenberechnung des Logbuchs');
 
-define ("GER_TEXT7", 'Unexspected: could not determine $on_i');
+define ("GER_TEXT7", 'Uerwartet: konnet $on_i nicht bestimmen');
 
 define ("GER_TEXT8", '[vorheriger Eintrag]');
 
@@ -68,7 +68,7 @@ define ("GER_TEXT21", 'Typ');
 
 define ("GER_TEXT22", 'Zeit');
 
-define ("GER_TEXT23", 'Check All');
+define ("GER_TEXT23", 'alle w&auml;hlen');
 
 define ("GER_TEXT24", 'gew&auml;hlte Eintr&auml;ge');
 
@@ -319,29 +319,29 @@ define ("GER_TEXT141", 'Angreifer:');
 
 define ("GER_TEXT142", '* Achtung, das neue Kampfsystem ist experimentell installiert, bei groben Abweichungen bitte &uuml;ber das Forum melden!');
 
-define ("GER_TEXT146", 'Metal presence: ');
+define ("GER_TEXT146", 'Metall vorkommen: ');
 
-define ("GER_TEXT147", 'Mineral presence: ');
+define ("GER_TEXT147", 'Mineral vorkommen: ');
 
-define ("GER_TEXT148", 'Dilithium presence: ');
+define ("GER_TEXT148", 'Latinum vorkommen: ');
 
-define ("GER_TEXT149", '-- UNDER average --');
+define ("GER_TEXT149", '-- UNTER duschschnittlich --');
 
-define ("GER_TEXT150", '-- average --');
+define ("GER_TEXT150", '-- durchschnittlich --');
 
-define ("GER_TEXT151", '-- OVER average --');
+define ("GER_TEXT151", '-- &Uuml;ber durchschnittlich --');
 
-define ("GER_TEXT152", 'The experiment did not occur for lack of resources');
+define ("GER_TEXT152", 'Das Experiment ist fehlgeschlagen. Mangel an Ressourcen!');
 
-define ("GER_TEXT153", 'This operation can only be performed on unsettled class <b>A</b>, <b>B</b>, <b>C</b> or <b>D</b> planets');
+define ("GER_TEXT153", 'Dieser Vorgang kann nur auf Planeten der Klasse <b>A</b>, <b>B</b>, <b>C</b> oder <b>D</b> durchgef&uuml;hrt werden.');
 
-define ("GER_TEXT154", 'The experiment did occur correctly, at least there is a planet still orbiting here.');
+define ("GER_TEXT154", 'Das Experiment scheint funktioniert zu haben. Zumindest gibt es einen Planeten im Orbit.');
 
-define ("GER_TEXT155", 'Settlers on this planet had a First Contact with our race yet!.');
+define ("GER_TEXT155", 'Die Siedler diese Planeten hatten den ersten Kontakt mit unserer Rasse.');
 
-define ("GER_TEXT156", 'The Settlers on this planet welcomed our Diplomatic delegation. The First Contact has occured positively!');
+define ("GER_TEXT156", 'Die Siedler auf diesem Planeten begr&uuml;ssen unsere diplomatische Delegation. Der erste Kontakt hat sich positiv entwickelt!');
 
-define ("GER_TEXT157", 'The Settlers on this planet <b>has rejected</b> our Diplomatic delegation!');
+define ("GER_TEXT157", 'Die Siedler auf diesem Planeten habe deine diplomatische Delegation <b>zur&uuml;ckgewiesen!</b>');
 
 define ("GER_TEXT158", 'Unsere Beziehung zu den Planeten sind: ');
 
