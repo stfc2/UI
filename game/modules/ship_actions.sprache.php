@@ -167,6 +167,12 @@ define("GER_TEXT71", '<b>Supporto Difesa Planetaria</b>: Sul pianeta viene invia
 
 define("GER_TEXT72", '<b>Verteidigung:</b> Technologien, die Oberfl&auml;che des Planeten Verteidigung (erh&ouml;ht die Anzahl der leichten und schweren Orbitalwaffen auf dem Planeten) verbessern zu liefern.');
 
+define("GER_TEXT85", '<b>Ricerca medica</b>: fornire tecnologie mediche che migliorano le condizioni di salute sulla colonia; (fornisce un bonus alla produzione di lavoratori)');
+
+define("GER_TEXT86", '<b>Addestramento Avanzato</b>: sbarcando la squadra su una colonia attrezzata per l&#146;addestramento di truppe di terra, si potr&agrave; abbreviare il percorso formativo di una squadra da sbarco di altissimo livello.');
+
+define("GER_TEXT87", 'Nessuna azione possibile sui pianeti di un sistema privato.');
+
 
 //English
 define ("ENG_TEXT0", 'Ship movements');
@@ -320,6 +326,13 @@ define("ENG_TEXT71", '<b>Supporto Difesa Planetaria</b>: Sul pianeta viene invia
 
 define("ENG_TEXT72", '<b>Defence:</b> deliver technologies that improve the surface defenses of the planet (increases the number of light and heavy orbital guns on the planet).');
 
+define("ENG_TEXT85", '<b>Ricerca medica</b>: fornire tecnologie mediche che migliorano le condizioni di salute sulla colonia; (fornisce un bonus alla produzione di lavoratori)');
+
+define("ENG_TEXT86", '<b>Addestramento Avanzato</b>: sbarcando la squadra su una colonia attrezzata per l&#146;addestramento di truppe di terra, si potr&agrave; abbreviare il percorso formativo di una squadra da sbarco di altissimo livello.');
+
+define("ENG_TEXT87", 'Nessuna azione possibile sui pianeti di un sistema privato.');
+
+
 //Italiano
 define ("ITA_TEXT0", 'Movimenti flotte');
 
@@ -468,8 +481,40 @@ define("ITA_TEXT69", '<b>Automazione</b>: fornire tecnologie che migliorano i pr
 
 define("ITA_TEXT70", '<b>Estrazione</b>: fornire tecnologie che migliorano l&#146;estrazione e la raffinazione di materie prime (migliora la resa delle miniere sul pianeta)');
 
-define("ITA_TEXT71", '<b>Supporto Difesa Planetaria</b>: Sul pianeta viene inviata una squadra tecnica per fornire supporto alla progettazione e costruzione di un sistema difensivo orbitale migliorato a disposizione della colonia, allo scopo di meglio difendersi da tentativi di invasione.');
+define("ITA_TEXT71", '<b>Supporto Difesa Planetaria</b>: sul pianeta viene inviata una squadra tecnica per fornire supporto alla progettazione e costruzione di un sistema difensivo orbitale migliorato a disposizione della colonia, allo scopo di meglio difendersi da tentativi di invasione.');
 
 define("ITA_TEXT72", '<b>Difesa</b>: fornire tecnologie che migliorano le difese a terra del pianeta (aumenta il numero di cannoni orbitali leggeri e pesanti sul pianeta)');
+
+define("ITA_TEXT73", '<b>Terreno di Caccia</b>: viene sbarcata una squadra di cacciatori con il compito di bloccare ogni delegazione diplomatica avversaria.');
+
+define("ITA_TEXT74", '<b>Presidio: Multiculturalismo</b>: viene sbarcata una squadra diplomatica allo scopo di promuovere la coesistenza tra varie culture sulla colonia e consolidare la nostra influenza sulla stessa.');
+
+define("ITA_TEXT75", '<b>Delegazione: Pluralismo</b>: viene sbarcata una squadra diplomatica allo scopo di promuovere la presenza e la convivenza di culture diverse all&#146;interno della colonia.');
+
+define("ITA_TEXT76", '<b>Presidio: Supremazia Tecnologica</b>: viene sbarcata una squadra diplomatica allo scopo di promuovere ed affermare il valore e l&#146;importanza del nostro Supporto Tecnologico alla colonia, consolidando la nostra influenza su di essa.');
+
+define("ITA_TEXT77", '<b>Delegazione: Orgoglio del Pretore</b> viene sbarcata una squadra diplomatica allo scopo di promuovere ed affermare il valore e l&#146;importanza del nostro Supporto Tecnologico alla colonia, consolidando la nostra influenza su di essa.');
+
+define("ITA_TEXT78", '<b>Presidio: Sfida del Coraggio</b>: viene sbarcata una squadra di guerrieri esperti allo scopo di infondere nella colonia un giusto sentimento di onore e di forza, anche attraverso prove di valore contro eventuali delegazioni straniere.');
+
+define("ITA_TEXT79", '<b>Delegazione: Promuovere Autodifesa</b> attraverso una nostra squadra a terra di addestratori, promuoveremo le nostre attivit&agrave; di sviluppo armamento difensivo come unica vera via per una colonia forte e capace di difendersi da qualsiasi pericolo esterno.');
+
+define("ITA_TEXT80", '<b>Presidio: Xenofobia</b>: una squadra esperta stabilir&agrave; un presidio sul pianeta allo scopo di diffondere sentimenti xenofobi tra la popolazione ed ostacolare qualsiasi tentativo esterno di guadagnare consenso sulla nostra colonia.');
+
+define("ITA_TEXT81", '<b>Delegazione: Propaganda Sovversiva</b> la nostra squadra addestrata porter&agrave; avanti azioni di propaganda contro ogni attivit&agrave; promossa da forze esterne, allo scopo di screditarle e permetterci di guadagnare consensi e favori.');
+
+define("ITA_TEXT82", '<b>Presidio: Controllore della Colonia</b>: viene sbarcata una squadra diplomatica allo scopo di affermare il nostro controllo su tutte le decisioni prese dalla colonia stessa.');
+
+define("ITA_TEXT83", '<b>Delegazione: Denunciare Incompetenza</b> viene sbarcata una delegazione diplomatica con lo scopo di mettere in evidenza tutte le mancanze e le inefficienze dei controllori della colonia, sottolineando i vantaggi innegabili derivati dal delegare a noi tutte le funzioni di comando.');
+
+define("ITA_TEXT84", '<b>Recupero Squadra</b>: La nave tenterà di recuperare una nostra squadra a terra.');
+
+define("ITA_TEXT85", '<b>Ricerca medica</b>: fornire tecnologie mediche che migliorano le condizioni di salute sulla colonia; (fornisce un bonus alla produzione di lavoratori)');
+
+define("ITA_TEXT86", '<b>Addestramento Avanzato</b>: sbarcando la squadra su una colonia attrezzata per l&#146;addestramento di truppe di terra, si potr&agrave; abbreviare il percorso formativo di una squadra da sbarco di altissimo livello.');
+
+define("ITA_TEXT87", 'Nessuna azione possibile sui pianeti di un sistema privato.');
+
+define("ITA_TEXT88", '<b>Razziatori in azione</b>: viene sbarcata una squadra di razziatori con il compito di attaccare ogni delegazione diplomatica avversaria e tentare la cattura della nave.');
 
 ?>
