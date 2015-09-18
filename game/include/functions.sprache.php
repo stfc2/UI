@@ -242,6 +242,8 @@ define ("GER_MOVEATTACKBOMB", 'Angreifen und Bombardieren');
 
 define ("GER_MOVEATTACKTAKE", 'Angreifen und &uuml;bernehmen');
 
+define ("GER_RETREAT", 'Retreat');
+
 // Used by init_player()
 define ("GER_INVCALL1", 'Ung&uuml;ltiger Aufruf<br><br><br>Dieser Fehler kann entstehen unter anderem entstehen,<br>wenn du versuchst, zwei Dinge gleichzeitig zu bauen.<br>Gehe in diesem Fall zur&uuml;ck zum Baumen&uuml; und versuche es erneut.');
 
@@ -535,6 +537,8 @@ define ("ENG_MOVEATTACKBOMB", 'Attacking and bombing');
 
 define ("ENG_MOVEATTACKTAKE", 'Attacking and taking over');
 
+define ("ENG_RETREAT", 'Retreat');
+
 // Used by init_player()
 define ("ENG_INVCALL1", 'Invalid call<br><br><br>These errors can appear, among the things to develop,<br>if you try to build two things at the same time.<br>In this case go back to the constructions menu and try again.');
 
@@ -827,6 +831,8 @@ define ("ITA_MOVEATTACKPLUN", 'Attacca e saccheggia');
 define ("ITA_MOVEATTACKBOMB", 'Attacca e bombarda');
 
 define ("ITA_MOVEATTACKTAKE", 'Attacca e conquista');
+
+define ("ITA_RETREAT", 'Ritirata');
 
 // Used by init_player()
 define ("ITA_INVCALL1", 'Chiamata invalida<br><br><br>Questo errore pu&ograve; essere visualizzato, tra le cose da sviluppare,<br>se si tenta di costruire due cose allo stesso tempo.<br>In questo caso, tornare al menu di costruzioni e riprovare.');
