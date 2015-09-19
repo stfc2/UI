@@ -314,6 +314,75 @@ define ("GER_COLONIZE",'Kolonisieren!');
 define ("GER_NUM_PLAYERS", 'Spieler zahl');
 
 
+// used by get_diplo_str
+
+define ("GER_DIPLO1", 'First Contact');
+
+define ("GER_DIPLO2", 'Diplomatic Agreement');
+
+define ("GER_DIPLO3", 'Tech Support: Environmental Modification');
+
+define ("GER_DIPLO4", 'Tech Support: Medical Research');
+
+define ("GER_DIPLO5", 'Tech Support: Defense');
+
+define ("GER_DIPLO6", 'Tech Support: Automation');
+
+define ("GER_DIPLO7", 'Tech Support: Mining');
+
+define ("GER_DIPLO8", 'Support: Planetary Defense');
+
+define ("GER_DIPLO10", 'Multiculturalism');
+
+define ("GER_DIPLO11", 'Technological Egemony');
+
+define ("GER_DIPLO12", 'Champion');
+
+define ("GER_DIPLO13", 'Innovator');
+
+define ("GER_DIPLO14", 'Opposer');
+
+define ("GER_DIPLO15", 'Pluralist');
+
+define ("GER_DIPLO16", 'Renown');
+
+define ("GER_DIPLO17", 'Defender');
+
+define ("GER_DIPLO18", 'Expert');
+
+define ("GER_DIPLO19", 'Saver');
+
+define ("GER_DIPLO20", 'Leader');
+
+define ("GER_DIPLO21", 'Patron');
+
+define ("GER_DIPLO22", 'Revered');
+
+define ("GER_DIPLO23", 'Predator');
+
+define ("GER_DIPLO24", 'Foreigner');
+
+define ("GER_DIPLO25", 'Useless');
+
+define ("GER_DIPLO26", 'Exploiter');
+
+define ("GER_DIPLO27", 'Prey');
+
+define ("GER_DIPLO28", 'Terror in the colony');
+
+define ("GER_DIPLO29", 'Dissent in the colony');
+
+define ("GER_DIPLO30", 'Founder');
+
+define ("GER_DIPLO31", 'Ex-Governor');
+
+define ("GER_DIPLO32", 'Orbital Attack');
+
+define ("GER_DIPLO33", 'Planetary bombing');
+
+define ("GER_DIPLO34", 'Colony Overrun');
+
+
 
 //English
 
@@ -607,6 +676,74 @@ define ("ENG_BETAQ",'Beta Quadrant');
 define ("ENG_COLONIZE",'Colonize!');
 
 define ("ENG_NUM_PLAYERS", 'Players number');
+
+// used by get_diplo_str
+
+define ("ENG_DIPLO1", 'First Contact');
+
+define ("ENG_DIPLO2", 'Diplomatic Agreement');
+
+define ("ENG_DIPLO3", 'Tech Support: Environmental Modification');
+
+define ("ENG_DIPLO4", 'Tech Support: Medical Research');
+
+define ("ENG_DIPLO5", 'Tech Support: Defense');
+
+define ("ENG_DIPLO6", 'Tech Support: Automation');
+
+define ("ENG_DIPLO7", 'Tech Support: Mining');
+
+define ("ENG_DIPLO8", 'Support: Planetary Defense');
+
+define ("ENG_DIPLO10", 'Multiculturalism');
+
+define ("ENG_DIPLO11", 'Technological Egemony');
+
+define ("ENG_DIPLO12", 'Champion');
+
+define ("ENG_DIPLO13", 'Innovator');
+
+define ("ENG_DIPLO14", 'Opposer');
+
+define ("ENG_DIPLO15", 'Pluralist');
+
+define ("ENG_DIPLO16", 'Renown');
+
+define ("ENG_DIPLO17", 'Defender');
+
+define ("ENG_DIPLO18", 'Expert');
+
+define ("ENG_DIPLO19", 'Saver');
+
+define ("ENG_DIPLO20", 'Leader');
+
+define ("ENG_DIPLO21", 'Patron');
+
+define ("ENG_DIPLO22", 'Revered');
+
+define ("ENG_DIPLO23", 'Predator');
+
+define ("ENG_DIPLO24", 'Foreigner');
+
+define ("ENG_DIPLO25", 'Useless');
+
+define ("ENG_DIPLO26", 'Exploiter');
+
+define ("ENG_DIPLO27", 'Prey');
+
+define ("ENG_DIPLO28", 'Terror in the colony');
+
+define ("ENG_DIPLO29", 'Dissent in the colony');
+
+define ("ENG_DIPLO30", 'Founder');
+
+define ("ENG_DIPLO31", 'Ex-Governor');
+
+define ("ENG_DIPLO32", 'Orbital Attack');
+
+define ("ENG_DIPLO33", 'Planetary bombing');
+
+define ("ENG_DIPLO34", 'Colony Overrun');
 
 
 
@@ -903,4 +1040,71 @@ define ("ITA_COLONIZE",'Colonizza!');
 
 define ("ITA_NUM_PLAYERS", 'Numero giocatori');
 
+// used by get_diplo_str
+
+define ("ITA_DIPLO1", 'Primo Contatto');
+
+define ("ITA_DIPLO2", 'Trattato Diplomatico');
+
+define ("ITA_DIPLO3", 'Supporto Tecnologico: Modifiche Ambientali');
+
+define ("ITA_DIPLO4", 'Supporto Tecnologico: Ricerca Medica');
+
+define ("ITA_DIPLO5", 'Supporto Tecnologico: Difesa');
+
+define ("ITA_DIPLO6", 'Supporto Tecnologico: Automazione');
+
+define ("ITA_DIPLO7", 'Supporto Tecnologico: Estrazione');
+
+define ("ITA_DIPLO8", 'Supporto: Difese Planetarie');
+
+define ("ITA_DIPLO10", 'Multiculturalismo');
+
+define ("ITA_DIPLO11", 'Supremazia Tecnologica');
+
+define ("ITA_DIPLO12", 'Campione');
+
+define ("ITA_DIPLO13", 'Innovatore');
+
+define ("ITA_DIPLO14", 'Oppositore');
+
+define ("ITA_DIPLO15", 'Pluralista');
+
+define ("ITA_DIPLO16", 'Prestigio');
+
+define ("ITA_DIPLO17", 'Difensore');
+
+define ("ITA_DIPLO18", 'Competente');
+
+define ("ITA_DIPLO19", 'Liberatore');
+
+define ("ITA_DIPLO20", 'Leader');
+
+define ("ITA_DIPLO21", 'Mecenate');
+
+define ("ITA_DIPLO22", 'Venerato');
+
+define ("ITA_DIPLO23", 'Predatore');
+
+define ("ITA_DIPLO24", 'Straniero');
+
+define ("ITA_DIPLO25", 'Incapace');
+
+define ("ITA_DIPLO26", 'Sfruttatore');
+
+define ("ITA_DIPLO27", 'Preda');
+
+define ("ITA_DIPLO28", 'Terrore nella Colonia');
+
+define ("ITA_DIPLO29", 'Dissenso nella Colonia');
+
+define ("ITA_DIPLO30", 'Fondatore');
+
+define ("ITA_DIPLO31", 'Ex-Governatore');
+
+define ("ITA_DIPLO32", 'Attacco Orbitale');
+
+define ("ITA_DIPLO33", 'Bombardamento Planetario');
+
+define ("ITA_DIPLO34", 'Conquista di una Colonia');
 ?>
