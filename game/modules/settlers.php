@@ -382,7 +382,7 @@ elseif ($sub_action == constant($game->sprache("TEXT30"))) {
             WHERE planet_id = '.$detail_id.' AND planet_owner = '.INDEPENDENT_USERID;
     $q1_detail = $db->queryrow($sql);
     // Step 2: Loading Settlers Relations
-    $sql = 'SELECT * FROM settlers_relations WHERE planet_id = '.$detail_id;
+    $sql = 'SELECT * FROM settlers_relations WHERE planet_id = '.$detail_id.' AND user_id = '.$game->player['user_id'].' ORDER BY timestamp';
     $q2_detail = $db->queryrowset($sql);
     // Step 3: Loading Colony Events
     $sql = 'SELECT * FROM settlers_events WHERE planet_id = '.$detail_id;
@@ -391,6 +391,15 @@ elseif ($sub_action == constant($game->sprache("TEXT30"))) {
     <br><br><br>
     <center><span class="caption">'.(constant($game->sprache("TEXT30"))).' &#171;'.$q1_detail['planet_name'].'&#187;</span><br><br>
     <table class="style_outer" width="90%" align="center" border="0" cellpadding="2" cellspacing="2">');
+    foreach($q3_detail as $q3_item)
+    {
+        if($SETL_EVENTS[$q3_item['event_code']][1] && ($game->player['user_id'] != $q3_item['user_id'])) {continue;}
+        $game->out('<tr align=left><td><i>'.$SETL_EVENTS[$q3_item['event_code']][0].'</i></td>');
+        $game->out(($game->player['user_id'] == $q3_item['user_id'] ? '<td><i>('.$q3_item['count_crit_ok'].' / '.$q3_item['count_ok'].' / '.$q3_item['count_ko'].' / '.$q3_item['count_crit_ko'].')</i></td></tr>' : '</tr>'));
+        }    
+    foreach($q2_detail AS $q2_item) {
+        $game->out('<tr align=left><td>'.get_diplo_str((int)$q2_item['log_code']).'</td><td>'.date("d.m.y", $q2_item['timestamp']).'</td><td>'.$q2_item['mood_modifier'].'</td></tr>');
+    }
     $game->out('</table>');
 }
 
