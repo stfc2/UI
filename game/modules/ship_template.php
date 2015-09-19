@@ -106,7 +106,7 @@ function CreateInfoText($comp)
 {
 global $db;
 global $game;
-$text=$comp['description'].'<br><br><u>'.constant($game->sprache("TEXT4")).'<br></u><img src='.$game->GFX_PATH.'menu_metal_small.gif> '.$comp['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif> '.$comp['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif> '.$comp['resource_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_worker_small.gif> '.$comp['resource_4'].'<br><img src='.$game->GFX_PATH.'menu_unit1_small.gif> '.$comp['unit_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif> '.$comp['unit_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif> '.$comp['unit_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif> '.$comp['unit_4'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif> '.$comp['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif> '.$comp['unit_6'].'<br><u>'.constant($game->sprache("TEXT5")).'</u>  +'.($comp['buildtime']*TICK_DURATION).' '.constant($game->sprache("TEXT6")).'<br><br><u>'.constant($game->sprache("TEXT22")).'</u><br>';
+$text=$comp['description'].'<br><br><u>'.constant($game->sprache("TEXT4")).'<br></u><img src='.$game->GFX_PATH.'menu_metal_small.gif> '.$comp['resource_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_mineral_small.gif> '.$comp['resource_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_latinum_small.gif> '.$comp['resource_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_worker_small.gif> '.$comp['resource_4'].'<br><img src='.$game->GFX_PATH.'menu_unit1_small.gif> '.$comp['unit_1'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif> '.$comp['unit_2'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif> '.$comp['unit_3'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif> '.$comp['unit_4'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif> '.$comp['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif> '.$comp['unit_6'].'<br><u>'.constant($game->sprache("TEXT5")).'</u>  '.(($comp['buildtime']*TICK_DURATION) > 0 ? '+'.$comp['buildtime']*TICK_DURATION : $comp['buildtime']*TICK_DURATION).' '.constant($game->sprache("TEXT6")).'<br><br><u>'.constant($game->sprache("TEXT22")).'</u><br>';
 
 if ($comp['value_1']!=0) $text.=constant($game->sprache("TEXT8")).' '.$comp['value_1'].'<br>';
 if ($comp['value_2']!=0) $text.=constant($game->sprache("TEXT9")).' '.$comp['value_2'].'<br>';
@@ -155,7 +155,7 @@ if ($torso<7) return 2;
 return 3;
 }
 if ($torso<5) return 1;
-if ($torso<8) return 2;
+if ($torso<9) return 2;
 return 3;
 }
 
@@ -365,23 +365,26 @@ for ($t=0; $t<count($SHIP_TORSO[$game->player['user_race']]); $t++)
 //Funktion Rumpfklassen ausblenden
 //by Mojo1987
 
+if ($game->player['user_race']==0) //Fed
+{
+    if($t==12) {
+        break;
+    }
+}
+
 if ($game->player['user_race']==1) //Rom
 {
   if ($t==3)
   {
     $t=4;
   }
-  if ($t==6)
-  {
-    $t=7;
-  }
   if ($t==8)
   {
     $t=9;
   }
-  if ($t==10)
+  if ($t==12)
   {
-    $t=11;
+    break;
   }
 }
 
@@ -403,6 +406,10 @@ if ($game->player['user_race']==2) //Klingonen
   {
     $t=11;
   }
+  if ($t==12)
+  {
+    break;
+  }  
 }
 
 if ($game->player['user_race']==3) //Cardassianer
@@ -421,7 +428,7 @@ if ($game->player['user_race']==3) //Cardassianer
   }
   if ($t==10)
   {
-    $t=12;
+    break;
   }
 }
 
@@ -440,6 +447,10 @@ if ($game->player['user_race']==4) //Dominion
   {
     $t=11;
   }
+  if ($t==12)  
+  {
+    break;
+  }  
 }
 
 if ($game->player['user_race']==5) //Ferengi
@@ -494,7 +505,11 @@ if ($game->player['user_race']==9) // Hiro
   }
   if ($t==8)
   {
-    $t=11;
+    $t=9;
+  }
+if ($t==10)  
+  {
+    break;
   }
 }
 
@@ -531,7 +546,7 @@ if ($game->player['user_race']==11) // Kazon
   }
   if ($t==10)
   {
-    $t=12;
+    break;
   }
 }
 
