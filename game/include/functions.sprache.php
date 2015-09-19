@@ -242,7 +242,7 @@ define ("GER_MOVEATTACKBOMB", 'Angreifen und Bombardieren');
 
 define ("GER_MOVEATTACKTAKE", 'Angreifen und &uuml;bernehmen');
 
-define ("GER_RETREAT", 'Retreat');
+define ("GER_RETREAT", 'R&uuml;ckzug');
 
 // Used by init_player()
 define ("GER_INVCALL1", 'Ung&uuml;ltiger Aufruf<br><br><br>Dieser Fehler kann entstehen unter anderem entstehen,<br>wenn du versuchst, zwei Dinge gleichzeitig zu bauen.<br>Gehe in diesem Fall zur&uuml;ck zum Baumen&uuml; und versuche es erneut.');
@@ -316,71 +316,71 @@ define ("GER_NUM_PLAYERS", 'Spieler zahl');
 
 // used by get_diplo_str
 
-define ("GER_DIPLO1", 'First Contact');
+define ("GER_DIPLO1", 'Erster Kontakt');
 
-define ("GER_DIPLO2", 'Diplomatic Agreement');
+define ("GER_DIPLO2", 'Diplomatisches Abkommen');
 
-define ("GER_DIPLO3", 'Tech Support: Environmental Modification');
+define ("GER_DIPLO3", 'Tech. Support: Terraforming');
 
-define ("GER_DIPLO4", 'Tech Support: Medical Research');
+define ("GER_DIPLO4", 'Tech. Support: Medizinische-Forschung');
 
-define ("GER_DIPLO5", 'Tech Support: Defense');
+define ("GER_DIPLO5", 'Tech. Support: Verteidigung');
 
-define ("GER_DIPLO6", 'Tech Support: Automation');
+define ("GER_DIPLO6", 'Tech. Support: Automation');
 
-define ("GER_DIPLO7", 'Tech Support: Mining');
+define ("GER_DIPLO7", 'Tech. Support: Rohstoffverarbeitung');
 
-define ("GER_DIPLO8", 'Support: Planetary Defense');
+define ("GER_DIPLO8", 'Support: Planetarische Verteidigung');
 
-define ("GER_DIPLO10", 'Multiculturalism');
+define ("GER_DIPLO10", 'Multikulturalismus');
 
 define ("GER_DIPLO11", 'Technological Egemony');
 
-define ("GER_DIPLO12", 'Champion');
+define ("GER_DIPLO12", 'Sieger');
 
-define ("GER_DIPLO13", 'Innovator');
+define ("GER_DIPLO13", 'Erneuerer');
 
-define ("GER_DIPLO14", 'Opposer');
+define ("GER_DIPLO14", 'Gegner');
 
-define ("GER_DIPLO15", 'Pluralist');
+define ("GER_DIPLO15", 'Pluralistisch');
 
 define ("GER_DIPLO16", 'Renown');
 
-define ("GER_DIPLO17", 'Defender');
+define ("GER_DIPLO17", 'Verteidiger');
 
-define ("GER_DIPLO18", 'Expert');
+define ("GER_DIPLO18", 'Experte');
 
-define ("GER_DIPLO19", 'Saver');
+define ("GER_DIPLO19", 'Retter');
 
-define ("GER_DIPLO20", 'Leader');
+define ("GER_DIPLO20", 'Anf&uuml;hrer');
 
-define ("GER_DIPLO21", 'Patron');
+define ("GER_DIPLO21", 'Schirmherr');
 
-define ("GER_DIPLO22", 'Revered');
+define ("GER_DIPLO22", 'verehrt');
 
-define ("GER_DIPLO23", 'Predator');
+define ("GER_DIPLO23", 'Pl&uuml;nderer');
 
-define ("GER_DIPLO24", 'Foreigner');
+define ("GER_DIPLO24", 'Fremde');
 
-define ("GER_DIPLO25", 'Useless');
+define ("GER_DIPLO25", 'Sinnlos');
 
-define ("GER_DIPLO26", 'Exploiter');
+define ("GER_DIPLO26", 'Ausbeuter');
 
-define ("GER_DIPLO27", 'Prey');
+define ("GER_DIPLO27", 'Beute');
 
-define ("GER_DIPLO28", 'Terror in the colony');
+define ("GER_DIPLO28", 'Terror in der Kolonie');
 
-define ("GER_DIPLO29", 'Dissent in the colony');
+define ("GER_DIPLO29", 'Widerstand in der Kolonie');
 
-define ("GER_DIPLO30", 'Founder');
+define ("GER_DIPLO30", 'Gr&uuml;nder');
 
-define ("GER_DIPLO31", 'Ex-Governor');
+define ("GER_DIPLO31", 'Ex-Governeur');
 
-define ("GER_DIPLO32", 'Orbital Attack');
+define ("GER_DIPLO32", 'Orbital Angriff');
 
-define ("GER_DIPLO33", 'Planetary bombing');
+define ("GER_DIPLO33", 'Planetares Bombardieren');
 
-define ("GER_DIPLO34", 'Colony Overrun');
+define ("GER_DIPLO34", 'Kolonie &uuml;berrannt);
 
 
 
