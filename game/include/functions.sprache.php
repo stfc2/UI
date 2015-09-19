@@ -380,7 +380,7 @@ define ("GER_DIPLO32", 'Orbital Angriff');
 
 define ("GER_DIPLO33", 'Planetares Bombardieren');
 
-define ("GER_DIPLO34", 'Kolonie &uuml;berrannt);
+define ("GER_DIPLO34", 'Kolonie &uuml;berrannt');
 
 
 
