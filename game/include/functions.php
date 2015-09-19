@@ -522,6 +522,59 @@ function get_wares_by_key($user_race = 0) {
 
 // #############################################################################
 
+function get_diplo_str($code) {
+    
+    global $game;
+
+    settype($code, 'int');
+    
+    switch($code) {
+            case 1: $str = constant($game->sprache("DIPLO1")); break;
+            case 2: $str = constant($game->sprache("DIPLO2")); break;
+            case 3: $str = constant($game->sprache("DIPLO3")); break;
+            case 4: $str = constant($game->sprache("DIPLO4")); break;
+            case 5: $str = constant($game->sprache("DIPLO5")); break;
+            case 6: $str = constant($game->sprache("DIPLO6")); break;
+            case 7: $str = constant($game->sprache("DIPLO7")); break;
+            case 8: $str = constant($game->sprache("DIPLO8")); break;
+            
+            case 10: $str = constant($game->sprache("DIPLO10")); break;
+            case 11: $str = constant($game->sprache("DIPLO11")); break;
+            case 12: $str = constant($game->sprache("DIPLO12")); break;
+            case 13: $str = constant($game->sprache("DIPLO13")); break;
+            case 14: $str = constant($game->sprache("DIPLO14")); break;
+            case 15: $str = constant($game->sprache("DIPLO15")); break;
+            case 16: $str = constant($game->sprache("DIPLO16")); break;
+            case 17: $str = constant($game->sprache("DIPLO17")); break;
+            case 18: $str = constant($game->sprache("DIPLO18")); break;
+            case 19: $str = constant($game->sprache("DIPLO19")); break;
+            case 20: $str = constant($game->sprache("DIPLO20")); break;
+            case 21: $str = constant($game->sprache("DIPLO21")); break;
+            case 22: $str = constant($game->sprache("DIPLO22")); break;
+            
+            case 23: $str = constant($game->sprache("DIPLO23")); break;
+            case 24: $str = constant($game->sprache("DIPLO24")); break;
+            case 25: $str = constant($game->sprache("DIPLO25")); break;
+            case 26: $str = constant($game->sprache("DIPLO26")); break;
+            case 27: $str = constant($game->sprache("DIPLO27")); break;
+            
+            case 28: $str = constant($game->sprache("DIPLO28")); break;
+            case 29: $str = constant($game->sprache("DIPLO29")); break;
+            
+            case 30: $str = constant($game->sprache("DIPLO30")); break;
+            case 31: $str = constant($game->sprache("DIPLO31")); break;
+            
+            case 32: $str = constant($game->sprache("DIPLO32")); break;
+            case 33: $str = constant($game->sprache("DIPLO33")); break;
+            case 34: $str = constant($game->sprache("DIPLO33")); break;
+            
+            default: $str = 'Unknown diplomatic code'; break;
+    }
+    
+    	return $str;
+}
+// #############################################################################
+
 function is_planet_attacked($planet_id) {
 	global $db;
 
