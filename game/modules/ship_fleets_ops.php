@@ -45,9 +45,11 @@ $text='<b>'.$ship[31].'</b><br><br><u>'.constant($game->sprache("TEXT0")).'</u><
 
 
 
-$text.=constant($game->sprache("TEXT1")).' '.$ship[14].'<br>';
+$text.=constant($game->sprache("TEXT1")).' '.$ship[14].' x '.$ship[32].'<br>';
 
-$text.=constant($game->sprache("TEXT2")).' '.$ship[15].'<br>';
+$text.=constant($game->sprache("TEXT2")).' '.$ship[15].' x '.$ship[33].'<br>';
+
+$text.=constant($game->sprache("TEXT60")).' '.$ship[34].'<br>';
 
 $text.=constant($game->sprache("TEXT3")).' '.$ship[16].'<br>';
 
@@ -122,6 +124,12 @@ if ($comp['value_12']!=0) $text.=constant($game->sprache("TEXT12")).' '.$comp['v
 if ($comp['value_14']!=0) $text.=constant($game->sprache("TEXT13")).' '.$comp['value_14'].'<br>';
 
 if ($comp['value_13']!=0) $text.=constant($game->sprache("TEXT14")).' '.$comp['value_13'].'<br>';
+
+if ($comp['value_16']!=0) $text.=constant($game->sprache("TEXT75")).' '.$comp['value_16'].'<br>';
+
+if ($comp['value_17']!=0) $text.=constant($game->sprache("TEXT76")).' '.$comp['value_17'].'<br>';
+
+if ($comp['value_18']!=0) $text.=constant($game->sprache("TEXT60")).' '.$comp['value_18'].'<br>';
 
 return $text;
 
@@ -793,32 +801,282 @@ elseif(isset($_GET['ship_details'])) {
 
     }
 
-
+        $buff_dmg_redu = 0; // buff to dmg reduction
+        $buff_value_1  = 0; // buff to primary weapon
+        $buff_value_2  = 0; // buff to secondary weapon
+        $buff_value_3  = 0; // buff to planetary weapon
+        $buff_value_4  = 0; // buff to shields
+        $buff_value_5  = 0; // buff to hull
+        $buff_value_6  = 0; // buff to reaction
+        $buff_value_8  = 0; // buff to agility
+        $buff_value_11 = 0; // buff to sensor
+        $buff_value_12 = 0; // buff to cloacking
+        $buff_firststrike = 0; // buff to firsstrike
+        $buff_rof      = 0; // buff to rof
+        $buff_rof2     = 0; // buff to rof2
+    
+        $dmg_reduction = 5 + floor(1 * ($ship['unit_5']/3));
+        
+        $racebonustring = '<br><br><span style="color: lightgreen">'.constant($game->sprache("TEXT73")).'</span><br>';
+        switch ($ship['race']) {
+            case 0:
+                if($ship['experience']>=$ship_ranks[9]) {
+                    $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT68")).' +15%</span></b><br>'
+                    . '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT4")).' +15%</span></b><br>';
+                    $buff_value_4 += floor(($ship['value_4'] * 1.15) - $ship['value_4']);
+                    $buff_dmg_redu += 15;
+                    break;
+                }
+                if($ship['experience']>=$ship_ranks[2]) {
+                    $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT68")).' +15%</span></b><br>';
+                    $buff_dmg_redu += 15;
+                    break;
+                }
+                $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT71")).'</span></b><br>';
+                break;
+            case 1:
+                if($ship['experience']>=$ship_ranks[9]) {
+                    $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT61")).' +40</span></b><br>'
+                    . '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT12")).' +10</span></b><br>';
+                    $buff_value_12 += 10;
+                    $buff_firststrike += 40;
+                    break;
+                }
+                if($ship['experience']>=$ship_ranks[2]) {
+                    $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT61")).' +40</span></b><br>';
+                    $buff_firststrike += 40;
+                    break;
+                }
+                $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT71")).'</span></b><br>';
+                break;
+            case 2:
+                if($ship['experience']>=$ship_ranks[9]) {
+                    $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT61")).' +40</span></b><br>'
+                    . '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT49")).' +15%</span></b><br>';
+                    $buff_value_2 += floor(($ship['value_2'] * 1.15) - $ship['value_2']);
+                    $buff_firststrike += 40;
+                    break;
+                }
+                if($ship['experience']>=$ship_ranks[2]) {
+                    $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT61")).' +40</span></b><br>';
+                    $buff_firststrike += 40;
+                    break;
+                }
+                $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT71")).'</span></b><br>';
+                break;                
+            case 3:
+                if($ship['experience']>=$ship_ranks[9]) {
+                    $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT68")).' +15%</span></b><br>'
+                    . '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT48")).' +15%</span></b><br>';
+                    $buff_value_1 += floor(($ship['value_1'] * 1.15) - $ship['value_1']);
+                    $buff_dmg_redu += 15;
+                    break;
+                }
+                if($ship['experience']>=$ship_ranks[2]) {
+                    $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT68")).' +15%</span></b><br>';
+                    $buff_dmg_redu += 15;
+                    break;
+                }
+                $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT71")).'</span></b><br>';
+                break;                
+            case 4:
+                if($ship['experience']>=$ship_ranks[9]) {
+                    $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT48")).' +15%</span></b><br>'
+                    . '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT47")).' +15%</span></b><br>';
+                    $buff_value_5 += floor(($ship['value_5'] * 1.15) - $ship['value_5']);
+                    $buff_value_1 += floor(($ship['value_1'] * 1.15) - $ship['value_1']);
+                    break;
+                }
+                if($ship['experience']>=$ship_ranks[2]) {
+                    $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT48")).' +15%</span></b><br>';
+                    $buff_value_1 += floor(($ship['value_1'] * 1.15) - $ship['value_1']);
+                    break;
+                }
+                $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT71")).'</span></b><br>';
+                break;                
+            case 9:
+                if($ship['experience']>=$ship_ranks[9]) {
+                    $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT61")).' +50</span></b><br>'
+                    . '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT72")).' +1</span></b><br>';
+                    $buff_rof  += 1;
+                    $buff_rof2 += 1;
+                    $buff_firststrike += 50;
+                    break;
+                }
+                if($ship['experience']>=$ship_ranks[2]) {
+                    $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT61")).' +50</span></b><br>';
+                    $buff_firststrike += 50;
+                    break;
+                }
+                $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT71")).'</span></b><br>';
+                break;                
+            case 11:
+                if($ship['experience']>=$ship_ranks[9]) {
+                    $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT61")).' +25</span></b><br>'
+                    . '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT70")).' +10%</span></b><br>';
+                    $buff_value_2 += floor(($ship['value_2'] * 1.10) - $ship['value_2']);
+                    $buff_value_1 += floor(($ship['value_1'] * 1.10) - $ship['value_1']);
+                    $buff_firststrike += 25;
+                    break;
+                }
+                if($ship['experience']>=$ship_ranks[2]) {
+                    $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT61")).' +25</span></b><br>';                    
+                    $buff_firststrike += 25;
+                    break;
+                }
+                $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT71")).'</span></b><br>';
+                break;
+            case 13:
+                if($ship['experience']>=$ship_ranks[9]) {
+                    $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT68")).' +10</span></b><br>'
+                    . '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT47")).' +10%</span></b><br>';
+                    $buff_value_5 += floor(($ship['value_5'] * 1.10) - $ship['value_5']);
+                    $buff_dmg_redu += 10;
+                    break;
+                }
+                if($ship['experience']>=$ship_ranks[2]) {
+                    $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT68")).' +10</span></b><br>';                    
+                    $buff_dmg_redu += 10;
+                    break;
+                }
+                $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT71")).'</span></b><br>';
+                break;                
+            default :
+                $racebonustring .= '<b><span style="color: lightgreen">'.constant($game->sprache("TEXT71")).'</span></b><br>';
+                break;
+        }
+        
+        $classbonustring = '<br><br><b><span style="color: cyan">'.constant($game->sprache("TEXT74")).'</span></b><br>';
+        switch ($ship['ship_class']) {
+            case 3:
+                if($ship['experience']>=$ship_ranks[7]) {
+                    $classbonustring .= '<b><span style="color: cyan">'.constant($game->sprache("TEXT68")).' +20%</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT50")).' +50</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT1")).' +10%</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT2")).' +10%</span></b><br>';
+                    $buff_value_2 += floor(($ship['value_2'] * 1.10) - $ship['value_2']);
+                    $buff_value_1 += floor(($ship['value_1'] * 1.10) - $ship['value_1']);
+                    $buff_value_3 += 50;
+                    $buff_dmg_redu += 20;
+                    break;
+                }
+                if($ship['experience']>=$ship_ranks[5]) {
+                    $classbonustring .= '<b><span style="color: cyan">'.constant($game->sprache("TEXT68")).' +20%</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT50")).' +50</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT1")).' +10%</span></b><br>';
+                    $buff_value_1 += floor(($ship['value_1'] * 1.10) - $ship['value_1']);
+                    $buff_value_3 += 50;
+                    $buff_dmg_redu += 20;
+                    break;
+                }
+                if($ship['experience']>=$ship_ranks[4]) {
+                    $classbonustring .= '<b><span style="color: cyan">'.constant($game->sprache("TEXT68")).' +20%</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT50")).' +50</span></b><br>';
+                    $buff_value_1 += floor(($ship['value_1'] * 1.10) - $ship['value_1']);
+                    $buff_value_3 += 50;
+                    $buff_dmg_redu += 20;
+                    break;
+                }                
+                if($ship['experience']>=$ship_ranks[1]) {
+                    $classbonustring .= '<b><span style="color: cyan">'.constant($game->sprache("TEXT68")).' +20%</span></b><br>';
+                    $buff_dmg_redu += 20;
+                    break;
+                }
+                $classbonustring .= '<b><span style="color: cyan">'.constant($game->sprache("TEXT71")).'</span></b><br>';                
+                break;
+            case 2:
+                if($ship['experience']>=$ship_ranks[7]) {
+                    $classbonustring .= '<b><span style="color: cyan">'.constant($game->sprache("TEXT68")).' +10%</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT61")).' +30</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT4")).' +15%</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT50")).' +10</span></b><br>';
+                    $buff_value_3 += 10;
+                    $buff_value_4 += floor(($ship['value_4'] * 1.15) - $ship['value_4']);
+                    $buff_firststrike += 30;
+                    $buff_dmg_redu += 10;
+                    break;
+                }
+                if($ship['experience']>=$ship_ranks[5]) {
+                    $classbonustring .= '<b><span style="color: cyan">'.constant($game->sprache("TEXT68")).' +10%</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT61")).' +30</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT4")).' +15%</span></b><br>';                    
+                    $buff_value_4 += floor(($ship['value_4'] * 1.15) - $ship['value_4']);
+                    $buff_firststrike += 30;
+                    $buff_dmg_redu += 10;
+                    break;
+                }
+                if($ship['experience']>=$ship_ranks[4]) {
+                    $classbonustring .= '<b><span style="color: cyan">'.constant($game->sprache("TEXT68")).' +10%</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT61")).' +30</span></b><br>';                    
+                    $buff_firststrike += 30;
+                    $buff_dmg_redu += 10;
+                    break;
+                }
+                if($ship['experience']>=$ship_ranks[1]) {
+                    $classbonustring .= '<b><span style="color: cyan">'.constant($game->sprache("TEXT68")).' +10%</span></b><br>';                  
+                    $buff_dmg_redu += 10;
+                    break;
+                }
+                $classbonustring .= '<b><span style="color: cyan">'.constant($game->sprache("TEXT71")).'</span></b><br>';
+                break;
+            case 1:
+                if($ship['experience']>=$ship_ranks[7]) {
+                    $classbonustring .= '<b><span style="color: cyan">'.constant($game->sprache("TEXT68")).' +5%</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT8")).' +10</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT11")).' +15</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT6")).' +6</span></b><br>';
+                    $buff_value_6 += 6;
+                    $buff_value_11 += 15;
+                    $buff_value_8 += 10;
+                    $buff_dmg_redu += 5;
+                    break;
+                }
+                if($ship['experience']>=$ship_ranks[5]) {
+                    $classbonustring .= '<b><span style="color: cyan">'.constant($game->sprache("TEXT68")).' +5%</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT8")).' +10</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT11")).' +15</span></b><br>';                    
+                    $buff_value_11 += 15;
+                    $buff_value_8 += 10;
+                    $buff_dmg_redu += 5;
+                    break;
+                }                
+                if($ship['experience']>=$ship_ranks[4]) {
+                    $classbonustring .= '<b><span style="color: cyan">'.constant($game->sprache("TEXT68")).' +5%</span></b><br>'
+                    . '<b><span style="color: cyan">'.constant($game->sprache("TEXT8")).' +10</span></b><br>';
+                    $buff_value_8 += 10;
+                    $buff_dmg_redu += 5;
+                    break;
+                }                
+                if($ship['experience']>=$ship_ranks[1]) {
+                    $classbonustring .= '<b><span style="color: cyan">'.constant($game->sprache("TEXT68")).' +5%</span></b><br>';
+                    $buff_dmg_redu += 5;
+                    break;
+                }                
+                $classbonustring .= '<b><span style="color: cyan">'.constant($game->sprache("TEXT71")).'</span></b><br>';
+                break;
+            default:
+                $classbonustring .= '<b><span style="color: cyan">'.constant($game->sprache("TEXT71")).'</span></b><br>';
+                break;
+        }
 
 	// Schiffsdaten ausgeben:
 	$rank_nr=1;
 	if ($ship['experience']>=$ship_ranks[0]) $rank_nr=1;
-	if ($ship['experience']>=$ship_ranks[1]) $rank_nr=2;
-	if ($ship['experience']>=$ship_ranks[2]) $rank_nr=3;
 	if ($ship['experience']>=$ship_ranks[3]) $rank_nr=4;
-	if ($ship['experience']>=$ship_ranks[4]) $rank_nr=5;
-	if ($ship['experience']>=$ship_ranks[5]) $rank_nr=6;
 	if ($ship['experience']>=$ship_ranks[6]) $rank_nr=7;
-	if ($ship['experience']>=$ship_ranks[7]) $rank_nr=8;
 	if ($ship['experience']>=$ship_ranks[8]) $rank_nr=9;
-	if ($ship['experience']>=$ship_ranks[9]) $rank_nr=10;
 
-	$firststrike=(($ship['value_6']+round($ship['value_6']*$ship_rank_bonus[$rank_nr-1]))*2
+	$firststrike=(($ship['value_6']+$buff_value_6+round($ship['value_6']*$ship_rank_bonus[$rank_nr-1]))*2
 	             +($ship['value_7']+round($ship['value_7']*$ship_rank_bonus[$rank_nr-1]))*3
-	             +($ship['value_8']+round($ship['value_8']*$ship_rank_bonus[$rank_nr-1]))
-	             +$ship['value_11']*0.5
-	             +$ship['value_12']
+	             +($ship['value_8']+$buff_value_8+round($ship['value_8']*$ship_rank_bonus[$rank_nr-1]))
+	             +($ship['value_11']+$buff_value_11*0.5)
+	             +($ship['value_12']+$buff_value_12)
 	             );
         
-        $base_to_hit = (($ship['value_6']+round($ship['value_6']*$ship_rank_bonus[$rank_nr-1])) 
+        $base_to_hit = (($ship['value_6']+$buff_value_6+round($ship['value_6']*$ship_rank_bonus[$rank_nr-1])) 
                        +($ship['value_7']+round($ship['value_7']*$ship_rank_bonus[$rank_nr-1])) 
-                       +($ship['value_8']+round($ship['value_8']*$ship_rank_bonus[$rank_nr-1]))
-                       + $ship['value_11']) * 0.1;
+                       +($ship['value_8']+$buff_value_8+round($ship['value_8']*$ship_rank_bonus[$rank_nr-1]))
+                       +($ship['value_11'] + $buff_value_11) * 0.1);
                         
         if($base_to_hit > 15) {
             $base_to_hit = 15;
@@ -830,12 +1088,13 @@ elseif(isset($_GET['ship_details'])) {
                         
         $tohit = round(($base_to_hit * 100)/17, 2);
         
-        $rof  = $ship['rof'];
-        $rof2 = $ship['rof2'];
+        $rof  = $ship['rof'] + $buff_rof;
+        $rof2 = $ship['rof2'] + $buff_rof2;
         
-        if ($ship['experience']>=$ship_rank_tier[2]) $rof = $rof + 1;
+        if ($ship['experience']>=$ship_rank_tier[1]) $rof = $rof + 1;
+        if ($ship['experience']>=$ship_rank_tier[2]) $rof2 = $rof2 + 1;
         if ($ship['experience']>=$ship_rank_tier[4]) $rof = $rof + 1;
-        if ($ship['experience']>=$ship_rank_tier[3]) $rof2 = $rof2 + 1;
+        if ($ship['experience']>=$ship_rank_tier[3]) $rof = $rof + 1;
         if ($ship['experience']>=$ship_rank_tier[5]) $rof2 = $rof2 + 1;        
 
     $game->out('
@@ -902,6 +1161,8 @@ elseif(isset($_GET['ship_details'])) {
 
             '.constant($game->sprache("TEXT51")).'<br><br>
 
+            '.constant($game->sprache("TEXT68")).'<br>
+
             '.constant($game->sprache("TEXT61")).'<br>
                 
             '.constant($game->sprache("TEXT66")).'<br><br>
@@ -928,35 +1189,37 @@ elseif(isset($_GET['ship_details'])) {
 
             <b>'.( (!empty($ship['last_refit_time'])) ? date('d/m/y H:i:s', $ship['last_refit_time']) : constant($game->sprache("TEXT58"))).'</b><br>
 
-            <b>'.$ship['hitpoints'].'</b> / <b>'.$ship['value_5'].'</b><br>
+            <b>('.$ship['hitpoints'].'</b> / <b>'.$ship['value_5'].')</b> + <b><span style="color: yellow">'.$buff_value_5.'</span></b><br>
 
-            <b>'.$ship['value_4'].'</b><br><br>
+            <b>'.$ship['value_4'].' + <span style="color: yellow">'.$buff_value_4.'</span></b><br><br>
 
             <b>'.( (intval($ship['awayteam']) == 0) ?  ' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($ship['awayteamplanet_id'])).'"><b>'.$ship['mission_planet_name'].'</b></a> ' : intval($ship['awayteam'])).'</b><br><br>
 
             <b><span style="color: yellow">'.$ship['experience'].'</span></b> <img src="'.$game->GFX_PATH.'rank_'.$rank_nr.'.jpg" width="47" height="12"><br><br>
 
-            <b>('.$ship['value_1'].' + <span style="color: yellow">'.round($ship['value_1']*$ship_rank_bonus[$rank_nr-1],0).'</span>)</b> x<b><span style="color: yellow">'.$rof.'</span></b><br>
+            <b>('.($ship['value_1']+$buff_value_1).' + <span style="color: yellow">'.round(($ship['value_1']+$buff_value_1)*$ship_rank_bonus[$rank_nr-1],0).'</span>)</b> x<b><span style="color: yellow">'.$rof.'</span></b><br>
 
-            <b>('.$ship['value_2'].' + <span style="color: yellow">'.round($ship['value_2']*$ship_rank_bonus[$rank_nr-1],0).'</span>)</b> x<b><span style="color: yellow">'.$rof2.'</span></b><br>
+            <b>('.($ship['value_2']+$buff_value_2).' + <span style="color: yellow">'.round(($ship['value_2']+$buff_value_2)*$ship_rank_bonus[$rank_nr-1],0).'</span>)</b> x<b><span style="color: yellow">'.$rof2.'</span></b><br>
 
-            <b>'.$ship['value_3'].' + <span style="color: yellow">'.round($ship['value_3']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
+            <b>'.($ship['value_3']+$buff_value_3).' + <span style="color: yellow">'.round(($ship['value_3']+$buff_value_3)*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
 
             <b>'.$ship['torp'].' / '.$ship['max_torp'].'</b><br><br>
 
-            <b>'.$ship['value_6'].' + <span style="color: yellow">'.round($ship['value_6']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
+            <b>'.($ship['value_6']+$buff_value_6).' + <span style="color: yellow">'.round(($ship['value_6']+$buff_value_6)*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
 
             <b>'.$ship['value_7'].' + <span style="color: yellow">'.round($ship['value_7']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br>
 
-            <b>'.$ship['value_8'].' + <span style="color: yellow">'.round($ship['value_8']*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br><br>
+            <b>'.($ship['value_8']+$buff_value_8).' + <span style="color: yellow">'.round(($ship['value_8']+$buff_value_8)*$ship_rank_bonus[$rank_nr-1],0).'</span></b><br><br>
 
             <b>'.$ship['value_10'].'</b><br>
 
-            <b>'.$ship['value_11'].'</b><br>
+            <b>'.$ship['value_11'].' + <span style="color: yellow">'.$buff_value_11.'</span></b><br>
 
-            <b>'.$ship['value_12'].'</b><br><br>
+            <b>'.$ship['value_12'].' + <span style="color: yellow">'.$buff_value_12.'</span></b><br><br>
 
             <b>'.$ship['value_14'].'</b> / <b>'.$ship['value_13'].'</b><br><br>
+                
+            <b><a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT69")).'\', CAPTION, \''.constant($game->sprache("TEXT68")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: cyan">'.($dmg_reduction + $buff_dmg_redu).'%</span></a></b><br>
 
             <b><a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT62")).'\', CAPTION, \''.constant($game->sprache("TEXT61")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: yellow">'.$firststrike.'</span></a></b><br>
                 
@@ -984,8 +1247,10 @@ elseif(isset($_GET['ship_details'])) {
 
     }
 
-
-
+    $game->out($racebonustring);
+        
+    $game->out($classbonustring);       
+            
     $game->out('
 
           </td>
