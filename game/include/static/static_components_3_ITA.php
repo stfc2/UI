@@ -93,118 +93,112 @@ $ship_components_locale=array(
       ), // Endof Category Antriebssektion
 
 
-        // Category Waffendeck
+        // Category Hideki
         2=>array(
-             // Component Phaser
+             // Component Hideki:Step 1
              0=>array(
-                    'name'=>'Phaser',
-                    'description'=>'I phaser sono le armi standard negli scout e nei trasporti cardassiani, sono lenti nella costruzione e non molto efficaci.',
-            ), // Endof Component Phaser
+                    'name'=>'Hideki:Step 1',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Hideki:Step 1
 
-             // Component Strahlenemitter
+             // Component Hideki:Step 2
              1=>array(
-                    'name'=>'Emettitori di radiazioni',
-                    'description'=>'Gli emettitori di radiazioni sono uno sviluppo dei phaser standard, qui i getti di parecchi emettitori sono impacchettati e diretti sull&#146;obiettivo.',
-            ), // Endof Component Strahlenemitter
-
-             // Component Phasendisruptoren
+                    'name'=>'Hideki:Step 2',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Hideki:Step 2
+            
+             // Component Hideki:Step 3
              2=>array(
-                    'name'=>'Phaser disgregatore',
-                    'description'=>'I phaser disgregatori sono, per scout e trasporti, una tecnologia assolutamente significativa. Hanno una modulazione di fase inserita e cambiare la frequenza di radiazione generalmente rappresenta una minaccia per le navi debolmente corazzate.',
-            ), // Endof Component Phasendisruptoren
-
-             // Component Disruptorkanone
+                    'name'=>'Hideki:Step 3',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Hideki:Step 3
+            
+             // Component Hideki:Step 4
              3=>array(
-                    'name'=>'Cannone disgregatore',
-                    'description'=>'I cannoni disgregatori sono il fratello maggiore dei phaser disgregatori. Sono costosi ed hanno un periodo di costruzione relativamente lungo ma provocano un danno moderatamente efficace.',
-            ), // Endof Component Disruptorkanone
-
-             // Component Kompressionsphaser
-             4=>array(
-                    'name'=>'Phaser a compressione',
-                    'description'=>'I phaser a compressione sono un&#146;arma potente. A differenza dei normali phaser gli emettitori vengono caricati per un determinato periodo di tempo prima che l&#1146;energia venga impacchettata e diretta verso il bersaglio.',
-            ), // Endof Component Kompressionsphaser
-
-             // Component Spiralwellendisruptoren
-             5=>array(
-                    'name'=>'Disgregatore ad onde spirali',
-                    'description'=>'Il disgregatore ad onde spirali riflette la situazione tecnologia dei cardassiani. Essi sono fortemente contrari alla costruzione di navi piccole a favore delle classi superiori.',
-            ), // Endof Component Spiralwellendisruptoren
-
-      'name'=>'Ponte armamenti',
-      ), // Endof Category Waffendeck
+                    'name'=>'Hideki:Step 4',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Hideki:Step 4
+            
+      'name'=>'Aggiornamenti: Hideki',
+      ), // Endof Category Aggiornamenti: Hideki
 
 
-        // Category Waffenarsenal
+        // Category Aggiornamenti: Galor
         3=>array(
-             // Component Microtorpedos
+             // Component Galor: Step 1
              0=>array(
-                    'name'=>'Micro torpedini',
-                    'description'=>'Le micro torpedini sono piccoli, proiettili guidati, che accomodano una &acute;Testata&acute; con un rendimento esplosivo approssimativamente di 4 ISO tonnellate.',
-            ), // Endof Component Microtorpedos
+                    'name'=>'Galor: Step 1',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Galor: Step 1
 
-             // Component Torpedos
+             // Component Galor: Step 2
              1=>array(
-                    'name'=>'Siluri',
-                    'description'=>'I siluri sono proiettili guidati che accomodano una &acute;Testata&acute; con un rendimento esplosivo approssimativamente di 12 ISO tonnellate.',
-            ), // Endof Component Torpedos
-
-             // Component Photonentorpedos
+                    'name'=>'Galor: Step 2',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Galor: Step 2
+            
+             // Component Galor: Step 3
              2=>array(
-                    'name'=>'Siluri fotonici',
-                    'description'=>'I siluri fotonici sono proiettili controllati con un proprio sistema di puntamento (indipendente dal computer della nave), che accomodano una &acute;Testata&acute; con un rendimento esplosivo approssimativamente di 25 ISO tonnellate.',
-            ), // Endof Component Photonentorpedos
-
-             // Component Micro-Quantentorpedos
+                    'name'=>'Galor: Step 3',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Galor: Step 3
+            
+             // Component Galor: Step 4
              3=>array(
-                    'name'=>'Micro siluri quantici',
-                    'description'=>'Nei siluri quantici viene applicata una testata a filamenti quantici. I filamenti interagiscono tra di loro cosicch&eacute; viene rilasciata un enorme quantit&agrave; di energia. L&#146;involucro dei siluri quantici &egrave; differente da quello dei siluri fotonici sebbene ne mantengano la forma. Questi siluri richiedono uno speciale lanciasiluri e sulle navi moderne viene applicato un lanciasiluri universale con cui poter lanciare anche siluri fotonici.',
-            ), // Endof Component Micro-Quantentorpedos
-
-             // Component Biokinetische Ladungen
+                    'name'=>'Galor: Step 4',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Galor: Step 4
+            
+             // Component Galor: Step 5
              4=>array(
-                    'name'=>'Cariche biocinetiche',
-                    'description'=>'Le cariche biocinetiche sono formate da un particolare tipo di parassita che &egrave; particolarmente resistente e con l&#146;aiuto di un ordigno esplosivo puo essere sparato e nebulizzato.<br>Con le navi essi tentano di penetrare lo scafo ed infettare l&#146;equipaggio, con gli attacchi planetari l&#146;ordigno esplosivo viene fatto detonare approssimativamente ad una quota di 10km e con venti favorevoli &egrave; in grado di estinguere un area di parecchie migliaia di chilometri quadrati.',
-            ), // Endof Component Biokinetische Ladungen
+                    'name'=>'Galor: Step 5',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Galor: Step 5
+            
+      'name'=>'Aggiornamenti: Galor',
+      ), // Endof Category Aggiornamenti: Galor
 
-      'name'=>'Armeria',
-      ), // Endof Category Waffenarsenal
 
-
-        // Category Hülle/Schilde
+        // Category Aggiornamenti: Keldon
         4=>array(
-             // Component Schilde
+             // Component Keldon: Step 1
              0=>array(
-                    'name'=>'Scudi',
-                    'description'=>'Semplici scudi sono progettati per l&#146;uso sulle navi delle classe &acute;Gul Vystan&acute;, &acute;Trasporto&acute; e &acute;Colonizzatrice&acute; e di solito non possono reggere piu di un colpo.',
-            ), // Endof Component Schilde
+                    'name'=>'Keldon: Step 1',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Keldon: Step 1
 
-             // Component Diffusions-Banding
+             // Component Keldon: Step 2
              1=>array(
-                    'name'=>'Banda di diffusione',
-                    'description'=>'La banda di diffusione &egrave; una nuova tecnologia con la quale le salve di energia e di siluri vengono schivate con una carica di controenergia. Questo &egrave; un&#146;innesco a diffusione, in modo che la traiettoria di volo venga deviata su un altro bersaglio.',
-            ), // Endof Component Diffusions-Banding
+                    'name'=>'Keldon: Step 2',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Keldon: Step 2
 
-             // Component Quanten Epitaxi
+             // Component Keldon: Step 3
              2=>array(
-                    'name'=>'Quanta Epitaxi',
-                    'description'=>'I Quanta Epitaxi sono una copertura rinforzata della nave, che portano 650 punti in pi&ugrave; nella difesa.',
-            ), // Endof Component Quanten Epitaxi
-
-             // Component Phasenschilde
+                    'name'=>'Keldon: Step 3',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Keldon: Step 3
+            
+             // Component Keldon: Step 4
              3=>array(
-                    'name'=>'Scudi fasici',
-                    'description'=>'Gli scudi fasici sono progettati in modo tale da modulare le loro fasi e che vi siano sempre almeno 2 &acute;strati&acute; sovrapposti per evitare la penetrazione dei proiettili.',
-            ), // Endof Component Phasenschilde
-
-             // Component Quantenschilde
+                    'name'=>'Keldon: Step 4',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Keldon: Step 4            
+            
+             // Component Keldon: Step 5
              4=>array(
-                    'name'=>'Scudi quantici',
-                    'description'=>'Gli scudi quantici sono uno sviluppo della tecnologia degli scudi tradizionali, qui barriere di energia quantica vengono deflesse dallo scafo della nave per prevenire l&#146;attraversamento del campo difensivo.',
-            ), // Endof Component Quantenschilde
-
-      'name'=>'Scafo/Scudi',
-      ), // Endof Category Hülle/Schilde
+                    'name'=>'Keldon: Step 5',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Keldon: Step 5
+            
+             // Component Keldon: Step 6
+             5=>array(
+                    'name'=>'Keldon: Step 6',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Keldon: Step 6            
+            
+      'name'=>'Aggiornamenti: Keldon',
+      ), // Endof Category Aggiornamenti: Keldon
 
 
         // Category Computersysteme
@@ -263,11 +257,23 @@ $ship_components_locale=array(
                     'description'=>'Gli impianti bioneurali vengono inseriti nei membri dell&#146;equipaggio per consentire la comunicazione diretta tra loro e con il computer della nave.',
             ), // Endof Component Bioneurale-Implantate
 
-             // Component Xenobiologe
+             // Component Bioneurale-Implantate
              3=>array(
+                    'name'=>'Impianti bioneurali',
+                    'description'=>'Gli impianti bioneurali vengono inseriti nei membri dell&#146;equipaggio per consentire la comunicazione diretta tra loro e con il computer della nave.',
+            ), // Endof Component Bioneurale-Implantate
+
+             // Component Xenobiologe
+             4=>array(
                     'name'=>'Xenobiologia',
                     'description'=>'Con la xenobiologia le truppe sulle navi vengono infettate con strane cellule, in pratica modificate geneticamente.<br>Questo aumenta le prestazioni e l&#146;esperienza.',
             ), // Endof Component Xenobiologe
+            
+             // Component Xenobiologe
+             5=>array(
+                    'name'=>'Xenobiologia',
+                    'description'=>'Con la xenobiologia le truppe sulle navi vengono infettate con strane cellule, in pratica modificate geneticamente.<br>Questo aumenta le prestazioni e l&#146;esperienza.',
+            ), // Endof Component Xenobiologe            
 
       'name'=>'Sezione medica',
       ), // Endof Category Medizinische Sektion
@@ -305,22 +311,28 @@ $ship_components_locale=array(
                     'description'=>'Grazie al sistema di valutazione, la telemetria dei dati dei sensori vengono preparati meglio.',
             ), // Endof Component Auswertungssystem
 
+             // Component Auswertungssystem
+             5=>array(
+                    'name'=>'Sistema valutazione',
+                    'description'=>'Grazie al sistema di valutazione, la telemetria dei dati dei sensori vengono preparati meglio.',
+            ), // Endof Component Auswertungssystem
+            
       'name'=>'Istituto di ricerca',
       ), // Endof Category Forschungseinrichtungen
 
 
         // Category Obsidianischer Orden
         8=>array(
-             // Component Verhöre
+             // Component Verhï¿½re
              0=>array(
                     'name'=>'Interrogatori',
-                    'description'=>'Nuove tecniche di interrogatorio garantiscono che i membri dell&#146:equipaggio siano pi&ugrave; leali e lavorino meglio.',
-            ), // Endof Component Verhöre
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Verhï¿½re
 
              // Component Spionage
              1=>array(
                     'name'=>'Spionaggio',
-                    'description'=>'Le tecniche di spionaggio dell&#146;Ordine Ossidiano migliora la risposta, la preparazione ed i sensori della nave.',
+                    'description'=>'Flavor Text Here.',
             ), // Endof Component Spionage
 
              // Component Spiralwellendisruptoren MK II
@@ -329,14 +341,20 @@ $ship_components_locale=array(
                     'description'=>'Il disgregatore ad onde spirali MK II &egrave; l&#146;ultimo stadio dei disgregatori, esso trasmette le onde di energia in spirali espandenti. Si tratta quindi, naturalmente, di una dispersione pi&ugrave; ampia ed un indebolimento degli scarichi, ma l&#146;arma &egrave; cos&igrave; ben bilanciata che provoca ciononostante il massimo danno.',
             ), // Endof Component Spiralwellendisruptoren MK II
 
-             // Component Doppelte Tritanidpanzerung
+             // Component Occultamento
              3=>array(
-                    'name'=>'Doppia armatura al Tritanid',
+                    'name'=>'Occultamento',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Occultamento
+            
+             // Component Doppelte Tritanidpanzerung
+             4=>array(
+                    'name'=>'Doppia armatura al Tritanio',
                     'description'=>'La duplice armatura di Tritanid rafforza anche lo scafo di circa 1450 punti.',
             ), // Endof Component Doppelte Tritanidpanzerung
 
              // Component Obsidianische Schilde
-             4=>array(
+             5=>array(
                     'name'=>'Scudo Ossidiano',
                     'description'=>'Il funzionamento dello Scudo Ossidiano &egrave; leggendario e misterioso come l&#146;ordine stesso.',
             ), // Endof Component Obsidianische Schilde
@@ -345,40 +363,46 @@ $ship_components_locale=array(
       ), // Endof Category Obsidianischer Orden
 
 
-        // Category Manschaftsräume
+        // Category Manschaftsrï¿½ume
         9=>array(
-             // Component Unterkunftsräume
+             // Component Addestramento Base
              0=>array(
-                    'name'=>'Sistemazione spazi',
-                    'description'=>'I vari tipi di alloggi consentono di accogliere un maggior numero di unit&agrave; sulle le navi.',
-            ), // Endof Component Unterkunftsräume
+                    'name'=>'Addestramento Base',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Addestramento Base
 
-             // Component Komfortausstattung
+             // Component Addestramento Avanzato
              1=>array(
-                    'name'=>'Opzioni comfort',
-                    'description'=>'I vari tipi di alloggi consentono di accogliere un maggior numero di unit&agrave; sulle le navi.',
-            ), // Endof Component Komfortausstattung
-
-             // Component Verhörräume
+                    'name'=>'Addestramento Avanzato',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Addestramento Avanzato            
+            
+             // Component Addestramento Base
              2=>array(
-                    'name'=>'Sala interrogatori',
-                    'description'=>'I vari tipi di alloggi consentono di accogliere un maggior numero di unit&agrave; sulle le navi.',
-            ), // Endof Component Verhörräume
+                    'name'=>'Addestramento Base',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Addestramento Base            
 
-             // Component Legatenunterkunft
+             // Component Addestramento Avanzato
              3=>array(
-                    'name'=>'Alloggi Legati',
-                    'description'=>'I vari tipi di alloggi consentono di accogliere un maggior numero di unit&agrave; sulle le navi.',
-            ), // Endof Component Legatenunterkunft
-
-             // Component Frachtraumnutzung
+                    'name'=>'Addestramento Avanzato',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Addestramento Avanzato            
+            
+             // Component Addestramento Base
              4=>array(
-                    'name'=>'Utilizzo area Cargo',
-                    'description'=>'I vari tipi di alloggi consentono di accogliere un maggior numero di unit&agrave; sulle le navi.',
-            ), // Endof Component Frachtraumnutzung
+                    'name'=>'Addestramento Base',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Addestramento Base            
 
-      'name'=>'Alloggi equipaggio',
-      ), // Endof Category Manschaftsräume
+             // Component Addestramento Avanzato
+             5=>array(
+                    'name'=>'Addestramento Avanzato',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Addestramento Avanzato            
+            
+      'name'=>'Addestramento',
+      ), // Endof Category Manschaftsrï¿½ume
 
 
 ), // Endof Race Cardassian
