@@ -5875,6 +5875,20 @@ $SHIP_TORSO = array(
 			30 => 500,  // Ben�tige Arbeiter zum Bau
 		),
 
+		9 => array(
+			0 => 500000,  // Metal
+
+			1 => 500000,  // Minerals
+
+			2 => 500000,  // Latinum
+
+			13 => 552,  // Buildtime (in 5 Minuten Schritten)
+
+			29 => 'Borg cube',  // Name
+
+			30 => 50000,  // Ben�tige Arbeiter zum Bau
+		),            
+            
 		10 => array(
 			0 => 500000,  // Metal
 
