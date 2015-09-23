@@ -157,6 +157,23 @@ define("GER_TEXT66", 'ToHit:');
 
 define("GER_TEXT67", 'This value represents the chance to score a hit on an enemy vessel.');
 
+define("GER_TEXT68", 'Mitigazione Danno:');
+
+define("GER_TEXT69", 'Questo parametro indica la percentuale di danno allo scafo che la nave e l&#146;equipaggio possono ridurre al termine del combattimento.');
+
+define("GER_TEXT70", 'Armi Leggere/Pesanti:');
+
+define("GER_TEXT71", 'Nessuno');
+
+define("GER_TEXT72", 'Rof Leggere/Pesanti:');
+
+define("GER_TEXT73", 'Bonus Razziali:');
+
+define("GER_TEXT74", 'Bonus di Classe:');
+
+define("GER_TEXT75", 'RoF Armi Leggere:');
+
+define("GER_TEXT76", 'RoF Armi Pesanti:');
 
 //English
 define ("ENG_TEXT0", 'Skills:');
@@ -295,6 +312,24 @@ define("ENG_TEXT66", 'ToHit:');
 
 define("ENG_TEXT67", 'This value represents the chance to score a hit on an enemy vessel.');
 
+define("ENG_TEXT68", 'Mitigazione Danno:');
+
+define("ENG_TEXT69", 'Questo parametro indica la percentuale di danno allo scafo che la nave e l&#146;equipaggio possono ridurre al termine del combattimento.');
+
+define("ENG_TEXT70", 'Armi Leggere/Pesanti:');
+
+define("ENG_TEXT71", 'Nessuno');
+
+define("ENG_TEXT72", 'Rof Leggere/Pesanti:');
+
+define("ENG_TEXT73", 'Bonus Razziali:');
+
+define("ENG_TEXT74", 'Bonus di Classe:');
+
+define("ENG_TEXT75", 'RoF Armi Leggere:');
+
+define("ENG_TEXT76", 'RoF Armi Pesanti:');
+
 
 //Italiano
 define ("ITA_TEXT0", 'Abilit&agrave;:');
@@ -432,5 +467,23 @@ define("ITA_TEXT65", 'AT sbarcata su:');
 define("ITA_TEXT66", 'Valutazione ToHit:');
 
 define("ITA_TEXT67", 'Questo indice rappresenta la probabilit&agrave; di una nave di mettere a segno un colpo.');
+
+define("ITA_TEXT68", 'Mitigazione Danno:');
+
+define("ITA_TEXT69", 'Questo parametro indica la percentuale di danno allo scafo che la nave e l&#146;equipaggio possono ridurre al termine del combattimento.');
+
+define("ITA_TEXT70", 'Armi Leggere/Pesanti:');
+
+define("ITA_TEXT71", 'Nessuno.');
+
+define("ITA_TEXT72", 'Rof Leggere/Pesanti:');
+
+define("ITA_TEXT73", 'Bonus Razziali:');
+
+define("ITA_TEXT74", 'Bonus di Classe:');
+
+define("ITA_TEXT75", 'RoF Armi Leggere:');
+
+define("ITA_TEXT76", 'RoF Armi Pesanti:');
 
 ?>

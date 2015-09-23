@@ -222,13 +222,13 @@ $SHIP_TORSO_LOCALE = array(
 
 			),
 
-    	// Morte temporanea
+    	// T'Varo
 
 	    6 => array(
 
-			0 => 'Science',  // Name
+			0 => 'T&acute;varo',  // Name
 
-			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+			1 => 'La classe T&acute;varo &egrave; totalmente orientata al combattimento. Armata con armi di ultimissima generazione quali il cannone al plasma e capace di sostenere altissime velocit&agrave;, rappresenta un temibile avversario per ogni vascello leggero nella galassia e anche qualcosa di pi&ugrave;.',
 
 			),
 
@@ -262,13 +262,13 @@ $SHIP_TORSO_LOCALE = array(
 
 			),
 
-    	// Morte temporanea
+    	// Mogai class
 
 	    10 => array(
 
-			0 => 'D&acute;deridex',  // Name
+			0 => 'Mogai',  // Name
 
-			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+			1 => 'La classe Mogai riprende il disegno della fortunata classe Norexan apportando notevoli migliorie strutturali all&#146;armatura e alla struttura interna.',
 
 			),
 
@@ -1115,13 +1115,13 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 			
-		// Morte temporanea
+		// Venatic Class
 
 	    9 => array(
 
-			0 => 'Incrociatore pesante',  // Name
+			0 => 'Venatic',  // Name
 
-			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+			1 => 'La classe Venatic &egrave; la pi&ugrave potente nave da guerra hirogeni. Nonostante le piccole dimensioni (appena 600 metri), spicca tra tutte le navi hirogeni. Lo scafo estremamente pesante compensa i deboli scudi montati. L&#146;armamento rende questa nave un avversario temibile per qualunque avversario.',
 
 		),
 			

@@ -575,6 +575,8 @@ define ("ITA_TEXT4a", 'Sistemi conosciuti');
 
 define ("ITA_TEXT5", 'Sensori');
 
+define ("ITA_TEXT5a", 'Ricerca');
+
 define ("ITA_TEXT6", 'Cosa vuoi attualmente?');
 
 define ("ITA_TEXT7", 'Banca-dati Stellare');

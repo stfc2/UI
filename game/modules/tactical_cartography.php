@@ -264,17 +264,28 @@ $game->init_player();
 
 if(!empty($_POST['trade'])) {
 
-    $dpid = (int)decode_planet_id($_GET['planet_id']);
+    $dpid = (int)decode_planet_id(filter_input(INPUT_GET, 'planet_id', FILTER_SANITIZE_EMAIL)); 
 
-    $_GET['planet_id'] = ($dpid != 0) ? $dpid : $_GET['planet_id'];
+    // $_GET['planet_id'] = ($dpid != 0) ? $dpid : $_GET['planet_id'];
+    
+    if(empty($dpid)) $dpid = filter_input(INPUT_GET, 'planet_id', FILTER_SANITIZE_NUMBER_INT);
+    
+    // $_POST['res_1']=(int)$_POST['res_1'];
+    // $_POST['res_2']=(int)$_POST['res_2'];
+    // $_POST['res_3']=(int)$_POST['res_3'];
+    // if ($_POST['res_1']<0) $_POST['res_1']=0;
+    // if ($_POST['res_2']<0) $_POST['res_2']=0;
+    // if ($_POST['res_3']<0) $_POST['res_3']=0;
 
-    $_POST['res_1']=(int)$_POST['res_1'];
-    $_POST['res_2']=(int)$_POST['res_2'];
-    $_POST['res_3']=(int)$_POST['res_3'];
-    if ($_POST['res_1']<0) $_POST['res_1']=0;
-    if ($_POST['res_2']<0) $_POST['res_2']=0;
-    if ($_POST['res_3']<0) $_POST['res_3']=0;
-
+    $traderes1 = filter_input(INPUT_POST, 'res_1', FILTER_SANITIZE_NUMBER_INT);
+    $traderes2 = filter_input(INPUT_POST, 'res_2', FILTER_SANITIZE_NUMBER_INT);
+    $traderes3 = filter_input(INPUT_POST, 'res_3', FILTER_SANITIZE_NUMBER_INT);
+    
+    if ($traderes1<0) $traderes1=0;
+    if ($traderes2<0) $traderes2=0;
+    if ($traderes3<0) $traderes3=0;
+    
+    /*
     $_POST['unit_1']=(int)$_POST['unit_1'];
     $_POST['unit_2']=(int)$_POST['unit_2'];
     $_POST['unit_3']=(int)$_POST['unit_3'];
@@ -288,17 +299,38 @@ if(!empty($_POST['trade'])) {
     if ($_POST['unit_4']<0) $_POST['unit_4']=0;
     if ($_POST['unit_5']<0) $_POST['unit_5']=0;
     if ($_POST['unit_6']<0) $_POST['unit_6']=0;
+     */
 
+    $tradeunit['unit_1'] = filter_input(INPUT_POST, 'unit_1', FILTER_SANITIZE_NUMBER_INT);
+    $tradeunit['unit_2'] = filter_input(INPUT_POST, 'unit_2', FILTER_SANITIZE_NUMBER_INT);
+    $tradeunit['unit_3'] = filter_input(INPUT_POST, 'unit_3', FILTER_SANITIZE_NUMBER_INT);
+    $tradeunit['unit_4'] = filter_input(INPUT_POST, 'unit_4', FILTER_SANITIZE_NUMBER_INT);
+    $tradeunit['unit_5'] = filter_input(INPUT_POST, 'unit_5', FILTER_SANITIZE_NUMBER_INT);    
+    $tradeunit['unit_6'] = filter_input(INPUT_POST, 'unit_6', FILTER_SANITIZE_NUMBER_INT);    
+    
+    if($tradeunit['unit_1']<0) $tradeunit['unit_1']=0;
+    if($tradeunit['unit_2']<0) $tradeunit['unit_2']=0;
+    if($tradeunit['unit_3']<0) $tradeunit['unit_3']=0;
+    if($tradeunit['unit_4']<0) $tradeunit['unit_4']=0;
+    if($tradeunit['unit_5']<0) $tradeunit['unit_5']=0;    
+    if($tradeunit['unit_6']<0) $tradeunit['unit_6']=0;    
+    
+    /*
     if ($_POST['res_1']==0 && $_POST['res_2']==0 && $_POST['res_3']==0 &&
         $_POST['unit_1']==0 && $_POST['unit_2']==0 && $_POST['unit_3']==0 &&
         $_POST['unit_4']==0 && $_POST['unit_5']==0 && $_POST['unit_6']==0) {
         redirect('a=tactical_cartography&planet_id='.encode_planet_id($_GET['planet_id']));
     }
+     */
 
+    if ($traderes1 == 0 && $traderes2 == 0 && $traderes3 == 0 &&
+        $tradeunit['unit_1'] == 0 && $tradeunit['unit_2'] == 0 && $tradeunit['unit_3'] == 0 &&
+        $tradeunit['unit_4'] == 0 && $tradeunit['unit_5'] == 0 && $tradeunit['unit_6'] == 0) {
+        redirect('a=tactical_cartography&planet_id='.encode_planet_id($dpid));
+    }
 
-
-    if ($game->planet['planet_id']==$_GET['planet_id'])
-        redirect('a=tactical_cartography&planet_id='.encode_planet_id($_GET['planet_id']));
+    if ($game->planet['planet_id']==$dpid)
+        redirect('a=tactical_cartography&planet_id='.encode_planet_id($dpid));
 
     $sql = 'SELECT p.planet_id, p.planet_name, p.system_id, p.sector_id, p.planet_type, p.planet_owner, p.planet_points, p.planet_distance_id,
                    s.system_global_x,s.system_global_y,
@@ -306,7 +338,7 @@ if(!empty($_POST['trade'])) {
                    u.user_race, u.user_vacation_end, u.user_vacation_end
             FROM (planets p, starsystems s)
             LEFT JOIN (user u) ON u.user_id=p.planet_owner
-            WHERE p.planet_id = '.$_GET['planet_id'].' AND
+            WHERE p.planet_id = '.$dpid.' AND
                   s.system_id = p.system_id';
 
     if(($dest = $db->queryrow($sql)) === false) {
@@ -316,6 +348,7 @@ if(!empty($_POST['trade'])) {
     if($dest['user_vacation_start']<=$ACTUAL_TICK && $dest['user_vacation_end']>=$ACTUAL_TICK) {
        message(NOTICE, constant($game->sprache("TEXT23")));
     }
+    
     if(empty($dest['planet_id'])) {
         message(NOTICE, constant($game->sprache("TEXT24")));
     }
@@ -347,14 +380,15 @@ if(!empty($_POST['trade'])) {
 
 
 
-    $gebuehr[0]=$_POST['res_1'];
-    $gebuehr[1]=$_POST['res_2'];
-    $gebuehr[2]=$_POST['res_3'];
+    $gebuehr[0]=$traderes1;
+    $gebuehr[1]=$traderes2;
+    $gebuehr[2]=$traderes3;
+    
     for ($x=0; $x<6; $x++)
     {
-        $gebuehr[0]+=UnitPrice($x,0,$dest['user_race'])*$_POST['unit_'.($x+1)];
-        $gebuehr[1]+=UnitPrice($x,1,$dest['user_race'])*$_POST['unit_'.($x+1)];
-        $gebuehr[2]+=UnitPrice($x,2,$dest['user_race'])*$_POST['unit_'.($x+1)];
+        $gebuehr[0]+=UnitPrice($x,0,$dest['user_race'])*$tradeunit['unit_'.($x+1)];
+        $gebuehr[1]+=UnitPrice($x,1,$dest['user_race'])*$tradeunit['unit_'.($x+1)];
+        $gebuehr[2]+=UnitPrice($x,2,$dest['user_race'])*$tradeunit['unit_'.($x+1)];
     }
 
     $gebuehr[0]=ceil($gebuehr[0]*(0.18-0.01*($game->planet['building_11'])));
@@ -362,34 +396,34 @@ if(!empty($_POST['trade'])) {
     $gebuehr[2]=ceil($gebuehr[2]*(0.18-0.01*($game->planet['building_11'])));
 
 
-    if ($game->planet['resource_1']<$_POST['res_1']+$gebuehr[0]) {redirect('a=tactical_cartography&planet_id='.encode_planet_id($_GET['planet_id']));exit;}
-    if ($game->planet['resource_2']<$_POST['res_2']+$gebuehr[1]) {redirect('a=tactical_cartography&planet_id='.encode_planet_id($_GET['planet_id']));exit;}
-    if ($game->planet['resource_3']<$_POST['res_3']+$gebuehr[2]) {redirect('a=tactical_cartography&planet_id='.encode_planet_id($_GET['planet_id']));exit;}
-    if ($game->planet['unit_1']<$_POST['unit_1'])  {redirect('a=tactical_cartography&planet_id='.encode_planet_id($_GET['planet_id']));exit;}
-    if ($game->planet['unit_2']<$_POST['unit_2'])  {redirect('a=tactical_cartography&planet_id='.encode_planet_id($_GET['planet_id']));exit;}
-    if ($game->planet['unit_3']<$_POST['unit_3'])  {redirect('a=tactical_cartography&planet_id='.encode_planet_id($_GET['planet_id']));exit;}
-    if ($game->planet['unit_4']<$_POST['unit_4'])  {redirect('a=tactical_cartography&planet_id='.encode_planet_id($_GET['planet_id']));exit;}
-    if ($game->planet['unit_5']<$_POST['unit_5'])  {redirect('a=tactical_cartography&planet_id='.encode_planet_id($_GET['planet_id']));exit;}
-    if ($game->planet['unit_6']<$_POST['unit_6'])  {redirect('a=tactical_cartography&planet_id='.encode_planet_id($_GET['planet_id']));exit;}
+    if ($game->planet['resource_1']<$traderes1+$gebuehr[0]) {redirect('a=tactical_cartography&planet_id='.encode_planet_id($dpid));exit;}
+    if ($game->planet['resource_2']<$traderes2+$gebuehr[1]) {redirect('a=tactical_cartography&planet_id='.encode_planet_id($dpid));exit;}
+    if ($game->planet['resource_3']<$traderes3+$gebuehr[2]) {redirect('a=tactical_cartography&planet_id='.encode_planet_id($dpid));exit;}
+    if ($game->planet['unit_1']<$tradeunit['unit_1'])  {redirect('a=tactical_cartography&planet_id='.encode_planet_id($dpid));exit;}
+    if ($game->planet['unit_2']<$tradeunit['unit_2'])  {redirect('a=tactical_cartography&planet_id='.encode_planet_id($dpid));exit;}
+    if ($game->planet['unit_3']<$tradeunit['unit_3'])  {redirect('a=tactical_cartography&planet_id='.encode_planet_id($dpid));exit;}
+    if ($game->planet['unit_4']<$tradeunit['unit_4'])  {redirect('a=tactical_cartography&planet_id='.encode_planet_id($dpid));exit;}
+    if ($game->planet['unit_5']<$tradeunit['unit_5'])  {redirect('a=tactical_cartography&planet_id='.encode_planet_id($dpid));exit;}
+    if ($game->planet['unit_6']<$tradeunit['unit_6'])  {redirect('a=tactical_cartography&planet_id='.encode_planet_id($dpid));exit;}
 
-    $sql = 'UPDATE planets SET resource_1=resource_1-'.($_POST['res_1']+$gebuehr[0]).',
-                               resource_2=resource_2-'.($_POST['res_2']+$gebuehr[1]).',
-                               resource_3=resource_3-'.($_POST['res_3']+$gebuehr[2]).',
-                               unit_1=unit_1-'.($_POST['unit_1']).',
-                               unit_2=unit_2-'.($_POST['unit_2']).',
-                               unit_3=unit_3-'.($_POST['unit_3']).',
-                               unit_4=unit_4-'.($_POST['unit_4']).',
-                               unit_5=unit_5-'.($_POST['unit_5']).',
-                               unit_6=unit_6-'.($_POST['unit_6']).'
+    $sql = 'UPDATE planets SET resource_1=resource_1-'.($traderes1+$gebuehr[0]).',
+                               resource_2=resource_2-'.($traderes2+$gebuehr[1]).',
+                               resource_3=resource_3-'.($traderes3+$gebuehr[2]).',
+                               unit_1=unit_1-'.($tradeunit['unit_1']).',
+                               unit_2=unit_2-'.($tradeunit['unit_2']).',
+                               unit_3=unit_3-'.($tradeunit['unit_3']).',
+                               unit_4=unit_4-'.($tradeunit['unit_4']).',
+                               unit_5=unit_5-'.($tradeunit['unit_5']).',
+                               unit_6=unit_6-'.($tradeunit['unit_6']).'
             WHERE planet_id= "'.$game->planet['planet_id'].'"';
     if (($db->query($sql))==true) {
         $sql = 'INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,unit_1,unit_2,unit_3,unit_4,unit_5,unit_6,arrival_time)
-                VALUES ("'.$dest['planet_id'].'","'.$_POST['res_1'].'","'.$_POST['res_2'].'","'.$_POST['res_3'].'","'.$_POST['unit_1'].'","'.$_POST['unit_2'].'","'.$_POST['unit_3'].'","'.$_POST['unit_4'].'","'.$_POST['unit_5'].'","'.$_POST['unit_6'].'","'.($ACTUAL_TICK+$distance).'")';
+                VALUES ("'.$dest['planet_id'].'","'.$traderes1.'","'.$traderes2.'","'.$traderes3.'","'.$tradeunit['unit_1'].'","'.$tradeunit['unit_2'].'","'.$tradeunit['unit_3'].'","'.$tradeunit['unit_4'].'","'.$tradeunit['unit_5'].'","'.$tradeunit['unit_6'].'","'.($ACTUAL_TICK+$distance).'")';
         if (($db->query($sql))==true)
         {
             // Fake Fleets starts:
-            $res=$_POST['res_1']+$_POST['res_1']+$_POST['res_3'];
-            $unit=$_POST['unit_1']+$_POST['unit_2']+$_POST['unit_3']+$_POST['unit_4']+$_POST['unit_5']+$_POST['unit_6'];
+            $res=$traderes1+$traderes2+$traderes3;
+            $unit=$tradeunit['unit_1']+$tradeunit['unit_2']+$tradeunit['unit_3']+$tradeunit['unit_4']+$tradeunit['unit_5']+$tradeunit['unit_6'];
 
             $shipsr=ceil($res/MAX_TRANSPORT_RESOURCES);
             $shipsu=ceil($unit/MAX_TRANSPORT_UNITS);
@@ -400,7 +434,7 @@ if(!empty($_POST['trade'])) {
         }
     }
 
-    redirect('a=tactical_cartography&planet_id='.encode_planet_id($_GET['planet_id']));
+    redirect('a=tactical_cartography&planet_id='.encode_planet_id($dpid));
 }
 elseif(!empty($_POST['jump'])) {
     $type = (int)$_POST['jump_type'];
@@ -721,7 +755,13 @@ elseif(isset($_GET['memo_setup'])) {
     $n_cmemo = $db->num_rows($q_cmemo);
 
     $game->out('
-<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<a href="'.parse_link('a=tactical_cartography').'">'.constant($game->sprache("TEXT1")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_known').'">'.constant($game->sprache("TEXT4a")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]<br><br>
+<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<b>'.constant($game->sprache("TEXT1")).'</b>]&nbsp;&nbsp;
+            [<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;
+            [<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;
+            [<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;
+            [<a href="'.parse_link('a=tactical_known').'">'.constant($game->sprache("TEXT4a")).'</a>]&nbsp;&nbsp;
+            [<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]&nbsp;&nbsp;                
+            [<a href="'.parse_link('a=tactical_search').'">'.constant($game->sprache("TEXT5a")).'</a>]<br><br>
 <table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td>
@@ -774,16 +814,19 @@ elseif(!empty($_GET['planet_id'])) {
     }
     else {
         $sql = 'SELECT p.planet_id, p.planet_name, p.building_11, p.system_id, p.sector_id, p.planet_type,
-                       p.planet_owner, p.planet_points, p.planet_distance_id,
+                       p.planet_owner, p.best_mood, p.best_mood_user, p.planet_points, p.planet_distance_id,
+                       u.user_name, u.user_alliance, a.alliance_tag,
                        s.system_global_x,s.system_global_y,s.system_name, s.system_x, s.system_y
                 FROM (planets p, starsystems s)
+                LEFT JOIN user u ON (p.best_mood_user = u.user_id)
+                LEFT JOIN alliance a ON (u.user_alliance = a.alliance_id)                
                 WHERE p.planet_id = '.$planet_id.' AND
                       s.system_id = p.system_id';
 
         if(($planet = $db->queryrow($sql)) === false) {
             message(DATABASE_ERROR, 'Could not query planet data');
         }
-
+        
         if(empty($planet['planet_id'])) {
             message(NOTICE, constant($game->sprache("TEXT24")));
         }
@@ -958,46 +1001,40 @@ elseif(!empty($_GET['planet_id'])) {
 
 // Tactical / political information on the planet (settlers system)
 
-    $sql = 'SELECT log_code, timestamp, mood_modifier FROM settlers_relations
+    global $SETL_EVENTS;
+    
+    $sql = 'SELECT event_code, user_id, count_ok, count_ko, count_crit_ok, count_crit_ko FROM settlers_events
                 WHERE `planet_id` = '.$planet['planet_id'].'
-                AND user_id = '.$game->player['user_id'].'
-                AND log_code in (1, 2, 5, 10, 11, 12, 30, 31)
+                AND event_status = 1
                 ORDER BY timestamp ASC';
     $q_setl = $db->query($sql);
     $rows = $db->num_rows($q_setl);
     if($rows > 0)
     {
-        $tactical_text .= '<table width=250 border=0 cellpadding= 0 cellspacing=0>';
+        $tactical_text .= '<table width=320 border=0 cellpadding= 0 cellspacing=0>';
         $q_d_setl = $db->fetchrowset($q_setl);
         foreach($q_d_setl as $d_setl)
         {
-            switch($d_setl['log_code'])
-            {
-            case 1:
-                $tactical_text .= '<tr align=left><td>Primo Contatto</td><td>'.date("d.m.y H:i", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
-            break;
-            case 2:
-                $tactical_text .= '<tr align=left><td>Trattato Diplomatico</td><td>'.date("d.m.y H:i", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
-            break;
-            case 5:
-                $tactical_text .= '<tr align=left><td>Supporto Tecnologico: Difesa</td><td>'.date("d.m.y H:i", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
-            break;
-            case 10:
-                $tactical_text .= '<tr align=left><td>Attacco Orbitale</td><td>'.date("d.m.y H:i", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
-            break;
-            case 11:
-                $tactical_text .= '<tr align=left><td>Bombardamento Planetario</td><td>'.date("d.m.y H:i", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
-            break;
-            case 12:
-                $tactical_text .= '<tr align=left><td>Conquista di una Colonia</td><td>'.date("d.m.y H:i", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
-            break;
-            case 30:
-                $tactical_text .= '<tr align=left><td>Fondatore</td><td>'.date("d.m.y H:i", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
-            break;
-            case 31:
-                $tactical_text .= '<tr align=left><td>Ex-Governatore</td><td>'.date("d.m.y H:i", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
-            break;
-            }
+            if($SETL_EVENTS[$d_setl['event_code']][1] && ($game->player['user_id'] != $d_setl['user_id'])) continue;
+            $tactical_text .= '<tr align=left><td><i>'.$SETL_EVENTS[$d_setl['event_code']][0].'</i></td>';
+            $tactical_text .= ($game->player['user_id'] == $d_setl['user_id'] ? '<td><i>('.$d_setl['count_crit_ok'].' / '.$d_setl['count_ok'].' / '.$d_setl['count_ko'].' / '.$d_setl['count_crit_ko'].')</i></td></tr>' : '</tr>');
+        }
+        $tactical_text .= '</table>';
+    }
+    
+    $sql = 'SELECT log_code, timestamp, mood_modifier FROM settlers_relations
+                WHERE `planet_id` = '.$planet['planet_id'].'
+                AND user_id = '.$game->player['user_id'].'
+                ORDER BY timestamp ASC';
+    $q_setl = $db->query($sql);
+    $rows = $db->num_rows($q_setl);
+    if($rows > 0)
+    {
+        $tactical_text .= '<table width=320 border=0 cellpadding= 0 cellspacing=0>';
+        $q_d_setl = $db->fetchrowset($q_setl);
+        foreach($q_d_setl as $d_setl)
+        {
+            $tactical_text .= '<tr align=left><td>'.get_diplo_str($d_setl['log_code']).'</td><td>'.date("d.m.y", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
         }
         $tactical_text .= '</table>';
     }
@@ -1044,7 +1081,13 @@ form {
 //-->
 </style>
 
-<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<b>'.constant($game->sprache("TEXT1")).'</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_known').'">'.constant($game->sprache("TEXT4a")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]<br><br>
+<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<b>'.constant($game->sprache("TEXT1")).'</b>]&nbsp;&nbsp;
+            [<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;
+            [<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;
+            [<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;
+            [<a href="'.parse_link('a=tactical_known').'">'.constant($game->sprache("TEXT4a")).'</a>]&nbsp;&nbsp;
+            [<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]&nbsp;&nbsp;                
+            [<a href="'.parse_link('a=tactical_search').'">'.constant($game->sprache("TEXT5a")).'</a>]<br><br>
 
 <table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
 <tr>
@@ -1115,8 +1158,24 @@ form {
               </tr>
         ');
     }
-    elseif(($game->player['user_alliance'] == $planet_owner['alliance_id']) || $planet_is_known)  {
-        $game->out('
+    elseif(($game->player['user_alliance'] == $planet_owner['alliance_id']) || $planet_is_known)
+    {
+        if($planet['planet_owner'] == INDEPENDENT_USERID)
+        {
+             $game->out('
+              <tr>
+                <td valign="top">'.constant($game->sprache("TEXT69")).'</td>
+                <td>&nbsp;<a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['planet_owner']).'">'.$planet_owner['user_name'].'</a></td>
+              </tr>
+              <tr>
+                <td valign="top">'.constant($game->sprache("TEXT70")).'</td>
+                <td>&nbsp;'.( (!empty($planet['best_mood_user'])) ? '<a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['best_mood_user']).'">'.$planet['user_name'].'</a> ('.$planet['best_mood'].')</td>' : constant($game->sprache("TEXT71")) ).'</td>
+              </tr>
+            ');
+        }
+        else
+        {
+            $game->out('
               <tr>
                 <td valign="top">'.constant($game->sprache("TEXT69")).'</td>
                 <td>&nbsp;<a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['planet_owner']).'">'.$planet_owner['user_name'].'</a> ('.$planet_owner['user_points'].')</td>
@@ -1128,7 +1187,8 @@ form {
                 <td valign="top">'.constant($game->sprache("TEXT68")).'</td>
                 <td>&nbsp;<u>'.$planet['planet_points'].'</u>&nbsp;/&nbsp;<u>'.( ($planet_id == $planet_owner['user_capital']) ? $MAX_POINTS[1] : $MAX_POINTS[0] ).'</u></td>
               </tr>
-        ');
+            ');
+        }
     }
     
     $game->out('
@@ -1422,8 +1482,7 @@ form {
     display_cartography_jump();
 
     if($game->planet['planet_id'] != $planet_id)
-    if($planet['planet_owner'] != 0)
-    display_ferengi_transfer($planet['planet_id'],$planet['system_id'],$planet['system_global_x'],$planet['system_global_y'],$planet['building_11']);
+    if($planet_is_known && $own_planet) display_ferengi_transfer($planet['planet_id'],$planet['system_id'],$planet['system_global_x'],$planet['system_global_y'],$planet['building_11']);
 
 }
 elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty($_GET['quadrant_id'])) || (isset($_GET['galaxy'])) ) {
@@ -1527,7 +1586,13 @@ elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty(
     }
 
     $game->out('
-<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<b>'.constant($game->sprache("TEXT1")).'</b>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_known').'">'.constant($game->sprache("TEXT4a")).'</a>]&nbsp;&nbsp;[<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]<br><br>
+<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>[<b>'.constant($game->sprache("TEXT1")).'</b>]&nbsp;&nbsp;
+            [<a href="'.parse_link('a=tactical_moves').'">'.constant($game->sprache("TEXT2")).'</a>]&nbsp;&nbsp;
+            [<a href="'.parse_link('a=tactical_player').'">'.constant($game->sprache("TEXT3")).'</a>]&nbsp;&nbsp;
+            [<a href="'.parse_link('a=tactical_kolo').'">'.constant($game->sprache("TEXT4")).'</a>]&nbsp;&nbsp;
+            [<a href="'.parse_link('a=tactical_known').'">'.constant($game->sprache("TEXT4a")).'</a>]&nbsp;&nbsp;
+            [<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]&nbsp;&nbsp;                
+            [<a href="'.parse_link('a=tactical_search').'">'.constant($game->sprache("TEXT5a")).'</a>]<br><br>
 
 <table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>

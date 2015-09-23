@@ -72,6 +72,9 @@ define ("GER_TEXT28", 'Raumhafen');
 
 define ("GER_TEXT29", 'Minen');
 
+define ("GER_TEXT30", 'Colony Facts');
+
+
 //INGLESE
 define ("ENG_TEXT0",'Settlers Colonies:');
 
@@ -124,6 +127,8 @@ define ("ENG_TEXT27", 'Academies');
 define ("ENG_TEXT28", 'Shipyards');
 
 define ("ENG_TEXT29", 'Mines');
+
+define ("ENG_TEXT30", 'Colony Facts');
 
 
 // ITALIANO
@@ -178,5 +183,7 @@ define ("ITA_TEXT27", 'Accademia');
 define ("ITA_TEXT28", 'Cantiere');
 
 define ("ITA_TEXT29", 'Miniera');
+
+define ("ITA_TEXT30", 'Dettaglio Colonia');
 
 ?>

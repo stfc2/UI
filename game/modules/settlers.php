@@ -78,11 +78,19 @@ if(isset($operator3)) {
      $selection = 1;
 }
 
-$sub_action = filter_input(INPUT_POST, 'step', FILTER_SANITIZE_STRING);
+$detail_id = decode_planet_id(filter_input(INPUT_GET, 'detail', FILTER_SANITIZE_STRING));
 
-if(!isset($sub_action) || empty($sub_action))
-{
-    $sub_action = constant($game->sprache("TEXT1"));
+if(isset($detail_id) && !empty($detail_id)) {
+    $sub_action = constant($game->sprache("TEXT30"));
+}
+
+if(!isset($sub_action) || empty($sub_action)){
+    $sub_action = filter_input(INPUT_POST, 'step', FILTER_SANITIZE_STRING);
+
+    if(!isset($sub_action) || empty($sub_action))
+    {
+        $sub_action = constant($game->sprache("TEXT1"));
+    }
 }
 
 $game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>');
@@ -316,10 +324,10 @@ elseif($sub_action == constant($game->sprache("TEXT1")))
             $selection_string = '';
             break;
         case 2:
-            $selection_string = ' AND p.planet_type IN("a", "b", "c", "d", "m", "o", "p") ';
+            $selection_string = ' AND p.planet_type IN("a", "b", "c", "d", "g", "h", "m", "n", "o", "p") ';
             break;
         case 3:
-            $selection_string = ' AND p.planet_type IN("e", "f", "g", "h", "k", "l", "n") ';
+            $selection_string = ' AND p.planet_type IN("e", "f", "k", "l") ';
             break;
         case 4:
             $selection_string = ' AND p.planet_type IN("i", "j", "s", "t", "x", "y") ';
@@ -365,6 +373,34 @@ elseif($sub_action == constant($game->sprache("TEXT1")))
     $game->out('
   </table></td></tr></form></table>
     ');
+}
+elseif ($sub_action == constant($game->sprache("TEXT30"))) {
+    // New Settlers Colony Detail panel
+    // Step 1: Loading planet
+    $sql = 'SELECT planet_name
+            FROM planets 
+            WHERE planet_id = '.$detail_id.' AND planet_owner = '.INDEPENDENT_USERID;
+    $q1_detail = $db->queryrow($sql);
+    // Step 2: Loading Settlers Relations
+    $sql = 'SELECT * FROM settlers_relations WHERE planet_id = '.$detail_id.' AND user_id = '.$game->player['user_id'].' ORDER BY timestamp';
+    $q2_detail = $db->queryrowset($sql);
+    // Step 3: Loading Colony Events
+    $sql = 'SELECT * FROM settlers_events WHERE planet_id = '.$detail_id;
+    $q3_detail = $db->queryrowset($sql);
+    $game->out('
+    <br><br><br>
+    <center><span class="caption">'.(constant($game->sprache("TEXT30"))).' &#171;'.$q1_detail['planet_name'].'&#187;</span><br><br>
+    <table class="style_outer" width="90%" align="center" border="0" cellpadding="2" cellspacing="2">');
+    foreach($q3_detail as $q3_item)
+    {
+        if($SETL_EVENTS[$q3_item['event_code']][1] && ($game->player['user_id'] != $q3_item['user_id'])) {continue;}
+        $game->out('<tr align=left><td><i>'.$SETL_EVENTS[$q3_item['event_code']][0].'</i></td>');
+        $game->out(($game->player['user_id'] == $q3_item['user_id'] ? '<td><i>('.$q3_item['count_crit_ok'].' / '.$q3_item['count_ok'].' / '.$q3_item['count_ko'].' / '.$q3_item['count_crit_ko'].')</i></td></tr>' : '</tr>'));
+        }    
+    foreach($q2_detail AS $q2_item) {
+        $game->out('<tr align=left><td>'.get_diplo_str((int)$q2_item['log_code']).'</td><td>'.date("d.m.y", $q2_item['timestamp']).'</td><td>'.$q2_item['mood_modifier'].'</td></tr>');
+    }
+    $game->out('</table>');
 }
 
 ?>

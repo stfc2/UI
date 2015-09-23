@@ -203,6 +203,7 @@ if($dest == $game->planet['planet_id']) {
     $dest_planet['user_vacation_end'] = $game->player['user_vacation_end'];
     $dest_planet['system_is_known'] = true;
     $dest_planet['system_is_allowed'] = true;
+    $dest_planet['action_is_allowed'] = true;
 
     // Player data can not be fetched, because they are not displayed / used
 }
@@ -238,8 +239,10 @@ else {
             AND user_id = '.$game->player['user_id'];
     $_temp = $db->queryrow($sql);
     if(isset($_temp['timestamp']) && !empty($_temp['timestamp'])) $dest_planet['system_is_known'] = true;
-
+  
     $dest_planet['system_is_allowed'] = $game->is_system_allowed($dest_planet['system_id']);
+    
+    $dest_planet['action_is_allowed'] = $game->is_action_allowed($dest_planet['planet_id']);
 
     if(!$dest_planet['system_is_allowed']) {
         message(NOTICE, constant($game->sprache("TEXT69")));
@@ -423,6 +426,11 @@ switch($step) {
             break;
 
             case 'attack_normal_exec':
+                if(!$dest_planet['action_is_allowed'])
+                { 
+                    message(NOTICE, constant($game->sprache("TEXT70")));
+                }
+                
                 if($own_planet || $free_planet || $atkptc_present) {
                     message(NOTICE, constant($game->sprache("TEXT21")));
                 }
@@ -434,6 +442,11 @@ switch($step) {
             break;
 
             case 'attack_comeback_exec':
+                if(!$dest_planet['action_is_allowed'])
+                { 
+                    message(NOTICE, constant($game->sprache("TEXT70")));
+                }
+                
                 if($own_planet || $free_planet || $atkptc_present) {
                     message(NOTICE, constant($game->sprache("TEXT21")));
                 }
@@ -453,6 +466,11 @@ switch($step) {
             break;
 
             case 'transport_exec':
+                if(!$dest_planet['action_is_allowed'])
+                { 
+                    message(NOTICE, constant($game->sprache("TEXT70")));
+                }
+                
                 if($own_planet || $free_planet || !$in_transporter) {
                     message(NOTICE, constant($game->sprache("TEXT21")));
                 }
@@ -465,6 +483,11 @@ switch($step) {
             break;
 
             case 'spy_exec':
+                if(!$dest_planet['action_is_allowed'])
+                { 
+                    message(NOTICE, constant($game->sprache("TEXT70")));
+                }
+                
                 if(!$in_scout || $in_other_torso || $in_transporter || $in_colo) {
                     message(NOTICE, constant($game->sprache("TEXT25")));
                 }
@@ -473,6 +496,11 @@ switch($step) {
             break;
 
             case 'survey_exec':
+                if(!$dest_planet['action_is_allowed'])
+                { 
+                    message(NOTICE, constant($game->sprache("TEXT70")));
+                }
+                
                 if($atkptc_present) {
                     message(NOTICE, constant($game->sprache("TEXT21")));
                 }
@@ -485,6 +513,11 @@ switch($step) {
             break;
 
             case 'colo_exec':
+                if(!$dest_planet['action_is_allowed'])
+                { 
+                    message(NOTICE, constant($game->sprache("TEXT70")));
+                }
+                
                 if(!$in_colo || !$free_planet) {
                     message(NOTICE, constant($game->sprache("TEXT21")));
                 }
