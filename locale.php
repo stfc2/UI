@@ -337,6 +337,7 @@ $loc_strings = array(
          been sent to your email address.</p><p>To view details about the
          transaction log in to your <a href="http://www.paypal.com">Paypal</a>
          account.</p>'
+    ),
 
     // German strings
     'de' => array(
