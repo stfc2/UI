@@ -226,6 +226,18 @@ define ("GER_TEXT103", 'Ausblenden');
 
 define ("GER_TEXT104", 'Ihre Schiffe sind nicht in diesen gesch&uuml;tzten System erlaubt.');
 
+define ("GER_TEXT105", 'Mission');
+
+define ("GER_TEXT106", 'Sensors reading');
+
+define ("GER_TEXT107", 'Out of range');
+
+define ("GER_TEXT108", 'No ships detected');
+
+define ("GER_TEXT109", '1 ship');
+
+define ("GER_TEXT110", 'Ships');
+
 
 //English
 define ("ENG_TEXT0", 'Fleets:');
@@ -431,6 +443,18 @@ define ("ENG_TEXT102", 'Show');
 define ("ENG_TEXT103", 'Hide');
 
 define ("ENG_TEXT104", 'Your ships are not allowed into this protected system.');
+
+define ("ENG_TEXT105", 'Mission');
+
+define ("ENG_TEXT106", 'Sensors reading');
+
+define ("ENG_TEXT107", 'Out of range');
+
+define ("ENG_TEXT108", 'No ships detected');
+
+define ("ENG_TEXT109", '1 ship');
+
+define ("ENG_TEXT110", 'Ships');
 
 
 //Italian
@@ -638,5 +662,15 @@ define ("ITA_TEXT103", 'Nascondi');
 
 define ("ITA_TEXT104", 'Le tue navi non posso accedere a questo sistema protetto.');
 
+define ("ITA_TEXT105", 'Missione');
 
+define ("ITA_TEXT106", 'Lettura sensori');
+
+define ("ITA_TEXT107", 'Fuori portata');
+
+define ("ITA_TEXT108", 'Nessun rilevamento');
+
+define ("ITA_TEXT109", '1 Nave');
+
+define ("ITA_TEXT110", 'Navi');
 ?>
