@@ -356,7 +356,7 @@ define ("GER_DIPLO20", 'Anf&uuml;hrer');
 
 define ("GER_DIPLO21", 'Schirmherr');
 
-define ("GER_DIPLO22", 'verehrt');
+define ("GER_DIPLO22", 'Borg Fighter');
 
 define ("GER_DIPLO23", 'Pl&uuml;nderer');
 
@@ -719,7 +719,7 @@ define ("ENG_DIPLO20", 'Leader');
 
 define ("ENG_DIPLO21", 'Patron');
 
-define ("ENG_DIPLO22", 'Revered');
+define ("ENG_DIPLO22", 'Borg Fighter');
 
 define ("ENG_DIPLO23", 'Predator');
 
@@ -1082,7 +1082,7 @@ define ("ITA_DIPLO20", 'Leader');
 
 define ("ITA_DIPLO21", 'Mecenate');
 
-define ("ITA_DIPLO22", 'Venerato');
+define ("ITA_DIPLO22", 'Borg Fighter');
 
 define ("ITA_DIPLO23", 'Predatore');
 
