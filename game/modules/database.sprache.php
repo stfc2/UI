@@ -152,32 +152,45 @@ define ("GER_TEXT63", 'Latkostenfaktor f&uuml;r Forschungen');
 
 define ("GER_TEXT64", 'Exportierbar Technologien');
 
-define ("GER_TEXT65", 'Ja');
+define ("GER_TEXT65", 'Create independent colony');
 
-define ("GER_TEXT66", 'Nein');
+define ("GER_TEXT66", 'Colonization threshold');
 
-define ("GER_TEXT67", 'Die angegebene Seite "Leitfaden" ist nicht vorhanden.');
+define ("GER_TEXT100", 'Ja');
 
-define ("GER_TEXT68", 'Vorige Seite');
+define ("GER_TEXT101", 'Nein');
 
-define ("GER_TEXT69", 'Index');
+define ("GER_TEXT102", 'Die angegebene Seite Leitfaden ist nicht vorhanden.');
 
-define ("GER_TEXT70", 'N&auml;chste Seite');
+define ("GER_TEXT103", 'Vorige Seite');
 
-define ("GER_TEXT71", 'Die Rassenwerte von STFC');
+define ("GER_TEXT104", 'Index');
 
-define ("GER_TEXT72", 'Umwelt');
+define ("GER_TEXT105", 'N&auml;chste Seite');
 
-define ("GER_TEXT73", 'Medizinisch');
+define ("GER_TEXT106", 'Die Rassenwerte von STFC');
 
-define ("GER_TEXT74", 'Verteidigung');
+define ("GER_TEXT107", 'Umwelt');
 
-define ("GER_TEXT75", 'Automatisierung');
+define ("GER_TEXT108", 'Medizinisch');
 
-define ("GER_TEXT76", 'Bergbau');
+define ("GER_TEXT109", 'Verteidigung');
 
-define ("GER_TEXT77", 'Keiner');
+define ("GER_TEXT110", 'Automatisierung');
 
+define ("GER_TEXT111", 'Bergbau');
+
+define ("GER_TEXT112", 'Keiner');
+
+define ("GER_TEXT113", 'Shipyard');
+
+define ("GER_TEXT114", 'Class 1');
+
+define ("GER_TEXT115", 'Class 2');
+
+define ("GER_TEXT116", 'Class 3');
+
+define ("GER_TEXT117", 'Class 4');
 
 
 //English
@@ -311,32 +324,45 @@ define ("ENG_TEXT63", 'Dilithium costs for research');
 
 define ("ENG_TEXT64", 'Exportable technologies');
 
-define ("ENG_TEXT65", 'Yes');
+define ("ENG_TEXT65", 'Create independent colony');
 
-define ("ENG_TEXT66", 'No');
+define ("ENG_TEXT66", 'Colonization threshold');
 
-define ("ENG_TEXT67", 'The specified page of the guide doesn&#146;t exist.');
+define ("ENG_TEXT100", 'Yes');
 
-define ("ENG_TEXT68", 'Previous page');
+define ("ENG_TEXT101", 'No');
 
-define ("ENG_TEXT69", 'Index');
+define ("ENG_TEXT102", 'The specified page of the guide doesn&#146;t exist.');
 
-define ("ENG_TEXT70", 'Next page');
+define ("ENG_TEXT103", 'Previous page');
 
-define ("ENG_TEXT71", 'The breed values of STFC');
+define ("ENG_TEXT104", 'Index');
 
-define ("ITA_TEXT72", 'Environment');
+define ("ENG_TEXT105", 'Next page');
 
-define ("ITA_TEXT73", 'Medical');
+define ("ENG_TEXT106", 'The breed values of STFC');
 
-define ("ITA_TEXT74", 'Defence');
+define ("ENG_TEXT107", 'Environment');
 
-define ("ITA_TEXT75", 'Automation');
+define ("ENG_TEXT108", 'Medical');
 
-define ("ITA_TEXT76", 'Mining');
+define ("ENG_TEXT109", 'Defence');
 
-define ("ITA_TEXT77", 'None');
+define ("ENG_TEXT110", 'Automation');
 
+define ("ENG_TEXT111", 'Mining');
+
+define ("ENG_TEXT112", 'None');
+
+define ("ENG_TEXT113", 'Shipyard');
+
+define ("ENG_TEXT114", 'Class 1');
+
+define ("ENG_TEXT115", 'Class 2');
+
+define ("ENG_TEXT116", 'Class 3');
+
+define ("ENG_TEXT117", 'Class 4');
 
 //Italian
 
@@ -470,30 +496,44 @@ define ("ITA_TEXT63", 'Costi in dilitio per la ricerca');
 
 define ("ITA_TEXT64", 'Tecnologie esportabili');
 
-define ("ITA_TEXT65", 'Si');
+define ("ITA_TEXT65", 'Fondare colonie indipendenti');
 
-define ("ITA_TEXT66", 'No');
+define ("ITA_TEXT66", 'Limite colonizzazioni');
 
-define ("ITA_TEXT67", 'La pagina specificata della guida non esiste.');
+define ("ITA_TEXT100", 'Si');
 
-define ("ITA_TEXT68", 'Pagina precedente');
+define ("ITA_TEXT101", 'No');
 
-define ("ITA_TEXT69", 'Indice');
+define ("ITA_TEXT102", 'La pagina specificata della guida non esiste.');
 
-define ("ITA_TEXT70", 'Pagina successiva');
+define ("ITA_TEXT103", 'Pagina precedente');
 
-define ("ITA_TEXT71", 'Valori razziali di STFC');
+define ("ITA_TEXT104", 'Indice');
 
-define ("ITA_TEXT72", 'Ambiente');
+define ("ITA_TEXT105", 'Pagina successiva');
 
-define ("ITA_TEXT73", 'Medicale');
+define ("ITA_TEXT106", 'Valori razziali di STFC');
 
-define ("ITA_TEXT74", 'Difesa');
+define ("ITA_TEXT107", 'Ambiente');
 
-define ("ITA_TEXT75", 'Automazione');
+define ("ITA_TEXT108", 'Medicale');
 
-define ("ITA_TEXT76", 'Estrazione');
+define ("ITA_TEXT109", 'Difesa');
 
-define ("ITA_TEXT77", 'Nessuna');
+define ("ITA_TEXT110", 'Automazione');
+
+define ("ITA_TEXT111", 'Estrazione');
+
+define ("ITA_TEXT112", 'Nessuna');
+
+define ("ITA_TEXT113", 'Cantiere');
+
+define ("ITA_TEXT114", 'Classe 1');
+
+define ("ITA_TEXT115", 'Classe 2');
+
+define ("ITA_TEXT116", 'Classe 3');
+
+define ("ITA_TEXT117", 'Classe 4');
 
 ?>
