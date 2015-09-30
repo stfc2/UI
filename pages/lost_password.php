@@ -100,7 +100,7 @@ if (isset($_POST['galaxy']))
         $mail_message .= $locale['mail_message_sig_line1'].NL.$locale['mail_message_sig_line2'].NL.NL;
         $mail_message .= 'Credits: http://www.stfc.it/index.php?a=imprint';
 
-        send_mail("STFC Mailer","admin@stfc.it",$_POST['user_name'],$player['user_email'],$locale['mail_subject_lp'],$mail_message);
+        send_mail("STFC Mailer","'.$config['admin_email'].'",$_POST['user_name'],$player['user_email'],$locale['mail_subject_lp'],$mail_message);
 
         $message = $locale['password_recovered'];
     }

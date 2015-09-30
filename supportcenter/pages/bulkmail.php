@@ -41,7 +41,7 @@ if(isset($_POST['submit'])) {
     {
         $contact = $db->queryrow('SELECT user_email FROM user WHERE user_name="'.htmlspecialchars($_POST['user_name']).'"');
 
-        send_mail("STFC Mailer","admin@stfc.it",$_POST['user_name'],$contact['user_email'],$_POST['title'],$_POST['text']);
+        send_mail("STFC Mailer",$config['admin_email'],$_POST['user_name'],$contact['user_email'],$_POST['title'],$_POST['text']);
 
         log_action('La email con il titolo "'.$_POST['title'].'" &egrave; stata inviata');
 
@@ -55,7 +55,7 @@ if(isset($_POST['submit'])) {
         $emails = 0;
         while ($contact=$db->fetchrow($mes_qry))
         {
-            send_mail("STFC Mailer","admin@stfc.it",$contact['user_name'],$contact['user_email'],$_POST['title'],$_POST['text']);
+            send_mail("STFC Mailer",$config['admin_email'],$contact['user_name'],$contact['user_email'],$_POST['title'],$_POST['text']);
             $emails++;
 
             // Aspetta 10 secondi ogni 50 email

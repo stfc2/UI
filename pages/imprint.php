@@ -51,7 +51,7 @@ $main_html='
           <td colspan=2>&nbsp;</td>
         </tr>
         <tr>
-          <td colspan=2 align="center"><a href="mailto:admin@stfc.it"><u>Contact</u></a></td>
+          <td colspan=2 align="center"><a href="mailto:'.$config['admin_email'].'"><u>Contact</u></a></td>
         </tr>
         <tr>
           <td colspan=2>&nbsp;</td>

@@ -1284,7 +1284,7 @@ il team STFC.
 
 Credits: '.$config['site_url'].'/index.php?a=imprint';
 
-            stgc_mail('STFC2 Mailer', 'admin@stfc.it', $game->player['user_name'], $game->player['user_email'], 'Star Trek: Frontline Combat - '.constant($game->sprache("TEXT54")), $mail_message);
+            stgc_mail('STFC2 Mailer', $config['admin_email'], $game->player['user_name'], $game->player['user_email'], 'Star Trek: Frontline Combat - '.constant($game->sprache("TEXT54")), $mail_message);
             header('Location: '.$config['site_url']);
             exit;
         }
