@@ -166,7 +166,14 @@ if($module == 'planets' || isset($_GET['planet_type']))
         else {
             $high_start = $high_end = '';
         }
-
+        
+        $shipyard_text = array(
+            1 => constant($game->sprache("TEXT114")),
+            2 => constant($game->sprache("TEXT115")),
+            3 => constant($game->sprache("TEXT116")),
+            4 => constant($game->sprache("TEXT117"))
+        );
+        
         $game->out('
 <table width="450" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
   <tr>
@@ -196,6 +203,10 @@ if($module == 'planets' || isset($_GET['planet_type']))
         <td valign="top"><u>'.constant($game->sprache("TEXT4")).'</u></td>
         <td>'.$data[2].'</td>
       </tr>
+      <tr>
+        <td valign="top"><u>'.constant($game->sprache("TEXT113")).'</u></td>
+        <td>'.$shipyard_text[$PLANETS_DATA[$type][14]].'</td>
+      </tr>      
       <tr>
         <td valign="top"><u>'.constant($game->sprache("TEXT5")).'</u></td>
         <td align="justify">'.$data[3].'</td>
@@ -406,7 +417,7 @@ else if($module == 'racedata')
 {
     foreach($RACE_DATA as $i => $race) {
         // Skip Borg, Q, 29th Humans races
-        if($i != 6 && $i != 7 && $i != 12)
+        if($i != 5 && $i != 6 && $i != 7 && $i != 8 && $i != 10 && $i != 12)
         {
             $game->out('[<a href="'.parse_link('a=database&view=racedata&show_race='.$i.'#'.$i.'').'">'.$race[0].'</a>] ');
         }
@@ -415,13 +426,13 @@ else if($module == 'racedata')
     $game->out('
     <table width="400" align="center" border="0" cellpadding="2" cellspacing="2" class="style_outer">
     <tr>
-        <td align="center"><span class="sub_caption">'.constant($game->sprache("TEXT71")).'</span></td>
+        <td align="center"><span class="sub_caption">'.constant($game->sprache("TEXT106")).'</span></td>
     </tr>
     ');
 
     foreach($RACE_DATA as $i => $race) {
         // Skip Borg, Q, 29th Humans races
-        if($i != 6 && $i != 7 && $i != 12)
+        if($i != 5 && $i != 6 && $i != 7 && $i != 8 && $i != 10 && $i != 12)
         {
             $game->out('
     <tr><td>
@@ -448,22 +459,28 @@ else if($module == 'racedata')
                     break;
                     // Playable?
                     case 22:
-                        $data = ($value ? constant($game->sprache("TEXT65")) : constant($game->sprache("TEXT66")));
+                        $data = ($value ? constant($game->sprache("TEXT100")) : constant($game->sprache("TEXT101")));
                     break;
                     case 29:
                         $data = '';
-                        if($value[0]) $data .= constant($game->sprache("TEXT72")).'<br>';
-                        if($value[1]) $data .= constant($game->sprache("TEXT73")).'<br>';
-                        if($value[2]) $data .= constant($game->sprache("TEXT74")).'<br>';
-                        if($value[3]) $data .= constant($game->sprache("TEXT75")).'<br>';
-                        if($value[4]) $data .= constant($game->sprache("TEXT76"));
+                        if($value[0]) $data .= constant($game->sprache("TEXT107")).'<br>';
+                        if($value[1]) $data .= constant($game->sprache("TEXT108")).'<br>';
+                        if($value[2]) $data .= constant($game->sprache("TEXT109")).'<br>';
+                        if($value[3]) $data .= constant($game->sprache("TEXT110")).'<br>';
+                        if($value[4]) $data .= constant($game->sprache("TEXT111"));
                     break;
+                    case 30:
+                        $data = ($value ? constant($game->sprache("TEXT100")) : constant($game->sprache("TEXT101")));
+                    break;
+                    case 31:
+                        $data = $value;
+                        break;
                     default:
                         $data = ($value * 100).' %';
                     break;
                 }
 
-                if(empty($data)) $data = constant($game->sprache("TEXT77"));
+                if(empty($data)) $data = constant($game->sprache("TEXT112"));
                 $game->out('
     <tr>
         <td>'.constant($game->sprache("TEXT".($j+35))).'</td><td width="60" align="center">'.$data.'</td>
@@ -492,7 +509,7 @@ else if($module == 'guide')
 
     $file = 'help/guide/page'.$page.'.php';
     if(!file_exists($file)) {
-        $guide_html =  '<span class="caption">'.constant($game->sprache("TEXT67")).'</span></center><br><br>';
+        $guide_html =  '<span class="caption">'.constant($game->sprache("TEXT102")).'</span></center><br><br>';
     }
     else
         include($file);
@@ -514,17 +531,17 @@ else if($module == 'guide')
     ');
 
     if($page > 0)
-        $game->out('<td width="140">[<a href="'.parse_link('a=database&view=guide&page='.($page-1)).'">'.constant($game->sprache("TEXT68")).'</a>]</td>');
+        $game->out('<td width="140">[<a href="'.parse_link('a=database&view=guide&page='.($page-1)).'">'.constant($game->sprache("TEXT103")).'</a>]</td>');
     else
         $game->out('<td width="140"></td>');
 
     if ($page != 0)
-        $game->out('<td width="140" align="center">[<a href="'.parse_link('a=database&view=guide').'">'.constant($game->sprache("TEXT69")).'</a>]</td>');
+        $game->out('<td width="140" align="center">[<a href="'.parse_link('a=database&view=guide').'">'.constant($game->sprache("TEXT104")).'</a>]</td>');
     else
         $game->out('<td width="140"></td>');
 
     if($page < 12)
-        $game->out('<td width="140" align="right">[<a href="'.parse_link('a=database&view=guide&page='.($page+1)).'">'.constant($game->sprache("TEXT70")).'</a>]</td>');
+        $game->out('<td width="140" align="right">[<a href="'.parse_link('a=database&view=guide&page='.($page+1)).'">'.constant($game->sprache("TEXT105")).'</a>]</td>');
     else
         $game->out('<td width="140"></td>');
 
