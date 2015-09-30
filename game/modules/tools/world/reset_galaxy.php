@@ -179,7 +179,7 @@ $sql = "INSERT INTO `user` (`user_id`, `user_active`, `user_name`, `user_loginna
                             `user_options`, `plz`, `country`, `num_hits`, `num_sitting`, `language`, `tutorial`,
                             `last_alliance_kick`, `user_trade`, `message_basement`, `trade_tick`, `notepad_width`,
                             `notepad_cols`, `skin_farbe`) VALUES
-                           (10, 1, 'STFC-Admin', 'admin', '20de672d58473de036b873080afab62a', 'admin@stfc.it', 3, 'Developer', 0, 0,
+                           (10, 1, 'STFC-Admin', 'admin', '20de672d58473de036b873080afab62a', '".$config['admin_email']."', 3, 'Developer', 0, 0,
                            '".DEFAULT_GFX_PATH."', 'skin1/', '', 1, '', 0, '', 3557,
                            0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1343032585, '10.1.8.37',
                            9, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '',

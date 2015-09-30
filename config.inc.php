@@ -14,6 +14,7 @@ $config['uploaddir'] = '<path to gallery folder of the game, for example: /usr/s
 $config['forum_path'] = '<path to the folder of your forum from the main directory>';
 $config['forum_show'] = '<number of topic to show, set to 0 to disable it>';
 $config['forum_url'] = '<www url to your forum>';
+$config['admin_email'] = '<email Address of the Admin Account>';
 
 define ('ERROR_LOG_FILE', '<path to error log file, for example: /usr/share/game/logs/error_log.htm');
 define ('ADMIN_LOG_FILE', '<path to admin log file, for example: /usr/share/game/logs/admin_log.htm');
