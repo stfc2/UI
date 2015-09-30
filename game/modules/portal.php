@@ -31,10 +31,11 @@ $game->init_player();
 function display_shoutbox() {
     global $db, $game, $portal_action;
 
-    $count = ($portal_action == 'full_shoutbox') ? 20 : 5;
+    $count = ($portal_action == 'full_shoutbox') ? 30 : 10;
 
-    $sql = 'SELECT *
-            FROM shoutbox
+    $sql = 'SELECT sb.*, u.user_name, u.user_avatar
+            FROM shoutbox sb
+            INNER JOIN (user u) USING (user_id)
             ORDER BY timestamp DESC
             LIMIT 0, '.$count;
 
@@ -42,33 +43,42 @@ function display_shoutbox() {
         message(DATABASE_ERROR, 'Could not query shoutbox data');
     }
 
+    include_once('include/libs/images.php');
+    
     $game->out('
-<table class="style_outer" border="0" cellpadding="2" cellspacing="2" width="100%">
+<table class="style_outer" border="0" cellpadding="2" cellspacing="2" width="90%">
   <tr>
     <td align="center">
       <span class="sub_caption">Shoutbox:</span><br><br>
       <table width="100%" border="0" cellpadding="2" cellspacing="2" class="style_inner">
-        <tr>
-          <td width="100%">
     ');
 
     $count = (count($sb_posts) - 1);
 
     for($i = $count; $i >= 0; --$i) {
-        $game->out('<i>'.$sb_posts[$i]['player_name'].' ('.date('d.m.y H:i', $sb_posts[$i]['timestamp']).')</i>:<br>'.wordwrap($sb_posts[$i]['message'], 50, '<br>', 1).'<br>');
+//        $game->out('<i>'.$sb_posts[$i]['player_name'].' ('.date('d.m.y H:i', $sb_posts[$i]['timestamp']).')</i>:<br>'.wordwrap($sb_posts[$i]['message'], 50, '<br>', 1).'<br>');
+        $game->out('<tr><td width="7%">');
+        if (!empty($sb_posts[$i]['user_avatar']))
+        {
+            $info = scale_image($sb_posts[$i]['user_avatar'],100*0.35,166*0.35);
+            if ($info[0]>0 && $info[1]>0)
+                $game->out('<img src="'.$sb_posts[$i]['user_avatar'].'" width="'.$info[0].'" height="'.$info[1].'">');
+            else $game->out('&nbsp;');
+        }
+        else $game->out('&nbsp;');
+        $game->out('</td>');
+        $game->out('<td width="92%"><i>'.$sb_posts[$i]['user_name'].' ('.date('d.m.y H:i', $sb_posts[$i]['timestamp']).')</i>:'.wordwrap($sb_posts[$i]['message'], 85, '<br>', 1).'</td></tr>');
     }
 
     $game->out('
-          </td>
-        </tr>
       </table>
       <br>
       <table width="100%" border="0" cellpadding="1" cellspacing="1">
         <tr>
           <form name="shoutbox" method="post" action="'.parse_link('a=portal&do=post_shoutbox').'" onSubmit="return this.submit_post.disabled = true;">
           <td width="100%">
-            <input type="text" name="shoutbox_msg" size="30" class="field_nosize" maxlength="100" style="background-image:url('.$game->GFX_PATH.'template_bg4.jpg);">&nbsp;
-            <input type="submit" name="submit_post" class="button_nosize" width="45" value="'.constant($game->sprache("TEXT0")).'" style="background-image:url('.$game->GFX_PATH.'template_bg4.jpg);">
+            <input type="text" name="shoutbox_msg" size="80" class="field_nosize" maxlength="480" style="background-image:url('.$game->GFX_PATH.'template_bg4.jpg);">&nbsp;
+            <input type="submit" name="submit_post" class="button_nosize" width="100" value="'.constant($game->sprache("TEXT0")).'" style="background-image:url('.$game->GFX_PATH.'template_bg4.jpg);">
           </td>
           </form>
         </tr>
@@ -502,8 +512,8 @@ switch($portal_action) {
             message(NOTICE, constant($game->sprache("TEXT12")));
         }
 
-        $sql = 'INSERT INTO shoutbox (player_name, message, timestamp)
-                VALUES ("'.$game->player['user_name'].'", "'.htmlspecialchars($_POST['shoutbox_msg']).'", '.time().')';
+        $sql = 'INSERT INTO shoutbox (user_id, message, timestamp)
+                VALUES ("'.$game->player['user_id'].'", "'.substr(htmlspecialchars($_POST['shoutbox_msg']), 0, 480).'", '.time().')';
 
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not insert new shoutbox text data');
@@ -582,7 +592,12 @@ switch($portal_action) {
     default:
         $game->out('
 <center>
-<span class="caption">'.constant($game->sprache("TEXT16")).'</span><br><br>
+<span class="caption">'.constant($game->sprache("TEXT16")).'</span><br><br>');
+        
+        display_shoutbox();
+        
+        $game->out('
+<br><br>            
 <table align="center" border="0" cellpadding="0" cellspacing="0" width="90%">
   <tr valign="top">
     <td width="49%">
@@ -600,11 +615,7 @@ switch($portal_action) {
     <td width="2%">&nbsp;</td>
     <td width="49%" valign="top" align="center">
         ');
-
-        display_shoutbox();
-
-        $game->out('<br>');
-
+                
         display_lastposts();
 
         $game->out('<br>');
