@@ -303,7 +303,7 @@ if(isset($_GET['pfleet_details'])) {
         $ammo_ratio = (int)($s_ship['torp']*100/$s_ship['max_torp']);
         /* 07/04/08 - AC: If present, show also ship's name */
         $new_id = $s_ship['max_hitpoints']-$s_ship['hitpoints'] + (($s_ship['ship_torso'] > 2 && $ammo_ratio < $thereshold_ammo_ratio) ? 100000 : 0);
-        $ships_option_html .= '<option id="'.$new_id.'" value="'.$s_ship['ship_id'].'">'.(($s_ship['ship_name'] != '')? $s_ship['ship_name'].' - '.$s_ship['template_name'] : $s_ship['template_name']).' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Torp: '.($s_ship['ship_torso'] < 5 ? 'n/a' : $s_ship['torp']).', Exp: '.$s_ship['experience'].', AT: '.($s_ship['awayteam'] == 0 ? 'OnDuty' : intval($s_ship['awayteam'])).')</option>';
+        $ships_option_html .= '<option id="'.$new_id.'" value="'.$s_ship['ship_id'].'">'.(($s_ship['ship_name'] != '')? $s_ship['ship_name'].' - '.$s_ship['template_name'] : $s_ship['template_name']).' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Torp: '.($s_ship['ship_torso'] < 3 ? 'n/a' : $s_ship['torp']).', Exp: '.$s_ship['experience'].', AT: '.($s_ship['awayteam'] == 0 ? 'OnDuty' : intval($s_ship['awayteam'])).')</option>';
 
         if($s_ship['ship_torso'] == SHIP_TYPE_TRANSPORTER) $n_transporter++;
 
@@ -647,15 +647,17 @@ elseif(isset($_GET['mfleet_details'])) {
 
     $sql = 'SELECT f.*, ss.*, f.n_ships,
                    p1.planet_name AS start_planet_name, p1.sector_id AS start_sector, p1.planet_distance_id AS start_distance_id,
-                   s1.system_x AS start_system_x, s1.system_y AS start_system_y,
+                   s1.system_x AS start_system_x, s1.system_y AS start_system_y, sd1.timestamp AS start_tmsmp,
                    p2.planet_name AS dest_planet_name, p2.sector_id as dest_sector, p2.planet_distance_id AS dest_distance_id,
-                   s2.system_x AS dest_system_x, s2.system_y AS dest_system_y
+                   s2.system_x AS dest_system_x, s2.system_y AS dest_system_y, sd2.timestamp AS dest_tmsmp
             FROM (ship_fleets f)
             INNER JOIN (scheduler_shipmovement ss) ON ss.move_id = f.move_id
             INNER JOIN (planets p1) ON p1.planet_id = ss.start
             INNER JOIN (starsystems s1) ON s1.system_id = p1.system_id
+            LEFT JOIN (starsystems_details sd1) ON sd1.system_id = s1.system_id AND sd1.user_id = f.user_id
             INNER JOIN (planets p2) ON p2.planet_id = ss.dest
             INNER JOIN (starsystems s2) ON s2.system_id = p2.system_id
+            LEFT JOIN (starsystems_details sd2) ON sd2.system_id = s2.system_id AND sd2.user_id = f.user_id
             WHERE f.fleet_id = '.$fleet_id.' AND
                   ss.move_id = f.move_id';
 
@@ -757,7 +759,7 @@ elseif(isset($_GET['mfleet_details'])) {
         $ammo_ratio = (int)($s_ship['torp']*100/$s_ship['max_torp']);
         /* 07/04/08 - AC: If present, show also ship's name */
         $new_id = $s_ship['max_hitpoints']-$s_ship['hitpoints'] + (($s_ship['ship_torso'] > 2 && $ammo_ratio < $thereshold_ammo_ratio) ? 100000 : 0);
-        $ships_option_html .= '<option id="'.$new_id.'" value="'.$s_ship['ship_id'].'">'.(($s_ship['ship_name'] != '')? $s_ship['ship_name'].' - '.$s_ship['template_name'] : $s_ship['template_name']).' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Torp: '.($s_ship['ship_torso'] < 5 ? 'n/a' : $s_ship['torp']).', Exp: '.$s_ship['experience'].', AT: '.($s_ship['awayteam'] == 0 ? 'OnDuty' : intval($s_ship['awayteam'])).')</option>';
+        $ships_option_html .= '<option id="'.$new_id.'" value="'.$s_ship['ship_id'].'">'.(($s_ship['ship_name'] != '')? $s_ship['ship_name'].' - '.$s_ship['template_name'] : $s_ship['template_name']).' ('.$s_ship['hitpoints'].'/'.$s_ship['max_hitpoints'].', Torp: '.($s_ship['ship_torso'] < 3 ? 'n/a' : $s_ship['torp']).', Exp: '.$s_ship['experience'].', AT: '.($s_ship['awayteam'] == 0 ? 'OnDuty' : intval($s_ship['awayteam'])).')</option>';
 
         if($s_ship['ship_torso'] == SHIP_TYPE_TRANSPORTER) $n_transporter++;
 
@@ -841,8 +843,8 @@ elseif(isset($_GET['mfleet_details'])) {
       </table><br>
       <fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT105")).':</span></legend>
       <table width="100%" border="0" cellpadding="0" cellspacing="0"
-      <tr><td>'.constant($game->sprache("TEXT55")).' '.( (!empty($fleet['start'])) ? '<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($fleet['start'])).'"><b>'.$fleet['start_planet_name'].'</b></a> ('.$game->get_sector_name($fleet['start_sector']).':'.$game->get_system_cname($fleet['start_system_x'], $fleet['start_system_y']).':'.($fleet['start_distance_id'] + 1).')' : constant($game->sprache("TEXT56")) ).'</td>
-      <td>'.constant($game->sprache("TEXT57")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($fleet['dest'])).'"><b>'.$fleet['dest_planet_name'].'</b></a> ('.$game->get_sector_name($fleet['dest_sector']).':'.$game->get_system_cname($fleet['dest_system_x'], $fleet['dest_system_y']).':'.($fleet['dest_distance_id'] + 1).')</td></tr>
+      <tr><td>'.constant($game->sprache("TEXT55")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($fleet['start'])).'"><b>'.( isset($fleet['start_tmsmp']) ? $fleet['start_planet_name'] : constant($game->sprache("TEXT56")) ).'</b></a> ('.$game->get_sector_name($fleet['start_sector']).':'.$game->get_system_cname($fleet['start_system_x'], $fleet['start_system_y']).':'.($fleet['start_distance_id'] + 1).')</td>
+      <td>'.constant($game->sprache("TEXT57")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($fleet['dest'])).'"><b>'.( isset($fleet['dest_tmsmp']) ? $fleet['dest_planet_name'] : constant($game->sprache("TEXT56")) ).'</b></a> ('.$game->get_sector_name($fleet['dest_sector']).':'.$game->get_system_cname($fleet['dest_system_x'], $fleet['dest_system_y']).':'.($fleet['dest_distance_id'] + 1).')</td></tr>
 
       <tr><td>'.constant($game->sprache("TEXT58")).' <b>'.get_move_action_str($fleet['action_code']).'</td>
       <td>'.constant($game->sprache("TEXT59")).' <b id="timer2" title="time1_'.( ($ticks_left * TICK_DURATION * 60) + $NEXT_TICK).'_type2_2">&nbsp;</b></td></tr>
