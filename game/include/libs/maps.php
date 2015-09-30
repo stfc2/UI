@@ -429,14 +429,14 @@ class maps {
             }
 
             if($distance > MAX_BOUND_RANGE) {
-                $distance_str = '<br>'.$this->str_range.$distance.' A.U.<br>'.$this->str_outrange;
+                $distance_str = ' '.$this->str_range.$distance.' A.U.<br>'.$this->str_outrange;
             }
             else
             {
-                $distance_str = '<br>'.$this->str_range.$distance.' A.U.<br>';
+                $distance_str = ' '.$this->str_range.$distance.' A.U.';
             }
 
-// DC Try to give more information, just for fun
+            // DC Try to give more information, just for fun
             $explored_str = '';
 
             $sql = 'SELECT count(*) as explored FROM starsystems_details
@@ -448,33 +448,99 @@ class maps {
                 if($res['explored'] == 0) $explored_str = '<br><i>'.$this->str_unch.'</i>';
             }
 
+            // DC Stringa Pianeti
+            $planets_str = '';
+            
+            if($res['explored'] == 0) {
+                $planets_str = '<br>'.$this->str_planets.' '.$system['system_n_planets'];
+            }
+            else {
+                $sql = 'SELECT p.planet_id, p.planet_distance_id, p.planet_name, p.planet_type, p.planet_owner, u.user_name, p.planet_points, pd.survey_1, pd.survey_2, pd.survey_3
+                        FROM (planets p)
+                        LEFT JOIN (user u) ON (u.user_id = p.planet_owner AND p.planet_owner > 0)
+                        LEFT JOIN (planet_details pd) ON (pd.planet_id = p.planet_id AND pd.log_code = 100 AND pd.user_id = '.$game->player['user_id'].')
+                        WHERE p.system_id = '.$system['system_id'].'
+                        ORDER BY p.planet_distance_id ASC';
+                
+                if($plist = $db->queryrowset($sql)) {
+                    $planets_str .= '<br>'.$this->str_planets;
+                    foreach ($plist AS $pitem) {
+                        $planets_str .= '<br>'.($pitem['planet_distance_id'] + 1).': '.strtoupper($pitem['planet_type']);
+                        if(isset($pitem['survey_1'])) {
+                            $planets_str .= ' (';
+                            switch ($pitem['survey_1']) {
+                                case 0:
+                                    $planets_str .= '<font color=red>-</font>|';
+                                    break;
+                                case 1:
+                                    $planets_str .= '<font color=grey>=</font>|';
+                                    break;
+                                case 2:
+                                    $planets_str .= '<font color=green>+</font>|';
+                                    break;                                
+                            }
+                            switch ($pitem['survey_2']) {
+                                case 0:
+                                    $planets_str .= '<font color=red>-</font>|';
+                                    break;
+                                case 1:
+                                    $planets_str .= '<font color=grey>=</font>|';
+                                    break;
+                                case 2:
+                                    $planets_str .= '<font color=green>+</font>|';
+                                    break;                                
+                            }                            
+                            switch ($pitem['survey_3']) {
+                                case 0:
+                                    $planets_str .= '<font color=red>-</font>';
+                                    break;
+                                case 1:
+                                    $planets_str .= '<font color=grey>=</font>';
+                                    break;
+                                case 2:
+                                    $planets_str .= '<font color=green>+</font>';
+                                    break;                                
+                            }
+                            $planets_str .= ')';
+                        }
+                        $planets_str .= (!empty($pitem['planet_owner']) ? ' &#34;'.htmlentities($pitem['planet_name']).'&#34;' : ' <i>'.htmlentities($pitem['planet_name']).'</i>');
+                        if(!empty($pitem['planet_owner'])) {$planets_str .= ' '.htmlentities($pitem['user_name']). ' ('.$pitem['planet_points'].' pt.)';}
+                        $fleet_sensor = false;
+                        //Any fleet here?
+                        $sql = 'SELECT sf.fleet_name, sf.n_ships FROM ship_fleets sf 
+                                WHERE planet_id = '.$pitem['planet_id'].' AND sf.user_id = '.$game->player['user_id'];
+                        if($fleet_details = $db->queryrowset($sql))
+                        {
+                            $fleet_sensor = true;
+                            foreach($fleet_details as $f_i)
+                            {
+                                $planets_str .='<br>&nbsp;&nbsp;&nbsp;&nbsp;&#187;&nbsp;'.$this->str_fleet_player.' <b>'.htmlentities($f_i['fleet_name']).'</b>, '.$f_i['n_ships'].' '.$this->str_ships;
+                            }
+                        }
+                        //Anu OTHER fleets here?
+                        if((!empty($pitem['planet_owner']) && $pitem['planet_owner'] == $game->player['user_id']) || $fleet_sensor) {
+                            $sql = 'SELECT user_name, SUM(n_ships) AS n_ships FROM ship_fleets INNER JOIN user USING (user_id) WHERE planet_id = '.$pitem['planet_id'].' AND user_id <> '.$game->player['user_id'].' GROUP BY user_id';
+
+                            if($flist = $db->queryrowset($sql)) {
+                                foreach ($flist AS $fitem) {
+                                    $planets_str .='<br>&nbsp;&nbsp;&nbsp;&#183;&#183;&#183;<b>'.$fitem['user_name'].'</b>, '.$fitem['n_ships'].' '.$this->str_ships;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
             $private_str = '';
 
             if(!empty($system['system_owner']) && $system['system_owner'] != $game->player['user_id'])
             {
                 $private_str = '<br><i>'.$this->str_priv.'</i>';
             }
-
-            $sql = 'SELECT pl.planet_distance_id, sf.fleet_name, sf.n_ships FROM ship_fleets sf 
-                    INNER JOIN planets pl ON pl.planet_id = sf.planet_id 
-                    WHERE pl.system_id = '.$system['system_id'].' AND sf.user_id = '.$game->player['user_id'].'
-                    ORDER BY pl.planet_distance_id ASC';
-
-            $fleet_str = '';
-
-            if($fleet_details = $db->queryrowset($sql))
-            {
-
-                foreach($fleet_details as $f_i)
-                {
-                    $fleet_str .='<br>'.($f_i['planet_distance_id'] + 1).': '.$this->str_fleet_player.' <b>'.$f_i['fleet_name'].'</b>, '.$f_i['n_ships'].' '.$this->str_ships;
-                }
-            }
-// ----
+            // ----
 
             /////////////////
 
-            $map_html .= '<area href="'.parse_link('a=tactical_cartography&system_id='.encode_system_id($system['system_id'])).'" shape="circle" coords="'.$system['system_map_x'].', '.$system['system_map_y'].', '.$star_size.'" onmouseover="return overlib(\''.$system['system_name'].'<br>'.$this->str_planets.' '.$system['system_n_planets'].$distance_str.$explored_str.$private_str.(!empty($fleet_str) ? $fleet_str : '').'\', CAPTION, \''.$this->str_details.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">';
+            $map_html .= '<area href="'.parse_link('a=tactical_cartography&system_id='.encode_system_id($system['system_id'])).'" shape="circle" coords="'.$system['system_map_x'].', '.$system['system_map_y'].', '.$star_size.'" onmouseover="return overlib(\''.$system['system_name'].$distance_str.$planets_str.$explored_str.$private_str.'\', CAPTION, \''.$this->str_details.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">';
 
             $used_fields[$coord_id] = $system['system_id'];
         }
@@ -631,7 +697,7 @@ class maps {
                 
                     foreach($fleet_details as $f_i)
                     {
-                        $map_html .='<br>'.$this->str_fleet_player.' <b>'.$f_i['fleet_name'].'</b>, '.$f_i['n_ships'].' '.$this->str_ships;
+                        $map_html .='<br>'.$this->str_fleet_player.' <b>'.htmlentities($f_i['fleet_name']).'</b>, '.$f_i['n_ships'].' '.$this->str_ships;
                     }
                 }
 
