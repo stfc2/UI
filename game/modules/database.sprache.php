@@ -150,11 +150,11 @@ define ("GER_TEXT62", 'Minkostenfaktor f&uuml;r Forschungen');
 
 define ("GER_TEXT63", 'Latkostenfaktor f&uuml;r Forschungen');
 
-define ("GER_TEXT64", 'Exportierbar Technologien');
+define ("GER_TEXT64", 'Exportierbare Technologien');
 
-define ("GER_TEXT65", 'Create independent colony');
+define ("GER_TEXT65", 'Unabh&auml;ngige Kolonie erstellen');
 
-define ("GER_TEXT66", 'Colonization threshold');
+define ("GER_TEXT66", 'Kolonisations beginn');
 
 define ("GER_TEXT100", 'Ja');
 
@@ -168,7 +168,7 @@ define ("GER_TEXT104", 'Index');
 
 define ("GER_TEXT105", 'N&auml;chste Seite');
 
-define ("GER_TEXT106", 'Die Rassenwerte von STFC');
+define ("GER_TEXT106", 'Die Rassenwerte von STFC2');
 
 define ("GER_TEXT107", 'Umwelt');
 
@@ -182,15 +182,15 @@ define ("GER_TEXT111", 'Bergbau');
 
 define ("GER_TEXT112", 'Keiner');
 
-define ("GER_TEXT113", 'Shipyard');
+define ("GER_TEXT113", 'Schiffswerft');
 
-define ("GER_TEXT114", 'Class 1');
+define ("GER_TEXT114", 'Klasse 1');
 
-define ("GER_TEXT115", 'Class 2');
+define ("GER_TEXT115", 'Klasse 2');
 
-define ("GER_TEXT116", 'Class 3');
+define ("GER_TEXT116", 'Klasse 3');
 
-define ("GER_TEXT117", 'Class 4');
+define ("GER_TEXT117", 'Klasse 4');
 
 
 //English
