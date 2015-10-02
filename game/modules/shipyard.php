@@ -1033,6 +1033,22 @@ global $SHIP_TORSO, $SHIP_DESCRIPTION, $UNIT_DESCRIPTION, $UNIT_DATA, $UNIT_NAME
 Show_Common_Menues();
 
 
+$class_selector_2 = filter_input(INPUT_POST, 'line2', FILTER_SANITIZE_NUMBER_INT);
+if(isset($class_selector_2) && $class_selector_2 >= 0 && $class_selector_2 < 2) {
+    $db->query('UPDATE planets SET line_2_preset = '.$class_selector_2.' WHERE planet_id = '.$game->planet['planet_id']);
+    $game->planet['line_2_preset'] = $class_selector_2;
+}
+$class_selector_3 = filter_input(INPUT_POST, 'line3', FILTER_SANITIZE_NUMBER_INT);
+if(isset($class_selector_3) && $class_selector_3 >= 0 && $class_selector_3 < 3) {
+    $db->query('UPDATE planets SET line_3_preset = '.$class_selector_3.' WHERE planet_id = '.$game->planet['planet_id']);
+    $game->planet['line_3_preset'] = $class_selector_3;    
+}
+$class_selector_4 = filter_input(INPUT_POST, 'line4', FILTER_SANITIZE_NUMBER_INT);
+if(isset($class_selector_4) && $class_selector_4 >= 0 && $class_selector_4 < 4) {
+    $db->query('UPDATE planets SET line_4_preset = '.$class_selector_4.' WHERE planet_id = '.$game->planet['planet_id']);
+    $game->planet['line_4_preset'] = $class_selector_4;        
+}
+
 $game->out('<fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT68")).' '.constant($game->sprache("TEXT72")).'</span></legend><br>');
 
 $schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build<='.$ACTUAL_TICK.') AND line_id = 0 ORDER BY start_build ASC');
@@ -1116,14 +1132,13 @@ $game->out('</fieldset><br><br>');
 
 if( $PLANETS_DATA[$game->planet['planet_type']][14] > 1) {
  
-$class_selector_2 = filter_input(INPUT_POST, 'line2', FILTER_SANITIZE_NUMBER_INT);
-if(is_null($class_selector_2) OR $class_selector_2 < 0 OR $class_selector_2 > 1) $class_selector_2 = 1;
+if(is_null($game->planet['line_2_preset'])) {$game->planet['line_2_preset'] = 1;}
 
 $game->out('<fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT69")).'</span></legend><br>');
 $game->out('<form name="select_line2_class" method="post" action="index.php?a=shipyard">');
 $game->out('<select name="line2" onchange="this.form.submit()">');
-$game->out('<option value=1 '.($class_selector_2 == 1 ? 'selected' : '').'>'.(constant($game->sprache("TEXT73"))).'</option>');
-$game->out('<option value=0 '.($class_selector_2 == 0 ? 'selected' : '').'>'.(constant($game->sprache("TEXT72"))).'</option>');
+$game->out('<option value=1 '.($game->planet['line_2_preset'] == 1 ? 'selected' : '').'>'.(constant($game->sprache("TEXT73"))).'</option>');
+$game->out('<option value=0 '.($game->planet['line_2_preset'] == 0 ? 'selected' : '').'>'.(constant($game->sprache("TEXT72"))).'</option>');
 $game->out('</select></form><br>');
 
 $schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build<='.$ACTUAL_TICK.') AND line_id = 1 ORDER BY start_build ASC');
@@ -1138,7 +1153,7 @@ if ($db->num_rows()>0) {
 
     $game->out('<tr><th>'.constant($game->sprache("TEXT31")).'</th><th>'.constant($game->sprache("TEXT32")).'</th><th>'.constant($game->sprache("TEXT34")).'</th><th> Azione </th></tr><tr>');
     $game->out('<td width="25%" align="center"> <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a></td>');
-    $game->out('<td width="25%" align="center"> <b id="timer2" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['finish_build']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b></td>');
+    $game->out('<td width="25%" align="center"> <b id="timer3" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['finish_build']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b></td>');
 
     $queue_query = $db->queryrowset('SELECT ship_type, finish_build FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build>='.$ACTUAL_TICK.') AND line_id = 1 ORDER BY start_build ASC');
     
@@ -1166,7 +1181,7 @@ if ($db->num_rows()>0) {
     
 }
 
-$query_line_1 = 'SELECT * FROM ship_templates WHERE owner = '.$game->player['user_id'].' AND removed = 0 AND ship_class = '.$class_selector_2.' ORDER BY ship_torso ASC, name ASC';
+$query_line_1 = 'SELECT * FROM ship_templates WHERE owner = '.$game->player['user_id'].' AND removed = 0 AND ship_class = '.$game->planet['line_2_preset'].' ORDER BY ship_torso ASC, name ASC';
 
 $list_line_1 = $db->query($query_line_1);
 $n_tplt_1 = $db->num_rows($list_line_1);
@@ -1207,16 +1222,16 @@ $game->out('</fieldset><br><br>');
 }
 
 if( $PLANETS_DATA[$game->planet['planet_type']][14] > 2) {
-$class_selector_3 = filter_input(INPUT_POST, 'line3', FILTER_SANITIZE_NUMBER_INT);
-if(is_null($class_selector_3) OR $class_selector_3 < 0 OR $class_selector_3 > 2) $class_selector_3 = 2;
+
+if(is_null($game->planet['line_3_preset'])) {$game->planet['line_3_preset'] = 2;}
 
 $game->out('<fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT70")).'</span></legend><br>');
 
 $game->out('<form name="select_line3_class" method="post" action="index.php?a=shipyard">');
 $game->out('<select name="line3" onchange="this.form.submit()">');
-$game->out('<option value=2 '.($class_selector_3 == 2 ? 'selected' : '').'>'.(constant($game->sprache("TEXT74"))).'</option>');
-$game->out('<option value=1 '.($class_selector_3 == 1 ? 'selected' : '').'>'.(constant($game->sprache("TEXT73"))).'</option>');
-$game->out('<option value=0 '.($class_selector_3 == 0 ? 'selected' : '').'>'.(constant($game->sprache("TEXT72"))).'</option>');
+$game->out('<option value=2 '.($game->planet['line_3_preset'] == 2 ? 'selected' : '').'>'.(constant($game->sprache("TEXT74"))).'</option>');
+$game->out('<option value=1 '.($game->planet['line_3_preset'] == 1 ? 'selected' : '').'>'.(constant($game->sprache("TEXT73"))).'</option>');
+$game->out('<option value=0 '.($game->planet['line_3_preset'] == 0 ? 'selected' : '').'>'.(constant($game->sprache("TEXT72"))).'</option>');
 $game->out('</select></form><br>');
 
 $schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build<='.$ACTUAL_TICK.') AND line_id = 2 ORDER BY start_build ASC');
@@ -1231,7 +1246,7 @@ if ($db->num_rows()>0) {
 
     $game->out('<tr><th>'.constant($game->sprache("TEXT31")).'</th><th>'.constant($game->sprache("TEXT32")).'</th><th>'.constant($game->sprache("TEXT34")).'</th><th> Azione </th></tr><tr>');
     $game->out('<td width="25%" align="center"> <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a></td>');
-    $game->out('<td width="25%" align="center"> <b id="timer2" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['finish_build']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b></td>');
+    $game->out('<td width="25%" align="center"> <b id="timer4" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['finish_build']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b></td>');
 
     $queue_query = $db->queryrowset('SELECT ship_type, finish_build FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build>='.$ACTUAL_TICK.') AND line_id = 2 ORDER BY start_build ASC');
     
@@ -1259,7 +1274,7 @@ if ($db->num_rows()>0) {
     
 }
 
-$query_line_2 = 'SELECT * FROM ship_templates WHERE owner = '.$game->player['user_id'].' AND removed = 0 AND ship_class = '.$class_selector_3.' ORDER BY ship_torso ASC, name ASC';
+$query_line_2 = 'SELECT * FROM ship_templates WHERE owner = '.$game->player['user_id'].' AND removed = 0 AND ship_class = '.$game->planet['line_3_preset'].' ORDER BY ship_torso ASC, name ASC';
 
 $list_line_2 = $db->query($query_line_2);
 $n_tplt_2 = $db->num_rows($list_line_2);
@@ -1300,17 +1315,17 @@ $game->out('</fieldset><br><br>');
 }
 
 if( $PLANETS_DATA[$game->planet['planet_type']][14] > 3) {
-$class_selector_4 = filter_input(INPUT_POST, 'line4', FILTER_SANITIZE_NUMBER_INT);
-if(is_null($class_selector_4) OR $class_selector_4 < 0 OR $class_selector_4 > 3) $class_selector_4 = 3;
+
+if(is_null($game->planet['line_4_preset'])) {$game->planet['line_4_preset'] = 3;}
 
 $game->out('<fieldset><legend><span class="sub_caption2">'.constant($game->sprache("TEXT71")).'</span></legend><br>');
 
 $game->out('<form name="select_line4_class" method="post" action="index.php?a=shipyard">');
 $game->out('<select name="line4" onchange="this.form.submit()">');
-$game->out('<option value=3 '.($class_selector_4 == 3 ? 'selected' : '').'>'.(constant($game->sprache("TEXT75"))).'</option>');
-$game->out('<option value=2 '.($class_selector_4 == 2 ? 'selected' : '').'>'.(constant($game->sprache("TEXT74"))).'</option>');
-$game->out('<option value=1 '.($class_selector_4 == 1 ? 'selected' : '').'>'.(constant($game->sprache("TEXT73"))).'</option>');
-$game->out('<option value=0 '.($class_selector_4 == 0 ? 'selected' : '').'>'.(constant($game->sprache("TEXT72"))).'</option>');
+$game->out('<option value=3 '.($game->planet['line_4_preset'] == 3 ? 'selected' : '').'>'.(constant($game->sprache("TEXT75"))).'</option>');
+$game->out('<option value=2 '.($game->planet['line_4_preset'] == 2 ? 'selected' : '').'>'.(constant($game->sprache("TEXT74"))).'</option>');
+$game->out('<option value=1 '.($game->planet['line_4_preset'] == 1 ? 'selected' : '').'>'.(constant($game->sprache("TEXT73"))).'</option>');
+$game->out('<option value=0 '.($game->planet['line_4_preset'] == 0 ? 'selected' : '').'>'.(constant($game->sprache("TEXT72"))).'</option>');
 $game->out('</select></form><br>');
 
 $schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build<='.$ACTUAL_TICK.') AND line_id = 3 ORDER BY start_build ASC');
@@ -1325,7 +1340,7 @@ if ($db->num_rows()>0) {
 
     $game->out('<tr><th>'.constant($game->sprache("TEXT31")).'</th><th>'.constant($game->sprache("TEXT32")).'</th><th>'.constant($game->sprache("TEXT34")).'</th><th> Azione </th></tr><tr>');
     $game->out('<td width="25%" align="center"> <a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($template).'\', CAPTION, \''.addslashes($template['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$template['name'].'</a></td>');
-    $game->out('<td width="25%" align="center"> <b id="timer2" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['finish_build']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b></td>');
+    $game->out('<td width="25%" align="center"> <b id="timer5" title="time1_'.($NEXT_TICK+TICK_DURATION*60*($scheduler['finish_build']-$ACTUAL_TICK)).'_type1_1">&nbsp;</b></td>');
 
     $queue_query = $db->queryrowset('SELECT ship_type, finish_build FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (start_build>='.$ACTUAL_TICK.') AND line_id = 3 ORDER BY start_build ASC');
     
@@ -1353,7 +1368,7 @@ if ($db->num_rows()>0) {
     
 }
 
-$query_line_3 = 'SELECT * FROM ship_templates WHERE owner = '.$game->player['user_id'].' AND removed = 0 AND ship_class = '.$class_selector_4.' ORDER BY ship_torso ASC, name ASC';
+$query_line_3 = 'SELECT * FROM ship_templates WHERE owner = '.$game->player['user_id'].' AND removed = 0 AND ship_class = '.$game->planet['line_4_preset'].' ORDER BY ship_torso ASC, name ASC';
 
 $list_line_3 = $db->query($query_line_3);
 $n_tplt_3 = $db->num_rows($list_line_3);
