@@ -61,47 +61,6 @@ table.border_blue         { border: 1px solid #000000; }
 -->
 
 </style>
-    <script type="text/javascript">
-
-/*
-Combo-Box Viewer script- Created by and Copyright Dynamicdrive.com
-Visit http://www.dynamicdrive.com/ for this script and more
-This notice MUST stay intact for legal use
-*/
-
-if (document.getElementById){
-document.write('<style type="text/css">\n')
-document.write('.dropcontent{display:none;}\n')
-document.write('</style>\n')
-}
-
-function contractall(){
-if (document.getElementById){
-var inc=0
-while (document.getElementById("dropmsg"+inc)){
-document.getElementById("dropmsg"+inc).style.display="none"
-inc++
-}
-}
-}
-
-
-function expandone(){
-if (document.getElementById){
-var selectedItem=document.register.user_race.selectedIndex
-contractall()
-document.getElementById("dropmsg"+selectedItem).style.display="block"
-}
-}
-
-if (window.addEventListener)
-window.addEventListener("load", expandone, false)
-else if (window.attachEvent)
-window.attachEvent("onload", expandone)
-
-</script>
-
-  <script language="JavaScript" src="/overlib.js"></script>
 </head>
 
 <body text="#c0c0c0" background="/gfx/bg_stars1.gif" >
