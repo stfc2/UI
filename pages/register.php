@@ -143,8 +143,8 @@ function display_registration($data = array(), $message = '', $galaxy) {
     $races = $galaxy == 0 ? 12 : 5;
     for($race = 0; $race < $races;$race++)
     {
-        // Skip Borg and Q
-        if($race > 5 && $race < 8) continue;
+        // Skip Ferengi, Borg, Q, Krenim
+        if($race > 4 && $race < 9 || $race == 10) continue;
         
         $main_html .= NL.'            <option value="'.$race.'"'.( ($race_selected == $race) ? ' selected="selected"' : '' ).'>'.$locale['race'.$race].'</option>';
     }       
@@ -161,8 +161,8 @@ function display_registration($data = array(), $message = '', $galaxy) {
     $dropnum = 0;
     for($race = 0; $race < $races;$race++)
     {
-        // Skip Borg and Q
-        if($race > 5 && $race < 8) continue;
+        // Skip Ferengi, Borg, Q and Krenim
+        if($race > 4 && $race < 9 || $race == 10) continue;
         
         $main_html .= NL.'          <div id="dropmsg'.$dropnum.'" class="dropcontent"><br>'.$locale['race'.$race.'_desc'].NL.'          </div>';
         $dropnum++;
@@ -469,7 +469,7 @@ if(isset($_POST['submit'])) {
             return true;
         }
 
-        if($year > 1999) {
+        if($year > 2011) {
             display_registration($_POST, $locale['error_invalid_birthyear'],$galaxy);
             return true;
         }
