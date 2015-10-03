@@ -1438,9 +1438,7 @@ form {
                       n_ships > 0
                 ORDER BY fleet_name';
 
-        if(!$q_fleets = $db->queryrowset($sql)) {
-            message(DATABASE_ERROR, 'Could not query planet fleets data');
-        }
+        $q_fleets = $db->queryrowset($sql);
 
         $n_fleets = $db->num_rows();
 
