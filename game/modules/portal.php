@@ -67,7 +67,7 @@ function display_shoutbox() {
         }
         else $game->out('&nbsp;');
         $game->out('</td>');
-        $game->out('<td width="92%"><i>'.$sb_posts[$i]['user_name'].' ('.date('d.m.y H:i', $sb_posts[$i]['timestamp']).')</i>:'.wordwrap($sb_posts[$i]['message'], 85, '<br>', 1).'</td></tr>');
+        $game->out('<td width="92%"><a href="'.parse_link('a=stats&a2=viewplayer&id='.$sb_posts[$i]['user_id']).'"><i>'.$sb_posts[$i]['user_name'].'</a> ('.date('d.m.y H:i', $sb_posts[$i]['timestamp']).')</i>: '.wordwrap($sb_posts[$i]['message'], 85, '<br>', 1).'</td></tr>');
     }
 
     $game->out('
