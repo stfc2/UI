@@ -1429,14 +1429,16 @@ form {
     }
         
     if($planet_id != $game->planet['planet_id']) {
-        $sql = 'SELECT fleet_id, fleet_name, n_ships
+        $sql = 'SELECT fleet_id, fleet_name, n_ships, system_id, system_global_x, system_global_y
                 FROM ship_fleets
+                INNER JOIN planets USING (planet_id)
+                INNER JOIN starsystems USING (system_id)                
                 WHERE user_id = '.$game->player['user_id'].' AND
                       planet_id <> 0 AND
                       n_ships > 0
                 ORDER BY fleet_name';
 
-        if(!$q_fleets = $db->query($sql)) {
+        if(!$q_fleets = $db->queryrowset($sql)) {
             message(DATABASE_ERROR, 'Could not query planet fleets data');
         }
 
@@ -1454,18 +1456,23 @@ form {
           <td colspan="2" align="center"><b>'.constant($game->sprache("TEXT83")).'</b><br><br>
         </tr>
         <tr>
-          <td width="250" align="center">
-            <select name="fleets[]" style="width: 210px;" multiple="multiple" size="5">
+          <td width="300" align="center">
+            <select name="fleets[]" style="width: 280px;" multiple="multiple" size="5">
             ');
             
-            while($fleet = $db->fetchrow($q_fleets)) {
-                $game->out('<option value="'.$fleet['fleet_id'].'">'.$fleet['fleet_name'].' ('.$fleet['n_ships'].' '.constant($game->sprache("TEXT78")).')</option>');
+            foreach($q_fleets AS $fleet) {
+                if ($planet['system_id']==$fleet['system_id']) $dist=0;
+                else
+                {
+                    $dist = get_distance(array($planet['system_global_x'], $planet['system_global_y']), array($fleet['system_global_x'],$fleet['system_global_y']));
+                }
+                $game->out('<option value="'.$fleet['fleet_id'].'">'.$fleet['fleet_name'].' ('.$fleet['n_ships'].' '.constant($game->sprache("TEXT78")).', '.constant($game->sprache("TEXT133")).($dist != 0 ? number_format($dist, 0, ',', '.').' A.U.' : constant($game->sprache("TEXT132")) ).') </option>');
             }
 
             $game->out('
             </select>
           </td>
-          <td width="150" align="left" valign="middle">
+          <td width="100" align="left" valign="middle">
             <input type="submit" class="button" name="submit" value="'.constant($game->sprache("TEXT84")).'">
           </td>
         </tr>
