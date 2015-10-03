@@ -65,7 +65,7 @@ $PLANETS_TEXT = array(
     'e' => array(
         0 => 'Geoplastico',
         1 => 'Richiede minimo intervento di terraforming',
-        2 => 'Presenza di minerali sopra la media',
+        2 => 'Presenza di metalli e minerali sopra la media',
         3 => 'I pianeti di questa classe sono simili in massa e distanza dalla propria stella alla Terra e vengono considerati i precursori dei pianeti di classe F conosciuti. Il nucleo del pianeta &egrave; fuso e possiedono una rarefatta atmosfera con tracce di ossigeno. La vita &egrave; possibile attraverso modesti supporto tecnologico e rifornimento di risorse dall&#146;esterno.',
         4 => 'Excalbia'
     ),
@@ -73,7 +73,7 @@ $PLANETS_TEXT = array(
     'f' => array(
         0 => 'Geometallico',
         1 => 'Richiede minimo intervento di terraforming',
-        2 => 'Presenza di metallo sopra la media',
+        2 => 'Presenza di metallo e dilitio sopra la media',
         3 => 'I pianeti di questa classe sono simili alla Terra come massa e distanza dalla propria stella. La loro atmosfera &egrave; molto ricca di ossigeno, ma dato che sono pianeti piuttosto giovani, spesso la superficie non si &egrave; completamente solidificata. La sopravvivenza sul pianeta &egrave; possibile con un piccolo supporto tecnologico.',
         4 => '-'
     ),
@@ -81,7 +81,7 @@ $PLANETS_TEXT = array(
     'g' => array(
         0 => 'Geocristallino',
         1 => 'Richiede minimo intervento di terraforming',
-        2 => 'Presenza di dilitio sopra la media',
+        2 => 'Presenza di minerali e dilitio sopra la media',
         3 => 'I pianeti di questa classe sono simili alla Terra come massa ma hanno un&#146;orbita pi&ugrave; vicina al proprio sole. La loro atmosfera &egrave; essenzialmente costituita da gas pesanti tossici. La vicinanza del sole provoca un&#146;elevata temperatura in superficie. La vita &egrave; possibile solo mediante supporto vitale.',
         4 => 'Ceti Alpha V'
     ),
@@ -97,7 +97,7 @@ $PLANETS_TEXT = array(
     'i' => array(
         0 => 'Supergigante gassoso',
         1 => 'Impossibile',
-        2 => 'Enorme presenza di dilitio, scarsa presenza di minerali',
+        2 => 'Enorme presenza di dilitio',
         3 => 'I pianeti di questa classe sono ammassi di gas del diametro superiore ai 140.000 km, contenenti un nucleo metallico/cristallino. La sopravvivenza sul pianeta &egrave; possibile solo grazie al supporto vitale e rifornimenti di risorse dall&#146;esterno.',
         4 => '-'
     ),
@@ -170,7 +170,7 @@ $PLANETS_TEXT = array(
     's' => array(
         0 => 'Ultragigante minore',
         1 => 'Impossibile',
-        2 => 'Enorme quantit&agrave; di minerali e dilitio',
+        2 => 'Enorme quantit&agrave; di minerali',
         3 => 'Questi enormi ammassi gassosi sono anche noti come nana marrone, hanno un diametro che varia tra i 10 e i 50 milioni di km. Se fossero pi&ugrave; grandi, sarebbero classificati come stelle. Generano calore e forze gravitazionali enormi, capaci di attirare intorno a se un gran numero di satelliti.',
         4 => '-',
     ),
@@ -178,7 +178,7 @@ $PLANETS_TEXT = array(
     't' => array(
         0 => 'Ultragigante maggiore',
         1 => 'Impossibile',
-        2 => 'Immensa presenza di minerali e dilitio',
+        2 => 'Immensa presenza di minerali',
         3 => 'Questi enormi ammassi gassosi sono anche noti come nana marrone, hanno un diametro che varia tra i 50 e i 120 milioni di km. Se fossero pi&ugrave; grandi, sarebbero classificati come stelle. Generano calore e forze gravitazionali enormi, capaci di attirare intorno a se un gran numero di satelliti.',
         4 => '-',
     ),
