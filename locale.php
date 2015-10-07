@@ -41,7 +41,7 @@ $loc_strings = array(
         'noreports' => 'No newspaper reports available',
         'today' => 'Today',
         'yesterday' => 'Yesterday',
-        'welcome' => 'Star Trek Frontline Combat, is a multiplayer game set in the Star Trek&trade;
+        'welcome' => 'Star Trek Frontline Combat 2, is a multiplayer game set in the Star Trek&trade;
           universe where the only tools needed to play are a web browser and an internet connection.<br><br>
           STFC2 is a tactical and strategic game running in real time to give players the maximum game
           experience possible.<br><br>
@@ -49,11 +49,11 @@ $loc_strings = array(
           many other, after the home world is created, the player would need to create new colonies
           in order to increase his power and fleets to expand the commercial routes with other players
           or to fight them with all the starships available. To boldly go where nobody has gone before!',
-        'fist_membership' => 'Site member of the Federazione Italiana Siti Trek',
+        'fist_membership' => 'Site member of the Federation',
         
         // login.php strings
-        'login_title' => 'Star Trek: Frontline Combat - Login',
-        'login_descr' => 'STFC: Pagina per effettuare la login alla galassia di gioco a cui si e` iscritti (galassia Brown Bobby o Fried Egg).',
+        'login_title' => 'Star Trek: Frontline Combat 2 - Login',
+        'login_descr' => 'STFC2: Login Page.',
         'login' => 'Login',
         'user_login' => 'Login:',
         'password' => 'Password:',
@@ -64,23 +64,23 @@ $loc_strings = array(
         'submit' => 'Submit',
         
         // lost_password.php strings
-        'lost_password_title' => 'Star Trek: Frontline Combat - Password recovery',
-        'lost_password_descr' => 'STFC: Page in which request a new password to the system as a replacement for the forgot one.',
+        'lost_password_title' => 'Star Trek: Frontline Combat 2 - Password recovery',
+        'lost_password_descr' => 'STFC2: Page in which request a new password to the system as a replacement for the forgot one.',
         'password_recovery' => 'Password recovery',
         'error_wrong_name_or_login' => 'The following problem has occurred:<br />Player&#146;s name or login name does not exists.',
         'error_wrong_email' => 'The following problem has occurred:<br>Email address does not exists.',
         'mail_message_lp1' => 'Apparently you have requested a new password.',
         'mail_message_lp2' => 'To try to login now, please use this password:',
         'mail_message_lp3' => 'We recommend you change your password after logging in, using the Settings page.',
-        'mail_subject_lp' => 'Star Trek: Frontline Combat - Password recovery',
+        'mail_subject_lp' => 'Star Trek: Frontline Combat 2 - Password recovery',
         'password_recovered' => 'Soon you will receive a new password by email.',
         'lost_password_warning' => 'Warning: you will receive an automatically generated new password.',
         'back_to_login' => 'Back to login',
         'password_request' => 'Password request',
         
         // register.php strings
-        'register_title' => 'Star Trek: Frontline Combat - Registration',
-        'register_descr' => 'STFC: Page in which register to the game by providing the details of your account, such as nick, email, gender, race, date of birth and so on.',
+        'register_title' => 'Star Trek: Frontline Combat 2 - Registration',
+        'register_descr' => 'STFC2: Page in which register to the game by providing the details of your account, such as nick, email, gender, race, date of birth and so on.',
         'registration' => 'Registration',
         'galaxy_selection' => '(1/2) Select the galaxy:',
         'version' => 'Version:',
@@ -234,8 +234,8 @@ $loc_strings = array(
         'mail_message_reg3' => 'If you did not request the registation to this game, please ignore this email.',
         'mail_message_reg4' => 'After 48 hours, your email address will be automatically removed from our database.',
         'mail_message_sig_line1' => 'Live long and prosper',
-        'mail_message_sig_line2' => 'The STFC team',
-        'mail_subject_reg' => 'Star Trek: Frontline Combat - Registration completed',
+        'mail_message_sig_line2' => 'The STFC2 Team',
+        'mail_subject_reg' => 'Star Trek: Frontline Combat 2 - Registration completed',
         'there_are' => 'There are',
         'on' => 'on',
         
@@ -254,8 +254,8 @@ $loc_strings = array(
          </ul>',
          
          // activate.php strings
-        'activate_title' => 'ST: Frontline Combat - Account activation',
-        'activate_descr' => 'STFC: Account activation confirmation page.',
+        'activate_title' => 'Star Trek: Frontline Combat 2 - Account activation',
+        'activate_descr' => 'STFC2: Account activation confirmation page.',
         'account_activation' => 'Account activation',
         'activate_error_title' => 'Error activating account',
         'error_missing_info' => 'At least one of the following information is missing:<ul><li>Galaxy</li><li>User ID</li><li>Activation code</li></ul>',
@@ -265,19 +265,19 @@ $loc_strings = array(
         'error_already_activated' => 'The player has already been activated.',
         'error_mysql_update' => 'Internal error in SQL UPDATE, please Contact Us.',
         'activate_ok_title' => 'Your account has been successfully activated!',
-        'account_activated' => 'Now you can use your login and password.<br /><br />Before entering the world of STFC, a pearl of wisdom for a successful game:',
+        'account_activated' => 'Now you can use your login and password.<br /><br />Before entering the world of STFC2, a pearl of wisdom for a successful game:',
         
         // delete.php strings
-        'delete_title' => 'ST: Frontline Combat - Account deletion',
-        'delete_descr' => 'STFC: Account deletion confirmation page.',
+        'delete_title' => 'Star Trek: Frontline Combat 2 - Account deletion',
+        'delete_descr' => 'STFC2: Account deletion confirmation page.',
         'account_deletion' => 'Account deletion',
         'delete_error_title' => 'Error deleting account',
         'delete_ok_title' => 'Your account deletion has been confirmed.',
         'account_deleted' => 'It will be removed with the calculation of the next tick (maximum 3 minutes).',
         
         // stats.php strings
-        'stats_title' => 'Star Trek: Frontline Combat - Statistics',
-        'stats_descr' => 'STFC: Pagina in cui vengono mostrate alcune statistiche di uptime del server e ed informazioni sulle galassie di gioco, i punti accumulati, i pianeti presenti, le alleanze e via dicendo.',
+        'stats_title' => 'Star Trek: Frontline Combat 2 - Statistics',
+        'stats_descr' => 'STFC2: Statistics Page from Users and Galaxy.',
         'stats' => 'Statistics',
         'cpu_usage' => 'Usage:',
         'total_ram' => 'Total RAM:',
@@ -302,35 +302,22 @@ $loc_strings = array(
         'points_by_planet' => '&oslash; by planet:',
         
         // spende.php strings
-        'donation_title' => 'Star Trek: Frontline Combat - Support STFC!',
-        'donation_descr' => 'STFC: Page where you can make a donation with which to support the game and the work done by the staff.',
-        'donation' => 'Supporta Star Trek: Frontline Combat!',
-        'donation_statement' => '<p>Cari colleghi e giocatori,<br><br>
-         a seguito di alcune defezioni nello staff tecnico che da a tutti la possibilit&agrave;
-         di divertirci con <b>Star Trek Frontline Combat</b>,
-         le spese di gestione del server stanno diventando poco gestibili.</p>
-         <p>Tenteremo per quanto possibile di sostenere la situazione, tuttavia
-         il rischio di chiusura del server &egrave; tristemente concreto.</p>
-         <p>Dunque ogni contributo spontaneo &egrave; assolutamente benaccetto!
-         Visto il numero di utenti, basterebbe davvero poco da ciascuno per
-         scongiurare il rischio di chiusura: pensate solo a quanto costano
-         normalmente i videogiochi ed eventuali abbonamenti per giocare online,
-         credo che di fronte a queste cifre diventi accettabile "<i>offrir da
-         bere</i>" a chi senza aver mai chiesto nulla si &egrave; sempre
-         prodigato a mantenere attivo il sito per il vostro divertimento.<p>
-         <p>Purtroppo non sempre si pu&ograve; solo donare, per quanto bello,
-         a volte ci si trova nelle condizioni di dover cortesemente chiedere...
-         sperando di avere risposte positive dalle persone presenti dietro ai
-         giocatori che si &egrave; iniziato a stimare nel nostro piccolo spazio
-         virtuale.</p>
-         <p>Se la generosit&agrave; di tutti dovesse superare le aspettative,
-         ovviamente un eventuale eccesso verrebbe reinvestito nel potenziamento
-         del server, oppure nel pagamento degli anni successivi.</p>
-         <p>Grazie a tutti e buon gioco!</p>',
+        'donation_title' => 'Star Trek: Frontline Combat 2 - Support STFC2!',
+        'donation_descr' => 'STFC2: Page where you can make a donation with which to support the game and the work done by the staff.',
+        'donation' => 'Support Star Trek: Frontline Combat 2!',
+        'donation_statement' => '<p>Support STFC2 by a Donation.<br><br>
+         Star Trek Frontline Combat 2 is a free to play Multiuser Borwsergame.</p>
+         <p>The Development of the Game are from different Workers over the Time.</p>
+         <p>This is Open Source, the Way of make a Game better. And the the
+         Way to hold it in the past, now and Future free to play.
+         If you want support STFC2 and you are not a Developer, you can make here
+         a Donation via PayPal.</p>
+         Donation are full use to pay needet things like Server, power and others.
+         <p>Thanks a lott for your Donation</p>',
          
          // success.php strings
-        'success_title' => 'Star Trek: Frontline Combat - Donation made',
-        'success_descr' => 'STFC: Confirmation page for the donation made successfully.',
+        'success_title' => 'Star Trek: Frontline Combat 2 - Donation made',
+        'success_descr' => 'STFC2: Confirmation page for the donation made successfully.',
         'thank_you' => 'Thank you for your donation!',
         'transaction' => '<p>Thank you for your donation.</p>
          <p>The transaction has been completed and a receipt for your purchase has
@@ -353,11 +340,11 @@ $loc_strings = array(
           noch mehr.<br> Nachdem deine Welt erstellt wurde, baue neue Kolonien um deine Macht zu steigern.
           Baue Handelsschiffe wie auch Kampfschiffe um das Universum mit anderen spielern zu erkunden und zu bek&auml;mpfen.
           Ernkunde bereiche im Universum in denen noch kein anderer jemals war!',
-        'fist_membership' => 'Site member of the Federazione Italiana Siti Trek',
+        'fist_membership' => 'Mitglied der F&ouml;deration',
 
         // login.php strings
         'login_title' => 'Star Trek: Frontline Combat 2 - Einloggen',
-        'login_descr' => 'STFC2: Seite zum Einloggen in die Galaxie Bobby Brown.',
+        'login_descr' => 'STFC2: Seite zum Einloggen in die Galaxie.',
         'login' => 'Einloggen',
         'user_login' => 'Einloggen:',
         'password' => 'Passwort:',
@@ -371,7 +358,7 @@ $loc_strings = array(
         'lost_password_title' => 'Star Trek: Frontline Combat 2 - Passwort wiederherstellen',
         'lost_password_descr' => 'STFC2: Seite um ein neues Passwort anzuforden.',
         'password_recovery' => 'Passwort wiederherstellen',
-        'error_wrong_name_or_login' => 'Das folgende Problem ist aufgetreten:<br />Player&#146;s Name oder Loginexistiert nicht.',
+        'error_wrong_name_or_login' => 'Das folgende Problem ist aufgetreten:<br />Player&#146;s Name oder Login existiert nicht.',
         'error_wrong_email' => 'Das folgende Problem ist aufgetreten:<br>Email Adresse existiert nicht.',
         'mail_message_lp1' => 'Sie haben ein neus Passwort angefordert.',
         'mail_message_lp2' => 'Versuchen sie sich nun mit den neun Passwort einzuloggen:',
@@ -417,8 +404,8 @@ $loc_strings = array(
          Die F&ouml;derationsschiffe haben die meist resistenten Schilde unter allen Schiffen in der Galaxie.
          Die Produktion von Ressourcen und Truppen ist im Durchschitt der Galaxie.
          Im Vergleich zu anderen Rassen, hat der Verband gute technologische Forschungswerkzeuge.<br>
-         Die Spieler von dieser Rasse beginnt mit gleicher Wahrscheinlichkeit von dem Alpha, Beta und
-	Gamma Quadranten, kaum aus dem Delta-Quadranten.<br>
+         Die Spieler von dieser Rasse beginnt mit gleicher Wahrscheinlichkeit von dem Alpha, Beta und 
+		 Gamma Quadranten, kaum aus dem Delta-Quadranten.<br>
          <i>Empfohlen f&uuml;r neue Spieler.</i>',
         'race1_desc' => 'Die st&auml;rke der Romulaner ist, schnell und bei geringen Kosten
          Schiffe und Truppen zu bauen. Sie haben eine sehr niedrige Rate der Produktion von Dilitium.

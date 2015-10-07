@@ -137,7 +137,7 @@ define ("GER_TEXT57",'besteht seit:');
 
 define ("GER_TEXT58",'Signatur:');
 
-define ("GER_TEXT59",'Gallery:');
+define ("GER_TEXT59",'Gallerie:');
 
 define ("GER_TEXT60",'Nach Rang sortieren');
 
@@ -205,33 +205,33 @@ define ("GER_TEXT91", 'Urlaub');
 
 define ("GER_TEXT92", 'Auszeichnung');
 
-define ("GER_TEXT93", 'Borg Faction');
+define ("GER_TEXT93", 'Borg Fraktion');
 
-define ("GER_TEXT94", 'Primary Planets (40 pts)');
+define ("GER_TEXT94", 'Prim&auml;re Planeten (40 pts)');
 
-define ("GER_TEXT95", 'Secondary Planets (15 pts)');
+define ("GER_TEXT95", 'Sekund&auml;re Planeten (15 pts)');
 
-define ("GER_TEXT96", 'Top Ten Borg Fighters');
+define ("GER_TEXT96", 'Top Ten Borg Krieger');
 
-define ("GER_TEXT97", 'Threat Rating:');
+define ("GER_TEXT97", 'Gefahrenstufe:');
 
-define ("GER_TEXT98", 'Siedler Faction');
+define ("GER_TEXT98", 'Siedler Fraktion');
 
-define ("GER_TEXT99", 'Academy Planets');
+define ("GER_TEXT99", 'Akademie Planeten');
 
-define ("GER_TEXT100", 'Shipyard Planets');
+define ("GER_TEXT100", 'Schiffswerft Planeten');
 
-define ("GER_TEXT101", 'Mining Planets');
+define ("GER_TEXT101", 'Ress. Abbau Planeten');
 
-define ("GER_TEXT102", 'Relation Value');
+define ("GER_TEXT102", 'Bezugs Wert');
 
-define ("GER_TEXT103", 'Stars Explored:');
+define ("GER_TEXT103", 'Sonnensysteme erkundet:');
 
-define ("GER_TEXT104", 'First Contacts:');
+define ("GER_TEXT104", 'Erste Kontakte:');
 
-define ("GER_TEXT105", 'Settlers Made:');
+define ("GER_TEXT105", 'Siedler gemacht:');
 
-define ("GER_TEXT106", 'Settlers Befriended:');
+define ("GER_TEXT106", 'Siedler befreundet:');
 
 
 //English
