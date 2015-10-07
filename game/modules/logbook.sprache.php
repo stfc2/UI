@@ -465,7 +465,7 @@ define ("GER_TEXT217", ' in arrivo intorno al pianeta ');
         
 define ("GER_TEXT218", 'Segue il dettaglio delle navi avvistate:');
 
-define ("GER_TEXT219", 'Das auf die Rettungsmission geschickte Schiff hat nicht genug Platz f&uuml;r das Außenteam!!!');
+define ("GER_TEXT219", 'Das auf die Rettungsmission geschickte Schiff hat nicht genug Platz f&uuml;r das Aussenteam!!!');
 
 
 //English
