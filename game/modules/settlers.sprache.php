@@ -74,6 +74,14 @@ define ("GER_TEXT29", 'Minen');
 
 define ("GER_TEXT30", 'Colony Facts');
 
+define ("GER_TEXT31", '10 Most valued Relations');
+
+define ("GER_TEXT32", 'Colony Techs Report');
+
+define ("GER_TEXT33", '<b>upgradeable</b>');
+
+define ("GER_TEXT34", '<b>upgradeable</b>, work queue free in: ');
+
 
 //INGLESE
 define ("ENG_TEXT0",'Settlers Colonies:');
@@ -130,6 +138,14 @@ define ("ENG_TEXT29", 'Mines');
 
 define ("ENG_TEXT30", 'Colony Facts');
 
+define ("ENG_TEXT31", '10 Most valued Relations');
+
+define ("ENG_TEXT32", 'Colony Techs Report');
+
+define ("ENG_TEXT33", '<b>upgradeable</b>');
+
+define ("ENG_TEXT34", '<b>upgradeable</b>, work queue free in: ');
+
 
 // ITALIANO
 define ("ITA_TEXT0",'Colonie Indipendenti');
@@ -185,5 +201,13 @@ define ("ITA_TEXT28", 'Cantiere');
 define ("ITA_TEXT29", 'Miniera');
 
 define ("ITA_TEXT30", 'Dettaglio Colonia');
+
+define ("ITA_TEXT31", 'Dieci migliori relazioni Colonia');
+
+define ("ITA_TEXT32", 'Dettaglio tecnologie Colonia');
+
+define ("ITA_TEXT33", '<b>aggiornabile</b>');
+
+define ("ITA_TEXT34", '<b>aggiornabile</b>, coda di lavoro disponibile tra: ');
 
 ?>
