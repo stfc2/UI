@@ -20,7 +20,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-global $RACE_DATA, $SETL_EVENTS;
+global $RACE_DATA, $SETL_EVENTS, $TECH_NAME, $ACTUAL_TICK, $cfg_data;
 
 $game->init_player();
 
@@ -376,6 +376,7 @@ elseif($sub_action == constant($game->sprache("TEXT1")))
 }
 elseif ($sub_action == constant($game->sprache("TEXT30"))) {
     // New Settlers Colony Detail panel
+    $watch_on_planet = false;
     // Step 1: Loading planet
     $sql = 'SELECT planet_name
             FROM planets 
@@ -394,6 +395,7 @@ elseif ($sub_action == constant($game->sprache("TEXT30"))) {
     foreach($q3_detail as $q3_item)
     {
         if($SETL_EVENTS[$q3_item['event_code']][1] && ($game->player['user_id'] != $q3_item['user_id'])) {continue;}
+        $watch_on_planet = true;
         $game->out('<tr align=left><td><i>'.$SETL_EVENTS[$q3_item['event_code']][0].'</i></td>');
         $game->out(($game->player['user_id'] == $q3_item['user_id'] ? '<td><i>('.$q3_item['count_crit_ok'].' / '.$q3_item['count_ok'].' / '.$q3_item['count_ko'].' / '.$q3_item['count_crit_ko'].')</i></td></tr>' : '</tr>'));
         }    
@@ -401,6 +403,62 @@ elseif ($sub_action == constant($game->sprache("TEXT30"))) {
         $game->out('<tr align=left><td>'.get_diplo_str((int)$q2_item['log_code']).'</td><td>'.date("d.m.y", $q2_item['timestamp']).'</td><td>'.$q2_item['mood_modifier'].'</td></tr>');
     }
     $game->out('</table>');
+    if($watch_on_planet) {
+        // Mood Section
+        $index = 0;
+        $sql = 'SELECT sr.user_id, u.user_name, a.alliance_tag, u.user_race, SUM(mood_modifier) as mood_value
+                FROM (settlers_relations sr)
+                LEFT JOIN (user u) ON sr.user_id = u.user_id
+                LEFT JOIN (alliance a) ON a.alliance_id = u.user_alliance
+                WHERE sr.planet_id = '.$detail_id.'
+                      GROUP BY sr.user_id ORDER BY mood_value
+                LIMIT 0,10';
+        $user_mood_query = $db->queryrowset($sql);
+        $user_mood_data = array();
+        foreach ($user_mood_query AS $user_mood_item) {
+            $user_mood_data[$index] = $user_mood_item;
+            $index++;
+        }
+        $game->out('<br><br><br><center><span class="caption">'.(constant($game->sprache("TEXT31"))).' &#171;'.$q1_detail['planet_name'].'&#187;</span><br><br>
+                    <table class="style_outer" width="90%" align="center" border="0" cellpadding="2" cellspacing="2">
+                    <tr><td align="center">
+                    <table class="style_inner" width="60%" align="center" border="0" cellpadding="1" cellspacing="1">');
+        foreach ($user_mood_data AS $user_mood_item) {
+            $game->out('<tr><td width="30%" align="left"><b>'.$user_mood_item['user_name'].'</b> (<i>'.$RACE_DATA[$user_mood_item['user_race']][0].'</i>)</td><td width="15%" align="center">'.(isset($user_mood_item['alliance_tag']) ? '['.$user_mood_item['alliance_tag'].']' : '&nbsp;').'</td><td align="center"> Mood: '.$user_mood_item['mood_value'].'</td></tr>');
+        }
+        $game->out('</table></td></tr></table');
+        $game->out('<br><br><br><center><span class="caption">'.(constant($game->sprache("TEXT32"))).' &#171;'.$q1_detail['planet_name'].'&#187;</span><br><br>
+                    <table class="style_outer" width="90%" align="center" border="0" cellpadding="2" cellspacing="2">
+                    <tr><td align="center">
+                    <table class="style_inner" width="80%" align="center" border="0" cellpadding="1" cellspacing="1">');
+        $sql='SELECT MAX(research_1) as rescap1, MAX(research_2) as rescap2, MAX(research_3) as rescap3,
+                     MAX(research_4) as rescap4, MAX(research_5) as rescap5
+              FROM planets WHERE planet_owner = '.$game->player['user_id'];
+        $rc_q = $db->queryrow($sql);
+        $sql='SELECT research_1, research_2, research_3, research_4, research_5 FROM planets WHERE planet_id = '.$detail_id;
+        $rd_q = $db->queryrow($sql);
+        for($i = 0; $i < 5; $i++) {
+            if($RACE_DATA[$game->player['user_race']][29][$i]) {
+                $sql = 'SELECT research_start, research_finish
+                        FROM scheduler_research WHERE planet_id = '.$detail_id.'
+                        AND player_id = '.INDEPENDENT_USERID.' AND research_id = '.$i;
+                $q_time = $db->queryrow($sql);
+                if(isset($q_time['research_finish']) && !empty($q_time['research_finish'])) {
+                    $actual_lvl = $rd_q['research_'.($i+1)] + 1;
+                    if($actual_lvl < 9 && $rd_q['research_'.($i+1)] < $rc_q['rescap'.($i+1)]) {
+                        $game->out('<tr><td widht="35%">'.$TECH_NAME[13][$i].'</td><td width="65%" align="center"> '.(constant($game->sprache("TEXT34"))).(format_time(($q_time['research_finish'] - $ACTUAL_TICK)*TICK_DURATION)).'</td></tr>');
+                    }
+                }
+                else {
+                    if($rd_q['research_'.($i+1)] < 9 && $rd_q['research_'.($i+1)] < $rc_q['rescap'.($i+1)]) {
+                        $game->out('<tr><td widht="35%">'.$TECH_NAME[13][$i].'</td><td width="65%" align="center"> '.(constant($game->sprache("TEXT33"))).'</td></tr>');
+                    }
+                }
+            }            
+        }
+        $game->out('</table></td></tr></table');
+    }
+    
 }
 
 ?>
