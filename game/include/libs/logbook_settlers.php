@@ -214,6 +214,9 @@ function display_logbook($log) {
 
             switch($log['log_data'][5])
             {
+                case -5:
+                    $game->out(constant($game->sprache("TEXT219")));
+                    break;
                 case -4:
                     $game->out(constant($game->sprache("TEXT200")));
                 break;

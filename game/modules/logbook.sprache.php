@@ -465,6 +465,8 @@ define ("GER_TEXT217", ' in arrivo intorno al pianeta ');
         
 define ("GER_TEXT218", 'Segue il dettaglio delle navi avvistate:');
 
+define ("GER_TEXT219", 'Ship sent to rescue mission has not enough room onboard for the away team!!!');
+
 
 //English
 define ("ENG_TEXT0", 'First page');
@@ -910,6 +912,8 @@ define ("ENG_TEXT217", ' in arrivo intorno al pianeta ');
         
 define ("ENG_TEXT218", 'Segue il dettaglio delle navi avvistate:');
 
+define ("ENG_TEXT219", 'Ship sent to rescue mission has not enough room onboard for the away team!!!');
+
 
 //Italian
 define ("ITA_TEXT0", 'Prima pagina');
@@ -1354,4 +1358,6 @@ define ("ITA_TEXT216", 'comunica l&#146;avvistamento di navi appartenenti a ');
 define ("ITA_TEXT217", ' in arrivo intorno al pianeta ');
         
 define ("ITA_TEXT218", 'Segue il dettaglio delle navi avvistate:');
+
+define ("ITA_TEXT219", 'La nave incaricata del recupero non ha spazio sufficiente a bordo per ospitare la squadra a terra!!!');
 ?>
