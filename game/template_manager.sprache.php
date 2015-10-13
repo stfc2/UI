@@ -34,9 +34,9 @@ define ("GER_TEXT5", '<< Zur&uuml;ck');
 
 define ("GER_TEXT6", 'R&uuml;ckg&auml;ngig');
 
-define ("GER_TEXT7", 'Übernehmen');
+define ("GER_TEXT7", '&Uuml;bernehmen');
 
-define ("GER_TEXT8", 'Übersicht der verf&uuml;gbaren Skins:');
+define ("GER_TEXT8", '&Uuml;bersicht der verf&uuml;gbaren Skins:');
 
 define ("GER_TEXT9", 'von');
 

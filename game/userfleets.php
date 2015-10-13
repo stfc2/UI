@@ -71,9 +71,9 @@ if (file_exists($image_url)) {
 switch($game->player['language'])
 {
     case 'GER':
-        $updated = 'Updated at ';
-        $lost_image = 'Lost image!';
-        $fleets_position = 'Fleets position:';
+        $updated = 'Aktualisiert am ';
+        $lost_image = 'Fehlendes Bild!';
+        $fleets_position = 'Flotten Positionen:';
     break;
     case 'ITA':
         $updated = 'Aggiornata il ';

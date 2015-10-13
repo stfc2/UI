@@ -84,8 +84,8 @@ if(isset($_POST['user_notepad']))
     switch($game->player['language'])
     {
 	    case 'GER':
-		    $title = 'Submitted new notepad data:';
-		    $button ='Fenster schlie&beta;en';
+		    $title = 'Notizblock Daten gesendet:';
+		    $button ='Fenster schliessen';
 	    break;
 	    case 'ENG':
 		    $title = 'Submitted new notepad data:';
@@ -102,8 +102,8 @@ else
     switch($game->player['language'])
     {
 	    case 'GER':
-		    $title = 'Notepad data NOT submitted!';
-		    $button ='Fenster schlie&beta;en';
+		    $title = 'Notizblock Daten nicht gesendet!';
+		    $button ='Fenster schliessen';
 	    break;
 	    case 'ENG':
 		    $title = 'Notepad data NOT submitted!';
@@ -122,13 +122,13 @@ else
 <html>
 
 <head>
-  <title>Star Trek: Frontline Combat</title>
+  <title>Star Trek: Frontline Combat 2</title>
 
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
-  <meta name="description" content="ST: Frontline Combat is a free browser based multiplayer game, take the role of different races and peoples of the universe and rewrite history.">
+  <meta name="description" content="Star Trek: Frontline Combat 2 is a free browser based multiplayer game, take the role of different races and peoples of the universe and rewrite history.">
   <meta name="keywords" content="star trek, startrek, galaxy, conquest, universe, game, gratis, kostenlos, spiel, multiplayer, strategy, strategie, onlinegame, bbg, free, browser, based, galaxie, universum, klingon, klingonen, federation, f&ouml;deration">
   <meta name="author" content="Florian Brede & Philipp Schmidt">
   <meta name="publisher" content="Florian Brede & Philipp Schmidt">

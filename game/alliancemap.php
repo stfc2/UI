@@ -91,7 +91,7 @@ switch($game->player['language'])
 {
 	case 'GER':
 		$title = 'Karte von Allianz ['.$_GET['alliance'].']:';
-		$created = 'Erstellt der ';
+		$created = 'Erstellt am ';
 	break;
 	case 'ITA':
 		$title = 'Mappa dell&#146;alleanza ['.$_GET['alliance'].']:';

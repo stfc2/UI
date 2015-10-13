@@ -556,7 +556,7 @@ $loc_strings = array(
         'error_already_activated' => 'Der Spieler ist bereits aktiviert.',
         'error_mysql_update' => 'Interner Datenbank Fehler. Bitte an den Support wenden.',
         'activate_ok_title' => 'Dein Account wurde erfolgreich aktiviert!',
-        'account_activated' => 'Nun kannst du deinen Login und Passwort verwenden.<br /><br />Bevor du die Welt von STFC2 erkundest a pearl of wisdom for a successful game:',
+        'account_activated' => 'Nun kannst du dein Login und Passwort verwenden.<br /><br />Bevor du die Galaxie von STFC2 erkundest noch eine Perle der Weisheit für ein erfolgreiches Spiel:',
 
         // delete.php strings
         'delete_title' => 'Star Trek: Frontline Combat 2 - Account entfernen',
@@ -640,8 +640,8 @@ $loc_strings = array(
         'fist_membership' => 'Sito membro della Federazione Italiana Siti Trek',
 
         // login.php strings
-        'login_title' => 'Star Trek: Frontline Combat - Login',
-        'login_descr' => 'STFC: Pagina per effettuare la login alla galassia di gioco a cui si e` iscritti (galassia Brown Bobby o Fried Egg).',
+        'login_title' => 'Star Trek: Frontline Combat 2 - Login',
+        'login_descr' => 'STFC2: Pagina per effettuare la login alla galassia di gioco a cui si e` iscritti (galassia Brown Bobby o Fried Egg).',
         'login' => 'Login',
         'user_login' => 'Login:',
         'password' => 'Password:',
@@ -652,8 +652,8 @@ $loc_strings = array(
         'submit' => 'Conferma',
 
         // lost_password.php strings
-        'lost_password_title' => 'Star Trek: Frontline Combat - Recupero password',
-        'lost_password_descr' => 'STFC: Pagina con cui richiedere al sistema una nuova password in sostituzione a quella dimenticata.',
+        'lost_password_title' => 'Star Trek: Frontline Combat 2 - Recupero password',
+        'lost_password_descr' => 'STFC2: Pagina con cui richiedere al sistema una nuova password in sostituzione a quella dimenticata.',
         'password_recovery' => 'Recupero password',
         'error_wrong_name_or_login' => 'Si &egrave; verificato il seguente problema:<br>Il nome utente o il nome login &egrave; errato.',
         'error_wrong_email' => 'Si &egrave; verificato il seguente problema:<br>L&#146;indirizzo email &egrave; errato.',
@@ -667,8 +667,8 @@ $loc_strings = array(
         'password_request' => 'Richiedi password',
 
         // register.php strings
-        'register_title' => 'Star Trek: Frontline Combat - Registrazione',
-        'register_descr' => 'STFC: Pagina in cui effettuare la registrazione ad una galassia di gioco fornendo i dettagli del proprio account, quali nick, email, sesso, razza scelta, data di nascita ecc.',
+        'register_title' => 'Star Trek: Frontline Combat 2 - Registrazione',
+        'register_descr' => 'STFC2: Pagina in cui effettuare la registrazione ad una galassia di gioco fornendo i dettagli del proprio account, quali nick, email, sesso, razza scelta, data di nascita ecc.',
         'registration' => 'Registrazione',
         'galaxy_selection' => '(1/2) Scegli la galassia:',
         'version' => 'Versione:',
@@ -840,8 +840,8 @@ $loc_strings = array(
         'mail_message_reg3' => 'Se non hai eseguito la registrazione, ignora questa email.',
         'mail_message_reg4' => 'Dopo 48 ore, il tuo indirizzo email verrà automaticamente rimosso dal nostro database.',
         'mail_message_sig_line1' => 'Lunga vita e prosperità',
-        'mail_message_sig_line2' => 'Il team STFC',
-        'mail_subject_reg' => 'Star Trek: Frontline Combat - Registrazione effettuata',
+        'mail_message_sig_line2' => 'Il team STFC2',
+        'mail_subject_reg' => 'Star Trek: Frontline Combat 2 - Registrazione effettuata',
         'there_are' => 'Ci sono',
         'on' => 'su',
 
@@ -860,8 +860,8 @@ $loc_strings = array(
          </ul>',
 
         // activate.php strings
-        'activate_title' => 'ST: Frontline Combat - Attivazione account',
-        'activate_descr' => 'STFC: Pagina di conferma attivazione account.',
+        'activate_title' => 'Star Trek: Frontline Combat 2 - Attivazione account',
+        'activate_descr' => 'STFC2: Pagina di conferma attivazione account.',
         'account_activation' => 'Attivazione account',
         'activate_error_title' => 'Errore nell&#146;attivazione dell&#146;account',
         'error_missing_info' => 'Almeno una delle seguenti informazioni risulta mancante:<ul><li>galassia</li><li>ID utente</li><li>codice di conferma</li></ul>',
@@ -874,16 +874,16 @@ $loc_strings = array(
         'account_activated' => 'Ora puoi usare le tue login e password.<br><br>Prima di entrare nel mondo di STFC, una perla di saggezza per un gioco di successo:',
         
         // delete.php strings
-        'delete_title' => 'ST: Frontline Combat - Cancellazione account',
-        'delete_descr' => 'STFC: Pagina di conferma eliminazione account.',
+        'delete_title' => 'Star Trek: Frontline Combat 2 - Cancellazione account',
+        'delete_descr' => 'STFC2: Pagina di conferma eliminazione account.',
         'account_deletion' => 'Cancellazione account',
         'delete_error_title' => 'Errore nella cancellazione dell&#146;account',
         'delete_ok_title' => 'La cancellazione del tuo account &egrave; stata confermata.',
         'account_deleted' => 'Sar&agrave; definitivamente rimosso con il calcolo del prossimo tick (massimo in 3 minuti).',
 
         // stats.php strings
-        'stats_title' => 'Star Trek: Frontline Combat - Statistiche',
-        'stats_descr' => 'STFC: Pagina in cui vengono mostrate alcune statistiche di uptime del server e ed informazioni sulle galassie di gioco, i punti accumulati, i pianeti presenti, le alleanze e via dicendo.',
+        'stats_title' => 'Star Trek: Frontline Combat 2 - Statistiche',
+        'stats_descr' => 'STFC2: Pagina in cui vengono mostrate alcune statistiche di uptime del server e ed informazioni sulle galassie di gioco, i punti accumulati, i pianeti presenti, le alleanze e via dicendo.',
         'stats' => 'Statistiche',
         'cpu_usage' => 'Utilizzo:',
         'total_ram' => 'RAM totale:',
@@ -908,12 +908,12 @@ $loc_strings = array(
         'points_by_planet' => '&oslash; per pianeta:',
 
         // spende.php strings
-        'donation_title' => 'Star Trek: Frontline Combat - Supporta STFC!',
-        'donation_descr' => 'STFC: Pagina in cui e` possibile effettuare una donazione ad importo libero con cui supportare il gioco ed il lavoro svolto dallo staff.',
-        'donation' => 'Supporta Star Trek: Frontline Combat!',
+        'donation_title' => 'Star Trek: Frontline Combat 2 - Supporta STFC2!',
+        'donation_descr' => 'STFC2: Pagina in cui e` possibile effettuare una donazione ad importo libero con cui supportare il gioco ed il lavoro svolto dallo staff.',
+        'donation' => 'Supporta Star Trek: Frontline Combat 2!',
         'donation_statement' => '<p>Cari colleghi e giocatori,<br><br>
          a seguito di alcune defezioni nello staff tecnico che da a tutti la possibilit&agrave;
-         di divertirci con <b>Star Trek Frontline Combat</b>,
+         di divertirci con <b>Star Trek Frontline Combat 2</b>,
          le spese di gestione del server stanno diventando poco gestibili.</p>
          <p>Tenteremo per quanto possibile di sostenere la situazione, tuttavia
          il rischio di chiusura del server &egrave; tristemente concreto.</p>
@@ -935,8 +935,8 @@ $loc_strings = array(
          <p>Grazie a tutti e buon gioco!</p>',
 
          // success.php strings
-        'success_title' => 'Star Trek: Frontline Combat - Donazione effettuata',
-        'success_descr' => 'STFC: Pagina di conferma per la donazione effettuata con successo.',
+        'success_title' => 'Star Trek: Frontline Combat 2 - Donazione effettuata',
+        'success_descr' => 'STFC2: Pagina di conferma per la donazione effettuata con successo.',
         'thank_you' => 'Grazie per la tua donazione!',
         'transaction' => '<p>Grazie per aver effettuato la tua donazione.</p>
          <p>La transazione &egrave; stata completata e una ricevuta dell&#146;acquisto

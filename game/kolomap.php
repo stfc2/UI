@@ -100,8 +100,8 @@ if (file_exists($image_url))
 switch($game->player['language'])
 {
 	case 'GER':
-		$title = 'Karte von kolonisierbar Planeten:';
-		$created = 'Erstellt der ';
+		$title = 'Karte von kolonisierbaren Planeten:';
+		$created = 'Erstellt am ';
 	break;
 	case 'ITA':
 		$title = 'Mappa pianeti colonizzabili:';

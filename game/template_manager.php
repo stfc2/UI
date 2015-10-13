@@ -427,7 +427,7 @@ echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
 <head>
 
-  <title>Star Trek: Frontline Combat - Template Manager</title>
+  <title>Star Trek: Frontline Combat 2 - Template Manager</title>
 
 
 
@@ -439,7 +439,7 @@ echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
 
 
-  <meta name="description" content="ST: Frontline Combat is a free browser based multiplayer game, take the role of different races and peoples of the universe and rewrite history.">
+  <meta name="description" content="Star Trek: Frontline Combat 2 is a free browser based multiplayer game, take the role of different races and peoples of the universe and rewrite history.">
 
   <meta name="keywords" content="star trek, startrek, galaxy, conquest, universe, game, gratis, kostenlos, spiel, multiplayer, strategy, strategie, onlinegame, bbg, free, browser, based, galaxie, universum, klingon, klingonen, federation, f&ouml;deration">
 
@@ -543,7 +543,7 @@ echo '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
 
 
-<center><span style="font-family: Arial,serif; font-size: 16pt; font-weight: bold; text-decoration: underline;">Star Trek: Frontline Combat - Template Manager</span></center><br><br>
+<center><span style="font-family: Arial,serif; font-size: 16pt; font-weight: bold; text-decoration: underline;">Star Trek: Frontline Combat 2 - Template Manager</span></center><br><br>
 
 
 

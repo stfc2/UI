@@ -59,9 +59,9 @@ $size=$_GET['size'];
 switch($game->player['language'])
 {
     case 'GER':
-        $not_member = 'You aren&#146;t a member of this alliance!';
-        $not_allowed = 'You aren&#146;t allowed to use this function!';
-        $fleets_position = 'Fleets position:';
+        $not_member = 'Sie sind kein Mitglied dieser Allianz!';
+        $not_allowed = 'Sie haben keine Berechtigung, diese Funktion zu verwenden!';
+        $fleets_position = 'Flotten-Positionen:';
     break;
     case 'ITA':
         $not_member = 'Non sei un membro di quest&#146;alleanza!';

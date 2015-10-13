@@ -71,12 +71,12 @@ if (file_exists($image_url))
 switch($game->player['language'])
 {
 	case 'GER':
-		$title = 'Karte von Bekannte Systeme:';
-		$created = 'Erstellt der ';
+		$title = 'Karte von Bekannten Systemen:';
+		$created = 'Erstellt am ';
 		$legend = 'Legende:';
-		$tknown_systems = 'Erkundet Systeme';
-		$tallied_systems = 'Systeme mit mindestens einem Planeten, die ein Mitglied Ihres Allianz';
-		$tunknown_systems = 'Unbekannt Systeme';
+		$tknown_systems = 'Erkundete Systeme';
+		$tallied_systems = 'Systeme mit mindestens einem Planeten, von einem Mitglied Ihrer Allianz';
+		$tunknown_systems = 'Unbekannte Systeme';
 	break;
 	case 'ITA':
 		$title = 'Mappa dei sistemi conosciuti:';
