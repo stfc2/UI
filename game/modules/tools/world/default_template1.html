@@ -1,8 +1,8 @@
 <!-- Skin STFC2 Modified -->
 <!-- @Version 1.8 -->
 <!-- Changelog: -->
-<!-- 1.1 ||Allyforum hinzugefügt|| -->
-<!-- 1.2 ||Link Bilder enfernt und Überschussscript hinzugefügt|| -->
+<!-- 1.1 ||Allyforum hinzugefï¿½gt|| -->
+<!-- 1.2 ||Link Bilder enfernt und ï¿½berschussscript hinzugefï¿½gt|| -->
 <!-- 1.3 Fully localized -->
 <!-- 1.4 Added link to module ships -->
 <!-- 1.5 Added Planets DB position to selected class -->
@@ -120,7 +120,9 @@ hr { border: 1px solid #c0c0c0; }
 <table cellspacing="0" cellpadding="0" width="1000" align="center" valign="top" border="0" bgcolor="{skin_farbe}">
 <tr>
 <td valign="top" align="left" width="125">
-<center><span class="sub_caption2">{B_COMMAND}</span></center><br>
+<center><span class="sub_caption2">{B_COMMAND}</span><br><br>
+<span class="sub_caption2">{T_STARDATE}</span><br>
+<span class="text_medium">{STARDATE}</span><br><br>
 <form name="planet_switch_form" method="post" action="{U_PLANETSWITCH}">
 <input accesskey=y class=button onclick="javascript:void(document.planet_switch_form.switch_active_planet.selectedIndex=document.planet_switch_form.switch_active_planet.selectedIndex-1);document.planet_switch_form.submit()" type=button value=" <- ">
 <!--<input onclick="javascript:void(document.planet_switch_form.switch_active_planet.selectedIndex=document.planet_switch_form.switch_active_planet.selectedIndex-1);document.planet_switch_form.submit();" class="button" value="<<" type="button"><input onclick="javascript:void(document.planet_switch_form.switch_active_planet.selectedIndex=document.planet_switch_form.switch_active_planet.selectedIndex+1);document.planet_switch_form.submit();" class="button" value=">>" type="button">-->
@@ -129,7 +131,7 @@ hr { border: 1px solid #c0c0c0; }
 <!--<input accesskey=y onclick=javascript:void(document.planet_switch_form.switch_active_planet.selectedIndex=document.planet_switch_form.switch_active_planet.selectedIndex-1);document.planet_switch_form.submit() style="height:0; width:0" type=button>
 
 <input accesskey=x onclick=javascript:void(document.planet_switch_form.switch_active_planet.selectedIndex=document.planet_switch_form.switch_active_planet.selectedIndex+1);document.planet_switch_form.submit() style="height:0; width:0" type=button>-->
-</form>
+</form></center>
                 <fieldset><legend>   <span class="text_medium">{T_COLONY}</legend></span>
            <a href={U_HEADQUARTER}>{L_HEADQUARTER}</a><br>
 <a href={U_BUILDINGS}>{L_BUILDINGS}</a><br>
@@ -177,9 +179,9 @@ hr { border: 1px solid #c0c0c0; }
 <br>
 <fieldset><legend><span class="text_medium">{T_NEXTTICK}</span></legend><br>
 <center><span style="color: #ffff00;">{NEXT_TICK_HTML}</span></center><br></fieldset>
-<br>
+<br><br>
 
-<center><span class="text_large"><b>{T_SITTING}</b><br>
+<center><span class="text_large"><b>{T_SITTING}</b><br><br>
 {USER_SITTING}
 </center>
                    
@@ -215,11 +217,9 @@ hr { border: 1px solid #c0c0c0; }
 </td>
 <td valign="top" align="left" width="1" bgcolor="black"> </td>
 <td valign="top" align="left" width="125" >
-<center><span class="sub_caption2">{B_OVERVIEW}</span></center><br>
+<center><span class="sub_caption2">{B_OVERVIEW}</span></center>
 
 <table border=0><tr><td><center>
-
-<span class="sub_caption2">{T_STARDATE}</span><br><span class="text_medium">{STARDATE}</span><br>
 
 <br>
 
@@ -249,7 +249,7 @@ hr { border: 1px solid #c0c0c0; }
 <fieldset><legend><span class="text_medium">{T_TROOPS}</span></legend>
 												<img border=0 src={GFX_PATH}menu_unit1_small.gif> <span class="text_medium"><b><font color=#c0c0c0>{ACTIVE_PLANET_UNIT1}</font></b> / <img border=0 src={GFX_PATH}menu_unit1_small.gif> <b>
 
-                                                               <!-- ÜBERSCHUSS LV1 -->
+                                                               <!-- ï¿½BERSCHUSS LV1 -->
 
                                                                <script language=javascript>
                                                                               var lv1 = ({ACTIVE_PLANET_STRENGTH}-{ACTIVE_PLANET_STRENGTH_REQUIRED})/2
@@ -269,7 +269,7 @@ hr { border: 1px solid #c0c0c0; }
                                                                </script></b></span><br>
                                                <img border=0 src={GFX_PATH}menu_unit2_small.gif><span class="text_medium"> <b><font color=#c0c0c0>{ACTIVE_PLANET_UNIT2}</font></b> / <img border=0 src={GFX_PATH}menu_unit2_small.gif> <b>
 
-                                                               <!-- ÜBERSCHUSS LV2 -->
+                                                               <!-- ï¿½BERSCHUSS LV2 -->
 
                                                                <script language=javascript>
                                                                               var lv2 = ({ACTIVE_PLANET_STRENGTH}-{ACTIVE_PLANET_STRENGTH_REQUIRED})/3
@@ -290,7 +290,7 @@ hr { border: 1px solid #c0c0c0; }
 <img border=0 src={GFX_PATH}menu_unit3_small.gif><span class="text_medium"> <b><font color=#c0c0c0>{ACTIVE_PLANET_UNIT3}</font></b> / 
                                                                <img border=0 src={GFX_PATH}menu_unit3_small.gif> <b>
 
-                                                               <!-- ÜBERSCHUSS LV3 -->
+                                                               <!-- ï¿½BERSCHUSS LV3 -->
 
                                                                <script language=javascript>
                                                                               var lv3 = ({ACTIVE_PLANET_STRENGTH}-{ACTIVE_PLANET_STRENGTH_REQUIRED})/4
