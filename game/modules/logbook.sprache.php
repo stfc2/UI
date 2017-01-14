@@ -804,17 +804,17 @@ define ("ENG_TEXT163", 'benefits from allied diplomatic actions:');
 
 define ("ENG_TEXT164", 'benefits from other members of our race:');
 
-define ("ENG_TEXT165", 'La nostra delegazione diplomatica ha terminato con successo la missione.<br><br>L&#146;accordo ottenuto ha rinforzato il nostro indice di gradimento sul pianeta di:');
+define ("ENG_TEXT165", 'Our diplomatic delegation has successfully completed the mission.<br><br>The agreement obtained strengthened our approval rating on the planet:');
 
-define ("ENG_TEXT166", 'Esiste gi&agrave; un trattato diplomatico con questa colonia!!!');
+define ("ENG_TEXT166", 'There is already a diplomatic treaty with this colony!!!');
 
 define ("ENG_TEXT167", 'Col.');
 
-define ("ENG_TEXT168", 'Saluti dalla Colonia Indipendente ');
+define ("ENG_TEXT168", 'Greetings from independed colony ');
 
-define ("ENG_TEXT169", 'I nostri cantieri hanno ultimato la preparazione di una nave classe ');
+define ("ENG_TEXT169", 'Our shipyards have completed the preparation of a ');
 
-define ("ENG_TEXT170", ', orgoglio e vanto della nostra colonia.<br>L&#146;unit&agrave; ha appena terminato la fase di collaudo e nonostanze l&#146;inesperienza dell&#146;equipaggio &egrave; pronta ad entrare in servizio.<br><br>Dati i buoni rapportano che ci legano, &egrave; nostro desiderio che tale unit&agrave; serva sotto il vostro comando!');
+define ("ENG_TEXT170", 'class ship, pride of our colony.<br>The unit has just completed the testing phase and despite the inexperience of the crew is ready to enter service.<br><br>Thanks to the good relations that bind us, it is our wish that this unit will serve under your command!');
 
 define ("ENG_TEXT171", 'La nostra squadra scientifica ha terminato la missione con esisto favorevole. I laboratori di ricerca sulla colonia stanno gi&agrave; lavorando per mettere in pratica quanto appena scoperto grazie al nostro aiuto.<br><br>Il valore delle nostre relazioni con il pianeta aumenta di ');
 
@@ -1261,7 +1261,7 @@ define ("ITA_TEXT168", 'Saluti dalla Colonia Indipendente ');
 
 define ("ITA_TEXT169", 'I nostri cantieri hanno ultimato la preparazione di una nave classe ');
 
-define ("ITA_TEXT170", ', orgoglio e vanto della nostra colonia.<br>L&#146;unit&agrave; ha appena terminato la fase di collaudo e nonostanze l&#146;inesperienza dell&#146;equipaggio &egrave; pronta ad entrare in servizio.<br><br>Dati i buoni rapportano che ci legano, &egrave; nostro desiderio che tale unit&agrave; serva sotto il vostro comando!');
+define ("ITA_TEXT170", ', orgoglio e vanto della nostra colonia.<br>L&#146;unit&agrave; ha appena terminato la fase di collaudo e nonostante l&#146;inesperienza dell&#146;equipaggio &egrave; pronta ad entrare in servizio.<br><br>Dati i buoni rapportano che ci legano, &egrave; nostro desiderio che tale unit&agrave; serva sotto il vostro comando!');
 
 define ("ITA_TEXT171", 'La nostra squadra scientifica ha terminato la missione con esisto favorevole. I laboratori di ricerca sulla colonia stanno gi&agrave; lavorando per mettere in pratica quanto appena scoperto grazie al nostro aiuto.<br><br>Il valore delle nostre relazioni con il pianeta aumenta di ');
 
