@@ -69,6 +69,7 @@ function display_registration($data = array(), $message = '', $galaxy) {
     if(!isset($data['user_password'])) $data['user_password'] = '';
     if(!isset($data['user_password2'])) $data['user_password2'] = '';
     if(!isset($data['user_email'])) $data['user_email'] = '';
+    if(!isset($data['user_email2'])) $data['user_email2'] = '';
     $race_selected = (isset($data['user_race'])) ? $data['user_race'] : 0;
     $agb_checked = (!empty($data['confirm_agb'])) ? true : false;
     if(!isset($data['user_birthday_day'])) $data['user_birthday_day'] = '';
@@ -134,6 +135,11 @@ function display_registration($data = array(), $message = '', $galaxy) {
           <td><input style="width: 200px;" type="text" name="user_email" value="'.$data['user_email'].'"></td>
         </tr>
 
+        <tr>
+          <td>'.$locale['email_verify'].'</td>
+          <td><input style="width: 200px;" type="text" name="user_email2" value="'.$data['user_email2'].'"></td>
+        </tr>
+        
         <tr><td height="10"></td></tr>
 
         <tr>
@@ -387,6 +393,11 @@ if(isset($_POST['submit'])) {
         return true;
     }
 
+    if($_POST['user_email'] != $_POST['user_email2']) {
+        display_registration($_POST, $locale['error_mismatching_email'],$galaxy);
+        return true;
+    }
+    
     // Check email presence in the DB
     $sql = 'SELECT user_id
             FROM user

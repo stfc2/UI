@@ -49,7 +49,7 @@ $loc_strings = array(
           many other, after the home world is created, the player would need to create new colonies
           in order to increase his power and fleets to expand the commercial routes with other players
           or to fight them with all the starships available. To boldly go where nobody has gone before!',
-        'fist_membership' => 'Site member of the Federation',
+        'fist_membership' => 'Site member of the Federazione Italiana Siti Trek',
         
         // login.php strings
         'login_title' => 'Star Trek: Frontline Combat 2 - Login',
@@ -95,6 +95,7 @@ $loc_strings = array(
         'player_name' => 'Player name:',
         'password_verify' => 'Password verify:',
         'email' => 'Email:',
+        'email_verify' => 'Email verify:',
         'race_selection' => 'Race selection:',
         'race0' => 'Federation',
         'race1' => 'Romulan',
@@ -221,6 +222,7 @@ $loc_strings = array(
         'error_inv_char_in_login' => '(Login contains illegal characters [0-9, a-z, A-Z only])',
         'error_matching_name_login' => '(Player&#146;s name and Login are the same)',
         'error_mismatching_password' => '(Passwords do not match)',
+        'error_mismatching_email' => '(Emails do not match)',        
         'error_invalid_race' => '(Selected race does not exists)',
         'error_unaccepted_tou' => '(Terms of use are not accepted)',
         'error_invalid_birthday' => '(Birth date invalid)',
@@ -306,14 +308,14 @@ $loc_strings = array(
         'donation_descr' => 'STFC2: Page where you can make a donation with which to support the game and the work done by the staff.',
         'donation' => 'Support Star Trek: Frontline Combat 2!',
         'donation_statement' => '<p>Support STFC2 by a Donation.<br><br>
-         Star Trek Frontline Combat 2 is a free to play Multiuser Borwsergame.</p>
+         Star Trek Frontline Combat 2 is a free to play Multiuser Browsergame.</p>
          <p>The Development of the Game are from different Workers over the Time.</p>
-         <p>This is Open Source, the Way of make a Game better. And the the
-         Way to hold it in the past, now and Future free to play.
-         If you want support STFC2 and you are not a Developer, you can make here
+         <p>This is Open Source, the Way of make a Game better. It is also the
+         way to hold it in the past, now and future free to play.
+         If you want to support STFC2 and you are not a Developer, you can make here
          a Donation via PayPal.</p>
-         Donation are full use to pay needet things like Server, power and others.
-         <p>Thanks a lott for your Donation</p>',
+         Donations are fully used to pay needed things like Server, power and others.
+         <p>Thanks a lot for your Donation</p>',
          
          // success.php strings
         'success_title' => 'Star Trek: Frontline Combat 2 - Donation made',
@@ -387,6 +389,7 @@ $loc_strings = array(
         'player_name' => 'Spieler Name:',
         'password_verify' => 'Passwort wiederholen:',
         'email' => 'Email:',
+        'email_verify' => 'Email verify:',        
         'race_selection' => 'Rassen Auswahl:',
         'race0' => 'Federation',
         'race1' => 'Romulaner',
@@ -512,6 +515,7 @@ $loc_strings = array(
         'error_inv_char_in_login' => '(Login enth&auml;lt ung&uuml;ltige Zeichen [0-9, a-z, A-Z erlaubt])',
         'error_matching_name_login' => '(Player&#146;s Name und Login darf nicht identisch sein)',
         'error_mismatching_password' => '(Passworde stimmen nicht &uuml;berein)',
+        'error_mismatching_email' => '(Emails do not match)',        
         'error_invalid_race' => '(Gew&auml;hlte Rasse existiert nicht)',
         'error_unaccepted_tou' => '(Spielregeln/AGB nicht akzeptiert)',
         'error_invalid_birthday' => '(Geburts-Tag ung&uuml;ltig)',
@@ -686,6 +690,7 @@ $loc_strings = array(
         'player_name' => 'Nome giocatore:',
         'password_verify' => 'Verifica Password:',
         'email' => 'Email:',
+        'email_verify' => 'Verifica Email:',        
         'race_selection' => 'Scelta della razza:',
         'race0' => 'Federazione',
         'race1' => 'Romulani',
@@ -793,7 +798,9 @@ $loc_strings = array(
         'country_at' => 'Austria',
         'country_ch' => 'Svizzera',
         'country_fr' => 'Francia',
-        'term_of_use' => 'Dichiaro in questa sede di aver preso visione dei <a href="JavaScript:void(window.open(\'agb.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));"><b><u>termini e condizioni di utilizzo</u></b></a> del gioco e di accettarli.',
+        'term_of_use' => 'Dichiaro in questa sede di aver preso visione dei <a href="JavaScript:void(window.open(\'agb.htm\',\'STFC\',\'toolbar=no,width=600,height=400,resizable=no,scrollbars=yes\'));"><b><u>termini e condizioni di utilizzo</u></b></a> del gioco
+         e di accettarli, in particolare so che i miei dati personali sono registrati al solo scopo di far funzionare il gioco e non vengono mai rilasciati a terzi e che in qualsiasi momento posso richiedere la cancellazione di tali
+         dati richiedendo la cancellazione del mio account di gioco.',
         'no_multiaccount' => 'Solo un account per IP',
         'multiaccount_desc' => 'Questa limitazione significa che ogni giocatore che per\
          pi&ugrave; di 4 giorni successivi alla registrazione avr&agrave; pi&ugrave; di un \
@@ -826,6 +833,7 @@ $loc_strings = array(
         'error_inv_char_in_login' => '(Il Login scelto contiene caratteri non consentiti [solo 0-9, a-z, A-Z])',
         'error_matching_name_login' => '(Il nome giocatore e il Login coincidono!)',
         'error_mismatching_password' => '(Le password non coincidono)',
+        'error_mismatching_email' => '(Le email non coincidono)',
         'error_invalid_race' => '(La razza selezionata non esiste)',
         'error_unaccepted_tou' => '(I termini di utilizzo non sono stati accettati)',
         'error_invalid_birthday' => '(La data di nascita non &egrave; valida)',
@@ -836,7 +844,10 @@ $loc_strings = array(
         'mail_message_congrats' => 'Congratulazioni',
         'mail_message_reg1a' => 'La tua registrazione a Star Trek: Frontline Combat II (Galassia',
         'mail_message_reg1b' => ') ha avuto successo!',
-        'mail_message_reg2' => 'Per attivare il tuo account devi cliccare sul link seguente:',
+        'mail_message_reg2' => 'Per attivare il tuo account devi cliccare sul link seguente. 
+         Facendolo dichiari di conoscere ed accettare i termini di servizio; ti ricordiamo che i tuoi dati personali verranno custoditi ed utilizzati esclusivamente per il funzionamento 
+         del gioco e non li cederemo a nessuno. In qualunque momento sei libero di cancellare il tuo account di gioco attraverso il pannello
+         Impostazioni, facendolo verranno cancellati anche tutti i tuoi dati personali.',
         'mail_message_reg3' => 'Se non hai eseguito la registrazione, ignora questa email.',
         'mail_message_reg4' => 'Dopo 48 ore, il tuo indirizzo email verrà automaticamente rimosso dal nostro database.',
         'mail_message_sig_line1' => 'Lunga vita e prosperità',
