@@ -114,7 +114,7 @@ define ("GER_TEXT44", 'Flotte wechseln');
 
 define ("GER_TEXT45", 'Flotte beladen');
 
-define ("GER_TEXT46", 'Kolonien/Memo:');
+define ("GER_TEXT46", 'Takt/Kolonien/Memo:');
 
 define ("GER_TEXT47", 'Flotte losschicken');
 
@@ -174,6 +174,10 @@ define ("GER_TEXT77", '<i>unbekannt</i>');
 
 define ("GER_TEXT78", 'Munition leer');
 
+define ("GER_TEXT78B", 'full stock');
+
+define ("GER_TEXT78C", 'good stock');
+
 define ("GER_TEXT79", 'Scout');
 
 define ("GER_TEXT80", 'Frachter');
@@ -194,7 +198,7 @@ define ("GER_TEXT87", 'Orbital Gesch&uuml;tz');
 
 define ("GER_TEXT88", 'Flotten Frachter Handling');
 
-define ("GER_TEXT89", 'Flotten Status');
+define ("GER_TEXT89", 'Zusammensetzung und Einheitsstatus');
 
 define ("GER_TEXT90", 'Einheiten Management');
 
@@ -237,6 +241,83 @@ define ("GER_TEXT108", 'No ships detected');
 define ("GER_TEXT109", '1 ship');
 
 define ("GER_TEXT110", 'Ships');
+
+define ("GER_TEXT111", 'Offensive Strenght');
+
+define ("GER_TEXT112", 'Shield Strenght');
+
+define ("GER_TEXT113", 'Hull condition');
+
+define ("GER_TEXT114", 'Primary Weapons (avg)');
+
+define ("GER_TEXT115", 'Secondary Weapons (avg)');
+
+define ("GER_TEXT116", 'Fleet Analysis');
+
+define ("GER_TEXT117_3", 'Retreat at zero shields.');
+
+define ("GER_TEXT117_2", 'Retreat at 50&#37; hull.');
+
+define ("GER_TEXT117_1", 'Retreat at 25&#37; hull.');
+
+define ("GER_TEXT117_0", 'Never retreat.');
+
+define ("GER_TEXT118", 'Change');
+
+define ("GER_TEXT119", 'Relieve from command');
+
+define ("GER_TEXT120_1", 'Commodore');
+
+define ("GER_TEXT120_2", 'RearAdmiral');
+
+define ("GER_TEXT120_3", 'Admiral');
+
+define ("GER_TEXT120_4", 'Fleet Admiral');
+
+define ("GER_TEXT121", 'Put in charge of fleet.');
+
+define("GER_TEXT122", 'Rules of Engagement');
+
+define("GER_TEXT123_1", 'Retreat at zero torp left.');
+
+define("GER_TEXT123_0", 'No retreat at zero torp left.');
+
+define ("GER_TEXT125", 'Tactical maneuver');
+
+define ("GER_TEXT126_0", 'Do not hide departure system.');
+
+define ("GER_TEXT126_1", 'Hide departure system.');
+
+define ("GER_TEXT127", 'Planetary Wep. (base)');
+
+define ("GER_TEXT128", 'Transwarp');
+
+define ("GER_TEXT129", 'Report');
+
+define ("ITA_TEXT129_1", '------');
+
+define ("GER_TEXT130", 'Flotten Status');
+
+define ("GER_TEXT131", 'Flottenkommandant');
+
+define ("GER_TEXT131_1", 'W&auml;hlen Sie einen Flottenkommandanten');
+
+define ("GER_TEXT132", 'Entfernung');
+
+define ("GER_TEXT132_1", 'restlich');
+
+define ("GER_TEXT132_2", 'Inter-System');
+
+define ("GER_TEXT133", 'Ueberholende Flotten im System melden');
+
+define ("GER_TEXT133_1", 'Aussichts');
+
+define ("GER_TEXT133_2", '---------');
+
+define ("GER_TEXT134", 'Surrender the fleet');
+
+define ("GER_TEXT135", 'This command will surrender the fleet to the Orion Syndicate.');
+
 
 
 //English
@@ -332,7 +413,7 @@ define ("ENG_TEXT44", 'Switch fleet');
 
 define ("ENG_TEXT45", 'Load fleet');
 
-define ("ENG_TEXT46", 'Colony/Memo:');
+define ("ENG_TEXT46", 'Tact/Colony/Memo:');
 
 define ("ENG_TEXT47", 'Send fleet');
 
@@ -390,7 +471,11 @@ define ("ENG_TEXT76", 'Trade route');
 
 define ("ENG_TEXT77", '<i>unknown</i>');
 
-define ("ENG_TEXT78", 'ammo depleted');
+define ("ENG_TEXT78", 'short stock');
+
+define ("ENG_TEXT78B", 'full stock');
+
+define ("ENG_TEXT78C", 'good stock');
 
 define ("ENG_TEXT79", 'Scout');
 
@@ -412,7 +497,7 @@ define ("ENG_TEXT87", 'Orbital Gun');
 
 define ("ENG_TEXT88", 'Fleet freighters handling');
 
-define ("ENG_TEXT89", 'Composition and status');
+define ("ENG_TEXT89", 'Composition and units status');
 
 define ("ENG_TEXT90", 'Unit management');
 
@@ -455,6 +540,78 @@ define ("ENG_TEXT108", 'No ships detected');
 define ("ENG_TEXT109", '1 ship');
 
 define ("ENG_TEXT110", 'Ships');
+
+define ("ENG_TEXT111", 'Offensive Strenght');
+
+define ("ENG_TEXT112", 'Shield Strenght');
+
+define ("ENG_TEXT113", 'Hull condition');
+
+define ("ENG_TEXT114", 'Primary Weapons (avg)');
+
+define ("ENG_TEXT115", 'Secondary Weapons (avg)');
+
+define ("ENG_TEXT116", 'Fleet Analysis');
+
+define ("ENG_TEXT117_3", 'Retreat at zero shields.');
+
+define ("ENG_TEXT117_2", 'Retreat at 50&#37; hull.');
+
+define ("ENG_TEXT117_1", 'Retreat at 25&#37; hull.');
+
+define ("ENG_TEXT117_0", 'Never retreat.');
+
+define ("ENG_TEXT118", 'Change');
+
+define ("ENG_TEXT119", 'Relieve from command');
+
+define ("ENG_TEXT120_1", 'Commodore');
+
+define ("ENG_TEXT120_2", 'RearAdmiral');
+
+define ("ENG_TEXT120_3", 'Admiral');
+
+define ("ENG_TEXT120_4", 'Fleet Admiral');
+
+define ("ENG_TEXT121", 'Put in charge of fleet.');
+
+define("ENG_TEXT122", 'Rules of Engagement');
+
+define("ENG_TEXT123_1", 'Retreat at zero torp left.');
+
+define("ENG_TEXT123_0", 'No retreat at zero torp left.');
+
+define ("eng_TEXT125", 'Tactical maneuver');
+
+define ("ENG_TEXT126_0", 'Do not hide departure system.');
+
+define ("ENG_TEXT126_1", 'Hide departure system.');
+
+define ("ENG_TEXT127", 'Planetary Wep. (base)');
+
+define ("ENG_TEXT128", 'Transwarp');
+
+define ("ENG_TEXT129", 'Report');
+
+define ("ENG_TEXT130", 'Fleet status');
+
+define ("ENG_TEXT131", 'Fleet Commander');
+
+define ("ENG_TEXT131_1", 'Select a fleet Commander');
+
+define ("ENG_TEXT132", 'Distance');
+
+define ("ENG_TEXT132_1", 'Remaining');
+
+define ("ENG_TEXT132_2", 'Inter-System');
+
+define ("ENG_TEXT133", 'Report fleets passing-by in the system');
+
+define ("ENG_TEXT133_1", 'Lookout');
+
+define ("ENG_TEXT134", 'Surrender the fleet');
+
+define ("ENG_TEXT135", 'This command will surrender the fleet to the Orion Syndicate.');
 
 
 //Italian
@@ -550,7 +707,7 @@ define ("ITA_TEXT44", 'Cambia flotta');
 
 define ("ITA_TEXT45", 'Carica flotta');
 
-define ("ITA_TEXT46", 'Colonia/Memo:');
+define ("ITA_TEXT46", 'Tattico/Colonia/Memo:');
 
 define ("ITA_TEXT47", 'Invia flotta');
 
@@ -610,6 +767,10 @@ define ("ITA_TEXT77", '<i>sconosciuta</i>');
 
 define ("ITA_TEXT78", 'scorta bassa');
 
+define ("ITA_TEXT78B", 'scorta completa');
+
+define ("ITA_TEXT78C", 'scorta buona');
+
 define ("ITA_TEXT79", 'Scout');
 
 define ("ITA_TEXT80", 'Trasporto');
@@ -630,7 +791,7 @@ define ("ITA_TEXT87", 'Cannone Orbitale');
 
 define ("ITA_TEXT88", 'Gestione carico');
 
-define ("ITA_TEXT89", 'Composizione e stato');
+define ("ITA_TEXT89", 'Dettaglio e stato delle unit&agrave;');
 
 define ("ITA_TEXT90", 'Gestione unit&agrave;');
 
@@ -673,4 +834,83 @@ define ("ITA_TEXT108", 'Nessun rilevamento');
 define ("ITA_TEXT109", '1 Nave');
 
 define ("ITA_TEXT110", 'Navi');
+
+define ("ITA_TEXT111", 'Danno potenziale');
+
+define ("ITA_TEXT112", 'Potenza scudi');
+
+define ("ITA_TEXT113", 'Condizioni scafo');
+
+define ("ITA_TEXT114", 'Armi primarie (media)');
+
+define ("ITA_TEXT115", 'Armi secondarie (media)');
+
+define ("ITA_TEXT116", 'Analisi flotta');
+
+define ("ITA_TEXT117_3", 'Sganciarsi a scudi esauriti.');
+
+define ("ITA_TEXT117_2", 'Sganciarsi a scafo al 50&#37;.');
+
+define ("ITA_TEXT117_1", 'Sganciarsi a scafo al 25&#37;.');
+
+define ("ITA_TEXT117_0", 'Non sganciarsi mai.');
+
+define ("ITA_TEXT118", 'Cambia');
+
+define ("ITA_TEXT119", 'Solleva dal comando');
+
+define("ITA_TEXT120_1", 'Commodoro');
+
+define("ITA_TEXT120_2", 'Contrammiraglio');
+
+define("ITA_TEXT120_3", 'Ammiraglio');
+
+define("ITA_TEXT120_4", 'Ammiraglio di Flotta');
+
+define("ITA_TEXT121", 'Assegna alla flotta.');
+
+define("ITA_TEXT122", 'Regole d&#8217;ingaggio');
+
+define("ITA_TEXT123_1", 'Sganciarsi a siluri esauriti.');
+
+define("ITA_TEXT123_0", 'Non sganciarsi a siluri esauriti.');
+
+define("ITA_TEXT124", 'Analizza');
+
+define ("ITA_TEXT125", 'Movimenti tattici');
+
+define ("ITA_TEXT126_0", 'Non mascherare il sistema di provenienza.');
+
+define ("ITA_TEXT126_1", 'Mascherare il sistema di provenienza.');
+
+define ("ITA_TEXT127", 'Armi planetarie (base)');
+
+define ("ITA_TEXT128", 'Transwarp');
+
+define ("ITA_TEXT129", 'Rapporto');
+
+define ("ITA_TEXT129_1", '--------');
+
+define ("ITA_TEXT130", 'Stato della flotta');
+
+define ("ITA_TEXT131", 'Comandante della flotta');
+
+define ("ITA_TEXT131_1", 'Selezionare un Comandante della flotta');
+
+define ("ITA_TEXT132", 'Distanza');
+
+define ("ITA_TEXT132_1", 'Rimanente');
+
+define ("ITA_TEXT132_2", 'Intra Sistema');
+
+define ("ITA_TEXT133", 'Segnala passaggio flotte nel sistema');
+
+define ("ITA_TEXT133_1", 'Vedetta');
+
+define ("ITA_TEXT133_2", '-------');
+
+define ("ITA_TEXT134", 'Cessione Flotta');
+
+define("ITA_TEXT135", 'Questo comando cede la flotta ai Pirati di Orione.');
+
 ?>

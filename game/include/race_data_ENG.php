@@ -36,7 +36,7 @@
 4 => Dominion
 5 => Ferengi 
  6 => Borg
- 7 => Q
+ 7 => Orion Sydicate
 8 => Breen
 9 => Hirogen
 10 => Vidiianer ==> Krenim 
@@ -64,7 +64,7 @@ $RACE_DATA_LOCALE = array(
 
       6 => 'Borg', 
 
-      7 => 'Q', 
+      7 => 'Orion Syndicate', 
 
       8 => 'Breen', 
 

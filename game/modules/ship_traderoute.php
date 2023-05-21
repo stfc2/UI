@@ -153,7 +153,7 @@ if(!empty($_POST['dest_coord'])) {
     if(empty($planet['user_id'])) {
         message(NOTICE, constant($game->sprache("TEXT4")));
     }
-
+    
     $dest = (int)$planet['planet_id'];
 }
 else {
@@ -189,10 +189,13 @@ else {
                    p.resource_1, p.resource_2, p.resource_3, p.resource_4,
                    p.unit_1, p.unit_2, p.unit_3, p.unit_4, p.unit_5, p.unit_6,
                    s.system_x, s.system_y, s.system_global_x, s.system_global_y,
+                   sd.log_code,
                    u.user_id, u.user_name
             FROM (starsystems s), (planets p)
             LEFT JOIN user u ON u.user_id = p.planet_owner
+            LEFT JOIN starsystems_details sd ON sd.system_id = p.system_id
             WHERE p.planet_id = '.$dest.' AND
+                  (sd.system_id = p.system_id AND sd.log_code = 0 AND sd.user_id = '.$game->player['user_id'].') AND
                   s.system_id = p.system_id';
 
     if(($dest_planet = $db->queryrow($sql)) === false) {
@@ -244,6 +247,10 @@ else {
     if($dest_planet['user_id'] == INDEPENDENT_USERID)
         message(NOTICE, constant($game->sprache("TEXT43")));
     /* END OF RULE TO AVOID ROUTES WITH THE SETTLERS */
+    
+    if(check_felony($dest_planet['user_id'])) {
+        message(NOTICE, constant($game->sprache("TEXT44")));
+    }    
 }
 
 
@@ -287,7 +294,7 @@ switch($step) {
         $distance = $velocity = 0;
 
         if($game->player['user_auth_level'] == STGC_DEVELOPER) $min_time = 1;
-        elseif($inter_planet) $min_time = 6;
+        elseif($inter_planet) $min_time = $INTER_SYSTEM_TIME;
         else {
             include_once('include/libs/moves.php');
 
@@ -422,8 +429,8 @@ switch($step) {
         if(empty($_POST['do_report'])) $_POST['do_report'] = 'no';
         $report = ($_POST['do_report'] == 'yes'? true : false);
 
-        $sql = 'INSERT INTO scheduler_shipmovement (user_id, move_status, move_exec_started, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
-                VALUES ('.$game->player['user_id'].', 0, 0, '.$start.', '.$dest.', '.$distance.', '.$distance.', '.($velocity * TICK_DURATION).', '.$ACTUAL_TICK.', '.($ACTUAL_TICK + max((int)$_POST['move_time'], $min_time)).', '.$fleet['n_ships'].', 34, "'.serialize(array(0, $start, $dest, $start_actions, $dest_actions, $_mode, $report)).'")';
+        $sql = 'INSERT INTO scheduler_shipmovement (user_id, owner_id, move_status, move_exec_started, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
+                VALUES ('.$game->player['user_id'].', '.$game->player['user_id'].', 0, 0, '.$start.', '.$dest.', '.$distance.', '.$distance.', '.($velocity * TICK_DURATION).', '.$ACTUAL_TICK.', '.($ACTUAL_TICK + max((int)$_POST['move_time'], $min_time)).', '.$fleet['n_ships'].', 34, "'.serialize(array(0, $start, $dest, $start_actions, $dest_actions, $_mode, $report)).'")';
 
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not insert new movement data');
@@ -483,7 +490,7 @@ switch($step) {
   <tr>
     <td>
       '.constant($game->sprache("TEXT12")).'<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($start)).'"><b>'.$start_planet['planet_name'].'</b></a> ('.$game->get_sector_name($start_planet['sector_id']).':'.$game->get_system_cname($start_planet['system_x'], $start_planet['system_y']).':'.($start_planet['planet_distance_id'] + 1).')'.( ($start_planet['user_id'] != $game->player['user_id']) ? constant($game->sprache("TEXT13")).'<a href="'.parse_link('a=stats&a2=viewplayer&id='.$start_planet['user_id']).'"><b>'.$start_planet['user_name'].'</b></a>' : '' ).'<br>
-      '.constant($game->sprache("TEXT14")).'<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($dest)).'"><b>'.$dest_planet['planet_name'].'</b></a> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')'.( ($dest_planet['user_id'] != $game->player['user_id']) ? constant($game->sprache("TEXT13")).'<a href="'.parse_link('a=stats&a2=viewplayer&id='.$dest_planet['user_id']).'"><b>'.$dest_planet['user_name'].'</b></a>' : '' ).'<br><br>      '.constant($game->sprache("TEXT15")).'<a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$fleet_id).'"><b>'.$fleet['fleet_name'].'</b></a><br><br>
+      '.constant($game->sprache("TEXT14")).'<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($dest)).'"><b>'.$dest_planet['planet_name'].'</b></a> ('.$game->get_sector_name($dest_planet['sector_id']).':'.$game->get_system_cname($dest_planet['system_x'], $dest_planet['system_y']).':'.($dest_planet['planet_distance_id'] + 1).')'.( ($dest_planet['user_id'] != $game->player['user_id'] && $dest_planet['log_code'] == 0) ? constant($game->sprache("TEXT13")).'<a href="'.parse_link('a=stats&a2=viewplayer&id='.$dest_planet['user_id']).'"><b>'.$dest_planet['user_name'].'</b></a>' : '' ).'<br><br>      '.constant($game->sprache("TEXT15")).'<a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$fleet_id).'"><b>'.$fleet['fleet_name'].'</b></a><br><br>
       '.constant($game->sprache("TEXT16")).'<b>'.($fleet['n_ships'] * MAX_TRANSPORT_RESOURCES).' '.constant($game->sprache("TEXT17")).($fleet['n_ships'] * MAX_TRANSPORT_UNITS).constant($game->sprache("TEXT18")).'</b><br><br>
       <b>'.constant($game->sprache("TEXT19")).'</b><br><br>
       <table border="0">
@@ -797,7 +804,7 @@ switch($step) {
             $max_speed_str = 'Warp 10/Transwarp';
         }
         elseif($inter_planet) {
-            $min_time = 6;
+            $min_time = $INTER_SYSTEM_TIME;
             $max_speed_str = constant($game->sprache("TEXT30"));
         }
         else {

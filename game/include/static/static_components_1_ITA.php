@@ -245,7 +245,7 @@ $ship_components_locale=array(
 
              // Component Regenerative Schilde
              1=>array(
-                    'name'=>'Scudo rigenerante',
+                    'name'=>'Scudo rigenerante I',
                     'description'=>'Questo sistema automatico &egrave; capace di individuare rapidamente falle nello scafo e proiettare un campo di contenimento, capace di limitare la perdita di integrit&agrave; nella struttura dello scafo stesso.',
             ), // Endof Component Regenerative Schilde            
             
@@ -257,31 +257,31 @@ $ship_components_locale=array(
 
              // Component Regenerative Schilde
              3=>array(
-                    'name'=>'Scudo rigenerante',
+                    'name'=>'Scudo rigenerante II',
                     'description'=>'Questo sistema automatico &egrave; capace di individuare rapidamente falle nello scafo e proiettare un campo di contenimento, capace di limitare la perdita di integrit&agrave; nella struttura dello scafo stesso.',
             ), // Endof Component Regenerative Schilde                
 
              // Component Duranium- Tritanium- Panzerung
              4=>array(
-                    'name'=>'Corazza duranio-tritanio',
+                    'name'=>'Corazza duranio-tritanio I',
                     'description'=>'La corazza di duranio-tritanio rappresenta il massimo nella tecnologia di protezione degli scafi e consiste in un wafer di strati di Duranio e Tritanio sovrapposti.',
             ), // Endof Component Duranium- Tritanium- Panzerung
 
              // Component Duranium- Tritanium- Panzerung
              5=>array(
-                    'name'=>'Corazza duranio-tritanio',
+                    'name'=>'Corazza duranio-tritanio II',
                     'description'=>'La corazza di duranio-tritanio rappresenta il massimo nella tecnologia di protezione degli scafi e consiste in un wafer di strati di Duranio e Tritanio sovrapposti.',
             ), // Endof Component Duranium- Tritanium- Panzerung            
             
              // Component Regenerative Schilde
              6=>array(
-                    'name'=>'Scudo rigenerante',
+                    'name'=>'Scudo rigenerante III',
                     'description'=>'Questo sistema automatico &egrave; capace di individuare rapidamente falle nello scafo e proiettare un campo di contenimento, capace di limitare la perdita di integrit&agrave; nella struttura dello scafo stesso.',
             ), // Endof Component Regenerative Schilde            
 
              // Component Duranium- Tritanium- Panzerung
              7=>array(
-                    'name'=>'Corazza duranio-tritanio',
+                    'name'=>'Corazza duranio-tritanio III',
                     'description'=>'La corazza di duranio-tritanio rappresenta il massimo nella tecnologia di protezione degli scafi e consiste in un wafer di strati di Duranio e Tritanio sovrapposti.',
             ), // Endof Component Duranium- Tritanium- Panzerung
             
@@ -305,19 +305,19 @@ $ship_components_locale=array(
 
              // Component Telemetrie-Auswertungs-System
              2=>array(
-                    'name'=>'Sistema di analisi telemetrico',
+                    'name'=>'Sistema di analisi telemetrico I',
                     'description'=>'Un enorme passo avanti nella tecnologia dei computer di bordo. La potenza di calcolo e la velocit&agrave; di comunicazione tra le varie componenti del sistema &egrave; vistosamente migliorato rispetto ai vecchi modelli.',
             ), // Endof Component Telemetrie-Auswertungs-System
 
              // Component Telemetrie-Auswertungs-System
              3=>array(
-                    'name'=>'Sistema di analisi telemetrico',
+                    'name'=>'Sistema di analisi telemetrico II',
                     'description'=>'Un enorme passo avanti nella tecnologia dei computer di bordo. La potenza di calcolo e la velocit&agrave; di comunicazione tra le varie componenti del sistema &egrave; vistosamente migliorato rispetto ai vecchi modelli.',
             ), // Endof Component Telemetrie-Auswertungs-System
 
              // Component Telemetrie-Auswertungs-System
              4=>array(
-                    'name'=>'Sistema di analisi telemetrico',
+                    'name'=>'Sistema di analisi telemetrico III',
                     'description'=>'Un enorme passo avanti nella tecnologia dei computer di bordo. La potenza di calcolo e la velocit&agrave; di comunicazione tra le varie componenti del sistema &egrave; vistosamente migliorato rispetto ai vecchi modelli.',
             ), // Endof Component Telemetrie-Auswertungs-System            
             
@@ -329,13 +329,13 @@ $ship_components_locale=array(
 
              // Component Angriffs-System
              6=>array(
-                    'name'=>'Sistemi d&#146;attacco',
+                    'name'=>'Sistemi d&#146;attacco I',
                     'description'=>'La migliore rappresentazione dei computer di bordo. Le funzioni di questo sistema sono nettamente pi&ugrave; potenti rispetto ai modelli precedenti, ma le richieste di spazio e di energia ne permettono l&#146;impiego solo sulle maggiori navi da guerra.',
             ), // Endof Component Angriffs-System
 
              // Component Angriffs-System
              7=>array(
-                    'name'=>'Sistemi d&#146;attacco',
+                    'name'=>'Sistemi d&#146;attacco II',
                     'description'=>'La migliore rappresentazione dei computer di bordo. Le funzioni di questo sistema sono nettamente pi&ugrave; potenti rispetto ai modelli precedenti, ma le richieste di spazio e di energia ne permettono l&#146;impiego solo sulle maggiori navi da guerra.',
             ), // Endof Component Angriffs-System
             
@@ -389,25 +389,25 @@ $ship_components_locale=array(
 
              // Component Sensorenphalanx
              1=>array(
-                    'name'=>'Rilevatore',
+                    'name'=>'Rilevatore I',
                     'description'=>'Questo sistema ha come scopo la scansione dello spazio a corto raggio intorno alla nave.',
             ), // Endof Component Sensorenphalanx
 
              // Component Sensorenphalanx
              2=>array(
-                    'name'=>'Rilevatore',
+                    'name'=>'Rilevatore II',
                     'description'=>'Questo sistema ha come scopo la scansione dello spazio a corto raggio intorno alla nave.',
             ), // Endof Component Sensorenphalanx            
             
              // Component Sensorabtastung
              3=>array(
-                    'name'=>'Scanner',
+                    'name'=>'Scanner I',
                     'description'=>'Lo scanner &egrave; il risultato dello sviluppo del Rilevatore, rispetto al quale offre maggiore precisione e portata.',
             ), // Endof Component Sensorabtastung
 
              // Component Sensorabtastung
              4=>array(
-                    'name'=>'Scanner',
+                    'name'=>'Scanner II',
                     'description'=>'Lo scanner &egrave; il risultato dello sviluppo del Rilevatore, rispetto al quale offre maggiore precisione e portata.',
             ), // Endof Component Sensorabtastung
             
@@ -419,13 +419,13 @@ $ship_components_locale=array(
 
              // Component Longrange Sensoren
              6=>array(
-                    'name'=>'Sensori a lungo raggio',
+                    'name'=>'Sensori a lungo raggio I',
                     'description'=>'Questo sistema permette di raccogliere informazioni dettagliate su lunghe distanze.',
             ), // Endof Component Longrange Sensoren
 
              // Component Longrange Sensoren
              7=>array(
-                    'name'=>'Sensori a lungo raggio',
+                    'name'=>'Sensori a lungo raggio II',
                     'description'=>'Questo sistema permette di raccogliere informazioni dettagliate su lunghe distanze.',
             ), // Endof Component Longrange Sensoren            
             
@@ -490,49 +490,49 @@ $ship_components_locale=array(
         9=>array(
              // Component Training Base
              0=>array(
-                    'name'=>'Training Base',
+                    'name'=>'Talon: Training base',
                     'description'=>'Flavor Text Here.',
             ), // Endof Component Training Base
 
              // Component Training Base
              1=>array(
-                    'name'=>'Training Base',
+                    'name'=>'Science: Training base',
                     'description'=>'Flavor Text Here.',
             ), // Endof Component Training Base
             
              // Component Training Base
              2=>array(
-                    'name'=>'Training Base',
+                    'name'=>'Norexan: Training base',
                     'description'=>'Flavor Text Here.',
             ), // Endof Component Training Base
             
              // Component Training Base
              3=>array(
-                    'name'=>'Training Base',
-                    'description'=>'Flavor Text Here.',
+                    'name'=>'Capitali: Training base',
+                    'description'=>'Addestramento di livello base per le Navi Capitali D&acute;Deridex e Mogai.',
             ), // Endof Component Training Base
             
              // Component Training Base
              4=>array(
-                    'name'=>'Training Base',
+                    'name'=>'T&acute;Varo: Training Base',
                     'description'=>'Flavor Text Here.',
             ), // Endof Component Training Base
             
              // Component Training Avanzato
              5=>array(
-                    'name'=>'Training Avanzato',
+                    'name'=>'T&acute;Varo: Training Avanzato',
                     'description'=>'Flavor Text Here.',
             ), // Endof Component Training Avanzato            
             
              // Component Training Avanzato
              6=>array(
-                    'name'=>'Training Avanzato',
-                    'description'=>'Flavor Text Here.',
+                    'name'=>'Capitali: Training Avanzato',
+                    'description'=>'Addestramento di livello avanzato per le Navi Capitali D&acute;Deridex e Mogai.',
             ), // Endof Component Training Avanzato
             
              // Component Training Avanzato
              7=>array(
-                    'name'=>'Training Avanzato',
+                    'name'=>'Norexan: Training Avanzato',
                     'description'=>'Flavor Text Here.',
             ), // Endof Component Training Avanzato            
             

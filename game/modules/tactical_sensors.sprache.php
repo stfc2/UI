@@ -104,6 +104,23 @@ define ("GER_TEXT38", 'Sie haben noch keine Flotte in station&auml;ren Umlaufbah
 
 define ("GER_TEXT39", 'Gefunden durch:');
 
+define ("GER_TEXT40", 'Away Team');
+
+define ("GER_TEXT41", 'Retreat');
+
+define ("GER_TEXT51", 'Indicate Ferengi transport');
+
+define ("GER_TEXT52", 'Verpflichtet');
+
+define ("GER_TEXT53", 'Schnell');
+
+define ("GER_TEXT54", 'Spurensuche');
+
+define ("GER_TEXT55", 'Gemischt');
+
+define ("GER_TEXT56", 'St&auml;rke');
+
+
 //English
 define ("ENG_TEXT0", 'Tactical headquarters:');
 
@@ -182,6 +199,23 @@ define ("ENG_TEXT37", 'Show fleets sensors');
 define ("ENG_TEXT38", 'You don&#146;t have any fleet in stationary orbit');
 
 define ("ENG_TEXT39", 'Found by:');
+
+define ("ENG_TEXT40", 'Away Team');
+
+define ("ENG_TEXT41", 'Retreat');
+
+define ("ENG_TEXT51", 'Indicate Ferengi transport');
+
+define ("ENG_TEXT52", 'Committed');
+
+define ("ENG_TEXT53", 'Fast');
+
+define ("ENG_TEXT54", 'Trace');
+
+define ("ENG_TEXT55", 'Mixed');
+
+define ("ENG_TEXT56", 'Intensity');
+
 
 //ItaGLIENSE
 define ("ITA_TEXT0", 'Comando Tattico:');
@@ -265,5 +299,39 @@ define ("ITA_TEXT37", 'Mostra sensori flotte');
 define ("ITA_TEXT38", 'Non hai alcuna flotta in orbita stazionaria');
 
 define ("ITA_TEXT39", 'Rilevata da:');
+
+define ("ITA_TEXT40", 'Missione a terra');
+
+define ("ITA_TEXT41", 'Ritirata');
+
+define ("ITA_TEXT42", 'Shuttle');
+
+define ("ITA_TEXT43", 'Nave da carico');
+
+define ("ITA_TEXT44", 'Colonizzatrice');
+
+define ("ITA_TEXT45", 'Fregata');
+
+define ("ITA_TEXT46", 'Incrociatore Leggero');
+
+define ("ITA_TEXT47", 'Incrociatore');
+
+define ("ITA_TEXT48", 'Incrociatore Pesante');
+
+define ("ITA_TEXT49", 'Nave da Battaglia');
+
+define ("ITA_TEXT50", 'Stazione Orbitale(?)');
+
+define ("ITA_TEXT51", 'Indicare trasporti Ferengi');
+
+define ("ITA_TEXT52", 'Impegnato');
+
+define ("ITA_TEXT53", 'Rapido');
+
+define ("ITA_TEXT54", 'Traccia');
+
+define ("ITA_TEXT55", 'Confuso');
+
+define ("ITA_TEXT56", 'Intensit&agrave;');
 
 ?>

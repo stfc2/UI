@@ -726,7 +726,7 @@ $SHIP_TORSO_LOCALE = array(
 
 			0 => 'Cargo', // Name
 
-			1 => 'I cargo servono a caricare 4000 unit&agrave; di risorse o 400 truppe. Possono anche servire a fornire supporto su pianeti attacco.',
+			1 => 'I cargo Ferengi possono ricoprire molteplici ruoli se debitamente modificati dal proprietario. Va detto che, curiosamente, molte razze aliene trovano la maggior parte di tali modifiche &ldquo;fuorilegge&rdquo;.',
 
 		),
 
@@ -736,7 +736,7 @@ $SHIP_TORSO_LOCALE = array(
 
 			0 => 'Colonizzatrice', // Name
 
-			1 => 'Con le navi di classe colonizzatrice puoi conquistare pianeti. Non appena distruggi tutte le difese planetarie ed atterri, la nave colonizzatrice viene smantellata per creare il centro di comando sul pianeta.',
+			1 => 'I Ferengi impiegano questa classe di navi principalmente come casin&ograve; viaggianti ma, se i tempi lo richiedono, possono ricoprire il ruolo di navi colonizzatrici.',
 
 		),
 
@@ -744,9 +744,9 @@ $SHIP_TORSO_LOCALE = array(
 
 	    3 => array(
 
-			0 => 'Scavenger',  // Name
+			0 => 'Marauder',  // Name
 
-			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+			1 => 'La nave di classe media dell&#146;alleanza Ferengi. Non ha competenze specifiche ed il suo potere offensivo &egrave; adeguato al prezzo.',
 
 		),
 
@@ -790,13 +790,13 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 
-	 	// Morte temporanea
+	    // D´Kora-Class
 
 	    8 => array(
 
 			0 => 'D&acute;Kora',  // Name
 
-			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+			1 => 'La pi&ugrave; famosa di tutte le navi Ferengi con un buon potenziale offensivo e difensivo. Dal momento che ogni Ferengi acquista per la propria nave vario armamento la D&acute;Koras &egrave; molto forte.',
 
 		),
 
@@ -887,9 +887,45 @@ $SHIP_TORSO_LOCALE = array(
 	),
 
 
-	// Q
+	// Orion Syndicate
 
-    7 => array(),
+    7 => array(
+		3 => array(
+
+			0 => 'Lookout',  // Name
+
+			1 => 'Nave pirata vedetta.',
+
+		),
+		4 => array(
+
+			0 => 'Corsair',  // Name
+
+			1 => 'Nave pirata intercettore.',
+
+		),
+		6 => array(
+
+			0 => 'Predator',  // Name
+
+			1 => 'Nave pirata pesante.',
+
+		),
+		8 => array(
+
+			0 => 'Marauder',  // Name
+
+			1 => 'Nave pirata da guerra.',
+
+		),
+		10 => array(
+
+			0 => 'Slavemaster',  // Name
+
+			1 => 'Nave pirata da guerra.',
+
+		),        
+    ),
 
 
 	// Breen
@@ -926,13 +962,13 @@ $SHIP_TORSO_LOCALE = array(
 
 	 	),
 
-	 	// Morte temporanea
+	 	// Plesh Brek
 
 	    3 => array(
 
-			0 => 'Gled Kraan',  // Name
+			0 => 'Plesh Brek',  // Name
 
-			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+			1 => 'Uno scout leggero ma ben armato per le forze Breen.',
 
 		),
 
@@ -942,17 +978,17 @@ $SHIP_TORSO_LOCALE = array(
 
 			0 => 'Gled Kraan',  // Name
 
-			1 => 'Le navi della classe Gled Kraan sono le migliori fregate. Agile, robusta e con la mortale arma che smorza l&#146;energia. La fregata di classe Gled Kraan &egrave;, come tutte le navi Breen, costruita su una base organica.',
+			1 => 'Le navi della classe Gled Kraan sono le migliori fregate. Agile e robusta &egrave;, come tutte le navi Breen, costruita su una base organica.',
 
 	 	),
 
-	 	// Morte temporanea
+	 	// Pesh Goth
 
 	    5 => array(
 
-			0 => 'Incrociatore leggero',  // Name
+			0 => 'Pesh Goth',  // Name
 
-			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+			1 => 'Incrociatore leggero costruito su una base organica, &egrave; la nave Breen pi&ugrave; piccola con la capacit&agrave; di montare il dissipatore energetico.',
 
 		),
 
@@ -986,13 +1022,13 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 
-	 	// Morte temporanea
+	 	// Chel Grett
 
 	    9 => array(
 
 			0 => 'Chel Grett',  // Name
 
-			1 => 'Le navi classe Chel Grett sono incrociatori pesanti studiati per fare muro contro le pi&ugrave; pesanti navi offensive nemiche.',
+			1 => 'Le navi classe Chel Grett sono incrociatori pesanti equipaggiabili con il dissipatore energetico e dispongono di un grande volume di fuoco.',
 
 		),
 
@@ -1006,7 +1042,7 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 
-	 	// Morte temporanea
+	 	// Gel Chak
 
 	    11 => array(
 
@@ -1063,13 +1099,13 @@ $SHIP_TORSO_LOCALE = array(
 
 		),
 
-		// Morte temporanea
+		// Seeker
 
 	    3 => array(
 
-			0 => 'Fregata',  // Name
+			0 => 'Seeker',  // Name
 
-			1 => 'Io non sono qui. Ma &egrave; necessario disporre di me cari, mantenermi, darmi da mangiare e portarmi spesso a fare un giro.',
+			1 => 'La classe pi&ugrave; leggera delle navi da caccia a disposizione degli Hirogeni, la sua corazza &egrave; decisamente ridotta rispetto alle sorelle maggiori ma il suo potenziale offensivo rimane buono.',
 
 		),
 			

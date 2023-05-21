@@ -38,20 +38,21 @@ $sql = 'SELECT ss.*,
 			   p1.planet_name AS start_planet_name,
 			   u1.user_id AS start_owner_id, u1.user_name AS start_owner_name,
 			   p2.planet_name AS dest_planet_name,
-			   u2.user_id AS dest_owner_id, u2.user_name AS dest_owner_name, sd.timestamp
+			   u2.user_id AS dest_owner_id, u2.user_name AS dest_owner_name, sd1.timestamp AS start_timestamp, sd2.timestamp AS dest_timestamp
 		FROM (scheduler_shipmovement ss)
 		INNER JOIN (planets p1) ON p1.planet_id = ss.start
 		LEFT JOIN (user u1) ON u1.user_id = p1.planet_owner
 		INNER JOIN (planets p2) ON p2.planet_id = ss.dest
 		LEFT JOIN (user u2) ON u2.user_id = p2.planet_owner
-		LEFT JOIN (starsystems_details sd) ON (ss.user_id = sd.user_id AND p2.system_id = sd.system_id)
-		WHERE ss.user_id = '.$game->player['user_id'].' AND
+		LEFT JOIN (starsystems_details sd1) ON (ss.user_id = sd1.user_id AND p1.system_id = sd1.system_id AND sd1.log_code = 0)
+        LEFT JOIN (starsystems_details sd2) ON (ss.user_id = sd2.user_id AND p2.system_id = sd2.system_id AND sd2.log_code = 0)
+		WHERE ss.owner_id = '.$game->player['user_id'].' AND
 			  ss.move_begin <= '.$ACTUAL_TICK.' AND
 			  ss.move_status = 0'.
 			  ( ($move_id) ? ' AND ss.move_id = '.$move_id : '' ).
               ( ($start) ? ' AND ss.start = '.$start : '' ).
               ( ($dest) ? ' AND ss.dest = '.$dest : '' ).
-	      ' GROUP BY ss.move_id';
+	      ' GROUP BY ss.move_id, start_timestamp, dest_timestamp';
 
 if(!$q_moves = $db->query($sql)) {
 	message(DATABASE_ERROR, 'Could not query moves data');
@@ -70,7 +71,7 @@ if($n_moves == 0) {
 
 $sql = 'SELECT *
 		FROM ship_fleets
-		WHERE user_id = '.$game->player['user_id'].' AND
+		WHERE owner_id = '.$game->player['user_id'].' AND
 			  move_id <> 0';
 
 if(!$q_fleets = $db->query($sql)) {
@@ -174,14 +175,19 @@ while($move = $db->fetchrow($q_moves)) {
 		elseif($move['dest_owner_id'] != $game->player['user_id']) $dest_owner_str = ' '.constant($game->sprache("TEXT10")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$move['dest_owner_id']).'"><b>'.$move['dest_owner_name'].'</b></a>';
 		else $dest_owner_str = '';
 
-		$system_is_known = false;
-		if(isset($move['timestamp']) && (!empty($move['timestamp']))) { $system_is_known = true; }
+                $start_is_known = false;
+                if(isset($move['start_timestamp']) && (!empty($move['start_timestamp']))) { $start_is_known = true; }
+		$dest_is_known = false;
+		if(isset($move['dest_timestamp']) && (!empty($move['dest_timestamp']))) { $dest_is_known = true; }
 
+                $know_start_str = ' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($move['start'])).'"><b>'.$move['start_planet_name'].'</b></a>'.$start_owner_str;
+                $unknow_start_str = ' <b><i>&#171;'.constant($game->sprache("TEXT28")).'&#187;</i></b>';
+                
 		$know_dest_str = ' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($move['dest'])).'"><b>'.$move['dest_planet_name'].'</b></a>'.$dest_owner_str;
 		$unknow_dest_str = ' <b><i>&#171;'.constant($game->sprache("TEXT28")).'&#187;</i></b>';
 
-		$game->out(constant($game->sprache("TEXT12")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($move['start'])).'"><b>'.$move['start_planet_name'].'</b></a>'.$start_owner_str.'<br>
-		   '.constant($game->sprache("TEXT13")).( $system_is_known ? $know_dest_str : $unknow_dest_str).'<br>
+		$game->out(constant($game->sprache("TEXT12")).($start_is_known ? $know_start_str : $unknow_start_str).'<br>
+		   '.constant($game->sprache("TEXT13")).( $dest_is_known ? $know_dest_str : $unknow_dest_str).'<br>
 		');
 	}
 
@@ -234,11 +240,15 @@ while($move = $db->fetchrow($q_moves)) {
             }
         break;
     }
-
+    
+    if($move['move_rerouted'] == 0) {$rerouted = false;} else {$rerouted = true;}
+    
+    $recall_flag = (!in_array($move['action_code'], array(12, 13, 32, 33))) && ($ticks_left > 1) && (!$rerouted);
+            
     if($move['action_code'] == 13) {
         $game->out('[<a href="'.parse_link('a=ship_moves_cmd&restore_orders='.$move_id).'">'.constant($game->sprache("TEXT22")).'</a>]&nbsp;');
     }
-    if(!in_array($move['action_code'], array(12, 13, 32, 33))) {
+    if($recall_flag) {
         $game->out('[<a href="'.parse_link('a=ship_moves_cmd&call_back='.$move_id).'">'.constant($game->sprache("TEXT23")).'</a>]&nbsp;');
     }
     

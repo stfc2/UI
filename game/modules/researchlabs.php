@@ -34,6 +34,136 @@ if (file_exists($filename)) include($filename);
 
 $game->out('<span class="caption">'.$BUILDING_NAME[$game->player['user_race']][8].':</span><br><br>');
 
+function CreateTechTreeTxt($comp, $lvl)
+{
+    global $game, $SHIP_TORSO;
+    
+    $text = '';
+    for ($i=0; $i<$comp['num']; $i++){
+        $text .= ($i < $lvl ? '<font color = green>'.$comp[$i]['name'].'</font>' : $comp[$i]['name']).'<br>'.$comp[$i]['description'].'<br>';
+        $num = 0;
+        if ($comp[$i]['value_1']!=0)
+        {
+            $text.= constant($game->sprache("TEXT4")).' '.$comp[$i]['value_1'].'; ';
+            $num++;
+        }
+        if ($comp[$i]['value_2']!=0)
+        {
+            $text.= constant($game->sprache("TEXT5")).' '.$comp[$i]['value_2'].'; ';
+            $num++;
+        }
+        if ($comp[$i]['value_3']!=0)
+        {
+            $text.= constant($game->sprache("TEXT6")).' '.$comp[$i]['value_3'].'; ';
+            $num++;
+        }
+        if ($comp[$i]['value_4']!=0)
+        {
+            $text.= constant($game->sprache("TEXT7")).' '.$comp[$i]['value_4'].'; ';
+            $num++;
+        }
+        if ($comp[$i]['value_5']!=0)
+        {
+            $text.= constant($game->sprache("TEXT8")).' '.$comp[$i]['value_5'].'; ';
+            $num++;
+        }
+        if($num > 0) {
+            $text .= '<br>';
+        }
+        $num = 0;
+        if ($comp[$i]['value_6']!=0)
+        {
+            $text.= constant($game->sprache("TEXT9")).' '.$comp[$i]['value_6'].'; ';
+            $num++;
+        }
+        if ($comp[$i]['value_7']!=0)
+        {
+            $text.= constant($game->sprache("TEXT10")).' '.$comp[$i]['value_7'].'; ';
+            $num++;
+        }
+        if ($comp[$i]['value_8']!=0)
+        {
+            $text.= constant($game->sprache("TEXT11")).' '.$comp[$i]['value_8'].'; ';
+            $num++;
+        }
+        if ($comp[$i]['value_9']!=0)
+        {
+            $text.= constant($game->sprache("TEXT12")).' '.$comp[$i]['value_9'].'; ';
+            $num++;
+        }
+        if ($comp[$i]['value_10']!=0)
+        {
+            $text.= constant($game->sprache("TEXT13")).' '.$comp[$i]['value_10'].'; ';
+            $num++;
+        }
+        if($num > 0) {
+            $text .= '<br>';
+        }        
+        $num = 0;
+        if ($comp[$i]['value_11']!=0)
+        {
+            $text.= constant($game->sprache("TEXT14")).' '.$comp[$i]['value_11'].'; ';
+            $num++;
+        }
+        if ($comp[$i]['value_12']!=0)
+        {
+            $text.= constant($game->sprache("TEXT15")).' '.$comp[$i]['value_12'].'; ';
+            $num++;
+        }
+        if ($comp[$i]['value_13']!=0)
+        {
+            $text.= constant($game->sprache("TEXT17")).' '.$comp[$i]['value_13'].'; ';
+            $num++;
+        }
+        if ($comp[$i]['value_14']!=0)
+        {
+            $text.= constant($game->sprache("TEXT16")).' '.$comp[$i]['value_14'].'; ';
+            $num++;
+        }
+        if($num > 0) {
+            $text .= '<br>';
+        }
+        $num = 0;
+        if ($comp[$i]['value_16']!=0)
+        {
+            $text.= constant($game->sprache("TEXT44")).' '.$comp[$i]['value_16'].'; ';
+            $num++;
+        }
+        if ($comp[$i]['value_17']!=0)
+        {
+            $text.= constant($game->sprache("TEXT45")).' '.$comp[$i]['value_17'].'; ';
+            $num++;
+        }
+        if ($comp[$i]['value_18']!=0)
+        {
+            $text.= constant($game->sprache("TEXT46")).' '.$comp[$i]['value_18'].'; ';
+            $num++;
+        }
+        if($num > 0) {
+            $text .= '<br>';
+        }        
+        $first = 1;
+        $num = 0;
+        for ($t=0; $t<12; $t++)
+        {
+            if($comp[$i]['torso_'.($t+1)] == 1)
+            {
+                $text .= ($first==0 ? ',&nbsp;' : '').'<i>'.$SHIP_TORSO[$game->player['user_race']][$t][29].'</i>';
+                $first = 0;
+                $num++;
+            }
+            if ($num>6) 
+            {
+                $text.='<br>';
+                $num=0;                 
+            }            
+        }
+        $text .= '<br><br>';
+    }
+    
+    return $text;
+    
+}
 
 function CreateInfoText($comp)
 {
@@ -54,6 +184,9 @@ if ($comp['value_11']!=0) $text.=constant($game->sprache("TEXT14")).' '.$comp['v
 if ($comp['value_12']!=0) $text.=constant($game->sprache("TEXT15")).' '.$comp['value_12'].'<br>';
 if ($comp['value_14']!=0) $text.=constant($game->sprache("TEXT16")).' '.$comp['value_14'].'<br>';
 if ($comp['value_13']!=0) $text.=constant($game->sprache("TEXT17")).' '.$comp['value_13'].'<br>';
+if ($comp['value_16']!=0) $text.=constant($game->sprache("TEXT44")).' '.$comp['value_16'].'<br>';
+if ($comp['value_17']!=0) $text.=constant($game->sprache("TEXT45")).' '.$comp['value_17'].'<br>';
+if ($comp['value_18']!=0) $text.=constant($game->sprache("TEXT46")).' '.$comp['value_18'].'<br>';
 $text.='<br><u>'.constant($game->sprache("TEXT18")).'<br></u>';
 $first=1;
 $num=0;
@@ -90,12 +223,13 @@ function GetCatResearchPrice($level,$resource)
 {
 global $db;
 global $game;
-global $RACE_DATA, $TECH_DATA, $TECH_NAME, $MAX_RESEARCH_LVL,$NEXT_TICK,$ACTUAL_TICK;
+global $RACE_DATA, $PLANETS_DATA, $TECH_DATA, $TECH_NAME, $MAX_RESEARCH_LVL,$NEXT_TICK,$ACTUAL_TICK;
 
 $price=0;
-if ($resource==0) $price=pow($level*25,2.12)+500;
-if ($resource==1) $price=pow($level*25,2.05)+350;
-if ($resource==2) $price=pow($level*25,1.95)+200;
+if ($resource==0) $price=pow($level*25,1.95)+280;
+if ($resource==1) $price=pow($level*25,2.12)+280;
+if ($resource==2) $price=pow($level*25,2.05)+460;
+$price*=$PLANETS_DATA[$game->planet['planet_type']][12];
 $price*=$RACE_DATA[$game->player['user_race']][8];
 
 if($resource==0) {
@@ -116,7 +250,7 @@ return round($price,0);
 
 function GetCatsResearchTimes()
 {
-    global $db,$game,$RACE_DATA;
+    global $db,$game,$RACE_DATA, $PLANETS_DATA;
 
     $times = array();
 
@@ -139,9 +273,11 @@ function GetCatsResearchTimes()
         // Category research level on selected planet
         $level = $game->planet['catresearch_'.($cat_id+1)];
 
-        $time = pow($level * 4,2) + 3;
+        //$time = pow($level * 4,2) + 3;
+        $time = pow($level * 4.5,2) + 4;
 
         // Add race bonus/malus to the research time
+        $time *= $PLANETS_DATA[$game->planet['planet_type']][13];
         $time *= $RACE_DATA[$game->player['user_race']][4];
 
         $time /= 100;
@@ -166,9 +302,11 @@ function GetCatResearchTimeTicks($level,$cat_id)
 {
 global $db;
 global $game;
-global $RACE_DATA, $TECH_DATA, $TECH_NAME, $MAX_RESEARCH_LVL,$NEXT_TICK,$ACTUAL_TICK;
+global $RACE_DATA, $PLANETS_DATA, $TECH_DATA, $TECH_NAME, $MAX_RESEARCH_LVL,$NEXT_TICK,$ACTUAL_TICK;
 $time=0;
-$time=pow($level*4,2)+3;
+//$time=pow($level*4,2)+3;
+$time=pow($level*4.5,2)+4;
+$time*=$PLANETS_DATA[$game->planet['planet_type']][13];
 $time*=$RACE_DATA[$game->player['user_race']][4];
 $time/=100;
 $time*=(100-2*($game->planet['research_4']*$RACE_DATA[$game->player['user_race']][20]));
@@ -186,10 +324,11 @@ function GetResearchPrice($tech,$resource)
 {
 global $db;
 global $game;
-global $RACE_DATA, $TECH_DATA, $TECH_NAME, $MAX_RESEARCH_LVL,$NEXT_TICK,$ACTUAL_TICK;
+global $RACE_DATA, $PLANETS_DATA, $TECH_DATA, $TECH_NAME, $MAX_RESEARCH_LVL,$NEXT_TICK,$ACTUAL_TICK;
 
 
 $price=round(pow($TECH_DATA[$tech][$resource]*($game->planet['research_'.($tech+1)]+1),2),0);
+$price*=$PLANETS_DATA[$game->planet['planet_type']][12];
 $price*=$RACE_DATA[$game->player['user_race']][8];
 //if ($price>$game->planet['max_resources']) $price=$game->planet['max_resources'];
 
@@ -213,10 +352,11 @@ function GetResearchTime($tech)
 {
 global $db;
 global $game;
-global $RACE_DATA, $TECH_DATA, $TECH_NAME, $MAX_RESEARCH_LVL,$NEXT_TICK,$ACTUAL_TICK;
+global $RACE_DATA, $PLANETS_DATA, $TECH_DATA, $TECH_NAME, $MAX_RESEARCH_LVL,$NEXT_TICK,$ACTUAL_TICK;
 $time=0;
 
 $time=$TECH_DATA[$tech][3]+ pow($game->planet['research_'.($tech+1)],$TECH_DATA[$tech][4]);
+$time*=$PLANETS_DATA[$game->planet['planet_type']][13];
 $time*=$RACE_DATA[$game->player['user_race']][4];
 
 $time/=100;
@@ -232,10 +372,11 @@ function GetResearchTimeTicks($tech)
 {
 global $db;
 global $game;
-global $RACE_DATA, $TECH_DATA, $TECH_NAME, $MAX_RESEARCH_LVL,$NEXT_TICK,$ACTUAL_TICK;
+global $RACE_DATA, $PLANETS_DATA, $TECH_DATA, $TECH_NAME, $MAX_RESEARCH_LVL,$NEXT_TICK,$ACTUAL_TICK;
 $time=0;
 
 $time=$TECH_DATA[$tech][3]+ pow($game->planet['research_'.($tech+1)],$TECH_DATA[$tech][4]);
+$time*=$PLANETS_DATA[$game->planet['planet_type']][13];
 $time*=$RACE_DATA[$game->player['user_race']][4];
 
 $time/=100;
@@ -281,7 +422,8 @@ function Abort_Research()
                 $t-=5;
                 $sql = 'UPDATE planets SET resource_1=resource_1+'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],0)).',
                                            resource_2=resource_2+'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],1)).',
-                                           resource_3=resource_3+'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],2)).'
+                                           resource_3=resource_3+'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],2)).',
+                                           techpoints=techpoints+'.(GetCatResearchTimeTicks($game->planet['catresearch_'.($t+1)],$t+1)).'
                         WHERE planet_id = "'.$game->planet['planet_id'].'"';
             } //end: else
 
@@ -360,13 +502,13 @@ else
 // Start Cat-Research:
 
 if ($game->planet['catresearch_'.($t+1)]<$game->planet['building_9'] || $game->planet['building_9']>=9)
-if ($game->planet['resource_1']>=GetCatResearchPrice($game->planet['catresearch_'.($t+1)],0) && $game->planet['resource_2']>=GetCatResearchPrice($game->planet['catresearch_'.($t+1)],1) && $game->planet['resource_3']>=GetCatResearchPrice($game->planet['catresearch_'.($t+1)],2))
+if ($game->planet['resource_1']>=GetCatResearchPrice($game->planet['catresearch_'.($t+1)],0) && $game->planet['resource_2']>=GetCatResearchPrice($game->planet['catresearch_'.($t+1)],1) && $game->planet['resource_3']>=GetCatResearchPrice($game->planet['catresearch_'.($t+1)],2) && $game->planet['techpoints']>=GetCatResearchTimeTicks($game->planet['catresearch_'.($t+1)],$t+1))
 {
 	if ($game->planet['catresearch_'.$r_id]<$game->planet['building_9']  || $game->planet['building_9']>=9) // Wenn man nicht erst Forschungszentrum hochbauen muss
-	if (($db->query('UPDATE planets SET resource_1=resource_1-'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],0)).',resource_2=resource_2-'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],1)).',resource_3=resource_3-'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],2)).'  WHERE planet_id= "'.$game->planet['planet_id'].'"'))==true)
+	if (($db->query('UPDATE planets SET resource_1=resource_1-'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],0)).',resource_2=resource_2-'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],1)).',resource_3=resource_3-'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],2)).', techpoints=techpoints-'.(GetCatResearchTimeTicks($game->planet['catresearch_'.($t+1)],$t+1)).'  WHERE planet_id= "'.$game->planet['planet_id'].'"'))==true)
 	{
 	if ($db->query('INSERT INTO scheduler_research (research_id,planet_id,player_id,research_finish,research_start)
-	  			VALUES ("'.($t+5).'","'.$game->planet['planet_id'].'","'.$game->player['user_id'].'","'.($ACTUAL_TICK+GetCatResearchTimeTicks($game->planet['catresearch_'.($t+1)],$t+1)).'","'.$ACTUAL_TICK.'")')==false)  {message(DATABASE_ERROR, 'research_query: Could not call INSERT INTO in scheduler_research '); exit();}
+	  			VALUES ("'.($t+5).'","'.$game->planet['planet_id'].'","'.$game->player['user_id'].'","'.($ACTUAL_TICK+1).'","'.$ACTUAL_TICK.'")')==false)  {message(DATABASE_ERROR, 'research_query: Could not call INSERT INTO in scheduler_research '); exit();}
   	$done=1;
 
 	} // end: if (($db->query('UPDATE planets SET resource_1=resource_1-'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],0)).',resource_2=resource_2-'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],1)).',resource_3=resource_3-'.(GetCatResearchPrice($game->planet['catresearch_'.($t+1)],2)).'  WHERE planet_id= "'.$game->planet['planet_id'].'"'))==true)
@@ -424,20 +566,24 @@ $game->set_autorefresh($NEXT_TICK+TICK_DURATION*60*($scheduler['research_finish'
 $game->out(''.constant($game->sprache("TEXT23")).' <b id="timer2" title="time1_'.$NEXT_TICK.'_type1_3">&nbsp;</b> '.constant($game->sprache("TEXT24")).'<br><br><br>');
 
 
-
+if(isset($closeup['cat'])){
+    //Display Closeup panel for components
+    $game->out('
+        <span class="sub_caption">'.constant($game->sprache("TEXT25")).': '.$ship_components[$game->player['user_race']][$closeup['cat']]['name'].'</span><br><br>
+    ');
+}
 // Ship components research:
 $game->out('<span class="sub_caption">'.constant($game->sprache("TEXT25")).' '.HelpPopup('research_catresearch').' :</span><br><br>');
-$game->out('<table border=0 cellpadding=2 cellspacing=2 width=90% class="style_outer">');
+$game->out('<center>'.constant($game->sprache("TEXT43")).' <img src="'.$game->GFX_PATH.'menu_techp1_small.gif"> <b>'.sprintf("%d", $game->planet['techpoints']).'</b> <b>('.sprintf("+%.2f", $game->planet['add_t']).')</b></center><br>');
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width=95% class="style_outer">');
 $game->out('
 <tr><td width=100%>
 <table border=0 cellpadding=2 cellspacing=2 width=100% class="style_inner">
 <tr>
-<td width=18%><b>'.constant($game->sprache("TEXT26")).'</b></td>
-<td width=24%><b>'.constant($game->sprache("TEXT27")).'</b></td>
+<td width=28%><b>'.constant($game->sprache("TEXT26")).'</b></td>
+<td width=30%><b>'.constant($game->sprache("TEXT27")).'</b></td>
 <td width=30%><b>'.constant($game->sprache("TEXT0")).'</b></td>
-<td width=14%><b>'.constant($game->sprache("TEXT28")).'</b></td>
-<td width=14%>&nbsp;
-</td></tr>
+<td width=12%>&nbsp;</td></tr>
 ');
 
 
@@ -449,7 +595,7 @@ foreach ($ship_components[$game->player['user_race']] as $key => $components)
 //if ($game->planet['catresearch_'.($key+1)]>=$components['num']) continue;
 if ($game->planet['catresearch_'.($key+1)]>=$game->planet['building_9']  && $game->planet['building_9']<9) // Wenn man nicht erst Forschungszentrum hochbauen muss
 {$components[$game->planet['catresearch_'.($key+1)]]['name']=constant($game->sprache("TEXT29"));$build_text='<span style="color: red">'.constant($game->sprache("TEXT30")).'</span>';}
-elseif ($game->planet['resource_1']>=GetCatResearchPrice($game->planet['catresearch_'.($key+1)],0) && $game->planet['resource_2']>=GetCatResearchPrice($game->planet['catresearch_'.($key+1)],1) && $game->planet['resource_3']>=GetCatResearchPrice($game->planet['catresearch_'.($key+1)],2))
+elseif ($game->planet['resource_1']>=GetCatResearchPrice($game->planet['catresearch_'.($key+1)],0) && $game->planet['resource_2']>=GetCatResearchPrice($game->planet['catresearch_'.($key+1)],1) && $game->planet['resource_3']>=GetCatResearchPrice($game->planet['catresearch_'.($key+1)],2) && $game->planet['techpoints']>=GetCatResearchTimeTicks($game->planet['catresearch_'.($key+1)],$key+1))
 {$build_text='<a href="'.parse_link_ex('a=researchlabs&a2=start_catresearch&id='.$key,LINK_CLICKID).'"><span style="color: green">'.constant($game->sprache("TEXT30")).'</span></a>';}
 else {$build_text='<span style="color: red">'.constant($game->sprache("TEXT30")).'</span>';}
 // 03/04/08 - AC: Show "Completed" instead of remove completely the line
@@ -459,10 +605,10 @@ if ($game->planet['catresearch_'.($key+1)]>=$components['num']) $build_text=cons
 $trans = array("&#146;" => "'");
 $tmp = strtr(html_entity_decode($components[$game->planet['catresearch_'.($key+1)]]['name']), $trans);
 /* */
-if (strlen($tmp)>18)
+if (strlen($tmp)>30)
 {
 //$compname=substr($components[$game->planet['catresearch_'.($key+1)]]['name'], 0,16);
-$compname=substr($tmp,0,16);
+$compname=substr($tmp,0,26);
 $compname=$compname.'...';
 }
 else {$compname=$components[$game->planet['catresearch_'.($key+1)]]['name'];}
@@ -471,7 +617,7 @@ else {$compname=$components[$game->planet['catresearch_'.($key+1)]]['name'];}
 $trans = array("&#146;" => "'");
 $tmp = strtr(html_entity_decode($components['name']), $trans);
 /* */
-if (strlen($tmp)>13)
+if (strlen($tmp)>28)
 {
 
 /*if($components['text_category'] !=null)
@@ -482,7 +628,7 @@ $catname='<a href="javascript:void(0);" onmouseover="return overlib(\''.$compone
 $catname=$catname.'...</font></a>';
 }else{*/
 //$catname='<a href="javascript:void(0);" onmouseover="return overlib(\'\',CAPTION,\''.$components['name'].'\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color="#FFFFFF">'.substr($components['name'], 0,11);
-$catname='<a href="javascript:void(0);" onmouseover="return overlib(\'\',CAPTION,\''.$components['name'].'\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color="#FFFFFF">'.substr($tmp, 0,11);
+$catname='<a href="javascript:void(0);" onmouseover="return overlib(\'\',CAPTION,\''.$components['name'].'\', '.OVERLIB_STANDARD.');" onmouseout="return nd();"><font color="#FFFFFF">'.substr($tmp, 0,24);
 $catname=$catname.'...</font></a>';
 /*}*/
 }
@@ -496,20 +642,27 @@ $catname=$components['name'];
 /*}*/
 }
 
-if ($game->planet['catresearch_'.($key+1)]>=$game->planet['building_9'] && $game->planet['building_9']<9) // Wenn man nicht erst Forschungszentrum hochbauen muss
-$game->out('<tr><td><b>'.$catname.'</b></td><td><b><a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT31")).' '.$BUILDING_NAME[$game->player['user_race']]['8'].' '.constant($game->sprache("TEXT32")).'\', CAPTION, \''.$components[$game->planet['catresearch_'.($key+1)]]['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$compname.'</a></b></td><td>');
-else
-$game->out('<tr><td><b>'.$catname.'</b></td><td><b><a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($components[$game->planet['catresearch_'.($key+1)]]).'\', CAPTION, \''.$components[$game->planet['catresearch_'.($key+1)]]['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$compname.'</a></b></td><td>');
+$techtreetxt = CreateTechTreeTxt($components, $game->planet['catresearch_'.($key+1)]);
 
-$game->out('<img src="'.$game->GFX_PATH.'menu_metal_small.gif"> '.  GetCatResearchPrice($game->planet['catresearch_'.($key+1)],0).'&nbsp;&nbsp;
-<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">'. GetCatResearchPrice($game->planet['catresearch_'.($key+1)],1).'&nbsp;&nbsp;
-<img src="'.$game->GFX_PATH.'menu_latinum_small.gif"> '.GetCatResearchPrice($game->planet['catresearch_'.($key+1)],2).'&nbsp; </td><td>'.$cat_times[$key].'</td><td>'.$build_text.'</td></tr>');
+if ($game->planet['catresearch_'.($key+1)]>=$game->planet['building_9'] && $game->planet['building_9']<9) // Wenn man nicht erst Forschungszentrum hochbauen muss
+    $game->out('<tr><td><b><a href="javascript:void(0);" onclick="return overlib(\''.htmlentities($techtreetxt, ENT_QUOTES).'\', CAPTION, \''.$catname.'\', WIDTH, 500,'.OVERLIB_RESEARCH.');" onmouseout="return nd();">'.$catname.'</b></td>
+                    <td><b><a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT31")).' '.$BUILDING_NAME[$game->player['user_race']]['8'].' '.constant($game->sprache("TEXT32")).'\', CAPTION, \''.$components[$game->planet['catresearch_'.($key+1)]]['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$compname.'</a></b></td><td>');
+else
+    $game->out('<tr><td><b><a href="javascript:void(0);" onclick="return overlib(\''.htmlentities($techtreetxt, ENT_QUOTES).'\', CAPTION, \''.$catname.'\', WIDTH, 500,'.OVERLIB_RESEARCH.');" onmouseout="return nd();">'.$catname.'</b></td>
+                    <td><b><a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($components[$game->planet['catresearch_'.($key+1)]]).'\', CAPTION, \''.$components[$game->planet['catresearch_'.($key+1)]]['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$compname.'</a></b></td><td>');
+
+$game->out('<table border=0 cellpadding=0 cellspacing=1 width=100%><tr>');
+$game->out('<td width=5%><img src="'.$game->GFX_PATH.'menu_metal_small.gif"></td><td width=20%>'.  GetCatResearchPrice($game->planet['catresearch_'.($key+1)],0).'</td>
+<td width=5%><img src="'.$game->GFX_PATH.'menu_mineral_small.gif"><td width=20%>'. GetCatResearchPrice($game->planet['catresearch_'.($key+1)],1).'</td>
+<td width=5%><img src="'.$game->GFX_PATH.'menu_latinum_small.gif"><td width=20%>'.GetCatResearchPrice($game->planet['catresearch_'.($key+1)],2).'</td>
+<td width=5%><img src="'.$game->GFX_PATH.'menu_techp1_small.gif"><td width=20%>'.GetCatResearchTimeTicks($game->planet['catresearch_'.($key+1)],$key+1).'</td>');
+$game->out('</tr></table></td><td>'.$build_text.'</td></tr>');
 } // while
 
 $game->out('</table></td></tr></table>');
 $game->out('<br><br>');
 $game->out('<span class="sub_caption">'.constant($game->sprache("TEXT33")).' '.HelpPopup('research_localresearch').' :</span><br><br>');
-$game->out('<table border=0 cellpadding=2 cellspacing=2 width=90% class="style_outer">');
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width=95% class="style_outer">');
 $game->out('
 <tr>
 <td width=100%>

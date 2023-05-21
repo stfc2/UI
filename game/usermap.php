@@ -65,6 +65,7 @@ if(!isset($user['user_id'])) {
 
 
 //Assign names:
+/*
 if($game->player['user_alliance'] == $user['user_alliance'] && $game->player['user_alliance_rights3'] == 1) {
 	$image_url='maps/tmp/u_'.$user['user_id'].'_'.$size.'.png';
 	$map_url='maps/tmp/u_'.$user['user_id'].'_'.$size.'.html';
@@ -73,8 +74,9 @@ else {
 	$image_url='maps/tmp/u_'.$user['user_id'].'_'.$game->player['user_id'].'_'.$size.'.png';
 	$map_url='maps/tmp/u_'.$user['user_id'].'_'.$game->player['user_id'].'_'.$size.'.html';
 }
-
-
+*/
+$image_url='maps/tmp/u_'.$user['user_id'].'_'.$game->player['user_id'].'_'.$size.'.png';
+$map_url='maps/tmp/u_'.$user['user_id'].'_'.$game->player['user_id'].'_'.$size.'.html';
 
 //Delete old picture
 if (file_exists($image_url))
@@ -117,7 +119,12 @@ $color[1]=imagecolorallocatealpha($im, 90, 64, 64,0);
 $color[2]=imagecolorallocatealpha($im, 128, 64, 64,0);
 $color[3]=imagecolorallocatealpha($im, 196, 64, 64,0);
 $color[4]=imagecolorallocatealpha($im, 96, 96, 96,0);
-$color[5]=imagecolorallocatealpha($im, 255, 0, 0,20);
+$color[5]=imagecolorallocatealpha($im, 93,173,226,20); // Mio sistema 
+$color[6]=imagecolorallocatealpha($im, 255,255,0, 0); // Mio sistema madre
+$color[7]=imagecolorallocatealpha($im, 128,255,0, 0); // Mio sistema privato
+$color[8]=imagecolorallocatealpha($im, 255,138,101,20); // Suo sistema 
+$color[9]=imagecolorallocatealpha($im, 255, 0, 0,20); // Suo sistema madre
+$color[10]=imagecolorallocatealpha($im, 230,74,25,20); // Suo sistema privato
 
 drawMapGrid($im,$size);
 
@@ -134,18 +141,20 @@ SELECT s.system_id, s.system_name, s.sector_id, s.system_x, s.system_y
 while($system = $db->fetchrow($q_systems))
 $glob_systems[$system['system_id']]=$system;
 
+$select = ($user['user_id'] == $game->player['user_id'] ? $user['user_id'] : '"'.$user['user_id'].'", "'.$game->player['user_id'].'"') ;
+
 // If the player is showing his map or is a member of his alliance AND has rights to see tactical info
 if(($game->player['user_id'] == $user['user_id']) ||
-   ($game->player['user_alliance'] == $user['user_alliance'] && $game->player['user_alliance_rights3'] == 1) ||
    ($game->player['user_auth_level'] == STGC_DEVELOPER)) {
-    $sql = 'SELECT system_id FROM planets WHERE planet_owner='.$user['user_id'].' GROUP BY system_id';
+    $sql = 'SELECT p.system_id, ss.system_closed, ss.system_owner FROM planets p INNER JOIN starsystems ss USING (system_id) WHERE planet_owner = '.$user['user_id'].' GROUP BY p.system_id';
 }
 // Otherwise display only what the player knows
 else {
-    $sql = 'SELECT pl.system_id FROM (planets pl)
+    $sql = 'SELECT pl.system_id, ss.system_closed, ss.system_owner, pl.planet_owner FROM (planets pl)
+                   INNER JOIN (starsystems ss) USING (system_id)
                    LEFT JOIN (starsystems_details sd) on pl.system_id = sd.system_id
-            WHERE pl.planet_owner = '.$user['user_id'].' AND
-                  sd.user_id = "'.$game->player['user_id'].'"
+            WHERE pl.planet_owner IN ('.$select.') AND
+                  (sd.user_id = "'.$game->player['user_id'].'" AND sd.log_code = 0)
 	    GROUP BY pl.system_id';
 }
 
@@ -157,16 +166,30 @@ $px = getSystemCoords($system,$size);
 $px_x = $px[0];
 $px_y = $px[1];
 
+switch ($planet['system_closed']) {
+    case 0:
+        $print_color = ($planet['planet_owner'] == $game->player['user_id'] ? $color[5] : $color[8]);
+        break;
+    case 1:
+        if($planet['system_owner'] == $game->player['user_id']) {$print_color = $color[6];} else {$print_color = $color[9];}
+        break;
+    case 2:
+        if($planet['system_owner'] == $game->player['user_id']) {$print_color = $color[7];} else {$print_color = $color[10];}
+        break;
+    default :
+        $print_color = ($planet['planet_owner'] == $game->player['user_id'] ? $color[5] : $color[8]);
+        break;
+}
 if ($size>2)
 {
-imagefilledrectangle ($im, $px_x,$px_y, $px_x+$size-2, $px_y+$size-2, $color[5]);
+imagefilledrectangle ($im, $px_x,$px_y, $px_x+$size-2, $px_y+$size-2, $print_color);
 $map_data.='<area href="index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" shape="rect" coords="'.$px_x.','.$px_y.', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$system['system_name'].'">
 ';
 
 }
 else
 {
-imagefilledrectangle ($im, $px_x-1,$px_y-1, $px_x+$size-2, $px_y+$size-2, $color[5]);
+imagefilledrectangle ($im, $px_x-1,$px_y-1, $px_x+$size-2, $px_y+$size-2, $print_color);
 $map_data.='<area href="index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" shape="rect" coords="'.($px_x-1).','.($px_y-1).', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$system['system_name'].'">
 ';
 }

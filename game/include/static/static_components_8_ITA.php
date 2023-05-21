@@ -65,133 +65,301 @@ $ship_components_locale=array(
 
         // Category Curvatura
         1=>array(
-             // Component Bionucleo di curvatura MK I
+             // Component Bionucleo di curvatura MK II
              0=>array(
-                    'name'=>'Nucleo di curvatura MK I',
-                    'description'=>'Il nucleo di curvatura di base consente a tutte le nostre navi di rendere nota a tutta la galassia la nostra potenza con maggiore alacrit&agrave; e costi irrisori.',
-            ), // Endof Component Bionucleo di curvatura MK I
+                    'name'=>'Nucleo di curvatura MK II',
+                    'description'=>'Questo nucleo di curvatura di base consente alle nostre navi da carico di raggiungere i nostri domini pi&ugrave; distanti in meno tempo.',
+            ), // Endof Component Bionucleo di curvatura MK II
 
              // Component Bionucleo di curvatura MK II
              1=>array(
-                    'name'=>'Nucleo di curvatura MK II',
-                    'description'=>'La versione superiore del nucleo di curvatura viene utilizzata dalle nostre navi da guerra allo scopo di diffondere la presenza della Confederazione tra le razze imbelli pi&ugrave; velocemente, anche se la sua composizione a base prevalentemente organica prevede l&#146;utilizzo di entusiasti volontari.',
-            ), // Endof Component Bionucleo di curvatura MK II
-
-             // Component Bionucleo di curvatura MK III
-             2=>array(
                     'name'=>'Nucleo di curvatura MK III',
-                    'description'=>'Questa versione del nucleo di curvatura viene utilizzata esclusivamente dalle possenti Gor&acute;Taan, allo scopo di compensarne l&#146;eccessiva lentezza. I costi di produzione sono elevati, ma la Confederazione richiede doverosi sacrifici al nostro popolo.',
+                    'description'=>'Questa versione aggiornata del nucleo di curvatura di base viene impiegato sulle nostre navi colonia, accelerando le operazioni di invasione.',
             ), // Endof Component Bionucleo di curvatura MK III
 
+             // Component Bionucleo di curvatura MK IV
+             2=>array(
+                    'name'=>'Nucleo di curvatura MK IV',
+                    'description'=>'Primo aggiornamento per le nostre unità da combattimento medie e leggere. Un buon incremento di velocit&agrave; sacrifica purtroppo l&#146;agilit&agrave; della stessa.',
+            ), // Endof Component Bionucleo di curvatura MK IV
+
+             // Component Bionucleo di curvatura MK V
+             3=>array(
+                    'name'=>'Nucleo di curvatura MK V',
+                    'description'=>'I miglioramenti apportati a questa versione hanno ottenuto maggiore velocit&agrave; sacrificando meno la manegevolezza della nave con una maggiore spesa di energia.',
+            ), // Endof Component Bionucleo di curvatura MK V
+            
+             // Component Bionucleo di curvatura MK VI
+             4=>array(
+                    'name'=>'Nucleo di curvatura MK VI',
+                    'description'=>'Nucleo di curvatura orientato all&#146;impiego su navi medie e pesanti. Viene impiegata una maggiore quantit&agrave; di energia per limitare la perdita di manegevolezza.',
+            ), // Endof Component Bionucleo di curvatura MK VI
+
+             // Component Bionucleo di curvatura MK VII
+             5=>array(
+                    'name'=>'Nucleo di curvatura MK VII',
+                    'description'=>'Nucleo di curvatura orientato all&#146;impiego su navi medie e pesanti. La manegevolezza della nave rimane invariata e migliora la prestazione in termini di velocit&agrave; massima.',
+            ), // Endof Component Bionucleo di curvatura MK VII
+
+             // Component Bionucleo di curvatura MK VIII
+             6=>array(
+                    'name'=>'Nucleo di curvatura MK VIII',
+                    'description'=>'Primo di una serie di macchinari destinati esclusivamente alle unit&agrave; maggiori. Le nostre precedenti esperienze ci permettono di migliorare l&#146;agilit&agrave; della nave e la sua velocita massima.',
+            ), // Endof Component Bionucleo di curvatura MK VIII
+            
+             // Component Bionucleo di curvatura MK IX
+             7=>array(
+                    'name'=>'Nucleo di curvatura MK IX',
+                    'description'=>'Versione migliorata del nucleo di curvatura da impiegare sulle navi maggiori.',
+            ), // Endof Component Bionucleo di curvatura MK IX            
+            
+             // Component Bionucleo di curvatura MK X
+             8=>array(
+                    'name'=>'Nucleo di curvatura MK X',
+                    'description'=>'Pensato unicamente per le navi da battaglia classe Gel Chak, questa meraviglia della biotecnica &egrave; in grado di migliorare enormemente la manovrabilit&agrave; della nostra classe maggiore.',
+            ), // Endof Component Bionucleo di curvatura MK X
+
+             // Component Bionucleo di curvatura MK XI
+             9=>array(
+                    'name'=>'Nucleo di curvatura MK XI',
+                    'description'=>'Ultima evoluzione possibile per il nucleo di curvatura destinato alle navi da battaglia classe Gel Chak, capace di porre le nostre navi al di sopra di qualunque avversario.',
+            ), // Endof Component Bionucleo di curvatura MK XI
+            
       'name'=>'Nucleo di curvatura',
       ), // Endof Category Curvatura
 
 
         // Category Ponte armi I
         2=>array(
-             // Component Dissipatore di energia
+             // Component Disgregatore MK I
              0=>array(
+                    'name'=>'Disgregatore MK I',
+                    'description'=>'Arma ad energia di modesta portata destinata ad essere impiegata nelle unit&agrave; minori.',
+            ), // Endof Component Disgregatore MK I
+            
+             // Component Disgregatore MK II
+             1=>array(
+                    'name'=>'Disgregatore MK II',
+                    'description'=>'Versione potenziata per impiego su unit&agrave; medie e pesanti.',
+            ), // Endof Component Disgregatore MK II            
+            
+             // Component Disgregatore MK III
+             2=>array(
+                    'name'=>'Disgregatore MK III',
+                    'description'=>'Versione di maggior potenza destinata al solo uso su unit&agrave; maggiori.',
+            ), // Endof Component Disgregatore MK III
+
+             // Component Cannone Polaronico Mk I
+             3=>array(
+                    'name'=>'Cannone Polaronico Mk I',
+                    'description'=>'La tecnologia di quest&#146;arma proviene dai nostri accordi con il Dominio. Drasticamente superiore ai disgregatori, permette di penetrare facilmente gli scudi difensivi nemici.',
+            ), // Endof Component Cannone Polaronico Mk I
+
+             // Component Cannone Polaronico Mk II
+             4=>array(
+                    'name'=>'Cannone Polaronico Mk II',
+                    'description'=>'Versione affinata del Cannone Polaronico da impiegare su qualsiasi unit&agrave; della nostra flotta.',
+            ), // Endof Component Cannone Polaronico Mk II            
+            
+             // Component Cannone Polaronico Mk III
+             5=>array(
+                    'name'=>'Cannone Polaronico Mk III',
+                    'description'=>'Versione affinata del Cannone Polaronico da impiegare su unit&agrave; medie e pesanti.',
+            ), // Endof Component Cannone Polaronico Mk III            
+            
+            // Component Dissipatore di energia
+             6=>array(
                     'name'=>'Dissipatore di energia',
-                    'description'=>'Il dissipatore di energia &eacute; un componente standard della Gor&acute;Taan, il quale ha sempre avuto un ruolo determinante per l&#146;egemonia della Confederazione sulle razze vili e codarde. Esso sottrae direttamente energia al nucleo di curvatura delle navi nemiche al fine di potenziare gli armamenti della nave sulla quale viene installato.',
+                    'description'=>'La nostra tecnologia di punta, permette di superare ogni difesa energetica a disposizione delle navi nemiche.',
             ), // Endof Component Dissipatore di energia
 
+             // Component Cannone Polaronico Mk IV
+             7=>array(
+                    'name'=>'Cannone Polaronico Mk IV',
+                    'description'=>'Questo sistema d&#146;arma viene ulteriormente potenziato per dotare le nostre navi di una potenza di fuoco stabile e precisa.',
+            ), // Endof Component Cannone Polaronico Mk IV
+            
+            // Component Dissipatore di energia I
+             8=>array(
+                    'name'=>'Dissipatore di energia II',
+                    'description'=>'Questo dissipatore di energia viene montato esclusivamente sulle nostre unit&agrave; pi&ugrave; pesanti e garantisce una maggiore efficacia anche contro i vascelli ostili di maggiore potenza.',
+            ), // Endof Component Dissipatore di energia II            
+            
+             // Component Cannone Polaronico Mk V
+             9=>array(
+                    'name'=>'Cannone Polaronico Mk V',
+                    'description'=>'La nostra implementazione finale della tecnologia polaronica non lascer&agrave; scampo alle unit&agrave; nemiche!',
+            ), // Endof Component Cannone Polaronico Mk V            
+            
       'name'=>'Ponte armi I',
       ), // Endof Category Ponte armi I
 
 
         // Category Ponte armi II
         3=>array(
-             // Component Lanciagranate di base
+             // Component Testata Fotonica II
              0=>array(
-                    'name'=>'Lanciagranate di base',
+                    'name'=>'Testata Fotonica II',
                     'description'=>'Potenziamento elementare per le nostre navi, dagli effetti assai limitati sugli scudi nemici.',
-            ), // Endof Component Lanciagranate di base
-
-             // Component Lanciagranate migliorato
+            ), // Endof Component Testata Fotonica II
+            
+             // Component Testata Fotonica III
              1=>array(
-                    'name'=>'Lanciagranate migliorato',
-                    'description'=>'Miglioramento tecnologico del lanciagranate di base, dagli effetti pi&ugrave; rilevanti.',
-            ), // Endof Component Lanciagranate migliorato
+                    'name'=>'Testata Fotonica III',
+                    'description'=>'Potenziamento elementare per le nostre navi, dagli effetti assai limitati sugli scudi nemici.',
+            ), // Endof Component Testata Fotonica III            
 
-             // Component Lanciagranate a frequenza
+             // Component Testata Fotonica IV
              2=>array(
-                    'name'=>'Lanciagranate a frequenza',
-                    'description'=>'Sviluppo a base organica del lanciagranate, destinato alle agili e veloci Gled Kraan. Gli elevati costi, sia in termini di risorse che di valorosi Breen, sono giustificati dalla notevole potenza di fuoco che esso permette.',
-            ), // Endof Component Lanciagranate a frequenza
-
-             // Component Doppio lanciagranate a frequenza
+                    'name'=>'Testata Fotonica IV',
+                    'description'=>'Potenziamento elementare per le nostre navi, dagli effetti assai limitati sugli scudi nemici.',
+            ), // Endof Component Testata Fotonica IV                       
+            
+             // Component Testata Fotonica V
              3=>array(
-                    'name'=>'Doppio lanciagranate a frequenza',
-                    'description'=>'Sviluppo a base organica del lanciagranate, destinato alle possenti Gor&#acute;Taan. Gli enormi costi, sia in termini di risorse che di valorosi Breen, sono giustificati dalla notevole potenza di fuoco che esso permette.',
-            ), // Endof Component Doppio lanciagranate a frequenza
+                    'name'=>'Testata Fotonica V',
+                    'description'=>'Potenziamento elementare per le nostre navi, dagli effetti assai limitati sugli scudi nemici.',
+            ), // Endof Component Testata Fotonica V                       
+            
+             // Component Testata Fotonica VI
+             4=>array(
+                    'name'=>'Testata Fotonica Vi',
+                    'description'=>'Potenziamento elementare per le nostre navi, dagli effetti assai limitati sugli scudi nemici.',
+            ), // Endof Component Testata Fotonica VI                       
+            
+             // Component Testata Quantica I
+             5=>array(
+                    'name'=>'Testata Quantica I',
+                    'description'=>'Questo nuovo tipo di testata ha una migliore resa contro gli scudi delle unit&agrave; avversarie.',
+            ), // Endof Component Testata Quantica I
+            
+             // Component Testata Quantica II
+             6=>array(
+                    'name'=>'Testata Quantica II',
+                    'description'=>'Questo nuovo tipo di testata ha una migliore resa contro gli scudi delle unit&agrave; avversarie.',
+            ), // Endof Component Testata Quantica II            
+            
+             // Component Testata Quantica III
+             7=>array(
+                    'name'=>'Testata Quantica III',
+                    'description'=>'Questo nuovo tipo di testata ha una migliore resa contro gli scudi delle unit&agrave; avversarie.',
+            ), // Endof Component Testata Quantica III
 
+             // Component Testata Transfasica I
+             8=>array(
+                    'name'=>'Testata Transfasica I',
+                    'description'=>'Tecnologia sviluppata dai nostri rivali della Federazione per combattere i Borg, viene da noi impiegata per affermare il nostro controllo nella galassia.',
+            ), // Endof Component Testata Transfasica I
+            
+             // Component Testata Transfasica II
+             9=>array(
+                    'name'=>'Testata Transfasica II',
+                    'description'=>'Tecnologia sviluppata dai nostri rivali della Federazione per combattere i Borg, viene da noi impiegata per affermare il nostro controllo nella galassia.',
+            ), // Endof Component Testata Transfasica II            
+            
       'name'=>'Ponte armi II',
       ), // Endof Category Ponte armi II
 
 
-        // Category Scafo
+        // Category Difesa
         4=>array(
-             // Component Corazza organica MK I
+             // Component Mascheramento Tattico
              0=>array(
-                    'name'=>'Corazza organica MK I',
-                    'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
-            ), // Endof Component Corazza organica MK I
+                    'name'=>'Mascheramento Tattico',
+                    'description'=>'Una modifica ai sistemi di controllo dello scafo ci permettere di ottenere una mimetizzazione piuttosto efficace delle superfici ed un miglior controllo dei movimenti dello scafo.',
+            ), // Endof Component Mascheramento Tattico
 
-             // Component Corazza organica MK II
-              1=>array(
-                    'name'=>'Corazza organica MK II',
-                    'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
-            ), // Endof Component Corazza organica MK II
+             // Component Scudo Fasico
+             1=>array(
+                    'name'=>'Scudo Fasico',
+                    'description'=>'Tecnologia impiegata largamente dai nostri avversari, permette di proteggere lo scafo attraverso un campo di forza generato dalla nave.',
+            ), // Endof Component Scudo Fasico
 
-             // Component Corazza organica MK III
-              2=>array(
-                    'name'=>'Corazza organica MK III',
-                    'description'=>'Con lo scambio di biomassa, &egrave; possibile distruggere le navi nemiche.',
-            ), // Endof Component Corazza organica MK III
+             // Component Mascheramento Tattico II
+             2=>array(
+                    'name'=>'Mascheramento Tattico II',
+                    'description'=>'Una modifica ai sistemi di controllo dello scafo ci permettere di ottenere una mimetizzazione piuttosto efficace delle superfici ed un miglior controllo dei movimenti dello scafo.',
+            ), // Endof Component Mascheramento Tattico II
+            
+             // Component Scudo Quantico
+             3=>array(
+                    'name'=>'Scudo Quantico',
+                    'description'=>'La tecnologia dello scudo di forza viene migliorata attraverso una diversa modulazione delle armoniche mediante l&#146;impiego di elaboratori quantici.',
+            ), // Endof Component Scudo Quantico
+            
+             // Component Scudo Quantico MkII
+             4=>array(
+                    'name'=>'Scudo Quantico Mk II',
+                    'description'=>'Questo sistema si basa sul precedente ma impiega emettitori potenziati per garantire uno scudo efficace a scapito di una maggiore domanda di energia dal nucleo.',
+            ), // Endof Component Scudo Quantico Mkii
+            
+             // Component Emettitore Stocastico
+             5=>array(
+                    'name'=>'Emettitore Stocastico',
+                    'description'=>'Versione ulteriormente migliorata del precedente sistema, offre una maggiore protezione allo scafo ma le esigenze energetiche sono tali da permetterne l&#146;impiego solo sulle unit&agrave; maggiori.',
+            ), // Endof Component Emettitore Stocastico
 
-      'name'=>'Scafo',
+             // Component Emettitore Stocastico Mk II
+             6=>array(
+                    'name'=>'Emettitore Stocastico Mk II',
+                    'description'=>'Versione di punta pensata per equipaggiare le nostre navi da battaglia.',
+            ), // Endof Component Emettitore Stocastico Mk II
+            
+      'name'=>'Difesa',
       ), // Endof Category Scafo
 
-       // Category Scudo
+       // Category Scafo
         5=>array(
-             // Component Scudo
+             // Component Corazza Duranio/Tritanio
              0=>array(
-                    'name'=>'Scudo',
-                    'description'=>'Questa &egrave; la forma pi&ugrave; semplice di protezione disponibile per le nostre navi da guerra, richiede costi minimi con risultati relativamente soddisfacenti.',
-            ), // Endof Component Scudo
+                    'name'=>'Corazza Duranio/Tritanio',
+                    'description'=>'Per proteggere le nostre navi utilizziamo alcune leghe classiche gi&agrave; in uso presso i nostri rivali; i risultati sono relativamente soddisfacenti.',
+            ), // Endof Component Corazza Duranio/Tritanio
 
-             // Component Scudo di fase
+             // Component Corazza Duranio/Tritanio II
              1=>array(
-                    'name'=>'Scudo fasico',
-                    'description'=>'Gli scudi fasici sono progettati in modo tale da modulare le loro fasi e che vi siano sempre almeno 2 &acute;strati&acute; sovrapposti per evitare la penetrazione dei proiettili.',
-            ), // Endof Component Scudo di fase
+                    'name'=>'Corazza Duranio/Tritanio II',
+                    'description'=>'Basandoci sulle precedenti esperienze abbiamo migliorato le tecniche di fusione e saldatura per proteggere scafi di maggiori dimensioni per ottenere una seppur minima protezione',
+            ), // Endof Component Corazza Duranio/Tritanio II
 
-             // Component Scudo quantico
+             // Component Corazza Duranio/Tritanio III
              2=>array(
-                    'name'=>'Scudo quantico',
-                    'description'=>'Gli scudi quantici sono uno sviluppo della tecnologia degli scudi tradizionali, qui barriere di energia quantica vengono deflesse dallo scafo della nave per prevenire l&#146;attraversamento del campo difensivo.',
-            ), // Endof Component Scudo quantico
+                    'name'=>'Corazza Duranio/Tritanio III',
+                    'description'=>'Fase finale di studio delle leghe metalliche classiche per la protezione delle classi maggiori. Questa tecnologia si &egrave; dimostrata troppo dispendiosa per i benefici apportati.',
+            ), // Endof Component Corazza Duranio/Tritanio III
 
-			// Component Scudo
+	     // Component Corazza Organica
              3=>array(
-                    'name'=>'Emettitore di campo stocastico Alfa',
-                    'description'=>'Questo sistema incrementa notevolmente la resa degli scudi quantici. Essendo un prototipo tuttavia, le sue prestazioni non sono ancora quelle sperate.',
-            ), // Endof Component Scudo
+                    'name'=>'Corazza Organica',
+                    'description'=>'Utilizzando le nostre conoscenze abbiamo sviluppato materiali a base organica che si adattano meglio allo scopo di costruire scafi protetti. Per prime sono le nostre unit&agrave; leggere a beneficiare di questi nuovi ritrovati.',
+            ), // Endof Component Corazza Organica
 
-             // Component Scudo di fase
+             // Component Corazza Organica II
              4=>array(
-                    'name'=>'Emettitore di campo stocastico Beta',
-                    'description'=>'Evoluzione progettuale della versione Alfa.',
-            ), // Endof Component Scudo di fase
+                    'name'=>'Corazza Organica II',
+                    'description'=>'Ulteriori studi hanno migliorato le tecniche produttive dei materiali e quelle relative alla realizzazione di protezioni di maggiori dimensioni. Siamo ora in grado di proteggere le unit&agrave; di classe media della nostra flotta.',
+            ), // Endof Component Corazza Organica II
 
-             // Component Scudo quantico
+             // Component Corazza Organica III
              5=>array(
-                    'name'=>'Emettitore di campo Zeta',
-                    'description'=>'Questa versione si avvicina al massimo risultato possibile per questa tecnologia. Tuttavia, questo modulo &egrave; impiegabile solo sulle navi ammiraglie della flotta.',
-            ), // Endof Component Scudo quantico
+                    'name'=>'Corazza Organica III',
+                    'description'=>'Le ricerche per migliorare i risultati ottenuti in precedenza sono stati inferiori alle aspettative. Sebbene alcune navi a nostra disposizione possano ottenere qualche beneficio da questo step evolutivo, questa tecnologia si rivela inadatta ad un ulteriore sviluppo per le classi maggiori.',
+            ), // Endof Component Corazza Organica III
 
-      'name'=>'Scudo',
-      ), // Endof Category Scudo
+             // Component Bio-corazza Composita
+             6=>array(
+                    'name'=>'Bio-corazza Composita',
+                    'description'=>'Integrando differenti tecnologie costruttive precedentemente sviluppate, siamo stati capaci di ottenere un tipo di corazza molto performante e la capacit&agrave; di impiegarla per le nostre navi pi&ugrave; pesanti. Il costo di sviluppo e le difficolt&agrave; di assemblaggio ne prevengono l&#146;impiego su unit&agrave; minori.',
+            ), // Endof Component Bio-corazza Composita
+
+             // Component Bio-corazza Composita II
+             7=>array(
+                    'name'=>'Bio-corazza Composita II',
+                    'description'=>'Stadio finale di ricerca per l&#146;utilizzo del nuovo tipo di corazza sulle nostre navi da battaglia.',
+            ), // Endof Component Bio-corazza Composita II
+            
+      'name'=>'Scafo',
+      ), // Endof Category Scafo
 
 
         // Category Sistema di elaborazione
@@ -205,73 +373,33 @@ $ship_components_locale=array(
              // Component Interfaccia Biogenetica MK II
              1=>array(
                     'name'=>'Interfaccia Biogenetica MK II',
-                    'description'=>'Sistemi informatici migliorati in dotazione alle navi Breen di classe media.',
+                    'description'=>'Sistemi informatici migliorati in dotazione a tutte le navi Breen.',
             ), // Endof Component Interfaccia Biogenetica MK II
 
              // Component Interfaccia Biogenetica MK III
              2=>array(
                     'name'=>'Interfaccia Biogenetica MK III',
-                    'description'=>'Sistemi informatici avanzati in dotazione alle navi di classe superiore.',
+                    'description'=>'Sistemi informatici avanzati in dotazione a tutte le navi Breen.',
             ), // Endof Component Interfaccia Biogenetica MK III
 
              // Component Interfaccia Biogenetica MK IV
              3=>array(
                     'name'=>'Interfaccia Biogenetica MK IV',
-                    'description'=>'Sistemi informatici estremamente avanzati e veloci disponibili per le navi ammiraglie.',
+                    'description'=>'Sistemi informatici estremamente avanzati e veloci disponibili per tutte le navi Breen.',
             ), // Endof Component Interfaccia Biogenetica MK IV
 
-             // Component Interfaccia Biogenetica MK IV
+             // Component Interfaccia Biogenetica MK V
              4=>array(
                     'name'=>'Interfaccia Biogenetica MK V',
-                    'description'=>'Sistemi informatici estremamente avanzati e veloci disponibili per le navi ammiraglie.',
-            ), // Endof Component Interfaccia Biogenetica MK IV
-
-             // Component Interfaccia Biogenetica MK IV
-             5=>array(
-                    'name'=>'Interfaccia Biogenetica MK VI',
-                    'description'=>'Sistemi informatici estremamente avanzati e veloci disponibili per le navi ammiraglie.',
-            ), // Endof Component Interfaccia Biogenetica MK IV
+                    'description'=>'Sistemi informatici estremamente avanzati e veloci disponibili tutte le navi Breen.',
+            ), // Endof Component Interfaccia Biogenetica MK V
 
       'name'=>'Sistema di elaborazione',
       ), // Endof Category Sistema di elaborazione
 
 
-        // Category Trainingsraum
+        // Category Sensori
         7=>array(
-             // Component Kampfsimulator MKI
-             0=>array(
-                    'name'=>'Simulatore combattimento MKI',
-                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
-            ), // Endof Component Kortikalalarm
-
-             // Component Kampfsimulator MKII
-             1=>array(
-                    'name'=>'Simulatore combattimento MKII',
-                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
-            ), // Endof Component Kortikaler Hypertransiver
-
-             // Component Kampfsimulator MKIII
-             2=>array(
-                    'name'=>'Simulatore combattimento MKIII',
-                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
-            ), // Endof Component Neurale Regeneration
-
-              3=>array(
-                    'name'=>'Simulatore combattimento MKIV',
-                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
-            ),
-
-            4=>array(
-                    'name'=>'Simulatore combattimento MKV',
-                    'description'=>'Il continuo addestramento in condizioni estreme permette di ottenere la miglior efficacia in combattimento possibile.',
-            ),
-
-      'name'=>'Area formazione',
-      ), // Endof Category Trainingsraum
-
-
-        // Category Wissenschaftssektion
-        8=>array(
              // Component Fluider Torpedo
              0=>array(
                     'name'=>'Stazione sensori',
@@ -302,50 +430,110 @@ $ship_components_locale=array(
                     'description'=>'Questi scanner per lo spazio profondo rappresentano la punta di diamante dei nostri sensori. Aumentano in maniera considerevole la quantit&agravel e l&#146;accuratenzza dei dati acquisiti anche a lunghe distanze.',
             ), // Endof Component
 
-      'name'=>'Sezione scientifica',
+      'name'=>'Sensori',
+      ), // Endof Category Trainingsraum
+
+
+        // Category Wissenschaftssektion
+        8=>array(
+
+             // Component Fluider Torpedo
+             0=>array(
+                    'name'=>'Camere Biostasi',
+                    'description'=>'Sezione della nave dedicata al mantenimento vitale in ibernazione di personale aggiuntivo a bordo.',
+            ), // Endof Component Fluider Torpedo
+
+             // Component Erweiterte Sensoren
+             1=>array(
+                    'name'=>'Serre idroponiche',
+                    'description'=>'Sezione medica della nave per il mantenimento ottimale della forma fisica del personale imbarcato.',
+            ), // Endof Component Fluider Torpedo II
+
+             // Component Dual Sensorenstation
+             2=>array(
+                    'name'=>'Sistema offensivo bionico',
+                    'description'=>'Insieme di apparati tecnologici per il miglioramento delle prestazioni della nave in combattimento.',
+            ), // Endof Component Fluid-Plasma GeschEz
+
+             // Component TiefenraumScaner
+             3=>array(
+                    'name'=>'Camere Biostasi II',
+                    'description'=>'Sezione della nave dedicata al mantenimento vitale in ibernazione di personale aggiuntivo a bordo.',
+            ), // Endof Component
+
+             // Component TiefenraumScaner
+             4=>array(
+                    'name'=>'Serre idroponiche II',
+                    'description'=>'Sezione medica della nave per il mantenimento ottimale della forma fisica del personale imbarcato.',
+            ), // Endof Component
+            
+             // Component TiefenraumScaner
+             5=>array(
+                    'name'=>'Sistema Offensivo Bionico II',
+                    'description'=>'Insieme di apparati tecnologici per il miglioramento delle prestazioni della nave in combattimento.',
+            ), // Endof Component
+
+             // Component TiefenraumScaner
+             6=>array(
+                    'name'=>'Serre idroponiche III',
+                    'description'=>'Sezione medica della nave per il mantenimento ottimale della forma fisica del personale imbarcato.',
+            ), // Endof Component
+            
+      'name'=>'Sistemi Avanzati',
       ), // Endof Category Schwere Waffen
 
 
-        // Category  Experimentelles
+        // Category  Addestramento
         9=>array(
              // Component Energieschild
              0=>array(
-                    'name'=>'Scudo energetico',
-                    'description'=>'The inertial dampers improve flight stability by generating an inertial field, which is the influence of gravitational forces in maneuvers reduced.',
+                    'name'=>'Classe 1 - I',
+                    'description'=>'Addestramento avanzato per unit&agrave; leggere.',
             ), // Endof Component
 
              // Component  Mehrphasen EdS
              1=>array(
-                    'name'=>'More phases EdS',
-                    'description'=>'Especially in the elite class concerted fields maximize the agility and response for optimal results.',
+                    'name'=>'Classe 1 - II',
+                    'description'=>'Addestramento elite per unit&agrave; leggere.',
             ), // Endof Component Tinoide Dämpfer
 
              // Component Bionisches Waffensystem MKI
              2=>array(
-                    'name'=>'Sistema d&#146;arma bionico  MKI',
-                    'description'=>'The tactical nerve pathways to improve the perception of the pilots of our ships. Thus, it is a light, to detect threats early.',
+                    'name'=>'Classe 2 - I',
+                    'description'=>'Addestramento avanzato per unit&agrave; medie.',
             ), // Endof Component Taktische Nervenbahnen
 
              // Component Bionisches Waffensystem MKII
              3=>array(
-                    'name'=>'Sistema d&#146;arma bionico  MKII',
-                    'description'=>'The symbiosis Bioneurale connects the nerves of the pilots 1:1 with those of the ship. This will allow easier navigation, but there is the risk of permanent nerve damage from the pilots.',
+                    'name'=>'Classe 2 - II',
+                    'description'=>'Addestramento avanzato superiore per unit&agrave; medie.',
             ), // Endof Component Bioneurale Symbiose
 
              // Component  Energy damping Launcher
              4=>array(
-                    'name'=>'Energy damping Launcher',
-                    'description'=>'By using bioneuraler control components could again be improved without the energy consumption to increase. They are specifically designed for the midium class.',
+                    'name'=>'Classe 2 - III',
+                    'description'=>'Addestramento di elite per unit&agrave; medie.',
             ), // Endof Component Energy damping Launcher
 
              // Component Erw.Tarnvorrichtung
              5=>array(
-                    'name'=>'Erw.Tarnvorrichtung',
-                    'description'=>'In addition to the tactical system is actually an easy target enlargement. However, it draws on data from the database, which is a huge increase in firepower to follow.<br><tt>Requires: Advanced ship database</tt>',
+                    'name'=>'Classe 3 - I',
+                    'description'=>'Addestramento avanzato per eqipaggi di unit&agrave; pesanti.',
             ), // Endof Component Taktisches Nebensystem
 
+             // Component Erw.Tarnvorrichtung
+             6=>array(
+                    'name'=>'Classe 3 - II',
+                    'description'=>'Addestramento avanzato superiore per equipaggi di unit&agrave; pesanti.',
+            ), // Endof Component Taktisches Nebensystem
+
+             // Component Erw.Tarnvorrichtung
+             7=>array(
+                    'name'=>'Classe 3 - III',
+                    'description'=>'Addestramento elite per equipaggi di unit&agrave; pesanti.',
+            ), // Endof Component Taktisches Nebensystem            
             
-      'name'=>' Sperimentale',
+      'name'=>'Addestramento',
       ), // Endof Category  Experimental
 
 

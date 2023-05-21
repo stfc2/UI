@@ -43,7 +43,7 @@ if(!empty($_POST['from_submit'])) {
         message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
-    if($fleet['user_id'] != $game->player['user_id']) {
+    if($fleet['owner_id'] != $game->player['user_id']) {
         message(NOTICE, constant($game->sprache("TEXT0")));
     }
     
@@ -51,7 +51,7 @@ if(!empty($_POST['from_submit'])) {
         message(NOTICE, constant($game->sprache("TEXT1")));
     }
     
-    if($fleet['user_id'] != $fleet['planet_owner']) {
+    if($fleet['owner_id'] != $fleet['planet_owner']) {
         message(NOTICE, constant($game->sprache("TEXT2")));
     }
 
@@ -204,7 +204,7 @@ elseif(!empty($_GET['from'])) {
         message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
-    if($fleet['user_id'] != $game->player['user_id']) {
+    if($fleet['owner_id'] != $game->player['user_id']) {
         message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
@@ -387,7 +387,7 @@ elseif(!empty($_POST['to_submit'])) {
     $return_to = (!empty($_GET['return_to'])) ? deparse_sql(urldecode($_GET['return_to'])) : 'a=ship_fleets_display&pfleet_details='.$fleet_id;
 
     $sql = 'SELECT ship_fleets.*,
-                   planets.planet_id, planets.planet_owner AS owner_id,
+                   planets.planet_id, planets.planet_owner AS powner_id,
                    planets.resource_1 AS presource_1, planets.resource_2 AS presource_2, planets.resource_3 AS presource_3, planets.resource_4 AS presource_4,
                    planets.unit_1 AS punit_1, planets.unit_2 AS punit_2, planets.unit_3 AS punit_3, planets.unit_4 AS punit_4, planets.unit_5 AS punit_5, planets.unit_6 AS punit_6,
                    planets.max_resources AS max_presources, planets.max_worker AS max_pworker, planets.max_units AS max_punits
@@ -403,7 +403,7 @@ elseif(!empty($_POST['to_submit'])) {
         message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
-    if($fleet['user_id'] != $game->player['user_id']) {
+    if($fleet['owner_id'] != $game->player['user_id']) {
         message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
@@ -411,15 +411,15 @@ elseif(!empty($_POST['to_submit'])) {
         message(NOTICE, constant($game->sprache("TEXT1")));
     }
 
-    if($fleet['owner_id'] != $fleet['user_id']) {
+    if($fleet['powner_id'] != $fleet['owner_id']) {
         message(NOTICE, constant($game->sprache("TEXT22")));
     }
 
-    if(empty($fleet['owner_id'])) {
+    if(empty($fleet['powner_id'])) {
         message(NOTICE, constant($game->sprache("TEXT23")));
     }
     
-    $own_planet = ($fleet['owner_id'] == $game->player['user_id']) ? true : false;
+    $own_planet = ($fleet['powner_id'] == $game->player['user_id']) ? true : false;
 
     $sql = 'SELECT COUNT(ships.ship_id) AS n_transporter
             FROM ships, ship_templates
@@ -550,7 +550,7 @@ elseif(!empty($_POST['to_submit'])) {
         $sql = 'SELECT id, resource_1, resource_2, resource_3, ship_id
                 FROM bidding_owed
                 WHERE user = '.$game->player['user_id'].' AND
-                      receiver = '.$fleet['owner_id'].'
+                      receiver = '.$fleet['powner_id'].'
                 ORDER BY id ASC';
                 
         if(!$q_debts = $db->query($sql)) {
@@ -675,7 +675,7 @@ elseif(isset($_GET['to'])) {
     $return_to = (!empty($_GET['return_to'])) ? deparse_sql(urldecode($_GET['return_to'])) : '';
 
     $sql = 'SELECT f.*,
-                   p.planet_id, p.planet_name, p.planet_owner AS owner_id,
+                   p.planet_id, p.planet_name, p.planet_owner AS powner_id,
                    p.resource_1 AS presource_1, p.resource_2 AS presource_2, p.resource_3 AS presource_3, p.resource_4 AS presource_4,
                    p.unit_1 AS punit_1, p.unit_2 AS punit_2, p.unit_3 AS punit_3, p.unit_4 AS punit_4, p.unit_5 AS punit_5, p.unit_6 AS punit_6,
                    p.max_resources AS max_presources, p.max_worker AS max_pworker, p.max_units AS max_punits,
@@ -693,7 +693,7 @@ elseif(isset($_GET['to'])) {
         message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
-    if($fleet['user_id'] != $game->player['user_id']) {
+    if($fleet['owner_id'] != $game->player['user_id']) {
         message(NOTICE, constant($game->sprache("TEXT0")));
     }
     
@@ -701,11 +701,11 @@ elseif(isset($_GET['to'])) {
         message(NOTICE, constant($game->sprache("TEXT1")));
     }
     
-    if(empty($fleet['owner_id'])) {
+    if(empty($fleet['powner_id'])) {
         message(NOTICE, constant($game->sprache("TEXT23")));
     }
     
-    $own_planet = ($fleet['owner_id'] == $game->player['user_id']) ? true : false;
+    $own_planet = ($fleet['powner_id'] == $game->player['user_id']) ? true : false;
 
     $sql = 'SELECT COUNT(s.ship_id) AS n_transporter
             FROM (ships s), (ship_templates st)

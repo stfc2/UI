@@ -99,9 +99,12 @@ $tables = array(
     'future_human_reward',
     'ip_link',
     'logbook',
+    'memory_alpha_storage',
+    'memory_alpha_triggers',
     'message',
     'message_archiv',
     'message_removed',
+    'officers',    
     'planets',
     'planet_details',
     'portal_news',
@@ -114,6 +117,7 @@ $tables = array(
     'scheduler_shipbuild',
     'scheduler_shipmovement',
     'schulden_table',
+    'settlers_events',
     'settlers_relations',
     'ships',
     'ship_ccategory',
@@ -133,6 +137,7 @@ $tables = array(
     'user',
     'userally_history',
     'user_diplomacy',
+    'user_felony',
     'user_iplog',
     'user_logs',
     'user_sitter_iplog',
@@ -142,6 +147,12 @@ foreach($tables as $table) {
     if(!$db->query('TRUNCATE '.$table)) {
         message(DATABASE_ERROR, 'Cannot truncate DB table '.$table.'!');
     }
+}
+
+$sql = 'INSERT INTO FHB_Handels_Lager (id) VALUES (0)';
+
+if(!$db->query($sql)) {
+    message(DATABASE_ERROR, 'Cannot reset trade center account!');
 }
 
 $game->out('done.<br>');
@@ -205,6 +216,7 @@ $sql = 'INSERT INTO `starsystems` (
             `system_starsize`,
             `system_n_planets`,
             `system_max_planets`,
+            `system_owner`,
             `system_closed`)
         VALUES (
             1, "System E14:F2", 122,
@@ -213,8 +225,9 @@ $sql = 'INSERT INTO `starsystems` (
             119, 42,
             18, 21, 165,
             12,
-            1,
+            2,
             6,
+            10,
             1)';
 
 if(!$db->query($sql)) {
@@ -263,6 +276,69 @@ $sql =  'INSERT INTO `user_templates` (`user_id`, `user_template`) VALUES
 
 if(!$db->query($sql)) {
     message(DATABASE_ERROR, 'Cannot create STFC-Admin user template!');
+}
+
+$game->out('done.<br>Creating Operator user...');
+
+$sql = "INSERT INTO user 
+        (`user_id`, `user_active`, `user_name`, `user_loginname`, `user_password`,
+         `user_gfxpath`, `user_skinpath`, `user_jspath`,
+        `user_email`, `user_auth_level`, `user_rank`, `user_override_uid`, `user_race`,
+        `user_registration_time`, `last_active`, `user_capital`, `active_planet`, `country`, `language`,
+        `user_skin`, `user_notepad`, `user_signature`, `user_message_sig`, `user_options`, `message_basement`, `skin_farbe`)
+        VALUES 
+        (11, 1, 'Kail', 'delogu72', 'b07b8fc4450a4ba23eebd673914c8c95', 
+        '".DEFAULT_GFX_PATH."', 'skin1/', '',
+        'delogu@stfc.it', 3, 'Operator', 0, 3,
+        '".time()."', '".time()."', 2, 2, 'IT', 'ITA',
+         1, '', '', '', '', '', '')";
+
+if(!$db->query($sql)) {
+    message(DATABASE_ERROR, 'Cannot create Operator user!');
+}
+
+$game->out('done.<br>Creating Operator planet...');
+
+$sql = 'INSERT INTO `planets` (
+            `planet_id`, `planet_name`, `system_id`, `sector_id`,
+            `planet_owner`, `planet_owned_date`, `planet_type`, `planet_distance_id`,
+            `planet_distance_px`, `planet_covered_distance`, `planet_tick_cdistance`,
+            `planet_max_cdistance`, `planet_current_x`, `planet_current_y`,
+            `planet_points`, `planet_available_points`,`planet_thumb`,
+            `resource_1`, `resource_2`, `resource_3`, `resource_4`,
+            `rateo_1`, `rateo_2`, `rateo_3`, `rateo_4`, `recompute_static`,
+            `max_resources`, `max_worker`, `max_units`,
+            `workermine_1`, `workermine_2`, `workermine_3`,
+            `planet_altname`)
+        VALUES (
+            2, "Casa Base", 1, 122,
+            11, '.time().', "q", 3,
+            92, 0, 20,
+            578, 0, 0,
+            10, 1173, "",
+            200, 200, 100, 100,
+            1, 1, 1, 1, 1,
+            38000, 65000, 65000,
+            100, 100, 100,
+            "due")';
+
+if(!$db->query($sql)) {
+    message(DATABASE_ERROR, 'Cannot create Operator planet!');
+}
+
+$game->out('done.<br>Creating Operator user template...');
+
+$file = $config['game_url'].'/modules/tools/world/default_template.html';
+if(($template = file_get_contents($file)) === false) {
+    message(GENERAL, 'Cannot open default template file: '.$file);
+}
+
+$template = utf8_decode($template);
+$sql =  'INSERT INTO `user_templates` (`user_id`, `user_template`) VALUES
+                                     (11, "'.addslashes($template).'")';
+
+if(!$db->query($sql)) {
+    message(DATABASE_ERROR, 'Cannot create Operator user template!');
 }
 
 // This templates are needed by tool encourage_user
@@ -351,21 +427,32 @@ include('repair_starsystem_slots.php');
 
 $game->out('done.<br>Reset config table to initial status...');
 
-$sql = 'UPDATE config
-        SET tick_id = 1,
-            tick_time = '.time().',
-            stardate = 21000.0,
-            ferengitax_1 = 0,
-            ferengitax_2 = 0,
-            ferengitax_3 = 0,
-            last_paytime = 0,
-            future_ship = 0,
-            settler_tmp_1 = 0,
-            settler_tmp_2 = 0,
-            settler_tmp_3 = 0,
-            settler_tmp_4 = 0';
+$sql = 'TRUNCATE config';
 
-            if(!$db->query($sql)) {
+if(!$db->query($sql)) {
+    message(DATABASE_ERROR, 'Cannot reset config table to initial status!');
+}
+
+$sql = 'INSERT INTO config SET tick_id = 1,
+                          tick_stopped = 1,
+                          game_stopped = 1,
+                          max_player = 60,
+                          register_blocked = 1,
+                          tick_time = '.time().', 
+                          stardate = 21000.0,
+                          settler_tmp_1 = 0,
+                          settler_tmp_2 = 0,
+                          settler_tmp_3 = 0,
+                          settler_tmp_4 = 0,
+                          orion_tmp_1 = 0,
+                          orion_tmp_2 = 0,
+                          orion_tmp_3 = 0,
+                          orion_tmp_4 = 0,
+                          orion_tmp_5 = 0,
+                          orion_spawn_counter = 12,
+                          settler_n_planets = 0';
+
+if(!$db->query($sql)) {
     message(DATABASE_ERROR, 'Cannot reset config table to initial status!');
 }
 

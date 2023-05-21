@@ -1,5 +1,5 @@
 <?php
-/*
+/*    
     This file is part of STFC.
     Copyright 2006-2007 by Michael Krauss (info@stfc2.de) and Tobias Gafner
 
@@ -36,7 +36,7 @@ if(isset($_POST['submit'])) {
     $sql = 'SELECT *
             FROM user
             WHERE user_id = '.$user_id;
-
+            
     if(($user = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query main user data');
     }
@@ -119,7 +119,7 @@ if(isset($_POST['submit'])) {
 
         $sql = 'INSERT INTO ship_fleets (fleet_name, user_id, planet_id, move_id, n_ships)
                 VALUES ("Encouraging_hull'.($torso+1).'", '.$user_id.', '.$user['user_capital'].', 0, '.$num.')';
-
+                    
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not insert new fleets data');
         }
@@ -133,7 +133,7 @@ if(isset($_POST['submit'])) {
         $sql= 'INSERT INTO ships (fleet_id, user_id, template_id, experience, hitpoints, construction_time,
                               rof, torp, unit_1, unit_2, unit_3, unit_4)
            VALUES ('.$fleet_id.', '.$user_id.', '.$stpl['id'].', '.$stpl['value_9'].',
-                   '.$stpl['value_5'].', '.time().', '.$stpl['rof'].', '.$stpl['max_torp'].',
+                   '.$stpl['value_5'].', '.time().', '.$stpl['rof'].', '.$stpl['max_torp'].', 
                    '.$stpl['min_unit_1'].', '.$stpl['min_unit_2'].',
                    '.$stpl['min_unit_3'].', '.$stpl['min_unit_4'].')';
         for($i = 0; $i < $num; ++$i)
@@ -148,11 +148,11 @@ if(isset($_POST['submit'])) {
 
     // 3. Trade center account with:
     //     - 5.000.000 units of metal/min/dilithium
-    //     - 5000 lv1
-    //     - 3000 lv2
+    //     - 5000 lv1 
+    //     - 3000 lv2 
     //     - 1500 lv3
     //     - 500 lev4
-    //     - 5000 lev5
+    //     - 5000 lev5 
     //     - 2500 lev6
     $sql = 'INSERT INTO schulden_table (user_ver, user_kauf, status)
             VALUES ('.$user_id.', 10, 1)';
@@ -178,7 +178,7 @@ if(isset($_POST['submit'])) {
 
     $game->out('Created trade center account '.$account_id.' for user '.$user_id.'<br>');
     //
-
+    
     // 4. Give the player 20 planets
     $planets_to_go = 20;
 
@@ -204,7 +204,7 @@ if(isset($_POST['submit'])) {
     if(($capital_system = $db->queryrow($sql)) === false)
         message(DATABASE_ERROR, 'Could not query capital solar system data');
 
-    $sql = 'SELECT planet_id FROM `planets`
+    $sql = 'SELECT planet_id FROM `planets` 
             WHERE system_id = '.$capital_system['system_id'].' AND planet_owner = 0';
 
     if(!$q_planets = $db->query($sql)) {
@@ -216,9 +216,8 @@ if(isset($_POST['submit'])) {
         $sql = 'UPDATE planets
                 SET planet_owner = '.$user_id.',
                     planet_owned_date = '.time().',
-                    planet_owner_enum = '.$n_planets.',
+                    planet_owner_enum = '.($n_planets - 1).',
                     planet_available_points = '.$MAX_POINTS[0].',
-                    planet_name = "Bonus #'.$n_planets.'",
                     research_1 = 0,
                     research_2 = 0,
                     research_3 = 0,
@@ -301,7 +300,7 @@ if(isset($_POST['submit'])) {
         }
 
         // #############################################################################
-        // Add History Record in planet details; log_code = 25
+        // Add History Record in planet details; log_code = 25 
 
         $sql = 'INSERT INTO planet_details (planet_id, user_id, alliance_id, source_uid, source_aid, timestamp, log_code)
                 VALUES ('.$planet['planet_id'].', '.$user_id.', '.$user['user_alliance'].', '.$user_id.', '.$user['user_alliance'].', '.time().', 25)';
@@ -321,7 +320,7 @@ if(isset($_POST['submit'])) {
         $_system_id = $_temp[0];
 
         $game->out('Created system: '.$_system_id.'<br>');
-
+        
         // Retrieve available slots
         $sql = 'SELECT system_max_planets FROM starsystems WHERE system_id = '.$_system_id;
         if(($new_system = $db->queryrow($sql)) === false)
@@ -334,14 +333,13 @@ if(isset($_POST['submit'])) {
             $planet_id = create_planet(0, 'system', $_system_id);
 
             $game->out('Created planet: '.$planet_id.'<br>');
-
+            
             // Update required security forces
             $sql = 'UPDATE planets
                     SET planet_owner = '.$user_id.',
                         planet_owned_date = '.time().',
-                        planet_owner_enum = '.$n_planets.',
+                        planet_owner_enum = '.($n_planets - 1).',
                         planet_available_points = '.$MAX_POINTS[0].',
-                        planet_name = "Bonus #'.$n_planets.'",
                         unit_1 = ceil(pow(planet_owner_enum*'.MIN_TROOPS_PLANET.',1+planet_owner_enum*0.01)/2)
                     WHERE planet_id = '.$planet_id;
 
@@ -352,7 +350,7 @@ if(isset($_POST['submit'])) {
             $game->out('Updated required security troops of planet: '.$planet_id.'<br>');
 
             // #############################################################################
-            // Add History Record in planet details; log_code = 25
+            // Add History Record in planet details; log_code = 25 
 
             $sql = 'INSERT INTO planet_details (planet_id, user_id, alliance_id, source_uid, source_aid, timestamp, log_code)
                     VALUES ('.$planet_id.', '.$user_id.', '.$user['user_alliance'].', '.$user_id.', '.$user['user_alliance'].', '.time().', 25)';

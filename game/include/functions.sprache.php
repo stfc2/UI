@@ -178,6 +178,8 @@ define ("GER_SHIPS", 'Schiffe');
 
 define ("GER_INDEPENDENT_COLONIES", 'unabh&auml;ngigen Kolonien');
 
+define ("GER_OFFICERS", 'Officers');
+
 // Actions links
 
 define ("GER_PLANETS", 'Planeten');
@@ -382,6 +384,8 @@ define ("GER_DIPLO33", 'Planetares Bombardieren');
 
 define ("GER_DIPLO34", 'Kolonie &uuml;berrannt');
 
+define ("GER_DIPLO36", 'Benefactor');
+
 
 
 //English
@@ -541,6 +545,8 @@ define ("ENG_BUYTROOPS", 'Buy troops');
 define ("ENG_SHIPS", 'Ships');
 
 define ("ENG_INDEPENDENT_COLONIES", 'Independent colonies');
+
+define ("ENG_OFFICERS", 'Officers');
 
 // Actions links
 
@@ -745,6 +751,8 @@ define ("ENG_DIPLO33", 'Planetary bombing');
 
 define ("ENG_DIPLO34", 'Colony Overrun');
 
+define ("ENG_DIPLO36", 'Benefactor');
+
 
 
 //Italian
@@ -904,6 +912,8 @@ define ("ITA_BUYTROOPS", 'Compra truppe');
 define ("ITA_SHIPS", 'Navi');
 
 define ("ITA_INDEPENDENT_COLONIES", 'Colonie indipendenti');
+
+define ("ITA_OFFICERS", 'Ufficiali');
 
 // Actions links
 
@@ -1107,4 +1117,8 @@ define ("ITA_DIPLO32", 'Attacco Orbitale');
 define ("ITA_DIPLO33", 'Bombardamento Planetario');
 
 define ("ITA_DIPLO34", 'Conquista di una Colonia');
+
+define ("ITA_DIPLO35", 'Crimine organizzato');
+
+define ("ITA_DIPLO36", 'Benefattore');
 ?>

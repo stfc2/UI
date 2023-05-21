@@ -161,7 +161,7 @@ function display_poll() {
     }
 
     $time = $poll_data['date'] - $user_data['user_registration_time'];
-    $oneMonth = (30 * 24 * 60 * 60);
+    $oneMonth = (20 * 24 * 60 * 60);
 
     if(empty($already_voted['poll_id']) && empty($poll_data['closed']) && ($time >= $oneMonth)) {
         $game->out('
@@ -620,7 +620,7 @@ switch($portal_action) {
 
         $game->out('<br>');
 
-        display_galaxymap();
+//      display_galaxymap();
 
         $game->out('<br>');
 
@@ -628,7 +628,7 @@ switch($portal_action) {
 
 //        $game->out('<br>');
 
-        display_skins();
+//      display_skins();
 
 
 

@@ -245,6 +245,37 @@ function check_auth($required_level) {
 }
 
 // #############################################################################
+function check_diplomacy($user_id) {
+	global $game, $db;
+
+	$sql = 'SELECT ud_id 
+			FROM user_diplomacy 
+			WHERE (user1_id = '.$user_id.' AND user2_id = '.$game->player['user_id'].') OR
+				  (user1_id = '.$game->player['user_id'].' AND user2_id = '.$user_id.') AND
+				  accepted = 1';
+	
+	if(($res = $db->queryrow($sql)) === false) {
+			message(DATABASE_ERROR, 'Could not read diplomacy data');
+	}
+	
+	if(isset($res['ud_id'])) { return true; } else { return false;}
+}
+
+// #############################################################################
+function check_felony($user_id) {
+        global $game, $db;
+    
+        $sql = 'SELECT uf_id 
+                FROM user_felony 
+                WHERE user1_id = '.$user_id.' AND user2_id = '.$game->player['user_id'];
+        
+        if(($res = $db->queryrow($sql)) === false) {
+                message(DATABASE_ERROR, 'Could not read felony data');
+	}
+        
+        if(isset($res['uf_id'])) { return true; } else { return false;}
+}
+// #############################################################################
 
 function display_view_navigation($module, $current_view, $views) {
 	$nav_html = array();
@@ -284,7 +315,7 @@ function add_logbook_entry($user_id, $log_type, $log_title, $log_data) {
 	if (!isset($user_id) || !isset($log_type) ||!isset($log_title) ||!isset($log_data)) return;
 	if (empty($user_id) || empty($log_type) ||empty($log_title) ||empty($log_data)) return;
 	// BOT users doesn't read their logbooks
-	if(($user_id == FERENGI_USERID) || ($user_id == INDEPENDENT_USERID) || ($user_id == BORG_USERID)) return true;
+	if(($user_id == FERENGI_USERID) || ($user_id == INDEPENDENT_USERID) || ($user_id == BORG_USERID) || ($user_id == ORION_USERID)) return true;
 
 	$sql = 'INSERT INTO logbook (user_id, log_type, log_date, log_read, log_title, log_data)
 		VALUES ('.$user_id.', '.$log_type.', '.$game->TIME.', 0, "'.$log_title.'", "'.addslashes(serialize($log_data)).'")';
@@ -444,14 +475,24 @@ function GetDefenseUnit($unit_id, $race = false) {
 
 	return ( $UNIT_DATA[$unit_id][6] * $RACE_DATA[$race][16]);
 }
+
+function GetNccCounter($id) {
+        global $db;
+        $res = $db->queryrow('SELECT ccn_counter FROM ship_templates WHERE id = '.$id);
+        $db->query('UPDATE ship_templates SET ccn_counter = ccn_counter + 1 WHERE id = '.$id);
+        $counter = $res['ccn_counter']+1;
+        return $counter;
+}
+
 // #############################################################################
 
 
 function SystemMessage($receiver, $header, $message) {
 	global $db,$game;
 
+	$cut_header = substr($header, 0, 40);
 	if ($db->query('INSERT INTO message (sender, receiver, subject, text, time)
-		VALUES (0,"'.$receiver.'","'.addslashes($header).'","'.addslashes($message).'", '.$game->TIME.')')==false)  {message(DATABASE_ERROR, 'systemmessage_query: Could not call INSERT INTO in message'); exit();}
+		VALUES (0,"'.$receiver.'","'.addslashes($cut_header).'","'.addslashes($message).'", '.$game->TIME.')')==false)  {message(DATABASE_ERROR, 'systemmessage_query: Could not call INSERT INTO in message'); exit();}
 	if (($num=$db->queryrow('SELECT COUNT(id) as unread FROM message WHERE (receiver="'.$receiver.'") AND (rread=0)'))!=false)
 	{
 		$db->query('UPDATE user SET unread_messages="'.$num['unread'].'" WHERE user_id="'.$receiver.'"');
@@ -566,7 +607,11 @@ function get_diplo_str($code) {
             
             case 32: $str = constant($game->sprache("DIPLO32")); break;
             case 33: $str = constant($game->sprache("DIPLO33")); break;
-            case 34: $str = constant($game->sprache("DIPLO33")); break;
+            case 34: $str = constant($game->sprache("DIPLO34")); break;
+            
+            case 35: $str = constant($game->sprache("DIPLO35")); break;
+            
+            case 36: $str = constant($game->sprache("DIPLO36")); break;
             
             default: $str = 'Unknown diplomatic code'; break;
     }
@@ -592,10 +637,109 @@ function is_planet_attacked($planet_id) {
 
 	return (!empty($amove['move_id']));
 }
+// #############################################################################
+// Calcolo della firma di una flotta.
+function GetSignature($n_ships, $torso_list) 
+{
+    $fleet_signature = 0;
+    
+    foreach($torso_list as $torso){
+        /*
+         *  Ogni torso ha un punteggio di visibilità, secondo la seguente classificazione
+         *  0     = 1
+         *  1,2   = 4
+         *  3,4   = 2
+         *  5     = 3
+         *  6,7   = 6
+         *  8     = 8
+         *  9     = 12
+         *  10    = 16
+         *  11    = 24
+         *  12    = 12
+         */
+        switch ($torso){
+            case 0:
+                $fleet_signature += 1;
+                break;
+            case 1:
+            case 2:
+                $fleet_signature += 4;
+                break;
+            case 3:
+            case 4:
+                $fleet_signature += 2;
+                break;
+            case 5:
+                $fleet_signature += 3;
+            case 6:
+            case 7:
+                $fleet_signature += 6;
+                break;
+            case 8:
+                $fleet_signature += 8;
+                break;
+            case 9:
+                $fleet_signature += 12;
+                break;
+            case 10:
+                $fleet_signature += 16;
+                break;
+            case 11:
+                $fleet_signature += 24;
+                break;
+            case 12:
+                $fleet_signature += 12;
+                break;
+            default :
+                $fleet_signature += 5;
+        }
+    }
+    
+    $signature_strenght = round(($fleet_signature/$n_ships) / 5, 2);
+    
+    if($signature_strenght < 0.50) {$signature_strenght = 0.50;}
+    
+    if($signature_strenght > 3.0) {$signature_strenght = 3.0;}
+
+    return $signature_strenght;
+}
+// #############################################################################
+// Nuova funzione che gestisce la visibilità delle flotte sui sensori
+function NewGetVisibility($sensor,$range,$tick_speed,$n_ships,$cloak_ships,$torso_ships,$flight_duration)
+{
+    if($range == 0) return 0;
+    
+    $visibility = 0;
+       
+    $signature_strenght = GetSignature($n_ships, $torso_ships);
+    
+    $x = round($cloak_ships/$n_ships,0);
+    
+    if($x < 0) {$x = 0;}
+    
+    if($x > 36) {$x = 36;}
+    
+    $signal_strenght = min($n_ships * 40.0, 14000.0) + (2000.0 * $signature_strenght) - (14000.0 * (exp($x/7.85)/100));
+    
+    if($signal_strenght > $sensor)
+    {
+        $visual_range = round($sensor + $sensor*0.10, 3);
+    }
+    else
+    {
+        $visual_range = $signal_strenght;
+    }
+    
+    $visibility = round((($flight_duration - round($visual_range / $tick_speed, 0))*100)/$flight_duration,0);
+    
+    if($visibility < 0 ) {$visibility = 0;}
+    
+    if($visibility > 100) {$visibility = 100;}
+    
+    return $visibility;
+}
 
 // #############################################################################
-
-
 // This function returns at which point the fleet (with id 1) is visible when fleet 2 is in orbit.
 // The values range from 0-100 (percent)
 function GetVisibility($sensor1,$cloak1,$ships1,$sensor2,$cloak2,$sensor3,$flight_duration)
@@ -701,7 +845,7 @@ function get_friendly_orbit_fleets($system_id, $user_id = 0, $user_alliance = 0)
 		WHERE p.system_id = '.$system_id.' AND
 		f.user_id <> '.$user_id;
 
-	if(!$q_user = $db->queryrowset($sql)) {
+	if(($q_user = $db->queryrowset($sql)) === false) {
 		message(DATABASE_ERROR, 'Could not query user orbit data');
 	}
 
@@ -870,8 +1014,9 @@ function get_move_ship_details($move_id) {
         $move_ships['torso'][$_sql_torso[$i]['ship_torso']] = $_sql_torso[$i]['n_ships'];
     }
 
-
-	 // die leichten decoymasken mit einberechnen
+    /*
+     * decoy are not used anymore
+    // die leichten decoymasken mit einberechnen
     $sql = 'SELECT COUNT(s.ship_id) AS n_ships
             FROM (ship_fleets f, ships s, ship_templates st)
             WHERE f.move_id = '.$move_id.' AND
@@ -898,7 +1043,7 @@ function get_move_ship_details($move_id) {
     $big_decoy = $db->queryrow($sql);
     $move_ships['torso'][6]-=$big_decoy['n_ships'];
     $move_ships['torso'][9]+=$big_decoy['n_ships'];
-
+     */
 
     return $move_ships;
 }
@@ -1047,9 +1192,9 @@ class game {
 
 	var $quadrant_map_split = 9;
 	var $sector_map_split = 9;
-	var $system_max_planets = 5;
+	var $system_max_planets = 8;
 	var $starsize_range = array(10, 20);
-	var $planet_distances = array( array(43, 53), array(68, 78), array(93, 103), array(118, 128), array(143, 155), array(170, 180), array(195, 205), array(220, 230) );
+	var $planet_distances = array( array(30, 35), array(45, 50), array(70, 75), array(90, 95), array(110, 115), array(135, 140), array(160, 175), array(195, 210) );
 
 	// Store player's capital planet coordinates in order to calculate
 	// distances from it in libs\maps.php:create_sector_map() function.
@@ -1067,6 +1212,19 @@ class game {
 		$this->max_systems_per_sector   = $this->sector_map_split * $this->sector_map_split;
 	}
 
+        function fast_link_string($sector_id, $system_id, $system_x, $system_y, $planet_id, $planet_distance_id, $bracket=FALSE) {
+            
+            if($bracket) {$fast_string = '[';}
+            
+            $fast_string .= '<a href="'.parse_link('a=tactical_cartography&sector_id='.$sector_id).'">'.$this->get_sector_name($sector_id).'</a>:';
+            $fast_string .= '<a href="'.parse_link('a=tactical_cartography&system_id='.$system_id).'">'.$this->get_system_cname($system_x, $system_y).'</a>:';
+            $fast_string .= '<a href="'.parse_link('a=tactical_cartography&planet_id='.$planet_id).'">'.($planet_distance_id +1).'</a>';
+
+            if($bracket) {$fast_string .= ']';}
+
+            return $fast_string;
+        }        
+        
 	function sprache($nummer){
 		if(!defined($this->player['language']."_".$nummer) || ($this->player['language']."_".$nummer)== " "){
 			// 11/02/08 - AC: Fallback language is now english
@@ -1130,8 +1288,25 @@ class game {
 			$stgcjs = 'stgc2_ENG.js';
 
 		echo '
+  <style>
+  td.crh_srlight {
+    width: 100px;
+    text-align: center;
+    color: #35A135;
+  }
+  td.cr40_srlight {
+    width: 40px;
+    text-align: right;
+    color: #35A135;
+  }
+  td.cr16_srlight {
+    width: 40px;
+    text-align: right;
+    color: #35A135;
+  }
+  </style>
   <script type="text/javascript" language="JavaScript" src="'.$this->player['user_jspath'].$stgcjs.'"></script>
-  <script type="text/javascript" language="JavaScript" src="'.$this->player['user_jspath'].'overlib.js"></script>
+  <script type="text/javascript" language="JavaScript" src="'.$this->player['user_jspath'].'overlibmws.js"></script>
   <script type="text/javascript" language="JavaScript" src="'.$this->player['user_jspath'].'popup.js"></script>
 
        '.NL.NL;
@@ -1400,6 +1575,7 @@ class game {
 			'ACTIVE_PLANET_METAL' => (($this->planet['resource_1']>=100000) ? round($this->planet['resource_1']/1000).'k' : round($this->planet['resource_1'],0)),
 			'ACTIVE_PLANET_MINERALS' => (($this->planet['resource_2']>=100000) ? round($this->planet['resource_2']/1000).'k' : round($this->planet['resource_2'],0)),
 			'ACTIVE_PLANET_LATINUM' => (($this->planet['resource_3']>=100000) ? round($this->planet['resource_3']/1000).'k' : round($this->planet['resource_3'],0)),
+                        'ACTIVE_PLANET_TECHPOINTS' => (round($this->planet['techpoints'],0)),
 			'ACTIVE_PLANET_WORKER' => round($this->planet['resource_4'], 0).' (+'.round($this->planet['add_4'], 1).')',
 			'ACTIVE_PLANET_MAXTROOPS' => $this->planet['max_units'],
 			'ACTIVE_PLANET_MAXUNITS' => $this->planet['max_units'],
@@ -1453,6 +1629,9 @@ class game {
 			'U_SHIPS' => parse_link('a=ships'),
 			'L_SETTLERS' => constant($this->sprache("INDEPENDENT_COLONIES")),
 			'U_SETTLERS' => parse_link('a=settlers'),
+                        /* 26/09/16 - DC eight years later we still here! */
+                        'L_OFFICERS' => constant($this->sprache("OFFICERS")),
+                    	'U_OFFICERS' => parse_link('a=officers'),
 
             // 18/02/11 - AC: New entry, used to setup the correct URL of the game in 
             //            the attribute 'oCMenu.onlineUrl' of the skins that have 
@@ -2024,11 +2203,11 @@ echo'
 					</tr>
 					</table><br>
 					<table>
-					<tr><td>'.constant($this->sprache("STARTPOINT")).'</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="0" checked> '.constant($this->sprache("RANDOM")).'</td></tr>
-					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="1"> '.constant($this->sprache("GAMMAQ")).'</td><td>'.$tips[1].'</td></tr>
-					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="2"> '.constant($this->sprache("DELTAQ")).'</td><td>'.$tips[2].'</td></tr>
+					<tr><td>'.constant($this->sprache("STARTPOINT")).'</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="0" disabled> '.constant($this->sprache("RANDOM")).'</td></tr>
+					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="1" disabled> '.constant($this->sprache("GAMMAQ")).'</td><td>'.$tips[1].'</td></tr>
+                    <tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="2" disabled> '.constant($this->sprache("DELTAQ")).'</td><td>'.$tips[2].'</td></tr>                                            
 					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="3"> '.constant($this->sprache("ALPHAQ")).'</td><td>'.$tips[3].'</td></tr>
-					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="4"> '.constant($this->sprache("BETAQ")).'</td><td>'.$tips[4].'</td></tr>
+					<tr><td>&nbsp;</td><td>&nbsp;</td><td><input type="radio" name="quadrant" value="4" disabled> '.constant($this->sprache("BETAQ")).'</td><td>'.$tips[4].'</td></tr>
 					</table>
 					<br><center>
 					<input type="submit" name="set_planet" value="'.constant($this->sprache("COLONIZE")).'" class="button">
@@ -2297,7 +2476,8 @@ echo'
         }
 
         if(!empty($res['timestamp'])) return true;
-        else return false;
+		
+		return false;
     }
 
     function is_system_allowed($system_id)
@@ -2320,6 +2500,16 @@ echo'
 
         if($res['system_closed'] == 0) return true;
 
+        $sql = 'SELECT starsystems_details.user_id, log_code 
+                FROM starsystems_details 
+                WHERE starsystems_details.user_id = '.$this->player['user_id'].' AND log_code = 100 AND system_id = '.$system_id;
+
+        if(($res = $db->queryrow($sql)) === false) {
+            message(DATABASE_ERROR, 'Could not query starsystem details');
+        }		
+
+        if(isset($res['log_code']) && !empty($res['log_code']) && $res['log_code'] == 100) return true;		
+
         return false;
     }
     
@@ -2332,7 +2522,10 @@ echo'
         
         if($this->player['user_auth_level'] == STGC_DEVELOPER) return true;        
 
-        $sql = 'SELECT planet_owner, system_owner, system_closed FROM planets INNER JOIN starsystems USING (system_id) WHERE planet_id = '.$planet_id;
+        $sql = 'SELECT planet_owner, system_owner, system_closed
+                FROM planets 
+                INNER JOIN starsystems USING (system_id) 
+                WHERE planet_id = '.$planet_id;
 
         if(($res = $db->queryrow($sql)) === false) {
             message(DATABASE_ERROR, 'Could not query starsystem details');
@@ -2346,14 +2539,25 @@ echo'
         
         if($res['system_owner'] == $this->player['user_id']) return true;
         
+        $sql = 'SELECT starsystems_details.user_id, log_code 
+                FROM starsystems_details 
+                INNER JOIN planets USING (system_id) 
+                WHERE starsystems_details.user_id = '.$this->player['user_id'].' AND log_code = 100 AND planet_id = '.$planet_id;
+
+        if(($res = $db->queryrow($sql)) === false) {
+            message(DATABASE_ERROR, 'Could not query starsystem details');
+        }
+
+        if(isset($res['log_code']) && !empty($res['log_code']) && $res['log_code'] == 100) return true;
+        
         return false; 
     }
 
 	// Veraltet, besser direkter Zugriff durch world.php
-	function create_system($id_type, $id_value) {
+	function create_system($id_type, $id_value, $is_mother) {
 		include_once('include/libs/world.php');
 
-		return create_system($id_type, $id_value);
+		return create_system($id_type, $id_value, $is_mother);
 	}
 
 	// Obsolete, better direct access by world.php
@@ -2363,6 +2567,12 @@ echo'
 		return create_planet($user_id, $id_type, $id_value, $selected_type, $race);
 	}
 
+    function create_home_system($type, $id_value) {
+        include_once('include/libs/world.php');
+               
+        return create_home_system($type, $id_value);
+    }
+        
 	// Return the distance between two systems
 	function get_distance($s_system, $d_system){
 		include_once('include/libs/moves.php');
@@ -2451,113 +2661,95 @@ echo'
 	/* 12/03/08: CD - Add quadrant selection based on user's race */
 	function pick_quadrant()
 	{
-		$picked_quadrant = 0;
-
 		switch($this->player['user_race']) {
 		case 0:		// Federazione
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 10)
-				$picked_quadrant--;
-			if ($magic_number < 15)
-				$picked_quadrant--;
-			if ($magic_number < 85)
-				$picked_quadrant--;
+                        $quadrant_chance = array(
+                            '1' => 15,
+                            '3' => 65,
+                            '4' => 20
+                        );
 			break;
 		case 1:		// Romulani
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 10)
-				$picked_quadrant--;
-			if ($magic_number < 15)
-				$picked_quadrant--;
-			if ($magic_number < 50)
-				$picked_quadrant--;
+                        $quadrant_chance = array(
+                            '1' => 10,
+                            '3' => 15,
+                            '4' => 75
+                        );
 			break;
 		case 2:		// Klingon
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 10)
-				$picked_quadrant--;
-			if ($magic_number < 15)
-				$picked_quadrant--;
-			if ($magic_number < 85)
-				$picked_quadrant--;
+                        $quadrant_chance = array(
+                            '1' => 10,
+                            '3' => 50,
+                            '4' => 40
+                        );
 			break;
 		case 3:		// Cardassiani
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 70)
-				$picked_quadrant--;
-			if ($magic_number < 75)
-				$picked_quadrant--;
-			if ($magic_number < 95)
-				$picked_quadrant--;
+                        $quadrant_chance = array(
+                            '1' => 25,
+                            '3' => 65,
+                            '4' => 10
+                        );
 			break;
 		case 4:		// Dominion
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 5)
-				$picked_quadrant--;
-			if ($magic_number < 10)
-				$picked_quadrant--;
-			if ($magic_number < 40)
-				$picked_quadrant--;
+                        $quadrant_chance = array(
+                            '1' => 85,
+                            '3' => 10,
+                            '4' => 5
+                        );
 			break;
 		case 5:		// Ferengi
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 20)
-				$picked_quadrant--;
-			if ($magic_number < 25)
-				$picked_quadrant--;
-			if ($magic_number < 95)
-				$picked_quadrant--;
+                        $quadrant_chance = array(
+                            '1' => 25,
+                            '3' => 50,
+                            '4' => 25
+                        );
 			break;
 		case 8:		// Breen
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 75)
-				$picked_quadrant--;
-			if ($magic_number < 80)
-				$picked_quadrant--;
-			if ($magic_number < 95)
-				$picked_quadrant--;
+                        $quadrant_chance = array(
+                            '1' => 35,
+                            '3' => 50,
+                            '4' => 15
+                        );
 			break;
 		case 9:		// Hirogeni
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 10)
-				$picked_quadrant--;
-			if ($magic_number < 80)
-				$picked_quadrant--;
-			if ($magic_number < 90)
-				$picked_quadrant--;
+                        $quadrant_chance = array(
+                            '1' => 34,
+                            '3' => 33,
+                            '4' => 33
+                        );
 			break;
 		case 10:	// Krenim
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 10)
-				$picked_quadrant--;
-			if ($magic_number < 80)
-				$picked_quadrant--;
-			if ($magic_number < 90)
-				$picked_quadrant--;
+                        $quadrant_chance = array(
+                            '1' => 34,
+                            '3' => 33,
+                            '4' => 33
+                        );
 			break;
 		case 11:	// Kazon
-			$picked_quadrant = 4;
-			$magic_number = mt_rand(1, 100);
-			if ($magic_number < 10)
-				$picked_quadrant--;
-			if ($magic_number < 80)
-				$picked_quadrant--;
-			if ($magic_number < 90)
-				$picked_quadrant--;
+                        $quadrant_chance = array(
+                            '1' => 60,
+                            '3' => 20,
+                            '4' => 20
+                        );
 			break;
 		default: 
-			$picked_quadrant = mt_rand(1 ,4);
+                        $quadrant_chance = array(
+                            '1' => 33,
+                            '3' => 34,
+                            '4' => 33
+                        );
 		}
 
+                $quadrant_array = array();
+
+                foreach($quadrant_chance as $chance => $probability) {
+                    for($i = 0; $i < $probability; ++$i) {
+                        $quadrant_array[] = $chance;
+                    }
+                }
+
+                $picked_quadrant = (int)$quadrant_array[array_rand($quadrant_array)];                
+                
 		return($picked_quadrant);
 	}
 
@@ -2625,12 +2817,13 @@ echo'
 			return 0;
 
 		// Random quadrant
-		if(!$quadrant)
-			$quadrant = $this->pick_quadrant();
+		// if(!$quadrant) $quadrant = $this->pick_quadrant();
+		if(!$quadrant) $quadrant = 3;
 
 		$db->lock('starsystems_slots');
 		// Give a whole system to the new player
 		if(USER_WHOLE_SYSTEM) {
+                /*
 			$_temp = $this->create_system('quadrant', $quadrant, 1);
 			$_system_id = $_temp[0];
 			$_temp = $this->create_planet(0, 'system', $_system_id);
@@ -2638,6 +2831,11 @@ echo'
 			$_temp = $this->create_planet(0, 'system', $_system_id);
 			$_temp = $this->create_planet(0, 'system', $_system_id);
 			$planet_id = $this->create_planet($this->player['user_id'],'system', $_system_id,$type,$this->player['user_race']);
+                 * 
+                 */
+			$new_player_data = $this->create_home_system($type,$quadrant);
+			$_system_id = $new_player_data[0]; 
+			$planet_id = $new_player_data[1];
 		}
 		else
 			$planet_id = $this->create_planet($this->player['user_id'],'quadrant', $quadrant,$type,$this->player['user_race']);
@@ -2743,13 +2941,17 @@ function get_username_by_id($user_id) {
 // #############################################################################
 // Neue Torsofunktion
 
-function GlobalTorsoReq($ship)
+function GlobalTorsoReq($ship,$race=-1)
 {
 	global $SHIP_TORSO, $game;
 
+	if(GLOBAL_POINTS_REQUIRED === false) {return 0;}
+
+    if($race == -1 ) {$race = $game->player['user_race'];}
+        
 	$dat=array();
 
-	if ($game->player['user_race']==0) // Fed
+	if ($race==0) // Fed
 	{
 		$dat[0]=55;
 		$dat[1]=110;
@@ -2765,7 +2967,7 @@ function GlobalTorsoReq($ship)
 		$dat[11]=16500;
 		$dat[12]=0; // No orbital
 	}
-	elseif ($game->player['user_race']==1) // Rom
+	elseif ($race==1) // Rom
 	{
 		$dat[0]=55;
 		$dat[1]=115;
@@ -2781,7 +2983,7 @@ function GlobalTorsoReq($ship)
 		$dat[11]=17250;
 		$dat[12]=0; // No orbital
 	}
-	elseif ($game->player['user_race']==2) // Kling
+	elseif ($race==2) // Kling
 	{
 		$dat[0]=45;
 		$dat[1]=90;
@@ -2797,7 +2999,7 @@ function GlobalTorsoReq($ship)
 		$dat[11]=13500;
 		$dat[12]=0; // No orbital
 	}
-	elseif ($game->player['user_race']==3) // Card
+	elseif ($race==3) // Card
 	{
 		$dat[0]=45;
 		$dat[1]=90;
@@ -2813,7 +3015,7 @@ function GlobalTorsoReq($ship)
 		$dat[11]=0;
 		$dat[12]=500;
 	}
-	elseif ($game->player['user_race']==4) // Dom
+	elseif ($race==4) // Dom
 	{
 		$dat[0]=65;
 		$dat[1]=135;
@@ -2829,30 +3031,30 @@ function GlobalTorsoReq($ship)
 		$dat[11]=20625;
 		$dat[12]=0; //No orbital
 	}
-	elseif ($game->player['user_race']==5) // Ferg
+	elseif ($race==5) // Ferg
 	{
 		$dat[0]=50;
 		$dat[1]=100;
-		$dat[2]=250;
-		$dat[3]=0; //none ship
-		$dat[4]=250;
+		$dat[2]=200;
+		$dat[3]=300; //none ship
+		$dat[4]=0;
 		$dat[5]=0;
 		$dat[6]=0;
-		$dat[7]=3500;
-		$dat[8]=0;
+		$dat[7]=0;
+		$dat[8]=3500;
 		$dat[9]=0;
 		$dat[10]=0;
 		$dat[11]=0;
 		$dat[12]=500;
 	}
-	elseif ($game->player['user_race']==8) //Breen
+	elseif ($race==8) //Breen
 	{
 		$dat[0]=0;
-		$dat[1]=100;
-		$dat[2]=225;
-		$dat[3]=0; //none ship
-		$dat[4]=200;
-		$dat[5]=0;
+		$dat[1]=105;
+		$dat[2]=215;
+		$dat[3]=320; 
+		$dat[4]=430;
+		$dat[5]=1080;
 		$dat[6]=0;
 		$dat[7]=3000;
 		$dat[8]=0;
@@ -2861,13 +3063,13 @@ function GlobalTorsoReq($ship)
 		$dat[11]=15000;
 		$dat[12]=500;
 	}
-	elseif ($game->player['user_race']==9) //Hiro
+	elseif ($race==9) //Hiro
 	{
 		$dat[0]=65;
 		$dat[1]=130;
 		$dat[2]=260;
-		$dat[3]=0; //none ship
-		$dat[4]=0;
+		$dat[3]=395; 
+		$dat[4]=0; // none ship
 		$dat[5]=1320;
 		$dat[6]=0;
 		$dat[7]=3300;
@@ -2877,7 +3079,7 @@ function GlobalTorsoReq($ship)
 		$dat[11]=0;
 		$dat[12]=0; // No orbital
 	}
-	elseif ($game->player['user_race']==11) // Kazon
+	elseif ($race==11) // Kazon
 	{
 		$dat[0]=40;
 		$dat[1]=80;
@@ -2893,7 +3095,7 @@ function GlobalTorsoReq($ship)
 		$dat[11]=0;
 		$dat[12]=0; //No orbital
 	}
-	elseif ($game->player['user_race']==10) // Krenim
+	elseif ($race==10) // Krenim
 	{
 		$dat[0]=0;
 		$dat[1]=100;
@@ -2933,13 +3135,15 @@ function GlobalTorsoReq($ship)
 
 // #############################################################################
 
-function LocalTorsoReq($ship)
+function LocalTorsoReq($ship, $race=-1)
 {
 	global $SHIP_TORSO, $game;
 
+        if($race == -1 ) {$race = $game->player['user_race'];}
+        
 	$dat=array();
 
-	if ($game->player['user_race']==0) // Fed
+	if ($race==0) // Fed
 	{
 		$dat[0]=55;
 		$dat[1]=110;
@@ -2955,7 +3159,7 @@ function LocalTorsoReq($ship)
 		$dat[11]=500;
 		$dat[12]=0; //No orbital
 	}
-	elseif ($game->player['user_race']==1) // Rom
+	elseif ($race==1) // Rom
 	{
 		$dat[0]=50;
 		$dat[1]=100;
@@ -2968,10 +3172,10 @@ function LocalTorsoReq($ship)
 		$dat[8]=0; //none ship
 		$dat[9]=450;
 		$dat[10]=450; //none ship
-		$dat[11]=500;
+		$dat[11]=550;
 		$dat[12]=0; // No orbital
 	}
-	elseif ($game->player['user_race']==2) // Kling
+	elseif ($race==2) // Kling
 	{
 		$dat[0]=45;
 		$dat[1]=90;
@@ -2987,7 +3191,7 @@ function LocalTorsoReq($ship)
 		$dat[11]=450;
 		$dat[12]=0; // No orbital
 	}
-	elseif ($game->player['user_race']==3) // Card
+	elseif ($race==3) // Card
 	{
 		$dat[0]=45;
 		$dat[1]=90;
@@ -3003,7 +3207,7 @@ function LocalTorsoReq($ship)
 		$dat[11]=0;
 		$dat[12]=0; // No orbital
 	}
-	elseif ($game->player['user_race']==4) // Dom
+	elseif ($race==4) // Dom
 	{
 		$dat[0]=65;
 		$dat[1]=135;
@@ -3019,30 +3223,30 @@ function LocalTorsoReq($ship)
 		$dat[11]=550;
 		$dat[12]=0; //No orbital
 	}
-	elseif ($game->player['user_race']==5) // Ferg
+	elseif ($race==5) // Ferg
 	{
 		$dat[0]=50;
 		$dat[1]=100;
-		$dat[2]=250;
-		$dat[3]=0; //none ship
-		$dat[4]=200;
+		$dat[2]=200;
+		$dat[3]=200; //none ship
+		$dat[4]=0;
 		$dat[5]=0;
 		$dat[6]=0;
-		$dat[7]=420;
-		$dat[8]=0;
+		$dat[7]=0;
+		$dat[8]=450;
 		$dat[9]=0;
 		$dat[10]=0;
 		$dat[11]=0;
-		$dat[12]=480;
+		$dat[12]=0;
 	}
-	elseif ($game->player['user_race']==8) //Breen
+	elseif ($race==8) //Breen
 	{
 		$dat[0]=0;
-		$dat[1]=100;
-		$dat[2]=225;
-		$dat[3]=0; //none ship
-		$dat[4]=200;
-		$dat[5]=0;
+		$dat[1]=105;
+		$dat[2]=215;
+		$dat[3]=215;
+		$dat[4]=270;
+		$dat[5]=360;
 		$dat[6]=0;
 		$dat[7]=400;
 		$dat[8]=0;
@@ -3051,12 +3255,12 @@ function LocalTorsoReq($ship)
 		$dat[11]=500;
 		$dat[12]=340;
 	}
-	elseif ($game->player['user_race']==9) //Hiro
+	elseif ($race==9) //Hiro
 	{
 		$dat[0]=55;
 		$dat[1]=110;
 		$dat[2]=220;
-		$dat[3]=0; //none ship
+		$dat[3]=220; //none ship
 		$dat[4]=0;
 		$dat[5]=440;
 		$dat[6]=0;
@@ -3067,7 +3271,7 @@ function LocalTorsoReq($ship)
 		$dat[11]=0;
 		$dat[12]=0; // No orbital
 	}
-	elseif ($game->player['user_race']==11) // Kazon
+	elseif ($race==11) // Kazon
 	{
 		$dat[0]=40;
 		$dat[1]=80;
@@ -3083,7 +3287,7 @@ function LocalTorsoReq($ship)
 		$dat[11]=0;
 		$dat[12]=0; //No orbital
 	}
-	elseif ($game->player['user_race']==10) // Krenim
+	elseif ($race==10) // Krenim
 	{
 		$dat[0]=0;
 		$dat[1]=100;

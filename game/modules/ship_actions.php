@@ -20,8 +20,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// New battle duration: colo 12 ticks bombs 6 ticks
-
 $game->init_player();
 $game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>');
 
@@ -95,6 +93,14 @@ if($n_fleets == 0) {
     message(NOTICE, constant($game->sprache("TEXT6")));
 }
 
+$is_undiscloused_id = false;
+$undisclosed_id = 0;
+
+if($n_fleets == 1 && $fleets[0]['user_id'] != $fleets[0]['owner_id']) {
+    $is_undiscloused_id = true;
+    $undisclosed_id = $fleets[0]['user_id'];
+}
+
 $fleet_ids_str = implode(',', $fleet_ids);
 
 
@@ -147,7 +153,7 @@ if(!$game->is_action_allowed($planet['planet_id']))
 // Which ship classes are they?
 // (for command opportunities)
 
-$sql = 'SELECT st.ship_torso, st.value_10 AS warp_speed
+$sql = 'SELECT st.race, st.ship_torso, st.value_10 AS warp_speed
         FROM (ships s, ship_templates st)
         WHERE s.fleet_id IN ('.implode(',', $fleet_ids).') AND
               st.id = s.template_id';
@@ -159,6 +165,8 @@ if(!$q_stpls = $db->query($sql)) {
 $in_scout = $in_transporter = $in_colo = $in_orb = false;
 
 while($_temp = $db->fetchrow($q_stpls)) {
+    $race_composition[$_temp['race']]++;
+            
     if($_temp['ship_torso'] == SHIP_TYPE_SCOUT) {
         $in_scout = true;
         continue;
@@ -178,7 +186,6 @@ while($_temp = $db->fetchrow($q_stpls)) {
         $in_orb = true;
         continue;
     }
-
 }
 
 // How many ships are they?
@@ -193,6 +200,17 @@ if(!$q_snbr = $db->query($sql)) {
 while($_temp = $db->fetchrow($q_snbr)) {
     $ship_number += $_temp['ship_count'];
     $explore_fleet = ($ship_number == 1) ? true : false;
+}
+
+if($explore_fleet) {
+    $sql = 'SELECT awayteam, unit_1, unit_2, unit_3, unit_4, unit_5, unit_6, min_unit_1, min_unit_2, min_unit_3, min_unit_4, ship_name, name '
+            . ' FROM ships'
+            . ' INNER JOIN ship_templates ON ships.template_id = ship_templates.id'
+            . ' WHERE fleet_id IN ('.implode(',', $fleet_ids).')';
+    
+    if(!$q_s_stats = $db->queryrow($sql)) {
+        message(DATABASE_ERROR, 'Could not query ship data');
+    }    
 }
 
 
@@ -211,6 +229,20 @@ $starter_atkptc = ($game->player['user_attack_protection'] > $ACTUAL_TICK) ? tru
 
 if($in_orb){
   message(NOTICE, constant($game->sprache("TEXT8")));
+}
+
+$fleet_race_trail = -1;
+$fleet_race_count = 0;
+
+foreach ($race_composition AS $key => $race_comp_item) {
+    if($fleet_race_count < $race_comp_item) {
+        $fleet_race_count = $race_comp_item;
+        $fleet_race_trail = $key;
+    }
+}
+
+if(($fleet_race_count*100/$ship_number) < 51.0) {
+    $fleet_race_trail = -1;
 }
 
 // #############################################################################
@@ -261,28 +293,19 @@ $atktpc_present = ($starter_atkptc || $dest_atkptc) ? true : false;
 
 switch($step) {
     case 'surrender_exec':
-
-        if($game->player['user_id']>10){
-          message(NOTICE, constant($game->sprache("TEXT11")));
+        if($game->SITTING_MODE){
+            message(NOTICE, constant($game->sprache("TEXT30")));
         }
 
         if($atkptc_present) {
-            message(NOTICE, constant($game->sprache("TEXT12")));
-        }
-        
-        if($other_party['user_id'] == $game->player['user_id']) {
-            message(NOTICE, constant($game->sprache("TEXT13")));
-        }
-        
-        if($planetary_dest && $free_planet) {
-            message(NOTICE, constant($game->sprache("TEXT14")));
+            message(NOTICE, constant($game->sprache("TEXT31")));
         }
 
         // #############################################################################
         // Ships hand over
 
         $sql = 'UPDATE ships
-                SET user_id = '.$user_id.'
+                SET user_id = '.ORION_USERID.'
                 WHERE fleet_id iN ('.$fleet_ids_str.')';
                 
         if(!$db->query($sql)) {
@@ -290,13 +313,14 @@ switch($step) {
         }
 
         $sql = 'UPDATE ship_fleets
-                SET user_id = '.$user_id.'
+                SET user_id = '.ORION_USERID.', owner_id = '.ORION_USERID.', fleet_name = "Pirate Fleet", alert_phase = '.ALERT_PHASE_RED.'
                 WHERE fleet_id IN ('.$fleet_ids_str.')';
                 
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not update fleets owner data');
         }
 
+        /*
         // #############################################################################
         // Logbook Entry (sponsored by action_23.php)
 
@@ -313,36 +337,33 @@ switch($step) {
             message(DATABASE_ERROR, 'Could not query logbook data');
         }
 
-        $log_data = array(23, $game->player['user_id'], $planet_id, $planet['planet_name'], $planet['user_id'], 0, 0, 0, array());
+        $log_data = array(23, $game->player['user_id'], $planet_id, $planet['planet_name'], ORION_USERID, 0, 0, 0, array());
 
         while($stpl = $db->fetchrow($q_stpls)) {
             $log_data[8][] = array($stpl['name'], $stpl['ship_torso'], $stpl['race'], $stpl['n_ships']);
         }
 
         add_logbook_entry($user_id, LOGBOOK_TACTICAL, constant($game->sprache("TEXT15")).' '.$game->player['user_name'].' '.constant($game->sprache("TEXT16")), $log_data);
+        */
 
         redirect('a=tactical_cartography&planet_id='.encode_planet_id($planet_id));
     break;
 
     case 'surrender_setup':
-        if($game->player['user_id']>10){
-          message(NOTICE, constant($game->sprache("TEXT11")));
+        if($game->SITTING_MODE){
+            message(NOTICE, constant($game->sprache("TEXT30")));
         }
 
         if($atkptc_present) {
-            message(NOTICE, constant($game->sprache("TEXT12")));
+            message(NOTICE, constant($game->sprache("TEXT31")));
         }
-        
-        if($other_party['user_id'] == $game->player['user_id']) {
-            message(NOTICE, constant($game->sprache("TEXT13")));
-        }
-    
+                
         $game->out('
 <table class="style_outer" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
   <tr>
     <td>
       <table class="style_inner" align="center" border="0" cellpadding="2" cellspacing="2" width="450">
-        <form name="send_form" method="post" action="'.parse_link('a=ship_actions&step=surrender_exec&user_id='.$user_id).'" onSubmit="return document.send_form.submit.disabled = true;">
+        <form name="send_form" method="post" action="'.parse_link('a=ship_actions&step=surrender_exec').'" onSubmit="return document.send_form.submit.disabled = true;">
         ');
 
         $fleet_option_html = '';
@@ -357,7 +378,7 @@ switch($step) {
           <td>
             '.constant($game->sprache("TEXT17")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id)).'"><b>'.$planet['planet_name'].'</b></a> ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')'.( ($planet['user_id'] != $game->player['user_id']) ? ' '.constant($game->sprache("TEXT18")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$planet['user_id']).'"><b>'.$planet['user_name'].'</b></a>' : '' ).'<br><br>
             '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
-            '.constant($game->sprache("TEXT20")).( ($planetary_dest) ? constant($game->sprache("TEXT21")) : constant($game->sprache("TEXT22")) ).constant($game->sprache("TEXT23")));
+            '.constant($game->sprache("TEXT20")).constant($game->sprache("TEXT21")).constant($game->sprache("TEXT23")));
 
         if($in_transporter) {
             $resource_1 = $resource_2 = $resource_3 = $resource_4 = $unit_1 = $unit_2 = $unit_3 = $unit_4 = $unit_5 = $unit_6 = 0;
@@ -400,7 +421,7 @@ switch($step) {
 
         $game->out('
             <br>
-            <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" value="'.constant($game->sprache("TEXT29")).'"></center>
+            <center><input class="button" type="button" name="cancel" value="'.constant($game->sprache("TEXT28")).'" onClick="return window.history.back();">&nbsp;&nbsp;<input class="button" type="submit" name="submit" onmouseover="return overlib(\''.constant($game->sprache("TEXT93")).'\', CAPTION, \''.constant($game->sprache("TEXT29")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();" onClick="return confirm(\''.constant($game->sprache("TEXT94")).'\')" value="'.constant($game->sprache("TEXT29")).'"></center>
           </td>
         </tr>
         </form>
@@ -414,28 +435,28 @@ switch($step) {
     case 'survey_exec':
         switch($_POST['mission']) {
             case 'survey':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 6);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 1);
                 $action_code = 26;
                 $action_data = array(0);
             break;
             case 'first_contact':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 8);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 2);
                 $action_code = 27;
                 $action_data = array(0);
             break;
             case 'recon':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 4);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 1);
                 $action_code = 27;
                 $action_data = array(1);
             break;
             case 'diplomatic':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 8);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 2);
                 $action_code = 27;
                 $action_data = array(2);
             break;
             case 'techsup':
                 $tech_type = (int)$_POST['targettech'];
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 8);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 2);
                 $action_code = 27;
                 $action_data = array(3,$tech_type);
             break;
@@ -445,57 +466,57 @@ switch($step) {
                 $action_data = array(4);
             break;
             case 'rescue':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 4);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 1);
                 $action_code = 27;
                 $action_data = array(5);
             break;            
             case 'hiro_ambush':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 5);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 2);
                 $action_code = 27;
                 $action_data = array(10,0);            
             break;
             case 'kazon_ambush':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 5);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 2);
                 $action_code = 27;
                 $action_data = array(10,1);            
             break;        
             case 'fede_presidio':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 5);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 2);
                 $action_code = 27;
                 $action_data = array(10,10);            
             break;
             case 'fede_diplo':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 5);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 2);
                 $action_code = 27;
                 $action_data = array(10,100);            
             break;
             case 'romu_presidio':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 5);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 2);
                 $action_code = 27;
                 $action_data = array(10,20);            
             break;
             case 'romu_diplo':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 5);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 2);
                 $action_code = 27;
                 $action_data = array(10,110);            
             break;
             case 'klin_presidio':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 5);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 2);
                 $action_code = 27;
                 $action_data = array(10,30);            
             break;
             case 'klin_diplo':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 5);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 2);
                 $action_code = 27;
                 $action_data = array(10,120);            
             break;
             case 'card_presidio':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 5);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 2);
                 $action_code = 27;
                 $action_data = array(10,40);            
             break;
             case 'card_diplo':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 5);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 2);
                 $action_code = 27;
                 $action_data = array(10,130);            
             break;
@@ -508,22 +529,32 @@ switch($step) {
              * 
              */
             case 'dom_diplo':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 5);
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 2);
                 $action_code = 27;
                 $action_data = array(10,140);            
             break;
-            case 'training':
-                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 5);
+            case 'fere_presidio':
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 2);
+                $action_code = 27;
+                $action_data = array(10,50);                
+            break;
+            case 'fere_diplo':
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 2);
                 $action_code = 27;
                 $action_data = array(10,150);            
+            break;        
+            case 'training':
+                $duration = ($game->player['user_auth_level'] == STGC_DEVELOPER ? 1 : 2);
+                $action_code = 27;
+                $action_data = array(10,300);            
             break;
             default:
                 message(GENERAL, constant($game->sprache("TEXT1")));
             break;
         }
 
-        $sql = 'INSERT INTO scheduler_shipmovement (user_id, move_status, move_exec_started, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
-                VALUES ('.$game->player['user_id'].', 0, 0, '.$planet_id.', '.$planet_id.', 0, 0, 0, '.$ACTUAL_TICK.', '.($ACTUAL_TICK + $duration).', 1, '.$action_code.', "'.serialize($action_data).'")';
+        $sql = 'INSERT INTO scheduler_shipmovement (user_id, owner_id, move_status, move_exec_started, race_trail, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
+                VALUES ('.(!$is_undiscloused_id ? $game->player['user_id'] : $undisclosed_id).', '.$game->player['user_id'].', 0, 0, '.$fleet_race_trail.', '.$planet_id.', '.$planet_id.', 0, 0, 0, '.$ACTUAL_TICK.', '.($ACTUAL_TICK + $duration).', 1, '.$action_code.', "'.serialize($action_data).'")';
                 
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not insert new movement data');
@@ -577,8 +608,29 @@ switch($step) {
   <tr>
     <td>
       <table class="style_inner" align="center" border="0" rules="rows" cellpadding="2" cellspacing="2" width="450">
+        <tr>
+          <td align="left" valign="top" width="100">
+            <b>Ship</b>      :<br>
+            <b>Away Team</b> : 
+          </td>
+          <td align="left" valign="top">
+          '.(empty($q_s_stats['ship_name']) ? '<b><i>&#171;'.$q_s_stats['name'].'&#187;</i></b>' : '<b>'.$q_s_stats['ship_name'].'</b>').'<br>');
+        if(intval($q_s_stats['awayteam']) == 0) {
+           $game->out('<b>Away Team not available</b>');
+        }
+        else {
+            $game->out('
+            LIV.'.(intval($q_s_stats['awayteam'])).' <img src='.$game->GFX_PATH.'menu_unit1_small.gif>'.($q_s_stats['unit_1'] - $q_s_stats['min_unit_1']).'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit2_small.gif>'.($q_s_stats['unit_2'] - $q_s_stats['min_unit_2']).'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit3_small.gif>'.($q_s_stats['unit_3'] - $q_s_stats['min_unit_3']).'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit4_small.gif>'.($q_s_stats['unit_4'] - $q_s_stats['min_unit_4']).'
+            &nbsp;&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit5_small.gif>'.$q_s_stats['unit_5'].'&nbsp;&nbsp;<img src='.$game->GFX_PATH.'menu_unit6_small.gif>'.$q_s_stats['unit_6']);
+        }
+        $game->out('
+          </td>
+        </tr>      
+      </table>
+      <br><br>                  
+     <table class="style_inner" align="center" border="0" rules="rows" cellpadding="2" cellspacing="2" width="450">
       <form name="send_form" method="post" action="'.parse_link('a=ship_actions&step=survey_exec').'" onSubmit="return document.send_form.submit.disabled = true;">');
-
+        
         // Geological analysis
         $game->out('
         <tr>
@@ -591,22 +643,10 @@ switch($step) {
          */
         if($planet['user_id'] == INDEPENDENT_USERID) {
             // Recon
-            $requirement_text = constant($game->sprache("TEXT63"));
-            $results = meet_mission_req($myship['ship_id'], 5, 0, 1, 1, 0, 0, 1);
-            $all_clear = (array_sum($results) == 0 ? true : false);
-            if($all_clear) 
-            {
-                $requirement_text .= requirements_str_ok(5, 0, 1, 1, 0, 0, 1);
-            }
-            else
-            {
-                $requirement_text .= requirements_str_bad(5, 0, 1, 1, 0, 0, 1, $results);
-            }
-
             $game->out('
         <tr>
-          <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true; document.send_form.rtt4.disabled=true; document.send_form.rtt5.disabled=true" value="recon" '.($all_clear ? '' : 'disabled="disabled"').'></td>
-          <td>'.constant($game->sprache("TEXT65")).'<br><br>'.$requirement_text.'</td>
+          <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true; document.send_form.rtt4.disabled=true; document.send_form.rtt5.disabled=true" value="recon"></td>
+          <td>'.constant($game->sprache("TEXT65")).'</td>
         </tr>');
             // Rescue            
             $game->out('
@@ -616,15 +656,15 @@ switch($step) {
         </tr>');
             // First Contact
             $requirement_text = constant($game->sprache("TEXT63"));
-            $results = meet_mission_req($myship['ship_id'], 5, 0, 1, 1, 0, 0, 1);
+            $results = meet_mission_req($myship['ship_id'], 5, 0, 1, 1, 0, 0, 0, 1);
             $all_clear = (array_sum($results) == 0 ? true : false);
             if($all_clear) 
             {
-                $requirement_text .= requirements_str_ok(5, 0, 1, 1, 0, 0, 1);
+                $requirement_text .= requirements_str_ok(5, 0, 1, 1, 0, 0, 0, 1);
             }
             else
             {
-                $requirement_text .= requirements_str_bad(5, 0, 1, 1, 0, 0, 1, $results);
+                $requirement_text .= requirements_str_bad($results, 5, 0, 1, 1, 0, 0, 0, 1);
             }
 
             $game->out('
@@ -634,15 +674,15 @@ switch($step) {
         </tr>');
             // Diplomatic relationships
             $requirement_text = constant($game->sprache("TEXT63"));
-            $results = meet_mission_req($myship['ship_id'], 0, 5, 5, 2, 0, 0, 1);
+            $results = meet_mission_req($myship['ship_id'], 0, 5, 5, 2, 0, 0, 0, 1);
             $all_clear = (array_sum($results) == 0 ? true : false);
             if($all_clear) 
             {
-                $requirement_text .= requirements_str_ok(0, 5, 5, 2, 0, 0, 1);
+                $requirement_text .= requirements_str_ok(0, 5, 5, 2, 0, 0, 0, 1);
             }
             else
             {
-                $requirement_text .= requirements_str_bad(0, 5, 5, 2, 0, 0, 1, $results);
+                $requirement_text .= requirements_str_bad($results, 0, 5, 5, 2, 0, 0, 0, 1);
             }
             $game->out('
         <tr>
@@ -651,15 +691,15 @@ switch($step) {
         </tr>');
             // Tech Support Mission
             $requirement_text = constant($game->sprache("TEXT63"));
-            $results = meet_mission_req($myship['ship_id'], 15, 10, 5, 2, 5, 0, 1);
+            $results = meet_mission_req($myship['ship_id'], 15, 10, 5, 2, 5, 0, 0, 1);
             $all_clear = (array_sum($results) == 0 ? true : false);
             if($all_clear) 
             {
-                $requirement_text .= requirements_str_ok(15, 10, 5, 2, 5, 0, 1);
+                $requirement_text .= requirements_str_ok(15, 10, 5, 2, 5, 0, 0, 1);
             }
             else
             {
-                $requirement_text .= requirements_str_bad(15, 10, 5, 2, 5, 0, 1, $results);
+                $requirement_text .= requirements_str_bad($results, 15, 10, 5, 2, 5, 0, 0, 1);
             }            
             $game->out('
         <tr>
@@ -691,15 +731,15 @@ switch($step) {
         </tr>');
             // Military Support Mission
             $requirement_text = constant($game->sprache("TEXT63"));
-            $results = meet_mission_req($myship['ship_id'], 20, 15, 15, 2, 15, 0, 1);
+            $results = meet_mission_req($myship['ship_id'], 20, 15, 15, 2, 15, 0, 0, 1);
             $all_clear = (array_sum($results) == 0 ? true : false);
             if($all_clear) 
             {
-                $requirement_text .= requirements_str_ok(20, 15, 15, 2, 15, 0, 1);
+                $requirement_text .= requirements_str_ok(20, 15, 15, 2, 15, 0, 0, 1);
             }
             else
             {
-                $requirement_text .= requirements_str_bad(20, 15, 15, 2, 15, 0, 1, $results);
+                $requirement_text .= requirements_str_bad($results, 20, 15, 15, 2, 15, 0, 0, 1);
             }
             $game->out('
         <tr>
@@ -710,15 +750,15 @@ switch($step) {
                 case 0: // Federation
                     // Multiculturalismo
                     $requirement_text = constant($game->sprache("TEXT63"));
-                    $results = meet_mission_req($myship['ship_id'], 15, 10, 5, 1, 0, 0, 20);
+                    $results = meet_mission_req($myship['ship_id'], 15, 10, 5, 1, 0, 0, 0, 20);
                     $all_clear = (array_sum($results) == 0 ? true : false);
                     if($all_clear) 
                     {
-                        $requirement_text .= requirements_str_ok(15, 10, 5, 1, 0, 0, 20);
+                        $requirement_text .= requirements_str_ok(15, 10, 5, 1, 0, 0, 0, 20);
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(15, 10, 5, 1, 0, 0, 20, $results);
+                        $requirement_text .= requirements_str_bad($results, 15, 10, 5, 1, 0, 0, 0, 20);
                     }
                     $game->out('
         <tr>
@@ -727,15 +767,15 @@ switch($step) {
         </tr>');
                     // Pluralismo
                     $requirement_text = constant($game->sprache("TEXT63"));
-                    $results = meet_mission_req($myship['ship_id'], 20, 15, 10, 2, 0, 0, 30);
+                    $results = meet_mission_req($myship['ship_id'], 20, 15, 10, 2, 0, 0, 0, 30);
                     $all_clear = (array_sum($results) == 0 ? true : false);
                     if($all_clear) 
                     {
-                        $requirement_text .= requirements_str_ok(20, 15, 10, 2, 0, 0, 30);
+                        $requirement_text .= requirements_str_ok(20, 15, 10, 2, 0, 0, 0, 30);
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(20, 15, 10, 2, 0, 0, 30, $results);
+                        $requirement_text .= requirements_str_bad($results, 20, 15, 10, 2, 0, 0, 0, 30);
                     }
                     $game->out('
         <tr>
@@ -746,15 +786,15 @@ switch($step) {
                 case 1: // Romulan
                     // Supremazia Tecnologica
                     $requirement_text = constant($game->sprache("TEXT63"));
-                    $results = meet_mission_req($myship['ship_id'], 15, 10, 5, 1, 0, 0, 20);
+                    $results = meet_mission_req($myship['ship_id'], 15, 10, 5, 1, 0, 0, 0, 20);
                     $all_clear = (array_sum($results) == 0 ? true : false);
                     if($all_clear) 
                     {
-                        $requirement_text .= requirements_str_ok(15, 10, 5, 1, 0, 0, 20);
+                        $requirement_text .= requirements_str_ok(15, 10, 5, 1, 0, 0, 0, 20);
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(15, 10, 5, 1, 0, 0, 20, $results);
+                        $requirement_text .= requirements_str_bad($results, 15, 10, 5, 1, 0, 0, 0, 20);
                     }
                     $game->out('
         <tr>
@@ -763,15 +803,15 @@ switch($step) {
         </tr>');
                     // Orgoglio del Pretore
                     $requirement_text = constant($game->sprache("TEXT63"));
-                    $results = meet_mission_req($myship['ship_id'], 20, 15, 10, 2, 0, 0, 30);
+                    $results = meet_mission_req($myship['ship_id'], 20, 15, 10, 2, 0, 0, 0, 30);
                     $all_clear = (array_sum($results) == 0 ? true : false);
                     if($all_clear) 
                     {
-                        $requirement_text .= requirements_str_ok(20, 15, 10, 2, 0, 0, 30);
+                        $requirement_text .= requirements_str_ok(20, 15, 10, 2, 0, 0, 0, 30);
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(20, 15, 10, 2, 0, 0, 30, $results);
+                        $requirement_text .= requirements_str_bad($results, 20, 15, 10, 2, 0, 0, 0, 30);
                     }
                     $game->out('
         <tr>
@@ -782,15 +822,15 @@ switch($step) {
                 case 2: // Klingon
                     // Sfida del Coraggio
                     $requirement_text = constant($game->sprache("TEXT63"));
-                    $results = meet_mission_req($myship['ship_id'], 15, 10, 5, 1, 0, 0, 20);
+                    $results = meet_mission_req($myship['ship_id'], 15, 10, 5, 1, 0, 0, 0, 20);
                     $all_clear = (array_sum($results) == 0 ? true : false);
                     if($all_clear) 
                     {
-                        $requirement_text .= requirements_str_ok(15, 10, 5, 1, 0, 0, 20);
+                        $requirement_text .= requirements_str_ok(15, 10, 5, 1, 0, 0, 0, 20);
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(15, 10, 5, 1, 0, 0, 20, $results);
+                        $requirement_text .= requirements_str_bad($results, 15, 10, 5, 1, 0, 0, 0, 20);
                     }
                     $game->out('
         <tr>
@@ -799,15 +839,15 @@ switch($step) {
         </tr>');
                     // Promuovere Autodifesa
                     $requirement_text = constant($game->sprache("TEXT63"));
-                    $results = meet_mission_req($myship['ship_id'], 20, 15, 10, 2, 0, 0, 30);
+                    $results = meet_mission_req($myship['ship_id'], 20, 15, 10, 2, 0, 0, 0, 30);
                     $all_clear = (array_sum($results) == 0 ? true : false);
                     if($all_clear) 
                     {
-                        $requirement_text .= requirements_str_ok(20, 15, 10, 2, 0, 0, 30);
+                        $requirement_text .= requirements_str_ok(20, 15, 10, 2, 0, 0, 0, 30);
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(20, 15, 10, 2, 0, 0, 30, $results);
+                        $requirement_text .= requirements_str_bad($results, 20, 15, 10, 2, 0, 0, 0, 30);
                     }
                     $game->out('
         <tr>
@@ -818,15 +858,15 @@ switch($step) {
                 case 3: // Cardassian
                     // Xenofobia
                     $requirement_text = constant($game->sprache("TEXT63"));
-                    $results = meet_mission_req($myship['ship_id'], 15, 10, 5, 1, 0, 0, 20);
+                    $results = meet_mission_req($myship['ship_id'], 15, 10, 5, 1, 0, 0, 0, 20);
                     $all_clear = (array_sum($results) == 0 ? true : false);
                     if($all_clear) 
                     {
-                        $requirement_text .= requirements_str_ok(15, 10, 5, 1, 0, 0, 20);
+                        $requirement_text .= requirements_str_ok(15, 10, 5, 1, 0, 0, 0, 20);
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(15, 10, 5, 1, 0, 0, 20, $results);
+                        $requirement_text .= requirements_str_bad($results, 15, 10, 5, 1, 0, 0, 0, 20);
                     }
                     $game->out('
         <tr>
@@ -835,15 +875,15 @@ switch($step) {
         </tr>');
                     // Propaganda Sovversiva
                     $requirement_text = constant($game->sprache("TEXT63"));
-                    $results = meet_mission_req($myship['ship_id'], 20, 15, 10, 2, 0, 0, 30);
+                    $results = meet_mission_req($myship['ship_id'], 20, 15, 10, 2, 0, 0, 0, 30);
                     $all_clear = (array_sum($results) == 0 ? true : false);
                     if($all_clear) 
                     {
-                        $requirement_text .= requirements_str_ok(20, 15, 10, 2, 0, 0, 30);
+                        $requirement_text .= requirements_str_ok(20, 15, 10, 2, 0, 0, 0, 30);
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(20, 15, 10, 2, 0, 0, 30, $results);
+                        $requirement_text .= requirements_str_bad($results, 20, 15, 10, 2, 0, 0, 0, 30);
                     }
                     $game->out('
         <tr>
@@ -852,6 +892,7 @@ switch($step) {
         </tr>');                
                 break;
                 case 4: // Dominion
+                /*
                     // Controllore della Colonia
                     $requirement_text = constant($game->sprache("TEXT63"));
                     $results = meet_mission_req($myship['ship_id'], 15, 10, 5, 1, 0, 0, 20);
@@ -862,24 +903,26 @@ switch($step) {
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(15, 10, 5, 1, 0, 0, 20, $results);
+                        $requirement_text .= requirements_str_bad($results, 15, 10, 5, 1, 0, 0, 20);
                     }
                     $game->out('
         <tr>
           <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true; document.send_form.rtt4.disabled=true; document.send_form.rtt5.disabled=true" value="dom_presidio" '.($all_clear ? '' : 'disabled="disabled"').'></td>
           <td>'.constant($game->sprache("TEXT82")).'<br><br>'.$requirement_text.'</td>
         </tr>');
+                 * 
+                 */
                     // Denunciare Incompetenza
                     $requirement_text = constant($game->sprache("TEXT63"));
-                    $results = meet_mission_req($myship['ship_id'], 20, 15, 10, 2, 0, 0, 30);
+                    $results = meet_mission_req($myship['ship_id'], 20, 15, 10, 2, 0, 0, 0, 30);
                     $all_clear = (array_sum($results) == 0 ? true : false);
                     if($all_clear) 
                     {
-                        $requirement_text .= requirements_str_ok(20, 15, 10, 2, 0, 0, 30);
+                        $requirement_text .= requirements_str_ok(20, 15, 10, 2, 0, 0, 0, 30);
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(20, 15, 10, 2, 0, 0, 30, $results);
+                        $requirement_text .= requirements_str_bad($results, 20, 15, 10, 2, 0, 0, 0, 30);
                     }
                     $game->out('
         <tr>
@@ -888,15 +931,15 @@ switch($step) {
         </tr>');
                     // Addestramento
                     $requirement_text = constant($game->sprache("TEXT63"));
-                    $results = meet_mission_req($myship['ship_id'], 20, 15, 10, 2, 0, 0, 5);
+                    $results = meet_mission_req($myship['ship_id'], 20, 15, 10, 2, 0, 0, 0, 1);
                     $all_clear = (array_sum($results) == 0 ? true : false);
                     if($all_clear) 
                     {
-                        $requirement_text .= requirements_str_ok(20, 15, 10, 2, 0, 0, 5);
+                        $requirement_text .= requirements_str_ok(20, 15, 10, 2, 0, 0, 0, 1);
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(20, 15, 10, 2, 0, 0, 5, $results);
+                        $requirement_text .= requirements_str_bad($results, 20, 15, 10, 2, 0, 0, 0, 1);
                     }
                     $game->out('
         <tr>
@@ -905,12 +948,47 @@ switch($step) {
         </tr>');
                 break;
                 case 5: // Ferengi
+                    // Difesa del mercato
+                    $requirement_text = constant($game->sprache("TEXT63"));
+                    $results = meet_mission_req($myship['ship_id'], 15, 10, 5, 1, 0, 0, 0, 20);
+                    $all_clear = (array_sum($results) == 0 ? true : false);
+                    if($all_clear) 
+                    {
+                        $requirement_text .= requirements_str_ok(15, 10, 5, 1, 0, 0, 0, 20);
+                    }
+                    else
+                    {
+                        $requirement_text .= requirements_str_bad($results, 15, 10, 5, 1, 0, 0, 500, 20);
+                    }
+                    $game->out('
+        <tr>
+          <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true; document.send_form.rtt4.disabled=true; document.send_form.rtt5.disabled=true" value="fere_presidio" '.($all_clear ? '' : 'disabled="disabled"').'></td>
+          <td>'.constant($game->sprache("TEXT89")).'<br><br>'.$requirement_text.'</td>
+        </tr>');
+                    // Corrompere i locali
+                    $requirement_text = constant($game->sprache("TEXT63"));
+                    $results = meet_mission_req($myship['ship_id'], 20, 15, 10, 2, 0, 0, 0, 30);
+                    $all_clear = (array_sum($results) == 0 ? true : false);
+                    if($all_clear) 
+                    {
+                        $requirement_text .= requirements_str_ok(20, 15, 10, 2, 0, 0, 0, 30);
+                    }
+                    else
+                    {
+                        $requirement_text .= requirements_str_bad($results, 20, 15, 10, 2, 0, 0, 0, 30);
+                    }
+                    $game->out('
+        <tr>
+          <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true; document.send_form.rtt4.disabled=true; document.send_form.rtt5.disabled=true" value="fere_diplo" '.($all_clear ? '' : 'disabled="disabled"').'></td>
+          <td>'.constant($game->sprache("TEXT90")).'<br><br>'.$requirement_text.'</td>
+        </tr>');                    
                 break;
                 case 6: // Borg
                 break;
                 case 7: // Q
                 break;
                 case 8: // Breen
+                /*
                     // Controllore della Colonia
                     $requirement_text = constant($game->sprache("TEXT63"));
                     $results = meet_mission_req($myship['ship_id'], 15, 10, 5, 1, 0, 0, 20);
@@ -921,24 +999,25 @@ switch($step) {
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(15, 10, 5, 1, 0, 0, 20, $results);
+                        $requirement_text .= requirements_str_bad($results, 15, 10, 5, 1, 0, 0, 20);
                     }
                     $game->out('
         <tr>
           <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true; document.send_form.rtt4.disabled=true; document.send_form.rtt5.disabled=true" value="dom_presidio" '.($all_clear ? '' : 'disabled="disabled"').'></td>
           <td>'.constant($game->sprache("TEXT82")).'<br><br>'.$requirement_text.'</td>
         </tr>');
+                */
                     // Denunciare Incompetenza
                     $requirement_text = constant($game->sprache("TEXT63"));
-                    $results = meet_mission_req($myship['ship_id'], 20, 15, 10, 2, 0, 0, 30);
+                    $results = meet_mission_req($myship['ship_id'], 20, 15, 10, 2, 0, 0, 0, 30);
                     $all_clear = (array_sum($results) == 0 ? true : false);
                     if($all_clear) 
                     {
-                        $requirement_text .= requirements_str_ok(20, 15, 10, 2, 0, 0, 30);
+                        $requirement_text .= requirements_str_ok(20, 15, 10, 2, 0, 0, 0, 30);
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(20, 15, 10, 2, 0, 0, 30, $results);
+                        $requirement_text .= requirements_str_bad($results, 20, 15, 10, 2, 0, 0, 0, 30);
                     }
                     $game->out('
         <tr>
@@ -947,15 +1026,15 @@ switch($step) {
         </tr>');
                     // Addestramento
                     $requirement_text = constant($game->sprache("TEXT63"));
-                    $results = meet_mission_req($myship['ship_id'], 20, 15, 10, 2, 0, 0, 5);
+                    $results = meet_mission_req($myship['ship_id'], 20, 15, 10, 2, 0, 0, 0, 1);
                     $all_clear = (array_sum($results) == 0 ? true : false);
                     if($all_clear) 
                     {
-                        $requirement_text .= requirements_str_ok(20, 15, 10, 2, 0, 0, 5);
+                        $requirement_text .= requirements_str_ok(20, 15, 10, 2, 0, 0, 0, 1);
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(20, 15, 10, 2, 0, 0, 5, $results);
+                        $requirement_text .= requirements_str_bad($results, 20, 15, 10, 2, 0, 0, 0, 1);
                     }
                     $game->out('
         <tr>
@@ -966,15 +1045,15 @@ switch($step) {
                 case 9: // Hirogen
                     // Terreno di caccia
                     $requirement_text = constant($game->sprache("TEXT63"));
-                    $results = meet_mission_req($myship['ship_id'], 40, 25, 15, 2, 0, 0, 20);
+                    $results = meet_mission_req($myship['ship_id'], 40, 25, 15, 2, 0, 0, 0, 20);
                     $all_clear = (array_sum($results) == 0 ? true : false);
                     if($all_clear) 
                     {
-                        $requirement_text .= requirements_str_ok(40, 25, 15, 2, 0, 0, 20);
+                        $requirement_text .= requirements_str_ok(40, 25, 15, 2, 0, 0, 0, 20);
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(40, 25, 15, 2, 0, 0, 20, $results);
+                        $requirement_text .= requirements_str_bad($results, 40, 25, 15, 2, 0, 0, 0, 20);
                     }
                     $game->out('
         <tr>
@@ -983,15 +1062,15 @@ switch($step) {
         </tr>');
                     // Addestramento
                     $requirement_text = constant($game->sprache("TEXT63"));
-                    $results = meet_mission_req($myship['ship_id'], 40, 25, 15, 2, 0, 0, 5);
+                    $results = meet_mission_req($myship['ship_id'], 40, 25, 15, 2, 0, 0, 0, 1);
                     $all_clear = (array_sum($results) == 0 ? true : false);
                     if($all_clear) 
                     {
-                        $requirement_text .= requirements_str_ok(40, 25, 15, 2, 0, 0, 5);
+                        $requirement_text .= requirements_str_ok(40, 25, 15, 2, 0, 0, 0, 1);
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(40, 25, 15, 2, 0, 0, 5, $results);
+                        $requirement_text .= requirements_str_bad($results, 40, 25, 15, 2, 0, 0, 0, 1);
                     }
                     $game->out('
         <tr>
@@ -1004,32 +1083,32 @@ switch($step) {
                 case 11: // Kazon
                     // Razziatori in attesa
                     $requirement_text = constant($game->sprache("TEXT63"));
-                    $results = meet_mission_req($myship['ship_id'], 40, 25, 20, 3, 0, 0, 20);
+                    $results = meet_mission_req($myship['ship_id'], 40, 25, 20, 3, 0, 0, 0, 20);
                     $all_clear = (array_sum($results) == 0 ? true : false);
                     if($all_clear) 
                     {
-                        $requirement_text .= requirements_str_ok(40, 25, 20, 3, 0, 0, 20);
+                        $requirement_text .= requirements_str_ok(40, 25, 20, 3, 0, 0, 0, 20);
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(40, 25, 20, 3, 0, 0, 20, $results);
+                        $requirement_text .= requirements_str_bad($results, 40, 25, 20, 3, 0, 0, 0, 20);
                     }
                     $game->out('
         <tr>
-          <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true; document.send_form.rtt4.disabled=true; document.send_form.rtt5.disabled=true" value="hiro_ambush" '.($all_clear ? '' : 'disabled="disabled"').'></td>
+          <td><input type="radio" name="mission" onclick="document.send_form.rtt1.disabled=true; document.send_form.rtt2.disabled=true; document.send_form.rtt3.disabled=true; document.send_form.rtt4.disabled=true; document.send_form.rtt5.disabled=true" value="kazon_ambush" '.($all_clear ? '' : 'disabled="disabled"').'></td>
           <td>'.constant($game->sprache("TEXT88")).'<br><br>'.$requirement_text.'</td>
         </tr>');
                     // Addestramento
                     $requirement_text = constant($game->sprache("TEXT63"));
-                    $results = meet_mission_req($myship['ship_id'], 40, 25, 20, 3, 0, 0, 5);
+                    $results = meet_mission_req($myship['ship_id'], 40, 25, 20, 3, 0, 0, 0, 1);
                     $all_clear = (array_sum($results) == 0 ? true : false);
                     if($all_clear) 
                     {
-                        $requirement_text .= requirements_str_ok(40, 25, 20, 3, 0, 0, 5);
+                        $requirement_text .= requirements_str_ok(40, 25, 20, 3, 0, 0, 0, 1);
                     }
                     else
                     {
-                        $requirement_text .= requirements_str_bad(40, 25, 20, 3, 0, 0, 5, $results);
+                        $requirement_text .= requirements_str_bad($results, 40, 25, 20, 3, 0, 0, 0, 1);
                     }
                     $game->out('
         <tr>
@@ -1124,7 +1203,7 @@ switch($step) {
 
                 $action_code = 54;
                 $action_data = array($focus);
-                $duration=6;
+                $duration=2;
             break;
 
             case 'attack_invade_exec':
@@ -1143,12 +1222,12 @@ switch($step) {
                 }
                 
                 $action_data = array((int)$_POST['ship_id']);
-                $duration=12;
+                $duration=2;
             break;
         }
 
-        $sql = 'INSERT INTO scheduler_shipmovement (user_id, move_status, move_exec_started, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
-                VALUES ('.$game->player['user_id'].', 0, 0, '.$planet_id.', '.$planet_id.', 0, 0, 0, '.$ACTUAL_TICK.', '.($ACTUAL_TICK + $duration).', '.$n_ships.', '.$action_code.', "'.serialize($action_data).'")';
+        $sql = 'INSERT INTO scheduler_shipmovement (user_id, owner_id, move_status, move_exec_started, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
+                VALUES ('.(!$is_undiscloused_id ? $game->player['user_id'] : $undisclosed_id).', '.$game->player['user_id'].', 0, 0, '.$planet_id.', '.$planet_id.', 0, 0, 0, '.$ACTUAL_TICK.', '.($ACTUAL_TICK + $duration).', '.$n_ships.', '.$action_code.', "'.serialize($action_data).'")';
                 
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not insert new movement data');
@@ -1283,6 +1362,10 @@ switch($step) {
 
         if($other_party['user_id'] == $game->player['user_id']) {
             message(NOTICE, constant($game->sprache("TEXT37")));
+        }
+
+        if($is_undisclosed_id) {
+            message(NOTICE, constant($game->sprache("TEXT92")));
         }
 
         $game->out('
@@ -1507,8 +1590,8 @@ switch($step) {
             }
         }
 
-        $sql = 'INSERT INTO scheduler_shipmovement (user_id, move_status, move_exec_started, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
-                VALUES ('.$game->player['user_id'].', 0, 0, '.$planet_id.', '.$planet_id.', 0, 0, 0, '.$ACTUAL_TICK.', '.($ACTUAL_TICK + 1).', '.$n_ships.', 24, "'.serialize(array($ship_id, $is_terraform, $is_settler)).'")';
+        $sql = 'INSERT INTO scheduler_shipmovement (user_id, owner_id, move_status, move_exec_started, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
+                VALUES ('.(!$is_undiscloused_id ? $game->player['user_id'] : $undisclosed_id).', '.$game->player['user_id'].', 0, 0, '.$planet_id.', '.$planet_id.', 0, 0, 0, '.$ACTUAL_TICK.', '.($ACTUAL_TICK + 1).', '.$n_ships.', 24, "'.serialize(array($ship_id, $is_terraform, $is_settler)).'")';
 
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not insert new movement data');
@@ -1522,6 +1605,7 @@ switch($step) {
 
         $sql = 'UPDATE ship_fleets
                 SET planet_id = 0,
+                    system_id = '.$planet['system_id'].',
                     move_id = '.$new_move_id.'
                 WHERE fleet_id IN ('.implode(',', $fleet_ids).')';
 
@@ -1590,8 +1674,8 @@ switch($step) {
           <td>
             '.constant($game->sprache("TEXT17")).' '.constant($game->sprache("TEXT56")).' ('.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'], $planet['system_y']).':'.($planet['planet_distance_id'] + 1).')
             '.constant($game->sprache("TEXT19")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
-            <input type="radio" name="type" value="terraform" '.(($planet['planet_type'] != 'a' && $planet['planet_type'] != 'b' && $planet['planet_type'] != 'c' && $planet['planet_type'] != 'd') ? 'disabled="disabled"' : '&nbsp;').'>'.constant($game->sprache("TEXT59")).' <img src='.$game->GFX_PATH.'menu_latinum_small.gif>.<br><br>
-	        '.($RACE_DATA[$game->player['user_race']][30] ? '<input type="radio" name="type" value="settler">'.constant($game->sprache("TEXT66")).'<br><br>' : '').'
+            <input type="radio" name="type" value="terraform" '.(($planet['planet_type'] != 'a' && $planet['planet_type'] != 'b' && $planet['planet_type'] != 'c' && $planet['planet_type'] != 'd' && $planet['planet_type'] != 'h' && $planet['planet_type'] != 'n') ? 'disabled="disabled"' : '&nbsp;').'>'.constant($game->sprache("TEXT59")).' <img src='.$game->GFX_PATH.'menu_latinum_small.gif>.<br><br>	       
+	        '.($RACE_DATA[$game->player['user_race']][30] && ($game->config['settler_n_planets'] < SETTLERS_MAX_COLONY) ? '<input type="radio" name="type" value="settler">'.constant($game->sprache("TEXT66")).'<br><br>' : '').'
             <input type="radio" name="type" value="colony" checked="checked">'.constant($game->sprache("TEXT57")).'<br><br>
 
             <table border="0" cellpadding="2" cellspacing="2">
@@ -1599,7 +1683,7 @@ switch($step) {
                 <td width="20" align="right"><input type="radio" name="ship_id" value="'.$first_cship['ship_id'].'" checked="checked"></td>
                 <td width="350" align="left"><b>'.$first_cship['name'].'</b> ('.$first_cship['hitpoints'].'/'.$first_cship['max_hitpoints'].', Exp: '.$first_cship['experience'].')<br>'.constant($game->sprache("TEXT51")).' '.$first_cship['unit_1'].'/'.$first_cship['unit_2'].'/'.$first_cship['unit_3'].'/'.$first_cship['unit_4'].'</td>
               </tr>
-        ');
+');
 
         while($cship = $db->fetchrow($q_cships)) {
             $game->out('

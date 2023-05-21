@@ -59,7 +59,7 @@ function ColoMetRestriction($template) // Verification of the uniqueness of the 
     global $game,$db;
 
     // If the ship requested isn't a colonization ship
-    if(!($template['ship_torso'] == SHIP_TYPE_COLO && $template['ship_class'] == 0))
+    if(!($template['ship_torso'] == 2 && $template['ship_class'] == 0))
         return 1;
 
     // If the player doesn't have any limit
@@ -68,7 +68,7 @@ function ColoMetRestriction($template) // Verification of the uniqueness of the 
     // Let's count how many colonization ships the player already has
     $sql = 'SELECT COUNT(*) AS num_colo FROM ship_templates, ships
             WHERE ship_templates.id = ships.template_id AND
-                  ship_templates.ship_torso = '.SHIP_TYPE_COLO.' AND
+                  ship_templates.ship_torso = 2 AND
                   ship_templates.ship_class = 0 AND
                   ships.user_id = '.$game->player['user_id'];
 
@@ -79,7 +79,7 @@ function ColoMetRestriction($template) // Verification of the uniqueness of the 
     $sql = 'SELECT COUNT(*) AS num_colo FROM scheduler_shipbuild, ship_templates, planets
             WHERE scheduler_shipbuild.ship_type = ship_templates.id AND
                   scheduler_shipbuild.planet_id = planets.planet_id AND
-                  ship_templates.ship_torso = '.SHIP_TYPE_COLO.' AND
+                  ship_templates.ship_torso = 2 AND
                   ship_class = 0 AND
                   planets.planet_owner = '.$game->player['user_id'];
 
@@ -144,10 +144,13 @@ function TemplateMetRequirementsText($template)
 global $game;
 
 //global $ship_components;
+$text = '';
 
-if ($game->player['user_points']<GlobalTorsoReq($template['ship_torso'])) { $game->out('<tr><td>'.constant($game->sprache("TEXT0")).' '.GlobalTorsoReq($template['ship_torso']).' '.constant($game->sprache("TEXT1")).'</td></tr>'); }
+if ($game->player['user_points']<GlobalTorsoReq($template['ship_torso'])) { $text .= constant($game->sprache("TEXT0")).' '.GlobalTorsoReq($template['ship_torso']).' '.constant($game->sprache("TEXT1")).'<br>'; }
 
-if ($game->planet['planet_points']<LocalTorsoReq($template['ship_torso'])) { $game->out('<tr><td>'.constant($game->sprache("TEXT0")).' '.LocalTorsoReq($template['ship_torso']).' '.constant($game->sprache("TEXT2")).'</td></tr>'); }
+if ($game->planet['planet_points']<LocalTorsoReq($template['ship_torso'])) { $text .= constant($game->sprache("TEXT0")).' '.LocalTorsoReq($template['ship_torso']).' '.constant($game->sprache("TEXT2")).'<br>'; }
+
+if (!ColoMetRestriction($template)) { $text .= constant($game->sprache("TEXT78")).'<br>'; }
 
 if (!ComponentMetRequirements(0,$template['component_1'],$template['ship_torso'])) { }
 
@@ -175,6 +178,8 @@ if (!ComponentMetRequirements(9,$template['component_10'],$template['ship_torso'
 //echo $template['ship_torso'];
 
 //return 1;
+
+return $text;
 
 }
 
@@ -252,11 +257,11 @@ if ($template['min_unit_3']!=0) $num[8]=floor($planet['unit_3']/$template['min_u
 if ($template['min_unit_4']!=0) $num[9]=floor($planet['unit_4']/$template['min_unit_4']); else $num[9]=9999;
 
 // You cannot have more than user_max_colo colony ship at same time
-if($template['ship_torso'] == SHIP_TYPE_COLO && $template['ship_class'] == 0 && $game->player['user_max_colo'] != 0) {
+if($template['ship_torso'] == 2 && $template['ship_class'] == 0 && $game->player['user_max_colo'] != 0) {
     // Let's count how many colonization ships the player already has
     $sql = 'SELECT COUNT(*) AS num_colo FROM ship_templates, ships
             WHERE ship_templates.id = ships.template_id AND
-                  ship_templates.ship_torso = '.SHIP_TYPE_COLO.' AND
+                  ship_templates.ship_torso = 2 AND
                   ship_templates.ship_class = 0 AND
                   ships.user_id = '.$game->player['user_id'];
 
@@ -267,7 +272,7 @@ if($template['ship_torso'] == SHIP_TYPE_COLO && $template['ship_class'] == 0 && 
     $sql = 'SELECT COUNT(*) AS num_colo FROM scheduler_shipbuild, ship_templates, planets
             WHERE scheduler_shipbuild.ship_type = ship_templates.id AND
                   scheduler_shipbuild.planet_id = planets.planet_id AND
-                  ship_templates.ship_torso = '.SHIP_TYPE_COLO.' AND
+                  ship_templates.ship_torso = 2 AND
                   ship_class = 0 AND
                   planets.planet_owner = '.$game->player['user_id'];
 
@@ -432,7 +437,7 @@ $game->init_player();
 
 
 
-$schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE planet_id="'.$game->planet['planet_id'].'" AND line_id = '.$line);
+$schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE planet_id="'.$game->planet['planet_id'].'" AND line_id = '.$line.' ORDER BY start_build ASC');
 
 $addplanet['resource_1']=0;
 
@@ -462,7 +467,11 @@ while (($scheduler = $db->fetchrow($schedulerquery))==true)
 
 
 
-        if (($db->query('DELETE FROM scheduler_shipbuild WHERE (planet_id="'.$game->planet['planet_id'].'") AND (finish_build="'.$scheduler['finish_build'].'") LIMIT 1'))==true)
+        if (($db->query('DELETE FROM scheduler_shipbuild 
+                         WHERE (planet_id="'.$game->planet['planet_id'].'") 
+                         AND (line_id = '.$scheduler['line_id'].') 
+                         AND (start_build="'.$scheduler['start_build'].'")
+                         AND (finish_build="'.$scheduler['finish_build'].'") LIMIT 1')) == true)
 
         {
 
@@ -513,6 +522,92 @@ while (($scheduler = $db->fetchrow($schedulerquery))==true)
 }
 
 
+function Fast_Build()
+
+{
+    
+    global $db;
+
+    global $game;
+
+    global $SHIP_NAME, $UNIT_NAME, $SHIP_DATA, $MAX_BUILDING_LVL,$NEXT_TICK,$ACTUAL_TICK;
+
+    $count = 1;
+
+    $line = filter_input(INPUT_POST, 'line_request', FILTER_SANITIZE_NUMBER_INT);
+    if(is_null($line) OR $line < 0 OR $line > 3 ) $line = -1;
+
+    if ($line < 0) exit(0);
+
+    $t=filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+    $templatequery=$db->query('SELECT * FROM ship_templates WHERE (owner="'.$game->player['user_id'].'") AND (removed=0) AND (id="'.$t.'")');
+
+    if (($template=$db->fetchrow($templatequery))!=true) exit(0);
+
+    $template['buildtime']=$template['buildtime']+round($template['buildtime']*0.3*(0.9-(0.1*$game->planet['building_8'])),0);
+
+    $db->lock('scheduler_shipbuild', 'ship_templates', 'ship_ccategory', 'ship_components');
+
+    $game->init_player();
+
+    // You cannot have more than user_max_colo colony ship at same time
+    if($template['ship_torso'] == 2 && $template['ship_class'] == 0) {
+            if (($game->player['user_max_colo'] != 0) && ($count > $game->player['user_max_colo'])) {$count = $game->player['user_max_colo'];}
+    }
+
+    if (CanAffordTemplate($template,$game->player,$game->planet)>=$count && CanAffordTemplateUnits($template['min_unit_1'],$template['min_unit_2'],$template['min_unit_3'],$template['min_unit_4'],$count,$template,$game->planet) && TemplateMetRequirements($template)) {
+
+        if ($game->planet['building_8']<1) {exit();}
+
+        else {
+
+            if (($db->query('UPDATE planets SET resource_1=resource_1-'.($template['resource_1']*$count).', resource_2=resource_2-'.($template['resource_2']*$count).', resource_3=resource_3-'.($template['resource_3']*$count).', resource_4=resource_4-'.($template['resource_4']*$count).', unit_5=unit_5-'.($template['unit_5']*$count).', unit_6=unit_6-'.($template['unit_6']*$count).', unit_1=unit_1-'.($template['min_unit_1']*$count).', unit_2=unit_2-'.($template['min_unit_2']*$count).', unit_3=unit_3-'.($template['min_unit_3']*$count).', unit_4=unit_4-'.($template['min_unit_4']*$count).' WHERE planet_id= "'.$game->planet['planet_id'].'"'))==true)
+
+            {
+
+                    $schedulerquery=$db->query('SELECT * FROM scheduler_shipbuild WHERE planet_id= "'.$game->planet['planet_id'].'" AND line_id = '.$line.' ORDER BY finish_build DESC LIMIT 1');
+
+                    $start_time=$ACTUAL_TICK;
+
+                    if ($db->num_rows()>0) {$scheduler = $db->fetchrow($schedulerquery); $start_time=$scheduler['finish_build'];}
+
+                    for ($x=0; $x<$count; $x++)
+
+                    {
+
+                            if ($db->query('INSERT INTO scheduler_shipbuild (ship_type,planet_id,line_id,start_build,finish_build,unit_1,unit_2,unit_3,unit_4)
+
+                                            VALUES ("'.$t.'","'.$game->planet['planet_id'].'","'.$line.'","'.$start_time.'","'.($start_time+$template['buildtime']).'","'.$template['min_unit_1'].'","'.$template['min_unit_2'].'","'.$template['min_unit_3'].'","'.$template['min_unit_4'].'")')==false)  {message(DATABASE_ERROR, 'ship_query: Could not call INSERT INTO in scheduler_shipbuild'); exit();}
+
+
+
+                            $start_time+=$template['buildtime'];
+
+                    }
+            }        
+        }
+    }
+    
+    else {
+        $text='';
+
+        if (CanAffordTemplate($template,$game->player,$game->planet)<$count) $text.=constant($game->sprache("TEXT26"));
+
+        if (!CanAffordTemplateUnits($template['min_unit_1'],$template['min_unit_2'],$template['min_unit_3'],$template['min_unit_4'],$count,$template,$game->planet)) $text.=constant($game->sprache("TEXT27"));
+
+        if (!TemplateMetRequirements($template)) $text.=constant($game->sprache("TEXT28"));
+
+        $game->out('<span style="font-family:Arial,serif;font-size:11pt"><b>'.constant($game->sprache("TEXT29")).'<br>'.$text.'</b></span><br>');        
+    }
+    
+    // New: Table locking
+
+    $db->unlock();
+
+    $game->init_player();
+    
+}
 
 function Start_Build()
 
@@ -1101,24 +1196,25 @@ if($n_tplt_0 > 0) {
         $element_item['buildtime']=$element_item['buildtime']+round($element_item['buildtime']*0.3*(0.9-(0.1*$game->planet['building_8'])),0);
         $maxnum = 0;
         if (!TemplateMetRequirements($element_item)) {
-            $build_text='&nbsp;&nbsp;<span style="color: red">'.constant($game->sprache("TEXT54")).'</span>';
+            $build_text='&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.TemplateMetRequirementsText($element_item,$game->player,$game->planet).'\', CAPTION, \''.constant($game->sprache("TEXT77")).'\', WIDTH, 170, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: red">'.constant($game->sprache("TEXT54")).'</span></a>';
+            //$build_text='&nbsp;&nbsp;<span style="color: red">'.constant($game->sprache("TEXT54")).'</span>';
         }
         else if ($maxnum=CanAffordTemplate($element_item,$game->player,$game->planet)) {
-                $build_text='<input type="hidden" name="correct" value="1"><input type="submit" name="submit" class="button" style="width: 60px;" value ="'.constant($game->sprache("TEXT54")).'">';
+                $build_text='<input type="hidden" name="correct" value="1"><input type="button" name="plusone" class="button" style="width: 18px;" value="+" onClick="if(document.getElementById(\'count0'.$element_item['id'].'\').value < '.$maxnum.') document.getElementById(\'count0'.$element_item['id'].'\').value++;">&nbsp;&nbsp;<input type="button" name="minusone" class="button" style="width: 18px;" value="-" onClick="if(document.getElementById(\'count0'.$element_item['id'].'\').value > 1) document.getElementById(\'count0'.$element_item['id'].'\').value--;">&nbsp;&nbsp;<input type="submit" name="submit" class="button" style="width: 60px;" value ="'.constant($game->sprache("TEXT54")).'">';
             }
             else {
                 $build_text='&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateResourceRequestedText($element_item,$game->player,$game->planet).'\', CAPTION, \''.constant($game->sprache("TEXT67")).'\', WIDTH, 170, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: yellow">'.constant($game->sprache("TEXT54")).'</span></a>';
             }
             
-        $table0[] = '<tr height=15><td width=200><b><a href="'.parse_link('a=ship_template&view=compare&ship0='.$element_item['id']).'" onmouseover="return overlib(\''.CreateInfoText($element_item).'\', CAPTION, \''.addslashes($element_item['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$element_item['name'].'</a></b></td><td>'.(Zeit($element_item['buildtime']*TICK_DURATION)).'</td><td>'
-                   .'<form name="send'.$element_item['id'].'" method="post" action="index.php?a=shipyard&a2=start_build&id='.$element_item['id'].'" onSubmit="return document.send'.$element_item['id'].'.submit.disabled = true;"><input type="hidden" name="line_request" value=0><input type="text" name="count" size="4" class="field_nosize" value="'.$maxnum.'">&nbsp;&nbsp;&nbsp;'.$build_text.'</td></tr></form>';
+        $table0[] = '<tr height=15><td width=175><b><a href="'.parse_link('a=ship_template&view=compare&ship0='.$element_item['id']).'" onmouseover="return overlib(\''.CreateInfoText($element_item).'\', CAPTION, \''.addslashes($element_item['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$element_item['name'].'</a></b></td><td>'.(Zeit($element_item['buildtime']*TICK_DURATION)).'</td><td>'
+                   .'<form id="send0'.$element_item['id'].'" name="send'.$element_item['id'].'" method="post" action="index.php?a=shipyard&a2=start_build&id='.$element_item['id'].'" onSubmit="return document.getElementById(\'send0'.$element_item['id'].'\').submit.disabled = true;"><input type="hidden" id="fs0'.$element_item['id'].'" name="fast_start" value="0"><input type="hidden" id="id0'.$element_item['id'].'" name="id" value="'.$element_item['id'].'"><input type="hidden" name="line_request" value=0><input type="submit" name="fastsub1" class="button" style="width: 60px;" value="'.constant($game->sprache("TEXT54")).' 1" onClick="document.getElementById(\'count0'.$element_item['id'].'\').value=1; document.getElementById(\'fs0'.$element_item['id'].'\').value=1; document.getElementById(\'id0'.$element_item['id'].'\').value='.$element_item['id'].'; document.getElementById(\'send0'.$element_item['id'].'\').action = \''.parse_link('a=shipyard&a2=fast_build').'\';" '.($maxnum == 0 ? 'disabled' : '').'>&nbsp;&nbsp;<input type="text" id="count0'.$element_item['id'].'" name="count" size="4" class="field_nosize" value="'.$maxnum.'" onChange="if(document.getElementById(\'count0'.$element_item['id'].'\').value > '.$maxnum.') document.getElementById(\'count0'.$element_item['id'].'\').value = '.$maxnum.';">&nbsp;&nbsp;&nbsp;'.$build_text.'</td></tr></form>';
     }               
 }           
  else {
     
 }
 
-$game->out('<table border=0 cellpadding=2 cellspacing=2 width="100%" class="style_inner"><tr><td width=200><span class="sub_caption2">'.constant($game->sprache("TEXT51")).'</span></td><td width=175><span class="sub_caption2">'.constant($game->sprache("TEXT52")).'</span></td><td width=120><span class="sub_caption2">'.constant($game->sprache("TEXT53")).'</span></td></tr>');
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width="100%" class="style_inner"><tr><td width=175><span class="sub_caption2">'.constant($game->sprache("TEXT51")).'</span></td><td width=150><span class="sub_caption2">'.constant($game->sprache("TEXT52")).'</span></td><td width=220><span class="sub_caption2">'.constant($game->sprache("TEXT53")).'</span></td></tr>');
 
 if(count($table0) > 0) {
     foreach($table0 AS $row) {
@@ -1191,24 +1287,25 @@ if($n_tplt_1 > 0) {
         $element_item['buildtime']=$element_item['buildtime']+round($element_item['buildtime']*0.3*(0.9-(0.1*$game->planet['building_8'])),0);
         $maxnum = 0;
         if (!TemplateMetRequirements($element_item)) {
-            $build_text='&nbsp;&nbsp;<span style="color: red">'.constant($game->sprache("TEXT54")).'</span>';
+            $build_text='&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.TemplateMetRequirementsText($element_item,$game->player,$game->planet).'\', CAPTION, \''.constant($game->sprache("TEXT77")).'\', WIDTH, 170, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: red">'.constant($game->sprache("TEXT54")).'</span></a>';
+            //$build_text='&nbsp;&nbsp;<span style="color: red">'.constant($game->sprache("TEXT54")).'</span>';
         }
         else if ($maxnum=CanAffordTemplate($element_item,$game->player,$game->planet)) {
-                $build_text='<input type="hidden" name="correct" value="1"><input type="submit" name="submit" class="button" style="width: 60px;" value ="'.constant($game->sprache("TEXT54")).'">';
+                $build_text='<input type="hidden" name="correct" value="1"><input type="button" name="plusone" class="button" style="width: 18px;" value="+" onClick="if(document.getElementById(\'count1'.$element_item['id'].'\').value < '.$maxnum.') document.getElementById(\'count1'.$element_item['id'].'\').value++;">&nbsp;&nbsp;<input type="button" name="minusone" class="button" style="width: 18px;" value="-" onClick="if(document.getElementById(\'count1'.$element_item['id'].'\').value > 1) document.getElementById(\'count1'.$element_item['id'].'\').value--;">&nbsp;&nbsp;<input type="submit" name="submit" class="button" style="width: 60px;" value ="'.constant($game->sprache("TEXT54")).'">';
             }
             else {
                 $build_text='&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateResourceRequestedText($element_item,$game->player,$game->planet).'\', CAPTION, \''.constant($game->sprache("TEXT67")).'\', WIDTH, 170, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: yellow">'.constant($game->sprache("TEXT54")).'</span></a>';
             }
             
-        $table1[] = '<tr height=15><td width=200><b><a href="'.parse_link('a=ship_template&view=compare&ship0='.$element_item['id']).'" onmouseover="return overlib(\''.CreateInfoText($element_item).'\', CAPTION, \''.addslashes($element_item['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$element_item['name'].'</a></b></td><td>'.(Zeit($element_item['buildtime']*TICK_DURATION)).'</td><td>'
-                   .'<form name="send'.$element_item['id'].'" method="post" action="index.php?a=shipyard&a2=start_build&id='.$element_item['id'].'" onSubmit="return document.send'.$element_item['id'].'.submit.disabled = true;"><input type="hidden" name="line_request" value=1><input type="text" name="count" size="4" class="field_nosize" value="'.$maxnum.'">&nbsp;&nbsp;&nbsp;'.$build_text.'</td></tr></form>';
+        $table1[] = '<tr height=15><td width=175><b><a href="'.parse_link('a=ship_template&view=compare&ship0='.$element_item['id']).'" onmouseover="return overlib(\''.CreateInfoText($element_item).'\', CAPTION, \''.addslashes($element_item['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$element_item['name'].'</a></b></td><td>'.(Zeit($element_item['buildtime']*TICK_DURATION)).'</td><td>'
+                   .'<form name="send'.$element_item['id'].'" method="post" action="index.php?a=shipyard&a2=start_build&id='.$element_item['id'].'" onSubmit="return document.send'.$element_item['id'].'.submit.disabled = true;"><input type="hidden" name="line_request" value=1><input type="submit" name="fastsub1" class="button" style="width: 60px;" value="'.constant($game->sprache("TEXT54")).' 1" onClick="document.getElementById(\'count1'.$element_item['id'].'\').value=1;" '.($maxnum == 0 ? 'disabled' : '').'>&nbsp;&nbsp;<input type="text" id="count1'.$element_item['id'].'" name="count" size="4" class="field_nosize" value="'.$maxnum.'" onChange="if(document.getElementById(\'count1'.$element_item['id'].'\').value > '.$maxnum.') document.getElementById(\'count1'.$element_item['id'].'\').value = '.$maxnum.';">&nbsp;&nbsp;&nbsp;'.$build_text.'</td></tr></form>';
     }               
 }           
  else {
     
 }
 
-$game->out('<table border=0 cellpadding=2 cellspacing=2 width="100%" class="style_inner"><tr><td width=200><span class="sub_caption2">'.constant($game->sprache("TEXT51")).'</span></td><td width=175><span class="sub_caption2">'.constant($game->sprache("TEXT52")).'</span></td><td width=120><span class="sub_caption2">'.constant($game->sprache("TEXT53")).'</span></td></tr>');
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width="100%" class="style_inner"><tr><td width=175><span class="sub_caption2">'.constant($game->sprache("TEXT51")).'</span></td><td width=150><span class="sub_caption2">'.constant($game->sprache("TEXT52")).'</span></td><td width=220><span class="sub_caption2">'.constant($game->sprache("TEXT53")).'</span></td></tr>');
 
 if(count($table1) > 0) {
     foreach($table1 AS $row) {
@@ -1284,24 +1381,25 @@ if($n_tplt_2 > 0) {
         $element_item['buildtime']=$element_item['buildtime']+round($element_item['buildtime']*0.3*(0.9-(0.1*$game->planet['building_8'])),0);
         $maxnum = 0;
         if (!TemplateMetRequirements($element_item)) {
-            $build_text='&nbsp;&nbsp;<span style="color: red">'.constant($game->sprache("TEXT54")).'</span>';
+            $build_text='&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.TemplateMetRequirementsText($element_item,$game->player,$game->planet).'\', CAPTION, \''.constant($game->sprache("TEXT77")).'\', WIDTH, 170, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: red">'.constant($game->sprache("TEXT54")).'</span></a>';
+            //$build_text='&nbsp;&nbsp;<span style="color: red">'.constant($game->sprache("TEXT54")).'</span>';
         }
         else if ($maxnum=CanAffordTemplate($element_item,$game->player,$game->planet)) {
-                $build_text='<input type="hidden" name="correct" value="1"><input type="submit" name="submit" class="button" style="width: 60px;" value ="'.constant($game->sprache("TEXT54")).'">';
+                $build_text='<input type="hidden" name="correct" value="1"><input type="button" name="plusone" class="button" style="width: 18px;" value="+" onClick="if(document.getElementById(\'count2'.$element_item['id'].'\').value < '.$maxnum.') document.getElementById(\'count2'.$element_item['id'].'\').value++;">&nbsp;&nbsp;<input type="button" name="minusone" class="button" style="width: 18px;" value="-" onClick="if(document.getElementById(\'count2'.$element_item['id'].'\').value > 1) document.getElementById(\'count2'.$element_item['id'].'\').value--;">&nbsp;&nbsp;<input type="submit" name="submit" class="button" style="width: 60px;" value ="'.constant($game->sprache("TEXT54")).'">';
             }
             else {
                 $build_text='&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateResourceRequestedText($element_item,$game->player,$game->planet).'\', CAPTION, \''.constant($game->sprache("TEXT67")).'\', WIDTH, 170, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: yellow">'.constant($game->sprache("TEXT54")).'</span></a>';
             }
             
-        $table2[] = '<tr height=15><td width=200><b><a href="'.parse_link('a=ship_template&view=compare&ship0='.$element_item['id']).'" onmouseover="return overlib(\''.CreateInfoText($element_item).'\', CAPTION, \''.addslashes($element_item['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$element_item['name'].'</a></b></td><td>'.(Zeit($element_item['buildtime']*TICK_DURATION)).'</td><td>'
-                   .'<form name="send'.$element_item['id'].'" method="post" action="index.php?a=shipyard&a2=start_build&id='.$element_item['id'].'" onSubmit="return document.send'.$element_item['id'].'.submit.disabled = true;"><input type="hidden" name="line_request" value=2><input type="text" name="count" size="4" class="field_nosize" value="'.$maxnum.'">&nbsp;&nbsp;&nbsp;'.$build_text.'</td></tr></form>';
+        $table2[] = '<tr height=15><td width=175><b><a href="'.parse_link('a=ship_template&view=compare&ship0='.$element_item['id']).'" onmouseover="return overlib(\''.CreateInfoText($element_item).'\', CAPTION, \''.addslashes($element_item['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$element_item['name'].'</a></b></td><td>'.(Zeit($element_item['buildtime']*TICK_DURATION)).'</td><td>'
+                   .'<form name="send'.$element_item['id'].'" method="post" action="index.php?a=shipyard&a2=start_build&id='.$element_item['id'].'" onSubmit="return document.send'.$element_item['id'].'.submit.disabled = true;"><input type="hidden" name="line_request" value=2><input type="submit" name="fastsub1" class="button" style="width: 60px;" value="'.constant($game->sprache("TEXT54")).' 1" onClick="document.getElementById(\'count2'.$element_item['id'].'\').value=1;" '.($maxnum == 0 ? 'disabled' : '').'>&nbsp;&nbsp;<input type="text" id="count2'.$element_item['id'].'"name="count" size="4" class="field_nosize" value="'.$maxnum.'" onChange="if(document.getElementById(\'count2'.$element_item['id'].'\').value > '.$maxnum.') document.getElementById(\'count2'.$element_item['id'].'\').value = '.$maxnum.';">&nbsp;&nbsp;&nbsp;'.$build_text.'</td></tr></form>';
     }               
 }           
  else {
     
 }
 
-$game->out('<table border=0 cellpadding=2 cellspacing=2 width=100% class="style_inner"><tr><td width=200><span class="sub_caption2">'.constant($game->sprache("TEXT51")).'</span></td><td width=175><span class="sub_caption2">'.constant($game->sprache("TEXT52")).'</span></td><td width=120><span class="sub_caption2">'.constant($game->sprache("TEXT53")).'</span></td></tr>');
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width=100% class="style_inner"><tr><td width=175><span class="sub_caption2">'.constant($game->sprache("TEXT51")).'</span></td><td width=150><span class="sub_caption2">'.constant($game->sprache("TEXT52")).'</span></td><td width=220><span class="sub_caption2">'.constant($game->sprache("TEXT53")).'</span></td></tr>');
 
 if(count($table2) > 0) {
     foreach($table2 AS $row) {
@@ -1378,24 +1476,25 @@ if($n_tplt_3 > 0) {
         $element_item['buildtime']=$element_item['buildtime']+round($element_item['buildtime']*0.3*(0.9-(0.1*$game->planet['building_8'])),0);
         $maxnum = 0;
         if (!TemplateMetRequirements($element_item)) {
-            $build_text='&nbsp;&nbsp;<span style="color: red">'.constant($game->sprache("TEXT54")).'</span>';
+            $build_text='&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.TemplateMetRequirementsText($element_item,$game->player,$game->planet).'\', CAPTION, \''.constant($game->sprache("TEXT77")).'\', WIDTH, 170, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: red">'.constant($game->sprache("TEXT54")).'</span></a>';
+            //$build_text='&nbsp;&nbsp;<span style="color: red">'.constant($game->sprache("TEXT54")).'</span>';
         }
         else if ($maxnum=CanAffordTemplate($element_item,$game->player,$game->planet)) {
-                $build_text='<input type="hidden" name="correct" value="1"><input type="submit" name="submit" class="button" style="width: 60px;" value ="'.constant($game->sprache("TEXT54")).'">';
+                $build_text='<input type="hidden" name="correct" value="1"><input type="button" name="plusone" class="button" style="width: 18px;" value="+" onClick="if(document.getElementById(\'count3'.$element_item['id'].'\').value < '.$maxnum.') document.getElementById(\'count3'.$element_item['id'].'\').value++;">&nbsp;&nbsp;<input type="button" name="minusone" class="button" style="width: 18px;" value="-" onClick="if(document.getElementById(\'count3'.$element_item['id'].'\').value > 1) document.getElementById(\'count3'.$element_item['id'].'\').value--;">&nbsp;&nbsp;<input type="submit" name="submit" class="button" style="width: 60px;" value ="'.constant($game->sprache("TEXT54")).'">';
             }
             else {
                 $build_text='&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateResourceRequestedText($element_item,$game->player,$game->planet).'\', CAPTION, \''.constant($game->sprache("TEXT67")).'\', WIDTH, 170, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><span style="color: yellow">'.constant($game->sprache("TEXT54")).'</span></a>';
             }
             
-        $table3[] = '<tr height=15><td width=200><b><a href="'.parse_link('a=ship_template&view=compare&ship0='.$element_item['id']).'" onmouseover="return overlib(\''.CreateInfoText($element_item).'\', CAPTION, \''.addslashes($element_item['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$element_item['name'].'</a></b></td><td>'.(Zeit($element_item['buildtime']*TICK_DURATION)).'</td><td>'
-                   .'<form name="send'.$element_item['id'].'" method="post" action="index.php?a=shipyard&a2=start_build&id='.$element_item['id'].'" onSubmit="return document.send'.$element_item['id'].'.submit.disabled = true;"><input type="hidden" name="line_request" value=3><input type="text" name="count" size="4" class="field_nosize" value="'.$maxnum.'">&nbsp;&nbsp;&nbsp;'.$build_text.'</td></tr></form>';
+        $table3[] = '<tr height=15><td width=175><b><a href="'.parse_link('a=ship_template&view=compare&ship0='.$element_item['id']).'" onmouseover="return overlib(\''.CreateInfoText($element_item).'\', CAPTION, \''.addslashes($element_item['name']).'\', WIDTH, 500, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$element_item['name'].'</a></b></td><td>'.(Zeit($element_item['buildtime']*TICK_DURATION)).'</td><td>'
+                   .'<form name="send'.$element_item['id'].'" method="post" action="index.php?a=shipyard&a2=start_build&id='.$element_item['id'].'" onSubmit="return document.send'.$element_item['id'].'.submit.disabled = true;"><input type="hidden" name="line_request" value=3><input type="submit" name="fastsub1" class="button" style="width: 60px;" value="'.constant($game->sprache("TEXT54")).' 1" onClick="document.getElementById(\'count3'.$element_item['id'].'\').value=1;" '.($maxnum == 0 ? 'disabled' : '').'>&nbsp;&nbsp;<input type="text" id="count3'.$element_item['id'].'" name="count" size="4" class="field_nosize" value="'.$maxnum.'" onChange="if(document.getElementById(\'count3'.$element_item['id'].'\').value > '.$maxnum.') document.getElementById(\'count3'.$element_item['id'].'\').value = '.$maxnum.';">&nbsp;&nbsp;&nbsp;'.$build_text.'</td></tr></form>';
     }               
 }           
  else {
     
 }
 
-$game->out('<table border=0 cellpadding=2 cellspacing=2 width=100% class="style_inner"><tr><td width=200><span class="sub_caption2">'.constant($game->sprache("TEXT51")).'</span></td><td width=175><span class="sub_caption2">'.constant($game->sprache("TEXT52")).'</span></td><td width=120><span class="sub_caption2">'.constant($game->sprache("TEXT53")).'</span></td></tr>');
+$game->out('<table border=0 cellpadding=2 cellspacing=2 width=100% class="style_inner"><tr><td width=175><span class="sub_caption2">'.constant($game->sprache("TEXT51")).'</span></td><td width=150><span class="sub_caption2">'.constant($game->sprache("TEXT52")).'</span></td><td width=220><span class="sub_caption2">'.constant($game->sprache("TEXT53")).'</span></td></tr>');
 
 if(count($table3) > 0) {
     foreach($table3 AS $row) {
@@ -1446,7 +1545,7 @@ if ($sub_action=='start_build' && isset($_POST['correct']) )
 Show_Build();
 
 }
-
+    
 if ($sub_action=='start_build' && isset($_POST['correct_start']) )
 
 {
@@ -1466,6 +1565,14 @@ if ($sub_action=='abort_build' && isset($_POST['correct_abort']))
 
 }
 
+if ($sub_action=='fast_build' && isset($_POST['fast_start']) )
+
+{
+
+    Fast_Build(); $sub_action='main';
+
+}
+    
 if ($sub_action=='main')
 
 {

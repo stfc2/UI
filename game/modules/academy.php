@@ -24,6 +24,29 @@
 $game->init_player();
 $game->out('<span class="caption">'.$BUILDING_NAME[$game->player['user_race']][5].':</span><br><br>');
 
+function CreateCostsText($unit, $quantity)
+{
+    global $game;
+    $icons = ['<img src="'.$game->GFX_PATH.'menu_metal_small.gif">: ', 
+              '<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">: ', 
+              '<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">: ',
+              '<img src="'.$game->GFX_PATH.'menu_worker_small.gif">: '];
+    $ress = [0,0,0,0];
+    $cost_str = '';
+    $ress[0] = UnitPrice($unit-1,0)*$quantity;
+    $ress[1] = UnitPrice($unit-1,1)*$quantity;
+    $ress[2] = UnitPrice($unit-1,2)*$quantity;
+    $ress[3] = UnitPrice($unit-1,3)*$quantity;
+    for ($i = 0; $i < 3; $i++) {
+        if($ress[$i] > 0) {$cost_str .= $icons[$i].$ress[$i].' ';}
+    }
+    $cost_str .= '<br>'.$icons[3].$ress[3].' ';
+    $time = UnitTimeTicks($unit-1)*$quantity*TICK_DURATION;
+    $cost_str .= 'Time: '.(Zeit($time));
+    return $cost_str;
+}
+
+
 function UnitMetRequirements($unit)
 {
     global $game;
@@ -127,6 +150,21 @@ if ($game->planet['unittrainid_nexttime']>0) return 0;
 
 
 }
+
+function Jump_Train($step)
+{
+    global $db, $game, $ACTUAL_TICK;
+    echo 'step is '.$step;
+    $game->planet['unittrain_actual'] = $step;
+    if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]<7) {$db->query('UPDATE planets SET unittrain_actual="'.($game->planet['unittrain_actual']).'",unittrainid_nexttime="'.($ACTUAL_TICK+UnitTimeTicks($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]-1)).'" WHERE planet_id="'.$game->planet['planet_id'].'" LIMIT 1');}
+    else // If Break
+    {
+            if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==10) {$db->query('UPDATE planets SET unittrain_actual="'.($game->planet['unittrain_actual']).'",unittrainid_nexttime="'.($ACTUAL_TICK+1).'" WHERE planet_id="'.$game->planet['planet_id'].'" LIMIT 1');}
+            if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==11) {$db->query('UPDATE planets SET unittrain_actual="'.($game->planet['unittrain_actual']).'",unittrainid_nexttime="'.($ACTUAL_TICK+9).'" WHERE planet_id="'.$game->planet['planet_id'].'" LIMIT 1');}
+            if ($game->planet['unittrainid_'.($game->planet['unittrain_actual'])]==12) {$db->query('UPDATE planets SET unittrain_actual="'.($game->planet['unittrain_actual']).'",unittrainid_nexttime="'.($ACTUAL_TICK+18).'" WHERE planet_id="'.$game->planet['planet_id'].'" LIMIT 1');}
+    }
+}
+
 
 function Reset_List()
 {
@@ -334,7 +372,7 @@ $game->out('</span>');
 $game->out('<table border="0" cellpadding="2" cellspacing="2" width="400" class="style_inner">
 <tr><td align="center">
 <br>
-<form name="academy" method="post" action="'.parse_link('a=academy').'"><input type="submit" name="start_list" class="button_nosize" value="'.constant($game->sprache("Text23")).'">&nbsp;&nbsp;&nbsp;<input type="submit" name="stop_list" class="button_nosize" value="'.constant($game->sprache("Text24")).'"></form>
+<form name="academy1" method="post" action="'.parse_link('a=academy').'"><input type="submit" name="start_list" class="button_nosize" value="'.constant($game->sprache("Text23")).'">&nbsp;&nbsp;&nbsp;<input type="submit" name="stop_list" class="button_nosize" value="'.constant($game->sprache("Text24")).'"></form>
 
 </td></tr></table></td></tr></table>');
 
@@ -351,7 +389,7 @@ function UpdateTroops() {
 }
 </script>');
 
-$game->out('<br><form name="academy" method="post" action="'.parse_link('a=academy').'">
+$game->out('<br><form name="academy2" method="post" action="'.parse_link('a=academy').'">
 <table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer">
   <tr><td width=100%><span class="sub_caption2">'.constant($game->sprache("Text38")).'</span><br>
   <table border=0 cellpadding=1 cellspacing=1 width=398 class="style_inner">');
@@ -376,17 +414,19 @@ for ($t=0; $t<6; $t++)
 $game->out('<td><input type="submit" name="apply_template" class="button_nosize" value="'.constant($game->sprache("Text40")).'"></td></tr></table></td></tr></table></form>');
 
 
-$game->out('<br><table border="0" cellpadding="2" cellspacing="2" width="400" class="style_outer"><tr><td width=100%>
+$game->out('<br><table border="0" cellpadding="2" cellspacing="2" width="450" class="style_outer"><tr><td width=100%>
 <span class="sub_caption2">'.constant($game->sprache("Text15")).'</span><br>
-<table border=0 cellpadding=2 cellspacing=2 width=398 class="style_inner">
+<table border=0 cellpadding=2 cellspacing=2 width=448 class="style_inner">
 <tr><td align="center">
-<form name="academy" method="post" action="'.parse_link('a=academy').'">
-<table border=0 cellpadding=2 cellspacing=2 width=280><tr><td>&nbsp;</td>'.constant($game->sprache("Text16")).'</tr>');
+<form name="academy3" method="post" action="'.parse_link('a=academy').'">
+<input type="hidden" name="jump_list" value="">
+<table border=0 cellpadding=2 cellspacing=2 width=430><tr><td width="5%">&nbsp;</td>'.constant($game->sprache("Text16")).'</tr>');
 
+/*
 for ($t=0; $t<10; $t++)
 {
 if ($game->planet['unittrain_actual']!=($t+1)) $game->out('<tr><td>&nbsp;</td><td width=40>'.($t+1).':</td>');
-else $game->out('<tr><td><img src="'.$game->PLAIN_GFX_PATH.'arrow_right.png"></td><td width=40><b><u>'.($t+1).'</u></b>:</td>');
+else $game->out('<tr><td width=20><img src="'.$game->PLAIN_GFX_PATH.'arrow_right.png"></td><td width=40><b><u>'.($t+1).'</u></b>:</td>');
 $game->out('<td width=150><select name="listid_'.$t.'" class="Select" size="1"><option value="-1">'.(constant($game->sprache("Text25"))).'</option>');
 if ($game->planet['unittrainid_'.($t+1)]==10) $game->out(constant($game->sprache("Text17")));
 else $game->out(constant($game->sprache("Text18")));
@@ -410,10 +450,10 @@ if ($game->planet['unittrainendless_'.($t+1)]!=1) $number=$game->planet['unittra
 $game->out('
 </select>
 </td>
-<td>
-<input type="text" name="listnumber_'.$t.'" value="'.$number.'" class="Field_nosize" size="10" maxlength="5">
+<td width=40>
+<input type="text" name="listnumber_'.$t.'" value="'.$number.'" class="Field_nosize" size="3" maxlength="5">
 </td>
-<td>
+<td width=40 align="center">
 <input type="checkbox" name="listendless_'.$t.'" value="1" '.(( $game->planet['unittrainendless_'.($t+1)]) ? 'checked="checked"':'').'>
 </select>
 </td>
@@ -421,8 +461,76 @@ $game->out('
 </tr>
 ');
 }
+*/
+
+for($t = 0; $t < 10; $t++) {
+    if($game->planet['unittrainnumber_'.($t+1)] == 0) {
+        $game->out('<tr><td width="5%">&nbsp;</td><td width="8%">'.($t+1).':</td>');
+    }
+    else if($game->planet['unittrain_actual']!=($t+1)) {
+        $game->out('<tr><td width="5%"><img id="jump_list_'.($t+1).'" value="'.($t+1).'" onClick="document.academy3.jump_list.value = '.($t+1).'; document.academy3.submit();" src="'.$game->PLAIN_GFX_PATH.'arrow_grey_right.png"></td><td width="8%">'.($t+1).':</td>');
+    }
+    else {
+        $game->out('<tr><td width="5%"><img src="'.$game->PLAIN_GFX_PATH.'arrow_right.png"></td><td width="8%"><b><u>'.($t+1).'</u></b>:</td>');
+    }
+    $game->out('<td width="20%"><select name="listid_'.$t.'" class="Select" size="1"><option value="-1">'.(constant($game->sprache("Text25"))).'</option>');
+    $game->out('<option value="10"'.($game->planet['unittrainid_'.($t+1)]==10 ? ' selected="selected"' : '').'>'.constant($game->sprache("Text18")).'</option>');
+    $game->out('<option value="11"'.($game->planet['unittrainid_'.($t+1)]==11 ? ' selected="selected"' : '').'>'.constant($game->sprache("Text32")).'</option>');
+    $game->out('<option value="12"'.($game->planet['unittrainid_'.($t+1)]==12 ? ' selected="selected"' : '').'>'.constant($game->sprache("Text34")).'</option>');
+    for ($u=0; $u<6; $u++)
+    {
+        if (UnitMetRequirements($u))
+        {
+            if ($game->planet['unittrainid_'.($t+1)]==($u+1)) { 
+                $game->out('<option value="'.($u+1).'" selected>'.$UNIT_NAME[$game->player['user_race']][$u].'</option>');
+            }
+            else {
+                $game->out('<option value="'.($u+1).'">'.$UNIT_NAME[$game->player['user_race']][$u].'</option>');
+            }                
+        }
+    }
+    $number=$game->planet['unittrainnumber_'.($t+1)];
+    if ($game->planet['unittrainendless_'.($t+1)]!=1) {$number=$game->planet['unittrainnumberleft_'.($t+1)];}
+    switch ($game->planet['unittrainid_'.($t+1)]) {
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+            $costs = CreateCostsText($game->planet['unittrainid_'.($t+1)],$number);
+            break;
+        case 10:
+            $costs = 'Time: '.Zeit($number*1*TICK_DURATION);
+            break;
+        case 11:
+            $costs = 'Time: '.Zeit($number*9*TICK_DURATION);
+            break;
+        case 12:
+            $costs = 'Time: '.Zeit($number*18*TICK_DURATION);
+            break;
+        default :
+            $costs = '---';
+            break;
+    }
+    $game->out('
+            </select>
+        </td>
+        <td width="10%">
+            <input type="text" name="listnumber_'.$t.'" value="'.$number.'" class="Field_nosize" size="3" maxlength="5">
+        </td>
+        <td width="10%" align="center">
+            <input type="checkbox" name="listendless_'.$t.'" value="1" '.(( $game->planet['unittrainendless_'.($t+1)]) ? 'checked="checked"':'').'>
+            </select>
+        </td>
+        <td width="50%">'.($number > 0 ? $costs : '---').'
+        </td>
+    </tr>
+    ');    
+}
+
 $game->out('</table>'.constant($game->sprache("Text19")).'&nbsp;<img src="'.$game->PLAIN_GFX_PATH.'arrow_right.png">&nbsp;'.constant($game->sprache("Text19a")).'<br>
-<input type="submit" name="exec_list" class="button_nosize" value="'.constant($game->sprache("Text22")).'">&nbsp;&nbsp;
+<input type="submit" name="exec_list" class="button_nosize" value="'.constant($game->sprache("Text22")).'" autofocus>&nbsp;&nbsp;
 <input type="submit" name="reset_list" class="button_nosize" value="'.constant($game->sprache("Text35")).'"></form></td></tr></table></td></tr></table>');
 }
 
@@ -571,6 +679,11 @@ redirect('a=academy');
 if (isset($_POST['apply_template']))
 {
 Apply_Template();
+redirect('a=academy');
+}
+if (isset($_POST['jump_list']))
+{
+Jump_Train(filter_input(INPUT_POST, 'jump_list', FILTER_SANITIZE_NUMBER_INT));
 redirect('a=academy');
 }
 Show_Main();

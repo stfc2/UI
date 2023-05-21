@@ -323,41 +323,41 @@ $ship_components_locale=array(
 
         // Category Obsidianischer Orden
         8=>array(
-             // Component Verh�re
-             0=>array(
-                    'name'=>'Interrogatori',
-                    'description'=>'Flavor Text Here.',
-            ), // Endof Component Verh�re
-
              // Component Spionage
-             1=>array(
+             0=>array(
                     'name'=>'Spionaggio',
                     'description'=>'Flavor Text Here.',
             ), // Endof Component Spionage
 
+             // Component Occultamento
+             1=>array(
+                    'name'=>'Occultamento',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Occultamento            
+            
              // Component Spiralwellendisruptoren MK II
              2=>array(
                     'name'=>'Disgregatore ad onde spirali MK II',
                     'description'=>'Il disgregatore ad onde spirali MK II &egrave; l&#146;ultimo stadio dei disgregatori, esso trasmette le onde di energia in spirali espandenti. Si tratta quindi, naturalmente, di una dispersione pi&ugrave; ampia ed un indebolimento degli scarichi, ma l&#146;arma &egrave; cos&igrave; ben bilanciata che provoca ciononostante il massimo danno.',
             ), // Endof Component Spiralwellendisruptoren MK II
 
-             // Component Occultamento
-             3=>array(
-                    'name'=>'Occultamento',
-                    'description'=>'Flavor Text Here.',
-            ), // Endof Component Occultamento
-            
              // Component Doppelte Tritanidpanzerung
-             4=>array(
-                    'name'=>'Doppia armatura al Tritanio',
-                    'description'=>'La duplice armatura di Tritanid rafforza anche lo scafo di circa 1450 punti.',
+             3=>array(
+                    'name'=>'Corazza rinforzata al Tritanio',
+                    'description'=>'La corazza della nave viene reingenierizzata da zero, impiegando grandi quantit&agrave; di Tritanio.',
             ), // Endof Component Doppelte Tritanidpanzerung
 
-             // Component Obsidianische Schilde
+             // Component Aggiornamenti Ossidiani I
+             4=>array(
+                    'name'=>'Aggiornamenti Ossidiani I',
+                    'description'=>'Il design datato delle nostre fregate non era adeguato alle esigenze dell Ordine Ossidiano che ha presentato una completa rivisitazione del progetto.',
+            ), // Endof Component Aggiornamenti Ossidiani I
+            
+             // Component Aggiornamenti Ossidiani II
              5=>array(
-                    'name'=>'Scudo Ossidiano',
-                    'description'=>'Il funzionamento dello Scudo Ossidiano &egrave; leggendario e misterioso come l&#146;ordine stesso.',
-            ), // Endof Component Obsidianische Schilde
+                    'name'=>'Aggiornamenti Ossidiani II',
+                    'description'=>'La Galor viene completamente reingenerizzata per adeguarla alle reali necessit&agrave; della flotta.',
+            ), // Endof Component Aggiornamenti Ossidiani II
 
       'name'=>'Ordine Ossidiano',
       ), // Endof Category Obsidianischer Orden

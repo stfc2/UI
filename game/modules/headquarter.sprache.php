@@ -312,9 +312,9 @@ define ("ITA_TEXT18", 'Unit&agrave; libere');
 
 define ("ITA_TEXT19", 'Lavoratori liberi');
 
-define ("ITA_TEXT20", 'Cannoni Orb. leggeri');
+define ("ITA_TEXT20", 'Difese Civili');
 
-define ("ITA_TEXT21", 'Cannoni Orbitali');
+define ("ITA_TEXT21", 'Difese Militari');
 
 define ("ITA_TEXT22", 'Punti');
 
@@ -340,23 +340,23 @@ define ("ITA_TEXT32", 'Questo valore indica il numero massimo di posti vacanti p
 
 define ("ITA_TEXT33", 'Lavoratori liberi');
 
-define ("ITA_TEXT34", 'Questo valore indica la potenza di attacco e difesa dei cannoni orbitali:');
+define ("ITA_TEXT34", 'Questo valore indica il numero di strutture difensive a disposizione del pianeta:');
 
 define ("ITA_TEXT35", 'di');
 
-define ("ITA_TEXT36", 'Piattaforme con:');
+define ("ITA_TEXT36", 'bunker difensivi:');
 
-define ("ITA_TEXT37", 'Armi leggere');
+define ("ITA_TEXT37", 'Queste strutture proteggono la popolazione civile e le strutture di estrazione, stoccaggio e commerciali.');
 
-define ("ITA_TEXT38", 'Scudi Rigeneranti');
+define ("ITA_TEXT38", 'Queste strutture proteggono i militari a difesa del pianeta e le strutture di comando, produzione energia e ricerca tecnologica.');
 
 define ("ITA_TEXT39", '* 100% Solo possibilit&agrave; di esplodere');
 
-define ("ITA_TEXT40", 'Cannoni orb. leggeri');
+define ("ITA_TEXT40", 'Strutture Difensive Civili');
 
 define ("ITA_TEXT41", 'Armi pesanti');
 
-define ("ITA_TEXT42", 'Cannoni orbitali');
+define ("ITA_TEXT42", 'Stutture Difensive Militari');
 
 define ("ITA_TEXT43", 'Questo &egrave; il punteggio del pianeta. Il valore viene aggiornato ogni 3 minuti circa.');
 

@@ -52,10 +52,22 @@ $ship_components_locale=array(
              // Component Warp MKIV
              3=>array(
                     'name'=>'Warp MKIV',
-                    'description'=>'Il nucleo a curvatura MK IV &egrave; la fonte di energia definitiva per i Ferengi, fornendo 37 punti di energia.',
+                    'description'=>'Il nucleo a curvatura MK IV &egrave; forse la fonte di energia definitiva per i Ferengi, fornendo 37 punti di energia.',
             ), // Endof Component Warp MKIV
 
-      'name'=>'Sala macchine',
+             // Component Warp MKIV
+             4=>array(
+                    'name'=>'Warp MKV',
+                    'description'=>'Il nucleo a curvatura MK V &egrave; la fonte di energia definitiva per i Ferengi, fornendo 60 punti di energia.',
+            ), // Endof Component Warp MKIV
+
+             // Component Warp MKIV
+             5=>array(
+                    'name'=>'Warp MKVI',
+                    'description'=>'Il nucleo a curvatura MK VI &egrave; davvero la fonte di energia definitiva per i Ferengi, fornendo 80 punti di energia.',
+            ), // Endof Component Warp MKIV
+            
+      'name'=>'Warpcore',
       ), // Endof Category Maschinenraum
 
 
@@ -67,24 +79,36 @@ $ship_components_locale=array(
                     'description'=>'Il motore a fusione permette ai Ferengi di raggiungere velocit&agrave; superiore a quella della luce.',
             ), // Endof Component Fusionsantrieb
 
-             // Component Feldgeometrie
+             // Component Fusionsantrieb
              1=>array(
+                    'name'=>'Motore a fusione II',
+                    'description'=>'Il motore a fusione permette ai Ferengi di raggiungere velocit&agrave; superiore a quella della luce.',
+            ), // Endof Component Fusionsantrieb
+
+             // Component Feldgeometrie
+             2=>array(
                     'name'=>'Geometria di campo',
                     'description'=>'Grazie alla geometria di campo il motore a fusione pu&ograve; raggiungere la velocit&agrave; di curvatura 2.',
             ), // Endof Component Feldgeometrie
 
              // Component Feldkompression
-             2=>array(
+             3=>array(
                     'name'=>'Compressione di campo',
                     'description'=>'Grazie alla compressione di campo il motore a fusione pu&ograve; raggiungere la velocit&agrave; di curvatura 3.',
             ), // Endof Component Feldkompression
 
              // Component Plasma-Injektion
-             3=>array(
+             4=>array(
                     'name'=>'Iniezione di plasma',
-                    'description'=>'Il motore a fusione viene migliorato grazie ai moderni iniettori di plasma, permettendogli di raggiungere curvatura 4.',
+                    'description'=>'Il motore a fusione viene migliorato grazie ai moderni iniettori di plasma, permettendogli di raggiungere curvatura 7.',
             ), // Endof Component Plasma-Injektion
 
+             // Component Plasma-Injektion
+             5=>array(
+                    'name'=>'Iniezione di plasma II',
+                    'description'=>'Il motore a fusione viene migliorato grazie ai moderni iniettori di plasma, permettendogli di raggiungere curvatura 8.',
+            ), // Endof Component Plasma-Injektion
+            
       'name'=>'Sezione motori',
       ), // Endof Category Antriebssection
 
@@ -100,7 +124,7 @@ $ship_components_locale=array(
              // Component Materiepakete
              1=>array(
                     'name'=>'Pacchetti di materia',
-                    'description'=>'I pacchetti di materia sono scagliati dalle bocche di fuoco manualmente ed esplodono al contatto. Causano un danno maggiore rispetto ai lanciaraggi, ma non sono utilizzabili su Trasporti e Colonizzatrici.',
+                    'description'=>'I pacchetti di materia sono scagliati dalle bocche di fuoco manualmente ed esplodono al contatto. Causano un danno maggiore rispetto ai lanciaraggi e forniscono un primitivo strumento di difesa per le navi casi&ograve;.',
             ), // Endof Component Materiepakete
 
              // Component Multifrequenz Strahlen
@@ -184,13 +208,13 @@ $ship_components_locale=array(
              // Component Duranidpanzerung
              1=>array(
                     'name'=>'Corazzatura in duranio',
-                    'description'=>'Corazzatura in duranio rinforza l&#146;integrit&agrave; delle navi Ferengi, in modo da poter resistere pi&ugrave; a lungo in battaglia.',
+                    'description'=>'Corazzatura in duranio che rinforza l&#146;integrit&agrave; delle nostre navi da trasporto, in modo da poter resistere pi&ugrave; a lungo in battaglia.',
             ), // Endof Component Duranidpanzerung
 
              // Component Integrit㳳feld
              2=>array(
                     'name'=>'Campo di contenimento',
-                    'description'=>'Un campo di contenimento non &egrave; nient&#146;altro che il campo utilizzato all&#146;interno delle navi della Federazione. I Ferengi lo usano al posto degli schermi deflettori.',
+                    'description'=>'Un campo di contenimento non &egrave; nient&#146;altro che il campo utilizzato all&#146;interno delle navi della Federazione. I Ferengi lo impiegano al posto degli schermi deflettori sulle navi casin&ograve;.',
             ), // Endof Component Integrit㳳feld
 
              // Component Schildgenerator
@@ -205,6 +229,12 @@ $ship_components_locale=array(
                     'description'=>'Gli scudi a fase sono una tecnologia trafugata dalle navi della Federazione di classe Intrepid.',
             ), // Endof Component Phasen-Schilde
 
+             // Component Phasen-Schilde II
+             5=>array(
+                    'name'=>'Scudi a fase II',
+                    'description'=>'Gli scudi a fase sono una tecnologia trafugata dalle navi della Federazione di classe Intrepid.',
+            ), // Endof Component Phasen-Schilde II
+            
       'name'=>'Sistemi di difesa',
       ), // Endof Category Verteidigungssysteme
 
@@ -274,57 +304,8 @@ $ship_components_locale=array(
       'name'=>'Sistemi medici',
       ), // Endof Category Med-Systeme
 
-
-        // Category Festival-Räume
-        7=>array(
-             // Component Kleiner Raum
-             0=>array(
-                    'name'=>'Stanza piccola',
-                    'description'=>'Le varie stanze per le feste permettono di alloggiare pi&ugrave; Ferengi.',
-            ), // Endof Component Kleiner Raum
-
-             // Component Clubhalle
-             1=>array(
-                    'name'=>'Club',
-                    'description'=>'Le varie stanze per le feste permettono di alloggiare pi&ugrave; Ferengi',
-            ), // Endof Component Clubhalle
-
-             // Component Partyraum
-             2=>array(
-                    'name'=>'Sala per feste',
-                    'description'=>'Le varie stanze per le feste permettono di alloggiare pi&ugrave; Ferengi.',
-            ), // Endof Component Partyraum
-
-             // Component Festivalraum
-             3=>array(
-                    'name'=>'Stanza Conferenze',
-                    'description'=>'Le varie stanze per le feste permettono di alloggiare pi&ugrave; Ferengi.',
-            ), // Endof Component Festivalraum
-
-             // Component Groޥ Halle
-             4=>array(
-                    'name'=>'Grande sala',
-                    'description'=>'Le varie stanze per le feste permettono di alloggiare pi&ugrave; Ferengi.',
-            ), // Endof Component Groޥ Halle
-
-             // Component Spielh�
-             5=>array(
-                    'name'=>'Sala Giochi',
-                    'description'=>'Le varie stanze per le feste permettono di alloggiare pi&ugrave; Ferengi.',
-            ), // Endof Component Spielh�
-
-             // Component Kasino
-             6=>array(
-                    'name'=>'Casin&oacute;',
-                    'description'=>'Le varie stanze per le feste permettono di alloggiare pi&ugrave; Ferengi.',
-            ), // Endof Component Kasino
-
-      'name'=>'Stanze per le feste',
-      ), // Endof Category Festival-R㴭e
-
-
         // Category Forschungseinrichtungen
-        8=>array(
+        7=>array(
              // Component Scanner
              0=>array(
                     'name'=>'Scanner',
@@ -364,46 +345,69 @@ $ship_components_locale=array(
       'name'=>'Laboratori di ricerca',
       ), // Endof Category Forschungseinrichtungen
 
+        // Category Training
+        8=>array(
+             // Component Kleiner Raum
+             0=>array(
+                    'name'=>'Base I',
+                    'description'=>'Addestramento base per gli equipaggi delle navi militari.',
+            ), // Endof Component Kleiner Raum
+
+             // Component Clubhalle
+             1=>array(
+                    'name'=>'Base II',
+                    'description'=>'Addestramento migliorato per gli equipaggi delle navi militari',
+            ), // Endof Component Clubhalle
+
+             // Component Avanzato I
+             2=>array(
+                    'name'=>'Avanzato I',
+                    'description'=>'Livello superiore di addestramento per la nostra unit&agrave; di combattimento maggiore.',
+            ), // Endof Component Partyraum
+
+             // Component Festivalraum
+             3=>array(
+                    'name'=>'Avanzato II',
+                    'description'=>'Ulteriore miglioramento nella preparazione del personale da impiegare nelle unit&agrave; maggiori della flotta.',
+            ), // Endof Component Festivalraum
+
+             // Component Groޥ Halle
+             4=>array(
+                    'name'=>'Avanzato III',
+                    'description'=>'Questo livello rappresenta il massimo possibile per le nostre capaci&agrave; addestrative.',
+            ), // Endof Component Groޥ Halle
+
+      'name'=>'Addestramento',
+      ), // Endof Category Festival-R㴭e
+
 
         // Category Verhandlungstisch
         9=>array(
              // Component Prototypen
              0=>array(
-                    'name'=>'Prototipi',
-                    'description'=>'I prototipi sono un pacchetto completo di prototipi non testati che forniscono non solo una maggiore velocit&agrave; a curvatura ma anche una migliore capacit&agrave; di reazione.',
+                    'name'=>'Sala Trattative',
+                    'description'=>'Flavor Text here.',
             ), // Endof Component Prototypen
 
              // Component Subraumspalter
              1=>array(
-                    'name'=>'Separatore subspaziale',
-                    'description'=>'Il separatore subspaziale supporta in piccola parte le capacit&agrave; offensive della nave.',
+                    'name'=>'Stive doppie',
+                    'description'=>'Questo espediente permette di ricavare spazio di stoccaggio extra per il trasporto di merci particolari. Pu&ograve; essere adattato allo stivaggio di munizioni supplementari, se necessario.',
             ), // Endof Component Subraumspalter
 
              // Component Biokinetische Ladungen
              2=>array(
-                    'name'=>'Proiettili biochinetici',
-                    'description'=>'I proiettili biochinetici sono armi biologiche rubate dai Ferengi ai Cardassiani.',
+                    'name'=>'Computer quantico',
+                    'description'=>'Un interessante pezzo di tecnologia preso in prestito dalla Tal Shiar, garantisce alla nave un buon livello di discrezione.',
             ), // Endof Component Biokinetische Ladungen
 
              // Component Erwerbsregel 34
              3=>array(
-                    'name'=>'Regola di acquisizione 34',
-                    'description'=>'La regola di acquisizione 34 dice: la guerra fa bene agli affari.',
+                    'name'=>'Bio-computer parallelo',
+                    'description'=>'Attraverso estenuanti trattative siamo giunti in possesso di questo esemplare di biotecnologia Breen dai notevoli effetti migliorativi.',
             ), // Endof Component Erwerbsregel 34
 
-             // Component Schildgitter
-             4=>array(
-                    'name'=>'Emettitori di schermi',
-                    'description'=>'Gli emettitori di schermi costruiti sulle navi ferengi non sono efficienti come quelli delle altre specie, perch&ecute; agli scienziati mancano le conoscenze per ottimizzarli.',
-            ), // Endof Component Schildgitter
-
-             // Component Schnell wie der Wind
-             5=>array(
-                    'name'=>'Veloce come il vento',
-                    'description'=>'&quot;Veloce come il vento&quot; &egrave; una libera traduzione di questo componente. Gli effetti sono diversi, ma il pi&ugrave; interessante &egrave; il miglioramento del fattore curvatura di 2.',
-            ), // Endof Component Schnell wie der Wind
-
-      'name'=>'Tavolo dei negoziati',
+      'name'=>'Commercio',
       ), // Endof Category Verhandlungstisch
 
 

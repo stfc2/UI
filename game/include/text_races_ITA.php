@@ -61,13 +61,13 @@ $BUILDING_NAME = array(
 
 		8 => 'Centro Ricerche',
 
-		9 => 'Cannone Orbitale',
+		9 => 'Strutture Difensive',
 
 		10 => 'Centro Commerciale',
 
 		11 => 'Silos',
 
-		12 => 'Cannone Orb. Leggero',
+		12 => 'Rifugi Civili',
 
 	),
 
@@ -95,13 +95,13 @@ $BUILDING_NAME = array(
 
 		8 => 'Centro Ricerche',
 
-		9 => 'Cannone Orbitale',
+		9 => 'Strutture Divensive',
 
 		10 => 'Centro Commerciale',
 
 		11 => 'Silos',
 
-		12 => 'Cannone Orb. Leggero',
+		12 => 'Rifugi Civili',
 
 ),
 
@@ -131,13 +131,13 @@ $BUILDING_NAME = array(
 
 		8 => 'Strutture di Ricerca',
 
-		9 => 'Cannone Orbitale',
+		9 => 'Bunker Difensivi',
 
 		10 => 'Centro Commerciale',
 
 		11 => 'Bunker',
 
-		12 => 'Cannone Orb. Leggero',
+		12 => 'Rifugi Civili',
 
 	),
 
@@ -165,13 +165,13 @@ $BUILDING_NAME = array(
 
 		8 => 'Centro Ricerca',
 
-		9 => 'Cannone Orbitale',
+		9 => 'Basi Militari',
 
 		10 => 'Commercio Mercantile',
 
 		11 => 'Silos',
 
-		12 => 'Cannone Orb. Leggero',
+		12 => 'Basi della Milizia',
 
 
 
@@ -199,13 +199,13 @@ $BUILDING_NAME = array(
 
 		8 => 'Centro di Sviluppo',
 
-		9 => 'Piattaforma Orbitale',
+		9 => 'Fortificazioni Pesanti',
 
 		10 => 'Centro Commerciale',
 
 		11 => 'Deposito Risorse',
 
-		12 => 'Piattaforma Orb. Leggera',
+		12 => 'Fortificazioni Leggere',
 
 
 
@@ -235,13 +235,13 @@ $BUILDING_NAME = array(
 
 		8 => 'Centro Ricerche',
 
-		9 => 'Cannone Orbitale',
+		9 => 'Bunker Sotterranei',
 
 		10 => 'Camera di Commercio',
 
 		11 => 'Silos',
 
-		12 => 'Cannone Orb. Leggero',
+		12 => 'Rifugi Sotterranei',
 
 
 
@@ -279,10 +279,36 @@ $BUILDING_NAME = array(
 
 	),
 
-	// Q
+	// Pirati d'Orione
 
 	7 => array(
 
+		0 => 'Quartier generale',
+
+		1 => 'Cava di metalli',
+
+		2 => 'Cava di minerali',
+
+		3 => 'Cava di dilitio',
+
+		4 => 'Centrale energetica',
+
+		5 => 'Quartieri delle reclute',
+
+		6 => 'Spazioporto',
+
+		7 => 'Cantiere Navale',
+
+		8 => 'Centrale Spionaggio',
+
+		9 => 'Roccaforti',
+
+		10 => 'Centro ricettazione',
+
+		11 => 'Nascondigli',
+
+		12 => 'Trincee della milizia',
+            
 	),
 
 	// Breen
@@ -307,13 +333,13 @@ $BUILDING_NAME = array(
 
 		8 => 'Centro Ricerche',
 
-		9 => 'Cannone Orbitale',
+		9 => 'Difese Primarie',
 
 		10 => 'Centro per il Commercio',
 
 		11 => 'Silos',
 
-		12 => 'Cannone Orb. Leggero',
+		12 => 'Difese Secondarie',
 
 	),
 
@@ -339,13 +365,13 @@ $BUILDING_NAME = array(
 
 		8 => 'Centro Ricerche',
 
-		9 => 'Piattaforma Orbitale',
+		9 => 'Bunker Primari',
 
 		10 => 'Centro per il Commercio',
 
 		11 => 'Stoccaggio Materie Prime',
 
-		12 => 'Piattaforma Orb. Leggera',
+		12 => 'Bunker Secondari',
 
 	),
 
@@ -405,13 +431,13 @@ $BUILDING_NAME = array(
 
 		8 => 'Santuario della Dottrina',
 
-		9 => 'Cannone Orbitale',
+		9 => 'Postazioni Difensive',
 
 		10 => 'Centro Commerciale',
 
 		11 => 'Magazzino Risorse',
 
-		12 => 'Cannone Orb. Leggero',
+		12 => 'Rifugi Sotterranei',
 
 	),
 
@@ -472,13 +498,13 @@ $BUILDING_NAME = array(
 
 		8 => 'Centro Ricerche',
 
-		9 => 'Cannone Orbitale',
+		9 => 'Rifugi Corazzati',
 
 		10 => 'Centro Commerciale',
 
 		11 => 'Silos',
 
-		12 => 'Cannone Orb. Leggero',
+		12 => 'Rifugi Periferici',
 
 	),
 
@@ -628,10 +654,22 @@ $UNIT_NAME = array(
 
 
 
-	// Q
+	// Pirati d'Orione
 
 	7 => array(
 
+                0 => 'Criminale',
+
+                1 => 'Caporale',
+
+                2 => 'Specialista',
+
+                3 => 'Comandante',
+
+                4 => 'Riparatore',
+
+                5 => 'Segaossa',            
+            
 	),
 
 
@@ -1197,7 +1235,7 @@ $UNIT_DESCRIPTION = array (
 
 		0 => 'I Cacciatori sono relativamente economici e facilmente accessibili ad inizio gioco per la difesa del pianeta.<br>In fase avanzata &egrave; possibile impiegarli come equipaggio per le navi stellari.',
 
-		1 => 'Il Beta &egrave; particolarmente efficace nel combattimento a distanza e, anche grazie alla sua robusta difesa, pu&ògrave; essere virtualmente impiegato in qualsiasi ruolo, anche se il suo addestramento, paragonato a quello dei Cacciatori, risulta particolarmente dispendioso.',
+		1 => 'Il Beta &egrave; particolarmente efficace nel combattimento a distanza e, anche grazie alla sua robusta difesa, pu&ï¿½grave; essere virtualmente impiegato in qualsiasi ruolo, anche se il suo addestramento, paragonato a quello dei Cacciatori, risulta particolarmente dispendioso.',
 
 		2 => 'Gli Alfa sono combattenti esperti e guide infallibili, in grado di sopravvivere in qualsiasi situazione. Sono dei cacciatori veterani e non conoscono paura. Ogni preda viene inseguita fino alla morte.',
 
@@ -1318,13 +1356,13 @@ $BUILDING_DESCRIPTION = array (
 
 		8 => 'Potenziare questa struttura permette di ricercare un maggior numero di tecnologie.<br>Alcune tecnologie sono necessarie per produrre soldati o navi.',
 
-		9 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
+		9 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture governative militari e delle unit&agrave; addestrate.',
 
 		10 => 'Questa struttura ti permette di stringere accordi commerciali con altri giocatori.',
 
 		11 => 'Questa struttura ti permette di aumentare la capacit&agrave; di stoccaggio di risorse sul tuo pianeta  di 50000 unit&agrave;.',
 
-		12 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassare i loro costi',
+		12 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture estrattive, commerciali e della popolazione civile.',
 
 	),
 
@@ -1352,13 +1390,13 @@ $BUILDING_DESCRIPTION = array (
 
 		8 => 'Potenziare questa struttura permette di ricercare un maggior numero di tecnologie.<br>Alcune tecnologie sono necessarie per produrre soldati o navi.',
 
-		9 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
+		9 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture governative militari e delle unit&agrave; addestrate.',
 
 		10 => 'Questa struttura ti permette di stringere accordi commerciali con altri giocatori.',
 
 		11 => 'Questa struttura ti permette di aumentare la capacit&agrave; di stoccaggio di risorse sul tuo pianeta di 50000 unit&agrave;.',
 
-		12 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali potenziate a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
+		12 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture estrattive, commerciali e della popolazione civile.',
 
 	),
 
@@ -1386,13 +1424,13 @@ $BUILDING_DESCRIPTION = array (
 
 		8 => 'Potenziare questa struttura permette di ricercare un maggior numero di tecnologie.<br>Alcune tecnologie sono necessarie per produrre soldati o navi.',
 
-		9 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
+		9 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture governative militari e delle unit&agrave; addestrate.',
 
 		10 => 'Questa struttura permette gli scambi commerciali tra pianeti. A seconda del livello, &eacute possibile raggiungere pianeti molto distanti.',
 
 		11 => 'Questa struttura ti permette di aumentare la capacit&agrave; di stoccaggio di risorse sul tuo pianeta di 45000 unit&agrave;.',
 
-		12 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali potenziate a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
+		12 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture estrattive, commerciali e della popolazione civile.',
 
 	),
 
@@ -1420,13 +1458,13 @@ $BUILDING_DESCRIPTION = array (
 
 		8 => 'Potenziare questa struttura permette di ricercare un maggior numero di tecnologie.<br>Alcune tecnologie sono necessarie per produrre soldati o navi.',
 
-		9 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
+		9 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture governative militari e delle unit&agrave; addestrate.',
 
 		10 => 'Questa struttura permette gli scambi commerciali tra pianeti. A seconda del livello, &eacute possibile raggiungere pianeti molto distanti.',
 
 		11 => 'Questa struttura ti permette di aumentare la capacit&agrave; di stoccaggio di risorse sul tuo pianeta di 50000 unit&agrave;.',
 
-		12 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali potenziate a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
+		12 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture estrattive, commerciali e della popolazione civile.',
 
 	),
 
@@ -1454,13 +1492,13 @@ $BUILDING_DESCRIPTION = array (
 
 		8 => 'Il potenziamento di questa struttura rende possibile l&#146;accesso ad un maggior numero di tecnologie.',
 
-		9 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
+		9 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture governative militari e delle unit&agrave; addestrate.',
 
 		10 => 'Questa struttura permette gli scambi commerciali tra pianeti. A seconda del livello, &eacute possibile raggiungere pianeti molto distanti.',
 
 		11 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di materie prime stoccabili (circa 42.500 per livello).',
 
-		12 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali potenziate a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
+		12 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture estrattive, commerciali e della popolazione civile.',
 
 	),
 
@@ -1538,13 +1576,13 @@ $BUILDING_DESCRIPTION = array (
 
 		8 => 'Potenziare questa struttura permette di ricercare un maggior numero di tecnologie.<br>Alcune tecnologie sono necessarie per produrre soldati o navi.',
 
-		9 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
+		9 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture governative militari e delle unit&agrave; addestrate.',
 
 		10 => 'Questa struttura rende possibile concludere rapporti commerciali con gli altri giocatori che saranno completati in modo automatico.',
 
 		11 => 'Questa struttura ti permette di aumentare la capacit&agrave; di stoccaggio di risorse sul tuo pianeta di 50000 unit&agrave;.',
 
-		12 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali potenziate a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
+		12 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture estrattive, commerciali e della popolazione civile.',
 
 	),
 
@@ -1572,13 +1610,13 @@ $BUILDING_DESCRIPTION = array (
 
 		8 => 'Potenziare questa struttura permette di ricercare un maggior numero di tecnologie.<br>Alcune tecnologie sono necessarie per produrre soldati o navi.',
 
-		9 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
+		9 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture governative militari e delle unit&agrave; addestrate.',
 
 		10 => 'Questa struttura rende possibile concludere rapporti commerciali con gli altri giocatori che saranno completati in modo automatico.',
 
 		11 => 'Stoccaggio Materie Prime consente di aumentare il numero di risorse accumulabili. Ad ogni livello la quantit&agrave; di risorsa stoccabile viene incrementata di 50000 per tipo.',
 
-		12 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali potenziate a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
+		12 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture estrattive, commerciali e della popolazione civile.',
 
 	),
 
@@ -1640,13 +1678,13 @@ $BUILDING_DESCRIPTION = array (
 
 		8 => 'Potenziare questa struttura permette di ricercare un maggior numero di tecnologie.<br>Alcune tecnologie sono necessarie per produrre soldati o navi.',
 
-		9 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
+		9 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture governative militari e delle unit&agrave; addestrate.',
 
 		10 => 'Questa struttura ti permette di stringere accordi commerciali con altri giocatori.',
 
 		11 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di materie prime stoccabili (circa 45.000 per livello).',
 
-		12 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali potenziate a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
+		12 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture estrattive, commerciali e della popolazione civile.',
 
 	),
 
@@ -1703,17 +1741,17 @@ $BUILDING_DESCRIPTION = array (
 
 		6 => 'Lo Spazioporto serve per la riparazione delle navi danneggiate. Con ogni stadio di sviluppo il pianeta riceve un miglioramento della forza dei sensori.',
 
-		7 => 'Maggiore il livello di questa struttura, maggiore la velocit&agrave; con cui vengono costruite le navi stellari.<br>Pro 50 Punkte des Planeten kann der jeweils nächsthöhere Rumpftyp gebaut werden.',
+		7 => 'Maggiore il livello di questa struttura, maggiore la velocit&agrave; con cui vengono costruite le navi stellari.<br>Pro 50 Punkte des Planeten kann der jeweils nï¿½chsthï¿½here Rumpftyp gebaut werden.',
 
 		8 => 'Potenziare questa struttura permette di ricercare un maggior numero di tecnologie.<br>Alcune tecnologie sono necessarie per produrre soldati o navi.',
 
-		9 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
+		9 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture governative militari e delle unit&agrave; addestrate.',
 
 		10 => 'Questa struttura rende possibile concludere rapporti commerciali con gli altri giocatori che saranno completati in modo automatico.',
 
 		11 => 'Maggiore il livello di questa struttura, maggiore la quantit&agrave; di materie prime stoccabili (circa 10.000 per livello).',
 
-		12 => 'Il livello di questa struttura indica il numero di strutture difensive orbitali potenziate a difesa del pianeta. Alcune tecnologie permettono di costruire un maggior numero di tali strutture o di abbassarne i loro costi.',
+		12 => 'Il livello indica il numero di strutture difensive a terra poste a difesa delle strutture estrattive, commerciali e della popolazione civile.',
 
 	),
 

@@ -33,15 +33,15 @@ $PLANETS_TEXT = array(
     'a' => array(
         0 => 'Geothermal',
         1 => 'Requires heavy intervention of terraforming',
-        2 => 'Balanced resources, moderate amount',
-        3 => 'Planets of this class are very small and rocky, marked by intense volcanic activity. This activity saturated the atmosphere with greenhouse gases, while maintaining high temperature on the surface, even if great distance from the star. When volcanic activity is out, the planet "dies", becoming a class D.',
+        2 => 'Average number of all resources',
+        3 => 'Planets of this class are very small and rocky, marked by intense volcanic activity. This activity saturated the atmosphere with greenhouse gases, while maintaining high temperature on the surface, even if great distance from the star. When volcanic activity is out, the planet "dies", becoming a class C.',
         4 => 'Gothos'
     ),
     
     'b' => array(
         0 => 'Geomorteus',
         1 => 'Requires heavy intervention of terraforming',
-        2 => 'Balanced resources, moderate amount',
+        2 => 'Average number of all resources',
         3 => 'Planets of this class are quite small and located in proximity to its star. Planets unfit for life, have a rarefied atmosphere of helium and sodium. The surface is molten and highly unstable. No life form has ever been discovered on this type of planet.',
         4 => 'Mercury'
     ),
@@ -49,7 +49,7 @@ $PLANETS_TEXT = array(
     'c' => array(
         0 => 'Geo inactive',
         1 => 'Requires heavy intervention of terraforming',
-        2 => 'Balanced resources, moderate amount',
+        2 => 'Average number of all resources',
         3 => 'When volcanic activity on a planet Class A cease, this becomes a planet geo inactive. Essentially dead, these planets have a cold and rocky surface and have no geological activity.',
         4 => 'Pluto, Psi 2000'
     ),
@@ -57,7 +57,7 @@ $PLANETS_TEXT = array(
     'd' => array(
         0 => 'Dwarf',
         1 => 'Requires heavy intervention of terraforming',
-        2 => 'Balanced resources, moderate amount',
+        2 => 'Average number of all resources',
         3 => 'This planetary class normally applies only to planetoids with irregular shape due to the scarcity of their gravitational force. Their atmosphere, if present, is very thin. The surface is composed of silicates and various metal compounds. Life is possible only through a technological support and a supply of resources from outside.',
         4 => 'Ceres (Asteroid in Sol-System)'
     ),

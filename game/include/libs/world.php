@@ -26,15 +26,35 @@ function create_system($id_type, $id_value, $is_mother) {
     global $db, $game;
 
     $sector_id = $system_x = $system_y = 0;
+    
+    $sector_allowed = array(
+        1 => '21, 23, 25, 27, 31, 33, 35, 39, 41, 43, 45, 49, 51, 53, 57, 59, 61, 63, 67, 69, 71, 75, 77, 79, 81',
+        2 => '100, 102, 104, 106, 110, 112, 114, 118, 120, 122, 124, 128, 130, 132, 136, 138, 140, 142, 146, 148, 150, 154, 156, 158, 160',
+        3 => '165, 167, 169, 171, 175, 177, 179, 183, 185, 187, 189, 193, 195, 197, 201, 203, 205, 207, 211, 213, 215, 219, 221, 223, 225',
+        4 => '244, 246, 248, 250, 254, 256, 258, 262, 264, 266, 268, 272, 274, 276, 280, 282, 284, 286, 290, 292, 294, 298, 300, 302, 304'
+    );
 
     switch($id_type) {
         case 'quadrant':
             $quadrant_id = $id_value;
+            
+            /*
+            if($is_mother == 0){
+                $sql = 'SELECT *
+                        FROM starsystems_slots
+                        WHERE quadrant_id = '.$quadrant_id.'
+                        LIMIT 1';                
+            }
+            else {
+                $sql = 'SELECT *
+                        FROM starsystems_slots
+                        WHERE quadrant_id = '.$quadrant_id.'  AND
+                              sector_id IN ('.$sector_allowed[$quadrant_id].') 
+                        LIMIT 1';                
+            }
+            */
 
-            $sql = 'SELECT *
-                    FROM starsystems_slots
-                    WHERE quadrant_id = '.$quadrant_id.'
-                    LIMIT 1';
+            $sql = 'SELECT * FROM starsystems_slots WHERE quadrant_id = '.$quadrant_id.' LIMIT 1';
 
             if(($free_slot = $db->queryrow($sql)) === false) {
                 message(DATABASE_ERROR, 'world::create_system(): Could not query starsystem slots');
@@ -78,7 +98,58 @@ function create_system($id_type, $id_value, $is_mother) {
         message(GENERAL, 'System could not be created', 'world::create_system(): $sector_id = empty');
     }
 
-    $star_size = mt_rand($game->starsize_range[0], $game->starsize_range[1]);
+    $star_base_color = mt_rand(0, 11);
+
+    switch($star_base_color) {
+        // Blue star
+        case 0:
+            $low_range = (int)($game->starsize_range[1]-3);
+            $high_range = (int)($game->starsize_range[1]);
+            $star_color = array(mt_rand(0, 25), mt_rand(0, 25), mt_rand(150, 255));
+            $star_type = 'b';
+        break;
+
+        // White Star
+        case 1:
+        case 2:
+            $low_range = (int)($game->starsize_range[1]-8);
+            $high_range = (int)($game->starsize_range[1]-4);            
+            $star_color = array(mt_rand(220, 255), mt_rand(235, 255), mt_rand(245, 255));
+            $star_type = 'a';                        
+        break;
+
+        // Yellow Star
+        case 3:
+        case 4:
+        case 5:
+            $low_range = (int)($game->starsize_range[0]+4);
+            $high_range = (int)($game->starsize_range[1]-8);            
+            $star_color = array(mt_rand(200, 255), mt_rand(50, 150), mt_rand(0, 25));       
+            $star_type = 'g';            
+        break;
+
+        // Red Star
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        case 10:
+            $low_range = (int)($game->starsize_range[0]);
+            $high_range = (int)($game->starsize_range[0]+4);            
+            $star_color = array(mt_rand(150, 255), mt_rand(0, 25), mt_rand(0, 25));    
+            $star_type = 'm';
+        break;
+
+        // Brown (old) Star
+        case 11:
+            $low_range = (int)($game->starsize_range[0]);
+            $high_range = (int)($game->starsize_range[0]+4);             
+            $star_color = array(mt_rand(100, 150), mt_rand(40, 80), mt_rand(0, 15));      
+            $star_type = 'l';            
+        break;
+    }    
+
+    $star_size = mt_rand($low_range, $high_range);         
 
     $required_borders = ($game->sector_map_split - 1);
     $px_per_field = ( ($game->sector_map_size - $required_borders) / $game->sector_map_split);
@@ -93,46 +164,35 @@ function create_system($id_type, $id_value, $is_mother) {
     $system_map_y = mt_rand( ($root_y + $border_distance), $root_y + ($px_per_field - $border_distance) );
 
     $system_coords = $game->get_system_gcoords($system_x, $system_y, $sector_id);
-
-    $star_base_color = mt_rand(0, 3);
-
-    switch($star_base_color) {
-        // Blue (young) star
-        case 0:
-            $star_color = array(mt_rand(0, 25), mt_rand(0, 25), mt_rand(150, 255));
-        break;
-
-        // White Star
-        case 1:
-            $star_color = array(mt_rand(220, 255), mt_rand(220, 255), mt_rand(220, 255));
-        break;
-
-        // Yellow Star
-        case 2:
-            $star_color = array(mt_rand(200, 255), mt_rand(50, 150), mt_rand(0, 25));
-        break;
-
-        // Red Star
-        case 3:
-            $star_color = array(mt_rand(150, 255), mt_rand(0, 25), mt_rand(0, 25));
-        break;
-
-        // Brown (old) Star
-        case 4:
-            $star_color = array(mt_rand(100, 150), mt_rand(40, 80), mt_rand(0, 15));
-        break;
-    }
     
+    $orion_chance = rand(1,100);            
+    if($orion_chance >= 96) {
+        // AAA
+        $orion_alert = 4;
+    }elseif($orion_chance >= 91){
+        // AA
+        $orion_alert = 3;
+    }elseif($orion_chance >= 76){
+        // A
+        $orion_alert = 2;
+    }elseif($orion_chance >= 51) {
+        // B
+        $orion_alert = 1;
+    }else {
+        // C
+        $orion_alert = 0;
+    }    
     
     if((int)$is_mother == 1) {
-        $max_planets = 8;
+        $max_planets = $game->system_max_planets;
+        $orion_alert = 0;
     }
     else {
-        $max_planets = 4 + (mt_rand(0,4));
+        $max_planets = 4 + (mt_rand(0,4)); (int)($game->system_max_planets / 2) + (mt_rand(0,(int)($game->system_max_planets / 2)));
     }
 
-    $sql = 'INSERT INTO starsystems (system_name, sector_id, system_x, system_y, system_map_x, system_map_y, system_global_x, system_global_y, system_starcolor_red, system_starcolor_green, system_starcolor_blue, system_starsize, system_max_planets)
-            VALUES ("System '.$game->get_sector_name($sector_id).':'.$game->get_system_cname($system_x, $system_y).'", '.$sector_id.', '.$system_x.', '.$system_y.', '.$system_map_x.', '.$system_map_y.', '.$system_coords[0].', '.$system_coords[1].', '.$star_color[0].', '.$star_color[1].', '.$star_color[2].', '.$star_size.', '.$max_planets.')';
+    $sql = 'INSERT INTO starsystems (system_name, sector_id, system_x, system_y, system_map_x, system_map_y, system_global_x, system_global_y, system_starcolor_red, system_starcolor_green, system_starcolor_blue, system_starsize, system_startype, system_max_planets, system_orion_alert)
+            VALUES ("System '.$game->get_sector_name($sector_id).':'.$game->get_system_cname($system_x, $system_y).'", '.$sector_id.', '.$system_x.', '.$system_y.', '.$system_map_x.', '.$system_map_y.', '.$system_coords[0].', '.$system_coords[1].', '.$star_color[0].', '.$star_color[1].', '.$star_color[2].', '.$star_size.', "'.$star_type.'", '.$max_planets.', '.$orion_alert.')';
 
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'world::create_system(): Could not insert new system data');
@@ -149,6 +209,94 @@ function create_system($id_type, $id_value, $is_mother) {
     }
 
     return array($new_system_id, $sector_id);
+}
+
+function create_home_system($type, $id_value) {
+    global $db, $game;
+
+    $race = $game->player['user_race'];
+    
+    $orion_alert = 0;
+    
+    $max_planets = $game->system_max_planets;
+    
+    $sector_id = $system_x = $system_y = 0;
+
+    $quadrant_id = $id_value;
+
+    /*
+    $banned_sector_ids[] = $db->queryrowset('SELECT DISTINCT sector_id FROM starsystems WHERE system_closed > 0 ORDER BY sector_id');
+
+    $banned_sectors_list = implode(',', $banned_sector_ids);
+    */
+    
+    $sql = 'SELECT * FROM starsystems_slots WHERE quadrant_id = '.$quadrant_id.' AND sector_id NOT IN (SELECT DISTINCT sector_id FROM starsystems WHERE system_closed > 0 ORDER BY sector_id) LIMIT 1';    
+
+    if(($free_slot = $db->queryrow($sql)) === false) {
+        message(DATABASE_ERROR, 'world::create_home_system(): Could not query starsystem slots');
+    }
+
+    if(!empty($free_slot['sector_id'])) extract($free_slot);
+
+    if(empty($sector_id)) {
+        message(GENERAL, 'System could not be created', 'world::create_system(): $sector_id = empty');
+    }
+
+    $star_size = mt_rand($game->starsize_range[0], $game->starsize_range[1]-6);            
+
+    $required_borders = ($game->sector_map_split - 1);
+    $px_per_field = ( ($game->sector_map_size - $required_borders) / $game->sector_map_split);
+
+    $root_x = ($px_per_field * ($system_x - 1) ) + ($system_x - 1);
+    $root_y = ($px_per_field * ($system_y - 1) ) + ($system_y - 1);
+
+    $border_distance = $px_per_field / 4;
+    $border_distance = max($border_distance, ( ($star_size * 0.45) + 3 ) );
+
+    $system_map_x = mt_rand( ($root_x + $border_distance), $root_x + ($px_per_field - $border_distance) );
+    $system_map_y = mt_rand( ($root_y + $border_distance), $root_y + ($px_per_field - $border_distance) );
+
+    $system_coords = $game->get_system_gcoords($system_x, $system_y, $sector_id);
+
+    $star_color = array(mt_rand(150, 255), mt_rand(0, 25), mt_rand(0, 25));
+
+    $star_type = 'm';    
+    
+    $sql = 'INSERT INTO starsystems (system_name, sector_id, system_x, system_y, system_map_x, system_map_y, system_global_x, system_global_y, system_starcolor_red, system_starcolor_green, system_starcolor_blue, system_starsize, system_startype, system_max_planets, system_orion_alert)
+            VALUES ("System '.$game->get_sector_name($sector_id).':'.$game->get_system_cname($system_x, $system_y).'", '.$sector_id.', '.$system_x.', '.$system_y.', '.$system_map_x.', '.$system_map_y.', '.$system_coords[0].', '.$system_coords[1].', '.$star_color[0].', '.$star_color[1].', '.$star_color[2].', '.$star_size.', "'.$star_type.'", '.$max_planets.', '.$orion_alert.')';
+
+    if(!$db->query($sql)) {
+        message(DATABASE_ERROR, 'world::create_system(): Could not insert new system data');
+    }
+
+    $new_system_id = $db->insert_id();
+    $sql = 'DELETE FROM starsystems_slots
+            WHERE sector_id = '.$sector_id.' AND
+                  system_x = '.$system_x.' AND
+                  system_y = '.$system_y;
+
+    if(!$db->query($sql)) {
+        message(DATABASE_ERROR, 'world::create_system(): Could not delete starsystems slot data');
+    }    
+    
+    $little_list = ['a', 'b', 'c', 'd'];
+    $giant_list = ['i', 'j', 's', 't'];
+    $good_hybrid_list = ['e', 'f', 'g', 'l'];
+    $bad_hybrid_list = ['e', 'f', 'g', 'l', 'n', 'k', 'h'];
+    
+    $little_one = $little_list[array_rand($little_list)];
+    $giant_one = $giant_list[array_rand($giant_list)];
+    $hybrid_one = $good_hybrid_list[array_rand($good_hybrid_list)];
+    $hybrid_two = $bad_hybrid_list[array_rand($bad_hybrid_list)];
+    
+    $to_void = $game->create_planet(0, 'system', $new_system_id, $little_one);
+    $to_void = $game->create_planet(0, 'system', $new_system_id, $giant_one);
+    $to_void = $game->create_planet(0, 'system', $new_system_id, $hybrid_one);
+    $to_void = $game->create_planet(0, 'system', $new_system_id, $hybrid_two);
+
+    $planet_id = $game->create_planet($game->player['user_id'],'system', $new_system_id, $type, $race);
+    
+    return array($new_system_id,$planet_id);
 }
 
 function create_planet($user_id, $id_type, $id_value, $selected_type = 'r', $race = 0) {
@@ -177,109 +325,110 @@ function create_planet($user_id, $id_type, $id_value, $selected_type = 'r', $rac
     $planet_type_probabilities = array(
         // Orbil level 0
         0 => array(
-            'a' => 30,
-            'b' => 35,
-            'c' => 10,
-            'd' => 10,
-            's' => 5,
-            't' => 4,
-            'x' => 4,
-            'y' => 2
+            'a' => 300,
+            'b' => 350,
+            'c' => 100,
+            'd' => 100,
+            's' => 50,
+            't' => 40,
+            'x' => 40,
+            'y' => 20
         ),
         // Orbit level 1
         1 => array(
-            'a' => 30,
-            'b' => 35,
-            'c' => 10,
-            'd' => 10,
-            's' => 5,
-            't' => 4,
-            'x' => 4,
-            'y' => 2
+            'a' => 300,
+            'b' => 350,
+            'c' => 100,
+            'd' => 100,
+            's' => 50,
+            't' => 40,
+            'x' => 40,
+            'y' => 20
         ),
         // Orbit level 2
         2 => array(
-            'a' => 2,
-            'c' => 8,
-            'd' => 8,
-            'e' => 15,
-            'f' => 13,
-            'g' => 8,
-            'h' => 13,
-            'k' => 10,
-            'l' => 4,
-            'm' => 2,
-            'n' => 14,
-            'o' => 2,
-            'p' => 1
+            'a' => 20,
+            'c' => 80,
+            'd' => 80,
+            'e' => 150,
+            'f' => 130,
+            'g' => 80,
+            'h' => 130,
+            'k' => 110,
+            'l' => 40,
+            'm' => 20,
+            'n' => 140,
+            'o' => 20
         ),
         // Orbit level 3
         3 => array(
-            'a' => 1,
-            'c' => 8,
-            'd' => 8,
-            'e' => 12,
-            'f' => 13,
-            'g' => 13,
-            'h' => 8,
-            'k' => 8,
-            'l' => 8,
-            'm' => 4,
-            'n' => 10,
-            'o' => 4,
-            'p' => 3
+            'a' => 10,
+            'c' => 50,
+            'd' => 50,
+            'e' => 120,
+            'f' => 150,
+            'g' => 150,
+            'h' => 90,
+            'k' => 80,
+            'l' => 90,
+            'm' => 45,
+            'n' => 100,
+            'o' => 45,
+            'p' => 30
         ),
         // Orbit level 4
         4 => array(
-            'a' => 1,
-            'c' => 8,
-            'd' => 8,
-            'e' => 12,
-            'f' => 18,
-            'g' => 19,
-            'h' => 10,
-            'k' => 6,
-            'l' => 4,
-            'm' => 3,
-            'n' => 4,
-            'o' => 3,
-            'p' => 4
+            'a' => 10,
+            'c' => 40,
+            'd' => 40,
+            'e' => 130,
+            'f' => 200,
+            'g' => 210,
+            'h' => 100,
+            'k' => 80,
+            'l' => 50,
+            'm' => 30,
+            'n' => 40,
+            'o' => 30,
+            'p' => 40
         ),
         // Orbit level 5
         5 => array(
-            'a' => 3,
-            'c' => 8,
-            'd' => 8,
-            'e' => 12,
-            'f' => 18,
-            'g' => 18,
-            'h' => 8,
-            'k' => 6,
-            'l' => 8,
-            'm' => 2,
-            'n' => 1,
-            'o' => 2,
-            'p' => 6
+            'a' => 30,
+            'c' => 80,
+            'd' => 80,
+            'e' => 80,
+            'f' => 140,
+            'g' => 140,
+            'h' => 80,
+            'i' => 50,
+            'j' => 50,            
+            'k' => 60,
+            'l' => 80,
+            'n' => 10,
+            'p' => 45,
+            's' => 50,
+            't' => 15            
         ),
         // Orbit level 6
         6 => array(
-            'a' => 6,
-            'c' => 10,
-            'd' => 10,
-            'i' => 22,
-            'j' => 23,
-            's' => 14,
-            't' => 14
+            'a' => 60,
+            'c' => 100,
+            'd' => 100,
+            'i' => 220,
+            'j' => 230,
+            's' => 140,
+            't' => 140
         ),
         // Orbit level 7
         7 => array(
-            'a' => 6,
-            'c' => 22,
-            'd' => 23,
-            'i' => 14,
-            'j' => 14,
-            's' => 10,
-            't' => 10
+            'a' => 60,
+            'c' => 220,
+            'd' => 230,
+            'i' => 140,
+            'j' => 140,
+            's' => 100,
+            't' => 100
         )
     );
 
@@ -457,44 +606,49 @@ function create_planet($user_id, $id_type, $id_value, $selected_type = 'r', $rac
 
     // Create!
 
-    if(!$user_id) {
-        $type_array = array();
-
-        foreach($planet_type_probabilities[$planet_distance_id] as $type => $probability) {
-            for($i = 0; $i < $probability; ++$i) {
-                $type_array[] = $type;
-            }
+    if($user_id == 0) {
+        if($selected_type != 'r') {
+            $planet_type = $selected_type; 
         }
+        else 
+        {
+            $type_array = array();
 
-        $planet_type = $type_array[array_rand($type_array)];
-
-        $type_probabilities = array(
-            'bbb' => 1,
-            'bbn' => 3,
-            'bnb' => 3,
-            'nbb' => 3,
-            'bnn' => 5,
-            'nbn' => 5,
-            'nnb' => 5,
-            'nnn' => 50,
-            'gnn' => 5,
-            'ngn' => 5,
-            'nng' => 5,
-            'ggn' => 3,
-            'ngg' => 3,
-            'gng' => 3,
-            'ggg' => 1, 
-        );
-
-        $template_array = array();
-
-        foreach($type_probabilities as $type => $probability) {
-            for($i = 0; $i < $probability; ++$i) {
-                $template_array[] = $type;
+            foreach($planet_type_probabilities[$planet_distance_id] as $type => $probability) {
+                for($i = 0; $i < $probability; ++$i) {
+                    $type_array[] = $type;
+                }
             }
-        }
+            $planet_type = $type_array[array_rand($type_array)];
 
-        $planet_template = $template_array[array_rand($template_array)];
+            $type_probabilities = array(
+                'bbb' => 3,
+                'bbn' => 7,
+                'bnb' => 7,
+                'nbb' => 10,
+                'bnn' => 18,
+                'nbn' => 18,
+                'nnb' => 24,
+                'nnn' => 800,
+                'gnn' => 28,
+                'ngn' => 25,
+                'nng' => 18,
+                'ggn' => 14,
+                'ngg' => 10,
+                'gng' => 12,
+                'ggg' => 6, 
+            );
+
+            $template_array = array();
+
+            foreach($type_probabilities as $type => $probability) {
+                for($i = 0; $i < $probability; ++$i) {
+                    $template_array[] = $type;
+                }
+            }
+
+            $planet_template = $template_array[array_rand($template_array)];            
+        }
 
         // Random variance of the constants basis of the planet
         $rateo_1 = round(($PLANETS_DATA[$planet_type][0] + $planet_templates[$planet_template][0]), 2);
@@ -521,7 +675,10 @@ function create_planet($user_id, $id_type, $id_value, $selected_type = 'r', $rac
         $rateo_4 = $PLANETS_DATA[$planet_type][3];
 
         // Ok, let's boost new players a bit
-        if(USER_START_BOOST) {
+        if(USER_START_BOOST && $game->player['user_first_boost'] == 0) {
+
+            $db->query('UPDATE user SET user_first_boost = 1 WHERE user_id = '.$game->player['user_id']);
+            
             global $MAX_BUILDING_LVL,$MAX_RESEARCH_LVL,$RACE_DATA,$MAX_POINTS;
             $sql = 'INSERT INTO planets
                         (planet_name,

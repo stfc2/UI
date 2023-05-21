@@ -26,10 +26,14 @@
 
 function drawMapGrid($image,$size)
 {
+    $rows = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R'];
+    $cols = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18'];
+    
     // Allocate grid colors
     $grid  = imagecolorallocatealpha($image, 64, 64, 64,0);
     $grid2 = imagecolorallocatealpha($image, 128, 128, 128,0);
     $grid3 = imagecolorallocatealpha($image, 96, 96, 96,0);
+    $grid4 = imagecolorallocatealpha($image, 204, 229, 255,40);
 
     if ($size>2)
     {
@@ -49,7 +53,54 @@ function drawMapGrid($image,$size)
             }
         }
     }
-
+    
+    /*
+    $n_row = $n_col = 0;
+    if ($size>2)
+    {   
+        for ($axe_x=3; $axe_x <= 158;$axe_x+=9)
+        {
+            $n_row = 0;
+            for ($axe_y=3; $axe_y <= 158;$axe_y+=9)
+            {
+                $string = $rows[$n_row].$cols[$n_col];
+                imagestring ($image, 5, $axe_x*$size, $axe_y*$size, $string, $grid4);
+                $n_row++;
+            }
+            $n_col++;
+        }
+    }
+    */
+    // Chart rulers
+    if ($size>2)
+    {
+        // X Axis
+        $n_col = 0;        
+        $axe_y = 75;
+        for ($axe_x=3; $axe_x <= 158;$axe_x+=9)
+        {
+            if($n_col == 9) {
+                $n_col++;
+                continue;
+            }
+            imagestring ($image, 4, $axe_x*$size, $axe_y*$size, $cols[$n_col], $grid4);            
+            $n_col++;
+        }
+        // Y Axis        
+        $n_row = 0;        
+        $axe_x = 85;
+        for ($axe_y=3; $axe_y <= 158;$axe_y+=9)
+        {
+            if($n_row != 8) {
+                imagestring ($image, 4, $axe_x*$size, $axe_y*$size, $rows[$n_row], $grid4);                            
+            }
+            else {
+                imagestring ($image, 4, ($axe_x*$size)-8, $axe_y*$size, $rows[$n_row].'10', $grid4);                
+            }
+            $n_row++;
+        }
+    }
+    
     // Quadrant grid
     imageline($image,0,81*$size,162*$size,81*$size,$grid2);
     imageline($image,81*$size,0,81*$size,162*$size,$grid2);

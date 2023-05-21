@@ -204,9 +204,9 @@ define ("GER_TEXT87", '<span style="color: #0000FF;">blau</span> - Planet eines 
 
 define ("GER_TEXT88", '<span style="color: #B4B4B4;">grau</span> - Planet unter Angriffsschutz<br>');
 
-define ("GER_TEXT89", '<span style="color: #FF0000;">rot</span> - Planet eines Kriegsgegners<br>');
+define ("GER_TEXT89", '<span style="color: #FF0000;">rot</span> - Other player fleet in orbit<br>');
 
-define ("GER_TEXT90", '<span style="color: #89CAEF;">hellblau</span> - Planet eines B&uuml;ndnispartners<br>');
+define ("GER_TEXT90", '<span style="color: #89CAEF;">hellblau</span> - Fleet in orbit<br>');
 
 define ("GER_TEXT91", 'Wenn das Bild nicht richtig aktualisiert wird,<br>stellt in den Optionen eures Browsers<br>"Bei jedem Zugriff auf die Seite nach neuer Version suchen" ein');
 
@@ -293,6 +293,10 @@ define ("GER_TEXT131", '<span style="color: #CC6600;">orange</span> - unabh&auml
 define ("GER_TEXT132", 'Systeme');
 
 define ("GER_TEXT133", 'distance: ');
+
+define ("GER_TEXT134", '<span style="color: #800080;">purple</span> - Borg planet<br>');
+
+define ("GER_TEXT136", 'Fleet Detail');
 
 
 //English
@@ -478,9 +482,9 @@ define ("ENG_TEXT87", '<span style="color: #0000FF;">blue</span> - Planet of an 
 
 define ("ENG_TEXT88", '<span style="color: #B4B4B4;">grey</span> - Planet with attack protection<br>');
 
-define ("ENG_TEXT89", '<span style="color: #FF0000;">red</span> - Planet of a war opponent<br>');
+define ("ENG_TEXT89", '<span style="color: #FF0000;">red</span> - Other player fleet in orbit<br>');
 
-define ("ENG_TEXT90", '<span style="color: #89CAEF;">light blue</span> - Planet of an ally<br>');
+define ("ENG_TEXT90", '<span style="color: #89CAEF;">light blue</span> - Fleet in orbit<br>');
 
 define ("ENG_TEXT91", 'If the picture is not updated correctly,<br>places in the options of your browser<br>"Look for new version every visit to the site"');
 
@@ -567,6 +571,10 @@ define ("ENG_TEXT131", '<span style="color: #CC6600;">arancio</span> - Pianeta I
 define ("ENG_TEXT132", 'System');
 
 define ("ENG_TEXT133", 'distance: ');
+
+define ("ENG_TEXT134", '<span style="color: #800080;">purple</span> - Borg planet<br>');
+
+define ("ENG_TEXT136", 'Fleet Detail');
 
 //Italiano
 define ("ITA_TEXT0", 'Comando Tattico:');
@@ -753,9 +761,9 @@ define ("ITA_TEXT87", '<span style="color: #0000FF;">blu</span> - Pianeta di un 
 
 define ("ITA_TEXT88", '<span style="color: #B4B4B4;">grigio</span> - Pianeta con la protezione dagli attacchi<br>');
 
-define ("ITA_TEXT89", '<span style="color: #FF0000;">rosso</span> - Pianeta di un nemico di guerra<br>');
+define ("ITA_TEXT89", '<span style="color: #FF0000;">rosso</span> - Flotta di un altro giocatore in orbita<br>');
 
-define ("ITA_TEXT90", '<span style="color: #89CAEF;">azzurro</span> - Pianeta di un alleato<br>');
+define ("ITA_TEXT90", '<span style="color: #89CAEF;">azzurro</span> - Flotta in orbita<br>');
 
 define ("ITA_TEXT91", 'Se l&#146;immagine non si aggiorna correttamente, configurare il browser in modo che aggiorni le immagini ad ogni nuova apertura di pagina.');
 
@@ -811,7 +819,7 @@ define ("ITA_TEXT116", 'In data ');
 
 define ("ITA_TEXT117", ', navi appartenenti alle forze di <b>');
 
-define ("ITA_TEXT118", '</b> raggiungono il pianeta, prime in assoluto.');
+define ("ITA_TEXT118", '</b> raggiungono il pianeta per la prima volta.');
 
 define ("ITA_TEXT119", '</b> raggiungono il pianeta, contendendone il diritto di colonizzazione.');
 
@@ -842,5 +850,17 @@ define ("ITA_TEXT131", '<span style="color: #CC6600;">arancio</span> - Pianeta I
 define ("ITA_TEXT132", 'Sistema');
 
 define("ITA_TEXT133", 'distanza: ');
+
+define ("ITA_TEXT134", '<span style="color: #800080;">viola</span> - Pianeta Borg<br>');
+
+define ("ITA_TEXT135", 'Analizza');
+
+define ("ITA_TEXT136", 'Dettaglio Flotta');
+
+define ("ITA_TEXT137", ' le forze di <b>');
+
+define ("ITA_TEXT138", '</b> abbandonano completamente il pianeta! Il pianeta resta deserto!!!');
+
+define ("ITA_TEXT139", '</b> abbandonano completamente il pianeta! Il pianeta cade sotto il controllo dei Pirati di Orione!!!');
 
 ?>

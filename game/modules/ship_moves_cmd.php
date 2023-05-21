@@ -38,7 +38,7 @@ if(!empty($_GET['call_back'])) {
         message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
-    if($move['user_id'] != $game->player['user_id']) {
+    if($move['owner_id'] != $game->player['user_id']) {
         message(NOTICE, constant($game->sprache("TEXT0")));
     }
     
@@ -50,6 +50,16 @@ if(!empty($_GET['call_back'])) {
         message(NOTICE, constant($game->sprache("TEXT1")));
     }
 
+    if($move['move_rerouted'] == 1) {
+        message(NOTICE, constant($game->sprache("TEXT1")));
+    }    
+    
+    $ticks_left = $move['move_finish'] - $ACTUAL_TICK;
+    
+    if($ticks_left < 2) {
+        message(NOTICE, constant($game->sprache("TEXT1")));
+    }    
+    
     if( ($move['move_begin'] == $ACTUAL_TICK) || ($move['start'] == $move['dest']) ) {
         $sql = 'UPDATE scheduler_shipmovement
                 SET move_status = 4
@@ -103,7 +113,7 @@ elseif(!empty($_GET['restore_orders'])) {
         message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
-    if($move['user_id'] != $game->player['user_id']) {
+    if($move['owner_id'] != $game->player['user_id']) {
         message(NOTICE, constant($game->sprache("TEXT0")));
     }
 
@@ -142,6 +152,59 @@ elseif(!empty($_GET['restore_orders'])) {
     }
 
     redirect('a=tactical_moves');
+}
+elseif(!empty($_GET['reroute'])) {
+    $move_id = filter_input(INPUT_GET, 'reroute', FILTER_SANITIZE_NUMBER_INT);
+    
+    $sql = 'SELECT *
+            FROM scheduler_shipmovement
+            WHERE move_id = '.$move_id;
+
+    if(($move = $db->queryrow($sql)) === false) {
+        message(DATABASE_ERROR, 'Could not query ship movement data');
+    }
+
+    if(empty($move['move_id'])) {
+        message(NOTICE, constant($game->sprache("TEXT0")));
+    }
+
+    if($move['user_id'] != $game->player['user_id']) {
+        message(NOTICE, constant($game->sprache("TEXT0")));
+    }
+
+    if($move['move_status'] != 0) {
+        message(NOTICE, constant($game->sprache("TEXT0")));
+    }
+
+    if($move['move_rerouted'] == 1) {
+        message(NOTICE, constant($game->sprache("TEXT5")));
+    }
+    
+    if(!isset($move['dest2']) || $move['dest2'] == 0) {
+        message(NOTICE, constant($game->sprache("TEXT8")));
+    }
+    
+    if(in_array($move['action_code'], array(12, 13, 32, 33))) {
+        message(NOTICE, constant($game->sprache("TEXT6")));
+    }
+    
+    $ticks_left = $move['move_finish'] - $ACTUAL_TICK;
+    
+    if($ticks_left < 1 || $ticks_left > 6) {
+        message(NOTICE, constant($game->sprache("TEXT7")));
+    }
+    
+    $sql = 'UPDATE scheduler_shipmovement 
+            SET move_rerouted = 1,
+                dest = '.$move['dest2'].', 
+                dest2 = '.$move['dest'].' 
+            WHERE move_id = '.$move_id;
+    
+    if(!$db->query($sql)) {
+        message(DATABASE_ERROR, 'Could not update ship movement data');
+    }
+
+    redirect('a=tactical_moves');    
 }
 
 ?>

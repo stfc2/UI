@@ -13,21 +13,44 @@
       var t = time;
 
       if ( t > 0 ) {
+          var d = Math.floor( t / 86400);
+          var h2 = Math.floor( (t - d * 86400) / 3600);
+
           var h = Math.floor( t / 3600 );
           var m = Math.floor( ( t - h * 3600 ) / 60 );
           var s = t - h * 3600 - m * 60;
 
-          if ( type == 1 ) {
-              if ( h == 0 ) h = "";
-              else h = h + " Ore ";
+          if ( type == 1 ) 
+          {
+              if ( d == 0 )
+              {
+                if ( h == 0 ) h = "";
+                else h = h + " Ore ";
 
-              if ( m == 0 && h == 0 ) m = "";
-              else m = m + " Minuti ";
+                if ( m == 0 && h == 0 ) m = "";
+                else m = m + " Minuti ";
 
-              if ( s == 0 && m == 0 && h == 0 ) s = "";
-              else s = s + " Secondi";
+                if ( s == 0 && m == 0 && h == 0 ) s = "";
+                else s = s + " Secondi";
 
-              document.getElementById( timer ).firstChild.nodeValue = h + m + s;
+                document.getElementById( timer ).firstChild.nodeValue = h + m + s;
+
+              }
+              else
+              {
+                d = d + " Giorni ";
+
+                if ( h2 == 0 ) h2 = "";
+                else h2 = h2 + " Ore ";
+
+                if ( m == 0 && h2 == 0 ) m = "";
+                else m = m + " Min. ";
+
+                if ( s == 0 && m == 0 && h2 == 0 ) s = "";
+                else s = s + " Sec.";
+
+              document.getElementById( timer ).firstChild.nodeValue = d + h2 + m + s;
+              }
           }
           else if ( type == 2 ) {
               if ( m < 10 ) m = "0" + m;

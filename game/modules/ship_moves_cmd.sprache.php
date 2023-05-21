@@ -53,4 +53,11 @@ define ("ITA_TEXT3", 'Le istruzioni della flotta non possono essere ripristinate
 
 define ("ITA_TEXT4", 'Le istruzioni della flotta non possono essere ripristinate,<br>perch&eacute; &egrave; stata richiamata<br>prima che questa caratteristica fosse implementata.');
 
+define ("ITA_TEXT5", 'La flotta ha gi&aacute; effettuato questa manovra!');
+
+define ("ITA_TEXT6", 'Gli ordini attuali non ammettono questa manovra!');
+
+define ("ITA_TEXT7", 'La flotta non &egrave; nella posizione richiesta per poter effettuare questa manovra!');
+
+define ("ITA_TEXT8", 'La flotta non ha informazioni corrette per poter effettuare questa manovra!!!');
 ?>

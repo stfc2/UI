@@ -91,7 +91,7 @@ if(isset($_POST['send_homebase'])) {
         }
         else {
             $sql = 'SELECT p.planet_id, p.planet_name, p.system_id, p.sector_id, p.planet_distance_id,
-                           s.system_x, s.system_y, s.system_global_x, s.system_global_y,
+                           s.system_x, s.system_y, s.system_global_x, s.system_global_y, s.system_startype,
                            u.user_id, u.user_name, u.user_attack_protection, u.user_vacation_start, u.user_vacation_end
                     FROM (planets p, starsystems s)
                     LEFT JOIN (user u) ON u.user_id = p.planet_owner
@@ -131,7 +131,7 @@ if(isset($_POST['send_homebase'])) {
         }
         else {
             $sql = 'SELECT p.planet_id, p.planet_name, p.system_id, p.sector_id, p.planet_distance_id,
-                           s.system_x, s.system_y, s.system_global_x, s.system_global_y,
+                           s.system_x, s.system_y, s.system_global_x, s.system_global_y, s.system_startype,
                            u.user_id, u.user_name, u.user_attack_protection, u.user_vacation_start, u.user_vacation_end
                     FROM (planets p, starsystems s)
                     LEFT JOIN (user u) ON u.user_id = p.planet_owner
@@ -182,7 +182,7 @@ if(isset($_POST['send_homebase'])) {
         // Which classes to fly with?
         // (for warp speed command + options)
 
-        $sql = 'SELECT st.ship_torso, st.value_10 AS warp_speed
+        $sql = 'SELECT st.race, st.ship_torso, st.value_10 AS warp_speed
                 FROM (ships s, ship_templates st)
                 WHERE s.fleet_id = '.$fleet['fleet_id'].' AND
                       st.id = s.template_id';
@@ -197,6 +197,8 @@ if(isset($_POST['send_homebase'])) {
         while($_temp = $db->fetchrow($q_stpls)) {
             if($_temp['warp_speed'] < $max_warp_speed) $max_warp_speed = $_temp['warp_speed'];
 
+            $race_composition[$_temp['race']]++;            
+                        
             if($_temp['ship_torso'] == SHIP_TYPE_SCOUT) {
                 $in_scout = true;
                 continue;
@@ -246,7 +248,7 @@ if(isset($_POST['send_homebase'])) {
         $distance = $velocity = 0;
 
         if($game->player['user_auth_level'] == STGC_DEVELOPER) $min_time = 1;
-        elseif($inter_system) $min_time = 6;
+        elseif($inter_system) $min_time = $INTER_SYSTEM_TIME;
         else {
             include_once('include/libs/moves.php');
 
@@ -282,16 +284,30 @@ if(isset($_POST['send_homebase'])) {
             message(GENERAL, constant($game->sprache("TEXT16")), 'Unexspected: $n_ships = 0');
         }
 
+        $fleet_race_trail = -1;
+        $fleet_race_count = 0;
+
+        foreach ($race_composition AS $key => $race_comp_item) {
+            if($fleet_race_count < $race_comp_item) {
+                $fleet_race_count = $race_comp_item;
+                $fleet_race_trail = $key;
+            }
+        }
+
+        if(($fleet_race_count*100/$n_ships) < 51.0) {
+            $fleet_race_trail = -1;
+        }        
+        
         $action_code = ($dest_planet['user_id'] != $game->player['user_id']) ? 21: 11;;
         $action_data = "";
 
         // It would be possible to save some movements for fleets that shares the same
         // start and dest planet but... KISS logic won this round.
-       $sql = 'INSERT INTO scheduler_shipmovement (user_id, move_status, move_exec_started,
+       $sql = 'INSERT INTO scheduler_shipmovement (user_id, owner_id, move_status, move_exec_started, race_trail,
                                                    start, dest, total_distance, remaining_distance,
                                                    tick_speed, move_begin, move_finish,
                                                    n_ships, action_code, action_data)
-               VALUES ('.$game->player['user_id'].', 0, 0, '.$start.', '.$dest.', '.$distance.',
+               VALUES ('.$fleet['user_id'].', '.$game->player['user_id'].', 0, 0, '.$fleet_race_trail.', '.$start.', '.$dest.', '.$distance.',
                        '.$distance.', '.($velocity * TICK_DURATION).', '.$ACTUAL_TICK.',
                        '.($ACTUAL_TICK + $move_time).', '.$n_ships.', '.$action_code.', "'.$action_data.'")';
 
@@ -309,6 +325,28 @@ if(isset($_POST['send_homebase'])) {
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not update fleets position data');
         }
+
+        if(!$inter_system) {
+            $star_trail = [
+                'b' => 320,
+                'a' => 480,
+                'g' => 960,
+                'm' => 1200,
+                'l' => 1440
+            ];
+
+            $sql = 'INSERT INTO starsystems_details (system_id, user_id, timestamp, log_code, log_code_tick, info_1, info_2, info_3)
+            VALUES ('.$start_planet['system_id'].', '.$game->player['user_id'].', '.time().', 2, '.($ACTUAL_TICK+1+$star_trail[$start_planet['system_startype']]).', '.$fleet_race_trail.', '.WARP_OUT.', '.$dest.')
+            ON DUPLICATE KEY UPDATE log_code_tick = '.($ACTUAL_TICK+1+$star_trail[$start_planet['system_startype']]).', 
+                            timestamp = '.time().', 
+                            info_1 = '.$fleet_race_trail.', 
+                            info_2 = '.WARP_OUT.', 
+                            info_3 = '.$dest;
+
+            if(!$db->query($sql)) {
+                message(DATABASE_ERROR, 'Could not update fleets position data');
+            }
+        }        
     }
     redirect('a=ship_fleets_display');
 }

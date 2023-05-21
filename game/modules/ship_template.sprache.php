@@ -30,6 +30,8 @@ define ("GER_TEXT2", 'Templates vergleichen');
 
 define ("GER_TEXT3", 'Schiffstemplate Editor:');
 
+define ("GER_TEXT3B", 'Upgrade Ship Template:');
+
 define ("GER_TEXT4", 'Kosten:');
 
 define ("GER_TEXT5", 'Bauzeit:');
@@ -200,6 +202,16 @@ define ("GER_TEXT94", 'Primary RoF:');
 
 define ("GER_TEXT95", 'Secondary RoF:');
 
+define ("GER_TEXT96", 'NCC code (4 ch.)');
+
+define ("GER_TEXT97", 'NCC');
+
+define ("GER_TEXT98", 'Counter');
+
+define ("GER_TEXT99", 'n/a');
+
+define ("GER_TEXT100", 'Index ToMiss:');
+
 
 //English
 define ("ENG_TEXT0", 'Overview');
@@ -209,6 +221,8 @@ define ("ENG_TEXT1", 'Create template');
 define ("ENG_TEXT2", 'Compare templates');
 
 define ("ENG_TEXT3", 'Ship template editor:');
+
+define ("ENG_TEXT3B", 'Upgrade Ship Template:');
 
 define ("ENG_TEXT4", 'Cost:');
 
@@ -380,6 +394,16 @@ define ("ENG_TEXT94", 'Primary RoF:');
 
 define ("ENG_TEXT95", 'Secondary RoF:');
 
+define ("ENG_TEXT96", 'NCC code (4 ch.)');
+
+define ("ENG_TEXT97", 'NCC');
+
+define ("ENG_TEXT98", 'Counter');
+
+define ("ENG_TEXT99", 'n/a');
+
+define ("ENG_TEXT100", 'Index ToMiss:');
+
 
 //Italiano
 define ("ITA_TEXT0", 'Dettagli');
@@ -389,6 +413,8 @@ define ("ITA_TEXT1", 'Crea Progetto');
 define ("ITA_TEXT2", 'Confronta Progetti');
 
 define ("ITA_TEXT3", 'Modifica Progetto Nave:');
+
+define ("ITA_TEXT3B", 'Migliora Progetto Nave');
 
 define ("ITA_TEXT4", 'Costo:');
 
@@ -573,5 +599,15 @@ define ("ITA_TEXT93", 'Valutaz. ToHit:');
 define ("ITA_TEXT94", 'RoF Primario:');
 
 define ("ITA_TEXT95", 'RoF Secondario:');
+
+define ("ITA_TEXT96", 'Radice CCN (4 car.)');
+
+define ("ITA_TEXT97", 'CCN');
+
+define ("ITA_TEXT98", 'Progressivo');
+
+define ("ITA_TEXT99", 'n/a');
+
+define ("ITA_TEXT100", 'Valutaz. ToMiss:');
 
 ?>

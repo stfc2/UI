@@ -64,7 +64,7 @@ $game->out('<br><table class="style_outer" width="300" align="center" border="0"
 <b>'.(constant($game->sprache("TEXT11"))).'</b>
 </td>
 </tr>');
-$search_sonder=$db->query('SELECT u.user_name,u.user_race,a.alliance_tag,a.alliance_name,s.id FROM (user u) LEFT JOIN (alliance a) ON a.alliance_id=u.user_alliance LEFT JOIN (spenden s) ON s.name=u.user_name  WHERE u.user_name LIKE "%'.$_POST['user2_name'].'%" ORDER by u.user_name ASC');
+$search_sonder=$db->query('SELECT u.user_name,u.user_race,a.alliance_tag,a.alliance_name,s.id FROM (user u) LEFT JOIN (alliance a) ON a.alliance_id=u.user_alliance LEFT JOIN (spenden s) ON s.name=u.user_name  WHERE u.user_name LIKE "%'.$_POST['user2_name'].'%" AND user_auth_level = 1 AND user_active = 1 ORDER by u.user_name ASC');
 while (($user_cc = $db->fetchrow($search_sonder)) != false)
 {
 $game->out('
@@ -76,6 +76,61 @@ $game->out('</td>
 '.$user_cc['user_points'].'
 </td>
 <td><form method="post" action="'.parse_link('a=user_diplomacy').'"><input type="hidden" name="user2_name" value="'.$user_cc['user_name'].'"><input class="button" type="submit" name="new_submit" value="'.(constant($game->sprache("TEXT12"))).'"></form></td>
+</tr>
+');
+}
+$game->out('</table></td></tr></table><br>');
+}
+if((!empty($_POST['felon_searcher'])))
+{
+    $game->out('
+<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
+<table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+  <form method="post" action="'.parse_link('a=user_diplomacy').'">
+  <tr>
+    <td align="left">
+      <b>'.(constant($game->sprache("TEXT2B"))).'</b><br><br>
+      '.(constant($game->sprache("TEXT3"))).'&nbsp;&nbsp;<input class="field" type="text" name="user2_name" value="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="button" type="submit" name="searcher" value="'.(constant($game->sprache("TEXT4"))).'">
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+	  <input class="button" type="button" value="'.(constant($game->sprache("TEXT5"))).'" onClick="return window.history.back();">&nbsp;&nbsp;&nbsp;<input class="button" type="submit" name="newfelon_submit" value="'.(constant($game->sprache("TEXT6"))).'">
+	</td>
+  </tr>
+  </form>
+</table>
+</td></tr></table>');
+$game->out('<br><table class="style_outer" width="300" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
+<table boder="0" cellpadding="2" cellspacing="2" class="style_inner" width="300"><tr>
+<td width=150><b>'.(constant($game->sprache("TEXT7"))).'</b></td>
+</tr>
+<tr>
+<td width=150>
+<b>'.(constant($game->sprache("TEXT8"))).'</b>
+</td>
+<td width=150>
+<b>'.(constant($game->sprache("TEXT9"))).'</b>
+</td>
+<td width=100>
+<b>'.(constant($game->sprache("TEXT10"))).'</b>
+</td>
+<td width=75>
+<b>'.(constant($game->sprache("TEXT11"))).'</b>
+</td>
+</tr>');
+$search_sonder=$db->query('SELECT u.user_name,u.user_race,a.alliance_tag,a.alliance_name,s.id FROM (user u) LEFT JOIN (alliance a) ON a.alliance_id=u.user_alliance LEFT JOIN (spenden s) ON s.name=u.user_name  WHERE u.user_name LIKE "%'.$_POST['user2_name'].'%" AND user_auth_level = 1 AND user_active = 1 ORDER by u.user_name ASC');
+while (($user_cc = $db->fetchrow($search_sonder)) != false)
+{
+$game->out('
+<tr>
+<td width=150>'.$user_cc['user_name'].'</td>
+<td>'.$RACE_DATA[$user_cc['user_race']][0].'</td><td><a href="'.parse_link('a=stats&a2=viewalliance&id='.$user_cc['alliance_name'].'').'">'.$user_cc['alliance_name'].'</a>');
+$game->out('</td>
+<td>
+'.$user_cc['user_points'].'
+</td>
+<td><form method="post" action="'.parse_link('a=user_diplomacy').'"><input type="hidden" name="user2_name" value="'.$user_cc['user_name'].'"><input class="button" type="submit" name="newfelon_submit" value="'.(constant($game->sprache("TEXT12B"))).'"></form></td>
 </tr>
 ');
 }
@@ -101,7 +156,7 @@ if( (!empty($_POST['new_submit'])) || (!empty($_GET['suggest'])) ) {
 
         $sql = 'SELECT user_id
                 FROM user
-                WHERE user_name = "'.$user2_name.'"';
+                WHERE user_active = 1 AND user_name = "'.$user2_name.'"';
     }
 
     if(($user2 = $db->queryrow($sql)) === false) {
@@ -130,10 +185,83 @@ if( (!empty($_POST['new_submit'])) || (!empty($_GET['suggest'])) ) {
         message(NOTICE, constant($game->sprache("TEXT16")));
     }
 
+    $sql = 'SELECT uf_id
+            FROM user_felony
+            WHERE (user1_id = '.$game->player['user_id'].' AND user2_id = '.$user2['user_id'].') OR 
+                  (user1_id = '.$user2['user_id'].' AND user2_id = '.$game->player['user_id'].')';
+
+    if(($ud_exists = $db->queryrow($sql)) === false) {
+        message(DATABASE_ERROR, 'Could not query user felony data');
+    }
+
+    if(!empty($ud_exists['uf_id'])) {
+        message(NOTICE, constant($game->sprache("TEXT60")));
+    }
+    
     $sql = 'INSERT INTO user_diplomacy (user1_id, user2_id, accepted)
             VALUES ('.$game->player['user_id'].', '.$user2['user_id'].', 0)';
 
     SystemMessage($user2['user_id'], constant($game->sprache("TEXT17")), constant($game->sprache("TEXT18")));
+
+    if(!$db->query($sql)) {
+        message(DATABASE_ERROR, 'Could not insert new diplomacy private data');
+    }
+
+    redirect('a=user_diplomacy');
+}
+elseif(!empty($_POST['newfelon_submit'])){
+    $user2_name = addslashes(filter_input(INPUT_POST,'user2_name',FILTER_SANITIZE_STRING));
+
+    if(empty($user2_name)) {
+        message(NOTICE, constant($game->sprache("TEXT13")));
+    }
+
+    $sql = 'SELECT user_id
+            FROM user
+            WHERE user_active = 1 AND user_name = "'.$user2_name.'"';
+
+    if(($user2 = $db->queryrow($sql)) === false) {
+        message(DATABASE_ERROR, 'Could not query user2 data');
+    }
+
+    if(empty($user2['user_id'])) {
+        message(NOTICE, constant($game->sprache("TEXT14")));
+
+    }
+
+    if($user2['user_id'] == $game->player['user_id']) {
+        message(NOTICE, constant($game->sprache("TEXT15")));
+    }
+    
+    $sql = 'SELECT uf_id
+            FROM user_felony
+            WHERE user1_id = '.$game->player['user_id'].' AND user2_id = '.$user2['user_id'];
+
+    if(($ud_exists = $db->queryrow($sql)) === false) {
+        message(DATABASE_ERROR, 'Could not query user diplomacy data');
+    }
+
+    if(!empty($ud_exists['uf_id'])) {
+        message(NOTICE, constant($game->sprache("TEXT16")));
+    }
+    
+    $sql = 'SELECT ud_id
+            FROM user_diplomacy
+            WHERE (user1_id = '.$game->player['user_id'].' AND user2_id = '.$user2['user_id'].') OR
+                  (user1_id = '.$user2['user_id'].' AND user2_id = '.$game->player['user_id'].')';
+
+    if(($ud_exists = $db->queryrow($sql)) === false) {
+        message(DATABASE_ERROR, 'Could not query user diplomacy data');
+    }
+
+    if(!empty($ud_exists['ud_id'])) {
+        message(NOTICE, constant($game->sprache("TEXT16")));
+    }    
+
+    $sql = 'INSERT INTO user_felony (user1_id, user2_id, date)
+            VALUES ('.$game->player['user_id'].', '.$user2['user_id'].', '.$game->TIME.')';
+
+    SystemMessage($user2['user_id'], constant($game->sprache("TEXT57")).$game->player['user_name'], constant($game->sprache("TEXT58")));
 
     if(!$db->query($sql)) {
         message(DATABASE_ERROR, 'Could not insert new diplomacy private data');
@@ -162,6 +290,27 @@ elseif(isset($_GET['new'])) {
 </table>
 </td></tr></table>
     ');
+}
+elseif(isset($_GET['newfelon'])) {
+    $game->out('
+<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>	
+<table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+  <form method="post" action="'.parse_link('a=user_diplomacy').'">
+  <tr>
+    <td align="left">
+      <b>'.constant($game->sprache("TEXT53")).'</b><br><br>
+      '.constant($game->sprache("TEXT3")).'&nbsp;&nbsp;<input class="field" type="text" name="user2_name" value="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="button" type="submit" name="felon_searcher" value="'.constant($game->sprache("TEXT4")).'">
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+	  <input class="button" type="button" value="'.constant($game->sprache("TEXT5")).'" onClick="return window.history.back();">&nbsp;&nbsp;&nbsp;<input class="button" type="submit" name="newfelon_submit" value="'.constant($game->sprache("TEXT6")).'">
+    </td>
+  </tr>
+</form>
+</table>
+</td></tr></table>
+    ');    
 }
 elseif(!empty($_GET['accept'])) {
     $ud_id = (int)$_GET['accept'];
@@ -260,6 +409,53 @@ elseif(!empty($_GET['cancel'])) {
     }
 
     redirect('a=user_diplomacy');
+}
+elseif(!empty($_GET['felon_cancel'])) {
+    $uf_id = filter_input(INPUT_GET, 'felon_cancel', FILTER_SANITIZE_NUMBER_INT);
+
+    if(empty($uf_id)) {
+        message(NOTICE, constant($game->sprache("TEXT54")));
+    }
+
+    $sql = 'SELECT user1_id, user2_id
+            FROM user_felony
+            WHERE uf_id = '.$uf_id;
+
+    if(($felony = $db->queryrow($sql)) === false) {
+        message(DATABASE_ERROR, 'Could not query diplomacy private data');
+    }
+
+    if($felony['user1_id'] != $game->player['user_id']) {
+        message(NOTICE, constant($game->sprache("TEXT55")));
+    }
+
+    $sql = 'SELECT resource_1, resource_2, resource_3 FROM planets WHERE planet_id = '.$game->planet['planet_id'];
+    
+    if(($ress = $db->queryrow($sql)) === FALSE) {
+        message(NOTICE, constant($game->sprache("TEXT31")));
+    }
+
+    if($ress['resource_1'] < 500001 || $ress['resource_2'] < 500001 || $ress['resource_3'] < 500001) {
+        message(NOTICE, constant($game->sprache("TEXT56")));
+    }
+    
+    $sql = 'UPDATE planets SET resource_1 = resource_1 - 500000, resource_2 = resource_2 - 500000, resource_3 = resource_3 - 500000
+            WHERE planet_id = '.$game->planet['planet_id'];
+    
+    if(!$db->query($sql)) {
+        message(DATABASE_ERROR, 'Non ho potuto aggiornare i dati del pianeta attivo!');
+    }
+    
+    $sql = 'DELETE FROM user_felony
+            WHERE uf_id = '.$uf_id;
+
+    if(!$db->query($sql)) {
+        message(DATABASE_ERROR, 'Non ho potuto aggiornare i dati della tabella criminali');
+    }
+
+    SystemMessage($felony['user2_id'], constant($game->sprache("TEXT57")).$game->player['user_name'], constant($game->sprache("TEXT59")));
+    
+    redirect('a=user_diplomacy');    
 }
 elseif(!empty($_GET['break'])) {
     $ud_id = (int)$_GET['break'];
@@ -392,6 +588,38 @@ if($_REQUEST['sort']==2 && $_REQUEST['member_list']!=1)
 {$art_a=1;}else{$art_a=0;}
 if($_REQUEST['sort']==1 && $_REQUEST['member_list']!=1) {$art_b=1;}else{$art_b=0;}
 if(empty($_REQUEST['sort']) && $_REQUEST['member_list']!=1) {$art_c=1;}else{$art_c=0;}
+//--------------------------*
+// Nuova lettura db criminali
+//--------------------------*
+$felon_sort = filter_input(INPUT_GET,'sort',FILTER_SANITIZE_NUMBER_INT);
+if(!isset($felon_sort) || empty($felon_sort)) {$felon_sort = 0;}
+$felon_list = filter_input(INPUT_GET,'felony_list',FILTER_SANITIZE_NUMER_INT);
+if(!isset($felon_list) || empty($felon_list)) {$felon_list = 0;}
+
+if($felon_sort == 1) {
+    
+    
+}
+elseif ($felon_sort == 2) {
+
+}
+else {
+    if($felon_list==1) {$order = 'DESC';} else {$order = 'ASC';}
+    $sql_felon = 'SELECT f.*,
+                          u1.user_name AS user1_name, u1.user_alliance AS user1_aid, a1.alliance_tag AS user1_atag, u1.user_active, 
+                          u2.user_name AS user2_name, u2.user_alliance AS user2_aid, a2.alliance_tag AS user2_atag, u2.user_active
+                   FROM (user_felony f)
+                   INNER JOIN (user u1) ON u1.user_id = f.user1_id
+                   LEFT JOIN (alliance a1) ON a1.alliance_id = u1.user_alliance
+                   INNER JOIN (user u2) ON u2.user_id = f.user2_id
+                   LEFT JOIN (alliance a2) ON a2.alliance_id = u2.user_alliance
+                   WHERE f.user1_id = '.$game->player['user_id'].' AND
+                         (u1.user_active = 1 AND u2.user_active = 1)
+                   ORDER BY f.date '.$order;
+
+}
+
+
     $game->out('
 <table class="style_outer" width="500" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
 <table class="style_inner" width="500" align="center" border="0" cellpadding="2" cellspacing="2">
@@ -450,49 +678,89 @@ if(empty($_REQUEST['sort']) && $_REQUEST['member_list']!=1) {$art_c=1;}else{$art
 </table></td></tr></table>
 <table width="500" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr><td width="500" align="right">[<a href="'.parse_link('a=user_diplomacy&new').'">'.constant($game->sprache("TEXT19")).'</a>]</td></tr>
+</table><br><br>
+');
+    // Nuova sezione Criminali
+    $game->out('
+ <table table class="style_outer" width="500" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
+ <table class="style_inner" width="500" align="center" border="0" cellpadding="2" cellspacing="2">
+   <tr>
+    <td width="180"><a href="'.parse_link('a=user_diplomacy&sort=1&felony_list='.$art_b.'').'"><b>'.constant($game->sprache("TEXT52")).'</b></a></td>
+    <td width="170">&nbsp;</td>
+    <td width="150"><a href="'.parse_link('a=user_diplomacy&felony_list='.$art_c.'').'"><b>'.constant($game->sprache("TEXT29")).'</b></a></td>
+   </tr>');
+    
+    $q_m_felon = $db->queryrowset($sql_felon);
+    
+    foreach($q_m_felon AS $felon_item){
+        $opid = 2;
+        $cmd_str = '&nbsp;&nbsp;[<a href="'.parse_link('a=user_diplomacy&felon_cancel='.$felon_item['uf_id']).'">'.constant($game->sprache("TEXT40")).'</a>]';
+        $date_str = gmdate('d.m.Y', $felon_item['date']);
+
+        $game->out('
+   <tr>
+     <td widht="180"><a href="'.parse_link('a=stats&a2=viewplayer&id='.$felon_item['user'.$opid.'_id']).'">'.$felon_item['user'.$opid.'_name'].'</a>'.( ($felon_item['user'.$opid.'_aid']) ? ' [<a href="'.parse_link('a=stats&a2=viewalliance&id='.$felon_item['user'.$opid.'_aid']).'">'.$felon_item['user'.$opid.'_atag'].'</a>]' : '' ).'</td>
+     <td width="170">'.$cmd_str.'</td>
+     <td width="150"><b>'.$date_str.'</b></td>
+   </tr>
+        ');
+    }
+    
+    $game->out('
+ </table></td></tr> </table>
+<table width="500" align="center" border="0" cellpadding="2" cellspacing="2">
+  <tr><td width="500" align="right">[<a href="'.parse_link('a=user_diplomacy&newfelon').'">'.constant($game->sprache("TEXT53")).'</a>]</td></tr>
+</table>
+<table width="500" align="center" border="0" cellpadding="2" cellspacing="2">
+    <tr>
+        <td width="500">
+        <p>
+        Dichiarando <i>criminale</i> un giocatore lo eslcudi dalle tue aste al Centro Commerciale
+        e impedisci la creazione di rotte commerciali tra i tuoi pianeti ed i suoi.<br>
+        <i>Nota Bene:</i> ritirare una dichiarazione comporta il pagamento di una penale pari 
+        a 500.000 unit&agrave; di <img src='.$game->GFX_PATH.'menu_metal_small.gif>, <img src='.$game->GFX_PATH.'menu_mineral_small.gif> ed <img src='.$game->GFX_PATH.'menu_latinum_small.gif>.
+        </td>
+    </tr>
 </table>
 ');
-// New Settlers Diplomacy Panel
-    $game->out('
-    <br><br><br>
-    <center><span class="caption">'.(constant($game->sprache("TEXT43"))).'</span><br><br>
-    <table class="style_outer" width="90%" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
-    <table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="2">
-    <tr>
-    <td width="140"><b>'.(constant($game->sprache("TEXT44"))).'</b></td>
-    <td width="80"><b>'.(constant($game->sprache("TEXT45"))).'</b></td>
-    <td width="60"><b>'.(constant($game->sprache("TEXT46"))).'</b></td>
-    <td width="60"><b>'.(constant($game->sprache("TEXT47"))).'</b></td>
-    <td width="90"><b>'.(constant($game->sprache("TEXT48"))).'</b></td>
-  </tr>');
-    $sql = 'SELECT sr.planet_id, p.planet_name, p.best_mood, p.best_mood_user,
-                   p.sector_id, ss.system_x, ss.system_y, p.planet_distance_id,
-                   p.planet_type, MAX(timestamp) AS last_time, SUM(mood_modifier) AS mood
-            FROM settlers_relations sr
-            INNER JOIN planets p on sr.planet_id = p.planet_id
-            INNER JOIN starsystems ss on p.system_id = ss.system_id
-            WHERE sr.user_id = '.$game->player['user_id'].'
-            GROUP BY planet_id';
-    $q_p_setdiplo = $db->query($sql);
-    $rows = $db->num_rows($q_p_setdiplo);
-    $sett_diplo = $db->fetchrowset($q_p_setdiplo);
-    for($i=0; $i < $rows; $i++)
-    {
-        $game->out('<tr>');
-        // Name
-        $game->out('<td width="140"><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($sett_diplo[$i]['planet_id'])).'">'.$sett_diplo[$i]['planet_name'].'</a></td>');
-        // Position
-        $game->out('<td width="80">'.$game->get_sector_name($sett_diplo[$i]['sector_id']).':'.$game->get_system_cname($sett_diplo[$i]['system_x'],$sett_diplo[$i]['system_y']).':'.($sett_diplo[$i]['planet_distance_id'] + 1).'</td>');
-        // Class
-        $game->out('<td width="40">'.strtoupper($sett_diplo[$i]['planet_type']).'</td>');
-        // Mood
-        $game->out('<td width="60"><span style="color: '.(($game->player['user_id'] == $sett_diplo[$i]['best_mood_user']) || ($sett_diplo[$i]['mood'] > $sett_diplo[$i]['best_mood']) ? 'green' : 'red').'">'.$sett_diplo[$i]['mood'].'</span></td>');
-        // Last Mission Time
-        $game->out('<td width="100">'.date("d.m.y H:i", $sett_diplo[$i]['last_time']).'</td>');
-        $game->out('</tr>');
-    }
-    $game->out('
-  </table></td></tr></table>
+    // Sezione Embarghi
+    $game->out('<br>
+ <table table class="style_outer" width="500" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
+ <table class="style_inner" width="500" align="center" border="0" cellpadding="2" cellspacing="2">
+   <tr>
+    <td width="180"><b>'.constant($game->sprache("TEXT61")).'</b></td>
+    <td width="170">&nbsp;</td>
+    <td width="150"><b>'.constant($game->sprache("TEXT29")).'</b></td>
+   </tr>        
     ');
+    
+    $sql_embargo = 'SELECT f.*,
+                          u1.user_name AS user1_name, u1.user_alliance AS user1_aid, a1.alliance_tag AS user1_atag, u1.user_active, 
+                          u2.user_name AS user2_name, u2.user_alliance AS user2_aid, a2.alliance_tag AS user2_atag, u2.user_active
+                   FROM (user_felony f)
+                   INNER JOIN (user u1) ON u1.user_id = f.user1_id
+                   LEFT JOIN (alliance a1) ON a1.alliance_id = u1.user_alliance
+                   INNER JOIN (user u2) ON u2.user_id = f.user2_id
+                   LEFT JOIN (alliance a2) ON a2.alliance_id = u2.user_alliance
+                   WHERE f.user2_id = '.$game->player['user_id'].' AND
+                         (u1.user_active = 1 AND u2.user_active = 1)
+                   ORDER BY f.date ASC';
+    
+    $q_m_embargo = $db->queryrowset($sql_embargo);
+    
+    foreach($q_m_embargo AS $embargoer){
+        $opid = 1;
+        $cmd_str = '&nbsp;&nbsp;---&nbsp;&nbsp;';
+        $date_str = gmdate('d.m.Y', $embargoer['date']);
+
+        $game->out('
+   <tr>
+     <td widht="180"><a href="'.parse_link('a=stats&a2=viewplayer&id='.$embargoer['user'.$opid.'_id']).'">'.$embargoer['user'.$opid.'_name'].'</a>'.( ($embargoer['user'.$opid.'_aid']) ? ' [<a href="'.parse_link('a=stats&a2=viewalliance&id='.$embargoer['user'.$opid.'_aid']).'">'.$embargoer['user'.$opid.'_atag'].'</a>]' : '' ).'</td>
+     <td width="170">'.$cmd_str.'</td>
+     <td width="150"><b>'.$date_str.'</b></td>
+   </tr>
+        ');
+    }    
+    $game->out('</table></td></tr> </table>');    
 }
 ?>

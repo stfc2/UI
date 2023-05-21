@@ -51,7 +51,7 @@ if(!empty($_GET['new_fleet'])) {
         message(NOTICE, constant($game->sprache("TEXT2")));
     }
 
-    if($old_fleet['user_id'] != $game->player['user_id']) {
+    if($old_fleet['owner_id'] != $game->player['user_id']) {
         message(NOTICE, constant($game->sprache("TEXT2")));
     }
 
@@ -239,12 +239,12 @@ if(!empty($_GET['new_fleet'])) {
     // Create new fleet
     
     if($distribute_wares) {
-        $sql = 'INSERT INTO ship_fleets (fleet_name, user_id, planet_id, move_id, n_ships, resource_1, resource_2, resource_3, resource_4, unit_1, unit_2, unit_3, unit_4, unit_5, unit_6)
-                VALUES ("'.$new_fleet_name.'", '.$game->player['user_id'].', '.( (!empty($old_fleet['planet_id'])) ? $old_fleet['planet_id'].', 0' : '0, '.$old_fleet['move_id'] ).', '.$changed_ships.', '.$nwares['resource_1'].', '.$nwares['resource_2'].', '.$nwares['resource_3'].', '.$nwares['resource_4'].', '.$nwares['unit_1'].', '.$nwares['unit_2'].', '.$nwares['unit_3'].', '.$nwares['unit_4'].', '.$nwares['unit_5'].', '.$nwares['unit_6'].')';
+        $sql = 'INSERT INTO ship_fleets (fleet_name, user_id, owner_id, planet_id, move_id, n_ships, resource_1, resource_2, resource_3, resource_4, unit_1, unit_2, unit_3, unit_4, unit_5, unit_6)
+                VALUES ("'.$new_fleet_name.'", '.$game->player['user_id'].', '.$game->player['user_id'].', '.( (!empty($old_fleet['planet_id'])) ? $old_fleet['planet_id'].', 0' : '0, '.$old_fleet['move_id'] ).', '.$changed_ships.', '.$nwares['resource_1'].', '.$nwares['resource_2'].', '.$nwares['resource_3'].', '.$nwares['resource_4'].', '.$nwares['unit_1'].', '.$nwares['unit_2'].', '.$nwares['unit_3'].', '.$nwares['unit_4'].', '.$nwares['unit_5'].', '.$nwares['unit_6'].')';
     }
     else {
-        $sql = 'INSERT INTO ship_fleets (fleet_name, user_id, planet_id, move_id, n_ships, resource_1, resource_2, resource_3, resource_4, unit_1, unit_2, unit_3, unit_4, unit_5, unit_6)
-                VALUES ("'.$new_fleet_name.'", '.$game->player['user_id'].', '.( (!empty($old_fleet['planet_id'])) ? $old_fleet['planet_id'].', 0' : '0, '.$old_fleet['move_id'] ).', '.$changed_ships.', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)';
+        $sql = 'INSERT INTO ship_fleets (fleet_name, user_id, owner_id, planet_id, move_id, n_ships, resource_1, resource_2, resource_3, resource_4, unit_1, unit_2, unit_3, unit_4, unit_5, unit_6)
+                VALUES ("'.$new_fleet_name.'", '.$game->player['user_id'].', '.$game->player['user_id'].', '.( (!empty($old_fleet['planet_id'])) ? $old_fleet['planet_id'].', 0' : '0, '.$old_fleet['move_id'] ).', '.$changed_ships.', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)';
     }
     
     if(!$db->query($sql)) {
@@ -325,7 +325,7 @@ elseif(!empty($_GET['change_fleet'])) {
         message(NOTICE, constant($game->sprache("TEXT2")));
     }
 
-    if($old_fleet['user_id'] != $game->player['user_id']) {
+    if($old_fleet['owner_id'] != $game->player['user_id']) {
         message(NOTICE, constant($game->sprache("TEXT2")));
     }
 
@@ -333,7 +333,7 @@ elseif(!empty($_GET['change_fleet'])) {
         message(NOTICE, constant($game->sprache("TEXT14")));
     }
 
-    if($new_fleet['user_id'] != $game->player['user_id']) {
+    if($new_fleet['owner_id'] != $game->player['user_id']) {
         message(NOTICE, constant($game->sprache("TEXT14")));
     }
 
@@ -535,6 +535,11 @@ elseif(!empty($_GET['change_fleet'])) {
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not delete old fleets data');
         }
+        
+        $sql = 'UPDATE officers SET fleet_id = 0 WHERE fleet_id = '.$old_fleet_id;
+        
+        $db->query($sql);
+        
     }
     else {
         if($distribute_wares) {

@@ -121,8 +121,18 @@ $game->out('
 		</tr>
 		</table>
 		</td>
-		<td valign="top">
-		<table class="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="5">
+                <td valign="top">
+                <table class="style_inner" width="300" align="center" border="0" cellpadding="2" cellspacing="5">
+                <tr>
+                        <td>
+                        <span class="sub_caption">'.constant($game->sprache("TEXT250")).'</span>
+                        </td>
+                </tr>
+                <tr>
+                        <td>
+                        <a href="http://wiki.stfc.it" target="_blank">'.constant($game->sprache("TEXT251")).'</a>
+                        </td>
+                </tr>
 		<tr>
 			<td>
 			<span class="sub_caption">'.constant($game->sprache("TEXT200")).'</span>

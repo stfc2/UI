@@ -50,11 +50,11 @@ define ("GER_Text14", '<br><span class="sub_caption">Ausbildungsliste ');
 
 define ("GER_Text15", 'Ausbildungsliste *:');
 
-define ("GER_Text16", '<td width=40><b>Platz:</b></td><td width=150><b>Belegung:</b></td><td width=50><b>Anzahl:</b></td><td width=40><b>Endlos:</b></td>');
+define ("GER_Text16", '<td width=30><b>Slot:</b></td><td width=100><b>Belegung:</b></td><td width=50><b>Anzahl:</b></td><td width=40><b>Endlos:</b></td>');
 
 define ("GER_Text17", '<option value="10" selected>3m Pause</option>');
 
-define ("GER_Text18", '<option value="10">3m Pause</option>');
+define ("GER_Text18", '3m Pause');
 
 define ("GER_Text19", 'Die');
 
@@ -84,11 +84,11 @@ define ("GER_Text30", 'Netter Versuch');
 
 define ("GER_Text31", '<option value="11" selected>27 Minuten Pause</option>');
 
-define ("GER_Text32", '<option value="11">27 Minuten Pause</option>');
+define ("GER_Text32", '27 Minuten Pause');
 
 define ("GER_Text33", '<option value="12" selected>54 Minuten Pause</option>');
 
-define ("GER_Text34", '<option value="12">54 Minuten Pause</option>');
+define ("GER_Text34", '54 Minuten Pause');
 
 define ("GER_Text35", 'Reset');
 
@@ -134,11 +134,11 @@ define ("ENG_Text14", '<br><span class="sub_caption">Training list ');
 
 define ("ENG_Text15", 'Training list *:');
 
-define ("ENG_Text16", '<td width=40><b>Place:</b></td><td width=150><b>Occupancy:</b></td><td width=50><b>Quantity:</b></td><td width=40><b>Infinite:</b></td>');
+define ("ENG_Text16", '<td width=30><b>Slot:</b></td><td width=100><b>Occupancy:</b></td><td width=50><b>Quantity:</b></td><td width=40><b>Infinite:</b></td>');
 
 define ("ENG_Text17", '<option value="10" selected>3 minutes of pause</option>');
 
-define ("ENG_Text18", '<option value="10">3 minutes of pause</option>');
+define ("ENG_Text18", '3 minutes of pause');
 
 define ("ENG_Text19", 'The');
 
@@ -168,11 +168,11 @@ define ("ENG_Text30", 'Nice try');
 
 define ("ENG_Text31", '<option value="11" selected>27 Minutes Pause</option>');
 
-define ("ENG_Text32", '<option value="11">27 Minutes Pause</option>');
+define ("ENG_Text32", '27 Minutes Pause');
 
 define ("ENG_Text33", '<option value="12" selected>54 Minutes Pause</option>');
 
-define ("ENG_Text34", '<option value="12">54 Minutes Pause</option>');
+define ("ENG_Text34", '54 Minutes Pause');
 
 define ("ENG_Text35", 'Reset');
 
@@ -218,11 +218,11 @@ define ("ITA_Text14", 'Lista Addestramento');
 
 define ("ITA_Text15", 'Lista Addestramento *:');
 
-define ("ITA_Text16", '<td width=40><b>Posizione:</b></td><td width=150><b>Occupazione:</b></td><td width=50><b>Quantit&agrave;:</b></td><td width=40><b>Infiniti:</b></td>');
+define ("ITA_Text16", '<td width="8%"><b>Slot:</b></td><td width="20%"><b>Occupazione:</b></td><td width="10%"><b>Quantit&agrave;:</b></td><td width="10%" align="center"><b>Ripeti:</b><td width="50%"><b>Costo:</b></td></td>');
 
 define ("ITA_Text17", '<option value="10" selected>3 minuti di pausa</option>');
 
-define ("ITA_Text18", '<option value="10">3 minuti di pausa</option>');
+define ("ITA_Text18", '3 minuti di pausa');
 
 define ("ITA_Text19", 'L&#146;icona');
 
@@ -252,11 +252,11 @@ define ("ITA_Text30", 'Buon Addestramento');
 
 define ("ITA_Text31", '<option value="11" selected>27 minuti di pausa</option>');
 
-define ("ITA_Text32", '<option value="11">27 minuti di pausa</option>');
+define ("ITA_Text32", '27 minuti di pausa');
 
 define ("ITA_Text33", '<option value="12" selected>54 minuti di pausa</option>');
 
-define ("ITA_Text34", '<option value="12">54 minuti di pausa</option>');
+define ("ITA_Text34", '54 minuti di pausa');
 
 define ("ITA_Text35", 'Azzera');
 

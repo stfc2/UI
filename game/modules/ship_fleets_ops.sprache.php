@@ -149,7 +149,7 @@ define ("GER_TEXT62", 'Der Erstschlagwert (First Strike) repraesentiert die Reih
 
 define("GER_TEXT63", 'AT Level');
 
-define("GER_TEXT64", 'AT Strenght');
+define("GER_TEXT64", 'AT Composition');
 
 define("GER_TEXT65", 'AT used on');
 
@@ -157,23 +157,38 @@ define("GER_TEXT66", 'ToHit:');
 
 define("GER_TEXT67", 'This value represents the chance to score a hit on an enemy vessel.');
 
-define("GER_TEXT68", 'Mitigazione Danno:');
+define("GER_TEXT68", 'Schadensminderung:');
 
-define("GER_TEXT69", 'Questo parametro indica la percentuale di danno allo scafo che la nave e l&#146;equipaggio possono ridurre al termine del combattimento.');
+define("GER_TEXT69", 'Dieser Parameter gibt an, wie viel Prozent des Schadens am Rumpf das Schiff und die Besatzung am Ende des Kampfes reduzieren k&ouml;nnen.');
 
-define("GER_TEXT70", 'Armi Leggere/Pesanti:');
+define("GER_TEXT70", 'Leichte/Schwere Waffen:');
 
-define("GER_TEXT71", 'Nessuno');
+define("GER_TEXT71", 'Keine');
 
-define("GER_TEXT72", 'Rof Leggere/Pesanti:');
+define("GER_TEXT72", 'Leichte/Schwere Rof:');
 
-define("GER_TEXT73", 'Bonus Razziali:');
+define("GER_TEXT73", 'Rassenboni:');
 
-define("GER_TEXT74", 'Bonus di Classe:');
+define("GER_TEXT74", 'Klassenbonus:');
 
-define("GER_TEXT75", 'RoF Armi Leggere:');
+define("GER_TEXT75", 'Leichte Waffen RoF:');
 
-define("GER_TEXT76", 'RoF Armi Pesanti:');
+define("GER_TEXT76", 'Schwere Waffen RoF:');
+
+define("GER_TEXT77", 'Fleet CO Level:');
+
+define ("GER_TEXT78", 'ToMiss:');
+
+define ("GER_TEXT79", 'Dieser Index gibt die Wahrscheinlichkeit an, dass das Schiff einem Treffer entkommt.<br>Der Fall eines Angreifers ohne Verschleierung wird dargestellt, umgekehrt sinkt die Wahrscheinlichkeit, den Schlag zu vermeiden, dramatisch.');
+
+define ("GER_TEXT80", 'Modulation');
+
+define ("GER_TEXT81", 'Fokus');
+
+define ("GER_TEXT82", 'Flugbahn');
+
+define ("GER_TEXT83", 'Ersch&uuml;tterung');
+
 
 //English
 define ("ENG_TEXT0", 'Skills:');
@@ -304,7 +319,7 @@ define ("ENG_TEXT62", 'This index represents the ability of the vessel to act in
 
 define("ENG_TEXT63", 'AT Level');
 
-define("ENG_TEXT64", 'AT Strenght');
+define("ENG_TEXT64", 'AT Composition');
 
 define("ENG_TEXT65", 'AT used on');
 
@@ -329,6 +344,20 @@ define("ENG_TEXT74", 'Bonus di Classe:');
 define("ENG_TEXT75", 'RoF Armi Leggere:');
 
 define("ENG_TEXT76", 'RoF Armi Pesanti:');
+
+define("ENG_TEXT77", 'Fleet CO Level:');
+
+define ("ENG_TEXT78", 'ToMiss:');
+
+define ("ENG_TEXT79", 'Questo indice rappresenta la probabilit&agrave; della nave di sfuggire ad un colpo messo a segno.<br>Questo indice &egrave; rappresenta il caso di un attaccante senza occultamento, viceversa le probabilit&agrave; di schivare il colpo calano drasticamente.');
+
+define ("ENG_TEXT80", 'Modulation');
+
+define ("ENG_TEXT81", 'Focalizzazione');
+
+define ("ENG_TEXT82", 'Traiettoria');
+
+define ("ENG_TEXT83", 'Concussion');
 
 
 //Italiano
@@ -460,7 +489,7 @@ define ("ITA_TEXT62", 'Questo indice rappresenta la capacit&agrave; della nave d
 
 define("ITA_TEXT63", 'Livello AT:');
 
-define("ITA_TEXT64", 'Forza AT:');
+define("ITA_TEXT64", 'Composizione AT:');
 
 define("ITA_TEXT65", 'AT sbarcata su:');
 
@@ -485,5 +514,19 @@ define("ITA_TEXT74", 'Bonus di Classe:');
 define("ITA_TEXT75", 'RoF Armi Leggere:');
 
 define("ITA_TEXT76", 'RoF Armi Pesanti:');
+
+define("ITA_TEXT77", 'Liv. Ufficiale:');
+
+define ("ITA_TEXT78", 'Valutazione ToMiss:');
+
+define ("ITA_TEXT79", 'Questo indice rappresenta la probabilit&agrave; della nave di sfuggire ad un colpo messo a segno.<br>Viene rappresentato il caso di un attaccante senza occultamento, viceversa le probabilit&agrave; di schivare il colpo calano drasticamente.');
+
+define ("ITA_TEXT80", 'Modulazione');
+
+define ("ITA_TEXT81", 'Focalizzazione');
+
+define ("ITA_TEXT82", 'Traiettoria');
+
+define ("ITA_TEXT83", 'Concussione');
 
 ?>

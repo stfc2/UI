@@ -111,6 +111,26 @@ define ("GER_TEXT70", 'keine');
 
 define ("GER_TEXT71", 'Unbesch&auml;digt');
 
+define ("GER_TEXT72", 'Civilian');
+
+define ("GER_TEXT73", 'Class 1');
+
+define ("GER_TEXT74", 'Class 2');
+
+define ("GER_TEXT75", 'Class 3');
+
+define ("GER_TEXT76", 'Summary');
+
+define ("GER_TEXT77", 'Max hold/in dock: ');
+
+define ("GER_TEXT78", 'Scout: ');
+
+define ("GER_TEXT79", 'Freighter: ');
+
+define ("GER_TEXT80", 'Coloship: ');
+
+define ("GER_TEXT81", 'Actions:');
+
 
 //English
 define ("ENG_TEXT27", 'You still don\'t possess a');
@@ -203,6 +223,26 @@ define ("ENG_TEXT70", 'None');
 
 define ("ENG_TEXT71", 'Undamaged');
 
+define ("ENG_TEXT72", 'Civilian');
+
+define ("ENG_TEXT73", 'Class 1');
+
+define ("ENG_TEXT74", 'Class 2');
+
+define ("ENG_TEXT75", 'Class 3');
+
+define ("ENG_TEXT76", 'Summary');
+
+define ("ENG_TEXT77", 'Max hold/in dock: ');
+
+define ("ENG_TEXT78", 'Scout: ');
+
+define ("ENG_TEXT79", 'Freighter: ');
+
+define ("ENG_TEXT80", 'Coloship: ');
+
+define ("ENG_TEXT81", 'Actions:');
+
 
 //Italiano
 define ("ITA_TEXT27", 'Ancora non possiedi un');
@@ -294,6 +334,26 @@ define ("ITA_TEXT69", 'Danneggiate');
 define ("ITA_TEXT70", 'Nessuna');
 
 define ("ITA_TEXT71", 'Integre');
+
+define ("ITA_TEXT72", 'Civili');
+
+define ("ITA_TEXT73", 'Classe 1');
+
+define ("ITA_TEXT74", 'Classe 2');
+
+define ("ITA_TEXT75", 'Classe 3');
+
+define ("ITA_TEXT76", 'Sommario');
+
+define ("ITA_TEXT77", 'Capienza Max/Presenti: ');
+
+define ("ITA_TEXT78", 'Scout: ');
+
+define ("ITA_TEXT79", 'Trasporto: ');
+
+define ("ITA_TEXT80", 'Colonizzatrice: ');
+
+define ("ITA_TEXT81", 'Azioni:');
 
 
 ?>

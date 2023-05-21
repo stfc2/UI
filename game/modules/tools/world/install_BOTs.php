@@ -34,8 +34,9 @@ include_once('include/sql.php');
 // include BOTs classes definitions
 include($config['scheduler_path'].'/NPC_BOT.php');
 include($config['scheduler_path'].'/ferengi.php');
-include($config['scheduler_path'].'/borg.php');
+include($config['scheduler_path'].'/memory_alpha.php');
 include($config['scheduler_path'].'/settlers.php');
+include($config['scheduler_path'].'/orion.php');
 
 // Unfortunately we cannot include commons.php file here...
 class scheduler {
@@ -97,10 +98,10 @@ $game->out('Installing Ramona BOT...');
 $quark = new Ferengi($db,$sdl);
 $quark->Install();
 
-$game->out('done.<br>Installing SevenOfNine BOT...');
+$game->out('done.<br>Installing Memory Alpha BOT...');
 
 // Install SevenOfNine BOT
-$borg = new Borg($db,$sdl);
+$borg = new MemoryAlpha($db,$sdl);
 $borg->Install();
 
 $game->out('done.<br>Installing Mayflower BOT...');
@@ -108,6 +109,12 @@ $game->out('done.<br>Installing Mayflower BOT...');
 // Install Settlers BOT
 $settlers = new Settlers($db,$sdl);
 $settlers->Install();
+
+$game->out('done.<br>Installing Orion Syndicate BOT...');
+
+// Install Orion Syindicate BOT
+$orion = new Orion($db,$sdl);
+$orion->Install();
 
 $game->out('done.<br><br><b>All BOTs installed, please check <a href="'.$config['site_url'].'/game/logs/view_log.php?file=NPC_installation">NPC_installation log</a> for further datails.<b>');
 

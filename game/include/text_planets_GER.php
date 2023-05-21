@@ -31,98 +31,98 @@
  
 $PLANETS_TEXT = array(
     'a' => array(
-        0 => 'Gas-Supergigant',
-        1 => 'Ben&ouml;tigt schweren Eingriff durch Terraforming',
-        2 => 'Ausgewogene Ressourcen, m&auml&szlig;ge Menge',
-        3 => 'Diese gewaltigen Planeten k&ouml;nnen das tausendfache der Erdmasse erreichen und liegen meist am Rande eines Sternensystems. Die sehr hohe Gravitation verursacht viele Meteoriteneinschl&auml;ge und unter der dichten Wasserstoffatmosph&auml;re sorgen die extremen Temperaturen f&uuml;r starke St&uuml;rme. Leben ist unter diesen Umst&auml;nden nicht m&ouml;glich und beschr&auml;nkt sich auf Orbitalstationen.',
-        4 => 'Jupiter'
+        0 => 'Geothermal',
+        1 => 'Erfordert starkes Eingreifen der Terraforming',
+        2 => 'Durchschnittliche Anzahl aller Ressourcen',
+        3 => 'Planets of this class are very small and rocky, marked by intense volcanic activity. This activity saturated the atmosphere with greenhouse gases, while maintaining high temperature on the surface, even if great distance from the star. When volcanic activity is out, the planet "dies", becoming a class C.',
+        4 => 'Gothos'
     ),
     
     'b' => array(
-        0 => 'Gas-Giganten',
-        1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
-        2 => 'Ausgewogene Ressourcen, m&auml&szlig;ge Menge',
-        3 => 'Planeten der Klasse B sind sehr gross, erreichen oft das hundertfache der Erdmasse und liegen meist am Rande eines Sternensystems. Das Zusammenspiel aus geringer Sonneneinstrahlung und hohen Kerntemperaturen bewirkt ein lebensfeindliches Klima. Lebewesen k&ouml;nnen nur auf Orbitalstationen &uuml;berleben.',
-        4 => 'Saturn, Neptun'
+        0 => 'Geomorteus',
+        1 => 'Erfordert starkes Eingreifen der Terraforming',
+        2 => 'Durchschnittliche Anzahl aller Ressourcen',
+        3 => 'Planets of this class are quite small and located in proximity to its star. Planets unfit for life, have a rarefied atmosphere of helium and sodium. The surface is molten and highly unstable. No life form has ever been discovered on this type of planet.',
+        4 => 'Mercury'
     ),
     
     'c' => array(
         0 => 'Geo inaktiv',
-        1 => 'Ben&ouml;tigt schweren Eingriff durch Terraforming',
-        2 => 'Ausgewogene Ressourcen, m&auml&szlig;ge Menge',
-        3 => 'Planeten der Klasse C geh&ouml;ren zu den sogenannten terrestrischen Planeten, &auml;hneln also der Erde, wenn es um Masse und Sonnenabstand geht. Die Atmosph&auml;re ist jedoch meist sehr d&uuml;nn. Mit den entsprechenden technischen M&ouml;glichkeiten und regelm&auml;ssiger Versorgung von aussen, k&ouml;nnen diese Welten jedoch dauerhaft besiedelt werden.',
-        4 => 'Venus'
+        1 => 'Erfordert starkes Eingreifen der Terraforming',
+        2 => 'Durchschnittliche Anzahl aller Ressourcen',
+        3 => 'When volcanic activity on a planet Class A cease, this becomes a planet geo inactive. Essentially dead, these planets have a cold and rocky surface and have no geological activity.',
+        4 => 'Pluto, Psi 2000'
     ),
     
     'd' => array(
         0 => 'Zwerg',
-        1 => 'Ben&ouml;tigt schweren Eingriff durch Terraforming',
-        2 => 'Ausgewogene Ressourcen, m&auml&szlig;ge Menge',
-        3 => 'Planeten dieser Klasse gelten meist nur als Planetoiden, da sie je nach Gr&ouml;&szlig;e keine regelm&auml;&szlig;ige Form besitzen, weil ihre Gravitation nicht ausreicht, um eine Kugel zu bilden. Ihre Atmosph&auml;re ist, wenn vorhanden, sehr d&uuml;nn. Die Oberfl&auml;che besteht aus Silikaten und verschiedenen Metallverbindungen. Mit technischer Unterst&uuml;tzung und Versorgung von au&szlig;en ist Leben m&ouml;glich.',
+        1 => 'Erfordert starkes Eingreifen der Terraforming',
+        2 => 'Durchschnittliche Anzahl aller Ressourcen',
+        3 => 'This planetary class normally applies only to planetoids with irregular shape due to the scarcity of their gravitational force. Their atmosphere, if present, is very thin. The surface is composed of silicates and various metal compounds. Life is possible only through a technological support and a supply of resources from outside.',
         4 => 'Ceres (Asteroid im Sonnen-System)'
     ),
     
     'e' => array(
-        0 => 'Geo Kunststoff',
-        1 => 'Ben&ouml;tigt minimale Intervention von Terraforming',
-        2 => 'Anwesenheit von Mineralien &uuml;berdurchschnittlich',
-        3 => 'Klasse E-Planeten sind terrestrische Welten, deren Entwicklung sich noch in einem recht fr&uuml;hen Stadium befindet. Zwar ist der Kern noch fl&uuml;ssig, doch eine d&uuml;nne Sauerstoff-Stickstoff-Atmosph&auml;re ist bereits vorhanden. Mit einem &uuml;berschaubaren Mass an technologischer Unterst&uuml;tzung, k&ouml;nnen sich Lebewesen auf einer Welt der Klasse E ansiedeln.',
+        0 => 'Geoplastik',
+        1 => 'Erforderliches Mindestma&szlig; an Terraforming',
+        2 => 'Anwesenheit von Mineralien &uuml;ber dem Durchschnitt',
+        3 => 'Planets of this class are similar in mass and distance from its star to Earth and are considered the precursors of the F class planets known. The core of the planet is molten and have a rarefied atmosphere with traces of oxygen. Life is possible through modest technological support and supply of resources from outside.',
         4 => 'Excalbia'
     ),
     
     'f' => array(
         0 => 'Geo metallisch',
-        1 => 'Ben&ouml;tigt minimale Intervention von Terraforming',
-        2 => 'Anwesenheit von Metall &uuml;berdurchschnittlich',
-        3 => '&Auml;hnlich wie die Klasse E, sind auch Planeten der Klasse F nach geologischen Massst&auml;ben noch sehr jung (ca. 1 Milliarde Jahre). Die Atmosph&auml;re ist bereits recht dicht, sauerstoffreich und f&uuml;r die meisten Lebewesen atembar. Jedoch hat die Planetenoberfl&auml;che noch nicht ihre endg&uuml;ltige Form erreicht und es gibt starke tektonische Aktivit&auml;t. Mit einem &uuml;berschaubaren Mass an technologischer Unterst&uuml;zung k&ouml;nnen sich Lebewesen auf einer Welt der Klasse F ansiedeln.',
+        1 => 'Erforderliches Mindestma&szlig; an Terraforming',
+        2 => 'Anwesenheit von Metall &uuml;ber dem Durchschnitt',
+        3 => 'Planets of this class are similar to the Earth as mass and distance from its star. Their atmosphere is very rich in oxygen, but since they are planets rather young, often the surface is not completely solidified. Survival on the planet is possible with a little technological support.',
         4 => '-'
     ),
     
     'g' => array(
         0 => 'Geo kristallin',
-        1 => 'Ben&ouml;tigt minimale Intervention von Terraforming',
-        2 => 'Anwesenheit von Latinum &uuml;berdurchschnittlich',
-        3 => 'Planeten dieser Klasse liegen &auml;usserst dicht an ihrer Sonne, was extrem heisse Oberfl&auml;chentemperaturen und eine bestenfalls winzige Flora und Fauna zur Folge hat. Da in der Atmosph&auml;re, die haupts&auml;chlich aus schweren Gasen und gasf&ouml;rmigen Metallen besteht, jedoch auch Sauerstoffverbindungen existieren, k&ouml;nnen sich Lebewesen hier ansiedelen, wenn sie &uuml;ber ausreichende technische Hilfsmittel verf&uuml;gen.',
+        1 => 'Erforderliches Mindestma&szlig; an Terraforming',
+        2 => 'Anwesenheit von Dilithium &uuml;ber dem Durchschnitt',
+        3 => 'Planets of this class are similar to the Earth as mass but orbit closer to their sun. Their atmosphere is essentially made of heavy toxic gas. The proximity of the sun causes a high surface temperature. Life is possible only through life support.',
         4 => 'Ceti Alpha V'
     ),
     
     'h' => array(
-        0 => 'W&uuml;ste',
-        1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
-        2 => 'Handels&uuml;bliche aller Ressourcen',
-        3 => 'Klasse H-Planeten sind junge Himmelsk&ouml;rper in der kalten Zone eines Sternensystems und kommen auf gerade einmal 10% der Erdmasse. Unterhalb der meist auf Wasserstoff basierenden Atmosph&auml;re, liegt eine tektonisch sehr aktive Oberfl&auml;che. Leben ist nur mit massiver technologischer Unterst&uuml;tzung und einer regelm&auml;ssigen Versorgung m&ouml;glich.',
-        4 => 'Pluto'
+        0 => 'Verlassen',
+        1 => 'Erfordert starkes Eingreifen der Terraforming',
+        2 => 'Standardpr&auml;senz aller Ressourcen',
+        3 => 'Planets of this class only reach 10% of the mass of the Earth and have an orbit far from their sun. Because of their recent formation, the surface is still molten or characterized by intense geological phenomena. The atmosphere is characterized primarily of hydrogen. Survival on the planet is only possible thanks to life support and supplies of vital resources from the outside.',
+        4 => '-'
     ),
     
     'i' => array(
-        0 => 'Gasf&ouml;rmige &Uuml;berriesen',
+        0 => 'Gasf&ouml;rmiger Supergiant',
         1 => 'unm&ouml;glich',
-        2 => 'Gro&szlig;e Pr&auml;senz von Latinum, knappe Anwesenheit von Mineralien',
-        3 => 'Welten der Klasse I haben in etwa dieselbe Masse wie die Erde und liegen auch in einer vergleichbaren Entfernung zu ihrer Sonne. Hohe vulkanische Aktivit&auml;t und eine &auml;usserst toxische Atmosph&auml;re machen sie jedoch sehr lebensfeindlich. Nur mit massiver technologischer Unterst&uuml;tzung und einer regelm&auml;ssigen Versorgung ist &uuml;berhaupt Leben m&ouml;glich.',
+        2 => 'Riesige Pr&auml;senz von Dilithium, seltene Anwesenheit von Mineralien',
+        3 => 'Planets of this class are clusters of gas with a diameter of more than 140,000 kilometers, containing a metallic/crystalline core. Survival on the planet is only possible thanks to life support and supplies of vital resources from the outside.',
         4 => '-'
     ),
     
     'j' => array(
         0 => 'Gasf&ouml;rmige Riesen',
-        1 => 'Ben&ouml;tigt schweren Eingriff durch Terraforming',
-        2 => 'Knappe Vorhandensein von Latinum, hohe Pr&auml;senz von Metall',
-        3 => 'Klasse J-Welten sind atmosph&auml;renlose und geologisch inaktive Himmelsk&ouml;rper. Die Oberfl&auml;che ist meist von Meteorkratern &uuml;bers&auml;t und völlig karg. Ein &Uuml;berleben ist nur mit starker technologischer Hilfe und einer regelm&auml;ssigen Versorgung zu realisieren.',
+        1 => 'Erfordert starkes Eingreifen der Terraforming',
+        2 => 'Seltene Anwesenheit von Lithium, hohe Anwesenheit von Metall',
+        3 => 'Planeten dieser Klasse sind der Durchmesser Gascluster von weniger als 140.000 Kilometer. &Uuml;berleben auf dem Planeten ist nur m&ouml;glich dank der Lebenserhaltung und Lieferungen von externen Ressourcen.',
         4 => '-'
     ),
     
     'k' => array(
         0 => 'Anpassungsf&auml;hig',
-        1 => 'Ben&ouml;tigt minimale Intervention von Terraforming',
-        2 => 'Handels&uuml;bliche aller Ressourcen',
+        1 => 'Erforderliches Mindestma&szlig; an Terraforming',
+        2 => 'Standardpr&auml;senz aller Ressourcen',
         3 => 'Zwar kommen Welten der Klasse K nur auf etwa 10% der Erdmasse, doch ihr h&ouml;heres geologisches Alter und die daraus resultierende Stabilit&auml;t der Oberfl&auml;che verhindern eine Einstufung als Zwergplanet. Ihre Gravitation ist meist nicht stark genug, um eine dichte Atmosph&auml;re zu bilden und Wasser anders als im eisf&ouml;rmigen Zustand zu halten, mit der entsprechenden Unterst&uuml;tzung und einer regelm&auml;ssigen Versorgung ist jedoch Leben m&ouml;glich.',
         4 => 'Mars'
     ),
     
     'l' => array(
-        0 => 'Eiswelt',
-        1 => 'Ben&ouml;tigt minimale Intervention von Terraforming',
-        2 => 'Handels&uuml;bliche aller Ressourcen',
-        3 => 'Zwar kommen Welten der Klasse L nur auf etwa 10% der Erdmasse, doch ihr h&ouml;heres geologisches Alter, die daraus resultierende Stabilit&auml;t der Oberfl&auml;che und der gefrorene Kern verhindern eine Einsstufung als Zwergplanet. Die Entfernung zur Sonne ist sehr gross, wodurch Klasse L-Planeten ganzj&auml;hrig von Eis und Schnee bedeckt sind. Mit einer regelm&auml;ssigen Versorgung und etwas technologischer Hilfe ist jedoch Leben m&ouml;glich.',
+        0 => 'Marginal',
+        1 => 'Erforderliches Mindestma&szlig; an Terraforming',
+        2 => 'Standardpr&auml;senz aller Ressourcen',
+        3 => 'Planeten dieser Klasse haben felsige und sterile Oberfl&auml;chen. Ihre Atmosph&auml;re besteht aus Sauerstoff und Argon mit hohen Prozents&auml;tzen an Kohlendioxid. Die Lebensformen indigenen sind auf Pflanzen beschr&auml;nkt. Kann mit wenig Aufwand kolonisiert werden.',
         4 => 'Indri VIII'
     ),
         
@@ -136,65 +136,65 @@ $PLANETS_TEXT = array(
     
     'n' => array(
         0 => 'Planet im Verfall',
-        1 => 'Ben&ouml;tigt schweren Eingriff durch Terraforming',
-        2 => 'Durchschnittliche Anzahl aller Ressourcen',
-        3 => 'Klasse N-Welten sind in Bezug auf Masse, Sonnenabstand und Atmosph&auml;renzusammensetzung &auml;hnlich beschaffen wie die Erde, jedoch ist ihre Oberfl&auml;che zu mehr als 90% mit Wasser bedeckt. Kontinentale Landmassen gibt es meist nicht, nur einige Inselgruppen, die jedoch Leben in jedweder Form beg&uuml;nstigen.',
+        1 => 'Erfordert starkes Eingreifen der Terraforming',
+        2 => 'Standardpr&auml;senz aller Ressourcen',
+        3 => 'Obwohl sie oft in der &Ouml;kosph&auml;re pr&auml;sent sind, k&ouml;nnen die Planeten dieser Klasse das Leben nicht unterstützen. Die Oberfl&auml;che ist steinig und erreicht Temperaturen bis zu 500 ° C und einen Druck von mehr als 90 Mal so hoch wie auf der Erde. Die Atmosph&auml;re ist sehr dicht und besteht aus Kohlendioxid. Das Wasser existiert nur in Form von Dampf, der in dichten Wolken gesammelt wird, die den Planeten umgeben.',
         4 => 'Venus',
     ),
 
     'o' => array(
-        0 => 'Gasplanet',
+        0 => 'Pelagisch',
         1 => 'm&ouml;glich',
-        2 => 'Durchschnittliche Anzahl aller Ressourcen',
-        3 => 'Welten der Klasse O sind die kleinsten unter den Gasriesen (etwa das zwanzig- bis f&uuml;nzigfache der Erdmasse) und liegen meist am Rand eines Sternensystems. Geringe Sonneneinstrahlung und hohe Kerntemperaturen machen ein Leben ausserhalb von Orbitalstationen unm&ouml;glich.',
+        2 => 'Standardpr&auml;senz aller Ressourcen',
+        3 => 'Planeten dieser Klasse sind der Erde sehr &auml;hnlich. Die Atmosph&auml;re ist gleich der der M-Planeten, die Oberfl&auml;che wird zu 90% mit Wasser bedeckt. Ideal f&uuml;r das Leben.',
         4 => 'Pacifica',
     ),
 
     'p' => array(
-        0 => 'Eiswelt',
-        1 => 'm&ouml;glich',
-        2 => 'Durchschnittliche Anzahl aller Ressourcen',
-        3 => '&Auml;hnlich wie bei den O-Klasse Planeten, werden sie von niedrigen Temperaturen, die das Wasser in dicken Gletscher erstarren lassen gekennzeichnet. Leben in &auml;usserst streng polaren Bedingungen ist m&ouml;glich.',
+        0 => 'Glazial',
+        1 => 'M&ouml;glich',
+        2 => 'Standardpr&auml;senz aller Ressourcen',
+        3 => 'Planeten &auml;hnlich der O-Klasse, sind sie gekennzeichnet durch niedrige Temperaturen, die das Wasser in dicken Gletschern zu verfestigen. Das Wasserleben, wenn vorhanden, ist angepasst, um in extrem strengen polaren Bedingungen zu leben.',
         4 => 'Europa, Callisto',
     ),
 
     'q' => array(
         0 => 'Terrestrial Welt',
-        1 => 'm&ouml;glich',
+        1 => 'M&ouml;glich',
         2 => 'Durchschnittliche Anzahl aller Ressourcen',
         3 => 'Diese Planeten werden von hoch exzentrischen Bahnen, die den Klimawandel auf der Oberfl&auml;che verst&auml;rken gekennzeichnet.',
         4 => '-',
     ),
 
     's' => array(
-        0 => 'Kleine &Uuml;berriesen',
-        1 => 'unm&ouml;glich',
-        2 => 'Riesige Mengen an Mineralien und Latinium',
+        0 => 'Kleinst ultragiant',
+        1 => 'Unm&ouml;glich',
+        2 => 'Riesige Mengen an Mineralien und Dilithium',
         3 => 'Diese riesigen gasf&ouml;rmigen Cluster werden auch als Brauner Zwerg bekannt, haben einen Durchmesser von zwischen 10 und 50 Millionen Kilometer. Wenn sie gr&ouml;sser sind, w&uuml;rden sie als Sternen klassifiziert werden. Sie generieren enorme Hitze und Schwerkraft. Treiben durch das Sonnensystem wie eine grosse Anzahl von Satelliten.',
         4 => '-',
     ),
 
     't' => array(
-        0 => 'Gro&szlig;e &Uuml;berriesen',
-        1 => 'unm&ouml;glich',
+        0 => 'Gro&szlig;e ultragiant',
+        1 => 'Unm&ouml;glich',
         2 => 'Immensen Vorhandensein von Mineralien und Dilithium',
         3 => 'Diese riesigen gasf&ouml;rmigen Cluster werden auch als Brauner Zwerg bekannt, einen Durchmesser im Bereich zwischen 50 und 120 Millionen Kilometer. Wenn sie gr&ouml;sser sind, w&uuml;rden sie als Sternen klassifiziert werden. Sie generieren enorme Hitze und Schwerkraft. Treiben durch das Sonnensystem wie eine grosse Anzahl von Satelliten.',
         4 => '-',
     ),
 
     'x' => array(
-        0 => 'Asteroid',
-        1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
+        0 => 'Kleiner brennender Planet',
+        1 => 'Erfordert starkes Eingreifen der Terraforming',
         2 => 'Enormen Reserven von Metallen, Mineralien und Dilithium',
-        3 => 'Der Astroid ist kein Planet im herk&ouml;mmlichen Sinn. Er ist eine Masse aus Stein und Eis die durch das Sonnensytem treibt. Da ein Asteroid keine Atmosph&auml;re hatm ist Leben nur in Orbitalstationen m&ouml;glich.',
+        3 => 'Planeten dieser Klasse haben eine extrem toxische Atmosph&auml;re und die Oberfl&auml;che selten auf Temperatur unter 500 Kelvin Grad absteigen. Die Oberfl&auml;chenwinde blasen mit hoher Geschwindigkeit und sehr wenige Substanzen sind resistent gegen korrosive Gase in der Atmosph&auml;re. Das Leben ist nur durch massive Intervention von Terraforming und den Einsatz von erheblichen Ressourcen m&ouml;glich.',
         4 => '-',
     ),
 
     'y' => array(
         0 => 'D&auml;monplanet',
-        1 => 'Ben&ouml;tigt schweren Eingriff Terraforming',
+        1 => 'Erfordert starkes Eingreifen der Terraforming',
         2 => 'Enormen Reserven von Metallen, Mineralien und Dilithium',
-        3 => 'D&auml;monenplaneten sind die Personifizierung des Wortes "lebensfeindlich". Die Atmosph&auml;re ist &uuml;berdurchschnittlich dicht und mit stark toxischen Gasen durchsetzt, die die meisten bekannten Materialien sofort korrodiert. Die sehr h&auml;ufig auftretenden St&uuml;rme erreichen mehrfache Schallgeschwindigkeit und die durchschnittliche Oberfl&auml;chentemperatur betr&auml;gt rund 230° Celsius. Leben ist nur mit &auml;usserst starker technologischer Unterst&uuml;tzung und einer t&auml;glichen Versorgung m&ouml;glich.',
+        3 => 'Planeten dieser Klasse haben eine extrem toxische Atmosph&auml;re und die Oberfl&auml;che selten auf Temperatur unter 500 Kelvin Grad absteigen. Die Oberfl&auml;chenwinde blasen mit hoher Geschwindigkeit und sehr wenige Substanzen sind resistent gegen korrosive Gase in der Atmosph&auml;re. Das Leben ist nur durch massive Intervention von Terraforming und den Einsatz von erheblichen Ressourcen m&ouml;glich.',
         4 => '-'
     ),
 );

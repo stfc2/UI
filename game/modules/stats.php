@@ -100,21 +100,25 @@ $game->out('<br>
     <td>
       <table border="0" cellpadding="1" cellspacing="1" class="style_inner" width="100%>
         <tr height="30">
-          <td width=112 align=middle>
+          <td width=105 align=middle>
             <a href="'.parse_link('a=stats&a2=player_ranking').'"><span class="sub_caption2">'.constant($game->sprache("TEXT5")).'</a>
           </td>
-          <td width=112 align=middle>
+          <td width=105 align=middle>
             <a href="'.parse_link('a=stats&a2=alliance_ranking').'"><span class="sub_caption2">'.constant($game->sprache("TEXT6")).'</a>
             <br>
           </td>
-          <td width=112 align=middle>
-            <a href="'.parse_link('a=stats&a2=borgs_stats').'"><span class="sub_caption2">'.constant($game->sprache("TEXT93")).'</a>
+          <td width=60 align=middle>
+            <a href="'.parse_link('a=stats&a2=alpha_stats').'"><span class="sub_caption2">'.constant($game->sprache("TEXT93")).'</a>
             <br>
           </td>
-          <td width=112 align=middle>
+          <td width=60 align=middle>
             <a href="'.parse_link('a=stats&a2=settlers_stats').'"><span class="sub_caption2">'.constant($game->sprache("TEXT98")).'</a>
             <br>
           </td>
+          <td width=60 align=middle>
+            <a href="'.parse_link('a=stats&a2=orions_stats').'"><span class="sub_caption2">'.constant($game->sprache("TEXT118")).'</a>
+            <br>
+          </td>          
         </tr>
       </table>
     </td>
@@ -339,11 +343,15 @@ global $userquery;
 global $start;
 global $search_name;
 global $RACE_DATA;
+global $NEXT_TICK;
 
 $_REQUEST['id']=(int)$_REQUEST['id'];
 
+
 // Men BASIC
 Show_Main();
+
+if($game->player['user_auth_level'] != 3 && $_REQUEST['id'] < 11 ) {$_REQUEST['id'] = 0;}
 
 $userquery=$db->query('SELECT * FROM user WHERE user_id="'.$_REQUEST['id'].'" AND (user_active=1 OR user_active=3) LIMIT 1');
 $found=$db->num_rows();
@@ -405,7 +413,7 @@ $rasse=$RACE_DATA[$user['user_race']][0];
 
 $planets=$db->queryrow('SELECT count(planet_id) AS num FROM planets WHERE planet_owner="'.$user['user_id'].'"');
 
-$rawstar=$db->queryrow('SELECT COUNT(*) AS rawnum FROM starsystems WHERE system_closed = 0');
+$rawstar=$db->queryrow('SELECT COUNT(*) AS rawnum FROM starsystems WHERE system_closed <> 1');
 
 
 // Onlinestatus:
@@ -426,6 +434,10 @@ $rawstar=$db->queryrow('SELECT COUNT(*) AS rawnum FROM starsystems WHERE system_
     $allied=$db->num_rows();
     $diplomacy = $db->fetchrow($q_diplomacy);
     if(!$diplomacy['accepted']) $allied=0;
+    
+    if($user['user_protect_ratio'] > 0 ) {$protect_color = 'green';}
+    elseif($user['user_protect_ratio'] < 0 ) {$protect_color = 'red';}
+    else {$protect_color = 'yellow';}
 
 
 if ($user['last_active']>(time()-60*3)) $status='<span style="color: green">'.constant($game->sprache("TEXT37")).'</span>';
@@ -452,12 +464,31 @@ $game->out('
 <td width="70%"><span class="text_large">'.constant($game->sprache("TEXT11")).'</b></span></td>
 <td width="30%"><span class="text_large">'.$user['user_points'].'</td>
 </tr><tr>
+<td width="70%"><span class="text_large">'.constant($game->sprache("TEXT119")).'</b></span></td>
+<td width="30%"><span class="text_large" style="color: '.$protect_color.'">'.(int)$user['user_protect_level'].'</span> <span class="text_large">['.$user['user_protect_cap'].']</span></td>    
+</tr><tr>
+<td width="70%"><span class="text_large">'.constant($game->sprache("TEXT120")).'</b></span></td>
+<td width="30%"><span class="text_large">'.$user['user_points_protected'].'</td>
+</tr><tr>
 <td width="70%"><span class="text_large">'.constant($game->sprache("TEXT19")).'</b></span></td>
 <td width="30%"><span class="text_large">'.$planets['num'].'</td>
 </tr><tr>
 <td width="70%"><span class="text_large">'.constant($game->sprache("TEXT43")).'</b></span></td>
 <td width="30%"><span class="text_large">'.$user['user_honor'].'</td>
 </tr><tr>
+<td width="70%"><span class="text_large">'.constant($game->sprache("TEXT108")).'</b></span></td>
+<td width="30%"><span class="text_large">'.$user['user_honor_pvp'].'</td>
+</tr><tr>
+<td width="70%"><span class="text_large">'.constant($game->sprache("TEXT109")).'</b></span></td>
+<td width="30%"><span class="text_large">'.$user['user_honor_png'].'</td>');
+//if($game->player['user_id'] == $_REQUEST['id']) {    
+    $game->out('
+    </tr><tr>
+    <td width="70%"><span class="text_large">'.constant($game->sprache("TEXT122")).'</b></span></td>
+    <td width="30%"><span class="text_large">'.($user['user_tsw_timeout'] == 0 ? '<font color="green">'.constant($game->sprache("TEXT123")).'</font>' : '<font color="red"><b id="timer2" title="time1_'.( ($user['user_tsw_timeout'] * TICK_DURATION * 60) + $NEXT_TICK).'_type2_2">&nbsp;</b></font>' ).'</td>    
+    ');
+//}
+$game->out('</tr><tr>
 <td width="70%"><span class="text_large">'.constant($game->sprache("TEXT88")).'</b></span></td>
 <td width="30%"><span class="text_large">'.$user['num_auctions'].'</td>
 </tr><tr>
@@ -472,6 +503,9 @@ $game->out('
 </tr><tr>
 <td width="70%"><span class="text_large">'.constant($game->sprache("TEXT106")).'</b></span></td>
 <td width="30%"><span class="text_large">'.$user['user_settler_best'].'</td>
+</tr><tr>
+<td width="70%"><span class="text_large">'.constant($game->sprache("TEXT106B")).'</b></span></td>
+<td width="30%"><span class="text_large">'.(int)$user['user_diplo_points'].'</td>
 </tr><tr>
 <td width="70%"><span class="text_large">'.constant($game->sprache("TEXT44")).'</b></span></td>
 <td width="30%"><span class="text_large">'.$status.'</td>
@@ -550,6 +584,66 @@ $game->out('
 
 
 
+<table border=0 cellpadding=2 cellspacing=2 width="85%" class="style_outer">
+  <tr>
+     <td><span class="sub_caption">'.constant($game->sprache("TEXT110")).'</span></td>
+  </tr>
+  <tr>
+     <td>
+        <table border=0 cellpadding=2 cellspacing=2 width="100%" class="style_inner">
+        <tr>
+            <td width="80"><b>'.constant($game->sprache("TEXT69")).'</td>
+            <td width="150"><b>'.constant($game->sprache("TEXT18")).'</td>
+            <td width="40"><b>'.constant($game->sprache("TEXT11")).'</td>                
+            <td width="60"><b>'.constant($game->sprache("TEXT111")).'</td>
+            <td width="50"><b>'.constant($game->sprache("TEXT112")).'</td>
+        </tr>');
+
+    // Player is a developer? No FOW
+    // Players are in the same ally? No FOW
+    // BUT: the player IS in an alliance!
+    if ($game->player['user_auth_level'] == STGC_DEVELOPER ||
+       ($game->player['user_alliance'] != 0 &&
+        $game->player['user_alliance'] == $user['user_alliance'] &&
+        $game->player['user_alliance_rights3'] == 1))
+        $sql_ss = 'SELECT p.system_id, SUM(p.planet_points) AS protected_points, ss.*
+                   FROM planets p
+                   INNER JOIN starsystems ss USING (system_id)
+                   WHERE ss.system_closed > 0 AND ss.system_owner = "'.$user['user_id'].'" AND p.planet_owner = "'.$user['user_id'].'"
+                   GROUP BY p.system_id 
+                   ORDER BY system_close_time, system_name';
+    // Otherwise show only known planets
+    else {
+        $sql_ss = 'SELECT p.system_id, SUM(p.planet_points) AS protected_points, ss.*
+                   FROM planets p
+                   INNER JOIN starsystems ss USING (system_id)
+                   INNER JOIN (starsystems_details sd) ON (ss.system_id = sd.system_id) AND (ss.system_closed > 0) AND (sd.user_id = "'.$game->player['user_id'].'") AND (sd.log_code = 0)                   
+                   WHERE ss.system_closed > 0 AND ss.system_owner = "'.$user['user_id'].'" AND p.planet_owner = "'.$user['user_id'].'"
+                   GROUP BY p.system_id 
+                   ORDER BY system_close_time, system_name';
+    }
+    
+    $systemsquery=$db->query($sql_ss);
+    $numero_righe = $db->num_rows($systemsquery);
+    if($numero_righe == 0) {
+        $game->out('<tr><td> --- </td><td> --- </td><td> --- </td><td> --- </td><td> --- </td></tr>');
+    }
+    else {
+        while(($system = $db->fetchrow($systemsquery))==true)
+        {
+        $game->out('<tr><td>'.$game->get_sector_name($system['sector_id']).':'.$game->get_system_cname($system['system_x'],$system['system_y']).'</td><td><a href="'.parse_link('a=tactical_cartography&system_id='.encode_system_id((int)$system['system_id'])).'">');
+        if($system['system_name']=="") $system['system_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
+            $game->out($system['system_name'].'</a></td><td>'.($system['system_closed'] == 1 ? '<i>'.$system['protected_points'].'*</i>' : $system['protected_points'] ).'</td><td>'.( $system['system_closed'] == 1 ? constant($game->sprache("TEXT113")) : constant($game->sprache("TEXT114"))).'</td><td>'.constant($game->sprache("TEXT115")).'</td></tr>');
+        }
+        $game->out('<tr><td colspan="5">'.constant($game->sprache("TEXT121")).'</td></tr>');
+    }    
+    
+        $game->out('</table>
+     </td>
+  </tr>
+</table>
+<br>    
+    
 
 <table border=0 cellpadding=2 cellspacing=2 width="85%" class="style_outer">
   <tr>
@@ -645,7 +739,45 @@ $game->out('
   </tr>
 </table>');
 
+$game->out('
+<br>
+<table border=0 cellpadding=2 cellspacing=2 width="85%" class="style_outer">
+  <tr>
+    <td><span class="sub_caption">'.constant($game->sprache("TEXT117")).'</span></td>
+  </tr>
+  <tr>
+    <td>
+      <table border=0 cellpadding=2 cellspacing=2 width="100%" class="style_inner">
+        <tr>
+          <td width=120>
+            <b>'.constant($game->sprache("TEXT18")).'</b></td><td width=70><b>'.constant($game->sprache("TEXT11")).'</b></td><td width=70><b>'.constant($game->sprache("TEXT19")).'</b></td><td width=70><b>'.constant($game->sprache("TEXT43")).'</b></td><td width=80><b>'.constant($game->sprache("TEXT57")).'</b>
+          </td>
+        </tr>');
 
+    $sql = 'SELECT f.*,
+                   u1.user_name AS user1_name, u1.user_alliance AS user1_aid, u1.user_points AS user1_points, u1.user_planets AS user1_planets, u1.user_honor AS user1_honor, a1.alliance_tag AS user1_atag,
+                   u2.user_name AS user2_name, u2.user_alliance AS user2_aid, u2.user_points AS user2_points, u2.user_planets AS user2_planets, u2.user_honor AS user2_honor, a2.alliance_tag AS user2_atag
+            FROM (user_felony f)
+            INNER JOIN (user u1) ON u1.user_id = f.user1_id
+            LEFT JOIN (alliance a1) ON a1.alliance_id = u1.user_alliance
+            INNER JOIN (user u2) ON u2.user_id = f.user2_id
+            LEFT JOIN (alliance a2) ON a2.alliance_id = u2.user_alliance
+            WHERE f.user1_id = '.$user['user_id'];
+
+    if(!$q_felony = $db->query($sql)) {
+        message(DATABASE_ERROR, 'Could not query diplomacy private data');
+    }
+    while($felony = $db->fetchrow($q_felony)) {
+        $opid =  2;
+        $game->out('<tr><td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$felony['user'.$opid.'_id']).'">'.$felony['user'.$opid.'_name'].'</a>'.( ($felony['user'.$opid.'_aid']) ? ' [<a href="'.parse_link('a=stats&a2=viewalliance&id='.$felony['user'.$opid.'_aid']).'">'.$felony['user'.$opid.'_atag'].'</a>]' : '' ).'</td><td>'.$felony['user'.$opid.'_points'].'</td><td>'.$felony['user'.$opid.'_planets'].'</td><td>'.$felony['user'.$opid.'_honor'].'</td><td>'.gmdate('d.m.Y', $felony['date']).'</td></tr>');
+
+    }
+
+$game->out('
+      </table>
+    </td>
+  </tr>
+</table>');
 
 $user['user_signature'] = strip_tags($user['user_signature']);
 $user['user_signature'] = str_replace("<script", "<!--", $user['user_signature']); 
@@ -734,247 +866,175 @@ $game->out('<br>
 }
 }
 
-
-function Show_Borg()
+function Show_Alpha()
 {
 global $db;
 global $game;
 global $config;
 
+$selector = filter_input(INPUT_GET, 'sele', FILTER_SANITIZE_NUMBER_INT);
+
+if(!isset($selector)) {$selector = 0;}
 
 // Men BASIC
 Show_Main();
 
-
-if(($user = $db->queryrow('SELECT * FROM user WHERE user_id="'.BORG_USERID.'" LIMIT 1'))===false) 
-{
-	$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT33")).' (id='.$_REQUEST['id'].'<br>'.constant($game->sprache("TEXT34")).'</span>');
-}
-else
-{
-
-$rank_nr=1;
-global $rank_honor;
-if ($user['user_honor']>=$rank_honor[0]) $rank_nr=1;
-if ($user['user_honor']>=$rank_honor[1]) $rank_nr=2;
-if ($user['user_honor']>=$rank_honor[2]) $rank_nr=3;
-if ($user['user_honor']>=$rank_honor[3]) $rank_nr=4;
-if ($user['user_honor']>=$rank_honor[4]) $rank_nr=5;
-if ($user['user_honor']>=$rank_honor[5]) $rank_nr=6;
-if ($user['user_honor']>=$rank_honor[6]) $rank_nr=7;
-if ($user['user_honor']>=$rank_honor[7]) $rank_nr=8;
-if ($user['user_honor']>=$rank_honor[8]) $rank_nr=9;
-if ($user['user_honor']>=$rank_honor[9]) $rank_nr=10;
-
+// Menu
 $game->out('
-<table border=0 cellpadding=2 cellspacing=2 wisth="450" class="style_outer" align="center">
+<table border=0 cellpadding=2 cellspacing=2 width=60% class="style_outer" align="center">
+  <form id="alfa_tutor" action="'.parse_link('a=stats&a2=alpha_stats').'" method="get">
+  <input type="hidden" id="selector" value="'.$selector.'">
   <tr>
     <td>
-      <center><span class="caption">'.$user['user_name'].'</span><br><span class="sub_caption2">'.( ($user['user_attack_protection']>=$game->config['tick_id']) ? '<span style="color: red">'.constant($game->sprache("TEXT36")).'</span>' : '' ).'</span></center>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <table border=0 cellpadding=1 cellspacing=1 width=450 class ="style_inner">
-        <tr>');
-
-//avatar:
-if (!empty($user['user_avatar']))
-{
-$info = getimagesize_remote($user['user_avatar']);
-
-if ($info[0]>0 && $info[1]>0 && $info[0]<=150 && $info[1]<=250)
-{
-$game->out('<td width='.$info[0].'><img src="'.$user['user_avatar'].'"></td><td width=25></td><td width=425-'.$info[0].' valign=top>');
-}
-else if ($info[0]>0 && $info[1]>0)
-{
-$width=150;
-$height=150;
-	if ($info[0]>$info[1]) {$height = 150 * ($info[1] / $info[0]);}
- 	else {$width = 150 * ($info[0] / $info[1]);}
-
-
-$game->out('<td width='.$width.'><img src="'.$user['user_avatar'].'" width="'.$width.'" height="'.$height.'"></td><td width=25></td><td width=425-'.$width.' valign=top>');
-}
-else $game->out('<td width=200></td><td width=250 valign=top>');
-}
-else $game->out('<td width=200></td><td width=250 valign=top>');
-
-$rasse=$RACE_DATA[$user['user_race']][0];
-
-
-$planets=$db->queryrow('SELECT count(planet_id) AS num FROM planets WHERE planet_owner="'.$user['user_id'].'"');
-
-$game->out('
-            <table border=0 cellpadding=2 cellspacing=2 class="style_inner">
-              <tr>
-                <td width=70><span class="text_large">'.constant($game->sprache("TEXT19")).'</b></span></td>
-                <td width=150><span class="text_large">'.$planets['num'].'</td>
-              </tr>
-            </table>
-          </td>
-        </tr>
+      <table border=0 cellpadding=2 cellspacing=2 width=100% class="style_inner">
+      <tr>
+        <td align="center"><a href="'.parse_link('a=stats&a2=alpha_stats&sele=0').'"><span class="sub_caption2">'.constant($game->sprache("TEXT126")).'</span></a></td>
+        <td align="center"><a href="'.parse_link('a=stats&a2=alpha_stats&sele=1').'"><span class="sub_caption2">'.constant($game->sprache("TEXT127")).'</span></a></td>
+        <td align="center"><a href="'.parse_link('a=stats&a2=alpha_stats&sele=2').'"><span class="sub_caption2">'.constant($game->sprache("TEXT131")).'</span></a></td>
+        <td align="center"><a href="'.parse_link('a=stats&a2=alpha_stats&sele=3').'"><span class="sub_caption2">'.constant($game->sprache("TEXT132")).'</span></a></td>            
+      </tr>
       </table>
     </td>
   </tr>
-  <tr>
-    <td align="center"><b>'.constant($game->sprache("TEXT96")).'</b></td>
-  </tr>
-  <tr>
-    <td>
-      <table border=0 cellpadding=2 cellspacing=2 width="450" class="style_inner">
-        <tr>
-          <td width=180><b>'.constant($game->sprache("TEXT35")).'</b></td>
-          <td align="center" width=180><b>'.constant($game->sprache("TEXT97")).'</b></td></tr>');
-//borg_target table reading for threat information
-$borg_target_query = $db->query('SELECT u.user_name, bt.threat_level FROM borg_target bt INNER JOIN user u ON bt.user_id = u.user_id ORDER BY threat_level DESC LIMIT 0,10');
-while($btrow = $db->fetchrow($borg_target_query))
-{
-	if($btrow['threat_level'] > 1400.0)
-		$threat_string = 'AAA';
-	elseif($btrow['threat_level'] > 950.0)
-		$threat_string = 'AA';
-	elseif($btrow['threat_level'] > 450.0)
-		$threat_string = 'A';
-	elseif($btrow['threat_level'] > 200.0)
-		$threat_string = 'B';
-	else
-		$threat_string = 'C';
-	$game->out('<tr><td>'.$btrow['user_name'].'</td><td align="center">'.$threat_string.'</td></tr>');
-}
-$game->out('
-      </table>
-    </td>
-  </tr>
+  </form>
 </table>
 <br>
+<br>
 ');
+// End of Menu
 
-$_link_image = '<a href="usermap.php?user='.$user['user_name'].'&size=6&map" target=_blank><img src="usermap.php?user='.$user['user_name'].'&size=1" border=0></a>';
+switch ($selector) {
+    case 0:
+        $num_cols = 2;
+        $header0_txt = constant($game->sprache("TEXT96"));
+        $header1_txt = constant($game->sprache("TEXT35"));        
+        $header2_txt = constant($game->sprache("TEXT103"));
+        $charted_pack = $db->queryrow('SELECT alpha_charted FROM memory_alpha_storage WHERE id = 1');
+        if(isset($charted_pack) && !empty($charted_pack)) {
+            $charted_rank = unserialize(urldecode($charted_pack['alpha_charted']));
+            foreach ($charted_rank AS $key => $charted_item) {
+                $item_list[$key]['user_name'] = $charted_item['user_name'];
+                $item_list[$key]['item_1'] = $charted_item['user_charted'];
+            }
+            unset ($charted_pack, $charted_rank);            
+        }
+        break;
+    case 1:
+        $num_cols = 2;
+        $header0_txt = constant($game->sprache("TEXT124"));
+        $header1_txt = constant($game->sprache("TEXT35"));                
+        $header2_txt = constant($game->sprache("TEXT125"));
+        $tform_pack = $db->queryrow('SELECT alpha_tform FROM memory_alpha_storage WHERE id = 1');
+        if(isset($tform_pack) && !empty($tform_pack)) {
+            $tform_rank = unserialize(urldecode($tform_pack['alpha_tform']));        
+            foreach ($tform_rank AS $key => $tform_item) {
+                $item_list[$key]['user_name'] = $tform_item['user_name'];
+                $item_list[$key]['item_1'] = $tform_item['user_tform_planets'];
+            }
+            unset ($tform_pack, $tform_rank);            
+        }    
+        break;
+    case 2:
+        $num_cols = 2;
+        $header0_txt = constant($game->sprache("TEXT129"));
+        $header1_txt = constant($game->sprache("TEXT35"));                
+        $header2_txt = constant($game->sprache("TEXT130"));
+        $cships_pack = $db->queryrow('SELECT alpha_cships FROM memory_alpha_storage WHERE id = 1');
+        if(isset($cships_pack) && !empty($cships_pack)) {
+            $cships_rank = unserialize(urldecode($cships_pack['alpha_cships']));        
+            foreach ($cships_rank AS $key => $cships_item) {
+                $item_list[$key]['user_name'] = $cships_item['user_name'];
+                $item_list[$key]['item_1'] = $cships_item['user_made_cships'];
+            }
+            unset ($cships_pack, $cships_rank);            
+        }    
+        break;
+    case 3:
+        $num_cols = 3;
+        $header0_txt = constant($game->sprache("TEXT132b"));
+        $header1_txt = constant($game->sprache("TEXT132c"));                
+        $header2_txt = constant($game->sprache("TEXT132d"));
+        $header3_txt = constant($game->sprache("TEXT132e"));
+        $alt_list = [1 => constant($game->sprache("TEXT82c")), 2 => constant($game->sprache("TEXT82b")), 3 => constant($game->sprache("TEXT81")), 4 => constant($game->sprache("TEXT82"))];
+        $off_pack = $db->queryrow('SELECT alpha_off FROM memory_alpha_storage WHERE id = 1');
+        if(isset($off_pack) && !empty($off_pack)) {
+            $off_rank = unserialize(urldecode($off_pack['alpha_off']));        
+            foreach ($off_rank AS $key => $off_item) {
+                $item_list[$key]['user_name'] = $off_item['officer_name'];
+                $item_list[$key]['item_1'] = '<img onmouseover="return overlib(\''.$alt_list[$off_item['officer_rank']].'\', CAPTION, \''.constant($game->sprache("TEXT70")).'\', WIDTH, 150, '.OVERLIB_STANDARD.');" onmouseout="return nd();"src="'.$game->PLAIN_GFX_PATH.'officer_rank_'.$off_item['officer_rank'].'.png" alt="'.$alt_list[$off_item['officer_rank']].'" height="20" width="20">';
+                $item_list[$key]['item_2'] = $off_item['officer_level'];
+            }
+            unset ($off_pack, $off_rank);            
+        }    
+        break;        
+}
 
 $game->out('
-<br>
-
-<table border=0 cellpadding=2 cellspacing=2 width="450" class="style_outer">
+<table border=0 cellpadding=2 cellspacing=2 width="300px" class="style_outer" align="center">
   <tr>
-    <td><span class="sub_caption">'.constant($game->sprache("TEXT52")).'</span></td>
+    <td width=50% align="center"><b>'.$header0_txt.'</b></td>
   </tr>
   <tr>
     <td>
-      <table border=0 cellpadding=2 cellspacing=2 width="450" class="style_inner">
+      <table border=0 cellpadding=2 cellspacing=2 width=100% class="style_inner">
         <tr>
-          <td align="center">'.$_link_image.'</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<br>
-');
-
-$game->out('
-<table border=0 cellpadding=2 cellspacing=2 width="450" class="style_outer">
-  <tr>
-    <td><span class="sub_caption">'.constant($game->sprache("TEXT53")).'</span></td>
-  </tr>');
-
-$game->out('
-  <tr>
-    <td align="center">
-      <b>'.constant($game->sprache("TEXT94")).'</b>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <table border=0 cellpadding=2 cellspacing=2 width="450" class="style_inner">
-        <tr>
-          <td width=80><b>'.constant($game->sprache("TEXT69")).'</td>
-          <td width=200><b>'.constant($game->sprache("TEXT18")).'</td>
-          <td width=50><b>'.constant($game->sprache("TEXT11")).'</td>
-          <td width=50><b>'.constant($game->sprache("TEXT55")).'</td>
-        </tr>
-');
-
-$sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
-                   FROM (planets pl)
-                   INNER JOIN (starsystems sys) USING (system_id)
-                   INNER JOIN (starsystems_details sd) ON pl.system_id = sd.system_id AND sd.user_id = '.$game->player['user_id'].'
-                   WHERE pl.planet_owner = "'.BORG_USERID.'"
-                   GROUP BY pl.planet_id
-                   ORDER BY pl.planet_name';
-
-$planetquery=$db->query($sql_pl);
-$numero_righe = $db->num_rows($planetquery);
-if($numero_righe == 0) {
-    $game->out('<tr><td> --- </td><td> --- </td><td> --- </td><td> --- </td></tr>');
+          <td align="left" width="100px"><b>'.$header1_txt.'</b></td>
+          <td align="right"><b>'.$header2_txt.'</b></td>
+        '.($num_cols > 2 ? '<td align="right"><b>'.$header3_txt.'</b></td>' : '').'
+        '.($num_cols > 3 ? '<td align="right"><b>'.$header4_txt.'</b></td>' : '').'            
+        '.($num_cols > 4 ? '<td align="right"><b>'.$header5_txt.'</b></td>' : '').'            
+        </tr>');
+if(isset($item_list) && count($item_list) > 0) {
+    foreach ($item_list AS $key => $item) {
+        switch ($key) {
+            case 0:
+                $game->out('<tr><td style="color:yellow;"><b>'.$item['user_name'].'</b></td>
+                                <td align="right">'.$item['item_1'].'</td>                    
+            '.($num_cols > 2 ? '<td align="right">'.$item['item_2'].'</td>' : '').' 
+            '.($num_cols > 3 ? '<td align="right">'.$item['item_3'].'</td>' : '').' 
+            '.($num_cols > 4 ? '<td align="right">'.$item['item_4'].'</td>' : '').' 
+                    </tr>');
+                break;
+            case 1:
+                $game->out('<tr><td style="color:silver;"><b>'.$item['user_name'].'</b></td>
+                                <td align="right">'.$item['item_1'].'</td>                    
+            '.($num_cols > 2 ? '<td align="right">'.$item['item_2'].'</td>' : '').' 
+            '.($num_cols > 3 ? '<td align="right">'.$item['item_3'].'</td>' : '').' 
+            '.($num_cols > 4 ? '<td align="right">'.$item['item_4'].'</td>' : '').' 
+                    </tr>');
+                break;
+            case 2:
+                $game->out('<tr><td style="color:brown;"><b>'.$item['user_name'].'</b></td>
+                                <td align="right">'.$item['item_1'].'</td>                    
+            '.($num_cols > 2 ? '<td align="right">'.$item['item_2'].'</td>' : '').' 
+            '.($num_cols > 3 ? '<td align="right">'.$item['item_3'].'</td>' : '').' 
+            '.($num_cols > 4 ? '<td align="right">'.$item['item_4'].'</td>' : '').' 
+                    </tr>');
+                break;
+            default:
+                $game->out('<tr><td>'.$item['user_name'].'</td>
+                                <td align="right">'.$item['item_1'].'</td>                    
+            '.($num_cols > 2 ? '<td align="right">'.$item['item_2'].'</td>' : '').'                     
+            '.($num_cols > 3 ? '<td align="right">'.$item['item_3'].'</td>' : '').'                     
+            '.($num_cols > 4 ? '<td align="right">'.$item['item_4'].'</td>' : '').'                                     
+                    </tr>');
+                break;
+        }    
+    }    
 }
 else {
-    while(($planet = $db->fetchrow($planetquery))==true)
-    {
-        if($planet['planet_type'] == "m" || $planet['planet_type'] == "o" || $planet['planet_type'] == "y" || $planet['planet_type'] == "x" || $planet['planet_type'] == "f" || $planet['planet_type'] == "g")
-        {
-            $game->out('<tr><td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
-            if($planet['planet_name']=="") $planet['planet_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
-                $game->out($planet['planet_name'].'</a></td><td>'.$planet['planet_points'].'</td><td>'.strtoupper($planet['planet_type']).'</td></tr>');
-        }
-    }
+    $game->out('
+        <tr><td colspan=2 align="center">'.constant($game->sprache("TEXT128")).'</td></tr>
+    ');
 }
-
-
 $game->out('
       </table>
     </td>
   </tr>
-  <tr>
-    <td align="center">
-      <b>'.constant($game->sprache("TEXT95")).'</b>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <table border=0 cellpadding=2 cellspacing=2 width="450" class="style_inner">
-        <tr>
-          <td width=80><b>'.constant($game->sprache("TEXT69")).'</td>
-          <td width=200><b>'.constant($game->sprache("TEXT18")).'</td>
-          <td width=50><b>'.constant($game->sprache("TEXT11")).'</td>
-          <td width=50><b>'.constant($game->sprache("TEXT55")).'</td>
-        </tr>');
-
-$sql_pl = 'SELECT pl.*, sys.system_x, sys.system_y
-                   FROM (planets pl)
-                   INNER JOIN (starsystems sys) USING (system_id)
-                   INNER JOIN (starsystems_details sd) ON pl.system_id = sd.system_id AND sd.user_id = '.$game->player['user_id'].'
-                   WHERE pl.planet_owner = "'.BORG_USERID.'" 
-                   GROUP BY pl.planet_id
-                   ORDER BY pl.planet_name';
-
-$planetquery=$db->query($sql_pl);
-$numero_righe = $db->num_rows($planetquery);
-if($numero_righe == 0) {
-	$game->out('<tr><td> --- </td><td> --- </td><td> --- </td><td> --- </td></tr>');
-}
-else 
-{
-	while(($planet = $db->fetchrow($planetquery))==true)
-	{
-		if($planet['planet_type'] != "m" && $planet['planet_type'] != "o" && $planet['planet_type'] != "y" && $planet['planet_type'] != "x" && $planet['planet_type'] != "f" && $planet['planet_type'] != "g")
-		{
-        $game->out('<tr><td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
-        if($planet['planet_name']=="") $planet['planet_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
-            $game->out($planet['planet_name'].'</a></td><td>'.$planet['planet_points'].'</td><td>'.strtoupper($planet['planet_type']).'</td></tr>');
-        }
-    }
-}
-
-
-$game->out('
-      </table>
-    </td>
-  </tr>
-</table>');
-
-}
+</table>
+<br>
+<br>
+');
 }
 
 function Show_Settlers()
@@ -1032,17 +1092,40 @@ else $game->out('<td width=200></td><td width=250 valign=top>');
 $rasse=$RACE_DATA[$user['user_race']][0];
 
 
-$planets=$db->queryrow('SELECT count(planet_id) AS num FROM planets WHERE planet_owner="'.$user['user_id'].'"');
+$planets=$game->config['settler_n_planets'];
 
 $game->out('
             <table border=0 cellpadding=2 cellspacing=2 class="style_inner">
               <tr>
                 <td width=70><span class="text_large">'.constant($game->sprache("TEXT19")).'</b></span></td>
-                <td width=150><span class="text_large">'.$planets['num'].'</td>
+                <td width=150><span class="text_large">'.$planets.'</td>
               </tr>
             </table>
           </td>
         </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>'.constant($game->sprache("TEXT107")).'</b></td>
+  </tr>  
+  <tr>
+    <td>
+      <table border=0 cellpadding=2 cellspacing=2 width="450" class="style_inner">
+        <tr>
+          <td width=100><b>'.constant($game->sprache("TEXT35")).'</b></td>
+          <td align="center" width=80><b>'.constant($game->sprache("TEXT106")).'</b></td>
+          <td align="center" width=80><b>'.constant($game->sprache("TEXT104")).'</b></td>
+          <td align="center" width=80><b>'.constant($game->sprache("TEXT105")).'</b></td>
+        </tr>');
+$settlers_query = $db->queryrowset('SELECT user.user_name, user.user_settler_best, user.user_first_contact, user.user_settler_made FROM user WHERE user_auth_level <= 2 AND user_active = 1 ORDER BY user.user_settler_best DESC, user.user_first_contact DESC, user.user_settler_made DESC LIMIT 0,10 ');
+foreach ($settlers_query AS $item_query)
+{
+        if($item_query['user_settler_best'] > 0 || $item_query['user_first_contact'] > 0 || $item_query['user_settler_made'] > 0) {
+        	$game->out('<tr><td>'.$item_query['user_name'].'</td><td align="center">'.$item_query['user_settler_best'].'</td><td align="center">'.$item_query['user_first_contact'].'</td><td align="center">'.$item_query['user_settler_made'].'</td></tr>');
+        }
+}
+$game->out('
       </table>
     </td>
   </tr>
@@ -1089,25 +1172,27 @@ $game->out('
       <table border=0 cellpadding=2 cellspacing=2 width="450" class="style_inner">
         <tr>
           <td width=80><b>'.constant($game->sprache("TEXT69")).'</td>
-          <td width=200><b>'.constant($game->sprache("TEXT18")).'</td>
-          <td width=60><b>'.constant($game->sprache("TEXT102")).'</td>
+          <td width=90><b>'.constant($game->sprache("TEXT18")).'</td>
+          <td width=140><b>'.constant($game->sprache("TEXT8")).'</b></td>
+          <td width=80><b>'.constant($game->sprache("TEXT102")).'</td>
           <td width=50><b>'.constant($game->sprache("TEXT55")).'</td>
         </tr>
 ');
 
-$sql_pl = 'SELECT pl.planet_id, pl.planet_name, pl.best_mood, pl.best_mood_user, pl.sector_id, pl.planet_distance_id, pl.planet_type, sys.system_x, sys.system_y
+$sql_pl = 'SELECT pl.planet_id, pl.planet_name, pl.best_mood, pl.best_mood_user, u.user_name AS best_mood_user_name, pl.sector_id, pl.planet_distance_id, pl.planet_type, sys.system_x, sys.system_y
                    FROM (planets pl)
                    INNER JOIN (starsystems sys) USING (system_id)
                    INNER JOIN (starsystems_details sd) ON pl.system_id = sd.system_id AND sd.user_id = '.$game->player['user_id'].'
+                   LEFT JOIN (user u) ON (pl.best_mood_user = u.user_id)
                    WHERE pl.planet_owner = "'.INDEPENDENT_USERID.'" AND
-                         pl.planet_type IN ("a","b","c","d","m","o","p") 
+                         pl.planet_type IN ("e","f","g","h","k", "l", "m","n", "o","p") 
                    GROUP BY pl.planet_id
                    ORDER BY pl.sector_id, pl.system_id, pl.planet_name';
 
 $planetquery=$db->query($sql_pl);
 $numero_righe = $db->num_rows($planetquery);
 if($numero_righe == 0) {
-    $game->out('<tr><td> --- </td><td> --- </td><td> --- </td><td> --- </td></tr>');
+    $game->out('<tr><td> --- </td><td> --- </td><td> --- </td><td> --- </td><td> --- </td></tr>');
 }
 else {
     $sett_diplo = $db->fetchrowset($planetquery);
@@ -1116,23 +1201,29 @@ else {
         $game->out('<tr><td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
         if($planet['planet_name']=="") $planet['planet_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
         $game->out($planet['planet_name'].'</a></td>');
-        // Insane number of SELECT
-        $sql = 'SELECT SUM(mood_modifier) as mood FROM settlers_relations WHERE planet_id = '.$planet['planet_id'].' AND user_id = '.$game->player['user_id'];
-        $u_m = $db->queryrow($sql);
-        if(isset($u_m['mood']) && !empty($u_m['mood']))
-        {
-            $user_mood = $u_m['mood'];
-            $game->out('<td><span style="color: '.(($game->player['user_id'] == $planet['best_mood_user']) || ($user_mood > $planet['best_mood']) ? 'green' : 'red').'">'.$user_mood.'</span></td>');
+        if($planet['best_mood_user'] == $game->player['user_id']) {
+          $game->out('<td>'.$game->player['user_name'].'</td><td><span style="color: green">'.$planet['best_mood'].'</span></td>');
         }
-        else
-        {
-            $game->out('<td>---</td>');
+        else {
+          $game->out('<td>'.$planet['best_mood_user_name'].' ('.$planet['best_mood'].')</td>');
+          // Insane number of SELECT
+          $sql = 'SELECT SUM(mood_modifier) as mood FROM settlers_relations WHERE planet_id = '.$planet['planet_id'].' AND user_id = '.$game->player['user_id'];
+          $u_m = $db->queryrow($sql);
+          if(isset($u_m['mood']) &&!empty($u_m['mood']))
+          {
+              $user_mood = $u_m['mood'];
+              $game->out('<td><span style="color: red">'.$user_mood.'</span></td>');
+          }
+          else
+          {
+              $game->out('<td>---</td>');
+          }
         }
         $game->out('<td>'.strtoupper($planet['planet_type']).'</td></tr>');
     }
 }
 
-
+/*
 $game->out('
       </table>
     </td>
@@ -1157,7 +1248,7 @@ $sql_pl = 'SELECT pl.planet_id, pl.planet_name, pl.best_mood, pl.best_mood_user,
                    INNER JOIN (starsystems sys) USING (system_id)
                    INNER JOIN (starsystems_details sd) ON pl.system_id = sd.system_id AND sd.user_id = '.$game->player['user_id'].'
                    WHERE pl.planet_owner = "'.INDEPENDENT_USERID.'" AND
-                         pl.planet_type IN ("h","n","k","l","e","f","g") 
+                         pl.planet_type IN ("k","l","e","f") 
                    GROUP BY pl.planet_id
                    ORDER BY pl.sector_id, pl.system_id, pl.planet_name';
 
@@ -1189,6 +1280,8 @@ else
         $game->out('<td>'.strtoupper($planet['planet_type']).'</td></tr>');
     }
 }
+ * 
+ */
 
 $game->out('
       </table>
@@ -1204,24 +1297,26 @@ $game->out('
       <table border=0 cellpadding=2 cellspacing=2 width="450" class="style_inner">
         <tr>
           <td width=80><b>'.constant($game->sprache("TEXT69")).'</td>
-          <td width=200><b>'.constant($game->sprache("TEXT18")).'</td>
-          <td width=50><b>'.constant($game->sprache("TEXT102")).'</td>
+          <td width=90><b>'.constant($game->sprache("TEXT18")).'</td>
+          <td width=140><b>'.constant($game->sprache("TEXT8")).'</b></td>          
+          <td width=80><b>'.constant($game->sprache("TEXT102")).'</td>
           <td width=50><b>'.constant($game->sprache("TEXT55")).'</td>
         </tr>');
 
-$sql_pl = 'SELECT pl.planet_id, pl.planet_name, pl.best_mood, pl.best_mood_user, pl.sector_id, pl.planet_distance_id, pl.planet_type, sys.system_x, sys.system_y
+$sql_pl = 'SELECT pl.planet_id, pl.planet_name, pl.best_mood, pl.best_mood_user, u.user_name AS best_mood_user_name, pl.sector_id, pl.planet_distance_id, pl.planet_type, sys.system_x, sys.system_y
                    FROM (planets pl)
                    INNER JOIN (starsystems sys) USING (system_id)
                    INNER JOIN (starsystems_details sd) ON pl.system_id = sd.system_id AND sd.user_id = '.$game->player['user_id'].'
+                   LEFT JOIN (user u) ON (pl.best_mood_user = u.user_id)                   
                    WHERE pl.planet_owner = "'.INDEPENDENT_USERID.'" AND
-                         pl.planet_type IN ("i","j","s","t","x","y") 
+                         pl.planet_type IN ("a","b","c","d","i","j","s","t","x","y") 
                    GROUP BY pl.planet_id
                    ORDER BY pl.sector_id, pl.system_id, pl.planet_name';
 
 $planetquery=$db->query($sql_pl);
 $numero_righe = $db->num_rows($planetquery);
 if($numero_righe == 0) {
-	$game->out('<tr><td> --- </td><td> --- </td><td> --- </td><td> --- </td></tr>');
+	$game->out('<tr><td> --- </td><td> --- </td><td> --- </td><td> --- </td><td> --- </td></tr>');
 }
 else 
 {
@@ -1231,18 +1326,24 @@ else
         $game->out('<tr><td>'.$game->get_sector_name($planet['sector_id']).':'.$game->get_system_cname($planet['system_x'],$planet['system_y']).':'.($planet['planet_distance_id'] + 1).'</td><td><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet['planet_id'])).'">');
         if($planet['planet_name']=="") $planet['planet_name']="(<i>".constant($game->sprache("TEXT40"))."</i>)";
         $game->out($planet['planet_name'].'</a></td>');
-        // Insane number of SELECT
-        $sql = 'SELECT SUM(mood_modifier) as mood FROM settlers_relations WHERE planet_id = '.$planet['planet_id'].' AND user_id = '.$game->player['user_id'];
-        $u_m = $db->queryrow($sql);
-        if(isset($u_m['mood']) && !empty($u_m['mood']))
-        {
-            $user_mood = $u_m['mood'];
-            $game->out('<td><span style="color: '.(($game->player['user_id'] == $planet['best_mood_user']) || ($user_mood > $planet['best_mood']) ? 'green' : 'red').'">'.$user_mood.'</span></td>');
+        if($planet['best_mood_user'] == $game->player['user_id']) {
+          $game->out('<td>'.$game->player['user_name'].'</td><td><span style="color: green">'.$planet['best_mood'].'</span></td>');
         }
-        else
-        {
-            $game->out('<td>---</td>');
-        }
+        else {
+          $game->out('<td>'.$planet['best_mood_user_name'].' ('.$planet['best_mood'].')</td>');
+          // Insane number of SELECT
+          $sql = 'SELECT SUM(mood_modifier) as mood FROM settlers_relations WHERE planet_id = '.$planet['planet_id'].' AND user_id = '.$game->player['user_id'];
+          $u_m = $db->queryrow($sql);
+          if(isset($u_m['mood']) &&!empty($u_m['mood']))
+          {
+              $user_mood = $u_m['mood'];
+              $game->out('<td><span style="color: red">'.$user_mood.'</span></td>');
+          }
+          else
+          {
+              $game->out('<td>---</td>');
+          }
+        }        
         $game->out('<td>'.strtoupper($planet['planet_type']).'</td></tr>');
     }
 }
@@ -1254,6 +1355,105 @@ $game->out('
 </table>');
 
 }
+}
+
+function Show_Orions()
+{
+global $db;
+global $game;
+global $config;
+
+
+// Men BASIC
+Show_Main();
+
+if(($user = $db->queryrow('SELECT * FROM user WHERE user_id="'.ORION_USERID.'" LIMIT 1'))===false) 
+{
+	$game->out('<span class="sub_caption">'.constant($game->sprache("TEXT33")).' (id='.$_REQUEST['id'].'<br>'.constant($game->sprache("TEXT34")).'</span>');
+}
+else
+{
+    $game->out('
+    <table border=0 cellpadding=2 cellspacing=2 wisth="450" class="style_outer" align="center">
+      <tr>
+        <td>
+          <center><span class="caption">'.$user['user_name'].'</span></center>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table border=0 cellpadding=1 cellspacing=1 width=450 class ="style_inner">
+            <tr>');
+
+    //avatar:
+    if (!empty($user['user_avatar']))
+    {
+        $info = getimagesize_remote($user['user_avatar']);
+
+        if ($info[0]>0 && $info[1]>0 && $info[0]<=150 && $info[1]<=250)
+        {
+        $game->out('<td width='.$info[0].'><img src="'.$user['user_avatar'].'"></td><td width=25></td><td width=425-'.$info[0].' valign=top>');
+        }
+        else if ($info[0]>0 && $info[1]>0)
+        {
+        $width=150;
+        $height=150;
+                if ($info[0]>$info[1]) {$height = 150 * ($info[1] / $info[0]);}
+                else {$width = 150 * ($info[0] / $info[1]);}
+
+
+        $game->out('<td width='.$width.'><img src="'.$user['user_avatar'].'" width="'.$width.'" height="'.$height.'"></td><td width=25></td><td width=425-'.$width.' valign=top>');
+        }
+        else $game->out('<td width=200></td><td width=250 valign=top>');
+    }
+    else $game->out('<td width=200></td><td width=250 valign=top>');
+
+    $rasse=$RACE_DATA[$user['user_race']][0];    
+    
+    $planets=$db->queryrow('SELECT count(planet_id) AS num FROM planets WHERE planet_owner="'.$user['user_id'].'"');
+    
+    $game->out('
+                <table border=0 cellpadding=2 cellspacing=2 class="style_inner">
+                  <tr>
+                    <td width=70><span class="text_large">'.constant($game->sprache("TEXT19")).'</b></span></td>
+                    <td width=150><span class="text_large">'.$planets['num'].'</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>');
+    
+    $game->out('
+    </table>
+    <br>
+    ');
+
+    $_link_image = '<a href="usermap.php?user='.$user['user_name'].'&size=6&map" target=_blank><img src="usermap.php?user='.$user['user_name'].'&size=1" border=0></a>';
+
+    $game->out('
+    <br>
+
+    <table border=0 cellpadding=2 cellspacing=2 width="450" class="style_outer">
+      <tr>
+        <td><span class="sub_caption">'.constant($game->sprache("TEXT52")).'</span></td>
+      </tr>
+      <tr>
+        <td>
+          <table border=0 cellpadding=2 cellspacing=2 width="450" class="style_inner">
+            <tr>
+              <td align="center">'.$_link_image.'</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <br>
+    ');
+    
+}
+
 }
 
 function Player_Ranking($focus=0,$search_name="")
@@ -1278,20 +1478,26 @@ if (!isset($_REQUEST['a3']) || empty($_REQUEST['a3'])) $_REQUEST['a3']=1;
 $queryfocus=$focus;
 if ($focus<=10) $queryfocus=11;
 
-$rankquery=$db->query('SELECT u.*,a.alliance_tag,a.alliance_name,s.id FROM (user u) LEFT JOIN (alliance a) ON a.alliance_id=u.user_alliance LEFT JOIN (spenden s) ON s.name=u.user_name WHERE (u.user_rank_points>="'.($queryfocus-10).'") AND (u.user_active=1 OR u.user_active=3) AND u.user_auth_level<>'.STGC_DEVELOPER.' ORDER by u.user_rank_points ASC LIMIT 20');
+$rankquery=$db->query('SELECT u.*,a.alliance_tag,a.alliance_name,s.id FROM (user u) LEFT JOIN (alliance a) ON a.alliance_id=u.user_alliance LEFT JOIN (spenden s) ON s.name=u.user_name WHERE (u.user_rank_points>="'.($queryfocus-10).'") AND (u.user_active=1 OR u.user_active=3) AND u.user_auth_level = '.STGC_PLAYER.' ORDER by u.user_rank_points ASC LIMIT 20');
 
 $rankpos='user_rank_points';
 
 if (isset($_REQUEST['a3']) && $_REQUEST['a3']==2)
 {
-$rankquery=$db->query('SELECT u.*,a.alliance_tag,a.alliance_name,s.id FROM (user u) LEFT JOIN (alliance a) ON a.alliance_id=u.user_alliance LEFT JOIN (spenden s) ON s.name=u.user_name WHERE (u.user_rank_planets>="'.($queryfocus-10).'") AND (u.user_active=1 OR u.user_active=3) AND u.user_auth_level<>'.STGC_DEVELOPER.' ORDER by u.user_rank_planets ASC LIMIT 20');
+$rankquery=$db->query('SELECT u.*,a.alliance_tag,a.alliance_name,s.id FROM (user u) LEFT JOIN (alliance a) ON a.alliance_id=u.user_alliance LEFT JOIN (spenden s) ON s.name=u.user_name WHERE (u.user_rank_planets>="'.($queryfocus-10).'") AND (u.user_active=1 OR u.user_active=3) AND u.user_auth_level = '.STGC_PLAYER.' ORDER by u.user_rank_planets ASC LIMIT 20');
 $rankpos='user_rank_planets';
 }
 else if (isset($_REQUEST['a3']) && $_REQUEST['a3']==3)
 {
-$rankquery=$db->query('SELECT u.*,a.alliance_tag,a.alliance_name,s.id FROM (user u) LEFT JOIN (alliance a) ON a.alliance_id=u.user_alliance LEFT JOIN (spenden s) ON s.name=u.user_name WHERE (u.user_rank_honor>="'.($queryfocus-10).'") AND (u.user_active=1 OR u.user_active=3)  ORDER by u.user_rank_honor ASC LIMIT 20');
+$rankquery=$db->query('SELECT u.*,a.alliance_tag,a.alliance_name,s.id FROM (user u) LEFT JOIN (alliance a) ON a.alliance_id=u.user_alliance LEFT JOIN (spenden s) ON s.name=u.user_name WHERE (u.user_rank_honor_pvp>="'.($queryfocus-10).'") AND (u.user_active=1 OR u.user_active=3) AND u.user_auth_level = '.STGC_PLAYER.' ORDER by u.user_rank_honor_pvp ASC LIMIT 20');
 //$rankquery=$db->query('SELECT u.*,a.alliance_tag,a.alliance_name,s.id FROM (user u) LEFT JOIN (alliance a) ON a.alliance_id=u.user_alliance LEFT JOIN (spenden s) ON s.name=u.user_name WHERE (u.user_rank_honor>="'.($queryfocus-10).'") AND (u.user_active=1 OR u.user_active=3) AND u.user_auth_level<>'.STGC_DEVELOPER.' ORDER by u.user_rank_honor ASC LIMIT 20');
-$rankpos='user_rank_honor';
+$rankpos='user_rank_honor_pvp';
+}
+else if (isset($_REQUEST['a3']) && $_REQUEST['a3']==4)
+{
+$rankquery=$db->query('SELECT u.*,a.alliance_tag,a.alliance_name,s.id FROM (user u) LEFT JOIN (alliance a) ON a.alliance_id=u.user_alliance LEFT JOIN (spenden s) ON s.name=u.user_name WHERE (u.user_rank_honor_pve>="'.($queryfocus-10).'") AND (u.user_active=1 OR u.user_active=3) AND u.user_auth_level = '.STGC_PLAYER.' ORDER by u.user_rank_honor_pve ASC LIMIT 20');
+//$rankquery=$db->query('SELECT u.*,a.alliance_tag,a.alliance_name,s.id FROM (user u) LEFT JOIN (alliance a) ON a.alliance_id=u.user_alliance LEFT JOIN (spenden s) ON s.name=u.user_name WHERE (u.user_rank_honor>="'.($queryfocus-10).'") AND (u.user_active=1 OR u.user_active=3) AND u.user_auth_level<>'.STGC_DEVELOPER.' ORDER by u.user_rank_honor ASC LIMIT 20');
+$rankpos='user_rank_honor_pve';
 }
 
 
@@ -1339,14 +1545,29 @@ if (isset($_REQUEST['a3']) && $_REQUEST['a3']==3)
 {
 $game->out('
           <td width=100 align=middle>
-            <a href="'.parse_link('a=stats&a2=player_ranking&a3=3&search='.$search_name).'"><span class="text_large"><u>'.constant($game->sprache("TEXT62")).'</u></a><br>[<a href="include/pdf_ranking.php?action=user&order=honor" target="_blank"><b>PDF</b></a>]
+            <a href="'.parse_link('a=stats&a2=player_ranking&a3=3&search='.$search_name).'"><span class="text_large" style="color: red;"><u>'.constant($game->sprache("TEXT62")).'</u></a><br>[<a href="include/pdf_ranking.php?action=user&order=honor" target="_blank"><b>PDF</b></a>]
           </td>');
 }
 else
 {
 $game->out('
           <td width=100 align=middle>
-            <a href="'.parse_link('a=stats&a2=player_ranking&a3=3&search='.$search_name).'"><span class="text_large">'.constant($game->sprache("TEXT62")).'</a><br>[<a href="include/pdf_ranking.php?action=user&order=honor" target="_blank"><b>PDF</b></a>]
+            <a href="'.parse_link('a=stats&a2=player_ranking&a3=3&search='.$search_name).'"><span class="text_large" style="color: red;">'.constant($game->sprache("TEXT62")).'</a><br>[<a href="include/pdf_ranking.php?action=user&order=honor" target="_blank"><b>PDF</b></a>]
+          </td>');
+}
+
+if (isset($_REQUEST['a3']) && $_REQUEST['a3']==4)
+{
+$game->out('
+          <td width=100 align=middle>
+            <a href="'.parse_link('a=stats&a2=player_ranking&a3=4&search='.$search_name).'"><span class="text_large" style="color: green;"><u>'.constant($game->sprache("TEXT62B")).'</u></a><br>[<a href="include/pdf_ranking.php?action=user&order=honor" target="_blank"><b>PDF</b></a>]
+          </td>');
+}
+else
+{
+$game->out('
+          <td width=100 align=middle>
+            <a href="'.parse_link('a=stats&a2=player_ranking&a3=4&search='.$search_name).'"><span class="text_large" style="color: green;">'.constant($game->sprache("TEXT62B")).'</a><br>[<a href="include/pdf_ranking.php?action=user&order=honor" target="_blank"><b>PDF</b></a>]
           </td>');
 }
 
@@ -1528,11 +1749,16 @@ $game->out('</td>
 </td>
 <td>
 '.$user['user_points'].'
-</td>
-<td>
-'.$user['user_honor'].'
-</td>
-');
+</td>');
+if($_REQUEST['a3']== 1 || $_REQUEST['a3'] == 2) {
+    $game->out('<td>'.$user['user_honor'].'</td>');
+}
+elseif($_REQUEST['a3'] == 3) {
+    $game->out('<td style="color: red;">'.$user['user_honor_pvp'].'</td>');
+}
+elseif ($_REQUEST['a3'] == 4) {
+    $game->out('<td style="color: green;">'.$user['user_honor_png'].'</td>');
+}
 $gradi = array ( 0 => constant($game->sprache("TEXT73")) , 1 => constant($game->sprache("TEXT74")) , 2 => constant($game->sprache("TEXT75")) , 
 3 => constant($game->sprache("TEXT76")) , 4 => constant($game->sprache("TEXT77")), 5 => constant($game->sprache("TEXT78")), 6 => constant($game->sprache("TEXT79")), 
 7 => constant($game->sprache("TEXT80")), 8 => constant($game->sprache("TEXT81")), 9 => constant($game->sprache("TEXT82")) );
@@ -1608,23 +1834,42 @@ if (!isset($_REQUEST['a3']) || empty($_REQUEST['a3'])) $_REQUEST['a3']=1;
 $queryfocus=$focus;
 if ($focus<=10) $queryfocus=11;
 
-$rankquery=$db->query('SELECT * FROM alliance WHERE (alliance_rank_points>="'.($queryfocus-10).'") AND (alliance_rank_points<="'.($queryfocus+10).'") ORDER by alliance_rank_points ASC LIMIT 20');
-
+$rankquery=$db->query('SELECT a.*, MIN(ad.type) as type
+                       FROM alliance a 
+                       LEFT JOIN alliance_diplomacy ad ON (a.alliance_id = ad.alliance1_id OR a.alliance_id = ad.alliance2_id)
+                       WHERE (a.alliance_rank_points>="'.($queryfocus-10).'") AND (a.alliance_rank_points<="'.($queryfocus+10).'")
+                       GROUP BY a.alliance_id
+                       ORDER by a.alliance_rank_points ASC LIMIT 20');
 $rankpos='alliance_rank_points';
 
 if (isset($_REQUEST['a3']) && $_REQUEST['a3']==2)
 {
-$rankquery=$db->query('SELECT * FROM alliance WHERE (alliance_rank_planets>="'.($queryfocus-10).'") AND (alliance_rank_planets<="'.($queryfocus+10).'") ORDER by alliance_rank_planets ASC LIMIT 20');
+$rankquery=$db->query('SELECT a.*, MIN(ad.type) as type
+                       FROM alliance a 
+                       LEFT JOIN alliance_diplomacy ad ON (a.alliance_id = ad.alliance1_id OR a.alliance_id = ad.alliance2_id)
+                       WHERE (a.alliance_rank_planets>="'.($queryfocus-10).'") AND (a.alliance_rank_planets<="'.($queryfocus+10).'") 
+                       GROUP BY a.alliance_id
+                       ORDER by a.alliance_rank_planets ASC LIMIT 20');
 $rankpos='alliance_rank_planets';
 }
 else if (isset($_REQUEST['a3']) && $_REQUEST['a3']==3)
 {
-$rankquery=$db->query('SELECT * FROM alliance WHERE (alliance_rank_honor>="'.($queryfocus-10).'") AND (alliance_rank_honor<="'.($queryfocus+10).'") ORDER by alliance_rank_honor ASC LIMIT 20');
+$rankquery=$db->query('SELECT a.*, MIN(ad.type) as type
+                       FROM alliance a 
+                       LEFT JOIN alliance_diplomacy ad ON (a.alliance_id = ad.alliance1_id OR a.alliance_id = ad.alliance2_id)
+                       WHERE (a.alliance_rank_honor>="'.($queryfocus-10).'") AND (a.alliance_rank_honor<="'.($queryfocus+10).'")
+                       GROUP BY a.alliance_id
+                       ORDER by a.alliance_rank_honor ASC LIMIT 20');
 $rankpos='alliance_rank_honor';
 }
 else if (isset($_REQUEST['a3']) && $_REQUEST['a3']==4)
 {
-$rankquery=$db->query('SELECT * FROM alliance WHERE (alliance_rank_points_avg>="'.($queryfocus-10).'") AND (alliance_rank_points_avg<="'.($queryfocus+10).'") ORDER by alliance_rank_points_avg ASC LIMIT 20');
+$rankquery=$db->query('SELECT a.*, MIN(ad.type) as type
+                       FROM alliance a 
+                       LEFT JOIN alliance_diplomacy ad ON (a.alliance_id = ad.alliance1_id OR a.alliance_id = ad.alliance2_id)
+                       WHERE (a.alliance_rank_points_avg>="'.($queryfocus-10).'") AND (a.alliance_rank_points_avg<="'.($queryfocus+10).'")
+                       GROUP BY a.alliance_id
+                       ORDER by a.alliance_rank_points_avg ASC LIMIT 20');
 $rankpos='alliance_rank_points_avg';
 }
 
@@ -1789,7 +2034,10 @@ $game->out('
 &nbsp;'.$alliance[$rankpos].'
 </td>
 <td>');
-if (isset($_REQUEST['start']) || $alliance['alliance_id']!=$highlight)
+if (isset($alliance['type']) && $alliance['type'] == 1) {
+    $game->out('<a href="'.parse_link('a=stats&a2=viewalliance&id='.$alliance['alliance_id'].'').'"><span style="color: red;">'.$alliance['alliance_tag'].'</span></a>');
+}
+elseif (isset($_REQUEST['start']) || $alliance['alliance_id']!=$highlight)
 $game->out('<a href="'.parse_link('a=stats&a2=viewalliance&id='.$alliance['alliance_id'].'').'">'.$alliance['alliance_tag'].'</a>');
 else
 $game->out('<a href="'.parse_link('a=stats&a2=viewalliance&id='.$alliance['alliance_id'].'').'"><span class="highlight">'.$alliance['alliance_tag'].'</a></span></color>');
@@ -1876,9 +2124,10 @@ if (!isset($_REQUEST['a3']) || empty($_REQUEST['a3'])) $_REQUEST['a3']=1;
 if ($sub_action=='main' || $sub_action=='player_ranking')
 {
 if (!isset($_REQUEST['search']) || empty($_REQUEST['search'])) {$_REQUEST['search']=$game->player['user_name'];}
-if ($_REQUEST['a3']!=2 && $_REQUEST['a3']!=3) {$nr=$db->queryrow('SELECT user_rank_points AS focus FROM user WHERE user_name LIKE "'.$_REQUEST['search'].'" LIMIT 1');}
+if ($_REQUEST['a3']!=2 && $_REQUEST['a3']!=3 && $_REQUEST['a3']!=4) {$nr=$db->queryrow('SELECT user_rank_points AS focus FROM user WHERE user_name LIKE "'.$_REQUEST['search'].'" LIMIT 1');}
 if ($_REQUEST['a3']==2) $nr=$db->queryrow('SELECT user_rank_planets AS focus FROM user WHERE user_name LIKE "'.$_REQUEST['search'].'" LIMIT 1');
-if ($_REQUEST['a3']==3) $nr=$db->queryrow('SELECT user_rank_honor AS focus FROM user WHERE user_name LIKE "'.$_REQUEST['search'].'" LIMIT 1');
+if ($_REQUEST['a3']==3) $nr=$db->queryrow('SELECT user_rank_honor_pvp AS focus FROM user WHERE user_name LIKE "'.$_REQUEST['search'].'" LIMIT 1');
+if ($_REQUEST['a3']==4) $nr=$db->queryrow('SELECT user_rank_honor_pve AS focus FROM user WHERE user_name LIKE "'.$_REQUEST['search'].'" LIMIT 1');
 $focus=$nr['focus'];
 
 Player_Ranking($focus,$_REQUEST['search']);
@@ -1908,7 +2157,8 @@ Alliance_Ranking($focus,$highlight);
 
 if ($sub_action=='viewplayer') Show_Player();
 if ($sub_action=='viewalliance') Show_Alliance();
-if ($sub_action=='borgs_stats') Show_Borg();
+if ($sub_action=='alpha_stats') Show_Alpha();
 if ($sub_action=='settlers_stats') Show_Settlers();
+if ($sub_action=='orions_stats') Show_Orions();
 
 ?>

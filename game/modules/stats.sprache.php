@@ -105,7 +105,7 @@ define ("GER_TEXT41",'ICQ:');
 
 define ("GER_TEXT42",'Rasse:');
 
-define ("GER_TEXT43",'Verdienst:');
+define ("GER_TEXT43",'Ehre:');
 
 define ("GER_TEXT44",'Status:');
 
@@ -137,13 +137,15 @@ define ("GER_TEXT57",'besteht seit:');
 
 define ("GER_TEXT58",'Signatur:');
 
-define ("GER_TEXT59",'Gallerie:');
+define ("GER_TEXT59",'Gallery:');
 
 define ("GER_TEXT60",'Nach Rang sortieren');
 
 define ("GER_TEXT61",'Nach Planeten sortieren');
 
-define ("GER_TEXT62",'Nach Verdienst sortieren');
+define ("GER_TEXT62",'Ehre (PVP)');
+
+define ("GER_TEXT62B",'Ehre (PVE)');
 
 define ("GER_TEXT63",'Top 20');
 
@@ -205,33 +207,95 @@ define ("GER_TEXT91", 'Urlaub');
 
 define ("GER_TEXT92", 'Auszeichnung');
 
-define ("GER_TEXT93", 'Borg Fraktion');
+define ("GER_TEXT93", 'Memory Alpha');
 
-define ("GER_TEXT94", 'Prim&auml;re Planeten (40 pts)');
+define ("GER_TEXT94", 'Primary Planets (40 pts)');
 
-define ("GER_TEXT95", 'Sekund&auml;re Planeten (15 pts)');
+define ("GER_TEXT95", 'Secondary Planets (15 pts)');
 
-define ("GER_TEXT96", 'Top Ten Borg Krieger');
+define ("GER_TEXT96", 'Top Ten Forscher');
 
-define ("GER_TEXT97", 'Gefahrenstufe:');
+define ("GER_TEXT97", 'Threat Rating:');
 
-define ("GER_TEXT98", 'Siedler Fraktion');
+define ("GER_TEXT98", 'Siedler Faction');
 
-define ("GER_TEXT99", 'Akademie Planeten');
+define ("GER_TEXT99", 'Academy Planets');
 
-define ("GER_TEXT100", 'Schiffswerft Planeten');
+define ("GER_TEXT100", 'Shipyard Planets');
 
-define ("GER_TEXT101", 'Ress. Abbau Planeten');
+define ("GER_TEXT101", 'Mining Planets');
 
-define ("GER_TEXT102", 'Bezugs Wert');
+define ("GER_TEXT102", 'Relation Value');
 
-define ("GER_TEXT103", 'Sonnensysteme erkundet:');
+define ("GER_TEXT103", 'Stars Explored:');
 
-define ("GER_TEXT104", 'Erste Kontakte:');
+define ("GER_TEXT104", 'First Contacts:');
 
-define ("GER_TEXT105", 'Siedler gemacht:');
+define ("GER_TEXT105", 'Settlers Made:');
 
-define ("GER_TEXT106", 'Siedler befreundet:');
+define ("GER_TEXT106", 'Settlers Befriended:');
+
+define ("GER_TEXT106B", 'Diplomacy points:');
+
+define ("GER_TEXT107", 'Top Ten Settlers Supporters');
+
+define("GER_TEXT108", '   vs players:');
+
+define("GER_TEXT109", '   vs NPC:');
+
+define("GER_TEXT110", 'Liste der Systeme:');
+
+define("GER_TEXT111", 'Art:');
+
+define("GER_TEXT112", 'Status:');
+
+define("GER_TEXT113", 'Kapitalsystem');
+
+define("GER_TEXT114", 'Privat');
+
+define("GER_TEXT115", 'Niemand');
+
+define("GER_TEXT116", 'Herausgefordert');
+
+define("GER_TEXT117", 'Rivalen:');
+
+define ("GER_TEXT118", 'Orion');
+
+define ("GER_TEXT119", 'Schutz:');
+
+define ("GER_TEXT120", 'Geschützt:');
+
+define ("GER_TEXT121", '* <i> Planeten im Besitz des Kapitalsystems werden nicht als geschützte Planeten.</i>');
+
+define ("GER_TEXT122", 'Transwarp:');
+
+define ("GER_TEXT123", 'Available');
+
+define ("GER_TEXT124", 'Top Ten Terraformer');
+
+define ("GER_TEXT125", 'Terraformierte Planeten:');
+
+define ("GER_TEXT126", 'Explorers');
+
+define ("GER_TEXT127", 'Terraformer');
+
+define ("GER_TEXT128", 'Keine Daten zum Anzeigen ...');
+
+define ("GER_TEXT129", 'Top-Ten-Hauptstadt der Schiffbauer');
+
+define ("GER_TEXT130", 'konstruiert:');
+
+define ("GER_TEXT131", 'Capital Schiffe');
+
+define ("GER_TEXT132", 'Officers');
+
+define ("GER_TEXT132b", 'Top 20 Officers');
+
+define ("GER_TEXT132c", 'Officer:');
+
+define ("GER_TEXT132d", 'klasse:');
+
+define ("GER_TEXT132e", 'niveau:');
 
 
 //English
@@ -319,7 +383,7 @@ define ("ENG_TEXT41",'ICQ:');
 
 define ("ENG_TEXT42",'Race:');
 
-define ("ENG_TEXT43",'Kill points:');
+define ("ENG_TEXT43",'Honour:');
 
 define ("ENG_TEXT44",'Status:');
 
@@ -357,7 +421,9 @@ define ("ENG_TEXT60",'Sort by rank');
 
 define ("ENG_TEXT61",'Sort by planets');
 
-define ("ENG_TEXT62",'Sort by kill points');
+define ("ENG_TEXT62",'Honour (PVP)');
+
+define ("ENG_TEXT62B",'Honour (PVE)');
 
 define ("ENG_TEXT63",'Top 20');
 
@@ -419,13 +485,13 @@ define ("ENG_TEXT91", 'Holiday');
 
 define ("ENG_TEXT92", 'Award');
 
-define ("ENG_TEXT93", 'Borg Faction');
+define ("ENG_TEXT93", 'Memory Alpha');
 
 define ("ENG_TEXT94", 'Primary Planets (40 pts)');
 
 define ("ENG_TEXT95", 'Secondary Planets (15 pts)');
 
-define ("ENG_TEXT96", 'Top Ten Borg Fighters');
+define ("ENG_TEXT96", 'Top Ten Explorers');
 
 define ("ENG_TEXT97", 'Threat Rating:');
 
@@ -446,6 +512,18 @@ define ("ENG_TEXT104", 'First contacts:');
 define ("ENG_TEXT105", 'Settlers made:');
 
 define ("ENG_TEXT106", 'Settlers befriended:');
+
+define ("ENG_TEXT106B", 'Diplomacy points:');
+
+define ("ENG_TEXT107", 'Top Ten Settlers Supporters');
+
+define("ENG_TEXT108", '   vs players:');
+
+define("ENG_TEXT109", '   vs NPC:');
+
+define ("ENG_TEXT122", 'Transwarp:');
+
+define ("ENG_TEXT123", 'Available');
 
 
 //Italian
@@ -533,7 +611,7 @@ define ("ITA_TEXT41",'ICQ:');
 
 define ("ITA_TEXT42",'Specie:');
 
-define ("ITA_TEXT43",'Kill points:');
+define ("ITA_TEXT43",'Onore:');
 
 define ("ITA_TEXT44",'Stato:');
 
@@ -567,11 +645,13 @@ define ("ITA_TEXT58",'Firma:');
 
 define ("ITA_TEXT59",'Gallery:');
 
-define ("ITA_TEXT60",'Ordina per grado');
+define ("ITA_TEXT60",'Per grado');
 
-define ("ITA_TEXT61",'Ordina per pianeti');
+define ("ITA_TEXT61",'Per pianeti');
 
-define ("ITA_TEXT62",'Ordina per kill points');
+define ("ITA_TEXT62",'Per onore (PVP)');
+
+define ("ITA_TEXT62B",'Per onore (PVE)');
 
 define ("ITA_TEXT63",'Top 20');
 
@@ -613,6 +693,10 @@ define ("ITA_TEXT81",'Ammiraglio');
 
 define ("ITA_TEXT82",'Ammiraglio di flotta');
 
+define ("ITA_TEXT82b", 'Contrammiraglio');
+
+define ("ITA_TEXT82c", 'Commodoro');
+
 define ("ITA_TEXT83",'Ordina per punti');
 
 define ("ITA_TEXT84",'Ordina per media punti');
@@ -633,17 +717,17 @@ define ("ITA_TEXT91", 'Vacanza');
 
 define ("ITA_TEXT92", 'Premio');
 
-define ("ITA_TEXT93", 'Fazione Borg');
+define ("ITA_TEXT93", 'Memory Alfa');
 
 define ("ITA_TEXT94", 'Pianeti Primari (40 pts)');
 
 define ("ITA_TEXT95", 'Pianeti Secondari (15 pts)');
 
-define ("ITA_TEXT96", 'Top Ten Borg Fighters');
+define ("ITA_TEXT96", 'Top Ten Esploratori');
 
 define ("ITA_TEXT97", 'Livello minaccia:');
 
-define ("ITA_TEXT98", 'Fazione Coloni');
+define ("ITA_TEXT98", 'Coloni');
 
 define ("ITA_TEXT99", 'Pianeti Accademia');
 
@@ -661,4 +745,65 @@ define ("ITA_TEXT105", 'Colonie fondate:');
 
 define ("ITA_TEXT106", 'Colonie alleate:');
 
+define ("ITA_TEXT106B", 'Punti Diplomazia:');
+
+define ("ITA_TEXT107", 'Top Ten Settlers Supporters');
+
+define("ITA_TEXT108", '|... contro altri giocatori:');
+
+define("ITA_TEXT109", '|... contro NPC:');
+
+define("ITA_TEXT110", 'Lista dei sistemi:');
+
+define("ITA_TEXT111", 'Tipo:');
+
+define("ITA_TEXT112", 'Status:');
+
+define("ITA_TEXT113", 'Sistema Madre');
+
+define("ITA_TEXT114", 'Privato');
+
+define("ITA_TEXT115", 'Nessuno');
+
+define("ITA_TEXT116", 'Contestato');
+
+define("ITA_TEXT117", 'Rivali:');
+
+define ("ITA_TEXT118", 'Orione');
+
+define ("ITA_TEXT119", 'Protezione:');
+
+define ("ITA_TEXT120", 'Protetto:');
+
+define ("ITA_TEXT121", '* <i> I pianeti posseduti nel sistema madre non sono contabilizzati come pianeti protetti.</i>');
+
+define ("ITA_TEXT122", 'Transwarp:');
+
+define ("ITA_TEXT123", 'Disponibile');
+
+define ("ITA_TEXT124", 'Top Ten Terraformatori');
+
+define ("ITA_TEXT125", 'Pianeti terraformati:');
+
+define ("ITA_TEXT126", 'Esploratori');
+
+define ("ITA_TEXT127", 'Terraformatori');
+
+define ("ITA_TEXT128", 'Nessun dato da visualizzare...');
+
+define ("ITA_TEXT129", 'Top Ten Costruttori Navi Capitali');
+
+define ("ITA_TEXT130", 'Costruite:');
+
+define ("ITA_TEXT131", 'Navi Capitali');
+
+define ("ITA_TEXT132", 'Ufficiali');
+
+define ("ITA_TEXT132b", 'Top 20 Ufficiali');
+
+define ("ITA_TEXT132c", 'Ufficiale:');
+
+define ("ITA_TEXT132d", 'Grado:');
+
+define ("ITA_TEXT132e", 'Livello:');
 ?>

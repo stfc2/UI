@@ -48,6 +48,8 @@ define ("GER_TEXT11", 'Planeten Datenbank');
 
 define ("GER_TEXT12", 'Rassenwerte');
 
+define ("GER_TEXT12B", 'Database navi');
+
 define ("GER_TEXT13", 'Sicherheitstruppen');
 
 define ("GER_TEXT14", 'Bodenkampf');
@@ -182,7 +184,7 @@ define ("GER_TEXT111", 'Bergbau');
 
 define ("GER_TEXT112", 'Keiner');
 
-define ("GER_TEXT113", 'Schiffswerft');
+define ("GER_TEXT113", 'Schiffswerft:');
 
 define ("GER_TEXT114", 'Klasse 1');
 
@@ -191,6 +193,110 @@ define ("GER_TEXT115", 'Klasse 2');
 define ("GER_TEXT116", 'Klasse 3');
 
 define ("GER_TEXT117", 'Klasse 4');
+
+define ("GER_TEXT118", 'High Academy');
+
+define ("GER_TEXT118a", 'Supply troops <img src='.$game->GFX_PATH.'menu_unit5_small.gif>, <img src='.$game->GFX_PATH.'menu_unit6_small.gif> and <img src='.$game->GFX_PATH.'menu_worker_small.gif>');
+
+define ("GER_TEXT119", 'Low Academy');
+
+define ("GER_TEXT119a", 'Supply troops <img src='.$game->GFX_PATH.'menu_unit1_small.gif>, <img src='.$game->GFX_PATH.'menu_unit2_small.gif> and <img src='.$game->GFX_PATH.'menu_worker_small.gif>');
+
+define ("GER_TEXT120", 'High Shipyard');
+
+define ("GER_TEXT120a", 'Supply heavy cruisers');
+
+define ("GER_TEXT121", 'Low Shipyard');
+
+define ("GER_TEXT121a", 'Supply cruisers');
+
+define ("GER_TEXT122", 'Low Mine');
+
+define ("GER_TEXT122a", 'Supply metals');
+
+define ("GER_TEXT122b", 'Supply minerals');
+
+define ("GER_TEXT122c", 'Supply dhilithium');
+
+define ("GER_TEXT123", 'High Mine');
+
+define ("GER_TEXT123a", 'Supply metals, minerals, dhilithium');
+
+define ("GER_TEXT124", 'Independent colony:');
+
+define ("GER_TEXT125", 'Rangefinder:');
+
+define ("GER_TEXT126", 'Racial basic hull of ');
+
+define ("GER_TEXT127", 'Ship');
+
+define ("GER_TEXT128", 'Class');
+
+define ("GER_TEXT129", 'Hull');
+
+define ("GER_TEXT130", 'Glob. points');
+
+define ("GER_TEXT131", 'Loc. points');
+
+define ("GER_TEXT132", 'Scout');
+
+define ("GER_TEXT133", 'Cargo');
+
+define ("GER_TEXT134", 'Colony Ship');
+
+define ("GER_TEXT135", 'Frigate');
+
+define ("GER_TEXT136", 'Cruiser, light');
+
+define ("GER_TEXT137", 'Cruiser');
+
+define ("GER_TEXT138", 'Cruiser, heavy');
+
+define ("GER_TEXT139", 'Battleship');
+
+define ("GER_TEXT140", 'Orb.');
+
+define ("GER_TEXT141", 'Primary Wep.:');
+
+define ("GER_TEXT142", 'Secondary Wep.:');
+
+define ("GER_TEXT143", 'Max torp.:');
+
+define ("GER_TEXT144", 'Planetary Wep.:');
+
+define ("GER_TEXT145", 'Shield strenght:');
+
+define ("GER_TEXT146", 'Hull points (HP):');
+
+define ("GER_TEXT147", 'Reaction:');
+
+define ("GER_TEXT148", 'Readiness:');
+
+define ("GER_TEXT149", 'Agility:');
+
+define ("GER_TEXT150", 'Experience:');
+
+define ("GER_TEXT151", 'Warp:');
+
+define ("GER_TEXT152", 'Sensors:');
+
+define ("GER_TEXT153", 'Cloacking:');
+
+define ("GER_TEXT154", 'Energy, used:');
+
+define ("GER_TEXT155", 'Energy, max:');
+
+define ("GER_TEXT156", 'Cost:');
+
+define ("GER_TEXT157", 'Build time:');
+
+define ("GER_TEXT158", 'Minutes');
+
+define ("GER_TEXT159", 'Ability:');
+
+define ("GER_TEXT160", '<i>unknown</i>');
+
+define ("GER_TEXT161", 'Tact/Colony/Memo:');
 
 
 //English
@@ -219,6 +325,8 @@ define ("ENG_TEXT10", '* Without Silos');
 define ("ENG_TEXT11", 'Planets Database');
 
 define ("ENG_TEXT12", 'Racial values');
+
+define ("ENG_TEXT12B", 'Database navi');
 
 define ("ENG_TEXT13", 'Security Troops');
 
@@ -354,7 +462,7 @@ define ("ENG_TEXT111", 'Mining');
 
 define ("ENG_TEXT112", 'None');
 
-define ("ENG_TEXT113", 'Shipyard');
+define ("ENG_TEXT113", 'Shipyard:');
 
 define ("ENG_TEXT114", 'Class 1');
 
@@ -363,6 +471,111 @@ define ("ENG_TEXT115", 'Class 2');
 define ("ENG_TEXT116", 'Class 3');
 
 define ("ENG_TEXT117", 'Class 4');
+
+define ("ENG_TEXT118", 'High Academy');
+
+define ("ENG_TEXT118a", 'Supply troops <img src='.$game->GFX_PATH.'menu_unit5_small.gif>, <img src='.$game->GFX_PATH.'menu_unit6_small.gif> and <img src='.$game->GFX_PATH.'menu_worker_small.gif>');
+
+define ("ENG_TEXT119", 'Low Academy');
+
+define ("ENG_TEXT119a", 'Supply troops <img src='.$game->GFX_PATH.'menu_unit1_small.gif>, <img src='.$game->GFX_PATH.'menu_unit2_small.gif> and <img src='.$game->GFX_PATH.'menu_worker_small.gif>');
+
+define ("ENG_TEXT120", 'High Shipyard');
+
+define ("ENG_TEXT120a", 'Supply heavy cruisers');
+
+define ("ENG_TEXT121", 'Low Shipyard');
+
+define ("ENG_TEXT121a", 'Supply cruisers');
+
+define ("ENG_TEXT122", 'Low Mine');
+
+define ("ENG_TEXT122a", 'Supply metals');
+
+define ("ENG_TEXT122b", 'Supply minerals');
+
+define ("ENG_TEXT122c", 'Supply dhilithium');
+
+define ("ENG_TEXT123", 'High Mine');
+
+define ("ENG_TEXT123a", 'Supply metals, minerals, dhilithium');
+
+define ("ENG_TEXT124", 'Independent colony:');
+
+define ("ENG_TEXT125", 'Rangefinder:');
+
+define ("ENG_TEXT126", 'Racial basic hull of ');
+
+define ("ENG_TEXT127", 'Ship');
+
+define ("ENG_TEXT128", 'Class');
+
+define ("ENG_TEXT129", 'Hull');
+
+define ("ENG_TEXT130", 'Glob. points');
+
+define ("ENG_TEXT131", 'Loc. points');
+
+define ("ENG_TEXT132", 'Scout');
+
+define ("ENG_TEXT133", 'Cargo');
+
+define ("ENG_TEXT134", 'Colony Ship');
+
+define ("ENG_TEXT135", 'Frigate');
+
+define ("ENG_TEXT136", 'Cruiser, light');
+
+define ("ENG_TEXT137", 'Cruiser');
+
+define ("ENG_TEXT138", 'Cruiser, heavy');
+
+define ("ENG_TEXT139", 'Battleship');
+
+define ("ENG_TEXT140", 'Orb.');
+
+define ("ENG_TEXT141", 'Primary Wep.:');
+
+define ("ENG_TEXT142", 'Secondary Wep.:');
+
+define ("ENG_TEXT143", 'Max torp.:');
+
+define ("ENG_TEXT144", 'Planetary Wep.:');
+
+define ("ENG_TEXT145", 'Shield strenght:');
+
+define ("ENG_TEXT146", 'Hull points (HP):');
+
+define ("ENG_TEXT147", 'Reaction:');
+
+define ("ENG_TEXT148", 'Readiness:');
+
+define ("ENG_TEXT149", 'Agility:');
+
+define ("ENG_TEXT150", 'Experience:');
+
+define ("ENG_TEXT151", 'Warp:');
+
+define ("ENG_TEXT152", 'Sensors:');
+
+define ("ENG_TEXT153", 'Cloacking:');
+
+define ("ENG_TEXT154", 'Energy, used:');
+
+define ("ENG_TEXT155", 'Energy, max:');
+
+define ("ENG_TEXT156", 'Cost:');
+
+define ("ENG_TEXT157", 'Build time:');
+
+define ("ENG_TEXT158", 'Minutes');
+
+define ("ENG_TEXT159", 'Ability:');
+
+define ("ENG_TEXT160", '<i>unknown</i>');
+
+define ("ENG_TEXT161", 'Tact/Colony/Memo:');
+
 
 //Italian
 
@@ -391,6 +604,8 @@ define ("ITA_TEXT10", '* Senza Silos');
 define ("ITA_TEXT11", 'Database pianeti');
 
 define ("ITA_TEXT12", 'Valori razziali');
+
+define ("ITA_TEXT12B", 'Database navi');
 
 define ("ITA_TEXT13", 'Truppe sicurezza');
 
@@ -500,6 +715,14 @@ define ("ITA_TEXT65", 'Fondare colonie indipendenti');
 
 define ("ITA_TEXT66", 'Limite colonizzazioni');
 
+define ("ITA_TEXT67", 'Armamento navale (base): Modulazione');
+
+define ("ITA_TEXT68", 'Armamento navale (base): Focalizzazione');
+
+define ("ITA_TEXT69", 'Armamento navale (base): Traiettoria');
+
+define ("ITA_TEXT70", 'Armamento navale (base): Concussione');
+
 define ("ITA_TEXT100", 'Si');
 
 define ("ITA_TEXT101", 'No');
@@ -526,7 +749,7 @@ define ("ITA_TEXT111", 'Estrazione');
 
 define ("ITA_TEXT112", 'Nessuna');
 
-define ("ITA_TEXT113", 'Cantiere');
+define ("ITA_TEXT113", 'Cantiere:');
 
 define ("ITA_TEXT114", 'Classe 1');
 
@@ -536,4 +759,107 @@ define ("ITA_TEXT116", 'Classe 3');
 
 define ("ITA_TEXT117", 'Classe 4');
 
+define ("ITA_TEXT118", 'Accademia Maggiore');
+
+define ("ITA_TEXT118a", 'Fornisce truppe <img src='.$game->GFX_PATH.'menu_unit5_small.gif>, <img src='.$game->GFX_PATH.'menu_unit6_small.gif> e <img src='.$game->GFX_PATH.'menu_worker_small.gif>');
+
+define ("ITA_TEXT119", 'Accademia Minore');
+
+define ("ITA_TEXT119a", 'Fornisce truppe <img src='.$game->GFX_PATH.'menu_unit1_small.gif>, <img src='.$game->GFX_PATH.'menu_unit2_small.gif> e <img src='.$game->GFX_PATH.'menu_worker_small.gif>');
+
+define ("ITA_TEXT120", 'Cantiere Maggiore');
+
+define ("ITA_TEXT120a", 'Fornisce incrociatori pesanti');
+
+define ("ITA_TEXT121", 'Cantiere Minore');
+
+define ("ITA_TEXT121a", 'Fornisce incrociatori');
+
+define ("ITA_TEXT122", 'Miniera Minore');
+
+define ("ITA_TEXT122a", 'Fornisce <img src='.$game->GFX_PATH.'menu_metal_small.gif>');
+
+define ("ITA_TEXT122b", 'Fornisce <img src='.$game->GFX_PATH.'menu_mineral_small.gif>');
+
+define ("ITA_TEXT122c", 'Fornisce <img src='.$game->GFX_PATH.'menu_latinum_small.gif>');
+
+define ("ITA_TEXT123", 'Miniera Maggiore');
+
+define ("ITA_TEXT123a", 'Fornisce <img src='.$game->GFX_PATH.'menu_metal_small.gif>, <img src='.$game->GFX_PATH.'menu_mineral_small.gif>, <img src='.$game->GFX_PATH.'menu_latinum_small.gif>');
+
+define ("ITA_TEXT124", 'Colonia Indipendente:');
+
+define ("ITA_TEXT125", 'Misuratore distanze:');
+
+define ("ITA_TEXT126", 'Database scafi base della razza ');
+
+define ("ITA_TEXT127", 'Nave');
+
+define ("ITA_TEXT128", 'Classe');
+
+define ("ITA_TEXT129", 'Scafo');
+
+define ("ITA_TEXT130", 'Punti Glob.');
+
+define ("ITA_TEXT131", 'Punti Loc.');
+
+define ("ITA_TEXT132", 'Scout');
+
+define ("ITA_TEXT133", 'Cargo');
+
+define ("ITA_TEXT134", 'Colonizzatrice');
+
+define ("ITA_TEXT135", 'Fregata');
+
+define ("ITA_TEXT136", 'Incrociatore Leggero');
+
+define ("ITA_TEXT137", 'Incrociatore');
+
+define ("ITA_TEXT138", 'Incrociatore Pesante');
+
+define ("ITA_TEXT139", 'Nave da Battaglia');
+
+define ("ITA_TEXT140", 'Orb.');
+
+define ("ITA_TEXT141", 'Armi Leggere:');
+
+define ("ITA_TEXT142", 'Armi Pesanti:');
+
+define ("ITA_TEXT143", 'Dotazione Siluri:');
+
+define ("ITA_TEXT144", 'Armi Planetarie:');
+
+define ("ITA_TEXT145", 'Potenza Scudi:');
+
+define ("ITA_TEXT146", 'Punti Scafo (HP):');
+
+define ("ITA_TEXT147", 'Reazione:');
+
+define ("ITA_TEXT148", 'Prontezza:');
+
+define ("ITA_TEXT149", 'Agilit&agrave;:');
+
+define ("ITA_TEXT150", 'Esperienza:');
+
+define ("ITA_TEXT151", 'Curvatura (Warp):');
+
+define ("ITA_TEXT152", 'Sensori:');
+
+define ("ITA_TEXT153", 'Occultamento:');
+
+define ("ITA_TEXT154", 'Energia utilizzata:');
+
+define ("ITA_TEXT155", 'Energia prodotta:');
+
+define ("ITA_TEXT156", 'Costo:');
+
+define ("ITA_TEXT157", 'Tempo di Costruzione:');
+
+define ("ITA_TEXT158", 'Minuti');
+
+define ("ITA_TEXT159", 'Abilit&agrave;:');
+
+define ("ITA_TEXT160", '<i>sconosciuto</i>');
+
+define ("ITA_TEXT161", 'Tattico/Colonia/Memo:');
 ?>

@@ -47,18 +47,42 @@ $ship_components_locale=array(
                     'description'=>'Modello di sviluppo intermedio. Il rendimento energetico &grave; ulteriormente migliorato. Questo &grave; il primo step di sviluppo del WarpCore dedicato esclusivamente alle navi militari.',
             ), // Endof Component Level 3 Warpkern
 
-             // Component Dilithiumschmelze I
+             // Component Level 4 Warpkern
              3=>array(
+                    'name'=>'Warpcore Livello 4',
+                    'description'=>'Modello basico di fonte energetica per le astronavi. Pu&ograve; essere montato su tutte le navi e innalza la curvatura massima di Warp 1.0',
+            ), // Endof Component Level 1 Warpkern
+
+             // Component Dilithiumschmelze I
+             4=>array(
                     'name'=>'Fusione del Dilitio Liv. 1',
                     'description'=>'Per migliorare la resa dei Warpcore in termini di massima curvatura &egrave; stata sviluppata una tecnica di fusione del Dilitio. La curvatura massima della nave aumenta di Warp 2.0',
-            ), // Endof Component Dilithiumschmelze I
+            ), // Endof Component Dilithiumschmelze I            
+            
+             // Component Level 2 Warpkern
+             5=>array(
+                    'name'=>'Warpcore Livello 5',
+                    'description'=>'Modello avanzato che fornisce maggiore energia rispetto al livello precedente di sviluppo, il miglior Warpcore installabile su una nave civile.',
+            ), // Endof Component Level 2 Warpkern
 
+             // Component Level 3 Warpkern
+             6=>array(
+                    'name'=>'Warpcore Livello 6',
+                    'description'=>'Modello di sviluppo intermedio. Il rendimento energetico &grave; ulteriormente migliorato. Questo &grave; il primo step di sviluppo del WarpCore dedicato esclusivamente alle navi militari.',
+            ), // Endof Component Level 3 Warpkern
+                        
              // Component Dilithiumschmelze II
-             4=>array(
+             7=>array(
                     'name'=>'Fusione del Dilitio Liv. 2',
                     'description'=>'Lo sviluppo della tecnologia di fusione del dilitio ha permesso la realizzazione di un Warpcore in grado di fornire l&#146;energia necessaria alla propulsione delle navi maggiori della flotta.',
             ), // Endof Component Dilithiumschmelze II
 
+             // Component Dilithiumschmelze III
+             8=>array(
+                    'name'=>'Fusione del Dilitio Liv. 3',
+                    'description'=>'Lo sviluppo della tecnologia di fusione del dilitio ha permesso la realizzazione di un Warpcore in grado di fornire l&#146;energia necessaria alla propulsione delle navi maggiori della flotta.',
+            ), // Endof Component Dilithiumschmelze III
+            
       'name'=>'Warpcore',
       ), // Endof Category Warpkerne
 
@@ -77,397 +101,551 @@ $ship_components_locale=array(
                     'description'=>'Sviluppo della tecnologia di base che aumenta la potenza del campo di curvatura, aumentando la velocit&agrave; massima della nave al costo di un maggior consumo energetico.',
             ), // Endof Component Verbesserte Tachyonengondel
 
-             // Component Gaußgondeln
+             // Component Tachyonengondeln
              2=>array(
-                    'name'=>'Gondole Gauss',
-                    'description'=>'Le Gondole Gauss sono un progetto dedicato esclusivamente alle navi militari. La resa in termini di campo di curvatura e consumo energetico sono assolutamente superiori rispetto ai sistemi di curvatura precedenti.',
-            ), // Endof Component Gaußgondeln
+                    'name'=>'Gondole Tachioniche Mk III',
+                    'description'=>'Le Gondole Tachioniche rappresentano il sistema basico di propulsione a curvatura, efficace solo per le navi civili.',
+            ), // Endof Component Tachyonengondeln
 
-             // Component Phasenkomprimierer
+             // Component Tachyonengondeln
              3=>array(
-                    'name'=>'Compressore di Fase',
+                    'name'=>'Gondole Tachioniche Mk IV',
+                    'description'=>'Le Gondole Tachioniche rappresentano il sistema basico di propulsione a curvatura, efficace solo per le navi civili.',
+            ), // Endof Component Tachyonengondeln
+                        
+             // Component Gauï¿½gondeln
+             4=>array(
+                    'name'=>'Gondole Gauss I',
+                    'description'=>'Le Gondole Gauss sono un progetto dedicato esclusivamente alle navi militari. La resa in termini di campo di curvatura e consumo energetico sono assolutamente superiori rispetto ai sistemi di curvatura precedenti.',
+            ), // Endof Component Gauï¿½gondeln
+
+             // Component Gauï¿½gondeln
+             5=>array(
+                    'name'=>'Gondole Gauss II',
+                    'description'=>'Le Gondole Gauss sono un progetto dedicato esclusivamente alle navi militari. La resa in termini di campo di curvatura e consumo energetico sono assolutamente superiori rispetto ai sistemi di curvatura precedenti.',
+            ), // Endof Component Gauï¿½gondeln
+                        
+             // Component Phasenkomprimierer
+             6=>array(
+                    'name'=>'Compressore di Fase I',
                     'description'=>'Il Compressore di Fase applicato alle Gondole Gauss realizzano il miglior sistema di curvatura esistente per la propulsione delle navi nello spazio.',
             ), // Endof Component Phasenkomprimierer
 
+             // Component Phasenkomprimierer
+             7=>array(
+                    'name'=>'Compressore di Fase II',
+                    'description'=>'Il Compressore di Fase applicato alle Gondole Gauss realizzano il miglior sistema di curvatura esistente per la propulsione delle navi nello spazio.',
+            ), // Endof Component Phasenkomprimierer
+            
       'name'=>'Motori',
       ), // Endof Category Antriebe
 
 
-        // Category Strahlenwaffen
+        // Category Armi Secondarie
         2=>array(
-             // Component Polaronstrahler
+             // Component Fotonico 1
              0=>array(
-                    'name'=>'Emettitore Polaronico Liv.1',
-                    'description'=>'Tecnologia di base per le armi del Dominio.',
-            ), // Endof Component Polaronstrahler
+                    'name'=>'Fotonico 1',
+                    'description'=>'Lanciatori e testate fotoniche, rappresentano la tecnologia pi&ugrave; economica per il nostro armamento pesante. Questa versione &egrave; impiegabile sui nostri incrociatori pesanti.',
+            ), // Endof Component Fotonico 1
 
-             // Component Polaronstrahl
+             // Component Fotonico 2
              1=>array(
-                    'name'=>'Emettitore Polaronico Liv.2',
-                    'description'=>'Perfezionamento della tecnologia polaronica che ne aumenta notevolmente la capacit&agrave; distruttiva. Questa tecnologia rappresenta il meglio impiegabile su navi civili.',
-            ), // Endof Component Polaronstrahl
+                    'name'=>'Fotonico 2',
+                    'description'=>'Lanciatori e testate fotoniche, rappresentano la tecnologia pi&ugrave; economica per il nostro armamento pesante. Questa versione &egrave; impiegabile sulle nostre navi da battaglia.',
+            ), // Endof Component Fotonico 2
 
-             // Component Polaronstrahl
+             // Component Polaronico 1
              2=>array(
-                    'name'=>'Emettitore Polaronico Liv.3',
-                    'description'=>'Ultimo step evolutivo della tecnologia polaronica di base.',
-            ), // Endof Component Polaronstrahl
-
-             // Component Massebeschleuniger
+                    'name'=>'Polaronico 1',
+                    'description'=>'Lanciatori e testate polaroniche; la nostra tecnologia polaronica applicata al munizionamento pesante si &egrave; rivelata molto performante. Versione impiegabile su incrociatori pesanti.',
+            ), // Endof Component Polaronico 1
+            
+             // Component Polaronico 2
              3=>array(
-                    'name'=>'Acceleratore di massa',
-                    'description'=>'Tecnologia basata sull&#146;accelerazione delle particelle della materia, impiegabile tanto contro navi ostili che come arma planetaria economica.',
-            ), // Endof Component Massebeschleuniger
-
-             // Component Impulspoleronkannone
+                    'name'=>'Polaronico 2',
+                    'description'=>'Lanciatori e testate polaroniche; la nostra tecnologia polaronica applicata al munizionamento pesante si &egrave; rivelata molto performante. Versione impiegabile su navi da battaglia.',
+            ), // Endof Component Polaronico 2
+            
+             // Component Polaronico 3
              4=>array(
-                    'name'=>'Impulsi Polaronici Liv. 1',
-                    'description'=>'La tecnologia degli Impulsi Polaronici permette la creazione di un cannone basato sull&#146;impiego delle onde polaroniche.',
-            ), // Endof Component Impulspoleronkannone
-
-             // Component Impulspolarondisruptor
+                    'name'=>'Polaronico 3',
+                    'description'=>'Lanciatori e testate polaroniche, la testata esplosiva ha subito alcune notevoli migliorie mentre i computer di guida hanno ottenuto significanti aggiornamenti. Versione studiata per potenziare a basso costo gli incrociatori pesanti.',
+            ), // Endof Component Polaronico 3
+            
+             // Component Quantico 1
              5=>array(
-                    'name'=>'Impulsi Polaronici Liv. 2',
-                    'description'=>'Il top della tecnologia polaronica del Dominio permette la realizzazione di un disgregatore impiegabile sulle maggiori navi della flotta. La sua potenza &egrave; incomparabile rispetto ai sistemi d&#146;arma precedenti.',
-            ), // Endof Component Impulspolarondisruptor
+                    'name'=>'Quantico 1',
+                    'description'=>'Tecnologia ottenuta attraverso i nostri servizi di intelligence dai laboratori della Federazione. Le prestazioni sono migliori rispetto alle nostre tecnologie pi&ugrave; collaudate ma richiedono una maggior quantit&agrave; di energia per funzionare.',
+            ), // Endof Component Quantico 1
+            
+             // Component Quantico 2
+             6=>array(
+                    'name'=>'Quantico 2',
+                    'description'=>'Tecnologia ottenuta attraverso i nostri servizi di intelligence dai laboratori della Federazione. Le prestazioni sono migliori rispetto alle nostre tecnologie pi&ugrave; collaudate ma richiedono una maggior quantit&agrave; di energia per funzionare.',
+            ), // Endof Component Quantico 2
 
-      'name'=>'Armi Energetiche',
-      ), // Endof Category Strahlenwaffen
+             // Component Plasma
+             7=>array(
+                    'name'=>'Plasma',
+                    'description'=>'Questo genere di armi sono impiegate da alcune razze del quadrante Alfa con qualche successo. Di grande effetto ma difficili da gestire vista la grande quantit&agrave; di energia richiesta.',
+            ), // Endof Component Plasma
+            
+             // Component Transfasico 1
+             8=>array(
+                    'name'=>'Transfasico 1',
+                    'description'=>'Questa tecnologia &egrave; un recente sviluppo della Federazione messa a punto per affrontare le navi Borg. I nostri tecnici sono riusci a potenziare gli effetti di tali ordigni ma al costo di ingenti quantit&agrave; di energia.',
+            ), // Endof Component Transfasico 1
+            
+             // Component Transfasico 2
+             9=>array(
+                    'name'=>'Transfasico 2',
+                    'description'=>'Questa tecnologia &egrave; un recente sviluppo della Federazione messa a punto per affrontare le navi Borg. I nostri tecnici sono riusci a potenziare gli effetti di tali ordigni ma al costo di ingenti quantit&agrave; di energia.',
+            ), // Endof Component Transfasico 2
+            
+      'name'=>'Armi Secondarie',
+      ), // Endof Category Armi Secondarie
 
 
-        // Category Torpedos
+        // Category Scafi minori
         3=>array(
-             // Component Photonentorpedos
+             // Component Attackship I
              0=>array(
-                    'name'=>'Siluri Fotonici',
-                    'description'=>'I siluri fotonici sono un tipo di armamento basato su una tecnologia standard delle razze del quadrante Alfa.',
-            ), // Endof Component Photonentorpedos
+                    'name'=>'Attackship I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Attackship I
 
-             // Component Quantentorpedos
+             // Component V-Type
              1=>array(
-                    'name'=>'Siluri Quantici',
-                    'description'=>'I Siluri Quantici sono una tecnologia proveniente dalle razze del Quadrante Alfa, di enorme potenza ed efficacia.',
-            ), // Endof Component Quantentorpedos
+                    'name'=>'V-Type I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component V-Type
 
-             // Component Sovramodulazione Liv. 1
+             // Component Attackship II
              2=>array(
-                    'name'=>'Sovramodulazione Liv. 1',
-                    'description'=>'La Sovramodulazione degli Emettitori Polaronici ne migliora la resa al costo di un modesto consumo di energia e di necessit&agrave; di manutenzione.',
-            ), // Endof Component Sovramodulazione Liv.1
+                    'name'=>'Attackship II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Attackship II
 
-             // Component Sovramodulazione Liv. 2
+             // Component V-Type II
              3=>array(
-                    'name'=>'Sovramodulazione Liv. 2',
-                    'description'=>'La Sovramodulazione degli Emettitori Polaronici ne migliora la resa al costo di un modesto consumo di energia e di necessit&agrave; di manutenzione.',
-            ), // Endof Component Sovramodulazione Liv.2
+                    'name'=>'V-Type II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component V-Type II
 
-             // Component Sovramodulazione Liv. 3
+             // Component Attackship III
              4=>array(
-                    'name'=>'Sovramodulazione Liv. 3',
-                    'description'=>'La Sovramodulazione degli Emettitori Polaronici ne migliora la resa al costo di un modesto consumo di energia e di necessit&agrave; di manutenzione.',
-            ), // Endof Component Sovramodulazione Liv.3
+                    'name'=>'Attackship III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Attackship III
 
-             // Component Breentorpedos
+             // Component V-Type S Spec
              5=>array(
-                    'name'=>'Siluri Breen',
-                    'description'=>'I siluri Breen sono armi molto potenti, ottenuti grazie ad uno scambio di tecnologia con gli scenziati Breen.',
-            ), // Endof Component Breentorpedos
+                    'name'=>'V-Type S Spec',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component V-Type S Spec
 
-      'name'=>'Servosistemi d&#146;Arma',
+             // Component Attackship B Spec
+             6=>array(
+                    'name'=>'Attackship B Spec',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Attackship B spec            
+            
+             // Component V-Type D Spec
+             7=>array(
+                    'name'=>'V-Type D Spec',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component V-Type D Spec  
+            
+             // Component Attackship C Spec
+             8=>array(
+                    'name'=>'Attackship C Spec',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Attackship C Spec
+            
+             // Component V-Type
+             9=>array(
+                    'name'=>'V-Type E Spec',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component V-Type
+            
+      'name'=>'Scafi Minori',
       ), // Endof Category Torpedos
 
 
-        // Category Defensive Einrichtungen
+        // Category Scafi Maggiori
         4=>array(
-             // Component Regenerativer Schild
+             // Component BSC I
              0=>array(
-                    'name'=>'Scudo Rigenerante',
-                    'description'=>'Gli Scudi Rigeneranti sono un sistema economico e relativamente efficace per la difesa degli scafi.',
-            ), // Endof Component Regenerativer Schild
+                    'name'=>'BSC I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component BSC I
 
-             // Component Phasenvariationsschild
+             // Component BSC II
              1=>array(
-                    'name'=>'Variatore di Fase',
-                    'description'=>'Questa nuova tecnologia di Scudi &egrave; ottenuta attraverso la combinazione di una matrice di scudi con la dipolarit&agrave; di fase.',
-            ), // Endof Component Phasenvariationsschild
+                    'name'=>'BSC II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component BSC II
 
-             // Component Mehrphasenpanzerung
+             // Component BSC III
              2=>array(
-                    'name'=>'Corazza Multifasica',
-                    'description'=>'Tecnologia che muta la fase della struttura dello scafo con lo scopo di aumentarne la resistenza.',
-            ), // Endof Component Mehrphasenpanzerung
+                    'name'=>'BSC III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component BSC III
 
-             // Component Neutrinoknotenverstärkung
+             // Component BSC SS Spec
              3=>array(
-                    'name'=>'Corazza Neutrinica',
-                    'description'=>'La struttura atomica della lega impiegata per le corazze viene riorganizzata per aumentarne la robustezza strutturale.',
-            ), // Endof Component Neutrinoknotenverstärkung
+                    'name'=>'BSC SS Spec',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component BSC SS Spec
 
-             // Component Creonspule
+             // Component BSC AA Spec
              4=>array(
-                    'name'=>'Bobine Creon',
-                    'description'=>'La prima Bobina Creon fu ritrovata decadi fa sul pianeta morto Creon e successivamente venne migliorata dagli scienziati Dominion. Il suo impiego &egrave; possibile solo sulle navi pi&ugrave; grandi della flotta.',
-            ), // Endof Component Creonspule
+                    'name'=>'BSC AA Spec',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component BSC AA Spec
 
-      'name'=>'Sistemi Difensivi',
-      ), // Endof Category Defensive Einrichtungen
+             // Component BSC H Spec
+             5=>array(
+                    'name'=>'BSC H Spec',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component BSC H Spec
 
+             // Component Battleship I
+             6=>array(
+                    'name'=>'Battleship I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Battleship I
+            
+             // Component Battleship II
+             7=>array(
+                    'name'=>'Battleship II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Battleship II
+            
+             // Component Battleship III
+             8=>array(
+                    'name'=>'Battleship III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Battleship III            
+            
+             // Component Battleship TT Spec
+             9=>array(
+                    'name'=>'Battleship TT Spec',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Battleship TT Spec
+            
+      'name'=>'Scafi Maggiori',
+      ), // Endof Category Scafi Maggiori
 
-        // Category AI-Kern
+        // Category Addestramento
         5=>array(
              // Component Siliciumprozessoren
              0=>array(
-                    'name'=>'Processori in Silicio',
-                    'description'=>'I nuovi processori in silicio garantiscono un miglioramento delle prestazioni della componente A.I.',
+                    'name'=>'Base I',
+                    'description'=>'Flavor Text Here.',
             ), // Endof Component Siliciumprozessoren
 
              // Component Dualkopplung
              1=>array(
-                    'name'=>'Accoppiamento Strutturale',
-                    'description'=>'L&#146;accoppiamento strutturale dei processori garantisce un netto miglioramento nei tempi di risposta delle interfacce.',
+                    'name'=>'Base II',
+                    'description'=>'Flavor Text Here.',
             ), // Endof Component Dualkopplung
 
              // Component Kubriksystem
              2=>array(
-                    'name'=>'Sistema Kubrik',
-                    'description'=>'I processori vengono interlacciati con la nuova tecnologia Kubrik, radoppiandone di fatto la capacit&agrave; elaborativa.',
+                    'name'=>'Base III',
+                    'description'=>'Flavor Text Here.',
             ), // Endof Component Kubriksystem
 
              // Component Leitstand I
              3=>array(
-                    'name'=>'Posto di Controllo Liv. 1',
-                    'description'=>'La nuova organizzazione delle postazioni di controllo di tiro aumentano la coordinazione tra i sistemi e la resa delle armi stesse.',
+                    'name'=>'Intermedio I',
+                    'description'=>'Flavor Text Here.',
             ), // Endof Component Leitstand I
 
              // Component Leitstand II
              4=>array(
-                    'name'=>'Posto di Controllo Liv. 2',
-                    'description'=>'Questa versione permette di controllare efficacemente anche le armi pesanti della nave.',
+                    'name'=>'Intermedio II',
+                    'description'=>'Flavor Text Here.',
             ), // Endof Component Leitstand II
 
              // Component Gammarechner
              5=>array(
-                    'name'=>'Gamma Elaboratore',
-                    'description'=>'Con l&#146;impiego delle particelle gamma viene creata una connessione neurale con i sistemi di elaborazione dati.',
+                    'name'=>'Intermedio III',
+                    'description'=>'Flavor Text Here.',
             ), // Endof Component Gammarechner
 
-      'name'=>'Componenti A.I.',
-      ), // Endof Category AI-Kern
-
-
-        // Category Trainingseinheiten
-        6=>array(
-             // Component Kampfzentrum I
-             0=>array(
-                    'name'=>'Addestramento Civili',
-                    'description'=>'Addestramento per equipaggi destinati alle navi civili.',
-            ), // Endof Component Kampfzentrum I
-
-             // Component Kampfzentrum II
-             1=>array(
-                    'name'=>'Addestramento Base I',
-                    'description'=>'Addestramento base per equipaggi destinati alle navi leggere della flotta.',
-            ), // Endof Component Kampfzentrum II
-
-             // Component Kampfzentrum III
-             2=>array(
-                    'name'=>'Addestramento Base II',
-                    'description'=>'Addestramento base per equipaggi destinati alle navi intermedie della flotta.',
-            ), // Endof Component Kampfzentrum III
-
-             // Component Kampfzentrum IV
-             3=>array(
-                    'name'=>'Addestramento Base III',
-                    'description'=>'Addestramento base per equipaggi destinati alle navi pesanti della flotta.',
-            ), // Endof Component Kampfzentrum IV
-
-             // Component Kampfzentrum V
-             4=>array(
-                    'name'=>'Addestramento Intermedio I',
-                    'description'=>'Addestramento intermedio per equipaggi destinati alle navi leggere della flotta.',
-            ), // Endof Component Kampfzentrum V
-
-             // Component Kampfzentrum VI
-             5=>array(
-                    'name'=>'Addestramento Intermedio II',
-                    'description'=>'Addestramento intermedio per equipaggi destinati alle navi pesanti della flotta.',
-            ), // Endof Component Kampfzentrum VI
-
-             // Component Kampfzentrum VI
+             // Component Leitstand I
              6=>array(
-                    'name'=>'Addestramento Avanzato I',
-                    'description'=>'Addestramento avanzato per equipaggi destinati alle navi leggere della flotta.',
-            ), // Endof Component Kampfzentrum VI
+                    'name'=>'Avanzato I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Leitstand I
 
-             // Component Kampfzentrum VI
+             // Component Leitstand II
              7=>array(
-                    'name'=>'Addestramento Avanzato II',
-                    'description'=>'Addestramento avanzato per equipaggi destinati alle navi pesanti della flotta.',
-            ), // Endof Component Kampfzentrum VI
+                    'name'=>'Avanzato II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Leitstand II
 
-             // Component Kampfzentrum VI
+             // Component Gammarechner
              8=>array(
-                    'name'=>'Addestramento Elite',
-                    'description'=>'Livello di addestramento massimo disponibile per ottenere i migliori Jem&#146;Hadar destinati a governare le navi del Dominion.',
-            ), // Endof Component Kampfzentrum VI
-
-      'name'=>'Zone Addestramento',
-      ), // Endof Category Trainingseinheiten
-
-
-        // Category Quartiere
-        7=>array(
-             // Component Unterkunft I
+                    'name'=>'Avanzato III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Gammarechner
+            
+             // Component Gammarechner
+             9=>array(
+                    'name'=>'Elite',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Gammarechner
+            
+      'name'=>'Addestramento',
+      ), // Endof Category AI-Kern    
+    
+        // Category Tecnologie Fusione
+        6=>array(
+             // Component Micro Fusione I
              0=>array(
-                    'name'=>'Sistemazione I',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
+                    'name'=>'Micro Fusione I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Micro Fusione I
+
+             // Component Micro Fusione II
+             1=>array(
+                    'name'=>'Micro Fusione II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Micro Fusione II
+
+             // Component Micro Fusione III
+             2=>array(
+                    'name'=>'Micro Fusione III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Micro Fusione III
+
+             // Component Fusione Migliorata I
+             3=>array(
+                    'name'=>'Fusione Migliorata I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Fusione Migliorata I
+
+             // Component Fusione Migliorata II
+             4=>array(
+                    'name'=>'Fusione Migliorata II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Fusione Migliorata II
+
+             // Component Superfusione I
+             5=>array(
+                    'name'=>'Superfusione I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Superfusione I
+
+             // Component Superfusione II
+             6=>array(
+                    'name'=>'Superfusione II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Superfusione II
+
+             // Component Fusione Zero-grav I
+             7=>array(
+                    'name'=>'Fusione Zero-grav I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Fusione Zero-grav I
+
+             // Component Fusione Zero-grav II
+             8=>array(
+                    'name'=>'Fusione Zero-grav II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Fusione Zero-grav II
+
+             // Component Fusione Zero-grav III
+             9=>array(
+                    'name'=>'Fusione Zero-grav III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Fusione Zero-grav III
+            
+      'name'=>'Tecnologie Fusione',
+      ), // Endof Category Tecnologie Fusione
+
+
+        // Category Logistica
+        7=>array(
+             // Component Trasporto Truppe I
+             0=>array(
+                    'name'=>'Trasporto Truppe I',
+                    'description'=>'Flavor Text Here.',
             ), // Endof Component Unterkunft I
 
-             // Component Unterkunft II
+             // Component Trasporto Truppe II
              1=>array(
-                    'name'=>'Sistemazione II',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
-            ), // Endof Component Unterkunft II
+                    'name'=>'Trasporto Truppe II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Trasporto Truppe II
 
-             // Component Unterkunft III
+             // Component Cartografia I
              2=>array(
-                    'name'=>'Sistemazione III',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
-            ), // Endof Component Unterkunft III
+                    'name'=>'Cartografia I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Cartografia I
 
-             // Component Unterkunft IV
+             // Component Laboratorio I
              3=>array(
-                    'name'=>'Sistemazione IV',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
-            ), // Endof Component Unterkunft IV
+                    'name'=>'Laboratorio I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Laboratorio I
 
-             // Component Unterkunft V
+             // Component Cartografia II
              4=>array(
-                    'name'=>'Sistemazione V',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
-            ), // Endof Component Unterkunft V
+                    'name'=>'Cartografia II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Cartografia II
 
-             // Component Unterkunft VI
+             // Component Laboratorio II
              5=>array(
-                    'name'=>'Sistemazione VI',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
-            ), // Endof Component Unterkunft VI
+                    'name'=>'Laboratorio II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Laboratorio II
 
-             // Component Unterkunft VII
+             // Component Centrale Tattica
              6=>array(
-                    'name'=>'Sistemazione VII',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
-            ), // Endof Component Unterkunft VII
+                    'name'=>'Centrale Tattica',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Centrale Tattica
 
-             // Component Unterkunft VIII
-             7=>array(
-                    'name'=>'Sistemazione VIII',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
-            ), // Endof Component Unterkunft VIII
-
-             // Component Truppendepot
-             8=>array(
-                    'name'=>'Deposito Truppe',
-                    'description'=>'Questa soluzione progettuale permette di aumentare il numero di truppe presenti a bordo della nave.',
-            ), // Endof Component Truppendepot
-
-      'name'=>'Alloggi',
-      ), // Endof Category Quartiere
+      'name'=>'Logistica',
+      ), // Endof Category Logistica
 
 
-        // Category Kampfsysteme
+        // Category Materiali
         8=>array(
-             // Component Sensorischer Scout
+             // Component Silicati I
              0=>array(
-                    'name'=>'Scanner Micronico',
-                    'description'=>'Gli Scanner Micronici sono studiati per equipaggiare le navi spia del Dominio, fornendo un ottimo supporto alla scansione di un pianeta e fornendo dati utili per sfuggire alle difese orbitali.',
-            ), // Endof Component Sensorischer Scout
+                    'name'=>'Silicati I',
+                    'description'=>'Flavor Texht Here.',
+            ), // Endof Component Silicati I
 
-             // Component Simultane Ortung
+             // Component Silicati II
              1=>array(
-                    'name'=>'Sensori Guida',
-                    'description'=>'I Sensori Guida sono particolarmente adatti a non perdere il controllo di quanto accade sul campo di battaglia.',
-            ), // Endof Component Simultane Ortung
+                    'name'=>'Silicati II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Silicati II
 
-             // Component Simultane Ortung
+             // Component Termoplastici I
              2=>array(
-                    'name'=>'Rilevatore Simultaneo',
-                    'description'=>'Il Rivelatore Simultaneo permette la scansione parallela di pi&ugrave; bersagli.',
-            ), // Endof Component Simultane Ortung
+                    'name'=>'Termoplastici I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Termoplastici I
 
-             // Component Ungestörte Ortung
+             // Component Termoplastici II
              3=>array(
-                    'name'=>'Rilevatore Asincrono',
-                    'description'=>'Il miglior sistema basato su tecnologie tradizionali permette la scansione di aree mediante impiego di sonde camuffate.',
-            ), // Endof Component Ungestörte Ortung
+                    'name'=>'Termoplastici II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Termoplastici II
 
-             // Component Gefechtsstand
+             // Component Termoplastici III
              4=>array(
-                    'name'=>'Posto di Comando',
-                    'description'=>'Il Posto di Comando &egrave; una postazione extra situata sul Ponte di Comando della nave che si occupa della coordinazione tra le varie sezioni.',
-            ), // Endof Component Gefechtsstand
+                    'name'=>'Termoplastici III',
+                    'description'=>'Termoplastici III',
+            ), // Endof Component Termoplastici III
 
-             // Component Sekundärbrücke
+             // Component Micromateriali I
              5=>array(
-                    'name'=>'Ponte Secondario',
-                    'description'=>'Il Ponte Secondario &egrave; una sottosezione usata unicamente durante gli scontri.',
-            ), // Endof Component Sekundärbrücke
+                    'name'=>'Micromateriali I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Micromateriali I
 
-             // Component Gefechtsbrücke I
+             // Component Micromateriali II
              6=>array(
-                    'name'=>'Ponte di Combattimento I',
-                    'description'=>'Soluzione progettuale che enfatizza funzionalit&agrave; ed efficacia del Ponte Secondario.',
-            ), // Endof Component Gefechtsbrücke I
+                    'name'=>'Micromateriali II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Micromateriali II
 
-             // Component Gefechtsbrücke II
+             // Component Nanomateriali I
              7=>array(
-                    'name'=>'Ponte di Combattimento II',
-                    'description'=>'Questa soluzione progettuale &egrave; il centro di comando definitivo per ogni tipo di conflitto ed &egrave; il risultato di decadi di studio.',
-            ), // Endof Component Gefechtsbrücke II
+                    'name'=>'Nanomateriali I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Nanomateriali I
 
-      'name'=>'Sistemi di Combattimento',
-      ), // Endof Category Kampfsysteme
+             // Component Nanomateriali II
+             8=>array(
+                    'name'=>'Nanomateriali Ii',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Nanomateriali II
+            
+             // Component Nanomateriali III
+             9=>array(
+                    'name'=>'Nanomateriali III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Nanomateriali III
+            
+      'name'=>'Materiali',
+      ), // Endof Category Materiali
 
 
-        // Category Geheime Entwicklungen
+        // Category Automazione
         9=>array(
-             // Component Verbesserte Headsets
+             // Component Robotica di Base I
              0=>array(
-                    'name'=>'Intercom Migliorato',
-                    'description'=>'Sistemi di Intercomunicazione di bordo migliorato.',
-            ), // Endof Component Verbesserte Headsets
+                    'name'=>'Robotica di Base I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Robotica di Base I
 
-             // Component Waffenaufrüstung
+             // Component Robotica di Base II
              1=>array(
-                    'name'=>'Sistema Offensivo Integrato',
-                    'description'=>'Sistema di integrazione degli armamenti per le navi militari del Dominio.',
-            ), // Endof Component Waffenaufrüstung
+                    'name'=>'Robotica di Base II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Robotica di Base II
 
-             // Component Doppelschilde
+             // Component Servosistemi I
              2=>array(
-                    'name'=>'Scudi Secondari',
-                    'description'=>'Ottimi per contrastare armi ad altissima energia, entrano in funzione non appena cedono gli scudi primari.',
-            ), // Endof Component Doppelschilde
+                    'name'=>'Servosistemi I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Servosistemi I
 
-             // Component Hochenergiehülle
+             // Component Servosistemi II
              3=>array(
-                    'name'=>'Rivestimento AntiEnergetico',
-                    'description'=>'Questo sistema riflette parte dell&#146;enegia che entra in contatto con lo scafo, deviandone una parte verso i sistemi energetici interni della nave stessa.',
-            ), // Endof Component Hochenergiehülle
+                    'name'=>'Servosistemi II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Servosistemi II
 
-             // Component Multiphasentarnung
+             // Component Servosistemi III
              4=>array(
-                    'name'=>'Occultamento Multifasico',
-                    'description'=>'L&#146;occultamento fornisce un grande vantaggio in combattimento e permette di avvicinarsi a pianeti con una debole rete di sensori senza destare allarme.',
-            ), // Endof Component Multiphasentarnung
+                    'name'=>'Servosistemi III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Servosistemi III
 
-             // Component Kompletterweiterung
+             // Component Robotica Avanzata I
              5=>array(
-                    'name'=>'Estensione Completa',
-                    'description'=>'Questo pacchetto di migliorie &egrave; disponibile solo a poche navi della Flotta ma fornisce un incremento completo a tutte le caratteristiche della nave stessa.',
-            ), // Endof Component Kompletterweiterung
+                    'name'=>'Robotica Avanzata I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Robotica Avanzata I
 
-      'name'=>'Sviluppi Segreti',
+             // Component Robotica Avanzata II
+             6=>array(
+                    'name'=>'Robotica Avanzata II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Robotica Avanzata II
+            
+             // Component NanoAssemblaggio I
+             7=>array(
+                    'name'=>'NanoAssemblaggio I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component NanoAssemblaggio I
+            
+             // Component NanoAssemblaggio II
+             8=>array(
+                    'name'=>'NanoAssemblaggio II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component NanoAssemblaggio II
+
+             // Component NanoAssemblaggio III
+             9=>array(
+                    'name'=>'NanoAssemblaggio III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component NanoAssemblaggio III
+            
+      'name'=>'Automazione',
       ), // Endof Category Geheime Entwicklungen
 
 

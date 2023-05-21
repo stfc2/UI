@@ -114,7 +114,14 @@ define ("GER_TEXT46", 'Klasse');
 
 define ("GER_TEXT47", 'Beziehungen Wert');
 
-define ("GER_TEXT48", 'Letzten Kontakt');
+define ("GER_TEXT48", 'Linked Planet');
+
+define ("GER_TEXT49", 'none');
+
+define ("GER_TEXT50", 'Link');
+
+define ("GER_TEXT51", 'UnLink');
+
 
 // English
 define ("ENG_TEXT1",'Diplomacy:');
@@ -211,12 +218,20 @@ define ("ENG_TEXT46", 'Class');
 
 define ("ENG_TEXT47", 'Relationships value');
 
-define ("ENG_TEXT48", 'Last contact');
+define ("ENG_TEXT48", 'Linked planet');
+
+define ("ENG_TEXT49", 'none');
+
+define ("ENG_TEXT50", 'Link');
+
+define ("ENG_TEXT51", 'UnLink');
 
 // Italian
 define ("ITA_TEXT1",'Diplomazia:');
 
 define ("ITA_TEXT2",'Proponi nuova alleanza');
+
+define ("ITA_TEXT2B", 'Crea nuova dichiarazione');
 
 define ("ITA_TEXT3",'Nome giocatore:');
 
@@ -237,6 +252,8 @@ define ("ITA_TEXT10",'Alleanza:');
 define ("ITA_TEXT11",'Punti:');
 
 define ("ITA_TEXT12",'Offri alleanza');
+
+define ("ITA_TEXT12B", 'Invia dichiarazione');
 
 define ("ITA_TEXT13",'Nessun nome giocatore');
 
@@ -308,6 +325,32 @@ define ("ITA_TEXT46", 'Classe');
 
 define ("ITA_TEXT47", 'Valore relazioni');
 
-define ("ITA_TEXT48", 'Ultimo Contatto');
+define ("ITA_TEXT48", 'Pianeta Collegato');
+
+define ("ITA_TEXT49", 'nessuno');
+
+define ("ITA_TEXT50", 'Link');
+
+define ("ITA_TEXT51", 'UnLink');
+
+define ("ITA_TEXT52", 'Rivali');
+
+define ("ITA_TEXT53", 'Nuovo Rivale');
+
+define ("ITA_TEXT54", 'Nessuna dichiarazione specificata');
+
+define ("ITA_TEXT55", 'La dichiarazione non esiste!');
+
+define ("ITA_TEXT56", 'Non possiedi abbastanza risorse sul pianeta attivo per ritirare la dichiarazione!');
+
+define ("ITA_TEXT57", 'Dichiarazione proveniente da ');
+
+define ("ITA_TEXT58", 'Il giocatore in oggetto ti ha appena dichiarato unilateralmente <i>criminale</i> e non accetter&agrave; alcun accordo commerciale con te in futuro.');
+
+define ("ITA_TEXT59", 'Il giocatore in oggetto ha appena ritirato la sua dichiarazione unilaterale di criminalit&agrave; nei tuoi confronti.');
+
+define ("ITA_TEXT60", 'Non puoi stipulare alleanze con un criminale o con chi ti ha dichiarato tale');
+
+define ("ITA_TEXT61", 'Mercati chiusi');
 
 ?>

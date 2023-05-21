@@ -385,7 +385,49 @@ function display_logbook($log) {
                     $game->out(constant($game->sprache("TEXT206")));
                 break;
             }
-        break;        
+        break;
+        case 108:
+            // Player mission ambushed by Kazon Raiders
+
+            $game->out(constant($game->sprache("TEXT209")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($log['log_data'][0])).'"><b>'.$log['log_data'][1].'</b></a><br><br>');
+                        
+            switch($log['log_data'][5])
+            {
+                case -2:
+                    $game->out(constant($game->sprache("TEXT208")));
+                break;
+                case -1:
+                    $game->out(constant($game->sprache("TEXT207")));
+                break;            
+                case 0:
+                    $game->out(constant($game->sprache("TEXT197")));
+                break;
+                case 1:
+                    $game->out(constant($game->sprache("TEXT225")));
+                break;
+            }                
+        break;
+        case 109:
+            // Kazon Raiders reporting in
+
+            $game->out(constant($game->sprache("TEXT209")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($log['log_data'][0])).'"><b>'.$log['log_data'][1].'</b></a><br><br>');
+            
+            switch($log['log_data'][5])
+            {            
+                case -2:
+                    $game->out(constant($game->sprache("TEXT221")));
+                break;
+                case -1:
+                    $game->out(constant($game->sprache("TEXT222")));
+                break;            
+                case 0:
+                    $game->out(constant($game->sprache("TEXT223")));
+                break;
+                case 1:
+                    $game->out(constant($game->sprache("TEXT224")));
+                break;
+            }
+        break;    
                     
     }            
 

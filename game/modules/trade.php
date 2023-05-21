@@ -1138,11 +1138,12 @@ function Show_Bidding($own_only=0)
 
 	if($own_only==0)
 	{
-		$sql = 'SELECT s.*,u.user_name,COUNT(b.id) AS num_bids FROM (ship_trade s)
+		$sql = 'SELECT s.*,uf.user1_id,u.user_name,COUNT(b.id) AS num_bids FROM (ship_trade s)
 			LEFT JOIN (user u) ON u.user_id=s.user
 			LEFT JOIN (bidding b) ON b.trade_id=s.id
 			LEFT JOIN (ships sh) ON sh.ship_id=s.ship_id
 			LEFT JOIN (ship_templates t) ON t.id=sh.template_id
+                        LEFT JOIN (user_felony uf) ON (uf.user2_id = '.$game->player['user_id'].' AND uf.user1_id = s.user)
 			WHERE s.user '.$str_compare.' '.$game->player['user_id'].' AND s.start_time<='.$ACTUAL_TICK.' AND s.end_time>='.$ACTUAL_TICK.' AND t.ship_class IN ('.implode(',', $sels).') GROUP BY s.id ORDER BY s.end_time ASC';
 	}
 	else
@@ -1151,7 +1152,7 @@ function Show_Bidding($own_only=0)
 			LEFT JOIN (user u) ON u.user_id=s.user
 			LEFT JOIN (bidding b) ON b.trade_id=s.id
 			LEFT JOIN (ships sh) ON sh.ship_id=s.ship_id
-			LEFT JOIN (ship_templates t) ON t.id=sh.template_id
+			LEFT JOIN (ship_templates t) ON t.id=sh.template_id                       
 			WHERE s.user '.$str_compare.' '.$game->player['user_id'].' AND s.end_time>='.$ACTUAL_TICK.' AND t.ship_class IN ('.implode(',', $sels).') GROUP BY s.id ORDER BY s.end_time ASC';
 	}
 
@@ -1219,6 +1220,8 @@ function Show_Bidding($own_only=0)
 	{
 		if (isset($tradedata[$t]))
 		{
+                    if (!isset($tradedata[$t]['user1_id']))
+                    {    
 			if ($tradedata[$t]['num_bids']<2)
 			{
 				$actual_price= '<img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;'.number_format($tradedata[$t]['resource_1'], 0, '.', '.');
@@ -1268,7 +1271,8 @@ function Show_Bidding($own_only=0)
 
 			$game->out('<tr onMouseOver="mOver(this);" onMouseOut="mOut(this);" onClick="location.href=\''.parse_link('a=trade&view=view_bidding_detail&id='.$tradedata[$t]['id']).'\'"  color:'.$font_color.';">
 				<td>'.$font_bold.'<font color="'.$font_color.'">'.$tradedata[$t]['header'].'</font></b></td><td>'.$font_bold.$actual_price.'</b></td><td>'.$font_bold.$tradedata[$t]['num_bids'].'</b></td><td>'.$font_bold.Zeit(TICK_DURATION*($tradedata[$t]['end_time']-$ACTUAL_TICK)+round($NEXT_TICK/60,0)).'</b></td></tr>');
-		}
+                    }
+                }
 
 	}
 
@@ -1297,12 +1301,23 @@ function Show_CreateBidding()
 	$db->lock('ships','ship_templates','ship_trade');
 	$game->init_player();
 	// Get all ships:
-	$shipqry=$db->query('SELECT ships.*,ship_templates.ship_torso,ship_templates.name,ship_templates.value_5 FROM ships LEFT JOIN ship_templates ON ship_templates.id=ships.template_id WHERE ships.fleet_id="-'.$game->planet['planet_id'].'" AND ships.ship_untouchable=0 AND ship_templates.ship_torso <> '.SHIP_TYPE_COLO.' ORDER BY ships.template_id ASC, ships.hitpoints, ships.experience DESC');
+	$shipqry=$db->query('SELECT ships.*,
+                                    ship_templates.ship_torso, ship_templates.name, ship_templates.value_5, 
+                                    ship_templates.resource_1, ship_templates.resource_2, ship_templates.resource_3,
+                                    ship_templates.min_unit_1, ship_templates.min_unit_2, ship_templates.min_unit_3, ship_templates.min_unit_4, 
+                                    ship_templates.unit_5, ship_templates.unit_6 
+                                    FROM ships 
+                                    LEFT JOIN ship_templates ON ship_templates.id=ships.template_id 
+                                    WHERE ships.fleet_id="-'.$game->planet['planet_id'].'" AND 
+                                          ships.ship_untouchable=0 AND 
+                                          ship_templates.ship_torso <> '.SHIP_TYPE_COLO.' 
+                                    ORDER BY ships.template_id ASC, ships.hitpoints, ships.experience DESC');
 
 	$shiplist=array();
 	$actual_class=-1;
 	$actual_hp=-1;
 	$actual_exp=-1;
+        
 	$num=-1;
 	while (($ship=$db->fetchrow($shipqry))==true)
 	{
@@ -1322,9 +1337,21 @@ function Show_CreateBidding()
 	};
 
 	$optionfield='';
+        $infofield='';
 	for ($t=0; $t<count($shiplist); $t++)
 	{
+                $res1 = round($shiplist[$t]['resource_1']*0.16);
+                $res2 = round($shiplist[$t]['resource_2']*0.16);
+                $res3 = round($shiplist[$t]['resource_3']*0.16);
+                $res1_step = round($shiplist[$t]['resource_1']*0.03);
+                $res2_step = round($shiplist[$t]['resource_2']*0.03);
+                $res3_step = round($shiplist[$t]['resource_3']*0.03);
+                
 		$optionfield.='<option value="'.$shiplist[$t]['ship_id'].'" '.(isset($_REQUEST['ships'])?( ($_REQUEST['ships']==$shiplist[$t]['ship_id']) ? 'selected':''):'').'>'.$shiplist[$t]['name'].' HP: '.$shiplist[$t]['hitpoints'].'/'.$shiplist[$t]['value_5'].' EXP: '.$shiplist[$t]['experience'].' ('.$shiplist[$t]['ship_count'].'x)</option>';
+                $infofield .= '<input type="hidden" id="'.$shiplist[$t]['ship_id'].'" value="'.$res1.';'.$res2.';'.$res3.';'.$res1_step.';'.$res2_step.';'.$res3_step.';'.$shiplist[$t]['min_unit_1'].';'.$shiplist[$t]['min_unit_2'].';'.$shiplist[$t]['min_unit_3'].';'.$shiplist[$t]['min_unit_4'].';'.$shiplist[$t]['unit_5'].';'.$shiplist[$t]['unit_6'].';">';
+                if($t==0) {
+                    $default = $shiplist[$t];
+                }
 	}
 
 
@@ -1453,61 +1480,68 @@ function Show_CreateBidding()
 		if ($costs*$_REQUEST['number']>$game->planet['resource_1'])
 			$text=constant($game->sprache("TEXT114")).' '.($costs*$_REQUEST['number']).' '.constant($game->sprache("TEXT115"));
 		else
-			if ($_REQUEST['add_resource_1']==0 && $_REQUEST['add_resource_2']==0 && $_REQUEST['add_resource_3']==0 && $_REQUEST['add_unit_1']==0 && $_REQUEST['add_unit_2']==0 && $_REQUEST['add_unit_3']==0 && $_REQUEST['add_unit_4']==0 && $_REQUEST['add_unit_5']==0 && $_REQUEST['add_unit_6']==0)
-				$text=constant($game->sprache("TEXT116"));
-			else
-				if (empty($_REQUEST['header']) || strlen($_REQUEST['header'])<6)
-					$text=constant($game->sprache("TEXT117"));
-				else
-				{
-					$template_ok=0;
+                        if (empty($_REQUEST['header']) || strlen($_REQUEST['header'])<6)
+                                $text=constant($game->sprache("TEXT117"));
+                        else
+                        {
+                                $template_ok=0;
 
-					// NEW in openBeta:
-					for ($t=0; $t<count($shiplist); $t++)
-					{
-						if ($shiplist[$t]['ship_id']==$_REQUEST['ship'] && $shiplist[$t]['ship_count']>=$_REQUEST['number'])
-						{
-							$ship_data=$shiplist[$t];
-							$template_ok=1;
-						}
-					}
+                                // NEW in openBeta:
+                                for ($t=0; $t<count($shiplist); $t++)
+                                {
+                                        if ($shiplist[$t]['ship_id']==$_REQUEST['ship'] && $shiplist[$t]['ship_count']>=$_REQUEST['number'])
+                                        {
+                                                $ship_data=$shiplist[$t];
+                                                $template_ok=1;
+                                        }
+                                }
 
-					if (!$template_ok)
-					{
-						$text=constant($game->sprache("TEXT118"));
-					}
-					else   /// Submit the bidding:
-					{
-						$angebot_start_add=0; // Multiple auctions will be sent delayed
-						// Select the ship id's to be sold:
-						$shipqry=$db->query('SELECT ships.*,ship_templates.ship_torso,ship_templates.name FROM ships LEFT JOIN ship_templates ON ship_templates.id=ships.template_id WHERE ships.fleet_id="-'.$game->planet['planet_id'].'" AND ships.ship_untouchable=0 AND ships.template_id="'.$ship_data['template_id'].'" AND ships.hitpoints="'.$ship_data['hitpoints'].'" LIMIT '.$_REQUEST['number']);
-						if ($db->num_rows()!=$_REQUEST['number'])
-							$text=constant($game->sprache("TEXT119"));
-						else
-						{
-							while (($ship=$db->fetchrow($shipqry))==true)
-							{
-//echo('Actual tick: '.$ACTUAL_TICK);
-//echo('Start time:'.($ACTUAL_TICK+$_REQUEST['auction_starttime']*20+$angebot_start_add));
-//echo('End time: '.($ACTUAL_TICK+$_REQUEST['auction_starttime']*20+$_REQUEST['auction_time']*20+$angebot_start_add));
+                                if (!$template_ok)
+                                {
+                                        $text=constant($game->sprache("TEXT118"));
+                                }
+                                else   /// Submit the bidding:
+                                {
+                                        $angebot_start_add=0; // Multiple auctions will be sent delayed
+                                        // Select the ship id's to be sold:
+                                        $shipqry=$db->query('SELECT ships.*,
+                                                                    ship_templates.ship_torso, ship_templates.name, ship_templates.value_5, 
+                                                                    ship_templates.resource_1, ship_templates.resource_2, ship_templates.resource_3,
+                                                                    ship_templates.min_unit_1, ship_templates.min_unit_2, ship_templates.min_unit_3, ship_templates.min_unit_4, 
+                                                                    ship_templates.unit_5, ship_templates.unit_6
+                                                                    FROM ships LEFT JOIN ship_templates ON ship_templates.id=ships.template_id 
+                                                                    WHERE ships.fleet_id="-'.$game->planet['planet_id'].'" AND 
+                                                                          ships.ship_untouchable=0 AND 
+                                                                          ships.template_id="'.$ship_data['template_id'].'" AND 
+                                                                          ships.hitpoints="'.$ship_data['hitpoints'].'" 
+                                                                    LIMIT '.$_REQUEST['number']);
+                                        if ($db->num_rows()!=$_REQUEST['number'])
+                                                $text=constant($game->sprache("TEXT119"));
+                                        else
+                                        {
+                                                while (($ship=$db->fetchrow($shipqry))==true)
+                                                {
+                                                        $res1 = round($ship['resource_1']*0.16);
+                                                        $res2 = round($ship['resource_2']*0.16);
+                                                        $res3 = round($ship['resource_3']*0.16);
+                                                        $res1_step = round($ship['resource_1']*0.03);
+                                                        $res2_step = round($ship['resource_2']*0.03);
+                                                        $res3_step = round($ship['resource_3']*0.03);
+                                                        $sql='INSERT INTO ship_trade (user,planet,start_time,end_time,ship_id,resource_1,resource_2,resource_3,unit_1,unit_2,unit_3,unit_4,unit_5,unit_6,add_resource_1,add_resource_2,add_resource_3,add_unit_1,add_unit_2,add_unit_3,add_unit_4,add_unit_5,add_unit_6,header,description,show_data,font_bold,font_colored,unowed_only)
+                                                                VALUES   ('.$game->player['user_id'].','.$game->planet['planet_id'].','.($ACTUAL_TICK+$_REQUEST['auction_starttime']*20+$angebot_start_add).','.($ACTUAL_TICK+$_REQUEST['auction_starttime']*20+$_REQUEST['auction_time']*20+$angebot_start_add).','.$ship['ship_id'].','.$res1.','.$res2.','.$res3.','.$ship['min_unit_1'].','.$ship['min_unit_2'].','.$ship['min_unit_3'].','.$ship['min_unit_4'].','.$ship['unit_5'].','.$ship['unit_6'].','.$res1_step.','.$res2_step.','.$res3_step.',0,0,0,0,0,0,"'.$_REQUEST['header'].'","'.$_REQUEST['description'].'",'.$_REQUEST['ship_vis'].','.$_REQUEST['auction_bold'].','.$_REQUEST['auction_colored'].','.$_REQUEST['unowed_only'].')';
+                                                        $angebot_start_add+=2;
+                                                        if (($db->query($sql))==true)
+                                                        {
+                                                                $db->query('UPDATE ships SET ship_untouchable=1 WHERE ship_id='.$ship['ship_id']);
+                                                        }
+                                                } //end: while (($ship=$db->fetchrow($shipqry))==true)
+                                                $db->query('UPDATE planets SET resource_1=resource_1-'.($costs*$_REQUEST['number']).' WHERE planet_id='.$game->planet['planet_id']);
+                                                $db->query('UPDATE user SET num_auctions=num_auctions+'.($_REQUEST['number']).' WHERE user_id='.$game->player['user_id']);
 
-								//<Mojo1987>	Oo das funzt? also bei mir wollte der SQL Instert bei den Truppen immer nimmer
-								//<Secius> Er bruacht auch die werte die er speichern soll^^
-								$sql='INSERT INTO ship_trade (user,planet,start_time,end_time,ship_id,resource_1,resource_2,resource_3,unit_1,unit_2,unit_3,unit_4,unit_5,unit_6,add_resource_1,add_resource_2,add_resource_3,add_unit_1,add_unit_2,add_unit_3,add_unit_4,add_unit_5,add_unit_6,header,description,show_data,font_bold,font_colored,unowed_only)
-									VALUES   ('.$game->player['user_id'].','.$game->planet['planet_id'].','.($ACTUAL_TICK+$_REQUEST['auction_starttime']*20+$angebot_start_add).','.($ACTUAL_TICK+$_REQUEST['auction_starttime']*20+$_REQUEST['auction_time']*20+$angebot_start_add).','.$ship['ship_id'].','.$_REQUEST['base_resource_1'].','.$_REQUEST['base_resource_2'].','.$_REQUEST['base_resource_3'].','.$_REQUEST['base_unit_1'].','.$_REQUEST['base_unit_2'].','.$_REQUEST['base_unit_3'].','.$_REQUEST['base_unit_4'].','.$_REQUEST['base_unit_5'].','.$_REQUEST['base_unit_6'].','.$_REQUEST['add_resource_1'].','.$_REQUEST['add_resource_2'].','.$_REQUEST['add_resource_3'].','.$_REQUEST['add_unit_1'].','.$_REQUEST['add_unit_2'].','.$_REQUEST['add_unit_3'].','.$_REQUEST['add_unit_4'].','.$_REQUEST['add_unit_5'].','.$_REQUEST['add_unit_6'].',"'.$_REQUEST['header'].'","'.$_REQUEST['description'].'",'.$_REQUEST['ship_vis'].','.$_REQUEST['auction_bold'].','.$_REQUEST['auction_colored'].','.$_REQUEST['unowed_only'].')';
-								$angebot_start_add+=2;
-								if (($db->query($sql))==true)
-								{
-									$db->query('UPDATE ships SET ship_untouchable=1 WHERE ship_id='.$ship['ship_id']);
-								}
-							} //end: while (($ship=$db->fetchrow($shipqry))==true)
-							$db->query('UPDATE planets SET resource_1=resource_1-'.($costs*$_REQUEST['number']).' WHERE planet_id='.$game->planet['planet_id']);
-							$db->query('UPDATE user SET num_auctions=num_auctions+'.($_REQUEST['number']).' WHERE user_id='.$game->player['user_id']);
-
-							redirect('a=trade&view=view_own_bidding');
-						}
-					}
-				}
+                                                redirect('a=trade&view=view_own_bidding');
+                                        }
+                                }
+                        }
 	}
 
 
@@ -1521,58 +1555,73 @@ function Show_CreateBidding()
 	//<TAP|BNC> [22:10] <Secius> Start prices:  2    2    2    2    2    2    22    2    2
 	//<TAP|BNC> [22:10] <Secius> Increase step:  50055    5    5    0    0    0    5    55    5
 	//<Secius> yep hab den formular felden die namen 4-6 gegeben und net 1-3
-	function tap_beides(){
+	function tap_beides($default){
 		global $game;
-
-		/* 26/02/08 - AC: Check if they are currently present in the url request */ 
-		if(!isset($_REQUEST['base_resource_1'])) $_REQUEST['base_resource_1'] = 0;
-		if(!isset($_REQUEST['base_resource_2'])) $_REQUEST['base_resource_2'] = 0;
-		if(!isset($_REQUEST['base_resource_3'])) $_REQUEST['base_resource_3'] = 0;
-		if(!isset($_REQUEST['base_unit_1'])) $_REQUEST['base_unit_1'] = 0;
-		if(!isset($_REQUEST['base_unit_2'])) $_REQUEST['base_unit_2'] = 0;
-		if(!isset($_REQUEST['base_unit_3'])) $_REQUEST['base_unit_3'] = 0;
-		if(!isset($_REQUEST['base_unit_4'])) $_REQUEST['base_unit_4'] = 0;
-		if(!isset($_REQUEST['base_unit_5'])) $_REQUEST['base_unit_5'] = 0;
-		if(!isset($_REQUEST['base_unit_6'])) $_REQUEST['base_unit_6'] = 0;
-		if(!isset($_REQUEST['add_resource_1'])) $_REQUEST['add_resource_1'] = 0;
-		if(!isset($_REQUEST['add_resource_2'])) $_REQUEST['add_resource_2'] = 0;
-		if(!isset($_REQUEST['add_resource_3'])) $_REQUEST['add_resource_3'] = 0;
-		if(!isset($_REQUEST['add_unit_1'])) $_REQUEST['add_unit_1'] = 0;
-		if(!isset($_REQUEST['add_unit_2'])) $_REQUEST['add_unit_2'] = 0;
-		if(!isset($_REQUEST['add_unit_3'])) $_REQUEST['add_unit_3'] = 0;
-		if(!isset($_REQUEST['add_unit_4'])) $_REQUEST['add_unit_4'] = 0;
-		if(!isset($_REQUEST['add_unit_5'])) $_REQUEST['add_unit_5'] = 0;
-		if(!isset($_REQUEST['add_unit_6'])) $_REQUEST['add_unit_6'] = 0;
-		/* */
 
 		return $wert = '
 		<table border=0 cellpadding=0 cellspacing=0>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" name="base_resource_1" value="'.$_REQUEST['base_resource_1'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" name="base_resource_2" value="'.$_REQUEST['base_resource_2'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" name="base_resource_3" value="'.$_REQUEST['base_resource_3'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit1_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" name="base_unit_1" value="'.$_REQUEST['base_unit_1'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit2_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" name="base_unit_2" value="'.$_REQUEST['base_unit_2'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit3_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" name="base_unit_3" value="'.$_REQUEST['base_unit_3'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit4_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" name="base_unit_4" value="'.$_REQUEST['base_unit_4'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit5_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" name="base_unit_5" value="'.$_REQUEST['base_unit_5'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit6_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" name="base_unit_6" value="'.$_REQUEST['base_unit_6'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" name="add_resource_1" value="'.$_REQUEST['add_resource_1'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" name="add_resource_2" value="'.$_REQUEST['add_resource_2'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" name="add_resource_3" value="'.$_REQUEST['add_resource_3'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit1_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" name="add_unit_1" value="'.$_REQUEST['add_unit_1'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit2_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" name="add_unit_2" value="'.$_REQUEST['add_unit_2'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit3_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" name="add_unit_3" value="'.$_REQUEST['add_unit_3'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit4_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" name="add_unit_4" value="'.$_REQUEST['add_unit_4'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit5_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" name="add_unit_5" value="'.$_REQUEST['add_unit_5'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
-		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit6_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" name="add_unit_6" value="'.$_REQUEST['add_unit_6'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" id="base_resource_1" value="'.(round($default['resource_1']*0.16)).'" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" id="base_resource_2" value="'.(round($default['resource_2']*0.16)).'" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" id="base_resource_3" value="'.(round($default['resource_3']*0.16)).'" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit1_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" id="base_unit_1" value="'.$default['min_unit_1'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit2_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" id="base_unit_2" value="'.$default['min_unit_2'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit3_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" id="base_unit_3" value="'.$default['min_unit_3'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit4_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" id="base_unit_4" value="'.$default['min_unit_4'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit5_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" id="base_unit_5" value="'.$default['unit_5'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit6_small.gif">&nbsp;('.constant($game->sprache("TEXT71b")).'):</td><td width=20></td><td width=80><input type="text" id="base_unit_6" value="'.$default['unit_6'].'" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_metal_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" id="add_resource_1" value="'.(round($default['resource_1']*0.03)).'" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" id="add_resource_2" value="'.(round($default['resource_2']*0.03)).'" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" id="add_resource_3" value="'.(round($default['resource_3']*0.03)).'" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit1_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" id="add_unit_1" value="0" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit2_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" id="add_unit_2" value="0" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit3_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" id="add_unit_3" value="0" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit4_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" id="add_unit_4" value="0" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit5_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" id="add_unit_5" value="0" class="Field_nosize" size="10" maxlength="6"></td></tr>
+		<tr><td width=150>&nbsp;<img src="'.$game->GFX_PATH.'menu_unit6_small.gif">&nbsp;('.constant($game->sprache("TEXT71c")).'):</td><td width=20></td><td width=80><input type="text" id="add_unit_6" value="0" class="Field_nosize" size="10" maxlength="6"></td></tr>
 		</table>';
 	}
-
+        
 	/* 26/02/08 - AC: Check if they are currently present in the url request */ 
 	if(!isset($_REQUEST['auction_time'])) $_REQUEST['auction_time'] = 0;
 	if(!isset($_REQUEST['auction_starttime'])) $_REQUEST['auction_starttime'] = 0;
 	/* */
 
+        $game->out('
+            <script type="text/javascript">
+             function set_ress(id){
+                var info_ship = document.getElementById(id).value;
+                
+                var parts = info_ship.split(";");
+                
+                var resource_1 = parts[0];
+                var resource_2 = parts[1];
+                var resource_3 = parts[2];
+                var add_1 = parts[3];
+                var add_2 = parts[4];
+                var add_3 = parts[5];
+                var unit_1 = parts[6];
+                var unit_2 = parts[7];
+                var unit_3 = parts[8];
+                var unit_4 = parts[9];
+                var unit_5 = parts[10];
+                var unit_6 = parts[11];
+                
+                document.getElementById("base_resource_1").value = resource_1;
+                document.getElementById("base_resource_2").value = resource_2;
+                document.getElementById("base_resource_3").value = resource_3;
+                document.getElementById("add_resource_1").value = add_1;
+                document.getElementById("add_resource_2").value = add_2;
+                document.getElementById("add_resource_3").value = add_3;
+                document.getElementById("base_unit_1").value = unit_1;
+                document.getElementById("base_unit_2").value = unit_2;
+                document.getElementById("base_unit_3").value = unit_3;
+                document.getElementById("base_unit_4").value = unit_4;
+                document.getElementById("base_unit_5").value = unit_5;
+                document.getElementById("base_unit_6").value = unit_6;
+                
+             }
+            </script>
+        ');
 	$game->out('
 		<br>
 		<center>
@@ -1580,8 +1629,9 @@ function Show_CreateBidding()
 		<center>
 		<center><span class="text_large">'.$text.'</span></center>
 		<br>
-		<form method="post" action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&submit_bidding=1').'">
-
+		<form id="tradefield" method="post" action="'.parse_link('a=trade&view='.$_REQUEST['view'].'&submit_bidding=1').'">
+                <input id="bidding_mode" value="1" type="hidden">
+                '.$infofield.'
 		<table border=0 cellpadding=0 cellspacing=0 width="400" class="style_inner">
 		<tr><td width=400>
 		<center>
@@ -1589,7 +1639,7 @@ function Show_CreateBidding()
 
 		<table border=0 cellpadding=0 cellspacing=0>
 		<tr><td width=100 valign=top>&nbsp;'.constant($game->sprache("TEXT121")).'</td><td width=20></td><td width=300>
-		<select name="ship" class="Select" size="1">'.$optionfield.'</select>
+		<select name="ship" class="Select" size="1" onChange="set_ress(this.value);">'.$optionfield.'</select>
 		</td></tr>
 		<tr><td width=100 valign=top>&nbsp;'.constant($game->sprache("TEXT0")).':</td><td width=20></td><td width=300><input type="text" name="header" value="'.(isset($_REQUEST['header']) ? $_REQUEST['header']:'').'" class="Field_nosize" size="20" maxlength="40" style="width: 250px;"></td></tr>
 		<tr><td width=100 valign=top>&nbsp;'.constant($game->sprache("TEXT31")).'</td><td width=20></td><td width=300><textarea name="description" class="textfield" style="width: 290px;" rows="10">'.(isset($_REQUEST['description']) ? $_REQUEST['description']:'').'</textarea><br></td></tr>
@@ -1681,7 +1731,7 @@ function Show_CreateBidding()
 		'<div id="masterdiv">
 		<div class="menutitle" onclick="SwitchMenu(\'sub3\')">'.constant($game->sprache("TEXT143")).'</div>
 		<span class="submenu" id="sub3">');
-	$wert=tap_beides();
+	$wert=tap_beides($default);
 	$game->out($wert.'	</span>
 		</div>
 		</td></tr>
@@ -1707,14 +1757,13 @@ $snach = $RACE_DATA[$game->player['user_race']][$nach];
 $svon = $RACE_DATA[$game->player['user_race']][$von];
 */
 
-// Il rateo di scambio viene pesato in base alla razza, penalizzando di fatto lo scambio di risorse tra le razze; usiamo il rateo 2,5:1:0,8 modificato dalle disponibilita`
 switch($nach) {
 	case 1:
 	case 9:
 		$snach = 4.0;
 	break;
 	case 10:
-		$snach = 5.0;
+		$snach = 4.0;
 	break;
 	case 11:
 		$snach = 2.80;
@@ -1727,7 +1776,7 @@ switch($von) {
 		$svon = 4.0;
 	break;
 	case 10:
-		$svon = 5.0;
+		$svon = 4.0;
 	break;
 	case 11:
 		$svon = 2.80;
@@ -2065,11 +2114,11 @@ else
 	    	res_to   = document.ScambioRisorse.risorsa_a.value;
 	    	
 	    	if(res_from == "Metall") value_from = 4;
-	    	if(res_from == "Mineral") value_from = 5;
+	    	if(res_from == "Mineral") value_from = 4;
 	    	if(res_from == "Latinum") value_from = 2.8;
 	    	
 	    	if(res_to == "Metall") value_to = 4;
-	    	if(res_to == "Mineral") value_to = 5;
+	    	if(res_to == "Mineral") value_to = 4;
 	    	if(res_to == "Latinum") value_to = 2.8;
 
 			rateo = Math.round((1 / value_from * value_to) * 100) / 100;
@@ -2096,7 +2145,7 @@ else
 			var res_from, res_to, quantity = 0, exchanged = 0, tax;
 			var tax_rate = new Array(0, 0.50, 0.65, 0.85);
 
-			// Exchange rates: Metall; Minerals; Latinum => 4 ; 5 ; 2.8
+			// Exchange rates: Metall; Minerals; Latinum => 4 ; 4 ; 2.8
 			
 			res_from = document.ScambioRisorse.risorsa_da.value;
 			res_to   = document.ScambioRisorse.risorsa_a.value;
@@ -2107,7 +2156,7 @@ else
 			{
 				if(res_to == "Mineral")
 				{
-					exchanged = Math.round((quantity / 4 * 5) * tax_rate[tax]);
+					exchanged = Math.round((quantity / 4 * 4) * tax_rate[tax]);
 				}
 				
 				if(res_to == "Latinum")
@@ -2120,12 +2169,12 @@ else
 			{
 				if(res_to == "Metall")
 				{
-					exchanged = Math.round((quantity / 5 * 4) * tax_rate[tax]);
+					exchanged = Math.round((quantity / 4 * 4) * tax_rate[tax]);
 				}
 				
 				if(res_to == "Latinum")
 				{
-					exchanged = Math.round((quantity / 5 * 2.8) * tax_rate[tax]);				
+					exchanged = Math.round((quantity / 4 * 2.8) * tax_rate[tax]);				
 				}			
 			}
 			
@@ -2138,7 +2187,7 @@ else
 				
 				if(res_to == "Mineral")
 				{
-					exchanged = Math.round((quantity / 2.8 * 5) * tax_rate[tax]);
+					exchanged = Math.round((quantity / 2.8 * 4) * tax_rate[tax]);
 				}			
 			}
 			
@@ -2169,7 +2218,7 @@ else
 					<option value="Mineral">'.constant($game->sprache("TEXT165")).'</option>
 					<option value="Latinum">'.constant($game->sprache("TEXT167")).'</option>
 					</select>
-					==> <input name="Rateo" type="number" value="1.25" size="3" class="Field_nosize" readonly> ==>
+					==> <input name="Rateo" type="number" value="1" size="3" class="Field_nosize" readonly> ==>
 					<select size="1" name="risorsa_a" onchange="display_rateo(); document.ScambioRisorse.Result.value = 0; document.ScambioRisorse.Qty.value = 0; display_avail();">
 					<option value="Metall">'.constant($game->sprache("TEXT123")).'</option>
 					<option value="Mineral" selected>'.constant($game->sprache("TEXT165")).'</option>
@@ -2834,43 +2883,59 @@ function Trade_Buy_truppen()
 			$kosten['Latinum']=0;
 			if($_POST['unit_1']!=0)
 			{
-				$kosten['Metall']+=kauf_formel_truppen(280,$_POST['unit_1']);
-				$kosten['Mineral']+=kauf_formel_truppen(235,$_POST['unit_1']);
-				$kosten['gesamt']+=kauf_formel_truppen((280+235),$_POST['unit_1']);
+                                $ress_0 = UnitPrice(0,0);
+                                $ress_1 = UnitPrice(0,1);                                
+				$kosten['Metall']+=kauf_formel_truppen($ress_0,$_POST['unit_1']);
+				$kosten['Mineral']+=kauf_formel_truppen($ress_1,$_POST['unit_1']);
+				$kosten['gesamt']+=kauf_formel_truppen(($ress_0+$ress_1),$_POST['unit_1']);
 			}
 			if($_POST['unit_2']!=0)
 			{
-				$kosten['Metall']+=kauf_formel_truppen(340,$_POST['unit_2']);
-				$kosten['Mineral']+=kauf_formel_truppen(225,$_POST['unit_2']);
-				$kosten['gesamt']+=kauf_formel_truppen((340+225),$_POST['unit_2']);
+                                $ress_0 = UnitPrice(1,0);
+                                $ress_1 = UnitPrice(1,1);                                                            
+				$kosten['Metall']+=kauf_formel_truppen($ress_0,$_POST['unit_2']);
+				$kosten['Mineral']+=kauf_formel_truppen($ress_1,$_POST['unit_2']);
+				$kosten['gesamt']+=kauf_formel_truppen(($ress_0+$ress_1),$_POST['unit_2']);
 			}
 			if($_POST['unit_3']!=0)
 			{
-				$kosten['Metall']+=kauf_formel_truppen(650,$_POST['unit_3']);
-				$kosten['Mineral']+=kauf_formel_truppen(450,$_POST['unit_3']);
-				$kosten['Latinum']+=kauf_formel_truppen(350,$_POST['unit_3']);
-				$kosten['gesamt']+=kauf_formel_truppen((650+450+350),$_POST['unit_3']);
+                                $ress_0 = UnitPrice(2,0);
+                                $ress_1 = UnitPrice(2,1);                                                            
+                                $ress_2 = UnitPrice(2,2);                                                                
+				$kosten['Metall']+=kauf_formel_truppen($ress_0,$_POST['unit_3']);
+				$kosten['Mineral']+=kauf_formel_truppen($ress_1,$_POST['unit_3']);
+				$kosten['Latinum']+=kauf_formel_truppen($ress_2,$_POST['unit_3']);
+				$kosten['gesamt']+=kauf_formel_truppen(($ress_0+$ress_1+$ress_2),$_POST['unit_3']);
 			}
 			if($_POST['unit_4']!=0)
 			{
-				$kosten['Metall']+=kauf_formel_truppen(410,$_POST['unit_4']);
-				$kosten['Mineral']+=kauf_formel_truppen(210,$_POST['unit_4']);
-				$kosten['Latinum']+=kauf_formel_truppen(115,$_POST['unit_4']);
-				$kosten['gesamt']+=kauf_formel_truppen((410+210+115),$_POST['unit_4']);
+                                $ress_0 = UnitPrice(3,0);
+                                $ress_1 = UnitPrice(3,1);                                                            
+                                $ress_2 = UnitPrice(3,2);                            
+				$kosten['Metall']+=kauf_formel_truppen($ress_0,$_POST['unit_4']);
+				$kosten['Mineral']+=kauf_formel_truppen($ress_1,$_POST['unit_4']);
+				$kosten['Latinum']+=kauf_formel_truppen($ress_2,$_POST['unit_4']);
+				$kosten['gesamt']+=kauf_formel_truppen(($ress_0+$ress_1+$ress_2),$_POST['unit_4']);
 			}
 			if($_POST['unit_5']!=0)
 			{
-				$kosten['Metall']+=kauf_formel_truppen(650,$_POST['unit_5']);
-				$kosten['Mineral']+=kauf_formel_truppen(440,$_POST['unit_5']);
-				$kosten['Latinum']+=kauf_formel_truppen(250,$_POST['unit_5']);
-				$kosten['gesamt']+=kauf_formel_truppen((650+440+250),$_POST['unit_5']);
+                                $ress_0 = UnitPrice(4,0);
+                                $ress_1 = UnitPrice(4,1);                                                            
+                                $ress_2 = UnitPrice(4,2);                            
+				$kosten['Metall']+=kauf_formel_truppen($ress_0,$_POST['unit_5']);
+				$kosten['Mineral']+=kauf_formel_truppen($ress_1,$_POST['unit_5']);
+				$kosten['Latinum']+=kauf_formel_truppen($ress_2,$_POST['unit_5']);
+				$kosten['gesamt']+=kauf_formel_truppen(($ress_0+$ress_1+$ress_2),$_POST['unit_5']);
 			}
 			if($_POST['unit_6']!=0)
 			{
-				$kosten['Metall']+=kauf_formel_truppen(1000,$_POST['unit_6']);
-				$kosten['Mineral']+=kauf_formel_truppen(500,$_POST['unit_6']);
-				$kosten['Latinum']+=kauf_formel_truppen(200,$_POST['unit_6']);
-				$kosten['gesamt']+=kauf_formel_truppen((1000+500+200),$_POST['unit_6']);
+                                $ress_0 = UnitPrice(5,0);
+                                $ress_1 = UnitPrice(5,1);                                                            
+                                $ress_2 = UnitPrice(5,2);                            
+				$kosten['Metall']+=kauf_formel_truppen($ress_0,$_POST['unit_6']);
+				$kosten['Mineral']+=kauf_formel_truppen($ress_1,$_POST['unit_6']);
+				$kosten['Latinum']+=kauf_formel_truppen($ress_2,$_POST['unit_6']);
+				$kosten['gesamt']+=kauf_formel_truppen(($ress_0+$ress_1+$ress_2),$_POST['unit_6']);
 			}
 			if($_POST['transportsart']!=1 && $_POST['transportsart']!=2 && $_POST['transportsart']!=3)  {$game->out('Cheat'); exit;}
 			if($_POST['transportsart']==1) {$transportsatz=0.30;$tickzeit=20*6;}
@@ -3131,43 +3196,59 @@ function Trade_Buy_truppen()
 		$kosten['Latinum']=0;
 		if($_POST['unit_1']!=0)
 		{
-			$kosten['Metall']+=kauf_formel_truppen(280,$_POST['unit_1']);
-			$kosten['Mineral']+=kauf_formel_truppen(235,$_POST['unit_1']);
-			$kosten['gesamt']+=kauf_formel_truppen((280+235),$_POST['unit_1']);
+                        $ress_0 = UnitPrice(0,0);
+                        $ress_1 = UnitPrice(0,1);                                                                
+			$kosten['Metall']+=kauf_formel_truppen($ress_0,$_POST['unit_1']);
+			$kosten['Mineral']+=kauf_formel_truppen($ress_1,$_POST['unit_1']);
+			$kosten['gesamt']+=kauf_formel_truppen(($ress_0+$ress_1),$_POST['unit_1']);
 		}
 		if($_POST['unit_2']!=0)
 		{
-			$kosten['Metall']+=kauf_formel_truppen(340,$_POST['unit_2']);
-			$kosten['Mineral']+=kauf_formel_truppen(225,$_POST['unit_2']);
-			$kosten['gesamt']+=kauf_formel_truppen((340+225),$_POST['unit_2']);
+                        $ress_0 = UnitPrice(1,0);
+                        $ress_1 = UnitPrice(1,1);                                                                                
+			$kosten['Metall']+=kauf_formel_truppen($ress_0,$_POST['unit_2']);
+			$kosten['Mineral']+=kauf_formel_truppen($ress_1,$_POST['unit_2']);
+			$kosten['gesamt']+=kauf_formel_truppen(($ress_0+$ress_1),$_POST['unit_2']);
 		}
 		if($_POST['unit_3']!=0)
 		{
-			$kosten['Metall']+=kauf_formel_truppen(650,$_POST['unit_3']);
-			$kosten['Mineral']+=kauf_formel_truppen(450,$_POST['unit_3']);
-			$kosten['Latinum']+=kauf_formel_truppen(350,$_POST['unit_3']);
-			$kosten['gesamt']+=kauf_formel_truppen((650+450+350),$_POST['unit_3']);
+                        $ress_0 = UnitPrice(2,0);
+                        $ress_1 = UnitPrice(2,1);                                                            
+                        $ress_2 = UnitPrice(2,2);                    
+			$kosten['Metall']+=kauf_formel_truppen($ress_0,$_POST['unit_3']);
+			$kosten['Mineral']+=kauf_formel_truppen($ress_1,$_POST['unit_3']);
+			$kosten['Latinum']+=kauf_formel_truppen($ress_2,$_POST['unit_3']);
+			$kosten['gesamt']+=kauf_formel_truppen(($ress_0+$ress_1+$ress_2),$_POST['unit_3']);
 		}
 		if($_POST['unit_4']!=0)
 		{
-			$kosten['Metall']+=kauf_formel_truppen(410,$_POST['unit_4']);
-			$kosten['Mineral']+=kauf_formel_truppen(210,$_POST['unit_4']);
-			$kosten['Latinum']+=kauf_formel_truppen(115,$_POST['unit_4']);
-			$kosten['gesamt']+=kauf_formel_truppen((410+210+115),$_POST['unit_4']);
+                        $ress_0 = UnitPrice(3,0);
+                        $ress_1 = UnitPrice(3,1);                                                            
+                        $ress_2 = UnitPrice(3,2);                    
+			$kosten['Metall']+=kauf_formel_truppen($ress_0,$_POST['unit_4']);
+			$kosten['Mineral']+=kauf_formel_truppen($ress_1,$_POST['unit_4']);
+			$kosten['Latinum']+=kauf_formel_truppen($ress_2,$_POST['unit_4']);
+			$kosten['gesamt']+=kauf_formel_truppen(($ress_0+$ress_1+$ress_2),$_POST['unit_4']);
 		}
 		if($_POST['unit_5']!=0)
 		{
-			$kosten['Metall']+=kauf_formel_truppen(650,$_POST['unit_5']);
-			$kosten['Mineral']+=kauf_formel_truppen(440,$_POST['unit_5']);
-			$kosten['Latinum']+=kauf_formel_truppen(250,$_POST['unit_5']);
-			$kosten['gesamt']+=kauf_formel_truppen((650+440+250),$_POST['unit_5']);
+                        $ress_0 = UnitPrice(4,0);
+                        $ress_1 = UnitPrice(4,1);                                                            
+                        $ress_2 = UnitPrice(4,2);                    
+			$kosten['Metall']+=kauf_formel_truppen($ress_0,$_POST['unit_5']);
+			$kosten['Mineral']+=kauf_formel_truppen($ress_1,$_POST['unit_5']);
+			$kosten['Latinum']+=kauf_formel_truppen($ress_2,$_POST['unit_5']);
+			$kosten['gesamt']+=kauf_formel_truppen(($ress_0+$ress_1+$ress_2),$_POST['unit_5']);
 		}
 		if($_POST['unit_6']!=0)
 		{
-			$kosten['Metall']+=kauf_formel_truppen(1000,$_POST['unit_6']);
-			$kosten['Mineral']+=kauf_formel_truppen(500,$_POST['unit_6']);
-			$kosten['Latinum']+=kauf_formel_truppen(200,$_POST['unit_6']);
-			$kosten['gesamt']+=kauf_formel_truppen((1000+500+200),$_POST['unit_6']);
+                        $ress_0 = UnitPrice(5,0);
+                        $ress_1 = UnitPrice(5,1);                                                            
+                        $ress_2 = UnitPrice(5,2);                    
+			$kosten['Metall']+=kauf_formel_truppen($ress_0,$_POST['unit_6']);
+			$kosten['Mineral']+=kauf_formel_truppen($ress_1,$_POST['unit_6']);
+			$kosten['Latinum']+=kauf_formel_truppen($ress_2,$_POST['unit_6']);
+			$kosten['gesamt']+=kauf_formel_truppen(($ress_0+$ress_1+$ress_2),$_POST['unit_6']);
 		}
 
 		$steuern['1']=(int)($kosten['Metall']*0.30);
@@ -4004,8 +4085,8 @@ function ship_pick()
 			$db->lock('ships','ship_fleets','FHB_warteschlange w','FHB_logging_ship','scheduler_shipmovement','schulden_table s','FHB_warteschlange');
 			if(($npc_ships_wait=$db->query('SELECT w.* FROM (FHB_warteschlange w) LEFT JOIN schulden_table s on s.ship_id=w.ship_id WHERE (s.status=1 OR s.status IS NULL) AND user_id='.$game->player['user_id'].' AND '.$where_frage.')'))==true)
 			{
-				if($db->query('INSERT INTO ship_fleets (fleet_name, user_id, planet_id, move_id, n_ships)
-					VALUES ("'.constant($game->sprache("TEXT274")).' '.((int)($ACTUAL_TICK/2)).'", '.$game->player['user_id'].', '.$Bot['planet_id'].', 0, '.$zaehler.')'))
+				if($db->query('INSERT INTO ship_fleets (fleet_name, user_id, owner_id, planet_id, move_id, n_ships)
+					VALUES ("'.constant($game->sprache("TEXT274")).' '.((int)($ACTUAL_TICK/2)).'", '.$game->player['user_id'].', '.$game->player['user_id'].', '.$Bot['planet_id'].', 0, '.$zaehler.')'))
 				{
 
 					$fleet_id=$db->insert_id();

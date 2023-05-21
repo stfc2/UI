@@ -33,15 +33,15 @@ $PLANETS_TEXT = array(
     'a' => array(
         0 => 'Geotermico',
         1 => 'Richiede pesante intervento di terraforming',
-        2 => 'Risorse equilibrate, modesta quantit&agrave;',
-        3 => 'I pianeti di questa classe sono molto piccoli e rocciosi, caratterizzati da una intensa attivit&agrave; vulcanica. Tale attivit&agrave; satura l&#146;atmosfera con gas serra, mantenendo alta la temperatura in superfice anche se ad elevata distanza dalla stella. Quando l&#146;attivit&agrave; vulcanica si esaurisce, il pianeta "muore", trasformandosi in un classe D.',
+        2 => 'Media presenza di tutte le risorse',
+        3 => 'I pianeti di questa classe sono molto piccoli e rocciosi, caratterizzati da una intensa attivit&agrave; vulcanica. Tale attivit&agrave; satura l&#146;atmosfera con gas serra, mantenendo alta la temperatura in superfice anche se ad elevata distanza dalla stella. Quando l&#146;attivit&agrave; vulcanica si esaurisce, il pianeta "muore", trasformandosi in un classe C.',
         4 => 'Gothos'
     ),
     
     'b' => array(
         0 => 'Geomorteus',
         1 => 'Richiede pesante intervento di terraforming',
-        2 => 'Risorse equilibrate, modesta quantit&agrave;',
+        2 => 'Media presenza di tutte le risorse',
         3 => 'I pianeti di questa classe sono piuttosto piccoli e localizzati in prossimit&agrave; della propria stella. Pianeti inadatti alla vita, hanno atmosfere rarefatte di elio e sodio. La superficie &egrave; fusa e altamente instabile. Nessuna forma di vita &egrave; mai stata scoperta su questo tipo di pianeta.',
         4 => 'Mercurio'
     ),
@@ -49,7 +49,7 @@ $PLANETS_TEXT = array(
     'c' => array(
         0 => 'Geoinattivo',
         1 => 'Richiede pesante intervento di terraforming',
-        2 => 'Risorse equilibrate, modesta quantit&agrave;',
+        2 => 'Media presenza di tutte le risorse',
         3 => 'Quando cessano le attivit&agrave; vulcaniche su un pianeta di classe A, questo diventa un pianeta geoinattivo. Essenzialmente morti, questi pianeti hanno una superficie fredda e rocciosa e non hanno attivit&agrave; geologica.',
         4 => 'Plutone, Psi 2000'
     ),
@@ -57,7 +57,7 @@ $PLANETS_TEXT = array(
     'd' => array(
         0 => 'Nano',
         1 => 'Richiede pesante intervento di terraforming',
-        2 => 'Risorse equilibrate, modesta quantit&agrave;',
+        2 => 'Media presenza di tutte le risorse',
         3 => 'Questa classe planetaria normalmente si applica solo a planetoidi di forma non regolare, dovuta alla scarsit&agrave; della propria forza gravitazionale. La loro atmosfera, se presente, &egrave molto rarefatta. La superficie &egrave; composta di silicati e vari composti metallici. La vita &egrave; possibile solo attraverso un supporto tecnologico ed un rifornimento di risorse dall&#146;esterno.',
         4 => 'Ceres'
     ),

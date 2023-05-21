@@ -87,175 +87,156 @@ $ship_components_locale=array(
       ), // Endof Category propulsione
 
 
-        // Category Armi primarie
+        // Category Classe 1
         2=>array(
-             // Component raggio disgregatore
+             // Component Tipo II
              0=>array(
-                    'name'=>'Raggio disgregatore',
-                    'description'=>'Il raggio disgregatore &egrave; un fascio di ioni accellerato, tuttavia produce un forte campo di dispersione che ne limita i danni all&#146;impatto.',
-            ), // Endof Componente raggio disgregatore
+                    'name'=>'Tipo II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Componente Tipo II
 
-             // Component disgregatore
+             // Component Tipo III
              1=>array(
-                    'name'=>'Disgregatore',
-                    'description'=>'Il disgregatore &egrave; un&#146;evoluzione del raggio disgregatore, tuttavia grazie ad un miglior indirizzamento ne aumenta l&#146;efficienza del 40%.',
-            ), // Endof Componente disgregatore
-
-             // Component disgregatore a impulso
+                    'name'=>'Tipo III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Componente Tipo III
+            
+             // Component Tipo IV
              2=>array(
-                    'name'=>'Disgregatore a impulsi',
-                    'description'=>'Il disgregatore a impulsi &egrave; simile al suo predecessore, la sua differenza consiste nella maggior resistenza dei suoi componenti e nel fatto che gli ioni accellerati non vengono pi&ugrave; emessi a raggio ma bens&igrave; ad impulsi.',
-            ), // Endof Componente disgregatore a impulso
-
-             // Componente raggio disgregatore MK2
+                    'name'=>'Tipo IV',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Componente Tipo IV            
+            
+             // Component Tipo V
              3=>array(
-                    'name'=>'Raggio disgregatore MK2',
-                    'description'=>'&acute;Ritorno alle origini&acute; &egrave; il motto di questa tecnologia. Spesso lo sviluppo di nuove tecnologie per aumentare l&#146;apporto energetico ha sempre condotto a nuovi problemi per gli ingegneri. Per ovviare alla richiesta energetica di questo nuovo disgregatore &egrave; stata recuperata energia addizionale dal nucleo di curvatura.',
-            ), // Endof Componente raggio disgregatore MK2
+                    'name'=>'Tipo V',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Componente Tipo V
+            
+      'name'=>'Aggiornamenti Classe 1',
+      ), // Endof Category Aggiornamenti Classe 1
 
-             // Component disgregatore gravimetrico
+        // Category Classe 1
+        3=>array(        
+             // Component Tipo II
+             0=>array(
+                    'name'=>'Tipo II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Componente Tipo II
+
+             // Component Tipo III
+             1=>array(
+                    'name'=>'Tipo III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Componente Tipo III
+            
+             // Component Tipo IV
+             2=>array(
+                    'name'=>'Tipo IV',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Componente Tipo IV            
+            
+             // Component Tipo V
+             3=>array(
+                    'name'=>'Tipo V',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Componente Tipo V
+
+             // Component Tipo VI
              4=>array(
-                    'name'=>'Disgregatore gravimetrico',
-                    'description'=>'Il disgregatore gravimetrico non &egrave; una particolare invenzione, l&#146;approvvigionamento energetico potrebbe essere migliorato, migliorando in definitiva l&#146;effetto distruttivo.',
-            ), // Endof Componente disgregatore gravimetrico
-
-             // Component disgregatore gravimetrico a impulso
+                    'name'=>'Tipo VI',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Componente Tipo VI    
+    
+             // Component Tipo VII
              5=>array(
-                    'name'=>'Disgregatore gravimetrico a impulso',
-                    'description'=>'Il disgregatore gravimetrico ad impulso diviene possibile grazie ad un sostanziale miglioramento della tecnologia bellica dei disgregatori, offrendo una maggior potenza di fuoco alle navi.',
-            ), // Endof Componente disgregatore gravimetrico a impulso
-
-             // Component raggio disgregatore gravimetrico
-             6=>array(
-                    'name'=>'Raggio disgregatore gravimetrico',
-                    'description'=>'La ricerca tecnologica sui disgregatori ha raggiunto la sua massima espressione con l&#146;introduzione del raggio disgregatore gravimetrico, tra le caratteristiche vi &egrave; un significativo aumento dell&#146;effetto distruttivo.',
-            ), // Endof Componente raggio disgregatore gravimetrico
-
-      'name'=>'Armi primarie',
-      ), // Endof Category Armi primarie
-
-
-        // Category Armi secondarie
-        3=>array(
-             // Componente Siluri Ionici
-             0=>array(
-                    'name'=>'Siluri ionici',
-                    'description'=>'I siluri ionici risultano costosi e relativamente deboli. L&#146;unico loro punto forte &egrave; la possibilit&agrave; di introdurli sui cargo e sulle navi leggere.',
-            ), // Endof Componente Siluro Ionico
-
-             // Component Siluri Fotonici
-             1=>array(
-                    'name'=>'Siluri fotonici',
-                    'description'=>'I siluri fotonici hanno il grande vantaggio di essere indipendenti dalla nave che li lancia, infatti hanno un loro sistema di propulsione e navigazione verso il bersaglio.',
-            ), // Endof Componente siluri fotonici
-
-             // Component siluri fotonici MKVI
-             2=>array(
-                    'name'=>'Siluri fotonici MKVI',
-                    'description'=>'I siluri fotonici hanno il grande vantaggio di essere indipendenti dalla nave che li lancia, infatti hanno un loro sistema di propulsione e navigazione verso il bersaglio. Rispetto al suo predecessore questo modello risulta avere una maggior forza d&#146;impatto ed un miglior sistema di aggancio del bersaglio.',
-            ), // Endof Componente siluri fotonici MKVI
-
-             // Component Triplo sistema di lancio
-             3=>array(
-                    'name'=>'Triplo sistema di lancio',
-                    'description'=>'I siluri fotonici hanno il grande vantaggio di essere indipendenti dalla nave che li lancia, infatti hanno un loro sistema di propulsione e navigazione verso il bersaglio. Questo nuovo sistema permette il lancio simultaneo di 3 siluri fotonici e ad intervalli molto rapidi.',
-            ), // Endof Componente tripplo sistema di lancio
-
-             // Component Testata tattica Gk´tag
-             4=>array(
-                    'name'=>'Testata tattica Gk&acute;tag',
-                    'description'=>'Le testate tattiche Gk&acute;tag, sono simili ai siluri fotonici, ma sono in grado di superare senza problemi l&#146;atmosfera di un pianeta e di colpire bersagli al suolo.',
-            ), // Endof Component testata tattica Gk´tag
-
-      'name'=>'Armi secondarie',
+                    'name'=>'Tipo VII',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Componente Tipo VII 
+    
+      'name'=>'Aggiornamenti Classe 2',
       ), // Endof Category Armi secondarie
 
 
-        // Category Alloggi guerrieri
+        // Category Aggiornamenti Classe 3
         4=>array(
-             // Componente NughI
+             // Component Tipo II
              0=>array(
-                    'name'=>'NughI',
-                    'description'=>'Comprende gli alloggi e le aree sociali del personale di bordo.',
-            ), // Endof Componente NughI
+                    'name'=>'Tipo II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Componente Tipo II
 
-             // Componente Mangghom nughI
+             // Component Tipo III
              1=>array(
-                    'name'=>'Mangghom nughI',
-                    'description'=>'Alloggi dei soldati, possono contenere 60 guerrieri.',
-            ), // Endof Componente Mangghom nughI
-
-             // Componente SuwvI` nughI
+                    'name'=>'Tipo III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Componente Tipo III
+            
+             // Component Tipo IV
              2=>array(
-                    'name'=>'SuwvI&acute; nughI',
-                    'description'=>'Alloggi dei soldati, possono contenere 70 guerrieri.',
-            ), // Endof Componente SuwvI` nughI
-
-             // Componente Da´ nughI
+                    'name'=>'Tipo IV',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Componente Tipo IV            
+            
+             // Component Tipo V
              3=>array(
-                    'name'=>'Da&acute; nughI',
-                    'description'=>'All&#146;interno di un Da&acute; nughI vi si trova un ambiente migliore anche per i guerrieri stessi.',
-            ), // Endof Componente Da´ nughI
+                    'name'=>'Tipo V',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Componente Tipo V
 
-             // Componente HoD nughI
+             // Component Tipo VI
              4=>array(
-                    'name'=>'HoD nughI',
-                    'description'=>'Hod &egrave; il termine per capitano, queste zone della nave sono ben attrezzate, ma anche relativamente costose.',
-            ), // Endof Componente HoD nughI
-
-             // Componente Sa´ nughI
+                    'name'=>'Tipo VI',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Componente Tipo VI    
+    
+             // Component Tipo VII
              5=>array(
-                    'name'=>'Sa&acute; nughI',
-                    'description'=>'Sa &egrave; il termine per `generale` - Queste aree sono piuttosto confortevoli e molto piu efficenti rispetto alle HoD nughI.',
-            ), // Endof Componente Sa´ nughI
+                    'name'=>'Tipo VII',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Componente Tipo VII
 
-             // Componente VaS tIn
-             6=>array(
-                    'name'=>'VaS tIn',
-                    'description'=>'&acute;VaS tIn&acute; &egrave; una sala molto grande, utile per radunare tutti i guerrieri.',
-            ), // Endof Component VaS tIn
-
-      'name'=>'Alloggi guerrieri',
-      ), // Endof Category Alloggi guerrieri
+      'name'=>'Aggiornamenti Classe 3',
+      ), // Endof Category Aggiornamenti Classe 3
 
 
         // Category Computer
         5=>array(
-             // Componente De´wI´
+             // Componente Deï¿½wIï¿½
              0=>array(
                     'name'=>'De&acute;wI&acute;',
                     'description'=>'I sistemi informatici Klingon servono unicamente di supporto ai sistemi, essendo dei guerrieri fanno a meno di determinate comodit&agrave;.',
-            ), // Endof Component De´wI´
+            ), // Endof Component Deï¿½wIï¿½
 
-             // Component De´wI´ MKII
+             // Component Deï¿½wIï¿½ MKII
              1=>array(
                     'name'=>'De&acute;wI&acute; MKII',
                     'description'=>'I sistemi informatici Klingon servono unicamente di supporto ai sistemi, essendo dei guerrieri fanno a meno di determinate comodit&agrave;.',
-            ), // Endof Component De´wI´ MKII
+            ), // Endof Component Deï¿½wIï¿½ MKII
 
-             // Component De´wI´ MKIII
+             // Component Deï¿½wIï¿½ MKIII
              2=>array(
                     'name'=>'De&acute;wI&acute; MKIII',
                     'description'=>'I sistemi informatici Klingon servono unicamente di supporto ai sistemi, essendo dei guerrieri fanno a meno di determinate comodit&agrave;.',
-            ), // Endof Component De´wI´ MKIII
+            ), // Endof Component Deï¿½wIï¿½ MKIII
 
-             // Component De´wI´ MK IV
+             // Component Deï¿½wIï¿½ MK IV
              3=>array(
                     'name'=>'De&acute;wI&acute; MK IV',
                     'description'=>'I sistemi informatici Klingon servono unicamente di supporto ai sistemi, essendo dei guerrieri fanno a meno di determinate comodit&agrave;.',
-            ), // Endof Component De´wI´ MK IV
+            ), // Endof Component Deï¿½wIï¿½ MK IV
 
-             // Component De´wI´ V
+             // Component Deï¿½wIï¿½ V
              4=>array(
                     'name'=>'De&acute;wI&acute; V',
                     'description'=>'I sistemi informatici Klingon servono unicamente di supporto ai sistemi, essendo dei guerrieri fanno a meno di determinate comodit&agrave;.',
-            ), // Endof Component De´wI´ V
+            ), // Endof Component Deï¿½wIï¿½ V
 
-             // Component Ngoq De´wI´
+             // Component Ngoq Deï¿½wIï¿½
              5=>array(
                     'name'=>'Ngoq De&acute;wI&acute;',
                     'description'=>'I sistemi informatici Klingon servono unicamente di supporto ai sistemi, essendo dei guerrieri fanno a meno di determinate comodit&agrave;.',
-            ), // Endof Component Ngoq De´wI´
+            ), // Endof Component Ngoq Deï¿½wIï¿½
 
       'name'=>'Computer',
       ), // Endof Category Computer
@@ -275,11 +256,11 @@ $ship_components_locale=array(
                     'description'=>'SIbDoH &egrave; un primo tipo di sonda, viene lanciata come un siluro fotonico dalle rampe di lancio e viene guidata dalla nave per eseguire determinate scansioni.',
             ), // Endof Component SIbDoH
 
-             // Component HotlhwI´
+             // Component HotlhwIï¿½
              2=>array(
                     'name'=>'HotlhwI&acute;',
                     'description'=>'HotlhwI Sono un tipo di sensori, con l&#146;aiuto di questi sensori il pilota automatico &egrave; in grado di poter pilotare la nave.',
-            ), // Endof Component HotlhwI´
+            ), // Endof Component HotlhwIï¿½
 
              // Component DoS nochmey
              3=>array(
@@ -299,12 +280,6 @@ $ship_components_locale=array(
                     'description'=>'Questo &egrave; il penultimo sistema per l&#146;acquisizione del bersaglio e viene implementato unicamente sulle navi di grosse dimensioni, ne aumenta l&#146;efficienza dei sensori ed il sistema di occultamento.',
             ), // Endof Component NgoQ nochmey
 
-             // Component Ray´ nochmey
-             6=>array(
-                    'name'=>'Ray&acute; nochmey',
-                    'description'=>'Il Ray&acute; nochmey &egrave; la fase finale dei sistemi d&#146;acquisizione del bersaglio. Unicamente installabile sull&#146;ultima classe di nave, questo sistema permette un aggancio multiplo dei bersagli, consentendo di aprire il fuoco in simultanea su pi&ugrave; bersagli.',
-            ), // Endof Component Ray´ nochmey
-
       'name'=>'Sensori',
       ), // Endof Category Sensoren
 
@@ -314,7 +289,7 @@ $ship_components_locale=array(
              // Component Phasenkonverter
              0=>array(
                     'name'=>'Convertitore di fase',
-                    'description'=>'Il convertitore di fase &egrave; un sistema sperimentale, implementato per trovare un sistema affidabile che permetta di penetrare gli scudi di una nave nemica.',
+                    'description'=>'Flavor Text Here.',
             ), // Endof Component Phasenkonverter
 
              // Component G. Disruptorkanone MK XVIII
@@ -323,35 +298,29 @@ $ship_components_locale=array(
                     'description'=>'Il cannone disgregatore &egrave; un&#146;evoluzione di un normale disgregatore, migliore sia in potenza che in frequenza di fuoco.',
             ), // Endof Component G. Disruptorkanone MK XVIII
 
-             // Component So´wI´
+             // Component Soï¿½wIï¿½
              2=>array(
                     'name'=>'So&acute;wI&acute;',
                     'description'=>'So&acute;wI&acute; &egrave; uno degli aggiornamenti klingon relativi al sistema di occultamento. Esso migliora il potenziale offensivo della nave.',
-            ), // Endof Component So´wI´
+            ), // Endof Component Soï¿½wIï¿½
 
              // Component Yob
              3=>array(
                     'name'=>'Yob',
-                    'description'=>'Yob &egrave; uno scudo deflettore che pu&ograve; essere installato addizionalmente sulle navi, questo porta un incremento dell&#146;efficienza degli scudi di 90.',
+                    'description'=>'Yob &egrave; uno scudo deflettore che pu&ograve; essere installato addizionalmente sulle navi.',
             ), // Endof Component Yob
 
-             // Component K´d´B Ausbildung
+             // Component Kï¿½dï¿½B Ausbildung
              4=>array(
                     'name'=>'Istruzione K&acute;d&acute;B',
                     'description'=>'Il sistema di istruzione K&acute;d&acute;B &egrave; stato pensato come programma di istruzione speciale per aumentare l&#146;efficienza dell&#146;equipaggio in battaglia.',
-            ), // Endof Component K´d´B Ausbildung
+            ), // Endof Component Kï¿½dï¿½B Ausbildung
 
-             // Component Da´ Meister
+             // Component Daï¿½ Meister
              5=>array(
                     'name'=>'Istruzione Da&acute;',
                     'description'=>'Questo programma di addestramento &egrave; stato ideato specificatamente per il capitano della nave, in modo da migliorarne le abilit&agrave; in situazioni d&#146;emergenza.',
-            ), // Endof Component Da´ Meister
-
-             // Component Wabenstruktur Hulle
-             6=>array(
-                    'name'=>'Scafo potenziato',
-                    'description'=>'Gli scienziati Klingon, hanno scoperto un sistema per sviluppare una corazzatura dello scafo pi&ugrave; efficente, la quale permette una maggior dissipazione del calore causata dalle armi a raggio nemiche. Questa tecnologia &egrave; sperimentale ed &egrave; utilizzabile unicamente sulle navi di classe Brel.',
-            ), // Endof Component Wabenstruktur Hulle
+            ), // Endof Component Daï¿½ Meister
 
       'name'=>'Sperimentale',
       ), // Endof Category Experimental
@@ -359,32 +328,38 @@ $ship_components_locale=array(
 
         // Category Hulle/Schilde
         8=>array(
-             // Component -Yob
+             // Component Quartieri Aggiuntivi
              0=>array(
+                    'name'=>'Quartieri Aggiuntivi',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component -Yob
+            
+             // Component -Yob
+             1=>array(
                     'name'=>'-Yob',
                     'description'=>'Gli scudi dei klingon sono tra i pi&ugrave; semplici, poco costosi e non molto efficaci.',
             ), // Endof Component -Yob
 
              // Component Duraniumpanzerung
-             1=>array(
+             2=>array(
                     'name'=>'Corazza in duranio',
                     'description'=>'La corazzatura in duranio &egrave; una conseguenza dell&#146;inefficacia degli scudi, purtroppo risulta piuttosto costosa.',
             ), // Endof Component Duraniumpanzerung
 
              // Component -Targh
-             2=>array(
+             3=>array(
                     'name'=>'Targh',
                     'description'=>'Targh aumenta relativamente l&#146;energia erogata agli scudi. Questo sistema viene utilizzato per lo pi&ugrave; sulle navi di classe media.',
             ), // Endof Component -Targh
 
              // Component Duranium- Tritaniumpanzerung
-             3=>array(
+             4=>array(
                     'name'=>'Corazza in duranio/tritanio',
                     'description'=>'Questa corazza &egrave; stata sviluppata da una lega di duranio e tritanio, questa combinazione aumenta i punti scafo di 500.',
             ), // Endof Component Duranium- Tritaniumpanzerung
 
              // Component Hullen-/Schildverstarker
-             4=>array(
+             5=>array(
                     'name'=>'Scafo / Amplificatore scudi',
                     'description'=>'Scafo / amplificatore scudi, &egrave; l&#146;ultimo stadio dei sistemi di difesa. Viene implementato solo sulle navi pi&ugrave; grandi.',
             ), // Endof Component Hullen-/Schildverstarker
@@ -395,36 +370,48 @@ $ship_components_locale=array(
 
         // Category Accademia
         9=>array(
-             // Component Kadettentraining
+             // Component Equipaggio Veterano
              0=>array(
-                    'name'=>'Addestramento cadetti',
-                    'description'=>'L&#146;addestramento dei cadetti migliora l&#146;efficienza dell&#146;equipaggio.',
-            ), // Endof Component Kadettentraining
+                    'name'=>'Equipaggio Veterano',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Equipaggio Veterano
 
-             // Component Ausbildung zu Kriegern
+             // Component Equipaggio Veterano
              1=>array(
-                    'name'=>'Addestramento guerrieri',
-                    'description'=>'L&#146;addestramento dei guerrieri, migliora ulteriormente l&#146;efficienza dell&#146;equipaggio.',
-            ), // Endof Component Ausbildung zu Kriegern
-
-             // Component Sinnesscharfung
+                    'name'=>'Equipaggio Veterano',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Equipaggio Veterano            
+            
+             // Component Equipaggio Veterano
              2=>array(
-                    'name'=>'Addestramento sensoriale',
-                    'description'=>'L&#146;addestramento nelle capacit&agrave; sensoriali, migliora il rendimento dell&#146;equipaggio.',
-            ), // Endof Component Sinnesscharfung
-
-             // Component Offiziere
+                    'name'=>'Equipaggio Veterano',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Equipaggio Veterano            
+            
+             // Component Equipaggio Elite
              3=>array(
-                    'name'=>'Ufficiali',
-                    'description'=>'L&#146;addestramento degli ufficiali, permette di migliorare la scala gerarchica all&#146;interno dell&#146;equipaggio.',
-            ), // Endof Component Offiziere
-
-             // Component Reaktionsscharfung
+                    'name'=>'Equipaggio Elite',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Equipaggio Elite            
+            
+             // Component Equipaggio Elite
              4=>array(
-                    'name'=>'Tempo di reazione',
-                    'description'=>'Migliorando il tempo di reazione dell&#146;equipaggio, si migliora le capacit&agrave; in battaglia.',
-            ), // Endof Component Reaktionsscharfung
-
+                    'name'=>'Equipaggio Elite',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Equipaggio Elite            
+            
+             // Component Equipaggio Elite
+             5=>array(
+                    'name'=>'Equipaggio Elite',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Equipaggio Elite            
+            
+             // Component Equipaggio Elite
+             6=>array(
+                    'name'=>'Equipaggio Elite',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Equipaggio Elite            
+            
       'name'=>'Accademia',
       ), // Endof Category Trainingsraum
 

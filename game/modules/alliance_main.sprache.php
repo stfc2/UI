@@ -192,6 +192,8 @@ define ("GER_TEXT84", 'Allianz Chat');
 
 define ("GER_TEXT85", 'urlaub');
 
+define ("GER_TEXT86", 'Alliances between players are not permitted in this round.');
+
 
 //English
 
@@ -367,6 +369,8 @@ define ("ENG_TEXT84", 'Alliance chat');
 
 define ("ENG_TEXT85", 'holiday');
 
+define ("ENG_TEXT86", 'Alliances between players are not permitted in this round.');
+
 //Italiano
 
 define ("ITA_TEXT0", 'Sei gi&agrave; membro di un\'alleanza');
@@ -540,5 +544,7 @@ define ("ITA_TEXT83", 'Navi dell&#146;Alleanza');
 define ("ITA_TEXT84", 'Chat dell&#146;Alleanza');
 
 define ("ITA_TEXT85", 'vacanza');
+
+define ("ITA_TEXT86", 'Le alleanze tra giocatori non sono possibili in questo turno.');
 
 ?>

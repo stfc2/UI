@@ -72,13 +72,26 @@ if(isset($_POST['do_surrender_planet'])) {
             message(NOTICE, constant($game->sprache("TEXT8")));
 
         }
-
-        if($game->player['user_capital']==$game->planet['planet_id']) {
+        
+        if(($game->player['user_capital']==$game->planet['planet_id']) && ($game->player['user_planets'] <= 2)) {
 
             message(NOTICE, constant($game->sprache("TEXT9")));
 
         }
+        
+        $data1 = date("Y-m-d", $game->planet['planet_owned_date']);
+        $data1 = date_create($data1);
+        $data2 = date("Y-m-d", time());
+        $data2 = date_create($data2);
+        $interval = date_diff($data1, $data2);
+        $day_count = intval($interval->format('%a'));
+        
+        if(($game->player['user_capital']==$game->planet['planet_id']) && $day_count <= 14) {
 
+          message(NOTICE, constant($game->sprache("TEXT10")));
+
+        }
+        
         $sql = 'UPDATE planets
                 SET planet_surrender = ('.$game->config['tick_id'].' + 120)
                 WHERE planet_id = '.$game->planet['planet_id'];

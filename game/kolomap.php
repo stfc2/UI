@@ -80,8 +80,8 @@ $user = $db->queryrow($sql);
 //The path to provide is always 0_0 because the user is the same.
        
 //Assign names:
-$image_url='maps/tmp/u_0_'.$size.'.png';
-$map_url='maps/tmp/u_0_'.$size.'.html';
+$image_url='maps/tmp/u_0_'.$game->player['user_id'].'_'.$size.'.png';
+$map_url='maps/tmp/u_'.$game->player['user_id'].'_0_'.$size.'.html';
        
 
 
@@ -123,50 +123,48 @@ $map_data='<map name="detail_map">';
 
 $im = imagecreatetruecolor(162*$size, 162*$size);
 imagecolorallocatealpha($im, 0, 0, 0,0);
-$color[1]=imagecolorallocatealpha($im, 90, 64, 64,0);
-$color[2]=imagecolorallocatealpha($im, 128, 64, 64,0);
-$color[3]=imagecolorallocatealpha($im, 196, 64, 64,0);
-$color[4]=imagecolorallocatealpha($im, 96, 96, 96,0);
-$color[5]=imagecolorallocatealpha($im, 255, 0, 0,20);
+$color[0]=imagecolorallocatealpha($im, 51, 255, 51,0);
+$color[1]=imagecolorallocatealpha($im, 0, 128, 255,0);
+$color[2]=imagecolorallocatealpha($im, 255, 255, 0,0);
+$color[3]=imagecolorallocatealpha($im, 255, 0, 0,0);
+$color[4]=imagecolorallocatealpha($im, 255, 0, 255,0);
+$color[5]=imagecolorallocatealpha($im, 96, 96, 96,0);
 
 drawMapGrid($im,$size);
 
 
 
 $sql = '
-SELECT s.system_id, s.system_name, s.sector_id, s.system_x, s.system_y
- FROM starsystems s';
-  if(!$q_systems = $db->query($sql)) {
+SELECT s.system_id, s.system_name, s.sector_id, s.system_x, s.system_y, s.system_orion_alert
+ FROM starsystems s
+ INNER JOIN starsystems_details USING (system_id)
+ WHERE log_code = 0 AND user_id = '.$game->player['user_id'];
 
-            message(DATABASE_ERROR, 'Could not query starsystems data');
+if(!$q_systems = $db->query($sql)) {
+    message(DATABASE_ERROR, 'Could not query starsystems data');
+}
 
-        }
 while($system = $db->fetchrow($q_systems))
 $glob_systems[$system['system_id']]=$system;
 
+foreach ($glob_systems AS $system) {
+    $px = getSystemCoords($system,$size);
+    $px_x = $px[0];
+    $px_y = $px[1];
 
+    if ($size>2)
+    {
+        imagefilledrectangle ($im, $px_x,$px_y, $px_x+$size-2, $px_y+$size-2, $color[$system['system_orion_alert']]);
+        $map_data.='<area href="index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.$px_x.','.$px_y.', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$system['system_name'].'">
+        ';
 
-$q_planets = $db->query('SELECT system_id FROM planets WHERE planet_owner=0 GROUP BY system_id');
-
-while($planet = $db->fetchrow($q_planets)) {
-$system=$glob_systems[$planet['system_id']];
-$px = getSystemCoords($system,$size);
-$px_x = $px[0];
-$px_y = $px[1];
-
-if ($size>2)
-{
-imagefilledrectangle ($im, $px_x,$px_y, $px_x+$size-2, $px_y+$size-2, $color[5]);
-$map_data.='<area href="index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.$px_x.','.$px_y.', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$system['system_name'].'">
-';
-
-}
-else
-{
-imagefilledrectangle ($im, $px_x-1,$px_y-1, $px_x+$size-2, $px_y+$size-2, $color[5]);
-$map_data.='<area href="index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.($px_x-1).','.($px_y-1).', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$system['system_name'].'">
-';
-}
+    }
+    else
+    {
+        imagefilledrectangle ($im, $px_x-1,$px_y-1, $px_x+$size-2, $px_y+$size-2, $color[$system['system_orion_alert']]);
+        $map_data.='<area href="index.php?a=tactical_cartography&system_id='.encode_system_id($system['system_id']).'" target=_mapshow shape="rect" coords="'.($px_x-1).','.($px_y-1).', '.($px_x+$size-2).', '.($px_y+$size-2).'" title="'.$system['system_name'].'">
+        ';
+    }
 };
 
 
@@ -176,12 +174,12 @@ else $size2=$size-2;
 
 if ($size>1)
 {
-imagestring ($im, $size2,15,162*$size-12-$size,$created.date('d.m.y H:i', time()), $color[4]);
+imagestring ($im, $size2,15,162*$size-12-$size,$created.date('d.m.y H:i', time()), $color[5]);
 }
 else
 {
-imagestring ($im, $size2,5,162*$size-15,$created, $color[4]);
-imagestring ($im, $size2,5,162*$size-8,date('d.m.y H:i', time()), $color[4]);
+imagestring ($im, $size2,5,162*$size-15,$created, $color[5]);
+imagestring ($im, $size2,5,162*$size-8,date('d.m.y H:i', time()), $color[5]);
 }
 
 

@@ -163,6 +163,8 @@ define ("GER_TEXT69", 'Ihre Schiffe sind nicht in diesen gesch&uuml;tzten System
 
 define ("GER_TEXT70", 'Nessuna azione possibile su pianeti di un sistema protetto');
 
+define ("GER_TEXT71", 'Diese Aktion ist auf einem unerforschten Planeten nicht erlaubt');
+
 
 
 //English
@@ -313,6 +315,8 @@ define ("ENG_TEXT69", 'Your ships are not allowed into this protected system.');
 
 define ("ENG_TEXT70", 'Nessuna azione possibile su pianeti di un sistema protetto');
 
+define ("ENG_TEXT71", 'This action is not allowed towards an unexplored planet');
+
 
 //Italiano
 define ("ITA_TEXT0", 'Movimenti flotte');
@@ -384,7 +388,9 @@ define ("ITA_TEXT30", 'Flotte:');
 
 define ("ITA_TEXT31", 'Arrivo in Data Stellare:');
 
-define ("ITA_TEXT32", '<b>Orbita stazionaria:</b><br>Le navi approcceranno il pianeta e successivamente entreranno nella sua orbita.');
+define ("ITA_TEXT32", '<b>Orbita, pieno impulso:</b><br>Le navi approcceranno il pianeta ad alta velocit&agrave; e successivamente entreranno nella sua orbita. Non sar&agrave; possibile effettuare correzzioni alla rotta durante lo spostamento.');
+
+define ("ITA_TEXT32B", '<b>Orbita, mezzo impulso:</b><br>Le navi approcceranno il pianeta e successivamente entreranno nella sua orbita. Permette la modifica della rotta durante lo spostamento.<br><i> +1 Tick</i>');
 
 define ("ITA_TEXT33", '<b>Approccio e ritorno:</b><br>I trasporti della flotta arriveranno a destinazione, teletrasporteranno il loro carico sul pianeta e poi torneranno al punto di partenza.');
 
@@ -436,7 +442,9 @@ define ("ITA_TEXT56", 'Ore:');
 
 define ("ITA_TEXT57", 'Minuti:');
 
-define ("ITA_TEXT58", 'Orbita stazionaria');
+define ("ITA_TEXT58", 'Orbita, pieno impulso');
+
+define ("ITA_TEXT58B", 'Orbita, mezzo impulso');
 
 define ("ITA_TEXT59", 'Colonizzazione');
 
@@ -462,4 +470,5 @@ define ("ITA_TEXT69", 'Le tue navi non posso accedere a questo sistema protetto.
 
 define ("ITA_TEXT70", 'Nessuna azione possibile su pianeti di un sistema protetto');
 
+define ("ITA_TEXT71", 'Questa azione non &egrave; permessa verso un pianeta inesplorato');
 ?>

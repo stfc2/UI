@@ -106,8 +106,10 @@ if (($handle = @fopen ($image_url, "rb"))!=true) {
     // ######################################################################
     // ######################################################################
     // Select all stationing fleets of the player
-    $sql = 'SELECT * FROM ship_fleets
-            WHERE user_id = '.$game->player['user_id'].' AND move_id = 0';
+    $sql = 'SELECT sf.*, o.officer_name 
+            FROM ship_fleets sf
+            LEFT JOIN officers o ON (o.fleet_id = sf.fleet_id)
+            WHERE sf.user_id = '.$game->player['user_id'].' AND sf.move_id = 0';
 
     if(!$q_fleets = $db->query($sql)) {
         message(DATABASE_ERROR, 'Could not query fleets data');
@@ -167,7 +169,7 @@ if (($handle = @fopen ($image_url, "rb"))!=true) {
                         if($fleet['planet_id'] == $planet['planet_id'])
                         {
                             $useColor = $color[5];
-                            $useTitle .= '<'.$fleet['fleet_name'].'> ';
+                            $useTitle .= '<'.$fleet['fleet_name'].' ('.$fleet['n_ships'].' unit&agrave;)'.(isset($fleet['officer_name']) ? ':'.$fleet['officer_name'] : '').'> ';
                         }
                     }
                 }

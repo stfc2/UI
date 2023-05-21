@@ -1278,7 +1278,7 @@ switch($module) {
 
 '.$confirm_link.'
 
-Lunga vita e prosperità,
+Lunga vita e prosperitÃ ,
 il team STFC.
 
 
@@ -1529,7 +1529,7 @@ Credits: '.$config['site_url'].'/index.php?a=imprint';
                 if (!isset($receiver_4['user_id'])) $receiver_4['user_id']=-1;
                 if (!isset($receiver_5['user_id'])) $receiver_5['user_id']=-1;
 
-                $sql = 'UPDATE user
+                $sql = 'UPDATE IGNORE user
                         SET user_sitting_password = "'.$game->player['user_sitting_password'].'",
                             user_sitting_o1 = '.(int)$_POST['user_sitting_o1'].',
                             user_sitting_o3 = '.(int)$_POST['user_sitting_o3'].',

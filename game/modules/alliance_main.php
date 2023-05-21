@@ -53,6 +53,10 @@ function check_membership($requirement) {
 $game->init_player();
 $game->out('<span class="caption">'.constant($game->sprache("TEXT2")).'</span><br><br>');
 
+if(!ALLIANCE_ALLOWED) {
+    message(NOTICE, constant($game->sprache("TEXT86")));
+}
+
 $sql = 'SELECT *
         FROM alliance
         WHERE alliance_id = '.$game->player['user_alliance'];

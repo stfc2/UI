@@ -76,8 +76,10 @@ function GetFuturePts($t)
     // actualized with the queued buildings
     for($b = 1; $b <= $NUM_BUILDING; $b++)
         $_planet_points += pow($game->planet['building_'.$b],1.5);
+    /*        
     for($r = 1; $r <= 5; $r++)
         $_planet_points += pow($game->planet['research_'.$r],1.5);
+    */
     $_planet_points = round($_planet_points);
 
     // Calculate points of the required building

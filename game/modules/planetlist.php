@@ -240,7 +240,7 @@ foreach ($planets as $key => $planet) {
 		}
 		else
 		{
-			$arrival_minutes = 20;
+			$arrival_minutes = $INTER_SYSTEM_TIME * TICK_DURATION;
 			$arrival_hours = 0;
 			$arrival_days = 0;
 		}
@@ -380,9 +380,10 @@ foreach ($planets as $key => $planet) {
 
 	// Display of resources
 	if ($game->option_retr('planetlist_show')==0){ 
-		$stat_out='<img src="'.$game->GFX_PATH.'menu_metal_small.gif">'.(($planet['resource_1']>=100000) ? round($planet['resource_1']/1000).'k' : round($planet['resource_1'],0)).'&nbsp;
-		<img src="'.$game->GFX_PATH.'menu_mineral_small.gif">'.(($planet['resource_2']>=100000) ? round($planet['resource_2']/1000).'k' : round($planet['resource_2'],0)).'&nbsp;
-		<img src="'.$game->GFX_PATH.'menu_latinum_small.gif">'.(($planet['resource_3']>=100000) ? round($planet['resource_3']/1000).'k' : round($planet['resource_3'],0)).'
+		$stat_out='<img src="'.$game->GFX_PATH.'menu_metal_small.gif"><span'.($planet['resource_1'] >= $planet['max_resources'] ? ' style="color: yellow;"' : '').'>'.(($planet['resource_1']>=100000) ? round($planet['resource_1']/1000).'k' : round($planet['resource_1'],0)).'</span>&nbsp;
+		<img src="'.$game->GFX_PATH.'menu_mineral_small.gif"><span'.($planet['resource_2'] >= $planet['max_resources'] ? ' style="color: yellow;"' : '').'>'.(($planet['resource_2']>=100000) ? round($planet['resource_2']/1000).'k' : round($planet['resource_2'],0)).'</span>&nbsp;
+		<img src="'.$game->GFX_PATH.'menu_latinum_small.gif"><span'.($planet['resource_3'] >= $planet['max_resources'] ? ' style="color: yellow;"' : '').'>'.(($planet['resource_3']>=100000) ? round($planet['resource_3']/1000).'k' : round($planet['resource_3'],0)).'</span>&nbsp;
+		<img src="'.$game->GFX_PATH.'menu_techp1_small.gif"> '.($planet['techpoints'] >= 1000 ?  round($planet['techpoints']/1000,1).'k' : round($planet['techpoints'],0)).'&nbsp;                    
 		<img src="'.$game->GFX_PATH.'menu_worker_small.gif">'.round($planet['resource_4'],0).'';
 	}
 	// Display of the troops status

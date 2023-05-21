@@ -22,12 +22,12 @@
 
 
 error_reporting(E_ERROR);
-$path='/home/taku/public_html/game/sig_tmp/'.strtolower(htmlspecialchars($_REQUEST['user'])).'.jpg';
+$path='/home/stfc/public_html/game/sig_tmp/'.strtolower(htmlspecialchars($_REQUEST['user'])).'.jpg';
 $imageinfo = getimagesize($path);
   if ($imageinfo[2] == 2) {header('Content-Type: image/jpeg');}
   else 
   {
-  	$path='sig_gfx/no_sig.jpg';
+  	$path='/home/stfc/public_html/game/sig_gfx/no_sig.jpg';
 	header('Content-Type: image/jpeg');
   }
 

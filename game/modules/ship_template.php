@@ -36,6 +36,7 @@ error_reporting(E_ERROR);
         'view' => constant($game->sprache("TEXT0")),
         'create' => constant($game->sprache("TEXT1")),
         'compare' => constant($game->sprache("TEXT2")),
+        'upgrade' => constant($game->sprache("TEXT3B"))
     );
 
 $module = (!empty($_GET['view'])) ? $_GET['view'] : 'view';
@@ -270,7 +271,7 @@ for ($t=0; $t<3; $t++)
 			              +$template['value_11']*0.5
 			              +$template['value_12'];
                         
-                        $base_to_hit = ($template['value_6'] + $template['value_7'] + $template['value_8'] + $template['value_11']) * 0.1;
+                        $base_to_hit = ((($template['value_6'] + $template['value_7'] + $template['value_8'])*0.5) + ($template['value_11']*1.5)) * 0.1;
                         
                         if($base_to_hit > 15) {
                             $base_to_hit = 15;
@@ -281,6 +282,20 @@ for ($t=0; $t<3; $t++)
                         }
                         
                         $template_array[$t]['tohit'] = round(($base_to_hit * 100)/17, 2);
+                        
+                        $base_to_evade = $template['value_6'] + ($template['value_8']*1.5);
+                        $base_to_evade *= ($template['value_12'] == 0 ? 1 : $template['value_12']);
+                        $base_to_evade *= 0.1;
+                        
+                        if($base_to_evade > 15) {
+                            $base_to_evade = 15;
+                        }
+                        
+                        if($base_to_evade <  1) {
+                            $base_to_evade =  1;
+                        }
+                        
+                        $template_array[$t]['toevade'] = round(($base_to_evade * 100)/40, 2);
 
 			$game->out('<br><u>'.constant($game->sprache("TEXT28")).'</u><br>');
 
@@ -302,6 +317,7 @@ for ($t=0; $t<3; $t++)
 			$game->out('<br>');
 			$game->out('<u>'.constant($game->sprache("TEXT92")).'</u> <b>'.$template_array[$t]['firststrike'].'</b><br>');
                         $game->out('<u>'.constant($game->sprache("TEXT93")).'</u> <b>'.$template_array[$t]['tohit'].'&#37;</b><br>');
+                        $game->out('<u>'.constant($game->sprache("TEXT100")).'</u> <b>'.$template_array[$t]['toevade'].'&#37;</b><br>');
 			$game->out('<br><br>
 			<u>'.constant($game->sprache("TEXT30")).'</u><br>
 			<img src="'.$game->GFX_PATH.'menu_metal_small.gif"><b id="price1">'.$template['resource_1'].'</b>
@@ -310,7 +326,7 @@ for ($t=0; $t<3; $t++)
 			<img src="'.$game->GFX_PATH.'menu_worker_small.gif"><b id="price4">'.$template['resource_4'].'</b>
 			&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit5_small.gif"><b id="price10">'.$template['unit_5'].'</b>
 			&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit6_small.gif"><b id="price11">'.$template['unit_6'].'</b><br><br>
-			<u>'.constant($game->sprache("TEXT5")).'</u><br><b id="price5">'.($template['buildtime']*TICK_DURATION).'</b> '.constant($game->sprache("TEXT6")).'<br><br>
+			<u>'.constant($game->sprache("TEXT5")).'</u><br><b id="price5">'.(Zeit($template['buildtime']*TICK_DURATION)).'</b><br><br>
 			<u>'.constant($game->sprache("TEXT31")).'</u><br>
 			<img src="'.$game->GFX_PATH.'menu_unit1_small.gif"><b id="price6">'.$template['min_unit_1'].'</b>
 			&nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit2_small.gif"><b id="price7">'.$template['min_unit_2'].'</b>
@@ -455,17 +471,13 @@ if ($game->player['user_race']==4) //Dominion
 
 if ($game->player['user_race']==5) //Ferengi
 {
-  if ($t==3)
+  if ($t==4)
   {
-    $t=4;
+    $t=8;
   }
-  if ($t==5)
+  if ($t==9)
   {
-    $t=7;
-  }
-  if ($t==8)
-  {
-    $t=12;
+    break;
   }
 }
 
@@ -475,11 +487,7 @@ if ($game->player['user_race']==8) // Breen
   {
     $t=1;
   }
-  if ($t==3)
-  {
-    $t=4;
-  }
-  if ($t==5)
+  if ($t==6)
   {
     $t=7;
   }
@@ -491,11 +499,15 @@ if ($game->player['user_race']==8) // Breen
   {
     $t=11;
   }
+  if ($t==12)  
+  {
+    break;
+  }  
 }
 
 if ($game->player['user_race']==9) // Hiro
 {
-  if ($t==3)
+  if ($t==4)
   {
     $t=5;
   }
@@ -1115,6 +1127,10 @@ $game->out('
 <td width=75%><input style="width: 200px;" class="field" type="text" name="ship_name" value="'.constant($game->sprache("TEXT66")).'" maxlength="16"></td>
 </tr>
 <tr>
+<td width=25%><span class="text_large">'.constant($game->sprache("TEXT96")).'</span></td>
+<td width=75%><input style="width: 200px;" class="field" type="text" name="ccn_root" maxlength="4"></td>
+</tr>
+<tr>
 <td width=25% valign=top><span class="text_large">'.constant($game->sprache("TEXT67")).'</td>
 <td><textarea name="ship_description" class="textfield" rows="5" cols="40 style="width: 300px;""></textarea></td>
 </tr>
@@ -1217,7 +1233,7 @@ $game->out('<u>'.constant($game->sprache("TEXT9")).'</u> <b>'.$value[1].'</b><br
 $game->out('<u>'.constant($game->sprache("TEXT94")).'</u> <b>'.$value[15].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT95")).'</u> <b>'.$value[16].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT10")).'</u> <b>'.$value[2].'</b><br>');
-$game->out('<u>'.constant($game->sprache("TEXT85")).'</u> <b>'.($_POST['ship_torso'] < 4 ? 'N/A' : $value[17]).'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT85")).'</u> <b>'.($value[1] == 0 ? 'N/A' : $value[17]).'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT11")).'</u> <b>'.$value[3].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT12")).'</u> <b>'.$value[4].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT13")).'</u> <b>'.$value[5].'</b><br>');
@@ -1239,7 +1255,7 @@ $game->out('<br></td></tr>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_worker_small.gif"><b id="price4">'.$price[3].'</b><br>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit5_small.gif"><b id="price10">'.$price[9].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit6_small.gif"><b id="price11">'.$price[10].'</b><br><br>
-<u>'.constant($game->sprache("TEXT5")).'</u><br><b id="price5">'.($price[4]*TICK_DURATION).'</b> '.constant($game->sprache("TEXT6")).'<br><br>
+<u>'.constant($game->sprache("TEXT5")).'</u><br><b id="price5">'.(Zeit($price[4]*TICK_DURATION)).'</b><br><br>
 <u>'.constant($game->sprache("TEXT31")).'</u><br>
 <img src="'.$game->GFX_PATH.'menu_unit1_small.gif"><b id="price6">'.$price[5].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit2_small.gif"><b id="price7">'.$price[6].'</b>
@@ -1296,8 +1312,14 @@ $_POST[7]=$_POST['7']=(int)$_POST['7'];
 $_POST[8]=$_POST['8']=(int)$_POST['8'];
 $_POST[9]=$_POST['9']=(int)$_POST['9'];
 
-$_POST['ship_name']=htmlspecialchars($_POST['ship_name']);
-$_POST['ship_description']=htmlspecialchars($_POST['ship_description']);
+//$_POST['ship_name']=htmlspecialchars($_POST['ship_name']);
+//$_POST['ship_description']=htmlspecialchars($_POST['ship_description']);
+$_POST['ship_name']=str_replace("'", "`", $_POST['ship_name']);
+//$_POST['ship_name']=filter_input(INPUT_POST,'ship_name', FILTER_SANITIZE_STRING);
+$_POST['ship_name']=substr($_POST['ship_name'], 0, 24);
+$_POST['ccn_root']=filter_input(INPUT_POST,'ccn_root', FILTER_SANITIZE_STRING);
+$_POST['ccn_root']=substr($_POST['ccn_root'], 0, 4);
+$_POST['ship_description']=filter_input(INPUT_POST,'ship_description', FILTER_SANITIZE_STRING);
 
 $_POST['ship_torso']=(int)$_POST['ship_torso'];
 if (GlobalTorsoReq($_POST['ship_torso'])>$game->player['user_points']) exit(0);
@@ -1420,15 +1442,21 @@ $game->out('
 
 $game->out('</td></tr></table>');
 
+
+
 // Insert:
-$db->query('INSERT INTO ship_templates
-(owner, timestamp, name, description, race, ship_torso, ship_class, component_1, component_2, component_3, component_4, component_5, component_6, component_7, component_8, component_9, component_10,
+$sql='INSERT INTO ship_templates
+(owner, timestamp, name, ccn_root, description, race, ship_torso, ship_class, component_1, component_2, component_3, component_4, component_5, component_6, component_7, component_8, component_9, component_10,
 value_1, value_2, value_3, value_4, value_5, value_6, value_7, value_8, value_9, value_10, value_11, value_12, value_13, value_14, value_15,
 resource_1, resource_2, resource_3, resource_4, unit_5, unit_6, min_unit_1, min_unit_2, min_unit_3, min_unit_4, max_unit_1, max_unit_2, max_unit_3, max_unit_4, buildtime, rof, rof2, max_torp) VALUES
-("'.$game->player['user_id'].'","'.time().'","'.$_POST['ship_name'].'","'.$_POST['ship_description'].'","'.$game->player['user_race'].'","'.$_POST['ship_torso'].'","'.GetShipClass($game->player['user_race'],$_POST['ship_torso']).'","'.$_POST[0].'","'.$_POST[1].'","'.$_POST[2].'","'.$_POST[3].'","'.$_POST[4].'","'.$_POST[5].'","'.$_POST[6].'","'.$_POST[7].'","'.$_POST[8].'","'.$_POST[9].'",
+("'.$game->player['user_id'].'","'.time().'","'.$_POST['ship_name'].'", "'.$_POST['ccn_root'].'","'.$_POST['ship_description'].'","'.$game->player['user_race'].'","'.$_POST['ship_torso'].'","'.GetShipClass($game->player['user_race'],$_POST['ship_torso']).'","'.$_POST[0].'","'.$_POST[1].'","'.$_POST[2].'","'.$_POST[3].'","'.$_POST[4].'","'.$_POST[5].'","'.$_POST[6].'","'.$_POST[7].'","'.$_POST[8].'","'.$_POST[9].'",
 "'.$value[0].'","'.$value[1].'","'.$value[2].'","'.$value[3].'","'.$value[4].'","'.$value[5].'","'.$value[6].'","'.$value[7].'","'.$value[8].'","'.$value[9].'","'.$value[10].'","'.$value[11].'","'.$value[12].'","'.$value[13].'","'.$value[14].'",
 "'.$price[0].'","'.$price[1].'","'.$price[2].'","'.$price[3].'","'.$price[9].'","'.$price[10].'","'.$price[5].'","'.$price[6].'","'.$price[7].'","'.$price[8].'","'.$price[11].'","'.$price[12].'","'.$price[13].'","'.$price[14].'","'.$price[4].'","'.$value[15].'","'.$value[16].'","'.$value[17].'")
-');
+';
+if(!$db->query($sql)){
+    message(NOTICE,'Offending query: '.$sql);
+}
+    
 }
 
 
@@ -1463,6 +1491,15 @@ $game->out('
 $game->out('<table border=0 cellpadding=0 cellspacing=0 width="600" class="style_inner">
 <tr><td valign=top width="500">');
 
+$ccn_htm = '';
+if(!empty($template['ccn_root'])) {
+    $ccn_htm = '<tr><td valign=top ><u>'.constant($game->sprache("TEXT97")).'</u><br><b>'.$template['ccn_root'].'</b><br></td></tr>';
+    $ccn_htm .='<tr><td valign=top ><u>'.constant($game->sprache("TEXT98")).'</u><br><b>'.$template['ccn_counter'].'</b><br></td></tr>';
+}
+else {
+    $ccn_htm = '<tr><td valign=top ><u>'.constant($game->sprache("TEXT97")).'</u><br><b>'.constant($game->sprache("TEXT99")).'</b><br></td></tr>';
+    $ccn_htm .='<tr><td valign=top ><u>'.constant($game->sprache("TEXT98")).'</u><br><b>'.constant($game->sprache("TEXT99")).'</b><br></td></tr>';    
+}
 if (isset($template['id']))
 {
 
@@ -1470,8 +1507,9 @@ $game->out('
 <table width="175" border="0" cellpadding="0" cellspacing="0">
 <tr>
 <td valign=top ><u>'.constant($game->sprache("TEXT72")).'</u><br>
-<b>'.$template['name'].'</b><br><br></td>
-</tr>
+<b>'.$template['name'].'</b><br></td>
+</tr>'.$ccn_htm.'
+<tr><td valign=top ><u>'.constant($game->sprache("TEXT16")).'</u><br><b><font color=orange>'.$template['tp_experience'].'</font></b><br></td></tr>
 <tr>
 <td valign=top><u>'.constant($game->sprache("TEXT32")).'</u><br>
 '.wordwrap(stripslashes(nl2br($template['description'])), 40,"<br>",1 ).'<br><br></td>
@@ -1489,7 +1527,7 @@ for ($t=0; $t<10; $t++)
 	{
 		$game->out('-&nbsp;<a href="javascript:void(0);" onmouseover="return overlib(\''.CreateInfoText($ship_components[$game->player['user_race']][$t][$template['component_'.($t+1)]]).'\', CAPTION, \''.$ship_components[$game->player['user_race']][$t][$template['component_'.($t+1)]]['name'].'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.( ($game->planet['catresearch_'.($t+1)]<=$template['component_'.($t+1)]) ? '<b><span style="color: red;">'.$ship_components[$game->player['user_race']][$t][$template['component_'.($t+1)]]['name'].'</span>' : '<b><span style="color: green;">'.$ship_components[$game->player['user_race']][$t][$template['component_'.($t+1)]]['name'].'</span>' ).'</b></a><br>');
 	} else $game->out(constant($game->sprache("TEXT27")));
-}
+} 
 
 $game->out('<br></td></tr></table></td><td width="50%">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -1500,7 +1538,7 @@ $game->out('<br></td></tr></table></td><td width="50%">
 $game->out('<u>'.constant($game->sprache("TEXT8")).'</u> <b>'.$template['value_1'].'</b> x<b>'.$template['rof'].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT9")).'</u> <b>'.$template['value_2'].'</b> x<b>'.$template['rof2'].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT10")).'</u> <b>'.$template['value_3'].'</b><br>');
-$game->out('<u>'.constant($game->sprache("TEXT85")).'</u> <b>'.($template['ship_torso'] < 4 ? 'N/A' : $template['max_torp']).'</b><br>');
+$game->out('<u>'.constant($game->sprache("TEXT85")).'</u> <b>'.($template['value_2'] == 0 ? 'N/A' : $template['max_torp']).'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT11")).'</u> <b>'.$template['value_4'].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT12")).'</u> <b>'.$template['value_5'].'</b><br>');
 $game->out('<u>'.constant($game->sprache("TEXT13")).'</u> <b>'.$template['value_6'].'</b><br>');
@@ -1521,7 +1559,7 @@ $game->out('<br></td></tr>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_worker_small.gif"><b id="price4">'.$template['resource_4'].'</b><br>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit5_small.gif"><b id="price10">'.$template['unit_5'].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit6_small.gif"><b id="price11">'.$template['unit_6'].'</b><br><br>
-<u>'.constant($game->sprache("TEXT5")).'</u><br><b id="price5">'.($template['buildtime']*TICK_DURATION).'</b> '.constant($game->sprache("TEXT6")).'<br><br>
+<u>'.constant($game->sprache("TEXT5")).'</u><br><b id="price5">'.(Zeit($template['buildtime']*TICK_DURATION)).'</b><br><br>
 <u>'.constant($game->sprache("TEXT31")).'</u><br>
 <img src="'.$game->GFX_PATH.'menu_unit1_small.gif"><b id="price6">'.$template['min_unit_1'].'</b>
 &nbsp;&nbsp;<img src="'.$game->GFX_PATH.'menu_unit2_small.gif"><b id="price7">'.$template['min_unit_2'].'</b>
@@ -1565,7 +1603,26 @@ $game->out('</td></tr><tr><td align="left">'.constant($game->sprache("TEXT78")).
 }
 
 
+function Show_Upgrade()
+{
+global $db;
+global $game;
 
+$game->out('
+<table border=0 cellpadding=2 cellspacing=2 width=450 class="style_outer">
+    <tr>
+        <td align="center"><span class="sub_caption">'.constant($game->sprache("TEXT3B")).':</span><br><br>
+            <table border=0 cellpadding=2 cellspacing=2 width=450 class="style_inner">
+                <tr>
+                    <td>
+                        Work in progress...
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>');    
+}
 
 
 
@@ -1594,6 +1651,7 @@ else
 {
 
 if (!isset($_REQUEST['view']) || $_REQUEST['view']=='view') Show_Overview();
+else if ($_REQUEST['view'] == 'upgrade') Show_Upgrade();
 else if ($_REQUEST['view']=='compare') Show_Compare();
 else if ($_REQUEST['view']=='create')
 if (isset($_POST['step4']))

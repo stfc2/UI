@@ -59,7 +59,7 @@ function get_distance($s_system, $d_system) {
 
 function send_fake_transporter($ships, $user, $start, $dest, $arrival = 0) {
     /*
-     * $ships = array, in dem alle templates aufgezählt werden,
+     * $ships = array, in dem alle templates aufgezï¿½hlt werden,
      *          die mitfliegen mit ihrer Anzahl
      *
      *    z.B. $ships = array( 4 => 2, // 2mal das Template 4
@@ -126,7 +126,7 @@ function send_fake_transporter($ships, $user, $start, $dest, $arrival = 0) {
         $velocity = $distance = 0;
 
         if($start_planet['system_id'] == $dest_planet['system_id']) {
-            $arrival = $ACTUAL_TICK + 6;
+            $arrival = $ACTUAL_TICK + $INTER_SYSTEM_TIME;
         }
         else {
             // Yes, I know this is HARD-CODED
@@ -264,7 +264,7 @@ function send_premonition_to_user($user_id, $num_item)
 // This function checks that on the ship are present the requested number of units in order to perform ground mission
 // 
 // missing: array, it shows which and how many units are missing the requirements
-function meet_mission_req($ship_id, $unit_1, $unit_2, $unit_3, $unit_4, $unit_5, $unit_6)
+function meet_mission_req($ship_id, $unit_1, $unit_2, $unit_3, $unit_4, $unit_5, $unit_6, $r3, $lvl)
 {
     global $db;
 
@@ -272,31 +272,35 @@ function meet_mission_req($ship_id, $unit_1, $unit_2, $unit_3, $unit_4, $unit_5,
                    s.unit_2 - st.min_unit_2 AS unit_2,
                    s.unit_3 - st.min_unit_3 AS unit_3,
                    s.unit_4 - st.min_unit_4 AS unit_4,
-                   st.unit_5, st.unit_6
+                   st.unit_5, st.unit_6, sf.resource_3, awayteam
             FROM ships s
             INNER JOIN ship_templates st ON s.template_id = st.id
+            INNER JOIN ship_fleets sf USING (fleet_id)
             WHERE ship_id = '.$ship_id;
 
     if(($ship = $db->queryrow($sql)) === false) {
         message(DATABASE_ERROR, 'Could not query ship data');
     }
 
-    $aboard = array((int)$ship['unit_1'], (int)$ship['unit_2'], (int)$ship['unit_3'], (int)$ship['unit_4'], (int)$ship['unit_5'], (int)$ship['unit_6']);
+    $aboard = array((int)$ship['unit_1'], (int)$ship['unit_2'], (int)$ship['unit_3'], (int)$ship['unit_4'], (int)$ship['unit_5'], (int)$ship['unit_6'], (int)$ship['resource_3']);
 
-    $tocheck = array((int)$unit_1, (int)$unit_2, (int)$unit_3, (int)$unit_4, (int)$unit_5, (int)$unit_6);
+    $tocheck = array((int)$unit_1, (int)$unit_2, (int)$unit_3, (int)$unit_4, (int)$unit_5, (int)$unit_6, (int)$r3);
 
-    $missing = array(0, 0, 0, 0, 0);
+    $missing = array(0, 0, 0, 0, 0, 0, 0, 0);
 
     foreach($tocheck as $id => $unit){
         if($unit > $aboard[$id]) {
-            $missing[$id] = $unit - $aboard[$key];
+            $missing[$id] = $unit - $aboard[$id];
         }
     }
 
+    if($ship['awayteam'] == 0) $missing[7] = -1;
+    elseif((int)$ship['awayteam'] < $lvl) $missing[7] = 1;
+    
     return ($missing);
 }
 
-function requirements_str_ok($unit_1, $unit_2, $unit_3, $unit_4, $unit_5, $unit_6)
+function requirements_str_ok($unit_1, $unit_2, $unit_3, $unit_4, $unit_5, $unit_6, $r3, $lvl)
 {
     global $game;
 
@@ -310,10 +314,14 @@ function requirements_str_ok($unit_1, $unit_2, $unit_3, $unit_4, $unit_5, $unit_
         }
     }
 
+    if($r3 > 0) { $mystring .= '<img src="'.$game->GFX_PATH.'menu_latinum_small.gif"> <b>'.$r3.'</b>    '; }
+    
+    $mystring .= '&nbsp;&nbsp;&nbsp;LIV. AT: <b>'.$lvl.'</b>  ';
+
     return($mystring);
 }
 
-function requirements_str_bad($unit_1, $unit_2, $unit_3, $unit_4, $unit_5, $unit_6, $missing)
+function requirements_str_bad($missing, $unit_1, $unit_2, $unit_3, $unit_4, $unit_5, $unit_6, $r3, $lvl)
 {
     global $game;
 
@@ -326,6 +334,13 @@ function requirements_str_bad($unit_1, $unit_2, $unit_3, $unit_4, $unit_5, $unit
             $mystring .= '<img src="'.$game->GFX_PATH.'menu_unit'."$id_unit".'_small.gif"> '.($missing[$key] == 0 ? '<b>'.$unit.'</b>    ' : '<b><font color="red">'.$unit.'</b></font>    ');
         }
     }
+    
+    if($r3 > 0) { $mystring .= '<img src="'.$game->GFX_PATH.'menu_latinum_small.gif"> <b>'.($missing[6] == 0 ? '<b>'.$r3.'</b>    ' : '<b><font color="red">'.$r3.'</b></font>    '); }
+
+    if($missing[7] == -1) { $mystring .= '    <b>Away Team not available</b>   ';}
+    
+    else { $mystring .= '&nbsp;&nbsp;&nbsp;LIV. AT: '.($missing[7] == 0 ? '<b>'.$lvl.'</b>' : '<b><font color="red">'.$lvl.'</font></b>  ');}
+    
     return($mystring);
 }
 ?>

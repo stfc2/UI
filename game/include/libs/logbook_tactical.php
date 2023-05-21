@@ -70,9 +70,8 @@ function display_logbook($log) {
     $inter_planet = false;
 
     if($ldata['dest'] == 0) {
-		if(empty($ldata['start_owner_id'])) $start_owner_str = ' '.constant($game->sprache("TEXT29"));
-		elseif($ldata['start_owner_id'] != $game->player['user_id']) {
-           
+            if(empty($ldata['start_owner_id'])) $start_owner_str = ' '.constant($game->sprache("TEXT29"));
+            elseif($ldata['start_owner_id'] != $game->player['user_id']) {           
             
             $start_owner = $game->uc_get($ldata['start_owner_id']);
             
@@ -92,23 +91,32 @@ function display_logbook($log) {
 		$inter_planet = true;
 	}
 	else {
-	     if(empty($ldata['start_owner_id'])) $start_owner_str = ' '.constant($game->sprache("TEXT29"));
-		elseif($ldata['start_owner_id'] != $game->player['user_id']) {
-   
+            if($ldata['start'] != 0) {
+                    if(empty($ldata['start_owner_id'])) $start_owner_str = ' '.constant($game->sprache("TEXT29"));
+                    elseif($ldata['start_owner_id'] != $game->player['user_id']) {
 
-            $start_owner = $game->uc_get($ldata['start_owner_id']);
+                            $start_owner = $game->uc_get($ldata['start_owner_id']);
 
-            if(!$start_owner) {
-                $start_owner_str = ' '.constant($game->sprache("TEXT29"));
+                            if(!$start_owner) {
+                                $start_owner_str = ' '.constant($game->sprache("TEXT29"));
+                            }
+                            else {
+                                $start_owner_str = ' '.constant($game->sprache("TEXT30")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['start_owner_id']).'"><b>'.$start_owner.'</b></a>';
+                            }
+
+
+                    }		
+                    
+                    else $start_owner_str = '';
+                    
+                    $start_str = ' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($ldata['start'])).'"><b>'.$ldata['start_planet_name'].'</b></a>'.' ('.$game->get_sector_name($s_coord['sector_id']).':'.$game->get_system_cname($s_coord['system_x'], $s_coord['system_y']).':'.($s_coord['planet_distance_id'] + 1).') '.$start_owner_str.'<br>';
+                    
             }
             else {
-                $start_owner_str = ' '.constant($game->sprache("TEXT30")).' <a href="'.parse_link('a=stats&a2=viewplayer&id='.$ldata['start_owner_id']).'"><b>'.$start_owner.'</b></a>';
+
+                    $start_str = ' <b><i>'.constant($game->sprache("TEXT241")).'</i></b> <br>';
             }
-
-
-        }		
-		else $start_owner_str = '';
-		
+            
 	    if(empty($ldata['dest_owner_id'])) $dest_owner_str = ' '.constant($game->sprache("TEXT29"));
 		elseif($ldata['dest_owner_id'] != $game->player['user_id']) {
 
@@ -127,8 +135,8 @@ function display_logbook($log) {
 		else $dest_owner_str = '';
 		
 		$game->out('
-	'.constant($game->sprache("TEXT32")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($ldata['start'])).'"><b>'.$ldata['start_planet_name'].'</b></a>'.' ('.$game->get_sector_name($s_coord['sector_id']).':'.$game->get_system_cname($s_coord['system_x'], $s_coord['system_y']).':'.($s_coord['planet_distance_id'] + 1).') '.$start_owner_str.'<br>
-	'.constant($game->sprache("TEXT33")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($ldata['dest'])).'"><b>'.$ldata['dest_planet_name'].'</b></a>'.' ('.$game->get_sector_name($d_coord['sector_id']).':'.$game->get_system_cname($d_coord['system_x'], $d_coord['system_y']).':'.($d_coord['planet_distance_id'] + 1).') '.$dest_owner_str.'<br>
+	'.constant($game->sprache("TEXT32")).$start_str
+	 .constant($game->sprache("TEXT33")).' <a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($ldata['dest'])).'"><b>'.$ldata['dest_planet_name'].'</b></a>'.' ('.$game->get_sector_name($d_coord['sector_id']).':'.$game->get_system_cname($d_coord['system_x'], $d_coord['system_y']).':'.($d_coord['planet_distance_id'] + 1).') '.$dest_owner_str.'<br>
 	<br>
 		');
 	}
@@ -427,6 +435,7 @@ function display_logbook($log) {
                 case -2: $game->out(constant($game->sprache("TEXT57"))); break;
                 case -3: $game->out(constant($game->sprache("TEXT152"))); break;
                 case -4: $game->out(constant($game->sprache("TEXT153"))); break;
+                case -5: $game->out(constant($game->sprache("TEXT56b"))); break;
                 case 1: $game->out(constant($game->sprache("TEXT58"))); break;
                 case 2: $game->out(constant($game->sprache("TEXT154"))); break;
                 default: $game->out('Illegal status code - report this as a bug'); break;
@@ -448,7 +457,7 @@ function display_logbook($log) {
             }
         break;
 
-		case 26:
+	case 26:
 			switch($log['log_data'][11]) {
 				case 0: $text_1 = constant($game->sprache("TEXT149"));
 						$color1 = 'red';
@@ -930,10 +939,11 @@ if(count($a_fleets) <= 0) {
             else {
                 $game->out('
     <b>'.constant($game->sprache("TEXT108")).'</b><br>
-    <table border="0" cellpadding="1" cellspacing="1">
+    <table width="350" border="0" cellpadding="1" cellspacing="1">
       <tr>
         <td width="100"><b>'.constant($game->sprache("TEXT109")).'</b></td>
         <td width="100"><b>'.constant($game->sprache("TEXT110")).'</b></td>
+        <td width="100"><b>'.constant($game->sprache("TEXT226")).'</b></td>
         <td width="50"><b>'.constant($game->sprache("TEXT37")).'</b></td>
       </tr>
                 ');
@@ -943,6 +953,7 @@ if(count($a_fleets) <= 0) {
       <tr>
         <td>'.$a_fleets[$i]['fleet_name'].'</td>
         <td>'.$a_fleets[$i]['owner_name'].'</td>
+        <td>'.(isset($a_fleets[$i]['officer_name']) && $a_fleets[$i]['owner_name'] != 'No_ID' ? $a_fleets[$i]['officer_name'] : 'n/a' ).'</td>    
         <td>'.$a_fleets[$i]['n_ships'].'</td>
       </tr>
                     ');
@@ -957,10 +968,11 @@ if(count($a_fleets) <= 0) {
             else {
                 $game->out('
     <b>'.constant($game->sprache("TEXT112")).'</b><br>
-    <table border="0" cellpadding="1" cellspacing="1">
+    <table width="350" border="0" cellpadding="1" cellspacing="1">
       <tr>
         <td width="100"><b>'.constant($game->sprache("TEXT109")).'</b></td>
         <td width="100"><b>'.constant($game->sprache("TEXT110")).'</b></td>
+        <td width="100"><b>'.constant($game->sprache("TEXT226")).'</b></td>
         <td width="50"><b>'.constant($game->sprache("TEXT37")).'</b></td>
       </tr>
                 ');
@@ -970,6 +982,7 @@ if(count($a_fleets) <= 0) {
       <tr>
         <td>'.$d_fleets[$i]['fleet_name'].'</td>
         <td>'.$d_fleets[$i]['owner_name'].'</td>
+        <td>'.(isset($d_fleets[$i]['officer_name']) && $d_fleets[$i]['owner_name'] != 'No_ID' ? $d_fleets[$i]['officer_name'] : 'n/a' ).'</td>
         <td>'.$d_fleets[$i]['n_ships'].'</td>
       </tr>
                     ');
@@ -980,8 +993,12 @@ if(count($a_fleets) <= 0) {
 
                 
 
-            $game->out('
+            /*$game->out('
 <br><table border="0" cellpadding="0" cellspacing="0"><tr><td>'.$text.'</td></tr></table>');
+            */
+            $popuptext = '<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>'.$text.'</td></tr></table>';
+            
+            $game->out('<br><a href="javascript:void(0);" onclick="return overlib(\''.htmlentities($popuptext, ENT_QUOTES).'\', CAPTION, \'Dettaglio dello scontro\', WIDTH, 750, '.OVERLIB_CMB_REPORT.');" onmouseout="return nd();"><span class="sub_caption">Dettaglio dello scontro</span></a><br><br>');
             
             switch($ldata['action_code']) {
                 case 44:
@@ -1001,68 +1018,116 @@ if(count($a_fleets) <= 0) {
        <tr><td width="200"><b>'.constant($game->sprache("TEXT46")).'</b></td>
         <td width="150"><b>'.constant($game->sprache("TEXT114")).'</b></td></tr>');
       global $UNIT_NAME;
-                        $game->out('<tr><td width="200">'.constant($game->sprache("TEXT115")).'</td><td width="150">'.$log['log_data'][18][0].'</td></tr>');
+      $game->out('<tr><td width="200">'.constant($game->sprache("TEXT115")).'</td><td width="150">'.$log['log_data'][18][0].'</td></tr>');
       $truppen_bomben=0;
-      for($i =13; $i<19; ++$i) {
-                             if($log['log_data'][18][$i] >0) 
-{
-                                 $game->out('<tr><td width="200">'.$UNIT_NAME[$game->player['user_race']][$truppen_bomben].'</td>
-        <td width="150">'.$log['log_data'][18][$i].'</td></tr>' );
-      
-      }$truppen_bomben++;
+      for($i =14; $i<20; ++$i) {
+        if($log['log_data'][18][$i] >0) 
+        {
+            $game->out('<tr><td width="200">'.$UNIT_NAME[$game->player['user_race']][$truppen_bomben].'</td>
+                        <td width="150">'.$log['log_data'][18][$i].'</td></tr>' );
+        }
+        $truppen_bomben++;
       } //End troops bombs
-                        $game->out('
+ $game->out('
     <tr><td><br></td><td></td></tr>
       <tr>
         <td width="200"><b>'.constant($game->sprache("TEXT116")).'</b></td>
         <td width="150"><b>'.constant($game->sprache("TEXT48")).'</b></td>
       </tr>
-                         ');
-                         
-                        
-                         // $NUM_BUILDING = the largest index
-                         for($i = 1; $i <= ($NUM_BUILDING); ++$i) {
-                             if($log['log_data'][18][$i] > 0) {
-                                 $game->out('
-      <tr>
-        <td>'.$BUILDING_NAME[$log['log_data'][19]][($i - 1)].'</td>
-        <td>-'.$log['log_data'][18][$i].'</td>
-      </tr>
-                                 ');
-                             }
-                         }
-                         
-                         $game->out('</table><br>');
-                     }
-                     
-                     
-                     if($log['log_data'][20][0] > 0) // Then we have had an "Antiborgship"...
-                     {
-                        $game->out('
-							    <table border="0" cellpadding="2" cellspacing="2">
-							      <tr>
-							        <td width="200"><b>'.constant($game->sprache("TEXT117")).'</b></td>
-							        <td width="150"><b>'.constant($game->sprache("TEXT55")).'</b></td>
-							      </tr>
-                         ');
-                   		global $UNIT_NAME;
-                         for($i = 0; $i < 4; $i++) {
-                             if($log['log_data'][20][$i] > 0) {
-                                 $game->out('
-									      <tr>
-									        <td>'.$UNIT_NAME[6][$i].'</td>
-									        <td>-'.$log['log_data'][20][$i].'</td>
-									      </tr>
-                                 ');
-                             }
-                         }
-                         
-                         $game->out('</table><br>');
-                     }
-                     
-                     
-                     
-                     
+                         ');                        
+    // $NUM_BUILDING = the largest index
+    $lines_written = 0;
+    for($i = 1; $i <= ($NUM_BUILDING); ++$i) {
+        if($log['log_data'][18][$i] > 0) {
+            $lines_written++;
+            $game->out('
+            <tr>
+                <td>'.$BUILDING_NAME[$log['log_data'][19]][($i - 1)].'</td>
+                <td>-'.$log['log_data'][18][$i].'</td>
+            </tr>
+            ');
+        }
+    }
+    if($lines_written == 0) {
+        $game->out('<tr><td colspan="2"><i>'.constant($game->sprache("TEXT113")).'</i></td></tr>');
+    }
+ $game->out('</table><br>');
+}                   
+/*                     
+if($log['log_data'][20][0] > 0) // Then we have had an "Antiborgship"...
+{
+$game->out('
+                                    <table border="0" cellpadding="2" cellspacing="2">
+                                      <tr>
+                                        <td width="200"><b>'.constant($game->sprache("TEXT117")).'</b></td>
+                                        <td width="150"><b>'.constant($game->sprache("TEXT55")).'</b></td>
+                                      </tr>
+ ');
+        global $UNIT_NAME;
+ for($i = 0; $i < 4; $i++) {
+     if($log['log_data'][20][$i] > 0) {
+         $game->out('
+                                                      <tr>
+                                                        <td>'.$UNIT_NAME[6][$i].'</td>
+                                                        <td>-'.$log['log_data'][20][$i].'</td>
+                                                      </tr>
+         ');
+     }
+ }
+
+ $game->out('</table><br>');
+}
+*/
+if($log['log_data'][20]['sum'] > 0 ) {
+    $game->out('
+            <table border="0" cellpadding="2" cellspacing="2">
+            <tr>
+                <td width="200"><b>'.constant($game->sprache("TEXT227")).'</b></td>
+                <td width="150"><b>'.constant($game->sprache("TEXT228")).'</b></td>
+            </tr>
+            <tr>
+                <td>'.constant($game->sprache("TEXT229")).'</td>
+                <td>'.$log['log_data'][20]['sum'].'</td>
+            </tr>');
+    if($log['log_Data'][20]['hq'] > 0 ) {
+        $game->out('<tr><td>'.constant($game->sprache("TEXT236")).'</td>
+                    <td> +'.$log['log_data'][20]['hq'].'</td></tr>');        
+    }
+    if($log['log_data'][20]['mines'] > 0) {
+        $game->out('<tr>
+                    <td>'.constant($game->sprache("TEXT230")).'</td>
+                    <td> +'.$log['log_data'][20]['mines'].'</td>
+                    </tr>');
+    }
+    if($log['log_data'][20]['academy'] > 0) {
+        $game->out('<tr><td>'.constant($game->sprache("TEXT231")).'</td>
+                    <td> +'.$log['log_data'][20]['academy'].'</td></tr>');
+    }
+    if($log['log_data'][20]['spacedock'] > 0) {
+        $game->out('<tr><td>'.constant($game->sprache("TEXT232")).'</td>
+                    <td> +'.$log['log_data'][20]['spacedock'].'</td></tr>');
+    }
+    if($log['log_data'][20]['shipyard'] > 0) {
+        $game->out('<tr><td>'.constant($game->sprache("TEXT233")).'</td>
+                    <td> +'.$log['log_data'][20]['shipyard'].'</td></tr>');
+    }
+    if($log['log_data'][20]['research'] > 0) {
+        $game->out('<tr><td>'.constant($game->sprache("TEXT234")).'</td>
+                    <td> +'.$log['log_data'][20]['research'].'</td></tr>');
+    }
+    if($log['log_data'][20]['silo'] > 0) {
+        $game->out('<tr><td>'.constant($game->sprache("TEXT235")).'</td>
+                    <td> +'.$log['log_data'][20]['silo'].'</td></tr>');
+    }    
+    $game->out('</table><br><br>');
+    $game->out('<table border="0" cellpadding="2" cellspacing="2">
+               <tr>
+                  <td width="200"><b>Warscore:</b></td>
+                  <td width="150">'.(isset($log['log_data'][21]) ? '<b>'.$log['log_data'][21].'</b>' : '<i>n/a</i>').'</td>
+               </tr>
+               </table><br>
+    ');
+}                     
                 break;
                 
                 case 45:
@@ -1141,6 +1206,13 @@ if(count($a_fleets) <= 0) {
                             $game->out('</table><br>');
                         }
                     }
+                    $game->out('<br><table border="0" cellpadding="2" cellspacing="2">
+                    <tr>
+                       <td width="215"><b>Warscore:</b></td>
+                       <td width="150">'.(isset($log['log_data'][21]) ? '<b>'.$log['log_data'][21].'</b>' : '<i>n/a</i>').'</td>
+                    </tr>
+                    </table><br>
+         ');                    
                 break;
             }
         break;
@@ -1179,10 +1251,74 @@ if(count($a_fleets) <= 0) {
 
             $game->out('</table><br>');
             break;
-        
+        case 101: // Planetary Alert System
+            $game->out('
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="65" valign="top"><b>'.constant($game->sprache("TEXT34")).'&nbsp;</b></td>
+        <td width="385">
+            ');
+            
+            /*
+            $game->out(constant($game->sprache("TEXT220")).'<a href="'.parse_link('a=tactical_cartography&system_id='.encode_system_id($log['log_data'][8])).'"> <b>'.$log['log_data'][9].'</b></a> '
+                       .constant($game->sprache("TEXT216")).'<a href="'.parse_link('a=stats&a2=viewplayer&id='.$log['log_data'][1]).'">  <b>'.$log['log_data'][12].'</b> </a> '
+                       .constant($game->sprache("TEXT217")).'<b>'.$log['log_data'][6].'</b>. '.constant($game->sprache("TEXT218")));
+            */
+            $player_link = ($log['log_data'][1] != UNDISCLOSED_USERID ? '<a href="'.parse_link('a=stats&a2=viewplayer&id='.$log['log_data'][1]).'"> <b>'.$log['log_data'][12].'</b> </a> ' : ' <b><i>'.$log['log_data'][12].'</i></b> ' );
+
+            $game->out(constant($game->sprache("TEXT220")).'<a href="'.parse_link('a=tactical_cartography&system_id='.encode_system_id($log['log_data'][8])).'"> <b>'.$log['log_data'][9].'</b></a> '
+                       .constant($game->sprache("TEXT216")).$player_link
+                       .constant($game->sprache("TEXT217")).'<b>'.$log['log_data'][6].'</b>. '.constant($game->sprache("TEXT218")));
+
+            $game->out('
+        </td>
+      </tr>
+    </table>
+    <br>
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="350"><b>'.constant($game->sprache("TEXT54")).'</b></td>
+        <td width="100"><b>'.constant($game->sprache("TEXT55")).'</b></td>
+      </tr>
+            ');
+            
+            foreach ($log['log_data'][11] as $ship_report) {
+                $game->out('
+      <tr>
+        <td>'.$ship_report['name'].' (<i>'.$SHIP_TORSO[$ship_report['race']][$ship_report['ship_torso']][29].'</i>, <i>'.$RACE_DATA[$ship_report['race']][0].'</i>)</td>
+        <td>'.$ship_report['n_ships'].'</td>
+      </tr>
+                ');
+            }
+
+            $game->out('</table><br>');            
+        break;
+                
+        case 102:
+            $game->out('
+    <table border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="65" valign="top"><b>'.constant($game->sprache("TEXT34")).'&nbsp;</b></td>
+        <td width="385">'.constant($game->sprache("TEXT242")).'<a href="'.parse_link('a=ship_fleets_display&pfleet_details='.$log['log_data'][9]).'"> <b>'.$log['log_data'][8].'</b></a>'.constant($game->sprache("TEXT243")).'</td>
+      </tr>
+    </table>
+    <br>');            
+            break;
+              
+        case 103: // Bounce
+          $game->out('
+          <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td width="65" valign="top"><b>'.constant($game->sprache("TEXT34")).'&nbsp;</b></td>
+              <td width="385">'.constant($game->sprache("TEXT38")).'</td>
+            </tr>
+          </table>
+          <br>');        
+        break;
+                    
         default:
             message(GENERAL, 'Unknown action code in logbook_tactical.php', '$ldata[\'action_data\'] = '.$ldata['action_code']);
-        break;
+        break;        
     }
 
     $game->out('</td></tr>

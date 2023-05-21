@@ -63,7 +63,7 @@ define ("GER_TEXT19", 'Flotten:');
 
 define ("GER_TEXT20", '<b>&Uuml;bergeben:</b><br>Die Schiffe werden die Kontrolle ');
 
-define ("GER_TEXT21", 'an den Herrscher des Planeten');
+define ("GER_TEXT21", 'zu den Piraten des Orion');
 
 define ("GER_TEXT22", 'dem Befehlshaber der Flotte');
 
@@ -173,6 +173,14 @@ define("GER_TEXT86", '<b>Addestramento Avanzato</b>: sbarcando la squadra su una
 
 define("GER_TEXT87", 'Nessuna azione possibile sui pianeti di un sistema privato.');
 
+define ("GER_TEXT91", ' uses left');
+
+define ("GER_TEXT92", 'Unbekannte Flotten d&uuml;rfen keinen Planeten erobern!');
+
+define ("GER_TEXT93", '<center>WARNING</center><br><br>This action will surrender fleet ownership and full control to Orion Pirates.<br>Fleet will act of its own will.<br><br>Carefully evaluate all the consequences of this <b>irreversible</b> decision.');
+
+define ("GER_TEXT94", 'LAST WARNING: Do you confirm that you want to surrender this fleet to the Orion Pirates? This decision is not reversible, once taken you will have no way to regain control of the ships.');
+
 
 //English
 define ("ENG_TEXT0", 'Ship movements');
@@ -217,7 +225,7 @@ define ("ENG_TEXT19", 'Fleets:');
 
 define ("ENG_TEXT20", '<b>Handed over:</b><br>The ships become control ');
 
-define ("ENG_TEXT21", 'to the ruler of the planet');
+define ("ENG_TEXT21", 'to the Orion Pirates');
 
 define ("ENG_TEXT22", 'the commander of the fleet');
 
@@ -332,6 +340,14 @@ define("ENG_TEXT86", '<b>Addestramento Avanzato</b>: sbarcando la squadra su una
 
 define("ENG_TEXT87", 'Nessuna azione possibile sui pianeti di un sistema privato.');
 
+define ("ENG_TEXT91", ' uses left');
+
+define ("ENG_TEXT92", 'Unidentified fleets cannot conquer a planet');
+
+define ("ENG_TEXT93", '<center>WARNING</center><br><br>This action will surrender fleet ownership and full control to Orion Pirates.<br>Fleet will act of its own will.<br><br>Carefully evaluate all the consequences of this <b>irreversible</b> decision.');
+
+define ("ENG_TEXT94", 'LAST WARNING: Do you confirm that you want to surrender this fleet to the Orion Pirates? This decision is not reversible, once taken you will have no way to regain control of the ships.');
+
 
 //Italiano
 define ("ITA_TEXT0", 'Movimenti flotte');
@@ -376,7 +392,7 @@ define ("ITA_TEXT19", 'Flotte:');
 
 define ("ITA_TEXT20", '<b>Consegna:</b><br>Viene ceduto il controllo delle navi ');
 
-define ("ITA_TEXT21", 'al proprietario del pianeta');
+define ("ITA_TEXT21", 'ai Pirati di Orione');
 
 define ("ITA_TEXT22", 'al comandante della flotta');
 
@@ -516,5 +532,17 @@ define("ITA_TEXT86", '<b>Addestramento Avanzato</b>: sbarcando la squadra su una
 define("ITA_TEXT87", 'Nessuna azione possibile sui pianeti di un sistema privato.');
 
 define("ITA_TEXT88", '<b>Razziatori in azione</b>: viene sbarcata una squadra di razziatori con il compito di attaccare ogni delegazione diplomatica avversaria e tentare la cattura della nave.');
+
+define("ITA_TEXT89", '<b>Presidio: Difesa del mercato</b>: un sub-nagus e il suo seguito vengono sbarcati sulla colonia da amministrare con il particolare compito di proteggere i nostri interessi contro ogni concorrenza aliena.');
+
+define("ITA_TEXT90", '<b>Delegazione: Corrompere i locali</b>: la squadra a terra impiegher&agrave; le risorse finanziarie a sua disposizione per acquisire maggior influenza sulle autorit&agrave; locali e bloccare le attivit&agrave; dei nostri concorrenti, oltre a <i>ricevere</i> una parte extra derivante dalla produzione della colonia stessa.');
+
+define ("ITA_TEXT91", ' usi rimasti');
+
+define ("ITA_TEXT92", 'Le flotte non identificate non sono autorizzate a conquistare un pianeta');
+
+define ("ITA_TEXT93", '<center>ATTENZIONE</center><br><br>Questo comando ceder&agrave; la propriet&agrave; ed il completo controllo di questa flotta ai Pirati di Orione.<br>Da quel momento la flotta agir&agrave; in modo totalmente indipendente dalla tua volont&agrave;<br><br>Valuta con cura tutte le conseguenze di questa decisione che &egrave; IRREVERSIBILE.');
+
+define ("ITA_TEXT94", 'ULTIMO AVVERTIMENTO: confermi di voler cedere questa flotta ai Pirati di Orione? Questa decisione non &egrave; reversibile, una volta presa non avrai nessun modo per recuperare il controllo delle navi.');
 
 ?>

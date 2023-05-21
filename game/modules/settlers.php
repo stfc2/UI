@@ -20,7 +20,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-global $RACE_DATA, $SETL_EVENTS, $TECH_NAME, $ACTUAL_TICK, $cfg_data;
+global $RACE_DATA, $BUILDING_NAME, $SETL_EVENTS, $TECH_NAME, $ACTUAL_TICK, $cfg_data;
 
 $game->init_player();
 
@@ -41,9 +41,13 @@ if((isset($operator1) && !empty($operator1)) && (isset($operator2) && !empty($op
         {
             $sql = 'UPDATE planets SET best_mood_planet = '.$game->player['active_planet'].' WHERE planet_owner = '.INDEPENDENT_USERID.' AND planet_id = '.(int)decode_planet_id($operator1);
         }
-        else
+        elseif($operator2 == constant($game->sprache("TEXT17")))
         {
             $sql = 'UPDATE planets SET best_mood_planet = NULL WHERE planet_owner = '.INDEPENDENT_USERID.' AND planet_id = '.(int)decode_planet_id($operator1);
+        }
+        elseif($operator2 == constant($game->sprache("TEXT36")))
+        {
+            $sql = 'UPDATE planets SET best_mood_alert = NOT best_mood_alert WHERE planet_owner = '.INDEPENDENT_USERID.' AND planet_id = '.(int)decode_planet_id($operator1);
         }
     
         if(!$db->query($sql)) {
@@ -245,7 +249,7 @@ elseif($sub_action == constant($game->sprache("TEXT4"))) {
             INNER JOIN planets p USING (planet_id) 
             WHERE best_mood_user = '.$game->player['user_id'].'
             AND se.user_id <> '.$game->player['user_id'].'
-            AND event_code NOT IN (100)
+            AND event_code NOT IN (100,102)
             ORDER BY p.planet_id, event_code';
     $q_p_setdiplo = $db->query($sql);
     $rows = $db->num_rows($q_p_setdiplo);
@@ -303,20 +307,21 @@ elseif($sub_action == constant($game->sprache("TEXT1")))
     <tr><td>
     <table class="style_inner" width="75%" align="center" border="0" cellpadding="2" cellspacing="2">
     <tr>
-    <td width="25%" align="center"><button type="submit" onclick="document.controller.data3.value=1">'.($selection == 1 ? '<b>'.constant($game->sprache("TEXT26")).'</b>' : constant($game->sprache("TEXT26"))).'</button></td>
-    <td width="25%" align="center"><button type="submit" onclick="document.controller.data3.value=2">'.($selection == 2 ? '<b>'.constant($game->sprache("TEXT27")).'</b>' : constant($game->sprache("TEXT27"))).'</button></td>
-    <td width="25%" align="center"><button type="submit" onclick="document.controller.data3.value=3">'.($selection == 3 ? '<b>'.constant($game->sprache("TEXT28")).'</b>' : constant($game->sprache("TEXT28"))).'</button></td>
-    <td width="25%" align="center"><button type="submit" onclick="document.controller.data3.value=4">'.($selection == 4 ? '<b>'.constant($game->sprache("TEXT29")).'</b>' : constant($game->sprache("TEXT29"))).'</button></td>
+    <td width="33%" align="center"><button type="submit" onclick="document.controller.data3.value=1">'.($selection == 1 ? '<b>'.constant($game->sprache("TEXT26")).'</b>' : constant($game->sprache("TEXT26"))).'</button></td>
+    <td width="33%" align="center"><button type="submit" onclick="document.controller.data3.value=2">'.($selection == 2 ? '<b>'.constant($game->sprache("TEXT27")).'</b>' : constant($game->sprache("TEXT27"))).'</button></td>
+    <td width="33%" align="center"><button type="submit" onclick="document.controller.data3.value=3">'.($selection == 3 ? '<b>'.constant($game->sprache("TEXT29")).'</b>' : constant($game->sprache("TEXT29"))).'</button></td>
     </tr>
     </table>
     </td></tr>
     <tr><td>
     <table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="2">
     <tr>
-    <td width="20%"><b>'.(constant($game->sprache("TEXT10"))).'</b></td>
-    <td width="20%"><b>'.(constant($game->sprache("TEXT11"))).'</b></td>
+    <td width="17%"><b>'.(constant($game->sprache("TEXT10"))).'</b></td>
+    <td width="5%">&nbsp;</td>
+    <td width="18%"><b>'.(constant($game->sprache("TEXT11"))).'</b></td>
     <td width="10%"><b>'.(constant($game->sprache("TEXT12"))).'</b></td>
-    <td width="20%"><b>'.(constant($game->sprache("TEXT13"))).'</b></td>
+    <td width="10%"><b>'.(constant($game->sprache("TEXT13"))).'</b></td>
+    <td width="10%"><b>'.(constant($game->sprache("TEXT36"))).'</b></td>
     <td width="30%"><b>'.(constant($game->sprache("TEXT14"))).'</b></td>
   </tr>');
     switch ($selection) {
@@ -324,22 +329,20 @@ elseif($sub_action == constant($game->sprache("TEXT1")))
             $selection_string = '';
             break;
         case 2:
-            $selection_string = ' AND p.planet_type IN("a", "b", "c", "d", "g", "h", "m", "n", "o", "p") ';
+            $selection_string = ' AND p.planet_type IN("e","f","g","h","k","l","m","n","o","p") ';
             break;
         case 3:
-            $selection_string = ' AND p.planet_type IN("e", "f", "k", "l") ';
-            break;
-        case 4:
-            $selection_string = ' AND p.planet_type IN("i", "j", "s", "t", "x", "y") ';
+            $selection_string = ' AND p.planet_type IN("a","b","c","d","i","j","s","t","x","y") ';
             break;
     }
-    $sql = 'SELECT sr.planet_id, p.planet_name, p.best_mood, p.best_mood_user, p.best_mood_planet,
-                   p.sector_id, ss.system_x, ss.system_y, p.planet_distance_id,
+    $sql = 'SELECT sr.planet_id, p.planet_name, p.best_mood, p.best_mood_user, p.best_mood_planet, p.best_mood_alert, se.event_code,
+                   p.sector_id, p.system_id, ss.system_x, ss.system_y, p.planet_distance_id,
                    p.planet_type, p2.planet_name AS target_planet_name,
-                   MAX(timestamp) AS last_time, SUM(mood_modifier) AS mood
+                   MAX(sr.timestamp) AS last_time, SUM(mood_modifier) AS mood
             FROM settlers_relations sr
             INNER JOIN planets p on sr.planet_id = p.planet_id
             LEFT  JOIN planets p2 on p.best_mood_planet = p2.planet_id
+            LEFT  JOIN settlers_events se on (se.planet_id = sr.planet_id AND se.user_id = '.$game->player['user_id'].') 
             INNER JOIN starsystems ss on p.system_id = ss.system_id
             WHERE sr.user_id = '.$game->player['user_id'].$selection_string.'
             GROUP BY sr.planet_id';
@@ -350,13 +353,23 @@ elseif($sub_action == constant($game->sprache("TEXT1")))
     {
         $game->out('<tr>');
         // Name
-        $game->out('<td width="20%"><a href="'.parse_link('a=settlers&detail='.encode_planet_id($sett_diplo[$i]['planet_id'])).'">'.$sett_diplo[$i]['planet_name'].'</a></td>');
+        $game->out('<td width="17%"><a href="'.parse_link('a=settlers&detail='.encode_planet_id($sett_diplo[$i]['planet_id'])).'">'.$sett_diplo[$i]['planet_name'].'</a></td>');
+        // AwayTeam on planet
+        if(isset($sett_diplo[$i]['event_code'])) {
+            $game->out('<td width="5%"><a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT35")).'\', CAPTION, \''.addslashes('<b>&darr;</b>').'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>&darr;</b></td>');
+        }
+        else {
+            $game->out('<td width="5%">&nbsp;</td>');
+        }
         // Position
-        $game->out('<td width="20%"><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($sett_diplo[$i]['planet_id'])).'">'.$game->get_sector_name($sett_diplo[$i]['sector_id']).':'.$game->get_system_cname($sett_diplo[$i]['system_x'],$sett_diplo[$i]['system_y']).':'.($sett_diplo[$i]['planet_distance_id'] + 1).'</a></td>');
+        $game->out('<td width="18%">'.$game->fast_link_string($sett_diplo[$i]['sector_id'], encode_system_id($sett_diplo[$i]['system_id']), $sett_diplo[$i]['system_x'], $sett_diplo[$i]['system_y'], encode_planet_id($sett_diplo[$i]['planet_id']), $sett_diplo[$i]['planet_distance_id']).'</td>');
+        // $game->out('<td width="18%"><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($sett_diplo[$i]['planet_id'])).'">'.$game->get_sector_name($sett_diplo[$i]['sector_id']).':'.$game->get_system_cname($sett_diplo[$i]['system_x'],$sett_diplo[$i]['system_y']).':'.($sett_diplo[$i]['planet_distance_id'] + 1).'</a></td>');
         // Class
         $game->out('<td width="10%">'.strtoupper($sett_diplo[$i]['planet_type']).'</td>');
         // Mood
-        $game->out('<td width="20%"><span style="color: '.(($game->player['user_id'] == $sett_diplo[$i]['best_mood_user']) || ($sett_diplo[$i]['mood'] > $sett_diplo[$i]['best_mood']) ? 'green' : 'red').'">'.$sett_diplo[$i]['mood'].'</span></td>');
+        $game->out('<td width="10%"><span style="color: '.(($game->player['user_id'] == $sett_diplo[$i]['best_mood_user']) || ($sett_diplo[$i]['mood'] > $sett_diplo[$i]['best_mood']) ? 'green' : 'red').'">'.$sett_diplo[$i]['mood'].'</span></td>');
+        // Reports
+        $game->out('<td><input type="checkbox" name="Report" '.($sett_diplo[$i]['best_mood_alert'] ? 'checked': '').' onchange="document.controller.data1.value=\''.encode_planet_id($sett_diplo[$i]['planet_id']).'\'; document.controller.data2.value=\''.constant($game->sprache("TEXT36")).'\'; this.form.submit();"></td>');
         // Linked planet
         if($sett_diplo[$i]['best_mood_user'] == $game->player['user_id']) {
             $game->out('<td><table width="100%" border="0" cellpadding="0" cellspacing="1"><tr>');
@@ -378,7 +391,7 @@ elseif ($sub_action == constant($game->sprache("TEXT30"))) {
     // New Settlers Colony Detail panel
     $watch_on_planet = false;
     // Step 1: Loading planet
-    $sql = 'SELECT planet_name
+    $sql = 'SELECT planet_id, planet_name, building_1, building_2, building_3, building_4, building_5, building_6, building_7, building_8, building_10, building_12, building_13, research_3
             FROM planets 
             WHERE planet_id = '.$detail_id.' AND planet_owner = '.INDEPENDENT_USERID;
     $q1_detail = $db->queryrow($sql);
@@ -390,11 +403,13 @@ elseif ($sub_action == constant($game->sprache("TEXT30"))) {
     $q3_detail = $db->queryrowset($sql);
     $game->out('
     <br><br><br>
-    <center><span class="caption">'.(constant($game->sprache("TEXT30"))).' &#171;'.$q1_detail['planet_name'].'&#187;</span><br><br>
-    <table class="style_outer" width="90%" align="center" border="0" cellpadding="2" cellspacing="2">');
+    <center><a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($q1_detail['planet_id'])).'"><span class="caption">'.(constant($game->sprache("TEXT30"))).' &#171;'.$q1_detail['planet_name'].'&#187;</span></a><br><br>
+    <table class="style_outer" width="90%" align="center" border="0" cellpadding="2" cellspacing="2">
+    <tr><td>
+    <table class="style_inner" width="100%" align="center" border="0" cellpadding="2" cellspacing="2">');
     foreach($q3_detail as $q3_item)
     {
-        if($SETL_EVENTS[$q3_item['event_code']][1] && ($game->player['user_id'] != $q3_item['user_id'])) {continue;}
+        if($game->player['user_id'] != $q3_item['user_id']) {continue;}
         $watch_on_planet = true;
         $game->out('<tr align=left><td><i>'.$SETL_EVENTS[$q3_item['event_code']][0].'</i></td>');
         $game->out(($game->player['user_id'] == $q3_item['user_id'] ? '<td><i>('.$q3_item['count_crit_ok'].' / '.$q3_item['count_ok'].' / '.$q3_item['count_ko'].' / '.$q3_item['count_crit_ko'].')</i></td></tr>' : '</tr>'));
@@ -402,7 +417,7 @@ elseif ($sub_action == constant($game->sprache("TEXT30"))) {
     foreach($q2_detail AS $q2_item) {
         $game->out('<tr align=left><td>'.get_diplo_str((int)$q2_item['log_code']).'</td><td>'.date("d.m.y", $q2_item['timestamp']).'</td><td>'.$q2_item['mood_modifier'].'</td></tr>');
     }
-    $game->out('</table>');
+    $game->out('</table></td></tr></table>');
     if($watch_on_planet) {
         // Mood Section
         $index = 0;
@@ -424,7 +439,7 @@ elseif ($sub_action == constant($game->sprache("TEXT30"))) {
                     <tr><td align="center">
                     <table class="style_inner" width="60%" align="center" border="0" cellpadding="1" cellspacing="1">');
         foreach ($user_mood_data AS $user_mood_item) {
-            $game->out('<tr><td width="30%" align="left"><b>'.$user_mood_item['user_name'].'</b> (<i>'.$RACE_DATA[$user_mood_item['user_race']][0].'</i>)</td><td width="15%" align="center">'.(isset($user_mood_item['alliance_tag']) ? '['.$user_mood_item['alliance_tag'].']' : '&nbsp;').'</td><td align="center"> Mood: '.$user_mood_item['mood_value'].'</td></tr>');
+            $game->out('<tr><td width="45%" align="left"><b>'.$user_mood_item['user_name'].'</b> (<i>'.$RACE_DATA[$user_mood_item['user_race']][0].'</i>)</td><td width="15%" align="left">'.(isset($user_mood_item['alliance_tag']) ? '['.$user_mood_item['alliance_tag'].']' : '&nbsp;').'</td><td align="center"> Mood: '.$user_mood_item['mood_value'].'</td></tr>');
         }
         $game->out('</table></td></tr></table');
         $game->out('<br><br><br><center><span class="caption">'.(constant($game->sprache("TEXT32"))).' &#171;'.$q1_detail['planet_name'].'&#187;</span><br><br>
@@ -446,17 +461,49 @@ elseif ($sub_action == constant($game->sprache("TEXT30"))) {
                 if(isset($q_time['research_finish']) && !empty($q_time['research_finish'])) {
                     $actual_lvl = $rd_q['research_'.($i+1)] + 1;
                     if($actual_lvl < 9 && $rd_q['research_'.($i+1)] < $rc_q['rescap'.($i+1)]) {
-                        $game->out('<tr><td widht="35%">'.$TECH_NAME[13][$i].'</td><td width="65%" align="center"> '.(constant($game->sprache("TEXT34"))).(format_time(($q_time['research_finish'] - $ACTUAL_TICK)*TICK_DURATION)).'</td></tr>');
+                        $game->out('<tr><td widht="35%">'.$TECH_NAME[13][$i].' (L.'.$actual_lvl.')</td><td width="65%" align="center"> '.(constant($game->sprache("TEXT34"))).(format_time(($q_time['research_finish'] - $ACTUAL_TICK)*TICK_DURATION)).'</td></tr>');
                     }
                 }
                 else {
                     if($rd_q['research_'.($i+1)] < 9 && $rd_q['research_'.($i+1)] < $rc_q['rescap'.($i+1)]) {
-                        $game->out('<tr><td widht="35%">'.$TECH_NAME[13][$i].'</td><td width="65%" align="center"> '.(constant($game->sprache("TEXT33"))).'</td></tr>');
+                        $game->out('<tr><td widht="35%">'.$TECH_NAME[13][$i].' (L.'.$rd_q['research_'.($i+1)].')</td><td width="65%" align="center"> '.(constant($game->sprache("TEXT33"))).'</td></tr>');
                     }
                 }
             }            
         }
+        $game->out('</table></td></tr></table');        
+        $game->out('<br><br><br><center><span class="caption">'.(constant($game->sprache("TEXT38"))).' &#171;'.$q1_detail['planet_name'].'&#187;</span><br><br>
+                    <table class="style_outer" width="90%" align="center" border="0" cellpadding="2" cellspacing="2">
+                    <tr><td align="center">
+                    <table class="style_inner" width="80%" align="center" border="0" cellpadding="1" cellspacing="1">');
+        $max_setl_build = [9,9,9,9,0,9,3,1,0,0,0,9];
+        for($i = 0; $i < 10; $i++) {
+            if($i == 8) $i = 11;
+            $game->out('<tr><td align="left" widht="60%">'.$BUILDING_NAME[13][$i].'</td><td widht="10% align="center">'.$q1_detail['building_'.($i+1)].'</td><td align="center" widht="30%">'.($q1_detail['building_'.($i+1)] >= $max_setl_build[$i] ? '<b><font color="green"> Ok </font></b>' : '<font color="red"> In costruzione </font>').'</td></tr>');
+        }
+        $game->out('<tr><td align="left" widht="60%">'.$BUILDING_NAME[13][9].'</td><td widht="10% align="center">'.$q1_detail['building_10'].'</td><td align="center" widht="30%">'.($q1_detail['building_10'] >= (14 + $q1_detail['research_3']) ? '<b><font color="green"> Ok </font></b>' : '<font color="yellow"> In costruzione </font>').'</td></tr>');
+        $game->out('<tr><td align="left" widht="60%">'.$BUILDING_NAME[13][12].'</td><td widht="10% align="center">'.$q1_detail['building_13'].'</td><td align="center" widht="30%">'.($q1_detail['building_13'] >= (14 + $q1_detail['research_3']) ? '<b><font color="green"> Ok </font></b>' : '<font color="yellow"> In costruzione </font>').'</td></tr>');        
         $game->out('</table></td></tr></table');
+    }
+    else {
+        $game->out('<br><br><br><center><span class="caption">'.(constant($game->sprache("TEXT31"))).' &#171;'.$q1_detail['planet_name'].'&#187;</span><br><br>
+                    <table class="style_outer" width="90%" align="center" border="0" cellpadding="2" cellspacing="2">
+                    <tr><td align="center">
+                    <table class="style_inner" width="60%" align="center" border="0" cellpadding="1" cellspacing="1">');
+        $game->out('<tr><td align="center">'.(constant($game->sprache("TEXT37"))).'</td></tr>');
+        $game->out('</table></td></tr></table');
+        $game->out('<br><br><br><center><span class="caption">'.(constant($game->sprache("TEXT32"))).' &#171;'.$q1_detail['planet_name'].'&#187;</span><br><br>
+                    <table class="style_outer" width="90%" align="center" border="0" cellpadding="2" cellspacing="2">
+                    <tr><td align="center">
+                    <table class="style_inner" width="80%" align="center" border="0" cellpadding="1" cellspacing="1">');        
+        $game->out('<tr><td align="center">'.(constant($game->sprache("TEXT37"))).'</td></tr>');        
+        $game->out('</table></td></tr></table');
+        $game->out('<br><br><br><center><span class="caption">'.(constant($game->sprache("TEXT38"))).' &#171;'.$q1_detail['planet_name'].'&#187;</span><br><br>
+                    <table class="style_outer" width="90%" align="center" border="0" cellpadding="2" cellspacing="2">
+                    <tr><td align="center">
+                    <table class="style_inner" width="80%" align="center" border="0" cellpadding="1" cellspacing="1">');        
+        $game->out('<tr><td align="center">'.(constant($game->sprache("TEXT37"))).'</td></tr>');        
+        $game->out('</table></td></tr></table');        
     }
     
 }

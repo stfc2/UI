@@ -39,6 +39,26 @@ $start     = $page * $perpage;
 if (isset($_POST['receiver'])) $_POST['receiver']=htmlspecialchars($_POST['receiver']);
 if (isset($_REQUEST['receiver'])) $_REQUEST['receiver']=htmlspecialchars($_REQUEST['receiver']);
 
+function ForwardToMail($forward)
+{
+    global $config;
+
+    $sender_name = 'STFC2 Mailer';
+    $sender_email = $config['admin_email'];
+    $subject = 'STFC2 Mailer - Inoltro Messaggio Privato';
+    $mail_message = 'Ciao '.$forward['receiver_name'].', come da te richiesto, allego qui di seguito il messaggio privato appena giunto nella tua casella.'.NL.NL;
+    $mail_message .= 'Inviato da: '.$forward['sender_name'].NL;
+    $mail_message .= 'Oggetto: '.$forward['subject'].NL;
+    $mail_message .= 'Testo: '.NL.$forward['body'].NL.NL;
+    $mail_message .= 'Grazie per aver utilizzato il servizio di Inoltro Messaggio Privato di STFC2.';
+    $headers = 'MIME-Version: 1.0'.NL.
+               'Content-type: text/plain; charset=iso-8859-1'.NL.
+               'X-Priority: 1'.NL.
+               'X-MSMail-Priority: High'.NL.
+               'X-Mailer: php'.NL.
+               'From: "'.$sender_name.'" <'.$sender_email.'>';
+    mail('"'.$forward['receiver_name'].'" <'.$forward['receiver_email'].'>', $subject, $mail_message, $headers);
+}
 
 function UpdateUnreadMessages($user_id)
 {
@@ -1042,10 +1062,10 @@ function submitMessage()
                 if (strtolower($recv_list[$i])==strtolower('STFC-Support'))
                     $receiver['user_id']=SUPPORTUSER;
                 else
-                    $receiver = $db->queryrow('SELECT user_id FROM user WHERE user_name="'.$recv_list[$i].'"');
+                    $receiver = $db->queryrow('SELECT user_name, user_id, user_email, user_options, user_auth_level FROM user WHERE user_name="'.$recv_list[$i].'"');
                 if(($receiver))
                 {
-                    $result = $db->query('INSERT INTO message (sender, receiver, subject, text, time) VALUES ("'.$game->player['user_id'].'","'.$receiver['user_id'].'","'.htmlspecialchars($_POST['subject']).'","'.htmlspecialchars($_POST['text']).'\n\n'.$game->player['user_message_sig'].'","'.time().'")');
+                    $result = $db->query('INSERT INTO message (sender, receiver, subject, text, time) VALUES ("'.$game->player['user_id'].'","'.$receiver['user_id'].'","'.substr(htmlspecialchars($_POST['subject']),0,32).'","'.htmlspecialchars($_POST['text']).'\n\n'.$game->player['user_message_sig'].'","'.time().'")');
                     if($result == false)
                     {    
                             message(DATABASE_ERROR, 'message_query: Could not call INSERT INTO in message');
@@ -1053,6 +1073,17 @@ function submitMessage()
                     }
 
                     UpdateUnreadMessages($receiver['user_id']);
+
+                    $receiver_options = unserialize(stripslashes($receiver['user_options']));
+
+                    if($receiver_options['forward_private_msg_to_email'] === true || $receiver['user_auth_level'] == STGC_DEVELOPER) {
+                            $forward['sender_name'] = $game->player['user_name'];
+                            $forward['receiver_name'] = $receiver['user_name'];
+                            $forward['receiver_email'] = $receiver['user_email'];
+                            $forward['subject'] = substr(htmlspecialchars($_POST['subject']),0,32);
+                            $forward['body'] = htmlspecialchars($_POST['text']).NL.NL.$game->player['user_message_sig'];
+                            ForwardToMail($forward);
+                    }
 
                     $num++;
                 }
@@ -1076,7 +1107,7 @@ function submitMessage()
             if (strtolower($_POST['receiver'])==strtolower('STFC-Support'))
                 $receiver['user_id']=SUPPORTUSER;
             else
-                $receiver = $db->queryrow('SELECT user_id FROM user WHERE user_name="'.htmlspecialchars($_POST['receiver']).'"');
+                $receiver = $db->queryrow('SELECT user_name, user_id, user_email, user_options, user_auth_level FROM user WHERE user_name="'.htmlspecialchars($_POST['receiver']).'"');
             if(($receiver) == false)
             {
                 $game->out('<p><span class="sub_caption">'.constant($game->sprache("TEXT41")).'</span></p>');
@@ -1084,13 +1115,24 @@ function submitMessage()
             }
             else
             {
-                $result = $db->query('INSERT INTO message (sender, receiver, subject, text, time) VALUES ("'.$game->player['user_id'].'","'.$receiver['user_id'].'","'.htmlspecialchars($_POST['subject']).'","'.htmlspecialchars($_POST['text']).'\n\n'.$game->player['user_message_sig'].'","'.time().'")');
+                $result = $db->query('INSERT INTO message (sender, receiver, subject, text, time) VALUES ("'.$game->player['user_id'].'","'.$receiver['user_id'].'","'.substr(htmlspecialchars($_POST['subject']),0,32).'","'.htmlspecialchars($_POST['text']).'\n\n'.$game->player['user_message_sig'].'","'.time().'")');
                 if($result == false)
                 {
                     message(DATABASE_ERROR, 'message_query: Could not call INSERT INTO in message');
                     exit();
                 }
                 UpdateUnreadMessages($receiver['user_id']);
+
+                $receiver_options = unserialize(stripslashes($receiver['user_options']));
+
+                if($receiver_options['forward_private_msg_to_email'] === true || $receiver['user_auth_level'] == STGC_DEVELOPER) {
+                        $forward['sender_name'] = $game->player['user_name'];
+                        $forward['receiver_name'] = $receiver['user_name'];
+                        $forward['receiver_email'] = $receiver['user_email'];
+                        $forward['subject'] = substr(htmlspecialchars($_POST['subject']),0,32);
+                        $forward['body'] = htmlspecialchars($_POST['text']).NL.NL.$game->player['user_message_sig'];
+                        ForwardToMail($forward);
+                    }                
 
               $game->out('<p><span class="sub_caption">'.constant($game->sprache("TEXT42")).'</span></p>');
             }

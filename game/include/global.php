@@ -22,7 +22,7 @@
 
 
 
-include_once('/home/stfc/config.inc.php');
+include_once('/home/admin/config.inc.php');
 
 // Line break
 
@@ -67,16 +67,6 @@ define('STGC_BOT', 4);
 
 define('STGC_RACEMAKER', 5);
 
-
-
-// UIDs
-
-define('Q_UID', 1);
-
-define('DATA_UID', 2);
-
-
-
 // Logbook - Constant values
 
 define('LOGBOOK_TACTICAL', 1);
@@ -103,6 +93,11 @@ define('LOGBOOK_SURVEY', 11);
 
 define('LOGBOOK_SETTLERS', 12);
 
+// UIDs
+
+define('Q_UID', 1);
+
+define('DATA_UID', 2);
 
 // Ferengi NPC-Dealers:
 
@@ -127,6 +122,14 @@ define('BORG_USERID', 6);
 // Future Humans
 
 define('FUTURE_HUMANS_UID', 7);
+
+// Orion NPC:
+
+define('ORION_USERID', 8);
+
+// Non-disclosed USERID
+
+define('UNDISCLOSED_USERID', 9);
 
 // Ship types - Constant values
 
@@ -153,6 +156,11 @@ define('ALERT_PHASE_YELLOW', 1);
 define('ALERT_PHASE_RED', 2);
 
 
+// Alliance setup
+// false = player alliances are not allowed
+// true = player alliances are allowed
+
+define('ALLIANCE_ALLOWED', false);
 
 // Alliance status - Constant values
 
@@ -212,7 +220,7 @@ define('NOTICE', 3);
 
 
 // Constants for ships's refit
-define('REFIT_TICK', 3);
+define('REFIT_TICK', 1);
 
 define('NEXT_REFIT_TICK', 2400);
 
@@ -229,16 +237,24 @@ define('SHIP_RUST_CHECK', 700);
 
 // Indicative value of the sensor's power, reference value = 200
 
-define ('PLANETARY_SENSOR_VALUE', 450);
+define ('PLANETARY_SENSOR_VALUE', 800);
+
+// Maximum range for transwarp in ticks
+define('MAX_TRANSWARP_RANGE', 120);
+
+// Transwarp cooldown timer
+define('TRANSWARP_STD_COOLDOWN', 160);
 
 // Optimum distance from the capital system to gain maximum structure points
-define('MAX_BOUND_RANGE', 20000);
+define('MAX_BOUND_RANGE', 8000);
 
 // Planets and colonies names
 define ('UNINHABITATED_PLANET', 'Inesplorato');
 
 define ('UNINHABITATED_COLONY', 'Isolato');
 
+// Settlers maximum number of planets
+define ('SETTLERS_MAX_COLONY', 100);
 
 // User can choose initial planet's quadrant
 define ('USER_CHOOSE_QUADRANT', 1);
@@ -262,8 +278,31 @@ define ('MIN_POINTS_AUCTIONS', USER_START_BOOST ? 1500 : 400);
 // 0 - Home Systems are public
 // 1 - Home Systems are private
 // 2 - Home Systems are explorable, no action allowed on planets
-define ('HOME_SYSTEM_PRIVATE', 2);
+define ('HOME_SYSTEM_PRIVATE', 1);
 
+//Claim System Management
+// 0 - Claims are not allowed
+// 1 - Claims are allowed
+define ('CLAIM_SYSTEM_PERMITTED', 1);
+
+//Claim System Management
+//If used, valid range for claim
+define ('CLAIM_SYSTEM_RANGE', 4500);
+
+//Claim System Management
+//If used, %cap
+define ('CLAIM_SYSTEM_CAP_PERC', 0.50);
+
+//GlobalPointsRequirements 
+// false - Not in use
+// true - In use
+define ('GLOBAL_POINTS_REQUIRED', false);
+
+//Type of movement for tactical map
+// 0 - Warp IN
+// 1 - Warp OUT
+define ('WARP_IN', 0);
+define ('WARP_OUT',1);
 
 // Accelerates the Scheduler
 
@@ -343,23 +382,23 @@ $ship_ranks = array(
 
 $ship_rank_bonus = array(
 
-0=>.12,
+0=>0,
 
 1=>0,
 
 2=>0,
 
-3=>.20,
+3=>.08,
 
 4=>0,
 
 5=>0,
 
-6=>.28,
+6=>0,
 
 7=>0,
 
-8=>.32,
+8=>.25,
 
 9=>0,
 
@@ -379,7 +418,37 @@ $ship_rank_tier = array(
     
 );
 
+$officer_rank_bonus = array(
+    0=>0,
 
+    1=>.02,
+
+    2=>.05,
+
+    3=>.08,
+
+    4=>.12,
+
+    5=>.16,
+
+    6=>.20,
+
+    7=>.24,
+
+    8=>.28,
+
+    9=>.32,
+    
+    10=>.36
+);
+
+$ACADEMY_MAJOR_LIST = ['f', 'g', 'm', 'o', 'p'];
+
+$ACADEMY_MINOR_LIST = ['e', 'h', 'k', 'l', 'n'];
+
+$MINE_MAJOR_LIST = ['a', 'b', 'c', 'd', 'x', 'y'];
+
+$MINE_MINOR_LIST = ['i', 'j', 's', 't'];
 
 // Tick informations:
 
@@ -582,13 +651,13 @@ $UNIT_DATA = array(
 
     0 => array( 
 
-        0 => 35, 
+        0 => 89, 
 
-        1 => 80, 
+        1 => 34, 
 
         2 => 0, 
 
-        3 => 2, 
+        3 => 1.65, 
 
         4 => 2, 
 
@@ -602,13 +671,13 @@ $UNIT_DATA = array(
 
     1 => array( 
 
-        0 => 67, 
+        0 => 191, 
 
-        1 => 108, 
+        1 => 159, 
 
         2 => 0, 
 
-        3 => 3, 
+        3 => 2.80, 
 
         4 => 3, 
 
@@ -622,13 +691,13 @@ $UNIT_DATA = array(
 
     2 => array( 
 
-        0 => 380, 
+        0 => 728, 
 
-        1 => 360, 
+        1 => 744, 
 
-        2 => 230, 
+        2 => 592, 
 
-        3 => 6, 
+        3 => 9, 
 
         4 => 8, 
 
@@ -642,11 +711,11 @@ $UNIT_DATA = array(
 
     3 => array( 
 
-        0 => 180, 
+        0 => 400, 
 
-        1 => 260, 
+        1 => 477, 
 
-        2 => 85, 
+        2 => 480, 
 
         3 => 4, 
 
@@ -662,11 +731,11 @@ $UNIT_DATA = array(
 
     4 => array( 
 
-        0 => 70, 
+        0 => 65, 
 
-        1 => 430, 
+        1 => 265, 
 
-        2 => 345, 
+        2 => 143, 
 
         3 => 10, 
 
@@ -682,11 +751,11 @@ $UNIT_DATA = array(
 
     5 => array( 
 
-        0 => 70, 
+        0 => 46, 
 
-        1 => 471, 
+        1 => 224, 
 
-        2 => 759, 
+        2 => 373, 
 
         3 => 12, 
 
@@ -1165,9 +1234,9 @@ $TECH_DATA = array(
 
 
 
-$WARP_FACTOR_BASE = 4;
+$SYSTEM_WIDTH = 258; // Light minutes, standard value = 508
 
-$SYSTEM_WIDTH = 504; // Light minutes
+$INTER_SYSTEM_TIME = 3; // Tick for intersystem movements, standard value = 6
 
 
 
@@ -1243,17 +1312,17 @@ $PLANETS_DATA = array(
 
     'a' => array(
 
-         0 => 0.4,
+         0 => 1.5,
 
-         1 => 0.4,
+         1 => 1.5,
 
-         2 => 0.4,
+         2 => 1.5,
 
          3 => 0.3,
 
-         4 => 1.4,
+         4 => 1.0,
 
-         5 => 2.0,
+         5 => 0.9,
 
          6 => 15000,
 
@@ -1267,9 +1336,9 @@ $PLANETS_DATA = array(
 
          11 => 2.2,
 
-         12 => 1.74,
+         12 => 1.1,
 
-         13 => 3.2,
+         13 => 1.0,
         
          14 => 2
 
@@ -1279,17 +1348,17 @@ $PLANETS_DATA = array(
 
     'b' => array(
 
-         0 => 0.5,
+         0 => 1.6,
 
-         1 => 0.5,
+         1 => 1.6,
 
-         2 => 0.5,
+         2 => 1.6,
 
          3 => 0.4,
 
-         4 => 1.5,
+         4 => 1.1,
 
-         5 => 2.0,
+         5 => 0.95,
 
          6 => 15000,
 
@@ -1303,9 +1372,9 @@ $PLANETS_DATA = array(
 
          11 => 2.1,
 
-         12 => 1.74,
+         12 => 1.15,
 
-         13 => 3.2,
+         13 => 1.0,
          
          14 => 2
 
@@ -1315,17 +1384,17 @@ $PLANETS_DATA = array(
 
     'c' => array(
 
-        0 => 0.4,
+        0 => 1.5,
 
-        1 => 0.4,
+        1 => 1.5,
 
-        2 => 0.4,
+        2 => 1.5,
 
         3 => 0.4,
 
-        4 => 1.4,
+        4 => 1.0,
 
-        5 => 2.0,
+        5 => 0.75,
 
         6 => 15000,
 
@@ -1339,9 +1408,9 @@ $PLANETS_DATA = array(
 
         11 => 2.0,
 
-        12 => 1.74,
+        12 => 0.9,
 
-        13 => 3.2,
+        13 => 0.95,
         
         14 => 2
 
@@ -1351,17 +1420,17 @@ $PLANETS_DATA = array(
 
     'd' => array(
 
-        0 => 0.6,
+        0 => 1.65,
 
-        1 => 0.6,
+        1 => 1.65,
 
-        2 => 0.6,
+        2 => 1.65,
 
         3 => 0.3,
 
-        4 => 1.5,
+        4 => 1.05,
 
-        5 => 2.0,
+        5 => 0.8,
 
         6 => 15000,
 
@@ -1375,9 +1444,9 @@ $PLANETS_DATA = array(
 
         11 => 2.0,
 
-        12 => 1.74,
+        12 => 0.95,
 
-        13 => 3.2,
+        13 => 0.9,
         
         14 => 2
 
@@ -1409,11 +1478,11 @@ $PLANETS_DATA = array(
 
         10 => 1.3,
 
-        11 => 1.4,
+        11 => 1.2,
 
         12 => 1.25,
 
-        13 => 1.6,
+        13 => 1.5,
         
         14 => 4
 
@@ -1445,11 +1514,11 @@ $PLANETS_DATA = array(
 
          10 => 1.3,
 
-         11 => 1.4,
+         11 => 1.2,
 
          12 => 1.25,
 
-         13 => 1.6,
+         13 => 1.5,
         
         14 => 4
 
@@ -1481,11 +1550,11 @@ $PLANETS_DATA = array(
 
         10 => 1.3,
 
-        11 => 1.4,
+        11 => 1.2,
 
         12 => 1.25,
 
-        13 => 1.6,
+        13 => 1.5,
         
         14 => 4
 
@@ -1501,13 +1570,13 @@ $PLANETS_DATA = array(
 
         2 => 1.0,
 
-        3 => 0.5,
+        3 => 0.85,
 
-        4 => 1.4,
+        4 => 1.2,
 
-        5 => 2.0,
+        5 => 1.15,
 
-        6 => 44000,
+        6 => 60000,
 
         7 => 6000,
 
@@ -1515,13 +1584,13 @@ $PLANETS_DATA = array(
 
         9 => array(230, 230, 120),
 
-        10 => 1.2,
+        10 => 1.3,
 
-        11 => 1.8,
+        11 => 1.3,
 
-        12 => 1.56,
+        12 => 1.3,
 
-        13 => 2.4,
+        13 => 1.4,
         
         14 => 3
 
@@ -1609,11 +1678,11 @@ $PLANETS_DATA = array(
 
         2 => 1.4,
 
-        3 => 0.65,
+        3 => 0.95,
 
         4 => 1.15,
 
-        5 => 1.2,
+        5 => 1.15,
 
         6 => 40000,
 
@@ -1623,13 +1692,13 @@ $PLANETS_DATA = array(
 
         9 => array(180, 75, 50),
 
-        10 => 1.6,
+        10 => 1.2,
 
-        11 => 1.8,
+        11 => 1.2,
 
-        12 => 1.30,
+        12 => 1.2,
 
-        13 => 1.6,
+        13 => 1.1,
         
         14 => 4
 
@@ -1645,7 +1714,7 @@ $PLANETS_DATA = array(
 
         2 => 1.2,
 
-        3 => 0.6,
+        3 => 1.1,
 
         4 => 1.05,
 
@@ -1659,9 +1728,9 @@ $PLANETS_DATA = array(
 
         9 => array(10, 140, 30),
 
-        10 => 1.25,
+        10 => 1.2,
 
-        11 => 1.4,
+        11 => 1.2,
 
         12 => 1.0,
 
@@ -1717,13 +1786,13 @@ $PLANETS_DATA = array(
 
         2 => 1.2,
 
-        3 => 0.35,
+        3 => 0.75,
 
-        4 => 1.2,
+        4 => 1.4,
 
-        5 => 1.3,
+        5 => 1.25,
 
-        6 => 40000,
+        6 => 80000,
 
         7 => 6000,
 
@@ -1731,13 +1800,13 @@ $PLANETS_DATA = array(
 
         9 => array(200, 157, 106),
 
-        10 => 1.6,
+        10 => 1.4,
 
-        11 => 1.7,
+        11 => 1.4,
 
-        12 => 1.40,
+        12 => 1.4,
 
-        13 => 2.0,
+        13 => 1.6,
         
         14 => 3
 
@@ -1787,7 +1856,7 @@ $PLANETS_DATA = array(
 
         2 => 1.4,
 
-        3 => 0.8,
+        3 => 1.1,
 
         4 => 1.0,
 
@@ -1801,6 +1870,40 @@ $PLANETS_DATA = array(
 
         9 => array(180, 250, 250),
 
+        10 => 1,
+
+        11 => 1,
+
+        12 => 1.1,
+
+        13 => 1,
+        
+        14 => 4
+
+    ),
+
+   'q' => array(
+
+        0 => 1.1,
+
+        1 => 1.2,
+
+        2 => 1.4,
+
+        3 => 0.6,
+
+        4 => 1.15,
+
+        5 => 1.4,
+
+        6 => 290000,
+
+        7 => 25000,
+
+        8 => 7,
+
+        9 => array(0, 102, 0),
+
         10 => 1.1,
 
         11 => 1,
@@ -1813,7 +1916,6 @@ $PLANETS_DATA = array(
 
     ),
 
-
     's' => array(
 
         0 => 0.5,
@@ -1824,9 +1926,9 @@ $PLANETS_DATA = array(
 
         3 => 0.1,
 
-        4 => 3.0,
+        4 => 2.0,
 
-        5 => 3.0,
+        5 => 2.0,
 
         6 => 100000,
 
@@ -1853,15 +1955,15 @@ $PLANETS_DATA = array(
 
         0 => 0.5,
 
-        1 => 3.3,
+        1 => 3.4,
 
         2 => 0.5,
 
         3 => 0.1,
 
-        4 => 3.5,
+        4 => 2.0,
 
-        5 => 3.5,
+        5 => 2.0,
 
         6 => 100000,
 
@@ -1966,6 +2068,12 @@ $SETL_EVENTS = array(
     
     103  => array('Razziatori in attesa', false, 11),
     
+    104  => array('Cartello Ferengi', true, 5),
+    
+    105  => array('Cartello Ferengi', false, 5),
+    
+    107  => array('Cartello Oroniano', false, 7),
+    
     120  => array('Presidio: Multiculturalismo', 0),
     
     121  => array('Presidio: Supremazia Tecnologica', false, 1),
@@ -1974,7 +2082,7 @@ $SETL_EVENTS = array(
     
     123  => array('Presidio: Xenofobia', false, 3),
     
-    124  => array('Presidio: Controllore della Colonia', false, 4),
+    124  => array('Presidio: Difesa del mercato', false, 5),
     
     130  => array('Delegazione: Pluralismo', false, 0),
     
@@ -1985,6 +2093,8 @@ $SETL_EVENTS = array(
     133  => array('Delegazione: Propaganda Sovversiva', false, 3),
     
     134  => array('Delegazione: Denunciare Incompetenza', false, 4),
+    
+    135  => array('Delegazione: Corrompere i locali', false, 5),
     
     150  => array('Addestramento Avanzato', false, -1)
 

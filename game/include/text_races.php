@@ -239,10 +239,36 @@ $BUILDING_NAME = array(
 
     ),
 
-    // Q
+    // Orion Sydicate
 
     7 => array(
 
+		0 => 'Quartier generale',
+
+		1 => 'Cava di metalli',
+
+		2 => 'Cava di minerali',
+
+		3 => 'Cava di dilitio',
+
+		4 => 'Centrale energetica',
+
+		5 => 'Quartieri delle reclute',
+
+		6 => 'Spazioporto',
+
+		7 => 'Cantiere Navale',
+
+		8 => 'Centrale Spionaggio',
+
+		9 => 'Roccaforti',
+
+		10 => 'Centro ricettazione',
+
+		11 => 'Nascondigli',
+
+		12 => 'Trincee della milizia',        
+        
     ),
 
     // Breen
@@ -592,6 +618,18 @@ $UNIT_NAME = array(
 
     7 => array(
 
+        0 => 'Criminale',
+
+        1 => 'Caporale',
+
+        2 => 'Specialista',
+
+        3 => 'Comandante',
+
+        4 => 'Riparatore',
+
+        5 => 'Segaossa',
+        
     ),
 
 

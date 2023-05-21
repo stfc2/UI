@@ -178,8 +178,8 @@ $game->out('
 <a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT25")).' '.$BUILDING_NAME[$game->player['user_race']][11].'.\', CAPTION, \''.constant($game->sprache("TEXT26")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.constant($game->sprache("TEXT17")).':</b></a> <u>'.$game->planet['max_resources'].'</u><br>
 <a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT27")).'<br>'.$UNIT_NAME[''.$game->player['user_race'].''][0].' '.constant($game->sprache("TEXT28")).'<br>'.$UNIT_NAME[''.$game->player['user_race'].''][1].' '.constant($game->sprache("TEXT29")).'<br>'.$UNIT_NAME[''.$game->player['user_race'].''][2].' '.constant($game->sprache("TEXT30")).'<br>'.$UNIT_NAME[''.$game->player['user_race'].''][3].' '.constant($game->sprache("TEXT30")).'<br>'.$UNIT_NAME[''.$game->player['user_race'].''][4].' '.constant($game->sprache("TEXT30")).'<br>'.$UNIT_NAME[''.$game->player['user_race'].''][5].' '.constant($game->sprache("TEXT30")).'<br>\', CAPTION, \''.constant($game->sprache("TEXT31")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.constant($game->sprache("TEXT18")).':</b></a> <u>'.CalculateFreeUnits().'/'.$game->planet['max_units'].'</u><br>
 <a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT32")).'\', CAPTION, \''.constant($game->sprache("TEXT33")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.constant($game->sprache("TEXT19")).':</b></a> <u>'.round(($PLANETS_DATA[$game->planet['planet_type']][7]+($game->planet['research_1']*$RACE_DATA[$game->player['user_race']][20])*500)-$game->planet['resource_4'],0).'/'.$game->planet['max_worker'].'</u><br>
-<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT34")).'<br><br><u><b>'.$game->planet['building_13'].'</b> '.constant($game->sprache("TEXT35")).' <b>'.$MAX_BUILDING_LVL[$capital][12].'</b> '.constant($game->sprache("TEXT36")).'<br></u>'.SPLANETARY_DEFENSE_ATTACK.' '.constant($game->sprache("TEXT37")).'<br>'.SPLANETARY_DEFENSE_DEFENSE.' '.constant($game->sprache("TEXT38")).'<br><i>'.constant($game->sprache("TEXT39")).'</i>\', CAPTION, \''.constant($game->sprache("TEXT40")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.constant($game->sprache("TEXT20")).':</b></a> <u>'.$game->planet['building_13'].'x '.SPLANETARY_DEFENSE_ATTACK.' - '.SPLANETARY_DEFENSE_DEFENSE.'</u><br>
-<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT34")).'<br><br><u><b>'.$game->planet['building_10'].'</b> '.constant($game->sprache("TEXT35")).' <b>'.$MAX_BUILDING_LVL[$capital][9].'</b> '.constant($game->sprache("TEXT36")).'<br></u>'.PLANETARY_DEFENSE_ATTACK.' '.constant($game->sprache("TEXT37")).'<br>'.PLANETARY_DEFENSE_ATTACK2.' '.constant($game->sprache("TEXT41")).'<br>'.PLANETARY_DEFENSE_DEFENSE.' '.constant($game->sprache("TEXT38")).'<br><i>'.constant($game->sprache("TEXT39")).'</i>\', CAPTION, \''.constant($game->sprache("TEXT42")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.constant($game->sprache("TEXT21")).':</b></a> <u>'.$game->planet['building_10'].'x '.PLANETARY_DEFENSE_ATTACK.' - '.PLANETARY_DEFENSE_DEFENSE.'</u><br>
+<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT34")).'<br><br><u><b>'.$game->planet['building_13'].'</b> '.constant($game->sprache("TEXT35")).' <b>'.$MAX_BUILDING_LVL[$capital][12].'</b> '.constant($game->sprache("TEXT36")).'</u><br> '.constant($game->sprache("TEXT37")).' \', CAPTION, \''.constant($game->sprache("TEXT40")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.constant($game->sprache("TEXT20")).':</b></a> <b>'.$game->planet['building_13'].'</b><br>
+<a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT34")).'<br><br><u><b>'.$game->planet['building_10'].'</b> '.constant($game->sprache("TEXT35")).' <b>'.$MAX_BUILDING_LVL[$capital][9].'</b> '.constant($game->sprache("TEXT36")).'</u><br> '.constant($game->sprache("TEXT38")).' \', CAPTION, \''.constant($game->sprache("TEXT42")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.constant($game->sprache("TEXT21")).':</b></a> <b>'.$game->planet['building_10'].'</b><br>
 <a href="javascript:void(0);" onmouseover="return overlib(\''.constant($game->sprache("TEXT43")).'\', CAPTION, \''.constant($game->sprache("TEXT44")).'\', WIDTH, 400, '.OVERLIB_STANDARD.');" onmouseout="return nd();"><b>'.constant($game->sprache("TEXT22")).':</b></a> <u>'.$game->planet['planet_points'].'/'.$m_points.'</u>
 
 
@@ -347,19 +347,25 @@ $game->out('<fieldset><legend><span class="sub_caption2">'.constant($game->sprac
 
 $style = 'style="border-bottom-color:A0A0A0; border-bottom-style:dotted; border-bottom-width:1px"';
 
+for($i = 1; $i <= $NUM_BUILDING; $i++) {
+	$used_structure_points += pow($game->planet['building_'.$i],1.5);
+}
+
+$used_structure_points = round($used_structure_points);
+
 $game->out('
 		<tr>
 			<td '.$style.'>'.constant($game->sprache("TEXT59")).'
 			</td>
 			<td align=center '.$style.'>
-			<b>('.$game->planet['planet_available_points'].')</b>
+			<b>('.($game->planet['planet_available_points'] >= 677 ? '<i>No cap</i>' : $game->planet['planet_available_points']).')</b>
 			</td>
 		</tr>
 		<tr>
 			<td '.$style.'>'.constant($game->sprache("TEXT60")).'
 			</td>
 			<td align=center '.$style.'>
-			<b>('.$game->planet['planet_points'].')</b>
+			<b>('.$used_structure_points.')</b>
 			</td>
 		</tr>');
 

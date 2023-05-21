@@ -109,12 +109,26 @@ $loc_strings = array(
         'race9' => 'Hirogen',
         'race10' => 'Krenim',
         'race11' => 'Kazon',
-        'race0_desc' => 'This is the race with the greatest variety of ships.
-         The Federation ships have the most resistant shields among all the ships in the galaxy.
-         The rate of production of resources is in the media, as well as that of the troops.
-         In comparison to other races, the Federation has good technological research tools.<br>
-         The players of this race starts out with equal probability from the Alpha, Beta and
-         Gamma quadrants, hardly from the Delta quadrant.<br>
+        'race0_desc' => 'Federation. This is the race with the greatest
+          variety of vessels and almost the fastest. <br>
+          The technological level of the Federation is among the highest in the galaxy,
+          ensuring a substantial number of additional components from naval research, although
+          this process takes a long time. <br>
+          <br>
+          <B> Features: </ b> <br>
+          <Ul style = "list-style-type: square">
+             <Li> Planets colonisable: <b> 60 </ b> </ li>
+             <Li> Create independent colonies: <b> Yes </ b> </ li>
+             <Li> Exportable technologies:
+                 <Ul style = "list-style-type: square">
+                     <Li> <b> Environment </ b> </ li>
+                     <Li> <b> Medical </ b> </ li>
+                     <Li> <b> Automation </ b> </ li>
+                 </ Ul>
+             </ Li>
+             <Li> Development time: <b> Long </ b> </ li>
+          </ Ul>
+          <br>
          <i>Recommended for novice players.</i>',
         'race1_desc' => 'The Romulans have a strength in being able to build ships and infantry
          quickly and at low cost. They have a very low rate of production of dilithium and their
@@ -342,7 +356,7 @@ $loc_strings = array(
           noch mehr.<br> Nachdem deine Welt erstellt wurde, baue neue Kolonien um deine Macht zu steigern.
           Baue Handelsschiffe wie auch Kampfschiffe um das Universum mit anderen spielern zu erkunden und zu bek&auml;mpfen.
           Ernkunde bereiche im Universum in denen noch kein anderer jemals war!',
-        'fist_membership' => 'Mitglied der F&ouml;deration',
+        'fist_membership' => 'Site member of the Federazione Italiana Siti Trek',
 
         // login.php strings
         'login_title' => 'Star Trek: Frontline Combat 2 - Einloggen',
@@ -403,71 +417,218 @@ $loc_strings = array(
         'race9' => 'Hirogen',
         'race10' => 'Krenim',
         'race11' => 'Kazon',
-        'race0_desc' => 'Diese Rasse besitzt eine grosse Vielfalt an Schiffen.
-         Die F&ouml;derationsschiffe haben die meist resistenten Schilde unter allen Schiffen in der Galaxie.
-         Die Produktion von Ressourcen und Truppen ist im Durchschitt der Galaxie.
-         Im Vergleich zu anderen Rassen, hat der Verband gute technologische Forschungswerkzeuge.<br>
-         Die Spieler von dieser Rasse beginnt mit gleicher Wahrscheinlichkeit von dem Alpha, Beta und 
-		 Gamma Quadranten, kaum aus dem Delta-Quadranten.<br>
-         <i>Empfohlen f&uuml;r neue Spieler.</i>',
-        'race1_desc' => 'Die st&auml;rke der Romulaner ist, schnell und bei geringen Kosten
-         Schiffe und Truppen zu bauen. Sie haben eine sehr niedrige Rate der Produktion von Dilitium.
-         Schiffe und Truppen sind relativ schwach. Allerdings haben romulanische Schiffe offt die
-         m&ouml;glichkeit der Tarnung.<br>
-         Spieler dieser Rasse starten oft im Beta Quadrant, eher als im
-         Gamma oder Alpha Quadrant.<br>
-         <i>Empfohlen f&uuml;r neue Spieler.</i>',
-        'race2_desc' => 'Die Klingonen sind eine Krieger Rasse mit grossen Schiffen und Truppen.
-         Allerdings werden sie mit sehr hohen Bauzeiten f&uuml; Truppen und Planeten Strukturen.
-         Dar&uuml;ber hinaus ist die technische Forschung der Klingongen auch kein plus Punkt.<br>
-         Spieler dieser Rasse haben starten oft im Alpha Quadrant und eher selten
-         im Beta oder Gamma Quadrant.<br>
-         <i>Geeignet f&uuml;r neue Spieler.</i>',
-        'race3_desc' => 'Die Cardassianer, die Unterdr&uuml;cker und Ausbeuter von vielen Bev&ouml;lkerungsgruppen,
-         unfair und falsch in jeder Situation. Sie haben aggressive Soldaten aber sie verf&uuml;gen
-         nicht &uuml;ber eine Vielzahl von Schiffen. Ihre Schiffe sind eher schwach im Vergleich zu denen anderer Rassen.
-         Unter all den Rassen ist diese am aggressivsten.<br>
-         Die Spieler dieser Rasse starten meist vom Alpha oder Gamma Quadranten.<br>
-         <i>Die Cardassianer brauchen gute F&uuml;hrung und Aggressivit&auml;t, um erfolgreich gespielt zu werden.</i>',
-        'race4_desc' => 'Die Dominions haben schnelle und leistungsf&auml;hige Schiffe. Ihre Produktion ist die
-         langsamste aller Rassen. Die Bauzeit der planetarischen Strukturen ist im Vergleich zu den
-         anderen Rassen sehr hoch.<br>
-         Die Spieler von dieser Rasse starten im Wesentlichen aus dem Gamma-Quadranten.<br>
-         <i>Eine der schwierigsten Rassen zu spielen, definitiv nicht f&uuml;r neue Spieler empfohlen.</i>',
-        'race5_desc' => 'Die Ferengis sind die Exzellenz-Handels-Rasse von Star Trek.
-         Sie bevorzugen es, Geschäfte zu machen, sie haben schnelle Transporter und sehr schnelle Kolonieschiffe,
-         sie haben den g&uuml;nstigsten Preis der Rohstoffgewinnung und sind schnell, um Truppen und Planeten Strukturen
-         zu bauen, dies erm&ouml;glicht den Ferengi schneller als jede andere Rasse zu wachsen.
-         Ihre Schw&auml;che liegt in den schwachen Schlachtschiffen, weshalb die Spieler sich auf die 
-         wirtschaftlichen F&auml;higkeiten konzentrieren sollten, um Schiffe auf Auktionen zu kaufen.<br>Die Spieler dieser Rasse
-         haben die gleiche Chance, von jedem der vier Quadranten zu starten.<br>
-         <i>Eine Rasse extrem einfach zu spielen. Die Spieler m&uuml;ssen gut wirtschaften,
-         um vollen Nutzen aus den Ferengi zu holen.</i>',
+        'race0_desc' => 'Dies ist die Rasse mit dem Major
+          Eine Vielzahl von Schiffen, darunter die schnellsten aller Zeiten. <br>
+          Das technologische Niveau der F&ouml;deration geh&ouml;rt zu den h&ouml;chsten in der Galaxis,
+          Gew&auml;hrleistung einer gro&szlig;en Anzahl zus&auml;tzlicher zu durchsuchender Schiffskomponenten, auch wenn
+          Dieser Vorgang dauert lange. <br>
+          <br>
+          <b> Features: </b> <br>
+          <ul style = "list-style-type: square">
+             <li> Kolonisierbare Planeten: <b>50</b> </li>
+             <li> Erstellen Sie unabh&auml;ngige Kolonien: <b> Ja </b> </li>
+             <li> Exportierbare Technologien:
+                 <ul style = "list-style-type: square">
+                     <li> <b> Umwelt </b> </li>
+                     <li> <b> Medical </b> </li>
+                     <li> <b> Automation </b> </li>
+                 </ull>
+             </li>
+             <li> Entwicklungszeit: <b> lang </b> </li>
+          </ull>
+          <br>
+          <i> Empfohlen f&uuml;r Anf&auml;nger. </i>',
+        'race1_desc' => 'Die Romulaner machen ihre technologische &Uuml;berlegenheit
+         Hauptwaffe und haben die besten Verdeckungssysteme vorhanden
+         Galaxie. <br>
+         Das technologische Niveau der Romulaner geh&ouml;rt zu den h&ouml;chsten in der Galaxis,
+         Gew&auml;hrleistung einer gro&szlig;en Anzahl zus&auml;tzlicher zu durchsuchender Schiffskomponenten, auch wenn
+         Dieser Vorgang dauert lange. <br>
+         <br>
+         <b> Features: </b> <br>
+         <ul style = "list-style-type: square">
+            <li> Kolonisierbare Planeten: <b>50</b> </li>
+            <li> Erstellen Sie unabh&auml;ngige Kolonien: <b> Ja </b> </li>
+            <li> Exportierbare Technologien:
+                <ul style = "list-style-type: square">
+                    <li> <b> Umwelt </b> </li>
+                    <li> <b> Medical </b> </li>
+                    <li> <b> Automation </b> </li>
+                </ul>
+            </li>
+            <li> Entwicklungszeit: <b> lang </b> </li>
+         </ul>
+         <br>
+         <i> Empfohlen f&uuml;r Anf&auml;nger. </i>',
+        'race2_desc' => 'Die Klingonen sind jedoch eine sehr tapfere Krieger-Rasse.
+         Technologisch sind sie nicht die besten auf dem Gebiet. Ihre Schiffe sind klein und niedrig
+         Kosten und mit ausgezeichneter Ausr&uuml;stung ausgestattet, aber eher langsam in der Bewegung zwischen den Sternen.<br>
+         Das technologische Niveau der Klingonen ist eher gering aber garantiert
+         Es m&uuml;ssen jedoch eine ganze Reihe zus&auml;tzlicher Schiffskomponenten rechtzeitig durchsucht werden
+         relativ kurz.<br>
+         <br>
+         <b> Features: </b> <br>
+         <ul style = "list-style-type: square">
+            <li> Kolonisierbare Planeten: <b> 50 </b> </li>
+            <li> Erstellen Sie unabh&auml;ngige Kolonien: <b> Ja </b> </li>
+            <li> Exportierbare Technologien:
+                <ul style = "list-style-type: square">
+                    <li> <b> Umwelt </b> </li>
+                    <li> <b> Medical </b> </li>
+                    <li> <b> Extraktion </b> </li>
+                </ul>
+            </li>
+            <li> Entwicklungszeiten: <b> kurz </b> </li>
+         </ul>
+         <br>
+         <i> Durchschnittliches Niveau der Herausforderung, braucht wenig Zeit, um sich zu entwickeln. </i>',
+        'race3_desc' => 'Die Cardassianer sind eine aggressive und geniale Rasse mit einer
+         starke Neigung zur T&auml;uschung. <br>
+         Sie haben eine begrenzte Auswahl an R&uuml;mpfen mit einer angemessenen Bewaffnung
+         Das technologische Niveau der Cardassianer ist eher gering aber garantiert
+         Es m&uuml;ssen jedoch eine ganze Reihe zus&auml;tzlicher Schiffskomponenten rechtzeitig durchsucht werden
+         relativ kurz. <br>
+         <br>
+         <b> Features: </b> <br>
+         <ul style = "list-style-type: square">
+            <li> Kolonisierbare Planeten: <b> 50 </b> </li>
+            <li> Erstellen Sie unabh&auml;ngige Kolonien: <b> Ja </b> </li>
+            <li> Exportierbare Technologien:
+                <ul style = "list-style-type: square">
+                    <li> <b> Umwelt </b> </li>
+                    <li> <b> Medical </b> </li>
+                    <li> <b> Extraktion </b> </li>
+                </ul>
+            </li>
+            <li> Entwicklungszeiten: <b> kurz </b> </li>
+         </ul>
+         <br>
+         <i> Die Cardassianer brauchen eine gute Anwendung und Aggressivit&auml;t f&uuml;r
+         erfolgreich gespielt werden. </i>',
+        'race4_desc' => 'Die Domain hat sehr m&auml;chtige Schiffe, wenn auch nicht besonders
+         schnell. <br>
+         Ihr technologisches Niveau ist vielleicht das h&ouml;chste in der Galaxis und bietet
+         eine hohe Anzahl von Schiffskomponenten, die in sehr langer Zeit durchsucht werden m&uuml;ssen
+         <br>
+         <b> Features: </b> <br>
+         <ul style = "list-style-type: square">
+            <li> Kolonisierbare Planeten: <b> 50 </b> </li>
+            <li> Erstellen Sie unabh&auml;ngige Kolonien: <b> Nein </b> </li>
+            <li> Exportierbare Technologien:
+                <ul style = "list-style-type: square">
+                    <li> <b> Umwelt </b> </li>
+                    <li> <b> Medical </b> </li>
+                    <li> <b> Verteidigung </b> </li>
+                    <li> <b> Automation </b> </li>
+                    <li> <b> Extraktion </b> </li>
+                </ul>
+            </li>
+            <li> Entwicklungszeit: <b> Sehr lange </b> </li>
+         </ul>
+         <br>
+         <i> Eines der am schwersten zu spielenden Rennen, definitiv nicht zu empfehlen f&uuml;r
+         Anf&auml;nger. </i>',
+        'race5_desc' => 'Die Ferengi sind die Handelsrasse schlechthin in Star
+         Trek. Sie bevorzugen es, Gesch&auml;fte zu machen, haben einen schnelleren Transport und
+         Sehr schnelle Kolonieschiffe, jedoch eine komplexe Rasse zum Spielen und R&uuml;hmen
+         die geringstm&ouml;gliche Vielfalt an baubaren R&uuml;mpfen. <br>
+         Ihr technologisches Niveau ist durchschnittlich und liefert die wenigen vorhandenen R&uuml;mpfe
+         Eine gute Anzahl von technologischen Komponenten, die in durchschnittlichen Zeiten gesucht werden m&uuml;ssen
+         <br>
+         <b> Features: </b> <br>
+         <ul style = "list-style-type: square">
+            <li> Kolonisierbare Planeten: <b> 50 </b> </li>
+            <li> Erstellen Sie unabhängige Kolonien: <b> Ja </b> </li>
+            <li> Exportierbare Technologien:
+                <ul style = "list-style-type: square">
+                    <li> <b> Medical </b> </li>
+                    <li> <b> Automation </b> </li>
+                    <li> <b> Extraktion </b> </li>
+                </ul>
+            </li>
+            <li> Entwicklungszeit: <b> Medi </b> </li>
+         </ul>
+         <br>
+         <i> Eine extrem einfache Rasse in Bezug auf die Verwaltung zu spielen. Es braucht Bedeutung
+         für Unternehmen, um die Ferengi voll auszunutzen. </i>',
         'race6_desc' => 'Borg',
         'race7_desc' => 'Q',
-        'race8_desc' => 'Die Breen sind eine sehr starke Rasse, mit leistungsstarken, aber recht teuren
-         Schiffen und Soldaten. Ihre Ressourcen Extraktionsrate ist relativ gering, und dies kann zum
-         Wirtschaftsproblem werden.  Sie haben auch die niedrigste Auswahl von Schiffen zur Verf&uuml;gung,
-         jedoch sollten sie nie untersch&auml;tzt werden. Die Bauzeit der Planeten Strukturen sind 
-         relativ hoch.<br>Die Spielerdieser Rasse beginnen mit einer Pr&auml;valenz
-         im Gamma Quadrant.<br>
-         <i>Eine ziemlich schwer zu spielende Rasse, mit wenig Auswahl an Schiffen. Geeignet f&uuml;r
-         Spieler mit einer Menge prktischem Sinn.</i>',
-        'race9_desc' => 'Der Hirogen ist eine Rasse sehr schwierig zu spielen. Ihr Vorteil kommt
-         sp&auml;ter im Spiel, aber sie m&uuml;ssen mit dem Mangel an Vielfalt von Schiffen k&auml;mpfen.
-         Die Hirogen haben ausgezeichnete Bodentruppen mit der besten Verteidigungskapazit&auml;t der Anlagen.<br>
-         Die Spieler dieser Rasse k&ouml;nnen mit gleicher Wahrscheinlichkeit von jedem Quadrant starten.<br>
-         <i>Komplexe Rasse, f&uuml;r erfahrenen Spieler und diejenigen die eine Herausforderung suchen.</i>',
+        'race8_desc' => 'Die Breen sind eine Rasse, die einiges an Schwierigkeit bietet
+         des Spiels. <br>
+         Ihre Truppen stimmen mit den Besten der Galaxis &uuml;berein und sind relativ gut aufgestellt
+         leicht zu trainieren. Breen-Schiffe geh&ouml;ren aber zu den wendigsten in der Galaxis
+         Es fehlt die Schildtechnologie, um sich zu &uuml;bertreffen
+         biotechnologische R&uuml;stung, die sich nach jedem Kampf selbst heilt. <br>
+         Ihr technologisches Niveau geh&ouml;rt zu den h&ouml;chsten und bietet ein
+         hohe Anzahl von Schiffskomponenten, die durchschnittlich durchsucht werden m&uuml;ssen. <br>
+         <br>
+         <b> Features: </b> <br>
+         <ul style = "list-style-type: square">
+            <li> Kolonisierbare Planeten: <b> 50 </b> </li>
+            <li> Erstellen Sie unabh&auml;ngige Kolonien: <b> Nein </b> </li>
+            <li> Exportierbare Technologien:
+                <ul style = "list-style-type: square">
+                    <li> <b> Umwelt </b> </li>
+                    <li> <b> Medical </b> </li>
+                    <li> <b> Verteidigung </b> </li>
+                    <li> <b> Automation </b> </li>
+                    <li> <b> Extraktion </b> </li>
+                </ul>
+            </li>
+            <li> Entwicklungszeit: <b> Medi </b> </li>
+         </ul>
+         <br>
+         <i> Ein ziemlich schwieriges Rennen mit ganz besonderen Schiffen zu spielen </i>',
+        'race9_desc' => 'Hirogene sind eine sehr schwer zu spielende Rasse.
+         Ihr Vorteil liegt im fortgeschrittenen Spiel, aber sie haben mit den Kleinen zu k&auml;mpfen
+         Vielzahl von Schiffen. Die Hirogene haben ausgezeichnete Bodentruppen
+         mit der besten Verteidigungskapazit&auml;t seiner Strukturen. <br>
+         Ihr technologisches Niveau ist vielleicht das h&ouml;chste in der Galaxis und bietet
+         eine hohe Anzahl von Schiffskomponenten, die in sehr langer Zeit durchsucht werden m&uuml;ssen
+         <br>
+         <b> Features: </b> <br>
+         <ul style = "list-style-type: square">
+            <li> Kolonisierbare Planeten: <b> 50 </b> </li>
+            <li> Erstellen Sie unabh&auml;ngige Kolonien: <b> Nein </b> </li>
+            <li> Exportierbare Technologien:
+                <ul style = "list-style-type: square">
+                    <li> <b> Verteidigung </b> </li>
+                    <li> <b> Automation </b> </li>
+                    <li> <b> Extraktion </b> </li>
+                </ul>
+            </li>
+            <li> Entwicklungszeit: <b> Sehr lange </b> </li>
+         </ul>
+         <br>
+         <i> Komplex zu spielen, f&uuml;r die erfahrenen oder f&uuml;r wen angezeigt
+         will die schwierigste Herausforderung stellen. </i>',
         'race10_desc' => 'Krenim haben keine besonders starken Truppen, aber ihre grosser Vorteil ist,
          Nutzung der Technologie. Auf dem Gebiet der technologischen Forschung sind Krenim
          weiter als alle anderen Rassen. Auch die Produktion der Truppen ist recht schnell.<br>
          Die Spieler von dieser Rasse beginnen im Wesentlichen im Delta Quadrant.<br>
          <i>Rasse einfach zu spielen aber doch nicht leicht. Eine durchschnitt Herausforderung.</i>',
-        'race11_desc' => 'Kazon geh&ouml;ren zu den Kriegerrassen, vor allem auf dem Boden Schlachtfeld.
-         Sie sind sehr schnell, im Truppen produzieren, dass ist ihre St&auml;rke. Die kleinen Kazon
-         Schiffe sind keine Bedrohung f&uuml;r andere Rassen, erst sp&auml;ter erreichen sie ihr volles Potential.<br>
-         Die Spieler dieser Rasse starten im Wesentlichen im Delta Quadrant.<br>
-         <i>F&uuml;r durchschnittliche Spieler empfohlen.</i>',
+        'race11_desc' => 'Die Kazon geh&ouml;ren zu den Kriegerrassen, besonders im Feld
+         Bodenkampf. Sie produzieren sehr schnell Truppen, ihre St&auml;rke.
+         Kleinere Kazon-Schiffe sind keine Bedrohung f&uuml;r andere V&ouml;lker
+         anschlie&szlig;end erreichen sie ihr volles Potenzial. <br>
+         Ihr technologisches Niveau ist das niedrigste in der Galaxis und bietet
+         Eine begrenzte Anzahl von Schiffskomponenten, die in k&uuml;rzester Zeit durchsucht werden k&ouml;nnen. <br>
+         <br>
+         <b> Features: </b> <br>
+         <ul style = "list-style-type: square">
+            <li> Kolonisierbare Planeten: <b> 50 </b> </li>
+            <li> Erstellen Sie unabh&auml;ngige Kolonien: <b> Nein </b> </li>
+            <li> Exportierbare Technologien:
+                <ul style = "list-style-type: square">
+                    <li> <b> Verteidigung </b> </li>
+                    <li> <b> Automation </b> </li>
+                    <li> <b> Extraktion </b> </li>
+                </ul>
+            </li>
+            <li> Entwicklungszeit: <b> Sehr kurz </b> </li>
+         </ul>
+         <br>
+         <i> Empfohlen für Anf&auml;nger. </i>',
         'personal_info' => 'Personen Informationen (optional)',
         'birthdate' => 'Gerburtstag:',
         'birthdate_format' => 'Tag.Monat.Jahr',
@@ -705,69 +866,188 @@ $loc_strings = array(
         'race10' => 'Krenim',
         'race11' => 'Kazon',
         'race0_desc' => 'Federazione. Questa &egrave; la razza con la maggiore
-         variet&agrave; di navi. Le navi della Federazione hanno gli scudi pi&ugrave;
-         resistenti tra tutte le navi della Galassia. Il tasso di produzione delle
-         risorse &egrave; nella media, cosi come quello delle truppe. In paragone alle
-         altre specie, la Federazione gode di buoni strumenti di ricerca tecnologica.<br>
-         I giocatori di questa specie partono con pari probabilit&agrave; dal Quadrante
-         Alfa, Beta e Gamma, difficilmente dal Delta.<br>
+         variet&agrave; di navi, tra le pi&ugrave; veloci in assoluto.<br>
+         Il livello tecnologico della Federazione &egrave; tra i pi&ugrave; alti nella galassia,
+         garantendo un cospicuo numero di componenti navali aggiuntivi da ricercare, anche se
+         tale processo richiede molto tempo.<br>
+         <br>
+         <b>Caratteristiche:</b><br>
+         <ul style="list-style-type:square">
+            <li>Pianeti colonizzabili: <b>50</b></li>
+            <li>Creare Colonie indipendenti: <b>Si</b></li>
+            <li>Tecnologie Esportabili:
+                <ul style="list-style-type:square">
+                    <li><b>Ambiente</b></li>
+                    <li><b>Medicale</b></li>
+                    <li><b>Automazione</b></li>
+                </ul>
+            </li>
+            <li>Tempi di sviluppo: <b>Lunghi</b></li>
+         </ul>
+         <br>
          <i>Consigliata ai giocatori alle prime armi.</i>',
-        'race1_desc' => 'I Romulani hanno un punto di forza nel poter costruire navi e
-         fanti velocemente e a basso costo. Hanno un tasso di produzione di dilitio
-         bassissimo e dispongono di vascelli e soldati relativamente deboli. Tuttavia,
-         le navi Romulane dispongono di un ottima capacit&agrave; di occultamento.<br>
-         I giocatori di questa specie partono con maggior probabilit&agrave; dal Quadrante
-         Beta piuttosto che dal Gamma ed Alfa.<br>
+        'race1_desc' => 'I Romulani fanno della superiorit&agrave; tecnologica la loro
+         arma principale e hanno a disposizione i sistemi di occultamento migliori nella
+         galassia.<br>
+         Il livello tecnologico dei Romulani &egrave; tra i pi&ugrave; alti nella galassia,
+         garantendo un cospicuo numero di componenti navali aggiuntivi da ricercare, anche se
+         tale processo richiede molto tempo.<br>
+         <br>
+         <b>Caratteristiche:</b><br>
+         <ul style="list-style-type:square">
+            <li>Pianeti colonizzabili: <b>50</b></li>
+            <li>Creare Colonie indipendenti: <b>Si</b></li>
+            <li>Tecnologie Esportabili:
+                <ul style="list-style-type:square">
+                    <li><b>Ambiente</b></li>
+                    <li><b>Medicale</b></li>
+                    <li><b>Automazione</b></li>
+                </ul>
+            </li>
+            <li>Tempi di sviluppo: <b>Lunghi</b></li>
+         </ul>
+         <br>         
          <i>Consigliata ai giocatori alle prime armi.</i>',
-        'race2_desc' => 'I Klingon sono una razza guerriera con ottime navi e soldati.
-         Tuttavia sono penalizzati da tempi di costruzione per le truppe e per le
-         strutture planetarie molto alti. Inoltre, la ricerca tecnologica non rappresenta
-         un punto a favore dei Klingon.<br>I giocatori di questa razza partono con buone
-         probabilit&agrave; dal Quadrante Alfa, in misura minore dal Beta e Gamma.<br>
-         <i>Consigliata ai giocatori alle prime armi.</i>',
-        'race3_desc' => 'I Cardassiani, gli oppressori e sfruttatori di tanti popoli,
-         sleali e falsi in ogni situazione. Possiedono soldati aggressivi ma non
-         dispongono di una grande variet&agrave; di navi. Le loro navi sono piuttosto
-         deboli in rapporto a quelle delle altre razze. Tra tutte, &egrave; la razza
-         pi&ugrave; aggressiva.<br>I giocatori di questa razza iniziano a giocare con
-         maggior probabilit&agrave; dal quadrante Alfa e Gamma.<br>
+        'race2_desc' => 'I Klingon sono una razza guerriera molto valorosa anche se,
+         tecnologicamente, non sono i migliori sul campo. Le loro navi sono piccole, a basso
+         costo e dotate di ottimo armamento ma piuttosto lente nello spostarsi tra le stelle.<br>
+         Il livello tecnologico dei Klingon &egrave; piuttosto basso ma garantisce
+         comunque un discreto numero di componenti navali aggiuntivi da ricercare in tempi
+         relativamente brevi.<br>
+         <br>
+         <b>Caratteristiche:</b><br>
+         <ul style="list-style-type:square">
+            <li>Pianeti colonizzabili: <b>50</b></li>
+            <li>Creare Colonie indipendenti: <b>Si</b></li>
+            <li>Tecnologie Esportabili:
+                <ul style="list-style-type:square">
+                    <li><b>Ambiente</b></li>
+                    <li><b>Medicale</b></li>
+                    <li><b>Estrazione</b></li>
+                </ul>
+            </li>
+            <li>Tempi di sviluppo: <b>Brevi</b></li>
+         </ul>
+         <br>
+         <i>Livello medio di sfida, richiede poco tempo per svilupparsi.</i>',
+        'race3_desc' => 'I Cardassiani sono una razza aggressiva ed ingegnosa, con una
+         spiccata propensione al sotterfugio.<br>
+         Hanno una limitata selezione di scafi con un discreto armamento<br>
+         Il livello tecnologico dei Cardassiani &egrave; piuttosto basso ma garantisce
+         comunque un discreto numero di componenti navali aggiuntivi da ricercare in tempi
+         relativamente brevi.<br> 
+         <br>
+         <b>Caratteristiche:</b><br>
+         <ul style="list-style-type:square">
+            <li>Pianeti colonizzabili: <b>50</b></li>
+            <li>Creare Colonie indipendenti: <b>Si</b></li>
+            <li>Tecnologie Esportabili:
+                <ul style="list-style-type:square">
+                    <li><b>Ambiente</b></li>
+                    <li><b>Medicale</b></li>
+                    <li><b>Estrazione</b></li>
+                </ul>
+            </li>
+            <li>Tempi di sviluppo: <b>Brevi</b></li>
+         </ul>
+         <br>         
          <i>I Cardassiani necessitano di buona applicazione ed aggressivit&agrave; per
          essere giocati con successo.</i>',
-        'race4_desc' => 'Il Dominio dispone di navi veloci e potenti. La loro
-         capacit&agrave; estrattiva &egrave; la pi&ugrave; bassa tra tutte le razze. I
-         tempi di costruzione delle strutture planetarie, in paragone alle altre specie,
-         &egrave; piuttosto alto.<br>I giocatori di questa razza partono principalmente
-         dal Quadrante Gamma.<br>
+        'race4_desc' => 'Il Dominio dispone di navi molto potenti anche se non particolarmente
+         veloci.<br>
+         Il loro livello tecnologico &egrave; forse il pi&ugrave; alto nella galassia e fornisce
+         un elevato numero di componenti navi da ricercare in tempi molto lunghi.<br>
+         <br>
+         <b>Caratteristiche:</b><br>
+         <ul style="list-style-type:square">
+            <li>Pianeti colonizzabili: <b>50</b></li>
+            <li>Creare Colonie indipendenti: <b>No</b></li>
+            <li>Tecnologie Esportabili:
+                <ul style="list-style-type:square">
+                    <li><b>Ambiente</b></li>
+                    <li><b>Medicale</b></li>
+                    <li><b>Difesa</b></li>
+                    <li><b>Automazione</b></li>
+                    <li><b>Estrazione</b></li>
+                </ul>
+            </li>
+            <li>Tempi di sviluppo: <b>Molto lunghi</b></li>
+         </ul>         
+         <br>
          <i>Una delle razze pi&ugrave; dure da giocare, decisamente sconsigliata ai
          giocatori alle prime armi.</i>',
         'race5_desc' => 'I Ferengi sono la razza commerciante per eccellenza in Star
          Trek. Preferiscono fare commercio, dispongono dei trasporti pi&ugrave; veloci e
-         navi colonia molto rapide, hanno il miglior tasso di estrazione di risorse e sono
-         velocissimi nel costruire truppe e strutture planetarie, tutto questo permette al
-         Ferengi di espandersi pi&ugrave; velocemente di qualsiasi altra razza. La loro
-         debolezza consiste nelle loro scadenti navi da battaglia, motivo per cui il
-         giocatore dovrebbe concentrare tutta la sua capacit&agrave; affaristica nel
-         comprare navi alle aste.<br>I giocatori di questa razza hanno pari
-         possibilit&agrave; di parte da un qualsiasi dei quattro quadranti.<br>
+         navi colonia molto rapide, tuttavia sono una razza complessa da giocare e vantano
+         la minore variet&agrave; possibile di scafi costruibili.<br>
+         Il loro livello tecnologico &egrave; nella media e fornisce ai pochi scafi a disposizione
+         un buon numero di componenti tecnologici da ricercare in tempi medi.<br>
+         <br>
+         <b>Caratteristiche:</b><br>
+         <ul style="list-style-type:square">
+            <li>Pianeti colonizzabili: <b>50</b></li>
+            <li>Creare Colonie indipendenti: <b>Si</b></li>
+            <li>Tecnologie Esportabili:
+                <ul style="list-style-type:square">
+                    <li><b>Medicale</b></li>
+                    <li><b>Automazione</b></li>
+                    <li><b>Estrazione</b></li>
+                </ul>
+            </li>
+            <li>Tempi di sviluppo: <b>Medi</b></li>
+         </ul>         
+         <br>         
          <i>Una razza estremamente facile da giocare in termini di gestione. Occorre senso
          per gli affari per sfruttare a fondo i Ferengi.</i>',
         'race6_desc' => 'Borg',
         'race7_desc' => 'Q',
-        'race8_desc' => 'I Breen sono una specie molto forte, con navi e soldati potenti
-         ma piuttosto costosi. Il loro tasso di estrazione risorse &egrave; piuttosto
-         basso e questo pu&ograve; portare a qualche problema economico. Dispongono anche
-         della minor variet&agrave; di navi a disposizione, tuttavia le poche esistenti
-         non vanno assolutamente sottovalutate. Il tempo di costruzione delle strutture
-         planetarie &egrave; relativamente alto.<br>I giocatori di questa razza partono
-         con prevalenza dal Quadrante Gamma.<br>
-         <i>Una razza piuttosto difficile da giocare e con poca variet&agrave; di navi.
-         Indicata per i giocatori con molto senso pratico.</i>',
+        'race8_desc' => 'I Breen sono una razza che offre una discreta difficolt&agrave;
+         di gioco.<br>
+         Le loro truppe sono in linea con le migliori della galassia e relativamente
+         semplici da addestrare. Le navi Breen sono tra le pi&ugrave; agili della galassia ma 
+         difettano nella tecnologia degli scudi per eccellere in quella delle 
+         corazze biotecnologiche capaci di autorigenerarsi dopo ogni scontro.<br>
+         Il loro livello tecnologico &egrave; tra i pi&ugrave; alti e fornisce un
+         elevato numero di componenti navi da ricercare in tempi medi.<br>
+         <br>
+         <b>Caratteristiche:</b><br>
+         <ul style="list-style-type:square">
+            <li>Pianeti colonizzabili: <b>50</b></li>
+            <li>Creare Colonie indipendenti: <b>No</b></li>
+            <li>Tecnologie Esportabili:
+                <ul style="list-style-type:square">
+                    <li><b>Ambiente</b></li>
+                    <li><b>Medicale</b></li>
+                    <li><b>Difesa</b></li>
+                    <li><b>Automazione</b></li>
+                    <li><b>Estrazione</b></li>
+                </ul>
+            </li>
+            <li>Tempi di sviluppo: <b>Medi</b></li>
+         </ul>         
+         <br>         
+         <i>Una razza piuttosto difficile da giocare con navi molto particolari</i>',
         'race9_desc' => 'Gli Hirogeni sono una razza molto difficile da giocare.
          Il loro vantaggio arriva a gioco avanzato, ma devono lottare con la poca
          variet&agrave; di navi. Gli Hirogeni dispongono di eccellenti truppe di terra
          con la migliore capacit&agrave; difensiva delle proprie strutture.<br>
-         I giocatori di questa razza possono iniziare con pari probabilit&agrave; da
-         qualsiasi quadrante della galassia.<br>
+         Il loro livello tecnologico &egrave; forse il pi&ugrave; alto nella galassia e fornisce
+         un elevato numero di componenti navi da ricercare in tempi molto lunghi.<br>         
+         <br>
+         <b>Caratteristiche:</b><br>
+         <ul style="list-style-type:square">
+            <li>Pianeti colonizzabili: <b>50</b></li>
+            <li>Creare Colonie indipendenti: <b>No</b></li>
+            <li>Tecnologie Esportabili:
+                <ul style="list-style-type:square">
+                    <li><b>Difesa</b></li>
+                    <li><b>Automazione</b></li>
+                    <li><b>Estrazione</b></li>
+                </ul>
+            </li>
+            <li>Tempi di sviluppo: <b>Molto lunghi</b></li>
+         </ul>         
+         <br>         
          <i>Razza complessa da giocare, indicata per i pi&ugrave; esperti o per chi
          vuole affrontare la sfida pi&ugrave; difficile.</i>',
         'race10_desc' => 'I Krenim non possiedono truppe particolarmente forti ma hanno
@@ -779,9 +1059,25 @@ $loc_strings = array(
         'race11_desc' => 'I Kazon appartengono alle razze guerriere, specialmente sul campo
          di battaglia a terra. Sono molto rapidi nel produrre truppe, il loro punto di forza.
          Le navi Kazon pi&ugrave; piccole non sono una minaccia per le altre razze, solo
-         successivamente giungono al loro pieno potenziale.<br>I giocatori di questa razza
-         iniziano principalmente dal Quadrante Delta.<br>
-         <i>Consigliata ai giocatori di livello medio.</i>',
+         successivamente giungono al loro pieno potenziale.<br>
+         Il loro livello tecnologico &egrave; il pi&ugrave; basso nella galassia e fornisce
+         un limitato numero di componenti navi da ricercare in tempi molto brevi.<br>         
+         <br>
+         <b>Caratteristiche:</b><br>
+         <ul style="list-style-type:square">
+            <li>Pianeti colonizzabili: <b>50</b></li>
+            <li>Creare Colonie indipendenti: <b>No</b></li>
+            <li>Tecnologie Esportabili:
+                <ul style="list-style-type:square">
+                    <li><b>Difesa</b></li>
+                    <li><b>Automazione</b></li>
+                    <li><b>Estrazione</b></li>
+                </ul>
+            </li>
+            <li>Tempi di sviluppo: <b>Molto brevi</b></li>
+         </ul>         
+         <br>         
+         <i>Consigliata ai giocatori alle prime armi.</i>',
         'personal_info' => 'Informazioni personali (opzionali)',
         'birthdate' => 'Data di nascita:',
         'birthdate_format' => 'Giorno.Mese.Anno',

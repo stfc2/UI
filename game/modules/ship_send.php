@@ -55,8 +55,9 @@ if(empty($fleet_ids)) {
     message(NOTICE, constant($game->sprache("TEXT2")));
 }
 
-$sql = 'SELECT *
+$sql = 'SELECT ship_fleets.*, tact_mov_1, officer_inter_mod, officer_warp_mod
         FROM ship_fleets
+        LEFT JOIN officers USING (fleet_id)
         WHERE fleet_id IN ('.implode(',', $fleet_ids).')';
 
 if(!$q_fleets = $db->query($sql)) {
@@ -89,6 +90,42 @@ if($n_fleets == 0) {
     message(NOTICE, constant($game->sprache("TEXT5")));
 }
 
+if($n_fleets == 1 && isset($fleets[0]['tact_mov_1']) && $fleets[0]['tact_mov_1'] == 1) {
+    $start_mask = true;
+    $warp_mod = $fleets[0]['officer_warp_mod'];
+}
+else {
+    $start_mask = false;
+    $warp_mod = 0;
+}
+
+if($n_fleets == 1 && isset($fleets[0]['officer_inter_mod']) && $fleets[0]['officer_inter_mod'] == 1) {
+    $is_fast = true;
+    $inter_mod = 1;
+}
+else {
+    $is_fast = false;
+    $inter_mod = 0;
+}
+
+if($n_fleets == 1 && isset($fleets[0]['officer_warp_mod']) && $fleets[0]['officer_warp_mod'] > 0) {
+    $is_warp_fast = true;
+    $warp_mod = $fleets[0]['officer_warp_mod'];
+}
+else {
+    $is_warp_fast = false;
+    $warp_mod = 0;
+}
+
+$is_undiscloused_id = false;
+$undisclosed_id = 0;
+
+if($n_fleets == 1 && $fleets[0]['user_id'] != $fleets[0]['owner_id']) {
+    $is_undiscloused_id = true;
+    $undisclosed_id = $fleets[0]['user_id'];
+}
+
+    
 // #############################################################################
 // Search target
 
@@ -164,7 +201,7 @@ if($start == $game->planet['planet_id']) {
 }
 else {
     $sql = 'SELECT p.planet_id, p.planet_name, p.system_id, p.sector_id, p.planet_distance_id,
-                   s.system_x, s.system_y, s.system_global_x, s.system_global_y,
+                   s.system_x, s.system_y, s.system_global_x, s.system_global_y, s.system_startype,
                    u.user_id, u.user_name, u.user_attack_protection, u.user_vacation_start, u.user_vacation_end
             FROM (planets p, starsystems s)
             LEFT JOIN (user u) ON u.user_id = p.planet_owner
@@ -209,7 +246,7 @@ if($dest == $game->planet['planet_id']) {
 }
 else {
     $sql = 'SELECT p.planet_id, p.planet_name, p.system_id, p.sector_id, p.planet_distance_id,
-                   s.system_x, s.system_y, s.system_global_x, s.system_global_y,
+                   s.system_x, s.system_y, s.system_global_x, s.system_global_y, s.system_startype,
                    u.user_id, u.user_name, u.user_attack_protection, u.user_vacation_start, u.user_vacation_end
             FROM (planets p, starsystems s)
             LEFT JOIN (user u) ON u.user_id = p.planet_owner
@@ -232,19 +269,16 @@ else {
         $dest_planet['user_vacation_end'] = 0;
     }
 
-    $dest_planet['system_is_known'] = false;
-    // 11/11/13 - DC: New FoW Implementation
-    $sql = 'SELECT timestamp FROM starsystems_details
-            WHERE system_id = '.$dest_planet['system_id'].'
-            AND user_id = '.$game->player['user_id'];
-    $_temp = $db->queryrow($sql);
-    if(isset($_temp['timestamp']) && !empty($_temp['timestamp'])) $dest_planet['system_is_known'] = true;
+    $dest_planet['system_is_known'] = $game->is_user_explored($dest_planet['system_id']);
   
-    $dest_planet['system_is_allowed'] = $game->is_system_allowed($dest_planet['system_id']);
+    $dest_planet['system_is_allowed'] = $game->player['user_id'] == $dest_planet['planet_owner'] || 
+                                        $dest_planet['planet_owner'] == INDEPENDENT_USERID || $dest_planet['planet_owner'] == ORION_USERID || 
+                                        $game->is_system_allowed($dest_planet['system_id']);
     
-    $dest_planet['action_is_allowed'] = $game->is_action_allowed($dest_planet['planet_id']);
+    $dest_planet['action_is_allowed'] = $dest_planet['planet_owner'] == INDEPENDENT_USERID || $dest_planet['planet_owner'] == ORION_USERID || 
+                                        $game->is_action_allowed($dest_planet['planet_id']);
 
-    if(!$dest_planet['system_is_allowed']) {
+    if($dest_planet['system_is_known'] && !$dest_planet['system_is_allowed']) {
         message(NOTICE, constant($game->sprache("TEXT69")));
     }
 }
@@ -271,7 +305,7 @@ if( ($dest_planet['user_vacation_start'] <= $ACTUAL_TICK) && ($dest_planet['user
 // Which ship's classes fly also?
 // (for warp speed + command possibilities)
 
-$sql = 'SELECT st.ship_torso, st.value_10 AS warp_speed
+$sql = 'SELECT st.race, st.ship_torso, st.value_10 AS warp_speed
         FROM (ships s, ship_templates st)
         WHERE s.fleet_id IN ('.implode(',', $fleet_ids).') AND
               st.id = s.template_id';
@@ -280,12 +314,14 @@ if(!$q_stpls = $db->query($sql)) {
     message(DATABASE_ERROR, 'Could not query ship template data');
 }
 
-$in_scout = $in_transporter = $in_colo = $in_orb = $in_other_torso = false;
+$in_scout = $in_transporter = $in_colo = $in_orb = $in_other_torso = $is_civilian = false;
 $max_warp_speed = 9.99; // not interested in precision
 
 while($_temp = $db->fetchrow($q_stpls)) {
     if($_temp['warp_speed'] < $max_warp_speed) $max_warp_speed = $_temp['warp_speed'];
 
+    $race_composition[$_temp['race']]++;
+        
     if($_temp['ship_torso'] == SHIP_TYPE_SCOUT) {
         $in_scout = true;
         continue;
@@ -307,6 +343,13 @@ while($_temp = $db->fetchrow($q_stpls)) {
     }
 
     $in_other_torso = true;
+}
+
+$is_civilian = ($in_other_torso ? 0 : 1);
+
+if($is_warp_fast) {
+    $max_warp_speed += $warp_mod;
+    $max_warp_speed = min(9.95, $max_warp_speed);
 }
 
 $sql = 'SELECT n_ships AS ship_count'
@@ -336,6 +379,21 @@ $atkptc_present = ($starter_atkptc || $dest_atkptc) ? true : false;
 
 $inter_planet = $inter_system = false;
 
+
+$fleet_race_trail = -1;
+$fleet_race_count = 0;
+
+foreach ($race_composition AS $key => $race_comp_item) {
+    if($fleet_race_count < $race_comp_item) {
+        $fleet_race_count = $race_comp_item;
+        $fleet_race_trail = $key;
+    }
+}
+
+if(($fleet_race_count*100/$ship_number) < 51.0) {
+    $fleet_race_trail = -1;
+}
+    
 if($start_planet['system_id'] == $dest_planet['system_id']) $inter_planet = true;
 else $inter_system = true;
 
@@ -365,12 +423,14 @@ switch($step) {
     case 'survey_exec':
     case 'colo_exec':
 
-        if(!$dest_planet['system_is_allowed']) message(NOTICE, constant($game->sprache("TEXT69")));
-
+        if($dest_planet['system_is_known'] && !$dest_planet['system_is_allowed']) {
+            message(NOTICE, constant($game->sprache("TEXT69")));
+        }
+        
         $distance = $velocity = 0;
 
         if($game->player['user_auth_level'] == STGC_DEVELOPER) $min_time = 1;
-        elseif($inter_planet) $min_time = 6;
+        elseif($inter_planet) $min_time = $INTER_SYSTEM_TIME - $inter_mod;
         else {
             include_once('include/libs/moves.php');
 
@@ -414,7 +474,15 @@ switch($step) {
                     message(NOTICE, constant($game->sprache("TEXT21")));
                 }
 
-                $action_code = ($dest_planet['user_id'] != $game->player['user_id']) ? 21: 11;
+                $action_code = ($dest_planet['user_id'] != $game->player['user_id']) ? 21 : 11;
+            break;
+
+            case 'stationate_quick_exec':
+                if($atkptc_present && !$own_planet) {
+                    message(NOTICE, constant($game->sprache("TEXT21")));
+                }
+
+                $action_code = ($dest_planet['user_id'] != $game->player['user_id']) ? 21 : 11;                
             break;
 
             case 'comeback_exec':
@@ -422,10 +490,18 @@ switch($step) {
                     message(NOTICE, constant($game->sprache("TEXT21")));
                 }
 
+                if(!$dest_planet['system_is_known']) {
+                    message(NOTICE, constant($game->sprache("TEXT22")));
+                }
+
                 $action_code = 14;
             break;
 
             case 'attack_normal_exec':
+                if(!$dest_planet['system_is_known']) {
+                    message(NOTICE, constant($game->sprache("TEXT22")));
+                }
+
                 if(!$dest_planet['action_is_allowed'])
                 { 
                     message(NOTICE, constant($game->sprache("TEXT70")));
@@ -442,6 +518,10 @@ switch($step) {
             break;
 
             case 'attack_comeback_exec':
+                if(!$dest_planet['system_is_known']) {
+                    message(NOTICE, constant($game->sprache("TEXT22")));
+                }
+
                 if(!$dest_planet['action_is_allowed'])
                 { 
                     message(NOTICE, constant($game->sprache("TEXT70")));
@@ -466,6 +546,10 @@ switch($step) {
             break;
 
             case 'transport_exec':
+                if(!$dest_planet['system_is_known']) {
+                    message(NOTICE, constant($game->sprache("TEXT22")));
+                }
+
                 if(!$dest_planet['action_is_allowed'])
                 { 
                     message(NOTICE, constant($game->sprache("TEXT70")));
@@ -483,6 +567,10 @@ switch($step) {
             break;
 
             case 'spy_exec':
+                if(!$dest_planet['system_is_known']) {
+                    message(NOTICE, constant($game->sprache("TEXT22")));
+                }
+
                 if(!$dest_planet['action_is_allowed'])
                 { 
                     message(NOTICE, constant($game->sprache("TEXT70")));
@@ -496,7 +584,7 @@ switch($step) {
             break;
 
             case 'survey_exec':
-                if(!$dest_planet['action_is_allowed'])
+                if($dest_planet['system_is_known'] && !$dest_planet['action_is_allowed'])
                 { 
                     message(NOTICE, constant($game->sprache("TEXT70")));
                 }
@@ -513,6 +601,10 @@ switch($step) {
             break;
 
             case 'colo_exec':
+                if(!$dest_planet['system_is_known']) {
+                    message(NOTICE, constant($game->sprache("TEXT22")));
+                }
+                                
                 if(!$dest_planet['action_is_allowed'])
                 { 
                     message(NOTICE, constant($game->sprache("TEXT70")));
@@ -535,8 +627,8 @@ switch($step) {
             break;
         }
 
-        $sql = 'INSERT INTO scheduler_shipmovement (user_id, move_status, move_exec_started, start, dest, total_distance, remaining_distance, tick_speed, move_begin, move_finish, n_ships, action_code, action_data)
-                VALUES ('.$game->player['user_id'].', 0, 0, '.$start.', '.$dest.', '.$distance.', '.$distance.', '.($velocity * TICK_DURATION).', '.$ACTUAL_TICK.', '.($ACTUAL_TICK + $move_time).', '.$n_ships.', '.$action_code.', "'.$action_data.'")';
+        $sql = 'INSERT INTO scheduler_shipmovement (user_id, owner_id, move_hide_start, move_expedited, move_status, move_exec_started, move_is_civilian, race_trail, start, dest, total_distance, remaining_distance, tick_speed, warp_speed, move_begin, move_finish, n_ships, action_code, action_data)
+                VALUES ('.(!$is_undiscloused_id ? $game->player['user_id'] : $undisclosed_id).', '.$game->player['user_id'].', '.($start_mask ? '1' : '0').', '.(($inter_planet && $is_fast) || (!$inter_planet && $is_warp_fast) ? '1' : '0').', 0, 0, '.$is_civilian.', '.$fleet_race_trail.', '.$start.', '.$dest.', '.$distance.', '.$distance.', '.($velocity * TICK_DURATION).', '.$max_warp_speed.', '.$ACTUAL_TICK.', '.($ACTUAL_TICK + $move_time).', '.$n_ships.', '.$action_code.', "'.$action_data.'")';
 
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not insert new movement data');
@@ -546,17 +638,41 @@ switch($step) {
 
         $sql = 'UPDATE ship_fleets
                 SET planet_id = 0,
+                    system_id = '.($inter_planet ? $dest_planet['system_id'] : 0).',
                     move_id = '.$new_move_id.'
                 WHERE fleet_id IN ('.implode(',', $fleet_ids).')';
                 
         if(!$db->query($sql)) {
             message(DATABASE_ERROR, 'Could not update fleets position data');
         }
+        
+        if(!$inter_planet) {
+            $star_trail = [
+                'b' => 320,
+                'a' => 480,
+                'g' => 960,
+                'm' => 1200,
+                'l' => 1440
+            ];
+
+            $sql = 'INSERT INTO starsystems_details (system_id, user_id, timestamp, log_code, log_code_tick, info_1, info_2, info_3)
+            VALUES ('.$start_planet['system_id'].', '.$game->player['user_id'].', '.time().', 2, '.($ACTUAL_TICK+1+$star_trail[$start_planet['system_startype']]).', '.$fleet_race_trail.', '.WARP_OUT.', '.$dest.')
+            ON DUPLICATE KEY UPDATE log_code_tick = '.($ACTUAL_TICK+1+$star_trail[$start_planet['system_startype']]).', 
+                            timestamp = '.time().', 
+                            info_1 = '.$fleet_race_trail.', 
+                            info_2 = '.WARP_OUT.', 
+                            info_3 = '.$dest;
+
+            if(!$db->query($sql)) {
+                message(DATABASE_ERROR, 'Could not update fleets position data');
+            }
+        }
 
         redirect('a=tactical_moves&dest='.$dest);
     break;
 
     case 'stationate_setup':
+    case 'stationate_quick_setup':        
     case 'comeback_setup':
     case 'attack_setup':
     //case 'surrender_setup':
@@ -593,7 +709,15 @@ switch($step) {
                 $game->out(constant($game->sprache("TEXT32")).'<br><input type="hidden" name="step" value="stationate_exec">');
             break;
 
+            case 'stationate_quick_setup':
+                $game->out(constant($game->sprache("TEXT32B")).'<br><input type="hidden" name="step" value="stationate_quick_exec">');
+            break;            
+
             case 'comeback_setup':
+                if(!$dest_planet['system_is_known']) {
+                    message(NOTICE, constant($game->sprache("TEXT22")));
+                }
+
                 $game->out(constant($game->sprache("TEXT33")).'<br><input type="hidden" name="step" value="comeback_exec">');
             break;
 
@@ -601,6 +725,11 @@ switch($step) {
                 if($game->SITTING_MODE) {
                     message(NOTICE, constant($game->sprache("TEXT22")));
                 }
+
+                if(!$dest_planet['system_is_known']) {
+                    message(NOTICE, constant($game->sprache("TEXT22")));
+                }
+
                 $game->out(constant($game->sprache("TEXT34")).'<br><br>
       <input type="radio" name="step" value="attack_normal_exec" checked="checked" onClick="return document.send_form.submit.value = \''.constant($game->sprache("TEXT35")).'\';">&nbsp;<b>'.constant($game->sprache("TEXT36")).'</b><br>
       <input type="radio" name="step" value="attack_comeback_exec" onClick="return document.send_form.submit.value = \''.constant($game->sprache("TEXT35")).'\';">&nbsp;<b>'.constant($game->sprache("TEXT37")).'</b><br><br>
@@ -608,10 +737,17 @@ switch($step) {
             break;
 
             case 'transport_setup':
+                if(!$dest_planet['system_is_known']) {
+                    message(NOTICE, constant($game->sprache("TEXT22")));
+                }                
                 $game->out(constant($game->sprache("TEXT38")).'<br><input type="hidden" name="step" value="transport_exec">');
             break;
 
             case 'spy_setup':
+                if(!$dest_planet['system_is_known']) {
+                    message(NOTICE, constant($game->sprache("TEXT22")));
+                }
+
                 if(!$in_scout || $in_other_torso || $in_transporter || $in_colo) {
                     message(NOTICE, constant($game->sprache("TEXT25")));
                 }
@@ -624,6 +760,10 @@ switch($step) {
             break;
 
             case 'colo_setup':
+                if(!$dest_planet['system_is_known']) {
+                    message(NOTICE, constant($game->sprache("TEXT22")));
+                }
+
                 if($game->SITTING_MODE) {
                     message(NOTICE, constant($game->sprache("TEXT22")));
                 }
@@ -723,7 +863,7 @@ switch($step) {
             $max_speed_str = constant($game->sprache("TEXT47"));
         }
         elseif($inter_planet) {
-            $min_time = 6;
+            $min_time = $INTER_SYSTEM_TIME - $inter_mod;
             $max_speed_str = constant($game->sprache("TEXT48"));
         }
         else {
@@ -733,6 +873,10 @@ switch($step) {
             $velocity = warpf($max_warp_speed);
             $min_time = ceil( ( ($distance / $velocity) / TICK_DURATION) );
 
+            if($start_mask) {
+                $min_time += 3;
+            }
+            
             $max_speed_str = constant($game->sprache("TEXT49")).' '.round($max_warp_speed, 2);
         }
 
@@ -836,17 +980,23 @@ function update_times() {
       '.constant($game->sprache("TEXT30")).' <select style="width: 200px;">'.$fleet_option_html.'</select><br><br>
       '.constant($game->sprache("TEXT52")).' <b>'.$max_speed_str.'</b><br>
       '.constant($game->sprache("TEXT53")).' '.$min_stardate.'</b><br><br>
-      '.constant($game->sprache("TEXT31")).' <input class="field" style="width: 45px;" type="text" name="higher_arrival_stardate" value="'.$min_stardate_split[0].'" maxlength="5" onBlur="return update_times();">&nbsp;.&nbsp;<input class="field" style="width: 15px;" type="text" name="lower_arrival_stardate" value="'.$min_stardate_split[1].'" maxlength="1" onBlur="return update_times();">&nbsp;&nbsp;<input class="button" style="width: 20px;" type="button" value="+" onClick="return increment_arrival();"">&nbsp;<input class="button" style="width: 20px;" type="button" value="-" onClick="return decrement_arrival();"><br><br>
+      '.constant($game->sprache("TEXT31")).' <input class="field" style="width: 45px;" type="text" name="higher_arrival_stardate" value="'.$min_stardate_split[0].'" maxlength="5" onBlur="return update_times();" '.($inter_planet ? 'readonly' : '').'>&nbsp;.&nbsp;<input class="field" style="width: 15px;" type="text" name="lower_arrival_stardate" value="'.$min_stardate_split[1].'" maxlength="1" onBlur="return update_times();" '.($inter_planet ? 'readonly' : '').'>&nbsp;&nbsp;<input class="button" style="width: 20px;" type="button" value="+" onClick="return increment_arrival();"" '.($inter_planet ? 'disabled' : '').'>&nbsp;<input class="button" style="width: 20px;" type="button" value="-" onClick="return decrement_arrival();" '.($inter_planet ? 'disabled' : '').'><br><br>
       '.constant($game->sprache("TEXT54")).' <input class="field" style="width: 25px;" type="text" name="arrival_days" value="" disabled="disabled">&nbsp;<i>'.constant($game->sprache("TEXT55")).'</i>&nbsp;&nbsp;<input class="field" style="width: 25px;" name="arrival_hours" value="" disabled="disabled">&nbsp;<i>'.constant($game->sprache("TEXT56")).'</i>&nbsp;&nbsp;<input class="field" style="width: 25px;" name="arrival_minutes" value="" disabled="disabled">&nbsp;<i>'.constant($game->sprache("TEXT57")).' +</i>&nbsp;<i id="timer2" title="time1_'.$NEXT_TICK.'_type1_4">&nbsp;</i><br><br>
 
       <table width="440" align="center" border="0" cellpadding="0" cellspacing="0"><tr><td width="220">
         ');
         if($planet_unknown) {
+            /*
             $game->out('
         <input type="radio" name="step" value="stationate_setup" checked="checked">&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>
         <input type="radio" name="step" value="survey_setup"'.( (!$explore_fleet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT65")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT65")).'</b><br>').'
         <input type="radio" name="step" value="attack_setup"'.( ($atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT61")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT61")).'</b><br>' ).'
             ');
+             * 
+             */
+            $game->out('
+        <input type="radio" name="step" value="stationate_setup" checked="checked">&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>
+            ');            
         }
         elseif($free_planet) {
             // $atkptc_present is not used here, because uninhabited planet
@@ -854,6 +1004,7 @@ function update_times() {
 
             $game->out('
         <input type="radio" name="step" value="stationate_setup" checked="checked">&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>
+        <input type="radio" name="step" value="stationate_quick_setup"'.( (!$inter_planet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT58B")).'<br>' : ' >&nbsp;<b>'.constant($game->sprache("TEXT58B")).'</b><br>').'        
         <input type="radio" name="step" value="survey_setup"'.( (!$explore_fleet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT65")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT65")).'</b><br>').'
         <input type="radio" name="step" value="colo_setup"'.( (!$in_colo) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT59")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT59")).'</b><br>' )
             );
@@ -861,6 +1012,7 @@ function update_times() {
         elseif($own_planet) {
             $game->out('
         <input type="radio" name="step" value="stationate_setup" checked="checked">&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>
+        <input type="radio" name="step" value="stationate_quick_setup"'.( (!$inter_planet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT58B")).'<br>' : ' >&nbsp;<b>'.constant($game->sprache("TEXT58B")).'</b><br>').'        
         <input type="radio" name="step" value="survey_setup"'.( (!$explore_fleet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT65")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT65")).'</b><br>').'
         <input type="radio" name="step" value="comeback_setup">&nbsp;<b>'.constant($game->sprache("TEXT60")).'</b><br>
             ');
@@ -868,9 +1020,10 @@ function update_times() {
         else {
             $game->out('
         <input type="radio" name="step" value="stationate_setup"'.( ($atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT58")).'<br>' : ' checked="checked">&nbsp;<b>'.constant($game->sprache("TEXT58")).'</b><br>' ).'
+        <input type="radio" name="step" value="stationate_quick_setup"'.( (!$inter_planet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT58B")).'<br>' : ' >&nbsp;<b>'.constant($game->sprache("TEXT58B")).'</b><br>').'        
         <input type="radio" name="step" value="survey_setup"'.( ($atkptc_present || !$explore_fleet) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT65")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT65")).'</b><br>' ).'
         <input type="radio" name="step" value="attack_setup"'.( ($atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT61")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT61")).'</b><br>' ).'
-        <input type="radio" name="step" value="transport_setup"'.( (!$in_transporter) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT62")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT62")).'</b><br>' ).'
+        <input type="radio" name="step" value="transport_setup"'.( ($atkptc_present || !$in_transporter) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT62")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT62")).'</b><br>' ).'
         <input type="radio" name="step" value="spy_setup"'.( (!$in_scout || $atkptc_present) ? ' disabled="disabled">&nbsp;'.constant($game->sprache("TEXT63")).'<br>' : '>&nbsp;<b>'.constant($game->sprache("TEXT63")).'</b><br>' ).'
             ');
         }

@@ -33,6 +33,152 @@ $tc_views_map = array(
 );
 
 
+if(!empty($_POST['claimvalue'])){
+    
+    $system_id = decode_system_id($_POST['claimvalue']);
+    
+    $sql = 'SELECT system_id, system_n_planets, system_global_x, system_global_y, system_closed, system_owner FROM starsystems WHERE system_id = '.$system_id;
+
+    if(($res = $db->queryrow($sql)) === false) {
+        message(DATABASE_ERROR, 'Could not query starsystem data');
+    }
+    
+    if($res['system_n_planets'] < 3) {
+        message(NOTICE, 'Non puoi chiedere la chiusura di un sistema con meno di tre pianeti');
+    }
+    
+    if($res['system_id'] != $system_id) {
+        message(DATABASE_ERROR, 'Could not query starsystem data');
+    }
+    
+    if($res['system_closed']) {
+        message(DATABASE_ERROR, 'Non puoi chiedere la chiusura di un sistema chiuso');
+    }
+    
+    if($res['system_owner'] != 0) {
+        message(DATABASE_ERROR, 'Non puoi chiedere la chiusura di un sistema chiuso');
+    }
+    
+    $sql = 'SELECT planet_points FROM planets WHERE planet_owner = '.$game->player['user_id'].' AND system_id = '.$system_id;
+    
+    if(($res2 = $db->queryrowset($sql)) === false) {
+        message(DATABASE_ERROR, 'Could not query system data');
+    }
+
+    $planet_owned_cnt = $planet_owned_pts = $near_system_id = 0;
+    
+    foreach ($res2 as $planet) {
+        $planet_owned_cnt++;
+        $planet_owned_pts += $planet['planet_points'];
+    }
+    
+    if($planet_owned_pts < 3*320) {
+        message(NOTICE, 'Non puoi chiedere la chiusura di un sistema se possiedi meno di 960 punti struttura al suo interno');
+    }
+    
+    if(!($planet_owned_cnt >= round($res['system_n_planets']/2))) {
+        message(NOTICE, 'Non puoi chiedere la chiusura di un sistema se controlli meno della met&agrave; dei pianeti nel sistema');
+    }
+    
+    if($planet_owned_pts > ($game->player['user_protect_level'] - $game->player['user_points_protected'] )) {
+        message(NOTICE, 'Non puoi chiedere la chiusura di un sistema se non hai abbastanza punti protezione disponibili');
+    }
+    
+    $sql = 'SELECT system_id, system_global_x, system_global_y FROM starsystems WHERE system_id <> '.$system_id.' AND system_closed > 0 AND system_owner = '.$game->player['user_id'];
+
+    if(($res3 = $db->queryrowset($sql)) === false) {
+        message(DATABASE_ERROR, 'Could not query nearby systems data');
+    }
+    
+    foreach ($res3 as $near_system) {
+        $distance = get_distance(array($res['system_global_x'], $res['system_global_y']), array($near_system['system_global_x'],$near_system['system_global_y']));
+        if($distance <= CLAIM_SYSTEM_RANGE) {
+            $near_system_id = $near_system['system_id'];
+            break;
+        }
+    }
+    
+    if($near_system_id == 0) {
+        message(NOTICE, 'Non puoi chiedere la chiusura di un sistema se non controlli un sistema privato a meno di '.CLAIM_SYSTEM_RANGE.' AU da questo');
+    }
+
+    $db->query('INSERT INTO scheduler_claim_system (user_id, system_id, near_system_id, exec_tick) VALUES ('.$game->player['user_id'].','.$res['system_id'].', '.$near_system_id.', '.$ACTUAL_TICK.')');
+
+    message(NOTICE, 'La richiesta di chiusura del sistema &egrave stata inoltrata al Catasto Stellare, attendere qualche minuto e verificare.');
+}
+if(!empty($_POST['pretendvalue'])) {
+    
+    $system_id = decode_system_id($_POST['pretendvalue']);
+    
+    $sql = 'SELECT system_id, system_name, system_global_x, system_global_y, system_closed, system_owner FROM starsystems WHERE system_id = '.$system_id;
+
+    if(($res = $db->queryrow($sql)) === false) {
+        message(DATABASE_ERROR, 'Could not query starsystem data');
+    }
+    
+    if($res['system_id'] != $system_id) {
+        message(DATABASE_ERROR, 'Could not query starsystem data');
+    }
+
+    if($res['system_owner'] == FERENGI_USERID) {
+        message(NOTICE, 'Non puoi sfidare la chiusura di un sistema controllato dal Bot Ferengi!!!');
+    }
+
+    if($res['system_owner'] == 10) {
+        message(NOTICE, 'Non puoi sfidare la chiusura di un sistema controllato dal SysAdmin!!!');
+    }
+
+    $sql = 'SELECT user_auth_level FROM user WHERE user_id = '.$res['system_owner'];
+
+    if(($resb = $db->queryrow($sql)) === false) {
+        message(DATABASE_ERROR, 'Could not query starsystem data');
+    }
+
+    if($resb['user_auth_level'] == 3) {
+        message(NOTICE, 'Non puoi sfidare la chiusura di un sistema controllato da questo utente!!!');
+    }
+
+    $sql = 'SELECT ud_id FROM user_diplomacy 
+            WHERE (accepted = 1 AND user1_id = '.$game->player['user_id'].' AND user2_id = '.$res['system_owner'].') OR 
+                  (accepted = 1 AND user2_id = '.$game->player['user_id'].' AND user1_id = '.$res['system_owner'].')';
+    
+    if(($res1 = $db->queryrow($sql)) === false) {
+        message(DATABASE_ERROR, 'Could not query user diplomacy data');
+    }
+    
+    if(!empty($res1['ud_id'])) {
+        message(NOTICE, 'Non puoi sfidare la chiusura di un sistema controllato da un tuo alleato!');
+    }
+    
+    $sql = 'SELECT system_id, system_global_x, system_global_y FROM starsystems WHERE system_id <> '.$system_id.' AND system_closed > 0 AND system_owner = '.$game->player['user_id'];
+
+    if(($res2 = $db->queryrowset($sql)) === false) {
+        message(DATABASE_ERROR, 'Could not query nearby systems data');
+    }    
+    
+    foreach ($res2 as $near_system) {
+        $distance = get_distance(array($res['system_global_x'], $res['system_global_y']), array($near_system['system_global_x'],$near_system['system_global_y']));
+        if($distance <= CLAIM_SYSTEM_RANGE) {
+            $near_system_id = $near_system['system_id'];
+            break;
+        }
+    }
+
+    if($near_system_id == 0) {
+        message(NOTICE, 'Non puoi sfidare la chiusura di un sistema se non controlli un sistema privato a meno di '.CLAIM_SYSTEM_RANGE.' AU da questo');
+    }
+
+    $db->query('INSERT INTO starsystems_details (system_id, user_id, timestamp, log_code) VALUES ('.$res['system_id'].', '.$game->player['user_id'].', '.time().', 100)');
+
+    $header = 'Rivendicazione territoriale.';
+    
+    $message = 'Il giocatore <b>'.$game->player['user_name'].'</b> ha deciso di sfidarti per il controllo di questo sistema: <a href="'.parse_link('a=tactical_cartography&system_id='.encode_system_id($res['system_id'])).'"><b>'.$res['system_name'].'</b>.</a>';
+    
+    SystemMessage($res['system_owner'], $header, $message);
+    
+    message(NOTICE, 'Hai notificato con successo la tua pretesa di controllo sul sistema.');
+    
+}
 
 if (isset($_GET['strade'])) {
     $game->option_store('show_trade',(int)$_GET['strade']);
@@ -149,13 +295,8 @@ function display_cartography_jump() {
     ');
 }
 
-
-
-
-
-
 function display_ferengi_transfer($planet_id,$planet_system,$system_x,$system_y,$build_11) {
-    global $game, $db;
+    global $game, $db,$INTER_SYSTEM_TIME;
 
     $game->out('<br><br>
 <table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2"><tr><td>
@@ -197,7 +338,7 @@ function display_ferengi_transfer($planet_id,$planet_system,$system_x,$system_y,
 
 
 
-        if ($game->planet['system_id']==$planet_system) $distance=6;
+        if ($game->planet['system_id']==$planet_system) $distance=$INTER_SYSTEM_TIME;
         else
         {
             $distance = get_distance(array($game->planet['system_global_x'], $game->planet['system_global_y']), array($system_x,$system_y));
@@ -259,8 +400,20 @@ function display_ferengi_transfer($planet_id,$planet_system,$system_x,$system_y,
     $game->out('</table></td></tr></table><br>');
 }
 
+function system_view_by_sensor($system_id) {
+    global $game, $db;
+    
+    $sql = 'SELECT SUM(building_7) as sensors FROM planets WHERE planet_owner = '.$game->player['user_id'].' AND system_id = '.$system_id;
+    
+    $res = $db->queryrow($sql);
+    
+    if($res['sensors'] > 0 ) {return 1;}
+    
+    return 0;
+}
 
 $game->init_player();
+
 
 if(!empty($_POST['trade'])) {
 
@@ -281,9 +434,9 @@ if(!empty($_POST['trade'])) {
     $traderes2 = filter_input(INPUT_POST, 'res_2', FILTER_SANITIZE_NUMBER_INT);
     $traderes3 = filter_input(INPUT_POST, 'res_3', FILTER_SANITIZE_NUMBER_INT);
     
-    if ($traderes1<0) $traderes1=0;
-    if ($traderes2<0) $traderes2=0;
-    if ($traderes3<0) $traderes3=0;
+    if (!is_numeric($traderes1) || $traderes1 === false || $traderes1<0) $traderes1=0;
+    if (!is_numeric($traderes2) || $traderes2 === false || $traderes2<0) $traderes2=0;
+    if (!is_numeric($traderes3) || $traderes3 === false || $traderes3<0) $traderes3=0;
     
     /*
     $_POST['unit_1']=(int)$_POST['unit_1'];
@@ -308,12 +461,12 @@ if(!empty($_POST['trade'])) {
     $tradeunit['unit_5'] = filter_input(INPUT_POST, 'unit_5', FILTER_SANITIZE_NUMBER_INT);    
     $tradeunit['unit_6'] = filter_input(INPUT_POST, 'unit_6', FILTER_SANITIZE_NUMBER_INT);    
     
-    if($tradeunit['unit_1']<0) $tradeunit['unit_1']=0;
-    if($tradeunit['unit_2']<0) $tradeunit['unit_2']=0;
-    if($tradeunit['unit_3']<0) $tradeunit['unit_3']=0;
-    if($tradeunit['unit_4']<0) $tradeunit['unit_4']=0;
-    if($tradeunit['unit_5']<0) $tradeunit['unit_5']=0;    
-    if($tradeunit['unit_6']<0) $tradeunit['unit_6']=0;    
+    if(!is_numeric($tradeunit['unit_1']) || $tradeunit['unit_1'] === false || $tradeunit['unit_1']<0) $tradeunit['unit_1']=0;
+    if(!is_numeric($tradeunit['unit_2']) || $tradeunit['unit_2'] === false || $tradeunit['unit_2']<0) $tradeunit['unit_2']=0;
+    if(!is_numeric($tradeunit['unit_3']) || $tradeunit['unit_3'] === false || $tradeunit['unit_3']<0) $tradeunit['unit_3']=0;
+    if(!is_numeric($tradeunit['unit_4']) || $tradeunit['unit_4'] === false || $tradeunit['unit_4']<0) $tradeunit['unit_4']=0;
+    if(!is_numeric($tradeunit['unit_5']) || $tradeunit['unit_5'] === false || $tradeunit['unit_5']<0) $tradeunit['unit_5']=0;    
+    if(!is_numeric($tradeunit['unit_6']) || $tradeunit['unit_6'] === false || $tradeunit['unit_6']<0) $tradeunit['unit_6']=0;    
     
     /*
     if ($_POST['res_1']==0 && $_POST['res_2']==0 && $_POST['res_3']==0 &&
@@ -368,7 +521,7 @@ if(!empty($_POST['trade'])) {
         }
     }
 
-    if ($game->planet['system_id']==$dest['system_id']) $distance=6;
+    if ($game->planet['system_id']==$dest['system_id']) $distance=$INTER_SYSTEM_TIME;
     else
     {
         $distance = get_distance(array($game->planet['system_global_x'], $game->planet['system_global_y']), array($dest['system_global_x'],$dest['system_global_y']));
@@ -376,7 +529,7 @@ if(!empty($_POST['trade'])) {
         $distance= ceil( ( ($distance / $velocity) / TICK_DURATION ) );
     }
 
-    if ($distance<6) $distance=6;
+    if ($distance<$INTER_SYSTEM_TIME) $distance=$INTER_SYSTEM_TIME;
 
 
 
@@ -416,10 +569,10 @@ if(!empty($_POST['trade'])) {
                                unit_5=unit_5-'.($tradeunit['unit_5']).',
                                unit_6=unit_6-'.($tradeunit['unit_6']).'
             WHERE planet_id= "'.$game->planet['planet_id'].'"';
-    if (($db->query($sql))==true) {
+    if (($db->query($sql))===true) {
         $sql = 'INSERT INTO scheduler_resourcetrade (planet,resource_1,resource_2,resource_3,unit_1,unit_2,unit_3,unit_4,unit_5,unit_6,arrival_time)
                 VALUES ("'.$dest['planet_id'].'","'.$traderes1.'","'.$traderes2.'","'.$traderes3.'","'.$tradeunit['unit_1'].'","'.$tradeunit['unit_2'].'","'.$tradeunit['unit_3'].'","'.$tradeunit['unit_4'].'","'.$tradeunit['unit_5'].'","'.$tradeunit['unit_6'].'","'.($ACTUAL_TICK+$distance).'")';
-        if (($db->query($sql))==true)
+        if (($db->query($sql))===true)
         {
             // Fake Fleets starts:
             $res=$traderes1+$traderes2+$traderes3;
@@ -432,6 +585,12 @@ if(!empty($_POST['trade'])) {
             send_fake_transporter(array(FERENGI_TRADESHIP_ID=>$ships), FERENGI_USERID, $game->planet['planet_id'], $dest['planet_id']);
             $db->query('UPDATE config SET ferengitax_1=ferengitax_1+'.($gebuehr[0]).', ferengitax_2=ferengitax_2+'.($gebuehr[1]).', ferengitax_3=ferengitax_3+'.($gebuehr[2]));
         }
+        else {
+            message(DATABASE_ERROR, 'Could not send troops/resources via ferengi transport.');
+        }
+    }
+    else {
+        message(DATABASE_ERROR, 'Could not pick up goods for ferengi transport.');
     }
 
     redirect('a=tactical_cartography&planet_id='.encode_planet_id($dpid));
@@ -793,7 +952,7 @@ elseif(!empty($_GET['planet_id'])) {
         $planet_id = (int)decode_planet_id($_GET['planet_id']);
     }
 
-    $own_planet = $free_planet = false;
+    $own_planet = $free_planet = $has_fullview = false;
 
     if($game->planet['planet_id'] == $planet_id) {
         $planet = &$game->planet;
@@ -813,7 +972,8 @@ elseif(!empty($_GET['planet_id'])) {
         $planet += $_system;
     }
     else {
-        $sql = 'SELECT p.planet_id, p.planet_name, p.building_11, p.system_id, p.sector_id, p.planet_type,
+        $sql = 'SELECT p.planet_id, p.planet_name, p.building_10, p.building_11, p.building_13, p.system_id, p.sector_id, p.planet_type,
+                       p.research_1, p.research_2, p.research_3, p.research_4, p.research_5,
                        p.planet_owner, p.best_mood, p.best_mood_user, p.planet_points, p.planet_distance_id,
                        u.user_name, u.user_alliance, a.alliance_tag,
                        s.system_global_x,s.system_global_y,s.system_name, s.system_x, s.system_y
@@ -831,7 +991,7 @@ elseif(!empty($_GET['planet_id'])) {
             message(NOTICE, constant($game->sprache("TEXT24")));
         }
     }
-
+    
     if($planet['planet_owner'] == $game->player['user_id']) {
         $own_planet = true;
 
@@ -877,7 +1037,7 @@ elseif(!empty($_GET['planet_id'])) {
         LEFT JOIN user u ON d.user_id = u.user_id
         LEFT JOIN alliance ON d.source_aid = alliance.alliance_id
         WHERE planet_id = '.$planet['planet_id'].'
-        AND d.log_code IN (0, 1, 2, 25, 26, 27, 28, 29, 30, 31, 32) 
+        AND d.log_code IN (0, 1, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34) 
         ORDER BY timestamp DESC LIMIT 0, 10';
 
     if($_history = $db->query($sql)) {
@@ -887,7 +1047,10 @@ elseif(!empty($_GET['planet_id'])) {
                 case 0: $history_text .= constant($game->sprache("TEXT98")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).constant($game->sprache("TEXT99")).date("d.m.y H:i", $_temp['timestamp']).'<br>';
                 break;
                 // Planet discoverer
-                case 1: $history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT117")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).( (!empty($_temp['alliance_tag'])) ? '['.$_temp['alliance_tag'].']' : '&nbsp;' ).constant($game->sprache("TEXT118")).'<br>';
+                case 1:
+                    if($_temp['user_id'] == $game->player['user_id']) {
+                        $history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT117")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).( (!empty($_temp['alliance_tag'])) ? '['.$_temp['alliance_tag'].']' : '&nbsp;' ).constant($game->sprache("TEXT118")).'<br>';
+                    }
                 break;
                 // Opponents
                 case 2: $history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT117")).( (!empty($_temp['user_name'])) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).( (!empty($_temp['alliance_tag'])) ? '['.$_temp['alliance_tag'].']' : '&nbsp;' ).constant($game->sprache("TEXT119")).'<br>';
@@ -948,6 +1111,14 @@ elseif(!empty($_GET['planet_id'])) {
                 case 32: 
                     $history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT129")).(!empty($_temp['user_name']) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).(!empty($_temp['alliance_tag']) ? '['.$_temp['alliance_tag'].']' : '').constant($game->sprache("TEXT130")).'.<br>';
                 break;
+                // --- Planet goes desert after surrendering
+                case 33: 
+                    $history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT137")).(!empty($_temp['user_name']) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).(!empty($_temp['alliance_tag']) ? '['.$_temp['alliance_tag'].']' : '').constant($game->sprache("TEXT138")).'.<br>';
+                break;
+                // --- Planet goes desert after surrendering
+                case 34: 
+                    $history_text .= constant($game->sprache("TEXT116")).date("d.m.y H:i", $_temp['timestamp']).constant($game->sprache("TEXT137")).(!empty($_temp['user_name']) ? $_temp['user_name'] : constant($game->sprache("TEXT120"))).(!empty($_temp['alliance_tag']) ? '['.$_temp['alliance_tag'].']' : '').constant($game->sprache("TEXT138")).'.<br>';
+                break;            
             }
         }
     }
@@ -1000,45 +1171,79 @@ elseif(!empty($_GET['planet_id'])) {
     }
 
 // Tactical / political information on the planet (settlers system)
-
-    global $SETL_EVENTS;
-    
-    $sql = 'SELECT event_code, user_id, count_ok, count_ko, count_crit_ok, count_crit_ko FROM settlers_events
-                WHERE `planet_id` = '.$planet['planet_id'].'
-                AND event_status = 1
-                ORDER BY timestamp ASC';
-    $q_setl = $db->query($sql);
-    $rows = $db->num_rows($q_setl);
-    if($rows > 0)
+    if($planet['planet_owner'] == INDEPENDENT_USERID)
     {
-        $tactical_text .= '<table width=320 border=0 cellpadding= 0 cellspacing=0>';
-        $q_d_setl = $db->fetchrowset($q_setl);
-        foreach($q_d_setl as $d_setl)
+        global $SETL_EVENTS;
+
+        $sql = 'SELECT event_code, user_id, count_ok, count_ko, count_crit_ok, count_crit_ko FROM settlers_events
+                    WHERE `planet_id` = '.$planet['planet_id'].'
+                    AND event_status = 1
+                    ORDER BY timestamp ASC';
+        $q_setl = $db->query($sql);
+        $rows = $db->num_rows($q_setl);
+        if($rows > 0)
         {
-            if($SETL_EVENTS[$d_setl['event_code']][1] && ($game->player['user_id'] != $d_setl['user_id'])) continue;
-            $tactical_text .= '<tr align=left><td><i>'.$SETL_EVENTS[$d_setl['event_code']][0].'</i></td>';
-            $tactical_text .= ($game->player['user_id'] == $d_setl['user_id'] ? '<td><i>('.$d_setl['count_crit_ok'].' / '.$d_setl['count_ok'].' / '.$d_setl['count_ko'].' / '.$d_setl['count_crit_ko'].')</i></td></tr>' : '</tr>');
+            $tactical_text .= '<table width=320 border=0 cellpadding= 0 cellspacing=0>';
+            $q_d_setl = $db->fetchrowset($q_setl);
+            foreach($q_d_setl as $d_setl)
+            {
+                if($SETL_EVENTS[$d_setl['event_code']][1] && ($game->player['user_id'] != $d_setl['user_id'])) continue;
+                $tactical_text .= '<tr align=left><td><i>'.$SETL_EVENTS[$d_setl['event_code']][0].'</i></td>';
+                $tactical_text .= ($game->player['user_id'] == $d_setl['user_id'] ? '<td><i>('.$d_setl['count_crit_ok'].' / '.$d_setl['count_ok'].' / '.$d_setl['count_ko'].' / '.$d_setl['count_crit_ko'].')</i></td></tr>' : '</tr>');
+            }
+            $tactical_text .= '</table>';
+        }
+
+        $sql = 'SELECT log_code, timestamp, mood_modifier FROM settlers_relations
+                    WHERE `planet_id` = '.$planet['planet_id'].'
+                    AND user_id = '.$game->player['user_id'].'
+                    ORDER BY timestamp ASC';
+        $q_setl = $db->query($sql);
+        $rows = $db->num_rows($q_setl);
+        if($rows > 0)
+        {
+            $tactical_text .= '<table width=320 border=0 cellpadding= 0 cellspacing=0>';
+            $q_d_setl = $db->fetchrowset($q_setl);
+            foreach($q_d_setl as $d_setl)
+            {
+                $tactical_text .= '<tr align=left><td>'.get_diplo_str($d_setl['log_code']).'</td><td>'.date("d.m.y", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
+            }
+            $tactical_text .= '</table>';
+        }
+    }
+    elseif($planet['planet_owner'] > 10)
+    {
+        global $BUILDING_NAME, $MAX_POINTS, $MAX_BUILDING_LVL, $TECH_NAME, $MAX_RESEARCH_LVL;
+        
+        $capital_planet = ($planet['planet_available_points'] == $MAX_POINTS[1] ? 1 : 0);
+        $tactical_text .= '<table width=320 border=0 cellpadding= 0 cellspacing=0>';
+        $tactical_text .= '<tr align=left><td>'.$BUILDING_NAME[$game->player['user_race']][12].'</td><td>[';
+        $defense_value =  (int)(($planet['building_13']*100/($MAX_BUILDING_LVL[$capital_planet][12] + $planet['research_3']))*0.09);
+        for($i = 0;$i < 9; $i++)
+        {
+            $tactical_text .= ($defense_value > $i  ? '<font style=&#34;color: green;&#34;>&#9642</font>' : '&#9643');
+        }        
+        $tactical_text .= ']</td></tr>';
+        $tactical_text .= '<tr align=left><td>'.$BUILDING_NAME[$game->player['user_race']][9].'</td><td>[';
+        $defense_value =  (int)(($planet['building_10']*100/($MAX_BUILDING_LVL[$capital_planet][9] + $planet['research_3']))*0.09);
+        for($i = 0;$i < 9; $i++)
+        {
+            $tactical_text .= ($defense_value > $i ? '<font style=&#34;color: green;&#34;>&#9642</font>' : '&#9643');
+        }        
+        $tactical_text .= ']</td></tr>';        
+        foreach ($TECH_NAME[$game->player['user_race']] AS $key => $tech_text)
+        {
+            $tactical_text .= '<tr align=left><td>'.$tech_text.'</td><td>[';           
+            $tech_value = (int)($planet['research_'.($key+1)]*100/$MAX_RESEARCH_LVL[$capital_planet][$key])*0.09;
+            for($i = 0;$i < 9; $i++)
+            {
+                $tactical_text .= ($tech_value > $i ? '<font style=&#34;color: green;&#34;>&#9642</font>' : '&#9643');
+            }
+            $tactical_text .= ']</td></tr>';
         }
         $tactical_text .= '</table>';
     }
     
-    $sql = 'SELECT log_code, timestamp, mood_modifier FROM settlers_relations
-                WHERE `planet_id` = '.$planet['planet_id'].'
-                AND user_id = '.$game->player['user_id'].'
-                ORDER BY timestamp ASC';
-    $q_setl = $db->query($sql);
-    $rows = $db->num_rows($q_setl);
-    if($rows > 0)
-    {
-        $tactical_text .= '<table width=320 border=0 cellpadding= 0 cellspacing=0>';
-        $q_d_setl = $db->fetchrowset($q_setl);
-        foreach($q_d_setl as $d_setl)
-        {
-            $tactical_text .= '<tr align=left><td>'.get_diplo_str($d_setl['log_code']).'</td><td>'.date("d.m.y", $d_setl['timestamp']).'</td><td>'.$d_setl['mood_modifier'].'</td></tr>';
-        }
-        $tactical_text .= '</table>';
-    }
-
     $planet_is_known = false;
     $sql = 'SELECT timestamp FROM starsystems_details
             WHERE system_id = '.$planet['system_id'].'
@@ -1201,11 +1406,12 @@ form {
 </table>
     ');
 
+    $has_fullview = system_view_by_sensor($planet['system_id']);    
 
     $sql = 'SELECT fleet_id, fleet_name, n_ships
             FROM ship_fleets
             WHERE planet_id = '.$planet_id.' AND
-                  user_id = '.$game->player['user_id'];
+                  owner_id = '.$game->player['user_id'];
 
     if(!$q_own_fleets = $db->query($sql)) {
         message(DATABASE_ERROR, 'Could not query own fleets data');
@@ -1213,11 +1419,17 @@ form {
 
     $n_own_fleets = $db->num_rows($q_own_fleets);
 
-    if( ($own_planet) || ($n_own_fleets > 0) ) {
+    if($n_own_fleets > 0) {$has_fullview = true;}
+      
+    if( $has_fullview || $own_planet ) {
         $sensor_details = (!empty($_GET['sensor_details'])) ? (int)$_GET['sensor_details'] : 0;
 
         $game->out('
 <br><br>
+<form name="srs_form" method="post" action="">
+<input type="hidden" name="user_id"   value="">
+<input type="hidden" name="planet_id" value="'.$planet_id.'">
+<input type="hidden" name="mode_id" value="1">
 <table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td>
@@ -1228,7 +1440,6 @@ form {
           <td width="110"><b>'.constant($game->sprache("TEXT73")).'</b></td>
           <td width="90">&nbsp;</td>
         </tr>
-        <form name="srs_form" method="post" action="">
         ');
 
         if($free_planet) {
@@ -1264,12 +1475,13 @@ form {
             $game->out('</td></tr>');
         }
 
-        $sql = 'SELECT f.user_id, SUM(f.n_ships) AS n_ships,
-                       u.user_name, u.user_race
+        $sql = 'SELECT f.user_id, f.owner_id, SUM(f.n_ships) AS n_ships,
+                       u.user_name, u.user_race, u2.user_name AS owner_name
                 FROM (ship_fleets f)
                 INNER JOIN (user u) ON u.user_id = f.user_id
+                INNER JOIN (user u2) ON u2.user_id = f.owner_id
                 WHERE f.planet_id = '.$planet_id.'
-                GROUP BY f.user_id';
+                GROUP BY f.owner_id,f.user_id';
 
         if(!$q_fleets = $db->query($sql)) {
             message(DATABASE_ERROR, 'Could not query fleets data for sensors');
@@ -1304,18 +1516,18 @@ form {
         <tr>
          <td align="center"><img src="'.$game->PLAIN_GFX_PATH.'fleet_'.$fleet['user_race'].'.gif" border="0"></td>
          <td><i>'.( ($fleet['n_ships'] == 1) ? constant($game->sprache("TEXT77")) : $fleet['n_ships'].' '.constant($game->sprache("TEXT78")) ).'</i> [<a href="'.parse_link('a=tactical_cartography&planet_id='.encode_planet_id($planet_id).$detail_link).'">'.$detail_symbol.'</a>]</td>
-         <td><a href="'.parse_link('a=stats&a2=viewplayer&id='.$fleet['user_id']).'">'.$fleet['user_name'].'</a></td>
+         <td><a href="'.parse_link('a=stats&a2=viewplayer&id='.($fleet['owner_id'] != $fleet['user_id'] && $fleet['owner_id'] == $game->player['user_id'] ? $fleet['owner_id'] : $fleet['user_id'])).'">'.($fleet['owner_id'] != $fleet['user_id'] && $fleet['owner_id'] == $game->player['user_id'] ? $fleet['owner_name'].' <i>('.$fleet['user_name'].')</i>' : $fleet['user_name']).'</a></td>
          <td>
             ');
             
-            if($fleet['user_id'] != $game->player['user_id']) {
+            if($fleet['owner_id'] != $game->player['user_id']) {
                 $game->out('<input type="image" src="'.$game->GFX_PATH.'tc_transport.gif" title="'.constant($game->sprache("TEXT75")).'" name="beam_submit" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_fleets_loadingf&to_unit='.$fleet['user_id'].'&return_to='.urlencode('a=tactical_cartography&planet_id='.encode_planet_id($planet_id))).'\';">&nbsp;');
                 
-                if($planet['planet_owner'] != $fleet['user_id']) {
+                if($planet['planet_owner'] != $fleet['owner_id']) {
                     $game->out('
-         '.( ($game->SITTING_MODE) ? '' : '<input type="image" src="'.$game->GFX_PATH.'tc_attack.gif" title="'.constant($game->sprache("TEXT76")).'" name="attack_submit" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=attack_setup&user_id='.$fleet['user_id']).'\';">' ).'
-                    ');
+         '.( ($game->SITTING_MODE) ? '' : '<input type="image" src="'.$game->GFX_PATH.'tc_attack.gif" title="'.constant($game->sprache("TEXT76")).'" name="attack_submit" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_actions&step=attack_setup&user_id='.$fleet['user_id']).'\';">&nbsp;'));
                 }
+                $game->out('<input type="image" src="'.$game->GFX_PATH.'tc_analyze.gif" title="'.constant($game->sprache("TEXT135")).'" name="analyze_submit" value="1" onClick="document.srs_form.user_id.value = '.$fleet['user_id'].'; return document.srs_form.action = \''.parse_link('a=tactical_analyze').'\';">');
             }
 
             $game->out('</td></tr>');
@@ -1346,7 +1558,11 @@ form {
             $game->out('
         <tr><td height="10"></td></tr>
         <tr>
-          <td colspan="4" align="center"><select name="fleets[]" style="width: 200px;" size="'.$select_size.'" multiple="multiple">');
+          <td colspan="4" align="center">
+          <table>
+          <tr>
+          <td width="90%">
+          <select name="fleets[]" style="width: 200px;" size="'.$select_size.'" multiple="multiple">');
             
             while($fleet = $db->fetchrow($q_own_fleets)) {
                 $game->out('<option value="'.$fleet['fleet_id'].'">'.$fleet['fleet_name'].' ('.$fleet['n_ships'].')</option>');
@@ -1354,12 +1570,17 @@ form {
 
             $game->out('
           </select></td>
+          <td width="10%" valign="center">
+            <input type="image" src="'.$game->GFX_PATH.'tc_analyze.gif" title="'.constant($game->sprache("TEXT136")).'" name="fleet_details" value="1" onClick="return document.srs_form.action = \''.parse_link('a=ship_fleets_display&pfleet_details').'\';">
+          </td>
+          </tr>
+          </table></td>
         </tr>
         <tr><td height="5"></td></tr>
             ');
         }
 
-        $game->out('</form></table></td></tr></table>');
+        $game->out('</table></td></tr></table></form>');
     }
 
     $sql = 'SELECT move_id, move_finish
@@ -1429,6 +1650,7 @@ form {
     }
         
     if($planet_id != $game->planet['planet_id']) {
+        /*
         $sql = 'SELECT fleet_id, fleet_name, n_ships, system_id, system_global_x, system_global_y
                 FROM ship_fleets
                 INNER JOIN planets USING (planet_id)
@@ -1437,7 +1659,21 @@ form {
                       planet_id <> 0 AND
                       n_ships > 0
                 ORDER BY fleet_name';
+         * 
+         */
 
+        $sql = 'SELECT ship_fleets.fleet_id, fleet_name, MIN(value_10) as speed, n_ships, starsystems.system_id, system_global_x, system_global_y
+                FROM ship_fleets
+                INNER JOIN ships ON ship_fleets.fleet_id = ships.fleet_id
+                INNER JOIN ship_templates ON ships.template_id = ship_templates.id
+                INNER JOIN planets USING (planet_id)
+                INNER JOIN starsystems ON planets.system_id = starsystems.system_id            
+                WHERE ship_fleets.owner_id = '.$game->player['user_id'].' AND
+                      planet_id <> 0 AND
+                      n_ships > 0
+                GROUP BY fleet_id
+                ORDER BY fleet_name';
+        
         $q_fleets = $db->queryrowset($sql);
 
         $n_fleets = $db->num_rows();
@@ -1454,8 +1690,8 @@ form {
           <td colspan="2" align="center"><b>'.constant($game->sprache("TEXT83")).'</b><br><br>
         </tr>
         <tr>
-          <td width="300" align="center">
-            <select name="fleets[]" style="width: 280px;" multiple="multiple" size="5">
+          <td>
+            <select name="fleets[]" style="width: 390px;" multiple="multiple" size="5">
             ');
             
             foreach($q_fleets AS $fleet) {
@@ -1463,14 +1699,18 @@ form {
                 else
                 {
                     $dist = get_distance(array($planet['system_global_x'], $planet['system_global_y']), array($fleet['system_global_x'],$fleet['system_global_y']));
+                    $velocity = warpf($fleet['speed']);
+                    $timedist = ceil( ( ($dist / $velocity) / TICK_DURATION ) );                    
                 }
-                $game->out('<option value="'.$fleet['fleet_id'].'">'.$fleet['fleet_name'].' ('.$fleet['n_ships'].' '.constant($game->sprache("TEXT78")).', '.constant($game->sprache("TEXT133")).($dist != 0 ? number_format($dist, 0, ',', '.').' A.U.' : constant($game->sprache("TEXT132")) ).') </option>');
+                $game->out('<option value="'.$fleet['fleet_id'].'">'.$fleet['fleet_name'].' ('.$fleet['n_ships'].' '.constant($game->sprache("TEXT78")).'; '.constant($game->sprache("TEXT133")).($dist != 0 ? number_format($dist, 0, ',', '.').' A.U. => '.Zeit($timedist*TICK_DURATION).'@W'.$fleet['speed'] : constant($game->sprache("TEXT132")).' => 9m' ).') </option>');
             }
 
             $game->out('
             </select>
           </td>
-          <td width="100" align="left" valign="middle">
+        </tr>
+        <tr>
+          <td width="150" align="center" valign="middle">
             <input type="submit" class="button" name="submit" value="'.constant($game->sprache("TEXT84")).'">
           </td>
         </tr>
@@ -1507,7 +1747,7 @@ elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty(
             $system_id = (int)decode_system_id($_GET['system_id']);
         }
 
-        $sql = 'SELECT system_name, sector_id
+        $sql = 'SELECT system_name, sector_id, system_closed, system_owner
                 FROM starsystems
                 WHERE system_id = '.$system_id;
 
@@ -1518,7 +1758,25 @@ elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty(
         if(empty($system['sector_id'])) {
             message(NOTICE, constant($game->sprache("TEXT41")).$system_id.constant($game->sprache("TEXT42")));
         }
+        
+        $sql = 'SELECT timestamp FROM starsystems_details WHERE system_id = '.$system_id.' AND user_id = '.$game->player['user_id'].' AND log_code = 0';
+        
+        if(($system_details = $db->queryrow($sql)) === false) {
+            message(DATABASE_ERROR, 'Could not query starsystem data');
+        }
+        
+        $system_is_known = false;
+        if($system['system_owner'] == $game->player['user_id'] || !empty($system_details['timestamp'])) {$system_is_known = true;}
+        
+        $sql = 'SELECT timestamp FROM starsystems_details WHERE system_id = '.$system_id.' AND user_id = '.$game->player['user_id'].' AND log_code = 100';
+        
+        if(($system_details2 = $db->queryrow($sql)) === false) {
+            message(DATABASE_ERROR, 'Could not query starsystem data');
+        }
 
+        $system_is_challenged = false;
+        if($system_details2['timestamp']) {$system_is_challenged = true;}
+        
         $quadrant_id = $game->get_quadrant($system['sector_id']);
 
         $nav_html = '<a href="'.parse_link('a=tactical_cartography&galaxy').'">'.constant($game->sprache("TEXT60")).'</a> -> '.
@@ -1532,7 +1790,7 @@ elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty(
         $legend_html = constant($game->sprache("TEXT85")).
                        constant($game->sprache("TEXT86")).
                        constant($game->sprache("TEXT87")).
-                       constant($game->sprache("TEXT131")).
+                       constant($game->sprache("TEXT131")).constant($game->sprache("TEXT134")).
                        constant($game->sprache("TEXT88")).
                        constant($game->sprache("TEXT89")).
                        constant($game->sprache("TEXT90")).'<br>';
@@ -1599,7 +1857,7 @@ elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty(
             [<a href="'.parse_link('a=tactical_sensors').'">'.constant($game->sprache("TEXT5")).'</a>]&nbsp;&nbsp;                
             [<a href="'.parse_link('a=tactical_search').'">'.constant($game->sprache("TEXT5a")).'</a>]<br><br>
 
-<table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+<table class="style_outer" width="450" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>
     <td>
       <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
@@ -1637,7 +1895,49 @@ elseif( (!empty($_GET['system_id'])) || (!empty($_GET['sector_id'])) || (!empty(
   <tr><td height="40" align="right" valign="middle">'.$letters[6].'</td></tr>
   <tr><td height="40" align="right" valign="middle">'.$letters[7].'</td></tr>
   <tr><td height="40" align="right" valign="middle">'.$letters[8].'</td></tr>
-</table>
+</table>');
+
+if($system_is_known && $system_id > 0 && !$system['system_closed']) {
+    $game->out('    
+    <br>
+    <form name="claimform" method="POST" action="'.parse_link('a=tactical_cartography').'">
+    <table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+    <tr>
+        <td>
+            <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+                <tr>
+                    <td align="center">
+                        <input type="hidden" name="claimvalue" value="'.encode_system_id((int)$system_id).'">
+                        <input class="button" type="submit" name="claim" value="Richiedi il sistema privato">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    </table></form>');    
+}
+
+if(($system_is_known && !$system_is_challenged) && $system_id > 0 && $system['system_closed'] && $system['system_owner'] != $game->player['user_id']) {
+    $game->out('    
+    <br>
+    <form method="POST" action="'.parse_link('a=tactical_cartography').'">
+    <table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+    <tr>
+        <td>
+            <table class="style_inner" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
+                <tr>
+                    <td align="center">
+                        <input type="hidden" name="pretendvalue" value="'.encode_system_id((int)$system_id).'">
+                        <input class="button" type="submit" value="!!! Reclama questo sistema privato per te !!!">
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    </table></form>');    
+}
+
+$game->out('
 <br>
 <table class="style_outer" width="400" align="center" border="0" cellpadding="2" cellspacing="2">
   <tr>

@@ -64,6 +64,10 @@ define ("GER_TEXT38", 'Upgrade auf');
 define ("GER_TEXT39", 'Erforscht');
 define ("GER_TEXT40", 'Du musst ein(e)');
 define ("GER_TEXT41", 'bauen, bevor Technologien erforscht werden k&ouml;nnen.');
+define ("GER_TEXT43", 'Verf&uuml;gbare Tech-Punkte: ');
+define ("GER_TEXT44", 'Primariy RoF:');
+define ("GER_TEXT45", 'Secondary RoF:');
+define ("GER_TEXT46", 'Extra Torp:');
 
 //English
 define ("ENG_TEXT0", 'Cost:');
@@ -108,6 +112,10 @@ define ("ENG_TEXT38", 'Upgrade to');
 define ("ENG_TEXT39", 'Investigated');
 define ("ENG_TEXT40", 'You must have one');
 define ("ENG_TEXT41", 'built, before technologies can be explored.');
+define ("ENG_TEXT43", 'Tech Points Available: ');
+define ("ENG_TEXT44", 'Primary RoF:');
+define ("ENG_TEXT45", 'Secondary RoF:');
+define ("ENG_TEXT46", 'Extra Torp:');
 
 //Italiano
 define ("ITA_TEXT0", 'Costo:');
@@ -119,7 +127,7 @@ define ("ITA_TEXT5", 'Armi pesanti:');
 define ("ITA_TEXT6", 'Armi planetarie:');
 define ("ITA_TEXT7", 'Forza degli Scudi:');
 define ("ITA_TEXT8", 'Scafo (HP):');
-define ("ITA_TEXT9", 'Reattivit&agrave;:');
+define ("ITA_TEXT9", 'Reazione:');
 define ("ITA_TEXT10", 'Prontezza:');
 define ("ITA_TEXT11", 'Agilit&agrave;:');
 define ("ITA_TEXT12", 'Esperienza:');
@@ -152,5 +160,10 @@ define ("ITA_TEXT38", 'Aggiorna a');
 define ("ITA_TEXT39", 'Completato');
 define ("ITA_TEXT40", 'Devi avere un');
 define ("ITA_TEXT41", 'costruito prima di poter procedere alle ricerche.');
+define ("ITA_TEXT42", 'Dettaglio sviluppi componenti navi della categoria');
+define ("ITA_TEXT43", 'Punti Tecnologia disponibili: ');
+define ("ITA_TEXT44", 'RoF Primario:');
+define ("ITA_TEXT45", 'RoF Secondario:');
+define ("ITA_TEXT46", 'Siluri Extra:');
 
 ?>

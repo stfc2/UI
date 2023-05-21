@@ -39,7 +39,9 @@ define ("GER_TEXT7", 'Einmal aufgeben sollte reichen oder?');
 
 define ("GER_TEXT8", 'Netter Versuch, Aufgabe eines Planeten ist &uuml;ber Sitting nicht gestattet!');
 
-define ("GER_TEXT9", 'Du darfst deinen Hauptplaneten nicht aufgeben!');
+define ("GER_TEXT9", 'You must control at least three planets to give up your main planet!');
+
+define ("GER_TEXT10", 'You have to control your main planet for 15 days at least before giving it up!');
 
 
 //English
@@ -61,7 +63,9 @@ define ("ENG_TEXT7", 'Once here should be sufficient?');
 
 define ("ENG_TEXT8", 'Nice try, abandon a planet in Sitting mode isn&#146;t allowed!');
 
-define ("ENG_TEXT9", 'You cannot give up your main planet!');
+define ("ENG_TEXT9", 'You must control at least three planets to give up your main planet!');
+
+define ("ENG_TEXT10", 'You have to control your main planet for 15 days at least before giving it up!');
 
 
 //Italian
@@ -83,7 +87,9 @@ define ("ITA_TEXT7", 'Una volta qui dovrebbe essere sufficiente?');
 
 define ("ITA_TEXT8", 'Bel tentativo, non &egrave; permesso abbandonare un pianeta in Modalit&agrave; Sitting!');
 
-define ("ITA_TEXT9", 'Non &egrave; possibile rinunciare al tuo pianeta principale!');
+define ("ITA_TEXT9", 'Devi controllare almeno tre pianeti per abbandonare il tuo pianeta principale!');
+
+define ("ITA_TEXT10", 'Devi controllare il tuo pianeta principale da almeno 15 giorni per poterlo abbandonare!');
 
 
 ?>

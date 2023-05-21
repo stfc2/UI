@@ -82,8 +82,11 @@ if($game->config['game_stopped'] == 1 && $game->player['user_auth_level'] != STG
 
 
 // Define the Overlib Stylesets:
-define('OVERLIB_STANDARD', "FGCOLOR, '#000000', TEXTCOLOR, '#ffffff', FGBACKGROUND,'".FIXED_GFX_PATH."skin1/bg_stars1.gif', BGCOLOR, '#335E35', BORDER, 2, CAPTIONFONT, 'Arial', CAPTIONSIZE, 2, TEXTFONT, 'Arial', TEXTSIZE, 2");
+define('OVERLIB_STANDARD', "FGCOLOR, '#000000', TEXTCOLOR, '#ffffff', FGBACKGROUND,'".FIXED_GFX_PATH."skin1/bg_stars1.gif', BGCOLOR, '#335E35', BORDER, 2, CAPTIONFONT, 'Arial', CAPTIONSIZE, 3, TEXTFONT, 'Arial', TEXTSIZE, 3");
 
+define('OVERLIB_CMB_REPORT', "STICKY, CLOSECLICK, MIDX,0, MIDY,0, FGCOLOR, '#000000', TEXTCOLOR, '#ffffff', FGBACKGROUND,'".FIXED_GFX_PATH."skin1/bg_stars1.gif', BGCOLOR, '#335E35', BORDER, 2, CAPTIONFONT, 'Arial', CAPTIONSIZE, 2, TEXTFONT, 'Arial', TEXTSIZE, 2");
+
+define('OVERLIB_RESEARCH', "STICKY, CLOSECLICK, MIDX,0, MIDY,0, FGCOLOR, '#000000', TEXTCOLOR, '#ffffff', FGBACKGROUND,'".FIXED_GFX_PATH."skin1/bg_stars1.gif', BGCOLOR, '#335E35', BORDER, 2, CAPTIONFONT, 'Arial', CAPTIONSIZE, 3, TEXTFONT, 'Arial', TEXTSIZE, 3");
 
 // #############################################################################
 // Nach PHP/Perl-UserAgent suchen

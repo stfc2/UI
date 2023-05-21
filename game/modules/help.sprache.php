@@ -43,6 +43,8 @@ define ("GER_TEXT210", 'Flotten (bewegen mit Flotten Men&uuml;)');
 define ("GER_TEXT211", 'Flotten (bewegen mit Taktik Men&uuml;)');
 define ("GER_TEXT212", 'Flotten (Kommandos)');
 define ("GER_TEXT213", 'Flotten (Kommandos im Orbit)');
+define ("GER_TEXT250", 'La nostra Wiki:');
+define ("GER_TEXT251", 'Segui questo link per aprire la nostra wiki!');
 
 
 // English
@@ -88,7 +90,8 @@ define ("ENG_TEXT210", 'Fleets (moving with Fleets menu)');
 define ("ENG_TEXT211", 'Fleets (moving with Tactic menu)');
 define ("ENG_TEXT212", 'Fleets (commands)');
 define ("ENG_TEXT213", 'Fleets (commands from the orbit)');
-
+define ("ENG_TEXT250", 'La nostra Wiki:');
+define ("ENG_TEXT251", 'Segui questo link per aprire la nostra wiki!');
 
 //Italiano
 define ("ITA_TEXT0", 'Aiuto');
@@ -133,6 +136,8 @@ define ("ITA_TEXT210", 'Le flotte (spostarsi col men&ugrave; Flotte)');
 define ("ITA_TEXT211", 'Le flotte (spostarsi col men&ugrave; Tattico)');
 define ("ITA_TEXT212", 'Le flotte (i comandi)');
 define ("ITA_TEXT213", 'Le flotte (i comandi dall&#146;orbita)');
+define ("ITA_TEXT250", 'La nostra Wiki:');
+define ("ITA_TEXT251", 'Segui questo link per aprire la nostra wiki!');
 
 
 ?>

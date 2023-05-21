@@ -29,11 +29,11 @@ $ship_components_locale=array(
 0=>array(
         // Category Maschinenraum
         0=>array(
-             // Component M/ARA Mark I
+             // Component M/ARA Mk I Retrofit
              0=>array(
-                    'name'=>'M/ARA Mark I',
-                    'description'=>'Il propulsore a curvatura Materia/Antimateria M/ARA Mark I basato sul primo reattore Warp di Cochrane, fornisce energia ed incrementa la velocit&agrave; base della nave di un fattore Warp 1.',
-            ), // Endof Component M/ARA Mark I
+                    'name'=>'M/ARA Mk I Retrofit',
+                    'description'=>'Questo propulsore sostituisce quello prototipo della classe Excelsior per lo studio della transcurvatura con un modello standard, abbassando la velocit&agrave; della nave ma rendendola pi&ugrave; economica e aggiornabile.',
+            ), // Endof Component M/ARA Mk I Retrofit
 
              // Component M/ARA Mark II
              1=>array(
@@ -47,12 +47,36 @@ $ship_components_locale=array(
                     'description'=>'Il propulsore a curvatura Materia/Antimateria M/ARA Mark I basato sul primo reattore Warp di Cochrane, fornisce energia ed incrementa la velocit&agrave; base della nave di un fattore Warp 2.6.',
             ), // Endof Component M/ARA Mark III
 
-             // Component 1500-P-C-Warpkern
+             // Component M/ARA Mark II+
              3=>array(
-                    'name'=>'1500-P-C-Warpcore',
-                    'description'=>'Il Warpcore 1500 Pulse Cochrane &egrave; lo stato dell&#146;arte della tecnologia della Federazione, viene normalmente integrato nelle classe Sovereign.<br>Incrementa considerevolmente il quantitativo di energia prodotta ed il fattore Warp di 3.4.',
-            ), // Endof Component 1500-P-C-Warpkern
+                    'name'=>'M/ARA Mark II+',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component M/ARA Mark II+
 
+             // Component M/ARA Mark III+
+             4=>array(
+                    'name'=>'M/ARA Mark III+',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component M/ARA Mark III+
+            
+             // Component M/ARA Mark IV+
+             5=>array(
+                    'name'=>'M/ARA Mark IV+',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component 1500-P-C-Warpkern
+            
+             // Component TOE Mark I
+             6=>array(
+                    'name'=>'TOE Mark I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component TOE Mark I
+            
+             // Component TOE Mark II
+             7=>array(
+                    'name'=>'TOE Mark II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component TOE Mark II
+            
       'name'=>'Sala macchine',
       ), // Endof Category Maschinenraum
 
@@ -83,12 +107,30 @@ $ship_components_locale=array(
                     'description'=>'Nati da un progetto del 1960 di Robert W. Bussard, i Collettori sono stati costruire per raccogliere il pulviscolo spaziale per tramutarlo in energia. Incrementa il fattore Warp al massimo.',
             ), // Endof Component Bussardkollektoren Typ IV
 
-             // Component Bussardkollektoren Typ V
+             // Component Timoneria I
              4=>array(
-                    'name'=>'Collettori di Bussard Tipo V',
-                    'description'=>'Nati da un progetto del 1960 di Robert W. Bussard, i Collettori sono stati costruire per raccogliere il pulviscolo spaziale per tramutarlo in energia. Incrementa il fattore Warp al massimo.',
-            ), // Endof Component Bussardkollektoren Typ V
+                    'name'=>'Timoneria I',
+                    'description'=>'Flavor Text I',
+            ), // Endof Component Timoneria I
 
+             // Component Timoneria I
+             5=>array(
+                    'name'=>'Timoneria I',
+                    'description'=>'Flavor Text I',
+            ), // Endof Component Timoneria I
+            
+             // Component Timoneria I
+             6=>array(
+                    'name'=>'Timoneria I',
+                    'description'=>'Flavor Text I',
+            ), // Endof Component Timoneria I
+            
+             // Component Propulsori di manovra
+             7=>array(
+                    'name'=>'Propulsori di manovra',
+                    'description'=>'Flavor Text I',
+            ), // Endof Component Propulsori di manovra
+            
       'name'=>'Impulso',
       ), // Endof Category Antrieb
 
@@ -97,45 +139,50 @@ $ship_components_locale=array(
         2=>array(
              // Component Phaserbank Typ-III
              0=>array(
-                    'name'=>'Banchi phaser Tipo-III',
+                    'name'=>'Banchi phaser Tipo9 Mark II',
                     'description'=>'Le particelle subatomiche a breve vita (effetto rapido Nadion) possono rilasciare enormi forze nucleari se convogliate in un cristallo superconduttivo (alcune classi). L&#146;energia del sistema EPS di una nave &egrave; usato per produrre questo effetto. L&#146;energia dal sistema EPS viene portata tramite le linee di controllo alla camera di precombustione. Qui viene prodotto un raggio pulsante che viene passato nel cristallo emettitore e libera l&#146;effetto veloce di Nadion. Il raggio lascia il cristallo emettitore e passa al dispositivo di guida. Quindi abbandona la nave diretto verso il bersaglio.',
             ), // Endof Component Phaserbank Typ-III
 
-             // Component Phaserbank Typ-IV
              1=>array(
-                    'name'=>'Banchi phaser Tipo-IV',
-                    'description'=>'Le particelle subatomiche a breve vita (effetto rapido Nadion) possono rilasciare enormi forze nucleari se convogliate in un cristallo superconduttivo (alcune classi). L&#146;energia del sistema EPS di una nave &egrave; usato per produrre questo effetto. L&#146;energia dal sistema EPS viene portata tramite le linee di controllo alla camera di precombustione. Qui viene prodotto un raggio pulsante che viene passato nel cristallo emettitore e libera l&#146;effetto veloce di Nadion. Il raggio lascia il cristallo emettitore e passa al dispositivo di guida. Quindi abbandona la nave diretto verso il bersaglio.',
-            ), // Endof Component Phaserbank Typ-IV
-
-             // Component Phaserbank Typ-V
+                    'name'=>'WOE Mark I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component WOE Mark I
+            //             
+             // Component Banchi phaser Tipo10 Mark II
              2=>array(
-                    'name'=>'Banchi phaser Tipo-V',
-                    'description'=>'Le particelle subatomiche a breve vita (effetto rapido Nadion) possono rilasciare enormi forze nucleari se convogliate in un cristallo superconduttivo (alcune classi). L&#146;energia del sistema EPS di una nave &egrave; usato per produrre questo effetto. L&#146;energia dal sistema EPS viene portata tramite le linee di controllo alla camera di precombustione. Qui viene prodotto un raggio pulsante che viene passato nel cristallo emettitore e libera l&#146;effetto veloce di Nadion. Il raggio lascia il cristallo emettitore e passa al dispositivo di guida. Quindi abbandona la nave diretto verso il bersaglio.',
-            ), // Endof Component Phaserbank Typ-V
+                    'name'=>'Banchi phaser Tipo10 Mark II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Banchi phaser Tipo10 Mark II
 
-             // Component Phaserbank Typ-X
+             // Component Cannone Phaser Mark II
              3=>array(
-                    'name'=>'Banchi phaser Tipo-X',
-                    'description'=>'Le particelle subatomiche a breve vita (effetto rapido Nadion) possono rilasciare enormi forze nucleari se convogliate in un cristallo superconduttivo (alcune classi). L&#146;energia del sistema EPS di una nave &egrave; usato per produrre questo effetto. L&#146;energia dal sistema EPS viene portata tramite le linee di controllo alla camera di precombustione. Qui viene prodotto un raggio pulsante che viene passato nel cristallo emettitore e libera l&#146;effetto veloce di Nadion. Il raggio lascia il cristallo emettitore e passa al dispositivo di guida. Quindi abbandona la nave diretto verso il bersaglio.',
-            ), // Endof Component Phaserbank Typ-X
+                    'name'=>'Cannone Phaser Mark II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Cannone Phaser Mark II
 
-             // Component Phaserbank Typ-XI
+             // Component Banchi phaser Tipo9 Mark III
              4=>array(
-                    'name'=>'Banchi phaser Tipo-XI',
-                    'description'=>'Le particelle subatomiche a breve vita (effetto rapido Nadion) possono rilasciare enormi forze nucleari se convogliate in un cristallo superconduttivo (alcune classi). L&#146;energia del sistema EPS di una nave &egrave; usato per produrre questo effetto. L&#146;energia dal sistema EPS viene portata tramite le linee di controllo alla camera di precombustione. Qui viene prodotto un raggio pulsante che viene passato nel cristallo emettitore e libera l&#146;effetto veloce di Nadion. Il raggio lascia il cristallo emettitore e passa al dispositivo di guida. Quindi abbandona la nave diretto verso il bersaglio.',
-            ), // Endof Component Phaserbank Typ-XI
+                    'name'=>'Banchi phaser Tipo9 Mark III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Banchi phaser Tipo9 Mark III
 
-             // Component Phaserbank Typ-XII
+             // Component Banchi phaser Tipo10 Mark III
              5=>array(
-                    'name'=>'Banchi phaser Tipo-XII',
-                    'description'=>'Le particelle subatomiche a breve vita (effetto rapido Nadion) possono rilasciare enormi forze nucleari se convogliate in un cristallo superconduttivo (alcune classi). L&#146; energia del sistema EPS di una nave &egrave; usato per produrre questo effetto. L&#146;energia dal sistema EPS viene portata tramite le linee di controllo alla camera di precombustione. Qui viene prodotto un raggio pulsante che viene passato nel cristallo emettitore e libera l&#146;effetto veloce di Nadion. Il raggio lascia il cristallo emettitore e passa al dispositivo di guida. Quindi abbandona la nave diretto verso il bersaglio.',
-            ), // Endof Component Phaserbank Typ-XII
+                    'name'=>'Banchi phaser Tipo10 Mark II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Banchi phaser Tipo10 Mark II
 
-             // Component Impulsphaserkanone
+             // Component WOE Mark II
              6=>array(
-                    'name'=>'Cannone phaser ad impulso',
-                    'description'=>'Questo phaser funziona come un Disgregatore. L&#146;energia viene brevemente immagazzinata e poi rlasciata. Con l&#146;aggiunta diretta di plasma l&#146;effetto &egrave; ulteriormente rafforzato. L&#146;intensificazione usa un enorme quantitativo di energia al plasma e pu&ograve; portare ad un sovraccarico del sistema EPS.',
-            ), // Endof Component Impulsphaserkanone
+                    'name'=>'WOE Mark II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component WOE Mark II
+
+             // Component Cannone Phaser Mark III
+             7=>array(
+                    'name'=>'Cannone Phaser Mark III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Cannone Phaser Mark III
 
       'name'=>'Ponte armamenti I',
       ), // Endof Category Waffendeck I
@@ -143,95 +190,125 @@ $ship_components_locale=array(
 
         // Category Waffendeck II
         3=>array(
-             // Component Photonentorpedowerfer
+             // Component Lanciasiluri Mk II
              0=>array(
-                    'name'=>'Siluri fotonici',
-                    'description'=>'I siluri fotonici sono in servizio sulle navi della Flotta Stellare sin dai primi anni del 23esimo secolo<br>sono indipendenti dalla nave ed hanno un proprio sistema di propulsione e di guida. Un vantaggio &egrave; che possono anche essere usati a velocit&agrave; superiori della luce',
-            ), // Endof Component Photonentorpedowerfer
+                    'name'=>'Lanciasiluri Mk II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Lanciasiluri Mk II
 
-             // Component Photonentorpedowerfer II
+             // Component Lanciasiluri Mk III
              1=>array(
-                    'name'=>'Siluri fotonici Tipo II',
-                    'description'=>'I siluri fotonici sono in servizio sulle navi della Flotta Stellare sin dai primi anni del 23esimo secolo<br>sono indipendenti dalla nave ed hanno un proprio sistema di propulsione e di guida. Un vantaggio &egrave; che possono anche essere usati a velocit&agrave; superiori della luce',
-            ), // Endof Component Photonentorpedowerfer II
+                    'name'=>'Lanciasiluri Mk III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Lanciasiluri Mk III
 
-             // Component Quantentorpedowerfer M-X
+             // Component Lanciasiluri Mk IV
              2=>array(
-                    'name'=>'Siluri quantici M-X',
-                    'description'=>'Nei siluri quantici viene applicata una testata a filamenti quantici. I filamenti interagiscono tra di loro cosicch&eacute; viene rilasciata un enorme quantit&agrave; di energia. L&#146;involucro dei siluri quantici &egrave; differente da quello dei siluri fotonici sebbene ne mantengano la forma. Questi siluri richiedono uno speciale  lanciasiluri e sulle navi moderne viene applicato un lanciasiluri universale con cui poter lanciare anche siluri fotonici.',
-            ), // Endof Component Quantentorpedowerfer M-X
+                    'name'=>'Lanciasiluri Mk IV',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Lanciasiluri Mk IV
 
-             // Component Quantentorpedowerfer M-XI
+             // Component Siluro Fotonico Mk II
              3=>array(
-                    'name'=>'Siluri quantici M-XI',
-                    'description'=>'Nei siluri quantici viene applicata una testata a filamenti quantici. I filamenti interagiscono tra di loro cosicch&eacute; viene rilasciata un enorme quantit&agrave; di energia. L&#146;involucro dei siluri quantici &egrave; differente da quello dei siluri fotonici sebbene ne mantengano la forma. Questi siluri richiedono uno speciale  lanciasiluri e sulle navi moderne viene applicato un lanciasiluri universale con cui poter lanciare anche siluri fotonici.',
-            ), // Endof Component Quantentorpedowerfer M-XI
+                    'name'=>'Siluro Fotonico Mk II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Siluro Fotonico Mk II
 
-             // Component Quantentorpedowerfer M-XII
+             // Component Siluro Fotonico Mk III
              4=>array(
-                    'name'=>'Siluri quantici M-XII',
-                    'description'=>'Nei siluri quantici viene applicata una testata a filamenti quantici. I filamenti interagiscono tra di loro cosicch&eacute; viene rilasciata un enorme quantit&agrave; di energia. L&#146;involucro dei siluri quantici &egrave; differente da quello dei siluri fotonici sebbene ne mantengano la forma. Questi siluri richiedono uno speciale  lanciasiluri e sulle navi moderne viene applicato un lanciasiluri universale con cui poter lanciare anche siluri fotonici.',
-            ), // Endof Component Quantentorpedowerfer M-XII
+                    'name'=>'Siluro Fotonico Mk III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Siluro Fotonico Mk III
 
+             // Component Siluro Fotonico Mk IV
+             5=>array(
+                    'name'=>'Siluro Fotonico Mk IV',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Siluro Fotonico Mk IV
+            
+             // Component Lanciasiluri Mk V
+             6=>array(
+                    'name'=>'Lanciasiluri Mk V',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Lanciasiluri Mk V
+
+             // Component Siluri quantici MK I
+             7=>array(
+                    'name'=>'Siluri quantici MK I',
+                    'description'=>'Nei siluri quantici viene applicata una testata a filamenti quantici. I filamenti interagiscono tra di loro cosicch&eacute; viene rilasciata un enorme quantit&agrave; di energia. L&#146;involucro dei siluri quantici &egrave; differente da quello dei siluri fotonici sebbene ne mantengano la forma. Questi siluri richiedono uno speciale  lanciasiluri e sulle navi moderne viene applicato un lanciasiluri universale con cui poter lanciare anche siluri fotonici.',
+            ), // Endof Component Siluri quantici MK I
+            
       'name'=>'Ponte armamenti II',
       ), // Endof Category Waffendeck II
 
 
         // Category Hülle/Schilde
         4=>array(
-             // Component Regenerative Schildgitter
+             // Component Rivestimento I
              0=>array(
-                    'name'=>'Griglia scudi rigenerativi',
-                    'description'=>'La griglia di scudi rigenerativi sono una tecnologia sviluppata per navi relativamente deboli per le quali l&#146;integrita degli scudi pu&ograve; essere ristabilita pi&ugrave; velocemente ed efficientemente.',
-            ), // Endof Component Regenerative Schildgitter
+                    'name'=>'Rivestimento I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Rivestimento I
 
-             // Component Bioneurale Schilde
+             // Component Rivestimento II
              1=>array(
-                    'name'=>'Scudi bioneurali',
-                    'description'=>'Gli scudi bioneurali diventano necessari quando la performance dei normali scudi non &egrave; pi&ugrave; sufficiente.',
-            ), // Endof Component Bioneurale Schilde
+                    'name'=>'Rivestimento II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Rivestimento II
 
-             // Component Multiphasenschilde
+             // Component Scudo rigenerante I
              2=>array(
-                    'name'=>'Scudi multifasici',
-                    'description'=>'Gli scudi multifasici sono un miglioramento rispetto i normali scudi, perch&eacute; grazie a speciali tecnologie possono essere creati dei campi di forza multi-fase intorno alla nave in grado di assorbire anche l&#146;impatto di un forte bombardamento per un certo periodo.',
-            ), // Endof Component Multiphasenschilde
+                    'name'=>'Scudo rigenerante I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Scudo rigenerante I
 
-             // Component Verstärkte Hüllenpanzerung
+             // Component Scudo rigenerante II
              3=>array(
-                    'name'=>'Corazza rinforzata',
-                    'description'=>'Tramite una corazza rinforzata, usata anche dalle navi di classe incrociatore, gli shock energetici vengono assorbiti meglio.',
-            ), // Endof Component Verstärkte Hüllenpanzerung
+                    'name'=>'Scudo rigenerante II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Scudo rigenerante II
 
-             // Component Absorbierende Hüllenpanzerung
+             // Component Corazza ablativa I
              4=>array(
-                    'name'=>'Corazza assorbente',
-                    'description'=>'Questa corazza assorbe i colpi delle armi delle navi ostili e li converte in energia, per cui il proprio fabbisogno energetico &egrave; coperto.',
-            ), // Endof Component Absorbierende Hüllenpanzerung
+                    'name'=>'Corazza ablativa I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Corazza ablativa I
 
-             // Component Hüllenableitpanzerung
+             // Component Corazza ablativa II
              5=>array(
-                    'name'=>'Corazza ablativa',
-                    'description'=>'La corazza ablativa &egrave; formata da una serie di scudi con un&#146;alto potenziale assorbente ma richiede un notevole sforzo aggiuntivo da parte degli emettitori degli scudi.',
-            ), // Endof Component Hüllenableitpanzerung
+                    'name'=>'Corazza ablativa II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Corazza ablativa II
 
+             // Component Rotazione Armoniche I
+             6=>array(
+                    'name'=>'Rotazione Armoniche I',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Rotazione Armoniche I
+
+             // Component Rotazione Armoniche II
+             7=>array(
+                    'name'=>'Rotazione Armoniche II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Rotazione Armoniche II
+            
       'name'=>'Scafo/Scudi',
       ), // Endof Category Hülle/Schilde
 
 
         // Category Computersystem
         5=>array(
-             // Component LCARS Grundsystem
-             0=>array(
-                    'name'=>'Sistema base LCARS',
-                    'description'=>'Il sistema LCARS (Library Computer Access and Retrieval System) &egrave; la superfice e l&#146;interfaccia utente con cui sono equipaggiati i computer della Federazione.',
-            ), // Endof Component LCARS Grundsystem
-
              // Component LCARS 2.0
-             1=>array(
+             0=>array(
                     'name'=>'LCARS 2.0',
                     'description'=>'Il sistema LCARS (Library Computer Access and Retrieval System) &egrave; la superfice e l&#146;interfaccia utente con cui sono equipaggiati i computer della Federazione.',
             ), // Endof Component LCARS 2.0
+
+             // Component LCARS 2.1
+             1=>array(
+                    'name'=>'LCARS 2.1',
+                    'description'=>'Il sistema LCARS (Library Computer Access and Retrieval System) &egrave; la superfice e l&#146;interfaccia utente con cui sono equipaggiati i computer della Federazione.',
+            ), // Endof Component LCARS 2.1
 
              // Component LCARS 2.5
              2=>array(
@@ -245,17 +322,29 @@ $ship_components_locale=array(
                     'description'=>'Il sistema LCARS (Library Computer Access and Retrieval System) &egrave; la superfice e l&#146;interfaccia utente con cui sono equipaggiati i computer della Federazione.',
             ), // Endof Component LCARS 2.5 Rev.2
 
-             // Component LCARS 3.0
+             // Component LCARS 2.5 Rev.3
              4=>array(
+                    'name'=>'LCARS 2.5 Rev.3',
+                    'description'=>'Il sistema LCARS (Library Computer Access and Retrieval System) &egrave; la superfice e l&#146;interfaccia utente con cui sono equipaggiati i computer della Federazione.',
+            ), // Endof Component LCARS 2.5 Rev.23
+            //             
+             // Component LCARS 3.0
+             5=>array(
                     'name'=>'LCARS 3.0',
                     'description'=>'Il sistema LCARS (Library Computer Access and Retrieval System) &egrave; la superfice e l&#146;interfaccia utente con cui sono equipaggiati i computer della Federazione.',
             ), // Endof Component LCARS 3.0
 
-             // Component LCARS 3.0 (20 MegaQuads/sec)
-             5=>array(
-                    'name'=>'LCARS 3.0 (20 MegaQuads/sec)',
+             // Component LCARS 3.0 Rev.2
+             6=>array(
+                    'name'=>'LCARS 3.0 Rev.2',
                     'description'=>'Il sistema LCARS (Library Computer Access and Retrieval System) &egrave; la superfice e l&#146;interfaccia utente con cui sono equipaggiati i computer della Federazione.',
-            ), // Endof Component LCARS 3.0 (20 MegaQuads/sec)
+            ), // Endof Component LCARS 3.0 Rev.2
+            
+             // Component LCARS 3.0 Rev.3
+             7=>array(
+                    'name'=>'LCARS 3.0 Rev.3',
+                    'description'=>'Il sistema LCARS (Library Computer Access and Retrieval System) &egrave; la superfice e l&#146;interfaccia utente con cui sono equipaggiati i computer della Federazione.',
+            ), // Endof Component LCARS 3.0 Rev.3            
 
       'name'=>'Sistema informatico',
       ), // Endof Category Computersystem
@@ -265,30 +354,36 @@ $ship_components_locale=array(
         6=>array(
              // Component Umweltsysteme
              0=>array(
-                    'name'=>'Sistemi ambientali',
+                    'name'=>'Sistemi ambientali II',
                     'description'=>'Sistemi ambientali migliorati forniscono una risposta pi&ugrave; rapida in caso d&#146;emergenza e aumentano il livello d&#146;esperienza del&#146equipaggio.',
             ), // Endof Component Umweltsysteme
 
              // Component Ventilationssystem
              1=>array(
-                    'name'=>'Sistema ventilazione',
+                    'name'=>'Sistema ventilazione II',
                     'description'=>'Il sistema di ventilazione automatico fornisce una risposta pi&ugrave; rapida in caso di emergenza ed aumenta la prontezza e l&#146;esperienza del personale di bordo.',
             ), // Endof Component Ventilationssystem
 
              // Component Erw. Krankenstation
              2=>array(
-                    'name'=>'Stazione d&#146;infermeria',
+                    'name'=>'Stazione d&#146;infermeria II',
                     'description'=>'Una stazione d&#146;infermeria fornisce una rapida reazione in caso d&#146;emergenza, aumenta la prontezza ed incrementa i valori empirici dell&#146;equipaggio.',
             ), // Endof Component Erw. Krankenstation
 
-             // Component MHN
+             // Component Erw. Krankenstation
              3=>array(
+                    'name'=>'Stazione d&#146;infermeria III',
+                    'description'=>'Una stazione d&#146;infermeria fornisce una rapida reazione in caso d&#146;emergenza, aumenta la prontezza ed incrementa i valori empirici dell&#146;equipaggio.',
+            ), // Endof Component Erw. Krankenstation
+            //             
+             // Component MHN
+             4=>array(
                     'name'=>'MOE',
                     'description'=>'Il Medico Olografico d&#146;Emergenza (MOE) viene attivato quando in condizioni impossibili, il regolare supporto medico non pu&ograve; intervenire.',
             ), // Endof Component MHN
 
              // Component MHN II
-             4=>array(
+             5=>array(
                     'name'=>'MOE II',
                     'description'=>'Il Medico Olografico d&#146;Emergenza (MOE II) viene attivato quando in condizioni impossibili, il regolare supporto medico non pu&ograve; intervenire. Questa versione ha una personalt&agrave; maggiormente affabile e meno scorbutica rispetto la precedente .',
             ), // Endof Component MHN II
@@ -297,70 +392,46 @@ $ship_components_locale=array(
       ), // Endof Category Medizin. Einrichtungen
 
 
-        // Category Unterbringung
+        // Category Logistica
         7=>array(
-             // Component Mannschaftsquartiere I
+             // Component Stiva Siluri
              0=>array(
-                    'name'=>'Alloggi equipaggio I',
-                    'description'=>'Viene aumentato lo spazio disponibile per alloggiare le truppe sulla nave.',
-            ), // Endof Component Mannschaftsquartiere I
+                    'name'=>'Stiva Siluri',
+                    'description'=>'Flavor text Here.',
+            ), // Endof Component Stiva Siluri
 
-             // Component Mannschaftsquartiere II
+             // Component Stiva Siluri II
              1=>array(
-                    'name'=>'Alloggi equipaggio II',
-                    'description'=>'Viene aumentato lo spazio disponibile per alloggiare le truppe sulla nave.',
+                    'name'=>'Stiva Siluri II',
+                    'description'=>'Flavor Text Here.',
                     'dev_info'=>'',
-            ), // Endof Component Mannschaftsquartiere II
+            ), // Endof Component Stiva Siluri II
 
-             // Component Mannschaftsquartiere III
+             // Component Stiva Siluri III
              2=>array(
-                    'name'=>'Alloggi equipaggio III',
-                    'description'=>'Viene aumentato lo spazio disponibile per alloggiare le truppe sulla nave.',
-            ), // Endof Component Mannschaftsquartiere III
+                    'name'=>'Stiva Siluri III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Stiva Siluri III
 
-             // Component Mannschaftsquartiere IV
+             // Component Postazione Sperimentale
              3=>array(
-                    'name'=>'Alloggi equipaggio IV',
-                    'description'=>'Viene aumentato lo spazio disponibile per alloggiare le truppe sulla nave.',
-            ), // Endof Component Mannschaftsquartiere IV
+                    'name'=>'Postazione Sperimentale',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Postazione Sperimentale
 
-             // Component Mannschaftsquartiere V
+             // Component Stazione Sperimentale
              4=>array(
-                    'name'=>'Alloggi equipaggio V',
-                    'description'=>'Viene aumentato lo spazio disponibile per alloggiare le truppe sulla nave.',
-            ), // Endof Component Mannschaftsquartiere V
+                    'name'=>'Stazione Sperimentale',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Stazione Sperimentale
 
-             // Component Mannschaftsquartiere VI
+             // Component Laboratorio Sperimentale
              5=>array(
-                    'name'=>'Alloggi equipaggio VI',
-                    'description'=>'Viene aumentato lo spazio disponibile per alloggiare le truppe sulla nave.',
-            ), // Endof Component Mannschaftsquartiere VI
+                    'name'=>'Laboratorio Sperimentale',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Laboratorio Sperimentale
 
-             // Component Mannschaftsquartiere VII
-             6=>array(
-                    'name'=>'Alloggi equipaggio VII',
-                    'description'=>'Viene aumentato lo spazio disponibile per alloggiare le truppe sulla nave.',
-            ), // Endof Component Mannschaftsquartiere VII
-
-             // Component Mannschaftsquartiere VIII
-             7=>array(
-                    'name'=>'Alloggi equipaggio VIII',
-                    'description'=>'Viene aumentato lo spazio disponibile per alloggiare le truppe sulla nave.',
-            ), // Endof Component Mannschaftsquartiere VIII
-
-             // Component Mannschaftsquartiere IX
-             8=>array(
-                    'name'=>'Alloggi equipaggio IX',
-                    'description'=>'Viene aumentato lo spazio disponibile per alloggiare le truppe sulla nave.',
-            ), // Endof Component Mannschaftsquartiere IX
-
-             // Component Mannschaftsquartiere X
-             9=>array(
-                    'name'=>'Alloggi equipaggio X',
-                    'description'=>'Viene aumentato lo spazio disponibile per alloggiare le truppe sulla nave.',
-            ), // Endof Component Mannschaftsquartiere X
-
-      'name'=>'Alloggi',
+      'name'=>'Logistica',
       ), // Endof Category Unterbringung
 
 
@@ -392,8 +463,8 @@ $ship_components_locale=array(
 
              // Component Erw. Astronomie
              4=>array(
-                    'name'=>'Astronometria estesa',
-                    'description'=>'L&#146;astronometria estesa migliora la classificazione dei dati dei sensori.',
+                    'name'=>'Sensori a lungo raggio II',
+                    'description'=>'I sensori a lungo raggio aumentano la velocit&agrave; di scansione delle stelle lontane.',
             ), // Endof Component Erw. Astronomie
 
              // Component Stellare Astronomie
@@ -401,63 +472,75 @@ $ship_components_locale=array(
                     'name'=>'Laboratorio astronomia stellare',
                     'description'=>'Il laboratorio di astronomia stellare migliora enormemente il grado di risoluzione dei sensori.',
             ), // Endof Component Stellare Astronomie
+            
+             // Component Stellare Astronomie
+             6=>array(
+                    'name'=>'Laboratorio astronomia stellare II',
+                    'description'=>'Il laboratorio di astronomia stellare migliora enormemente il grado di risoluzione dei sensori.',
+            ), // Endof Component Stellare Astronomie
+            
+             // Component Stellare Astronomie
+             7=>array(
+                    'name'=>'Laboratorio astronomia stellare III',
+                    'description'=>'Il laboratorio di astronomia stellare migliora enormemente il grado di risoluzione dei sensori.',
+            ), // Endof Component Stellare Astronomie
 
       'name'=>'Sezione scientifica',
       ), // Endof Category Wissenschaftssektion
 
 
-        // Category Experimentelles
+        // Category Addestramento
         9=>array(
-             // Component Bioschilde
+             // Component Corso Base
              0=>array(
-                    'name'=>'Bioscudi',
-                    'description'=>'I bio scudi sono una nuova tecnologia che migliorano gli scudi bio neurali.',
-            ), // Endof Component Bioschilde
+                    'name'=>'Corso Base',
+                    'description'=>'Flavor text Here.',
+            ), // Endof Component Corso Base
 
-             // Component Regenerative Hüllenpanzerung
+             // Component Corso Avanzato
              1=>array(
-                    'name'=>'Corazza rigenerativa',
-                    'description'=>'La corazza rigenerativa pu&ograve; replicare le parti danneggiate e preservare in questo modo, per un certo periodo, l&#146;integrita strutturale in caso di perdita degli scudi.',
-            ), // Endof Component Regenerative Hüllenpanzerung
+                    'name'=>'Corso Avanzato',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Corso Avanzato
 
-             // Component Zielverfollgungssystem
+             // Component Corso Avanzato II
              2=>array(
-                    'name'=>'Sistema inseguimento bersaglio',
-                    'description'=>'Questo sistema migliora drasticamente l&#146;acquisizione del bersaglio delle navi di classe Nebula.',
-            ), // Endof Component Zielverfolgungssystem
+                    'name'=>'Corso Avanzato II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Corso Avanzato II
 
-             // Component Stufenangriffs Doktrien
+             // Component Corso Tattico Avanzato
              3=>array(
-                    'name'=>'Analizzatore di attacco',
-                    'description'=>'Il computer simula manovre d&#146;attacco e le possibili contromanovre.',
-            ), // Endof Component Stufenangriffs Doktrien
+                    'name'=>'Corso Tattico Avanzato',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Corso Tattico Avanzato
 
-             // Component M-X KI- Erfassung
+             // Component Corso Elite
              4=>array(
-                    'name'=>'Collettori M-X KI',
-                    'description'=>'Il sistema di collettori M-X KI consente un miglioramento dei sensori ed una ottimizzazione dei tempi di acquisizione del bersaglio.',
-            ), // Endof Component M-X KI- Erfassung
+                    'name'=>'Corso Elite',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Elite
 
-             // Component RemodulationsPhalanx
+             // Component Elite II
              5=>array(
-                    'name'=>'Falange rimodulante',
-                    'description'=>'Migliora il rendimento dei phaser tramite la rimodulazione del banco phaser con la frequenza armonica degli scudi avversari.',
-            ), // Endof Component RemodulationsPhalanx
+                    'name'=>'Corso Elite II',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Elite II
 
-             // Component Rapid-Launcher
+             // Component Elite III
              6=>array(
-                    'name'=>'Lanciatore rapido',
-                    'description'=>'Il lanciatore rapido, &egrave; un lanciasiluri migliorato che permette di lanciare costantemente senza la lunga sequenza di caricamento.',
-            ), // Endof Component Rapid-Launcher
+                    'name'=>'Corso Elite III',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Elite III
 
-            // Component Cloaking Device
+            // Component Corso Tattico Elite
              7=>array(
-                    'name'=>'Sistema di Occultamento',
-                    'description'=>'Questo sistema &egrave; frutto di uno scambio di tecnologie con l&#146;Impero Stellare Romulano effettuato ai tempi del primo conflitto contro il Dominio.',
-            ), // Endof Component Cloaking Device
+                    'name'=>'Corso Tattico Elite',
+                    'description'=>'Flavor Text Here.',
+            ), // Endof Component Corso Tattico Avanzato
             
-      'name'=>'Sperimentale',
-      ), // Endof Category Experimental
+      'name'=>'Addestramento',
+      ), // Endof Category Addestramento
 
 
 ), // Endof Race Federation

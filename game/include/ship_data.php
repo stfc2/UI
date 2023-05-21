@@ -296,17 +296,17 @@ $SHIP_TORSO = array(
 
 			18 => 215,   // Value5 (H�lle bzw. Hitpoins)
 
-			19 => 7,   // Value6 (Reaktionsgeschw.)
+			19 => 24,   // Value6 (Reaktionsgeschw.)
 
-			20 => 6,   // Value7 (Bereitschaft)
+			20 => 17,   // Value7 (Bereitschaft)
 
-			21 => 44,   // Value8 (Wendigkeit)
+			21 => 30,   // Value8 (Wendigkeit)
 
 			22 => 1,   // Value9 (Erfahrung)
 
 			23 => 6.5,   // Value10 (Warp)
 
-			24 => 33,   // Value11 (Sensoren)
+			24 => 26,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -371,17 +371,17 @@ $SHIP_TORSO = array(
 
 			18 => 258,   // Value5 (H�lle bzw. Hitpoins)
 
-			19 => 7,   // Value6 (Reaktionsgeschw.)
+			19 => 22,   // Value6 (Reaktionsgeschw.)
 
-			20 => 6,   // Value7 (Bereitschaft)
+			20 => 19,   // Value7 (Bereitschaft)
 
-			21 => 44,   // Value8 (Wendigkeit)
+			21 => 28,   // Value8 (Wendigkeit)
 
 			22 => 1,   // Value9 (Erfahrung)
 
 			23 => 6.5,   // Value10 (Warp)
 
-			24 => 33,   // Value11 (Sensoren)
+			24 => 26,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -431,11 +431,11 @@ $SHIP_TORSO = array(
 
 			10 => 5,  // Max Unit 4 (Commander)
 
-			11 => 9,  // Unit 5 (Offizier)
+			11 => 15,  // Unit 5 (Offizier)
 
 			12 => 3,  // Unit 6 (Medizinisches Personal)
 
-			13 => 841,  // Buildtime (in 5 Minuten Schritten)
+			13 => 1471,  // Buildtime (in 5 Minuten Schritten)
 
 			14 => 200,   // Value1 (Leichte Waffen)
 
@@ -443,9 +443,9 @@ $SHIP_TORSO = array(
 
 			16 => 18,   // Value3 (Planetare Waffen)
 
-			17 => 949,   // Value4 (Schildst�rke)
+			17 => 1828,   // Value4 (Schildst�rke)
 
-			18 => 1828,   // Value5 (H�lle bzw. Hitpoins)
+			18 => 949,   // Value5 (H�lle bzw. Hitpoins)
 
 			19 => 60,   // Value6 (Reaktionsgeschw.)
 
@@ -455,7 +455,7 @@ $SHIP_TORSO = array(
 
 			22 => 25,   // Value9 (Erfahrung)
 
-			23 => 8.2,   // Value10 (Warp)
+			23 => 9.5,   // Value10 (Warp)
 
 			24 => 48,   // Value11 (Sensoren)
 
@@ -535,7 +535,7 @@ $SHIP_TORSO = array(
 
 			23 => 6.5,   // Value10 (Warp)
 
-			24 => 37,   // Value11 (Sensoren)
+			24 => 45,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -609,7 +609,7 @@ $SHIP_TORSO = array(
 
 			22 => 10,   // Value9 (Erfahrung)
 
-			23 => 7.8,   // Value10 (Warp)
+			23 => 8.8,   // Value10 (Warp)
 
 			24 => 34,   // Value11 (Sensoren)
 
@@ -665,13 +665,13 @@ $SHIP_TORSO = array(
 
 			12 => 7,  // Unit 6 (Medizinisches Personal)
 
-			13 => 2465,  // Buildtime (in 5 Minuten Schritten)
+			13 => 1985,  // Buildtime (in 5 Minuten Schritten)
 
 			14 => 154,   // Value1 (Leichte Waffen)
 
 			15 => 231,   // Value2 (Schwere Waffen)
 
-			16 => 18,   // Value3 (Planetare Waffen)
+			16 => 98,   // Value3 (Planetare Waffen)
 
 			17 => 1146,   // Value4 (Schildst�rke)
 
@@ -747,7 +747,7 @@ $SHIP_TORSO = array(
 
 			15 => 231,   // Value2 (Schwere Waffen)
 
-			16 => 110,   // Value3 (Planetare Waffen)
+			16 => 220,   // Value3 (Planetare Waffen)
 
 			17 => 2207,   // Value4 (Schildst�rke)
 
@@ -775,7 +775,7 @@ $SHIP_TORSO = array(
 
 			29 => 'Galaxy',  // Name
 
-			30 => 2275,  // Ben�tige Arbeiter zum Bau
+			30 => 2075,  // Ben�tige Arbeiter zum Bau
 
 			31 => 'Die Galaxy zeichnet sich durch beeindruckende Kampfkraft aus. Obwohl als Forschungsschiff klassifiziert konnte diese Schiffsklasse ihr Kampfgeschick in jeder gr&ouml;&szlig;eren Schlacht der F&ouml;deration unter Beweis stellen. Was ihr an offensiver Bewaffnung fehlt macht sie locker duch ihre schweren Schilde und Panzerung wett. Einer Galaxy sollte man nur in Gruppen auf den Leib r&uuml;cken.',
                 
@@ -817,13 +817,13 @@ $SHIP_TORSO = array(
 
 			12 => 9,  // Unit 6 (Medizinisches Personal)
 
-			13 => 3476,  // Buildtime (in 5 Minuten Schritten)
+			13 => 3076,  // Buildtime (in 5 Minuten Schritten)
 
 			14 => 154,   // Value1 (Leichte Waffen)
 
 			15 => 231,   // Value2 (Schwere Waffen)
 
-			16 => 110,   // Value3 (Planetare Waffen)
+			16 => 220,   // Value3 (Planetare Waffen)
 
 			17 => 1254,   // Value4 (Schildst�rke)
 
@@ -893,13 +893,13 @@ $SHIP_TORSO = array(
 
 			12 => 11,  // Unit 6 (Medizinisches Personal)
 
-			13 => 3696,  // Buildtime (in 5 Minuten Schritten)
+			13 => 3216,  // Buildtime (in 5 Minuten Schritten)
 
 			14 => 154,   // Value1 (Leichte Waffen)
 
 			15 => 462,   // Value2 (Schwere Waffen)
 
-			16 => 110,   // Value3 (Planetare Waffen)
+			16 => 220,   // Value3 (Planetare Waffen)
 
 			17 => 4109,   // Value4 (Schildst�rke)
 
@@ -913,7 +913,7 @@ $SHIP_TORSO = array(
 
 			22 => 1,   // Value9 (Erfahrung)
 
-			23 => 7.1,   // Value10 (Warp)
+			23 => 9,   // Value10 (Warp)
 
 			24 => 40,   // Value11 (Sensoren)
 
@@ -1369,19 +1369,19 @@ $SHIP_TORSO = array(
 
 			18 => 135,   // Value5 (H�lle bzw. Hitpoints)
 
-			19 => 7,   // Value6 (Reaktionsgeschw.)
+			19 => 23,   // Value6 (Reaktionsgeschw.)
 
-			20 => 6,   // Value7 (Bereitschaft)
+			20 => 13,   // Value7 (Bereitschaft)
 
-			21 => 46,   // Value8 (Wendigkeit)
+			21 => 44,   // Value8 (Wendigkeit)
 
 			22 => 1,   // Value9 (Erfahrung)
 
 			23 => 6.5,   // Value10 (Warp)
 
-			24 => 22,   // Value11 (Sensoren)
+			24 => 28,   // Value11 (Sensoren)
 
-			25 => 5,   // Value12 (Tarnung)
+			25 => 18,   // Value12 (Tarnung)
 
 			26 => 100,   // Value13 (Energy Available)
 
@@ -1395,9 +1395,9 @@ $SHIP_TORSO = array(
 
 			31 => 'Die Talon Class ist eines der 2 Mittelklasse-Schiffe. Sie hat keinerlei besondere Fertigkeiten und ihre Kampfst&auml;rke ist dem Preis angemessen.',
                 
-                        32 => 2,  // Primary RoF
+                        32 => 4,  // Primary RoF
                 
-                        33 => 1,  // Secondary RoF
+                        33 => 2,  // Secondary RoF
                 
                         34 => 50,  // Max Torpedo                
 
@@ -1529,7 +1529,7 @@ $SHIP_TORSO = array(
 
 			22 => 1,   // Value9 (Erfahrung)
 
-			23 => 8.2,   // Value10 (Warp)
+			23 => 9,   // Value10 (Warp)
 
 			24 => 27,   // Value11 (Sensoren)
 
@@ -1585,7 +1585,7 @@ $SHIP_TORSO = array(
 
 			12 => 7,  // Unit 6 (Medizinisches Personal)
 
-			13 => 1933,  // Buildtime (in 5 Minuten Schritten)
+			13 => 1693,  // Buildtime (in 5 Minuten Schritten)
 
 			14 => 115,   // Value1 (Leichte Waffen)
 
@@ -1731,13 +1731,13 @@ $SHIP_TORSO = array(
 
 			12 => 9,  // Unit 6 (Medizinisches Personal)
 
-			13 => 2907,  // Buildtime (in 5 Minuten Schritten)
+			13 => 2187,  // Buildtime (in 5 Minuten Schritten)
 
 			14 => 115,   // Value1 (Leichte Waffen)
 
 			15 => 242,   // Value2 (Schwere Waffen)
 
-			16 => 115,   // Value3 (Planetare Waffen)
+			16 => 230,   // Value3 (Planetare Waffen)
 
 			17 => 2001,   // Value4 (Schildst�rke)
 
@@ -1807,13 +1807,13 @@ $SHIP_TORSO = array(
 
 			12 => 9,  // Unit 6 (Medizinisches Personal)
 
-			13 => 3634,  // Buildtime (in 5 Minuten Schritten)
+			13 => 2554,  // Buildtime (in 5 Minuten Schritten)
 
 			14 => 132,   // Value1 (Leichte Waffen)
 
 			15 => 242,   // Value2 (Schwere Waffen)
 
-			16 => 115,   // Value3 (Planetare Waffen)
+			16 => 230,   // Value3 (Planetare Waffen)
 
 			17 => 3324,   // Value4 (Schildst�rke)
 
@@ -1885,11 +1885,11 @@ $SHIP_TORSO = array(
 
 			13 => 3864,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 150,   // Value1 (Leichte Waffen)
+			14 => 132,   // Value1 (Leichte Waffen)
 
 			15 => 242,   // Value2 (Schwere Waffen)
 
-			16 => 115,   // Value3 (Planetare Waffen)
+			16 => 230,   // Value3 (Planetare Waffen)
 
 			17 => 10886,   // Value4 (Schildst�rke)
 
@@ -1897,21 +1897,21 @@ $SHIP_TORSO = array(
 
 			19 => 27,   // Value6 (Reaktionsgeschw.)
 
-			20 => 48,   // Value7 (Bereitschaft)
+			20 => 44,   // Value7 (Bereitschaft)
 
 			21 => 20,   // Value8 (Wendigkeit)
 
 			22 => 48,   // Value9 (Erfahrung)
 
-			23 => 7.8,   // Value10 (Warp)
+			23 => 9,   // Value10 (Warp)
 
-			24 => 65,   // Value11 (Sensoren)
+			24 => 38,   // Value11 (Sensoren)
 
-			25 => 36,   // Value12 (Tarnung)
+			25 => 24,   // Value12 (Tarnung)
 
-			26 => 340,   // Value13 (Energy Available)
+			26 => 361,   // Value13 (Energy Available)
 
-			27 => 315,   // Value14 (Used Energy)
+			27 => 300,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
@@ -2367,19 +2367,19 @@ $SHIP_TORSO = array(
 
 			18 => 282,   // Value5 (H�lle bzw. Hitpoins)
 
-			19 => 6,   // Value6 (Reaktionsgeschw.)
+			19 => 15,   // Value6 (Reaktionsgeschw.)
 
-			20 => 5,   // Value7 (Bereitschaft)
+			20 => 29,   // Value7 (Bereitschaft)
 
-			21 => 20,   // Value8 (Wendigkeit)
+			21 => 24,   // Value8 (Wendigkeit)
 
 			22 => 1,   // Value9 (Erfahrung)
 
 			23 => 5.85,   // Value10 (Warp)
 
-			24 => 5,   // Value11 (Sensoren)
+			24 => 25,   // Value11 (Sensoren)
 
-			25 => 8,   // Value12 (Tarnung)
+			25 => 14,   // Value12 (Tarnung)
 
 			26 => 100,   // Value13 (Energy Available)
 
@@ -2553,11 +2553,11 @@ $SHIP_TORSO = array(
 
 	    7 => array(
 
-			0 => 81545,  // Metal
+			0 => 61159,  // Metal
 
-			1 => 81545,  // Minerals
+			1 => 61159,  // Minerals
 
-			2 => 64903,  // Latinum
+			2 => 48677,  // Latinum
 
 			3 => 113,  // Min. Unit 1(L. Infanterie)
 
@@ -2699,11 +2699,11 @@ $SHIP_TORSO = array(
 
 	    9 => array(
 
-			0 => 122633,  // Metal
+			0 => 91975,  // Metal
 
-			1 => 122633,  // Minerals
+			1 => 91975,  // Minerals
 
-			2 => 97606,  // Latinum
+			2 => 73205,  // Latinum
 
 			3 => 135,  // Min. Unit 1(L. Infanterie)
 
@@ -2725,13 +2725,13 @@ $SHIP_TORSO = array(
 
 			12 => 7,  // Unit 6 (Medizinisches Personal)
 
-			13 => 2275,  // Buildtime (in 5 Minuten Schritten)
+			13 => 1528,  // Buildtime (in 5 Minuten Schritten)
 
 			14 => 220,   // Value1 (Leichte Waffen)
 
 			15 => 252,   // Value2 (Schwere Waffen)
 
-			16 => 115,   // Value3 (Planetare Waffen)
+			16 => 230,   // Value3 (Planetare Waffen)
 
 			17 => 1013,   // Value4 (Schildst�rke)
 
@@ -2871,13 +2871,13 @@ $SHIP_TORSO = array(
 
 			12 => 9,  // Unit 6 (Medizinisches Personal)
 
-			13 => 3024,  // Buildtime (in 5 Minuten Schritten)
+			13 => 2284,  // Buildtime (in 5 Minuten Schritten)
 
 			14 => 220,   // Value1 (Leichte Waffen)
 
 			15 => 252,   // Value2 (Schwere Waffen)
 
-			16 => 115,   // Value3 (Planetare Waffen)
+			16 => 230,   // Value3 (Planetare Waffen)
 
 			17 => 3071,   // Value4 (Schildst�rke)
 
@@ -3335,7 +3335,7 @@ $SHIP_TORSO = array(
 
 			13 => 454,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 110,   // Value1 (Leichte Waffen)
+			14 => 125,   // Value1 (Leichte Waffen)
 
 			15 => 0,   // Value2 (Schwere Waffen)
 
@@ -3347,15 +3347,15 @@ $SHIP_TORSO = array(
 
 			19 => 6,   // Value6 (Reaktionsgeschw.)
 
-			20 => 5,   // Value7 (Bereitschaft)
+			20 => 16,   // Value7 (Bereitschaft)
 
-			21 => 26,   // Value8 (Wendigkeit)
+			21 => 15,   // Value8 (Wendigkeit)
 
 			22 => 1,   // Value9 (Erfahrung)
 
 			23 => 5.85,   // Value10 (Warp)
 
-			24 => 12,   // Value11 (Sensoren)
+			24 => 28,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -3553,27 +3553,27 @@ $SHIP_TORSO = array(
 
 			13 => 1589,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 110,   // Value1 (Leichte Waffen)
+			14 => 145,   // Value1 (Leichte Waffen)
 
 			15 => 0,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 614,   // Value4 (Schildst�rke)
+			17 => 714,   // Value4 (Schildst�rke)
 
-			18 => 823,   // Value5 (H�lle bzw. Hitpoins)
+			18 => 1045,   // Value5 (H�lle bzw. Hitpoins)
 
 			19 => 6,   // Value6 (Reaktionsgeschw.)
 
 			20 => 13,   // Value7 (Bereitschaft)
 
-			21 => 16,   // Value8 (Wendigkeit)
+			21 => 18,   // Value8 (Wendigkeit)
 
 			22 => 1,   // Value9 (Erfahrung)
 
 			23 => 5.85,   // Value10 (Warp)
 
-			24 => 12,   // Value11 (Sensoren)
+			24 => 29,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -3700,7 +3700,7 @@ $SHIP_TORSO = array(
 
 			13 => 2389,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 110,   // Value1 (Leichte Waffen)
+			14 => 165,   // Value1 (Leichte Waffen)
 
 			15 => 0,   // Value2 (Schwere Waffen)
 
@@ -3720,7 +3720,7 @@ $SHIP_TORSO = array(
 
 			23 => 5.85,   // Value10 (Warp)
 
-			24 => 12,   // Value11 (Sensoren)
+			24 => 35,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -4316,9 +4316,9 @@ $SHIP_TORSO = array(
 
 			22 => 1,   // Value9 (Erfahrung)
 
-			23 => 5.85,   // Value10 (Warp)
+			23 => 6.1,   // Value10 (Warp)
 
-			24 => 38,   // Value11 (Sensoren)
+			24 => 18,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -4396,7 +4396,7 @@ $SHIP_TORSO = array(
 
 			23 => 5.85,   // Value10 (Warp)
 
-			24 => 43,   // Value11 (Sensoren)
+			24 => 30,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -4665,9 +4665,9 @@ $SHIP_TORSO = array(
 
 			14 => 188,   // Value1 (Leichte Waffen)
 
-			15 => 394,   // Value2 (Schwere Waffen)
+			15 => 0,   // Value2 (Schwere Waffen)
 
-			16 => 125,   // Value3 (Planetare Waffen)
+			16 => 0,   // Value3 (Planetare Waffen)
 
 			17 => 3656,   // Value4 (Schildst�rke)
 
@@ -4689,7 +4689,7 @@ $SHIP_TORSO = array(
 
 			26 => 200,   // Value13 (Energy Available)
 
-			27 => 200,   // Value14 (Used Energy)
+			27 => 180,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
@@ -4701,9 +4701,9 @@ $SHIP_TORSO = array(
                 
                         32 => 19,  // Primary RoF
                 
-                        33 => 10,  // Secondary RoF
+                        33 => 0,  // Secondary RoF
                 
-                        34 => 250,  // Max Torpedo                
+                        34 => 0,  // Max Torpedo                
 
 	    ),
 
@@ -4814,9 +4814,9 @@ $SHIP_TORSO = array(
 
 			14 => 188,   // Value1 (Leichte Waffen)
 
-			15 => 394,   // Value2 (Schwere Waffen)
+			15 => 0,   // Value2 (Schwere Waffen)
 
-			16 => 125,   // Value3 (Planetare Waffen)
+			16 => 0,   // Value3 (Planetare Waffen)
 
 			17 => 7872,   // Value4 (Schildst�rke)
 
@@ -4838,7 +4838,7 @@ $SHIP_TORSO = array(
 
 			26 => 300,   // Value13 (Energy Available)
 
-			27 => 300,   // Value14 (Used Energy)
+			27 => 280,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
@@ -4850,9 +4850,9 @@ $SHIP_TORSO = array(
                 
                         32 => 30,  // Primary RoF
                 
-                        33 => 20,  // Secondary RoF
+                        33 => 0,  // Secondary RoF
                 
-                        34 => 400,  // Max Torpedo                
+                        34 => 0,  // Max Torpedo                
 
 	    ),
 
@@ -4939,13 +4939,91 @@ $SHIP_TORSO = array(
 
 	    0 => array(
 
-			0 => 4425, // Metal
+			0 => 3528, // Metal
 
-			1 => 3300, // Minerals
+			1 => 3528, // Minerals
 
-			2 => 4900, // Latinum 
+			2 => 2808, // Latinum 
 
 			3 => 2, // Min. Unit 1(L. Infanterie)
+
+			4 => 0, // Min. Unit 2 (Sturmtruppe)
+
+			5 => 0, // Min. Unit 3 (Hazard Team)
+
+			6 => 0, // Min. Unit 4 (Commander)
+
+			7 => 2, // Max Unit 1 (L. Infanterie)
+
+			8 => 0, // Max Unit 2 (Sturmtruppe)
+
+			9 => 0, // Max Unit 3 (Hazard Team)
+
+			10 => 0, // Max Unit 4 (Commander)
+
+			11 => 0, // Unit 5 (Offizier)
+
+			12 => 0, // Unit 6 (Medizinisches Personal)
+
+			13 => 60, // Buildtime (in 5 Minuten Schritten)
+
+			14 => 60, // Value1 (Leichte Waffen)
+
+			15 => 0, // Value2 (Schwere Waffen)
+
+			16 => 0, // Value3 (Planetare Waffen)
+
+			17 => 50, // Value4 (Schildst�rke)
+
+			18 => 50, // Value5 (H�lle bzw. Hitpoins)
+
+			19 => 4, // Value6 (Reaktionsgeschw.)
+
+			20 => 4, // Value7 (Bereitschaft)
+
+			21 => 15, // Value8 (Wendigkeit)
+
+			22 => 10, // Value9 (Erfahrung)
+
+			23 => 6.0, // Value10 (Warp)
+
+			24 => 18, // Value11 (Sensoren)
+
+			25 => 0, // Value12 (Tarnung)
+
+			26 => 20, // Value13 (Energy Available)
+
+			27 => 20, // Value14 (Used Energy)
+
+			28 => 0, // Auf 0 lassen
+
+			29 => 'Scout', // Name
+
+			30 => 72, // Ben�tige Arbeiter zum Bau
+
+			31 => 'Das Scout Schiff ist zum Spionieren gedacht und nicht als Angriffsschiff geeignet.',
+
+                        32 => 1,  // Primary RoF
+                
+                        33 => 0,  // Secondary RoF
+                
+                        34 => 0  // Max Torpedo                
+
+			),
+
+
+
+    	// Transporter
+
+	    1 => array(
+
+			0 => 7056, // Metal
+
+			1 => 7056, // Minerals
+
+			2 => 5616, // Latinum
+
+			3 => 10, // Min. Unit 1(L. Infanterie)
 
 			4 => 0, // Min. Unit 2 (Sturmtruppe)
 
@@ -4959,121 +5037,55 @@ $SHIP_TORSO = array(
 
 			9 => 0, // Max Unit 3 (Hazard Team)
 
-			10 => 1, // Max Unit 4 (Commander)
+			10 => 0, // Max Unit 4 (Commander)
 
 			11 => 0, // Unit 5 (Offizier)
 
 			12 => 0, // Unit 6 (Medizinisches Personal)
 
-			13 => 43, // Buildtime (in 5 Minuten Schritten)
+			13 => 120, // Buildtime (in 5 Minuten Schritten)
 
-			14 => 0, // Value1 (Leichte Waffen)
+			14 => 60, // Value1 (Leichte Waffen)
 
 			15 => 0, // Value2 (Schwere Waffen)
 
 			16 => 0, // Value3 (Planetare Waffen)
 
-			17 => 0, // Value4 (Schildst�rke)
+			17 => 80, // Value4 (Schildst�rke)
 
-			18 => 9.5, // Value5 (H�lle bzw. Hitpoins)
+			18 => 80, // Value5 (H�lle bzw. Hitpoins)
 
 			19 => 4, // Value6 (Reaktionsgeschw.)
 
 			20 => 2, // Value7 (Bereitschaft)
 
-			21 => 10, // Value8 (Wendigkeit)
-
-			22 => 8, // Value9 (Erfahrung)
-
-			23 => 5.8, // Value10 (Warp)
-
-			24 => 8, // Value11 (Sensoren)
-
-			25 => 0, // Value12 (Tarnung)
-
-			26 => 7, // Value13 (Energy Available)
-
-			27 => 2, // Value14 (Used Energy)
-
-			28 => 0, // Auf 0 lassen
-
-			29 => 'Scout', // Name
-
-			30 => 22, // Ben�tige Arbeiter zum Bau
-
-			31 => 'Das Scout Schiff ist zum Spionieren gedacht und nicht als Angriffsschiff geeignet.',
-
-			),
-
-
-
-    	// Transporter
-
-	    1 => array(
-
-			0 => 5175, // Metal
-
-			1 => 8663, // Minerals
-
-			2 => 7630, // Latinum
-
-			3 => 10, // Min. Unit 1(L. Infanterie)
-
-			4 => 0, // Min. Unit 2 (Sturmtruppe)
-
-			5 => 0, // Min. Unit 3 (Hazard Team)
-
-			6 => 1, // Min. Unit 4 (Commander)
-
-			7 => 20, // Max Unit 1 (L. Infanterie)
-
-			8 => 0, // Max Unit 2 (Sturmtruppe)
-
-			9 => 0, // Max Unit 3 (Hazard Team)
-
-			10 => 1, // Max Unit 4 (Commander)
-
-			11 => 0, // Unit 5 (Offizier)
-
-			12 => 1, // Unit 6 (Medizinisches Personal)
-
-			13 => 67, // Buildtime (in 5 Minuten Schritten)
-
-			14 => 15, // Value1 (Leichte Waffen)
-
-			15 => 0, // Value2 (Schwere Waffen)
-
-			16 => 0, // Value3 (Planetare Waffen)
-
-			17 => 4.5, // Value4 (Schildst�rke)
-
-			18 => 18, // Value5 (H�lle bzw. Hitpoins)
-
-			19 => 2, // Value6 (Reaktionsgeschw.)
-
-			20 => 1, // Value7 (Bereitschaft)
-
 			21 => 5, // Value8 (Wendigkeit)
 
-			22 => 5, // Value9 (Erfahrung)
+			22 => 10, // Value9 (Erfahrung)
 
-			23 => 4.2, // Value10 (Warp)
+			23 => 6.0, // Value10 (Warp)
 
-			24 => 4, // Value11 (Sensoren)
+			24 => 12, // Value11 (Sensoren)
 
 			25 => 0, // Value12 (Tarnung)
 
-			26 => 8, // Value13 (Energy Available)
+			26 => 30, // Value13 (Energy Available)
 
-			27 => 4, // Value14 (Used Energy)
+			27 => 30, // Value14 (Used Energy)
 
 			28 => 0, // Auf 0 lassen
 
 			29 => 'Transporter', // Name
 
-			30 => 77, // Ben�tige Arbeiter zum Bau
+			30 => 144, // Ben�tige Arbeiter zum Bau
 
 			31 => 'Mit dem Transporter kann man entweder Rohstoffe bzw. Einheiten transportieren, oder sie mit auf einen Angriff schicken und Rohstoffe vom angegriffenen Planeten mitnehmen lassen.',
+                
+                        32 => 1,  // Primary RoF
+                
+                        33 => 0,  // Secondary RoF
+                
+                        34 => 0  // Max Torpedo                
 
 			),
 
@@ -5083,140 +5095,152 @@ $SHIP_TORSO = array(
 
 	    2 => array(
 
-			0 => 67575, // Metal
+			0 => 70560, // Metal
 
-			1 => 35063, // Minerals
+			1 => 70560, // Minerals
 
-			2 => 60150, // Latinum
+			2 => 56160, // Latinum
 
-			3 => 150, // Min. Unit 1(L. Infanterie)
+			3 => 0, // Min. Unit 1(L. Infanterie)
 
 			4 => 0, // Min. Unit 2 (Sturmtruppe)
 
 			5 => 0, // Min. Unit 3 (Hazard Team)
 
-			6 => 4, // Min. Unit 4 (Commander)
+			6 => 2, // Min. Unit 4 (Commander)
 
-			7 => 200, // Max Unit 1 (L. Infanterie)
+			7 => 265, // Max Unit 1 (L. Infanterie)
 
-			8 => 0, // Max Unit 2 (Sturmtruppe)
+			8 => 106, // Max Unit 2 (Sturmtruppe)
 
-			9 => 0, // Max Unit 3 (Hazard Team)
+			9 => 114, // Max Unit 3 (Hazard Team)
 
-			10 => 6, // Max Unit 4 (Commander)
+			10 => 2, // Max Unit 4 (Commander)
 
-			11 => 6, // Unit 5 (Offizier)
+			11 => 8, // Unit 5 (Offizier)
 
 			12 => 5, // Unit 6 (Medizinisches Personal)
 
-			13 => 287, // Buildtime (in 5 Minuten Schritten)
+			13 => 300, // Buildtime (in 5 Minuten Schritten)
 
-			14 => 10, // Value1 (Leichte Waffen)
+			14 => 20, // Value1 (Leichte Waffen)
 
 			15 => 0, // Value2 (Schwere Waffen)
 
 			16 => 0, // Value3 (Planetare Waffen)
 
-			17 => 9.5, // Value4 (Schildst�rke)
+			17 => 50, // Value4 (Schildst�rke)
 
-			18 => 47.5, // Value5 (H�lle bzw. Hitpoins)
+			18 => 100, // Value5 (H�lle bzw. Hitpoins)
 
-			19 => 0, // Value6 (Reaktionsgeschw.)
+			19 => 1, // Value6 (Reaktionsgeschw.)
 
-			20 => 0, // Value7 (Bereitschaft)
+			20 => 4, // Value7 (Bereitschaft)
 
-			21 => 0, // Value8 (Wendigkeit)
+			21 => 1, // Value8 (Wendigkeit)
 
-			22 => 0, // Value9 (Erfahrung)
+			22 => 10, // Value9 (Erfahrung)
 
-			23 => 4, // Value10 (Warp)
+			23 => 6.0, // Value10 (Warp)
 
-			24 => 0, // Value11 (Sensoren)
+			24 => 10, // Value11 (Sensoren)
 
 			25 => 0, // Value12 (Tarnung)
 
-			26 => 12, // Value13 (Energy Available)
+			26 => 40, // Value13 (Energy Available)
 
-			27 => 5, // Value14 (Used Energy)
+			27 => 40, // Value14 (Used Energy)
 
 			28 => 0, // Auf 0 lassen
 
 			29 => 'Kolonisationsschiff', // Name
 
-			30 => 1197, // Ben�tige Arbeiter zum Bau
+			30 => 2880, // Ben�tige Arbeiter zum Bau
 
 			31 => 'Mit dem Kolonieschiff kannst du einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerst&ouml;rt hast, geht das Kolonieschiff verloren (da seine Holoemitter zur Simulation erster Einrichtungen demontiert werden) und der Planet steht unter deinem Kommando.',
+                
+                        32 => 1,  // Primary RoF
+                
+                        33 => 0,  // Secondary RoF
+                
+                        34 => 0  // Max Torpedo                                
 
 			),
 
 
-	 	// Totes Temp
+	 	// Marauder
 
 	    3 => array(
 
-			0 => 100000000,  // Metal
+			0 => 19820,  // Metal
 
-			1 => 1,  // Minerals
+			1 => 19820,  // Minerals
 
-			2 => 1,  // Latinum
+			2 => 15795,  // Latinum
 
-			3 => 1,  // Min. Unit 1(Centurion)
+			3 => 30,  // Min. Unit 1(Centurion)
 
-			4 => 1,  // Min. Unit 2 (Rem. Truppen)
+			4 => 0,  // Min. Unit 2 (Rem. Truppen)
 
-			5 => 1,  // Min. Unit 3 (Tal Shiar)
+			5 => 0,  // Min. Unit 3 (Tal Shiar)
 
 			6 => 1,  // Min. Unit 4 (Commander)
 
-			7 => 1,  // Max Unit 1 (Centurion)
+			7 => 30,  // Max Unit 1 (Centurion)
 
-			8 => 1,  // Max Unit 2 (Rem. Truppen)
+			8 => 0,  // Max Unit 2 (Rem. Truppen)
 
-			9 => 1,  // Max Unit 3 (Tal Shiar)
+			9 => 0,  // Max Unit 3 (Tal Shiar)
 
 			10 => 1,  // Max Unit 4 (Commander)
 
-			11 => 1,  // Unit 5 (Offizier)
+			11 => 2,  // Unit 5 (Offizier)
 
 			12 => 1,  // Unit 6 (Medizinisches Personal)
 
-			13 => 1,  // Buildtime (in 5 Minuten Schritten)
+			13 => 324,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 1,   // Value1 (Leichte Waffen)
+			14 => 100,   // Value1 (Leichte Waffen)
 
-			15 => 1,   // Value2 (Schwere Waffen)
+			15 => 210,   // Value2 (Schwere Waffen)
 
-			16 => 1,   // Value3 (Planetare Waffen)
+			16 => 2,   // Value3 (Planetare Waffen)
 
-			17 => 1,   // Value4 (Schildst�rke)
+			17 => 223,   // Value4 (Schildst�rke)
 
-			18 => 1,   // Value5 (H�lle bzw. Hitpoints)
+			18 => 352,   // Value5 (H�lle bzw. Hitpoints)
 
-			19 => 1,   // Value6 (Reaktionsgeschw.)
+			19 => 6,   // Value6 (Reaktionsgeschw.)
 
-			20 => 1,   // Value7 (Bereitschaft)
+			20 => 5,   // Value7 (Bereitschaft)
 
-			21 => 1,   // Value8 (Wendigkeit)
+			21 => 40,   // Value8 (Wendigkeit)
 
-			22 => 1,   // Value9 (Erfahrung)
+			22 => 10,   // Value9 (Erfahrung)
 
-			23 => 1,   // Value10 (Warp)
+			23 => 6.5,   // Value10 (Warp)
 
-			24 => 1,   // Value11 (Sensoren)
+			24 => 10,   // Value11 (Sensoren)
 
-			25 => 1,   // Value12 (Tarnung)
+			25 => 0,   // Value12 (Tarnung)
 
-			26 => 1,   // Value13 (Energy Available)
+			26 => 100,   // Value13 (Energy Available)
 
-			27 => 1,   // Value14 (Used Energy)
+			27 => 80,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Scavenger',  // Name
+			29 => 'Marauder',  // Name
 
-			30 => 1,  // Ben�tige Arbeiter zum Bau
+			30 => 405,  // Ben�tige Arbeiter zum Bau
 
 			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
+                
+                        32 => 4,  // Primary RoF
+                
+                        33 => 3,  // Secondary RoF
+                
+                        34 => 50  // Max Torpedo                                                
 
 			),
 
@@ -5504,73 +5528,79 @@ $SHIP_TORSO = array(
 
 			),
 
-	 	// Totes Temp
+	    // D&acute;Kora-Class
 
 	    8 => array(
 
-			0 => 100000000,  // Metal
+			0 => 137261,  // Metal
 
-			1 => 1,  // Minerals
+			1 => 137261,  // Minerals
 
-			2 => 1,  // Latinum
+			2 => 109249,  // Latinum
 
-			3 => 1,  // Min. Unit 1(Centurion)
+			3 => 150,  // Min. Unit 1(Centurion)
 
-			4 => 1,  // Min. Unit 2 (Rem. Truppen)
+			4 => 0,  // Min. Unit 2 (Rem. Truppen)
 
-			5 => 1,  // Min. Unit 3 (Tal Shiar)
+			5 => 0,  // Min. Unit 3 (Tal Shiar)
 
-			6 => 1,  // Min. Unit 4 (Commander)
+			6 => 3,  // Min. Unit 4 (Commander)
 
-			7 => 1,  // Max Unit 1 (Centurion)
+			7 => 150,  // Max Unit 1 (Centurion)
 
-			8 => 1,  // Max Unit 2 (Rem. Truppen)
+			8 => 0,  // Max Unit 2 (Rem. Truppen)
 
-			9 => 1,  // Max Unit 3 (Tal Shiar)
+			9 => 0,  // Max Unit 3 (Tal Shiar)
 
-			10 => 1,  // Max Unit 4 (Commander)
+			10 => 3,  // Max Unit 4 (Commander)
 
-			11 => 1,  // Unit 5 (Offizier)
+			11 => 12,  // Unit 5 (Offizier)
 
-			12 => 1,  // Unit 6 (Medizinisches Personal)
+			12 => 6,  // Unit 6 (Medizinisches Personal)
 
-			13 => 1,  // Buildtime (in 5 Minuten Schritten)
+			13 => 2241,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 1,   // Value1 (Leichte Waffen)
+			14 => 100,   // Value1 (Leichte Waffen)
 
-			15 => 1,   // Value2 (Schwere Waffen)
+			15 => 210,   // Value2 (Schwere Waffen)
 
-			16 => 1,   // Value3 (Planetare Waffen)
+			16 => 13,   // Value3 (Planetare Waffen)
 
-			17 => 1,   // Value4 (Schildst�rke)
+			17 => 819,   // Value4 (Schildst�rke)
 
-			18 => 1,   // Value5 (H�lle bzw. Hitpoints)
+			18 => 1290,   // Value5 (H�lle bzw. Hitpoints)
 
-			19 => 1,   // Value6 (Reaktionsgeschw.)
+			19 => 6,   // Value6 (Reaktionsgeschw.)
 
-			20 => 1,   // Value7 (Bereitschaft)
+			20 => 11,   // Value7 (Bereitschaft)
 
-			21 => 1,   // Value8 (Wendigkeit)
+			21 => 22,   // Value8 (Wendigkeit)
 
-			22 => 1,   // Value9 (Erfahrung)
+			22 => 10,   // Value9 (Erfahrung)
 
-			23 => 1,   // Value10 (Warp)
+			23 => 6.5,   // Value10 (Warp)
 
-			24 => 1,   // Value11 (Sensoren)
+			24 => 15,   // Value11 (Sensoren)
 
-			25 => 1,   // Value12 (Tarnung)
+			25 => 0,   // Value12 (Tarnung)
 
-			26 => 1,   // Value13 (Energy Available)
+			26 => 180,   // Value13 (Energy Available)
 
-			27 => 1,   // Value14 (Used Energy)
+			27 => 160,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'D&acute;Kora-Class',  // Name
 
-			30 => 1,  // Ben�tige Arbeiter zum Bau
+			30 => 3160,  // Ben�tige Arbeiter zum Bau
 
 			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
+                
+                        32 => 8,  // Primary RoF
+                
+                        33 => 6,  // Secondary RoF
+                
+                        34 => 85  // Max Torpedo                                                                
 
 			),
 
@@ -5934,9 +5964,86 @@ $SHIP_TORSO = array(
 
 
 
-	// Q
+	// Orion Pirates
 
-    7 => array(),
+    7 => array(
+        
+            3 => array(
+
+                    0 => 50000,  // Metal
+
+                    1 => 50000,  // Minerals
+
+                    2 => 50000,  // Latinum
+
+                    13 => 252,  // Buildtime (in 5 Minuten Schritten)
+
+                    29 => 'Lookout',  // Name
+
+                    30 => 500,  // Ben�tige Arbeiter zum Bau                
+                
+            ),
+        
+            4 => array(
+
+			0 => 50000,  // Metal
+
+			1 => 50000,  // Minerals
+
+			2 => 50000,  // Latinum
+
+			13 => 252,  // Buildtime (in 5 Minuten Schritten)
+
+			29 => 'Corsair',  // Name
+
+			30 => 500,  // Ben�tige Arbeiter zum Bau                
+            ),
+        
+            6 => array(
+
+			0 => 50000,  // Metal
+
+			1 => 50000,  // Minerals
+
+			2 => 50000,  // Latinum
+
+			13 => 252,  // Buildtime (in 5 Minuten Schritten)
+
+			29 => 'Predator',  // Name
+
+			30 => 500,  // Ben�tige Arbeiter zum Bau                
+            ),
+        
+            8 => array(
+
+			0 => 50000,  // Metal
+
+			1 => 50000,  // Minerals
+
+			2 => 50000,  // Latinum
+
+			13 => 252,  // Buildtime (in 5 Minuten Schritten)
+
+			29 => 'Marauder',  // Name
+
+			30 => 500,  // Ben�tige Arbeiter zum Bau                
+            ),
+        
+            10 => array(
+
+			0 => 50000,  // Metal
+
+			1 => 50000,  // Minerals
+
+			2 => 50000,  // Latinum
+
+			13 => 252,  // Buildtime (in 5 Minuten Schritten)
+
+			29 => 'Slavemaster',  // Name
+
+			30 => 500,  // Ben�tige Arbeiter zum Bau                
+            ),        
+    ),
 
 
 
@@ -6022,69 +6129,75 @@ $SHIP_TORSO = array(
 
 	    1 => array(
 
-			0 => 4280,  // Metal
+			0 => 7762,  // Metal
 
-			1 => 7363,  // Minerals
+			1 => 7762,  // Minerals
 
-			2 => 5220,  // Latinum
+			2 => 6178,  // Latinum
 
-			3 => 15,  // Min. Unit 1(L. Infanterie)
+			3 => 10,  // Min. Unit 1(L. Infanterie)
 
 			4 => 0,  // Min. Unit 2 (Sturmtruppe)
 
 			5 => 0,  // Min. Unit 3 (Hazard Team)
 
-			6 => 1,  // Min. Unit 4 (Commander)
+			6 => 0,  // Min. Unit 4 (Commander)
 
-			7 => 40,  // Max Unit 1 (L. Infanterie)
+			7 => 50,  // Max Unit 1 (L. Infanterie)
 
-			8 => 0,  // Max Unit 2 (Sturmtruppe)
+			8 => 25,  // Max Unit 2 (Sturmtruppe)
 
-			9 => 0,  // Max Unit 3 (Hazard Team)
+			9 => 20,  // Max Unit 3 (Hazard Team)
 
-			10 => 2,  // Max Unit 4 (Commander)
+			10 => 3,  // Max Unit 4 (Commander)
 
-			11 => 4,  // Unit 5 (Offizier)
+			11 => 0,  // Unit 5 (Offizier)
 
-			12 => 1,  // Unit 6 (Medizinisches Personal)
+			12 => 0,  // Unit 6 (Medizinisches Personal)
 
-			13 => 65,  // Buildtime (in 5 Minuten Schritten)
+			13 => 108,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 19,   // Value1 (Leichte Waffen)
+			14 => 72,   // Value1 (Leichte Waffen)
 
 			15 => 0,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 5,   // Value4 (Schildst�rke)
+			17 => 96,   // Value4 (Schildst�rke)
 
-			18 => 22,   // Value5 (H�lle bzw. Hitpoins)
+			18 => 96,   // Value5 (H�lle bzw. Hitpoins)
 
-			19 => 2,   // Value6 (Reaktionsgeschw.)
+			19 => 5,   // Value6 (Reaktionsgeschw.)
 
-			20 => 1,   // Value7 (Bereitschaft)
+			20 => 2,   // Value7 (Bereitschaft)
 
-			21 => 4,   // Value8 (Wendigkeit)
+			21 => 6,   // Value8 (Wendigkeit)
 
-			22 => 5,   // Value9 (Erfahrung)
+			22 => 10,   // Value9 (Erfahrung)
 
-			23 => 5.8,   // Value10 (Warp)
+			23 => 5.4,   // Value10 (Warp)
 
-			24 => 5,   // Value11 (Sensoren)
+			24 => 14,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 8,   // Value13 (Energy Available)
+			26 => 30,   // Value13 (Energy Available)
 
-			27 => 4,   // Value14 (Used Energy)
+			27 => 25,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Transporter',  // Name
 
-			30 => 185,  // Ben�tige Arbeiter zum Bau
+			30 => 130,  // Ben�tige Arbeiter zum Bau
 
 			31 => 'Mit dem Transporter kann man entweder 4000 Rohstoffe bzw. 400 Einheiten transportieren, oder sie mit auf einen Angriff schicken und Rohstoffe vom angegriffenen Planeten mitnehmen lassen. Sie sind relativ langsam, daf&uuml;r ist ihre Verteidigung akzeptabel.',
+                
+                        32 => 1,  // Primary RoF
+                
+                        33 => 0,  // Secondary RoF
+                
+                        34 => 0,  // Max Torpedo                
 
 	 	),
 
@@ -6094,13 +6207,13 @@ $SHIP_TORSO = array(
 
 	    2 => array(
 
-	        0 => 29363,  // Metal
+	        0 => 43659,  // Metal
 
-			1 => 66600,  // Minerals
+			1 => 43659,  // Minerals
 
-			2 => 41100,  // Latinum
+			2 => 34749,  // Latinum
 
-			3 => 105,  // Min. Unit 1(L. Infanterie)
+			3 => 0,  // Min. Unit 1(L. Infanterie)
 
 			4 => 0,  // Min. Unit 2 (Sturmtruppe)
 
@@ -6108,125 +6221,137 @@ $SHIP_TORSO = array(
 
 			6 => 2,  // Min. Unit 4 (Commander)
 
-			7 => 200,  // Max Unit 1 (L. Infanterie)
+			7 => 165,  // Max Unit 1 (L. Infanterie)
 
-			8 => 0,  // Max Unit 2 (Sturmtruppe)
+			8 => 106,  // Max Unit 2 (Sturmtruppe)
 
-			9 => 0,  // Max Unit 3 (Hazard Team)
+			9 => 114,  // Max Unit 3 (Hazard Team)
 
-			10 => 10,  // Max Unit 4 (Commander)
+			10 => 2,  // Max Unit 4 (Commander)
 
-			11 => 12,  // Unit 5 (Offizier)
+			11 => 8,  // Unit 5 (Offizier)
 
 			12 => 5,  // Unit 6 (Medizinisches Personal)
 
-			13 => 285,  // Buildtime (in 5 Minuten Schritten)
+			13 => 270,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 14,   // Value1 (Leichte Waffen)
+			14 => 24,   // Value1 (Leichte Waffen)
 
-			15 => 1,   // Value2 (Schwere Waffen)
+			15 => 0,   // Value2 (Schwere Waffen)
 
 			16 => 0,   // Value3 (Planetare Waffen)
 
-			17 => 11,   // Value4 (Schildst�rke)
+			17 => 60,   // Value4 (Schildst�rke)
 
-			18 => 46,   // Value5 (H�lle bzw. Hitpoins)
+			18 => 120,   // Value5 (H�lle bzw. Hitpoins)
 
-			19 => 0,   // Value6 (Reaktionsgeschw.)
+			19 => 1,   // Value6 (Reaktionsgeschw.)
 
-			20 => 0,   // Value7 (Bereitschaft)
+			20 => 5,   // Value7 (Bereitschaft)
 
-			21 => 0,   // Value8 (Wendigkeit)
+			21 => 1,   // Value8 (Wendigkeit)
 
-			22 => 0,   // Value9 (Erfahrung)
+			22 => 10,   // Value9 (Erfahrung)
 
-			23 => 6.6,   // Value10 (Warp)
+			23 => 5.4,   // Value10 (Warp)
 
-			24 => 1,   // Value11 (Sensoren)
+			24 => 12,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
-			26 => 11,   // Value13 (Energy Available)
+			26 => 40,   // Value13 (Energy Available)
 
-			27 => 7,   // Value14 (Used Energy)
+			27 => 30,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Kolonisierer',  // Name
 
-			30 => 1575,  // Ben�tige Arbeiter zum Bau
+			30 => 2376,  // Ben�tige Arbeiter zum Bau
 
 			31 => 'Mit dem Kolonieschiff kannst du entweder einen unbewohnten Planeten kolonisieren, oder einen Planeten erobern. Sobald du bei einem Planeten die komplette planetare Verteidigung sowie alle Einheiten und Schiffe zerst&ouml;rt hast, geht das Kolonieschiff verloren (da seine Holoemitter zur Simulation erster Einrichtungen demontiert werden) und der Planet steht unter deinem Kommando.',
+                
+                        32 => 1,  // Primary RoF
+                
+                        33 => 0,  // Secondary RoF
+                
+                        34 => 0,  // Max Torpedo                
 
 	 	),
 
-	 	// Totes Temp
+	 	// Plesh Brek
 
 	    3 => array(
 
-			0 => 100000000,  // Metal
+			0 => 15380,  // Metal
 
-			1 => 1,  // Minerals
+			1 => 15380,  // Minerals
 
-			2 => 1,  // Latinum
+			2 => 15012,  // Latinum
 
-			3 => 1,  // Min. Unit 1(Centurion)
+			3 => 32,  // Min. Unit 1(Centurion)
 
-			4 => 1,  // Min. Unit 2 (Rem. Truppen)
+			4 => 0,  // Min. Unit 2 (Rem. Truppen)
 
-			5 => 1,  // Min. Unit 3 (Tal Shiar)
+			5 => 0,  // Min. Unit 3 (Tal Shiar)
 
 			6 => 1,  // Min. Unit 4 (Commander)
 
-			7 => 1,  // Max Unit 1 (Centurion)
+			7 => 32,  // Max Unit 1 (Centurion)
 
-			8 => 1,  // Max Unit 2 (Rem. Truppen)
+			8 => 0,  // Max Unit 2 (Rem. Truppen)
 
-			9 => 1,  // Max Unit 3 (Tal Shiar)
+			9 => 0,  // Max Unit 3 (Tal Shiar)
 
 			10 => 1,  // Max Unit 4 (Commander)
 
-			11 => 1,  // Unit 5 (Offizier)
+			11 => 0,  // Unit 5 (Offizier)
 
 			12 => 1,  // Unit 6 (Medizinisches Personal)
 
-			13 => 1,  // Buildtime (in 5 Minuten Schritten)
+			13 => 210,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 1,   // Value1 (Leichte Waffen)
+			14 => 0,   // Value1 (Leichte Waffen)
 
-			15 => 1,   // Value2 (Schwere Waffen)
+			15 => 252,   // Value2 (Schwere Waffen)
 
-			16 => 1,   // Value3 (Planetare Waffen)
+			16 => 4,   // Value3 (Planetare Waffen)
 
-			17 => 1,   // Value4 (Schildst�rke)
+			17 => 0,   // Value4 (Schildst�rke)
 
-			18 => 1,   // Value5 (H�lle bzw. Hitpoints)
+			18 => 350,   // Value5 (H�lle bzw. Hitpoints)
 
-			19 => 1,   // Value6 (Reaktionsgeschw.)
+			19 => 7,   // Value6 (Reaktionsgeschw.)
 
-			20 => 1,   // Value7 (Bereitschaft)
+			20 => 6,   // Value7 (Bereitschaft)
 
-			21 => 1,   // Value8 (Wendigkeit)
+			21 => 48,   // Value8 (Wendigkeit)
 
-			22 => 1,   // Value9 (Erfahrung)
+			22 => 10,   // Value9 (Erfahrung)
 
-			23 => 1,   // Value10 (Warp)
+			23 => 5.85,   // Value10 (Warp)
 
-			24 => 1,   // Value11 (Sensoren)
+			24 => 16,   // Value11 (Sensoren)
 
-			25 => 1,   // Value12 (Tarnung)
+			25 => 0,   // Value12 (Tarnung)
 
-			26 => 1,   // Value13 (Energy Available)
+			26 => 80,   // Value13 (Energy Available)
 
-			27 => 1,   // Value14 (Used Energy)
+			27 => 80,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Gled Kraan',  // Name
+			29 => 'Plesh Brek',  // Name
 
-			30 => 1,  // Ben�tige Arbeiter zum Bau
+			30 => 321,  // Ben�tige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
+			31 => 'A light but quite armed scout for Breen forces.',
+                
+                        32 => 0,  // Primary RoF
+                
+                        33 => 3,  // Secondary RoF
+                
+                        34 => 60,  // Max Torpedo                
 
 			),
 
@@ -6234,139 +6359,151 @@ $SHIP_TORSO = array(
 
 	    4 => array(
 
-	   	 	0 => 4625,  // Metal
+	   	 	0 => 27942,  // Metal
 
-			1 => 28987.5,  // Minerals
+			1 => 27942,  // Minerals
 
-			2 => 4190,  // Latinum
+			2 => 22239,  // Latinum
 
-			3 => 30,  // Min. Unit 1(L. Infanterie)
+			3 => 32,  // Min. Unit 1(L. Infanterie)
 
-			4 => 10,  // Min. Unit 2 (Sturmtruppe)
+			4 => 0,  // Min. Unit 2 (Sturmtruppe)
 
 			5 => 0,  // Min. Unit 3 (Hazard Team)
 
-			6 => 4,  // Min. Unit 4 (Commander)
+			6 => 1,  // Min. Unit 4 (Commander)
 
-			7 => 150,  // Max Unit 1 (L. Infanterie)
+			7 => 32,  // Max Unit 1 (L. Infanterie)
 
-			8 => 40,  // Max Unit 2 (Sturmtruppe)
+			8 => 0,  // Max Unit 2 (Sturmtruppe)
 
 			9 => 0,  // Max Unit 3 (Hazard Team)
 
-			10 => 4,  // Max Unit 4 (Commander)
+			10 => 1,  // Max Unit 4 (Commander)
 
-			11 => 10,  // Unit 5 (Offizier)
+			11 => 0,  // Unit 5 (Offizier)
 
-			12 => 6,  // Unit 6 (Medizinisches Personal)
+			12 => 1,  // Unit 6 (Medizinisches Personal)
 
-			13 => 206,  // Buildtime (in 5 Minuten Schritten)
+			13 => 378,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 10,   // Value1 (Leichte Waffen)
+			14 => 0,   // Value1 (Leichte Waffen)
 
-			15 => 90,   // Value2 (Schwere Waffen)
+			15 => 252,   // Value2 (Schwere Waffen)
 
-			16 => 0,   // Value3 (Planetare Waffen)
+			16 => 4,   // Value3 (Planetare Waffen)
 
-			17 => 110,   // Value4 (Schildst�rke)
+			17 => 0,   // Value4 (Schildst�rke)
 
-			18 => 130,   // Value5 (H�lle bzw. Hitpoins)
+			18 => 480,   // Value5 (H�lle bzw. Hitpoins)
 
-			19 => 3,   // Value6 (Reaktionsgeschw.)
+			19 => 7,   // Value6 (Reaktionsgeschw.)
 
-			20 => 5,   // Value7 (Bereitschaft)
+			20 => 6,   // Value7 (Bereitschaft)
 
-			21 => 17,   // Value8 (Wendigkeit)
+			21 => 48,   // Value8 (Wendigkeit)
 
-			22 => 2,   // Value9 (Erfahrung)
+			22 => 10,   // Value9 (Erfahrung)
 
-			23 => 3.8,   // Value10 (Warp)
+			23 => 5.85,   // Value10 (Warp)
 
-			24 => 1,   // Value11 (Sensoren)
+			24 => 16,   // Value11 (Sensoren)
 
-			25 => 7,   // Value12 (Tarnung)
+			25 => 0,   // Value12 (Tarnung)
 
-			26 => 21,   // Value13 (Energy Available)
+			26 => 100,   // Value13 (Energy Available)
 
-			27 => 10,   // Value14 (Used Energy)
+			27 => 100,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Gled Kraan',  // Name
 
-			30 => 235,  // Ben�tige Arbeiter zum Bau
+			30 => 475,  // Ben�tige Arbeiter zum Bau
 
 			31 => 'Die Schiffe der Gled Kraan-Klasse sind die besten Fregaten. Wendig, robust und mit den t&ouml;dlichen Energied&auml;mpfungswaffen ausgestattet. Die Fregaten der Gled Kraan-Klasse sind, wie alle Schiffe der Breen, auf organischer Basis konstruiert.',
+                
+                        32 => 0,  // Primary RoF
+                
+                        33 => 4,  // Secondary RoF
+                
+                        34 => 60,  // Max Torpedo                
 
 	 	),
 
-	 	// Totes Temp
+	 	// Plesh Goth
 
 	    5 => array(
 
-			0 => 100000000,  // Metal
+			0 => 48956,  // Metal
 
-			1 => 1,  // Minerals
+			1 => 48956,  // Minerals
 
-			2 => 1,  // Latinum
+			2 => 38965,  // Latinum
 
-			3 => 1,  // Min. Unit 1(Centurion)
+			3 => 97,  // Min. Unit 1(Centurion)
 
-			4 => 1,  // Min. Unit 2 (Rem. Truppen)
+			4 => 0,  // Min. Unit 2 (Rem. Truppen)
 
-			5 => 1,  // Min. Unit 3 (Tal Shiar)
+			5 => 0,  // Min. Unit 3 (Tal Shiar)
 
 			6 => 1,  // Min. Unit 4 (Commander)
 
-			7 => 1,  // Max Unit 1 (Centurion)
+			7 => 97,  // Max Unit 1 (Centurion)
 
-			8 => 1,  // Max Unit 2 (Rem. Truppen)
+			8 => 0,  // Max Unit 2 (Rem. Truppen)
 
-			9 => 1,  // Max Unit 3 (Tal Shiar)
+			9 => 0,  // Max Unit 3 (Tal Shiar)
 
 			10 => 1,  // Max Unit 4 (Commander)
 
-			11 => 1,  // Unit 5 (Offizier)
+			11 => 0,  // Unit 5 (Offizier)
 
-			12 => 1,  // Unit 6 (Medizinisches Personal)
+			12 => 2,  // Unit 6 (Medizinisches Personal)
 
-			13 => 1,  // Buildtime (in 5 Minuten Schritten)
+			13 => 545,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 1,   // Value1 (Leichte Waffen)
+			14 => 0,   // Value1 (Leichte Waffen)
 
-			15 => 1,   // Value2 (Schwere Waffen)
+			15 => 252,   // Value2 (Schwere Waffen)
 
-			16 => 1,   // Value3 (Planetare Waffen)
+			16 => 19,   // Value3 (Planetare Waffen)
 
-			17 => 1,   // Value4 (Schildst�rke)
+			17 => 0,   // Value4 (Schildst�rke)
 
-			18 => 1,   // Value5 (H�lle bzw. Hitpoints)
+			18 => 994,   // Value5 (H�lle bzw. Hitpoints)
 
-			19 => 1,   // Value6 (Reaktionsgeschw.)
+			19 => 7,   // Value6 (Reaktionsgeschw.)
 
-			20 => 1,   // Value7 (Bereitschaft)
+			20 => 14,   // Value7 (Bereitschaft)
 
-			21 => 1,   // Value8 (Wendigkeit)
+			21 => 31,   // Value8 (Wendigkeit)
 
-			22 => 1,   // Value9 (Erfahrung)
+			22 => 10,   // Value9 (Erfahrung)
 
-			23 => 1,   // Value10 (Warp)
+			23 => 5.85,   // Value10 (Warp)
 
-			24 => 1,   // Value11 (Sensoren)
+			24 => 17,   // Value11 (Sensoren)
 
-			25 => 1,   // Value12 (Tarnung)
+			25 => 0,   // Value12 (Tarnung)
 
-			26 => 1,   // Value13 (Energy Available)
+			26 => 160,   // Value13 (Energy Available)
 
-			27 => 1,   // Value14 (Used Energy)
+			27 => 160,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'L.Kreuzer',  // Name
+			29 => 'Plesh Goth',  // Name
 
-			30 => 1,  // Ben�tige Arbeiter zum Bau
+			30 => 833,  // Ben�tige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
+			31 => 'Light armored, heavy-hitter small cruiser.',
+                
+                        32 => 0,  // Primary RoF
+                
+                        33 => 7,  // Secondary RoF
+                
+                        34 => 110,  // Max Torpedo                
 
 			),
 
@@ -6444,69 +6581,75 @@ $SHIP_TORSO = array(
 
 	    7 => array(
 
-	    	0 => 16375,  // Metal
+                        0 => 97854,  // Metal
 
-			1 => 52488,  // Minerals
+			1 => 97854,  // Minerals
 
-			2 => 38413,  // Latinum
+			2 => 77884,  // Latinum
 
-			3 => 200,  // Min. Unit 1(L. Infanterie)
+			3 => 135,  // Min. Unit 1(L. Infanterie)
 
-			4 => 5,  // Min. Unit 2 (Sturmtruppe)
+			4 => 0,  // Min. Unit 2 (Sturmtruppe)
 
 			5 => 0,  // Min. Unit 3 (Hazard Team)
 
 			6 => 3,  // Min. Unit 4 (Commander)
 
-			7 => 200,  // Max Unit 1 (L. Infanterie)
+			7 => 135,  // Max Unit 1 (L. Infanterie)
 
-			8 => 75,  // Max Unit 2 (Sturmtruppe)
+			8 => 0,  // Max Unit 2 (Sturmtruppe)
 
 			9 => 0,  // Max Unit 3 (Hazard Team)
 
-			10 => 5,  // Max Unit 4 (Commander)
+			10 => 3,  // Max Unit 4 (Commander)
 
-			11 => 20,  // Unit 5 (Offizier)
+			11 => 8,  // Unit 5 (Offizier)
 
-			12 => 9,  // Unit 6 (Medizinisches Personal)
+			12 => 6,  // Unit 6 (Medizinisches Personal)
 
-			13 => 378,  // Buildtime (in 5 Minuten Schritten)
+			13 => 1452,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 40,   // Value1 (Leichte Waffen)
+			14 => 0,   // Value1 (Leichte Waffen)
 
-			15 => 90,   // Value2 (Schwere Waffen)
+			15 => 252,   // Value2 (Schwere Waffen)
 
-			16 => 0,   // Value3 (Planetare Waffen)
+			16 => 19,   // Value3 (Planetare Waffen)
 
-			17 => 140,   // Value4 (Schildst�rke)
+			17 => 0,   // Value4 (Schildst�rke)
 
-			18 => 190,   // Value5 (H�lle bzw. Hitpoins)
+			18 => 1001,   // Value5 (H�lle bzw. Hitpoins)
 
-			19 => 20,   // Value6 (Reaktionsgeschw.)
+			19 => 7,   // Value6 (Reaktionsgeschw.)
 
-			20 => 17,   // Value7 (Bereitschaft)
+			20 => 14,   // Value7 (Bereitschaft)
 
-			21 => 25,   // Value8 (Wendigkeit)
+			21 => 31,   // Value8 (Wendigkeit)
 
-			22 => 7,   // Value9 (Erfahrung)
+			22 => 10,   // Value9 (Erfahrung)
 
-			23 => 1.6,   // Value10 (Warp)
+			23 => 5.85,   // Value10 (Warp)
 
-			24 => 9,   // Value11 (Sensoren)
+			24 => 17,   // Value11 (Sensoren)
 
-			25 => 5,   // Value12 (Tarnung)
+			25 => 0,   // Value12 (Tarnung)
 
-			26 => 29,   // Value13 (Energy Available)
+			26 => 180,   // Value13 (Energy Available)
 
-			27 => 15,   // Value14 (Used Energy)
+			27 => 180,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Gor�Taan',  // Name
+			29 => 'Gor&#180;Taan',  // Name
 
-			30 => 865,  // Ben�tige Arbeiter zum Bau
+			30 => 1664,  // Ben�tige Arbeiter zum Bau
 
 			31 => 'Die Schiffe der Gor Taan-Klasse sind wendige Kampfschiffe, die meistens in gro&szlig;en Flotten eingesetzt werden. Sie sind ausgestattet mit den t&ouml;dlichen Energied&auml;mpfungswaffen der Breen. Die Kreuzer der Gor Taan-Klasse sind, wie alle Schiffe der Breen, auf organischer Basis konstruiert.',
+                
+                        32 => 0,  // Primary RoF
+                
+                        33 => 7,  // Secondary RoF
+                
+                        34 => 110,  // Max Torpedo                                
 
 	 	),
 
@@ -6584,69 +6727,75 @@ $SHIP_TORSO = array(
 
 	    9 => array(
 
-			0 => 40400,  // Metal
+			0 => 88296,  // Metal
 
-			1 => 80856,  // Minerals
+			1 => 147160,  // Minerals
 
-			2 => 35236,  // Latinum
+			2 => 117127,  // Latinum
 
-			3 => 210,  // Min. Unit 1(Centurion)
+			3 => 162,  // Min. Unit 1(Centurion)
 
-			4 => 30,  // Min. Unit 2 (Rem. Truppen)
+			4 => 0,  // Min. Unit 2 (Rem. Truppen)
 
-			5 => 10,  // Min. Unit 3 (Tal Shiar)
+			5 => 0,  // Min. Unit 3 (Tal Shiar)
 
-			6 => 2,  // Min. Unit 4 (Commander)
+			6 => 3,  // Min. Unit 4 (Commander)
 
-			7 => 210,  // Max Unit 1 (Centurion)
+			7 => 162,  // Max Unit 1 (Centurion)
 
-			8 => 150,  // Max Unit 2 (Rem. Truppen)
+			8 => 0,  // Max Unit 2 (Rem. Truppen)
 
-			9 => 50,  // Max Unit 3 (Tal Shiar)
+			9 => 0,  // Max Unit 3 (Tal Shiar)
 
-			10 => 8,  // Max Unit 4 (Commander)
+			10 => 3,  // Max Unit 4 (Commander)
 
-			11 => 15,  // Unit 5 (Offizier)
+			11 => 8,  // Unit 5 (Offizier)
 
-			12 => 4,  // Unit 6 (Medizinisches Personal)
+			12 => 9,  // Unit 6 (Medizinisches Personal)
 
-			13 => 407,  // Buildtime (in 5 Minuten Schritten)
+			13 => 1638,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 108,   // Value1 (Leichte Waffen)
+			14 => 0,   // Value1 (Leichte Waffen)
 
-			15 => 163,   // Value2 (Schwere Waffen)
+			15 => 252,   // Value2 (Schwere Waffen)
 
-			16 => 38,   // Value3 (Planetare Waffen)
+			16 => 240,   // Value3 (Planetare Waffen)
 
-			17 => 880,   // Value4 (Schildst�rke)
+			17 => 0,   // Value4 (Schildst�rke)
 
-			18 => 700,   // Value5 (H�lle bzw. Hitpoints)
+			18 => 2367,   // Value5 (H�lle bzw. Hitpoints)
 
-			19 => 16,   // Value6 (Reaktionsgeschw.)
+			19 => 7,   // Value6 (Reaktionsgeschw.)
 
-			20 => 18,   // Value7 (Bereitschaft)
+			20 => 17,   // Value7 (Bereitschaft)
 
-			21 => 15,   // Value8 (Wendigkeit)
+			21 => 19,   // Value8 (Wendigkeit)
 
-			22 => 5,   // Value9 (Erfahrung)
+			22 => 10,   // Value9 (Erfahrung)
 
-			23 => 1.6,   // Value10 (Warp)
+			23 => 5.85,   // Value10 (Warp)
 
-			24 => 12,   // Value11 (Sensoren)
+			24 => 24,   // Value11 (Sensoren)
 
-			25 => 5,   // Value12 (Tarnung)
+			25 => 0,   // Value12 (Tarnung)
 
-			26 => 46,   // Value13 (Energy Available)
+			26 => 200,   // Value13 (Energy Available)
 
-			27 => 35,   // Value14 (Used Energy)
+			27 => 200,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Chel Grett',  // Name
 
-			30 => 750,  // Ben�tige Arbeiter zum Bau
+			30 => 2503,  // Ben�tige Arbeiter zum Bau
 
 			31 => 'Chel Gretta Schiffe dieser Klasse sind schwere Kreuzer, entworfen, um eine Schutzmauer gegen die feindlichen Schiffe schnell zu bauen.',
+                
+                        32 => 0,  // Primary RoF
+                
+                        33 => 12,  // Secondary RoF
+                
+                        34 => 280,  // Max Torpedo                                
 
 			),
 
@@ -6724,69 +6873,75 @@ $SHIP_TORSO = array(
 
 	    11 => array(
 
-			0 => 77800,  // Metal
+			0 => 136915,  // Metal
 
-			1 => 130070,  // Minerals
+			1 => 195592,  // Minerals
 
-			2 => 64920,  // Latinum
+			2 => 155656,  // Latinum
 
-			3 => 250,  // Min. Unit 1(Centurion)
+			3 => 216,  // Min. Unit 1(Centurion)
 
-			4 => 100,  // Min. Unit 2 (Rem. Truppen)
+			4 => 0,  // Min. Unit 2 (Rem. Truppen)
 
-			5 => 50,  // Min. Unit 3 (Tal Shiar)
+			5 => 0,  // Min. Unit 3 (Tal Shiar)
 
-			6 => 3,  // Min. Unit 4 (Commander)
+			6 => 5,  // Min. Unit 4 (Commander)
 
-			7 => 250,  // Max Unit 1 (Centurion)
+			7 => 216,  // Max Unit 1 (Centurion)
 
-			8 => 200,  // Max Unit 2 (Rem. Truppen)
+			8 => 0,  // Max Unit 2 (Rem. Truppen)
 
-			9 => 100,  // Max Unit 3 (Tal Shiar)
+			9 => 0,  // Max Unit 3 (Tal Shiar)
 
-			10 => 12,  // Max Unit 4 (Commander)
+			10 => 5,  // Max Unit 4 (Commander)
 
-			11 => 20,  // Unit 5 (Offizier)
+			11 => 16,  // Unit 5 (Offizier)
 
-			12 => 10,  // Unit 6 (Medizinisches Personal)
+			12 => 11,  // Unit 6 (Medizinisches Personal)
 
-			13 => 573,  // Buildtime (in 5 Minuten Schritten)
+			13 => 2537,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 163,   // Value1 (Leichte Waffen)
+			14 => 0,   // Value1 (Leichte Waffen)
 
-			15 => 246,   // Value2 (Schwere Waffen)
+			15 => 252,   // Value2 (Schwere Waffen)
 
-			16 => 50,   // Value3 (Planetare Waffen)
+			16 => 240,   // Value3 (Planetare Waffen)
 
-			17 => 1050,   // Value4 (Schildst�rke)
+			17 => 0,   // Value4 (Schildst�rke)
 
-			18 => 600,   // Value5 (H�lle bzw. Hitpoints)
+			18 => 6968,   // Value5 (H�lle bzw. Hitpoints)
 
-			19 => 20,   // Value6 (Reaktionsgeschw.)
+			19 => 7,   // Value6 (Reaktionsgeschw.)
 
-			20 => 18,   // Value7 (Bereitschaft)
+			20 => 24,   // Value7 (Bereitschaft)
 
-			21 => 12,   // Value8 (Wendigkeit)
+			21 => 13,   // Value8 (Wendigkeit)
 
-			22 => 8,   // Value9 (Erfahrung)
+			22 => 10,   // Value9 (Erfahrung)
 
-			23 => 1.6,   // Value10 (Warp)
+			23 => 5.85,   // Value10 (Warp)
 
-			24 => 9,   // Value11 (Sensoren)
+			24 => 36,   // Value11 (Sensoren)
 
-			25 => 5,   // Value12 (Tarnung)
+			25 => 0,   // Value12 (Tarnung)
 
-			26 => 55,   // Value13 (Energy Available)
+			26 => 240,   // Value13 (Energy Available)
 
-			27 => 41,   // Value14 (Used Energy)
+			27 => 240,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
 			29 => 'Gel Chak',  // Name
 
-			30 => 1520,  // Ben�tige Arbeiter zum Bau
+			30 => 3326,  // Ben�tige Arbeiter zum Bau
 
 			31 => 'Das Gel Chak-Klasse Schlachtschiffe sind das Flaggschiff der Flotte Breen. R&auml;umen au&szlig;erhalb selten engagierte Freunde, bilden sie den h&ouml;chstm&ouml;glichen Abschreckung gegen Versuche der Invasion.',
+                
+                        32 => 0,  // Primary RoF
+                
+                        33 => 21,  // Secondary RoF
+                
+                        34 => 300,  // Max Torpedo                                                
 
 			),
 
@@ -7102,73 +7257,79 @@ $SHIP_TORSO = array(
 
 		),
 
-		// Totes Temp
+		// Seeker Class
 
 	    3 => array(
 
-			0 => 100000000,  // Metal
+			0 => 23023,  // Metal
 
-			1 => 1,  // Minerals
+			1 => 23023,  // Minerals
 
-			2 => 1,  // Latinum
+			2 => 18347,  // Latinum
 
-			3 => 1,  // Min. Unit 1(Centurion)
+			3 => 40,  // Min. Unit 1(Centurion)
 
-			4 => 1,  // Min. Unit 2 (Rem. Truppen)
+			4 => 0,  // Min. Unit 2 (Rem. Truppen)
 
-			5 => 1,  // Min. Unit 3 (Tal Shiar)
+			5 => 0,  // Min. Unit 3 (Tal Shiar)
 
 			6 => 1,  // Min. Unit 4 (Commander)
 
-			7 => 1,  // Max Unit 1 (Centurion)
+			7 => 40,  // Max Unit 1 (Centurion)
 
-			8 => 1,  // Max Unit 2 (Rem. Truppen)
+			8 => 0,  // Max Unit 2 (Rem. Truppen)
 
-			9 => 1,  // Max Unit 3 (Tal Shiar)
+			9 => 0,  // Max Unit 3 (Tal Shiar)
 
 			10 => 1,  // Max Unit 4 (Commander)
 
-			11 => 1,  // Unit 5 (Offizier)
+			11 => 5,  // Unit 5 (Offizier)
 
 			12 => 1,  // Unit 6 (Medizinisches Personal)
 
-			13 => 1,  // Buildtime (in 5 Minuten Schritten)
+			13 => 342,  // Buildtime (in 5 Minuten Schritten)
 
-			14 => 1,   // Value1 (Leichte Waffen)
+			14 => 180,   // Value1 (Leichte Waffen)
 
-			15 => 1,   // Value2 (Schwere Waffen)
+			15 => 378,   // Value2 (Schwere Waffen)
 
-			16 => 1,   // Value3 (Planetare Waffen)
+			16 => 3,   // Value3 (Planetare Waffen)
 
-			17 => 1,   // Value4 (Schildst�rke)
+			17 => 569,   // Value4 (Schildst�rke)
 
-			18 => 1,   // Value5 (H�lle bzw. Hitpoints)
+			18 => 897,   // Value5 (H�lle bzw. Hitpoints)
 
-			19 => 1,   // Value6 (Reaktionsgeschw.)
+			19 => 50,   // Value6 (Reaktionsgeschw.)
 
-			20 => 1,   // Value7 (Bereitschaft)
+			20 => 23,   // Value7 (Bereitschaft)
 
-			21 => 1,   // Value8 (Wendigkeit)
+			21 => 21,   // Value8 (Wendigkeit)
 
-			22 => 1,   // Value9 (Erfahrung)
+			22 => 10,   // Value9 (Erfahrung)
 
-			23 => 1,   // Value10 (Warp)
+			23 => 7.15,   // Value10 (Warp)
 
-			24 => 1,   // Value11 (Sensoren)
+			24 => 15,   // Value11 (Sensoren)
 
-			25 => 1,   // Value12 (Tarnung)
+			25 => 0,   // Value12 (Tarnung)
 
-			26 => 1,   // Value13 (Energy Available)
+			26 => 100,   // Value13 (Energy Available)
 
-			27 => 1,   // Value14 (Used Energy)
+			27 => 80,   // Value14 (Used Energy)
 
 			28 => 0,   // Auf 0 lassen
 
-			29 => 'Fregatte',  // Name
+			29 => 'Seeker',  // Name
 
-			30 => 1,  // Ben�tige Arbeiter zum Bau
+			30 => 196,  // Ben�tige Arbeiter zum Bau
 
-			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
+			31 => 'Flavor text here.',
+                
+                        32 => 4,  // Primary RoF
+                
+                        33 => 3,  // Secondary RoF
+                
+                        34 => 50,  // Max Torpedo                
 
 			),
 			
@@ -7246,7 +7407,7 @@ $SHIP_TORSO = array(
 
 	    5 => array(
 
-                        0 => 59835,  // Metal
+            0 => 59835,  // Metal
 
 			1 => 59835,  // Minerals
 
@@ -7272,7 +7433,7 @@ $SHIP_TORSO = array(
 
 			12 => 3,  // Unit 6 (Medizinisches Personal)
 
-			13 => 1110,  // Buildtime (in 5 Minuten Schritten)
+			13 => 610,  // Buildtime (in 5 Minuten Schritten)
 
 			14 => 180,   // Value1 (Leichte Waffen)
 
@@ -7294,7 +7455,7 @@ $SHIP_TORSO = array(
 
 			23 => 7.15,   // Value10 (Warp)
 
-			24 => 6,   // Value11 (Sensoren)
+			24 => 28,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -7306,15 +7467,15 @@ $SHIP_TORSO = array(
 
 			29 => 'Hunter-Class',  // Name
 
-			30 => 1018,  // Ben�tige Arbeiter zum Bau
+			30 => 560,  // Ben�tige Arbeiter zum Bau
 
 			31 => 'Die Hunter-Class ist das Standard Schiff der Hirogen. Seit Jahrtausenden durchqueren sie in diesen Schiffen den Weltraum. Sie sind hervorragend f&uuml;r die Jagt geeignet, einem wichtigen Bestandteil ihrer Gesellschaft.',
                 
-                        32 => 6,  // Primary RoF
+            32 => 6,  // Primary RoF
                 
-                        33 => 4,  // Secondary RoF
+            33 => 4,  // Secondary RoF
                 
-                        34 => 85,  // Max Torpedo                
+            34 => 85,  // Max Torpedo                
 
 		),
 
@@ -7418,7 +7579,7 @@ $SHIP_TORSO = array(
 
 			12 => 8,  // Unit 6 (Medizinisches Personal)
 
-			13 => 2219,  // Buildtime (in 5 Minuten Schritten)
+			13 => 1445,  // Buildtime (in 5 Minuten Schritten)
 
 			14 => 180,   // Value1 (Leichte Waffen)
 
@@ -7440,7 +7601,7 @@ $SHIP_TORSO = array(
 
 			23 => 7.15,   // Value10 (Warp)
 
-			24 => 6,   // Value11 (Sensoren)
+			24 => 28,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -7452,7 +7613,7 @@ $SHIP_TORSO = array(
 
 			29 => 'Holoship',  // Name
 
-			30 => 2034,  // Ben�tige Arbeiter zum Bau
+			30 => 814,  // Ben�tige Arbeiter zum Bau
 
 			31 => 'Das Holoship ist eine Weiterentwicklung der gew&ouml;hnlichen Hunter-Class. Die Holoprojektoren in seinem Inneren erm&ouml;glichen es der Crew ihre Kampff&auml;higkeiten st&auml;ndig zu erweitern und sorgen so f&uuml;r st&auml;ndige Kampfbereitschaft.',
                 
@@ -7539,11 +7700,11 @@ $SHIP_TORSO = array(
 
 	    9 => array(
 
-			0 => 179862,  // Metal
+			0 => 159862,  // Metal
 
-			1 => 179862,  // Minerals
+			1 => 159862,  // Minerals
 
-			2 => 143156,  // Latinum
+			2 => 123156,  // Latinum
 
 			3 => 198,  // Min. Unit 1(Centurion)
 
@@ -7565,13 +7726,13 @@ $SHIP_TORSO = array(
 
 			12 => 11,  // Unit 6 (Medizinisches Personal)
 
-			13 => 3337,  // Buildtime (in 5 Minuten Schritten)
+			13 => 2185,  // Buildtime (in 5 Minuten Schritten)
 
 			14 => 180,   // Value1 (Leichte Waffen)
 
 			15 => 378,   // Value2 (Schwere Waffen)
 
-			16 => 125,   // Value3 (Planetare Waffen)
+			16 => 250,   // Value3 (Planetare Waffen)
 
 			17 => 3316,   // Value4 (Schildst�rke)
 
@@ -7587,7 +7748,7 @@ $SHIP_TORSO = array(
 
 			23 => 7.15,   // Value10 (Warp)
 
-			24 => 6,   // Value11 (Sensoren)
+			24 => 31,   // Value11 (Sensoren)
 
 			25 => 0,   // Value12 (Tarnung)
 
@@ -7599,13 +7760,13 @@ $SHIP_TORSO = array(
 
 			29 => 'Venatic',  // Name
 
-			30 => 3059,  // Ben�tige Arbeiter zum Bau
+			30 => 1835,  // Ben�tige Arbeiter zum Bau
 
 			31 => 'Ich bin nicht da. Aber du musst mich lieb haben, pflegen, f&uuml;ttern und ganz oft dr&uuml;cken.',
                 
-                        32 => 10,  // Primary RoF
+                        32 => 14,  // Primary RoF
                 
-                        33 => 6,  // Secondary RoF
+                        33 => 8,  // Secondary RoF
                 
                         34 => 250,  // Max Torpedo                
 
@@ -9469,7 +9630,7 @@ $SHIP_TORSO = array(
 
 			15 => 189,   // Value2 (Schwere Waffen)
 
-			16 => 90,   // Value3 (Planetare Waffen)
+			16 => 180,   // Value3 (Planetare Waffen)
 
 			17 => 1290,   // Value4 (Schildst�rke)
 

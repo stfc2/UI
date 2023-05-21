@@ -73,25 +73,43 @@ switch($game->player['language'])
 	case 'GER':
 		$title = 'Karte von Bekannten Systemen:';
 		$created = 'Erstellt am ';
-		$legend = 'Legende:';
+		$legend = 'Legende';
+		$tmy_systems = 'Meine Systeme:';
+		$thome_systems = 'Home-system';
+		$treserved_systems = 'Private Systeme';
+		$tcolo_systems = 'Kolonisierten System';
+		$tother_systems = 'Andere Spieler:';
+		$tother_home_systems = 'Home-system';
+		$tother_reserved_systems = 'Private Systeme';				
+		$tother_colo_systems = 'Kolonisierten System';
+		$texplored_systems = 'Exploration:';						
 		$tknown_systems = 'Erkundete Systeme';
-		$tallied_systems = 'Systeme mit mindestens einem Planeten, von einem Mitglied Ihrer Allianz';
 		$tunknown_systems = 'Unbekannte Systeme';
 	break;
 	case 'ITA':
 		$title = 'Mappa dei sistemi conosciuti:';
 		$created = 'Creata il ';
-		$legend = 'Legenda:';
+		$legend = 'Legenda';
+		$tmy_systems = 'Miei sistemi:';
+		$thome_systems = 'Sistema madre';
+		$treserved_systems = 'Sistemi privati';
+		$tcolo_systems = 'Sistemi colonizzati';				
+		$tother_systems = 'Altri giocatori:';
+		$tother_home_systems = 'Sistemi madre';
+		$tother_reserved_systems = 'Sistemi privati';				
+		$tother_colo_systems = 'Sistemi colonizzati';                		                
+		$texplored_systems = 'Esplorazione:';
 		$tknown_systems = 'Sistemi esplorati';
-		$tallied_systems = 'Sistemi con almeno un pianeta appartenente ad un membro della propria alleanza';
 		$tunknown_systems = 'Sistemi inesplorati';
 	break;
 	default:
 		$title = 'Known systems map:';
 		$created = 'Created at ';
-		$legend = 'Legend:';
+		$legend = 'Legend';
+		$tmy_systems = 'My own systems:';
+                $thome_systems = 'Home system';
+                $tcolo_systems = 'Colonized system';
 		$tknown_systems = 'Explored systems';
-		$tallied_systems = 'Systems with at least one planet belonging to a member of your alliance';
 		$tunknown_systems = 'Unknown systems';
 	break;
 }
@@ -104,14 +122,20 @@ if (($handle = @fopen ($image_url, "rb"))!=true)
 	
 	$im = imagecreatetruecolor(162*$size, 162*$size);
 	imagecolorallocatealpha($im, 0, 0, 0,0);
-	$color[1]=imagecolorallocatealpha($im, 90, 64, 64,0);
-	$color[2]=imagecolorallocatealpha($im, 128, 64, 64,0);
-	$color[3]=imagecolorallocatealpha($im, 196, 64, 64,0);
-	$color[4]=imagecolorallocatealpha($im, 96, 96, 96,0);
-	$color[5]=imagecolorallocatealpha($im, 255, 0, 0,20);
+	$color[1]=imagecolorallocatealpha($im, 90, 64, 64,0);  // Inesplorato
+        $color[2]=imagecolorallocatealpha($im, 155, 135, 135,0);  // Esplorato
 
-    drawMapGrid($im,$size);
+        $color[3]=imagecolorallocatealpha($im,   0,255,255, 0);  // Sistema Madre
+        $color[4]=imagecolorallocatealpha($im,  51,255, 51, 0);  // Privato
+        $color[5]=imagecolorallocatealpha($im, 255,255,  0, 0);  // Privato, challenged
+        $color[6]=imagecolorallocatealpha($im,   0,153,  0, 0);  // Colonizzato
 
+        $color[7]=imagecolorallocatealpha($im, 255,153, 51, 0);  // Sistema Madre
+        $color[8]=imagecolorallocatealpha($im, 255, 51, 51, 0);  // Privato
+        $color[9]=imagecolorallocatealpha($im, 255,153, 51, 0);  // Privato, challenged
+        $color[10]=imagecolorallocatealpha($im, 153,  0,  0, 0);  // Colonizzato
+
+        drawMapGrid($im,$size);
 
 	// Obtain ALL the starsystems
 	$sql = 'SELECT s.system_id, s.system_name, s.sector_id, s.system_x, s.system_y FROM starsystems s';
@@ -131,12 +155,13 @@ if (($handle = @fopen ($image_url, "rb"))!=true)
 	          GROUP BY pl.system_id';*/
 
 	$sql = 'SELECT system_id FROM `starsystems_details`
-	        WHERE user_id = '.$game->player['user_id'];
+	        WHERE log_code = 0 AND user_id = '.$game->player['user_id'];
 	$systems = $db->query($sql);
-	while($system = $db->fetchrow($systems))
+	while($system = $db->fetchrow($systems)) {
 		$known_systems[$system['system_id']]=$system;
+        }
 
-	// Select systems of alliance's members
+	/* Select systems of alliance's members
 	if($game->player['user_alliance'] != 0 AND $game->player['user_alliance_rights3'] == 1) {
 		$sql = 'SELECT pl.system_id FROM (planets pl)
 		               LEFT JOIN (user u) ON pl.planet_owner = u.user_id
@@ -146,23 +171,78 @@ if (($handle = @fopen ($image_url, "rb"))!=true)
 		while($system = $db->fetchrow($systems))
 			$allied_systems[$system['system_id']]=$system;
 	}
-
+        */
+        
+        $sql = 'SELECT system_id FROM planets WHERE planet_owner_enum = 0 AND planet_owner = '.$game->player['user_id'];
+        $system = $db->queryrow($sql);
+        $home_system[$system['system_id']]=$system;
+        $home_id = $system['system_id'];
+        
+        $sql = 'SELECT system_id FROM starsystems WHERE system_closed = 2 AND system_owner = '.$game->player['user_id'].' AND system_id <> '.$home_id;
+        $systems = $db->queryrowset($sql);
+        foreach ($systems as $system) {
+            $private_systems[$system['system_id']]=$system;
+        }
+        
+        $sql = 'SELECT system_id FROM starsystems INNER JOIN starsystems_details USING (system_id) WHERE starsystems_details.user_id = '.$game->player['user_id'].' AND log_code = 0 AND system_closed = 1 AND system_owner <> '.$game->player['user_id'];
+        $systems = $db->queryrowset($sql);
+        foreach ($systems as $system) {
+            $other_homes_systems[$system['system_id']]=$system;        
+        }
+        
+        $sql = 'SELECT system_id FROM starsystems INNER JOIN starsystems_details USING (system_id) WHERE starsystems_details.user_id = '.$game->player['user_id'].' AND log_code = 0 AND system_closed = 2 AND system_owner <> '.$game->player['user_id'];
+        $systems = $db->queryrowset($sql);
+        foreach ($systems as $system) {
+            $other_private_systems[$system['system_id']]=$system;        
+        }        
+        
+        $own_system_lst = array();
+        $other_system_lst = array();
+        
+        $sql = 'SELECT DISTINCT system_id FROM planets WHERE planet_owner = '.$game->player['user_id'];
+        $systems = $db->queryrowset($sql);
+        foreach ($systems as $system) {
+            $colonized_systems[$system['system_id']]=$system;
+            $own_system_lst[] = $system['system_id'];
+        }
+        
+        $sql = 'SELECT DISTINCT system_id FROM planets INNER JOIN starsystems_details USING (system_id) WHERE starsystems_details.user_id = '.$game->player['user_id'].' AND log_code = 0 AND planet_owner NOT IN (0, '.$game->player['user_id'].')';
+        $systems = $db->queryrowset($sql);
+        foreach ($systems as $system) {
+            $other_colonized_systems[$system['system_id']]=$system;
+            $other_system_lst[] = $system['system_id'];
+        }
+        
 	// Select all systems
 	//$q_planets = $db->query('SELECT system_id FROM planets GROUP BY system_id');
 
 	//while($planet = $db->fetchrow($q_planets)) {
 		//$system=$glob_systems[$planet['system_id']];
 	foreach ($glob_systems as $key => $system) {
-        $px = getSystemCoords($system,$size);
-        $px_x = $px[0];
-        $px_y = $px[1];
+                if(!isset($known_systems[$system['system_id']]['system_id'])) {continue;}
+                $px = getSystemCoords($system,$size);
+                $px_x = $px[0];
+                $px_y = $px[1];
 
-		// Change color if it's a known system
-		if(isset($known_systems[$system['system_id']]['system_id']))
-			$useColor = $color[5];
-		// Change color if it's an allied system
-		else if(isset($allied_systems[$system['system_id']]['system_id']))
-			$useColor = $color[3];
+                // Change color if it's the home system
+                if(isset($home_system[$system['system_id']]['system_id']))
+                        $useColor = $color[3];
+                // Change color if it's an own private system
+                else if(isset($private_systems[$system['system_id']]['system_id']))
+                        $useColor = $color[4];
+                else if(isset($other_homes_systems[$system['system_id']]['system_id']))
+                        $useColor = $color[7];                
+                else if(isset($other_private_systems[$system['system_id']]['system_id']))
+                        $useColor = $color[8];                
+                // Change color if it's a colonized system
+                else if(isset($colonized_systems[$system['system_id']]['system_id']))
+                        $useColor = $color[6];
+                                // Change color if it's a colonized system
+                else if(isset($other_colonized_systems[$system['system_id']]['system_id']))
+                        $useColor = $color[10];
+                // Change color if it's a known system
+                else if(isset($known_systems[$system['system_id']]['system_id']))
+			$useColor = $color[2];
 		else
 			$useColor = $color[1];
 
@@ -185,12 +265,12 @@ if (($handle = @fopen ($image_url, "rb"))!=true)
 
 	if ($size>1)
 	{
-		imagestring ($im, $size2,15,162*$size-12-$size,$created.date('d.m.y H:i', time()), $color[4]);
+		imagestring ($im, $size2,15,162*$size-12-$size,$created.date('d.m.y H:i', time()), $color[2]);
 	}
 	else
 	{
-		imagestring ($im, $size2,5,162*$size-15,$created, $color[4]);
-		imagestring ($im, $size2,5,162*$size-8,date('d.m.y H:i', time()), $color[4]);
+		imagestring ($im, $size2,5,162*$size-15,$created, $color[2]);
+		imagestring ($im, $size2,5,162*$size-8,date('d.m.y H:i', time()), $color[2]);
 	}
 
 
@@ -238,10 +318,26 @@ echo'<html><body bgcolor="#000000" text="#DDDDDD"  background="../gfx/bg_stars1.
 
 '.$map_data.'
 </center><br>
-'.$legend.'<ul>
-<span style="color: #FF0000">'.$tknown_systems.'</span><br>
-<span style="color: #C44040">'.$tallied_systems.'</span><br>
-<span style="color: #5A4040">'.$tunknown_systems.'</span></ul>
+<table>
+<caption>'.$legend.'</caption>
+<tr>
+	<td align="center">'.$tmy_systems.'</td>
+	<td align="center"><span style="color: #00FFFF">'.$thome_systems.'</span></td>
+	<td align="center"><span style="color: #33FF33">'.$treserved_systems.'</span></td>
+	<td align="center"><span style="color: #009900">'.$tcolo_systems.'</span></td>
+</tr>
+<tr>
+	<td align="center">'.$tother_systems.'</td>
+	<td align="center"><span style="color: #FF9933">'.$tother_home_systems.'</span></td>
+	<td align="center"><span style="color: #FF3333">'.$tother_reserved_systems.'</span></td>
+	<td align="center"><span style="color: #990000">'.$tother_colo_systems.'</span></td>
+</tr>
+<tr>
+	<td align="center" colspan="2">'.$texplored_systems.'</td>
+	<td align="center"><span style="color: #9B8787">'.$tknown_systems.'</span></td>
+	<td align="center"><span style="color: #5A4040">'.$tunknown_systems.'</span></td>
+</tr>
+</table>  
 </body></html>';
 }
 

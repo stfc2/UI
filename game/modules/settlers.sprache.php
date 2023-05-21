@@ -22,9 +22,9 @@
 //TEDESCO
 define ("GER_TEXT0",'Settlers Kolonien:');
 
-define ("GER_TEXT1", 'Verh&auml;ltnis');
+define ("GER_TEXT1", 'Verhaeltnis');
 
-define ("GER_TEXT2", 'Gr&uuml;nder');
+define ("GER_TEXT2", 'Gruender');
 
 define ("GER_TEXT3", 'Missionen');
 
@@ -38,7 +38,7 @@ define ("GER_TEXT11", 'Position');
 
 define ("GER_TEXT12", 'Klasse');
 
-define ("GER_TEXT13", 'Verh&auml;ltnis Wert');
+define ("GER_TEXT13", 'Mood');
 
 define ("GER_TEXT14", 'Verlinkter Planet');
 
@@ -82,6 +82,11 @@ define ("GER_TEXT33", '<b>upgradeable</b>');
 
 define ("GER_TEXT34", '<b>upgradeable</b>, work queue free in: ');
 
+define ("GER_TEXT35", 'You have an away team in this colony');
+
+define ("GER_TEXT36", 'Reports');
+
+define ("GER_TEXT37", '<i>Notice: put an away team on planet to gather more info about the colony.</i>');
 
 //INGLESE
 define ("ENG_TEXT0",'Settlers Colonies:');
@@ -102,7 +107,7 @@ define ("ENG_TEXT11", 'Position');
 
 define ("ENG_TEXT12", 'Class');
 
-define ("ENG_TEXT13", 'Relation Value');
+define ("ENG_TEXT13", 'Mood');
 
 define ("ENG_TEXT14", 'Linked planet');
 
@@ -146,6 +151,12 @@ define ("ENG_TEXT33", '<b>upgradeable</b>');
 
 define ("ENG_TEXT34", '<b>upgradeable</b>, work queue free in: ');
 
+define ("ENG_TEXT35", 'You have an away team in this colony');
+
+define ("ENG_TEXT36", 'Reports');
+
+define ("ENG_TEXT37", '<i>Notice: put an away team on planet to gather more info about the colony.</i>');
+
 
 // ITALIANO
 define ("ITA_TEXT0",'Colonie Indipendenti');
@@ -166,7 +177,7 @@ define ("ITA_TEXT11", 'Posizione');
 
 define ("ITA_TEXT12", 'Classe');
 
-define ("ITA_TEXT13", 'Valore relazioni');
+define ("ITA_TEXT13", 'Mood');
 
 define ("ITA_TEXT14", 'Pianeta Collegato');
 
@@ -209,5 +220,13 @@ define ("ITA_TEXT32", 'Dettaglio tecnologie Colonia');
 define ("ITA_TEXT33", '<b>aggiornabile</b>');
 
 define ("ITA_TEXT34", '<b>aggiornabile</b>, coda di lavoro disponibile tra: ');
+
+define ("ITA_TEXT35", 'Hai sbarcato una squadra su questa colonia');
+
+define ("ITA_TEXT36", 'Rapporti');
+
+define ("ITA_TEXT37", '<i>Nota: sbarcando una squadra permanente sul pianeta (presidio, delegazione o altra squadra permanente) puoi avere maggiori informazioni sulla colonia.</i>');
+
+define ("ITA_TEXT38", 'Strutture della Colonia');
 
 ?>

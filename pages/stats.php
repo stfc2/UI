@@ -361,11 +361,11 @@ $main_html .= '
             <table width="100%" border="0" cellpadding="0" cellspacing="0">
               <tr>
                 <td width="170" class="desc_row">'.$locale['round_start'].'</td>
-                <td width="100" class="value_row">--.--.----</td>
+                <td width="100" class="value_row">01.06.2020</td>
               </tr>
               <tr>
                 <td width="170" class="desc_row">'.$locale['round_end'].'</td>
-                <td width="100" class="value_row">--.--.----</td>
+                <td width="100" class="value_row">31.12.2020</td>
               </tr>
               <tr><td height="10"></td></tr>
               <tr>

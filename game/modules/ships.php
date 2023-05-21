@@ -22,10 +22,11 @@
 
 $game->init_player();
 
+/*
 include('include/static/static_components.php');
 $filename = 'include/static/static_components_'.$game->player['language'].'.php';
 if (file_exists($filename)) include($filename);
-
+*/
 
 $game->out('<span class="caption">'.constant($game->sprache("TEXT0")).'</span><br><br>');
 
@@ -195,7 +196,7 @@ function Ships_List($focus=0,$search_name="")
 			$game->out('
 				<tr>
 					<td width=150>
-						<a href="'.parse_link('a=ships&view=ship_details&id='.$ship['ship_id']).'">'.$ship['ship_name'].'</a>
+						<a href="'.parse_link('a=ship_fleets_ops&ship_details='.$ship['ship_id']).'">'.$ship['ship_name'].'</a>
 					</td>
 					<td>
 						'.$ship['template_name'].'
@@ -376,7 +377,7 @@ function Ships_List($focus=0,$search_name="")
 			<td>'.$n.'</td>
 			<td>'.$ship['template_name'].'</td>
 			<td>
-				<a href="'.parse_link('a=ships&view=ship_details&id='.$ship['ship_id'].'').'" onmouseover="return overlib(\''.$name_desc.'\', CAPTION, \''.$name_title.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.(($ship['ship_name'] != '') ? $ship['ship_name'] : '<i>'.constant($game->sprache("TEXT67")).'</i>').'</a>
+				<a href="'.parse_link('a=ship_fleets_ops&ship_details='.$ship['ship_id'].'').'" onmouseover="return overlib(\''.$name_desc.'\', CAPTION, \''.$name_title.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.(($ship['ship_name'] != '') ? $ship['ship_name'] : '<i>'.constant($game->sprache("TEXT67")).'</i>').'</a>
 			</td>
 			<td>
 				<a href="'.$pos_link.'" onmouseover="return overlib(\''.$position_desc.'\', CAPTION, \''.$position_title.'\', WIDTH, 300, '.OVERLIB_STANDARD.');" onmouseout="return nd();">'.$position.'</a>
@@ -713,9 +714,10 @@ if ($sub_action == 'ships_list')
 
 	Ships_List($focus,$_REQUEST['search']);
 }
+/*
 else if ($sub_action == 'ship_details')
 {
 	Ship_Details();
 }
-
+*/
 ?>
