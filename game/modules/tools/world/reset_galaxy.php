@@ -280,6 +280,7 @@ if(!$db->query($sql)) {
 
 $game->out('done.<br>Creating Operator user...');
 
+// Edit the edit_me! parts 
 $sql = "INSERT INTO user 
         (`user_id`, `user_active`, `user_name`, `user_loginname`, `user_password`,
          `user_gfxpath`, `user_skinpath`, `user_jspath`,
@@ -287,10 +288,10 @@ $sql = "INSERT INTO user
         `user_registration_time`, `last_active`, `user_capital`, `active_planet`, `country`, `language`,
         `user_skin`, `user_notepad`, `user_signature`, `user_message_sig`, `user_options`, `message_basement`, `skin_farbe`)
         VALUES 
-        (11, 1, 'Kail', 'delogu72', 'b07b8fc4450a4ba23eebd673914c8c95', 
+        (11, 1, "edit_me!!!", "edit_me!!!!", "edit_me!!!", 
         '".DEFAULT_GFX_PATH."', 'skin1/', '',
-        'delogu@stfc.it', 3, 'Operator', 0, 3,
-        '".time()."', '".time()."', 2, 2, 'IT', 'ITA',
+        "edit_me!!!", 3, 'Operator', 0, 3,
+        '".time()."', '".time()."', 2, 2, "edit_me!!!", "edit_me!!!",
          1, '', '', '', '', '', '')";
 
 if(!$db->query($sql)) {
